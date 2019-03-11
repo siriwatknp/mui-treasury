@@ -104,11 +104,7 @@ const components = [
   },
 ];
 
-const ButtonPage = ({
-  occurrence,
-  globalTheme,
-  onSelectComponent,
-}) => (
+const ButtonPage = ({ occurrence, globalTheme, onSelectComponent }) => (
   <Box
     width={'100%'}
     p={{

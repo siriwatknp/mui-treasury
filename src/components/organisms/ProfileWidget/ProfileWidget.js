@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
-import Avatar from 'components/atoms/Avatar'
+import Avatar from 'components/atoms/Avatar';
 import Box from 'components/atoms/Box';
 import Text from 'components/atoms/Text';
 
