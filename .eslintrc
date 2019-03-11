@@ -1,0 +1,21 @@
+{
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "plugins": ["react", "prettier"],
+  "rules": {
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", "jsx"]
+      }
+    ],
+    "prettier/prettier": "error",
+    "max-len": ["error", 80],
+    "import/no-unresolved": "off",
+    "react/jsx-curly-brace-presence": "off"
+  },
+  "parser": "babel-eslint", // arrow fn in class
+  "env": {
+    "browser": true,
+    "es6": true
+  }
+}
