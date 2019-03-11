@@ -26,7 +26,13 @@ const GlobalVarForm = ({ theme, onChange }) => (
         });
       };
       return (
-        <Box position={'relative'} borderBottom={'1px solid #f5f5f5'}>
+        <Box
+          position={'sticky'}
+          top={0}
+          zIndex={1000}
+          bgcolor={'common.white'}
+          borderBottom={'1px solid #f5f5f5'}
+        >
           <Box
             py={2}
             px={{
