@@ -28,7 +28,7 @@ export const red = {
 
 export const primary = {
   main: '#00BCD4',
-  light: '#cef8fd',
+  light: '#e1fafd',
 };
 
 export const linked = {

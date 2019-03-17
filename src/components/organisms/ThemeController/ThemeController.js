@@ -44,6 +44,7 @@ const getInitialTheme = () => ({
     // fontSize: get(baseTheme, 'typography.fontSize'),
     fontSize: 14,
     fontFamily: 'Roboto',
+    useNextVariants: true,
   },
 });
 

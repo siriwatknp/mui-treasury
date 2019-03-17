@@ -13,6 +13,16 @@ const introduction = [
     path: '/',
     primaryText: 'Mui Treasury',
   },
+  {
+    id: 'how',
+    path: '/instruction',
+    primaryText: 'How to use',
+  },
+  {
+    id: 'contribution',
+    path: '/contribution',
+    primaryText: 'Contribution',
+  },
 ];
 
 const components = [
@@ -31,6 +41,16 @@ const components = [
     path: '/components/tabs',
     primaryText: 'Tabs',
   },
+  {
+    id: 'inputs',
+    path: '/components/inputs',
+    primaryText: 'Input',
+  },
+  {
+    id: 'text-fields',
+    path: '/components/text-fields',
+    primaryText: 'Text Field',
+  },
 ];
 
 const Navigator = withRouter(({ onClickItem, location }) => {
@@ -47,7 +67,7 @@ const Navigator = withRouter(({ onClickItem, location }) => {
     </ListItem>
   );
   return (
-    <Box my={2}>
+    <Box mb={2}>
       <List subheader={<ListSubheader>Intro</ListSubheader>}>
         {introduction.map(renderItem)}
       </List>

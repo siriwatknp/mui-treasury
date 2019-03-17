@@ -55,6 +55,16 @@ export const visibility = style({
   cssProperty: 'visibility',
 });
 
+export const lineHeight = style({
+  prop: 'lineHeight',
+  cssProperty: 'lineHeight',
+});
+
+export const letterSpacing = style({
+  prop: 'letterSpacing',
+  cssProperty: 'letterSpacing',
+});
+
 export const allCssSystem = css(
   compose(
     borders,

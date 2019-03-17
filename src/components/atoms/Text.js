@@ -1,26 +1,29 @@
-import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import styled from '@material-ui/styles/styled';
-import positions from '@material-ui/system/positions';
-import cssSystem from 'helpers/cssSystem';
+import cssSystem, { lineHeight, letterSpacing } from 'helpers/cssSystem';
 import {
   compose,
   typography,
   spacing,
   display,
   palette,
+  positions,
+  sizing,
 } from '@material-ui/system';
 
 export const styleFunction = compose(
   display,
+  sizing,
   spacing,
   typography,
   palette,
   positions,
+  lineHeight,
+  letterSpacing,
   cssSystem,
 );
 
-const Text = styled(props => <Typography {...props} />)(styleFunction);
+const Text = styled(Typography)(styleFunction);
 
 Text.brand = {
   color: 'primary.main',

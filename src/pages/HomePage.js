@@ -1,3 +1,4 @@
+/* eslint-disable spaced-comment,max-len */
 import React from 'react';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
@@ -10,10 +11,7 @@ const HomePage = () => (
     <Grid container justify={'center'}>
       <Grid item xs={12} sm={10} md={8} lg={6}>
         <Box my={4.5} px={{ xs: 2, md: 4 }}>
-          <Text variant={'h4'} fontSize={{ xs: 32 }} mb={2}>
-            What is MUI Treasury ?
-          </Text>
-          <Text variant={'h6'} mb={6} fontWeight={200}>
+          <Text variant={'h6'} fontWeight={200} mb={6}>
             MUI Treasury is a collection of ready-to-use and themeable
             components base on{' '}
             <Link target={'_blank'} href={'https://material-ui.com/'}>
@@ -21,7 +19,23 @@ const HomePage = () => (
             </Link>
             .
           </Text>
-          <Text variant={'h5'} fontWeight={500} gutterBottom>
+          <Text variant={'h4'} fontWeight={900} fontSize={{ xs: 32 }} mb={2}>
+            Mission
+          </Text>
+          <Box p={2} mb={6} bgcolor={'grey.100'} borderRadius={12}>
+            <Text
+              variant={'h6'}
+              fontWeight={200}
+              align={'center'}
+              maxWidth={'400px'}
+              m={'auto'}
+            >
+              To <b>boost</b> any projects that want to shake the world, so that
+              our <b>future</b> is better than today.
+            </Text>
+          </Box>
+
+          <Text variant={'h4'} fontWeight={900} fontSize={{ xs: 32 }} mb={2}>
             Objectives
           </Text>
           <Text variant={'h6'} fontWeight={200} gutterBottom>
@@ -61,16 +75,29 @@ const HomePage = () => (
               new great features to the world faster.
             </Text>
             <Text variant={'subtitle1'} fontWeight={'bold'} gutterBottom>
-              3. I love Material-UI
+              3. Increase productivity
             </Text>
             <Text variant={'body1'} fontWeight={200}>
-              Material-ui is maintained by a great team. They believe in
-              building great ui components which I also believe that too. The
-              project is an open-source that has more than 43000+ star in github
-              and 1000+ contributors. The core team has great vision and
-              roadmap. That’s why I believe that this project will keep
-              improving and making the best ui components for our community.
+              I have seen a lot of developers struggled with building components
+              instead of creating new features. I really love building UI, but
+              it is not for everyone right? So, I want this project to be a
+              place that you can copy the component that you like and paste it
+              into your project, so that you have more time to focus on the
+              other parts that you love. Imaging if we have thousands of
+              components that we can choose from with fully under your control.
+              It is the world I want to live in.
             </Text>
+            {/*<Text variant={'subtitle1'} fontWeight={'bold'} gutterBottom>*/}
+            {/*3. I love Material-UI*/}
+            {/*</Text>*/}
+            {/*<Text variant={'body1'} fontWeight={200}>*/}
+            {/*Material-ui is maintained by a great team. They believe in*/}
+            {/*building great ui components which I also believe that too. The*/}
+            {/*project is an open-source that has more than 43000+ star in github*/}
+            {/*and 1000+ contributors. The core team has great vision and*/}
+            {/*roadmap. That’s why I believe that this project will keep*/}
+            {/*improving and making the best ui components for our community.*/}
+            {/*</Text>*/}
           </Box>
         </Box>
       </Grid>
