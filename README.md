@@ -50,8 +50,8 @@ Please keep your pull requests small. To give a PR the best chance of getting ac
 ##### Branch Structure
 
 All stable releases are tagged [(view tags)](https://github.com/siriwatknp/mui-treasury/tags).
-At any given time, `development` represents the latest development version of the library. Patches or hotfix releases are prepared on an independent branch.
-When `development` is merged with new component or new page, it will be deployed to `master` with a tag of new release version
+At any given time, `develop` represents the latest development version of the library. Patches or hotfix releases are prepared on an independent branch.
+When `develop` is merged with new component or new page, it will be deployed to `master` with a tag of new release version
 
 ##### `master` is for deployed version
 
