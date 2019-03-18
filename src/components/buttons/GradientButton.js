@@ -48,7 +48,6 @@ const GradientButton = () => (
 );
 
 GradientButton.getTheme = getTheme;
-GradientButton.displayName = 'Button';
 GradientButton.metadata = {
   name: 'Gradient',
   description: 'Welcome to the new trend',

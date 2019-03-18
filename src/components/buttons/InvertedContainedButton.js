@@ -72,7 +72,6 @@ const InvertedContainedButton = () => (
 );
 
 InvertedContainedButton.getTheme = getTheme;
-InvertedContainedButton.displayName = 'Button';
 InvertedContainedButton.metadata = {
   name: 'Inverted Contained',
   description: 'Base on Semantic UI',

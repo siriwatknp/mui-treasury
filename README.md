@@ -9,60 +9,93 @@ In the project directory, you can run:
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+# Material-UI Treasury [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/siriwatknp/mui-treasury/pulls)
 
-### `npm test`
+Imagine a thousands of real-world, ready-to-use, and themable components that you can copy & paste to your project.
+I believe that it will help boosting many projects that the founder want to prove their ideas to make this world a better place.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I would love to have anyone that believe that same thing as I believe. I am very excited about this project because I know that there is a lot of developers
+who are struggling at building ui and waiting for something like this to come true. I will take a lot of time for me alone to make it to thousand components.
+So if you want to do something great and fun, please read our [contribution section](#Contribution)
 
-### `npm run build`
+#### In this project, we aim to
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Increase ui development productivity so that you can focus on other parts of your app.
+2. Make it dynamic for developers to customize (that's why we provide the code sandbox link for you).
+3. Help growing material-ui community because we love it.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+#### How to use
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. [Open mui-treasury website](https://mui-treasury.com) (don't worry, it is not a spam)
+2. In the components panel, choose one that you like.
+3. Click search icon to copy theme and code sandbox for jsx => paste to your project.
 
-### `npm run eject`
+## Contribution
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Thank you for your interest in this project. let's do it.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Submitting a pull request
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Please keep your pull requests small. To give a PR the best chance of getting accepted, don't bundle more than one feature or bug fix per pull request. It's always best to create two smaller PRs than one big one.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+##### Case 1 : New Component
 
-## Learn More
+1. Please open new issue for every new component that you want to add, so that other people don't create the same component as your
+2. Title the issue with [New][category - component]. For Example, `[New] [Card - SimpleDashboardCard]`
+3. Add image of the component that you want to product (if possible)
+4. Create branch name same as the issue title
+5. Follow component file guideline for consistency
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+##### Case 2 : Bug, modification, support, anything else
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Please open new issue for every new component that you want to add, so that other people can see and help
+2. Title the issue with [Help][category - component] description. For Example, `[Help] [Card - SimpleDashboardCard] Something is wrong!`
+3. Add image (if possible)
+4. Create branch name same as the issue title
+5. Follow component file guideline for consistency
 
-### Code Splitting
+##### Branch Structure
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+All stable releases are tagged [(view tags)](https://github.com/siriwatknp/mui-treasury/tags).
+At any given time, `development` represents the latest development version of the library. Patches or hotfix releases are prepared on an independent branch.
+When `development` is merged with new component or new page, it will be deployed to `master` with a tag of new release version
 
-### Analyzing the Bundle Size
+##### `master` is for deployed version
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Only important bug fixes should be applied to master at this point. create `hotfix` branch from `master` if there is a critical bug.
 
-### Making a Progressive Web App
+### Getting started
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Please create a new branch from an up to date master on your fork. (Note, urgent hotfixes should be branched off the latest stable release rather than master)
 
-### Advanced Configuration
+1. Fork the Mui Treasury repository on Github
+2. Clone your fork to your local machine `git clone git@github.com:<yourname>/material-ui.git`
+3. Create a branch `git checkout -b my-topic-branch`
+4. Make your changes, lint, then push to to GitHub with `git push --set-upstream origin my-topic-branch`.
+   Visit GitHub and make your pull request.
+   If you have an existing local repository, please update it before you start, to minimise the chance of merge conflicts.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+```
+git remote add upstream git@github.com:mui-org/material-ui.git
+git checkout next
+git pull upstream next
+git checkout -b my-topic-branch
+yarn
+```
 
-### Deployment
+### How do I add a new component to the treasury ?
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+##### If it is the new category
 
-### `npm run build` fails to minify
+1. copy everything in `src/contribution/PageTemplate.js`
+2. create new CategoryPage in `src/pages/components/` and paste from (1)
+3. rename the page
+4. add new page to `src/pages/components/.routes.js`
+5. add new category folder to `src/components`
+6. copy everything in `src/contribution/ComponentTemplate.js`
+7. create new component in `src/components/<category>/` and paste from (6)
+8. `yarn start` and check your component in the page
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+##### If the category exists
+
+Follow step 6 from the above

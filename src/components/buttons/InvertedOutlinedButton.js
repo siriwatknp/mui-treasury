@@ -61,7 +61,6 @@ const InvertedOutlinedButton = () => (
 );
 
 InvertedOutlinedButton.getTheme = getTheme;
-InvertedOutlinedButton.displayName = 'Button';
 InvertedOutlinedButton.metadata = {
   name: 'Inverted Outlined',
   description: 'Base on Semantic UI',

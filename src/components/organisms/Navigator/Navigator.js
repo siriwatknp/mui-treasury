@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
+import route from 'pages/components/.routes';
 import List from '@material-ui/core/List';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItem from '@material-ui/core/ListItem';
@@ -25,41 +26,13 @@ const introduction = [
   },
 ];
 
-const components = [
-  {
-    id: 'button',
-    path: '/components/button',
-    primaryText: 'Button',
-  },
-  {
-    id: 'card',
-    path: '/components/card',
-    primaryText: 'Card',
-  },
-  {
-    id: 'tabs',
-    path: '/components/tabs',
-    primaryText: 'Tabs',
-  },
-  {
-    id: 'inputs',
-    path: '/components/inputs',
-    primaryText: 'Input',
-  },
-  {
-    id: 'text-fields',
-    path: '/components/text-fields',
-    primaryText: 'Text Field',
-  },
-];
-
 const Navigator = withRouter(({ onClickItem, location }) => {
   const renderItem = item => (
     <ListItem
+      key={item.id || item.path}
+      button
       component={Link}
       to={item.path}
-      button
-      key={item.id}
       selected={location.pathname === item.path}
       onClick={onClickItem}
     >
@@ -72,7 +45,7 @@ const Navigator = withRouter(({ onClickItem, location }) => {
         {introduction.map(renderItem)}
       </List>
       <List subheader={<ListSubheader>Components</ListSubheader>}>
-        {components.map(renderItem)}
+        {route.map(renderItem)}
       </List>
     </Box>
   );

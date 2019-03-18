@@ -94,7 +94,6 @@ const TwitterButton = () => (
 );
 
 TwitterButton.getTheme = getTheme;
-TwitterButton.displayName = 'Button';
 TwitterButton.metadata = {
   name: 'Twitter',
   description: 'Tweet',

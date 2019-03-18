@@ -25,7 +25,6 @@ const ShadowlessButton = () => (
 );
 
 ShadowlessButton.getTheme = getTheme;
-ShadowlessButton.displayName = 'Button';
 ShadowlessButton.metadata = {
   name: 'Shadowless',
   description: 'Simple, Elegant',

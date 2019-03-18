@@ -10,7 +10,7 @@ const createTheme = theme => createMuiTheme(theme);
 const baseTheme = createMuiTheme();
 
 const ComponentRenderer = ({
-  occurrence,
+  counter,
   active,
   component: Component,
   render,
@@ -30,7 +30,7 @@ const ComponentRenderer = ({
       onClick={() => onSelectComponent(Component)}
       {...previewProps}
     >
-      <ShouldUpdate value={occurrence}>
+      <ShouldUpdate value={counter}>
         <MuiThemeProvider theme={theme}>{render()}</MuiThemeProvider>
       </ShouldUpdate>
     </PreviewWidget>
@@ -38,7 +38,7 @@ const ComponentRenderer = ({
 };
 
 ComponentRenderer.propTypes = {
-  occurrence: PropTypes.number.isRequired,
+  counter: PropTypes.number.isRequired,
   active: PropTypes.bool.isRequired,
   globalTheme: PropTypes.shape({}).isRequired,
   onSelectComponent: PropTypes.func.isRequired,

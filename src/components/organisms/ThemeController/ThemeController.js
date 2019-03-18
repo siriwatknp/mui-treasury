@@ -59,7 +59,7 @@ class ThemeController extends React.Component {
   constructor() {
     super();
     this.state = {
-      occurrence: 0,
+      counter: 0,
       displayedTheme: getInitialTheme(),
       globalTheme: getInitialTheme(),
       component: null,
@@ -95,8 +95,8 @@ class ThemeController extends React.Component {
       globalTheme,
       result.palette ? { palette: createPalette(result.palette) } : result,
     );
-    this.setState(({ occurrence }) => ({
-      occurrence: occurrence + 1,
+    this.setState(({ counter }) => ({
+      counter: counter + 1,
       globalTheme: newTheme,
       displayedTheme: merge(displayedTheme, displayedResult),
     }));
@@ -117,7 +117,7 @@ class ThemeController extends React.Component {
   render() {
     const { children } = this.props;
     const {
-      occurrence,
+      counter,
       globalTheme,
       displayedTheme,
       component,
@@ -142,7 +142,7 @@ class ThemeController extends React.Component {
             onChange={this.handleChangeTheme}
           />
           {children({
-            occurrence,
+            counter,
             component,
             globalTheme,
             onSelectComponent: this.handleSelectComponent,

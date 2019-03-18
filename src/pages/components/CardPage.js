@@ -61,7 +61,7 @@ const components = [
   },
 ];
 
-const CardPage = ({ occurrence, globalTheme, onSelectComponent }) => (
+const CardPage = ({ counter, globalTheme, onSelectComponent }) => (
   <Box
     width={'100%'}
     p={{
@@ -94,7 +94,7 @@ const CardPage = ({ occurrence, globalTheme, onSelectComponent }) => (
             onClick={() => onSelectComponent(component)}
             {...previewProps}
           >
-            <ShouldUpdate value={occurrence}>
+            <ShouldUpdate value={counter}>
               <MuiThemeProvider
                 theme={createTheme({
                   ...globalTheme,

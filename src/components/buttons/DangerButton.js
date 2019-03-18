@@ -22,7 +22,6 @@ const DangerButton = () => (
 );
 
 DangerButton.getTheme = getTheme;
-DangerButton.displayName = 'Button';
 DangerButton.metadata = {
   name: 'Danger',
   description: 'Best for warning',

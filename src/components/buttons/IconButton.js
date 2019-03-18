@@ -24,7 +24,6 @@ const IconButton = () => (
 );
 
 IconButton.getTheme = getTheme;
-IconButton.displayName = 'Button';
 IconButton.metadata = {
   name: 'Icon',
   description: 'More Meaningful',

@@ -1,5 +1,5 @@
-/* eslint-disable max-len,react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import merge from 'lodash/merge';
 import get from 'lodash/get';
 import Grid from '@material-ui/core/Grid';
@@ -10,6 +10,7 @@ import ShouldUpdate from 'containers/ShouldUpdate';
 import ShadowlessButton from 'components/buttons/ShadowlessButton';
 import ChubbyButton from 'components/buttons/ChubbyButton';
 import GithubButton from 'components/buttons/GithubButton';
+// eslint-disable-next-line max-len
 import InvertedContainedButton from 'components/buttons/InvertedContainedButton';
 import InvertedOutlinedButton from 'components/buttons/InvertedOutlinedButton';
 import DangerButton from 'components/buttons/DangerButton';
@@ -104,7 +105,7 @@ const components = [
   },
 ];
 
-const ButtonPage = ({ occurrence, globalTheme, onSelectComponent }) => (
+const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
   <Box
     width={'100%'}
     p={{
@@ -122,7 +123,7 @@ const ButtonPage = ({ occurrence, globalTheme, onSelectComponent }) => (
             onClick={() => onSelectComponent(component)}
             {...previewProps}
           >
-            <ShouldUpdate value={occurrence}>
+            <ShouldUpdate value={counter}>
               <MuiThemeProvider
                 theme={createTheme({
                   ...globalTheme,
@@ -139,7 +140,10 @@ const ButtonPage = ({ occurrence, globalTheme, onSelectComponent }) => (
   </Box>
 );
 
-ButtonPage.propTypes = {};
-ButtonPage.defaultProps = {};
+ButtonPage.propTypes = {
+  counter: PropTypes.number.isRequired,
+  globalTheme: PropTypes.shape({}).isRequired,
+  onSelectComponent: PropTypes.func.isRequired,
+};
 
 export default ButtonPage;

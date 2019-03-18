@@ -15,7 +15,6 @@ export const getTheme = () => ({
 const ChubbyButton = () => <Button variant={'contained'}>Button</Button>;
 
 ChubbyButton.getTheme = getTheme;
-ChubbyButton.displayName = 'Button';
 ChubbyButton.metadata = {
   name: 'Chubby',
   description: 'Cute',

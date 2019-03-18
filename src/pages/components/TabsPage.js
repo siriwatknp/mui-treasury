@@ -34,7 +34,7 @@ const components = [
   },
 ];
 
-const TabsPage = ({ occurrence, globalTheme, onSelectComponent }) => (
+const TabsPage = ({ counter, globalTheme, onSelectComponent }) => (
   <Box
     width={'100%'}
     p={{
@@ -59,7 +59,7 @@ const TabsPage = ({ occurrence, globalTheme, onSelectComponent }) => (
             onClick={() => onSelectComponent(component)}
             {...previewProps}
           >
-            <ShouldUpdate value={occurrence}>
+            <ShouldUpdate value={counter}>
               <MuiThemeProvider
                 theme={createTheme({
                   ...globalTheme,

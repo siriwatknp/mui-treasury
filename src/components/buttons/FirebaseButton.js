@@ -48,7 +48,6 @@ const FirebaseButton = () => (
 );
 
 FirebaseButton.getTheme = getTheme;
-FirebaseButton.displayName = 'Button';
 FirebaseButton.metadata = {
   name: 'Firebase',
   description: "We're on fire",

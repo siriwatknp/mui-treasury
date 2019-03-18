@@ -50,7 +50,6 @@ const ShinningButton = () => (
 );
 
 ShinningButton.getTheme = getTheme;
-ShinningButton.displayName = 'Button';
 ShinningButton.metadata = {
   name: 'Shinning',
   description: 'I love to be shinned',

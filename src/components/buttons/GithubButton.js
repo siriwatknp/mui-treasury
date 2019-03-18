@@ -67,7 +67,6 @@ const GithubButton = () => (
 );
 
 GithubButton.getTheme = getTheme;
-GithubButton.displayName = 'Button';
 GithubButton.metadata = {
   name: 'Github',
   description: 'Classic for developers',
