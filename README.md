@@ -34,7 +34,7 @@ Please keep your pull requests small. To give a PR the best chance of getting ac
 ##### Case 1 : New Component
 
 1. Please open new issue for every new component that you want to add, so that other people don't create the same component as your
-2. Title the issue with (New)-Category_Component]. For Example, `(New)-Card_SimpleDashboardCard`
+2. Title the issue with (New)-Category_Component. For Example, `(New)-Card_SimpleDashboardCard`
 3. Add image of the component that you want to product (if possible)
 4. Create branch name same as the issue title
 5. Follow component file guideline for consistency
@@ -42,7 +42,7 @@ Please keep your pull requests small. To give a PR the best chance of getting ac
 ##### Case 2 : Bug, modification, support, anything else
 
 1. Please open new issue for every new component that you want to add, so that other people can see and help
-2. Title the issue with (Help)-Category_Component] description. For Example, `(Help)-Card_SimpleDashboardCard Something is wrong!`
+2. Title the issue with (Help)-Category_Component description. For Example, `(Help)-Card_SimpleDashboardCard Something is wrong!`
 3. Add image (if possible)
 4. Create branch name same as the issue title
 5. Follow component file guideline for consistency
