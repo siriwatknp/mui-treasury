@@ -27,8 +27,8 @@ const PreviewWidget = ({
 }) => {
   const getBG = () => {
     if (white) return '#ffffff';
-    if (inverted) return 'grey.100';
-    return 'text.primary';
+    if (inverted) return 'text.primary';
+    return 'grey.100';
   };
   return (
     <Box
