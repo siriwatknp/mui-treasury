@@ -92,3 +92,8 @@ yarn
 ##### If the category exists
 
 Follow step 6 from the above
+
+## License
+
+This project is licensed under the terms of the
+[MIT license](/LICENSE).
