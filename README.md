@@ -1,14 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
 # Material-UI Treasury [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/siriwatknp/mui-treasury/pulls)
 
 Imagine a thousands of real-world, ready-to-use, and themable components that you can copy & paste to your project.
@@ -41,7 +30,7 @@ Please keep your pull requests small. To give a PR the best chance of getting ac
 ##### Case 1 : New Component
 
 1. Please open new issue for every new component that you want to add, so that other people don't create the same component as your
-2. Title the issue with [New][category - component]. For Example, `[New] [Card - SimpleDashboardCard]`
+2. Title the issue with (New) [category - component]. For Example, `(New) [Card - SimpleDashboardCard]`
 3. Add image of the component that you want to product (if possible)
 4. Create branch name same as the issue title
 5. Follow component file guideline for consistency
@@ -49,7 +38,7 @@ Please keep your pull requests small. To give a PR the best chance of getting ac
 ##### Case 2 : Bug, modification, support, anything else
 
 1. Please open new issue for every new component that you want to add, so that other people can see and help
-2. Title the issue with [Help][category - component] description. For Example, `[Help] [Card - SimpleDashboardCard] Something is wrong!`
+2. Title the issue with (Help) [category - component] description. For Example, `(Help) [Card - SimpleDashboardCard] Something is wrong!`
 3. Add image (if possible)
 4. Create branch name same as the issue title
 5. Follow component file guideline for consistency
@@ -69,16 +58,16 @@ Only important bug fixes should be applied to master at this point. create `hotf
 Please create a new branch from an up to date master on your fork. (Note, urgent hotfixes should be branched off the latest stable release rather than master)
 
 1. Fork the Mui Treasury repository on Github
-2. Clone your fork to your local machine `git clone git@github.com:<yourname>/material-ui.git`
+2. Clone your fork to your local machine `git clone git@github.com:<yourname>/mui-treasury.git`
 3. Create a branch `git checkout -b my-topic-branch`
 4. Make your changes, lint, then push to to GitHub with `git push --set-upstream origin my-topic-branch`.
    Visit GitHub and make your pull request.
    If you have an existing local repository, please update it before you start, to minimise the chance of merge conflicts.
 
 ```
-git remote add upstream git@github.com:mui-org/material-ui.git
-git checkout next
-git pull upstream next
+git remote add upstream git@github.com:siriwatknp/mui-treasury.git
+git checkout dev
+git pull upstream dev
 git checkout -b my-topic-branch
 yarn
 ```
