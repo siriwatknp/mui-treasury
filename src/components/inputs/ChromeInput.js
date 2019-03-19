@@ -6,16 +6,18 @@ import Icon from '@material-ui/core/Icon';
 export const getTheme = muiBaseTheme => {
   const space = muiBaseTheme.spacing.unit; // default = 8;
   const backgroundColor = '#F1F3F4';
+  const borderRadius = 100; // rounded
+  const inputPadding = space / 4;
   return {
     MuiInputBase: {
       root: {
         '&.ChromeInput-root': {
           backgroundColor,
-          borderRadius: 100,
-          padding: space / 4,
+          borderRadius,
+          padding: inputPadding,
           '& .MuiIconButton-root': {
             padding: `${space / 2}px ${space}px`,
-            borderRadius: 50,
+            borderRadius,
           },
         },
       },
@@ -42,7 +44,6 @@ const ChromeInput = props => (
 );
 
 ChromeInput.getTheme = getTheme;
-ChromeInput.displayName = 'Input';
 ChromeInput.metadata = {
   name: 'Chrome Input',
   description: 'We use it everyday',

@@ -22,9 +22,12 @@ export const getTheme = muiBaseTheme => {
         },
       },
     },
-    MuiInputLabel: {
-      filled: {
-        // fontWeight: 'bold',
+    MuiFormHelperText: {
+      root: {
+        lineHeight: '2em',
+      },
+      contained: {
+        marginTop: space / 4,
       },
     },
   };
@@ -59,7 +62,6 @@ const FilledTextField01 = props => (
 );
 
 FilledTextField01.getTheme = getTheme;
-FilledTextField01.displayName = 'TextField';
 FilledTextField01.metadata = {
   name: 'Filled TextField I',
   description: 'Custom Filled Variant No.1',

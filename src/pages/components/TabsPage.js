@@ -54,9 +54,8 @@ const TabsPage = ({ counter, globalTheme, onSelectComponent }) => (
         >
           <PreviewWidget
             sandboxLink={component.codeSandbox}
-            name={get(component, 'metadata.name')}
-            description={get(component, 'metadata.description')}
             onClick={() => onSelectComponent(component)}
+            {...get(component, 'metadata')}
             {...previewProps}
           >
             <ShouldUpdate value={counter}>

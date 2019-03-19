@@ -9,6 +9,7 @@ import { PreviewWidget } from 'components/molecules';
 import ShouldUpdate from 'containers/ShouldUpdate';
 import ChromeInput from 'components/inputs/ChromeInput';
 import BootstrapInput from 'components/inputs/BootstrapInput';
+import SearchInput from 'components/inputs/SearchInput';
 
 const createTheme = theme => createMuiTheme(theme);
 const baseTheme = createMuiTheme();
@@ -34,6 +35,10 @@ const components = [
         <BootstrapInput />
       </Box>
     ),
+  },
+  {
+    component: SearchInput,
+    render: () => <SearchInput />,
     previewProps: {
       white: true,
     },
@@ -53,9 +58,8 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
         <Grid key={get(component, 'metadata.name')} item xs={12} sm={6} lg={4}>
           <PreviewWidget
             sandboxLink={component.codeSandbox}
-            name={get(component, 'metadata.name')}
-            description={get(component, 'metadata.description')}
             onClick={() => onSelectComponent(component)}
+            {...get(component, 'metadata')}
             {...previewProps}
           >
             <ShouldUpdate value={counter}>
