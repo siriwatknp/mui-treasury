@@ -1,59 +1,70 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import Color from 'color';
 import InputBase from '@material-ui/core/InputBase';
 
 export const getTheme = muiBaseTheme => {
   const { white } = muiBaseTheme.palette.common;
+  const inputRadius = 4;
+  const borderWidth = 1;
+  const inputPadding = '10px 12px';
+  const fontFamily = [
+    '-apple-system',
+    'BlinkMacSystemFont',
+    '"Segoe UI"',
+    'Roboto',
+    '"Helvetica Neue"',
+    'Arial',
+    'sans-serif',
+    '"Apple Color Emoji"',
+    '"Segoe UI Emoji"',
+    '"Segoe UI Symbol"',
+  ].join(',');
+  const borderColor = '#ced4da';
+  // you can change normal color to primary using
+  // muiBaseTheme.palette.primary.main
+  const normalColor = '#80bdff';
+  const validColor = '#28a745';
+  const errorColor = '#dc3545';
   return {
     MuiInputBase: {
       root: {
         '&.BootstrapInput-root': {
           '& .BootstrapInput-input': {
-            borderRadius: 4,
+            borderRadius: inputRadius,
             position: 'relative',
             backgroundColor: white,
-            borderWidth: 1,
+            borderWidth,
             borderStyle: 'solid',
-            borderColor: '#ced4da',
+            borderColor,
             fontSize: 16,
             width: 'auto',
-            padding: '10px 12px',
+            padding: inputPadding,
             transition: muiBaseTheme.transitions.create([
               'border-color',
               'box-shadow',
             ]),
             // Use the system font instead of the default Roboto font.
-            fontFamily: [
-              '-apple-system',
-              'BlinkMacSystemFont',
-              '"Segoe UI"',
-              'Roboto',
-              '"Helvetica Neue"',
-              'Arial',
-              'sans-serif',
-              '"Apple Color Emoji"',
-              '"Segoe UI Emoji"',
-              '"Segoe UI Symbol"',
-            ].join(','),
+            fontFamily,
             '&:focus': {
-              borderRadius: 4,
-              borderColor: '#80bdff',
-              boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+              borderRadius: inputRadius,
+              borderColor: validColor,
+              boxShadow: `0 0 0 0.2rem ${Color(normalColor).fade(0.75)}`,
             },
           },
           '&.BootstrapInput-valid': {
             '& .BootstrapInput-input': {
-              borderColor: '#28a745 !important',
+              borderColor: `${validColor} !important`,
               '&:focus': {
-                boxShadow: '0 0 0 0.2rem rgba(40,167,69,.25)',
+                boxShadow: `0 0 0 0.2rem ${Color(validColor).fade(0.75)}`,
               },
             },
           },
           '&.BootstrapInput-error': {
             '& .BootstrapInput-input': {
-              borderColor: '#dc3545 !important',
+              borderColor: `${errorColor} !important`,
               '&:focus': {
-                boxShadow: '0 0 0 0.2rem rgba(220,53,69,.25)',
+                boxShadow: `0 0 0 0.2rem ${Color(errorColor).fade(0.75)}`,
               },
             },
           },
@@ -71,7 +82,6 @@ const BootstrapInput = ({ classes, ...props }) => (
         input: 'BootstrapInput-input',
         ...classes,
       }}
-      className={'BootstrapInput-root'}
       placeholder={'Username'}
       {...props}
     />
@@ -81,7 +91,6 @@ const BootstrapInput = ({ classes, ...props }) => (
         input: 'BootstrapInput-input',
         ...classes,
       }}
-      className={'BootstrapInput-root'}
       placeholder={'Username'}
       {...props}
     />
@@ -91,7 +100,6 @@ const BootstrapInput = ({ classes, ...props }) => (
         input: 'BootstrapInput-input',
         ...classes,
       }}
-      className={'BootstrapInput-root'}
       placeholder={'Username'}
       {...props}
     />
@@ -99,10 +107,12 @@ const BootstrapInput = ({ classes, ...props }) => (
 );
 
 BootstrapInput.getTheme = getTheme;
-BootstrapInput.displayName = 'Input';
 BootstrapInput.metadata = {
   name: 'Bootstrap Input',
   description: 'Implement Bootstrap Input',
+  libraries: [
+    { text: 'color', link: 'https://github.com/Qix-/color#manipulation' },
+  ],
 };
 BootstrapInput.codeSandbox = 'https://codesandbox.io/s/52x3p8rk3n';
 
