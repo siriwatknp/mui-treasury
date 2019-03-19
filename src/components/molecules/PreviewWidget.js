@@ -2,6 +2,7 @@
 import React from 'react';
 import { styled } from '@material-ui/styles';
 import PropTypes from 'prop-types';
+import Chip from '@material-ui/core/Chip';
 import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
 import { Box, Text } from 'components/atoms';
@@ -16,6 +17,7 @@ const Image = styled('img')({
 });
 
 const PreviewWidget = ({
+  libraries,
   white,
   inverted,
   sandboxLink,
@@ -57,6 +59,23 @@ const PreviewWidget = ({
         <Box flexGrow={1}>
           <Text variant={'h6'}>{name}</Text>
           <Text color={'grey.500'}>{description}</Text>
+          {libraries && (
+            <Box mt={1}>
+              {libraries.map(({ text, link }) => (
+                <Chip
+                  key={text}
+                  href={link}
+                  label={text}
+                  target={'_blank'}
+                  component={'a'}
+                  color={'primary'}
+                  deleteIcon={<Icon>call_made</Icon>}
+                  onDelete={() => {}}
+                  clickable
+                />
+              ))}
+            </Box>
+          )}
         </Box>
         <IconButton onClick={onClick}>
           <Icon>search</Icon>
@@ -91,6 +110,7 @@ PreviewWidget.propTypes = {
   onClick: PropTypes.func,
   contentProps: PropTypes.shape({}),
   sandboxLink: PropTypes.string,
+  libraries: PropTypes.arrayOf(PropTypes.shape({})),
 };
 PreviewWidget.defaultProps = {
   white: false,
@@ -101,6 +121,7 @@ PreviewWidget.defaultProps = {
   onClick: () => {},
   contentProps: {},
   sandboxLink: '',
+  libraries: undefined,
 };
 
 export default PreviewWidget;

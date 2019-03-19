@@ -1,13 +1,11 @@
 import React from 'react';
+import Color from 'color';
 import TextField from '@material-ui/core/TextField';
 
 export const getTheme = muiBaseTheme => {
   const space = muiBaseTheme.spacing.unit; // default = 8;
   const { white } = muiBaseTheme.palette.common;
-  const { primary: textPrimary } = muiBaseTheme.palette.text;
-  const helperTextColor = '#6c757d';
-  const validColor = '#28a745';
-  const errorColor = '#dc3545';
+  const labelColor = muiBaseTheme.palette.text.primary;
   const fontFamily = [
     '-apple-system',
     'BlinkMacSystemFont',
@@ -20,6 +18,17 @@ export const getTheme = muiBaseTheme => {
     '"Segoe UI Emoji"',
     '"Segoe UI Symbol"',
   ].join(',');
+  const borderColor = '#ced4da';
+  // you can change normal color to primary using
+  // muiBaseTheme.palette.primary.main
+  const normalColor = '#80bdff';
+  const helperTextColor = '#6c757d';
+  const validColor = '#28a745';
+  const errorColor = '#dc3545';
+  const inputFontSize = 16;
+  const inputBorderRadius = 4;
+  const inputPadding = '10px 12px';
+  const helperTextFontSize = 12.8;
   return {
     MuiFormControl: {
       root: {
@@ -31,20 +40,20 @@ export const getTheme = muiBaseTheme => {
             position: 'initial',
             textAlign: 'left',
             transform: 'none',
-            color: textPrimary,
+            color: labelColor,
             fontFamily,
           },
           '& .BootstrapInput-input': {
             color: '#495057',
-            borderRadius: 4,
+            borderRadius: inputBorderRadius,
             position: 'relative',
             backgroundColor: white,
             borderWidth: 1,
             borderStyle: 'solid',
-            borderColor: '#ced4da',
-            fontSize: 16,
+            borderColor,
+            fontSize: inputFontSize,
             width: 'auto',
-            padding: '10px 12px',
+            padding: inputPadding,
             transition: muiBaseTheme.transitions.create([
               'border-color',
               'box-shadow',
@@ -52,9 +61,8 @@ export const getTheme = muiBaseTheme => {
             // Use the system font instead of the default Roboto font.
             fontFamily,
             '&:focus': {
-              borderRadius: 4,
-              borderColor: '#80bdff',
-              boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+              borderColor: normalColor,
+              boxShadow: `0 0 0 0.2rem ${Color(normalColor).fade(0.75)}`,
             },
           },
           '& .BootstrapFormHelperText-root': {
@@ -62,13 +70,13 @@ export const getTheme = muiBaseTheme => {
             color: helperTextColor,
             lineHeight: '19.2px',
             marginTop: space / 2,
-            fontSize: 12.8,
+            fontSize: helperTextFontSize,
           },
           '&.BootstrapFormControl-valid': {
             '& .BootstrapInput-input': {
               borderColor: `${validColor} !important`,
               '&:focus': {
-                boxShadow: '0 0 0 0.2rem rgba(40,167,69,.25)',
+                boxShadow: `0 0 0 0.2rem ${Color(validColor).fade(0.75)}`,
               },
             },
             '& .BootstrapFormHelperText-root': {
@@ -79,7 +87,7 @@ export const getTheme = muiBaseTheme => {
             '& .BootstrapInput-input': {
               borderColor: `${errorColor} !important`,
               '&:focus': {
-                boxShadow: '0 0 0 0.2rem rgba(220,53,69,.25)',
+                boxShadow: `0 0 0 0.2rem ${Color(errorColor).fade(0.75)}`,
               },
             },
             '& .BootstrapFormHelperText-root': {
@@ -167,10 +175,12 @@ const BootstrapTextField = props => (
 );
 
 BootstrapTextField.getTheme = getTheme;
-BootstrapTextField.displayName = 'TextField';
 BootstrapTextField.metadata = {
   name: 'Bootstrap TextField',
   description: 'Implement Bootstrap Form Input',
+  libraries: [
+    { text: 'color', link: 'https://github.com/Qix-/color#manipulation' },
+  ],
 };
 BootstrapTextField.codeSandbox = 'https://codesandbox.io/s/ll5k316mv7';
 

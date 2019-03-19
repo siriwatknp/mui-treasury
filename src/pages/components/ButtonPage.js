@@ -118,9 +118,8 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
         <Grid key={get(component, 'metadata.name')} item xs={12} sm={6} lg={4}>
           <PreviewWidget
             sandboxLink={component.codeSandbox}
-            name={get(component, 'metadata.name')}
-            description={get(component, 'metadata.description')}
             onClick={() => onSelectComponent(component)}
+            {...get(component, 'metadata')}
             {...previewProps}
           >
             <ShouldUpdate value={counter}>
