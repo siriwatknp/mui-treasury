@@ -16,6 +16,7 @@ import NewsCard02 from 'components/cards/NewsCard02';
 import ProjectCard01 from 'components/cards/ProjectCard01';
 import ReviewCard01 from 'components/cards/ReviewCard01';
 import RewardCard01 from 'components/cards/RewardCard01';
+import ElevatedCardHeader01 from '../../components/cards/ElevatedCardHeader01';
 
 const createTheme = theme => createMuiTheme(theme);
 const baseTheme = createMuiTheme();
@@ -55,6 +56,13 @@ const components = [
   {
     component: RewardCard01,
     render: () => <RewardCard01 />,
+    gridItemProps: {
+      lg: 6,
+    },
+  },
+  {
+    component: ElevatedCardHeader01,
+    render: () => <ElevatedCardHeader01 />,
     gridItemProps: {
       lg: 6,
     },
