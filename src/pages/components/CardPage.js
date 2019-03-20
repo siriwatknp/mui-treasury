@@ -1,5 +1,5 @@
-/* eslint-disable max-len,react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import merge from 'lodash/merge';
 import get from 'lodash/get';
 import Grid from '@material-ui/core/Grid';
@@ -110,7 +110,11 @@ const CardPage = ({ counter, globalTheme, onSelectComponent }) => (
   </Box>
 );
 
-CardPage.propTypes = {};
-CardPage.defaultProps = {};
+CardPage.propTypes = {
+  counter: PropTypes.number.isRequired,
+  globalTheme: PropTypes.shape({}).isRequired,
+  onSelectComponent: PropTypes.func.isRequired,
+};
+CardPage.components = components;
 
 export default CardPage;
