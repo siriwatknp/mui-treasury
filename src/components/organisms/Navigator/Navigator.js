@@ -5,8 +5,8 @@ import route from 'pages/components/.routes';
 import List from '@material-ui/core/List';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import Box from 'components/atoms/Box';
+import Text from 'components/atoms/Text';
 
 const introduction = [
   {
@@ -27,16 +27,22 @@ const introduction = [
 ];
 
 const Navigator = withRouter(({ onClickItem, location }) => {
-  const renderItem = item => (
+  const renderItem = (item, listItemProps) => (
     <ListItem
       key={item.id || item.path}
       button
       component={Link}
       to={item.path}
+      {...listItemProps}
       selected={location.pathname === item.path}
       onClick={onClickItem}
     >
-      <ListItemText>{item.primaryText}</ListItemText>
+      <Box>
+        <Text variant={'subtitle1'}>{item.primaryText}</Text>
+        <Text variant={'caption'} color={'grey.500'}>
+          {item.secondaryText}
+        </Text>
+      </Box>
     </ListItem>
   );
   return (

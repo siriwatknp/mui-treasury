@@ -1,5 +1,5 @@
-/* eslint-disable max-len,react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import merge from 'lodash/merge';
 import get from 'lodash/get';
 import Grid from '@material-ui/core/Grid';
@@ -47,7 +47,7 @@ const components = [
   },
 ];
 
-const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
+const TextFieldPage = ({ counter, globalTheme, onSelectComponent }) => (
   <Box
     width={'100%'}
     p={{
@@ -81,7 +81,11 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
   </Box>
 );
 
-ButtonPage.propTypes = {};
-ButtonPage.defaultProps = {};
+TextFieldPage.propTypes = {
+  counter: PropTypes.number.isRequired,
+  globalTheme: PropTypes.shape({}).isRequired,
+  onSelectComponent: PropTypes.func.isRequired,
+};
+TextFieldPage.components = components;
 
-export default ButtonPage;
+export default TextFieldPage;

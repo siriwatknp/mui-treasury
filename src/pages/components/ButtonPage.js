@@ -144,5 +144,6 @@ ButtonPage.propTypes = {
   globalTheme: PropTypes.shape({}).isRequired,
   onSelectComponent: PropTypes.func.isRequired,
 };
+ButtonPage.components = components;
 
 export default ButtonPage;
