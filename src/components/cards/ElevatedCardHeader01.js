@@ -62,54 +62,64 @@ const ElevatedCardHeader01 = () => (
   </Card>
 );
 
-ElevatedCardHeader01.getTheme = muiBaseTheme => ({
-  MuiCard: {
-    root: {
-      '&.MuiElevatedCard--01': {
-        borderRadius: muiBaseTheme.spacing.unit / 2,
-        transition: '0.3s',
-        boxShadow: '0px 14px 80px rgba(34, 35, 58, 0.2)',
-        position: 'relative',
-        width: '90%',
-        overflow: 'initial',
-        background: '#ffffff',
-        padding: `${muiBaseTheme.spacing.unit * 2}px 0`,
-        '& .MuiCardHeader-root': {
-          flexShrink: 0,
-          position: 'absolute',
-          top: '-40px',
-          right: '20px',
-          left: '20px',
+ElevatedCardHeader01.getTheme = muiBaseTheme => {
+  const offset = 40;
+  const cardShadow = '0px 14px 80px rgba(34, 35, 58, 0.2)';
+  const headerShadow = '4px 4px 20px 1px rgba(0, 0, 0, 0.2)';
+  return {
+    MuiCard: {
+      root: {
+        '&.MuiElevatedCard--01': {
+          marginTop: offset,
           borderRadius: muiBaseTheme.spacing.unit / 2,
-          backgroundColor: purple[500],
-          overflow: 'hidden',
-          boxShadow: '4px 4px 20px 1px rgba(0, 0, 0, 0.2)',
-          textAlign: 'left',
-          '& .MuiCardHeader-title': {
-            color: '#ffffff',
-            fontWeight: 900,
+          transition: '0.3s',
+          boxShadow: cardShadow,
+          position: 'relative',
+          width: '90%',
+          overflow: 'initial',
+          background: '#ffffff',
+          padding: `${muiBaseTheme.spacing.unit * 2}px 0`,
+          '& .MuiCardHeader-root': {
+            flexShrink: 0,
+            position: 'absolute',
+            top: -offset,
+            right: 20,
+            left: 20,
+            borderRadius: muiBaseTheme.spacing.unit / 2,
+            backgroundColor: purple[500],
+            overflow: 'hidden',
+            boxShadow: headerShadow,
+            textAlign: 'left',
+            '& .MuiCardHeader-title': {
+              color: '#ffffff',
+              fontWeight: 900,
+              letterSpacing: 1,
+            },
+            '& .MuiCardHeader-subheader': {
+              color: '#ffffff',
+              opacity: 0.87,
+              fontWeight: 200,
+              letterSpacing: 0.4,
+            },
           },
-          '& .MuiCardHeader-subheader': {
-            color: '#ffffff',
-          },
-        },
-        '& .MuiCardContent-root': {
-          textAlign: 'left',
-          '& .MuiCardContent-inner': {
-            paddingTop: '38px',
-            overflowX: 'auto',
+          '& .MuiCardContent-root': {
+            textAlign: 'left',
+            '& .MuiCardContent-inner': {
+              paddingTop: '38px',
+              overflowX: 'auto',
+            },
           },
         },
       },
     },
-  },
-});
+  };
+};
 
 ElevatedCardHeader01.metadata = {
   name: 'Elevated Card Header I',
   description: 'Wonderful elevated card header',
 };
 
-ElevatedCardHeader01.codeSandbox = 'https://codesandbox.io/s/94v9y3kwor';
+ElevatedCardHeader01.codeSandbox = 'https://codesandbox.io/s/5zjrl704wx';
 
 export default ElevatedCardHeader01;

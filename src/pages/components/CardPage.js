@@ -50,6 +50,7 @@ const components = [
     component: PostCard02,
     render: () => <PostCard02 />,
     gridItemProps: {
+      sm: 10,
       lg: 6,
     },
   },
@@ -57,6 +58,7 @@ const components = [
     component: RewardCard01,
     render: () => <RewardCard01 />,
     gridItemProps: {
+      sm: 10,
       lg: 6,
     },
   },
@@ -64,7 +66,9 @@ const components = [
     component: ElevatedCardHeader01,
     render: () => <ElevatedCardHeader01 />,
     gridItemProps: {
-      lg: 6,
+      sm: 12,
+      md: 10,
+      lg: 8,
     },
   },
 ];
