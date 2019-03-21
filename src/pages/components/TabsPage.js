@@ -11,6 +11,7 @@ import FirebaseTabs from 'components/tabs/FirebaseTabs';
 import InstagramTabs from 'components/tabs/InstagramTabs';
 import TwitterTabs from 'components/tabs/TwitterTabs';
 import TwitterIconTabs from 'components/tabs/TwitterIconTabs';
+import ElevatedTabs from 'components/tabs/ElevatedTabs';
 
 const createTheme = theme => createMuiTheme(theme);
 const baseTheme = createMuiTheme();
@@ -31,6 +32,10 @@ const components = [
   {
     component: TwitterIconTabs,
     render: () => <TwitterIconTabs />,
+  },
+  {
+    component: ElevatedTabs,
+    render: () => <ElevatedTabs />,
   },
 ];
 
