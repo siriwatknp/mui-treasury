@@ -30,6 +30,10 @@ const ElevatedCardHeader01 = () => (
       className={'MuiCardHeader-root'}
       title={'Desserts'}
       subheader={'Select your favourite'}
+      classes={{
+        title: 'MuiCardHeader-title',
+        subheader: 'MuiCardHeader-subheader',
+      }}
     />
     <CardContent className={'MuiCardContent-root'}>
       <div className={'MuiCardContent-inner'}>
@@ -80,6 +84,14 @@ ElevatedCardHeader01.getTheme = muiBaseTheme => ({
           backgroundColor: purple[500],
           overflow: 'hidden',
           boxShadow: '4px 4px 20px 1px rgba(0, 0, 0, 0.2)',
+          textAlign: 'left',
+          '& .MuiCardHeader-title': {
+            color: '#ffffff',
+            fontWeight: 900,
+          },
+          '& .MuiCardHeader-subheader': {
+            color: '#ffffff',
+          },
         },
         '& .MuiCardContent-root': {
           textAlign: 'left',
@@ -89,18 +101,6 @@ ElevatedCardHeader01.getTheme = muiBaseTheme => ({
           },
         },
       },
-    },
-  },
-  MuiCardHeader: {
-    root: {
-      textAlign: 'left',
-    },
-    title: {
-      color: '#FFFFFF',
-      fontWeight: 900,
-    },
-    subheader: {
-      color: '#FFFFFF',
     },
   },
 });
