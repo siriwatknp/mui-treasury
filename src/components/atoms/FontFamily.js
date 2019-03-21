@@ -66,9 +66,9 @@ class FontFamily extends React.Component {
                 ...provided,
                 zIndex: 1500,
                 maxWidth: '160px',
-                transform: 'translateY(-16px)',
+                top: 82,
                 '@media only screen and (max-width: 768px)': {
-                  right: 8,
+                  right: 16,
                 },
               }),
             }}
