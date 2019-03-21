@@ -32,6 +32,9 @@ const GlobalVarForm = ({ theme, onChange }) => (
           zIndex={1000}
           bgcolor={'common.white'}
           borderBottom={'1px solid #f5f5f5'}
+          css={{
+            position: '-webkit-sticky',
+          }}
         >
           <Box
             py={2}
@@ -40,9 +43,16 @@ const GlobalVarForm = ({ theme, onChange }) => (
               lg: 8,
             }}
             mx={'auto'}
-            css={{ overflow: 'scroll' }}
           >
-            <Grid container spacing={16} wrap={'nowrap'}>
+            <Grid
+              container
+              spacing={16}
+              wrap={'nowrap'}
+              style={{
+                overflow: 'scroll',
+                // '-webkit-overflow-scrolling': 'touch',
+              }}
+            >
               <Grid item style={{ flexShrink: 0 }}>
                 <InputColor
                   label={'Primary Color'}
