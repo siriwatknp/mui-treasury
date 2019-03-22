@@ -77,9 +77,11 @@ const PreviewWidget = ({
             </Box>
           )}
         </Box>
-        <IconButton onClick={onClick}>
-          <Icon>search</Icon>
-        </IconButton>
+        {onClick && (
+          <IconButton onClick={onClick}>
+            <Icon>search</Icon>
+          </IconButton>
+        )}
         <IconButton
           component={'a'}
           href={sandboxLink}
@@ -118,7 +120,7 @@ PreviewWidget.defaultProps = {
   active: false,
   description: '',
   children: null,
-  onClick: () => {},
+  onClick: undefined,
   contentProps: {},
   sandboxLink: '',
   libraries: undefined,

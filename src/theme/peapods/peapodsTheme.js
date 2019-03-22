@@ -1,5 +1,10 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import variables, { primary, muiBaseTheme, background } from './variables';
+import variables, {
+  primary,
+  secondary,
+  muiBaseTheme,
+  background,
+} from './variables';
 
 const req = require.context('./components', true, /.js$/);
 let overrides = {};
@@ -17,6 +22,7 @@ const theme = {
   },
   palette: {
     primary,
+    secondary,
     background,
   },
   shape: {
