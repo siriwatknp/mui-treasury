@@ -48,35 +48,27 @@ const components = [
 ];
 
 const PeapodsPage = () => (
-  <MuiThemeProvider theme={peapodsTheme}>
-    <Box
-      width={'100%'}
-      p={{
-        xs: 2,
-        sm: 4,
-      }}
-    >
-      <Grid container spacing={32}>
-        {components.map(({ component, render, previewProps }) => (
-          <Grid
-            key={get(component, 'metadata.name')}
-            item
-            xs={12}
-            sm={6}
-            lg={4}
+  <Box
+    width={'100%'}
+    p={{
+      xs: 2,
+      sm: 4,
+    }}
+  >
+    <Grid container spacing={32}>
+      {components.map(({ component, render, previewProps }) => (
+        <Grid key={get(component, 'metadata.name')} item xs={12} sm={6} lg={4}>
+          <PreviewWidget
+            sandboxLink={component.codeSandbox}
+            {...get(component, 'metadata')}
+            {...previewProps}
           >
-            <PreviewWidget
-              sandboxLink={component.codeSandbox}
-              {...get(component, 'metadata')}
-              {...previewProps}
-            >
-              {render()}
-            </PreviewWidget>
-          </Grid>
-        ))}
-      </Grid>
-    </Box>
-  </MuiThemeProvider>
+            <MuiThemeProvider theme={peapodsTheme}>{render()}</MuiThemeProvider>
+          </PreviewWidget>
+        </Grid>
+      ))}
+    </Grid>
+  </Box>
 );
 
 // Do not remove this line

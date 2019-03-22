@@ -37,6 +37,7 @@ PeaIcon.defaultProps = {
 };
 PeaIcon.metadata = {
   name: 'Pea Icon',
+  libraries: [{ text: 'FontAwesome', link: '' }],
 };
 PeaIcon.codeSandbox = 'https://codesandbox.io/s/2vk8l2j2wn';
 
