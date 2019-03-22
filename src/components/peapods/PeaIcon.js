@@ -1,5 +1,5 @@
 import React from 'react';
-import cx from 'classnames';
+import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import Icon from '@material-ui/core/Icon';
 
@@ -13,7 +13,7 @@ const PeaIcon = ({
   ...props
 }) => (
   <Icon
-    className={cx(className, circular && 'circular', color, light && 'light')}
+    className={clsx(className, circular && 'circular', color, light && 'light')}
     {...props}
   >
     {icon.includes('fa') ? <i className={icon} {...fontAwesomeProps} /> : icon}
@@ -37,7 +37,7 @@ PeaIcon.defaultProps = {
 };
 PeaIcon.metadata = {
   name: 'Pea Icon',
-  libraries: [{ text: 'FontAwesome', link: '' }],
+  libraries: [{ text: 'FontAwesome', link: 'https://fontawesome.com/icons' }],
 };
 PeaIcon.codeSandbox = 'https://codesandbox.io/s/2vk8l2j2wn';
 

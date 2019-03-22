@@ -3,7 +3,7 @@ export default ({ muiBaseTheme }) => ({
     root: {
       borderRadius: 100,
       minWidth: 160,
-      minHeight: 48,
+      minHeight: 44,
       '& span:not(.material-icons)': {
         margin: 'auto',
       },

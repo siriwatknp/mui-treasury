@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import get from 'lodash/get';
 import Grid from '@material-ui/core/Grid';
@@ -7,12 +8,15 @@ import { PreviewWidget } from 'components/molecules';
 import peapodsTheme from 'theme/peapods';
 import PeaButton from 'components/peapods/PeaButton';
 import PeaIcon from 'components/peapods/PeaIcon';
+import PeaAvatar from 'components/peapods/PeaAvatar';
 
+const AVATAR =
+  'https://i.pinimg.com/originals/0a/dd/87/0add874e1ea0676c4365b2dd7ddd32e3.jpg';
 const components = [
   {
     component: PeaButton,
     render: () => (
-      <Box css={{ '& button': { marginTop: 8, marginLeft: 16 } }}>
+      <Box css={{ '& button': { marginTop: 8, marginLeft: 8 } }}>
         <PeaButton color={'primary'}>Default</PeaButton>
         <PeaButton variant={'outlined'} color={'primary'}>
           Outlined
@@ -42,6 +46,28 @@ const components = [
         <PeaIcon icon={'add'} />
         <PeaIcon icon={'fab fa-facebook-f'} color={'white'} circular />
         <PeaIcon icon={'add'} light circular />
+      </Box>
+    ),
+  },
+  {
+    component: PeaAvatar,
+    render: () => (
+      <Box flex={1} {...Box.alignCenter} justifyContent={'space-evenly'}>
+        <PeaAvatar src={AVATAR} size={'small'} />
+        <PeaAvatar src={AVATAR} />
+        <PeaAvatar src={AVATAR} size={'large'} />
+        <PeaAvatar src={AVATAR} size={'huge'} />
+      </Box>
+    ),
+  },
+  {
+    component: PeaAvatar.Group,
+    render: () => (
+      <Box flex={1} {...Box.alignCenter} justifyContent={'space-evenly'}>
+        <PeaAvatar.Group
+          more={12}
+          images={[AVATAR, AVATAR, AVATAR, AVATAR, AVATAR]}
+        />
       </Box>
     ),
   },
