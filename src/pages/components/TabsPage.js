@@ -12,6 +12,7 @@ import InstagramTabs from 'components/tabs/InstagramTabs';
 import TwitterTabs from 'components/tabs/TwitterTabs';
 import TwitterIconTabs from 'components/tabs/TwitterIconTabs';
 import ElevatedTabs from 'components/tabs/ElevatedTabs';
+import PillsTabs from '../../components/tabs/PillsTabs';
 
 const createTheme = theme => createMuiTheme(theme);
 const baseTheme = createMuiTheme();
@@ -36,6 +37,10 @@ const components = [
   {
     component: ElevatedTabs,
     render: () => <ElevatedTabs />,
+  },
+  {
+    component: PillsTabs,
+    render: () => <PillsTabs />,
   },
 ];
 
