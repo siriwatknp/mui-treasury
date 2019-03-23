@@ -22,15 +22,20 @@ export const shade = {
 
 export const red = {
   main: '#ff5252',
-  dark: '#e04848',
+  light: '#ff867f',
+  dark: '#c50e29',
 };
 
 export const primary = {
   main: '#1CE4A6',
+  dark: '#00b177',
+  light: '#6cffd8',
 };
 
 export const secondary = {
   main: '#029EFD',
+  light: '#69cfff',
+  dark: '#0070c9',
 };
 
 export const linked = {

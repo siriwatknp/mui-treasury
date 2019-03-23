@@ -9,6 +9,13 @@ import peapodsTheme from 'theme/peapods';
 import PeaButton from 'components/peapods/PeaButton';
 import PeaIcon from 'components/peapods/PeaIcon';
 import PeaAvatar from 'components/peapods/PeaAvatar';
+import PeaMenuItem from 'components/peapods/PeaMenuItem';
+import PeaStatistic from 'components/peapods/PeaStatistic';
+import PeaTag from 'components/peapods/PeaTag';
+import PeaSearchInput from 'components/peapods/PeaSearchInput';
+import PeaTabs from 'components/peapods/PeaTabs';
+import PeaTextField from 'components/peapods/PeaTextField';
+import PeaTextArea from 'components/peapods/PeaTextArea';
 
 const AVATAR =
   'https://i.pinimg.com/originals/0a/dd/87/0add874e1ea0676c4365b2dd7ddd32e3.jpg';
@@ -70,6 +77,57 @@ const components = [
         />
       </Box>
     ),
+  },
+  {
+    component: PeaMenuItem,
+    render: () => <PeaMenuItem icon={'mail'} label={'Messages'} />,
+  },
+  {
+    component: PeaStatistic,
+    render: () => (
+      <Box flex={1} {...Box.alignCenter} justifyContent={'space-evenly'}>
+        <PeaStatistic label={'Pods'} value={2} />
+        <PeaStatistic label={'Following'} value={48} />
+        <PeaStatistic label={'Followers'} value={5} />
+      </Box>
+    ),
+  },
+  {
+    component: PeaTag,
+    render: () => <PeaTag src={AVATAR} label={'Invited by @Markz'} />,
+    previewProps: {
+      white: true,
+    },
+  },
+  {
+    component: PeaSearchInput,
+    render: () => <PeaSearchInput fullWidth placeholder={'Search events...'} />,
+    previewProps: {
+      white: true,
+    },
+  },
+  {
+    component: PeaTabs,
+    render: () => <PeaTabs />,
+  },
+  {
+    component: PeaTextField,
+    render: () => (
+      <Box>
+        <PeaTextField />
+      </Box>
+    ),
+  },
+  {
+    component: PeaTextArea,
+    render: () => (
+      <Box>
+        <PeaTextArea />
+      </Box>
+    ),
+    previewProps: {
+      white: true,
+    },
   },
 ];
 

@@ -50,7 +50,7 @@ PeaAvatar.defaultProps = {
 PeaAvatar.metadata = {
   name: 'Pea Avatar',
 };
-PeaAvatar.codeSandbox = 'https://codesandbox.io/s/2vk8l2j2wn';
+PeaAvatar.codeSandbox = '';
 
 const Group = ({ more, images, avatarProps, ...props }) => (
   <Box
@@ -88,7 +88,7 @@ Group.defaultProps = {
 Group.metadata = {
   name: 'Pea Avatar Group',
 };
-Group.codeSandbox = 'https://codesandbox.io/s/2vk8l2j2wn';
+Group.codeSandbox = '';
 
 PeaAvatar.Group = Group;
 

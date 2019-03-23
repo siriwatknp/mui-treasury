@@ -14,6 +14,7 @@ const PeaIcon = ({
 }) => (
   <Icon
     className={clsx(className, circular && 'circular', color, light && 'light')}
+    color={color}
     {...props}
   >
     {icon.includes('fa') ? <i className={icon} {...fontAwesomeProps} /> : icon}
@@ -39,6 +40,6 @@ PeaIcon.metadata = {
   name: 'Pea Icon',
   libraries: [{ text: 'FontAwesome', link: 'https://fontawesome.com/icons' }],
 };
-PeaIcon.codeSandbox = 'https://codesandbox.io/s/2vk8l2j2wn';
+PeaIcon.codeSandbox = '';
 
 export default PeaIcon;
