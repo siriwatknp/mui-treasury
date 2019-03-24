@@ -3,8 +3,8 @@ import React from 'react';
 import get from 'lodash/get';
 import Grid from '@material-ui/core/Grid';
 import { MuiThemeProvider } from '@material-ui/core/styles';
-import { Box } from 'components/atoms';
-import { PreviewWidget } from 'components/molecules';
+import Box from 'components/atoms/Box';
+import PreviewWidget from 'components/molecules/PreviewWidget';
 import peapodsTheme from 'theme/peapods';
 import PeaButton from 'components/peapods/PeaButton';
 import PeaIcon from 'components/peapods/PeaIcon';
@@ -49,7 +49,7 @@ const components = [
     component: PeaIcon,
     render: () => (
       <Box flex={1} {...Box.alignCenter} justifyContent={'space-evenly'}>
-        <PeaIcon icon={'far fa-home'} />
+        <PeaIcon icon={'fas fa-home'} />
         <PeaIcon icon={'add'} />
         <PeaIcon icon={'fab fa-facebook-f'} color={'white'} circular />
         <PeaIcon icon={'add'} light circular />

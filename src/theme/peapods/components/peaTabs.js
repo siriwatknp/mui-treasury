@@ -1,6 +1,6 @@
 import Color from 'color';
 
-export default ({ muiBaseTheme, primary, secondary }) => ({
+export default ({ breakpoints, primary, secondary }) => ({
   MuiTabs: {
     root: {
       width: '100%',
@@ -14,7 +14,7 @@ export default ({ muiBaseTheme, primary, secondary }) => ({
     root: {
       minHeight: 53,
       minWidth: 0,
-      [muiBaseTheme.breakpoints.up('md')]: {
+      [breakpoints.up('md')]: {
         minWidth: 0,
       },
       '&:hover': {
@@ -42,7 +42,7 @@ export default ({ muiBaseTheme, primary, secondary }) => ({
     labelContainer: {
       width: '100%',
       padding: 15,
-      [muiBaseTheme.breakpoints.up('md')]: {
+      [breakpoints.up('md')]: {
         padding: 15,
       },
     },

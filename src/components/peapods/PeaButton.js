@@ -6,6 +6,6 @@ const PeaButton = props => <Button {...props} />;
 PeaButton.metadata = {
   name: 'Pea Button',
 };
-PeaButton.codeSandbox = '';
+PeaButton.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 
 export default PeaButton;

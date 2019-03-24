@@ -13,6 +13,6 @@ const PeaSearchInput = props => (
 PeaSearchInput.metadata = {
   name: 'Pea Search Input',
 };
-PeaSearchInput.codeSandbox = '';
+PeaSearchInput.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 
 export default PeaSearchInput;

@@ -46,7 +46,6 @@ const PeaStatistic = ({
 
 PeaStatistic.propTypes = {
   className: PropTypes.string,
-  icon: PropTypes.string.isRequired,
   classes: PropTypes.shape({}).isRequired,
   label: PropTypes.string,
   labelProps: PropTypes.shape({}),
@@ -63,6 +62,6 @@ PeaStatistic.defaultProps = {
 PeaStatistic.metadata = {
   name: 'Pea Statistic',
 };
-PeaStatistic.codeSandbox = '';
+PeaStatistic.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 
 export default withStyles(styles, { name: 'PeaStatistic' })(PeaStatistic);

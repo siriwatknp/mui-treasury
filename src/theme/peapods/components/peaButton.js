@@ -1,4 +1,4 @@
-export default ({ muiBaseTheme }) => ({
+export default ({ palette, shadows }) => ({
   MuiButton: {
     root: {
       borderRadius: 100,
@@ -20,16 +20,16 @@ export default ({ muiBaseTheme }) => ({
       borderWidth: 2,
     },
     outlinedPrimary: {
-      color: muiBaseTheme.palette.text.secondary,
+      color: palette.text.secondary,
       borderWidth: '2px !important',
     },
     contained: {
       boxShadow: 'none',
       '&$focusVisible': {
-        boxShadow: muiBaseTheme.shadows[0],
+        boxShadow: shadows[0],
       },
       '&:active': {
-        boxShadow: muiBaseTheme.shadows[0],
+        boxShadow: shadows[0],
       },
       '& svg, .material-icons': {
         '&:first-child': {
@@ -41,7 +41,7 @@ export default ({ muiBaseTheme }) => ({
       },
     },
     containedPrimary: {
-      color: muiBaseTheme.palette.common.white,
+      color: palette.common.white,
     },
   },
 });

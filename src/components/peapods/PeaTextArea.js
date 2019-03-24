@@ -64,6 +64,6 @@ const PeaTextArea = props => (
 PeaTextArea.metadata = {
   name: 'Pea Textarea',
 };
-PeaTextArea.codeSandbox = '';
+PeaTextArea.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 
 export default PeaTextArea;

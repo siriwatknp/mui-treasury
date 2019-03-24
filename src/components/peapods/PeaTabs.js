@@ -27,6 +27,6 @@ const PeaTabs = () => {
 PeaTabs.metadata = {
   name: 'Pea Tabs',
 };
-PeaTabs.codeSandbox = '';
+PeaTabs.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 
 export default PeaTabs;

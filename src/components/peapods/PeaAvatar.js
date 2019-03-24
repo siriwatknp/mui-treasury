@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
@@ -50,7 +51,7 @@ PeaAvatar.defaultProps = {
 PeaAvatar.metadata = {
   name: 'Pea Avatar',
 };
-PeaAvatar.codeSandbox = '';
+PeaAvatar.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 
 const Group = ({ more, images, avatarProps, ...props }) => (
   <Box
@@ -59,7 +60,6 @@ const Group = ({ more, images, avatarProps, ...props }) => (
       '& .MuiAvatar-root:not(:first-child)': { marginLeft: -8 },
       '& .MuiAvatar-root': {
         border: '2px solid #ffffff',
-        '&:first-child': { border: 'none' },
       },
       '& .MuiAvatar--more': { marginLeft: -8 },
     }}
@@ -67,7 +67,7 @@ const Group = ({ more, images, avatarProps, ...props }) => (
   >
     {images.map((img, index) => (
       <PeaAvatar
-        key={img}
+        key={`${img}-${index}`}
         {...avatarProps}
         src={img}
         more={index === images.length - 1 ? more : undefined}
@@ -88,7 +88,7 @@ Group.defaultProps = {
 Group.metadata = {
   name: 'Pea Avatar Group',
 };
-Group.codeSandbox = '';
+Group.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 
 PeaAvatar.Group = Group;
 

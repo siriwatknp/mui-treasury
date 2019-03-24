@@ -1,5 +1,5 @@
-export default ({ muiBaseTheme }) => {
-  const { white } = muiBaseTheme.palette.common;
+export default ({ palette }) => {
+  const { white } = palette.common;
   const props = {
     display: 'inline-flex',
     justifyContent: 'center',

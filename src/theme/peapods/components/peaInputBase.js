@@ -1,10 +1,10 @@
-export default ({ muiBaseTheme }) => {
+export default ({ palette, spacing }) => {
   // ATTENTION!
   // you can customize some important variables here!!
-  const backgroundColor = muiBaseTheme.palette.grey[100];
-  const space = muiBaseTheme.spacing.unit; // default = 8;
+  const backgroundColor = palette.grey[100];
+  const space = spacing.unit; // default = 8;
   const borderRadius = 100;
-  const iconColor = muiBaseTheme.palette.grey[500];
+  const iconColor = palette.grey[500];
   // end of variables
   return {
     MuiInputBase: {

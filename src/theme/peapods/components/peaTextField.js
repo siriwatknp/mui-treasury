@@ -1,9 +1,16 @@
 import Color from 'color';
 
-export default ({ muiBaseTheme, secondary, red }) => {
-  const space = muiBaseTheme.spacing.unit; // default = 8;
+export default ({
+  palette,
+  transitions,
+  spacing,
+  typography,
+  secondary,
+  red,
+}) => {
+  const space = spacing.unit; // default = 8;
   const labelColor = secondary.main;
-  const { fontFamily } = muiBaseTheme.typography;
+  const { fontFamily } = typography;
   const helperTextColor = '#6c757d';
   const errorColor = '#dc3545';
   const inputFontSize = 16;
@@ -47,14 +54,11 @@ export default ({ muiBaseTheme, secondary, red }) => {
           '& .PeaInput-input': {
             borderRadius: inputBorderRadius,
             position: 'relative',
-            backgroundColor: muiBaseTheme.palette.grey[100],
+            backgroundColor: palette.grey[100],
             fontSize: inputFontSize,
             width: 'auto',
             padding: inputPadding,
-            transition: muiBaseTheme.transitions.create([
-              'border-color',
-              'box-shadow',
-            ]),
+            transition: transitions.create(['border-color', 'box-shadow']),
             // Use the system font instead of the default Roboto font.
             fontFamily,
           },

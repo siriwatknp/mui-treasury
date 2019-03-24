@@ -55,6 +55,6 @@ PeaMenuItem.defaultProps = {
 PeaMenuItem.metadata = {
   name: 'Pea Menu Item',
 };
-PeaMenuItem.codeSandbox = '';
+PeaMenuItem.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 
 export default withStyles(styles, { name: 'PeaMenuItem' })(PeaMenuItem);

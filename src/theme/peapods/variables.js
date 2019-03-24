@@ -2,8 +2,6 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme();
 
-export const muiBaseTheme = theme;
-
 export const white = {
   text: '#ffffff',
   primary: 'rgba(255, 255, 255, 0.7)',
@@ -38,33 +36,24 @@ export const secondary = {
   dark: '#0070c9',
 };
 
-export const linked = {
-  cursor: 'pointer',
-  color: primary.main,
-  display: 'inline-block',
-};
-
-export const linkInverted = {
-  ...linked,
-  color: white.primary,
-  '&:hover': {
-    color: theme.palette.common.white,
-  },
-};
-
 export const borderColor = {
   default: theme.palette.grey[200],
 };
 
-export default {
+export default createMuiTheme({
+  palette: {
+    primary,
+    secondary,
+    background,
+  },
+  shape: {
+    borderRadius: 8,
+  },
   background,
   borderColor,
-  muiBaseTheme,
   primary,
   secondary,
   red,
   shade,
-  linked,
-  linkInverted,
   white,
-};
+});

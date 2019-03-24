@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 import Chip from '@material-ui/core/Chip';
 import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
-import { Box, Text } from 'components/atoms';
+import Box from 'components/atoms/Box';
+import Text from 'components/atoms/Text';
 
 const Image = styled('img')({
   width: 24,

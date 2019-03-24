@@ -1,12 +1,12 @@
 import Color from 'color';
 
-export default ({ muiBaseTheme, primary }) => ({
+export default ({ shape, primary }) => ({
   MuiChip: {
     root: {
       '&.PeaTag-root': {
         height: 40,
         padding: '4px 8px',
-        borderRadius: muiBaseTheme.shape.borderRadius * 2,
+        borderRadius: shape.borderRadius * 2,
         backgroundColor: Color(primary.main)
           .fade(0.75)
           .string(),

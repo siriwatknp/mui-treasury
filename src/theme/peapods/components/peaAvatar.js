@@ -1,7 +1,7 @@
-export default ({ muiBaseTheme }) => {
+export default ({ spacing }) => {
   const createSize = value => ({
-    width: value * muiBaseTheme.spacing.unit,
-    height: value * muiBaseTheme.spacing.unit,
+    width: value * spacing.unit,
+    height: value * spacing.unit,
   });
   return {
     MuiAvatar: {

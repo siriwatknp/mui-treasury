@@ -1,7 +1,7 @@
-export default ({ muiBaseTheme }) => ({
+export default ({ palette }) => ({
   MuiBadge: {
     badge: {
-      boxShadow: `0 0 12px 0 ${muiBaseTheme.palette.error.main}`,
+      boxShadow: `0 0 12px 0 ${palette.error.main}`,
     },
   },
 });
