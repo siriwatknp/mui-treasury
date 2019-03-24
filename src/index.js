@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import JssProvider from 'react-jss/lib/JssProvider';
 import {
-  createMuiTheme,
   MuiThemeProvider,
   createGenerateClassName,
 } from '@material-ui/core/styles';
@@ -20,8 +19,8 @@ const generateClassName = createGenerateClassName({
 const render = Component => {
   ReactDOM.render(
     <JssProvider generateClassName={generateClassName}>
-      <MuiThemeProvider theme={createMuiTheme(treasuryTheme)}>
-        <ThemeProvider theme={createMuiTheme(treasuryTheme)}>
+      <MuiThemeProvider theme={treasuryTheme}>
+        <ThemeProvider theme={treasuryTheme}>
           <Router>
             <Component />
           </Router>
