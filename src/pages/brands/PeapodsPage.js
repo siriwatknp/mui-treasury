@@ -1,7 +1,8 @@
 /* eslint-disable max-len */
-import React from 'react';
+import React, { useState } from 'react';
 import get from 'lodash/get';
 import Grid from '@material-ui/core/Grid';
+import MenuItem from '@material-ui/core/MenuItem';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import Box from 'components/atoms/Box';
 import PreviewWidget from 'components/molecules/PreviewWidget';
@@ -16,6 +17,14 @@ import PeaSearchInput from 'components/peapods/PeaSearchInput';
 import PeaTabs from 'components/peapods/PeaTabs';
 import PeaTextField from 'components/peapods/PeaTextField';
 import PeaTextArea from 'components/peapods/PeaTextArea';
+import PeaRadio from 'components/peapods/PeaRadio';
+import PeaRadioGroup from 'components/peapods/PeaRadioGroup';
+import PeaSwitch from 'components/peapods/PeaSwitch';
+
+const PeaSelect = props => <PeaTextField {...props} />;
+PeaSelect.metadata = {
+  name: 'Pea Select',
+};
 
 const AVATAR =
   'https://i.pinimg.com/originals/0a/dd/87/0add874e1ea0676c4365b2dd7ddd32e3.jpg';
@@ -128,6 +137,46 @@ const components = [
     previewProps: {
       white: true,
     },
+  },
+  {
+    component: PeaSelect,
+    render: () => {
+      const [value, onChange] = useState(0);
+      return (
+        <Box width={'75%'}>
+          <PeaSelect
+            select
+            label={'Sort By'}
+            value={value || ''}
+            onChange={e => onChange(e.target.value)}
+          >
+            <MenuItem value={1}>Popular</MenuItem>
+            <MenuItem value={2}>Newest</MenuItem>
+          </PeaSelect>
+        </Box>
+      );
+    },
+  },
+  {
+    component: PeaRadio,
+    render: () => (
+      <Box flex={1} {...Box.alignCenter} justifyContent={'space-evenly'}>
+        <PeaRadio checked={false} />
+        <PeaRadio checked />
+      </Box>
+    ),
+  },
+  {
+    component: PeaRadioGroup,
+    render: () => (
+      <Box>
+        <PeaRadioGroup />
+      </Box>
+    ),
+  },
+  {
+    component: PeaSwitch,
+    render: () => <PeaSwitch />,
   },
 ];
 
