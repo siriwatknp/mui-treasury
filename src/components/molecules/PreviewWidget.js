@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 import Chip from '@material-ui/core/Chip';
 import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
-import { Box, Text } from 'components/atoms';
+import Box from 'components/atoms/Box';
+import Text from 'components/atoms/Text';
 
 const Image = styled('img')({
   width: 24,
@@ -77,24 +78,28 @@ const PreviewWidget = ({
             </Box>
           )}
         </Box>
-        <IconButton onClick={onClick}>
-          <Icon>search</Icon>
-        </IconButton>
-        <IconButton
-          component={'a'}
-          href={sandboxLink}
-          target={'_blank'}
-          onClick={e => {
-            e.stopPropagation();
-          }}
-        >
-          <Image
-            alt={'code-sandbox'}
-            src={
-              'https://camo.githubusercontent.com/237fa1e304ff8d669572cf96784308c87975d149/687474703a2f2f63646e2e656d6265642e6c792f70726f7669646572732f6c6f676f732f636f646573616e64626f782e706e67'
-            }
-          />
-        </IconButton>
+        {onClick && (
+          <IconButton onClick={onClick}>
+            <Icon>search</Icon>
+          </IconButton>
+        )}
+        {sandboxLink && (
+          <IconButton
+            component={'a'}
+            href={sandboxLink}
+            target={'_blank'}
+            onClick={e => {
+              e.stopPropagation();
+            }}
+          >
+            <Image
+              alt={'code-sandbox'}
+              src={
+                'https://camo.githubusercontent.com/237fa1e304ff8d669572cf96784308c87975d149/687474703a2f2f63646e2e656d6265642e6c792f70726f7669646572732f6c6f676f732f636f646573616e64626f782e706e67'
+              }
+            />
+          </IconButton>
+        )}
       </Box>
     </Box>
   );
@@ -118,7 +123,7 @@ PreviewWidget.defaultProps = {
   active: false,
   description: '',
   children: null,
-  onClick: () => {},
+  onClick: undefined,
   contentProps: {},
   sandboxLink: '',
   libraries: undefined,

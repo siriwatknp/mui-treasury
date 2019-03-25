@@ -21,6 +21,7 @@ import logo from 'assets/images/logo.png';
 // PAGES
 import HomePage from 'pages/HomePage';
 import RootComponentPage from 'pages/RootComponentPage';
+import RootBrandPage from 'pages/RootBrandPage';
 import InstructionPage from 'pages/InstructionPage';
 import ContributePage from 'pages/ContributePage';
 
@@ -114,6 +115,7 @@ class App extends React.Component {
                 path={'/components/*'}
                 component={RootComponentPage}
               />
+              <Route exact path={'/brands/*'} component={RootBrandPage} />
             </Switch>
           </Box>
         </Div100vh>

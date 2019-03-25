@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import route from 'pages/components/.routes';
+import brandRoute from 'pages/brands/.brandRoutes';
 import List from '@material-ui/core/List';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItem from '@material-ui/core/ListItem';
 import Box from 'components/atoms/Box';
@@ -37,12 +39,11 @@ const Navigator = withRouter(({ onClickItem, location }) => {
       selected={location.pathname === item.path}
       onClick={onClickItem}
     >
-      <Box>
-        <Text variant={'subtitle1'}>{item.primaryText}</Text>
-        <Text variant={'caption'} color={'grey.500'}>
-          {item.secondaryText}
-        </Text>
-      </Box>
+      {item.icon && <ListItemIcon>{item.icon}</ListItemIcon>}
+      <Text variant={'subtitle1'}>{item.primaryText}</Text>
+      <Text variant={'caption'} color={'grey.500'} ml={'auto'} mt={0.25}>
+        {item.secondaryText}
+      </Text>
     </ListItem>
   );
   return (
@@ -52,6 +53,9 @@ const Navigator = withRouter(({ onClickItem, location }) => {
       </List>
       <List subheader={<ListSubheader>Components</ListSubheader>}>
         {route.map(renderItem)}
+      </List>
+      <List subheader={<ListSubheader>Brands</ListSubheader>}>
+        {brandRoute.map(renderItem)}
       </List>
     </Box>
   );
