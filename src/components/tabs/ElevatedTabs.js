@@ -21,45 +21,55 @@ const ElevatedTabs = () => {
   );
 };
 
-ElevatedTabs.getTheme = muiBaseTheme => ({
-  MuiTabs: {
-    root: {
-      width: '100%',
-      borderRadius: muiBaseTheme.spacing.unit,
-      background: 'linear-gradient(60deg, #ab47bc, #8e24aa)',
-      padding: 10,
-      boxShadow: '0px 3px 15px rgba(34, 35, 58, 0.5)',
-    },
-    indicator: {
-      height: '100%',
-      borderRadius: muiBaseTheme.spacing.unit,
-      backgroundColor: 'rgba(255, 255, 255, .2)',
-    },
-  },
-  MuiTab: {
-    root: {
-      textTransform: 'initial',
-      margin: `0 ${muiBaseTheme.spacing.unit * 2}px`,
-      minWidth: 0,
-      [muiBaseTheme.breakpoints.up('md')]: {
-        minWidth: 0,
+ElevatedTabs.getTheme = theme => {
+  const tabsBackground = 'linear-gradient(60deg, #ab47bc, #8e24aa)';
+  const indicatorBackground = 'rgba(255, 255, 255, .2)';
+  const borderRadius = theme.spacing.unit;
+  const tabsGutter = theme.spacing.unit * 2;
+  const labelColor = '#ffffff';
+
+  return {
+    MuiTabs: {
+      root: {
+        width: '100%',
+        borderRadius: theme.spacing.unit,
+        background: tabsBackground,
+        padding: 10,
+        boxShadow: '0px 3px 15px rgba(34, 35, 58, 0.5)',
+      },
+      indicator: {
+        height: '100%',
+        borderRadius,
+        backgroundColor: indicatorBackground,
       },
     },
-    label: {
-      fontWeight: 'normal',
-      letterSpacing: 0.5,
-      color: '#ffffff',
+    MuiTab: {
+      root: {
+        textTransform: 'initial',
+        margin: `0 ${tabsGutter}px`,
+        minWidth: 0,
+        [theme.breakpoints.up('md')]: {
+          minWidth: 0,
+        },
+      },
+      label: {
+        fontWeight: 'normal',
+        letterSpacing: 0.5,
+        color: labelColor,
+      },
+      labelContainer: {
+        paddingLeft: 10,
+        paddingRight: 10,
+      },
     },
-    labelContainer: {
-      paddingLeft: 10,
-      paddingRight: 10,
-    },
-  },
-});
+  };
+};
+
 ElevatedTabs.metadata = {
   name: 'Elevated Tabs',
   description: 'implement custom theme with elevated tabs',
 };
+
 ElevatedTabs.codeSandbox = 'https://codesandbox.io/s/vmzjw3o5l5';
 
 export default ElevatedTabs;
