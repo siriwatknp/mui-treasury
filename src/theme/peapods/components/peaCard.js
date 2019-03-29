@@ -1,4 +1,4 @@
-export default ({ spacing, palette }) => ({
+export default ({ spacing, palette, typography }) => ({
   MuiCard: {
     root: {
       '&.PeaEventCard-root': {
@@ -13,6 +13,7 @@ export default ({ spacing, palette }) => ({
           paddingTop: '56.25%',
           position: 'relative',
           '& .MuiCardTag-root': {
+            fontFamily: typography.fontFamily,
             display: 'flex',
             alignItems: 'center',
             position: 'absolute',
