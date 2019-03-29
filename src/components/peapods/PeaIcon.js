@@ -18,37 +18,61 @@ const injectColor = color => {
 };
 
 const PeaIcon = ({
+  size,
   icon,
+  children,
   light,
   circular,
   color,
+  bgColor,
   className,
   fontAwesomeProps,
   ...props
-}) => (
-  <Icon
-    className={clsx(className, circular && 'circular', color, light && 'light')}
-    color={injectColor(color)}
-    {...props}
-  >
-    {icon.includes('fa') ? <i className={icon} {...fontAwesomeProps} /> : icon}
-  </Icon>
-);
+}) => {
+  const mainIcon = children || icon;
+  return (
+    <Icon
+      className={clsx(
+        className,
+        circular && 'PeaIcon--circular',
+        color,
+        bgColor && `PeaIcon--bg-${bgColor}`,
+        light && 'PeaIcon--light',
+        size && `PeaIcon--${size}`,
+      )}
+      color={injectColor(color)}
+      {...props}
+    >
+      {mainIcon.includes('fa') ? (
+        <i className={mainIcon} {...fontAwesomeProps} />
+      ) : (
+        mainIcon
+      )}
+    </Icon>
+  );
+};
 
 PeaIcon.propTypes = {
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.string,
+  children: PropTypes.node,
   fontAwesomeProps: PropTypes.shape({}),
   className: PropTypes.string,
   light: PropTypes.bool,
   circular: PropTypes.bool,
   color: PropTypes.string,
+  bgColor: PropTypes.string,
+  size: PropTypes.oneOf(['small', 'big']),
 };
 PeaIcon.defaultProps = {
   fontAwesomeProps: {},
+  children: null,
   className: '',
   light: false,
   circular: false,
   color: '',
+  icon: '',
+  size: undefined,
+  bgColor: '',
 };
 PeaIcon.metadata = {
   name: 'Pea Icon',

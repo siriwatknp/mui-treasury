@@ -20,6 +20,7 @@ export default ({
   return {
     MuiFormControl: {
       root: {
+        textAlign: 'left',
         '&.PeaFormControl-root': {
           '&.PeaFormControl-error': {
             '& textarea': {
@@ -75,9 +76,11 @@ export default ({
     MuiInputLabel: {
       root: {
         fontWeight: 500,
+        color: palette.text.secondary,
       },
       shrink: {
         transform: 'translate(0, 1.5px) scale(0.87)',
+        color: secondary.main,
       },
     },
     MuiInput: {
@@ -92,13 +95,5 @@ export default ({
         },
       },
     },
-    MuiFormLabel: {
-      root: {
-        '&$focused': {
-          color: secondary.main,
-        },
-      },
-    },
-    MuiFilledInput: {},
   };
 };

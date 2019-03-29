@@ -6,7 +6,7 @@ export default ({ shape, primary }) => ({
       '&.PeaTag-root': {
         height: 40,
         padding: '4px 8px',
-        borderRadius: shape.borderRadius * 2,
+        borderRadius: shape.borderRadius,
         backgroundColor: Color(primary.main)
           .fade(0.75)
           .string(),

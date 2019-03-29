@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 const PeaAvatar = ({ size, more, ...props }) =>
   more ? (
     <Box
+      display={'flex'}
       className={clsx(more && 'MuiAvatar--more')}
       position={'relative'}
       css={{
@@ -42,7 +43,7 @@ const PeaAvatar = ({ size, more, ...props }) =>
 
 PeaAvatar.propTypes = {
   more: PropTypes.number,
-  size: PropTypes.oneOf(['small', 'large', 'huge']),
+  size: PropTypes.oneOf(['small', 'big', 'large', 'huge']),
 };
 PeaAvatar.defaultProps = {
   more: undefined,
