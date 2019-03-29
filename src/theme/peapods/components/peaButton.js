@@ -4,8 +4,22 @@ export default ({ palette, shadows }) => ({
       borderRadius: 100,
       minWidth: 160,
       minHeight: 44,
+      color: palette.text.secondary,
       '& span:not(.material-icons)': {
         margin: 'auto',
+      },
+      '&.MuiButton--auto': {
+        minWidth: 'auto',
+      },
+    },
+    sizeSmall: {
+      minHeight: 32,
+      padding: '4px 12px',
+      '& .material-icons:first-child': {
+        marginRight: 4,
+      },
+      '& .material-icons:last-child': {
+        marginLeft: 4,
       },
     },
     text: {

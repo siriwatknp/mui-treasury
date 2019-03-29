@@ -9,8 +9,11 @@ export default ({ spacing }) => {
         '&.MuiAvatar--small': {
           ...createSize(4),
         },
+        '&.MuiAvatar--big': {
+          ...createSize(6),
+        },
         '&.MuiAvatar--large': {
-          ...createSize(9),
+          ...createSize(10),
         },
         '&.MuiAvatar--huge': {
           ...createSize(14),

@@ -8,21 +8,27 @@ export default ({ palette }) => {
       maxHeight: '0.875em',
       maxWidth: '0.875em',
     },
-    '&.circular': {
+    '&.PeaIcon--circular': {
       borderRadius: '50%',
       width: 32,
       height: 32,
       padding: 2,
     },
-    '&.light': {
+    '&.PeaIcon--light': {
       backgroundColor: '#1FF4B2',
       color: white,
     },
-    '&.white': {
+    '&.PeaIcon--bg-white': {
       backgroundColor: white,
     },
     '& .fa-facebook-f': {
       color: '#3C5A99',
+    },
+    '&.PeaIcon--small': {
+      fontSize: 16,
+    },
+    '&.PeaIcon--big': {
+      fontSize: 32,
     },
   };
   return {

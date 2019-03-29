@@ -1,12 +1,12 @@
 import React from 'react';
 import Radio from '@material-ui/core/Radio';
-import peaIcon from 'assets/peapods/peapods-logo-circle.svg';
+import { ReactComponent as Logo } from './assets/peapods-logo-circle.svg';
 
 const PeaRadio = props => (
   <Radio
     checkedIcon={
       <div className={'PeaIcon'}>
-        <img alt={'pea'} src={peaIcon} />
+        <Logo />
       </div>
     }
     {...props}
