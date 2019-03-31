@@ -31,7 +31,7 @@ const PeaNotificationItem = ({ src, name, description, time }) => (
       justify={'flex-end'}
     >
       <Grid item>
-        <Button size={'small'}>Deny</Button>
+        <Button size={'small'}>Ignore</Button>
       </Grid>
       <Grid item>
         <Button size={'small'} variant={'contained'} color={'primary'}>

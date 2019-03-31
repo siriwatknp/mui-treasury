@@ -95,6 +95,9 @@ export default ({ spacing, palette, typography }) => ({
           marginLeft: 'auto',
         },
       },
+      '&.MuiCardActions--centered': {
+        justifyContent: 'center',
+      },
     },
   },
 });

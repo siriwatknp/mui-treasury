@@ -310,7 +310,7 @@ const components = [
             }
           />
         </Card>
-        <Card>
+        <Card style={{ marginBottom: 20 }}>
           <CardContent style={{ minWidth: 320 }} />
           <PeaCardActions
             left={
@@ -320,6 +320,19 @@ const components = [
               </React.Fragment>
             }
             right={<PeaCardActions.Create />}
+          />
+        </Card>
+        <Card>
+          <CardContent style={{ minWidth: 320 }} />
+          <PeaCardActions
+            centered
+            left={
+              <React.Fragment>
+                <PeaCardActions.Comment />
+                <PeaCardActions.Share />
+                <PeaCardActions.Create />
+              </React.Fragment>
+            }
           />
         </Card>
       </Box>
