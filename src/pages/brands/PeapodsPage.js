@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import get from 'lodash/get';
 import { MuiThemeProvider } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -30,6 +31,8 @@ import PeaEventCard from 'components/peapods/PeaEventCard';
 import PeaCardActions from 'components/peapods/PeaCardActions';
 import PeaProfileCard from 'components/peapods/PeaProfileCard';
 import PeaNotificationItem from 'components/peapods/PeaNotificationItem';
+import PeaConfirmation from 'components/peapods/PeaConfirmation';
+import PeaInvitationModal from 'components/peapods/PeaInvitationModal';
 
 const PeaSelect = props => <PeaTextField {...props} />;
 PeaSelect.metadata = {
@@ -372,6 +375,66 @@ const components = [
       sm: 12,
       md: 10,
       lg: 6,
+    },
+  },
+  {
+    component: PeaConfirmation,
+    render: () => {
+      const [open, setOpen] = useState(false);
+      return (
+        <React.Fragment>
+          <Button onClick={() => setOpen(true)}>Open Modal</Button>
+          <PeaConfirmation
+            title={'Block @JohnD'}
+            content={
+              "@JohnD won't be able to see your profile information, invite you on the events and send you messages"
+            }
+            open={open}
+            onClose={() => setOpen(false)}
+            actions={PeaConfirmation.BlockedActions(undefined, () =>
+              setOpen(false),
+            )}
+          />
+        </React.Fragment>
+      );
+    },
+  },
+  {
+    component: PeaInvitationModal,
+    render: () => {
+      const [open, setOpen] = useState(false);
+      return (
+        <React.Fragment>
+          <Button onClick={() => setOpen(true)}>Open Invitation</Button>
+          <PeaInvitationModal
+            person={'@JohnD'}
+            pods={[
+              {
+                primary: 'Music Festival',
+                secondary: 'Peas: 2',
+                src:
+                  'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
+              },
+              {
+                primary: 'Marketing Conference',
+                secondary: 'Peas: 1',
+                src:
+                  'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80',
+              },
+              {
+                primary: 'Talk Show',
+                secondary: 'Peas: 3',
+                full: true,
+                src:
+                  'https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
+              },
+            ]}
+            onInvite={({ primary }) => alert(`Invited to ${primary}`)}
+            open={open}
+            onClose={() => setOpen(false)}
+          />
+        </React.Fragment>
+      );
     },
   },
 ];

@@ -1,4 +1,4 @@
-export default ({ palette, shadows }) => ({
+export default ({ palette, shadows, red }) => ({
   MuiButton: {
     root: {
       borderRadius: 100,
@@ -10,6 +10,9 @@ export default ({ palette, shadows }) => ({
       },
       '&.MuiButton--auto': {
         minWidth: 'auto',
+      },
+      '&.MuiButton--danger': {
+        color: red.main,
       },
     },
     sizeSmall: {
