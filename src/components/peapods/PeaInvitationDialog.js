@@ -5,13 +5,15 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import PeaConfirmation from './PeaConfirmation';
+import PeaDialog from './PeaDialog';
 import PeaButton from './PeaButton';
 import PeaAvatar from './PeaAvatar';
 
-const PeaInvitationModal = ({ person, pods, onInvite, onClose, ...props }) => (
-  <PeaConfirmation
-    className={'PeaInvitationModal'}
+const PeaInvitationDialog = ({ person, pods, onInvite, onClose, ...props }) => (
+  <PeaDialog
+    className={'PeaInvitationDialog'}
+    closeButtonHidden
+    titleVariant={'contained'}
     title={`Invite ${person}`}
     content={
       <List
@@ -59,14 +61,14 @@ const PeaInvitationModal = ({ person, pods, onInvite, onClose, ...props }) => (
   />
 );
 
-PeaInvitationModal.metadata = {
-  name: 'Pea Invitation Modal',
+PeaInvitationDialog.metadata = {
+  name: 'Pea Invitation Dialog',
 };
-PeaInvitationModal.propTypes = {
+PeaInvitationDialog.propTypes = {
   onInvite: PropTypes.func.isRequired,
   person: PropTypes.string.isRequired,
   pods: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   onClose: PropTypes.func.isRequired,
 };
 
-export default PeaInvitationModal;
+export default PeaInvitationDialog;

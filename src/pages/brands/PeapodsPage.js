@@ -32,7 +32,10 @@ import PeaCardActions from 'components/peapods/PeaCardActions';
 import PeaProfileCard from 'components/peapods/PeaProfileCard';
 import PeaNotificationItem from 'components/peapods/PeaNotificationItem';
 import PeaConfirmation from 'components/peapods/PeaConfirmation';
-import PeaInvitationModal from 'components/peapods/PeaInvitationModal';
+import PeaInvitationDialog from 'components/peapods/PeaInvitationDialog';
+import PeaGroupDialog from 'components/peapods/PeaGroupDialog';
+import PeaPodDialog from 'components/peapods/PeaPodDialog';
+import PeaRegister from 'components/peapods/PeaRegister';
 
 const PeaSelect = props => <PeaTextField {...props} />;
 PeaSelect.metadata = {
@@ -391,22 +394,20 @@ const components = [
             }
             open={open}
             onClose={() => setOpen(false)}
-            actions={PeaConfirmation.BlockedActions(undefined, () =>
-              setOpen(false),
-            )}
+            onSubmit={() => alert('submitted!')}
           />
         </React.Fragment>
       );
     },
   },
   {
-    component: PeaInvitationModal,
+    component: PeaInvitationDialog,
     render: () => {
       const [open, setOpen] = useState(false);
       return (
         <React.Fragment>
           <Button onClick={() => setOpen(true)}>Open Invitation</Button>
-          <PeaInvitationModal
+          <PeaInvitationDialog
             person={'@JohnD'}
             pods={[
               {
@@ -433,6 +434,42 @@ const components = [
             open={open}
             onClose={() => setOpen(false)}
           />
+        </React.Fragment>
+      );
+    },
+  },
+  {
+    component: PeaGroupDialog,
+    render: () => {
+      const [open, setOpen] = useState(false);
+      return (
+        <React.Fragment>
+          <Button onClick={() => setOpen(true)}>Create Group</Button>
+          <PeaGroupDialog open={open} onClose={() => setOpen(false)} />
+        </React.Fragment>
+      );
+    },
+  },
+  {
+    component: PeaPodDialog,
+    render: () => {
+      const [open, setOpen] = useState(false);
+      return (
+        <React.Fragment>
+          <Button onClick={() => setOpen(true)}>Create Pod</Button>
+          <PeaPodDialog open={open} onClose={() => setOpen(false)} />
+        </React.Fragment>
+      );
+    },
+  },
+  {
+    component: PeaRegister,
+    render: () => {
+      const [open, setOpen] = useState(false);
+      return (
+        <React.Fragment>
+          <Button onClick={() => setOpen(true)}>Register</Button>
+          <PeaRegister open={open} onClose={() => setOpen(false)} />
         </React.Fragment>
       );
     },
