@@ -18,7 +18,7 @@ import PeaButton from './PeaButton';
 const panelWidth = 300;
 
 const PeaFilter = ({ open, onClose }) => (
-  <Drawer open={open} onClose={onClose} >
+  <Drawer open={open} onClose={onClose}>
     <Box width={panelWidth} p={2}>
       <Typography align={'center'} variant={'h5'} gutterBottom>
         Filters
