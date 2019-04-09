@@ -66,6 +66,12 @@ PeaCardActions.defaultProps = {
 };
 PeaCardActions.metadata = {
   name: 'Pea Card Actions',
+  libraries: [
+    {
+      text: 'clsx',
+      link: 'https://github.com/lukeed/clsx',
+    },
+  ],
 };
 PeaCardActions.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 

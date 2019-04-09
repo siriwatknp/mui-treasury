@@ -8,6 +8,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 const styles = theme => {
   const blurLength = 5;
   const imageSize = 100;
+  const mobileImageSize = 80;
   return {
     root: {},
     imageWrapper: {
@@ -19,6 +20,10 @@ const styles = theme => {
       width: imageSize,
       height: imageSize,
       objectFit: 'cover',
+      [theme.breakpoints.only('xs')]: {
+        width: mobileImageSize,
+        height: mobileImageSize,
+      },
     },
     mainImage: {
       position: 'relative',
@@ -91,6 +96,7 @@ const PeaCategoryToggle = withStyles(styles, { name: 'PeaCategoryToggle' })(
 
 PeaCategoryToggle.propTypes = {
   label: PropTypes.string,
+  src: PropTypes.string.isRequired,
   FormControlLabelProps: PropTypes.shape({}),
   CheckboxProps: PropTypes.shape({}),
   checked: PropTypes.bool,
@@ -107,6 +113,12 @@ PeaCategoryToggle.defaultProps = {
 };
 PeaCategoryToggle.metadata = {
   name: 'Pea Category Toggle',
+  libraries: [
+    {
+      text: 'clsx',
+      link: 'https://github.com/lukeed/clsx',
+    },
+  ],
 };
 PeaCategoryToggle.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 

@@ -68,6 +68,12 @@ PeaDialog.defaultProps = {
 };
 PeaDialog.metadata = {
   name: 'Pea Confirmation',
+  libraries: [
+    {
+      text: 'clsx',
+      link: 'https://github.com/lukeed/clsx',
+    },
+  ],
 };
 PeaDialog.BlockedActions = (
   onSubmit = () => alert('Blocked!'),

@@ -41,7 +41,7 @@ export default ({ spacing, breakpoints, white, palette }) => ({
           justifyContent: 'center',
         },
       },
-      '&.PeaInvitationModal': {
+      '&.PeaInvitationDialog': {
         '& .DialogContent--root': {
           paddingLeft: 0,
           paddingRight: 0,
@@ -55,6 +55,12 @@ export default ({ spacing, breakpoints, white, palette }) => ({
         },
         '& .ListItem-secondaryErrorText': {
           color: palette.error.main,
+        },
+      },
+      '&.PeaDialog.PeaEventDialog': {
+        '& .DialogContent--root': {
+          maxWidth: 600,
+          minWidth: 343,
         },
       },
     },

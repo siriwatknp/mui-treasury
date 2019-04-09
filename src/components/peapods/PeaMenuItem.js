@@ -54,6 +54,12 @@ PeaMenuItem.defaultProps = {
 };
 PeaMenuItem.metadata = {
   name: 'Pea Menu Item',
+  libraries: [
+    {
+      text: 'clsx',
+      link: 'https://github.com/lukeed/clsx',
+    },
+  ],
 };
 PeaMenuItem.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 

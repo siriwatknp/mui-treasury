@@ -24,6 +24,12 @@ PeaTag.defaultProps = {
 };
 PeaTag.metadata = {
   name: 'Pea Tag',
+  libraries: [
+    {
+      text: 'clsx',
+      link: 'https://github.com/lukeed/clsx',
+    },
+  ],
 };
 PeaTag.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 

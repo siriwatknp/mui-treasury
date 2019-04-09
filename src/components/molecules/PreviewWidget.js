@@ -73,6 +73,7 @@ const PreviewWidget = ({
                   deleteIcon={<Icon>call_made</Icon>}
                   onDelete={() => {}}
                   clickable
+                  style={{ marginRight: 8 }}
                 />
               ))}
             </Box>
