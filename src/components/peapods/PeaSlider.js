@@ -7,7 +7,6 @@ import { ReactComponent as Logo } from './assets/peapods-logo-circle.svg';
 const styles = ({ palette }) => ({
   root: {
     padding: '22px 0px',
-    overflow: 'hidden',
   },
   track: {
     background: palette.secondary.main,
