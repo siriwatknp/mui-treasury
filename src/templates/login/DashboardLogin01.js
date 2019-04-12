@@ -105,7 +105,8 @@ DashboardLogin01.getTheme = ({ palette, breakpoints }) => {
     .saturate(0.7)
     .fade(0.7)
     .toString()} 100%)`;
-  const cover = 'https://media.wired.com/photos/59273cc6cefba457b079c810/master/pass/FFZERO1_029.jpg';
+  const cover =
+    'https://media.wired.com/photos/59273cc6cefba457b079c810/master/pass/FFZERO1_029.jpg';
   return {
     MuiGrid: {
       container: {
