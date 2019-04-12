@@ -60,7 +60,7 @@ const PeaEventDialog = ({ onClose, ...props }) => (
           <FormLabel style={{ marginBottom: 16 }}>Category</FormLabel>
           <Grid container spacing={16}>
             {categories.map(({ image, label }, index) => (
-              <Grid item xs={4} sm={3}>
+              <Grid key={label} item xs={4} sm={3}>
                 <PeaCategoryToggle
                   checked={index === 0}
                   label={label}

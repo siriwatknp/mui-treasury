@@ -41,7 +41,7 @@ const PreviewWidget = ({
       display={'flex'}
       flexDirection={'column'}
       transition={'0.3s'}
-      border={'2px solid rgba(0,0,0,0)'}
+      // border={'2px solid rgba(0,0,0,0)'}
       borderRadius={16}
     >
       <Box

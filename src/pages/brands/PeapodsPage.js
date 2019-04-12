@@ -2,8 +2,19 @@
 import React, { useState } from 'react';
 import get from 'lodash/get';
 import { MuiPickersUtilsProvider } from 'material-ui-pickers';
+import Box from 'components/atoms/Box';
+import Image from 'components/atoms/Image';
+import PreviewWidget from 'components/molecules/PreviewWidget';
+import peapodsBanner from 'components/peapods/assets/register-poster.png';
+
 import MomentUtils from '@date-io/moment';
+
+// PEAPODS THEME
+import peapodsTheme from 'theme/peapods';
 import { MuiThemeProvider } from '@material-ui/core/styles';
+
+// PEAPODS COMPONENTS
+import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
@@ -11,9 +22,6 @@ import CardContent from '@material-ui/core/CardContent';
 import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
 import FormLabel from '@material-ui/core/FormLabel';
-import Box from 'components/atoms/Box';
-import PreviewWidget from 'components/molecules/PreviewWidget';
-import peapodsTheme from 'theme/peapods';
 import PeaButton from 'components/peapods/PeaButton';
 import PeaIcon from 'components/peapods/PeaIcon';
 import PeaAvatar from 'components/peapods/PeaAvatar';
@@ -529,6 +537,23 @@ const components = [
     },
   },
   {
+    component: PeaSlider,
+    render: () => (
+      <Box width={'100%'}>
+        <Box display={'flex'} justifyContent={'space-between'}>
+          <FormLabel>Distance (in miles)</FormLabel>
+          <Typography color={'textSecondary'}>5.7 miles</Typography>
+        </Box>
+        <PeaSlider />
+      </Box>
+    ),
+    gridItemProps: {
+      sm: 12,
+      md: 4,
+      lg: 4,
+    },
+  },
+  {
     component: PeaPersonCard,
     render: () => (
       <PeaPersonCard
@@ -545,23 +570,6 @@ const components = [
       sm: 12,
       md: 8,
       lg: 8,
-    },
-  },
-  {
-    component: PeaSlider,
-    render: () => (
-      <Box width={'100%'}>
-        <Box display={'flex'} justifyContent={'space-between'}>
-          <FormLabel>Distance (in miles)</FormLabel>
-          <Typography color={'textSecondary'}>5.7 miles</Typography>
-        </Box>
-        <PeaSlider />
-      </Box>
-    ),
-    gridItemProps: {
-      sm: 12,
-      md: 4,
-      lg: 4,
     },
   },
   {
@@ -592,6 +600,53 @@ const components = [
 
 const PeapodsPage = () => (
   <MuiPickersUtilsProvider utils={MomentUtils}>
+    <Grid container>
+      <Grid item xs={12} sm={'auto'}>
+        <Box
+          width={{ sm: 240 }}
+          maxHeight={{ xs: 160, sm: 'none !important' }}
+          height={'100%'}
+        >
+          <Image
+            src={peapodsBanner}
+            style={{ objectFit: 'cover', height: '100%' }}
+          />
+        </Box>
+      </Grid>
+      <Grid item xs style={{ borderBottom: '1px solid #f0f0f0' }}>
+        <Box p={{ xs: 2, md: 3 }}>
+          <Typography variant={'h5'}>
+            <Link href={'https://peapods.com/'} target={'_blank'}>
+              Peapods
+            </Link>
+          </Typography>
+          <Typography>
+            Peapods is a new type of social network that values real human
+            interaction.
+          </Typography>
+          <br />
+          <Typography>
+            This is a component showcase of peapods app. It uses{' '}
+            <Link href={'https://material-ui.com'}>Material-UI</Link> v3.9.2. It
+            shows that Material-UI is fully customizable.
+          </Typography>
+          <br />
+          <Box maxWidth={{ sm: 140 }}>
+            <PeaButton
+              fullWidth
+              size={'small'}
+              variant={'contained'}
+              color={'primary'}
+              component={'a'}
+              href={'https://peapods.com/'}
+              target={'_blank'}
+            >
+              Visit Peapods
+            </PeaButton>
+          </Box>
+        </Box>
+      </Grid>
+    </Grid>
     <Box
       width={'100%'}
       p={{
