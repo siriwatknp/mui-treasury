@@ -45,6 +45,7 @@ export default createMuiTheme({
     primary,
     secondary,
     background,
+    error: red,
   },
   shape: {
     borderRadius: 8,

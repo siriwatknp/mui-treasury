@@ -8,7 +8,7 @@ import PeaRadio from './PeaRadio';
 const PeaRadioGroup = () => {
   const [value, onChange] = useState('1');
   return (
-    <FormControl component="fieldset">
+    <FormControl margin={'normal'} component="fieldset">
       <FormLabel component="legend">Type</FormLabel>
       <RadioGroup
         aria-label="position"

@@ -51,6 +51,12 @@ PeaAvatar.defaultProps = {
 };
 PeaAvatar.metadata = {
   name: 'Pea Avatar',
+  libraries: [
+    {
+      text: 'clsx',
+      link: 'https://github.com/lukeed/clsx',
+    },
+  ],
 };
 PeaAvatar.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 

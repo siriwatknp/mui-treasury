@@ -67,6 +67,12 @@ PeaCounter.defaultProps = {
 };
 PeaCounter.metadata = {
   name: 'Pea Counter',
+  libraries: [
+    {
+      text: 'clsx',
+      link: 'https://github.com/lukeed/clsx',
+    },
+  ],
 };
 PeaCounter.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 

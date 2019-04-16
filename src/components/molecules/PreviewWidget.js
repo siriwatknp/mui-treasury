@@ -41,7 +41,7 @@ const PreviewWidget = ({
       display={'flex'}
       flexDirection={'column'}
       transition={'0.3s'}
-      border={'2px solid rgba(0,0,0,0)'}
+      // border={'2px solid rgba(0,0,0,0)'}
       borderRadius={16}
     >
       <Box
@@ -73,6 +73,7 @@ const PreviewWidget = ({
                   deleteIcon={<Icon>call_made</Icon>}
                   onDelete={() => {}}
                   clickable
+                  style={{ marginRight: 8 }}
                 />
               ))}
             </Box>

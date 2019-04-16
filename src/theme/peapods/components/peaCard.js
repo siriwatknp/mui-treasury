@@ -1,4 +1,4 @@
-export default ({ spacing, palette, typography }) => ({
+export default ({ spacing, palette, typography, breakpoints }) => ({
   MuiCard: {
     root: {
       '&.PeaEventCard-root': {
@@ -81,6 +81,63 @@ export default ({ spacing, palette, typography }) => ({
           justifyContent: 'flex-end',
         },
       },
+      '&.PeaPodCard-root': {
+        textAlign: 'left',
+        '& .MuiCardMedia-root': {
+          paddingTop: '40%',
+          position: 'relative',
+        },
+        '& .MuiTypography--heading': {
+          paddingBottom: 16,
+          fontSize: 16,
+          fontWeight: 'bold',
+        },
+        '& .PeaPodCardPeople-root': {
+          paddingTop: 16,
+        },
+        '& .PeaPodCardPeople-people': {
+          display: 'flex',
+          alignItems: 'center',
+          '&:not(:first-of-type)': {
+            marginTop: 8,
+          },
+        },
+        '& .material-icons': {
+          marginTop: 3,
+        },
+      },
+      '&.PeaPersonCard-root': {
+        margin: 'auto',
+        boxShadow: '0 8px 40px -12px rgba(0,0,0,0.3)',
+        [breakpoints.up('sm')]: {
+          display: 'flex',
+        },
+        '& .MuiCardMedia-root': {
+          [breakpoints.only('xs')]: {
+            paddingBottom: '56.25%',
+          },
+          [breakpoints.up('sm')]: {
+            paddingRight: 160,
+          },
+        },
+        '& .MuiCardContent-root': {
+          minWidth: 280,
+          textAlign: 'left',
+          padding: spacing.unit * 2,
+          '& .MuiListItem-root': {
+            padding: 0,
+            paddingBottom: spacing.unit * 2,
+          },
+          '& .PeaPersonCard-bio': {
+            '& b': {
+              color: palette.secondary.main,
+            },
+          },
+        },
+        '& .material-icons': {
+          marginTop: 3,
+        },
+      },
     },
   },
   MuiCardActions: {
@@ -95,6 +152,14 @@ export default ({ spacing, palette, typography }) => ({
           marginLeft: 'auto',
         },
       },
+      '&.MuiCardActions--centered': {
+        justifyContent: 'center',
+      },
+    },
+  },
+  MuiCardHeader: {
+    content: {
+      textAlign: 'left',
     },
   },
 });

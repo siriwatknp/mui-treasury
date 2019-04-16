@@ -1,14 +1,27 @@
-/* eslint-disable max-len,no-alert */
+/* eslint-disable max-len,no-alert,jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import get from 'lodash/get';
+import { MuiPickersUtilsProvider } from 'material-ui-pickers';
+import Box from 'components/atoms/Box';
+import Image from 'components/atoms/Image';
+import PreviewWidget from 'components/molecules/PreviewWidget';
+import peapodsBanner from 'components/peapods/assets/register-poster.png';
+
+import MomentUtils from '@date-io/moment';
+
+// PEAPODS THEME
+import peapodsTheme from 'theme/peapods';
 import { MuiThemeProvider } from '@material-ui/core/styles';
+
+// PEAPODS COMPONENTS
+import Link from '@material-ui/core/Link';
+import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import MenuItem from '@material-ui/core/MenuItem';
-import Box from 'components/atoms/Box';
-import PreviewWidget from 'components/molecules/PreviewWidget';
-import peapodsTheme from 'theme/peapods';
+import Typography from '@material-ui/core/Typography';
+import FormLabel from '@material-ui/core/FormLabel';
 import PeaButton from 'components/peapods/PeaButton';
 import PeaIcon from 'components/peapods/PeaIcon';
 import PeaAvatar from 'components/peapods/PeaAvatar';
@@ -30,6 +43,16 @@ import PeaEventCard from 'components/peapods/PeaEventCard';
 import PeaCardActions from 'components/peapods/PeaCardActions';
 import PeaProfileCard from 'components/peapods/PeaProfileCard';
 import PeaNotificationItem from 'components/peapods/PeaNotificationItem';
+import PeaConfirmation from 'components/peapods/PeaConfirmation';
+import PeaInvitationDialog from 'components/peapods/PeaInvitationDialog';
+import PeaGroupDialog from 'components/peapods/PeaGroupDialog';
+import PeaPodDialog from 'components/peapods/PeaPodDialog';
+import PeaRegister from 'components/peapods/PeaRegister';
+import PeaPodCard from 'components/peapods/PeaPodCard';
+import PeaPersonCard from 'components/peapods/PeaPersonCard';
+import PeaSlider from 'components/peapods/PeaSlider';
+import PeaEventDialog from 'components/peapods/PeaEventDialog';
+import PeaFilter from 'components/peapods/PeaFilter';
 
 const PeaSelect = props => <PeaTextField {...props} />;
 PeaSelect.metadata = {
@@ -310,7 +333,7 @@ const components = [
             }
           />
         </Card>
-        <Card>
+        <Card style={{ marginBottom: 20 }}>
           <CardContent style={{ minWidth: 320 }} />
           <PeaCardActions
             left={
@@ -320,6 +343,19 @@ const components = [
               </React.Fragment>
             }
             right={<PeaCardActions.Create />}
+          />
+        </Card>
+        <Card>
+          <CardContent style={{ minWidth: 320 }} />
+          <PeaCardActions
+            centered
+            left={
+              <React.Fragment>
+                <PeaCardActions.Comment />
+                <PeaCardActions.Share />
+                <PeaCardActions.Create />
+              </React.Fragment>
+            }
           />
         </Card>
       </Box>
@@ -361,37 +397,289 @@ const components = [
       lg: 6,
     },
   },
+  {
+    component: PeaConfirmation,
+    render: () => {
+      const [open, setOpen] = useState(false);
+      return (
+        <React.Fragment>
+          <Button onClick={() => setOpen(true)}>Open Modal</Button>
+          <PeaConfirmation
+            title={'Block @JohnD'}
+            content={
+              "@JohnD won't be able to see your profile information, invite you on the events and send you messages"
+            }
+            open={open}
+            onClose={() => setOpen(false)}
+            onSubmit={() => alert('submitted!')}
+          />
+        </React.Fragment>
+      );
+    },
+  },
+  {
+    component: PeaInvitationDialog,
+    render: () => {
+      const [open, setOpen] = useState(false);
+      return (
+        <React.Fragment>
+          <Button onClick={() => setOpen(true)}>Open Invitation</Button>
+          <PeaInvitationDialog
+            person={'@JohnD'}
+            pods={[
+              {
+                primary: 'Music Festival',
+                secondary: 'Peas: 2',
+                src:
+                  'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
+              },
+              {
+                primary: 'Marketing Conference',
+                secondary: 'Peas: 1',
+                src:
+                  'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80',
+              },
+              {
+                primary: 'Talk Show',
+                secondary: 'Peas: 3',
+                full: true,
+                src:
+                  'https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
+              },
+            ]}
+            onInvite={({ primary }) => alert(`Invited to ${primary}`)}
+            open={open}
+            onClose={() => setOpen(false)}
+          />
+        </React.Fragment>
+      );
+    },
+  },
+  {
+    component: PeaGroupDialog,
+    render: () => {
+      const [open, setOpen] = useState(false);
+      return (
+        <React.Fragment>
+          <Button onClick={() => setOpen(true)}>Create Group</Button>
+          <PeaGroupDialog open={open} onClose={() => setOpen(false)} />
+        </React.Fragment>
+      );
+    },
+  },
+  {
+    component: PeaPodDialog,
+    render: () => {
+      const [open, setOpen] = useState(false);
+      return (
+        <React.Fragment>
+          <Button onClick={() => setOpen(true)}>Create Pod</Button>
+          <PeaPodDialog open={open} onClose={() => setOpen(false)} />
+        </React.Fragment>
+      );
+    },
+  },
+  {
+    component: PeaRegister,
+    render: () => {
+      const [open, setOpen] = useState(false);
+      return (
+        <React.Fragment>
+          <Button onClick={() => setOpen(true)}>Register</Button>
+          <PeaRegister open={open} onClose={() => setOpen(false)} />
+        </React.Fragment>
+      );
+    },
+  },
+  {
+    component: PeaPodCard,
+    render: () => (
+      <PeaPodCard
+        profile={{
+          name: 'Siriwat Knp',
+          image: 'https://avatars.dicebear.com/v2/avataaars/siriwat.svg',
+        }}
+        social={
+          'https://upload.wikimedia.org/wikipedia/commons/6/6b/Meetup_Logo.png'
+        }
+        image={
+          'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80'
+        }
+        title={'Deep dive into chat bot training best practice.'}
+        time={'Thursday, January 10th, 4:00am'}
+        location={'Pivotal Labs, 875 Howard St. San Francisco USA'}
+        podCount={3}
+        peopleGoing={{
+          images: [
+            'https://avatars.dicebear.com/v2/avataaars/example.svg',
+            'https://avatars.dicebear.com/v2/avataaars/example1.svg',
+            'https://avatars.dicebear.com/v2/avataaars/example2.svg',
+            'https://avatars.dicebear.com/v2/avataaars/example3.svg',
+          ],
+          more: 12,
+        }}
+        peopleInterested={{
+          images: [
+            'https://avatars.dicebear.com/v2/avataaars/example4.svg',
+            'https://avatars.dicebear.com/v2/avataaars/example5.svg',
+            'https://avatars.dicebear.com/v2/avataaars/example6.svg',
+            'https://avatars.dicebear.com/v2/avataaars/example7.svg',
+            'https://avatars.dicebear.com/v2/avataaars/example8.svg',
+          ],
+          more: 4,
+        }}
+      />
+    ),
+    gridItemProps: {
+      sm: 12,
+      md: 6,
+      lg: 6,
+    },
+  },
+  {
+    component: PeaSlider,
+    render: () => (
+      <Box width={'100%'}>
+        <Box display={'flex'} justifyContent={'space-between'}>
+          <FormLabel>Distance (in miles)</FormLabel>
+          <Typography color={'textSecondary'}>5.7 miles</Typography>
+        </Box>
+        <PeaSlider />
+      </Box>
+    ),
+    gridItemProps: {
+      sm: 12,
+      md: 4,
+      lg: 4,
+    },
+  },
+  {
+    component: PeaPersonCard,
+    render: () => (
+      <PeaPersonCard
+        image={
+          'https://images.unsplash.com/photo-1456379771252-03388b5adf1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+        }
+        name={'Maria Garcia'}
+        tag={'@MaryMary'}
+        location={'Houston'}
+        bio={'A senior year student, passionate in web design.'}
+      />
+    ),
+    gridItemProps: {
+      sm: 12,
+      md: 8,
+      lg: 8,
+    },
+  },
+  {
+    component: PeaEventDialog,
+    render: () => {
+      const [open, setOpen] = useState(false);
+      return (
+        <React.Fragment>
+          <Button onClick={() => setOpen(true)}>Create Event</Button>
+          <PeaEventDialog open={open} onClose={() => setOpen(false)} />
+        </React.Fragment>
+      );
+    },
+  },
+  {
+    component: PeaFilter,
+    render: () => {
+      const [open, setOpen] = useState(false);
+      return (
+        <React.Fragment>
+          <Button onClick={() => setOpen(true)}>Open Filter</Button>
+          <PeaFilter open={open} onClose={() => setOpen(false)} />
+        </React.Fragment>
+      );
+    },
+  },
 ];
 
 const PeapodsPage = () => (
-  <Box
-    width={'100%'}
-    p={{
-      xs: 2,
-      sm: 4,
-    }}
-  >
-    <Grid container spacing={32} justify={'center'}>
-      {components.map(({ component, render, previewProps, gridItemProps }) => (
-        <Grid
-          key={get(component, 'metadata.name')}
-          item
-          xs={12}
-          sm={6}
-          lg={4}
-          {...gridItemProps}
+  <MuiPickersUtilsProvider utils={MomentUtils}>
+    <Grid container>
+      <Grid item xs={12} sm={'auto'}>
+        <Box
+          width={{ sm: 240 }}
+          maxHeight={{ xs: 160, sm: 'none !important' }}
+          height={'100%'}
         >
-          <PreviewWidget
-            sandboxLink={component.codeSandbox}
-            {...get(component, 'metadata')}
-            {...previewProps}
-          >
-            <MuiThemeProvider theme={peapodsTheme}>{render()}</MuiThemeProvider>
-          </PreviewWidget>
-        </Grid>
-      ))}
+          <Image
+            src={peapodsBanner}
+            style={{ objectFit: 'cover', height: '100%' }}
+          />
+        </Box>
+      </Grid>
+      <Grid item xs style={{ borderBottom: '1px solid #f0f0f0' }}>
+        <Box p={{ xs: 2, md: 3 }}>
+          <Typography variant={'h5'}>
+            <Link href={'https://peapods.com/'} target={'_blank'}>
+              Peapods
+            </Link>
+          </Typography>
+          <Typography>
+            Peapods is a new type of social network that values real human
+            interaction.
+          </Typography>
+          <br />
+          <Typography>
+            This is a component showcase of peapods app. It uses{' '}
+            <Link href={'https://material-ui.com'}>Material-UI</Link> v3.9.2. It
+            shows that Material-UI is fully customizable.
+          </Typography>
+          <br />
+          <Box maxWidth={{ sm: 140 }}>
+            <PeaButton
+              fullWidth
+              size={'small'}
+              variant={'contained'}
+              color={'primary'}
+              component={'a'}
+              href={'https://peapods.com/'}
+              target={'_blank'}
+            >
+              Visit Peapods
+            </PeaButton>
+          </Box>
+        </Box>
+      </Grid>
     </Grid>
-  </Box>
+    <Box
+      width={'100%'}
+      p={{
+        xs: 2,
+        sm: 4,
+      }}
+    >
+      <Grid container spacing={32} justify={'center'}>
+        {components.map(
+          ({ component, render, previewProps, gridItemProps }) => (
+            <Grid
+              key={get(component, 'metadata.name')}
+              item
+              xs={12}
+              sm={6}
+              lg={4}
+              {...gridItemProps}
+            >
+              <PreviewWidget
+                sandboxLink={component.codeSandbox}
+                {...get(component, 'metadata')}
+                {...previewProps}
+              >
+                <MuiThemeProvider theme={peapodsTheme}>
+                  {render()}
+                </MuiThemeProvider>
+              </PreviewWidget>
+            </Grid>
+          ),
+        )}
+      </Grid>
+    </Box>
+  </MuiPickersUtilsProvider>
 );
 
 // Do not remove this line
