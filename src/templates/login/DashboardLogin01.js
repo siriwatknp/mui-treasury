@@ -237,6 +237,9 @@ DashboardLogin01.getTheme = ({ palette, breakpoints }) => {
 DashboardLogin01.metadata = {
   name: 'Dashboard Login Template I',
   description: 'Simple & Elegant Design',
+  libraries: [
+    { text: 'color', link: 'https://github.com/Qix-/color#manipulation' },
+  ],
 };
 DashboardLogin01.codeSandbox = 'https://codesandbox.io/s/kkq2n9m9lo';
 
