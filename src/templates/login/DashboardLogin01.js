@@ -168,6 +168,7 @@ DashboardLogin01.getTheme = ({ palette, breakpoints }) => {
           },
         },
         '&.DL01-GridItem.-form': {
+          textAlign: 'center',
           [breakpoints.only('xs')]: {
             background: '#f5f5f5',
           },
@@ -237,6 +238,6 @@ DashboardLogin01.metadata = {
   name: 'Dashboard Login Template I',
   description: 'Simple & Elegant Design',
 };
-DashboardLogin01.codeSandbox = '';
+DashboardLogin01.codeSandbox = 'https://codesandbox.io/s/kkq2n9m9lo';
 
 export default DashboardLogin01;
