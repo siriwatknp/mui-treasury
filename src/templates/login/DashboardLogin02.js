@@ -222,7 +222,7 @@ const DashboardLogin02 = withStyles(styles, { name: 'LoginPage' })(
                   root: classes.input,
                   focused: classes.focused,
                   underline: classes.underline,
-                  input: classes.inputInput
+                  input: classes.inputInput,
                 },
               }}
             />
@@ -243,7 +243,7 @@ const DashboardLogin02 = withStyles(styles, { name: 'LoginPage' })(
                   root: classes.input,
                   focused: classes.focused,
                   underline: classes.underline,
-                  input: classes.inputInput
+                  input: classes.inputInput,
                 },
               }}
             />
