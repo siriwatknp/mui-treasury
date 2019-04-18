@@ -136,8 +136,7 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
     </Typography>
     <Typography>2. Use this component instead of Material-ui Button</Typography>
     <Typography gutterBottom>
-      3. Look at component propTypes, adjust default props to suit your
-      project.
+      3. Look at component propTypes, adjust default props to suit your project.
     </Typography>
     <Box pb={2} />
     <Divider />
