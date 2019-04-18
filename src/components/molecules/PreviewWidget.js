@@ -27,6 +27,7 @@ const PreviewWidget = ({
   onClick,
   children,
   contentProps,
+  rootProps,
 }) => {
   const getBG = () => {
     if (white) return '#ffffff';
@@ -43,6 +44,7 @@ const PreviewWidget = ({
       transition={'0.3s'}
       // border={'2px solid rgba(0,0,0,0)'}
       borderRadius={16}
+      {...rootProps}
     >
       <Box
         py={3}
@@ -56,52 +58,54 @@ const PreviewWidget = ({
       >
         {children}
       </Box>
-      <Box pt={1} p={2} {...Box.alignCenter}>
-        <Box flexGrow={1}>
-          <Text variant={'h6'}>{name}</Text>
-          <Text color={'grey.500'}>{description}</Text>
-          {libraries && (
-            <Box mt={1}>
-              {libraries.map(({ text, link }) => (
-                <Chip
-                  key={text}
-                  href={link}
-                  label={text}
-                  target={'_blank'}
-                  component={'a'}
-                  color={'primary'}
-                  deleteIcon={<Icon>call_made</Icon>}
-                  onDelete={() => {}}
-                  clickable
-                  style={{ marginRight: 8 }}
-                />
-              ))}
-            </Box>
+      {name && (
+        <Box pt={1} p={2} {...Box.alignCenter}>
+          <Box flexGrow={1}>
+            <Text variant={'h6'}>{name}</Text>
+            <Text color={'grey.500'}>{description}</Text>
+            {libraries && (
+              <Box mt={1}>
+                {libraries.map(({ text, link }) => (
+                  <Chip
+                    key={text}
+                    href={link}
+                    label={text}
+                    target={'_blank'}
+                    component={'a'}
+                    color={'primary'}
+                    deleteIcon={<Icon>call_made</Icon>}
+                    onDelete={() => {}}
+                    clickable
+                    style={{ marginRight: 8 }}
+                  />
+                ))}
+              </Box>
+            )}
+          </Box>
+          {onClick && (
+            <IconButton onClick={onClick}>
+              <Icon>search</Icon>
+            </IconButton>
+          )}
+          {sandboxLink && (
+            <IconButton
+              component={'a'}
+              href={sandboxLink}
+              target={'_blank'}
+              onClick={e => {
+                e.stopPropagation();
+              }}
+            >
+              <Image
+                alt={'code-sandbox'}
+                src={
+                  'https://camo.githubusercontent.com/237fa1e304ff8d669572cf96784308c87975d149/687474703a2f2f63646e2e656d6265642e6c792f70726f7669646572732f6c6f676f732f636f646573616e64626f782e706e67'
+                }
+              />
+            </IconButton>
           )}
         </Box>
-        {onClick && (
-          <IconButton onClick={onClick}>
-            <Icon>search</Icon>
-          </IconButton>
-        )}
-        {sandboxLink && (
-          <IconButton
-            component={'a'}
-            href={sandboxLink}
-            target={'_blank'}
-            onClick={e => {
-              e.stopPropagation();
-            }}
-          >
-            <Image
-              alt={'code-sandbox'}
-              src={
-                'https://camo.githubusercontent.com/237fa1e304ff8d669572cf96784308c87975d149/687474703a2f2f63646e2e656d6265642e6c792f70726f7669646572732f6c6f676f732f636f646573616e64626f782e706e67'
-              }
-            />
-          </IconButton>
-        )}
-      </Box>
+      )}
     </Box>
   );
 };
@@ -111,10 +115,11 @@ PreviewWidget.propTypes = {
   inverted: PropTypes.bool,
   active: PropTypes.bool,
   children: PropTypes.element,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   description: PropTypes.string,
   onClick: PropTypes.func,
   contentProps: PropTypes.shape({}),
+  rootProps: PropTypes.shape({}),
   sandboxLink: PropTypes.string,
   libraries: PropTypes.arrayOf(PropTypes.shape({})),
 };
@@ -122,10 +127,12 @@ PreviewWidget.defaultProps = {
   white: false,
   inverted: false,
   active: false,
+  name: '',
   description: '',
   children: null,
   onClick: undefined,
   contentProps: {},
+  rootProps: {},
   sandboxLink: '',
   libraries: undefined,
 };

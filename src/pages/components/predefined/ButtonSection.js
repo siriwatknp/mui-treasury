@@ -42,7 +42,7 @@ const ButtonSection = ({ globalTheme }) => {
     >
       <Grid container spacing={32}>
         <Grid item xs={12} sm={6} lg={6}>
-          <PreviewWidget inverted={inverted} name={' '}>
+          <PreviewWidget inverted={inverted}>
             <Button
               color={color}
               compact={compact}

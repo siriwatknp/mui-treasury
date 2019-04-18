@@ -14,6 +14,7 @@ const getLoaderSize = size => {
 };
 
 const Button = ({
+  className,
   classes,
   inverted,
   loading,
@@ -39,6 +40,7 @@ const Button = ({
         disabled: cx('MuiButton-disabled', classes.disabled),
       }}
       className={cx(
+        className,
         inverted && '-inverted',
         loading && '-loading',
         elongated && '-elongated',
@@ -70,6 +72,7 @@ const Button = ({
 };
 
 Button.propTypes = {
+  className: PropTypes.string,
   classes: PropTypes.shape({}),
   compact: PropTypes.bool,
   inverted: PropTypes.bool,
@@ -85,6 +88,7 @@ Button.propTypes = {
   loaderProps: PropTypes.shape({}),
 };
 Button.defaultProps = {
+  className: '',
   classes: {},
   compact: false,
   inverted: false,
