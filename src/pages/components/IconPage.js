@@ -67,16 +67,25 @@ const IconPage = ({ globalTheme }) => (
       make the icon turn white or I want it to be bigger or add a little margin
       on the left side of it by <b>using props</b>
     </Typography>
+    <Typography gutterBottom>
+      5. Icon + Typography really annoyed me.
+    </Typography>
     <Box my={2}>
       <Divider />
     </Box>
     <Typography variant={'h5'} gutterBottom>
       Here is the Solution!
     </Typography>
-    <Typography>
-      <Link href={'https://codesandbox.io/s/4wmz707on4'}>Code Sandbox</Link>
+    <Typography gutterBottom>
+      I adjusted sizes for both Material and FontAwesome, so when you use it you
+      feel like it is from the same lib. Also, I added necessary props that I
+      found them useful and appear in many modern website (link, inverted,
+      color, bgColor and shape).
     </Typography>
-    <Box pt={{ xs: 2, sm: 4 }}>
+    <Typography>
+      <Link href={'https://codesandbox.io/s/6yxy45yn9n'}>Code Sandbox</Link>
+    </Typography>
+    <Box py={{ xs: 2, sm: 4 }}>
       <IconSection globalTheme={globalTheme} />
     </Box>
     <Typography variant={'h6'}>How to use</Typography>

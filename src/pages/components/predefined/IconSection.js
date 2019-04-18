@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import merge from 'lodash/merge';
@@ -8,22 +9,29 @@ import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Box from 'components/atoms/Box';
 import PreviewWidget from 'components/molecules/PreviewWidget';
 import Icon from 'components/predefined/Icon';
 
 const createTheme = theme => createMuiTheme(theme);
 const baseTheme = createMuiTheme();
 
-const materialIcons = ['favorite'];
-
-const fontAwesomeIcons = ['fas fa-heart'];
-
 const IconSection = ({ globalTheme }) => {
-  const [materialIcon, setMaterialIcon] = useState(materialIcons[0]);
-  const [fontAwesomeIcon, setFontAwesomeIcon] = useState(fontAwesomeIcons[0]);
-  const [color, setColor] = useState('default');
-  const [size, setSize] = useState('default');
+  const [color, setColor] = useState('');
+  const [bgColor, setBgColor] = useState('');
+  const [size, setSize] = useState('');
+  const [shape, setShape] = useState('');
   const [inverted, setInverted] = useState(false);
+  const [link, setLink] = useState(false);
+  const commonProps = {
+    link,
+    color,
+    bgColor,
+    size,
+    inverted,
+    shape,
+  };
   return (
     <MuiThemeProvider
       theme={createTheme({
@@ -31,54 +39,44 @@ const IconSection = ({ globalTheme }) => {
         overrides: Icon.getTheme(merge(baseTheme, globalTheme)),
       })}
     >
-      <Grid container spacing={32}>
+      <Grid container spacing={16} justify={'center'}>
         <Grid item xs={6} sm={4}>
-          <PreviewWidget inverted={inverted} rootProps={{ height: 120 }}>
-            <Icon
-              icon={materialIcon}
-              color={color}
-              size={size}
-              inverted={inverted}
-            />
-          </PreviewWidget>
-          <TextField
-            margin={'normal'}
-            fullWidth
-            select
-            label={'Icon'}
-            value={materialIcon}
-            onChange={e => setMaterialIcon(e.target.value)}
+          <PreviewWidget
+            white
+            inverted={inverted}
+            rootProps={{ minHeight: 160, height: 'auto' }}
+            contentProps={{ flexWrap: 'wrap' }}
           >
-            {materialIcons.map(i => (
-              <MenuItem key={i} value={i}>
-                {i}
-              </MenuItem>
-            ))}
-          </TextField>
+            <Icon icon={'favorite'} {...commonProps} />
+            <Icon icon={'bookmark_border'} {...commonProps} />
+            <Icon icon={'dashboard'} {...commonProps} />
+            <Icon icon={'delete_forever'} {...commonProps} />
+            <Icon icon={'exit_to_app'} {...commonProps} />
+          </PreviewWidget>
+          <Box>
+            <Typography color={'textSecondary'} align={'center'}>
+              Material Icon
+            </Typography>
+          </Box>
         </Grid>
         <Grid item xs={6} sm={4}>
-          <PreviewWidget inverted={inverted} rootProps={{ height: 120 }}>
-            <Icon
-              icon={fontAwesomeIcon}
-              color={color}
-              size={size}
-              inverted={inverted}
-            />
-          </PreviewWidget>
-          <TextField
-            margin={'normal'}
-            fullWidth
-            select
-            label={'Icon'}
-            value={fontAwesomeIcon}
-            onChange={e => setFontAwesomeIcon(e.target.value)}
+          <PreviewWidget
+            white
+            inverted={inverted}
+            rootProps={{ minHeight: 160, height: 'auto' }}
+            contentProps={{ flexWrap: 'wrap' }}
           >
-            {fontAwesomeIcons.map(i => (
-              <MenuItem key={i} value={i}>
-                {i}
-              </MenuItem>
-            ))}
-          </TextField>
+            <Icon icon={'fas fa-heart'} {...commonProps} />
+            <Icon icon={'fab fa-facebook-f'} {...commonProps} />
+            <Icon icon={'far fa-arrow-alt-circle-right'} {...commonProps} />
+            <Icon icon={'fab fa-twitter'} {...commonProps} />
+            <Icon icon={'fas fa-battery-quarter'} {...commonProps} />
+          </PreviewWidget>
+          <Box>
+            <Typography color={'textSecondary'} align={'center'}>
+              Font Awesome
+            </Typography>
+          </Box>
         </Grid>
         <Grid item xs={12} sm={4}>
           <FormGroup>
@@ -87,6 +85,12 @@ const IconSection = ({ globalTheme }) => {
               onChange={(e, val) => setInverted(val)}
               control={<Checkbox />}
               label={'inverted'}
+            />
+            <FormControlLabel
+              checked={link}
+              onChange={(e, val) => setLink(val)}
+              control={<Checkbox />}
+              label={'link'}
             />
           </FormGroup>
           <TextField
@@ -97,6 +101,30 @@ const IconSection = ({ globalTheme }) => {
             value={color}
             onChange={e => setColor(e.target.value)}
           >
+            <MenuItem key={'none'} value={''}>
+              none
+            </MenuItem>
+            <MenuItem key={'primary'} value={'primary'}>
+              primary
+            </MenuItem>
+            <MenuItem key={'secondary'} value={'secondary'}>
+              secondary
+            </MenuItem>
+            <MenuItem key={'danger'} value={'danger'}>
+              danger
+            </MenuItem>
+          </TextField>
+          <TextField
+            margin={'normal'}
+            fullWidth
+            select
+            label={'Background color'}
+            value={bgColor}
+            onChange={e => setBgColor(e.target.value)}
+          >
+            <MenuItem key={'none'} value={''}>
+              none
+            </MenuItem>
             <MenuItem key={'default'} value={'default'}>
               default
             </MenuItem>
@@ -121,7 +149,7 @@ const IconSection = ({ globalTheme }) => {
             <MenuItem key={'small'} value={'small'}>
               small
             </MenuItem>
-            <MenuItem key={'default'} value={'default'}>
+            <MenuItem key={'default'} value={''}>
               default
             </MenuItem>
             <MenuItem key={'big'} value={'big'}>
@@ -131,6 +159,53 @@ const IconSection = ({ globalTheme }) => {
               large
             </MenuItem>
           </TextField>
+          <TextField
+            margin={'normal'}
+            fullWidth
+            select
+            label={'Shape'}
+            value={shape}
+            onChange={e => setShape(e.target.value)}
+          >
+            <MenuItem key={'none'} value={''}>
+              none
+            </MenuItem>
+            <MenuItem key={'square'} value={'square'}>
+              square
+            </MenuItem>
+            <MenuItem key={'round'} value={'round'}>
+              round
+            </MenuItem>
+            <MenuItem key={'circular'} value={'circular'}>
+              circular
+            </MenuItem>
+          </TextField>
+        </Grid>
+        <Grid item xs={12} sm={8}>
+          <Typography gutterBottom variant={'h6'}>
+            Perfectly inline with <code>Typography</code>
+          </Typography>
+          <PreviewWidget
+            rootProps={{ height: 'auto' }}
+            contentProps={{ flexDirection: 'column' }}
+          >
+            <Typography gutterBottom variant={'h5'}>
+              <Icon icon={'far fa-copy'} size={'large'} /> Text(h5) with
+              icon(large).
+            </Typography>
+            <Typography gutterBottom variant={'h6'}>
+              <Icon icon={'far fa-copy'} size={'big'} /> Text(h6) with
+              icon(big).
+            </Typography>
+            <Typography gutterBottom variant={'subtitle1'}>
+              <Icon icon={'far fa-copy'} size={'default'} /> Text(subtitle1)
+              with icon(default).
+            </Typography>
+            <Typography gutterBottom>
+              <Icon icon={'far fa-copy'} size={'small'} /> Text(body2) with
+              icon(small).
+            </Typography>
+          </PreviewWidget>
         </Grid>
       </Grid>
     </MuiThemeProvider>

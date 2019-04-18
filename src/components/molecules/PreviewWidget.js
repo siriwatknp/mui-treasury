@@ -30,8 +30,8 @@ const PreviewWidget = ({
   rootProps,
 }) => {
   const getBG = () => {
-    if (white) return '#ffffff';
     if (inverted) return 'text.primary';
+    if (white) return '#ffffff';
     return 'grey.100';
   };
   return (
