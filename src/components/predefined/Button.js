@@ -32,6 +32,7 @@ const Button = ({
 }) => {
   const iconComponent = typeof icon === 'string' ? <Icon>{icon}</Icon> : icon;
   const loaderSize = getLoaderSize(size);
+  const renderChildren = () => (icon ? <span>{children}</span> : children);
   return (
     <MuiButton
       classes={{
@@ -65,7 +66,7 @@ const Button = ({
         />
       )}
       {icon && iconPosition === 'start' && iconComponent}
-      {shape !== 'circular' && <span>{children}</span>}
+      {shape !== 'circular' && renderChildren()}
       {icon && iconPosition === 'end' && iconComponent}
     </MuiButton>
   );
