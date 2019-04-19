@@ -14,6 +14,7 @@ const getLoaderSize = size => {
 };
 
 const Button = ({
+  className,
   classes,
   inverted,
   loading,
@@ -31,6 +32,7 @@ const Button = ({
 }) => {
   const iconComponent = typeof icon === 'string' ? <Icon>{icon}</Icon> : icon;
   const loaderSize = getLoaderSize(size);
+  const renderChildren = () => (icon ? <span>{children}</span> : children);
   return (
     <MuiButton
       classes={{
@@ -39,6 +41,7 @@ const Button = ({
         disabled: cx('MuiButton-disabled', classes.disabled),
       }}
       className={cx(
+        className,
         inverted && '-inverted',
         loading && '-loading',
         elongated && '-elongated',
@@ -63,13 +66,14 @@ const Button = ({
         />
       )}
       {icon && iconPosition === 'start' && iconComponent}
-      {shape !== 'circular' && <span>{children}</span>}
+      {shape !== 'circular' && renderChildren()}
       {icon && iconPosition === 'end' && iconComponent}
     </MuiButton>
   );
 };
 
 Button.propTypes = {
+  className: PropTypes.string,
   classes: PropTypes.shape({}),
   compact: PropTypes.bool,
   inverted: PropTypes.bool,
@@ -85,6 +89,7 @@ Button.propTypes = {
   loaderProps: PropTypes.shape({}),
 };
 Button.defaultProps = {
+  className: '',
   classes: {},
   compact: false,
   inverted: false,

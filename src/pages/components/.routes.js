@@ -3,6 +3,8 @@ import CardPage from 'pages/components/CardPage';
 import TabsPage from 'pages/components/TabsPage';
 import InputPage from 'pages/components/InputPage';
 import TextFieldPage from 'pages/components/TextFieldPage';
+import IconPage from 'pages/components/IconPage';
+import TypographyPage from 'pages/components/TypographyPage';
 
 /**
  * id: [String] optional
@@ -26,11 +28,10 @@ export default [
     Page: CardPage,
   },
   {
-    id: 'tabs',
-    path: '/components/tabs',
-    primaryText: 'Tabs',
-    secondaryText: `${TabsPage.components.length} items`,
-    Page: TabsPage,
+    id: 'icons',
+    path: '/components/icon',
+    primaryText: 'Icon',
+    Page: IconPage,
   },
   {
     id: 'inputs',
@@ -40,10 +41,23 @@ export default [
     Page: InputPage,
   },
   {
+    id: 'tabs',
+    path: '/components/tabs',
+    primaryText: 'Tabs',
+    secondaryText: `${TabsPage.components.length} items`,
+    Page: TabsPage,
+  },
+  {
     id: 'text-fields',
     path: '/components/text-fields',
     primaryText: 'Text Field',
     secondaryText: `${TextFieldPage.components.length} items`,
     Page: TextFieldPage,
+  },
+  {
+    id: 'typography',
+    path: '/components/typography',
+    primaryText: 'Typography',
+    Page: TypographyPage,
   },
 ];
