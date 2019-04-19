@@ -203,9 +203,7 @@ const TypographySection = ({ globalTheme }) => {
                 component={'button'}
                 onClick={() => alert('Clicked')}
               >
-                <Icon size={'small'}>
-                  far fa-rocket
-                </Icon>
+                <Icon size={'small'}>far fa-rocket</Icon>
                 Lorem Ipsum
               </Link>{' '}
               is simply dummy text of the printing and typesetting industry.{' '}
