@@ -25,7 +25,13 @@ const IconPage = ({ globalTheme }) => (
     </Typography>
     <Typography gutterBottom>
       1. Material icons is not enough. We need{' '}
-      <Link href={'https://fontawesome.com/icons'}>Font Awesome 5</Link>
+      <Link
+        target={'_blank'}
+        rel="noopener"
+        href={'https://fontawesome.com/icons'}
+      >
+        Font Awesome 5
+      </Link>
     </Typography>
     <Typography gutterBottom>
       2. Font Awesome is not 100% ready to use with Material-UI. (there is
@@ -38,7 +44,13 @@ const IconPage = ({ globalTheme }) => (
           <Icon>favorite</Icon>
         </Box>
         <Typography align={'center'} gutterBottom>
-          <Link href={'https://material.io/tools/icons'}>Material Icon</Link>
+          <Link
+            target={'_blank'}
+            rel="noopener"
+            href={'https://material.io/tools/icons'}
+          >
+            Material Icon
+          </Link>
         </Typography>
         <Box py={1} px={2} bgcolor={'rgb(250, 248, 245)'} textAlign={'center'}>
           <CodeHighlight code={'<Icon>favorite</Icon>'} />
@@ -49,7 +61,13 @@ const IconPage = ({ globalTheme }) => (
           <i className={'fab fa-facebook-f'} />
         </Box>
         <Typography align={'center'} gutterBottom>
-          <Link href={'https://fontawesome.com/icons'}>Font Awesome</Link>
+          <Link
+            target={'_blank'}
+            rel="noopener"
+            href={'https://fontawesome.com/icons'}
+          >
+            Font Awesome
+          </Link>
         </Typography>
         <Box py={1} px={2} bgcolor={'rgb(250, 248, 245)'} textAlign={'center'}>
           <CodeHighlight code={"<i className={'fas fa-heart'} />"} />
@@ -83,7 +101,13 @@ const IconPage = ({ globalTheme }) => (
       color, bgColor and shape).
     </Typography>
     <Typography>
-      <Link href={'https://codesandbox.io/s/6yxy45yn9n'}>Code Sandbox</Link>
+      <Link
+        target={'_blank'}
+        rel="noopener"
+        href={'https://codesandbox.io/s/6yxy45yn9n'}
+      >
+        Code Sandbox
+      </Link>
     </Typography>
     <Box py={{ xs: 2, sm: 4 }}>
       <IconSection globalTheme={globalTheme} />

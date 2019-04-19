@@ -125,7 +125,13 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
       Material-UI, just copy the snippet.
     </Typography>
     <Typography>
-      <Link href={'https://codesandbox.io/s/4wmz707on4'}>Code Sandbox</Link>
+      <Link
+        target={'_blank'}
+        rel="noopener"
+        href={'https://codesandbox.io/s/4wmz707on4'}
+      >
+        Code Sandbox
+      </Link>
     </Typography>
     <Box pt={{ xs: 2, sm: 4 }}>
       <ButtonSection globalTheme={globalTheme} />
