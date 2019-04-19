@@ -55,6 +55,7 @@ import PeaEventDialog from 'components/peapods/PeaEventDialog';
 import PeaFilter from 'components/peapods/PeaFilter';
 import PeaAppBar from 'components/peapods/PeaAppBar';
 import PeaConnections from 'components/peapods/PeaConnections';
+import PeaSocialAvatar from 'components/peapods/PeaSocialAvatar';
 
 const PeaSelect = props => <PeaTextField {...props} />;
 PeaSelect.metadata = {
@@ -656,6 +657,12 @@ const components = [
       sm: 12,
       lg: 12,
     },
+  },
+  {
+    component: PeaSocialAvatar,
+    render: () => (
+      <PeaSocialAvatar src={AVATAR} name={'username'} social={'meetup'} />
+    ),
   },
   {
     component: PeaConnections,

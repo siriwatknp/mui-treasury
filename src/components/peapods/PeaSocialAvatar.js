@@ -58,7 +58,7 @@ PeaSocialAvatar.propTypes = {
 };
 PeaSocialAvatar.defaultProps = {};
 PeaSocialAvatar.metadata = {
-  name: 'Pea Avatar',
+  name: 'Pea Social Avatar',
   libraries: [
     {
       text: 'clsx',
