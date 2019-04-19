@@ -18,7 +18,13 @@ const TypographyPage = ({ globalTheme }) => (
     </Typography>
     <Typography gutterBottom>No talk, just try.</Typography>
     <Typography>
-      <Link href={'https://codesandbox.io/s/6yxy45yn9n'}>Code Sandbox</Link>
+      <Link
+        target={'_blank'}
+        rel="noopener"
+        href={'https://codesandbox.io/s/4wmz707on4'}
+      >
+        Code Sandbox
+      </Link>
     </Typography>
     <Box py={{ xs: 2, sm: 4 }}>
       <TypographySection globalTheme={globalTheme} />
