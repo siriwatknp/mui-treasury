@@ -4,6 +4,7 @@ import TabsPage from 'pages/components/TabsPage';
 import InputPage from 'pages/components/InputPage';
 import TextFieldPage from 'pages/components/TextFieldPage';
 import IconPage from 'pages/components/IconPage';
+import TypographyPage from 'pages/components/TypographyPage';
 
 /**
  * id: [String] optional
@@ -52,5 +53,11 @@ export default [
     primaryText: 'Text Field',
     secondaryText: `${TextFieldPage.components.length} items`,
     Page: TextFieldPage,
+  },
+  {
+    id: 'typography',
+    path: '/components/typography',
+    primaryText: 'Typography',
+    Page: TypographyPage,
   },
 ];

@@ -12,6 +12,7 @@ const Icon = ({
   color,
   bgColor,
   shape,
+  push,
   inverted,
   fontAwesomeProps,
   ...props
@@ -30,6 +31,7 @@ const Icon = ({
         inverted && '-inverted',
         link && '-link',
         shape && `-${shape}`,
+        push && `-push-${push}`,
       )}
     >
       {mainIcon.includes('fa-') ? (
@@ -52,6 +54,7 @@ Icon.propTypes = {
   color: PropTypes.oneOf(['', 'danger', 'primary', 'secondary']),
   bgColor: PropTypes.oneOf(['', 'default', 'danger', 'primary', 'secondary']),
   shape: PropTypes.oneOf(['', 'square', 'circular', 'round']),
+  push: PropTypes.oneOf(['', 'left', 'right']),
 };
 Icon.defaultProps = {
   className: '',
@@ -64,13 +67,20 @@ Icon.defaultProps = {
   color: '',
   bgColor: '',
   shape: '',
+  push: '',
 };
-Icon.getTheme = ({ palette, transitions }) => {
+Icon.getTheme = ({ palette, transitions, spacing }) => {
   const invertedColor = palette.common.white;
   return {
     MuiIcon: {
       root: {
-        verticalAlign: 'text-top',
+        verticalAlign: 'sub',
+        '&.-push-left': {
+          marginLeft: spacing.unit,
+        },
+        '&.-push-right': {
+          marginRight: spacing.unit,
+        },
         '& .MuiIcon--fa': {
           verticalAlign: 'unset',
           padding: 2,

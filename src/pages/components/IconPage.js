@@ -90,7 +90,7 @@ const IconPage = ({ globalTheme }) => (
     </Box>
     <Typography variant={'h6'}>How to use</Typography>
     <Typography>
-      1. Copy component in <code>/src/components/predefined/Button.js</code>
+      1. Copy component in <code>/src/components/predefined/Icon.js</code>
     </Typography>
     <Typography>2. Use this component instead of Material-ui Button</Typography>
     <Typography gutterBottom>
