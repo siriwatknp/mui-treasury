@@ -1,11 +1,11 @@
-/* eslint-disable max-len */
+/* eslint-disable */
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { ThemeController } from 'components/organisms';
 import route from 'pages/components/.routes';
 
-const RootComponentPage = () => (
-  <ThemeController>
+const RootComponentPage = ({ location }) => (
+  <ThemeController formHidden={location.pathname === '/components/layout'}>
     {props => (
       <Switch>
         {route.map(({ path, Page }) => (

@@ -49,16 +49,16 @@ const Navigator = withRouter(({ onClickItem, location }) => {
   );
   return (
     <Box mb={2}>
-      <List subheader={<ListSubheader>Intro</ListSubheader>}>
+      <List subheader={<ListSubheader disableSticky>Intro</ListSubheader>}>
         {introduction.map(renderItem)}
       </List>
-      <List subheader={<ListSubheader>Components</ListSubheader>}>
+      <List subheader={<ListSubheader disableSticky>Components</ListSubheader>}>
         {route.map(renderItem)}
       </List>
-      <List subheader={<ListSubheader>Templates</ListSubheader>}>
+      <List subheader={<ListSubheader disableSticky>Templates</ListSubheader>}>
         {templateRoute.map(renderItem)}
       </List>
-      <List subheader={<ListSubheader>Brands</ListSubheader>}>
+      <List subheader={<ListSubheader disableSticky>Brands</ListSubheader>}>
         {brandRoute.map(renderItem)}
       </List>
     </Box>

@@ -5,6 +5,7 @@ import InputPage from 'pages/components/InputPage';
 import TextFieldPage from 'pages/components/TextFieldPage';
 import IconPage from 'pages/components/IconPage';
 import TypographyPage from 'pages/components/TypographyPage';
+import LayoutPage from 'pages/components/LayoutPage';
 
 /**
  * id: [String] optional
@@ -39,6 +40,13 @@ export default [
     primaryText: 'Input',
     secondaryText: `${InputPage.components.length} items`,
     Page: InputPage,
+  },
+  {
+    id: 'layout',
+    path: '/components/layout',
+    primaryText: 'Layout',
+    secondaryText: `${LayoutPage.components.length} items`,
+    Page: LayoutPage,
   },
   {
     id: 'tabs',
