@@ -10,7 +10,6 @@ import { LayoutContext } from './Root';
 const styles = ({
   transitions,
   palette,
-  breakpoints,
   spacing,
   zIndex,
   shadows,
@@ -43,12 +42,6 @@ const styles = ({
     background: palette.common.white,
     boxShadow: shadows[2],
   },
-  dummy: {
-    paddingBottom: 56,
-    [breakpoints.up('sm')]: {
-      paddingBottom: 64,
-    },
-  },
 });
 
 const Nav = ({
@@ -58,14 +51,12 @@ const Nav = ({
   header,
   children,
   collapsedIcon,
-  dummyHidden,
   ...props
 }) => {
   const ctx = useContext(LayoutContext);
   const {
     open,
     setOpen,
-    clipped,
     navVariant,
     navAnchor,
     navWidth,
@@ -91,9 +82,6 @@ const Nav = ({
         anchor={navAnchor}
       >
         <div className={classes.container} style={{ width: getWidth() }}>
-          {clipped && navVariant !== 'temporary' && !dummyHidden && (
-            <div className={classes.dummy} />
-          )}
           {typeof header === 'function' ? header(ctx) : header}
           <div ref={contentRef} className={classes.content}>
             {typeof children === 'function' ? children(ctx) : children}
@@ -132,14 +120,12 @@ Nav.propTypes = {
     inactive: PropTypes.node.isRequired,
     active: PropTypes.node,
   }),
-  dummyHidden: PropTypes.bool,
 };
 Nav.defaultProps = {
   className: '',
   component: 'div',
   header: null,
   collapsedIcon: null,
-  dummyHidden: false,
 };
 
 export default withStyles(styles, { name: 'MuiNav' })(Nav);

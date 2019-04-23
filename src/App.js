@@ -69,7 +69,6 @@ class App extends React.Component {
           <Box flex={1} flexBasis={'48px'} />
         </Header>
         <Nav
-          dummyHidden
           collapsedIcon={{
             inactive: <Icon>chevron_left</Icon>,
             active: <Icon>chevron_right</Icon>,

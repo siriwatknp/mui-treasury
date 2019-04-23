@@ -84,7 +84,6 @@ class Root extends React.Component {
       headerPosition,
       squeezed,
     } = this.state;
-    console.log('collapsible', collapsible);
     const value = {
       ...this.state,
       clipped: getScreenValue(clipped, width, initialState.clipped),
