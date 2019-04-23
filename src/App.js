@@ -6,7 +6,6 @@ import Div100vh from 'react-div-100vh';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 // COMPONENTS
-import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
 import Box from 'components/atoms/Box';
 import Text from 'components/atoms/Text';
@@ -27,7 +26,7 @@ import {
   Root,
   Nav,
   presets,
-} from 'components/predefined/Layout';
+} from 'components/predefined/Layout2';
 
 class App extends React.Component {
   constructor(props) {
@@ -55,9 +54,14 @@ class App extends React.Component {
   render() {
     const { scrollY } = this.state;
     return (
-      <Root config={presets.createContentBasedLayout()} component={Div100vh}>
+      <Root config={presets.createMuiTreasuryLayout()} component={Div100vh}>
         <CssBaseline />
-        <Header menuIcon={<Icon>menu_rounded</Icon>}>
+        <Header
+          menuIcon={{
+            inactive: <Icon>menu_rounded</Icon>,
+            active: <Icon>chevron_left</Icon>,
+          }}
+        >
           <Box flex={1} />
           <Text align={'center'} flexGrow={1} {...Text.brand}>
             Mui Treasury
@@ -65,8 +69,13 @@ class App extends React.Component {
           <Box flex={1} flexBasis={'48px'} />
         </Header>
         <Nav
-          header={({ isBelowBreakpoint }) =>
-            !isBelowBreakpoint && (
+          dummyHidden
+          collapsedIcon={{
+            inactive: <Icon>chevron_left</Icon>,
+            active: <Icon>chevron_right</Icon>,
+          }}
+          header={({ navVariant }) =>
+            navVariant !== 'temporary' && (
               <Box
                 {...Box.alignCenter}
                 pt={1}
@@ -80,18 +89,7 @@ class App extends React.Component {
             )
           }
         >
-          {({ isBelowBreakpoint, setOpen }) => (
-            <>
-              {isBelowBreakpoint && (
-                <Box py={2}>
-                  <IconButton onClick={setOpen}>
-                    <Icon>arrow_back_ios_rounded</Icon>
-                  </IconButton>
-                </Box>
-              )}
-              <Navigator onClickItem={setOpen} />
-            </>
-          )}
+          {({ setOpen }) => <Navigator onClickItem={setOpen} />}
         </Nav>
         <Content zeroPadding>
           <Switch>
