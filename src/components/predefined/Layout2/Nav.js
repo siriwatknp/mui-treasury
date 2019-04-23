@@ -7,13 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Fade from '@material-ui/core/Fade';
 import { LayoutContext } from './Root';
 
-const styles = ({
-  transitions,
-  palette,
-  spacing,
-  zIndex,
-  shadows,
-}) => ({
+const styles = ({ transitions, palette, spacing, zIndex, shadows }) => ({
   root: {},
   container: {
     overflow: 'hidden',
