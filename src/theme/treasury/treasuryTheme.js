@@ -23,6 +23,11 @@ const theme = {
     borderRadius: muiBaseTheme.spacing.unit,
   },
   overrides,
+  props: {
+    MuiTypography: {
+      variant: 'body1',
+    },
+  },
 };
 
 export default createMuiTheme(theme);

@@ -53,6 +53,9 @@ import PeaPersonCard from 'components/peapods/PeaPersonCard';
 import PeaSlider from 'components/peapods/PeaSlider';
 import PeaEventDialog from 'components/peapods/PeaEventDialog';
 import PeaFilter from 'components/peapods/PeaFilter';
+import PeaAppBar from 'components/peapods/PeaAppBar';
+import PeaConnections from 'components/peapods/PeaConnections';
+import PeaSocialAvatar from 'components/peapods/PeaSocialAvatar';
 
 const PeaSelect = props => <PeaTextField {...props} />;
 PeaSelect.metadata = {
@@ -79,6 +82,57 @@ const PEOPLE = [
     name: 'Sawasdee',
     tag: '@helloTH',
     onClick: () => alert('Followed Sawasdee!'),
+  },
+];
+const SOCIAL1 = [
+  {
+    src: 'https://avatars.dicebear.com/v2/avataaars/example.svg',
+    name: 'Yeoman',
+    social: 'twitter',
+  },
+  {
+    src: 'https://avatars.dicebear.com/v2/avataaars/example2.svg',
+    name: 'GGWP',
+    social: 'meetup',
+  },
+  {
+    src: 'https://avatars.dicebear.com/v2/avataaars/example3.svg',
+    name: 'Sawasdee',
+    social: 'facebook',
+  },
+];
+const SOCIAL2 = [
+  {
+    src: 'https://avatars.dicebear.com/v2/avataaars/example4.svg',
+    name: 'Yeoman',
+    social: 'tag',
+  },
+  {
+    src: 'https://avatars.dicebear.com/v2/avataaars/example5.svg',
+    name: 'GGWP',
+    social: 'tag',
+  },
+];
+const SOCIAL3 = [
+  {
+    src: 'https://avatars.dicebear.com/v2/avataaars/example7.svg',
+    name: 'Yeoman',
+    social: 'group',
+  },
+  {
+    src: 'https://avatars.dicebear.com/v2/avataaars/example8.svg',
+    name: 'GGWP',
+    social: 'group',
+  },
+  {
+    src: 'https://avatars.dicebear.com/v2/avataaars/example9.svg',
+    name: 'Sawasdee',
+    social: 'group',
+  },
+  {
+    src: 'https://avatars.dicebear.com/v2/avataaars/example10.svg',
+    name: 'Test',
+    social: 'group',
   },
 ];
 const components = [
@@ -595,6 +649,31 @@ const components = [
         </React.Fragment>
       );
     },
+  },
+  {
+    component: PeaAppBar,
+    render: () => <PeaAppBar position={'static'} />,
+    gridItemProps: {
+      sm: 12,
+      lg: 12,
+    },
+  },
+  {
+    component: PeaSocialAvatar,
+    render: () => (
+      <PeaSocialAvatar src={AVATAR} name={'username'} social={'meetup'} />
+    ),
+  },
+  {
+    component: PeaConnections,
+    render: () => (
+      <PeaConnections
+        followers={SOCIAL1}
+        followings={SOCIAL1}
+        tags={SOCIAL2}
+        groups={SOCIAL3}
+      />
+    ),
   },
 ];
 

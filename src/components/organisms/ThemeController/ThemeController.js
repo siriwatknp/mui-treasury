@@ -115,7 +115,7 @@ class ThemeController extends React.Component {
     }));
 
   render() {
-    const { children } = this.props;
+    const { children, formHidden } = this.props;
     const {
       counter,
       globalTheme,
@@ -137,10 +137,12 @@ class ThemeController extends React.Component {
           />
         </Helmet>
         <Box mr={{ xs: 0, sm: width }}>
-          <GlobalVarForm
-            theme={displayedTheme}
-            onChange={this.handleChangeTheme}
-          />
+          {!formHidden && (
+            <GlobalVarForm
+              theme={displayedTheme}
+              onChange={this.handleChangeTheme}
+            />
+          )}
           {children({
             counter,
             component,
@@ -282,7 +284,10 @@ class ThemeController extends React.Component {
 
 ThemeController.propTypes = {
   children: PropTypes.func.isRequired,
+  formHidden: PropTypes.bool,
 };
-ThemeController.defaultProps = {};
+ThemeController.defaultProps = {
+  formHidden: false,
+};
 
 export default ThemeController;

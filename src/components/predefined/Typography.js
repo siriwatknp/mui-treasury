@@ -33,7 +33,6 @@ const Typography = ({
 Typography.propTypes = {
   className: PropTypes.string,
   inverted: PropTypes.bool,
-  link: PropTypes.bool,
   code: PropTypes.bool,
   indent: PropTypes.oneOf(['', 'small', 'big', 'large']),
   size: PropTypes.oneOf(['small', '', 'big', 'large']),
@@ -45,7 +44,6 @@ Typography.propTypes = {
 Typography.defaultProps = {
   className: '',
   inverted: false,
-  link: false,
   code: false,
   grey: undefined,
   indent: '',

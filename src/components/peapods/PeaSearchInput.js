@@ -1,15 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import InputBase from '@material-ui/core/InputBase';
 import PeaIcon from './PeaIcon';
 
-const PeaSearchInput = props => (
+const PeaSearchInput = ({ className, ...props }) => (
   <InputBase
-    className={'PeaSearchInput-root'}
+    className={`PeaSearchInput-root ${className}`}
     startAdornment={<PeaIcon icon={'search'} />}
     {...props}
   />
 );
 
+PeaSearchInput.propTypes = {
+  className: PropTypes.string,
+};
+PeaSearchInput.defaultProps = {
+  className: '',
+};
 PeaSearchInput.metadata = {
   name: 'Pea Search Input',
 };

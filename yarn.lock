@@ -963,14 +963,6 @@
     recompose "0.28.0 - 0.30.0"
     warning "^4.0.1"
 
-"@material-ui/icons@^3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@material-ui/icons/-/icons-3.0.2.tgz#d67a6dd1ec8312d3a88ec97944a63daeef24fe10"
-  integrity sha512-QY/3gJnObZQ3O/e6WjH+0ah2M3MOgLOzCy8HTUoUx9B6dDrS18vP7Ycw3qrDEKlB6q1KNxy6CZHm5FCauWGy2g==
-  dependencies:
-    "@babel/runtime" "^7.2.0"
-    recompose "0.28.0 - 0.30.0"
-
 "@material-ui/lab@^3.0.0-alpha.30":
   version "3.0.0-alpha.30"
   resolved "https://registry.yarnpkg.com/@material-ui/lab/-/lab-3.0.0-alpha.30.tgz#c6c64d0ff2b28410a09e4009f3677499461f3df8"
@@ -4723,6 +4715,11 @@ getpass@^0.1.1:
   integrity sha1-Xv+OPmhNVprkyysSgmBOi6YhSfo=
   dependencies:
     assert-plus "^1.0.0"
+
+github-buttons@^2.2.9:
+  version "2.2.9"
+  resolved "https://registry.yarnpkg.com/github-buttons/-/github-buttons-2.2.9.tgz#fb426fa469a2050a1c5d69b6413da0d1537f235b"
+  integrity sha512-G/UGx6GKUL3747gTUULGGqWDjKANVbLCnCHdYMqf1iUGYxIj+wMHK9WG4e4J/V0bG03auI4o6bZJQf7IjHyE1A==
 
 glob-base@^0.3.0:
   version "0.3.0"
@@ -9048,6 +9045,13 @@ react-fast-compare@^2.0.1:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
+
+react-github-btn@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/react-github-btn/-/react-github-btn-1.0.5.tgz#03ee7c6cd51f04ef940543b5ec247fbe4fe09a05"
+  integrity sha512-wE3s2e3Rrs6I9n2TDdBSUzTQXJy68EetFBxrYPosAVp/OSP5DwI9u/npf/Eu0/Uww1pTh60yvYO2wOS63HihkQ==
+  dependencies:
+    github-buttons "^2.2.9"
 
 react-helmet@^5.2.0:
   version "5.2.0"

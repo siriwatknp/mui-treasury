@@ -24,6 +24,18 @@ export default ({ palette }) => {
     '& .fa-facebook-f': {
       color: '#3C5A99',
     },
+    '& .fa-twitter': {
+      color: '#38A1F3',
+    },
+    '& .fa-meetup': {
+      color: '#e51937',
+    },
+    '& .fa-hashtag': {
+      color: '#5039e5',
+    },
+    '& .fa-users': {
+      color: '#e58124',
+    },
     '&.PeaIcon--small': {
       fontSize: 16,
     },
