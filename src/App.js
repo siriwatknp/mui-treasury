@@ -21,6 +21,7 @@ import RootBrandPage from 'pages/RootBrandPage';
 import RootTemplatePage from 'pages/RootTemplatePage';
 import InstructionPage from 'pages/InstructionPage';
 import ContributePage from 'pages/ContributePage';
+import LayoutBuilderPage from 'pages/LayoutBuilderPage';
 import {
   Header,
   Content,
@@ -107,6 +108,11 @@ class App extends React.Component {
             <Route exact path={'/'} component={HomePage} />
             <Route exact path={'/instruction'} component={InstructionPage} />
             <Route exact path={'/contribution'} component={ContributePage} />
+            <Route
+              exact
+              path={'/layout-builder'}
+              component={LayoutBuilderPage}
+            />
             <Route exact path={'/components/*'} component={RootComponentPage} />
             <Route exact path={'/brands/*'} component={RootBrandPage} />
             <Route exact path={'/templates/*'} component={RootTemplatePage} />

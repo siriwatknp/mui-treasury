@@ -27,6 +27,11 @@ const introduction = [
     path: '/contribution',
     primaryText: 'Contribution',
   },
+  {
+    id: 'layout-builder',
+    path: '/layout-builder',
+    primaryText: 'Layout Builder',
+  },
 ];
 
 const Navigator = withRouter(({ onClickItem, location }) => {
