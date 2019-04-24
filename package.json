@@ -49,6 +49,7 @@
     "react-div-100vh": "^0.3.2",
     "react-dom": "^16.8.4",
     "react-element-to-jsx-string": "^14.0.2",
+    "react-github-btn": "^1.0.5",
     "react-helmet": "^5.2.0",
     "react-jss": "^8.6.1",
     "react-router-dom": "^4.3.1",

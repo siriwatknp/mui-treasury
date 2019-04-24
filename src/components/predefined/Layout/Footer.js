@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { LayoutContext } from './Root';
 
-const styles = ({ breakpoints, spacing, transitions }) => ({
+const styles = ({ breakpoints, palette, spacing, transitions }) => ({
   root: {
-    flexGrow: 1,
+    borderTop: '1px solid',
+    borderColor: palette.grey[200],
     padding: spacing.unit * 2,
     [breakpoints.up('sm')]: {
       padding: spacing.unit * 3,
@@ -17,7 +18,7 @@ const styles = ({ breakpoints, spacing, transitions }) => ({
   },
 });
 
-const Content = ({
+const Footer = ({
   className,
   component: Component,
   classes,
@@ -32,11 +33,12 @@ const Content = ({
     collapsible,
     collapsed,
     collapsedWidth,
+    footerShrink,
     open,
     navAnchor,
   } = ctx;
   const getMargin = () => {
-    if (navAnchor !== 'left') return 0;
+    if (navAnchor !== 'left' || !footerShrink) return 0;
     if (navVariant === 'persistent' && open) {
       // open is effect only when
       // navVariant === 'persistent' ||
@@ -65,18 +67,18 @@ const Content = ({
   );
 };
 
-Content.propTypes = {
+Footer.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.shape({}).isRequired,
   component: PropTypes.elementType,
   style: PropTypes.shape({}),
   zeroPadding: PropTypes.bool,
 };
-Content.defaultProps = {
+Footer.defaultProps = {
   className: '',
-  component: 'main',
+  component: 'footer',
   style: {},
   zeroPadding: false,
 };
 
-export default withStyles(styles, { name: 'MuiContent' })(Content);
+export default withStyles(styles, { name: 'MuiFooter' })(Footer);

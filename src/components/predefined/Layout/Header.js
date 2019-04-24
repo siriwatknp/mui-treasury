@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, withTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import Hidden from '@material-ui/core/Hidden';
-import { Consumer } from './Root';
+import { LayoutContext } from './Root';
 
 const styles = ({ transitions }) => ({
   root: {
@@ -20,132 +19,88 @@ const styles = ({ transitions }) => ({
   },
 });
 
+const createGet = (
+  { clipped, navVariant, collapsible, collapsed, open, squeezed, navAnchor },
+  normal,
+  shrink,
+  pushed,
+  unsqueeze,
+) => () => {
+  if (clipped || navAnchor !== 'left') return normal;
+  if (navVariant === 'persistent' && open) {
+    // open is effect only when
+    // navVariant === 'persistent' ||
+    // navVariant === 'temporary'
+    if (squeezed) {
+      return pushed;
+    }
+    return unsqueeze;
+  }
+  if (navVariant === 'permanent') {
+    if (collapsible) {
+      if (collapsed) return shrink;
+      return pushed;
+    }
+    return pushed;
+  }
+  return normal;
+};
+
 const Header = ({
   className,
   component: Component,
   classes,
   menuIcon,
-  menuHidden,
   style,
-  position,
   theme,
   children,
   toolbarProps,
   ...props
-}) => (
-  <Consumer>
-    {({
-      clipped,
-      collapsed,
-      collapsible,
-      collapsedWidth,
-      setCollapse,
-      navPermanent,
-      navVariant,
-      navWidth,
-      // Defined Breakpoint in Root's props
-      open,
-      setOpen,
-      breakpoint,
-      isBelowBreakpoint,
-    }) => {
-      const getWidth = () => {
-        if (isBelowBreakpoint) {
-          if (
-            breakpoint.variant === 'persistent' &&
-            breakpoint.squeeze &&
-            open
-          ) {
-            return `calc(100% - ${navWidth}px)`;
-          }
-          return '100%';
-        }
-        if (navVariant === 'persistent' && open) {
-          return `calc(100% - ${navWidth}px)`;
-        }
-        if (clipped) {
-          return '100%';
-        }
-        if (navPermanent && collapsible) {
-          return `calc(100% - ${collapsed ? collapsedWidth : navWidth}px)`;
-        }
-        return '100%';
-      };
-      const getMargin = () => {
-        if (isBelowBreakpoint) {
-          if (breakpoint.variant === 'persistent' && open) {
-            return navWidth;
-          }
-          return 0;
-        }
-        if (navVariant === 'persistent' && open) {
-          return navWidth;
-        }
-        if (clipped) {
-          return 0;
-        }
-        if (navPermanent && collapsible) {
-          return collapsed ? collapsedWidth : navWidth;
-        }
-        return 0;
-      };
-      const getNextScreen = () => {
-        const index = theme.breakpoints.keys.indexOf(breakpoint.value);
-        return (
-          theme.breakpoints.keys[index + 1] || theme.breakpoints.keys[index]
-        );
-      };
-      const getZIndex = () => {
-        if (!isBelowBreakpoint && clipped) return theme.zIndex.drawer + 1;
-        return theme.zIndex.appBar;
-      };
-      const renderMenuIcon = () => (
-        <IconButton onClick={setOpen} className={classes.menuButton}>
-          {menuIcon}
-        </IconButton>
-      );
-      return (
-        <AppBar
-          color={'default'}
-          position={position}
-          elevation={0}
-          {...props}
-          className={`${className} ${classes.root}`}
-          style={{
-            ...style,
-            zIndex: getZIndex(),
-            width: getWidth(),
-            marginLeft: getMargin(),
-          }}
-        >
-          <Toolbar {...toolbarProps}>
-            {!menuHidden &&
-              menuIcon &&
-              (breakpoint && navVariant === 'permanent' ? (
-                <Hidden
-                  implementation={'css'}
-                  {...{ [`${getNextScreen()}Up`]: true }}
-                >
-                  {renderMenuIcon()}
-                </Hidden>
-              ) : (
-                renderMenuIcon()
-              ))}
-            {typeof children === 'function'
-              ? children({
-                  open,
-                  setOpen,
-                  collapsed,
-                  setCollapse,
-                  isBelowBreakpoint,
-                })
-              : children}
-          </Toolbar>
-        </AppBar>
-      );
-    }}
-  </Consumer>
-);
+}) => {
+  const ctx = useContext(LayoutContext);
+  const {
+    clipped,
+    collapsedWidth,
+    navWidth,
+    navVariant,
+    headerPosition,
+    open,
+    setOpen,
+  } = ctx;
+  const getWidth = createGet(
+    ctx,
+    '100%',
+    `calc(100% - ${collapsedWidth}px)`,
+    `calc(100% - ${navWidth}px)`,
+    '100%',
+  );
+  const getMargin = createGet(ctx, 0, collapsedWidth, navWidth, navWidth);
+  const shouldRenderMenu = navVariant !== 'permanent' && !!menuIcon;
+  return (
+    <AppBar
+      color={'default'}
+      elevation={0}
+      {...props}
+      className={`${className} ${classes.root}`}
+      position={headerPosition}
+      style={{
+        ...style,
+        zIndex: clipped ? theme.zIndex.drawer + 1 : theme.zIndex.appBar,
+        width: getWidth(),
+        marginLeft: getMargin(),
+      }}
+    >
+      <Toolbar {...toolbarProps}>
+        {shouldRenderMenu && (
+          <IconButton onClick={setOpen} className={classes.menuButton}>
+            {open ? menuIcon.active : menuIcon.inactive || menuIcon.active}
+          </IconButton>
+        )}
+        {typeof children === 'function' ? children(ctx) : children}
+      </Toolbar>
+    </AppBar>
+  );
+};
 
 Header.propTypes = {
   className: PropTypes.string,
@@ -156,17 +111,18 @@ Header.propTypes = {
   theme: PropTypes.shape({}).isRequired,
   children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]).isRequired,
   toolbarProps: PropTypes.shape({}),
-  menuHidden: PropTypes.bool,
-  menuIcon: PropTypes.node,
+  menuIcon: PropTypes.shape({
+    inactive: PropTypes.node.isRequired,
+    active: PropTypes.node,
+  }),
 };
 Header.defaultProps = {
   className: '',
-  menuHidden: false,
   component: 'div',
   style: {},
   position: 'relative',
   toolbarProps: {},
-  menuIcon: '',
+  menuIcon: null,
 };
 
 export default withTheme()(withStyles(styles, { name: 'MuiHeader' })(Header));

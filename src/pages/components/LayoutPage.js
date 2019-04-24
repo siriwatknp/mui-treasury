@@ -17,14 +17,19 @@ const providedTheme = merge(treasuryTheme, {
 
 const exampleCode = `
   import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-  import { Root, Header, Nav, Content, presets } from "./Layout";
+  import { Root, Header, Nav, Content, Footer, presets } from "./Layout";
   
   function App() {
     return (
       <MuiThemeProvider theme={createMuiTheme()}>
         <Root>
           <CssBaseline />
-          <Header menuIcon={<Icon>menu</Icon>}>
+          <Header
+            menuIcon={{
+              inactive: <Icon>menu</Icon>,
+              active: <Icon>chevron_left</Icon>,
+            }}
+          >
             <Typography>Header</Typography>
           </Header>
           <Nav>
@@ -33,6 +38,9 @@ const exampleCode = `
           <Content>
             <Typography>Content</Typography>
           </Content>
+          <Footer>
+            <Typography>Footer</Typography>
+          </Footer>
         </Root>
       </MuiThemeProvider>
     );
@@ -53,6 +61,7 @@ const code2 = `
   
   config={{
     navWidth: {
+      // xs is 256px by default
       sm: 200, // in sm
       md: 256, // mdUp
     }
@@ -60,6 +69,7 @@ const code2 = `
   
   config={{
     navWidth: {
+      // xs is 256px by default
       sm: 200, // in sm && md
       lg: 256, // lgUp
     }
@@ -76,15 +86,27 @@ const code4 = `
   config={{
     collapsible: true,
     collapsedWidth: 64, // default
+    // support responsive pattern
+    // ex. collapsedWidth: { xs: 64, md: 80 }
   }}
 `;
 
 const code5 = `
   // from @material-ui/icons
-  <Header menuIcon={<MenuIcon />}>
+  <Header
+    menuIcon={{
+      inactive: <MenuIcon />,
+      active: <ChevronLeft />,
+    }}
+  >
   
   // or from @material-ui/core
-  <Header menuIcon={<Icon>menu</Icon}>
+  <Header
+    menuIcon={{
+      inactive: <Icon>menu</Icon>,
+      active: <Icon>chevron_left</Icon>,
+    }}
+  >
 `;
 
 const codePreset0 = `
@@ -122,7 +144,7 @@ const LayoutPage = () => (
         Material UI <Link underline={'none'}>Layout</Link>
       </Typography>
       <Typography gutterBottom>
-        <b>Version 0.1</b>
+        <b>Version 1.0</b>
       </Typography>
       <Typography indent={'small'}>
         Layout is a group of Material-UI components that are enhanced and
@@ -163,7 +185,7 @@ const LayoutPage = () => (
       </Typography>
       <Typography>
         It must be easy enough to use, however still be able to adjust to compat
-        with real word examples and usages. More importantly, it need to follow
+        with real word examples and usages. More importantly, it need to follow{' '}
         <Link
           target={'_blank'}
           rel="noopener"
@@ -245,7 +267,7 @@ const LayoutPage = () => (
         </Grid>
         <Grid item xs={12}>
           <iframe
-            src="https://codesandbox.io/embed/6xnlp688v3?fontsize=14&hidenavigation=1"
+            src="https://codesandbox.io/embed/7mn9xq3nnj?fontsize=14&hidenavigation=1"
             title="Material-UI Layout"
             style={{
               width: '100%',
@@ -376,8 +398,8 @@ const LayoutPage = () => (
                 image from material.io
               </Typography>
               <Typography variant={'body2'}>
-                If you want to add a menu icon when the screen is in tablet or
-                smart phone mode. (The drawer is automatically shrink)
+                If you want to add a menu icon to the Header when the drawer
+                variant is persistent or temporary to open it.
               </Typography>
               <CodeHighlight code={code5} />
             </Grid>
@@ -401,7 +423,7 @@ const LayoutPage = () => (
             <b>Default Layout</b>
           </Typography>
           <Image
-            src={'https://media.giphy.com/media/3ojiPjn1HPFbv8OapW/giphy.gif'}
+            src={'https://media.giphy.com/media/1jXGr4qb8dVizIUudS/giphy.gif'}
           />
           <Typography component={'div'} gutterBottom color={'textSecondary'}>
             <ul>
@@ -416,7 +438,7 @@ const LayoutPage = () => (
             <b>Fixed Layout</b>
           </Typography>
           <Image
-            src={'https://media.giphy.com/media/B1RUwReThXBESlFb3x/giphy.gif'}
+            src={'https://media.giphy.com/media/fnW25ZYsCtCyrX2aho/giphy.gif'}
           />
           <Typography component={'div'} gutterBottom color={'textSecondary'}>
             <ul>
@@ -432,7 +454,7 @@ const LayoutPage = () => (
             <b>Content Based Layout</b>
           </Typography>
           <Image
-            src={'https://media.giphy.com/media/KY1Qh3Idec3MrTpSmi/giphy.gif'}
+            src={'https://media.giphy.com/media/1ZnFrQUZpCibwtTGj9/giphy.gif'}
           />
           <Typography component={'div'} gutterBottom color={'textSecondary'}>
             <ul>
@@ -449,7 +471,7 @@ const LayoutPage = () => (
             <b>Cozy Layout</b>
           </Typography>
           <Image
-            src={'https://media.giphy.com/media/1UPPQkvAk218gsu7mq/giphy.gif'}
+            src={'https://media.giphy.com/media/w9d1LsOBFndXpzV62z/giphy.gif'}
           />
           <Typography component={'div'} gutterBottom color={'textSecondary'}>
             <ul>

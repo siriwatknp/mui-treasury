@@ -4,6 +4,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Div100vh from 'react-div-100vh';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import GitHubButton from 'react-github-btn';
 
 // COMPONENTS
 import Icon from '@material-ui/core/Icon';
@@ -26,7 +27,7 @@ import {
   Root,
   Nav,
   presets,
-} from 'components/predefined/Layout2';
+} from 'components/predefined/Layout';
 
 class App extends React.Component {
   constructor(props) {
@@ -62,11 +63,22 @@ class App extends React.Component {
             active: <Icon>chevron_left</Icon>,
           }}
         >
-          <Box flex={1} />
-          <Text align={'center'} flexGrow={1} {...Text.brand}>
+          <Box width={{ xs: 0, md: 81.5 }} />
+          <Box flex={1} display={{ xs: 'none', sm: 'block' }} />
+          <Text align={'center'} {...Text.brand}>
             Mui Treasury
           </Text>
-          <Box flex={1} flexBasis={'48px'} />
+          <Box flex={1} />
+          <Box>
+            <GitHubButton
+              href="https://github.com/siriwatknp/mui-treasury"
+              data-size="large"
+              data-show-count="true"
+              aria-label="Star siriwatknp/mui-treasury on GitHub"
+            >
+              Star
+            </GitHubButton>
+          </Box>
         </Header>
         <Nav
           collapsedIcon={{

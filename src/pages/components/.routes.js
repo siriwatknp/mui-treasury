@@ -45,7 +45,7 @@ export default [
     id: 'layout',
     path: '/components/layout',
     primaryText: 'Layout',
-    secondaryText: `${LayoutPage.components.length} items`,
+    // secondaryText: `${LayoutPage.components.length} items`,
     Page: LayoutPage,
   },
   {
