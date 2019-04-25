@@ -194,7 +194,7 @@ const LayoutBuilderPage = ({ classes }) => {
                   icon={'arrow_back'}
                   onClick={() => {
                     scroll.scrollToTop(scrollConfig);
-                    setTimeout(() => setStep(step - 1), 400)
+                    setTimeout(() => setStep(step - 1), 400);
                   }}
                 >
                   Back
@@ -219,7 +219,7 @@ const LayoutBuilderPage = ({ classes }) => {
                         setScreen('md');
                       }
                       setStep(step + 1);
-                    }, 400)
+                    }, 400);
                   }}
                 >
                   Next
