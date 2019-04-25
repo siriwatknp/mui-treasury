@@ -12,5 +12,10 @@ export default ({ muiBaseTheme: { palette } }) => ({
         color: palette.text.primary,
       },
     },
+    caption: {
+      color: palette.text.secondary,
+      margin: '8px 0 16px',
+      textAlign: 'center',
+    },
   },
 });

@@ -72,6 +72,7 @@ Typography.getTheme = ({ palette, spacing }) => {
     ['big', spacing.unit * 3],
     ['large', spacing.unit * 4],
   ];
+  const sizes = [['small', 12], ['big', 20], ['large', 24]];
   return {
     MuiTypography: {
       root: {
@@ -112,6 +113,15 @@ Typography.getTheme = ({ palette, spacing }) => {
             ...prev,
             [`&.-indent-${curr[0]}`]: {
               textIndent: curr[1],
+            },
+          }),
+          {},
+        ),
+        ...sizes.reduce(
+          (prev, curr) => ({
+            ...prev,
+            [`&.-${curr[0]}`]: {
+              fontSize: curr[1],
             },
           }),
           {},

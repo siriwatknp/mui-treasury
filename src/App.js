@@ -21,7 +21,7 @@ import RootBrandPage from 'pages/RootBrandPage';
 import RootTemplatePage from 'pages/RootTemplatePage';
 import InstructionPage from 'pages/InstructionPage';
 import ContributePage from 'pages/ContributePage';
-import LayoutBuilderPage from 'pages/LayoutBuilderPage';
+import LayoutBuilderPage from 'pages/Layout/LayoutBuilderPage';
 import {
   Header,
   Content,

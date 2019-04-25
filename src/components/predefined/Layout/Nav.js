@@ -7,7 +7,14 @@ import IconButton from '@material-ui/core/IconButton';
 import Grow from '@material-ui/core/Grow';
 import { LayoutContext } from './Root';
 
-const styles = ({ transitions, palette, spacing, zIndex, shadows }) => ({
+const styles = ({
+  breakpoints,
+  transitions,
+  palette,
+  spacing,
+  zIndex,
+  shadows,
+}) => ({
   root: {},
   container: {
     overflow: 'hidden',
@@ -27,7 +34,11 @@ const styles = ({ transitions, palette, spacing, zIndex, shadows }) => ({
     backgroundColor: palette.grey[50],
     textAlign: 'center',
     borderRadius: 0,
-    minHeight: 40,
+    borderTop: '1px solid',
+    borderColor: 'rgba(0,0,0,0.12)',
+    [breakpoints.up('sm')]: {
+      minHeight: 40,
+    },
   },
   closeButton: {
     position: 'absolute',
@@ -35,7 +46,7 @@ const styles = ({ transitions, palette, spacing, zIndex, shadows }) => ({
     zIndex: zIndex.modal + 1,
     background: palette.common.white,
     boxShadow: shadows[2],
-    '&:hover': {
+    '@media (hover: none)': {
       backgroundColor: palette.grey[300],
     },
   },
