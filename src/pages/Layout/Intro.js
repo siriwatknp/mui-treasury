@@ -28,7 +28,7 @@ const Intro = () => (
       Here is the list of available config in each part.
     </Typography>
     <Box ml={3}>
-      <Typography gutterBottom>
+      <Typography component={'div'} gutterBottom>
         <b>Navigation</b>
         <ul>
           <li>variant</li>
@@ -36,20 +36,20 @@ const Intro = () => (
           <li>collasible</li>
         </ul>
       </Typography>
-      <Typography gutterBottom>
+      <Typography component={'div'} gutterBottom>
         <b>Header</b>
         <ul>
           <li>clipped</li>
           <li>variant</li>
         </ul>
       </Typography>
-      <Typography gutterBottom>
+      <Typography component={'div'} gutterBottom>
         <b>Content</b>
         <ul>
           <li>squeezed</li>
         </ul>
       </Typography>
-      <Typography gutterBottom>
+      <Typography component={'div'} gutterBottom>
         <b>Footer</b>
         <ul>
           <li>shrank</li>

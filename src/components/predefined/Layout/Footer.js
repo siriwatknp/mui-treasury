@@ -23,7 +23,6 @@ const Footer = ({
   component: Component,
   classes,
   style,
-  zeroPadding,
   ...props
 }) => {
   const ctx = useContext(LayoutContext);
@@ -59,7 +58,6 @@ const Footer = ({
       {...props}
       className={`${className} ${classes.root}`}
       style={{
-        ...(zeroPadding && { padding: 0 }),
         ...style,
         marginLeft: getMargin(),
       }}
@@ -72,13 +70,11 @@ Footer.propTypes = {
   classes: PropTypes.shape({}).isRequired,
   component: PropTypes.elementType,
   style: PropTypes.shape({}),
-  zeroPadding: PropTypes.bool,
 };
 Footer.defaultProps = {
   className: '',
   component: 'footer',
   style: {},
-  zeroPadding: false,
 };
 
 export default withStyles(styles, { name: 'MuiFooter' })(Footer);

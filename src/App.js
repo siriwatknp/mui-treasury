@@ -103,7 +103,7 @@ class App extends React.Component {
         >
           {({ setOpen }) => <Navigator onClickItem={setOpen} />}
         </Nav>
-        <Content zeroPadding>
+        <Content>
           <Switch>
             <Route exact path={'/'} component={HomePage} />
             <Route exact path={'/instruction'} component={InstructionPage} />

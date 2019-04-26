@@ -125,7 +125,7 @@ const GetCode = ({ classes, config, icon, open, onClose }) => {
   const [index, setIndex] = useState(0);
   return (
     <Dialog open={open} onClose={onClose}>
-      <Tabs fullWidth value={index} onChange={(e, val) => setIndex(val)}>
+      <Tabs variant={'fullWidth'} value={index} onChange={(e, val) => setIndex(val)}>
         <Tab
           className={classes.tab}
           label={

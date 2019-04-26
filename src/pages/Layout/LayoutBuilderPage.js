@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import get from 'lodash/get';
 import zipObjectDeep from 'lodash/zipObjectDeep';
 import mapValues from 'lodash/mapValues';
 import { animateScroll as scroll } from 'react-scroll';
@@ -105,9 +106,15 @@ const LayoutBuilderPage = ({ classes }) => {
     },
   });
   const onChange = (keys, values) => {
+    console.log('screen', screen);
     setConfig({
       ...config,
-      ...zipObjectDeep(keys.map(key => `${key}.${screen}`), values),
+      ...keys.reduce((result, key, index) => ({
+        [key]: {
+          ...config[key],
+          [screen]: values[index],
+        }
+      }), {}),
     });
   };
   const getActiveStep = () => {
@@ -126,6 +133,22 @@ const LayoutBuilderPage = ({ classes }) => {
       return <ContentForm {...mapValues(config, screen)} onChange={onChange} />;
     return <FooterForm {...mapValues(config, screen)} onChange={onChange} />;
   };
+  const onNextStep = value => () => {
+    const nextStep = step + value;
+    scroll.scrollToTop(scrollConfig);
+    setTimeout(() => {
+      if (nextStep <= 4) {
+        setScreen('xs');
+      } else if (nextStep <= 8) {
+        setScreen('sm');
+      } else if (nextStep <= 12) {
+        setScreen('md');
+      }
+      setStep(nextStep);
+    }, 400);
+  };
+  console.log('c screen', screen);
+  console.log('config', config);
   return (
     <Box p={{ xs: 2, sm: 3 }}>
       {step === 0 ? (
@@ -192,10 +215,7 @@ const LayoutBuilderPage = ({ classes }) => {
                   size={'big'}
                   style={{ marginRight: 8 }}
                   icon={'arrow_back'}
-                  onClick={() => {
-                    scroll.scrollToTop(scrollConfig);
-                    setTimeout(() => setStep(step - 1), 400);
-                  }}
+                  onClick={onNextStep(-1)}
                 >
                   Back
                 </Button>
@@ -207,20 +227,7 @@ const LayoutBuilderPage = ({ classes }) => {
                   size={'big'}
                   icon={'arrow_forward'}
                   iconPosition={'end'}
-                  onClick={() => {
-                    const nextStep = step + 1;
-                    scroll.scrollToTop(scrollConfig);
-                    setTimeout(() => {
-                      if (nextStep <= 4) {
-                        setScreen('xs');
-                      } else if (nextStep <= 8) {
-                        setScreen('sm');
-                      } else if (nextStep <= 12) {
-                        setScreen('md');
-                      }
-                      setStep(step + 1);
-                    }, 400);
-                  }}
+                  onClick={onNextStep(1)}
                 >
                   Next
                 </Button>

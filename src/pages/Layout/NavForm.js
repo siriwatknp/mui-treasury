@@ -95,7 +95,9 @@ const NavForm = ({
               [Number(e.target.value) ? Number(e.target.value) : 0],
             )
           }
-          helperText={'accepts number only'}
+          helperText={
+            'Accepts number only. Width value around 192px - 256px is recommended.'
+          }
         />
       }
     />
