@@ -109,12 +109,15 @@ const LayoutBuilderPage = ({ classes }) => {
     console.log('screen', screen);
     setConfig({
       ...config,
-      ...keys.reduce((result, key, index) => ({
-        [key]: {
-          ...config[key],
-          [screen]: values[index],
-        }
-      }), {}),
+      ...keys.reduce(
+        (result, key, index) => ({
+          [key]: {
+            ...config[key],
+            [screen]: values[index],
+          },
+        }),
+        {},
+      ),
     });
   };
   const getActiveStep = () => {
