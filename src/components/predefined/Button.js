@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Color from 'color';
 import cx from 'clsx';
 import MuiButton from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
+import Icon from 'components/predefined/Icon';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 const getLoaderSize = size => {
@@ -13,9 +13,22 @@ const getLoaderSize = size => {
   return 20;
 };
 
+const injectColor = color => {
+  if (
+    color === 'inherit' ||
+    color === 'primary' ||
+    color === 'secondary' ||
+    color === 'default'
+  ) {
+    return color;
+  }
+  return undefined;
+};
+
 const Button = ({
   className,
   classes,
+  color,
   inverted,
   loading,
   elongated,
@@ -23,16 +36,20 @@ const Button = ({
   shape,
   compact,
   shadowless,
+  labelExpanded,
   mobileFullWidth,
   icon,
+  iconProps,
   iconPosition,
   children,
   loaderProps,
   ...props
 }) => {
-  const iconComponent = typeof icon === 'string' ? <Icon>{icon}</Icon> : icon;
+  const iconComponent =
+    typeof icon === 'string' ? <Icon {...iconProps}>{icon}</Icon> : icon;
   const loaderSize = getLoaderSize(size);
-  const renderChildren = () => (icon ? <span>{children}</span> : children);
+  const renderChildren = () =>
+    icon ? <span className={'MuiButton-text'}>{children}</span> : children;
   return (
     <MuiButton
       classes={{
@@ -45,12 +62,15 @@ const Button = ({
         inverted && '-inverted',
         loading && '-loading',
         elongated && '-elongated',
+        color && `-color-${color}`,
         size && `-${size}`,
         shape && `-${shape}`,
+        labelExpanded && '-labelExpanded',
         mobileFullWidth && '-mobileFullWidth',
         shadowless && '-shadowless',
         compact && '-compact',
       )}
+      color={injectColor(color)}
       {...props}
     >
       {loading && (
@@ -75,32 +95,44 @@ const Button = ({
 Button.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.shape({}),
+  color: PropTypes.oneOf([
+    'default',
+    'inherit',
+    'primary',
+    'secondary',
+    'danger',
+  ]),
   compact: PropTypes.bool,
   inverted: PropTypes.bool,
   loading: PropTypes.bool,
   elongated: PropTypes.bool,
+  labelExpanded: PropTypes.bool,
   mobileFullWidth: PropTypes.bool,
   shadowless: PropTypes.bool,
-  size: PropTypes.oneOf(['small', 'default', 'big', 'large']),
-  shape: PropTypes.oneOf(['default', 'chubby', 'circular']),
-  iconPosition: PropTypes.oneOf(['start', 'end']),
+  size: PropTypes.oneOf(['small', '', 'big', 'large']),
+  shape: PropTypes.oneOf(['', 'chubby', 'circular']),
   children: PropTypes.node.isRequired,
   icon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  iconPosition: PropTypes.oneOf(['start', 'end']),
+  iconProps: PropTypes.shape({}),
   loaderProps: PropTypes.shape({}),
 };
 Button.defaultProps = {
   className: '',
   classes: {},
+  color: 'default',
   compact: false,
   inverted: false,
   loading: false,
   elongated: false,
+  labelExpanded: false,
   mobileFullWidth: false,
   shadowless: false,
-  size: 'default',
-  shape: 'default',
+  size: '',
+  shape: '',
   icon: '',
   iconPosition: 'start',
+  iconProps: {},
   loaderProps: {},
 };
 Button.getTheme = ({ breakpoints, palette, spacing }) => {
@@ -111,6 +143,12 @@ Button.getTheme = ({ breakpoints, palette, spacing }) => {
   return {
     MuiButton: {
       root: {
+        '&.-labelExpanded': {
+          '& .MuiButton-text': {
+            marginLeft: 'auto',
+            marginRight: 'auto',
+          },
+        },
         '&.-chubby': {
           borderRadius: 100,
           padding: '6px 12px',
@@ -149,6 +187,9 @@ Button.getTheme = ({ breakpoints, palette, spacing }) => {
           [breakpoints.only('xs')]: {
             width: '100%',
           },
+        },
+        '&.-color-danger': {
+          color: palette.error.main,
         },
         '&.-inverted': {
           color: invertedColor,
@@ -229,6 +270,13 @@ Button.getTheme = ({ breakpoints, palette, spacing }) => {
         },
       },
       contained: {
+        '&.-color-danger': {
+          backgroundColor: palette.error.main,
+          color: invertedColor,
+        },
+        '&$focusVisible.-shadowless': {
+          boxShadow: 'none',
+        },
         '&.-shadowless': {
           boxShadow: 'none',
           '&:active': {

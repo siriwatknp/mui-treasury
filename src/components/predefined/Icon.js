@@ -3,18 +3,32 @@ import cx from 'clsx';
 import PropTypes from 'prop-types';
 import MuiIcon from '@material-ui/core/Icon';
 
+const injectColor = color => {
+  if (
+    color === 'inherit' ||
+    color === 'primary' ||
+    color === 'secondary' ||
+    color === 'action' ||
+    color === 'error' ||
+    color === ' disabled'
+  ) {
+    return color;
+  }
+  return undefined;
+};
+
 const Icon = ({
+  bgColor,
   className,
   children,
-  icon,
-  size,
-  link,
   color,
-  bgColor,
-  shape,
-  push,
-  inverted,
   fontAwesomeProps,
+  icon,
+  inverted,
+  link,
+  push,
+  size,
+  shape,
   ...props
 }) => {
   const mainIcon = children || icon;
@@ -25,14 +39,15 @@ const Icon = ({
       className={cx(
         'MuiIcon-root',
         className,
-        size && `-${size}`,
-        color && `-${color}`,
         bgColor && `-bg-${bgColor}`,
+        color && `-${color}`,
         inverted && '-inverted',
         link && '-link',
-        shape && `-${shape}`,
         push && `-push-${push}`,
+        shape && `-${shape}`,
+        size && `-${size}`,
       )}
+      color={injectColor(color)}
     >
       {mainIcon.includes('fa-') ? (
         <i className={cx('MuiIcon--fa', mainIcon)} {...fontAwesomeProps} />
@@ -51,23 +66,38 @@ Icon.propTypes = {
   inverted: PropTypes.bool,
   link: PropTypes.bool,
   size: PropTypes.oneOf(['small', '', 'big', 'large']),
-  color: PropTypes.oneOf(['', 'danger', 'primary', 'secondary']),
-  bgColor: PropTypes.oneOf(['', 'default', 'danger', 'primary', 'secondary']),
+  color: PropTypes.oneOf([
+    '',
+    'inherit',
+    'primary',
+    'secondary',
+    'action',
+    'error',
+    'disabled',
+  ]),
+  bgColor: PropTypes.oneOf([
+    '',
+    'default',
+    'danger',
+    'primary',
+    'secondary',
+    'white',
+  ]),
   shape: PropTypes.oneOf(['', 'square', 'circular', 'round']),
   push: PropTypes.oneOf(['', 'left', 'right']),
 };
 Icon.defaultProps = {
+  bgColor: '',
   className: '',
   children: null,
+  color: '',
   fontAwesomeProps: {},
   icon: '',
   inverted: false,
   link: false,
-  size: '',
-  color: '',
-  bgColor: '',
-  shape: '',
   push: '',
+  size: '',
+  shape: '',
 };
 Icon.getTheme = ({ palette, transitions, spacing }) => {
   const invertedColor = palette.common.white;
@@ -127,15 +157,6 @@ Icon.getTheme = ({ palette, transitions, spacing }) => {
             color: invertedColor,
           },
         },
-        '&.-primary': {
-          color: palette.primary.main,
-        },
-        '&.-secondary': {
-          color: palette.secondary.main,
-        },
-        '&.-danger': {
-          color: palette.error.main,
-        },
         '&[class*="-bg"]': {
           width: '1.5em',
           height: '1.5em',
@@ -158,6 +179,15 @@ Icon.getTheme = ({ palette, transitions, spacing }) => {
         '&.-bg-danger': {
           backgroundColor: palette.error.main,
           color: invertedColor,
+        },
+        '&.-bg-white': {
+          backgroundColor: invertedColor,
+        },
+        '&.-bg-lightPrimary': {
+          backgroundColor: palette.primary.light,
+        },
+        '&.-bg-lightSecondary': {
+          backgroundColor: palette.secondary.light,
         },
         '&.-square': {
           borderRadius: 0,

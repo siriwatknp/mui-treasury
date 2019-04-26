@@ -1,7 +1,7 @@
 /* eslint-disable no-alert, max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
+import PeaButton from './PeaButton';
 import PeaDialog from './PeaDialog';
 
 const PeaConfirmation = ({
@@ -20,10 +20,12 @@ const PeaConfirmation = ({
     open={open}
     onClose={onClose}
     actions={[
-      <Button onClick={onClose}>Cancel</Button>,
-      <Button className={'MuiButton--danger'} onClick={onSubmit}>
+      <PeaButton elongated onClick={onClose}>
+        Cancel
+      </PeaButton>,
+      <PeaButton elongated color={'danger'} onClick={onSubmit}>
         Block
-      </Button>,
+      </PeaButton>,
     ]}
     {...props}
   />

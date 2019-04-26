@@ -25,11 +25,15 @@ const PeaRegister = ({ open, onClose }) => (
           </Typography>
         </Box>
         <Box display={'flex'} px={0.5} pb={3}>
-          <PeaButton variant={'contained'} color={'primary'} fullWidth>
-            <PeaIcon icon={'fab fa-facebook-f'} bgColor={'white'} circular />
-            <span>Register with Facebook</span>
+          <PeaButton
+            variant={'contained'}
+            color={'primary'}
+            fullWidth
+            icon={<PeaIcon icon={'fab fa-facebook-f'} bgColor={'white'} />}
+          >
+            Register with Facebook
           </PeaButton>
-          <IconButton className={'IconButton-google'}>
+          <IconButton style={{ width: 45 }} className={'IconButton-google'}>
             <img
               alt={'google'}
               src={

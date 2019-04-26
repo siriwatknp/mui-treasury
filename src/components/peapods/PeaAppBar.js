@@ -9,7 +9,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import PeaMenuItem from './PeaMenuItem';
 import PeaAvatar from './PeaAvatar';
 import PeaButton from './PeaButton';
-import PeaIcon from './PeaIcon';
 import PeaSearchInput from './PeaSearchInput';
 import { ReactComponent as Logo } from './assets/peapods-logo-circle.svg';
 
@@ -79,9 +78,14 @@ const PeaAppBar = ({ classes, ...props }) => (
             <PeaSearchInput placeholder={'Find...'} className={classes.input} />
           </Grid>
           <Grid item>
-            <PeaButton variant={'contained'} color={'primary'} size={'small'}>
-              <span>Create Event</span>
-              <PeaIcon icon={'add'} light circular />
+            <PeaButton
+              variant={'contained'}
+              color={'primary'}
+              icon={'add'}
+              iconPosition={'end'}
+              iconProps={{ bgColor: 'lightPrimary' }}
+            >
+              Create Event
             </PeaButton>
           </Grid>
           <Grid item>

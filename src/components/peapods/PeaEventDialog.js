@@ -170,8 +170,15 @@ const PeaEventDialog = ({ onClose, ...props }) => (
       </React.Fragment>
     }
     actions={[
-      <PeaButton onClick={onClose}>Cancel</PeaButton>,
-      <PeaButton color={'primary'} variant={'contained'} onClick={onClose}>
+      <PeaButton elongated onClick={onClose}>
+        Cancel
+      </PeaButton>,
+      <PeaButton
+        elongated
+        color={'primary'}
+        variant={'contained'}
+        onClick={onClose}
+      >
         Create
       </PeaButton>,
     ]}

@@ -1,5 +1,5 @@
 import React from 'react';
-import clsx from 'clsx';
+import cx from 'clsx';
 import PropTypes from 'prop-types';
 import Icon from '@material-ui/core/Icon';
 
@@ -18,33 +18,38 @@ const injectColor = color => {
 };
 
 const PeaIcon = ({
-  size,
-  icon,
-  children,
-  light,
-  circular,
-  color,
   bgColor,
+  color,
   className,
+  children,
   fontAwesomeProps,
+  icon,
+  inverted,
+  link,
+  push,
+  size,
+  shape,
   ...props
 }) => {
   const mainIcon = children || icon;
   return (
     <Icon
-      className={clsx(
+      className={cx(
+        'MuiIcon-root',
         className,
-        circular && 'PeaIcon--circular',
-        color,
-        bgColor && `PeaIcon--bg-${bgColor}`,
-        light && 'PeaIcon--light',
-        size && `PeaIcon--${size}`,
+        bgColor && `-bg-${bgColor}`,
+        color && `-${color}`,
+        inverted && '-inverted',
+        link && '-link',
+        push && `-push-${push}`,
+        shape && `-${shape}`,
+        size && `-${size}`,
       )}
       color={injectColor(color)}
       {...props}
     >
       {mainIcon.includes('fa') ? (
-        <i className={mainIcon} {...fontAwesomeProps} />
+        <i className={cx('MuiIcon--fa', mainIcon)} {...fontAwesomeProps} />
       ) : (
         mainIcon
       )}
@@ -53,26 +58,45 @@ const PeaIcon = ({
 };
 
 PeaIcon.propTypes = {
-  icon: PropTypes.string,
+  className: PropTypes.string,
   children: PropTypes.node,
   fontAwesomeProps: PropTypes.shape({}),
-  className: PropTypes.string,
-  light: PropTypes.bool,
-  circular: PropTypes.bool,
-  color: PropTypes.string,
-  bgColor: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'big']),
+  icon: PropTypes.string,
+  inverted: PropTypes.bool,
+  link: PropTypes.bool,
+  size: PropTypes.oneOf(['small', '', 'big', 'large']),
+  color: PropTypes.oneOf([
+    '',
+    'inherit',
+    'primary',
+    'secondary',
+    'action',
+    'error',
+    'disabled',
+  ]),
+  bgColor: PropTypes.oneOf([
+    '',
+    'default',
+    'danger',
+    'primary',
+    'secondary',
+    'white',
+  ]),
+  shape: PropTypes.oneOf(['', 'square', 'circular', 'round']),
+  push: PropTypes.oneOf(['', 'left', 'right']),
 };
 PeaIcon.defaultProps = {
-  fontAwesomeProps: {},
-  children: null,
-  className: '',
-  light: false,
-  circular: false,
-  color: '',
-  icon: '',
-  size: undefined,
   bgColor: '',
+  className: '',
+  children: null,
+  color: '',
+  fontAwesomeProps: {},
+  icon: '',
+  inverted: false,
+  link: false,
+  push: '',
+  size: '',
+  shape: 'circular',
 };
 PeaIcon.metadata = {
   name: 'Pea Icon',

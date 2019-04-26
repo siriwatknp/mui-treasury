@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import PeaButton from './PeaButton';
 import PeaAvatar from './PeaAvatar';
 
 const PeaNotificationItem = ({ src, name, description, time }) => (
@@ -31,12 +31,17 @@ const PeaNotificationItem = ({ src, name, description, time }) => (
       justify={'flex-end'}
     >
       <Grid item>
-        <Button size={'small'}>Ignore</Button>
+        <PeaButton size={'small'}>Ignore</PeaButton>
       </Grid>
       <Grid item>
-        <Button size={'small'} variant={'contained'} color={'primary'}>
+        <PeaButton
+          size={'small'}
+          elongated={false}
+          variant={'contained'}
+          color={'primary'}
+        >
           Accept
-        </Button>
+        </PeaButton>
       </Grid>
     </Grid>
   </ListItem>
