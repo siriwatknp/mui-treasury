@@ -27,6 +27,11 @@ const introduction = [
     path: '/contribution',
     primaryText: 'Contribution',
   },
+  {
+    id: 'layout-builder',
+    path: '/layout-builder',
+    primaryText: 'Layout Builder',
+  },
 ];
 
 const Navigator = withRouter(({ onClickItem, location }) => {
@@ -42,7 +47,7 @@ const Navigator = withRouter(({ onClickItem, location }) => {
     >
       {item.icon && <ListItemIcon>{item.icon}</ListItemIcon>}
       <Text variant={'subtitle1'}>{item.primaryText}</Text>
-      <Text variant={'caption'} color={'grey.500'} ml={'auto'} mt={0.25}>
+      <Text variant={'caption'} color={'grey.500'} ml={'auto'} mt={0.25} mb={0}>
         {item.secondaryText}
       </Text>
     </ListItem>

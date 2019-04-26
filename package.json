@@ -54,6 +54,7 @@
     "react-jss": "^8.6.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.8",
+    "react-scroll": "^1.7.11",
     "react-select": "^2.4.1",
     "yup": "^0.26.10"
   },
