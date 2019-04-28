@@ -32,7 +32,7 @@ const PeaAvatar = ({ className, size, more, ...props }) =>
         className={clsx(
           'MuiAvatar-root',
           size && `MuiAvatar--${size}`,
-          className
+          className,
         )}
         {...props}
       />
