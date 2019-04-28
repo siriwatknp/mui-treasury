@@ -1,7 +1,7 @@
+import MuiIcon from '@material-ui/core/Icon/Icon';
 import React from 'react';
 import cx from 'clsx';
 import PropTypes from 'prop-types';
-import Icon from '@material-ui/core/Icon';
 
 const injectColor = color => {
   if (
@@ -19,9 +19,9 @@ const injectColor = color => {
 
 const PeaIcon = ({
   bgColor,
-  color,
   className,
   children,
+  color,
   fontAwesomeProps,
   icon,
   inverted,
@@ -33,27 +33,28 @@ const PeaIcon = ({
 }) => {
   const mainIcon = children || icon;
   return (
-    <Icon
+    <MuiIcon
+      component={link ? 'a' : 'span'}
+      {...props}
       className={cx(
         'MuiIcon-root',
         className,
         bgColor && `-bg-${bgColor}`,
-        color && `-${color}`,
+        color && `-color-${color}`,
         inverted && '-inverted',
         link && '-link',
         push && `-push-${push}`,
-        shape && `-${shape}`,
-        size && `-${size}`,
+        shape && `-shape-${shape}`,
+        size && `-size-${size}`,
       )}
       color={injectColor(color)}
-      {...props}
     >
-      {mainIcon.includes('fa') ? (
+      {mainIcon.includes('fa-') ? (
         <i className={cx('MuiIcon--fa', mainIcon)} {...fontAwesomeProps} />
       ) : (
         mainIcon
       )}
-    </Icon>
+    </MuiIcon>
   );
 };
 
@@ -73,13 +74,17 @@ PeaIcon.propTypes = {
     'action',
     'error',
     'disabled',
+    // custom
+    'danger',
+    'success',
   ]),
   bgColor: PropTypes.oneOf([
     '',
     'default',
-    'danger',
     'primary',
     'secondary',
+    // custom
+    'danger',
     'white',
   ]),
   shape: PropTypes.oneOf(['', 'square', 'circular', 'round']),
