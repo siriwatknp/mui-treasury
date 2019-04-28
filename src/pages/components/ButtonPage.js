@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
 import merge from 'lodash/merge';
@@ -5,48 +6,31 @@ import get from 'lodash/get';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
-import Typography from '@material-ui/core/Typography';
+
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import { Box } from 'components/atoms';
-import { PreviewWidget } from 'components/molecules';
-import ShouldUpdate from 'containers/ShouldUpdate';
 import ButtonSection from 'pages/components/predefined/ButtonSection';
-import ShadowlessButton from 'components/buttons/ShadowlessButton';
-import ChubbyButton from 'components/buttons/ChubbyButton';
+// CONTAINERS
+import ShouldUpdate from 'containers/ShouldUpdate';
+// COMPONENTS
+import Box from 'components/atoms/Box';
+import Text from 'components/predefined/Typography';
+import { PreviewWidget } from 'components/molecules';
+import Copier from 'components/atoms/Copier';
+import CodeHighlight from 'components/highlights/CodeHighlight';
+// SHOWCASES
 import GithubButton from 'components/buttons/GithubButton';
-// eslint-disable-next-line max-len
-import InvertedContainedButton from 'components/buttons/InvertedContainedButton';
-import InvertedOutlinedButton from 'components/buttons/InvertedOutlinedButton';
-import DangerButton from 'components/buttons/DangerButton';
 import FirebaseButton from 'components/buttons/FirebaseButton';
 import TwitterButton from 'components/buttons/TwitterButton';
 import GradientButton from 'components/buttons/GradientButton';
 import ShinningButton from 'components/buttons/ShinningButton';
-import IconButton from 'components/buttons/IconButton';
 
 const createTheme = theme => createMuiTheme(theme);
 const baseTheme = createMuiTheme();
 
 const components = [
   {
-    component: ShadowlessButton,
-    render: () => <ShadowlessButton />,
-  },
-  {
-    component: ChubbyButton,
-    render: () => <ChubbyButton />,
-  },
-  {
-    component: DangerButton,
-    render: () => <DangerButton />,
-  },
-  {
     component: ShinningButton,
     render: () => <ShinningButton />,
-  },
-  {
-    component: IconButton,
-    render: () => <IconButton />,
   },
   {
     component: GradientButton,
@@ -85,29 +69,51 @@ const components = [
       </Box>
     ),
   },
-  {
-    component: InvertedContainedButton,
-    render: () => (
-      <Box css={{ '& .MuiButton--inverted': { marginRight: 16 } }}>
-        <InvertedContainedButton />
-      </Box>
-    ),
-    previewProps: {
-      inverted: true,
-    },
-  },
-  {
-    component: InvertedOutlinedButton,
-    render: () => (
-      <Box css={{ '& .MuiButton--inverted': { marginRight: 16 } }}>
-        <InvertedOutlinedButton />
-      </Box>
-    ),
-    previewProps: {
-      inverted: true,
-    },
-  },
 ];
+
+const exampleCode = `
+  /* Example */
+  // in Button.js that you just downloaded
+  ...
+  
+  Button.defaultProps = {
+    shape: 'chubby', // you will have nice chubby every time you use it by default
+    shadowless: true, // no shadow at all
+  };
+  
+  export default Button;
+  
+  // ------------------------------------
+  
+  // then in other component
+  import Button from 'path/to/Button.js'
+  
+  const Component = () => <Button>Chubby</Button>
+`;
+
+const themeCode = `
+  // in your root component
+  import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+  import yourTheme from 'path/to/yourTheme.js';
+  
+  // if you dont have your theme, use createMuiTheme;
+  // const yourTheme = createMuiTheme();  
+  
+  const App = () => (
+    <MuiThemeProvider
+      theme={{
+        ...yourTheme,
+        overrides: {
+          // you should separate getTheme into another file
+          // and then import from there.
+          Button.getTheme(yourTheme),
+        }
+      }}
+    >
+      ...
+    </MuiThemeProvider>
+  )
+`;
 
 const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
   <Box
@@ -117,14 +123,18 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
       sm: 4,
     }}
   >
-    <Typography variant={'h5'}>
-      Predefined <code>Button</code>
-    </Typography>
-    <Typography gutterBottom>
-      The one and only one <code>Button</code> that you need if you are using
-      Material-UI, just copy the snippet.
-    </Typography>
-    <Typography>
+    <Text variant={'h5'} gutterBottom>
+      Predefined Button <code>v1.0</code>
+    </Text>
+    <Text gutterBottom>
+      The button and only button that you need if you are using Material-UI,
+      just copy the snippet.
+    </Text>
+    <Text gutterBottom>
+      Many props such as <code>loading</code>, <code>inverted</code>,{' '}
+      <code>shape</code> are inspired from semantic-ui and antd.
+    </Text>
+    <Text>
       <Link
         target={'_blank'}
         rel="noopener"
@@ -132,28 +142,56 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
       >
         Code Sandbox
       </Link>
-    </Typography>
+    </Text>
     <Box pt={{ xs: 2, sm: 4 }}>
       <ButtonSection globalTheme={globalTheme} />
     </Box>
-    <Typography variant={'h6'}>How to use</Typography>
-    <Typography>
-      1. Copy component in <code>/src/components/predefined/Button.js</code>
-    </Typography>
-    <Typography>2. Use this component instead of Material-ui Button</Typography>
-    <Typography gutterBottom>
-      3. Look at component propTypes, adjust default props to suit your project.
-    </Typography>
+    <br />
+    <Text variant={'h6'}>How to use</Text>
+    <Text>
+      <ol>
+        <li>
+          <code>yarn add @material-ui/core clsx color</code>{' '}
+          <Copier.Text text={'yarn add @material-ui/core clsx color'} />
+        </li>
+        <li>
+          <Text
+            link
+            href={
+              'https://firebasestorage.googleapis.com/v0/b/mui-treasury.appspot.com/o/public%2Fcode%2FButton.js?alt=media'
+            }
+            rel={'noopener'}
+            target={'_blank'}
+          >
+            Download Button File
+          </Text>{' '}
+          and put it in your project.{' '}
+          <Text component={'span'} inline color={'hint'}>
+            ({"don't"} worry, no spam, just a React component)
+          </Text>
+        </li>
+        <li>
+          Copy theme in <code>Button.getTheme</code>
+          <br />
+          <CodeHighlight code={themeCode} />
+        </li>
+        <li>
+          Look at component propTypes, adjust default props to suit your
+          project.
+        </li>
+      </ol>
+    </Text>
+    <CodeHighlight code={exampleCode} />
     <Box pb={2} />
     <Divider />
     <Box pb={2} />
-    <Typography variant={'h5'}>
+    <Text variant={'h5'}>
       Showcase <code>Button</code>
-    </Typography>
-    <Typography gutterBottom>
+    </Text>
+    <Text gutterBottom>
       This section shows that Material-UI can be customize to many themes as you
       like.
-    </Typography>
+    </Text>
     <Box pb={2} />
     <Grid container spacing={32}>
       {components.map(({ component, render, previewProps }) => (

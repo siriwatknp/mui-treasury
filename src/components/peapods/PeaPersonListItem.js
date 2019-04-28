@@ -26,7 +26,6 @@ const PeaPersonListItem = ({
       {...ListItemTextProps}
     />
     <PeaButton
-      className={'MuiButton--auto'}
       variant={'contained'}
       color={'primary'}
       onClick={onClick}

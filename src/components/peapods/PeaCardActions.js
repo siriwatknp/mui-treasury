@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'clsx';
 import PropTypes from 'prop-types';
 import CardActions from '@material-ui/core/CardActions';
-import Button from '@material-ui/core/Button';
+import PeaButton from './PeaButton';
 import PeaIcon from './PeaIcon';
 
 const PeaCardActions = ({ left, right, centered }) => (
@@ -20,37 +20,34 @@ const PeaCardActions = ({ left, right, centered }) => (
 // ----------- SAMPLE COMPONENT --------------- //
 // FOR DEMO PURPOSE //
 PeaCardActions.Comment = () => (
-  <Button
-    className={'MuiButton--auto'}
+  <PeaButton
     size={'small'}
     variant={'contained'}
     color={'primary'}
+    icon={<PeaIcon icon={'fas fa-comment-alt'} shape={''} />}
   >
-    <PeaIcon size={'small'} icon={'fas fa-comment-alt'} />
-    <span>Comment</span>
-  </Button>
+    Comment
+  </PeaButton>
 );
 PeaCardActions.Share = () => (
-  <Button
-    className={'MuiButton--auto'}
+  <PeaButton
     size={'small'}
     variant={'contained'}
     color={'primary'}
+    icon={<PeaIcon icon={'fas fa-share-square'} />}
   >
-    <PeaIcon size={'small'} icon={'fas fa-share-square'} />
-    <span>Share</span>
-  </Button>
+    Share
+  </PeaButton>
 );
 PeaCardActions.Create = () => (
-  <Button
-    className={'MuiButton--auto'}
+  <PeaButton
     size={'small'}
     variant={'contained'}
     color={'primary'}
+    icon={<PeaIcon icon={'add_circle'} />}
   >
-    <PeaIcon size={'small'} icon={'add_circle'} />
-    <span>Create</span>
-  </Button>
+    Create
+  </PeaButton>
 );
 // ----------------------- END ----------------------- //
 

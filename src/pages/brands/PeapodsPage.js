@@ -140,20 +140,33 @@ const components = [
     component: PeaButton,
     render: () => (
       <Box css={{ '& button': { marginTop: 8, marginLeft: 8 } }}>
-        <PeaButton color={'primary'}>Default</PeaButton>
-        <PeaButton variant={'outlined'} color={'primary'}>
+        <PeaButton elongated color={'primary'}>
+          Default
+        </PeaButton>
+        <PeaButton elongated variant={'outlined'} color={'primary'}>
           Outlined
         </PeaButton>
-        <PeaButton variant={'contained'} color={'primary'}>
+        <PeaButton elongated variant={'contained'} color={'primary'}>
           Contained
         </PeaButton>
-        <PeaButton variant={'contained'} color={'primary'}>
-          <span>Create Event</span>
-          <PeaIcon icon={'add'} light circular />
+        <PeaButton
+          elongated
+          variant={'contained'}
+          color={'primary'}
+          icon={'add'}
+          iconPosition={'end'}
+          iconProps={{ bgColor: 'lightPrimary' }}
+        >
+          Create Event
         </PeaButton>
-        <PeaButton variant={'contained'} color={'primary'} fullWidth>
-          <PeaIcon icon={'fab fa-facebook-f'} bgColor={'white'} circular />
-          <span>Register with Facebook</span>
+        <PeaButton
+          elongated
+          variant={'contained'}
+          color={'primary'}
+          fullWidth
+          icon={<PeaIcon icon={'fab fa-facebook-f'} bgColor={'white'} />}
+        >
+          Register with Facebook
         </PeaButton>
       </Box>
     ),
@@ -169,8 +182,8 @@ const components = [
         <PeaIcon icon={'add'} />
         <PeaIcon icon={'remove_circle'} size={'small'} />
         <PeaIcon icon={'remove_circle'} size={'big'} />
-        <PeaIcon icon={'fab fa-facebook-f'} bgColor={'white'} circular />
-        <PeaIcon icon={'add'} light circular />
+        <PeaIcon icon={'fab fa-facebook-f'} bgColor={'white'} />
+        <PeaIcon icon={'add'} bgColor={'lightPrimary'} color={'inverted'} />
       </Box>
     ),
   },
