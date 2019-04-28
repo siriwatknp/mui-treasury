@@ -1,5 +1,5 @@
 /**
- * Current VERSION 1.0
+ * Current VERSION 1.1
  *
  * vX.Y meaning
  * X = major changes ex. add/remove/rename some props/className,
@@ -153,12 +153,15 @@ Button.defaultProps = {
 };
 Button.getTheme = ({ breakpoints, palette, spacing }) => {
   const elongatedWidth = 160;
+  const defaultFontWeight = 'normal';
+  const defaultLetterSpacing = '0.25px';
   const defaultTextTransform = 'none';
   const invertedColor = palette.common.white;
   const borderWidth = 2;
   const iconSelector =
     '.MuiButton-label:not([class*="-icon-isolated"]) > .material-icons, > svg';
   const loaderSelector = '.MuiButton-label .MuiButton-loader';
+  const defaultIconSize = 16;
   return {
     MuiButton: {
       root: {
@@ -193,7 +196,7 @@ Button.getTheme = ({ breakpoints, palette, spacing }) => {
         // icon
         [`& ${iconSelector}`]: {
           // default icon size
-          fontSize: 16,
+          fontSize: defaultIconSize,
         },
         '& .MuiButton-label > .material-icons, > svg': {
           // dont change upper code to iconSelector
@@ -293,8 +296,9 @@ Button.getTheme = ({ breakpoints, palette, spacing }) => {
         },
       },
       label: {
-        letterSpacing: '0.25px',
+        letterSpacing: defaultLetterSpacing,
         textTransform: defaultTextTransform,
+        fontWeight: defaultFontWeight,
       },
       contained: {
         '&.-color-danger': {
