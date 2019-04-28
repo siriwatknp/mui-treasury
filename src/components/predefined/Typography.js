@@ -1,12 +1,39 @@
+/**
+ * Current VERSION 1.0
+ *
+ * vX.Y meaning
+ * X = major changes ex. add/remove/rename some props/className,
+ *     could affect other components
+ * Y = minor changes ex. fix bug or internal logic, won't effect other component
+ */
 import React from 'react';
 import cx from 'clsx';
 import PropTypes from 'prop-types';
+import Link from '@material-ui/core/Link';
 import MuiTypography from '@material-ui/core/Typography';
 
+const injectColor = color => {
+  if (
+    color === 'default' ||
+    color === 'inherit' ||
+    color === 'primary' ||
+    color === 'secondary' ||
+    color === 'textPrimary' ||
+    color === 'textSecondary' ||
+    color === 'error'
+  ) {
+    return color;
+  }
+  return undefined;
+};
+
 const Typography = ({
+  component,
   className,
   indent,
   code,
+  color,
+  link,
   weight,
   size,
   grey,
@@ -16,14 +43,17 @@ const Typography = ({
 }) => (
   <MuiTypography
     {...props}
+    component={link ? Link : component}
+    color={injectColor(color)}
     className={cx(
       'MuiTypography-root',
       className,
-      size && `-${size}`,
+      size && `-size-${size}`,
       grey && `-grey-${grey}`,
       indent && `-indent-${indent}`,
       inverted && '-inverted',
       code && '-code',
+      color && `-color-${color}`,
       weight && `-weight-${weight}`,
       spacing && `-spacing-${spacing}`,
     )}
@@ -37,12 +67,26 @@ Typography.propTypes = {
   indent: PropTypes.oneOf(['', 'small', 'big', 'large']),
   size: PropTypes.oneOf(['small', '', 'big', 'large']),
   spacing: PropTypes.oneOf(['', 'small', 'big', 'large']),
+  color: PropTypes.oneOf([
+    'default',
+    'error',
+    'inherit',
+    'primary',
+    'secondary',
+    'textPrimary',
+    'textSecondary',
+    // custom
+    'danger',
+    'hint',
+  ]),
   grey: PropTypes.number,
   weight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  ...MuiTypography.propTypes,
+  link: PropTypes.bool,
+  component: PropTypes.elementType,
 };
 Typography.defaultProps = {
   className: '',
+  color: 'default',
   inverted: false,
   code: false,
   grey: undefined,
@@ -50,29 +94,11 @@ Typography.defaultProps = {
   size: '',
   spacing: '',
   weight: undefined,
+  link: false,
+  component: undefined,
 };
 Typography.getTheme = ({ palette, spacing }) => {
   const invertedColor = palette.common.white;
-  const weights = [
-    100,
-    200,
-    300,
-    400,
-    500,
-    600,
-    700,
-    800,
-    900,
-    'normal',
-    'bold',
-  ];
-  const spacings = [['small', '0.5px'], ['big', '1px'], ['large', '2px']];
-  const indents = [
-    ['small', spacing.unit * 2],
-    ['big', spacing.unit * 3],
-    ['large', spacing.unit * 4],
-  ];
-  const sizes = [['small', 12], ['big', 20], ['large', 24]];
   return {
     MuiTypography: {
       root: {
@@ -87,45 +113,86 @@ Typography.getTheme = ({ palette, spacing }) => {
             // eslint-disable-next-line max-len
             "'SFMono-Regular',Consolas,'Liberation Mono',Menlo,Courier,monospace",
         },
+        '& ul, ol': {
+          paddingLeft: spacing.unit * 3,
+        },
+        '& li': {
+          marginBottom: '0.5em',
+        },
         '&.-inverted:not(.-code)': {
           color: invertedColor,
         },
-        ...weights.reduce(
-          (prev, curr) => ({
-            ...prev,
-            [`&.-weight-${curr}`]: {
-              fontWeight: curr,
-            },
-          }),
-          {},
-        ),
-        ...spacings.reduce(
-          (prev, curr) => ({
-            ...prev,
-            [`&.-spacing-${curr[0]}`]: {
-              letterSpacing: curr[1],
-            },
-          }),
-          {},
-        ),
-        ...indents.reduce(
-          (prev, curr) => ({
-            ...prev,
-            [`&.-indent-${curr[0]}`]: {
-              textIndent: curr[1],
-            },
-          }),
-          {},
-        ),
-        ...sizes.reduce(
-          (prev, curr) => ({
-            ...prev,
-            [`&.-${curr[0]}`]: {
-              fontSize: curr[1],
-            },
-          }),
-          {},
-        ),
+        // colors
+        '&.-color-hint': {
+          color: palette.grey[500],
+        },
+        '&.-color-danger': {
+          color: palette.error.main,
+        },
+        // sizes
+        '&.-size-small': {
+          fontSize: 12,
+        },
+        '&.-size-big': {
+          fontSize: 20,
+        },
+        '&.-size-large': {
+          fontSize: 24,
+        },
+        // indents
+        '&.-indent-small': {
+          textIndent: spacing.unit * 2,
+        },
+        '&.-indent-big': {
+          textIndent: spacing.unit * 3,
+        },
+        '&.-indent-large': {
+          textIndent: spacing.unit * 4,
+        },
+        // spacings
+        '&.-space-small': {
+          letterSpacing: '0.5px',
+        },
+        '&.-space-big': {
+          letterSpacing: '1px',
+        },
+        '&.-space-large': {
+          letterSpacing: '2px',
+        },
+        // weights
+        '&.-weight-100': {
+          fontWeight: 100,
+        },
+        '&.-weight-200': {
+          fontWeight: 200,
+        },
+        '&.-weight-300': {
+          fontWeight: 300,
+        },
+        '&.-weight-400': {
+          fontWeight: 400,
+        },
+        '&.-weight-500': {
+          fontWeight: 500,
+        },
+        '&.-weight-600': {
+          fontWeight: 600,
+        },
+        '&.-weight-700': {
+          fontWeight: 700,
+        },
+        '&.-weight-800': {
+          fontWeight: 800,
+        },
+        '&.-weight-900': {
+          fontWeight: 900,
+        },
+        '&.-weight-normal': {
+          fontWeight: 'normal',
+        },
+        '&.-weight-bold': {
+          fontWeight: 'bold',
+        },
       },
     },
     MuiLink: {

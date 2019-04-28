@@ -188,7 +188,6 @@ const TypographySection = ({ globalTheme }) => {
         <Grid item xs={12} sm={6} md={4}>
           <PreviewWidget
             name={'Link'}
-            white
             contentProps={{
               flexWrap: 'wrap',
               flexDirection: 'column',
