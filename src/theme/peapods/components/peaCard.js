@@ -81,6 +81,81 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
           justifyContent: 'flex-end',
         },
       },
+      '&.PeaFullProfile-root': {
+        position: 'relative',
+        '& .MuiCardMedia-root': {
+          paddingTop: '44%',
+          position: 'absolute',
+          width: '100%',
+          top: 0,
+          zIndex: 1,
+          [breakpoints.up('sm')]: {
+            paddingTop: '32%',
+          },
+        },
+        '& .MuiAvatar-root-profilePic': {
+          width: 84,
+          height: 84,
+          alignItems: 'center',
+          transform: 'translateY(-60%)',
+          left: 0,
+          border: '4px solid #ffffff',
+          zIndex: 3,
+          [breakpoints.up('sm')]: {
+            width: 104,
+            height: 104,
+            left: spacing.unit * 1.5,
+          },
+        },
+        '& .PeaFullProfile-profileImgBtn': {
+          display: 'flex',
+          flexDirection: 'column',
+          transform: 'translateY(-60%)',
+          left: 0,
+          borderRadius: '50%',
+          [breakpoints.up('sm')]: {
+            left: spacing.unit * 1.5,
+          },
+          '& .MuiAvatar-root-profilePic': {
+            '&:after': {
+              background: 'rgba(0,0,0,0.4)',
+              content: '" "',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+            },
+            zIndex: 0,
+            transform: 'none',
+            left: 0,
+          },
+        },
+        '& .PeaFullProfile-coverImgBtn': {
+          position: 'absolute',
+          display: 'flex',
+          flexDirection: 'column',
+          top: 0,
+          left: 0,
+          bottom: 0,
+          width: '100%',
+          background: 'rgba(0,0,0,0.6)',
+          '& .material-icons': {
+            fontSize: 48,
+          },
+        },
+        '& .MuiCardContent-root': {
+          position: 'relative',
+          textAlign: 'left',
+          zIndex: 2,
+          background: palette.common.white,
+          marginTop: '36%',
+          borderRadius: spacing.unit * 2,
+          [breakpoints.up('sm')]: {
+            marginTop: '24%',
+          },
+        },
+      },
       '&.PeaPodCard-root': {
         textAlign: 'left',
         '& .MuiCardMedia-root': {
@@ -101,9 +176,6 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
           '&:not(:first-of-type)': {
             marginTop: 8,
           },
-        },
-        '& .material-icons': {
-          marginTop: 3,
         },
       },
       '&.PeaPersonCard-root': {

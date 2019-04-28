@@ -1,3 +1,6 @@
+/**
+ * Follow predefined Icon v1.1
+ */
 import MuiIcon from '@material-ui/core/Icon/Icon';
 import React from 'react';
 import cx from 'clsx';
@@ -29,6 +32,7 @@ const PeaIcon = ({
   push,
   size,
   shape,
+  shadow,
   ...props
 }) => {
   const mainIcon = children || icon;
@@ -46,6 +50,7 @@ const PeaIcon = ({
         push && `-push-${push}`,
         shape && `-shape-${shape}`,
         size && `-size-${size}`,
+        shadow && '-shadow',
       )}
       color={injectColor(color)}
     >
@@ -89,6 +94,7 @@ PeaIcon.propTypes = {
   ]),
   shape: PropTypes.oneOf(['', 'square', 'circular', 'round']),
   push: PropTypes.oneOf(['', 'left', 'right']),
+  shadow: PropTypes.bool,
 };
 PeaIcon.defaultProps = {
   bgColor: '',
@@ -102,6 +108,7 @@ PeaIcon.defaultProps = {
   push: '',
   size: '',
   shape: 'circular',
+  shadow: false,
 };
 PeaIcon.metadata = {
   name: 'Pea Icon',

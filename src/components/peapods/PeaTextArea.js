@@ -61,6 +61,33 @@ const PeaTextArea = props => (
   </React.Fragment>
 );
 
+PeaTextArea.Simple = props => (
+  <TextField
+    multiline
+    rows={3}
+    classes={{
+      root: 'PeaFormControl-root',
+    }}
+    InputLabelProps={{
+      className: 'PeaFormLabel-root',
+    }}
+    InputProps={{
+      disableUnderline: true,
+      classes: {
+        root: 'PeaInput-root',
+        input: 'PeaInput-input',
+        formControl: 'PeaInput-formControl',
+      },
+    }}
+    FormHelperTextProps={{
+      className: 'PeaFormHelperText-root',
+    }}
+    fullWidth
+    margin={'normal'}
+    label={'Label'}
+    {...props}
+  />
+);
 PeaTextArea.metadata = {
   name: 'Pea Textarea',
 };

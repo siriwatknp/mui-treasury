@@ -86,6 +86,7 @@ export default ({ palette, spacing, breakpoints }) => {
         },
         // sizes
         '&.-size-small': {
+          minHeight: 36,
           padding: '3px 12px',
           fontSize: '0.75rem',
           [`& ${iconSelector}`]: {
@@ -108,7 +109,7 @@ export default ({ palette, spacing, breakpoints }) => {
         },
         '&.-shape-chubby': {
           borderRadius: 100,
-          padding: '6px 12px',
+          padding: '6px 16px',
         },
         '&.-shape-circular': {
           borderRadius: '50%',

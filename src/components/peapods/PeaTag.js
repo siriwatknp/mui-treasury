@@ -10,17 +10,18 @@ const PeaTag = ({ className, src, ...props }) => (
     classes={{
       label: 'MuiChip-label',
     }}
-    avatar={<Avatar alt={'person'} src={src} />}
+    avatar={src ? <Avatar alt={'person'} src={src} /> : null}
     {...props}
   />
 );
 
 PeaTag.propTypes = {
   className: PropTypes.string,
-  src: PropTypes.string.isRequired,
+  src: PropTypes.string,
 };
 PeaTag.defaultProps = {
   className: '',
+  src: '',
 };
 PeaTag.metadata = {
   name: 'Pea Tag',

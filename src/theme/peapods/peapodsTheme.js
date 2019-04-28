@@ -23,6 +23,11 @@ const theme = {
   shape: {
     borderRadius: 8,
   },
+  props: {
+    MuiLink: {
+      color: 'secondary',
+    },
+  },
   overrides,
 };
 

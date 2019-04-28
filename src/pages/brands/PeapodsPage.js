@@ -56,6 +56,8 @@ import PeaFilter from 'components/peapods/PeaFilter';
 import PeaAppBar from 'components/peapods/PeaAppBar';
 import PeaConnections from 'components/peapods/PeaConnections';
 import PeaSocialAvatar from 'components/peapods/PeaSocialAvatar';
+import PeaTypography from 'components/peapods/PeaTypography';
+import PeaFullProfile from 'components/peapods/PeaFullProfile';
 
 const PeaSelect = props => <PeaTextField {...props} />;
 PeaSelect.metadata = {
@@ -687,6 +689,89 @@ const components = [
         groups={SOCIAL3}
       />
     ),
+  },
+  {
+    component: PeaTypography,
+    render: () => (
+      <Box textAlign={'left'}>
+        <Box pb={2}>
+          <PeaTypography variant={'h6'} gutterBottom weight={'bold'}>
+            <PeaIcon push={'right'}>description</PeaIcon>
+            Heading 6
+          </PeaTypography>
+          <PeaTypography indent={'small'} align={'justify'}>
+            <b>Lorem Ipsum</b> is simply dummy text of the printing and
+            typesetting industry. Lorem Ipsum has been the industry standard
+            dummy text ever since the 1500s
+          </PeaTypography>
+        </Box>
+        <Box pb={2}>
+          <PeaTypography variant={'body1'}>
+            <b>Lorem Ipsum</b> is simply dummy text of the printing and
+            typesetting industry. <code>Lorem Ipsum</code> has been the industry
+            standard dummy text ever since the 1500s
+          </PeaTypography>
+        </Box>
+        <div>
+          <PeaTypography variant={'subtitle1'}>
+            <Link
+              color={'secondary'}
+              variant={'subtitle1'} // needed
+              component={'button'}
+              onClick={() => alert('Clicked')}
+            >
+              <PeaIcon size={'small'}>far fa-rocket</PeaIcon>
+              Lorem Ipsum
+            </Link>{' '}
+            is simply dummy text of the printing and typesetting industry.{' '}
+          </PeaTypography>
+        </div>
+      </Box>
+    ),
+  },
+  {
+    component: PeaFullProfile,
+    render: () => (
+      <PeaFullProfile
+        cover={
+          'https://images.unsplash.com/photo-1470549638415-0a0755be0619?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80'
+        }
+        image={AVATAR}
+        name={'Sam Smith'}
+        tag={'@samsmith'}
+        site={'https://google.com'}
+        bio={
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+        }
+        location={'Washington'}
+        age={35}
+        gender={'Female'}
+        groups={[
+          {
+            name: 'Celebrities',
+            src:
+              'https://images.livemint.com/rf/Image-621x414/LiveMint/Period1/2015/01/10/Photos/selfie-kH4D--621x414@LiveMint.jpg',
+          },
+          {
+            name: 'Friends',
+            src:
+              'https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/06/09/11/group-photos-need-to-die.jpg?w968h681',
+          },
+        ]}
+        tags={[
+          { label: 'cinema' },
+          { label: 'sport' },
+          { label: 'nightlife' },
+          { label: 'theater' },
+          { label: 'culture' },
+          { label: 'holy' },
+        ]}
+      />
+    ),
+    gridItemProps: {
+      sm: 10,
+      lg: 6,
+    },
   },
 ];
 

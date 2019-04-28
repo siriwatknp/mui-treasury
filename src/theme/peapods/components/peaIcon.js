@@ -1,4 +1,4 @@
-export default ({ palette, spacing, transitions }) => {
+export default ({ palette, spacing, transitions, shadows }) => {
   const { white: invertedColor } = palette.common;
   const props = {
     // STANDALONE
@@ -103,6 +103,9 @@ export default ({ palette, spacing, transitions }) => {
     },
     '&.-shape-round': {
       borderRadius: 4,
+    },
+    '&.-shadow': {
+      boxShadow: shadows[2],
     },
 
     // COMBINATION

@@ -24,6 +24,7 @@ PeaCardActions.Comment = () => (
     size={'small'}
     variant={'contained'}
     color={'primary'}
+    iconIsolated
     icon={<PeaIcon icon={'fas fa-comment-alt'} shape={''} />}
   >
     Comment
@@ -34,6 +35,7 @@ PeaCardActions.Share = () => (
     size={'small'}
     variant={'contained'}
     color={'primary'}
+    iconIsolated
     icon={<PeaIcon icon={'fas fa-share-square'} />}
   >
     Share
@@ -44,6 +46,7 @@ PeaCardActions.Create = () => (
     size={'small'}
     variant={'contained'}
     color={'primary'}
+    iconIsolated
     icon={<PeaIcon icon={'add_circle'} />}
   >
     Create
