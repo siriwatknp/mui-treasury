@@ -3,7 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import merge from 'lodash/merge';
 import get from 'lodash/get';
-import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 
@@ -134,7 +133,10 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
       color={'textPrimary'}
       gutterBottom
     >
-      Predefined Button <code>v1.0</code>
+      Predefined Button <code>v1.1</code>
+    </Text>
+    <Text variant={'caption'} align={'left'} gutterBottom>
+      <b>Last Updated 30 APR 2019</b>
     </Text>
     <Text gutterBottom>
       The button and only button that you need if you are using Material-UI,
@@ -143,15 +145,6 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
     <Text gutterBottom>
       Many props such as <code>loading</code>, <code>inverted</code>,{' '}
       <code>shape</code> are inspired from semantic-ui and antd.
-    </Text>
-    <Text>
-      <Link
-        target={'_blank'}
-        rel="noopener"
-        href={'https://codesandbox.io/s/4wmz707on4'}
-      >
-        Code Sandbox
-      </Link>
     </Text>
     <Box pt={{ xs: 2, sm: 4 }}>
       <ButtonSection globalTheme={globalTheme} />
