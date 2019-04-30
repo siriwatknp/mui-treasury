@@ -31,20 +31,69 @@ export default [
   },
   {
     render: () => (
-      <Button
-        shape={'chubby'}
-        variant={'contained'}
-        color={'primary'}
-        size={'big'}
-        icon={'fab fa-facebook-f'}
-        iconProps={{
-          bgColor: 'white',
-          shape: 'circular',
-          color: 'primary',
-        }}
-      >
-        Sign in with Facebook
-      </Button>
+      <>
+        <Button
+          shape={'chubby'}
+          variant={'contained'}
+          color={'primary'}
+          size={'small'}
+          icon={'fab fa-facebook-f'}
+          iconProps={{
+            bgColor: 'white',
+            shape: 'circular',
+            color: 'primary',
+          }}
+        >
+          Sign in with Facebook
+        </Button>
+        <br />
+        <br />
+        <Button
+          shape={'chubby'}
+          variant={'contained'}
+          color={'primary'}
+          icon={'fab fa-facebook-f'}
+          iconProps={{
+            bgColor: 'white',
+            shape: 'circular',
+            color: 'primary',
+          }}
+        >
+          Sign in with Facebook
+        </Button>
+        <br />
+        <br />
+        <Button
+          shape={'chubby'}
+          variant={'contained'}
+          color={'primary'}
+          size={'big'}
+          icon={'fab fa-facebook-f'}
+          iconProps={{
+            bgColor: 'white',
+            shape: 'circular',
+            color: 'primary',
+          }}
+        >
+          Sign in with Facebook
+        </Button>
+        <br />
+        <br />
+        <Button
+          shape={'chubby'}
+          variant={'contained'}
+          color={'primary'}
+          size={'large'}
+          icon={'fab fa-facebook-f'}
+          iconProps={{
+            bgColor: 'white',
+            shape: 'circular',
+            color: 'primary',
+          }}
+        >
+          Sign in with Facebook
+        </Button>
+      </>
     ),
     code: `
   import Button from 'path/to/Button';
