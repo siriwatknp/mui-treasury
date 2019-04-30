@@ -2,10 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import reactElementToJSXString from 'react-element-to-jsx-string';
-import Highlight, { defaultProps } from 'prism-react-renderer';
-import prismTheme from 'prism-react-renderer/themes/duotoneLight';
 import Clipboard from 'containers/Clipboard';
 import { normalizeJSX } from 'helpers/string';
+import CodeHighlight from './CodeHighlight';
 
 const JsxHighlight = ({ component }) => {
   let code =
@@ -25,34 +24,7 @@ const JsxHighlight = ({ component }) => {
                 ? code
                 : JSON.stringify(code, null, 2),
           })}
-          <Highlight
-            {...defaultProps}
-            theme={prismTheme}
-            code={code}
-            language="jsx"
-          >
-            {({ className, style, tokens, getLineProps, getTokenProps }) => (
-              <pre className={className} style={style}>
-                {tokens.map((line, i) => (
-                  <div
-                    {...getLineProps({
-                      line,
-                      key: i,
-                    })}
-                  >
-                    {line.map((token, key) => (
-                      <span
-                        {...getTokenProps({
-                          token,
-                          key,
-                        })}
-                      />
-                    ))}
-                  </div>
-                ))}
-              </pre>
-            )}
-          </Highlight>
+          <CodeHighlight rounded={false} code={code} padded={1} />
         </React.Fragment>
       )}
     </Clipboard>

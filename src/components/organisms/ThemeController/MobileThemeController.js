@@ -103,7 +103,6 @@ const MobileThemeController = ({
           )}
           <Box
             transition={'0.3s'}
-            overflow={'scroll'}
             maxHeight={'60vh'}
             pt={4}
             pb={2}

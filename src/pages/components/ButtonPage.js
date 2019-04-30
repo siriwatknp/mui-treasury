@@ -9,6 +9,7 @@ import Divider from '@material-ui/core/Divider';
 
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import ButtonSection from 'pages/components/predefined/ButtonSection';
+import examples from 'pages/components/predefined/examples/button';
 // CONTAINERS
 import ShouldUpdate from 'containers/ShouldUpdate';
 // COMPONENTS
@@ -123,7 +124,16 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
       sm: 4,
     }}
   >
-    <Text variant={'h5'} gutterBottom>
+    <Text
+      link
+      variant={'h5'}
+      id={'predefined-button'}
+      href={'#predefined-button'}
+      underline={'hover'}
+      weight={'bold'}
+      color={'textPrimary'}
+      gutterBottom
+    >
       Predefined Button <code>v1.0</code>
     </Text>
     <Text gutterBottom>
@@ -147,7 +157,18 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
       <ButtonSection globalTheme={globalTheme} />
     </Box>
     <br />
-    <Text variant={'h6'}>How to use</Text>
+    <Text
+      link
+      variant={'h6'}
+      id={'how-to-use-button'}
+      href={'#how-to-use-button'}
+      underline={'hover'}
+      weight={'bold'}
+      color={'textPrimary'}
+      gutterBottom
+    >
+      How to use
+    </Text>
     <Text>
       <ol>
         <li>
@@ -172,21 +193,53 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
         </li>
         <li>
           Copy theme in <code>Button.getTheme</code>
-          <br />
+          <Text gutterBottom />
           <CodeHighlight code={themeCode} />
         </li>
+        <br />
         <li>
           Look at component propTypes, adjust default props to suit your
           project.
+          <Text gutterBottom />
+          <CodeHighlight code={exampleCode} />
         </li>
       </ol>
     </Text>
-    <CodeHighlight code={exampleCode} />
+    <Text
+      link
+      variant={'h6'}
+      id={'example-buttons'}
+      href={'#example-buttons'}
+      underline={'hover'}
+      weight={'bold'}
+      color={'textPrimary'}
+      gutterBottom
+    >
+      Examples
+    </Text>
+    <Grid container spacing={16}>
+      {examples.map(({ render, code }) => (
+        <Grid item xs={12} sm={4} md={3}>
+          <Box textAlign={'center'} py={2}>
+            {render()}
+          </Box>
+          <CodeHighlight code={code} />
+        </Grid>
+      ))}
+    </Grid>
     <Box pb={2} />
     <Divider />
     <Box pb={2} />
-    <Text variant={'h5'}>
-      Showcase <code>Button</code>
+    <Text
+      link
+      variant={'h5'}
+      id={'customized-button'}
+      href={'#customized-button'}
+      underline={'hover'}
+      weight={'bold'}
+      color={'textPrimary'}
+    >
+      Customized Buttons
     </Text>
     <Text gutterBottom>
       This section shows that Material-UI can be customize to many themes as you

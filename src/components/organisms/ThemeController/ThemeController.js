@@ -165,7 +165,7 @@ class ThemeController extends React.Component {
             <Tab label={'Component'} />
             <Tab label={'Sandbox'} />
           </Tabs>
-          <Box position={'relative'} p={2} bgcolor={'#faf8f5'}>
+          <Box position={'relative'}>
             {component && tabIndex === 0 && (
               <JsonHighlight value={displayedTheme} />
             )}

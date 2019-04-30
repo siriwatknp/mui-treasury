@@ -60,9 +60,7 @@ const IconForm = ({ icon, setIcon }) => (
         md: 6,
       }}
       left={
-        <Box overflow={'scroll'} bgcolor={'rgb(250, 248, 245)'}>
-          <CodeHighlight code={icon.type === 'svg' ? svgCode : webFontCode} />
-        </Box>
+        <CodeHighlight code={icon.type === 'svg' ? svgCode : webFontCode} />
       }
       rightItemProps={{
         md: 4,

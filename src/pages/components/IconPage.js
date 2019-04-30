@@ -68,7 +68,16 @@ const IconPage = ({ globalTheme }) => (
       sm: 4,
     }}
   >
-    <Text variant={'h5'} gutterBottom>
+    <Text
+      link
+      variant={'h5'}
+      id={'predefined-icon'}
+      href={'#predefined-icon'}
+      underline={'hover'}
+      weight={'bold'}
+      color={'textPrimary'}
+      gutterBottom
+    >
       Predefined Icon <code>v1.0</code>
     </Text>
     <Text gutterBottom>
@@ -103,8 +112,8 @@ const IconPage = ({ globalTheme }) => (
             Material Icon
           </Link>
         </Text>
-        <Box py={1} px={2} bgcolor={'rgb(250, 248, 245)'} textAlign={'center'}>
-          <CodeHighlight code={'<Icon>favorite</Icon>'} />
+        <Box py={1} px={2} textAlign={'center'}>
+          <CodeHighlight padded={2} code={'<Icon>favorite</Icon>'} />
         </Box>
       </Grid>
       <Grid item xs={12} sm={6}>
@@ -120,8 +129,8 @@ const IconPage = ({ globalTheme }) => (
             Font Awesome
           </Link>
         </Text>
-        <Box py={1} px={2} bgcolor={'rgb(250, 248, 245)'} textAlign={'center'}>
-          <CodeHighlight code={"<i className={'fas fa-heart'} />"} />
+        <Box py={1} px={2} textAlign={'center'}>
+          <CodeHighlight padded={2} code={"<i className={'fas fa-heart'} />"} />
         </Box>
       </Grid>
     </Grid>
@@ -209,16 +218,17 @@ const IconPage = ({ globalTheme }) => (
         </li>
         <li>
           Copy theme in <code>Icon.getTheme</code>
-          <br />
+          <Text gutterBottom />
           <CodeHighlight code={themeCode} />
         </li>
         <li>
           Look at component propTypes, adjust default props to suit your
           project.
+          <Text gutterBottom />
+          <CodeHighlight code={exampleCode} />
         </li>
       </ol>
     </Text>
-    <CodeHighlight code={exampleCode} />
     <Box pb={2} />
   </Box>
 );
