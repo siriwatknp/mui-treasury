@@ -1,33 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import Highlight, { defaultProps } from 'prism-react-renderer';
-import prismTheme from 'prism-react-renderer/themes/duotoneLight';
 import Clipboard from 'containers/Clipboard';
+import CodeHighlight from './CodeHighlight';
 
 const JsonHighlight = ({ value }) => (
   <Clipboard>
     {({ renderCopier }) => (
       <React.Fragment>
         {renderCopier({ text: JSON.stringify(value, null, 2) })}
-        <Highlight
-          {...defaultProps}
-          theme={prismTheme}
+        <CodeHighlight
+          rounded={false}
+          padded={1}
           code={JSON.stringify(value, null, 2)}
-          language="json"
-        >
-          {({ className, style, tokens, getLineProps, getTokenProps }) => (
-            <pre className={className} style={style}>
-              {tokens.map((line, i) => (
-                <div {...getLineProps({ line, key: i })}>
-                  {line.map((token, key) => (
-                    <span {...getTokenProps({ token, key })} />
-                  ))}
-                </div>
-              ))}
-            </pre>
-          )}
-        </Highlight>
+        />
       </React.Fragment>
     )}
   </Clipboard>

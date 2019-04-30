@@ -64,8 +64,17 @@ const TypographyPage = ({ globalTheme }) => (
       sm: 4,
     }}
   >
-    <Text variant={'h5'} gutterBottom>
-      Predefined <code>Typography</code>
+    <Text
+      link
+      variant={'h5'}
+      id={'predefined-button'}
+      href={'#predefined-button'}
+      underline={'hover'}
+      weight={'bold'}
+      color={'textPrimary'}
+      gutterBottom
+    >
+      Predefined Typography <code>v1.0</code>
     </Text>
     <Text gutterBottom>No talk, just try.</Text>
     <Text>
@@ -105,16 +114,17 @@ const TypographyPage = ({ globalTheme }) => (
         </li>
         <li>
           Copy theme in <code>Typography.getTheme</code>
-          <br />
+          <Text gutterBottom />
           <CodeHighlight code={themeCode} />
         </li>
         <li>
           Look at component propTypes, adjust default props to suit your
           project.
+          <Text gutterBottom />
+          <CodeHighlight code={exampleCode} />
         </li>
       </ol>
     </Text>
-    <CodeHighlight code={exampleCode} />
     <Box pb={2} />
   </Box>
 );

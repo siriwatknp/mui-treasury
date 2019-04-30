@@ -260,9 +260,7 @@ const LayoutPage = () => (
             <b>Step 2</b>
           </Typography>
           <Typography gutterBottom>In your App.js, add this codes.</Typography>
-          <Box bgcolor={'rgb(250, 248, 245)'} overflow={'scroll'}>
-            <CodeHighlight code={exampleCode} />
-          </Box>
+          <CodeHighlight code={exampleCode} />
           <Box pb={2} />
         </Grid>
         <Grid item xs={12}>
@@ -306,7 +304,7 @@ const LayoutPage = () => (
         use config (a prop of Root) to adjust all of the behaviors that you
         want.
       </Typography>
-      <Box bgcolor={'rgb(250, 248, 245)'} px={2}>
+      <Box px={2}>
         <CodeHighlight code={code1} />
       </Box>
       <Grid container spacing={32}>

@@ -152,7 +152,7 @@ const GetCode = ({ classes, config, icon, open, onClose }) => {
           {({ renderCopier }) => (
             <Box position={'relative'}>
               {renderCopier({ text: createCode(config, icon) })}
-              <Box p={2} overflow={'scroll'} bgcolor={'rgb(250, 248, 245)'}>
+              <Box p={2}>
                 <CodeHighlight code={createCode(config, icon)} />
               </Box>
             </Box>
