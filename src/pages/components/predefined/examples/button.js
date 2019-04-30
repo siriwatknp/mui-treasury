@@ -46,9 +46,6 @@ export default [
         <br />
         <br />
         <Button size={'big'} {...props1} />
-        <br />
-        <br />
-        <Button size={'large'} {...props1} />
       </>
     ),
     code: `
@@ -76,9 +73,6 @@ export default [
         <br />
         <br />
         <Button size={'big'} {...props2} />
-        <br />
-        <br />
-        <Button size={'large'} {...props2} />
       </>
     ),
     code: `
@@ -109,9 +103,6 @@ export default [
         <br />
         <br />
         <Button {...props3} size={'big'} />
-        <br />
-        <br />
-        <Button {...props3} size={'large'} />
       </>
     ),
     code: `
