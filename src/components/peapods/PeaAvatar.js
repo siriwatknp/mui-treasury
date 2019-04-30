@@ -6,7 +6,7 @@ import { unstable_Box as Box } from '@material-ui/core/Box';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 
-const PeaAvatar = ({ size, more, ...props }) =>
+const PeaAvatar = ({ className, size, more, ...props }) =>
   more ? (
     <Box
       display={'flex'}
@@ -29,23 +29,33 @@ const PeaAvatar = ({ size, more, ...props }) =>
       }}
     >
       <Avatar
-        className={clsx('MuiAvatar-root', size && `MuiAvatar--${size}`)}
+        className={clsx(
+          'MuiAvatar-root',
+          size && `MuiAvatar--${size}`,
+          className,
+        )}
         {...props}
       />
       <Typography className={'MuiAvatar-more'}>+{more}</Typography>
     </Box>
   ) : (
     <Avatar
-      className={clsx('MuiAvatar-root', size && `MuiAvatar--${size}`)}
+      className={clsx(
+        'MuiAvatar-root',
+        size && `MuiAvatar--${size}`,
+        className,
+      )}
       {...props}
     />
   );
 
 PeaAvatar.propTypes = {
+  className: PropTypes.string,
   more: PropTypes.number,
   size: PropTypes.oneOf(['small', 'big', 'large', 'huge']),
 };
 PeaAvatar.defaultProps = {
+  className: '',
   more: undefined,
   size: undefined,
 };

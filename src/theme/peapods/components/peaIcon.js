@@ -1,6 +1,7 @@
-export default ({ palette, spacing, transitions }) => {
+export default ({ palette, spacing, transitions, shadows }) => {
   const { white: invertedColor } = palette.common;
   const props = {
+    // STANDALONE
     verticalAlign: 'sub',
     '&.-push-left': {
       marginLeft: spacing.unit,
@@ -8,6 +9,27 @@ export default ({ palette, spacing, transitions }) => {
     '&.-push-right': {
       marginRight: spacing.unit,
     },
+    '&.-link': {
+      cursor: 'pointer',
+      '&:not([class*="-color"])': {
+        color: palette.text.primary,
+      },
+      transition: transitions.create(),
+      '&:hover': {
+        transform: 'scale(1.2)',
+      },
+    },
+    // colors
+    '&.-color-success': {
+      color: '#28a745',
+    },
+    '&.-color-danger': {
+      color: palette.error.main,
+    },
+    '&.-inverted': {
+      color: invertedColor,
+    },
+    // icon
     '& .MuiIcon--fa': {
       verticalAlign: 'unset',
       padding: 2,
@@ -22,38 +44,27 @@ export default ({ palette, spacing, transitions }) => {
         fontSize: 20,
       },
     },
-    '&.-inverted': {
-      color: invertedColor,
-    },
-    '&.-small': {
+    // -------------------------------
+    // sizes
+    '&.-size-small': {
       fontSize: 20,
       '& i.MuiIcon--fa:before': {
         fontSize: 16,
       },
     },
-    '&.-big': {
+    '&.-size-big': {
       fontSize: 28,
       '& i.MuiIcon--fa:before': {
         fontSize: 24,
       },
     },
-    '&.-large': {
+    '&.-size-large': {
       fontSize: 32,
       '& i.MuiIcon--fa:before': {
         fontSize: 28,
       },
     },
-    '&.-link': {
-      cursor: 'pointer',
-      color: palette.text.primary,
-      transition: transitions.create(),
-      '&:hover': {
-        transform: 'scale(1.2)',
-      },
-      '&.-inverted': {
-        color: invertedColor,
-      },
-    },
+    // background
     '&[class*="-bg"]': {
       width: '1.5em',
       height: '1.5em',
@@ -61,9 +72,6 @@ export default ({ palette, spacing, transitions }) => {
     },
     '&.-bg-default': {
       backgroundColor: palette.grey[200],
-      '&.-link.-inverted': {
-        color: palette.text.primary,
-      },
     },
     '&.-bg-primary': {
       backgroundColor: palette.primary.main,
@@ -86,14 +94,26 @@ export default ({ palette, spacing, transitions }) => {
     '&.-bg-lightSecondary': {
       backgroundColor: palette.secondary.light,
     },
-    '&.-square': {
+    // shapes
+    '&.-shape-square': {
       borderRadius: 0,
     },
-    '&.-circular': {
+    '&.-shape-circular': {
       borderRadius: '50%',
     },
-    '&.-round': {
+    '&.-shape-round': {
       borderRadius: 4,
+    },
+    '&.-shadow': {
+      boxShadow: shadows[2],
+    },
+
+    // COMBINATION
+    '&.-bg-default.-link.-inverted': {
+      color: palette.text.primary,
+    },
+    '&.-link.-inverted:not([class*="-color"])': {
+      color: invertedColor,
     },
     '& .fa-facebook-f': {
       color: '#3C5A99',

@@ -1,7 +1,10 @@
+/**
+ * Follow predefined Icon v1.1
+ */
+import MuiIcon from '@material-ui/core/Icon/Icon';
 import React from 'react';
 import cx from 'clsx';
 import PropTypes from 'prop-types';
-import Icon from '@material-ui/core/Icon';
 
 const injectColor = color => {
   if (
@@ -19,9 +22,9 @@ const injectColor = color => {
 
 const PeaIcon = ({
   bgColor,
-  color,
   className,
   children,
+  color,
   fontAwesomeProps,
   icon,
   inverted,
@@ -29,31 +32,34 @@ const PeaIcon = ({
   push,
   size,
   shape,
+  shadow,
   ...props
 }) => {
   const mainIcon = children || icon;
   return (
-    <Icon
+    <MuiIcon
+      component={link ? 'a' : 'span'}
+      {...props}
       className={cx(
         'MuiIcon-root',
         className,
         bgColor && `-bg-${bgColor}`,
-        color && `-${color}`,
+        color && `-color-${color}`,
         inverted && '-inverted',
         link && '-link',
         push && `-push-${push}`,
-        shape && `-${shape}`,
-        size && `-${size}`,
+        shape && `-shape-${shape}`,
+        size && `-size-${size}`,
+        shadow && '-shadow',
       )}
       color={injectColor(color)}
-      {...props}
     >
-      {mainIcon.includes('fa') ? (
+      {mainIcon.includes('fa-') ? (
         <i className={cx('MuiIcon--fa', mainIcon)} {...fontAwesomeProps} />
       ) : (
         mainIcon
       )}
-    </Icon>
+    </MuiIcon>
   );
 };
 
@@ -73,17 +79,22 @@ PeaIcon.propTypes = {
     'action',
     'error',
     'disabled',
+    // custom
+    'danger',
+    'success',
   ]),
   bgColor: PropTypes.oneOf([
     '',
     'default',
-    'danger',
     'primary',
     'secondary',
+    // custom
+    'danger',
     'white',
   ]),
   shape: PropTypes.oneOf(['', 'square', 'circular', 'round']),
   push: PropTypes.oneOf(['', 'left', 'right']),
+  shadow: PropTypes.bool,
 };
 PeaIcon.defaultProps = {
   bgColor: '',
@@ -97,6 +108,7 @@ PeaIcon.defaultProps = {
   push: '',
   size: '',
   shape: 'circular',
+  shadow: false,
 };
 PeaIcon.metadata = {
   name: 'Pea Icon',

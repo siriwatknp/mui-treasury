@@ -16,11 +16,15 @@ const styles = () => ({
     position: 'absolute',
     top: 32,
     right: 0,
-    width: '1.25em',
-    height: '1.25em',
     background: '#ffffff',
     borderRadius: '50%',
     boxShadow: '0 1px 4px 0 rgba(0,0,0,0.2)',
+    '&[class*="-bg"]': {
+      width: '1.2em',
+      height: '1.2em',
+      padding: '0.1em',
+      fontSize: 16,
+    },
   },
   name: {
     marginTop: 4,
@@ -39,7 +43,14 @@ const ICON = {
 const PeaSocialAvatar = ({ classes, src, name, social }) => (
   <Box className={classes.root} position={'relative'}>
     <PeaAvatar src={src} size={'big'} />
-    <PeaIcon className={classes.icon} size={'small'} icon={ICON[social]} />
+    {social && (
+      <PeaIcon
+        className={classes.icon}
+        size={'small'}
+        icon={ICON[social]}
+        bgColor={'white'}
+      />
+    )}
     <Typography
       className={classes.name}
       color={'textSecondary'}

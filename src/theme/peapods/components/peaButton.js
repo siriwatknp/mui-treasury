@@ -2,53 +2,50 @@ import Color from 'color';
 
 export default ({ palette, spacing, breakpoints }) => {
   const elongatedWidth = 160;
-  const defaultTextTransform = 'none';
   const defaultFontWeight = 'bold';
   const defaultLetterSpacing = '0.25px';
+  const defaultTextTransform = 'none';
   const invertedColor = palette.common.white;
   const borderWidth = 2;
+  const iconSelector =
+    '.MuiButton-label:not([class*="-icon-isolated"]) > .material-icons, > svg';
+  const loaderSelector = '.MuiButton-label .MuiButton-loader';
+  const defaultIconSize = 22;
   return {
     MuiButton: {
       root: {
         minHeight: 44,
         color: palette.text.secondary,
+        // STANDALONE
+        '&.-color-danger': {
+          color: palette.error.main,
+        },
+        '&.-compact': {
+          paddingTop: 3,
+          paddingBottom: 3,
+        },
+        '&.-elongated': {
+          minWidth: elongatedWidth,
+        },
+        '&.-inverted': {
+          color: invertedColor,
+          '&:hover': {
+            background: 'rgba(255, 255, 255, 0.2)',
+          },
+        },
         '&.-labelExpanded': {
           '& .MuiButton-text': {
             marginLeft: 'auto',
             marginRight: 'auto',
           },
-        },
-        '&.-chubby': {
-          borderRadius: 100,
-          padding: '6px 12px',
-        },
-        '&.-elongated': {
-          minWidth: elongatedWidth,
-        },
-        '&.-circular': {
-          borderRadius: '50%',
-          padding: spacing.unit,
-          minWidth: 'auto',
           '& .MuiButton-label > .material-icons, > svg': {
-            margin: 0,
-            fontSize: 20,
-          },
-          '&.-small': {
-            padding: spacing.unit,
-            '& .MuiButton-label > .material-icons, > svg': {
-              fontSize: 16,
+            // dont change upper code to iconSelector
+            // fixed styles
+            '&:first-child': {
+              marginLeft: -spacing.unit / 2,
             },
-          },
-          '&.-big': {
-            padding: spacing.unit * 1.5,
-            '& .MuiButton-label > .material-icons, > svg': {
-              fontSize: 28,
-            },
-          },
-          '&.-large': {
-            padding: spacing.unit * 2,
-            '& .MuiButton-label > .material-icons, > svg': {
-              fontSize: 32,
+            '&:last-child': {
+              marginRight: -spacing.unit / 2,
             },
           },
         },
@@ -57,53 +54,22 @@ export default ({ palette, spacing, breakpoints }) => {
             width: '100%',
           },
         },
-        '&.-color-danger': {
-          color: palette.error.main,
+        // icon
+        [`& ${iconSelector}`]: {
+          // default icon size
+          fontSize: defaultIconSize,
         },
-        '&.-inverted': {
-          color: invertedColor,
-          '&:hover': {
-            background: 'rgba(255, 255, 255, 0.2)',
+        '& .MuiButton-label > .material-icons, > svg': {
+          // dont change upper code to iconSelector
+          // fixed styles
+          '&:first-child': {
+            marginRight: spacing.unit,
+          },
+          '&:last-child': {
+            marginLeft: spacing.unit,
           },
         },
-        '&.-compact': {
-          paddingTop: 3,
-          paddingBottom: 3,
-        },
-        '&.-small': {
-          padding: '3px 12px',
-          fontSize: '0.75rem',
-          // '& .MuiButton-label > .material-icons, > svg': {
-          //   fontSize: '0.75rem',
-          // },
-        },
-        '&.-big': {
-          padding: '8px 24px',
-          fontSize: '1rem',
-          '& .MuiButton-label > .material-icons, > svg': {
-            fontSize: '1rem',
-          },
-          '&.-compact': {
-            paddingTop: 4,
-            paddingBottom: 4,
-          },
-        },
-        '&.-large': {
-          padding: '12px 32px',
-          fontSize: '1.25rem',
-          '& .MuiButton-label > .material-icons, > svg': {
-            fontSize: '1.25rem',
-          },
-          '&.-compact': {
-            paddingTop: 6,
-            paddingBottom: 6,
-          },
-        },
-        '&$disabled.-inverted': {
-          borderColor: 'rgba(255, 255, 255, 0.38)',
-          color: 'rgba(255, 255, 255, 0.38)',
-        },
-        // LOADER
+        // loading
         '&.-loading': {
           pointerEvents: 'none',
           '& .MuiButton-label': {
@@ -112,44 +78,96 @@ export default ({ palette, spacing, breakpoints }) => {
               color: palette.text.primary,
             },
           },
-          '&.-inverted': {
-            '& .MuiButton-label .MuiButton-loader': {
-              color: invertedColor,
-            },
-          },
         },
         '& .MuiButton-loader': {
           position: 'absolute',
           top: '50%',
           left: '50%',
         },
-      },
-      text: {
-        paddingLeft: 16,
-        paddingRight: 16,
+        // sizes
+        '&.-size-small': {
+          minHeight: 36,
+          padding: '3px 12px',
+          fontSize: '0.75rem',
+          [`& ${iconSelector}`]: {
+            fontSize: '0.75rem',
+          },
+        },
+        '&.-size-big': {
+          padding: '8px 24px',
+          fontSize: '1rem',
+          [`& ${iconSelector}`]: {
+            fontSize: '1rem',
+          },
+        },
+        '&.-size-large': {
+          padding: '12px 32px',
+          fontSize: '1.25rem',
+          [`& ${iconSelector}`]: {
+            fontSize: '1.25rem',
+          },
+        },
+        '&.-shape-chubby': {
+          borderRadius: 100,
+          padding: '6px 16px',
+        },
+        '&.-shape-circular': {
+          borderRadius: '50%',
+          padding: spacing.unit,
+          minWidth: 'auto',
+          [`& ${iconSelector}`]: {
+            margin: 0,
+            fontSize: 20,
+          },
+        },
+        // COMBINATION
+        '&.-shape-circular.-size-small': {
+          padding: spacing.unit,
+          [`& ${iconSelector}`]: {
+            fontSize: 16,
+          },
+        },
+        '&.-shape-circular.-size-big': {
+          padding: spacing.unit * 1.5,
+          [`& ${iconSelector}`]: {
+            fontSize: 28,
+          },
+        },
+        '&.-shape-circular.-size-large': {
+          padding: spacing.unit * 2,
+          [`& ${iconSelector}`]: {
+            fontSize: 32,
+          },
+        },
+        '&.-size-big.-compact': {
+          paddingTop: 4,
+          paddingBottom: 4,
+        },
+        '&.-size-large.-compact': {
+          paddingTop: 6,
+          paddingBottom: 6,
+        },
+        '&$disabled.-inverted': {
+          borderColor: 'rgba(255, 255, 255, 0.38)',
+          color: 'rgba(255, 255, 255, 0.38)',
+        },
+        '&.-loading.-inverted': {
+          [`& ${loaderSelector}`]: {
+            color: invertedColor,
+          },
+        },
       },
       label: {
         letterSpacing: defaultLetterSpacing,
         textTransform: defaultTextTransform,
         fontWeight: defaultFontWeight,
-        // ICON
-        '& > .material-icons, > svg': {
-          fontSize: 22,
-          '&:first-child': {
-            marginRight: spacing.unit,
-            marginLeft: -spacing.unit / 2,
-          },
-          '&:last-child': {
-            marginLeft: spacing.unit,
-            marginRight: -spacing.unit / 2,
-          },
-        },
       },
       contained: {
         '&.-color-danger': {
           backgroundColor: palette.error.main,
           color: invertedColor,
         },
+        // No Shadow
         '&$focusVisible.-shadowless': {
           boxShadow: 'none',
         },
@@ -159,6 +177,7 @@ export default ({ palette, spacing, breakpoints }) => {
             boxShadow: 'none',
           },
         },
+        // ---------
         '&.-inverted': {
           transition: 'unset',
           backgroundColor: 'unset',
@@ -185,7 +204,7 @@ export default ({ palette, spacing, breakpoints }) => {
             color: palette.common.white,
           },
         },
-        '&.-loading .MuiButton-label .MuiButton-loader': {
+        [`&.-loading ${loaderSelector}`]: {
           color: palette.common.white,
         },
       },
@@ -199,12 +218,11 @@ export default ({ palette, spacing, breakpoints }) => {
             color: palette.common.white,
           },
         },
-        '&.-loading .MuiButton-label .MuiButton-loader': {
+        [`&.-loading ${loaderSelector}`]: {
           color: palette.common.white,
         },
       },
       outlined: {
-        borderWidth: 2,
         '&.-inverted': {
           transition: 'unset',
           borderWidth,
@@ -234,7 +252,7 @@ export default ({ palette, spacing, breakpoints }) => {
               .string(),
           },
         },
-        '&.-loading .MuiButton-label .MuiButton-loader': {
+        [`&.-loading ${loaderSelector}`]: {
           color: palette.primary.main,
         },
       },
@@ -250,7 +268,7 @@ export default ({ palette, spacing, breakpoints }) => {
               .string(),
           },
         },
-        '&.-loading .MuiButton-label .MuiButton-loader': {
+        [`&.-loading ${loaderSelector}`]: {
           color: palette.secondary.main,
         },
       },

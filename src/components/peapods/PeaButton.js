@@ -1,3 +1,6 @@
+/**
+ * Follow predefined Button v1.1
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'clsx';
@@ -38,6 +41,7 @@ const PeaButton = ({
   labelExpanded,
   mobileFullWidth,
   icon,
+  iconIsolated,
   iconProps,
   iconPosition,
   children,
@@ -53,7 +57,11 @@ const PeaButton = ({
     <MuiButton
       classes={{
         root: cx('MuiButton-root', classes.root),
-        label: cx('MuiButton-label', classes.label),
+        label: cx(
+          'MuiButton-label',
+          iconIsolated && '-icon-isolated',
+          classes.label,
+        ),
         disabled: cx('MuiButton-disabled', classes.disabled),
       }}
       className={cx(
@@ -62,8 +70,8 @@ const PeaButton = ({
         loading && '-loading',
         elongated && '-elongated',
         color && `-color-${color}`,
-        size && `-${size}`,
-        shape && `-${shape}`,
+        size && `-size-${size}`,
+        shape && `-shape-${shape}`,
         labelExpanded && '-labelExpanded',
         mobileFullWidth && '-mobileFullWidth',
         shadowless && '-shadowless',
@@ -99,6 +107,7 @@ PeaButton.propTypes = {
     'inherit',
     'primary',
     'secondary',
+    // custom
     'danger',
   ]),
   compact: PropTypes.bool,
@@ -112,6 +121,7 @@ PeaButton.propTypes = {
   shape: PropTypes.oneOf(['', 'chubby', 'circular']),
   children: PropTypes.node.isRequired,
   icon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  iconIsolated: PropTypes.bool,
   iconPosition: PropTypes.oneOf(['start', 'end']),
   iconProps: PropTypes.shape({}),
   loaderProps: PropTypes.shape({}),
@@ -130,6 +140,7 @@ PeaButton.defaultProps = {
   size: '',
   shape: 'chubby',
   icon: '',
+  iconIsolated: false,
   iconPosition: 'start',
   iconProps: {},
   loaderProps: {},
