@@ -151,17 +151,17 @@ Button.defaultProps = {
   iconProps: {},
   loaderProps: {},
 };
-Button.getTheme = ({ breakpoints, palette, spacing }) => {
+Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
   const elongatedWidth = 160;
-  const defaultFontWeight = 'normal';
-  const defaultLetterSpacing = '0.25px';
+  const defaultFontWeight = 500;
+  const defaultLetterSpacing = 0;
   const defaultTextTransform = 'none';
   const invertedColor = palette.common.white;
-  const borderWidth = 2;
+  const outlinedBorderWidth = 1;
   const iconSelector =
     '.MuiButton-label:not([class*="-icon-isolated"]) > .material-icons, > svg';
   const loaderSelector = '.MuiButton-label .MuiButton-loader';
-  const defaultIconSize = 16;
+  const defaultIconSize = 20;
   return {
     MuiButton: {
       root: {
@@ -183,6 +183,14 @@ Button.getTheme = ({ breakpoints, palette, spacing }) => {
           },
         },
         '&.-labelExpanded': {
+          [`& ${iconSelector}`]: {
+            '&:first-of-type': {
+              marginLeft: '-0.4em',
+            },
+            '&:last-of-type': {
+              marginRight: '-0.4em',
+            },
+          },
           '& .MuiButton-text': {
             marginLeft: 'auto',
             marginRight: 'auto',
@@ -198,13 +206,18 @@ Button.getTheme = ({ breakpoints, palette, spacing }) => {
           // default icon size
           fontSize: defaultIconSize,
         },
+        [`&:not([class*="-size"]) ${iconSelector}`]: {
+          '&[class*="-bg"]': {
+            fontSize: 14,
+          },
+        },
         '& .MuiButton-label > .material-icons, > svg': {
           // dont change upper code to iconSelector
           // fixed styles
-          '&:first-child': {
+          '&:first-of-type': {
             marginRight: spacing.unit,
           },
-          '&:last-child': {
+          '&:last-of-type': {
             marginLeft: spacing.unit,
           },
         },
@@ -228,26 +241,46 @@ Button.getTheme = ({ breakpoints, palette, spacing }) => {
           padding: '3px 12px',
           fontSize: '0.75rem',
           [`& ${iconSelector}`]: {
-            fontSize: '0.75rem',
+            fontSize: 18,
+            '&[class*="-bg"]': {
+              fontSize: '0.75rem',
+            },
           },
         },
         '&.-size-big': {
           padding: '8px 24px',
           fontSize: '1rem',
           [`& ${iconSelector}`]: {
-            fontSize: '1rem',
+            fontSize: 24,
+            '&[class*="-bg"]': {
+              fontSize: '1rem',
+            },
           },
         },
         '&.-size-large': {
           padding: '12px 32px',
           fontSize: '1.25rem',
           [`& ${iconSelector}`]: {
-            fontSize: '1.25rem',
+            fontSize: 26,
+            '&[class*="-bg"]': {
+              fontSize: '1.25rem',
+            },
           },
+        },
+        '&.-shape-square': {
+          borderRadius: 0,
         },
         '&.-shape-chubby': {
           borderRadius: 100,
-          padding: '6px 12px',
+          padding: '6px 10px',
+          '& .MuiButton-text': {
+            '&:first-of-type': {
+              marginLeft: '0.4em',
+            },
+            '&:last-of-type': {
+              marginRight: '0.4em',
+            },
+          },
         },
         '&.-shape-circular': {
           borderRadius: '50%',
@@ -304,6 +337,18 @@ Button.getTheme = ({ breakpoints, palette, spacing }) => {
         '&.-color-danger': {
           backgroundColor: palette.error.main,
           color: invertedColor,
+          '&:hover': {
+            backgroundColor: palette.error.dark,
+            // Reset on touch devices, it doesn't add specificity
+            '@media (hover: none)': {
+              backgroundColor: palette.error.dark,
+            },
+          },
+          '&$disabled': {
+            color: palette.action.disabled,
+            boxShadow: shadows[0],
+            backgroundColor: palette.action.disabledBackground,
+          },
         },
         // No Shadow
         '&$focusVisible.-shadowless': {
@@ -320,7 +365,7 @@ Button.getTheme = ({ breakpoints, palette, spacing }) => {
           transition: 'unset',
           backgroundColor: 'unset',
           color: invertedColor,
-          borderWidth,
+          borderWidth: outlinedBorderWidth,
           borderStyle: 'solid',
           borderColor: invertedColor,
           '&:hover': {
@@ -360,8 +405,8 @@ Button.getTheme = ({ breakpoints, palette, spacing }) => {
       },
       outlined: {
         '&.-inverted': {
+          borderWidth: outlinedBorderWidth,
           transition: 'unset',
-          borderWidth,
           borderColor: 'rgba(255, 255, 255, 0.54)',
           color: 'rgba(255, 255, 255, 0.87)',
           '&:hover': {
@@ -375,8 +420,11 @@ Button.getTheme = ({ breakpoints, palette, spacing }) => {
         },
       },
       outlinedPrimary: {
+        borderWidth: outlinedBorderWidth,
+        '&:hover': {
+          borderWidth: outlinedBorderWidth,
+        },
         '&.-inverted': {
-          borderWidth,
           '&:hover': {
             color: palette.primary.main,
             borderColor: palette.primary.main,
@@ -391,8 +439,11 @@ Button.getTheme = ({ breakpoints, palette, spacing }) => {
         },
       },
       outlinedSecondary: {
+        borderWidth: outlinedBorderWidth,
+        '&:hover': {
+          borderWidth: outlinedBorderWidth,
+        },
         '&.-inverted': {
-          borderWidth,
           '&:hover': {
             color: palette.secondary.main,
             borderColor: palette.secondary.main,
