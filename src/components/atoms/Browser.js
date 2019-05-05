@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Box from 'components/atoms/Box';
 
+const grey = '#f0f0f0';
+const border = `2px solid ${grey}`;
 const Browser = ({ children }) => {
   const commonProps = {
     width: 12,
@@ -10,13 +12,13 @@ const Browser = ({ children }) => {
     ml: 1,
   };
   return (
-    <Box borderRadius={8} border={'2px solid #f5f5f5'}>
-      <Box
-        bgcolor={'#f5f5f5'}
-        borderBottom={'2px solid #f5f5f5'}
-        py={1}
-        {...Box.alignCenter}
-      >
+    <Box
+      position={'relative'}
+      borderRadius={8}
+      border={border}
+      overflow={'hidden'}
+    >
+      <Box bgcolor={grey} borderBottom={border} py={1} {...Box.alignCenter}>
         <Box {...commonProps} bgcolor={'#E7586A'} />
         <Box {...commonProps} bgcolor={'#EFAD41'} />
         <Box {...commonProps} bgcolor={'#54CA1C'} />
