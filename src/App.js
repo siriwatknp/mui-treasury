@@ -1,7 +1,8 @@
 /* eslint-disable react/sort-comp */
-import debounce from 'lodash/debounce';
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import debounce from 'lodash/debounce';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import Div100vh from 'react-div-100vh';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import GitHubButton from 'react-github-btn';
@@ -22,6 +23,7 @@ import RootTemplatePage from 'pages/RootTemplatePage';
 import InstructionPage from 'pages/InstructionPage';
 import ContributePage from 'pages/ContributePage';
 import LayoutBuilderPage from 'pages/Layout/LayoutBuilderPage';
+import TimelinePage from 'pages/TimelinePage';
 import {
   Header,
   Content,
@@ -29,6 +31,8 @@ import {
   Nav,
   presets,
 } from 'components/predefined/Layout';
+
+const layoutConfig = presets.createMuiTreasuryLayout();
 
 class App extends React.Component {
   constructor(props) {
@@ -55,8 +59,17 @@ class App extends React.Component {
 
   render() {
     const { scrollY } = this.state;
+    const { location } = this.props;
     return (
-      <Root config={presets.createMuiTreasuryLayout()} component={Div100vh}>
+      <Root
+        config={{
+          ...layoutConfig,
+          navVariant: location.pathname.includes('timeline')
+            ? 'temporary'
+            : layoutConfig.navVariant,
+        }}
+        component={Div100vh}
+      >
         <CssBaseline />
         <Header
           menuIcon={{
@@ -101,7 +114,9 @@ class App extends React.Component {
             )
           }
         >
-          {({ setOpen }) => <Navigator onClickItem={setOpen} />}
+          {({ open, setOpen }) => (
+            <Navigator onClickItem={() => (open ? setOpen(false) : {})} />
+          )}
         </Nav>
         <Content>
           <Switch>
@@ -113,6 +128,7 @@ class App extends React.Component {
               path={'/layout-builder'}
               component={LayoutBuilderPage}
             />
+            <Route exact path={'/timeline-2019'} component={TimelinePage} />
             <Route exact path={'/components/*'} component={RootComponentPage} />
             <Route exact path={'/brands/*'} component={RootBrandPage} />
             <Route exact path={'/templates/*'} component={RootTemplatePage} />
@@ -123,4 +139,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+App.propTypes = {
+  location: PropTypes.shape({}).isRequired,
+};
+
+export default withRouter(App);

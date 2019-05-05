@@ -32,6 +32,11 @@ const introduction = [
     path: '/layout-builder',
     primaryText: 'Layout Builder',
   },
+  {
+    id: 'timeline-2019',
+    path: '/timeline-2019',
+    primaryText: 'Timeline 2019',
+  },
 ];
 
 const Navigator = withRouter(({ onClickItem, location }) => {

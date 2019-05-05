@@ -26,14 +26,12 @@ const initialState = {
   clipped: false,
   collapsible: true,
   collapsedWidth: 64,
-  collapsed: false,
   navVariant: 'permanent',
   navWidth: 256,
   navAnchor: 'left',
   headerPosition: 'relative',
   squeezed: true,
   footerShrink: true,
-  open: false,
   setOpen: () => {},
   setCollapse: () => {},
 };
@@ -49,8 +47,6 @@ const styles = () => ({
 class Root extends React.Component {
   constructor(props) {
     super(props);
-    const { config } = props;
-    // config = initialConfig if not provided.
     this.setCollapse = val =>
       this.setState(({ collapsed }) => ({
         collapsed: typeof val === 'object' ? !collapsed : val,
@@ -60,7 +56,8 @@ class Root extends React.Component {
         open: typeof val === 'object' ? !open : val,
       }));
     this.state = {
-      ...config,
+      open: false,
+      collapsed: false,
       setCollapse: this.setCollapse,
       setOpen: this.setOpen,
     };
@@ -73,6 +70,7 @@ class Root extends React.Component {
       classes,
       width,
       children,
+      config,
       ...props
     } = this.props;
     const {
@@ -85,7 +83,7 @@ class Root extends React.Component {
       headerPosition,
       squeezed,
       footerShrink,
-    } = this.state;
+    } = config;
     const value = {
       ...this.state,
       clipped: getScreenValue(clipped, width, initialState.clipped),
