@@ -89,7 +89,7 @@ const Timeline = ({ data, onMouseOver, onFocus, onMouseLeave }) => (
             css={{
               top: '50%',
               transform: 'translate(-50%, -50%)',
-              left: -80,
+              left: -32,
               [breakpoints.up('sm')]: {
                 left: large ? -60 : -48,
               },

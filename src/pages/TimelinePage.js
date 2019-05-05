@@ -121,7 +121,7 @@ const TimelinePage = () => {
         <Text
           variant={'h1'}
           fontSize={{
-            xs: 24,
+            xs: 32,
             sm: 40,
           }}
           fontWeight={900}
