@@ -29,9 +29,9 @@ const ButtonSection = ({ globalTheme }) => {
   const [icon, setIcon] = useState(false);
   const [loading, setLoading] = useState(false);
   const [label, setLabel] = useState('Button');
-  const [size, setSize] = useState('default');
-  const [shape, setShape] = useState('default');
-  const [variant, setVariant] = useState('flat');
+  const [size, setSize] = useState('');
+  const [shape, setShape] = useState('');
+  const [variant, setVariant] = useState('text');
   const [color, setColor] = useState('default');
   const [iconPosition, setIconPlacement] = useState('start');
   return (
@@ -109,7 +109,7 @@ const ButtonSection = ({ globalTheme }) => {
               value={variant}
               onChange={e => setVariant(e.target.value)}
             >
-              <FormControlLabel value="flat" control={<Radio />} label="flat" />
+              <FormControlLabel value="text" control={<Radio />} label="text" />
               <FormControlLabel
                 value="contained"
                 control={<Radio />}
@@ -161,7 +161,7 @@ const ButtonSection = ({ globalTheme }) => {
             <MenuItem key={'small'} value={'small'}>
               small
             </MenuItem>
-            <MenuItem key={'default'} value={'default'}>
+            <MenuItem key={'default'} value={''}>
               default
             </MenuItem>
             <MenuItem key={'big'} value={'big'}>
@@ -179,7 +179,7 @@ const ButtonSection = ({ globalTheme }) => {
             value={shape}
             onChange={e => setShape(e.target.value)}
           >
-            <MenuItem key={'default'} value={'default'}>
+            <MenuItem key={'default'} value={''}>
               default
             </MenuItem>
             <MenuItem key={'chubby'} value={'chubby'}>

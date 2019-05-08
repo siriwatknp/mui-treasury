@@ -124,7 +124,7 @@ Button.propTypes = {
   mobileFullWidth: PropTypes.bool,
   shadowless: PropTypes.bool,
   size: PropTypes.oneOf(['small', '', 'big', 'large']),
-  shape: PropTypes.oneOf(['', 'chubby', 'circular']),
+  shape: PropTypes.oneOf(['', 'chubby', 'circular', 'square']),
   children: PropTypes.node.isRequired,
   icon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   iconIsolated: PropTypes.bool,
@@ -152,6 +152,32 @@ Button.defaultProps = {
   loaderProps: {},
 };
 Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
+  const extraStyles = {
+    // if you want to extend predefined button
+    // add style to below variable is recommended.
+    root: {
+      // ex.
+      // minHeight: 44,
+      // color: palette.text.secondary,
+    },
+    containedPrimary: {},
+    containedSecondary: {},
+    outlinedPrimary: {},
+    outlinedSecondary: {},
+  };
+  const labelSizes = {
+    small: 12,
+    normal: 14,
+    big: 16,
+    large: 20,
+  };
+  const minHeights = {
+    small: 32,
+    normal: 40,
+    big: 48,
+    large: 56,
+  };
+  const buttonPadding = '0em 1.15em';
   const elongatedWidth = 160;
   const defaultFontWeight = 500;
   const defaultLetterSpacing = 0;
@@ -160,14 +186,27 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
   const outlinedBorderWidth = 1;
   const iconSelector =
     '.MuiButton-label:not([class*="-icon-isolated"]) > .material-icons, > svg';
+  const bgIconSelector =
+    // eslint-disable-next-line max-len
+    '.MuiButton-label:not([class*="-icon-isolated"]) > .material-icons:not([class*="-bg-"]), > svg:not([class*="-bg-"])';
   const loaderSelector = '.MuiButton-label .MuiButton-loader';
   const defaultIconSize = 20;
   return {
     MuiButton: {
       root: {
+        ...extraStyles.root,
+        fontSize: labelSizes.normal,
+        padding: buttonPadding,
+        minHeight: minHeights.normal,
+        minWidth: minHeights.normal,
         // STANDALONE
         '&.-color-danger': {
           color: palette.error.main,
+          '&:hover': {
+            backgroundColor: Color(palette.error.main)
+              .fade(0.92)
+              .toString(),
+          },
         },
         '&.-compact': {
           paddingTop: 3,
@@ -183,7 +222,7 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
           },
         },
         '&.-labelExpanded': {
-          [`& ${iconSelector}`]: {
+          [`& ${bgIconSelector}`]: {
             '&:first-of-type': {
               marginLeft: '-0.4em',
             },
@@ -208,17 +247,19 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
         },
         [`&:not([class*="-size"]) ${iconSelector}`]: {
           '&[class*="-bg"]': {
-            fontSize: 14,
+            fontSize: labelSizes.normal + 2,
           },
         },
-        '& .MuiButton-label > .material-icons, > svg': {
-          // dont change upper code to iconSelector
-          // fixed styles
-          '&:first-of-type': {
-            marginRight: spacing.unit,
-          },
-          '&:last-of-type': {
-            marginLeft: spacing.unit,
+        '&:not([class*="-shape-circular"])': {
+          '& .MuiButton-label > .material-icons, > svg': {
+            // don't change upper code to var:iconSelector
+            // fixed styles
+            '&:first-of-type': {
+              marginRight: spacing.unit,
+            },
+            '&:last-of-type': {
+              marginLeft: spacing.unit,
+            },
           },
         },
         // loading
@@ -238,8 +279,10 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
         },
         // sizes
         '&.-size-small': {
-          padding: '3px 12px',
-          fontSize: '0.75rem',
+          fontSize: labelSizes.small,
+          minHeight: minHeights.small,
+          minWidth: minHeights.small,
+          padding: buttonPadding,
           [`& ${iconSelector}`]: {
             fontSize: 18,
             '&[class*="-bg"]': {
@@ -248,22 +291,26 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
           },
         },
         '&.-size-big': {
-          padding: '8px 24px',
-          fontSize: '1rem',
+          fontSize: labelSizes.big,
+          minHeight: minHeights.big,
+          minWidth: minHeights.big,
+          padding: buttonPadding,
           [`& ${iconSelector}`]: {
             fontSize: 24,
             '&[class*="-bg"]': {
-              fontSize: '1rem',
+              fontSize: '1.25rem',
             },
           },
         },
         '&.-size-large': {
-          padding: '12px 32px',
-          fontSize: '1.25rem',
+          fontSize: labelSizes.large,
+          minHeight: minHeights.large,
+          minWidth: minHeights.large,
+          padding: buttonPadding,
           [`& ${iconSelector}`]: {
             fontSize: 26,
             '&[class*="-bg"]': {
-              fontSize: '1.25rem',
+              fontSize: '1.5rem',
             },
           },
         },
@@ -284,8 +331,7 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
         },
         '&.-shape-circular': {
           borderRadius: '50%',
-          padding: spacing.unit,
-          minWidth: 'auto',
+          padding: 12,
           [`& ${iconSelector}`]: {
             margin: 0,
             fontSize: 20,
@@ -293,7 +339,7 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
         },
         // COMBINATION
         '&.-shape-circular.-size-small': {
-          padding: spacing.unit,
+          padding: spacing.unit * 1.25,
           [`& ${iconSelector}`]: {
             fontSize: 16,
           },
@@ -305,9 +351,9 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
           },
         },
         '&.-shape-circular.-size-large': {
-          padding: spacing.unit * 2,
+          padding: spacing.unit * 1.75,
           [`& ${iconSelector}`]: {
-            fontSize: 32,
+            fontSize: 36,
           },
         },
         '&.-size-big.-compact': {
@@ -378,6 +424,7 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
         },
       },
       containedPrimary: {
+        ...extraStyles.containedPrimary,
         '&.-inverted': {
           borderColor: palette.primary.main,
           color: palette.primary.main,
@@ -391,6 +438,7 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
         },
       },
       containedSecondary: {
+        ...extraStyles.containedSecondary,
         '&.-inverted': {
           borderColor: palette.secondary.main,
           color: palette.secondary.main,
@@ -404,6 +452,14 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
         },
       },
       outlined: {
+        '&.-color-danger': {
+          borderColor: Color(palette.error.main)
+            .fade(0.5)
+            .toString(),
+          '&:hover': {
+            borderColor: palette.error.main,
+          },
+        },
         '&.-inverted': {
           borderWidth: outlinedBorderWidth,
           transition: 'unset',
@@ -420,6 +476,7 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
         },
       },
       outlinedPrimary: {
+        ...extraStyles.outlinedPrimary,
         borderWidth: outlinedBorderWidth,
         '&:hover': {
           borderWidth: outlinedBorderWidth,
@@ -439,6 +496,7 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
         },
       },
       outlinedSecondary: {
+        ...extraStyles.outlinedSecondary,
         borderWidth: outlinedBorderWidth,
         '&:hover': {
           borderWidth: outlinedBorderWidth,

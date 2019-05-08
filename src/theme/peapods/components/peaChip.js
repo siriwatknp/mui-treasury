@@ -14,17 +14,19 @@ export default ({ shape, palette: { primary, secondary, common, text } }) => ({
         },
       },
     },
+    clickable: {
+      '&:hover': {
+        '& .MuiChip-label': {
+          color: common.white,
+        },
+      },
+    },
     colorPrimary: {
       backgroundColor: Color(primary.main)
         .fade(0.75)
         .string(),
       '& .MuiChip-label': {
         color: primary.dark,
-      },
-      '&:hover': {
-        '& .MuiChip-label': {
-          color: common.white,
-        },
       },
     },
     colorSecondary: {
@@ -33,11 +35,6 @@ export default ({ shape, palette: { primary, secondary, common, text } }) => ({
         .string(),
       '& .MuiChip-label': {
         color: secondary.dark,
-      },
-      '&:hover': {
-        '& .MuiChip-label': {
-          color: common.white,
-        },
       },
     },
   },

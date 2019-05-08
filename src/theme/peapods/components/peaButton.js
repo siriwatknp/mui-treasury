@@ -1,24 +1,68 @@
 import Color from 'color';
 
-export default ({ palette, spacing, breakpoints }) => {
+export default ({ palette, spacing, breakpoints, shadows }) => {
+  const buttonPadding = '0em 1.15em';
+  const chubbyPadding = '6px 8px';
   const elongatedWidth = 160;
   const defaultFontWeight = 'bold';
   const defaultLetterSpacing = '0.25px';
   const defaultTextTransform = 'none';
   const invertedColor = palette.common.white;
-  const borderWidth = 2;
+  const outlinedBorderWidth = 2;
   const iconSelector =
     '.MuiButton-label:not([class*="-icon-isolated"]) > .material-icons, > svg';
+  const bgIconSelector =
+    // eslint-disable-next-line max-len
+    '.MuiButton-label:not([class*="-icon-isolated"]) > .material-icons:not([class*="-bg-"]), > svg:not([class*="-bg-"])';
   const loaderSelector = '.MuiButton-label .MuiButton-loader';
-  const defaultIconSize = 22;
+  const defaultIconSize = 20;
+  const defaultBgIconSize = defaultIconSize;
+  const extraStyles = {
+    // if you want to extend predefined button
+    // add style to below variable is recommended.
+    root: {
+      color: palette.text.secondary,
+    },
+    containedPrimary: {
+      color: invertedColor,
+    },
+    containedSecondary: {
+      color: invertedColor,
+    },
+    outlinedPrimary: {
+      color: palette.text.secondary,
+      borderWidth: '2px !important',
+    },
+    outlinedSecondary: {},
+  };
+  const labelSizes = {
+    small: 12,
+    normal: 14,
+    big: 16,
+    large: 20,
+  };
+  const minHeights = {
+    small: 32,
+    normal: 44,
+    big: 48,
+    large: 56,
+  };
   return {
     MuiButton: {
       root: {
-        minHeight: 44,
-        color: palette.text.secondary,
+        ...extraStyles.root,
+        fontSize: labelSizes.normal,
+        padding: buttonPadding,
+        minHeight: minHeights.normal,
+        minWidth: minHeights.normal,
         // STANDALONE
         '&.-color-danger': {
           color: palette.error.main,
+          '&:hover': {
+            backgroundColor: Color(palette.error.main)
+              .fade(0.92)
+              .toString(),
+          },
         },
         '&.-compact': {
           paddingTop: 3,
@@ -34,19 +78,17 @@ export default ({ palette, spacing, breakpoints }) => {
           },
         },
         '&.-labelExpanded': {
+          [`& ${bgIconSelector}`]: {
+            '&:first-of-type': {
+              marginLeft: '-0.4em',
+            },
+            '&:last-of-type': {
+              marginRight: '-0.4em',
+            },
+          },
           '& .MuiButton-span': {
             marginLeft: 'auto !important',
             marginRight: 'auto !important',
-          },
-          '& .MuiButton-label > .material-icons, > svg': {
-            // dont change upper code to iconSelector
-            // fixed styles
-            '&:first-child': {
-              marginLeft: -spacing.unit / 2,
-            },
-            '&:last-child': {
-              marginRight: -spacing.unit / 2,
-            },
           },
         },
         '&.-mobileFullWidth': {
@@ -59,14 +101,21 @@ export default ({ palette, spacing, breakpoints }) => {
           // default icon size
           fontSize: defaultIconSize,
         },
-        '& .MuiButton-label > .material-icons, > svg': {
-          // dont change upper code to iconSelector
-          // fixed styles
-          '&:first-child': {
-            marginRight: spacing.unit,
+        [`&:not([class*="-size"]) ${iconSelector}`]: {
+          '&[class*="-bg"]': {
+            fontSize: defaultBgIconSize,
           },
-          '&:last-child': {
-            marginLeft: spacing.unit,
+        },
+        '&:not([class*="-shape-circular"])': {
+          '& .MuiButton-label > .material-icons, > svg': {
+            // don't change upper code to var:iconSelector
+            // fixed styles
+            '&:first-of-type': {
+              marginRight: spacing.unit,
+            },
+            '&:last-of-type': {
+              marginLeft: spacing.unit,
+            },
           },
         },
         // loading
@@ -86,35 +135,59 @@ export default ({ palette, spacing, breakpoints }) => {
         },
         // sizes
         '&.-size-small': {
-          minHeight: 36,
-          padding: '3px 12px',
-          fontSize: '0.75rem',
+          fontSize: labelSizes.small,
+          minHeight: minHeights.small,
+          minWidth: minHeights.small,
+          padding: buttonPadding,
           [`& ${iconSelector}`]: {
-            fontSize: '0.75rem',
+            fontSize: 18,
+            '&[class*="-bg"]': {
+              fontSize: '0.75rem',
+            },
           },
         },
         '&.-size-big': {
-          padding: '8px 24px',
-          fontSize: '1rem',
+          fontSize: labelSizes.big,
+          minHeight: minHeights.big,
+          minWidth: minHeights.big,
+          padding: buttonPadding,
           [`& ${iconSelector}`]: {
-            fontSize: '1rem',
+            fontSize: 24,
+            '&[class*="-bg"]': {
+              fontSize: '1.25rem',
+            },
           },
         },
         '&.-size-large': {
-          padding: '12px 32px',
-          fontSize: '1.25rem',
+          fontSize: labelSizes.large,
+          minHeight: minHeights.large,
+          minWidth: minHeights.large,
+          padding: buttonPadding,
           [`& ${iconSelector}`]: {
-            fontSize: '1.25rem',
+            fontSize: 26,
+            '&[class*="-bg"]': {
+              fontSize: '1.5rem',
+            },
           },
+        },
+        '&.-shape-square': {
+          borderRadius: 0,
         },
         '&.-shape-chubby': {
           borderRadius: 100,
-          padding: '6px 16px',
+          padding: chubbyPadding,
+          '& .MuiButton-span': {
+            '&:first-of-type': {
+              marginLeft: '0.4em',
+            },
+            '&:last-of-type': {
+              marginRight: '0.4em',
+            },
+          },
         },
         '&.-shape-circular': {
           borderRadius: '50%',
-          padding: spacing.unit,
-          minWidth: 'auto',
+          padding: 12,
           [`& ${iconSelector}`]: {
             margin: 0,
             fontSize: 20,
@@ -122,7 +195,7 @@ export default ({ palette, spacing, breakpoints }) => {
         },
         // COMBINATION
         '&.-shape-circular.-size-small': {
-          padding: spacing.unit,
+          padding: spacing.unit * 1.25,
           [`& ${iconSelector}`]: {
             fontSize: 16,
           },
@@ -134,9 +207,9 @@ export default ({ palette, spacing, breakpoints }) => {
           },
         },
         '&.-shape-circular.-size-large': {
-          padding: spacing.unit * 2,
+          padding: spacing.unit * 1.75,
           [`& ${iconSelector}`]: {
-            fontSize: 32,
+            fontSize: 36,
           },
         },
         '&.-size-big.-compact': {
@@ -166,6 +239,18 @@ export default ({ palette, spacing, breakpoints }) => {
         '&.-color-danger': {
           backgroundColor: palette.error.main,
           color: invertedColor,
+          '&:hover': {
+            backgroundColor: palette.error.dark,
+            // Reset on touch devices, it doesn't add specificity
+            '@media (hover: none)': {
+              backgroundColor: palette.error.dark,
+            },
+          },
+          '&$disabled': {
+            color: palette.action.disabled,
+            boxShadow: shadows[0],
+            backgroundColor: palette.action.disabledBackground,
+          },
         },
         // No Shadow
         '&$focusVisible.-shadowless': {
@@ -182,7 +267,7 @@ export default ({ palette, spacing, breakpoints }) => {
           transition: 'unset',
           backgroundColor: 'unset',
           color: invertedColor,
-          borderWidth,
+          borderWidth: outlinedBorderWidth,
           borderStyle: 'solid',
           borderColor: invertedColor,
           '&:hover': {
@@ -195,7 +280,7 @@ export default ({ palette, spacing, breakpoints }) => {
         },
       },
       containedPrimary: {
-        color: invertedColor,
+        ...extraStyles.containedPrimary,
         '&.-inverted': {
           borderColor: palette.primary.main,
           color: palette.primary.main,
@@ -209,7 +294,7 @@ export default ({ palette, spacing, breakpoints }) => {
         },
       },
       containedSecondary: {
-        color: invertedColor,
+        ...extraStyles.containedSecondary,
         '&.-inverted': {
           borderColor: palette.secondary.main,
           color: palette.secondary.main,
@@ -223,9 +308,17 @@ export default ({ palette, spacing, breakpoints }) => {
         },
       },
       outlined: {
+        '&.-color-danger': {
+          borderColor: Color(palette.error.main)
+            .fade(0.5)
+            .toString(),
+          '&:hover': {
+            borderColor: palette.error.main,
+          },
+        },
         '&.-inverted': {
+          borderWidth: outlinedBorderWidth,
           transition: 'unset',
-          borderWidth,
           borderColor: 'rgba(255, 255, 255, 0.54)',
           color: 'rgba(255, 255, 255, 0.87)',
           '&:hover': {
@@ -239,10 +332,12 @@ export default ({ palette, spacing, breakpoints }) => {
         },
       },
       outlinedPrimary: {
-        color: palette.text.secondary,
-        borderWidth: '2px !important',
+        ...extraStyles.outlinedPrimary,
+        borderWidth: outlinedBorderWidth,
+        '&:hover': {
+          borderWidth: outlinedBorderWidth,
+        },
         '&.-inverted': {
-          borderWidth,
           '&:hover': {
             color: palette.primary.main,
             borderColor: palette.primary.main,
@@ -257,8 +352,12 @@ export default ({ palette, spacing, breakpoints }) => {
         },
       },
       outlinedSecondary: {
+        ...extraStyles.outlinedSecondary,
+        borderWidth: outlinedBorderWidth,
+        '&:hover': {
+          borderWidth: outlinedBorderWidth,
+        },
         '&.-inverted': {
-          borderWidth,
           '&:hover': {
             color: palette.secondary.main,
             borderColor: palette.secondary.main,

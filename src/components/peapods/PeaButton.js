@@ -134,7 +134,7 @@ PeaButton.defaultProps = {
   inverted: false,
   loading: false,
   elongated: false,
-  labelExpanded: true,
+  labelExpanded: false,
   mobileFullWidth: false,
   shadowless: true,
   size: '',

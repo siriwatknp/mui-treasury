@@ -11,7 +11,7 @@ import MomentUtils from '@date-io/moment';
 
 // PEAPODS THEME
 import peapodsTheme from 'theme/peapods';
-import { ThemeProvider } from '@material-ui/styles';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 
 // PEAPODS COMPONENTS
 import Link from '@material-ui/core/Link';
@@ -153,28 +153,22 @@ const components = [
         </PeaButton>
         <PeaButton
           elongated
+          labelExpanded
           variant={'contained'}
           color={'primary'}
           icon={'add'}
-          iconIsolated
           iconPosition={'end'}
-          iconProps={{ bgColor: 'lightPrimary', size: 'small' }}
+          iconProps={{ bgColor: 'lightPrimary' }}
         >
           Create Event
         </PeaButton>
         <PeaButton
           elongated
+          fullWidth
+          labelExpanded
           variant={'contained'}
           color={'primary'}
-          fullWidth
-          iconIsolated
-          icon={
-            <PeaIcon
-              icon={'fab fa-facebook-f'}
-              bgColor={'white'}
-              size={'small'}
-            />
-          }
+          icon={<PeaIcon icon={'fab fa-facebook-f'} bgColor={'white'} />}
         >
           Register with Facebook
         </PeaButton>
@@ -236,7 +230,14 @@ const components = [
   },
   {
     component: PeaTag,
-    render: () => <PeaTag src={AVATAR} label={'Invited by @Markz'} />,
+    render: () => (
+      <Box>
+        <Box mb={2} width={'100%'}>
+          <PeaTag src={AVATAR} label={'Invited by @Markz'} />
+        </Box>
+        <PeaTag src={AVATAR} label={'Invited by @Markz'} color={'primary'} />
+      </Box>
+    ),
     previewProps: {
       white: true,
     },
@@ -397,7 +398,7 @@ const components = [
   {
     component: PeaCardActions,
     render: () => (
-      <Box width={'100%'}>
+      <Box>
         <Card style={{ marginBottom: 20 }}>
           <CardContent style={{ minWidth: 320 }} />
           <PeaCardActions
@@ -812,8 +813,8 @@ const PeapodsPage = () => (
           <br />
           <Typography>
             This is a component showcase of peapods app. It uses{' '}
-            <Link href={'https://material-ui.com'}>Material-UI</Link>{' '}
-            v4.0.0-beta.1. It shows that Material-UI is fully customizable.
+            <Link href={'https://material-ui.com'}>Material-UI</Link> v3.9.2. It
+            shows that Material-UI is fully customizable.
           </Typography>
           <br />
           <Box maxWidth={{ sm: 140 }}>
@@ -839,7 +840,7 @@ const PeapodsPage = () => (
         sm: 4,
       }}
     >
-      <Grid container spacing={4} justify={'center'}>
+      <Grid container spacing={32} justify={'center'}>
         {components.map(
           ({ component, render, previewProps, gridItemProps }) => (
             <Grid
@@ -855,7 +856,9 @@ const PeapodsPage = () => (
                 {...get(component, 'metadata')}
                 {...previewProps}
               >
-                <ThemeProvider theme={peapodsTheme}>{render()}</ThemeProvider>
+                <MuiThemeProvider theme={peapodsTheme}>
+                  {render()}
+                </MuiThemeProvider>
               </PreviewWidget>
             </Grid>
           ),

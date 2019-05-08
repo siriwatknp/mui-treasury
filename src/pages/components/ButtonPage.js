@@ -1,4 +1,4 @@
-/* eslint-disable max-len */
+/* eslint-disable max-len, react/no-array-index-key */
 import React from 'react';
 import PropTypes from 'prop-types';
 import merge from 'lodash/merge';
@@ -6,8 +6,7 @@ import get from 'lodash/get';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import ButtonSection from 'pages/components/predefined/ButtonSection';
 import examples from 'pages/components/predefined/examples/button';
 // CONTAINERS
@@ -25,6 +24,7 @@ import TwitterButton from 'components/buttons/TwitterButton';
 import GradientButton from 'components/buttons/GradientButton';
 import ShinningButton from 'components/buttons/ShinningButton';
 
+const createTheme = theme => createMuiTheme(theme);
 const baseTheme = createMuiTheme();
 
 const components = [
@@ -93,15 +93,14 @@ const exampleCode = `
 
 const themeCode = `
   // in your root component
-  import { createMuiTheme } from '@material-ui/core/styles';
-  import { ThemeProvider } from '@material-ui/styles';
+  import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
   import yourTheme from 'path/to/yourTheme.js';
   
   // if you dont have your theme, use createMuiTheme;
   // const yourTheme = createMuiTheme();  
   
   const App = () => (
-    <ThemeProvider
+    <MuiThemeProvider
       theme={{
         ...yourTheme,
         overrides: {
@@ -112,7 +111,7 @@ const themeCode = `
       }}
     >
       ...
-    </ThemeProvider>
+    </MuiThemeProvider>
   )
 `;
 
@@ -136,8 +135,8 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
     >
       Predefined Button <code>v1.2</code>
     </Text>
-    <Text variant={'caption'} display={'block'} align={'left'} gutterBottom>
-      <b>Last Updated 7 MAY 2019</b>
+    <Text variant={'caption'} align={'left'} gutterBottom>
+      <b>Last Updated 8 May 2019</b>
     </Text>
     <Text gutterBottom>
       The button and only button that you need if you are using Material-UI,
@@ -148,9 +147,7 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
       <code>shape</code> are inspired from semantic-ui and antd.
     </Text>
     <Box pt={{ xs: 2, sm: 4 }}>
-      <ShouldUpdate value={counter}>
-        <ButtonSection globalTheme={globalTheme} />
-      </ShouldUpdate>
+      <ButtonSection globalTheme={globalTheme} />
     </Box>
     <br />
     <Text
@@ -213,9 +210,9 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
     >
       Examples
     </Text>
-    <Grid container spacing={2}>
-      {examples.map(({ render, code }) => (
-        <Grid item xs={12} sm={4} md={3}>
+    <Grid container spacing={16}>
+      {examples.map(({ render, code }, i) => (
+        <Grid key={i} item xs={12} sm={4} md={3}>
           <Box textAlign={'center'} py={2}>
             {render()}
           </Box>
@@ -242,7 +239,7 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
       like.
     </Text>
     <Box pb={2} />
-    <Grid container spacing={4}>
+    <Grid container spacing={32}>
       {components.map(({ component, render, previewProps }) => (
         <Grid key={get(component, 'metadata.name')} item xs={12} sm={6} lg={4}>
           <PreviewWidget
@@ -252,14 +249,14 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
             {...previewProps}
           >
             <ShouldUpdate value={counter}>
-              <ThemeProvider
-                theme={createMuiTheme({
+              <MuiThemeProvider
+                theme={createTheme({
                   ...globalTheme,
                   overrides: component.getTheme(merge(baseTheme, globalTheme)),
                 })}
               >
                 {render()}
-              </ThemeProvider>
+              </MuiThemeProvider>
             </ShouldUpdate>
           </PreviewWidget>
         </Grid>

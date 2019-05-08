@@ -22,20 +22,7 @@ export const getScreenValue = (ctx, currentScreen, defaultValue) => {
 };
 
 const initialConfig = presets.createDefaultLayout();
-const initialState = {
-  clipped: false,
-  collapsible: true,
-  collapsedWidth: 64,
-  navVariant: 'permanent',
-  navWidth: 256,
-  navAnchor: 'left',
-  headerPosition: 'relative',
-  squeezed: true,
-  footerShrink: true,
-  setOpen: () => {},
-  setCollapse: () => {},
-};
-export const LayoutContext = React.createContext(initialState);
+export const LayoutContext = React.createContext(initialConfig);
 
 const styles = () => ({
   root: {
@@ -86,26 +73,30 @@ class Root extends React.Component {
     } = config;
     const value = {
       ...this.state,
-      clipped: getScreenValue(clipped, width, initialState.clipped),
-      collapsible: getScreenValue(collapsible, width, initialState.collapsible),
+      clipped: getScreenValue(clipped, width, initialConfig.clipped),
+      collapsible: getScreenValue(
+        collapsible,
+        width,
+        initialConfig.collapsible,
+      ),
       collapsedWidth: getScreenValue(
         collapsedWidth,
         width,
-        initialState.collapsedWidth,
+        initialConfig.collapsedWidth,
       ),
-      navVariant: getScreenValue(navVariant, width, initialState.navVariant),
-      navWidth: getScreenValue(navWidth, width, initialState.navWidth),
-      navAnchor: getScreenValue(navAnchor, width, initialState.navAnchor),
+      navVariant: getScreenValue(navVariant, width, initialConfig.navVariant),
+      navWidth: getScreenValue(navWidth, width, initialConfig.navWidth),
+      navAnchor: getScreenValue(navAnchor, width, initialConfig.navAnchor),
       headerPosition: getScreenValue(
         headerPosition,
         width,
-        initialState.headerPosition,
+        initialConfig.headerPosition,
       ),
-      squeezed: getScreenValue(squeezed, width, initialState.squeezed),
+      squeezed: getScreenValue(squeezed, width, initialConfig.squeezed),
       footerShrink: getScreenValue(
         footerShrink,
         width,
-        initialState.footerShrink,
+        initialConfig.footerShrink,
       ),
       screen: width,
     };
