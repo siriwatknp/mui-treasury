@@ -2,6 +2,7 @@ import Color from 'color';
 
 export default ({ palette, spacing, breakpoints, shadows }) => {
   const buttonPadding = '0em 1.15em';
+  const chubbyPadding = '6px 8px';
   const elongatedWidth = 160;
   const defaultFontWeight = 'bold';
   const defaultLetterSpacing = '0.25px';
@@ -10,8 +11,12 @@ export default ({ palette, spacing, breakpoints, shadows }) => {
   const outlinedBorderWidth = 2;
   const iconSelector =
     '.MuiButton-label:not([class*="-icon-isolated"]) > .material-icons, > svg';
+  const bgIconSelector =
+    // eslint-disable-next-line max-len
+    '.MuiButton-label:not([class*="-icon-isolated"]) > .material-icons:not([class*="-bg-"]), > svg:not([class*="-bg-"])';
   const loaderSelector = '.MuiButton-label .MuiButton-loader';
   const defaultIconSize = 20;
+  const defaultBgIconSize = defaultIconSize;
   const extraStyles = {
     // if you want to extend predefined button
     // add style to below variable is recommended.
@@ -73,7 +78,7 @@ export default ({ palette, spacing, breakpoints, shadows }) => {
           },
         },
         '&.-labelExpanded': {
-          [`& ${iconSelector}`]: {
+          [`& ${bgIconSelector}`]: {
             '&:first-of-type': {
               marginLeft: '-0.4em',
             },
@@ -98,7 +103,7 @@ export default ({ palette, spacing, breakpoints, shadows }) => {
         },
         [`&:not([class*="-size"]) ${iconSelector}`]: {
           '&[class*="-bg"]': {
-            fontSize: labelSizes.normal + 2,
+            fontSize: defaultBgIconSize,
           },
         },
         '&:not([class*="-shape-circular"])': {
@@ -170,7 +175,7 @@ export default ({ palette, spacing, breakpoints, shadows }) => {
         },
         '&.-shape-chubby': {
           borderRadius: 100,
-          padding: '6px 10px',
+          padding: chubbyPadding,
           '& .MuiButton-span': {
             '&:first-of-type': {
               marginLeft: '0.4em',
