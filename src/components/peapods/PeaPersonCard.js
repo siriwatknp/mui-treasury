@@ -24,7 +24,7 @@ const PeaPersonCard = ({ image, name, tag, location, bio }) => (
           Follow
         </PeaButton>
       </ListItem>
-      <Grid container spacing={8} wrap={'nowrap'}>
+      <Grid container spacing={1} wrap={'nowrap'}>
         <Grid item>
           <PeaIcon size={'small'} color={'secondary'} icon={'location_on'} />
         </Grid>
@@ -32,7 +32,7 @@ const PeaPersonCard = ({ image, name, tag, location, bio }) => (
           <Typography>{location}</Typography>
         </Grid>
       </Grid>
-      <Grid container spacing={8} wrap={'nowrap'}>
+      <Grid container spacing={1} wrap={'nowrap'}>
         <Grid item>
           <PeaIcon size={'small'} color={'secondary'} icon={'info'} />
         </Grid>

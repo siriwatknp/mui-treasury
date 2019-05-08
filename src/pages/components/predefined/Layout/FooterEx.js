@@ -9,7 +9,7 @@ const FooterEx = () => (
       © Copyright 2019
     </Typography>
     <Divider style={{ margin: '24px auto', width: 60 }} />
-    <Grid container justify={'center'} spacing={16}>
+    <Grid container justify={'center'} spacing={2}>
       <Grid item xs={12} sm={6} md={3}>
         <Typography align={'center'} gutterBottom color={'textSecondary'}>
           About

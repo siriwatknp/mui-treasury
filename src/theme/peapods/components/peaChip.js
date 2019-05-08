@@ -1,6 +1,6 @@
 import Color from 'color';
 
-export default ({ shape, palette: { primary, secondary, common } }) => ({
+export default ({ shape, palette: { primary, secondary, common, text } }) => ({
   MuiChip: {
     root: {
       '&.PeaTag-root': {
@@ -10,6 +10,7 @@ export default ({ shape, palette: { primary, secondary, common } }) => ({
         '& .MuiChip-label': {
           fontSize: 14,
           fontWeight: 500,
+          color: text.primary,
         },
       },
     },

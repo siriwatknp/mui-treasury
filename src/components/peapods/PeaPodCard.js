@@ -63,7 +63,7 @@ const PeaPodCard = ({
     <CardContent className={'MuiCardContent-root'}>
       <Typography className={'MuiTypography--heading'}>{title}</Typography>
       {list.map(item => (
-        <Grid key={item.key} container spacing={8} wrap={'nowrap'}>
+        <Grid key={item.key} container spacing={1} wrap={'nowrap'}>
           <Grid item>
             <PeaIcon size={'small'} color={'secondary'} icon={item.icon} />
           </Grid>
@@ -85,7 +85,7 @@ const PeaPodCard = ({
         className={'PeaPodCardPeople-root'}
         container
         alignItems={'center'}
-        spacing={8}
+        spacing={1}
       >
         <Grid item xs>
           <div className={'PeaPodCardPeople-people'}>

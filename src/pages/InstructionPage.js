@@ -109,9 +109,9 @@ const InstructionPage = ({ width }) => (
               Finally, paste to project
             </Text>
             <Text mb={1} fontSize={20} fontWeight={200}>
-              Your app must set up <code>MuiThemeProvider</code> in order to
-              make it work. Add global theme and component's theme at the
-              comment line as in the picture.
+              Your app must set up <code>ThemeProvider</code> in order to make
+              it work. Add global theme and component's theme at the comment
+              line as in the picture.
             </Text>
           </Box>
         </Grid>

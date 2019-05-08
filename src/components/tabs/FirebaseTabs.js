@@ -39,17 +39,9 @@ FirebaseTabs.getTheme = muiBaseTheme => ({
         minWidth: 0,
       },
     },
-    label: {
+    wrapper: {
       fontWeight: 'normal',
       letterSpacing: 0.5,
-    },
-    labelContainer: {
-      padding: 0,
-      [muiBaseTheme.breakpoints.up('md')]: {
-        padding: 0,
-        paddingLeft: 0,
-        paddingRight: 0,
-      },
     },
   },
 });

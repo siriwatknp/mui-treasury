@@ -4,7 +4,8 @@ import merge from 'lodash/merge';
 import get from 'lodash/get';
 import Grid from '@material-ui/core/Grid';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import { Box } from 'components/atoms';
 import { PreviewWidget } from 'components/molecules';
 import ShouldUpdate from 'containers/ShouldUpdate';
@@ -88,7 +89,7 @@ const CardPage = ({ counter, globalTheme, onSelectComponent }) => (
     }}
   >
     <CssBaseline />
-    <Grid container spacing={32} justify={'center'}>
+    <Grid container spacing={4} justify={'center'}>
       {components.map(({ component, render, gridItemProps, previewProps }) => (
         <Grid
           key={get(component, 'metadata.name')}
@@ -106,14 +107,14 @@ const CardPage = ({ counter, globalTheme, onSelectComponent }) => (
             {...previewProps}
           >
             <ShouldUpdate value={counter}>
-              <MuiThemeProvider
+              <ThemeProvider
                 theme={createTheme({
                   ...globalTheme,
                   overrides: component.getTheme(merge(baseTheme, globalTheme)),
                 })}
               >
                 {render()}
-              </MuiThemeProvider>
+              </ThemeProvider>
             </ShouldUpdate>
           </PreviewWidget>
         </Grid>

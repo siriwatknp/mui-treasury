@@ -11,7 +11,7 @@ import MomentUtils from '@date-io/moment';
 
 // PEAPODS THEME
 import peapodsTheme from 'theme/peapods';
-import { MuiThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 
 // PEAPODS COMPONENTS
 import Link from '@material-ui/core/Link';
@@ -156,8 +156,9 @@ const components = [
           variant={'contained'}
           color={'primary'}
           icon={'add'}
+          iconIsolated
           iconPosition={'end'}
-          iconProps={{ bgColor: 'lightPrimary' }}
+          iconProps={{ bgColor: 'lightPrimary', size: 'small' }}
         >
           Create Event
         </PeaButton>
@@ -166,7 +167,14 @@ const components = [
           variant={'contained'}
           color={'primary'}
           fullWidth
-          icon={<PeaIcon icon={'fab fa-facebook-f'} bgColor={'white'} />}
+          iconIsolated
+          icon={
+            <PeaIcon
+              icon={'fab fa-facebook-f'}
+              bgColor={'white'}
+              size={'small'}
+            />
+          }
         >
           Register with Facebook
         </PeaButton>
@@ -389,7 +397,7 @@ const components = [
   {
     component: PeaCardActions,
     render: () => (
-      <Box>
+      <Box width={'100%'}>
         <Card style={{ marginBottom: 20 }}>
           <CardContent style={{ minWidth: 320 }} />
           <PeaCardActions
@@ -804,8 +812,8 @@ const PeapodsPage = () => (
           <br />
           <Typography>
             This is a component showcase of peapods app. It uses{' '}
-            <Link href={'https://material-ui.com'}>Material-UI</Link> v3.9.2. It
-            shows that Material-UI is fully customizable.
+            <Link href={'https://material-ui.com'}>Material-UI</Link>{' '}
+            v4.0.0-beta.1. It shows that Material-UI is fully customizable.
           </Typography>
           <br />
           <Box maxWidth={{ sm: 140 }}>
@@ -831,7 +839,7 @@ const PeapodsPage = () => (
         sm: 4,
       }}
     >
-      <Grid container spacing={32} justify={'center'}>
+      <Grid container spacing={4} justify={'center'}>
         {components.map(
           ({ component, render, previewProps, gridItemProps }) => (
             <Grid
@@ -847,9 +855,7 @@ const PeapodsPage = () => (
                 {...get(component, 'metadata')}
                 {...previewProps}
               >
-                <MuiThemeProvider theme={peapodsTheme}>
-                  {render()}
-                </MuiThemeProvider>
+                <ThemeProvider theme={peapodsTheme}>{render()}</ThemeProvider>
               </PreviewWidget>
             </Grid>
           ),

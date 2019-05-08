@@ -38,14 +38,15 @@ const exampleCode = `
 
 const themeCode = `
   // in your root component
-  import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+  import { createMuiTheme } from '@material-ui/core/styles';
+  import { ThemeProvider } from '@material-ui/styles';
   import yourTheme from 'path/to/yourTheme.js';
   
   // if you dont have your theme, use createMuiTheme;
   // const yourTheme = createMuiTheme();  
   
   const App = () => (
-    <MuiThemeProvider
+    <ThemeProvider
       theme={{
         ...yourTheme,
         overrides: {
@@ -56,7 +57,7 @@ const themeCode = `
       }}
     >
       ...
-    </MuiThemeProvider>
+    </ThemeProvider>
   )
 `;
 
@@ -98,7 +99,7 @@ const IconPage = ({ globalTheme }) => (
       difference in sizes) <b>Material</b> is 24x24px by default, but{' '}
       <b>Font Awesome</b> depends on its shape
     </Text>
-    <Grid container spacing={32}>
+    <Grid container spacing={4}>
       <Grid item xs={12} sm={6}>
         <Box {...Box.allCenter} height={60}>
           <Icon>favorite</Icon>

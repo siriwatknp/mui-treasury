@@ -111,22 +111,13 @@ TwitterIconTabs.getTheme = muiBaseTheme => ({
       opacity: 1,
     },
     wrapper: {
-      '& svg, .material-icons': {
-        fontSize: 26.25,
-      },
-    },
-    labelContainer: {
-      width: '100%',
-      padding: 15,
-      [muiBaseTheme.breakpoints.up('md')]: {
-        padding: 15,
-      },
-    },
-    label: {
       textTransform: 'none',
       fontSize: 15,
       fontWeight: 700,
       color: '#657786',
+      '& svg, .material-icons': {
+        fontSize: 26.25,
+      },
     },
   },
   MuiBadge: {

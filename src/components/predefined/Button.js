@@ -1,5 +1,5 @@
 /**
- * Current VERSION 1.1
+ * Current VERSION 1.2
  *
  * vX.Y meaning
  * X = major changes ex. add/remove/rename some props/className,
@@ -58,7 +58,7 @@ const Button = ({
     typeof icon === 'string' ? <Icon {...iconProps}>{icon}</Icon> : icon;
   const loaderSize = getLoaderSize(size);
   const renderChildren = () =>
-    icon ? <span className={'MuiButton-text'}>{children}</span> : children;
+    icon ? <span className={'MuiButton-span'}>{children}</span> : children;
   return (
     <MuiButton
       classes={{
@@ -191,9 +191,9 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
               marginRight: '-0.4em',
             },
           },
-          '& .MuiButton-text': {
-            marginLeft: 'auto',
-            marginRight: 'auto',
+          '& .MuiButton-span': {
+            marginLeft: 'auto !important',
+            marginRight: 'auto !important',
           },
         },
         '&.-mobileFullWidth': {
@@ -273,7 +273,7 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
         '&.-shape-chubby': {
           borderRadius: 100,
           padding: '6px 10px',
-          '& .MuiButton-text': {
+          '& .MuiButton-span': {
             '&:first-of-type': {
               marginLeft: '0.4em',
             },

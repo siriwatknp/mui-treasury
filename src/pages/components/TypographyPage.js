@@ -34,14 +34,15 @@ const exampleCode = `
 
 const themeCode = `
   // in your root component
-  import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+  import { createMuiTheme } from '@material-ui/core/styles';
+  import { ThemeProvider } from '@material-ui/styles';
   import yourTheme from 'path/to/yourTheme.js';
   
   // if you dont have your theme, use createMuiTheme;
   // const yourTheme = createMuiTheme();  
   
   const App = () => (
-    <MuiThemeProvider
+    <ThemeProvider
       theme={{
         ...yourTheme,
         overrides: {
@@ -52,7 +53,7 @@ const themeCode = `
       }}
     >
       ...
-    </MuiThemeProvider>
+    </ThemeProvider>
   )
 `;
 

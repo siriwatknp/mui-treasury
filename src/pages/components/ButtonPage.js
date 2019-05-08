@@ -6,7 +6,8 @@ import get from 'lodash/get';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import ButtonSection from 'pages/components/predefined/ButtonSection';
 import examples from 'pages/components/predefined/examples/button';
 // CONTAINERS
@@ -24,7 +25,6 @@ import TwitterButton from 'components/buttons/TwitterButton';
 import GradientButton from 'components/buttons/GradientButton';
 import ShinningButton from 'components/buttons/ShinningButton';
 
-const createTheme = theme => createMuiTheme(theme);
 const baseTheme = createMuiTheme();
 
 const components = [
@@ -93,14 +93,15 @@ const exampleCode = `
 
 const themeCode = `
   // in your root component
-  import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+  import { createMuiTheme } from '@material-ui/core/styles';
+  import { ThemeProvider } from '@material-ui/styles';
   import yourTheme from 'path/to/yourTheme.js';
   
   // if you dont have your theme, use createMuiTheme;
   // const yourTheme = createMuiTheme();  
   
   const App = () => (
-    <MuiThemeProvider
+    <ThemeProvider
       theme={{
         ...yourTheme,
         overrides: {
@@ -111,7 +112,7 @@ const themeCode = `
       }}
     >
       ...
-    </MuiThemeProvider>
+    </ThemeProvider>
   )
 `;
 
@@ -133,10 +134,10 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
       color={'textPrimary'}
       gutterBottom
     >
-      Predefined Button <code>v1.1</code>
+      Predefined Button <code>v1.2</code>
     </Text>
-    <Text variant={'caption'} align={'left'} gutterBottom>
-      <b>Last Updated 30 APR 2019</b>
+    <Text variant={'caption'} display={'block'} align={'left'} gutterBottom>
+      <b>Last Updated 7 MAY 2019</b>
     </Text>
     <Text gutterBottom>
       The button and only button that you need if you are using Material-UI,
@@ -147,7 +148,9 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
       <code>shape</code> are inspired from semantic-ui and antd.
     </Text>
     <Box pt={{ xs: 2, sm: 4 }}>
-      <ButtonSection globalTheme={globalTheme} />
+      <ShouldUpdate value={counter}>
+        <ButtonSection globalTheme={globalTheme} />
+      </ShouldUpdate>
     </Box>
     <br />
     <Text
@@ -210,7 +213,7 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
     >
       Examples
     </Text>
-    <Grid container spacing={16}>
+    <Grid container spacing={2}>
       {examples.map(({ render, code }) => (
         <Grid item xs={12} sm={4} md={3}>
           <Box textAlign={'center'} py={2}>
@@ -239,7 +242,7 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
       like.
     </Text>
     <Box pb={2} />
-    <Grid container spacing={32}>
+    <Grid container spacing={4}>
       {components.map(({ component, render, previewProps }) => (
         <Grid key={get(component, 'metadata.name')} item xs={12} sm={6} lg={4}>
           <PreviewWidget
@@ -249,14 +252,14 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
             {...previewProps}
           >
             <ShouldUpdate value={counter}>
-              <MuiThemeProvider
-                theme={createTheme({
+              <ThemeProvider
+                theme={createMuiTheme({
                   ...globalTheme,
                   overrides: component.getTheme(merge(baseTheme, globalTheme)),
                 })}
               >
                 {render()}
-              </MuiThemeProvider>
+              </ThemeProvider>
             </ShouldUpdate>
           </PreviewWidget>
         </Grid>

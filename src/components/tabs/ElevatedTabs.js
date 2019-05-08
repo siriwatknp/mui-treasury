@@ -52,14 +52,10 @@ ElevatedTabs.getTheme = theme => {
           minWidth: 0,
         },
       },
-      label: {
+      wrapper: {
         fontWeight: 'normal',
         letterSpacing: 0.5,
         color: labelColor,
-      },
-      labelContainer: {
-        paddingLeft: 10,
-        paddingRight: 10,
       },
     },
   };

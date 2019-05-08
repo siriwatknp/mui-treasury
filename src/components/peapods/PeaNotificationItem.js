@@ -26,7 +26,7 @@ const PeaNotificationItem = ({ src, name, description, time }) => (
     />
     <Grid
       container
-      spacing={8}
+      spacing={1}
       className={'PeaNotificationItem-actions'}
       justify={'flex-end'}
     >

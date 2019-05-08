@@ -52,7 +52,7 @@ const PeaButton = ({
     typeof icon === 'string' ? <Icon {...iconProps}>{icon}</Icon> : icon;
   const loaderSize = getLoaderSize(size);
   const renderChildren = () =>
-    icon ? <span className={'MuiButton-text'}>{children}</span> : children;
+    icon ? <span className={'MuiButton-span'}>{children}</span> : children;
   return (
     <MuiButton
       classes={{

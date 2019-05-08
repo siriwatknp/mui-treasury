@@ -2,7 +2,8 @@ import React from 'react';
 import merge from 'lodash/merge';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
+import { createMuiTheme } from '@material-ui/core';
+import ThemeProvider from '@material-ui/styles';
 import { PreviewWidget } from 'components/molecules';
 import ShouldUpdate from 'containers/ShouldUpdate';
 
@@ -31,7 +32,7 @@ const ComponentRenderer = ({
       {...previewProps}
     >
       <ShouldUpdate value={counter}>
-        <MuiThemeProvider theme={theme}>{render()}</MuiThemeProvider>
+        <ThemeProvider theme={theme}>{render()}</ThemeProvider>
       </ShouldUpdate>
     </PreviewWidget>
   );

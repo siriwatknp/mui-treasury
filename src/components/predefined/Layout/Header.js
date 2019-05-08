@@ -125,4 +125,4 @@ Header.defaultProps = {
   menuIcon: null,
 };
 
-export default withTheme()(withStyles(styles, { name: 'MuiHeader' })(Header));
+export default withTheme(withStyles(styles, { name: 'MuiHeader' })(Header));

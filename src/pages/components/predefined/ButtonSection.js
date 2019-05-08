@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import merge from 'lodash/merge';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -34,13 +35,13 @@ const ButtonSection = ({ globalTheme }) => {
   const [color, setColor] = useState('default');
   const [iconPosition, setIconPlacement] = useState('start');
   return (
-    <MuiThemeProvider
+    <ThemeProvider
       theme={createTheme({
         ...globalTheme,
         overrides: Button.getTheme(merge(baseTheme, globalTheme)),
       })}
     >
-      <Grid container spacing={32}>
+      <Grid container spacing={4}>
         <Grid item xs={12} sm={6} lg={6}>
           <PreviewWidget inverted={inverted}>
             <Button
@@ -217,7 +218,7 @@ const ButtonSection = ({ globalTheme }) => {
           </FormControl>
         </Grid>
       </Grid>
-    </MuiThemeProvider>
+    </ThemeProvider>
   );
 };
 

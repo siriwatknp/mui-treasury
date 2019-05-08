@@ -2,9 +2,18 @@
 export default ({ palette }) => ({
   MuiSwitch: {
     root: {
+      '&.PeaSwitch-root': {
+        '& [class*="PrivateSwitchBase-checked"]': {
+          padding: 6,
+          transform: 'translateX(60%)',
+        },
+      },
       '& .PeaIcon': {
         width: 24,
         height: 24,
+        '& svg': {
+          verticalAlign: 'top',
+        },
       },
     },
     colorSecondary: {

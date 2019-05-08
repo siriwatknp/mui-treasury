@@ -28,6 +28,9 @@ export default ({ spacing, palette, breakpoints }) => {
       },
     },
     MuiListItemText: {
+      root: {
+        padding: '0 16px',
+      },
       primary: {
         fontWeight: 700,
         lineHeight: 1.3125,

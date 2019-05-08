@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { DatePicker, TimePicker } from 'material-ui-pickers';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
-import { unstable_Box as Box } from '@material-ui/core/Box';
+import Box from '@material-ui/core/Box';
 import Drawer from '@material-ui/core/Drawer';
 import FormLabel from '@material-ui/core/FormLabel';
 import Typography from '@material-ui/core/Typography';

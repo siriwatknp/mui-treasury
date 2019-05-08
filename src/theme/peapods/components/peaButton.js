@@ -34,9 +34,9 @@ export default ({ palette, spacing, breakpoints }) => {
           },
         },
         '&.-labelExpanded': {
-          '& .MuiButton-text': {
-            marginLeft: 'auto',
-            marginRight: 'auto',
+          '& .MuiButton-span': {
+            marginLeft: 'auto !important',
+            marginRight: 'auto !important',
           },
           '& .MuiButton-label > .material-icons, > svg': {
             // dont change upper code to iconSelector

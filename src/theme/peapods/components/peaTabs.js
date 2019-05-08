@@ -35,25 +35,17 @@ export default ({ breakpoints, primary, secondary }) => ({
       opacity: 1,
     },
     wrapper: {
-      '& svg': {
-        fontSize: 26.25,
-      },
-    },
-    labelContainer: {
-      width: '100%',
-      padding: 15,
-      [breakpoints.up('md')]: {
-        padding: 15,
-      },
-    },
-    label: {
       textTransform: 'none',
       fontSize: 15,
       fontWeight: 700,
       color: '#657786',
+      width: '100%',
+      '& svg': {
+        fontSize: 26.25,
+      },
     },
   },
-  MuiPrivateTabIndicator: {
+  PrivateTabIndicator: {
     root: {
       height: 4,
       borderRadius: 4,

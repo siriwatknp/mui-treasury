@@ -1,4 +1,4 @@
-import { unstable_Box as Box } from '@material-ui/core/Box';
+import Box from '@material-ui/core/Box';
 import styled from '@material-ui/styles/styled';
 import cssSystem from 'helpers/cssSystem';
 

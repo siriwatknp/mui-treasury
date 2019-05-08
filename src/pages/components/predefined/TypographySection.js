@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import merge from 'lodash/merge';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -33,7 +34,7 @@ const TypographySection = ({ globalTheme }) => {
     spacing,
   };
   return (
-    <MuiThemeProvider
+    <ThemeProvider
       theme={createTheme({
         ...globalTheme,
         overrides: {
@@ -42,7 +43,7 @@ const TypographySection = ({ globalTheme }) => {
         },
       })}
     >
-      <Grid container spacing={16}>
+      <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <PreviewWidget
             white
@@ -210,7 +211,7 @@ const TypographySection = ({ globalTheme }) => {
           </PreviewWidget>
         </Grid>
       </Grid>
-    </MuiThemeProvider>
+    </ThemeProvider>
   );
 };
 
