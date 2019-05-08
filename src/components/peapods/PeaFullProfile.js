@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormLabel from '@material-ui/core/FormLabel';
-import RadioGroup from '@material-ui/core/RadioGroup';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
@@ -18,8 +14,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import TextField from '@material-ui/core/TextField';
-import PeaRadio from './PeaRadio';
 import PeaSwitch from './PeaSwitch';
 import PeaButton from './PeaButton';
 import PeaIcon from './PeaIcon';
@@ -28,7 +22,7 @@ import PeaStatistic from './PeaStatistic';
 import PeaText from './PeaTypography';
 import PeaSocialAvatar from './PeaSocialAvatar';
 import PeaTag from './PeaTag';
-import PeaTextArea from './PeaTextArea';
+import PeaProfileEditor from './PeaProfileEditor';
 
 const PeaFullProfile = ({
   cover,
@@ -46,6 +40,22 @@ const PeaFullProfile = ({
   const [editing, setEditing] = useState(false);
   const [anchorEl, setAnchor] = useState(null);
   const open = Boolean(anchorEl);
+  if (editing) {
+    return (
+      <PeaProfileEditor
+        cover={cover}
+        image={image}
+        name={name}
+        tag={tag}
+        tags={tags}
+        site={site}
+        bio={bio}
+        location={location}
+        onSubmit={() => setEditing(false)}
+        onCancel={() => setEditing(false)}
+      />
+    );
+  }
   const renderMenu = () => (
     <Menu
       id="long-menu"
@@ -114,19 +124,7 @@ const PeaFullProfile = ({
   );
   return (
     <Card className={'PeaFullProfile-root'}>
-      <CardMedia className={'MuiCardMedia-root'} image={cover}>
-        {editing && (
-          <ButtonBase className={'PeaFullProfile-coverImgBtn'}>
-            <PeaIcon
-              style={{ marginTop: -40 }}
-              inverted
-              icon={'panorama'}
-              shape={'square'}
-            />
-            <PeaText inverted>Change cover picture</PeaText>
-          </ButtonBase>
-        )}
-      </CardMedia>
+      <CardMedia className={'MuiCardMedia-root'} image={cover} />
       <CardContent className={'MuiCardContent-root'}>
         <Grid container justify={'space-between'} spacing={16}>
           <Grid item>
@@ -152,61 +150,39 @@ const PeaFullProfile = ({
               <PeaAvatar className={'MuiAvatar-root-profilePic'} src={image} />
             )}
           </Grid>
-          {editing ? (
+          <Hidden only={'xs'}>
             <Grid item>
-              <PeaButton
-                size={'small'}
-                onClick={() => setEditing(false)}
-                style={{ marginRight: 8 }}
-              >
-                Cancel
-              </PeaButton>
-              <PeaButton
-                size={'small'}
-                onClick={() => setEditing(false)}
-                variant={'contained'}
-                color={'primary'}
-                style={{ minWidth: 100 }}
-              >
-                Save
-              </PeaButton>
+              <PeaStatistic label={'Pods'} value={2} />
             </Grid>
-          ) : (
-            <>
-              <Hidden only={'xs'}>
-                <Grid item>
-                  <PeaStatistic label={'Pods'} value={2} />
-                </Grid>
-                <Grid item>
-                  <PeaStatistic label={'Following'} value={48} />
-                </Grid>
-                <Grid item>
-                  <PeaStatistic label={'Followers'} value={5} />
-                </Grid>
-              </Hidden>
-              <Grid item>
-                <PeaButton
-                  size={'small'}
-                  variant={'outlined'}
-                  labelExpanded={false}
-                  icon={'settings'}
-                  iconIsolated
-                  iconProps={{
-                    color: 'primary',
-                    size: 'small',
-                  }}
-                >
-                  Settings
-                </PeaButton>
-              </Grid>
-              <Grid item>
-                <IconButton onClick={e => setAnchor(e.currentTarget)}>
-                  <PeaIcon>more_vert</PeaIcon>
-                </IconButton>
-                {renderMenu()}
-              </Grid>
-            </>
-          )}
+            <Grid item>
+              <PeaStatistic label={'Following'} value={48} />
+            </Grid>
+            <Grid item>
+              <PeaStatistic label={'Followers'} value={5} />
+            </Grid>
+          </Hidden>
+          <Grid item>
+            <PeaButton
+              size={'small'}
+              variant={'outlined'}
+              labelExpanded={false}
+              icon={'settings'}
+              iconIsolated
+              iconProps={{
+                color: 'primary',
+                size: 'small',
+              }}
+              style={{ marginTop: 6 }}
+            >
+              Settings
+            </PeaButton>
+          </Grid>
+          <Grid item>
+            <IconButton onClick={e => setAnchor(e.currentTarget)}>
+              <PeaIcon>more_vert</PeaIcon>
+            </IconButton>
+            {renderMenu()}
+          </Grid>
         </Grid>
         <Hidden smUp>
           <Grid container justify={'space-evenly'} style={{ marginTop: -32 }}>
@@ -225,226 +201,84 @@ const PeaFullProfile = ({
         <Hidden only={'xs'}>
           <div style={{ marginTop: -32 }} />
         </Hidden>
-        {editing ? (
-          <div>
-            <TextField margin={'normal'} label={'Name'} value={name} />
-          </div>
-        ) : (
-          <PeaText variant={'h5'} weight={'bold'}>
-            {name}
-          </PeaText>
-        )}
-        {editing ? (
-          <div>
-            <TextField margin={'normal'} label={'Username'} value={tag} />
-          </div>
-        ) : (
-          <PeaText gutterBottom>{tag}</PeaText>
-        )}
-        {editing ? (
-          <TextField
-            fullWidth
-            margin={'normal'}
-            label={'Website'}
-            value={site}
-          />
-        ) : (
-          <PeaText>
-            <Link
-              color={'primary'}
-              href={site}
-              target={'_blank'}
-              rel={'noopener'}
-            >
-              {site}
-            </Link>
-          </PeaText>
-        )}
+        <PeaText variant={'h5'} weight={'bold'}>
+          {name}
+        </PeaText>
+        <PeaText gutterBottom>{tag}</PeaText>
+        <PeaText>
+          <Link
+            color={'primary'}
+            href={site}
+            target={'_blank'}
+            rel={'noopener'}
+          >
+            {site}
+          </Link>
+        </PeaText>
         <br />
-        {editing ? (
-          <PeaTextArea.Simple label={'Bio'} value={bio} />
-        ) : (
-          <Grid container wrap={'nowrap'} spacing={8}>
-            <Grid item>
-              <PeaText link underline={'none'}>
-                <b>Bio:</b>
-              </PeaText>
-            </Grid>
-            <Grid item>
-              <PeaText gutterBottom>{bio}</PeaText>
-            </Grid>
+        <Grid container wrap={'nowrap'} spacing={8}>
+          <Grid item>
+            <PeaText link underline={'none'}>
+              <b>Bio:</b>
+            </PeaText>
           </Grid>
-        )}
-        {editing ? (
-          <PeaTextArea.Simple label={'Location'} value={location} />
-        ) : (
-          <Grid container wrap={'nowrap'} spacing={8}>
-            <Grid item>
-              <PeaIcon color={'secondary'} size={'small'}>
-                location_on
-              </PeaIcon>
-            </Grid>
-            <Grid item>
-              <PeaText gutterBottom>{location}</PeaText>
-            </Grid>
+          <Grid item>
+            <PeaText gutterBottom>{bio}</PeaText>
           </Grid>
-        )}
+        </Grid>
+        <Grid container wrap={'nowrap'} spacing={8}>
+          <Grid item>
+            <PeaIcon color={'secondary'} size={'small'}>
+              location_on
+            </PeaIcon>
+          </Grid>
+          <Grid item>
+            <PeaText gutterBottom>{location}</PeaText>
+          </Grid>
+        </Grid>
         <br />
         <PeaText gutterBottom variant={'subtitle1'} weight={'bold'}>
           About
         </PeaText>
-        {editing ? (
-          <Grid container spacing={16}>
-            <Grid item xs sm={3}>
-              <TextField fullWidth select label={'Year'} />
+        <PeaText gutterBottom>
+          <PeaText link underline={'none'}>
+            <b>Age:</b>
+          </PeaText>{' '}
+          {age}
+        </PeaText>
+        <PeaText gutterBottom>
+          <PeaText link underline={'none'}>
+            <b>Gender:</b>
+          </PeaText>{' '}
+          {gender}
+        </PeaText>
+        <PeaText link underline={'none'} gutterBottom>
+          <b>Groups</b>
+        </PeaText>
+        <PeaText gutterBottom />
+        <Grid container spacing={16}>
+          {groups.map(item => (
+            <Grid item key={item.name}>
+              <PeaSocialAvatar {...item} />
             </Grid>
-            <Grid item xs sm={3}>
-              <TextField fullWidth select label={'Month'} />
+          ))}
+        </Grid>
+        <br />
+        <PeaText link underline={'none'} gutterBottom>
+          <b>Tags</b>
+        </PeaText>
+        <PeaText gutterBottom />
+        <Grid container spacing={8}>
+          {tags.map(item => (
+            <Grid item key={item.label}>
+              <PeaTag
+                color={'secondary'}
+                label={`#${item.label}`}
+                onClick={() => {}}
+              />
             </Grid>
-            <Grid item xs sm={3}>
-              <TextField fullWidth select label={'Day'} />
-            </Grid>
-          </Grid>
-        ) : (
-          <PeaText gutterBottom>
-            <PeaText link underline={'none'}>
-              <b>Age:</b>
-            </PeaText>{' '}
-            {age}
-          </PeaText>
-        )}
-        {editing ? (
-          <div>
-            <FormControl margin={'normal'} component="fieldset">
-              <FormLabel component="legend">Status</FormLabel>
-              <RadioGroup aria-label="status" name="gender" value={'1'} row>
-                <FormControlLabel
-                  value={'1'}
-                  control={<PeaRadio />}
-                  label="Male"
-                  labelPlacement="end"
-                />
-                <FormControlLabel
-                  value={'2'}
-                  control={<PeaRadio />}
-                  label="Female"
-                  labelPlacement="end"
-                />
-                <FormControlLabel
-                  value={'3'}
-                  control={<PeaRadio />}
-                  label="Non-binary"
-                  labelPlacement="end"
-                />
-              </RadioGroup>
-            </FormControl>
-          </div>
-        ) : (
-          <PeaText gutterBottom>
-            <PeaText link underline={'none'}>
-              <b>Gender:</b>
-            </PeaText>{' '}
-            {gender}
-          </PeaText>
-        )}
-        {!editing && (
-          <>
-            <PeaText link underline={'none'} gutterBottom>
-              <b>Groups</b>
-            </PeaText>
-            <PeaText gutterBottom />
-            <Grid container spacing={16}>
-              {groups.map(item => (
-                <Grid item key={item.name}>
-                  <PeaSocialAvatar {...item} />
-                </Grid>
-              ))}
-            </Grid>
-            <br />
-          </>
-        )}
-        {editing ? (
-          <PeaTextArea.Simple
-            label={'Tags'}
-            value={tags.map(({ label }) => `#${label}`).join(', ')}
-          />
-        ) : (
-          <>
-            <PeaText link underline={'none'} gutterBottom>
-              <b>Tags</b>
-            </PeaText>
-            <PeaText gutterBottom />
-            <Grid container spacing={8}>
-              {tags.map(item => (
-                <Grid item key={item.label}>
-                  <PeaTag
-                    color={'secondary'}
-                    label={`#${item.label}`}
-                    onClick={() => {}}
-                  />
-                </Grid>
-              ))}
-            </Grid>
-          </>
-        )}
-        {editing && (
-          <>
-            <TextField
-              label={'Email'}
-              value={'sam@gmail.com'}
-              margin={'normal'}
-              fullWidth
-            />
-            <TextField
-              label={'Phone'}
-              placeholder={'Please enter your phone'}
-              margin={'normal'}
-              fullWidth
-            />
-            <FormControl margin={'normal'} fullWidth>
-              <FormLabel>Private account</FormLabel>
-              <PeaSwitch checked />
-            </FormControl>
-            <FormControl margin={'normal'} fullWidth>
-              <FormLabel>Linked accounts</FormLabel>
-              <Grid container>
-                <Grid item>
-                  <IconButton>
-                    <PeaIcon
-                      link
-                      icon={'fab fa-twitter'}
-                      bgColor={'white'}
-                      size={'big'}
-                      shadow
-                    />
-                  </IconButton>
-                </Grid>
-                <Grid item>
-                  <IconButton>
-                    <PeaIcon
-                      link
-                      icon={'fab fa-meetup'}
-                      bgColor={'white'}
-                      size={'big'}
-                      shadow
-                    />
-                  </IconButton>
-                </Grid>
-                <Grid item>
-                  <IconButton>
-                    <PeaIcon
-                      link
-                      icon={'fab fa-facebook-f'}
-                      bgColor={'white'}
-                      shadow
-                      size={'big'}
-                    />
-                  </IconButton>
-                </Grid>
-              </Grid>
-            </FormControl>
-          </>
-        )}
+          ))}
+        </Grid>
       </CardContent>
     </Card>
   );

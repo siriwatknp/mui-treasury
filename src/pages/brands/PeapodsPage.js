@@ -153,6 +153,7 @@ const components = [
         </PeaButton>
         <PeaButton
           elongated
+          labelExpanded
           variant={'contained'}
           color={'primary'}
           icon={'add'}
@@ -163,9 +164,10 @@ const components = [
         </PeaButton>
         <PeaButton
           elongated
+          fullWidth
+          labelExpanded
           variant={'contained'}
           color={'primary'}
-          fullWidth
           icon={<PeaIcon icon={'fab fa-facebook-f'} bgColor={'white'} />}
         >
           Register with Facebook
@@ -228,7 +230,14 @@ const components = [
   },
   {
     component: PeaTag,
-    render: () => <PeaTag src={AVATAR} label={'Invited by @Markz'} />,
+    render: () => (
+      <Box>
+        <Box mb={2} width={'100%'}>
+          <PeaTag src={AVATAR} label={'Invited by @Markz'} />
+        </Box>
+        <PeaTag src={AVATAR} label={'Invited by @Markz'} color={'primary'} />
+      </Box>
+    ),
     previewProps: {
       white: true,
     },
