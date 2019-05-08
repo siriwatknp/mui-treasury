@@ -49,6 +49,9 @@ const styles = ({
     '@media (hover: none)': {
       backgroundColor: palette.grey[300],
     },
+    '&:hover': {
+      backgroundColor: '#e5e5e5',
+    },
   },
 });
 
