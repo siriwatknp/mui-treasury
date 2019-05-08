@@ -153,6 +153,7 @@ const components = [
         </PeaButton>
         <PeaButton
           elongated
+          labelExpanded
           variant={'contained'}
           color={'primary'}
           icon={'add'}
@@ -163,9 +164,10 @@ const components = [
         </PeaButton>
         <PeaButton
           elongated
+          fullWidth
+          labelExpanded
           variant={'contained'}
           color={'primary'}
-          fullWidth
           icon={<PeaIcon icon={'fab fa-facebook-f'} bgColor={'white'} />}
         >
           Register with Facebook
