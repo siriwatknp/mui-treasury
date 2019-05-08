@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
-import { unstable_Box as Box } from '@material-ui/core/Box';
+import Box from '@material-ui/core/Box';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import IconButton from '@material-ui/core/IconButton';
@@ -126,7 +126,7 @@ const PeaFullProfile = ({
     <Card className={'PeaFullProfile-root'}>
       <CardMedia className={'MuiCardMedia-root'} image={cover} />
       <CardContent className={'MuiCardContent-root'}>
-        <Grid container justify={'space-between'} spacing={16}>
+        <Grid container justify={'space-between'} spacing={2}>
           <Grid item>
             {editing ? (
               <ButtonBase className={'PeaFullProfile-profileImgBtn'}>
@@ -216,7 +216,7 @@ const PeaFullProfile = ({
           </Link>
         </PeaText>
         <br />
-        <Grid container wrap={'nowrap'} spacing={8}>
+        <Grid container wrap={'nowrap'} spacing={1}>
           <Grid item>
             <PeaText link underline={'none'}>
               <b>Bio:</b>
@@ -226,7 +226,7 @@ const PeaFullProfile = ({
             <PeaText gutterBottom>{bio}</PeaText>
           </Grid>
         </Grid>
-        <Grid container wrap={'nowrap'} spacing={8}>
+        <Grid container wrap={'nowrap'} spacing={1}>
           <Grid item>
             <PeaIcon color={'secondary'} size={'small'}>
               location_on
@@ -256,7 +256,7 @@ const PeaFullProfile = ({
           <b>Groups</b>
         </PeaText>
         <PeaText gutterBottom />
-        <Grid container spacing={16}>
+        <Grid container spacing={2}>
           {groups.map(item => (
             <Grid item key={item.name}>
               <PeaSocialAvatar {...item} />
@@ -268,7 +268,7 @@ const PeaFullProfile = ({
           <b>Tags</b>
         </PeaText>
         <PeaText gutterBottom />
-        <Grid container spacing={8}>
+        <Grid container spacing={1}>
           {tags.map(item => (
             <Grid item key={item.label}>
               <PeaTag

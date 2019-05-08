@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { unstable_Box as Box } from '@material-ui/core/Box';
+import Box from '@material-ui/core/Box';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -47,7 +47,7 @@ const PeaProfileEditor = ({
       </ButtonBase>
     </CardMedia>
     <CardContent className={'MuiCardContent-root'}>
-      <Grid container justify={'space-between'} spacing={16}>
+      <Grid container justify={'space-between'} spacing={2}>
         <Grid item>
           <ButtonBase className={'PeaFullProfile-profileImgBtn'}>
             <PeaAvatar className={'MuiAvatar-root-profilePic'} src={image} />
@@ -114,7 +114,7 @@ const PeaProfileEditor = ({
       <PeaText gutterBottom variant={'subtitle1'} weight={'bold'}>
         About
       </PeaText>
-      <Grid container spacing={16}>
+      <Grid container spacing={2}>
         <Grid item xs sm={3}>
           <TextField fullWidth select label={'Year'} />
         </Grid>
