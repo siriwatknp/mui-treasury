@@ -1,4 +1,4 @@
-/* eslint-disable max-len */
+/* eslint-disable max-len, react/no-array-index-key */
 import React from 'react';
 import PropTypes from 'prop-types';
 import merge from 'lodash/merge';
@@ -133,10 +133,10 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
       color={'textPrimary'}
       gutterBottom
     >
-      Predefined Button <code>v1.1</code>
+      Predefined Button <code>v1.2</code>
     </Text>
     <Text variant={'caption'} align={'left'} gutterBottom>
-      <b>Last Updated 30 APR 2019</b>
+      <b>Last Updated 8 May 2019</b>
     </Text>
     <Text gutterBottom>
       The button and only button that you need if you are using Material-UI,
@@ -211,8 +211,8 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
       Examples
     </Text>
     <Grid container spacing={16}>
-      {examples.map(({ render, code }) => (
-        <Grid item xs={12} sm={4} md={3}>
+      {examples.map(({ render, code }, i) => (
+        <Grid key={i} item xs={12} sm={4} md={3}>
           <Box textAlign={'center'} py={2}>
             {render()}
           </Box>
