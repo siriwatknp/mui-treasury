@@ -186,6 +186,9 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
   const outlinedBorderWidth = 1;
   const iconSelector =
     '.MuiButton-label:not([class*="-icon-isolated"]) > .material-icons, > svg';
+  const bgIconSelector =
+    // eslint-disable-next-line max-len
+    '.MuiButton-label:not([class*="-icon-isolated"]) > .material-icons:not([class*="-bg-"]), > svg:not([class*="-bg-"])';
   const loaderSelector = '.MuiButton-label .MuiButton-loader';
   const defaultIconSize = 20;
   return {
@@ -219,7 +222,7 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
           },
         },
         '&.-labelExpanded': {
-          [`& ${iconSelector}`]: {
+          [`& ${bgIconSelector}`]: {
             '&:first-of-type': {
               marginLeft: '-0.4em',
             },
@@ -228,8 +231,8 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
             },
           },
           '& .MuiButton-span': {
-            marginLeft: 'auto',
-            marginRight: 'auto',
+            marginLeft: 'auto !important',
+            marginRight: 'auto !important',
           },
         },
         '&.-mobileFullWidth': {

@@ -193,6 +193,42 @@ export default [
     render: () =>
       sizes.map((s, i) => (
         <div key={s}>
+          <Button
+            {...props2}
+            fullWidth
+            size={s}
+            labelExpanded
+            color={''}
+            icon={'fab fa-paypal'}
+          >
+            Paypal Checkout
+          </Button>
+          <br />
+          {i < sizes.length - 1 && <br />}
+        </div>
+      )),
+    code: `
+  import Button from 'path/to/Button';
+  
+  <Button
+    shape={'chubby'}
+    variant={'contained'}
+    color={'primary'}
+    icon={'fab fa-paypal'}
+    iconProps={{
+      bgColor: 'white',
+      shape: 'circular',
+      color: 'primary',
+    }}
+  >
+    Sign in with Facebook
+  </Button>
+    `,
+  },
+  {
+    render: () =>
+      sizes.map((s, i) => (
+        <div key={s}>
           <Button size={s} {...props3} />
           <br />
           {i < sizes.length - 1 && <br />}
