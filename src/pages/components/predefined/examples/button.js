@@ -2,6 +2,7 @@ import React from 'react';
 import Button from 'components/predefined/Button';
 import Icon from 'components/predefined/Icon';
 
+const sizes = ['small', '', 'big', 'large'];
 const props1 = {
   variant: 'contained',
   color: 'danger',
@@ -19,7 +20,7 @@ const props2 = {
     shape: 'circular',
     color: 'primary',
   },
-  children: 'Sign in with Facebook',
+  children: 'Facebook sign in',
 };
 const props3 = {
   fullWidth: true,
@@ -35,19 +36,117 @@ const props3 = {
   },
   children: 'Twitter sign in',
 };
+const colors = {
+  small: 'primary',
+  big: 'secondary',
+  large: 'danger',
+};
 export default [
   {
-    render: () => (
-      <>
-        <Button size={'small'} {...props1} />
-        <br />
-        <br />
-        <Button {...props1} />
-        <br />
-        <br />
-        <Button size={'big'} {...props1} />
-      </>
-    ),
+    render: () =>
+      sizes.map(s => (
+        <Button
+          key={s}
+          size={s}
+          color={colors[s]}
+          shape={'circular'}
+          icon={<Icon>camera_alt</Icon>}
+        >
+          button
+        </Button>
+      )),
+    code: `
+  import Button from 'path/to/Button';
+  import Icon from 'path/to/Icon';
+  // look at the icon page
+  
+  <Button
+    shape={'circular'}
+    icon={
+      <Icon>camera_alt</Icon>
+    }
+  >
+    Button
+  </Button>
+    `,
+  },
+  {
+    render: () =>
+      sizes.map(s => (
+        <Button
+          key={s}
+          size={s}
+          color={colors[s]}
+          shape={'circular'}
+          variant={'contained'}
+          iconIsolated
+          icon={
+            <Icon size={s} inverted>
+              far fa-rocket
+            </Icon>
+          }
+        >
+          button
+        </Button>
+      )),
+    code: `
+  import Button from 'path/to/Button';
+  import Icon from 'path/to/Icon';
+  // If you want to fully control by "Icon" props
+  // set iconIsolated={true}
+  // add any prop that "Icon" support
+  
+  <Button
+    shape={'circular'}
+    variant={'contained'}
+    iconIsolated
+    icon={
+      <Icon size={'small' | "" | 'big' | 'large'} inverted>far fa-rocket</Icon>
+    }
+  >
+    Button
+  </Button>
+    `,
+  },
+  {
+    render: () =>
+      sizes.map(s => (
+        <Button
+          key={s}
+          size={s}
+          color={colors[s]}
+          shape={'circular'}
+          variant={'outlined'}
+          icon={<Icon>camera</Icon>}
+        >
+          button
+        </Button>
+      )),
+    code: `
+  import Button from 'path/to/Button';
+  import Icon from 'path/to/Icon';
+  // look at the icon page
+  
+  <Button
+    shape={'circular'}
+    variant={'outlined'}
+    icon={
+      <Icon>camera_alt</Icon>
+    }
+  >
+    Button
+  </Button>
+    `,
+  },
+  {
+    render: () =>
+      sizes.map((s, i) => (
+        <div key={s}>
+          <Button size={s} {...props1} />
+          <br />
+          {i < sizes.length - 1 && <br />}
+        </div>
+      )),
     code: `
   import Button from 'path/to/Button';
   import Icon from 'path/to/Icon';
@@ -64,17 +163,14 @@ export default [
     `,
   },
   {
-    render: () => (
-      <>
-        <Button size={'small'} {...props2} />
-        <br />
-        <br />
-        <Button {...props2} />
-        <br />
-        <br />
-        <Button size={'big'} {...props2} />
-      </>
-    ),
+    render: () =>
+      sizes.map((s, i) => (
+        <div key={s}>
+          <Button size={s} {...props2} />
+          <br />
+          {i < sizes.length - 1 && <br />}
+        </div>
+      )),
     code: `
   import Button from 'path/to/Button';
   
@@ -94,17 +190,14 @@ export default [
     `,
   },
   {
-    render: () => (
-      <>
-        <Button {...props3} size={'small'} />
-        <br />
-        <br />
-        <Button {...props3} />
-        <br />
-        <br />
-        <Button {...props3} size={'big'} />
-      </>
-    ),
+    render: () =>
+      sizes.map((s, i) => (
+        <div key={s}>
+          <Button size={s} {...props3} />
+          <br />
+          {i < sizes.length - 1 && <br />}
+        </div>
+      )),
     code: `
   import Button from 'path/to/Button';
   
@@ -124,11 +217,16 @@ export default [
     `,
   },
   {
-    render: () => (
-      <Button loading variant={'contained'} color={'secondary'} size={'big'}>
-        Loading...
-      </Button>
-    ),
+    render: () =>
+      sizes.map((s, i) => (
+        <div key={s}>
+          <Button size={s} loading variant={'contained'} color={'secondary'}>
+            Loading...
+          </Button>
+          <br />
+          {i < sizes.length - 1 && <br />}
+        </div>
+      )),
     code: `
   import Button from 'path/to/Button';
   
@@ -136,7 +234,6 @@ export default [
     loading
     variant={'contained'}
     color={'secondary'}
-    size={'big'}
   >
     Loading...
   </Button>
