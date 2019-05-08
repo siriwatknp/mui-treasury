@@ -230,7 +230,14 @@ const components = [
   },
   {
     component: PeaTag,
-    render: () => <PeaTag src={AVATAR} label={'Invited by @Markz'} />,
+    render: () => (
+      <Box>
+        <Box mb={2} width={'100%'}>
+          <PeaTag src={AVATAR} label={'Invited by @Markz'} />
+        </Box>
+        <PeaTag src={AVATAR} label={'Invited by @Markz'} color={'primary'} />
+      </Box>
+    ),
     previewProps: {
       white: true,
     },
