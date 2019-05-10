@@ -1,5 +1,5 @@
 /**
- * Current VERSION 1.2
+ * Current VERSION 1.3
  *
  * vX.Y meaning
  * X = major changes ex. add/remove/rename some props/className,
@@ -124,7 +124,7 @@ Button.propTypes = {
   mobileFullWidth: PropTypes.bool,
   shadowless: PropTypes.bool,
   size: PropTypes.oneOf(['small', '', 'big', 'large']),
-  shape: PropTypes.oneOf(['', 'chubby', 'circular', 'square']),
+  shape: PropTypes.oneOf(['', 'chubby', 'circular', 'square', 'rectangle']),
   children: PropTypes.node.isRequired,
   icon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   iconIsolated: PropTypes.bool,
@@ -166,39 +166,88 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
     outlinedSecondary: {},
   };
   const labelSizes = {
-    small: 12,
-    normal: 14,
-    big: 16,
-    large: 20,
+    small: 14,
+    normal: 16,
+    big: 18,
+    large: 22,
   };
-  const minHeights = {
-    small: 32,
-    normal: 40,
+  const btnHeights = {
+    small: 28,
+    normal: 36,
     big: 48,
     large: 56,
   };
-  const buttonPadding = '0em 1.15em';
   const elongatedWidth = 160;
   const defaultFontWeight = 500;
   const defaultLetterSpacing = 0;
   const defaultTextTransform = 'none';
   const invertedColor = palette.common.white;
   const outlinedBorderWidth = 1;
+
+  // >>>> To request more features, open issue here <<<<
+
+  // https://github.com/siriwatknp/mui-treasury/issues/new
+
+  // ------------ !READ ONLY -------------- //
+  // ---- DO NOT EDIT, MIGHT RUIN YOUR BTN ---- //
   const iconSelector =
     '.MuiButton-label:not([class*="-icon-isolated"]) > .material-icons, > svg';
   const bgIconSelector =
     // eslint-disable-next-line max-len
+    '.MuiButton-label:not([class*="-icon-isolated"]) > .material-icons[class*="-bg-"], > svg[class*="-bg-"]';
+  const notBgIconSelector =
+    // eslint-disable-next-line max-len
     '.MuiButton-label:not([class*="-icon-isolated"]) > .material-icons:not([class*="-bg-"]), > svg:not([class*="-bg-"])';
   const loaderSelector = '.MuiButton-label .MuiButton-loader';
-  const defaultIconSize = 20;
+  const mapBtnHeight = x => 36 - Math.exp(3.72 - x / 38.6);
+  const getIconSize = btnHeight => {
+    const icon = mapBtnHeight(btnHeight);
+    if (Math.floor(icon) % 2 === 0) return Math.floor(icon);
+    return Math.ceil(icon);
+  };
+  const getBgIconSize = btnSize => {
+    const mapping = {
+      small: btnHeights.small - 6,
+      normal: btnHeights.normal - 8,
+      big: btnHeights.big - 12,
+      large: btnHeights.large - 16,
+    };
+    return mapping[btnSize];
+  };
+  const generateStylesBySize = size => ({
+    fontSize: labelSizes[size],
+    padding: `0 ${btnHeights[size] / 2}px`,
+    minHeight: btnHeights[size],
+    minWidth: btnHeights[size],
+    // icon
+    [`& ${iconSelector}`]: {
+      // default icon size
+      fontSize: getIconSize(btnHeights[size]),
+    },
+    [`& ${bgIconSelector}`]: {
+      margin: '0 !important',
+      fontSize: getIconSize(btnHeights[size]) - 2,
+      width: getBgIconSize(size),
+      height: getBgIconSize(size),
+      '&:first-of-type': {
+        transform: 'translateX(-50%)',
+      },
+      '&:last-of-type': {
+        transform: 'translateX(50%)',
+      },
+    },
+  });
+  // ---------------- END OF READ ONLY ------------------- //
   return {
     MuiButton: {
+      label: {
+        letterSpacing: defaultLetterSpacing,
+        textTransform: defaultTextTransform,
+        fontWeight: defaultFontWeight,
+      },
       root: {
         ...extraStyles.root,
-        fontSize: labelSizes.normal,
-        padding: buttonPadding,
-        minHeight: minHeights.normal,
-        minWidth: minHeights.normal,
+        ...generateStylesBySize('normal'),
         // STANDALONE
         '&.-color-danger': {
           color: palette.error.main,
@@ -221,8 +270,21 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
             background: 'rgba(255, 255, 255, 0.2)',
           },
         },
+        // Icon
+        '&[class*="-shape-rectangle"], &:not([class*="-shape-"])': {
+          [`& ${notBgIconSelector}`]: {
+            '&:first-of-type': {
+              marginLeft: '-0.3em',
+              marginRight: 8,
+            },
+            '&:last-of-type': {
+              marginRight: '-0.3em',
+              marginLeft: 8,
+            },
+          },
+        },
         '&.-labelExpanded': {
-          [`& ${bgIconSelector}`]: {
+          [`& ${notBgIconSelector}`]: {
             '&:first-of-type': {
               marginLeft: '-0.4em',
             },
@@ -238,28 +300,6 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
         '&.-mobileFullWidth': {
           [breakpoints.only('xs')]: {
             width: '100%',
-          },
-        },
-        // icon
-        [`& ${iconSelector}`]: {
-          // default icon size
-          fontSize: defaultIconSize,
-        },
-        [`&:not([class*="-size"]) ${iconSelector}`]: {
-          '&[class*="-bg"]': {
-            fontSize: labelSizes.normal + 2,
-          },
-        },
-        '&:not([class*="-shape-circular"])': {
-          '& .MuiButton-label > .material-icons, > svg': {
-            // don't change upper code to var:iconSelector
-            // fixed styles
-            '&:first-of-type': {
-              marginRight: spacing.unit,
-            },
-            '&:last-of-type': {
-              marginLeft: spacing.unit,
-            },
           },
         },
         // loading
@@ -279,47 +319,16 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
         },
         // sizes
         '&.-size-small': {
-          fontSize: labelSizes.small,
-          minHeight: minHeights.small,
-          minWidth: minHeights.small,
-          padding: buttonPadding,
-          [`& ${iconSelector}`]: {
-            fontSize: 18,
-            '&[class*="-bg"]': {
-              fontSize: '0.75rem',
-            },
-          },
+          ...generateStylesBySize('small'),
         },
         '&.-size-big': {
-          fontSize: labelSizes.big,
-          minHeight: minHeights.big,
-          minWidth: minHeights.big,
-          padding: buttonPadding,
-          [`& ${iconSelector}`]: {
-            fontSize: 24,
-            '&[class*="-bg"]': {
-              fontSize: '1.25rem',
-            },
-          },
+          ...generateStylesBySize('big'),
         },
         '&.-size-large': {
-          fontSize: labelSizes.large,
-          minHeight: minHeights.large,
-          minWidth: minHeights.large,
-          padding: buttonPadding,
-          [`& ${iconSelector}`]: {
-            fontSize: 26,
-            '&[class*="-bg"]': {
-              fontSize: '1.5rem',
-            },
-          },
-        },
-        '&.-shape-square': {
-          borderRadius: 0,
+          ...generateStylesBySize('large'),
         },
         '&.-shape-chubby': {
           borderRadius: 100,
-          padding: '6px 10px',
           '& .MuiButton-span': {
             '&:first-of-type': {
               marginLeft: '0.4em',
@@ -329,7 +338,7 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
             },
           },
         },
-        '&.-shape-circular': {
+        '&.-shape-circular, &.-shape-square': {
           borderRadius: '50%',
           padding: 12,
           [`& ${iconSelector}`]: {
@@ -337,32 +346,33 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
             fontSize: 20,
           },
         },
+        '&.-shape-square, &.-shape-rectangle': {
+          borderRadius: 0,
+        },
         // COMBINATION
-        '&.-shape-circular.-size-small': {
+        '&.-shape-circular.-size-small, &.-shape-square.-size-small': {
           padding: spacing.unit * 1.25,
-          [`& ${iconSelector}`]: {
-            fontSize: 16,
-          },
+          // [`& ${iconSelector}`]: {
+          //   fontSize: 16,
+          // },
         },
-        '&.-shape-circular.-size-big': {
+        '&.-shape-circular.-size-big, &.-shape-square.-size-big': {
           padding: spacing.unit * 1.5,
-          [`& ${iconSelector}`]: {
-            fontSize: 28,
-          },
+          // [`& ${iconSelector}`]: {
+          //   fontSize: 28,
+          // },
         },
-        '&.-shape-circular.-size-large': {
+        '&.-shape-circular.-size-large, &.-shape-square.-size-large': {
           padding: spacing.unit * 1.75,
-          [`& ${iconSelector}`]: {
-            fontSize: 36,
-          },
+          // [`& ${iconSelector}`]: {
+          //   fontSize: 36,
+          // },
         },
         '&.-size-big.-compact': {
-          paddingTop: 4,
-          paddingBottom: 4,
+          minHeight: btnHeights.big - 8,
         },
         '&.-size-large.-compact': {
-          paddingTop: 6,
-          paddingBottom: 6,
+          minHeight: btnHeights.large - 8,
         },
         '&$disabled.-inverted': {
           borderColor: 'rgba(255, 255, 255, 0.38)',
@@ -374,10 +384,8 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
           },
         },
       },
-      label: {
-        letterSpacing: defaultLetterSpacing,
-        textTransform: defaultTextTransform,
-        fontWeight: defaultFontWeight,
+      text: {
+        padding: `0 ${btnHeights.normal / 2}px`,
       },
       contained: {
         '&.-color-danger': {
