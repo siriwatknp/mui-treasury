@@ -94,7 +94,9 @@ const createCode = (config, icon) =>
       <CssBaseline />
       <Header
         menuIcon={{
-          inactive: ${icon.type === 'svg' ? '<MenuIcon />' : '<Icon>menu</Icon>'},
+          inactive: ${
+            icon.type === 'svg' ? '<MenuIcon />' : '<Icon>menu</Icon>'
+          },
           active: ${generateIconElement(icon, 'active')}
         }}
       >
@@ -171,7 +173,12 @@ const GetCode = ({ classes, config, icon, open, onClose }) => {
             }
             rel="noopener"
           >
-            <Icon size={'big'} shape={'circular'} bgColor={'default'} style={{ marginRight: 16 }}>
+            <Icon
+              size={'big'}
+              shape={'circular'}
+              bgColor={'default'}
+              style={{ marginRight: 16 }}
+            >
               description
             </Icon>
             <ListItemText
