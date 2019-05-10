@@ -210,7 +210,7 @@ const LayoutBuilderPage = ({ classes }) => {
         bgcolor={'common.white'}
         borderTop={'1px solid #e5e5e5'}
       >
-        <Grid container justify={'center'} spacing={32}>
+        <Grid container justify={'center'} spacing={4}>
           <Grid item xs={12} sm={12} md={8}>
             <Box textAlign={'right'}>
               {step !== 0 && (
@@ -232,7 +232,7 @@ const LayoutBuilderPage = ({ classes }) => {
                   iconPosition={'end'}
                   onClick={onNextStep(1)}
                 >
-                  Next
+                  {step === 0 ? "Let's Begin" : 'Next'}
                 </Button>
               )}
               {step === 13 && (

@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Switch from '@material-ui/core/Switch';
 import { ReactComponent as Logo } from './assets/peapods-logo-circle.svg';
 
-const PeaSwitch = props => (
+const PeaSwitch = ({ className, ...props }) => (
   <Switch
+    className={`PeaSwitch-root ${className}`}
     checkedIcon={
       <div className={'PeaIcon'}>
         <Logo />
@@ -13,6 +15,12 @@ const PeaSwitch = props => (
   />
 );
 
+PeaSwitch.propTypes = {
+  className: PropTypes.string,
+};
+PeaSwitch.defaultProps = {
+  className: '',
+};
 PeaSwitch.metadata = {
   name: 'Pea Switch',
 };

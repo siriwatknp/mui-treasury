@@ -31,7 +31,7 @@ InstagramTabs.getTheme = muiBaseTheme => ({
     },
     indicator: {
       height: 1,
-      transform: 'translateY(-53px)',
+      transform: 'translateY(-52px)',
       backgroundColor: '#262626',
     },
   },
@@ -51,29 +51,21 @@ InstagramTabs.getTheme = muiBaseTheme => ({
     },
     labelIcon: {
       minHeight: 53,
-      paddingTop: 0,
+      '& $wrapper > *:first-child': {
+        marginBottom: 0,
+      },
     },
     textColorInherit: {
       opacity: 0.4,
     },
     wrapper: {
       flexDirection: 'row',
-      '& svg, .material-icons': {
-        fontSize: 16,
-        marginRight: 4,
-      },
-    },
-    labelContainer: {
-      padding: 0,
-      [muiBaseTheme.breakpoints.up('md')]: {
-        padding: 0,
-        paddingLeft: 0,
-        paddingRight: 0,
-      },
-    },
-    label: {
       letterSpacing: '1px',
       textTransform: 'uppercase',
+      '& svg, .material-icons': {
+        fontSize: 16,
+        marginRight: 8,
+      },
     },
   },
 });

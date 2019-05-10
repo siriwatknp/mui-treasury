@@ -57,22 +57,13 @@ TwitterTabs.getTheme = muiBaseTheme => ({
       opacity: 1,
     },
     wrapper: {
-      '& svg': {
-        fontSize: 26.25,
-      },
-    },
-    labelContainer: {
-      width: '100%',
-      padding: 15,
-      [muiBaseTheme.breakpoints.up('md')]: {
-        padding: 15,
-      },
-    },
-    label: {
       textTransform: 'none',
       fontSize: 15,
       fontWeight: 700,
       color: '#657786',
+      '& svg': {
+        fontSize: 26.25,
+      },
     },
   },
 });

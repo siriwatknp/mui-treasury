@@ -1,12 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import JssProvider from 'react-jss/lib/JssProvider';
 import merge from 'lodash/merge';
-import {
-  MuiThemeProvider,
-  createGenerateClassName,
-} from '@material-ui/core/styles';
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 import treasuryTheme from 'theme/treasury';
 import Button from 'components/predefined/Button';
@@ -16,29 +11,21 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const generateClassName = createGenerateClassName({
-  productionPrefix: 'MuiTreasury',
-});
-
 const render = Component => {
   ReactDOM.render(
-    <JssProvider generateClassName={generateClassName}>
-      <MuiThemeProvider
-        theme={merge(treasuryTheme, {
-          overrides: {
-            ...Button.getTheme(treasuryTheme),
-            ...Icon.getTheme(treasuryTheme),
-            ...Typography.getTheme(treasuryTheme),
-          },
-        })}
-      >
-        <ThemeProvider theme={treasuryTheme}>
-          <Router>
-            <Component />
-          </Router>
-        </ThemeProvider>
-      </MuiThemeProvider>
-    </JssProvider>,
+    <ThemeProvider
+      theme={merge(treasuryTheme, {
+        overrides: {
+          ...Button.getTheme(treasuryTheme),
+          ...Icon.getTheme(treasuryTheme),
+          ...Typography.getTheme(treasuryTheme),
+        },
+      })}
+    >
+      <Router>
+        <Component />
+      </Router>
+    </ThemeProvider>,
     document.getElementById('root'),
   );
 };

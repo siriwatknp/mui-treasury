@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import merge from 'lodash/merge';
 import get from 'lodash/get';
 import Grid from '@material-ui/core/Grid';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import { Box } from 'components/atoms';
 import { PreviewWidget } from 'components/molecules';
 import ShouldUpdate from 'containers/ShouldUpdate';
@@ -53,7 +54,7 @@ const InputPage = ({ counter, globalTheme, onSelectComponent }) => (
       sm: 4,
     }}
   >
-    <Grid container spacing={32}>
+    <Grid container spacing={4}>
       {components.map(({ component, render, previewProps }) => (
         <Grid key={get(component, 'metadata.name')} item xs={12} sm={6} lg={4}>
           <PreviewWidget
@@ -63,14 +64,14 @@ const InputPage = ({ counter, globalTheme, onSelectComponent }) => (
             {...previewProps}
           >
             <ShouldUpdate value={counter}>
-              <MuiThemeProvider
+              <ThemeProvider
                 theme={createTheme({
                   ...globalTheme,
                   overrides: component.getTheme(merge(baseTheme, globalTheme)),
                 })}
               >
                 {render()}
-              </MuiThemeProvider>
+              </ThemeProvider>
             </ShouldUpdate>
           </PreviewWidget>
         </Grid>

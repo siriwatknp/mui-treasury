@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { unstable_Box as Box } from '@material-ui/core/Box';
+import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import PeaIcon from './PeaIcon';
 import PeaAvatar from './PeaAvatar';

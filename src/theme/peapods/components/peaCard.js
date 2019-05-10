@@ -79,6 +79,7 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
         '& .PeaProfileCard-actions': {
           display: 'flex',
           justifyContent: 'flex-end',
+          alignItems: 'center',
         },
       },
       '&.PeaFullProfile-root': {

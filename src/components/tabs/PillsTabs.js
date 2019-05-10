@@ -59,11 +59,7 @@ PillsTabs.getTheme = () => ({
         },
       },
     },
-    labelContainer: {
-      padding: '0!important',
-      color: 'inherit',
-    },
-    label: {
+    wrapper: {
       lineHeight: '24px',
       textTransform: 'uppercase',
       fontSize: '12px',

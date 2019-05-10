@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid, max-len */
 import React from 'react';
 import merge from 'lodash/merge';
-import { MuiThemeProvider } from '@material-ui/core/styles';
+import { Link as RouterLink } from 'react-router-dom';
+import { ThemeProvider } from '@material-ui/styles';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from 'components/atoms/Box';
@@ -16,12 +17,12 @@ const providedTheme = merge(treasuryTheme, {
 });
 
 const exampleCode = `
-  import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+  import { ThemeProvider } from '@material-ui/styles';
   import { Root, Header, Nav, Content, Footer, presets } from "./Layout";
   
   function App() {
     return (
-      <MuiThemeProvider theme={createMuiTheme()}>
+      <ThemeProvider theme={createMuiTheme()}>
         <Root>
           <CssBaseline />
           <Header
@@ -42,7 +43,7 @@ const exampleCode = `
             <Typography>Footer</Typography>
           </Footer>
         </Root>
-      </MuiThemeProvider>
+      </ThemeProvider>
     );
   }
 `;
@@ -137,7 +138,7 @@ const codePreset3 = `
 `;
 
 const LayoutPage = () => (
-  <MuiThemeProvider theme={providedTheme}>
+  <ThemeProvider theme={providedTheme}>
     <Box maxWidth={768} mx={'auto'} px={2} py={{ xs: 2, sm: 3 }}>
       <Typography variant={'overline'}>INTRODUCING</Typography>
       <Typography weight={'bold'} variant={'h4'} gutterBottom>
@@ -307,9 +308,9 @@ const LayoutPage = () => (
       <Box px={2}>
         <CodeHighlight code={code1} />
       </Box>
-      <Grid container spacing={32}>
+      <Grid container spacing={4}>
         <Grid item xs={12} sm={6}>
-          <Grid container spacing={16}>
+          <Grid container spacing={2}>
             <Grid item>
               <Typography gutterBottom>
                 <b>Adjust Nav Width</b>
@@ -354,7 +355,7 @@ const LayoutPage = () => (
           </Grid>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Grid container spacing={16}>
+          <Grid container spacing={2}>
             <Grid item>
               <Typography gutterBottom>
                 <b>Clipped Header</b>
@@ -415,7 +416,7 @@ const LayoutPage = () => (
       </Typography>
       <CodeHighlight code={codePreset0} />
       <Box pb={2} />
-      <Grid container spacing={32}>
+      <Grid container spacing={4}>
         <Grid item xs={12} sm={6}>
           <Typography gutterBottom>
             <b>Default Layout</b>
@@ -487,15 +488,10 @@ const LayoutPage = () => (
         Customization
       </Typography>
       <Typography>
-        I will implement Layout Generator soon. Inspired by{' '}
-        <Link
-          target={'_blank'}
-          rel="noopener"
-          href={'https://v1.quasar-framework.org/layout-builder'}
-        >
-          Quasar Layout Builder
+        Want to build your own layout? we have built the tool for you.{' '}
+        <Link component={RouterLink} to={'/layout-builder'}>
+          <b>Layout Builder</b>
         </Link>
-        .
       </Typography>
       <Box pb={3} />
       <Typography weight={'bold'} variant={'h5'} gutterBottom>
@@ -529,7 +525,7 @@ const LayoutPage = () => (
         directly. I will do my best to help.
       </Typography>
     </Box>
-  </MuiThemeProvider>
+  </ThemeProvider>
 );
 
 LayoutPage.propTypes = {};

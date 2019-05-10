@@ -8,6 +8,9 @@ const styles = ({ palette }) => ({
   root: {
     padding: '22px 0px',
   },
+  container: {
+    padding: 32,
+  },
   track: {
     background: palette.secondary.main,
     borderRadius: 10,

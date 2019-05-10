@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import merge from 'lodash/merge';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -33,13 +34,13 @@ const IconSection = ({ globalTheme }) => {
     shape,
   };
   return (
-    <MuiThemeProvider
+    <ThemeProvider
       theme={createTheme({
         ...globalTheme,
         overrides: Icon.getTheme(merge(baseTheme, globalTheme)),
       })}
     >
-      <Grid container spacing={16} justify={'center'}>
+      <Grid container spacing={2} justify={'center'}>
         <Grid item xs={6} sm={4}>
           <PreviewWidget
             white
@@ -208,7 +209,7 @@ const IconSection = ({ globalTheme }) => {
           </PreviewWidget>
         </Grid>
       </Grid>
-    </MuiThemeProvider>
+    </ThemeProvider>
   );
 };
 

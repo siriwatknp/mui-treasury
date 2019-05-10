@@ -5,8 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
+import PeaButton from './PeaButton';
 import PeaIcon from './PeaIcon';
 import PeaAvatar from './PeaAvatar';
 import PeaStatistic from './PeaStatistic';
@@ -18,10 +18,13 @@ const PeaProfileCard = ({ cover, image, name, tag, AvatarProps }) => (
     </CardMedia>
     <CardContent className={'MuiCardContent-root'}>
       <div className={'PeaProfileCard-actions'}>
-        <Button size={'small'}>
-          <PeaIcon size={'small'}>settings</PeaIcon>
-          <span>Settings</span>
-        </Button>
+        <PeaButton
+          size={'small'}
+          iconIsolated
+          icon={<PeaIcon size={'small'}>settings</PeaIcon>}
+        >
+          Settings
+        </PeaButton>
         <IconButton className={'MuiIconButton--tiny'}>
           <PeaIcon>more_vert</PeaIcon>
         </IconButton>

@@ -20,7 +20,7 @@ const PeaEventCard = ({ image, name, range, time, images }) => (
     </CardMedia>
     <CardContent className={'MuiCardContent-root'}>
       <Typography className={'MuiTypography--heading'}>{name}</Typography>
-      <Grid container alignItems={'center'} spacing={8}>
+      <Grid container alignItems={'center'} spacing={1}>
         <Grid item>
           <PeaIcon
             size={'small'}
@@ -34,7 +34,7 @@ const PeaEventCard = ({ image, name, range, time, images }) => (
           </Typography>
         </Grid>
       </Grid>
-      <Grid container alignItems={'center'} spacing={8}>
+      <Grid container alignItems={'center'} spacing={1}>
         <Grid item>
           <PeaIcon size={'small'} color={'secondary'} icon={'fas fa-users'} />
         </Grid>

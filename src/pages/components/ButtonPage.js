@@ -210,7 +210,7 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
     >
       Examples
     </Text>
-    <Grid container spacing={16}>
+    <Grid container spacing={2}>
       {examples.map(({ render, code }, i) => (
         <Grid key={i} item xs={12} sm={4} md={3}>
           <Box textAlign={'center'} py={2}>
@@ -239,7 +239,7 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
       like.
     </Text>
     <Box pb={2} />
-    <Grid container spacing={32}>
+    <Grid container spacing={4}>
       {components.map(({ component, render, previewProps }) => (
         <Grid key={get(component, 'metadata.name')} item xs={12} sm={6} lg={4}>
           <PreviewWidget

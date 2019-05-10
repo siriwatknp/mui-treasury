@@ -58,7 +58,7 @@ const PeaEventDialog = ({ onClose, ...props }) => (
         />
         <FormControl fullWidth margin={'normal'}>
           <FormLabel style={{ marginBottom: 16 }}>Category</FormLabel>
-          <Grid container spacing={16}>
+          <Grid container spacing={2}>
             {categories.map(({ image, label }, index) => (
               <Grid key={label} item xs={4} sm={3}>
                 <PeaCategoryToggle

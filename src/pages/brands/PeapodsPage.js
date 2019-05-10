@@ -398,7 +398,7 @@ const components = [
   {
     component: PeaCardActions,
     render: () => (
-      <Box>
+      <Box width={'100%'}>
         <Card style={{ marginBottom: 20 }}>
           <CardContent style={{ minWidth: 320 }} />
           <PeaCardActions
@@ -840,7 +840,7 @@ const PeapodsPage = () => (
         sm: 4,
       }}
     >
-      <Grid container spacing={32} justify={'center'}>
+      <Grid container spacing={4} justify={'center'}>
         {components.map(
           ({ component, render, previewProps, gridItemProps }) => (
             <Grid

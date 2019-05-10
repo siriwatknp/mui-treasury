@@ -56,7 +56,7 @@ const PeaConnections = ({
         </Grid>
       </Grid>
       <Typography className={classes.categoryHeading}>Followers</Typography>
-      <Grid container spacing={16}>
+      <Grid container spacing={2}>
         {followers.map(item => (
           <Grid item>
             <PeaSocialAvatar {...item} />
@@ -64,7 +64,7 @@ const PeaConnections = ({
         ))}
       </Grid>
       <Typography className={classes.categoryHeading}>Followings</Typography>
-      <Grid container spacing={16}>
+      <Grid container spacing={2}>
         {followings.map(item => (
           <Grid item>
             <PeaSocialAvatar {...item} />
@@ -72,7 +72,7 @@ const PeaConnections = ({
         ))}
       </Grid>
       <Typography className={classes.categoryHeading}>Tags</Typography>
-      <Grid container spacing={16}>
+      <Grid container spacing={2}>
         {tags.map(item => (
           <Grid item>
             <PeaSocialAvatar {...item} />
@@ -80,7 +80,7 @@ const PeaConnections = ({
         ))}
       </Grid>
       <Typography className={classes.categoryHeading}>Groups</Typography>
-      <Grid container spacing={16}>
+      <Grid container spacing={2}>
         {groups.map(item => (
           <Grid item>
             <PeaSocialAvatar {...item} />

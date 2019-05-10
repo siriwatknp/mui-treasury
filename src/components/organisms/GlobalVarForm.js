@@ -46,7 +46,7 @@ const GlobalVarForm = ({ theme, onChange }) => (
           >
             <Grid
               container
-              spacing={16}
+              spacing={2}
               wrap={'nowrap'}
               style={{
                 overflow: 'scroll',

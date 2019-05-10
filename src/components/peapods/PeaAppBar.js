@@ -32,7 +32,7 @@ const PeaAppBar = ({ classes, ...props }) => (
   >
     <Toolbar>
       <div>
-        <Grid container spacing={16}>
+        <Grid container spacing={2}>
           <Grid item>
             <PeaMenuItem
               label={'Home'}
@@ -73,7 +73,7 @@ const PeaAppBar = ({ classes, ...props }) => (
       </div>
       <div className={classes.stretch} />
       <div>
-        <Grid container spacing={16}>
+        <Grid container spacing={2}>
           <Grid item>
             <PeaSearchInput placeholder={'Find...'} className={classes.input} />
           </Grid>
