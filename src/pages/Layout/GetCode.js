@@ -15,21 +15,21 @@ import Typography from 'components/predefined/Typography';
 const generateIconImport = ({ type, style }) => {
   if (type === 'svg') {
     if (style === 'chevron')
-      return `Import MenuIcon from '@material-ui/icons/Menu';
-Import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-Import ChevronLeftIcon from '@material-ui/icons/ChevronRight';`;
+      return `import MenuIcon from '@material-ui/icons/Menu';
+  import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+  import ChevronLeftIcon from '@material-ui/icons/ChevronRight';`;
     if (style === 'arrow')
-      return `Import MenuIcon from '@material-ui/icons/Menu';
-Import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-Import ArrowBackIcon from '@material-ui/icons/ArrowBack';`;
+      return `import MenuIcon from '@material-ui/icons/Menu';
+  import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+  import ArrowBackIcon from '@material-ui/icons/ArrowBack';`;
     if (style === 'triangle')
-      return `Import MenuIcon from '@material-ui/icons/Menu';
-Import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-Import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';`;
+      return `import MenuIcon from '@material-ui/icons/Menu';
+  import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+  import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';`;
     if (style === 'ios')
-      return `Import MenuIcon from '@material-ui/icons/Menu';
-Import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-Import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';`;
+      return `import MenuIcon from '@material-ui/icons/Menu';
+  import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+  import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';`;
   }
   if (type === 'webfont') {
     return `import Icon from '@material-ui/core/Icon';`;
@@ -81,50 +81,52 @@ const generateIconElement = ({ type, style }, state = null) => {
 };
 
 const createCode = (config, icon) =>
-  `import React from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-${generateIconImport(icon)}
-import { Root, Header, Nav, Content, Footer } from './Layout';
-
-const config = ${JSON.stringify(config, null, 2)};
-
-const App = () => (
-  <Root config={config} style={{ minHeight: "100vh" }}>
-    <CssBaseline />
-    <Header
-      menuIcon={{
-        inactive: ${icon.type === 'svg' ? '<MenuIcon />' : '<Icon>menu</Icon>'},
-        active: ${generateIconElement(icon, 'active')}
-      }}
-    >
-        {/* header goes here */}
-    </Header>
-    <Nav
-      collapsedIcon={{
-        inactive: ${generateIconElement(icon, 'active')},
-        active: ${generateIconElement(icon)}
-      }}
-      header={
-        // you can provide fixed header inside nav
-        // change null to some react element
-        ctx => null
-      }
-    >
-      {/* nav goes here */}
-    </Nav>
-    <Content>
-      {/* content goes here */}
-    </Content>
-    <Footer>{/* footer goes here */}</Footer>
-  </Root>
-)
-
-export default App`;
+  `
+  import React from 'react';
+  import CssBaseline from '@material-ui/core/CssBaseline';
+  ${generateIconImport(icon)}
+  import { Root, Header, Nav, Content, Footer } from './Layout';
+  
+  const config = ${JSON.stringify(config, null, 2)};
+  
+  const App = () => (
+    <Root config={config} style={{ minHeight: "100vh" }}>
+      <CssBaseline />
+      <Header
+        menuIcon={{
+          inactive: ${icon.type === 'svg' ? '<MenuIcon />' : '<Icon>menu</Icon>'},
+          active: ${generateIconElement(icon, 'active')}
+        }}
+      >
+          {/* header goes here */}
+      </Header>
+      <Nav
+        collapsedIcon={{
+          inactive: ${generateIconElement(icon, 'active')},
+          active: ${generateIconElement(icon)}
+        }}
+        header={
+          // you can provide fixed header inside nav
+          // change null to some react element
+          ctx => null
+        }
+      >
+        {/* nav goes here */}
+      </Nav>
+      <Content>
+        {/* content goes here */}
+      </Content>
+      <Footer>{/* footer goes here */}</Footer>
+    </Root>
+  )
+  
+  export default App
+`;
 
 const GetCode = ({ classes, config, icon, open, onClose }) => {
   const [index, setIndex] = useState(0);
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog open onClose={onClose}>
       <Tabs
         variant={'fullWidth'}
         value={index}
@@ -169,11 +171,11 @@ const GetCode = ({ classes, config, icon, open, onClose }) => {
             }
             rel="noopener"
           >
-            <Icon size={'big'} shape={'circular'} bgColor={'default'}>
+            <Icon size={'big'} shape={'circular'} bgColor={'default'} style={{ marginRight: 16 }}>
               description
             </Icon>
             <ListItemText
-              primary={'v1.0'}
+              primary={'v1.1'}
               secondary={'Download'}
               secondaryTypographyProps={{ color: 'secondary' }}
             />
