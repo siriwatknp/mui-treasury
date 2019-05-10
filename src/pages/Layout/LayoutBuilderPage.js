@@ -150,8 +150,6 @@ const LayoutBuilderPage = ({ classes }) => {
       setStep(nextStep);
     }, 400);
   };
-  console.log('c screen', screen);
-  console.log('config', config);
   return (
     <Box p={{ xs: 2, sm: 3 }}>
       {step === 0 ? (

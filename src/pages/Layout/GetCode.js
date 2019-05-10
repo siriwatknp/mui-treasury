@@ -165,7 +165,7 @@ const GetCode = ({ classes, config, icon, open, onClose }) => {
             button
             component={'a'}
             href={
-              'https://firebasestorage.googleapis.com/v0/b/mui-treasury.appspot.com/o/public%2FLayout-v1.0.zip?alt=media'
+              'https://firebasestorage.googleapis.com/v0/b/mui-treasury.appspot.com/o/public%2Fcode%2FLayout-v1.1.zip?alt=media'
             }
             rel="noopener"
           >
