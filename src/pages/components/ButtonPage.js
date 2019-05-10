@@ -133,10 +133,10 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => (
       color={'textPrimary'}
       gutterBottom
     >
-      Predefined Button <code>v1.2</code>
+      Predefined Button <code>v1.3</code>
     </Text>
     <Text variant={'caption'} align={'left'} gutterBottom>
-      <b>Last Updated 8 May 2019</b>
+      <b>Last Updated 10 May 2019</b>
     </Text>
     <Text gutterBottom>
       The button and only button that you need if you are using Material-UI,

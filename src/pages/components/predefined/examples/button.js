@@ -25,7 +25,7 @@ const props2 = {
 const props3 = {
   fullWidth: true,
   labelExpanded: true,
-  shape: 'square',
+  shape: 'rectangle',
   variant: 'outlined',
   color: 'primary',
   icon: 'fab fa-twitter',
@@ -49,11 +49,9 @@ export default [
           key={s}
           size={s}
           color={colors[s]}
-          shape={'circular'}
+          shape={'square'}
           icon={<Icon>camera_alt</Icon>}
-        >
-          button
-        </Button>
+        />
       )),
     code: `
   import Button from 'path/to/Button';

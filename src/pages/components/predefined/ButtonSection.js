@@ -185,8 +185,14 @@ const ButtonSection = ({ globalTheme }) => {
             <MenuItem key={'chubby'} value={'chubby'}>
               chubby
             </MenuItem>
+            <MenuItem key={'rectangle'} value={'rectangle'}>
+              rectangle
+            </MenuItem>
             <MenuItem key={'circular'} value={'circular'}>
               circular
+            </MenuItem>
+            <MenuItem key={'square'} value={'square'}>
+              square
             </MenuItem>
           </TextField>
           <FormControl margin={'normal'} fullWidth>
