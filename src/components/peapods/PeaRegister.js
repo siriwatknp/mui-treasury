@@ -82,9 +82,10 @@ const PeaRegister = ({ open, onClose }) => {
           </Box>
           <Box display={'flex'} px={0.5} pb={3}>
             <PeaButton
+              fullWidth
+              labelExpanded
               variant={'contained'}
               color={'primary'}
-              fullWidth
               icon={<PeaIcon icon={'fab fa-facebook-f'} bgColor={'white'} />}
             >
               Register with Facebook

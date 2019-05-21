@@ -152,19 +152,6 @@ Button.defaultProps = {
   loaderProps: {},
 };
 Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
-  const extraStyles = {
-    // if you want to extend predefined button
-    // add style to below variable is recommended.
-    root: {
-      // ex.
-      // minHeight: 44,
-      // color: palette.text.secondary,
-    },
-    containedPrimary: {},
-    containedSecondary: {},
-    outlinedPrimary: {},
-    outlinedSecondary: {},
-  };
   const labelSizes = {
     small: 14,
     normal: 16,
@@ -183,6 +170,19 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
   const defaultTextTransform = 'none';
   const invertedColor = palette.common.white;
   const outlinedBorderWidth = 1;
+  const extraStyles = {
+    // if you want to extend predefined button
+    // add style to below variable is recommended.
+    root: {
+      // ex.
+      // minHeight: 44,
+      // color: palette.text.secondary,
+    },
+    containedPrimary: {},
+    containedSecondary: {},
+    outlinedPrimary: {},
+    outlinedSecondary: {},
+  };
 
   // >>>> To request more features, open issue here <<<<
 
@@ -201,9 +201,11 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
   const loaderSelector = '.MuiButton-label .MuiButton-loader';
   const mapBtnHeight = x => 36 - Math.exp(3.72 - x / 38.6);
   const getIconSize = btnHeight => {
-    const icon = mapBtnHeight(btnHeight);
-    if (Math.floor(icon) % 2 === 0) return Math.floor(icon);
-    return Math.ceil(icon);
+    const icon = Math.round(mapBtnHeight(btnHeight));
+    if (icon % 2 === 0) {
+      return icon;
+    }
+    return icon + 1;
   };
   const getBgIconSize = btnSize => {
     const mapping = {
@@ -223,6 +225,9 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
     [`& ${iconSelector}`]: {
       // default icon size
       fontSize: getIconSize(btnHeights[size]),
+      display: 'inline-flex',
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     [`& ${bgIconSelector}`]: {
       margin: '0 !important',
@@ -262,7 +267,7 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
           paddingBottom: 3,
         },
         '&.-elongated': {
-          minWidth: elongatedWidth,
+          minWidth: `${elongatedWidth}px!important`,
         },
         '&.-inverted': {
           color: invertedColor,
@@ -271,7 +276,8 @@ Button.getTheme = ({ breakpoints, palette, spacing, shadows }) => {
           },
         },
         // Icon
-        '&[class*="-shape-rectangle"], &:not([class*="-shape-"])': {
+        // eslint-disable-next-line max-len
+        '&[class*="-shape-rectangle"], &[class*="-shape-chubby"], &:not([class*="-shape-"])': {
           [`& ${notBgIconSelector}`]: {
             '&:first-of-type': {
               marginLeft: '-0.3em',

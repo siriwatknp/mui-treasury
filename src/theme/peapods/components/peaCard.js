@@ -53,6 +53,7 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
         '& .MuiCardMedia-root': {
           paddingTop: '40%',
           position: 'relative',
+          backgroundColor: palette.grey[200],
           '& .MuiAvatar-root': {
             alignItems: 'center',
             position: 'absolute',
@@ -90,6 +91,7 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
           width: '100%',
           top: 0,
           zIndex: 1,
+          backgroundColor: palette.grey[200],
           [breakpoints.up('sm')]: {
             paddingTop: '32%',
           },
@@ -186,6 +188,7 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
           display: 'flex',
         },
         '& .MuiCardMedia-root': {
+          backgroundColor: palette.grey[200],
           [breakpoints.only('xs')]: {
             paddingBottom: '56.25%',
           },
@@ -209,6 +212,72 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
         },
         '& .material-icons': {
           marginTop: 3,
+        },
+      },
+      '&.PeaUserCard-root': {
+        minWidth: 288,
+        textAlign: 'left',
+        '& .MuiCardMedia-root': {
+          paddingTop: '40%',
+          position: 'relative',
+          backgroundColor: palette.grey[200],
+          '& .MuiAvatar-root': {
+            alignItems: 'center',
+            position: 'absolute',
+            bottom: 0,
+            transform: 'translateY(32%)',
+            left: spacing.unit * 1.5,
+            border: '2px solid #ffffff',
+          },
+        },
+        '& .PeaUserCard-actions': {
+          display: 'flex',
+          justifyContent: 'flex-end',
+          alignItems: 'center',
+        },
+      },
+      '&.PeaGroupProfile-root': {
+        position: 'relative',
+        textAlign: 'left',
+        '& .MuiCardMedia-root': {
+          paddingTop: '44%',
+          position: 'absolute',
+          width: '100%',
+          top: 0,
+          zIndex: 1,
+          backgroundColor: palette.grey[200],
+          [breakpoints.up('sm')]: {
+            paddingTop: '40%',
+          },
+        },
+        '& .MuiCardContent-root': {
+          position: 'relative',
+          textAlign: 'left',
+          zIndex: 2,
+          background: palette.common.white,
+          marginTop: '36%',
+          borderRadius: spacing.unit * 2,
+          [breakpoints.up('sm')]: {
+            marginTop: '36%',
+          },
+          '& .MuiTabs-root': {
+            marginLeft: -16,
+            marginRight: -16,
+            width: 'auto',
+            minWidth: 500,
+          },
+        },
+        '& .MuiCardActions-root': {
+          position: 'relative',
+          zIndex: 3,
+          boxShadow: '0 0 8px 0 rgba(0,0,0,0.12)',
+          '& .MuiInputBase-root': {
+            padding: '0 16px',
+            borderRadius: 20,
+            backgroundColor: palette.grey[100],
+            flexGrow: 1,
+            minHeight: 40,
+          },
         },
       },
     },

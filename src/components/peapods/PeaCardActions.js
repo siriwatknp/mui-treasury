@@ -21,21 +21,21 @@ const PeaCardActions = ({ left, right, centered }) => (
 // FOR DEMO PURPOSE //
 PeaCardActions.Comment = () => (
   <PeaButton
+    shape={''}
     size={'small'}
     variant={'contained'}
     color={'primary'}
-    iconIsolated
-    icon={<PeaIcon icon={'fas fa-comment-alt'} shape={''} />}
+    icon={<PeaIcon icon={'fas fa-comment-alt'} />}
   >
     Comment
   </PeaButton>
 );
 PeaCardActions.Share = () => (
   <PeaButton
+    shape={''}
     size={'small'}
     variant={'contained'}
     color={'primary'}
-    iconIsolated
     icon={<PeaIcon icon={'fas fa-share-square'} />}
   >
     Share
@@ -43,10 +43,10 @@ PeaCardActions.Share = () => (
 );
 PeaCardActions.Create = () => (
   <PeaButton
+    shape={''}
     size={'small'}
     variant={'contained'}
     color={'primary'}
-    iconIsolated
     icon={<PeaIcon icon={'add_circle'} />}
   >
     Create

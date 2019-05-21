@@ -118,7 +118,7 @@ PeaButton.propTypes = {
   mobileFullWidth: PropTypes.bool,
   shadowless: PropTypes.bool,
   size: PropTypes.oneOf(['small', '', 'big', 'large']),
-  shape: PropTypes.oneOf(['', 'chubby', 'circular']),
+  shape: PropTypes.oneOf(['', 'chubby', 'circular', 'square', 'rectangle']),
   children: PropTypes.node.isRequired,
   icon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   iconIsolated: PropTypes.bool,

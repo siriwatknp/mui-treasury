@@ -11,7 +11,7 @@ import MomentUtils from '@date-io/moment';
 
 // PEAPODS THEME
 import peapodsTheme from 'theme/peapods';
-import { MuiThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 
 // PEAPODS COMPONENTS
 import Link from '@material-ui/core/Link';
@@ -58,6 +58,9 @@ import PeaConnections from 'components/peapods/PeaConnections';
 import PeaSocialAvatar from 'components/peapods/PeaSocialAvatar';
 import PeaTypography from 'components/peapods/PeaTypography';
 import PeaFullProfile from 'components/peapods/PeaFullProfile';
+import PeaUserCard from 'components/peapods/PeaUserCard';
+import PeaGroupProfile from 'components/peapods/PeaGroupProfile';
+import PeaChat from 'components/peapods/PeaChat';
 
 const PeaSelect = props => <PeaTextField {...props} />;
 PeaSelect.metadata = {
@@ -739,11 +742,28 @@ const components = [
     ),
   },
   {
+    component: PeaUserCard,
+    render: () => (
+      <PeaUserCard
+        cover={
+          'https://images.unsplash.com/photo-1470549638415-0a0755be0619?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80'
+        }
+        image={
+          'https://images.unsplash.com/photo-1456379771252-03388b5adf1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+        }
+        name={'Maria Garcia'}
+        tag={'@MaryMary'}
+        location={'Houston'}
+        bio={'A senior year student, passionate in web design.'}
+      />
+    ),
+  },
+  {
     component: PeaFullProfile,
     render: () => (
       <PeaFullProfile
         cover={
-          'https://images.unsplash.com/photo-1470549638415-0a0755be0619?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80'
+          'https://images.unsplash.com/photo-1546707640-7ba6e4b2df2e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1955&q=80'
         }
         image={AVATAR}
         name={'Sam Smith'}
@@ -779,7 +799,67 @@ const components = [
     ),
     gridItemProps: {
       sm: 10,
-      lg: 6,
+      lg: 8,
+    },
+  },
+  {
+    component: PeaGroupProfile,
+    render: () => (
+      <PeaGroupProfile
+        cover={
+          'https://images.unsplash.com/photo-1496450681664-3df85efbd29f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80'
+        }
+        groupName={'Close Friends'}
+        tags={[
+          { label: 'cinema' },
+          { label: 'sport' },
+          { label: 'nightlife' },
+          { label: 'theater' },
+          { label: 'culture' },
+          { label: 'holy' },
+        ]}
+        followings={[
+          {
+            name: 'Celebrities',
+            src:
+              'https://images.livemint.com/rf/Image-621x414/LiveMint/Period1/2015/01/10/Photos/selfie-kH4D--621x414@LiveMint.jpg',
+          },
+        ]}
+        followers={[
+          {
+            name: 'Friends',
+            src:
+              'https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/06/09/11/group-photos-need-to-die.jpg?w968h681',
+          },
+        ]}
+      />
+    ),
+    gridItemProps: {
+      sm: 10,
+      md: 7,
+    },
+  },
+  {
+    component: PeaChat,
+    render: () => (
+      <div>
+        <PeaChat
+          side={'left'}
+          avatar={AVATAR}
+          messages={[
+            'Hi, I am jobs',
+            'How r u?',
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Volutpat lacus laoreet non curabitur gravida.',
+          ]}
+        />
+        <PeaChat side={'right'} messages={['Hello', 'etiam posuere magnis']} />
+      </div>
+    ),
+    previewProps: {
+      white: true,
+    },
+    gridItemProps: {
+      md: 5,
     },
   },
 ];
@@ -856,9 +936,7 @@ const PeapodsPage = () => (
                 {...get(component, 'metadata')}
                 {...previewProps}
               >
-                <MuiThemeProvider theme={peapodsTheme}>
-                  {render()}
-                </MuiThemeProvider>
+                <ThemeProvider theme={peapodsTheme}>{render()}</ThemeProvider>
               </PreviewWidget>
             </Grid>
           ),
