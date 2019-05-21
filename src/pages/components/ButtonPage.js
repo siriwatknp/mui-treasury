@@ -116,7 +116,7 @@ const themeCode = `
 `;
 
 const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => {
-  console.log('rerendered')
+  console.log('rerendered');
   return (
     <Box
       width={'100%'}
@@ -150,10 +150,12 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => {
         Many props such as <code>loading</code>, <code>inverted</code>,{' '}
         <code>shape</code> are inspired from semantic-ui and antd.
       </Text>
-      <Box pt={{
-        xs: 2,
-        sm: 4,
-      }}>
+      <Box
+        pt={{
+          xs: 2,
+          sm: 4,
+        }}
+      >
         <ButtonSection globalTheme={globalTheme} />
       </Box>
       <br />
@@ -188,7 +190,7 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => {
             </Text>{' '}
             and put it in your project.{' '}
             <Text component={'span'} inline color={'hint'}>
-              ({'don\'t'} worry, no spam, just a React component)
+              ({"don't"} worry, no spam, just a React component)
             </Text>
           </li>
           <li>
@@ -242,13 +244,19 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => {
         Customized Buttons
       </Text>
       <Text gutterBottom>
-        This section shows that Material-UI can be customize to many themes as you
-        like.
+        This section shows that Material-UI can be customize to many themes as
+        you like.
       </Text>
       <Box pb={2} />
       <Grid container spacing={4}>
         {components.map(({ component, render, previewProps }) => (
-          <Grid key={get(component, 'metadata.name')} item xs={12} sm={6} lg={4}>
+          <Grid
+            key={get(component, 'metadata.name')}
+            item
+            xs={12}
+            sm={6}
+            lg={4}
+          >
             <PreviewWidget
               sandboxLink={component.codeSandbox}
               onClick={() => onSelectComponent(component)}
@@ -259,7 +267,9 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => {
                 <MuiThemeProvider
                   theme={createTheme({
                     ...globalTheme,
-                    overrides: component.getTheme(merge(baseTheme, globalTheme)),
+                    overrides: component.getTheme(
+                      merge(baseTheme, globalTheme),
+                    ),
                   })}
                 >
                   {render()}
