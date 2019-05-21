@@ -837,6 +837,7 @@ const components = [
     gridItemProps: {
       sm: 10,
       md: 7,
+      lg: 6,
     },
   },
   {
