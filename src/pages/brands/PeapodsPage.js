@@ -58,6 +58,7 @@ import PeaConnections from 'components/peapods/PeaConnections';
 import PeaSocialAvatar from 'components/peapods/PeaSocialAvatar';
 import PeaTypography from 'components/peapods/PeaTypography';
 import PeaFullProfile from 'components/peapods/PeaFullProfile';
+import PeaMediaUploader from 'components/peapods/PeaMediaUploader';
 
 const PeaSelect = props => <PeaTextField {...props} />;
 PeaSelect.metadata = {
@@ -658,6 +659,36 @@ const components = [
         <React.Fragment>
           <Button onClick={() => setOpen(true)}>Create Event</Button>
           <PeaEventDialog open={open} onClose={() => setOpen(false)} />
+        </React.Fragment>
+      );
+    },
+  },
+  {
+    component: PeaMediaUploader,
+    render: () => {
+      const [open, setOpen] = useState(false);
+      const config = {
+        cloudName: 'peapods',
+        apiKey: '722776811676265',
+        sources: ['local', 'facebook', 'instagram', 'image_search'],
+        facebookAppId: '884558128333147',
+        instagramClientId: '38a65f7ede1d4452bc390c4778d02b54',
+        googleApiKey: 'AIzaSyDt8VLlYubi76S06fS3n558c67EGaDBG7U',
+        searchByRights: true,
+        show_powered_by: false,
+      };
+      return (
+        <React.Fragment>
+          <Button onClick={() => setOpen(true)}>Upload Media</Button>
+          <PeaMediaUploader
+            isVisible={open}
+            getConfig={() => config}
+            onScriptLoadFailed={() => {
+              alert('failed to load script');
+            }}
+            onWidgetEvent={() => {}}
+            onClose={() => setOpen(false)}
+          />
         </React.Fragment>
       );
     },
