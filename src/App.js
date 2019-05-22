@@ -13,6 +13,7 @@ import Box from 'components/atoms/Box';
 import Text from 'components/atoms/Text';
 import Navigator from 'components/organisms/Navigator';
 import Image from 'components/atoms/Image';
+import ShouldUpdate from 'containers/ShouldUpdate';
 import logo from 'assets/images/logo.png';
 
 // PAGES
@@ -119,20 +120,26 @@ class App extends React.Component {
           )}
         </Nav>
         <Content>
-          <Switch>
-            <Route exact path={'/'} component={HomePage} />
-            <Route exact path={'/instruction'} component={InstructionPage} />
-            <Route exact path={'/contribution'} component={ContributePage} />
-            <Route
-              exact
-              path={'/layout-builder'}
-              component={LayoutBuilderPage}
-            />
-            <Route exact path={'/timeline-2019'} component={TimelinePage} />
-            <Route exact path={'/components/*'} component={RootComponentPage} />
-            <Route exact path={'/brands/*'} component={RootBrandPage} />
-            <Route exact path={'/templates/*'} component={RootTemplatePage} />
-          </Switch>
+          <ShouldUpdate value={location}>
+            <Switch>
+              <Route exact path={'/'} component={HomePage} />
+              <Route exact path={'/instruction'} component={InstructionPage} />
+              <Route exact path={'/contribution'} component={ContributePage} />
+              <Route
+                exact
+                path={'/layout-builder'}
+                component={LayoutBuilderPage}
+              />
+              <Route exact path={'/timeline-2019'} component={TimelinePage} />
+              <Route
+                exact
+                path={'/components/*'}
+                component={RootComponentPage}
+              />
+              <Route exact path={'/brands/*'} component={RootBrandPage} />
+              <Route exact path={'/templates/*'} component={RootTemplatePage} />
+            </Switch>
+          </ShouldUpdate>
         </Content>
       </Root>
     );

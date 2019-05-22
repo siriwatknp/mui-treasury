@@ -167,7 +167,6 @@ const PeaFullProfile = ({
               variant={'outlined'}
               labelExpanded={false}
               icon={'settings'}
-              iconIsolated
               iconProps={{
                 color: 'primary',
                 size: 'small',
@@ -218,9 +217,9 @@ const PeaFullProfile = ({
         <br />
         <Grid container wrap={'nowrap'} spacing={1}>
           <Grid item>
-            <PeaText link underline={'none'}>
-              <b>Bio:</b>
-            </PeaText>
+            <PeaIcon color={'secondary'} size={'small'}>
+              info
+            </PeaIcon>
           </Grid>
           <Grid item>
             <PeaText gutterBottom>{bio}</PeaText>

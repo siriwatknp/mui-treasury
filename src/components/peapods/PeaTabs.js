@@ -12,14 +12,10 @@ const PeaTabs = () => {
       value={index}
       onChange={(e, val) => onChange(val)}
     >
-      <Tab classes={{ label: 'MuiTab-label' }} label="Tweet" disableRipple />
-      <Tab
-        classes={{ label: 'MuiTab-label' }}
-        label="Responses"
-        disableRipple
-      />
-      <Tab classes={{ label: 'MuiTab-label' }} label="Media" disableRipple />
-      <Tab classes={{ label: 'MuiTab-label' }} label="liking" disableRipple />
+      <Tab label="Tweet" disableRipple />
+      <Tab label="Responses" disableRipple />
+      <Tab label="Media" disableRipple />
+      <Tab label="liking" disableRipple />
     </Tabs>
   );
 };

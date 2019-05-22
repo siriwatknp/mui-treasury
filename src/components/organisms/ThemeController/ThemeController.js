@@ -19,6 +19,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { Box, Text } from 'components/atoms';
 import { JsxHighlight, JsonHighlight } from 'components/highlights';
+import ShouldUpdate from 'containers/ShouldUpdate';
 
 import MobileThemeController from './MobileThemeController';
 import GlobalVarForm from '../GlobalVarForm';
@@ -143,12 +144,14 @@ class ThemeController extends React.Component {
               onChange={this.handleChangeTheme}
             />
           )}
-          {children({
-            counter,
-            component,
-            globalTheme,
-            onSelectComponent: this.handleSelectComponent,
-          })}
+          <ShouldUpdate value={counter}>
+            {children({
+              counter,
+              component,
+              globalTheme,
+              onSelectComponent: this.handleSelectComponent,
+            })}
+          </ShouldUpdate>
         </Box>
         <Dialog
           maxWidth={false}
