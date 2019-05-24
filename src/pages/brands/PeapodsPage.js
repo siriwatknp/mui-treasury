@@ -148,7 +148,8 @@ const peapodCardProps = {
     image: 'https://avatars.dicebear.com/v2/avataaars/siriwat.svg',
   },
   social: 'https://upload.wikimedia.org/wikipedia/commons/6/6b/Meetup_Logo.png',
-  image: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80',
+  image:
+    'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80',
   title: 'Deep dive into chat bot training best practice.',
   time: 'Thursday, January 10th, 4:00am',
   location: 'Pivotal Labs, 875 Howard St. San Francisco USA',
@@ -955,7 +956,8 @@ const components = [
           { label: 'culture' },
           { label: 'holy' },
         ]}
-        reputation={500}Z
+        reputation={500}
+        Z
         pods={[peapodCardProps]}
       />
     ),
