@@ -9,7 +9,7 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
         // '&:hover': {
         //   boxShadow: '0 16px 70px -12.125px rgba(0,0,0,0.3)',
         // },
-        '& .MuiCardMedia-root': {
+        '& > .MuiCardMedia-root': {
           paddingTop: '56.25%',
           position: 'relative',
           '& .MuiCardTag-root': {
@@ -27,7 +27,7 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
             fontSize: 10,
           },
         },
-        '& .MuiCardContent-root': {
+        '& > .MuiCardContent-root': {
           textAlign: 'left',
           padding: spacing.unit * 2,
         },
@@ -50,7 +50,7 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
       },
       '&.PeaProfileCard-root': {
         minWidth: 300,
-        '& .MuiCardMedia-root': {
+        '& > .MuiCardMedia-root': {
           paddingTop: '40%',
           position: 'relative',
           backgroundColor: palette.grey[200],
@@ -63,7 +63,7 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
             border: '2px solid #ffffff',
           },
         },
-        '& .MuiCardContent-root': {
+        '& > .MuiCardContent-root': {
           paddingTop: spacing.unit,
         },
         '& .MuiTypography--heading': {
@@ -159,11 +159,113 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
           },
         },
       },
+      '&.PeaAccountProfile-root': {
+        position: 'relative',
+        '& > .MuiCardMedia-root': {
+          paddingTop: '44%',
+          position: 'absolute',
+          width: '100%',
+          top: 0,
+          zIndex: 1,
+          backgroundColor: palette.grey[200],
+          [breakpoints.up('sm')]: {
+            paddingTop: '32%',
+          },
+        },
+        '& .MuiAvatar-root-profilePic': {
+          width: 96,
+          height: 96,
+          alignItems: 'center',
+          transform: 'translateY(-60%)',
+          left: 0,
+          border: '4px solid #ffffff',
+          zIndex: 3,
+          [breakpoints.up('sm')]: {
+            width: 104,
+            height: 104,
+            left: spacing.unit * 1.5,
+          },
+        },
+        '& .PeaAccountProfile-profileImgBtn': {
+          display: 'flex',
+          flexDirection: 'column',
+          transform: 'translateY(-60%)',
+          left: 0,
+          borderRadius: '50%',
+          [breakpoints.up('sm')]: {
+            left: spacing.unit * 1.5,
+          },
+          '& .MuiAvatar-root-profilePic': {
+            '&:after': {
+              background: 'rgba(0,0,0,0.4)',
+              content: '" "',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+            },
+            zIndex: 0,
+            transform: 'none',
+            left: 0,
+          },
+        },
+        '& .PeaAccountProfile-coverImgBtn': {
+          position: 'absolute',
+          display: 'flex',
+          flexDirection: 'column',
+          top: 0,
+          left: 0,
+          bottom: 0,
+          width: '100%',
+          background: 'rgba(0,0,0,0.6)',
+          '& .material-icons': {
+            fontSize: 48,
+          },
+        },
+        '& > .MuiCardContent-root': {
+          position: 'relative',
+          textAlign: 'left',
+          zIndex: 2,
+          background: palette.common.white,
+          marginTop: '36%',
+          borderRadius: spacing.unit * 2,
+          [breakpoints.up('sm')]: {
+            marginTop: '24%',
+          },
+          '& .MuiGrid-container.-actions': {
+            justifyContent: 'space-between',
+            [breakpoints.up('sm')]: {
+              justifyContent: 'flex-end',
+              '& .MuiButton-root.-shape-chubby': {
+                minWidth: 120,
+              },
+            },
+          },
+          '& .MuiGrid-item.-reputation': {
+            flexGrow: 1,
+            [breakpoints.up('sm')]: {
+              flexGrow: 'unset',
+            },
+            '& .MuiTypography-root': {
+              [breakpoints.up('sm')]: {
+                marginTop: 16,
+              },
+            },
+          },
+        },
+        '& .PeaPodCard-root': {
+          boxShadow: 'none',
+        },
+      },
       '&.PeaPodCard-root': {
         textAlign: 'left',
-        '& .MuiCardMedia-root': {
+        '& > .MuiCardMedia-root': {
           paddingTop: '40%',
           position: 'relative',
+        },
+        '& > .MuiCardContent-root': {
+          paddingBottom: 16,
         },
         '& .MuiTypography--heading': {
           paddingBottom: 16,

@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
-import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import PeaAvatar from './PeaAvatar';
+import PeaText from './PeaTypography';
 
 const useStyles = makeStyles(({ palette, spacing }) => {
   const radius = spacing(2.5);
   return {
     msg: {
-      padding: spacing(1, 2),
+      padding: spacing(1, 2, 1.25),
       borderRadius: 4,
       marginBottom: 4,
       display: 'inline-block',
-      wordBreak: 'break-all',
+      wordBreak: 'break-word',
     },
     leftRow: {
       textAlign: 'left',
@@ -72,11 +72,13 @@ const PeaChat = ({ avatar, messages, side }) => {
       <Grid item xs={8}>
         {messages.map((msg, i) => (
           <div className={classes[`${side}Row`]}>
-            <Box
+            <PeaText
+              align={'left'}
+              variant={'body2'}
               className={`${classes.msg} ${classes[side]} ${attachClass(i)}`}
             >
               {msg}
-            </Box>
+            </PeaText>
           </div>
         ))}
       </Grid>

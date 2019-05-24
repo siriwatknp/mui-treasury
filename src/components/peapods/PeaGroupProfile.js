@@ -36,34 +36,36 @@ const PeaGroupProfile = ({ cover, groupName, tags, followings, followers }) => {
             </PeaText>
           </Grid>
           <Grid item>
-            <PeaButton shape={'circular'} icon={'email'} size={'small'}>
-              email
-            </PeaButton>
-            <PeaButton
-              shape={'circular'}
-              icon={'more_vert'}
-              size={'small'}
-              style={{ marginLeft: 8 }}
-            >
-              email
-            </PeaButton>
-            {joined ? (
-              <PeaButton
-                variant={'outlined'}
-                color={'danger'}
-                {...joinButtonProps}
-              >
-                Leave
+            <Box my={{ xs: 2, sm: 0 }} textAlign={{ xs: 'right' }}>
+              <PeaButton shape={'circular'} icon={'email'} size={'small'}>
+                email
               </PeaButton>
-            ) : (
               <PeaButton
-                variant={'contained'}
-                color={'primary'}
-                {...joinButtonProps}
+                shape={'circular'}
+                icon={'more_vert'}
+                size={'small'}
+                style={{ marginLeft: 8 }}
               >
-                Join
+                email
               </PeaButton>
-            )}
+              {joined ? (
+                <PeaButton
+                  variant={'outlined'}
+                  color={'danger'}
+                  {...joinButtonProps}
+                >
+                  Leave
+                </PeaButton>
+              ) : (
+                <PeaButton
+                  variant={'contained'}
+                  color={'primary'}
+                  {...joinButtonProps}
+                >
+                  Join
+                </PeaButton>
+              )}
+            </Box>
           </Grid>
         </Grid>
         <PeaText gutterBottom>
