@@ -109,7 +109,7 @@ const MobileThemeController = ({
             px={opened ? 2 : 0}
           >
             {type === 'global' && <JsonHighlight value={globalTheme} />}
-            {type === 'component' && (
+            {type === 'component' && component.getTheme && (
               <JsonHighlight
                 value={
                   component
