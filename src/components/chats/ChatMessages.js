@@ -20,7 +20,7 @@ const useStyles = makeStyles(({ palette, spacing }) => {
       borderRadius: 4,
       marginBottom: 4,
       display: 'inline-block',
-      wordBreak: 'break-all',
+      wordBreak: 'break-word',
       fontFamily:
         // eslint-disable-next-line max-len
         '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
