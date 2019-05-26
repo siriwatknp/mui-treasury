@@ -21,6 +21,7 @@ const useStyles = makeStyles(() => ({
     width: 24,
     height: 24,
     cursor: 'pointer',
+    color: '#B7B6BC',
     '&:hover': {
       opacity: 0.8,
     },
