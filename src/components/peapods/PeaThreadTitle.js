@@ -41,7 +41,7 @@ const PeaThreadTitle = ({ title, subtitle, avatar }) => {
           <PeaText
             variant="h6"
             className={classes.title}
-            color="primary"
+            color="secondary"
             weight="bold"
           >
             {title}
