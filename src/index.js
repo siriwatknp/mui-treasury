@@ -1,31 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import merge from 'lodash/merge';
-import ThemeProvider from '@material-ui/styles/ThemeProvider';
-import treasuryTheme from 'theme/treasury';
-import Button from 'components/predefined/Button';
-import Icon from 'components/predefined/Icon';
-import Typography from 'components/predefined/Typography';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 const render = Component => {
   ReactDOM.render(
-    <ThemeProvider
-      theme={merge(treasuryTheme, {
-        overrides: {
-          ...Button.getTheme(treasuryTheme),
-          ...Icon.getTheme(treasuryTheme),
-          ...Typography.getTheme(treasuryTheme),
-        },
-      })}
-    >
-      <Router>
-        <Component />
-      </Router>
-    </ThemeProvider>,
+    <Router>
+      <Component />
+    </Router>,
     document.getElementById('root'),
   );
 };

@@ -150,13 +150,13 @@ Typography.getTheme = ({ palette, spacing }) => {
           textIndent: spacing.unit * 4,
         },
         // spacings
-        '&.-space-small': {
+        '&.-spacing-small': {
           letterSpacing: '0.5px',
         },
-        '&.-space-big': {
+        '&.-spacing-big': {
           letterSpacing: '1px',
         },
-        '&.-space-large': {
+        '&.-spacing-large': {
           letterSpacing: '2px',
         },
         // weights
