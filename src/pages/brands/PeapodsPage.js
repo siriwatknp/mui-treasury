@@ -63,6 +63,7 @@ import PeaGroupProfile from 'components/peapods/PeaGroupProfile';
 import PeaChat from 'components/peapods/PeaChat';
 import PeaMediaUploader from 'components/peapods/PeaMediaUploader';
 import PeaAccountProfile from 'components/peapods/PeaAccountProfile';
+import PeaThreadHeader from 'components/peapods/PeaThreadHeader';
 
 const PeaSelect = props => <PeaTextField {...props} />;
 PeaSelect.metadata = {
@@ -963,6 +964,23 @@ const components = [
     ),
     gridItemProps: {
       sm: 10,
+      lg: 8,
+    },
+  },
+  {
+    component: PeaThreadHeader,
+    render: () => (
+      <PeaThreadHeader
+        avatar={AVATAR}
+        title="Pea Panda"
+        subtitle="Hey! What's up"
+        timestamp="Dec 13"
+        onClick={() => alert('Clicked')}
+      />
+    ),
+    gridItemProps: {
+      sm: 10,
+      md: 10,
       lg: 8,
     },
   },
