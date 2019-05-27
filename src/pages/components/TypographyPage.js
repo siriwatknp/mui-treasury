@@ -32,31 +32,6 @@ const exampleCode = `
   )
 `;
 
-const themeCode = `
-  // in your root component
-  import { createMuiTheme } from '@material-ui/core/styles';
-  import { ThemeProvider } from '@material-ui/styles';
-  import yourTheme from 'path/to/yourTheme.js';
-  
-  // if you dont have your theme, use createMuiTheme;
-  // const yourTheme = createMuiTheme();  
-  
-  const App = () => (
-    <ThemeProvider
-      theme={{
-        ...yourTheme,
-        overrides: {
-          // you should separate getTheme into another file
-          // and then import from there.
-          Typography.getTheme(yourTheme),
-        }
-      }}
-    >
-      ...
-    </ThemeProvider>
-  )
-`;
-
 const TypographyPage = ({ globalTheme }) => (
   <Box
     width={'100%'}
@@ -75,7 +50,7 @@ const TypographyPage = ({ globalTheme }) => (
       color={'textPrimary'}
       gutterBottom
     >
-      Predefined Typography <code>v1.0</code>
+      Predefined Typography <code>v1.1</code>
     </Text>
     <Text gutterBottom>No talk, just try.</Text>
     <Text>
@@ -112,11 +87,6 @@ const TypographyPage = ({ globalTheme }) => (
           <Text component={'span'} inline color={'hint'}>
             ({"don't"} worry, no spam, just a React component)
           </Text>
-        </li>
-        <li>
-          Copy theme in <code>Typography.getTheme</code>
-          <Text gutterBottom />
-          <CodeHighlight code={themeCode} />
         </li>
         <li>
           Look at component propTypes, adjust default props to suit your
