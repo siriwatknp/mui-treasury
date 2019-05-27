@@ -153,7 +153,9 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => {
             <code>
               yarn add @material-ui/core @material-ui/styles clsx color
             </code>{' '}
-            <Copier.Text text={'yarn add @material-ui/core clsx color'} />
+            <Copier.Text
+              text={'yarn add @material-ui/core @material-ui/styles clsx color'}
+            />
           </li>
           <li>
             <Text

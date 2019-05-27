@@ -39,7 +39,6 @@ const TypographySection = ({ globalTheme }) => {
         ...globalTheme,
         overrides: {
           ...Typography.getTheme(merge(baseTheme, globalTheme)),
-          ...Icon.getTheme(merge(baseTheme, globalTheme)),
         },
       })}
     >

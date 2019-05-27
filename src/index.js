@@ -4,8 +4,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import merge from 'lodash/merge';
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 import treasuryTheme from 'theme/treasury';
-import Button from 'components/predefined/Button';
-import Icon from 'components/predefined/Icon';
 import Typography from 'components/predefined/Typography';
 import './index.css';
 import App from './App';
@@ -16,8 +14,6 @@ const render = Component => {
     <ThemeProvider
       theme={merge(treasuryTheme, {
         overrides: {
-          ...Button.getTheme(treasuryTheme),
-          ...Icon.getTheme(treasuryTheme),
           ...Typography.getTheme(treasuryTheme),
         },
       })}

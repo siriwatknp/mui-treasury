@@ -1,7 +1,6 @@
 /* eslint-disable max-len */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import merge from 'lodash/merge';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -16,7 +15,6 @@ import PreviewWidget from 'components/molecules/PreviewWidget';
 import Icon from 'components/predefined/Icon';
 
 const createTheme = theme => createMuiTheme(theme);
-const baseTheme = createMuiTheme();
 
 const IconSection = ({ globalTheme }) => {
   const [color, setColor] = useState('');
@@ -34,12 +32,7 @@ const IconSection = ({ globalTheme }) => {
     shape,
   };
   return (
-    <ThemeProvider
-      theme={createTheme({
-        ...globalTheme,
-        overrides: Icon.getTheme(merge(baseTheme, globalTheme)),
-      })}
-    >
+    <ThemeProvider theme={createTheme(globalTheme)}>
       <Grid container spacing={2} justify={'center'}>
         <Grid item xs={6} sm={4}>
           <PreviewWidget
