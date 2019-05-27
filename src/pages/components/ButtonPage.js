@@ -91,30 +91,6 @@ const exampleCode = `
   const Component = () => <Button>Chubby</Button>
 `;
 
-const themeCode = `
-  // in your root component
-  import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-  import yourTheme from 'path/to/yourTheme.js';
-  
-  // if you dont have your theme, use createMuiTheme;
-  // const yourTheme = createMuiTheme();  
-  
-  const App = () => (
-    <MuiThemeProvider
-      theme={{
-        ...yourTheme,
-        overrides: {
-          // you should separate getTheme into another file
-          // and then import from there.
-          Button.getTheme(yourTheme),
-        }
-      }}
-    >
-      ...
-    </MuiThemeProvider>
-  )
-`;
-
 const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => {
   console.log('rerendered');
   return (
@@ -135,11 +111,11 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => {
         color={'textPrimary'}
         gutterBottom
       >
-        Predefined Button <code>v1.3</code>
+        Predefined Button <code>v1.4</code>
       </Text>
       <Box my={1}>
         <Text variant={'caption'} align={'left'} gutterBottom>
-          <b>Last Updated 10 May 2019</b>
+          <b>Last Updated 27 May 2019</b>
         </Text>
       </Box>
       <Text gutterBottom>
@@ -174,7 +150,9 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => {
       <Text>
         <ol>
           <li>
-            <code>yarn add @material-ui/core clsx color</code>{' '}
+            <code>
+              yarn add @material-ui/core @material-ui/styles clsx color
+            </code>{' '}
             <Copier.Text text={'yarn add @material-ui/core clsx color'} />
           </li>
           <li>
@@ -193,12 +171,6 @@ const ButtonPage = ({ counter, globalTheme, onSelectComponent }) => {
               ({"don't"} worry, no spam, just a React component)
             </Text>
           </li>
-          <li>
-            Copy theme in <code>Button.getTheme</code>
-            <Text gutterBottom />
-            <CodeHighlight code={themeCode} />
-          </li>
-          <br />
           <li>
             Look at component propTypes, adjust default props to suit your
             project.

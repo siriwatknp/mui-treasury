@@ -1,6 +1,8 @@
 import React from 'react';
+import Box from '@material-ui/core/Box';
 import Button from 'components/predefined/Button';
 import Icon from 'components/predefined/Icon';
+import code from './buttonCode';
 
 const sizes = ['small', '', 'big', 'large'];
 const props1 = {
@@ -43,6 +45,23 @@ const colors = {
 };
 export default [
   {
+    render: () => (
+      <Box bgcolor={'grey.700'} borderRadius={4}>
+        {sizes.map(s => (
+          <Button
+            key={s}
+            size={s}
+            inverted
+            shape={'square'}
+            color={colors[s]}
+            icon={<Icon>sim_card</Icon>}
+          />
+        ))}
+      </Box>
+    ),
+    code: code.invertedIconButton,
+  },
+  {
     render: () =>
       sizes.map(s => (
         <Button
@@ -53,20 +72,7 @@ export default [
           icon={<Icon>camera_alt</Icon>}
         />
       )),
-    code: `
-  import Button from 'path/to/Button';
-  import Icon from 'path/to/Icon';
-  // look at the icon page
-  
-  <Button
-    shape={'circular'}
-    icon={
-      <Icon>camera_alt</Icon>
-    }
-  >
-    Button
-  </Button>
-    `,
+    code: code.squareIconButton,
   },
   {
     render: () =>
@@ -87,24 +93,7 @@ export default [
           button
         </Button>
       )),
-    code: `
-  import Button from 'path/to/Button';
-  import Icon from 'path/to/Icon';
-  // If you want to fully control by "Icon" props
-  // set iconIsolated={true}
-  // add any prop that "Icon" support
-  
-  <Button
-    shape={'circular'}
-    variant={'contained'}
-    iconIsolated
-    icon={
-      <Icon size={'small' | "" | 'big' | 'large'} inverted>far fa-rocket</Icon>
-    }
-  >
-    Button
-  </Button>
-    `,
+    code: code.circularIconButton,
   },
   {
     render: () =>
@@ -120,21 +109,7 @@ export default [
           button
         </Button>
       )),
-    code: `
-  import Button from 'path/to/Button';
-  import Icon from 'path/to/Icon';
-  // look at the icon page
-  
-  <Button
-    shape={'circular'}
-    variant={'outlined'}
-    icon={
-      <Icon>camera_alt</Icon>
-    }
-  >
-    Button
-  </Button>
-    `,
+    code: code.outlineIconButton,
   },
   {
     render: () =>
@@ -145,20 +120,7 @@ export default [
           {i < sizes.length - 1 && <br />}
         </div>
       )),
-    code: `
-  import Button from 'path/to/Button';
-  import Icon from 'path/to/Icon';
-  // look at the icon page
-  
-  <Button
-    variant={'contained'}
-    color={'danger'}
-    icon={<Icon>delete</Icon>}
-    shadowless
-  >
-    Delete
-  </Button>
-    `,
+    code: code.loadingButton,
   },
   {
     render: () =>
@@ -169,23 +131,7 @@ export default [
           {i < sizes.length - 1 && <br />}
         </div>
       )),
-    code: `
-  import Button from 'path/to/Button';
-  
-  <Button
-    shape={'chubby'}
-    variant={'contained'}
-    color={'primary'}
-    icon={'fab fa-facebook-f'}
-    iconProps={{
-      bgColor: 'white',
-      shape: 'circular',
-      color: 'primary',
-    }}
-  >
-    Sign in with Facebook
-  </Button>
-    `,
+    code: code.facebookButton,
   },
   {
     render: () =>
@@ -205,23 +151,7 @@ export default [
           {i < sizes.length - 1 && <br />}
         </div>
       )),
-    code: `
-  import Button from 'path/to/Button';
-  
-  <Button
-    shape={'chubby'}
-    variant={'contained'}
-    color={'primary'}
-    icon={'fab fa-paypal'}
-    iconProps={{
-      bgColor: 'white',
-      shape: 'circular',
-      color: 'primary',
-    }}
-  >
-    Sign in with Facebook
-  </Button>
-    `,
+    code: code.paypalButton,
   },
   {
     render: () =>
@@ -232,23 +162,7 @@ export default [
           {i < sizes.length - 1 && <br />}
         </div>
       )),
-    code: `
-  import Button from 'path/to/Button';
-  
-  <Button
-    fullWidth
-    labelExpanded
-    shape={'square'}
-    variant={'outlined'}
-    color={'primary'}
-    icon={'fab fa-twitter'}
-    iconProps={{
-      color: 'primary',
-    }}
-  >
-    Twitter
-  </Button>
-    `,
+    code: code.twitterButton,
   },
   {
     render: () =>
@@ -261,16 +175,6 @@ export default [
           {i < sizes.length - 1 && <br />}
         </div>
       )),
-    code: `
-  import Button from 'path/to/Button';
-  
-  <Button
-    loading
-    variant={'contained'}
-    color={'secondary'}
-  >
-    Loading...
-  </Button>
-    `,
+    code: code.loadingButton,
   },
 ];
