@@ -64,6 +64,7 @@ import PeaChat from 'components/peapods/PeaChat';
 import PeaMediaUploader from 'components/peapods/PeaMediaUploader';
 import PeaAccountProfile from 'components/peapods/PeaAccountProfile';
 import PeaThreadHeader from 'components/peapods/PeaThreadHeader';
+import PeaMessageInput from 'components/peapods/PeaMessageInput';
 
 const PeaSelect = props => <PeaTextField {...props} />;
 PeaSelect.metadata = {
@@ -978,6 +979,18 @@ const components = [
         onClick={() => alert('Clicked')}
       />
     ),
+    gridItemProps: {
+      sm: 10,
+      md: 10,
+      lg: 8,
+    },
+  },
+  {
+    component: PeaMessageInput,
+    render: () => <PeaMessageInput />,
+    previewProps: {
+      white: true,
+    },
     gridItemProps: {
       sm: 10,
       md: 10,
