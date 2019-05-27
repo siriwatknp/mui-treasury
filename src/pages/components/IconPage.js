@@ -36,31 +36,6 @@ const exampleCode = `
   )
 `;
 
-const themeCode = `
-  // in your root component
-  import { createMuiTheme } from '@material-ui/core/styles';
-  import { ThemeProvider } from '@material-ui/styles';
-  import yourTheme from 'path/to/yourTheme.js';
-  
-  // if you dont have your theme, use createMuiTheme;
-  // const yourTheme = createMuiTheme();  
-  
-  const App = () => (
-    <ThemeProvider
-      theme={{
-        ...yourTheme,
-        overrides: {
-          // you should separate getTheme into another file
-          // and then import from there.
-          Icon.getTheme(yourTheme),
-        }
-      }}
-    >
-      ...
-    </ThemeProvider>
-  )
-`;
-
 const IconPage = ({ globalTheme }) => (
   <Box
     width={'100%'}
@@ -79,7 +54,7 @@ const IconPage = ({ globalTheme }) => (
       color={'textPrimary'}
       gutterBottom
     >
-      Predefined Icon <code>v1.0</code>
+      Predefined Icon <code>v1.1</code>
     </Text>
     <Text gutterBottom>
       <b>The Problem ?</b>
@@ -175,8 +150,10 @@ const IconPage = ({ globalTheme }) => (
     <Text>
       <ol>
         <li>
-          <code>yarn add @material-ui/core clsx</code>{' '}
-          <Copier.Text text={'yarn add @material-ui/core clsx color'} />
+          <code>yarn add @material-ui/core @material-ui/styles clsx</code>{' '}
+          <Copier.Text
+            text={'yarn add @material-ui/core @material-ui/styles clsx color'}
+          />
         </li>
         <li>
           If you want to use material icon SVG
@@ -216,11 +193,6 @@ const IconPage = ({ globalTheme }) => (
           <Text component={'span'} inline color={'hint'}>
             ({"don't"} worry, no spam, just a React component)
           </Text>
-        </li>
-        <li>
-          Copy theme in <code>Icon.getTheme</code>
-          <Text gutterBottom />
-          <CodeHighlight code={themeCode} />
         </li>
         <li>
           Look at component propTypes, adjust default props to suit your
