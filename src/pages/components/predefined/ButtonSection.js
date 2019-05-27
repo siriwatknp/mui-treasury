@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import merge from 'lodash/merge';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import TextField from '@material-ui/core/TextField';
@@ -18,7 +17,6 @@ import Grid from '@material-ui/core/Grid';
 import Button from 'components/predefined/Button';
 
 const createTheme = theme => createMuiTheme(theme);
-const baseTheme = createMuiTheme();
 
 const ButtonSection = ({ globalTheme }) => {
   const [inverted, setInverted] = useState(false);
@@ -35,12 +33,7 @@ const ButtonSection = ({ globalTheme }) => {
   const [color, setColor] = useState('default');
   const [iconPosition, setIconPlacement] = useState('start');
   return (
-    <ThemeProvider
-      theme={createTheme({
-        ...globalTheme,
-        overrides: Button.getTheme(merge(baseTheme, globalTheme)),
-      })}
-    >
+    <ThemeProvider theme={createTheme(globalTheme)}>
       <Grid container spacing={4}>
         <Grid item xs={12} sm={6} lg={6}>
           <PreviewWidget inverted={inverted}>

@@ -1,7 +1,6 @@
 /* eslint-disable max-len,jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import merge from 'lodash/merge';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -16,7 +15,6 @@ import Typography from 'components/predefined/Typography';
 import Icon from 'components/predefined/Icon';
 
 const createTheme = theme => createMuiTheme(theme);
-const baseTheme = createMuiTheme();
 
 const TypographySection = ({ globalTheme }) => {
   const [color, setColor] = useState('');
@@ -34,15 +32,7 @@ const TypographySection = ({ globalTheme }) => {
     spacing,
   };
   return (
-    <ThemeProvider
-      theme={createTheme({
-        ...globalTheme,
-        overrides: {
-          ...Typography.getTheme(merge(baseTheme, globalTheme)),
-          ...Icon.getTheme(merge(baseTheme, globalTheme)),
-        },
-      })}
-    >
+    <ThemeProvider theme={createTheme(globalTheme)}>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <PreviewWidget
