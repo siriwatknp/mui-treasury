@@ -6,6 +6,7 @@ import TextFieldPage from 'pages/components/TextFieldPage';
 import IconPage from 'pages/components/IconPage';
 import TypographyPage from 'pages/components/TypographyPage';
 import LayoutPage from 'pages/components/LayoutPage';
+import ChatPage from 'pages/components/ChatPage';
 
 /**
  * id: [String] optional
@@ -27,6 +28,13 @@ export default [
     primaryText: 'Card',
     secondaryText: `${CardPage.components.length} items`,
     Page: CardPage,
+  },
+  {
+    id: 'chat',
+    path: '/components/chat',
+    primaryText: 'Chat',
+    secondaryText: `${ChatPage.components.length} items`,
+    Page: ChatPage,
   },
   {
     id: 'icons',

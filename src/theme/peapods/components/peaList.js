@@ -47,10 +47,27 @@ export default ({ spacing, palette, breakpoints }) => {
           minHeight: 32,
         },
         '&.PeaNotificationItem-root': {
+          '& .MuiIcon-root.-sticker': {
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            fontSize: 14,
+            transform: 'translate(25%, -25%)',
+            boxShadow: '1px 1px 2px 0 rgba(0,0,0,0.6)',
+          },
+          '& .MuiIcon-root.-pea': {
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            fontSize: 21,
+            transform: 'translate(25%, -25%)',
+          },
           '& .MuiListItemText-primary': {
             color: palette.text.secondary,
             fontWeight: 400,
             letterSpacing: 0,
+            display: 'block',
+            marginBottom: spacing(1),
             '& b': {
               color: palette.text.primary,
             },
@@ -62,6 +79,25 @@ export default ({ spacing, palette, breakpoints }) => {
             flexBasis: 'auto',
             flexShrink: 10000,
             width: 'auto',
+          },
+          '&.-unread': {
+            backgroundColor: palette.secondary.main,
+            borderBottom: '1px solid #59c0ff',
+            '& .MuiAvatar-root': {
+              backgroundColor: palette.grey[100],
+            },
+            '& .MuiListItemText-primary': {
+              color: palette.grey[300],
+              '& b': {
+                color: palette.common.white,
+              },
+            },
+            '& .MuiListItemText-secondary': {
+              color: palette.grey[300],
+            },
+            '& .PeaButton-ignore': {
+              color: palette.common.white,
+            },
           },
         },
       },

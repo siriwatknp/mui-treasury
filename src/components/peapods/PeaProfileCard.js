@@ -18,14 +18,10 @@ const PeaProfileCard = ({ cover, image, name, tag, AvatarProps }) => (
     </CardMedia>
     <CardContent className={'MuiCardContent-root'}>
       <div className={'PeaProfileCard-actions'}>
-        <PeaButton
-          size={'small'}
-          iconIsolated
-          icon={<PeaIcon size={'small'}>settings</PeaIcon>}
-        >
+        <PeaButton size={'small'} icon={'settings'}>
           Settings
         </PeaButton>
-        <IconButton className={'MuiIconButton--tiny'}>
+        <IconButton className={'MuiIconButton--tiny'} style={{ marginLeft: 8 }}>
           <PeaIcon>more_vert</PeaIcon>
         </IconButton>
       </div>

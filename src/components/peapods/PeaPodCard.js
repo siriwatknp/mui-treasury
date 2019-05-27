@@ -85,9 +85,9 @@ const PeaPodCard = ({
         className={'PeaPodCardPeople-root'}
         container
         alignItems={'center'}
-        spacing={1}
+        spacing={2}
       >
-        <Grid item xs>
+        <Grid item xs={12}>
           <div className={'PeaPodCardPeople-people'}>
             <Typography variant={'caption'} color={'textSecondary'}>
               Attending :
@@ -104,8 +104,8 @@ const PeaPodCard = ({
             />
           </div>
         </Grid>
-        <Grid item>
-          <PeaButton color={'secondary'} className={'MuiButton--auto'}>
+        <Grid item xs={12}>
+          <PeaButton color={'secondary'} fullWidth>
             Join Pod
           </PeaButton>
         </Grid>

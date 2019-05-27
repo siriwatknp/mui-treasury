@@ -11,7 +11,7 @@ import MomentUtils from '@date-io/moment';
 
 // PEAPODS THEME
 import peapodsTheme from 'theme/peapods';
-import { MuiThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 
 // PEAPODS COMPONENTS
 import Link from '@material-ui/core/Link';
@@ -58,6 +58,11 @@ import PeaConnections from 'components/peapods/PeaConnections';
 import PeaSocialAvatar from 'components/peapods/PeaSocialAvatar';
 import PeaTypography from 'components/peapods/PeaTypography';
 import PeaFullProfile from 'components/peapods/PeaFullProfile';
+import PeaUserCard from 'components/peapods/PeaUserCard';
+import PeaGroupProfile from 'components/peapods/PeaGroupProfile';
+import PeaChat from 'components/peapods/PeaChat';
+import PeaMediaUploader from 'components/peapods/PeaMediaUploader';
+import PeaAccountProfile from 'components/peapods/PeaAccountProfile';
 
 const PeaSelect = props => <PeaTextField {...props} />;
 PeaSelect.metadata = {
@@ -137,6 +142,39 @@ const SOCIAL3 = [
     social: 'group',
   },
 ];
+const peapodCardProps = {
+  profile: {
+    name: 'Siriwat Knp',
+    image: 'https://avatars.dicebear.com/v2/avataaars/siriwat.svg',
+  },
+  social: 'https://upload.wikimedia.org/wikipedia/commons/6/6b/Meetup_Logo.png',
+  image:
+    'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80',
+  title: 'Deep dive into chat bot training best practice.',
+  time: 'Thursday, January 10th, 4:00am',
+  location: 'Pivotal Labs, 875 Howard St. San Francisco USA',
+  podCount: 3,
+  peopleGoing: {
+    images: [
+      'https://avatars.dicebear.com/v2/avataaars/example.svg',
+      'https://avatars.dicebear.com/v2/avataaars/example1.svg',
+      'https://avatars.dicebear.com/v2/avataaars/example2.svg',
+      'https://avatars.dicebear.com/v2/avataaars/example3.svg',
+    ],
+    more: 12,
+  },
+  peopleInterested: {
+    images: [
+      'https://avatars.dicebear.com/v2/avataaars/example4.svg',
+      'https://avatars.dicebear.com/v2/avataaars/example5.svg',
+      'https://avatars.dicebear.com/v2/avataaars/example6.svg',
+      'https://avatars.dicebear.com/v2/avataaars/example7.svg',
+      'https://avatars.dicebear.com/v2/avataaars/example8.svg',
+    ],
+    more: 4,
+  },
+};
+
 const components = [
   {
     component: PeaButton,
@@ -464,8 +502,32 @@ const components = [
         <PeaNotificationItem
           src={AVATAR}
           name={'JunZaa159'}
+          description={'requested to follow you'}
+          time={'Just now'}
+          sticker={'person'}
+        />
+        <PeaNotificationItem
+          src={PEOPLE[0].src}
+          name={'Michael'}
           description={'has invited you to PodY'}
+          time={'5 minutes ago'}
+          sticker={'pea'}
+          unread
+        />
+        <PeaNotificationItem
+          src={PEOPLE[1].src}
+          name={'Frank'}
+          description={'has left your pod for React Europe Conf'}
           time={'4 Jan, 2019'}
+          sticker={'remove'}
+          unread
+        />
+        <PeaNotificationItem
+          src={PEOPLE[2].src}
+          name={'Jamie'}
+          description={'Training#2 has been canceled'}
+          time={'1 Jan, 2019'}
+          sticker={'clear'}
         />
       </Box>
     ),
@@ -571,43 +633,7 @@ const components = [
   },
   {
     component: PeaPodCard,
-    render: () => (
-      <PeaPodCard
-        profile={{
-          name: 'Siriwat Knp',
-          image: 'https://avatars.dicebear.com/v2/avataaars/siriwat.svg',
-        }}
-        social={
-          'https://upload.wikimedia.org/wikipedia/commons/6/6b/Meetup_Logo.png'
-        }
-        image={
-          'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80'
-        }
-        title={'Deep dive into chat bot training best practice.'}
-        time={'Thursday, January 10th, 4:00am'}
-        location={'Pivotal Labs, 875 Howard St. San Francisco USA'}
-        podCount={3}
-        peopleGoing={{
-          images: [
-            'https://avatars.dicebear.com/v2/avataaars/example.svg',
-            'https://avatars.dicebear.com/v2/avataaars/example1.svg',
-            'https://avatars.dicebear.com/v2/avataaars/example2.svg',
-            'https://avatars.dicebear.com/v2/avataaars/example3.svg',
-          ],
-          more: 12,
-        }}
-        peopleInterested={{
-          images: [
-            'https://avatars.dicebear.com/v2/avataaars/example4.svg',
-            'https://avatars.dicebear.com/v2/avataaars/example5.svg',
-            'https://avatars.dicebear.com/v2/avataaars/example6.svg',
-            'https://avatars.dicebear.com/v2/avataaars/example7.svg',
-            'https://avatars.dicebear.com/v2/avataaars/example8.svg',
-          ],
-          more: 4,
-        }}
-      />
-    ),
+    render: () => <PeaPodCard {...peapodCardProps} />,
     gridItemProps: {
       sm: 12,
       md: 6,
@@ -658,6 +684,36 @@ const components = [
         <React.Fragment>
           <Button onClick={() => setOpen(true)}>Create Event</Button>
           <PeaEventDialog open={open} onClose={() => setOpen(false)} />
+        </React.Fragment>
+      );
+    },
+  },
+  {
+    component: PeaMediaUploader,
+    render: () => {
+      const [open, setOpen] = useState(false);
+      const config = {
+        cloudName: 'peapods',
+        apiKey: '722776811676265',
+        sources: ['local', 'facebook', 'instagram', 'image_search'],
+        facebookAppId: '884558128333147',
+        instagramClientId: '38a65f7ede1d4452bc390c4778d02b54',
+        googleApiKey: 'AIzaSyDt8VLlYubi76S06fS3n558c67EGaDBG7U',
+        searchByRights: true,
+        show_powered_by: false,
+      };
+      return (
+        <React.Fragment>
+          <Button onClick={() => setOpen(true)}>Upload Media</Button>
+          <PeaMediaUploader
+            isVisible={open}
+            getConfig={() => config}
+            onScriptLoadFailed={() => {
+              alert('failed to load script');
+            }}
+            onWidgetEvent={() => {}}
+            onClose={() => setOpen(false)}
+          />
         </React.Fragment>
       );
     },
@@ -739,11 +795,28 @@ const components = [
     ),
   },
   {
+    component: PeaUserCard,
+    render: () => (
+      <PeaUserCard
+        cover={
+          'https://images.unsplash.com/photo-1470549638415-0a0755be0619?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80'
+        }
+        image={
+          'https://images.unsplash.com/photo-1456379771252-03388b5adf1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+        }
+        name={'Maria Garcia'}
+        tag={'@MaryMary'}
+        location={'Houston'}
+        bio={'A senior year student, passionate in web design.'}
+      />
+    ),
+  },
+  {
     component: PeaFullProfile,
     render: () => (
       <PeaFullProfile
         cover={
-          'https://images.unsplash.com/photo-1470549638415-0a0755be0619?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80'
+          'https://images.unsplash.com/photo-1546707640-7ba6e4b2df2e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1955&q=80'
         }
         image={AVATAR}
         name={'Sam Smith'}
@@ -779,7 +852,118 @@ const components = [
     ),
     gridItemProps: {
       sm: 10,
+      lg: 8,
+    },
+  },
+  {
+    component: PeaGroupProfile,
+    render: () => (
+      <PeaGroupProfile
+        cover={
+          'https://images.unsplash.com/photo-1496450681664-3df85efbd29f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80'
+        }
+        groupName={'Close Friends'}
+        tags={[
+          { label: 'cinema' },
+          { label: 'sport' },
+          { label: 'nightlife' },
+          { label: 'theater' },
+          { label: 'culture' },
+          { label: 'holy' },
+        ]}
+        followings={[
+          {
+            name: 'Celebrities',
+            src:
+              'https://images.livemint.com/rf/Image-621x414/LiveMint/Period1/2015/01/10/Photos/selfie-kH4D--621x414@LiveMint.jpg',
+          },
+        ]}
+        followers={[
+          {
+            name: 'Friends',
+            src:
+              'https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/06/09/11/group-photos-need-to-die.jpg?w968h681',
+          },
+        ]}
+      />
+    ),
+    gridItemProps: {
+      sm: 10,
+      md: 7,
       lg: 6,
+    },
+  },
+  {
+    component: PeaChat,
+    render: () => (
+      <div>
+        <PeaChat
+          side={'left'}
+          avatar={AVATAR}
+          messages={[
+            'Hi, I am jobs',
+            'How r u?',
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Volutpat lacus laoreet non curabitur gravida.',
+          ]}
+        />
+        <PeaChat side={'right'} messages={['Hello', 'etiam posuere magnis']} />
+        <PeaChat side={'left'} avatar={AVATAR} messages={['Neh mind', 'Bye']} />
+      </div>
+    ),
+    previewProps: {
+      white: true,
+    },
+    gridItemProps: {
+      md: 5,
+    },
+  },
+  {
+    component: PeaAccountProfile,
+    render: () => (
+      <PeaAccountProfile
+        cover={
+          'https://beinglol.com/media/facebook-cover/Iron-Man-3-Facebook-Covers-1598.jpeg'
+        }
+        image={
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZYEi7-MP_fJqbD6yYkrykoIOo-65rj95h2lyI2dPQ8sDtgj9cpA'
+        }
+        name={'Iron Mann'}
+        tag={'@ironmann'}
+        site={'https://marvelcinematicuniverse.fandom.com/wiki/Iron_Man'}
+        bio={
+          'Anthony Edward "Tony" Stark was a billionaire industrialist, a founding member of the Avengers, and the former CEO of Stark Industries, a company originally started by his father, Howard Stark.'
+        }
+        location={'California'}
+        age={35}
+        gender={'Male'}
+        groups={[
+          {
+            name: 'Celebrities',
+            src:
+              'https://images.livemint.com/rf/Image-621x414/LiveMint/Period1/2015/01/10/Photos/selfie-kH4D--621x414@LiveMint.jpg',
+          },
+          {
+            name: 'Friends',
+            src:
+              'https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/06/09/11/group-photos-need-to-die.jpg?w968h681',
+          },
+        ]}
+        tags={[
+          { label: 'cinema' },
+          { label: 'sport' },
+          { label: 'nightlife' },
+          { label: 'theater' },
+          { label: 'culture' },
+          { label: 'holy' },
+        ]}
+        reputation={500}
+        Z
+        pods={[peapodCardProps]}
+      />
+    ),
+    gridItemProps: {
+      sm: 10,
+      lg: 8,
     },
   },
 ];
@@ -856,9 +1040,7 @@ const PeapodsPage = () => (
                 {...get(component, 'metadata')}
                 {...previewProps}
               >
-                <MuiThemeProvider theme={peapodsTheme}>
-                  {render()}
-                </MuiThemeProvider>
+                <ThemeProvider theme={peapodsTheme}>{render()}</ThemeProvider>
               </PreviewWidget>
             </Grid>
           ),

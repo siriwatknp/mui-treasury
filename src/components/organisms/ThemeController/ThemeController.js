@@ -1,24 +1,27 @@
-/* eslint-disable react/sort-comp, max-len */
+/* eslint-disable */
 import React from 'react';
 import debounce from 'lodash/debounce';
 import zipObjectDeep from 'lodash/zipObjectDeep';
 import merge from 'lodash/merge';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { createMuiTheme } from '@material-ui/core/styles';
 import createPalette from '@material-ui/core/styles/createPalette';
-import Link from '@material-ui/core/Link';
-import Typography from '@material-ui/core/Typography';
-import Drawer from '@material-ui/core/Drawer';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+// import Link from '@material-ui/core/Link';
+// import Typography from '@material-ui/core/Typography';
+// import Drawer from '@material-ui/core/Drawer';
+// import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+// import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Hidden from '@material-ui/core/Hidden';
-import Icon from '@material-ui/core/Icon';
+// import Icon from '@material-ui/core/Icon';
 import Dialog from '@material-ui/core/Dialog';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { Box, Text } from 'components/atoms';
-import { JsxHighlight, JsonHighlight } from 'components/highlights';
+import Box from 'components/atoms/Box';
+// import Text from 'components/atoms/Text';
+import { JsonHighlight } from 'components/highlights';
+import ShouldUpdate from 'containers/ShouldUpdate';
 
 import MobileThemeController from './MobileThemeController';
 import GlobalVarForm from '../GlobalVarForm';
@@ -115,7 +118,7 @@ class ThemeController extends React.Component {
     }));
 
   render() {
-    const { children, formHidden } = this.props;
+    const { children, formHidden, location } = this.props;
     const {
       counter,
       globalTheme,
@@ -143,12 +146,14 @@ class ThemeController extends React.Component {
               onChange={this.handleChangeTheme}
             />
           )}
-          {children({
-            counter,
-            component,
-            globalTheme,
-            onSelectComponent: this.handleSelectComponent,
-          })}
+          <ShouldUpdate value={{ counter, location }}>
+            {children({
+              counter,
+              component,
+              globalTheme,
+              onSelectComponent: this.handleSelectComponent,
+            })}
+          </ShouldUpdate>
         </Box>
         <Dialog
           maxWidth={false}
@@ -169,7 +174,7 @@ class ThemeController extends React.Component {
             {component && tabIndex === 0 && (
               <JsonHighlight value={displayedTheme} />
             )}
-            {component && tabIndex === 1 && (
+            {component && tabIndex === 1 && component.getTheme && (
               <JsonHighlight
                 value={
                   component
@@ -203,69 +208,72 @@ class ThemeController extends React.Component {
             )}
           </Box>
         </Dialog>
-        <Hidden>
-          <Drawer variant={'permanent'} anchor={'right'}>
-            <Box
-              width={width}
-              transition={'0.3s'}
-              style={{ marginTop: scrollY > 64 ? 0 : `${64 - scrollY}px` }}
-            >
-              {component && component.codeSandbox && (
-                <Box p={2} bgcolor={'#faf8f5'} overflow={'scroll'}>
-                  <Typography variant={'overline'} color={'textSecondary'}>
-                    LINK TO CODE SANDBOX
-                  </Typography>
-                  <Typography>
-                    <Link href={component.codeSandbox} target={'_blank'}>
-                      {component.codeSandbox}
-                    </Link>
-                  </Typography>
-                </Box>
-              )}
-              <ExpansionPanel square elevation={0}>
-                <ExpansionPanelSummary
-                  expandIcon={<Icon>expand_more</Icon>}
-                  style={createExpansionStyle(2, scrollY)}
-                >
-                  <Text>Global Theme</Text>
-                </ExpansionPanelSummary>
-                <Box p={2} bgcolor={'#faf8f5'} overflow={'scroll'}>
-                  <JsonHighlight value={displayedTheme} />
-                </Box>
-              </ExpansionPanel>
-              <ExpansionPanel square elevation={0}>
-                <ExpansionPanelSummary
-                  expandIcon={<Icon>expand_more</Icon>}
-                  style={createExpansionStyle(3, scrollY)}
-                >
-                  <Text>Component Theme</Text>
-                </ExpansionPanelSummary>
-                <Box p={2} bgcolor={'#faf8f5'} overflow={'scroll'}>
-                  <JsonHighlight
-                    value={
-                      component
-                        ? component.getTheme(createMuiTheme())
-                        : 'Select some component'
-                    }
-                  />
-                </Box>
-              </ExpansionPanel>
-              <ExpansionPanel square defaultExpanded elevation={0}>
-                <ExpansionPanelSummary
-                  expandIcon={<Icon>expand_more</Icon>}
-                  style={createExpansionStyle(4, scrollY)}
-                >
-                  <Text>JSX</Text>
-                </ExpansionPanelSummary>
-                <Box p={2} bgcolor={'#faf8f5'} overflow={'scroll'}>
-                  <JsxHighlight
-                    component={component || 'Select some component'}
-                  />
-                </Box>
-              </ExpansionPanel>
-            </Box>
-          </Drawer>
-        </Hidden>
+        {/*<Hidden>*/}
+        {/*<Drawer variant={'permanent'} anchor={'right'}>*/}
+        {/*<Box*/}
+        {/*width={width}*/}
+        {/*transition={'0.3s'}*/}
+        {/*style={{ marginTop: scrollY > 64 ? 0 : `${64 - scrollY}px` }}*/}
+        {/*>*/}
+        {/*{component && component.codeSandbox && (*/}
+        {/*<Box p={2} bgcolor={'#faf8f5'} overflow={'scroll'}>*/}
+        {/*<Typography variant={'overline'} color={'textSecondary'}>*/}
+        {/*LINK TO CODE SANDBOX*/}
+        {/*</Typography>*/}
+        {/*<Typography>*/}
+        {/*<Link href={component.codeSandbox} target={'_blank'}>*/}
+        {/*{component.codeSandbox}*/}
+        {/*</Link>*/}
+        {/*</Typography>*/}
+        {/*</Box>*/}
+        {/*)}*/}
+        {/*<ExpansionPanel square elevation={0}>*/}
+        {/*<ExpansionPanelSummary*/}
+        {/*expandIcon={<Icon>expand_more</Icon>}*/}
+        {/*style={createExpansionStyle(2, scrollY)}*/}
+        {/*>*/}
+        {/*<Text>Global Theme</Text>*/}
+        {/*</ExpansionPanelSummary>*/}
+        {/*<Box p={2} bgcolor={'#faf8f5'} overflow={'scroll'}>*/}
+        {/*<JsonHighlight value={displayedTheme} />*/}
+        {/*</Box>*/}
+        {/*</ExpansionPanel>*/}
+        {/*<ExpansionPanel square elevation={0}>*/}
+        {/*<ExpansionPanelSummary*/}
+        {/*expandIcon={<Icon>expand_more</Icon>}*/}
+        {/*style={createExpansionStyle(3, scrollY)}*/}
+        {/*>*/}
+        {/*<Text>Component Theme</Text>*/}
+        {/*</ExpansionPanelSummary>*/}
+        {/*<Box p={2} bgcolor={'#faf8f5'} overflow={'scroll'}>*/}
+        {/*<JsonHighlight*/}
+        {/*value={*/}
+        {/*// eslint-disable-next-line no-nested-ternary*/}
+        {/*component*/}
+        {/*? component.getTheme*/}
+        {/*? component.getTheme(createMuiTheme())*/}
+        {/*: 'This component is ready to use, no need to config theme'*/}
+        {/*: 'Select some component'*/}
+        {/*}*/}
+        {/*/>*/}
+        {/*</Box>*/}
+        {/*</ExpansionPanel>*/}
+        {/*<ExpansionPanel square defaultExpanded elevation={0}>*/}
+        {/*<ExpansionPanelSummary*/}
+        {/*expandIcon={<Icon>expand_more</Icon>}*/}
+        {/*style={createExpansionStyle(4, scrollY)}*/}
+        {/*>*/}
+        {/*<Text>JSX</Text>*/}
+        {/*</ExpansionPanelSummary>*/}
+        {/*<Box p={2} bgcolor={'#faf8f5'} overflow={'scroll'}>*/}
+        {/*<JsxHighlight*/}
+        {/*component={component || 'Select some component'}*/}
+        {/*/>*/}
+        {/*</Box>*/}
+        {/*</ExpansionPanel>*/}
+        {/*</Box>*/}
+        {/*</Drawer>*/}
+        {/*</Hidden>*/}
         <Hidden xsUp>
           <MobileThemeController
             type={type}
@@ -285,9 +293,10 @@ class ThemeController extends React.Component {
 ThemeController.propTypes = {
   children: PropTypes.func.isRequired,
   formHidden: PropTypes.bool,
+  location: PropTypes.shape({}).isRequired,
 };
 ThemeController.defaultProps = {
   formHidden: false,
 };
 
-export default ThemeController;
+export default withRouter(ThemeController);
