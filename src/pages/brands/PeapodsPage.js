@@ -63,6 +63,7 @@ import PeaGroupProfile from 'components/peapods/PeaGroupProfile';
 import PeaChat from 'components/peapods/PeaChat';
 import PeaMediaUploader from 'components/peapods/PeaMediaUploader';
 import PeaAccountProfile from 'components/peapods/PeaAccountProfile';
+import PeaThreadTitle from 'components/peapods/PeaThreadTitle';
 import PeaThreadHeader from 'components/peapods/PeaThreadHeader';
 import PeaMessageInput from 'components/peapods/PeaMessageInput';
 
@@ -965,6 +966,17 @@ const components = [
     ),
     gridItemProps: {
       sm: 10,
+      lg: 8,
+    },
+  },
+  {
+    component: PeaThreadTitle,
+    render: () => (
+      <PeaThreadTitle title="Foo bar" subtitle="Online" avatar={AVATAR} />
+    ),
+    gridItemProps: {
+      sm: 10,
+      md: 10,
       lg: 8,
     },
   },
