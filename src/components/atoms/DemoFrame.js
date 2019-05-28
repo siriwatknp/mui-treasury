@@ -9,11 +9,10 @@ import Frame from 'react-frame-component';
 
 const styles = theme => ({
   root: {
-    backgroundColor: theme.palette.background.default,
-    flexGrow: 1,
-    height: 400,
+    backgroundColor: theme.palette.common.white,
+    height: 'calc(100vh - 48px)',
     border: 'none',
-    boxShadow: theme.shadows[1],
+    width: '100%',
   },
 });
 

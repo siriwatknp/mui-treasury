@@ -1,5 +1,5 @@
-/* eslint-disable max-len */
-import { createMuiTheme } from '@material-ui/core/styles';
+/* eslint-disable */
+import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 
 const theme = {
   typography: {
@@ -21,7 +21,8 @@ const theme = {
   },
 };
 
-const mergedTheme = createMuiTheme(theme);
+let mergedTheme = createMuiTheme(theme);
+mergedTheme = responsiveFontSizes(mergedTheme);
 
 const req = require.context('./components', true, /.js$/);
 let overrides = {};
@@ -33,7 +34,6 @@ req.keys().forEach(filename => {
   };
 });
 
-export default createMuiTheme({
-  ...theme,
-  overrides,
-});
+mergedTheme.overrides = overrides;
+
+export default mergedTheme;
