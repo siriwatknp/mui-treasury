@@ -1,20 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid, max-len */
 import React from 'react';
-import merge from 'lodash/merge';
 import { Link as RouterLink } from 'react-router-dom';
-import { ThemeProvider } from '@material-ui/styles';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from 'components/atoms/Box';
 import Image from 'components/atoms/Image';
 import Typography from 'components/predefined/Typography';
 import CodeHighlight from 'components/highlights/CodeHighlight';
-import treasuryTheme from 'theme/treasury';
 
 const components = [];
-const providedTheme = merge(treasuryTheme, {
-  overrides: Typography.getTheme(treasuryTheme),
-});
 
 const exampleCode = `
   import { ThemeProvider } from '@material-ui/styles';
@@ -138,7 +132,7 @@ const codePreset3 = `
 `;
 
 const LayoutPage = () => (
-  <ThemeProvider theme={providedTheme}>
+  <>
     <Box maxWidth={768} mx={'auto'} px={2} py={{ xs: 2, sm: 3 }}>
       <Typography variant={'overline'}>INTRODUCING</Typography>
       <Typography weight={'bold'} variant={'h4'} gutterBottom>
@@ -525,7 +519,7 @@ const LayoutPage = () => (
         directly. I will do my best to help.
       </Typography>
     </Box>
-  </ThemeProvider>
+  </>
 );
 
 LayoutPage.propTypes = {};
