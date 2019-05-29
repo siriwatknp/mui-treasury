@@ -20,6 +20,9 @@ import Button from 'components/predefined/Button';
 import Typography from 'components/predefined/Typography';
 
 const useStyles = makeStyles(({ transitions, palette, spacing }) => ({
+  appBarBg: {
+    zIndex: 1098,
+  },
   searchBox: ({ trigger }) => ({
     transition: transitions.create('top', {
       easing: transitions.easing.sharp,
@@ -146,6 +149,9 @@ const AmiMiniHeader = ({ menus }) => {
           </Toolbar>
         </AppBar>
       </Slide>
+      <AppBar position={'sticky'} elevation={0} className={classes.appBarBg}>
+        <Toolbar />
+      </AppBar>
       <AppBar className={classes.searchBox} elevation={2} position={'sticky'}>
         <InputBase
           className={classes.searchInput}

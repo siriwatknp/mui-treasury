@@ -18,6 +18,7 @@ const useStyles = makeStyles(({ transitions }) => ({
     transition: transitions.create(),
     backgroundColor: 'rgba(255, 255, 255, 0.08)',
     marginTop: 8,
+    marginLeft: 8,
     padding: '0 8px',
     display: 'inline-block',
     color: '#ffffff',
@@ -30,6 +31,9 @@ const useStyles = makeStyles(({ transitions }) => ({
     }),
     top: trigger ? 0 : 64,
   }),
+  appBarBg: {
+    zIndex: 1098,
+  },
 }));
 
 const AmiLargeHeader = () => {
@@ -93,6 +97,9 @@ const AmiLargeHeader = () => {
           </Toolbar>
         </AppBar>
       </Slide>
+      <AppBar position={'sticky'} elevation={0} className={classes.appBarBg}>
+        <Toolbar />
+      </AppBar>
       <AppBar
         elevevation={2}
         position={'sticky'}

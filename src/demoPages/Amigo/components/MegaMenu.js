@@ -44,9 +44,16 @@ const useStyles = makeStyles(({ palette }) => ({
   subheader: {
     fontWeight: 'bold',
   },
+  cover: {
+    display: 'block',
+    height: '100%',
+    width: '100%',
+    objectFit: 'cover',
+    padding: '16px 16px 16px 0',
+  },
 }));
 
-const MegaMenu = ({ menus, subMenus }) => {
+const MegaMenu = ({ menus, subMenus, cover }) => {
   const [tabIndex, setTabIndex] = useState();
   const classes = useStyles();
   return (
@@ -70,6 +77,9 @@ const MegaMenu = ({ menus, subMenus }) => {
         <Paper elevation={2} className={classes.paper}>
           <Container maxWidth={'md'}>
             <Grid container justify={'center'}>
+              <Grid item xs={3}>
+                <img src={cover} alt={'cover'} className={classes.cover} />
+              </Grid>
               {subMenus.map(({ label, children }) => (
                 <Grid key={label} item xs={3}>
                   <List
@@ -105,10 +115,14 @@ MegaMenu.propTypes = {
     }),
   ),
   subMenus: PropTypes.arrayOf(PropTypes.shape({})),
+  cover: PropTypes.string,
 };
 MegaMenu.defaultProps = {
   menus: [],
   subMenus: [],
+  cover:
+    // eslint-disable-next-line max-len
+    'https://images.unsplash.com/photo-1470468969717-61d5d54fd036?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=983&q=80',
 };
 
 export default MegaMenu;

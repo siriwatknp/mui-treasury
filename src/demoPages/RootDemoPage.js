@@ -2,6 +2,7 @@ import React from 'react';
 import GitHubButton from 'react-github-btn';
 import { Switch, Route, Link } from 'react-router-dom';
 import { makeStyles, ThemeProvider } from '@material-ui/styles';
+import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from 'components/predefined/Button';
@@ -32,6 +33,7 @@ const RootDemoPage = () => {
             component={Amigo}
           />
         </Switch>
+        <Box height={48} />
         <AppBar color={'default'} className={classes.appBar}>
           <Toolbar className={classes.toolbar}>
             <Grid container justify={'space-between'} alignItems={'center'}>
