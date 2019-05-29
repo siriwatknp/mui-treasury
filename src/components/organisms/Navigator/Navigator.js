@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import route from 'pages/components/.routes';
 import brandRoute from 'pages/brands/.brandRoutes';
 import templateRoute from 'pages/templates/.templateRoutes';
+import demoRoutes from 'demoPages/.demoRoutes';
 import List from '@material-ui/core/List';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListSubheader from '@material-ui/core/ListSubheader';
@@ -64,6 +65,9 @@ const Navigator = withRouter(({ onClickItem, location }) => {
       </List>
       <List subheader={<ListSubheader disableSticky>Components</ListSubheader>}>
         {route.map(renderItem)}
+      </List>
+      <List subheader={<ListSubheader disableSticky>Demos</ListSubheader>}>
+        {demoRoutes.map(renderItem)}
       </List>
       <List subheader={<ListSubheader disableSticky>Templates</ListSubheader>}>
         {templateRoute.map(renderItem)}

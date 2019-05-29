@@ -128,7 +128,7 @@ const createCode = (config, icon) =>
 const GetCode = ({ classes, config, icon, open, onClose }) => {
   const [index, setIndex] = useState(0);
   return (
-    <Dialog open onClose={onClose}>
+    <Dialog open={open} onClose={onClose}>
       <Tabs
         variant={'fullWidth'}
         value={index}

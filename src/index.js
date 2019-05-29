@@ -1,19 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import ThemeProvider from '@material-ui/styles/ThemeProvider';
-import treasuryTheme from 'theme/treasury';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 const render = Component => {
   ReactDOM.render(
-    <ThemeProvider theme={treasuryTheme}>
-      <Router>
-        <Component />
-      </Router>
-    </ThemeProvider>,
+    <Router>
+      <Component />
+    </Router>,
     document.getElementById('root'),
   );
 };

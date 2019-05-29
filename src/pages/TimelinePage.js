@@ -208,15 +208,19 @@ const TimelinePage = () => {
               {
                 id: 'os-appBar-01',
                 primary: 'App Bar',
-                state: 'processing',
+                link: '/demo-pages/amigo-e-commerce',
+                state: 'done',
               },
               {
                 id: 'os-megaMenu-01',
                 primary: 'Mega Menu',
+                link: '/demo-pages/amigo-e-commerce',
+                state: 'done',
               },
               {
                 id: 'os-productAds-01',
                 primary: 'Product Ads',
+                state: 'processing',
               },
               {
                 id: 'os-productCard-01',

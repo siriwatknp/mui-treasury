@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link as RouterLink } from 'react-router-dom';
 import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
 import Box from 'components/atoms/Box';
 import Text from 'components/atoms/Text';
@@ -21,7 +22,7 @@ const Timeline = ({ data, onMouseOver, onFocus, onMouseLeave }) => (
       height={'100%'}
       top={0}
     />
-    {data.map(({ id, primary, secondary, state, large }) => (
+    {data.map(({ id, primary, secondary, state, link, large }) => (
       <Box
         key={id}
         ml={{
@@ -122,6 +123,8 @@ const Timeline = ({ data, onMouseOver, onFocus, onMouseLeave }) => (
           />
         )}
         <Text
+          component={link ? RouterLink : 'p'}
+          to={link}
           fontWeight={'bold'}
           color={state === 'done' ? 'primary.main' : 'grey.500'}
           fontSize={{
