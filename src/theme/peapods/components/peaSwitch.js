@@ -28,15 +28,15 @@ export default ({ palette }) => ({
       },
     },
     checked: {},
-    bar: {
-      width: 48,
-      height: 24,
-      marginLeft: -28,
-      marginTop: -12,
-      borderRadius: 50,
-    },
-    icon: {
-      marginLeft: -16,
-    },
+    // bar: {
+    //   width: 48,
+    //   height: 24,
+    //   marginLeft: -28,
+    //   marginTop: -12,
+    //   borderRadius: 50,
+    // },
+    // icon: {
+    //   marginLeft: -16,
+    // },
   },
 });

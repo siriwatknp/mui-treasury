@@ -71,7 +71,7 @@ const PeaChat = ({ avatar, messages, side }) => {
       )}
       <Grid item xs={8}>
         {messages.map((msg, i) => (
-          <div className={classes[`${side}Row`]}>
+          <div key={msg} className={classes[`${side}Row`]}>
             <PeaText
               align={'left'}
               variant={'body2'}

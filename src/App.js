@@ -1,5 +1,3 @@
-import merge from 'lodash/merge';
-
 /* eslint-disable react/sort-comp */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -35,9 +33,7 @@ import {
   Nav,
   presets,
 } from 'components/predefined/Layout';
-import Button from 'components/predefined/Button';
 import Icon from 'components/predefined/Icon';
-import Typography from 'components/predefined/Typography';
 import treasuryTheme from './theme/treasury/treasuryTheme';
 
 const layoutConfig = presets.createMuiTreasuryLayout();
@@ -73,15 +69,7 @@ class App extends React.Component {
         <Route exact path={'/demo-pages/*'} component={RootDemoPage} />
         <Route
           render={() => (
-            <ThemeProvider
-              theme={merge(treasuryTheme, {
-                overrides: {
-                  ...Button.getTheme(treasuryTheme),
-                  ...Icon.getTheme(treasuryTheme),
-                  ...Typography.getTheme(treasuryTheme),
-                },
-              })}
-            >
+            <ThemeProvider theme={treasuryTheme}>
               <Root
                 config={{
                   ...layoutConfig,

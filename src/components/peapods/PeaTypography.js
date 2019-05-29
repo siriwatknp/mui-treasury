@@ -9,7 +9,6 @@ import MuiTypography from '@material-ui/core/Typography';
 
 const injectColor = color => {
   if (
-    color === 'default' ||
     color === 'inherit' ||
     color === 'primary' ||
     color === 'secondary' ||
@@ -63,7 +62,7 @@ PeaTypography.propTypes = {
   size: PropTypes.oneOf(['small', '', 'big', 'large']),
   spacing: PropTypes.oneOf(['', 'small', 'big', 'large']),
   color: PropTypes.oneOf([
-    'default',
+    '',
     'error',
     'inherit',
     'primary',
@@ -81,7 +80,7 @@ PeaTypography.propTypes = {
 };
 PeaTypography.defaultProps = {
   className: '',
-  color: 'default',
+  color: '',
   inverted: false,
   code: false,
   grey: undefined,
@@ -93,7 +92,7 @@ PeaTypography.defaultProps = {
   component: undefined,
 };
 PeaTypography.metadata = {
-  name: 'Pea Button',
+  name: 'Pea Typography',
 };
 PeaTypography.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 

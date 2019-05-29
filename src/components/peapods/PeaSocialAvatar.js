@@ -65,9 +65,11 @@ PeaSocialAvatar.propTypes = {
   classes: PropTypes.shape({}).isRequired,
   src: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  social: PropTypes.string.isRequired,
+  social: PropTypes.string,
 };
-PeaSocialAvatar.defaultProps = {};
+PeaSocialAvatar.defaultProps = {
+  social: '',
+};
 PeaSocialAvatar.metadata = {
   name: 'Pea Social Avatar',
   libraries: [

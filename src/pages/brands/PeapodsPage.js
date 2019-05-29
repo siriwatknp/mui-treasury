@@ -66,6 +66,8 @@ import PeaAccountProfile from 'components/peapods/PeaAccountProfile';
 import PeaThreadTitle from 'components/peapods/PeaThreadTitle';
 import PeaThreadHeader from 'components/peapods/PeaThreadHeader';
 import PeaMessageInput from 'components/peapods/PeaMessageInput';
+import PeaTrendingHashtagList from 'components/peapods/PeaTrendingHashtagList';
+import PeaToast from 'components/peapods/PeaToast';
 
 const PeaSelect = props => <PeaTextField {...props} />;
 PeaSelect.metadata = {
@@ -178,6 +180,8 @@ const peapodCardProps = {
   },
 };
 
+let currentVariant = 0;
+
 const components = [
   {
     component: PeaButton,
@@ -228,7 +232,7 @@ const components = [
         <PeaIcon icon={'remove_circle'} size={'small'} />
         <PeaIcon icon={'remove_circle'} size={'big'} />
         <PeaIcon icon={'fab fa-facebook-f'} bgColor={'white'} />
-        <PeaIcon icon={'add'} bgColor={'lightPrimary'} color={'inverted'} />
+        <PeaIcon icon={'add'} bgColor={'lightPrimary'} inverted />
       </Box>
     ),
   },
@@ -755,6 +759,7 @@ const components = [
         followings={SOCIAL1}
         tags={SOCIAL2}
         groups={SOCIAL3}
+        onClose={() => alert('close!')}
       />
     ),
   },
@@ -975,9 +980,9 @@ const components = [
       <PeaThreadTitle title="Foo bar" subtitle="Online" avatar={AVATAR} />
     ),
     gridItemProps: {
-      sm: 10,
-      md: 10,
-      lg: 8,
+      sm: 6,
+      md: 6,
+      lg: 6,
     },
   },
   {
@@ -992,9 +997,9 @@ const components = [
       />
     ),
     gridItemProps: {
-      sm: 10,
-      md: 10,
-      lg: 8,
+      sm: 6,
+      md: 6,
+      lg: 6,
     },
   },
   {
@@ -1004,9 +1009,53 @@ const components = [
       white: true,
     },
     gridItemProps: {
-      sm: 10,
-      md: 10,
-      lg: 8,
+      sm: 6,
+      md: 6,
+      lg: 6,
+    },
+  },
+  {
+    component: PeaTrendingHashtagList,
+    render: () => (
+      <PeaTrendingHashtagList
+        tags={[
+          {
+            name: 'Name',
+            podCount: 5,
+            linkto: '/',
+          },
+          {
+            name: 'Name2',
+            podCount: 100,
+            linkto: '/',
+          },
+        ]}
+      />
+    ),
+  },
+  {
+    component: PeaToast,
+    render: () => {
+      const [opened, setOpened] = useState(false);
+      const variants = ['success', 'warning', 'error', 'info'];
+      return (
+        <>
+          <Button
+            onClick={() => {
+              setOpened(true);
+              currentVariant += 1;
+            }}
+          >
+            Keep opening Toast to switch variant
+          </Button>
+          <PeaToast
+            message={'Hello from Thailand!'}
+            open={opened}
+            onClose={() => setOpened(false)}
+            variant={variants[currentVariant % 4]}
+          />
+        </>
+      );
     },
   },
 ];

@@ -43,6 +43,8 @@ const useStyles = makeStyles(theme => ({
 
 const PeaToast = ({
   className,
+  open,
+  onClose,
   message,
   variant,
   position,
@@ -50,14 +52,13 @@ const PeaToast = ({
   closeOnClickOutside,
   ...other
 }) => {
-  const [open, setOpen] = React.useState(true);
   const classes = useStyles();
 
   const handleClose = (event, reason) => {
     if (!closeOnClickOutside && reason === 'clickaway') {
       return;
     }
-    setOpen(false);
+    onClose(false);
   };
 
   return (
@@ -98,6 +99,8 @@ const PeaToast = ({
 
 PeaToast.propTypes = {
   className: PropTypes.string,
+  open: PropTypes.bool,
+  onClose: PropTypes.func,
   message: PropTypes.node.isRequired,
   variant: PropTypes.oneOf(['success', 'warning', 'error', 'info']).isRequired,
   position: PropTypes.shape({
@@ -110,11 +113,13 @@ PeaToast.propTypes = {
 
 PeaToast.defaultProps = {
   className: '',
+  open: false,
+  onClose: () => {},
   position: {
     horizontal: 'center',
     vertical: 'bottom',
   },
-  timeout: 6000,
+  timeout: 3000,
   closeOnClickOutside: false,
 };
 

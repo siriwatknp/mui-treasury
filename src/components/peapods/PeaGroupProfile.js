@@ -194,7 +194,7 @@ const PeaGroupProfile = ({ cover, groupName, tags, followings, followers }) => {
 PeaGroupProfile.propTypes = {
   cover: PropTypes.string,
   groupName: PropTypes.string.isRequired,
-  tags: PropTypes.arrayOf(PropTypes.string),
+  tags: PropTypes.arrayOf(PropTypes.shape({})),
   followings: PropTypes.arrayOf(PropTypes.shape({})),
   followers: PropTypes.arrayOf(PropTypes.shape({})),
 };
