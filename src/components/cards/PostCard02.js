@@ -38,7 +38,7 @@ PostCard02.getTheme = muiBaseTheme => ({
   MuiCard: {
     root: {
       '&.MuiPostCard--02': {
-        borderRadius: muiBaseTheme.spacing.unit * 2, // 16px
+        borderRadius: muiBaseTheme.spacing(2), // 16px
         transition: '0.3s',
         boxShadow: '0px 14px 80px rgba(34, 35, 58, 0.2)',
         width: '95%',
@@ -49,7 +49,7 @@ PostCard02.getTheme = muiBaseTheme => ({
         background: '#ffffff',
         display: 'flex',
         alignItems: 'center',
-        padding: `${muiBaseTheme.spacing.unit * 2}px 0`,
+        padding: `${muiBaseTheme.spacing(2)}px 0`,
         '&:hover': {
           transform: 'translateY(-3px)',
           boxShadow: '0 4px 20px 0 rgba(0,0,0,0.12)',
@@ -60,7 +60,7 @@ PostCard02.getTheme = muiBaseTheme => ({
           paddingTop: '48%',
           transform: 'translateX(-24%)',
           boxShadow: '4px 4px 20px 1px rgba(252, 56, 56, 0.2)',
-          borderRadius: muiBaseTheme.spacing.unit * 2, // 16
+          borderRadius: muiBaseTheme.spacing(2), // 16
           backgroundImage: 'linear-gradient(147deg, #fe8a39 0%, #fd3838 74%)',
           backgroundColor: muiBaseTheme.palette.common.white,
           overflow: 'hidden',
@@ -72,20 +72,20 @@ PostCard02.getTheme = muiBaseTheme => ({
             width: '100%',
             height: '100%',
             backgroundImage: 'linear-gradient(147deg, #fe8a39 0%, #fd3838 74%)',
-            borderRadius: muiBaseTheme.spacing.unit * 2, // 16
+            borderRadius: muiBaseTheme.spacing(2), // 16
             opacity: 0.5,
           },
         },
         '& .MuiCardContent-root': {
           textAlign: 'left',
           paddingLeft: 0,
-          padding: muiBaseTheme.spacing.unit * 2,
+          padding: muiBaseTheme.spacing(2),
         },
         '& .MuiTypography--heading': {
           fontWeight: 'bold',
         },
         '& .MuiTypography--subheading': {
-          marginBottom: muiBaseTheme.spacing.unit * 2,
+          marginBottom: muiBaseTheme.spacing(2),
         },
         '& .MuiButton--readMore': {
           backgroundImage: 'linear-gradient(147deg, #fe8a39 0%, #fd3838 74%)',

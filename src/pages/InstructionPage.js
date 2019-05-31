@@ -150,7 +150,7 @@ const InstructionPage = ({ width }) => (
 );
 
 InstructionPage.propTypes = {
-  width: PropTypes.number.isRequired,
+  width: PropTypes.string.isRequired,
 };
 
 export default withWidth()(InstructionPage);

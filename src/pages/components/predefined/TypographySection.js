@@ -9,7 +9,6 @@ import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
 import PreviewWidget from 'components/molecules/PreviewWidget';
 import Typography from 'components/predefined/Typography';
 import Icon from 'components/predefined/Icon';
@@ -187,7 +186,8 @@ const TypographySection = ({ globalTheme }) => {
             }}
           >
             <Typography variant={'subtitle1'}>
-              <Link
+              <Typography
+                link
                 color={'secondary'}
                 variant={'subtitle1'} // needed
                 component={'button'}
@@ -195,7 +195,7 @@ const TypographySection = ({ globalTheme }) => {
               >
                 <Icon size={'small'}>far fa-rocket</Icon>
                 Lorem Ipsum
-              </Link>{' '}
+              </Typography>{' '}
               is simply dummy text of the printing and typesetting industry.{' '}
             </Typography>
           </PreviewWidget>

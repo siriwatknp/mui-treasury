@@ -15,7 +15,7 @@ export default ({ palette, spacing }) => {
             "'SFMono-Regular',Consolas,'Liberation Mono',Menlo,Courier,monospace",
         },
         '& ul, ol': {
-          paddingLeft: spacing.unit * 3,
+          paddingLeft: spacing(3),
         },
         '& li': {
           marginBottom: '0.5em',
@@ -42,13 +42,13 @@ export default ({ palette, spacing }) => {
         },
         // indents
         '&.-indent-small': {
-          textIndent: spacing.unit * 2,
+          textIndent: spacing(2),
         },
         '&.-indent-big': {
-          textIndent: spacing.unit * 3,
+          textIndent: spacing(3),
         },
         '&.-indent-large': {
-          textIndent: spacing.unit * 4,
+          textIndent: spacing(4),
         },
         // spacings
         '&.-space-small': {

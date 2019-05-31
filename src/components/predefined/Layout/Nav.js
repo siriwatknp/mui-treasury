@@ -42,7 +42,7 @@ const styles = ({
   },
   closeButton: {
     position: 'absolute',
-    bottom: spacing.unit * 2,
+    bottom: spacing(2),
     zIndex: zIndex.modal + 1,
     background: palette.common.white,
     boxShadow: shadows[2],

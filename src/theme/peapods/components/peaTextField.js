@@ -8,7 +8,7 @@ export default ({
   secondary,
   red,
 }) => {
-  const space = spacing.unit; // default = 8;
+  const space = spacing(1); // default = 8;
   const labelColor = secondary.main;
   const { fontFamily } = typography;
   const helperTextColor = '#6c757d';

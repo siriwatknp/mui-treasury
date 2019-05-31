@@ -7,7 +7,7 @@ export const getTheme = muiBaseTheme => ({
   MuiButton: {
     root: {
       '& svg, .material-icons': {
-        marginRight: muiBaseTheme.spacing.unit,
+        marginRight: muiBaseTheme.spacing(1),
         fontSize: 20,
       },
     },
