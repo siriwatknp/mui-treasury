@@ -86,66 +86,71 @@ const TypographyPage = ({ globalTheme }) => {
     </>
   );
   return (
-    <ThemeProvider theme={createMuiTheme(globalTheme)}>
-      <Box
-        width={'100%'}
-        p={{
-          xs: 2,
-          sm: 4,
-        }}
+    <Box
+      width={'100%'}
+      p={{
+        xs: 2,
+        sm: 4,
+      }}
+    >
+      <Text
+        id={'predefined-button'}
+        anchor={<Icon>far fa-link</Icon>}
+        hrefAnchor={'#predefined-button'}
+        variant={'h4'}
+        weight={'bold'}
+        color={'textPrimary'}
+        gutterBottom
       >
-        <Text
-          id={'predefined-button'}
-          anchor={<Icon>far fa-link</Icon>}
-          hrefAnchor={'#predefined-button'}
-          variant={'h4'}
-          weight={'bold'}
-          color={'textPrimary'}
-          gutterBottom
-        >
-          Predefined Typography <code>v1.2</code>
+        Predefined Typography <code>v1.2</code>
+      </Text>
+      <Box my={1}>
+        <Text variant={'caption'} align={'left'} gutterBottom>
+          <b>Last Updated 1 Jun 2019</b>
         </Text>
-        <Text gutterBottom>
-          The extended version of Material-UI Typography. Look at examples below
-          and you will understand why this exist! With pure Material-UI
-          Typography, you have to spend hours all these examples.
-        </Text>
-        <Text variant={'h6'}>How to use</Text>
-        <Text component={'div'}>
-          <ol>
-            <li>
-              <code>yarn add @material-ui/core clsx</code>{' '}
-              <Copier.Text text={'yarn add @material-ui/core clsx'} />
-            </li>
-            <li>
-              <Text
-                link
-                href={
-                  'https://firebasestorage.googleapis.com/v0/b/mui-treasury.appspot.com/o/public%2Fcode%2FTypography.js?alt=media'
-                }
-                rel={'noopener'}
-                target={'_blank'}
-              >
-                Download Typography File
-              </Text>{' '}
-              and put it in your project.{' '}
-              <Text component={'span'} color={'hint'}>
-                ({"don't"} worry, no spam, just a React component)
-              </Text>
-            </li>
-            <li>
-              Look at component propTypes, adjust default props to suit your
-              project.
-              <Text gutterBottom />
-              <CodeHighlight code={exampleCode} />
-            </li>
-          </ol>
-        </Text>
+      </Box>
+      <Text gutterBottom>
+        The extended version of Material-UI Typography. Look at examples below
+        and you will understand why this exist! With pure Material-UI
+        Typography, you have to spend hours all these examples.
+      </Text>
+      <Text variant={'h6'}>How to use</Text>
+      <Text component={'div'}>
+        <ol>
+          <li>
+            <code>yarn add @material-ui/core clsx</code>{' '}
+            <Copier.Text text={'yarn add @material-ui/core clsx'} />
+          </li>
+          <li>
+            <Text
+              link
+              href={
+                'https://firebasestorage.googleapis.com/v0/b/mui-treasury.appspot.com/o/public%2Fcode%2FTypography.js?alt=media'
+              }
+              rel={'noopener'}
+              target={'_blank'}
+            >
+              Download Typography File
+            </Text>{' '}
+            and put it in your project.{' '}
+            <Text component={'span'} color={'hint'}>
+              ({"don't"} worry, no spam, just a React component)
+            </Text>
+          </li>
+          <li>
+            Look at component propTypes, adjust default props to suit your
+            project.
+            <Text gutterBottom />
+            <CodeHighlight code={exampleCode} />
+          </li>
+        </ol>
+      </Text>
+      <ThemeProvider theme={createMuiTheme(globalTheme)}>
         {renderExamples('Basic Examples', basicExamples)}
         <Box py={2} />
         {renderExamples('Advanced Examples', advancedExamples)}
-      </Box>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Box>
   );
 };
 
