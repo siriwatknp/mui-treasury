@@ -4,7 +4,7 @@ export default ({ palette, spacing }) => {
   // ATTENTION!
   // you can customize some important variables here!!
   const backgroundColor = palette.grey[100];
-  const space = spacing.unit; // default = 8;
+  const space = spacing(1); // default = 8;
   const borderRadius = 100;
   const iconColor = palette.grey[500];
   // end of variables

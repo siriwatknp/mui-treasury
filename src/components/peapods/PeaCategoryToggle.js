@@ -13,7 +13,7 @@ const styles = theme => {
     root: {},
     imageWrapper: {
       position: 'relative',
-      marginBottom: theme.spacing.unit,
+      marginBottom: theme.spacing(1),
     },
     image: {
       display: 'block',

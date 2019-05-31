@@ -4,7 +4,7 @@ export default ({ spacing, breakpoints, white, palette }) => ({
     root: {
       '&.PeaPodDialog': {
         '& .PeaCounter-root': {
-          marginTop: spacing.unit,
+          marginTop: spacing(1),
         },
       },
       '&.PeaDialog': {
@@ -37,7 +37,7 @@ export default ({ spacing, breakpoints, white, palette }) => ({
           minWidth: 343,
         },
         '& .DialogActions-root': {
-          marginBottom: spacing.unit * 2,
+          marginBottom: spacing(2),
           justifyContent: 'center',
         },
       },
@@ -51,7 +51,7 @@ export default ({ spacing, breakpoints, white, palette }) => ({
         '& .ListSubheader-typography': {
           color: palette.secondary.main,
           fontWeight: 'bold',
-          paddingLeft: spacing.unit * 2,
+          paddingLeft: spacing(2),
         },
         '& .ListItem-secondaryErrorText': {
           color: palette.error.main,
@@ -67,7 +67,7 @@ export default ({ spacing, breakpoints, white, palette }) => ({
     paper: {
       borderRadius: 16,
       [breakpoints.only('xs')]: {
-        margin: spacing.unit * 2,
+        margin: spacing(2),
       },
     },
   },

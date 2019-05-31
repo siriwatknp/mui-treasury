@@ -207,19 +207,19 @@ export default ({ palette, spacing, breakpoints, shadows }) => {
         },
         // COMBINATION
         '&.-shape-circular.-size-small, &.-shape-square.-size-small': {
-          padding: spacing.unit * 1.25,
+          padding: spacing(1.25),
           // [`& ${iconSelector}`]: {
           //   fontSize: 16,
           // },
         },
         '&.-shape-circular.-size-big, &.-shape-square.-size-big': {
-          padding: spacing.unit * 1.5,
+          padding: spacing(1.5),
           // [`& ${iconSelector}`]: {
           //   fontSize: 28,
           // },
         },
         '&.-shape-circular.-size-large, &.-shape-square.-size-large': {
-          padding: spacing.unit * 1.75,
+          padding: spacing(1.75),
           // [`& ${iconSelector}`]: {
           //   fontSize: 36,
           // },

@@ -55,7 +55,7 @@ ProjectCard01.getTheme = muiBaseTheme => ({
         maxWidth: 304,
         margin: 'auto',
         borderRadius: 16,
-        padding: muiBaseTheme.spacing.unit * 3,
+        padding: muiBaseTheme.spacing(3),
         boxShadow: '0 8px 40px -12px rgba(0,0,0,0.3)',
         '&:hover': {
           boxShadow: '0 16px 70px -12.125px rgba(0,0,0,0.3)',
@@ -75,13 +75,13 @@ ProjectCard01.getTheme = muiBaseTheme => ({
           },
         },
         '& .MuiDivider-root': {
-          marginLeft: -muiBaseTheme.spacing.unit * 3,
-          marginRight: -muiBaseTheme.spacing.unit * 3,
+          marginLeft: -muiBaseTheme.spacing(3),
+          marginRight: -muiBaseTheme.spacing(3),
         },
         '& .MuiCardContent-root': {
           textAlign: 'left',
           padding: 0,
-          paddingTop: muiBaseTheme.spacing.unit * 6,
+          paddingTop: muiBaseTheme.spacing(6),
           '& .MuiTypography--overline': {
             fontSize: 16,
             fontWeight: 'bold',

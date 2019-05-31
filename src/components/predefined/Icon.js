@@ -33,10 +33,10 @@ const useStyles = makeStyles(({ palette, transitions, spacing }) => {
       // STANDALONE
       verticalAlign: 'sub',
       '&.-push-left': {
-        marginLeft: spacing.unit,
+        marginLeft: spacing(1),
       },
       '&.-push-right': {
-        marginRight: spacing.unit,
+        marginRight: spacing(1),
       },
       '&.-link': {
         cursor: 'pointer',

@@ -6,7 +6,7 @@ export default ({ muiBaseTheme }) => ({
         display: 'none',
       },
     },
-    expanded: {
+    '&$expanded': {
       margin: 0,
     },
   },

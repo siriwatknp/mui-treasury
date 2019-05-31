@@ -1,5 +1,5 @@
 /**
- * Current VERSION 1.1
+ * Current VERSION 1.2
  *
  * vX.Y meaning
  * X = major changes ex. add/remove/rename some props/className,
@@ -28,100 +28,180 @@ const injectColor = color => {
   return undefined;
 };
 
-const useStyles = makeStyles(({ palette, spacing }) => {
+const injectDisplay = display => {
+  if (display === 'initial' || display === 'inline' || display === 'block') {
+    return display;
+  }
+  return undefined;
+};
+
+const generateMediaQueries = (css, breakpoints, object) => {
+  if (!breakpoints) return '';
+  const keys = Object.keys(object);
+  const result = {};
+  keys.forEach(key => {
+    if (key === 'xs') {
+      result[css] = object[key];
+    } else {
+      result[breakpoints.up(key)] = { [css]: object[key] };
+    }
+  });
+  return result;
+};
+
+const createStylesBySize = (css, cls, values, breakpoints) =>
+  values.reduce(
+    (result, val) => ({
+      ...result,
+      [`${cls}${val[0]}`]:
+        typeof val[1] === 'object'
+          ? generateMediaQueries(css, breakpoints, val[1])
+          : {
+              [css]: val[1],
+            },
+    }),
+    {},
+  );
+
+const useStyles = makeStyles(({ palette, spacing, breakpoints }) => {
   const invertedColor = palette.common.white;
+  const codeStyle = {
+    // change code style here!
+    // default style is similar to antd
+    // https://ant.design/components/typography/#components-typography-demo-text
+    margin: '0 .2em',
+    padding: '.2em .4em .1em',
+    fontSize: '75%',
+    background: palette.grey[100],
+    border: `1px solid ${palette.grey[300]}`,
+    borderRadius: 3,
+    fontFamily:
+      // eslint-disable-next-line max-len
+      "'SFMono-Regular',Consolas,'Liberation Mono',Menlo,Courier,monospace",
+  };
+  const blockquoteStyle = {
+    // change code style here!
+    // default style is similar to reactjs.org
+    // https://reactjs.org/docs/
+    backgroundColor: 'rgba(255,229,100,0.3)',
+    borderLeftColor: '#ffe564',
+    borderLeftWidth: 9,
+    borderLeftStyle: 'solid',
+    padding: spacing(2.5, 5, 2.5, 3),
+    margin: spacing(2.5, -3, 3),
+  };
   return {
     root: {
-      '&.-code, & code': {
-        margin: '0 .2em',
-        padding: '.2em .4em .1em',
-        fontSize: '75%',
-        background: palette.grey[100],
-        border: `1px solid ${palette.grey[300]}`,
-        borderRadius: 3,
-        fontFamily:
-          // eslint-disable-next-line max-len
-          "'SFMono-Regular',Consolas,'Liberation Mono',Menlo,Courier,monospace",
-      },
+      '&.-code, & code': codeStyle,
+      '&.-blockquote, & blockquote': blockquoteStyle,
       '& ul, ol': {
-        paddingLeft: spacing.unit * 3,
+        paddingLeft: spacing(3),
       },
       '& li': {
         marginBottom: '0.5em',
+      },
+      '& b': {
+        fontWeight: 'bold',
       },
       '&.-inverted:not(.-code)': {
         color: invertedColor,
       },
       // colors
-      '&.-color-hint': {
-        color: palette.grey[500],
-      },
-      '&.-color-danger': {
-        color: palette.error.main,
-      },
+      ...createStylesBySize('color', '&.-color-', [
+        ['hint', palette.grey[500]],
+        ['danger', palette.error.main],
+      ]),
+      // displays
+      ...createStylesBySize('display', '&.-display-', [
+        ['inline-block', 'inline-block'],
+        ['inline-flex', 'inline-flex'],
+      ]),
       // sizes
-      '&.-size-small': {
-        fontSize: 12,
-      },
-      '&.-size-big': {
-        fontSize: 20,
-      },
-      '&.-size-large': {
-        fontSize: 24,
-      },
+      ...createStylesBySize('fontSize', '&.-size-', [
+        ['small', 12],
+        ['big', 20],
+        ['large', 24],
+      ]),
       // indents
-      '&.-indent-small': {
-        textIndent: spacing.unit * 2,
-      },
-      '&.-indent-big': {
-        textIndent: spacing.unit * 3,
-      },
-      '&.-indent-large': {
-        textIndent: spacing.unit * 4,
-      },
+      ...createStylesBySize('textIndent', '&.-indent-', [
+        ['small', spacing(2)],
+        ['medium', spacing(3)],
+        ['big', spacing(4)],
+      ]),
       // spacings
-      '&.-spacing-small': {
-        letterSpacing: '0.5px',
-      },
-      '&.-spacing-big': {
-        letterSpacing: '1px',
-      },
-      '&.-spacing-large': {
-        letterSpacing: '2px',
-      },
+      ...createStylesBySize('letterSpacing', '&.-spacing-', [
+        ['small', '0.5px'],
+        ['medium', '1px'],
+        ['big', '2px'],
+      ]),
       // weights
-      '&.-weight-100': {
-        fontWeight: 100,
+      ...createStylesBySize('fontWeight', '&.-weight-', [
+        ['100', 100],
+        ['200', 200],
+        ['300', 300],
+        ['400', 400],
+        ['500', 500],
+        ['600', 600],
+        ['700', 700],
+        ['800', 800],
+        ['900', 900],
+        ['normal', 'normal'],
+        ['bold', 'bold'],
+      ]),
+      // space bottom
+      ...createStylesBySize(
+        'marginTop',
+        '&.-mt-',
+        [
+          ['none', '0px !important'],
+          ['small', { xs: spacing(1), md: spacing(1.5) }],
+          ['medium', { xs: spacing(2), md: spacing(3) }],
+          ['big', { xs: spacing(4), md: spacing(5) }],
+        ],
+        breakpoints,
+      ),
+      // space top
+      ...createStylesBySize(
+        'marginBottom',
+        '&.-mb-',
+        [
+          ['none', '0px !important'],
+          ['small', { xs: spacing(1), md: spacing(1.5) }],
+          ['medium', { xs: spacing(2), md: spacing(3) }],
+          ['big', { xs: spacing(4), md: spacing(5) }],
+        ],
+        breakpoints,
+      ),
+      // push
+      '&.-push-right': {
+        marginRight: spacing(1.5),
+        [breakpoints.up('md')]: {
+          marginRight: spacing(2.5),
+        },
       },
-      '&.-weight-200': {
-        fontWeight: 200,
+      '&.-push-left': {
+        marginLeft: spacing(1.5),
+        [breakpoints.up('md')]: {
+          marginLeft: spacing(2.5),
+        },
       },
-      '&.-weight-300': {
-        fontWeight: 300,
-      },
-      '&.-weight-400': {
-        fontWeight: 400,
-      },
-      '&.-weight-500': {
-        fontWeight: 500,
-      },
-      '&.-weight-600': {
-        fontWeight: 600,
-      },
-      '&.-weight-700': {
-        fontWeight: 700,
-      },
-      '&.-weight-800': {
-        fontWeight: 800,
-      },
-      '&.-weight-900': {
-        fontWeight: 900,
-      },
-      '&.-weight-normal': {
-        fontWeight: 'normal',
-      },
-      '&.-weight-bold': {
-        fontWeight: 'bold',
+      '&.-anchor': {
+        '&:hover': {
+          '& .-anchor-link': {
+            visibility: 'visible',
+          },
+        },
+        '& .-anchor-link': {
+          margin: spacing(0, 1),
+          visibility: 'hidden',
+          color: palette.grey[600],
+          '& > *': {
+            verticalAlign: 'middle',
+          },
+          '&:hover': {
+            color: palette.grey[900],
+          },
+        },
       },
     },
     button: {
@@ -131,51 +211,97 @@ const useStyles = makeStyles(({ palette, spacing }) => {
 });
 
 const Typography = ({
+  anchor,
+  hrefAnchor,
   component,
+  children,
   className,
+  blockquote,
+  display,
+  bottomSpace,
+  topSpace,
+  push,
   indent,
   code,
   color,
   link,
   weight,
   size,
-  grey,
   inverted,
   spacing,
   ...props
 }) => {
   const classes = useStyles();
+  const similarProps = {
+    ...props,
+    className: cx(
+      'MuiTypography-root',
+      className,
+      anchor && `-anchor`,
+      display && `-display-${display}`,
+      size && `-size-${size}`,
+      indent && `-indent-${indent}`,
+      inverted && '-inverted',
+      code && '-code',
+      blockquote && '-blockquote',
+      color && `-color-${color}`,
+      weight && `-weight-${weight}`,
+      spacing && `-spacing-${spacing}`,
+      bottomSpace && `-mb-${bottomSpace}`,
+      topSpace && `-mt-${topSpace}`,
+      push && `-push-${push}`,
+    ),
+    display: injectDisplay(display),
+    color: injectColor(color),
+    component: code ? 'span' : component,
+    classes,
+  };
+  if (link) {
+    return (
+      <Link {...similarProps} color={injectColor(color || 'secondary')}>
+        {children}
+        {anchor && (
+          <a href={hrefAnchor} className={'-anchor-link'} aria-label={'Anchor'}>
+            {anchor}
+          </a>
+        )}
+      </Link>
+    );
+  }
   return (
-    <MuiTypography
-      {...props}
-      component={link ? Link : component}
-      color={injectColor(color)}
-      className={cx(
-        'MuiTypography-root',
-        className,
-        size && `-size-${size}`,
-        grey && `-grey-${grey}`,
-        indent && `-indent-${indent}`,
-        inverted && '-inverted',
-        code && '-code',
-        color && `-color-${color}`,
-        weight && `-weight-${weight}`,
-        spacing && `-spacing-${spacing}`,
+    <MuiTypography {...similarProps}>
+      {children}
+      {anchor && (
+        <a href={hrefAnchor} className={'-anchor-link'} aria-label={'Anchor'}>
+          {anchor}
+        </a>
       )}
-      classes={classes}
-    />
+    </MuiTypography>
   );
 };
 
 Typography.propTypes = {
+  anchor: PropTypes.node,
+  hrefAnchor: PropTypes.string,
   className: PropTypes.string,
+  children: PropTypes.node,
+  blockquote: PropTypes.bool,
+  display: PropTypes.oneOf([
+    'initial',
+    'block',
+    'inline',
+    'inline-block',
+    'inline-flex',
+  ]),
   inverted: PropTypes.bool,
   code: PropTypes.bool,
-  indent: PropTypes.oneOf(['', 'small', 'big', 'large']),
+  indent: PropTypes.oneOf(['', 'small', 'medium', 'big']),
   size: PropTypes.oneOf(['small', '', 'big', 'large']),
-  spacing: PropTypes.oneOf(['', 'small', 'big', 'large']),
+  spacing: PropTypes.oneOf(['', 'small', 'medium', 'big']),
+  bottomSpace: PropTypes.oneOf(['', 'none', 'small', 'medium', 'big']),
+  topSpace: PropTypes.oneOf(['', 'none', 'small', 'medium', 'big']),
+  push: PropTypes.oneOf(['', 'left', 'right']),
   color: PropTypes.oneOf([
-    'default',
     'error',
     'inherit',
     'primary',
@@ -186,17 +312,23 @@ Typography.propTypes = {
     'danger',
     'hint',
   ]),
-  grey: PropTypes.number,
   weight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   link: PropTypes.bool,
   component: PropTypes.elementType,
 };
 Typography.defaultProps = {
+  anchor: null,
+  hrefAnchor: '',
   className: '',
-  color: 'default',
+  children: null,
+  blockquote: false,
+  display: 'initial',
+  color: undefined,
+  bottomSpace: '',
+  topSpace: '',
+  push: '',
   inverted: false,
   code: false,
-  grey: undefined,
   indent: '',
   size: '',
   spacing: '',

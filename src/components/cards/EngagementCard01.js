@@ -58,10 +58,10 @@ EngagementCard01.getTheme = muiBaseTheme => ({
         },
         '& .MuiCardContent-root': {
           textAlign: 'left',
-          padding: muiBaseTheme.spacing.unit * 3,
+          padding: muiBaseTheme.spacing(3),
         },
         '& .MuiDivider-root': {
-          margin: `${muiBaseTheme.spacing.unit * 3}px 0`,
+          margin: muiBaseTheme.spacing(3, 0),
         },
         '& .MuiTypography--heading': {
           fontWeight: 'bold',
@@ -73,7 +73,7 @@ EngagementCard01.getTheme = muiBaseTheme => ({
           display: 'inline-block',
           border: '2px solid white',
           '&:not(:first-of-type)': {
-            marginLeft: -muiBaseTheme.spacing.unit,
+            marginLeft: -muiBaseTheme.spacing(1),
           },
         },
       },

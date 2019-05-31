@@ -1,5 +1,5 @@
 export default ({ spacing, palette, breakpoints }) => {
-  const px = spacing.unit * 2;
+  const px = spacing(2);
   return {
     MuiListSubheader: {
       root: {
@@ -116,7 +116,7 @@ export default ({ spacing, palette, breakpoints }) => {
           backgroundColor: '#F5F8FA',
         },
       },
-      focusVisible: {
+      '&$focusVisible': {
         backgroundColor: 'rgba(230, 236, 240, 0.7)',
       },
     },

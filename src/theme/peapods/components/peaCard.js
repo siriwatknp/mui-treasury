@@ -17,8 +17,8 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
             display: 'flex',
             alignItems: 'center',
             position: 'absolute',
-            bottom: spacing.unit * 1.5,
-            left: spacing.unit * 1.5,
+            bottom: spacing(1.5),
+            left: spacing(1.5),
             border: '1px solid #ffffff',
             borderRadius: 4,
             padding: 4,
@@ -29,13 +29,13 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
         },
         '& > .MuiCardContent-root': {
           textAlign: 'left',
-          padding: spacing.unit * 2,
+          padding: spacing(2),
         },
         '& .MuiTypography--heading': {
           fontWeight: 'bold',
           textAlign: 'left',
           fontSize: '1rem',
-          marginBottom: spacing.unit * 1.5,
+          marginBottom: spacing(1.5),
         },
         '& .MuiTypography--subheading': {
           lineHeight: 1.8,
@@ -44,7 +44,7 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
           display: 'inline-block',
           border: '2px solid white',
           '&:not(:first-of-type)': {
-            marginLeft: -spacing.unit,
+            marginLeft: -spacing(1),
           },
         },
       },
@@ -59,12 +59,12 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
             position: 'absolute',
             bottom: 0,
             transform: 'translateY(32%)',
-            left: spacing.unit * 1.5,
+            left: spacing(1.5),
             border: '2px solid #ffffff',
           },
         },
         '& > .MuiCardContent-root': {
-          paddingTop: spacing.unit,
+          paddingTop: spacing(1),
         },
         '& .MuiTypography--heading': {
           fontWeight: 'bold',
@@ -73,7 +73,7 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
         },
         '& .MuiTypography--subheading': {
           color: palette.text.secondary,
-          marginBottom: spacing.unit * 1.5,
+          marginBottom: spacing(1.5),
           textAlign: 'left',
           fontSize: 12,
         },
@@ -107,7 +107,7 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
           [breakpoints.up('sm')]: {
             width: 104,
             height: 104,
-            left: spacing.unit * 1.5,
+            left: spacing(1.5),
           },
         },
         '& .PeaFullProfile-profileImgBtn': {
@@ -117,7 +117,7 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
           left: 0,
           borderRadius: '50%',
           [breakpoints.up('sm')]: {
-            left: spacing.unit * 1.5,
+            left: spacing(1.5),
           },
           '& .MuiAvatar-root-profilePic': {
             '&:after': {
@@ -153,7 +153,7 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
           zIndex: 2,
           background: palette.common.white,
           marginTop: '36%',
-          borderRadius: spacing.unit * 2,
+          borderRadius: spacing(2),
           [breakpoints.up('sm')]: {
             marginTop: '24%',
           },
@@ -183,7 +183,7 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
           [breakpoints.up('sm')]: {
             width: 104,
             height: 104,
-            left: spacing.unit * 1.5,
+            left: spacing(1.5),
           },
         },
         '& .PeaAccountProfile-profileImgBtn': {
@@ -193,7 +193,7 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
           left: 0,
           borderRadius: '50%',
           [breakpoints.up('sm')]: {
-            left: spacing.unit * 1.5,
+            left: spacing(1.5),
           },
           '& .MuiAvatar-root-profilePic': {
             '&:after': {
@@ -229,7 +229,7 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
           zIndex: 2,
           background: palette.common.white,
           marginTop: '36%',
-          borderRadius: spacing.unit * 2,
+          borderRadius: spacing(2),
           [breakpoints.up('sm')]: {
             marginTop: '24%',
           },
@@ -301,10 +301,10 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
         '& .MuiCardContent-root': {
           minWidth: 280,
           textAlign: 'left',
-          padding: spacing.unit * 2,
+          padding: spacing(2),
           '& .MuiListItem-root': {
             padding: 0,
-            paddingBottom: spacing.unit * 2,
+            paddingBottom: spacing(2),
           },
           '& .PeaPersonCard-bio': {
             '& b': {
@@ -328,7 +328,7 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
             position: 'absolute',
             bottom: 0,
             transform: 'translateY(32%)',
-            left: spacing.unit * 1.5,
+            left: spacing(1.5),
             border: '2px solid #ffffff',
           },
         },
@@ -358,7 +358,7 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
           zIndex: 2,
           background: palette.common.white,
           marginTop: '36%',
-          borderRadius: spacing.unit * 2,
+          borderRadius: spacing(2),
           [breakpoints.up('sm')]: {
             marginTop: '36%',
           },

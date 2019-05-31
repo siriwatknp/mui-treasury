@@ -34,7 +34,7 @@ RewardCard01.getTheme = muiBaseTheme => ({
   MuiCard: {
     root: {
       '&.MuiRewardCard--01': {
-        borderRadius: muiBaseTheme.spacing.unit * 2, // 16px
+        borderRadius: muiBaseTheme.spacing(2), // 16px
         transition: '0.3s',
         boxShadow: '0px 14px 80px rgba(34, 35, 58, 0.2)',
         width: '95%',
@@ -56,7 +56,7 @@ RewardCard01.getTheme = muiBaseTheme => ({
         },
         '& .MuiCardContent-root': {
           textAlign: 'left',
-          padding: muiBaseTheme.spacing.unit * 2,
+          padding: muiBaseTheme.spacing(2),
         },
         '& .MuiTypography--overline': {
           lineHeight: 2,
@@ -70,7 +70,7 @@ RewardCard01.getTheme = muiBaseTheme => ({
           letterSpacing: 0.5,
         },
         '& .MuiTypography--subheading': {
-          marginBottom: muiBaseTheme.spacing.unit * 2,
+          marginBottom: muiBaseTheme.spacing(2),
           color: '#ffffff',
         },
         '& .MuiButton--readMore': {

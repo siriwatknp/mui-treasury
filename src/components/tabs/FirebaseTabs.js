@@ -21,7 +21,7 @@ const FirebaseTabs = () => {
 FirebaseTabs.getTheme = muiBaseTheme => ({
   MuiTabs: {
     root: {
-      marginLeft: muiBaseTheme.spacing.unit,
+      marginLeft: muiBaseTheme.spacing(1),
     },
     indicator: {
       height: 3,
@@ -33,7 +33,7 @@ FirebaseTabs.getTheme = muiBaseTheme => ({
   MuiTab: {
     root: {
       textTransform: 'initial',
-      margin: `0 ${muiBaseTheme.spacing.unit * 2}px`,
+      margin: muiBaseTheme.spacing(0, 2),
       minWidth: 0,
       [muiBaseTheme.breakpoints.up('md')]: {
         minWidth: 0,

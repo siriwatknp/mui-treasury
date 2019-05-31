@@ -1,7 +1,7 @@
 export default ({ spacing }) => {
   const createSize = value => ({
-    width: value * spacing.unit,
-    height: value * spacing.unit,
+    width: value * spacing(1),
+    height: value * spacing(1),
   });
   return {
     MuiAvatar: {

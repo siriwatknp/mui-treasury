@@ -24,15 +24,15 @@ const ElevatedTabs = () => {
 ElevatedTabs.getTheme = theme => {
   const tabsBackground = 'linear-gradient(60deg, #ab47bc, #8e24aa)';
   const indicatorBackground = 'rgba(255, 255, 255, .2)';
-  const borderRadius = theme.spacing.unit;
-  const tabsGutter = theme.spacing.unit * 2;
+  const borderRadius = theme.spacing(1);
+  const tabsGutter = theme.spacing(2);
   const labelColor = '#ffffff';
 
   return {
     MuiTabs: {
       root: {
         width: '100%',
-        borderRadius: theme.spacing.unit,
+        borderRadius: theme.spacing(1),
         background: tabsBackground,
         padding: 10,
         boxShadow: '0px 3px 15px rgba(34, 35, 58, 0.5)',

@@ -1,8 +1,8 @@
 export default ({ spacing, palette }) => ({
   // MuiFormControl is in ./peaTextField
   MuiFormControlLabel: {
-    root: { marginRight: spacing.unit * 3 },
-    label: { marginLeft: -spacing.unit / 2 },
+    root: { marginRight: spacing(3) },
+    label: { marginLeft: -spacing(0.5) },
   },
   MuiFormLabel: {
     root: {

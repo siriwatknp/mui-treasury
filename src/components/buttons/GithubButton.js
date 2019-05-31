@@ -11,7 +11,7 @@ export const getTheme = theme => ({
       '& svg': {
         fontSize: 16,
         marginLeft: -2,
-        marginRight: theme.spacing.unit / 2,
+        marginRight: theme.spacing(0.5),
       },
     },
     label: {

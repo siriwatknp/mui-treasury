@@ -23,7 +23,7 @@ const theme = {
     background,
   },
   shape: {
-    borderRadius: muiBaseTheme.spacing.unit,
+    borderRadius: muiBaseTheme.spacing(1),
   },
   overrides,
   props: {

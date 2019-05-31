@@ -2,10 +2,10 @@ export default ({ spacing }) => ({
   MuiIconButton: {
     root: {
       '&.MuiIconButton--small': {
-        padding: spacing.unit,
+        padding: spacing(1),
       },
       '&.MuiIconButton--tiny': {
-        padding: spacing.unit / 2,
+        padding: spacing(0.5),
       },
     },
   },
