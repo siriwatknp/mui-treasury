@@ -17,7 +17,7 @@ const generateIconImport = ({ type, style }) => {
     if (style === 'chevron')
       return `import MenuIcon from '@material-ui/icons/Menu';
   import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-  import ChevronLeftIcon from '@material-ui/icons/ChevronRight';`;
+  import ChevronRightIcon from '@material-ui/icons/ChevronRight';`;
     if (style === 'arrow')
       return `import MenuIcon from '@material-ui/icons/Menu';
   import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
