@@ -1,5 +1,5 @@
 /**
- * Current VERSION 1.2
+ * Current VERSION 1.3
  *
  * vX.Y meaning
  * X = major changes ex. add/remove/rename some props/className,
@@ -63,6 +63,10 @@ const createStylesBySize = (css, cls, values, breakpoints) =>
     {},
   );
 
+// call Typography.setSecondFamily("your font family") in App.js
+// before using
+let secondFamilyVar = '';
+
 const useStyles = makeStyles(({ palette, spacing, breakpoints }) => {
   const invertedColor = palette.common.white;
   const codeStyle = {
@@ -79,7 +83,7 @@ const useStyles = makeStyles(({ palette, spacing, breakpoints }) => {
       // eslint-disable-next-line max-len
       "'SFMono-Regular',Consolas,'Liberation Mono',Menlo,Courier,monospace",
   };
-  const blockquoteStyle = {
+  const blockQuoteStyle = {
     // change code style here!
     // default style is similar to reactjs.org
     // https://reactjs.org/docs/
@@ -93,7 +97,7 @@ const useStyles = makeStyles(({ palette, spacing, breakpoints }) => {
   return {
     root: {
       '&.-code, & code': codeStyle,
-      '&.-blockquote, & blockquote': blockquoteStyle,
+      '&.-blockquote, & blockquote': blockQuoteStyle,
       '& ul, ol': {
         paddingLeft: spacing(3),
       },
@@ -105,6 +109,12 @@ const useStyles = makeStyles(({ palette, spacing, breakpoints }) => {
       },
       '&.-inverted:not(.-code)': {
         color: invertedColor,
+      },
+      // family
+      // call Typography.setSecondFamily("your font family") in App.js
+      // before using
+      '&.-second-family': {
+        fontFamily: secondFamilyVar,
       },
       // colors
       ...createStylesBySize('color', '&.-color-', [
@@ -228,6 +238,7 @@ const Typography = ({
   weight,
   size,
   inverted,
+  secondFamily,
   spacing,
   ...props
 }) => {
@@ -250,6 +261,7 @@ const Typography = ({
       bottomSpace && `-mb-${bottomSpace}`,
       topSpace && `-mt-${topSpace}`,
       push && `-push-${push}`,
+      secondFamily && '-second-family',
     ),
     display: injectDisplay(display),
     color: injectColor(color),
@@ -315,6 +327,7 @@ Typography.propTypes = {
   weight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   link: PropTypes.bool,
   component: PropTypes.elementType,
+  secondFamily: PropTypes.bool,
 };
 Typography.defaultProps = {
   anchor: null,
@@ -322,7 +335,7 @@ Typography.defaultProps = {
   className: '',
   children: null,
   blockquote: false,
-  display: 'initial',
+  display: undefined,
   color: undefined,
   bottomSpace: '',
   topSpace: '',
@@ -335,7 +348,11 @@ Typography.defaultProps = {
   weight: undefined,
   link: false,
   component: undefined,
+  secondFamily: false,
 };
 Typography.getTheme = () => {};
+Typography.setSecondFamily = family => {
+  secondFamilyVar = family;
+};
 
 export default Typography;

@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import { ThemeProvider } from '@material-ui/styles';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from 'components/predefined/Typography';
 import Box from '@material-ui/core/Box';
 import AmiLargeHeader from './components/header';
 import theme from './theme';
@@ -11,6 +12,8 @@ import theme from './theme';
 const url =
   // eslint-disable-next-line max-len
   'https://fonts.googleapis.com/css?family=Poppins:200,400,500,700,900|Oswald:400,700&display=swap';
+
+Typography.setSecondFamily("'Oswald', sans-serif");
 
 const AmigoHome = () => {
   const renderParagraph = () => (
@@ -32,6 +35,9 @@ const AmigoHome = () => {
         <CssBaseline />
         <AmiLargeHeader />
         <Container maxWidth={'sm'}>
+          <Typography secondFamily bottomSpace={'small'}>
+            Hello
+          </Typography>
           <Box>{[...new Array(20)].map(renderParagraph)}</Box>
         </Container>
       </>
