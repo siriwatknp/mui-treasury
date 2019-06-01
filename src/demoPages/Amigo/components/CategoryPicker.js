@@ -8,7 +8,7 @@ import Typography from 'components/predefined/Typography';
 const CategoryPicker = ({ categories }) => (
   <List>
     {categories.map(({ active, title, amount }) => {
-      const color = active ? 'primary' : 'default';
+      const color = active ? 'primary' : 'textSecondary';
       return (
         <ListItem button key={title} dense>
           <ListItemText primary={title} primaryTypographyProps={{ color }} />

@@ -16,6 +16,9 @@ import ProductCard from './components/ProductCard';
 import Expander from './components/Expander';
 import CategoryPicker from './components/CategoryPicker';
 import PricePicker from './components/PricePicker';
+import BrandPicker from './components/BrandPicker';
+import ColorPicker from './components/ColorPicker';
+import SizePicker from './components/SizePicker';
 import theme from './theme';
 
 const url =
@@ -97,11 +100,22 @@ const AmigoHome = () => (
                       <PricePicker min={10} max={400} />
                     </Expander>
                     <Divider light />
-                    <Expander label={'BRAND'}>BRAND</Expander>
+                    <Expander label={'BRAND'}>
+                      <BrandPicker brands={BrandPicker.data} />
+                    </Expander>
                     <Divider light />
-                    <Expander label={'COLOR'}>COLOR</Expander>
+                    <Expander label={'COLOR'}>
+                      <Box p={1}>
+                        <ColorPicker colors={ColorPicker.data} />
+                      </Box>
+                    </Expander>
                     <Divider light />
-                    <Expander label={'SIZE'}>SIZE</Expander>
+                    <Expander label={'SIZE'}>
+                      <Box p={1}>
+                        <SizePicker sizes={SizePicker.data} />
+                      </Box>
+                    </Expander>
+                    <Divider light />
                   </Grid>
                 </Hidden>
                 <Grid item xs={12} sm={8} md={9}>

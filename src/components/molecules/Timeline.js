@@ -132,6 +132,7 @@ const Timeline = ({ data, onMouseOver, onFocus, onMouseLeave }) => (
             sm: 20,
             md: 24,
           }}
+          my={0}
         >
           {primary}
         </Text>

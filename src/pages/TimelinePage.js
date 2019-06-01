@@ -18,7 +18,7 @@ const eCommerce01MegaMenu =
 const eCommerce01AppBar =
   'https://firebasestorage.googleapis.com/v0/b/mui-treasury.appspot.com/o/public%2Fe-commerce_01%2Fe-commerce-01_appBar.png?alt=media';
 const eCommerce01Collapsor =
-  'https://firebasestorage.googleapis.com/v0/b/mui-treasury.appspot.com/o/public%2Fe-commerce_01%2Fe-commerce-01_collapsor.png?alt=media';
+  'https://firebasestorage.googleapis.com/v0/b/mui-treasury.appspot.com/o/public%2Fe-commerce_01%2Fe-commerce-01_expander.png?alt=media';
 const eCommerce01ColorPicker =
   'https://firebasestorage.googleapis.com/v0/b/mui-treasury.appspot.com/o/public%2Fe-commerce_01%2Fe-commerce-01_colorPicker.png?alt=media';
 const eCommerce01Pagination =
@@ -177,7 +177,7 @@ const TimelinePage = () => {
               />
               <PersistentImage
                 src={eCommerce01Collapsor}
-                visible={activeImages.includes('os-collapsor-01')}
+                visible={activeImages.includes('os-expander-01')}
               />
               <PersistentImage
                 src={eCommerce01ColorPicker}
@@ -220,27 +220,37 @@ const TimelinePage = () => {
               {
                 id: 'os-productAds-01',
                 primary: 'Product Ads',
-                state: 'processing',
+                link: '/demo-pages/amigo-e-commerce',
+                state: 'done',
               },
               {
                 id: 'os-productCard-01',
                 primary: 'Product Card',
+                link: '/demo-pages/amigo-e-commerce',
+                state: 'done',
               },
               {
-                id: 'os-collapsor-01',
-                primary: 'Collapsor',
+                id: 'os-expander-01',
+                primary: 'Expander',
+                link: '/demo-pages/amigo-e-commerce',
+                state: 'done',
               },
               {
                 id: 'os-colorPicker-01',
                 primary: 'Color Picker',
+                link: '/demo-pages/amigo-e-commerce',
+                state: 'done',
               },
               {
                 id: 'os-sizePicker-01',
                 primary: 'Size Picker',
+                link: '/demo-pages/amigo-e-commerce',
+                state: 'done',
               },
               {
                 id: 'os-pagination-01',
                 primary: 'Pagination',
+                state: 'processing',
               },
               {
                 id: 'os-page-01',

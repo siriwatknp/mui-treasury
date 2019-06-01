@@ -5,15 +5,16 @@ import Box from '@material-ui/core/Box';
 import Slider from '@material-ui/lab/Slider';
 import Typography from 'components/predefined/Typography';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(({ transitions }) => ({
   value: ({ dragging }) => ({
     opacity: dragging ? 1 : 0,
+    transition: transitions.create(),
     position: 'absolute',
     left: '50%',
-    top: -16,
-    transform: 'translateX(-50%)',
+    top: -20,
+    transform: `translateX(-50%) scale(${dragging ? 1.2 : 1})`,
   }),
-});
+}));
 
 const PricePicker = ({ min, max, ...props }) => {
   const [value, setValue] = useState(100);
