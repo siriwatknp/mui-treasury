@@ -34,10 +34,7 @@ const PricePicker = ({ min, max, ...props }) => {
           max={max}
           thumb={
             <Box bgcolor={'primary.main'} borderRadius={'50%'}>
-              <Typography
-                className={classes.value}
-                size={'small'}
-              >
+              <Typography className={classes.value} size={'small'}>
                 {value}
               </Typography>
             </Box>
