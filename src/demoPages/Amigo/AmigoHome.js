@@ -35,7 +35,9 @@ const AmigoHome = () => {
         <CssBaseline />
         <AmiLargeHeader />
         <Container maxWidth={'sm'}>
-          <Typography secondFamily bottomSpace={'small'}>Hello</Typography>
+          <Typography secondFamily bottomSpace={'small'}>
+            Hello
+          </Typography>
           <Box>{[...new Array(20)].map(renderParagraph)}</Box>
         </Container>
       </>
