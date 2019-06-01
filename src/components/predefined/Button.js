@@ -6,7 +6,7 @@
  *     could affect other components
  * Y = minor changes ex. fix bug or internal logic, won't effect other component
  */
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import Color from 'color';
 import cx from 'clsx';
@@ -414,73 +414,79 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing, shadows }) => {
   };
 });
 
-const Button = ({
-  className,
-  color,
-  inverted,
-  loading,
-  elongated,
-  size,
-  shape,
-  compact,
-  shadowless,
-  labelExpanded,
-  mobileFullWidth,
-  icon,
-  iconIsolated,
-  iconProps,
-  iconPosition,
-  children,
-  loaderProps,
-  ...props
-}) => {
-  const iconComponent =
-    typeof icon === 'string' ? <Icon {...iconProps}>{icon}</Icon> : icon;
-  const loaderSize = getLoaderSize(size);
-  const renderChildren = () =>
-    icon ? <span className={'MuiButton-span'}>{children}</span> : children;
-  const { root, label, ...classes } = useStyles();
-  return (
-    <MuiButton
-      className={cx(
-        className,
-        inverted && '-inverted',
-        loading && '-loading',
-        elongated && '-elongated',
-        color && `-color-${color}`,
-        size && `-size-${size}`,
-        shape && `-shape-${shape}`,
-        labelExpanded && '-labelExpanded',
-        mobileFullWidth && '-mobileFullWidth',
-        shadowless && '-shadowless',
-        compact && '-compact',
-      )}
-      color={injectColor(color)}
-      {...props}
-      classes={{
-        root: cx('MuiButton-root', root),
-        label: cx('MuiButton-label', iconIsolated && '-icon-isolated', label),
-        ...classes,
-      }}
-    >
-      {loading && (
-        <CircularProgress
-          thickness={6}
-          {...loaderProps}
-          size={loaderSize}
-          style={{
-            marginLeft: -loaderSize / 2,
-            marginTop: -loaderSize / 2,
-          }}
-          className={'MuiButton-loader'}
-        />
-      )}
-      {icon && iconPosition === 'start' && iconComponent}
-      {shape !== 'circular' && renderChildren()}
-      {icon && iconPosition === 'end' && iconComponent}
-    </MuiButton>
-  );
-};
+const Button = forwardRef(
+  (
+    {
+      className,
+      color,
+      inverted,
+      loading,
+      elongated,
+      size,
+      shape,
+      compact,
+      shadowless,
+      labelExpanded,
+      mobileFullWidth,
+      icon,
+      iconIsolated,
+      iconProps,
+      iconPosition,
+      children,
+      loaderProps,
+      ...props
+    },
+    ref,
+  ) => {
+    const iconComponent =
+      typeof icon === 'string' ? <Icon {...iconProps}>{icon}</Icon> : icon;
+    const loaderSize = getLoaderSize(size);
+    const renderChildren = () =>
+      icon ? <span className={'MuiButton-span'}>{children}</span> : children;
+    const { root, label, ...classes } = useStyles();
+    return (
+      <MuiButton
+        ref={ref}
+        className={cx(
+          className,
+          inverted && '-inverted',
+          loading && '-loading',
+          elongated && '-elongated',
+          color && `-color-${color}`,
+          size && `-size-${size}`,
+          shape && `-shape-${shape}`,
+          labelExpanded && '-labelExpanded',
+          mobileFullWidth && '-mobileFullWidth',
+          shadowless && '-shadowless',
+          compact && '-compact',
+        )}
+        color={injectColor(color)}
+        {...props}
+        classes={{
+          root: cx('MuiButton-root', root),
+          label: cx('MuiButton-label', iconIsolated && '-icon-isolated', label),
+          ...classes,
+        }}
+      >
+        {loading && (
+          <CircularProgress
+            thickness={6}
+            {...loaderProps}
+            size={loaderSize}
+            style={{
+              marginLeft: -loaderSize / 2,
+              marginTop: -loaderSize / 2,
+            }}
+            className={'MuiButton-loader'}
+          />
+        )}
+        {icon && iconPosition === 'start' && iconComponent}
+        {shape !== 'circular' && renderChildren()}
+        {icon && iconPosition === 'end' && iconComponent}
+      </MuiButton>
+    );
+  },
+);
 
 Button.propTypes = {
   className: PropTypes.string,

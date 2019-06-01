@@ -66,7 +66,7 @@ const AmiLargeHeader = () => {
                 />
               </Grid>
               <Grid item xs container alignItems={'center'} justify={'center'}>
-                <Typography variant={'h5'} weight={'900'} spacing={'large'}>
+                <Typography variant={'h5'} weight={'900'} spacing={'big'}>
                   AMIGO
                 </Typography>
               </Grid>
