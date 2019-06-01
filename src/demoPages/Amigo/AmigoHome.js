@@ -15,6 +15,7 @@ import ProductAds from './components/ProductAds';
 import ProductCard from './components/ProductCard';
 import Expander from './components/Expander';
 import CategoryPicker from './components/CategoryPicker';
+import PricePicker from './components/PricePicker';
 import theme from './theme';
 
 const url =
@@ -92,7 +93,9 @@ const AmigoHome = () => (
                       <CategoryPicker categories={CategoryPicker.data} />
                     </Expander>
                     <Divider light />
-                    <Expander label={'PRICE'}>PRICE</Expander>
+                    <Expander label={'PRICE'}>
+                      <PricePicker min={10} max={400} />
+                    </Expander>
                     <Divider light />
                     <Expander label={'BRAND'}>BRAND</Expander>
                     <Divider light />
