@@ -4,9 +4,13 @@ import { Helmet } from 'react-helmet';
 import { ThemeProvider } from '@material-ui/styles';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from 'components/predefined/Typography';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
+import Typography from 'components/predefined/Typography';
 import AmiLargeHeader from './components/header';
+import ProductAds from './components/ProductAds';
+import Expander from './components/Expander';
 import theme from './theme';
 
 const url =
@@ -34,12 +38,52 @@ const AmigoHome = () => {
         </Helmet>
         <CssBaseline />
         <AmiLargeHeader />
-        <Container maxWidth={'sm'}>
-          <Typography secondFamily bottomSpace={'small'}>
-            Hello
+        <Box
+          bgcolor={'#CDD5FF'}
+          height={{ xs: 144, md: 200 }}
+          textAlign={'center'}
+          pt={{ xs: 3, md: 5 }}
+        >
+          <Typography
+            secondFamily
+            weight={'bold'}
+            size={'big'}
+            bottomSpace={'small'}
+          >
+            MEN’S LIFESTYLE SHOE
           </Typography>
-          <Box>{[...new Array(20)].map(renderParagraph)}</Box>
-        </Container>
+          <Typography>TOTAL 319 ITEMS</Typography>
+        </Box>
+        <Box mt={{ xs: -5, md: -8 }}>
+          <Container fixed>
+            <Box mx={{ xs: -2, sm: 0 }}>
+              <Paper elevation={6}>
+                <Grid container>
+                  <Grid item xs={12} sm={6} md={5}>
+                    <ProductAds
+                      {...ProductAds.test1}
+                      contentSide={'left'}
+                      contentBoxProps={{ maxWidth: 200 }}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6} md={7}>
+                    <ProductAds
+                      {...ProductAds.test2}
+                      contentSide={'right'}
+                      contentBoxProps={{ maxWidth: 300 }}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container>
+                  <Grid item xs={12} sm={4} md={3}>
+                    <Expander label={'CATEGORY'}>test</Expander>
+                  </Grid>
+                </Grid>
+                <Box>{[...new Array(20)].map(renderParagraph)}</Box>
+              </Paper>
+            </Box>
+          </Container>
+        </Box>
       </>
     </ThemeProvider>
   );
