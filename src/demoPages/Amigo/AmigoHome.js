@@ -10,7 +10,7 @@ import theme from './theme';
 
 const url =
   // eslint-disable-next-line max-len
-  'https://fonts.googleapis.com/css?family=Poppins:200,400,500,700,900&display=swap';
+  'https://fonts.googleapis.com/css?family=Poppins:200,400,500,700,900|Oswald:400,700&display=swap';
 
 const AmigoHome = () => {
   const renderParagraph = () => (
