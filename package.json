@@ -33,7 +33,7 @@
     "@material-ui/lab": "^4.0.0-alpha.13",
     "@material-ui/styles": "^4.0.0",
     "@material-ui/system": "^4.0.0",
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "classnames": "^2.2.6",
     "clsx": "^1.0.3",
     "color": "^3.1.0",
