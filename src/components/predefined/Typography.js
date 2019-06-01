@@ -1,5 +1,5 @@
 /**
- * Current VERSION 1.2
+ * Current VERSION 1.3
  *
  * vX.Y meaning
  * X = major changes ex. add/remove/rename some props/className,

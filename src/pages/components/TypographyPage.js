@@ -102,7 +102,7 @@ const TypographyPage = ({ globalTheme }) => {
         color={'textPrimary'}
         gutterBottom
       >
-        Predefined Typography <code>v1.2</code>
+        Predefined Typography <code>v1.3</code>
       </Text>
       <Box my={1}>
         <Text variant={'caption'} align={'left'} gutterBottom>
