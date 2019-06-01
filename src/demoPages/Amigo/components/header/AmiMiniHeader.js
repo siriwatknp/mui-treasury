@@ -131,7 +131,7 @@ const AmiMiniHeader = ({ menus }) => {
                 />
               </Grid>
               <Grid item xs>
-                <Typography variant={'h5'} weight={900} spacing={'large'}>
+                <Typography variant={'h5'} weight={900} spacing={'big'}>
                   AMIGO
                 </Typography>
               </Grid>

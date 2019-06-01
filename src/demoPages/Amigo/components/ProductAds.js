@@ -123,7 +123,7 @@ ProductAds.propTypes = {
   imageCentered: PropTypes.bool,
   actionLabel: PropTypes.string,
   bgColor: PropTypes.string,
-  contentSide: PropTypes.oneOfType(['right', 'left']),
+  contentSide: PropTypes.oneOf(['right', 'left']),
   rootBoxProps: PropTypes.shape({}),
   contentBoxProps: PropTypes.shape({}),
 };

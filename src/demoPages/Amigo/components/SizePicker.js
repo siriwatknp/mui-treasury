@@ -31,7 +31,7 @@ const Size = ({ size, checked }) => {
 };
 
 Size.propTypes = {
-  size: PropTypes.string.isRequired,
+  size: PropTypes.number.isRequired,
   checked: PropTypes.bool,
 };
 Size.defaultProps = {
@@ -52,7 +52,7 @@ SizePicker.Size = Size;
 SizePicker.propTypes = {
   sizes: PropTypes.arrayOf(
     PropTypes.shape({
-      size: PropTypes.string,
+      size: PropTypes.number,
       checked: PropTypes.bool,
     }),
   ),
