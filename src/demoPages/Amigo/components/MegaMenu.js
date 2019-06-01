@@ -93,7 +93,7 @@ const MegaMenu = ({ menus, subMenus, cover }) => {
                     }
                   >
                     {children.map(subLabel => (
-                      <ListItem key={subLabel} button>
+                      <ListItem key={subLabel} button dense>
                         <ListItemText primary={subLabel} />
                       </ListItem>
                     ))}
