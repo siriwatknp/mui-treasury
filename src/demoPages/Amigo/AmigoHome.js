@@ -14,6 +14,7 @@ import AmiLargeHeader from './components/header';
 import ProductAds from './components/ProductAds';
 import ProductCard from './components/ProductCard';
 import Expander from './components/Expander';
+import CategoryPicker from './components/CategoryPicker';
 import theme from './theme';
 
 const url =
@@ -87,7 +88,9 @@ const AmigoHome = () => (
               <Grid container>
                 <Hidden only={'xs'}>
                   <Grid item xs={12} sm={4} md={3}>
-                    <Expander label={'CATEGORY'}>Category</Expander>
+                    <Expander label={'CATEGORY'}>
+                      <CategoryPicker categories={CategoryPicker.data} />
+                    </Expander>
                     <Divider light />
                     <Expander label={'PRICE'}>PRICE</Expander>
                     <Divider light />

@@ -20,7 +20,7 @@ const Expander = ({ children, label }) => {
         </ListItemText>
       </ListItem>
       <Collapse in={open} timeout="auto" unmountOnExit>
-        <Box pl={{ xs: 2, md: 3 }} py={1}>
+        <Box pl={{ xs: 2, md: 3 }} pb={2}>
           {children}
         </Box>
       </Collapse>
