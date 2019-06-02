@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import { makeStyles } from '@material-ui/styles';
-import Typography from 'components/predefined/Typography';
+import ProductInfo from './ProductInfo';
 
 const useStyles = makeStyles(({ palette }) => ({
   buttonBase: {
@@ -47,19 +47,7 @@ const ProductCardFront = ({ name, price, image, bordered }) => {
             <img className={classes.img} src={image} alt={'product'} />
           </div>
         </Box>
-        <Box px={2} pb={2}>
-          <Typography
-            variant={'subtitle1'}
-            secondFamily
-            weight={'bold'}
-            gutterBottom
-          >
-            {name}
-          </Typography>
-          <Typography color={'primary'} weight={500}>
-            $ {price}
-          </Typography>
-        </Box>
+        <ProductInfo name={name} price={price} />
       </Box>
     </ButtonBase>
   );

@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Hidden from '@material-ui/core/Hidden';
 import Button from 'components/predefined/Button';
-import Typography from 'components/predefined/Typography';
+import ProductInfo from './ProductInfo';
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {
@@ -89,20 +89,12 @@ const ProductCardBack = forwardRef(({ className, style, name, price }, ref) => {
           </Box>
         </div>
       </Box>
-      <Box px={2} pb={2} mt={'-3px'} textAlign={'center'}>
-        <Typography
-          variant={'subtitle1'}
-          secondFamily
-          weight={'bold'}
-          gutterBottom
-          inverted
-        >
-          {name}
-        </Typography>
-        <Typography color={'primary'} weight={500} inverted>
-          $ {price}
-        </Typography>
-      </Box>
+      <ProductInfo
+        inverted
+        name={name}
+        price={price}
+        rootBoxProps={{ mt: '-3px', textAlign: 'center' }}
+      />
     </Box>
   );
 });
