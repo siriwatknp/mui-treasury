@@ -21,6 +21,7 @@ import ColorPicker from './components/ColorPicker';
 import SizePicker from './components/SizePicker';
 import Pagination from './components/Pagination';
 import EmailInput from './components/EmailInput';
+import MobileSelector from './components/MobileSelector';
 import theme from './theme';
 
 const url =
@@ -93,7 +94,12 @@ const AmigoHome = () => (
                     />
                   </Grid>
                 </Grid>
-                <Box pt={2} pb={3} />
+                <Hidden only={'xs'}>
+                  <Box pt={2} pb={3} />
+                </Hidden>
+                <Hidden smUp>
+                  <MobileSelector />
+                </Hidden>
                 <Divider light />
                 <Grid container>
                   <Hidden only={'xs'}>

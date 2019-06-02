@@ -60,6 +60,7 @@ const AmiMiniHeader = ({ menus }) => {
     const collapsed = collapsedIndex[level];
     const listItemText = (
       <ListItemText
+        key={label}
         style={{
           paddingLeft: (level - 1) * 20 + (level === 0 ? 0 : 28),
           marginLeft: level === 0 && !icon ? 28 : 0,
