@@ -69,6 +69,7 @@ import PeaMessageInput from 'components/peapods/PeaMessageInput';
 import PeaTrendingHashtagList from 'components/peapods/PeaTrendingHashtagList';
 import PeaToast from 'components/peapods/PeaToast';
 import PeaSwipeableTabs from 'components/peapods/PeaSwipeableTabs';
+import PodCard from 'components/peapods/PodCard';
 
 const PeaSelect = props => <PeaTextField {...props} />;
 PeaSelect.metadata = {
@@ -418,7 +419,7 @@ const components = [
       );
     },
     gridItemProps: {
-      sm: 8,
+      sm: 6,
       md: 6,
     },
   },
@@ -430,7 +431,7 @@ const components = [
       </Box>
     ),
     gridItemProps: {
-      sm: 8,
+      sm: 6,
       md: 6,
     },
   },
@@ -438,7 +439,7 @@ const components = [
     component: PeaPeopleList,
     render: () => <PeaPeopleList people={PEOPLE} />,
     gridItemProps: {
-      sm: 8,
+      sm: 6,
       md: 6,
     },
   },
@@ -457,7 +458,27 @@ const components = [
       />
     ),
     gridItemProps: {
-      sm: 8,
+      sm: 6,
+      md: 6,
+    },
+  },
+  {
+    component: PodCard,
+    render: () => (
+      <PodCard
+        name={'Celebration Event'}
+        people={PEOPLE}
+        image={
+          'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80'
+        }
+        price={49}
+        range={'2.4 miles'}
+        time={'Mon, Jun 31st, 5.00pm'}
+        images={[AVATAR, AVATAR, AVATAR]}
+      />
+    ),
+    gridItemProps: {
+      sm: 6,
       md: 6,
     },
   },
