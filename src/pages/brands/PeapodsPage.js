@@ -68,6 +68,7 @@ import PeaThreadHeader from 'components/peapods/PeaThreadHeader';
 import PeaMessageInput from 'components/peapods/PeaMessageInput';
 import PeaTrendingHashtagList from 'components/peapods/PeaTrendingHashtagList';
 import PeaToast from 'components/peapods/PeaToast';
+import PeaSwipeableTabs from 'components/peapods/PeaSwipeableTabs';
 
 const PeaSelect = props => <PeaTextField {...props} />;
 PeaSelect.metadata = {
@@ -297,6 +298,26 @@ const components = [
   {
     component: PeaTabs,
     render: () => <PeaTabs />,
+  },
+  {
+    component: PeaSwipeableTabs,
+    render: () => (
+      <div style={{ width: '100%' }}>
+        <PeaSwipeableTabs
+          tabs={[
+            { label: 'Tweet' },
+            { label: 'Responses' },
+            { label: 'Media' },
+            { label: 'Liking' },
+          ]}
+        >
+          <div style={{ height: 120, backgroundColor: '#feca59' }} />
+          <div style={{ height: 120, backgroundColor: '#B3DC4A' }} />
+          <div style={{ height: 120, backgroundColor: '#9ad9ff' }} />
+          <div style={{ height: 120, backgroundColor: '#f9aefe' }} />
+        </PeaSwipeableTabs>
+      </div>
+    ),
   },
   {
     component: PeaTextField,

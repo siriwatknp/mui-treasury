@@ -60,6 +60,7 @@
     "react-scripts": "2.1.8",
     "react-scroll": "^1.7.11",
     "react-select": "^2.4.1",
+    "react-swipeable-views": "^0.13.3",
     "yup": "^0.26.10"
   },
   "scripts": {

@@ -116,9 +116,6 @@ export default ({ spacing, palette, breakpoints }) => {
           backgroundColor: '#F5F8FA',
         },
       },
-      '&$focusVisible': {
-        backgroundColor: 'rgba(230, 236, 240, 0.7)',
-      },
     },
     MuiList: {
       root: {
