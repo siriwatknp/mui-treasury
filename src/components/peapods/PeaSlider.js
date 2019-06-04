@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Color from 'color';
 import Slider from '@material-ui/lab/Slider';
 import { withStyles } from '@material-ui/core/styles';
-import { ReactComponent as Logo } from './assets/peapods-logo-circle.svg';
+import Logo from './assets/peapods-logo-circle.svg';
 
 const styles = ({ palette }) => ({
   root: {
@@ -44,7 +44,7 @@ const PeaSlider = props => {
   return (
     <Slider
       className={'PeaSlider-root'}
-      thumb={<Logo />}
+      thumb={<img src={Logo} alt="slider-input" />}
       value={value}
       onChange={(e, val) => onChange(val)}
       {...props}

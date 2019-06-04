@@ -1,0 +1,21 @@
+{
+  "name": "@mui-treasury/peapods",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "./build/peapods.bundle.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "@babel/core": "7.4.5",
+    "@babel/plugin-proposal-class-properties": "7.4.4",
+    "@babel/preset-env": "7.4.5",
+    "@babel/preset-react": "7.0.0",
+    "babel-loader": "8.0.6",
+    "css-loader": "2.1.1",
+    "style-loader": "0.23.1",
+    "url-loader": "1.1.2",
+    "webpack": "4.32.2",
+    "webpack-cli": "^3.3.2"
+  }
+}
