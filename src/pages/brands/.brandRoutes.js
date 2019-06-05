@@ -1,4 +1,4 @@
-import PeapodsPage from './PeapodsPage';
+import PeapodsPage from 'brands/peapods/PeapodsPage';
 
 /**
  * id: [String] optional
