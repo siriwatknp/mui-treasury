@@ -4,9 +4,9 @@ import { styled } from '@material-ui/styles';
 import PropTypes from 'prop-types';
 import Chip from '@material-ui/core/Chip';
 import IconButton from '@material-ui/core/IconButton';
-import Icon from '@material-ui/core/Icon';
 import Box from 'components/atoms/Box';
 import Text from 'components/atoms/Text';
+import Icon from 'components/predefined/Icon';
 
 const Image = styled('img')({
   width: 24,
@@ -22,6 +22,7 @@ const PreviewWidget = ({
   white,
   inverted,
   sandboxLink,
+  onClickCode,
   name,
   description,
   onClick,
@@ -73,7 +74,12 @@ const PreviewWidget = ({
                     target={'_blank'}
                     component={'a'}
                     color={'primary'}
-                    deleteIcon={<Icon>call_made</Icon>}
+                    size={'small'}
+                    deleteIcon={
+                      <Icon inverted size={'small'}>
+                        call_made
+                      </Icon>
+                    }
                     onDelete={() => {}}
                     clickable
                     style={{ marginRight: 8 }}
@@ -82,6 +88,11 @@ const PreviewWidget = ({
               </Box>
             )}
           </Box>
+          {onClickCode && (
+            <IconButton onClick={onClickCode}>
+              <Icon>code</Icon>
+            </IconButton>
+          )}
           {onClick && (
             <IconButton onClick={onClick}>
               <Icon>search</Icon>
@@ -118,6 +129,7 @@ PreviewWidget.propTypes = {
   name: PropTypes.string,
   description: PropTypes.string,
   onClick: PropTypes.func,
+  onClickCode: PropTypes.func,
   contentProps: PropTypes.shape({}),
   rootProps: PropTypes.shape({}),
   sandboxLink: PropTypes.string,
@@ -130,6 +142,7 @@ PreviewWidget.defaultProps = {
   name: '',
   description: '',
   children: null,
+  onClickCode: undefined,
   onClick: undefined,
   contentProps: {},
   rootProps: {},

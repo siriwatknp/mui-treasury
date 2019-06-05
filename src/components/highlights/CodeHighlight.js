@@ -16,6 +16,9 @@ const CodeHighlight = ({ code, theme, padded, rounded, ...props }) => (
           borderRadius: 8,
         }),
       },
+      '& .token': {
+        fontSize: 12,
+      },
     }}
     {...props}
   >
