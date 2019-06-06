@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Script from 'react-load-script';
 import PropTypes from 'prop-types';
 
-import theme from '../../theme/peapods/peapodsTheme';
+import theme from './theme';
 
 // TODO: cloudinary should provide a native react component
 // https://github.com/cloudinary/cloudinary-react/issues/4

@@ -8,6 +8,7 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
+import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import PeaButton from './PeaButton';
@@ -68,7 +69,14 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 }));
 
-const PeaRegister = ({ open, onClose }) => {
+const PeaRegister = ({
+  open,
+  onClose,
+  onClickFacebook,
+  onClickGoogle,
+  onRegisterEmail,
+  onLogin,
+}) => {
   const classes = useStyles();
   return (
     <Modal className={classes.root} open={open} onClose={onClose}>
@@ -87,10 +95,15 @@ const PeaRegister = ({ open, onClose }) => {
               variant={'contained'}
               color={'primary'}
               icon={<PeaIcon icon={'fab fa-facebook-f'} bgColor={'white'} />}
+              onClick={onClickFacebook}
             >
               Register with Facebook
             </PeaButton>
-            <IconButton style={{ width: 45 }} className={'IconButton-google'}>
+            <IconButton
+              style={{ width: 45 }}
+              className={'IconButton-google'}
+              onClick={onClickGoogle}
+            >
               <img
                 alt={'google'}
                 src={
@@ -99,13 +112,22 @@ const PeaRegister = ({ open, onClose }) => {
               />
             </IconButton>
           </Box>
-          <Typography className={'PeaRegister-emailRegister'} component={'a'}>
-            Or Register with Email
+          <Typography className={'PeaRegister-emailRegister'}>
+            <Link
+              component={'button'}
+              onClick={onRegisterEmail}
+              variant={'subtitle1'}
+            >
+              Or Register with Email
+            </Link>
           </Typography>
         </CardContent>
         <CardActions className={'MuiCardActions-root'}>
           <Typography className={'PeaRegister-login'}>
-            <span>Already a member?</span> <a href={'#'}>Log in</a>
+            <span>Already a member?</span>{' '}
+            <Link component={'button'} onClick={onLogin} variant={'subtitle1'}>
+              Log in
+            </Link>
           </Typography>
         </CardActions>
       </Card>
@@ -119,6 +141,10 @@ PeaRegister.metadata = {
 PeaRegister.propTypes = {
   open: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
+  onClickFacebook: PropTypes.func.isRequired,
+  onClickGoogle: PropTypes.func.isRequired,
+  onRegisterEmail: PropTypes.func.isRequired,
+  onLogin: PropTypes.func.isRequired,
 };
 
 export default PeaRegister;
