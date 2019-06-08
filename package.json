@@ -69,7 +69,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "yarn build && firebase deploy --only hosting",
-    "lint": "eslint src -c .eslintrc.json --ext js,jsx"
+    "lint": "eslint src --ext js,jsx && npm run prettier",
+    "prettier": "prettier --write '**/*.{js,jsx,json,md}'"
   },
   "eslintConfig": {
     "extends": "react-app"

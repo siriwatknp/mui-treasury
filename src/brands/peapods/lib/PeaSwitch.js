@@ -1,16 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Switch from '@material-ui/core/Switch';
-import { ReactComponent as Logo } from './assets/peapods-logo-circle.svg';
+import Logo from './assets/peapods-logo-circle.svg';
 
 const PeaSwitch = ({ className, ...props }) => (
   <Switch
     className={`PeaSwitch-root ${className}`}
-    checkedIcon={
-      <div className={'PeaIcon'}>
-        <Logo />
-      </div>
-    }
+    checkedIcon={<img src={Logo} alt="toggle-input" className={'PeaIcon'} />}
     {...props}
   />
 );

@@ -13,7 +13,7 @@
     "import/no-unresolved": "off",
     "react/jsx-curly-brace-presence": "off"
   },
-  "parser": "babel-eslint", // arrow fn in class
+  "parser": "babel-eslint",
   "env": {
     "browser": true,
     "es6": true

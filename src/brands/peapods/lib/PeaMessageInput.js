@@ -8,7 +8,7 @@ import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { Picker } from 'emoji-mart';
 import 'emoji-mart/css/emoji-mart.css';
 import PeaIcon from './PeaIcon';
-import { ReactComponent as EmojiIcon } from './assets/peapods-logo-circle.svg';
+import EmojiIcon from './assets/peapods-logo-circle.svg';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -119,7 +119,12 @@ const PeaMessageInput = ({
           placeholder="Type your message"
           endAdornment={
             <InputAdornment position="end">
-              <EmojiIcon className={classes.icon} onClick={toggleEmoji} />
+              <img
+                src={EmojiIcon}
+                alt="emoji-picker"
+                className={classes.icon}
+                onClick={toggleEmoji}
+              />
             </InputAdornment>
           }
         />
