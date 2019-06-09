@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import PeaButton from './PeaButton';
 import PeaAvatar from './PeaAvatar';
 import PeaIcon from './PeaIcon';
-import { ReactComponent as Logo } from './assets/peapods-logo-circle.svg';
+import Logo from './assets/peapods-logo-circle.svg';
 
 const PeaNotificationItem = ({
   src,
@@ -26,7 +26,9 @@ const PeaNotificationItem = ({
   const renderSticker = () => {
     if (!sticker) return null;
     if (sticker === 'pea') {
-      return <Logo className={'MuiIcon-root -pea'} />;
+      return (
+        <img src={Logo} alt="pea-invite" className={'MuiIcon-root -pea'} />
+      );
     }
     return (
       <PeaIcon

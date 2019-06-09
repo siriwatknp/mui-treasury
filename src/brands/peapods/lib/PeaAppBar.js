@@ -10,7 +10,7 @@ import PeaMenuItem from './PeaMenuItem';
 import PeaAvatar from './PeaAvatar';
 import PeaButton from './PeaButton';
 import PeaSearchInput from './PeaSearchInput';
-import { ReactComponent as Logo } from './assets/peapods-logo-circle.svg';
+import Logo from './assets/peapods-logo-circle.svg';
 
 const styles = () => ({
   root: {
@@ -68,9 +68,7 @@ const PeaAppBar = ({ classes, ...props }) => (
         </Grid>
       </div>
       <div className={classes.stretch} />
-      <div style={{ width: 32, height: 32 }}>
-        <Logo />
-      </div>
+      <img alt="peapods-logo" src={Logo} style={{ width: 32, height: 32 }} />
       <div className={classes.stretch} />
       <div>
         <Grid container spacing={2}>
