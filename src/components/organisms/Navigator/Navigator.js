@@ -40,24 +40,55 @@ const introduction = [
   },
 ];
 
-const Navigator = withRouter(({ onClickItem, location }) => {
-  const renderItem = (item, listItemProps) => (
-    <ListItem
-      key={item.id || item.path}
-      button
-      component={Link}
-      to={item.path}
-      {...listItemProps}
-      selected={location.pathname === item.path}
-      onClick={onClickItem}
-    >
-      {item.icon && <ListItemIcon>{item.icon}</ListItemIcon>}
-      <Text variant={'subtitle1'}>{item.primaryText}</Text>
+// eslint-disable-next-line react/prop-types
+const Expander = ({ children, primaryText, secondaryText, path, selected }) => (
+  <>
+    <ListItem component={Link} to={path} button selected={selected}>
+      <Text variant={'subtitle1'}>{primaryText}</Text>
       <Text variant={'caption'} color={'grey.500'} ml={'auto'} mt={0.25} mb={0}>
-        {item.secondaryText}
+        {secondaryText}
       </Text>
     </ListItem>
-  );
+    <Box
+      pl={{
+        xs: 2,
+        md: 3,
+      }}
+    >
+      {children}
+    </Box>
+  </>
+);
+
+const Navigator = withRouter(({ onClickItem, location }) => {
+  const renderItem = (item, listItemProps) =>
+    item.children ? (
+      <Expander selected={location.pathname === item.path} {...item}>
+        {item.children.map(renderItem)}
+      </Expander>
+    ) : (
+      <ListItem
+        key={item.id || item.path}
+        button
+        component={Link}
+        to={item.path}
+        {...listItemProps}
+        selected={location.pathname === item.path}
+        onClick={onClickItem}
+      >
+        {item.icon && <ListItemIcon>{item.icon}</ListItemIcon>}
+        <Text variant={'subtitle1'}>{item.primaryText}</Text>
+        <Text
+          variant={'caption'}
+          color={'grey.500'}
+          ml={'auto'}
+          mt={0.25}
+          mb={0}
+        >
+          {item.secondaryText}
+        </Text>
+      </ListItem>
+    );
   return (
     <Box mb={2}>
       <List subheader={<ListSubheader disableSticky>Intro</ListSubheader>}>

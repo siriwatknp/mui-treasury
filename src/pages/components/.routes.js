@@ -7,6 +7,10 @@ import IconPage from 'pages/components/IconPage';
 import TypographyPage from 'pages/components/TypographyPage';
 import LayoutPage from 'pages/components/LayoutPage';
 import ChatPage from 'pages/components/ChatPage';
+import CarouselPage from 'pages/components/CarouselPage';
+import SlidePage from 'pages/components/SlidePage';
+import ArrowPage from 'pages/components/ArrowPage';
+import IndicatorPage from 'pages/components/IndicatorPage';
 
 /**
  * id: [String] optional
@@ -28,6 +32,36 @@ export default [
     primaryText: 'Card',
     secondaryText: `${CardPage.components.length} items`,
     Page: CardPage,
+  },
+  {
+    id: 'carousel',
+    path: '/components/carousel',
+    primaryText: 'Carousel',
+    secondaryText: `${CarouselPage.components.length} items`,
+    Page: CarouselPage,
+    children: [
+      {
+        id: 'slide',
+        path: '/components/carousel/slide',
+        primaryText: 'Slide',
+        secondaryText: `${SlidePage.components.length} items`,
+        Page: SlidePage,
+      },
+      {
+        id: 'arrow',
+        path: '/components/carousel/arrow',
+        primaryText: 'Arrow',
+        secondaryText: `${ArrowPage.components.length} items`,
+        Page: ArrowPage,
+      },
+      {
+        id: 'indicator',
+        path: '/components/carousel/indicator',
+        primaryText: 'Indicator',
+        secondaryText: `${IndicatorPage.components.length} items`,
+        Page: IndicatorPage,
+      },
+    ],
   },
   {
     id: 'chat',
