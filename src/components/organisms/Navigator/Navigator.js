@@ -63,7 +63,11 @@ const Expander = ({ children, primaryText, secondaryText, path, selected }) => (
 const Navigator = withRouter(({ onClickItem, location }) => {
   const renderItem = (item, listItemProps) =>
     item.children ? (
-      <Expander selected={location.pathname === item.path} {...item}>
+      <Expander
+        key={item.id || item.path}
+        selected={location.pathname === item.path}
+        {...item}
+      >
         {item.children.map(renderItem)}
       </Expander>
     ) : (
