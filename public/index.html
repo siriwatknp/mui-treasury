@@ -2,11 +2,18 @@
 <html lang="en">
   <head>
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                                                  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','%REACT_APP_GTM%');</script>
+    <script>
+      (function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', '%REACT_APP_GTM%');
+    </script>
     <!-- End Google Tag Manager -->
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/logo-favicon.png" />
@@ -15,25 +22,52 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no"
     />
     <meta name="theme-color" content="#000000" />
-    <meta name="google-site-verification" content="zTN12fPAjJqOw7fEPb4DbAbgEtBh0jc1NNHY27w84KM"/>
+    <meta
+      name="google-site-verification"
+      content="zTN12fPAjJqOw7fEPb4DbAbgEtBh0jc1NNHY27w84KM"
+    />
     <!-- Primary Meta Tags -->
     <title>Mui Treasury</title>
-    <meta name="title" content="Mui Treasury — Predefined Material UI Components">
-    <meta name="description" content="The mission is to boost any projects that want to shake the world, so that our future is better than today. This is an open-source project that provides a collection of ready-to-use components based on Material-UI.">
+    <meta
+      name="title"
+      content="Mui Treasury — Predefined Material UI Components"
+    />
+    <meta
+      name="description"
+      content="The mission is to boost any projects that want to shake the world, so that our future is better than today. This is an open-source project that provides a collection of ready-to-use components based on Material-UI."
+    />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="website" />
     <meta property="og:url" content="https://mui-treasury.com" />
-    <meta property="og:title" content="Mui Treasury — Predefined Material UI Components" />
-    <meta property="og:description" content="The mission is to boost any projects that want to shake the world, so that our future is better than today. This is an open-source project that provides a collection of ready-to-use components based on Material-UI.">
-    <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/mui-treasury.appspot.com/o/public%2Fmui-treasury_banner.png?alt=media&token=e8ce3558-5611-4e3e-bd2e-ffe5cdd3fcaf" />
+    <meta
+      property="og:title"
+      content="Mui Treasury — Predefined Material UI Components"
+    />
+    <meta
+      property="og:description"
+      content="The mission is to boost any projects that want to shake the world, so that our future is better than today. This is an open-source project that provides a collection of ready-to-use components based on Material-UI."
+    />
+    <meta
+      property="og:image"
+      content="https://firebasestorage.googleapis.com/v0/b/mui-treasury.appspot.com/o/public%2Fmui-treasury_banner.png?alt=media&token=e8ce3558-5611-4e3e-bd2e-ffe5cdd3fcaf"
+    />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://mui-treasury.com/">
-    <meta property="twitter:title" content="Mui Treasury — Predefined Material UI Components">
-    <meta property="twitter:description" content="The mission is to boost any projects that want to shake the world, so that our future is better than today. This is an open-source project that provides a collection of ready-to-use components based on Material-UI.">
-    <meta property="twitter:image" content="https://firebasestorage.googleapis.com/v0/b/mui-treasury.appspot.com/o/public%2Fmui-treasury_banner.png?alt=media&token=e8ce3558-5611-4e3e-bd2e-ffe5cdd3fcaf">
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://mui-treasury.com/" />
+    <meta
+      property="twitter:title"
+      content="Mui Treasury — Predefined Material UI Components"
+    />
+    <meta
+      property="twitter:description"
+      content="The mission is to boost any projects that want to shake the world, so that our future is better than today. This is an open-source project that provides a collection of ready-to-use components based on Material-UI."
+    />
+    <meta
+      property="twitter:image"
+      content="https://firebasestorage.googleapis.com/v0/b/mui-treasury.appspot.com/o/public%2Fmui-treasury_banner.png?alt=media&token=e8ce3558-5611-4e3e-bd2e-ffe5cdd3fcaf"
+    />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -49,7 +83,7 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <link
-      href="https://fonts.googleapis.com/css?family=Covered+By+Your+Grace|Roboto:900&display=swap"
+      href="https://fonts.googleapis.com/css?family=Covered+By+Your+Grace|Roboto:300,400,500,700,900&display=swap"
       rel="stylesheet"
     />
     <script
@@ -64,10 +98,16 @@
     />
   </head>
   <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=%REACT_APP_GTM%"
-                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=%REACT_APP_GTM%"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--

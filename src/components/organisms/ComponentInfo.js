@@ -7,6 +7,7 @@ import Typography from 'components/predefined/Typography';
 import Tag from 'components/atoms/Tag';
 import ChromeTabs from 'components/tabs/ChromeTabs';
 import CodeHighlight from 'components/highlights/CodeHighlight';
+import Copier from 'components/atoms/Copier';
 
 const ComponentInfo = ({
   className,
@@ -18,60 +19,73 @@ const ComponentInfo = ({
   files,
 }) => {
   const [index, setIndex] = useState(0);
-  const renderList = (items, defaultIcon) => (
-    <Grid container spacing={2}>
-      {items.map(({ icon, label, ...rest }) => (
-        <Grid item>
-          <Tag
-            icon={icon || defaultIcon}
-            component={'a'}
-            rel={'noopener'}
-            target={'_blank'}
-            {...rest}
-          >
-            {label}
-          </Tag>
+  const renderList = (items, text, defaultIcon) => {
+    if (!items || !items.length) return null;
+    return (
+      <>
+        <Typography weight={'bold'} bottomSpace={'small'}>
+          {text}
+        </Typography>
+        <Grid container spacing={2}>
+          {items.map(({ icon, label, url, ...rest }) => (
+            <Grid item key={label}>
+              <Tag
+                icon={icon || defaultIcon}
+                component={'a'}
+                rel={'noopener'}
+                target={'_blank'}
+                href={url}
+                {...rest}
+              >
+                {label}
+              </Tag>
+            </Grid>
+          ))}
         </Grid>
-      ))}
-    </Grid>
-  );
+        <Box mb={3} />
+      </>
+    );
+  };
   return (
     <Box p={2} className={cx('ComponentInfo-root', className)}>
-      <Typography variant={'h2'} size={'large'} weight={900} align={'right'}>
+      <Typography
+        variant={'h2'}
+        size={'large'}
+        weight={900}
+        align={'center'}
+        spacing={'small'}
+      >
         {name}
       </Typography>
-      <Typography weight={'bold'} bottomSpace={'small'}>
-        Useful Links
-      </Typography>
-      {renderList(links, 'fal fa-external-link-square')}
-      <Box mb={3} />
-      <Typography weight={'bold'} bottomSpace={'small'}>
-        External Libraries
-      </Typography>
-      {renderList(libraries, 'fal fa-external-link-square')}
-      <Box mb={3} />
-      <Typography weight={'bold'} bottomSpace={'small'}>
-        External Libraries
-      </Typography>
-      {renderList(childComponents, 'keyboard_arrow_right')}
-      <Box mb={3} />
+      {renderList(links, 'Useful Links', 'fal fa-external-link-square')}
+      {renderList(
+        libraries,
+        'External Libraries',
+        'fal fa-external-link-square',
+      )}
+      {renderList(childComponents, 'Child Components', 'keyboard_arrow_right')}
       <Typography weight={'bold'} bottomSpace={'small'}>
         How to use
       </Typography>
       <Typography component={'div'} variant={'body2'}>
         <ol>
-          <li>yarn add {dependencies.join(' ')}</li>
-          <li>copy all files below</li>
+          <li>
+            yarn add {dependencies.join(' ')}{' '}
+            <Copier.Text text={`yarn add ${dependencies.join(' ')}`} />
+          </li>
+          <li>copy all files below to your project</li>
         </ol>
       </Typography>
-      <Box mx={-2}>
+      <Box mx={-2} mb={-2}>
         <ChromeTabs
           value={index}
           onChange={(e, i) => setIndex(i)}
           tabs={files}
         />
         <Box bgcolor={'#272C34'} p={2} minHeight={500}>
-          <CodeHighlight code={files[index].code || '// none'} />
+          <CodeHighlight
+            code={files[index] ? files[index].code || '// none' : ''}
+          />
         </Box>
       </Box>
     </Box>
@@ -80,7 +94,7 @@ const ComponentInfo = ({
 
 ComponentInfo.propTypes = {
   className: PropTypes.string,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   links: PropTypes.arrayOf(PropTypes.shape({})),
   libraries: PropTypes.arrayOf(PropTypes.shape({})),
   childComponents: PropTypes.arrayOf(PropTypes.shape({})),
@@ -89,6 +103,7 @@ ComponentInfo.propTypes = {
 };
 ComponentInfo.defaultProps = {
   className: '',
+  name: '',
   links: [],
   libraries: [],
   childComponents: [],

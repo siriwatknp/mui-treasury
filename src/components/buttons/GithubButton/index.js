@@ -1,8 +1,29 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
+import GithubButton from './GithubButton';
 
-export const getTheme = theme => ({
-  MuiButton: {
+const demoCode = `
+  import React from 'react';
+  import GithubButton from './GithubButton';
+  
+  const Demo = () => (
+    <>
+      <GithubButton variant={'contained'}>
+        Default
+      </GithubButton>
+      <GithubButton variant={'contained'} color={'primary'}>
+        Primary
+      </GithubButton>
+    </>
+  )
+  
+  export default Demo;
+`;
+
+const githubCode = `
+  import React from 'react';
+  import Button from '@material-ui/core/Button';
+  import { makeStyles } from '@material-ui/styles';
+  
+  const useStyles = makeStyles(({ spacing }) => ({
     root: {
       lineHeight: '20px',
       padding: '6px 12px',
@@ -11,7 +32,7 @@ export const getTheme = theme => ({
       '& svg': {
         fontSize: 16,
         marginLeft: -2,
-        marginRight: theme.spacing(0.5),
+        marginRight: spacing(0.5),
       },
     },
     label: {
@@ -52,25 +73,43 @@ export const getTheme = theme => ({
         borderColor: 'rgba(27,31,35,.35)',
       },
     },
-  },
-});
+  }));
+  
+  const GithubButton = ({ ...props }) => {
+    const classes = useStyles();
+    return (
+      <Button classes={classes} {...props}>
+        Default
+      </Button>
+    );
+  };
+  
+  GithubButton.codeSandbox = 'https://codesandbox.io/s/vlymn85l0';
+  
+  export default GithubButton;
 
-const GithubButton = () => (
-  <React.Fragment>
-    <Button className={'default'} variant={'contained'}>
-      Default
-    </Button>
-    <Button variant={'contained'} color={'primary'}>
-      Primary
-    </Button>
-  </React.Fragment>
-);
+`;
 
-GithubButton.getTheme = getTheme;
-GithubButton.metadata = {
+GithubButton.info = {
   name: 'Github',
   description: 'Classic for developers',
+  links: [
+    { label: 'Code Sandbox', url: 'https://codesandbox.io/s/3q8xm89p35' },
+    { label: 'Full API', url: 'https://material-ui.com/api/button/' },
+  ],
+  files: [
+    {
+      label: 'Demo.js',
+      code: demoCode,
+    },
+    {
+      label: 'GithubButton.js',
+      code: githubCode,
+    },
+  ],
+  libraries: [],
+  dependencies: ['@material-ui/core'],
 };
-GithubButton.codeSandbox = 'https://codesandbox.io/s/vlymn85l0';
+GithubButton.codeSandbox = 'https://codesandbox.io/s/3q8xm89p35';
 
 export default GithubButton;
