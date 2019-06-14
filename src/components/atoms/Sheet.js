@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/styles';
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(({ palette, spacing, transitions }) => ({
   root: ({ bgColor }) => ({
+    transition: transitions.create(),
+    padding: spacing(3, 2),
     backgroundColor: bgColor,
     ...(bgColor === 'light' && {
       backgroundColor: '#f5f5f5',
