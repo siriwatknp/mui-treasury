@@ -16,6 +16,12 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^5.1.7",
+    "@storybook/addon-knobs": "^5.1.7",
+    "@storybook/addon-links": "^5.1.7",
+    "@storybook/addon-notes": "^5.1.7",
+    "@storybook/addons": "^5.1.7",
+    "@storybook/react": "^5.1.7",
     "eslint": "^5.12.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.5.0",
@@ -70,7 +76,9 @@
     "eject": "react-scripts eject",
     "deploy": "yarn build && firebase deploy --only hosting",
     "lint": "eslint src --ext js,jsx && npm run prettier",
-    "prettier": "prettier --write '**/*.{js,jsx,json,md}'"
+    "prettier": "prettier --write '**/*.{js,jsx,json,md}'",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app"
