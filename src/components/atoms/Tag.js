@@ -6,50 +6,56 @@ import { makeStyles } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 import Icon from 'components/predefined/Icon';
 
-const useStyles = makeStyles(({ spacing, palette }) => ({
-  root: {
-    backgroundColor: palette.grey[100],
-    '&:hover': {
-      backgroundColor: palette.primary.light,
-      color: palette.primary.dark,
-      '& .MuiIcon-root': {
-        color: palette.primary.dark,
-        marginLeft: spacing(1),
-        visibility: 'visible',
-        opacity: 1,
-      },
-      '& .Tag-overline': {
-        color: Color(palette.primary.dark)
-          .fade(0.3)
-          .toString(),
+const useStyles = makeStyles(({ spacing, palette }) => {
+  const initialBgColor = palette.grey[100];
+  const shade = palette.primary;
+  const hoveredBgColor = shade.light;
+  const hoveredTextColor = shade.dark;
+  return {
+    root: {
+      backgroundColor: initialBgColor,
+      '&:hover': {
+        backgroundColor: hoveredBgColor,
+        color: hoveredTextColor,
+        '& .MuiIcon-root': {
+          color: hoveredTextColor,
+          marginLeft: spacing(1),
+          visibility: 'visible',
+          opacity: 1,
+        },
+        '& .Tag-overline': {
+          color: Color(hoveredTextColor)
+            .fade(0.3)
+            .toString(),
+        },
       },
     },
-  },
-  label: {
-    transition: '0.2s',
-    textTransform: 'initial',
-  },
-  icon: {
-    fontSize: 18,
-    visibility: 'hidden',
-    opacity: 0,
-    transition: '0.3s',
-    color: palette.common.white,
-    marginLeft: -spacing(1.5),
-    '& .MuiIcon--fa': {
-      padding: 0,
+    label: {
+      transition: '0.2s',
+      textTransform: 'initial',
     },
-  },
-  overline: {
-    display: 'block',
-    lineHeight: 1,
-    fontSize: 10,
-    textAlign: 'left',
-    textTransform: 'uppercase',
-    marginTop: 4,
-    color: palette.text.secondary,
-  },
-}));
+    icon: {
+      fontSize: 18,
+      visibility: 'hidden',
+      opacity: 0,
+      transition: '0.3s',
+      color: palette.common.white,
+      marginLeft: -spacing(1.5),
+      '& .MuiIcon--fa': {
+        padding: 0,
+      },
+    },
+    overline: {
+      display: 'block',
+      lineHeight: 1,
+      fontSize: 10,
+      textAlign: 'left',
+      textTransform: 'uppercase',
+      marginTop: 4,
+      color: palette.text.secondary,
+    },
+  };
+});
 
 const Tag = ({ className, children, icon, overline, ...props }) => {
   const classes = useStyles();

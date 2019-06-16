@@ -72,7 +72,7 @@ const gradientCode = `
 `;
 
 GradientButton.info = {
-  name: 'Gradient',
+  name: 'Gradient Button',
   description: 'Welcome to the new trend',
   links: [
     { label: 'Code Sandbox', url: 'https://codesandbox.io/s/3q8xm89p35' },

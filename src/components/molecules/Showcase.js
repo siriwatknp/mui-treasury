@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'clsx';
+import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import Sheet from 'components/atoms/Sheet';
@@ -8,6 +9,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
 import Icon from 'components/predefined/Icon';
+import Typography from 'components/predefined/Typography';
 
 const useStyles = makeStyles(({ spacing, transitions }) => ({
   root: {
@@ -62,8 +64,21 @@ const Showcase = ({
         className={cx(classes.listItem, listItemProps.className)}
       >
         <ListItemText
-          primary={name}
-          secondary={description}
+          disableTypography
+          primary={
+            <Typography
+              id={kebabCase(name)}
+              anchor={<Icon size={'small'}>far fa-link</Icon>}
+              hrefAnchor={`#${kebabCase(name)}`}
+              weight={'bold'}
+              color={'textPrimary'}
+            >
+              {name}
+            </Typography>
+          }
+          secondary={
+            <Typography color={'textSecondary'}>{description}</Typography>
+          }
           {...listItemTextProps}
         />
         {React.Children.toArray(actions)}

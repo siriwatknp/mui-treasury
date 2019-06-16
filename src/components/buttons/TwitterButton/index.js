@@ -83,7 +83,7 @@ const twitterCode = `
 `;
 
 TwitterButton.info = {
-  name: 'Twitter',
+  name: 'Twitter Button',
   description: 'Tweet',
   links: [
     { label: 'Code Sandbox', url: 'https://codesandbox.io/s/5xj8vn1k1l' },

@@ -1,11 +1,15 @@
 import React from 'react';
 import { configure, addDecorator } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/styles';
 import tresuryTheme from '../src/theme/treasury';
 
 const ThemeDecorator = storyFn => (
-  <ThemeProvider theme={tresuryTheme}>{storyFn()}</ThemeProvider>
+  <>
+    <CssBaseline />
+    <ThemeProvider theme={tresuryTheme}>{storyFn()}</ThemeProvider>
+  </>
 );
 
 function loadStories() {

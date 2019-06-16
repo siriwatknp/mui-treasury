@@ -66,7 +66,7 @@ const firebaseCode = `
 `;
 
 FirebaseButton.info = {
-  name: 'Firebase',
+  name: 'Firebase Button',
   description: "We're on fire",
   links: [
     { label: 'Code Sandbox', url: 'https://codesandbox.io/s/ojnxlj1ry6' },

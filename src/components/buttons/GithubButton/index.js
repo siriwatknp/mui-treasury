@@ -91,7 +91,7 @@ const githubCode = `
 `;
 
 GithubButton.info = {
-  name: 'Github',
+  name: 'Github Button',
   description: 'Classic for developers',
   links: [
     { label: 'Code Sandbox', url: 'https://codesandbox.io/s/3q8xm89p35' },

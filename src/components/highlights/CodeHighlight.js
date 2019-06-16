@@ -12,13 +12,15 @@ const CodeHighlight = ({ code, theme, padded, rounded, ...props }) => (
         overflow: 'scroll',
         margin: 0,
         ...(padded && { padding: padded * 8 }),
-        ...(rounded && {
-          borderRadius: 8,
-        }),
       },
       '& .token': {
         fontSize: 12,
       },
+    }}
+    bgcolor={'rgb(40, 44, 52)'}
+    overflow={'hidden'}
+    {...rounded && {
+      borderRadius: 8,
     }}
     {...props}
   >

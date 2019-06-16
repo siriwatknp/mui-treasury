@@ -212,7 +212,27 @@ export const advancedExamples = [
   },
   {
     render: () => (
-      <Box bgcolor={'grey.50'} mx={-2} p={2} borderRadius={8}>
+      <Box mx={-2} px={2} borderRadius={8}>
+        <Typography
+          variant={'h4'}
+          id={'anchor-example'}
+          anchor={<Icon>far fa-link</Icon>}
+          hrefAnchor={`#anchor-example`}
+          weight={'bold'}
+          color={'textPrimary'}
+        >
+          Anchor Example
+        </Typography>
+      </Box>
+    ),
+    code: code.anchor || '',
+    gridItemProps: {
+      md: 6,
+    },
+  },
+  {
+    render: () => (
+      <Box mx={-2} p={2} borderRadius={8}>
         <Typography
           link
           size={'big'}

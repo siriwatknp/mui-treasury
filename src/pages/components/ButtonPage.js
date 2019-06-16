@@ -254,7 +254,7 @@ const ButtonPage = () => {
       </Text>
       <Box pb={2} />
       <Grid container spacing={4}>
-        {components.map(({ component, render, previewProps }) => (
+        {components.map(({ component, render, previewProps = {} }) => (
           <Grid
             key={get(component, 'metadata.name')}
             item
@@ -284,6 +284,10 @@ const ButtonPage = () => {
               name={get(component, 'info.name')}
               description={get(component, 'info.description')}
               {...previewProps}
+              sheetProps={{
+                bgColor: 'white',
+                ...previewProps.sheetProps,
+              }}
             >
               <ShouldUpdate value={false}>
                 {component.getTheme ? (
