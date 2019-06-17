@@ -79,7 +79,7 @@ const ChromeTabs = ({ tabs, ...props }) => {
   return (
     <Tabs classes={tabsClasses} {...props}>
       {tabs.map(tab => (
-        <Tab classes={tabClasses} {...tab} />
+        <Tab key={tab.label} classes={tabClasses} {...tab} />
       ))}
     </Tabs>
   );

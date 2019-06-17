@@ -1,18 +1,33 @@
 import React from 'react';
 import cx from 'clsx';
+import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import Sheet from 'components/atoms/Sheet';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import Button from 'components/predefined/Button';
+import IconButton from '@material-ui/core/IconButton';
+import Icon from 'components/predefined/Icon';
+import Typography from 'components/predefined/Typography';
 
-const useStyles = makeStyles(({ spacing }) => ({
-  root: {},
+const useStyles = makeStyles(({ spacing, transitions }) => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    transition: transitions.create(),
+    height: '100%',
+  },
   sheet: {
+    flex: 'auto',
+    borderRadius: 16,
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
+    display: 'flex',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    minHeight: 160,
+    flexWrap: 'wrap',
   },
   listItem: {
     paddingLeft: spacing(1),
@@ -21,11 +36,13 @@ const useStyles = makeStyles(({ spacing }) => ({
 
 const Showcase = ({
   className,
+  actions,
   children,
   name,
   description,
   divided,
   inverted,
+  onClickInfo,
   dividerProps,
   sheetProps,
   listItemProps,
@@ -34,7 +51,7 @@ const Showcase = ({
 }) => {
   const classes = useStyles();
   return (
-    <div className={cx('Showcase-root', className)} {...props}>
+    <div className={cx('Showcase-root', classes.root, className)} {...props}>
       <Sheet
         {...inverted && { bgColor: 'dark' }}
         {...sheetProps}
@@ -47,11 +64,27 @@ const Showcase = ({
         className={cx(classes.listItem, listItemProps.className)}
       >
         <ListItemText
-          primary={name}
-          secondary={description}
+          disableTypography
+          primary={
+            <Typography
+              id={kebabCase(name)}
+              anchor={<Icon size={'small'}>far fa-link</Icon>}
+              hrefAnchor={`#${kebabCase(name)}`}
+              weight={'bold'}
+              color={'textPrimary'}
+            >
+              {name}
+            </Typography>
+          }
+          secondary={
+            <Typography color={'textSecondary'}>{description}</Typography>
+          }
           {...listItemTextProps}
         />
-        <Button shape={'circular'} icon={'far fa-search'} />
+        {React.Children.toArray(actions)}
+        <IconButton onClick={onClickInfo}>
+          <Icon>far fa-search</Icon>
+        </IconButton>
       </ListItem>
       {divided && <Divider light {...dividerProps} />}
     </div>
@@ -62,9 +95,11 @@ Showcase.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
+  actions: PropTypes.arrayOf(PropTypes.node),
   description: PropTypes.string,
   inverted: PropTypes.bool,
   divided: PropTypes.bool,
+  onClickInfo: PropTypes.func,
   sheetProps: PropTypes.shape({}),
   dividerProps: PropTypes.shape({}),
   listItemProps: PropTypes.shape({}),
@@ -72,9 +107,11 @@ Showcase.propTypes = {
 };
 Showcase.defaultProps = {
   className: '',
+  actions: [],
   description: '',
   inverted: false,
   divided: true,
+  onClickInfo: () => {},
   sheetProps: {},
   dividerProps: {},
   listItemProps: {},

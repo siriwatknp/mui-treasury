@@ -74,12 +74,11 @@ const TypographyPage = ({ globalTheme }) => {
               px={2}
               borderRadius={4}
               mb={1}
-              flexGrow={1}
               {...Box.justifyCenterColumn}
             >
               {render()}
             </Box>
-            <CodeHighlight code={code} />
+            <CodeHighlight flexGrow={1} code={code} />
           </Grid>
         ))}
       </Grid>

@@ -149,6 +149,22 @@ const firebase = `
   </Typography>
 `;
 
+const anchor = `
+  import Typography from 'path/to/Typography';
+  import Icon from 'path/to/Icon'; // look at icon page
+  
+  <Text
+    variant={'h4'}
+    id={'anchor-example'}
+    anchor={<Icon>far fa-link</Icon>}
+    hrefAnchor={\`#anchor-example\`}
+    weight={'bold'}
+    color={'textPrimary'}
+  >
+    Anchor Example
+  </Text>
+`;
+
 const reactRouter = `
   import Typography from 'path/to/Typography';
   import Icon from 'path/to/Icon'; // look at icon page
@@ -224,6 +240,7 @@ export default {
   button,
   note,
   firebase,
+  anchor,
   reactRouter,
   blog,
 };
