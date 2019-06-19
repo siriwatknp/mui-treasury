@@ -115,12 +115,16 @@ const coreCode = `
 
 `;
 
+ElevatedTabs.codeSandbox = 'https://codesandbox.io/s/vmzjw3o5l5';
 ElevatedTabs.info = {
   name: 'Elevated Tabs',
   description: 'implement custom theme with elevated tabs',
   links: [
     { label: 'Code Sandbox', url: 'https://codesandbox.io/s/vmzjw3o5l5' },
-    { label: 'Official Ex.', url: 'https://material-ui.com/components/tabs/' },
+    {
+      label: 'Official Examples',
+      url: 'https://material-ui.com/components/tabs/',
+    },
     { label: 'Tabs API', url: 'https://material-ui.com/api/tabs/' },
     { label: 'Tab API', url: 'https://material-ui.com/api/tab/' },
   ],

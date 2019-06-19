@@ -8,6 +8,7 @@ import Tag from 'components/atoms/Tag';
 import ChromeTabs from 'components/tabs/ChromeTabs';
 import CodeHighlight from 'components/highlights/CodeHighlight';
 import Copier from 'components/atoms/Copier';
+import Button from 'components/predefined/Button';
 
 const ComponentInfo = ({
   className,
@@ -80,7 +81,23 @@ const ComponentInfo = ({
           onChange={(e, i) => setIndex(i)}
           tabs={files}
         />
-        <Box bgcolor={'#272C34'} p={2} minHeight={500}>
+        <Box bgcolor={'#272C34'} p={2} minHeight={500} position={'relative'}>
+          {files[index].code && (
+            <Box position={'absolute'} top={16} right={16}>
+              <Copier text={files[index].code}>
+                {({ copied }) => (
+                  <Button
+                    variant={'contained'}
+                    color={'secondary'}
+                    size={'small'}
+                    icon={copied ? 'check_circle' : 'file_copy'}
+                  >
+                    {copied ? 'Copied' : files[index].label}
+                  </Button>
+                )}
+              </Copier>
+            </Box>
+          )}
           <CodeHighlight
             code={files[index] ? files[index].code || '// none' : ''}
           />

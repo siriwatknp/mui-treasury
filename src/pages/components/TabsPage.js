@@ -1,6 +1,11 @@
 import React from 'react';
 import createSimpleShowcase from 'containers/createSimpleShowcase';
-import { ChromeTabs, ElevatedTabs } from 'docs/components/tabs';
+import {
+  ChromeTabs,
+  ElevatedTabs,
+  FirebaseTabs,
+  InstagramTabs,
+} from 'docs/components/tabs';
 
 const components = [
   {
@@ -10,6 +15,14 @@ const components = [
   {
     component: ElevatedTabs,
     render: () => <ElevatedTabs.Demo />,
+  },
+  {
+    component: FirebaseTabs,
+    render: () => <FirebaseTabs.Demo />,
+  },
+  {
+    component: InstagramTabs,
+    render: () => <InstagramTabs.Demo />,
   },
 ];
 

@@ -1,74 +1,80 @@
-/* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Icon from '@material-ui/core/Icon';
 
-const InstagramTabs = () => {
-  const [index, onChange] = useState(0);
+const useTabsStyles = makeStyles(() => ({
+  root: {
+    borderTop: '1px solid #efefef',
+    overflow: 'visible',
+  },
+  fixed: {
+    overflowX: 'visible',
+  },
+  indicator: {
+    height: 1,
+    transform: 'translateY(-52px)',
+    backgroundColor: '#262626',
+  },
+}));
+
+const useTabStyles = makeStyles(({ breakpoints }) => ({
+  root: {
+    lineHeight: 'inherit',
+    minWidth: 0,
+    '&:not(:last-child)': {
+      marginRight: 24,
+      [breakpoints.up('sm')]: {
+        marginRight: 60,
+      },
+    },
+    [breakpoints.up('md')]: {
+      minWidth: 0,
+    },
+  },
+  labelIcon: {
+    minHeight: 53,
+    '& $wrapper > *:first-child': {
+      marginBottom: 0,
+    },
+  },
+  textColorInherit: {
+    opacity: 0.4,
+  },
+  wrapper: {
+    flexDirection: 'row',
+    letterSpacing: '1px',
+    textTransform: 'uppercase',
+    '& svg, .material-icons': {
+      fontSize: 16,
+      marginRight: 8,
+    },
+  },
+}));
+
+const InstagramTabs = ({ tabs, ...props }) => {
+  const tabsClasses = useTabsStyles();
+  const tabClasses = useTabStyles();
   return (
-    <Tabs centered value={index} onChange={(e, val) => onChange(val)}>
-      <Tab label="Posts" disableRipple icon={<Icon>grid_on_outlined</Icon>} />
-      <Tab label="IGTV" disableRipple icon={<Icon>live_tv</Icon>} />
-      <Tab
-        label="Saved"
-        disableRipple
-        icon={<Icon>bookmark_border_outlined</Icon>}
-      />
-      <Tab label="Tagged" disableRipple />
+    <Tabs classes={tabsClasses} {...props}>
+      {tabs.map(tab => (
+        <Tab key={tab.label} classes={tabClasses} {...tab} />
+      ))}
     </Tabs>
   );
 };
 
-InstagramTabs.getTheme = muiBaseTheme => ({
-  MuiTabs: {
-    root: {
-      borderTop: '1px solid #efefef',
-      overflow: 'visible',
-    },
-    fixed: {
-      overflowX: 'visible',
-    },
-    indicator: {
-      height: 1,
-      transform: 'translateY(-52px)',
-      backgroundColor: '#262626',
-    },
-  },
-  MuiTab: {
-    root: {
-      lineHeight: 'inherit',
-      minWidth: 0,
-      '&:not(:last-child)': {
-        marginRight: 24,
-        [muiBaseTheme.breakpoints.up('sm')]: {
-          marginRight: 60,
-        },
-      },
-      [muiBaseTheme.breakpoints.up('md')]: {
-        minWidth: 0,
-      },
-    },
-    labelIcon: {
-      minHeight: 53,
-      '& $wrapper > *:first-child': {
-        marginBottom: 0,
-      },
-    },
-    textColorInherit: {
-      opacity: 0.4,
-    },
-    wrapper: {
-      flexDirection: 'row',
-      letterSpacing: '1px',
-      textTransform: 'uppercase',
-      '& svg, .material-icons': {
-        fontSize: 16,
-        marginRight: 8,
-      },
-    },
-  },
-});
+InstagramTabs.propTypes = {
+  tabs: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.node.isRequired,
+    }),
+  ),
+};
+InstagramTabs.defaultProps = {
+  tabs: [],
+};
 InstagramTabs.metadata = {
   name: 'Instagram Tabs',
   description: 'implement Instagram theme',
