@@ -64,6 +64,7 @@ import PeaTypography from './demo/Typography';
 import UserCard from './demo/UserCard';
 import FullProfile from './demo/FullProfile';
 import GroupProfile from './demo/GroupProfile';
+import GroupCard from './demo/GroupCard';
 import Chat from './demo/Chat';
 import AccountProfile from './demo/AccountProfile';
 import ThreadTitle from './demo/ThreadTitle';
@@ -200,6 +201,7 @@ const components = [
       lg: 6,
     },
   },
+  { component: GroupCard },
   {
     component: Chat,
     previewProps: {
