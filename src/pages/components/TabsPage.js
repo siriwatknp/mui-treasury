@@ -14,6 +14,9 @@ const components = [
   {
     component: ChromeTabs,
     render: () => <ChromeTabs.Demo />,
+    gridItemProps: {
+      md: 10,
+    },
   },
   {
     component: TwitterIconTabs,

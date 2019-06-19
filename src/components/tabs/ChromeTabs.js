@@ -12,21 +12,25 @@ const useTabsStyles = makeStyles(() => ({
 }));
 
 const useTabStyles = makeStyles(({ palette, spacing, breakpoints }) => {
-  const bgColor = '#272C34';
-  const minWidth = {
+  const defaultBgColor = palette.grey[300];
+  const defaultSelectedBgColor = '#272C34';
+  const defaultMinWidth = {
     md: 120,
   };
+  const getTextColor = color => {
+    if (Color(color).isLight()) return palette.text.primary;
+    return palette.common.white;
+  };
   return {
-    root: {
+    root: ({ bgColor = defaultBgColor, minWidth = defaultMinWidth }) => ({
       opacity: 1,
       overflow: 'initial',
       paddingLeft: spacing(2),
       paddingRight: spacing(2),
       borderTopLeftRadius: spacing(1),
       borderTopRightRadius: spacing(1),
-      color: Color(bgColor)
-        .fade(0.13)
-        .toString(),
+      color: getTextColor(bgColor),
+      backgroundColor: bgColor,
       transition: '0.2s',
       [breakpoints.up('md')]: {
         minWidth: minWidth.md,
@@ -43,6 +47,7 @@ const useTabStyles = makeStyles(({ palette, spacing, breakpoints }) => {
           height: 20,
           width: 1,
           zIndex: 1,
+          marginTop: spacing(0.5),
           backgroundColor: palette.grey[500],
         },
       },
@@ -51,7 +56,9 @@ const useTabStyles = makeStyles(({ palette, spacing, breakpoints }) => {
       },
       '&:hover': {
         '&:not($selected)': {
-          backgroundColor: palette.grey[200],
+          backgroundColor: Color(bgColor)
+            .whiten(0.6)
+            .hex(),
         },
         '&::before': {
           opacity: 0,
@@ -60,27 +67,28 @@ const useTabStyles = makeStyles(({ palette, spacing, breakpoints }) => {
           opacity: 0,
         },
       },
-    },
-    selected: {
-      backgroundColor: bgColor,
-      color: palette.common.white,
+    }),
+    selected: ({ selectedBgColor = defaultSelectedBgColor }) => ({
+      backgroundColor: selectedBgColor,
+      color: getTextColor(selectedBgColor),
       '& + $root': {
         zIndex: 1,
       },
       '& + $root:before': {
         opacity: 0,
       },
-    },
+    }),
     wrapper: {
       zIndex: 2,
+      marginTop: spacing(0.5),
       textTransform: 'initial',
     },
   };
 });
 
-const ChromeTabs = ({ tabs, ...props }) => {
+const ChromeTabs = ({ tabs, tabStyle, ...props }) => {
   const tabsClasses = useTabsStyles();
-  const tabClasses = useTabStyles();
+  const tabClasses = useTabStyles(tabStyle);
   return (
     <Tabs classes={tabsClasses} {...props}>
       {tabs.map(tab => (
@@ -96,9 +104,14 @@ ChromeTabs.propTypes = {
       label: PropTypes.node.isRequired,
     }),
   ),
+  tabStyle: PropTypes.shape({
+    bgColor: PropTypes.string,
+    minWidth: PropTypes.shape({}),
+  }),
 };
 ChromeTabs.defaultProps = {
   tabs: [],
+  tabStyle: {},
 };
 
 export default ChromeTabs;

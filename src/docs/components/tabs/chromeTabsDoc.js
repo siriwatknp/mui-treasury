@@ -1,24 +1,38 @@
 /* eslint-disable */
 import React, { useState } from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 import ChromeTabs from 'components/tabs/ChromeTabs';
 
 const demoCode = `
   import React, { useState } from 'react';
+  import AppBar from '@material-ui/core/AppBar';
+  import Toolbar from '@material-ui/core/Toolbar';
   import ChromeTabs from './ChromeTabs';
   
   const Demo = () => {
     const [index, setIndex] = useState(0);
     return (
-      <ChromeTabs
-        tabs={[
-          { label: 'Label 1' },
-          { label: 'Label 2' },
-          { label: 'Label 3' },
-          { label: 'Label 4' },
-        ]}
-        value={index}
-        onChange={(e, i) => setIndex(i)}
-      />
+      <AppBar position={'static'} color={'default'} elevation={0}>
+        <Toolbar>
+          <ChromeTabs
+            style={{ alignSelf: 'flex-end' }}
+            tabs={[
+              { label: 'Label 1' },
+              { label: 'Label 2' },
+              { label: 'Label 3' },
+              { label: 'Label 4' },
+            ]}
+            tabStyle={{
+              bgColor: '#f5f5f5',
+              selectedBgColor: '#ffffff',
+              color: 'rgba(0,0,0,0.87)',
+            }}
+            value={index}
+            onChange={(e, i) => setIndex(i)}
+          />
+        </Toolbar>
+      </AppBar>
     )
   }
   
@@ -28,16 +42,26 @@ const demoCode = `
 ChromeTabs.Demo = () => {
   const [index, setIndex] = useState(0);
   return (
-    <ChromeTabs
-      tabs={[
-        { label: 'Label 1' },
-        { label: 'Label 2' },
-        { label: 'Label 3' },
-        { label: 'Label 4' },
-      ]}
-      value={index}
-      onChange={(e, i) => setIndex(i)}
-    />
+    <AppBar position={'static'} color={'default'} elevation={0}>
+      <Toolbar>
+        <ChromeTabs
+          style={{ alignSelf: 'flex-end' }}
+          tabs={[
+            { label: 'Label 1' },
+            { label: 'Label 2' },
+            { label: 'Label 3' },
+            { label: 'Label 4' },
+          ]}
+          tabStyle={{
+            bgColor: '#f5f5f5',
+            selectedBgColor: '#ffffff',
+            color: 'rgba(0,0,0,0.87)',
+          }}
+          value={index}
+          onChange={(e, i) => setIndex(i)}
+        />
+      </Toolbar>
+    </AppBar>
   );
 };
 
@@ -55,20 +79,30 @@ const coreCode = `
     },
   }));
   
-  const useTabStyles = makeStyles(({ palette, spacing }) => {
-    const bgColor = '#272C34';
+  const useTabStyles = makeStyles(({ palette, spacing, breakpoints }) => {
+    const defaultBgColor = palette.grey[300];
+    const defaultSelectedBgColor = '#272C34';
+    const defaultMinWidth = {
+      md: 120,
+    };
+    const getTextColor = color => {
+      if (Color(color).isLight()) return palette.text.primary;
+      return palette.common.white;
+    };
     return {
-      root: {
+      root: ({ bgColor = defaultBgColor, minWidth = defaultMinWidth }) => ({
         opacity: 1,
         overflow: 'initial',
         paddingLeft: spacing(2),
         paddingRight: spacing(2),
         borderTopLeftRadius: spacing(1),
         borderTopRightRadius: spacing(1),
-        color: Color(bgColor)
-          .fade(0.13)
-          .toString(),
+        color: getTextColor(bgColor),
+        backgroundColor: bgColor,
         transition: '0.2s',
+        [breakpoints.up('md')]: {
+          minWidth: minWidth.md,
+        },
         '&:before': {
           transition: '0.2s',
         },
@@ -81,6 +115,7 @@ const coreCode = `
             height: 20,
             width: 1,
             zIndex: 1,
+            marginTop: spacing(0.5),
             backgroundColor: palette.grey[500],
           },
         },
@@ -89,7 +124,9 @@ const coreCode = `
         },
         '&:hover': {
           '&:not($selected)': {
-            backgroundColor: palette.grey[200],
+            backgroundColor: Color(bgColor)
+              .whiten(0.6)
+              .hex(),
           },
           '&::before': {
             opacity: 0,
@@ -98,27 +135,28 @@ const coreCode = `
             opacity: 0,
           },
         },
-      },
-      selected: {
-        backgroundColor: bgColor,
-        color: palette.common.white,
+      }),
+      selected: ({ selectedBgColor = defaultSelectedBgColor }) => ({
+        backgroundColor: selectedBgColor,
+        color: getTextColor(selectedBgColor),
         '& + $root': {
           zIndex: 1,
         },
         '& + $root:before': {
           opacity: 0,
         },
-      },
+      }),
       wrapper: {
         zIndex: 2,
+        marginTop: spacing(0.5),
         textTransform: 'initial',
       },
     };
   });
   
-  const ChromeTabs = ({ tabs, ...props }) => {
+  const ChromeTabs = ({ tabs, tabStyle, ...props }) => {
     const tabsClasses = useTabsStyles();
-    const tabClasses = useTabStyles();
+    const tabClasses = useTabStyles(tabStyle);
     return (
       <Tabs classes={tabsClasses} {...props}>
         {tabs.map(tab => (
@@ -134,13 +172,18 @@ const coreCode = `
         label: PropTypes.node.isRequired,
       }),
     ),
+    tabStyle: PropTypes.shape({
+      bgColor: PropTypes.string,
+      minWidth: PropTypes.shape({}),
+    }),
   };
   ChromeTabs.defaultProps = {
     tabs: [],
+    tabStyle: {},
   };
   
   export default ChromeTabs;
-  
+
 `;
 
 ChromeTabs.codeSandbox = 'https://codesandbox.io/s/vmzjw3o5l5';
