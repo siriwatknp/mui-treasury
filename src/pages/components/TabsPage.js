@@ -1,96 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import merge from 'lodash/merge';
-import get from 'lodash/get';
-import Grid from '@material-ui/core/Grid';
-import ThemeProvider from '@material-ui/styles/ThemeProvider';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { Box } from 'components/atoms';
-import { PreviewWidget } from 'components/molecules';
-import ShouldUpdate from 'containers/ShouldUpdate';
-import FirebaseTabs from 'components/tabs/FirebaseTabs';
-import InstagramTabs from 'components/tabs/InstagramTabs';
-import TwitterTabs from 'components/tabs/TwitterTabs';
-import TwitterIconTabs from 'components/tabs/TwitterIconTabs';
-import ElevatedTabs from 'components/tabs/ElevatedTabs';
-import PillsTabs from 'components/tabs/PillsTabs';
-
-const createTheme = theme => createMuiTheme(theme);
-const baseTheme = createMuiTheme();
+import createSimpleShowcase from 'containers/createSimpleShowcase';
+import { ChromeTabs, ElevatedTabs } from 'docs/components/tabs';
 
 const components = [
   {
-    component: FirebaseTabs,
-    render: () => <FirebaseTabs />,
-  },
-  {
-    component: InstagramTabs,
-    render: () => <InstagramTabs />,
-  },
-  {
-    component: TwitterTabs,
-    render: () => <TwitterTabs />,
-  },
-  {
-    component: TwitterIconTabs,
-    render: () => <TwitterIconTabs />,
+    component: ChromeTabs,
+    render: () => <ChromeTabs.Demo />,
   },
   {
     component: ElevatedTabs,
-    render: () => <ElevatedTabs />,
-  },
-  {
-    component: PillsTabs,
-    render: () => <PillsTabs />,
+    render: () => <ElevatedTabs.Demo />,
   },
 ];
 
-const TabsPage = ({ counter, globalTheme, onSelectComponent }) => (
-  <Box
-    width={'100%'}
-    p={{
-      xs: 2,
-      sm: 4,
-    }}
-  >
-    <Grid container spacing={4}>
-      {components.map(({ component, render, gridItemProps, previewProps }) => (
-        <Grid
-          key={get(component, 'metadata.name')}
-          item
-          xs={12}
-          sm={12}
-          lg={6}
-          {...gridItemProps}
-        >
-          <PreviewWidget
-            sandboxLink={component.codeSandbox}
-            onClick={() => onSelectComponent(component)}
-            {...get(component, 'metadata')}
-            {...previewProps}
-          >
-            <ShouldUpdate value={counter}>
-              <ThemeProvider
-                theme={createTheme({
-                  ...globalTheme,
-                  overrides: component.getTheme(merge(baseTheme, globalTheme)),
-                })}
-              >
-                {render()}
-              </ThemeProvider>
-            </ShouldUpdate>
-          </PreviewWidget>
-        </Grid>
-      ))}
-    </Grid>
-  </Box>
-);
-
-TabsPage.propTypes = {
-  counter: PropTypes.number.isRequired,
-  globalTheme: PropTypes.shape({}).isRequired,
-  onSelectComponent: PropTypes.func.isRequired,
-};
-TabsPage.components = components;
+const TabsPage = createSimpleShowcase(components, {
+  gridItemProps: {
+    md: 9,
+    lg: 6,
+  },
+});
 
 export default TabsPage;

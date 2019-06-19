@@ -1,4 +1,5 @@
 /* eslint-disable */
+import React from 'react';
 import TwitterButton from './TwitterButton';
 
 const demoCode = `
@@ -14,6 +15,23 @@ const demoCode = `
   
   export default Demo;
 `;
+
+TwitterButton.Demo = () => (
+  <>
+    <TwitterButton color={'primary'} variant={'contained'}>
+      Normal
+    </TwitterButton>
+    <TwitterButton color={'primary'} variant={'contained'} size={'large'}>
+      Large Button
+    </TwitterButton>
+    <TwitterButton variant={'outlined'} color={'primary'}>
+      Normal
+    </TwitterButton>
+    <TwitterButton variant={'outlined'} color={'primary'} size={'large'}>
+      Large Button
+    </TwitterButton>
+  </>
+);
 
 const twitterCode = `
   import React from 'react';

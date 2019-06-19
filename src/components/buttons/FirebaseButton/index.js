@@ -1,3 +1,4 @@
+import React from 'react';
 import FirebaseButton from './FirebaseButton';
 
 const demoCode = `
@@ -15,6 +16,15 @@ const demoCode = `
   
   export default Demo;
 `;
+
+FirebaseButton.Demo = () => (
+  <>
+    <FirebaseButton>Default</FirebaseButton>
+    <FirebaseButton variant={'contained'} color={'primary'}>
+      Primary
+    </FirebaseButton>
+  </>
+);
 
 const firebaseCode = `
   import React from 'react';

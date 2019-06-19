@@ -68,6 +68,7 @@ const Showcase = ({
           primary={
             <Typography
               id={kebabCase(name)}
+              variant={'subtitle1'}
               anchor={<Icon size={'small'}>far fa-link</Icon>}
               hrefAnchor={`#${kebabCase(name)}`}
               weight={'bold'}
@@ -77,7 +78,9 @@ const Showcase = ({
             </Typography>
           }
           secondary={
-            <Typography color={'textSecondary'}>{description}</Typography>
+            <Typography variant={'subtitle2'} color={'textSecondary'}>
+              {description}
+            </Typography>
           }
           {...listItemTextProps}
         />

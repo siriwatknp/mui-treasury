@@ -6,14 +6,16 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
 const useTabsStyles = makeStyles(() => ({
-  root: {},
   indicator: {
     display: 'none',
   },
 }));
 
-const useTabStyles = makeStyles(({ palette, spacing }) => {
+const useTabStyles = makeStyles(({ palette, spacing, breakpoints }) => {
   const bgColor = '#272C34';
+  const minWidth = {
+    md: 120,
+  };
   return {
     root: {
       opacity: 1,
@@ -26,6 +28,9 @@ const useTabStyles = makeStyles(({ palette, spacing }) => {
         .fade(0.13)
         .toString(),
       transition: '0.2s',
+      [breakpoints.up('md')]: {
+        minWidth: minWidth.md,
+      },
       '&:before': {
         transition: '0.2s',
       },
@@ -86,7 +91,11 @@ const ChromeTabs = ({ tabs, ...props }) => {
 };
 
 ChromeTabs.propTypes = {
-  tabs: PropTypes.arrayOf(PropTypes.shape({})),
+  tabs: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.node.isRequired,
+    }),
+  ),
 };
 ChromeTabs.defaultProps = {
   tabs: [],
