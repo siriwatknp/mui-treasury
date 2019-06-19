@@ -5,6 +5,9 @@ import {
   ElevatedTabs,
   FirebaseTabs,
   InstagramTabs,
+  PillsTabs,
+  TwitterIconTabs,
+  TwitterTabs,
 } from 'docs/components/tabs';
 
 const components = [
@@ -13,8 +16,12 @@ const components = [
     render: () => <ChromeTabs.Demo />,
   },
   {
-    component: ElevatedTabs,
-    render: () => <ElevatedTabs.Demo />,
+    component: TwitterIconTabs,
+    render: () => <TwitterIconTabs.Demo />,
+  },
+  {
+    component: TwitterTabs,
+    render: () => <TwitterTabs.Demo />,
   },
   {
     component: FirebaseTabs,
@@ -23,6 +30,14 @@ const components = [
   {
     component: InstagramTabs,
     render: () => <InstagramTabs.Demo />,
+  },
+  {
+    component: ElevatedTabs,
+    render: () => <ElevatedTabs.Demo />,
+  },
+  {
+    component: PillsTabs,
+    render: () => <PillsTabs.Demo />,
   },
 ];
 
