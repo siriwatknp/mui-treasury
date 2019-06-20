@@ -211,7 +211,7 @@ ChromeTabs.info = {
   ],
   libraries: [
     {
-      label: 'Color',
+      label: 'Qix-/Color',
       url: 'https://github.com/Qix-/color',
     },
   ],
