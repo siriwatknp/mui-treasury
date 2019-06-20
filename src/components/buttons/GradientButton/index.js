@@ -1,4 +1,5 @@
 /* eslint-disable */
+import React from 'react';
 import GradientButton from './GradientButton';
 
 const demoCode = `
@@ -14,6 +15,13 @@ const demoCode = `
   
   export default Demo;
 `;
+
+GradientButton.Demo = () => (
+  <>
+    <GradientButton>Cool</GradientButton>
+    <GradientButton chubby>Chubby</GradientButton>
+  </>
+);
 
 const gradientCode = `
   import React from 'react';

@@ -26,7 +26,7 @@ const formHiddenPaths = [
 ];
 
 const RootComponentPage = ({ location }) => (
-  <ThemeController formHidden={formHiddenPaths.indexOf(location) !== 0}>
+  <ThemeController formHidden={formHiddenPaths.indexOf(location) !== -1}>
     {props => (
       <Switch>
         {normalizedRoute.map(({ path, Page }) => (

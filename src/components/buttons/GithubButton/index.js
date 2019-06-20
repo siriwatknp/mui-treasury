@@ -1,3 +1,4 @@
+import React from 'react';
 import GithubButton from './GithubButton';
 
 const demoCode = `
@@ -17,6 +18,15 @@ const demoCode = `
   
   export default Demo;
 `;
+
+GithubButton.Demo = () => (
+  <>
+    <GithubButton variant={'contained'}>Default</GithubButton>
+    <GithubButton variant={'contained'} color={'primary'}>
+      Primary
+    </GithubButton>
+  </>
+);
 
 const githubCode = `
   import React from 'react';

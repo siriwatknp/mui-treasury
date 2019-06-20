@@ -8,6 +8,7 @@ import Tag from 'components/atoms/Tag';
 import ChromeTabs from 'components/tabs/ChromeTabs';
 import CodeHighlight from 'components/highlights/CodeHighlight';
 import Copier from 'components/atoms/Copier';
+import Button from 'components/predefined/Button';
 
 const ComponentInfo = ({
   className,
@@ -64,13 +65,11 @@ const ComponentInfo = ({
         'fal fa-external-link-square',
       )}
       {renderList(childComponents, 'Child Components', 'keyboard_arrow_right')}
-      <Typography weight={'bold'} bottomSpace={'small'}>
-        How to use
-      </Typography>
-      <Typography component={'div'} variant={'body2'}>
+      <Typography weight={'bold'}>How to use</Typography>
+      <Typography component={'div'} variant={'body2'} bottomSpace={'big'}>
         <ol>
           <li>
-            yarn add {dependencies.join(' ')}{' '}
+            <Typography code>yarn add {dependencies.join(' ')} </Typography>
             <Copier.Text text={`yarn add ${dependencies.join(' ')}`} />
           </li>
           <li>copy all files below to your project</li>
@@ -82,7 +81,23 @@ const ComponentInfo = ({
           onChange={(e, i) => setIndex(i)}
           tabs={files}
         />
-        <Box bgcolor={'#272C34'} p={2} minHeight={500}>
+        <Box bgcolor={'#272C34'} p={2} minHeight={500} position={'relative'}>
+          {files[index].code && (
+            <Box position={'absolute'} top={16} right={16}>
+              <Copier text={files[index].code}>
+                {({ copied }) => (
+                  <Button
+                    variant={'contained'}
+                    color={'secondary'}
+                    size={'small'}
+                    icon={copied ? 'check_circle' : 'file_copy'}
+                  >
+                    {copied ? 'Copied' : files[index].label}
+                  </Button>
+                )}
+              </Copier>
+            </Box>
+          )}
           <CodeHighlight
             code={files[index] ? files[index].code || '// none' : ''}
           />
@@ -98,7 +113,7 @@ ComponentInfo.propTypes = {
   links: PropTypes.arrayOf(PropTypes.shape({})),
   libraries: PropTypes.arrayOf(PropTypes.shape({})),
   childComponents: PropTypes.arrayOf(PropTypes.shape({})),
-  dependencies: PropTypes.arrayOf(PropTypes.shape({})),
+  dependencies: PropTypes.arrayOf(PropTypes.string),
   files: PropTypes.arrayOf(PropTypes.shape({})),
 };
 ComponentInfo.defaultProps = {

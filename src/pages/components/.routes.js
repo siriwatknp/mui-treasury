@@ -11,6 +11,7 @@ import CarouselPage from 'pages/components/CarouselPage';
 import SlidePage from 'pages/components/SlidePage';
 import ArrowPage from 'pages/components/ArrowPage';
 import IndicatorPage from 'pages/components/IndicatorPage';
+import TagPage from 'pages/components/TagPage';
 
 /**
  * id: [String] optional
@@ -89,6 +90,13 @@ export default [
     primaryText: 'Layout',
     // secondaryText: `${LayoutPage.components.length} items`,
     Page: LayoutPage,
+  },
+  {
+    id: 'tags',
+    path: '/components/tags',
+    primaryText: 'Tags',
+    secondaryText: `${TagPage.components.length} items`,
+    Page: TagPage,
   },
   {
     id: 'tabs',
