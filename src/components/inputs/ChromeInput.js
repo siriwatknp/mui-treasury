@@ -4,7 +4,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
 
 export const getTheme = muiBaseTheme => {
-  const space = muiBaseTheme.spacing.unit; // default = 8;
+  const space = muiBaseTheme.spacing(1); // default = 8;
   const backgroundColor = '#F1F3F4';
   const borderRadius = 100; // rounded
   const inputPadding = space / 4;

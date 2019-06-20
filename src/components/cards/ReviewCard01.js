@@ -102,12 +102,12 @@ ReviewCard01.getTheme = muiBaseTheme => ({
         },
         '& .MuiCardContent-root': {
           boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
-          borderRadius: muiBaseTheme.spacing.unit / 2,
-          margin: `0 ${muiBaseTheme.spacing.unit * 2}px`,
+          borderRadius: muiBaseTheme.spacing(0.5),
+          margin: `0 ${muiBaseTheme.spacing(2)}px`,
           backgroundColor: '#ffffff',
           position: 'absolute',
           top: '60%',
-          padding: muiBaseTheme.spacing.unit * 3,
+          padding: muiBaseTheme.spacing(3),
           textAlign: 'left',
           '& .ContentHead': {
             display: 'flex',
@@ -119,7 +119,7 @@ ReviewCard01.getTheme = muiBaseTheme => ({
             color: muiBaseTheme.palette.grey[500],
           },
           '& .ContentRating': {
-            marginBottom: muiBaseTheme.spacing.unit / 2,
+            marginBottom: muiBaseTheme.spacing(0.5),
             '& svg, .material-icons': {
               fontSize: 20,
               color: muiBaseTheme.palette.grey[300],
@@ -131,7 +131,7 @@ ReviewCard01.getTheme = muiBaseTheme => ({
               verticalAlign: 'top',
               fontWeight: 'bold',
               fontSize: 16,
-              marginLeft: muiBaseTheme.spacing.unit * 2,
+              marginLeft: muiBaseTheme.spacing(2),
             },
           },
           '& .MuiAvatar-root': {
@@ -140,7 +140,7 @@ ReviewCard01.getTheme = muiBaseTheme => ({
             display: 'inline-block',
             border: '2px solid white',
             '&:not(:first-of-type)': {
-              marginLeft: -muiBaseTheme.spacing.unit * 1.5,
+              marginLeft: -muiBaseTheme.spacing(1) * 1.5,
             },
           },
           '& .ContentTail': {
@@ -148,13 +148,13 @@ ReviewCard01.getTheme = muiBaseTheme => ({
             alignItems: 'center',
             flexWrap: 'wrap',
             '& .MuiTypography--reviewer': {
-              marginLeft: muiBaseTheme.spacing.unit,
+              marginLeft: muiBaseTheme.spacing(1),
               marginRight: 'auto',
             },
           },
         },
         '& .MuiIconButton-root': {
-          padding: muiBaseTheme.spacing.unit,
+          padding: muiBaseTheme.spacing(1),
         },
       },
     },

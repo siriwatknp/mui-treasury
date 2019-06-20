@@ -1,8 +1,8 @@
 export default ({ muiBaseTheme, white }) => ({
   MuiChip: {
     root: {
-      paddingTop: muiBaseTheme.spacing.unit / 2,
-      paddingBottom: muiBaseTheme.spacing.unit / 2,
+      paddingTop: muiBaseTheme.spacing(0.5),
+      paddingBottom: muiBaseTheme.spacing(0.5),
       height: 'auto',
       transition: muiBaseTheme.transitions.create(['transform']),
       '&:hover': {

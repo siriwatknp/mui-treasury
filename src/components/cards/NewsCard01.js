@@ -68,15 +68,15 @@ NewsCard01.getTheme = muiBaseTheme => ({
           '& .MuiTypography--category': {
             color: 'rgba(255, 255, 255, 0.87)',
             position: 'absolute',
-            top: muiBaseTheme.spacing.unit * 2.5,
-            left: muiBaseTheme.spacing.unit * 2.5,
+            top: muiBaseTheme.spacing(2.5),
+            left: muiBaseTheme.spacing(2.5),
             letterSpacing: 0.5,
             fontWeight: 900,
           },
         },
         '& .MuiCardContent-root': {
           textAlign: 'left',
-          padding: muiBaseTheme.spacing.unit * 3,
+          padding: muiBaseTheme.spacing(3),
           '& .MuiTypography--overline': {
             color: muiBaseTheme.palette.grey[500],
             fontWeight: 'bold',
@@ -92,8 +92,7 @@ NewsCard01.getTheme = muiBaseTheme => ({
           },
         },
         '& .MuiCardActions-root': {
-          padding: `0 ${muiBaseTheme.spacing.unit * 3}px ${muiBaseTheme.spacing
-            .unit * 3}px`,
+          padding: muiBaseTheme.spacing(0, 3, 3),
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -104,7 +103,7 @@ NewsCard01.getTheme = muiBaseTheme => ({
   MuiButton: {
     root: {
       '& svg, .material-icons': {
-        marginLeft: muiBaseTheme.spacing.unit,
+        marginLeft: muiBaseTheme.spacing(1),
       },
     },
     label: {

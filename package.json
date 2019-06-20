@@ -8,14 +8,17 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,json,md}": [
-      "prettier --write"
-    ],
     "*src/**/*.{js,jsx}": [
       "eslint"
     ]
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^5.1.7",
+    "@storybook/addon-knobs": "^5.1.7",
+    "@storybook/addon-links": "^5.1.7",
+    "@storybook/addon-notes": "^5.1.7",
+    "@storybook/addons": "^5.1.7",
+    "@storybook/react": "^5.1.7",
     "eslint": "^5.12.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.5.0",
@@ -28,16 +31,22 @@
     "prettier": "^1.15.3"
   },
   "dependencies": {
-    "@material-ui/core": "^3.9.2",
-    "@material-ui/styles": "^3.0.0-alpha.10",
-    "@material-ui/system": "^3.0.0-alpha.2",
-    "axios": "^0.18.0",
+    "@date-io/moment": "^1.1.0",
+    "@material-ui/core": "^4.0.2",
+    "@material-ui/lab": "^4.0.0-alpha.13",
+    "@material-ui/styles": "^4.0.2",
+    "@material-ui/system": "^4.0.2",
+    "axios": "^0.19.0",
     "classnames": "^2.2.6",
     "clsx": "^1.0.3",
     "color": "^3.1.0",
+    "emoji-mart": "^2.11.1",
     "formik": "^1.5.1",
     "history": "^4.7.2",
+    "jss": "^10.0.0-alpha.16",
     "lodash": "^4.17.11",
+    "material-ui-pickers": "^2.2.4",
+    "moment": "^2.24.0",
     "prism-react-renderer": "^0.1.6",
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
@@ -45,11 +54,16 @@
     "react-div-100vh": "^0.3.2",
     "react-dom": "^16.8.4",
     "react-element-to-jsx-string": "^14.0.2",
+    "react-frame-component": "^4.1.0",
+    "react-github-btn": "^1.0.5",
     "react-helmet": "^5.2.0",
     "react-jss": "^8.6.1",
+    "react-load-script": "0.0.6",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.8",
+    "react-scroll": "^1.7.11",
     "react-select": "^2.4.1",
+    "react-swipeable-views": "^0.13.3",
     "yup": "^0.26.10"
   },
   "scripts": {
@@ -58,7 +72,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "yarn build && firebase deploy --only hosting",
-    "lint": "eslint src -c .eslintrc.json --ext js,jsx"
+    "lint": "eslint src --ext js,jsx && npm run prettier",
+    "prettier": "prettier --write '**/*.{js,jsx,json,md}'",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 
 export const getTheme = muiBaseTheme => {
-  const space = muiBaseTheme.spacing.unit; // default = 8;
+  const space = muiBaseTheme.spacing(1); // default = 8;
   return {
     MuiFilledInput: {
       root: {

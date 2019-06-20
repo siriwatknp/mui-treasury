@@ -64,7 +64,7 @@ NewsCard02.getTheme = muiBaseTheme => ({
         '& .MuiCardContent-root': {
           position: 'absolute',
           bottom: 0,
-          padding: muiBaseTheme.spacing.unit * 3,
+          padding: muiBaseTheme.spacing(3),
           color: muiBaseTheme.palette.common.white,
           textAlign: 'center',
           '& .MuiTypography--subheading': {

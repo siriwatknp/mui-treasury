@@ -76,8 +76,8 @@ PostCard01.getTheme = muiBaseTheme => ({
           position: 'relative',
           '& .MuiTag--ribbon': {
             position: 'absolute',
-            top: muiBaseTheme.spacing.unit * 2,
-            left: muiBaseTheme.spacing.unit * 2,
+            top: muiBaseTheme.spacing(2),
+            left: muiBaseTheme.spacing(2),
             backgroundColor: muiBaseTheme.palette.secondary.main,
             color: '#ffffff !important',
             padding: '2px 8px',
@@ -123,7 +123,7 @@ PostCard01.getTheme = muiBaseTheme => ({
         },
         '& .MuiCardContent-root': {
           textAlign: 'left',
-          padding: muiBaseTheme.spacing.unit * 3,
+          padding: muiBaseTheme.spacing(3),
         },
         '& .MuiTypography--heading': {
           fontWeight: 'bold',
@@ -132,8 +132,7 @@ PostCard01.getTheme = muiBaseTheme => ({
           lineHeight: 1.8,
         },
         '& .MuiCardActions-root': {
-          padding: `0 ${muiBaseTheme.spacing.unit * 3}px ${muiBaseTheme.spacing
-            .unit * 3}px`,
+          padding: muiBaseTheme.spacing(0, 3, 3),
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',

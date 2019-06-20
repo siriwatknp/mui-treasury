@@ -1,32 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import JssProvider from 'react-jss/lib/JssProvider';
-import {
-  MuiThemeProvider,
-  createGenerateClassName,
-} from '@material-ui/core/styles';
-import ThemeProvider from '@material-ui/styles/ThemeProvider';
-import treasuryTheme from 'theme/treasury';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const generateClassName = createGenerateClassName({
-  productionPrefix: 'MuiTreasury',
-});
-
 const render = Component => {
   ReactDOM.render(
-    <JssProvider generateClassName={generateClassName}>
-      <MuiThemeProvider theme={treasuryTheme}>
-        <ThemeProvider theme={treasuryTheme}>
-          <Router>
-            <Component />
-          </Router>
-        </ThemeProvider>
-      </MuiThemeProvider>
-    </JssProvider>,
+    <Router>
+      <Component />
+    </Router>,
     document.getElementById('root'),
   );
 };

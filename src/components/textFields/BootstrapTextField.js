@@ -3,7 +3,7 @@ import Color from 'color';
 import TextField from '@material-ui/core/TextField';
 
 export const getTheme = muiBaseTheme => {
-  const space = muiBaseTheme.spacing.unit; // default = 8;
+  const space = muiBaseTheme.spacing(1); // default = 8;
   const { white } = muiBaseTheme.palette.common;
   const labelColor = muiBaseTheme.palette.text.primary;
   const fontFamily = [
