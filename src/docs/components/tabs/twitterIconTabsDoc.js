@@ -33,7 +33,7 @@ TwitterIconTabs.Demo = () => {
       tabs={[
         { icon: <Icon>home</Icon>, badgeProps: { badgeContent: '' } },
         { icon: <Icon>search</Icon> },
-        { icon: <Icon>notifications</Icon>, badgeProps: { badgeContent: 2 } },
+        { icon: <Icon>notifications</Icon>, badgeProps: { badgeContent: 99 } },
         { icon: <Icon>mail_outlined_rounded</Icon> },
       ]}
       value={index}
@@ -111,11 +111,10 @@ const coreCode = `
         '& .MuiBadge-badge': {
           color: palette.common.white,
           backgroundColor: '#1da1f2',
-          minWidth: 0,
         },
       },
       [\`&.MuiBadge--dotted .MuiBadge-badge\`]: {
-        width: 6,
+        minWidth: 6,
         height: 6,
         top: 0,
         right: 4,
@@ -125,7 +124,7 @@ const coreCode = `
         top: -4,
         right: 0,
         boxShadow: 'rgb(255, 255, 255) 0px 0px 0px 0.14rem',
-        width: 16,
+        minWidth: 16,
         height: 16,
         fontSize: 10.7,
         fontWeight: 'bold',

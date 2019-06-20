@@ -66,11 +66,10 @@ const useBadgeStyles = makeStyles(({ palette }) => ({
       '& .MuiBadge-badge': {
         color: palette.common.white,
         backgroundColor: '#1da1f2',
-        minWidth: 0,
       },
     },
     [`&.MuiBadge--dotted .MuiBadge-badge`]: {
-      width: 6,
+      minWidth: 6,
       height: 6,
       top: 0,
       right: 4,
@@ -80,7 +79,7 @@ const useBadgeStyles = makeStyles(({ palette }) => ({
       top: -4,
       right: 0,
       boxShadow: 'rgb(255, 255, 255) 0px 0px 0px 0.14rem',
-      width: 16,
+      minWidth: 16,
       height: 16,
       fontSize: 10.7,
       fontWeight: 'bold',
