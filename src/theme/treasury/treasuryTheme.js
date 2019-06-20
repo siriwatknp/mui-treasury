@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import variables, { primary, muiBaseTheme, background } from './variables';
 
 const req = require.context('./components', true, /.js$/);
@@ -33,4 +33,6 @@ const theme = {
   },
 };
 
-export default createMuiTheme(theme);
+const treasuryTheme = responsiveFontSizes(createMuiTheme(theme));
+
+export default treasuryTheme;
