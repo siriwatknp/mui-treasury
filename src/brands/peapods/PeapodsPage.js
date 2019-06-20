@@ -72,6 +72,7 @@ import ThreadHeader from './demo/ThreadHeader';
 import MessageInput from './demo/MessageInput';
 import TrendingHashtagList from './demo/TrendingHashtagList';
 import Toast from './demo/Toast';
+import LoadingSpinner from './demo/LoadingSpinner';
 
 const components = [
   { component: Button, previewProps: { white: true } },
@@ -247,6 +248,7 @@ const components = [
   },
   { component: TrendingHashtagList },
   { component: Toast },
+  { component: LoadingSpinner },
 ];
 
 const PeapodsPage = () => {
