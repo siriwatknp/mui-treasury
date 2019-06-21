@@ -36,6 +36,7 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) => ({
   image: {
     display: 'block',
     position: 'absolute',
+    zIndex: 10,
     width: '100%',
     height: '100%',
     objectFit: 'cover',
@@ -70,7 +71,6 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) => ({
     fontFamily: 'Poppins, san-serif',
     fontWeight: 900,
     position: 'absolute',
-    zIndex: 1,
     color: palette.common.white,
     padding: '0 8px',
     transform: 'rotateY(45deg)',
@@ -87,6 +87,7 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) => ({
     left: '20%',
     height: '40%',
     fontSize: 40,
+    zIndex: 1,
     background: 'linear-gradient(0deg, rgba(255,255,255,0) 0%, #9c9c9c 100%)',
     [breakpoints.up('sm')]: {
       top: 40,
@@ -102,6 +103,7 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) => ({
     left: '0%',
     height: '52%',
     fontSize: 56,
+    zIndex: 2,
     background: 'linear-gradient(0deg, rgba(255,255,255,0) 0%, #888888 100%)',
     [breakpoints.up('sm')]: {
       top: 112,
