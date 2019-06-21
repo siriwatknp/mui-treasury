@@ -1,7 +1,6 @@
-import Avatar from '@material-ui/core/Avatar/Avatar';
-
 /* eslint-disable max-len,no-script-url,jsx-a11y/anchor-is-valid */
 import React from 'react';
+import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
@@ -77,7 +76,7 @@ const ReviewCard01 = () => (
   </Card>
 );
 
-ReviewCard01.getTheme = muiBaseTheme => ({
+ReviewCard01.getTheme = ({ spacing, palette }) => ({
   MuiCard: {
     root: {
       '&.MuiReviewCard--01': {
@@ -102,12 +101,12 @@ ReviewCard01.getTheme = muiBaseTheme => ({
         },
         '& .MuiCardContent-root': {
           boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
-          borderRadius: muiBaseTheme.spacing(0.5),
-          margin: `0 ${muiBaseTheme.spacing(2)}px`,
+          borderRadius: spacing(0.5),
+          margin: `0 ${spacing(2)}px`,
           backgroundColor: '#ffffff',
           position: 'absolute',
           top: '60%',
-          padding: muiBaseTheme.spacing(3),
+          padding: spacing(3),
           textAlign: 'left',
           '& .ContentHead': {
             display: 'flex',
@@ -116,13 +115,13 @@ ReviewCard01.getTheme = muiBaseTheme => ({
           },
           '& .MuiIcon--text': {
             fontSize: 14,
-            color: muiBaseTheme.palette.grey[500],
+            color: palette.grey[500],
           },
           '& .ContentRating': {
-            marginBottom: muiBaseTheme.spacing(0.5),
+            marginBottom: spacing(0.5),
             '& svg, .material-icons': {
               fontSize: 20,
-              color: muiBaseTheme.palette.grey[300],
+              color: palette.grey[300],
             },
             '& .MuiIcon--starred': {
               color: '#ffbb00',
@@ -131,7 +130,8 @@ ReviewCard01.getTheme = muiBaseTheme => ({
               verticalAlign: 'top',
               fontWeight: 'bold',
               fontSize: 16,
-              marginLeft: muiBaseTheme.spacing(2),
+              marginLeft: spacing(2),
+              display: 'inline-block',
             },
           },
           '& .MuiAvatar-root': {
@@ -140,7 +140,7 @@ ReviewCard01.getTheme = muiBaseTheme => ({
             display: 'inline-block',
             border: '2px solid white',
             '&:not(:first-of-type)': {
-              marginLeft: -muiBaseTheme.spacing(1) * 1.5,
+              marginLeft: -spacing(1) * 1.5,
             },
           },
           '& .ContentTail': {
@@ -148,22 +148,17 @@ ReviewCard01.getTheme = muiBaseTheme => ({
             alignItems: 'center',
             flexWrap: 'wrap',
             '& .MuiTypography--reviewer': {
-              marginLeft: muiBaseTheme.spacing(1),
+              marginLeft: spacing(1),
               marginRight: 'auto',
             },
           },
         },
         '& .MuiIconButton-root': {
-          padding: muiBaseTheme.spacing(1),
+          padding: spacing(1),
         },
       },
     },
   },
 });
-ReviewCard01.metadata = {
-  name: 'Review Card I',
-  description: 'Commonly found in traveling guide',
-};
-ReviewCard01.codeSandbox = 'https://codesandbox.io/s/4jv45yopj0';
 
 export default ReviewCard01;

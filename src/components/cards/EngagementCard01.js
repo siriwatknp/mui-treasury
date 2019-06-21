@@ -42,7 +42,7 @@ const EngagementCard01 = () => (
   </Card>
 );
 
-EngagementCard01.getTheme = muiBaseTheme => ({
+EngagementCard01.getTheme = ({ spacing }) => ({
   MuiCard: {
     root: {
       '&.MuiEngagementCard--01': {
@@ -58,10 +58,10 @@ EngagementCard01.getTheme = muiBaseTheme => ({
         },
         '& .MuiCardContent-root': {
           textAlign: 'left',
-          padding: muiBaseTheme.spacing(3),
+          padding: spacing(3),
         },
         '& .MuiDivider-root': {
-          margin: muiBaseTheme.spacing(3, 0),
+          margin: spacing(3, 0),
         },
         '& .MuiTypography--heading': {
           fontWeight: 'bold',
@@ -73,18 +73,12 @@ EngagementCard01.getTheme = muiBaseTheme => ({
           display: 'inline-block',
           border: '2px solid white',
           '&:not(:first-of-type)': {
-            marginLeft: -muiBaseTheme.spacing(1),
+            marginLeft: -spacing(1),
           },
         },
       },
     },
   },
 });
-EngagementCard01.codeSandbox = 'https://codesandbox.io/s/2xk199xrzp';
-EngagementCard01.displayName = 'Card';
-EngagementCard01.metadata = {
-  name: 'Engagement Card',
-  description: "Show people's engagement",
-};
 
 export default EngagementCard01;

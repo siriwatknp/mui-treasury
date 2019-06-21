@@ -19,6 +19,7 @@ const ComponentInfo = ({
   childComponents,
   dependencies,
   files,
+  sandboxTemplateUrl,
 }) => {
   const dependencyList = [
     '@material-ui/core',
@@ -83,7 +84,7 @@ const ComponentInfo = ({
               or{' '}
               <Typography
                 link
-                href={CONSTANT.sandBoxBaseTemplate}
+                href={sandboxTemplateUrl || CONSTANT.sandBoxBaseTemplate}
                 target={'_blank'}
                 rel={'noopener'}
               >
@@ -141,6 +142,7 @@ ComponentInfo.propTypes = {
   childComponents: PropTypes.arrayOf(PropTypes.shape({})),
   dependencies: PropTypes.arrayOf(PropTypes.string),
   files: PropTypes.arrayOf(PropTypes.shape({})),
+  sandboxTemplateUrl: PropTypes.string,
 };
 ComponentInfo.defaultProps = {
   className: '',
@@ -150,6 +152,7 @@ ComponentInfo.defaultProps = {
   childComponents: [],
   dependencies: [],
   files: [],
+  sandboxTemplateUrl: '',
 };
 
 export default ComponentInfo;

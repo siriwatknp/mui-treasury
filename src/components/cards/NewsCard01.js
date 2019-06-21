@@ -46,7 +46,7 @@ const NewsCard01 = () => (
   </Card>
 );
 
-NewsCard01.getTheme = muiBaseTheme => ({
+NewsCard01.getTheme = ({ spacing, palette }) => ({
   MuiCard: {
     root: {
       '&.MuiNewsCard--01': {
@@ -68,17 +68,17 @@ NewsCard01.getTheme = muiBaseTheme => ({
           '& .MuiTypography--category': {
             color: 'rgba(255, 255, 255, 0.87)',
             position: 'absolute',
-            top: muiBaseTheme.spacing(2.5),
-            left: muiBaseTheme.spacing(2.5),
+            top: spacing(2.5),
+            left: spacing(2.5),
             letterSpacing: 0.5,
             fontWeight: 900,
           },
         },
         '& .MuiCardContent-root': {
           textAlign: 'left',
-          padding: muiBaseTheme.spacing(3),
+          padding: spacing(3),
           '& .MuiTypography--overline': {
-            color: muiBaseTheme.palette.grey[500],
+            color: palette.grey[500],
             fontWeight: 'bold',
           },
           '& .MuiTypography--heading': {
@@ -87,12 +87,12 @@ NewsCard01.getTheme = muiBaseTheme => ({
           },
           '& .MuiTypography--subheading': {
             lineHeight: 1.8,
-            color: muiBaseTheme.palette.text.primary,
+            color: palette.text.primary,
             fontWeight: 'bold',
           },
         },
         '& .MuiCardActions-root': {
-          padding: muiBaseTheme.spacing(0, 3, 3),
+          padding: spacing(0, 3, 3),
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -103,7 +103,7 @@ NewsCard01.getTheme = muiBaseTheme => ({
   MuiButton: {
     root: {
       '& svg, .material-icons': {
-        marginLeft: muiBaseTheme.spacing(1),
+        marginLeft: spacing(1),
       },
     },
     label: {
@@ -111,10 +111,5 @@ NewsCard01.getTheme = muiBaseTheme => ({
     },
   },
 });
-NewsCard01.metadata = {
-  name: 'News Card',
-  description: 'Best for Blog',
-};
-NewsCard01.codeSandbox = 'https://codesandbox.io/s/n3pn2mxzlm';
 
 export default NewsCard01;
