@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react';
-import GradientButton from './GradientButton';
+import GradientButton from 'components/buttons/GradientButton';
 
 const demoCode = `
   import React from 'react';
@@ -34,7 +34,8 @@ const gradientCode = `
       minWidth: 200,
       transition: '0.3s cubic-bezier(.47,1.64,.41,.8)',
       background:
-        'linear-gradient(to right, #FFC371, #FF5F6D)' /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */,
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        'linear-gradient(to right, #FFC371, #FF5F6D)',
       '&:hover': {
         transform: 'scale(1.1)',
       },
@@ -51,21 +52,15 @@ const gradientCode = `
     contained: {
       minHeight: 30,
       boxShadow: shadows[0],
-      '&$focusVisible': {
-        boxShadow: shadows[0],
-      },
       '&:active': {
-        boxShadow: shadows[0],
-      },
-      '&$disabled': {
         boxShadow: shadows[0],
       },
     },
   }));
   
   const GradientButton = ({ chubby, ...props }) => {
-    const classes = useStyles({ chubby });
-    return <Button classes={classes} {...props} />;
+    const classes = useStyles({ chubby, ...props });
+    return <Button {...props} classes={classes} />;
   };
   
   GradientButton.propTypes = {
@@ -84,7 +79,11 @@ GradientButton.info = {
   description: 'Welcome to the new trend',
   links: [
     { label: 'Code Sandbox', url: 'https://codesandbox.io/s/3q8xm89p35' },
-    { label: 'Full API', url: 'https://material-ui.com/api/button/' },
+    { label: 'Button API', url: 'https://material-ui.com/api/button/' },
+    {
+      label: 'Styling',
+      url: 'https://material-ui.com/styles/basics/#hook-api',
+    },
   ],
   files: [
     {

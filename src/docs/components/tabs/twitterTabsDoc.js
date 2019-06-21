@@ -89,20 +89,20 @@ const coreCode = `
     },
   }));
   
-  const TwitterTabs = ({ tabs, ...props }) => {
-    const tabsClasses = useTabsStyles();
-    const tabClasses = useTabStyles();
+  const TwitterTabs = ({ tabs, tabProps, ...props }) => {
+    const tabsClasses = useTabsStyles(props);
+    const tabClasses = useTabStyles(tabProps);
     return (
-      <Tabs variant={'fullWidth'} centered classes={tabsClasses} {...props}>
+      <Tabs variant={'fullWidth'} centered {...props} classes={tabsClasses}>
         {tabs.map(tab => (
           <Tab
             key={tab.label}
+            disableRipple
+            {...tab}
             classes={{
               ...tabClasses,
               wrapper: \`\${tabClasses.wrapper} MuiTab-label\`,
             }}
-            disableRipple
-            {...tab}
           />
         ))}
       </Tabs>
@@ -115,9 +115,11 @@ const coreCode = `
         label: PropTypes.node.isRequired,
       }),
     ),
+    tabProps: PropTypes.shape({}),
   };
   TwitterTabs.defaultProps = {
     tabs: [],
+    tabProps: {},
   };
   
   export default TwitterTabs;
@@ -136,6 +138,10 @@ TwitterTabs.info = {
     },
     { label: 'Tabs API', url: 'https://material-ui.com/api/tabs/' },
     { label: 'Tab API', url: 'https://material-ui.com/api/tab/' },
+    {
+      label: 'Styling',
+      url: 'https://material-ui.com/styles/basics/#hook-api',
+    },
   ],
   files: [
     {

@@ -23,19 +23,17 @@ const useStyles = makeStyles(({ palette, shadows }) => ({
   contained: {
     minHeight: 30,
     boxShadow: shadows[0],
-    '&$focusVisible': { boxShadow: shadows[0] },
     '&:active': { boxShadow: shadows[0] },
-    '&$disabled': { boxShadow: shadows[0] },
   },
 }));
 
 const ShinningButton = ({ className, ...props }) => {
-  const classes = useStyles();
+  const classes = useStyles(props);
   return (
     <Button
       className={`MuiButton--shinning ${className}`}
-      classes={classes}
       {...props}
+      classes={classes}
     >
       Sunshine
     </Button>

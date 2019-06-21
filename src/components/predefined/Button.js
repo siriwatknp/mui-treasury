@@ -411,6 +411,8 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing, shadows }) => {
         color: palette.secondary.main,
       },
     },
+    focusVisible: {},
+    disabled: {},
   };
 });
 

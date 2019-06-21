@@ -19,6 +19,8 @@ const normalizedRoute = normalize(route);
 
 const formHiddenPaths = [
   '/components/layout',
+  '/components/button',
+  '/components/tabs',
   '/components/carousel',
   '/components/carousel/slide',
   '/components/carousel/arrow',
@@ -26,7 +28,7 @@ const formHiddenPaths = [
 ];
 
 const RootComponentPage = ({ location }) => (
-  <ThemeController formHidden={formHiddenPaths.indexOf(location) !== -1}>
+  <ThemeController formHidden={formHiddenPaths.indexOf(location.pathname) !== -1}>
     {props => (
       <Switch>
         {normalizedRoute.map(({ path, Page }) => (

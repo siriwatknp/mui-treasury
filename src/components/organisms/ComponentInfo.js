@@ -20,6 +20,11 @@ const ComponentInfo = ({
   dependencies,
   files,
 }) => {
+  const dependencyList = [
+    '@material-ui/core',
+    '@material-ui/styles',
+    ...dependencies,
+  ].join(' ');
   const [index, setIndex] = useState(0);
   const renderList = (items, text, defaultIcon) => {
     if (!items || !items.length) return null;
@@ -71,9 +76,9 @@ const ComponentInfo = ({
         <ol>
           <li>
             <Typography code size={'small'}>
-              yarn add {dependencies.join(' ')}{' '}
+              yarn add {dependencyList}{' '}
             </Typography>
-            <Copier.Text text={`yarn add ${dependencies.join(' ')}`} />
+            <Copier.Text text={`yarn add ${dependencyList}`} />
             <p>
               or{' '}
               <Typography
@@ -96,7 +101,13 @@ const ComponentInfo = ({
           onChange={(e, i) => setIndex(i)}
           tabs={files}
         />
-        <Box bgcolor={'#272C34'} p={2} minHeight={500} position={'relative'}>
+        <Box
+          bgcolor={'#272C34'}
+          p={2}
+          pt={{ xs: 4.5, sm: 2 }}
+          minHeight={500}
+          position={'relative'}
+        >
           {files[index].code && (
             <Box position={'absolute'} top={16} right={16} zIndex={1200}>
               <Copier text={files[index].code}>

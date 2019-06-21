@@ -31,13 +31,13 @@ const useTabStyles = makeStyles(({ breakpoints, spacing }) => ({
   },
 }));
 
-const FirebaseTabs = ({ tabs, ...props }) => {
-  const tabsClasses = useTabsStyles();
-  const tabClasses = useTabStyles();
+const FirebaseTabs = ({ tabs, tabProps, ...props }) => {
+  const tabsClasses = useTabsStyles(props);
+  const tabClasses = useTabStyles(tabProps);
   return (
-    <Tabs classes={tabsClasses} {...props}>
+    <Tabs {...props} classes={tabsClasses}>
       {tabs.map(tab => (
-        <Tab key={tab.label} classes={tabClasses} {...tab} />
+        <Tab key={tab.label} {...tab} classes={tabClasses} />
       ))}
     </Tabs>
   );
@@ -49,14 +49,11 @@ FirebaseTabs.propTypes = {
       label: PropTypes.node.isRequired,
     }),
   ),
+  tabProps: PropTypes.shape({}),
 };
 FirebaseTabs.defaultProps = {
   tabs: [],
+  tabProps: {},
 };
-FirebaseTabs.metadata = {
-  name: 'Firebase Tabs',
-  description: 'implement firebase theme (primary-color: #039be5)',
-};
-FirebaseTabs.codeSandbox = 'https://codesandbox.io/s/13kjwkry7l';
 
 export default FirebaseTabs;

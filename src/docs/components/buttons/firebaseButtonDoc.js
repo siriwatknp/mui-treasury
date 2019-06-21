@@ -1,5 +1,5 @@
 import React from 'react';
-import FirebaseButton from './FirebaseButton';
+import FirebaseButton from 'components/buttons/FirebaseButton';
 
 const demoCode = `
   import React from 'react';
@@ -66,9 +66,9 @@ const firebaseCode = `
     },
   }));
   
-  const FirebaseButton = ({ ...props }) => {
-    const classes = useStyles();
-    return <Button classes={classes} {...props} />;
+  const FirebaseButton = props => {
+    const classes = useStyles(props);
+    return <Button {...props} classes={classes} />;
   };
   
   export default FirebaseButton;
@@ -80,7 +80,11 @@ FirebaseButton.info = {
   description: "We're on fire",
   links: [
     { label: 'Code Sandbox', url: 'https://codesandbox.io/s/ojnxlj1ry6' },
-    { label: 'Full API', url: 'https://material-ui.com/api/button/' },
+    { label: 'Button API', url: 'https://material-ui.com/api/button/' },
+    {
+      label: 'Styling',
+      url: 'https://material-ui.com/styles/basics/#hook-api',
+    },
   ],
   files: [
     {
@@ -93,7 +97,7 @@ FirebaseButton.info = {
     },
   ],
   libraries: [],
-  dependencies: ['@material-ui/core'],
+  dependencies: [],
 };
 FirebaseButton.codeSandbox = 'https://codesandbox.io/s/ojnxlj1ry6';
 
