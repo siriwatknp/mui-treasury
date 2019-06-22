@@ -53,3 +53,5 @@ export { default as TrendingHashtagList } from './lib/PeaTrendingHashtagList';
 export { default as Toast } from './lib/PeaToast';
 export { default as SwipeableTabs } from './lib/PeaSwipeableTabs';
 export { default as LoadingSpinner } from './lib/PeaLoadingSpinner';
+export { default as ImageCarousel } from './lib/PeaImageCarousel';
+
