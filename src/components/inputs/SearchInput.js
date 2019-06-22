@@ -11,17 +11,13 @@ const SearchInput = props => (
   />
 );
 
-SearchInput.metadata = {
-  name: 'Search Input', // mandatory
-  description: 'Trust me! you will need it somewhere', // optional
-};
-SearchInput.getTheme = muiBaseTheme => {
+SearchInput.getTheme = ({ spacing, palette }) => {
   // ATTENTION!
   // you can customize some important variables here!!
-  const backgroundColor = muiBaseTheme.palette.grey[100];
-  const space = muiBaseTheme.spacing(1); // default = 8;
+  const backgroundColor = palette.grey[100];
+  const space = spacing(1); // default = 8;
   const borderRadius = 0;
-  const iconColor = muiBaseTheme.palette.grey[500];
+  const iconColor = palette.grey[500];
   // end of variables
   return {
     MuiInputBase: {
@@ -42,6 +38,5 @@ SearchInput.getTheme = muiBaseTheme => {
     },
   };
 };
-SearchInput.codeSandbox = 'https://codesandbox.io/s/nkp97k1mrp';
 
 export default SearchInput;

@@ -3,8 +3,8 @@ import React from 'react';
 import Color from 'color';
 import InputBase from '@material-ui/core/InputBase';
 
-export const getTheme = muiBaseTheme => {
-  const { white } = muiBaseTheme.palette.common;
+export const getTheme = ({ palette, transitions }) => {
+  const { white } = palette.common;
   const inputRadius = 4;
   const borderWidth = 1;
   const inputPadding = '10px 12px';
@@ -22,7 +22,7 @@ export const getTheme = muiBaseTheme => {
   ].join(',');
   const borderColor = '#ced4da';
   // you can change normal color to primary using
-  // muiBaseTheme.palette.primary.main
+  // palette.primary.main
   const normalColor = '#80bdff';
   const validColor = '#28a745';
   const errorColor = '#dc3545';
@@ -40,10 +40,7 @@ export const getTheme = muiBaseTheme => {
             fontSize: 16,
             width: 'auto',
             padding: inputPadding,
-            transition: muiBaseTheme.transitions.create([
-              'border-color',
-              'box-shadow',
-            ]),
+            transition: transitions.create(['border-color', 'box-shadow']),
             // Use the system font instead of the default Roboto font.
             fontFamily,
             '&:focus': {
@@ -75,7 +72,7 @@ export const getTheme = muiBaseTheme => {
 };
 
 const BootstrapInput = ({ classes, ...props }) => (
-  <React.Fragment>
+  <div>
     <InputBase
       classes={{
         root: 'BootstrapInput-root',
@@ -85,6 +82,7 @@ const BootstrapInput = ({ classes, ...props }) => (
       placeholder={'Username'}
       {...props}
     />
+    <div style={{ paddingBottom: 8 }} />
     <InputBase
       classes={{
         root: 'BootstrapInput-root BootstrapInput-error',
@@ -94,6 +92,7 @@ const BootstrapInput = ({ classes, ...props }) => (
       placeholder={'Username'}
       {...props}
     />
+    <div style={{ paddingBottom: 8 }} />
     <InputBase
       classes={{
         root: 'BootstrapInput-root BootstrapInput-valid',
@@ -103,17 +102,9 @@ const BootstrapInput = ({ classes, ...props }) => (
       placeholder={'Username'}
       {...props}
     />
-  </React.Fragment>
+  </div>
 );
 
 BootstrapInput.getTheme = getTheme;
-BootstrapInput.metadata = {
-  name: 'Bootstrap Input',
-  description: 'Implement Bootstrap Input',
-  libraries: [
-    { text: 'color', link: 'https://github.com/Qix-/color#manipulation' },
-  ],
-};
-BootstrapInput.codeSandbox = 'https://codesandbox.io/s/52x3p8rk3n';
 
 export default BootstrapInput;
