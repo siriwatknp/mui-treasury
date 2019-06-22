@@ -3,6 +3,7 @@ import React from 'react';
 import Box from '@material-ui/core/Box';
 import InvertedArrow from 'components/arrows/InvertedArrow';
 import Icon from 'components/predefined/Icon';
+import { mergeInfo } from 'helpers/function';
 
 const demoCode = `
   import React from 'react';
@@ -31,7 +32,7 @@ const coreCode = `
   import PropTypes from 'prop-types';
   import { makeStyles } from '@material-ui/styles';
   import Button from '@material-ui/core/Button';
-  import Icon from 'components/predefined/Icon';
+  import Icon from './Icon';
   
   const useStyles = makeStyles(({ palette, breakpoints }) => ({
     root: {
@@ -91,30 +92,28 @@ const coreCode = `
 
 `;
 
-InvertedArrow.info = {
-  name: 'InvertedArrow',
-  description: '',
-  links: [
-    { label: 'Button API', url: 'https://material-ui.com/api/button/' },
-    { label: 'Icon API', url: 'https://material-ui.com/api/icon/' },
-    {
-      label: 'Styling',
-      url: 'https://material-ui.com/styles/basics/#hook-api',
-    },
-  ],
-  files: [
-    {
-      label: 'Demo.js',
-      code: demoCode,
-    },
-    {
-      label: 'InvertedArrow.js',
-      code: coreCode,
-    },
-    Icon.info.files[0],
-  ],
-  libraries: [],
-  dependencies: [],
-};
+InvertedArrow.info = mergeInfo(
+  {
+    name: 'InvertedArrow',
+    description: '',
+    links: [
+      { label: 'Button API', url: 'https://material-ui.com/api/button/' },
+    ],
+    files: [
+      {
+        label: 'Demo.js',
+        code: demoCode,
+      },
+      {
+        label: 'InvertedArrow.js',
+        code: coreCode,
+        core: true,
+      },
+    ],
+    libraries: [],
+    dependencies: [],
+  },
+  Icon.info,
+);
 
 export default InvertedArrow;

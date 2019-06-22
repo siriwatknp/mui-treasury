@@ -252,15 +252,20 @@ Icon.info = {
       url: 'https://material-ui.com/components/icons/#icons',
     },
     { label: 'SVG Icon API', url: 'https://material-ui.com/api/svg-icon/' },
+    {
+      label: 'Styling',
+      url: 'https://material-ui.com/styles/basics/#hook-api',
+    },
   ],
   files: [
     {
       label: 'Icon.js',
       code: coreCode,
+      core: true,
     },
   ],
   libraries: [],
-  dependencies: ['@material-ui/core'],
+  dependencies: [],
 };
 
 export default Icon;
