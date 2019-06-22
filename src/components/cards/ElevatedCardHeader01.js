@@ -62,7 +62,7 @@ const ElevatedCardHeader01 = () => (
   </Card>
 );
 
-ElevatedCardHeader01.getTheme = muiBaseTheme => {
+ElevatedCardHeader01.getTheme = ({ spacing }) => {
   const offset = 40;
   const cardShadow = '0px 14px 80px rgba(34, 35, 58, 0.2)';
   const headerShadow = '4px 4px 20px 1px rgba(0, 0, 0, 0.2)';
@@ -71,21 +71,21 @@ ElevatedCardHeader01.getTheme = muiBaseTheme => {
       root: {
         '&.MuiElevatedCard--01': {
           marginTop: offset,
-          borderRadius: muiBaseTheme.spacing(0.5),
+          borderRadius: spacing(0.5),
           transition: '0.3s',
           boxShadow: cardShadow,
           position: 'relative',
           width: '90%',
           overflow: 'initial',
           background: '#ffffff',
-          padding: muiBaseTheme.spacing(2, 0),
+          padding: spacing(2, 0),
           '& .MuiCardHeader-root': {
             flexShrink: 0,
             position: 'absolute',
             top: -offset,
             right: 20,
             left: 20,
-            borderRadius: muiBaseTheme.spacing(2),
+            borderRadius: spacing(2),
             backgroundColor: purple[500],
             overflow: 'hidden',
             boxShadow: headerShadow,
@@ -114,12 +114,5 @@ ElevatedCardHeader01.getTheme = muiBaseTheme => {
     },
   };
 };
-
-ElevatedCardHeader01.metadata = {
-  name: 'Elevated Card Header I',
-  description: 'Wonderful elevated card header',
-};
-
-ElevatedCardHeader01.codeSandbox = 'https://codesandbox.io/s/5zjrl704wx';
 
 export default ElevatedCardHeader01;

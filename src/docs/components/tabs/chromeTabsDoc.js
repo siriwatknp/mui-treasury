@@ -13,7 +13,11 @@ const demoCode = `
   const Demo = () => {
     const [index, setIndex] = useState(0);
     return (
-      <AppBar position={'static'} color={'default'} elevation={0}>
+      <AppBar
+        position={'static'}
+        elevation={0}
+        style={{ backgroundColor: '#E6E8EB' }}
+      >
         <Toolbar>
           <ChromeTabs
             style={{ alignSelf: 'flex-end' }}
@@ -24,9 +28,12 @@ const demoCode = `
               { label: 'Label 4' },
             ]}
             tabStyle={{
-              bgColor: '#f5f5f5',
+              bgColor: '#E6E8EB',
               selectedBgColor: '#ffffff',
               color: 'rgba(0,0,0,0.87)',
+            }}
+            tabProps={{
+              disableRipple: true,
             }}
             value={index}
             onChange={(e, i) => setIndex(i)}
@@ -42,7 +49,11 @@ const demoCode = `
 ChromeTabs.Demo = () => {
   const [index, setIndex] = useState(0);
   return (
-    <AppBar position={'static'} color={'default'} elevation={0}>
+    <AppBar
+      position={'static'}
+      elevation={0}
+      style={{ backgroundColor: '#E6E8EB' }}
+    >
       <Toolbar>
         <ChromeTabs
           style={{ alignSelf: 'flex-end' }}
@@ -53,9 +64,12 @@ ChromeTabs.Demo = () => {
             { label: 'Label 4' },
           ]}
           tabStyle={{
-            bgColor: '#f5f5f5',
+            bgColor: '#E6E8EB',
             selectedBgColor: '#ffffff',
             color: 'rgba(0,0,0,0.87)',
+          }}
+          tabProps={{
+            disableRipple: true,
           }}
           value={index}
           onChange={(e, i) => setIndex(i)}
@@ -154,13 +168,13 @@ const coreCode = `
     };
   });
   
-  const ChromeTabs = ({ tabs, tabStyle, ...props }) => {
-    const tabsClasses = useTabsStyles();
-    const tabClasses = useTabStyles(tabStyle);
+  const ChromeTabs = ({ tabs, tabStyle, tabProps, ...props }) => {
+    const tabsClasses = useTabsStyles(props);
+    const tabClasses = useTabStyles({ ...tabProps, ...tabStyle });
     return (
-      <Tabs classes={tabsClasses} {...props}>
+      <Tabs {...props} classes={tabsClasses}>
         {tabs.map(tab => (
-          <Tab key={tab.label} classes={tabClasses} {...tab} />
+          <Tab key={tab.label} {...tabProps} {...tab} classes={tabClasses} />
         ))}
       </Tabs>
     );
@@ -176,10 +190,12 @@ const coreCode = `
       bgColor: PropTypes.string,
       minWidth: PropTypes.shape({}),
     }),
+    tabProps: PropTypes.shape({}),
   };
   ChromeTabs.defaultProps = {
     tabs: [],
     tabStyle: {},
+    tabProps: {},
   };
   
   export default ChromeTabs;
@@ -198,6 +214,10 @@ ChromeTabs.info = {
     },
     { label: 'Tabs API', url: 'https://material-ui.com/api/tabs/' },
     { label: 'Tab API', url: 'https://material-ui.com/api/tab/' },
+    {
+      label: 'Styling',
+      url: 'https://material-ui.com/styles/basics/#hook-api',
+    },
   ],
   files: [
     {
@@ -211,11 +231,11 @@ ChromeTabs.info = {
   ],
   libraries: [
     {
-      label: 'Color',
+      label: 'Qix-/Color',
       url: 'https://github.com/Qix-/color',
     },
   ],
-  dependencies: ['@material-ui/core'],
+  dependencies: ['color'],
 };
 
 export default ChromeTabs;

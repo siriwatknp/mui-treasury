@@ -9,6 +9,7 @@ import ChromeTabs from 'components/tabs/ChromeTabs';
 import CodeHighlight from 'components/highlights/CodeHighlight';
 import Copier from 'components/atoms/Copier';
 import Button from 'components/predefined/Button';
+import CONSTANT from 'constant';
 
 const ComponentInfo = ({
   className,
@@ -18,7 +19,13 @@ const ComponentInfo = ({
   childComponents,
   dependencies,
   files,
+  sandboxTemplateUrl,
 }) => {
+  const dependencyList = [
+    '@material-ui/core',
+    '@material-ui/styles',
+    ...dependencies,
+  ].join(' ');
   const [index, setIndex] = useState(0);
   const renderList = (items, text, defaultIcon) => {
     if (!items || !items.length) return null;
@@ -50,11 +57,11 @@ const ComponentInfo = ({
   return (
     <Box p={2} className={cx('ComponentInfo-root', className)}>
       <Typography
-        variant={'h2'}
-        size={'large'}
+        variant={'h5'}
         weight={900}
         align={'center'}
         spacing={'small'}
+        bottomSpace={'small'}
       >
         {name}
       </Typography>
@@ -66,24 +73,46 @@ const ComponentInfo = ({
       )}
       {renderList(childComponents, 'Child Components', 'keyboard_arrow_right')}
       <Typography weight={'bold'}>How to use</Typography>
-      <Typography component={'div'} variant={'body2'} bottomSpace={'big'}>
+      <Typography component={'div'} variant={'body2'} bottomSpace={'medium'}>
         <ol>
           <li>
-            <Typography code>yarn add {dependencies.join(' ')} </Typography>
-            <Copier.Text text={`yarn add ${dependencies.join(' ')}`} />
+            <Typography code size={'small'}>
+              yarn add {dependencyList}{' '}
+            </Typography>
+            <Copier.Text text={`yarn add ${dependencyList}`} />
+            <p>
+              or{' '}
+              <Typography
+                link
+                href={sandboxTemplateUrl || CONSTANT.sandBoxBaseTemplate}
+                target={'_blank'}
+                rel={'noopener'}
+              >
+                Fork this SandBox
+              </Typography>
+            </p>
           </li>
-          <li>copy all files below to your project</li>
+          <li>Copy all files below to your project or to forked SandBox</li>
+          <li>Make changes as you want</li>
         </ol>
       </Typography>
       <Box mx={-2} mb={-2}>
         <ChromeTabs
+          variant="scrollable"
+          scrollButtons="auto"
           value={index}
           onChange={(e, i) => setIndex(i)}
-          tabs={files}
+          tabs={files.map(({ label }) => ({ label }))}
         />
-        <Box bgcolor={'#272C34'} p={2} minHeight={500} position={'relative'}>
+        <Box
+          bgcolor={'#272C34'}
+          p={2}
+          pt={{ xs: 4.5, sm: 2 }}
+          minHeight={500}
+          position={'relative'}
+        >
           {files[index].code && (
-            <Box position={'absolute'} top={16} right={16}>
+            <Box position={'absolute'} top={16} right={16} zIndex={1200}>
               <Copier text={files[index].code}>
                 {({ copied }) => (
                   <Button
@@ -115,6 +144,7 @@ ComponentInfo.propTypes = {
   childComponents: PropTypes.arrayOf(PropTypes.shape({})),
   dependencies: PropTypes.arrayOf(PropTypes.string),
   files: PropTypes.arrayOf(PropTypes.shape({})),
+  sandboxTemplateUrl: PropTypes.string,
 };
 ComponentInfo.defaultProps = {
   className: '',
@@ -124,6 +154,7 @@ ComponentInfo.defaultProps = {
   childComponents: [],
   dependencies: [],
   files: [],
+  sandboxTemplateUrl: '',
 };
 
 export default ComponentInfo;

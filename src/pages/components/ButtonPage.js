@@ -20,7 +20,7 @@ import {
   GithubButton,
   FirebaseButton,
   TwitterButton,
-} from 'components/buttons';
+} from 'docs/components/buttons';
 
 const baseTheme = createMuiTheme();
 

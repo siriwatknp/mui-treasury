@@ -25,7 +25,7 @@ Copier.Text = ({ text, ...props }) => (
         size={'small'}
         {...props}
         link={!copied}
-        color={copied ? 'success' : 'primary'}
+        color={copied ? 'success' : 'secondary'}
       >
         {copied ? 'check_circle' : 'file_copy'}
       </Icon>

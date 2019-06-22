@@ -105,9 +105,5 @@ ChatMessages.defaultProps = {
   messages: [],
   side: 'left',
 };
-ChatMessages.metadata = {
-  name: 'Chat Messages',
-};
-ChatMessages.codeSandbox = 'https://codesandbox.io/s/chatmessages-kjq2g';
 
 export default ChatMessages;

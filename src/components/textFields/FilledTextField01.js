@@ -1,8 +1,8 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 
-export const getTheme = muiBaseTheme => {
-  const space = muiBaseTheme.spacing(1); // default = 8;
+export const getTheme = ({ spacing }) => {
+  const space = spacing(1); // default = 8;
   return {
     MuiFilledInput: {
       root: {
@@ -34,7 +34,7 @@ export const getTheme = muiBaseTheme => {
 };
 
 const FilledTextField01 = props => (
-  <React.Fragment>
+  <div>
     <TextField
       variant={'filled'}
       fullWidth
@@ -46,6 +46,7 @@ const FilledTextField01 = props => (
       helperText={'Helper Text'}
       {...props}
     />
+    <div style={{ paddingBottom: 12 }} />
     <TextField
       variant={'filled'}
       error
@@ -58,14 +59,9 @@ const FilledTextField01 = props => (
       helperText={'Helper Text'}
       {...props}
     />
-  </React.Fragment>
+  </div>
 );
 
 FilledTextField01.getTheme = getTheme;
-FilledTextField01.metadata = {
-  name: 'Filled TextField I',
-  description: 'Custom Filled Variant No.1',
-};
-FilledTextField01.codeSandbox = 'https://codesandbox.io/s/jlp9jxoqy';
 
 export default FilledTextField01;

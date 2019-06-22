@@ -2,10 +2,10 @@ import React from 'react';
 import Color from 'color';
 import TextField from '@material-ui/core/TextField';
 
-export const getTheme = muiBaseTheme => {
-  const space = muiBaseTheme.spacing(1); // default = 8;
-  const { white } = muiBaseTheme.palette.common;
-  const labelColor = muiBaseTheme.palette.text.primary;
+export const getTheme = ({ palette, spacing, transitions }) => {
+  const space = spacing(1); // default = 8;
+  const { white } = palette.common;
+  const labelColor = palette.text.primary;
   const fontFamily = [
     '-apple-system',
     'BlinkMacSystemFont',
@@ -20,7 +20,7 @@ export const getTheme = muiBaseTheme => {
   ].join(',');
   const borderColor = '#ced4da';
   // you can change normal color to primary using
-  // muiBaseTheme.palette.primary.main
+  // palette.primary.main
   const normalColor = '#80bdff';
   const helperTextColor = '#6c757d';
   const validColor = '#28a745';
@@ -54,10 +54,7 @@ export const getTheme = muiBaseTheme => {
             fontSize: inputFontSize,
             width: 'auto',
             padding: inputPadding,
-            transition: muiBaseTheme.transitions.create([
-              'border-color',
-              'box-shadow',
-            ]),
+            transition: transitions.create(['border-color', 'box-shadow']),
             // Use the system font instead of the default Roboto font.
             fontFamily,
             '&:focus': {
@@ -101,7 +98,7 @@ export const getTheme = muiBaseTheme => {
 };
 
 const BootstrapTextField = props => (
-  <React.Fragment>
+  <div>
     <TextField
       classes={{
         root: 'BootstrapFormControl-root',
@@ -125,6 +122,7 @@ const BootstrapTextField = props => (
       helperText={'Helper Text'}
       {...props}
     />
+    <div style={{ paddingBottom: 12 }} />
     <TextField
       classes={{
         root: 'BootstrapFormControl-root BootstrapFormControl-valid',
@@ -148,6 +146,7 @@ const BootstrapTextField = props => (
       helperText={'Valid Helper Text'}
       {...props}
     />
+    <div style={{ paddingBottom: 12 }} />
     <TextField
       classes={{
         root: 'BootstrapFormControl-root BootstrapFormControl-error',
@@ -171,7 +170,7 @@ const BootstrapTextField = props => (
       helperText={'Error Helper Text'}
       {...props}
     />
-  </React.Fragment>
+  </div>
 );
 
 BootstrapTextField.getTheme = getTheme;

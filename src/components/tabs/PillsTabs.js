@@ -56,13 +56,13 @@ const useTabStyles = makeStyles(({ breakpoints }) => ({
   },
 }));
 
-const PillsTabs = ({ tabs, ...props }) => {
-  const tabsClasses = useTabsStyles();
-  const tabClasses = useTabStyles();
+const PillsTabs = ({ tabs, tabProps, ...props }) => {
+  const tabsClasses = useTabsStyles(props);
+  const tabClasses = useTabStyles(tabProps);
   return (
-    <Tabs classes={tabsClasses} {...props}>
+    <Tabs {...props} classes={tabsClasses}>
       {tabs.map(tab => (
-        <Tab key={tab.label} classes={tabClasses} {...tab} />
+        <Tab key={tab.label} {...tab} classes={tabClasses} />
       ))}
     </Tabs>
   );
@@ -74,15 +74,11 @@ PillsTabs.propTypes = {
       label: PropTypes.node.isRequired,
     }),
   ),
+  tabProps: PropTypes.shape({}),
 };
 PillsTabs.defaultProps = {
   tabs: [],
+  tabProps: {},
 };
-PillsTabs.metadata = {
-  name: 'Pills Tabs',
-  description: 'implement custom theme with elevated pills tabs',
-};
-
-PillsTabs.codeSandbox = 'https://codesandbox.io/s/q885853jkw';
 
 export default PillsTabs;

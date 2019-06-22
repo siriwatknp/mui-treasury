@@ -44,13 +44,13 @@ const useTabStyles = makeStyles(({ breakpoints, spacing }) => {
   };
 });
 
-const ElevatedTabs = ({ tabs, ...props }) => {
-  const tabsClasses = useTabsStyles();
-  const tabClasses = useTabStyles();
+const ElevatedTabs = ({ tabs, tabProps, ...props }) => {
+  const tabsClasses = useTabsStyles(props);
+  const tabClasses = useTabStyles(tabProps);
   return (
-    <Tabs classes={tabsClasses} {...props}>
+    <Tabs {...props} classes={tabsClasses}>
       {tabs.map(tab => (
-        <Tab key={tab.label} classes={tabClasses} {...tab} />
+        <Tab key={tab.label} {...tab} classes={tabClasses} />
       ))}
     </Tabs>
   );
@@ -62,9 +62,11 @@ ElevatedTabs.propTypes = {
       label: PropTypes.node.isRequired,
     }),
   ),
+  tabProps: PropTypes.shape({}),
 };
 ElevatedTabs.defaultProps = {
   tabs: [],
+  tabProps: {},
 };
 
 export default ElevatedTabs;

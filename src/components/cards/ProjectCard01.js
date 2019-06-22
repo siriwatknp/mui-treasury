@@ -47,7 +47,7 @@ const ProjectCard01 = () => (
   </Card>
 );
 
-ProjectCard01.getTheme = muiBaseTheme => ({
+ProjectCard01.getTheme = ({ palette, spacing }) => ({
   MuiCard: {
     root: {
       '&.MuiProjectCard--01': {
@@ -55,7 +55,7 @@ ProjectCard01.getTheme = muiBaseTheme => ({
         maxWidth: 304,
         margin: 'auto',
         borderRadius: 16,
-        padding: muiBaseTheme.spacing(3),
+        padding: spacing(3),
         boxShadow: '0 8px 40px -12px rgba(0,0,0,0.3)',
         '&:hover': {
           boxShadow: '0 16px 70px -12.125px rgba(0,0,0,0.3)',
@@ -71,21 +71,21 @@ ProjectCard01.getTheme = muiBaseTheme => ({
             transform: 'translateY(50%)',
           },
           '& .MuiTypography--headLabel': {
-            color: muiBaseTheme.palette.grey[500],
+            color: palette.grey[500],
           },
         },
         '& .MuiDivider-root': {
-          marginLeft: -muiBaseTheme.spacing(3),
-          marginRight: -muiBaseTheme.spacing(3),
+          marginLeft: -spacing(3),
+          marginRight: -spacing(3),
         },
         '& .MuiCardContent-root': {
           textAlign: 'left',
           padding: 0,
-          paddingTop: muiBaseTheme.spacing(6),
+          paddingTop: spacing(6),
           '& .MuiTypography--overline': {
             fontSize: 16,
             fontWeight: 'bold',
-            color: muiBaseTheme.palette.grey[500],
+            color: palette.grey[500],
           },
           '& .MuiTypography--heading': {
             fontWeight: 900,
@@ -98,11 +98,5 @@ ProjectCard01.getTheme = muiBaseTheme => ({
     },
   },
 });
-ProjectCard01.displayName = 'Card';
-ProjectCard01.metadata = {
-  name: 'Project Card',
-  description: 'Widely used in Dashboard UI',
-};
-ProjectCard01.codeSandbox = 'https://codesandbox.io/s/r0wo8094p';
 
 export default ProjectCard01;

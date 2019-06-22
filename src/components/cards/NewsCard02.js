@@ -40,7 +40,7 @@ const NewsCard02 = () => (
   </Card>
 );
 
-NewsCard02.getTheme = muiBaseTheme => ({
+NewsCard02.getTheme = ({ spacing, palette }) => ({
   MuiCard: {
     root: {
       '&.MuiNewsCard--02': {
@@ -64,8 +64,8 @@ NewsCard02.getTheme = muiBaseTheme => ({
         '& .MuiCardContent-root': {
           position: 'absolute',
           bottom: 0,
-          padding: muiBaseTheme.spacing(3),
-          color: muiBaseTheme.palette.common.white,
+          padding: spacing(3),
+          color: palette.common.white,
           textAlign: 'center',
           '& .MuiTypography--subheading': {
             lineHeight: 1.8,
@@ -82,10 +82,5 @@ NewsCard02.getTheme = muiBaseTheme => ({
     },
   },
 });
-NewsCard02.metadata = {
-  name: 'News Card II',
-  description: 'Best for Blog',
-};
-NewsCard02.codeSandbox = 'https://codesandbox.io/s/r5lry7j72q';
 
 export default NewsCard02;

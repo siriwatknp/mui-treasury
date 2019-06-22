@@ -23,18 +23,16 @@ const RewardCard01 = () => (
     </CardContent>
     <CardMedia
       className={'MuiCardMedia-root'}
-      image={
-        'https://en.toppng.com/public/uploads/preview/trophy-11527593133heztq8usyh.png'
-      }
+      image={'https://jkkm.info/ui/images/awards/victory.png'}
     />
   </Card>
 );
 
-RewardCard01.getTheme = muiBaseTheme => ({
+RewardCard01.getTheme = ({ spacing }) => ({
   MuiCard: {
     root: {
       '&.MuiRewardCard--01': {
-        borderRadius: muiBaseTheme.spacing(2), // 16px
+        borderRadius: spacing(2), // 16px
         transition: '0.3s',
         boxShadow: '0px 14px 80px rgba(34, 35, 58, 0.2)',
         width: '95%',
@@ -56,7 +54,7 @@ RewardCard01.getTheme = muiBaseTheme => ({
         },
         '& .MuiCardContent-root': {
           textAlign: 'left',
-          padding: muiBaseTheme.spacing(2),
+          padding: spacing(2),
         },
         '& .MuiTypography--overline': {
           lineHeight: 2,
@@ -70,7 +68,7 @@ RewardCard01.getTheme = muiBaseTheme => ({
           letterSpacing: 0.5,
         },
         '& .MuiTypography--subheading': {
-          marginBottom: muiBaseTheme.spacing(2),
+          marginBottom: spacing(2),
           color: '#ffffff',
         },
         '& .MuiButton--readMore': {
@@ -85,10 +83,5 @@ RewardCard01.getTheme = muiBaseTheme => ({
     },
   },
 });
-RewardCard01.metadata = {
-  name: 'Reward Card',
-  description: 'Commonly used in games.',
-};
-RewardCard01.codeSandbox = 'https://codesandbox.io/s/88y1v9l6j';
 
 export default RewardCard01;

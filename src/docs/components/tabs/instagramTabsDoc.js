@@ -115,13 +115,13 @@ const coreCode = `
     },
   }));
   
-  const InstagramTabs = ({ tabs, ...props }) => {
-    const tabsClasses = useTabsStyles();
-    const tabClasses = useTabStyles();
+  const InstagramTabs = ({ tabs, tabProps, ...props }) => {
+    const tabsClasses = useTabsStyles(props);
+    const tabClasses = useTabStyles(tabProps);
     return (
-      <Tabs classes={tabsClasses} {...props}>
+      <Tabs {...props} classes={tabsClasses}>
         {tabs.map(tab => (
-          <Tab key={tab.label} classes={tabClasses} {...tab} />
+          <Tab key={tab.label} {...tab} classes={tabClasses} />
         ))}
       </Tabs>
     );
@@ -133,18 +133,14 @@ const coreCode = `
         label: PropTypes.node.isRequired,
       }),
     ),
+    tabProps: PropTypes.shape({}),
   };
   InstagramTabs.defaultProps = {
     tabs: [],
+    tabProps: {},
   };
-  InstagramTabs.metadata = {
-    name: 'Instagram Tabs',
-    description: 'implement Instagram theme',
-  };
-  InstagramTabs.codeSandbox = 'https://codesandbox.io/s/kkl6yq01v';
   
   export default InstagramTabs;
-
 
 `;
 
@@ -160,6 +156,10 @@ InstagramTabs.info = {
     },
     { label: 'Tabs API', url: 'https://material-ui.com/api/tabs/' },
     { label: 'Tab API', url: 'https://material-ui.com/api/tab/' },
+    {
+      label: 'Styling',
+      url: 'https://material-ui.com/styles/basics/#hook-api',
+    },
   ],
   files: [
     {
@@ -172,7 +172,7 @@ InstagramTabs.info = {
     },
   ],
   libraries: [],
-  dependencies: ['@material-ui/core'],
+  dependencies: [],
 };
 
 export default InstagramTabs;

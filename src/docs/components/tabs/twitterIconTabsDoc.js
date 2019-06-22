@@ -135,12 +135,17 @@ const coreCode = `
     },
   }));
   
-  const TwitterIconTabs = ({ tabs, ...props }) => {
-    const tabsClasses = useTabsStyles();
-    const tabClasses = useTabStyles();
-    const badgeClasses = useBadgeStyles();
+  const TwitterIconTabs = ({
+    tabs,
+    tabProps: globalTabProps,
+    badgeProps: globalBadgeProps,
+    ...props
+  }) => {
+    const tabsClasses = useTabsStyles(props);
+    const tabClasses = useTabStyles(globalTabProps);
+    const badgeClasses = useBadgeStyles(globalBadgeProps);
     return (
-      <Tabs variant={'fullWidth'} centered classes={tabsClasses} {...props}>
+      <Tabs variant={'fullWidth'} centered {...props} classes={tabsClasses}>
         {tabs.map((tab, i) => {
           const { badgeProps, icon, ...tabProps } = tab;
           return (
@@ -148,10 +153,6 @@ const coreCode = `
               // eslint-disable-next-line react/no-array-index-key
               key={i}
               className={'MuiTab--iconOnly'}
-              classes={{
-                ...tabClasses,
-                wrapper: cx(tabClasses.wrapper, 'MuiTab-wrapper'),
-              }}
               icon={icon}
               {...badgeProps && {
                 icon: (
@@ -161,20 +162,26 @@ const coreCode = `
                         ? 'MuiBadge--dotted'
                         : 'MuiBadge--number'
                     }
+                    badgeContent={''}
+                    invisible={false}
+                    {...globalBadgeProps}
+                    {...badgeProps}
                     classes={{
                       ...badgeClasses,
                       badge: cx(badgeClasses.badge, 'MuiBadge-badge'),
                     }}
-                    badgeContent={''}
-                    invisible={false}
-                    {...badgeProps}
                   >
                     {icon}
                   </Badge>
                 ),
               }}
               disableRipple
+              {...globalTabProps}
               {...tabProps}
+              classes={{
+                ...tabClasses,
+                wrapper: cx(tabClasses.wrapper, 'MuiTab-wrapper'),
+              }}
             />
           );
         })}
@@ -188,9 +195,13 @@ const coreCode = `
         icon: PropTypes.node.isRequired,
       }),
     ),
+    tabProps: PropTypes.shape({}),
+    badgeProps: PropTypes.shape({}),
   };
   TwitterIconTabs.defaultProps = {
     tabs: [],
+    tabProps: {},
+    badgeProps: {},
   };
   
   export default TwitterIconTabs;
@@ -210,6 +221,10 @@ TwitterIconTabs.info = {
     { label: 'Tabs API', url: 'https://material-ui.com/api/tabs/' },
     { label: 'Tab API', url: 'https://material-ui.com/api/tab/' },
     { label: 'Badge API', url: 'https://material-ui.com/api/badge/' },
+    {
+      label: 'Styling',
+      url: 'https://material-ui.com/styles/basics/#hook-api',
+    },
   ],
   files: [
     {
@@ -221,8 +236,13 @@ TwitterIconTabs.info = {
       code: coreCode,
     },
   ],
-  libraries: [],
-  dependencies: ['@material-ui/core'],
+  libraries: [
+    {
+      label: 'lukeed/clsx',
+      url: 'https://github.com/lukeed/clsx#usage',
+    },
+  ],
+  dependencies: ['clsx'],
 };
 
 export default TwitterIconTabs;
