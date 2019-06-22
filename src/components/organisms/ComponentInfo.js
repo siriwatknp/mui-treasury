@@ -98,9 +98,11 @@ const ComponentInfo = ({
       </Typography>
       <Box mx={-2} mb={-2}>
         <ChromeTabs
+          variant="scrollable"
+          scrollButtons="auto"
           value={index}
           onChange={(e, i) => setIndex(i)}
-          tabs={files}
+          tabs={files.map(({ label }) => ({ label }))}
         />
         <Box
           bgcolor={'#272C34'}

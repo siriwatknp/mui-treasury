@@ -237,6 +237,8 @@ const coreCode = `
     size: '',
     shape: '',
   };
+  
+  export default Icon;
 `;
 
 Icon.getTheme = () => {};

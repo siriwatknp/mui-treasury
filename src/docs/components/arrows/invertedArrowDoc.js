@@ -2,6 +2,7 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
 import InvertedArrow from 'components/arrows/InvertedArrow';
+import Icon from 'components/predefined/Icon';
 
 const demoCode = `
   import React from 'react';
@@ -110,6 +111,7 @@ InvertedArrow.info = {
       label: 'InvertedArrow.js',
       code: coreCode,
     },
+    Icon.info.files[0],
   ],
   libraries: [],
   dependencies: [],

@@ -2,6 +2,7 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
 import SimpleArrow from 'components/arrows/SimpleArrow';
+import Icon from 'components/predefined/Icon';
 
 const demoCode = `
   import React from 'react';
@@ -30,7 +31,7 @@ const coreCode = `
   import PropTypes from 'prop-types';
   import { makeStyles } from '@material-ui/styles';
   import Button from '@material-ui/core/Button';
-  import Icon from 'components/predefined/Icon';
+  import Icon from './Icon';
   
   const useStyles = makeStyles(({ breakpoints }) => ({
     root: {
@@ -104,6 +105,7 @@ SimpleArrow.info = {
       label: 'SimpleArrow.js',
       code: coreCode,
     },
+    Icon.info.files[0],
   ],
   libraries: [],
   dependencies: [],
