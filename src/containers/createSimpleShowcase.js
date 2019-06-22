@@ -79,7 +79,7 @@ const createSimpleShowcase = (components, options = {}) => {
                   description={get(component, 'info.description')}
                   {...previewProps}
                   sheetProps={{
-                    bgColor: 'white',
+                    bgColor: previewProps.inverted ? 'dark' : 'white',
                     ...previewProps.sheetProps,
                   }}
                 >
