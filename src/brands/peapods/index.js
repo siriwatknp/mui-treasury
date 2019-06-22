@@ -21,7 +21,7 @@ export { default as Counter } from './lib/PeaCounter';
 export { default as CategoryToggle } from './lib/PeaCategoryToggle';
 export { default as PersonListItem } from './lib/PeaPersonListItem';
 export { default as PeopleList } from './lib/PeaPeopleList';
-export { default as EventCard } from './lib/PeaEventCard';
+export { default as EventCardSmall } from './lib/PeaEventCardSmall';
 export { default as CardActions } from './lib/PeaCardActions';
 export { default as ProfileCard } from './lib/PeaProfileCard';
 export { default as NotificationItem } from './lib/PeaNotificationItem';

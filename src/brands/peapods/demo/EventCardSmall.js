@@ -1,10 +1,10 @@
 import React from 'react';
-import PeaEventCard from '../lib/PeaEventCard';
+import PeaEventCardSmall from '../lib/PeaEventCardSmall';
 import { PEOPLE, AVATAR } from './_mock';
 
 /* eslint-disable max-len */
 const EventCard = () => (
-  <PeaEventCard
+  <PeaEventCardSmall
     name={'Carnival Night Festival'}
     people={PEOPLE}
     image={
@@ -17,11 +17,11 @@ const EventCard = () => (
 );
 
 EventCard.metadata = {
-  name: 'Pea Event Card',
+  name: 'Pea Event Card Small',
 };
 EventCard.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 EventCard.code = `
-  import PeaEventCard from '../lib/PeaEventCard';
+  import PeaEventCardSmall from '../lib/PeaEventCardSmall';
   
   const AVATAR = 'https://i.pinimg.com/originals/0a/dd/87/0add874e1ea0676c4365b2dd7ddd32e3.jpg';
   const PEOPLE = [
@@ -46,7 +46,7 @@ EventCard.code = `
   ];
   
   const Preview = () => (
-    <PeaEventCard
+    <PeaEventCardSmall
       name={'Carnival Night Festival'}
       people={PEOPLE}
       image={

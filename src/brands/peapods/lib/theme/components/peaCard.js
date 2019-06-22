@@ -1,7 +1,7 @@
 export default ({ spacing, palette, typography, breakpoints }) => ({
   MuiCard: {
     root: {
-      '&.PeaEventCard-root': {
+      '&.PeaEventCardSmall-root': {
         transition: '0.3s',
         margin: 'auto',
         minWidth: 240,

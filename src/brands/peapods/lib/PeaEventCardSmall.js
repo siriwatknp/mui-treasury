@@ -8,8 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import PeaIcon from './PeaIcon';
 import PeaAvatar from './PeaAvatar';
 
-const PeaEventCard = ({ image, name, range, time, images }) => (
-  <Card className={'PeaEventCard-root'}>
+const PeaEventCardSmall = ({ image, name, range, time, images }) => (
+  <Card className={'PeaEventCardSmall-root'}>
     <CardMedia className={'MuiCardMedia-root'} image={image}>
       {range && (
         <div className={'MuiCardTag-root'}>
@@ -50,20 +50,20 @@ const PeaEventCard = ({ image, name, range, time, images }) => (
   </Card>
 );
 
-PeaEventCard.propTypes = {
+PeaEventCardSmall.propTypes = {
   image: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   range: PropTypes.string,
   time: PropTypes.string.isRequired,
   images: PropTypes.arrayOf(PropTypes.string),
 };
-PeaEventCard.defaultProps = {
+PeaEventCardSmall.defaultProps = {
   range: '',
   images: [],
 };
-PeaEventCard.metadata = {
-  name: 'Pea Event Card',
+PeaEventCardSmall.metadata = {
+  name: 'Pea Event Card Small',
 };
-PeaEventCard.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
+PeaEventCardSmall.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 
-export default PeaEventCard;
+export default PeaEventCardSmall;

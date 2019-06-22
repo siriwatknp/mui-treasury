@@ -41,7 +41,7 @@ import Counter from './demo/Counter';
 import CategoryToggle from './demo/CategoryToggle';
 import PersonListItem from './demo/PersonListItem';
 import PeopleList from './demo/PeopleList';
-import EventCard from './demo/EventCard';
+import EventCardSmall from './demo/EventCardSmall';
 import PodPodCard from './demo/PodPodCard';
 import CardActions from './demo/CardActions';
 import ProfileCard from './demo/ProfileCard';
@@ -114,7 +114,7 @@ const components = [
     },
   },
   {
-    component: EventCard,
+    component: EventCardSmall,
     gridItemProps: {
       sm: 6,
       md: 6,
