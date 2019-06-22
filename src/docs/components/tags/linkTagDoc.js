@@ -1,6 +1,20 @@
+/* eslint-disable */
 import React from 'react';
 import get from 'lodash/get';
-import LinkTag from './LinkTag';
+import LinkTag from 'components/tags/LinkTag';
+
+LinkTag.Demo = () => (
+  <>
+    <LinkTag icon={'fal fa-external-link-square'}>Code Sandbox</LinkTag>
+    <LinkTag
+      style={{ marginLeft: 16 }}
+      icon={'fal fa-external-link-square'}
+      overline={'DEMO'}
+    >
+      Code Sandbox
+    </LinkTag>
+  </>
+);
 
 const demoCode = `
   import React from 'react';
@@ -21,19 +35,6 @@ const demoCode = `
   
   export default Demo;
 `;
-
-LinkTag.Demo = () => (
-  <>
-    <LinkTag icon={'fal fa-external-link-square'}>Code Sandbox</LinkTag>
-    <LinkTag
-      style={{ marginLeft: 16 }}
-      icon={'fal fa-external-link-square'}
-      overline={'DEMO'}
-    >
-      Code Sandbox
-    </LinkTag>
-  </>
-);
 
 const coreCode = `
   import React from 'react';
@@ -161,7 +162,7 @@ LinkTag.info = {
     },
     ...get(LinkTag, 'Icon.info.libraries', []),
   ],
-  dependencies: ['@material-ui/core', 'color'],
+  dependencies: ['color'],
 };
 
 export default LinkTag;
