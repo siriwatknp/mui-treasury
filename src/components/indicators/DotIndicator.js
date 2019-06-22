@@ -41,9 +41,7 @@ const useStyles = makeStyles(({ palette, transitions, breakpoints }) => {
         width: SIZES.xs,
         height: SIZES.xs,
         borderRadius: '50%',
-        backgroundColor: active
-          ? palette.common.white
-          : 'rgba(255,255,255,0.38)',
+        backgroundColor: active ? palette.text.primary : palette.text.disabled,
         transition: transitions.create(),
         [breakpoints.up('sm')]: {
           width: SIZES.sm,
@@ -58,14 +56,14 @@ const useStyles = makeStyles(({ palette, transitions, breakpoints }) => {
   };
 });
 
-const InvertedIndicator = ({ className, active, ...props }) => {
+const DotIndicator = ({ className, active, ...props }) => {
   const classes = useStyles({ active, ...props });
   return (
     <div
       className={cx(
         className,
         'Indicator-root',
-        'InvertedIndicator-root',
+        'DotIndicator-root',
         active && '-active',
         classes.root,
       )}
@@ -74,13 +72,13 @@ const InvertedIndicator = ({ className, active, ...props }) => {
   );
 };
 
-InvertedIndicator.propTypes = {
+DotIndicator.propTypes = {
   className: PropTypes.string,
   active: PropTypes.bool,
 };
-InvertedIndicator.defaultProps = {
+DotIndicator.defaultProps = {
   className: '',
   active: false,
 };
 
-export default InvertedIndicator;
+export default DotIndicator;

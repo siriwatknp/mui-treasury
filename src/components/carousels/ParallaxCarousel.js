@@ -6,8 +6,7 @@ import { makeStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
 import ParallaxSlide from 'components/slides/ParallaxSlide';
 import SimpleArrow from 'components/arrows/SimpleArrow';
-import IndicatorGroup from 'components/indicators/IndicatorGroup';
-import SimpleIndicator from 'components/indicators/SimpleIndicator';
+import DotIndicator from 'components/indicators/DotIndicator';
 
 const useStyles = makeStyles(({ palette, breakpoints, spacing }) => ({
   root: {
@@ -141,15 +140,15 @@ const ParallaxCarousel = ({ data }) => {
         disabled={index === data.length - 1}
         onClick={() => onChangeIndex(index + 1)}
       />
-      <IndicatorGroup>
+      <div>
         {data.map(({ id }, i) => (
-          <SimpleIndicator
+          <DotIndicator
             key={id}
             active={i === index}
             onClick={() => onChangeIndex(i)}
           />
         ))}
-      </IndicatorGroup>
+      </div>
     </>
   );
   const renderChildren = ({ injectStyle, fineIndex }) =>
