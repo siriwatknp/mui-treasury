@@ -3,6 +3,7 @@ import React from 'react';
 import Box from '@material-ui/core/Box';
 import SimpleArrow from 'components/arrows/SimpleArrow';
 import Icon from 'components/predefined/Icon';
+import { mergeInfo } from 'helpers/function';
 
 const demoCode = `
   import React from 'react';
@@ -85,30 +86,28 @@ const coreCode = `
 
 `;
 
-SimpleArrow.info = {
-  name: 'SimpleArrow',
-  description: '',
-  links: [
-    { label: 'Button API', url: 'https://material-ui.com/api/button/' },
-    { label: 'Icon API', url: 'https://material-ui.com/api/icon/' },
-    {
-      label: 'Styling',
-      url: 'https://material-ui.com/styles/basics/#hook-api',
-    },
-  ],
-  files: [
-    {
-      label: 'Demo.js',
-      code: demoCode,
-    },
-    {
-      label: 'SimpleArrow.js',
-      code: coreCode,
-    },
-    Icon.info.files[0],
-  ],
-  libraries: [],
-  dependencies: [],
-};
+SimpleArrow.info = mergeInfo(
+  {
+    name: 'SimpleArrow',
+    description: '',
+    links: [
+      { label: 'Button API', url: 'https://material-ui.com/api/button/' },
+    ],
+    files: [
+      {
+        label: 'Demo.js',
+        code: demoCode,
+      },
+      {
+        label: 'SimpleArrow.js',
+        code: coreCode,
+        core: true,
+      },
+    ],
+    libraries: [],
+    dependencies: [],
+  },
+  Icon.info,
+);
 
 export default SimpleArrow;

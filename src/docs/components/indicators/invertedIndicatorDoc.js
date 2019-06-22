@@ -139,6 +139,7 @@ InvertedIndicator.info = {
     {
       label: 'InvertedIndicator.js',
       code: coreCode,
+      core: true,
     },
   ],
   libraries: [CONSTANT.libraries.clsx],

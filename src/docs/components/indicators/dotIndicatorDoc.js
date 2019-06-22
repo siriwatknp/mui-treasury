@@ -138,6 +138,7 @@ DotIndicator.info = {
     {
       label: 'DotIndicator.js',
       code: coreCode,
+      core: true,
     },
   ],
   libraries: [CONSTANT.libraries.clsx],
