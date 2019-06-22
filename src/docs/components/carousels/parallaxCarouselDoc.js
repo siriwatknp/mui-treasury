@@ -5,8 +5,7 @@ import ParallaxCarousel from 'components/carousels/ParallaxCarousel';
 import { ParallaxSlide } from 'docs/components/slides';
 import { SimpleArrow } from 'docs/components/arrows';
 import { DotIndicator } from 'docs/components/indicators';
-import Icon from 'components/predefined/Icon';
-import CONSTANT from 'constant';
+import { mergeInfo } from 'helpers/function';
 
 const data = [
   {
@@ -287,31 +286,33 @@ const coreCode = `
 
 `;
 
-ParallaxCarousel.info = {
-  name: 'ParallaxCarousel',
-  description: '',
-  links: [
-    {
-      label: 'React-swipeable-views Demos',
-      url: 'https://react-swipeable-views.com/demos/demos/',
-    },
-  ],
-  files: [
-    {
-      label: 'Demo.js',
-      code: demoCode,
-    },
-    {
-      label: 'ParallaxCarousel.js',
-      code: coreCode,
-    },
-    ParallaxSlide.info.files[1],
-    SimpleArrow.info.files[1],
-    Icon.info.files[0],
-    DotIndicator.info.files[1],
-  ],
-  libraries: [CONSTANT.libraries.clsx, CONSTANT.libraries.swipeableViews],
-  dependencies: ['react-swipeable-views', 'clsx'],
-};
+ParallaxCarousel.info = mergeInfo(
+  {
+    name: 'ParallaxCarousel',
+    description: '',
+    links: [
+      {
+        label: 'React-swipeable-views Demos',
+        url: 'https://react-swipeable-views.com/demos/demos/',
+      },
+    ],
+    files: [
+      {
+        label: 'Demo.js',
+        code: demoCode,
+      },
+      {
+        label: 'ParallaxCarousel.js',
+        code: coreCode,
+        core: true,
+      },
+    ],
+    libraries: [],
+    dependencies: [],
+  },
+  ParallaxSlide.info,
+  SimpleArrow.info,
+  DotIndicator.info,
+);
 
 export default ParallaxCarousel;

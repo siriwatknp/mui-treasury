@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/styles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import ParallaxSlide from 'components/slides/ParallaxSlide';
+import CONSTANT from 'constant';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -229,14 +230,10 @@ ParallaxSlide.info = {
     {
       label: 'ParallaxSlide.js',
       code: coreCode,
+      core: true,
     },
   ],
-  libraries: [
-    {
-      label: 'react-swipeable-views',
-      url: 'https://github.com/oliviertassinari/react-swipeable-views',
-    },
-  ],
+  libraries: [CONSTANT.libraries.swipeableViews],
   dependencies: ['react-swipeable-views'],
 };
 
