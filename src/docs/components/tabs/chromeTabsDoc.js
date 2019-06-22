@@ -202,12 +202,12 @@ const coreCode = `
 
 `;
 
-ChromeTabs.codeSandbox = 'https://codesandbox.io/s/vmzjw3o5l5';
+ChromeTabs.codeSandbox = 'https://codesandbox.io/s/chrometabs-ffond';
 ChromeTabs.info = {
   name: 'Chrome Tabs',
   description: 'Inspired by chrome.',
   links: [
-    { label: 'Code Sandbox', url: 'https://codesandbox.io/s/vmzjw3o5l5' },
+    { label: 'Code Sandbox', url: 'https://codesandbox.io/s/chrometabs-ffond' },
     {
       label: 'Official Examples',
       url: 'https://material-ui.com/components/tabs/',
