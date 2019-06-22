@@ -148,11 +148,11 @@ BootstrapInput.info = {
   links: [
     {
       label: 'Official Examples',
-      url: 'https://material-ui.com/components/cards/#simple-card',
+      url: 'https://material-ui.com/components/text-fields/',
     },
     {
-      label: 'Card API',
-      url: 'https://material-ui.com/api/card',
+      label: 'Input API',
+      url: 'https://material-ui.com/api/input-base/#inputbase-api',
     },
   ],
   files: [
