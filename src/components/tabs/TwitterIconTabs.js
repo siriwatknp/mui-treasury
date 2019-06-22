@@ -90,12 +90,17 @@ const useBadgeStyles = makeStyles(({ palette }) => ({
   },
 }));
 
-const TwitterIconTabs = ({ tabs, ...props }) => {
-  const tabsClasses = useTabsStyles();
-  const tabClasses = useTabStyles();
-  const badgeClasses = useBadgeStyles();
+const TwitterIconTabs = ({
+  tabs,
+  tabProps: globalTabProps,
+  badgeProps: globalBadgeProps,
+  ...props
+}) => {
+  const tabsClasses = useTabsStyles(props);
+  const tabClasses = useTabStyles(globalTabProps);
+  const badgeClasses = useBadgeStyles(globalBadgeProps);
   return (
-    <Tabs variant={'fullWidth'} centered classes={tabsClasses} {...props}>
+    <Tabs variant={'fullWidth'} centered {...props} classes={tabsClasses}>
       {tabs.map((tab, i) => {
         const { badgeProps, icon, ...tabProps } = tab;
         return (
@@ -103,10 +108,6 @@ const TwitterIconTabs = ({ tabs, ...props }) => {
             // eslint-disable-next-line react/no-array-index-key
             key={i}
             className={'MuiTab--iconOnly'}
-            classes={{
-              ...tabClasses,
-              wrapper: cx(tabClasses.wrapper, 'MuiTab-wrapper'),
-            }}
             icon={icon}
             {...badgeProps && {
               icon: (
@@ -116,20 +117,26 @@ const TwitterIconTabs = ({ tabs, ...props }) => {
                       ? 'MuiBadge--dotted'
                       : 'MuiBadge--number'
                   }
+                  badgeContent={''}
+                  invisible={false}
+                  {...globalBadgeProps}
+                  {...badgeProps}
                   classes={{
                     ...badgeClasses,
                     badge: cx(badgeClasses.badge, 'MuiBadge-badge'),
                   }}
-                  badgeContent={''}
-                  invisible={false}
-                  {...badgeProps}
                 >
                   {icon}
                 </Badge>
               ),
             }}
             disableRipple
+            {...globalTabProps}
             {...tabProps}
+            classes={{
+              ...tabClasses,
+              wrapper: cx(tabClasses.wrapper, 'MuiTab-wrapper'),
+            }}
           />
         );
       })}
@@ -143,9 +150,13 @@ TwitterIconTabs.propTypes = {
       icon: PropTypes.node.isRequired,
     }),
   ),
+  tabProps: PropTypes.shape({}),
+  badgeProps: PropTypes.shape({}),
 };
 TwitterIconTabs.defaultProps = {
   tabs: [],
+  tabProps: {},
+  badgeProps: {},
 };
 
 export default TwitterIconTabs;

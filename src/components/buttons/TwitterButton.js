@@ -28,13 +28,7 @@ const useStyles = makeStyles(({ shadows, palette }) => ({
   contained: {
     minHeight: 30,
     boxShadow: shadows[0],
-    '&$focusVisible': {
-      boxShadow: shadows[0],
-    },
     '&:active': {
-      boxShadow: shadows[0],
-    },
-    '&$disabled': {
       boxShadow: shadows[0],
     },
   },
@@ -55,9 +49,9 @@ const useStyles = makeStyles(({ shadows, palette }) => ({
   },
 }));
 
-const TwitterButton = ({ ...props }) => {
-  const classes = useStyles();
-  return <Button classes={classes} {...props} />;
+const TwitterButton = props => {
+  const classes = useStyles(props);
+  return <Button {...props} classes={classes} />;
 };
 
 export default TwitterButton;

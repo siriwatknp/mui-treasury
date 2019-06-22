@@ -1,5 +1,5 @@
 import React from 'react';
-import GithubButton from './GithubButton';
+import GithubButton from 'components/buttons/GithubButton';
 
 const demoCode = `
   import React from 'react';
@@ -33,7 +33,7 @@ const githubCode = `
   import Button from '@material-ui/core/Button';
   import { makeStyles } from '@material-ui/styles';
   
-  const useStyles = makeStyles(({ spacing }) => ({
+  const useStyles = makeStyles(({ spacing, palette }) => ({
     root: {
       lineHeight: '20px',
       padding: '6px 12px',
@@ -72,6 +72,7 @@ const githubCode = `
       },
     },
     containedPrimary: {
+      color: palette.common.white,
       backgroundColor: '#28a745',
       backgroundImage: 'linear-gradient(-180deg,#34d058,#28a745 90%)',
       '&:hover': {
@@ -85,13 +86,9 @@ const githubCode = `
     },
   }));
   
-  const GithubButton = ({ ...props }) => {
-    const classes = useStyles();
-    return (
-      <Button classes={classes} {...props}>
-        Default
-      </Button>
-    );
+  const GithubButton = props => {
+    const classes = useStyles(props);
+    return <Button {...props} classes={classes} />;
   };
   
   GithubButton.codeSandbox = 'https://codesandbox.io/s/vlymn85l0';
@@ -105,7 +102,11 @@ GithubButton.info = {
   description: 'Classic for developers',
   links: [
     { label: 'Code Sandbox', url: 'https://codesandbox.io/s/3q8xm89p35' },
-    { label: 'Full API', url: 'https://material-ui.com/api/button/' },
+    { label: 'Button API', url: 'https://material-ui.com/api/button/' },
+    {
+      label: 'Styling',
+      url: 'https://material-ui.com/styles/basics/#hook-api',
+    },
   ],
   files: [
     {

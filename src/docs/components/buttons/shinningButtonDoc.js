@@ -1,7 +1,8 @@
 /* eslint-disable */
-import ShinningButton from './ShinningButton';
+import ShinningButton from 'components/buttons/ShinningButton';
 
 const shinningCode = `
+  /* eslint-disable max-len */
   import React from 'react';
   import PropTypes from 'prop-types';
   import Button from '@material-ui/core/Button';
@@ -26,19 +27,17 @@ const shinningCode = `
     contained: {
       minHeight: 30,
       boxShadow: shadows[0],
-      '&$focusVisible': { boxShadow: shadows[0] },
       '&:active': { boxShadow: shadows[0] },
-      '&$disabled': { boxShadow: shadows[0] },
     },
   }));
   
   const ShinningButton = ({ className, ...props }) => {
-    const classes = useStyles();
+    const classes = useStyles(props);
     return (
       <Button
         className={\`MuiButton--shinning \${className}\`}
-        classes={classes}
         {...props}
+        classes={classes}
       >
         Sunshine
       </Button>
@@ -52,13 +51,18 @@ const shinningCode = `
   };
   
   export default ShinningButton;
+
 `;
 ShinningButton.info = {
   name: 'Shinning Button',
   description: 'I love to be shinned',
   links: [
     { label: 'Code Sandbox', url: 'https://codesandbox.io/s/ko3w0m4qw5' },
-    { label: 'Full API', url: 'https://material-ui.com/api/button/' },
+    { label: 'Button API', url: 'https://material-ui.com/api/button/' },
+    {
+      label: 'Styling',
+      url: 'https://material-ui.com/styles/basics/#hook-api',
+    },
   ],
   files: [
     {

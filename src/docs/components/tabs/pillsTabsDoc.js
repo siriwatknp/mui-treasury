@@ -100,13 +100,13 @@ const coreCode = `
     },
   }));
   
-  const PillsTabs = ({ tabs, ...props }) => {
-    const tabsClasses = useTabsStyles();
-    const tabClasses = useTabStyles();
+  const PillsTabs = ({ tabs, tabProps, ...props }) => {
+    const tabsClasses = useTabsStyles(props);
+    const tabClasses = useTabStyles(tabProps);
     return (
-      <Tabs classes={tabsClasses} {...props}>
+      <Tabs {...props} classes={tabsClasses}>
         {tabs.map(tab => (
-          <Tab key={tab.label} classes={tabClasses} {...tab} />
+          <Tab key={tab.label} {...tab} classes={tabClasses} />
         ))}
       </Tabs>
     );
@@ -118,16 +118,12 @@ const coreCode = `
         label: PropTypes.node.isRequired,
       }),
     ),
+    tabProps: PropTypes.shape({}),
   };
   PillsTabs.defaultProps = {
     tabs: [],
+    tabProps: {},
   };
-  PillsTabs.metadata = {
-    name: 'Pills Tabs',
-    description: 'implement custom theme with elevated pills tabs',
-  };
-  
-  PillsTabs.codeSandbox = 'https://codesandbox.io/s/q885853jkw';
   
   export default PillsTabs;
 
@@ -145,6 +141,10 @@ PillsTabs.info = {
     },
     { label: 'Tabs API', url: 'https://material-ui.com/api/tabs/' },
     { label: 'Tab API', url: 'https://material-ui.com/api/tab/' },
+    {
+      label: 'Styling',
+      url: 'https://material-ui.com/styles/basics/#hook-api',
+    },
   ],
   files: [
     {
@@ -157,7 +157,7 @@ PillsTabs.info = {
     },
   ],
   libraries: [],
-  dependencies: ['@material-ui/core'],
+  dependencies: [],
 };
 
 export default PillsTabs;

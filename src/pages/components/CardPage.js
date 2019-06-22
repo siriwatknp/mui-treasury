@@ -1,26 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import merge from 'lodash/merge';
-import get from 'lodash/get';
-import Grid from '@material-ui/core/Grid';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
-import { Box } from 'components/atoms';
-import { PreviewWidget } from 'components/molecules';
-import ShouldUpdate from 'containers/ShouldUpdate';
-import EngagementCard01 from 'components/cards/EngagementCard01';
-import PostCard01 from 'components/cards/PostCard01';
-import PostCard02 from 'components/cards/PostCard02';
-import NewsCard01 from 'components/cards/NewsCard01';
-import NewsCard02 from 'components/cards/NewsCard02';
-import ProjectCard01 from 'components/cards/ProjectCard01';
-import ReviewCard01 from 'components/cards/ReviewCard01';
-import RewardCard01 from 'components/cards/RewardCard01';
-import ElevatedCardHeader01 from 'components/cards/ElevatedCardHeader01';
-
-const createTheme = theme => createMuiTheme(theme);
-const baseTheme = createMuiTheme();
+import createSimpleShowcase from 'containers/createSimpleShowcase';
+import {
+  EngagementCard01,
+  PostCard01,
+  NewsCard01,
+  NewsCard02,
+  ReviewCard01,
+  ProjectCard01,
+  PostCard02,
+  RewardCard01,
+  ElevatedCardHeader01,
+} from 'docs/components/cards';
 
 const components = [
   {
@@ -74,60 +64,6 @@ const components = [
   },
 ];
 
-const CardPage = ({ counter, globalTheme, onSelectComponent }) => (
-  <Box
-    width={'100%'}
-    p={{
-      xs: 2,
-      sm: 4,
-    }}
-    css={{
-      '& .PreviewWidget-root': {
-        paddingLeft: 0,
-        paddingRight: 0,
-      },
-    }}
-  >
-    <CssBaseline />
-    <Grid container spacing={4} justify={'center'}>
-      {components.map(({ component, render, gridItemProps, previewProps }) => (
-        <Grid
-          key={get(component, 'metadata.name')}
-          item
-          xs={12}
-          sm={8}
-          md={6}
-          lg={4}
-          {...gridItemProps}
-        >
-          <PreviewWidget
-            sandboxLink={component.codeSandbox}
-            onClick={() => onSelectComponent(component)}
-            {...get(component, 'metadata')}
-            {...previewProps}
-          >
-            <ShouldUpdate value={counter}>
-              <ThemeProvider
-                theme={createTheme({
-                  ...globalTheme,
-                  overrides: component.getTheme(merge(baseTheme, globalTheme)),
-                })}
-              >
-                {render()}
-              </ThemeProvider>
-            </ShouldUpdate>
-          </PreviewWidget>
-        </Grid>
-      ))}
-    </Grid>
-  </Box>
-);
-
-CardPage.propTypes = {
-  counter: PropTypes.number.isRequired,
-  globalTheme: PropTypes.shape({}).isRequired,
-  onSelectComponent: PropTypes.func.isRequired,
-};
-CardPage.components = components;
+const CardPage = createSimpleShowcase(components);
 
 export default CardPage;

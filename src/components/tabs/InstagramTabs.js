@@ -53,13 +53,13 @@ const useTabStyles = makeStyles(({ breakpoints }) => ({
   },
 }));
 
-const InstagramTabs = ({ tabs, ...props }) => {
-  const tabsClasses = useTabsStyles();
-  const tabClasses = useTabStyles();
+const InstagramTabs = ({ tabs, tabProps, ...props }) => {
+  const tabsClasses = useTabsStyles(props);
+  const tabClasses = useTabStyles(tabProps);
   return (
-    <Tabs classes={tabsClasses} {...props}>
+    <Tabs {...props} classes={tabsClasses}>
       {tabs.map(tab => (
-        <Tab key={tab.label} classes={tabClasses} {...tab} />
+        <Tab key={tab.label} {...tab} classes={tabClasses} />
       ))}
     </Tabs>
   );
@@ -71,14 +71,11 @@ InstagramTabs.propTypes = {
       label: PropTypes.node.isRequired,
     }),
   ),
+  tabProps: PropTypes.shape({}),
 };
 InstagramTabs.defaultProps = {
   tabs: [],
+  tabProps: {},
 };
-InstagramTabs.metadata = {
-  name: 'Instagram Tabs',
-  description: 'implement Instagram theme',
-};
-InstagramTabs.codeSandbox = 'https://codesandbox.io/s/kkl6yq01v';
 
 export default InstagramTabs;

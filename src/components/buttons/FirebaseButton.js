@@ -12,9 +12,6 @@ const useStyles = makeStyles(({ shadows, palette }) => ({
   },
   contained: {
     boxShadow: 'none',
-    '&$focusVisible': {
-      boxShadow: shadows[0],
-    },
     '&:active': {
       boxShadow: shadows[0],
     },
@@ -37,9 +34,9 @@ const useStyles = makeStyles(({ shadows, palette }) => ({
   },
 }));
 
-const FirebaseButton = ({ ...props }) => {
-  const classes = useStyles();
-  return <Button classes={classes} {...props} />;
+const FirebaseButton = props => {
+  const classes = useStyles(props);
+  return <Button {...props} classes={classes} />;
 };
 
 export default FirebaseButton;

@@ -86,13 +86,13 @@ const useTabStyles = makeStyles(({ palette, spacing, breakpoints }) => {
   };
 });
 
-const ChromeTabs = ({ tabs, tabStyle, ...props }) => {
-  const tabsClasses = useTabsStyles();
-  const tabClasses = useTabStyles(tabStyle);
+const ChromeTabs = ({ tabs, tabStyle, tabProps, ...props }) => {
+  const tabsClasses = useTabsStyles(props);
+  const tabClasses = useTabStyles({ ...tabProps, ...tabStyle });
   return (
-    <Tabs classes={tabsClasses} {...props}>
+    <Tabs {...props} classes={tabsClasses}>
       {tabs.map(tab => (
-        <Tab key={tab.label} classes={tabClasses} {...tab} />
+        <Tab key={tab.label} {...tabProps} {...tab} classes={tabClasses} />
       ))}
     </Tabs>
   );
@@ -108,10 +108,12 @@ ChromeTabs.propTypes = {
     bgColor: PropTypes.string,
     minWidth: PropTypes.shape({}),
   }),
+  tabProps: PropTypes.shape({}),
 };
 ChromeTabs.defaultProps = {
   tabs: [],
   tabStyle: {},
+  tabProps: {},
 };
 
 export default ChromeTabs;

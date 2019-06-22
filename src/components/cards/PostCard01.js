@@ -59,7 +59,7 @@ const PostCard01 = () => (
   </Card>
 );
 
-PostCard01.getTheme = muiBaseTheme => ({
+PostCard01.getTheme = ({ palette, spacing }) => ({
   MuiCard: {
     root: {
       '&.MuiPostCard--01': {
@@ -76,19 +76,19 @@ PostCard01.getTheme = muiBaseTheme => ({
           position: 'relative',
           '& .MuiTag--ribbon': {
             position: 'absolute',
-            top: muiBaseTheme.spacing(2),
-            left: muiBaseTheme.spacing(2),
-            backgroundColor: muiBaseTheme.palette.secondary.main,
+            top: spacing(2),
+            left: spacing(2),
+            backgroundColor: palette.secondary.main,
             color: '#ffffff !important',
-            padding: '2px 8px',
-            boxShadow: '0 2px 12px 2px rgba(0,0,0,0.5)',
+            padding: '0px 8px',
+            filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.6))',
             borderTopLeftRadius: 2,
             borderBottomLeftRadius: 2,
             '&:before, &:after': {
               position: 'absolute',
               right: -16,
               content: '" "',
-              borderLeft: `16px solid ${muiBaseTheme.palette.secondary.main}`,
+              borderLeft: `16px solid ${palette.secondary.main}`,
             },
             '&:before': {
               top: 0,
@@ -123,7 +123,7 @@ PostCard01.getTheme = muiBaseTheme => ({
         },
         '& .MuiCardContent-root': {
           textAlign: 'left',
-          padding: muiBaseTheme.spacing(3),
+          padding: spacing(3),
         },
         '& .MuiTypography--heading': {
           fontWeight: 'bold',
@@ -132,7 +132,7 @@ PostCard01.getTheme = muiBaseTheme => ({
           lineHeight: 1.8,
         },
         '& .MuiCardActions-root': {
-          padding: muiBaseTheme.spacing(0, 3, 3),
+          padding: spacing(0, 3, 3),
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -141,11 +141,5 @@ PostCard01.getTheme = muiBaseTheme => ({
     },
   },
 });
-PostCard01.displayName = 'Card';
-PostCard01.metadata = {
-  name: 'Post Card',
-  description: 'Personal Post',
-};
-PostCard01.codeSandbox = 'https://codesandbox.io/s/01m058n220';
 
 export default PostCard01;

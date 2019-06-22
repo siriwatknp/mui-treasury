@@ -55,9 +55,9 @@ const useStyles = makeStyles(({ spacing, palette }) => ({
   },
 }));
 
-const GithubButton = ({ ...props }) => {
-  const classes = useStyles();
-  return <Button classes={classes} {...props} />;
+const GithubButton = props => {
+  const classes = useStyles(props);
+  return <Button {...props} classes={classes} />;
 };
 
 GithubButton.codeSandbox = 'https://codesandbox.io/s/vlymn85l0';

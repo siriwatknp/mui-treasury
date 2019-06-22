@@ -34,36 +34,49 @@ const PostCard02 = () => (
   </Card>
 );
 
-PostCard02.getTheme = muiBaseTheme => ({
+PostCard02.getTheme = ({ spacing, palette, breakpoints }) => ({
   MuiCard: {
     root: {
       '&.MuiPostCard--02': {
-        borderRadius: muiBaseTheme.spacing(2), // 16px
+        borderRadius: spacing(2), // 16px
         transition: '0.3s',
         boxShadow: '0px 14px 80px rgba(34, 35, 58, 0.2)',
-        width: '95%',
         position: 'relative',
         maxWidth: 800,
         marginLeft: 'auto',
         overflow: 'initial',
         background: '#ffffff',
         display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
-        padding: `${muiBaseTheme.spacing(2)}px 0`,
+        padding: `${spacing(2)}px 0`,
         '&:hover': {
           transform: 'translateY(-3px)',
           boxShadow: '0 4px 20px 0 rgba(0,0,0,0.12)',
         },
+        [breakpoints.up('sm')]: {
+          flexDirection: 'row',
+          width: '95%',
+        },
         '& .MuiCardMedia-root': {
           flexShrink: 0,
-          width: '40%',
+          position: 'relative',
+          width: '80%',
+          maxWidth: 256,
+          marginTop: '-16%',
           paddingTop: '48%',
-          transform: 'translateX(-24%)',
           boxShadow: '4px 4px 20px 1px rgba(252, 56, 56, 0.2)',
-          borderRadius: muiBaseTheme.spacing(2), // 16
+          borderRadius: spacing(2), // 16px
+          backgroundSize: 'contain',
           backgroundImage: 'linear-gradient(147deg, #fe8a39 0%, #fd3838 74%)',
-          backgroundColor: muiBaseTheme.palette.common.white,
+          backgroundColor: palette.common.white,
           overflow: 'hidden',
+          [breakpoints.up('sm')]: {
+            width: '40%',
+            marginTop: 0,
+            marginLeft: '-8%',
+            backgroundSize: 'cover',
+          },
           '&:after': {
             content: '" "',
             position: 'absolute',
@@ -72,20 +85,23 @@ PostCard02.getTheme = muiBaseTheme => ({
             width: '100%',
             height: '100%',
             backgroundImage: 'linear-gradient(147deg, #fe8a39 0%, #fd3838 74%)',
-            borderRadius: muiBaseTheme.spacing(2), // 16
+            borderRadius: spacing(2), // 16
             opacity: 0.5,
           },
         },
         '& .MuiCardContent-root': {
-          textAlign: 'left',
-          paddingLeft: 0,
-          padding: muiBaseTheme.spacing(2),
+          textAlign: 'center',
+          padding: spacing(2),
+          [breakpoints.up('sm')]: {
+            paddingLeft: spacing(3),
+            textAlign: 'left',
+          },
         },
         '& .MuiTypography--heading': {
           fontWeight: 'bold',
         },
         '& .MuiTypography--subheading': {
-          marginBottom: muiBaseTheme.spacing(2),
+          marginBottom: spacing(2),
         },
         '& .MuiButton--readMore': {
           backgroundImage: 'linear-gradient(147deg, #fe8a39 0%, #fd3838 74%)',
@@ -99,11 +115,5 @@ PostCard02.getTheme = muiBaseTheme => ({
     },
   },
 });
-PostCard02.metadata = {
-  name: 'Post Card II',
-  description: 'Personal Post',
-  credit: 'https://codemyui.com/gradient-card-ui-image-info-slider/',
-};
-PostCard02.codeSandbox = 'https://codesandbox.io/s/94v9y3kwor';
 
 export default PostCard02;

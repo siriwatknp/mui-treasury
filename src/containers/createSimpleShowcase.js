@@ -7,7 +7,6 @@ import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Showcase from 'components/molecules/Showcase';
 import InfoDrawer from 'components/organisms/InfoDrawer';
-import ShouldUpdate from './ShouldUpdate';
 
 const Image = styled('img')({
   width: 24,
@@ -26,7 +25,7 @@ const createSimpleShowcase = (components, options = {}) => {
     gridItemProps: globalGridItemProps,
     gridContainerProps: globalGridContainerProps,
   } = options;
-  const Page = () => {
+  const Page = props => {
     const [info, setInfo] = useState(null);
     const [infoShowed, setInfoShowed] = useState(false);
     const showInfo = component => {
@@ -79,25 +78,23 @@ const createSimpleShowcase = (components, options = {}) => {
                   description={get(component, 'info.description')}
                   {...previewProps}
                   sheetProps={{
-                    bgColor: 'white',
+                    bgColor: previewProps.inverted ? 'dark' : 'white',
                     ...previewProps.sheetProps,
                   }}
                 >
-                  <ShouldUpdate value={false}>
-                    {component.getTheme ? (
-                      <ThemeProvider
-                        theme={createMuiTheme({
-                          overrides: component.getTheme(baseTheme),
-                        })}
-                      >
-                        {render()}
-                      </ThemeProvider>
-                    ) : (
-                      <ThemeProvider theme={baseTheme}>
-                        {render()}
-                      </ThemeProvider>
-                    )}
-                  </ShouldUpdate>
+                  {component.getTheme ? (
+                    <ThemeProvider
+                      theme={createMuiTheme({
+                        overrides: component.getTheme(baseTheme),
+                      })}
+                    >
+                      {render(props)}
+                    </ThemeProvider>
+                  ) : (
+                    <ThemeProvider theme={baseTheme}>
+                      {render(props)}
+                    </ThemeProvider>
+                  )}
                 </Showcase>
               </Grid>
             ),

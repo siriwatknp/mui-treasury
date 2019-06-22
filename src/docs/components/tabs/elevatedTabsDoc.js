@@ -88,13 +88,13 @@ const coreCode = `
     };
   });
   
-  const ElevatedTabs = ({ tabs, ...props }) => {
-    const tabsClasses = useTabsStyles();
-    const tabClasses = useTabStyles();
+  const ElevatedTabs = ({ tabs, tabProps, ...props }) => {
+    const tabsClasses = useTabsStyles(props);
+    const tabClasses = useTabStyles(tabProps);
     return (
-      <Tabs classes={tabsClasses} {...props}>
+      <Tabs {...props} classes={tabsClasses}>
         {tabs.map(tab => (
-          <Tab key={tab.label} classes={tabClasses} {...tab} />
+          <Tab key={tab.label} {...tab} classes={tabClasses} />
         ))}
       </Tabs>
     );
@@ -106,9 +106,11 @@ const coreCode = `
         label: PropTypes.node.isRequired,
       }),
     ),
+    tabProps: PropTypes.shape({}),
   };
   ElevatedTabs.defaultProps = {
     tabs: [],
+    tabProps: {},
   };
   
   export default ElevatedTabs;
@@ -127,6 +129,10 @@ ElevatedTabs.info = {
     },
     { label: 'Tabs API', url: 'https://material-ui.com/api/tabs/' },
     { label: 'Tab API', url: 'https://material-ui.com/api/tab/' },
+    {
+      label: 'Styling',
+      url: 'https://material-ui.com/styles/basics/#hook-api',
+    },
   ],
   files: [
     {
@@ -139,7 +145,7 @@ ElevatedTabs.info = {
     },
   ],
   libraries: [],
-  dependencies: ['@material-ui/core'],
+  dependencies: [],
 };
 
 export default ElevatedTabs;

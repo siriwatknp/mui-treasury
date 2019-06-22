@@ -45,20 +45,20 @@ const useTabStyles = makeStyles(({ breakpoints }) => ({
   },
 }));
 
-const TwitterTabs = ({ tabs, ...props }) => {
-  const tabsClasses = useTabsStyles();
-  const tabClasses = useTabStyles();
+const TwitterTabs = ({ tabs, tabProps, ...props }) => {
+  const tabsClasses = useTabsStyles(props);
+  const tabClasses = useTabStyles(tabProps);
   return (
-    <Tabs variant={'fullWidth'} centered classes={tabsClasses} {...props}>
+    <Tabs variant={'fullWidth'} centered {...props} classes={tabsClasses}>
       {tabs.map(tab => (
         <Tab
           key={tab.label}
+          disableRipple
+          {...tab}
           classes={{
             ...tabClasses,
             wrapper: `${tabClasses.wrapper} MuiTab-label`,
           }}
-          disableRipple
-          {...tab}
         />
       ))}
     </Tabs>
@@ -71,9 +71,11 @@ TwitterTabs.propTypes = {
       label: PropTypes.node.isRequired,
     }),
   ),
+  tabProps: PropTypes.shape({}),
 };
 TwitterTabs.defaultProps = {
   tabs: [],
+  tabProps: {},
 };
 
 export default TwitterTabs;
