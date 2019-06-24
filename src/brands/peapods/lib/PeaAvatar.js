@@ -70,21 +70,21 @@ PeaAvatar.metadata = {
 };
 PeaAvatar.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 
-const Group = ({ more, images, avatarProps, ...props }) => (
+const Group = ({ more, images, avatarProps, overlap, ...props }) => (
   <Box
     display={'flex'}
     css={{
-      '& .MuiAvatar-root:not(:first-child)': { marginLeft: -8 },
+      '& .MuiAvatar-root:not(:first-child)': { marginLeft: overlap },
       '& .MuiAvatar-root': {
         border: '2px solid #ffffff',
       },
-      '& .MuiAvatar--more': { marginLeft: -8 },
+      '& .MuiAvatar--more': { marginLeft: overlap },
     }}
     {...props}
   >
     {images.map((img, index) => (
       <PeaAvatar
-        key={`${img}-${index}`}
+        key={`group-${img}-${index}`}
         {...avatarProps}
         src={img}
         more={index === images.length - 1 ? more : undefined}
@@ -94,11 +94,13 @@ const Group = ({ more, images, avatarProps, ...props }) => (
 );
 Group.propTypes = {
   more: PropTypes.number,
+  overlap: PropTypes.number,
   images: PropTypes.arrayOf(PropTypes.string.isRequired),
   avatarProps: PropTypes.shape({}),
 };
 Group.defaultProps = {
   more: undefined,
+  overlap: -8,
   images: [],
   avatarProps: {},
 };
