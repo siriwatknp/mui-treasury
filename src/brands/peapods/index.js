@@ -35,6 +35,7 @@ export { default as PersonCard } from './lib/PeaPersonCard';
 export { default as Slider } from './lib/PeaSlider';
 export { default as EventDialog } from './lib/PeaEventDialog';
 export { default as Filter } from './lib/PeaFilter';
+export { default as PeaUserFilters } from './lib/PeaUserFilters';
 export { default as AppBar } from './lib/PeaAppBar';
 export { default as Connections } from './lib/PeaConnections';
 export { default as SocialAvatar } from './lib/PeaSocialAvatar';
