@@ -1,10 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import prismTheme from 'prism-react-renderer/themes/oceanicNext';
-import PropTypes from 'prop-types';
 import Box from 'components/atoms/Box';
+import Copier from 'components/atoms/Copier';
+import Button from 'extensions/Button';
 
-const CodeHighlight = ({ code, theme, padded, rounded, ...props }) => (
+const CodeHighlight = ({
+  code,
+  name,
+  theme,
+  padded,
+  rounded,
+  copyable,
+  ...props
+}) => (
   <Box
     overscroll={'auto'}
     css={{
@@ -22,8 +32,28 @@ const CodeHighlight = ({ code, theme, padded, rounded, ...props }) => (
     {...rounded && {
       borderRadius: 8,
     }}
+    position={'relative'}
     {...props}
   >
+    {copyable && (
+      <>
+        <Box pb={{ xs: 4.5, sm: 0 }} />
+        <Box position={'absolute'} top={16} right={16} zIndex={1200}>
+          <Copier text={code}>
+            {({ copied }) => (
+              <Button
+                variant={'contained'}
+                color={'secondary'}
+                size={'small'}
+                icon={copied ? 'check_circle' : 'file_copy'}
+              >
+                {copied ? 'Copied' : name || 'Copy'}
+              </Button>
+            )}
+          </Copier>
+        </Box>
+      </>
+    )}
     <Highlight
       {...defaultProps}
       theme={theme || prismTheme}
@@ -60,11 +90,15 @@ CodeHighlight.propTypes = {
   theme: PropTypes.shape({}),
   padded: PropTypes.number,
   rounded: PropTypes.bool,
+  copyable: PropTypes.bool,
+  name: PropTypes.string,
 };
 CodeHighlight.defaultProps = {
   theme: undefined,
   padded: undefined,
   rounded: true,
+  copyable: false,
+  name: '',
 };
 
 export default CodeHighlight;

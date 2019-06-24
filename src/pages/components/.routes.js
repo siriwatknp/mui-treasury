@@ -3,8 +3,6 @@ import CardPage from 'pages/components/CardPage';
 import TabsPage from 'pages/components/TabsPage';
 import InputPage from 'pages/components/InputPage';
 import TextFieldPage from 'pages/components/TextFieldPage';
-import IconPage from 'pages/components/IconPage';
-import TypographyPage from 'pages/components/TypographyPage';
 import LayoutPage from 'pages/components/LayoutPage';
 import ChatPage from 'pages/components/ChatPage';
 import CarouselPage from 'pages/components/CarouselPage';
@@ -72,12 +70,6 @@ export default [
     Page: ChatPage,
   },
   {
-    id: 'icons',
-    path: '/components/icon',
-    primaryText: 'Icon',
-    Page: IconPage,
-  },
-  {
     id: 'inputs',
     path: '/components/inputs',
     primaryText: 'Input',
@@ -111,11 +103,5 @@ export default [
     primaryText: 'Text Field',
     secondaryText: `${TextFieldPage.components.length} items`,
     Page: TextFieldPage,
-  },
-  {
-    id: 'typography',
-    path: '/components/typography',
-    primaryText: 'Typography',
-    Page: TypographyPage,
   },
 ];

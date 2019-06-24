@@ -19,6 +19,7 @@ import logo from 'assets/images/logo.png';
 // PAGES
 import HomePage from 'pages/HomePage';
 import RootComponentPage from 'pages/RootComponentPage';
+import RootExtensionPage from 'pages/RootExtensionPage';
 import RootBrandPage from 'pages/RootBrandPage';
 import RootTemplatePage from 'pages/RootTemplatePage';
 import InstructionPage from 'pages/InstructionPage';
@@ -157,6 +158,11 @@ class App extends React.Component {
                         exact
                         path={'/components/*'}
                         component={RootComponentPage}
+                      />
+                      <Route
+                        exact
+                        path={'/extensions/*'}
+                        component={RootExtensionPage}
                       />
                       <Route
                         exact
