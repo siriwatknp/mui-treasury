@@ -24,11 +24,8 @@ const ExtButtonPage = () => {
       <ExtensionHeader
         index={index}
         setIndex={setIndex}
-        title={'Extended Button'}
-        subtitle={
-          // eslint-disable-next-line max-len
-          'A well-customized and hand-crafted Material-UI button that extends a lot of real-world usages to provide better experience for developers.'
-        }
+        title={buttonDoc.info.name}
+        subtitle={buttonDoc.info.description}
         version={buttonDoc.version}
       />
       <Box px={{ xs: 0, sm: 3 }} py={5}>

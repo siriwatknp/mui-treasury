@@ -9,7 +9,7 @@ import Text from 'components/atoms/Text';
 import Box from 'components/atoms/Box';
 import Image from 'components/atoms/Image';
 import Timeline from 'components/molecules/Timeline';
-import Icon from 'components/predefined/Icon';
+import Icon from 'extensions/Icon';
 
 const eCommerce01 =
   'https://firebasestorage.googleapis.com/v0/b/mui-treasury.appspot.com/o/public%2Fe-commerce_01%2Fe-commerce-01.png?alt=media';

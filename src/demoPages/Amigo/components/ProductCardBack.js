@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/styles';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Hidden from '@material-ui/core/Hidden';
-import Button from 'components/predefined/Button';
+import Button from 'extensions/Button';
 import ProductInfo from './ProductInfo';
 
 const useStyles = makeStyles(({ palette }) => ({

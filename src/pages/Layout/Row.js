@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Box from 'components/atoms/Box';
-import Typography from 'components/predefined/Typography';
+import Typography from 'extensions/Typography';
 
 const Row = ({
   left,

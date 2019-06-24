@@ -1,7 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
-import Button from 'components/predefined/Button';
+import Button from 'extensions/Button';
 
 const HandleBar = () => (
   <Box>

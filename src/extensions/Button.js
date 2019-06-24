@@ -4,7 +4,7 @@ import Color from 'color';
 import cx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 import MuiButton from '@material-ui/core/Button';
-import Icon from 'components/predefined/Icon';
+import Icon from 'extensions/Icon';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 const getLoaderSize = size => {

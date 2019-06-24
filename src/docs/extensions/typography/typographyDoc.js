@@ -3,7 +3,8 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import Typography from 'extensions/Typography';
 import Box from '@material-ui/core/Box';
-import Icon from 'extensions/Icon';
+import Icon from 'docs/extensions/icon';
+import { mergeInfo } from 'helpers/function';
 import code from './typographyCode';
 
 const VERSION = 'v1.3';
@@ -674,8 +675,30 @@ const coreCode = `
   export default Typography;
 `;
 
-export default {
-  components,
-  code: coreCode,
-  version: VERSION,
-};
+Typography.components = components;
+Typography.code = coreCode;
+Typography.version = VERSION;
+Typography.info = mergeInfo(
+  {
+    name: 'Extended Typography',
+    description: 'Useful props are added to make it easier to use',
+    links: [
+      {
+        label: 'Typography API',
+        url: 'https://material-ui.com/api/typography/',
+      },
+    ],
+    files: [
+      {
+        label: 'Typography.js',
+        code: coreCode,
+        core: true,
+      },
+    ],
+    libraries: [],
+    dependencies: [],
+  },
+  Icon.info,
+);
+
+export default Typography;

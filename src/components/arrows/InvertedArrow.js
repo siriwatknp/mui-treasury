@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
-import Icon from 'components/predefined/Icon';
+import Icon from 'docs/extensions/icon';
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {

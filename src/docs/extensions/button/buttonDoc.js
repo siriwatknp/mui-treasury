@@ -1,7 +1,8 @@
 /* eslint-disable */
 import React from 'react';
-import Icon from 'extensions/Icon';
 import Button from 'extensions/Button';
+import Icon from 'docs/extensions/icon';
+import { mergeInfo } from 'helpers/function';
 import code from './buttonCode';
 
 const VERSION = 'v1.4';
@@ -213,7 +214,7 @@ const coreCode = `
   import cx from 'clsx';
   import { makeStyles } from '@material-ui/styles';
   import MuiButton from '@material-ui/core/Button';
-  import Icon from 'components/predefined/Icon';
+  import Icon from 'extensions/Icon';
   import CircularProgress from '@material-ui/core/CircularProgress';
   
   const getLoaderSize = size => {
@@ -744,8 +745,28 @@ const coreCode = `
 
 `;
 
-export default {
-  components,
-  code: coreCode,
-  version: VERSION,
-};
+Button.components = components;
+Button.code = coreCode;
+Button.info = mergeInfo(
+  {
+    name: 'Extended Button',
+    description:
+      'A well-customized and hand-crafted Material-UI button that extends a lot of real-world usages to provide better experience for developers.',
+    links: [
+      { label: 'Button API', url: 'https://material-ui.com/api/button/' },
+    ],
+    files: [
+      {
+        label: 'Button.js',
+        code: coreCode,
+        core: true,
+      },
+    ],
+    libraries: [],
+    dependencies: [],
+  },
+  Icon.info,
+);
+Button.version = VERSION;
+
+export default Button;

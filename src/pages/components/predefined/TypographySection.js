@@ -10,8 +10,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import PreviewWidget from 'components/molecules/PreviewWidget';
-import Typography from 'components/predefined/Typography';
-import Icon from 'components/predefined/Icon';
+import Typography from 'extensions/Typography';
+import Icon from 'extensions/Icon';
 
 const createTheme = theme => createMuiTheme(theme);
 

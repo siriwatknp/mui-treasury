@@ -23,11 +23,8 @@ const ExtTypographyPage = () => {
       <ExtensionHeader
         index={index}
         setIndex={setIndex}
-        title={'Extended Typography'}
-        subtitle={
-          // eslint-disable-next-line max-len
-          'Useful props are added to make it easier to use.'
-        }
+        title={typographyDoc.info.name}
+        subtitle={typographyDoc.info.description}
         version={typographyDoc.version}
       />
       <Box px={{ xs: 0, sm: 3 }} py={5}>

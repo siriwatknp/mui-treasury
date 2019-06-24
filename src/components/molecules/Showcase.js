@@ -8,8 +8,8 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
-import Icon from 'components/predefined/Icon';
-import Typography from 'components/predefined/Typography';
+import Icon from 'extensions/Icon';
+import Typography from 'extensions/Typography';
 
 const useStyles = makeStyles(({ spacing, transitions }) => ({
   root: {

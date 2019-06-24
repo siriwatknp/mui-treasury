@@ -28,8 +28,8 @@ const ExtIconPage = () => {
       <ExtensionHeader
         index={index}
         setIndex={setIndex}
-        title={'Extended Icon'}
-        subtitle={"Support SVG, Web font and FontAwesome, that's all we need."}
+        title={iconDoc.info.name}
+        subtitle={iconDoc.info.description}
         version={iconDoc.version}
       />
       <Box px={{ xs: 0, sm: 3 }} py={5}>

@@ -7,13 +7,13 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { Box } from 'components/atoms';
 import Copier from 'components/atoms/Copier';
-import Text from 'components/predefined/Typography';
-import Icon from 'components/predefined/Icon';
+import Text from 'extensions/Typography';
+import Icon from 'extensions/Icon';
 import CodeHighlight from 'components/highlights/CodeHighlight';
 import {
   basicExamples,
   advancedExamples,
-} from 'pages/components/predefined/examples/typography';
+} from 'pages/extensions/examples/typography';
 
 const exampleCode = `
   /* Example Usage */

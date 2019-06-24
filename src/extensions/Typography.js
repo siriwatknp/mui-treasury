@@ -68,7 +68,7 @@ const useStyles = makeStyles(({ palette, spacing, breakpoints }) => {
     margin: '0 .2em',
     padding: '.2em .4em .1em',
     fontSize: '75%',
-    background: 'rgba(255,255,255,0.38)',
+    background: 'rgba(218,218,218,0.38)',
     border: `1px solid ${palette.grey[300]}`,
     borderRadius: 3,
     fontFamily:

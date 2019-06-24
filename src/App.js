@@ -34,7 +34,7 @@ import {
   Nav,
   presets,
 } from 'components/predefined/Layout';
-import Icon from 'components/predefined/Icon';
+import Icon from 'extensions/Icon';
 import treasuryTheme from './theme/treasury/treasuryTheme';
 
 const layoutConfig = presets.createMuiTreasuryLayout();

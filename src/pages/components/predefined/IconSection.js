@@ -12,7 +12,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Box from 'components/atoms/Box';
 import PreviewWidget from 'components/molecules/PreviewWidget';
-import Icon from 'components/predefined/Icon';
+import Icon from 'extensions/Icon';
 
 const createTheme = theme => createMuiTheme(theme);
 
