@@ -57,6 +57,7 @@ import PersonCard from './demo/PersonCard';
 import EventDialog from './demo/EventDialog';
 import MediaUploader from './demo/MediaUploader';
 import Filter from './demo/Filter';
+import UserFilters from './demo/UserFilters';
 import AppBar from './demo/AppBar';
 import SocialAvatar from './demo/SocialAvatar';
 import Connections from './demo/Connections';
@@ -176,6 +177,7 @@ const components = [
   { component: EventDialog },
   { component: MediaUploader },
   { component: Filter },
+  { component: UserFilters },
   {
     component: AppBar,
     gridItemProps: {
