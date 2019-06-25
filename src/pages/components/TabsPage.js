@@ -8,9 +8,19 @@ import {
   PillsTabs,
   TwitterIconTabs,
   TwitterTabs,
+  ContainedLabelTabs,
+  ContainedIconTabs,
 } from 'docs/components/tabs';
 
 const components = [
+  {
+    component: ContainedIconTabs,
+    render: () => <ContainedIconTabs.Demo />,
+  },
+  {
+    component: ContainedLabelTabs,
+    render: () => <ContainedLabelTabs.Demo />,
+  },
   {
     component: ChromeTabs,
     render: () => <ChromeTabs.Demo />,
