@@ -10,9 +10,14 @@ import {
   TwitterTabs,
   ContainedLabelTabs,
   ContainedIconTabs,
+  SerratedTabs,
 } from 'docs/components/tabs';
 
 const components = [
+  {
+    component: SerratedTabs,
+    render: () => <SerratedTabs.Demo />,
+  },
   {
     component: ContainedIconTabs,
     render: () => <ContainedIconTabs.Demo />,
