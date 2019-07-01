@@ -1,11 +1,3 @@
-/**
- * Current VERSION 1.1
- *
- * vX.Y meaning
- * X = major changes ex. add/remove/rename some props/className,
- *     could affect other components
- * Y = minor changes ex. fix bug or internal logic, won't effect other component
- */
 import React from 'react';
 import cx from 'clsx';
 import PropTypes from 'prop-types';

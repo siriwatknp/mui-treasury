@@ -9,8 +9,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Clipboard from 'containers/Clipboard';
 import CodeHighlight from 'components/highlights/CodeHighlight';
 import Box from 'components/atoms/Box';
-import Icon from 'components/predefined/Icon';
-import Typography from 'components/predefined/Typography';
+import Icon from 'extensions/Icon';
+import Typography from 'extensions/Typography';
 
 const generateIconImport = ({ type, style }) => {
   if (type === 'svg') {

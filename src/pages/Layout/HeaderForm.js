@@ -8,7 +8,7 @@ import Radio from '@material-ui/core/Radio/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup/RadioGroup';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
-import Typography from 'components/predefined/Typography';
+import Typography from 'extensions/Typography';
 import Image from 'components/atoms/Image';
 import Box from 'components/atoms/Box';
 import Row from './Row';

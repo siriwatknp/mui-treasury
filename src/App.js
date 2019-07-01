@@ -19,6 +19,7 @@ import logo from 'assets/images/logo.png';
 // PAGES
 import HomePage from 'pages/HomePage';
 import RootComponentPage from 'pages/RootComponentPage';
+import RootExtensionPage from 'pages/RootExtensionPage';
 import RootBrandPage from 'pages/RootBrandPage';
 import RootTemplatePage from 'pages/RootTemplatePage';
 import InstructionPage from 'pages/InstructionPage';
@@ -33,7 +34,7 @@ import {
   Nav,
   presets,
 } from 'components/predefined/Layout';
-import Icon from 'components/predefined/Icon';
+import Icon from 'extensions/Icon';
 import treasuryTheme from './theme/treasury/treasuryTheme';
 
 const layoutConfig = presets.createMuiTreasuryLayout();
@@ -157,6 +158,11 @@ class App extends React.Component {
                         exact
                         path={'/components/*'}
                         component={RootComponentPage}
+                      />
+                      <Route
+                        exact
+                        path={'/extensions/*'}
+                        component={RootExtensionPage}
                       />
                       <Route
                         exact

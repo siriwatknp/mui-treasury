@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import Icon from 'components/predefined/Icon';
+import Icon from 'extensions/Icon';
 
 const Copier = ({ text, children }) => {
   const [copied, setCopied] = useState(false);

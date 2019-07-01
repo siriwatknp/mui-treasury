@@ -15,9 +15,9 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Icon from 'components/predefined/Icon';
-import Button from 'components/predefined/Button';
-import Typography from 'components/predefined/Typography';
+import Icon from 'extensions/Icon';
+import Button from 'extensions/Button';
+import Typography from 'extensions/Typography';
 
 const useStyles = makeStyles(({ transitions, palette, spacing }) => ({
   appBarBg: {

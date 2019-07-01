@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import Typography from 'components/predefined/Typography';
+import Typography from 'extensions/Typography';
 import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles(({ palette, spacing }) => ({

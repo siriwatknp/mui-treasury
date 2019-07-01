@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
-import Typography from 'components/predefined/Typography';
+import Typography from 'extensions/Typography';
 
 const ProductInfo = ({ name, price, inverted, rootBoxProps }) => (
   <Box px={2} pb={2} {...rootBoxProps}>

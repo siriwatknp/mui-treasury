@@ -5,7 +5,7 @@ import { makeStyles, ThemeProvider } from '@material-ui/styles';
 import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Button from 'components/predefined/Button';
+import Button from 'extensions/Button';
 import Grid from '@material-ui/core/Grid';
 import Tooltip from '@material-ui/core/Tooltip';
 import theme from 'theme/treasury';

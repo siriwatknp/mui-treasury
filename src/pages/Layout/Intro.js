@@ -4,8 +4,8 @@ import GitHubButton from 'react-github-btn';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 import Box from 'components/atoms/Box';
-import Typography from 'components/predefined/Typography';
-import Icon from 'components/predefined/Icon';
+import Typography from 'extensions/Typography';
+import Icon from 'extensions/Icon';
 
 const Intro = () => (
   <Box maxWidth={768} mx={'auto'}>

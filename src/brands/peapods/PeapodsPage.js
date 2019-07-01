@@ -6,9 +6,9 @@ import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
-import Typography from 'components/predefined/Typography';
+import Typography from 'extensions/Typography';
 import Box from 'components/atoms/Box';
-import PdfButton from 'components/predefined/Button';
+import PdfButton from 'extensions/Button';
 import Image from 'components/atoms/Image';
 import PreviewWidget from 'components/molecules/PreviewWidget';
 import CodeHighlight from 'components/highlights/CodeHighlight';
@@ -57,6 +57,7 @@ import PersonCard from './demo/PersonCard';
 import EventDialog from './demo/EventDialog';
 import MediaUploader from './demo/MediaUploader';
 import Filter from './demo/Filter';
+import UserFilters from './demo/UserFilters';
 import AppBar from './demo/AppBar';
 import SocialAvatar from './demo/SocialAvatar';
 import Connections from './demo/Connections';
@@ -179,6 +180,7 @@ const components = [
   { component: EventDialog },
   { component: MediaUploader },
   { component: Filter },
+  { component: UserFilters },
   {
     component: AppBar,
     gridItemProps: {

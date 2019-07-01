@@ -14,7 +14,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import PreviewWidget from 'components/molecules/PreviewWidget';
 import Grid from '@material-ui/core/Grid';
-import Button from 'components/predefined/Button';
+import Button from 'extensions/Button';
 
 const createTheme = theme => createMuiTheme(theme);
 

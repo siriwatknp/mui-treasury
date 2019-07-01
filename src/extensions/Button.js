@@ -1,18 +1,10 @@
-/**
- * Current VERSION 1.4
- *
- * vX.Y meaning
- * X = major changes ex. add/remove/rename some props/className,
- *     could affect other components
- * Y = minor changes ex. fix bug or internal logic, won't effect other component
- */
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import Color from 'color';
 import cx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 import MuiButton from '@material-ui/core/Button';
-import Icon from 'components/predefined/Icon';
+import Icon from 'extensions/Icon';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 const getLoaderSize = size => {

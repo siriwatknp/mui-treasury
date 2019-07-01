@@ -5,7 +5,7 @@ import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from 'components/atoms/Box';
 import Image from 'components/atoms/Image';
-import Typography from 'components/predefined/Typography';
+import Typography from 'extensions/Typography';
 import CodeHighlight from 'components/highlights/CodeHighlight';
 
 const components = [];

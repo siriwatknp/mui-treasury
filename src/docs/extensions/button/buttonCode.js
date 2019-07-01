@@ -1,44 +1,41 @@
 const invertedIconButton = `
-  import Button from 'path/to/Button';
-  import Icon from 'path/to/Icon';
-  // look at the icon page
-  
+ 
   <Button
     inverted
     color={'primary'} // 'secondary', 'danger'
     shape={'square'}
+    // seamlessly integrate with "Extended Icon"
     icon={
       <Icon>sim_card</Icon>
     }
   />
+
 `;
 
 const squareIconButton = `
-  import Button from 'path/to/Button';
-  import Icon from 'path/to/Icon';
-  // look at the icon page
-  
+
   <Button
     color={'primary'} // 'secondary', 'danger'
     shape={'square'}
+    // seamlessly integrate with "Extended Icon"
     icon={
       <Icon>camera_alt</Icon>
     }
   />
+  
 `;
 
 const circularIconButton = `
-  import Button from 'path/to/Button';
-  import Icon from 'path/to/Icon';
-  // If you want to fully control by "Icon" props
-  // set iconIsolated={true}
-  // add any prop that "Icon" support
-  
+
   <Button
     color={'primary'} // 'secondary', 'danger'
     shape={'circular'}
     variant={'contained'}
+    // If you want to fully control "Icon" props
+    // set iconIsolated={true}
+    // add any prop that "Icon" support
     iconIsolated
+    // seamlessly integrate with "Extended Icon"
     icon={
       <Icon
         size={'small'} // 'big' | 'large'
@@ -48,45 +45,44 @@ const circularIconButton = `
       </Icon>
     }
   />
+  
 `;
 
 const outlineIconButton = `
-  import Button from 'path/to/Button';
-  import Icon from 'path/to/Icon';
-  // look at the icon page
   
   <Button
     color={'primary'} // 'secondary', 'danger'
     shape={'circular'}
     variant={'outlined'}
+    // seamlessly integrate with "Extended Icon"
     icon={
       <Icon>camera_alt</Icon>
     }
   />
+  
 `;
 
-const deleteButton = `
-  import Button from 'path/to/Button';
-  import Icon from 'path/to/Icon';
-  // look at the icon page
+const deletedButton = `
   
   <Button
     variant={'contained'}
     color={'danger'}
+    // seamlessly integrate with "Extended Icon"
     icon={<Icon>delete</Icon>}
     shadowless
   >
     Delete
   </Button>
+  
 `;
 
 const facebookButton = `
-  import Button from 'path/to/Button';
   
   <Button
     shape={'chubby'}
     variant={'contained'}
     color={'primary'}
+    // seamlessly integrate with "Extended Icon"
     icon={'fab fa-facebook-f'}
     iconProps={{
       bgColor: 'white',
@@ -96,15 +92,16 @@ const facebookButton = `
   >
     Sign in with Facebook
   </Button>
+  
 `;
 
 const paypalButton = `
-  import Button from 'path/to/Button';
   
   <Button
     shape={'chubby'}
     variant={'contained'}
     color={'primary'}
+    // seamlessly integrate with "Extended Icon"
     icon={'fab fa-paypal'}
     iconProps={{
       bgColor: 'white',
@@ -114,10 +111,10 @@ const paypalButton = `
   >
     Pay with Paypal
   </Button>
+  
 `;
 
 const twitterButton = `
-  import Button from 'path/to/Button';
   
   <Button
     fullWidth
@@ -125,6 +122,7 @@ const twitterButton = `
     shape={'square'}
     variant={'outlined'}
     color={'primary'}
+    // seamlessly integrate with "Extended Icon"
     icon={'fab fa-twitter'}
     iconProps={{
       color: 'primary',
@@ -132,10 +130,10 @@ const twitterButton = `
   >
     Twitter
   </Button>
+  
 `;
 
 const loadingButton = `
-  import Button from 'path/to/Button';
   
   <Button
     loading
@@ -144,6 +142,7 @@ const loadingButton = `
   >
     Loading...
   </Button>
+  
 `;
 
 export default {
@@ -151,7 +150,7 @@ export default {
   squareIconButton,
   circularIconButton,
   outlineIconButton,
-  deleteButton,
+  deletedButton,
   facebookButton,
   paypalButton,
   twitterButton,

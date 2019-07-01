@@ -1,9 +1,45 @@
-/* eslint-disable */
-import Icon from './Icon';
+/* eslint-disable max-len */
+import React from 'react';
+import Icon from 'extensions/Icon';
+import Typography from '@material-ui/core/Typography';
+import codes from './iconCode';
+
+const VERSION = 'v1.1';
+
+const components = [
+  {
+    name: 'Icon with Typography',
+    description: '',
+    render: () => (
+      <>
+        <Typography gutterBottom variant={'h4'}>
+          <Icon icon={'far fa-copy'} size={'large'} /> Text(h4) with
+          icon(large).
+        </Typography>
+        <Typography gutterBottom variant={'h5'}>
+          <Icon icon={'far fa-copy'} size={'big'} /> Text(h5) with icon(big).
+        </Typography>
+        <Typography gutterBottom variant={'h6'}>
+          <Icon icon={'far fa-copy'} size={'default'} /> Text(h6) with
+          icon(default).
+        </Typography>
+        <Typography gutterBottom variant={'subtitle1'}>
+          <Icon icon={'far fa-copy'} size={'small'} /> Text(subtitle1) with
+          icon(small).
+        </Typography>
+        <Typography gutterBottom>
+          <Icon icon={'far fa-copy'} size={'small'} /> Text(body2) with
+          icon(small).
+        </Typography>
+      </>
+    ),
+    code: codes.iconWithTypography,
+  },
+];
 
 const coreCode = `
   /**
-   * Current VERSION 1.1
+   * Current VERSION ${VERSION}
    *
    * vX.Y meaning
    * X = major changes ex. add/remove/rename some props/className,
@@ -239,12 +275,15 @@ const coreCode = `
   };
   
   export default Icon;
+
 `;
 
-Icon.getTheme = () => {};
+Icon.components = components;
+Icon.code = coreCode;
+Icon.version = VERSION;
 Icon.info = {
-  name: 'Predefined Icon',
-  description: '',
+  name: 'Extended Icon',
+  description: "Support SVG, Web font and FontAwesome, that's all we need",
   links: [
     { label: 'Font Icon API', url: 'https://material-ui.com/api/icon/' },
     {

@@ -1,11 +1,3 @@
-/**
- * Current VERSION 1.3
- *
- * vX.Y meaning
- * X = major changes ex. add/remove/rename some props/className,
- *     could affect other components
- * Y = minor changes ex. fix bug or internal logic, won't effect other component
- */
 import React from 'react';
 import cx from 'clsx';
 import PropTypes from 'prop-types';
@@ -76,7 +68,7 @@ const useStyles = makeStyles(({ palette, spacing, breakpoints }) => {
     margin: '0 .2em',
     padding: '.2em .4em .1em',
     fontSize: '75%',
-    background: palette.grey[100],
+    background: 'rgba(218,218,218,0.38)',
     border: `1px solid ${palette.grey[300]}`,
     borderRadius: 3,
     fontFamily:
