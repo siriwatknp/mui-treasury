@@ -14,6 +14,8 @@ const avatarUrls = [
   'https://avatars.dicebear.com/v2/avataaars/example8.svg',
 ];
 
+function empty() {}
+
 function getAvatarUrls(count) {
   const urls = [];
 
@@ -26,7 +28,7 @@ function getAvatarUrls(count) {
 }
 
 const PeaEventCardProps = {
-  id: 1,
+  id: '123',
   profile: {
     name: 'Siriwat Knp',
     image: 'https://avatars.dicebear.com/v2/avataaars/siriwat.svg',
@@ -48,6 +50,9 @@ const PeaEventCardProps = {
     attending: 5,
     limit: 30,
   },
+  onShowDetailsClicked: empty,
+  onShareEventClicked: empty,
+  onCreatePodClicked: empty,
 };
 
 const EventCard = () => <PeaEventCard {...PeaEventCardProps} />;

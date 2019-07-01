@@ -31,7 +31,7 @@ const MediaUploader = () => {
 };
 
 MediaUploader.metadata = {
-  name: 'Pea Menu Item',
+  name: 'Pea Media Uploader',
 };
 MediaUploader.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 MediaUploader.code = `

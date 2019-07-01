@@ -9,6 +9,8 @@ const renderPods = () => {};
 
 const EventDetails = () => (
   <PeaEventDetails
+    id="123"
+    isPodMember={false}
     title="My event my event My event my event My event my event My event my event"
     sourceImage="https://upload.wikimedia.org/wikipedia/commons/6/6b/Meetup_Logo.png"
     sourceLink="https://meetup.com"
@@ -29,17 +31,11 @@ const EventDetails = () => (
       attending: 5,
       limit: 30,
     }}
+    mapOrigin="San Francisco, CA"
     onCreatePodClicked={() => alert('create pod')}
     onLeavePodClicked={() => alert('leave pod')}
     description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-    tags={[
-      { label: 'cinema' },
-      { label: 'sport' },
-      { label: 'nightlife' },
-      { label: 'theater' },
-      { label: 'culture' },
-      { label: 'holy' },
-    ]}
+    tags={['cinema', 'sport', 'nightlife', 'theater', 'culture', 'holy']}
     renderConnections={Connections}
     renderPods={renderPods}
   />
