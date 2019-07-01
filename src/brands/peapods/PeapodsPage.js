@@ -65,6 +65,7 @@ import UserCard from './demo/UserCard';
 import FullProfile from './demo/FullProfile';
 import GroupProfile from './demo/GroupProfile';
 import GroupCard from './demo/GroupCard';
+import EventCard from './demo/EventCard';
 import Chat from './demo/Chat';
 import AccountProfile from './demo/AccountProfile';
 import ThreadTitle from './demo/ThreadTitle';

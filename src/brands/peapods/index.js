@@ -43,6 +43,7 @@ export { default as FullProfile } from './lib/PeaFullProfile';
 export { default as UserCard } from './lib/PeaUserCard';
 export { default as GroupProfile } from './lib/PeaGroupProfile';
 export { default as GroupCard } from './lib/PeaGroupCard';
+export { default as EventCard } from './lib/PeaEventCard';
 export { default as Chat } from './lib/PeaChat';
 export { default as MediaUploader } from './lib/PeaMediaUploader';
 export { default as AccountProfile } from './lib/PeaAccountProfile';
