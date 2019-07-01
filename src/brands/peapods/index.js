@@ -3,6 +3,12 @@ export { default as Grid } from '@material-ui/core/Grid';
 export { default as TextField } from '@material-ui/core/TextField';
 export { default as Tabs } from '@material-ui/core/Tabs';
 export { default as Tab } from '@material-ui/core/Tab';
+export {
+  default as BottomNavigation,
+} from '@material-ui/core/BottomNavigation';
+export {
+  default as BottomNavigationAction,
+} from '@material-ui/core/BottomNavigationAction';
 
 export { default as theme } from './lib/theme';
 
