@@ -21,6 +21,7 @@ import peaSwitch from './components/peaSwitch';
 import peaTabs from './components/peaTabs';
 import peaTextField from './components/peaTextField';
 import peaTypography from './components/peaTypography';
+import peaTooltip from './components/peaTooltip';
 
 const theme = {
   typography: {
@@ -61,6 +62,7 @@ const theme = {
     ...peaTabs(variables),
     ...peaTextField(variables),
     ...peaTypography(variables),
+    ...peaTooltip(variables),
   },
 };
 
