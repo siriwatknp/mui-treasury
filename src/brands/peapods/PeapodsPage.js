@@ -75,6 +75,7 @@ import TrendingHashtagList from './demo/TrendingHashtagList';
 import Toast from './demo/Toast';
 import LoadingSpinner from './demo/LoadingSpinner';
 import ImageCarousel from './demo/ImageCarousel';
+import EventDetails from './demo/EventDetails';
 
 const components = [
   { component: Button, previewProps: { white: true } },
@@ -198,6 +199,14 @@ const components = [
   },
   {
     component: GroupProfile,
+    gridItemProps: {
+      sm: 10,
+      md: 7,
+      lg: 6,
+    },
+  },
+  {
+    component: EventDetails,
     gridItemProps: {
       sm: 10,
       md: 7,
