@@ -73,6 +73,7 @@ import MessageInput from './demo/MessageInput';
 import TrendingHashtagList from './demo/TrendingHashtagList';
 import Toast from './demo/Toast';
 import LoadingSpinner from './demo/LoadingSpinner';
+import ImageCarousel from './demo/ImageCarousel';
 
 const components = [
   { component: Button, previewProps: { white: true } },
@@ -203,6 +204,14 @@ const components = [
     },
   },
   { component: GroupCard },
+  { component: ImageCarousel },
+  {
+    component: EventCard,
+    gridItemProps: {
+      sm: 6,
+      md: 6,
+    },
+  },
   {
     component: Chat,
     previewProps: {

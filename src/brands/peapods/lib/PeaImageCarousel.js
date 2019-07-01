@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import cx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 
-import ParallaxSlide from 'components/slides/ParallaxSlide';
-import SimpleArrow from 'components/arrows/SimpleArrow';
-import DotIndicator from 'components/indicators/DotIndicator';
+import ParallaxSlide from '../../../components/slides/ParallaxSlide';
+import SimpleArrow from '../../../components/arrows/SimpleArrow';
+import DotIndicator from '../../../components/indicators/DotIndicator';
 
 const useStyles = makeStyles(({ breakpoints }) => ({
   root: {
@@ -46,7 +46,6 @@ const useStyles = makeStyles(({ breakpoints }) => ({
     right: 0,
     marginRight: '4px',
   },
-
   indicatorContainer: {
     textAlign: 'center',
     position: 'absolute',
@@ -86,15 +85,14 @@ const PeaImageCarousel = ({ data }) => {
     </div>
   );
 
-  const renderChildren = () => {
-    return data.map(({ id, image }) => (
+  const renderChildren = () =>
+    data.map(({ id, image }) => (
       <div key={id} className={classes.slide}>
         <div className={classes.imageContainer}>
           <img className={classes.image} src={image} alt={'slide'} />
         </div>
       </div>
     ));
-  };
 
   return (
     <div className={classes.root}>
@@ -113,6 +111,7 @@ PeaImageCarousel.propTypes = {
     }),
   ),
 };
+
 PeaImageCarousel.defaultProps = {
   data: [],
 };
