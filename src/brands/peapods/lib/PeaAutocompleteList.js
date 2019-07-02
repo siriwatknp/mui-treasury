@@ -41,8 +41,8 @@ const useStyles = makeStyles(theme => ({
   paper: {
     position: 'absolute',
     zIndex: 1,
-    left: 0,
-    right: 0,
+    left: theme.spacing(2),
+    right: theme.spacing(2),
   },
 }));
 
