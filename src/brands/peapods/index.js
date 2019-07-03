@@ -63,3 +63,5 @@ export { default as SwipeableTabs } from './lib/PeaSwipeableTabs';
 export { default as LoadingSpinner } from './lib/PeaLoadingSpinner';
 export { default as ImageCarousel } from './lib/PeaImageCarousel';
 export { default as EventDetails } from './lib/PeaEventDetails';
+export { default as Tooltip } from './lib/PeaTooltip';
+export { default as AutocompleteList } from './lib/PeaAutocompleteList';
