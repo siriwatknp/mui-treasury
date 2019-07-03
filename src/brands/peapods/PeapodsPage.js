@@ -75,6 +75,7 @@ import TrendingHashtagList from './demo/TrendingHashtagList';
 import Toast from './demo/Toast';
 import LoadingSpinner from './demo/LoadingSpinner';
 import Tooltip from './demo/Tooltip';
+import AutocompleteList from './demo/AutocompleteList';
 
 const components = [
   { component: Button, previewProps: { white: true } },
@@ -84,6 +85,7 @@ const components = [
   { component: MenuItem },
   { component: Statistic },
   { component: Tag, previewProps: { white: true } },
+  { component: AutocompleteList, previewProps: { white: true } },
   { component: SearchInput, previewProps: { white: true } },
   { component: Tabs },
   { component: SwipeableTabs },

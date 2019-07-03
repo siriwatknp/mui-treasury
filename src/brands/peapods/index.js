@@ -55,3 +55,4 @@ export { default as Toast } from './lib/PeaToast';
 export { default as SwipeableTabs } from './lib/PeaSwipeableTabs';
 export { default as LoadingSpinner } from './lib/PeaLoadingSpinner';
 export { default as Tooltip } from './lib/PeaTooltip';
+export { default as AutocompleteList } from './lib/PeaAutocompleteList';
