@@ -41,7 +41,7 @@ import Counter from './demo/Counter';
 import CategoryToggle from './demo/CategoryToggle';
 import PersonListItem from './demo/PersonListItem';
 import PeopleList from './demo/PeopleList';
-import EventCard from './demo/EventCard';
+import EventCardSmall from './demo/EventCardSmall';
 import PodPodCard from './demo/PodPodCard';
 import CardActions from './demo/CardActions';
 import ProfileCard from './demo/ProfileCard';
@@ -66,6 +66,7 @@ import UserCard from './demo/UserCard';
 import FullProfile from './demo/FullProfile';
 import GroupProfile from './demo/GroupProfile';
 import GroupCard from './demo/GroupCard';
+import EventCard from './demo/EventCard';
 import Chat from './demo/Chat';
 import AccountProfile from './demo/AccountProfile';
 import ThreadTitle from './demo/ThreadTitle';
@@ -74,6 +75,8 @@ import MessageInput from './demo/MessageInput';
 import TrendingHashtagList from './demo/TrendingHashtagList';
 import Toast from './demo/Toast';
 import LoadingSpinner from './demo/LoadingSpinner';
+import ImageCarousel from './demo/ImageCarousel';
+import EventDetails from './demo/EventDetails';
 import Tooltip from './demo/Tooltip';
 import AutocompleteList from './demo/AutocompleteList';
 
@@ -118,7 +121,7 @@ const components = [
     },
   },
   {
-    component: EventCard,
+    component: EventCardSmall,
     gridItemProps: {
       sm: 6,
       md: 6,
@@ -207,7 +210,23 @@ const components = [
       lg: 6,
     },
   },
+  {
+    component: EventDetails,
+    gridItemProps: {
+      sm: 10,
+      md: 7,
+      lg: 6,
+    },
+  },
   { component: GroupCard },
+  { component: ImageCarousel },
+  {
+    component: EventCard,
+    gridItemProps: {
+      sm: 6,
+      md: 6,
+    },
+  },
   {
     component: Chat,
     previewProps: {

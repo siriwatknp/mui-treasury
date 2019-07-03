@@ -47,8 +47,9 @@ const PeaPodCard = ({
   podCount,
   peopleGoing,
   peopleInterested,
+  ...props
 }) => (
-  <Card className={'PeaPodCard-root'}>
+  <Card className={'PeaPodCard-root'} {...props}>
     <CardHeader
       avatar={<PeaAvatar src={profile.image} />}
       title={

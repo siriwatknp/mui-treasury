@@ -19,6 +19,11 @@ export default ({ spacing }) => {
         '&.MuiAvatar--huge': {
           ...createSize(14),
         },
+        '&.MuiAvatar--clickable': {
+          '&:hover': {
+            cursor: 'pointer',
+          },
+        },
       },
     },
   };

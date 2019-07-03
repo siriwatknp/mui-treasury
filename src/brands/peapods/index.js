@@ -3,6 +3,12 @@ export { default as Grid } from '@material-ui/core/Grid';
 export { default as TextField } from '@material-ui/core/TextField';
 export { default as Tabs } from '@material-ui/core/Tabs';
 export { default as Tab } from '@material-ui/core/Tab';
+export {
+  default as BottomNavigation,
+} from '@material-ui/core/BottomNavigation';
+export {
+  default as BottomNavigationAction,
+} from '@material-ui/core/BottomNavigationAction';
 
 export { default as theme } from './lib/theme';
 
@@ -21,7 +27,7 @@ export { default as Counter } from './lib/PeaCounter';
 export { default as CategoryToggle } from './lib/PeaCategoryToggle';
 export { default as PersonListItem } from './lib/PeaPersonListItem';
 export { default as PeopleList } from './lib/PeaPeopleList';
-export { default as EventCard } from './lib/PeaEventCard';
+export { default as EventCardSmall } from './lib/PeaEventCardSmall';
 export { default as CardActions } from './lib/PeaCardActions';
 export { default as ProfileCard } from './lib/PeaProfileCard';
 export { default as NotificationItem } from './lib/PeaNotificationItem';
@@ -44,6 +50,7 @@ export { default as FullProfile } from './lib/PeaFullProfile';
 export { default as UserCard } from './lib/PeaUserCard';
 export { default as GroupProfile } from './lib/PeaGroupProfile';
 export { default as GroupCard } from './lib/PeaGroupCard';
+export { default as EventCard } from './lib/PeaEventCard';
 export { default as Chat } from './lib/PeaChat';
 export { default as MediaUploader } from './lib/PeaMediaUploader';
 export { default as AccountProfile } from './lib/PeaAccountProfile';
@@ -54,5 +61,7 @@ export { default as TrendingHashtagList } from './lib/PeaTrendingHashtagList';
 export { default as Toast } from './lib/PeaToast';
 export { default as SwipeableTabs } from './lib/PeaSwipeableTabs';
 export { default as LoadingSpinner } from './lib/PeaLoadingSpinner';
+export { default as ImageCarousel } from './lib/PeaImageCarousel';
+export { default as EventDetails } from './lib/PeaEventDetails';
 export { default as Tooltip } from './lib/PeaTooltip';
 export { default as AutocompleteList } from './lib/PeaAutocompleteList';

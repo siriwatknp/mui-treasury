@@ -33,6 +33,7 @@ const PeaMenuItem = ({
   IconProps,
   labelProps,
   onClick,
+  isVertical,
 }) => {
   const renderIcon = () => (
     <PeaIcon color={'secondary'} icon={icon} {...IconProps} />
@@ -50,7 +51,8 @@ const PeaMenuItem = ({
       ) : (
         renderIcon()
       )}
-      <Box px={1} display={'flex'} alignItems={'center'}>
+
+      {isVertical ? (
         <Typography
           color={'secondary'}
           className={clsx(classes.label, 'PeaMenuItem-label')}
@@ -58,7 +60,17 @@ const PeaMenuItem = ({
         >
           {label}
         </Typography>
-      </Box>
+      ) : (
+        <Box px={1} display={'flex'} alignItems={'center'}>
+          <Typography
+            color={'secondary'}
+            className={clsx(classes.label, 'PeaMenuItem-label')}
+            {...labelProps}
+          >
+            {label}
+          </Typography>
+        </Box>
+      )}
     </Box>
   );
 };
@@ -74,6 +86,7 @@ PeaMenuItem.propTypes = {
   IconProps: PropTypes.shape({}),
   label: PropTypes.string,
   labelProps: PropTypes.shape({}),
+  isVertical: PropTypes.bool,
 };
 PeaMenuItem.defaultProps = {
   onClick: () => {},
@@ -84,6 +97,7 @@ PeaMenuItem.defaultProps = {
   badgeContent: undefined,
   label: '',
   className: '',
+  isVertical: false,
 };
 PeaMenuItem.metadata = {
   name: 'Pea Menu Item',

@@ -5,8 +5,16 @@ import clsx from 'clsx';
 import Box from '@material-ui/core/Box';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
 
-const PeaAvatar = ({ className, size, more, ...props }) =>
+const PeaAvatar = ({
+  externalLink,
+  className,
+  size,
+  more,
+  isClickable,
+  ...props
+}) =>
   more ? (
     <Box
       display={'flex'}
@@ -32,6 +40,7 @@ const PeaAvatar = ({ className, size, more, ...props }) =>
         className={clsx(
           'MuiAvatar-root',
           size && `MuiAvatar--${size}`,
+          isClickable && 'MuiAvatar--clickable',
           className,
         )}
         {...props}
@@ -39,22 +48,43 @@ const PeaAvatar = ({ className, size, more, ...props }) =>
       <Typography className={'MuiAvatar-more'}>+{more}</Typography>
     </Box>
   ) : (
-    <Avatar
-      className={clsx(
-        'MuiAvatar-root',
-        size && `MuiAvatar--${size}`,
-        className,
+    <>
+      {externalLink ? (
+        <Link href={externalLink} target="_blank" rel="noopener">
+          <Avatar
+            className={clsx(
+              'MuiAvatar-root',
+              size && `MuiAvatar--${size}`,
+              isClickable && 'MuiAvatar--clickable',
+              className,
+            )}
+            {...props}
+          />
+        </Link>
+      ) : (
+        <Avatar
+          className={clsx(
+            'MuiAvatar-root',
+            size && `MuiAvatar--${size}`,
+            isClickable && 'MuiAvatar--clickable',
+            className,
+          )}
+          {...props}
+        />
       )}
-      {...props}
-    />
+    </>
   );
 
 PeaAvatar.propTypes = {
+  externalLink: PropTypes.string,
+  isClickable: PropTypes.bool,
   className: PropTypes.string,
   more: PropTypes.number,
   size: PropTypes.oneOf(['small', 'big', 'large', 'huge']),
 };
 PeaAvatar.defaultProps = {
+  externalLink: undefined,
+  isClickable: false,
   className: '',
   more: undefined,
   size: undefined,
