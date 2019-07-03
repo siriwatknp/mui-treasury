@@ -74,6 +74,7 @@ import MessageInput from './demo/MessageInput';
 import TrendingHashtagList from './demo/TrendingHashtagList';
 import Toast from './demo/Toast';
 import LoadingSpinner from './demo/LoadingSpinner';
+import Tooltip from './demo/Tooltip';
 import AutocompleteList from './demo/AutocompleteList';
 
 const components = [
@@ -253,6 +254,7 @@ const components = [
   { component: TrendingHashtagList },
   { component: Toast },
   { component: LoadingSpinner },
+  { component: Tooltip, previewProps: { white: true } },
 ];
 
 const PeapodsPage = () => {
