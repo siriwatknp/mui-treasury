@@ -1,18 +1,20 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import Select from 'react-select';
+import cx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
 import PropTypes from 'prop-types';
 
-import PeaSearchInput from './PeaSearchInput';
-
 const useStyles = makeStyles(theme => ({
   root: {
-    width: '100%',
-    flexGrow: 1,
+    width: 360,
+    padding: 4,
+    '&.fullWidth': {
+      width: '100%',
+    },
   },
   input: {
     display: 'flex',
@@ -34,8 +36,8 @@ const useStyles = makeStyles(theme => ({
   },
   placeholder: {
     position: 'absolute',
-    left: 46,
-    bottom: 14,
+    left: 34,
+    bottom: 7,
     fontSize: 16,
   },
   paper: {
@@ -66,52 +68,6 @@ NoOptionsMessage.defaultProps = {
 NoOptionsMessage.propTypes = {
   children: PropTypes.node,
   innerProps: PropTypes.object,
-  selectProps: PropTypes.object.isRequired,
-};
-
-function inputComponent({ inputRef, ...props }) {
-  return <div ref={inputRef} {...props} />;
-}
-
-inputComponent.defaultProps = {
-  inputRef: () => {},
-};
-
-inputComponent.propTypes = {
-  inputRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
-};
-
-function Control({
-  children,
-  innerProps,
-  innerRef,
-  selectProps: { classes, TextFieldProps },
-}) {
-  return (
-    <PeaSearchInput
-      fullWidth
-      inputComponent={inputComponent}
-      inputProps={{
-        className: classes.input,
-        ref: innerRef,
-        children,
-        ...innerProps,
-      }}
-      {...TextFieldProps}
-    />
-  );
-}
-
-Control.defaultProps = {
-  children: null,
-  innerProps: null,
-  innerRef: () => {},
-};
-
-Control.propTypes = {
-  children: PropTypes.node,
-  innerProps: PropTypes.object,
-  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   selectProps: PropTypes.object.isRequired,
 };
 
@@ -222,23 +178,15 @@ Menu.propTypes = {
   selectProps: PropTypes.object,
 };
 
-const components = {
-  Control,
-  Menu,
-  NoOptionsMessage,
-  Option,
-  Placeholder,
-  SingleValue,
-  ValueContainer,
-};
-
-const PeaAutocompleteList = ({ placeholder, suggestions }) => {
+const PeaAutocompleteList = props => {
+  const { placeholder, suggestions, fullWitdh, InputControl, onChange } = props;
   const classes = useStyles();
   const theme = useTheme();
   const [single, setSingle] = React.useState(null);
 
   function handleChangeSingle(value) {
     setSingle(value);
+    onChange(value);
   }
 
   const selectStyles = {
@@ -251,8 +199,22 @@ const PeaAutocompleteList = ({ placeholder, suggestions }) => {
     }),
   };
 
+  if (!InputControl) {
+    return null;
+  }
+
+  const components = {
+    Menu,
+    NoOptionsMessage,
+    Option,
+    Placeholder,
+    SingleValue,
+    ValueContainer,
+    Control: InputControl.prototype.constructor,
+  };
+
   return (
-    <div className={classes.root}>
+    <div className={cx(classes.root, fullWitdh && 'fullWidth')}>
       <Select
         classes={classes}
         styles={selectStyles}
@@ -277,6 +239,7 @@ const PeaAutocompleteList = ({ placeholder, suggestions }) => {
 
 PeaAutocompleteList.defaultProps = {
   placeholder: '',
+  fullWitdh: false,
 };
 
 PeaAutocompleteList.propTypes = {
@@ -287,6 +250,9 @@ PeaAutocompleteList.propTypes = {
       label: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  fullWitdh: PropTypes.bool,
+  InputControl: PropTypes.any.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 PeaAutocompleteList.metadata = {

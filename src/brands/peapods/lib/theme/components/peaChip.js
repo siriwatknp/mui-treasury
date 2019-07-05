@@ -12,6 +12,11 @@ export default ({ shape, palette: { primary, secondary, common, text } }) => ({
           fontWeight: 500,
           color: text.primary,
         },
+        '& .MuiChip-deleteIcon': {
+          fontSize: 12,
+          margin: '0 2px 0 0',
+          color: secondary.dark,
+        },
       },
     },
     clickable: {
