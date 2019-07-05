@@ -58,6 +58,7 @@ const tooltipStyles = theme => ({
   tooltip: {
     '&&&': {
       backgroundColor: 'transparent',
+      border: 'none',
     },
     '& > span': {
       width: '32px',
