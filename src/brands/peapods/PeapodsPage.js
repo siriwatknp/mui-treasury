@@ -79,6 +79,7 @@ import ImageCarousel from './demo/ImageCarousel';
 import EventDetails from './demo/EventDetails';
 import Tooltip from './demo/Tooltip';
 import AutocompleteList from './demo/AutocompleteList';
+import AutocompleteHashtags from './demo/AutocompleteHashtags';
 
 const components = [
   { component: Button, previewProps: { white: true } },
@@ -89,6 +90,14 @@ const components = [
   { component: Statistic },
   { component: Tag, previewProps: { white: true } },
   { component: AutocompleteList, previewProps: { white: true } },
+  {
+    component: AutocompleteHashtags,
+    gridItemProps: {
+      sm: 10,
+      lg: 8,
+    },
+    previewProps: { white: true },
+  },
   { component: SearchInput, previewProps: { white: true } },
   { component: Tabs },
   { component: SwipeableTabs },

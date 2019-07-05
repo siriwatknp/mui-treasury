@@ -1,5 +1,7 @@
+/* eslint-disable no-alert */
 import React from 'react';
 import PeaAutocompleteList from '../lib/PeaAutocompleteList';
+import PeaSearchInputControl from '../lib/PeaSearchInputControl';
 
 const suggestions = [
   { label: 'Afghanistan' },
@@ -43,8 +45,11 @@ const suggestions = [
 
 const AutocompleteList = () => (
   <PeaAutocompleteList
+    fullWitdh
     placeholder="Search events..."
     suggestions={suggestions}
+    InputControl={PeaSearchInputControl}
+    onChange={value => alert(`"${value}" is selected`)}
   />
 );
 
@@ -54,8 +59,10 @@ AutocompleteList.metadata = {
 };
 AutocompleteList.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 AutocompleteList.code = `
+  /* eslint-disable no-alert */
   import React from 'react';
   import PeaAutocompleteList from '../lib/PeaAutocompleteList';
+  import PeaSearchInputControl from '../lib/PeaSearchInputControl';
 
   const suggestions = [
     { label: 'Afghanistan' },
@@ -99,8 +106,11 @@ AutocompleteList.code = `
 
   const AutocompleteList = () => (
     <PeaAutocompleteList
+      fullWitdh
       placeholder="Search events..."
       suggestions={suggestions}
+      InputControl={PeaSearchInputControl}
+      onChange={value => alert(value + ' is selected')}
     />
   );
 `;
