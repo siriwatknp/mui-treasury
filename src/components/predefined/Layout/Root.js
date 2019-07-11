@@ -1,10 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withWidth from '@material-ui/core/withWidth';
 import { withStyles } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import presets from './layoutPresets';
 
 const keys = ['xs', 'sm', 'md', 'lg', 'xl'];
+
+/**
+ * From https://material-ui.com/components/use-media-query/#migrating-from-withwidth
+ * Be careful using this hook. It only works because the number of
+ * breakpoints in theme is static. It will break once you change the number of
+ * breakpoints. See https://reactjs.org/docs/hooks-rules.html#only-call-hooks-at-the-top-level
+ */
+function useWidth() {
+  const theme = useTheme();
+  const keys = [...theme.breakpoints.keys].reverse();
+  return (
+    keys.reduce((output, key) => {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const matches = useMediaQuery(theme.breakpoints.only(key));
+      return !output && matches ? key : output;
+    }, null) || 'xs'
+  );
+}
 
 export const getScreenValue = (ctx, currentScreen, defaultValue) => {
   if (ctx === null || ctx === undefined) return defaultValue;
@@ -110,6 +128,11 @@ class Root extends React.Component {
   }
 }
 
+const RootWithWidth = ({...others}) => {
+  const width = useWidth();
+  return (<Root width={width} {...others} />);
+};
+
 const createScreenPropTypes = valPropTypes =>
   PropTypes.shape({
     xs: valPropTypes,
@@ -176,4 +199,4 @@ Root.defaultProps = {
   config: initialConfig,
 };
 
-export default withWidth()(withStyles(styles, { name: 'MuiRoot' })(Root));
+export default withStyles(styles, { name: 'MuiRoot' })(RootWithWidth);
