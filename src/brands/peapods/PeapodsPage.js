@@ -80,6 +80,7 @@ import EventDetails from './demo/EventDetails';
 import Tooltip from './demo/Tooltip';
 import AutocompleteList from './demo/AutocompleteList';
 import AutocompleteHashtags from './demo/AutocompleteHashtags';
+import UserSettings from './demo/UserSettings';
 
 const components = [
   { component: Button, previewProps: { white: true } },
@@ -204,6 +205,7 @@ const components = [
   { component: Connections },
   { component: PeaTypography },
   { component: UserCard },
+  { component: UserSettings },
   {
     component: FullProfile,
     gridItemProps: {
