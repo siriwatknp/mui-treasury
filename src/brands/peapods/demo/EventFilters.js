@@ -119,7 +119,7 @@ const Filter = () => {
 };
 
 Filter.metadata = {
-  name: 'Pea Filter',
+  name: 'Pea Event Filters',
 };
 Filter.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 Filter.code = `
