@@ -57,4 +57,4 @@ export { default as ImageCarousel } from './lib/PeaImageCarousel';
 export { default as EventDetails } from './lib/PeaEventDetails';
 export { default as Tooltip } from './lib/PeaTooltip';
 export { default as AutocompleteList } from './lib/PeaAutocompleteList';
-export { default as UserSEttings } from './lib/PeaUserSEttings';
+export { default as UserSettings } from './lib/PeaUserSettings';
