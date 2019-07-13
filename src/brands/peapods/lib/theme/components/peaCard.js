@@ -257,6 +257,7 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
       },
       '&.PeaAccountProfile-root': {
         position: 'relative',
+        width: '100%',
         '& > .MuiCardMedia-root': {
           paddingTop: '44%',
           position: 'absolute',

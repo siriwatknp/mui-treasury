@@ -46,6 +46,7 @@ export { default as AppBar } from './lib/PeaAppBar';
 export { default as Connections } from './lib/PeaConnections';
 export { default as SocialAvatar } from './lib/PeaSocialAvatar';
 export { default as Typography } from './lib/PeaTypography';
+export { default as FullProfileOld } from './lib/PeaFullProfileOld';
 export { default as FullProfile } from './lib/PeaFullProfile';
 export { default as UserCard } from './lib/PeaUserCard';
 export { default as GroupProfile } from './lib/PeaGroupProfile';
