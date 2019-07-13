@@ -33,6 +33,8 @@ const PeaMenuItem = ({
   IconProps,
   labelProps,
   onClick,
+  isVertical,
+  ...props
 }) => {
   const renderIcon = () => (
     <PeaIcon color={'secondary'} icon={icon} {...IconProps} />
@@ -42,6 +44,7 @@ const PeaMenuItem = ({
       className={clsx(classes.root, className)}
       display={'flex'}
       onClick={onClick}
+      {...props}
     >
       {badgeShowed ? (
         <Badge badgeContent={badgeContent} color="error" {...BadgeProps}>
@@ -50,7 +53,8 @@ const PeaMenuItem = ({
       ) : (
         renderIcon()
       )}
-      <Box px={1} display={'flex'} alignItems={'center'}>
+
+      {isVertical ? (
         <Typography
           color={'secondary'}
           className={clsx(classes.label, 'PeaMenuItem-label')}
@@ -58,7 +62,17 @@ const PeaMenuItem = ({
         >
           {label}
         </Typography>
-      </Box>
+      ) : (
+        <Box px={1} display={'flex'} alignItems={'center'}>
+          <Typography
+            color={'secondary'}
+            className={clsx(classes.label, 'PeaMenuItem-label')}
+            {...labelProps}
+          >
+            {label}
+          </Typography>
+        </Box>
+      )}
     </Box>
   );
 };
@@ -66,7 +80,7 @@ const PeaMenuItem = ({
 PeaMenuItem.propTypes = {
   className: PropTypes.string,
   onClick: PropTypes.func,
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   classes: PropTypes.shape({}).isRequired,
   badgeShowed: PropTypes.bool,
   badgeContent: PropTypes.number,
@@ -74,6 +88,7 @@ PeaMenuItem.propTypes = {
   IconProps: PropTypes.shape({}),
   label: PropTypes.string,
   labelProps: PropTypes.shape({}),
+  isVertical: PropTypes.bool,
 };
 PeaMenuItem.defaultProps = {
   onClick: () => {},
@@ -84,6 +99,8 @@ PeaMenuItem.defaultProps = {
   badgeContent: undefined,
   label: '',
   className: '',
+  isVertical: false,
+  icon: undefined,
 };
 PeaMenuItem.metadata = {
   name: 'Pea Menu Item',

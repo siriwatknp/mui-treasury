@@ -24,18 +24,18 @@ const PeaInvitationDialog = ({ person, pods, onInvite, onClose, ...props }) => (
         }
       >
         {pods.map(pod => {
-          const { primary, secondary, full, src } = pod;
+          const { profile, podCount, full } = pod;
           return (
-            <ListItem key={primary}>
-              <PeaAvatar src={src} size={'big'} />
+            <ListItem key={profile.name}>
+              <PeaAvatar src={profile.image} size={'big'} />
               <ListItemText
                 primaryTypographyProps={{ noWrap: true }}
                 secondaryTypographyProps={{
                   noWrap: true,
                   className: full ? 'ListItem-secondaryErrorText' : '',
                 }}
-                primary={primary}
-                secondary={secondary}
+                primary={profile.name}
+                secondary={`Peas ${podCount}`}
               />
               <PeaButton
                 className={'MuiButton--auto'}

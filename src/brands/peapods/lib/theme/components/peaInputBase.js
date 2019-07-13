@@ -1,13 +1,14 @@
 import Color from 'color';
 
-export default ({ palette, spacing }) => {
+export default ({ palette }) => {
   // ATTENTION!
   // you can customize some important variables here!!
   const backgroundColor = palette.grey[100];
-  const space = spacing(1); // default = 8;
+  const space = 2;
   const borderRadius = 100;
   const iconColor = palette.grey[500];
   // end of variables
+
   return {
     MuiInputBase: {
       root: {
@@ -18,7 +19,7 @@ export default ({ palette, spacing }) => {
           border: '1px solid',
           // initial as transparent, prevent lagging when focused
           borderColor: 'rgba(0,0,0,0)',
-          padding: `${space}px ${space * 2}px`,
+          padding: `${space}px ${space * 5}px`,
           '& .material-icons': {
             fontSize: 20,
             color: iconColor,

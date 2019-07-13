@@ -8,9 +8,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const PeaLoadingSpinner = () => {
+const PeaLoadingSpinner = props => {
   const classes = useStyles();
-  return <CircularProgress className={classes.progress} />;
+  return <CircularProgress className={classes.progress} {...props} />;
 };
 
 PeaLoadingSpinner.propTypes = {};

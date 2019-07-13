@@ -9,6 +9,7 @@ const PeaTag = ({ className, src, ...props }) => (
     className={cx('PeaTag-root', className)}
     classes={{
       label: 'MuiChip-label',
+      deleteIcon: 'MuiChip-deleteIcon',
     }}
     avatar={src ? <Avatar alt={'person'} src={src} /> : null}
     {...props}

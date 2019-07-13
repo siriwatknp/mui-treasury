@@ -1,7 +1,7 @@
 export default ({ spacing, palette, typography, breakpoints }) => ({
   MuiCard: {
     root: {
-      '&.PeaEventCard-root': {
+      '&.PeaEventCardSmall-root': {
         transition: '0.3s',
         margin: 'auto',
         minWidth: 240,
@@ -35,6 +35,58 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
           fontWeight: 'bold',
           textAlign: 'left',
           fontSize: '1rem',
+          marginBottom: spacing(1.5),
+        },
+        '& .MuiTypography--subheading': {
+          lineHeight: 1.8,
+        },
+        '& .MuiAvatar-root': {
+          display: 'inline-block',
+          border: '2px solid white',
+          '&:not(:first-of-type)': {
+            marginLeft: -spacing(1),
+          },
+        },
+      },
+      '&.PeaEventCard-root': {
+        transition: '0.3s',
+        margin: 'auto',
+        minWidth: 375,
+        maxWidth: 500,
+        // boxShadow: '0 8px 40px -12px rgba(0,0,0,0.3)',
+        // '&:hover': {
+        //   boxShadow: '0 16px 70px -12.125px rgba(0,0,0,0.3)',
+        // },
+        '& > .MuiCardMedia-root': {
+          paddingTop: '56.25%',
+          position: 'relative',
+          '& .MuiCardTag-root': {
+            fontFamily: typography.fontFamily,
+            display: 'flex',
+            alignItems: 'center',
+            border: '1px solid #ffffff',
+            borderRadius: 4,
+            padding: 4,
+            backgroundColor: 'rgba(0,0,0,0.38)',
+            color: '#ffffff',
+            fontSize: 10,
+          },
+        },
+        '& > .MuiCardContent-root': {
+          textAlign: 'left',
+          padding: spacing(2),
+        },
+        '> * span.MuiCardHeader-title': {
+          fontWeight: 'bold',
+          textAlign: 'left',
+          fontSize: '5rem !important',
+          marginBottom: spacing(1.5),
+        },
+
+        '& .MuiTypography--heading': {
+          fontWeight: 'bold',
+          textAlign: 'left',
+          fontSize: '3rem',
           marginBottom: spacing(1.5),
         },
         '& .MuiTypography--subheading': {
@@ -205,6 +257,7 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
       },
       '&.PeaAccountProfile-root': {
         position: 'relative',
+        width: '100%',
         '& > .MuiCardMedia-root': {
           paddingTop: '44%',
           position: 'absolute',

@@ -41,7 +41,7 @@ import Counter from './demo/Counter';
 import CategoryToggle from './demo/CategoryToggle';
 import PersonListItem from './demo/PersonListItem';
 import PeopleList from './demo/PeopleList';
-import EventCard from './demo/EventCard';
+import EventCardSmall from './demo/EventCardSmall';
 import PodPodCard from './demo/PodPodCard';
 import CardActions from './demo/CardActions';
 import ProfileCard from './demo/ProfileCard';
@@ -63,9 +63,11 @@ import SocialAvatar from './demo/SocialAvatar';
 import Connections from './demo/Connections';
 import PeaTypography from './demo/Typography';
 import UserCard from './demo/UserCard';
+import FullProfileOld from './demo/FullProfileOld';
 import FullProfile from './demo/FullProfile';
 import GroupProfile from './demo/GroupProfile';
 import GroupCard from './demo/GroupCard';
+import EventCard from './demo/EventCard';
 import Chat from './demo/Chat';
 import AccountProfile from './demo/AccountProfile';
 import ThreadTitle from './demo/ThreadTitle';
@@ -74,8 +76,12 @@ import MessageInput from './demo/MessageInput';
 import TrendingHashtagList from './demo/TrendingHashtagList';
 import Toast from './demo/Toast';
 import LoadingSpinner from './demo/LoadingSpinner';
+import ImageCarousel from './demo/ImageCarousel';
+import EventDetails from './demo/EventDetails';
 import Tooltip from './demo/Tooltip';
 import AutocompleteList from './demo/AutocompleteList';
+import AutocompleteHashtags from './demo/AutocompleteHashtags';
+import UserSettings from './demo/UserSettings';
 
 const components = [
   { component: Button, previewProps: { white: true } },
@@ -86,6 +92,14 @@ const components = [
   { component: Statistic },
   { component: Tag, previewProps: { white: true } },
   { component: AutocompleteList, previewProps: { white: true } },
+  {
+    component: AutocompleteHashtags,
+    gridItemProps: {
+      sm: 10,
+      lg: 8,
+    },
+    previewProps: { white: true },
+  },
   { component: SearchInput, previewProps: { white: true } },
   { component: Tabs },
   { component: SwipeableTabs },
@@ -118,7 +132,7 @@ const components = [
     },
   },
   {
-    component: EventCard,
+    component: EventCardSmall,
     gridItemProps: {
       sm: 6,
       md: 6,
@@ -192,6 +206,7 @@ const components = [
   { component: Connections },
   { component: PeaTypography },
   { component: UserCard },
+  { component: UserSettings },
   {
     component: FullProfile,
     gridItemProps: {
@@ -200,6 +215,14 @@ const components = [
     },
   },
   {
+    component: FullProfileOld,
+    gridItemProps: {
+      sm: 10,
+      lg: 8,
+    },
+  },
+
+  {
     component: GroupProfile,
     gridItemProps: {
       sm: 10,
@@ -207,7 +230,23 @@ const components = [
       lg: 6,
     },
   },
+  {
+    component: EventDetails,
+    gridItemProps: {
+      sm: 10,
+      md: 7,
+      lg: 6,
+    },
+  },
   { component: GroupCard },
+  { component: ImageCarousel },
+  {
+    component: EventCard,
+    gridItemProps: {
+      sm: 6,
+      md: 6,
+    },
+  },
   {
     component: Chat,
     previewProps: {
