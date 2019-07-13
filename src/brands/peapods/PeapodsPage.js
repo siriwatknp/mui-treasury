@@ -56,7 +56,7 @@ import Slider from './demo/Slider';
 import PersonCard from './demo/PersonCard';
 import EventDialog from './demo/EventDialog';
 import MediaUploader from './demo/MediaUploader';
-import Filter from './demo/Filter';
+import EventFilters from './demo/EventFilters';
 import UserFilters from './demo/UserFilters';
 import AppBar from './demo/AppBar';
 import SocialAvatar from './demo/SocialAvatar';
@@ -193,7 +193,7 @@ const components = [
   },
   { component: EventDialog },
   { component: MediaUploader },
-  { component: Filter },
+  { component: EventFilters },
   { component: UserFilters },
   {
     component: AppBar,
