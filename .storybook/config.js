@@ -10,9 +10,7 @@ const ThemeDecorator = storyFn => (
   <>
     <CssBaseline />
     <ThemeProvider theme={tresuryTheme}>
-      <div style={{ margin: 8 }}>
-        {storyFn()}
-      </div>
+      <div style={{ margin: 8 }}>{storyFn()}</div>
     </ThemeProvider>
   </>
 );

@@ -9628,10 +9628,10 @@ ms@2.1.1, ms@^2.1.1:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
   integrity sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
 
-mui-layout@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/mui-layout/-/mui-layout-1.2.2.tgz#a092d877b921d89b5f55b88655f9197d112145ac"
-  integrity sha512-6FG4GK4QLZC2OeNNQJkOAFrP9ecCteXzm8nSXnD5KuX4mJP3RKhWJyyp82lBAXBEYxS7mjLonjqwjVsV8m3YcQ==
+mui-layout@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/mui-layout/-/mui-layout-1.2.4.tgz#575fd94e9caf499b1caa17803b91d15cd3c2bb74"
+  integrity sha512-NdeSpnvsMuDKorfLE7nBlX6nynk0bqO/j+8aZCHog+ode6gL0faBJLANZ/nCxSvw2wTiMsqUwTExZlIMyFwR8A==
 
 multicast-dns-service-types@^1.1.0:
   version "1.1.0"
