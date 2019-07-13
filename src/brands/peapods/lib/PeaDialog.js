@@ -38,7 +38,7 @@ const PeaDialog = ({
     </DialogTitle>
     <DialogContent className={'DialogContent--root'}>
       {typeof content === 'string' ? (
-        <Typography>{content}</Typography>
+        <Typography align={'center'}>{content}</Typography>
       ) : (
         content
       )}

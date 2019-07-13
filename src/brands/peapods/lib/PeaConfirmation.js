@@ -20,11 +20,11 @@ const PeaConfirmation = ({
     open={open}
     onClose={onClose}
     actions={[
-      <PeaButton elongated onClick={onClose}>
-        Cancel
-      </PeaButton>,
-      <PeaButton elongated color={'danger'} onClick={onSubmit}>
+      <PeaButton elongated color={'danger'} size={'big'} onClick={onSubmit}>
         Block
+      </PeaButton>,
+      <PeaButton elongated color={'secondary'} size={'big'} onClick={onClose}>
+        Cancel
       </PeaButton>,
     ]}
     {...props}
