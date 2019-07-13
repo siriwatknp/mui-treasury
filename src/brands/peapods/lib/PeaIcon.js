@@ -54,7 +54,7 @@ const PeaIcon = ({
       )}
       color={injectColor(color)}
     >
-      {mainIcon.includes('fa-') ? (
+      {mainIcon.includes && mainIcon.includes('fa-') ? (
         <i className={cx('MuiIcon--fa', mainIcon)} {...fontAwesomeProps} />
       ) : (
         mainIcon
@@ -67,7 +67,7 @@ PeaIcon.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   fontAwesomeProps: PropTypes.shape({}),
-  icon: PropTypes.string,
+  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   inverted: PropTypes.bool,
   link: PropTypes.bool,
   size: PropTypes.oneOf(['small', '', 'big', 'large']),
