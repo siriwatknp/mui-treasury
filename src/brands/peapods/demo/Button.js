@@ -38,7 +38,13 @@ const Button = () => (
       labelExpanded
       variant={'contained'}
       color={'primary'}
-      icon={<PeaIcon icon={'fab fa-facebook-f'} bgColor={'white'} />}
+      icon={
+        <PeaIcon
+          icon={'fab fa-facebook-f'}
+          color={'secondary'}
+          bgColor={'white'}
+        />
+      }
     >
       Register with Facebook
     </PeaButton>
@@ -77,7 +83,13 @@ Button.code = `
         labelExpanded
         variant={'contained'}
         color={'primary'}
-        icon={<PeaIcon icon={'fab fa-facebook-f'} bgColor={'white'} />}
+        icon={
+          <PeaIcon
+            icon={'fab fa-facebook-f'}
+            color={'secondary'}
+            bgColor={'white'}
+          />
+        }
       >
         Register with Facebook
       </PeaButton>
