@@ -27,6 +27,9 @@ export default ({ palette }) => {
               marginRight: space,
             },
           },
+          '&.PeaSearchInput-audience': {
+            'border-radius': 6,
+          },
         },
         '&$focused': {
           '&.PeaSearchInput-root': {
