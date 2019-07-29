@@ -82,6 +82,7 @@ import Tooltip from './demo/Tooltip';
 import AutocompleteList from './demo/AutocompleteList';
 import AutocompleteHashtags from './demo/AutocompleteHashtags';
 import UserSettings from './demo/UserSettings';
+import ShareContent from './demo/ShareContent';
 import AudienceSelector from './demo/AudienceSelector';
 
 const components = [
@@ -296,6 +297,7 @@ const components = [
   { component: Toast },
   { component: LoadingSpinner },
   { component: Tooltip, previewProps: { white: true } },
+  { component: ShareContent, previewProps: { white: true } },
 ];
 
 const PeapodsPage = () => {

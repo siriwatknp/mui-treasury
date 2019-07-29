@@ -179,6 +179,7 @@ const PeaProfileEditor = ({
                 <PeaIcon
                   link
                   icon={'fab fa-twitter'}
+                  color={'secondary'}
                   bgColor={'white'}
                   size={'big'}
                   shadow
