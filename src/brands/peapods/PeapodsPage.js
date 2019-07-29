@@ -83,8 +83,10 @@ import AutocompleteList from './demo/AutocompleteList';
 import AutocompleteHashtags from './demo/AutocompleteHashtags';
 import UserSettings from './demo/UserSettings';
 import ShareContent from './demo/ShareContent';
+import AudienceSelector from './demo/AudienceSelector';
 
 const components = [
+  { component: AudienceSelector, previewProps: { white: true } },
   { component: Button, previewProps: { white: true } },
   { component: Icon },
   { component: Avatar },
