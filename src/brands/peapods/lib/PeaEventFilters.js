@@ -11,13 +11,14 @@ import Typography from '@material-ui/core/Typography';
 import FormControl from '@material-ui/core/FormControl';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+
 import PeaSlider from './PeaSlider';
 import PeaRadio from './PeaRadio';
 import PeaButton from './PeaButton';
 
 const panelWidth = 300;
 
-const PeaFilter = ({ open, onClose }) => (
+const PeaEventFilters = ({ open, onClose }) => (
   <Drawer open={open} onClose={onClose}>
     <Box width={panelWidth} p={2}>
       <Typography align={'center'} variant={'h5'} gutterBottom>
@@ -153,12 +154,13 @@ const PeaFilter = ({ open, onClose }) => (
   </Drawer>
 );
 
-PeaFilter.propTypes = {
+PeaEventFilters.propTypes = {
   open: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
 };
-PeaFilter.metadata = {
-  name: 'Pea Filter',
+
+PeaEventFilters.metadata = {
+  name: 'Pea Event Filters',
 };
 
-export default PeaFilter;
+export default PeaEventFilters;

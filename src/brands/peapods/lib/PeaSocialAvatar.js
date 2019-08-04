@@ -48,6 +48,7 @@ const PeaSocialAvatar = ({ classes, src, name, social }) => (
         className={classes.icon}
         size={'small'}
         icon={ICON[social]}
+        color={'secondary'}
         bgColor={'white'}
       />
     )}

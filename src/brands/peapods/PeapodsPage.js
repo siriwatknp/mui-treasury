@@ -56,7 +56,7 @@ import Slider from './demo/Slider';
 import PersonCard from './demo/PersonCard';
 import EventDialog from './demo/EventDialog';
 import MediaUploader from './demo/MediaUploader';
-import Filter from './demo/Filter';
+import EventFilters from './demo/EventFilters';
 import UserFilters from './demo/UserFilters';
 import AppBar from './demo/AppBar';
 import SocialAvatar from './demo/SocialAvatar';
@@ -82,8 +82,11 @@ import Tooltip from './demo/Tooltip';
 import AutocompleteList from './demo/AutocompleteList';
 import AutocompleteHashtags from './demo/AutocompleteHashtags';
 import UserSettings from './demo/UserSettings';
+import ShareContent from './demo/ShareContent';
+import AudienceSelector from './demo/AudienceSelector';
 
 const components = [
+  { component: AudienceSelector, previewProps: { white: true } },
   { component: Button, previewProps: { white: true } },
   { component: Icon },
   { component: Avatar },
@@ -193,7 +196,7 @@ const components = [
   },
   { component: EventDialog },
   { component: MediaUploader },
-  { component: Filter },
+  { component: EventFilters },
   { component: UserFilters },
   {
     component: AppBar,
@@ -294,6 +297,7 @@ const components = [
   { component: Toast },
   { component: LoadingSpinner },
   { component: Tooltip, previewProps: { white: true } },
+  { component: ShareContent, previewProps: { white: true } },
 ];
 
 const PeapodsPage = () => {

@@ -6,6 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+
 import PeaSwitch from './PeaSwitch';
 import PeaButton from './PeaButton';
 import PeaIcon from './PeaIcon';
@@ -18,7 +19,6 @@ const PeaUserSettings = ({
   onReceiveEmailChange,
   onEditProfile,
   onContactSupport,
-  onLogout,
   onDeleteProfile,
 }) => {
   const [anchorEl, setAnchor] = useState(null);
@@ -76,9 +76,10 @@ const PeaUserSettings = ({
         <MenuItem>
           <ListItemText disableTypography>
             <PeaText color={'secondary'} variant={'body1'} weight={'bold'}>
-              Notifications
+              Push Notifications
             </PeaText>
           </ListItemText>
+
           <ListItemSecondaryAction>
             <PeaSwitch
               checked={switchState.notifications}
@@ -87,13 +88,16 @@ const PeaUserSettings = ({
             />
           </ListItemSecondaryAction>
         </MenuItem>
+
         <Divider variant={'middle'} />
+
         <MenuItem>
           <ListItemText disableTypography>
             <PeaText color={'secondary'} variant={'body1'} weight={'bold'}>
-              Receive emails
+              Receive Emails
             </PeaText>
           </ListItemText>
+
           <ListItemSecondaryAction>
             <PeaSwitch
               checked={switchState.receiveEmail}
@@ -102,7 +106,9 @@ const PeaUserSettings = ({
             />
           </ListItemSecondaryAction>
         </MenuItem>
+
         <Divider variant={'middle'} />
+
         <MenuItem
           onClick={() => {
             onEditProfile();
@@ -111,12 +117,14 @@ const PeaUserSettings = ({
         >
           <ListItemText disableTypography>
             <PeaText color={'secondary'} variant={'body1'} weight={'bold'}>
-              Edit profile
+              Edit Profile
             </PeaText>
           </ListItemText>
           <PeaIcon color={'action'}>chevron_right</PeaIcon>
         </MenuItem>
+
         <Divider variant={'middle'} />
+
         <MenuItem
           onClick={() => {
             onContactSupport();
@@ -125,12 +133,14 @@ const PeaUserSettings = ({
         >
           <ListItemText disableTypography>
             <PeaText color={'secondary'} variant={'body1'} weight={'bold'}>
-              Contact support
+              Contact Support
             </PeaText>
           </ListItemText>
           <PeaIcon color={'action'}>chevron_right</PeaIcon>
         </MenuItem>
+
         <Divider variant={'middle'} />
+
         <MenuItem>
           <ListItemText disableTypography>
             <Grid
@@ -142,23 +152,12 @@ const PeaUserSettings = ({
               <Grid
                 item
                 onClick={() => {
-                  onLogout();
-                  setAnchor(null);
-                }}
-              >
-                <PeaText color={'secondary'} variant={'body2'}>
-                  Logout
-                </PeaText>
-              </Grid>
-              <Grid
-                item
-                onClick={() => {
                   onDeleteProfile();
                   setAnchor(null);
                 }}
               >
-                <PeaText color={'error'} variant={'body2'}>
-                  Delete profile
+                <PeaText color={'error'} variant={'body1'}>
+                  Delete Profile
                 </PeaText>
               </Grid>
             </Grid>
@@ -176,16 +175,18 @@ PeaUserSettings.propTypes = {
   onReceiveEmailChange: PropTypes.func.isRequired,
   onEditProfile: PropTypes.func.isRequired,
   onContactSupport: PropTypes.func.isRequired,
-  onLogout: PropTypes.func.isRequired,
   onDeleteProfile: PropTypes.func.isRequired,
 };
+
 PeaUserSettings.defaultProps = {
   notifications: false,
   receiveEmail: false,
 };
+
 PeaUserSettings.metadata = {
   name: 'Pea User Settings',
 };
+
 PeaUserSettings.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 
 export default PeaUserSettings;
