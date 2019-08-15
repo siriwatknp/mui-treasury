@@ -10,6 +10,7 @@ import SlidePage from 'pages/components/SlidePage';
 import ArrowPage from 'pages/components/ArrowPage';
 import IndicatorPage from 'pages/components/IndicatorPage';
 import TagPage from 'pages/components/TagPage';
+import MenuPage from 'pages/components/MenuPage';
 
 /**
  * id: [String] optional
@@ -82,6 +83,13 @@ export default [
     primaryText: 'Layout',
     // secondaryText: `${LayoutPage.components.length} items`,
     Page: LayoutPage,
+  },
+  {
+    id: 'menu',
+    path: '/components/menu',
+    primaryText: 'Menu',
+    secondaryText: `${MenuPage.components.length} items`,
+    Page: MenuPage,
   },
   {
     id: 'tags',

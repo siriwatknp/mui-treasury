@@ -65,9 +65,11 @@
     "react-scroll": "^1.7.11",
     "react-select": "^3.0.4",
     "react-swipeable-views": "^0.13.3",
+    "source-map-explorer": "^2.0.1",
     "yup": "^0.26.10"
   },
   "scripts": {
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
