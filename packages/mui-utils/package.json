@@ -1,0 +1,10 @@
+{
+  "name": "mui-utils",
+  "version": "0.1.0",
+  "author": "siriwatknp",
+  "license": "MIT",
+  "dependencies": {
+    "clsx": "^1.0.4",
+    "cross-env": "^5.2.0"
+  }
+}

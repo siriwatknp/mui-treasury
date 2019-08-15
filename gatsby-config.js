@@ -10,6 +10,19 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: 'gatsby-plugin-module-resolver',
+      options: {
+        root: './', // <- will be used as a root dir
+        aliases: {
+          components: './src/components', // <- will become ./src/components
+          helpers: './src/helpers', // <- will become ./src/helpers
+          static: './public/static',
+          'mui-components/src': './packages/mui-components/src',
+          'mui-utils/src': './packages/mui-utils/src',
+        },
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/blog`,
@@ -50,7 +63,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        // trackingId: `ADD YOUR TRACKING ID HERE`,
       },
     },
     `gatsby-plugin-feed`,
@@ -75,4 +88,4 @@ module.exports = {
       },
     },
   ],
-}
+};

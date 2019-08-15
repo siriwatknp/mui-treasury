@@ -1,0 +1,4 @@
+/stories/*
+/dist/*
+/src/**/*.test.js
+/packages/**/*.test.js

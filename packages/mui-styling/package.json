@@ -1,0 +1,10 @@
+{
+  "name": "mui-styling",
+  "version": "0.1.0",
+  "author": "siriwatknp",
+  "license": "MIT",
+  "dependencies": {
+    "cross-env": "^5.2.0",
+    "lodash": "^4.17.15"
+  }
+}

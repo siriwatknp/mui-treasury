@@ -1,0 +1,15 @@
+{
+  "name": "mui-components",
+  "version": "0.1.0",
+  "author": "siriwatknp",
+  "license": "MIT",
+  "dependencies": {
+    "@material-ui/core": "^4.3.2",
+    "@material-ui/icons": "^4.2.1",
+    "@material-ui/styles": "^4.3.0",
+    "mui-utils": "0.1.0",
+    "clsx": "^1.0.4",
+    "cross-env": "^5.2.0",
+    "prop-types": "^15.7.2"
+  }
+}
