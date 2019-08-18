@@ -26,7 +26,8 @@ export default (initialSelectedKey, initialOpenKeys) => {
         openKeys.includes(key) && classes[`lv${level}ItemExpanded`]
       ),
       component: subMenus ? 'div' : undefined,
-      toggle: !!subMenus || undefined,
+      toggle: !!subMenus,
+      toggleSeparated,
       onToggle: () => (subMenus ? onToggle(key) : {}),
       onMenuClick: () => {
         if (!subMenus || toggleSeparated) {
@@ -38,7 +39,6 @@ export default (initialSelectedKey, initialOpenKeys) => {
         return {};
       },
       expanded: openKeys.includes(key),
-      toggleSeparated,
       selected: subMenus ? toggleSeparated && isCurrentKey : isCurrentKey,
     };
   };

@@ -18,6 +18,7 @@ const NestedMenuList = withStyles(createStyles, { name: 'NestedMenuList' })(
       openKeys,
       ListProps,
       CollapseProps,
+      getConfig,
     } = props;
     const keyMap = useMemo(() => mapNestedPath(menus), menus);
     const {
@@ -28,6 +29,7 @@ const NestedMenuList = withStyles(createStyles, { name: 'NestedMenuList' })(
     const renderMenus = (level, keyPath) => item => {
       const { key, label, subMenus, ...itemProps } = item;
       const params = {
+        ...getConfig(level),
         ...item,
         classes: css,
         level,
@@ -35,7 +37,7 @@ const NestedMenuList = withStyles(createStyles, { name: 'NestedMenuList' })(
         keyPath,
       };
       const calculatedProps = injectItemProps(params);
-      const currentLevel = level + 1;
+      const nextLevel = level + 1;
       const menu = (
         <MenuToggle
           label={label}
@@ -57,7 +59,7 @@ const NestedMenuList = withStyles(createStyles, { name: 'NestedMenuList' })(
             {subMenus && (
               <Collapse {...CollapseProps} in={calculatedProps.expanded}>
                 {/* eslint-disable-next-line no-use-before-define */}
-                {renderList(subMenus, currentLevel, [key, ...keyPath])}
+                {renderList(subMenus, nextLevel, [key, ...keyPath])}
               </Collapse>
             )}
           </li>
@@ -93,6 +95,7 @@ NestedMenuList.propTypes = {
   openKeys: PropTypes.arrayOf(PropTypes.string),
   CollapseProps: PropTypes.shape({}),
   ListProps: PropTypes.shape({}),
+  getConfig: PropTypes.func,
 };
 NestedMenuList.defaultProps = {
   menus: [],
@@ -100,6 +103,8 @@ NestedMenuList.defaultProps = {
   openKeys: [],
   CollapseProps: {},
   ListProps: {},
+  config: {},
+  getConfig: () => ({}),
 };
 
 export default NestedMenuList;

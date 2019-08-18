@@ -3,8 +3,11 @@ import { configure, addDecorator } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs } from '@storybook/addon-knobs';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import * as core from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
+
+import './global.css';
 
 const baseTheme = createMuiTheme();
 const ThemeDecorator = storyFn => (

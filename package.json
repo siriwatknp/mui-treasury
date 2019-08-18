@@ -106,7 +106,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "jest",
-    "storybook": "NODE_ENV=production start-storybook -s public",
+    "storybook": "NODE_ENV=production start-storybook -p 6006",
     "build-storybook": "NODE_ENV=production build-storybook -s public"
   }
 }
