@@ -4,43 +4,62 @@ import useSelectItem from './useSelectItem';
 
 export default (initialSelectedKey, initialOpenKeys) => {
   const { selectedKey, setSelectedKey } = useSelectItem(
-    initialSelectedKey || '',
+    initialSelectedKey || ''
   );
   const { openKeys, onToggle } = useToggleItems(initialOpenKeys || []);
-  const injectHeaderProps = ({ key, subMenus, separated }) => {
+  const injectItemProps = ({
+    classes,
+    level,
+    key,
+    subMenus,
+    toggleSeparated,
+    keyMap,
+  }) => {
     const isCurrentKey = selectedKey === key;
     return {
-      ...(subMenus && {
-        toggle: true,
-        onToggle: () => onToggle(key),
-      }),
+      key,
+      className: cx(
+        classes[`lv${level}Item`],
+        (keyMap[key].includes(selectedKey) || isCurrentKey) &&
+          classes[`lv${level}ItemActive`],
+        selectedKey === key && classes[`lv${level}ItemSelected`],
+        openKeys.includes(key) && classes[`lv${level}ItemExpanded`]
+      ),
+      component: subMenus ? 'div' : undefined,
+      toggle: !!subMenus || undefined,
+      onToggle: () => (subMenus ? onToggle(key) : {}),
       onMenuClick: () => {
-        if (!subMenus || separated) {
-          setSelectedKey(key);
+        if (!subMenus || toggleSeparated) {
+          return setSelectedKey(key);
         }
-        if (subMenus && !openKeys.includes(key)) {
-          onToggle(key);
+        if (subMenus) {
+          return onToggle(key);
         }
+        return {};
       },
       expanded: openKeys.includes(key),
-      separated,
-      selected: subMenus ? separated && isCurrentKey : isCurrentKey,
+      toggleSeparated,
+      selected: subMenus ? toggleSeparated && isCurrentKey : isCurrentKey,
     };
   };
-  const injectSubmenuProps = ({ classes, level, key, subMenus }) => {
+  const injectParentProps = ({ classes, level, key, keyMap }) => {
+    const isCurrentKey = selectedKey === key;
     return {
+      key,
       className: cx(
-        classes[`sub${level}`],
-        selectedKey === key && classes[`sub${level}Selected`],
-        openKeys.includes(key) && classes[`sub${level}Expanded`],
+        classes[`lv${level}Parent`],
+        openKeys.includes(key) && classes[`lv${level}ParentExpanded`],
+        (keyMap[key].includes(selectedKey) || isCurrentKey) &&
+          classes[`lv${level}ParentActive`]
       ),
-      onClick: () => (subMenus ? onToggle(key) : setSelectedKey(key)),
     };
   };
+  const injectListProps = ({ classes, level }) => ({
+    className: cx(classes.list, classes[`lv${level}List`]),
+  });
   return {
-    setSelectedKey,
-    openKeys,
-    injectHeaderProps,
-    injectSubmenuProps,
+    injectParentProps,
+    injectItemProps,
+    injectListProps,
   };
 };

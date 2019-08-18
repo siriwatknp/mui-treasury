@@ -63,6 +63,12 @@ public
 
 # Webstorm
 .idea
+packages/.idea
+packages/mui-components/.idea
+packages/mui-layout/.idea
+packages/mui-styles/.idea
+packages/mui-styling/.idea
+packages/mui-utils/.idea
 
 # Yarn
 yarn-error.log

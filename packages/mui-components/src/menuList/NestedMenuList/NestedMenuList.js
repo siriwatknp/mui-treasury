@@ -1,112 +1,105 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/styles';
+import { withStyles } from '@mui-treasury/styling';
+import { useNestedMenuList, mapNestedPath } from '@mui-treasury/utils';
 import Collapse from '@material-ui/core/Collapse';
-import MenuItem from '@material-ui/core/MenuItem';
-import { useNestedMenuList } from 'mui-utils/src';
-import MenuToggle from 'mui-components/src/menuItem/MenuToggle';
-import MuiSvgArrowToggle from 'mui-components/src/toggle/MuiSvgArrowToggle';
+import List from '@material-ui/core/List';
+import MenuToggle from '@mui-treasury/components/menuItem/MenuToggle';
+// eslint-disable-next-line max-len
+import MuiSvgArrowToggle from '@mui-treasury/components/toggle/MuiSvgArrowToggle';
+import createStyles from './NestedMenuList.styles';
 
-const useStyles = makeStyles(theme => {
-  const { palette } = theme;
-  return {
-    // -------------------------
-    // Sub 1
-    sub1: {
-      paddingLeft: 40,
-      '&:hover': {
-        backgroundColor: palette.grey[100],
-      },
-    },
-    sub1Selected: {
-      fontWeight: 'bold',
-      color: palette.primary.main,
-    },
-    sub1Expanded: {
-      fontWeight: 'bold',
-    },
-    // -------------------------
-    // Sub 2
-    sub2: {
-      paddingLeft: 64,
-      position: 'relative',
-      '&:before': {
-        content: '" "',
-        position: 'absolute',
-        width: 3,
-        height: '100%',
-        left: 40,
-        backgroundColor: palette.grey[100],
-      },
-      '&:hover': {
-        backgroundColor: palette.grey[100],
-      },
-    },
-    sub2Selected: {
-      color: palette.primary.main,
-      '&:after': {
-        content: '" "',
-        position: 'absolute',
-        top: '50%',
-        transform: 'translateY(-50%)',
-        width: 3,
-        height: '40%',
-        left: 40,
-        backgroundColor: palette.primary.main,
-      },
-    },
-  };
-});
-
-const NestedMenuList = ({ menus, selectedKey, openKeys }) => {
-  const classes = useStyles();
-  const { injectHeaderProps, injectSubmenuProps } = useNestedMenuList(
-    selectedKey,
-    openKeys,
-  );
-  const renderMenus = level => item => {
-    const { key, label, subMenus, itemProps } = item;
-    const submenuProps = injectSubmenuProps({ ...item, classes, level });
-    const headerProps = injectHeaderProps(item);
-    return (
-      <React.Fragment key={key}>
-        {level === 0 ? (
-          <MenuToggle
-            label={label}
-            {...itemProps}
-            {...headerProps}
-            renderToggle={props => <MuiSvgArrowToggle {...props} />}
-          />
-        ) : (
-          <MenuItem {...itemProps} {...submenuProps}>
-            {label}
-          </MenuItem>
-        )}
-        {subMenus && (
-          <Collapse in={headerProps.expanded}>
-            {subMenus.map(renderMenus(level + 1))}
-          </Collapse>
-        )}
-      </React.Fragment>
+const NestedMenuList = withStyles(createStyles, { name: 'NestedMenuList' })(
+  props => {
+    const {
+      css,
+      menus,
+      selectedKey,
+      openKeys,
+      ListProps,
+      CollapseProps,
+    } = props;
+    const keyMap = useMemo(() => mapNestedPath(menus), menus);
+    const {
+      injectParentProps,
+      injectItemProps,
+      injectListProps,
+    } = useNestedMenuList(selectedKey, openKeys);
+    const renderMenus = (level, keyPath) => item => {
+      const { key, label, subMenus, ...itemProps } = item;
+      const params = {
+        ...item,
+        classes: css,
+        level,
+        keyMap,
+        keyPath,
+      };
+      const calculatedProps = injectItemProps(params);
+      const currentLevel = level + 1;
+      const menu = (
+        <MenuToggle
+          label={label}
+          {...calculatedProps}
+          {...itemProps}
+          renderToggle={toggleProps => (
+            <MuiSvgArrowToggle
+              {...toggleProps}
+              {...MuiSvgArrowToggle.getOverrides(css, props)}
+            />
+          )}
+          {...MenuToggle.getOverrides(css, props)}
+        />
+      );
+      if (subMenus) {
+        return (
+          <li {...injectParentProps(params)}>
+            {menu}
+            {subMenus && (
+              <Collapse {...CollapseProps} in={calculatedProps.expanded}>
+                {/* eslint-disable-next-line no-use-before-define */}
+                {renderList(subMenus, currentLevel, [key, ...keyPath])}
+              </Collapse>
+            )}
+          </li>
+        );
+      }
+      return menu;
+    };
+    // eslint-disable-next-line react/prop-types
+    const renderList = (items, level, keyPath) => (
+      <List
+        {...ListProps}
+        {...injectListProps({
+          classes: css,
+          level,
+        })}
+      >
+        {/* eslint-disable-next-line react/prop-types */}
+        {items.map(renderMenus(level, keyPath))}
+      </List>
     );
-  };
-  return menus.map(renderMenus(0));
-};
+    return renderList(menus, 1, []);
+  }
+);
 
 NestedMenuList.propTypes = {
   menus: PropTypes.arrayOf(
     PropTypes.shape({
       key: PropTypes.string,
       label: PropTypes.string,
-    }),
+    })
   ),
   selectedKey: PropTypes.string,
   openKeys: PropTypes.arrayOf(PropTypes.string),
+  CollapseProps: PropTypes.shape({}),
+  ListProps: PropTypes.shape({}),
 };
 NestedMenuList.defaultProps = {
   menus: [],
   selectedKey: '',
   openKeys: [],
+  CollapseProps: {},
+  ListProps: {},
 };
 
 export default NestedMenuList;

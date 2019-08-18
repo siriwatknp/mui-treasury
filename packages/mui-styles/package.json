@@ -1,0 +1,11 @@
+{
+  "name": "@mui-treasury/styles",
+  "version": "0.1.0",
+  "author": "siriwatknp",
+  "license": "MIT",
+  "dependencies": {
+    "@material-ui/styles": "^4.3.0",
+    "color": "^3.1.2",
+    "cross-env": "^5.2.0"
+  }
+}

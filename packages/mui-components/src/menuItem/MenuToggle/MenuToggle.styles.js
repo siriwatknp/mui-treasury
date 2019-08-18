@@ -1,31 +1,39 @@
 export default ({ palette }) => ({
   // Header
-  header: { display: 'flex' },
-  headerSelected: {
-    '& > $item': {
-      fontWeight: 'bold',
-      color: palette.primary.main,
+  itemRoot: { display: 'flex', position: 'relative', margin: 0 },
+  itemRootNesting: {},
+  itemRootSelected: {
+    '& > $menuItem': {
+      color: palette.text.primary,
+      fontWeight: 500,
     },
   },
-  headerExpanded: {
-    '& > $item': {
-      fontWeight: 'bold',
+  itemRootExpanded: {
+    '& > $menuItem': {
+      color: palette.text.primary,
     },
   },
-  item: {
+  menuItem: {
     minWidth: 0,
+    minHeight: 42,
     flexGrow: 1,
+    fontSize: '0.875rem',
+    color: palette.text.secondary,
     '&:hover': {
+      backgroundColor: palette.grey[100],
+      color: palette.text.primary,
+    },
+  },
+  menuItemToggle: {
+    margin: '0 -4px 0 auto',
+  },
+  toggleBtn: {
+    minWidth: 48,
+    color: palette.text.secondary,
+    '&:hover': {
+      color: palette.text.primary,
       backgroundColor: palette.grey[100],
     },
   },
-  itemArrow: {
-    margin: '0 -4px 0 auto',
-  },
-  toggle: {
-    minWidth: 48,
-    '&:hover': {
-      backgroundColor: palette.grey[200],
-    },
-  },
+  toggleContent: {},
 });

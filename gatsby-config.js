@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: `Kyle Mathews`,
+    title: `Mui Treasity`,
+    author: `Siriwat Knp`,
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `siriwatknp`,
     },
   },
   plugins: [
@@ -17,8 +17,16 @@ module.exports = {
           components: './src/components', // <- will become ./src/components
           helpers: './src/helpers', // <- will become ./src/helpers
           static: './public/static',
-          'mui-components/src': './packages/mui-components/src',
-          'mui-utils/src': './packages/mui-utils/src',
+          '@mui-treasury/components/src': './packages/mui-components/src',
+          '@mui-treasury/components': './packages/mui-components/src',
+          '@mui-treasury/utils/src': './packages/mui-utils/src',
+          '@mui-treasury/utils': './packages/mui-utils/src',
+          '@mui-treasury/styling/src': './packages/mui-styling/src',
+          '@mui-treasury/styling': './packages/mui-styling/src',
+          '@mui-treasury/layout/src': './packages/mui-layout/src',
+          '@mui-treasury/layout': './packages/mui-layout/src',
+          '@mui-treasury/styles/src': './packages/mui-styles/src',
+          '@mui-treasury/styles': './packages/mui-styles/src',
         },
       },
     },

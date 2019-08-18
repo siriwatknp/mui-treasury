@@ -9,10 +9,9 @@
       }
     ],
     "prettier/prettier": "error",
-    "max-len": ["error", 80],
-    "import/no-unresolved": "warn",
+    "import/no-unresolved": "off",
     "react/prefer-stateless-function": "warn",
-    "react/jsx-curly-brace-presence": "warn",
+    "react/jsx-curly-brace-presence": "off",
     "react/prop-types": "warn",
     "react/destructuring-assignment": "warn",
     "import/no-extraneous-dependencies": "off",

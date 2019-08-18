@@ -10,14 +10,14 @@ export const getStyleAttrs = stylesCreator => {
   return Object.keys(
     typeof stylesCreator === 'function'
       ? stylesCreator(baseTheme)
-      : stylesCreator,
+      : stylesCreator
   );
 };
 
 export const mergeStyleCreators = (...creators) => theme => {
   if (!creators.length) return {};
   if (creators.length === 1) return creators[0](theme);
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env !== 'production') {
     let list = [];
     creators.forEach(c => {
       list = [...list, ...getStyleAttrs(c)];
@@ -27,26 +27,26 @@ export const mergeStyleCreators = (...creators) => theme => {
       console.warn(
         // eslint-disable-next-line max-len
         `mui-styling: Styles collision alert! attributes: [${repeatedList.join(
-          ', ',
+          ', '
           // eslint-disable-next-line max-len
-        )}]. This might cause bugs in styling, please check these style attributes`,
+        )}]. This might cause bugs in styling, please check these style attributes`
       );
     }
   }
   return creators.reduce(
     (a, b) => ({ ...a, ...(typeof b === 'function' ? b(theme) : b) }),
-    {},
+    {}
   );
 };
 
 export const attachStylingParams = (Component, stylesCreator, options = {}) => {
   const { name = '' } = options;
   const attrs = getStyleAttrs(stylesCreator);
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env !== 'production') {
     if (!name) {
       console.warn(
         // eslint-disable-next-line max-len
-        `mui-styling: [attachStylingParams] You forget to pass "name" in options at "${Component.displayName}"`,
+        `mui-styling: [attachStylingParams] You forget to pass "name" in options at "${Component.displayName}"`
       );
     }
   }
