@@ -2,7 +2,10 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { NestedMenuList } from '@mui-treasury/components';
 import { text, boolean } from '@storybook/addon-knobs';
-import { useGatsbyNestedMenu } from '@mui-treasury/styles';
+import {
+  useGatsbyNestedMenu,
+  useJupiterNestedMenu,
+} from '@mui-treasury/styles';
 
 import createContainer from './containerDecorator';
 
@@ -152,6 +155,17 @@ const createCommonProps = overrides => ({
 storiesOf('Components/Nested Menu', module)
   .addDecorator(createContainer({ maxWidth: 'xs' }))
   .add('default', () => <NestedMenuList {...createCommonProps()} />)
+  .add('Jupiter', () => (
+    <StylesProvider useStyles={useJupiterNestedMenu}>
+      {styles => (
+        <NestedMenuList
+          classes={styles}
+          {...createCommonProps()}
+          getConfig={() => ({ toggleSeparated: false })}
+        />
+      )}
+    </StylesProvider>
+  ))
   .add('Gatsby', () => (
     <StylesProvider useStyles={useGatsbyNestedMenu}>
       {styles => <NestedMenuList classes={styles} {...createCommonProps()} />}

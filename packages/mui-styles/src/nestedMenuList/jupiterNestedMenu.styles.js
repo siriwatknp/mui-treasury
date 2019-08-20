@@ -9,6 +9,7 @@ export default theme => {
     menuItem: {
       fontSize: 16,
       minHeight: 40,
+      borderRadius: 6,
     },
     menuItemToggle: {},
     lv1List: {
@@ -35,12 +36,17 @@ export default theme => {
         opacity: 0,
       },
     },
+    lv1ItemSelected: {
+      '& $menuItem': {
+        color: palette.primary.main,
+        fontWeight: 'bold',
+      },
+    },
     lv2Item: {
       margin: '8px 0',
       '& $menuItem': {
         margin: spacing(0, 2),
         paddingLeft: 16,
-        borderRadius: 6,
       },
       '& $menuItemToggle': {
         fontSize: 20,
@@ -65,7 +71,6 @@ export default theme => {
       },
       '& $menuItem': {
         margin: '0 16px 0 46px',
-        borderRadius: 6,
         paddingLeft: 10,
       },
       '&:after': {

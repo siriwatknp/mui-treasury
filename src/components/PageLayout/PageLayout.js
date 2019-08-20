@@ -1,8 +1,8 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { NestedMenuList } from '@mui-treasury/components';
-import { Header, Nav, Content, Footer } from '@mui-treasury/layout';
+import { Header, Nav, Content, Footer, useConfig } from '@mui-treasury/layout';
 import ChevronLeft from '@material-ui/icons/ChevronLeft';
 import ChevronRight from '@material-ui/icons/ChevronRight';
 import MenuRounded from '@material-ui/icons/MenuRounded';
@@ -51,8 +51,18 @@ const menus1 = [
 ];
 
 const PageLayout = ({ location, children }) => {
+  const { pathname } = location;
+  const { setOpened } = useConfig();
   const headerStyles = useHeaderStyles();
   const jupiterStyles = useJupiterNestedMenu();
+  useEffect(() => {
+    console.log('pathname', pathname);
+    if (pathname === '/') {
+      setOpened(false);
+    } else {
+      setOpened(true);
+    }
+  }, [pathname]);
   return (
     <>
       <Header
@@ -67,10 +77,13 @@ const PageLayout = ({ location, children }) => {
         <NestedMenuList
           classes={jupiterStyles}
           selectedKey={'button'}
+          getConfig={() => ({ toggleSeparated: false })}
           menus={menus1}
         />
       </Nav>
-      <Content></Content>
+      <Content>
+        <h1>Browse, Choose and Use. That's it.</h1>
+      </Content>
       <Footer></Footer>
     </>
   );

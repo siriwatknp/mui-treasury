@@ -4,16 +4,19 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs } from '@storybook/addon-knobs';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import * as core from '@material-ui/core';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
+import typography from '../src/utils/typography';
+import { ThemeWrapper } from '../src/utils/theme';
 
 import './global.css';
 
-const baseTheme = createMuiTheme();
+typography.injectStyles();
+
 const ThemeDecorator = storyFn => (
   <>
-    <CssBaseline />
-    <ThemeProvider theme={baseTheme}>{storyFn()}</ThemeProvider>
+    <ThemeWrapper>
+      <CssBaseline />
+      {storyFn()}
+    </ThemeWrapper>
   </>
 );
 
