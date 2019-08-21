@@ -35,7 +35,6 @@ export default ({ breakpoints, palette }) => ({
       ...screens.reduce((result, key, index) => {
         const media = {};
         const width = colWidth[key];
-        console.log('width', width);
         const { up, only } = breakpoints;
         const creator = index !== screens.length - 1 ? only : up;
         media[creator(key)] = {

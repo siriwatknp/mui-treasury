@@ -20,7 +20,17 @@ typographyTheme.overrideThemeStyles = () => {
     },
   };
 };
-delete typographyTheme.googleFonts;
+typographyTheme.headerLineHeight = 1.45;
+typographyTheme.googleFonts = [
+  {
+    name: 'Playfair Display',
+    styles: ['700', '900'],
+  },
+  {
+    name: 'Fira Sans',
+    styles: ['300', '400', '400i', '700', '700i'],
+  },
+];
 
 const typography = new Typography(typographyTheme);
 

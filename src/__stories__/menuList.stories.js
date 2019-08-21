@@ -1,7 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { NestedMenuList } from '@mui-treasury/components';
-import { text, boolean } from '@storybook/addon-knobs';
+import { NestedMenuList, HorzMenuList } from '@mui-treasury/components';
+import Toolbar from '@material-ui/core/Toolbar';
+import { text, boolean, select } from '@storybook/addon-knobs';
 import {
   useGatsbyNestedMenu,
   useJupiterNestedMenu,
@@ -170,4 +171,18 @@ storiesOf('Components/Nested Menu', module)
     <StylesProvider useStyles={useGatsbyNestedMenu}>
       {styles => <NestedMenuList classes={styles} {...createCommonProps()} />}
     </StylesProvider>
+  ));
+
+storiesOf('Components/Horizontal Menu', module)
+  .addDecorator(createContainer({ maxWidth: 'md' }))
+  .add('default', () => (
+    <Toolbar>
+      <HorzMenuList
+        menus={menus2.slice(0, 5)}
+        selectedKey={select(
+          'selectedKey',
+          menus2.slice(0, 5).map(({ key }) => key)
+        )}
+      />
+    </Toolbar>
   ));
