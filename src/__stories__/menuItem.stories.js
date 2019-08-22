@@ -4,12 +4,7 @@ import { MenuToggle, MuiSvgArrowToggle } from '@mui-treasury/components';
 import { text, boolean } from '@storybook/addon-knobs';
 import { useGatsbyMenuItem } from '@mui-treasury/styles';
 
-import createContainer from './containerDecorator';
-
-const StylesProvider = ({ useStyles, children }) => {
-  const styles = useStyles();
-  return children(styles);
-};
+import createContainer, { StylesProvider } from './helpers/containerDecorator';
 
 const createCommonProps = () => ({
   label: text('label', 'Menu label'),
@@ -20,7 +15,7 @@ const createCommonProps = () => ({
   renderToggle: props => <MuiSvgArrowToggle {...props} />,
 });
 
-storiesOf('Components/MenuItem', module)
+storiesOf('Components|Vertical Menu/MenuItem', module)
   .addDecorator(createContainer({ maxWidth: 'xs' }))
   .add('default', () => <MenuToggle {...createCommonProps()} />)
   .add('Gatsby', () => (

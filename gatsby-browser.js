@@ -13,7 +13,7 @@ const layoutConfig = createDefaultLayout({
   headerPosition: 'sticky',
 });
 
-export const wrapRootElement = ({ element, ...rest }) => (
+export const wrapRootElement = ({ element }) => (
   <>
     <Helmet>
       <link

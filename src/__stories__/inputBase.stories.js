@@ -6,14 +6,9 @@ import InputBase from '@material-ui/core/InputBase';
 import { text, boolean, color, object } from '@storybook/addon-knobs';
 import { useContrastInputBase } from '@mui-treasury/styles';
 
-import createContainer from './containerDecorator';
+import createContainer, { StylesProvider } from './helpers/containerDecorator';
 
-const StylesProvider = ({ useStyles, children }) => {
-  const styles = useStyles();
-  return children(styles);
-};
-
-storiesOf('Components/InputBase', module)
+storiesOf('Components|InputBase', module)
   .addDecorator(createContainer({ maxWidth: 'xs' }))
   .add('contrast', () => (
     <StylesProvider useStyles={useContrastInputBase}>

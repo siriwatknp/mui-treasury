@@ -14,8 +14,10 @@ module.exports = {
       options: {
         root: './', // <- will be used as a root dir
         aliases: {
-          components: './src/components', // <- will become ./src/components
-          helpers: './src/helpers', // <- will become ./src/helpers
+          utils: './src/utils',
+          constants: './src/constants',
+          components: './src/components',
+          helpers: './src/helpers',
           static: './public/static',
           '@mui-treasury/components/src': './packages/mui-components/src',
           '@mui-treasury/components': './packages/mui-components/src',
@@ -33,15 +35,22 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
+        path: `${__dirname}/src/assets`,
+        name: `assets`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/assets`,
-        name: `assets`,
+        path: `${__dirname}/src/content/demos`,
+        name: `demos`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/content`,
+        name: `content`,
       },
     },
     {
@@ -84,7 +93,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `src/assets/gatsby-icon.png`,
       },
     },
     `gatsby-plugin-offline`,

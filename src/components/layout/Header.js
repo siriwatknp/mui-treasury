@@ -1,4 +1,5 @@
 import React from 'react';
+import { Location } from '@reach/router';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import Image from 'gatsby-image';
 import GitHubButton from 'react-github-btn';
@@ -16,8 +17,7 @@ const menus = [
   { key: '/theme', label: 'Theme' },
 ];
 
-const Header = ({ location }) => {
-  console.log('location', location);
+const Header = () => {
   const data = useStaticQuery(graphql`
     query HeaderQuery {
       logo: file(absolutePath: { regex: "/logo.png/" }) {
@@ -32,35 +32,39 @@ const Header = ({ location }) => {
   const { logo } = data;
   const inputBaseStyles = useContrastInputBase();
   return (
-    <Box
-      display={'flex'}
-      alignItems={'center'}
-      alignSelf={'stretch'}
-      width={'100%'}
-    >
-      <Box mr={4}>
-        <Image fixed={logo.childImageSharp.fixed} />
-      </Box>
-      <HorzMenuList
-        itemComponent={Link}
-        getItemProps={({ key }) => ({ to: key })}
-        selectedKey={key => location.pathname.includes(key)}
-        menus={menus}
-      />
-      <Box ml={'auto'} mr={2}>
-        <InputBase classes={inputBaseStyles} placeholder={'search...'} />
-      </Box>
-      <Box lineHeight={0}>
-        <GitHubButton
-          href="https://github.com/siriwatknp/mui-treasury"
-          data-size="large"
-          data-show-count="true"
-          aria-label="Star siriwatknp/mui-treasury on GitHub"
+    <Location>
+      {({ location }) => (
+        <Box
+          display={'flex'}
+          alignItems={'center'}
+          alignSelf={'stretch'}
+          width={'100%'}
         >
-          Star
-        </GitHubButton>
-      </Box>
-    </Box>
+          <Box mr={4}>
+            <Image fixed={logo.childImageSharp.fixed} />
+          </Box>
+          <HorzMenuList
+            itemComponent={Link}
+            getItemProps={({ key }) => ({ to: key })}
+            selectedKey={key => location.pathname.includes(key)}
+            menus={menus}
+          />
+          <Box ml={'auto'} mr={2}>
+            <InputBase classes={inputBaseStyles} placeholder={'search...'} />
+          </Box>
+          <Box lineHeight={0}>
+            <GitHubButton
+              href="https://github.com/siriwatknp/mui-treasury"
+              data-size="large"
+              data-show-count="true"
+              aria-label="Star siriwatknp/mui-treasury on GitHub"
+            >
+              Star
+            </GitHubButton>
+          </Box>
+        </Box>
+      )}
+    </Location>
   );
 };
 

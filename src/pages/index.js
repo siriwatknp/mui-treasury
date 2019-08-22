@@ -8,8 +8,8 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import { FeatureWidget } from '@mui-treasury/components';
 import { useBorderedGrid } from '@mui-treasury/styles';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
+import Footer from '../components/layout/Footer';
+import Header from '../components/layout/Header';
 
 const useStyles = makeStyles(theme => {
   const { palette, breakpoints } = theme;
@@ -123,7 +123,7 @@ const socials = [
   },
 ];
 
-const Homepage = ({ location }) => {
+const Homepage = () => {
   const classes = useStyles();
   const widgetStyles = useTintPrimaryWidgetStyles();
   const borderedGridStyles = useBorderedGrid({
@@ -133,7 +133,7 @@ const Homepage = ({ location }) => {
     <div>
       <AppBar color={'default'} position={'sticky'} className={classes.appBar}>
         <Toolbar>
-          <Header location={location} />
+          <Header />
         </Toolbar>
       </AppBar>
       <Box

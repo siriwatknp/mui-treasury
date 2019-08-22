@@ -5,14 +5,9 @@ import Grid from '@material-ui/core/Grid';
 import { text, boolean, color, object } from '@storybook/addon-knobs';
 import { useBorderedGrid } from '@mui-treasury/styles';
 
-import createContainer from './containerDecorator';
+import createContainer, { StylesProvider } from './helpers/containerDecorator';
 
-const StylesProvider = ({ useStyles, children }) => {
-  const styles = useStyles();
-  return children(styles);
-};
-
-storiesOf('Components/Grid', module)
+storiesOf('Components|Grid', module)
   .addDecorator(createContainer({ maxWidth: 'xs' }))
   .add('bordered', () => {
     const colWidth = object('colWidth', { xs: 6, sm: 4, md: 3 });

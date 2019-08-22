@@ -64,11 +64,11 @@ export default ({ palette }) => ({
   itemRootNesting: {
     '& $menuItem': {
       paddingRight: 48,
-    }
+    },
   },
   itemRootExpanded: {
     '& $toggleContent': {
       color: palette.text.secondary,
     },
-  }
+  },
 });

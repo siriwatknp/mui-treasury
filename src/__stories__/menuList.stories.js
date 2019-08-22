@@ -1,14 +1,15 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/styles';
 import { storiesOf } from '@storybook/react';
 import { NestedMenuList, HorzMenuList } from '@mui-treasury/components';
 import Toolbar from '@material-ui/core/Toolbar';
 import { text, boolean, select } from '@storybook/addon-knobs';
-import {
-  useGatsbyNestedMenu,
-  useJupiterNestedMenu,
-} from '@mui-treasury/styles';
+import { gatsbyNestedMenu, jupiterNestedMenu } from '@mui-treasury/styles';
 
-import createContainer from './containerDecorator';
+import createContainer, { StylesProvider } from './helpers/containerDecorator';
+
+const useGatsbyNestedMenu = makeStyles(gatsbyNestedMenu);
+const useJupiterNestedMenu = makeStyles(jupiterNestedMenu);
 
 const menus2 = [
   {
@@ -141,11 +142,6 @@ const menus2 = [
   },
 ];
 
-const StylesProvider = ({ useStyles, children }) => {
-  const styles = useStyles();
-  return children(styles);
-};
-
 const createCommonProps = overrides => ({
   menus: menus2,
   selectedKey: 'intro',
@@ -153,7 +149,7 @@ const createCommonProps = overrides => ({
   ...overrides,
 });
 
-storiesOf('Components/Nested Menu', module)
+storiesOf('Components|Vertical Menu/Nested Menu', module)
   .addDecorator(createContainer({ maxWidth: 'xs' }))
   .add('default', () => <NestedMenuList {...createCommonProps()} />)
   .add('Jupiter', () => (
@@ -173,7 +169,7 @@ storiesOf('Components/Nested Menu', module)
     </StylesProvider>
   ));
 
-storiesOf('Components/Horizontal Menu', module)
+storiesOf('Components|Horizontal Menu/Nav Menu', module)
   .addDecorator(createContainer({ maxWidth: 'md' }))
   .add('default', () => (
     <Toolbar>

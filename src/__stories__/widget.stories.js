@@ -3,12 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { FeatureWidget } from '@mui-treasury/components';
 import { text, boolean } from '@storybook/addon-knobs';
 
-import createContainer from './containerDecorator';
-
-const StylesProvider = ({ useStyles, children }) => {
-  const styles = useStyles();
-  return children(styles);
-};
+import createContainer, { StylesProvider } from './helpers/containerDecorator';
 
 storiesOf('Components/Widget', module)
   .addDecorator(createContainer({ maxWidth: 'xs' }))

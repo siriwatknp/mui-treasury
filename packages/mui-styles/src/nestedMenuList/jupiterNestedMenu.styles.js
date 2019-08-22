@@ -42,8 +42,12 @@ export default theme => {
         fontWeight: 'bold',
       },
     },
+    lv2List: {
+      marginBottom: '8px !important',
+    },
     lv2Item: {
-      margin: '8px 0',
+      cursor: 'pointer',
+      paddingTop: 8,
       '& $menuItem': {
         margin: spacing(0, 2),
         paddingLeft: 16,
@@ -65,10 +69,8 @@ export default theme => {
       },
     },
     lv3Item: {
-      margin: '8px 0',
-      '&:first-of-type': {
-        marginTop: 0,
-      },
+      cursor: 'pointer',
+      paddingTop: 8,
       '& $menuItem': {
         margin: '0 16px 0 46px',
         paddingLeft: 10,
