@@ -36,6 +36,7 @@
     "@material-ui/lab": "^4.0.0-alpha.18",
     "@material-ui/styles": "^4.1.2",
     "@material-ui/system": "^4.3.0",
+    "@material-ui/pickers": "^3.2.2",
     "axios": "^0.19.0",
     "classnames": "^2.2.6",
     "clsx": "^1.0.3",
