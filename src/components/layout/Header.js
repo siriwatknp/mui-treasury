@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 import Image from 'gatsby-image';
 import GitHubButton from 'react-github-btn';
 import Box from '@material-ui/core/Box';
@@ -17,6 +17,7 @@ const menus = [
 ];
 
 const Header = ({ location }) => {
+  console.log('location', location);
   const data = useStaticQuery(graphql`
     query HeaderQuery {
       logo: file(absolutePath: { regex: "/logo.png/" }) {
@@ -41,6 +42,8 @@ const Header = ({ location }) => {
         <Image fixed={logo.childImageSharp.fixed} />
       </Box>
       <HorzMenuList
+        itemComponent={Link}
+        getItemProps={({ key }) => ({ to: key })}
         selectedKey={key => location.pathname.includes(key)}
         menus={menus}
       />
