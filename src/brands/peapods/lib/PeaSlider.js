@@ -1,32 +1,40 @@
-import React from 'react';
+import React, { forwardRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Color from 'color';
-import Slider from '@material-ui/lab/Slider';
+import Slider from '@material-ui/core/Slider';
 import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
+
 import Logo from './assets/peapods-logo-circle.svg';
 
 const styles = ({ palette }) => ({
   root: {
     padding: '22px 0px',
   },
-  container: {
-    padding: 32,
+  mark: {
+    width: '0px',
+    height: '0px',
+    marginTop: -3,
+  },
+  markLabel: {
+    marginTop: '26px',
   },
   rail: {
     left: 0,
     borderRadius: 10,
-    height: 4,
+    height: 8,
   },
   track: {
     background: palette.secondary.main,
     borderRadius: 10,
-    height: 4,
+    height: 8,
   },
   thumb: {
-    width: 24,
-    height: 24,
-    marginTop: -10,
+    height: 30,
+    width: 30,
+    backgroundColor: '#fff',
+    marginTop: -11,
+    marginLeft: -14,
     '& > img': {
       width: '100%',
       height: '100%',
@@ -47,8 +55,6 @@ const styles = ({ palette }) => ({
         .string()}`,
     },
   },
-  activated: {},
-  jumped: {},
 });
 
 const tooltipStyles = theme => ({
@@ -77,9 +83,10 @@ const tooltipStyles = theme => ({
   },
 });
 
-function ValueLabelComponent({ children, open, value, classes }) {
+const ValueLabelComponent = ({ children, open, value, classes }) => {
   const popperRef = React.useRef(null);
-  React.useEffect(() => {
+
+  useEffect(() => {
     if (popperRef.current) {
       popperRef.current.update();
     }
@@ -102,7 +109,7 @@ function ValueLabelComponent({ children, open, value, classes }) {
       {children}
     </Tooltip>
   );
-}
+};
 
 ValueLabelComponent.propTypes = Tooltip.propTypes;
 ValueLabelComponent.defaultProps = Tooltip.defaultProps;
@@ -110,20 +117,17 @@ const StyledValueLabelComponent = withStyles(tooltipStyles)(
   ValueLabelComponent,
 );
 
-function ThumbComponent(props) {
-  return (
-    <span {...props}>
-      <img src={Logo} alt="slider-input" />
-    </span>
-  );
-}
+const ThumbComponent = forwardRef((props, ref) => (
+  <span {...props} ref={ref}>
+    <img src={Logo} alt="slider-input" />
+  </span>
+));
 
 const PeaSlider = props => {
   const { value, onChange } = props;
 
   return (
     <Slider
-      className={'PeaSlider-root'}
       ThumbComponent={ThumbComponent}
       ValueLabelComponent={StyledValueLabelComponent}
       value={value}

@@ -9,11 +9,13 @@ const PeaTooltip = ({ title, children, ...props }) => (
 );
 PeaTooltip.propTypes = {
   title: PropTypes.string.isRequired,
-  children: PropTypes.elementType.isRequired,
+  children: PropTypes.node.isRequired,
 };
+
 PeaTooltip.metadata = {
   name: 'Pea Tooltip',
 };
+
 PeaTooltip.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 
 export default PeaTooltip;
