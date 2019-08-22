@@ -11980,6 +11980,19 @@ react-scroll@^1.7.11:
     lodash.throttle "^4.1.1"
     prop-types "^15.5.8"
 
+react-select-v2@^2.4.2:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/react-select-v2/-/react-select-v2-2.4.2.tgz#9b7f23e4f807999738ddc2a0efb8b3f49ef9af11"
+  integrity sha512-O3mSc5H3Tioh6LNcMZdCCFIou1UuEsZDsFL7YjLA29My2nyqjfXxPyrbY7sJqjNt/md0qo2I0gljuKJnB5J2Zg==
+  dependencies:
+    classnames "^2.2.5"
+    emotion "^9.1.2"
+    memoize-one "^5.0.0"
+    prop-types "^15.6.0"
+    raf "^3.4.0"
+    react-input-autosize "^2.2.1"
+    react-transition-group "^2.2.1"
+
 react-select@^2.2.0:
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/react-select/-/react-select-2.4.4.tgz#ba72468ef1060c7d46fbb862b0748f96491f1f73"
