@@ -101,7 +101,7 @@ GithubButton.info = {
   name: 'Github Button',
   description: 'Classic for developers',
   links: [
-    { label: 'Code Sandbox', url: 'https://codesandbox.io/s/3q8xm89p35' },
+    { label: 'Code Sandbox', url: 'https://codesandbox.io/s/vlymn85l0' },
     { label: 'Button API', url: 'https://material-ui.com/api/button/' },
     {
       label: 'Styling',
@@ -121,6 +121,6 @@ GithubButton.info = {
   libraries: [],
   dependencies: ['@material-ui/core'],
 };
-GithubButton.codeSandbox = 'https://codesandbox.io/s/3q8xm89p35';
+GithubButton.codeSandbox = 'https://codesandbox.io/s/vlymn85l0';
 
 export default GithubButton;
