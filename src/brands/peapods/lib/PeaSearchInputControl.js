@@ -1,8 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import PeaSearchInput from './PeaSearchInput';
+import TextField from '@material-ui/core/TextField';
 
 function inputComponent({ inputRef, ...props }) {
   return <div ref={inputRef} {...props} />;
@@ -16,38 +15,44 @@ inputComponent.propTypes = {
   inputRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
 };
 
-function PeaSearchInputControl({
-  children,
-  innerProps,
-  innerRef,
-  selectProps: { classes, TextFieldProps },
-}) {
+function Control(props) {
+  const {
+    children,
+    innerProps,
+    innerRef,
+    selectProps: { classes, TextFieldProps },
+  } = props;
+
   return (
-    <PeaSearchInput
+    <TextField
       fullWidth
-      inputComponent={inputComponent}
-      inputProps={{
-        className: classes.input,
-        ref: innerRef,
-        children,
-        ...innerProps,
+      InputProps={{
+        inputComponent,
+        inputProps: {
+          className: classes.input,
+          ref: innerRef,
+          children,
+          ...innerProps,
+        },
       }}
       {...TextFieldProps}
     />
   );
 }
 
-PeaSearchInputControl.defaultProps = {
-  children: null,
-  innerProps: null,
-  innerRef: () => {},
-};
-
-PeaSearchInputControl.propTypes = {
-  children: PropTypes.node,
-  innerProps: PropTypes.object,
-  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+Control.propTypes = {
+  children: PropTypes.node.isRequired,
+  innerProps: PropTypes.shape({
+    onMouseDown: PropTypes.func.isRequired,
+  }).isRequired,
+  innerRef: PropTypes.oneOfType([
+    PropTypes.oneOf([null]),
+    PropTypes.func,
+    PropTypes.shape({
+      current: PropTypes.any.isRequired,
+    }),
+  ]).isRequired,
   selectProps: PropTypes.object.isRequired,
 };
 
-export default PeaSearchInputControl;
+export default Control;

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
+
 import PeaTag from '../lib/PeaTag';
 import PeaAutocompleteList from '../lib/PeaAutocompleteList';
-import PeaSearchInputControl from '../lib/PeaSearchInputControl';
 
 const AutocompleteHashtags = () => {
   const [tags, setTags] = useState([]);
@@ -37,26 +37,24 @@ const AutocompleteHashtags = () => {
   }
 
   return (
-    <>
-      <Grid container spacing={1}>
-        {tags.map(item => (
-          <Grid item key={item.label}>
-            <PeaTag
-              color={'secondary'}
-              key={`peatag-${item.value}`}
-              label={`#${item.label}`}
-              onDelete={() => handleTagDelete(item)}
-            />
-          </Grid>
-        ))}
-        <PeaAutocompleteList
-          placeholder="Add new tag."
-          suggestions={suggestions}
-          InputControl={PeaSearchInputControl}
-          onChange={handleListChange}
-        />
-      </Grid>
-    </>
+    <Grid container spacing={1}>
+      {tags.map(item => (
+        <Grid item key={item.label}>
+          <PeaTag
+            color={'secondary'}
+            key={`peatag-${item.value}`}
+            label={`#${item.label}`}
+            onDelete={() => handleTagDelete(item)}
+          />
+        </Grid>
+      ))}
+      <PeaAutocompleteList
+        clearAfterEnter
+        placeholder="Add new tag."
+        suggestions={suggestions}
+        onChange={handleListChange}
+      />
+    </Grid>
   );
 };
 

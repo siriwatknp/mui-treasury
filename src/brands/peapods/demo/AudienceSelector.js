@@ -26,7 +26,7 @@ const suggestions = [
 
 const AudienceSelector = () => (
   <PeaAutocompleteList
-    fullWitdh
+    fullWidth
     placeholder="Select"
     suggestions={suggestions}
     InputControl={PeaAudienceSelectorInputControl}
@@ -68,7 +68,7 @@ AudienceSelector.code = `
 
   const AudienceSelector = () => (
     <PeaAutocompleteList
-      fullWitdh
+      fullWidth
       placeholder="Select"
       suggestions={suggestions}
       InputControl={PeaAudienceSelectorInputControl}

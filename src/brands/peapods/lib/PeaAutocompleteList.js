@@ -1,12 +1,20 @@
 /* eslint-disable react/forbid-prop-types */
-import React from 'react';
-import Select from 'react-select';
+import React, { useState, useEffect } from 'react';
+import Select, {
+  AsyncCreatable,
+  Creatable,
+  Async as AsyncSelect,
+} from 'react-select-v2';
 import cx from 'clsx';
+import { uniqBy } from 'lodash';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
 import PropTypes from 'prop-types';
+
+import PeaTag from './PeaTag';
+import PeaSearchInputControl from './PeaSearchInputControl';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,6 +35,8 @@ const useStyles = makeStyles(theme => ({
     flex: 1,
     alignItems: 'center',
     overflow: 'hidden',
+    minHeight: 36,
+    marginLeft: 10,
   },
   noOptionsMessage: {
     padding: theme.spacing(1, 2),
@@ -103,46 +113,25 @@ Option.propTypes = {
   isSelected: PropTypes.bool,
 };
 
-function Placeholder({ children, innerProps, selectProps }) {
+function MultiValue({ children, removeProps }) {
   return (
-    <Typography
-      color="textSecondary"
-      className={selectProps.classes.placeholder}
-      {...innerProps}
-    >
-      {children}
-    </Typography>
+    <PeaTag
+      tabIndex={-1}
+      label={children}
+      onDelete={removeProps.onClick}
+      onClick={removeProps.onClick}
+      color="primary"
+    />
   );
 }
 
-Placeholder.defaultProps = {
-  children: null,
-  innerProps: null,
-};
-
-Placeholder.propTypes = {
-  children: PropTypes.node,
-  innerProps: PropTypes.object,
-  selectProps: PropTypes.object.isRequired,
-};
-
-function SingleValue({ children, innerProps, selectProps }) {
-  return (
-    <Typography className={selectProps.classes.singleValue} {...innerProps}>
-      {children}
-    </Typography>
-  );
-}
-
-SingleValue.defaultProps = {
-  children: null,
-  innerProps: null,
-};
-
-SingleValue.propTypes = {
-  children: PropTypes.node,
-  innerProps: PropTypes.object,
-  selectProps: PropTypes.object.isRequired,
+MultiValue.propTypes = {
+  children: PropTypes.node.isRequired,
+  removeProps: PropTypes.shape({
+    onClick: PropTypes.func.isRequired,
+    onMouseDown: PropTypes.func.isRequired,
+    onTouchEnd: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 function ValueContainer({ selectProps, children }) {
@@ -158,9 +147,9 @@ ValueContainer.propTypes = {
   selectProps: PropTypes.object.isRequired,
 };
 
-function Menu({ selectProps, innerProps, children }) {
+function Menu({ innerProps, children }) {
   return (
-    <Paper square className={selectProps.classes.paper} {...innerProps}>
+    <Paper square {...innerProps}>
       {children}
     </Paper>
   );
@@ -178,15 +167,35 @@ Menu.propTypes = {
   selectProps: PropTypes.object,
 };
 
-const PeaAutocompleteList = props => {
-  const { placeholder, suggestions, fullWitdh, InputControl, onChange } = props;
+const PeaAutocompleteList = ({
+  placeholder,
+  canCreate,
+  suggestions,
+  getSuggestions,
+  InputControl,
+  onChange,
+  isMulti,
+  fullWidth,
+  hideSuggestions,
+  clearAfterEnter,
+  value: propValue,
+}) => {
   const classes = useStyles();
   const theme = useTheme();
-  const [single, setSingle] = React.useState(null);
+  const [value, setValue] = useState(propValue);
+  const [inputValue, setInputValue] = useState('');
+  const isAsync = getSuggestions;
 
-  function handleChangeSingle(value) {
-    setSingle(value);
-    onChange(value);
+  useEffect(() => {
+    setValue(propValue);
+  }, [propValue]);
+
+  function handleSelectChange(val) {
+    const newValue = uniqBy(val, 'value');
+    if (!clearAfterEnter) {
+      setValue(newValue);
+    }
+    onChange(newValue);
   }
 
   const selectStyles = {
@@ -199,60 +208,115 @@ const PeaAutocompleteList = props => {
     }),
   };
 
-  if (!InputControl) {
-    return null;
-  }
-
   const components = {
     Menu,
     NoOptionsMessage,
     Option,
-    Placeholder,
-    SingleValue,
+    MultiValue,
     ValueContainer,
-    Control: InputControl.prototype.constructor,
+    Control: InputControl,
+    DropdownIndicator: null,
   };
 
+  const handleKeyDown = event => {
+    if (!canCreate || !inputValue) {
+      return;
+    }
+    const newVal = { label: inputValue, value: inputValue };
+
+    switch (event.key) {
+      default:
+        return;
+      case 'Enter':
+      case 'Tab':
+        event.preventDefault();
+        setInputValue('');
+        if (isMulti) {
+          handleSelectChange([...value, newVal]);
+        } else {
+          handleSelectChange(newVal);
+        }
+    }
+  };
+
+  const handleInputChange = val => {
+    setInputValue(val);
+  };
+
+  const syncProps = isAsync
+    ? {}
+    : {
+        menuIsOpen: !canCreate || hideSuggestions ? false : undefined,
+        onKeyDown: handleKeyDown,
+        onInputChange: handleInputChange,
+        options: suggestions,
+      };
+
+  let SelectComponent = canCreate ? Creatable : Select;
+
+  if (isAsync) {
+    SelectComponent = canCreate ? AsyncCreatable : AsyncSelect;
+  }
+
+  const key = value && value.length ? JSON.stringify(value) : inputValue;
+
   return (
-    <div className={cx(classes.root, fullWitdh && 'fullWidth')}>
-      <Select
+    <div className={cx(classes.root, fullWidth && 'fullWidth')}>
+      <SelectComponent
+        key={key}
         classes={classes}
         styles={selectStyles}
         inputId="react-select-single"
-        TextFieldProps={{
-          InputLabelProps: {
-            htmlFor: 'react-select-single',
-            shrink: true,
-          },
-        }}
         placeholder={placeholder}
-        isSearchable
+        autoFocus
+        value={value}
+        inputValue={inputValue}
         isClearable
-        options={suggestions}
+        openMenuOnClick={!isAsync}
+        cacheOptions={isAsync}
+        loadOptions={getSuggestions}
         components={components}
-        value={single}
-        onChange={handleChangeSingle}
+        onChange={handleSelectChange}
+        isMulti={isMulti}
+        {...syncProps}
       />
     </div>
   );
 };
 
 PeaAutocompleteList.defaultProps = {
+  canCreate: true,
   placeholder: '',
-  fullWitdh: false,
+  fullWidth: true,
+  isLoading: false,
+  clearOnFocus: true,
+  getSuggestions: undefined,
+  hideSuggestions: false,
+  clearAfterEnter: false,
+  suggestions: [],
+  value: [],
+  isMulti: false,
+  InputControl: PeaSearchInputControl,
 };
 
 PeaAutocompleteList.propTypes = {
+  canCreate: PropTypes.bool,
+  value: PropTypes.arrayOf(PropTypes.object),
+  isMulti: PropTypes.bool,
+  isLoading: PropTypes.bool,
+  getSuggestions: PropTypes.func,
   placeholder: PropTypes.string,
   suggestions: PropTypes.arrayOf(
     PropTypes.shape({
-      value: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
     }),
-  ).isRequired,
-  fullWitdh: PropTypes.bool,
-  InputControl: PropTypes.any.isRequired,
+  ),
+  fullWidth: PropTypes.bool,
+  clearOnFocus: PropTypes.bool,
+  InputControl: PropTypes.func,
   onChange: PropTypes.func.isRequired,
+  hideSuggestions: PropTypes.bool,
+  clearAfterEnter: PropTypes.bool,
 };
 
 PeaAutocompleteList.metadata = {
