@@ -1,16 +1,17 @@
-/* eslint-disable */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import PeaRadio from '../lib/PeaRadio';
 
-const Radio = () => {
+const Radio = ({ label }) => {
   const [value, onChange] = useState('1');
   return (
     <FormControl margin={'normal'} component="fieldset">
-      <FormLabel component="legend">Type</FormLabel>
+      {label && <FormLabel component="legend">{label}</FormLabel>}
+
       <RadioGroup
         aria-label="position"
         name="position"
@@ -41,11 +42,21 @@ const Radio = () => {
   );
 };
 
+Radio.propTypes = {
+  label: PropTypes.string,
+};
+
+Radio.defaultProps = {
+  label: undefined,
+};
+
 Radio.metadata = {
   name: 'Pea Radio Group',
   api: 'https://material-ui.com/pt/api/radio-group/#radiogroup-api',
 };
+
 Radio.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
+
 Radio.code = `
   import React from 'react';
   import FormControl from '@material-ui/core/FormControl';

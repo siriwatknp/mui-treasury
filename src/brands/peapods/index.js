@@ -1,7 +1,28 @@
+import React from 'react';
+import MomentUtils from '@date-io/moment';
+import { ThemeProvider as MaterialThemeProvider } from '@material-ui/styles';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker as TimePicker,
+  KeyboardDatePicker as DatePicker,
+  DateTimePicker,
+} from '@material-ui/pickers';
+
+import theme from './lib/theme';
+
+// eslint-disable-next-line react/prop-types
+const ThemeProvider = ({ children }) => (
+  <MaterialThemeProvider theme={theme}>
+    <MuiPickersUtilsProvider utils={MomentUtils}>
+      {children}
+    </MuiPickersUtilsProvider>
+  </MaterialThemeProvider>
+);
+
+export { ThemeProvider, theme, DatePicker, TimePicker, DateTimePicker };
+
 export * from '@material-ui/core';
 export { Visibility, VisibilityOff } from '@material-ui/icons';
-
-export { default as theme } from './lib/theme';
 
 export { default as Button } from './lib/PeaButton';
 export { default as Icon } from './lib/PeaIcon';
@@ -12,7 +33,6 @@ export { default as Tag } from './lib/PeaTag';
 export { default as SearchInput } from './lib/PeaSearchInput';
 export { default as TextArea } from './lib/PeaTextArea';
 export { default as Radio } from './lib/PeaRadio';
-export { default as RadioGroup } from './lib/PeaRadioGroup';
 export { default as Switch } from './lib/PeaSwitch';
 export { default as Counter } from './lib/PeaCounter';
 export { default as CategoryToggle } from './lib/PeaCategoryToggle';
