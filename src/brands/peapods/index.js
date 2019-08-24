@@ -1,29 +1,36 @@
 import React from 'react';
 import MomentUtils from '@date-io/moment';
-import { ThemeProvider as MaterialThemeProvider } from '@material-ui/styles';
 import {
   MuiPickersUtilsProvider,
-  KeyboardTimePicker as TimePicker,
-  KeyboardDatePicker as DatePicker,
-  DateTimePicker,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+  DateTimePicker as InnerDateTimePicker,
 } from '@material-ui/pickers';
 
-import theme from './lib/theme';
-
-// eslint-disable-next-line react/prop-types
-const ThemeProvider = ({ children }) => (
-  <MaterialThemeProvider theme={theme}>
-    <MuiPickersUtilsProvider utils={MomentUtils}>
-      {children}
-    </MuiPickersUtilsProvider>
-  </MaterialThemeProvider>
+const TimePicker = props => (
+  <MuiPickersUtilsProvider utils={MomentUtils}>
+    <KeyboardTimePicker {...props} />
+  </MuiPickersUtilsProvider>
 );
 
-export { ThemeProvider, theme, DatePicker, TimePicker, DateTimePicker };
+const DatePicker = props => (
+  <MuiPickersUtilsProvider utils={MomentUtils}>
+    <KeyboardDatePicker {...props} />
+  </MuiPickersUtilsProvider>
+);
+
+const DateTimePicker = props => (
+  <MuiPickersUtilsProvider utils={MomentUtils}>
+    <InnerDateTimePicker {...props} />
+  </MuiPickersUtilsProvider>
+);
 
 export * from '@material-ui/core';
 export { Visibility, VisibilityOff } from '@material-ui/icons';
 
+export { TimePicker, DatePicker, DateTimePicker };
+
+export { default as theme } from './lib/theme';
 export { default as Button } from './lib/PeaButton';
 export { default as Icon } from './lib/PeaIcon';
 export { default as Avatar } from './lib/PeaAvatar';
