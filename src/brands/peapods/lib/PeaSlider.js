@@ -44,16 +44,6 @@ const styles = ({ palette }) => ({
         .fade(0.84)
         .string()}`,
     },
-    '&$activated': {
-      boxShadow: `0px 0px 0px 18px ${Color(palette.secondary.main)
-        .fade(0.84)
-        .string()}`,
-    },
-    '&$jumped': {
-      boxShadow: `0px 0px 0px 18px ${Color(palette.secondary.main)
-        .fade(0.84)
-        .string()}`,
-    },
   },
 });
 
