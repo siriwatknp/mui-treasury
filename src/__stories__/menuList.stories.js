@@ -154,10 +154,14 @@ storiesOf('Components|Vertical Menu/Nested Menu', module)
   .add('default', () => <NestedMenuList {...createCommonProps()} />)
   .add('Jupiter', () => (
     <StylesProvider useStyles={useJupiterNestedMenu}>
-      {styles => (
+      {(styles, { setCount }) => (
         <NestedMenuList
           classes={styles}
           {...createCommonProps()}
+          onClick={() => {
+            console.log('test');
+            setCount(c => c + 1);
+          }}
           getConfig={() => ({ toggleSeparated: false })}
         />
       )}

@@ -1,6 +1,16 @@
 import { useRef, useEffect } from 'react';
 
-function useEventListener(eventName, handler, element = window) {
+let initialWindow;
+const getWindow = () => {
+  try {
+    initialWindow = window;
+  } catch (e) {
+    // no window
+  }
+};
+getWindow();
+
+function useEventListener(eventName, handler, element = initialWindow) {
   // Create a ref that stores handler
   const savedHandler = useRef();
 
@@ -31,7 +41,7 @@ function useEventListener(eventName, handler, element = window) {
         element.removeEventListener(eventName, eventListener);
       };
     },
-    [eventName, element], // Re-run if eventName or element changes
+    [eventName, element] // Re-run if eventName or element changes
   );
 }
 

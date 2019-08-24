@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
 import Drawer from '@material-ui/core/Drawer';
 import SidebarLayout from 'components/layout/SidebarLayout';
 import { PKG } from 'constants/menus';
@@ -19,8 +18,6 @@ import {
 
 const { ShowcaseWidget } = molecules;
 const { ComponentHeading } = organisms;
-
-console.log('buttonDemos', buttonDemos);
 
 const baseTheme = createMuiTheme();
 

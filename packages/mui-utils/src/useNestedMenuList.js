@@ -2,11 +2,11 @@ import cx from 'clsx';
 import useToggleItems from './useToggleItems';
 import useSelectItem from './useSelectItem';
 
-export default (initialSelectedKey, initialOpenKeys) => {
+export default (initialSelectedKey, initialOpenKeys, options = {}) => {
   const { selectedKey, setSelectedKey } = useSelectItem(
     initialSelectedKey || ''
   );
-  const { openKeys, onToggle } = useToggleItems(initialOpenKeys || []);
+  const { openKeys, onToggle } = useToggleItems(initialOpenKeys || [], options);
   const getState = ({ key, keyMap }) => {
     const selected = selectedKey === key;
     const active = keyMap[key].includes(selectedKey) || selected;
