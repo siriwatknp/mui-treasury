@@ -5,7 +5,7 @@ import { text, boolean } from '@storybook/addon-knobs';
 
 import createContainer, { StylesProvider } from './helpers/containerDecorator';
 
-storiesOf('Components/Widget', module)
+storiesOf('Components|Widget', module)
   .addDecorator(createContainer({ maxWidth: 'xs' }))
   .add('default', () => (
     <FeatureWidget

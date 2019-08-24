@@ -10,6 +10,9 @@ export default theme => {
       fontSize: 16,
       minHeight: 40,
       borderRadius: 6,
+      '&:hover': {
+        borderBottom: 'none',
+      },
     },
     menuItemToggle: {},
     lv1List: {

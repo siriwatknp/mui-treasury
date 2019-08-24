@@ -10,6 +10,7 @@ const MenuToggle = withStyles(createStyles, { name: 'MenuToggle' })(props => {
   const {
     css,
     component: Component,
+    menuComponent,
     className,
     label,
     selected,
@@ -25,7 +26,7 @@ const MenuToggle = withStyles(createStyles, { name: 'MenuToggle' })(props => {
     // don't need to pass selected to ListItem
     // cause we have full control from upper div
     className: css.menuItem,
-    component: 'div',
+    component: menuComponent || 'div',
     button: true,
     ...ListItemProps,
   };
@@ -68,6 +69,7 @@ const MenuToggle = withStyles(createStyles, { name: 'MenuToggle' })(props => {
 
 MenuToggle.propTypes = {
   component: PropTypes.elementType,
+  menuComponent: PropTypes.elementType,
   label: PropTypes.string,
   selected: PropTypes.bool,
   expanded: PropTypes.bool,
@@ -76,9 +78,11 @@ MenuToggle.propTypes = {
   onMenuClick: PropTypes.func,
   onToggle: PropTypes.func,
   renderToggle: PropTypes.func,
+  ListItemProps: PropTypes.shape({}),
 };
 MenuToggle.defaultProps = {
   component: 'li',
+  menuComponent: undefined,
   label: '',
   selected: false,
   expanded: false,
@@ -87,6 +91,7 @@ MenuToggle.defaultProps = {
   onMenuClick: () => {},
   onToggle: () => {},
   renderToggle: () => null,
+  ListItemProps: {},
 };
 
 export default MenuToggle;

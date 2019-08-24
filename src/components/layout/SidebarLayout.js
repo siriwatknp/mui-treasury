@@ -1,11 +1,12 @@
 import React from 'react';
+import last from 'lodash/last';
 import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
+import { Location } from '@reach/router';
 import {
-  Root,
   Nav,
   Header as LayoutHeader,
   Footer as LayoutFooter,
-  createDefaultLayout,
   Content,
 } from '@mui-treasury/layout';
 import MENUS, { PKG } from 'constants/menus';
@@ -34,55 +35,60 @@ const useFooterStyles = makeStyles(() => ({
   },
 }));
 
-const config = createDefaultLayout({
-  clipped: true,
-  position: 'sticky',
-  navVariant: {
-    xs: 'temporary',
-    sm: 'permanent',
-  },
-});
-
-const SidebarLayout = ({ pkg }) => {
+const SidebarLayout = ({ pkg, children, getOpenKeys }) => {
   const menus = MENUS[PKG[pkg]];
   const headerStyles = useHeaderStyles();
   const footerStyles = useFooterStyles();
   const jupiterStyles = useJupiterNestedMenu();
   return (
-    <Root config={config}>
-      <LayoutHeader
-        classes={headerStyles}
-        renderMenuIcon={open => (open ? <ChevronLeft /> : <MenuRounded />)}
-      >
-        <Header />
-      </LayoutHeader>
-      <Nav
-        renderIcon={collapsed =>
-          collapsed ? <ChevronRight /> : <ChevronLeft />
-        }
-      >
-        <NestedMenuList
-          classes={jupiterStyles}
-          selectedKey={'button'}
-          getConfig={() => ({ toggleSeparated: false })}
-          menus={menus}
-        />
-      </Nav>
-      <Content>
-        <h1>Browse, Choose and Use. {`That's`} it.</h1>
-      </Content>
-      <LayoutFooter classes={footerStyles}>
-        <Footer />
-      </LayoutFooter>
-    </Root>
+    <Location>
+      {({ location }) => {
+        const lastPath = last(location.pathname.split('/'));
+        console.log('lastPath', lastPath);
+        return (
+          <>
+            <LayoutHeader
+              classes={headerStyles}
+              renderMenuIcon={open =>
+                open ? <ChevronLeft /> : <MenuRounded />
+              }
+            >
+              <Header />
+            </LayoutHeader>
+            <Nav
+              renderIcon={collapsed =>
+                collapsed ? <ChevronRight /> : <ChevronLeft />
+              }
+            >
+              <NestedMenuList
+                classes={jupiterStyles}
+                selectedKey={lastPath}
+                openKeys={getOpenKeys(menus, location.pathname)}
+                getConfig={() => ({ toggleSeparated: false })}
+                menus={menus}
+                getItemProps={({ to }) =>
+                  to ? { menuComponent: Link, ListItemProps: { to } } : {}
+                }
+              />
+            </Nav>
+            <Content>{children}</Content>
+            <LayoutFooter classes={footerStyles}>
+              <Footer />
+            </LayoutFooter>
+          </>
+        );
+      }}
+    </Location>
   );
 };
 
 SidebarLayout.propTypes = {
   pkg: PropTypes.oneOf(Object.keys(PKG)),
+  getOpenKeys: PropTypes.func,
 };
 SidebarLayout.defaultProps = {
   pkg: PKG.nav,
+  getOpenKeys: () => [],
 };
 
 export default SidebarLayout;

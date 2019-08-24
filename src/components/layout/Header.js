@@ -7,15 +7,7 @@ import Box from '@material-ui/core/Box';
 import InputBase from '@material-ui/core/InputBase';
 import { HorzMenuList } from '@mui-treasury/components';
 import { useContrastInputBase } from '@mui-treasury/styles';
-
-const menus = [
-  { key: '/how-to', label: 'How to' },
-  { key: '/components', label: 'Components' },
-  { key: '/form', label: 'Form' },
-  { key: '/layout', label: 'Layout' },
-  { key: '/styling', label: 'Styling' },
-  { key: '/theme', label: 'Theme' },
-];
+import MENUS, { PKG } from 'constants/menus';
 
 const Header = () => {
   const data = useStaticQuery(graphql`
@@ -44,10 +36,9 @@ const Header = () => {
             <Image fixed={logo.childImageSharp.fixed} />
           </Box>
           <HorzMenuList
-            itemComponent={Link}
-            getItemProps={({ key }) => ({ to: key })}
+            getItemProps={({ to }) => ({ ...(to && { component: Link, to }) })}
             selectedKey={key => location.pathname.includes(key)}
-            menus={menus}
+            menus={MENUS[PKG.nav]}
           />
           <Box ml={'auto'} mr={2}>
             <InputBase classes={inputBaseStyles} placeholder={'search...'} />

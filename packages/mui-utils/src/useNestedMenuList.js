@@ -7,21 +7,27 @@ export default (initialSelectedKey, initialOpenKeys) => {
     initialSelectedKey || ''
   );
   const { openKeys, onToggle } = useToggleItems(initialOpenKeys || []);
-  const injectItemProps = ({
-    classes,
-    level,
-    key,
-    subMenus,
-    toggleSeparated,
-    keyMap,
-  }) => {
-    const isCurrentKey = selectedKey === key;
+  const getState = ({ key, keyMap }) => {
+    const selected = selectedKey === key;
+    const active = keyMap[key].includes(selectedKey) || selected;
+    return { selected, active };
+  };
+  const injectItemProps = params => {
+    const {
+      classes,
+      level,
+      key,
+      onClick,
+      subMenus,
+      toggleSeparated,
+      keyMap,
+    } = params;
+    const { active, selected } = getState({ key, keyMap });
     return {
       key,
       className: cx(
         classes[`lv${level}Item`],
-        (keyMap[key].includes(selectedKey) || isCurrentKey) &&
-          classes[`lv${level}ItemActive`],
+        active && classes[`lv${level}ItemActive`],
         selectedKey === key && classes[`lv${level}ItemSelected`],
         openKeys.includes(key) && classes[`lv${level}ItemExpanded`]
       ),
@@ -30,6 +36,7 @@ export default (initialSelectedKey, initialOpenKeys) => {
       toggleSeparated,
       onToggle: () => (subMenus ? onToggle(key) : {}),
       onMenuClick: () => {
+        onClick({ ...params, active, selected });
         if (!subMenus || toggleSeparated) {
           return setSelectedKey(key);
         }
@@ -39,18 +46,17 @@ export default (initialSelectedKey, initialOpenKeys) => {
         return {};
       },
       expanded: openKeys.includes(key),
-      selected: subMenus ? toggleSeparated && isCurrentKey : isCurrentKey,
+      selected: subMenus ? toggleSeparated && selected : selected,
     };
   };
   const injectParentProps = ({ classes, level, key, keyMap }) => {
-    const isCurrentKey = selectedKey === key;
+    const { active } = getState({ key, keyMap });
     return {
       key,
       className: cx(
         classes[`lv${level}Parent`],
         openKeys.includes(key) && classes[`lv${level}ParentExpanded`],
-        (keyMap[key].includes(selectedKey) || isCurrentKey) &&
-          classes[`lv${level}ParentActive`]
+        active && classes[`lv${level}ParentActive`]
       ),
     };
   };

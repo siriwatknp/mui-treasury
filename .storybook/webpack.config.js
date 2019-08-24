@@ -24,9 +24,10 @@ module.exports = ({ config }) => {
       {
         root: ['./'],
         alias: {
-          components: './src/components', // <- will become ./src/components
-          helpers: './src/helpers', // <- will become ./src/helpers
-          static: './public/static',
+          assets: './src/assets',
+          components: './src/components',
+          utils: './src/utils',
+          constants: './src/constants',
           '@mui-treasury/components/src': './packages/mui-components/src',
           '@mui-treasury/components': './packages/mui-components/src',
           '@mui-treasury/utils/src': './packages/mui-utils/src',

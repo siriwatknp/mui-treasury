@@ -5,12 +5,16 @@ import { withStyles } from '@mui-treasury/styling';
 import createStyles from './HorzMenuList.styles';
 
 const HorzMenuList = withStyles(createStyles, { name: 'HorzMenuList' })(
-  ({ css, menus, selectedKey, itemComponent: Item, getItemProps }) => (
-    <div className={css.navRoot}>
+  ({ css, menus, selectedKey, getItemProps }) => (
+    <ul className={css.navRoot}>
       {menus.map((item, index) => {
         const { key, label } = item;
+        const { component: Component = 'li', ...extItemProps } = getItemProps(
+          item,
+          index
+        );
         return (
-          <Item
+          <Component
             key={key}
             className={cx(
               css.navItem,
@@ -18,27 +22,25 @@ const HorzMenuList = withStyles(createStyles, { name: 'HorzMenuList' })(
                 ? selectedKey(key)
                 : key === selectedKey) && css.navSelected
             )}
-            {...getItemProps(item, index)}
+            {...extItemProps}
           >
             {label}
-          </Item>
+          </Component>
         );
       })}
-    </div>
+    </ul>
   )
 );
 
 HorzMenuList.propTypes = {
   menus: PropTypes.arrayOf(PropTypes.shape({})),
   selectedKey: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  itemComponent: PropTypes.elementType,
   getItemProps: PropTypes.func,
 };
 HorzMenuList.defaultProps = {
   menus: [],
   selectedKey: '',
-  itemComponent: 'span',
-  getItemProps: () => {},
+  getItemProps: () => ({}),
 };
 
 export default HorzMenuList;

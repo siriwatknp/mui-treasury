@@ -2,15 +2,17 @@ import React from 'react';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 
-const palette = {
-  primary: {
-    main: '#007aac',
+const { palette } = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#007aac',
+    },
+    background: {
+      default: '#fff',
+    },
+    divider: '#f0f0f2',
   },
-  background: {
-    default: '#fff',
-  },
-  divider: '#f0f0f2',
-};
+});
 
 const theme = createMuiTheme({
   palette,
@@ -19,14 +21,23 @@ const theme = createMuiTheme({
   },
   overrides: {
     MuiButton: {
-      label: {
-        letterSpacing: '0.5px',
-      },
       root: {
         borderRadius: 50,
+        '&:hover': {
+          borderBottom: 'none',
+        },
+      },
+      label: {
+        textTransform: 'initial',
       },
       contained: {
         boxShadow: 'none',
+        backgroundColor: palette.grey[200],
+        '&:active': {
+          boxShadow: 'none',
+        },
+      },
+      containedPrimary: {
         textShadow: '0 1px 0 rgba(0,0,0,0.2)',
         transition: '0.2s',
         background: `linear-gradient(to top, ${palette.primary.main}, #7fb8d0)`,
@@ -38,6 +49,10 @@ const theme = createMuiTheme({
           transform: 'translateY(0px)',
           boxShadow: 'none',
           // boxShadow: `inset 0 4px 4px 0 rgba(0,0,0,0.14)`,
+        },
+        '& $label': {
+          textTransform: 'uppercase',
+          letterSpacing: '0.5px',
         },
       },
       text: {

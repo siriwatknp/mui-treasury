@@ -5,22 +5,24 @@ export const PKG = {
 
 export default {
   [PKG.nav]: [
-    { key: '/how-to', label: 'How to' },
-    { key: '/components', label: 'Components' },
-    { key: '/form', label: 'Form' },
-    { key: '/layout', label: 'Layout' },
-    { key: '/styling', label: 'Styling' },
-    { key: '/theme', label: 'Theme' },
+    { key: 'how-to', label: 'How to' },
+    { key: 'components', label: 'Components', to: '/components/instruction' },
+    { key: 'form', label: 'Form' },
+    { key: 'layout', label: 'Layout' },
+    { key: 'styling', label: 'Styling' },
+    { key: 'theme', label: 'Theme' },
   ],
   [PKG.components]: [
     {
       key: 'instruction',
       label: 'Instruction',
+      to: '/components/instruction',
     },
     {
       key: 'basic',
       label: 'BASIC (5)',
       subMenus: [
+        { key: 'button', label: 'Button', to: '/components/button' },
         { key: 'arrow', label: 'Arrow' },
         { key: 'chat', label: 'Chat' },
         { key: 'input', label: 'Input' },

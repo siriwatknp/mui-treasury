@@ -81,7 +81,7 @@ const Header = ({
   const menuButtonClasses = useMenuButtonStyles(menuButtonProps);
   return (
     <AppBar
-      color={'FeatureWidget'}
+      color={'default'}
       elevation={0}
       {...props}
       position={headerPosition}

@@ -7,7 +7,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import { FeatureWidget } from '@mui-treasury/components';
-import { useBorderedGrid } from '@mui-treasury/styles';
+import { useMultiRowBorderedGrid } from '@mui-treasury/styles';
 import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
 
@@ -126,8 +126,11 @@ const socials = [
 const Homepage = () => {
   const classes = useStyles();
   const widgetStyles = useTintPrimaryWidgetStyles();
-  const borderedGridStyles = useBorderedGrid({
+  const featureGridStyles = useMultiRowBorderedGrid({
     colWidth: { xs: 12, sm: 6, md: 4 },
+  });
+  const socialGridStyles = useMultiRowBorderedGrid({
+    colWidth: { xs: 12, sm: 6 },
   });
   return (
     <div>
@@ -185,7 +188,7 @@ const Homepage = () => {
       <Grid container>
         {purposes.map(({ icon, title, content }) => (
           <Grid
-            classes={borderedGridStyles}
+            classes={featureGridStyles}
             item
             key={title}
             xs={12}
@@ -255,33 +258,21 @@ const Homepage = () => {
             <h2 className={classes.topic}>Stay Updated!</h2>
           </Box>
           <p />
-          <Box
-            border={'1px solid'}
-            borderBottom={'none'}
-            borderColor={'rgb(230, 241, 244)'}
-          >
-            <Grid container>
-              {socials.map(({ icon, title, children }) => (
-                <Grid
-                  classes={borderedGridStyles}
-                  item
-                  key={title}
-                  xs={12}
-                  sm={6}
+          <Grid container classes={socialGridStyles}>
+            {socials.map(({ icon, title, children }) => (
+              <Grid classes={socialGridStyles} item key={title} xs={12} sm={6}>
+                <FeatureWidget
+                  classes={widgetStyles}
+                  content={title}
+                  renderIcon={({ className }) => (
+                    <i className={`${icon} ${className}`} />
+                  )}
                 >
-                  <FeatureWidget
-                    classes={widgetStyles}
-                    content={title}
-                    renderIcon={({ className }) => (
-                      <i className={`${icon} ${className}`} />
-                    )}
-                  >
-                    <Box textAlign={'center'}>{children}</Box>
-                  </FeatureWidget>
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
+                  <Box textAlign={'center'}>{children}</Box>
+                </FeatureWidget>
+              </Grid>
+            ))}
+          </Grid>
         </Box>
       </Container>
       <Footer />

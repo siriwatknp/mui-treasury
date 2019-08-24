@@ -4,6 +4,7 @@ export default ({ palette, spacing }) => ({
   navRoot: {
     display: 'flex',
     alignSelf: 'stretch',
+    margin: 0,
   },
   navItem: {
     display: 'flex',

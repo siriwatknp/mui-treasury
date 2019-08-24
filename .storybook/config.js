@@ -1,8 +1,7 @@
 import React from 'react';
-import { configure, addDecorator } from '@storybook/react';
+import { configure, addDecorator, addParameters } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs } from '@storybook/addon-knobs';
-import { setOptions } from '@storybook/addon-options';
 import CssBaseline from '@material-ui/core/CssBaseline';
 // import all components so that other styles is created after
 import * as core from '@material-ui/core';
@@ -13,9 +12,9 @@ import { ThemeWrapper } from '../src/utils/theme';
 
 import './global.css';
 
-setOptions({
-  hierarchySeparator: /\//,
-  hierarchyRootSeparator: /\|/,
+addParameters({
+  // hierarchySeparator: /\//,
+  // hierarchyRootSeparator: /\|/,
   name: 'Mui Treasury',
   url: 'https://github.com/siriwatknp/mui-treasury',
 });

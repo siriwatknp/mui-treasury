@@ -16,8 +16,9 @@ module.exports = {
         aliases: {
           utils: './src/utils',
           constants: './src/constants',
+          docs: './src/docs',
           components: './src/components',
-          helpers: './src/helpers',
+          containers: './src/containers',
           static: './public/static',
           '@mui-treasury/components/src': './packages/mui-components/src',
           '@mui-treasury/components': './packages/mui-components/src',
@@ -42,15 +43,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/content/demos`,
-        name: `demos`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/content`,
-        name: `content`,
+        path: `${__dirname}/src/docs/components`,
+        name: `components`,
       },
     },
     {
@@ -69,6 +63,12 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
+          {
+            resolve: 'gatsby-remark-embed-snippet',
+            options: {
+              directory: `${__dirname}/src/docs`,
+            },
+          },
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
@@ -83,7 +83,7 @@ module.exports = {
         // trackingId: `ADD YOUR TRACKING ID HERE`,
       },
     },
-    `gatsby-plugin-feed`,
+    // `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

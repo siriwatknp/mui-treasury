@@ -16,9 +16,12 @@ const NestedMenuList = withStyles(createStyles, { name: 'NestedMenuList' })(
       menus,
       selectedKey,
       openKeys,
+      menuComponent,
       ListProps,
       CollapseProps,
+      getItemProps,
       getConfig,
+      onClick,
     } = props;
     const keyMap = useMemo(() => mapNestedPath(menus), menus);
     const {
@@ -31,6 +34,7 @@ const NestedMenuList = withStyles(createStyles, { name: 'NestedMenuList' })(
       const params = {
         ...getConfig(level),
         ...item,
+        onClick,
         classes: css,
         level,
         keyMap,
@@ -41,8 +45,10 @@ const NestedMenuList = withStyles(createStyles, { name: 'NestedMenuList' })(
       const menu = (
         <MenuToggle
           label={label}
+          menuComponent={menuComponent}
           {...calculatedProps}
           {...itemProps}
+          {...getItemProps(params)}
           renderToggle={toggleProps => (
             <MuiSvgArrowToggle
               {...toggleProps}
@@ -92,19 +98,28 @@ NestedMenuList.propTypes = {
     })
   ),
   selectedKey: PropTypes.string,
-  openKeys: PropTypes.arrayOf(PropTypes.string),
+  openKeys: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.string,
+  ]),
+  onClick: PropTypes.func,
   CollapseProps: PropTypes.shape({}),
   ListProps: PropTypes.shape({}),
   getConfig: PropTypes.func,
+  getItemProps: PropTypes.func,
+  menuComponent: PropTypes.elementType,
 };
 NestedMenuList.defaultProps = {
   menus: [],
   selectedKey: '',
   openKeys: [],
+  onClick: () => {},
   CollapseProps: {},
   ListProps: {},
   config: {},
   getConfig: () => ({}),
+  getItemProps: () => ({}),
+  menuComponent: undefined,
 };
 
 export default NestedMenuList;

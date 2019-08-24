@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
 
+const isString = str => typeof str === 'string';
+
+const getResult = val => (isString(val) ? [val] : val);
+
 export default initialOpenKeys => {
-  const [openKeys, setOpenKeys] = useState(initialOpenKeys || []);
+  const [openKeys, setOpenKeys] = useState(getResult(initialOpenKeys) || []);
   useEffect(() => {
     if (initialOpenKeys) {
-      setOpenKeys(initialOpenKeys);
+      setOpenKeys(getResult(initialOpenKeys));
     }
   }, [initialOpenKeys]);
 

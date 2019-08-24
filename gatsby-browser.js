@@ -1,7 +1,10 @@
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+import 'prismjs/themes/prism-solarizedlight.css';
 import React from 'react';
 import Helmet from 'react-helmet';
 import { Root, createDefaultLayout } from '@mui-treasury/layout';
 import { ThemeWrapper } from './src/utils/theme';
+import './global.css';
 
 const layoutConfig = createDefaultLayout({
   navWidth: 288,
