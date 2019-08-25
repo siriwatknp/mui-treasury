@@ -16,28 +16,34 @@ const styles = () => ({
       '-webkit-appearance': 'none',
       margin: 0,
     },
-    // support up to value <= 999
     width: 32,
   },
   inputInput: {
     textAlign: 'center',
   },
   iconButton: {
-    padding: 6,
+    padding: 4,
+  },
+  icon: {
+    fontSize: 36,
   },
 });
 
 const PeaCounter = withStyles(styles, { name: 'PeaCounter' })(
   ({ classes, value, name, onChange, ...props }) => {
     const handleChange = operator => () =>
-      // use the same pattern as input
-      // send back name, compatible with Formik
-      onChange({ target: { value: value + operator, name } });
+      onChange({ target: { value: parseInt(value, 10) + operator, name } });
+
     return (
       <div className={cx('PeaCounter-root', classes.root)}>
         <IconButton className={classes.iconButton} onClick={handleChange(-1)}>
-          <PeaIcon icon={'remove_circle'} color={'secondary'} />
+          <PeaIcon
+            className={classes.icon}
+            icon={'remove_circle'}
+            color={'secondary'}
+          />
         </IconButton>
+
         <InputBase
           classes={{
             root: classes.inputRoot,
@@ -49,8 +55,13 @@ const PeaCounter = withStyles(styles, { name: 'PeaCounter' })(
           onChange={onChange}
           {...props}
         />
+
         <IconButton className={classes.iconButton} onClick={handleChange(1)}>
-          <PeaIcon icon={'add_circle'} color={'secondary'} />
+          <PeaIcon
+            className={classes.icon}
+            icon={'add_circle'}
+            color={'secondary'}
+          />
         </IconButton>
       </div>
     );
@@ -62,9 +73,11 @@ PeaCounter.propTypes = {
   value: PropTypes.number,
   onChange: PropTypes.func,
 };
+
 PeaCounter.defaultProps = {
   onChange: () => {},
 };
+
 PeaCounter.metadata = {
   name: 'Pea Counter',
   libraries: [
@@ -74,6 +87,7 @@ PeaCounter.metadata = {
     },
   ],
 };
+
 PeaCounter.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 
 export default PeaCounter;
