@@ -20,12 +20,17 @@ function Control(props) {
     children,
     innerProps,
     innerRef,
+    hasValue,
+    isFocused,
     selectProps: { classes, TextFieldProps },
   } = props;
 
   return (
     <TextField
       fullWidth
+      InputLabelProps={{
+        shrink: isFocused || hasValue,
+      }}
       InputProps={{
         inputComponent,
         inputProps: {
@@ -41,6 +46,8 @@ function Control(props) {
 }
 
 Control.propTypes = {
+  hasValue: PropTypes.bool.isRequired,
+  isFocused: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
   innerProps: PropTypes.shape({
     onMouseDown: PropTypes.func.isRequired,

@@ -42,8 +42,8 @@ const createList = ({
             limit <b>{limit} - </b>
           </span>
         )}
-        <b>{podCount}</b> pods, <b>{attendingCount}</b> going, and{' '}
-        <b>{interestedCount}</b> interested
+        {podCount} pod{podCount > 1 ? 's' : ''}, {attendingCount} going,{' '}
+        {interestedCount} interested
       </React.Fragment>
     ),
   },
@@ -192,9 +192,9 @@ const PeaEventCard = ({
       centered
       left={
         <>
-          <Share onClick={() => onShareEventClicked(id)} />
-          <CreatePod onClick={() => onCreatePodClicked(id)} />
-          <Details onClick={() => onShowDetailsClicked(id)} />
+          <Share onClick={onShareEventClicked} />
+          <CreatePod onClick={onCreatePodClicked} />
+          <Details onClick={onShowDetailsClicked} />
         </>
       }
     />
