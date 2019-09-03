@@ -25,9 +25,12 @@ import PeaTag from './PeaTag';
 import PeaProfileEditor from './PeaProfileEditor';
 
 const PeaAccountProfile = ({
+  isCurrentUser,
   cover,
   image,
   name,
+  userName,
+  email,
   tag,
   site,
   bio,
@@ -38,9 +41,14 @@ const PeaAccountProfile = ({
   tags,
   pods,
   reputation,
+  followersCount,
+  followingCount,
+  isPrivate,
+  onSubmit,
+  editing,
+  setEditing,
 }) => {
   const [index, onChange] = useState(0);
-  const [editing, setEditing] = useState(false);
   const [anchorEl, setAnchor] = useState(null);
   const open = Boolean(anchorEl);
   if (editing) {
@@ -49,12 +57,15 @@ const PeaAccountProfile = ({
         cover={cover}
         image={image}
         name={name}
+        userName={userName}
+        email={email}
         tag={tag}
         tags={tags}
         site={site}
         bio={bio}
         location={location}
-        onSubmit={() => setEditing(false)}
+        isPrivate={isPrivate}
+        onSubmit={onSubmit}
         onCancel={() => setEditing(false)}
       />
     );
@@ -126,13 +137,13 @@ const PeaAccountProfile = ({
           </Grid>
           <Hidden only={'xs'}>
             <Grid item>
-              <PeaStatistic label={'Pods'} value={2} />
+              <PeaStatistic label={'Pods'} value={pods.length} />
             </Grid>
             <Grid item>
-              <PeaStatistic label={'Following'} value={48} />
+              <PeaStatistic label={'Following'} value={followingCount} />
             </Grid>
             <Grid item>
-              <PeaStatistic label={'Followers'} value={5} />
+              <PeaStatistic label={'Followers'} value={followersCount} />
             </Grid>
           </Hidden>
           <Grid item className={'MuiGrid-item -reputation'}>
@@ -144,8 +155,13 @@ const PeaAccountProfile = ({
         <Box mt={4} mb={3}>
           <Grid className={'MuiGrid-container -actions'} container spacing={1}>
             <Grid item>
-              <PeaButton variant={'contained'} color={'primary'} size={'small'}>
-                Follow
+              <PeaButton
+                variant={'contained'}
+                color={'primary'}
+                size={'small'}
+                onClick={isCurrentUser ? () => setEditing(true) : null}
+              >
+                {isCurrentUser ? 'Edit' : 'Follow'}
               </PeaButton>
             </Grid>
             <Grid item>
@@ -158,17 +174,19 @@ const PeaAccountProfile = ({
                 message
               </PeaButton>
             </Grid>
-            <Grid item>
-              <PeaButton
-                icon={'more_vert'}
-                size={'small'}
-                shape={'circular'}
-                onClick={e => setAnchor(e.currentTarget)}
-              >
-                more
-              </PeaButton>
-              {renderMenu()}
-            </Grid>
+            {!isCurrentUser && (
+              <Grid item>
+                <PeaButton
+                  icon={'more_vert'}
+                  size={'small'}
+                  shape={'circular'}
+                  onClick={e => setAnchor(e.currentTarget)}
+                >
+                  more
+                </PeaButton>
+                {renderMenu()}
+              </Grid>
+            )}
           </Grid>
         </Box>
         <Hidden smUp>
@@ -297,6 +315,7 @@ PeaAccountProfile.propTypes = {
   image: PropTypes.string.isRequired,
   cover: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  userName: PropTypes.string,
   tag: PropTypes.string,
   site: PropTypes.string,
   bio: PropTypes.string,
@@ -316,8 +335,18 @@ PeaAccountProfile.propTypes = {
   ),
   reputation: PropTypes.number,
   pods: PropTypes.arrayOf(PropTypes.shape({})),
+
+  isCurrentUser: PropTypes.bool,
+  email: PropTypes.string,
+  followersCount: PropTypes.number,
+  followingCount: PropTypes.number,
+  isPrivate: PropTypes.bool,
+  onSubmit: PropTypes.func,
+  editing: PropTypes.bool,
+  setEditing: PropTypes.func,
 };
 PeaAccountProfile.defaultProps = {
+  userName: '',
   tag: '',
   site: '',
   bio: '',
@@ -328,6 +357,14 @@ PeaAccountProfile.defaultProps = {
   tags: [],
   reputation: 0,
   pods: [],
+  isCurrentUser: false,
+  email: '',
+  followersCount: 0,
+  followingCount: 0,
+  isPrivate: false,
+  editing: false,
+  onSubmit: () => {},
+  setEditing: () => {},
 };
 PeaAccountProfile.metadata = {
   name: 'Pea Account Profile',
