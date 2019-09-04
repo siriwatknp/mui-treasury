@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
-import Tab from '@material-ui/core/Tab';
-import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import cx from 'classnames';
@@ -16,8 +13,12 @@ import PeaText from './PeaTypography';
 import PeaAvatar from './PeaAvatar';
 import PeaIcon from './PeaIcon';
 import PeaTag from './PeaTag';
+import PeaSwipeableTabs from './PeaSwipeableTabs';
 
-const createList = ({
+// TODO: this can be cleaned up and refactored
+// Much of this can be reused for GroupDetails
+
+const renderAboutDetails = ({
   profile,
   timeString,
   mapOrigin,
@@ -93,18 +94,32 @@ const PeaEventDetails = ({
   stats,
   isPodMember,
   onCreatePodClicked,
-  onLeavePodClicked,
   renderPods,
   renderConnections,
+  isMobile,
+  onChangeTab,
+  isLoading,
 }) => {
-  const [tabIndex, onChange] = useState(0);
+  const tabs = [
+    { label: 'Pods' },
+    { label: 'About' },
+    { label: 'Connections' },
+  ];
+
+  const onTabChange = index => {
+    if (onChangeTab) {
+      onChangeTab(tabs[index].label);
+    }
+  };
+
+  const buttonText = isPodMember ? 'Edit Pod' : 'Create Pod';
 
   return (
     <Card className={'PeaGroupProfile-root'}>
       <CardMedia className={'MuiCardMedia-root'} image={cover} />
 
       <CardContent className={'MuiCardContent-root'}>
-        <Grid container>
+        <Grid container direction="column">
           <Grid item container alignItems={'center'} xs>
             <PeaText variant={'h6'} weight={'bold'}>
               {title}
@@ -112,146 +127,150 @@ const PeaEventDetails = ({
           </Grid>
 
           <Grid item>
-            {sourceImage && (
-              <button
-                type="button"
-                className="MuiButtonBase-root"
-                href={sourceLink}
-              >
-                <PeaAvatar src={sourceImage} />
-              </button>
-            )}
+            <Grid container justify="space-between" alignItems="center">
+              <Grid item>
+                <PeaText gutterBottom>
+                  <PeaIcon push={'right'} color={'secondary'} size={'small'}>
+                    fas fa-clock
+                  </PeaIcon>
+                  created {timeAgo}
+                </PeaText>
+              </Grid>
 
-            <PeaButton
-              shape={'circular'}
-              icon={'more_vert'}
-              size={'small'}
-              style={{ marginLeft: 8 }}
-            >
-              email
-            </PeaButton>
+              <Grid item>
+                {sourceImage && (
+                  <button
+                    type="button"
+                    className="MuiButtonBase-root"
+                    href={sourceLink}
+                  >
+                    <PeaAvatar src={sourceImage} />
+                  </button>
+                )}
 
-            {isPodMember ? (
-              <PeaButton
-                onClick={() => onLeavePodClicked(id)}
-                variant={'outlined'}
-                color={'danger'}
-                size="small"
-                style={{ marginLeft: 8, minWidth: 120 }}
-              >
-                Leave Pod
-              </PeaButton>
-            ) : (
-              <PeaButton
-                onClick={() => onCreatePodClicked(id)}
-                variant={'contained'}
-                color={'primary'}
-                size="small"
-                style={{ marginLeft: 8, minWidth: 120 }}
-              >
-                Create Pod
-              </PeaButton>
-            )}
-          </Grid>
-        </Grid>
+                <PeaButton
+                  shape={'circular'}
+                  icon={'more_vert'}
+                  size={'small'}
+                  style={{ marginLeft: 8 }}
+                >
+                  email
+                </PeaButton>
 
-        <PeaText gutterBottom>
-          <PeaIcon push={'right'} color={'secondary'} size={'small'}>
-            fas fa-clock
-          </PeaIcon>
-          created {timeAgo}
-        </PeaText>
-
-        <Tabs
-          className={'MuiTabs-root'}
-          variant={'fullWidth'}
-          centered
-          value={tabIndex}
-          onChange={(e, val) => onChange(val)}
-        >
-          <Tab label="Pods" disableRipple />
-          <Tab label="About" disableRipple />
-          <Tab label="Connections" disableRipple />
-        </Tabs>
-
-        {tabIndex === 0 && <Box minHeight={300}>{renderPods()}</Box>}
-
-        {tabIndex === 1 && (
-          <Box mt={2}>
-            <PeaText color={'secondary'}>
-              <b>Details</b>
-            </PeaText>
-            <Grid container direction="row">
-              <Grid container direction="column">
-                {createList({
-                  profile,
-                  timeString,
-                  mapOrigin,
-                  location,
-                  podCount,
-                  attendingCount: stats.attending,
-                  interestedCount: stats.interested,
-                  limit: stats.limit,
-                }).map(item => (
-                  <Grid key={item.key} container spacing={1} wrap={'nowrap'}>
-                    <Grid item>
-                      {typeof item.icon === 'string' ? (
-                        <PeaIcon
-                          size={'big'}
-                          color={'secondary'}
-                          icon={item.icon}
-                          shape="square"
-                        />
-                      ) : (
-                        <div
-                          style={{
-                            fontSize: '28px',
-                          }}
-                          className={cx(
-                            'MuiIcon-root',
-                            '-size-big',
-                            '-shape-circular',
-                          )}
-                        >
-                          {item.icon}
-                        </div>
-                      )}
-                    </Grid>
-                    <Grid item xs>
-                      <Typography color={'textSecondary'} variant={'caption'}>
-                        {item.renderText ? item.renderText() : item.text}
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                ))}
+                <PeaButton
+                  onClick={() => onCreatePodClicked(id)}
+                  variant={'contained'}
+                  color={'primary'}
+                  size="small"
+                  loading={isLoading}
+                  style={{ marginLeft: 8, minWidth: 120 }}
+                >
+                  {buttonText}
+                </PeaButton>
               </Grid>
             </Grid>
+          </Grid>
+        </Grid>
+      </CardContent>
 
-            <PeaText color={'secondary'}>
-              <b>Description</b>
-            </PeaText>
-            <PeaText gutterBottom>{description}</PeaText>
+      <PeaSwipeableTabs
+        tabs={tabs}
+        enableFeedback={isMobile}
+        onTabChange={onTabChange}
+      >
+        {renderPods()}
 
-            <PeaText color={'secondary'}>
-              <b>Tags</b>
-            </PeaText>
-            <PeaText gutterBottom />
-            <Grid container spacing={1}>
-              {tags.map(item => (
-                <Grid item key={item.label}>
-                  <PeaTag
-                    color={'secondary'}
-                    label={`#${item.label}`}
-                    onClick={() => {}}
-                  />
+        <>
+          <PeaText color={'secondary'}>
+            <b>Details</b>
+          </PeaText>
+          <Grid container direction="row">
+            <Grid container direction="column">
+              {renderAboutDetails({
+                profile,
+                timeString,
+                mapOrigin,
+                location,
+                podCount,
+                attendingCount: stats.attending,
+                interestedCount: stats.interested,
+                limit: stats.limit,
+              }).map(item => (
+                <Grid key={item.key} container spacing={1} wrap={'nowrap'}>
+                  <Grid item>
+                    {typeof item.icon === 'string' ? (
+                      <PeaIcon
+                        size={'big'}
+                        color={'secondary'}
+                        icon={item.icon}
+                        shape="square"
+                      />
+                    ) : (
+                      <div
+                        style={{
+                          fontSize: '28px',
+                        }}
+                        className={cx(
+                          'MuiIcon-root',
+                          '-size-big',
+                          '-shape-circular',
+                        )}
+                      >
+                        {item.icon}
+                      </div>
+                    )}
+                  </Grid>
+                  <Grid item xs>
+                    <Typography color={'textSecondary'} variant={'caption'}>
+                      {item.renderText ? item.renderText() : item.text}
+                    </Typography>
+                  </Grid>
                 </Grid>
               ))}
             </Grid>
-          </Box>
-        )}
+          </Grid>
 
-        {tabIndex === 2 && <Box minHeight={300}>{renderConnections()}</Box>}
-      </CardContent>
+          <PeaText color={'secondary'}>
+            <b>Description</b>
+          </PeaText>
+
+          {description && (
+            <div className={cx('MuiTypography-root', 'MuiTypography-body1')}>
+              {typeof description === 'string' ? (
+                <PeaText>{description}</PeaText>
+              ) : (
+                React.Children.map(description, text => (
+                  <div
+                    style={{
+                      marginBottom: 20,
+                    }}
+                  >
+                    {text}
+                  </div>
+                ))
+              )}
+            </div>
+          )}
+
+          <PeaText color={'secondary'}>
+            <b>Tags</b>
+          </PeaText>
+          <PeaText gutterBottom />
+          <Grid container wrap="wrap" spacing={1}>
+            {tags.map(tag => (
+              <Grid item key={tag}>
+                <PeaTag
+                  color={'secondary'}
+                  label={`#${tag}`}
+                  onClick={() => {}}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </>
+
+        {renderConnections()}
+      </PeaSwipeableTabs>
     </Card>
   );
 };
@@ -265,14 +284,13 @@ PeaEventDetails.propTypes = {
     link: PropTypes.string,
   }).isRequired,
   title: PropTypes.string.isRequired,
-  description: PropTypes.string,
+  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   cover: PropTypes.string.isRequired,
   timeAgo: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string),
   sourceImage: PropTypes.string,
   sourceLink: PropTypes.string,
   onCreatePodClicked: PropTypes.func.isRequired,
-  onLeavePodClicked: PropTypes.func.isRequired,
   renderConnections: PropTypes.func.isRequired,
   renderPods: PropTypes.func.isRequired,
   podCount: PropTypes.number,
@@ -284,6 +302,9 @@ PeaEventDetails.propTypes = {
     attending: PropTypes.number.isRequired,
     limit: PropTypes.number,
   }).isRequired,
+  isMobile: PropTypes.bool,
+  onChangeTab: PropTypes.func,
+  isLoading: PropTypes.bool,
 };
 
 PeaEventDetails.defaultProps = {
@@ -292,10 +313,13 @@ PeaEventDetails.defaultProps = {
   tags: [],
   sourceImage: undefined,
   sourceLink: undefined,
+  isMobile: true,
+  onChangeTab: undefined,
+  isLoading: false,
 };
 
 PeaEventDetails.metadata = {
   name: 'Pea Event Details',
 };
 
-export default PeaEventDetails;
+export default memo(PeaEventDetails);

@@ -113,10 +113,18 @@ Option.propTypes = {
   isSelected: PropTypes.bool,
 };
 
-function MultiValue({ children, removeProps }) {
+function MultiValue({ children, removeProps, data }) {
+  const node = data && data.node;
+
+  let src;
+  if (node) {
+    src = node.profilePhoto || (node.profilePhotos && node.profilePhotos[0]);
+  }
+
   return (
     <PeaTag
       tabIndex={-1}
+      src={src}
       label={children}
       onDelete={removeProps.onClick}
       onClick={removeProps.onClick}
@@ -132,6 +140,19 @@ MultiValue.propTypes = {
     onMouseDown: PropTypes.func.isRequired,
     onTouchEnd: PropTypes.func.isRequired,
   }).isRequired,
+  data: PropTypes.shape({
+    label: PropTypes.string,
+    value: PropTypes.string,
+    node: PropTypes.shape({
+      id: PropTypes.string,
+      profilePhoto: PropTypes.string,
+      profilePhotos: PropTypes.arrayOf(PropTypes.string),
+    }),
+  }),
+};
+
+MultiValue.defaultProps = {
+  data: undefined,
 };
 
 function ValueContainer({ selectProps, children }) {
@@ -147,9 +168,9 @@ ValueContainer.propTypes = {
   selectProps: PropTypes.object.isRequired,
 };
 
-function Menu({ innerProps, children }) {
+function Menu({ innerProps, children, selectProps }) {
   return (
-    <Paper square {...innerProps}>
+    <Paper square className={selectProps.classes.paper} {...innerProps}>
       {children}
     </Paper>
   );
@@ -168,11 +189,14 @@ Menu.propTypes = {
 };
 
 const PeaAutocompleteList = ({
+  label,
+  noOptionsMessage,
   placeholder,
   canCreate,
   suggestions,
   getSuggestions,
   InputControl,
+  OptionComponent,
   onChange,
   isMulti,
   fullWidth,
@@ -184,14 +208,17 @@ const PeaAutocompleteList = ({
   const theme = useTheme();
   const [value, setValue] = useState(propValue);
   const [inputValue, setInputValue] = useState('');
-  const isAsync = getSuggestions;
+  const isAsync = !!getSuggestions;
 
   useEffect(() => {
     setValue(propValue);
   }, [propValue]);
 
   function handleSelectChange(val) {
-    const newValue = uniqBy(val, 'value');
+    let newValue = val;
+    if (Array.isArray(val)) {
+      newValue = uniqBy(val, 'value');
+    }
     if (!clearAfterEnter) {
       setValue(newValue);
     }
@@ -211,7 +238,7 @@ const PeaAutocompleteList = ({
   const components = {
     Menu,
     NoOptionsMessage,
-    Option,
+    Option: OptionComponent,
     MultiValue,
     ValueContainer,
     Control: InputControl,
@@ -270,14 +297,18 @@ const PeaAutocompleteList = ({
         placeholder={placeholder}
         autoFocus
         value={value}
-        inputValue={inputValue}
+        inputValue={inputValue.length ? inputValue : undefined}
         isClearable
         openMenuOnClick={!isAsync}
         cacheOptions={isAsync}
         loadOptions={getSuggestions}
+        noOptionsMessage={() => noOptionsMessage}
         components={components}
         onChange={handleSelectChange}
         isMulti={isMulti}
+        TextFieldProps={{
+          label,
+        }}
         {...syncProps}
       />
     </div>
@@ -285,6 +316,8 @@ const PeaAutocompleteList = ({
 };
 
 PeaAutocompleteList.defaultProps = {
+  noOptionsMessage: 'No results found',
+  label: undefined,
   canCreate: true,
   placeholder: '',
   fullWidth: true,
@@ -297,9 +330,12 @@ PeaAutocompleteList.defaultProps = {
   value: [],
   isMulti: false,
   InputControl: PeaSearchInputControl,
+  OptionComponent: Option,
 };
 
 PeaAutocompleteList.propTypes = {
+  noOptionsMessage: PropTypes.string,
+  label: PropTypes.string,
   canCreate: PropTypes.bool,
   value: PropTypes.arrayOf(PropTypes.object),
   isMulti: PropTypes.bool,
@@ -314,6 +350,7 @@ PeaAutocompleteList.propTypes = {
   fullWidth: PropTypes.bool,
   clearOnFocus: PropTypes.bool,
   InputControl: PropTypes.func,
+  OptionComponent: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   onChange: PropTypes.func.isRequired,
   hideSuggestions: PropTypes.bool,
   clearAfterEnter: PropTypes.bool,

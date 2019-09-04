@@ -30,13 +30,37 @@ const styles = () => ({
 });
 
 const PeaCounter = withStyles(styles, { name: 'PeaCounter' })(
-  ({ classes, value, name, onChange, ...props }) => {
-    const handleChange = operator => () =>
-      onChange({ target: { value: parseInt(value, 10) + operator, name } });
+  ({ classes, value, name, onChange, min, max, ...props }) => {
+    const handleButtonClicked = operator => () => {
+      const newVal = parseInt(value, 10) + operator;
+      if (newVal > max || newVal < min) {
+        return;
+      }
+      onChange({ target: { value: newVal, name } });
+    };
+
+    const handleInputChange = e => {
+      const newVal = e.target.value
+        ? parseInt(e.target.value, 10)
+        : e.target.value;
+      onChange({ target: { value: newVal, name } });
+    };
+
+    const handleBlur = () => {
+      if (value > max) {
+        onChange({ target: { value: max, name } });
+      }
+      if (value < min) {
+        onChange({ target: { value: min, name } });
+      }
+    };
 
     return (
       <div className={cx('PeaCounter-root', classes.root)}>
-        <IconButton className={classes.iconButton} onClick={handleChange(-1)}>
+        <IconButton
+          className={classes.iconButton}
+          onClick={handleButtonClicked(-1)}
+        >
           <PeaIcon
             className={classes.icon}
             icon={'remove_circle'}
@@ -52,11 +76,15 @@ const PeaCounter = withStyles(styles, { name: 'PeaCounter' })(
           type={'number'}
           name={name}
           value={value}
-          onChange={onChange}
+          onChange={handleInputChange}
+          onBlur={handleBlur}
           {...props}
         />
 
-        <IconButton className={classes.iconButton} onClick={handleChange(1)}>
+        <IconButton
+          className={classes.iconButton}
+          onClick={handleButtonClicked(1)}
+        >
           <PeaIcon
             className={classes.icon}
             icon={'add_circle'}
@@ -72,10 +100,14 @@ PeaCounter.propTypes = {
   name: PropTypes.string,
   value: PropTypes.number,
   onChange: PropTypes.func,
+  min: PropTypes.number,
+  max: PropTypes.number,
 };
 
 PeaCounter.defaultProps = {
   onChange: () => {},
+  min: 0,
+  max: 1000,
 };
 
 PeaCounter.metadata = {

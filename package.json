@@ -34,9 +34,9 @@
     "@date-io/moment": "^1.1.0",
     "@material-ui/core": "^4.1.3",
     "@material-ui/lab": "^4.0.0-alpha.18",
+    "@material-ui/pickers": "^3.2.2",
     "@material-ui/styles": "^4.1.2",
     "@material-ui/system": "^4.3.0",
-    "@material-ui/pickers": "^3.2.2",
     "axios": "^0.19.0",
     "classnames": "^2.2.6",
     "clsx": "^1.0.3",
@@ -67,6 +67,7 @@
     "react-select": "^3.0.4",
     "react-select-v2": "^2.4.2",
     "react-swipeable-views": "^0.13.3",
+    "react-virtualized-auto-sizer": "1.0.2",
     "source-map-explorer": "^2.0.1",
     "yup": "^0.26.10"
   },

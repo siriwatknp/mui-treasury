@@ -1,9 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, memo } from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Grid from '@material-ui/core/Grid';
 import SwipeableViews from 'react-swipeable-views';
+import AutoSizer from 'react-virtualized-auto-sizer';
 
 const PeaSwipeableTabs = ({
   tabs,
@@ -42,7 +43,7 @@ const PeaSwipeableTabs = ({
       direction="column"
       {...props}
       style={{
-        flex: 1,
+        height: '100%',
       }}
     >
       <Grid item>
@@ -66,28 +67,41 @@ const PeaSwipeableTabs = ({
       </Grid>
 
       <Grid
-        container
-        direction="column"
+        item
         style={{
           flex: 1,
         }}
       >
-        <SwipeableViews
-          style={{
-            width: '100%',
-            height: '100%',
-          }}
-          containerStyle={{
-            backfaceVisibility: 'hidden',
-            width: '100%',
-            height: '100%',
-          }}
-          enableMouseEvents={enableFeedback}
-          index={index}
-          onSwitching={onSwitching}
-        >
-          {children}
-        </SwipeableViews>
+        <AutoSizer>
+          {({ height, width }) => (
+            <SwipeableViews
+              style={{
+                height,
+                width,
+              }}
+              containerStyle={{
+                height: '100%',
+              }}
+              slideStyle={{
+                height: '100%',
+              }}
+              enableMouseEvents={enableFeedback}
+              index={index}
+              onSwitching={onSwitching}
+            >
+              {React.Children.map(children, child => (
+                <div
+                  style={{
+                    padding: 16,
+                    minHeight: '100%',
+                  }}
+                >
+                  {child}
+                </div>
+              ))}
+            </SwipeableViews>
+          )}
+        </AutoSizer>
       </Grid>
     </Grid>
   );
@@ -111,4 +125,4 @@ PeaSwipeableTabs.metadata = {
   name: 'Pea Swipeable Tabs',
 };
 
-export default PeaSwipeableTabs;
+export default memo(PeaSwipeableTabs);

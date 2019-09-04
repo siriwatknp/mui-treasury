@@ -3,6 +3,7 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
     root: {
       display: 'flex',
       flexDirection: 'column',
+      width: '100%',
       '&.PeaEventCardSmall-root': {
         transition: '0.3s',
         margin: 'auto',
@@ -78,11 +79,9 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
           textAlign: 'left',
           padding: spacing(2),
         },
-        '> * span.MuiCardHeader-title': {
+        '&  span.MuiCardHeader-title': {
           fontWeight: 'bold',
-          textAlign: 'left',
-          fontSize: '5rem !important',
-          marginBottom: spacing(1.5),
+          color: 'rgba(0, 0, 0, 0.87)',
         },
 
         '& .MuiTypography--heading': {
@@ -443,14 +442,14 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
         position: 'relative',
         textAlign: 'left',
         '& .MuiCardMedia-root': {
-          paddingTop: '44%',
+          paddingTop: '56%',
           position: 'absolute',
           width: '100%',
           top: 0,
           zIndex: 1,
           backgroundColor: palette.grey[200],
           [breakpoints.up('sm')]: {
-            paddingTop: '40%',
+            paddingTop: '56%',
           },
         },
         '& .MuiCardContent-root': {
@@ -458,10 +457,10 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
           textAlign: 'left',
           zIndex: 2,
           background: palette.common.white,
-          marginTop: '36%',
+          marginTop: '53%',
           borderRadius: spacing(2),
           [breakpoints.up('sm')]: {
-            marginTop: '36%',
+            marginTop: '53%',
           },
           '& .MuiTabs-root': {
             marginLeft: -16,
