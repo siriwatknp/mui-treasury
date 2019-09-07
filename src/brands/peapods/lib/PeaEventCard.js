@@ -75,7 +75,8 @@ const Share = props => (
   </PeaButton>
 );
 
-const CreatePod = props => (
+// eslint-disable-next-line react/prop-types
+const CreatePod = ({ hasPod, ...props }) => (
   <PeaButton
     shape={''}
     size={'small'}
@@ -84,7 +85,7 @@ const CreatePod = props => (
     icon={<PeaIcon icon={'add_circle'} />}
     {...props}
   >
-    Create Pod
+    {hasPod ? 'Edit Pod' : 'Create Pod'}
   </PeaButton>
 );
 
@@ -105,6 +106,7 @@ const PeaEventCard = ({
   onShowDetailsClicked,
   onShareEventClicked,
   onCreatePodClicked,
+  hasPod,
   ...props
 }) => (
   <Card className={'PeaEventCard-root'} {...props}>
@@ -193,7 +195,7 @@ const PeaEventCard = ({
       left={
         <>
           <Share onClick={onShareEventClicked} />
-          <CreatePod onClick={onCreatePodClicked} />
+          <CreatePod hasPod={hasPod} onClick={onCreatePodClicked} />
           <Details onClick={onShowDetailsClicked} />
         </>
       }
@@ -226,6 +228,7 @@ PeaEventCard.propTypes = {
     attending: PropTypes.number.isRequired,
     limit: PropTypes.number,
   }).isRequired,
+  hasPod: PropTypes.bool,
 };
 
 PeaEventCard.defaultProps = {
@@ -235,6 +238,7 @@ PeaEventCard.defaultProps = {
   interestedPeas: [],
   social: undefined,
   socialLink: undefined,
+  hasPod: false,
 };
 
 PeaEventCard.metadata = {

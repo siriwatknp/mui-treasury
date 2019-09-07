@@ -46,7 +46,12 @@ const PeaSwipeableTabs = ({
         height: '100%',
       }}
     >
-      <Grid item>
+      <Grid
+        item
+        style={{
+          width: '100%',
+        }}
+      >
         <Tabs
           variant={'fullWidth'}
           centered
