@@ -13,6 +13,7 @@ import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import TextField from '@material-ui/core/TextField';
+
 import PeaAvatar from './PeaAvatar';
 import PeaButton from './PeaButton';
 import PeaIcon from './PeaIcon';
@@ -35,6 +36,8 @@ const PeaProfileEditor = ({
   isPrivate,
   onCancel,
   onSubmit,
+  onChangeCoverPhotoClicked,
+  onChangeProfilePhotosClicked,
 }) => {
   const [user, setUser] = useState({
     name,
@@ -53,7 +56,10 @@ const PeaProfileEditor = ({
   return (
     <Card className={'PeaFullProfile-root'}>
       <CardMedia className={'MuiCardMedia-root'} image={cover}>
-        <ButtonBase className={'PeaFullProfile-coverImgBtn'}>
+        <ButtonBase
+          className={'PeaFullProfile-coverImgBtn'}
+          onClick={onChangeCoverPhotoClicked}
+        >
           <PeaIcon
             style={{ marginTop: -40 }}
             inverted
@@ -63,10 +69,14 @@ const PeaProfileEditor = ({
           <PeaText inverted>Change cover picture</PeaText>
         </ButtonBase>
       </CardMedia>
+
       <CardContent className={'MuiCardContent-root'}>
         <Grid container justify={'space-between'} spacing={2}>
           <Grid item>
-            <ButtonBase className={'PeaFullProfile-profileImgBtn'}>
+            <ButtonBase
+              className={'PeaFullProfile-profileImgBtn'}
+              onClick={onChangeProfilePhotosClicked}
+            >
               <PeaAvatar className={'MuiAvatar-root-profilePic'} src={image} />
               <Box position={'absolute'}>
                 <PeaIcon
@@ -156,6 +166,7 @@ const PeaProfileEditor = ({
             <TextField fullWidth select label={'Day'} />
           </Grid>
         </Grid>
+
         <div>
           <FormControl margin={'normal'} component="fieldset">
             <FormLabel component="legend">Status</FormLabel>
@@ -181,10 +192,12 @@ const PeaProfileEditor = ({
             </RadioGroup>
           </FormControl>
         </div>
+
         <PeaTextArea
           label={'Tags'}
           value={tags.map(({ label }) => `#${label}`).join(', ')}
         />
+
         <>
           <TextField
             label={'Email'}
@@ -202,6 +215,7 @@ const PeaProfileEditor = ({
             <FormLabel>Private account</FormLabel>
             <PeaSwitch checked={user.privateAccount} />
           </FormControl>
+
           <FormControl margin={'normal'} fullWidth>
             <FormLabel>Linked accounts</FormLabel>
             <Grid container>
@@ -264,7 +278,10 @@ PeaProfileEditor.propTypes = {
   isPrivate: PropTypes.bool,
   onSubmit: PropTypes.func,
   onCancel: PropTypes.func,
+  onChangeCoverPhotoClicked: PropTypes.func.isRequired,
+  onChangeProfilePhotosClicked: PropTypes.func.isRequired,
 };
+
 PeaProfileEditor.defaultProps = {
   userName: '',
   site: '',
@@ -275,7 +292,9 @@ PeaProfileEditor.defaultProps = {
   onSubmit: () => {},
   onCancel: () => {},
 };
+
 PeaProfileEditor.propTypes = {};
+
 PeaProfileEditor.defaultProps = {};
 
 export default PeaProfileEditor;

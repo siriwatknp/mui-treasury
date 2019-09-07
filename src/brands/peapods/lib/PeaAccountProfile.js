@@ -8,12 +8,12 @@ import Hidden from '@material-ui/core/Hidden';
 import Box from '@material-ui/core/Box';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
-import ButtonBase from '@material-ui/core/ButtonBase';
 import Link from '@material-ui/core/Link';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
+
 import PeaButton from './PeaButton';
 import PeaIcon from './PeaIcon';
 import PeaAvatar from './PeaAvatar';
@@ -23,6 +23,8 @@ import PeaText from './PeaTypography';
 import PeaSocialAvatar from './PeaSocialAvatar';
 import PeaTag from './PeaTag';
 import PeaProfileEditor from './PeaProfileEditor';
+
+// TODO: refactor this to use PeaSwipeableTabs
 
 const PeaAccountProfile = ({
   isCurrentUser,
@@ -48,10 +50,13 @@ const PeaAccountProfile = ({
   onSubmit,
   editing,
   setEditing,
+  onChangeCoverPhotoClicked,
+  onChangeProfilePhotosClicked,
 }) => {
   const [index, onChange] = useState(0);
   const [anchorEl, setAnchor] = useState(null);
   const open = Boolean(anchorEl);
+
   if (editing) {
     return (
       <PeaProfileEditor
@@ -68,6 +73,8 @@ const PeaAccountProfile = ({
         isPrivate={isPrivate}
         onSubmit={onSubmit}
         onCancel={() => setEditing(false)}
+        onChangeCoverPhotoClicked={onChangeCoverPhotoClicked}
+        onChangeProfilePhotosClicked={onChangeProfilePhotosClicked}
       />
     );
   }
@@ -98,7 +105,9 @@ const PeaAccountProfile = ({
           </PeaText>
         </ListItemText>
       </MenuItem>
+
       <Divider variant={'middle'} />
+
       <MenuItem onClick={() => setAnchor(null)}>
         <ListItemText disableTypography>
           <PeaText color={'error'} variant={'body1'} weight={'bold'}>
@@ -108,33 +117,14 @@ const PeaAccountProfile = ({
       </MenuItem>
     </Menu>
   );
+
   return (
     <Card className={'PeaAccountProfile-root'}>
       <CardMedia className={'MuiCardMedia-root'} image={cover} />
       <CardContent className={'MuiCardContent-root'}>
         <Grid container justify={'space-between'} spacing={2}>
           <Grid item style={{ height: 0 }}>
-            {editing ? (
-              <ButtonBase className={'PeaAccountProfile-profileImgBtn'}>
-                <PeaAvatar
-                  className={'MuiAvatar-root-profilePic'}
-                  src={image}
-                />
-                <Box position={'absolute'}>
-                  <PeaIcon
-                    inverted
-                    icon={'add_photo_alternate'}
-                    shape={'square'}
-                    size={'large'}
-                  />
-                  <PeaText inverted size={'small'}>
-                    Change
-                  </PeaText>
-                </Box>
-              </ButtonBase>
-            ) : (
-              <PeaAvatar className={'MuiAvatar-root-profilePic'} src={image} />
-            )}
+            <PeaAvatar className={'MuiAvatar-root-profilePic'} src={image} />
           </Grid>
           <Hidden only={'xs'}>
             <Grid item>
@@ -153,6 +143,7 @@ const PeaAccountProfile = ({
             </PeaText>
           </Grid>
         </Grid>
+
         <Box mt={4} mb={3}>
           <Grid className={'MuiGrid-container -actions'} container spacing={1}>
             <Grid item>
@@ -190,6 +181,7 @@ const PeaAccountProfile = ({
             )}
           </Grid>
         </Box>
+
         <Hidden smUp>
           <Grid container justify={'space-evenly'}>
             <Grid item>
@@ -204,12 +196,15 @@ const PeaAccountProfile = ({
           </Grid>
           <br />
         </Hidden>
+
         <Hidden only={'xs'}>
           <div style={{ marginTop: -32 }} />
         </Hidden>
+
         <PeaText variant={'h5'} weight={'bold'}>
           {name}
         </PeaText>
+
         <PeaText gutterBottom>{tag}</PeaText>
         <PeaText>
           <Link
@@ -222,6 +217,7 @@ const PeaAccountProfile = ({
           </Link>
         </PeaText>
         <br />
+
         <Grid container wrap={'nowrap'} spacing={1}>
           <Grid item>
             <PeaIcon color={'secondary'} size={'small'}>
@@ -243,6 +239,7 @@ const PeaAccountProfile = ({
           </Grid>
         </Grid>
       </CardContent>
+
       <Tabs
         className={'MuiTabs-root'}
         variant={'fullWidth'}
@@ -254,6 +251,7 @@ const PeaAccountProfile = ({
         <Tab label="About" disableRipple />
         <Tab label="Groups" disableRipple />
       </Tabs>
+
       {index === 0 && (
         <Box minHeight={300} bgcolor={'grey.100'} p={3}>
           {pods.map(item => (
@@ -261,6 +259,7 @@ const PeaAccountProfile = ({
           ))}
         </Box>
       )}
+
       {index === 1 && (
         <Box p={2} textAlign={'left'}>
           <PeaText gutterBottom variant={'subtitle1'} weight={'bold'}>
@@ -336,7 +335,6 @@ PeaAccountProfile.propTypes = {
   ),
   reputation: PropTypes.number,
   pods: PropTypes.arrayOf(PropTypes.shape({})),
-
   isCurrentUser: PropTypes.bool,
   email: PropTypes.string,
   followersCount: PropTypes.number,
@@ -346,7 +344,10 @@ PeaAccountProfile.propTypes = {
   onSubmit: PropTypes.func,
   editing: PropTypes.bool,
   setEditing: PropTypes.func,
+  onChangeCoverPhotoClicked: PropTypes.func.isRequired,
+  onChangeProfilePhotosClicked: PropTypes.func.isRequired,
 };
+
 PeaAccountProfile.defaultProps = {
   userName: '',
   tag: '',
