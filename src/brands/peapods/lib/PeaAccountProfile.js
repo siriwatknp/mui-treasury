@@ -53,7 +53,6 @@ const PeaAccountProfile = ({
   editing,
   isUpdating,
   isDeleting,
-  onSubmit,
   setEditing,
   onChangeCoverPhotoClicked,
   onChangeProfilePhotosClicked,
@@ -93,7 +92,7 @@ const PeaAccountProfile = ({
       open={open}
       onClose={() => setAnchor(null)}
       anchorOrigin={{
-        vertical: 'bottom',
+        vertical: 'top',
         horizontal: 'left',
       }}
       transformOrigin={{
