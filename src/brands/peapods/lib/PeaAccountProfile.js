@@ -53,7 +53,6 @@ const PeaAccountProfile = ({
   editing,
   isUpdating,
   isDeleting,
-  onSubmit,
   setEditing,
   onChangeCoverPhotoClicked,
   onChangeProfilePhotosClicked,
