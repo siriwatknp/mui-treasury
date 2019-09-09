@@ -22,6 +22,7 @@ import PeaStatistic from './PeaStatistic';
 import PeaSwitch from './PeaSwitch';
 import PeaTextArea from './PeaTextArea';
 import PeaText from './PeaTypography';
+import PeaLoadingSpinner from './PeaLoadingSpinner';
 
 const PeaProfileEditor = ({
   cover,
@@ -38,6 +39,7 @@ const PeaProfileEditor = ({
   onSubmit,
   onChangeCoverPhotoClicked,
   onChangeProfilePhotosClicked,
+  isUpdating,
 }) => {
   const [user, setUser] = useState({
     name,
@@ -105,8 +107,13 @@ const PeaProfileEditor = ({
               variant={'contained'}
               color={'primary'}
               style={{ minWidth: 100 }}
+              disabled={isUpdating}
             >
-              Save
+              {isUpdating ? (
+                <PeaLoadingSpinner size={20} style={{ margin: 0 }} />
+              ) : (
+                'Save'
+              )}
             </PeaButton>
           </Grid>
         </Grid>
@@ -276,6 +283,7 @@ PeaProfileEditor.propTypes = {
   ),
   email: PropTypes.string.isRequired,
   isPrivate: PropTypes.bool,
+  isUpdating: PropTypes.bool,
   onSubmit: PropTypes.func,
   onCancel: PropTypes.func,
   onChangeCoverPhotoClicked: PropTypes.func.isRequired,
@@ -289,6 +297,7 @@ PeaProfileEditor.defaultProps = {
   location: '',
   tags: [],
   isPrivate: false,
+  isUpdating: false,
   onSubmit: () => {},
   onCancel: () => {},
 };

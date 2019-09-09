@@ -23,6 +23,8 @@ import PeaText from './PeaTypography';
 import PeaSocialAvatar from './PeaSocialAvatar';
 import PeaTag from './PeaTag';
 import PeaProfileEditor from './PeaProfileEditor';
+import PeaUserSettings from './PeaUserSettings';
+import PeaConfirmation from './PeaConfirmation';
 
 // TODO: refactor this to use PeaSwipeableTabs
 
@@ -49,12 +51,17 @@ const PeaAccountProfile = ({
   groupList,
   onSubmit,
   editing,
+  isUpdating,
+  isDeleting,
+  onSubmit,
   setEditing,
   onChangeCoverPhotoClicked,
   onChangeProfilePhotosClicked,
+  deleteProfile,
 }) => {
   const [index, onChange] = useState(0);
   const [anchorEl, setAnchor] = useState(null);
+  const [delModalOpen, setDelModalOpen] = useState(false);
   const open = Boolean(anchorEl);
 
   if (editing) {
@@ -72,6 +79,7 @@ const PeaAccountProfile = ({
         location={location}
         isPrivate={isPrivate}
         onSubmit={onSubmit}
+        isUpdating={isUpdating}
         onCancel={() => setEditing(false)}
         onChangeCoverPhotoClicked={onChangeCoverPhotoClicked}
         onChangeProfilePhotosClicked={onChangeProfilePhotosClicked}
@@ -147,37 +155,64 @@ const PeaAccountProfile = ({
         <Box mt={4} mb={3}>
           <Grid className={'MuiGrid-container -actions'} container spacing={1}>
             <Grid item>
-              <PeaButton
-                variant={'contained'}
-                color={'primary'}
-                size={'small'}
-                onClick={isCurrentUser ? () => setEditing(true) : null}
-              >
-                {isCurrentUser ? 'Edit' : 'Follow'}
-              </PeaButton>
-            </Grid>
-            <Grid item>
-              <PeaButton variant={'outlined'} color={'primary'} size={'small'}>
-                Invite
-              </PeaButton>
-            </Grid>
-            <Grid item>
-              <PeaButton icon={'email'} size={'small'} shape={'circular'}>
-                message
-              </PeaButton>
+              {isCurrentUser ? (
+                <>
+                  <PeaUserSettings
+                    onNotificationsChange={() => {}}
+                    onReceiveEmailChange={() => {}}
+                    onEditProfile={() => setEditing(true)}
+                    onContactSupport={() => {}}
+                    onLogout={() => {}}
+                    onDeleteProfile={() => setDelModalOpen(true)}
+                  />
+                  <PeaConfirmation
+                    title={'Delete Account'}
+                    content={'Are you sure?'}
+                    submitLabel={'Delete'}
+                    open={delModalOpen}
+                    onClose={() => setDelModalOpen(false)}
+                    onSubmit={() => deleteProfile()}
+                    submitting={isDeleting}
+                  />
+                </>
+              ) : (
+                <PeaButton
+                  variant={'contained'}
+                  color={'primary'}
+                  size={'small'}
+                >
+                  Follow
+                </PeaButton>
+              )}
             </Grid>
             {!isCurrentUser && (
-              <Grid item>
-                <PeaButton
-                  icon={'more_vert'}
-                  size={'small'}
-                  shape={'circular'}
-                  onClick={e => setAnchor(e.currentTarget)}
-                >
-                  more
-                </PeaButton>
-                {renderMenu()}
-              </Grid>
+              <>
+                <Grid item>
+                  <PeaButton
+                    variant={'outlined'}
+                    color={'primary'}
+                    size={'small'}
+                  >
+                    Invite
+                  </PeaButton>
+                </Grid>
+                <Grid item>
+                  <PeaButton icon={'email'} size={'small'} shape={'circular'}>
+                    message
+                  </PeaButton>
+                </Grid>
+                <Grid item>
+                  <PeaButton
+                    icon={'more_vert'}
+                    size={'small'}
+                    shape={'circular'}
+                    onClick={e => setAnchor(e.currentTarget)}
+                  >
+                    more
+                  </PeaButton>
+                  {renderMenu()}
+                </Grid>
+              </>
             )}
           </Grid>
         </Box>
@@ -343,9 +378,13 @@ PeaAccountProfile.propTypes = {
   groupList: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   onSubmit: PropTypes.func,
   editing: PropTypes.bool,
+  isUpdating: PropTypes.bool,
+  isDeleting: PropTypes.bool,
+  onSubmit: PropTypes.func,
   setEditing: PropTypes.func,
   onChangeCoverPhotoClicked: PropTypes.func.isRequired,
   onChangeProfilePhotosClicked: PropTypes.func.isRequired,
+  deleteProfile: PropTypes.func,
 };
 
 PeaAccountProfile.defaultProps = {
@@ -366,9 +405,12 @@ PeaAccountProfile.defaultProps = {
   followingCount: 0,
   isPrivate: false,
   editing: false,
+  isUpdating: false,
+  isDeleting: false,
   groupList: undefined,
   onSubmit: () => {},
   setEditing: () => {},
+  deleteProfile: () => {},
 };
 PeaAccountProfile.metadata = {
   name: 'Pea Account Profile',

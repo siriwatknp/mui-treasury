@@ -49,7 +49,6 @@ const PeaUserSettings = ({
           color: 'primary',
           size: 'small',
         }}
-        style={{ marginTop: 6 }}
         onClick={e => setAnchor(e.currentTarget)}
       >
         Settings
