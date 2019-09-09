@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Button from '@material-ui/core/Button';
-
-import PeaIcon from './PeaIcon';
-import PeaText from './PeaTypography';
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  EmailShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  EmailIcon,
+} from 'react-share';
 
 const useStyles = makeStyles({
-  paper: {
-    background: 'transparent',
-    boxShadow: 'none',
-  },
   container: {
     height: 150,
     display: 'flex',
@@ -20,47 +20,14 @@ const useStyles = makeStyles({
   },
   item: {
     display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
     alignItems: 'center',
     margin: 20,
-  },
-  shareButton: {
-    padding: 0,
-    marginBottom: 8,
-  },
-  icon: {
-    width: '100%',
-    height: '100%',
-    marginLeft: '-0.3em !important',
+    cursor: 'pointer',
   },
 });
 
-const PeaShareContent = ({ open, onClose, onShare }) => {
+const PeaShareContent = ({ open, title, socialLink, onClose, onShare }) => {
   const classes = useStyles();
-
-  const shareContent = [
-    {
-      icon: 'fa fa-envelope',
-      name: 'email',
-    },
-    {
-      icon: 'fab fa-facebook-f',
-      name: 'facebook',
-    },
-    {
-      icon: 'fab fa-twitter',
-      name: 'twitter',
-    },
-    {
-      icon: 'fab fa-instagram',
-      name: 'instagram',
-    },
-    {
-      icon: 'fab fa-snapchat',
-      name: 'snapchat',
-    },
-  ];
 
   return (
     <SwipeableDrawer
@@ -71,24 +38,30 @@ const PeaShareContent = ({ open, onClose, onShare }) => {
       onClick={e => e.stopPropagation()}
     >
       <Grid container className={classes.container}>
-        {shareContent.map(item => (
-          <Grid key={item.name} item className={classes.item}>
-            <Button
-              variant="contained"
-              color={'secondary'}
-              className={classes.shareButton}
-              onClick={() => onShare(item.name)}
-            >
-              <PeaIcon
-                size={'large'}
-                color={'inherit'}
-                icon={item.icon}
-                className={classes.icon}
-              />
-            </Button>
-            <PeaText size={'small'}>{item.name}</PeaText>
-          </Grid>
-        ))}
+        <EmailShareButton
+          url={socialLink}
+          subject={title}
+          className={classes.item}
+          beforeOnClick={() => onShare('email')}
+        >
+          <EmailIcon size={45} round />
+        </EmailShareButton>
+        <FacebookShareButton
+          url={socialLink}
+          quote={title}
+          className={classes.item}
+          beforeOnClick={() => onShare('facebook')}
+        >
+          <FacebookIcon size={45} round />
+        </FacebookShareButton>
+        <TwitterShareButton
+          url={socialLink}
+          title={title}
+          className={classes.item}
+          beforeOnClick={() => onShare('twitter')}
+        >
+          <TwitterIcon size={45} round />
+        </TwitterShareButton>
       </Grid>
     </SwipeableDrawer>
   );
@@ -96,10 +69,15 @@ const PeaShareContent = ({ open, onClose, onShare }) => {
 
 PeaShareContent.propTypes = {
   open: PropTypes.bool.isRequired,
+  title: PropTypes.string,
+  socialLink: PropTypes.string,
   onClose: PropTypes.func.isRequired,
   onShare: PropTypes.func.isRequired,
 };
-PeaShareContent.defaultProps = {};
+PeaShareContent.defaultProps = {
+  title: '',
+  socialLink: '',
+};
 PeaShareContent.metadata = {
   name: 'Pea Share Content',
 };
