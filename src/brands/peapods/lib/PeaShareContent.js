@@ -14,23 +14,25 @@ const useStyles = makeStyles({
     boxShadow: 'none',
   },
   container: {
-    overflow: 'hidden',
-    maxWidth: 400,
-    height: 300,
-    margin: '0 auto',
-    background: 'white',
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
+    height: 150,
+    display: 'flex',
+    justifyContent: 'center',
   },
   item: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    margin: 20,
   },
   shareButton: {
     padding: 0,
     marginBottom: 8,
+  },
+  icon: {
+    width: '100%',
+    height: '100%',
+    marginLeft: '-0.3em !important',
   },
 });
 
@@ -39,11 +41,7 @@ const PeaShareContent = ({ open, onClose, onShare }) => {
 
   const shareContent = [
     {
-      icon: 'fas fa-comment',
-      name: 'custom',
-    },
-    {
-      icon: 'fal fa-envelope',
+      icon: 'fa fa-envelope',
       name: 'email',
     },
     {
@@ -54,6 +52,14 @@ const PeaShareContent = ({ open, onClose, onShare }) => {
       icon: 'fab fa-twitter',
       name: 'twitter',
     },
+    {
+      icon: 'fab fa-instagram',
+      name: 'instagram',
+    },
+    {
+      icon: 'fab fa-snapchat',
+      name: 'snapchat',
+    },
   ];
 
   return (
@@ -61,18 +67,24 @@ const PeaShareContent = ({ open, onClose, onShare }) => {
       anchor="bottom"
       open={open}
       onClose={onClose}
-      classes={classes}
+      onOpen={() => {}}
+      onClick={e => e.stopPropagation()}
     >
-      <Grid container spacing={3} className={classes.container}>
+      <Grid container className={classes.container}>
         {shareContent.map(item => (
-          <Grid key={item.name} item xs={3} className={classes.item}>
+          <Grid key={item.name} item className={classes.item}>
             <Button
               variant="contained"
               color={'secondary'}
               className={classes.shareButton}
               onClick={() => onShare(item.name)}
             >
-              <PeaIcon size={'large'} color={'inherit'} icon={item.icon} />
+              <PeaIcon
+                size={'large'}
+                color={'inherit'}
+                icon={item.icon}
+                className={classes.icon}
+              />
             </Button>
             <PeaText size={'small'}>{item.name}</PeaText>
           </Grid>
