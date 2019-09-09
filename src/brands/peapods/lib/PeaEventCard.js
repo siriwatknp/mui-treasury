@@ -260,7 +260,7 @@ const PeaEventCard = ({
               anchorEl={shareAnchorEl}
               onClose={handleShareClose}
               anchorOrigin={{
-                vertical: 'bottom',
+                vertical: 'top',
                 horizontal: 'center',
               }}
               transformOrigin={{

@@ -63,7 +63,7 @@ const PeaFullProfile = ({
       open={open}
       onClose={() => setAnchor(null)}
       anchorOrigin={{
-        vertical: 'bottom',
+        vertical: 'top',
         horizontal: 'left',
       }}
       transformOrigin={{
