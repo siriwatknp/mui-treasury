@@ -36,9 +36,8 @@ const PeaMenuItem = ({
   isVertical,
   ...props
 }) => {
-  const renderIcon = () => (
-    <PeaIcon color={'secondary'} icon={icon} {...IconProps} />
-  );
+  const renderIcon = () =>
+    icon && <PeaIcon color={'secondary'} icon={icon} {...IconProps} />;
   return (
     <Box
       className={clsx(classes.root, className)}

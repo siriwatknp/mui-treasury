@@ -48,6 +48,8 @@ const PeaAccountProfile = ({
   followersCount,
   followingCount,
   isPrivate,
+  groupList,
+  onSubmit,
   editing,
   isUpdating,
   isDeleting,
@@ -339,8 +341,7 @@ const PeaAccountProfile = ({
           </Grid>
         </Box>
       )}
-
-      {index === 2 && <Box minHeight={300} />}
+      {index === 2 && <Box minHeight={500}>{groupList}</Box>}
     </Card>
   );
 };
@@ -374,6 +375,8 @@ PeaAccountProfile.propTypes = {
   followersCount: PropTypes.number,
   followingCount: PropTypes.number,
   isPrivate: PropTypes.bool,
+  groupList: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  onSubmit: PropTypes.func,
   editing: PropTypes.bool,
   isUpdating: PropTypes.bool,
   isDeleting: PropTypes.bool,
@@ -404,6 +407,7 @@ PeaAccountProfile.defaultProps = {
   editing: false,
   isUpdating: false,
   isDeleting: false,
+  groupList: undefined,
   onSubmit: () => {},
   setEditing: () => {},
   deleteProfile: () => {},
