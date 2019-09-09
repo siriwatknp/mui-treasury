@@ -3,8 +3,8 @@ export default ({ palette }) => ({
     root: {
       marginRight: 4,
       '& .MuiIconButton-label': {
-        width: 30,
-        height: 30,
+        width: 36,
+        height: 36,
       },
       '&$checked': {
         '& .PeaIcon': {

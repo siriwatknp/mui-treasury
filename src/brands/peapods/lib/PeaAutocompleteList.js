@@ -287,6 +287,17 @@ const PeaAutocompleteList = ({
 
   const key = value && value.length ? JSON.stringify(value) : inputValue;
 
+  const onBlur = () => {
+    if (inputValue) {
+      const newVal = { label: inputValue, value: inputValue };
+      if (isMulti) {
+        handleSelectChange([...value, newVal]);
+      } else {
+        handleSelectChange(newVal);
+      }
+    }
+  };
+
   return (
     <div className={cx(classes.root, fullWidth && 'fullWidth')}>
       <SelectComponent
@@ -305,6 +316,7 @@ const PeaAutocompleteList = ({
         noOptionsMessage={() => noOptionsMessage}
         components={components}
         onChange={handleSelectChange}
+        onBlur={onBlur}
         isMulti={isMulti}
         TextFieldProps={{
           label,
