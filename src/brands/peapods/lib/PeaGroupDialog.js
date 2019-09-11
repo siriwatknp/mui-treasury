@@ -4,11 +4,23 @@ import PropTypes from 'prop-types';
 import PeaDialog from './PeaDialog';
 import PeaButton from './PeaButton';
 import PeaRadioGroup from './PeaRadioGroup';
+import PeaLoadingSpinner from './PeaLoadingSpinner';
 
-const PeaGroupDialog = ({ onClose, ...props }) => (
+const PeaGroupDialog = ({
+  dialogTitle,
+  actionText,
+  name,
+  type,
+  submitting,
+  onChange,
+  onClose,
+  onSave,
+  ...props
+}) => (
   <PeaDialog
-    className={'PeaGroupDialog'}
-    title={'Create group'}
+    className={'PeaDialog'}
+    title={dialogTitle}
+    titleVariant={'secondaryCentered'}
     content={
       <React.Fragment>
         <TextField
@@ -19,8 +31,10 @@ const PeaGroupDialog = ({ onClose, ...props }) => (
           InputLabelProps={{
             shrink: true,
           }}
+          value={name}
+          onChange={onChange('name')}
         />
-        <PeaRadioGroup />
+        <PeaRadioGroup value={type} onChange={onChange('type')} />
         <TextField
           multiline
           rows={3}
@@ -51,8 +65,17 @@ const PeaGroupDialog = ({ onClose, ...props }) => (
     }
     actions={[
       <PeaButton onClick={onClose}>Cancel</PeaButton>,
-      <PeaButton color={'primary'} variant={'contained'} onClick={onClose}>
-        Create
+      <PeaButton
+        color={'primary'}
+        variant={'contained'}
+        disabled={submitting}
+        onClick={onSave}
+      >
+        {submitting ? (
+          <PeaLoadingSpinner size={20} style={{ margin: 0 }} />
+        ) : (
+          actionText
+        )}
       </PeaButton>,
     ]}
     onClose={onClose}
@@ -64,7 +87,20 @@ PeaGroupDialog.metadata = {
   name: 'Pea Group Dialog',
 };
 PeaGroupDialog.propTypes = {
+  dialogTitle: PropTypes.string,
+  actionText: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  submitting: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
+};
+
+PeaGroupDialog.defaultProps = {
+  dialogTitle: 'Create Group',
+  actionText: 'Create',
+  submitting: false,
 };
 
 export default PeaGroupDialog;

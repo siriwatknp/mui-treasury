@@ -12,7 +12,7 @@ export default ({ spacing, breakpoints, white, palette }) => ({
           paddingTop: 24,
         },
         '& .DialogTitle--secondaryCentered': {
-          '& h6': {
+          '& h6, h2': {
             color: palette.secondary.main,
             fontWeight: 'bold',
             textAlign: 'center',
