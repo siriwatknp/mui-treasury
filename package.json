@@ -66,6 +66,7 @@
     "react-scroll": "^1.7.11",
     "react-select": "^3.0.4",
     "react-select-v2": "^2.4.2",
+    "react-share": "3.0.1",
     "react-swipeable-views": "^0.13.3",
     "react-virtualized-auto-sizer": "1.0.2",
     "source-map-explorer": "^2.0.1",

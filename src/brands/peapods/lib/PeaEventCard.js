@@ -290,6 +290,8 @@ const PeaEventCard = ({
             </Popover>
             <PeaShareContent
               open={openMoreShare}
+              title={title}
+              socialLink={socialLink}
               onClose={closeMoreShare}
               onShare={handleMoreShareItem}
             />
