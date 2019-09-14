@@ -7,7 +7,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import PeaRadio from './PeaRadio';
 
 const formControlLabelStyle = {
-  marginRight: '15px',
+  marginRight: '3px',
 };
 
 const PeaRadioGroup = ({ value, onChange }) => (

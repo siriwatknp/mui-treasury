@@ -40,6 +40,23 @@ export default ({ spacing, breakpoints, white, palette }) => ({
           marginBottom: spacing(2),
           justifyContent: 'center',
         },
+        '& .MuiCardMedia-root': {
+          position: 'relative',
+          paddingTop: '44%',
+          width: '100%',
+          zIndex: 1,
+          backgroundColor: palette.grey[200],
+          border: `2px dashed ${palette.secondary.main}`,
+          borderRadius: 8,
+          [breakpoints.up('sm')]: {
+            paddingTop: '32%',
+          },
+        },
+        '& .PeaGroup-coverImgBtn': {
+          position: 'absolute',
+          top: 'calc(50% - 50px)',
+          left: 'calc(50% - 50px)',
+        },
       },
       '&.PeaInvitationDialog': {
         '& .DialogContent--root': {
