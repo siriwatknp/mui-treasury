@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import Tab from '@material-ui/core/Tab/Tab';
 import Tabs from '@material-ui/core/Tabs/Tabs';
 import React, { useState } from 'react';
@@ -57,6 +58,7 @@ const PeaAccountProfile = ({
   onChangeCoverPhotoClicked,
   onChangeProfilePhotosClicked,
   deleteProfile,
+  onCreateGroupClicked,
 }) => {
   const [index, onChange] = useState(0);
   const [anchorEl, setAnchor] = useState(null);
@@ -340,7 +342,27 @@ const PeaAccountProfile = ({
           </Grid>
         </Box>
       )}
-      {index === 2 && <Box minHeight={500}>{groupList}</Box>}
+      {index === 2 && (
+        <Box minHeight={500} style={{ position: 'relative' }}>
+          {groupList}
+          <PeaIcon
+            icon={'add'}
+            bgColor={'lightPrimary'}
+            size={'big'}
+            inverted
+            style={{
+              position: 'absolute',
+              bottom: '20px',
+              right: '20px',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              cursor: 'pointer',
+            }}
+            onClick={onCreateGroupClicked}
+          />
+        </Box>
+      )}
     </Card>
   );
 };
@@ -374,8 +396,7 @@ PeaAccountProfile.propTypes = {
   followersCount: PropTypes.number,
   followingCount: PropTypes.number,
   isPrivate: PropTypes.bool,
-  groupList: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  onSubmit: PropTypes.func,
+  groupList: PropTypes.object,
   editing: PropTypes.bool,
   isUpdating: PropTypes.bool,
   isDeleting: PropTypes.bool,
@@ -384,6 +405,7 @@ PeaAccountProfile.propTypes = {
   onChangeCoverPhotoClicked: PropTypes.func.isRequired,
   onChangeProfilePhotosClicked: PropTypes.func.isRequired,
   deleteProfile: PropTypes.func,
+  onCreateGroupClicked: PropTypes.func,
 };
 
 PeaAccountProfile.defaultProps = {
@@ -410,6 +432,7 @@ PeaAccountProfile.defaultProps = {
   onSubmit: () => {},
   setEditing: () => {},
   deleteProfile: () => {},
+  onCreateGroupClicked: () => {},
 };
 PeaAccountProfile.metadata = {
   name: 'Pea Account Profile',
