@@ -13,7 +13,6 @@ import PeaAvatar from './PeaAvatar';
 import PeaButton from './PeaButton';
 import PeaCardActions from './PeaCardActions';
 import PeaImageCarousel from './PeaImageCarousel';
-import PeaMenuItem from './PeaMenuItem';
 import PeaShareContent from './PeaShareContent';
 
 const MAX_AVATARS = 13;
@@ -93,16 +92,14 @@ const CreatePod = ({ hasPod, ...props }) => (
   </PeaButton>
 );
 
-const MenuItemStyle = {
-  padding: '20px',
-};
-
 const PeaEventCard = ({
   id,
   images,
   profile,
   social,
   socialLink,
+  shareLink,
+  shareText,
   title,
   subTitle,
   timeString,
@@ -121,11 +118,18 @@ const PeaEventCard = ({
   const openSharePopover = Boolean(shareAnchorEl);
   const shareAriaId = openSharePopover ? 'share-popover' : undefined;
 
-  const [openMoreShare, setOpenMoreShare] = useState(false);
-
   const handleShareClick = event => {
     event.stopPropagation();
-    setShareAnchorEl(event.currentTarget);
+
+    if (window.navigator.share) {
+      onShareEventClicked('native');
+      window.navigator.share({
+        title: shareText,
+        url: shareLink,
+      });
+    } else {
+      setShareAnchorEl(event.currentTarget);
+    }
   };
 
   const handleShareClose = event => {
@@ -134,27 +138,8 @@ const PeaEventCard = ({
   };
 
   const handleShareItemClick = item => event => {
-    event.stopPropagation();
-    if (item === 'more') {
-      if (navigator.share) {
-        onShareEventClicked('native');
-      } else {
-        setOpenMoreShare(true);
-      }
-    } else {
-      onShareEventClicked(item);
-    }
-    setShareAnchorEl(null);
-  };
-
-  const closeMoreShare = event => {
-    event.stopPropagation();
-    setOpenMoreShare(false);
-  };
-
-  const handleMoreShareItem = name => {
-    onShareEventClicked(name);
-    setOpenMoreShare(false);
+    onShareEventClicked(item);
+    handleShareClose(event);
   };
 
   return (
@@ -254,47 +239,23 @@ const PeaEventCard = ({
               aria-describedby={shareAriaId}
               variant="contained"
             />
+
             <Popover
               id={shareAriaId}
               open={openSharePopover}
               anchorEl={shareAnchorEl}
               onClose={handleShareClose}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'center',
-              }}
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'center',
-              }}
             >
               <Paper>
-                <PeaMenuItem
-                  style={MenuItemStyle}
-                  onClick={handleShareItemClick('pea')}
-                  label="Share with Peas"
-                />
-
-                <PeaMenuItem
-                  style={MenuItemStyle}
-                  onClick={handleShareItemClick('group')}
-                  label="Share to Group"
-                />
-
-                <PeaMenuItem
-                  style={MenuItemStyle}
-                  label="More"
-                  onClick={handleShareItemClick('more')}
+                <PeaShareContent
+                  title={title}
+                  shareLink={shareLink}
+                  shareText={shareText}
+                  onShare={handleShareItemClick}
                 />
               </Paper>
             </Popover>
-            <PeaShareContent
-              open={openMoreShare}
-              title={title}
-              socialLink={socialLink}
-              onClose={closeMoreShare}
-              onShare={handleMoreShareItem}
-            />
+
             <CreatePod onClick={onCreatePodClicked} />
             <Details onClick={onShowDetailsClicked} />
           </>
@@ -314,6 +275,8 @@ PeaEventCard.propTypes = {
   }).isRequired,
   social: PropTypes.string,
   socialLink: PropTypes.string,
+  shareText: PropTypes.string.isRequired,
+  shareLink: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   subTitle: PropTypes.string,
   podCount: PropTypes.number,
@@ -323,7 +286,7 @@ PeaEventCard.propTypes = {
   interestedPeas: PropTypes.arrayOf(PropTypes.string),
   onShowDetailsClicked: PropTypes.func.isRequired,
   onCreatePodClicked: PropTypes.func.isRequired,
-  onShareEventClicked: PropTypes.func.isRequired,
+  onShareEventClicked: PropTypes.func,
   stats: PropTypes.shape({
     interested: PropTypes.number.isRequired,
     attending: PropTypes.number.isRequired,
@@ -340,6 +303,7 @@ PeaEventCard.defaultProps = {
   social: undefined,
   socialLink: undefined,
   hasPod: false,
+  onShareEventClicked: () => {},
 };
 
 PeaEventCard.metadata = {
