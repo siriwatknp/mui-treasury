@@ -1,140 +1,162 @@
-/* eslint-disable react/forbid-prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import TextField from '@material-ui/core/TextField/TextField';
+import Card from '@material-ui/core/Card';
+import Grid from '@material-ui/core/Grid';
 import CardMedia from '@material-ui/core/CardMedia';
-import ButtonBase from '@material-ui/core/ButtonBase';
-import FormLabel from '@material-ui/core/FormLabel';
-import Box from '@material-ui/core/Box';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import Divider from '@material-ui/core/Divider';
+import ListItemText from '@material-ui/core/ListItemText';
 
-import PeaDialog from './PeaDialog';
 import PeaButton from './PeaButton';
-import PeaLoadingSpinner from './PeaLoadingSpinner';
 import PeaIcon from './PeaIcon';
+import PeaAvatar from './PeaAvatar';
+import PeaStatistic from './PeaStatistic';
+import PeaText from './PeaTypography';
 
-// TODO: render group members
-
-const PeaGroupDialog = ({
-  dialogTitle,
-  actionText,
-  name,
-  description,
+const PeaGroupCard = ({
+  cover,
+  image,
   type,
-  inviteInput,
-  typeInput,
-  profilePhoto,
-  submitting,
-  onChangeCoverPhotoClicked,
-  onChange,
-  onClose,
-  onSave,
-  ...props
-}) => (
-  <PeaDialog
-    className={'PeaDialog'}
-    title={dialogTitle}
-    titleVariant={'secondaryCentered'}
-    content={
-      <>
-        <FormLabel component="legend">Cover Picture</FormLabel>
+  tag,
+  AvatarProps,
+  onEdit,
+  onDelete,
+}) => {
+  const [joined, setJoined] = useState(false);
+  const joinButtonProps = {
+    size: 'small',
+    style: { marginLeft: 8, minWidth: 120 },
+    onClick: () => setJoined(!joined),
+  };
 
-        <Box
-          style={{
-            marginTop: 16,
-            marginBottom: 16,
-          }}
-        >
-          <CardMedia
-            className={'MuiCardMedia-root'}
-            image={profilePhoto}
-            style={profilePhoto && { border: 'none' }}
-            onClick={onChangeCoverPhotoClicked}
+  const [anchorEl, setAnchor] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const onEditClicked = () => {
+    setAnchor(null);
+    onEdit();
+  };
+
+  const onDeleteClicked = () => {
+    setAnchor(null);
+    onDelete();
+  };
+
+  const renderMenu = () => (
+    <Menu
+      id="long-menu"
+      anchorEl={anchorEl}
+      open={open}
+      onClose={() => setAnchor(null)}
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'left',
+      }}
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      PaperProps={{
+        style: {
+          minWidth: 240,
+        },
+      }}
+    >
+      <MenuItem onClick={onEditClicked}>
+        <ListItemText disableTypography>
+          <PeaText variant={'body1'} weight={'bold'}>
+            Edit {tag}
+          </PeaText>
+        </ListItemText>
+      </MenuItem>
+
+      <Divider variant={'middle'} />
+
+      <MenuItem onClick={onDeleteClicked}>
+        <ListItemText disableTypography>
+          <PeaText color={'error'} variant={'body1'} weight={'bold'}>
+            Delete {tag}
+          </PeaText>
+        </ListItemText>
+      </MenuItem>
+    </Menu>
+  );
+
+  return (
+    <Card className={'PeaProfileCard-root'}>
+      <CardMedia className={'MuiCardMedia-root'} image={cover}>
+        <PeaAvatar src={image} size={'large'} {...AvatarProps} />
+      </CardMedia>
+      <CardContent className={'MuiCardContent-root'}>
+        <div className={'PeaProfileCard-actions'}>
+          {joined ? (
+            <PeaButton
+              variant={'outlined'}
+              color={'danger'}
+              {...joinButtonProps}
+            >
+              Leave
+            </PeaButton>
+          ) : (
+            <PeaButton
+              variant={'contained'}
+              color={'primary'}
+              {...joinButtonProps}
+            >
+              Join
+            </PeaButton>
+          )}
+          <IconButton
+            className={'MuiIconButton--tiny'}
+            style={{ marginLeft: 8 }}
+            onClick={e => setAnchor(e.currentTarget)}
           >
-            <ButtonBase className={'PeaGroup-coverImgBtn'}>
-              <PeaIcon
-                inverted
-                icon={'add'}
-                shape={'square'}
-                style={{ fontSize: 100 }}
-              />
-            </ButtonBase>
-          </CardMedia>
-        </Box>
-
-        {inviteInput}
-
-        <TextField
-          fullWidth
-          margin={'normal'}
-          label={'Name'}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          value={name}
-          onChange={onChange('name')}
-        />
-
-        <TextField
-          fullWidth
-          margin={'normal'}
-          label={'Description'}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          value={description || ''}
-          onChange={onChange('description')}
-        />
-
-        {typeInput}
-      </>
-    }
-    actions={[
-      <PeaButton onClick={onClose}>Cancel</PeaButton>,
-      <PeaButton
-        color={'primary'}
-        variant={'contained'}
-        disabled={submitting}
-        onClick={onSave}
-      >
-        {submitting ? (
-          <PeaLoadingSpinner size={20} style={{ margin: 0 }} />
-        ) : (
-          actionText
-        )}
-      </PeaButton>,
-    ]}
-    onClose={onClose}
-    {...props}
-  />
-);
-
-PeaGroupDialog.metadata = {
-  name: 'Pea Group Dialog',
+            <PeaIcon>more_vert</PeaIcon>
+          </IconButton>
+          {renderMenu()}
+        </div>
+        <Typography className={'MuiTypography--heading'}>
+          {type.charAt(0) + type.slice(1).toLowerCase()} Group
+        </Typography>
+        <Typography className={'MuiTypography--subheading'}>{tag}</Typography>
+        <Grid container justify={'space-between'}>
+          <Grid item>
+            <PeaStatistic label={'Pods'} value={2} />
+          </Grid>
+          <Grid item>
+            <PeaStatistic label={'Following'} value={48} />
+          </Grid>
+          <Grid item>
+            <PeaStatistic label={'Followers'} value={5} />
+          </Grid>
+        </Grid>
+      </CardContent>
+    </Card>
+  );
 };
 
-PeaGroupDialog.propTypes = {
-  dialogTitle: PropTypes.string,
-  actionText: PropTypes.string,
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string,
+PeaGroupCard.propTypes = {
+  image: PropTypes.string.isRequired,
+  cover: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  inviteInput: PropTypes.object.isRequired,
-  typeInput: PropTypes.object.isRequired,
-  profilePhoto: PropTypes.string,
-  submitting: PropTypes.bool,
-  onChangeCoverPhotoClicked: PropTypes.func,
-  onChange: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired,
+  tag: PropTypes.string,
+  AvatarProps: PropTypes.shape({}),
+  onEdit: PropTypes.func,
+  onDelete: PropTypes.func,
 };
-
-PeaGroupDialog.defaultProps = {
-  dialogTitle: 'Create Group',
-  actionText: 'Create',
-  submitting: false,
-  description: '',
-  profilePhoto: undefined,
-  onChangeCoverPhotoClicked: () => {},
+PeaGroupCard.defaultProps = {
+  tag: '',
+  AvatarProps: {},
+  onEdit: () => {},
+  onDelete: () => {},
 };
+PeaGroupCard.metadata = {
+  name: 'Pea Profile Card',
+};
+PeaGroupCard.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 
-export default PeaGroupDialog;
+export default PeaGroupCard;
