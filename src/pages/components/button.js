@@ -12,8 +12,9 @@ import buttonDemos from 'docs/components/button';
 import DefaultButton from 'docs/components/button/default';
 import FrontMatter from 'containers/FrontMatter';
 import { useMultiRowBorderedGrid } from '@mui-treasury/styles';
+import TreeView from '@material-ui/lab/TreeView';
 
-const { ShowcaseWidget, BoxTabs } = molecules;
+const { ShowcaseWidget, BoxTabs, SignTreeItem } = molecules;
 const { ComponentHeading } = organisms;
 
 const baseTheme = createMuiTheme();
@@ -63,7 +64,17 @@ const ButtonPage = () => {
                   wrapContent(
                     <>
                       {key === 0 && 'image'}
-                      {key === 1 && '2'}
+                      {key === 1 && (
+                        <TreeView
+                          defaultExpanded={['1']}
+                          defaultCollapseIcon={<SignTreeItem.Minus />}
+                          defaultExpandIcon={<SignTreeItem.Plus />}
+                        >
+                          <SignTreeItem nodeId="1" label="root">
+                            <SignTreeItem nodeId="2" label="label" />
+                          </SignTreeItem>
+                        </TreeView>
+                      )}
                     </>,
                     { p: 3, flexGrow: 1 }
                   )
