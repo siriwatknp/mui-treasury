@@ -98,7 +98,7 @@ const PeaSwipeableTabs = ({
                 <div
                   style={{
                     padding: 16,
-                    minHeight: '100%',
+                    minHeight: 'calc(100% - 32px)',
                   }}
                 >
                   {child}

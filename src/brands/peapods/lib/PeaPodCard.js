@@ -30,10 +30,12 @@ const list = [
     icon: 'fas fa-users',
     label: 'Show all',
     // eslint-disable-next-line react/prop-types
-    renderText: ({ podCount, peopleGoing, peopleInterested }) => (
+    renderText: (podCount, peopleGoing, peopleInterested) => (
       <React.Fragment>
-        <b>{podCount}</b> Pods, <b>{peopleGoing.length}</b> Going and{' '}
-        <b>{peopleInterested.length}</b> interested
+        <b>{podCount}</b> Pods,{' '}
+        <b>{peopleGoing.images.length + peopleGoing.more}</b> Going and{' '}
+        <b>{peopleInterested.images.length + peopleInterested.more}</b>{' '}
+        interested
       </React.Fragment>
     ),
   },
@@ -47,41 +49,50 @@ const PeaPodCard = ({
   podCount,
   peopleGoing,
   peopleInterested,
+  showEvent,
   ...props
 }) => (
   <Card className={'PeaPodCard-root'} {...props}>
-    <CardHeader
-      avatar={<PeaAvatar src={profile.image} />}
-      title={
-        <>
-          <b>{profile.name}</b> created pod for
-        </>
-      }
-      subheader={'5 minutes ago'}
-      action={<PeaAvatar src={social} />}
-    />
-    <CardMedia className={'MuiCardMedia-root'} image={image} />
+    {showEvent && (
+      <>
+        <CardHeader
+          avatar={<PeaAvatar src={profile.image} />}
+          title={
+            <>
+              <b>{profile.name}</b> created pod for
+            </>
+          }
+          subheader={'5 minutes ago'}
+          action={<PeaAvatar src={social} />}
+        />
+        <CardMedia className={'MuiCardMedia-root'} image={image} />
+      </>
+    )}
     <CardContent className={'MuiCardContent-root'}>
-      <Typography className={'MuiTypography--heading'}>{title}</Typography>
-      {list.map(item => (
-        <Grid key={item.key} container spacing={1} wrap={'nowrap'}>
-          <Grid item>
-            <PeaIcon size={'small'} color={'secondary'} icon={item.icon} />
-          </Grid>
-          <Grid item xs>
-            <Typography color={'textSecondary'} variant={'caption'}>
-              {item.renderText
-                ? item.renderText({ podCount, peopleGoing, peopleInterested })
-                : item.text}
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Typography variant={'caption'}>
-              <Link color={'secondary'}>{item.label}</Link>
-            </Typography>
-          </Grid>
-        </Grid>
-      ))}
+      {showEvent && (
+        <>
+          <Typography className={'MuiTypography--heading'}>{title}</Typography>
+          {list.map(item => (
+            <Grid key={item.key} container spacing={1} wrap={'nowrap'}>
+              <Grid item>
+                <PeaIcon size={'small'} color={'secondary'} icon={item.icon} />
+              </Grid>
+              <Grid item xs>
+                <Typography color={'textSecondary'} variant={'caption'}>
+                  {item.renderText
+                    ? item.renderText(podCount, peopleGoing, peopleInterested)
+                    : item.text}
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant={'caption'}>
+                  <Link color={'secondary'}>{item.label}</Link>
+                </Typography>
+              </Grid>
+            </Grid>
+          ))}
+        </>
+      )}
       <Grid
         className={'PeaPodCardPeople-root'}
         container
@@ -105,11 +116,13 @@ const PeaPodCard = ({
             />
           </div>
         </Grid>
-        <Grid item xs={12}>
-          <PeaButton color={'secondary'} fullWidth>
-            Join Pod
-          </PeaButton>
-        </Grid>
+        {!showEvent && (
+          <Grid item xs={12}>
+            <PeaButton color={'secondary'} fullWidth>
+              Join Pod
+            </PeaButton>
+          </Grid>
+        )}
       </Grid>
     </CardContent>
   </Card>
@@ -117,8 +130,7 @@ const PeaPodCard = ({
 
 PeaPodCard.propTypes = {
   image: PropTypes.string.isRequired,
-  profile: PropTypes.shape({ name: PropTypes.string, image: PropTypes.string })
-    .isRequired,
+  profile: PropTypes.shape({ name: PropTypes.string, image: PropTypes.string }),
   social: PropTypes.string.isRequired,
   title: PropTypes.string,
   podCount: PropTypes.number,
@@ -130,10 +142,13 @@ PeaPodCard.propTypes = {
     images: PropTypes.arrayOf(PropTypes.string).isRequired,
     more: PropTypes.number,
   }).isRequired,
+  showEvent: PropTypes.bool,
 };
 PeaPodCard.defaultProps = {
   title: '',
   podCount: 0,
+  showEvent: true,
+  profile: undefined,
 };
 PeaPodCard.metadata = {
   name: 'Pea Pod Card',
