@@ -19,8 +19,10 @@ const GradientBtn = () => {
 };
 
 // hide-start
-GradientBtn.title = 'Gradient';
-GradientBtn.path = 'button/gradient';
+GradientBtn.metadata = {
+  title: 'Gradient',
+  path: 'button/gradient',
+};
 // hide-end
 
 export default GradientBtn;

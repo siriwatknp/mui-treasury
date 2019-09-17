@@ -18,8 +18,10 @@ const GithubButton = () => {
 };
 
 // hide-start
-GithubButton.title = 'Github';
-GithubButton.path = 'button/github';
+GithubButton.metadata = {
+  title: 'Github',
+  path: 'button/github',
+};
 // hide-end
 
 export default GithubButton;

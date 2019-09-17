@@ -42,7 +42,9 @@ const TwitterButton = () => {
   );
 };
 
-TwitterButton.title = 'Twitter';
-TwitterButton.path = 'button/twitter';
+TwitterButton.metadata = {
+  title: 'Twitter',
+  path: 'button/twitter',
+};
 
 export default TwitterButton;

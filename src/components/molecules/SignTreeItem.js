@@ -33,9 +33,6 @@ const SignTreeItem = withStyles(theme => ({
     },
   },
   iconContainer: {
-    '& .close': {
-      opacity: 0.3,
-    },
     marginLeft: -24,
   },
   group: {

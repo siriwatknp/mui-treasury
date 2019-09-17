@@ -44,7 +44,7 @@ const SidebarLayout = ({ pkg, children, getOpenKeys }) => {
     <Location>
       {({ location }) => {
         const lastPath = last(location.pathname.split('/'));
-        console.log('lastPath', lastPath);
+        // console.log('lastPath', lastPath);
         return (
           <>
             <LayoutHeader

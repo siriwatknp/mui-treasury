@@ -16,8 +16,10 @@ const FirebaseButton = () => {
 };
 
 // hide-start
-FirebaseButton.title = 'Firebase';
-FirebaseButton.path = 'button/firebase';
+FirebaseButton.metadata = {
+  title: 'Firebase',
+  path: 'button/firebase',
+};
 // hide-end
 
 export default FirebaseButton;
