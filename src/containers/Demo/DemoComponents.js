@@ -4,7 +4,6 @@ import { ThemeProvider } from '@material-ui/styles';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import { useMultiRowBorderedGrid } from '@mui-treasury/styles';
-import { customComponents, DefaultButton } from 'docs/components/button';
 import molecules from 'components/molecules';
 import organisms from 'components/organisms';
 import MetadataContext from './context';
@@ -14,7 +13,12 @@ const { DefaultSection } = organisms;
 
 const baseTheme = createMuiTheme();
 
-const DemoComponents = ({ cssTree, componentImage }) => {
+const DemoComponents = ({
+  cssTree,
+  componentImage,
+  customComponents,
+  DefaultComponent,
+}) => {
   const multiRowGridStyles = useMultiRowBorderedGrid({
     borderColor: '#e9e9e9',
   });
@@ -27,10 +31,10 @@ const DemoComponents = ({ cssTree, componentImage }) => {
               <ShowcaseWidget
                 border={'1px solid #e9e9e9'}
                 mr={'-1px'}
-                name={DefaultButton.metadata.title}
-                onClickCode={() => setMetadata(DefaultButton.metadata)}
+                name={DefaultComponent.metadata.title}
+                onClickCode={() => setMetadata(DefaultComponent.metadata)}
               >
-                <DefaultButton />
+                <DefaultComponent />
               </ShowcaseWidget>
             }
             componentImage={componentImage}

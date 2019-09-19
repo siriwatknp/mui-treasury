@@ -3,6 +3,7 @@ import TreeView from '@material-ui/lab/TreeView';
 import molecules from 'components/molecules';
 import DemoPage from 'containers/Demo';
 import ComponentImage from 'containers/Images/ComponentImage';
+import { customComponents, DefaultComponent } from 'docs/components/button';
 
 const { SignTreeItem } = molecules;
 
@@ -23,6 +24,8 @@ const ButtonPage = () => (
           </SignTreeItem>
         </TreeView>
       ),
+      customComponents,
+      DefaultComponent,
     }}
   />
 );
