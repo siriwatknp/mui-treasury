@@ -42,7 +42,13 @@ const BoxTabs = ({ children, tabs, tabItemProps, initialTabIndex }) => {
   const tabsStyles = useTabsStyles();
   const tabItemStyles = useTabItemStyles();
   const wrapContent = (content, wrapperProps) => (
-    <Box border={'1px solid #e9e9e9'} p={2} mt={'-1px'} {...wrapperProps}>
+    <Box
+      border={'1px solid #e9e9e9'}
+      py={2}
+      px={3}
+      mt={'-1px'}
+      {...wrapperProps}
+    >
       {content}
     </Box>
   );

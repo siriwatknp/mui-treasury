@@ -28,4 +28,4 @@ export default ({ shadows, palette }) => ({
     letterSpacing: '0.5px',
     fontWeight: 500,
   },
-})
+});

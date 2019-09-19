@@ -1,4 +1,6 @@
 import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import Image from 'gatsby-image';
 import { makeStyles } from '@material-ui/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Box from '@material-ui/core/Box';
@@ -43,6 +45,19 @@ const links = [
 
 const Footer = () => {
   const classes = useStyles();
+  const data = useStaticQuery(graphql`
+    query {
+      file(relativePath: { eq: "avatar-jun.jpg" }) {
+        childImageSharp {
+          # Specify the image processing specifications right in the query.
+          # Makes it trivial to update as your page's design changes.
+          fixed(width: 120, height: 120) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+  `);
   return (
     <Box bgcolor={'grey.100'} py={'3.5rem'}>
       <Container maxWidth={'md'}>
@@ -50,13 +65,12 @@ const Footer = () => {
           <Grid item>
             <Box mt={1} />
             <Avatar
+              component={Image}
               classes={{
                 root: classes.avatarRoot,
                 img: classes.img,
               }}
-              src={
-                'https://pbs.twimg.com/profile_images/1060539954361622533/-9ofKMvA_400x400.jpg'
-              }
+              fixed={data.file.childImageSharp.fixed}
             />
           </Grid>
           <Grid item>

@@ -7,6 +7,9 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import * as core from '@material-ui/core';
 import * as components from '@mui-treasury/components';
 // -----------------------------------------------------------
+import 'prismjs/themes/prism-tomorrow.css';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+import '../src/global.css';
 import typography from '../src/utils/typography';
 import { ThemeWrapper } from '../src/utils/theme';
 

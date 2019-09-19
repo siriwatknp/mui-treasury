@@ -32,3 +32,4 @@ export {
   usePushingGutter,
 };
 export * from './button';
+export * from './tabs';

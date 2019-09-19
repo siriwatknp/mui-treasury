@@ -25,6 +25,14 @@ MuiButton.metadata = {
   isDefault: true,
   title: 'Default',
   path: 'button/default',
+  relates: [
+    {
+      label: 'Official Demo',
+      url: 'https://material-ui.com/components/buttons/',
+    },
+    { label: 'Official API', url: 'https://material-ui.com/api/button/' },
+    { label: 'pushingGutter.styles.js', url: '/components/instruction' },
+  ],
 };
 // hide-end
 

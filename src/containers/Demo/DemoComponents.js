@@ -1,19 +1,20 @@
 import React from 'react';
+import { createMuiTheme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
+import { useMultiRowBorderedGrid } from '@mui-treasury/styles';
 import { customComponents, DefaultButton } from 'docs/components/button';
 import molecules from 'components/molecules';
-import { createMuiTheme } from '@material-ui/core';
-import { useMultiRowBorderedGrid } from '@mui-treasury/styles/src';
-import DefaultSection from './DefaultSection';
+import organisms from 'components/organisms';
 import MetadataContext from './context';
 
 const { ShowcaseWidget } = molecules;
+const { DefaultSection } = organisms;
 
 const baseTheme = createMuiTheme();
 
-const DemoComponents = ({ cssTree }) => {
+const DemoComponents = ({ cssTree, componentImage }) => {
   const multiRowGridStyles = useMultiRowBorderedGrid({
     borderColor: '#e9e9e9',
   });
@@ -32,6 +33,7 @@ const DemoComponents = ({ cssTree }) => {
                 <DefaultButton />
               </ShowcaseWidget>
             }
+            componentImage={componentImage}
             cssTree={cssTree}
           />
           <Box py={{ xs: '2rem', sm: '3rem', md: '4rem' }} textAlign={'center'}>

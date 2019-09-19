@@ -22,6 +22,7 @@ const GradientBtn = () => {
 GradientBtn.metadata = {
   title: 'Gradient',
   path: 'button/gradient',
+  files: [{ pkg: 'mui-styles', path: 'button/gradientBtn.styles.js' }],
 };
 // hide-end
 

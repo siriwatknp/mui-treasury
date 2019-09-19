@@ -42,9 +42,12 @@ const TwitterButton = () => {
   );
 };
 
+// hide-start
 TwitterButton.metadata = {
   title: 'Twitter',
   path: 'button/twitter',
+  files: [{ pkg: 'mui-styles', path: 'button/twitterBtn.styles.js' }],
 };
+// hide-end
 
 export default TwitterButton;

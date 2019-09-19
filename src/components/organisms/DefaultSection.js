@@ -6,7 +6,7 @@ import molecules from 'components/molecules';
 
 const { BoxTabs } = molecules;
 
-const DefaultSection = ({ demo, cssTree }) => (
+const DefaultSection = ({ demo, componentImage, cssTree }) => (
   <Box maxWidth={1152} mx={'auto'}>
     <Grid container>
       <Grid item xs={12} sm={5} md={5}>
@@ -20,7 +20,7 @@ const DefaultSection = ({ demo, cssTree }) => (
           {([key], { wrapContent }) =>
             wrapContent(
               <>
-                {key === 0 && 'image'}
+                {key === 0 && componentImage}
                 {key === 1 && cssTree}
               </>,
               { p: 3, flexGrow: 1 }
@@ -35,10 +35,12 @@ const DefaultSection = ({ demo, cssTree }) => (
 DefaultSection.propTypes = {
   demo: PropTypes.node,
   cssTree: PropTypes.node,
+  componentImage: PropTypes.node,
 };
 DefaultSection.defaultProps = {
   demo: undefined,
   cssTree: undefined,
+  componentImage: undefined,
 };
 
 export default DefaultSection;

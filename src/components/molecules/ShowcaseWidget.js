@@ -18,6 +18,7 @@ const ShowcaseWidget = ({ children, name, onClickCode, ...props }) => {
     <Box {...props}>
       <Box
         p={1}
+        textAlign={'center'}
         display={'flex'}
         justifyContent={'center'}
         alignItems={'center'}
