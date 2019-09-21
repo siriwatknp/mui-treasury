@@ -1,5 +1,6 @@
 import React from 'react';
 import last from 'lodash/last';
+import dropRight from 'lodash/dropRight';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { Location } from '@reach/router';
@@ -43,8 +44,8 @@ const SidebarLayout = ({ pkg, children, getOpenKeys }) => {
   return (
     <Location>
       {({ location }) => {
-        const lastPath = last(location.pathname.split('/'));
-        // console.log('lastPath', lastPath);
+        const paths = location.pathname.split('/');
+        const lastPath = last(paths) || last(dropRight(paths));
         return (
           <>
             <LayoutHeader
@@ -67,7 +68,12 @@ const SidebarLayout = ({ pkg, children, getOpenKeys }) => {
                 getConfig={() => ({ toggleSeparated: false })}
                 menus={menus}
                 getItemProps={({ to }) =>
-                  to ? { menuComponent: Link, ListItemProps: { to } } : {}
+                  to
+                    ? {
+                        menuComponent: Link,
+                        ListItemProps: { to, disableRipple: true },
+                      }
+                    : {}
                 }
               />
             </Nav>

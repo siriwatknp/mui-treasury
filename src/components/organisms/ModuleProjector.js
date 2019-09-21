@@ -21,51 +21,49 @@ const ModuleProjector = ({ demoSource, files }) => {
   const file = files[tabIndex];
   return (
     <>
-      <Box bgcolor={'grey.50'}>
-        <Box py={2} px={3}>
-          <FormControlLabel
-            value="start"
-            control={
-              <Switch
-                color="primary"
-                value={sourceDisplayed}
-                onChange={e => {
-                  setSourceDisplayed(e.target.checked);
-                  setTabIndex(0);
-                }}
-              />
-            }
-            label="Show source code"
-            labelPlacement="end"
-          />
-        </Box>
-        {sourceDisplayed ? (
-          <>
-            {files.length > 0 && (
-              <Tabs
-                variant={'scrollable'}
-                scrollButtons="auto"
-                value={tabIndex > files.length - 1 ? 0 : tabIndex}
-                classes={chromeTabsStyles}
-                onChange={(e, index) => setTabIndex(index)}
-              >
-                {files.map(({ name }) => (
-                  <Tab key={name} label={name} classes={chromeTabItemStyles} />
-                ))}
-              </Tabs>
-            )}
-            {file ? (
-              <Prism code={file.source} fileName={file.name} />
-            ) : (
-              <Box bgcolor={'rgb(40, 44, 52)'} color={'#777777'} p={2}>
-                {'// No Source code'}
-              </Box>
-            )}
-          </>
-        ) : (
-          demoSource
-        )}
+      <Box py={2} px={3}>
+        <FormControlLabel
+          value="start"
+          control={
+            <Switch
+              color="primary"
+              value={sourceDisplayed}
+              onChange={e => {
+                setSourceDisplayed(e.target.checked);
+                setTabIndex(0);
+              }}
+            />
+          }
+          label="Source Code"
+          labelPlacement="end"
+        />
       </Box>
+      {sourceDisplayed ? (
+        <>
+          {files.length > 0 && (
+            <Tabs
+              variant={'scrollable'}
+              scrollButtons="auto"
+              value={tabIndex > files.length - 1 ? 0 : tabIndex}
+              classes={chromeTabsStyles}
+              onChange={(e, index) => setTabIndex(index)}
+            >
+              {files.map(({ name }) => (
+                <Tab key={name} label={name} classes={chromeTabItemStyles} />
+              ))}
+            </Tabs>
+          )}
+          {file ? (
+            <Prism code={file.source} fileName={file.name} />
+          ) : (
+            <Box bgcolor={'rgb(40, 44, 52)'} color={'#777777'} p={2}>
+              {'// No Source code'}
+            </Box>
+          )}
+        </>
+      ) : (
+        demoSource
+      )}
     </>
   );
 };

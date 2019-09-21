@@ -4,7 +4,7 @@
  */
 .gatsby-highlight {
   background-color: rgb(40, 44, 52);
-  padding: 1em;
+  padding: 1.5em;
   overflow: auto;
   font-size: 14px;
 }

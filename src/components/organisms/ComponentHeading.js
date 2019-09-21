@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
+// import { Link } from 'gatsby';
 import { makeStyles } from '@material-ui/styles';
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
-import { usePushingGutter } from '@mui-treasury/styles';
+// import Button from '@material-ui/core/Button';
+// import { usePushingGutter } from '@mui-treasury/styles';
 
 const useStyles = makeStyles(theme => {
   const { palette } = theme;
@@ -18,23 +18,23 @@ const useStyles = makeStyles(theme => {
 
 const ComponentHeading = ({ title, description }) => {
   const styles = useStyles();
-  const gutterStyles = usePushingGutter({
-    firstExcluded: true,
-  });
-  const commonButtonProps = {
-    variant: 'contained',
-    component: Link,
-    to: '/',
-  };
+  // const gutterStyles = usePushingGutter({
+  //   firstExcluded: true,
+  // });
+  // const commonButtonProps = {
+  //   variant: 'contained',
+  //   component: Link,
+  //   to: '/',
+  // };
   return (
     <Box textAlign={'center'}>
       <h1>{title}</h1>
       <p className={styles.descr}>{description}</p>
-      <div className={gutterStyles.parent}>
-        <Button {...commonButtonProps}>Instruction</Button>
-        <Button {...commonButtonProps}>Customization</Button>
-        <Button {...commonButtonProps}>Playground</Button>
-      </div>
+      {/* <div className={gutterStyles.parent}> */}
+      {/*  <Button {...commonButtonProps}>Instruction</Button> */}
+      {/*  <Button {...commonButtonProps}>Customization</Button> */}
+      {/*  <Button {...commonButtonProps}>Playground</Button> */}
+      {/* </div> */}
     </Box>
   );
 };

@@ -9,12 +9,12 @@ const { Provider, Consumer } = React.createContext({
 class MetadataContext extends React.Component {
   constructor(props) {
     super(props);
-    this.setMetadata = metadata => {
-      this.setState({ metadata });
+    this.setComponent = Component => {
+      this.setState({ Component });
     };
     this.state = {
-      metadata: {},
-      setMetadata: this.setMetadata,
+      Component: {},
+      setComponent: this.setComponent,
     };
   }
 

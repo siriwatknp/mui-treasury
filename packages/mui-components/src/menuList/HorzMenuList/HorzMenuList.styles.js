@@ -23,11 +23,19 @@ export default ({ palette, spacing }) => ({
         .fade(0.9)
         .toString(),
     },
+    '&[disabled]': {
+      pointerEvents: 'none',
+      color: palette.text.disabled,
+    },
   },
   navSelected: {
     '&$navItem': {
       color: palette.primary.main,
       borderBottomColor: palette.primary.main,
+    },
+    '&[disabled]': {
+      color: palette.text.disabled,
+      borderBottomColor: palette.text.disabled,
     },
   },
 });

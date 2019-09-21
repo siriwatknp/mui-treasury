@@ -18,21 +18,33 @@ const DemoComponents = ({
   componentImage,
   customComponents,
   DefaultComponent,
+  GridItemProps,
+  ShowcaseWidgetProps,
 }) => {
+  const colWidth = {
+    xs: 12,
+    sm: 6,
+    md: 4,
+    ...GridItemProps,
+  };
   const multiRowGridStyles = useMultiRowBorderedGrid({
     borderColor: '#e9e9e9',
+    colWidth,
   });
   return (
     <MetadataContext.Consumer>
-      {({ setMetadata }) => (
+      {({ setComponent }) => (
         <ThemeProvider theme={baseTheme}>
           <DefaultSection
             demo={
               <ShowcaseWidget
+                {...ShowcaseWidgetProps}
                 border={'1px solid #e9e9e9'}
                 mr={'-1px'}
                 name={DefaultComponent.metadata.title}
-                onClickCode={() => setMetadata(DefaultComponent.metadata)}
+                onClickCode={() => {
+                  setComponent(DefaultComponent);
+                }}
               >
                 <DefaultComponent />
               </ShowcaseWidget>
@@ -49,14 +61,15 @@ const DemoComponents = ({
                   <Grid
                     key={Component.name}
                     item
-                    xs={12}
-                    sm={6}
-                    md={4}
+                    {...colWidth}
                     classes={multiRowGridStyles}
                   >
                     <ShowcaseWidget
+                      {...ShowcaseWidgetProps}
                       name={Component.metadata.title || Component.name}
-                      onClickCode={() => setMetadata(Component.metadata)}
+                      onClickCode={() => {
+                        setComponent(Component);
+                      }}
                     >
                       <Component key={Component.name} />
                     </ShowcaseWidget>

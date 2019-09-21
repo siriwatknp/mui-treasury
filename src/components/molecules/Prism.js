@@ -7,6 +7,7 @@ import SourceCopier from 'components/atoms/SourceCopier';
 
 const useStyles = makeStyles(() => ({
   root: {
+    padding: '1.5em !important',
     margin: '0 !important',
   },
 }));

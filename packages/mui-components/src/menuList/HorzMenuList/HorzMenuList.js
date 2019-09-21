@@ -8,7 +8,7 @@ const HorzMenuList = withStyles(createStyles, { name: 'HorzMenuList' })(
   ({ css, menus, selectedKey, getItemProps }) => (
     <ul className={css.navRoot}>
       {menus.map((item, index) => {
-        const { key, label } = item;
+        const { key, label, disabled } = item;
         const { component: Component = 'li', ...extItemProps } = getItemProps(
           item,
           index
@@ -23,6 +23,7 @@ const HorzMenuList = withStyles(createStyles, { name: 'HorzMenuList' })(
                 : key === selectedKey) && css.navSelected
             )}
             {...extItemProps}
+            disabled={disabled}
           >
             {label}
           </Component>

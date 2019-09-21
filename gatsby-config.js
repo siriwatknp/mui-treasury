@@ -53,9 +53,6 @@ module.exports = {
         plugins: [
           {
             resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 590,
-            },
           },
           {
             resolve: `gatsby-remark-responsive-iframe`,
@@ -104,5 +101,6 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    `gatsby-plugin-remove-trailing-slashes`,
   ],
 };

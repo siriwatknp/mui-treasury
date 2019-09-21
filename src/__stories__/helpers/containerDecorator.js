@@ -8,5 +8,7 @@ export const StylesProvider = ({ useStyles, children }) => {
 };
 
 export default props => storyFn => (
-  <Container {...props}>{storyFn()}</Container>
+  <Container style={{ paddingTop: 32, paddingBottom: 32 }} {...props}>
+    {storyFn()}
+  </Container>
 );

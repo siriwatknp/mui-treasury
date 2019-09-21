@@ -8,13 +8,18 @@ import DemoSourceDrawer from './DemoSourceDrawer';
 import DemoComponents from './DemoComponents';
 import MetadataContext from './context';
 
-const DemoPage = ({ title, description, DemoComponentsProps }) => (
-  <SidebarLayout pkg={PKG.components} getOpenKeys={menus => menus[1].key}>
+const DemoPage = ({
+  title,
+  description,
+  DemoComponentsProps,
+  DemoSourceDrawerProps,
+}) => (
+  <SidebarLayout pkg={PKG.components} getOpenKeys={() => ['readme', 'basic']}>
     <MetadataContext>
       <Box py={{ xs: '2rem', sm: '3rem', md: '4rem' }}>
         <ComponentHeading title={title} description={description} />
       </Box>
-      <DemoSourceDrawer />
+      <DemoSourceDrawer title={title} {...DemoSourceDrawerProps} />
       <DemoComponents {...DemoComponentsProps} />
     </MetadataContext>
   </SidebarLayout>
@@ -24,10 +29,12 @@ DemoPage.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   DemoComponentsProps: PropTypes.shape({}),
+  DemoSourceDrawerProps: PropTypes.shape({}),
 };
 DemoPage.defaultProps = {
   description: '',
   DemoComponentsProps: {},
+  DemoSourceDrawerProps: {},
 };
 
 export default DemoPage;

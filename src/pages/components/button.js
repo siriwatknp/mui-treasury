@@ -27,6 +27,12 @@ const ButtonPage = () => (
       customComponents,
       DefaultComponent,
     }}
+    DemoSourceDrawerProps={{
+      frameProps: {
+        p: 2,
+        textAlign: 'center',
+      },
+    }}
   />
 );
 
