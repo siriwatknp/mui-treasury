@@ -1,10 +1,14 @@
 {
   "name": "@mui-treasury/utils",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "siriwatknp",
   "license": "MIT",
   "dependencies": {
-    "clsx": "^1.0.4",
     "cross-env": "^5.2.0"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production babel --config-file ../../babel.config.js ./src --out-dir ./build --ignore \"**/*.test.js\"",
+    "prebuild": "rimraf build",
+    "release": "yarn build && yarn publish --access public --tag latest"
   }
 }
