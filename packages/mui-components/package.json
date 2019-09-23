@@ -1,11 +1,11 @@
 {
   "name": "@mui-treasury/components",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "siriwatknp",
   "license": "MIT",
   "dependencies": {
     "@material-ui/icons": "^4.2.1",
-    "@mui-treasury/utils": "0.1.0",
+    "@mui-treasury/utils": "0.1.1",
     "clsx": "^1.0.4",
     "cross-env": "^5.2.0",
     "prop-types": "^15.7.2"
@@ -13,6 +13,6 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production babel --config-file ../../babel.config.js ./src --out-dir ./build --ignore \"**/*.test.js\"",
     "prebuild": "rimraf build",
-    "release": "yarn build && yarn publish --access public --tag latest"
+    "release": "yarn build && yarn publish --tag latest"
   }
 }
