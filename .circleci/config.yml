@@ -1,0 +1,69 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2.1
+executors:
+  node-executors:
+    docker:
+      - image: circleci/node:10
+commands:
+  gatsby-build:
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - yarn-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install && npm rebuild
+      - save_cache:
+          key: yarn-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+      - restore_cache:
+          keys:
+            - gatsby-plublic-cache-{{ .Branch }}
+      - run:
+          name: Gatsby Build
+          command: GATSBY_CPU_COUNT=2 yarn build
+      - save_cache:
+          key: gatsby-public-cache-{{ .Branch }}
+          paths:
+            - ./public
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore: -master
+      - release:
+          filters:
+            branches:
+              only:
+                - master
+jobs:
+  build:
+    executor: node-executor
+    environment:
+      NETLIFY_SITE_ID: ''
+      NETLIFY_ACCESS_TOKEN: ''
+    working_directory: ~/repo
+    steps:
+      - gatsby-build
+      - run:
+          name: Netlify Deploy
+          command: ./node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID --auth NETLIFY_AUTH_TOKEN --dir=public
+  release:
+    executor: node-executor
+    environment:
+      NETLIFY_SITE_ID: ''
+      NETLIFY_ACCESS_TOKEN: ''
+      working_directory: ~/repo
+      steps:
+        - gatsby-build
+        - run:
+            name: Netlify Deploy
+            command: ./node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID --auth NETLIFY_AUTH_TOKEN --prod --dir=public
