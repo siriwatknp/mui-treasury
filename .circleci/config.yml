@@ -17,6 +17,9 @@ commands:
       - run:
           name: Install Dependencies
           command: yarn install && npm rebuild
+      - run:
+          name: Install Netlify-CLI
+          command: sudo yarn global add netlify-cli
       - save_cache:
           key: yarn-cache-{{ checksum "yarn.lock" }}
           paths:
@@ -56,7 +59,7 @@ jobs:
       - gatsby-build
       - run:
           name: Netlify Deploy
-          command: ./node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID --auth NETLIFY_AUTH_TOKEN --dir=public
+          command: netlify deploy --site $NETLIFY_SITE_ID --auth NETLIFY_AUTH_TOKEN --dir=public
   release:
     executor: node-executor
     environment:
@@ -67,4 +70,4 @@ jobs:
       - gatsby-build
       - run:
           name: Netlify Deploy
-          command: ./node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID --auth NETLIFY_AUTH_TOKEN --prod --dir=public
+          command: netlify deploy --site $NETLIFY_SITE_ID --auth NETLIFY_AUTH_TOKEN --prod --dir=public
