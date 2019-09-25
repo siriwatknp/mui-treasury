@@ -145,7 +145,7 @@ const PeaEventDetails = ({
                   <PeaIcon push={'right'} color={'secondary'} size={'small'}>
                     fas fa-clock
                   </PeaIcon>
-                  12created {timeAgo}
+                  created {timeAgo}
                 </PeaText>
               </Grid>
 
