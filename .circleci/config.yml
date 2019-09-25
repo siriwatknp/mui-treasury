@@ -39,7 +39,7 @@ workflows:
           filters:
             branches:
               ignore:
-                -master
+                - master
       - release:
           filters:
             branches:
