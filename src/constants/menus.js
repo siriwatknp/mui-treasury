@@ -51,22 +51,23 @@ export default {
         // { key: 'slide', label: 'Slide' },
       ],
     },
-    // {
-    //   key: 'complex',
-    //   label: 'COMPLEX (4)',
-    //   subMenus: [
-    //     {
-    //       key: 'card',
-    //       label: 'Card',
-    //       subMenus: [
-    //         { key: 'postCard', label: 'Post Card' },
-    //         { key: 'reviewCard', label: 'Review Card' },
-    //         { key: 'project', label: 'Project Card' },
-    //       ],
-    //     },
-    //     { key: 'carousel', label: 'Carousel' },
-    //     { key: 'textField', label: 'TextField' },
-    //   ],
-    // },
+    {
+      key: 'complex',
+      label: 'COMPLEX (4)',
+      subMenus: [
+        {
+          key: 'card',
+          label: 'Card',
+          to: '/components/card',
+          // subMenus: [
+          //   { key: 'postCard', label: 'Post Card' },
+          //   { key: 'reviewCard', label: 'Review Card' },
+          //   { key: 'project', label: 'Project Card' },
+          // ],
+        },
+        // { key: 'carousel', label: 'Carousel' },
+        // { key: 'textField', label: 'TextField' },
+      ],
+    },
   ],
 };

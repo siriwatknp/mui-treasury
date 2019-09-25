@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'clsx';
 import startCase from 'lodash/startCase';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
@@ -36,11 +37,12 @@ const ShowcaseWidget = ({
   anchor = name,
   onClickCode,
   frameProps,
+  className,
   ...props
 }) => {
   const styles = useStyles();
   return (
-    <Box {...props}>
+    <Box {...props} className={cx('Showcase-root', className)}>
       <Box
         p={2}
         pb={1}
@@ -54,6 +56,7 @@ const ShowcaseWidget = ({
           md: 280,
         }}
         {...frameProps}
+        className={cx('Showcase-frame', frameProps.className)}
       >
         {children}
       </Box>
@@ -78,12 +81,14 @@ const ShowcaseWidget = ({
 };
 
 ShowcaseWidget.propTypes = {
+  className: PropTypes.string,
   anchor: PropTypes.string,
   name: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   onClickCode: PropTypes.func,
   frameProps: PropTypes.shape({}),
 };
 ShowcaseWidget.defaultProps = {
+  className: '',
   anchor: undefined,
   name: '',
   onClickCode: () => {},
