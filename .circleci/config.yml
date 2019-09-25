@@ -38,7 +38,8 @@ workflows:
       - build:
           filters:
             branches:
-              ignore: -master
+              ignore:
+                -master
       - release:
           filters:
             branches:
@@ -61,9 +62,9 @@ jobs:
     environment:
       NETLIFY_SITE_ID: ''
       NETLIFY_ACCESS_TOKEN: ''
-      working_directory: ~/repo
-      steps:
-        - gatsby-build
-        - run:
-            name: Netlify Deploy
-            command: ./node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID --auth NETLIFY_AUTH_TOKEN --prod --dir=public
+    working_directory: ~/repo
+    steps:
+      - gatsby-build
+      - run:
+          name: Netlify Deploy
+          command: ./node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID --auth NETLIFY_AUTH_TOKEN --prod --dir=public
