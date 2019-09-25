@@ -122,7 +122,7 @@ const PeaEventDetails = ({
   const editEvent = () => {
     setAnchor(null);
     onEditEventClicked();
-  }
+  };
 
   const buttonText = isPodMember ? 'Edit Pod' : 'Create Pod';
 
@@ -190,7 +190,7 @@ const PeaEventDetails = ({
                 >
                   <MenuItem onClick={() => editEvent()}>
                     <ListItemText disableTypography>
-                      <PeaText 
+                      <PeaText
                         color={'secondary'}
                         variant={'body1'}
                         weight={'bold'}
