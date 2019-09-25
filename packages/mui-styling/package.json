@@ -9,7 +9,7 @@
     "lodash.pick": "^4.4.0"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production babel --config-file ../../babel.config.js ./src --out-dir ./build --ignore \"**/*.test.js\"",
+    "build": "cross-env NODE_ENV=production babel --config-file ../../babel-config.js ./src --out-dir ./build --ignore \"**/*.test.js\"",
     "build:copy-files": "node ../../scripts/copy-files.js",
     "prebuild": "rimraf build",
     "release": "yarn build && yarn build:copy-files && yarn publish build --tag latest"
