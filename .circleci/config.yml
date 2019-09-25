@@ -4,7 +4,7 @@
 #
 version: 2.1
 executors:
-  node-executors:
+  node-executor:
     docker:
       - image: circleci/node:10
 commands:
