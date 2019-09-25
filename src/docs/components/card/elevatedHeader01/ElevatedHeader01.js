@@ -16,6 +16,7 @@ function createData(name, fat, price) {
 }
 
 const rows = [
+  // comment
   createData('Frozen yoghurt', 159, 4.0),
   createData('Ice cream sandwich', 237, 4.3),
   createData('Eclair', 16.0, 6.0),
