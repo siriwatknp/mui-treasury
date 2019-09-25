@@ -7,6 +7,21 @@ export default ({ spacing, breakpoints, white, palette }) => ({
           marginTop: spacing(1),
         },
       },
+      '&.PeaEventDialog': {
+        '& .PeaEventForm-photoBtn': {
+          position: 'absolute',
+          display: 'flex',
+          flexDirection: 'column',
+          top: 0,
+          left: 0,
+          bottom: 0,
+          width: '100%',
+          background: 'rgba(0,0,0,0.6)',
+          '& .material-icons': {
+            fontSize: 48,
+          },
+        },
+      },
       '&.PeaDialog': {
         '& .DialogTitle--contained + .DialogContent--root': {
           paddingTop: 24,

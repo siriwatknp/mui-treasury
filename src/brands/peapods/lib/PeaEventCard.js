@@ -164,9 +164,9 @@ const PeaEventCard = ({
               timeString,
               location,
               podCount,
-              attendingCount: stats.attending,
-              interestedCount: stats.interested,
-              limit: stats.limit,
+              attendingCount: stats ? stats.attending : null,
+              interestedCount: stats ? stats.interested : null,
+              limit: stats ? stats.limit : null,
             }).map(item => (
               <Grid key={item.key} container spacing={1} wrap={'nowrap'}>
                 <Grid item>

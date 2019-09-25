@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
@@ -7,6 +7,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import cx from 'classnames';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 import PeaButton from './PeaButton';
 import PeaText from './PeaTypography';
@@ -94,6 +97,7 @@ const PeaEventDetails = ({
   stats,
   isPodMember,
   onCreatePodClicked,
+  onEditEventClicked,
   renderPods,
   renderConnections,
   isMobile,
@@ -111,6 +115,14 @@ const PeaEventDetails = ({
       onChangeTab(tabs[index].label);
     }
   };
+
+  const [anchorEl, setAnchor] = useState(null);
+  const openMenu = Boolean(anchorEl);
+
+  const editEvent = () => {
+    setAnchor(null);
+    onEditEventClicked();
+  }
 
   const buttonText = isPodMember ? 'Edit Pod' : 'Create Pod';
 
@@ -133,7 +145,7 @@ const PeaEventDetails = ({
                   <PeaIcon push={'right'} color={'secondary'} size={'small'}>
                     fas fa-clock
                   </PeaIcon>
-                  created {timeAgo}
+                  12created {timeAgo}
                 </PeaText>
               </Grid>
 
@@ -153,9 +165,41 @@ const PeaEventDetails = ({
                   icon={'more_vert'}
                   size={'small'}
                   style={{ marginLeft: 8 }}
+                  onClick={e => setAnchor(e.currentTarget)}
                 >
-                  email
+                  Settings
                 </PeaButton>
+                <Menu
+                  id="event-detail-menu"
+                  anchorEl={anchorEl}
+                  open={openMenu}
+                  onClose={() => setAnchor(null)}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  PaperProps={{
+                    style: {
+                      minWidth: 240,
+                    },
+                  }}
+                >
+                  <MenuItem onClick={() => editEvent()}>
+                    <ListItemText disableTypography>
+                      <PeaText 
+                        color={'secondary'}
+                        variant={'body1'}
+                        weight={'bold'}
+                      >
+                        Edit Event
+                      </PeaText>
+                    </ListItemText>
+                  </MenuItem>
+                </Menu>
 
                 <PeaButton
                   onClick={() => onCreatePodClicked(id)}
@@ -192,9 +236,9 @@ const PeaEventDetails = ({
                 mapOrigin,
                 location,
                 podCount,
-                attendingCount: stats.attending,
-                interestedCount: stats.interested,
-                limit: stats.limit,
+                attendingCount: stats ? stats.attending : null,
+                interestedCount: stats ? stats.interested : null,
+                limit: stats ? stats.limit : null,
               }).map(item => (
                 <Grid key={item.key} container spacing={1} wrap={'nowrap'}>
                   <Grid item>
@@ -291,6 +335,7 @@ PeaEventDetails.propTypes = {
   sourceImage: PropTypes.string,
   sourceLink: PropTypes.string,
   onCreatePodClicked: PropTypes.func.isRequired,
+  onEditEventClicked: PropTypes.func.isRequired,
   renderConnections: PropTypes.func.isRequired,
   renderPods: PropTypes.func.isRequired,
   podCount: PropTypes.number,
