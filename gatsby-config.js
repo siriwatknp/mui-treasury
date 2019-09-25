@@ -9,6 +9,7 @@ module.exports = {
     },
   },
   plugins: [
+    `gatsby-plugin-netlify`,
     {
       resolve: 'gatsby-plugin-module-resolver',
       options: {
