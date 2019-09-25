@@ -51,23 +51,17 @@ workflows:
 jobs:
   build:
     executor: node-executor
-    environment:
-      NETLIFY_SITE_ID: ''
-      NETLIFY_ACCESS_TOKEN: ''
     working_directory: ~/repo
     steps:
       - gatsby-build
       - run:
           name: Netlify Deploy
-          command: netlify deploy --site $NETLIFY_SITE_ID --auth NETLIFY_AUTH_TOKEN --dir=public
+          command: netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir=public
   release:
     executor: node-executor
-    environment:
-      NETLIFY_SITE_ID: ''
-      NETLIFY_ACCESS_TOKEN: ''
     working_directory: ~/repo
     steps:
       - gatsby-build
       - run:
           name: Netlify Deploy
-          command: netlify deploy --site $NETLIFY_SITE_ID --auth NETLIFY_AUTH_TOKEN --prod --dir=public
+          command: netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod --dir=public
