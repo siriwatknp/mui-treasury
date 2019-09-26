@@ -77,6 +77,10 @@ export default ({ spacing, breakpoints, white, palette }) => ({
         '& .ListItem-secondaryErrorText': {
           color: palette.error.main,
         },
+        '& .List-Container': {
+          height: 300,
+          overflowY: 'auto',
+        },
       },
       '&.PeaDialog.PeaEventDialog': {
         '& .DialogContent--root': {

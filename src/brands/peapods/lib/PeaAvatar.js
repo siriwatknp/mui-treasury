@@ -12,6 +12,7 @@ const PeaAvatar = ({
   className,
   size,
   more,
+  alt,
   isClickable,
   ...props
 }) =>
@@ -44,7 +45,9 @@ const PeaAvatar = ({
           className,
         )}
         {...props}
-      />
+      >
+        {alt}
+      </Avatar>
       <Typography className={'MuiAvatar-more'}>+{more}</Typography>
     </Box>
   ) : (
@@ -59,7 +62,9 @@ const PeaAvatar = ({
               className,
             )}
             {...props}
-          />
+          >
+            {alt}
+          </Avatar>
         </Link>
       ) : (
         <Avatar
@@ -70,7 +75,9 @@ const PeaAvatar = ({
             className,
           )}
           {...props}
-        />
+        >
+          {alt}
+        </Avatar>
       )}
     </>
   );
@@ -81,6 +88,7 @@ PeaAvatar.propTypes = {
   className: PropTypes.string,
   more: PropTypes.number,
   size: PropTypes.oneOf(['small', 'big', 'large', 'huge']),
+  alt: PropTypes.string,
 };
 PeaAvatar.defaultProps = {
   externalLink: undefined,
@@ -88,6 +96,7 @@ PeaAvatar.defaultProps = {
   className: '',
   more: undefined,
   size: undefined,
+  alt: '',
 };
 PeaAvatar.metadata = {
   name: 'Pea Avatar',

@@ -26,6 +26,7 @@ import PeaTag from './PeaTag';
 import PeaProfileEditor from './PeaProfileEditor';
 import PeaUserSettings from './PeaUserSettings';
 import PeaConfirmation from './PeaConfirmation';
+import PeaInvitationDialog from './PeaInvitationDialog';
 
 // TODO: refactor this to use PeaSwipeableTabs
 
@@ -43,6 +44,7 @@ const PeaAccountProfile = ({
   age,
   gender,
   groups,
+  groupsOfCurrentUser,
   tags,
   pods,
   reputation,
@@ -59,10 +61,12 @@ const PeaAccountProfile = ({
   onChangeProfilePhotosClicked,
   deleteProfile,
   onCreateGroupClicked,
+  onInvite,
 }) => {
   const [index, onChange] = useState(0);
   const [anchorEl, setAnchor] = useState(null);
   const [delModalOpen, setDelModalOpen] = useState(false);
+  const [openInviteDialog, setOpenInviteDialog] = useState(false);
   const open = Boolean(anchorEl);
 
   if (editing) {
@@ -193,6 +197,7 @@ const PeaAccountProfile = ({
                     variant={'outlined'}
                     color={'primary'}
                     size={'small'}
+                    onClick={() => setOpenInviteDialog(true)}
                   >
                     Invite
                   </PeaButton>
@@ -363,6 +368,18 @@ const PeaAccountProfile = ({
           />
         </Box>
       )}
+
+      <PeaInvitationDialog
+        person={tag}
+        pods={[]}
+        groups={groupsOfCurrentUser}
+        onInvite={item => {
+          onInvite(item);
+          setOpenInviteDialog(false);
+        }}
+        open={openInviteDialog}
+        onClose={() => setOpenInviteDialog(false)}
+      />
     </Card>
   );
 };
@@ -384,6 +401,7 @@ PeaAccountProfile.propTypes = {
       src: PropTypes.string,
     }),
   ),
+  groupsOfCurrentUser: PropTypes.arrayOf(PropTypes.shape({})),
   tags: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
@@ -406,6 +424,7 @@ PeaAccountProfile.propTypes = {
   onChangeProfilePhotosClicked: PropTypes.func.isRequired,
   deleteProfile: PropTypes.func,
   onCreateGroupClicked: PropTypes.func,
+  onInvite: PropTypes.func,
 };
 
 PeaAccountProfile.defaultProps = {
@@ -417,6 +436,7 @@ PeaAccountProfile.defaultProps = {
   age: 'unknown',
   gender: 'unknown',
   groups: [],
+  groupsOfCurrentUser: [],
   tags: [],
   reputation: 0,
   pods: [],
@@ -433,6 +453,7 @@ PeaAccountProfile.defaultProps = {
   setEditing: () => {},
   deleteProfile: () => {},
   onCreateGroupClicked: () => {},
+  onInvite: () => {},
 };
 PeaAccountProfile.metadata = {
   name: 'Pea Account Profile',
