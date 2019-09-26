@@ -108,6 +108,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.3",
+    "firebase-tools": "^7.4.0",
     "fs-extra": "^8.1.0",
     "glob": "^7.1.4",
     "husky": "^3.0.1",
@@ -115,6 +116,7 @@
     "jest": "^24.9.0",
     "lint-staged": "^9.2.0",
     "lodash": "^4.17.15",
+    "netlify-cli": "^2.15.0",
     "prettier": "^1.18.2",
     "pretty-quick": "^1.11.1",
     "react-test-renderer": "^16.9.0"
