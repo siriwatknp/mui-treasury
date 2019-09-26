@@ -52,6 +52,7 @@
     "gatsby-plugin-feed": "^2.3.6",
     "gatsby-plugin-google-analytics": "^2.1.7",
     "gatsby-plugin-manifest": "^2.2.5",
+    "gatsby-plugin-material-ui": "^2.1.6",
     "gatsby-plugin-module-resolver": "^1.0.3",
     "gatsby-plugin-netlify": "^2.1.15",
     "gatsby-plugin-offline": "^2.2.6",
