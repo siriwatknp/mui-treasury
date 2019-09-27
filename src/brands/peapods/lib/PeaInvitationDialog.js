@@ -11,11 +11,14 @@ import Box from '@material-ui/core/Box';
 import PeaDialog from './PeaDialog';
 import PeaButton from './PeaButton';
 import PeaAvatar from './PeaAvatar';
+import PeaLoadingSpinner from './PeaLoadingSpinner';
 
 const PeaInvitationDialog = ({
   person,
   pods,
   groups,
+  isInvitingInfo,
+  invitedInfo,
   onInvite,
   onClose,
   ...props
@@ -67,8 +70,17 @@ const PeaInvitationDialog = ({
                         variant={'contained'}
                         color={'primary'}
                         onClick={() => onInvite(group)}
+                        disabled={
+                          isInvitingInfo[group.id] || invitedInfo[group.id]
+                        }
                       >
-                        Invite
+                        {isInvitingInfo[group.id] && (
+                          <PeaLoadingSpinner size={20} style={{ margin: 0 }} />
+                        )}
+                        {invitedInfo[group.id] && 'Invitation Sent'}
+                        {!invitedInfo[group.id] &&
+                          !isInvitingInfo[group.id] &&
+                          'Invite'}
                       </PeaButton>
                     </ListItem>
                   );
@@ -97,7 +109,14 @@ PeaInvitationDialog.propTypes = {
   person: PropTypes.string.isRequired,
   pods: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   groups: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  isInvitingInfo: PropTypes.shape({}),
+  invitedInfo: PropTypes.shape({}),
   onClose: PropTypes.func.isRequired,
+};
+
+PeaInvitationDialog.defaultProps = {
+  isInvitingInfo: {},
+  invitedInfo: {},
 };
 
 export default PeaInvitationDialog;

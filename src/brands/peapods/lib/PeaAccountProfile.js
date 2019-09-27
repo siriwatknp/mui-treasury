@@ -57,6 +57,8 @@ const PeaAccountProfile = ({
   isUpdating,
   isDeleting,
   setEditing,
+  isInvitingInfo,
+  invitedInfo,
   onChangeCoverPhotoClicked,
   onChangeProfilePhotosClicked,
   deleteProfile,
@@ -373,9 +375,10 @@ const PeaAccountProfile = ({
         person={tag}
         pods={[]}
         groups={groupsOfCurrentUser}
-        onInvite={item => {
-          onInvite(item);
-          setOpenInviteDialog(false);
+        isInvitingInfo={isInvitingInfo}
+        invitedInfo={invitedInfo}
+        onInvite={async item => {
+          await onInvite(item);
         }}
         open={openInviteDialog}
         onClose={() => setOpenInviteDialog(false)}
@@ -418,6 +421,8 @@ PeaAccountProfile.propTypes = {
   editing: PropTypes.bool,
   isUpdating: PropTypes.bool,
   isDeleting: PropTypes.bool,
+  isInvitingInfo: PropTypes.object,
+  invitedInfo: PropTypes.object,
   onSubmit: PropTypes.func,
   setEditing: PropTypes.func,
   onChangeCoverPhotoClicked: PropTypes.func.isRequired,
@@ -449,6 +454,8 @@ PeaAccountProfile.defaultProps = {
   isUpdating: false,
   isDeleting: false,
   groupList: undefined,
+  isInvitingInfo: {},
+  invitedInfo: {},
   onSubmit: () => {},
   setEditing: () => {},
   deleteProfile: () => {},

@@ -64,9 +64,7 @@ export default ({ spacing, breakpoints, white, palette }) => ({
       },
       '&.PeaInvitationDialog': {
         '& .DialogContent--root': {
-          paddingLeft: 0,
-          paddingRight: 0,
-          paddingBottom: 8,
+          padding: '0px !important',
           minWidth: 343,
         },
         '& .ListSubheader-typography': {
