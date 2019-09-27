@@ -1,14 +1,14 @@
 import React from 'react';
 import TreeView from '@material-ui/lab/TreeView';
 import molecules from 'components/molecules';
-import DemoPage from 'containers/Demo';
+import FullDemoPage from 'containers/Demo';
 import ComponentImage from 'containers/Images/ComponentImage';
 import { customComponents, DefaultComponent } from 'docs/components/chatMsg';
 
 const { SignTreeItem } = molecules;
 
 const ChatMsgPage = () => (
-  <DemoPage
+  <FullDemoPage
     title={'Chat Message'}
     description={`If you're building chat app, you're in the right place.`}
     DemoComponentsProps={{
@@ -44,8 +44,5 @@ const ChatMsgPage = () => (
     }}
   />
 );
-
-ChatMsgPage.propTypes = {};
-ChatMsgPage.defaultProps = {};
 
 export default ChatMsgPage;

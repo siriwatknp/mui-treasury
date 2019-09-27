@@ -46,7 +46,6 @@ const ShowcaseWidget = ({
       <Box
         p={2}
         pb={1}
-        textAlign={'center'}
         display={'flex'}
         justifyContent={'center'}
         alignItems={'center'}

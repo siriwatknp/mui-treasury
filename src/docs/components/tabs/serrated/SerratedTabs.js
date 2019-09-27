@@ -20,7 +20,7 @@ const SerratedTabs = () => {
     >
       <Toolbar
         // you need to set override hidden in toolbar
-        style={{ overflow: 'hidden' }}
+        style={{ overflow: 'hidden', minHeight: 72 }}
       >
         <Tabs
           style={{ alignSelf: 'flex-end' }}

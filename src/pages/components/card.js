@@ -1,14 +1,14 @@
 import React from 'react';
 import TreeView from '@material-ui/lab/TreeView';
 import molecules from 'components/molecules';
-import DemoPage from 'containers/Demo';
+import FullDemoPage from 'containers/Demo';
 import ComponentImage from 'containers/Images/ComponentImage';
 import { customComponents, DefaultComponent } from 'docs/components/card';
 
 const { SignTreeItem } = molecules;
 
-const ButtonPage = () => (
-  <DemoPage
+const CardPage = () => (
+  <FullDemoPage
     title={'Card'}
     description={'A must for displaying data in grid'}
     DemoComponentsProps={{
@@ -26,11 +26,6 @@ const ButtonPage = () => (
       ),
       customComponents,
       DefaultComponent,
-      ShowcaseWidgetProps: {
-        frameProps: {
-          textAlign: 'initial',
-        },
-      },
     }}
     DemoSourceDrawerProps={{
       frameProps: {
@@ -40,7 +35,4 @@ const ButtonPage = () => (
   />
 );
 
-ButtonPage.propTypes = {};
-ButtonPage.defaultProps = {};
-
-export default ButtonPage;
+export default CardPage;

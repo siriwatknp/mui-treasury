@@ -21,7 +21,4 @@ const ComponentInstruction = () => (
   </SidebarLayout>
 );
 
-ComponentInstruction.propTypes = {};
-ComponentInstruction.defaultProps = {};
-
 export default ComponentInstruction;

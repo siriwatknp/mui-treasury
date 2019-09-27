@@ -4,11 +4,13 @@ import firebaseBtnStyles from './firebaseBtn.styles';
 import githubBtnStyles from './githubBtn.styles';
 import twitterBtnStyles from './twitterBtn.styles';
 import gradientBtnStyles from './gradientBtn.styles';
+import graphicBtnStyles from './graphicBtn.styles';
 
 const useFirebaseBtnStyles = makeStyles(firebaseBtnStyles);
 const useGithubBtnStyles = makeStyles(githubBtnStyles);
 const useTwitterBtnStyles = makeStyles(twitterBtnStyles);
 const useGradientBtnStyles = makeStyles(gradientBtnStyles);
+const useGraphicBtnStyles = makeStyles(graphicBtnStyles);
 
 export {
   firebaseBtnStyles,
@@ -19,4 +21,6 @@ export {
   useTwitterBtnStyles,
   gradientBtnStyles,
   useGradientBtnStyles,
+  graphicBtnStyles,
+  useGraphicBtnStyles,
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import TreeView from '@material-ui/lab/TreeView';
 import molecules from 'components/molecules';
-import DemoPage from 'containers/Demo';
+import FullDemoPage from 'containers/Demo';
 import ComponentImage from 'containers/Images/ComponentImage';
 import { customComponents, DefaultComponent } from 'docs/components/tabs';
 import Grid from '@material-ui/core/Grid';
@@ -9,7 +9,7 @@ import Grid from '@material-ui/core/Grid';
 const { SignTreeItem } = molecules;
 
 const TabsPage = () => (
-  <DemoPage
+  <FullDemoPage
     title={'Tabs'}
     description={'Very useful when you have a multiple categories content.'}
     DemoComponentsProps={{
@@ -46,7 +46,8 @@ const TabsPage = () => (
         </Grid>
       ),
       GridItemProps: {
-        md: 6,
+        sm: 12,
+        lg: 6,
       },
       ShowcaseWidgetProps: {
         frameProps: {
@@ -65,8 +66,5 @@ const TabsPage = () => (
     }}
   />
 );
-
-TabsPage.propTypes = {};
-TabsPage.defaultProps = {};
 
 export default TabsPage;

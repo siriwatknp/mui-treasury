@@ -40,6 +40,11 @@ export default {
       subMenus: [
         { key: 'button', label: 'Button', to: '/components/button' },
         {
+          key: 'cardHeader',
+          label: 'Card Header',
+          to: '/components/cardHeader',
+        },
+        {
           key: 'chatMsg',
           label: 'Chat Message',
           to: '/components/chatMsg',

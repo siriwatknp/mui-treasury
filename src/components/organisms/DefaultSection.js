@@ -4,13 +4,25 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import molecules from 'components/molecules';
 
-const { BoxTabs } = molecules;
+const { BoxTabs, ShowcaseWidget } = molecules;
 
-const DefaultSection = ({ demo, componentImage, cssTree }) => (
+const DefaultSection = ({
+  Component,
+  ShowcaseWidgetProps,
+  componentImage,
+  cssTree,
+}) => (
   <Box maxWidth={1152} mx={'auto'}>
     <Grid container>
       <Grid item xs={12} sm={5} md={5}>
-        {demo}
+        <ShowcaseWidget
+          {...ShowcaseWidgetProps}
+          border={'1px solid #e9e9e9'}
+          mr={'-1px'}
+          name={Component.metadata.title}
+        >
+          <Component />
+        </ShowcaseWidget>
       </Grid>
       <Grid item xs={12} sm={7} md={7} container direction={'column'}>
         <BoxTabs
@@ -33,14 +45,16 @@ const DefaultSection = ({ demo, componentImage, cssTree }) => (
 );
 
 DefaultSection.propTypes = {
-  demo: PropTypes.node,
   cssTree: PropTypes.node,
   componentImage: PropTypes.node,
+  Component: PropTypes.elementType,
+  ShowcaseWidgetProps: PropTypes.shape({}),
 };
 DefaultSection.defaultProps = {
-  demo: undefined,
   cssTree: undefined,
   componentImage: undefined,
+  Component: () => {},
+  ShowcaseWidgetProps: {},
 };
 
 export default DefaultSection;

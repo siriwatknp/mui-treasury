@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { PKG } from 'constants/menus';
-import Box from '@material-ui/core/Box';
 import SidebarLayout from 'components/layout/SidebarLayout';
 import ComponentHeading from 'components/organisms/ComponentHeading';
 import DemoSourceDrawer from './DemoSourceDrawer';
@@ -14,11 +13,9 @@ const DemoPage = ({
   DemoComponentsProps,
   DemoSourceDrawerProps,
 }) => (
-  <SidebarLayout pkg={PKG.components} getOpenKeys={() => ['readme', 'basic']}>
+  <SidebarLayout pkg={PKG.components} getOpenKeys={() => ['basic', 'complex']}>
     <MetadataContext>
-      <Box py={{ xs: '2rem', sm: '3rem', md: '4rem' }}>
-        <ComponentHeading title={title} description={description} />
-      </Box>
+      <ComponentHeading title={title} description={description} />
       <DemoSourceDrawer title={title} {...DemoSourceDrawerProps} />
       <DemoComponents {...DemoComponentsProps} />
     </MetadataContext>
