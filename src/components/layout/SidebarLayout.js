@@ -15,7 +15,7 @@ import Header from 'components/layout/Header';
 import Footer from 'components/layout/Footer';
 import { makeStyles } from '@material-ui/styles';
 import { NestedMenuList } from '@mui-treasury/components';
-import { useJupiterNestedMenu } from '@mui-treasury/styles';
+import { useJupiterNestedMenuStyles } from '@mui-treasury/styles';
 import ChevronLeft from '@material-ui/icons/ChevronLeft';
 import ChevronRight from '@material-ui/icons/ChevronRight';
 import MenuRounded from '@material-ui/icons/MenuRounded';
@@ -40,7 +40,7 @@ const SidebarLayout = ({ pkg, children, getOpenKeys }) => {
   const menus = MENUS[PKG[pkg]];
   const headerStyles = useHeaderStyles();
   const footerStyles = useFooterStyles();
-  const jupiterStyles = useJupiterNestedMenu();
+  const jupiterStyles = useJupiterNestedMenuStyles();
   return (
     <Location>
       {({ location }) => {

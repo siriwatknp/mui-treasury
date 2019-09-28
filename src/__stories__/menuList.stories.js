@@ -5,8 +5,8 @@ import { NestedMenuList, HorzMenuList } from '@mui-treasury/components';
 import Toolbar from '@material-ui/core/Toolbar';
 import { text, boolean, select } from '@storybook/addon-knobs';
 import {
-  useGatsbyNestedMenu,
-  useJupiterNestedMenu,
+  useGatsbyNestedMenuStyles,
+  useJupiterNestedMenuStyles,
 } from '@mui-treasury/styles';
 
 import createContainer, { StylesProvider } from './helpers/containerDecorator';
@@ -153,7 +153,7 @@ storiesOf('Components|Vertical Menu/Nested Menu', module)
   .addDecorator(createContainer({ maxWidth: 'xs' }))
   .add('default', () => <NestedMenuList {...createCommonProps()} />)
   .add('Jupiter', () => (
-    <StylesProvider useStyles={useJupiterNestedMenu}>
+    <StylesProvider useStyles={useJupiterNestedMenuStyles}>
       {(styles, { setCount }) => (
         <NestedMenuList
           classes={styles}
@@ -168,7 +168,7 @@ storiesOf('Components|Vertical Menu/Nested Menu', module)
     </StylesProvider>
   ))
   .add('Gatsby', () => (
-    <StylesProvider useStyles={useGatsbyNestedMenu}>
+    <StylesProvider useStyles={useGatsbyNestedMenuStyles}>
       {styles => <NestedMenuList classes={styles} {...createCommonProps()} />}
     </StylesProvider>
   ));
