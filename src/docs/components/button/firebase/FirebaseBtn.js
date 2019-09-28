@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import { useFirebaseBtnStyles, usePushingGutter } from '@mui-treasury/styles';
+import { useFirebaseBtnStyles } from '@mui-treasury/styles/button';
+import { usePushingGutter } from '@mui-treasury/styles/gutter';
 
 const FirebaseButton = () => {
   const styles = useFirebaseBtnStyles();

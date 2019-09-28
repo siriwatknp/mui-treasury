@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import molecules from 'components/molecules';
-import { useMultiRowBorderedGrid } from '@mui-treasury/styles';
+import { useMultiRowBorderedGridStyles } from '@mui-treasury/styles/grid';
 
 const { ShowcaseWidget } = molecules;
 
 const CustomComponentGrid = ({ colWidth, components, getItemProps }) => {
-  const multiRowGridStyles = useMultiRowBorderedGrid({
+  const multiRowGridStyles = useMultiRowBorderedGridStyles({
     borderColor: '#e9e9e9',
     colWidth,
   });

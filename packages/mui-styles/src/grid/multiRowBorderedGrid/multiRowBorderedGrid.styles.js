@@ -1,5 +1,5 @@
 import Color from 'color';
-import getThemeColor from '@mui-treasury/utils/getThemeColor';
+import getThemeColor from '@mui-treasury/utils/src/getThemeColor';
 
 export default ({ breakpoints, palette }) => {
   const defaultColor = Color(palette.primary.main)
