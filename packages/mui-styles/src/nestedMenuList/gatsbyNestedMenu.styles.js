@@ -1,5 +1,5 @@
 import { mergeStyleCreators } from '@mui-treasury/styling';
-import gatsbyMenuItem from '../menuItem/gatsbyMenuItem.styles';
+import gatsbyMenuItem from '../menuItem/gatsby/gatsbyMenuItem.styles';
 
 export default mergeStyleCreators(gatsbyMenuItem, {
   lv1Parent: {

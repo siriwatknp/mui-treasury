@@ -6,7 +6,7 @@ import GitHubButton from 'react-github-btn';
 import Box from '@material-ui/core/Box';
 import InputBase from '@material-ui/core/InputBase';
 import { HorzMenuList } from '@mui-treasury/components';
-import { useContrastInputBase } from '@mui-treasury/styles';
+import { useContrastInputBaseStyles } from '@mui-treasury/styles/inputBase';
 import MENUS, { PKG } from 'constants/menus';
 
 const Header = () => {
@@ -22,7 +22,7 @@ const Header = () => {
     }
   `);
   const { logo } = data;
-  const inputBaseStyles = useContrastInputBase();
+  const inputBaseStyles = useContrastInputBaseStyles();
   return (
     <Location>
       {({ location }) => (

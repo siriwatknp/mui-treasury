@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { MenuToggle, MuiSvgArrowToggle } from '@mui-treasury/components';
 import { text, boolean } from '@storybook/addon-knobs';
-import { useGatsbyMenuItem } from '@mui-treasury/styles';
+import { useGatsbyMenuItemStyles } from '@mui-treasury/styles';
 
 import createContainer, { StylesProvider } from './helpers/containerDecorator';
 
@@ -19,7 +19,7 @@ storiesOf('Components|Vertical Menu/MenuItem', module)
   .addDecorator(createContainer({ maxWidth: 'xs' }))
   .add('default', () => <MenuToggle {...createCommonProps()} />)
   .add('Gatsby', () => (
-    <StylesProvider useStyles={useGatsbyMenuItem}>
+    <StylesProvider useStyles={useGatsbyMenuItemStyles}>
       {styles => <MenuToggle classes={styles} {...createCommonProps()} />}
     </StylesProvider>
   ));
