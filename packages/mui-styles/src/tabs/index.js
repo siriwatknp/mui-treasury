@@ -1,13 +1,13 @@
 import { makeStyles } from '@material-ui/styles';
-import * as chromeTabsStyles from './chromeTabs.styles';
-import * as containedTabsStyles from './containedTabs.styles';
-import * as elevatedTabsStyles from './elevatedTabs.styles';
-import * as firebaseTabsStyles from './firebaseTabs.styles';
-import * as instagramTabsStyles from './instagramTabs.styles';
-import * as pillTabsStyles from './pillTabs.styles';
-import * as serratedTabsStyles from './serratedTabs.styles';
-import * as twitterIconTabsStyles from './twitterIconTabs.styles';
-import * as twitterTabsStyles from './twitterTabs.styles';
+import * as chromeTabsStyles from './chrome/chromeTabs.styles';
+import * as containedTabsStyles from './contained/containedTabs.styles';
+import * as elevatedTabsStyles from './elevated/elevatedTabs.styles';
+import * as firebaseTabsStyles from './firebase/firebaseTabs.styles';
+import * as instagramTabsStyles from './instagram/instagramTabs.styles';
+import * as pillTabsStyles from './pill/pillTabs.styles';
+import * as serratedTabsStyles from './serrated/serratedTabs.styles';
+import * as twitterIconTabsStyles from './twitterIcon/twitterIconTabs.styles';
+import * as twitterTabsStyles from './twitter/twitterTabs.styles';
 
 const chromeTabsStylesHook = {
   useTabs: makeStyles(chromeTabsStyles.tabsStyles),
@@ -56,22 +56,13 @@ const twitterTabsStylesHook = {
 };
 
 export {
-  chromeTabsStyles,
   chromeTabsStylesHook,
-  containedTabsStyles,
   containedTabsStylesHook,
-  elevatedTabsStyles,
   elevatedTabsStylesHook,
-  firebaseTabsStyles,
   firebaseTabsStylesHook,
-  instagramTabsStyles,
   instagramTabsStylesHook,
-  pillTabsStyles,
   pillTabsStylesHook,
-  serratedTabsStyles,
   serratedTabsStylesHook,
-  twitterIconTabsStyles,
   twitterIconTabsStylesHook,
-  twitterTabsStyles,
   twitterTabsStylesHook,
 };
