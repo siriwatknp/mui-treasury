@@ -9,12 +9,18 @@ const useStyles = makeStyles(({ palette }) => ({
   avatar: {
     backgroundColor: palette.primary.main,
   },
+  action: {
+    marginLeft: 8,
+  },
 }));
 
 const OfficialCardHeader = () => {
   const classes = useStyles();
   return (
     <CardHeader
+      classes={{
+        action: classes.action,
+      }}
       avatar={
         <Avatar aria-label="recipe" className={classes.avatar}>
           R

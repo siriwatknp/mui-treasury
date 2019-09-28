@@ -1,15 +1,11 @@
-export default (palette, color, defaultColor) => {
-  let result = defaultColor;
-  if (color && typeof color === 'string') {
-    if (color === 'divider' || color.includes('.')) {
-      result = palette;
-      const path = color.split('.');
-      path.forEach(key => {
-        result = color[key];
-      });
-    } else {
-      result = color;
-    }
+import get from 'lodash/get';
+
+export default (palette, color) => {
+  if (color === 'divider') {
+    return palette.divider;
   }
-  return result;
+  if (color.includes('.')) {
+    return get(palette, color);
+  }
+  return color;
 };

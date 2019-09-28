@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/styles';
 
-import firebaseBtnStyles from './firebaseBtn.styles';
+import firebaseBtnStyles from './firebase';
 import githubBtnStyles from './githubBtn.styles';
 import twitterBtnStyles from './twitterBtn.styles';
 import gradientBtnStyles from './gradientBtn.styles';

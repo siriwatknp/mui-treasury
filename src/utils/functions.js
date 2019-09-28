@@ -8,8 +8,14 @@ FakeComponent.metadata = {
 };
 
 export const splitDefault = bundledObject => {
+  const components = toArray(bundledObject);
+  components.forEach(o => {
+    if (!o.metadata) {
+      throw new Error(`Please define metadata in ${o.name}.`);
+    }
+  });
   const [defaultComponent, customComponents] = partition(
-    toArray(bundledObject),
+    components,
     o => o.metadata.isDefault
   );
   return [
