@@ -25,7 +25,9 @@ const ContainedTabs = () => {
 ContainedTabs.metadata = {
   title: 'Contained',
   path: 'tabs/contained',
-  files: [{ pkg: 'mui-styles', path: 'tabs/containedTabs.styles.js' }],
+  files: [
+    { pkg: 'mui-styles', path: 'tabs/contained/containedTabs.styles.js' },
+  ],
   relates: [
     {
       label: 'Qix-/Color',

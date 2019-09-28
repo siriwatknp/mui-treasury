@@ -27,7 +27,7 @@ TwitterIconTabs.metadata = {
   path: 'tabs/twitterIcon',
   files: [
     { pkg: 'mui-components', path: 'tabs/TwitterIconTabs.js' },
-    { pkg: 'mui-styles', path: 'tabs/twitterIconTabs.styles.js' },
+    { pkg: 'mui-styles', path: 'tabs/twitterIcon/twitterIconTabs.styles.js' },
   ],
 };
 // hide-end

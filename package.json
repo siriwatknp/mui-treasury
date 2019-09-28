@@ -27,6 +27,7 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx}": [
+      "prettier",
       "eslint"
     ]
   },

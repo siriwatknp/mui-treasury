@@ -25,7 +25,7 @@ const ChromeTabs = () => {
 ChromeTabs.metadata = {
   title: 'Chrome',
   path: 'tabs/default',
-  files: [{ pkg: 'mui-styles', path: 'tabs/chromeTabs.styles.js' }],
+  files: [{ pkg: 'mui-styles', path: 'tabs/chrome/chromeTabs.styles.js' }],
   relates: [
     {
       label: 'Qix-/Color',

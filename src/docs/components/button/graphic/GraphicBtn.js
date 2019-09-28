@@ -15,7 +15,7 @@ const GraphicBtn = () => {
 GraphicBtn.metadata = {
   title: 'Graphic',
   path: 'button/graphic',
-  files: [{ pkg: 'mui-styles', path: 'button/graphicBtn.styles.js' }],
+  files: [{ pkg: 'mui-styles', path: 'button/graphic/graphicBtn.styles.js' }],
 };
 // hide-end
 

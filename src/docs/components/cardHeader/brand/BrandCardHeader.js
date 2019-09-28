@@ -10,7 +10,7 @@ const BrandCardHeader = withStyles(brandCardHeaderStyles)(({ css }) => (
       <Avatar
         className={css.avatar}
         src={
-          'https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png'
+          'https://pngimage.net/wp-content/uploads/2018/06/react-icon-png-7.png'
         }
       />
       <Typography className={css.extra}>7 Minutes</Typography>

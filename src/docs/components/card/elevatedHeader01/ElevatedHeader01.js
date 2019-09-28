@@ -69,7 +69,9 @@ const ElevatedCardHeader01 = () => {
 ElevatedCardHeader01.metadata = {
   title: 'Elevated Header I',
   path: 'card/elevatedHeader01',
-  files: [{ pkg: 'mui-styles', path: 'card/elevatedCardHeader01.styles.js' }],
+  files: [
+    { pkg: 'mui-styles', path: 'card/elevated/elevatedCardHeader01.styles.js' },
+  ],
 };
 // hide-end
 

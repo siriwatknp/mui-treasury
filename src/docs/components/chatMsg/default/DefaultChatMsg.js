@@ -29,7 +29,7 @@ DefaultChatMsg.metadata = {
   path: 'chatMsg/default',
   files: [
     { pkg: 'mui-components', path: 'chatMsg/ChatMsg.js' },
-    { pkg: 'mui-styles', path: 'chatMsg/defaultChatMsg.styles.js' },
+    { pkg: 'mui-styles', path: 'chatMsg/default/defaultChatMsg.styles.js' },
   ],
 };
 // hide-end

@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import { text, boolean, color, object } from '@storybook/addon-knobs';
-import { useMultiRowBorderedGrid } from '@mui-treasury/styles';
+import { useFullBorderedGridStyles } from '@mui-treasury/styles';
 
 import createContainer, { StylesProvider } from './helpers/containerDecorator';
 
@@ -12,7 +12,7 @@ storiesOf('Components|Grid', module)
   .add('bordered', () => {
     const colWidth = object('colWidth', { xs: 6, sm: 4, md: 3 });
     const useStyles = () =>
-      useMultiRowBorderedGrid({
+      useFullBorderedGridStyles({
         colWidth,
         borderColor: color('color', undefined),
       });

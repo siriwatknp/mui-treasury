@@ -32,7 +32,9 @@ const InstagramTabs = () => {
 InstagramTabs.metadata = {
   title: 'Instagram',
   path: 'tabs/instagram',
-  files: [{ pkg: 'mui-styles', path: 'tabs/instagramTabs.styles.js' }],
+  files: [
+    { pkg: 'mui-styles', path: 'tabs/instagram/instagramTabs.styles.js' },
+  ],
 };
 // hide-end
 

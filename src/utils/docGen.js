@@ -13,10 +13,17 @@ const reqSourceComponents = bundleStyles(
 );
 
 const createConfig = path => ({
-  getSource: reqSource => ({
-    name: getPathFileName(path),
-    source: reqSource[path],
-  }),
+  getSource: reqSource => {
+    const name = getPathFileName(path);
+    const source = reqSource[path];
+    if (!source) {
+      throw new Error(`Path "${path}" not found!`);
+    }
+    return {
+      name,
+      source,
+    };
+  },
 });
 
 export default () => {

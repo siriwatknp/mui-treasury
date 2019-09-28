@@ -32,7 +32,12 @@ const Header = () => {
           alignSelf={'stretch'}
           width={'100%'}
         >
-          <Box mr={4}>
+          <Box
+            mr={4}
+            component={Link}
+            to={'/'}
+            borderBottom={'none !important'}
+          >
             <Image fixed={logo.childImageSharp.fixed} />
           </Box>
           <HorzMenuList

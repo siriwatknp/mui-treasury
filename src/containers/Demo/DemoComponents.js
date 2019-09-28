@@ -20,6 +20,7 @@ const DemoComponents = ({
   const colWidth = {
     xs: 12,
     sm: 6,
+    md: 6,
     lg: 4,
     ...GridItemProps,
   };
@@ -41,6 +42,7 @@ const DemoComponents = ({
               />
             )}
             <CustomComponentGrid
+              noHeader={noDefaultSection}
               components={customComponents}
               colWidth={colWidth}
               getItemProps={Component => ({

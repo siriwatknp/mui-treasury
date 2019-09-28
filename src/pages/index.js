@@ -7,7 +7,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import { FeatureWidget } from '@mui-treasury/components';
-import { useMultiRowBorderedGrid } from '@mui-treasury/styles';
+import {
+  useFullBorderedGridStyles,
+  useHalfBorderedGridStyles,
+} from '@mui-treasury/styles';
 import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
 
@@ -123,13 +126,14 @@ const socials = [
   },
 ];
 
-const Homepage = () => {
+const Homepage = ({ navigate }) => {
   const classes = useStyles();
   const widgetStyles = useTintPrimaryWidgetStyles();
-  const featureGridStyles = useMultiRowBorderedGrid({
-    colWidth: { xs: 12, sm: 6, md: 4 },
+  const featureColWidth = { xs: 12, sm: 6, md: 4 };
+  const featureGridStyles = useHalfBorderedGridStyles({
+    colWidth: featureColWidth,
   });
-  const socialGridStyles = useMultiRowBorderedGrid({
+  const socialGridStyles = useFullBorderedGridStyles({
     colWidth: { xs: 12, sm: 6 },
   });
   return (
@@ -169,6 +173,7 @@ const Homepage = () => {
           variant={'contained'}
           color={'primary'}
           classes={{ label: classes.buttonLabel }}
+          onClick={() => navigate('/components/button')}
         >
           Get started
         </Button>
@@ -191,9 +196,7 @@ const Homepage = () => {
             classes={featureGridStyles}
             item
             key={title}
-            xs={12}
-            sm={6}
-            md={4}
+            {...featureColWidth}
           >
             <FeatureWidget
               classes={widgetStyles}
@@ -247,6 +250,7 @@ const Homepage = () => {
             variant={'contained'}
             color={'primary'}
             classes={{ label: classes.buttonLabel }}
+            onClick={() => navigate('/components/tabs')}
           >
             Show me
           </Button>

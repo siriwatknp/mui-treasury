@@ -28,7 +28,7 @@ const FirebaseTabs = () => {
 FirebaseTabs.metadata = {
   title: 'Firebase',
   path: 'tabs/firebase',
-  files: [{ pkg: 'mui-styles', path: 'tabs/firebaseTabs.styles.js' }],
+  files: [{ pkg: 'mui-styles', path: 'tabs/firebase/firebaseTabs.styles.js' }],
 };
 // hide-end
 

@@ -25,7 +25,7 @@ const ElevatedTabs = () => {
 ElevatedTabs.metadata = {
   title: 'Elevated',
   path: 'tabs/elevated',
-  files: [{ pkg: 'mui-styles', path: 'tabs/elevatedTabs.styles.js' }],
+  files: [{ pkg: 'mui-styles', path: 'tabs/elevated/elevatedTabs.styles.js' }],
 };
 // hide-end
 

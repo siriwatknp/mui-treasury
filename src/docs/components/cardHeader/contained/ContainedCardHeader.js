@@ -24,6 +24,12 @@ ContainedCardHeader.metadata = {
     },
     { label: 'Official API', url: 'https://material-ui.com/api/card-header/' },
   ],
+  files: [
+    {
+      pkg: 'mui-styles',
+      path: 'cardHeader/contained/containedCardHeader.styles.js',
+    },
+  ],
 };
 // hide-end
 

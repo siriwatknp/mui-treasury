@@ -6,7 +6,7 @@ export const PKG = {
 export default {
   [PKG.nav]: [
     // { key: 'how-to', label: 'How to' },
-    { key: 'components', label: 'Components', to: '/components/instruction' },
+    { key: 'components', label: 'Components', to: '/components/button' },
     { key: 'form', label: 'Form', disabled: true },
     { key: 'layout', label: 'Layout', disabled: true },
     { key: 'styling', label: 'Styling', disabled: true },
@@ -49,6 +49,12 @@ export default {
           label: 'Chat Message',
           to: '/components/chatMsg',
         },
+        {
+          key: 'grid',
+          label: 'Grid',
+          to: '/components/grid',
+        },
+        { key: 'shadow', label: 'Shadow', to: '/components/shadow' },
         { key: 'tabs', label: 'Tabs', to: '/components/tabs' },
         // { key: 'arrow', label: 'Arrow' },
         // { key: 'input', label: 'Input' },

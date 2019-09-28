@@ -137,6 +137,7 @@ const DemoSourceDrawer = ({ title, frameProps }) => {
                     position={'fixed'}
                     top={'50%'}
                     left={'calc(50% - 350px)'}
+                    minWidth={320}
                     maxWidth={400}
                     minHeight={300}
                     display={'flex'}

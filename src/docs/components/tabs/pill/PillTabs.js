@@ -25,7 +25,7 @@ const PillTabs = () => {
 PillTabs.metadata = {
   title: 'Pill',
   path: 'tabs/pill',
-  files: [{ pkg: 'mui-styles', path: 'tabs/pillTabs.styles.js' }],
+  files: [{ pkg: 'mui-styles', path: 'tabs/pill/pillTabs.styles.js' }],
 };
 // hide-end
 

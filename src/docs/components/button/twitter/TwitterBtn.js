@@ -46,7 +46,7 @@ const TwitterButton = () => {
 TwitterButton.metadata = {
   title: 'Twitter',
   path: 'button/twitter',
-  files: [{ pkg: 'mui-styles', path: 'button/twitterBtn.styles.js' }],
+  files: [{ pkg: 'mui-styles', path: 'button/twitter/twitterBtn.styles.js' }],
 };
 // hide-end
 

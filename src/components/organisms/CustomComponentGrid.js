@@ -3,20 +3,30 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import molecules from 'components/molecules';
-import { useMultiRowBorderedGridStyles } from '@mui-treasury/styles/grid';
+import { useHalfBorderedGridStyles } from '@mui-treasury/styles/grid';
 
 const { ShowcaseWidget } = molecules;
 
-const CustomComponentGrid = ({ colWidth, components, getItemProps }) => {
-  const multiRowGridStyles = useMultiRowBorderedGridStyles({
+const CustomComponentGrid = ({
+  colWidth,
+  components,
+  getItemProps,
+  noHeader,
+}) => {
+  const multiRowGridStyles = useHalfBorderedGridStyles({
     borderColor: '#e9e9e9',
     colWidth,
   });
   return (
-    <Box py={{ xs: '2rem', sm: '3rem', md: '4rem' }}>
-      <Box textAlign={'center'}>
-        <h3>Custom Styles</h3>
-      </Box>
+    <Box
+      py={{ xs: '2rem', sm: '3rem', md: '4rem' }}
+      {...(noHeader && { pt: '0 !important' })}
+    >
+      {!noHeader && (
+        <Box textAlign={'center'}>
+          <h3>Custom Styles</h3>
+        </Box>
+      )}
       <Grid container classes={multiRowGridStyles}>
         {components.map(Component => {
           if (Component.isDefault) return null;
@@ -36,11 +46,13 @@ const CustomComponentGrid = ({ colWidth, components, getItemProps }) => {
 };
 
 CustomComponentGrid.propTypes = {
+  noHeader: PropTypes.bool,
   colWidth: PropTypes.shape({}),
-  components: PropTypes.arrayOf(PropTypes.shape({})),
+  components: PropTypes.arrayOf(PropTypes.elementType),
   getItemProps: PropTypes.func,
 };
 CustomComponentGrid.defaultProps = {
+  noHeader: false,
   colWidth: {
     xs: 12,
     sm: 6,

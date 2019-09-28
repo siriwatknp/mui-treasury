@@ -42,7 +42,7 @@ const SerratedTabs = () => {
 SerratedTabs.metadata = {
   title: 'Serrated',
   path: 'tabs/serrated',
-  files: [{ pkg: 'mui-styles', path: 'tabs/serratedTabs.styles.js' }],
+  files: [{ pkg: 'mui-styles', path: 'tabs/serrated/serratedTabs.styles.js' }],
 };
 // hide-end
 

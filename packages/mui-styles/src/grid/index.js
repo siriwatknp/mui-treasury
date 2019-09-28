@@ -1,14 +1,9 @@
 import { makeStyles } from '@material-ui/styles';
 
-import multiRowBorderedGrid from './multiRowBorderedGrid';
-import singleRowBorderedGrid from './singleRowBorderedGrid';
+import fullBordered from './fullBordered';
+import halfBordered from './halfBordered';
 
-const useMultiRowBorderedGridStyles = makeStyles(multiRowBorderedGrid);
-const useSingleRowBorderedGridStyles = makeStyles(singleRowBorderedGrid);
+const useFullBorderedGridStyles = makeStyles(fullBordered);
+const useHalfBorderedGridStyles = makeStyles(halfBordered);
 
-export {
-  singleRowBorderedGrid,
-  useSingleRowBorderedGridStyles,
-  multiRowBorderedGrid,
-  useMultiRowBorderedGridStyles,
-};
+export { useFullBorderedGridStyles, useHalfBorderedGridStyles };

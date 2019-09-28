@@ -20,7 +20,7 @@ const FirebaseButton = () => {
 FirebaseButton.metadata = {
   title: 'Firebase',
   path: 'button/firebase',
-  files: [{ pkg: 'mui-styles', path: 'button/firebaseBtn.styles.js' }],
+  files: [{ pkg: 'mui-styles', path: 'button/firebase/firebaseBtn.styles.js' }],
 };
 // hide-end
 
