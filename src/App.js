@@ -1,9 +1,37 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { Root, createDefaultLayout } from '@mui-treasury/layout';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {
+  faFighterJet,
+  faDiceD8,
+  faSparkles,
+  faCubes,
+  faCity,
+  faThumbsUp,
+} from '@fortawesome/pro-duotone-svg-icons';
+import { faEnvelope } from '@fortawesome/pro-solid-svg-icons';
+import {
+  faTwitter,
+  faGithub,
+  faFacebookF,
+} from '@fortawesome/free-brands-svg-icons';
 import { ThemeWrapper } from './utils/theme';
 import './global.css';
 import banner from './assets/mui-treasury_banner_minified.jpg';
+
+library.add(
+  faFighterJet,
+  faDiceD8,
+  faSparkles,
+  faCubes,
+  faCity,
+  faThumbsUp,
+  faEnvelope,
+  faTwitter,
+  faGithub,
+  faFacebookF
+);
 
 const layoutConfig = createDefaultLayout({
   navWidth: 288,
@@ -52,12 +80,6 @@ const App = ({ children }) => (
         content="The mission is to boost any projects that want to shake the world, so that our future is better than today. This is an open-source project that provides a collection of ready-to-use components based on Material-UI."
       />
       <meta property="twitter:image" content={banner} />
-      <script
-        defer
-        src="https://pro.fontawesome.com/releases/v5.11.2/js/all.js"
-        integrity="sha384-S++1cFhwpxbtRScUliTyprAMK33gMHbukurY4rNyt9CxIniGm6PfioUsQPoAITQJ"
-        crossOrigin="anonymous"
-      />
     </Helmet>
     <ThemeWrapper>
       <Root config={layoutConfig}>{children}</Root>

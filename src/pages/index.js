@@ -6,6 +6,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
+import organisms from 'components/organisms';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FeatureWidget } from '@mui-treasury/components';
 import {
   useFullBorderedGridStyles,
@@ -14,38 +16,14 @@ import {
 import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
 
+const { SloganSection, TopicSection } = organisms;
+
 const useStyles = makeStyles(theme => {
-  const { palette, breakpoints } = theme;
+  const { palette } = theme;
   return {
     root: {},
-    overline: {
-      color: palette.primary.light,
-      fontWeight: 300,
-      fontSize: 'calc(2vh + 1vw)',
-      textTransform: 'uppercase',
-      letterSpacing: '1px',
-    },
-    headline: {
-      color: palette.primary.main,
-      fontSize: 27,
-      fontWeight: 800,
-      lineHeight: 1.4,
-      [breakpoints.up('sm')]: {
-        fontSize: 'calc(2vh + 3vw)',
-        marginBottom: '2rem',
-      },
-    },
-    body: {
-      fontSize: 16,
-      [breakpoints.up('sm')]: {
-        fontSize: 'calc(2vh + 0.75vw)',
-      },
-    },
     topic: {
       fontSize: 'calc(12px + 1.5vw)',
-    },
-    buttonLabel: {
-      letterSpacing: '1px',
     },
     secondaryText: {
       color: palette.text.secondary,
@@ -68,46 +46,54 @@ const useTintPrimaryWidgetStyles = makeStyles(({ palette }) => ({
 
 const purposes = [
   {
-    icon: 'fad fa-fighter-jet',
+    // icon: 'fad fa-fighter-jet',
+    icon: ['fad', 'fighter-jet'],
     title: 'Reduce UI Development time',
     content:
-      'No one likes to write the same code twice, same as ui. I strongly believe that this project can reduce development time for any starter project based on Material-UI',
+      'Great UI must be reusable. I strongly believe that this project will reduce development time significantly for any project based on Material-UI',
   },
   {
-    icon: 'fad fa-dice-d8',
+    // icon: 'fad fa-dice-d8',
+    icon: ['fad', 'dice-d8'],
     title: 'Provide real-world interface',
     content:
-      'Material-UI is a great library but it still has fewer components compare to real-world usage. This project is like an extra resources for Material-UI',
+      'Material-UI is a great library but it still has fewer components compare to real-world usage. This project is like an extra resources for Material-UI developers',
   },
   {
-    icon: 'fad fa-sparkles',
+    // icon: 'fad fa-sparkles',
+    icon: ['fad', 'sparkles'],
     title: 'Changing styles should be easy & fun',
     content:
-      'I found that many people have bad experience when it comes to styling in Material-UI, so I want to help them pass that point and see the beauty of it.',
+      'I found that many people have bad experience when it comes to styling in Material-UI, so I want to help them overcome that point and see the beauty of it.',
   },
   {
-    icon: 'fad fa-cubes',
+    // icon: 'fad fa-cubes',
+    icon: ['fad', 'cubes'],
     title: 'Composable & Reusable',
     content:
       'Every components in this project are composable & reusable. You can use them in anywhere or as a nested component.',
   },
   {
-    icon: 'fad fa-city',
+    // icon: 'fad fa-city',
+    icon: ['fad', 'city'],
     title: 'Ecosystem',
     content:
-      'Mui Treasury comes with multiple packages as an ecosystem such as mui-styling that handle component’s styling pattern or mui-styles that contain the whole styles you can select.',
+      'Mui Treasury comes with multiple packages as an ecosystem, available on both <code>npm</code> & <code>yarn</code>',
+    // 'Mui Treasury comes with multiple packages as an ecosystem such as <br /> <b>@mui-treasury/styling</b> : component’s styling solution <br /> <b>@mui-treasury/styles</b> : collection of reusable stylesheets <br /> <b>@mui-treasury/components</b> : real-world components <br/> <b>@mui-treasury/layout</b> : build layout without tears <br /> <b>@mui-treasury/formik</b> : formik integration for building forms',
   },
   {
-    icon: 'fad fa-thumbs-up',
+    // icon: 'fad fa-thumbs-up',
+    icon: ['fad', 'thumbs-up'],
     title: 'Better experience for developers',
     content:
-      'Not only components but also Form, Layout and Themes that you can find in this project.',
+      'Not only components but also Form, Layout and Themes that you can explore in this project.',
   },
 ];
 
 const socials = [
   {
-    icon: 'fab fa-twitter',
+    // icon: 'fab fa-twitter',
+    icon: ['fab', 'twitter'],
     title: 'Follow here, so that you won’t miss any updates',
     children: (
       <Button href={''} color={'primary'}>
@@ -116,7 +102,8 @@ const socials = [
     ),
   },
   {
-    icon: 'fab fa-github',
+    // icon: 'fab fa-github',
+    icon: ['fab', 'github'],
     title: 'Checkout the repo, PR welcome and please give me a star!',
     children: (
       <Button href={''} color={'primary'}>
@@ -143,53 +130,11 @@ const Homepage = ({ navigate }) => {
           <Header />
         </Toolbar>
       </AppBar>
-      <Box
-        textAlign={'center'}
-        py={{ xs: '3rem', sm: '4.5rem' }}
-        px={{ xs: 3, sm: '2rem' }}
-        mx={'auto'}
-      >
-        <p className={classes.overline}>Bring your idea to life</p>
-        <h1 className={classes.headline}>Browse, Choose and Use. That’s it.</h1>
-        <Box
-          maxWidth={{ sm: 600, md: 700 }}
-          mx={'auto'}
-          mb={{ xs: '2rem', sm: '3rem' }}
-        >
-          <p className={classes.body}>
-            MUI Treasury is a collection of ready-to-use and themeable
-            components base on{' '}
-            <a
-              href="https://material-ui.com"
-              target={'_blank'}
-              rel={'noopener'}
-            >
-              Material-UI
-            </a>
-          </p>
-        </Box>
-        <Button
-          size={'large'}
-          variant={'contained'}
-          color={'primary'}
-          classes={{ label: classes.buttonLabel }}
-          onClick={() => navigate('/components/button')}
-        >
-          Get started
-        </Button>
-      </Box>
-      <Box
-        bgcolor={'#f6fafc'}
-        border={'1px solid #e6f1f4'}
-        py={{ xs: '2rem', sm: '3.5rem' }}
-      >
-        <Box textAlign={'center'}>
-          <h2 className={classes.topic}>
-            <b>Why Mui Treasury exists?</b>
-          </h2>
-          <p className={classes.secondaryText}>Here is my purposes</p>
-        </Box>
-      </Box>
+      <SloganSection />
+      <TopicSection
+        title={'Why Mui Treasury exists?'}
+        subtitle={'Here is my purposes'}
+      />
       <Grid container>
         {purposes.map(({ icon, title, content }) => (
           <Grid
@@ -203,7 +148,7 @@ const Homepage = ({ navigate }) => {
               title={title}
               content={content}
               renderIcon={({ className }) => (
-                <i className={`${icon} ${className}`} />
+                <FontAwesomeIcon icon={icon} className={className} />
               )}
             />
           </Grid>
@@ -233,29 +178,20 @@ const Homepage = ({ navigate }) => {
           </Grid>
         </Box>
       </Container>
-      <Box
-        bgcolor={'#f6fafc'}
-        border={'1px solid #e6f1f4'}
-        py={{ xs: '2rem', sm: '3.5rem' }}
+      <TopicSection
+        title={'Interested ?'}
+        subtitle={'Take a few minutes to browse the collection'}
       >
-        <Box textAlign={'center'}>
-          <h2 className={classes.topic}>
-            <b>Interested ?</b>
-          </h2>
-          <p className={classes.secondaryText}>
-            Take a few minutes to browse the collection
-          </p>
-          <Button
-            size={'large'}
-            variant={'contained'}
-            color={'primary'}
-            classes={{ label: classes.buttonLabel }}
-            onClick={() => navigate('/components/tabs')}
-          >
-            Show me
-          </Button>
-        </Box>
-      </Box>
+        <Button
+          size={'large'}
+          variant={'contained'}
+          color={'primary'}
+          classes={{ label: classes.buttonLabel }}
+          onClick={() => navigate('/components/tabs')}
+        >
+          Show me
+        </Button>
+      </TopicSection>
       <Container maxWidth={'md'}>
         <Box py={{ xs: '2rem', sm: '3.5rem' }}>
           <Box textAlign={'center'}>
@@ -269,7 +205,7 @@ const Homepage = ({ navigate }) => {
                   classes={widgetStyles}
                   content={title}
                   renderIcon={({ className }) => (
-                    <i className={`${icon} ${className}`} />
+                    <FontAwesomeIcon icon={icon} className={className} />
                   )}
                 >
                   <Box textAlign={'center'}>{children}</Box>

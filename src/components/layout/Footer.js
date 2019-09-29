@@ -8,6 +8,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const useStyles = makeStyles(() => ({
   avatarRoot: {
@@ -27,22 +28,26 @@ const useStyles = makeStyles(() => ({
 const links = [
   {
     href: 'https://www.facebook.com/siriwat.kunaporn',
-    icon: 'fab fa-facebook-f',
+    // icon: 'fab fa-facebook-f',
+    icon: ['fab', 'facebook-f'],
     ariaLabel: 'This is my facebook page',
   },
   {
     href: 'https://twitter.com/siriwatknp',
-    icon: 'fab fa-twitter',
+    // icon: 'fab fa-twitter',
+    icon: ['fab', 'twitter'],
     ariaLabel: 'This is my twitter page',
   },
   {
     href: 'https://github.com/siriwatknp',
-    icon: 'fab fa-github',
+    // icon: 'fab fa-github',
+    icon: ['fab', 'github'],
     ariaLabel: 'This is my github page',
   },
   {
     href: 'mailto:siriwatkunaporn@gmail.com?subject=Hello Jun!',
-    icon: 'fas fa-envelope',
+    // icon: 'fas fa-envelope',
+    icon: ['fas', 'envelope'],
     ariaLabel: 'This is my email',
   },
 ];
@@ -94,7 +99,7 @@ const Footer = () => {
                       rel={'noopener'}
                       aria-label={ariaLabel}
                     >
-                      <i className={icon} />
+                      <FontAwesomeIcon icon={icon} />
                     </IconButton>
                   </Grid>
                 ))}

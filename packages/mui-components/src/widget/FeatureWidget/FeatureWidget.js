@@ -13,8 +13,11 @@ const FeatureWidget = withStyles(createStyles, { name: 'FeatureWidget' })(
             {renderIcon({ className: css.icon })}
           </div>
         )}
-        <h2 className={css.title}>{title}</h2>
-        <p className={css.content}>{content}</p>
+        <h2 className={css.title} dangerouslySetInnerHTML={{ __html: title }} />
+        <p
+          className={css.content}
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
         {typeof children === 'function'
           ? children({ className: css.bottom })
           : children}
