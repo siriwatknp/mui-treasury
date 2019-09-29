@@ -97,7 +97,6 @@
     "@babel/plugin-transform-object-assign": "^7.2.0",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
-    "@fortawesome/fontawesome-pro": "^5.11.2",
     "@storybook/addon-actions": "^5.1.11",
     "@storybook/addon-knobs": "^5.1.11",
     "@storybook/addon-links": "^5.1.11",
