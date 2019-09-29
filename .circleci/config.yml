@@ -16,7 +16,7 @@ commands:
             - yarn-cache-{{ checksum "yarn.lock" }}
       - run:
           name: Install Dependencies
-          command: yarn install && npm rebuild
+          command: FONTAWESOME_NPM_AUTH_TOKEN=$FONTAWESOME_NPM_AUTH_TOKEN yarn install && npm rebuild
       - save_cache:
           key: yarn-cache-{{ checksum "yarn.lock" }}
           paths:
