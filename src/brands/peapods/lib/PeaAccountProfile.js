@@ -27,6 +27,7 @@ import PeaProfileEditor from './PeaProfileEditor';
 import PeaUserSettings from './PeaUserSettings';
 import PeaConfirmation from './PeaConfirmation';
 import PeaInvitationDialog from './PeaInvitationDialog';
+import PeaLoadingSpinner from './PeaLoadingSpinner';
 
 // TODO: refactor this to use PeaSwipeableTabs
 
@@ -59,17 +60,30 @@ const PeaAccountProfile = ({
   setEditing,
   isInvitingInfo,
   invitedInfo,
+  followLoading,
+  currentUserFollowing,
   onChangeCoverPhotoClicked,
   onChangeProfilePhotosClicked,
   deleteProfile,
   onCreateGroupClicked,
   onInvite,
+  onFollow,
 }) => {
   const [index, onChange] = useState(0);
   const [anchorEl, setAnchor] = useState(null);
   const [delModalOpen, setDelModalOpen] = useState(false);
   const [openInviteDialog, setOpenInviteDialog] = useState(false);
   const open = Boolean(anchorEl);
+
+  const followBtnDisabled =
+    followLoading || currentUserFollowing === 'PENDING_APPROVAL';
+  let followBtnText = 'Follow';
+  if (currentUserFollowing === 'PENDING_APPROVAL') {
+    followBtnText = 'Follow Requested';
+  }
+  if (currentUserFollowing === 'FOLLOWING') {
+    followBtnText = 'Unfollow';
+  }
 
   if (editing) {
     return (
@@ -187,8 +201,14 @@ const PeaAccountProfile = ({
                   variant={'contained'}
                   color={'primary'}
                   size={'small'}
+                  disabled={followBtnDisabled}
+                  onClick={onFollow}
                 >
-                  Follow
+                  {followLoading ? (
+                    <PeaLoadingSpinner size={20} style={{ margin: 0 }} />
+                  ) : (
+                    followBtnText
+                  )}
                 </PeaButton>
               )}
             </Grid>
@@ -423,6 +443,8 @@ PeaAccountProfile.propTypes = {
   isDeleting: PropTypes.bool,
   isInvitingInfo: PropTypes.object,
   invitedInfo: PropTypes.object,
+  followLoading: PropTypes.bool,
+  currentUserFollowing: PropTypes.string,
   onSubmit: PropTypes.func,
   setEditing: PropTypes.func,
   onChangeCoverPhotoClicked: PropTypes.func.isRequired,
@@ -430,6 +452,7 @@ PeaAccountProfile.propTypes = {
   deleteProfile: PropTypes.func,
   onCreateGroupClicked: PropTypes.func,
   onInvite: PropTypes.func,
+  onFollow: PropTypes.func,
 };
 
 PeaAccountProfile.defaultProps = {
@@ -456,11 +479,14 @@ PeaAccountProfile.defaultProps = {
   groupList: undefined,
   isInvitingInfo: {},
   invitedInfo: {},
+  followLoading: false,
+  currentUserFollowing: undefined,
   onSubmit: () => {},
   setEditing: () => {},
   deleteProfile: () => {},
   onCreateGroupClicked: () => {},
   onInvite: () => {},
+  onFollow: () => {},
 };
 PeaAccountProfile.metadata = {
   name: 'Pea Account Profile',
