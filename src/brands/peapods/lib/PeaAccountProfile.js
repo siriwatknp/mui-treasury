@@ -18,7 +18,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import PeaButton from './PeaButton';
 import PeaIcon from './PeaIcon';
 import PeaAvatar from './PeaAvatar';
-import PeaPodCard from './PeaPodCard';
 import PeaStatistic from './PeaStatistic';
 import PeaText from './PeaTypography';
 import PeaSocialAvatar from './PeaSocialAvatar';
@@ -47,12 +46,13 @@ const PeaAccountProfile = ({
   groups,
   groupsOfCurrentUser,
   tags,
-  pods,
+  podsCount,
   reputation,
   followersCount,
   followingCount,
   isPrivate,
   groupList,
+  podList,
   onSubmit,
   editing,
   isUpdating,
@@ -157,7 +157,7 @@ const PeaAccountProfile = ({
           </Grid>
           <Hidden only={'xs'}>
             <Grid item>
-              <PeaStatistic label={'Pods'} value={pods.length} />
+              <PeaStatistic label={'Pods'} value={podsCount} />
             </Grid>
             <Grid item>
               <PeaStatistic label={'Following'} value={followingCount} />
@@ -248,7 +248,7 @@ const PeaAccountProfile = ({
         <Hidden smUp>
           <Grid container justify={'space-evenly'}>
             <Grid item>
-              <PeaStatistic label={'Pods'} value={2} />
+              <PeaStatistic label={'Pods'} value={podsCount} />
             </Grid>
             <Grid item>
               <PeaStatistic label={'Following'} value={48} />
@@ -315,13 +315,7 @@ const PeaAccountProfile = ({
         <Tab label="Groups" disableRipple />
       </Tabs>
 
-      {index === 0 && (
-        <Box minHeight={300} bgcolor={'grey.100'} p={3}>
-          {pods.map(item => (
-            <PeaPodCard key={item.title} {...item} />
-          ))}
-        </Box>
-      )}
+      {index === 0 && <Box minHeight={500}>{podList}</Box>}
 
       {index === 1 && (
         <Box p={2} textAlign={'left'}>
@@ -431,13 +425,14 @@ PeaAccountProfile.propTypes = {
     }),
   ),
   reputation: PropTypes.number,
-  pods: PropTypes.arrayOf(PropTypes.shape({})),
+  podsCount: PropTypes.number,
   isCurrentUser: PropTypes.bool,
   email: PropTypes.string,
   followersCount: PropTypes.number,
   followingCount: PropTypes.number,
   isPrivate: PropTypes.bool,
   groupList: PropTypes.object,
+  podList: PropTypes.object,
   editing: PropTypes.bool,
   isUpdating: PropTypes.bool,
   isDeleting: PropTypes.bool,
@@ -467,7 +462,7 @@ PeaAccountProfile.defaultProps = {
   groupsOfCurrentUser: [],
   tags: [],
   reputation: 0,
-  pods: [],
+  podsCount: 0,
   isCurrentUser: false,
   email: '',
   followersCount: 0,
@@ -481,6 +476,7 @@ PeaAccountProfile.defaultProps = {
   invitedInfo: {},
   followLoading: false,
   currentUserFollowing: undefined,
+  podList: undefined,
   onSubmit: () => {},
   setEditing: () => {},
   deleteProfile: () => {},

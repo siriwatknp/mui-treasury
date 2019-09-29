@@ -79,16 +79,17 @@ const Share = props => (
 );
 
 // eslint-disable-next-line react/prop-types
-const CreatePod = ({ hasPod, ...props }) => (
+const CreatePod = ({ isLoading, text, ...props }) => (
   <PeaButton
     shape={''}
     size={'small'}
+    loading={isLoading}
     variant={'contained'}
     color={'primary'}
     icon={<PeaIcon icon={'add_circle'} />}
     {...props}
   >
-    {hasPod ? 'Edit Pod' : 'Create Pod'}
+    {text}
   </PeaButton>
 );
 
@@ -111,7 +112,8 @@ const PeaEventCard = ({
   onShowDetailsClicked,
   onShareEventClicked,
   onCreatePodClicked,
-  hasPod,
+  createPodText,
+  isLoading,
   ...props
 }) => {
   const [shareAnchorEl, setShareAnchorEl] = useState(null);
@@ -256,7 +258,11 @@ const PeaEventCard = ({
               </Paper>
             </Popover>
 
-            <CreatePod onClick={onCreatePodClicked} />
+            <CreatePod
+              isLoading={isLoading}
+              text={createPodText}
+              onClick={onCreatePodClicked}
+            />
             <Details onClick={onShowDetailsClicked} />
           </>
         }
@@ -292,7 +298,8 @@ PeaEventCard.propTypes = {
     attending: PropTypes.number.isRequired,
     limit: PropTypes.number,
   }).isRequired,
-  hasPod: PropTypes.bool,
+  createPodText: PropTypes.string,
+  isLoading: PropTypes.bool,
 };
 
 PeaEventCard.defaultProps = {
@@ -302,8 +309,9 @@ PeaEventCard.defaultProps = {
   interestedPeas: [],
   social: undefined,
   socialLink: undefined,
-  hasPod: false,
   onShareEventClicked: () => {},
+  createPodText: 'Create Pod',
+  isLoading: false,
 };
 
 PeaEventCard.metadata = {
