@@ -119,13 +119,14 @@ PeaButton.propTypes = {
   shadowless: PropTypes.bool,
   size: PropTypes.oneOf(['small', '', 'big', 'large']),
   shape: PropTypes.oneOf(['', 'chubby', 'circular', 'square', 'rectangle']),
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   icon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   iconIsolated: PropTypes.bool,
   iconPosition: PropTypes.oneOf(['start', 'end']),
   iconProps: PropTypes.shape({}),
   loaderProps: PropTypes.shape({}),
 };
+
 PeaButton.defaultProps = {
   className: '',
   classes: {},
@@ -144,10 +145,13 @@ PeaButton.defaultProps = {
   iconPosition: 'start',
   iconProps: {},
   loaderProps: {},
+  children: undefined,
 };
+
 PeaButton.metadata = {
   name: 'Pea Button',
 };
+
 PeaButton.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 
 export default PeaButton;
