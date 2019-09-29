@@ -15,8 +15,11 @@ commands:
           keys:
             - yarn-cache-{{ checksum "yarn.lock" }}
       - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$FONTAWESOME_NPM_AUTH_TOKEN" > ~/repo/.npmrc
+      - run:
           name: Install Dependencies
-          command: FONTAWESOME_NPM_AUTH_TOKEN="$FONTAWESOME_NPM_AUTH_TOKEN" yarn install && npm rebuild
+          command: yarn install && npm rebuild
       - save_cache:
           key: yarn-cache-{{ checksum "yarn.lock" }}
           paths:
