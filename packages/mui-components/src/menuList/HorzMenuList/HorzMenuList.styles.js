@@ -11,7 +11,7 @@ export default ({ palette, spacing }) => ({
     alignItems: 'center',
     color: palette.text.primary,
     fontSize: 16,
-    padding: spacing(2, 0.25),
+    padding: spacing(0, 0.25),
     margin: spacing(0, 2),
     borderBottom: '2px solid',
     borderBottomColor: 'transparent',
@@ -26,6 +26,12 @@ export default ({ palette, spacing }) => ({
     '&[disabled]': {
       pointerEvents: 'none',
       color: palette.text.disabled,
+    },
+    '& > a': {
+      display: 'flex',
+      alignItems: 'center',
+      alignSelf: 'stretch',
+      borderBottom: 'none !important',
     },
   },
   navSelected: {

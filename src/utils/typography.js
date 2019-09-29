@@ -2,6 +2,7 @@ import Typography from 'typography';
 import Color from 'color';
 import typographyTheme from 'typography-theme-kirkham';
 import theme from './theme';
+import fonts from '../constants/fonts';
 
 typographyTheme.overrideThemeStyles = () => {
   return {
@@ -21,16 +22,7 @@ typographyTheme.overrideThemeStyles = () => {
   };
 };
 typographyTheme.headerLineHeight = 1.45;
-typographyTheme.googleFonts = [
-  {
-    name: 'Playfair Display',
-    styles: ['700', '900'],
-  },
-  {
-    name: 'Fira Sans',
-    styles: ['300', '400', '400i', '700', '700i'],
-  },
-];
+typographyTheme.googleFonts = fonts.theme;
 
 const typography = new Typography(typographyTheme);
 

@@ -1,13 +1,11 @@
 import React from 'react';
 import DemoPage from 'containers/Demo';
-import { customComponents, DefaultComponent } from 'docs/components/cardHeader';
+import { customComponents, DefaultComponent } from 'docs/components/cardMedia';
 
-const CardHeaderPage = () => (
+const CardMediaPage = () => (
   <DemoPage
-    title={'Card Header'}
-    description={
-      'Responsible for emphasizing the content of the card, mostly at the top.'
-    }
+    title={'Card Media'}
+    description={"Improve your site's beauty by adding images or videos"}
     DemoComponentsProps={{
       noDefaultSection: true,
       customComponents,
@@ -21,4 +19,4 @@ const CardHeaderPage = () => (
   />
 );
 
-export default CardHeaderPage;
+export default CardMediaPage;

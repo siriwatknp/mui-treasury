@@ -28,18 +28,22 @@ const links = [
   {
     href: 'https://www.facebook.com/siriwat.kunaporn',
     icon: 'fab fa-facebook-f',
+    ariaLabel: 'This is my facebook page',
   },
   {
     href: 'https://twitter.com/siriwatknp',
     icon: 'fab fa-twitter',
+    ariaLabel: 'This is my twitter page',
   },
   {
     href: 'https://github.com/siriwatknp',
     icon: 'fab fa-github',
+    ariaLabel: 'This is my github page',
   },
   {
     href: 'mailto:siriwatkunaporn@gmail.com?subject=Hello Jun!',
     icon: 'fas fa-envelope',
+    ariaLabel: 'This is my email',
   },
 ];
 
@@ -74,21 +78,21 @@ const Footer = () => {
             />
           </Grid>
           <Grid item>
-            <Typography variant={'overline'} color={'textSecondary'}>
-              A little bit about me
-            </Typography>
+            <Typography variant={'overline'}>A little bit about me</Typography>
             {/* eslint-disable-next-line react/no-unescaped-entities */}
             <h3>Hi, I'm siriwatknp</h3>
             <p>A Junior Web Design & Developer. Love UI, React & Firebase</p>
             <Box mx={{ xs: 0, sm: -2 }}>
               <Grid container spacing={2}>
-                {links.map(({ href, icon }) => (
+                {links.map(({ href, icon, ariaLabel }) => (
                   <Grid item key={icon}>
                     <IconButton
                       className={classes.iconButton}
                       component={'a'}
                       href={href}
                       target={'_blank'}
+                      rel={'noopener'}
+                      aria-label={ariaLabel}
                     >
                       <i className={icon} />
                     </IconButton>

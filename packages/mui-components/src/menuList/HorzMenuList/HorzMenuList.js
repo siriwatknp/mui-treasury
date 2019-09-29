@@ -5,16 +5,13 @@ import { withStyles } from '@mui-treasury/styling';
 import createStyles from './HorzMenuList.styles';
 
 const HorzMenuList = withStyles(createStyles, { name: 'HorzMenuList' })(
-  ({ css, menus, selectedKey, getItemProps }) => (
+  ({ css, menus, selectedKey, getItemProps, Link }) => (
     <ul className={css.navRoot}>
       {menus.map((item, index) => {
-        const { key, label, disabled } = item;
-        const { component: Component = 'li', ...extItemProps } = getItemProps(
-          item,
-          index
-        );
+        const { key, label, disabled, to } = item;
+        const { ...extItemProps } = getItemProps(item, index);
         return (
-          <Component
+          <li
             key={key}
             className={cx(
               css.navItem,
@@ -25,8 +22,8 @@ const HorzMenuList = withStyles(createStyles, { name: 'HorzMenuList' })(
             {...extItemProps}
             disabled={disabled}
           >
-            {label}
-          </Component>
+            {to ? <Link to={to}>{label}</Link> : label}
+          </li>
         );
       })}
     </ul>

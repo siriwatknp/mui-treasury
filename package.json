@@ -57,6 +57,7 @@
     "gatsby-plugin-module-resolver": "^1.0.3",
     "gatsby-plugin-netlify": "^2.1.15",
     "gatsby-plugin-offline": "^2.2.6",
+    "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
     "gatsby-plugin-react-helmet": "^3.1.3",
     "gatsby-plugin-remove-trailing-slashes": "^2.1.7",
     "gatsby-plugin-sharp": "^2.2.11",

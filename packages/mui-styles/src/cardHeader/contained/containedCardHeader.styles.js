@@ -1,11 +1,12 @@
 import getThemeColor from '@mui-treasury/utils/src/getThemeColor';
 
 export default ({ palette, spacing }) => ({
-  root: ({ bgColor = 'primary.main', offset = '-32%' }) => ({
+  root: ({ bgColor = 'primary.main', offset = '-40px', ...styles }) => ({
     backgroundColor: getThemeColor(palette, bgColor),
     borderRadius: spacing(2),
     margin: `${offset} auto 0`,
-    width: '80%',
+    width: '88%',
+    ...styles,
   }),
   title: {
     color: palette.common.white,

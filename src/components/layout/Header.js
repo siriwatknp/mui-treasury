@@ -4,9 +4,9 @@ import { useStaticQuery, graphql, Link } from 'gatsby';
 import Image from 'gatsby-image';
 import GitHubButton from 'react-github-btn';
 import Box from '@material-ui/core/Box';
-import InputBase from '@material-ui/core/InputBase';
+// import InputBase from '@material-ui/core/InputBase';
 import { HorzMenuList } from '@mui-treasury/components';
-import { useContrastInputBaseStyles } from '@mui-treasury/styles/inputBase';
+// import { useContrastInputBaseStyles } from '@mui-treasury/styles/inputBase';
 import MENUS, { PKG } from 'constants/menus';
 
 const Header = () => {
@@ -22,7 +22,7 @@ const Header = () => {
     }
   `);
   const { logo } = data;
-  const inputBaseStyles = useContrastInputBaseStyles();
+  // const inputBaseStyles = useContrastInputBaseStyles();
   return (
     <Location>
       {({ location }) => (
@@ -37,16 +37,22 @@ const Header = () => {
             component={Link}
             to={'/'}
             borderBottom={'none !important'}
+            css={{
+              '& img': {
+                margin: 0,
+              },
+            }}
+            aria-label={'go to home page'}
           >
             <Image fixed={logo.childImageSharp.fixed} />
           </Box>
           <HorzMenuList
-            getItemProps={({ to }) => ({ ...(to && { component: Link, to }) })}
+            Link={Link}
             selectedKey={key => location.pathname.includes(key)}
             menus={MENUS[PKG.nav]}
           />
           <Box ml={'auto'} mr={2}>
-            <InputBase classes={inputBaseStyles} placeholder={'search...'} />
+            {/* <InputBase classes={inputBaseStyles} placeholder={'search...'} /> */}
           </Box>
           <Box lineHeight={0}>
             <GitHubButton

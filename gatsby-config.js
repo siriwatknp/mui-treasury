@@ -1,12 +1,14 @@
+const typography = require('./src/constants/fonts');
+
 module.exports = {
   siteMetadata: {
-    title: `Mui Treasity`,
-    author: `Siriwat Knp`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
-    social: {
-      twitter: `siriwatknp`,
-    },
+    title: 'MUI Treasury',
+    titleTemplate: '%s · React Material-UI Ecosystem',
+    description:
+      'The mission is to boost any projects that want to shake the world, so that our future is better than today. This is an open-source project that provides a collection of ready-to-use components based on Material-UI.',
+    url: 'https://mui-treasury.com', // No trailing slash allowed!
+    image: '/images/mui-treasury_banner_minified.jpg', // Path to your image you placed in the 'static' folder
+    twitterUsername: '@siriwatknp',
   },
   plugins: [
     `gatsby-plugin-netlify`,
@@ -101,6 +103,13 @@ module.exports = {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
+        omitGoogleFont: true,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: typography.config,
       },
     },
     `gatsby-plugin-remove-trailing-slashes`,

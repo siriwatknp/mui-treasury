@@ -1,13 +1,14 @@
 import React from 'react';
 import DemoPage from 'containers/Demo';
-import { customComponents, DefaultComponent } from 'docs/components/cardHeader';
+import {
+  customComponents,
+  DefaultComponent,
+} from 'docs/components/cardContent';
 
-const CardHeaderPage = () => (
+const CardContentPage = () => (
   <DemoPage
-    title={'Card Header'}
-    description={
-      'Responsible for emphasizing the content of the card, mostly at the top.'
-    }
+    title={'Card Content'}
+    description={'display summary or rough information of its domain'}
     DemoComponentsProps={{
       noDefaultSection: true,
       customComponents,
@@ -21,4 +22,4 @@ const CardHeaderPage = () => (
   />
 );
 
-export default CardHeaderPage;
+export default CardContentPage;
