@@ -14,9 +14,8 @@ commands:
       - restore_cache:
           keys:
             - yarn-cache-{{ checksum "yarn.lock" }}
-      - run:
-          name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$FONTAWESOME_NPM_AUTH_TOKEN" > ~/repo/.npmrc
+      - run: echo "@fortawesome:registry=https://npm.fontawesome.com/" > ~/.npmrc
+      - run: echo "//npm.fontawesome.com/:_authToken=$FONTAWESOME_NPM_AUTH_TOKEN" > ~/.npmrc
       - run:
           name: Install Dependencies
           command: yarn install && npm rebuild
@@ -38,25 +37,12 @@ workflows:
   version: 2
   build-deploy:
     jobs:
-      #      - build:
-      #          filters:
-      #            branches:
-      #              ignore:
-      #                - master
       - release:
           filters:
             branches:
               only:
                 - master
 jobs:
-  #  build:
-  #    executor: node-executor
-  #    working_directory: ~/repo
-  #    steps:
-  #      - gatsby-build
-  #      - run:
-  #          name: Netlify Deploy
-  #          command: netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir=public
   release:
     executor: node-executor
     working_directory: ~/repo
@@ -65,5 +51,3 @@ jobs:
       - run:
           name: Firebase deploy
           command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting:next
-#          name: Netlify Deploy
-#          command: netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod --dir=public
