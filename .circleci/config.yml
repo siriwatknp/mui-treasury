@@ -15,7 +15,7 @@ commands:
           keys:
             - yarn-cache-{{ checksum "yarn.lock" }}
       - run: echo "@fortawesome:registry=https://npm.fontawesome.com/" > ~/.npmrc
-      - run: echo "//npm.fontawesome.com/:_authToken=$FONTAWESOME_NPM_AUTH_TOKEN" > ~/.npmrc
+      - run: echo "//npm.fontawesome.com/:_authToken=$FONTAWESOME_NPM_AUTH_TOKEN" >> ~/.npmrc
       - run: cat ~/.npmrc
       - run:
           name: Install Dependencies
