@@ -18,6 +18,10 @@ const styles = theme => {
     imageButton: {
       padding: 0,
       border: 'none',
+      transition: 'transform ease 0.3s',
+      '&:hover': {
+        transform: 'scale(1.1)',
+      },
     },
     image: {
       display: 'block',
@@ -85,12 +89,12 @@ const PeaCategoryToggle = withStyles(styles, { name: 'PeaCategoryToggle' })(
               src={src}
               className={cx(classes.image, classes.mainImage)}
             />
+            <img
+              alt={'blur'}
+              src={src}
+              className={cx(classes.image, classes.blurredImage)}
+            />
           </button>
-          <img
-            alt={'blur'}
-            src={src}
-            className={cx(classes.image, classes.blurredImage)}
-          />
         </div>
         <FormControlLabel
           control={
