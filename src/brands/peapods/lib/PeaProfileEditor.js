@@ -13,6 +13,11 @@ import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import TextField from '@material-ui/core/TextField';
+import { uniqBy } from 'lodash';
+import emailValidator from 'email-validator';
+import phone from 'phone';
+
+import { DatePicker } from '../index';
 
 import PeaAvatar from './PeaAvatar';
 import PeaButton from './PeaButton';
@@ -23,17 +28,21 @@ import PeaSwitch from './PeaSwitch';
 import PeaTextArea from './PeaTextArea';
 import PeaText from './PeaTypography';
 import PeaLoadingSpinner from './PeaLoadingSpinner';
+import PeaAutocompleteList from './PeaAutocompleteList';
 
 const PeaProfileEditor = ({
   cover,
   image,
   name,
   email,
+  phoneNumber,
   userName,
-  site,
   bio,
+  birthday,
   location,
+  locationInput: LocationInput,
   tags,
+  gender,
   isPrivate,
   onCancel,
   onSubmit,
@@ -44,16 +53,74 @@ const PeaProfileEditor = ({
   const [user, setUser] = useState({
     name,
     username: userName,
+    email,
+    phoneNumber: phoneNumber || '',
     location,
+    bio,
+    birthday,
+    gender,
+    tags,
     privateAccount: isPrivate,
   });
 
-  const changeUser = field => event => {
+  const [error, setError] = useState({});
+
+  const onUserChange = field => event => {
+    let { value } = event.target;
+    if (field === 'privateAccount') {
+      value = event.target.checked;
+    }
+    if (field === 'email') {
+      setError({ ...error, email: value && !emailValidator.validate(value) });
+    }
+    if (field === 'phoneNumber') {
+      const [formattedPhoneNumber] = phone(value);
+      setError({ ...error, phoneNumber: value && !formattedPhoneNumber });
+    }
     setUser({
       ...user,
-      [field]: event.target.value,
+      [field]: value,
     });
   };
+
+  const onLocationChange = res => {
+    if (!res) {
+      return;
+    }
+
+    const lat = res.geometry.location.lat();
+    const lng = res.geometry.location.lng();
+    const formattedAddress = res.formatted_address;
+
+    const newLocation = {
+      lat,
+      lng,
+      formattedAddress,
+    };
+    setUser({
+      ...user,
+      location: newLocation,
+    });
+  };
+
+  const onBirthdayChange = date => {
+    setUser({
+      ...user,
+      birthday: date,
+    });
+  };
+
+  const onTagsChanged = values => {
+    setUser({
+      ...user,
+      tags: uniqBy(values, 'value'),
+    });
+  };
+
+  let hasError = false;
+  Object.keys(error).forEach(key => {
+    hasError = hasError || error[key];
+  });
 
   return (
     <Card className={'PeaFullProfile-root'}>
@@ -107,7 +174,7 @@ const PeaProfileEditor = ({
               variant={'contained'}
               color={'primary'}
               style={{ minWidth: 100 }}
-              disabled={isUpdating}
+              disabled={isUpdating || hasError}
             >
               {isUpdating ? (
                 <PeaLoadingSpinner size={20} style={{ margin: 0 }} />
@@ -138,60 +205,73 @@ const PeaProfileEditor = ({
           <TextField
             margin={'normal'}
             label={'Name'}
+            className={'PeaFormControl-root'}
+            InputLabelProps={{ className: 'PeaFormLabel-root' }}
             value={user.name}
-            onChange={changeUser('name')}
+            onChange={onUserChange('name')}
           />
         </div>
         <div>
           <TextField
             margin={'normal'}
             label={'Username'}
+            className={'PeaFormControl-root'}
+            InputLabelProps={{ className: 'PeaFormLabel-root' }}
             value={user.username}
-            onChange={changeUser('username')}
+            onChange={onUserChange('username')}
           />
         </div>
-        <TextField fullWidth margin={'normal'} label={'Website'} value={site} />
-        <br />
-        <PeaTextArea label={'Bio'} value={bio} />
         <PeaTextArea
-          label={'Location'}
-          value={user.location}
-          onChange={changeUser('location')}
+          label={'Bio'}
+          value={user.bio}
+          onChange={onUserChange('bio')}
         />
+        {LocationInput && (
+          <LocationInput
+            removeSpacing
+            onChange={onLocationChange}
+            value={user.location && user.location.formattedAddress}
+          />
+        )}
         <br />
         <PeaText gutterBottom variant={'subtitle1'} weight={'bold'}>
           About
         </PeaText>
-        <Grid container spacing={2}>
-          <Grid item xs sm={3}>
-            <TextField fullWidth select label={'Year'} />
-          </Grid>
-          <Grid item xs sm={3}>
-            <TextField fullWidth select label={'Month'} />
-          </Grid>
-          <Grid item xs sm={3}>
-            <TextField fullWidth select label={'Day'} />
-          </Grid>
+        <Grid container>
+          <DatePicker
+            label={'Birthday'}
+            className={'PeaFormControl-root'}
+            InputLabelProps={{ className: 'PeaFormLabel-root' }}
+            format="MM/DD/YYYY"
+            value={user.birthday}
+            onChange={onBirthdayChange}
+          />
         </Grid>
 
         <div>
           <FormControl margin={'normal'} component="fieldset">
             <FormLabel component="legend">Status</FormLabel>
-            <RadioGroup aria-label="status" name="gender" value={'1'} row>
+            <RadioGroup
+              aria-label="status"
+              name="gender"
+              value={user.gender}
+              row
+              onChange={onUserChange('gender')}
+            >
               <FormControlLabel
-                value={'1'}
+                value={'male'}
                 control={<PeaRadio />}
                 label="Male"
                 labelPlacement="end"
               />
               <FormControlLabel
-                value={'2'}
+                value={'female'}
                 control={<PeaRadio />}
                 label="Female"
                 labelPlacement="end"
               />
               <FormControlLabel
-                value={'3'}
+                value={'non-binary'}
                 control={<PeaRadio />}
                 label="Non-binary"
                 labelPlacement="end"
@@ -200,27 +280,43 @@ const PeaProfileEditor = ({
           </FormControl>
         </div>
 
-        <PeaTextArea
-          label={'Tags'}
-          value={tags.map(({ label }) => `#${label}`).join(', ')}
+        <PeaAutocompleteList
+          value={user.tags}
+          canCreate
+          fullWidth
+          placeholder={'Tags'}
+          onChange={onTagsChanged}
+          isMulti
+          hideSuggestions
+          removeSpacing
         />
 
         <>
           <TextField
             label={'Email'}
-            value={email}
+            value={user.email}
             margin={'normal'}
             fullWidth
+            error={error.email}
+            helperText={error.email ? 'Invalid Email' : ''}
+            onChange={onUserChange('email')}
           />
           <TextField
             label={'Phone'}
+            value={user.phoneNumber}
             placeholder={'Please enter your phone'}
             margin={'normal'}
             fullWidth
+            error={error.phoneNumber}
+            helperText={error.phoneNumber ? 'Invalid Phone Number' : ''}
+            onChange={onUserChange('phoneNumber')}
           />
           <FormControl margin={'normal'} fullWidth>
             <FormLabel>Private account</FormLabel>
-            <PeaSwitch checked={user.privateAccount} />
+            <PeaSwitch
+              checked={user.privateAccount}
+              onChange={onUserChange('privateAccount')}
+            />
           </FormControl>
 
           <FormControl margin={'normal'} fullWidth>
@@ -273,15 +369,19 @@ PeaProfileEditor.propTypes = {
   cover: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   userName: PropTypes.string,
-  site: PropTypes.string,
   bio: PropTypes.string,
-  location: PropTypes.string,
+  birthday: PropTypes.string,
+  location: PropTypes.shape({}),
+  locationInput: PropTypes.func,
   tags: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
+      value: PropTypes.string,
     }),
   ),
+  gender: PropTypes.string,
   email: PropTypes.string.isRequired,
+  phoneNumber: PropTypes.string,
   isPrivate: PropTypes.bool,
   isUpdating: PropTypes.bool,
   onSubmit: PropTypes.func,
@@ -292,10 +392,13 @@ PeaProfileEditor.propTypes = {
 
 PeaProfileEditor.defaultProps = {
   userName: '',
-  site: '',
+  phoneNumber: '',
   bio: '',
-  location: '',
+  birthday: '',
+  location: undefined,
+  locationInput: undefined,
   tags: [],
+  gender: '',
   isPrivate: false,
   isUpdating: false,
   onSubmit: () => {},
