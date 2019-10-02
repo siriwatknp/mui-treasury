@@ -59,11 +59,17 @@ const PeaAccountProfile = ({
   onChangeProfilePhotosClicked,
   deleteProfile,
   onCreateGroupClicked,
+  onReport,
 }) => {
   const [index, onChange] = useState(0);
   const [anchorEl, setAnchor] = useState(null);
   const [delModalOpen, setDelModalOpen] = useState(false);
   const open = Boolean(anchorEl);
+
+  const onReportClick = () => {
+    setAnchor(null);
+    onReport();
+  };
 
   if (editing) {
     return (
@@ -119,7 +125,7 @@ const PeaAccountProfile = ({
 
       <Divider variant={'middle'} />
 
-      <MenuItem onClick={() => setAnchor(null)}>
+      <MenuItem onClick={onReportClick}>
         <ListItemText disableTypography>
           <PeaText color={'error'} variant={'body1'} weight={'bold'}>
             Report {`@${userName}`}
@@ -397,6 +403,7 @@ PeaAccountProfile.propTypes = {
   onChangeProfilePhotosClicked: PropTypes.func.isRequired,
   deleteProfile: PropTypes.func,
   onCreateGroupClicked: PropTypes.func,
+  onReport: PropTypes.func,
 };
 
 PeaAccountProfile.defaultProps = {
@@ -426,6 +433,7 @@ PeaAccountProfile.defaultProps = {
   setEditing: () => {},
   deleteProfile: () => {},
   onCreateGroupClicked: () => {},
+  onReport: () => {},
 };
 PeaAccountProfile.metadata = {
   name: 'Pea Account Profile',
