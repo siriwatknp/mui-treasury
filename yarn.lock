@@ -4889,6 +4889,11 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
+email-validator@2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/email-validator/-/email-validator-2.0.4.tgz#b8dfaa5d0dae28f1b03c95881d904d4e40bfe7ed"
+  integrity sha512-gYCwo7kh5S3IDyZPLZf6hSS0MnZT8QmJFqYvbqlDZSbwdZlY6QZWxJ4i/6UhITOJ4XzyI647Bm2MXKCLqnJ4nQ==
+
 emoji-mart@^2.11.1:
   version "2.11.1"
   resolved "https://registry.yarnpkg.com/emoji-mart/-/emoji-mart-2.11.1.tgz#fc9330b513803c17b98c9ad289c12ab61ff05f8f"
@@ -9795,6 +9800,11 @@ performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
+
+phone@2.3.21:
+  version "2.3.21"
+  resolved "https://registry.yarnpkg.com/phone/-/phone-2.3.21.tgz#77e4edcb7e65995bdd1edd0f5520f7097ced98dc"
+  integrity sha512-weZuRQuXrVhiR+G6nCWEwyZf9WlPVfiwek35+0TBPkUf4Nx5pyv7VR/XRAmyonXaPsHKrM3SqOTK0i/Car8gTQ==
 
 pify@^2.0.0:
   version "2.3.0"

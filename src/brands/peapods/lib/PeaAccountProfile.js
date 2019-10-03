@@ -9,7 +9,6 @@ import Hidden from '@material-ui/core/Hidden';
 import Box from '@material-ui/core/Box';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
-import Link from '@material-ui/core/Link';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Divider from '@material-ui/core/Divider';
@@ -35,10 +34,11 @@ const PeaAccountProfile = ({
   name,
   userName,
   email,
-  tag,
-  site,
+  phoneNumber,
   bio,
   location,
+  locationInput,
+  birthday,
   age,
   gender,
   groups,
@@ -59,11 +59,17 @@ const PeaAccountProfile = ({
   onChangeProfilePhotosClicked,
   deleteProfile,
   onCreateGroupClicked,
+  onReport,
 }) => {
   const [index, onChange] = useState(0);
   const [anchorEl, setAnchor] = useState(null);
   const [delModalOpen, setDelModalOpen] = useState(false);
   const open = Boolean(anchorEl);
+
+  const onReportClick = () => {
+    setAnchor(null);
+    onReport();
+  };
 
   if (editing) {
     return (
@@ -73,11 +79,13 @@ const PeaAccountProfile = ({
         name={name}
         userName={userName}
         email={email}
-        tag={tag}
+        phoneNumber={phoneNumber}
         tags={tags}
-        site={site}
         bio={bio}
         location={location}
+        locationInput={locationInput}
+        birthday={birthday}
+        gender={gender}
         isPrivate={isPrivate}
         onSubmit={onSubmit}
         isUpdating={isUpdating}
@@ -110,17 +118,17 @@ const PeaAccountProfile = ({
       <MenuItem onClick={() => setAnchor(null)}>
         <ListItemText disableTypography>
           <PeaText color={'error'} variant={'body1'} weight={'bold'}>
-            Block {tag}
+            Block {`@${userName}`}
           </PeaText>
         </ListItemText>
       </MenuItem>
 
       <Divider variant={'middle'} />
 
-      <MenuItem onClick={() => setAnchor(null)}>
+      <MenuItem onClick={onReportClick}>
         <ListItemText disableTypography>
           <PeaText color={'error'} variant={'body1'} weight={'bold'}>
-            Report {tag}
+            Report {`@${userName}`}
           </PeaText>
         </ListItemText>
       </MenuItem>
@@ -241,17 +249,7 @@ const PeaAccountProfile = ({
           {name}
         </PeaText>
 
-        <PeaText gutterBottom>{tag}</PeaText>
-        <PeaText>
-          <Link
-            color={'primary'}
-            href={site}
-            target={'_blank'}
-            rel={'noopener'}
-          >
-            {site}
-          </Link>
-        </PeaText>
+        <PeaText gutterBottom>{`@${userName}`}</PeaText>
         <br />
 
         <Grid container wrap={'nowrap'} spacing={1}>
@@ -271,7 +269,9 @@ const PeaAccountProfile = ({
             </PeaIcon>
           </Grid>
           <Grid item>
-            <PeaText gutterBottom>{location}</PeaText>
+            <PeaText gutterBottom>
+              {location ? location.formattedAddress : 'Unknown'}
+            </PeaText>
           </Grid>
         </Grid>
       </CardContent>
@@ -366,11 +366,11 @@ PeaAccountProfile.propTypes = {
   cover: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   userName: PropTypes.string,
-  tag: PropTypes.string,
-  site: PropTypes.string,
   bio: PropTypes.string,
-  location: PropTypes.string,
+  location: PropTypes.object,
+  locationInput: PropTypes.func,
   age: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  birthday: PropTypes.string,
   gender: PropTypes.string,
   groups: PropTypes.arrayOf(
     PropTypes.shape({
@@ -381,12 +381,14 @@ PeaAccountProfile.propTypes = {
   tags: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
+      value: PropTypes.string,
     }),
   ),
   reputation: PropTypes.number,
   podsCount: PropTypes.number,
   isCurrentUser: PropTypes.bool,
   email: PropTypes.string,
+  phoneNumber: PropTypes.string,
   followersCount: PropTypes.number,
   followingCount: PropTypes.number,
   isPrivate: PropTypes.bool,
@@ -401,22 +403,24 @@ PeaAccountProfile.propTypes = {
   onChangeProfilePhotosClicked: PropTypes.func.isRequired,
   deleteProfile: PropTypes.func,
   onCreateGroupClicked: PropTypes.func,
+  onReport: PropTypes.func,
 };
 
 PeaAccountProfile.defaultProps = {
   userName: '',
-  tag: '',
-  site: '',
   bio: '',
-  location: '',
+  location: undefined,
+  locationInput: undefined,
+  birthday: '',
   age: 'unknown',
-  gender: 'unknown',
+  gender: '',
   groups: [],
   tags: [],
   reputation: 0,
   podsCount: 0,
   isCurrentUser: false,
   email: '',
+  phoneNumber: '',
   followersCount: 0,
   followingCount: 0,
   isPrivate: false,
@@ -429,6 +433,7 @@ PeaAccountProfile.defaultProps = {
   setEditing: () => {},
   deleteProfile: () => {},
   onCreateGroupClicked: () => {},
+  onReport: () => {},
 };
 PeaAccountProfile.metadata = {
   name: 'Pea Account Profile',

@@ -19,7 +19,7 @@ import PeaSearchInputControl from './PeaSearchInputControl';
 const useStyles = makeStyles(theme => ({
   root: {
     width: 360,
-    padding: 4,
+    padding: props => (props.removeSpacing ? 0 : 4),
     '&.fullWidth': {
       width: '100%',
     },
@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     overflow: 'hidden',
     minHeight: 36,
-    marginLeft: 10,
+    marginLeft: props => (props.removeSpacing ? 0 : 10),
   },
   noOptionsMessage: {
     padding: theme.spacing(1, 2),
@@ -203,8 +203,9 @@ const PeaAutocompleteList = ({
   hideSuggestions,
   clearAfterEnter,
   value: propValue,
+  removeSpacing,
 }) => {
-  const classes = useStyles();
+  const classes = useStyles({ removeSpacing });
   const theme = useTheme();
   const [value, setValue] = useState(propValue);
   const [inputValue, setInputValue] = useState('');
@@ -343,6 +344,7 @@ PeaAutocompleteList.defaultProps = {
   isMulti: false,
   InputControl: PeaSearchInputControl,
   OptionComponent: Option,
+  removeSpacing: false,
 };
 
 PeaAutocompleteList.propTypes = {
@@ -366,6 +368,7 @@ PeaAutocompleteList.propTypes = {
   onChange: PropTypes.func.isRequired,
   hideSuggestions: PropTypes.bool,
   clearAfterEnter: PropTypes.bool,
+  removeSpacing: PropTypes.bool,
 };
 
 PeaAutocompleteList.metadata = {
