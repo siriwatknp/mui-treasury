@@ -8,6 +8,7 @@ const GroupCard = () => (
     cover={
       'https://images.unsplash.com/photo-1470549638415-0a0755be0619?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80'
     }
+    type={'type'}
     image={AVATAR}
     groupName={'1'}
     tag={'@samsmith'}
