@@ -4,7 +4,7 @@ import cx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 
 import ParallaxSlide from '../../../components/slides/ParallaxSlide';
-import SimpleArrow from '../../../components/arrows/SimpleArrow';
+import ChevronArrow from '../../../components/arrows/ChevronArrow';
 import DotIndicator from '../../../components/indicators/DotIndicator';
 
 const useStyles = makeStyles(({ breakpoints }) => ({
@@ -61,13 +61,13 @@ const PeaImageCarousel = ({ data }) => {
   // eslint-disable-next-line react/prop-types
   const renderElements = ({ index, onChangeIndex }) => (
     <div className={classes.controls}>
-      <SimpleArrow
+      <ChevronArrow
         className={cx(classes.arrow, classes.arrowLeft)}
         direction={'left'}
         disabled={index === 0}
         onClick={() => onChangeIndex(index - 1)}
       />
-      <SimpleArrow
+      <ChevronArrow
         className={cx(classes.arrow, classes.arrowRight)}
         direction={'right'}
         disabled={index === data.length - 1}

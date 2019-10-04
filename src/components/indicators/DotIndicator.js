@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 
-const useStyles = makeStyles(({ palette, transitions, breakpoints }) => {
+const useStyles = makeStyles(({ transitions, breakpoints }) => {
   const SIZES = {
     xs: 8,
     sm: 10,
@@ -41,7 +41,8 @@ const useStyles = makeStyles(({ palette, transitions, breakpoints }) => {
         width: SIZES.xs,
         height: SIZES.xs,
         borderRadius: '50%',
-        backgroundColor: active ? palette.text.primary : palette.text.disabled,
+        backgroundColor: 'white',
+        opacity: active ? 1 : 0.4,
         transition: transitions.create(),
         [breakpoints.up('sm')]: {
           width: SIZES.sm,

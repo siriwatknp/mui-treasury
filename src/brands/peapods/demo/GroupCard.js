@@ -11,6 +11,7 @@ const GroupCard = () => (
     image={AVATAR}
     groupName={'1'}
     tag={'@samsmith'}
+    type={'group'}
   />
 );
 
