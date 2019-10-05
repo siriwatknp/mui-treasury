@@ -7,8 +7,15 @@ import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import CodeRounded from '@material-ui/icons/CodeRounded';
 import Link from '@material-ui/icons/Link';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(({ palette }) => ({
+  hiddenName: {
+    position: 'absolute',
+    top: -64,
+    opacity: 0,
+    pointerEvents: 'none',
+  },
   name: {
     margin: 0,
     textDecoration: 'none',
@@ -35,6 +42,7 @@ const ShowcaseWidget = ({
   children,
   name,
   anchor = name,
+  description,
   onClickCode,
   frameProps,
   className,
@@ -42,10 +50,20 @@ const ShowcaseWidget = ({
 }) => {
   const styles = useStyles();
   return (
-    <Box {...props} className={cx('Showcase-root', className)}>
+    <Box
+      position={'relative'}
+      display={'flex'}
+      flexDirection={'column'}
+      {...props}
+      className={cx('Showcase-root', className)}
+    >
+      <h3 className={styles.hiddenName} id={anchor}>
+        {name}
+      </h3>
       <Box
         p={2}
         pb={1}
+        flex={'auto'}
         display={'flex'}
         justifyContent={'center'}
         alignItems={'center'}
@@ -60,15 +78,17 @@ const ShowcaseWidget = ({
         {children}
       </Box>
       <Box p={2} pt={1} display={'flex'} alignItems={'center'}>
-        <a
-          id={anchor}
-          href={`#${anchor}`}
-          className={styles.name}
-          aria-label={'Anchor'}
-        >
-          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <b>{startCase(name)}</b> <Link />
-        </a>
+        <div>
+          <a href={`#${anchor}`} className={styles.name} aria-label={'Anchor'}>
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+            <b>{startCase(name)}</b> <Link />
+          </a>
+          {description && (
+            <Typography variant={'body2'} color={'textSecondary'}>
+              {description}
+            </Typography>
+          )}
+        </div>
         <Box ml={'auto'}>
           <IconButton onClick={onClickCode}>
             <CodeRounded />
@@ -83,6 +103,7 @@ ShowcaseWidget.propTypes = {
   className: PropTypes.string,
   anchor: PropTypes.string,
   name: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  description: PropTypes.string,
   onClickCode: PropTypes.func,
   frameProps: PropTypes.shape({}),
 };
@@ -90,6 +111,7 @@ ShowcaseWidget.defaultProps = {
   className: '',
   anchor: undefined,
   name: '',
+  description: '',
   onClickCode: () => {},
   frameProps: {},
 };

@@ -1,4 +1,4 @@
-import getThemeColor from '@mui-treasury/utils/src/getThemeColor';
+import getThemeColor from '@mui-treasury/utils/getThemeColor';
 
 export default ({ palette, spacing }) => ({
   root: ({ bgColor = 'primary.main', offset = '-40px', ...styles }) => ({

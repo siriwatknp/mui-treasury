@@ -1,11 +1,11 @@
 import React from 'react';
 import DemoPage from 'containers/Demo';
-import { customComponents, DefaultComponent } from 'docs/components/card';
+import { customComponents, DefaultComponent } from 'docs/components/cardFooter';
 
-const CardPage = () => (
+const CardContentPage = () => (
   <DemoPage
-    title={'Card'}
-    description={'A must for displaying data in grid'}
+    title={'Card Footer'}
+    description={'show extra information or glimpse detail about this card'}
     DemoComponentsProps={{
       noDefaultSection: true,
       customComponents,
@@ -19,4 +19,4 @@ const CardPage = () => (
   />
 );
 
-export default CardPage;
+export default CardContentPage;

@@ -8,6 +8,12 @@ import * as pillTabsStyles from './pill/pillTabs.styles';
 import * as serratedTabsStyles from './serrated/serratedTabs.styles';
 import * as twitterIconTabsStyles from './twitterIcon/twitterIconTabs.styles';
 import * as twitterTabsStyles from './twitter/twitterTabs.styles';
+import * as plain from './plain';
+
+const plainTabsStylesHook = {
+  useTabs: makeStyles(plain.tabsStyles),
+  useTabItem: makeStyles(plain.tabItemStyles),
+};
 
 const chromeTabsStylesHook = {
   useTabs: makeStyles(chromeTabsStyles.tabsStyles),
@@ -62,6 +68,7 @@ export {
   firebaseTabsStylesHook,
   instagramTabsStylesHook,
   pillTabsStylesHook,
+  plainTabsStylesHook,
   serratedTabsStylesHook,
   twitterIconTabsStylesHook,
   twitterTabsStylesHook,

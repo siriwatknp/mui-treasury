@@ -4,6 +4,7 @@ import dropRight from 'lodash/dropRight';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { Location } from '@reach/router';
+import { makeStyles } from '@material-ui/styles';
 import {
   Nav,
   Header as LayoutHeader,
@@ -13,12 +14,13 @@ import {
 import MENUS, { PKG } from 'constants/menus';
 import Header from 'components/layout/Header';
 import Footer from 'components/layout/Footer';
-import { makeStyles } from '@material-ui/styles';
 import { NestedMenuList } from '@mui-treasury/components';
-import { useJupiterNestedMenuStyles } from '@mui-treasury/styles';
+import jupiterNestedMenuStyles from '@mui-treasury/styles/nestedMenu/jupiter';
 import ChevronLeft from '@material-ui/icons/ChevronLeft';
 import ChevronRight from '@material-ui/icons/ChevronRight';
 import MenuRounded from '@material-ui/icons/MenuRounded';
+
+const useJupiterNestedMenuStyles = makeStyles(jupiterNestedMenuStyles);
 
 const useHeaderStyles = makeStyles(theme => {
   const { palette } = theme;

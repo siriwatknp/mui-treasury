@@ -45,6 +45,11 @@ export default {
           to: '/components/cardContent',
         },
         {
+          key: 'cardFooter',
+          label: 'Card Footer',
+          to: '/components/cardFooter',
+        },
+        {
           key: 'cardHeader',
           label: 'Card Header',
           to: '/components/cardHeader',

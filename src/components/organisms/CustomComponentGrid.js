@@ -31,10 +31,18 @@ const CustomComponentGrid = ({
         {components.map(Component => {
           if (Component.isDefault) return null;
           const { ShowcaseWidgetProps } = getItemProps(Component);
-          const name = Component.metadata.title || Component.name;
+          const {
+            title: name = Component.name,
+            description,
+          } = Component.metadata;
           return (
             <Grid key={name} item {...colWidth} classes={multiRowGridStyles}>
-              <ShowcaseWidget {...ShowcaseWidgetProps} name={name}>
+              <ShowcaseWidget
+                {...ShowcaseWidgetProps}
+                description={description}
+                name={name}
+                height={'100%'}
+              >
                 <Component />
               </ShowcaseWidget>
             </Grid>

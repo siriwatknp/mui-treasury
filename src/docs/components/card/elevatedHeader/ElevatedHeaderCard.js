@@ -89,7 +89,10 @@ ElevatedHeaderCard.metadata = {
   title: 'Elevated Header',
   path: 'card/elevatedHeader',
   files: [
-    { pkg: 'mui-styles', path: 'card/contained/containedCardHeader.styles.js' },
+    {
+      pkg: 'mui-styles',
+      path: 'cardHeader/contained/containedCardHeader.styles.js',
+    },
   ],
 };
 // hide-end

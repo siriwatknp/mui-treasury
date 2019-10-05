@@ -20,6 +20,7 @@ WideCardMedia.defaultProps = {};
 // hide-start
 WideCardMedia.metadata = {
   title: 'Wide',
+  description: 'size 16:9',
   path: 'cardMedia/wide',
   files: [
     {
