@@ -6,7 +6,7 @@ import Chip from '@material-ui/core/Chip';
 import IconButton from '@material-ui/core/IconButton';
 import Box from 'components/atoms/Box';
 import Text from 'components/atoms/Text';
-import Icon from 'components/predefined/Icon';
+import Icon from 'extensions/Icon';
 
 const Image = styled('img')({
   width: 24,

@@ -10,7 +10,7 @@ const useTabsStyles = makeStyles(() => ({
     overflow: 'visible',
   },
   fixed: {
-    overflowX: 'visible',
+    overflow: 'visible !important',
   },
   indicator: {
     height: 1,

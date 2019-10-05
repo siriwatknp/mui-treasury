@@ -1,21 +1,35 @@
 import Color from 'color';
 
-export default ({ shape, palette: { primary, secondary, common, text } }) => ({
+export default ({ palette: { primary, secondary, common, text, error } }) => ({
   MuiChip: {
     root: {
       '&.PeaTag-root': {
-        height: 40,
-        padding: '4px 8px',
-        borderRadius: shape.borderRadius,
         '& .MuiChip-label': {
           fontSize: 14,
+          paddingRight: 14,
           fontWeight: 500,
           color: text.primary,
+        },
+        '& .MuiChip-deleteIcon': {
+          width: 22,
+          height: 22,
         },
       },
     },
     clickable: {
       '&:hover': {
+        '& .MuiChip-label': {
+          color: common.white,
+        },
+        '& .MuiChip-deleteIcon': {
+          color: error.main,
+          width: 24,
+          height: 24,
+          background: common.white,
+          borderRadius: '100%',
+        },
+      },
+      '&:focus': {
         '& .MuiChip-label': {
           color: common.white,
         },

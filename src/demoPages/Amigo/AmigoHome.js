@@ -9,7 +9,7 @@ import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Divider from '@material-ui/core/Divider';
 import Hidden from '@material-ui/core/Hidden';
-import Typography from 'components/predefined/Typography';
+import Typography from 'extensions/Typography';
 import AmiLargeHeader from './components/header';
 import ProductAds from './components/ProductAds';
 import ProductCard from './components/ProductCard';

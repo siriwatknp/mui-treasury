@@ -1,5 +1,6 @@
 # Material-UI Treasury [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/siriwatknp/mui-treasury/pulls)
 
+
 Imagine a thousands of real-world, ready-to-use, and themable components that you can copy & paste to your project.
 I believe that it will help boosting many projects that the founder want to prove their ideas to make this world a better place.
 
@@ -83,7 +84,7 @@ yarn
 1. copy everything in `src/contribution/PageTemplate.js`
 2. create new CategoryPage in `src/pages/components/` and paste from (1)
 3. rename the page
-4. add new page to `src/pages/components/.routes.js`
+4. add new page to `src/pages/components/.extensionRoutes.js`
 5. add new category folder to `src/components`
 6. copy everything in `src/contribution/ComponentTemplate.js`
 7. create new component in `src/components/<category>/` and paste from (6)

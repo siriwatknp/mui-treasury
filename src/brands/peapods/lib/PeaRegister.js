@@ -94,7 +94,13 @@ const PeaRegister = ({
               labelExpanded
               variant={'contained'}
               color={'primary'}
-              icon={<PeaIcon icon={'fab fa-facebook-f'} bgColor={'white'} />}
+              icon={
+                <PeaIcon
+                  icon={'fab fa-facebook-f'}
+                  color={'secondary'}
+                  bgColor={'white'}
+                />
+              }
               onClick={onClickFacebook}
             >
               Register with Facebook

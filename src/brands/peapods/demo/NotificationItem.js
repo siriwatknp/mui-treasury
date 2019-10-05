@@ -8,33 +8,56 @@ const NotificationItem = () => (
   <Box flex={1}>
     <PeaNotificationItem
       src={AVATAR}
-      name={'JunZaa159'}
-      description={'requested to follow you'}
+      name={'Tony'}
       time={'Just now'}
-      sticker={'person'}
+      type={'follow'}
+      actions
+      unread
     />
     <PeaNotificationItem
       src={PEOPLE[0].src}
       name={'Michael'}
-      description={'has invited you to PodY'}
       time={'5 minutes ago'}
-      sticker={'pea'}
+      type={'pea_request'}
+      actions
       unread
     />
     <PeaNotificationItem
       src={PEOPLE[1].src}
-      name={'Frank'}
-      description={'has left your pod for React Europe Conf'}
+      name={'Michael'}
       time={'4 Jan, 2019'}
-      sticker={'remove'}
-      unread
+      type={'left'}
     />
     <PeaNotificationItem
       src={PEOPLE[2].src}
-      name={'Jamie'}
-      description={'Training#2 has been canceled'}
+      name={'User X'}
       time={'1 Jan, 2019'}
-      sticker={'clear'}
+      type={'pea_invite'}
+      actions
+    />
+    <PeaNotificationItem
+      src={PEOPLE[1].src}
+      name={'EVENT_NAME X'}
+      time={'4 Jan, 2019'}
+      type={'cancel'}
+    />
+    <PeaNotificationItem
+      src={PEOPLE[2].src}
+      name={'User X'}
+      time={'1 Jan, 2019'}
+      type={'accept'}
+    />
+    <PeaNotificationItem
+      src={PEOPLE[2].src}
+      name={'Frank'}
+      time={'1 Jan, 2019'}
+      type={'followed'}
+    />
+    <PeaNotificationItem
+      src={[AVATAR, PEOPLE[0].src, PEOPLE[1].src, PEOPLE[2].src]}
+      name={['Michael', 'John', 'Frank', 'Tony']}
+      time={'1 Jan, 2019'}
+      type={'group'}
     />
   </Box>
 );
@@ -64,33 +87,56 @@ NotificationItem.code = `
     <>
       <PeaNotificationItem
         src={AVATAR}
-        name={'JunZaa159'}
-        description={'requested to follow you'}
+        name={'Tony'}
         time={'Just now'}
-        sticker={'person'}
+        type={'follow'}
+        actions
+        unread
       />
       <PeaNotificationItem
         src={PEOPLE[0].src}
         name={'Michael'}
-        description={'has invited you to PodY'}
         time={'5 minutes ago'}
-        sticker={'pea'}
+        type={'pea_request'}
+        actions
         unread
       />
       <PeaNotificationItem
         src={PEOPLE[1].src}
-        name={'Frank'}
-        description={'has left your pod for React Europe Conf'}
+        name={'Michael'}
         time={'4 Jan, 2019'}
-        sticker={'remove'}
-        unread
+        type={'left'}
       />
       <PeaNotificationItem
         src={PEOPLE[2].src}
-        name={'Jamie'}
-        description={'Training#2 has been canceled'}
+        name={'User X'}
         time={'1 Jan, 2019'}
-        sticker={'clear'}
+        type={'pea_invite'}
+        actions
+      />
+      <PeaNotificationItem
+        src={PEOPLE[1].src}
+        name={'EVENT_NAME X'}
+        time={'4 Jan, 2019'}
+        type={'cancel'}
+      />
+      <PeaNotificationItem
+        src={PEOPLE[2].src}
+        name={'User X'}
+        time={'1 Jan, 2019'}
+        type={'accept'}
+      />
+      <PeaNotificationItem
+        src={PEOPLE[2].src}
+        name={'Frank'}
+        time={'1 Jan, 2019'}
+        type={'followed'}
+      />
+      <PeaNotificationItem
+        src={[AVATAR, PEOPLE[0].src, PEOPLE[1].src, PEOPLE[2].src]}
+        name={['Michael', 'John', 'Frank', 'Tony']}
+        time={'1 Jan, 2019'}
+        type={'group'}
       />
     </>
   )

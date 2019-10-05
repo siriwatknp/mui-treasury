@@ -6,6 +6,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import Div100vh from 'react-div-100vh';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import GitHubButton from 'react-github-btn';
+import { Root, Nav, Content, Header, presets } from 'mui-layout';
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 
 // COMPONENTS
@@ -19,6 +20,7 @@ import logo from 'assets/images/logo.png';
 // PAGES
 import HomePage from 'pages/HomePage';
 import RootComponentPage from 'pages/RootComponentPage';
+import RootExtensionPage from 'pages/RootExtensionPage';
 import RootBrandPage from 'pages/RootBrandPage';
 import RootTemplatePage from 'pages/RootTemplatePage';
 import InstructionPage from 'pages/InstructionPage';
@@ -26,14 +28,7 @@ import ContributePage from 'pages/ContributePage';
 import LayoutBuilderPage from 'pages/Layout/LayoutBuilderPage';
 import TimelinePage from 'pages/TimelinePage';
 import RootDemoPage from 'demoPages/RootDemoPage';
-import {
-  Header,
-  Content,
-  Root,
-  Nav,
-  presets,
-} from 'components/predefined/Layout';
-import Icon from 'components/predefined/Icon';
+import Icon from 'extensions/Icon';
 import treasuryTheme from './theme/treasury/treasuryTheme';
 
 const layoutConfig = presets.createMuiTreasuryLayout();
@@ -81,10 +76,9 @@ class App extends React.Component {
               >
                 <CssBaseline />
                 <Header
-                  menuIcon={{
-                    inactive: <Icon>menu_rounded</Icon>,
-                    active: <Icon>chevron_left</Icon>,
-                  }}
+                  renderMenuIcon={open =>
+                    open ? <Icon>chevron_left</Icon> : <Icon>menu_rounded</Icon>
+                  }
                 >
                   <Box width={{ xs: 0, md: 81.5 }} />
                   <Box flex={1} display={{ xs: 'none', sm: 'block' }} />
@@ -104,10 +98,13 @@ class App extends React.Component {
                   </Box>
                 </Header>
                 <Nav
-                  collapsedIcon={{
-                    inactive: <Icon>chevron_left</Icon>,
-                    active: <Icon>chevron_right</Icon>,
-                  }}
+                  renderIcon={collapsed =>
+                    collapsed ? (
+                      <Icon>chevron_right</Icon>
+                    ) : (
+                      <Icon>chevron_left</Icon>
+                    )
+                  }
                   header={({ navVariant }) =>
                     navVariant !== 'temporary' && (
                       <Box
@@ -157,6 +154,11 @@ class App extends React.Component {
                         exact
                         path={'/components/*'}
                         component={RootComponentPage}
+                      />
+                      <Route
+                        exact
+                        path={'/extensions/*'}
+                        component={RootExtensionPage}
                       />
                       <Route
                         exact

@@ -115,12 +115,6 @@ export default ({ palette, spacing, transitions, shadows }) => {
     '&.-link.-inverted:not([class*="-color"])': {
       color: invertedColor,
     },
-    '& .fa-facebook-f': {
-      color: '#3C5A99',
-    },
-    '& .fa-twitter': {
-      color: '#38A1F3',
-    },
     '& .fa-meetup': {
       color: '#e51937',
     },

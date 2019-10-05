@@ -7,6 +7,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { Picker } from 'emoji-mart';
 import 'emoji-mart/css/emoji-mart.css';
+
 import PeaIcon from './PeaIcon';
 import EmojiIcon from './assets/peapods-logo-circle.svg';
 
@@ -118,13 +119,20 @@ const PeaMessageInput = ({
           value={inputValue}
           placeholder="Type your message"
           endAdornment={
-            <InputAdornment position="end">
-              <img
-                src={EmojiIcon}
-                alt="emoji-picker"
-                className={classes.icon}
-                onClick={toggleEmoji}
-              />
+            <InputAdornment position="end" onClick={toggleEmoji}>
+              {!showEmoji ? (
+                <img
+                  src={EmojiIcon}
+                  alt="emoji-picker"
+                  className={classes.icon}
+                />
+              ) : (
+                <PeaIcon
+                  icon="fas fa-times-circle"
+                  alt="emoji-picker-close"
+                  className={classes.icon}
+                />
+              )}
             </InputAdornment>
           }
         />

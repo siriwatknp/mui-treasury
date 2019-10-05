@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import Box from '@material-ui/core/Box';
-import Slider from '@material-ui/lab/Slider';
-import Typography from 'components/predefined/Typography';
+import Slider from '@material-ui/core/Slider';
+import Typography from 'extensions/Typography';
 
 const useStyles = makeStyles(({ transitions }) => ({
   value: ({ dragging }) => ({

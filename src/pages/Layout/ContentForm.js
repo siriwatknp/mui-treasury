@@ -5,7 +5,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
-import Typography from 'components/predefined/Typography';
+import Typography from 'extensions/Typography';
 import Image from 'components/atoms/Image';
 import Box from '../../components/atoms/Box';
 import Row from './Row';

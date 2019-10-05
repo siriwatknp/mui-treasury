@@ -4,7 +4,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
 import Box from 'components/atoms/Box';
 import Text from 'components/atoms/Text';
-import Icon from 'components/predefined/Icon';
+import Icon from 'extensions/Icon';
 
 const breakpoints = createBreakpoints({});
 

@@ -3,8 +3,6 @@ import CardPage from 'pages/components/CardPage';
 import TabsPage from 'pages/components/TabsPage';
 import InputPage from 'pages/components/InputPage';
 import TextFieldPage from 'pages/components/TextFieldPage';
-import IconPage from 'pages/components/IconPage';
-import TypographyPage from 'pages/components/TypographyPage';
 import LayoutPage from 'pages/components/LayoutPage';
 import ChatPage from 'pages/components/ChatPage';
 import CarouselPage from 'pages/components/CarouselPage';
@@ -12,6 +10,7 @@ import SlidePage from 'pages/components/SlidePage';
 import ArrowPage from 'pages/components/ArrowPage';
 import IndicatorPage from 'pages/components/IndicatorPage';
 import TagPage from 'pages/components/TagPage';
+import MenuPage from 'pages/components/MenuPage';
 
 /**
  * id: [String] optional
@@ -72,12 +71,6 @@ export default [
     Page: ChatPage,
   },
   {
-    id: 'icons',
-    path: '/components/icon',
-    primaryText: 'Icon',
-    Page: IconPage,
-  },
-  {
     id: 'inputs',
     path: '/components/inputs',
     primaryText: 'Input',
@@ -90,6 +83,13 @@ export default [
     primaryText: 'Layout',
     // secondaryText: `${LayoutPage.components.length} items`,
     Page: LayoutPage,
+  },
+  {
+    id: 'menu',
+    path: '/components/menu',
+    primaryText: 'Menu',
+    secondaryText: `${MenuPage.components.length} items`,
+    Page: MenuPage,
   },
   {
     id: 'tags',
@@ -111,11 +111,5 @@ export default [
     primaryText: 'Text Field',
     secondaryText: `${TextFieldPage.components.length} items`,
     Page: TextFieldPage,
-  },
-  {
-    id: 'typography',
-    path: '/components/typography',
-    primaryText: 'Typography',
-    Page: TypographyPage,
   },
 ];

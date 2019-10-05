@@ -2,7 +2,7 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
 import SimpleArrow from 'components/arrows/SimpleArrow';
-import Icon from 'components/predefined/Icon';
+import Icon from 'extensions/Icon';
 import { mergeInfo } from 'helpers/function';
 
 const demoCode = `

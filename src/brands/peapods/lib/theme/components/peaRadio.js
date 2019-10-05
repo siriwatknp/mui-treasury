@@ -1,6 +1,11 @@
 export default ({ palette }) => ({
   MuiRadio: {
     root: {
+      marginRight: 4,
+      '& .MuiIconButton-label': {
+        width: 36,
+        height: 36,
+      },
       '&$checked': {
         '& .PeaIcon': {
           padding: 2,

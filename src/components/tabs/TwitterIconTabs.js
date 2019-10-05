@@ -19,9 +19,9 @@ const useTabsStyles = makeStyles(() => ({
 const useTabStyles = makeStyles(({ breakpoints }) => ({
   root: {
     minHeight: 53,
-    minWidth: 0,
+    minWidth: 80,
     [breakpoints.up('md')]: {
-      minWidth: 0,
+      minWidth: 120,
     },
     '&:hover': {
       '& .MuiTab-label': {
@@ -100,7 +100,7 @@ const TwitterIconTabs = ({
   const tabClasses = useTabStyles(globalTabProps);
   const badgeClasses = useBadgeStyles(globalBadgeProps);
   return (
-    <Tabs variant={'fullWidth'} centered {...props} classes={tabsClasses}>
+    <Tabs variant={'fullWidth'} {...props} classes={tabsClasses}>
       {tabs.map((tab, i) => {
         const { badgeProps, icon, ...tabProps } = tab;
         return (

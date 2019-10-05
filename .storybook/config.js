@@ -4,11 +4,14 @@ import { withKnobs } from '@storybook/addon-knobs';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/styles';
 import tresuryTheme from '../src/theme/treasury';
+import './global.css';
 
 const ThemeDecorator = storyFn => (
   <>
     <CssBaseline />
-    <ThemeProvider theme={tresuryTheme}>{storyFn()}</ThemeProvider>
+    <ThemeProvider theme={tresuryTheme}>
+      <div style={{ margin: 8 }}>{storyFn()}</div>
+    </ThemeProvider>
   </>
 );
 

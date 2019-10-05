@@ -15,9 +15,21 @@ const ParallaxSlide = ({ transition, children, renderElements, ...props }) => {
     setIndex(i);
     setFineIndex(i);
   };
+
+  const views = children({
+    fineIndex,
+    injectStyle: (slideIndex, speed) => ({
+      marginLeft: calculateMargin(slideIndex, fineIndex, speed),
+      transition: fineIndex === index ? transition : 'none',
+    }),
+  });
+
+  const isSingleView = views.length < 2;
+
   return (
     <>
       <SwipeableViews
+        disabled={isSingleView}
         resistance
         springConfig={{
           duration: '0.6s',
@@ -32,15 +44,9 @@ const ParallaxSlide = ({ transition, children, renderElements, ...props }) => {
           setFineIndex(i);
         }}
       >
-        {children({
-          fineIndex,
-          injectStyle: (slideIndex, speed) => ({
-            marginLeft: calculateMargin(slideIndex, fineIndex, speed),
-            transition: fineIndex === index ? transition : 'none',
-          }),
-        })}
+        {views}
       </SwipeableViews>
-      {renderElements({ index, onChangeIndex })}
+      {!isSingleView && renderElements({ index, onChangeIndex })}
     </>
   );
 };

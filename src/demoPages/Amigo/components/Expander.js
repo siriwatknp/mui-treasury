@@ -4,8 +4,8 @@ import Collapse from '@material-ui/core/Collapse';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Box from '@material-ui/core/Box';
-import Typography from 'components/predefined/Typography';
-import Icon from 'components/predefined/Icon';
+import Typography from 'extensions/Typography';
+import Icon from 'extensions/Icon';
 
 const Expander = ({ children, label }) => {
   const [open, setOpen] = useState(true);

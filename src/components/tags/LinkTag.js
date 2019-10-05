@@ -4,7 +4,7 @@ import Color from 'color';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
-import Icon from 'components/predefined/Icon';
+import Icon from 'extensions/Icon';
 
 const useStyles = makeStyles(({ spacing, palette }) => {
   const initialBgColor = palette.grey[100];

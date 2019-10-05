@@ -7,8 +7,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
 import InputBase from '@material-ui/core/InputBase';
-import Typography from 'components/predefined/Typography';
-import Button from 'components/predefined/Button';
+import Typography from 'extensions/Typography';
+import Button from 'extensions/Button';
 import MegaMenu from '../MegaMenu';
 
 const useStyles = makeStyles(({ transitions }) => ({

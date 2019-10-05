@@ -5,7 +5,6 @@ import Logo from './assets/peapods-logo-circle.svg';
 
 const PeaSwitch = ({ className, ...props }) => (
   <Switch
-    className={`PeaSwitch-root ${className}`}
     checkedIcon={<img src={Logo} alt="toggle-input" className={'PeaIcon'} />}
     {...props}
   />

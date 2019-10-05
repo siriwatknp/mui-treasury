@@ -6,9 +6,9 @@ import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
-import Typography from 'components/predefined/Typography';
+import Typography from 'extensions/Typography';
 import Box from 'components/atoms/Box';
-import PdfButton from 'components/predefined/Button';
+import PdfButton from 'extensions/Button';
 import Image from 'components/atoms/Image';
 import PreviewWidget from 'components/molecules/PreviewWidget';
 import CodeHighlight from 'components/highlights/CodeHighlight';
@@ -41,7 +41,7 @@ import Counter from './demo/Counter';
 import CategoryToggle from './demo/CategoryToggle';
 import PersonListItem from './demo/PersonListItem';
 import PeopleList from './demo/PeopleList';
-import EventCard from './demo/EventCard';
+import EventCardSmall from './demo/EventCardSmall';
 import PodPodCard from './demo/PodPodCard';
 import CardActions from './demo/CardActions';
 import ProfileCard from './demo/ProfileCard';
@@ -56,15 +56,18 @@ import Slider from './demo/Slider';
 import PersonCard from './demo/PersonCard';
 import EventDialog from './demo/EventDialog';
 import MediaUploader from './demo/MediaUploader';
-import Filter from './demo/Filter';
+import EventFilters from './demo/EventFilters';
+import UserFilters from './demo/UserFilters';
 import AppBar from './demo/AppBar';
 import SocialAvatar from './demo/SocialAvatar';
 import Connections from './demo/Connections';
 import PeaTypography from './demo/Typography';
 import UserCard from './demo/UserCard';
+import FullProfileOld from './demo/FullProfileOld';
 import FullProfile from './demo/FullProfile';
 import GroupProfile from './demo/GroupProfile';
 import GroupCard from './demo/GroupCard';
+import EventCard from './demo/EventCard';
 import Chat from './demo/Chat';
 import AccountProfile from './demo/AccountProfile';
 import ThreadTitle from './demo/ThreadTitle';
@@ -73,8 +76,17 @@ import MessageInput from './demo/MessageInput';
 import TrendingHashtagList from './demo/TrendingHashtagList';
 import Toast from './demo/Toast';
 import LoadingSpinner from './demo/LoadingSpinner';
+import ImageCarousel from './demo/ImageCarousel';
+import EventDetails from './demo/EventDetails';
+import Tooltip from './demo/Tooltip';
+import AutocompleteList from './demo/AutocompleteList';
+import AutocompleteHashtags from './demo/AutocompleteHashtags';
+import UserSettings from './demo/UserSettings';
+import ShareContent from './demo/ShareContent';
+import AudienceSelector from './demo/AudienceSelector';
 
 const components = [
+  { component: AudienceSelector, previewProps: { white: true } },
   { component: Button, previewProps: { white: true } },
   { component: Icon },
   { component: Avatar },
@@ -82,6 +94,15 @@ const components = [
   { component: MenuItem },
   { component: Statistic },
   { component: Tag, previewProps: { white: true } },
+  { component: AutocompleteList, previewProps: { white: true } },
+  {
+    component: AutocompleteHashtags,
+    gridItemProps: {
+      sm: 10,
+      lg: 8,
+    },
+    previewProps: { white: true },
+  },
   { component: SearchInput, previewProps: { white: true } },
   { component: Tabs },
   { component: SwipeableTabs },
@@ -114,7 +135,7 @@ const components = [
     },
   },
   {
-    component: EventCard,
+    component: EventCardSmall,
     gridItemProps: {
       sm: 6,
       md: 6,
@@ -175,7 +196,8 @@ const components = [
   },
   { component: EventDialog },
   { component: MediaUploader },
-  { component: Filter },
+  { component: EventFilters },
+  { component: UserFilters },
   {
     component: AppBar,
     gridItemProps: {
@@ -187,6 +209,7 @@ const components = [
   { component: Connections },
   { component: PeaTypography },
   { component: UserCard },
+  { component: UserSettings },
   {
     component: FullProfile,
     gridItemProps: {
@@ -195,6 +218,14 @@ const components = [
     },
   },
   {
+    component: FullProfileOld,
+    gridItemProps: {
+      sm: 10,
+      lg: 8,
+    },
+  },
+
+  {
     component: GroupProfile,
     gridItemProps: {
       sm: 10,
@@ -202,7 +233,23 @@ const components = [
       lg: 6,
     },
   },
+  {
+    component: EventDetails,
+    gridItemProps: {
+      sm: 10,
+      md: 7,
+      lg: 6,
+    },
+  },
   { component: GroupCard },
+  { component: ImageCarousel },
+  {
+    component: EventCard,
+    gridItemProps: {
+      sm: 6,
+      md: 6,
+    },
+  },
   {
     component: Chat,
     previewProps: {
@@ -249,6 +296,8 @@ const components = [
   { component: TrendingHashtagList },
   { component: Toast },
   { component: LoadingSpinner },
+  { component: Tooltip, previewProps: { white: true } },
+  { component: ShareContent, previewProps: { white: true } },
 ];
 
 const PeapodsPage = () => {

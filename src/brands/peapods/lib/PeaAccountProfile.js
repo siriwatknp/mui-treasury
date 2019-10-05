@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import Tab from '@material-ui/core/Tab/Tab';
 import Tabs from '@material-ui/core/Tabs/Tabs';
 import React, { useState } from 'react';
@@ -8,54 +9,89 @@ import Hidden from '@material-ui/core/Hidden';
 import Box from '@material-ui/core/Box';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
-import ButtonBase from '@material-ui/core/ButtonBase';
-import Link from '@material-ui/core/Link';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
+
 import PeaButton from './PeaButton';
 import PeaIcon from './PeaIcon';
 import PeaAvatar from './PeaAvatar';
-import PeaPodCard from './PeaPodCard';
 import PeaStatistic from './PeaStatistic';
 import PeaText from './PeaTypography';
 import PeaSocialAvatar from './PeaSocialAvatar';
 import PeaTag from './PeaTag';
 import PeaProfileEditor from './PeaProfileEditor';
+import PeaUserSettings from './PeaUserSettings';
+import PeaConfirmation from './PeaConfirmation';
+
+// TODO: refactor this to use PeaSwipeableTabs
 
 const PeaAccountProfile = ({
+  isCurrentUser,
   cover,
   image,
   name,
-  tag,
-  site,
+  userName,
+  email,
+  phoneNumber,
   bio,
   location,
+  locationInput,
+  birthday,
   age,
   gender,
   groups,
   tags,
-  pods,
+  podsCount,
   reputation,
+  followersCount,
+  followingCount,
+  isPrivate,
+  groupList,
+  podList,
+  onSubmit,
+  editing,
+  isUpdating,
+  isDeleting,
+  setEditing,
+  onChangeCoverPhotoClicked,
+  onChangeProfilePhotosClicked,
+  deleteProfile,
+  onCreateGroupClicked,
+  onReport,
 }) => {
   const [index, onChange] = useState(0);
-  const [editing, setEditing] = useState(false);
   const [anchorEl, setAnchor] = useState(null);
+  const [delModalOpen, setDelModalOpen] = useState(false);
   const open = Boolean(anchorEl);
+
+  const onReportClick = () => {
+    setAnchor(null);
+    onReport();
+  };
+
   if (editing) {
     return (
       <PeaProfileEditor
         cover={cover}
         image={image}
         name={name}
-        tag={tag}
+        userName={userName}
+        email={email}
+        phoneNumber={phoneNumber}
         tags={tags}
-        site={site}
         bio={bio}
         location={location}
-        onSubmit={() => setEditing(false)}
+        locationInput={locationInput}
+        birthday={birthday}
+        gender={gender}
+        isPrivate={isPrivate}
+        onSubmit={onSubmit}
+        isUpdating={isUpdating}
         onCancel={() => setEditing(false)}
+        onChangeCoverPhotoClicked={onChangeCoverPhotoClicked}
+        onChangeProfilePhotosClicked={onChangeProfilePhotosClicked}
       />
     );
   }
@@ -66,7 +102,7 @@ const PeaAccountProfile = ({
       open={open}
       onClose={() => setAnchor(null)}
       anchorOrigin={{
-        vertical: 'bottom',
+        vertical: 'top',
         horizontal: 'left',
       }}
       transformOrigin={{
@@ -82,57 +118,40 @@ const PeaAccountProfile = ({
       <MenuItem onClick={() => setAnchor(null)}>
         <ListItemText disableTypography>
           <PeaText color={'error'} variant={'body1'} weight={'bold'}>
-            Block {tag}
+            Block {`@${userName}`}
           </PeaText>
         </ListItemText>
       </MenuItem>
+
       <Divider variant={'middle'} />
-      <MenuItem onClick={() => setAnchor(null)}>
+
+      <MenuItem onClick={onReportClick}>
         <ListItemText disableTypography>
           <PeaText color={'error'} variant={'body1'} weight={'bold'}>
-            Report {tag}
+            Report {`@${userName}`}
           </PeaText>
         </ListItemText>
       </MenuItem>
     </Menu>
   );
+
   return (
     <Card className={'PeaAccountProfile-root'}>
       <CardMedia className={'MuiCardMedia-root'} image={cover} />
       <CardContent className={'MuiCardContent-root'}>
         <Grid container justify={'space-between'} spacing={2}>
           <Grid item style={{ height: 0 }}>
-            {editing ? (
-              <ButtonBase className={'PeaAccountProfile-profileImgBtn'}>
-                <PeaAvatar
-                  className={'MuiAvatar-root-profilePic'}
-                  src={image}
-                />
-                <Box position={'absolute'}>
-                  <PeaIcon
-                    inverted
-                    icon={'add_photo_alternate'}
-                    shape={'square'}
-                    size={'large'}
-                  />
-                  <PeaText inverted size={'small'}>
-                    Change
-                  </PeaText>
-                </Box>
-              </ButtonBase>
-            ) : (
-              <PeaAvatar className={'MuiAvatar-root-profilePic'} src={image} />
-            )}
+            <PeaAvatar className={'MuiAvatar-root-profilePic'} src={image} />
           </Grid>
           <Hidden only={'xs'}>
             <Grid item>
-              <PeaStatistic label={'Pods'} value={2} />
+              <PeaStatistic label={'Pods'} value={podsCount} />
             </Grid>
             <Grid item>
-              <PeaStatistic label={'Following'} value={48} />
+              <PeaStatistic label={'Following'} value={followingCount} />
             </Grid>
             <Grid item>
-              <PeaStatistic label={'Followers'} value={5} />
+              <PeaStatistic label={'Followers'} value={followersCount} />
             </Grid>
           </Hidden>
           <Grid item className={'MuiGrid-item -reputation'}>
@@ -141,40 +160,76 @@ const PeaAccountProfile = ({
             </PeaText>
           </Grid>
         </Grid>
+
         <Box mt={4} mb={3}>
           <Grid className={'MuiGrid-container -actions'} container spacing={1}>
             <Grid item>
-              <PeaButton variant={'contained'} color={'primary'} size={'small'}>
-                Follow
-              </PeaButton>
+              {isCurrentUser ? (
+                <>
+                  <PeaUserSettings
+                    onNotificationsChange={() => {}}
+                    onReceiveEmailChange={() => {}}
+                    onEditProfile={() => setEditing(true)}
+                    onContactSupport={() => {}}
+                    onLogout={() => {}}
+                    onDeleteProfile={() => setDelModalOpen(true)}
+                  />
+                  <PeaConfirmation
+                    title={'Delete Account'}
+                    content={'Are you sure?'}
+                    submitLabel={'Delete'}
+                    open={delModalOpen}
+                    onClose={() => setDelModalOpen(false)}
+                    onSubmit={() => deleteProfile()}
+                    submitting={isDeleting}
+                  />
+                </>
+              ) : (
+                <PeaButton
+                  variant={'contained'}
+                  color={'primary'}
+                  size={'small'}
+                >
+                  Follow
+                </PeaButton>
+              )}
             </Grid>
-            <Grid item>
-              <PeaButton variant={'outlined'} color={'primary'} size={'small'}>
-                Invite
-              </PeaButton>
-            </Grid>
-            <Grid item>
-              <PeaButton icon={'email'} size={'small'} shape={'circular'}>
-                message
-              </PeaButton>
-            </Grid>
-            <Grid item>
-              <PeaButton
-                icon={'more_vert'}
-                size={'small'}
-                shape={'circular'}
-                onClick={e => setAnchor(e.currentTarget)}
-              >
-                more
-              </PeaButton>
-              {renderMenu()}
-            </Grid>
+            {!isCurrentUser && (
+              <>
+                <Grid item>
+                  <PeaButton
+                    variant={'outlined'}
+                    color={'primary'}
+                    size={'small'}
+                  >
+                    Invite
+                  </PeaButton>
+                </Grid>
+                <Grid item>
+                  <PeaButton icon={'email'} size={'small'} shape={'circular'}>
+                    message
+                  </PeaButton>
+                </Grid>
+                <Grid item>
+                  <PeaButton
+                    icon={'more_vert'}
+                    size={'small'}
+                    shape={'circular'}
+                    onClick={e => setAnchor(e.currentTarget)}
+                  >
+                    more
+                  </PeaButton>
+                  {renderMenu()}
+                </Grid>
+              </>
+            )}
           </Grid>
         </Box>
+
         <Hidden smUp>
           <Grid container justify={'space-evenly'}>
             <Grid item>
-              <PeaStatistic label={'Pods'} value={2} />
+              <PeaStatistic label={'Pods'} value={podsCount} />
             </Grid>
             <Grid item>
               <PeaStatistic label={'Following'} value={48} />
@@ -185,24 +240,18 @@ const PeaAccountProfile = ({
           </Grid>
           <br />
         </Hidden>
+
         <Hidden only={'xs'}>
           <div style={{ marginTop: -32 }} />
         </Hidden>
+
         <PeaText variant={'h5'} weight={'bold'}>
           {name}
         </PeaText>
-        <PeaText gutterBottom>{tag}</PeaText>
-        <PeaText>
-          <Link
-            color={'primary'}
-            href={site}
-            target={'_blank'}
-            rel={'noopener'}
-          >
-            {site}
-          </Link>
-        </PeaText>
+
+        <PeaText gutterBottom>{`@${userName}`}</PeaText>
         <br />
+
         <Grid container wrap={'nowrap'} spacing={1}>
           <Grid item>
             <PeaIcon color={'secondary'} size={'small'}>
@@ -220,10 +269,13 @@ const PeaAccountProfile = ({
             </PeaIcon>
           </Grid>
           <Grid item>
-            <PeaText gutterBottom>{location}</PeaText>
+            <PeaText gutterBottom>
+              {location ? location.formattedAddress : 'Unknown'}
+            </PeaText>
           </Grid>
         </Grid>
       </CardContent>
+
       <Tabs
         className={'MuiTabs-root'}
         variant={'fullWidth'}
@@ -235,13 +287,9 @@ const PeaAccountProfile = ({
         <Tab label="About" disableRipple />
         <Tab label="Groups" disableRipple />
       </Tabs>
-      {index === 0 && (
-        <Box minHeight={300} bgcolor={'grey.100'} p={3}>
-          {pods.map(item => (
-            <PeaPodCard key={item.title} {...item} />
-          ))}
-        </Box>
-      )}
+
+      {index === 0 && <Box minHeight={500}>{podList}</Box>}
+
       {index === 1 && (
         <Box p={2} textAlign={'left'}>
           <PeaText gutterBottom variant={'subtitle1'} weight={'bold'}>
@@ -288,7 +336,27 @@ const PeaAccountProfile = ({
           </Grid>
         </Box>
       )}
-      {index === 2 && <Box minHeight={300} />}
+      {index === 2 && (
+        <Box minHeight={500} style={{ position: 'relative' }}>
+          {groupList}
+          <PeaIcon
+            icon={'add'}
+            bgColor={'lightPrimary'}
+            size={'big'}
+            inverted
+            style={{
+              position: 'absolute',
+              bottom: '20px',
+              right: '20px',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              cursor: 'pointer',
+            }}
+            onClick={onCreateGroupClicked}
+          />
+        </Box>
+      )}
     </Card>
   );
 };
@@ -297,11 +365,12 @@ PeaAccountProfile.propTypes = {
   image: PropTypes.string.isRequired,
   cover: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  tag: PropTypes.string,
-  site: PropTypes.string,
+  userName: PropTypes.string,
   bio: PropTypes.string,
-  location: PropTypes.string,
+  location: PropTypes.object,
+  locationInput: PropTypes.func,
   age: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  birthday: PropTypes.string,
   gender: PropTypes.string,
   groups: PropTypes.arrayOf(
     PropTypes.shape({
@@ -312,22 +381,59 @@ PeaAccountProfile.propTypes = {
   tags: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
+      value: PropTypes.string,
     }),
   ),
   reputation: PropTypes.number,
-  pods: PropTypes.arrayOf(PropTypes.shape({})),
+  podsCount: PropTypes.number,
+  isCurrentUser: PropTypes.bool,
+  email: PropTypes.string,
+  phoneNumber: PropTypes.string,
+  followersCount: PropTypes.number,
+  followingCount: PropTypes.number,
+  isPrivate: PropTypes.bool,
+  groupList: PropTypes.object,
+  podList: PropTypes.object,
+  editing: PropTypes.bool,
+  isUpdating: PropTypes.bool,
+  isDeleting: PropTypes.bool,
+  onSubmit: PropTypes.func,
+  setEditing: PropTypes.func,
+  onChangeCoverPhotoClicked: PropTypes.func.isRequired,
+  onChangeProfilePhotosClicked: PropTypes.func.isRequired,
+  deleteProfile: PropTypes.func,
+  onCreateGroupClicked: PropTypes.func,
+  onReport: PropTypes.func,
 };
+
 PeaAccountProfile.defaultProps = {
-  tag: '',
-  site: '',
+  userName: '',
   bio: '',
-  location: '',
+  location: undefined,
+  locationInput: undefined,
+  birthday: '',
   age: 'unknown',
-  gender: 'unknown',
+  gender: '',
   groups: [],
   tags: [],
   reputation: 0,
-  pods: [],
+  podsCount: 0,
+  isCurrentUser: false,
+  email: '',
+  phoneNumber: '',
+  followersCount: 0,
+  followingCount: 0,
+  isPrivate: false,
+  editing: false,
+  isUpdating: false,
+  isDeleting: false,
+  groupList: undefined,
+  podList: undefined,
+  onSubmit: () => {},
+  setEditing: () => {},
+  deleteProfile: () => {},
+  onCreateGroupClicked: () => {},
+  onReport: () => {},
 };
 PeaAccountProfile.metadata = {
   name: 'Pea Account Profile',

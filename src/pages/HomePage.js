@@ -3,7 +3,7 @@ import React from 'react';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from 'components/atoms/Box';
-import Text from 'components/predefined/Typography';
+import Text from 'extensions/Typography';
 import ProfileWidget from 'components/organisms/ProfileWidget';
 
 const HomePage = () => (

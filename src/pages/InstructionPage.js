@@ -138,7 +138,7 @@ const InstructionPage = ({ width }) => (
               <br />
               <b>Congratulations</b> ! You made it.
             </Text>
-            <Image maxWidth={160} src={medal} />
+            <Image maxWidth={160} maxHeight={160} src={medal} />
           </Box>
         </Grid>
         <Grid item xs={12} md={6}>

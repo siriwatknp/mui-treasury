@@ -17,9 +17,9 @@ const useTabsStyles = makeStyles(() => ({
 const useTabStyles = makeStyles(({ breakpoints }) => ({
   root: {
     minHeight: 53,
-    minWidth: 0,
+    minWidth: 80,
     [breakpoints.up('md')]: {
-      minWidth: 0,
+      minWidth: 120,
     },
     '&:hover': {
       backgroundColor: 'rgba(29, 161, 242, 0.1)',
@@ -49,7 +49,7 @@ const TwitterTabs = ({ tabs, tabProps, ...props }) => {
   const tabsClasses = useTabsStyles(props);
   const tabClasses = useTabStyles(tabProps);
   return (
-    <Tabs variant={'fullWidth'} centered {...props} classes={tabsClasses}>
+    <Tabs variant={'fullWidth'} {...props} classes={tabsClasses}>
       {tabs.map(tab => (
         <Tab
           key={tab.label}

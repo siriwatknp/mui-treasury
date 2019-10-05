@@ -3,12 +3,12 @@ import cx from 'clsx';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import Typography from 'components/predefined/Typography';
+import Typography from 'extensions/Typography';
 import Tag from 'components/atoms/Tag';
 import ChromeTabs from 'components/tabs/ChromeTabs';
 import CodeHighlight from 'components/highlights/CodeHighlight';
 import Copier from 'components/atoms/Copier';
-import Button from 'components/predefined/Button';
+import Button from 'extensions/Button';
 import CONSTANT from 'constant';
 
 const ComponentInfo = ({
