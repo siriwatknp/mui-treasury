@@ -9,9 +9,6 @@ const useStyles = makeStyles(({ spacing }) => ({
   root: {
     position: 'relative',
     textAlign: 'center',
-    boxShadow: '3px 4px 15px rgba(0, 0, 0, 0.1)',
-    borderRadius: '15px 15px 0 0',
-    backgroundColor: 'white',
   },
   avatar: {
     width: 62,
@@ -35,7 +32,7 @@ const useStyles = makeStyles(({ spacing }) => ({
 const PeaThreadTitle = ({ title, subtitle, avatar }) => {
   const classes = useStyles();
   return (
-    <Grid container spacing={2} classes={{ container: classes.root }}>
+    <Grid container classes={{ container: classes.root }}>
       <Grid item xs={12}>
         <div className={classes.textContainer}>
           <PeaText

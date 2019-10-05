@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import React from 'react';
 import MomentUtils from '@date-io/moment';
 import {
@@ -86,3 +87,4 @@ export { default as Tooltip } from './lib/PeaTooltip';
 export { default as AutocompleteList } from './lib/PeaAutocompleteList';
 export { default as UserSettings } from './lib/PeaUserSettings';
 export { default as ShareContent } from './lib/PeaShareContent';
+export { default as PersonForMsg } from './lib/PeaPersonForMsg';

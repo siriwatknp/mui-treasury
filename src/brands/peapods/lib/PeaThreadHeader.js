@@ -5,9 +5,15 @@ import Grid from '@material-ui/core/Grid';
 import PeaAvatar from './PeaAvatar';
 import PeaText from './PeaTypography';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(({ spacing, palette }) => ({
+  root: {
+    padding: `${spacing(1)}px ${spacing(2)}px`,
+    backgroundColor: ({ selected }) => selected && palette.primary.main,
+    cursor: 'pointer',
+  },
   flex: {
     flex: 1,
+    marginLeft: spacing(2),
   },
   avatar: {
     width: 56,
@@ -17,10 +23,22 @@ const useStyles = makeStyles(() => ({
 
 const noop = () => false;
 
-const PeaThreadHeader = ({ avatar, title, subtitle, timestamp, onClick }) => {
-  const classes = useStyles();
+const PeaThreadHeader = ({
+  avatar,
+  title,
+  subtitle,
+  timestamp,
+  selected,
+  onClick,
+}) => {
+  const classes = useStyles({ selected });
   return (
-    <Grid container spacing={2} onClick={onClick} alignItems="center">
+    <Grid
+      container
+      alignItems="center"
+      className={classes.root}
+      onClick={onClick}
+    >
       <Grid item>
         <PeaAvatar src={avatar} className={classes.avatar} />
       </Grid>
@@ -46,9 +64,11 @@ PeaThreadHeader.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
   timestamp: PropTypes.string.isRequired,
+  selected: PropTypes.bool,
   onClick: PropTypes.func,
 };
 PeaThreadHeader.defaultProps = {
+  selected: false,
   onClick: noop,
 };
 PeaThreadHeader.metadata = {
