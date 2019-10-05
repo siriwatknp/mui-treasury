@@ -1,0 +1,36 @@
+import React from 'react';
+import Box from '@material-ui/core/Box';
+import CardMedia from '@material-ui/core/CardMedia';
+import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia';
+import MOCK from 'constants/mock';
+
+const CoverCardMedia = () => {
+  const styles = useCoverCardMediaStyles();
+  return (
+    <Box position={'relative'} width={'100%'} height={'100%'} p={2}>
+      <CardMedia
+        // component={'img'} // add this line to use <img />
+        classes={styles}
+        image={MOCK.img}
+      />
+      <h3 style={{ color: '#fff' }}>Placeholder</h3>
+      <p style={{ color: '#fff' }}>To show that the image is a cover.</p>
+    </Box>
+  );
+};
+
+// hide-start
+CoverCardMedia.metadata = {
+  title: 'Cover',
+  description: 'Position is absolute',
+  path: 'cardMedia/cover',
+  files: [
+    {
+      pkg: 'mui-styles',
+      path: 'cardMedia/cover/coverCardMedia.styles.js',
+    },
+  ],
+};
+// hide-end
+
+export default CoverCardMedia;

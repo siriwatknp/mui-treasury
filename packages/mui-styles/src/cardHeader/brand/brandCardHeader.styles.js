@@ -24,7 +24,7 @@ export default ({ palette, breakpoints }) => {
       },
     },
     divider: {
-      backgroundColor: palette.grey[100],
+      backgroundColor: palette.grey[200],
       marginBottom: 24 - 1, // minus 1 due to divider height
       [breakpoints.up('sm')]: {
         marginBottom: 30 - 1, // minus 1 due to divider height
@@ -33,7 +33,7 @@ export default ({ palette, breakpoints }) => {
     extra: {
       textTransform: 'uppercase',
       fontSize: 14,
-      color: palette.grey[400],
+      color: palette.grey[500],
       letterSpacing: '1px',
     },
   };

@@ -6,4 +6,6 @@ export default {
     'http://i.pravatar.cc/300?img=3',
     'http://i.pravatar.cc/300?img=4',
   ],
+  reactLogo:
+    'https://pngimage.net/wp-content/uploads/2018/06/react-icon-png-7.png',
 };
