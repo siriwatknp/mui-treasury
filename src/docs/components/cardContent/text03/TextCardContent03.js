@@ -1,4 +1,5 @@
 import React from 'react';
+import Box from '@material-ui/core/Box';
 import CardContent from '@material-ui/core/CardContent';
 import { TextInfoCardContent } from '@mui-treasury/components/cardContent';
 import { useTextCardContent03Styles } from '@mui-treasury/styles/cardContent';
@@ -6,16 +7,18 @@ import { useTextCardContent03Styles } from '@mui-treasury/styles/cardContent';
 const TextCardContent03 = () => {
   const styles = useTextCardContent03Styles();
   return (
-    <CardContent>
-      <TextInfoCardContent
-        classes={styles}
-        overline={'GOOGLE INC.'}
-        heading={'Project Polymer'}
-        body={
-          'Web components usher in a new era of web development based on encapsulated and interoperable custom'
-        }
-      />
-    </CardContent>
+    <Box maxWidth={343}>
+      <CardContent>
+        <TextInfoCardContent
+          classes={styles}
+          overline={'GOOGLE INC.'}
+          heading={'Project Polymer'}
+          body={
+            'Web components usher in a new era of web development based on encapsulated and interoperable custom'
+          }
+        />
+      </CardContent>
+    </Box>
   );
 };
 

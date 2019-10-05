@@ -1,4 +1,5 @@
 import React from 'react';
+import Box from '@material-ui/core/Box';
 import CardContent from '@material-ui/core/CardContent';
 import { TextInfoCardContent } from '@mui-treasury/components/cardContent';
 import { useTextCardContent02Styles } from '@mui-treasury/styles/cardContent';
@@ -6,17 +7,19 @@ import { useTextCardContent02Styles } from '@mui-treasury/styles/cardContent';
 const TextCardContent02 = () => {
   const styles = useTextCardContent02Styles();
   return (
-    <CardContent>
-      <TextInfoCardContent
-        classes={styles}
-        overline={'March 8, 2016'}
-        heading={'First Snow Storm'}
-        body={
-          'Snow storm coming in Sommaroy island, Arctic Norway. This is something\n' +
-          '        that you definitely wanna see in your life.'
-        }
-      />
-    </CardContent>
+    <Box maxWidth={343}>
+      <CardContent>
+        <TextInfoCardContent
+          classes={styles}
+          overline={'March 8, 2016'}
+          heading={'First Snow Storm'}
+          body={
+            'Snow storm coming in Sommaroy island, Arctic Norway. This is something\n' +
+            '        that you definitely wanna see in your life.'
+          }
+        />
+      </CardContent>
+    </Box>
   );
 };
 

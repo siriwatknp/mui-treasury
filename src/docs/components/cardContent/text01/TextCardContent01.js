@@ -1,4 +1,5 @@
 import React from 'react';
+import Box from '@material-ui/core/Box';
 import CardContent from '@material-ui/core/CardContent';
 import { TextInfoCardContent } from '@mui-treasury/components/cardContent';
 import { useTextCardContent01Styles } from '@mui-treasury/styles/cardContent';
@@ -6,16 +7,18 @@ import { useTextCardContent01Styles } from '@mui-treasury/styles/cardContent';
 const TextCardContent01 = () => {
   const styles = useTextCardContent01Styles();
   return (
-    <CardContent>
-      <TextInfoCardContent
-        classes={styles}
-        overline={'March 20, 2019'}
-        heading={'Nature Around Us'}
-        body={
-          'We are going to learn different kinds of species in nature that live together to form amazing environment.'
-        }
-      />
-    </CardContent>
+    <Box maxWidth={343}>
+      <CardContent>
+        <TextInfoCardContent
+          classes={styles}
+          overline={'March 20, 2019'}
+          heading={'Nature Around Us'}
+          body={
+            'We are going to learn different kinds of species in nature that live together to form amazing environment.'
+          }
+        />
+      </CardContent>
+    </Box>
   );
 };
 

@@ -34,7 +34,7 @@ library.add(
 );
 
 const layoutConfig = createDefaultLayout({
-  navWidth: 288,
+  navWidth: 256,
   navVariant: {
     xs: 'temporary',
     sm: 'permanent',
