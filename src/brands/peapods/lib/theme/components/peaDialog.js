@@ -34,7 +34,7 @@ export default ({ spacing, breakpoints, white, palette }) => ({
         },
         '& .DialogContent--root': {
           maxWidth: 400,
-          minWidth: 343,
+          minWidth: 400,
         },
         '& .DialogActions-root': {
           marginBottom: spacing(2),
@@ -65,7 +65,8 @@ export default ({ spacing, breakpoints, white, palette }) => ({
       '&.PeaInvitationDialog': {
         '& .DialogContent--root': {
           padding: '0px !important',
-          minWidth: 343,
+          minWidth: 400,
+          minHeight: 450,
         },
         '& .ListSubheader-typography': {
           color: palette.secondary.main,
@@ -83,7 +84,7 @@ export default ({ spacing, breakpoints, white, palette }) => ({
       '&.PeaDialog.PeaEventDialog': {
         '& .DialogContent--root': {
           maxWidth: 600,
-          minWidth: 343,
+          minWidth: 400,
         },
       },
     },

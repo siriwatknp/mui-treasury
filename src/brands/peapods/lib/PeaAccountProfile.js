@@ -1,4 +1,5 @@
 /* eslint-disable react/forbid-prop-types */
+
 import Tab from '@material-ui/core/Tab/Tab';
 import Tabs from '@material-ui/core/Tabs/Tabs';
 import React, { useState } from 'react';
@@ -36,7 +37,6 @@ const PeaAccountProfile = ({
   name,
   userName,
   email,
-  tag,
   phoneNumber,
   bio,
   location,
@@ -45,6 +45,7 @@ const PeaAccountProfile = ({
   age,
   gender,
   groups,
+  pods,
   groupsOfCurrentUser,
   tags,
   podsCount,
@@ -59,15 +60,18 @@ const PeaAccountProfile = ({
   isUpdating,
   isDeleting,
   setEditing,
-  isInvitingInfo,
-  invitedInfo,
+  loadingInvitableList,
+  invitingIds,
+  invitedIds,
   followLoading,
   currentUserFollowing,
   onChangeCoverPhotoClicked,
   onChangeProfilePhotosClicked,
   deleteProfile,
   onCreateGroupClicked,
-  onInvite,
+  onInvitePod,
+  onInviteGroup,
+  onInviteClicked,
   onFollow,
   onReport,
 }) => {
@@ -90,6 +94,13 @@ const PeaAccountProfile = ({
   const onReportClick = () => {
     setAnchor(null);
     onReport();
+  };
+
+  const onInviteClick = () => {
+    if (onInviteClicked) {
+      onInviteClicked();
+    }
+    setOpenInviteDialog(true);
   };
 
   if (editing) {
@@ -195,6 +206,7 @@ const PeaAccountProfile = ({
                     onLogout={() => {}}
                     onDeleteProfile={() => setDelModalOpen(true)}
                   />
+
                   <PeaConfirmation
                     title={'Delete Account'}
                     content={'Are you sure?'}
@@ -221,6 +233,7 @@ const PeaAccountProfile = ({
                 </PeaButton>
               )}
             </Grid>
+
             {!isCurrentUser && (
               <>
                 <Grid item>
@@ -228,7 +241,7 @@ const PeaAccountProfile = ({
                     variant={'outlined'}
                     color={'primary'}
                     size={'small'}
-                    onClick={() => setOpenInviteDialog(true)}
+                    onClick={onInviteClick}
                   >
                     Invite
                   </PeaButton>
@@ -340,8 +353,8 @@ const PeaAccountProfile = ({
           </PeaText>
           <PeaText gutterBottom />
           <Grid container spacing={2}>
-            {groups.map(item => (
-              <Grid item key={item.name}>
+            {groupsOfCurrentUser.map(item => (
+              <Grid item key={item.id}>
                 <PeaSocialAvatar {...item} />
               </Grid>
             ))}
@@ -364,6 +377,7 @@ const PeaAccountProfile = ({
           </Grid>
         </Box>
       )}
+
       {index === 2 && (
         <Box minHeight={500} style={{ position: 'relative' }}>
           {groupList}
@@ -387,14 +401,14 @@ const PeaAccountProfile = ({
       )}
 
       <PeaInvitationDialog
-        person={tag}
-        pods={[]}
-        groups={groupsOfCurrentUser}
-        isInvitingInfo={isInvitingInfo}
-        invitedInfo={invitedInfo}
-        onInvite={async item => {
-          await onInvite(item);
-        }}
+        person={userName}
+        pods={pods}
+        groups={groups}
+        loading={loadingInvitableList}
+        onInvitePod={onInvitePod}
+        onInviteGroup={onInviteGroup}
+        invitingIds={invitingIds}
+        invitedIds={invitedIds}
         open={openInviteDialog}
         onClose={() => setOpenInviteDialog(false)}
       />
@@ -403,17 +417,22 @@ const PeaAccountProfile = ({
 };
 
 PeaAccountProfile.propTypes = {
+  loadingInvitableList: PropTypes.bool,
   image: PropTypes.string.isRequired,
   cover: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   userName: PropTypes.string,
-  tag: PropTypes.string,
   bio: PropTypes.string,
   location: PropTypes.object,
   locationInput: PropTypes.func,
   age: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   birthday: PropTypes.string,
   gender: PropTypes.string,
+  pods: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  ),
   groups: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
@@ -453,11 +472,16 @@ PeaAccountProfile.propTypes = {
   onInvite: PropTypes.func,
   onFollow: PropTypes.func,
   onReport: PropTypes.func,
+  onInvitePod: PropTypes.func.isRequired,
+  onInviteGroup: PropTypes.func.isRequired,
+  onInviteClicked: PropTypes.func.isRequired,
+  invitingIds: PropTypes.object,
+  invitedIds: PropTypes.object,
 };
 
 PeaAccountProfile.defaultProps = {
+  loadingInvitableList: false,
   userName: '',
-  tag: '',
   bio: '',
   location: undefined,
   locationInput: undefined,
@@ -465,6 +489,7 @@ PeaAccountProfile.defaultProps = {
   age: 'unknown',
   gender: '',
   groups: [],
+  pods: [],
   groupsOfCurrentUser: [],
   tags: [],
   reputation: 0,
@@ -491,10 +516,14 @@ PeaAccountProfile.defaultProps = {
   onInvite: () => {},
   onFollow: () => {},
   onReport: () => {},
+  invitingIds: {},
+  invitedIds: {},
 };
+
 PeaAccountProfile.metadata = {
   name: 'Pea Account Profile',
 };
+
 PeaAccountProfile.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 
 export default PeaAccountProfile;
