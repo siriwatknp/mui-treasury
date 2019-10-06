@@ -1,4 +1,5 @@
 /* eslint-disable react/forbid-prop-types */
+
 import Tab from '@material-ui/core/Tab/Tab';
 import Tabs from '@material-ui/core/Tabs/Tabs';
 import React, { useState } from 'react';
@@ -24,6 +25,8 @@ import PeaTag from './PeaTag';
 import PeaProfileEditor from './PeaProfileEditor';
 import PeaUserSettings from './PeaUserSettings';
 import PeaConfirmation from './PeaConfirmation';
+import PeaInvitationDialog from './PeaInvitationDialog';
+import PeaLoadingSpinner from './PeaLoadingSpinner';
 
 // TODO: refactor this to use PeaSwipeableTabs
 
@@ -42,6 +45,8 @@ const PeaAccountProfile = ({
   age,
   gender,
   groups,
+  pods,
+  groupsOfCurrentUser,
   tags,
   podsCount,
   reputation,
@@ -55,20 +60,47 @@ const PeaAccountProfile = ({
   isUpdating,
   isDeleting,
   setEditing,
+  loadingInvitableList,
+  invitingIds,
+  invitedIds,
+  followLoading,
+  currentUserFollowing,
   onChangeCoverPhotoClicked,
   onChangeProfilePhotosClicked,
   deleteProfile,
   onCreateGroupClicked,
+  onInvitePod,
+  onInviteGroup,
+  onInviteClicked,
+  onFollow,
   onReport,
 }) => {
   const [index, onChange] = useState(0);
   const [anchorEl, setAnchor] = useState(null);
   const [delModalOpen, setDelModalOpen] = useState(false);
+  const [openInviteDialog, setOpenInviteDialog] = useState(false);
   const open = Boolean(anchorEl);
+
+  const followBtnDisabled =
+    followLoading || currentUserFollowing === 'PENDING_APPROVAL';
+  let followBtnText = 'Follow';
+  if (currentUserFollowing === 'PENDING_APPROVAL') {
+    followBtnText = 'Follow Requested';
+  }
+  if (currentUserFollowing === 'FOLLOWING') {
+    followBtnText = 'Unfollow';
+  }
 
   const onReportClick = () => {
     setAnchor(null);
     onReport();
+  };
+
+  const onInviteClick = () => {
+    if (onInviteClicked) {
+      onInviteClicked();
+    }
+    setOpenInviteDialog(true);
   };
 
   if (editing) {
@@ -174,6 +206,7 @@ const PeaAccountProfile = ({
                     onLogout={() => {}}
                     onDeleteProfile={() => setDelModalOpen(true)}
                   />
+
                   <PeaConfirmation
                     title={'Delete Account'}
                     content={'Are you sure?'}
@@ -189,11 +222,18 @@ const PeaAccountProfile = ({
                   variant={'contained'}
                   color={'primary'}
                   size={'small'}
+                  disabled={followBtnDisabled}
+                  onClick={onFollow}
                 >
-                  Follow
+                  {followLoading ? (
+                    <PeaLoadingSpinner size={20} style={{ margin: 0 }} />
+                  ) : (
+                    followBtnText
+                  )}
                 </PeaButton>
               )}
             </Grid>
+
             {!isCurrentUser && (
               <>
                 <Grid item>
@@ -201,6 +241,7 @@ const PeaAccountProfile = ({
                     variant={'outlined'}
                     color={'primary'}
                     size={'small'}
+                    onClick={onInviteClick}
                   >
                     Invite
                   </PeaButton>
@@ -312,8 +353,8 @@ const PeaAccountProfile = ({
           </PeaText>
           <PeaText gutterBottom />
           <Grid container spacing={2}>
-            {groups.map(item => (
-              <Grid item key={item.name}>
+            {groupsOfCurrentUser.map(item => (
+              <Grid item key={item.id}>
                 <PeaSocialAvatar {...item} />
               </Grid>
             ))}
@@ -336,6 +377,7 @@ const PeaAccountProfile = ({
           </Grid>
         </Box>
       )}
+
       {index === 2 && (
         <Box minHeight={500} style={{ position: 'relative' }}>
           {groupList}
@@ -357,11 +399,25 @@ const PeaAccountProfile = ({
           />
         </Box>
       )}
+
+      <PeaInvitationDialog
+        person={userName}
+        pods={pods}
+        groups={groups}
+        loading={loadingInvitableList}
+        onInvitePod={onInvitePod}
+        onInviteGroup={onInviteGroup}
+        invitingIds={invitingIds}
+        invitedIds={invitedIds}
+        open={openInviteDialog}
+        onClose={() => setOpenInviteDialog(false)}
+      />
     </Card>
   );
 };
 
 PeaAccountProfile.propTypes = {
+  loadingInvitableList: PropTypes.bool,
   image: PropTypes.string.isRequired,
   cover: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
@@ -372,12 +428,18 @@ PeaAccountProfile.propTypes = {
   age: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   birthday: PropTypes.string,
   gender: PropTypes.string,
+  pods: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  ),
   groups: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
       src: PropTypes.string,
     }),
   ),
+  groupsOfCurrentUser: PropTypes.arrayOf(PropTypes.shape({})),
   tags: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
@@ -397,16 +459,28 @@ PeaAccountProfile.propTypes = {
   editing: PropTypes.bool,
   isUpdating: PropTypes.bool,
   isDeleting: PropTypes.bool,
+  isInvitingInfo: PropTypes.object,
+  invitedInfo: PropTypes.object,
+  followLoading: PropTypes.bool,
+  currentUserFollowing: PropTypes.string,
   onSubmit: PropTypes.func,
   setEditing: PropTypes.func,
   onChangeCoverPhotoClicked: PropTypes.func.isRequired,
   onChangeProfilePhotosClicked: PropTypes.func.isRequired,
   deleteProfile: PropTypes.func,
   onCreateGroupClicked: PropTypes.func,
+  onInvite: PropTypes.func,
+  onFollow: PropTypes.func,
   onReport: PropTypes.func,
+  onInvitePod: PropTypes.func.isRequired,
+  onInviteGroup: PropTypes.func.isRequired,
+  onInviteClicked: PropTypes.func.isRequired,
+  invitingIds: PropTypes.object,
+  invitedIds: PropTypes.object,
 };
 
 PeaAccountProfile.defaultProps = {
+  loadingInvitableList: false,
   userName: '',
   bio: '',
   location: undefined,
@@ -415,6 +489,8 @@ PeaAccountProfile.defaultProps = {
   age: 'unknown',
   gender: '',
   groups: [],
+  pods: [],
+  groupsOfCurrentUser: [],
   tags: [],
   reputation: 0,
   podsCount: 0,
@@ -428,16 +504,26 @@ PeaAccountProfile.defaultProps = {
   isUpdating: false,
   isDeleting: false,
   groupList: undefined,
+  isInvitingInfo: {},
+  invitedInfo: {},
+  followLoading: false,
+  currentUserFollowing: undefined,
   podList: undefined,
   onSubmit: () => {},
   setEditing: () => {},
   deleteProfile: () => {},
   onCreateGroupClicked: () => {},
+  onInvite: () => {},
+  onFollow: () => {},
   onReport: () => {},
+  invitingIds: {},
+  invitedIds: {},
 };
+
 PeaAccountProfile.metadata = {
   name: 'Pea Account Profile',
 };
+
 PeaAccountProfile.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 
 export default PeaAccountProfile;
