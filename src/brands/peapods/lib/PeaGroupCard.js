@@ -25,6 +25,7 @@ const PeaGroupCard = ({
   AvatarProps,
   onEdit,
   onDelete,
+  onReport,
 }) => {
   const [joined, setJoined] = useState(false);
   const joinButtonProps = {
@@ -44,6 +45,11 @@ const PeaGroupCard = ({
   const onDeleteClicked = () => {
     setAnchor(null);
     onDelete();
+  };
+
+  const onReportClicked = () => {
+    setAnchor(null);
+    onReport();
   };
 
   const renderMenu = () => (
@@ -80,6 +86,16 @@ const PeaGroupCard = ({
         <ListItemText disableTypography>
           <PeaText color={'error'} variant={'body1'} weight={'bold'}>
             Delete {tag}
+          </PeaText>
+        </ListItemText>
+      </MenuItem>
+
+      <Divider variant={'middle'} />
+
+      <MenuItem onClick={onReportClicked}>
+        <ListItemText disableTypography>
+          <PeaText color={'error'} variant={'body1'} weight={'bold'}>
+            Report {tag}
           </PeaText>
         </ListItemText>
       </MenuItem>
@@ -147,12 +163,14 @@ PeaGroupCard.propTypes = {
   AvatarProps: PropTypes.shape({}),
   onEdit: PropTypes.func,
   onDelete: PropTypes.func,
+  onReport: PropTypes.func,
 };
 PeaGroupCard.defaultProps = {
   tag: '',
   AvatarProps: {},
   onEdit: () => {},
   onDelete: () => {},
+  onReport: () => {},
 };
 PeaGroupCard.metadata = {
   name: 'Pea Profile Card',

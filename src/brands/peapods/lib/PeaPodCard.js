@@ -23,6 +23,9 @@ const PeaPodCard = ({
   isLoading,
   ...props
 }) => {
+  if (!pod) {
+    return null;
+  }
   const { members, maxSize, datingOption, state } = pod;
 
   const peopleGoing = members.map(member => member.profilePhoto);
