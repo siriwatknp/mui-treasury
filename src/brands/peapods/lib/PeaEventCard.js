@@ -38,17 +38,18 @@ const createList = ({
   {
     key: '3',
     icon: 'fas fa-users',
-    renderText: () => (
-      <React.Fragment>
-        {!!limit && (
-          <span>
-            limit <b>{limit} - </b>
-          </span>
-        )}
-        {podCount} pod{podCount > 1 ? 's' : ''}, {attendingCount} going,{' '}
-        {interestedCount} interested
-      </React.Fragment>
-    ),
+    text:
+      attendingCount && interestedCount ? (
+        <React.Fragment>
+          {!!limit && (
+            <span>
+              limit <b>{limit} - </b>
+            </span>
+          )}
+          {podCount} pod{podCount > 1 ? 's' : ''}, {attendingCount} going,{' '}
+          {interestedCount} interested
+        </React.Fragment>
+      ) : null,
   },
 ];
 
@@ -166,25 +167,24 @@ const PeaEventCard = ({
               timeString,
               location,
               podCount,
-              attendingCount: stats.attending,
-              interestedCount: stats.interested,
-              limit: stats.limit,
-            }).map(item => (
-              <Grid key={item.key} container spacing={1} wrap={'nowrap'}>
-                <Grid item>
-                  <PeaIcon
-                    size={'small'}
-                    color={'secondary'}
-                    icon={item.icon}
-                  />
+              attendingCount: stats ? stats.attending : undefined,
+              interestedCount: stats ? stats.interested : undefined,
+              limit: stats ? stats.limit : undefined,
+            }).map(({ key, icon, text }) =>
+              text ? (
+                <Grid key={key} container spacing={1} wrap={'nowrap'}>
+                  <Grid item>
+                    <PeaIcon size={'small'} color={'secondary'} icon={icon} />
+                  </Grid>
+
+                  <Grid item xs>
+                    <Typography color={'textSecondary'} variant={'caption'}>
+                      {text}
+                    </Typography>
+                  </Grid>
                 </Grid>
-                <Grid item xs>
-                  <Typography color={'textSecondary'} variant={'caption'}>
-                    {item.renderText ? item.renderText() : item.text}
-                  </Typography>
-                </Grid>
-              </Grid>
-            ))}
+              ) : null,
+            )}
           </Grid>
         </Grid>
 
@@ -294,10 +294,10 @@ PeaEventCard.propTypes = {
   onCreatePodClicked: PropTypes.func.isRequired,
   onShareEventClicked: PropTypes.func,
   stats: PropTypes.shape({
-    interested: PropTypes.number.isRequired,
-    attending: PropTypes.number.isRequired,
+    interested: PropTypes.number,
+    attending: PropTypes.number,
     limit: PropTypes.number,
-  }).isRequired,
+  }),
   createPodText: PropTypes.string,
   isLoading: PropTypes.bool,
 };
@@ -312,6 +312,7 @@ PeaEventCard.defaultProps = {
   onShareEventClicked: () => {},
   createPodText: 'Create Pod',
   isLoading: false,
+  stats: undefined,
 };
 
 PeaEventCard.metadata = {
