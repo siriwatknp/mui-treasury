@@ -1,6 +1,6 @@
 export default ({ spacing }) => ({
   divider: {
-    margin: spacing(3, 0),
+    marginBottom: spacing(3),
   },
   person: {
     display: 'inline-block',

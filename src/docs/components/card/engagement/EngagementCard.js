@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
+import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -31,25 +32,23 @@ const EngagementCard = () => {
       <CardMedia
         // component={'img'} // add this line to use <img />
         classes={wideCardMediaStyles}
-        image={MOCK.img}
+        image={MOCK.natureImg}
       />
       <CardContent className={cardStyles.content}>
         <TextInfoCardContent
           classes={textCardContentStyles}
-          overline={'March 20, 2019'}
           heading={'Nature Around Us'}
           body={
             'We are going to learn different kinds of species in nature that live together to form amazing environment.'
           }
         />
-        <PeopleCardFooter faces={MOCK.facesX4} />
       </CardContent>
+      <Box px={3} pb={3}>
+        <PeopleCardFooter faces={MOCK.facesX4} />
+      </Box>
     </Card>
   );
 };
-
-EngagementCard.propTypes = {};
-EngagementCard.defaultProps = {};
 
 // hide-start
 EngagementCard.metadata = {

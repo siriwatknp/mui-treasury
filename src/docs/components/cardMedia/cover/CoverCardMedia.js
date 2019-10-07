@@ -13,8 +13,10 @@ const CoverCardMedia = () => {
         classes={styles}
         image={MOCK.img}
       />
-      <h3 style={{ color: '#fff' }}>Placeholder</h3>
-      <p style={{ color: '#fff' }}>To show that the image is a cover.</p>
+      <Box position={'relative'}>
+        <h3 style={{ color: '#fff' }}>Placeholder</h3>
+        <p style={{ color: '#fff' }}>To show that the image is a cover.</p>
+      </Box>
     </Box>
   );
 };
