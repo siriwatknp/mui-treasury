@@ -15,8 +15,9 @@ const PeaPersonListItem = ({
   AvatarProps,
   ListItemTextProps,
   ButtonProps,
+  isButtonShown,
 }) => (
-  <ListItem {...ListItemProps}>
+  <ListItem {...ListItemProps} onClick={!isButtonShown ? onClick : null}>
     <PeaAvatar src={src} {...AvatarProps} />
     <ListItemText
       primaryTypographyProps={{ noWrap: true }}
@@ -25,14 +26,16 @@ const PeaPersonListItem = ({
       secondary={tag}
       {...ListItemTextProps}
     />
-    <PeaButton
-      variant={'contained'}
-      color={'primary'}
-      onClick={onClick}
-      {...ButtonProps}
-    >
-      Follow
-    </PeaButton>
+    {isButtonShown && (
+      <PeaButton
+        variant={'contained'}
+        color={'primary'}
+        onClick={onClick}
+        {...ButtonProps}
+      >
+        Follow
+      </PeaButton>
+    )}
   </ListItem>
 );
 
@@ -45,12 +48,14 @@ PeaPersonListItem.propTypes = {
   AvatarProps: PropTypes.shape({}),
   ListItemTextProps: PropTypes.shape({}),
   ButtonProps: PropTypes.shape({}),
+  isButtonShown: PropTypes.bool,
 };
 PeaPersonListItem.defaultProps = {
   ListItemProps: {},
   AvatarProps: {},
   ListItemTextProps: {},
   ButtonProps: {},
+  isButtonShown: true,
 };
 PeaPersonListItem.metadata = {
   name: 'Pea Person List Item',
