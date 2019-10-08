@@ -19,7 +19,7 @@ const useStyles = makeStyles(() => ({
     maxWidth: 304,
   },
   title: {
-    marginBottom: 4,
+    marginBottom: 0,
   },
   rateValue: {
     fontWeight: 'bold',
@@ -32,6 +32,7 @@ const useStyles = makeStyles(() => ({
     borderRadius: 4,
   },
   locationIcon: {
+    marginRight: 4,
     fontSize: 18,
   },
 }));
@@ -46,13 +47,7 @@ const ReviewCard = () => {
       <CardMedia classes={mediaStyles} image={MOCK.colosseumImg} />
       <CardContent className={cx(shadowStyles.root, styles.content)}>
         <h3 className={styles.title}>Colloseo</h3>
-        <Box
-          className={gutterStyles.parent}
-          color={'grey.500'}
-          display={'flex'}
-          alignItems={'center'}
-          mb={1}
-        >
+        <Box color={'grey.500'} display={'flex'} alignItems={'center'} mb={1}>
           <LocationOn className={styles.locationIcon} />
           <span>Rome</span>
         </Box>
