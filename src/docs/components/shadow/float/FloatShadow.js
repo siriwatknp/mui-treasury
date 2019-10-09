@@ -9,7 +9,7 @@ const FloatShadow = () => {
 
 // hide-start
 FloatShadow.metadata = {
-  title: 'Faded',
+  title: 'Float',
   path: 'shadow/float',
   files: [{ pkg: 'mui-styles', path: 'shadow/float/floatShadow.styles.js' }],
 };
