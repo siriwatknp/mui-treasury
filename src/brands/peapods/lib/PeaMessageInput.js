@@ -21,7 +21,7 @@ const useStyles = makeStyles(() => ({
   icon: {
     width: 24,
     height: 24,
-    cursor: 'pointer',
+    cursor: ({ disabled }) => (disabled ? 'not-allowed' : 'pointer'),
     color: '#B7B6BC',
     '&:hover': {
       opacity: 0.8,
@@ -45,27 +45,28 @@ const noop = () => false;
 
 const PeaMessageInput = ({
   value,
+  disabled,
   onChange,
   onSubmit,
   accept,
   multiple,
   onUpload,
 }) => {
-  const classes = useStyles();
-  const [inputValue, onInputChange] = useState(value);
+  const classes = useStyles({ disabled });
   const [showEmoji, setShowEmoji] = useState(false);
 
   const handleChange = e => {
-    const { value: v } = e.target;
-    onInputChange(v);
-    onChange(v);
+    onChange(e.target.value);
   };
   const toggleEmoji = () => setShowEmoji(!showEmoji);
-  const handleSubmit = () => onSubmit(value);
+  const handleSubmit = () => {
+    if (disabled) return;
+    onSubmit(value);
+  };
   const onEmojiSelect = e => {
     handleChange({
       target: {
-        value: inputValue + e.native,
+        value: value + e.native,
       },
     });
   };
@@ -116,7 +117,7 @@ const PeaMessageInput = ({
           margin="none"
           variant="outlined"
           onChange={handleChange}
-          value={inputValue}
+          value={value}
           placeholder="Type your message"
           endAdornment={
             <InputAdornment position="end" onClick={toggleEmoji}>
@@ -150,6 +151,7 @@ const PeaMessageInput = ({
 
 PeaMessageInput.propTypes = {
   value: PropTypes.string,
+  disabled: PropTypes.bool,
   onChange: PropTypes.func,
   onUpload: PropTypes.func,
   onSubmit: PropTypes.func,
@@ -158,6 +160,7 @@ PeaMessageInput.propTypes = {
 };
 PeaMessageInput.defaultProps = {
   value: '',
+  disabled: false,
   onChange: noop,
   onUpload: noop,
   onSubmit: noop,
