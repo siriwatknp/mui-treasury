@@ -26,7 +26,6 @@ import PeaProfileEditor from './PeaProfileEditor';
 import PeaUserSettings from './PeaUserSettings';
 import PeaConfirmation from './PeaConfirmation';
 import PeaInvitationDialog from './PeaInvitationDialog';
-import PeaLoadingSpinner from './PeaLoadingSpinner';
 
 // TODO: refactor this to use PeaSwipeableTabs
 
@@ -65,8 +64,11 @@ const PeaAccountProfile = ({
   invitedIds,
   followLoading,
   currentUserFollowing,
+  followerState,
+  acceptFollowLoading,
   onChangeCoverPhotoClicked,
   onChangeProfilePhotosClicked,
+  onAcceptFollowRequest,
   deleteProfile,
   onCreateGroupClicked,
   onInvitePod,
@@ -90,6 +92,9 @@ const PeaAccountProfile = ({
   if (currentUserFollowing === 'FOLLOWING') {
     followBtnText = 'Unfollow';
   }
+
+  const isFollower = followerState === 'FOLLOWING';
+  const followerRequested = followerState === 'PENDING_APPROVAL';
 
   const onReportClick = () => {
     setAnchor(null);
@@ -194,6 +199,23 @@ const PeaAccountProfile = ({
         </Grid>
 
         <Box mt={4} mb={3}>
+          {followerRequested && (
+            <Grid container spacing={2} justify="center">
+              <Grid item>
+                <PeaButton
+                  variant={'contained'}
+                  color={'primary'}
+                  size={'small'}
+                  disabled={acceptFollowLoading}
+                  loading={acceptFollowLoading}
+                  onClick={onAcceptFollowRequest}
+                >
+                  {'Accept Follow Request'}
+                </PeaButton>
+              </Grid>
+            </Grid>
+          )}
+
           <Grid className={'MuiGrid-container -actions'} container spacing={1}>
             <Grid item>
               {isCurrentUser ? (
@@ -223,13 +245,10 @@ const PeaAccountProfile = ({
                   color={'primary'}
                   size={'small'}
                   disabled={followBtnDisabled}
+                  loading={followLoading}
                   onClick={onFollow}
                 >
-                  {followLoading ? (
-                    <PeaLoadingSpinner size={20} style={{ margin: 0 }} />
-                  ) : (
-                    followBtnText
-                  )}
+                  {followBtnText}
                 </PeaButton>
               )}
             </Grid>
@@ -246,11 +265,13 @@ const PeaAccountProfile = ({
                     Invite
                   </PeaButton>
                 </Grid>
+
                 <Grid item>
                   <PeaButton icon={'email'} size={'small'} shape={'circular'}>
                     message
                   </PeaButton>
                 </Grid>
+
                 <Grid item>
                   <PeaButton
                     icon={'more_vert'}
@@ -291,6 +312,7 @@ const PeaAccountProfile = ({
         </PeaText>
 
         <PeaText gutterBottom>{`@${userName}`}</PeaText>
+        {isFollower && <PeaText gutterBottom>{'follows you'}</PeaText>}
         <br />
 
         <Grid container wrap={'nowrap'} spacing={1}>
@@ -475,8 +497,11 @@ PeaAccountProfile.propTypes = {
   onInvitePod: PropTypes.func.isRequired,
   onInviteGroup: PropTypes.func.isRequired,
   onInviteClicked: PropTypes.func.isRequired,
+  onAcceptFollowRequest: PropTypes.func.isRequired,
   invitingIds: PropTypes.object,
   invitedIds: PropTypes.object,
+  followerState: PropTypes.string,
+  acceptFollowLoading: PropTypes.bool,
 };
 
 PeaAccountProfile.defaultProps = {
@@ -485,9 +510,9 @@ PeaAccountProfile.defaultProps = {
   bio: '',
   location: undefined,
   locationInput: undefined,
-  birthday: '',
-  age: 'unknown',
-  gender: '',
+  birthday: undefined,
+  age: undefined,
+  gender: undefined,
   groups: [],
   pods: [],
   groupsOfCurrentUser: [],
@@ -496,7 +521,7 @@ PeaAccountProfile.defaultProps = {
   podsCount: 0,
   isCurrentUser: false,
   email: '',
-  phoneNumber: '',
+  phoneNumber: undefined,
   followersCount: 0,
   followingCount: 0,
   isPrivate: false,
@@ -518,6 +543,8 @@ PeaAccountProfile.defaultProps = {
   onReport: () => {},
   invitingIds: {},
   invitedIds: {},
+  followerState: undefined,
+  acceptFollowLoading: false,
 };
 
 PeaAccountProfile.metadata = {

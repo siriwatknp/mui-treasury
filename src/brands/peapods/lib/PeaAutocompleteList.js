@@ -187,6 +187,7 @@ const PeaAutocompleteList = ({
   value: propValue,
   removeSpacing,
   menuPlacement,
+  autoFocus,
 }) => {
   const classes = useStyles({ removeSpacing, isUpsideDown: true });
   const theme = useTheme();
@@ -289,7 +290,7 @@ const PeaAutocompleteList = ({
         styles={selectStyles}
         inputId="react-select-single"
         placeholder={placeholder}
-        autoFocus
+        autoFocus={autoFocus}
         value={value}
         inputValue={inputValue.length ? inputValue : undefined}
         isClearable
@@ -330,6 +331,7 @@ PeaAutocompleteList.defaultProps = {
   OptionComponent: Option,
   removeSpacing: false,
   menuPlacement: 'auto',
+  autoFocus: false,
 };
 
 PeaAutocompleteList.propTypes = {
@@ -355,6 +357,7 @@ PeaAutocompleteList.propTypes = {
   clearAfterEnter: PropTypes.bool,
   removeSpacing: PropTypes.bool,
   menuPlacement: PropTypes.string,
+  autoFocus: PropTypes.bool,
 };
 
 PeaAutocompleteList.metadata = {
