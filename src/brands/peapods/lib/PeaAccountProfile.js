@@ -381,22 +381,24 @@ const PeaAccountProfile = ({
       {index === 2 && (
         <Box minHeight={500} style={{ position: 'relative' }}>
           {groupList}
-          <PeaIcon
-            icon={'add'}
-            bgColor={'lightPrimary'}
-            size={'big'}
-            inverted
-            style={{
-              position: 'absolute',
-              bottom: '20px',
-              right: '20px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              cursor: 'pointer',
-            }}
-            onClick={onCreateGroupClicked}
-          />
+          {isCurrentUser && (
+            <PeaIcon
+              icon={'add'}
+              bgColor={'lightPrimary'}
+              size={'big'}
+              inverted
+              style={{
+                position: 'absolute',
+                bottom: '20px',
+                right: '20px',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                cursor: 'pointer',
+              }}
+              onClick={onCreateGroupClicked}
+            />
+          )}
         </Box>
       )}
 
@@ -459,8 +461,6 @@ PeaAccountProfile.propTypes = {
   editing: PropTypes.bool,
   isUpdating: PropTypes.bool,
   isDeleting: PropTypes.bool,
-  isInvitingInfo: PropTypes.object,
-  invitedInfo: PropTypes.object,
   followLoading: PropTypes.bool,
   currentUserFollowing: PropTypes.string,
   onSubmit: PropTypes.func,
@@ -469,7 +469,6 @@ PeaAccountProfile.propTypes = {
   onChangeProfilePhotosClicked: PropTypes.func.isRequired,
   deleteProfile: PropTypes.func,
   onCreateGroupClicked: PropTypes.func,
-  onInvite: PropTypes.func,
   onFollow: PropTypes.func,
   onReport: PropTypes.func,
   onInvitePod: PropTypes.func.isRequired,
@@ -504,8 +503,6 @@ PeaAccountProfile.defaultProps = {
   isUpdating: false,
   isDeleting: false,
   groupList: undefined,
-  isInvitingInfo: {},
-  invitedInfo: {},
   followLoading: false,
   currentUserFollowing: undefined,
   podList: undefined,
@@ -513,7 +510,6 @@ PeaAccountProfile.defaultProps = {
   setEditing: () => {},
   deleteProfile: () => {},
   onCreateGroupClicked: () => {},
-  onInvite: () => {},
   onFollow: () => {},
   onReport: () => {},
   invitingIds: {},
