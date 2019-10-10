@@ -69,6 +69,11 @@ export default {
           label: 'Grid',
           to: '/components/grid',
         },
+        {
+          key: 'group',
+          label: 'Group',
+          to: '/components/group',
+        },
         { key: 'shadow', label: 'Shadow', to: '/components/shadow' },
         { key: 'tabs', label: 'Tabs', to: '/components/tabs' },
         // { key: 'arrow', label: 'Arrow' },
