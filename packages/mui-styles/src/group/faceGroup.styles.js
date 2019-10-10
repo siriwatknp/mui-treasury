@@ -1,5 +1,5 @@
 export default () => ({
-  item: ({ size = 48, offset = -8 }) => ({
+  item: ({ size, offset = -8 }) => ({
     width: size,
     height: size,
     display: 'inline-block',

@@ -16,8 +16,8 @@ Faces.propTypes = {
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 Faces.defaultProps = {
-  offset: -8, // spacing unit
-  size: 48, // spacing unit
+  offset: undefined, // spacing unit
+  size: undefined, // spacing unit
 };
 
 export default Faces;
