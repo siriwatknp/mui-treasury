@@ -67,7 +67,7 @@ const PostCard = () => {
 // hide-start
 PostCard.metadata = {
   title: 'Post',
-  path: 'cardMedia/post',
+  path: 'card/post',
   files: [],
 };
 // hide-end
