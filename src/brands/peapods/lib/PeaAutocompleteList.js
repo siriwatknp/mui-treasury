@@ -9,7 +9,6 @@ import cx from 'clsx';
 import { uniqBy } from 'lodash';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
 import PropTypes from 'prop-types';
 
@@ -35,8 +34,11 @@ const useStyles = makeStyles(theme => ({
     flex: 1,
     alignItems: 'center',
     overflow: 'hidden',
-    minHeight: 36,
     marginLeft: props => (props.removeSpacing ? 0 : 10),
+    '& > div': {
+      margin: 0,
+      padding: 0,
+    },
   },
   noOptionsMessage: {
     padding: theme.spacing(1, 2),
@@ -168,26 +170,6 @@ ValueContainer.propTypes = {
   selectProps: PropTypes.object.isRequired,
 };
 
-function Menu({ innerProps, children, selectProps }) {
-  return (
-    <Paper square className={selectProps.classes.paper} {...innerProps}>
-      {children}
-    </Paper>
-  );
-}
-
-Menu.defaultProps = {
-  children: null,
-  innerProps: null,
-  selectProps: null,
-};
-
-Menu.propTypes = {
-  children: PropTypes.node,
-  innerProps: PropTypes.object,
-  selectProps: PropTypes.object,
-};
-
 const PeaAutocompleteList = ({
   label,
   noOptionsMessage,
@@ -204,8 +186,10 @@ const PeaAutocompleteList = ({
   clearAfterEnter,
   value: propValue,
   removeSpacing,
+  menuPlacement,
+  autoFocus,
 }) => {
-  const classes = useStyles({ removeSpacing });
+  const classes = useStyles({ removeSpacing, isUpsideDown: true });
   const theme = useTheme();
   const [value, setValue] = useState(propValue);
   const [inputValue, setInputValue] = useState('');
@@ -237,7 +221,6 @@ const PeaAutocompleteList = ({
   };
 
   const components = {
-    Menu,
     NoOptionsMessage,
     Option: OptionComponent,
     MultiValue,
@@ -307,7 +290,7 @@ const PeaAutocompleteList = ({
         styles={selectStyles}
         inputId="react-select-single"
         placeholder={placeholder}
-        autoFocus
+        autoFocus={autoFocus}
         value={value}
         inputValue={inputValue.length ? inputValue : undefined}
         isClearable
@@ -319,6 +302,8 @@ const PeaAutocompleteList = ({
         onChange={handleSelectChange}
         onBlur={onBlur}
         isMulti={isMulti}
+        menuShouldScrollIntoView
+        menuPlacement={menuPlacement}
         TextFieldProps={{
           label,
         }}
@@ -345,6 +330,8 @@ PeaAutocompleteList.defaultProps = {
   InputControl: PeaSearchInputControl,
   OptionComponent: Option,
   removeSpacing: false,
+  menuPlacement: 'auto',
+  autoFocus: false,
 };
 
 PeaAutocompleteList.propTypes = {
@@ -369,6 +356,8 @@ PeaAutocompleteList.propTypes = {
   hideSuggestions: PropTypes.bool,
   clearAfterEnter: PropTypes.bool,
   removeSpacing: PropTypes.bool,
+  menuPlacement: PropTypes.string,
+  autoFocus: PropTypes.bool,
 };
 
 PeaAutocompleteList.metadata = {

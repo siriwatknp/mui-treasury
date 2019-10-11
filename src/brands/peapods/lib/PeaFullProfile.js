@@ -1,3 +1,5 @@
+/* eslint-disable react/forbid-prop-types */
+
 import Tab from '@material-ui/core/Tab/Tab';
 import Tabs from '@material-ui/core/Tabs/Tabs';
 import React, { useState } from 'react';
@@ -14,6 +16,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
+
 import PeaButton from './PeaButton';
 import PeaIcon from './PeaIcon';
 import PeaAvatar from './PeaAvatar';
@@ -47,7 +50,12 @@ const PeaFullProfile = ({
   followed,
   blockedMe,
   blocked,
-  onInvite,
+  loadingInviteList,
+  onInviteClicked,
+  onInvitePod,
+  onInviteGroup,
+  invitingIds,
+  invitedIds,
   onFollow,
   onBlock,
   onReport,
@@ -59,6 +67,13 @@ const PeaFullProfile = ({
   const [openBlockToast, setOpenBlockToast] = useState(false);
   const [openInviteDialog, setOpenInviteDialog] = useState(false);
   const open = Boolean(anchorEl);
+
+  const onInvite = () => {
+    if (onInviteClicked) {
+      onInviteClicked();
+    }
+    setOpenInviteDialog(true);
+  };
 
   if (editing) {
     return (
@@ -76,6 +91,7 @@ const PeaFullProfile = ({
       />
     );
   }
+
   const renderMenu = () => (
     <Menu
       id="long-menu"
@@ -281,7 +297,7 @@ const PeaFullProfile = ({
                           color={'primary'}
                           size={'small'}
                           disabled={invited}
-                          onClick={() => setOpenInviteDialog(true)}
+                          onClick={onInvite}
                         >
                           Invite
                         </PeaButton>
@@ -381,6 +397,7 @@ const PeaFullProfile = ({
             </>
           )}
         </CardContent>
+
         {blockedMe ? (
           <Box mt={1} mb={10} maxWidth={400} margin={'auto'}>
             <PeaText
@@ -400,6 +417,7 @@ const PeaFullProfile = ({
           renderTabs()
         )}
       </Card>
+
       <PeaConfirmation
         title={`Block ${tag}`}
         content={`${tag} won't be able to see your profile information, ${' '}
@@ -412,6 +430,7 @@ const PeaFullProfile = ({
           onBlock();
         }}
       />
+
       <PeaToast
         message={`${tag} has been blocked`}
         open={openBlockToast}
@@ -419,13 +438,16 @@ const PeaFullProfile = ({
         variant={'success'}
         position={{ horizontal: 'center', vertical: 'top' }}
       />
+
       <PeaInvitationDialog
         person={tag}
         pods={pods}
-        onInvite={pod => {
-          onInvite(pod);
-          setOpenInviteDialog(false);
-        }}
+        loading={loadingInviteList}
+        groups={groups}
+        onInvitePod={onInvitePod}
+        onInviteGroup={onInviteGroup}
+        invitingIds={invitingIds}
+        invitedIds={invitedIds}
         open={openInviteDialog}
         onClose={() => setOpenInviteDialog(false)}
       />
@@ -434,6 +456,12 @@ const PeaFullProfile = ({
 };
 
 PeaFullProfile.propTypes = {
+  loadingInviteList: PropTypes.bool,
+  onInvitePod: PropTypes.func.isRequired,
+  onInviteGroup: PropTypes.func.isRequired,
+  invitingIds: PropTypes.object,
+  invitedIds: PropTypes.object,
+  onInviteClicked: PropTypes.func,
   image: PropTypes.string.isRequired,
   cover: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
@@ -462,11 +490,11 @@ PeaFullProfile.propTypes = {
   followed: PropTypes.bool,
   blockedMe: PropTypes.bool,
   blocked: PropTypes.bool,
-  onInvite: PropTypes.func,
   onFollow: PropTypes.func,
   onBlock: PropTypes.func,
   onReport: PropTypes.func,
 };
+
 PeaFullProfile.defaultProps = {
   tag: '',
   site: '',
@@ -484,14 +512,19 @@ PeaFullProfile.defaultProps = {
   followed: false,
   blockedMe: false,
   blocked: false,
-  onInvite: () => {},
   onFollow: () => {},
   onBlock: () => {},
   onReport: () => {},
+  invitingIds: {},
+  invitedIds: {},
+  onInviteClicked: () => {},
+  loadingInviteList: false,
 };
+
 PeaFullProfile.metadata = {
   name: 'Pea FullProfile',
 };
+
 PeaFullProfile.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 
 export default PeaFullProfile;
