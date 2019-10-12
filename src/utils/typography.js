@@ -19,6 +19,9 @@ typographyTheme.overrideThemeStyles = () => {
     'a.gatsby-resp-image-link': {
       boxShadow: `none`,
     },
+    img: {
+      margin: 'initial',
+    },
   };
 };
 typographyTheme.headerLineHeight = 1.45;
