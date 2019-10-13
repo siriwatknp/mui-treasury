@@ -5,9 +5,9 @@ import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Avatar from '@material-ui/core/Avatar';
-import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 import { useFadedShadowStyles } from '@mui-treasury/styles/shadow';
+import { useGutterBorderedGridStyles } from '@mui-treasury/styles/grid';
 import MOCK from 'constants/mock';
 
 const useStyles = makeStyles(({ palette }) => ({
@@ -52,6 +52,10 @@ const useStyles = makeStyles(({ palette }) => ({
 const ProfileCard = () => {
   const styles = useStyles();
   const shadowStyles = useFadedShadowStyles();
+  const borderedGridStyles = useGutterBorderedGridStyles({
+    borderColor: 'rgba(0, 0, 0, 0.08)',
+    height: '50%',
+  });
   return (
     <Card className={cx(styles.card, shadowStyles.root)}>
       <CardContent>
@@ -60,20 +64,16 @@ const ProfileCard = () => {
         <span className={styles.subheader}>Poland</span>
       </CardContent>
       <Divider light />
-      <Grid container>
-        <Grid item xs={6}>
-          <Box p={2}>
-            <p className={styles.statLabel}>Followers</p>
-            <p className={styles.statValue}>6941</p>
-          </Box>
-        </Grid>
-        <Grid item xs={6}>
-          <Box p={2}>
-            <p className={styles.statLabel}>Following</p>
-            <p className={styles.statValue}>12</p>
-          </Box>
-        </Grid>
-      </Grid>
+      <Box display={'flex'}>
+        <Box p={2} flex={'auto'} className={borderedGridStyles.item}>
+          <p className={styles.statLabel}>Followers</p>
+          <p className={styles.statValue}>6941</p>
+        </Box>
+        <Box p={2} flex={'auto'} className={borderedGridStyles.item}>
+          <p className={styles.statLabel}>Following</p>
+          <p className={styles.statValue}>12</p>
+        </Box>
+      </Box>
     </Card>
   );
 };

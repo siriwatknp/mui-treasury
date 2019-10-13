@@ -8,7 +8,7 @@ const FullBorderedGrid = () => {
   const borderColor = 'primary.main';
   const styles = useFullBorderedGridStyles({ borderColor });
   return (
-    <Box width={'80%'}>
+    <Box width={{ xs: '100%', md: '80%' }}>
       <Grid container classes={styles}>
         {Array(6)
           .fill(0)

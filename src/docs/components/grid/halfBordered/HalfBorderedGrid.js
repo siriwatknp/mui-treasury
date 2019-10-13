@@ -8,7 +8,7 @@ const HalfBorderedGrid = () => {
   const borderColor = 'secondary.main';
   const styles = useHalfBorderedGridStyles({ borderColor, colWidth });
   return (
-    <Box width={'80%'}>
+    <Box width={{ xs: '100%', md: '80%' }}>
       <Grid container classes={styles}>
         {Array(6)
           .fill(0)
