@@ -5,7 +5,12 @@ import { useGraphicBtnStyles } from '@mui-treasury/styles';
 const GraphicBtn = () => {
   const styles = useGraphicBtnStyles();
   return (
-    <Button classes={styles} variant={'contained'} color={'primary'}>
+    <Button
+      classes={styles}
+      variant={'contained'}
+      color={'primary'}
+      disableRipple
+    >
       Graphic
     </Button>
   );

@@ -1,4 +1,5 @@
 import React from 'react';
+import partition from 'lodash/partition';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -13,10 +14,22 @@ const CustomComponentGrid = ({
   getItemProps,
   noHeader,
 }) => {
+  const longColWidth = {
+    xs: 12,
+    lg: 6,
+  };
+  const longGridStyles = useHalfBorderedGridStyles({
+    borderColor: '#e9e9e9',
+    colWidth: longColWidth,
+  });
   const multiRowGridStyles = useHalfBorderedGridStyles({
     borderColor: '#e9e9e9',
     colWidth,
   });
+  const [longComponents, shortComponents] = partition(
+    components,
+    o => o.metadata.long
+  );
   return (
     <Box
       py={{ xs: '2rem', sm: '3rem', md: '4rem' }}
@@ -28,8 +41,7 @@ const CustomComponentGrid = ({
         </Box>
       )}
       <Grid container classes={multiRowGridStyles}>
-        {components.map(Component => {
-          if (Component.isDefault) return null;
+        {shortComponents.map(Component => {
           const { ShowcaseWidgetProps } = getItemProps(Component);
           const {
             title: name = Component.name,
@@ -49,6 +61,36 @@ const CustomComponentGrid = ({
           );
         })}
       </Grid>
+      {longComponents.length > 0 && (
+        <Box mt={'-1px'}>
+          <Grid container classes={longGridStyles}>
+            {longComponents.map(Component => {
+              const {
+                title: name = Component.name,
+                description,
+              } = Component.metadata;
+              return (
+                <Grid
+                  key={name}
+                  item
+                  {...longColWidth}
+                  classes={longGridStyles}
+                >
+                  <ShowcaseWidget
+                    pt={3}
+                    px={4}
+                    description={description}
+                    name={name}
+                    height={'100%'}
+                  >
+                    <Component />
+                  </ShowcaseWidget>
+                </Grid>
+              );
+            })}
+          </Grid>
+        </Box>
+      )}
     </Box>
   );
 };

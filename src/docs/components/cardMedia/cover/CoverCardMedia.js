@@ -13,8 +13,8 @@ const CoverCardMedia = () => {
         classes={styles}
       />
       <Box position={'relative'}>
-        <h3 style={{ color: '#fff' }}>Placeholder</h3>
-        <p style={{ color: '#fff' }}>To show that the image is a cover.</p>
+        <h3>Placeholder</h3>
+        <p>To show that the image is a cover.</p>
       </Box>
     </Box>
   );

@@ -36,7 +36,7 @@ const useStyles = makeStyles(({ breakpoints, spacing }) => ({
     marginRight: 'auto',
     marginTop: spacing(-3),
     height: 0,
-    paddingBottom: '56.25%',
+    paddingBottom: '48%',
     borderRadius: spacing(2),
     backgroundColor: '#fff',
     position: 'relative',
@@ -97,6 +97,7 @@ BlogCard.metadata = {
   title: 'Blog',
   description: 'Personal Blog',
   path: 'card/blog',
+  long: true,
   files: [
     { pkg: 'mui-styles', path: 'shadow/over/overShadow.styles.js' },
     {
