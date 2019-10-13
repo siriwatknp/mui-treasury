@@ -43,6 +43,7 @@ const DemoComponents = ({
             )}
             <CustomComponentGrid
               noHeader={noDefaultSection}
+              setComponent={setComponent}
               components={customComponents}
               colWidth={colWidth}
               getItemProps={Component => ({
