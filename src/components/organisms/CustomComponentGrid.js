@@ -13,6 +13,7 @@ const CustomComponentGrid = ({
   components,
   getItemProps,
   noHeader,
+  setComponent,
 }) => {
   const longColWidth = {
     xs: 12,
@@ -45,12 +46,14 @@ const CustomComponentGrid = ({
           const { ShowcaseWidgetProps } = getItemProps(Component);
           const {
             title: name = Component.name,
+            frame,
             description,
           } = Component.metadata;
           return (
             <Grid key={name} item {...colWidth} classes={multiRowGridStyles}>
               <ShowcaseWidget
                 {...ShowcaseWidgetProps}
+                frameProps={frame}
                 description={description}
                 name={name}
                 height={'100%'}
@@ -67,6 +70,7 @@ const CustomComponentGrid = ({
             {longComponents.map(Component => {
               const {
                 title: name = Component.name,
+                frame,
                 description,
               } = Component.metadata;
               return (
@@ -79,9 +83,11 @@ const CustomComponentGrid = ({
                   <ShowcaseWidget
                     pt={3}
                     px={4}
+                    frameProps={frame}
                     description={description}
                     name={name}
                     height={'100%'}
+                    onClickCode={() => setComponent(Component)}
                   >
                     <Component />
                   </ShowcaseWidget>
