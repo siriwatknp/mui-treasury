@@ -10,7 +10,7 @@ const BouncyShadow = () => {
 // hide-start
 BouncyShadow.metadata = {
   title: 'Bouncy',
-  description: 'No bug, just hover on it',
+  description: 'Not a bug, just hover it',
   path: 'shadow/faded',
   files: [{ pkg: 'mui-styles', path: 'shadow/faded/fadedShadow.styles.js' }],
 };
