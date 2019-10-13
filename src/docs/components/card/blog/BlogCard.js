@@ -17,7 +17,7 @@ const useStyles = makeStyles(({ breakpoints, spacing }) => ({
     transition: '0.3s',
     boxShadow: '0px 14px 80px rgba(34, 35, 58, 0.2)',
     position: 'relative',
-    maxWidth: 800,
+    maxWidth: 500,
     marginLeft: 'auto',
     overflow: 'initial',
     background: '#ffffff',
@@ -98,19 +98,15 @@ BlogCard.metadata = {
   description: 'Personal Blog',
   path: 'card/blog',
   files: [
-    // { pkg: 'mui-styles', path: 'shadow/bouncy/bouncy.styles.js' },
-    // {
-    //   pkg: 'mui-styles',
-    //   path: 'cardMedia/wide/wideCardMedia.styles.js',
-    // },
-    // {
-    //   pkg: 'mui-components',
-    //   path: 'cardContent/textInfo/TextInfoCardContent.js',
-    // },
-    // {
-    //   pkg: 'mui-styles',
-    //   path: 'cardContent/text01/textCardContent01.styles.js',
-    // },
+    { pkg: 'mui-styles', path: 'shadow/over/overShadow.styles.js' },
+    {
+      pkg: 'mui-components',
+      path: 'cardContent/textInfo/TextInfoCardContent.js',
+    },
+    {
+      pkg: 'mui-styles',
+      path: 'cardContent/blog/blogCardContent.styles.js',
+    },
   ],
 };
 // hide-end

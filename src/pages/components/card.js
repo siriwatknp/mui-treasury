@@ -14,6 +14,7 @@ const CardPage = () => (
     DemoSourceDrawerProps={{
       frameProps: {
         p: 2,
+        minWidth: 400,
       },
     }}
   />

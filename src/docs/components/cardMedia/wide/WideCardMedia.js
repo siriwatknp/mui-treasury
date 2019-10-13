@@ -1,15 +1,14 @@
 import React from 'react';
 import CardMedia from '@material-ui/core/CardMedia';
 import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia';
-import MOCK from 'constants/mock';
 
 const WideCardMedia = () => {
   const styles = useWideCardMediaStyles();
   return (
     <CardMedia
       // component={'img'} // add this line to use <img />
+      // image={"src"}
       classes={styles}
-      image={MOCK.img}
     />
   );
 };

@@ -21,4 +21,5 @@ export default {
     'https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80',
   gitImg:
     'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Git_icon.svg/2000px-Git_icon.svg.png',
+  trophyImg: 'https://jkkm.info/ui/images/awards/victory.png',
 };
