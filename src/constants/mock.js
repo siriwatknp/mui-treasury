@@ -22,4 +22,6 @@ export default {
   gitImg:
     'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Git_icon.svg/2000px-Git_icon.svg.png',
   trophyImg: 'https://jkkm.info/ui/images/awards/victory.png',
+  prangImg:
+    'https://www.brighttv.co.th/wp-content/uploads/2018/04/29739332_996623360491913_2322116227981377536_n.jpg',
 };
