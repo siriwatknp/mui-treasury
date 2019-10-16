@@ -27,6 +27,7 @@ const FullBorderedGrid = () => {
 FullBorderedGrid.metadata = {
   title: 'Full Bordered',
   path: 'grid/fullBordered',
+  longFrame: true,
   files: [
     { pkg: 'mui-styles', path: 'grid/fullBordered/fullBorderedGrid.styles.js' },
   ],

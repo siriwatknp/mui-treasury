@@ -89,7 +89,12 @@ const DemoSourceDrawer = ({ title, frameProps }) => {
       {({ Component, setComponent }) => {
         const { metadata = {} } = Component;
         const isOpen = Object.keys(metadata).length > 0;
-        const { files = [], relates = [] } = metadata;
+        const {
+          files = [],
+          relates = [],
+          frameProps: finalFrameProps = {},
+          longFrame,
+        } = metadata;
         const mappedFiles = docGen().mapAllFiles(files);
         return (
           <>
@@ -137,7 +142,7 @@ const DemoSourceDrawer = ({ title, frameProps }) => {
                     position={'fixed'}
                     top={'50%'}
                     left={'calc(50% - 350px)'}
-                    minWidth={320}
+                    minWidth={400}
                     maxWidth={400}
                     minHeight={300}
                     display={'flex'}
@@ -147,11 +152,16 @@ const DemoSourceDrawer = ({ title, frameProps }) => {
                     bgcolor={'common.white'}
                     zIndex={1500}
                     {...frameProps}
+                    {...(longFrame && {
+                      minHeight: 400,
+                      minWidth: 700,
+                      px: 8,
+                    })}
+                    {...finalFrameProps}
                     css={{
                       transform: 'translate(-50%, -50%)',
-                      // boxShadow:
-                      //   '0 15px 25px rgba(0,0,0,0.3), 0 5px 10px rgba(0,0,0,0.2)',
                       ...frameProps.css,
+                      ...finalFrameProps.css,
                     }}
                   >
                     <ThemeProvider theme={baseTheme}>

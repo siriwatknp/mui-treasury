@@ -97,7 +97,10 @@ BlogCard.metadata = {
   title: 'Blog',
   description: 'Personal Blog',
   path: 'card/blog',
-  long: true,
+  longFrame: true,
+  frameProps: {
+    my: 3,
+  },
   files: [
     { pkg: 'mui-styles', path: 'shadow/over/overShadow.styles.js' },
     {

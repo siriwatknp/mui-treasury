@@ -86,7 +86,7 @@ KanbanCard.metadata = {
   title: 'Kanban',
   description: 'Project management system',
   path: 'card/kanban',
-  frame: {
+  frameProps: {
     bgcolor: 'rgb(245, 248, 250)',
   },
   files: [],

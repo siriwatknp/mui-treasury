@@ -26,6 +26,7 @@ const TwitterTabs = () => {
 TwitterTabs.metadata = {
   title: 'Twitter',
   path: 'tabs/twitter',
+  longFrame: true,
   files: [{ pkg: 'mui-styles', path: 'tabs/twitter/twitterTabs.styles.js' }],
 };
 // hide-end

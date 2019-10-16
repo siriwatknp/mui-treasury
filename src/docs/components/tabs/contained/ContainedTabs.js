@@ -25,6 +25,7 @@ const ContainedTabs = () => {
 ContainedTabs.metadata = {
   title: 'Contained',
   path: 'tabs/contained',
+  longFrame: true,
   files: [
     { pkg: 'mui-styles', path: 'tabs/contained/containedTabs.styles.js' },
   ],

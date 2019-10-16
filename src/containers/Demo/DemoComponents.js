@@ -14,16 +14,8 @@ const DemoComponents = ({
   componentImage,
   customComponents,
   DefaultComponent,
-  GridItemProps,
   ShowcaseWidgetProps,
 }) => {
-  const colWidth = {
-    xs: 12,
-    sm: 6,
-    md: 6,
-    lg: 4,
-    ...GridItemProps,
-  };
   return (
     <MetadataContext.Consumer>
       {({ setComponent }) => {
@@ -45,10 +37,7 @@ const DemoComponents = ({
               noHeader={noDefaultSection}
               setComponent={setComponent}
               components={customComponents}
-              colWidth={colWidth}
-              getItemProps={Component => ({
-                ShowcaseWidgetProps: getShowcaseProps(Component),
-              })}
+              ShowcaseWidgetProps={ShowcaseWidgetProps}
             />
           </ThemeProvider>
         );
