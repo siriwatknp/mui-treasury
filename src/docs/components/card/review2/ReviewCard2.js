@@ -28,8 +28,7 @@ const useStyles = makeStyles(({ spacing, palette }) => ({
     boxShadow: '0 2px 8px 0 #c1c9d7, 0 -2px 8px 0 #cce1e9',
   },
   rating: {
-    marginLeft: spacing(1.5),
-    verticalAlign: 'text-bottom',
+    verticalAlign: 'text-top',
   },
   content: {
     padding: spacing(0, 2, 0, 0),
@@ -39,7 +38,8 @@ const useStyles = makeStyles(({ spacing, palette }) => ({
     fontWeight: 'bold',
     color: 'rbga(0,0,0,0.7)',
     letterSpacing: '0.5px',
-    marginBottom: 2,
+    marginRight: spacing(1.5),
+    display: 'inline-block',
   },
   body: {
     fontSize: 14,
@@ -72,11 +72,9 @@ const ReviewCard2 = () => {
   return (
     <Card className={styles.card} elevation={0}>
       <CardContent className={styles.content}>
-        <Box display={'flex'} mb={1} alignItems={'center'}>
-          <h3 className={styles.heading}>
-            Aegen magazines{' '}
-            <Rating value={2} className={styles.rating} size={'small'} />
-          </h3>
+        <Box mb={1}>
+          <h3 className={styles.heading}>Aegen magazines </h3>
+          <Rating value={2} className={styles.rating} size={'small'} />
         </Box>
         <p className={styles.body}>
           Lorem ipsum is placeholder text commonly used in the graphic, print,
@@ -112,8 +110,8 @@ const ReviewCard2 = () => {
 ReviewCard2.metadata = {
   title: 'Review II',
   path: 'card/review2',
-  long: true,
-  frame: {
+  longFrame: true,
+  frameProps: {
     bgcolor: 'rgb(245, 248, 250)',
   },
   files: [

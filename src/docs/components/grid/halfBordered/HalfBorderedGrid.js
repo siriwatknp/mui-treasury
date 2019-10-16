@@ -27,6 +27,7 @@ const HalfBorderedGrid = () => {
 HalfBorderedGrid.metadata = {
   title: 'Half Bordered',
   path: 'grid/halfBordered',
+  longFrame: true,
   files: [
     { pkg: 'mui-styles', path: 'grid/halfBordered/halfBorderedGrid.styles.js' },
   ],

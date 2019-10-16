@@ -45,13 +45,9 @@ const TabsPage = () => (
           </Grid>
         </Grid>
       ),
-      GridItemProps: {
-        sm: 12,
-        lg: 6,
-      },
       ShowcaseWidgetProps: {
         frameProps: {
-          maxWidth: 600,
+          maxWidth: 700,
           mx: 'auto',
         },
       },
@@ -61,7 +57,7 @@ const TabsPage = () => (
     DemoSourceDrawerProps={{
       frameProps: {
         p: 2,
-        maxWidth: 600,
+        maxWidth: 700,
       },
     }}
   />
