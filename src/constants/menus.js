@@ -13,56 +13,36 @@ export default {
     { key: 'theme', label: 'Theme', disabled: true },
   ],
   [PKG.components]: [
-    // {
-    //   key: 'readme',
-    //   label: 'README',
-    //   subMenus: [
-    //     {
-    //       key: 'instruction',
-    //       label: 'Instruction',
-    //       to: '/components/instruction',
-    //     },
-    //     {
-    //       key: 'instruction',
-    //       label: 'Instruction',
-    //       to: '/components/instruction',
-    //     },
-    //   ],
-    // },
-    // {
-    //   key: 'instruction',
-    //   label: 'INSTRUCTION',
-    //   to: '/components/instruction',
-    // },
     {
       key: 'basic',
       label: 'BASIC (5)',
       subMenus: [
+        { key: 'arrow', label: 'Arrow', to: '/components/arrow' },
         { key: 'button', label: 'Button', to: '/components/button' },
         {
           key: 'cardContent',
           label: 'Card Content',
-          to: '/components/cardContent',
+          to: '/components/card-content',
         },
         {
           key: 'cardFooter',
           label: 'Card Footer',
-          to: '/components/cardFooter',
+          to: '/components/card-footer',
         },
         {
           key: 'cardHeader',
           label: 'Card Header',
-          to: '/components/cardHeader',
+          to: '/components/card-header',
         },
         {
           key: 'cardMedia',
           label: 'Card Media',
-          to: '/components/cardMedia',
+          to: '/components/card-media',
         },
         {
           key: 'chatMsg',
           label: 'Chat Message',
-          to: '/components/chatMsg',
+          to: '/components/chat-msg',
         },
         {
           key: 'grid',
@@ -74,12 +54,12 @@ export default {
           label: 'Group',
           to: '/components/group',
         },
+        { key: 'input', label: 'Input', to: '/components/input' },
+        { key: 'indicator', label: 'Indicator', to: '/components/indicator' },
+        { key: 'slide', label: 'Slide', to: '/components/slide' },
         { key: 'shadow', label: 'Shadow', to: '/components/shadow' },
         { key: 'tabs', label: 'Tabs', to: '/components/tabs' },
-        // { key: 'arrow', label: 'Arrow' },
-        // { key: 'input', label: 'Input' },
-        // { key: 'indicator', label: 'Indicator' },
-        // { key: 'slide', label: 'Slide' },
+        { key: 'tag', label: 'Tag', to: '/components/tag' },
       ],
     },
     {
@@ -90,14 +70,9 @@ export default {
           key: 'card',
           label: 'Card',
           to: '/components/card',
-          // subMenus: [
-          //   { key: 'postCard', label: 'Post Card' },
-          //   { key: 'reviewCard', label: 'Review Card' },
-          //   { key: 'project', label: 'Project Card' },
-          // ],
         },
-        // { key: 'carousel', label: 'Carousel' },
-        // { key: 'textField', label: 'TextField' },
+        { key: 'carousel', label: 'Carousel', to: '/components/carousel' },
+        { key: 'textField', label: 'TextField', to: '/components/text-field' },
       ],
     },
   ],
