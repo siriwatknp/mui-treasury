@@ -42,13 +42,6 @@
     "build-storybook": "NODE_ENV=production build-storybook -s public"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.25",
-    "@fortawesome/free-brands-svg-icons": "^5.11.2",
-    "@fortawesome/pro-duotone-svg-icons": "^5.11.2",
-    "@fortawesome/pro-light-svg-icons": "^5.11.2",
-    "@fortawesome/pro-regular-svg-icons": "^5.11.2",
-    "@fortawesome/pro-solid-svg-icons": "^5.11.2",
-    "@fortawesome/react-fontawesome": "^0.1.5",
     "@material-ui/core": "^4.3.2",
     "@material-ui/icons": "^4.2.1",
     "@material-ui/lab": "^4.0.0-alpha.26",

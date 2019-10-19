@@ -7,7 +7,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import organisms from 'components/organisms';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FeatureWidget } from '@mui-treasury/components';
 import {
   useFullBorderedGridStyles,
@@ -136,6 +136,7 @@ const Homepage = ({ navigate }) => {
         subtitle={'Here is my purposes'}
       />
       <Grid container>
+        {/* eslint-disable-next-line no-unused-vars */}
         {purposes.map(({ icon, title, content }) => (
           <Grid
             classes={featureGridStyles}
@@ -147,9 +148,9 @@ const Homepage = ({ navigate }) => {
               classes={widgetStyles}
               title={title}
               content={content}
-              renderIcon={({ className }) => (
-                <FontAwesomeIcon icon={icon} className={className} />
-              )}
+              // renderIcon={({ className }) => (
+              //   <FontAwesomeIcon icon={icon} className={className} />
+              // )}
             />
           </Grid>
         ))}
@@ -199,14 +200,15 @@ const Homepage = ({ navigate }) => {
           </Box>
           <p />
           <Grid container classes={socialGridStyles}>
+            {/* eslint-disable-next-line no-unused-vars */}
             {socials.map(({ icon, title, children }) => (
               <Grid classes={socialGridStyles} item key={title} xs={12} sm={6}>
                 <FeatureWidget
                   classes={widgetStyles}
                   content={title}
-                  renderIcon={({ className }) => (
-                    <FontAwesomeIcon icon={icon} className={className} />
-                  )}
+                  // renderIcon={({ className }) => (
+                  //   <FontAwesomeIcon icon={icon} className={className} />
+                  // )}
                 >
                   <Box textAlign={'center'}>{children}</Box>
                 </FeatureWidget>
