@@ -19,6 +19,7 @@ import theme from './theme';
 const { primary, secondary, common, grey, error } = theme.palette;
 
 const defaultConfig = {
+  multiple: false,
   styles: {
     palette: {
       tabIcon: secondary.dark,
@@ -47,9 +48,20 @@ const defaultConfig = {
 };
 
 class MediaUploader extends Component {
+  static getDerivedStateFromProps(props, state) {
+    if (props.isVisible && !state.isInitialized) {
+      return {
+        ...state,
+        isInitialized: true,
+      };
+    }
+    return state;
+  }
+
   constructor(props) {
     super(props);
     this.state = {
+      isInitialized: false,
       isScriptLoaded: false,
       scriptLoadFailed: false,
     };
@@ -63,14 +75,14 @@ class MediaUploader extends Component {
   }
 
   onScriptLoadSuccess = () => {
-    this.setState({
-      isScriptLoaded: true,
-    });
-
     this.cloudinaryWidget = window.cloudinary.createUploadWidget(
       this.getConfig(),
       this.onWidgetEvent,
     );
+
+    this.setState({
+      isScriptLoaded: true,
+    });
   };
 
   onScriptLoadFailed = () => {
@@ -107,7 +119,7 @@ class MediaUploader extends Component {
   };
 
   render() {
-    const { isScriptLoaded, scriptLoadFailed } = this.state;
+    const { isScriptLoaded, scriptLoadFailed, isInitialized } = this.state;
     const { isVisible, onScriptLoadFailed } = this.props;
 
     const config = this.getConfig();
@@ -118,7 +130,7 @@ class MediaUploader extends Component {
       this.cloudinaryWidget &&
       !this.wasClosed
     ) {
-      if (isVisible) {
+      if (isInitialized && isVisible) {
         this.cloudinaryWidget.update(config);
         this.cloudinaryWidget.open();
       } else {
@@ -130,13 +142,13 @@ class MediaUploader extends Component {
       this.wasClosed = false;
     }
 
-    return (
+    return isInitialized ? (
       <Script
         url={this.cloudinaryUrl}
         onError={onScriptLoadFailed}
         onLoad={this.onScriptLoadSuccess}
       />
-    );
+    ) : null;
   }
 }
 

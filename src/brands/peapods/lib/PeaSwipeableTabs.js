@@ -7,13 +7,14 @@ import SwipeableViews from 'react-swipeable-views';
 import AutoSizer from 'react-virtualized-auto-sizer';
 
 const PeaSwipeableTabs = ({
+  initialIndex,
   tabs,
   onTabChange,
   enableFeedback,
   children,
   ...props
 }) => {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(initialIndex);
   const [fineIndex, setFineIndex] = useState(index);
   const indicatorRef = useRef(null);
   const getLeft = () => {
@@ -98,7 +99,7 @@ const PeaSwipeableTabs = ({
                 <div
                   style={{
                     padding: 16,
-                    minHeight: '100%',
+                    minHeight: 'calc(100% - 32px)',
                   }}
                 >
                   {child}
@@ -113,6 +114,7 @@ const PeaSwipeableTabs = ({
 };
 
 PeaSwipeableTabs.propTypes = {
+  initialIndex: PropTypes.number,
   tabs: PropTypes.arrayOf(PropTypes.shape({ label: PropTypes.node }))
     .isRequired,
   children: PropTypes.node.isRequired,
@@ -122,6 +124,7 @@ PeaSwipeableTabs.propTypes = {
 };
 
 PeaSwipeableTabs.defaultProps = {
+  initialIndex: 0,
   enableFeedback: true,
   onTabChange: () => {},
 };

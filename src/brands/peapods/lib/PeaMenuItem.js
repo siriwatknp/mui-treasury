@@ -7,14 +7,9 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import PeaIcon from './PeaIcon';
 
-const styles = ({ palette }) => ({
+const styles = () => ({
   root: {
     cursor: 'pointer',
-    '&:hover': {
-      '& .material-icons, .PeaMenuItem-label': {
-        color: palette.primary.main,
-      },
-    },
   },
   label: {
     fontWeight: 'bold',
@@ -38,6 +33,7 @@ const PeaMenuItem = ({
 }) => {
   const renderIcon = () =>
     icon && <PeaIcon color={'secondary'} icon={icon} {...IconProps} />;
+
   return (
     <Box
       className={clsx(classes.root, className)}
@@ -80,7 +76,10 @@ PeaMenuItem.propTypes = {
   className: PropTypes.string,
   onClick: PropTypes.func,
   icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  classes: PropTypes.shape({}).isRequired,
+  classes: PropTypes.shape({
+    label: PropTypes.string,
+    root: PropTypes.string,
+  }).isRequired,
   badgeShowed: PropTypes.bool,
   badgeContent: PropTypes.number,
   BadgeProps: PropTypes.shape({}),
@@ -89,6 +88,7 @@ PeaMenuItem.propTypes = {
   labelProps: PropTypes.shape({}),
   isVertical: PropTypes.bool,
 };
+
 PeaMenuItem.defaultProps = {
   onClick: () => {},
   BadgeProps: {},
@@ -101,6 +101,7 @@ PeaMenuItem.defaultProps = {
   isVertical: false,
   icon: undefined,
 };
+
 PeaMenuItem.metadata = {
   name: 'Pea Menu Item',
   libraries: [
@@ -110,6 +111,7 @@ PeaMenuItem.metadata = {
     },
   ],
 };
+
 PeaMenuItem.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 
 export default withStyles(styles, { name: 'PeaMenuItem' })(PeaMenuItem);

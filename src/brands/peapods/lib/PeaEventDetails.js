@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { useState, memo } from 'react';
 import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
@@ -6,10 +6,10 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
-import cx from 'classnames';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import cx from 'classnames';
 
 import PeaButton from './PeaButton';
 import PeaText from './PeaTypography';
@@ -103,6 +103,7 @@ const PeaEventDetails = ({
   isMobile,
   onChangeTab,
   isLoading,
+  onReport,
 }) => {
   const tabs = [
     { label: 'Pods' },
@@ -116,15 +117,58 @@ const PeaEventDetails = ({
     }
   };
 
+  const buttonText = isPodMember ? 'Edit Pod' : 'Create Pod';
+
   const [anchorEl, setAnchor] = useState(null);
-  const openMenu = Boolean(anchorEl);
+  const open = Boolean(anchorEl);
+
+  const onReportClicked = () => {
+    onReport();
+    setAnchor(null);
+  };
 
   const editEvent = () => {
     setAnchor(null);
     onEditEventClicked();
   };
 
-  const buttonText = isPodMember ? 'Edit Pod' : 'Create Pod';
+  const renderMenu = () => (
+    <Menu
+      id="long-menu"
+      anchorEl={anchorEl}
+      open={open}
+      onClose={() => setAnchor(null)}
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'left',
+      }}
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      PaperProps={{
+        style: {
+          minWidth: 240,
+        },
+      }}
+    >
+      <MenuItem onClick={onReportClicked}>
+        <ListItemText disableTypography>
+          <PeaText variant={'body1'} weight={'bold'}>
+            Report
+          </PeaText>
+        </ListItemText>
+      </MenuItem>
+
+      <MenuItem onClick={() => editEvent()}>
+        <ListItemText disableTypography>
+          <PeaText color={'secondary'} variant={'body1'} weight={'bold'}>
+            Edit Event
+          </PeaText>
+        </ListItemText>
+      </MenuItem>
+    </Menu>
+  );
 
   return (
     <Card className={'PeaGroupProfile-root'}>
@@ -166,40 +210,8 @@ const PeaEventDetails = ({
                   size={'small'}
                   style={{ marginLeft: 8 }}
                   onClick={e => setAnchor(e.currentTarget)}
-                >
-                  Settings
-                </PeaButton>
-                <Menu
-                  id="event-detail-menu"
-                  anchorEl={anchorEl}
-                  open={openMenu}
-                  onClose={() => setAnchor(null)}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  PaperProps={{
-                    style: {
-                      minWidth: 240,
-                    },
-                  }}
-                >
-                  <MenuItem onClick={() => editEvent()}>
-                    <ListItemText disableTypography>
-                      <PeaText
-                        color={'secondary'}
-                        variant={'body1'}
-                        weight={'bold'}
-                      >
-                        Edit Event
-                      </PeaText>
-                    </ListItemText>
-                  </MenuItem>
-                </Menu>
+                />
+                {renderMenu()}
 
                 <PeaButton
                   onClick={() => onCreatePodClicked(id)}
@@ -350,6 +362,7 @@ PeaEventDetails.propTypes = {
   isMobile: PropTypes.bool,
   onChangeTab: PropTypes.func,
   isLoading: PropTypes.bool,
+  onReport: PropTypes.func,
 };
 
 PeaEventDetails.defaultProps = {
@@ -361,6 +374,7 @@ PeaEventDetails.defaultProps = {
   isMobile: true,
   onChangeTab: undefined,
   isLoading: false,
+  onReport: () => {},
 };
 
 PeaEventDetails.metadata = {

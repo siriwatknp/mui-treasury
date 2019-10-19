@@ -3,141 +3,169 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import PeaIcon from './PeaIcon';
+import CardContent from '@material-ui/core/CardContent';
+
 import PeaAvatar from './PeaAvatar';
 import PeaButton from './PeaButton';
+import PeaIcon from './PeaIcon';
 
-const list = [
-  {
-    key: '1',
-    icon: 'fas fa-calendar-alt',
-    text: 'Thursday, January 10th, 4:00am',
-    label: 'More details',
-  },
-  {
-    key: '2',
-    icon: 'location_on',
-    text: 'Pivotal Labs, 875 Howard St. San Francisco USA',
-    label: 'Show map',
-  },
-  {
-    key: '3',
-    icon: 'fas fa-users',
-    label: 'Show all',
-    // eslint-disable-next-line react/prop-types
-    renderText: ({ podCount, peopleGoing, peopleInterested }) => (
-      <React.Fragment>
-        <b>{podCount}</b> Pods, <b>{peopleGoing.length}</b> Going and{' '}
-        <b>{peopleInterested.length}</b> interested
-      </React.Fragment>
-    ),
-  },
-];
+const MAX_AVATARS = 7;
+const DEFAULT_POD_SIZE_LIMIT = 3;
+
+// TODO: we should be able to receive a 'onUserClicked' prop
 
 const PeaPodCard = ({
-  image,
-  profile,
-  social,
-  title,
-  podCount,
-  peopleGoing,
-  peopleInterested,
+  pod,
+  joinPodText,
+  onJoinPodClicked,
+  onViewPeasClicked,
+  isLoading,
   ...props
-}) => (
-  <Card className={'PeaPodCard-root'} {...props}>
-    <CardHeader
-      avatar={<PeaAvatar src={profile.image} />}
-      title={
-        <>
-          <b>{profile.name}</b> created pod for
-        </>
-      }
-      subheader={'5 minutes ago'}
-      action={<PeaAvatar src={social} />}
-    />
-    <CardMedia className={'MuiCardMedia-root'} image={image} />
-    <CardContent className={'MuiCardContent-root'}>
-      <Typography className={'MuiTypography--heading'}>{title}</Typography>
-      {list.map(item => (
-        <Grid key={item.key} container spacing={1} wrap={'nowrap'}>
-          <Grid item>
-            <PeaIcon size={'small'} color={'secondary'} icon={item.icon} />
+}) => {
+  if (!pod) {
+    return null;
+  }
+  const { members, maxSize, datingOption, state } = pod;
+
+  const peopleGoing = members.map(member => member.profilePhoto);
+
+  const limit = maxSize || DEFAULT_POD_SIZE_LIMIT;
+  const stateString = state.toLowerCase();
+  const dating = datingOption
+    ? datingOption.toLowerCase().replace('_', ' ')
+    : 'any';
+
+  const items = [
+    {
+      key: 1,
+      text: `Size Limit: ${limit}`,
+      icon: members.length < limit ? 'fas fa-check' : 'fas fa-times-circle',
+    },
+    {
+      key: 2,
+      text: `Dating Option: ${dating}`,
+      icon: 'fas fa-heart',
+    },
+    {
+      key: 3,
+      text: `State: ${stateString}`,
+      icon: state === 'INTERESTED' ? 'fas fa-star' : 'fas fa-check',
+    },
+  ];
+
+  return (
+    <Card className={'PeaPodCard-root'} {...props}>
+      <CardContent>
+        <Grid
+          className={'PeaPodCardPeople-root'}
+          container
+          alignItems={'center'}
+          spacing={2}
+        >
+          <Grid item xs={12}>
+            <Grid container>
+              <Grid item xs={6}>
+                {items.map(item => (
+                  <Grid key={item.key} container spacing={1} wrap={'nowrap'}>
+                    <Grid item>
+                      <PeaIcon
+                        size={'small'}
+                        color={'secondary'}
+                        icon={item.icon}
+                      />
+                    </Grid>
+                    <Grid item xs>
+                      <Typography color={'textSecondary'} variant={'caption'}>
+                        {item.renderText ? item.renderText() : item.text}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                ))}
+              </Grid>
+
+              <Grid item xs={6} p={4}>
+                <Grid container spacing={1}>
+                  <Grid item>
+                    <PeaButton
+                      variant={'contained'}
+                      color={'primary'}
+                      size="small"
+                      loading={isLoading}
+                      onClick={onJoinPodClicked}
+                      style={{
+                        float: 'right',
+                      }}
+                    >
+                      {joinPodText}
+                    </PeaButton>
+                  </Grid>
+
+                  <Grid item>
+                    <PeaButton
+                      variant={'contained'}
+                      color={'secondary'}
+                      size="small"
+                      onClick={onViewPeasClicked}
+                      style={{
+                        float: 'right',
+                      }}
+                    >
+                      View Peas
+                    </PeaButton>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Grid>
           </Grid>
-          <Grid item xs>
-            <Typography color={'textSecondary'} variant={'caption'}>
-              {item.renderText
-                ? item.renderText({ podCount, peopleGoing, peopleInterested })
-                : item.text}
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Typography variant={'caption'}>
-              <Link color={'secondary'}>{item.label}</Link>
-            </Typography>
+
+          <Grid item xs={12}>
+            <div className={'PeaPodCardPeople-people'}>
+              <PeaAvatar.Group
+                more={
+                  peopleGoing.length > MAX_AVATARS
+                    ? peopleGoing.length - MAX_AVATARS
+                    : 0
+                }
+                images={peopleGoing.slice(0, MAX_AVATARS)}
+                avatarProps={{ size: 'big' }}
+              />
+            </div>
           </Grid>
         </Grid>
-      ))}
-      <Grid
-        className={'PeaPodCardPeople-root'}
-        container
-        alignItems={'center'}
-        spacing={2}
-      >
-        <Grid item xs={12}>
-          <div className={'PeaPodCardPeople-people'}>
-            <Typography variant={'caption'} color={'textSecondary'}>
-              Attending :
-            </Typography>
-            <PeaAvatar.Group {...peopleGoing} avatarProps={{ size: 'small' }} />
-          </div>
-          <div className={'PeaPodCardPeople-people'}>
-            <Typography variant={'caption'} color={'textSecondary'}>
-              Interested :
-            </Typography>
-            <PeaAvatar.Group
-              {...peopleInterested}
-              avatarProps={{ size: 'small' }}
-            />
-          </div>
-        </Grid>
-        <Grid item xs={12}>
-          <PeaButton color={'secondary'} fullWidth>
-            Join Pod
-          </PeaButton>
-        </Grid>
-      </Grid>
-    </CardContent>
-  </Card>
-);
+      </CardContent>
+    </Card>
+  );
+};
 
 PeaPodCard.propTypes = {
-  image: PropTypes.string.isRequired,
-  profile: PropTypes.shape({ name: PropTypes.string, image: PropTypes.string })
-    .isRequired,
-  social: PropTypes.string.isRequired,
-  title: PropTypes.string,
-  podCount: PropTypes.number,
-  peopleGoing: PropTypes.shape({
-    images: PropTypes.arrayOf(PropTypes.string).isRequired,
-    more: PropTypes.number,
+  pod: PropTypes.shape({
+    id: PropTypes.string,
+    maxSize: PropTypes.number,
+    datingOption: PropTypes.string,
+    state: PropTypes.string,
+    members: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        profilePhotos: PropTypes.arrayOf(PropTypes.string),
+      }),
+    ),
   }).isRequired,
-  peopleInterested: PropTypes.shape({
-    images: PropTypes.arrayOf(PropTypes.string).isRequired,
-    more: PropTypes.number,
-  }).isRequired,
+  onJoinPodClicked: PropTypes.func.isRequired,
+  onViewPeasClicked: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
+  joinPodText: PropTypes.string,
 };
+
 PeaPodCard.defaultProps = {
-  title: '',
-  podCount: 0,
+  isLoading: false,
+  joinPodText: 'Join Pod',
 };
+
 PeaPodCard.metadata = {
   name: 'Pea Pod Card',
 };
+
 PeaPodCard.codeSandbox = 'https://codesandbox.io/s/zljn06jmq4';
 
 export default PeaPodCard;

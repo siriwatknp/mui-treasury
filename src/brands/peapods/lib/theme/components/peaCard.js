@@ -354,9 +354,6 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
             },
           },
         },
-        '& .PeaPodCard-root': {
-          boxShadow: 'none',
-        },
       },
       '&.PeaPodCard-root': {
         textAlign: 'left',
@@ -452,7 +449,7 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
             paddingTop: '56%',
           },
         },
-        '& .MuiCardContent-root': {
+        '& >.MuiCardContent-root': {
           position: 'relative',
           textAlign: 'left',
           zIndex: 2,
@@ -468,6 +465,10 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
             width: 'auto',
             minWidth: 500,
           },
+        },
+        '& .MuiNoItems-root': {
+          paddingTop: 50,
+          textAlign: 'center',
         },
         '& .MuiCardActions-root': {
           position: 'relative',

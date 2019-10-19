@@ -38,17 +38,18 @@ const createList = ({
   {
     key: '3',
     icon: 'fas fa-users',
-    renderText: () => (
-      <React.Fragment>
-        {!!limit && (
-          <span>
-            limit <b>{limit} - </b>
-          </span>
-        )}
-        {podCount} pod{podCount > 1 ? 's' : ''}, {attendingCount} going,{' '}
-        {interestedCount} interested
-      </React.Fragment>
-    ),
+    text:
+      attendingCount && interestedCount ? (
+        <React.Fragment>
+          {!!limit && (
+            <span>
+              limit <b>{limit} - </b>
+            </span>
+          )}
+          {podCount} pod{podCount > 1 ? 's' : ''}, {attendingCount} going,{' '}
+          {interestedCount} interested
+        </React.Fragment>
+      ) : null,
   },
 ];
 
@@ -79,16 +80,17 @@ const Share = props => (
 );
 
 // eslint-disable-next-line react/prop-types
-const CreatePod = ({ hasPod, ...props }) => (
+const CreatePod = ({ isLoading, text, ...props }) => (
   <PeaButton
     shape={''}
     size={'small'}
+    loading={isLoading}
     variant={'contained'}
     color={'primary'}
     icon={<PeaIcon icon={'add_circle'} />}
     {...props}
   >
-    {hasPod ? 'Edit Pod' : 'Create Pod'}
+    {text}
   </PeaButton>
 );
 
@@ -111,7 +113,8 @@ const PeaEventCard = ({
   onShowDetailsClicked,
   onShareEventClicked,
   onCreatePodClicked,
-  hasPod,
+  createPodText,
+  isLoading,
   ...props
 }) => {
   const [shareAnchorEl, setShareAnchorEl] = useState(null);
@@ -164,25 +167,24 @@ const PeaEventCard = ({
               timeString,
               location,
               podCount,
-              attendingCount: stats ? stats.attending : null,
-              interestedCount: stats ? stats.interested : null,
-              limit: stats ? stats.limit : null,
-            }).map(item => (
-              <Grid key={item.key} container spacing={1} wrap={'nowrap'}>
-                <Grid item>
-                  <PeaIcon
-                    size={'small'}
-                    color={'secondary'}
-                    icon={item.icon}
-                  />
+              attendingCount: stats ? stats.attending : undefined,
+              interestedCount: stats ? stats.interested : undefined,
+              limit: stats ? stats.limit : undefined,
+            }).map(({ key, icon, text }) =>
+              text ? (
+                <Grid key={key} container spacing={1} wrap={'nowrap'}>
+                  <Grid item>
+                    <PeaIcon size={'small'} color={'secondary'} icon={icon} />
+                  </Grid>
+
+                  <Grid item xs>
+                    <Typography color={'textSecondary'} variant={'caption'}>
+                      {text}
+                    </Typography>
+                  </Grid>
                 </Grid>
-                <Grid item xs>
-                  <Typography color={'textSecondary'} variant={'caption'}>
-                    {item.renderText ? item.renderText() : item.text}
-                  </Typography>
-                </Grid>
-              </Grid>
-            ))}
+              ) : null,
+            )}
           </Grid>
         </Grid>
 
@@ -256,7 +258,11 @@ const PeaEventCard = ({
               </Paper>
             </Popover>
 
-            <CreatePod onClick={onCreatePodClicked} />
+            <CreatePod
+              isLoading={isLoading}
+              text={createPodText}
+              onClick={onCreatePodClicked}
+            />
             <Details onClick={onShowDetailsClicked} />
           </>
         }
@@ -288,11 +294,12 @@ PeaEventCard.propTypes = {
   onCreatePodClicked: PropTypes.func.isRequired,
   onShareEventClicked: PropTypes.func,
   stats: PropTypes.shape({
-    interested: PropTypes.number.isRequired,
-    attending: PropTypes.number.isRequired,
+    interested: PropTypes.number,
+    attending: PropTypes.number,
     limit: PropTypes.number,
-  }).isRequired,
-  hasPod: PropTypes.bool,
+  }),
+  createPodText: PropTypes.string,
+  isLoading: PropTypes.bool,
 };
 
 PeaEventCard.defaultProps = {
@@ -302,8 +309,10 @@ PeaEventCard.defaultProps = {
   interestedPeas: [],
   social: undefined,
   socialLink: undefined,
-  hasPod: false,
   onShareEventClicked: () => {},
+  createPodText: 'Create Pod',
+  isLoading: false,
+  stats: undefined,
 };
 
 PeaEventCard.metadata = {
