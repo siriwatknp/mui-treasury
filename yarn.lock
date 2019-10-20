@@ -131,6 +131,18 @@
     "@babel/helper-replace-supers" "^7.5.5"
     "@babel/helper-split-export-declaration" "^7.4.4"
 
+"@babel/helper-create-class-features-plugin@^7.6.0":
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/@babel/helper-create-class-features-plugin/-/helper-create-class-features-plugin-7.6.0.tgz#769711acca889be371e9bc2eb68641d55218021f"
+  integrity sha512-O1QWBko4fzGju6VoVvrZg0RROCVifcLxiApnGP3OWfWzvxRZFCoBD81K5ur5e3bVY2Vf/5rIJm8cqPKn8HUJng==
+  dependencies:
+    "@babel/helper-function-name" "^7.1.0"
+    "@babel/helper-member-expression-to-functions" "^7.5.5"
+    "@babel/helper-optimise-call-expression" "^7.0.0"
+    "@babel/helper-plugin-utils" "^7.0.0"
+    "@babel/helper-replace-supers" "^7.5.5"
+    "@babel/helper-split-export-declaration" "^7.4.4"
+
 "@babel/helper-define-map@^7.5.5":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/helper-define-map/-/helper-define-map-7.5.5.tgz#3dec32c2046f37e09b28c93eb0b103fd2a25d369"
@@ -822,6 +834,15 @@
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-syntax-typescript" "^7.2.0"
 
+"@babel/plugin-transform-typescript@^7.6.0":
+  version "7.6.3"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-typescript/-/plugin-transform-typescript-7.6.3.tgz#dddb50cf3b8b2ef70b22e5326e9a91f05a1db13b"
+  integrity sha512-aiWINBrPMSC3xTXRNM/dfmyYuPNKY/aexYqBgh0HBI5Y+WO5oRAqW/oROYeYHrF4Zw12r9rK4fMk/ZlAmqx/FQ==
+  dependencies:
+    "@babel/helper-create-class-features-plugin" "^7.6.0"
+    "@babel/helper-plugin-utils" "^7.0.0"
+    "@babel/plugin-syntax-typescript" "^7.2.0"
+
 "@babel/plugin-transform-unicode-regex@^7.4.4":
   version "7.4.4"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-unicode-regex/-/plugin-transform-unicode-regex-7.4.4.tgz#ab4634bb4f14d36728bf5978322b35587787970f"
@@ -995,6 +1016,14 @@
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-transform-typescript" "^7.3.2"
 
+"@babel/preset-typescript@^7.6.0":
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/@babel/preset-typescript/-/preset-typescript-7.6.0.tgz#25768cb8830280baf47c45ab1a519a9977498c98"
+  integrity sha512-4xKw3tTcCm0qApyT6PqM9qniseCE79xGHiUnNdKGdxNsGUc2X7WwZybqIpnTmoukg3nhPceI5KPNzNqLNeIJww==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
+    "@babel/plugin-transform-typescript" "^7.6.0"
+
 "@babel/runtime@7.3.4":
   version "7.3.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.3.4.tgz#73d12ba819e365fcf7fd152aed56d6df97d21c83"
@@ -1020,6 +1049,13 @@
   version "7.6.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.6.0.tgz#4fc1d642a9fd0299754e8b5de62c631cf5568205"
   integrity sha512-89eSBLJsxNxOERC0Op4vd+0Bqm6wRMqMbFtV3i0/fbaWw/mJ8Q3eBvgX0G4SyrOOLCtbu98HspF8o09MRT+KzQ==
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
+"@babel/runtime@^7.6.3":
+  version "7.6.3"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.6.3.tgz#935122c74c73d2240cafd32ddb5fc2a6cd35cf1f"
+  integrity sha512-kq6anf9JGjW8Nt5rYfEuGRaEAaH1mkv3Bbu6rYvLOpPh/RusSJXuKPEAoZ7L7gybZkchE8+NV5g9vKF4AGAtsA==
   dependencies:
     regenerator-runtime "^0.13.2"
 
@@ -1245,60 +1281,6 @@
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.3.tgz#dfa0c92efe44a1d1a7974fb49ffeb40ef2da5a27"
   integrity sha512-zVgvPwGK7c1aVdUVc9Qv7SqepOGRDrqCw7KZPSZziWGxSlbII3gmvGLPzLX4d0n0BMbamBacUrN22zOMyFFEkQ==
-
-"@fortawesome/fontawesome-common-types@^0.2.25":
-  version "0.2.25"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.25.tgz#6df015905081f2762e5cfddeb7a20d2e9b16c786"
-  integrity sha512-3RuZPDuuPELd7RXtUqTCfed14fcny9UiPOkdr2i+cYxBoTOfQgxcDoq77fHiiHcgWuo1LoBUpvGxFF1H/y7s3Q==
-
-"@fortawesome/fontawesome-svg-core@^1.2.25":
-  version "1.2.25"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.25.tgz#24b03391d14f0c6171e8cad7057c687b74049790"
-  integrity sha512-MotKnn53JKqbkLQiwcZSBJVYtTgIKFbh7B8+kd05TSnfKYPFmjKKI59o2fpz5t0Hzl35vVGU6+N4twoOpZUrqA==
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.25"
-
-"@fortawesome/free-brands-svg-icons@^5.11.2":
-  version "5.11.2"
-  resolved "https://npm.fontawesome.com/@fortawesome/free-brands-svg-icons/-/free-brands-svg-icons-5.11.2.tgz#39d4296d03bf5719c579dea4bdcdd356ed2de0b4"
-  integrity sha512-wKK5znpHiZ2S0VgOvbeAnYuzkk3H86rxWajD9PVpfBj3s/kySEWTFKh/uLPyxiTOx8Tsd0OGN4En/s9XudVHLQ==
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.25"
-
-"@fortawesome/pro-duotone-svg-icons@^5.11.2":
-  version "5.11.2"
-  resolved "https://npm.fontawesome.com/@fortawesome/pro-duotone-svg-icons/-/pro-duotone-svg-icons-5.11.2.tgz#c565a0f8c39acc3f7b3c2a8b77e636ce13265fb2"
-  integrity sha512-Fqm+V5CqvYG48oBJjAfDIX3SKMqvD6hJ1asE6z/J1RhZtO7Y/4la6DVPxOdGvPu1aJutELa2wmNL100RMG/bvg==
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.25"
-
-"@fortawesome/pro-light-svg-icons@^5.11.2":
-  version "5.11.2"
-  resolved "https://npm.fontawesome.com/@fortawesome/pro-light-svg-icons/-/pro-light-svg-icons-5.11.2.tgz#61543170feb34e04f4d4bd1843b08bbde6682833"
-  integrity sha512-NzN0K+hnKQ8fw4PLsr7WjLgtlnH1QjD4/N26YVUEMzLZiTgYBiqE7NDlRL6q/xJ9ittCj6PDPNY/IQ0T8XPLiA==
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.25"
-
-"@fortawesome/pro-regular-svg-icons@^5.11.2":
-  version "5.11.2"
-  resolved "https://npm.fontawesome.com/@fortawesome/pro-regular-svg-icons/-/pro-regular-svg-icons-5.11.2.tgz#e9185f15555a16748612044211444463c005d97f"
-  integrity sha512-y1WLNjf/AMN+Mh+CojlOoKfk9miKPDB3P3r7cj3WP7yjxmDX09YyYHkxSWP2HOK9xJulmVN36CbNcMVS8Mrqpg==
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.25"
-
-"@fortawesome/pro-solid-svg-icons@^5.11.2":
-  version "5.11.2"
-  resolved "https://npm.fontawesome.com/@fortawesome/pro-solid-svg-icons/-/pro-solid-svg-icons-5.11.2.tgz#5d72c801b3413191a81841c606d8cc7926014b76"
-  integrity sha512-YYrEFhda4KIUweXed1s+RQko53O7rXGK1jEbdlGXZlHnNTX7OyrkvJDQYqhQ7H+H62HV0BxF/xtDXvSJRlyO1Q==
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.25"
-
-"@fortawesome/react-fontawesome@^0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@fortawesome/react-fontawesome/-/react-fontawesome-0.1.5.tgz#8bc3cd5c617749534787a35e29caa7a6cff705c9"
-  integrity sha512-WYDKTgyAWOncujWhhzhW7k8sgO5Eo2pZTUL51yNzSQNBUwwr6rNKg/JUSE3iebaU1XShHw74aKc1kJ+jvtRNew==
-  dependencies:
-    prop-types "^15.5.10"
 
 "@gatsbyjs/relay-compiler@2.0.0-printer-fix.4":
   version "2.0.0-printer-fix.4"
@@ -4065,6 +4047,11 @@ babel-plugin-react-docgen@^3.0.0:
     lodash "^4.17.11"
     react-docgen "^4.1.0"
     recast "^0.14.7"
+
+babel-plugin-remove-graphql-queries@^2.7.14:
+  version "2.7.14"
+  resolved "https://registry.yarnpkg.com/babel-plugin-remove-graphql-queries/-/babel-plugin-remove-graphql-queries-2.7.14.tgz#f60064d9711725768557096cb07988508e6616e3"
+  integrity sha512-GnAZhBChCjAg0NyZMmZureWmBXijbAK7wreEpsoI1oP5hCuHcvWknDU4u5PjoVdLyJ+8ObJ86Y/Y4uzrqcg/qg==
 
 babel-plugin-remove-graphql-queries@^2.7.2:
   version "2.7.2"
@@ -9035,6 +9022,15 @@ gatsby-plugin-sharp@^2.2.11:
     semver "^5.6.0"
     sharp "^0.22.1"
     svgo "^1.2.0"
+
+gatsby-plugin-typescript@^2.1.15:
+  version "2.1.15"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-typescript/-/gatsby-plugin-typescript-2.1.15.tgz#4754bb2ae7f5ee86b6daea52d7d9582287788d2c"
+  integrity sha512-jwN2nkUxVM0y96ha6sR8jsZBJak5dR7SsA7UBSvpiUPJgN6dRtDpYlu+CLYzLOBdyxTr9Uo0LDfeCMDGZ63NNg==
+  dependencies:
+    "@babel/preset-typescript" "^7.6.0"
+    "@babel/runtime" "^7.6.3"
+    babel-plugin-remove-graphql-queries "^2.7.14"
 
 gatsby-plugin-typography@^2.3.2:
   version "2.3.2"
@@ -19183,6 +19179,11 @@ typescript@^3.4.5:
   version "3.6.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.6.3.tgz#fea942fabb20f7e1ca7164ff626f1a9f3f70b4da"
   integrity sha512-N7bceJL1CtRQ2RiG0AQME13ksR7DiuQh/QehubYcghzv20tnh+MQnQIuJddTmsbqYj+dztchykemz0zFzlvdQw==
+
+typescript@^3.6.4:
+  version "3.6.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.6.4.tgz#b18752bb3792bc1a0281335f7f6ebf1bbfc5b91d"
+  integrity sha512-unoCll1+l+YK4i4F8f22TaNVPRHcD9PA3yCuZ8g5e0qGqlVlJ/8FSateOLLSagn+Yg5+ZwuPkL8LFUc0Jcvksg==
 
 typography-breakpoint-constants@^0.16.19:
   version "0.16.19"
