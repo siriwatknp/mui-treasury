@@ -1,37 +1,37 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { Root, createDefaultLayout } from '@mui-treasury/layout';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import {
-  faFighterJet,
-  faDiceD8,
-  faSparkles,
-  faCubes,
-  faCity,
-  faThumbsUp,
-} from '@fortawesome/pro-duotone-svg-icons';
-import { faEnvelope } from '@fortawesome/pro-solid-svg-icons';
-import {
-  faTwitter,
-  faGithub,
-  faFacebookF,
-} from '@fortawesome/free-brands-svg-icons';
+// import { library } from '@fortawesome/fontawesome-svg-core';
+// import {
+//   faFighterJet,
+//   faDiceD8,
+//   faSparkles,
+//   faCubes,
+//   faCity,
+//   faThumbsUp,
+// } from '@fortawesome/pro-duotone-svg-icons';
+// import { faEnvelope } from '@fortawesome/pro-solid-svg-icons';
+// import {
+//   faTwitter,
+//   faGithub,
+//   faFacebookF,
+// } from '@fortawesome/free-brands-svg-icons';
 import { ThemeWrapper } from './utils/theme';
 import './global.css';
 import banner from './assets/mui-treasury_banner_minified.jpg';
 
-library.add(
-  faFighterJet,
-  faDiceD8,
-  faSparkles,
-  faCubes,
-  faCity,
-  faThumbsUp,
-  faEnvelope,
-  faTwitter,
-  faGithub,
-  faFacebookF
-);
+// library.add(
+//   faFighterJet,
+//   faDiceD8,
+//   faSparkles,
+//   faCubes,
+//   faCity,
+//   faThumbsUp,
+//   faEnvelope,
+//   faTwitter,
+//   faGithub,
+//   faFacebookF
+// );
 
 const layoutConfig = createDefaultLayout({
   navWidth: 256,

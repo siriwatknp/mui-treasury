@@ -121,11 +121,11 @@ This is a guideline if you want to create a component or styles to show it in Mu
 
 Do this if your component is not in any existing category yet.
 
-#### `Step 1 : add empty page`
+#### `Step 1 : Add an empty page`
 
 create new `js` file in `src/pages/components/{name of the page}.js`. (name of the page should be discussed in the issue first) and then add some component to test
 
-```
+```jsx
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -133,7 +133,7 @@ const Page = () => (
   <div>Test that it works</div>
 );
 
-export default Page
+export default Page;
 ```
 
 delete `.cache` at root folder, then run `yarn start` again. 
@@ -144,11 +144,11 @@ https://localhost:8000/components/{filename without ext}
 
 if you can't, [fire an issue](https://github.com/siriwatknp/mui-treasury-next/issues) and explain what error or behavior you have.
 
-#### `Step 2 : add menu`
+#### `Step 2 : Add menu`
 
 open file `src/constants/menu.js` and add your menu to
 
-```
+```javascript
 ...
     [PKG.components]: [
     {
@@ -175,12 +175,12 @@ Save the file (*don't* need to run `yarn start` again), then you should see the 
 
 #### `Step 3 : Create Component`
 
-[Goto create component section]()
+[Go to create component section]()
 
 #### `Step 4 : Display components`
 copy content from `src/__templates/PageTemplate.js` and place it in the file from `step 1`
 
-```
+```jsx
 import React from 'react';
 import DemoPage from 'containers/Demo';
 import {
@@ -212,11 +212,14 @@ Congratulations! create new page is done. you can follow steps to create compone
 
 ### New Component
 
-#### `Step 1 : add empty component`
+#### `Step 1 : Add empty component`
 create `js` file in `docs/components/{category}/{name}/{Name}.js`
 
+- Use `camelCase`  for folder name
+- Use `PascalCase` for your component
+
 For example, I want to create a button named `RealisticButton`
-```
+```jsx
 // in src/docs/components/button/realistic/RealisticButton.js
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -239,12 +242,12 @@ export default RealisticButton;
 ```
 Now you should see your component in its category page. If you just create new page, [go to next step]()
 
-#### `Step 2 : add stylesheet`
+#### `Step 2 : Add stylesheet`
 We aim to provide reusable stylesheet for other developers, so we need to create it in `@mui-treasury/styles` package.
 Create 2 files `{name}.styles.js` and `index.js` in `/packages/mui-styles/src/{category}/{component style}`. (look at other folder if you are confused)
 
 ***Stylesheet must be an object or pure function
-```
+```jsx
 // {name}.styles.js
 export default ({ palette, shadows }) => ({
   root: {
@@ -263,7 +266,7 @@ export default ({ palette, shadows }) => ({
 Don't forget to add your component in `packages/mui-styles/src/{category}/index.js`
 
 Then in your website component `src/docs/components/realistic/RealisticButton.js`, import the styles and use it in your component.
-```
+```jsx
 import { useRealisticBtnStyles } from '@mui-treasury/styles/button';
 
 const RealisticButton = () => {
@@ -276,7 +279,7 @@ const RealisticButton = () => {
 };
 ```
 
-#### `Step 3 : add markdown`
+#### `Step 3 : Add markdown`
 create `index.md` next to your component in `/src/docs/components/{category}/{component}
 ```
 ---

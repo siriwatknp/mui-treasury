@@ -3,6 +3,7 @@ import * as chromeTabsStyles from './chrome/chromeTabs.styles';
 import * as containedTabsStyles from './contained/containedTabs.styles';
 import * as elevatedTabsStyles from './elevated/elevatedTabs.styles';
 import * as firebaseTabsStyles from './firebase/firebaseTabs.styles';
+import * as insideTriangleTabsStyles from './inside-triangle/insideTriangleTabs.styles';
 import * as instagramTabsStyles from './instagram/instagramTabs.styles';
 import * as pillTabsStyles from './pill/pillTabs.styles';
 import * as serratedTabsStyles from './serrated/serratedTabs.styles';
@@ -33,6 +34,11 @@ const elevatedTabsStylesHook = {
 const firebaseTabsStylesHook = {
   useTabs: makeStyles(firebaseTabsStyles.tabsStyles),
   useTabItem: makeStyles(firebaseTabsStyles.tabItemStyles),
+};
+
+const insideTriangleTabsStylesHook = {
+  useTabs: makeStyles(insideTriangleTabsStyles.tabsStyles),
+  useTabItem: makeStyles(insideTriangleTabsStyles.tabItemStyles),
 };
 
 const instagramTabsStylesHook = {
@@ -66,6 +72,7 @@ export {
   containedTabsStylesHook,
   elevatedTabsStylesHook,
   firebaseTabsStylesHook,
+  insideTriangleTabsStylesHook,
   instagramTabsStylesHook,
   pillTabsStylesHook,
   plainTabsStylesHook,

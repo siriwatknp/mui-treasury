@@ -38,17 +38,11 @@
     "start": "yarn develop",
     "serve": "gatsby serve",
     "test": "jest",
+    "typecheck": "tsc --skipLibCheck",
     "storybook": "NODE_ENV=development start-storybook -p 6006",
     "build-storybook": "NODE_ENV=production build-storybook -s public"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.25",
-    "@fortawesome/free-brands-svg-icons": "^5.11.2",
-    "@fortawesome/pro-duotone-svg-icons": "^5.11.2",
-    "@fortawesome/pro-light-svg-icons": "^5.11.2",
-    "@fortawesome/pro-regular-svg-icons": "^5.11.2",
-    "@fortawesome/pro-solid-svg-icons": "^5.11.2",
-    "@fortawesome/react-fontawesome": "^0.1.5",
     "@material-ui/core": "^4.3.2",
     "@material-ui/icons": "^4.2.1",
     "@material-ui/lab": "^4.0.0-alpha.26",
@@ -68,6 +62,7 @@
     "gatsby-plugin-react-helmet": "^3.1.3",
     "gatsby-plugin-remove-trailing-slashes": "^2.1.7",
     "gatsby-plugin-sharp": "^2.2.11",
+    "gatsby-plugin-typescript": "^2.1.15",
     "gatsby-plugin-typography": "^2.3.2",
     "gatsby-remark-copy-linked-files": "^2.1.5",
     "gatsby-remark-embed-snippet": "^4.1.4",
@@ -129,6 +124,7 @@
     "netlify-cli": "^2.15.0",
     "prettier": "^1.18.2",
     "pretty-quick": "^1.11.1",
-    "react-test-renderer": "^16.9.0"
+    "react-test-renderer": "^16.9.0",
+    "typescript": "^3.6.4"
   }
 }
