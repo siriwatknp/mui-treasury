@@ -1,6 +1,6 @@
 import React from 'react';
 
-// @todo #166 move SimpleArrow from previous version.
+// @todo #1 move SimpleArrow from previous version.
 const SimpleArrow = () => <div>Simple arrow</div>;
 
 SimpleArrow.propTypes = {};
