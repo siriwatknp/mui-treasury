@@ -9,4 +9,4 @@ After you pull the deprecated repo down.
 2. copy the component to mui-treasury repo
 3. improve the code as needed.
 
-Thank you for your contribution! let's help people with great idea release their prototype!
+Thank you for your contribution! let's help people with great idea release their 1st prototype!
