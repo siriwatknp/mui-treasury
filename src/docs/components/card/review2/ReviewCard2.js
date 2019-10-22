@@ -36,8 +36,8 @@ const useStyles = makeStyles(({ spacing, palette }) => ({
   heading: {
     fontSize: 17,
     fontWeight: 'bold',
-    color: 'rbga(0,0,0,0.7)',
     letterSpacing: '0.5px',
+    marginBottom: 0,
     marginRight: spacing(1.5),
     display: 'inline-block',
   },

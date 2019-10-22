@@ -24,4 +24,6 @@ export default {
   trophyImg: 'https://jkkm.info/ui/images/awards/victory.png',
   prangImg:
     'https://www.brighttv.co.th/wp-content/uploads/2018/04/29739332_996623360491913_2322116227981377536_n.jpg',
+  planeLogoImg:
+    'https://www.clipartwiki.com/clipimg/detail/14-142290_united-airlines-jet-transparent-airplane-clipart-logo.png',
 };
