@@ -74,7 +74,12 @@ const ReviewCard2 = () => {
       <CardContent className={styles.content}>
         <Box mb={1}>
           <h3 className={styles.heading}>Aegen magazines </h3>
-          <Rating value={2} className={styles.rating} size={'small'} />
+          <Rating
+            name={'rating'}
+            value={2}
+            className={styles.rating}
+            size={'small'}
+          />
         </Box>
         <p className={styles.body}>
           Lorem ipsum is placeholder text commonly used in the graphic, print,
