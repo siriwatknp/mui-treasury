@@ -56,6 +56,7 @@ export default {
         },
         { key: 'input', label: 'Input', to: '/components/input' },
         { key: 'indicator', label: 'Indicator', to: '/components/indicator' },
+        { key: 'rip', label: 'Rip', to: '/components/rip' },
         { key: 'slide', label: 'Slide', to: '/components/slide' },
         { key: 'shadow', label: 'Shadow', to: '/components/shadow' },
         { key: 'tabs', label: 'Tabs', to: '/components/tabs' },
