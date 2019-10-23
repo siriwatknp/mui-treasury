@@ -5,14 +5,9 @@ import Box from '@material-ui/core/Box';
 import molecules from 'components/molecules';
 import { useHalfBorderedGridStyles } from '@mui-treasury/styles/grid';
 
-const { GridShowcase } = molecules;
+const { GridShowcase, ShowcaseWidget } = molecules;
 
-const CustomComponentGrid = ({
-  components,
-  noHeader,
-  setComponent,
-  ShowcaseWidgetProps,
-}) => {
+const CustomComponentGrid = ({ components, noHeader }) => {
   const normalColWidth = {
     xs: 12,
     sm: 6,
@@ -48,8 +43,7 @@ const CustomComponentGrid = ({
         gridStyles={gridStyles}
         components={shortComponents}
         GridItemProps={normalColWidth}
-        setComponent={setComponent}
-        ShowcaseWidgetProps={ShowcaseWidgetProps}
+        renderComponentWrapper={ShowcaseWidget}
       />
       {longComponents.length > 0 && (
         <Box mt={'-1px'}>
@@ -57,8 +51,7 @@ const CustomComponentGrid = ({
             gridStyles={longGridStyles}
             components={longComponents}
             GridItemProps={longColWidth}
-            setComponent={setComponent}
-            ShowcaseWidgetProps={ShowcaseWidgetProps}
+            renderComponentWrapper={ShowcaseWidget}
           />
         </Box>
       )}
