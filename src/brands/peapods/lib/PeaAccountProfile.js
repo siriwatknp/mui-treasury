@@ -1,7 +1,5 @@
 /* eslint-disable react/forbid-prop-types */
 
-import Tab from '@material-ui/core/Tab/Tab';
-import Tabs from '@material-ui/core/Tabs/Tabs';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
@@ -26,8 +24,7 @@ import PeaProfileEditor from './PeaProfileEditor';
 import PeaUserSettings from './PeaUserSettings';
 import PeaConfirmation from './PeaConfirmation';
 import PeaInvitationDialog from './PeaInvitationDialog';
-
-// TODO: refactor this to use PeaSwipeableTabs
+import PeaSwipeableTabs from './PeaSwipeableTabs';
 
 const PeaAccountProfile = ({
   isCurrentUser,
@@ -52,6 +49,7 @@ const PeaAccountProfile = ({
   followersCount,
   followingCount,
   isPrivate,
+  eventList,
   groupList,
   podList,
   onSubmit,
@@ -76,8 +74,10 @@ const PeaAccountProfile = ({
   onInviteClicked,
   onFollow,
   onReport,
+  isMobile,
+  activeTabIndex,
+  onTabChange,
 }) => {
-  const [index, onChange] = useState(0);
   const [anchorEl, setAnchor] = useState(null);
   const [delModalOpen, setDelModalOpen] = useState(false);
   const [openInviteDialog, setOpenInviteDialog] = useState(false);
@@ -339,21 +339,21 @@ const PeaAccountProfile = ({
         </Grid>
       </CardContent>
 
-      <Tabs
-        className={'MuiTabs-root'}
-        variant={'fullWidth'}
-        centered
-        value={index}
-        onChange={(e, val) => onChange(val)}
+      <PeaSwipeableTabs
+        activeIndex={activeTabIndex}
+        tabs={[
+          { label: 'Hosting' },
+          { label: 'Pods' },
+          { label: 'About' },
+          { label: 'Groups' },
+        ]}
+        enableFeedback={isMobile}
+        onTabChange={onTabChange}
       >
-        <Tab label="Pods" disableRipple />
-        <Tab label="About" disableRipple />
-        <Tab label="Groups" disableRipple />
-      </Tabs>
+        <Box minHeight={500}>{eventList}</Box>
 
-      {index === 0 && <Box minHeight={500}>{podList}</Box>}
+        <Box minHeight={500}>{podList}</Box>
 
-      {index === 1 && (
         <Box p={2} textAlign={'left'}>
           <PeaText gutterBottom variant={'subtitle1'} weight={'bold'}>
             About
@@ -398,9 +398,7 @@ const PeaAccountProfile = ({
             ))}
           </Grid>
         </Box>
-      )}
 
-      {index === 2 && (
         <Box minHeight={500} style={{ position: 'relative' }}>
           {groupList}
           <PeaIcon
@@ -420,7 +418,7 @@ const PeaAccountProfile = ({
             onClick={onCreateGroupClicked}
           />
         </Box>
-      )}
+      </PeaSwipeableTabs>
 
       <PeaInvitationDialog
         person={userName}
@@ -481,8 +479,6 @@ PeaAccountProfile.propTypes = {
   editing: PropTypes.bool,
   isUpdating: PropTypes.bool,
   isDeleting: PropTypes.bool,
-  isInvitingInfo: PropTypes.object,
-  invitedInfo: PropTypes.object,
   followLoading: PropTypes.bool,
   currentUserFollowing: PropTypes.string,
   onSubmit: PropTypes.func,
@@ -491,7 +487,6 @@ PeaAccountProfile.propTypes = {
   onChangeProfilePhotosClicked: PropTypes.func.isRequired,
   deleteProfile: PropTypes.func,
   onCreateGroupClicked: PropTypes.func,
-  onInvite: PropTypes.func,
   onFollow: PropTypes.func,
   onReport: PropTypes.func,
   onInvitePod: PropTypes.func.isRequired,
@@ -502,9 +497,15 @@ PeaAccountProfile.propTypes = {
   invitedIds: PropTypes.object,
   followerState: PropTypes.string,
   acceptFollowLoading: PropTypes.bool,
+  isMobile: PropTypes.bool,
+  activeTabIndex: PropTypes.number,
+  onTabChange: PropTypes.func.isRequired,
+  eventList: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 PeaAccountProfile.defaultProps = {
+  isMobile: true,
+  activeTabIndex: 0,
   loadingInvitableList: false,
   userName: '',
   bio: '',
@@ -514,6 +515,7 @@ PeaAccountProfile.defaultProps = {
   age: undefined,
   gender: undefined,
   groups: [],
+  eventList: [],
   pods: [],
   groupsOfCurrentUser: [],
   tags: [],
@@ -529,8 +531,6 @@ PeaAccountProfile.defaultProps = {
   isUpdating: false,
   isDeleting: false,
   groupList: undefined,
-  isInvitingInfo: {},
-  invitedInfo: {},
   followLoading: false,
   currentUserFollowing: undefined,
   podList: undefined,
@@ -538,7 +538,6 @@ PeaAccountProfile.defaultProps = {
   setEditing: () => {},
   deleteProfile: () => {},
   onCreateGroupClicked: () => {},
-  onInvite: () => {},
   onFollow: () => {},
   onReport: () => {},
   invitingIds: {},
