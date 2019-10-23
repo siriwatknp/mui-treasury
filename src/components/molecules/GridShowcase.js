@@ -3,8 +3,8 @@ import Grid from '@material-ui/core/Grid';
 import { useMetadata } from 'containers/Demo/context';
 
 const GridShowcase = ({
-  gridStyles,
   components,
+  gridStyles,
   GridItemProps,
   renderComponentWrapper: Wrapper,
 }) => {

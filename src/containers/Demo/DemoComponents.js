@@ -1,9 +1,11 @@
 import React from 'react';
 import { createMuiTheme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
+import molecules from 'components/molecules';
 import organisms from 'components/organisms';
 import MetadataContext from './context';
 
+const { GridShowcase, ShowcaseWidget } = molecules;
 const { DefaultSection, CustomComponentGrid } = organisms;
 
 const baseTheme = createMuiTheme();
@@ -38,6 +40,12 @@ const DemoComponents = ({
               setComponent={setComponent}
               components={customComponents}
               ShowcaseWidgetProps={ShowcaseWidgetProps}
+              renderGrid={gridProps => (
+                <GridShowcase
+                  {...gridProps}
+                  renderComponentWrapper={ShowcaseWidget}
+                />
+              )}
             />
           </ThemeProvider>
         );
