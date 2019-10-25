@@ -3,11 +3,11 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import { useSimpleArrowStyles } from '@mui-treasury/styles/arrow';
+import { useInvertedArrowStyles } from '@mui-treasury/styles/arrow';
 import { usePushingGutter } from '@mui-treasury/styles/gutter';
 
-const SimpleArrow = () => {
-  const classes = useSimpleArrowStyles();
+const InvertedArrow = () => {
+  const classes = useInvertedArrowStyles();
   const gutterStyles = usePushingGutter({ firstExcluded: true, space: 2 });
   return (
     <Box className={gutterStyles.parent}>
@@ -21,21 +21,24 @@ const SimpleArrow = () => {
   );
 };
 
-SimpleArrow.propTypes = {};
-SimpleArrow.defaultProps = {};
+InvertedArrow.propTypes = {};
+InvertedArrow.defaultProps = {};
 
 // hide-start
-SimpleArrow.metadata = {
-  title: 'Simple',
-  path: 'arrow/simple',
+InvertedArrow.metadata = {
+  title: 'Inverted',
+  path: 'arrow/inverted',
+  frameProps: {
+    bgcolor: '#1c1c1c',
+  },
   files: [
     {
       pkg: 'mui-styles',
-      path: 'arrow/simple/simpleArrow.styles.js',
+      path: 'arrow/inverted/invertedArrow.styles.js',
     },
   ],
   relates: [],
 };
 // hide-end
 
-export default SimpleArrow;
+export default InvertedArrow;

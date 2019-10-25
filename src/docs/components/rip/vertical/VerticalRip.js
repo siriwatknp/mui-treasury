@@ -30,7 +30,12 @@ VerticalRip.metadata = {
   frameProps: {
     bgcolor: 'primary.main',
   },
-  files: [],
+  files: [
+    {
+      pkg: 'mui-styles',
+      path: 'rip/vertical/verticalRip.styles.js',
+    },
+  ],
   relates: [],
 };
 // hide-end
