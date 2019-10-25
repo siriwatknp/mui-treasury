@@ -1,10 +1,14 @@
 /* eslint-disable react/no-unused-state */
 import React from 'react';
 
-const { Provider, Consumer } = React.createContext({
+const fullContext = React.createContext({
   metadata: {},
   setMetadata: () => {},
 });
+
+export const useMetadata = () => React.useContext(fullContext);
+
+const { Provider, Consumer } = fullContext;
 
 class MetadataContext extends React.Component {
   constructor(props) {

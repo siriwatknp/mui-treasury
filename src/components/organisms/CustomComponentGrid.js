@@ -2,17 +2,9 @@ import React from 'react';
 import partition from 'lodash/partition';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
-import molecules from 'components/molecules';
 import { useHalfBorderedGridStyles } from '@mui-treasury/styles/grid';
 
-const { GridShowcase } = molecules;
-
-const CustomComponentGrid = ({
-  components,
-  noHeader,
-  setComponent,
-  ShowcaseWidgetProps,
-}) => {
+const CustomComponentGrid = ({ components, noHeader, renderGrid: Grid }) => {
   const normalColWidth = {
     xs: 12,
     sm: 6,
@@ -44,21 +36,17 @@ const CustomComponentGrid = ({
           <h3>Custom Styles</h3>
         </Box>
       )}
-      <GridShowcase
+      <Grid
         gridStyles={gridStyles}
         components={shortComponents}
         GridItemProps={normalColWidth}
-        setComponent={setComponent}
-        ShowcaseWidgetProps={ShowcaseWidgetProps}
       />
       {longComponents.length > 0 && (
         <Box mt={'-1px'}>
-          <GridShowcase
+          <Grid
             gridStyles={longGridStyles}
             components={longComponents}
             GridItemProps={longColWidth}
-            setComponent={setComponent}
-            ShowcaseWidgetProps={ShowcaseWidgetProps}
           />
         </Box>
       )}
@@ -69,10 +57,12 @@ const CustomComponentGrid = ({
 CustomComponentGrid.propTypes = {
   noHeader: PropTypes.bool,
   components: PropTypes.arrayOf(PropTypes.elementType),
+  renderGrid: PropTypes.func,
 };
 CustomComponentGrid.defaultProps = {
   noHeader: false,
   components: [],
+  renderGrid: () => null,
 };
 
 export default CustomComponentGrid;

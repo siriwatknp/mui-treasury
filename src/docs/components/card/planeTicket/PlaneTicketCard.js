@@ -1,66 +1,42 @@
 import React from 'react';
+import cx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import AirplanemodeActive from '@material-ui/icons/AirplanemodeActive';
+import { useVerticalRipStyles } from '@mui-treasury/styles/rip';
 import MOCK from 'constants/mock';
 
 const mainColor = '#003399';
 const lightColor = '#ecf2ff';
+const borderRadius = 12;
 
 const useStyles = makeStyles(({ palette }) => ({
   card: {
+    overflow: 'visible',
     background: 'none',
     display: 'flex',
-    borderRadius: 12,
     minWidth: 400,
     minHeight: 150,
     filter: 'drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3))',
+    '& $moveLeft, $moveRight': {
+      transition: '0.3s',
+    },
+    '&:hover': {
+      '& $moveLeft': {
+        transform: 'translateX(-8px)',
+      },
+      '& $moveRight': {
+        transform: 'translateX(8px)',
+      },
+    },
   },
   left: {
+    borderTopLeftRadius: borderRadius,
+    borderBottomLeftRadius: borderRadius,
     flexBasis: '33.33%',
     display: 'flex',
     backgroundColor: '#fff',
-  },
-  rip: {
-    flexBasis: 20,
-    flexShrink: 0,
-    position: 'relative',
-    margin: '10px 0',
-    textAlign: 'center',
-    background: `linear-gradient(to right, #fff 50%, ${lightColor} 50%)`,
-    '&:before, &:after': {
-      boxSizing: 'content-box',
-      display: 'block',
-      content: '" "',
-      width: 20,
-      height: 20,
-      borderRadius: '50%',
-      position: 'absolute',
-      left: '50%',
-      borderWidth: 5,
-      borderStyle: 'solid',
-      borderLeftColor: 'transparent',
-    },
-    '&:before': {
-      top: -10,
-      transform: 'translate(-50%, -50%) rotate(45deg)',
-      borderBottomColor: '#fff',
-      borderRightColor: lightColor,
-      borderTopColor: 'transparent',
-    },
-    '&:after': {
-      bottom: -10,
-      transform: 'translate(-50%, 50%) rotate(-45deg)',
-      borderTopColor: '#fff',
-      borderRightColor: lightColor,
-      borderBottomColor: 'transparent',
-    },
-  },
-  tear: {
-    borderRight: `3px dotted ${mainColor}`,
-    height: '100%',
-    display: 'inline-block',
   },
   media: {
     margin: 'auto',
@@ -69,6 +45,8 @@ const useStyles = makeStyles(({ palette }) => ({
     borderRadius: '50%',
   },
   right: {
+    borderTopRightRadius: borderRadius,
+    borderBottomRightRadius: borderRadius,
     flex: 1,
     padding: 12,
     display: 'flex',
@@ -120,19 +98,29 @@ const useStyles = makeStyles(({ palette }) => ({
     color: mainColor,
     display: 'block',
   },
+  moveLeft: {},
+  moveRight: {},
 }));
 
 const PlaneTicketCard = () => {
   const styles = useStyles();
+  const ripStyles = useVerticalRipStyles({
+    size: 24,
+    rightColor: lightColor,
+    tearColor: mainColor,
+  });
   return (
     <Card className={styles.card} elevation={0}>
-      <div className={styles.left}>
+      <div className={cx(styles.left, styles.moveLeft)}>
         <CardMedia className={styles.media} image={MOCK.planeLogoImg} />
       </div>
-      <div className={styles.rip}>
-        <div className={styles.tear} />
+      <div className={cx(ripStyles.left, styles.moveLeft)}>
+        <div className={ripStyles.tear} />
       </div>
-      <div className={styles.right}>
+      <div className={cx(ripStyles.right, styles.moveRight)}>
+        <div className={ripStyles.tear} />
+      </div>
+      <div className={cx(styles.right, styles.moveRight)}>
         <div className={styles.label}>
           <h2 className={styles.heading}>BEK</h2>
           <p className={styles.subheader}>Beijing China</p>
@@ -161,7 +149,12 @@ PlaneTicketCard.metadata = {
   frameProps: {
     bgcolor: mainColor,
   },
-  files: [],
+  files: [
+    {
+      pkg: 'mui-styles',
+      path: 'rip/vertical/verticalRip.styles.js',
+    },
+  ],
 };
 // hide-end
 
