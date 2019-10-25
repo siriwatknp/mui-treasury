@@ -149,7 +149,12 @@ PlaneTicketCard.metadata = {
   frameProps: {
     bgcolor: mainColor,
   },
-  files: [],
+  files: [
+    {
+      pkg: 'mui-styles',
+      path: 'rip/vertical/verticalRip.styles.js',
+    },
+  ],
 };
 // hide-end
 
