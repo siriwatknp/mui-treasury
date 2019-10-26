@@ -7,6 +7,10 @@ import {
   DateTimePicker as InnerDateTimePicker,
 } from '@material-ui/pickers';
 
+import images from './lib/assets';
+
+const { logo } = images;
+
 const TimePicker = props => (
   <MuiPickersUtilsProvider utils={MomentUtils}>
     <KeyboardTimePicker {...props} />
@@ -30,6 +34,7 @@ export { Visibility, VisibilityOff } from '@material-ui/icons';
 export { useTheme } from '@material-ui/core/styles';
 
 export { TimePicker, DatePicker, DateTimePicker };
+export { logo, images };
 
 export { default as theme } from './lib/theme';
 export { default as Button } from './lib/PeaButton';
