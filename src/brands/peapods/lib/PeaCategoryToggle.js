@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'clsx';
 import { withStyles } from '@material-ui/core/styles';
@@ -15,11 +15,20 @@ const styles = theme => {
       position: 'relative',
       marginBottom: theme.spacing(1),
     },
+    imageButton: {
+      padding: 0,
+      border: 'none',
+      transition: 'transform ease 0.3s',
+      '&:hover': {
+        transform: 'scale(1.1)',
+      },
+    },
     image: {
       display: 'block',
       width: imageSize,
       height: imageSize,
       objectFit: 'cover',
+      cursor: 'pointer',
       [theme.breakpoints.only('xs')]: {
         width: mobileImageSize,
         height: mobileImageSize,
@@ -56,42 +65,59 @@ const PeaCategoryToggle = withStyles(styles, { name: 'PeaCategoryToggle' })(
     checked,
     onChange,
     value,
-  }) => (
-    <div className={cx('PeaCategoryToggle-root', classes.root)}>
-      <div
-        className={cx('PeaCategoryToggle-imageWrapper', classes.imageWrapper)}
-      >
-        <img
-          alt={'main'}
-          src={src}
-          className={cx(classes.image, classes.mainImage)}
-        />
-        <img
-          alt={'blur'}
-          src={src}
-          className={cx(classes.image, classes.blurredImage)}
+  }) => {
+    const checkElement = useRef(null);
+
+    const handleImageClick = () => {
+      if (checkElement.current) {
+        checkElement.current.click();
+      }
+    };
+
+    return (
+      <div className={cx('PeaCategoryToggle-root', classes.root)}>
+        <div
+          className={cx('PeaCategoryToggle-imageWrapper', classes.imageWrapper)}
+        >
+          <button
+            type="button"
+            onClick={handleImageClick}
+            className={classes.imageButton}
+          >
+            <img
+              alt={'main'}
+              src={src}
+              className={cx(classes.image, classes.mainImage)}
+            />
+            <img
+              alt={'blur'}
+              src={src}
+              className={cx(classes.image, classes.blurredImage)}
+            />
+          </button>
+        </div>
+        <FormControlLabel
+          control={
+            <Checkbox
+              color={'primary'}
+              {...CheckboxProps}
+              checked={checked}
+              onChange={onChange}
+              ref={checkElement}
+              value={value}
+            />
+          }
+          label={label}
+          {...FormControlLabelProps}
+          classes={{
+            root: classes.formLabelRoot,
+            label: classes.formLabelLabel,
+            ...FormControlLabelProps.classes,
+          }}
         />
       </div>
-      <FormControlLabel
-        control={
-          <Checkbox
-            color={'primary'}
-            {...CheckboxProps}
-            checked={checked}
-            onChange={onChange}
-            value={value}
-          />
-        }
-        label={label}
-        {...FormControlLabelProps}
-        classes={{
-          root: classes.formLabelRoot,
-          label: classes.formLabelLabel,
-          ...FormControlLabelProps.classes,
-        }}
-      />
-    </div>
-  ),
+    );
+  },
 );
 
 PeaCategoryToggle.propTypes = {

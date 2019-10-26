@@ -181,6 +181,7 @@ const PeaAutocompleteList = ({
   OptionComponent,
   onChange,
   isMulti,
+  isLoading,
   fullWidth,
   hideSuggestions,
   clearAfterEnter,
@@ -292,6 +293,9 @@ const PeaAutocompleteList = ({
         placeholder={placeholder}
         autoFocus={autoFocus}
         value={value}
+        // TODO: verify this prop is working when we upgrade packages
+        // https://github.com/JedWatson/react-select/pull/3690
+        isLoading={isLoading}
         inputValue={inputValue.length ? inputValue : undefined}
         isClearable
         openMenuOnClick={!isAsync}

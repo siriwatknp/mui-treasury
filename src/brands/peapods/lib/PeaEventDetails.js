@@ -97,6 +97,7 @@ const PeaEventDetails = ({
   stats,
   isPodMember,
   onCreatePodClicked,
+  onEditEventClicked,
   renderPods,
   renderConnections,
   isMobile,
@@ -126,6 +127,11 @@ const PeaEventDetails = ({
     setAnchor(null);
   };
 
+  const editEvent = () => {
+    setAnchor(null);
+    onEditEventClicked();
+  };
+
   const renderMenu = () => (
     <Menu
       id="long-menu"
@@ -150,6 +156,14 @@ const PeaEventDetails = ({
         <ListItemText disableTypography>
           <PeaText variant={'body1'} weight={'bold'}>
             Report
+          </PeaText>
+        </ListItemText>
+      </MenuItem>
+
+      <MenuItem onClick={() => editEvent()}>
+        <ListItemText disableTypography>
+          <PeaText color={'secondary'} variant={'body1'} weight={'bold'}>
+            Edit Event
           </PeaText>
         </ListItemText>
       </MenuItem>
@@ -234,9 +248,9 @@ const PeaEventDetails = ({
                 mapOrigin,
                 location,
                 podCount,
-                attendingCount: stats.attending,
-                interestedCount: stats.interested,
-                limit: stats.limit,
+                attendingCount: stats ? stats.attending : null,
+                interestedCount: stats ? stats.interested : null,
+                limit: stats ? stats.limit : null,
               }).map(item => (
                 <Grid key={item.key} container spacing={1} wrap={'nowrap'}>
                   <Grid item>
@@ -333,6 +347,7 @@ PeaEventDetails.propTypes = {
   sourceImage: PropTypes.string,
   sourceLink: PropTypes.string,
   onCreatePodClicked: PropTypes.func.isRequired,
+  onEditEventClicked: PropTypes.func.isRequired,
   renderConnections: PropTypes.func.isRequired,
   renderPods: PropTypes.func.isRequired,
   podCount: PropTypes.number,

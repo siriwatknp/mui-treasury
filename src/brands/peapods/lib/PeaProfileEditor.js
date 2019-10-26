@@ -30,6 +30,8 @@ import PeaText from './PeaTypography';
 import PeaLoadingSpinner from './PeaLoadingSpinner';
 import PeaAutocompleteList from './PeaAutocompleteList';
 
+// TODO: this needs to be refactored into smaller components
+
 const PeaProfileEditor = ({
   cover,
   image,
@@ -280,16 +282,20 @@ const PeaProfileEditor = ({
           </FormControl>
         </div>
 
-        <PeaAutocompleteList
-          value={user.tags}
-          canCreate
-          fullWidth
-          placeholder={'Tags'}
-          onChange={onTagsChanged}
-          isMulti
-          hideSuggestions
-          removeSpacing
-        />
+        <FormControl margin={'normal'} fullWidth>
+          <FormLabel>Tags</FormLabel>
+          <PeaAutocompleteList
+            value={user.tags}
+            canCreate
+            fullWidth
+            placeholder={'Enter some hashtags to follow ( feature is WIP )'}
+            onChange={onTagsChanged}
+            isMulti
+            hideSuggestions
+            removeSpacing
+            autoFocus
+          />
+        </FormControl>
 
         <>
           <TextField
@@ -301,6 +307,7 @@ const PeaProfileEditor = ({
             helperText={error.email ? 'Invalid Email' : ''}
             onChange={onUserChange('email')}
           />
+
           <TextField
             label={'Phone'}
             value={user.phoneNumber}
@@ -311,6 +318,7 @@ const PeaProfileEditor = ({
             helperText={error.phoneNumber ? 'Invalid Phone Number' : ''}
             onChange={onUserChange('phoneNumber')}
           />
+
           <FormControl margin={'normal'} fullWidth>
             <FormLabel>Private account</FormLabel>
             <PeaSwitch
@@ -334,6 +342,7 @@ const PeaProfileEditor = ({
                   />
                 </IconButton>
               </Grid>
+
               <Grid item>
                 <IconButton>
                   <PeaIcon
@@ -345,14 +354,28 @@ const PeaProfileEditor = ({
                   />
                 </IconButton>
               </Grid>
+
               <Grid item>
                 <IconButton>
                   <PeaIcon
                     link
+                    color={'red'}
                     icon={'fab fa-facebook-f'}
                     bgColor={'white'}
                     shadow
                     size={'big'}
+                  />
+                </IconButton>
+              </Grid>
+
+              <Grid item>
+                <IconButton>
+                  <PeaIcon
+                    link
+                    icon={'fab fa-instagram'}
+                    bgColor={'white'}
+                    size={'big'}
+                    shadow
                   />
                 </IconButton>
               </Grid>

@@ -8,5 +8,12 @@ export default ({ spacing }) => ({
         padding: spacing(0.5),
       },
     },
+    label: {
+      '& > .MuiIcon-root': {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+    },
   },
 });
