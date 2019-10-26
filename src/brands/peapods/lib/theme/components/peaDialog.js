@@ -16,6 +16,7 @@ export default ({ spacing, breakpoints, white, palette }) => ({
           left: 0,
           bottom: 0,
           width: '100%',
+          borderRadius: 6,
           background: 'rgba(0,0,0,0.4)',
           '& .material-icons': {
             fontSize: 48,
