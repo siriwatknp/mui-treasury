@@ -27,6 +27,7 @@ const DateTimePicker = props => (
 
 export * from '@material-ui/core';
 export { Visibility, VisibilityOff } from '@material-ui/icons';
+export { useTheme } from '@material-ui/core/styles';
 
 export { TimePicker, DatePicker, DateTimePicker };
 
@@ -50,6 +51,7 @@ export { default as CardActions } from './lib/PeaCardActions';
 export { default as ProfileCard } from './lib/PeaProfileCard';
 export { default as NotificationItem } from './lib/PeaNotificationItem';
 export { default as Confirmation } from './lib/PeaConfirmation';
+export { default as EventDialog } from './lib/PeaDialog';
 export { default as InvitationDialog } from './lib/PeaInvitationDialog';
 export { default as GroupDialog } from './lib/PeaGroupDialog';
 export { default as PodDialog } from './lib/PeaPodDialog';
@@ -57,13 +59,13 @@ export { default as Register } from './lib/PeaRegister';
 export { default as PodCard } from './lib/PeaPodCard';
 export { default as PersonCard } from './lib/PeaPersonCard';
 export { default as Slider } from './lib/PeaSlider';
-export { default as EventDialog } from './lib/PeaEventDialog';
 export { default as EventFilters } from './lib/PeaEventFilters';
 export { default as UserFilters } from './lib/PeaUserFilters';
 export { default as AppBar } from './lib/PeaAppBar';
 export { default as Connections } from './lib/PeaConnections';
 export { default as SocialAvatar } from './lib/PeaSocialAvatar';
 export { default as Typography } from './lib/PeaTypography';
+// TODO: delete these 2 components
 export { default as FullProfileOld } from './lib/PeaFullProfileOld';
 export { default as FullProfile } from './lib/PeaFullProfile';
 export { default as UserCard } from './lib/PeaUserCard';

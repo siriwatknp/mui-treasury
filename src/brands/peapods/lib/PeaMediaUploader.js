@@ -114,7 +114,8 @@ class MediaUploader extends Component {
     }
 
     if (onWidgetEvent) {
-      onWidgetEvent(err, data);
+      const uploadError = err ? new Error(`Upload error: ${err.status}`) : null;
+      onWidgetEvent(uploadError, data);
     }
   };
 
