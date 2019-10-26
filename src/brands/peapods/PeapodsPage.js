@@ -63,8 +63,6 @@ import SocialAvatar from './demo/SocialAvatar';
 import Connections from './demo/Connections';
 import PeaTypography from './demo/Typography';
 import UserCard from './demo/UserCard';
-import FullProfileOld from './demo/FullProfileOld';
-import FullProfile from './demo/FullProfile';
 import GroupProfile from './demo/GroupProfile';
 import GroupCard from './demo/GroupCard';
 import EventCard from './demo/EventCard';
@@ -210,20 +208,6 @@ const components = [
   { component: PeaTypography },
   { component: UserCard },
   { component: UserSettings },
-  {
-    component: FullProfile,
-    gridItemProps: {
-      sm: 10,
-      lg: 8,
-    },
-  },
-  {
-    component: FullProfileOld,
-    gridItemProps: {
-      sm: 10,
-      lg: 8,
-    },
-  },
 
   {
     component: GroupProfile,

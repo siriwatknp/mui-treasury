@@ -65,15 +65,14 @@ export { default as AppBar } from './lib/PeaAppBar';
 export { default as Connections } from './lib/PeaConnections';
 export { default as SocialAvatar } from './lib/PeaSocialAvatar';
 export { default as Typography } from './lib/PeaTypography';
-// TODO: delete these 2 components
-export { default as FullProfileOld } from './lib/PeaFullProfileOld';
-export { default as FullProfile } from './lib/PeaFullProfile';
 export { default as UserCard } from './lib/PeaUserCard';
 export { default as GroupProfile } from './lib/PeaGroupProfile';
 export { default as GroupCard } from './lib/PeaGroupCard';
 export { default as EventCard } from './lib/PeaEventCard';
 export { default as Chat } from './lib/PeaChat';
 export { default as MediaUploader } from './lib/PeaMediaUploader';
+// TODO: remove cycle
+// eslint-disable-next-line import/no-cycle
 export { default as AccountProfile } from './lib/PeaAccountProfile';
 export { default as ThreadTitle } from './lib/PeaThreadTitle';
 export { default as ThreadHeader } from './lib/PeaThreadHeader';
