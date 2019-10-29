@@ -5,7 +5,7 @@ import brandCardHeaderStyles from '@mui-treasury/styles/cardHeader/brand';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 
-const BrandCardHeader = withStyles(brandCardHeaderStyles)(
+const BrandCardHeader = withStyles(brandCardHeaderStyles, { name: 'BrandCardHeader' })(
   ({ css, image, extra }) => (
     <div className={css.root}>
       <div className={css.header}>
