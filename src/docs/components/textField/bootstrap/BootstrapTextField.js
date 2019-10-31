@@ -12,6 +12,7 @@ const BootstrapTextField = () => {
       <TextField
         InputLabelProps={{
           classes: labelStyles,
+          shrink: true,
         }}
         InputProps={{
           disableUnderline: true,
@@ -28,6 +29,7 @@ const BootstrapTextField = () => {
       <TextField
         InputLabelProps={{
           classes: labelStyles,
+          shrink: true,
         }}
         InputProps={{
           disableUnderline: true,
@@ -46,6 +48,7 @@ const BootstrapTextField = () => {
       <TextField
         InputLabelProps={{
           classes: labelStyles,
+          shrink: true,
         }}
         InputProps={{
           disableUnderline: true,
