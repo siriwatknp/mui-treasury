@@ -4,15 +4,23 @@ import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import { useHalfBorderedGridStyles } from '@mui-treasury/styles/grid';
 
-const CustomComponentGrid = ({ components, noHeader, renderGrid: Grid }) => {
+const CustomComponentGrid = ({
+  components,
+  noHeader,
+  normalGridItemConfig,
+  largeGridItemConfig,
+  renderGrid: Grid,
+}) => {
   const normalColWidth = {
     xs: 12,
     sm: 6,
     lg: 4,
+    ...normalGridItemConfig,
   };
   const longColWidth = {
     xs: 12,
     lg: 6,
+    ...largeGridItemConfig,
   };
   const gridStyles = useHalfBorderedGridStyles({
     borderColor: '#e9e9e9',
@@ -58,11 +66,15 @@ CustomComponentGrid.propTypes = {
   noHeader: PropTypes.bool,
   components: PropTypes.arrayOf(PropTypes.elementType),
   renderGrid: PropTypes.func,
+  normalGridItemConfig: PropTypes.shape({}),
+  largeGridItemConfig: PropTypes.shape({}),
 };
 CustomComponentGrid.defaultProps = {
   noHeader: false,
   components: [],
   renderGrid: () => null,
+  normalGridItemConfig: {},
+  largeGridItemConfig: {},
 };
 
 export default CustomComponentGrid;
