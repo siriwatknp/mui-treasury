@@ -12,10 +12,15 @@ const CardContentPage = () => (
       noDefaultSection: true,
       customComponents,
       DefaultComponent,
+      normalGridItemConfig: {
+        sm: 12,
+        lg: 12,
+      },
     }}
     DemoSourceDrawerProps={{
       frameProps: {
         p: 2,
+        minWidth: 600,
       },
     }}
   />
