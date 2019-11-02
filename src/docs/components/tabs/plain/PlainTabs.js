@@ -25,7 +25,7 @@ const PlainTabs = () => {
 PlainTabs.metadata = {
   title: 'Plain',
   path: 'tabs/plain',
-  longFrame: true,
+  size: 'large',
   files: [{ pkg: 'mui-styles', path: 'tabs/plain/plainTabs.styles.js' }],
 };
 // hide-end

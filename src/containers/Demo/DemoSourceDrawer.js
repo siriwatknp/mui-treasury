@@ -49,6 +49,20 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 }));
 
+const sizeConfig = {
+  medium: {},
+  large: {
+    minHeight: 400,
+    minWidth: 600,
+    px: 8,
+  },
+  huge: {
+    minHeight: 400,
+    minWidth: 700,
+    maxWidth: 800,
+  },
+};
+
 const DemoSourceDrawer = ({ title, frameProps }) => {
   const classes = useStyles();
   const renderList = items => {
@@ -92,8 +106,8 @@ const DemoSourceDrawer = ({ title, frameProps }) => {
         const {
           files = [],
           relates = [],
+          size = 'medium',
           frameProps: finalFrameProps = {},
-          longFrame,
         } = metadata;
         const mappedFiles = docGen().mapAllFiles(files);
         return (
@@ -135,42 +149,38 @@ const DemoSourceDrawer = ({ title, frameProps }) => {
               </Box>
               <Box css={{ flexGrow: 1 }} bgcolor={'rgb(40, 44, 52)'} />
             </Drawer>
-            <Hidden smDown>
-              <Portal>
-                <Fade in={isOpen}>
-                  <Box
-                    position={'fixed'}
-                    top={'50%'}
-                    left={'calc(50% - 350px)'}
-                    minWidth={400}
-                    maxWidth={400}
-                    minHeight={300}
-                    display={'flex'}
-                    justifyContent={'center'}
-                    alignItems={'center'}
-                    borderRadius={4}
-                    bgcolor={'common.white'}
-                    zIndex={1500}
-                    {...frameProps}
-                    {...(longFrame && {
-                      minHeight: 400,
-                      minWidth: 700,
-                      px: 8,
-                    })}
-                    {...finalFrameProps}
-                    css={{
-                      transform: 'translate(-50%, -50%)',
-                      ...frameProps.css,
-                      ...finalFrameProps.css,
-                    }}
-                  >
-                    <ThemeProvider theme={baseTheme}>
+            <ThemeProvider theme={baseTheme}>
+              <Hidden smDown>
+                <Portal>
+                  <Fade in={isOpen}>
+                    <Box
+                      position={'fixed'}
+                      top={'50%'}
+                      left={'calc(50% - 350px)'}
+                      minWidth={400}
+                      maxWidth={400}
+                      minHeight={300}
+                      display={'flex'}
+                      justifyContent={'center'}
+                      alignItems={'center'}
+                      borderRadius={4}
+                      bgcolor={'common.white'}
+                      zIndex={1500}
+                      {...frameProps}
+                      {...sizeConfig[size]}
+                      {...finalFrameProps}
+                      css={{
+                        transform: 'translate(-50%, -50%)',
+                        ...frameProps.css,
+                        ...finalFrameProps.css,
+                      }}
+                    >
                       {!isEmpty(Component) && <Component />}
-                    </ThemeProvider>
-                  </Box>
-                </Fade>
-              </Portal>
-            </Hidden>
+                    </Box>
+                  </Fade>
+                </Portal>
+              </Hidden>
+            </ThemeProvider>
           </>
         );
       }}

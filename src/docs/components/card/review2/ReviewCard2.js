@@ -115,7 +115,7 @@ const ReviewCard2 = () => {
 ReviewCard2.metadata = {
   title: 'Review II',
   path: 'card/review2',
-  longFrame: true,
+  size: 'large',
   frameProps: {
     bgcolor: 'rgb(245, 248, 250)',
   },

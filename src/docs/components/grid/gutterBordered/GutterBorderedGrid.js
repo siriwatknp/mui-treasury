@@ -30,7 +30,7 @@ GutterBorderedGrid.metadata = {
   title: 'Gutter Bordered',
   description: 'show border between each item',
   path: 'grid/gutterBordered',
-  longFrame: true,
+  size: 'large',
   files: [
     {
       pkg: 'mui-styles',

@@ -28,8 +28,6 @@ const DemoPage = ({
     customComponents,
     DefaultComponent,
     ShowcaseWidgetProps,
-    normalGridItemConfig,
-    largeGridItemConfig,
   } = DemoComponentsProps;
   return (
     <SidebarLayout
@@ -57,11 +55,7 @@ const DemoPage = ({
                 )}
                 <CustomComponentGrid
                   noHeader={noDefaultSection}
-                  setComponent={setComponent}
                   components={customComponents}
-                  ShowcaseWidgetProps={ShowcaseWidgetProps}
-                  normalGridItemConfig={normalGridItemConfig}
-                  largeGridItemConfig={largeGridItemConfig}
                   renderGrid={gridProps => (
                     <GridShowcase
                       {...gridProps}

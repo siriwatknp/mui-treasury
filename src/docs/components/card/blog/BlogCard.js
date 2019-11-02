@@ -97,7 +97,7 @@ BlogCard.metadata = {
   title: 'Blog',
   description: 'Personal Blog',
   path: 'card/blog',
-  longFrame: true,
+  size: 'large',
   frameProps: {
     my: 3,
   },
