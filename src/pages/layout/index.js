@@ -29,10 +29,12 @@ const index = () => {
     <LayoutProvider
       config={{
         sidebar: {
-          variant: 'persistent',
+          variant: 'permanent',
           width: 256,
           collapsible: true,
           collapsedWidth: 64,
+          autoCollapsedDisabled: false,
+          collapsedBreakpoint: 'md',
         },
         header: {
           position: 'sticky',

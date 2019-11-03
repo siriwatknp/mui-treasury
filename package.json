@@ -111,6 +111,7 @@
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-remove-graphql-queries": "^2.7.2",
     "babel-preset-gatsby": "^0.2.8",
+    "css-mediaquery": "^0.1.2",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint-config-airbnb": "^17.1.1",

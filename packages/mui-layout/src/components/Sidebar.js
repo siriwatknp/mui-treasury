@@ -5,10 +5,12 @@ import { makeStyles } from '@material-ui/styles';
 import Drawer from '@material-ui/core/Drawer';
 import { useLayoutCtx } from '../layoutContext';
 import { sidebarStyles } from '../styles';
+import useAutoCollapse from '../hooks/useAutoCollapse';
 
 const useStyles = makeStyles(sidebarStyles);
 
 const Sidebar = ({ children, PaperProps, ...props }) => {
+  useAutoCollapse();
   const styles = useStyles();
   const ctx = useLayoutCtx();
   const { sidebar, opened, setOpened, getSidebarWidth } = ctx;
