@@ -1,6 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import { Root, createDefaultLayout } from '@mui-treasury/layout';
+import { Root, presets } from 'mui-layout';
 // import { library } from '@fortawesome/fontawesome-svg-core';
 // import {
 //   faFighterJet,
@@ -33,7 +33,7 @@ import banner from './assets/mui-treasury_banner_minified.jpg';
 //   faFacebookF
 // );
 
-const layoutConfig = createDefaultLayout({
+const layoutConfig = presets.createDefaultLayout({
   navWidth: 256,
   navVariant: {
     xs: 'temporary',

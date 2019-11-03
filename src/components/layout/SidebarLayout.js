@@ -10,7 +10,7 @@ import {
   Header as LayoutHeader,
   Footer as LayoutFooter,
   Content,
-} from '@mui-treasury/layout';
+} from 'mui-layout';
 import MENUS, { PKG } from 'constants/menus';
 import Header from 'components/layout/Header';
 import Footer from 'components/layout/Footer';
