@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
-import { useConfig } from '../layoutContext';
+import { useLayoutCtx } from '../layoutContext';
 
-const CollapseBtn = ({ onClick, ...props }) => {
-  const { setCollapsed, collapsed } = useConfig();
+const CollapseBtn = ({ component: Component, onClick, ...props }) => {
+  const { setCollapsed, collapsed } = useLayoutCtx();
   return (
-    <Button
+    <Component
       onClick={e => {
         onClick(e);
         setCollapsed(!collapsed);
@@ -18,9 +18,11 @@ const CollapseBtn = ({ onClick, ...props }) => {
 
 CollapseBtn.propTypes = {
   onClick: PropTypes.func,
+  component: PropTypes.elementType,
 };
 CollapseBtn.defaultProps = {
   onClick: () => {},
+  component: Button,
 };
 
 export default CollapseBtn;

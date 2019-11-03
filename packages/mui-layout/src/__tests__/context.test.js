@@ -1,6 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import LayoutContext from '../layoutContext';
+import LayoutContext, {
+  LayoutProvider,
+  LayoutConsumer,
+} from '../layoutContext';
 
 describe('context', () => {
   test('Layout Context has correct default schema', () => {

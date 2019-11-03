@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import createLayoutUtils from './utils/LayoutUtils';
 
 const LayoutCtx = React.createContext('value');
 LayoutCtx.displayName = 'MuiLayoutCtx';
@@ -7,16 +8,18 @@ LayoutCtx.displayName = 'MuiLayoutCtx';
 const LayoutProvider = ({ config, children }) => {
   const [opened, setOpened] = React.useState(false);
   const [collapsed, setCollapsed] = React.useState(false);
-  const getSidebarWidth = () => {
-    const { sidebar } = config;
-    if (sidebar.collapsible && collapsed) return sidebar.collapsedWidth;
-    return sidebar.width;
-  };
+  const { getSidebarGap, getWidth, getSidebarWidth } = createLayoutUtils({
+    opened,
+    collapsed,
+    ...config,
+  });
   return (
     <LayoutCtx.Provider
       value={{
         ...config,
         getSidebarWidth,
+        getSidebarGap,
+        getWidth,
         opened,
         setOpened,
         collapsed,
@@ -36,7 +39,7 @@ LayoutProvider.propTypes = {
 
 export { LayoutProvider };
 
-export const useConfig = () => useContext(LayoutCtx);
+export const useLayoutCtx = () => useContext(LayoutCtx);
 
 export const LayoutConsumer = LayoutCtx.Consumer;
 

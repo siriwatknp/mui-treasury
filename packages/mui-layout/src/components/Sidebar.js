@@ -1,15 +1,16 @@
 import React from 'react';
+import cx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import Drawer from '@material-ui/core/Drawer';
-import { useConfig } from '../layoutContext';
+import { useLayoutCtx } from '../layoutContext';
 import { sidebarStyles } from '../styles';
 
 const useStyles = makeStyles(sidebarStyles);
 
 const Sidebar = ({ children, PaperProps, ...props }) => {
   const styles = useStyles();
-  const ctx = useConfig();
+  const ctx = useLayoutCtx();
   const { sidebar, opened, setOpened, getSidebarWidth } = ctx;
   return (
     <Drawer
@@ -22,7 +23,7 @@ const Sidebar = ({ children, PaperProps, ...props }) => {
       PaperProps={{
         ...PaperProps,
         classes: {
-          root: styles.paper,
+          root: cx(styles.paper, styles.transition),
         },
         style: {
           ...PaperProps.style,

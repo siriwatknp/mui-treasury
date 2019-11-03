@@ -1,47 +1,88 @@
+/* eslint-disable */
 import React from 'react';
+import Toolbar from '@material-ui/core/Toolbar';
 import {
   LayoutProvider,
   LayoutConsumer,
 } from '@mui-treasury/layout/layoutContext';
+import IconButton from '@material-ui/core/IconButton';
+import Header from '@mui-treasury/layout/components/Header';
 import Sidebar from '@mui-treasury/layout/components/Sidebar';
+import Content from '@mui-treasury/layout/components/Content';
+import Footer from '@mui-treasury/layout/components/Footer';
 import CollapseBtn from '@mui-treasury/layout/components/CollapseBtn';
-import { useSidebarStyles } from '@mui-treasury/layout/styles';
-import KeyboardArrowRightRounded from '@material-ui/icons/KeyboardArrowRightRounded';
-import KeyboardArrowLeftRounded from '@material-ui/icons/KeyboardArrowLeftRounded';
+import CollapseIcon from '@mui-treasury/layout/components/CollapseIcon';
+import SidebarTrigger from '@mui-treasury/layout/components/SidebarTrigger';
+import SidebarTriggerIcon from '@mui-treasury/layout/components/SidebarTriggerIcon';
+import { useSidebarStyles, useHeaderStyles } from '@mui-treasury/layout/styles';
+// MOCK
+import NavContentEx from 'components/mock/NavContentEx';
+import NavHeaderEx from 'components/mock/NavHeaderEx';
+import HeaderEx from 'components/mock/HeaderEx';
+import ContentEx from 'components/mock/ContentEx';
+import FooterEx from 'components/mock/FooterEx';
 
 const index = () => {
   const sidebarStyles = useSidebarStyles();
+  const headerStyles = useHeaderStyles();
   return (
     <LayoutProvider
       config={{
         sidebar: {
-          variant: 'permanent',
+          variant: 'persistent',
           width: 256,
           collapsible: true,
-          collapsedWidth: 80,
+          collapsedWidth: 64,
+        },
+        header: {
+          position: 'sticky',
+          clipped: true,
+          persistentPushed: false,
+          screenFit: true,
+        },
+        content: {
+          persistentPushed: false,
+          screenFit: true,
+        },
+        footer: {
+          persistentPushed: true,
+          screenFit: true,
         },
       }}
     >
+      <Header>
+        <Toolbar>
+          {/*<CollapseBtn*/}
+          {/*  component={IconButton}*/}
+          {/*  className={headerStyles.leftTrigger}*/}
+          {/*>*/}
+          {/*  <CollapseIcon />*/}
+          {/*</CollapseBtn>*/}
+          <SidebarTrigger className={headerStyles.leftTrigger}>
+            <SidebarTriggerIcon />
+          </SidebarTrigger>
+          <HeaderEx />
+        </Toolbar>
+      </Header>
+      <Content>
+        <ContentEx />
+      </Content>
       <Sidebar>
         {({ collapsed }) => (
           <>
-            <div className={sidebarStyles.container}>nav goes here!</div>
+            <NavHeaderEx collapsed={collapsed} />
+            <div className={sidebarStyles.container}>
+              <NavContentEx />
+            </div>
             <CollapseBtn className={sidebarStyles.collapseBtn}>
-              {collapsed ? (
-                <KeyboardArrowRightRounded />
-              ) : (
-                <KeyboardArrowLeftRounded />
-              )}
+              <CollapseIcon />
             </CollapseBtn>
           </>
         )}
       </Sidebar>
-      <LayoutConsumer>
-        {({ setOpened }) => (
-          // eslint-disable-next-line react/button-has-type
-          <button onClick={() => setOpened(true)}>open</button>
-        )}
-      </LayoutConsumer>
+      <Footer>
+        <FooterEx />
+      </Footer>
     </LayoutProvider>
   );
 };

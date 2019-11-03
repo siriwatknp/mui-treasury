@@ -5,6 +5,7 @@ import { render, fireEvent } from '@testing-library/react';
 import { LayoutProvider, LayoutConsumer } from '../layoutContext';
 import Sidebar from '../components/Sidebar';
 import CollapseBtn from '../components/CollapseBtn';
+import SidebarTrigger from '../components/SidebarTrigger';
 
 const baseTheme = createMuiTheme();
 
@@ -37,9 +38,7 @@ describe('Sidebar', function() {
         data-testid={'sidebar-root'}
         PaperProps={{ 'data-testid': 'sidebar-paper' }}
       >
-        {({ setOpened, opened }) => (
-          <button data-testid={'trigger'} onClick={() => setOpened(!opened)} />
-        )}
+        <SidebarTrigger data-testid={'trigger'} />
       </Sidebar>,
       { sidebar: { variant: 'persistent' } }
     );
@@ -57,14 +56,7 @@ describe('Sidebar', function() {
           data-testid={'sidebar-root'}
           ModalProps={{ BackdropProps: { 'data-testid': 'backdrop' } }}
         />
-        <LayoutConsumer>
-          {({ setOpened, opened }) => (
-            <button
-              data-testid={'trigger'}
-              onClick={() => setOpened(!opened)}
-            />
-          )}
-        </LayoutConsumer>
+        <SidebarTrigger data-testid={'trigger'} />
       </>,
       { sidebar: { variant: 'temporary' } }
     );
@@ -95,29 +87,6 @@ describe('Sidebar', function() {
     );
     sidebarPaper = getByTestId('sidebar-paper');
     expect(sidebarPaper.style.width).toEqual(`${width}px`);
-  });
-
-  test('Sidebar can be collapsed to some width', () => {
-    const collapsedWidth = 80;
-    const { getByTestId } = renderLayout(
-      <Sidebar PaperProps={{ 'data-testid': 'sidebar-paper' }}>
-        {({ setCollapsed }) => (
-          <button data-testid={'trigger'} onClick={() => setCollapsed(true)} />
-        )}
-      </Sidebar>,
-      {
-        sidebar: {
-          variant: 'permanent',
-          width: 256,
-          collapsible: true,
-          collapsedWidth,
-        },
-      }
-    );
-    trigger = getByTestId('trigger');
-    fireEvent.click(trigger);
-    sidebarPaper = getByTestId('sidebar-paper');
-    expect(sidebarPaper.style.width).toEqual(`${collapsedWidth}px`);
   });
 
   test('Collapsible Side + Trigger should work', () => {

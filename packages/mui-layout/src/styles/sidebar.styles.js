@@ -1,9 +1,9 @@
+import transitionStyles from './transition.styles';
+
 export default ({ breakpoints, palette, transitions }) => ({
   paper: {
-    transition: transitions.create(['width'], {
-      easing: transitions.easing.sharp,
-      duration: transitions.duration.leavingScreen,
-    }),
+    borderColor: palette.action.hover,
+    ...transitionStyles({ transitions }).root,
   },
   container: {
     flexGrow: 1,
@@ -14,7 +14,7 @@ export default ({ breakpoints, palette, transitions }) => ({
     textAlign: 'center',
     borderRadius: 0,
     borderTop: '1px solid',
-    borderColor: 'rgba(0,0,0,0.12)',
+    borderColor: palette.action.hover,
     [breakpoints.up('sm')]: {
       minHeight: 40,
     },
