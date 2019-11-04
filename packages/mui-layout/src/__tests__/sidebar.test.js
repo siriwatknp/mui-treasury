@@ -26,7 +26,7 @@ describe('Sidebar', function() {
   test('[Permanent] should always display on screen', () => {
     const { getByTestId } = renderLayout(
       <Sidebar data-testid={'sidebar-root'} />,
-      { sidebar: { variant: 'permanent', autoCollapseDisabled: true, } }
+      { sidebar: { variant: 'permanent', autoCollapseDisabled: true } }
     );
     sidebarRoot = getByTestId('sidebar-root');
     expect(sidebarRoot).toBeInTheDocument();
@@ -79,10 +79,10 @@ describe('Sidebar', function() {
     const { getByTestId } = renderLayout(
       <Sidebar PaperProps={{ 'data-testid': 'sidebar-paper' }} />,
       {
+        autoCollapseDisabled: true,
         sidebar: {
           variant: 'permanent',
           width,
-          autoCollapseDisabled: true,
         },
       }
     );
@@ -97,12 +97,12 @@ describe('Sidebar', function() {
         <CollapseBtn data-testid={'trigger'}>toggle</CollapseBtn>
       </Sidebar>,
       {
+        autoCollapseDisabled: true,
         sidebar: {
           variant: 'permanent',
           width: 256,
           collapsible: true,
           collapsedWidth,
-          autoCollapseDisabled: true,
         },
       }
     );

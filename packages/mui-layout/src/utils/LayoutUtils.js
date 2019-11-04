@@ -1,4 +1,4 @@
-export default ({ opened, collapsed, sidebar }) => {
+export default ({ opened, collapsed, sidebar = {} }) => {
   const { width, variant, collapsible, collapsedWidth } = sidebar;
   const getSidebarWidth = () =>
     collapsible && collapsed ? collapsedWidth : width;

@@ -4,6 +4,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Root from '@mui-treasury/layout/components/Root';
 import Header from '@mui-treasury/layout/components/Header';
+import HeaderOffset from '@mui-treasury/layout/components/HeaderOffset';
 import Sidebar from '@mui-treasury/layout/components/Sidebar';
 import Content from '@mui-treasury/layout/components/Content';
 import Footer from '@mui-treasury/layout/components/Footer';
@@ -36,6 +37,7 @@ const index = () => {
           },
           header: {
             position: 'relative',
+            offsetHeight: 56,
           },
         },
         sm: {
@@ -48,20 +50,22 @@ const index = () => {
           header: {
             position: 'relative',
             clipped: true,
-          }
+            offsetHeight: 64,
+          },
         },
         md: {
           sidebar: {
-            variant: 'permanent',
+            variant: 'persistent',
             width: 256,
             collapsible: true,
             collapsedWidth: 64,
           },
           header: {
-            position: 'sticky',
+            position: 'fixed',
             clipped: true,
             persistentPushed: false,
             screenFit: true,
+            offsetHeight: 64,
           },
           content: {
             persistentPushed: false,
@@ -88,6 +92,7 @@ const index = () => {
           <HeaderEx />
         </Toolbar>
       </Header>
+      <HeaderOffset />
       <Content>
         <ContentEx />
       </Content>

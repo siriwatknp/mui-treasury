@@ -9,12 +9,12 @@ import CollapseBtn from '../components/CollapseBtn';
 
 const baseTheme = createMuiTheme();
 const initialConfig = {
+  autoCollapseDisabled: true,
   sidebar: {
     variant: 'permanent',
     width: 256,
     collapsible: true,
     collapsedWidth: 80,
-    autoCollapseDisabled: true,
   },
   header: {
     position: 'relative',
