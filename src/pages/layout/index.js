@@ -28,7 +28,9 @@ const index = () => {
         xs: {
           sidebar: {
             variant: 'temporary',
-            width: 200,
+            width: 320,
+            collapsible: true,
+            collapsedWidth: 256,
             collapsedBreakpoint: 'md',
           },
           header: {
@@ -58,17 +60,17 @@ const index = () => {
             persistentPushed: true,
             screenFit: true,
           },
-        }
+        },
       }}
     >
       <Header>
         <Toolbar>
-          {/*<CollapseBtn*/}
-          {/*  component={IconButton}*/}
-          {/*  className={headerStyles.leftTrigger}*/}
-          {/*>*/}
-          {/*  <CollapseIcon />*/}
-          {/*</CollapseBtn>*/}
+          <CollapseBtn
+            component={IconButton}
+            className={headerStyles.leftTrigger}
+          >
+            <CollapseIcon />
+          </CollapseBtn>
           <SidebarTrigger className={headerStyles.leftTrigger}>
             <SidebarTriggerIcon />
           </SidebarTrigger>

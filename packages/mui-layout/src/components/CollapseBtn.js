@@ -4,7 +4,10 @@ import Button from '@material-ui/core/Button';
 import { useLayoutCtx } from '../layoutContext';
 
 const CollapseBtn = ({ component: Component, onClick, ...props }) => {
-  const { setCollapsed, collapsed } = useLayoutCtx();
+  const { setCollapsed, collapsed, sidebar } = useLayoutCtx();
+  if (!sidebar || !sidebar.collapsible) {
+    return null;
+  }
   return (
     <Component
       onClick={e => {

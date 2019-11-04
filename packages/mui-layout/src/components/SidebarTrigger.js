@@ -4,7 +4,10 @@ import IconButton from '@material-ui/core/IconButton';
 import { useLayoutCtx } from '../layoutContext';
 
 const SidebarTrigger = ({ children, onClick, ...props }) => {
-  const { opened, setOpened } = useLayoutCtx();
+  const { opened, setOpened, sidebar } = useLayoutCtx();
+  if (!sidebar || sidebar.variant === 'permanent') {
+    return null;
+  }
   return (
     <IconButton
       {...props}
