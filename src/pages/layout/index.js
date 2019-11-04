@@ -5,6 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Root from '@mui-treasury/layout/components/Root';
 import Header from '@mui-treasury/layout/components/Header';
 import HeaderOffset from '@mui-treasury/layout/components/HeaderOffset';
+import HeaderMagnet from '@mui-treasury/layout/components/HeaderMagnet';
 import Sidebar from '@mui-treasury/layout/components/Sidebar';
 import Content from '@mui-treasury/layout/components/Content';
 import Footer from '@mui-treasury/layout/components/Footer';
@@ -55,13 +56,13 @@ const index = () => {
         },
         md: {
           sidebar: {
-            variant: 'persistent',
+            variant: 'permanent',
             width: 256,
             collapsible: true,
             collapsedWidth: 64,
           },
           header: {
-            position: 'fixed',
+            position: 'relative',
             clipped: true,
             persistentPushed: false,
             screenFit: true,
@@ -99,6 +100,7 @@ const index = () => {
       <Sidebar>
         {({ collapsed }) => (
           <>
+            <HeaderMagnet />
             <NavHeaderEx collapsed={collapsed} />
             <div className={sidebarStyles.container}>
               <NavContentEx />

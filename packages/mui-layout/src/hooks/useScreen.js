@@ -1,5 +1,6 @@
 import { useTheme } from '@material-ui/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { getInitialScreen } from '../utils';
 
 function useScreen() {
   const theme = useTheme();
@@ -13,7 +14,7 @@ function useScreen() {
   if (isMd) return 'md';
   if (isSm) return 'sm';
   if (isXs) return 'xs';
-  return null;
+  return getInitialScreen(theme.breakpoints.values);
 }
 
 export default useScreen;

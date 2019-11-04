@@ -8,4 +8,10 @@ export default ({ transitions }) => ({
   all: {
     transitionProperty: 'all !important',
   },
+  smooth: {
+    transition: transitions.create(['all'], {
+      easing: transitions.easing.sharp,
+      duration: transitions.duration.short,
+    }),
+  },
 });

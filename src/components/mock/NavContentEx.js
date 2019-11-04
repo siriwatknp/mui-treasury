@@ -5,39 +5,48 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Icon from '@material-ui/core/Icon';
 import Divider from '@material-ui/core/Divider';
+import Folder from '@material-ui/icons/Folder';
+import People from '@material-ui/icons/People';
+import Star from '@material-ui/icons/Star';
+import Schedule from '@material-ui/icons/Schedule';
+import OfflinePin from '@material-ui/icons/OfflinePin';
+import Publish from '@material-ui/icons/Publish';
+import Backup from '@material-ui/icons/Backup';
+import Delete from '@material-ui/icons/Delete';
+import Settings from '@material-ui/icons/Settings';
 
 const list = [
   {
     primaryText: 'My Files',
-    icon: 'folder',
+    icon: <Folder />,
   },
   {
     primaryText: 'Shared with me',
-    icon: 'people',
+    icon: <People />,
   },
   {
     primaryText: 'Starred',
-    icon: 'star',
+    icon: <Star />,
   },
   {
     primaryText: 'Recent',
-    icon: 'schedule',
+    icon: <Schedule />,
   },
   {
     primaryText: 'Offline',
-    icon: 'offline_pin',
+    icon: <OfflinePin />,
   },
   {
     primaryText: 'Uploads',
-    icon: 'publish',
+    icon: <Publish />,
   },
   {
     primaryText: 'Backups',
-    icon: 'backup',
+    icon: <Backup />,
   },
   {
     primaryText: 'Trash',
-    icon: 'delete',
+    icon: <Delete />,
   },
 ];
 const NavContentEx = () => (
@@ -56,7 +65,7 @@ const NavContentEx = () => (
     <Divider style={{ margin: '12px 0' }} />
     <ListItem button>
       <ListItemIcon>
-        <Icon>settings</Icon>
+        <Settings />
       </ListItemIcon>
       <ListItemText
         primary={'Settings & account'}

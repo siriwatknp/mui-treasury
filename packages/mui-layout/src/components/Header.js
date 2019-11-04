@@ -9,7 +9,10 @@ import { useTransitionStyles } from '../styles';
 const useStyles = makeStyles(({ zIndex }) => ({
   root: ({ clipped, position }) => {
     const isHeaderOnTop =
-      clipped && (position === 'fixed' || position === 'absolute');
+      clipped &&
+      (position === 'fixed' ||
+        position === 'absolute' ||
+        position === 'relative');
     return {
       ...(isHeaderOnTop && { zIndex: zIndex.drawer + 100 }),
     };
@@ -18,7 +21,7 @@ const useStyles = makeStyles(({ zIndex }) => ({
 
 const Header = ({ className, children, style, ...props }) => {
   const ctx = useLayoutCtx();
-  const { header, getSidebarGap, getWidth } = ctx;
+  const { header, getHeaderStyle } = ctx;
   const styles = useStyles(header);
   const transitionStyles = useTransitionStyles();
   return (
@@ -30,8 +33,7 @@ const Header = ({ className, children, style, ...props }) => {
       className={cx(styles.root, transitionStyles.root, className)}
       style={{
         ...style,
-        marginLeft: getSidebarGap(header),
-        width: getWidth(header),
+        ...getHeaderStyle(),
       }}
     >
       {typeof children === 'function' ? children(ctx) : children}
