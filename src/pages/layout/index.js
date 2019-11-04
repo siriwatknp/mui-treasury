@@ -25,13 +25,14 @@ const index = () => {
   return (
     <Root
       config={{
+        autoCollapseDisabled: false,
+        collapsedBreakpoint: 'md',
         xs: {
           sidebar: {
             variant: 'temporary',
             width: 320,
             collapsible: true,
             collapsedWidth: 256,
-            collapsedBreakpoint: 'md',
           },
           header: {
             position: 'relative',
@@ -43,8 +44,6 @@ const index = () => {
             width: 256,
             collapsible: true,
             collapsedWidth: 64,
-            autoCollapseDisabled: false,
-            collapsedBreakpoint: 'md',
           },
           header: {
             position: 'sticky',

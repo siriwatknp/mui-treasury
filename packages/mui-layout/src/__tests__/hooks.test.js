@@ -49,8 +49,23 @@ describe('React Hooks', () => {
     );
     expect(getByTestId('screen').textContent).toBe('md');
     resizeWindow(320, 768);
-    console.log('window.innerWidth', window.innerWidth);
     expect(getByTestId('screen').textContent).toBe('sm');
+  });
+
+  test('[useAutoCollapse] disabled', () => {
+    const config = {
+      screen: 'sm',
+      autoCollapseDisabled: true,
+      sidebar: {
+        variant: 'permanent',
+      },
+    };
+    const { queryByTestId } = renderLayout(config)(
+      <Sidebar>
+        {({ collapsed }) => collapsed && <span data-testid={'collapsed'} />}
+      </Sidebar>
+    );
+    expect(queryByTestId('collapsed')).not.toBeInTheDocument();
   });
 
   test('[useAutoCollapse] sidebar auto collapsed at breakpoint and lower', () => {
@@ -58,8 +73,6 @@ describe('React Hooks', () => {
       screen: 'sm',
       sidebar: {
         variant: 'permanent',
-        autoCollapseDisabled: false,
-        collapsedBreakpoint: 'md',
       },
     };
     const { queryByTestId } = renderLayout(config)(
@@ -75,8 +88,6 @@ describe('React Hooks', () => {
       screen: 'xl',
       sidebar: {
         variant: 'permanent',
-        autoCollapseDisabled: false,
-        collapsedBreakpoint: 'md',
       },
     };
     const { queryByTestId, rerender } = renderLayout(config)(
@@ -105,8 +116,6 @@ describe('React Hooks', () => {
       screen: 'xs',
       sidebar: {
         variant: 'permanent',
-        autoCollapseDisabled: false,
-        collapsedBreakpoint: 'md',
       },
     };
     const { queryByTestId, rerender } = renderLayout(config, {
