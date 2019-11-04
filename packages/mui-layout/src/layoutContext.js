@@ -5,6 +5,7 @@ import {
   createLayoutUtils,
   isSomeExisted,
   selectConfigByScreen,
+  getInitialScreen,
 } from './utils';
 import useScreen from './hooks/useScreen';
 
@@ -20,9 +21,9 @@ const LayoutProvider = ({
   const [opened, setOpened] = React.useState(initialOpened);
   const [collapsed, setCollapsed] = React.useState(initialCollapsed);
   const {
-    breakpoints: { keys },
+    breakpoints: { keys, values },
   } = useTheme();
-  const screen = config.screen || useScreen(); // config.screen is for testing purpose only
+  const screen = config.screen || useScreen() || getInitialScreen(values); // config.screen is for testing purpose only
   const finalConfig = isSomeExisted(config, keys)
     ? selectConfigByScreen(config, screen)
     : config;

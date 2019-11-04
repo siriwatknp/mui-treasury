@@ -2,6 +2,7 @@ import {
   createLayoutUtils,
   isSomeExisted,
   selectConfigByScreen,
+  getInitialScreen,
 } from '../utils';
 
 describe('utils', function() {
@@ -20,6 +21,18 @@ describe('utils', function() {
     };
     utils = createLayoutUtils(ctx);
   });
+  test('getInitialScreen return initial screen', () => {
+    expect(
+      getInitialScreen({
+        xs: 0,
+        sm: 600,
+        md: 960,
+        lg: 1280,
+        xl: 1920,
+      })
+    ).toBe('md');
+  });
+
   test('selectConfigByScreen return correct config', () => {
     const config = {
       xs: 'xs',
