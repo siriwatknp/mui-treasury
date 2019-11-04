@@ -38,6 +38,18 @@ const index = () => {
             position: 'relative',
           },
         },
+        sm: {
+          sidebar: {
+            variant: 'persistent',
+            width: 256,
+            collapsible: true,
+            collapsedWidth: 64,
+          },
+          header: {
+            position: 'relative',
+            clipped: true,
+          }
+        },
         md: {
           sidebar: {
             variant: 'permanent',

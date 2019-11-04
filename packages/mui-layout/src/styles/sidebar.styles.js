@@ -2,12 +2,13 @@ import transitionStyles from './transition.styles';
 
 export default ({ breakpoints, palette, transitions }) => ({
   paper: {
+    boxSizing: 'content-box',
     borderColor: palette.action.hover,
     ...transitionStyles({ transitions }).root,
   },
   container: {
     flexGrow: 1,
-    overflow: 'auto',
+    overflow: 'hidden auto',
   },
   collapseBtn: {
     backgroundColor: palette.grey[50],
