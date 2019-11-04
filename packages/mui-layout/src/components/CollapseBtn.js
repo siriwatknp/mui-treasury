@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
-import { useLayoutCtx } from '../layoutContext';
+import { useLayoutCtx } from '../hooks';
 
 const CollapseBtn = ({ component: Component, onClick, ...props }) => {
   const { setCollapsed, collapsed, sidebar } = useLayoutCtx();

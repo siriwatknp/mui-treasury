@@ -2,9 +2,9 @@ import React from 'react';
 import cx from 'clsx';
 import PropTypes from 'prop-types';
 import Drawer from '@material-ui/core/Drawer';
-import { useLayoutCtx } from '../layoutContext';
+import HeaderMagnet from './HeaderMagnet';
+import { useLayoutCtx, useAutoCollapse } from '../hooks';
 import { useTransitionStyles, useSidebarStyles } from '../styles';
-import useAutoCollapse from '../hooks/useAutoCollapse';
 
 const Sidebar = ({ children, PaperProps, SlideProps, ...props }) => {
   useAutoCollapse();
@@ -42,6 +42,7 @@ const Sidebar = ({ children, PaperProps, SlideProps, ...props }) => {
         onExit: () => setEntered(false),
       }}
     >
+      <HeaderMagnet />
       {typeof children === 'function' ? children(ctx) : children}
     </Drawer>
   );

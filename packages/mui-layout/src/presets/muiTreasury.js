@@ -6,14 +6,24 @@ export default {
   heightAdjustmentDisabled: false,
   xs: getDefaultScreenConfig({
     header: {
-      position: 'relative',
+      position: 'sticky',
       clipped: false,
     },
   }),
   md: getDefaultScreenConfig({
     sidebar: {
-      variant: 'persistent',
-      collapsible: true,
+      variant: 'permanent',
+      width: 200,
+      // collapsible: true,
+    },
+    header: {
+      position: 'sticky',
+    },
+  }),
+  lg: getDefaultScreenConfig({
+    sidebar: {
+      variant: 'permanent',
+      // collapsible: true,
     },
     header: {
       position: 'sticky',

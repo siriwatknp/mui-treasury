@@ -15,14 +15,14 @@ export default ({ opened, collapsed, sidebar = {}, header = {} }) => {
         return undefined;
     }
   };
-  const getWidth = ({ screenFit, persistentPushed } = {}) => {
+  const getWidth = ({ persistentScreenFit, persistentPushed } = {}) => {
     switch (variant) {
       case 'temporary':
         return '100%';
       case 'permanent':
         return `calc(100% - ${getSidebarWidth()}px)`;
       case 'persistent':
-        return opened && screenFit && persistentPushed
+        return opened && persistentScreenFit && persistentPushed
           ? `calc(100% - ${getSidebarWidth()}px)`
           : '100%';
       default:

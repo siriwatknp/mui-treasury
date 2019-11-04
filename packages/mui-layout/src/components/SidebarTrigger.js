@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import IconButton from '@material-ui/core/IconButton';
-import { useLayoutCtx } from '../layoutContext';
+import { useLayoutCtx } from '../hooks';
 
 const SidebarTrigger = ({ children, onClick, ...props }) => {
   const { opened, setOpened, sidebar } = useLayoutCtx();

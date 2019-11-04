@@ -5,7 +5,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Root from '@mui-treasury/layout/components/Root';
 import Header from '@mui-treasury/layout/components/Header';
 import HeaderOffset from '@mui-treasury/layout/components/HeaderOffset';
-import HeaderMagnet from '@mui-treasury/layout/components/HeaderMagnet';
 import Sidebar from '@mui-treasury/layout/components/Sidebar';
 import Content from '@mui-treasury/layout/components/Content';
 import Footer from '@mui-treasury/layout/components/Footer';
@@ -14,6 +13,14 @@ import CollapseIcon from '@mui-treasury/layout/components/CollapseIcon';
 import SidebarTrigger from '@mui-treasury/layout/components/SidebarTrigger';
 import SidebarTriggerIcon from '@mui-treasury/layout/components/SidebarTriggerIcon';
 import { useSidebarStyles, useHeaderStyles } from '@mui-treasury/layout/styles';
+import {
+  defaultLayoutPreset,
+  standardLayoutPreset,
+  fixedLayoutPreset,
+  contentBasedLayoutPreset,
+  cozyLayoutPreset,
+  muiTreasuryPreset,
+} from '@mui-treasury/layout/presets';
 // MOCK
 import NavContentEx from 'components/mock/NavContentEx';
 import NavHeaderEx from 'components/mock/NavHeaderEx';
@@ -21,64 +28,64 @@ import HeaderEx from 'components/mock/HeaderEx';
 import ContentEx from 'components/mock/ContentEx';
 import FooterEx from 'components/mock/FooterEx';
 
+const initialConfig = {
+  autoCollapseDisabled: false,
+  collapsedBreakpoint: 'md',
+  xs: {
+    sidebar: {
+      variant: 'temporary',
+      width: 320,
+      collapsible: true,
+      collapsedWidth: 256,
+    },
+    header: {
+      position: 'relative',
+      offsetHeight: 56,
+    },
+  },
+  sm: {
+    sidebar: {
+      variant: 'persistent',
+      width: 256,
+      collapsible: true,
+      collapsedWidth: 64,
+    },
+    header: {
+      position: 'relative',
+      clipped: true,
+      offsetHeight: 64,
+    },
+  },
+  md: {
+    sidebar: {
+      variant: 'permanent',
+      width: 256,
+      collapsible: true,
+      collapsedWidth: 64,
+    },
+    header: {
+      position: 'relative',
+      clipped: true,
+      persistentPushed: false,
+      persistentScreenFit: true,
+      offsetHeight: 64,
+    },
+    content: {
+      persistentPushed: false,
+      persistentScreenFit: true,
+    },
+    footer: {
+      persistentPushed: true,
+      persistentScreenFit: true,
+    },
+  },
+};
+
 const index = () => {
   const sidebarStyles = useSidebarStyles();
   const headerStyles = useHeaderStyles();
   return (
-    <Root
-      config={{
-        autoCollapseDisabled: false,
-        collapsedBreakpoint: 'md',
-        xs: {
-          sidebar: {
-            variant: 'temporary',
-            width: 320,
-            collapsible: true,
-            collapsedWidth: 256,
-          },
-          header: {
-            position: 'relative',
-            offsetHeight: 56,
-          },
-        },
-        sm: {
-          sidebar: {
-            variant: 'persistent',
-            width: 256,
-            collapsible: true,
-            collapsedWidth: 64,
-          },
-          header: {
-            position: 'relative',
-            clipped: true,
-            offsetHeight: 64,
-          },
-        },
-        md: {
-          sidebar: {
-            variant: 'permanent',
-            width: 256,
-            collapsible: true,
-            collapsedWidth: 64,
-          },
-          header: {
-            position: 'relative',
-            clipped: true,
-            persistentPushed: false,
-            screenFit: true,
-            offsetHeight: 64,
-          },
-          content: {
-            persistentPushed: false,
-            screenFit: true,
-          },
-          footer: {
-            persistentPushed: true,
-            screenFit: true,
-          },
-        },
-      }}
-    >
+    <Root config={muiTreasuryPreset}>
       <Header>
         <Toolbar>
           <CollapseBtn
@@ -100,7 +107,6 @@ const index = () => {
       <Sidebar>
         {({ collapsed }) => (
           <>
-            <HeaderMagnet />
             <NavHeaderEx collapsed={collapsed} />
             <div className={sidebarStyles.container}>
               <NavContentEx />

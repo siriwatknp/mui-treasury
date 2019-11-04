@@ -1,3 +1,3 @@
-import { LayoutProvider } from '../layoutContext';
+import { LayoutProvider } from '../core/layoutContext';
 
 export default LayoutProvider;

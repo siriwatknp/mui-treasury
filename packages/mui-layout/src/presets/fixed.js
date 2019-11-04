@@ -2,21 +2,22 @@ import getDefaultScreenConfig from './getDefaultScreenConfig';
 
 export default {
   autoCollapseDisabled: false,
-  collapsedBreakpoint: 'md',
-  heightAdjustmentDisabled: false,
+  collapsedBreakpoint: 'sm',
+  heightAdjustmentDisabled: true,
   xs: getDefaultScreenConfig({
     header: {
-      position: 'relative',
+      position: 'sticky',
       clipped: false,
     },
   }),
   md: getDefaultScreenConfig({
     sidebar: {
-      variant: 'persistent',
+      variant: 'permanent',
       collapsible: true,
     },
     header: {
-      position: 'sticky',
+      position: 'relative',
+      clipped: false,
     },
   }),
 };

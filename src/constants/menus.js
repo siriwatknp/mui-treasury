@@ -8,7 +8,7 @@ export default {
     // { key: 'how-to', label: 'How to' },
     { key: 'components', label: 'Components', to: '/components/button' },
     { key: 'form', label: 'Form', disabled: true },
-    { key: 'layout', label: 'Layout', disabled: true },
+    { key: 'layout', label: 'Layout', to: '/layout' },
     { key: 'styling', label: 'Styling', disabled: true },
     { key: 'theme', label: 'Theme', disabled: true },
   ],

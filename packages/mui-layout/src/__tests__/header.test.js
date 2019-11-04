@@ -2,7 +2,7 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import { LayoutProvider } from '../layoutContext';
+import { LayoutProvider } from '../core/layoutContext';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import CollapseBtn from '../components/CollapseBtn';
@@ -54,6 +54,42 @@ describe('Header', function() {
     trigger = getByTestId('trigger');
     fireEvent.click(trigger);
     expect(header.style.marginLeft).toBe('80px');
+  });
+
+  test('[Clipped] fixed should have default width & no margin', () => {
+    // static position cannot be clipped
+    const { getByTestId } = renderLayout(
+      <>
+        <Header data-testid={'header'} />
+      </>,
+      {
+        header: {
+          clipped: true,
+          position: 'fixed',
+        },
+      }
+    );
+    const computedStyle = getComputedStyle(getByTestId('header'));
+    expect(computedStyle.width).toBe('100%');
+    expect(computedStyle.marginLeft).toBe('');
+  });
+
+  test('[Clipped] relative should have default width & no margin', () => {
+    // static position cannot be clipped
+    const { getByTestId } = renderLayout(
+      <>
+        <Header data-testid={'header'} />
+      </>,
+      {
+        header: {
+          clipped: true,
+          position: 'relative',
+        },
+      }
+    );
+    const computedStyle = getComputedStyle(getByTestId('header'));
+    expect(computedStyle.width).toBe('100%');
+    expect(computedStyle.marginLeft).toBe('');
   });
 
   // ** Cannot test, getComputedStyle(header) not use the fresh one **

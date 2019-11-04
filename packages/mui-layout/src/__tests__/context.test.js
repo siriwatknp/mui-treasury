@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import { LayoutConsumer } from '../layoutContext';
+import { LayoutConsumer } from '../core/layoutContext';
 import Sidebar from '../components/Sidebar';
 import Root from '../components/Root';
 
@@ -11,12 +11,7 @@ const baseTheme = createMuiTheme();
 describe('context', () => {
   test('Layout Context works', () => {
     const { getByText } = render(
-      <LayoutConsumer>
-        {value => {
-          console.log('value', value);
-          return <span>Received: {value}</span>;
-        }}
-      </LayoutConsumer>
+      <LayoutConsumer>{value => <span>Received: {value}</span>}</LayoutConsumer>
     );
     expect(getByText(/^Received:/).textContent).toBe('Received: value');
   });

@@ -5,8 +5,8 @@ import {
   createLayoutUtils,
   isSomeExisted,
   selectConfigByScreen,
-} from './utils';
-import useScreen from './hooks/useScreen';
+} from '../utils';
+import { useScreen } from '../hooks';
 
 const LayoutCtx = React.createContext('value');
 LayoutCtx.displayName = 'MuiLayoutCtx';
@@ -22,6 +22,11 @@ const LayoutProvider = ({
   const {
     breakpoints: { keys },
   } = useTheme();
+  const {
+    autoCollapseDisabled,
+    collapsedBreakpoint,
+    heightAdjustmentDisabled,
+  } = config;
   const screen = config.screen || useScreen(); // config.screen is for testing purpose only
   const finalConfig = isSomeExisted(config, keys)
     ? selectConfigByScreen(config, screen)
@@ -37,6 +42,9 @@ const LayoutProvider = ({
         screen,
         ...finalConfig,
         ...utils,
+        autoCollapseDisabled,
+        collapsedBreakpoint,
+        heightAdjustmentDisabled,
         opened,
         setOpened,
         collapsed,
@@ -51,6 +59,9 @@ LayoutProvider.propTypes = {
   initialOpened: PropTypes.bool,
   initialCollapsed: PropTypes.bool,
   config: PropTypes.shape({
+    autoCollapseDisabled: PropTypes.bool,
+    collapsedBreakpoint: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+    heightAdjustmentDisabled: PropTypes.bool,
     sidebar: PropTypes.shape({}),
     header: PropTypes.shape({}),
     content: PropTypes.shape({}),

@@ -1,6 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import { Root, presets } from 'mui-layout';
+import { Root, muiTreasuryPreset } from '@mui-treasury/layout';
 // import { library } from '@fortawesome/fontawesome-svg-core';
 // import {
 //   faFighterJet,
@@ -32,16 +32,6 @@ import banner from './assets/mui-treasury_banner_minified.jpg';
 //   faGithub,
 //   faFacebookF
 // );
-
-const layoutConfig = presets.createDefaultLayout({
-  navWidth: 256,
-  navVariant: {
-    xs: 'temporary',
-    sm: 'permanent',
-  },
-  clipped: true,
-  headerPosition: 'sticky',
-});
 
 const App = ({ children }) => (
   <>
@@ -82,7 +72,7 @@ const App = ({ children }) => (
       <meta property="twitter:image" content={banner} />
     </Helmet>
     <ThemeWrapper>
-      <Root config={layoutConfig}>{children}</Root>
+      <Root config={muiTreasuryPreset}>{children}</Root>
     </ThemeWrapper>
   </>
 );

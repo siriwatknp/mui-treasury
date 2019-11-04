@@ -117,13 +117,13 @@ describe('utils', function() {
     ctx.sidebar.collapsible = true;
     ctx.collapsed = true;
     utils = createLayoutUtils(ctx);
-    expect(utils.getWidth({ screenFit: true })).toBe('100%');
+    expect(utils.getWidth({ persistentScreenFit: true })).toBe('100%');
   });
 
-  test("[permanent Sidebar] component's width will always screenFit", () => {
+  test("[permanent Sidebar] component's width will always persistentScreenFit", () => {
     ctx.sidebar.variant = 'permanent';
     utils = createLayoutUtils(ctx);
-    expect(utils.getWidth({ screenFit: true })).toBe('calc(100% - 256px)');
+    expect(utils.getWidth({ persistentScreenFit: true })).toBe('calc(100% - 256px)');
   });
 
   test("[permanent Sidebar] component's width is equal to collapsed width when collapsed", () => {
@@ -141,10 +141,10 @@ describe('utils', function() {
     ctx.sidebar.collapsible = true;
     ctx.collapsed = true;
     utils = createLayoutUtils(ctx);
-    expect(utils.getWidth({ screenFit: true })).toBe('100%');
+    expect(utils.getWidth({ persistentScreenFit: true })).toBe('100%');
   });
 
-  test("[opened persistent Sidebar] component's width depends on screenFit mode", () => {
+  test("[opened persistent Sidebar] component's width depends on persistentScreenFit mode", () => {
     ctx.opened = true;
 
     ctx.sidebar.variant = 'persistent';
@@ -152,14 +152,14 @@ describe('utils', function() {
     ctx.collapsed = false;
     utils = createLayoutUtils(ctx);
     expect(utils.getWidth()).toBe('100%');
-    expect(utils.getWidth({ screenFit: true, persistentPushed: true })).toBe(
+    expect(utils.getWidth({ persistentScreenFit: true, persistentPushed: true })).toBe(
       'calc(100% - 256px)'
     );
 
     ctx.sidebar.collapsible = true;
     ctx.collapsed = true;
     utils = createLayoutUtils(ctx);
-    expect(utils.getWidth({ screenFit: true, persistentPushed: true })).toBe(
+    expect(utils.getWidth({ persistentScreenFit: true, persistentPushed: true })).toBe(
       'calc(100% - 80px)'
     );
   });

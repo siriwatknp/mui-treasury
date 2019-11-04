@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'clsx';
-import useHeightAdjustment from '../hooks/useHeightAdjustment';
+import { useHeightAdjustment } from '../hooks';
 import { useTransitionStyles } from '../styles';
 
 const HeaderMagnet = ({ className, style, ...props }) => {
@@ -10,7 +10,7 @@ const HeaderMagnet = ({ className, style, ...props }) => {
   return (
     <div
       className={cx('HeaderMagnet', transitionStyles.smooth, className)}
-      style={{ ...style, height }}
+      style={{ ...style, height, flexShrink: 0 }}
       {...props}
     />
   );

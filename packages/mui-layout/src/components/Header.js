@@ -3,16 +3,12 @@ import cx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
-import { useLayoutCtx } from '../layoutContext';
+import { useLayoutCtx } from '../hooks';
 import { useTransitionStyles } from '../styles';
 
 const useStyles = makeStyles(({ zIndex }) => ({
   root: ({ clipped, position }) => {
-    const isHeaderOnTop =
-      clipped &&
-      (position === 'fixed' ||
-        position === 'absolute' ||
-        position === 'relative');
+    const isHeaderOnTop = clipped && position !== 'static';
     return {
       ...(isHeaderOnTop && { zIndex: zIndex.drawer + 100 }),
     };

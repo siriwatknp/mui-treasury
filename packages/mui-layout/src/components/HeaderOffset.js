@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'clsx';
-import { useLayoutCtx } from '../layoutContext';
+import { useLayoutCtx } from '../hooks';
 import { useTransitionStyles } from '../styles';
 
 const HeaderOffset = ({ className, style, ...props }) => {
@@ -16,6 +16,7 @@ const HeaderOffset = ({ className, style, ...props }) => {
       style={{
         ...style,
         height: hasOffset ? header.offsetHeight : 0,
+        flexShrink: 0,
       }}
     />
   );

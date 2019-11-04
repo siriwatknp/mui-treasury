@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
-import { useLayoutCtx } from '../layoutContext';
+import { useLayoutCtx } from '../hooks';
 import { useTransitionStyles } from '../styles';
 
 const useStyles = makeStyles(({ breakpoints, palette, spacing }) => ({

@@ -6,17 +6,22 @@ export default {
   heightAdjustmentDisabled: false,
   xs: getDefaultScreenConfig({
     header: {
-      position: 'relative',
+      clipped: false,
+    },
+  }),
+  sm: getDefaultScreenConfig({
+    sidebar: {
+      variant: 'permanent',
+      width: 64,
+    },
+    header: {
       clipped: false,
     },
   }),
   md: getDefaultScreenConfig({
     sidebar: {
-      variant: 'persistent',
+      variant: 'permanent',
       collapsible: true,
-    },
-    header: {
-      position: 'sticky',
     },
   }),
 };

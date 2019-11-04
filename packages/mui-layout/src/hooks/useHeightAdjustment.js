@@ -6,8 +6,8 @@ import useEventListener from './useEventListener';
 
 export default () => {
   const {
-    sidebar,
-    header: { clipped, position, offsetHeight },
+    sidebar = {},
+    header: { clipped, position, offsetHeight } = {},
     heightAdjustmentSpeed = 144,
     heightAdjustmentDisabled = false,
   } = useLayoutCtx();
