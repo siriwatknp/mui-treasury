@@ -1,6 +1,11 @@
 import React, { useContext } from 'react';
+import useTheme from '@material-ui/core/styles/useTheme';
 import PropTypes from 'prop-types';
-import createLayoutUtils from './utils/LayoutUtils';
+import {
+  createLayoutUtils,
+  isSomeExisted,
+  selectConfigByScreen,
+} from './utils';
 import useScreen from './hooks/useScreen';
 
 const LayoutCtx = React.createContext('value');
@@ -14,17 +19,23 @@ const LayoutProvider = ({
 }) => {
   const [opened, setOpened] = React.useState(initialOpened);
   const [collapsed, setCollapsed] = React.useState(initialCollapsed);
-  const screen = useScreen();
+  const {
+    breakpoints: { keys },
+  } = useTheme();
+  const screen = config.screen || useScreen(); // config.screen is for testing purpose only
+  const finalConfig = isSomeExisted(config, keys)
+    ? selectConfigByScreen(config, screen)
+    : config;
   const { getSidebarGap, getWidth, getSidebarWidth } = createLayoutUtils({
     opened,
     collapsed,
-    ...config,
+    ...finalConfig,
   });
   return (
     <LayoutCtx.Provider
       value={{
         screen,
-        ...config,
+        ...finalConfig,
         getSidebarWidth,
         getSidebarGap,
         getWidth,

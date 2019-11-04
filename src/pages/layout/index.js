@@ -1,11 +1,8 @@
 /* eslint-disable */
 import React from 'react';
 import Toolbar from '@material-ui/core/Toolbar';
-import {
-  LayoutProvider,
-  LayoutConsumer,
-} from '@mui-treasury/layout/layoutContext';
 import IconButton from '@material-ui/core/IconButton';
+import Root from '@mui-treasury/layout/components/Root';
 import Header from '@mui-treasury/layout/components/Header';
 import Sidebar from '@mui-treasury/layout/components/Sidebar';
 import Content from '@mui-treasury/layout/components/Content';
@@ -26,30 +23,42 @@ const index = () => {
   const sidebarStyles = useSidebarStyles();
   const headerStyles = useHeaderStyles();
   return (
-    <LayoutProvider
+    <Root
       config={{
-        sidebar: {
-          variant: 'permanent',
-          width: 256,
-          collapsible: true,
-          collapsedWidth: 64,
-          autoCollapsedDisabled: false,
-          collapsedBreakpoint: 'md',
+        xs: {
+          sidebar: {
+            variant: 'temporary',
+            width: 200,
+            collapsedBreakpoint: 'md',
+          },
+          header: {
+            position: 'relative',
+          },
         },
-        header: {
-          position: 'sticky',
-          clipped: true,
-          persistentPushed: false,
-          screenFit: true,
-        },
-        content: {
-          persistentPushed: false,
-          screenFit: true,
-        },
-        footer: {
-          persistentPushed: true,
-          screenFit: true,
-        },
+        md: {
+          sidebar: {
+            variant: 'permanent',
+            width: 256,
+            collapsible: true,
+            collapsedWidth: 64,
+            autoCollapseDisabled: false,
+            collapsedBreakpoint: 'md',
+          },
+          header: {
+            position: 'sticky',
+            clipped: true,
+            persistentPushed: false,
+            screenFit: true,
+          },
+          content: {
+            persistentPushed: false,
+            screenFit: true,
+          },
+          footer: {
+            persistentPushed: true,
+            screenFit: true,
+          },
+        }
       }}
     >
       <Header>
@@ -85,7 +94,7 @@ const index = () => {
       <Footer>
         <FooterEx />
       </Footer>
-    </LayoutProvider>
+    </Root>
   );
 };
 

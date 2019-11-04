@@ -1,4 +1,8 @@
-import { createLayoutUtils } from '../utils';
+import {
+  createLayoutUtils,
+  isSomeExisted,
+  selectConfigByScreen,
+} from '../utils';
 
 describe('utils', function() {
   let utils;
@@ -16,6 +20,28 @@ describe('utils', function() {
     };
     utils = createLayoutUtils(ctx);
   });
+  test('selectConfigByScreen return correct config', () => {
+    const config = {
+      xs: 'xs',
+      lg: 'lg',
+    };
+    expect(selectConfigByScreen(config, 'xs')).toBe('xs');
+    expect(selectConfigByScreen(config, 'sm')).toBe('xs');
+    expect(selectConfigByScreen(config, 'lg')).toBe('lg');
+    expect(selectConfigByScreen(config, 'xl')).toBe('lg');
+  });
+
+  test('isSomeExisted return true if some key in source exist in target', () => {
+    const source = {
+      screen: 'md',
+      xs: {},
+    };
+    const target = ['xs', 'sm', 'md'];
+    expect(isSomeExisted(source, target)).toBeTruthy();
+    delete source.xs;
+    expect(isSomeExisted(source, target)).toBeFalsy();
+  });
+
   test('[temporary Sidebar] gap return 0', () => {
     expect(utils.getSidebarGap()).toBe(0);
   });

@@ -7,18 +7,26 @@ export default () => {
     breakpoints: { keys },
   } = useTheme();
   const { screen, sidebar, setCollapsed } = useLayoutCtx();
-  const screenObserver = useRef(screen);
+  const screenObserver = useRef(null);
 
-  const { collapsedBreakpoint = 'md', autoCollapsedDisabled } = sidebar;
+  const { collapsedBreakpoint = 'md', autoCollapseDisabled } = sidebar;
 
   // eslint-disable-next-line consistent-return
   useEffect(() => {
     // skip everything if user disable this feature in config
-    if (!autoCollapsedDisabled) {
+    if (!autoCollapseDisabled) {
       const prevScreenIndex = keys.indexOf(screenObserver.current);
       const breakpointScreenIndex = keys.indexOf(collapsedBreakpoint);
       const currentScreenIndex = keys.indexOf(screen);
       if (
+        // at first render, auto-collapsed if screen <= breakpoint
+        !screenObserver.current &&
+        currentScreenIndex <= breakpointScreenIndex
+      ) {
+        setCollapsed(true);
+      }
+      if (
+        prevScreenIndex !== -1 &&
         prevScreenIndex > breakpointScreenIndex &&
         currentScreenIndex <= breakpointScreenIndex
       ) {
@@ -27,6 +35,7 @@ export default () => {
       }
 
       if (
+        prevScreenIndex !== -1 &&
         prevScreenIndex <= breakpointScreenIndex &&
         currentScreenIndex > breakpointScreenIndex
       ) {

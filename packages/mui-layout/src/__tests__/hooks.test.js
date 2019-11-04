@@ -53,15 +53,31 @@ describe('React Hooks', () => {
     expect(getByTestId('screen').textContent).toBe('sm');
   });
 
+  test('[useAutoCollapse] sidebar auto collapsed at breakpoint and lower', () => {
+    const config = {
+      screen: 'sm',
+      sidebar: {
+        variant: 'permanent',
+        autoCollapseDisabled: false,
+        collapsedBreakpoint: 'md',
+      },
+    };
+    const { queryByTestId } = renderLayout(config)(
+      <Sidebar>
+        {({ collapsed }) => collapsed && <span data-testid={'collapsed'} />}
+      </Sidebar>
+    );
+    expect(queryByTestId('collapsed')).toBeInTheDocument();
+  });
+
   test('[useAutoCollapse] sidebar collapsed when screen hit collapsed breakpoint from bigger', () => {
     const config = {
       screen: 'xl',
       sidebar: {
         variant: 'permanent',
-        autoCollapsedDisabled: false,
+        autoCollapseDisabled: false,
         collapsedBreakpoint: 'md',
       },
-      header: {},
     };
     const { queryByTestId, rerender } = renderLayout(config)(
       <Sidebar>
@@ -89,10 +105,9 @@ describe('React Hooks', () => {
       screen: 'xs',
       sidebar: {
         variant: 'permanent',
-        autoCollapsedDisabled: false,
+        autoCollapseDisabled: false,
         collapsedBreakpoint: 'md',
       },
-      header: {},
     };
     const { queryByTestId, rerender } = renderLayout(config, {
       initialCollapsed: true,

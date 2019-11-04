@@ -14,6 +14,7 @@ const initialConfig = {
     width: 256,
     collapsible: true,
     collapsedWidth: 80,
+    autoCollapseDisabled: true,
   },
   header: {
     position: 'relative',

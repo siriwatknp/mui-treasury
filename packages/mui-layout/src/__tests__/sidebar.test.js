@@ -26,7 +26,7 @@ describe('Sidebar', function() {
   test('[Permanent] should always display on screen', () => {
     const { getByTestId } = renderLayout(
       <Sidebar data-testid={'sidebar-root'} />,
-      { sidebar: { variant: 'permanent' } }
+      { sidebar: { variant: 'permanent', autoCollapseDisabled: true, } }
     );
     sidebarRoot = getByTestId('sidebar-root');
     expect(sidebarRoot).toBeInTheDocument();
@@ -82,6 +82,7 @@ describe('Sidebar', function() {
         sidebar: {
           variant: 'permanent',
           width,
+          autoCollapseDisabled: true,
         },
       }
     );
@@ -101,6 +102,7 @@ describe('Sidebar', function() {
           width: 256,
           collapsible: true,
           collapsedWidth,
+          autoCollapseDisabled: true,
         },
       }
     );
