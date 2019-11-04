@@ -7,16 +7,20 @@ import { useLayoutCtx } from '../layoutContext';
 import transitionStyles from '../styles/transition.styles';
 
 const useStyles = makeStyles(({ zIndex, transitions }) => ({
-  root: ({ clipped }) => ({
-    zIndex: clipped ? zIndex.drawer + 100 : zIndex.appBar,
-    ...transitionStyles({ transitions }).root,
-  }),
+  root: ({ clipped, position }) => {
+    const isHeaderOnTop =
+      clipped && (position === 'fixed' || position === 'absolute');
+    return {
+      ...(isHeaderOnTop && { zIndex: zIndex.drawer + 100 }),
+      ...transitionStyles({ transitions }).root,
+    };
+  },
 }));
 
 const Header = ({ className, children, style, ...props }) => {
   const ctx = useLayoutCtx();
   const { header, getSidebarGap, getWidth } = ctx;
-  const styles = useStyles({ clipped: header.clipped });
+  const styles = useStyles(header);
   return (
     <AppBar
       color={'default'}

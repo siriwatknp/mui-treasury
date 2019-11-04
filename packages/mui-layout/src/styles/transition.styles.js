@@ -1,8 +1,11 @@
 export default ({ transitions }) => ({
   root: {
-    transition: `${transitions.create(['width', 'margin', 'transform'], {
+    transition: transitions.create(['all'], {
       easing: transitions.easing.easeOut,
       duration: transitions.duration.leavingScreen,
-    })} !important`,
+    }),
+  },
+  all: {
+    transitionProperty: 'all !important',
   },
 });

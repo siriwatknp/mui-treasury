@@ -1,10 +1,7 @@
-import transitionStyles from './transition.styles';
-
-export default ({ breakpoints, palette, transitions }) => ({
+export default ({ breakpoints, palette }) => ({
   paper: {
     boxSizing: 'content-box',
     borderColor: palette.action.hover,
-    ...transitionStyles({ transitions }).root,
   },
   container: {
     flexGrow: 1,
