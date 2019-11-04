@@ -4,15 +4,14 @@ import { makeStyles } from '@material-ui/styles';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import { useLayoutCtx } from '../layoutContext';
-import transitionStyles from '../styles/transition.styles';
+import { useTransitionStyles } from '../styles';
 
-const useStyles = makeStyles(({ zIndex, transitions }) => ({
+const useStyles = makeStyles(({ zIndex }) => ({
   root: ({ clipped, position }) => {
     const isHeaderOnTop =
       clipped && (position === 'fixed' || position === 'absolute');
     return {
       ...(isHeaderOnTop && { zIndex: zIndex.drawer + 100 }),
-      ...transitionStyles({ transitions }).root,
     };
   },
 }));
@@ -21,13 +20,14 @@ const Header = ({ className, children, style, ...props }) => {
   const ctx = useLayoutCtx();
   const { header, getSidebarGap, getWidth } = ctx;
   const styles = useStyles(header);
+  const transitionStyles = useTransitionStyles();
   return (
     <AppBar
       color={'default'}
       elevation={0}
       {...props}
       position={header.position}
-      className={cx(styles.root, className)}
+      className={cx(styles.root, transitionStyles.root, className)}
       style={{
         ...style,
         marginLeft: getSidebarGap(header),

@@ -1,31 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 import { useLayoutCtx } from '../layoutContext';
-import transitionStyles from '../styles/transition.styles';
+import { useTransitionStyles } from '../styles';
 
-const useStyles = makeStyles(
-  ({ breakpoints, palette, spacing, transitions }) => ({
-    root: {
-      borderTop: '1px solid',
-      borderColor: palette.grey[200],
-      padding: spacing(2),
-      [breakpoints.up('sm')]: {
-        padding: spacing(3),
-      },
-      ...transitionStyles({ transitions }).root,
+const useStyles = makeStyles(({ breakpoints, palette, spacing }) => ({
+  root: {
+    borderTop: '1px solid',
+    borderColor: palette.grey[200],
+    padding: spacing(2),
+    [breakpoints.up('sm')]: {
+      padding: spacing(3),
     },
-  })
-);
+  },
+}));
 
 const Footer = ({ className, component: Component, style, ...props }) => {
   const ctx = useLayoutCtx();
   const { getSidebarGap, getWidth, footer } = ctx;
-  const classes = useStyles(props);
+  const styles = useStyles(props);
+  const transitionStyles = useTransitionStyles();
   return (
     <Component
       {...props}
-      className={`${classes.root} ${className}`}
+      className={cx(styles.root, transitionStyles.root, className)}
       style={{
         ...style,
         marginLeft: getSidebarGap(footer),

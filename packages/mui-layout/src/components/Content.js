@@ -1,15 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
+import { useTransitionStyles } from '../styles';
 import { useLayoutCtx } from '../layoutContext';
 
-const useStyles = makeStyles(({ transitions }) => ({
+const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
-    transition: transitions.create(['margin', 'width'], {
-      easing: transitions.easing.sharp,
-      duration: transitions.duration.leavingScreen,
-    }),
   },
 }));
 
@@ -22,12 +20,13 @@ const Content = ({
 }) => {
   const ctx = useLayoutCtx();
   const { getSidebarGap, getWidth, content } = ctx;
-  const classes = useStyles(props);
+  const styles = useStyles(props);
+  const transitionStyles = useTransitionStyles();
   return (
     <>
       <Component
         {...props}
-        className={`${classes.root} ${className}`}
+        className={cx(styles.root, transitionStyles.root, className)}
         style={{
           ...style,
           marginLeft: getSidebarGap(content),
