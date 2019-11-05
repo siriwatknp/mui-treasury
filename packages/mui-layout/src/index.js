@@ -1,12 +1,4 @@
-export { default as LayoutContext } from './context';
-export { default as Root } from './components/Root';
-export { default as Header } from './components/Header';
-export { default as Nav } from './components/Nav';
-export { default as Content } from './components/Content';
-export { default as Footer } from './components/Footer';
-export { default as presets } from './utils/presets';
-export { default as useConfig } from './hooks/useConfig';
-export { default as useWidth } from './hooks/useWidth';
-export { default as useHeightAdjustment } from './hooks/useHeightAdjustment';
-export { default as useAutoCollapse } from './hooks/useAutoCollapse';
-export * from './utils/presets';
+export * from './components';
+export * from './hooks';
+export * from './presets';
+export * from './styles';

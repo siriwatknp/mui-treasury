@@ -41,7 +41,6 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) => ({
     // a must if you want to set arrows, indicator as absolute
     position: 'relative',
     width: '100%',
-    maxWidth: 840,
   },
   slide: {
     perspective: 1000, // create perspective
@@ -224,6 +223,12 @@ const ParallaxCarousel = () => {
 ParallaxCarousel.metadata = {
   title: 'Parallax',
   path: 'carousel/parallax',
+  size: 'huge',
+  frameProps: {
+    width: '100%',
+    maxWidth: 840,
+    m: 'auto',
+  },
   files: [
     { pkg: 'mui-components', path: 'slide/parallax/ParallaxSlide.js' },
     { pkg: 'mui-components', path: 'indicator/dot/DotIndicator.js' },

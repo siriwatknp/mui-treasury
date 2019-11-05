@@ -26,11 +26,6 @@ const ButtonPage = () => (
       ),
       customComponents,
       DefaultComponent,
-      ShowcaseWidgetProps: {
-        frameProps: {
-          textAlign: 'center',
-        },
-      },
     }}
     DemoSourceDrawerProps={{
       frameProps: {

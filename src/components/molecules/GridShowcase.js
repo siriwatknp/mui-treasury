@@ -2,6 +2,10 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { useMetadata } from 'containers/Demo/context';
 
+/*
+  render component in grid layout
+  Wrapper is controlled by client
+ */
 const GridShowcase = ({
   components,
   gridStyles,

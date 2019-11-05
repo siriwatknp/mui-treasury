@@ -1,13 +1,8 @@
-/* eslint-disable max-len */
-import { useTheme } from '@material-ui/styles';
+import useTheme from '@material-ui/core/styles/useTheme';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-/**
- * Be careful using this hook. It only works because the number of
- * breakpoints in theme is static. It will break once you change the number of
- * breakpoints. See https://reactjs.org/docs/hooks-rules.html#only-call-hooks-at-the-top-level
- */
+import { getInitialScreen } from '../utils';
 
-function useWidth() {
+function useScreen() {
   const theme = useTheme();
   const isXs = useMediaQuery(theme.breakpoints.up('xs'));
   const isSm = useMediaQuery(theme.breakpoints.up('sm'));
@@ -19,7 +14,7 @@ function useWidth() {
   if (isMd) return 'md';
   if (isSm) return 'sm';
   if (isXs) return 'xs';
-  return null;
+  return getInitialScreen(theme.breakpoints.values);
 }
 
-export default useWidth;
+export default useScreen;

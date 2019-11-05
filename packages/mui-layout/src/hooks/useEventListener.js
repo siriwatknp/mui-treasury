@@ -1,16 +1,10 @@
 import { useRef, useEffect } from 'react';
 
-let initialWindow;
-const getWindow = () => {
-  try {
-    initialWindow = window;
-  } catch (e) {
-    // no window
+function useEventListener(eventName, handler, element) {
+  if (!element && typeof window !== 'undefined') {
+    element = window;
   }
-};
-getWindow();
 
-function useEventListener(eventName, handler, element = initialWindow) {
   // Create a ref that stores handler
   const savedHandler = useRef();
 

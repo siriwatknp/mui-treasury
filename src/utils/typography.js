@@ -9,11 +9,13 @@ typographyTheme.overrideThemeStyles = () => {
     a: {
       color: theme.palette.primary.main,
       textDecoration: 'unset',
+    },
+    'a:not[class^="Mui"]': {
       borderBottom: `1px solid ${Color(theme.palette.primary.light)
         .fade(0.7)
         .toString()}`,
     },
-    'a:hover': {
+    'a:not[class^="Mui"]:hover': {
       borderBottom: `1px solid ${theme.palette.primary.main}`,
     },
     'a.gatsby-resp-image-link': {

@@ -1,39 +1,55 @@
 import React from 'react';
-import partition from 'lodash/partition';
+import groupBy from 'lodash/groupBy';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import { useHalfBorderedGridStyles } from '@mui-treasury/styles/grid';
 
-const CustomComponentGrid = ({
-  components,
-  noHeader,
-  normalGridItemConfig,
-  largeGridItemConfig,
-  renderGrid: Grid,
-}) => {
-  const normalColWidth = {
+/*
+  categorize components into 2 group (medium, large)
+  render
+ */
+
+const columnConfig = {
+  medium: {
     xs: 12,
     sm: 6,
+    // md will be 6
     lg: 4,
-    ...normalGridItemConfig,
-  };
-  const longColWidth = {
+    xl: 3,
+  },
+  large: {
     xs: 12,
+    // sm will be 12
+    // md will be 12
     lg: 6,
-    ...largeGridItemConfig,
+    xl: 4,
+  },
+  huge: {
+    xs: 12,
+    // sm will be 12
+    // md will be 12
+    // lg will be 12
+    xl: 6,
+  },
+};
+
+const useGridProps = size => {
+  const GridItemProps = columnConfig[size];
+  return {
+    gridStyles: useHalfBorderedGridStyles({
+      borderColor: '#e9e9e9',
+      colWidth: GridItemProps,
+    }),
+    GridItemProps,
   };
-  const gridStyles = useHalfBorderedGridStyles({
-    borderColor: '#e9e9e9',
-    colWidth: normalColWidth,
-  });
-  const longGridStyles = useHalfBorderedGridStyles({
-    borderColor: '#e9e9e9',
-    colWidth: longColWidth,
-  });
-  const [longComponents, shortComponents] = partition(
-    components,
-    o => o.metadata.longFrame
-  );
+};
+
+const CustomComponentGrid = ({
+  noHeader,
+  components,
+  renderGrid: CustomGrid,
+}) => {
+  const groupBySize = groupBy(components, o => o.metadata.size || 'medium');
   return (
     <Box
       py={{ xs: '2rem', sm: '3rem', md: '4rem' }}
@@ -44,20 +60,11 @@ const CustomComponentGrid = ({
           <h3>Custom Styles</h3>
         </Box>
       )}
-      <Grid
-        gridStyles={gridStyles}
-        components={shortComponents}
-        GridItemProps={normalColWidth}
-      />
-      {longComponents.length > 0 && (
-        <Box mt={'-1px'}>
-          <Grid
-            gridStyles={longGridStyles}
-            components={longComponents}
-            GridItemProps={longColWidth}
-          />
+      {Object.keys(groupBySize).map(size => (
+        <Box key={size} mt={'-1px'}>
+          <CustomGrid components={groupBySize[size]} {...useGridProps(size)} />
         </Box>
-      )}
+      ))}
     </Box>
   );
 };
@@ -66,15 +73,17 @@ CustomComponentGrid.propTypes = {
   noHeader: PropTypes.bool,
   components: PropTypes.arrayOf(PropTypes.elementType),
   renderGrid: PropTypes.func,
-  normalGridItemConfig: PropTypes.shape({}),
-  largeGridItemConfig: PropTypes.shape({}),
+  gridItemConfig: PropTypes.shape({
+    medium: PropTypes.shape({}),
+    large: PropTypes.shape({}),
+    huge: PropTypes.shape({}),
+  }),
 };
 CustomComponentGrid.defaultProps = {
   noHeader: false,
   components: [],
   renderGrid: () => null,
-  normalGridItemConfig: {},
-  largeGridItemConfig: {},
+  gridItemConfig: {},
 };
 
 export default CustomComponentGrid;

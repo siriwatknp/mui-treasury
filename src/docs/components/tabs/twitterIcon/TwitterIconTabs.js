@@ -25,7 +25,7 @@ const TwitterIconTabs = () => {
 TwitterIconTabs.metadata = {
   title: 'Twitter Icon',
   path: 'tabs/twitterIcon',
-  longFrame: true,
+  size: 'large',
   files: [
     { pkg: 'mui-components', path: 'tabs/TwitterIconTabs.js' },
     { pkg: 'mui-styles', path: 'tabs/twitterIcon/twitterIconTabs.styles.js' },
