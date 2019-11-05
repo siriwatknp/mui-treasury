@@ -90,7 +90,7 @@ const RewardCard = () => {
 RewardCard.metadata = {
   title: 'Reward',
   path: 'card/reward',
-  longFrame: true,
+  size: 'large',
   files: [],
 };
 // hide-end

@@ -145,7 +145,7 @@ PlaneTicketCard.metadata = {
   title: 'Plane Ticket',
   description: 'An inspiration ticket from Pinterest',
   path: 'card/planeTicket',
-  longFrame: true,
+  size: 'large',
   frameProps: {
     bgcolor: mainColor,
   },

@@ -24,7 +24,7 @@ const InsideTriangleTabs = () => {
 InsideTriangleTabs.metadata = {
   title: 'Inside Triangle',
   path: 'tabs/inside-triangle',
-  longFrame: true,
+  size: 'large',
   files: [
     {
       pkg: 'mui-styles',

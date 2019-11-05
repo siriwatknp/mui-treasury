@@ -57,8 +57,11 @@ const PricingCard = () => {
 
 // hide-start
 PricingCard.metadata = {
-  title: 'Simple Pricing',
+  title: 'Pricing',
   description: 'For showing information about pricing packages',
+  frameProps: {
+    bgcolor: '#e9e9e9',
+  },
   path: 'card/pricing',
   files: [],
 };

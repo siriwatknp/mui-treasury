@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { PKG } from 'constants/menus';
 import { createMuiTheme } from '@material-ui/core';
-import { ThemeProvider } from '@material-ui/styles';
+import { makeStyles, ThemeProvider } from '@material-ui/styles';
+import jupiterNestedMenuStyles from '@mui-treasury/styles/nestedMenu/jupiter';
 import molecules from 'components/molecules';
 import organisms from 'components/organisms';
 import SidebarLayout from 'components/layout/SidebarLayout';
@@ -14,6 +15,7 @@ const { GridShowcase, ShowcaseWidget } = molecules;
 const { DefaultSection, CustomComponentGrid } = organisms;
 
 const baseTheme = createMuiTheme();
+const useJupiterNestedMenuStyles = makeStyles(jupiterNestedMenuStyles);
 
 const DemoPage = ({
   title,
@@ -28,11 +30,11 @@ const DemoPage = ({
     customComponents,
     DefaultComponent,
     ShowcaseWidgetProps,
-    normalGridItemConfig,
-    largeGridItemConfig,
   } = DemoComponentsProps;
+  const jupiterStyles = useJupiterNestedMenuStyles();
   return (
     <SidebarLayout
+      menuListStyles={jupiterStyles}
       pkg={PKG.components}
       getOpenKeys={() => ['basic', 'complex']}
     >
@@ -57,11 +59,7 @@ const DemoPage = ({
                 )}
                 <CustomComponentGrid
                   noHeader={noDefaultSection}
-                  setComponent={setComponent}
                   components={customComponents}
-                  ShowcaseWidgetProps={ShowcaseWidgetProps}
-                  normalGridItemConfig={normalGridItemConfig}
-                  largeGridItemConfig={largeGridItemConfig}
                   renderGrid={gridProps => (
                     <GridShowcase
                       {...gridProps}

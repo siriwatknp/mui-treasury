@@ -1,59 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
-import Box from '@material-ui/core/Box';
-import useConfig from '../hooks/useConfig';
+import { useTransitionStyles } from '../styles';
+import { useLayoutCtx } from '../hooks';
 
-const getMargin = ({
-  navAnchor,
-  navVariant,
-  navWidth,
-  collapsible,
-  collapsed,
-  collapsedWidth,
-  opened,
-}) => {
-  if (navAnchor !== 'left') return 0;
-  if (navVariant === 'persistent' && opened) {
-    // open is effect only when
-    // navVariant === 'persistent' ||
-    // navVariant === 'temporary'
-    return navWidth;
-  }
-  if (navVariant === 'permanent') {
-    if (collapsible) {
-      if (collapsed) return collapsedWidth;
-      return navWidth;
-    }
-    return navWidth;
-  }
-  return 0;
-};
-const getWidth = ({ opened, navVariant, squeezed }) => {
-  if (navVariant === 'persistent' && opened) {
-    // open is effect only when
-    // navVariant === 'persistent' ||
-    // navVariant === 'temporary'
-    if (squeezed) {
-      return 'auto';
-    }
-    return '100%';
-  }
-  return 'auto';
-};
-const getHeight = ({ headerPosition, initialAdjustmentHeight }) => {
-  if (headerPosition === 'fixed' || headerPosition === 'absolute')
-    return initialAdjustmentHeight;
-  return 0;
-};
-
-const useStyles = makeStyles(({ transitions }) => ({
+const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
-    transition: transitions.create(['margin'], {
-      easing: transitions.easing.sharp,
-      duration: transitions.duration.leavingScreen,
-    }),
   },
 }));
 
@@ -64,18 +18,19 @@ const Content = ({
   style,
   ...props
 }) => {
-  const ctx = useConfig();
-  const classes = useStyles(props);
+  const ctx = useLayoutCtx();
+  const { getSidebarGap, getWidth, content } = ctx;
+  const styles = useStyles(props);
+  const transitionStyles = useTransitionStyles();
   return (
     <>
-      <Box height={getHeight(ctx)} />
       <Component
         {...props}
-        className={`${classes.root} ${className}`}
+        className={cx(styles.root, transitionStyles.root, className)}
         style={{
           ...style,
-          marginLeft: getMargin(ctx),
-          width: getWidth(ctx),
+          marginLeft: getSidebarGap(content),
+          width: getWidth(content),
         }}
       >
         {typeof children === 'function' ? children(ctx) : children}
@@ -91,9 +46,9 @@ Content.propTypes = {
   style: PropTypes.shape({}),
 };
 Content.defaultProps = {
-  className: '',
+  className: undefined,
   component: 'main',
-  style: {},
+  style: undefined,
 };
 
 export default Content;

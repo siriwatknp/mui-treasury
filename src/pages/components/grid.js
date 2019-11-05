@@ -12,12 +12,6 @@ const GridPage = () => (
       noDefaultSection: true,
       customComponents,
       DefaultComponent,
-      GridItemProps: {
-        xs: 12,
-        sm: 12,
-        md: 12,
-        lg: 12,
-      },
     }}
     DemoSourceDrawerProps={{
       frameProps: {

@@ -1,11 +1,22 @@
 {
   "name": "@mui-treasury/layout",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "author": "siriwatknp",
   "license": "MIT",
   "dependencies": {
-    "cross-env": "^5.2.0",
-    "lodash": "^4.17.15",
-    "@mui-treasury/styling": "0.1.5"
+    "@material-ui/core": "^4.5.2",
+    "@material-ui/styles": "^4.5.2",
+    "@mui-treasury/styling": "0.1.5",
+    "cx": "^19.10.6",
+    "lodash": "^4.17.15"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production babel --config-file ../../babel-config.js ./src --out-dir ./build --ignore \"**/*.test.js\"",
+    "build:copy-files": "node ../../scripts/copy-files.js",
+    "prebuild": "rimraf build",
+    "release": "yarn build && yarn build:copy-files && yarn publish build --access public"
+  },
+  "devDependencies": {
+    "cross-env": "^6.0.3"
   }
 }
