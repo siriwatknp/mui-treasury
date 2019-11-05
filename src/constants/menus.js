@@ -1,9 +1,14 @@
 export const PKG = {
   nav: 'nav',
   components: 'components',
+  layouts: 'layouts',
 };
 
 export default {
+  [PKG.layouts]: [
+    { key: 'layout', label: 'Introduction', to: '/layout' },
+    { key: 'builder', label: 'Builder', to: '/layout/builder' },
+  ],
   [PKG.nav]: [
     // { key: 'how-to', label: 'How to' },
     { key: 'components', label: 'Components', to: '/components/button' },

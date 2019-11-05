@@ -41,16 +41,16 @@ describe('React Hooks', () => {
       );
     // window.matchMedia = createMatchMedia(window.innerWidth);
   });
-  test.skip('[useWidth] give the correct width as string', () => {
-    const { getByTestId } = render(
-      <ThemeProvider theme={baseTheme}>
-        <Width />
-      </ThemeProvider>
-    );
-    expect(getByTestId('screen').textContent).toBe('md');
-    resizeWindow(320, 768);
-    expect(getByTestId('screen').textContent).toBe('sm');
-  });
+  // test.skip('[useWidth] give the correct width as string', () => {
+  //   const { getByTestId } = render(
+  //     <ThemeProvider theme={baseTheme}>
+  //       <Width />
+  //     </ThemeProvider>
+  //   );
+  //   expect(getByTestId('screen').textContent).toBe('md');
+  //   resizeWindow(320, 768);
+  //   expect(getByTestId('screen').textContent).toBe('sm');
+  // });
 
   test('[useAutoCollapse] disabled', () => {
     const config = {

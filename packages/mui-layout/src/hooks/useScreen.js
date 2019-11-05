@@ -1,4 +1,4 @@
-import { useTheme } from '@material-ui/styles';
+import useTheme from '@material-ui/core/styles/useTheme';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { getInitialScreen } from '../utils';
 

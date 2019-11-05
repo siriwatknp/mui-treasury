@@ -22,9 +22,6 @@ import MENUS, { PKG } from 'constants/menus';
 import Header from 'components/layout/Header';
 import Footer from 'components/layout/Footer';
 import { NestedMenuList } from '@mui-treasury/components';
-import jupiterNestedMenuStyles from '@mui-treasury/styles/nestedMenu/jupiter';
-
-const useJupiterNestedMenuStyles = makeStyles(jupiterNestedMenuStyles);
 
 const useStyles = makeStyles(theme => {
   const { palette } = theme;
@@ -42,13 +39,12 @@ const useFooterStyles = makeStyles(() => ({
   },
 }));
 
-const SidebarLayout = ({ pkg, children, getOpenKeys }) => {
+const SidebarLayout = ({ pkg, children, getOpenKeys, menuListStyles }) => {
   const menus = MENUS[PKG[pkg]];
   const styles = useStyles();
   const headerStyles = useHeaderStyles();
   const sidebarStyles = useSidebarStyles();
   const footerStyles = useFooterStyles();
-  const jupiterStyles = useJupiterNestedMenuStyles();
   return (
     <Location>
       {({ location }) => {
@@ -67,7 +63,7 @@ const SidebarLayout = ({ pkg, children, getOpenKeys }) => {
             <Sidebar>
               <div className={sidebarStyles.container}>
                 <NestedMenuList
-                  classes={jupiterStyles}
+                  classes={menuListStyles}
                   selectedKey={lastPath}
                   openKeys={getOpenKeys(menus, location.pathname)}
                   getConfig={() => ({ toggleSeparated: false })}
@@ -100,10 +96,12 @@ const SidebarLayout = ({ pkg, children, getOpenKeys }) => {
 SidebarLayout.propTypes = {
   pkg: PropTypes.oneOf(Object.keys(PKG)),
   getOpenKeys: PropTypes.func,
+  menuListStyles: PropTypes.shape({}),
 };
 SidebarLayout.defaultProps = {
   pkg: PKG.nav,
   getOpenKeys: () => [],
+  menuListStyles: undefined,
 };
 
 export default SidebarLayout;
