@@ -7,6 +7,7 @@ import {
   selectConfigByScreen,
 } from '../utils';
 import { useScreen } from '../hooks';
+import { defaultLayoutPreset } from '../presets';
 
 const LayoutCtx = React.createContext('value');
 LayoutCtx.displayName = 'MuiLayoutCtx';
@@ -66,12 +67,13 @@ LayoutProvider.propTypes = {
     header: PropTypes.shape({}),
     content: PropTypes.shape({}),
     footer: PropTypes.shape({}),
-  }).isRequired,
+  }),
   children: PropTypes.node.isRequired,
 };
 LayoutProvider.defaultProps = {
   initialOpened: false,
   initialCollapsed: false,
+  config: defaultLayoutPreset,
 };
 
 export { LayoutProvider };

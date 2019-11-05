@@ -2,17 +2,20 @@
 import React from 'react';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import Root from '@mui-treasury/layout/components/Root';
-import Header from '@mui-treasury/layout/components/Header';
-import HeaderOffset from '@mui-treasury/layout/components/HeaderOffset';
-import Sidebar from '@mui-treasury/layout/components/Sidebar';
-import Content from '@mui-treasury/layout/components/Content';
-import Footer from '@mui-treasury/layout/components/Footer';
-import CollapseBtn from '@mui-treasury/layout/components/CollapseBtn';
-import CollapseIcon from '@mui-treasury/layout/components/CollapseIcon';
-import SidebarTrigger from '@mui-treasury/layout/components/SidebarTrigger';
-import SidebarTriggerIcon from '@mui-treasury/layout/components/SidebarTriggerIcon';
-import { useSidebarStyles, useHeaderStyles } from '@mui-treasury/layout/styles';
+import {
+  Root,
+  Header,
+  HeaderOffset,
+  Sidebar,
+  Content,
+  Footer,
+  CollapseBtn,
+  CollapseIcon,
+  SidebarTrigger,
+  SidebarTriggerIcon,
+  useSidebarStyles,
+  useHeaderStyles,
+} from '@mui-treasury/layout';
 import {
   defaultLayoutPreset,
   standardLayoutPreset,

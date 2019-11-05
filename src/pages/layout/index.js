@@ -5,37 +5,124 @@ import { Link as RouterLink } from 'gatsby';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
+import Image from 'components/atoms/Image';
+import Prism from 'components/molecules/Prism';
 import Typography from 'components/extensions/Typography';
-import atoms from 'components/atoms';
 import SidebarLayout from 'components/layout/SidebarLayout';
 import './layout.css';
 
-const { Image } = atoms;
+const exampleCode = `
+import React from 'react';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import {
+  Root,
+  Header,
+  HeaderOffset,
+  Sidebar,
+  Content,
+  Footer,
+  CollapseBtn,
+  CollapseIcon,
+  SidebarTrigger,
+  SidebarTriggerIcon,
+  useSidebarStyles,
+  useHeaderStyles,
+} from '@mui-treasury/layout';
 
-const CodeHighlight = () => null;
+const baseTheme = createMuiTheme();
 
-const exampleCode = ``;
+const App = () => {
+  const sidebarStyles = useSidebarStyles();
+  const headerStyles = useHeaderStyles();
+  return (
+    <ThemeProvider theme={baseTheme}>
+      <Root>
+        <Header>
+          <Toolbar>
+            <SidebarTrigger className={headerStyles.leftTrigger}>
+              <SidebarTriggerIcon />
+            </SidebarTrigger>
+            More header
+          </Toolbar>
+        </Header>
+        <HeaderOffset />
+        <Content>
+          Add Content here!
+        </Content>
+        <Sidebar>
+          Sidebar goes here!
+        </Sidebar>
+        <Footer>
+          Footer!
+        </Footer>
+      </Root>
+    </ThemeProvider>
+  );
+};
 
-const code1 = ``;
-const code2 = ``;
+export default App
+`;
 
-const code3 = ``;
+const installation = `yarn add @material-ui/core @material-ui/icons @mui-treasury/layout`;
 
-const code4 = ``;
+const code1 = `<Root
+  config={{
+     // adjust behavior here!
+  }}
+>`;
+const code2 = `config={{
+  // (as px) default is 256
+  sidebar: { width: 256 }, 
+}}
+`;
 
-const code5 = ``;
+const code3 = `config={{
+  // default is true
+  header: { clipped: true },
+}}`;
 
-const codePreset0 = ``;
-const codePreset1 = ``;
-const codePreset2 = ``;
-const codePreset3 = ``;
+const code4 = `config={{
+  // default is true
+  sidebar: { collapsible: true },
+}}`;
+
+const code5 = `// import SidebarTrigger
+// import headerStyles
+<Header>
+  <Toolbar>
+    <SidebarTrigger className={headerStyles.leftTrigger}>
+      <SidebarTriggerIcon />
+    </SidebarTrigger>
+    More header
+  </Toolbar>
+</Header>`;
+
+const codePreset0 = `import {
+  defaultLayoutPreset,
+  standardLayoutPreset,
+  fixedLayoutPreset,
+  contentBasedLayoutPreset,
+  cozyLayoutPreset,
+  muiTreasuryPreset,
+} from '@mui-treasury/layout'`;
+const codePreset1 = `import {
+  fixedLayoutPreset,
+} from '@mui-treasury/layout';`;
+const codePreset2 = `import {
+  contentBasedLayoutPreset,
+} from '@mui-treasury/layout';`;
+const codePreset3 = `import {
+  cozyLayoutPreset,
+} from '@mui-treasury/layout';`;
 
 const LayoutPage = () => {
   return (
     <SidebarLayout pkg={PKG.layouts}>
       <Box
         className={'LayoutPage'}
-        maxWidth={768}
+        maxWidth={960}
         mx={'auto'}
         px={2}
         py={{ xs: 2, sm: 3 }}
@@ -106,12 +193,12 @@ const LayoutPage = () => {
         <Typography weight={'bold'} variant={'h5'} gutterBottom>
           Solution
         </Typography>
-        <Typography>Separate layout into 5 components</Typography>
+        <Typography>Separate layout into 5 core components</Typography>
         <Typography component={'div'}>
           <ul>
             <li>Root</li>
             <li>Header (AppBar)</li>
-            <li>Nav (Drawer)</li>
+            <li>Sidebar (Drawer)</li>
             <li>Content</li>
             <li>Footer</li>
           </ul>
@@ -125,8 +212,8 @@ const LayoutPage = () => {
           (just a plain object) that will be injected to the Root.
         </Typography>
         <Typography>
-          <b>Presets</b> is a set of predefined config that I can come up with
-          after researching a lot of the real world websites and also the{' '}
+          <b>Presets</b> is a set of predefined config that I came up with after
+          researching a lot of the real world websites and also the{' '}
           <Link
             href={
               'https://material.io/design/components/navigation-drawer.html#usage'
@@ -139,25 +226,13 @@ const LayoutPage = () => {
         <Typography weight={'bold'} variant={'h5'} gutterBottom>
           How to use
         </Typography>
-        <Typography gutterBottom>
-          This{' '}
-          <Link href={'https://codesandbox.io/s/6xnlp688v3'}>code sandbox</Link>{' '}
-          is the treasure that you can play with. Happy treasuring!
-        </Typography>
         <Grid container justify={'center'}>
           <Grid item xs={12}>
             <Typography>
               <b>Step 1</b>
             </Typography>
-            <Typography gutterBottom>
-              Open the code sandbox and copy folder “Layout” to your project.
-            </Typography>
-            <Image
-              src={
-                'https://firebasestorage.googleapis.com/v0/b/mui-treasury.appspot.com/o/public%2Flayout01.png?alt=media'
-              }
-              maxWidth={343}
-            />
+            <Typography gutterBottom>install dependencies</Typography>
+            <Prism code={installation} fileName={'copy'} />
             <Box pb={3} />
           </Grid>
           <Grid item xs={12}>
@@ -165,11 +240,18 @@ const LayoutPage = () => {
               <b>Step 2</b>
             </Typography>
             <Typography gutterBottom>
-              In your App.js, add this codes.
+              In your App.js, add this codes and it is done.
             </Typography>
-            <CodeHighlight code={exampleCode} />
+            <Prism code={exampleCode} fileName={'copy'} />
             <Box pb={2} />
           </Grid>
+          <Typography gutterBottom>
+            If you still hesitate, this{' '}
+            <Link href={'https://codesandbox.io/s/6xnlp688v3'}>
+              code sandbox
+            </Link>{' '}
+            is the playground that you can try. Happy treasuring!
+          </Typography>
           <Grid item xs={12}>
             <iframe
               src="https://codesandbox.io/embed/7mn9xq3nnj?fontsize=14&hidenavigation=1"
@@ -211,9 +293,8 @@ const LayoutPage = () => {
           use config (a prop of Root) to adjust all of the behaviors that you
           want.
         </Typography>
-        <Box px={2}>
-          <CodeHighlight code={code1} />
-        </Box>
+        <Prism code={code1} fileName={'copy'} />
+        <Box pb={2} />
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6}>
             <Grid container spacing={2}>
@@ -240,7 +321,8 @@ const LayoutPage = () => {
                   provided, it will fallback to available smaller screen or
                   256px if not match any screen)
                 </Typography>
-                <CodeHighlight code={code2} />
+                <Box pb={1} />
+                <Prism code={code2} fileName={'copy'} />
               </Grid>
               <Grid item>
                 <Typography gutterBottom>
@@ -257,7 +339,8 @@ const LayoutPage = () => {
                   Content. Add “collapsible: true” to the config and
                   {'"collapsedWidth: number"'} (width after collapsed)
                 </Typography>
-                <CodeHighlight code={code4} />
+                <Box pb={1} />
+                <Prism code={code4} fileName={'copy'} />
               </Grid>
             </Grid>
           </Grid>
@@ -284,7 +367,8 @@ const LayoutPage = () => {
                   If you want to make full width Header while having permanent
                   Drawer. Add “clipped: true” to the config.
                 </Typography>
-                <CodeHighlight code={code3} />
+                <Box pb={1} />
+                <Prism code={code3} fileName={'copy'} />
               </Grid>
               <Grid item xs={12}>
                 <Typography gutterBottom>
@@ -307,7 +391,8 @@ const LayoutPage = () => {
                   If you want to add a menu icon to the Header when the drawer
                   variant is persistent or temporary to open it.
                 </Typography>
-                <CodeHighlight code={code5} />
+                <Box pb={1} />
+                <Prism code={code5} fileName={'copy'} />
               </Grid>
             </Grid>
           </Grid>
@@ -321,7 +406,8 @@ const LayoutPage = () => {
           yourself. I had prepared 3 presets that are widely used in many modern
           websites or CMS
         </Typography>
-        <CodeHighlight code={codePreset0} />
+        <Box pb={1} />
+        <Prism code={codePreset0} fileName={'copy'} />
         <Box pb={2} />
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6}>
@@ -353,7 +439,7 @@ const LayoutPage = () => {
                 <li>{'Nav hidden at Tablet screen (< 960px)'}</li>
               </ul>
             </Typography>
-            <CodeHighlight code={codePreset1} />
+            <Prism code={codePreset1} fileName={'copy'} />
           </Grid>
           <Grid item xs={12} sm={6}>
             <Typography gutterBottom>
@@ -370,7 +456,7 @@ const LayoutPage = () => {
                 <li>No breakpoint, all screen is the same</li>
               </ul>
             </Typography>
-            <CodeHighlight code={codePreset2} />
+            <Prism code={codePreset2} fileName={'copy'} />
           </Grid>
           <Grid item xs={12} sm={6}>
             <Typography gutterBottom>
@@ -387,7 +473,7 @@ const LayoutPage = () => {
                 <li>Nav is modal mode in mobile screen</li>
               </ul>
             </Typography>
-            <CodeHighlight code={codePreset3} />
+            <Prism code={codePreset3} fileName={'copy'} />
           </Grid>
         </Grid>
         <Box pb={3} />
