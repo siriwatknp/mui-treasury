@@ -43,10 +43,10 @@
     "build-storybook": "NODE_ENV=production build-storybook -s public"
   },
   "dependencies": {
-    "@material-ui/core": "^4.5.2",
+    "@material-ui/core": "^4.6.0",
     "@material-ui/icons": "^4.5.1",
     "@material-ui/lab": "^4.0.0-alpha.30",
-    "@material-ui/styles": "^4.5.2",
+    "@material-ui/styles": "^4.6.0",
     "@material-ui/system": "^4.5.2",
     "@reach/router": "^1.2.1",
     "color": "^3.1.2",
