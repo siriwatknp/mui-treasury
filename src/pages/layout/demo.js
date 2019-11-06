@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState } from 'react';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import {
@@ -29,66 +29,30 @@ import NavContentEx from 'components/mock/NavContentEx';
 import NavHeaderEx from 'components/mock/NavHeaderEx';
 import HeaderEx from 'components/mock/HeaderEx';
 import ContentEx from 'components/mock/ContentEx';
+import ContentForm from 'components/mock/ContentForm';
 import FooterEx from 'components/mock/FooterEx';
 
-const initialConfig = {
-  autoCollapseDisabled: false,
-  collapsedBreakpoint: 'md',
-  xs: {
-    sidebar: {
-      variant: 'temporary',
-      width: 320,
-      collapsible: true,
-      collapsedWidth: 256,
-    },
-    header: {
-      position: 'relative',
-      offsetHeight: 56,
-    },
-  },
-  sm: {
-    sidebar: {
-      variant: 'persistent',
-      width: 256,
-      collapsible: true,
-      collapsedWidth: 64,
-    },
-    header: {
-      position: 'relative',
-      clipped: true,
-      offsetHeight: 64,
-    },
-  },
-  md: {
-    sidebar: {
-      variant: 'permanent',
-      width: 256,
-      collapsible: true,
-      collapsedWidth: 64,
-    },
-    header: {
-      position: 'relative',
-      clipped: true,
-      persistentPushed: false,
-      persistentScreenFit: true,
-      offsetHeight: 64,
-    },
-    content: {
-      persistentPushed: false,
-      persistentScreenFit: true,
-    },
-    footer: {
-      persistentPushed: true,
-      persistentScreenFit: true,
-    },
-  },
+const presets = {
+  createDefaultLayout: defaultLayoutPreset,
+  createStandardLayout: standardLayoutPreset,
+  createFixedLayout: fixedLayoutPreset,
+  createContentBasedLayout: contentBasedLayoutPreset,
+  createCozyLayout: cozyLayoutPreset,
+  createMuiTreasuryLayout: muiTreasuryPreset
 };
 
 const index = () => {
+  const [preset, setPreset] = useState("createStandardLayout");
+  const [data, setData] = useState({
+    header: true,
+    nav: true,
+    content: true,
+    footer: true
+  });
   const sidebarStyles = useSidebarStyles();
   const headerStyles = useHeaderStyles();
   return (
-    <Root config={muiTreasuryPreset}>
+    <Root config={presets[preset]}>
       <Header>
         <Toolbar>
           <CollapseBtn
@@ -100,19 +64,27 @@ const index = () => {
           <SidebarTrigger className={headerStyles.leftTrigger}>
             <SidebarTriggerIcon />
           </SidebarTrigger>
-          <HeaderEx />
+          {data.header && <HeaderEx />}
         </Toolbar>
       </Header>
       <HeaderOffset />
       <Content>
-        <ContentEx />
+        <ContentForm
+          preset={preset}
+          onChangePreset={val => {
+            setPreset(val);
+          }}
+          data={data}
+          onChangeData={setData}
+        />
+        {data.content && <ContentEx />}
       </Content>
       <Sidebar>
         {({ collapsed }) => (
           <>
             <NavHeaderEx collapsed={collapsed} />
             <div className={sidebarStyles.container}>
-              <NavContentEx />
+              {data.nav && <NavContentEx />}
             </div>
             <CollapseBtn className={sidebarStyles.collapseBtn}>
               <CollapseIcon />
@@ -121,7 +93,7 @@ const index = () => {
         )}
       </Sidebar>
       <Footer>
-        <FooterEx />
+        {data.footer && <FooterEx />}
       </Footer>
     </Root>
   );

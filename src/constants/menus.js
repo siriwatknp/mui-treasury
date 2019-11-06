@@ -7,6 +7,7 @@ export const PKG = {
 export default {
   [PKG.layouts]: [
     { key: 'layout', label: 'Introduction', to: '/layout' },
+    { key: 'demo', label: 'Demo', to: '/layout/demo' },
     { key: 'builder', label: 'Builder', to: '/layout/builder' },
   ],
   [PKG.nav]: [
