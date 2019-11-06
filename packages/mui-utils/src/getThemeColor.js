@@ -1,4 +1,4 @@
-import get from 'lodash/get';
+import get from 'lodash.get';
 
 export default (palette, color) => {
   if (color === 'divider') {

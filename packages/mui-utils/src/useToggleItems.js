@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import isEqual from 'lodash/isEqual';
+import isEqual from 'lodash.isequal';
 
 const isString = str => typeof str === 'string';
 

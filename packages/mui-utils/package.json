@@ -1,11 +1,14 @@
 {
   "name": "@mui-treasury/utils",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "main": "./src/index.js",
   "author": "siriwatknp",
   "license": "MIT",
   "dependencies": {
-    "cross-env": "^5.2.0"
+    "clsx": "^1.0.4",
+    "lodash.get": "^4.4.2",
+    "lodash.isequal": "^4.5.0",
+    "react": "^16.11.0"
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production babel --config-file ../../babel-config.js ./src --out-dir ./build --ignore \"**/*.test.js\"",
