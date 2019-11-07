@@ -1,4 +1,4 @@
-import lodashPick from 'lodash/pick';
+import lodashPick from 'lodash.pick';
 
 export const getRepeatedItems = items => {
   if (!items) return items;

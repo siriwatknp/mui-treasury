@@ -1,17 +1,16 @@
 {
   "name": "@mui-treasury/styles",
-  "version": "0.1.3",
+  "version": "0.2.1",
   "main": "./src/index.js",
   "author": "siriwatknp",
   "license": "MIT",
   "dependencies": {
-    "color": "^3.1.2",
-    "cross-env": "^5.2.0"
+    "color": "^3.1.2"
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production babel --config-file ../../babel-config.js ./src --out-dir ./build --ignore \"**/*.test.js\"",
     "build:copy-files": "node ../../scripts/copy-files.js",
     "prebuild": "rimraf build",
-    "release": "yarn build && yarn build:copy-files && yarn publish build --tag latest"
+    "release": "yarn build && yarn build:copy-files && yarn publish build --access public"
   }
 }
