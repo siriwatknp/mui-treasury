@@ -53,9 +53,13 @@ const SloganSection = () => {
         mb={{ xs: '2rem', sm: '3rem' }}
       >
         <p className={classes.body}>
-          MUI Treasury is a collection of ready-to-use and themeable components
-          base on{' '}
-          <a href="https://material-ui.com" target={'_blank'} rel={'noopener'}>
+          MUI Treasury is an ecosystem of{' '}
+          <a
+            href="https://material-ui.com"
+            target={'_blank'}
+            rel={'noopener'}
+            style={{ marginLeft: 12 }}
+          >
             Material-UI
           </a>
         </p>
