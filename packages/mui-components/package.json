@@ -2,7 +2,7 @@
   "name": "@mui-treasury/components",
   "version": "0.2.0",
   "main": "./scr/index.js",
-  "author": "siriwatknp",
+  "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@material-ui/core": "^4.6.0",

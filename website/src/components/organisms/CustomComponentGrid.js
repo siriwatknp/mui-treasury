@@ -44,6 +44,15 @@ const useGridProps = size => {
   };
 };
 
+const Section = ({ size, component: Component, components }) => {
+  const gridProps = useGridProps(size);
+  return (
+    <Box mt={'-1px'}>
+      <Component components={components} {...gridProps} />
+    </Box>
+  );
+};
+
 const CustomComponentGrid = ({
   noHeader,
   components,
@@ -61,9 +70,12 @@ const CustomComponentGrid = ({
         </Box>
       )}
       {Object.keys(groupBySize).map(size => (
-        <Box key={size} mt={'-1px'}>
-          <CustomGrid components={groupBySize[size]} {...useGridProps(size)} />
-        </Box>
+        <Section
+          ket={size}
+          component={CustomGrid}
+          size={size}
+          components={groupBySize[size]}
+        />
       ))}
     </Box>
   );
