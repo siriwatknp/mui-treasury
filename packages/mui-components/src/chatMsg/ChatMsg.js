@@ -6,7 +6,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 
 import { withStyles } from '@mui-treasury/styling';
-import defaultChatMsgStyles from '@mui-treasury/styles/src/chatMsg/default/defaultChatMsg.styles';
+import defaultChatMsgStyles from '@mui-treasury/styles/chatMsg/default';
 
 const ChatMsg = withStyles(defaultChatMsgStyles, { name: 'ChatMsg' })(props => {
   const {

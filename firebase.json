@@ -2,7 +2,7 @@
   "hosting": [
     {
       "target": "next",
-      "public": "public",
+      "public": "website/public",
       "ignore": [
         "firebase.json",
         "**/.*",

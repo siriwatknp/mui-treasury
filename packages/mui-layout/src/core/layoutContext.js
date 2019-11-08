@@ -28,7 +28,7 @@ const LayoutProvider = ({
     collapsedBreakpoint,
     heightAdjustmentDisabled,
   } = config;
-  const screen = config.screen || useScreen(); // config.screen is for testing purpose only
+  const screen = useScreen(config.screen); // config.screen is for testing purpose only
   const finalConfig = isSomeExisted(config, keys)
     ? selectConfigByScreen(config, screen)
     : config;
