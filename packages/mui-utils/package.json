@@ -2,7 +2,7 @@
   "name": "@mui-treasury/utils",
   "version": "0.2.0",
   "main": "./src/index.js",
-  "author": "siriwatknp",
+  "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "clsx": "^1.0.4",
