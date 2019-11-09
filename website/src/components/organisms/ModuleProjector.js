@@ -6,7 +6,7 @@ import Tab from '@material-ui/core/Tab';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { chromeTabsStylesHook } from '@mui-treasury/styles';
-import Prism from 'components/molecules/Prism';
+import PrismWithCopier from 'components/molecules/PrismWithCopier';
 
 const ModuleProjector = ({ demoSource, files }) => {
   const [sourceDisplayed, setSourceDisplayed] = useState(false);
@@ -54,7 +54,7 @@ const ModuleProjector = ({ demoSource, files }) => {
             </Tabs>
           )}
           {file ? (
-            <Prism code={file.source} fileName={file.name} />
+            <PrismWithCopier code={file.source} fileName={file.name} />
           ) : (
             <Box bgcolor={'rgb(40, 44, 52)'} color={'#777777'} p={2}>
               {'// No Source code'}
