@@ -16,7 +16,7 @@ These are some that I think will benefit to this project.
 ## Code of Conduct
 
 Mui Treasury has adopted the [Contributor Covenant](https://www.contributor-covenant.org/) as its Code of Conduct, and we expect project participants to adhere to it.
-Please read [the full content](/CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
+Please read [the full content](/.github/CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
 
 ## Your first Pull Request
 

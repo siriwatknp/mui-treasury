@@ -42,7 +42,7 @@ I am very excited about this project because I know that there is a lot of devel
 
 ## Contribution
 
-I am profoundly appreciate any [contribution](/CONTRIBUTING.md) you submit, thanks.
+I am profoundly appreciate any [contribution](/.github/CONTRIBUTING.md) you submit, thanks.
 
 ## License
 
