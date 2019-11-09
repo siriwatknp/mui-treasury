@@ -64,7 +64,7 @@ git push -u
 The core team is monitoring for Pull Requests. We will review your Pull Request and either merge it, request changes to it, or close it with an explanation.
 
 
-## Development
+## Development Steps
 
 After you pull the project to local, run this command in the root of the directory.
 
