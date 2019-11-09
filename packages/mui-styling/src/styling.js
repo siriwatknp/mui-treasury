@@ -1,7 +1,7 @@
 import React from 'react';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import muiWithStyles from '@material-ui/styles/withStyles';
-import camelCase from 'lodash/camelCase';
+import camelCase from 'lodash.camelcase';
 import { getRepeatedItems, pick } from './utils';
 
 const baseTheme = createMuiTheme();

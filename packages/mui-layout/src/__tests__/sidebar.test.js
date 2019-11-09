@@ -2,7 +2,7 @@ import React from 'react';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { render, fireEvent } from '@testing-library/react';
-import { LayoutProvider, LayoutConsumer } from '../core/layoutContext';
+import { LayoutProvider } from '../core/layoutContext';
 import Sidebar from '../components/Sidebar';
 import CollapseBtn from '../components/CollapseBtn';
 import SidebarTrigger from '../components/SidebarTrigger';

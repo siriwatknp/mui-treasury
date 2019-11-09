@@ -33,7 +33,7 @@ commands:
       - save_cache:
           key: gatsby-public-cache-{{ .Branch }}
           paths:
-            - ./public
+            - ./website/public
 workflows:
   version: 2
   build-deploy:

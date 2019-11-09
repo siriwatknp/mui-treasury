@@ -507,13 +507,13 @@ const LayoutPage = () => {
           >
             twitter (@siriwatknp)
           </Link>{' '}
-          or mail{' '}
+          or{' '}
           <Link
             target={'_blank'}
             rel="noopener"
             href={'mailto:siriwatkunaporn@gmail.com'}
           >
-            me
+            mail me
           </Link>{' '}
           directly. I will do my best to help.
         </Typography>

@@ -11,7 +11,6 @@ module.exports = {
     twitterUsername: '@siriwatknp',
   },
   plugins: [
-    `gatsby-plugin-netlify`,
     {
       resolve: 'gatsby-plugin-module-resolver',
       options: {
@@ -22,17 +21,11 @@ module.exports = {
           docs: './src/docs',
           components: './src/components',
           containers: './src/containers',
-          static: './public/static',
-          '@mui-treasury/components/src': './packages/mui-components/src',
-          '@mui-treasury/components': './packages/mui-components/src',
-          '@mui-treasury/utils/src': './packages/mui-utils/src',
-          '@mui-treasury/utils': './packages/mui-utils/src',
-          '@mui-treasury/styling/src': './packages/mui-styling/src',
-          '@mui-treasury/styling': './packages/mui-styling/src',
-          '@mui-treasury/layout/src': './packages/mui-layout/src',
-          '@mui-treasury/layout': './packages/mui-layout/src',
-          '@mui-treasury/styles/src': './packages/mui-styles/src',
-          '@mui-treasury/styles': './packages/mui-styles/src',
+          '@mui-treasury/components': '../packages/mui-components/src',
+          '@mui-treasury/utils': '../packages/mui-utils/src',
+          '@mui-treasury/styling': '../packages/mui-styling/src',
+          '@mui-treasury/layout': '../packages/mui-layout/src',
+          '@mui-treasury/styles': '../packages/mui-styles/src',
         },
       },
     },
@@ -78,13 +71,12 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-material-ui`,
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     // trackingId: `ADD YOUR TRACKING ID HERE`,
-    //   },
-    // },
-    // `gatsby-plugin-feed`,
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `UA-136381677-1`,
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -94,7 +86,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/assets/gatsby-icon.png`,
+        icon: `src/assets/logo.png`,
       },
     },
     `gatsby-plugin-offline`,

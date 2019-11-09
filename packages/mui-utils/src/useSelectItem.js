@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import isDefined from '@mui-treasury/utils/isDefined';
+import isDefined from './isDefined';
 
 export default initialSelectedKey => {
   const [selectedKey, setSelectedKey] = useState(
