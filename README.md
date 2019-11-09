@@ -7,7 +7,7 @@
 # Material-UI Treasury [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/siriwatknp/mui-treasury-next/pulls)
 
 Imagine a place with millions of real-world, ready-to-use, and themable components that you can copy & paste or even install to your project. I believe that it will help boosting many projects that want to prove their ideas and make their 1st prototype to make tomorrow better than today.
-## Curious? checkout the [Website & Demo](https://mui-treasury.com)
+## Curious? checkout [Website](https://mui-treasury.com)
 
 I am very excited about this project because I know that there is a lot of developers who are struggling at building ui and waiting for something like this to come true. It will take a lot of time for me alone to reach thousand components. So if you want to do something great and fun, please read our [contribution section](#Contribution)
 
@@ -36,7 +36,9 @@ I am very excited about this project because I know that there is a lot of devel
 
 1. [Open mui-treasury website](https://mui-treasury.com)
 2. In the components panel, choose one that you like.
-3. Click search icon to copy theme and code sandbox for jsx => paste to your project.
+3. Click `</>` icon to see the code and customize it in [codesandbox template](https://codesandbox.io/s/mui-treasury-demo-template-3i5hn)
+![image](https://user-images.githubusercontent.com/18292247/68522873-7317e900-02e3-11ea-922f-3598828a2481.png)
+
 
 ## Contribution
 
