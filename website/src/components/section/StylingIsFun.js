@@ -1,19 +1,19 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/styles';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Radio from '@material-ui/core/Radio';
-import KanbanCard from 'docs/components/card/kanban/KanbanCard';
-import Prism from 'components/molecules/Prism';
+import { makeStyles } from '@material-ui/styles';
 import {
-  useFadedShadowStyles,
   useBouncyShadowStyles,
+  useFadedShadowStyles,
   useFloatShadowStyles,
   useLightTopShadowStyles,
   useOverShadowStyles,
   useSoftRiseShadowStyles,
 } from '@mui-treasury/styles/shadow';
+import Prism from 'components/molecules/Prism';
+import KanbanCard from 'docs/components/card/kanban/KanbanCard';
+import React from 'react';
 
 const useStyles = makeStyles(() => ({
   topic: {
@@ -90,7 +90,7 @@ const StylingIsFun = () => {
           </Grid>
           <Grid item xs={12} md={7}>
             {shadows.map(({ code, className }) => (
-              <Box display={'flex'}>
+              <Box display={'flex'} key={code}>
                 <Radio
                   className={classes.radio}
                   checked={selectedClassName === className}
