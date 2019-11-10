@@ -3,11 +3,17 @@ import { Location } from '@reach/router';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import Image from 'gatsby-image';
 import GitHubButton from 'react-github-btn';
+import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-// import InputBase from '@material-ui/core/InputBase';
 import { HorzMenuList } from '@mui-treasury/components';
-// import { useContrastInputBaseStyles } from '@mui-treasury/styles/inputBase';
 import MENUS, { PKG } from 'constants/menus';
+
+const useStyles = makeStyles(() => ({
+  nav: {
+    minWidth: 0,
+    overflow: 'auto',
+  },
+}));
 
 const Header = () => {
   const data = useStaticQuery(graphql`
@@ -22,7 +28,7 @@ const Header = () => {
     }
   `);
   const { logo } = data;
-  // const inputBaseStyles = useContrastInputBaseStyles();
+  const styles = useStyles();
   return (
     <Location>
       {({ location }) => (
@@ -33,7 +39,7 @@ const Header = () => {
           width={'100%'}
         >
           <Box
-            mr={4}
+            mr={{ xs: 1, sm: 4 }}
             component={Link}
             to={'/'}
             borderBottom={'none !important'}
@@ -47,13 +53,12 @@ const Header = () => {
             <Image fixed={logo.childImageSharp.fixed} />
           </Box>
           <HorzMenuList
+            className={styles.nav}
             Link={Link}
             selectedKey={key => location.pathname.includes(key)}
             menus={MENUS[PKG.nav]}
           />
-          <Box ml={'auto'} mr={2}>
-            {/* <InputBase classes={inputBaseStyles} placeholder={'search...'} /> */}
-          </Box>
+          <Box ml={'auto'} mr={2} />
           <Box lineHeight={0}>
             <GitHubButton
               href="https://github.com/siriwatknp/mui-treasury"

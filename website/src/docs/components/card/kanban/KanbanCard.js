@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
@@ -63,11 +64,11 @@ const useSliderStyles = makeStyles(() => ({
   },
 }));
 
-const KanbanCard = () => {
+const KanbanCard = ({ className }) => {
   const styles = useStyles();
   const sliderStyles = useSliderStyles();
   return (
-    <Card className={styles.card} elevation={0}>
+    <Card className={cx(styles.card, className)} elevation={0}>
       <Avatar src={MOCK.face} className={styles.avatar} />
       <Box>
         <h3 className={styles.heading}>Sarah Onella</h3>

@@ -5,8 +5,8 @@ import { withStyles } from '@mui-treasury/styling';
 import createStyles from './HorzMenuList.styles';
 
 const HorzMenuList = withStyles(createStyles, { name: 'HorzMenuList' })(
-  ({ css, menus, selectedKey, getItemProps, Link }) => (
-    <ul className={css.navRoot}>
+  ({ className, css, menus, selectedKey, getItemProps, Link }) => (
+    <ul className={cx(css.navRoot, className)}>
       {menus.map((item, index) => {
         const { key, label, disabled, to } = item;
         const { ...extItemProps } = getItemProps(item, index);
@@ -31,11 +31,13 @@ const HorzMenuList = withStyles(createStyles, { name: 'HorzMenuList' })(
 );
 
 HorzMenuList.propTypes = {
+  className: PropTypes.string,
   menus: PropTypes.arrayOf(PropTypes.shape({})),
   selectedKey: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   getItemProps: PropTypes.func,
 };
 HorzMenuList.defaultProps = {
+  className: undefined,
   menus: [],
   selectedKey: '',
   getItemProps: () => ({}),

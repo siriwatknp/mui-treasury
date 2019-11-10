@@ -15,6 +15,7 @@ import {
 } from '@mui-treasury/styles';
 import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
+import StylingIsFun from '../components/section/StylingIsFun';
 
 const { SloganSection, TopicSection } = organisms;
 
@@ -94,7 +95,8 @@ const socials = [
   {
     // icon: 'fab fa-twitter',
     icon: ['fab', 'twitter'],
-    title: 'Follow here, so that you won’t miss any updates',
+    title: 'Twitter',
+    content: 'Follow here, so that you won’t miss any updates',
     children: (
       <Button href={''} color={'primary'}>
         Follow Mui Treasury
@@ -102,9 +104,21 @@ const socials = [
     ),
   },
   {
+    // icon: 'fab fa-twitter',
+    icon: ['fab', 'facebook'],
+    title: 'Facebook',
+    content: "For those who don't use twitter, we also have facebook page.",
+    children: (
+      <Button href={''} color={'primary'}>
+        Keep Posted
+      </Button>
+    ),
+  },
+  {
     // icon: 'fab fa-github',
     icon: ['fab', 'github'],
-    title: 'Checkout the repo, PR welcome and please give me a star!',
+    title: 'Github',
+    content: 'Checkout the repo, PR welcome and please give me a star!',
     children: (
       <Button href={''} color={'primary'}>
         Checkout Github
@@ -121,7 +135,7 @@ const Homepage = ({ navigate }) => {
     colWidth: featureColWidth,
   });
   const socialGridStyles = useFullBorderedGridStyles({
-    colWidth: { xs: 12, sm: 6 },
+    colWidth: { xs: 12, sm: 4 },
   });
   return (
     <div>
@@ -155,30 +169,7 @@ const Homepage = ({ navigate }) => {
           </Grid>
         ))}
       </Grid>
-      <Container>
-        <Box py={{ xs: '2rem', sm: '3.5rem' }}>
-          <h2 className={classes.topic}>How it works</h2>
-          <p />
-          <Grid container spacing={4}>
-            <Grid item xs={12} sm={6} md={7}>
-              <Box bgcolor={'grey.100'} height={'100%'} />
-            </Grid>
-            <Grid item xs={12} sm={6} md={5}>
-              <p>
-                I want it to be simple for developers as much as possible, so
-                the easiest way to start is
-              </p>
-              <ol>
-                <li>Browse a component</li>
-                <li>Select one that you like</li>
-                <li>Import it in your project</li>
-                <li>Customize it if you like.</li>
-              </ol>
-              <p>That’s it, easy.</p>
-            </Grid>
-          </Grid>
-        </Box>
-      </Container>
+      <StylingIsFun />
       <TopicSection
         title={'Interested ?'}
         subtitle={'Take a few minutes to browse the collection'}
@@ -193,7 +184,7 @@ const Homepage = ({ navigate }) => {
           Show me
         </Button>
       </TopicSection>
-      <Container maxWidth={'md'}>
+      <Container>
         <Box py={{ xs: '2rem', sm: '3.5rem' }}>
           <Box textAlign={'center'}>
             <h2 className={classes.topic}>Stay Updated!</h2>
@@ -201,11 +192,19 @@ const Homepage = ({ navigate }) => {
           <p />
           <Grid container classes={socialGridStyles}>
             {/* eslint-disable-next-line no-unused-vars */}
-            {socials.map(({ icon, title, children }) => (
-              <Grid classes={socialGridStyles} item key={title} xs={12} sm={6}>
+            {socials.map(({ icon, title, content, children }) => (
+              <Grid
+                classes={socialGridStyles}
+                item
+                key={title}
+                xs={12}
+                sm={6}
+                md={4}
+              >
                 <FeatureWidget
                   classes={widgetStyles}
-                  content={title}
+                  title={title}
+                  content={content}
                   // renderIcon={({ className }) => (
                   //   <FontAwesomeIcon icon={icon} className={className} />
                   // )}
