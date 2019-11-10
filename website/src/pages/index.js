@@ -98,7 +98,7 @@ const socials = [
     title: 'Twitter',
     content: 'Follow here, so that you won’t miss any updates',
     children: (
-      <Button href={''} color={'primary'}>
+      <Button target={'_blank'} rel={'noopener'} href={''} color={'primary'}>
         Follow Mui Treasury
       </Button>
     ),
@@ -109,7 +109,12 @@ const socials = [
     title: 'Facebook',
     content: "For those who don't use twitter, we also have facebook page.",
     children: (
-      <Button href={''} color={'primary'}>
+      <Button
+        target={'_blank'}
+        rel={'noopener'}
+        href={'https://www.facebook.com/Material-UI-Treasury-107529197368511/'}
+        color={'primary'}
+      >
         Keep Posted
       </Button>
     ),
@@ -120,7 +125,12 @@ const socials = [
     title: 'Github',
     content: 'Checkout the repo, PR welcome and please give me a star!',
     children: (
-      <Button href={''} color={'primary'}>
+      <Button
+        target={'_blank'}
+        rel={'noopener'}
+        href={'https://github.com/siriwatknp/mui-treasury'}
+        color={'primary'}
+      >
         Checkout Github
       </Button>
     ),

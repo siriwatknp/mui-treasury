@@ -43,6 +43,11 @@ workflows:
             branches:
               only:
                 - master
+      - next:
+          filters:
+            branches:
+              only:
+                - next
 jobs:
   release:
     executor: node-executor
@@ -50,5 +55,13 @@ jobs:
     steps:
       - gatsby-build
       - run:
-          name: Firebase deploy
+          name: Firebase deploy Current
+          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting:current
+  next:
+    executor: node-executor
+    working_directory: ~/repo
+    steps:
+      - gatsby-build
+      - run:
+          name: Firebase deploy Next
           command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting:next
