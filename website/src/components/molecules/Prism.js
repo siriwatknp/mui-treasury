@@ -11,7 +11,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Prism = ({ code }) => {
+const Prism = ({ code, className }) => {
   const classes = useStyles();
   return (
     <Highlight
@@ -23,8 +23,8 @@ const Prism = ({ code }) => {
       code={code}
       language="jsx"
     >
-      {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={`${className} ${classes.root}`} style={style}>
+      {({ className: cls, style, tokens, getLineProps, getTokenProps }) => (
+        <pre className={`${cls} ${classes.root} ${className}`} style={style}>
           {tokens.map((line, i) => (
             <div {...getLineProps({ line, key: i })}>
               {line.map((token, key) => (
@@ -40,7 +40,10 @@ const Prism = ({ code }) => {
 
 Prism.propTypes = {
   code: PropTypes.string.isRequired,
+  className: PropTypes.string,
 };
-Prism.defaultProps = {};
+Prism.defaultProps = {
+  className: undefined,
+};
 
 export default Prism;
