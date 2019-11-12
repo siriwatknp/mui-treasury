@@ -51,6 +51,11 @@ export default {
           to: '/components/chat-msg',
         },
         {
+          key: 'flex',
+          label: 'Flex',
+          to: '/components/flex',
+        },
+        {
           key: 'grid',
           label: 'Grid',
           to: '/components/grid',
@@ -60,6 +65,7 @@ export default {
           label: 'Group',
           to: '/components/group',
         },
+        { key: 'icon', label: 'Icon', to: '/components/icon' },
         { key: 'input', label: 'Input', to: '/components/input' },
         { key: 'indicator', label: 'Indicator', to: '/components/indicator' },
         { key: 'rip', label: 'Rip', to: '/components/rip' },

@@ -1,6 +1,5 @@
 import React from 'react';
 import cx from 'clsx';
-import startCase from 'lodash/startCase';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import Box from '@material-ui/core/Box';
@@ -81,7 +80,7 @@ const ShowcaseWidget = ({
         <div>
           <a href={`#${anchor}`} className={styles.name} aria-label={'Anchor'}>
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-            <b>{startCase(name)}</b> <Link />
+            <b>{name}</b> <Link />
           </a>
           {description && (
             <Typography variant={'body2'} color={'textSecondary'}>

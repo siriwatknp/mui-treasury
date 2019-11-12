@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
@@ -7,10 +8,12 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Divider from '@material-ui/core/Divider';
 import Rating from '@material-ui/lab/Rating';
-import KeyboardArrowRightRounded from '@material-ui/icons/KeyboardArrowRightRounded';
+import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos';
 import ModeComment from '@material-ui/icons/ModeComment';
 import Favorite from '@material-ui/icons/Favorite';
 import { usePushingGutter } from '@mui-treasury/styles/gutter';
+import { useLabelIconStyles } from '@mui-treasury/styles/icon/label';
+import { useRowFlexStyles } from '@mui-treasury/styles/flex/row';
 import MOCK from 'constants/mock';
 
 const useStyles = makeStyles(({ spacing, palette }) => ({
@@ -50,25 +53,18 @@ const useStyles = makeStyles(({ spacing, palette }) => ({
   },
   textFooter: {
     fontSize: 14,
-    opacity: 0.6,
-    '&:hover': {
-      opacity: 1,
-    },
   },
   icon: {
     fontSize: '1.2rem',
     verticalAlign: 'bottom',
-  },
-  smallIcon: {
-    fontSize: '1rem',
-    verticalAlign: 'middle',
-    color: palette.grey[500],
   },
 }));
 
 const ReviewCard2 = () => {
   const styles = useStyles();
   const gutterStyles = usePushingGutter({ space: 1.5 });
+  const labelStyles = useLabelIconStyles({ linked: true });
+  const flexStyles = useRowFlexStyles();
   return (
     <Card className={styles.card} elevation={0}>
       <CardContent className={styles.content}>
@@ -87,24 +83,29 @@ const ReviewCard2 = () => {
           credit (www.brighttv.co.th)
         </p>
         <Divider className={styles.divider} light />
-        <Box
-          display={'flex'}
-          justifyContent={'space-between'}
-          alignItems={'center'}
-        >
+        <div className={flexStyles.parent}>
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <Link className={styles.textFooter} component={'button'}>
-            Read more <KeyboardArrowRightRounded className={styles.icon} />
+          <Link
+            className={cx(labelStyles.primaryLink, styles.textFooter)}
+            component={'button'}
+          >
+            Read more <ArrowForwardIos className={labelStyles.icon} />
           </Link>
-          <Box className={gutterStyles.parent}>
-            <span className={styles.textFooter}>
-              <ModeComment className={styles.smallIcon} /> 135
-            </span>
-            <span className={styles.textFooter}>
-              <Favorite className={styles.smallIcon} /> 12
-            </span>
-          </Box>
-        </Box>
+          <div
+            className={cx(
+              flexStyles.rightChild,
+              flexStyles.parent,
+              gutterStyles.parent
+            )}
+          >
+            <button type={'button'} className={labelStyles.link}>
+              <ModeComment className={labelStyles.icon} /> 135
+            </button>
+            <button type={'button'} className={labelStyles.link}>
+              <Favorite className={labelStyles.icon} /> 12
+            </button>
+          </div>
+        </div>
       </CardContent>
       <CardMedia className={styles.media} image={MOCK.prangImg} />
     </Card>
@@ -121,6 +122,8 @@ ReviewCard2.metadata = {
   },
   files: [
     { pkg: 'mui-styles', path: 'gutter/pushingGutter/pushingGutter.styles.js' },
+    { pkg: 'mui-styles', path: 'icon/label/labelIcon.styles.js' },
+    { pkg: 'mui-styles', path: 'flex/row/rowFlex.styles.js' },
   ],
 };
 // hide-end
