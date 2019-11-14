@@ -1,15 +1,29 @@
 import React from 'react';
+import cx from 'clsx';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { NestedMenuList, HorzMenuList } from '@mui-treasury/components';
 import Toolbar from '@material-ui/core/Toolbar';
 import { text, boolean, select } from '@storybook/addon-knobs';
+
+// COMPONENTS
+import { NestedMenuList, HorzMenuList } from '@mui-treasury/components';
+import CollapsibleMenuList from '@mui-treasury/components/menuList/collapsible';
+import ActionToggleItem from '@mui-treasury/components/menuItem/actionToggle';
+// STYLES
 import {
   useGatsbyNestedMenuStyles,
   useJupiterNestedMenuStyles,
 } from '@mui-treasury/styles';
+import {
+  useMaterialInfoMenuItemStyles,
+  useMaterialToggleMenuItemStyles,
+  useMaterialActionToggleItemStyles,
+} from '@mui-treasury/styles/menuItem/material';
 
-import createContainer, { StylesProvider } from './helpers/containerDecorator';
+import createContainer, {
+  StylesProvider,
+  StyleListProvider,
+} from './helpers/containerDecorator';
 const menus2 = [
   {
     key: 'intro',
@@ -171,6 +185,56 @@ storiesOf('Components|Vertical Menu/Nested Menu', module)
     <StylesProvider useStyles={useGatsbyNestedMenuStyles}>
       {styles => <NestedMenuList classes={styles} {...createCommonProps()} />}
     </StylesProvider>
+  ));
+
+storiesOf('Components|Vertical Menu/Collapsible Menu', module)
+  .addDecorator(createContainer({ maxWidth: 'xs' }))
+  .add('material', () => (
+    <StyleListProvider
+      styleListHooks={[
+        useMaterialActionToggleItemStyles,
+        useMaterialToggleMenuItemStyles,
+        useMaterialInfoMenuItemStyles,
+      ]}
+    >
+      {([actionToggleStyles, toggleStyles, infoStyles]) => (
+        <>
+          <CollapsibleMenuList
+            renderParent={({ onClick, expanded }) => (
+              <ActionToggleItem
+                selected
+                expanded={expanded}
+                classes={actionToggleStyles}
+                onToggle={onClick}
+              >
+                Parent menu
+              </ActionToggleItem>
+            )}
+            subMenus={menus2.slice(0, 5)}
+            getChildProps={({ label }) => ({
+              button: true,
+              children: label,
+              className: cx(infoStyles.root, infoStyles.button),
+              infoClassName: infoStyles.info,
+            })}
+          />
+          <CollapsibleMenuList
+            parentProps={{
+              children: 'Parent menu',
+              className: toggleStyles.root,
+              symbolClassName: toggleStyles.symbol,
+            }}
+            subMenus={menus2.slice(0, 5)}
+            getChildProps={({ label }) => ({
+              button: true,
+              children: label,
+              className: cx(infoStyles.root, infoStyles.button),
+              infoClassName: infoStyles.info,
+            })}
+          />
+        </>
+      )}
+    </StyleListProvider>
   ));
 
 storiesOf('Components|Horizontal Menu/Nav Menu', module)

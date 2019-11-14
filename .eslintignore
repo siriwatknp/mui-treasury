@@ -1,5 +1,5 @@
 /stories/*
 /dist/*
-/src/**/*.test.js
-/src/**/*.stories.js
+/**/*.test.js
+/**/*.stories.js
 /packages/**/*.test.js

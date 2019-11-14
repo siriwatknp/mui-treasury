@@ -9,10 +9,10 @@ import * as components from '@mui-treasury/components';
 // -----------------------------------------------------------
 import 'prismjs/themes/prism-tomorrow.css';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
-import '../src/global.css';
-import typography from '../src/utils/typography';
-import { ThemeWrapper } from '../src/utils/theme';
+import typography from 'utils/typography';
+import { ThemeWrapper } from 'utils/theme';
 
+import '../website/src/global.css';
 import './global.css';
 
 addParameters({
@@ -34,7 +34,7 @@ const ThemeDecorator = storyFn => (
 );
 
 // automatically import all files ending in *.stories.js
-const req = require.context('../src', true, /.stories.js$/);
+const req = require.context('../website/src', true, /.stories.js$/);
 function loadStories() {
   addDecorator(withKnobs);
   addDecorator(ThemeDecorator);

@@ -7,9 +7,8 @@ import { makeStyles } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 import FileCopy from '@material-ui/icons/FileCopy';
 import createContainer, { StylesProvider } from './helpers/containerDecorator';
-import atoms from 'components/atoms';
 
-const { Copier } = atoms;
+import Copier from 'components/atoms/Copier';
 
 const useIconStyles = makeStyles(() => ({
   root: {
@@ -25,12 +24,9 @@ storiesOf('Treasury|atoms', module)
       {styles => (
         <Copier>
           {({ copied }) => (
-            <Button
-              variant={'contained'}
-              color={'secondary'}
-              size={'small'}
-            >
-              <FileCopy classes={styles} /> {copied ? 'Copied' : 'Click to copy'}
+            <Button variant={'contained'} color={'secondary'} size={'small'}>
+              <FileCopy classes={styles} />{' '}
+              {copied ? 'Copied' : 'Click to copy'}
             </Button>
           )}
         </Copier>
