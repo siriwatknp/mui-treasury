@@ -11,8 +11,8 @@ const CollapsibleMenuList = ({
   initialExpanded,
   subMenus,
   renderWrapper: Wrapper,
-  renderParent: Parent,
-  renderChild: Child,
+  renderParent,
+  renderChild,
   getParentProps,
   listProps,
   getChildProps,
@@ -23,20 +23,26 @@ const CollapsibleMenuList = ({
   const [expanded, setExpanded] = useStateBinding(initialExpanded, false);
   return (
     <>
-      <Parent
-        {...getParentProps(expanded)}
-        expanded={expanded}
-        onToggle={() => setExpanded(!expanded)}
-      />
+      {renderParent({
+        ...getParentProps(expanded),
+        expanded,
+        onToggle: () => setExpanded(!expanded),
+      })}
+      {/*<Parent*/}
+      {/*  {...getParentProps(expanded)}*/}
+      {/*  expanded={expanded}*/}
+      {/*  onToggle={() => setExpanded(!expanded)}*/}
+      {/*/>*/}
       <Collapse {...collapseProps} in={expanded}>
         <List {...listProps}>
-          {subMenus.map((menu, idx) => (
-            <Child
-              key={menu.key || menu.id || idx}
-              component={'li'}
-              {...getChildProps(menu, idx)}
-            />
-          ))}
+          {subMenus.map(renderChild)}
+          {/*{subMenus.map((menu, idx) => (*/}
+          {/*  <Child*/}
+          {/*    key={menu.key || menu.id || idx}*/}
+          {/*    component={'li'}*/}
+          {/*    {...getChildProps(menu, idx)}*/}
+          {/*  />*/}
+          {/*))}*/}
         </List>
       </Collapse>
     </>
@@ -81,8 +87,8 @@ CollapsibleMenuList.defaultProps = {
   listProps: {},
   subMenus: [],
   renderWrapper: undefined,
-  renderParent: ToggleMenuItem,
-  renderChild: InfoMenuItem,
+  renderParent: props => <ToggleMenuItem {...props} />,
+  renderChild: menu => <InfoMenuItem {...menu} />,
   getParentProps: () => {},
   getChildProps: menu => menu,
 };

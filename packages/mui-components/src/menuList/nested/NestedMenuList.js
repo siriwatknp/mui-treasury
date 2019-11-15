@@ -10,15 +10,6 @@ import InfoMenuItem from '../../menuItem/info';
 
 const getKey = (menu, idx) => menu.key || menu.id || idx;
 
-const RenderChild = ({ childMenu, childIdx, level, sharedProps }) => (
-  <RecursiveList
-    menu={childMenu}
-    idx={childIdx}
-    level={level}
-    sharedProps={sharedProps}
-  />
-);
-
 const RecursiveList = ({ menu, level, idx, sharedProps }) => {
   const {
     classes,
@@ -48,18 +39,17 @@ const RecursiveList = ({ menu, level, idx, sharedProps }) => {
             {children}
           </li>
         )}
-        getParentProps={expanded => ({
-          ...getParentProps(menu, idx),
-          className: cx(
-            classes[`lv${level}Item`],
-            active && classes[`lv${level}ItemActive`],
-            selectedKey === key && classes[`lv${level}ItemSelected`],
-            expanded && classes[`lv${level}ItemExpanded`]
-          ),
-        })}
-        renderParent={({ onToggle, ...parentProps }) => (
+        renderParent={({ expanded, onToggle, ...parentProps }) => (
           <Parent
+            {...getParentProps(menu, idx)}
             {...parentProps}
+            className={cx(
+              classes[`lv${level}Item`],
+              active && classes[`lv${level}ItemActive`],
+              selectedKey === key && classes[`lv${level}ItemSelected`],
+              expanded && classes[`lv${level}ItemExpanded`]
+            )}
+            expanded={expanded}
             selected={selected}
             onToggle={onToggle}
             onMenuClick={() => {
@@ -68,13 +58,20 @@ const RecursiveList = ({ menu, level, idx, sharedProps }) => {
           />
         )}
         subMenus={subMenus}
-        renderChild={RenderChild}
-        getChildProps={(childMenu, childIdx) => ({
-          childMenu,
-          childIdx,
-          level: level + 1,
-          sharedProps,
-        })}
+        renderChild={(childMenu, childIdx) => (
+          <RecursiveList
+            menu={childMenu}
+            idx={childIdx}
+            level={level + 1}
+            sharedProps={sharedProps}
+          />
+        )}
+        // getChildProps={(childMenu, childIdx) => ({
+        //   childMenu,
+        //   childIdx,
+        //   level: level + 1,
+        //   sharedProps,
+        // })}
       />
     );
   }
@@ -108,6 +105,7 @@ const NestedMenuList = ({
 }) => {
   const keyMap = React.useMemo(() => mapNestedPath(menus), [menus]);
   const [selectedKey, setSelectedKey] = useStateBinding(initialSelectedKey, '');
+  console.log('selectedKey', selectedKey);
   const getState = key => {
     const selected = selectedKey === key;
     const active = keyMap[key].includes(selectedKey) || selected;
