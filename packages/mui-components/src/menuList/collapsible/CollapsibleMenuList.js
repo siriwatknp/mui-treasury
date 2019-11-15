@@ -41,27 +41,27 @@ const CollapsibleMenuList = ({
       </Collapse>
     </>
   );
-  const render = () => (
-    <>
-      <Parent
-        {...getParentProps(expanded)}
-        expanded={expanded}
-        onToggle={() => setExpanded(!expanded)}
-      />
-      <Collapse {...collapseProps} in={expanded}>
-        <List {...listProps}>
-          {subMenus.map((menu, idx) => (
-            <Child
-              key={menu.key || menu.id || idx}
-              component={'li'}
-              {...getChildProps(menu, idx)}
-            />
-          ))}
-        </List>
-      </Collapse>
-    </>
-  );
-  return Wrapper ? <Wrapper expanded={expanded}>{render()}</Wrapper> : render();
+  // const render = () => (
+  //   <>
+  //     <Parent
+  //       {...getParentProps(expanded)}
+  //       expanded={expanded}
+  //       onToggle={() => setExpanded(!expanded)}
+  //     />
+  //     <Collapse {...collapseProps} in={expanded}>
+  //       <List {...listProps}>
+  //         {subMenus.map((menu, idx) => (
+  //           <Child
+  //             key={menu.key || menu.id || idx}
+  //             component={'li'}
+  //             {...getChildProps(menu, idx)}
+  //           />
+  //         ))}
+  //       </List>
+  //     </Collapse>
+  //   </>
+  // );
+  // return Wrapper ? <Wrapper expanded={expanded}>{render()}</Wrapper> : render();
 };
 
 CollapsibleMenuList.propTypes = {

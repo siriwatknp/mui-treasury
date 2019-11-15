@@ -10,6 +10,15 @@ import InfoMenuItem from '../../menuItem/info';
 
 const getKey = (menu, idx) => menu.key || menu.id || idx;
 
+const RenderChild = ({ childMenu, childIdx, level, sharedProps }) => (
+  <RecursiveList
+    menu={childMenu}
+    idx={childIdx}
+    level={level}
+    sharedProps={sharedProps}
+  />
+);
+
 const RecursiveList = ({ menu, level, idx, sharedProps }) => {
   const {
     classes,
@@ -59,15 +68,13 @@ const RecursiveList = ({ menu, level, idx, sharedProps }) => {
           />
         )}
         subMenus={subMenus}
-        renderChild={({ childMenu, childIdx }) => (
-          <RecursiveList
-            menu={childMenu}
-            level={level + 1}
-            idx={childIdx}
-            sharedProps={sharedProps}
-          />
-        )}
-        getChildProps={(childMenu, childIdx) => ({ childMenu, childIdx })}
+        renderChild={RenderChild}
+        getChildProps={(childMenu, childIdx) => ({
+          childMenu,
+          childIdx,
+          level: level + 1,
+          sharedProps,
+        })}
       />
     );
   }
@@ -83,8 +90,7 @@ const RecursiveList = ({ menu, level, idx, sharedProps }) => {
         classes[`lv${level}Item`],
         selectedKey === key && classes[`lv${level}ItemSelected`]
       )}
-      onClick={e => {
-        e.stopPropagation();
+      onClick={() => {
         setSelectedKey(key);
       }}
     />
@@ -121,6 +127,7 @@ const NestedMenuList = ({
     <List className={cx(classes.list, classes.lv1List)}>
       {menus.map((menu, idx) => (
         <RecursiveList
+          key={getKey(menu, idx)}
           menu={menu}
           idx={idx}
           level={1}
