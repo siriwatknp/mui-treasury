@@ -25,9 +25,9 @@ const CollapsibleMenuList = ({
   getChildProps,
   renderChild,
   collapseProps,
+  listClassName,
   listProps,
 }) => {
-  console.log('listProps', listProps);
   const [expanded, setExpanded] = useStateBinding(initialExpanded, false);
   const elements = (
     <>
@@ -37,7 +37,7 @@ const CollapsibleMenuList = ({
         onToggle: () => setExpanded(!expanded),
       })}
       <Collapse {...collapseProps} in={expanded}>
-        <List {...listProps}>
+        <List className={listClassName} {...listProps}>
           {subMenus.map((data, idx, array) =>
             renderChild(
               getChildProps({ data, expanded, idx, array }),
@@ -61,11 +61,13 @@ CollapsibleMenuList.propTypes = {
   renderChild: PropTypes.func,
   getChildProps: PropTypes.func,
   collapseProps: PropTypes.shape({}),
+  listClassName: PropTypes.string,
   listProps: PropTypes.shape({}),
 };
 CollapsibleMenuList.defaultProps = {
   initialExpanded: false,
   collapseProps: {},
+  listClassName: undefined,
   listProps: {},
   subMenus: [],
   renderWrapper: ({ children }) => <React.Fragment>{children}</React.Fragment>,

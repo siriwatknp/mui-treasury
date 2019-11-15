@@ -2,13 +2,13 @@ export default ({ palette }) => ({
   // Header
   root: { display: 'flex', position: 'relative', margin: 0 },
   selected: {
-    '& > $menuItem': {
+    '& > $listItem': {
       color: palette.text.primary,
       fontWeight: 500,
     },
   },
   expanded: {
-    '& > $menuItem': {
+    '& > $listItem': {
       color: palette.text.primary,
     },
   },

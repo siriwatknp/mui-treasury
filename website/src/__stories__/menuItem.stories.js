@@ -15,11 +15,9 @@ import ActionToggleItem from '@mui-treasury/components/menuItem/actionToggle';
 import InfoMenuItem from '@mui-treasury/components/menuItem/info';
 
 // STYLES
-import {
-  useMaterialToggleMenuItemStyles,
-  useMaterialActionToggleItemStyles,
-  useMaterialInfoMenuItemStyles,
-} from '@mui-treasury/styles/menuItem/material';
+import { useMaterialToggleMenuItemStyles } from '@mui-treasury/styles/menuItem/toggle/material';
+import { useMaterialActionToggleItemStyles } from '@mui-treasury/styles/menuItem/actionToggle/material';
+import { useMaterialInfoMenuItemStyles } from '@mui-treasury/styles/menuItem/info/material';
 import { useGatsbyMenuItemStyles } from '@mui-treasury/styles';
 
 const createCommonProps = () => ({

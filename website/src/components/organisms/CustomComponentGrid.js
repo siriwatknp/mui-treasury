@@ -71,7 +71,7 @@ const CustomComponentGrid = ({
       )}
       {Object.keys(groupBySize).map(size => (
         <Section
-          ket={size}
+          key={size}
           component={CustomGrid}
           size={size}
           components={groupBySize[size]}

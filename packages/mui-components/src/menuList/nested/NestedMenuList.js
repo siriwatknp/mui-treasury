@@ -57,7 +57,11 @@ const NestedMenuList = ({
               className: cx(
                 classes[`lv${level}Item`],
                 active && classes[`lv${level}ItemActive`],
-                selectedKey === key && classes[`lv${level}ItemSelected`],
+                selectedKey === key &&
+                  cx(
+                    classes.menuItemSelected,
+                    classes[`lv${level}ItemSelected`]
+                  ),
                 expanded && classes[`lv${level}ItemExpanded`],
                 parentProps.className
               ),
@@ -82,7 +86,8 @@ const NestedMenuList = ({
       className: cx(
         classes.menuItem,
         classes[`lv${level}Item`],
-        selectedKey === key && classes[`lv${level}ItemSelected`],
+        selectedKey === key &&
+          cx(classes.menuItemSelected, classes[`lv${level}ItemSelected`]),
         childProps.className
       ),
       onClick: () => setSelectedKey(key),

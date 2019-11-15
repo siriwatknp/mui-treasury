@@ -15,12 +15,10 @@ import {
   useGatsbyNestedMenuStyles,
   useJupiterNestedMenuStyles,
 } from '@mui-treasury/styles';
-import {
-  useMaterialInfoMenuItemStyles,
-  useMaterialToggleMenuItemStyles,
-  useMaterialActionToggleItemStyles,
-} from '@mui-treasury/styles/menuItem/material';
-import { useMaterialNestedMenuStyles } from '@mui-treasury/styles/nestedMenu/material';
+import { useMaterialToggleMenuItemStyles } from '@mui-treasury/styles/menuItem/toggle/material';
+import { useMaterialActionToggleItemStyles } from '@mui-treasury/styles/menuItem/actionToggle/material';
+import { useMaterialInfoMenuItemStyles } from '@mui-treasury/styles/menuItem/info/material';
+import { useMaterialNestedMenuStyles } from '@mui-treasury/styles/menuList/nested/material';
 
 import createContainer, {
   StylesProvider,

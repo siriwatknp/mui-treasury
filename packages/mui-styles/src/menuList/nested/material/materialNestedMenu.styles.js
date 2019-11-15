@@ -4,6 +4,12 @@ export default theme => {
   // const info = infoItemStyles(theme);
   return {
     menuItem: {},
+    menuItemSelected: {
+      color: palette.text.primary,
+      '& $menuItem': {
+        color: palette.text.primary,
+      },
+    },
     list: {
       padding: 0,
     },
