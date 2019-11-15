@@ -7,8 +7,9 @@ import { text, boolean, select } from '@storybook/addon-knobs';
 
 // COMPONENTS
 import { NestedMenuList, HorzMenuList } from '@mui-treasury/components';
-import CollapsibleMenuList from '@mui-treasury/components/menuList/collapsible';
 import ActionToggleItem from '@mui-treasury/components/menuItem/actionToggle';
+import CollapsibleMenuList from '@mui-treasury/components/menuList/collapsible';
+import NestedMenuList2 from '@mui-treasury/components/menuList/nested';
 // STYLES
 import {
   useGatsbyNestedMenuStyles,
@@ -185,6 +186,32 @@ storiesOf('Components|Vertical Menu/Nested Menu', module)
     <StylesProvider useStyles={useGatsbyNestedMenuStyles}>
       {styles => <NestedMenuList classes={styles} {...createCommonProps()} />}
     </StylesProvider>
+  ))
+  .add('Material', () => (
+    <StyleListProvider
+      styleListHooks={[
+        useGatsbyNestedMenuStyles,
+        useMaterialActionToggleItemStyles,
+        useMaterialToggleMenuItemStyles,
+        useMaterialInfoMenuItemStyles,
+      ]}
+    >
+      {([gatsbyStyles, actionToggleStyles, toggleStyles, infoStyles]) => (
+        <NestedMenuList2
+          classes={gatsbyStyles}
+          menus={menus2}
+          getParentProps={({ label }) => ({
+            children: label,
+            classes: actionToggleStyles,
+          })}
+          getChildProps={({ label }) => ({
+            children: label,
+            className: cx(infoStyles.root, infoStyles.button),
+            infoClassName: infoStyles.info,
+          })}
+        />
+      )}
+    </StyleListProvider>
   ));
 
 storiesOf('Components|Vertical Menu/Collapsible Menu', module)
@@ -200,12 +227,12 @@ storiesOf('Components|Vertical Menu/Collapsible Menu', module)
       {([actionToggleStyles, toggleStyles, infoStyles]) => (
         <>
           <CollapsibleMenuList
-            renderParent={({ onClick, expanded }) => (
+            renderParent={({ onToggle, expanded }) => (
               <ActionToggleItem
                 selected
                 expanded={expanded}
                 classes={actionToggleStyles}
-                onToggle={onClick}
+                onToggle={onToggle}
               >
                 Parent menu
               </ActionToggleItem>
@@ -219,11 +246,11 @@ storiesOf('Components|Vertical Menu/Collapsible Menu', module)
             })}
           />
           <CollapsibleMenuList
-            parentProps={{
+            getParentProps={() => ({
               children: 'Parent menu',
               className: toggleStyles.root,
               symbolClassName: toggleStyles.symbol,
-            }}
+            })}
             subMenus={menus2.slice(0, 5)}
             getChildProps={({ label }) => ({
               button: true,

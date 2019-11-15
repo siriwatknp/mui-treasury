@@ -10,25 +10,30 @@ const CollapsibleMenuList = ({
   collapseProps,
   initialExpanded,
   subMenus,
+  renderWrapper: Wrapper,
   renderParent: Parent,
   renderChild: Child,
-  parentProps,
+  getParentProps,
   listProps,
   getChildProps,
 }) => {
+  React.useEffect(() => {
+    console.log('CollapsibleMenuList did mount!');
+  }, []);
   const [expanded, setExpanded] = useStateBinding(initialExpanded, false);
   return (
     <>
       <Parent
-        {...parentProps}
+        {...getParentProps(expanded)}
         expanded={expanded}
-        onClick={() => setExpanded(!expanded)}
+        onToggle={() => setExpanded(!expanded)}
       />
       <Collapse {...collapseProps} in={expanded}>
         <List {...listProps}>
           {subMenus.map((menu, idx) => (
             <Child
               key={menu.key || menu.id || idx}
+              component={'li'}
               {...getChildProps(menu, idx)}
             />
           ))}
@@ -36,26 +41,49 @@ const CollapsibleMenuList = ({
       </Collapse>
     </>
   );
+  const render = () => (
+    <>
+      <Parent
+        {...getParentProps(expanded)}
+        expanded={expanded}
+        onToggle={() => setExpanded(!expanded)}
+      />
+      <Collapse {...collapseProps} in={expanded}>
+        <List {...listProps}>
+          {subMenus.map((menu, idx) => (
+            <Child
+              key={menu.key || menu.id || idx}
+              component={'li'}
+              {...getChildProps(menu, idx)}
+            />
+          ))}
+        </List>
+      </Collapse>
+    </>
+  );
+  return Wrapper ? <Wrapper expanded={expanded}>{render()}</Wrapper> : render();
 };
 
 CollapsibleMenuList.propTypes = {
   initialExpanded: PropTypes.bool,
   collapseProps: PropTypes.shape({}),
-  parentProps: PropTypes.shape({}),
   subMenus: PropTypes.arrayOf(PropTypes.shape({})),
+  renderWrapper: PropTypes.elementType,
   renderParent: PropTypes.elementType,
   renderChild: PropTypes.elementType,
   listProps: PropTypes.shape({}),
+  getParentProps: PropTypes.func,
   getChildProps: PropTypes.func,
 };
 CollapsibleMenuList.defaultProps = {
   initialExpanded: false,
   collapseProps: {},
-  parentProps: {},
   listProps: {},
   subMenus: [],
+  renderWrapper: undefined,
   renderParent: ToggleMenuItem,
   renderChild: InfoMenuItem,
+  getParentProps: () => {},
   getChildProps: menu => menu,
 };
 

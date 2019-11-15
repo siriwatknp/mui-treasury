@@ -63,7 +63,9 @@ ActionToggleItem.propTypes = {
   expanded: PropTypes.bool,
   onMenuClick: PropTypes.func,
   onToggle: PropTypes.func,
-  listItemProps: PropTypes.shape({}),
+  listItemProps: PropTypes.shape({
+    className: PropTypes.string,
+  }),
   renderSymbol: PropTypes.elementType,
   symbolClassName: PropTypes.string,
   symbolProps: PropTypes.shape({}),

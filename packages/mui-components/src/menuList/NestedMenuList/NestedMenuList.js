@@ -23,7 +23,7 @@ const NestedMenuList = withStyles(createStyles, { name: 'NestedMenuList' })(
       getConfig,
       onClick,
     } = props;
-    const keyMap = useMemo(() => mapNestedPath(menus), menus);
+    const keyMap = useMemo(() => mapNestedPath(menus), [menus]);
     const {
       injectParentProps,
       injectItemProps,

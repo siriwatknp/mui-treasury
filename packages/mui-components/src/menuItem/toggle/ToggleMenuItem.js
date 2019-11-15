@@ -10,9 +10,10 @@ const ToggleMenuItem = ({
   renderSymbol: Symbol,
   symbolClassName,
   symbolProps,
+  onToggle,
   ...props
 }) => (
-  <ListItem button {...props}>
+  <ListItem button {...props} onClick={onToggle}>
     {children}
     <Symbol className={symbolClassName} {...symbolProps} expanded={expanded} />
   </ListItem>
@@ -24,6 +25,7 @@ ToggleMenuItem.propTypes = {
   renderSymbol: PropTypes.elementType,
   symbolClassName: PropTypes.string,
   symbolProps: PropTypes.shape({}),
+  onToggle: PropTypes.func,
 };
 ToggleMenuItem.defaultProps = {
   children: null,
@@ -31,6 +33,7 @@ ToggleMenuItem.defaultProps = {
   renderSymbol: MuiSvgArrowToggle,
   symbolClassName: '',
   symbolProps: {},
+  onToggle: undefined,
 };
 
 export default ToggleMenuItem;
