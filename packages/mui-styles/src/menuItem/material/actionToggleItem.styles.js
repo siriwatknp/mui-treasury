@@ -12,7 +12,7 @@ export default ({ palette }) => ({
       color: palette.text.primary,
     },
   },
-  menuItem: {
+  listItem: {
     minWidth: 0,
     minHeight: 42,
     flexGrow: 1,

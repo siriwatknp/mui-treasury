@@ -13,7 +13,7 @@ const ActionToggleItem = ({
   selected,
   expanded,
   listItemProps,
-  renderSymbol: Symbol,
+  renderSymbol,
   symbolClassName,
   symbolProps,
   onMenuClick,
@@ -33,17 +33,13 @@ const ActionToggleItem = ({
       component={'div'}
       button
       {...listItemProps}
-      className={cx(classes.menuItem, listItemProps.className)}
+      className={cx(classes.listItem, listItemProps.className)}
       onClick={onMenuClick}
     >
       {children}
     </ListItem>
     <ButtonBase className={classes.toggleBtn} onClick={onToggle}>
-      <Symbol
-        className={symbolClassName}
-        {...symbolProps}
-        expanded={expanded}
-      />
+      {renderSymbol({ className: symbolClassName, ...symbolProps, expanded })}
     </ButtonBase>
   </Component>
 );
@@ -54,7 +50,7 @@ ActionToggleItem.propTypes = {
     root: PropTypes.string,
     selected: PropTypes.string,
     expanded: PropTypes.string,
-    menuItem: PropTypes.string,
+    listItem: PropTypes.string,
     toggleBtn: PropTypes.string,
   }),
   component: PropTypes.elementType,
@@ -66,7 +62,7 @@ ActionToggleItem.propTypes = {
   listItemProps: PropTypes.shape({
     className: PropTypes.string,
   }),
-  renderSymbol: PropTypes.elementType,
+  renderSymbol: PropTypes.func,
   symbolClassName: PropTypes.string,
   symbolProps: PropTypes.shape({}),
 };
@@ -80,7 +76,7 @@ ActionToggleItem.defaultProps = {
   onMenuClick: undefined,
   onToggle: undefined,
   listItemProps: {},
-  renderSymbol: MuiSvgArrowToggle,
+  renderSymbol: props => <MuiSvgArrowToggle {...props} />,
   symbolClassName: '',
   symbolProps: {},
 };

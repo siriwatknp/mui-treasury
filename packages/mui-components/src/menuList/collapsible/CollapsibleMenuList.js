@@ -6,91 +6,73 @@ import useStateBinding from '@mui-treasury/utils/useStateBinding';
 import InfoMenuItem from '../../menuItem/info';
 import ToggleMenuItem from '../../menuItem/toggle';
 
+// Selector that will be passed selected props to default Parent, Child
+// - getParentProps
+// - getChildProps
+
+// Use these props if you want to render different Parent, Child
+// - renderParent
+// - renderChild
+
+// Note! if you already provide "renderParent" as props, no need to use "getParentProps" anymore
+
 const CollapsibleMenuList = ({
-  collapseProps,
   initialExpanded,
   subMenus,
-  renderWrapper: Wrapper,
-  renderParent,
-  renderChild,
+  renderWrapper,
   getParentProps,
-  listProps,
+  renderParent,
   getChildProps,
+  renderChild,
+  collapseProps,
+  listProps,
 }) => {
-  React.useEffect(() => {
-    console.log('CollapsibleMenuList did mount!');
-  }, []);
+  console.log('listProps', listProps);
   const [expanded, setExpanded] = useStateBinding(initialExpanded, false);
-  return (
+  const elements = (
     <>
       {renderParent({
-        ...getParentProps(expanded),
+        ...getParentProps({ expanded }),
         expanded,
         onToggle: () => setExpanded(!expanded),
       })}
-      {/*<Parent*/}
-      {/*  {...getParentProps(expanded)}*/}
-      {/*  expanded={expanded}*/}
-      {/*  onToggle={() => setExpanded(!expanded)}*/}
-      {/*/>*/}
       <Collapse {...collapseProps} in={expanded}>
         <List {...listProps}>
-          {subMenus.map(renderChild)}
-          {/*{subMenus.map((menu, idx) => (*/}
-          {/*  <Child*/}
-          {/*    key={menu.key || menu.id || idx}*/}
-          {/*    component={'li'}*/}
-          {/*    {...getChildProps(menu, idx)}*/}
-          {/*  />*/}
-          {/*))}*/}
+          {subMenus.map((data, idx, array) =>
+            renderChild(
+              getChildProps({ data, expanded, idx, array }),
+              idx,
+              array
+            )
+          )}
         </List>
       </Collapse>
     </>
   );
-  // const render = () => (
-  //   <>
-  //     <Parent
-  //       {...getParentProps(expanded)}
-  //       expanded={expanded}
-  //       onToggle={() => setExpanded(!expanded)}
-  //     />
-  //     <Collapse {...collapseProps} in={expanded}>
-  //       <List {...listProps}>
-  //         {subMenus.map((menu, idx) => (
-  //           <Child
-  //             key={menu.key || menu.id || idx}
-  //             component={'li'}
-  //             {...getChildProps(menu, idx)}
-  //           />
-  //         ))}
-  //       </List>
-  //     </Collapse>
-  //   </>
-  // );
-  // return Wrapper ? <Wrapper expanded={expanded}>{render()}</Wrapper> : render();
+  return renderWrapper({ expanded, children: elements });
 };
 
 CollapsibleMenuList.propTypes = {
   initialExpanded: PropTypes.bool,
-  collapseProps: PropTypes.shape({}),
   subMenus: PropTypes.arrayOf(PropTypes.shape({})),
-  renderWrapper: PropTypes.elementType,
-  renderParent: PropTypes.elementType,
-  renderChild: PropTypes.elementType,
-  listProps: PropTypes.shape({}),
+  renderWrapper: PropTypes.func,
+  renderParent: PropTypes.func,
   getParentProps: PropTypes.func,
+  renderChild: PropTypes.func,
   getChildProps: PropTypes.func,
+  collapseProps: PropTypes.shape({}),
+  listProps: PropTypes.shape({}),
 };
 CollapsibleMenuList.defaultProps = {
   initialExpanded: false,
   collapseProps: {},
   listProps: {},
   subMenus: [],
-  renderWrapper: undefined,
-  renderParent: props => <ToggleMenuItem {...props} />,
-  renderChild: menu => <InfoMenuItem {...menu} />,
+  renderWrapper: ({ children }) => <React.Fragment>{children}</React.Fragment>,
   getParentProps: () => {},
-  getChildProps: menu => menu,
+  renderParent: props => <ToggleMenuItem {...props} />,
+  getChildProps: () => {},
+  renderChild: props => <InfoMenuItem {...props} />,
 };
 
 export default CollapsibleMenuList;

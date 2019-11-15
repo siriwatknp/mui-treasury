@@ -7,7 +7,7 @@ import MuiSvgArrowToggle from '../../toggle/MuiSvgArrowToggle';
 const ToggleMenuItem = ({
   children,
   expanded,
-  renderSymbol: Symbol,
+  renderSymbol,
   symbolClassName,
   symbolProps,
   onToggle,
@@ -15,14 +15,14 @@ const ToggleMenuItem = ({
 }) => (
   <ListItem button {...props} onClick={onToggle}>
     {children}
-    <Symbol className={symbolClassName} {...symbolProps} expanded={expanded} />
+    {renderSymbol({ className: symbolClassName, ...symbolProps, expanded })}
   </ListItem>
 );
 
 ToggleMenuItem.propTypes = {
   children: PropTypes.node,
   expanded: PropTypes.bool,
-  renderSymbol: PropTypes.elementType,
+  renderSymbol: PropTypes.func,
   symbolClassName: PropTypes.string,
   symbolProps: PropTypes.shape({}),
   onToggle: PropTypes.func,
@@ -30,7 +30,7 @@ ToggleMenuItem.propTypes = {
 ToggleMenuItem.defaultProps = {
   children: null,
   expanded: false,
-  renderSymbol: MuiSvgArrowToggle,
+  renderSymbol: props => <MuiSvgArrowToggle {...props} />,
   symbolClassName: '',
   symbolProps: {},
   onToggle: undefined,

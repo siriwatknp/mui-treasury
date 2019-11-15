@@ -1,7 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text, boolean } from '@storybook/addon-knobs';
-import createContainer, { StylesProvider } from './helpers/containerDecorator';
+import createContainer, {
+  StylesProvider,
+  StyleListProvider,
+} from './helpers/containerDecorator';
 import Box from '@material-ui/core/Box';
 import Chip from '@material-ui/core/Chip';
 
@@ -37,19 +40,25 @@ storiesOf('Components|Vertical Menu/MenuItem', module)
     </StylesProvider>
   ))
   .add('Material', () => (
-    <>
-      <StylesProvider useStyles={useMaterialToggleMenuItemStyles}>
-        {styles => (
+    <StyleListProvider
+      styleListHooks={[
+        useMaterialToggleMenuItemStyles,
+        useMaterialActionToggleItemStyles,
+        useMaterialInfoMenuItemStyles,
+      ]}
+    >
+      {([toggleStyles, actionStyles, infoStyles]) => (
+        <>
           <div>
             <ToggleMenuItem
-              className={styles.root}
-              symbolClassName={styles.symbol}
+              className={toggleStyles.root}
+              symbolClassName={toggleStyles.symbol}
             >
               Toggle Menu Item
             </ToggleMenuItem>
             <ToggleMenuItem
-              className={styles.root}
-              symbolClassName={styles.symbol}
+              className={toggleStyles.root}
+              symbolClassName={toggleStyles.symbol}
             >
               <Box
                 flex={'auto'}
@@ -63,23 +72,17 @@ storiesOf('Components|Vertical Menu/MenuItem', module)
               </Box>
             </ToggleMenuItem>
           </div>
-        )}
-      </StylesProvider>
-      <StylesProvider useStyles={useMaterialActionToggleItemStyles}>
-        {styles => (
-          <ActionToggleItem classes={styles}>Toggle Menu</ActionToggleItem>
-        )}
-      </StylesProvider>
-      <StylesProvider useStyles={useMaterialInfoMenuItemStyles}>
-        {styles => (
+          <ActionToggleItem classes={actionStyles}>
+            Toggle Menu
+          </ActionToggleItem>
           <InfoMenuItem
-            className={styles.root}
-            infoClassName={styles.info}
+            className={infoStyles.root}
+            infoClassName={infoStyles.info}
             info={99}
           >
             Info Menu
           </InfoMenuItem>
-        )}
-      </StylesProvider>
-    </>
+        </>
+      )}
+    </StyleListProvider>
   ));

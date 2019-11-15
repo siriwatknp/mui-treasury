@@ -20,6 +20,7 @@ import {
   useMaterialToggleMenuItemStyles,
   useMaterialActionToggleItemStyles,
 } from '@mui-treasury/styles/menuItem/material';
+import { useMaterialNestedMenuStyles } from '@mui-treasury/styles/nestedMenu/material';
 
 import createContainer, {
   StylesProvider,
@@ -190,22 +191,25 @@ storiesOf('Components|Vertical Menu/Nested Menu', module)
   .add('Material', () => (
     <StyleListProvider
       styleListHooks={[
-        useGatsbyNestedMenuStyles,
+        useMaterialNestedMenuStyles,
         useMaterialActionToggleItemStyles,
         useMaterialToggleMenuItemStyles,
         useMaterialInfoMenuItemStyles,
       ]}
     >
-      {([gatsbyStyles, actionToggleStyles, toggleStyles, infoStyles]) => (
+      {([materialStyles, actionToggleStyles, toggleStyles, infoStyles]) => (
         <NestedMenuList2
-          classes={gatsbyStyles}
+          classes={materialStyles}
           menus={menus2}
-          getParentProps={({ label }) => ({
-            children: label,
+          getParentProps={({ data }) => ({
+            children: data.label,
             classes: actionToggleStyles,
+            listItemProps: {
+              className: materialStyles.menuItem,
+            },
           })}
-          getChildProps={({ label }) => ({
-            children: label,
+          getChildProps={({ data }) => ({
+            children: data.label,
             className: cx(infoStyles.root, infoStyles.button),
             infoClassName: infoStyles.info,
           })}
@@ -238,9 +242,9 @@ storiesOf('Components|Vertical Menu/Collapsible Menu', module)
               </ActionToggleItem>
             )}
             subMenus={menus2.slice(0, 5)}
-            getChildProps={({ label }) => ({
+            getChildProps={({ data }) => ({
               button: true,
-              children: label,
+              children: data.label,
               className: cx(infoStyles.root, infoStyles.button),
               infoClassName: infoStyles.info,
             })}
@@ -252,9 +256,9 @@ storiesOf('Components|Vertical Menu/Collapsible Menu', module)
               symbolClassName: toggleStyles.symbol,
             })}
             subMenus={menus2.slice(0, 5)}
-            getChildProps={({ label }) => ({
+            getChildProps={({ data }) => ({
               button: true,
-              children: label,
+              children: data.label,
               className: cx(infoStyles.root, infoStyles.button),
               infoClassName: infoStyles.info,
             })}
