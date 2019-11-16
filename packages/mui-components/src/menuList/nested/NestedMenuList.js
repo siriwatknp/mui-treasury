@@ -14,6 +14,7 @@ const NestedMenuList = ({
   classes,
   menus,
   initialSelectedKey,
+  initialOpenKeys,
   renderParent,
   getParentProps,
   renderChild,
@@ -35,12 +36,14 @@ const NestedMenuList = ({
       return (
         <CollapsibleMenuList
           key={key}
+          initialExpanded={initialOpenKeys.includes(key)}
           listProps={{
             className: cx(classes.list, classes[`lv${nextLevel}List`]),
           }}
           renderWrapper={({ expanded, children }) => (
             <li
               className={cx(
+                classes.wrapper,
                 classes[`lv${level}Wrapper`],
                 expanded && classes[`lv${level}WrapperExpanded`],
                 active && classes[`lv${level}WrapperActive`]
@@ -83,6 +86,7 @@ const NestedMenuList = ({
       button: true,
       component: 'li',
       ...childProps,
+      selected,
       className: cx(
         classes.menuItem,
         classes[`lv${level}Item`],
@@ -102,7 +106,14 @@ const NestedMenuList = ({
 
 NestedMenuList.propTypes = {
   initialSelectedKey: PropTypes.string,
-  classes: PropTypes.shape({}),
+  initialOpenKeys: PropTypes.arrayOf(PropTypes.string),
+  classes: PropTypes.shape({
+    list: PropTypes.string,
+    lv1List: PropTypes.string,
+    wrapper: PropTypes.string,
+    menuItem: PropTypes.string,
+    menuItemSelected: PropTypes.string,
+  }),
   menus: PropTypes.arrayOf(PropTypes.shape({})),
   renderParent: PropTypes.func,
   getParentProps: PropTypes.func,
@@ -111,6 +122,7 @@ NestedMenuList.propTypes = {
 };
 NestedMenuList.defaultProps = {
   initialSelectedKey: undefined,
+  initialOpenKeys: [],
   classes: {},
   menus: [],
   getParentProps: () => {},

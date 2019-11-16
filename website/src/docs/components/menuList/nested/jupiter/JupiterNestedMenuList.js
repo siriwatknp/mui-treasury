@@ -1,16 +1,17 @@
 /* eslint-disable no-use-before-define */
 import React from 'react';
-import pick from 'lodash/pick';
+import cx from 'clsx';
 import Box from '@material-ui/core/Box';
 import NestedMenuList from '@mui-treasury/components/menuList/nested';
-import { useMaterialNestedMenuStyles } from '@mui-treasury/styles/menuList/nested/material';
-import { useMaterialActionToggleItemStyles } from '@mui-treasury/styles/menuItem/actionToggle/material';
+import ToggleMenuItem from '@mui-treasury/components/menuItem/toggle';
+import { useJupiterNestedMenuListStyles } from '@mui-treasury/styles/menuList/nested/jupiter';
 import { useMaterialInfoMenuItemStyles } from '@mui-treasury/styles/menuItem/info/material';
+import { useMaterialToggleMenuItemStyles } from '@mui-treasury/styles/menuItem/toggle/material';
 
 const MaterialNestedMenuList = () => {
-  const nestedStyles = useMaterialNestedMenuStyles();
-  const actionToggleStyles = useMaterialActionToggleItemStyles();
+  const nestedStyles = useJupiterNestedMenuListStyles();
   const infoStyles = useMaterialInfoMenuItemStyles();
+  const toggleStyles = useMaterialToggleMenuItemStyles();
   return (
     <Box minWidth={256}>
       <NestedMenuList
@@ -20,17 +21,33 @@ const MaterialNestedMenuList = () => {
         // ------------------------------------------------
         classes={nestedStyles}
         menus={getMenus()}
-        getParentProps={({ data }) => ({
+        getParentProps={({ data, expanded }) => ({
           children: data.label,
-          classes: actionToggleStyles,
-          listItemProps: {
-            className: nestedStyles.menuItem,
-            classes: pick(infoStyles, ['root', 'focusVisible']),
-          },
+          className: cx(
+            toggleStyles.root,
+            expanded && toggleStyles.expanded,
+            nestedStyles.menuItem
+          ),
+          symbolClassName: cx(
+            toggleStyles.toggleBtn,
+            nestedStyles.menuItemToggle
+          ),
         })}
+        renderParent={({ children, onToggle, className, symbolClassName }) => (
+          <ToggleMenuItem
+            className={className}
+            symbolClassName={symbolClassName}
+            onToggle={onToggle}
+          >
+            {children}
+          </ToggleMenuItem>
+        )}
         getChildProps={({ data }) => ({
           children: data.label,
-          classes: infoStyles,
+          classes: {
+            selected: nestedStyles.menuItemSelected,
+          },
+          className: cx(infoStyles.root, infoStyles.button),
           infoClassName: infoStyles.info,
         })}
       />
@@ -159,13 +176,13 @@ const getMenus = () => [
 
 // hide-start
 MaterialNestedMenuList.metadata = {
-  title: 'Material Nested',
-  path: 'menuList/nested/material',
+  title: 'Jupiter Nested',
+  path: 'menuList/nested/jupiter',
   files: [
     { pkg: 'mui-components', path: 'menuList/nested/NestedMenuList.js' },
     {
       pkg: 'mui-styles',
-      path: 'menuList/nested/material/materialNestedMenu.styles.js',
+      path: 'menuList/nested/jupiter/jupiterNestedMenu.styles.js',
     },
     {
       pkg: 'mui-styles',

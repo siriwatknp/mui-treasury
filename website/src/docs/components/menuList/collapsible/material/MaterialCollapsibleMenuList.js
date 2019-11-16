@@ -1,5 +1,7 @@
+/* eslint-disable no-use-before-define */
 import React from 'react';
 import cx from 'clsx';
+import pick from 'lodash/pick';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import CollapsibleMenuList from '@mui-treasury/components/menuList/collapsible';
@@ -7,6 +9,65 @@ import ActionToggleItem from '@mui-treasury/components/menuItem/actionToggle';
 import { useMaterialActionToggleItemStyles } from '@mui-treasury/styles/menuItem/actionToggle/material';
 import { useMaterialToggleMenuItemStyles } from '@mui-treasury/styles/menuItem/toggle/material';
 import { useMaterialInfoMenuItemStyles } from '@mui-treasury/styles/menuItem/info/material';
+
+const useStyles = makeStyles(({ palette }) => ({
+  expanded: { color: palette.text.primary },
+  list: { paddingTop: 0, paddingBottom: 16 },
+}));
+
+const MaterialCollapsibleMenuList = () => {
+  const [selectedKey, setSelectedKey] = React.useState('');
+  const actionStyles = useMaterialActionToggleItemStyles();
+  const toggleStyles = useMaterialToggleMenuItemStyles();
+  const infoStyles = useMaterialInfoMenuItemStyles();
+  const extraStyles = useStyles();
+  return (
+    <Box minWidth={256}>
+      <CollapsibleMenuList
+        subMenus={subMenus1}
+        listClassName={extraStyles.list}
+        renderParent={({ onToggle, expanded }) => (
+          <ActionToggleItem
+            expanded={expanded}
+            classes={actionStyles}
+            onToggle={onToggle}
+            listItemProps={{
+              classes: pick(infoStyles, ['root', 'focusVisible']),
+            }}
+          >
+            Parent menu
+          </ActionToggleItem>
+        )}
+        getChildProps={({ data }) => ({
+          key: data.key,
+          button: true,
+          children: data.label,
+          classes: infoStyles,
+          selected: data.key === selectedKey,
+          onClick: () => setSelectedKey(data.key),
+        })}
+      />
+      <CollapsibleMenuList
+        subMenus={subMenus2}
+        listClassName={extraStyles.list}
+        getParentProps={({ expanded }) => ({
+          children: 'Default',
+          classes: pick(toggleStyles, ['root', 'focusVisible']),
+          className: cx(toggleStyles.root, expanded && extraStyles.expanded),
+          symbolClassName: toggleStyles.symbol,
+        })}
+        getChildProps={({ data }) => ({
+          key: data.key,
+          button: true,
+          children: data.label,
+          classes: infoStyles,
+          selected: data.key === selectedKey,
+          onClick: () => setSelectedKey(data.key),
+        })}
+      />
+    </Box>
+  );
+};
 
 const subMenus1 = [
   {
@@ -44,58 +105,6 @@ const subMenus2 = [
     label: 'Starter Library',
   },
 ];
-
-const useStyles = makeStyles(({ palette }) => ({
-  expanded: { color: palette.text.primary },
-  list: { paddingTop: 0, paddingBottom: 16 },
-}));
-
-const MaterialCollapsibleMenuList = () => {
-  const actionStyles = useMaterialActionToggleItemStyles();
-  const toggleStyles = useMaterialToggleMenuItemStyles();
-  const infoStyles = useMaterialInfoMenuItemStyles();
-  const extraStyles = useStyles();
-  return (
-    <Box minWidth={256}>
-      <CollapsibleMenuList
-        listClassName={extraStyles.list}
-        renderParent={({ onToggle, expanded }) => (
-          <ActionToggleItem
-            expanded={expanded}
-            classes={actionStyles}
-            onToggle={onToggle}
-          >
-            Parent menu
-          </ActionToggleItem>
-        )}
-        subMenus={subMenus1}
-        getChildProps={({ data }) => ({
-          key: data.key,
-          button: true,
-          children: data.label,
-          className: cx(infoStyles.root, infoStyles.button),
-          infoClassName: infoStyles.info,
-        })}
-      />
-      <CollapsibleMenuList
-        listClassName={extraStyles.list}
-        getParentProps={({ expanded }) => ({
-          children: 'Default',
-          className: cx(toggleStyles.root, expanded && extraStyles.expanded),
-          symbolClassName: toggleStyles.symbol,
-        })}
-        subMenus={subMenus2}
-        getChildProps={({ data }) => ({
-          key: data.key,
-          button: true,
-          children: data.label,
-          className: cx(infoStyles.root, infoStyles.button),
-          infoClassName: infoStyles.info,
-        })}
-      />
-    </Box>
-  );
-};
 
 // hide-start
 MaterialCollapsibleMenuList.metadata = {

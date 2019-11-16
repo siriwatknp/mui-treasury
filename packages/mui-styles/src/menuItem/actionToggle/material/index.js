@@ -1,5 +1,5 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import materialActionToggleItemStyles from './actionToggleItem.styles';
+import materialActionToggleItemStyles from './materialActionToggleItem.styles';
 
 const useMaterialActionToggleItemStyles = makeStyles(
   materialActionToggleItemStyles
@@ -7,4 +7,4 @@ const useMaterialActionToggleItemStyles = makeStyles(
 
 export { materialActionToggleItemStyles, useMaterialActionToggleItemStyles };
 
-export { default } from './actionToggleItem.styles';
+export { default } from './materialActionToggleItem.styles';

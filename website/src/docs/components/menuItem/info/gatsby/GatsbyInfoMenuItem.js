@@ -1,16 +1,16 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
 import InfoMenuItem from '@mui-treasury/components/menuItem/info';
-import { useMaterialInfoMenuItemStyles } from '@mui-treasury/styles/menuItem/info/material';
+import { useGatsbyInfoMenuItemStyles } from '@mui-treasury/styles/menuItem/info/gatsby';
 
 const data = [
-  { children: 'Plain text', info: 20 },
+  { children: 'First item', info: 20 },
+  { children: 'Second item', info: 8 },
   { children: 'Actionable item', info: 16, button: true },
-  { children: 'Selected item', info: 16, selected: true },
 ];
 
-const MaterialInfoMenuItemDemo = () => {
-  const styles = useMaterialInfoMenuItemStyles();
+const GatsbyInfoMenuItem = () => {
+  const styles = useGatsbyInfoMenuItemStyles();
   return (
     <Box minWidth={256}>
       {data.map(item => (
@@ -21,15 +21,14 @@ const MaterialInfoMenuItemDemo = () => {
 };
 
 // hide-start
-MaterialInfoMenuItemDemo.metadata = {
-  title: 'Material Info',
-  path: 'menuItem/info/material',
+GatsbyInfoMenuItem.metadata = {
+  title: 'Gatsby Info',
+  path: 'menuItem/info/gatsby',
   files: [
     {
       pkg: 'mui-styles',
-      path: 'menuItem/info/material/infoMenuItem.styles.js',
+      path: 'menuItem/info/gatsby/gatsbyInfoMenuItem.styles.js',
     },
-    { pkg: 'mui-styles', path: 'icon/small/smallIcon.styles.js' },
     {
       pkg: 'mui-components',
       path: 'menuItem/info/InfoMenuItem.js',
@@ -39,4 +38,4 @@ MaterialInfoMenuItemDemo.metadata = {
 };
 // hide-end
 
-export default MaterialInfoMenuItemDemo;
+export default GatsbyInfoMenuItem;

@@ -1,18 +1,19 @@
 /* eslint-disable no-use-before-define */
 import React from 'react';
-import pick from 'lodash/pick';
 import Box from '@material-ui/core/Box';
+import RotateToggle from '@mui-treasury/components/toggle/rotate';
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import NestedMenuList from '@mui-treasury/components/menuList/nested';
-import { useMaterialNestedMenuStyles } from '@mui-treasury/styles/menuList/nested/material';
-import { useMaterialActionToggleItemStyles } from '@mui-treasury/styles/menuItem/actionToggle/material';
-import { useMaterialInfoMenuItemStyles } from '@mui-treasury/styles/menuItem/info/material';
+import { useGatsbyMenuListStyles } from '@mui-treasury/styles/menuList/nested/gatsby';
+import { useGatsbyActionToggleItemStyles } from '@mui-treasury/styles/menuItem/actionToggle/gatsby';
+import { useGatsbyInfoMenuItemStyles } from '@mui-treasury/styles/menuItem/info/gatsby';
 
 const MaterialNestedMenuList = () => {
-  const nestedStyles = useMaterialNestedMenuStyles();
-  const actionToggleStyles = useMaterialActionToggleItemStyles();
-  const infoStyles = useMaterialInfoMenuItemStyles();
+  const nestedStyles = useGatsbyMenuListStyles();
+  const actionToggleStyles = useGatsbyActionToggleItemStyles();
+  const infoStyles = useGatsbyInfoMenuItemStyles();
   return (
-    <Box minWidth={256}>
+    <Box minWidth={283}>
       <NestedMenuList
         // you can set initial state with these props
         // initialSelectedKey={'awsS3'}
@@ -25,8 +26,14 @@ const MaterialNestedMenuList = () => {
           classes: actionToggleStyles,
           listItemProps: {
             className: nestedStyles.menuItem,
-            classes: pick(infoStyles, ['root', 'focusVisible']),
           },
+          renderSymbol: ({ expanded }) => (
+            <RotateToggle
+              component={KeyboardArrowRight}
+              className={actionToggleStyles.symbol}
+              expanded={expanded}
+            />
+          ),
         })}
         getChildProps={({ data }) => ({
           children: data.label,
@@ -159,21 +166,21 @@ const getMenus = () => [
 
 // hide-start
 MaterialNestedMenuList.metadata = {
-  title: 'Material Nested',
-  path: 'menuList/nested/material',
+  title: 'Gatsby Nested',
+  path: 'menuList/nested/gatsby',
   files: [
     { pkg: 'mui-components', path: 'menuList/nested/NestedMenuList.js' },
     {
       pkg: 'mui-styles',
-      path: 'menuList/nested/material/materialNestedMenu.styles.js',
+      path: 'menuList/nested/gatsby/gatsbyNestedMenuList.styles.js',
     },
     {
       pkg: 'mui-styles',
-      path: 'menuItem/toggle/material/toggleMenuItem.styles.js',
+      path: 'menuItem/actionToggle/gatsby/gatsbyActionToggleItem.styles.js',
     },
     {
       pkg: 'mui-styles',
-      path: 'menuItem/info/material/infoMenuItem.styles.js',
+      path: 'menuItem/info/gatsby/gatsbyInfoMenuItem.styles.js',
     },
   ],
   relates: [],

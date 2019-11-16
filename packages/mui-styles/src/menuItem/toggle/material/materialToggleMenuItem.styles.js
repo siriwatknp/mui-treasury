@@ -8,7 +8,12 @@ export default ({ palette }) => ({
       backgroundColor: palette.grey[100],
       color: palette.text.primary,
     },
+    '&$focusVisible': {
+      backgroundColor: palette.grey[100],
+    },
   },
+  focusVisible: {},
+  expanded: { color: palette.text.primary },
   symbol: {
     marginLeft: 'auto',
     marginRight: -3,

@@ -1,5 +1,5 @@
-export default ({ palette }) => ({
-  menuItem: {
+export default () => ({
+  root: {
     color: '#36313d',
     font:
       "100%/1.5 -apple-system,'BlinkMacSystemFont','Segoe UI','Roboto','Helvetica Neue','Arial','Noto Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji'",
@@ -20,6 +20,7 @@ export default ({ palette }) => ({
       left: '0.5rem',
       width: 8,
       borderRadius: '100%',
+      transform: 'scale(0)',
     },
     '&:after': {
       left: 0,
@@ -29,7 +30,7 @@ export default ({ palette }) => ({
       borderBottomRightRadius: 4,
       transform: 'translateX(-100%)',
     },
-    '&:hover, &:focus': {
+    '&:hover': {
       background: 'rgba(241,222,250,0.275)',
       color: '#663399',
       '&:before': {
@@ -37,38 +38,34 @@ export default ({ palette }) => ({
         transform: 'scale(1)',
       },
     },
-  },
-  menuItemToggle: {},
-  toggleBtn: {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    right: 0,
-    '&:hover, &:focus': {
-      color: '#663399',
-      background: 'rgba(241,222,250,0.15)',
+    '&$selected': {
+      backgroundColor: 'rgba(0,0,0,0)',
+      '&:hover': {
+        background: 'rgba(241,222,250,0.275)',
+      },
     },
-  },
-  toggleContent: {},
-  itemRootSelected: {
-    '& $menuItem': {
-      color: 'rgb(138, 75, 175)',
-      fontWeight: 500,
-      '&:after': {
-        width: 'calc(0.5rem + 8px)',
-        background: 'rgb(138, 75, 175)',
-        transform: 'translateX(0)',
+    '&$focusVisible': {
+      background: 'rgba(241,222,250,0.275)',
+      '&:before': {
+        background: '#8a4baf',
+        transform: 'scale(1)',
       },
     },
   },
-  itemRootNesting: {
-    '& $menuItem': {
-      paddingRight: 48,
+  selected: {
+    color: 'rgb(138, 75, 175)',
+    fontWeight: 500,
+    '&:after': {
+      width: 'calc(0.5rem + 8px)',
+      background: 'rgb(138, 75, 175)',
+      transform: 'translateX(0)',
     },
   },
-  itemRootExpanded: {
-    '& $toggleContent': {
-      color: palette.text.secondary,
-    },
+  info: {
+    marginLeft: 'auto',
+    color: 'rgba(138, 75, 175, 0.87)',
+    font:
+      "100%/1.5 -apple-system,'BlinkMacSystemFont','Segoe UI','Roboto','Helvetica Neue','Arial','Noto Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji'",
   },
+  focusVisible: {},
 });

@@ -16,6 +16,7 @@ const ActionToggleItem = ({
   renderSymbol,
   symbolClassName,
   symbolProps,
+  toggleBtnProps,
   onMenuClick,
   onToggle,
   ...props
@@ -38,7 +39,12 @@ const ActionToggleItem = ({
     >
       {children}
     </ListItem>
-    <ButtonBase className={classes.toggleBtn} onClick={onToggle}>
+    <ButtonBase
+      focusRipple
+      {...toggleBtnProps}
+      className={cx(classes.toggleBtn, toggleBtnProps.className)}
+      onClick={onToggle}
+    >
       {renderSymbol({ className: symbolClassName, ...symbolProps, expanded })}
     </ButtonBase>
   </Component>
@@ -65,6 +71,9 @@ ActionToggleItem.propTypes = {
   renderSymbol: PropTypes.func,
   symbolClassName: PropTypes.string,
   symbolProps: PropTypes.shape({}),
+  toggleBtnProps: PropTypes.shape({
+    className: PropTypes.string,
+  }),
 };
 ActionToggleItem.defaultProps = {
   className: undefined,
@@ -79,6 +88,7 @@ ActionToggleItem.defaultProps = {
   renderSymbol: props => <MuiSvgArrowToggle {...props} />,
   symbolClassName: '',
   symbolProps: {},
+  toggleBtnProps: {},
 };
 
 export default ActionToggleItem;

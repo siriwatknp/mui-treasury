@@ -1,5 +1,26 @@
 export default ({ palette }) => ({
-  menuItem: {
+  root: {
+    display: 'flex',
+    position: 'relative',
+    margin: 0,
+  },
+  selected: {
+    '& $listItem': {
+      color: 'rgb(138, 75, 175)',
+      fontWeight: 500,
+      '&:after': {
+        width: 'calc(0.5rem + 8px)',
+        background: 'rgb(138, 75, 175)',
+        transform: 'translateX(0)',
+      },
+    },
+  },
+  expanded: {
+    '& $toggleContent': {
+      color: palette.text.secondary,
+    },
+  },
+  listItem: {
     color: '#36313d',
     font:
       "100%/1.5 -apple-system,'BlinkMacSystemFont','Segoe UI','Roboto','Helvetica Neue','Arial','Noto Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji'",
@@ -20,6 +41,7 @@ export default ({ palette }) => ({
       left: '0.5rem',
       width: 8,
       borderRadius: '100%',
+      transform: 'scale(0)',
     },
     '&:after': {
       left: 0,
@@ -38,8 +60,9 @@ export default ({ palette }) => ({
       },
     },
   },
-  menuItemToggle: {},
   toggleBtn: {
+    minWidth: 48,
+    color: palette.text.secondary,
     position: 'absolute',
     top: 0,
     bottom: 0,
@@ -49,26 +72,7 @@ export default ({ palette }) => ({
       background: 'rgba(241,222,250,0.15)',
     },
   },
-  toggleContent: {},
-  itemRootSelected: {
-    '& $menuItem': {
-      color: 'rgb(138, 75, 175)',
-      fontWeight: 500,
-      '&:after': {
-        width: 'calc(0.5rem + 8px)',
-        background: 'rgb(138, 75, 175)',
-        transform: 'translateX(0)',
-      },
-    },
-  },
-  itemRootNesting: {
-    '& $menuItem': {
-      paddingRight: 48,
-    },
-  },
-  itemRootExpanded: {
-    '& $toggleContent': {
-      color: palette.text.secondary,
-    },
+  symbol: {
+    fontSize: '1.25rem',
   },
 });
