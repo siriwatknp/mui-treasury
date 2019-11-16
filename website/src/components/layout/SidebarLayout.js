@@ -1,9 +1,5 @@
 import React from 'react';
-import last from 'lodash/last';
-import dropRight from 'lodash/dropRight';
 import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
-import { Location } from '@reach/router';
 import { makeStyles } from '@material-ui/styles';
 import {
   Header as LayoutHeader,
@@ -21,7 +17,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import MENUS, { PKG } from 'constants/menus';
 import Header from 'components/layout/Header';
 import Footer from 'components/layout/Footer';
-import { NestedMenuList } from '@mui-treasury/components';
+import ComponentMenuList from 'components/organisms/ComponentMenuList';
 
 const useStyles = makeStyles(theme => {
   const { palette } = theme;
@@ -39,57 +35,39 @@ const useFooterStyles = makeStyles(() => ({
   },
 }));
 
-const SidebarLayout = ({ pkg, children, getOpenKeys, menuListStyles }) => {
+const SidebarLayout = ({ totalItems, pkg, children, getOpenKeys }) => {
   const menus = MENUS[PKG[pkg]];
   const styles = useStyles();
   const headerStyles = useHeaderStyles();
   const sidebarStyles = useSidebarStyles();
   const footerStyles = useFooterStyles();
   return (
-    <Location>
-      {({ location }) => {
-        const paths = location.pathname.split('/');
-        const lastPath = last(paths) || last(dropRight(paths));
-        return (
-          <>
-            <LayoutHeader className={styles.header}>
-              <Toolbar>
-                <SidebarTrigger className={headerStyles.leftTrigger}>
-                  <SidebarTriggerIcon />
-                </SidebarTrigger>
-                <Header />
-              </Toolbar>
-            </LayoutHeader>
-            <Sidebar>
-              <div className={sidebarStyles.container}>
-                <NestedMenuList
-                  classes={menuListStyles}
-                  selectedKey={lastPath}
-                  openKeys={getOpenKeys(menus, location.pathname)}
-                  getConfig={() => ({ toggleSeparated: false })}
-                  menus={menus}
-                  getItemProps={({ to }) =>
-                    to
-                      ? {
-                          menuComponent: Link,
-                          ListItemProps: { to, disableRipple: true },
-                        }
-                      : {}
-                  }
-                />
-              </div>
-              <CollapseBtn className={sidebarStyles.collapseBtn}>
-                <CollapseIcon />
-              </CollapseBtn>
-            </Sidebar>
-            <Content>{children}</Content>
-            <LayoutFooter classes={footerStyles}>
-              <Footer />
-            </LayoutFooter>
-          </>
-        );
-      }}
-    </Location>
+    <>
+      <LayoutHeader className={styles.header}>
+        <Toolbar>
+          <SidebarTrigger className={headerStyles.leftTrigger}>
+            <SidebarTriggerIcon />
+          </SidebarTrigger>
+          <Header />
+        </Toolbar>
+      </LayoutHeader>
+      <Sidebar>
+        <div className={sidebarStyles.container}>
+          <ComponentMenuList
+            menus={menus}
+            getOpenKeys={getOpenKeys}
+            totalItems={totalItems}
+          />
+        </div>
+        <CollapseBtn className={sidebarStyles.collapseBtn}>
+          <CollapseIcon />
+        </CollapseBtn>
+      </Sidebar>
+      <Content>{children}</Content>
+      <LayoutFooter classes={footerStyles}>
+        <Footer />
+      </LayoutFooter>
+    </>
   );
 };
 

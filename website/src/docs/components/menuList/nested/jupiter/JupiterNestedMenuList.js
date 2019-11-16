@@ -8,7 +8,7 @@ import { useJupiterNestedMenuListStyles } from '@mui-treasury/styles/menuList/ne
 import { useMaterialInfoMenuItemStyles } from '@mui-treasury/styles/menuItem/info/material';
 import { useMaterialToggleMenuItemStyles } from '@mui-treasury/styles/menuItem/toggle/material';
 
-const MaterialNestedMenuList = () => {
+const JupiterNestedMenuList = () => {
   const nestedStyles = useJupiterNestedMenuListStyles();
   const infoStyles = useMaterialInfoMenuItemStyles();
   const toggleStyles = useMaterialToggleMenuItemStyles();
@@ -16,7 +16,7 @@ const MaterialNestedMenuList = () => {
     <Box minWidth={256}>
       <NestedMenuList
         // you can set initial state with these props
-        // initialSelectedKey={'awsS3'}
+        // selectedKey={'awsS3'}
         // initialOpenKeys={['refGuides', 'deployHosting']}
         // ------------------------------------------------
         classes={nestedStyles}
@@ -35,6 +35,9 @@ const MaterialNestedMenuList = () => {
         })}
         renderParent={({ children, onToggle, className, symbolClassName }) => (
           <ToggleMenuItem
+            classes={{
+              focusVisible: nestedStyles.menuItemFocus,
+            }}
             className={className}
             symbolClassName={symbolClassName}
             onToggle={onToggle}
@@ -42,13 +45,17 @@ const MaterialNestedMenuList = () => {
             {children}
           </ToggleMenuItem>
         )}
-        getChildProps={({ data }) => ({
+        getChildProps={({ data, selected }) => ({
           children: data.label,
           classes: {
             selected: nestedStyles.menuItemSelected,
+            focusVisible: nestedStyles.menuItemFocus,
           },
           className: cx(infoStyles.root, infoStyles.button),
-          infoClassName: infoStyles.info,
+          infoClassName: cx(
+            infoStyles.info,
+            selected && nestedStyles.infoSelected
+          ),
         })}
       />
     </Box>
@@ -175,7 +182,7 @@ const getMenus = () => [
 ];
 
 // hide-start
-MaterialNestedMenuList.metadata = {
+JupiterNestedMenuList.metadata = {
   title: 'Jupiter Nested',
   path: 'menuList/nested/jupiter',
   files: [
@@ -197,4 +204,4 @@ MaterialNestedMenuList.metadata = {
 };
 // hide-end
 
-export default MaterialNestedMenuList;
+export default JupiterNestedMenuList;

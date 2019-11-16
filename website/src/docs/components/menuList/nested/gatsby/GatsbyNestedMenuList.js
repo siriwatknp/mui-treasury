@@ -16,7 +16,7 @@ const MaterialNestedMenuList = () => {
     <Box minWidth={283}>
       <NestedMenuList
         // you can set initial state with these props
-        // initialSelectedKey={'awsS3'}
+        // selectedKey={'awsS3'}
         // initialOpenKeys={['refGuides', 'deployHosting']}
         // ------------------------------------------------
         classes={nestedStyles}

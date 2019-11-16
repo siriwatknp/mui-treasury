@@ -13,7 +13,7 @@ const getKey = (menu, idx) => menu.key || menu.id || idx;
 const NestedMenuList = ({
   classes,
   menus,
-  initialSelectedKey,
+  selectedKey,
   initialOpenKeys,
   renderParent,
   getParentProps,
@@ -21,10 +21,10 @@ const NestedMenuList = ({
   getChildProps,
 }) => {
   const keyMap = React.useMemo(() => mapNestedPath(menus), [menus]);
-  const [selectedKey, setSelectedKey] = useStateBinding(initialSelectedKey, '');
+  const [iSelectedKey, setSelectedKey] = useStateBinding(selectedKey, '');
   const getState = key => {
-    const selected = selectedKey === key;
-    const active = keyMap[key].includes(selectedKey) || selected;
+    const selected = iSelectedKey === key;
+    const active = keyMap[key].includes(iSelectedKey) || selected;
     return { selected, active };
   };
   const renderNestedList = level => (menu, idx, array) => {
@@ -60,7 +60,7 @@ const NestedMenuList = ({
               className: cx(
                 classes[`lv${level}Item`],
                 active && classes[`lv${level}ItemActive`],
-                selectedKey === key &&
+                selected &&
                   cx(
                     classes.menuItemSelected,
                     classes[`lv${level}ItemSelected`]
@@ -80,7 +80,8 @@ const NestedMenuList = ({
         />
       );
     }
-    const childProps = getChildProps({ data: menu, idx, array, level }) || {};
+    const childProps =
+      getChildProps({ data: menu, idx, array, level, selected }) || {};
     return renderChild({
       key,
       button: true,
@@ -90,7 +91,7 @@ const NestedMenuList = ({
       className: cx(
         classes.menuItem,
         classes[`lv${level}Item`],
-        selectedKey === key &&
+        selected &&
           cx(classes.menuItemSelected, classes[`lv${level}ItemSelected`]),
         childProps.className
       ),
@@ -105,7 +106,7 @@ const NestedMenuList = ({
 };
 
 NestedMenuList.propTypes = {
-  initialSelectedKey: PropTypes.string,
+  selectedKey: PropTypes.string,
   initialOpenKeys: PropTypes.arrayOf(PropTypes.string),
   classes: PropTypes.shape({
     list: PropTypes.string,
@@ -121,7 +122,7 @@ NestedMenuList.propTypes = {
   getChildProps: PropTypes.func,
 };
 NestedMenuList.defaultProps = {
-  initialSelectedKey: undefined,
+  selectedKey: undefined,
   initialOpenKeys: [],
   classes: {},
   menus: [],

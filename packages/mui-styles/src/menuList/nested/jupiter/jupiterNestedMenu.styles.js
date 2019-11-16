@@ -3,10 +3,11 @@ import Color from 'color';
 export default theme => {
   const { palette, transitions, spacing } = theme;
   const accentColor = Color(palette.primary.main)
-    .rotate(-6)
-    .saturate(0.25)
-    .lighten(1)
+    .rotate(-10)
+    .fade(0.92)
     .toString();
+  const systemFont =
+    "-apple-system,'BlinkMacSystemFont','Segoe UI','Roboto','Helvetica Neue','Arial','Noto Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji'";
   return {
     menuItemSelected: {
       '&$menuItemSelected': {
@@ -26,8 +27,18 @@ export default theme => {
         borderBottom: 'none',
       },
     },
+    menuItemFocus: {
+      '&$menuItemFocus': {
+        backgroundColor: accentColor,
+        boxShadow: `0 0 4px 0 ${palette.primary.light}`,
+      },
+    },
     menuItemToggle: {
       marginLeft: 'auto',
+    },
+    infoSelected: {
+      color: palette.primary.main,
+      fontWeight: 600,
     },
     wrapper: {
       margin: 0,
@@ -75,7 +86,10 @@ export default theme => {
         marginTop: spacing(1),
       },
       '&$menuItem, & $menuItem': {
+        fontFamily: systemFont,
+        letterSpacing: 0.5,
         marginLeft: spacing(2),
+        marginRight: spacing(2),
         paddingLeft: 16,
       },
       '& $menuItemToggle': {
@@ -109,6 +123,8 @@ export default theme => {
         marginTop: spacing(1),
       },
       '&$menuItem, & $menuItem': {
+        fontFamily: systemFont,
+        letterSpacing: 0.5,
         marginLeft: 46,
         marginRight: 16,
         paddingLeft: 10,
