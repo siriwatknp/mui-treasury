@@ -4,9 +4,9 @@ import { FeatureWidget } from '@mui-treasury/components';
 import { text, boolean } from '@storybook/addon-knobs';
 
 import createContainer, { StylesProvider } from './helpers/containerDecorator';
-import organisms from 'components/organisms';
 
-const { ComponentHeading, ModuleProjector } = organisms;
+import ComponentHeading from 'components/organisms/ComponentHeading';
+import ModuleProjector from 'components/organisms/ModuleProjector';
 
 storiesOf('Treasury|organisms', module)
   .addDecorator(createContainer({ maxWidth: 'md' }))

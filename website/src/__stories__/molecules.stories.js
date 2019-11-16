@@ -5,9 +5,12 @@ import { text, boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import TreeView from '@material-ui/lab/TreeView';
 import createContainer, { StylesProvider } from './helpers/containerDecorator';
-import molecules from 'components/molecules';
 
-const { ShowcaseWidget, BoxTabs, SignTreeItem, Html, Prism } = molecules;
+import ShowcaseWidget from 'components/molecules/ShowcaseWidget';
+import BoxTabs from 'components/molecules/BoxTabs';
+import SignTreeItem from 'components/molecules/SignTreeItem';
+import Html from 'components/molecules/Html';
+import Prism from 'components/molecules/Prism';
 
 storiesOf('Treasury|molecules', module)
   .addDecorator(createContainer({ maxWidth: 'sm' }))

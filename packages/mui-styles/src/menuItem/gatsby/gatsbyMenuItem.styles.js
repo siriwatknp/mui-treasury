@@ -29,7 +29,7 @@ export default ({ palette }) => ({
       borderBottomRightRadius: 4,
       transform: 'translateX(-100%)',
     },
-    '&:hover': {
+    '&:hover, &:focus': {
       background: 'rgba(241,222,250,0.275)',
       color: '#663399',
       '&:before': {
@@ -44,7 +44,7 @@ export default ({ palette }) => ({
     top: 0,
     bottom: 0,
     right: 0,
-    '&:hover': {
+    '&:hover, &:focus': {
       color: '#663399',
       background: 'rgba(241,222,250,0.15)',
     },

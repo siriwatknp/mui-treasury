@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { PKG } from 'constants/menus';
+import { mapNestedPath } from '@mui-treasury/utils';
 import { createMuiTheme } from '@material-ui/core';
 import { makeStyles, ThemeProvider } from '@material-ui/styles';
 import jupiterNestedMenuStyles from '@mui-treasury/styles/nestedMenu/jupiter';
@@ -34,9 +35,15 @@ const DemoPage = ({
   const jupiterStyles = useJupiterNestedMenuStyles();
   return (
     <SidebarLayout
+      totalItems={customComponents.length}
       menuListStyles={jupiterStyles}
       pkg={PKG.components}
-      getOpenKeys={() => ['basic', 'complex']}
+      getOpenKeys={({ menus, lastPath }) => {
+        const keyMap = mapNestedPath(menus);
+        return menus
+          .filter(({ key }) => keyMap[key].includes(lastPath))
+          .map(({ key }) => key);
+      }}
     >
       <MetadataContext>
         <ComponentHeading title={title} description={description} />
