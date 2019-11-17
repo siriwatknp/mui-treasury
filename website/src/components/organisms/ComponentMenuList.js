@@ -73,6 +73,7 @@ const ComponentMenuList = ({ menus, getOpenKeys }) => {
               to: data.to,
               info: data.total,
               component: Link,
+              disableRipple: true,
               classes: {
                 selected: nestedStyles.menuItemSelected,
                 focusVisible: nestedStyles.menuItemFocus,

@@ -24,7 +24,7 @@ LabelIcon.metadata = {
   title: 'Label',
   path: 'icon/label',
   files: [
-    { pkg: 'mui-styles', path: 'gutter/pushingGutter/pushingGutter.styles.js' },
+    { pkg: 'mui-styles', path: 'gutter/pushing/pushingGutter.styles.js' },
     { pkg: 'mui-styles', path: 'icon/label/labelIcon.styles.js' },
   ],
   relates: [],

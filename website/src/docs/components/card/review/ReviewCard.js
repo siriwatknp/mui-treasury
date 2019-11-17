@@ -128,7 +128,7 @@ ReviewCard.metadata = {
   files: [
     { pkg: 'mui-styles', path: 'cardMedia/wide/wideCardMedia.styles.js' },
     { pkg: 'mui-styles', path: 'shadow/faded/fadedShadow.styles.js' },
-    { pkg: 'mui-styles', path: 'gutter/pushingGutter/pushingGutter.styles.js' },
+    { pkg: 'mui-styles', path: 'gutter/pushing/pushingGutter.styles.js' },
   ],
 };
 // hide-end

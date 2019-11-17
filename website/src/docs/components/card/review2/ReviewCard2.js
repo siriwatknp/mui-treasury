@@ -125,7 +125,7 @@ ReviewCard2.metadata = {
     bgcolor: 'rgb(245, 248, 250)',
   },
   files: [
-    { pkg: 'mui-styles', path: 'gutter/pushingGutter/pushingGutter.styles.js' },
+    { pkg: 'mui-styles', path: 'gutter/pushing/pushingGutter.styles.js' },
     { pkg: 'mui-styles', path: 'icon/label/labelIcon.styles.js' },
     { pkg: 'mui-styles', path: 'flex/row/rowFlex.styles.js' },
   ],
