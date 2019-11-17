@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { FeatureWidget } from '@mui-treasury/components';
+import FeatureWidget from '@mui-treasury/components/widget/FeatureWidget';
 import { text, boolean } from '@storybook/addon-knobs';
 
 import createContainer, { StylesProvider } from './helpers/containerDecorator';

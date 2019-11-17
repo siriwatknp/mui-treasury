@@ -7,9 +7,9 @@ export default initialSelectedKey => {
   );
   useEffect(() => {
     if (isDefined(initialSelectedKey)) {
-      setSelectedKey(selectedKey);
+      setSelectedKey(() => initialSelectedKey);
     }
-  }, [initialSelectedKey]);
+  }, [initialSelectedKey, setSelectedKey]);
 
   return { selectedKey, setSelectedKey };
 };

@@ -2,19 +2,19 @@ import React from 'react';
 import cx from 'clsx';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import Toolbar from '@material-ui/core/Toolbar';
 import { text, boolean, select } from '@storybook/addon-knobs';
+import { makeStyles } from '@material-ui/core/styles';
+import Toolbar from '@material-ui/core/Toolbar';
 
 // COMPONENTS
-import { NestedMenuList, HorzMenuList } from '@mui-treasury/components';
+import NestedMenuList from '@mui-treasury/components/menuList/NestedMenuList';
+import HorzMenuList from '@mui-treasury/components/menuList/HorzMenuList';
 import ActionToggleItem from '@mui-treasury/components/menuItem/actionToggle';
 import CollapsibleMenuList from '@mui-treasury/components/menuList/collapsible';
 import NestedMenuList2 from '@mui-treasury/components/menuList/nested';
 // STYLES
-import {
-  useGatsbyNestedMenuStyles,
-  useJupiterNestedMenuStyles,
-} from '@mui-treasury/styles';
+import gatsbyNestedMenuStyles from '@mui-treasury/styles/nestedMenu/gatsby';
+import jupiterNestedMenuStyles from '@mui-treasury/styles/nestedMenu/jupiter';
 import { useMaterialToggleMenuItemStyles } from '@mui-treasury/styles/menuItem/toggle/material';
 import { useMaterialActionToggleItemStyles } from '@mui-treasury/styles/menuItem/actionToggle/material';
 import { useMaterialInfoMenuItemStyles } from '@mui-treasury/styles/menuItem/info/material';
@@ -24,6 +24,10 @@ import createContainer, {
   StylesProvider,
   StyleListProvider,
 } from './helpers/containerDecorator';
+
+const useGatsbyNestedMenuStyles = makeStyles(gatsbyNestedMenuStyles);
+const useJupiterNestedMenuStyles = makeStyles(jupiterNestedMenuStyles);
+
 const menus2 = [
   {
     key: 'intro',

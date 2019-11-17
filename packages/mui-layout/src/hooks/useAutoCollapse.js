@@ -47,5 +47,6 @@ export default () => {
       }
     }
     screenObserver.current = screen;
-  }, [screen]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [screen, autoCollapseDisabled, collapsedBreakpoint]);
 };

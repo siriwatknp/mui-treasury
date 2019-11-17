@@ -113,15 +113,15 @@ MaterialCollapsibleMenuList.metadata = {
   files: [
     {
       pkg: 'mui-styles',
-      path: 'menuItem/actionToggle/material/actionToggleItem.styles.js',
+      path: 'menuItem/actionToggle/material/materialActionToggleItem.styles.js',
     },
     {
       pkg: 'mui-styles',
-      path: 'menuItem/toggle/material/toggleMenuItem.styles.js',
+      path: 'menuItem/toggle/material/materialToggleMenuItem.styles.js',
     },
     {
       pkg: 'mui-styles',
-      path: 'menuItem/info/material/infoMenuItem.styles.js',
+      path: 'menuItem/info/material/materialInfoMenuItem.styles.js',
     },
     {
       pkg: 'mui-components',

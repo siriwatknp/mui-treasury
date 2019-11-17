@@ -33,7 +33,7 @@ describe('ToggleMenuItem', () => {
     const mockCallback = jest.fn();
     const { getByRole } = render(
       <ThemeProvider theme={theme}>
-        <ToggleMenuItem onClick={mockCallback}>Menu</ToggleMenuItem>
+        <ToggleMenuItem onToggle={mockCallback}>Menu</ToggleMenuItem>
       </ThemeProvider>
     );
     fireEvent.click(getByRole('button'));

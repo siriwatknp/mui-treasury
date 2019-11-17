@@ -51,7 +51,7 @@ MaterialActionToggleItemDemo.metadata = {
   files: [
     {
       pkg: 'mui-styles',
-      path: 'menuItem/actionToggle/material/actionToggleItem.styles.js',
+      path: 'menuItem/actionToggle/material/materialActionToggleItem.styles.js',
     },
     { pkg: 'mui-styles', path: 'icon/small/smallIcon.styles.js' },
     {

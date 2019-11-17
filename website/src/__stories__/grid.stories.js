@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import { text, boolean, color, object } from '@storybook/addon-knobs';
-import { useFullBorderedGridStyles } from '@mui-treasury/styles';
+import { useFullBorderedGridStyles } from '@mui-treasury/styles/grid/fullBordered';
 
 import createContainer, { StylesProvider } from './helpers/containerDecorator';
 

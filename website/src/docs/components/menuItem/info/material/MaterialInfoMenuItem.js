@@ -27,7 +27,7 @@ MaterialInfoMenuItemDemo.metadata = {
   files: [
     {
       pkg: 'mui-styles',
-      path: 'menuItem/info/material/infoMenuItem.styles.js',
+      path: 'menuItem/info/material/materialInfoMenuItem.styles.js',
     },
     { pkg: 'mui-styles', path: 'icon/small/smallIcon.styles.js' },
     {

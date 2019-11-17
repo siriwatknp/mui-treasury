@@ -46,7 +46,7 @@ MaterialToggleMenuItemDemo.metadata = {
   files: [
     {
       pkg: 'mui-styles',
-      path: 'menuItem/toggle/material/toggleMenuItem.styles.js',
+      path: 'menuItem/toggle/material/materialToggleMenuItem.styles.js',
     },
     { pkg: 'mui-styles', path: 'icon/small/smallIcon.styles.js' },
     { pkg: 'mui-components', path: 'menuItem/toggle/ToggleMenuItem.js' },

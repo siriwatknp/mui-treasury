@@ -5,11 +5,13 @@ import createContainer, {
   StylesProvider,
   StyleListProvider,
 } from './helpers/containerDecorator';
+import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Chip from '@material-ui/core/Chip';
 
 // COMPONENTS
-import { MenuToggle, MuiSvgArrowToggle } from '@mui-treasury/components';
+import MenuToggle from '@mui-treasury/components/menuItem/MenuToggle';
+import MuiSvgArrowToggle from '@mui-treasury/components/toggle/MuiSvgArrowToggle';
 import ToggleMenuItem from '@mui-treasury/components/menuItem/toggle';
 import ActionToggleItem from '@mui-treasury/components/menuItem/actionToggle';
 import InfoMenuItem from '@mui-treasury/components/menuItem/info';
@@ -18,7 +20,9 @@ import InfoMenuItem from '@mui-treasury/components/menuItem/info';
 import { useMaterialToggleMenuItemStyles } from '@mui-treasury/styles/menuItem/toggle/material';
 import { useMaterialActionToggleItemStyles } from '@mui-treasury/styles/menuItem/actionToggle/material';
 import { useMaterialInfoMenuItemStyles } from '@mui-treasury/styles/menuItem/info/material';
-import { useGatsbyMenuItemStyles } from '@mui-treasury/styles';
+import gatsbyMenuItemStyles from '@mui-treasury/styles/menuItem/gatsby';
+
+const useGatsbyMenuItemStyles = makeStyles(gatsbyMenuItemStyles);
 
 const createCommonProps = () => ({
   label: text('label', 'Menu label'),
