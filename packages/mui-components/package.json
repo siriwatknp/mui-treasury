@@ -1,14 +1,14 @@
 {
   "name": "@mui-treasury/components",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "./scr/index.js",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@material-ui/core": "^4.6.0",
     "@material-ui/icons": "^4.2.1",
-    "@mui-treasury/styles": "0.2.1",
-    "@mui-treasury/utils": "0.2.0",
+    "@mui-treasury/styles": "0.3.1",
+    "@mui-treasury/utils": "0.3.0",
     "clsx": "^1.0.4",
     "prop-types": "^15.7.2"
   },

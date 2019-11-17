@@ -40,7 +40,12 @@
     "test": "jest",
     "typecheck": "tsc --skipLibCheck",
     "storybook": "NODE_ENV=development start-storybook -p 6006",
-    "build-storybook": "NODE_ENV=production build-storybook -s public"
+    "build-storybook": "NODE_ENV=production build-storybook -s public",
+    "release:utils": "yarn workspace @mui-treasury/utils run release",
+    "release:styling": "yarn workspace @mui-treasury/styling run release",
+    "release:styles": "yarn workspace @mui-treasury/styles run release",
+    "release:components": "yarn workspace @mui-treasury/components run release",
+    "release:layout": "yarn workspace @mui-treasury/layout run release"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
