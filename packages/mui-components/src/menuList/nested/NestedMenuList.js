@@ -99,7 +99,10 @@ const NestedMenuList = ({
           cx(classes.menuItemSelected, classes[`lv${level}ItemSelected`]),
         childProps.className
       ),
-      onClick: () => setSelectedKey(key),
+      onClick: e => {
+        if (childProps.onClick) childProps.onClick(e);
+        return setSelectedKey(key);
+      },
     });
   };
   return (

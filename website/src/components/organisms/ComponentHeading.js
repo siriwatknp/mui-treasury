@@ -27,7 +27,11 @@ const ComponentHeading = ({ title, description }) => {
   //   to: '/',
   // };
   return (
-    <Box textAlign={'center'} py={{ xs: '2rem', sm: '3rem', md: '4rem' }}>
+    <Box
+      textAlign={'center'}
+      px={{ xs: 2, sm: 0 }}
+      py={{ xs: '2rem', sm: '3rem', md: '4rem' }}
+    >
       <h1>{title}</h1>
       <p className={styles.descr}>{description}</p>
       {/* <div className={gutterStyles.parent}> */}

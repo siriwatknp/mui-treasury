@@ -5,6 +5,7 @@ import dropRight from 'lodash/dropRight';
 import cx from 'clsx';
 import { Link } from 'gatsby';
 import { Location } from '@reach/router';
+import { useLayoutCtx } from '@mui-treasury/layout';
 import NestedMenuList from '@mui-treasury/components/menuList/nested';
 import ToggleMenuItem from '@mui-treasury/components/menuItem/toggle';
 import { useMaterialInfoMenuItemStyles } from '@mui-treasury/styles/menuItem/info/material';
@@ -20,6 +21,8 @@ const ComponentMenuList = ({ menus, getOpenKeys }) => {
   const nestedStyles = useJupiterNestedMenuListStyles();
   const infoStyles = useMaterialInfoMenuItemStyles();
   const toggleStyles = useMaterialToggleMenuItemStyles();
+  const { setOpened: setSidebarOpened } = useLayoutCtx();
+  console.log('setSidebarOpened', setSidebarOpened);
   return (
     <Location>
       {({ location }) => {
@@ -73,6 +76,10 @@ const ComponentMenuList = ({ menus, getOpenKeys }) => {
               to: data.to,
               info: data.total,
               component: Link,
+              onClick: () => {
+                console.log('clicked');
+                setSidebarOpened(false);
+              },
               disableRipple: true,
               classes: {
                 selected: nestedStyles.menuItemSelected,
