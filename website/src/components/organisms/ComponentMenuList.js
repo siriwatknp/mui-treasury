@@ -22,7 +22,6 @@ const ComponentMenuList = ({ menus, getOpenKeys }) => {
   const infoStyles = useMaterialInfoMenuItemStyles();
   const toggleStyles = useMaterialToggleMenuItemStyles();
   const { setOpened: setSidebarOpened } = useLayoutCtx();
-  console.log('setSidebarOpened', setSidebarOpened);
   return (
     <Location>
       {({ location }) => {
@@ -77,7 +76,6 @@ const ComponentMenuList = ({ menus, getOpenKeys }) => {
               info: data.total,
               component: Link,
               onClick: () => {
-                console.log('clicked');
                 setSidebarOpened(false);
               },
               disableRipple: true,
