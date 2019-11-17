@@ -11,10 +11,10 @@ import IconButton from '@material-ui/core/IconButton';
 import LocationOn from '@material-ui/icons/LocationOn';
 import MoreHoriz from '@material-ui/icons/MoreHoriz';
 import Favorite from '@material-ui/icons/Favorite';
-import { FaceGroup } from '@mui-treasury/components/group';
-import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia';
-import { useFadedShadowStyles } from '@mui-treasury/styles/shadow';
-import { usePushingGutter } from '@mui-treasury/styles/gutter';
+import FaceGroup from '@mui-treasury/components/group/face';
+import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia/wide';
+import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
+import { usePushingGutterStyles } from '@mui-treasury/styles/gutter/pushing';
 import MOCK from 'constants/mock';
 
 const useStyles = makeStyles(() => ({
@@ -51,7 +51,7 @@ const ReviewCard = () => {
   const styles = useStyles();
   const mediaStyles = useWideCardMediaStyles();
   const shadowStyles = useFadedShadowStyles();
-  const gutterStyles = usePushingGutter({ firstExcluded: true });
+  const gutterStyles = usePushingGutterStyles({ firstExcluded: true });
   return (
     <Card elevation={0} className={styles.root}>
       <CardMedia classes={mediaStyles} image={MOCK.colosseumImg} />

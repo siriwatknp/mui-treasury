@@ -1,11 +1,11 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import { useFirebaseBtnStyles } from '@mui-treasury/styles/button';
-import { usePushingGutter } from '@mui-treasury/styles/gutter';
+import { useFirebaseBtnStyles } from '@mui-treasury/styles/button/firebase';
+import { usePushingGutterStyles } from '@mui-treasury/styles/gutter/pushing';
 
 const FirebaseButton = () => {
   const styles = useFirebaseBtnStyles();
-  const gutterStyles = usePushingGutter();
+  const gutterStyles = usePushingGutterStyles();
   return (
     <div className={gutterStyles.parent}>
       <Button classes={styles}>Default</Button>

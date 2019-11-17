@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import { ParallaxSlide } from '@mui-treasury/components/slide';
+import ParallaxSlide from '@mui-treasury/components/slide/parallax';
 
 const useStyles = makeStyles(() => ({
   root: {

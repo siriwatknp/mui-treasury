@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
-import { useVerticalRipStyles } from '@mui-treasury/styles/rip';
+import { useVerticalRipStyles } from '@mui-treasury/styles/rip/vertical';
 
 const VerticalRip = () => {
   const styles = useVerticalRipStyles({

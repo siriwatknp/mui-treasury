@@ -5,9 +5,9 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import { ParallaxSlide } from '@mui-treasury/components/slide';
-import { DotIndicator } from '@mui-treasury/components/indicator';
-import { useSimpleArrowStyles } from '@mui-treasury/styles/arrow';
+import ParallaxSlide from '@mui-treasury/components/slide/parallax';
+import DotIndicator from '@mui-treasury/components/indicator/dot';
+import { useSimpleArrowStyles } from '@mui-treasury/styles/arrow/simple';
 
 const data = [
   {

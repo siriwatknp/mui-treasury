@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Divider from '@material-ui/core/Divider';
-import { FaceGroup } from '@mui-treasury/components/group';
-import { usePeopleCardFooterStyles } from '@mui-treasury/styles/cardFooter';
+import { usePeopleCardFooterStyles } from '@mui-treasury/styles/cardFooter/people';
+import FaceGroup from '../../group/face';
 
 const PeopleCardFooter = ({ faces, noDivider }) => {
   const styles = usePeopleCardFooterStyles();

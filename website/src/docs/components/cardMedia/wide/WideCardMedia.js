@@ -1,6 +1,6 @@
 import React from 'react';
 import CardMedia from '@material-ui/core/CardMedia';
-import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia';
+import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia/wide';
 
 const WideCardMedia = () => {
   const styles = useWideCardMediaStyles();

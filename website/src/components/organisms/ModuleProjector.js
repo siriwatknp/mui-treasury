@@ -5,7 +5,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { chromeTabsStylesHook } from '@mui-treasury/styles';
+import { chromeTabsStylesHook } from '@mui-treasury/styles/tabs';
 import PrismWithCopier from 'components/molecules/PrismWithCopier';
 
 const ModuleProjector = ({ demoSource, files }) => {

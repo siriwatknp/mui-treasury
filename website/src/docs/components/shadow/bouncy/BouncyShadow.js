@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
-import { useBouncyShadowStyles } from '@mui-treasury/styles/shadow';
+import { useBouncyShadowStyles } from '@mui-treasury/styles/shadow/bouncy';
 
 const BouncyShadow = () => {
   const styles = useBouncyShadowStyles();

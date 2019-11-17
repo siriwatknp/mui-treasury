@@ -5,7 +5,7 @@ import Image from 'gatsby-image';
 import GitHubButton from 'react-github-btn';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-import { HorzMenuList } from '@mui-treasury/components';
+import HorzMenuList from '@mui-treasury/components/menuList/HorzMenuList';
 import MENUS, { PKG } from 'constants/menus';
 
 const useStyles = makeStyles(() => ({

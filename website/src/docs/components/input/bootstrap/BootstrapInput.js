@@ -1,6 +1,6 @@
 import React from 'react';
 import InputBase from '@material-ui/core/InputBase';
-import { useBootstrapInputStyles } from '@mui-treasury/styles/input';
+import { useBootstrapInputStyles } from '@mui-treasury/styles/input/bootstrap';
 
 const BootstrapInput = () => {
   const styles = useBootstrapInputStyles();

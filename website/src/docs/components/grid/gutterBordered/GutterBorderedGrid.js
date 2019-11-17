@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import { useGutterBorderedGridStyles } from '@mui-treasury/styles/grid';
+import { useGutterBorderedGridStyles } from '@mui-treasury/styles/grid/gutterBordered';
 
 const GutterBorderedGrid = () => {
   const colWidth = { xs: 4 };

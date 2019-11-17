@@ -11,7 +11,7 @@ import Rating from '@material-ui/lab/Rating';
 import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos';
 import ModeComment from '@material-ui/icons/ModeComment';
 import Favorite from '@material-ui/icons/Favorite';
-import { usePushingGutter } from '@mui-treasury/styles/gutter';
+import { usePushingGutterStyles } from '@mui-treasury/styles/gutter/pushing';
 import { useLabelIconStyles } from '@mui-treasury/styles/icon/label';
 import { useRowFlexStyles } from '@mui-treasury/styles/flex/row';
 import MOCK from 'constants/mock';
@@ -62,7 +62,7 @@ const useStyles = makeStyles(({ spacing, palette }) => ({
 
 const ReviewCard2 = () => {
   const styles = useStyles();
-  const gutterStyles = usePushingGutter({ space: 1.5 });
+  const gutterStyles = usePushingGutterStyles({ space: 1.5 });
   const labelStyles = useLabelIconStyles({ linked: true });
   const flexStyles = useRowFlexStyles();
   return (

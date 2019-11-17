@@ -1,11 +1,11 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
 import CardContent from '@material-ui/core/CardContent';
-import { TextInfoCardContent } from '@mui-treasury/components/cardContent';
-import { useTextCardContent02Styles } from '@mui-treasury/styles/cardContent';
+import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
+import { useText02CardContentStyles } from '@mui-treasury/styles/cardContent/text02';
 
 const TextCardContent02 = () => {
-  const styles = useTextCardContent02Styles();
+  const styles = useText02CardContentStyles();
   return (
     <Box maxWidth={343}>
       <CardContent>

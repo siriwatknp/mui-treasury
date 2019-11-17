@@ -59,6 +59,8 @@ const NestedMenuList = ({
               ...parentProps,
               className: cx(
                 classes[`lv${level}Item`],
+                classes.parent,
+                classes[`lv${level}Parent`],
                 active && classes[`lv${level}ItemActive`],
                 selected &&
                   cx(
@@ -91,6 +93,8 @@ const NestedMenuList = ({
       className: cx(
         classes.menuItem,
         classes[`lv${level}Item`],
+        classes.child,
+        classes[`lv${level}Child`],
         selected &&
           cx(classes.menuItemSelected, classes[`lv${level}ItemSelected`]),
         childProps.className
@@ -114,6 +118,8 @@ NestedMenuList.propTypes = {
     wrapper: PropTypes.string,
     menuItem: PropTypes.string,
     menuItemSelected: PropTypes.string,
+    parent: PropTypes.string,
+    child: PropTypes.string,
   }),
   menus: PropTypes.arrayOf(PropTypes.shape({})),
   renderParent: PropTypes.func,

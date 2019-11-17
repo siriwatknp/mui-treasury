@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
 import CardMedia from '@material-ui/core/CardMedia';
-import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia';
+import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
 
 const CoverCardMedia = () => {
   const styles = useCoverCardMediaStyles();

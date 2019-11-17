@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
-import { useFadedShadowStyles } from '@mui-treasury/styles/shadow';
+import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
 
 const FadedShadow = () => {
   const styles = useFadedShadowStyles();

@@ -1,7 +1,7 @@
 import React from 'react';
 import InputBase from '@material-ui/core/InputBase';
 import Search from '@material-ui/icons/Search';
-import { useSearchInputStyles } from '@mui-treasury/styles/input';
+import { useSearchInputStyles } from '@mui-treasury/styles/input/search';
 
 const SearchInput = () => {
   const styles = useSearchInputStyles();

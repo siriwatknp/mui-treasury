@@ -9,10 +9,10 @@ import CardContent from '@material-ui/core/CardContent';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteBorderRounded from '@material-ui/icons/FavoriteBorderRounded';
 import Share from '@material-ui/icons/Share';
-import { useSoftRiseShadowStyles } from '@mui-treasury/styles/shadow';
-import { useSlopeCardMediaStyles } from '@mui-treasury/styles/cardMedia';
-import { useTextCardContent01Styles } from '@mui-treasury/styles/cardContent';
-import { TextInfoCardContent } from '@mui-treasury/components/cardContent';
+import { useSoftRiseShadowStyles } from '@mui-treasury/styles/shadow/softRise';
+import { useSlopeCardMediaStyles } from '@mui-treasury/styles/cardMedia/slope';
+import { useText01CardContentStyles } from '@mui-treasury/styles/cardContent/text01';
+import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
 import MOCK from 'constants/mock';
 
 const useStyles = makeStyles(() => ({
@@ -38,7 +38,7 @@ const PostCard = () => {
   const cardStyles = useStyles();
   const mediaStyles = useSlopeCardMediaStyles();
   const shadowStyles = useSoftRiseShadowStyles();
-  const textCardContentStyles = useTextCardContent01Styles();
+  const textCardContentStyles = useText01CardContentStyles();
   return (
     <Card className={cx(cardStyles.root, shadowStyles.root)}>
       <CardMedia classes={mediaStyles} image={MOCK.snowImg} />

@@ -47,6 +47,7 @@ export default theme => {
       padding: spacing(1, 0),
     },
     lv1Item: {
+      margin: '0 4px',
       '&:hover': {
         '&$menuItem, & $menuItem': {
           backgroundColor: 'transparent',

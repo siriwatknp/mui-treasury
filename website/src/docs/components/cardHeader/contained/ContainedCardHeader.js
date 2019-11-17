@@ -1,5 +1,5 @@
 import React from 'react';
-import { useContainedCardHeaderStyles } from '@mui-treasury/styles/cardHeader';
+import { useContainedCardHeaderStyles } from '@mui-treasury/styles/cardHeader/contained';
 import CardHeader from '@material-ui/core/CardHeader';
 
 const ContainedCardHeader = () => {

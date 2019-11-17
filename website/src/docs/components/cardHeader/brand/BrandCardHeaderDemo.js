@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrandCardHeader } from '@mui-treasury/components/cardHeader';
+import BrandCardHeader from '@mui-treasury/components/cardHeader/brand';
 import MOCK from 'constants/mock';
 
 const BrandCardHeaderDemo = () => (

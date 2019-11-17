@@ -1,5 +1,5 @@
 import React from 'react';
-import Tabs from '@mui-treasury/components/tabs/TwitterIconTabs';
+import Tabs from '@mui-treasury/components/tabs/twitterIcon';
 import Home from '@material-ui/icons/Home';
 import Search from '@material-ui/icons/Search';
 import Notifications from '@material-ui/icons/Notifications';

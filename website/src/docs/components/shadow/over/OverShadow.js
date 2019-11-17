@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
-import { useOverShadowStyles } from '@mui-treasury/styles/shadow';
+import { useOverShadowStyles } from '@mui-treasury/styles/shadow/over';
 
 const OverShadow = () => {
   const styles = useOverShadowStyles({

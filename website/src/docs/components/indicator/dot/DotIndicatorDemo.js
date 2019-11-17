@@ -1,5 +1,5 @@
 import React from 'react';
-import { DotIndicator } from '@mui-treasury/components/indicator';
+import DotIndicator from '@mui-treasury/components/indicator/dot';
 
 const DotIndicatorDemo = () => {
   const [index, setIndex] = React.useState(0);

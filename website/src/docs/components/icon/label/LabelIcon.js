@@ -1,11 +1,11 @@
 import React from 'react';
 import ModeComment from '@material-ui/icons/ModeComment';
 import Favorite from '@material-ui/icons/Favorite';
-import { usePushingGutter } from '@mui-treasury/styles';
+import { usePushingGutterStyles } from '@mui-treasury/styles/gutter/pushing';
 import { useLabelIconStyles } from '@mui-treasury/styles/icon/label';
 
 const LabelIcon = () => {
-  const gutterStyles = usePushingGutter({ space: 3, firstExcluded: true });
+  const gutterStyles = usePushingGutterStyles({ space: 3, firstExcluded: true });
   const iconLabelStyles = useLabelIconStyles({ linked: true });
   return (
     <div className={gutterStyles.parent}>

@@ -2,8 +2,8 @@ import React from 'react';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import CardContent from '@material-ui/core/CardContent';
-import { TextInfoCardContent } from '@mui-treasury/components/cardContent';
-import { useBlogCardContentStyles } from '@mui-treasury/styles/cardContent';
+import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
+import { useBlogCardContentStyles } from '@mui-treasury/styles/cardContent/blog';
 
 const TextCardContent01 = () => {
   const styles = useBlogCardContentStyles();

@@ -1,6 +1,6 @@
 import React from 'react';
 import CardMedia from '@material-ui/core/CardMedia';
-import { useSquareCardMediaStyles } from '@mui-treasury/styles/cardMedia';
+import { useSquareCardMediaStyles } from '@mui-treasury/styles/cardMedia/square';
 
 const SlopeCardMedia = () => {
   const styles = useSquareCardMediaStyles();

@@ -9,11 +9,9 @@ import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
-import { useContainedCardHeaderStyles } from '@mui-treasury/styles/cardHeader';
-import {
-  useSoftRiseShadowStyles,
-  useFadedShadowStyles,
-} from '@mui-treasury/styles/shadow';
+import { useContainedCardHeaderStyles } from '@mui-treasury/styles/cardHeader/contained';
+import { useSoftRiseShadowStyles } from '@mui-treasury/styles/shadow/softRise';
+import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
 
 const useStyles = makeStyles(({ spacing }) => ({
   card: {

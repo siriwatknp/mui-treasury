@@ -8,11 +8,9 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import organisms from 'components/organisms';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { FeatureWidget } from '@mui-treasury/components';
-import {
-  useFullBorderedGridStyles,
-  useHalfBorderedGridStyles,
-} from '@mui-treasury/styles';
+import FeatureWidget from '@mui-treasury/components/widget/FeatureWidget';
+import { useFullBorderedGridStyles } from '@mui-treasury/styles/grid/fullBordered';
+import { useHalfBorderedGridStyles } from '@mui-treasury/styles/grid/halfBordered';
 import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
 import StylingIsFun from '../components/section/StylingIsFun';

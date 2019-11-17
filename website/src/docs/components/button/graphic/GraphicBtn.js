@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import { useGraphicBtnStyles } from '@mui-treasury/styles';
+import { useGraphicBtnStyles } from '@mui-treasury/styles/button/graphic';
 
 const GraphicBtn = () => {
   const styles = useGraphicBtnStyles();

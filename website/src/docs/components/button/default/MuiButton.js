@@ -1,9 +1,9 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import { usePushingGutter } from '@mui-treasury/styles';
+import { usePushingGutterStyles } from '@mui-treasury/styles/gutter/pushing';
 
 const MuiButton = () => {
-  const gutterStyles = usePushingGutter({
+  const gutterStyles = usePushingGutterStyles({
     cssProp: 'margin',
     space: [2, 2, 0, 0],
   });

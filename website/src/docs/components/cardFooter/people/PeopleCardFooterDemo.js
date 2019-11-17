@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
-import { PeopleCardFooter } from '@mui-treasury/components/cardFooter';
+import PeopleCardFooter from '@mui-treasury/components/cardFooter/people';
 
 const faces = [
   'http://i.pravatar.cc/300?img=1',
@@ -14,9 +14,6 @@ const PeopleCardFooterDemo = () => (
     <PeopleCardFooter faces={faces} />
   </Box>
 );
-
-PeopleCardFooterDemo.propTypes = {};
-PeopleCardFooterDemo.defaultProps = {};
 
 // hide-start
 PeopleCardFooterDemo.metadata = {

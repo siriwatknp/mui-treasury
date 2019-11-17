@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaceGroup } from '@mui-treasury/components/group';
+import FaceGroup  from '@mui-treasury/components/group/face';
 import MOCK from 'constants/mock';
 
 const FaceGroupDemo = () => (

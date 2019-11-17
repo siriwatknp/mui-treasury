@@ -3,10 +3,10 @@ import cx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import { BrandCardHeader } from '@mui-treasury/components/cardHeader';
-import { TextInfoCardContent } from '@mui-treasury/components/cardContent';
-import { useTextCardContent03Styles } from '@mui-treasury/styles/cardContent';
-import { useLightTopShadowStyles } from '@mui-treasury/styles/shadow';
+import BrandCardHeader from '@mui-treasury/components/cardHeader/brand';
+import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
+import { useText03CardContentStyles } from '@mui-treasury/styles/cardContent/text03';
+import { useLightTopShadowStyles } from '@mui-treasury/styles/shadow/lightTop';
 import MOCK from 'constants/mock';
 
 const useStyles = makeStyles(() => ({
@@ -20,7 +20,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const ProjectCard = () => {
-  const styles = useTextCardContent03Styles();
+  const styles = useText03CardContentStyles();
   const shadowStyles = useLightTopShadowStyles();
   const cardStyles = useStyles();
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 import groupBy from 'lodash/groupBy';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
-import { useHalfBorderedGridStyles } from '@mui-treasury/styles/grid';
+import { useHalfBorderedGridStyles } from '@mui-treasury/styles/grid/halfBordered';
 
 /*
   categorize components into 2 group (medium, large)

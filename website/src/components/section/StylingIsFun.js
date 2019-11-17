@@ -2,18 +2,18 @@ import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Radio from '@material-ui/core/Radio';
-import { makeStyles } from '@material-ui/styles';
-import {
-  useBouncyShadowStyles,
-  useFadedShadowStyles,
-  useFloatShadowStyles,
-  useLightTopShadowStyles,
-  useOverShadowStyles,
-  useSoftRiseShadowStyles,
-} from '@mui-treasury/styles/shadow';
-import Prism from 'components/molecules/Prism';
+import { makeStyles } from '@material-ui/core/styles';
 import KanbanCard from 'docs/components/card/kanban/KanbanCard';
+import { useBouncyShadowStyles } from '@mui-treasury/styles/shadow/bouncy';
+import { useFloatShadowStyles } from '@mui-treasury/styles/shadow/float';
+import { useLightTopShadowStyles } from '@mui-treasury/styles/shadow/lightTop';
+import { useOverShadowStyles } from '@mui-treasury/styles/shadow/over';
+import { useSoftRiseShadowStyles } from '@mui-treasury/styles/shadow/softRise';
+import faded from '@mui-treasury/styles/shadow/faded';
+import Prism from 'components/molecules/Prism';
 import React from 'react';
+
+const useFadedShadowStyles = makeStyles(faded);
 
 const useStyles = makeStyles(() => ({
   topic: {

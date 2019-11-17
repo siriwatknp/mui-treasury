@@ -3,7 +3,7 @@ import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 import InfoOutlined from '@material-ui/icons/InfoOutlined';
 import StarBorder from '@material-ui/icons/StarBorder';
-import { useChromeInputStyles } from '@mui-treasury/styles/input';
+import { useChromeInputStyles } from '@mui-treasury/styles/input/chrome';
 
 const ChromeInput = () => {
   const styles = useChromeInputStyles();

@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
-import { useFloatShadowStyles } from '@mui-treasury/styles/shadow';
+import { useFloatShadowStyles } from '@mui-treasury/styles/shadow/float';
 
 const FloatShadow = () => {
   const styles = useFloatShadowStyles();

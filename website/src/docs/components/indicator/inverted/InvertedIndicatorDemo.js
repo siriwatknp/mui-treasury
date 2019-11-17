@@ -1,6 +1,6 @@
 import React from 'react';
-import { DotIndicator } from '@mui-treasury/components/indicator';
-import { useInvertedIndicatorStyles } from '@mui-treasury/styles/indicator';
+import DotIndicator from '@mui-treasury/components/indicator/dot';
+import { useInvertedIndicatorStyles } from '@mui-treasury/styles/indicator/inverted';
 
 const InvertedIndicatorDemo = () => {
   const [index, setIndex] = React.useState(0);

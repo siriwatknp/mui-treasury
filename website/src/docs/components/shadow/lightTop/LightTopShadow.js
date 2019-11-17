@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
-import { useLightTopShadowStyles } from '@mui-treasury/styles/shadow';
+import { useLightTopShadowStyles } from '@mui-treasury/styles/shadow/lightTop';
 
 const LightTopShadow = () => {
   const styles = useLightTopShadowStyles({

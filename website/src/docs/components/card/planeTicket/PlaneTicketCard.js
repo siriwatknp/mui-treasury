@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/styles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import AirplanemodeActive from '@material-ui/icons/AirplanemodeActive';
-import { useVerticalRipStyles } from '@mui-treasury/styles/rip';
+import { useVerticalRipStyles } from '@mui-treasury/styles/rip/vertical';
 import MOCK from 'constants/mock';
 
 const mainColor = '#003399';

@@ -3,12 +3,15 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import { useInvertedArrowStyles } from '@mui-treasury/styles/arrow';
-import { usePushingGutter } from '@mui-treasury/styles/gutter';
+import { useInvertedArrowStyles } from '@mui-treasury/styles/arrow/inverted';
+import { usePushingGutterStyles } from '@mui-treasury/styles/gutter/pushing';
 
 const InvertedArrow = () => {
   const classes = useInvertedArrowStyles();
-  const gutterStyles = usePushingGutter({ firstExcluded: true, space: 2 });
+  const gutterStyles = usePushingGutterStyles({
+    firstExcluded: true,
+    space: 2,
+  });
   return (
     <Box className={gutterStyles.parent}>
       <Button classes={classes}>
