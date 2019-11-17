@@ -27,7 +27,7 @@ const { ModuleProjector } = organisms;
 
 const baseTheme = createMuiTheme();
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
   paper: {
     display: 'flex',
     flexDirection: 'column',
@@ -41,10 +41,18 @@ const useStyles = makeStyles(({ palette }) => ({
   },
   closeButton: {
     position: 'fixed',
-    top: 16,
-    left: 16,
+    top: 19,
+    right: 8,
     '& .MuiSvgIcon-root': {
-      fontSize: 40,
+      fontSize: 32,
+    },
+    [breakpoints.up('sm')]: {
+      top: 16,
+      left: 16,
+      right: 'unset',
+      '& .MuiSvgIcon-root': {
+        fontSize: 40,
+      },
     },
   },
 }));
@@ -139,7 +147,7 @@ const DemoSourceDrawer = ({ title, frameProps }) => {
                 </h2>
               </Box>
               <Box px={3}>{renderList(relates, 'Relates')}</Box>
-              <Box width={{ xs: 256, sm: 500, md: 700 }}>
+              <Box width={{ xs: '100vw', sm: 500, md: 700 }}>
                 <ModuleProjector
                   files={mappedFiles}
                   demoSource={

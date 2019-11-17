@@ -6,17 +6,16 @@ import CardMedia from '@material-ui/core/CardMedia';
 import AirplanemodeActive from '@material-ui/icons/AirplanemodeActive';
 import { useVerticalRipStyles } from '@mui-treasury/styles/rip/vertical';
 
-
 const mainColor = '#003399';
 const lightColor = '#ecf2ff';
 const borderRadius = 12;
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
   card: {
     overflow: 'visible',
     background: 'none',
     display: 'flex',
-    minWidth: 400,
+    minWidth: 343,
     minHeight: 150,
     filter: 'drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3))',
     '& $moveLeft, $moveRight': {
@@ -29,6 +28,9 @@ const useStyles = makeStyles(({ palette }) => ({
       '& $moveRight': {
         transform: 'translateX(8px)',
       },
+    },
+    [breakpoints.up('sm')]: {
+      minWidth: 400,
     },
   },
   left: {
@@ -112,7 +114,12 @@ const PlaneTicketCard = () => {
   return (
     <Card className={styles.card} elevation={0}>
       <div className={cx(styles.left, styles.moveLeft)}>
-        <CardMedia className={styles.media} image={'https://www.clipartwiki.com/clipimg/detail/14-142290_united-airlines-jet-transparent-airplane-clipart-logo.png'} />
+        <CardMedia
+          className={styles.media}
+          image={
+            'https://www.clipartwiki.com/clipimg/detail/14-142290_united-airlines-jet-transparent-airplane-clipart-logo.png'
+          }
+        />
       </div>
       <div className={cx(ripStyles.left, styles.moveLeft)}>
         <div className={ripStyles.tear} />
