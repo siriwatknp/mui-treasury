@@ -15,7 +15,6 @@ import FaceGroup from '@mui-treasury/components/group/face';
 import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia/wide';
 import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
 import { usePushingGutterStyles } from '@mui-treasury/styles/gutter/pushing';
-import MOCK from 'constants/mock';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -54,7 +53,12 @@ const ReviewCard = () => {
   const gutterStyles = usePushingGutterStyles({ firstExcluded: true });
   return (
     <Card elevation={0} className={styles.root}>
-      <CardMedia classes={mediaStyles} image={MOCK.colosseumImg} />
+      <CardMedia
+        classes={mediaStyles}
+        image={
+          'https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80'
+        }
+      />
       <CardContent className={cx(shadowStyles.root, styles.content)}>
         <IconButton className={styles.favorite}>
           <Favorite />
@@ -90,7 +94,16 @@ const ReviewCard = () => {
             alignItems={'center'}
             className={gutterStyles.parent}
           >
-            <FaceGroup faces={MOCK.facesX4} size={32} offset={-12} />
+            <FaceGroup
+              faces={[
+                'https://i.pravatar.cc/300?img=1',
+                'https://i.pravatar.cc/300?img=2',
+                'https://i.pravatar.cc/300?img=3',
+                'https://i.pravatar.cc/300?img=4',
+              ]}
+              size={32}
+              offset={-12}
+            />
             <Typography
               component={'span'}
               variant={'body2'}

@@ -5,7 +5,7 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import MOCK from 'constants/mock';
+
 
 const useStyles = makeStyles(({ breakpoints, spacing }) => ({
   card: {
@@ -72,7 +72,7 @@ const RewardCard = () => {
   const styles = useStyles();
   return (
     <Card className={styles.card}>
-      <CardMedia className={styles.media} image={MOCK.trophyImg} />
+      <CardMedia className={styles.media} image={'https://jkkm.info/ui/images/awards/victory.png'} />
       <CardContent className={styles.content}>
         <Typography className={styles.overline} variant={'overline'}>
           Songkran Festival Contest

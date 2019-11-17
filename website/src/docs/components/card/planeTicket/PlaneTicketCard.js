@@ -5,7 +5,7 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import AirplanemodeActive from '@material-ui/icons/AirplanemodeActive';
 import { useVerticalRipStyles } from '@mui-treasury/styles/rip/vertical';
-import MOCK from 'constants/mock';
+
 
 const mainColor = '#003399';
 const lightColor = '#ecf2ff';
@@ -112,7 +112,7 @@ const PlaneTicketCard = () => {
   return (
     <Card className={styles.card} elevation={0}>
       <div className={cx(styles.left, styles.moveLeft)}>
-        <CardMedia className={styles.media} image={MOCK.planeLogoImg} />
+        <CardMedia className={styles.media} image={'https://www.clipartwiki.com/clipimg/detail/14-142290_united-airlines-jet-transparent-airplane-clipart-logo.png'} />
       </div>
       <div className={cx(ripStyles.left, styles.moveLeft)}>
         <div className={ripStyles.tear} />

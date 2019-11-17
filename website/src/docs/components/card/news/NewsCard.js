@@ -10,7 +10,7 @@ import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
 import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia/wide';
 import { useText01CardContentStyles } from '@mui-treasury/styles/cardContent/text01';
 import { useBouncyShadowStyles } from '@mui-treasury/styles/shadow/bouncy';
-import MOCK from 'constants/mock';
+
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -35,7 +35,7 @@ const NewsCard = () => {
   const shadowStyles = useBouncyShadowStyles();
   return (
     <Card className={cx(styles.root, shadowStyles.root)}>
-      <CardMedia classes={mediaStyles} image={MOCK.oceanImg} />
+      <CardMedia classes={mediaStyles} image={'https://images.unsplash.com/photo-1468774871041-fc64dd5522f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2689&q=80'} />
       <CardContent className={styles.content}>
         <TextInfoCardContent
           classes={textCardContentStyles}

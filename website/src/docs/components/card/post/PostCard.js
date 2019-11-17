@@ -13,7 +13,7 @@ import { useSoftRiseShadowStyles } from '@mui-treasury/styles/shadow/softRise';
 import { useSlopeCardMediaStyles } from '@mui-treasury/styles/cardMedia/slope';
 import { useText01CardContentStyles } from '@mui-treasury/styles/cardContent/text01';
 import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
-import MOCK from 'constants/mock';
+
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -41,8 +41,8 @@ const PostCard = () => {
   const textCardContentStyles = useText01CardContentStyles();
   return (
     <Card className={cx(cardStyles.root, shadowStyles.root)}>
-      <CardMedia classes={mediaStyles} image={MOCK.snowImg} />
-      <Avatar className={cardStyles.avatar} src={MOCK.face} />
+      <CardMedia classes={mediaStyles} image={'https://images.unsplash.com/photo-1517147177326-b37599372b73?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2229&q=80'} />
+      <Avatar className={cardStyles.avatar} src={'https://i.pravatar.cc/300'} />
       <CardContent className={cardStyles.content}>
         <TextInfoCardContent
           classes={textCardContentStyles}

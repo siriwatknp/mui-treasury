@@ -8,7 +8,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
 import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
 import { useGutterBorderedGridStyles } from '@mui-treasury/styles/grid/gutterBordered';
-import MOCK from 'constants/mock';
+
 
 const useStyles = makeStyles(({ palette }) => ({
   card: {
@@ -59,7 +59,7 @@ const ProfileCard = () => {
   return (
     <Card className={cx(styles.card, shadowStyles.root)}>
       <CardContent>
-        <Avatar className={styles.avatar} src={MOCK.face} />
+        <Avatar className={styles.avatar} src={'https://i.pravatar.cc/300'} />
         <h3 className={styles.heading}>Alan Podemski</h3>
         <span className={styles.subheader}>Poland</span>
       </CardContent>

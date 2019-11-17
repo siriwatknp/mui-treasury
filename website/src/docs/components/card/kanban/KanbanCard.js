@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import Avatar from '@material-ui/core/Avatar';
 import Slider from '@material-ui/core/Slider';
-import MOCK from 'constants/mock';
+
 
 const useStyles = makeStyles(({ spacing, palette }) => {
   const family =
@@ -69,7 +69,7 @@ const KanbanCard = ({ className }) => {
   const sliderStyles = useSliderStyles();
   return (
     <Card className={cx(styles.card, className)} elevation={0}>
-      <Avatar src={MOCK.face} className={styles.avatar} />
+      <Avatar src={'https://i.pravatar.cc/300'} className={styles.avatar} />
       <Box>
         <h3 className={styles.heading}>Sarah Onella</h3>
         <p className={styles.subheader}>23 y.o • Canada</p>

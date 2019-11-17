@@ -10,7 +10,7 @@ import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
 import { useText01CardContentStyles } from '@mui-treasury/styles/cardContent/text01';
 import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia/wide';
 import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
-import MOCK from 'constants/mock';
+
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -32,7 +32,9 @@ const EngagementCard = () => {
       <CardMedia
         // component={'img'} // add this line to use <img />
         classes={wideCardMediaStyles}
-        image={MOCK.natureImg}
+        image={
+          'https://image.freepik.com/free-photo/river-foggy-mountains-landscape_1204-511.jpg'
+        }
       />
       <CardContent className={cardStyles.content}>
         <TextInfoCardContent
@@ -44,7 +46,14 @@ const EngagementCard = () => {
         />
       </CardContent>
       <Box px={3} pb={3}>
-        <PeopleCardFooter faces={MOCK.facesX4} />
+        <PeopleCardFooter
+          faces={[
+            'https://i.pravatar.cc/300?img=1',
+            'https://i.pravatar.cc/300?img=2',
+            'https://i.pravatar.cc/300?img=3',
+            'https://i.pravatar.cc/300?img=4',
+          ]}
+        />
       </Box>
     </Card>
   );

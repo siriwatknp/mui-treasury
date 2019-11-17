@@ -9,7 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
 import { useLightTopShadowStyles } from '@mui-treasury/styles/shadow/lightTop';
-import MOCK from 'constants/mock';
+
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -41,7 +41,7 @@ const NewsCard2 = () => {
   const shadowStyles = useLightTopShadowStyles();
   return (
     <Card className={cx(styles.root, shadowStyles.root)}>
-      <CardMedia classes={mediaStyles} image={MOCK.spaceImg} />
+      <CardMedia classes={mediaStyles} image={'https://images.unsplash.com/photo-1519810755548-39cd217da494?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80'} />
       <CardActionArea>
         <CardContent className={styles.content}>
           <Box

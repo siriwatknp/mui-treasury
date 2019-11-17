@@ -7,7 +7,6 @@ import BrandCardHeader from '@mui-treasury/components/cardHeader/brand';
 import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
 import { useText03CardContentStyles } from '@mui-treasury/styles/cardContent/text03';
 import { useLightTopShadowStyles } from '@mui-treasury/styles/shadow/lightTop';
-import MOCK from 'constants/mock';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -25,7 +24,12 @@ const ProjectCard = () => {
   const cardStyles = useStyles();
   return (
     <Card className={cx(cardStyles.root, shadowStyles.root)}>
-      <BrandCardHeader image={MOCK.reactLogo} extra={'7 minutes'} />
+      <BrandCardHeader
+        image={
+          'https://pngimage.net/wp-content/uploads/2018/06/react-icon-png-7.png'
+        }
+        extra={'7 minutes'}
+      />
       <CardContent className={cardStyles.content}>
         <TextInfoCardContent
           classes={styles}

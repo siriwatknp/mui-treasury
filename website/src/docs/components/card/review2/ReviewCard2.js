@@ -14,7 +14,6 @@ import Favorite from '@material-ui/icons/Favorite';
 import { usePushingGutterStyles } from '@mui-treasury/styles/gutter/pushing';
 import { useLabelIconStyles } from '@mui-treasury/styles/icon/label';
 import { useRowFlexStyles } from '@mui-treasury/styles/flex/row';
-import MOCK from 'constants/mock';
 
 const useStyles = makeStyles(({ spacing, palette }) => ({
   card: {
@@ -107,7 +106,12 @@ const ReviewCard2 = () => {
           </div>
         </div>
       </CardContent>
-      <CardMedia className={styles.media} image={MOCK.prangImg} />
+      <CardMedia
+        className={styles.media}
+        image={
+          'https://www.brighttv.co.th/wp-content/uploads/2018/04/29739332_996623360491913_2322116227981377536_n.jpg'
+        }
+      />
     </Card>
   );
 };

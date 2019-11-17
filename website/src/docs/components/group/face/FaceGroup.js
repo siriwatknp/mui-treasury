@@ -1,9 +1,17 @@
 import React from 'react';
-import FaceGroup  from '@mui-treasury/components/group/face';
-import MOCK from 'constants/mock';
+import FaceGroup from '@mui-treasury/components/group/face';
 
 const FaceGroupDemo = () => (
-  <FaceGroup faces={MOCK.facesX4} size={48} offset={-8} />
+  <FaceGroup
+    faces={[
+      'https://i.pravatar.cc/300?img=1',
+      'https://i.pravatar.cc/300?img=2',
+      'https://i.pravatar.cc/300?img=3',
+      'https://i.pravatar.cc/300?img=4',
+    ]}
+    size={48}
+    offset={-8}
+  />
 );
 
 FaceGroupDemo.propTypes = {};
