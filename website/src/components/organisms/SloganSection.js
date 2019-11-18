@@ -69,15 +69,12 @@ const SloganSection = () => {
         variant={'contained'}
         color={'primary'}
         classes={{ label: classes.buttonLabel }}
-        onClick={() => navigate('/components/button')}
+        onClick={() => navigate('/components/card')}
       >
         Get started
       </Button>
     </Box>
   );
 };
-
-SloganSection.propTypes = {};
-SloganSection.defaultProps = {};
 
 export default SloganSection;
