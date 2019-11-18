@@ -1,46 +1,37 @@
 import React from 'react';
-import { ThemeProvider } from '@material-ui/styles';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { render, fireEvent } from '@testing-library/react';
-import { LayoutProvider } from '../core/layoutContext';
+import { fireEvent } from '@testing-library/react';
+import { renderWithinLayout } from 'testingUtils/renderer';
 import Sidebar from '../components/Sidebar';
 import CollapseBtn from '../components/CollapseBtn';
 import SidebarTrigger from '../components/SidebarTrigger';
-
-const baseTheme = createMuiTheme();
 
 describe('Sidebar', function() {
   let sidebarRoot;
   let sidebarPaper;
   let trigger;
   let backdrop;
-  let renderLayout;
-  beforeEach(() => {
-    renderLayout = (elm, config) =>
-      render(
-        <ThemeProvider theme={baseTheme}>
-          <LayoutProvider config={config}>{elm}</LayoutProvider>
-        </ThemeProvider>
-      );
-  });
   test('[Permanent] should always display on screen', () => {
-    const { getByTestId } = renderLayout(
+    const { getByTestId } = renderWithinLayout(
       <Sidebar data-testid={'sidebar-root'} />,
-      { sidebar: { variant: 'permanent', autoCollapseDisabled: true } }
+      {
+        config: {
+          sidebar: { variant: 'permanent', autoCollapseDisabled: true },
+        },
+      }
     );
     sidebarRoot = getByTestId('sidebar-root');
     expect(sidebarRoot).toBeInTheDocument();
   });
 
   test('[Persistent] should show & hide on screen when triggered', () => {
-    const { getByTestId } = renderLayout(
+    const { getByTestId } = renderWithinLayout(
       <Sidebar
         data-testid={'sidebar-root'}
         PaperProps={{ 'data-testid': 'sidebar-paper' }}
       >
         <SidebarTrigger data-testid={'trigger'} />
       </Sidebar>,
-      { sidebar: { variant: 'persistent' } }
+      { config: { sidebar: { variant: 'persistent' } } }
     );
     sidebarPaper = getByTestId('sidebar-paper');
     expect(sidebarPaper.style.visibility).toBe('hidden');
@@ -50,7 +41,7 @@ describe('Sidebar', function() {
   });
 
   test('[Temporary] should appear in dom when opened', () => {
-    const { queryByTestId, getByTestId } = renderLayout(
+    const { queryByTestId, getByTestId } = renderWithinLayout(
       <>
         <Sidebar
           data-testid={'sidebar-root'}
@@ -58,7 +49,7 @@ describe('Sidebar', function() {
         />
         <SidebarTrigger data-testid={'trigger'} />
       </>,
-      { sidebar: { variant: 'temporary' } }
+      { config: { sidebar: { variant: 'temporary' } } }
     );
     sidebarRoot = queryByTestId('sidebar-root');
     expect(sidebarRoot).toBeNull();
@@ -76,13 +67,15 @@ describe('Sidebar', function() {
 
   test("Sidebar's width is set by config", () => {
     const width = 256;
-    const { getByTestId } = renderLayout(
+    const { getByTestId } = renderWithinLayout(
       <Sidebar PaperProps={{ 'data-testid': 'sidebar-paper' }} />,
       {
-        autoCollapseDisabled: true,
-        sidebar: {
-          variant: 'permanent',
-          width,
+        config: {
+          autoCollapseDisabled: true,
+          sidebar: {
+            variant: 'permanent',
+            width,
+          },
         },
       }
     );
@@ -92,17 +85,19 @@ describe('Sidebar', function() {
 
   test('Collapsible Side + Trigger should work', () => {
     const collapsedWidth = 80;
-    const { getByTestId } = renderLayout(
+    const { getByTestId } = renderWithinLayout(
       <Sidebar PaperProps={{ 'data-testid': 'sidebar-paper' }}>
         <CollapseBtn data-testid={'trigger'}>toggle</CollapseBtn>
       </Sidebar>,
       {
-        autoCollapseDisabled: true,
-        sidebar: {
-          variant: 'permanent',
-          width: 256,
-          collapsible: true,
-          collapsedWidth,
+        config: {
+          autoCollapseDisabled: true,
+          sidebar: {
+            variant: 'permanent',
+            width: 256,
+            collapsible: true,
+            collapsedWidth,
+          },
         },
       }
     );
