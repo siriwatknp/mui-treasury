@@ -5,7 +5,7 @@ import Sidebar from '../components/Sidebar';
 import CollapseBtn from '../components/CollapseBtn';
 import SidebarTrigger from '../components/SidebarTrigger';
 
-describe('Sidebar', function() {
+describe('[Layout_LeftSidebar]', function() {
   let sidebarRoot;
   let sidebarPaper;
   let trigger;
@@ -15,7 +15,7 @@ describe('Sidebar', function() {
       <Sidebar data-testid={'sidebar-root'} />,
       {
         config: {
-          sidebar: { variant: 'permanent', autoCollapseDisabled: true },
+          sidebar: { variant: 'permanent' },
         },
       }
     );

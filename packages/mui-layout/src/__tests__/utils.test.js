@@ -3,6 +3,7 @@ import {
   isSomeExisted,
   selectConfigByScreen,
   getInitialScreen,
+  upperFirst,
 } from '../utils';
 
 describe('utils', function() {
@@ -14,12 +15,26 @@ describe('utils', function() {
       opened: false,
       sidebar: {
         variant: 'temporary',
+        anchor: 'left',
         width: 256,
+        collapsible: false,
+        collapsedWidth: 80,
+      },
+      secondarySidebar: {
+        variant: 'temporary',
+        anchor: 'right',
+        width: 244,
         collapsible: false,
         collapsedWidth: 80,
       },
     };
     utils = createLayoutUtils(ctx);
+  });
+  test('upperFirst should have first letter uppercase and the rest lowercase', () => {
+    expect(upperFirst('fIrst')).toEqual('First');
+    expect(upperFirst('HelloWorld')).toEqual('Helloworld');
+    expect(upperFirst('reactive')).toEqual('Reactive');
+    expect(upperFirst('UPPERCASE')).toEqual('Uppercase');
   });
   test('getInitialScreen return initial screen', () => {
     expect(
@@ -55,8 +70,15 @@ describe('utils', function() {
     expect(isSomeExisted(source, target)).toBeFalsy();
   });
 
-  test('[temporary Sidebar] gap return 0', () => {
+  /**
+   *  getSidebarGap
+   */
+  test('[temporary PrimarySidebar] gap return 0', () => {
     expect(utils.getSidebarGap()).toBe(0);
+  });
+
+  test('[temporary SecondarySidebar] gap return 0', () => {
+    expect(utils.getSecondarySidebarGap()).toBe(0);
   });
 
   test('[permanent Sidebar] gap return width', () => {
@@ -79,54 +101,63 @@ describe('utils', function() {
     expect(utils.getSidebarGap()).toBe(80);
   });
 
-  test('[persistent Sidebar (persistentPushing=false)] gap return 0', () => {
+  test('[persistent Sidebar (primaryPersistentPushed=false)] gap return 0', () => {
     ctx.sidebar.variant = 'persistent';
     ctx.opened = false;
-    ctx.sidebar.persistentPushing = false;
+    ctx.sidebar.primaryPersistentPushed = false;
     ctx.sidebar.collapsible = false;
     utils = createLayoutUtils(ctx);
     expect(utils.getSidebarGap()).toBe(0);
   });
-  test('[closed persistent Sidebar (persistentPushing=true)] gap return 0', () => {
+  test('[closed persistent Sidebar (primaryPersistentPushed=true)] gap return 0', () => {
     ctx.sidebar.variant = 'persistent';
     ctx.opened = false;
-    ctx.sidebar.persistentPushing = true;
+    ctx.sidebar.primaryPersistentPushed = true;
     ctx.sidebar.collapsible = true;
     ctx.collapsed = false;
     utils = createLayoutUtils(ctx);
     expect(utils.getSidebarGap()).toBe(0);
   });
-  test('[opened persistent Sidebar (persistentPushed=true)] gap return width', () => {
+  test('[opened persistent Sidebar (primaryPersistentPushed=true)] gap return width', () => {
     ctx.sidebar.variant = 'persistent';
     ctx.opened = true;
     ctx.sidebar.collapsible = true;
     ctx.collapsed = false;
     utils = createLayoutUtils(ctx);
-    expect(utils.getSidebarGap({ persistentPushed: true })).toBe(256);
+    expect(utils.getSidebarGap({ primaryPersistentPushed: true })).toBe(256);
   });
-  test('[persistent Sidebar (persistentPushed=true)] gap return collapsedWidth when collapsed', () => {
+  test('[persistent Sidebar (primaryPersistentPushed=true)] gap return collapsedWidth when collapsed', () => {
     ctx.sidebar.variant = 'persistent';
     ctx.opened = true;
     ctx.sidebar.collapsible = true;
     ctx.collapsed = true;
     utils = createLayoutUtils(ctx);
-    expect(utils.getSidebarGap({ persistentPushed: true })).toBe(80);
+    expect(utils.getSidebarGap({ primaryPersistentPushed: true })).toBe(80);
   });
 
   test("[temporary Sidebar] component's width will always 100%", () => {
     ctx.sidebar.collapsible = true;
     ctx.collapsed = true;
     utils = createLayoutUtils(ctx);
-    expect(utils.getWidth({ persistentScreenFit: true })).toBe('100%');
+    expect(utils.getWidth({ primaryPersistentScreenFit: true })).toBe('100%');
   });
 
-  test("[permanent Sidebar] component's width will always persistentScreenFit", () => {
+  /**
+   * getWidth test cases
+   */
+  test("[permanent PrimarySidebar] component's width will minus sidebar width", () => {
     ctx.sidebar.variant = 'permanent';
     utils = createLayoutUtils(ctx);
-    expect(utils.getWidth({ persistentScreenFit: true })).toBe('calc(100% - 256px)');
+    expect(utils.getWidth()).toBe('calc(100% - 256px)');
   });
 
-  test("[permanent Sidebar] component's width is equal to collapsed width when collapsed", () => {
+  test("[permanent SecondarySidebar] component's width will minus sidebar width", () => {
+    ctx.secondarySidebar.variant = 'permanent';
+    utils = createLayoutUtils(ctx);
+    expect(utils.getWidth()).toBe('calc(100% - 244px)');
+  });
+
+  test("[permanent PrimarySidebar] component's width is equal to collapsed width when collapsed", () => {
     ctx.sidebar.variant = 'permanent';
     ctx.sidebar.collapsible = true;
     ctx.collapsed = true;
@@ -134,17 +165,17 @@ describe('utils', function() {
     expect(utils.getWidth()).toBe('calc(100% - 80px)');
   });
 
-  test("[closed persistent Sidebar] component's width is 100%", () => {
+  test("[closed persistent PrimarySidebar] component's width is 100%", () => {
     ctx.opened = false;
 
     ctx.sidebar.variant = 'persistent';
     ctx.sidebar.collapsible = true;
     ctx.collapsed = true;
     utils = createLayoutUtils(ctx);
-    expect(utils.getWidth({ persistentScreenFit: true })).toBe('100%');
+    expect(utils.getWidth({ primaryPersistentScreenFit: true })).toBe('100%');
   });
 
-  test("[opened persistent Sidebar] component's width depends on persistentScreenFit mode", () => {
+  test("[opened persistent PrimarySidebar] component's width depends on primaryPersistentScreenFit mode", () => {
     ctx.opened = true;
 
     ctx.sidebar.variant = 'persistent';
@@ -152,15 +183,69 @@ describe('utils', function() {
     ctx.collapsed = false;
     utils = createLayoutUtils(ctx);
     expect(utils.getWidth()).toBe('100%');
-    expect(utils.getWidth({ persistentScreenFit: true, persistentPushed: true })).toBe(
-      'calc(100% - 256px)'
-    );
+    expect(
+      utils.getWidth({
+        primaryPersistentScreenFit: true,
+        primaryPersistentPushed: true,
+      })
+    ).toBe('calc(100% - 256px)');
 
     ctx.sidebar.collapsible = true;
     ctx.collapsed = true;
     utils = createLayoutUtils(ctx);
-    expect(utils.getWidth({ persistentScreenFit: true, persistentPushed: true })).toBe(
-      'calc(100% - 80px)'
-    );
+    expect(
+      utils.getWidth({
+        primaryPersistentScreenFit: true,
+        primaryPersistentPushed: true,
+      })
+    ).toBe('calc(100% - 80px)');
+  });
+
+  test('[Both temporary side bar] width should be 100%', () => {
+    utils = createLayoutUtils(ctx);
+    expect(utils.getWidth()).toBe('100%');
+  });
+
+  test("[Both is permanent] width should minus both sidebar's width", () => {
+    ctx.sidebar.variant = 'permanent';
+    ctx.sidebar.collapsible = true;
+    ctx.secondarySidebar.variant = 'permanent';
+    ctx.secondarySidebar.collapsible = true;
+    utils = createLayoutUtils(ctx);
+    expect(utils.getWidth()).toBe(`calc(100% - ${256 + 244}px)`);
+
+    ctx.collapsed = true;
+    utils = createLayoutUtils(ctx);
+    expect(utils.getWidth()).toBe(`calc(100% - ${80 + 244}px)`);
+
+    ctx.secondaryCollapsed = true;
+    utils = createLayoutUtils(ctx);
+    expect(utils.getWidth()).toBe(`calc(100% - ${80 + 80}px)`);
+
+    ctx.collapsed = false;
+    utils = createLayoutUtils(ctx);
+    expect(utils.getWidth()).toBe(`calc(100% - ${256 + 80}px)`);
+  });
+
+  test('[Default anchor sidebars] should calculate correct margin', () => {
+    utils = createLayoutUtils(ctx);
+    expect(utils.getContainerMarginStyle()).toMatchObject({
+      marginLeft: utils.getSidebarGap(),
+      marginRight: utils.getSecondarySidebarGap(),
+    });
+  });
+
+  test('getContentStyle & getFooterStyle return correct style', () => {
+    utils = createLayoutUtils(ctx);
+    expect(utils.getContentStyle()).toMatchObject({
+      marginLeft: utils.getSidebarGap(),
+      marginRight: utils.getSecondarySidebarGap(),
+      width: utils.getWidth(),
+    });
+    expect(utils.getFooterStyle()).toMatchObject({
+      marginLeft: utils.getSidebarGap(),
+      marginRight: utils.getSecondarySidebarGap(),
+      width: utils.getWidth(),
+    });
   });
 });

@@ -17,8 +17,10 @@ const LayoutProvider = ({
   children,
   initialOpened,
   initialCollapsed,
+  initialRightOpened,
 }) => {
   const [opened, setOpened] = React.useState(initialOpened);
+  const [rightOpened, setRightOpened] = React.useState(initialRightOpened);
   const [collapsed, setCollapsed] = React.useState(initialCollapsed);
   const {
     breakpoints: { keys },
@@ -50,6 +52,8 @@ const LayoutProvider = ({
         setOpened,
         collapsed,
         setCollapsed,
+        rightOpened,
+        setRightOpened,
       }}
     >
       {children}
@@ -59,6 +63,7 @@ const LayoutProvider = ({
 LayoutProvider.propTypes = {
   initialOpened: PropTypes.bool,
   initialCollapsed: PropTypes.bool,
+  initialRightOpened: PropTypes.bool,
   config: PropTypes.shape({
     autoCollapseDisabled: PropTypes.bool,
     collapsedBreakpoint: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
@@ -73,6 +78,7 @@ LayoutProvider.propTypes = {
 LayoutProvider.defaultProps = {
   initialOpened: false,
   initialCollapsed: false,
+  initialRightOpened: false,
   config: defaultLayoutPreset,
 };
 

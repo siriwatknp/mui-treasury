@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { renderWithinTheme } from 'testingUtils/renderer';
+import { renderWithinTheme, renderWithinLayout } from 'testingUtils/renderer';
 import { LayoutConsumer } from '../core/layoutContext';
 import Sidebar from '../components/Sidebar';
 import Root from '../components/Root';
@@ -41,5 +41,26 @@ describe('context', () => {
       </Root>
     );
     expect(queryByTestId('sidebar-root')).toBeInTheDocument();
+  });
+
+  test('content provide correct structure', () => {
+    const result = {};
+    renderWithinLayout(
+      <LayoutConsumer>
+        {value => {
+          Object.assign(result, value);
+          return null;
+        }}
+      </LayoutConsumer>
+    );
+
+    expect(result).toMatchObject({
+      opened: false,
+      setOpened: expect.any(Function),
+      collapsed: false,
+      setCollapsed: expect.any(Function),
+      rightOpened: false,
+      setRightOpened: expect.any(Function),
+    });
   });
 });

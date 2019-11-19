@@ -6,13 +6,25 @@ import HeaderMagnet from './HeaderMagnet';
 import { useLayoutCtx, useAutoCollapse } from '../hooks';
 import { useTransitionStyles, useSidebarStyles } from '../styles';
 
-const Sidebar = ({ children, PaperProps, SlideProps, ...props }) => {
+const getSidebarConfig = (ctx, side) => {
+  if (!side) {
+    return ctx.sidebar;
+  }
+  return ctx[`${side}Sidebar`];
+};
+const getSidebarAnchor = side => {
+  if (!side) return 'left';
+  return side;
+};
+
+const Sidebar = ({ side, children, PaperProps, SlideProps, ...props }) => {
   useAutoCollapse();
   const [entered, setEntered] = React.useState(false);
   const styles = useSidebarStyles();
   const transitionStyles = useTransitionStyles();
   const ctx = useLayoutCtx();
-  const { sidebar, opened, setOpened, getSidebarWidth } = ctx;
+  const { opened, setOpened, getSidebarWidth } = ctx;
+  const sidebar = getSidebarConfig(ctx, side);
   const isPermanent = sidebar.variant === 'permanent';
   return (
     <Drawer
@@ -22,6 +34,7 @@ const Sidebar = ({ children, PaperProps, SlideProps, ...props }) => {
         setOpened(false);
       }}
       variant={sidebar.variant}
+      anchor={getSidebarAnchor(sidebar.anchor)}
       PaperProps={{
         ...PaperProps,
         classes: {
@@ -49,11 +62,13 @@ const Sidebar = ({ children, PaperProps, SlideProps, ...props }) => {
 };
 
 Sidebar.propTypes = {
+  side: PropTypes.oneOf(['left', 'right']),
   PaperProps: PropTypes.shape({}),
   SlideProps: PropTypes.shape({}),
   children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
 };
 Sidebar.defaultProps = {
+  side: undefined,
   PaperProps: {},
   SlideProps: {},
   children: null,

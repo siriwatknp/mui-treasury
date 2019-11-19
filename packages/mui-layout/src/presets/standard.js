@@ -5,6 +5,9 @@ export default {
   collapsedBreakpoint: 'sm',
   heightAdjustmentDisabled: false,
   xs: getDefaultScreenConfig({
+    sidebar: {
+      anchor: 'bottom',
+    },
     header: {
       position: 'sticky',
       clipped: false,

@@ -21,11 +21,13 @@ const initialConfig = {
 describe('Header', function() {
   let header;
   let trigger;
-  test('Header should have AppBar + Toolbar', () => {
-    const { getByText } = renderWithinLayout(<Header>Hello</Header>, {
+  test('Header should have AppBar', () => {
+    const { getByText, debug } = renderWithinLayout(<Header>Hello</Header>, {
       config: initialConfig,
     });
-    expect(getByText(/hello/i)).toBeInTheDocument();
+    const header = getByText(/hello/i);
+    expect(header).toBeInTheDocument();
+    expect(header.className).toEqual(expect.stringContaining('MuiAppBar-root'));
   });
 
   test("Header should have margin-right when Sidebar's width changed", () => {
