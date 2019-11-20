@@ -1,3 +1,41 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { LayoutProvider } from '../core/layoutContext';
+import { useSidebarStyles, useHeaderStyles } from '../styles';
 
-export default LayoutProvider;
+const baseTheme = createMuiTheme();
+
+const Layout = ({ children, ...props }) => {
+  const sidebarStyles = useSidebarStyles();
+  const headerStyles = useHeaderStyles();
+  return (
+    <LayoutProvider {...props}>
+      {typeof children === 'function'
+        ? children({ sidebarStyles, headerStyles })
+        : children}
+    </LayoutProvider>
+  );
+};
+
+const Root = ({ theme, omitThemeProvider, ...props }) => {
+  if (omitThemeProvider) {
+    return <Layout {...props} />;
+  }
+  return (
+    <ThemeProvider theme={theme || baseTheme}>
+      <Layout {...props} />
+    </ThemeProvider>
+  );
+};
+
+Root.propTypes = {
+  theme: PropTypes.shape({}),
+  omitThemeProvider: PropTypes.bool,
+};
+Root.defaultProps = {
+  omitThemeProvider: undefined,
+  theme: undefined,
+};
+
+export default Root;
