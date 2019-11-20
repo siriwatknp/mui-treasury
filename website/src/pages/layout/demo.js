@@ -5,7 +5,6 @@ import IconButton from '@material-ui/core/IconButton';
 import {
   Root,
   Header,
-  HeaderOffset,
   Sidebar,
   Content,
   Footer,
@@ -38,16 +37,16 @@ const presets = {
   createFixedLayout: fixedLayoutPreset,
   createContentBasedLayout: contentBasedLayoutPreset,
   createCozyLayout: cozyLayoutPreset,
-  createMuiTreasuryLayout: muiTreasuryPreset
+  createMuiTreasuryLayout: muiTreasuryPreset,
 };
 
 const index = () => {
-  const [preset, setPreset] = useState("createStandardLayout");
+  const [preset, setPreset] = useState('createStandardLayout');
   const [data, setData] = useState({
     header: true,
     nav: true,
     content: true,
-    footer: true
+    footer: true,
   });
   const sidebarStyles = useSidebarStyles();
   const headerStyles = useHeaderStyles();
@@ -67,7 +66,6 @@ const index = () => {
           {data.header && <HeaderEx />}
         </Toolbar>
       </Header>
-      <HeaderOffset />
       <Content>
         <ContentForm
           preset={preset}
@@ -92,9 +90,7 @@ const index = () => {
           </>
         )}
       </Sidebar>
-      <Footer>
-        {data.footer && <FooterEx />}
-      </Footer>
+      <Footer>{data.footer && <FooterEx />}</Footer>
     </Root>
   );
 };

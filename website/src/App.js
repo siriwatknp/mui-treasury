@@ -1,5 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import { Location } from '@reach/router';
 import { Root, muiTreasuryPreset } from '@mui-treasury/layout';
 // import { library } from '@fortawesome/fontawesome-svg-core';
 // import {
@@ -71,9 +72,20 @@ const App = ({ children }) => (
       />
       <meta property="twitter:image" content={banner} />
     </Helmet>
-    <ThemeWrapper>
-      <Root config={muiTreasuryPreset}>{children}</Root>
-    </ThemeWrapper>
+    <Location>
+      {({ location }) => {
+        if (location.pathname === '/layout/develop') {
+          return children;
+        }
+        return (
+          <ThemeWrapper>
+            <Root omitThemeProvider config={muiTreasuryPreset}>
+              {children}
+            </Root>
+          </ThemeWrapper>
+        );
+      }}
+    </Location>
   </>
 );
 

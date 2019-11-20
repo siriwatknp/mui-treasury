@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { LayoutProvider } from '../core/layoutContext';
+import { LayoutProvider, LayoutConsumer } from '../core/layoutContext';
 import { useSidebarStyles, useHeaderStyles } from '../styles';
 
 const baseTheme = createMuiTheme();
@@ -11,9 +11,13 @@ const Layout = ({ children, ...props }) => {
   const headerStyles = useHeaderStyles();
   return (
     <LayoutProvider {...props}>
-      {typeof children === 'function'
-        ? children({ sidebarStyles, headerStyles })
-        : children}
+      {typeof children === 'function' ? (
+        <LayoutConsumer>
+          {ctx => children({ sidebarStyles, headerStyles, ...ctx })}
+        </LayoutConsumer>
+      ) : (
+        children
+      )}
     </LayoutProvider>
   );
 };
