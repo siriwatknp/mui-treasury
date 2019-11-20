@@ -10,20 +10,33 @@ const getSidebarAnchor = side => {
   return side;
 };
 
-const Sidebar = ({ side, children, PaperProps, SlideProps, ...props }) => {
+const defaultMapContext = ({ header = {}, ...rest } = {}) => ({
+  ...rest,
+  clipped: header.clipped,
+});
+
+const Sidebar = ({
+  side,
+  children,
+  PaperProps,
+  SlideProps,
+  // eslint-disable-next-line react/prop-types
+  mapContext = defaultMapContext, // for internal usage only
+  ...props
+}) => {
   const ctx = useLayoutCtx();
+  const parsedCtx = mapContext(ctx);
   const height = useHeightAdjustment({
-    sidebar: ctx.sidebar,
+    ...parsedCtx,
     header: ctx.header,
     heightAdjustmentDisabled: ctx.heightAdjustmentDisabled,
     heightAdjustmentSpeed: ctx.heightAdjustmentSpeed,
   });
-  useAutoCollapse(ctx);
+  useAutoCollapse(parsedCtx);
   const [entered, setEntered] = React.useState(false);
   const styles = useSidebarStyles();
   const transitionStyles = useTransitionStyles();
-  const { opened, setOpened, getSidebarWidth } = ctx;
-  const { sidebar } = ctx;
+  const { sidebar, opened, setOpened, getSidebarWidth } = parsedCtx;
   const isPermanent = sidebar.variant === 'permanent';
   return (
     <Drawer

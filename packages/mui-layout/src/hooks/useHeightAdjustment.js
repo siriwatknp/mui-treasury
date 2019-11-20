@@ -5,7 +5,8 @@ import useEventListener from './useEventListener';
 
 export default ({
   sidebar = {},
-  header: { clipped, position, offsetHeight } = {},
+  clipped,
+  header: { position, offsetHeight } = {},
   heightAdjustmentSpeed = 144,
   heightAdjustmentDisabled = false,
 }) => {

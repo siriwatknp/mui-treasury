@@ -1,21 +1,9 @@
 import React from 'react';
-import ArrowLeft from '@material-ui/icons/KeyboardArrowLeftRounded';
-import ArrowRight from '@material-ui/icons/KeyboardArrowRightRounded';
-import MenuRounded from '@material-ui/icons/MenuRounded';
-import { useLayoutCtx } from '../hooks';
+import SidebarTriggerIcon from './SidebarTriggerIcon';
+import { parseSecondaryConfig } from '../utils/sidebarUtils';
 
-const SecondarySidebarTriggerIcon = props => {
-  const { secondaryOpened, secondarySidebar } = useLayoutCtx();
-  const getArrow = () => {
-    if (secondarySidebar.anchor === 'left') {
-      return <ArrowLeft {...props} />;
-    }
-    if (secondarySidebar.anchor === 'right') {
-      return <ArrowRight {...props} />;
-    }
-    return null;
-  };
-  return secondaryOpened ? getArrow() : <MenuRounded {...props} />;
-};
+const SecondarySidebarTriggerIcon = props => (
+  <SidebarTriggerIcon mapContext={parseSecondaryConfig} {...props} />
+);
 
 export default SecondarySidebarTriggerIcon;

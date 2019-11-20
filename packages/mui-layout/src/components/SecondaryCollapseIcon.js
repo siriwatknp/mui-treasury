@@ -1,29 +1,9 @@
 import React from 'react';
-import KeyboardArrowRightRounded from '@material-ui/icons/KeyboardArrowRightRounded';
-import KeyboardArrowLeftRounded from '@material-ui/icons/KeyboardArrowLeftRounded';
-import { useLayoutCtx } from '../hooks';
+import CollapseIcon from './CollapseIcon';
+import { parseSecondaryConfig } from '../utils/sidebarUtils';
 
-const SecondaryCollapseIcon = props => {
-  const { secondaryCollapsed, secondarySidebar } = useLayoutCtx();
-  const getCollapsedArrow = () => {
-    if (secondarySidebar.anchor === 'right') {
-      return <KeyboardArrowLeftRounded {...props} />;
-    }
-    if (secondarySidebar.anchor === 'left') {
-      return <KeyboardArrowRightRounded {...props} />;
-    }
-    return null;
-  };
-  const getUnCollapsedArrow = () => {
-    if (secondarySidebar.anchor === 'left') {
-      return <KeyboardArrowLeftRounded {...props} />;
-    }
-    if (secondarySidebar.anchor === 'right') {
-      return <KeyboardArrowRightRounded {...props} />;
-    }
-    return null;
-  };
-  return secondaryCollapsed ? getCollapsedArrow() : getUnCollapsedArrow();
-};
+const SecondaryCollapseIcon = props => (
+  <CollapseIcon mapContext={parseSecondaryConfig} {...props} />
+);
 
 export default SecondaryCollapseIcon;

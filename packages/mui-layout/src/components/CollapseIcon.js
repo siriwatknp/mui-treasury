@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import KeyboardArrowRightRounded from '@material-ui/icons/KeyboardArrowRightRounded';
 import KeyboardArrowLeftRounded from '@material-ui/icons/KeyboardArrowLeftRounded';
 import { useLayoutCtx } from '../hooks';
 
-const CollapseIcon = props => {
-  const { collapsed, sidebar } = useLayoutCtx();
+const CollapseIcon = ({ mapContext, ...props }) => {
+  const ctx = useLayoutCtx();
+  const { collapsed, sidebar } = mapContext(ctx);
   const getCollapsedArrow = () => {
     if (sidebar.anchor === 'right') {
       return <KeyboardArrowLeftRounded {...props} />;
@@ -24,6 +26,13 @@ const CollapseIcon = props => {
     return null;
   };
   return collapsed ? getCollapsedArrow() : getUnCollapsedArrow();
+};
+
+CollapseIcon.propTypes = {
+  mapContext: PropTypes.func,
+};
+CollapseIcon.defaultProps = {
+  mapContext: ctx => ctx,
 };
 
 export default CollapseIcon;

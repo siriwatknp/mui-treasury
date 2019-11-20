@@ -1,29 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import IconButton from '@material-ui/core/IconButton';
-import { useLayoutCtx } from '../hooks';
+import SidebarTrigger from './SidebarTrigger';
+import { parseSecondaryConfig } from '../utils/sidebarUtils';
 
-const SecondarySidebarTrigger = ({ children, onClick, ...props }) => {
-  const {
-    secondaryOpened,
-    setSecondaryOpened,
-    secondarySidebar,
-  } = useLayoutCtx();
-  if (!secondarySidebar || secondarySidebar.variant === 'permanent') {
-    return null;
-  }
-  return (
-    <IconButton
-      {...props}
-      onClick={e => {
-        onClick(e);
-        setSecondaryOpened(!secondaryOpened);
-      }}
-    >
-      {children}
-    </IconButton>
-  );
-};
+const SecondarySidebarTrigger = props => (
+  <SidebarTrigger mapContext={parseSecondaryConfig} {...props} />
+);
 
 SecondarySidebarTrigger.propTypes = {
   children: PropTypes.node,
