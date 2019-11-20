@@ -1,5 +1,8 @@
 /* eslint-disable */
 import React, { useState } from 'react';
+import { ThemeWrapper } from 'utils/theme';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import {
@@ -30,6 +33,7 @@ import HeaderEx from 'components/mock/HeaderEx';
 import ContentEx from 'components/mock/ContentEx';
 import ContentForm from 'components/mock/ContentForm';
 import FooterEx from 'components/mock/FooterEx';
+import BrowserIFrame from 'components/layout/BrowserIFrame';
 
 const presets = {
   createDefaultLayout: defaultLayoutPreset,
@@ -40,62 +44,73 @@ const presets = {
   createMuiTreasuryLayout: muiTreasuryPreset,
 };
 
-const index = () => {
-  const [preset, setPreset] = useState('createStandardLayout');
-  const [data, setData] = useState({
-    header: true,
-    nav: true,
-    content: true,
-    footer: true,
-  });
-  const sidebarStyles = useSidebarStyles();
-  const headerStyles = useHeaderStyles();
+const Demo = () => {
   return (
-    <Root config={presets[preset]}>
-      <Header>
-        <Toolbar>
-          <CollapseBtn
-            component={IconButton}
-            className={headerStyles.leftTrigger}
-          >
-            <CollapseIcon />
-          </CollapseBtn>
-          <SidebarTrigger className={headerStyles.leftTrigger}>
-            <SidebarTriggerIcon />
-          </SidebarTrigger>
-          {data.header && <HeaderEx />}
-        </Toolbar>
-      </Header>
-      <Content>
-        <ContentForm
-          preset={preset}
-          onChangePreset={val => {
-            setPreset(val);
-          }}
-          data={data}
-          onChangeData={setData}
-        />
-        {data.content && <ContentEx />}
-      </Content>
-      <Sidebar>
-        {({ collapsed }) => (
-          <>
-            <NavHeaderEx collapsed={collapsed} />
-            <div className={sidebarStyles.container}>
-              {data.nav && <NavContentEx />}
-            </div>
-            <CollapseBtn className={sidebarStyles.collapseBtn}>
-              <CollapseIcon />
-            </CollapseBtn>
-          </>
-        )}
-      </Sidebar>
-      <Footer>{data.footer && <FooterEx />}</Footer>
-    </Root>
+    <BrowserIFrame>
+      <ThemeWrapper>
+        <CssBaseline />
+        <Button>Hello</Button>
+      </ThemeWrapper>
+    </BrowserIFrame>
   );
 };
 
-index.propTypes = {};
-index.defaultProps = {};
+// const Demo = () => {
+//   const [preset, setPreset] = useState('createStandardLayout');
+//   const [data, setData] = useState({
+//     header: true,
+//     nav: true,
+//     content: true,
+//     footer: true,
+//   });
+//   const sidebarStyles = useSidebarStyles();
+//   const headerStyles = useHeaderStyles();
+//   return (
+//     <Root config={presets[preset]}>
+//       <Header>
+//         <Toolbar>
+//           <CollapseBtn
+//             component={IconButton}
+//             className={headerStyles.leftTrigger}
+//           >
+//             <CollapseIcon />
+//           </CollapseBtn>
+//           <SidebarTrigger className={headerStyles.leftTrigger}>
+//             <SidebarTriggerIcon />
+//           </SidebarTrigger>
+//           {data.header && <HeaderEx />}
+//         </Toolbar>
+//       </Header>
+//       <Content>
+//         <ContentForm
+//           preset={preset}
+//           onChangePreset={val => {
+//             setPreset(val);
+//           }}
+//           data={data}
+//           onChangeData={setData}
+//         />
+//         {data.content && <ContentEx />}
+//       </Content>
+//       <Sidebar>
+//         {({ collapsed }) => (
+//           <>
+//             <NavHeaderEx collapsed={collapsed} />
+//             <div className={sidebarStyles.container}>
+//               {data.nav && <NavContentEx />}
+//             </div>
+//             <CollapseBtn className={sidebarStyles.collapseBtn}>
+//               <CollapseIcon />
+//             </CollapseBtn>
+//           </>
+//         )}
+//       </Sidebar>
+//       <Footer>{data.footer && <FooterEx />}</Footer>
+//     </Root>
+//   );
+// };
 
-export default index;
+Demo.propTypes = {};
+Demo.defaultProps = {};
+
+export default Demo;
