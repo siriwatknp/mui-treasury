@@ -1,17 +1,15 @@
 import { useEffect, useRef } from 'react';
 import { useTheme } from '@material-ui/core';
-import useLayoutCtx from './useLayoutCtx';
 
-export default () => {
+export default ({
+  screen,
+  autoCollapseDisabled,
+  collapsedBreakpoint = 'md',
+  setCollapsed,
+}) => {
   const {
     breakpoints: { keys },
   } = useTheme();
-  const {
-    screen,
-    collapsedBreakpoint = 'md',
-    autoCollapseDisabled,
-    setCollapsed,
-  } = useLayoutCtx();
   const screenObserver = useRef(null);
 
   // eslint-disable-next-line consistent-return

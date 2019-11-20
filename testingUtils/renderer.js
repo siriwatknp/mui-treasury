@@ -24,9 +24,9 @@ const renderWithinLayout = (ui, { config, ...rest } = {}) => {
   );
   return {
     ...utils,
-    rerenderWithLayout: element =>
+    rerenderWithLayout: (element, { config: nextConfig = config } = {}) =>
       utils.rerenderWithTheme(
-        <LayoutProvider {...rest} config={config}>
+        <LayoutProvider {...rest} config={nextConfig}>
           {element}
         </LayoutProvider>
       ),

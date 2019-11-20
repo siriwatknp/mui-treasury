@@ -4,37 +4,49 @@ import PropTypes from 'prop-types';
 import Drawer from '@material-ui/core/Drawer';
 import HeaderMagnet from './HeaderMagnet';
 import { useLayoutCtx, useAutoCollapse } from '../hooks';
-import { useTransitionStyles, useSidebarStyles } from '../styles';
+import { useTransitionStyles, useSecondarySidebarStyles } from '../styles';
 
-const getSidebarConfig = (ctx, side) => {
+const getSecondarySidebarConfig = (ctx, side) => {
   if (!side) {
     return ctx.sidebar;
   }
   return ctx.secondarySidebar;
 };
-const getSidebarAnchor = side => {
+const getSecondarySidebarAnchor = side => {
   if (!side) return 'left';
   return side;
 };
 
-const Sidebar = ({ side, children, PaperProps, SlideProps, ...props }) => {
+const SecondarySidebar = ({
+  side,
+  children,
+  PaperProps,
+  SlideProps,
+  ...props
+}) => {
   const ctx = useLayoutCtx();
-  useAutoCollapse(ctx);
+  useAutoCollapse({
+    ...ctx,
+    autoCollapseDisabled: ctx.secondaryAutoCollapsedDisabled,
+    collapsedBreakpoint: ctx.secondaryCollapsedBreakpoint,
+    setCollapsed: ctx.setSecondaryCollapsed,
+  });
   const [entered, setEntered] = React.useState(false);
-  const styles = useSidebarStyles();
+  const styles = useSecondarySidebarStyles();
   const transitionStyles = useTransitionStyles();
-  const { opened, setOpened, getSidebarWidth } = ctx;
-  const sidebar = getSidebarConfig(ctx, side);
+  const { secondaryOpened, setSecondaryOpened, getSecondarySidebarWidth } = ctx;
+  const sidebar = getSecondarySidebarConfig(ctx, side);
+  console.log('sidebar', sidebar);
   const isPermanent = sidebar.variant === 'permanent';
   return (
     <Drawer
       {...props}
-      open={opened}
+      open={secondaryOpened}
       onClose={() => {
-        setOpened(false);
+        setSecondaryOpened(false);
       }}
       variant={sidebar.variant}
-      anchor={getSidebarAnchor(sidebar.anchor)}
+      anchor={getSecondarySidebarAnchor(sidebar.anchor)}
       PaperProps={{
         ...PaperProps,
         classes: {
@@ -46,7 +58,7 @@ const Sidebar = ({ side, children, PaperProps, SlideProps, ...props }) => {
         },
         style: {
           ...PaperProps.style,
-          width: getSidebarWidth(),
+          width: getSecondarySidebarWidth(),
         },
       }}
       SlideProps={{
@@ -61,17 +73,17 @@ const Sidebar = ({ side, children, PaperProps, SlideProps, ...props }) => {
   );
 };
 
-Sidebar.propTypes = {
+SecondarySidebar.propTypes = {
   side: PropTypes.oneOf(['left', 'right']),
   PaperProps: PropTypes.shape({}),
   SlideProps: PropTypes.shape({}),
   children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
 };
-Sidebar.defaultProps = {
+SecondarySidebar.defaultProps = {
   side: undefined,
   PaperProps: {},
   SlideProps: {},
   children: null,
 };
 
-export default Sidebar;
+export default SecondarySidebar;

@@ -1,14 +1,14 @@
 import React from 'react';
 import { renderWithinLayout } from 'testingUtils/renderer';
-import RightSidebar from '../components/RightSidebar';
+import SecondarySidebar from '../components/SecondarySidebar';
 
 describe('[Layout_RightSidebar]', function() {
   test('[Permanent] should always display on screen', () => {
     const { getByTestId } = renderWithinLayout(
-      <RightSidebar data-testid={'sidebar-root'} />,
+      <SecondarySidebar data-testid={'sidebar-root'} />,
       {
         config: {
-          rightSidebar: { variant: 'permanent' },
+          secondarySidebar: { variant: 'permanent' },
         },
       }
     );

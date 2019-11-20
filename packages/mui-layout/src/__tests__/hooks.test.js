@@ -99,7 +99,8 @@ describe('React Hooks', () => {
     rerenderWithLayout(
       <Sidebar>
         {({ collapsed }) => collapsed && <span data-testid={'collapsed'} />}
-      </Sidebar>
+      </Sidebar>,
+      { config }
     );
     expect(queryByTestId('collapsed')).toBeInTheDocument();
   });
@@ -127,7 +128,8 @@ describe('React Hooks', () => {
     rerenderWithLayout(
       <Sidebar>
         {({ collapsed }) => collapsed && <span data-testid={'collapsed'} />}
-      </Sidebar>
+      </Sidebar>,
+      { config }
     );
     expect(queryByTestId('collapsed')).not.toBeInTheDocument();
   });

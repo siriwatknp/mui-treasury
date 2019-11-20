@@ -17,11 +17,17 @@ const LayoutProvider = ({
   children,
   initialOpened,
   initialCollapsed,
-  initialRightOpened,
+  initialSecondaryOpened,
+  initialSecondaryCollapsed,
 }) => {
   const [opened, setOpened] = React.useState(initialOpened);
-  const [rightOpened, setRightOpened] = React.useState(initialRightOpened);
   const [collapsed, setCollapsed] = React.useState(initialCollapsed);
+  const [secondaryOpened, setSecondaryOpened] = React.useState(
+    initialSecondaryOpened
+  );
+  const [secondaryCollapsed, setSecondaryCollapsed] = React.useState(
+    initialSecondaryCollapsed
+  );
   const {
     breakpoints: { keys },
   } = useTheme();
@@ -29,6 +35,9 @@ const LayoutProvider = ({
     autoCollapseDisabled,
     collapsedBreakpoint,
     heightAdjustmentDisabled,
+    secondaryAutoCollapsedDisabled,
+    secondaryCollapsedBreakpoint,
+    secondaryHeightAdjustmentDisabled,
   } = config;
   const screen = useScreen(config.screen); // config.screen is for testing purpose only
   const finalConfig = isSomeExisted(config, keys)
@@ -48,12 +57,17 @@ const LayoutProvider = ({
         autoCollapseDisabled,
         collapsedBreakpoint,
         heightAdjustmentDisabled,
+        secondaryAutoCollapsedDisabled,
+        secondaryCollapsedBreakpoint,
+        secondaryHeightAdjustmentDisabled,
         opened,
         setOpened,
         collapsed,
         setCollapsed,
-        rightOpened,
-        setRightOpened,
+        secondaryOpened,
+        setSecondaryOpened,
+        secondaryCollapsed,
+        setSecondaryCollapsed,
       }}
     >
       {children}
@@ -63,11 +77,21 @@ const LayoutProvider = ({
 LayoutProvider.propTypes = {
   initialOpened: PropTypes.bool,
   initialCollapsed: PropTypes.bool,
-  initialRightOpened: PropTypes.bool,
+  initialSecondaryOpened: PropTypes.bool,
+  initialSecondaryCollapsed: PropTypes.bool,
   config: PropTypes.shape({
     autoCollapseDisabled: PropTypes.bool,
     collapsedBreakpoint: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
     heightAdjustmentDisabled: PropTypes.bool,
+    secondaryAutoCollapsedDisabled: PropTypes.bool,
+    secondaryCollapsedBreakpoint: PropTypes.oneOf([
+      'xs',
+      'sm',
+      'md',
+      'lg',
+      'xl',
+    ]),
+    secondaryHeightAdjustmentDisabled: PropTypes.bool,
     sidebar: PropTypes.shape({}),
     header: PropTypes.shape({}),
     content: PropTypes.shape({}),
@@ -78,7 +102,8 @@ LayoutProvider.propTypes = {
 LayoutProvider.defaultProps = {
   initialOpened: false,
   initialCollapsed: false,
-  initialRightOpened: false,
+  initialSecondaryOpened: false,
+  initialSecondaryCollapsed: false,
   config: defaultLayoutPreset,
 };
 
