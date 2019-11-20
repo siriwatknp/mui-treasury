@@ -5,8 +5,13 @@ import {
   Sidebar,
   SidebarTrigger,
   SidebarTriggerIcon,
+  SecondarySidebar,
+  SecondarySidebarTrigger,
+  SecondarySidebarTriggerIcon,
   CollapseBtn,
   CollapseIcon,
+  SecondaryCollapseBtn,
+  SecondaryCollapseIcon,
   Footer,
   Content,
   standardLayoutPreset,
@@ -24,7 +29,10 @@ const LayoutTest = () => {
               <SidebarTrigger className={headerStyles.leftTrigger}>
                 <SidebarTriggerIcon />
               </SidebarTrigger>
-              test
+              <Box flexGrow={1}>test</Box>
+              <SecondarySidebarTrigger>
+                <SecondarySidebarTriggerIcon />
+              </SecondarySidebarTrigger>
             </Toolbar>
           </Header>
           <Sidebar>
@@ -33,6 +41,12 @@ const LayoutTest = () => {
               <CollapseIcon />
             </CollapseBtn>
           </Sidebar>
+          <SecondarySidebar>
+            <div className={sidebarStyles.container}>Sidebar</div>
+            <SecondaryCollapseBtn className={sidebarStyles.collapseBtn}>
+              <SecondaryCollapseIcon />
+            </SecondaryCollapseBtn>
+          </SecondarySidebar>
           <Content>
             <Box minHeight={1000}>
               <p>Content</p>

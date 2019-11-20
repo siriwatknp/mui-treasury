@@ -1,7 +1,5 @@
 import upperFirst from './upperFirst';
-
-const getSidebarWidth = ({ sidebar = {}, collapsed } = {}) =>
-  sidebar.collapsible && collapsed ? sidebar.collapsedWidth : sidebar.width;
+import createSidebarUtils, { secondaryAdapter } from './sidebarUtils';
 
 const getSidebarGap = ({
   sidebar = {},
@@ -46,8 +44,8 @@ const getContainerWidth = ({
   primaryOpened,
   primarySidebar,
   primarySidebarWidth,
-  primaryPersistentScreenFit,
-  primaryPersistentPushed,
+  persistentScreenFit,
+  persistentPushed,
   secondaryOpened,
   secondarySidebar,
   secondarySidebarWidth,
@@ -58,8 +56,8 @@ const getContainerWidth = ({
     opened: primaryOpened,
     sidebar: primarySidebar,
     sidebarWidth: primarySidebarWidth,
-    persistentScreenFit: primaryPersistentScreenFit,
-    persistentPushed: primaryPersistentPushed,
+    persistentScreenFit,
+    persistentPushed,
   });
   const secondaryWidth = getAffectedWidth({
     opened: secondaryOpened,
@@ -88,7 +86,7 @@ const getContainerMarginStyle = ({
   primarySidebar,
   primarySidebarWidth,
   primaryOpened,
-  primaryPersistentPushed,
+  persistentPushed,
   secondarySidebar,
   secondarySidebarWidth,
   secondaryOpened,
@@ -98,7 +96,7 @@ const getContainerMarginStyle = ({
     sidebar: primarySidebar,
     sidebarWidth: primarySidebarWidth,
     opened: primaryOpened,
-    persistentPushed: primaryPersistentPushed,
+    persistentPushed,
   }),
   [getContainerMarginAttr(secondarySidebar, 'right')]: getSidebarGap({
     sidebar: secondarySidebar,
@@ -120,37 +118,27 @@ export default ({
   footer = {},
 }) => {
   const { clipped } = header;
-  const primarySidebarWidth = getSidebarWidth({
+  const primSidebar = createSidebarUtils({
     sidebar: primarySidebar,
+    opened: primaryOpened,
     collapsed: primaryCollapsed,
   });
-  const secondarySidebarWidth = getSidebarWidth({
+  const secSidebar = createSidebarUtils({
     sidebar: secondarySidebar,
+    opened: secondaryOpened,
     collapsed: secondaryCollapsed,
   });
-  const getPrimarySidebarGap = ({ primaryPersistentPushed } = {}) =>
-    getSidebarGap({
-      opened: primaryOpened,
-      sidebar: primarySidebar,
-      sidebarWidth: primarySidebarWidth,
-      persistentPushed: primaryPersistentPushed,
-    });
-  const getSecondarySidebarGap = ({ secondaryPersistentPushed } = {}) =>
-    getSidebarGap({
-      opened: secondaryOpened,
-      sidebar: secondarySidebar,
-      sidebarWidth: secondarySidebarWidth,
-      persistentPushed: secondaryPersistentPushed,
-    });
+  const primarySidebarWidth = primSidebar.width;
+  const secondarySidebarWidth = secSidebar.width;
   const getWidth = ({
-    primaryPersistentScreenFit,
-    primaryPersistentPushed,
+    persistentScreenFit,
+    persistentPushed,
     secondaryPersistentScreenFit,
     secondaryPersistentPushed,
   } = {}) => {
     return getContainerWidth({
-      primaryPersistentScreenFit,
-      primaryPersistentPushed,
+      persistentScreenFit,
+      persistentPushed,
       primaryOpened,
       primarySidebar,
       primarySidebarWidth,
@@ -172,9 +160,11 @@ export default ({
   });
   return {
     getSidebarWidth: () => primarySidebarWidth,
-    getSidebarGap: getPrimarySidebarGap,
+    getSidebarGap: primSidebar.calculateGap,
     getSecondarySidebarWidth: () => secondarySidebarWidth,
-    getSecondarySidebarGap,
+    getSecondarySidebarGap: secondaryAdapter.mapSecondaryArgs(
+      secSidebar.calculateGap
+    ),
     getWidth,
     getContainerMarginStyle: ({ persistentPushed } = {}) =>
       getContainerMarginStyle({

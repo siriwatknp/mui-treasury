@@ -4,10 +4,10 @@ export default {
   autoCollapseDisabled: false,
   collapsedBreakpoint: 'sm',
   heightAdjustmentDisabled: false,
+  SecondaryAutoCollapsedDisabled: false,
+  secondaryCollapsedBreakpoint: 'sm',
+  secondaryHeightAdjustmentDisabled: false,
   xs: getDefaultScreenConfig({
-    sidebar: {
-      anchor: 'bottom',
-    },
     header: {
       position: 'sticky',
       clipped: false,

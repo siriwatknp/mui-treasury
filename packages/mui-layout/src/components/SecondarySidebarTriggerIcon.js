@@ -4,18 +4,18 @@ import ArrowRight from '@material-ui/icons/KeyboardArrowRightRounded';
 import MenuRounded from '@material-ui/icons/MenuRounded';
 import { useLayoutCtx } from '../hooks';
 
-const SidebarTriggerIcon = props => {
-  const { opened, sidebar } = useLayoutCtx();
+const SecondarySidebarTriggerIcon = props => {
+  const { secondaryOpened, secondarySidebar } = useLayoutCtx();
   const getArrow = () => {
-    if (sidebar.anchor === 'left') {
+    if (secondarySidebar.anchor === 'left') {
       return <ArrowLeft {...props} />;
     }
-    if (sidebar.anchor === 'right') {
+    if (secondarySidebar.anchor === 'right') {
       return <ArrowRight {...props} />;
     }
     return null;
   };
-  return opened ? getArrow() : <MenuRounded {...props} />;
+  return secondaryOpened ? getArrow() : <MenuRounded {...props} />;
 };
 
-export default SidebarTriggerIcon;
+export default SecondarySidebarTriggerIcon;

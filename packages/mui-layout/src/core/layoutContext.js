@@ -46,6 +46,8 @@ const LayoutProvider = ({
   const utils = createLayoutUtils({
     opened,
     collapsed,
+    secondaryOpened,
+    secondaryCollapsed,
     ...finalConfig,
   });
   return (

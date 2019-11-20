@@ -21,7 +21,7 @@ const Content = ({
   ...props
 }) => {
   const ctx = useLayoutCtx();
-  const { getSidebarGap, getWidth, content } = ctx;
+  const { getContentStyle } = ctx;
   const styles = useStyles(props);
   const transitionStyles = useTransitionStyles();
   return (
@@ -29,11 +29,7 @@ const Content = ({
       <Component
         {...props}
         className={cx(styles.root, transitionStyles.root, className)}
-        style={{
-          ...style,
-          marginLeft: getSidebarGap(content),
-          width: getWidth(content),
-        }}
+        style={getContentStyle()}
       >
         {!omitHeaderOffset && <HeaderOffset />}
         {typeof children === 'function' ? children(ctx) : children}

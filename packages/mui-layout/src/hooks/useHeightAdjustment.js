@@ -1,17 +1,14 @@
 import debounce from 'lodash.debounce';
 import { useCallback, useEffect, useState } from 'react';
 import someIs from '../utils/someIs';
-import useLayoutCtx from './useLayoutCtx';
 import useEventListener from './useEventListener';
 
-export default () => {
-  const {
-    sidebar = {},
-    header: { clipped, position, offsetHeight } = {},
-    heightAdjustmentSpeed = 144,
-    heightAdjustmentDisabled = false,
-  } = useLayoutCtx();
-
+export default ({
+  sidebar = {},
+  header: { clipped, position, offsetHeight } = {},
+  heightAdjustmentSpeed = 144,
+  heightAdjustmentDisabled = false,
+}) => {
   const [height, setHeight] = useState(0);
 
   useEffect(() => {

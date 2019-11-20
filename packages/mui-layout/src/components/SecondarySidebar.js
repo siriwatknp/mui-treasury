@@ -2,16 +2,9 @@ import React from 'react';
 import cx from 'clsx';
 import PropTypes from 'prop-types';
 import Drawer from '@material-ui/core/Drawer';
-import HeaderMagnet from './HeaderMagnet';
-import { useLayoutCtx, useAutoCollapse } from '../hooks';
+import { useLayoutCtx, useAutoCollapse, useHeightAdjustment } from '../hooks';
 import { useTransitionStyles, useSecondarySidebarStyles } from '../styles';
 
-const getSecondarySidebarConfig = (ctx, side) => {
-  if (!side) {
-    return ctx.sidebar;
-  }
-  return ctx.secondarySidebar;
-};
 const getSecondarySidebarAnchor = side => {
   if (!side) return 'left';
   return side;
@@ -25,6 +18,12 @@ const SecondarySidebar = ({
   ...props
 }) => {
   const ctx = useLayoutCtx();
+  const height = useHeightAdjustment({
+    sidebar: ctx.secondarySidebar,
+    header: ctx.header,
+    heightAdjustmentDisabled: ctx.secondaryHeightAdjustmentDisabled,
+    heightAdjustmentSpeed: ctx.secondaryHeightAdjustmentSpeed,
+  });
   useAutoCollapse({
     ...ctx,
     autoCollapseDisabled: ctx.secondaryAutoCollapsedDisabled,
@@ -34,9 +33,12 @@ const SecondarySidebar = ({
   const [entered, setEntered] = React.useState(false);
   const styles = useSecondarySidebarStyles();
   const transitionStyles = useTransitionStyles();
-  const { secondaryOpened, setSecondaryOpened, getSecondarySidebarWidth } = ctx;
-  const sidebar = getSecondarySidebarConfig(ctx, side);
-  console.log('sidebar', sidebar);
+  const {
+    secondarySidebar: sidebar,
+    secondaryOpened,
+    setSecondaryOpened,
+    getSecondarySidebarWidth,
+  } = ctx;
   const isPermanent = sidebar.variant === 'permanent';
   return (
     <Drawer
@@ -67,7 +69,10 @@ const SecondarySidebar = ({
         onExit: () => setEntered(false),
       }}
     >
-      <HeaderMagnet />
+      <div
+        className={cx('HeaderMagnet', transitionStyles.smooth)}
+        style={{ height, flexShrink: 0 }}
+      />
       {typeof children === 'function' ? children(ctx) : children}
     </Drawer>
   );

@@ -3,27 +3,27 @@ import KeyboardArrowRightRounded from '@material-ui/icons/KeyboardArrowRightRoun
 import KeyboardArrowLeftRounded from '@material-ui/icons/KeyboardArrowLeftRounded';
 import { useLayoutCtx } from '../hooks';
 
-const CollapseIcon = props => {
-  const { collapsed, sidebar } = useLayoutCtx();
+const SecondaryCollapseIcon = props => {
+  const { secondaryCollapsed, secondarySidebar } = useLayoutCtx();
   const getCollapsedArrow = () => {
-    if (sidebar.anchor === 'right') {
+    if (secondarySidebar.anchor === 'right') {
       return <KeyboardArrowLeftRounded {...props} />;
     }
-    if (sidebar.anchor === 'left') {
+    if (secondarySidebar.anchor === 'left') {
       return <KeyboardArrowRightRounded {...props} />;
     }
     return null;
   };
   const getUnCollapsedArrow = () => {
-    if (sidebar.anchor === 'left') {
+    if (secondarySidebar.anchor === 'left') {
       return <KeyboardArrowLeftRounded {...props} />;
     }
-    if (sidebar.anchor === 'right') {
+    if (secondarySidebar.anchor === 'right') {
       return <KeyboardArrowRightRounded {...props} />;
     }
     return null;
   };
-  return collapsed ? getCollapsedArrow() : getUnCollapsedArrow();
+  return secondaryCollapsed ? getCollapsedArrow() : getUnCollapsedArrow();
 };
 
-export default CollapseIcon;
+export default SecondaryCollapseIcon;
