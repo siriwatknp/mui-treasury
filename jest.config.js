@@ -8,6 +8,7 @@ module.exports = {
   },
   testPathIgnorePatterns: [`node_modules`, `.cache`, 'build', 'assets'],
   transformIgnorePatterns: [`node_modules/(?!(gatsby)/)`],
+  modulePaths: ['<rootDir>/'],
   globals: {
     __PATH_PREFIX__: ``,
   },

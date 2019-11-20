@@ -1,13 +1,9 @@
 import React from 'react';
 // import mediaQuery from 'css-mediaquery';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
-import { render } from '@testing-library/react';
+import { renderWithinTheme, renderWithinLayout } from 'testingUtils/renderer';
 import Root from '../components/Root';
 import Sidebar from '../components/Sidebar';
-import useScreen from '../hooks/useScreen';
-
-const baseTheme = createMuiTheme();
+// import useScreen from '../hooks/useScreen';
 
 // function createMatchMedia(width) {
 //   return query => ({
@@ -17,27 +13,25 @@ const baseTheme = createMuiTheme();
 //   });
 // }
 
-const resizeWindow = (x, y) => {
-  window.innerWidth = x;
-  window.innerHeight = y;
-  window.dispatchEvent(new Event('resize'));
-};
-
-const Width = () => {
-  const width = useScreen();
-  return <span data-testid={'screen'}>{width}</span>;
-};
+// const resizeWindow = (x, y) => {
+//   window.innerWidth = x;
+//   window.innerHeight = y;
+//   window.dispatchEvent(new Event('resize'));
+// };
+//
+// const Width = () => {
+//   const width = useScreen();
+//   return <span data-testid={'screen'}>{width}</span>;
+// };
 
 describe('React Hooks', () => {
   let renderLayout;
   beforeEach(() => {
     renderLayout = (config, props) => elm =>
-      render(
-        <ThemeProvider theme={baseTheme}>
-          <Root {...props} config={config}>
-            {elm}
-          </Root>
-        </ThemeProvider>
+      renderWithinTheme(
+        <Root {...props} config={config}>
+          {elm}
+        </Root>
       );
     // window.matchMedia = createMatchMedia(window.innerWidth);
   });
@@ -60,10 +54,11 @@ describe('React Hooks', () => {
         variant: 'permanent',
       },
     };
-    const { queryByTestId } = renderLayout(config)(
+    const { queryByTestId } = renderWithinLayout(
       <Sidebar>
         {({ collapsed }) => collapsed && <span data-testid={'collapsed'} />}
-      </Sidebar>
+      </Sidebar>,
+      { config }
     );
     expect(queryByTestId('collapsed')).not.toBeInTheDocument();
   });
@@ -75,10 +70,11 @@ describe('React Hooks', () => {
         variant: 'permanent',
       },
     };
-    const { queryByTestId } = renderLayout(config)(
+    const { queryByTestId } = renderWithinLayout(
       <Sidebar>
         {({ collapsed }) => collapsed && <span data-testid={'collapsed'} />}
-      </Sidebar>
+      </Sidebar>,
+      { config }
     );
     expect(queryByTestId('collapsed')).toBeInTheDocument();
   });
@@ -90,23 +86,21 @@ describe('React Hooks', () => {
         variant: 'permanent',
       },
     };
-    const { queryByTestId, rerender } = renderLayout(config)(
+    const { queryByTestId, rerenderWithLayout } = renderWithinLayout(
       <Sidebar>
         {({ collapsed }) => collapsed && <span data-testid={'collapsed'} />}
-      </Sidebar>
+      </Sidebar>,
+      { config }
     );
     expect(queryByTestId('collapsed')).not.toBeInTheDocument();
 
     // fake that screen is changed to "md"
     config.screen = 'sm';
-    rerender(
-      <ThemeProvider theme={baseTheme}>
-        <Root config={config}>
-          <Sidebar>
-            {({ collapsed }) => collapsed && <span data-testid={'collapsed'} />}
-          </Sidebar>
-        </Root>
-      </ThemeProvider>
+    rerenderWithLayout(
+      <Sidebar>
+        {({ collapsed }) => collapsed && <span data-testid={'collapsed'} />}
+      </Sidebar>,
+      { config }
     );
     expect(queryByTestId('collapsed')).toBeInTheDocument();
   });
@@ -118,25 +112,24 @@ describe('React Hooks', () => {
         variant: 'permanent',
       },
     };
-    const { queryByTestId, rerender } = renderLayout(config, {
-      initialCollapsed: true,
-    })(
+    const { queryByTestId, rerenderWithLayout } = renderWithinLayout(
       <Sidebar>
         {({ collapsed }) => collapsed && <span data-testid={'collapsed'} />}
-      </Sidebar>
+      </Sidebar>,
+      {
+        config,
+        initialCollapsed: true,
+      }
     );
     expect(queryByTestId('collapsed')).toBeInTheDocument();
 
     // fake that screen is changed to "md"
     config.screen = 'lg';
-    rerender(
-      <ThemeProvider theme={baseTheme}>
-        <Root config={config}>
-          <Sidebar>
-            {({ collapsed }) => collapsed && <span data-testid={'collapsed'} />}
-          </Sidebar>
-        </Root>
-      </ThemeProvider>
+    rerenderWithLayout(
+      <Sidebar>
+        {({ collapsed }) => collapsed && <span data-testid={'collapsed'} />}
+      </Sidebar>,
+      { config }
     );
     expect(queryByTestId('collapsed')).not.toBeInTheDocument();
   });

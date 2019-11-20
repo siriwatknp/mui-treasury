@@ -2,17 +2,41 @@ import React from 'react';
 import cx from 'clsx';
 import PropTypes from 'prop-types';
 import Drawer from '@material-ui/core/Drawer';
-import HeaderMagnet from './HeaderMagnet';
-import { useLayoutCtx, useAutoCollapse } from '../hooks';
+import { useLayoutCtx, useAutoCollapse, useHeightAdjustment } from '../hooks';
 import { useTransitionStyles, useSidebarStyles } from '../styles';
 
-const Sidebar = ({ children, PaperProps, SlideProps, ...props }) => {
-  useAutoCollapse();
+const getSidebarAnchor = side => {
+  if (!side) return 'left';
+  return side;
+};
+
+const defaultMapContext = ({ header = {}, ...rest } = {}) => ({
+  ...rest,
+  clipped: header.clipped,
+});
+
+const Sidebar = ({
+  side,
+  children,
+  PaperProps,
+  SlideProps,
+  // eslint-disable-next-line react/prop-types
+  mapContext = defaultMapContext, // for internal usage only
+  ...props
+}) => {
+  const ctx = useLayoutCtx();
+  const parsedCtx = mapContext(ctx);
+  const height = useHeightAdjustment({
+    ...parsedCtx,
+    header: ctx.header,
+    heightAdjustmentDisabled: ctx.heightAdjustmentDisabled,
+    heightAdjustmentSpeed: ctx.heightAdjustmentSpeed,
+  });
+  useAutoCollapse(parsedCtx);
   const [entered, setEntered] = React.useState(false);
   const styles = useSidebarStyles();
   const transitionStyles = useTransitionStyles();
-  const ctx = useLayoutCtx();
-  const { sidebar, opened, setOpened, getSidebarWidth } = ctx;
+  const { sidebar, opened, setOpened, getSidebarWidth } = parsedCtx;
   const isPermanent = sidebar.variant === 'permanent';
   return (
     <Drawer
@@ -22,6 +46,7 @@ const Sidebar = ({ children, PaperProps, SlideProps, ...props }) => {
         setOpened(false);
       }}
       variant={sidebar.variant}
+      anchor={getSidebarAnchor(sidebar.anchor)}
       PaperProps={{
         ...PaperProps,
         classes: {
@@ -42,18 +67,23 @@ const Sidebar = ({ children, PaperProps, SlideProps, ...props }) => {
         onExit: () => setEntered(false),
       }}
     >
-      <HeaderMagnet />
+      <div
+        className={cx('HeaderMagnet', transitionStyles.smooth)}
+        style={{ height, flexShrink: 0 }}
+      />
       {typeof children === 'function' ? children(ctx) : children}
     </Drawer>
   );
 };
 
 Sidebar.propTypes = {
+  side: PropTypes.oneOf(['left', 'right']),
   PaperProps: PropTypes.shape({}),
   SlideProps: PropTypes.shape({}),
   children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
 };
 Sidebar.defaultProps = {
+  side: undefined,
   PaperProps: {},
   SlideProps: {},
   children: null,

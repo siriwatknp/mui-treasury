@@ -1,37 +1,37 @@
 import React from 'react';
 import { fireEvent } from '@testing-library/react';
 import { renderWithinLayout } from 'testingUtils/renderer';
-import Sidebar from '../components/Sidebar';
-import CollapseBtn from '../components/CollapseBtn';
-import SidebarTrigger from '../components/SidebarTrigger';
+import SecondarySidebar from '../components/SecondarySidebar';
+import SecondarySidebarTrigger from '../components/SecondarySidebarTrigger';
+import SecondaryCollapseBtn from '../components/SecondaryCollapseBtn';
 
-describe('[Layout_LeftSidebar]', function() {
+describe('[Layout_RightSidebar]', function() {
   let sidebarRoot;
   let sidebarPaper;
   let trigger;
   let backdrop;
   test('[Permanent] should always display on screen', () => {
     const { getByTestId } = renderWithinLayout(
-      <Sidebar data-testid={'sidebar-root'} />,
+      <SecondarySidebar data-testid={'sidebar-root'} />,
       {
         config: {
-          sidebar: { variant: 'permanent' },
+          secondarySidebar: { variant: 'permanent' },
         },
       }
     );
-    sidebarRoot = getByTestId('sidebar-root');
+    const sidebarRoot = getByTestId('sidebar-root');
     expect(sidebarRoot).toBeInTheDocument();
   });
 
   test('[Persistent] should show & hide on screen when triggered', () => {
     const { getByTestId } = renderWithinLayout(
-      <Sidebar
+      <SecondarySidebar
         data-testid={'sidebar-root'}
         PaperProps={{ 'data-testid': 'sidebar-paper' }}
       >
-        <SidebarTrigger data-testid={'trigger'} />
-      </Sidebar>,
-      { config: { sidebar: { variant: 'persistent' } } }
+        <SecondarySidebarTrigger data-testid={'trigger'} />
+      </SecondarySidebar>,
+      { config: { secondarySidebar: { variant: 'persistent' } } }
     );
     sidebarPaper = getByTestId('sidebar-paper');
     expect(sidebarPaper.style.visibility).toBe('hidden');
@@ -43,13 +43,13 @@ describe('[Layout_LeftSidebar]', function() {
   test('[Temporary] should appear in dom when opened', () => {
     const { queryByTestId, getByTestId } = renderWithinLayout(
       <>
-        <Sidebar
+        <SecondarySidebar
           data-testid={'sidebar-root'}
           ModalProps={{ BackdropProps: { 'data-testid': 'backdrop' } }}
         />
-        <SidebarTrigger data-testid={'trigger'} />
+        <SecondarySidebarTrigger data-testid={'trigger'} />
       </>,
-      { config: { sidebar: { variant: 'temporary' } } }
+      { config: { secondarySidebar: { variant: 'temporary' } } }
     );
     sidebarRoot = queryByTestId('sidebar-root');
     expect(sidebarRoot).toBeNull();
@@ -68,11 +68,11 @@ describe('[Layout_LeftSidebar]', function() {
   test("Sidebar's width is set by config", () => {
     const width = 256;
     const { getByTestId } = renderWithinLayout(
-      <Sidebar PaperProps={{ 'data-testid': 'sidebar-paper' }} />,
+      <SecondarySidebar PaperProps={{ 'data-testid': 'sidebar-paper' }} />,
       {
         config: {
-          autoCollapseDisabled: true,
-          sidebar: {
+          secondaryAutoCollapseDisabled: true,
+          secondarySidebar: {
             variant: 'permanent',
             width,
           },
@@ -86,13 +86,15 @@ describe('[Layout_LeftSidebar]', function() {
   test('Collapsible Side + Trigger should work', () => {
     const collapsedWidth = 80;
     const { getByTestId } = renderWithinLayout(
-      <Sidebar PaperProps={{ 'data-testid': 'sidebar-paper' }}>
-        <CollapseBtn data-testid={'trigger'}>toggle</CollapseBtn>
-      </Sidebar>,
+      <SecondarySidebar PaperProps={{ 'data-testid': 'sidebar-paper' }}>
+        <SecondaryCollapseBtn data-testid={'trigger'}>
+          toggle
+        </SecondaryCollapseBtn>
+      </SecondarySidebar>,
       {
         config: {
-          autoCollapseDisabled: true,
-          sidebar: {
+          secondaryAutoCollapseDisabled: true,
+          secondarySidebar: {
             variant: 'permanent',
             width: 256,
             collapsible: true,

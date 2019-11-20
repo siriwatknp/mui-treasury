@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import IconButton from '@material-ui/core/IconButton';
 import { useLayoutCtx } from '../hooks';
 
-const SidebarTrigger = ({ children, onClick, ...props }) => {
-  const { opened, setOpened, sidebar } = useLayoutCtx();
+const SidebarTrigger = ({ children, onClick, mapContext, ...props }) => {
+  const ctx = useLayoutCtx();
+  const { opened, setOpened, sidebar } = mapContext(ctx);
   if (!sidebar || sidebar.variant === 'permanent') {
     return null;
   }
@@ -24,10 +25,12 @@ const SidebarTrigger = ({ children, onClick, ...props }) => {
 SidebarTrigger.propTypes = {
   children: PropTypes.node,
   onClick: PropTypes.func,
+  mapContext: PropTypes.func,
 };
 SidebarTrigger.defaultProps = {
   children: null,
   onClick: () => {},
+  mapContext: ctx => ctx,
 };
 
 export default SidebarTrigger;

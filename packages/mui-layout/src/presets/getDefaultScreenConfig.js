@@ -1,27 +1,43 @@
-export default ({ header, sidebar, content, footer }) => ({
+export default ({ header, sidebar, secondarySidebar, content, footer }) => ({
   sidebar: {
+    anchor: 'left',
     variant: 'temporary',
     width: 256,
     collapsible: false,
     collapsedWidth: 64,
     ...sidebar,
   },
+  secondarySidebar: {
+    anchor: 'right',
+    variant: 'persistent',
+    width: 244,
+    collapsible: true,
+    collapsedWidth: 64,
+    ...secondarySidebar,
+  },
   header: {
     position: 'fixed',
     clipped: true,
+    secondaryClipped: false,
     offsetHeight: 64,
     persistentPushed: true,
     persistentScreenFit: true,
+    secondaryPersistentPushed: true,
+    secondaryPersistentScreenFit: true,
     ...header,
   },
   content: {
     persistentPushed: true,
     persistentScreenFit: true,
+    secondaryPersistentPushed: true,
+    secondaryPersistentScreenFit: true,
     ...content,
   },
   footer: {
     persistentPushed: true,
     persistentScreenFit: true,
+    secondaryPersistentPushed: true,
+    secondaryPersistentScreenFit: true,
     ...footer,
   },
 });
