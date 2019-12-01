@@ -35,7 +35,7 @@ const useFooterStyles = makeStyles(() => ({
   },
 }));
 
-const SidebarLayout = ({ totalItems, pkg, children, getOpenKeys }) => {
+const SidebarLayout = ({ pkg, children, getOpenKeys }) => {
   const menus = MENUS[PKG[pkg]];
   const styles = useStyles();
   const headerStyles = useHeaderStyles();
@@ -53,11 +53,7 @@ const SidebarLayout = ({ totalItems, pkg, children, getOpenKeys }) => {
       </LayoutHeader>
       <Sidebar>
         <div className={sidebarStyles.container}>
-          <ComponentMenuList
-            menus={menus}
-            getOpenKeys={getOpenKeys}
-            totalItems={totalItems}
-          />
+          <ComponentMenuList menus={menus} getOpenKeys={getOpenKeys} />
         </div>
         <CollapseBtn className={sidebarStyles.collapseBtn}>
           <CollapseIcon />

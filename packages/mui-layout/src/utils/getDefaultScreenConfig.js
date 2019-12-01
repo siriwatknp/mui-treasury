@@ -1,4 +1,10 @@
-export default ({ header, sidebar, secondarySidebar, content, footer }) => ({
+export default ({
+  header,
+  sidebar,
+  secondarySidebar,
+  content,
+  footer,
+} = {}) => ({
   sidebar: {
     anchor: 'left',
     variant: 'temporary',
