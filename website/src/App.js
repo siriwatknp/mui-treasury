@@ -2,6 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { Location } from '@reach/router';
 import { Root, muiTreasuryPreset } from '@mui-treasury/layout';
+import NoSsr from '@material-ui/core/NoSsr';
 // import { library } from '@fortawesome/fontawesome-svg-core';
 // import {
 //   faFighterJet,
@@ -78,11 +79,13 @@ const App = ({ children }) => (
           return children;
         }
         return (
-          <ThemeWrapper>
-            <Root omitThemeProvider config={muiTreasuryPreset}>
-              {children}
-            </Root>
-          </ThemeWrapper>
+          <NoSsr>
+            <ThemeWrapper>
+              <Root omitThemeProvider config={muiTreasuryPreset}>
+                {children}
+              </Root>
+            </ThemeWrapper>
+          </NoSsr>
         );
       }}
     </Location>
