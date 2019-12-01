@@ -20,9 +20,13 @@ const Header = ({ className, children, style, ...props }) => {
   const { header, getHeaderStyle } = ctx;
   const styles = useStyles(header);
   const transitionStyles = useTransitionStyles();
-  // if (typeof window === 'undefined') {
-  //   return children;
-  // }
+  if (typeof window === 'undefined') {
+    return (
+      <div className={cx(styles.root, transitionStyles.root, className)}>
+        {children}
+      </div>
+    );
+  }
   return (
     <AppBar
       color={'default'}

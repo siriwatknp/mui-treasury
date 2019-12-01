@@ -51,15 +51,17 @@ const SidebarLayout = ({ pkg, children, getOpenKeys }) => {
           <Header />
         </Toolbar>
       </LayoutHeader>
-      <Sidebar>
-        <div className={sidebarStyles.container}>
-          <ComponentMenuList menus={menus} getOpenKeys={getOpenKeys} />
-        </div>
-        <CollapseBtn className={sidebarStyles.collapseBtn}>
-          <CollapseIcon />
-        </CollapseBtn>
-      </Sidebar>
       <Content>{children}</Content>
+      <div>
+        <Sidebar>
+          <div className={sidebarStyles.container}>
+            <ComponentMenuList menus={menus} getOpenKeys={getOpenKeys} />
+          </div>
+          <CollapseBtn className={sidebarStyles.collapseBtn}>
+            <CollapseIcon />
+          </CollapseBtn>
+        </Sidebar>
+      </div>
       <LayoutFooter classes={footerStyles}>
         <Footer />
       </LayoutFooter>

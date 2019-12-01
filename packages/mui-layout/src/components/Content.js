@@ -24,17 +24,18 @@ const Content = ({
   const { getContentStyle } = ctx;
   const styles = useStyles(props);
   const transitionStyles = useTransitionStyles();
+  if (typeof window === 'undefined') {
+    return <div>{children}</div>;
+  }
   return (
-    <>
-      <Component
-        {...props}
-        className={cx(styles.root, transitionStyles.root, className)}
-        style={getContentStyle()}
-      >
-        {!omitHeaderOffset && <HeaderOffset />}
-        {typeof children === 'function' ? children(ctx) : children}
-      </Component>
-    </>
+    <Component
+      {...props}
+      className={cx(styles.root, transitionStyles.root, className)}
+      style={getContentStyle()}
+    >
+      {!omitHeaderOffset && <HeaderOffset />}
+      {typeof children === 'function' ? children(ctx) : children}
+    </Component>
   );
 };
 
