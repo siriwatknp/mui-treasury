@@ -37,46 +37,41 @@ const Sidebar = ({
   const transitionStyles = useTransitionStyles();
   const { sidebar, opened, setOpened, getSidebarWidth } = parsedCtx;
   const isPermanent = sidebar.variant === 'permanent';
-  if (typeof window === 'undefined') {
-    return null;
-  }
   return (
-    <>
-      <Drawer
-        {...props}
-        open={opened}
-        onClose={() => {
-          setOpened(false);
-        }}
-        variant={sidebar.variant}
-        anchor={getSidebarAnchor(sidebar.anchor)}
-        PaperProps={{
-          ...PaperProps,
-          classes: {
-            // root: cx(
-            //   styles.paper,
-            //   isPermanent && transitionStyles.root,
-            //   entered && transitionStyles.all
-            // ),
-          },
-          style: {
-            ...PaperProps.style,
-            width: getSidebarWidth(),
-          },
-        }}
-        SlideProps={{
-          ...SlideProps,
-          onEntered: () => setEntered(true),
-          onExit: () => setEntered(false),
-        }}
-      >
-        <div
-          className={cx('HeaderMagnet', transitionStyles.smooth)}
-          style={{ height, flexShrink: 0 }}
-        />
-        {typeof children === 'function' ? children(ctx) : children}
-      </Drawer>
-    </>
+    <Drawer
+      {...props}
+      open={opened}
+      onClose={() => {
+        setOpened(false);
+      }}
+      variant={sidebar.variant}
+      anchor={getSidebarAnchor(sidebar.anchor)}
+      PaperProps={{
+        ...PaperProps,
+        classes: {
+          root: cx(
+            styles.paper,
+            isPermanent && transitionStyles.root,
+            entered && transitionStyles.all
+          ),
+        },
+        style: {
+          ...PaperProps.style,
+          width: getSidebarWidth(),
+        },
+      }}
+      SlideProps={{
+        ...SlideProps,
+        onEntered: () => setEntered(true),
+        onExit: () => setEntered(false),
+      }}
+    >
+      <div
+        className={cx('HeaderMagnet', transitionStyles.smooth)}
+        style={{ height, flexShrink: 0 }}
+      />
+      {typeof children === 'function' ? children(ctx) : children}
+    </Drawer>
   );
 };
 

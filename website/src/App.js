@@ -1,10 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import {
-  Root,
-  muiTreasuryPreset,
-  getDefaultScreenConfig,
-} from '@mui-treasury/layout';
+import { Root, muiTreasuryPreset } from '@mui-treasury/layout';
 // import { library } from '@fortawesome/fontawesome-svg-core';
 // import {
 //   faFighterJet,
@@ -96,7 +92,6 @@ const App = ({ children, location }) => {
           <Root
             omitThemeProvider
             config={muiTreasuryPreset}
-            // config={getDefaultScreenConfig()}
             parseConfig={c => ({
               ...c,
               sidebar: {

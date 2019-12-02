@@ -24,9 +24,6 @@ const Content = ({
   const { getContentStyle } = ctx;
   const styles = useStyles(props);
   const transitionStyles = useTransitionStyles();
-  if (typeof window === 'undefined') {
-    return <div>{children}</div>;
-  }
   return (
     <Component
       {...props}

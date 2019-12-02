@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/styles';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import { useLayoutCtx } from '../hooks';
-import { useTransitionStyles } from '../styles';
+import { transitionStyles } from '../styles';
 
 const useStyles = makeStyles(({ zIndex }) => ({
   root: ({ clipped, position }) => {
@@ -14,26 +14,27 @@ const useStyles = makeStyles(({ zIndex }) => ({
     };
   },
 }));
+const useTransitionStyles = makeStyles(transitionStyles);
 
 const Header = ({ className, children, style, ...props }) => {
   const ctx = useLayoutCtx();
   const { header, getHeaderStyle } = ctx;
   const styles = useStyles(header);
-  const transitionStyles = useTransitionStyles();
-  if (typeof window === 'undefined') {
-    return (
-      <div className={cx(styles.root, transitionStyles.root, className)}>
-        {children}
-      </div>
-    );
-  }
+  const tStyles = useTransitionStyles();
+  // if (typeof window === 'undefined') {
+  //   return (
+  //     <div className={cx('LayoutHeader', styles.root, tStyles.root, className)}>
+  //       {children}
+  //     </div>
+  //   );
+  // }
   return (
     <AppBar
       color={'default'}
       elevation={0}
       {...props}
       position={header.position}
-      className={cx(styles.root, transitionStyles.root, className)}
+      className={cx(styles.root, tStyles.root, className)}
       style={{
         ...style,
         ...getHeaderStyle(),
