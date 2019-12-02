@@ -1,6 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { Root, muiTreasuryPreset } from '@mui-treasury/layout';
+import NoSsr from '@material-ui/core/NoSsr';
 // import { library } from '@fortawesome/fontawesome-svg-core';
 // import {
 //   faFighterJet,
@@ -72,7 +73,6 @@ const App = ({ children, location }) => {
           content="The mission is to boost any projects that want to shake the world, so that our future is better than today. This is an open-source project that provides a collection of ready-to-use components based on Material-UI."
         />
         <meta property="og:image" content={banner} />
-
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://mui-treasury.com/" />
         <meta
