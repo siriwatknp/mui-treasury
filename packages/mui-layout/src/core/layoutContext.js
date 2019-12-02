@@ -14,6 +14,7 @@ LayoutCtx.displayName = 'MuiLayoutCtx';
 
 const LayoutProvider = ({
   config,
+  parseConfig,
   children,
   initialOpened,
   initialCollapsed,
@@ -40,9 +41,9 @@ const LayoutProvider = ({
     secondaryHeightAdjustmentDisabled,
   } = config;
   const screen = useScreen(config.screen); // config.screen is for testing purpose only
-  const finalConfig = isSomeExisted(config, keys)
-    ? selectConfigByScreen(config, screen)
-    : config;
+  const finalConfig = parseConfig(
+    isSomeExisted(config, keys) ? selectConfigByScreen(config, screen) : config
+  );
   const utils = createLayoutUtils({
     opened,
     collapsed,
@@ -100,6 +101,7 @@ LayoutProvider.propTypes = {
     footer: PropTypes.shape({}),
   }),
   children: PropTypes.node.isRequired,
+  parseConfig: PropTypes.func,
 };
 LayoutProvider.defaultProps = {
   initialOpened: false,
@@ -107,6 +109,7 @@ LayoutProvider.defaultProps = {
   initialSecondaryOpened: false,
   initialSecondaryCollapsed: false,
   config: defaultLayoutPreset,
+  parseConfig: c => c,
 };
 
 export { LayoutProvider };

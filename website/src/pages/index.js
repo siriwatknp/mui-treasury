@@ -2,8 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import organisms from 'components/organisms';
@@ -11,8 +9,6 @@ import organisms from 'components/organisms';
 import FeatureWidget from '@mui-treasury/components/widget/FeatureWidget';
 import { useFullBorderedGridStyles } from '@mui-treasury/styles/grid/fullBordered';
 import { useHalfBorderedGridStyles } from '@mui-treasury/styles/grid/halfBordered';
-import Footer from '../components/layout/Footer';
-import Header from '../components/layout/Header';
 import StylingIsFun from '../components/section/StylingIsFun';
 
 const { SloganSection, TopicSection } = organisms;
@@ -26,10 +22,6 @@ const useStyles = makeStyles(theme => {
     },
     secondaryText: {
       color: palette.text.secondary,
-    },
-    appBar: {
-      boxShadow: '0 1px 0 rgb(230, 241, 244)',
-      background: palette.common.white,
     },
   };
 });
@@ -146,12 +138,7 @@ const Homepage = ({ navigate }) => {
     colWidth: { xs: 12, sm: 4 },
   });
   return (
-    <div>
-      <AppBar color={'default'} position={'sticky'} className={classes.appBar}>
-        <Toolbar>
-          <Header />
-        </Toolbar>
-      </AppBar>
+    <>
       <SloganSection />
       <TopicSection
         title={'Why Mui Treasury exists?'}
@@ -224,8 +211,7 @@ const Homepage = ({ navigate }) => {
           </Grid>
         </Box>
       </Container>
-      <Footer />
-    </div>
+    </>
   );
 };
 

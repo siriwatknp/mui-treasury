@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import {
   Header as LayoutHeader,
-  Sidebar,
   SidebarTrigger,
   SidebarTriggerIcon,
   CollapseBtn,
   CollapseIcon,
   Content,
   Footer as LayoutFooter,
+  Sidebar,
   useSidebarStyles,
   useHeaderStyles,
 } from '@mui-treasury/layout';
@@ -35,7 +35,7 @@ const useFooterStyles = makeStyles(() => ({
   },
 }));
 
-const SidebarLayout = ({ totalItems, pkg, children, getOpenKeys }) => {
+const SidebarLayout = ({ pkg, children, getOpenKeys }) => {
   const menus = MENUS[PKG[pkg]];
   const styles = useStyles();
   const headerStyles = useHeaderStyles();
@@ -51,20 +51,16 @@ const SidebarLayout = ({ totalItems, pkg, children, getOpenKeys }) => {
           <Header />
         </Toolbar>
       </LayoutHeader>
+      <Content>{children}</Content>
       <Sidebar>
         <div className={sidebarStyles.container}>
-          <ComponentMenuList
-            menus={menus}
-            getOpenKeys={getOpenKeys}
-            totalItems={totalItems}
-          />
+          <ComponentMenuList menus={menus} getOpenKeys={getOpenKeys} />
         </div>
         <CollapseBtn className={sidebarStyles.collapseBtn}>
           <CollapseIcon />
         </CollapseBtn>
       </Sidebar>
-      <Content>{children}</Content>
-      <LayoutFooter classes={footerStyles}>
+      <LayoutFooter className={footerStyles.root}>
         <Footer />
       </LayoutFooter>
     </>

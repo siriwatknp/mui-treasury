@@ -1,4 +1,4 @@
-import getDefaultScreenConfig from './getDefaultScreenConfig';
+import getDefaultScreenConfig from '../utils/getDefaultScreenConfig';
 
 export default {
   autoCollapseDisabled: false,

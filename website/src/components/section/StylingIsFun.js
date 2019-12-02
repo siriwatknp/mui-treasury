@@ -1,19 +1,24 @@
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Radio from '@material-ui/core/Radio';
-import { makeStyles } from '@material-ui/core/styles';
 import KanbanCard from 'docs/components/card/kanban/KanbanCard';
-import { useBouncyShadowStyles } from '@mui-treasury/styles/shadow/bouncy';
-import { useFloatShadowStyles } from '@mui-treasury/styles/shadow/float';
-import { useLightTopShadowStyles } from '@mui-treasury/styles/shadow/lightTop';
-import { useOverShadowStyles } from '@mui-treasury/styles/shadow/over';
-import { useSoftRiseShadowStyles } from '@mui-treasury/styles/shadow/softRise';
-import faded from '@mui-treasury/styles/shadow/faded';
 import Prism from 'components/molecules/Prism';
-import React from 'react';
+import overShadow from '@mui-treasury/styles/shadow/over';
+import softRiseShadow from '@mui-treasury/styles/shadow/softRise';
+import bouncyShadow from '@mui-treasury/styles/shadow/bouncy';
+import floatShadow from '@mui-treasury/styles/shadow/float';
+import lightTopShadow from '@mui-treasury/styles/shadow/lightTop';
+import fadedShadow from '@mui-treasury/styles/shadow/faded';
 
-const useFadedShadowStyles = makeStyles(faded);
+const useFadedShadowStyles = makeStyles(fadedShadow);
+const useOverShadowStyles = makeStyles(overShadow);
+const useSoftRiseShadowStyles = makeStyles(softRiseShadow);
+const useBouncyShadowStyles = makeStyles(bouncyShadow);
+const useFloatShadowStyles = makeStyles(floatShadow);
+const useLightTopShadowStyles = makeStyles(lightTopShadow);
 
 const useStyles = makeStyles(() => ({
   topic: {
@@ -80,7 +85,8 @@ const StylingIsFun = () => {
       <Box py={{ xs: '2rem', sm: '3.5rem' }}>
         <h2 className={classes.topic}>Styling is fun!</h2>
         <p>
-          Styles must be dynamic and flexible, you change it when you want to!
+          Styles must be dynamic and flexible, you must be able change it
+          whenever you want!
         </p>
         <Grid container spacing={4}>
           <Grid item xs={12} md={5}>

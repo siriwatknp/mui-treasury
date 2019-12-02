@@ -32,10 +32,20 @@ export const secondaryAdapter = {
   mapArgs: fn => args => fn(parseSecondaryConfig(args)),
 };
 
+const getSidebarWidth = ({
+  collapsed,
+  hidden,
+  collapsible,
+  width,
+  collapsedWidth,
+}) => {
+  if (hidden) return 0;
+  return collapsible && collapsed ? collapsedWidth : width;
+};
+
 export default (ctx = {}) => {
   const { sidebar = {}, opened, collapsed } = ctx;
-  const width =
-    sidebar.collapsible && collapsed ? sidebar.collapsedWidth : sidebar.width;
+  const width = getSidebarWidth({ ...sidebar, collapsed });
   return {
     ...sidebar,
     width,

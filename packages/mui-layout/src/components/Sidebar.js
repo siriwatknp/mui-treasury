@@ -16,7 +16,6 @@ const defaultMapContext = ({ header = {}, ...rest } = {}) => ({
 });
 
 const Sidebar = ({
-  side,
   children,
   PaperProps,
   SlideProps,
@@ -77,13 +76,11 @@ const Sidebar = ({
 };
 
 Sidebar.propTypes = {
-  side: PropTypes.oneOf(['left', 'right']),
   PaperProps: PropTypes.shape({}),
   SlideProps: PropTypes.shape({}),
   children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
 };
 Sidebar.defaultProps = {
-  side: undefined,
   PaperProps: {},
   SlideProps: {},
   children: null,

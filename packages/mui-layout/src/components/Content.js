@@ -25,16 +25,14 @@ const Content = ({
   const styles = useStyles(props);
   const transitionStyles = useTransitionStyles();
   return (
-    <>
-      <Component
-        {...props}
-        className={cx(styles.root, transitionStyles.root, className)}
-        style={getContentStyle()}
-      >
-        {!omitHeaderOffset && <HeaderOffset />}
-        {typeof children === 'function' ? children(ctx) : children}
-      </Component>
-    </>
+    <Component
+      {...props}
+      className={cx(styles.root, transitionStyles.root, className)}
+      style={getContentStyle()}
+    >
+      {!omitHeaderOffset && <HeaderOffset />}
+      {typeof children === 'function' ? children(ctx) : children}
+    </Component>
   );
 };
 

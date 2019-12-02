@@ -1,10 +1,17 @@
-export default ({ header, sidebar, secondarySidebar, content, footer }) => ({
+export default ({
+  header,
+  sidebar,
+  secondarySidebar,
+  content,
+  footer,
+} = {}) => ({
   sidebar: {
     anchor: 'left',
     variant: 'temporary',
     width: 256,
     collapsible: false,
     collapsedWidth: 64,
+    hidden: false,
     ...sidebar,
   },
   secondarySidebar: {
@@ -13,6 +20,7 @@ export default ({ header, sidebar, secondarySidebar, content, footer }) => ({
     width: 244,
     collapsible: true,
     collapsedWidth: 64,
+    hidden: false,
     ...secondarySidebar,
   },
   header: {

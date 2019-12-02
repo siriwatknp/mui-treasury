@@ -9,7 +9,6 @@ import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
 import { useBlogCardContentStyles } from '@mui-treasury/styles/cardContent/blog';
 import { useOverShadowStyles } from '@mui-treasury/styles/shadow/over';
 
-
 const useStyles = makeStyles(({ breakpoints, spacing }) => ({
   root: {
     margin: 'auto',
@@ -76,7 +75,12 @@ const BlogCard = () => {
   const shadowStyles = useOverShadowStyles();
   return (
     <Card className={cx(styles.root, shadowStyles.root)}>
-      <CardMedia className={styles.media} image={'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Git_icon.svg/2000px-Git_icon.svg.png'} />
+      <CardMedia
+        className={styles.media}
+        image={
+          'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Git_icon.svg/2000px-Git_icon.svg.png'
+        }
+      />
       <CardContent>
         <TextInfoCardContent
           classes={cardContentStyles}
