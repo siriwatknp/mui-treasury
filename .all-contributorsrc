@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "p-siriphanthong",
+      "name": "Punn Siriphanthong",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/29949429?v=4",
+      "profile": "https://p-siriphanthong.github.io/",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "mui-treasury",
+  "projectOwner": "siriwatknp",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
