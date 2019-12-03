@@ -1,5 +1,5 @@
 <p align="center">
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)<!-- ALL-CONTRIBUTORS-BADGE:END -->
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)<!-- ALL-CONTRIBUTORS-BADGE:END -->
   <a href="https://www.gatsbyjs.org">
     <img alt="Gatsby" src="https://user-images.githubusercontent.com/18292247/65975821-6361e500-e499-11e9-94a4-02aef55c2c23.png" width="100" />
   </a>
@@ -64,6 +64,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://renamoo-portfolio.netlify.com"><img src="https://avatars2.githubusercontent.com/u/41532275?v=4" width="100px;" alt="renamoo"/><br /><sub><b>renamoo</b></sub></a><br /><a href="https://github.com/siriwatknp/mui-treasury/commits?author=renamoo" title="Documentation">📖</a></td>
     <td align="center"><a href="https://p-siriphanthong.github.io/"><img src="https://avatars2.githubusercontent.com/u/29949429?v=4" width="100px;" alt="Punn Siriphanthong"/><br /><sub><b>Punn Siriphanthong</b></sub></a><br /><a href="https://github.com/siriwatknp/mui-treasury/commits?author=p-siriphanthong" title="Code">💻</a></td>
     <td align="center"><a href="https://borbier.com/"><img src="https://avatars3.githubusercontent.com/u/14361087?v=4" width="100px;" alt="_borBier"/><br /><sub><b>_borBier</b></sub></a><br /><a href="https://github.com/siriwatknp/mui-treasury/commits?author=borbier" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/bokherus"><img src="https://avatars0.githubusercontent.com/u/9125776?v=4" width="100px;" alt="Thongrapee Panyapatiphan"/><br /><sub><b>Thongrapee Panyapatiphan</b></sub></a><br /><a href="https://github.com/siriwatknp/mui-treasury/commits?author=bokherus" title="Code">💻</a></td>
   </tr>
 </table>
 
