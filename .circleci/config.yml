@@ -42,12 +42,12 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - release/production
       - next:
           filters:
             branches:
               only:
-                - next
+                - release/next
 jobs:
   release:
     executor: node-executor

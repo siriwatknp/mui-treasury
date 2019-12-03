@@ -3,10 +3,10 @@ import Box from '@material-ui/core/Box';
 import PeopleCardFooter from '@mui-treasury/components/cardFooter/people';
 
 const faces = [
-  'http://i.pravatar.cc/300?img=1',
-  'http://i.pravatar.cc/300?img=2',
-  'http://i.pravatar.cc/300?img=3',
-  'http://i.pravatar.cc/300?img=4',
+  'https://i.pravatar.cc/300?img=1',
+  'https://i.pravatar.cc/300?img=2',
+  'https://i.pravatar.cc/300?img=3',
+  'https://i.pravatar.cc/300?img=4',
 ];
 
 const PeopleCardFooterDemo = () => (
