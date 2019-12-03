@@ -23,6 +23,15 @@
         "review",
         "test"
       ]
+    },
+    {
+      "login": "futurouz",
+      "name": "Kunanan",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/16300114?v=4",
+      "profile": "https://www.facebook.com/kunanan.tassuwan",
+      "contributions": [
+        "tool"
+      ]
     }
   ],
   "contributorsPerLine": 7,
