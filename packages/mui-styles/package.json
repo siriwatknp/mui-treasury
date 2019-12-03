@@ -14,5 +14,5 @@
     "prebuild": "rimraf build",
     "build": "yarn build:babel && yarn build:copy-files"
   },
-  "gitHead": "54e2aaff019be26b54c01e6cce81af2cdb5ecd50"
+  "gitHead": "eac20ccd043fa6daf7f1971a373fb155229281c8"
 }

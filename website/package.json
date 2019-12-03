@@ -59,6 +59,5 @@
     "react-typography": "^0.16.19",
     "typography": "^0.16.19",
     "typography-theme-kirkham": "^0.16.19"
-  },
-  "gitHead": "54e2aaff019be26b54c01e6cce81af2cdb5ecd50"
+  }
 }
