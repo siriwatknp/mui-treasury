@@ -1,12 +1,12 @@
 {
   "name": "@mui-treasury/layout",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@material-ui/core": "^4.5.2",
     "@material-ui/styles": "^4.5.2",
-    "@mui-treasury/styling": "0.2.0",
+    "@mui-treasury/styling": "^0.2.1",
     "lodash.debounce": "^4.0.8"
   },
   "scripts": {

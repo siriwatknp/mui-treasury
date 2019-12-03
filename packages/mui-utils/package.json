@@ -1,6 +1,6 @@
 {
   "name": "@mui-treasury/utils",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "main": "./src/index.js",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "license": "MIT",
