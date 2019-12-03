@@ -1,4 +1,5 @@
 <p align="center">
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)<!-- ALL-CONTRIBUTORS-BADGE:END -->
   <a href="https://www.gatsbyjs.org">
     <img alt="Gatsby" src="https://user-images.githubusercontent.com/18292247/65975821-6361e500-e499-11e9-94a4-02aef55c2c23.png" width="100" />
   </a>
@@ -48,3 +49,22 @@ I am profoundly appreciate any [contribution](/.github/CONTRIBUTING.md) you subm
 
 This project is licensed under the terms of the
 [MIT license](/LICENSE).
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/siriwatknp"><img src="https://avatars2.githubusercontent.com/u/18292247?v=4" width="100px;" alt="Siriwat Kunaporn"/><br /><sub><b>Siriwat Kunaporn</b></sub></a><br /><a href="#design-siriwatknp" title="Design">🎨</a> <a href="https://github.com/siriwatknp/mui-treasury/commits?author=siriwatknp" title="Code">💻</a> <a href="https://github.com/siriwatknp/mui-treasury/issues?q=author%3Asiriwatknp" title="Bug reports">🐛</a> <a href="https://github.com/siriwatknp/mui-treasury/commits?author=siriwatknp" title="Documentation">📖</a> <a href="#example-siriwatknp" title="Examples">💡</a> <a href="#ideas-siriwatknp" title="Ideas, Planning, & Feedback">🤔</a> <a href="#projectManagement-siriwatknp" title="Project Management">📆</a> <a href="#maintenance-siriwatknp" title="Maintenance">🚧</a> <a href="#infra-siriwatknp" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/siriwatknp/mui-treasury/pulls?q=is%3Apr+reviewed-by%3Asiriwatknp" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/siriwatknp/mui-treasury/commits?author=siriwatknp" title="Tests">⚠️</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
