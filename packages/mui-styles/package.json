@@ -9,9 +9,10 @@
     "color": "^3.1.2"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production babel --config-file ../../babel-config.js ./src --out-dir ./build --ignore \"**/*.test.js\"",
+    "build:babel": "cross-env NODE_ENV=production babel --config-file ../../babel-config.js ./src --out-dir ./build --ignore \"**/*.test.js\"",
     "build:copy-files": "node ../../scripts/copy-files.js",
     "prebuild": "rimraf build",
-    "release": "yarn build && yarn build:copy-files && yarn publish build --access public"
-  }
+    "build": "yarn build:babel && yarn build:copy-files"
+  },
+  "gitHead": "54e2aaff019be26b54c01e6cce81af2cdb5ecd50"
 }

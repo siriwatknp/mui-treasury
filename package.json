@@ -45,7 +45,8 @@
     "release:styling": "yarn workspace @mui-treasury/styling run release",
     "release:styles": "yarn workspace @mui-treasury/styles run release",
     "release:components": "yarn workspace @mui-treasury/components run release",
-    "release:layout": "yarn workspace @mui-treasury/layout run release"
+    "release:layout": "yarn workspace @mui-treasury/layout run release",
+    "release": "lerna run --scope \"@mui-treasury/*\" build && lerna publish --contents build"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",

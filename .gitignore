@@ -77,3 +77,6 @@ yarn-error.log
 
 # Local Netlify folder
 .netlify
+
+# lerna
+lerna-debug.log
