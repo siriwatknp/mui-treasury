@@ -32,6 +32,15 @@
       "contributions": [
         "tool"
       ]
+    },
+    {
+      "login": "renamoo",
+      "name": "renamoo",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/41532275?v=4",
+      "profile": "https://renamoo-portfolio.netlify.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
