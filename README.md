@@ -1,11 +1,10 @@
 <p align="center">
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)<!-- ALL-CONTRIBUTORS-BADGE:END -->
   <a href="https://www.gatsbyjs.org">
     <img alt="Gatsby" src="https://user-images.githubusercontent.com/18292247/65975821-6361e500-e499-11e9-94a4-02aef55c2c23.png" width="100" />
   </a>
 </p>
 
-# Material-UI Treasury [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/siriwatknp/mui-treasury-next/pulls)
+# Material-UI Treasury [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/siriwatknp/mui-treasury-next/pulls) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Imagine a place with millions of real-world, ready-to-use, and themable components that you can copy & paste or even install to your project. I believe that it will help boosting many projects that want to prove their ideas and make their 1st prototype to make tomorrow better than today.
 ## Curious? checkout [Website](https://mui-treasury.com)
