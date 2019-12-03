@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "futurouz",
+      "name": "Kunanan",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/16300114?v=4",
+      "profile": "https://www.facebook.com/kunanan.tassuwan",
+      "contributions": [
+        "tool"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "mui-treasury",
+  "projectOwner": "siriwatknp",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
