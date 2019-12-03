@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "renamoo",
+      "name": "renamoo",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/41532275?v=4",
+      "profile": "https://renamoo-portfolio.netlify.com",
+      "contributions": [
+        "doc",
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "mui-treasury",
+  "projectOwner": "siriwatknp",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
