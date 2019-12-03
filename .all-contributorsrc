@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "siriwatknp",
+      "name": "Siriwat Kunaporn",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/18292247?v=4",
+      "profile": "https://github.com/siriwatknp",
+      "contributions": [
+        "design",
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "mui-treasury",
+  "projectOwner": "siriwatknp",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
