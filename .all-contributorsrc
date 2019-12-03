@@ -6,6 +6,25 @@
   "commit": false,
   "contributors": [
     {
+      "login": "siriwatknp",
+      "name": "Siriwat Kunaporn",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/18292247?v=4",
+      "profile": "https://github.com/siriwatknp",
+      "contributions": [
+        "design",
+        "code",
+        "bug",
+        "doc",
+        "example",
+        "ideas",
+        "projectManagement",
+        "maintenance",
+        "infra",
+        "review",
+        "test"
+      ]
+    },
+    {
       "login": "futurouz",
       "name": "Kunanan",
       "avatar_url": "https://avatars2.githubusercontent.com/u/16300114?v=4",
