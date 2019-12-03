@@ -50,6 +50,15 @@
       "contributions": [
         "code"
       ],
+    },
+    {
+      "login": "borbier",
+      "name": "_borBier",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/14361087?v=4",
+      "profile": "https://borbier.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
