@@ -1,0 +1,20 @@
+{
+  "name": "@mui-treasury/utils",
+  "version": "0.3.4",
+  "main": "./src/index.js",
+  "author": "siriwatknp <siriwatkunaporn@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "clsx": "^1.0.4",
+    "lodash.get": "^4.4.2",
+    "lodash.isequal": "^4.5.0",
+    "react": "^16.11.0"
+  },
+  "scripts": {
+    "prebuild": "rimraf build",
+    "build": "cross-env NODE_ENV=production babel --config-file ../../babel-config.js ./src --out-dir ./build --ignore \"**/*.test.js\"",
+    "prepublish": "yarn copy-files",
+    "copy-files": "node ../../scripts/copy-files.js"
+  },
+  "gitHead": "eac20ccd043fa6daf7f1971a373fb155229281c8"
+}

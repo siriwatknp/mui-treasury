@@ -1,0 +1,19 @@
+{
+  "name": "@mui-treasury/layout",
+  "version": "2.2.4",
+  "author": "siriwatknp <siriwatkunaporn@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@material-ui/core": "^4.5.2",
+    "@material-ui/styles": "^4.5.2",
+    "@mui-treasury/styling": "^0.2.4",
+    "lodash.debounce": "^4.0.8"
+  },
+  "scripts": {
+    "prebuild": "rimraf build",
+    "build": "cross-env NODE_ENV=production babel --config-file ../../babel-config.js ./src --out-dir ./build --ignore \"**/*.test.js\"",
+    "prepublish": "yarn copy-files",
+    "copy-files": "node ../../scripts/copy-files.js"
+  },
+  "gitHead": "eac20ccd043fa6daf7f1971a373fb155229281c8"
+}

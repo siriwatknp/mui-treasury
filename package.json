@@ -1,0 +1,95 @@
+{
+  "name": "mui-treasury",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "website"
+  ],
+  "description": "The mission is to boost any projects that want to shake the world, so that our future is better than today. This is an open-source project that provides a collection of ready-to-use components based on Material-UI.",
+  "version": "2.0.0",
+  "author": "siriwatknp <siriwatkunaporn@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/siriwatknp/mui-treasury/issues"
+  },
+  "homepage": "https://mui-treasury.com",
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "main": "n/a",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siriwatknp/mui-treasury.git"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "prettier",
+      "eslint"
+    ]
+  },
+  "scripts": {
+    "cm": "npx git-cz",
+    "build": "yarn workspace website build",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "yarn workspace website start",
+    "serve": "yarn workspace website serve",
+    "test": "jest",
+    "typecheck": "tsc --skipLibCheck",
+    "storybook": "NODE_ENV=development start-storybook -p 6006",
+    "build-storybook": "NODE_ENV=production build-storybook -s public",
+    "release": "lerna run --scope \"@mui-treasury/*\" build && lerna publish --contents build"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/plugin-transform-object-assign": "^7.2.0",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "^5.1.11",
+    "@storybook/addon-knobs": "^5.1.11",
+    "@storybook/addon-links": "^5.1.11",
+    "@storybook/addon-notes": "^5.1.11",
+    "@storybook/addons": "^5.1.11",
+    "@storybook/react": "^5.1.11",
+    "@testing-library/jest-dom": "^4.2.3",
+    "@testing-library/react": "^9.3.1",
+    "@types/jest": "^24.0.21",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.2",
+    "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "babel-plugin-remove-graphql-queries": "^2.7.2",
+    "babel-preset-gatsby": "^0.2.8",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-config-react-app": "^5.0.2",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^2.2.0",
+    "firebase-tools": "^7.4.0",
+    "fs-extra": "^8.1.0",
+    "glob": "^7.1.4",
+    "husky": "^3.0.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.9.0",
+    "lerna": "^3.19.0",
+    "lint-staged": "^9.2.0",
+    "lodash": "^4.17.15",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1",
+    "react-test-renderer": "^16.9.0",
+    "typescript": "^3.6.4"
+  }
+}

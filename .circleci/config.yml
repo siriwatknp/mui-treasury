@@ -1,0 +1,67 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2.1
+executors:
+  node-executor:
+    docker:
+      - image: circleci/node:10
+commands:
+  gatsby-build:
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - yarn-cache-{{ checksum "yarn.lock" }}
+      - run: echo "@fortawesome:registry=https://npm.fontawesome.com/" > ~/repo/.npmrc
+      - run: echo "//npm.fontawesome.com/:_authToken=$FONTAWESOME_NPM_AUTH_TOKEN" >> ~/repo/.npmrc
+      - run: cat ~/repo/.npmrc
+      - run:
+          name: Install Dependencies
+          command: yarn install && npm rebuild
+      - save_cache:
+          key: yarn-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+      - restore_cache:
+          keys:
+            - gatsby-plublic-cache-{{ .Branch }}
+      - run:
+          name: Gatsby Build
+          command: GATSBY_CPU_COUNT=2 yarn build
+      - save_cache:
+          key: gatsby-public-cache-{{ .Branch }}
+          paths:
+            - ./website/public
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - release:
+          filters:
+            branches:
+              only:
+                - release/production
+      - next:
+          filters:
+            branches:
+              only:
+                - release/next
+jobs:
+  release:
+    executor: node-executor
+    working_directory: ~/repo
+    steps:
+      - gatsby-build
+      - run:
+          name: Firebase deploy Current
+          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting:current
+  next:
+    executor: node-executor
+    working_directory: ~/repo
+    steps:
+      - gatsby-build
+      - run:
+          name: Firebase deploy Next
+          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting:next

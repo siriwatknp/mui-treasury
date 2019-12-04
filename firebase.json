@@ -1,0 +1,22 @@
+{
+  "hosting": [
+    {
+      "target": "next",
+      "public": "website/public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "target": "current",
+      "public": "website/public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
+    }
+  ]
+}

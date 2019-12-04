@@ -1,0 +1,72 @@
+/**
+ * Add back the container background-color, border-radius, padding, margin
+ * and overflow that we removed from <pre>
+ */
+.gatsby-highlight {
+  background-color: rgb(40, 44, 52);
+  padding: 1.5em;
+  overflow: auto;
+  font-size: 14px;
+}
+
+.gatsby-highlight .token.keyword, .token.script {
+  color: rgb(197, 165, 197);
+}
+
+.gatsby-highlight .token.function {
+  color: rgb(121, 182, 242);
+}
+
+.gatsby-highlight .token.string {
+  color: rgb(141, 200, 145);
+}
+
+.gatsby-highlight .token.attr-name {
+  color: #ccc;
+}
+
+.gatsby-highlight .token.tag {
+  color: #f8c555;
+}
+
+.gatsby-highlight-code-line {
+  background-color: #feb;
+  display: block;
+  margin-right: -1em;
+  margin-left: -1em;
+  padding-right: 1em;
+  padding-left: 0.75em;
+  border-left: 0.25em solid #f99;
+}
+
+
+/**
+ * Remove the default PrismJS theme background-color, border-radius, margin,
+ * padding and overflow.
+ * 1. Make the element just wide enough to fit its content.
+ * 2. Always fill the visible space in .gatsby-highlight.
+ * 3. Adjust the position of the line numbers
+ */
+.gatsby-highlight pre[class*='language-'] {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  overflow: initial;
+  float: left; /* 1 */
+  min-width: 100%; /* 2 */
+}
+
+/**
+ * If you already use line highlighting
+ */
+
+/* Adjust the position of the line numbers */
+.gatsby-highlight pre[class*='language-'].line-numbers {
+  padding-left: 2.8em;
+}
+
+.gatsby-highlight pre[class*='language-'].line-numbers {
+  padding: 0;
+  padding-left: 2.8em;
+  overflow: initial;
+}

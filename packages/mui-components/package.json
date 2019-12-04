@@ -1,0 +1,22 @@
+{
+  "name": "@mui-treasury/components",
+  "version": "0.3.4",
+  "main": "./src/index.js",
+  "author": "siriwatknp <siriwatkunaporn@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@material-ui/core": "^4.6.0",
+    "@material-ui/icons": "^4.2.1",
+    "@mui-treasury/styles": "0.3.1",
+    "@mui-treasury/utils": "^0.3.4",
+    "clsx": "^1.0.4",
+    "prop-types": "^15.7.2"
+  },
+  "scripts": {
+    "prebuild": "rimraf build",
+    "build": "cross-env NODE_ENV=production babel --config-file ../../babel-config.js ./src --out-dir ./build --ignore \"**/*.test.js\"",
+    "prepublish": "yarn copy-files",
+    "copy-files": "node ../../scripts/copy-files.js"
+  },
+  "gitHead": "eac20ccd043fa6daf7f1971a373fb155229281c8"
+}
