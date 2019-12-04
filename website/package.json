@@ -1,6 +1,7 @@
 {
   "name": "website",
   "version": "1.0.1",
+  "private": true,
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "license": "MIT",
   "scripts": {
