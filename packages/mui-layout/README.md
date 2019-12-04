@@ -5,7 +5,7 @@
 A set of components that allows you to build dynamic and responsive layout based on Material-UI
 
 ## Prerequisites
-This project based on [React Material-UI](https://material-ui.com/), so you have to install `@material-ui/core @material-ui/styles`
+This project based on [React Material-UI](https://material-ui.com/), so you have to install `@material-ui/core @material-ui/styles`.
 
 ## Installation
 
