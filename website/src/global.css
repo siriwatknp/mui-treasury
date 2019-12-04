@@ -1,6 +1,6 @@
 /**
  * Add back the container background-color, border-radius, padding, margin
- * and overflow that we removed from <pre>.....
+ * and overflow that we removed from <pre>
  */
 .gatsby-highlight {
   background-color: rgb(40, 44, 52);
