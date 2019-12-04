@@ -1,5 +1,31 @@
 {
   "packages": ["packages/*"],
   "npmClient": "yarn",
-  "version": "independent"
+  "version": "independent",
+  "command": {
+    "publish": {
+      "conventionalCommits": true
+    }
+  },
+  "changelog": {
+    "ignoreCommitters": [
+      "allcontributors",
+      "dependabot-bot",
+      "dependabot[bot]",
+      "greenkeeperio-bot",
+      "greenkeeper[bot]",
+      "renovate-bot",
+      "renovate[bot]"
+    ],
+    "labels": {
+      "PR: Spec Compliance :eyeglasses:": ":eyeglasses: Spec Compliance",
+      "PR: Breaking Change :boom:": ":boom: Breaking Change",
+      "PR: New Feature :rocket:": ":rocket: New Feature",
+      "PR: Bug Fix :bug:": ":bug: Bug Fix",
+      "PR: Polish :nail_care:": ":nail_care: Polish",
+      "PR: Docs :memo:": ":memo: Documentation",
+      "PR: Internal :house:": ":house: Internal",
+      "PR: Performance :running_woman:": ":running_woman: Performance"
+    }
+  }
 }
