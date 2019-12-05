@@ -43,17 +43,17 @@ export default {
         },
       ],
     },
-    {
-      key: 'examples',
-      label: 'Examples',
-      subMenus: [
-        {
-          key: 'starter',
-          label: 'Starter',
-          to: '/layout/examples/starter',
-        },
-      ],
-    },
+    // {
+    //   key: 'examples',
+    //   label: 'Examples',
+    //   subMenus: [
+    //     {
+    //       key: 'starter',
+    //       label: 'Starter',
+    //       to: '/layout/examples/starter',
+    //     },
+    //   ],
+    // },
   ],
   [PKG.nav]: [
     // { key: 'how-to', label: 'How to' },

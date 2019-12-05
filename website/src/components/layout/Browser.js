@@ -30,13 +30,6 @@ const Browser = ({ children, ...props }) => {
         <Box {...commonProps} bgcolor={'grey.400'} />
         <Box {...commonProps} bgcolor={'grey.300'} />
         <Box {...commonProps} bgcolor={'grey.300'} />
-        <Box
-          ml={2}
-          width={{ xs: 150, sm: 200, md: 280 }}
-          height={12}
-          borderRadius={10}
-          bgcolor={grey}
-        />
       </Box>
       <Box css={{ flexGrow: 1 }}>{children}</Box>
     </Box>

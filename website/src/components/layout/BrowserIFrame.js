@@ -44,32 +44,30 @@ const devices = [
     name: 'laptop',
     icon: <LaptopMac />,
     width: 1360,
-    height: 900,
+    height: 768,
     screen: 'lg',
   },
 ];
 
 const BrowserIFrame = ({ children }) => {
   const [current, setCurrent] = React.useState(devices[devices.length - 1]);
-  const gutterBorderStyles = useGutterBorderedGridStyles();
+  const gutterBorderStyles = useGutterBorderedGridStyles({ height: '60%' });
   return (
     <Box px={{ xs: 2, sm: 3, md: 4 }} pb={{ xs: 2, sm: 5, md: 10 }}>
-      <Box pt={2}>
-        <Grid container justify={'center'}>
-          {devices.map(item => (
-            <Grid key={item.name} item classes={gutterBorderStyles}>
-              <Box px={1}>
-                <IconButton
-                  color={item.name === current.name ? 'secondary' : 'default'}
-                  onClick={() => setCurrent(item)}
-                >
-                  {item.icon}
-                </IconButton>
-              </Box>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
+      <Grid container justify={'center'}>
+        {devices.map(item => (
+          <Grid key={item.name} item classes={gutterBorderStyles}>
+            <Box px={1}>
+              <IconButton
+                color={item.name === current.name ? 'secondary' : 'default'}
+                onClick={() => setCurrent(item)}
+              >
+                {item.icon}
+              </IconButton>
+            </Box>
+          </Grid>
+        ))}
+      </Grid>
       <Box py={1} textAlign={'center'}>
         <Box
           fontSize={12}
