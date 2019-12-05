@@ -3,23 +3,23 @@ import { WindowProvider } from '@mui-treasury/layout';
 
 import BrowserIFrame from 'components/layout/BrowserIFrame';
 import SourceFileDrawer from 'containers/SourceFileDrawer';
-import DefaultLayout from 'docs/layout/presets/default/DefaultLayout';
+import StandardLayout from 'docs/layout/presets/standard/StandardLayout';
 
-const DefaultLayoutDemo = () => {
+const StandardLayoutDemo = () => {
   return (
     <>
       <BrowserIFrame>
         {({ window, container }) => {
           return (
             <WindowProvider value={{ iWindow: window, iBody: container }}>
-              <DefaultLayout />
+              <StandardLayout />
             </WindowProvider>
           );
         }}
       </BrowserIFrame>
-      <SourceFileDrawer metadata={DefaultLayout.metadata} />
+      <SourceFileDrawer metadata={StandardLayout.metadata} />
     </>
   );
 };
 
-export default DefaultLayoutDemo;
+export default StandardLayoutDemo;

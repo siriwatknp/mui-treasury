@@ -5,7 +5,7 @@ import BrowserIFrame from 'components/layout/BrowserIFrame';
 import SourceFileDrawer from 'containers/SourceFileDrawer';
 import ContentBasedLayout from 'docs/layout/presets/contentBased/ContentBasedLayout';
 
-const StarterLayout = () => {
+const ContentBasedLayoutDemo = () => {
   return (
     <>
       <BrowserIFrame>
@@ -22,4 +22,4 @@ const StarterLayout = () => {
   );
 };
 
-export default StarterLayout;
+export default ContentBasedLayoutDemo;

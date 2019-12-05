@@ -3,23 +3,23 @@ import { WindowProvider } from '@mui-treasury/layout';
 
 import BrowserIFrame from 'components/layout/BrowserIFrame';
 import SourceFileDrawer from 'containers/SourceFileDrawer';
-import DefaultLayout from 'docs/layout/presets/default/DefaultLayout';
+import CozyLayout from 'docs/layout/presets/cozy/CozyLayout';
 
-const DefaultLayoutDemo = () => {
+const CozyLayoutDemo = () => {
   return (
     <>
       <BrowserIFrame>
         {({ window, container }) => {
           return (
             <WindowProvider value={{ iWindow: window, iBody: container }}>
-              <DefaultLayout />
+              <CozyLayout />
             </WindowProvider>
           );
         }}
       </BrowserIFrame>
-      <SourceFileDrawer metadata={DefaultLayout.metadata} />
+      <SourceFileDrawer metadata={CozyLayout.metadata} />
     </>
   );
 };
 
-export default DefaultLayoutDemo;
+export default CozyLayoutDemo;

@@ -42,9 +42,29 @@ export default {
           to: 'layout/presets/default',
         },
         {
+          key: 'standard',
+          label: 'Standard',
+          to: 'layout/presets/standard',
+        },
+        {
           key: 'content-based',
           label: 'Content Based',
           to: 'layout/presets/content-based',
+        },
+        {
+          key: 'cozy',
+          label: 'Cozy',
+          to: 'layout/presets/cozy',
+        },
+        {
+          key: 'fixed',
+          label: 'Fixed',
+          to: 'layout/presets/fixed',
+        },
+        {
+          key: 'mui-treasury',
+          label: 'MUI Treasury',
+          to: 'layout/presets/mui-treasury',
         },
       ],
     },
