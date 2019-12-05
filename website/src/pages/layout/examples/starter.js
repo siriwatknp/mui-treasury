@@ -17,45 +17,56 @@ import {
   SidebarTriggerIcon,
   useSidebarStyles,
   useHeaderStyles,
+  useScreen,
+  useWindow,
+  WindowProvider,
 } from '@mui-treasury/layout';
-import {
-  defaultLayoutPreset,
-  standardLayoutPreset,
-  fixedLayoutPreset,
-  contentBasedLayoutPreset,
-  cozyLayoutPreset,
-  muiTreasuryPreset,
-} from '@mui-treasury/layout/presets';
+
 // MOCK
 import NavContentEx from 'components/mock/NavContentEx';
-import NavHeaderEx from 'components/mock/NavHeaderEx';
 import HeaderEx from 'components/mock/HeaderEx';
 import ContentEx from 'components/mock/ContentEx';
-import ContentForm from 'components/mock/ContentForm';
 import FooterEx from 'components/mock/FooterEx';
 import BrowserIFrame from 'components/layout/BrowserIFrame';
 
-const presets = {
-  createDefaultLayout: defaultLayoutPreset,
-  createStandardLayout: standardLayoutPreset,
-  createFixedLayout: fixedLayoutPreset,
-  createContentBasedLayout: contentBasedLayoutPreset,
-  createCozyLayout: cozyLayoutPreset,
-  createMuiTreasuryLayout: muiTreasuryPreset,
-};
-
-const Demo = () => {
+const StarterLayout = () => {
+  const w = useWindow();
+  console.log('w', w);
   return (
     <BrowserIFrame>
-      <ThemeWrapper>
-        <CssBaseline />
-        <Button>Hello</Button>
-      </ThemeWrapper>
+      {({ window, container }) => (
+        <WindowProvider value={{ iWindow: window, iBody: container }}>
+          <CssBaseline />
+          <Root options={{ customWindow: window }}>
+            {({ headerStyles, sidebarStyles }) => (
+              <>
+                <Header>
+                  <Toolbar>
+                    <SidebarTrigger className={headerStyles.leftTrigger}>
+                      <SidebarTriggerIcon />
+                    </SidebarTrigger>
+                    <HeaderEx />
+                  </Toolbar>
+                </Header>
+                <Sidebar ModalProps={{ container }}>
+                  <NavContentEx />
+                </Sidebar>
+                <Content>
+                  <ContentEx />
+                </Content>
+                <Footer>
+                  <FooterEx />
+                </Footer>
+              </>
+            )}
+          </Root>
+        </WindowProvider>
+      )}
     </BrowserIFrame>
   );
 };
 
-Demo.propTypes = {};
-Demo.defaultProps = {};
+StarterLayout.propTypes = {};
+StarterLayout.defaultProps = {};
 
-export default Demo;
+export default StarterLayout;

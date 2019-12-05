@@ -43,7 +43,7 @@ const devices = [
   {
     name: 'laptop',
     icon: <LaptopMac />,
-    width: 1280,
+    width: 1360,
     height: 900,
     screen: 'lg',
   },
@@ -57,7 +57,7 @@ const BrowserIFrame = ({ children }) => {
       <Box pt={2}>
         <Grid container justify={'center'}>
           {devices.map(item => (
-            <Grid item classes={gutterBorderStyles}>
+            <Grid key={item.name} item classes={gutterBorderStyles}>
               <Box px={1}>
                 <IconButton
                   color={item.name === current.name ? 'secondary' : 'default'}
@@ -89,7 +89,7 @@ const BrowserIFrame = ({ children }) => {
         height={current.height}
         margin={'auto'}
       >
-        <IFrame>{children}</IFrame>
+        <IFrame style={{ height: 'calc(100% - 30px)' }}>{children}</IFrame>
       </Browser>
     </Box>
   );
