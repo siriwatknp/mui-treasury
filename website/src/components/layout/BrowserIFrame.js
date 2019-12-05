@@ -53,7 +53,12 @@ const BrowserIFrame = ({ children }) => {
   const [current, setCurrent] = React.useState(devices[devices.length - 1]);
   const gutterBorderStyles = useGutterBorderedGridStyles({ height: '60%' });
   return (
-    <Box px={{ xs: 2, sm: 3, md: 4 }} pb={{ xs: 2, sm: 5, md: 10 }}>
+    <Box
+      pt={0.5}
+      px={{ xs: 0, sm: 3, md: 4 }}
+      pb={{ xs: 4, sm: 6, md: 10 }}
+      overflow={'auto'}
+    >
       <Grid container justify={'center'}>
         {devices.map(item => (
           <Grid key={item.name} item classes={gutterBorderStyles}>
@@ -68,7 +73,7 @@ const BrowserIFrame = ({ children }) => {
           </Grid>
         ))}
       </Grid>
-      <Box py={1} textAlign={'center'}>
+      <Box pb={1} textAlign={'center'}>
         <Box
           fontSize={12}
           borderRadius={20}

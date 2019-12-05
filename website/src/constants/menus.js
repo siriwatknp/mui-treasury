@@ -41,6 +41,11 @@ export default {
           label: 'Default',
           to: 'layout/presets/default',
         },
+        {
+          key: 'content-based',
+          label: 'Content Based',
+          to: 'layout/presets/content-based',
+        },
       ],
     },
     // {

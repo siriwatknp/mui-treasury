@@ -1,6 +1,32 @@
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 
+const LayoutFrontMatter = ({ children, match }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      allMarkdownRemark(
+        filter: { frontmatter: { category: { eq: "layout" } } }
+      ) {
+        nodes {
+          frontmatter {
+            path
+          }
+          html
+        }
+      }
+    }
+  `);
+  const {
+    allMarkdownRemark: { nodes },
+  } = data;
+  console.log('nodes', nodes);
+  const result = nodes.find(({ frontmatter: { path } }) => path === match);
+  if (!match || !result) {
+    return null;
+  }
+  return children(result);
+};
+
 const FrontMatter = ({ children, match }) => {
   const data = useStaticQuery(graphql`
     query {
@@ -33,5 +59,6 @@ FrontMatter.propTypes = {
 FrontMatter.defaultProps = {
   match: '',
 };
+FrontMatter.Layout = LayoutFrontMatter;
 
 export default FrontMatter;
