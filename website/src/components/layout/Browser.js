@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Box from 'components/atoms/Box';
 
 const grey = '#f0f0f0';
-const border = `2px solid ${grey}`;
+const border = `1px solid ${grey}`;
 const Browser = ({ children, ...props }) => {
   const commonProps = {
     width: 12,
@@ -15,11 +15,18 @@ const Browser = ({ children, ...props }) => {
     <Box
       position={'relative'}
       borderRadius={8}
-      border={border}
+      borderBottom={border}
       overflow={'hidden'}
+      display={'flex'}
+      flexDirection={'column'}
       {...props}
     >
-      <Box bgcolor={grey} borderBottom={border} py={1} {...Box.alignCenter}>
+      <Box
+        bgcolor={'common.white'}
+        boxShadow={'inset 0 -1px 0 rgba(0,0,0,0.16)'}
+        py={1}
+        {...Box.alignCenter}
+      >
         <Box {...commonProps} bgcolor={'grey.400'} />
         <Box {...commonProps} bgcolor={'grey.300'} />
         <Box {...commonProps} bgcolor={'grey.300'} />
@@ -28,10 +35,10 @@ const Browser = ({ children, ...props }) => {
           width={{ xs: 150, sm: 200, md: 280 }}
           height={12}
           borderRadius={10}
-          bgcolor={'common.white'}
+          bgcolor={grey}
         />
       </Box>
-      {children}
+      <Box css={{ flexGrow: 1 }}>{children}</Box>
     </Box>
   );
 };

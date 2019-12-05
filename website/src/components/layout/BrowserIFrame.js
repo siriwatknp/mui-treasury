@@ -75,7 +75,7 @@ const BrowserIFrame = ({ children }) => {
           fontSize={12}
           borderRadius={20}
           color={'grey.700'}
-          bgcolor={'grey.200'}
+          bgcolor={'grey.100'}
           display={'inline-block'}
           px={1.5}
           py={0.5}
@@ -84,12 +84,12 @@ const BrowserIFrame = ({ children }) => {
         </Box>
       </Box>
       <Browser
-        boxShadow={'0 2px 16px -4px rgba(0,0,0,0.12)'}
+        boxShadow={'0 10px 20px rgba(0,0,0,0.15), 0 3px 6px rgba(0,0,0,0.1)'}
         width={current.width}
         height={current.height}
         margin={'auto'}
       >
-        <IFrame style={{ height: 'calc(100% - 30px)' }}>{children}</IFrame>
+        <IFrame>{children}</IFrame>
       </Browser>
     </Box>
   );

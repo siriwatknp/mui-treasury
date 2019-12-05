@@ -15,7 +15,6 @@ import {
   standardLayoutPreset,
 } from '@mui-treasury/layout';
 
-// MOCK
 import NavContentEx from 'components/mock/NavContentEx';
 import HeaderEx from 'components/mock/HeaderEx';
 import ContentEx from 'components/mock/ContentEx';
@@ -28,10 +27,10 @@ const StarterLayout = () => {
       {({ window, container }) => {
         return (
           <WindowProvider value={{ iWindow: window, iBody: container }}>
-            <CssBaseline />
             <Root config={standardLayoutPreset}>
               {({ headerStyles, sidebarStyles }) => (
                 <>
+                  <CssBaseline />
                   <Header>
                     <Toolbar>
                       <SidebarTrigger className={headerStyles.leftTrigger}>

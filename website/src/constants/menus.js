@@ -33,9 +33,19 @@ export default {
     { key: 'layout', label: 'Introduction', to: '/layout' },
     { key: 'builder', label: 'Builder', to: '/layout/builder' },
     {
+      key: 'presets',
+      label: 'Presets',
+      subMenus: [
+        {
+          key: 'default',
+          label: 'Default',
+          to: 'layout/presets/default',
+        },
+      ],
+    },
+    {
       key: 'examples',
       label: 'Examples',
-      to: '/layout/examples',
       subMenus: [
         {
           key: 'starter',

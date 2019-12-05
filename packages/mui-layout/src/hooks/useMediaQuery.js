@@ -1,14 +1,10 @@
 import React from 'react';
 import { getThemeProps, useTheme } from '@material-ui/styles';
-// import useWindow from './useWindow';
-
-function getWindow({ customWindow }) {
-  return customWindow || window;
-}
+import useWindow from './useWindow';
 
 function useMediaQuery(queryInput, options = {}) {
   const theme = useTheme();
-  const thisWindow = getWindow(options);
+  const { iWindow } = useWindow();
 
   const props = getThemeProps({
     theme,
@@ -36,8 +32,7 @@ function useMediaQuery(queryInput, options = {}) {
   // This defensive check is here for simplicity.
   // Most of the time, the match media logic isn't central to people tests.
   const supportMatchMedia =
-    typeof thisWindow !== 'undefined' &&
-    typeof thisWindow.matchMedia !== 'undefined';
+    typeof iWindow !== 'undefined' && typeof iWindow.matchMedia !== 'undefined';
 
   const { defaultMatches = false, noSsr = false, ssrMatchMedia = null } = {
     ...props,
@@ -46,7 +41,7 @@ function useMediaQuery(queryInput, options = {}) {
 
   const [match, setMatch] = React.useState(() => {
     if (noSsr && supportMatchMedia) {
-      return thisWindow.matchMedia(query).matches;
+      return iWindow.matchMedia(query).matches;
     }
     if (ssrMatchMedia) {
       return ssrMatchMedia(query).matches;
@@ -64,7 +59,7 @@ function useMediaQuery(queryInput, options = {}) {
       return undefined;
     }
 
-    const queryList = thisWindow.matchMedia(query);
+    const queryList = iWindow.matchMedia(query);
     const updateMatch = () => {
       // Workaround Safari wrong implementation of matchMedia
       // TODO can we remove it?
@@ -79,8 +74,7 @@ function useMediaQuery(queryInput, options = {}) {
       active = false;
       queryList.removeListener(updateMatch);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query, supportMatchMedia]);
+  }, [iWindow, query, supportMatchMedia]);
 
   return match;
 }

@@ -1,8 +1,10 @@
 import { useRef, useEffect } from 'react';
+import useWindow from './useWindow';
 
 function useEventListener(eventName, handler, element) {
-  if (!element && typeof window !== 'undefined') {
-    element = window;
+  const { iWindow } = useWindow();
+  if (!element && typeof iWindow !== 'undefined') {
+    element = iWindow;
   }
 
   // Create a ref that stores handler

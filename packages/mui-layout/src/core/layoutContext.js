@@ -15,7 +15,6 @@ LayoutCtx.displayName = 'MuiLayoutCtx';
 const LayoutProvider = ({
   config,
   parseConfig,
-  options,
   children,
   initialOpened,
   initialCollapsed,
@@ -41,7 +40,7 @@ const LayoutProvider = ({
     secondaryCollapsedBreakpoint,
     secondaryHeightAdjustmentDisabled,
   } = config;
-  const screen = useScreen(config.screen, options); // config.screen is for testing purpose only
+  const screen = useScreen(config.screen); // config.screen is for testing purpose only
   const finalConfig = parseConfig(
     isSomeExisted(config, keys) ? selectConfigByScreen(config, screen) : config
   );
