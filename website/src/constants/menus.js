@@ -31,8 +31,19 @@ export const PKG = {
 export default {
   [PKG.layouts]: [
     { key: 'layout', label: 'Introduction', to: '/layout' },
-    { key: 'demo', label: 'Demo', to: '/layout/demo' },
     { key: 'builder', label: 'Builder', to: '/layout/builder' },
+    {
+      key: 'examples',
+      label: 'Examples',
+      to: '/layout/examples',
+      subMenus: [
+        {
+          key: 'starter',
+          label: 'Starter',
+          to: '/layout/examples/starter',
+        },
+      ],
+    },
   ],
   [PKG.nav]: [
     // { key: 'how-to', label: 'How to' },
