@@ -13,10 +13,10 @@
 ### @mui-treasury/layout `2.3.0`
 
 #### :memo: Docs
-  * [#246](https://github.com/siriwatknp/mui-treasury/pull/246) #209 layout examples ([@siriwatknp](https://github.com/siriwatknp))
+  * [#246](https://github.com/siriwatknp/mui-treasury/pull/246) add layout preset demos ([@siriwatknp](https://github.com/siriwatknp))
 
 #### :rocket: New Feature
-  * [#246](https://github.com/siriwatknp/mui-treasury/pull/246) #243 custom window in layout ([@siriwatknp](https://github.com/siriwatknp))
+  * [#246](https://github.com/siriwatknp/mui-treasury/pull/246) able to custom window in layout ([@siriwatknp](https://github.com/siriwatknp))
 
 #### Committers: 1
 - Siriwat Kunaporn ([@siriwatknp](https://github.com/siriwatknp))

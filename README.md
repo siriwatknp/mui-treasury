@@ -24,6 +24,15 @@ I am very excited about this project because I know that there is a lot of devel
 - Reach 300 components
 - Introducing application demo (example of real-world app that combine existing components in mui-treasury)
 
+## Latest Version
+> - @mui-treasury/components `0.3.4`
+> - @mui-treasury/layout `2.3.0`
+> - @mui-treasury/styles `0.3.1`
+> - @mui-treasury/styling `0.2.4`
+> - @mui-treasury/utils `0.3.4`
+>
+>  [All changelog](/CHANGELOG.md)
+
 ## Announcements
 
 - I am proudly to announce that the new site is in beta now after 3 months of renovating (using Gatsby, it is super fast). prove it yourself! [https://next.mui-treasury.com](https://next.mui-treasury.com)
