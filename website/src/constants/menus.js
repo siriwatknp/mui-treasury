@@ -31,8 +31,54 @@ export const PKG = {
 export default {
   [PKG.layouts]: [
     { key: 'layout', label: 'Introduction', to: '/layout' },
-    { key: 'demo', label: 'Demo', to: '/layout/demo' },
     { key: 'builder', label: 'Builder', to: '/layout/builder' },
+    {
+      key: 'presets',
+      label: 'Presets',
+      subMenus: [
+        {
+          key: 'default',
+          label: 'Default',
+          to: 'layout/presets/default',
+        },
+        {
+          key: 'standard',
+          label: 'Standard',
+          to: 'layout/presets/standard',
+        },
+        {
+          key: 'content-based',
+          label: 'Content Based',
+          to: 'layout/presets/content-based',
+        },
+        {
+          key: 'cozy',
+          label: 'Cozy',
+          to: 'layout/presets/cozy',
+        },
+        {
+          key: 'fixed',
+          label: 'Fixed',
+          to: 'layout/presets/fixed',
+        },
+        {
+          key: 'mui-treasury',
+          label: 'MUI Treasury',
+          to: 'layout/presets/mui-treasury',
+        },
+      ],
+    },
+    // {
+    //   key: 'examples',
+    //   label: 'Examples',
+    //   subMenus: [
+    //     {
+    //       key: 'starter',
+    //       label: 'Starter',
+    //       to: '/layout/examples/starter',
+    //     },
+    //   ],
+    // },
   ],
   [PKG.nav]: [
     // { key: 'how-to', label: 'How to' },

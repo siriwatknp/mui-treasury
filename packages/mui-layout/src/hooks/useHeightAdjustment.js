@@ -1,5 +1,6 @@
 import debounce from 'lodash.debounce';
 import { useCallback, useEffect, useState } from 'react';
+import useWindow from './useWindow';
 import someIs from '../utils/someIs';
 import useEventListener from './useEventListener';
 
@@ -11,6 +12,7 @@ export default ({
   heightAdjustmentDisabled = false,
 }) => {
   const [height, setHeight] = useState(0);
+  const { iWindow } = useWindow();
 
   useEffect(() => {
     if (typeof offsetHeight === 'number') {
@@ -23,14 +25,14 @@ export default ({
       () => {
         // Update height
         if (typeof offsetHeight === 'number') {
-          const offset = offsetHeight - window.scrollY;
+          const offset = offsetHeight - iWindow.scrollY;
           setHeight(offset < 0 ? 0 : offset);
         }
       },
       heightAdjustmentSpeed,
       { leading: true, trailing: true }
     ),
-    [setHeight, offsetHeight]
+    [setHeight, offsetHeight, iWindow]
   );
 
   useEventListener('scroll', handler);

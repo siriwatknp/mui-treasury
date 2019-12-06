@@ -1,7 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { Root, muiTreasuryPreset } from '@mui-treasury/layout';
-import NoSsr from '@material-ui/core/NoSsr';
 // import { library } from '@fortawesome/fontawesome-svg-core';
 // import {
 //   faFighterJet,

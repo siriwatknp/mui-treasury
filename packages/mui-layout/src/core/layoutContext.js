@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import useTheme from '@material-ui/core/styles/useTheme';
 import PropTypes from 'prop-types';
 import {
@@ -6,7 +6,7 @@ import {
   isSomeExisted,
   selectConfigByScreen,
 } from '../utils';
-import { useScreen } from '../hooks';
+import useScreen from '../hooks/useScreen';
 import { defaultLayoutPreset } from '../presets';
 
 const LayoutCtx = React.createContext('value');
@@ -113,8 +113,6 @@ LayoutProvider.defaultProps = {
 };
 
 export { LayoutProvider };
-
-export const useLayoutCtx = () => useContext(LayoutCtx);
 
 export const LayoutConsumer = LayoutCtx.Consumer;
 

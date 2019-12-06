@@ -17,6 +17,7 @@ const useStyles = makeStyles(() => ({
     display: 'block',
     margin: 0,
     width: '100%',
+    height: '100%',
   },
 }));
 
@@ -45,7 +46,7 @@ function IFrame(props) {
       }),
       sheetsManager: new Map(),
       container: instanceRef.current.contentDocument.body,
-      window: () => instanceRef.current.contentWindow,
+      window: instanceRef.current.contentWindow,
     });
   };
 
@@ -66,10 +67,12 @@ function IFrame(props) {
         <div id="demo-frame-jss" />
         {state.ready ? (
           <StylesProvider jss={state.jss} sheetsManager={state.sheetsManager}>
-            {React.cloneElement(children, {
-              container: state.container,
-              window: state.window,
-            })}
+            {typeof children === 'function'
+              ? children({ container: state.container, window: state.window })
+              : React.cloneElement(children, {
+                  container: state.container,
+                  window: state.window,
+                })}
           </StylesProvider>
         ) : null}
       </Frame>
@@ -78,8 +81,7 @@ function IFrame(props) {
 }
 
 IFrame.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
 };
-IFrame.defaultProps = {};
 
 export default React.memo(IFrame);

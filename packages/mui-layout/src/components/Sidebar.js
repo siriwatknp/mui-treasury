@@ -2,7 +2,12 @@ import React from 'react';
 import cx from 'clsx';
 import PropTypes from 'prop-types';
 import Drawer from '@material-ui/core/Drawer';
-import { useLayoutCtx, useAutoCollapse, useHeightAdjustment } from '../hooks';
+import {
+  useLayoutCtx,
+  useAutoCollapse,
+  useHeightAdjustment,
+  useWindow,
+} from '../hooks';
 import { useTransitionStyles, useSidebarStyles } from '../styles';
 
 const getSidebarAnchor = side => {
@@ -19,10 +24,12 @@ const Sidebar = ({
   children,
   PaperProps,
   SlideProps,
+  ModalProps,
   // eslint-disable-next-line react/prop-types
   mapContext = defaultMapContext, // for internal usage only
   ...props
 }) => {
+  const { iBody } = useWindow();
   const ctx = useLayoutCtx();
   const parsedCtx = mapContext(ctx);
   const height = useHeightAdjustment({
@@ -56,9 +63,13 @@ const Sidebar = ({
           ),
         },
         style: {
-          ...PaperProps.style,
+          ...(PaperProps || {}).style,
           width: getSidebarWidth(),
         },
+      }}
+      ModalProps={{
+        container: iBody,
+        ...ModalProps,
       }}
       SlideProps={{
         ...SlideProps,
@@ -78,11 +89,13 @@ const Sidebar = ({
 Sidebar.propTypes = {
   PaperProps: PropTypes.shape({}),
   SlideProps: PropTypes.shape({}),
+  ModalProps: PropTypes.shape({}),
   children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
 };
 Sidebar.defaultProps = {
-  PaperProps: {},
-  SlideProps: {},
+  PaperProps: undefined,
+  SlideProps: undefined,
+  ModalProps: undefined,
   children: null,
 };
 
