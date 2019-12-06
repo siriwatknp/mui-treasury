@@ -3,11 +3,6 @@
   "npmClient": "yarn",
   "version": "independent",
   "useWorkspaces": true,
-  "command": {
-    "publish": {
-      "conventionalCommits": true
-    }
-  },
   "changelog": {
     "ignoreCommitters": [
       "allcontributors",
