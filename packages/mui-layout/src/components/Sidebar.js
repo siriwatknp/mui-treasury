@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'clsx';
+import get from 'lodash.get';
 import PropTypes from 'prop-types';
 import Drawer from '@material-ui/core/Drawer';
 import {
@@ -27,6 +28,7 @@ const Sidebar = ({
   ModalProps,
   // eslint-disable-next-line react/prop-types
   mapContext = defaultMapContext, // for internal usage only
+  debug,
   ...props
 }) => {
   const { iBody } = useWindow();
@@ -38,7 +40,7 @@ const Sidebar = ({
     heightAdjustmentDisabled: ctx.heightAdjustmentDisabled,
     heightAdjustmentSpeed: ctx.heightAdjustmentSpeed,
   });
-  useAutoCollapse(parsedCtx);
+  useAutoCollapse(parsedCtx, debug);
   const [entered, setEntered] = React.useState(false);
   const styles = useSidebarStyles();
   const transitionStyles = useTransitionStyles();
@@ -56,14 +58,16 @@ const Sidebar = ({
       PaperProps={{
         ...PaperProps,
         classes: {
+          ...get(PaperProps, 'classes'),
           root: cx(
             styles.paper,
             isPermanent && transitionStyles.root,
-            entered && transitionStyles.all
+            entered && transitionStyles.all,
+            get(PaperProps, 'classes.root')
           ),
         },
         style: {
-          ...(PaperProps || {}).style,
+          ...get(PaperProps, 'style'),
           width: getSidebarWidth(),
         },
       }}

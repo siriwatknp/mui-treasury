@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Box from 'components/atoms/Box';
 
-const grey = '#f0f0f0';
-const border = `1px solid ${grey}`;
 const Browser = ({ children, ...props }) => {
   const commonProps = {
     width: 12,
@@ -15,7 +13,6 @@ const Browser = ({ children, ...props }) => {
     <Box
       position={'relative'}
       borderRadius={8}
-      borderBottom={border}
       overflow={'hidden'}
       display={'flex'}
       flexDirection={'column'}

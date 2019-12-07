@@ -25,9 +25,9 @@ export default ({
   },
   header: {
     position: 'fixed',
+    offsetHeight: 64,
     clipped: true,
     secondaryClipped: false,
-    offsetHeight: 64,
     persistentPushed: true,
     persistentScreenFit: true,
     secondaryPersistentPushed: true,
@@ -37,15 +37,15 @@ export default ({
   content: {
     persistentPushed: true,
     persistentScreenFit: true,
-    secondaryPersistentPushed: true,
-    secondaryPersistentScreenFit: true,
+    secondaryPersistentPushed: false,
+    secondaryPersistentScreenFit: false,
     ...content,
   },
   footer: {
     persistentPushed: true,
     persistentScreenFit: true,
-    secondaryPersistentPushed: true,
-    secondaryPersistentScreenFit: true,
+    secondaryPersistentPushed: false,
+    secondaryPersistentScreenFit: false,
     ...footer,
   },
 });

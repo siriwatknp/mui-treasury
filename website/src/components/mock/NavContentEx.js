@@ -49,10 +49,15 @@ const list = [
     icon: <Delete />,
   },
 ];
-const NavContentEx = () => (
+const NavContentEx = ({ onClickItem }) => (
   <List>
     {list.map(({ primaryText, icon }, i) => (
-      <ListItem key={primaryText} selected={i === 0} button>
+      <ListItem
+        key={primaryText}
+        selected={i === 0}
+        button
+        onClick={onClickItem}
+      >
         <ListItemIcon>
           <Icon>{icon}</Icon>
         </ListItemIcon>
@@ -63,7 +68,7 @@ const NavContentEx = () => (
       </ListItem>
     ))}
     <Divider style={{ margin: '12px 0' }} />
-    <ListItem button>
+    <ListItem button onClick={onClickItem}>
       <ListItemIcon>
         <Settings />
       </ListItemIcon>

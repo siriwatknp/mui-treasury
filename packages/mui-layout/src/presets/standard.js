@@ -1,12 +1,11 @@
 import getDefaultScreenConfig from '../utils/getDefaultScreenConfig';
+import getAddOnConfig from '../utils/getAddOnConfig';
 
 export default {
-  autoCollapseDisabled: false,
-  collapsedBreakpoint: 'sm',
-  heightAdjustmentDisabled: false,
-  SecondaryAutoCollapsedDisabled: false,
-  secondaryCollapsedBreakpoint: 'sm',
-  secondaryHeightAdjustmentDisabled: false,
+  ...getAddOnConfig({
+    collapsedBreakpoint: 'sm',
+    secondaryCollapseBreakpoint: 'sm',
+  }),
   xs: getDefaultScreenConfig({
     header: {
       position: 'sticky',
