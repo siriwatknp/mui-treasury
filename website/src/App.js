@@ -38,7 +38,6 @@ import createPath from './modules/path';
 // );
 
 const App = ({ children, location }) => {
-  const shouldRenderChildrenDirectly = location.pathname === '/layout/develop';
   const path = createPath(location);
   return (
     <>
@@ -77,9 +76,7 @@ const App = ({ children, location }) => {
         />
         <meta property="twitter:image" content={banner} />
       </Helmet>
-      {shouldRenderChildrenDirectly ? (
-        children
-      ) : (
+      {path.wrappedByLayout ? (
         <ThemeWrapper>
           <Root
             omitThemeProvider
@@ -105,6 +102,8 @@ const App = ({ children, location }) => {
             </PageLayout>
           </Root>
         </ThemeWrapper>
+      ) : (
+        children
       )}
     </>
   );

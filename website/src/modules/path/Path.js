@@ -1,30 +1,37 @@
 import MENUS, { PKG } from '../../constants/menus';
 
-export const getHomeHandler = () => {
+const getHomeHandler = () => {
   return {
     pattern: /\//,
   };
 };
 
-export const getComponentHandler = () => {
+const getComponentHandler = () => {
   return {
     pattern: /\/components.*/g,
     sidebarMenus: MENUS[PKG.components],
   };
 };
 
-export const getLayoutHandler = () => {
+const getLayoutDevelop = () => {
+  return {
+    pattern: /\/layout\/develop/g,
+    wrappedByLayout: false,
+  };
+};
+
+const getLayoutHandler = () => {
   return {
     pattern: /\/layout.*/g,
     sidebarMenus: MENUS[PKG.layouts],
   };
 };
 
-export const getFallbackHandler = () => {
+const getFallbackHandler = () => {
   return {
     pattern: /.*/g,
     sidebarMenus: [],
-    navMenus: MENUS[PKG.nav],
+    wrappedByLayout: true,
   };
 };
 
@@ -32,7 +39,7 @@ const getFirstValue = (items, getValue) => {
   let result;
   items.forEach(item => {
     const value = getValue(item);
-    if (!result && value !== undefined) {
+    if (result === undefined && value !== undefined) {
       result = value;
     }
   });
@@ -44,6 +51,7 @@ const getPathValue = (pathname, key) =>
     [
       getHomeHandler(),
       getComponentHandler(),
+      getLayoutDevelop(),
       getLayoutHandler(),
       getFallbackHandler(),
     ],
@@ -60,6 +68,6 @@ export default (location = {}) => {
   const { pathname } = location;
   return {
     sidebarMenus: getPathValue(pathname, 'sidebarMenus'),
-    navMenus: getPathValue(pathname, 'navMenus'),
+    wrappedByLayout: getPathValue(pathname, 'wrappedByLayout'),
   };
 };

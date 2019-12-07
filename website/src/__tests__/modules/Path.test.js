@@ -25,42 +25,52 @@ describe('LayoutController', () => {
     };
     layout = createLayout(location);
   });
-  test('layout instance is an object', () => {
-    expect(layout).toMatchObject({
-      sidebarMenus: expect.any(Array),
-      navMenus: expect.any(Array),
-    });
-  });
-
-  test('match home handler', () => {
+  test('fallback path', () => {
     expect(layout).toMatchObject({
       sidebarMenus: [],
-      navMenus: ['nav'],
+      wrappedByLayout: true,
     });
   });
 
-  test('match component handler', () => {
+  test('match "/"', () => {
+    expect(layout).toMatchObject({
+      sidebarMenus: [],
+      wrappedByLayout: true,
+    });
+  });
+
+  test('match "/components*"', () => {
     location = {
       pathname: '/components/button',
     };
     layout = createLayout(location);
     expect(layout).toMatchObject({
       sidebarMenus: ['components'],
-      navMenus: ['nav'],
+      wrappedByLayout: true,
     });
   });
 
-  test('match layout handler', () => {
+  test('match "/layout*"', () => {
     location = {
       pathname: '/layout/presets/standard',
     };
     layout = createLayout(location);
     expect(layout).toMatchObject({
       sidebarMenus: ['layouts'],
-      navMenus: ['nav'],
+      wrappedByLayout: true,
     });
   });
 
+  test('match exact /layout/develop', () => {
+    location = {
+      pathname: '/layout/develop',
+    };
+    layout = createLayout(location);
+    expect(layout).toMatchObject({
+      sidebarMenus: ['layouts'],
+      wrappedByLayout: false,
+    });
+  });
 });
 
 // getMenus
