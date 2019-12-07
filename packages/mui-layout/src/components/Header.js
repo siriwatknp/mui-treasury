@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'clsx';
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles, useTheme } from '@material-ui/styles';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import { useLayoutCtx } from '../hooks';
@@ -21,6 +21,7 @@ const Header = ({ className, children, style, ...props }) => {
   const { header, getHeaderStyle } = ctx;
   const styles = useStyles(header);
   const transitionStyles = useTransitionStyles();
+  const theme = useTheme();
   return (
     <AppBar
       color={'default'}
@@ -30,7 +31,7 @@ const Header = ({ className, children, style, ...props }) => {
       className={cx(styles.root, transitionStyles.root, className)}
       style={{
         ...style,
-        ...getHeaderStyle(),
+        ...getHeaderStyle(theme),
       }}
     >
       {typeof children === 'function' ? children(ctx) : children}

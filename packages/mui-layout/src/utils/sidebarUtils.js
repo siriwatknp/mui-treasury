@@ -1,7 +1,6 @@
 export const parseSecondaryConfig = ({
   secondarySidebar,
-  secondaryPersistentScreenFit,
-  secondaryPersistentPushed,
+  secondaryPersistentBehavior,
   secondaryOpened,
   setSecondaryOpened,
   secondaryCollapsed,
@@ -11,12 +10,12 @@ export const parseSecondaryConfig = ({
   secondaryCollapseBreakpoint,
   getSecondarySidebarWidth,
   getSecondarySidebarGap,
+  getSecondarySidebarZIndex,
   ...rest
 } = {}) => ({
   ...rest,
   sidebar: secondarySidebar,
-  persistentScreenFit: secondaryPersistentScreenFit,
-  persistentPushed: secondaryPersistentPushed,
+  persistentBehavior: secondaryPersistentBehavior,
   opened: secondaryOpened,
   collapsed: secondaryCollapsed,
   clipped: secondaryClipped,
@@ -26,6 +25,7 @@ export const parseSecondaryConfig = ({
   collapseBreakpoint: secondaryCollapseBreakpoint,
   getSidebarWidth: getSecondarySidebarWidth,
   getSidebarGap: getSecondarySidebarGap,
+  getSidebarZIndex: getSecondarySidebarZIndex,
 });
 
 export const secondaryAdapter = {
@@ -49,31 +49,29 @@ export default (ctx = {}) => {
   return {
     ...sidebar,
     width,
-    calculateGap: ({ persistentPushed } = {}) => {
+    calculateGap: ({ persistentBehavior } = {}) => {
       switch (sidebar.variant) {
         case 'temporary':
           return 0;
         case 'permanent':
           return width;
         case 'persistent':
-          return opened && persistentPushed ? width : 0;
+          return opened &&
+            (persistentBehavior === 'fit' || persistentBehavior === 'flexible')
+            ? width
+            : 0;
         default:
           return undefined;
       }
     },
-    calculateAffectedWidth: ({
-      persistentScreenFit,
-      persistentPushed,
-    } = {}) => {
+    calculateAffectedWidth: ({ persistentBehavior } = {}) => {
       switch (sidebar.variant) {
         case 'temporary':
           return '100%';
         case 'permanent':
           return width;
         case 'persistent':
-          return opened && persistentScreenFit && persistentPushed
-            ? width
-            : '100%';
+          return opened && persistentBehavior === 'fit' ? width : '100%';
         default:
           return undefined;
       }

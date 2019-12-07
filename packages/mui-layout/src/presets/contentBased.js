@@ -20,16 +20,13 @@ export default {
     header: {
       position: 'relative',
       clipped: false,
-      persistentPushed: true,
-      persistentScreenFit: false,
+      persistentBehavior: 'flexible',
     },
     content: {
-      persistentPushed: true,
-      persistentScreenFit: false,
+      persistentBehavior: 'flexible',
     },
     footer: {
-      persistentPushed: true,
-      persistentScreenFit: false,
+      persistentBehavior: 'flexible',
     },
   }),
 };
