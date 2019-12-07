@@ -21,8 +21,8 @@ import { mapNestedPath } from '@mui-treasury/utils';
 import { ThemeWrapper } from './utils/theme';
 import './global.css';
 import banner from './assets/mui-treasury_banner_minified.jpg';
-import MENUS, { PKG } from './constants/menus';
 import PageLayout from './components/layout/PageLayout';
+import createPath from './modules/path';
 
 // library.add(
 //   faFighterJet,
@@ -39,15 +39,7 @@ import PageLayout from './components/layout/PageLayout';
 
 const App = ({ children, location }) => {
   const shouldRenderChildrenDirectly = location.pathname === '/layout/develop';
-  const getMenus = () => {
-    if (location.pathname.startsWith('/components')) {
-      return MENUS[PKG.components];
-    }
-    if (location.pathname.startsWith('/layout')) {
-      return MENUS[PKG.layouts];
-    }
-    return [];
-  };
+  const path = createPath(location);
   return (
     <>
       <Helmet>
@@ -101,7 +93,7 @@ const App = ({ children, location }) => {
             })}
           >
             <PageLayout
-              menus={getMenus()}
+              menus={path.sidebarMenus}
               getOpenKeys={({ menus, lastPath }) => {
                 const keyMap = mapNestedPath(menus);
                 return menus
