@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 
-const LayoutFrontMatter = ({ children, match }) => {
+const FrontMatter = ({ children, match }) => {
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(
-        filter: { frontmatter: { category: { eq: "layout" } } }
+        filter: { frontmatter: { category: { eq: "component" } } }
       ) {
         nodes {
           frontmatter {
@@ -19,7 +19,6 @@ const LayoutFrontMatter = ({ children, match }) => {
   const {
     allMarkdownRemark: { nodes },
   } = data;
-  console.log('nodes', nodes);
   const result = nodes.find(({ frontmatter: { path } }) => path === match);
   if (!match || !result) {
     return null;
@@ -27,11 +26,11 @@ const LayoutFrontMatter = ({ children, match }) => {
   return children(result);
 };
 
-const FrontMatter = ({ children, match }) => {
+const LayoutFrontMatter = ({ children, match }) => {
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(
-        filter: { frontmatter: { category: { eq: "component" } } }
+        filter: { frontmatter: { category: { eq: "layout" } } }
       ) {
         nodes {
           frontmatter {

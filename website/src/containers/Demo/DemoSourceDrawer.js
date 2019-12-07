@@ -14,6 +14,7 @@ import Grid from '@material-ui/core/Grid';
 import Drawer from '@material-ui/core/Drawer';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import SourceFile from 'containers/SourceFile';
+import FrontMatter from 'containers/FrontMatter';
 import docGen from 'utils/docGen';
 import { isExternalLink } from 'utils/functions';
 
@@ -109,7 +110,7 @@ const DemoSourceDrawer = ({ title, frameProps }) => {
   return (
     <Consumer>
       {({ Component, setComponent }) => {
-        const { metadata = {} } = Component;
+        const { metadata = {}, raw_js: rawSource } = Component;
         const isOpen = Object.keys(metadata).length > 0;
         const {
           files = [],
@@ -151,7 +152,12 @@ const DemoSourceDrawer = ({ title, frameProps }) => {
                 <ModuleProjector
                   files={mappedFiles}
                   demoSource={
-                    <SourceFile match={metadata.path} fileName={'Demo.js'} />
+                    <SourceFile
+                      component={FrontMatter}
+                      match={metadata.path}
+                      fileName={'Demo.js'}
+                      source={rawSource}
+                    />
                   }
                 />
               </Box>

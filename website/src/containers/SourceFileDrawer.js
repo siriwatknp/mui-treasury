@@ -25,7 +25,7 @@ const useStyles = makeStyles(({ spacing, breakpoints }) => ({
   },
 }));
 
-const SourceFileDrawer = ({ metadata }) => {
+const SourceFileDrawer = ({ metadata, source }) => {
   const [open, setOpen] = React.useState(false);
   const styles = useStyles();
   return (
@@ -39,6 +39,7 @@ const SourceFileDrawer = ({ metadata }) => {
             component={FrontMatter.Layout}
             match={metadata.path}
             fileName={`${metadata.title}.js`}
+            source={source}
           />
         </Box>
       </Drawer>
@@ -54,6 +55,7 @@ SourceFileDrawer.propTypes = {
     title: PropTypes.string.isRequired,
     path: PropTypes.string.isRequired,
   }).isRequired,
+  source: PropTypes.string.isRequired,
 };
 
 export default SourceFileDrawer;
