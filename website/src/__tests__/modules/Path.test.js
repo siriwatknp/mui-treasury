@@ -34,6 +34,7 @@ describe('LayoutController', () => {
       sidebarMenus: [],
       wrappedByLayout: true,
       parseConfig: expect.any(Function),
+      getOpenKeys: expect.any(Function),
     });
     // fallback parseConfig must not change the signature
     expect(layout.parseConfig('a')).toEqual('a');

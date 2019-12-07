@@ -1,3 +1,4 @@
+import { mapNestedPath } from '@mui-treasury/utils';
 import MENUS, { PKG } from '../../constants/menus';
 
 const getHomeHandler = () => {
@@ -31,6 +32,14 @@ const getLayoutHandler = () => {
   return {
     pattern: /\/layout.*/g,
     sidebarMenus: MENUS[PKG.layouts],
+    parseConfig: c => ({
+      ...c,
+      sidebar: {
+        ...c.sidebar,
+        width: 200,
+      },
+    }),
+    getOpenKeys: () => ['presets', 'examples'],
   };
 };
 
@@ -40,6 +49,12 @@ const getFallbackHandler = () => {
     sidebarMenus: [],
     wrappedByLayout: true,
     parseConfig: c => c,
+    getOpenKeys: ({ menus, lastPath }) => {
+      const keyMap = mapNestedPath(menus);
+      return menus
+        .filter(({ key }) => keyMap[key].includes(lastPath))
+        .map(({ key }) => key);
+    },
   };
 };
 
@@ -78,5 +93,6 @@ export default (location = {}) => {
     sidebarMenus: getPathValue(pathname, 'sidebarMenus'),
     wrappedByLayout: getPathValue(pathname, 'wrappedByLayout'),
     parseConfig: getPathValue(pathname, 'parseConfig'),
+    getOpenKeys: getPathValue(pathname, 'getOpenKeys'),
   };
 };

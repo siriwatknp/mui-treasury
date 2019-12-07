@@ -17,7 +17,6 @@ import { Root, muiTreasuryPreset } from '@mui-treasury/layout';
 //   faGithub,
 //   faFacebookF,
 // } from '@fortawesome/free-brands-svg-icons';
-import { mapNestedPath } from '@mui-treasury/utils';
 import { ThemeWrapper } from './utils/theme';
 import './global.css';
 import banner from './assets/mui-treasury_banner_minified.jpg';
@@ -38,7 +37,7 @@ import createPath from './modules/path';
 // );
 
 const App = ({ children, location }) => {
-  const path = createPath(location);
+  const path = React.useMemo(() => createPath(location), [location]);
   return (
     <>
       <Helmet>
@@ -85,12 +84,7 @@ const App = ({ children, location }) => {
           >
             <PageLayout
               menus={path.sidebarMenus}
-              getOpenKeys={({ menus, lastPath }) => {
-                const keyMap = mapNestedPath(menus);
-                return menus
-                  .filter(({ key }) => keyMap[key].includes(lastPath))
-                  .map(({ key }) => key);
-              }}
+              getOpenKeys={path.getOpenKeys}
             >
               {children}
             </PageLayout>
