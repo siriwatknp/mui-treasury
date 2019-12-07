@@ -53,7 +53,7 @@ const links = [
   },
 ];
 
-const Footer = () => {
+const PageFooter = () => {
   const classes = useStyles();
   const data = useStaticQuery(graphql`
     query {
@@ -113,7 +113,7 @@ const Footer = () => {
   );
 };
 
-Footer.propTypes = {};
-Footer.defaultProps = {};
+PageFooter.propTypes = {};
+PageFooter.defaultProps = {};
 
-export default Footer;
+export default PageFooter;

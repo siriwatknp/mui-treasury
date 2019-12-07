@@ -14,7 +14,6 @@ import Grid from '@material-ui/core/Grid';
 import Drawer from '@material-ui/core/Drawer';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import SourceFile from 'containers/SourceFile';
-import FrontMatter from 'containers/FrontMatter';
 import docGen from 'utils/docGen';
 import { isExternalLink } from 'utils/functions';
 
@@ -153,7 +152,6 @@ const DemoSourceDrawer = ({ title, frameProps }) => {
                   files={mappedFiles}
                   demoSource={
                     <SourceFile
-                      component={FrontMatter}
                       match={metadata.path}
                       fileName={'Demo.js'}
                       source={rawSource}

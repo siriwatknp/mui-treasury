@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Root, muiTreasuryPreset } from '@mui-treasury/layout';
 // import { library } from '@fortawesome/fontawesome-svg-core';
@@ -16,12 +17,11 @@ import { Root, muiTreasuryPreset } from '@mui-treasury/layout';
 //   faGithub,
 //   faFacebookF,
 // } from '@fortawesome/free-brands-svg-icons';
-import { mapNestedPath } from '@mui-treasury/utils';
 import { ThemeWrapper } from './utils/theme';
 import './global.css';
 import banner from './assets/mui-treasury_banner_minified.jpg';
-import { PKG } from './constants/menus';
-import SidebarLayout from './components/layout/SidebarLayout';
+import PageLayout from './components/layout/PageLayout';
+import createPath from './modules/path';
 
 // library.add(
 //   faFighterJet,
@@ -37,16 +37,7 @@ import SidebarLayout from './components/layout/SidebarLayout';
 // );
 
 const App = ({ children, location }) => {
-  const shouldRenderChildrenDirectly = location.pathname === '/layout/develop';
-  const getMenus = () => {
-    if (location.pathname.startsWith('/components')) {
-      return PKG.components;
-    }
-    if (location.pathname.startsWith('/layout')) {
-      return PKG.layouts;
-    }
-    return [];
-  };
+  const path = React.useMemo(() => createPath(location), [location]);
   return (
     <>
       <Helmet>
@@ -84,37 +75,33 @@ const App = ({ children, location }) => {
         />
         <meta property="twitter:image" content={banner} />
       </Helmet>
-      {shouldRenderChildrenDirectly ? (
-        children
-      ) : (
+      {path.wrappedByLayout ? (
         <ThemeWrapper>
           <Root
             omitThemeProvider
             config={muiTreasuryPreset}
-            parseConfig={c => ({
-              ...c,
-              sidebar: {
-                ...c.sidebar,
-                hidden: location.pathname === '/',
-              },
-            })}
+            parseConfig={path.parseConfig}
           >
-            <SidebarLayout
-              pkg={getMenus()}
-              getOpenKeys={({ menus, lastPath }) => {
-                const keyMap = mapNestedPath(menus);
-                return menus
-                  .filter(({ key }) => keyMap[key].includes(lastPath))
-                  .map(({ key }) => key);
-              }}
+            <PageLayout
+              menus={path.sidebarMenus}
+              getOpenKeys={path.getOpenKeys}
             >
               {children}
-            </SidebarLayout>
+            </PageLayout>
           </Root>
         </ThemeWrapper>
+      ) : (
+        children
       )}
     </>
   );
+};
+
+App.propTypes = {
+  children: PropTypes.node.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default App;
