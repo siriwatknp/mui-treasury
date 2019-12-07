@@ -2,21 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import {
-  Header as LayoutHeader,
+  Header,
   SidebarTrigger,
   SidebarTriggerIcon,
   CollapseBtn,
   CollapseIcon,
   Content,
-  Footer as LayoutFooter,
+  Footer,
   Sidebar,
   useSidebarStyles,
   useHeaderStyles,
 } from '@mui-treasury/layout';
 import Toolbar from '@material-ui/core/Toolbar';
-import MENUS, { PKG } from 'constants/menus';
-import Header from 'components/layout/Header';
-import Footer from 'components/layout/Footer';
+import PageHeader from 'components/layout/PageHeader';
+import PageFooter from 'components/layout/PageFooter';
 import ComponentMenuList from 'components/organisms/ComponentMenuList';
 
 const useStyles = makeStyles(theme => {
@@ -35,22 +34,21 @@ const useFooterStyles = makeStyles(() => ({
   },
 }));
 
-const SidebarLayout = ({ pkg, children, getOpenKeys }) => {
-  const menus = MENUS[PKG[pkg]];
+const PageLayout = ({ menus, children, getOpenKeys }) => {
   const styles = useStyles();
   const headerStyles = useHeaderStyles();
   const sidebarStyles = useSidebarStyles();
   const footerStyles = useFooterStyles();
   return (
     <>
-      <LayoutHeader className={styles.header}>
+      <Header className={styles.header}>
         <Toolbar>
           <SidebarTrigger className={headerStyles.leftTrigger}>
             <SidebarTriggerIcon />
           </SidebarTrigger>
-          <Header />
+          <PageHeader />
         </Toolbar>
-      </LayoutHeader>
+      </Header>
       <Content>{children}</Content>
       <Sidebar>
         <div className={sidebarStyles.container}>
@@ -60,22 +58,20 @@ const SidebarLayout = ({ pkg, children, getOpenKeys }) => {
           <CollapseIcon />
         </CollapseBtn>
       </Sidebar>
-      <LayoutFooter className={footerStyles.root}>
-        <Footer />
-      </LayoutFooter>
+      <Footer className={footerStyles.root}>
+        <PageFooter />
+      </Footer>
     </>
   );
 };
 
-SidebarLayout.propTypes = {
-  pkg: PropTypes.oneOf(Object.keys(PKG)),
+PageLayout.propTypes = {
+  menus: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
+  children: PropTypes.node.isRequired,
   getOpenKeys: PropTypes.func,
-  menuListStyles: PropTypes.shape({}),
 };
-SidebarLayout.defaultProps = {
-  pkg: PKG.nav,
+PageLayout.defaultProps = {
   getOpenKeys: () => [],
-  menuListStyles: undefined,
 };
 
-export default SidebarLayout;
+export default PageLayout;

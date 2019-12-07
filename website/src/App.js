@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Root, muiTreasuryPreset } from '@mui-treasury/layout';
 // import { library } from '@fortawesome/fontawesome-svg-core';
@@ -20,8 +21,8 @@ import { mapNestedPath } from '@mui-treasury/utils';
 import { ThemeWrapper } from './utils/theme';
 import './global.css';
 import banner from './assets/mui-treasury_banner_minified.jpg';
-import { PKG } from './constants/menus';
-import SidebarLayout from './components/layout/SidebarLayout';
+import MENUS, { PKG } from './constants/menus';
+import PageLayout from './components/layout/PageLayout';
 
 // library.add(
 //   faFighterJet,
@@ -40,10 +41,10 @@ const App = ({ children, location }) => {
   const shouldRenderChildrenDirectly = location.pathname === '/layout/develop';
   const getMenus = () => {
     if (location.pathname.startsWith('/components')) {
-      return PKG.components;
+      return MENUS[PKG.components];
     }
     if (location.pathname.startsWith('/layout')) {
-      return PKG.layouts;
+      return MENUS[PKG.layouts];
     }
     return [];
   };
@@ -99,8 +100,8 @@ const App = ({ children, location }) => {
               },
             })}
           >
-            <SidebarLayout
-              pkg={getMenus()}
+            <PageLayout
+              menus={getMenus()}
               getOpenKeys={({ menus, lastPath }) => {
                 const keyMap = mapNestedPath(menus);
                 return menus
@@ -109,12 +110,19 @@ const App = ({ children, location }) => {
               }}
             >
               {children}
-            </SidebarLayout>
+            </PageLayout>
           </Root>
         </ThemeWrapper>
       )}
     </>
   );
+};
+
+App.propTypes = {
+  children: PropTypes.node.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default App;

@@ -20,7 +20,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Header = () => {
+const PageHeader = () => {
   const data = useStaticQuery(graphql`
     query HeaderQuery {
       logo: file(absolutePath: { regex: "/logo.png/" }) {
@@ -88,7 +88,7 @@ const Header = () => {
   );
 };
 
-Header.propTypes = {};
-Header.defaultProps = {};
+PageHeader.propTypes = {};
+PageHeader.defaultProps = {};
 
-export default Header;
+export default PageHeader;
