@@ -2601,24 +2601,6 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@mui-treasury/styles@0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@mui-treasury/styles/-/styles-0.3.1.tgz#ffbb0875b13f1888383d60a17c02a35103f81c02"
-  integrity sha512-OdrPlBV00iL7JvMXDQcYicY0VkoCDnuV5HB55rI6sj8OVHHTkI/vZtCTvmIvt3JK9+pzDpyI5WBuZu7AAs/UJw==
-  dependencies:
-    "@mui-treasury/utils" "0.3.0"
-    color "^3.1.2"
-
-"@mui-treasury/utils@0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@mui-treasury/utils/-/utils-0.3.0.tgz#c30a58e423d51a4014f7349510869443ddf9a492"
-  integrity sha512-R5mX72Zcd6YV0PmnCw5Ts+/nnPv3suIpV2jXpXIM1CJoRFQH7EItYsMFfHBDO/g2t8QigY1jKD6MJ253iI6ZbQ==
-  dependencies:
-    clsx "^1.0.4"
-    lodash.get "^4.4.2"
-    lodash.isequal "^4.5.0"
-    react "^16.11.0"
-
 "@nodelib/fs.scandir@2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.1.tgz#7fa8fed654939e1a39753d286b48b4836d00e0eb"

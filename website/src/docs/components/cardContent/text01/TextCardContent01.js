@@ -29,11 +29,11 @@ TextCardContent01.metadata = {
   files: [
     {
       pkg: 'mui-components',
-      path: 'cardContent/text01/TextCardContent.js',
+      path: 'cardContent/textInfo/TextInfoCardContent.js',
     },
     {
       pkg: 'mui-styles',
-      path: 'cardContent/text01/textCardContent01.styles.js',
+      path: 'cardContent/text01/text01CardContent.styles.js',
     },
   ],
 };

@@ -22,10 +22,12 @@ export default ({
       if (
         // at first render, auto-collapsed if screen <= breakpoint
         !screenObserver.current &&
-        currentScreenIndex <= breakpointScreenIndex
+        currentScreenIndex <= breakpointScreenIndex &&
+        currentScreenIndex !== -1
       ) {
         setCollapsed(true);
       }
+
       if (
         prevScreenIndex !== -1 &&
         prevScreenIndex > breakpointScreenIndex &&
