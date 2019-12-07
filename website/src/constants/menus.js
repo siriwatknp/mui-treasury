@@ -68,17 +68,32 @@ export default {
         },
       ],
     },
-    // {
-    //   key: 'examples',
-    //   label: 'Examples',
-    //   subMenus: [
-    //     {
-    //       key: 'starter',
-    //       label: 'Starter',
-    //       to: '/layout/examples/starter',
-    //     },
-    //   ],
-    // },
+    {
+      key: 'basic-examples',
+      label: 'Basic Examples',
+      subMenus: [
+        {
+          key: 'custom-theme',
+          label: 'Custom theme',
+          to: '/layout/basic-examples/custom-theme',
+        },
+        {
+          key: 'custom-styles',
+          label: 'Custom styles',
+          to: '/layout/basic-examples/custom-styles',
+        },
+        {
+          key: 'control-sidebar',
+          label: 'Control Sidebar',
+          to: '/layout/basic-examples/control-sidebar',
+        },
+        {
+          key: 'secondary-sidebar',
+          label: '2nd Sidebar',
+          to: '/layout/basic-examples/secondary-sidebar',
+        },
+      ],
+    },
   ],
   [PKG.nav]: [
     // { key: 'how-to', label: 'How to' },
