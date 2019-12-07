@@ -3,7 +3,7 @@ import { WindowProvider } from '@mui-treasury/layout';
 
 import BrowserIFrame from 'components/layout/BrowserIFrame';
 import SourceFileDrawer from 'containers/SourceFileDrawer';
-import FixedLayout from 'docs/layout/presets/fixed/FixedLayout';
+import FixedLayout from 'docs/layout/presets/fixed';
 
 const FixedLayoutDemo = () => {
   return (
@@ -17,7 +17,10 @@ const FixedLayoutDemo = () => {
           );
         }}
       </BrowserIFrame>
-      <SourceFileDrawer metadata={FixedLayout.metadata} />
+      <SourceFileDrawer
+        source={FixedLayout.raw_js}
+        metadata={FixedLayout.metadata}
+      />
     </>
   );
 };

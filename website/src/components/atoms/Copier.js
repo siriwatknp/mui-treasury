@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const Copier = ({ text, children }) => {
-  console.log('text', text);
   const [copied, setCopied] = useState(false);
   React.useEffect(() => {
     const timeout = setTimeout(() => {

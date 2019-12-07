@@ -3,7 +3,7 @@ import { WindowProvider } from '@mui-treasury/layout';
 
 import BrowserIFrame from 'components/layout/BrowserIFrame';
 import SourceFileDrawer from 'containers/SourceFileDrawer';
-import StandardLayout from 'docs/layout/presets/standard/StandardLayout';
+import StandardLayout from 'docs/layout/presets/standard';
 
 const StandardLayoutDemo = () => {
   return (
@@ -17,7 +17,10 @@ const StandardLayoutDemo = () => {
           );
         }}
       </BrowserIFrame>
-      <SourceFileDrawer metadata={StandardLayout.metadata} />
+      <SourceFileDrawer
+        source={StandardLayout.raw_js}
+        metadata={StandardLayout.metadata}
+      />
     </>
   );
 };

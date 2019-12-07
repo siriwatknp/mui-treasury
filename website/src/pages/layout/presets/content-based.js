@@ -3,7 +3,7 @@ import { WindowProvider } from '@mui-treasury/layout';
 
 import BrowserIFrame from 'components/layout/BrowserIFrame';
 import SourceFileDrawer from 'containers/SourceFileDrawer';
-import ContentBasedLayout from 'docs/layout/presets/contentBased/ContentBasedLayout';
+import ContentBasedLayout from 'docs/layout/presets/contentBased';
 
 const ContentBasedLayoutDemo = () => {
   return (
@@ -17,7 +17,10 @@ const ContentBasedLayoutDemo = () => {
           );
         }}
       </BrowserIFrame>
-      <SourceFileDrawer metadata={ContentBasedLayout.metadata} />
+      <SourceFileDrawer
+        source={ContentBasedLayout.raw_js}
+        metadata={ContentBasedLayout.metadata}
+      />
     </>
   );
 };
