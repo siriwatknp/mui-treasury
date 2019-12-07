@@ -28,8 +28,12 @@ TextCardContent03.metadata = {
   path: 'cardContent/text03',
   files: [
     {
+      pkg: 'mui-components',
+      path: 'cardContent/textInfo/TextInfoCardContent.js',
+    },
+    {
       pkg: 'mui-styles',
-      path: 'cardContent/text03/textCardContent03.styles.js',
+      path: 'cardContent/text03/text03CardContent.styles.js',
     },
   ],
 };
