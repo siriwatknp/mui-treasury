@@ -8,14 +8,21 @@ export default (ctx = {}) => {
     ctx
   );
   return {
-    getHeaderStyle: () => {
+    getHeaderStyle: theme => {
+      const isHeaderOnTop =
+        (header.clipped && header.position !== 'static') ||
+        (header.secondaryClipped && header.position !== 'static');
+      const layerStyle = isHeaderOnTop
+        ? { zIndex: theme.zIndex.drawer + 10 }
+        : undefined;
       if (header.clipped && header.secondaryClipped) {
-        return {};
+        return layerStyle;
       }
       const { primaryWidth, secondaryWidth } = getWidth(header);
       const { primaryGap, secondaryGap } = getGap(container);
       if (!header.clipped && header.secondaryClipped) {
         return {
+          ...layerStyle,
           width: container.parseWidth(primaryWidth),
           [container.getContainerMarginAttr(
             primarySidebar.anchor,
@@ -25,6 +32,7 @@ export default (ctx = {}) => {
       }
       if (header.clipped && !header.secondaryClipped) {
         return {
+          ...layerStyle,
           width: container.parseWidth(secondaryWidth),
           [container.getContainerMarginAttr(
             secondarySidebar.anchor,
@@ -33,6 +41,7 @@ export default (ctx = {}) => {
         };
       }
       return {
+        ...layerStyle,
         ...container.getMarginStyle(header),
         width: container.calculateWidth(header),
       };

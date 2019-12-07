@@ -2,6 +2,7 @@ import createHeaderUtils from '../utils/headerUtils';
 
 describe('Header Utils', () => {
   let ctx;
+  const theme = { zIndex: { drawer: 1200 } };
   beforeEach(() => {
     ctx = {
       collapsed: false,
@@ -28,24 +29,28 @@ describe('Header Utils', () => {
   });
   test('style is empty style if both sidebar are clipped', () => {
     const headerUtils = createHeaderUtils(ctx);
-    expect(headerUtils.getHeaderStyle()).toMatchObject({});
+    expect(headerUtils.getHeaderStyle(theme)).toMatchObject({
+      zIndex: expect.any(Number),
+    });
   });
 
   test('style has ml & width if primary sidebar not clipped but secondary is clipped', () => {
     ctx.header.clipped = false;
     const headerUtils = createHeaderUtils(ctx);
-    expect(headerUtils.getHeaderStyle()).toMatchObject({
+    expect(headerUtils.getHeaderStyle(theme)).toMatchObject({
       marginLeft: ctx.sidebar.width,
       width: `calc(100% - ${ctx.sidebar.width}px)`,
+      zIndex: expect.any(Number),
     });
   });
 
   test('style has mr & width if secondary not clipped but primary is clipped', () => {
     ctx.header.secondaryClipped = false;
     const headerUtils = createHeaderUtils(ctx);
-    expect(headerUtils.getHeaderStyle()).toMatchObject({
+    expect(headerUtils.getHeaderStyle(theme)).toMatchObject({
       marginRight: ctx.secondarySidebar.width,
       width: `calc(100% - ${ctx.secondarySidebar.width}px)`,
+      zIndex: expect.any(Number),
     });
   });
 

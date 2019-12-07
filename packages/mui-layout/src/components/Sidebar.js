@@ -2,6 +2,7 @@ import React from 'react';
 import cx from 'clsx';
 import get from 'lodash.get';
 import PropTypes from 'prop-types';
+import { useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import {
   useLayoutCtx,
@@ -28,10 +29,10 @@ const Sidebar = ({
   ModalProps,
   // eslint-disable-next-line react/prop-types
   mapContext = defaultMapContext, // for internal usage only
-  debug,
   ...props
 }) => {
   const { iBody } = useWindow();
+  const theme = useTheme();
   const ctx = useLayoutCtx();
   const parsedCtx = mapContext(ctx);
   const height = useHeightAdjustment({
@@ -40,11 +41,17 @@ const Sidebar = ({
     heightAdjustmentDisabled: ctx.heightAdjustmentDisabled,
     heightAdjustmentSpeed: ctx.heightAdjustmentSpeed,
   });
-  useAutoCollapse(parsedCtx, debug);
+  useAutoCollapse(parsedCtx);
   const [entered, setEntered] = React.useState(false);
   const styles = useSidebarStyles();
   const transitionStyles = useTransitionStyles();
-  const { sidebar, opened, setOpened, getSidebarWidth } = parsedCtx;
+  const {
+    sidebar,
+    opened,
+    setOpened,
+    getSidebarWidth,
+    getSidebarZIndex,
+  } = parsedCtx;
   const isPermanent = sidebar.variant === 'permanent';
   return (
     <Drawer
@@ -68,6 +75,7 @@ const Sidebar = ({
         },
         style: {
           ...get(PaperProps, 'style'),
+          ...getSidebarZIndex(theme),
           width: getSidebarWidth(),
         },
       }}

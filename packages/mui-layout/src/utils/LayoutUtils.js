@@ -1,21 +1,23 @@
 import createSidebarUtils, { secondaryAdapter } from './sidebarUtils';
 import createContainerUtils from './containerUtils';
 import createHeaderUtils from './headerUtils';
+import createSidebarLayer from './createSidebarLayer';
 
 export default ({ content = {}, footer = {}, ...ctx }) => {
   const primarySidebar = createSidebarUtils(ctx);
   const secondarySidebar = secondaryAdapter.mapArgs(createSidebarUtils)(ctx);
-  const sidebarWidth = primarySidebar.width;
-  const secondarySidebarWidth = secondarySidebar.width;
   const container = createContainerUtils(ctx);
   const headerUtils = createHeaderUtils(ctx);
+  const sidebarLayer = createSidebarLayer(ctx);
   return {
-    getSidebarWidth: () => sidebarWidth,
+    getSidebarWidth: () => primarySidebar.width,
     getSidebarGap: primarySidebar.calculateGap,
-    getSecondarySidebarWidth: () => secondarySidebarWidth,
+    getSecondarySidebarWidth: () => secondarySidebar.width,
     getSecondarySidebarGap: secondaryAdapter.mapArgs(
       secondarySidebar.calculateGap
     ),
+    getSidebarZIndex: sidebarLayer.getPrimaryStyle,
+    getSecondarySidebarZIndex: sidebarLayer.getSecondaryStyle,
     getWidth: container.calculateWidth,
     getContainerMarginStyle: container.getMarginStyle,
     getContentStyle: () => ({

@@ -159,31 +159,31 @@ const createCode = (config, icon) =>
 `;
 
 const parseConfig = config => {
-  const createScreenConfig = (screen, offsetHeight) => ({
-    [screen]: {
-      sidebar: {
-        variant: get(config, ['navVariant', screen]),
-        width: get(config, ['navWidth', screen]),
-        collapsible: get(config, ['collapsible', screen]),
-        collapsedWidth: get(config, ['collapsedWidth', screen]),
+  const createScreenConfig = (screen, offsetHeight) => {
+    const squeezed = get(config, ['squeezed', screen]);
+    return ({
+      [screen]: {
+        sidebar: {
+          variant: get(config, ['navVariant', screen]),
+          width: get(config, ['navWidth', screen]),
+          collapsible: get(config, ['collapsible', screen]),
+          collapsedWidth: get(config, ['collapsedWidth', screen]),
+        },
+        header: {
+          position: get(config, ['headerPosition', screen]),
+          clipped: get(config, ['clipped', screen]),
+          offsetHeight,
+          persistentBehavior: squeezed ? 'fit' : 'flexible',
+        },
+        content: {
+          persistentBehavior: squeezed ? 'fit' : 'flexible',
+        },
+        footer: {
+          persistentBehavior: squeezed ? 'fit' : 'flexible',
+        },
       },
-      header: {
-        position: get(config, ['headerPosition', screen]),
-        clipped: get(config, ['clipped', screen]),
-        offsetHeight,
-        persistentPushed: get(config, ['squeezed', screen]),
-        persistentScreenFit: get(config, ['squeezed', screen]),
-      },
-      content: {
-        persistentPushed: get(config, ['squeezed', screen]),
-        persistentScreenFit: get(config, ['squeezed', screen]),
-      },
-      footer: {
-        persistentPushed: get(config, ['footerShrink', screen]),
-        persistentScreenFit: get(config, ['footerShrink', screen]),
-      },
-    },
-  });
+    });
+  };
   return {
     autoCollapseDisabled: false,
     collapsedBreakpoint: 'sm',
