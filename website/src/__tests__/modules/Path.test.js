@@ -26,16 +26,26 @@ describe('LayoutController', () => {
     layout = createLayout(location);
   });
   test('fallback path', () => {
+    location = {
+      pathname: '/unknown-sdfnflsdfje',
+    };
+    layout = createLayout(location);
     expect(layout).toMatchObject({
       sidebarMenus: [],
       wrappedByLayout: true,
+      parseConfig: expect.any(Function),
     });
+    // fallback parseConfig must not change the signature
+    expect(layout.parseConfig('a')).toEqual('a');
   });
 
   test('match "/"', () => {
     expect(layout).toMatchObject({
       sidebarMenus: [],
       wrappedByLayout: true,
+    });
+    expect(layout.parseConfig({ sidebar: { hidden: false } })).toEqual({
+      sidebar: { hidden: true },
     });
   });
 

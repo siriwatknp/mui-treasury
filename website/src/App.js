@@ -81,13 +81,7 @@ const App = ({ children, location }) => {
           <Root
             omitThemeProvider
             config={muiTreasuryPreset}
-            parseConfig={c => ({
-              ...c,
-              sidebar: {
-                ...c.sidebar,
-                hidden: location.pathname === '/',
-              },
-            })}
+            parseConfig={path.parseConfig}
           >
             <PageLayout
               menus={path.sidebarMenus}

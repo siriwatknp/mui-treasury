@@ -2,7 +2,14 @@ import MENUS, { PKG } from '../../constants/menus';
 
 const getHomeHandler = () => {
   return {
-    pattern: /\//,
+    pattern: /^\/$/,
+    parseConfig: c => ({
+      ...c,
+      sidebar: {
+        ...c.sidebar,
+        hidden: true,
+      },
+    }),
   };
 };
 
@@ -32,6 +39,7 @@ const getFallbackHandler = () => {
     pattern: /.*/g,
     sidebarMenus: [],
     wrappedByLayout: true,
+    parseConfig: c => c,
   };
 };
 
@@ -69,5 +77,6 @@ export default (location = {}) => {
   return {
     sidebarMenus: getPathValue(pathname, 'sidebarMenus'),
     wrappedByLayout: getPathValue(pathname, 'wrappedByLayout'),
+    parseConfig: getPathValue(pathname, 'parseConfig'),
   };
 };
