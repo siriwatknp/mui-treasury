@@ -14,7 +14,10 @@ const useStyles = makeStyles(() => ({
 const Html = ({ html, source, fileName }) => {
   const styles = useStyles();
   return (
-    <SourceCopier source={source} sourceName={fileName}>
+    <SourceCopier
+      source={source.replace(/ *\/\/ hide-start[^)]*\/\/ hide-end */g, '')}
+      sourceName={fileName}
+    >
       <div className={styles.div} dangerouslySetInnerHTML={{ __html: html }} />
     </SourceCopier>
   );

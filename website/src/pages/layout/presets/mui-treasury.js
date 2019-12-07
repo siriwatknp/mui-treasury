@@ -3,7 +3,7 @@ import { WindowProvider } from '@mui-treasury/layout';
 
 import BrowserIFrame from 'components/layout/BrowserIFrame';
 import SourceFileDrawer from 'containers/SourceFileDrawer';
-import MuiTreasuryLayout from 'docs/layout/presets/muiTreasury/MuiTreasuryLayout';
+import MuiTreasuryLayout from 'docs/layout/presets/muiTreasury';
 
 const MuiTreasuryLayoutDemo = () => {
   return (
@@ -17,7 +17,10 @@ const MuiTreasuryLayoutDemo = () => {
           );
         }}
       </BrowserIFrame>
-      <SourceFileDrawer metadata={MuiTreasuryLayout.metadata} />
+      <SourceFileDrawer
+        metadata={MuiTreasuryLayout.metadata}
+        source={MuiTreasuryLayout.raw_js}
+      />
     </>
   );
 };
