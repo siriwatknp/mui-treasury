@@ -12,11 +12,12 @@ import {
   SidebarTrigger,
   SidebarTriggerIcon,
 } from '@mui-treasury/layout';
-
-import NavContentEx from 'components/mock/NavContentEx';
-import HeaderEx from 'components/mock/HeaderEx';
-import ContentEx from 'components/mock/ContentEx';
-import FooterEx from 'components/mock/FooterEx';
+import {
+  NavContentMockUp,
+  HeaderMockUp,
+  ContentMockUp,
+  FooterMockUp,
+} from '@mui-treasury/mockup/layout';
 
 const ControlSidebarDemo = () => {
   return (
@@ -29,22 +30,22 @@ const ControlSidebarDemo = () => {
               <SidebarTrigger className={headerStyles.leftTrigger}>
                 <SidebarTriggerIcon />
               </SidebarTrigger>
-              <HeaderEx />
+              <HeaderMockUp />
             </Toolbar>
           </Header>
           <Sidebar>
             <div className={sidebarStyles.container}>
-              <NavContentEx onClickItem={() => setOpened(false)} />
+              <NavContentMockUp onClickItem={() => setOpened(false)} />
             </div>
             <CollapseBtn className={sidebarStyles.collapseBtn}>
               <CollapseIcon />
             </CollapseBtn>
           </Sidebar>
           <Content>
-            <ContentEx />
+            <ContentMockUp />
           </Content>
           <Footer>
-            <FooterEx />
+            <FooterMockUp />
           </Footer>
         </>
       )}
