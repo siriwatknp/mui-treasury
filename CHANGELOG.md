@@ -17,16 +17,21 @@
 #### :bug: Bug Fix
   * [#256](https://github.com/siriwatknp/mui-treasury/pull/256) fix: 🐛 secondary sidebar bug ([@siriwatknp](https://github.com/siriwatknp))
 
-### website@1.2.0
+### website@1.2.1
 
 #### :bug: Bug Fix
   * [#249](https://github.com/siriwatknp/mui-treasury/pull/249) fix: 🐛 bug copier & bug frontmatter component ([@siriwatknp](https://github.com/siriwatknp))
 
 #### :bulb: Refactor
-* [#253](https://github.com/siriwatknp/mui-treasury/pull/253) clean code using path pattern matcher ([@siriwatknp](https://github.com/siriwatknp))
+  * [#253](https://github.com/siriwatknp/mui-treasury/pull/253) clean code using path pattern matcher ([@siriwatknp](https://github.com/siriwatknp))
 
 #### :memo: Docs
   * [#256](https://github.com/siriwatknp/mui-treasury/pull/256) Layout basic examples ([@siriwatknp](https://github.com/siriwatknp))
+
+### @mui-treasury/mockup@0.1.0
+
+#### :rocket: New Feature
+  * [#261](https://github.com/siriwatknp/mui-treasury/pull/261) feat: 🎸 add new pkg @mui-treasury/mockup ([@siriwatknp](https://github.com/siriwatknp))
 
 ### @mui-treasury/utils@0.3.5
   * patch
@@ -34,7 +39,7 @@
   * patch
 ### @mui-treasury/styles@0.3.2
   * patch
-### @mui-treasury/components@0.3.5
+### @mui-treasury/components@0.3.7
   * patch
 
 #### Committers: 1
