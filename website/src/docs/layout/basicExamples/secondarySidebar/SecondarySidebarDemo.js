@@ -18,11 +18,12 @@ import {
   SecondaryCollapseIcon,
   cozyLayoutPreset,
 } from '@mui-treasury/layout';
-
-import NavContentEx from 'components/mock/NavContentEx';
-import HeaderEx from 'components/mock/HeaderEx';
-import ContentEx from 'components/mock/ContentEx';
-import FooterEx from 'components/mock/FooterEx';
+import {
+  HeaderMockUp,
+  NavContentMockUp,
+  ContentMockUp,
+  FooterMockUp,
+} from '@mui-treasury/mockup/layout';
 
 const SecondarySidebarDemo = () => {
   return (
@@ -35,7 +36,7 @@ const SecondarySidebarDemo = () => {
               <SidebarTrigger className={headerStyles.leftTrigger}>
                 <SidebarTriggerIcon />
               </SidebarTrigger>
-              <HeaderEx />
+              <HeaderMockUp />
               <SecondarySidebarTrigger className={headerStyles.rightTrigger}>
                 <SecondarySidebarTriggerIcon />
               </SecondarySidebarTrigger>
@@ -43,7 +44,7 @@ const SecondarySidebarDemo = () => {
           </Header>
           <Sidebar>
             <div className={sidebarStyles.container}>
-              <NavContentEx onClickItem={() => setOpened(false)} />
+              <NavContentMockUp onClickItem={() => setOpened(false)} />
             </div>
             <CollapseBtn className={sidebarStyles.collapseBtn}>
               <CollapseIcon />
@@ -56,10 +57,10 @@ const SecondarySidebarDemo = () => {
             </SecondaryCollapseBtn>
           </SecondarySidebar>
           <Content>
-            <ContentEx />
+            <ContentMockUp />
           </Content>
           <Footer>
-            <FooterEx />
+            <FooterMockUp />
           </Footer>
         </>
       )}

@@ -26,7 +26,7 @@ const ContentEx = ({ classes }) => (
       Material UI <Link underline={'none'}>Layout</Link>
     </Typography>
     <Typography gutterBottom>
-      <b>Version 1.1</b>
+      <b>Version 3.0</b>
     </Typography>
     <Typography indent={'small'}>
       Layout is a group of Material-UI components that are enhanced and combined

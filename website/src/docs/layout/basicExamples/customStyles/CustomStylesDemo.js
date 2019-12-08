@@ -15,11 +15,12 @@ import {
   SidebarTriggerIcon,
   standardLayoutPreset,
 } from '@mui-treasury/layout';
-
-import NavContentEx from 'components/mock/NavContentEx';
-import HeaderEx from 'components/mock/HeaderEx';
-import ContentEx from 'components/mock/ContentEx';
-import FooterEx from 'components/mock/FooterEx';
+import {
+  HeaderMockUp,
+  NavContentMockUp,
+  ContentMockUp,
+  FooterMockUp,
+} from '@mui-treasury/mockup/layout';
 
 const useStyles = makeStyles(() => ({
   header: {
@@ -56,12 +57,12 @@ const CustomStylesDemo = () => {
               <SidebarTrigger className={headerStyles.leftTrigger}>
                 <SidebarTriggerIcon />
               </SidebarTrigger>
-              <HeaderEx />
+              <HeaderMockUp />
             </Toolbar>
           </Header>
           <Sidebar PaperProps={{ classes: { root: styles.sidebar } }}>
             <div className={sidebarStyles.container}>
-              <NavContentEx />
+              <NavContentMockUp />
             </div>
             <CollapseBtn
               className={cx(sidebarStyles.collapseBtn, styles.collapseBtn)}
@@ -70,10 +71,10 @@ const CustomStylesDemo = () => {
             </CollapseBtn>
           </Sidebar>
           <Content>
-            <ContentEx />
+            <ContentMockUp />
           </Content>
           <Footer>
-            <FooterEx />
+            <FooterMockUp />
           </Footer>
         </>
       )}

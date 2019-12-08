@@ -11,5 +11,7 @@ System.config({
     '@mui-treasury/layout/*': './packages/mui-layout/src/*',
     '@mui-treasury/styles': './packages/mui-styles/src',
     '@mui-treasury/styles/*': './packages/mui-styles/src/*',
+    '@mui-treasury/mockup': './packages/mui-mockup/src',
+    '@mui-treasury/mockup/*': './packages/mui-mockup/src/*',
   },
 });
