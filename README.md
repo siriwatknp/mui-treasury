@@ -35,11 +35,11 @@ I am very excited about this project because I know that there is a lot of devel
 
 ## Announcements
 
-- I am proudly to announce that the new site is in beta now after 3 months of renovating (using Gatsby, it is super fast). prove it yourself! [https://next.mui-treasury.com](https://next.mui-treasury.com)
+- I am proudly to announce that the new site is in beta now after 3 months of renovating (using Gatsby, it is super fast). prove it yourself! [https://mui-treasury.com](https://mui-treasury.com)
 
     <img alt="performace_report" src="https://user-images.githubusercontent.com/18292247/65976784-e2a3e880-e49a-11e9-82e7-b747a1bd2776.png" width="400" />
     
-    the top report is the [current site](https://mui-treasury.com), the bottom is the [new one](https://next.mui-treasury.com)
+    the top report is the [deprecated site](https://deprecate.mui-treasury.com), the bottom is the [new one](https://mui-treasury.com)
 
 ## How to use
 
