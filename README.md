@@ -25,11 +25,11 @@ I am very excited about this project because I know that there is a lot of devel
 - Introducing application demo (example of real-world app that combine existing components in mui-treasury)
 
 ## Latest Version
-> - @mui-treasury/components `0.3.4`
-> - @mui-treasury/layout `2.3.0`
-> - @mui-treasury/styles `0.3.1`
-> - @mui-treasury/styling `0.2.4`
-> - @mui-treasury/utils `0.3.4`
+> - @mui-treasury/components `0.3.5`
+> - @mui-treasury/layout `3.0.0`
+> - @mui-treasury/styles `0.3.2`
+> - @mui-treasury/styling `0.2.5`
+> - @mui-treasury/utils `0.3.5`
 >
 >  [All changelog](/CHANGELOG.md)
 
