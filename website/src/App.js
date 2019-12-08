@@ -2,39 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Root, muiTreasuryPreset } from '@mui-treasury/layout';
-// import { library } from '@fortawesome/fontawesome-svg-core';
-// import {
-//   faFighterJet,
-//   faDiceD8,
-//   faSparkles,
-//   faCubes,
-//   faCity,
-//   faThumbsUp,
-// } from '@fortawesome/pro-duotone-svg-icons';
-// import { faEnvelope } from '@fortawesome/pro-solid-svg-icons';
-// import {
-//   faTwitter,
-//   faGithub,
-//   faFacebookF,
-// } from '@fortawesome/free-brands-svg-icons';
 import { ThemeWrapper } from './utils/theme';
-import './global.css';
 import banner from './assets/mui-treasury_banner_minified.jpg';
 import PageLayout from './components/layout/PageLayout';
 import createPath from './modules/path';
-
-// library.add(
-//   faFighterJet,
-//   faDiceD8,
-//   faSparkles,
-//   faCubes,
-//   faCity,
-//   faThumbsUp,
-//   faEnvelope,
-//   faTwitter,
-//   faGithub,
-//   faFacebookF
-// );
+import './global.css';
+import './fontawesome';
 
 const App = ({ children, location }) => {
   const path = React.useMemo(() => createPath(location), [location]);

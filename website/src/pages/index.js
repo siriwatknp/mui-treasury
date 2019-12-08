@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import organisms from 'components/organisms';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FeatureWidget from '@mui-treasury/components/widget/FeatureWidget';
 import { useFullBorderedGridStyles } from '@mui-treasury/styles/grid/fullBordered';
 import { useHalfBorderedGridStyles } from '@mui-treasury/styles/grid/halfBordered';
@@ -94,7 +94,7 @@ const socials = [
     ),
   },
   {
-    // icon: 'fab fa-twitter',
+    // icon: 'fab fa-facebook',
     icon: ['fab', 'facebook'],
     title: 'Facebook',
     content: "For those who don't use twitter, we also have facebook page.",
@@ -157,9 +157,9 @@ const Homepage = ({ navigate }) => {
               classes={widgetStyles}
               title={title}
               content={content}
-              // renderIcon={({ className }) => (
-              //   <FontAwesomeIcon icon={icon} className={className} />
-              // )}
+              renderIcon={({ className }) => (
+                <FontAwesomeIcon icon={icon} className={className} />
+              )}
             />
           </Grid>
         ))}
@@ -200,9 +200,9 @@ const Homepage = ({ navigate }) => {
                   classes={widgetStyles}
                   title={title}
                   content={content}
-                  // renderIcon={({ className }) => (
-                  //   <FontAwesomeIcon icon={icon} className={className} />
-                  // )}
+                  renderIcon={({ className }) => (
+                    <FontAwesomeIcon icon={icon} className={className} />
+                  )}
                 >
                   <Box textAlign={'center'}>{children}</Box>
                 </FeatureWidget>

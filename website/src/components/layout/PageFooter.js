@@ -9,7 +9,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const useStyles = makeStyles(() => ({
   avatarRoot: {
@@ -100,7 +100,7 @@ const PageFooter = () => {
                       rel={'noopener'}
                       aria-label={ariaLabel}
                     >
-                      {/* <FontAwesomeIcon icon={icon} />*/}
+                      <FontAwesomeIcon icon={icon} />
                     </IconButton>
                   </Grid>
                 ))}
