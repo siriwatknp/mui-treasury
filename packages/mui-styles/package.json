@@ -10,6 +10,7 @@
   },
   "scripts": {
     "prebuild": "rimraf build",
+    "postpublish": "rimraf build",
     "build": "cross-env NODE_ENV=production babel --config-file ../../babel-config.js ./src --out-dir ./build --ignore \"**/*.test.js\"",
     "prepublishOnly": "yarn copy-files",
     "copy-files": "node ../../scripts/copy-files.js"
