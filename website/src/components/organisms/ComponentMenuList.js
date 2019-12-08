@@ -78,7 +78,6 @@ const ComponentMenuList = ({ menus, getOpenKeys }) => {
               onClick: () => {
                 setSidebarOpened(false);
               },
-              // disableRipple: true,
               classes: {
                 selected: nestedStyles.menuItemSelected,
                 focusVisible: nestedStyles.menuItemFocus,

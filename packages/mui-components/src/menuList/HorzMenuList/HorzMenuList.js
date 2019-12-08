@@ -5,29 +5,48 @@ import { withStyles } from '@mui-treasury/styling';
 import createStyles from './HorzMenuList.styles';
 
 const HorzMenuList = withStyles(createStyles, { name: 'HorzMenuList' })(
-  ({ className, css, menus, selectedKey, getItemProps, Link }) => (
-    <ul className={cx(css.navRoot, className)}>
-      {menus.map((item, index) => {
-        const { key, label, disabled, to } = item;
-        const { ...extItemProps } = getItemProps(item, index);
+  ({ className, css, menus, selectedKey, getItemProps, Link }) => {
+    const renderLink = ({ target, to, external, label }) => {
+      if (!to) {
+        return label;
+      }
+      if (external) {
         return (
-          <li
-            key={key}
-            className={cx(
-              css.navItem,
-              (typeof selectedKey === 'function'
-                ? selectedKey(key)
-                : key === selectedKey) && css.navSelected
-            )}
-            {...extItemProps}
-            disabled={disabled}
-          >
-            {to ? <Link to={to}>{label}</Link> : label}
-          </li>
+          <a href={to} target={target}>
+            {label}
+          </a>
         );
-      })}
-    </ul>
-  )
+      }
+      return (
+        <Link to={to} target={target}>
+          {label}
+        </Link>
+      );
+    };
+    return (
+      <ul className={cx(css.navRoot, className)}>
+        {menus.map((item, index) => {
+          const { key, disabled } = item;
+          const { ...extItemProps } = getItemProps(item, index);
+          return (
+            <li
+              key={key}
+              className={cx(
+                css.navItem,
+                (typeof selectedKey === 'function'
+                  ? selectedKey(key)
+                  : key === selectedKey) && css.navSelected
+              )}
+              {...extItemProps}
+              disabled={disabled}
+            >
+              {renderLink(item)}
+            </li>
+          );
+        })}
+      </ul>
+    );
+  }
 );
 
 HorzMenuList.propTypes = {

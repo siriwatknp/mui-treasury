@@ -39,32 +39,32 @@ export default {
         {
           key: 'default',
           label: 'Default',
-          to: 'layout/presets/default',
+          to: '/layout/presets/default',
         },
         {
           key: 'standard',
           label: 'Standard',
-          to: 'layout/presets/standard',
+          to: '/layout/presets/standard',
         },
         {
           key: 'content-based',
           label: 'Content Based',
-          to: 'layout/presets/content-based',
+          to: '/layout/presets/content-based',
         },
         {
           key: 'cozy',
           label: 'Cozy',
-          to: 'layout/presets/cozy',
+          to: '/layout/presets/cozy',
         },
         {
           key: 'fixed',
           label: 'Fixed',
-          to: 'layout/presets/fixed',
+          to: '/layout/presets/fixed',
         },
         {
           key: 'mui-treasury',
           label: 'MUI Treasury',
-          to: 'layout/presets/mui-treasury',
+          to: '/layout/presets/mui-treasury',
         },
       ],
     },
@@ -101,7 +101,13 @@ export default {
     { key: 'form', label: 'Form', disabled: true },
     { key: 'layout', label: 'Layout', to: '/layout' },
     { key: 'styling', label: 'Styling', disabled: true },
-    { key: 'theme', label: 'Theme', disabled: true },
+    {
+      key: 'theme',
+      label: 'Theme',
+      external: true,
+      to: 'https://deprecate.mui-treasury.com/brands/peapods',
+      target: '_blank',
+    },
   ],
   [PKG.components]: [
     {
