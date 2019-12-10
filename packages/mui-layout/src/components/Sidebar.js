@@ -12,11 +12,6 @@ import {
 } from '../hooks';
 import { useTransitionStyles, useSidebarStyles } from '../styles';
 
-const getSidebarAnchor = side => {
-  if (!side) return 'left';
-  return side;
-};
-
 const defaultMapContext = ({ header = {}, ...rest } = {}) => ({
   ...rest,
   clipped: header.clipped,
@@ -61,7 +56,7 @@ const Sidebar = ({
         setOpened(false);
       }}
       variant={sidebar.variant}
-      anchor={getSidebarAnchor(sidebar.anchor)}
+      anchor={sidebar.anchor || 'left'}
       PaperProps={{
         ...PaperProps,
         classes: {
