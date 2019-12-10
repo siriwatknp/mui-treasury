@@ -1,9 +1,9 @@
 import React from 'react';
-import SidebarTriggerIcon from './SidebarTriggerIcon';
-import { parseSecondaryConfig } from '../utils/sidebarUtils';
+import SharedSidebarTriggerIcon from './internal/SharedSidebarTriggerIcon';
+import use2ndSidebarConfig from '../hooks/use2ndSidebarConfig';
 
 const SecondarySidebarTriggerIcon = props => (
-  <SidebarTriggerIcon mapContext={parseSecondaryConfig} {...props} />
+  <SharedSidebarTriggerIcon {...props} useSidebarConfig={use2ndSidebarConfig} />
 );
 
 export default SecondarySidebarTriggerIcon;

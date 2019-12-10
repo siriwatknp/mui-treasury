@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
-import CollapseBtn from './CollapseBtn';
-import SidebarAdapter from '../adapters/sidebar';
+import SharedCollapseBtn from './internal/SharedCollapseBtn';
+import use2ndSidebarConfig from '../hooks/use2ndSidebarConfig';
 
 const SecondaryCollapseBtn = props => (
-  <CollapseBtn {...props} mapContext={SidebarAdapter.mapSecondaryConfig} />
+  <SharedCollapseBtn {...props} useSidebarConfig={use2ndSidebarConfig} />
 );
 
 SecondaryCollapseBtn.propTypes = {

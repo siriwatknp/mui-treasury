@@ -1,15 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Sidebar from './Sidebar';
-import SidebarAdapter from '../adapters/sidebar';
-
-const mapContext = ({ header = {}, ...ctx } = {}) => ({
-  ...SidebarAdapter.mapSecondaryConfig(ctx),
-  clipped: header.secondaryClipped,
-});
+import SharedSidebar from './internal/SharedSidebar';
+import use2ndSidebarConfig from '../hooks/use2ndSidebarConfig';
 
 const SecondarySidebar = props => (
-  <Sidebar {...props} mapContext={mapContext} />
+  <SharedSidebar {...props} useSidebarConfig={use2ndSidebarConfig} />
 );
 
 SecondarySidebar.propTypes = {

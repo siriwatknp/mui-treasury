@@ -1,9 +1,9 @@
 import React from 'react';
-import CollapseIcon from './CollapseIcon';
-import { parseSecondaryConfig } from '../utils/sidebarUtils';
+import SharedCollapseIcon from './internal/SharedCollapseIcon';
+import use2ndSidebarConfig from '../hooks/use2ndSidebarConfig';
 
 const SecondaryCollapseIcon = props => (
-  <CollapseIcon mapContext={parseSecondaryConfig} {...props} />
+  <SharedCollapseIcon {...props} useSidebarConfig={use2ndSidebarConfig} />
 );
 
 export default SecondaryCollapseIcon;

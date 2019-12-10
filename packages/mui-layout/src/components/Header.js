@@ -4,7 +4,7 @@ import { makeStyles, useTheme } from '@material-ui/styles';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import { useLayoutCtx } from '../hooks';
-import { useTransitionStyles } from '../styles';
+import { transitionStyles } from '../styles';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -12,11 +12,13 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+const useTransitionStyles = makeStyles(transitionStyles);
+
 const Header = ({ className, children, style, ...props }) => {
   const ctx = useLayoutCtx();
   const { header, getHeaderStyle } = ctx;
   const styles = useStyles();
-  const transitionStyles = useTransitionStyles();
+  const transition = useTransitionStyles();
   const theme = useTheme();
   return (
     <AppBar
@@ -24,7 +26,7 @@ const Header = ({ className, children, style, ...props }) => {
       elevation={0}
       {...props}
       position={header.position}
-      className={cx(styles.root, transitionStyles.root, className)}
+      className={cx(styles.root, transition.root, className)}
       style={{
         ...style,
         ...getHeaderStyle(theme),

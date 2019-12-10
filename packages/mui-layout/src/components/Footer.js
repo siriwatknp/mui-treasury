@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 import { useLayoutCtx } from '../hooks';
-import { useTransitionStyles } from '../styles';
+import { transitionStyles } from '../styles';
 
 const useStyles = makeStyles(({ breakpoints, palette, spacing }) => ({
   root: {
@@ -16,15 +16,17 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) => ({
   },
 }));
 
+const useTransitionStyles = makeStyles(transitionStyles);
+
 const Footer = ({ className, component: Component, style, ...props }) => {
   const ctx = useLayoutCtx();
   const { getFooterStyle } = ctx;
   const styles = useStyles(props);
-  const transitionStyles = useTransitionStyles();
+  const transition = useTransitionStyles();
   return (
     <Component
       {...props}
-      className={cx(styles.root, transitionStyles.root, className)}
+      className={cx(styles.root, transition.root, className)}
       style={{
         ...style,
         ...getFooterStyle(),

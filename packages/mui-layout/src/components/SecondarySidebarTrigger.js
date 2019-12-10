@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SidebarTrigger from './SidebarTrigger';
-import SidebarAdapter from '../adapters/sidebar';
+import SharedSidebarTrigger from './internal/SharedSidebarTrigger';
+import use2ndSidebarConfig from '../hooks/use2ndSidebarConfig';
 
 const SecondarySidebarTrigger = props => (
-  <SidebarTrigger mapContext={SidebarAdapter.mapSecondaryConfig} {...props} />
+  <SharedSidebarTrigger {...props} useSidebarConfig={use2ndSidebarConfig} />
 );
 
 SecondarySidebarTrigger.propTypes = {
