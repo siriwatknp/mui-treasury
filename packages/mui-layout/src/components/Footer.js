@@ -18,7 +18,7 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) => ({
 
 const Footer = ({ className, component: Component, style, ...props }) => {
   const ctx = useLayoutCtx();
-  const { getSidebarGap, getWidth, footer } = ctx;
+  const { getFooterStyle } = ctx;
   const styles = useStyles(props);
   const transitionStyles = useTransitionStyles();
   return (
@@ -27,8 +27,7 @@ const Footer = ({ className, component: Component, style, ...props }) => {
       className={cx(styles.root, transitionStyles.root, className)}
       style={{
         ...style,
-        marginLeft: getSidebarGap(footer),
-        width: getWidth(footer),
+        ...getFooterStyle(),
       }}
     />
   );

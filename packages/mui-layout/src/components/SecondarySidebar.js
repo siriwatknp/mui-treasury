@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Sidebar from './Sidebar';
-import { parseSecondaryConfig } from '../utils/sidebarUtils';
+import SidebarAdapter from '../adapters/sidebar';
 
 const mapContext = ({ header = {}, ...ctx } = {}) => ({
-  ...parseSecondaryConfig(ctx),
+  ...SidebarAdapter.mapSecondaryConfig(ctx),
   clipped: header.secondaryClipped,
 });
 

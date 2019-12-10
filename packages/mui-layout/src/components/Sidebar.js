@@ -22,6 +22,7 @@ const Sidebar = ({
   PaperProps,
   SlideProps,
   ModalProps,
+  // todo change mapContext to hook, should not expose internal api to client
   // eslint-disable-next-line react/prop-types
   mapContext = defaultMapContext, // for internal usage only
   ...props
