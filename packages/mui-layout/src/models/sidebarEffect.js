@@ -5,11 +5,14 @@ export default (ctx = {}, target = {}) => {
   const {
     primarySidebar,
     secondarySidebar,
+    getTargetProps,
+  } = createAllSidebars(ctx);
+  const {
     primaryGap,
     secondaryGap,
-    secondaryWidth,
     primaryWidth,
-  } = createAllSidebars(ctx, target);
+    secondaryWidth,
+  } = getTargetProps(target);
   const getAffectedWidth = ({ primaryDisabled, secondaryDisabled } = {}) => {
     if (primaryDisabled) {
       return secondaryWidth;

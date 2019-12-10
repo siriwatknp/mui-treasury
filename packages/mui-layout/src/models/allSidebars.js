@@ -1,7 +1,7 @@
 import createSidebar from './sidebar';
 import SidebarAdapter from '../adapters/sidebar';
 
-export default (ctx = {}, container = {}) => {
+export default (ctx = {}) => {
   const { header = {} } = ctx;
   const primarySidebar = createSidebar(ctx);
   const secondarySidebar = SidebarAdapter.normalize2ndSidebarConfigToFn(
@@ -12,10 +12,6 @@ export default (ctx = {}, container = {}) => {
   return {
     primarySidebar,
     secondarySidebar,
-    primaryWidth: primarySidebar.calculateAffectedWidth(container),
-    secondaryWidth: secondarySidebar.calculateAffectedWidth(container),
-    primaryGap: primarySidebar.calculateGap(container),
-    secondaryGap: secondarySidebar.calculateGap(container),
     getPrimaryStyle: theme => {
       if (!header.clipped && header.secondaryClipped) {
         return { zIndex: theme.zIndex.drawer + 20 };
@@ -28,5 +24,11 @@ export default (ctx = {}, container = {}) => {
       }
       return undefined;
     },
+    getTargetProps: (target = {}) => ({
+      primaryWidth: primarySidebar.calculateAffectedWidth(target),
+      secondaryWidth: secondarySidebar.calculateAffectedWidth(target),
+      primaryGap: primarySidebar.calculateGap(target),
+      secondaryGap: secondarySidebar.calculateGap(target),
+    }),
   };
 };
