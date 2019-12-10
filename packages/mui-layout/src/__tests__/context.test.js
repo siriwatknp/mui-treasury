@@ -6,13 +6,6 @@ import Sidebar from '../components/Sidebar';
 import Root from '../components/Root';
 
 describe('context', () => {
-  test('Layout Context works', () => {
-    const { getByText } = render(
-      <LayoutConsumer>{value => <span>Received: {value}</span>}</LayoutConsumer>
-    );
-    expect(getByText(/^Received:/i).textContent).toBe('Received: value');
-  });
-
   test('Able to config in each screen', () => {
     const config = {
       screen: 'xs',

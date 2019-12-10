@@ -6,20 +6,16 @@ import AppBar from '@material-ui/core/AppBar';
 import { useLayoutCtx } from '../hooks';
 import { useTransitionStyles } from '../styles';
 
-const useStyles = makeStyles(({ zIndex }) => ({
-  root: ({ clipped, position }) => {
-    const isHeaderOnTop = clipped && position !== 'static';
-    return {
-      left: 0,
-      ...(isHeaderOnTop && { zIndex: zIndex.drawer + 100 }),
-    };
+const useStyles = makeStyles(() => ({
+  root: {
+    left: 0,
   },
 }));
 
 const Header = ({ className, children, style, ...props }) => {
   const ctx = useLayoutCtx();
   const { header, getHeaderStyle } = ctx;
-  const styles = useStyles(header);
+  const styles = useStyles();
   const transitionStyles = useTransitionStyles();
   const theme = useTheme();
   return (

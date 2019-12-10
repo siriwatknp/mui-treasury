@@ -32,14 +32,6 @@ const LayoutProvider = ({
   const {
     breakpoints: { keys },
   } = useTheme();
-  const {
-    autoCollapseDisabled,
-    collapsedBreakpoint,
-    heightAdjustmentDisabled,
-    secondaryAutoCollapsedDisabled,
-    secondaryCollapsedBreakpoint,
-    secondaryHeightAdjustmentDisabled,
-  } = config;
   const screen = useScreen(config.screen); // config.screen is for testing purpose only
   const finalConfig = parseConfig(
     isSomeExisted(config, keys) ? selectConfigByScreen(config, screen) : config
@@ -57,12 +49,13 @@ const LayoutProvider = ({
         screen,
         ...finalConfig,
         ...utils,
-        autoCollapseDisabled,
-        collapsedBreakpoint,
-        heightAdjustmentDisabled,
-        secondaryAutoCollapsedDisabled,
-        secondaryCollapsedBreakpoint,
-        secondaryHeightAdjustmentDisabled,
+        autoCollapseDisabled: config.autoCollapseDisabled,
+        collapsedBreakpoint: config.collapsedBreakpoint,
+        heightAdjustmentDisabled: config.heightAdjustmentDisabled,
+        secondaryAutoCollapsedDisabled: config.secondaryAutoCollapsedDisabled,
+        secondaryCollapsedBreakpoint: config.secondaryCollapsedBreakpoint,
+        secondaryHeightAdjustmentDisabled:
+          config.secondaryHeightAdjustmentDisabled,
         opened,
         setOpened,
         collapsed,
