@@ -17,6 +17,7 @@ import {
   standardLayoutPreset,
 } from '@mui-treasury/layout';
 import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
 import Toolbar from '@material-ui/core/Toolbar';
 
 const LayoutTest = () => {
@@ -47,11 +48,13 @@ const LayoutTest = () => {
               <SecondaryCollapseIcon />
             </SecondaryCollapseBtn>
           </SecondarySidebar>
-          <Content>
-            <Box minHeight={1000}>
-              <p>Content</p>
-            </Box>
-          </Content>
+          <Container>
+            <Content>
+              <Box>
+                <p>Content</p>
+              </Box>
+            </Content>
+          </Container>
           <Footer>Footer</Footer>
         </>
       )}
