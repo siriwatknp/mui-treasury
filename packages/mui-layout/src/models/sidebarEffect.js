@@ -7,12 +7,13 @@ export default (ctx = {}, target = {}) => {
     secondarySidebar,
     getTargetProps,
   } = createAllSidebars(ctx);
+  const targetProps = getTargetProps(target);
   const {
     primaryGap,
     secondaryGap,
     primaryWidth,
     secondaryWidth,
-  } = getTargetProps(target);
+  } = targetProps;
   const getAffectedWidth = ({ primaryDisabled, secondaryDisabled } = {}) => {
     if (primaryDisabled) {
       return secondaryWidth;
@@ -35,6 +36,7 @@ export default (ctx = {}, target = {}) => {
     return undefined;
   };
   return {
+    ...targetProps,
     getAffectedWidth,
     getStyle: ({ primaryDisabled, secondaryDisabled } = {}) => ({
       ...(!primaryDisabled && {

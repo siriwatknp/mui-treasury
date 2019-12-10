@@ -5,13 +5,11 @@ import {
   getInitialScreen,
   upperFirst,
 } from '../utils';
-import createAllSidebars from '../models/allSidebars';
 import createSidebarEffect from '../models/sidebarEffect';
 
 describe('utils', function() {
   let utils;
   let ctx;
-  let target;
   let sidebarEffect;
   beforeEach(() => {
     ctx = {
@@ -33,7 +31,6 @@ describe('utils', function() {
       },
     };
     utils = createLayoutUtils(ctx);
-    target = createAllSidebars(ctx).getTargetProps();
     sidebarEffect = createSidebarEffect(ctx);
   });
   test('upperFirst should have first letter uppercase and the rest lowercase', () => {
@@ -81,39 +78,39 @@ describe('utils', function() {
    *  getSidebarGap
    */
   test('[temporary Sidebar] gap return 0', () => {
-    expect(target.primaryGap).toBe(0);
-    expect(target.secondaryGap).toBe(0);
+    expect(sidebarEffect.primaryGap).toBe(0);
+    expect(sidebarEffect.secondaryGap).toBe(0);
   });
 
   test('[permanent Sidebar] gap return width', () => {
     ctx.sidebar.variant = 'permanent';
     ctx.secondarySidebar.variant = 'permanent';
-    target = createAllSidebars(ctx).getTargetProps();
-    expect(target.primaryGap).toBe(256);
-    expect(target.secondaryGap).toBe(244);
+    sidebarEffect = createSidebarEffect(ctx);
+    expect(sidebarEffect.primaryGap).toBe(256);
+    expect(sidebarEffect.secondaryGap).toBe(244);
   });
 
   test('[collapsible permanent Sidebar] gap return width (not collapsed yet)', () => {
     ctx.sidebar.variant = 'permanent';
     ctx.sidebar.collapsible = true;
     ctx.collapsed = false;
-    target = createAllSidebars(ctx).getTargetProps();
-    expect(target.primaryGap).toBe(256);
+    sidebarEffect = createSidebarEffect(ctx);
+    expect(sidebarEffect.primaryGap).toBe(256);
   });
   test('[collapsed persistent Sidebar] gap return collapsed width', () => {
     ctx.sidebar.variant = 'permanent';
     ctx.sidebar.collapsible = true;
     ctx.collapsed = true;
-    target = createAllSidebars(ctx).getTargetProps();
-    expect(target.primaryGap).toBe(80);
+    sidebarEffect = createSidebarEffect(ctx);
+    expect(sidebarEffect.primaryGap).toBe(80);
   });
 
   test('[persistent Sidebar (persistentBehavior=none)] gap return 0', () => {
     ctx.sidebar.variant = 'persistent';
     ctx.opened = false;
     ctx.sidebar.collapsible = false;
-    target = createAllSidebars(ctx).getTargetProps();
-    expect(target.primaryGap).toBe(0);
+    sidebarEffect = createSidebarEffect(ctx);
+    expect(sidebarEffect.primaryGap).toBe(0);
   });
   test('[closed persistent Sidebar (persistentBehavior=fit)] gap return 0', () => {
     ctx.sidebar.variant = 'persistent';
@@ -121,28 +118,28 @@ describe('utils', function() {
     ctx.sidebar.persistentBehavior = 'fit';
     ctx.sidebar.collapsible = true;
     ctx.collapsed = false;
-    target = createAllSidebars(ctx).getTargetProps();
-    expect(target.primaryGap).toBe(0);
+    sidebarEffect = createSidebarEffect(ctx);
+    expect(sidebarEffect.primaryGap).toBe(0);
   });
   test('[opened persistent Sidebar (persistentBehavior=fit)] gap return width', () => {
     ctx.sidebar.variant = 'persistent';
     ctx.opened = true;
     ctx.sidebar.collapsible = true;
     ctx.collapsed = false;
-    target = createAllSidebars(ctx).getTargetProps({
+    sidebarEffect = createSidebarEffect(ctx, {
       persistentBehavior: 'fit',
     });
-    expect(target.primaryGap).toBe(256);
+    expect(sidebarEffect.primaryGap).toBe(256);
   });
   test('[persistent Sidebar (persistentBehavior=fit)] gap return collapsedWidth when collapsed', () => {
     ctx.sidebar.variant = 'persistent';
     ctx.opened = true;
     ctx.sidebar.collapsible = true;
     ctx.collapsed = true;
-    target = createAllSidebars(ctx).getTargetProps({
+    sidebarEffect = createSidebarEffect(ctx, {
       persistentBehavior: 'fit',
     });
-    expect(target.primaryGap).toBe(80);
+    expect(sidebarEffect.primaryGap).toBe(80);
   });
 
   /**
@@ -151,30 +148,30 @@ describe('utils', function() {
   test("[temporary Sidebar] component's width will always 100%", () => {
     ctx.sidebar.collapsible = true;
     ctx.collapsed = true;
-    target = createAllSidebars(ctx).getTargetProps({
+    sidebarEffect = createSidebarEffect(ctx, {
       persistentBehavior: 'fit',
     });
-    expect(target.primaryWidth).toBe('100%');
+    expect(sidebarEffect.primaryWidth).toBe('100%');
   });
 
   test("[permanent PrimarySidebar] component's width will minus sidebar width", () => {
     ctx.sidebar.variant = 'permanent';
-    target = createAllSidebars(ctx).getTargetProps();
-    expect(target.primaryWidth).toBe('calc(100% - 256px)');
+    sidebarEffect = createSidebarEffect(ctx);
+    expect(sidebarEffect.primaryWidth).toBe('calc(100% - 256px)');
   });
 
   test("[permanent SecondarySidebar] component's width will minus sidebar width", () => {
     ctx.secondarySidebar.variant = 'permanent';
-    target = createAllSidebars(ctx).getTargetProps();
-    expect(target.secondaryWidth).toBe('calc(100% - 244px)');
+    sidebarEffect = createSidebarEffect(ctx);
+    expect(sidebarEffect.secondaryWidth).toBe('calc(100% - 244px)');
   });
 
   test("[permanent PrimarySidebar] component's width is equal to collapsed width when collapsed", () => {
     ctx.sidebar.variant = 'permanent';
     ctx.sidebar.collapsible = true;
     ctx.collapsed = true;
-    target = createAllSidebars(ctx).getTargetProps();
-    expect(target.primaryWidth).toBe('calc(100% - 80px)');
+    sidebarEffect = createSidebarEffect(ctx);
+    expect(sidebarEffect.primaryWidth).toBe('calc(100% - 80px)');
   });
 
   test("[closed persistent PrimarySidebar] component's width is 100%", () => {
@@ -183,8 +180,8 @@ describe('utils', function() {
     ctx.sidebar.variant = 'persistent';
     ctx.sidebar.collapsible = true;
     ctx.collapsed = true;
-    target = createAllSidebars(ctx).getTargetProps();
-    expect(target.primaryWidth).toBe('100%');
+    sidebarEffect = createSidebarEffect(ctx);
+    expect(sidebarEffect.primaryWidth).toBe('100%');
   });
 
   test("[opened persistent PrimarySidebar] component's width depends on persistentBehavior mode", () => {
@@ -194,24 +191,24 @@ describe('utils', function() {
     ctx.sidebar.collapsible = false;
     ctx.collapsed = false;
 
-    expect(target.primaryWidth).toBe('100%');
-    target = createAllSidebars(ctx).getTargetProps({
+    expect(sidebarEffect.primaryWidth).toBe('100%');
+    sidebarEffect = createSidebarEffect(ctx, {
       persistentBehavior: 'fit',
     });
-    expect(target.primaryWidth).toBe('calc(100% - 256px)');
+    expect(sidebarEffect.primaryWidth).toBe('calc(100% - 256px)');
 
     ctx.sidebar.collapsible = true;
     ctx.collapsed = true;
-    target = createAllSidebars(ctx).getTargetProps({
+    sidebarEffect = createSidebarEffect(ctx, {
       persistentBehavior: 'fit',
     });
-    expect(target.primaryWidth).toBe('calc(100% - 80px)');
+    expect(sidebarEffect.primaryWidth).toBe('calc(100% - 80px)');
   });
 
   test('[Both temporary side bar] width should be 100%', () => {
-    target = createAllSidebars(ctx).getTargetProps();
-    expect(target.primaryWidth).toBe('100%');
-    expect(target.secondaryWidth).toBe('100%');
+    sidebarEffect = createSidebarEffect(ctx);
+    expect(sidebarEffect.primaryWidth).toBe('100%');
+    expect(sidebarEffect.secondaryWidth).toBe('100%');
   });
 
   test("[Both is permanent] width should minus both sidebar's width", () => {
