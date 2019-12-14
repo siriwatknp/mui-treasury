@@ -68,7 +68,47 @@ describe('Header', function() {
     expect(computedStyle.marginLeft).toBe('');
   });
 
-  test('[Clipped] relative should have default width & no margin', () => {
+  test('[Clipped] absolute should have default width & no margin', () => {
+    // static position cannot be clipped
+    const { getByTestId } = renderWithinLayout(
+      <>
+        <Header data-testid={'header'} />
+      </>,
+      {
+        config: {
+          header: {
+            clipped: true,
+            position: 'absolute',
+          },
+        },
+      }
+    );
+    const computedStyle = getComputedStyle(getByTestId('header'));
+    expect(computedStyle.width).toBe('100%');
+    expect(computedStyle.marginLeft).toBe('');
+  });
+
+  test('[Clipped] sticky header should have default width & no margin', () => {
+    // static position cannot be clipped
+    const { getByTestId } = renderWithinLayout(
+      <>
+        <Header data-testid={'header'} />
+      </>,
+      {
+        config: {
+          header: {
+            clipped: true,
+            position: 'relative',
+          },
+        },
+      }
+    );
+    const computedStyle = getComputedStyle(getByTestId('header'));
+    expect(computedStyle.width).toBe('100%');
+    expect(computedStyle.marginLeft).toBe('');
+  });
+
+  test('[Clipped] relative header should have default width & no margin', () => {
     // static position cannot be clipped
     const { getByTestId } = renderWithinLayout(
       <>

@@ -15,3 +15,5 @@ export { default as SecondarySidebarTrigger } from './SecondarySidebarTrigger';
 export {
   default as SecondarySidebarTriggerIcon,
 } from './SecondarySidebarTriggerIcon';
+export { default as InsetSidebar } from './InsetSidebar';
+export { default as SecondaryInsetSidebar } from './SecondaryInsetSidebar';

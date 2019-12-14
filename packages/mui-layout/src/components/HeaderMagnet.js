@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'clsx';
-import { useTransitionStyles } from '../styles';
+import { makeStyles } from '@material-ui/core/styles';
+import { transitionStyles } from '../styles';
+
+const useTransitionStyles = makeStyles(transitionStyles);
 
 const HeaderMagnet = ({ className, style, ...props }) => {
-  const transitionStyles = useTransitionStyles();
+  const transition = useTransitionStyles();
   return (
     <div
-      className={cx('HeaderMagnet', transitionStyles.smooth, className)}
+      className={cx('HeaderMagnet', transition.smooth, className)}
       style={{ ...style, flexShrink: 0 }}
       {...props}
     />

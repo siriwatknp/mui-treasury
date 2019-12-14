@@ -32,7 +32,7 @@ describe('Root', () => {
       } catch (e) {
         throw new Error();
       }
-    }).toThrowError();
+    }).not.toThrowError();
     console.error.mockRestore();
   });
 });

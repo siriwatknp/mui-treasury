@@ -1,33 +1,29 @@
-import createSidebarUtils, { secondaryAdapter } from './sidebarUtils';
-import createContainerUtils from './containerUtils';
-import createHeaderUtils from './headerUtils';
-import createSidebarLayer from './createSidebarLayer';
+import createAllSidebars from '../models/allSidebars';
+import createHeader from '../models/header';
+import createContent from '../models/content';
+import createFooter from '../models/footer';
 
-export default ({ content = {}, footer = {}, ...ctx }) => {
-  const primarySidebar = createSidebarUtils(ctx);
-  const secondarySidebar = secondaryAdapter.mapArgs(createSidebarUtils)(ctx);
-  const container = createContainerUtils(ctx);
-  const headerUtils = createHeaderUtils(ctx);
-  const sidebarLayer = createSidebarLayer(ctx);
+export default (ctx = {}) => {
+  const {
+    primarySidebar,
+    secondarySidebar,
+    getPrimaryStyle,
+    getSecondaryStyle,
+  } = createAllSidebars(ctx);
+  const header = createHeader(ctx);
+  const content = createContent(ctx);
+  const footer = createFooter(ctx);
   return {
     getSidebarWidth: () => primarySidebar.width,
-    getSidebarGap: primarySidebar.calculateGap,
     getSecondarySidebarWidth: () => secondarySidebar.width,
-    getSecondarySidebarGap: secondaryAdapter.mapArgs(
-      secondarySidebar.calculateGap
-    ),
-    getSidebarZIndex: sidebarLayer.getPrimaryStyle,
-    getSecondarySidebarZIndex: sidebarLayer.getSecondaryStyle,
-    getWidth: container.calculateWidth,
-    getContainerMarginStyle: container.getMarginStyle,
-    getContentStyle: () => ({
-      ...container.getMarginStyle(content),
-      width: container.calculateWidth(content),
-    }),
-    getFooterStyle: () => ({
-      ...container.getMarginStyle(footer),
-      width: container.calculateWidth(footer),
-    }),
-    getHeaderStyle: headerUtils.getHeaderStyle,
+    getSidebarZIndex: getPrimaryStyle,
+    getSecondarySidebarZIndex: getSecondaryStyle,
+    getContentStyle: content.getStyle,
+    getFooterStyle: footer.getStyle,
+    getHeaderStyle: header.getStyle,
+    getInsetSidebarStyle: primarySidebar.getStyle,
+    getInsetSidebarBodyStyle: primarySidebar.getBodyStyle,
+    getSecondaryInsetSidebarStyle: secondarySidebar.getStyle,
+    getSecondaryInsetSidebarBodyStyle: secondarySidebar.getBodyStyle,
   };
 };

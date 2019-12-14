@@ -10,8 +10,8 @@ import {
   Content,
   Footer,
   Sidebar,
-  useSidebarStyles,
-  useHeaderStyles,
+  sidebarStyles,
+  headerStyles,
 } from '@mui-treasury/layout';
 import Toolbar from '@material-ui/core/Toolbar';
 import PageHeader from 'components/layout/PageHeader';
@@ -34,16 +34,19 @@ const useFooterStyles = makeStyles(() => ({
   },
 }));
 
+const useSidebarStyles = makeStyles(sidebarStyles);
+const useHeaderStyles = makeStyles(headerStyles);
+
 const PageLayout = ({ menus, children, getOpenKeys }) => {
   const styles = useStyles();
-  const headerStyles = useHeaderStyles();
-  const sidebarStyles = useSidebarStyles();
+  const headStyles = useHeaderStyles();
+  const sbStyles = useSidebarStyles();
   const footerStyles = useFooterStyles();
   return (
     <>
       <Header className={styles.header}>
         <Toolbar>
-          <SidebarTrigger className={headerStyles.leftTrigger}>
+          <SidebarTrigger className={headStyles.leftTrigger}>
             <SidebarTriggerIcon />
           </SidebarTrigger>
           <PageHeader />
@@ -51,10 +54,10 @@ const PageLayout = ({ menus, children, getOpenKeys }) => {
       </Header>
       <Content>{children}</Content>
       <Sidebar>
-        <div className={sidebarStyles.container}>
+        <div className={sbStyles.container}>
           <ComponentMenuList menus={menus} getOpenKeys={getOpenKeys} />
         </div>
-        <CollapseBtn className={sidebarStyles.collapseBtn}>
+        <CollapseBtn className={sbStyles.collapseBtn}>
           <CollapseIcon />
         </CollapseBtn>
       </Sidebar>

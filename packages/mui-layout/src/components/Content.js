@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
-import { useTransitionStyles } from '../styles';
+import { transitionStyles } from '../styles';
 import { useLayoutCtx } from '../hooks';
 import HeaderOffset from './HeaderOffset';
 
@@ -11,6 +11,8 @@ const useStyles = makeStyles(() => ({
     flexGrow: 1,
   },
 }));
+
+const useTransitionStyles = makeStyles(transitionStyles);
 
 const Content = ({
   component: Component,
@@ -23,11 +25,11 @@ const Content = ({
   const ctx = useLayoutCtx();
   const { getContentStyle } = ctx;
   const styles = useStyles(props);
-  const transitionStyles = useTransitionStyles();
+  const transition = useTransitionStyles();
   return (
     <Component
       {...props}
-      className={cx(styles.root, transitionStyles.root, className)}
+      className={cx(styles.root, transition.root, className)}
       style={getContentStyle()}
     >
       {!omitHeaderOffset && <HeaderOffset />}
