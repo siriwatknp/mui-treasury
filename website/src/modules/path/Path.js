@@ -4,6 +4,7 @@ import MENUS, { PKG } from '../../constants/menus';
 const getHomeHandler = () => {
   return {
     pattern: /^\/$/,
+    hamburgerHidden: true,
     parseConfig: c => ({
       ...c,
       sidebar: {
@@ -48,6 +49,7 @@ const getFallbackHandler = () => {
     pattern: /.*/g,
     sidebarMenus: [],
     wrappedByLayout: true,
+    hamburgerHidden: false,
     parseConfig: c => c,
     getOpenKeys: ({ menus, lastPath }) => {
       const keyMap = mapNestedPath(menus);
@@ -94,5 +96,6 @@ export default (location = {}) => {
     wrappedByLayout: getPathValue(pathname, 'wrappedByLayout'),
     parseConfig: getPathValue(pathname, 'parseConfig'),
     getOpenKeys: getPathValue(pathname, 'getOpenKeys'),
+    hamburgerHidden: getPathValue(pathname, 'hamburgerHidden'),
   };
 };

@@ -40,6 +40,8 @@ const PageHeader = () => {
       {({ location }) => {
         const shouldRenderLogo =
           screen !== 'xs' || (screen === 'xs' && location.pathname === '/');
+        const paths = location.pathname.split('/');
+        const firstPath = paths[0] || paths[1];
         return (
           <Box
             display={'flex'}
@@ -50,7 +52,7 @@ const PageHeader = () => {
           >
             {shouldRenderLogo && (
               <Box
-                mr={{ xs: 1, sm: 4 }}
+                mr={{ xs: 1, md: 2 }}
                 component={Link}
                 to={'/'}
                 borderBottom={'none !important'}
@@ -67,7 +69,7 @@ const PageHeader = () => {
             <HorzMenuList
               className={cx(styles.nav, !shouldRenderLogo && styles.navOffset)}
               Link={Link}
-              selectedKey={key => location.pathname.includes(key)}
+              selectedKey={key => firstPath === key}
               menus={MENUS[PKG.nav]}
             />
             <Box ml={'auto'} mr={2} />

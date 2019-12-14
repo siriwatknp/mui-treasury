@@ -58,6 +58,7 @@ const App = ({ children, location }) => {
             <PageLayout
               menus={path.sidebarMenus}
               getOpenKeys={path.getOpenKeys}
+              hamburgerHidden={path.hamburgerHidden}
             >
               {children}
             </PageLayout>
