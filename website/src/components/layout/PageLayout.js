@@ -37,7 +37,7 @@ const useFooterStyles = makeStyles(() => ({
 const useSidebarStyles = makeStyles(sidebarStyles);
 const useHeaderStyles = makeStyles(headerStyles);
 
-const PageLayout = ({ menus, children, getOpenKeys }) => {
+const PageLayout = ({ menus, children, getOpenKeys, hamburgerHidden }) => {
   const styles = useStyles();
   const headStyles = useHeaderStyles();
   const sbStyles = useSidebarStyles();
@@ -46,9 +46,11 @@ const PageLayout = ({ menus, children, getOpenKeys }) => {
     <>
       <Header className={styles.header}>
         <Toolbar>
-          <SidebarTrigger className={headStyles.leftTrigger}>
-            <SidebarTriggerIcon />
-          </SidebarTrigger>
+          {!hamburgerHidden && (
+            <SidebarTrigger className={headStyles.leftTrigger}>
+              <SidebarTriggerIcon />
+            </SidebarTrigger>
+          )}
           <PageHeader />
         </Toolbar>
       </Header>
@@ -72,9 +74,11 @@ PageLayout.propTypes = {
   menus: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
   children: PropTypes.node.isRequired,
   getOpenKeys: PropTypes.func,
+  hamburgerHidden: PropTypes.bool,
 };
 PageLayout.defaultProps = {
   getOpenKeys: () => [],
+  hamburgerHidden: false,
 };
 
 export default PageLayout;
