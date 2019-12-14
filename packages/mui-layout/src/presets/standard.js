@@ -21,13 +21,4 @@ export default {
       position: 'relative',
     },
   }),
-  md: getDefaultScreenConfig({
-    sidebar: {
-      variant: 'permanent',
-      collapsible: true,
-    },
-    header: {
-      position: 'relative',
-    },
-  }),
 };
