@@ -2,7 +2,6 @@ const SidebarAdapter = () => ({});
 
 SidebarAdapter.mapSecondaryConfig = ({
   secondarySidebar,
-  secondaryPersistentBehavior,
   secondaryOpened,
   setSecondaryOpened,
   secondaryCollapsed,
@@ -15,11 +14,14 @@ SidebarAdapter.mapSecondaryConfig = ({
   getSecondarySidebarZIndex,
   getSecondaryInsetSidebarStyle,
   getSecondaryInsetSidebarBodyStyle,
+
+  // header, footer, content
+  secondaryPersistentBehavior,
+  secondaryInsetBehavior,
   ...rest
 } = {}) => ({
   ...rest,
   sidebar: secondarySidebar,
-  persistentBehavior: secondaryPersistentBehavior,
   opened: secondaryOpened,
   collapsed: secondaryCollapsed,
   clipped: secondaryClipped,
@@ -32,6 +34,10 @@ SidebarAdapter.mapSecondaryConfig = ({
   getSidebarZIndex: getSecondarySidebarZIndex,
   getInsetSidebarStyle: getSecondaryInsetSidebarStyle,
   getInsetSidebarBodyStyle: getSecondaryInsetSidebarBodyStyle,
+
+  // header, footer, content
+  persistentBehavior: secondaryPersistentBehavior,
+  insetBehavior: secondaryInsetBehavior,
 });
 SidebarAdapter.normalize2ndSidebarConfigToFn = (fn, ctx) =>
   fn(SidebarAdapter.mapSecondaryConfig(ctx));

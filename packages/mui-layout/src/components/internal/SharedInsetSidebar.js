@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import get from 'lodash.get';
 import cx from 'clsx';
+import Drawer from '@material-ui/core/Drawer';
 import { makeStyles } from '@material-ui/core/styles';
-import { useHeightAdjustment } from '../../hooks';
+import { useHeightAdjustment, useScreenComparison } from '../../hooks';
 import * as styles from '../../styles';
 
 const useTransitionStyles = makeStyles(styles.transitionStyles);
@@ -16,14 +18,46 @@ const SharedInsetSidebar = ({
   PaperProps = {},
   ...props
 }) => {
+  const parsedCtx = useSidebarConfig();
   const {
+    sidebar,
+    opened,
+    setOpened,
+    getSidebarWidth,
     getInsetSidebarStyle,
     getInsetSidebarBodyStyle,
-    ...parsedCtx
-  } = useSidebarConfig();
+  } = parsedCtx;
   const height = useHeightAdjustment(parsedCtx);
   const transition = useTransitionStyles();
   const insetStyles = useInsetSidebarStyles();
+  const { position: insetPosition, hiddenBreakpoint, autoHidden } = get(
+    parsedCtx,
+    'sidebar.insetProps',
+    {}
+  );
+  const { isTargetDown } = useScreenComparison(hiddenBreakpoint);
+  if (isTargetDown && autoHidden) {
+    return (
+      <Drawer
+        {...props}
+        open={opened}
+        onClose={() => {
+          setOpened(false);
+        }}
+        variant={'temporary'}
+        anchor={sidebar.anchor || 'left'}
+        PaperProps={{
+          ...PaperProps,
+          style: {
+            ...PaperProps.style,
+            width: getSidebarWidth(),
+          },
+        }}
+      >
+        {children}
+      </Drawer>
+    );
+  }
   return (
     <div
       className={cx('InsetSidebar-root', insetStyles.root, className)}
@@ -33,7 +67,11 @@ const SharedInsetSidebar = ({
       <div
         {...PaperProps}
         style={{ ...PaperProps.style, ...getInsetSidebarBodyStyle() }}
-        className={cx('InsetSidebar-paper', PaperProps.className)}
+        className={cx(
+          'InsetSidebar-paper',
+          insetPosition === 'sticky' && insetStyles.paperSticky,
+          PaperProps.className
+        )}
       >
         <div
           className={cx('HeaderMagnet', transition.smooth)}
@@ -59,10 +97,7 @@ SharedInsetSidebar.defaultProps = {
   className: undefined,
   style: undefined,
   children: null,
-  PaperProps: {
-    className: undefined,
-    style: undefined,
-  },
+  PaperProps: undefined,
 };
 
 export default SharedInsetSidebar;

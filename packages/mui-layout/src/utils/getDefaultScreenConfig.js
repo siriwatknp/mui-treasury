@@ -15,7 +15,6 @@ export default ({
     inset: false,
     insetProps: {
       position: 'fixed',
-      autoHidden: true,
       hiddenBreakpoint: 'sm',
     },
     ...sidebar,
@@ -30,7 +29,6 @@ export default ({
     inset: false,
     insetProps: {
       position: 'sticky',
-      autoHidden: true,
       hiddenBreakpoint: 'sm',
     },
     ...secondarySidebar,

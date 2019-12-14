@@ -13,38 +13,33 @@ describe('Inset Sidebar', () => {
   let provider;
   beforeEach(() => {
     ctx = ConfigGenerator()
-      .setInsetSidebars()
+      .setAllSidebarsToInset()
       .get();
     insetSidebar = createInsetSidebar(ctx);
     header = createHeader(ctx);
     content = createContent(ctx);
     footer = createFooter(ctx);
-    provider = () => {
-      const config = ConfigGenerator();
+    const Provider = () => {
+      const config = ConfigGenerator().setAllSidebarsToInset();
 
       return {
         ...config,
-        get: () => ({
-          insetSidebar: createInsetSidebar(config.get()),
-          header: createHeader(config.get()),
-          content: createContent(config.get()),
-          footer: createFooter(config.get()),
-        }),
+        set: () => {
+          insetSidebar = createInsetSidebar(config.get());
+          header = createHeader(config.get());
+          content = createContent(config.get());
+          footer = createFooter(config.get());
+        },
       };
     };
+    provider = Provider();
+    provider.set();
   });
 
   test('InsetSidebar should have set up width', () => {
+    expect(insetSidebar.inset).toBeTruthy();
     expect(insetSidebar.getStyle()).toMatchObject({
       width: 256,
-    });
-
-    insetSidebar = createInsetSidebar({
-      ...ctx,
-      sidebar: ctx.secondarySidebar,
-    });
-    expect(insetSidebar.getStyle()).toMatchObject({
-      width: 244,
     });
   });
 
@@ -56,17 +51,14 @@ describe('Inset Sidebar', () => {
       marginLeft: expect.anything(),
     });
 
-    ctx.sidebar.inset = false;
-    header = createHeader(ctx);
-    expect(header.getStyle()).toMatchObject({
-      marginLeft: expect.anything(),
-    });
-    expect(header.getStyle()).not.toMatchObject({
-      marginRight: expect.anything(),
+    provider.primarySidebar.setInset(false);
+    provider.set();
+    expect(header.getStyle()).toStrictEqual({
+      zIndex: expect.anything(),
     });
 
-    ctx.secondarySidebar.inset = false;
-    header = createHeader(ctx);
+    provider.secondarySidebar.setInset(false);
+    provider.set();
     expect(header.getStyle()).not.toMatchObject({
       marginLeft: expect.anything(),
     });
@@ -80,21 +72,52 @@ describe('Inset Sidebar', () => {
   });
 
   test('Footer should have correct margin by insetBehavior', () => {
+    // Primary sidebar config - anchor = left
+    // Secondary sidebar config - anchor = right
+    // Footer config
+    // - insetBehavior = fit : should have marginLeft
+    // - secondaryInsetBehavior = none : should not have marginRight
     expect(footer.getStyle()).toMatchObject({
       marginLeft: 256,
       width: 'auto',
     });
-    ctx.sidebar.anchor = 'right';
-    ctx.secondarySidebar.anchor = 'left';
-    footer = createFooter(ctx);
+    expect(footer.getStyle()).not.toMatchObject({
+      marginRight: expect.anything(),
+    });
+
+    // all insetBehavior = fit
+    provider.footer.setSecondaryInsetToFit();
+    provider.set();
     expect(footer.getStyle()).toMatchObject({
-      marginRight: 256,
+      marginLeft: 256,
+      marginRight: 244,
       width: 'auto',
     });
 
-    ctx.footer.insetBehavior = 'flexible';
-    footer = createFooter(ctx);
+    provider.footer.setPrimaryInsetToNonFit();
+    provider.set();
     expect(footer.getStyle()).toMatchObject({
+      marginRight: 244,
+      width: 'auto',
+    });
+    expect(footer.getStyle()).not.toMatchObject({
+      marginLeft: expect.anything(),
+    });
+
+    provider.footer.setSecondaryInsetToNonFit();
+    provider.set();
+    expect(footer.getStyle()).toMatchObject({
+      width: 'auto',
+    });
+    expect(footer.getStyle()).not.toMatchObject({
+      marginLeft: expect.anything(),
+    });
+
+    provider.footer.setPrimaryInsetToFit();
+    provider.switchAllSidebarAnchors();
+    provider.set();
+    expect(footer.getStyle()).toMatchObject({
+      marginRight: 256,
       width: 'auto',
     });
   });

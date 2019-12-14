@@ -35,6 +35,32 @@ export default () => {
     ),
     setInsetBehavior,
     setSecondaryInsetBehavior,
+    setPrimaryInsetToFit() {
+      config.insetBehavior = 'fit';
+      return this;
+    },
+    setSecondaryInsetToFit() {
+      config.secondaryInsetBehavior = 'fit';
+      return this;
+    },
+    setAllInsetToFit() {
+      this.setPrimaryInsetToFit();
+      this.setSecondaryInsetToFit();
+      return this;
+    },
+    setPrimaryInsetToNonFit() {
+      config.insetBehavior = 'none';
+      return this;
+    },
+    setSecondaryInsetToNonFit() {
+      config.secondaryInsetBehavior = 'none';
+      return this;
+    },
+    setAllInsetToNonFit() {
+      this.setPrimaryInsetToNonFit();
+      this.setSecondaryInsetToNonFit();
+      return this;
+    },
     set(value) {
       Object.assign(config, value);
       return this;

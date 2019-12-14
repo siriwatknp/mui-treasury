@@ -10,6 +10,9 @@ export default () => {
   const header = HeaderGenerator();
   const footer = FooterGenerator();
   return {
+    debug() {
+      console.log(this.get());
+    },
     get: () => ({
       sidebar: primarySidebar.get(),
       secondarySidebar: secondarySidebar.get(),
@@ -17,9 +20,40 @@ export default () => {
       header: header.get(),
       footer: footer.get(),
     }),
-    setInsetSidebars() {
+    setPrimarySidebarToInset() {
+      primarySidebar.setInset(true);
+      return this;
+    },
+    setPrimarySidebarToNonInset() {
+      primarySidebar.setInset(false);
+      return this;
+    },
+    setSecondarySidebarToInset() {
+      secondarySidebar.setInset(true);
+      return this;
+    },
+    setSecondarySidebarToNonInset() {
+      secondarySidebar.setInset(false);
+      return this;
+    },
+    setAllSidebarsToInset() {
       primarySidebar.setInset(true);
       secondarySidebar.setInset(true);
+      return this;
+    },
+    switchPrimarySidebarAnchor() {
+      const pval = primarySidebar.get();
+      primarySidebar.setAnchor(pval.anchor === 'left' ? 'right' : 'left');
+      return this;
+    },
+    switchSecondarySidebarAnchor() {
+      const sval = secondarySidebar.get();
+      secondarySidebar.setAnchor(sval.anchor === 'left' ? 'right' : 'left');
+      return this;
+    },
+    switchAllSidebarAnchors() {
+      this.switchPrimarySidebarAnchor();
+      this.switchSecondarySidebarAnchor();
       return this;
     },
     primarySidebar,

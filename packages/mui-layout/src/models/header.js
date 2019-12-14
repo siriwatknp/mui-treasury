@@ -6,28 +6,42 @@ export default (ctx = {}) => {
   const { getStyle } = createSidebarEffect(ctx, header);
   return {
     getStyle: theme => {
+      const isHeaderOverPrimarySidebar =
+        header.clipped && header.position !== 'static';
+      const isHeaderOverSecondarySidebar =
+        header.secondaryClipped && header.position !== 'static';
       const isHeaderOnTop =
-        (header.clipped && header.position !== 'static') ||
-        (header.secondaryClipped && header.position !== 'static');
+        isHeaderOverPrimarySidebar || isHeaderOverSecondarySidebar;
       const layerStyle = isHeaderOnTop
         ? { zIndex: get(theme, 'zIndex.drawer', 1200) + 10 }
         : undefined;
+      if (sidebar.inset && secondarySidebar.inset) {
+        return {};
+      }
       if (
-        (header.clipped && header.secondaryClipped) ||
-        (sidebar.inset && secondarySidebar.inset)
+        !sidebar.inset &&
+        isHeaderOverPrimarySidebar &&
+        secondarySidebar.inset
       ) {
         return layerStyle;
       }
       if (
-        (!header.clipped && header.secondaryClipped) ||
-        secondarySidebar.inset
+        sidebar.inset &&
+        !secondarySidebar.inset &&
+        isHeaderOverSecondarySidebar
       ) {
+        return layerStyle;
+      }
+      if (header.clipped && header.secondaryClipped) {
+        return layerStyle;
+      }
+      if (!header.clipped && header.secondaryClipped) {
         return {
           ...layerStyle,
           ...getStyle({ secondaryDisabled: true }),
         };
       }
-      if ((header.clipped && !header.secondaryClipped) || sidebar.inset) {
+      if (header.clipped && !header.secondaryClipped) {
         return {
           ...layerStyle,
           ...getStyle({ primaryDisabled: true }),

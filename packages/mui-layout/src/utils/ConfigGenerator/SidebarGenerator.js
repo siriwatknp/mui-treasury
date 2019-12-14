@@ -27,7 +27,7 @@ export default () => {
     insetProps: {
       position: 'sticky',
       autoHidden: true,
-      hiddenBreakpoint: 'sm',
+      hiddenBreakpoint: 'md',
     },
   };
 

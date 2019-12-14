@@ -17,7 +17,7 @@ import {
   SecondaryCollapseIcon,
   Footer,
   Content,
-  standardLayoutPreset,
+  ConfigGenerator,
 } from '@mui-treasury/layout';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
@@ -25,21 +25,14 @@ import Toolbar from '@material-ui/core/Toolbar';
 
 import { ContentMockUp } from '@mui-treasury/mockup/layout';
 
-standardLayoutPreset.md.sidebar.inset = true;
-standardLayoutPreset.md.secondarySidebar.inset = true;
-standardLayoutPreset.md.header.position = 'fixed';
-standardLayoutPreset.md.footer.insetBehavior = 'flexible';
-standardLayoutPreset.md.footer.secondaryInsetBehavior = 'fit';
-// standardLayoutPreset.xs.sidebar.anchor = 'right';
-// standardLayoutPreset.sm.sidebar.anchor = 'right';
-// standardLayoutPreset.md.sidebar.anchor = 'right';
-// standardLayoutPreset.xs.header.position = 'fixed';
-// standardLayoutPreset.sm.header.position = 'fixed';
-// standardLayoutPreset.md.header.position = 'fixed';
+const config = ConfigGenerator();
+config.setAllSidebarsToInset();
+config.header.setPosition('fixed');
+// config.debug();
 
 const LayoutTest = () => {
   return (
-    <Root config={standardLayoutPreset}>
+    <Root config={config.get()}>
       {({ containerStyles, sidebarStyles, headerStyles }) => (
         <>
           <Header>
@@ -48,9 +41,9 @@ const LayoutTest = () => {
                 <SidebarTriggerIcon />
               </SidebarTrigger>
               <Box flexGrow={1}>test</Box>
-              <SecondarySidebarTrigger>
-                <SecondarySidebarTriggerIcon />
-              </SecondarySidebarTrigger>
+              {/*<SecondarySidebarTrigger>*/}
+              {/*  <SecondarySidebarTriggerIcon />*/}
+              {/*</SecondarySidebarTrigger>*/}
             </Toolbar>
           </Header>
           {/*<Sidebar>*/}

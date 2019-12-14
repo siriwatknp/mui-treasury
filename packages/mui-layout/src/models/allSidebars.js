@@ -34,9 +34,15 @@ export default (ctx = {}) => {
     },
     getTargetProps: (target = {}) => ({
       primaryWidth: primarySidebar.calculateAffectedWidth(target),
-      secondaryWidth: secondarySidebar.calculateAffectedWidth(target),
+      secondaryWidth: SidebarAdapter.normalize2ndSidebarConfigToFn(
+        secondarySidebar.calculateAffectedWidth,
+        target
+      ),
       primaryGap: primarySidebar.calculateGap(target),
-      secondaryGap: secondarySidebar.calculateGap(target),
+      secondaryGap: SidebarAdapter.normalize2ndSidebarConfigToFn(
+        secondarySidebar.calculateGap,
+        target
+      ),
     }),
   };
 };

@@ -41,10 +41,19 @@ export default ({
   if (heightAdjustmentDisabled) return 0; // disabled by user.
   if (sidebar.inset) {
     // inset sidebar
-    if (someIs(['sticky', 'fixed'], position)) {
+    const insetPosition = get(sidebar, 'insetProps.position');
+    if (
+      someIs(['fixed', 'sticky'], position) &&
+      someIs(['fixed', 'sticky'], insetPosition) &&
+      !(position === 'sticky' && insetPosition === 'sticky')
+    ) {
       return offsetHeight;
     }
-    if (get(sidebar, 'insetProps.position') === 'fixed') {
+    if (
+      someIs(['absolute', 'relative', 'static'], position) &&
+      someIs(['fixed', 'sticky'], insetPosition) &&
+      !(position === 'relative' && insetPosition === 'sticky')
+    ) {
       return height;
     }
     return 0;

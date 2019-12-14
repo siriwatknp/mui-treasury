@@ -6,31 +6,27 @@ export default (ctx = {}) => {
   return {
     getStyle: () => {
       if (sidebar.inset && secondarySidebar.inset) {
-        if (footer.insetBehavior === 'fit') {
-          return {
-            ...getStyle(),
-            width: 'auto',
-          };
-        }
-        return { width: 'auto' };
+        return {
+          ...getStyle({
+            primaryDisabled: footer.insetBehavior !== 'fit',
+            secondaryDisabled: footer.secondaryInsetBehavior !== 'fit',
+          }),
+          width: 'auto',
+        };
       }
       if (sidebar.inset && !secondarySidebar.inset) {
-        if (footer.insetBehavior === 'fit') {
-          return {
-            ...getStyle({ secondaryDisabled: true }),
-            width: 'auto',
-          };
-        }
-        return { width: 'auto' };
+        return {
+          ...getStyle({
+            primaryDisabled: footer.insetBehavior !== 'fit',
+          }),
+        };
       }
       if (!sidebar.inset && secondarySidebar.inset) {
-        if (footer.insetBehavior === 'fit') {
-          return {
-            ...getStyle({ primaryDisabled: true }),
-            width: 'auto',
-          };
-        }
-        return { width: 'auto' };
+        return {
+          ...getStyle({
+            secondaryDisabled: footer.secondaryInsetBehavior !== 'fit',
+          }),
+        };
       }
       return getStyle();
     },
