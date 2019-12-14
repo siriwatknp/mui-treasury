@@ -20,6 +20,14 @@ export default () => {
     setOffsetHeight: createSet(config, 'offsetHeight'),
     setClipped: createSet(config, 'clipped'),
     setSecondaryClipped: createSet(config, 'secondaryClipped'),
+    unclipPrimary() {
+      this.setClipped(false);
+      return this;
+    },
+    unclipSecondary() {
+      this.setSecondaryClipped(false);
+      return this;
+    },
     set(value) {
       Object.assign(config, value);
       return this;

@@ -1,32 +1,18 @@
-import getDefaultScreenConfig from '../utils/getDefaultScreenConfig';
-import getAddOnConfig from '../utils/getAddOnConfig';
+import ScreenConfigGenerator from '../utils/ScreenConfigGenerator';
 
-export default {
-  ...getAddOnConfig({
-    collapsedBreakpoint: 'sm',
-    secondaryCollapseBreakpoint: 'sm',
-  }),
-  xs: getDefaultScreenConfig({
-    header: {
-      position: 'relative',
-      clipped: false,
-    },
-  }),
-  sm: getDefaultScreenConfig({
-    sidebar: {
-      variant: 'persistent',
-      collapsible: false,
-    },
-    header: {
-      position: 'relative',
-      clipped: false,
-      persistentBehavior: 'flexible',
-    },
-    content: {
-      persistentBehavior: 'flexible',
-    },
-    footer: {
-      persistentBehavior: 'flexible',
-    },
-  }),
-};
+const config = ScreenConfigGenerator();
+config.addOns.setCollapsedBreakpoint('sm').setSecondaryCollapseBreakpoint('sm');
+config.add('xs', screen => {
+  screen.header.setPosition('relative').unclipPrimary();
+});
+config.add('sm', screen => {
+  screen.primarySidebar.setVariant('persistent').setCollapsible(false);
+  screen.header
+    .setPosition('relative')
+    .unclipPrimary()
+    .setPersistentBehavior('flexible');
+  screen.content.setPersistentBehavior('flexible');
+  screen.footer.setPersistentBehavior('flexible');
+});
+
+export default config.get();

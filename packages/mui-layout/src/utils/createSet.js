@@ -8,5 +8,6 @@ const createSet = (config, key) =>
             ...value,
           }
         : value;
+    return this;
   };
 export default createSet;

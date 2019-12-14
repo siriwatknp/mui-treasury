@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import get from 'lodash.get';
 import IconButton from '@material-ui/core/IconButton';
-import { useScreenComparison } from '../../hooks';
+import { useInsetBreakpoint } from '../../hooks';
 
 const SharedSidebarTrigger = ({
   children,
@@ -10,12 +9,11 @@ const SharedSidebarTrigger = ({
   useSidebarConfig,
   ...props
 }) => {
-  const { opened, setOpened, sidebar = {} } = useSidebarConfig();
-  const { hiddenBreakpoint, autoHidden } = get(sidebar, 'insetProps', {});
-  const { isTargetAbove } = useScreenComparison(hiddenBreakpoint);
+  const parsedCtx = useSidebarConfig();
+  const { opened, setOpened, sidebar = {} } = parsedCtx;
+  const { displayedAboveBreakpoint } = useInsetBreakpoint(parsedCtx);
   const isPermanentDrawer = !sidebar.inset && sidebar.variant === 'permanent';
-  const isInsetAbove = sidebar.inset && isTargetAbove && autoHidden;
-  if (isPermanentDrawer || isInsetAbove) {
+  if (isPermanentDrawer || displayedAboveBreakpoint) {
     return null;
   }
   return (

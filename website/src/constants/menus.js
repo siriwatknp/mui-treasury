@@ -92,6 +92,11 @@ export default {
           label: '2nd Sidebar',
           to: '/layout/basic-examples/secondary-sidebar',
         },
+        {
+          key: 'inset-sidebar',
+          label: 'Inset Sidebar',
+          to: '/layout/basic-examples/inset-sidebar',
+        },
       ],
     },
   ],
