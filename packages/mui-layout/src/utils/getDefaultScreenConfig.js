@@ -12,6 +12,12 @@ export default ({
     collapsible: false,
     collapsedWidth: 64,
     hidden: false,
+    inset: false,
+    insetProps: {
+      position: 'fixed',
+      autoHidden: true,
+      hiddenBreakpoint: 'sm',
+    },
     ...sidebar,
   },
   secondarySidebar: {
@@ -21,6 +27,12 @@ export default ({
     collapsible: true,
     collapsedWidth: 64,
     hidden: false,
+    inset: false,
+    insetProps: {
+      position: 'sticky',
+      autoHidden: true,
+      hiddenBreakpoint: 'sm',
+    },
     ...secondarySidebar,
   },
   header: {
@@ -40,6 +52,8 @@ export default ({
   footer: {
     persistentBehavior: 'fit',
     secondaryPersistentBehavior: 'none',
+    insetBehavior: 'fit',
+    secondaryInsetBehavior: 'none',
     ...footer,
   },
 });

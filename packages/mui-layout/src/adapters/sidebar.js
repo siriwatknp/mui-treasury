@@ -13,6 +13,8 @@ SidebarAdapter.mapSecondaryConfig = ({
   getSecondarySidebarWidth,
   getSecondarySidebarGap,
   getSecondarySidebarZIndex,
+  getSecondaryInsetSidebarStyle,
+  getSecondaryInsetSidebarBodyStyle,
   ...rest
 } = {}) => ({
   ...rest,
@@ -28,6 +30,8 @@ SidebarAdapter.mapSecondaryConfig = ({
   getSidebarWidth: getSecondarySidebarWidth,
   getSidebarGap: getSecondarySidebarGap,
   getSidebarZIndex: getSecondarySidebarZIndex,
+  getInsetSidebarStyle: getSecondaryInsetSidebarStyle,
+  getInsetSidebarBodyStyle: getSecondaryInsetSidebarBodyStyle,
 });
 SidebarAdapter.normalize2ndSidebarConfigToFn = (fn, ctx) =>
   fn(SidebarAdapter.mapSecondaryConfig(ctx));

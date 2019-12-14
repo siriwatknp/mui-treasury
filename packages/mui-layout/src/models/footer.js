@@ -1,11 +1,38 @@
 import createSidebarEffect from './sidebarEffect';
 
 export default (ctx = {}) => {
-  const sidebarEffect = createSidebarEffect(ctx, ctx.footer);
+  const { sidebar = {}, secondarySidebar = {}, footer = {} } = ctx;
+  const { getStyle } = createSidebarEffect(ctx, footer);
   return {
-    getStyle: () => ({
-      ...sidebarEffect.getMarginStyle(),
-      width: sidebarEffect.getAffectedWidth(),
-    }),
+    getStyle: () => {
+      if (sidebar.inset && secondarySidebar.inset) {
+        if (footer.insetBehavior === 'fit') {
+          return {
+            ...getStyle(),
+            width: 'auto',
+          };
+        }
+        return { width: 'auto' };
+      }
+      if (sidebar.inset && !secondarySidebar.inset) {
+        if (footer.insetBehavior === 'fit') {
+          return {
+            ...getStyle({ secondaryDisabled: true }),
+            width: 'auto',
+          };
+        }
+        return { width: 'auto' };
+      }
+      if (!sidebar.inset && secondarySidebar.inset) {
+        if (footer.insetBehavior === 'fit') {
+          return {
+            ...getStyle({ primaryDisabled: true }),
+            width: 'auto',
+          };
+        }
+        return { width: 'auto' };
+      }
+      return getStyle();
+    },
   };
 };

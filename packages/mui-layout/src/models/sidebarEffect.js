@@ -21,6 +21,9 @@ export default (ctx = {}, target = {}) => {
     if (secondaryDisabled) {
       return primaryWidth;
     }
+    if (primaryWidth === 'auto' && secondaryWidth === 'auto') {
+      return 'auto';
+    }
     if (primaryWidth === '100%' && secondaryWidth === '100%') {
       return '100%';
     }

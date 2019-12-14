@@ -4,12 +4,13 @@ export default (ctx = {}) => {
   const getSidebarWidth = () => {
     if (sidebar.hidden) return 0;
     return sidebar.collapsible && collapsed
-      ? sidebar.collapsedWidth
-      : sidebar.width;
+      ? sidebar.collapsedWidth || 0
+      : sidebar.width || 0;
   };
 
   const sidebarWidth = getSidebarWidth();
   return {
+    ...sidebar,
     width: sidebarWidth,
     calculateGap: ({ persistentBehavior } = {}) => {
       switch (sidebar.variant) {
@@ -40,5 +41,7 @@ export default (ctx = {}) => {
           return undefined;
       }
     },
+    getStyle: () => {},
+    getBodyStyle: () => {},
   };
 };

@@ -4,7 +4,5 @@ import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 import App from './src/App';
 
 export const wrapPageElement = ({ element, props }) => {
-  console.log('element', element);
-  console.log('props', props);
   return <App {...props}>{element}</App>;
 };

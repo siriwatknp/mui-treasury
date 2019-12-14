@@ -1,4 +1,5 @@
 import debounce from 'lodash.debounce';
+import get from 'lodash.get';
 import { useCallback, useEffect, useState } from 'react';
 import useWindow from './useWindow';
 import someIs from '../utils/someIs';
@@ -38,6 +39,16 @@ export default ({
   useEventListener('scroll', handler);
 
   if (heightAdjustmentDisabled) return 0; // disabled by user.
+  if (sidebar.inset) {
+    // inset sidebar
+    if (someIs(['sticky', 'fixed'], position)) {
+      return offsetHeight;
+    }
+    if (get(sidebar, 'insetProps.position') === 'fixed') {
+      return height;
+    }
+    return 0;
+  }
   if (sidebar.variant === 'temporary') return 0;
   if (!clipped) {
     // do not run the effect below if behavior is not right.
