@@ -17,6 +17,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import PageHeader from 'components/layout/PageHeader';
 import PageFooter from 'components/layout/PageFooter';
 import ComponentMenuList from 'components/organisms/ComponentMenuList';
+import useQueryParams from '../../utils/useQueryParams';
 
 const useStyles = makeStyles(theme => {
   const { palette } = theme;
@@ -38,6 +39,7 @@ const useSidebarStyles = makeStyles(sidebarStyles);
 const useHeaderStyles = makeStyles(headerStyles);
 
 const PageLayout = ({ menus, children, getOpenKeys, hamburgerHidden }) => {
+  const { primary = '' } = useQueryParams();
   const styles = useStyles();
   const headStyles = useHeaderStyles();
   const sbStyles = useSidebarStyles();
@@ -54,7 +56,16 @@ const PageLayout = ({ menus, children, getOpenKeys, hamburgerHidden }) => {
           <PageHeader />
         </Toolbar>
       </Header>
-      <Content>{children}</Content>
+      <Content
+        style={{
+          ...(primary && {
+            background: primary.length === 6 ? `#${primary}` : primary,
+            boxShadow: 'inset 0 0 12px 0 rgba(0,0,0,0.12)',
+          }),
+        }}
+      >
+        {children}
+      </Content>
       <Sidebar>
         <div className={sbStyles.container}>
           <ComponentMenuList menus={menus} getOpenKeys={getOpenKeys} />

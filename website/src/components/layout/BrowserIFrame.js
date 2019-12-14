@@ -1,4 +1,6 @@
 import React from 'react';
+import cx from 'clsx';
+import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
@@ -10,6 +12,22 @@ import LaptopMac from '@material-ui/icons/LaptopMac';
 import { useGutterBorderedGridStyles } from '@mui-treasury/styles/grid/gutterBordered';
 import Browser from './Browser';
 import IFrame from './IFrame';
+import useQueryParams from '../../utils/useQueryParams';
+
+const useStyles = makeStyles(() => ({
+  btn: ({ dark }) => ({
+    ...(dark && {
+      color: 'rgba(255, 255, 255, 0.7)',
+      '&:hover': {
+        color: 'rgba(255, 255, 255, 0.87)',
+        backgroundColor: 'rgba(255,255,255,0.2)',
+      },
+    }),
+  }),
+  activeBtn: ({ accent = '#007aac' }) => ({
+    color: `${accent} !important`,
+  }),
+}));
 
 const devices = [
   {
@@ -50,6 +68,8 @@ const devices = [
 ];
 
 const BrowserIFrame = ({ children }) => {
+  const { accent, dark } = useQueryParams();
+  const styles = useStyles({ dark, accent });
   const [current, setCurrent] = React.useState(devices[devices.length - 1]);
   const gutterBorderStyles = useGutterBorderedGridStyles({ height: '60%' });
   return (
@@ -64,7 +84,10 @@ const BrowserIFrame = ({ children }) => {
           <Grid key={item.name} item classes={gutterBorderStyles}>
             <Box px={1}>
               <IconButton
-                color={item.name === current.name ? 'secondary' : 'default'}
+                className={cx(
+                  styles.btn,
+                  item.name === current.name && styles.activeBtn
+                )}
                 onClick={() => setCurrent(item)}
               >
                 {item.icon}
@@ -82,6 +105,10 @@ const BrowserIFrame = ({ children }) => {
           display={'inline-block'}
           px={1.5}
           py={0.5}
+          {...(dark && {
+            color: '#fff',
+            bgcolor: 'rgba(255,255,255,0.2)',
+          })}
         >
           {current.width} x {current.height} -- screen: <b>{current.screen}</b>
         </Box>

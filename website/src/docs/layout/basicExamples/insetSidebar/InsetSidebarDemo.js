@@ -21,7 +21,7 @@ import {
 
 const config = ConfigGenerator();
 config.setPrimarySidebarToInset();
-config.debug({ addOnsIncluded: true });
+// config.debug({ addOnsIncluded: true });
 
 const InsetSidebarDemo = () => {
   return (

@@ -80,7 +80,8 @@ export default {
         {
           key: 'custom-styles',
           label: 'Custom styles',
-          to: '/layout/basic-examples/custom-styles',
+          to:
+            '/layout/basic-examples/custom-styles?primary=213E9B&accent=rgb(17, 254, 220)&dark=true',
         },
         {
           key: 'control-sidebar',
