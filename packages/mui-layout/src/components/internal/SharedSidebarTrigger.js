@@ -11,10 +11,10 @@ const SharedSidebarTrigger = ({
   ...props
 }) => {
   const { opened, setOpened, sidebar = {} } = useSidebarConfig();
-  const { hiddenBreakpoint, autoHidden } = get(sidebar, 'insetProps', {});
+  const { hiddenBreakpoint, hiddenDisabled } = get(sidebar, 'insetProps', {});
   const { isTargetAbove } = useScreenComparison(hiddenBreakpoint);
   const isPermanentDrawer = !sidebar.inset && sidebar.variant === 'permanent';
-  const isInsetAbove = sidebar.inset && isTargetAbove && autoHidden;
+  const isInsetAbove = sidebar.inset && isTargetAbove && !hiddenDisabled;
   if (isPermanentDrawer || isInsetAbove) {
     return null;
   }

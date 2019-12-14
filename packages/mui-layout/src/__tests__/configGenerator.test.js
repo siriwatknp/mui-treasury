@@ -1,9 +1,26 @@
+import createSet from '../utils/createSet';
+import ScreenConfigGenerator from '../utils/ScreenConfigGenerator';
 import ConfigGenerator from '../utils/ConfigGenerator';
 import SidebarGenerator from '../utils/ConfigGenerator/SidebarGenerator';
 import HeaderGenerator from '../utils/ConfigGenerator/HeaderGenerator';
 import ContentGenerator from '../utils/ConfigGenerator/ContentGenerator';
 
 describe('Config Generator', function() {
+  test('able to set screen config', () => {
+    const config = ScreenConfigGenerator();
+    config.add('xs');
+    expect(config.get()).toMatchObject({
+      xs: { sidebar: { variant: 'temporary' } },
+    });
+
+    config.adjust('xs', screen => {
+      screen.primarySidebar.setVariant('permanent');
+    });
+    expect(config.get()).toMatchObject({
+      xs: { sidebar: { variant: 'permanent' } },
+    });
+  });
+
   test('able to set config', () => {
     const config = ConfigGenerator();
     expect(config.get()).toMatchObject({
@@ -20,6 +37,22 @@ describe('Config Generator', function() {
       content: { persistentBehavior: 'fit' },
       footer: { insetBehavior: 'fit' },
     });
+  });
+
+  test('createSet is chainable', () => {
+    const config = {};
+    const chain = {
+      setA: createSet(config, 'a'),
+      setB: createSet(config, 'b'),
+    };
+    expect(() => {
+      try {
+        chain.setA('a').setB('b');
+      } catch (e) {
+        throw new Error();
+      }
+    }).not.toThrow();
+    expect(config).toMatchObject({ a: 'a', b: 'b' });
   });
 
   describe('sidebar', () => {

@@ -1,9 +1,11 @@
+import AddOnsGenerator from './AddOnsGenerator';
 import ContentGenerator from './ContentGenerator';
 import FooterGenerator from './FooterGenerator';
 import HeaderGenerator from './HeaderGenerator';
 import SidebarGenerator from './SidebarGenerator';
 
 export default () => {
+  const addOns = AddOnsGenerator();
   const primarySidebar = SidebarGenerator();
   const secondarySidebar = SidebarGenerator().initSecondary();
   const content = ContentGenerator();
@@ -11,9 +13,11 @@ export default () => {
   const footer = FooterGenerator();
   return {
     debug() {
+      // eslint-disable-next-line no-console
       console.log(this.get());
     },
-    get: () => ({
+    get: addOnsIncluded => ({
+      ...(addOnsIncluded && addOns),
       sidebar: primarySidebar.get(),
       secondarySidebar: secondarySidebar.get(),
       content: content.get(),
@@ -56,6 +60,7 @@ export default () => {
       this.switchSecondarySidebarAnchor();
       return this;
     },
+    addOns,
     primarySidebar,
     secondarySidebar,
     content,

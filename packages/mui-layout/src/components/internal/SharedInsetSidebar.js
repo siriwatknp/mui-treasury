@@ -30,13 +30,13 @@ const SharedInsetSidebar = ({
   const height = useHeightAdjustment(parsedCtx);
   const transition = useTransitionStyles();
   const insetStyles = useInsetSidebarStyles();
-  const { position: insetPosition, hiddenBreakpoint, autoHidden } = get(
+  const { position: insetPosition, hiddenBreakpoint, hiddenDisabled } = get(
     parsedCtx,
     'sidebar.insetProps',
     {}
   );
   const { isTargetDown } = useScreenComparison(hiddenBreakpoint);
-  if (isTargetDown && autoHidden) {
+  if (isTargetDown && !hiddenDisabled) {
     return (
       <Drawer
         {...props}

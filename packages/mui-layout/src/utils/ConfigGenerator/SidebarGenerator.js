@@ -11,8 +11,6 @@ export default () => {
     inset: false,
     insetProps: {
       position: 'fixed',
-      autoHidden: true,
-      hiddenBreakpoint: 'sm',
     },
   };
 
@@ -26,8 +24,6 @@ export default () => {
     inset: false,
     insetProps: {
       position: 'sticky',
-      autoHidden: true,
-      hiddenBreakpoint: 'md',
     },
   };
 

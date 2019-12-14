@@ -15,6 +15,10 @@ describe('Layout Presets', () => {
       secondaryAutoCollapseDisabled: false,
       secondaryCollapseBreakpoint: 'md',
       heightAdjustmentDisabled: false,
+      insetHiddenBreakpoint: 'sm',
+      insetHiddenDisabled: false,
+      secondaryInsetHiddenBreakpoint: 'md',
+      secondaryInsetHiddenDisabled: false,
       xs: {
         sidebar: {
           anchor: 'left',
@@ -26,7 +30,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'fixed',
-            hiddenBreakpoint: 'sm',
           },
         },
         secondarySidebar: {
@@ -39,7 +42,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'sticky',
-            hiddenBreakpoint: 'sm',
           },
         },
         header: {
@@ -72,7 +74,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'fixed',
-            hiddenBreakpoint: 'sm',
           },
         },
         secondarySidebar: {
@@ -85,7 +86,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'sticky',
-            hiddenBreakpoint: 'sm',
           },
         },
         header: {
@@ -118,7 +118,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'fixed',
-            hiddenBreakpoint: 'sm',
           },
         },
         secondarySidebar: {
@@ -131,7 +130,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'sticky',
-            hiddenBreakpoint: 'sm',
           },
         },
         header: {
@@ -163,6 +161,10 @@ describe('Layout Presets', () => {
       secondaryAutoCollapseDisabled: false,
       secondaryCollapseBreakpoint: 'md',
       heightAdjustmentDisabled: false,
+      insetHiddenBreakpoint: 'sm',
+      insetHiddenDisabled: false,
+      secondaryInsetHiddenBreakpoint: 'md',
+      secondaryInsetHiddenDisabled: false,
       xs: {
         sidebar: {
           anchor: 'left',
@@ -174,7 +176,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'fixed',
-            hiddenBreakpoint: 'sm',
           },
         },
         secondarySidebar: {
@@ -187,7 +188,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'sticky',
-            hiddenBreakpoint: 'sm',
           },
         },
         header: {
@@ -220,7 +220,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'fixed',
-            hiddenBreakpoint: 'sm',
           },
         },
         secondarySidebar: {
@@ -233,7 +232,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'sticky',
-            hiddenBreakpoint: 'sm',
           },
         },
         header: {
@@ -266,7 +264,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'fixed',
-            hiddenBreakpoint: 'sm',
           },
         },
         secondarySidebar: {
@@ -279,7 +276,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'sticky',
-            hiddenBreakpoint: 'sm',
           },
         },
         header: {
@@ -311,6 +307,10 @@ describe('Layout Presets', () => {
       collapsedBreakpoint: 'sm',
       secondaryCollapseBreakpoint: 'sm',
       heightAdjustmentDisabled: true,
+      insetHiddenBreakpoint: 'sm',
+      insetHiddenDisabled: false,
+      secondaryInsetHiddenBreakpoint: 'md',
+      secondaryInsetHiddenDisabled: false,
       xs: {
         sidebar: {
           anchor: 'left',
@@ -322,7 +322,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'fixed',
-            hiddenBreakpoint: 'sm',
           },
         },
         secondarySidebar: {
@@ -335,7 +334,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'sticky',
-            hiddenBreakpoint: 'sm',
           },
         },
         header: {
@@ -368,7 +366,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'fixed',
-            hiddenBreakpoint: 'sm',
           },
         },
         secondarySidebar: {
@@ -381,7 +378,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'sticky',
-            hiddenBreakpoint: 'sm',
           },
         },
         header: {
@@ -413,6 +409,10 @@ describe('Layout Presets', () => {
       heightAdjustmentDisabled: false,
       collapsedBreakpoint: 'sm',
       secondaryCollapseBreakpoint: 'sm',
+      insetHiddenBreakpoint: 'sm',
+      insetHiddenDisabled: false,
+      secondaryInsetHiddenBreakpoint: 'md',
+      secondaryInsetHiddenDisabled: false,
       xs: {
         sidebar: {
           anchor: 'left',
@@ -424,7 +424,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'fixed',
-            hiddenBreakpoint: 'sm',
           },
         },
         secondarySidebar: {
@@ -437,7 +436,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'sticky',
-            hiddenBreakpoint: 'sm',
           },
         },
         header: {
@@ -470,7 +468,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'fixed',
-            hiddenBreakpoint: 'sm',
           },
         },
         secondarySidebar: {
@@ -483,7 +480,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'sticky',
-            hiddenBreakpoint: 'sm',
           },
         },
         header: {
@@ -515,6 +511,10 @@ describe('Layout Presets', () => {
       heightAdjustmentDisabled: false,
       collapsedBreakpoint: 'sm',
       secondaryCollapseBreakpoint: 'sm',
+      insetHiddenBreakpoint: 'sm',
+      insetHiddenDisabled: false,
+      secondaryInsetHiddenBreakpoint: 'md',
+      secondaryInsetHiddenDisabled: false,
       xs: {
         sidebar: {
           anchor: 'left',
@@ -526,7 +526,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'fixed',
-            hiddenBreakpoint: 'sm',
           },
         },
         secondarySidebar: {
@@ -539,7 +538,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'sticky',
-            hiddenBreakpoint: 'sm',
           },
         },
         header: {
@@ -572,7 +570,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'fixed',
-            hiddenBreakpoint: 'sm',
           },
         },
         secondarySidebar: {
@@ -585,7 +582,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'sticky',
-            hiddenBreakpoint: 'sm',
           },
         },
         header: {
@@ -617,6 +613,10 @@ describe('Layout Presets', () => {
       secondaryAutoCollapseDisabled: false,
       secondaryCollapseBreakpoint: 'md',
       heightAdjustmentDisabled: false,
+      insetHiddenBreakpoint: 'sm',
+      insetHiddenDisabled: false,
+      secondaryInsetHiddenBreakpoint: 'md',
+      secondaryInsetHiddenDisabled: false,
       xs: {
         sidebar: {
           anchor: 'left',
@@ -628,7 +628,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'fixed',
-            hiddenBreakpoint: 'sm',
           },
         },
         secondarySidebar: {
@@ -641,7 +640,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'sticky',
-            hiddenBreakpoint: 'sm',
           },
         },
         header: {
@@ -674,7 +672,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'fixed',
-            hiddenBreakpoint: 'sm',
           },
         },
         secondarySidebar: {
@@ -687,7 +684,6 @@ describe('Layout Presets', () => {
           inset: false,
           insetProps: {
             position: 'sticky',
-            hiddenBreakpoint: 'sm',
           },
         },
         header: {

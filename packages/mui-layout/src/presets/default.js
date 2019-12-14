@@ -1,21 +1,12 @@
-import getDefaultScreenConfig from '../utils/getDefaultScreenConfig';
-import getAddOnConfig from '../utils/getAddOnConfig';
+import ScreenConfigGenerator from '../utils/ScreenConfigGenerator';
 
-export default {
-  ...getAddOnConfig(),
-  xs: getDefaultScreenConfig({
-    header: {
-      position: 'relative',
-      clipped: false,
-    },
-  }),
-  md: getDefaultScreenConfig({
-    sidebar: {
-      variant: 'persistent',
-      collapsible: true,
-    },
-    header: {
-      position: 'sticky',
-    },
-  }),
-};
+const config = ScreenConfigGenerator();
+config.add('xs', screen => {
+  screen.header.setPosition('relative').unclipPrimary();
+});
+config.add('md', screen => {
+  screen.primarySidebar.setVariant('persistent').setCollapsible(true);
+  screen.header.setPosition('sticky');
+});
+
+export default config.get();
