@@ -1,6 +1,15 @@
 # Mui Treasury + Nextjs
 
 ## Get started
+```bash
+1. git clone https://github.com/siriwatknp/mui-treasury.git
+2. cd starters/nextjs
+3. yarn && yarn dev
+4. visit localhost:3000
+```
+
+
+## Create your own nextjs + mui-treasury/layout
 
 1. follow `nextjs` installation from [here](https://nextjs.org/docs)
 
