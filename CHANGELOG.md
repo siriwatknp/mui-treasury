@@ -10,7 +10,7 @@
 > - :bulb: [Refactor]
 > - :lipstick: [Style]
 
-## 14 Dec 2019
+## *14 Dec 2019*
 
 ### website@1.3.0
 
@@ -37,7 +37,7 @@
 - Siriwat Kunaporn ([@siriwatknp](https://github.com/siriwatknp))
 - [@dependabot-preview[bot]](https://github.com/apps/dependabot-preview)
 
-## 2019-12-08
+## *8 Dec 2019*
 
 ### @mui-treasury/layout@3.0.0
 
@@ -79,7 +79,7 @@
 
 - Siriwat Kunaporn ([@siriwatknp](https://github.com/siriwatknp))
 
-## 2019-12-06
+## *6 Dec 2019*
 
 ### @mui-treasury/layout `2.3.0`
 
