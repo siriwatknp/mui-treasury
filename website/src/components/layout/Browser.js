@@ -28,7 +28,9 @@ const Browser = ({ children, ...props }) => {
         <Box {...commonProps} bgcolor={'grey.300'} />
         <Box {...commonProps} bgcolor={'grey.300'} />
       </Box>
-      <Box css={{ flexGrow: 1 }}>{children}</Box>
+      <Box height={'100%'} display={'flex'} css={{ flexGrow: 1 }}>
+        {children}
+      </Box>
     </Box>
   );
 };
