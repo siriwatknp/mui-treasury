@@ -4,7 +4,11 @@ import get from 'lodash.get';
 import cx from 'clsx';
 import Drawer from '@material-ui/core/Drawer';
 import { makeStyles } from '@material-ui/core/styles';
-import { useHeightAdjustment, useScreenComparison } from '../../hooks';
+import {
+  useHeightAdjustment,
+  useInsetBreakpoint,
+  useWindow,
+} from '../../hooks';
 import * as styles from '../../styles';
 
 const useTransitionStyles = makeStyles(styles.transitionStyles);
@@ -16,8 +20,10 @@ const SharedInsetSidebar = ({
   children,
   useSidebarConfig,
   PaperProps = {},
+  ModalProps = {},
   ...props
 }) => {
+  const { iBody } = useWindow();
   const parsedCtx = useSidebarConfig();
   const {
     sidebar,
@@ -27,16 +33,12 @@ const SharedInsetSidebar = ({
     getInsetSidebarStyle,
     getInsetSidebarBodyStyle,
   } = parsedCtx;
+  const { displayedBelowBreakpoint } = useInsetBreakpoint(parsedCtx);
   const height = useHeightAdjustment(parsedCtx);
   const transition = useTransitionStyles();
   const insetStyles = useInsetSidebarStyles();
-  const { position: insetPosition, hiddenBreakpoint, hiddenDisabled } = get(
-    parsedCtx,
-    'sidebar.insetProps',
-    {}
-  );
-  const { isTargetDown } = useScreenComparison(hiddenBreakpoint);
-  if (isTargetDown && !hiddenDisabled) {
+  const { position: insetPosition } = get(parsedCtx, 'sidebar.insetProps', {});
+  if (displayedBelowBreakpoint) {
     return (
       <Drawer
         {...props}
@@ -52,6 +54,10 @@ const SharedInsetSidebar = ({
             ...PaperProps.style,
             width: getSidebarWidth(),
           },
+        }}
+        ModalProps={{
+          container: iBody,
+          ...ModalProps,
         }}
       >
         {children}
@@ -92,12 +98,14 @@ SharedInsetSidebar.propTypes = {
     className: PropTypes.string,
     style: PropTypes.shape({}),
   }),
+  ModalProps: PropTypes.shape({}),
 };
 SharedInsetSidebar.defaultProps = {
   className: undefined,
   style: undefined,
   children: null,
   PaperProps: undefined,
+  ModalProps: undefined,
 };
 
 export default SharedInsetSidebar;

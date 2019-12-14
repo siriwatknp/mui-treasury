@@ -12,12 +12,12 @@ export default () => {
   const header = HeaderGenerator();
   const footer = FooterGenerator();
   return {
-    debug() {
+    debug(props) {
       // eslint-disable-next-line no-console
-      console.log(this.get());
+      console.log(this.get(props));
     },
-    get: addOnsIncluded => ({
-      ...(addOnsIncluded && addOns),
+    get: ({ addOnsIncluded } = {}) => ({
+      ...(addOnsIncluded && addOns.get()),
       sidebar: primarySidebar.get(),
       secondarySidebar: secondarySidebar.get(),
       content: content.get(),
