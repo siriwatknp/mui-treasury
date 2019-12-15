@@ -1,6 +1,7 @@
 import { useRouter } from '../contexts/router';
 
-const createQueryParams = ({ search = '' }) => {
+const createQueryParams = location => {
+  const { search = '' } = location || {};
   const params = search.replace('?', '').split('&');
   return params.reduce((result, str) => {
     const variables = str.split('=');
