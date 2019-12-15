@@ -77,6 +77,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "davidedantonio",
+      "name": "Davide D'Antonio",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/9164563?v=4",
+      "profile": "https://twitter.com/davidedantonio",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
