@@ -1,11 +1,11 @@
 {
   "name": "@mui-treasury/styles",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "main": "./src/index.js",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@mui-treasury/utils": "^0.3.6",
+    "@mui-treasury/utils": "^0.3.7",
     "color": "^3.1.2"
   },
   "scripts": {
