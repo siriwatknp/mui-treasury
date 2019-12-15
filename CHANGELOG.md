@@ -10,7 +10,45 @@
 > - :bulb: [Refactor]
 > - :lipstick: [Style]
 
-## *14 Dec 2019*
+## _15 Dec 2019_
+
+### website@1.4.0
+
+#### :bug: Bug Fix
+
+- [#292](https://github.com/siriwatknp/mui-treasury/pull/292) Fix bugs website ([@siriwatknp](https://github.com/siriwatknp))
+
+#### :memo: Docs
+
+- [#294](https://github.com/siriwatknp/mui-treasury/pull/294) docs: ✏️ add nextjs starter ([@siriwatknp](https://github.com/siriwatknp))
+
+#### :lipstick: Style
+
+- [#296](https://github.com/siriwatknp/mui-treasury/pull/296) Mockup darkmode & React clone ([@siriwatknp](https://github.com/siriwatknp))
+
+### @mui-treasury/mockup@0.2.0
+
+#### :lipstick: Style
+
+- [#296](https://github.com/siriwatknp/mui-treasury/pull/296) React, ListItem, Icon, Logo ([@siriwatknp](https://github.com/siriwatknp))
+
+### @mui-treasury/layout@3.1.1
+
+#### :bug: Bug Fix
+
+- [#296](https://github.com/siriwatknp/mui-treasury/pull/296) InsetSidebar paper props ([@siriwatknp](https://github.com/siriwatknp))
+
+### `Patch`
+
+- @mui-treasury/utils@0.3.7
+- @mui-treasury/styles@0.3.4
+- @mui-treasury/components@0.3.9
+
+#### Committers: 1
+
+- Siriwat Kunaporn ([@siriwatknp](https://github.com/siriwatknp))
+
+## _14 Dec 2019_
 
 ### website@1.3.0
 
@@ -37,7 +75,7 @@
 - Siriwat Kunaporn ([@siriwatknp](https://github.com/siriwatknp))
 - [@dependabot-preview[bot]](https://github.com/apps/dependabot-preview)
 
-## *8 Dec 2019*
+## _8 Dec 2019_
 
 ### @mui-treasury/layout@3.0.0
 
@@ -70,6 +108,7 @@
 - [#261](https://github.com/siriwatknp/mui-treasury/pull/261) feat: 🎸 add new pkg @mui-treasury/mockup ([@siriwatknp](https://github.com/siriwatknp))
 
 #### `Patch version`
+
 - @mui-treasury/utils@0.3.5
 - @mui-treasury/styling@0.2.5
 - @mui-treasury/styles@0.3.2
@@ -79,7 +118,7 @@
 
 - Siriwat Kunaporn ([@siriwatknp](https://github.com/siriwatknp))
 
-## *6 Dec 2019*
+## _6 Dec 2019_
 
 ### @mui-treasury/layout `2.3.0`
 
