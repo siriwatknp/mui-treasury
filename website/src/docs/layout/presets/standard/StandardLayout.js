@@ -15,6 +15,7 @@ import {
 } from '@mui-treasury/layout';
 import {
   HeaderMockUp,
+  NavHeaderMockUp,
   NavContentMockUp,
   ContentMockUp,
   FooterMockUp,
@@ -22,7 +23,7 @@ import {
 
 const StandardLayout = () => (
   <Root config={standardLayoutPreset}>
-    {({ headerStyles, sidebarStyles }) => (
+    {({ headerStyles, sidebarStyles, collapsed }) => (
       <>
         <CssBaseline />
         <Header>
@@ -34,6 +35,7 @@ const StandardLayout = () => (
           </Toolbar>
         </Header>
         <Sidebar>
+          <NavHeaderMockUp collapsed={collapsed} />
           <div className={sidebarStyles.container}>
             <NavContentMockUp />
           </div>

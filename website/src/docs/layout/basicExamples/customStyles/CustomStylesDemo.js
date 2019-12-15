@@ -13,42 +13,45 @@ import {
   CollapseIcon,
   SidebarTrigger,
   SidebarTriggerIcon,
-  standardLayoutPreset,
+  fixedLayoutPreset,
 } from '@mui-treasury/layout';
 import {
   HeaderMockUp,
-  NavContentMockUp,
   ContentMockUp,
   FooterMockUp,
 } from '@mui-treasury/mockup/layout';
+import { TextSidebar } from '@mui-treasury/mockup/sidebars';
 
 const useStyles = makeStyles(() => ({
   header: {
-    backgroundColor: 'hsl(210, 38%, 97%)',
+    backgroundColor: '#fff',
     borderBottom: '1px solid hsl(210, 32%, 93%)',
   },
   collapseBtn: {
     color: '#fff',
-    borderColor: 'hsl(212, 56%, 16%)',
-    backgroundColor: 'hsl(212, 18%, 35%)',
+    minWidth: 0,
+    width: 40,
+    borderRadius: '50%',
+    border: 'none',
+    backgroundColor: 'rgba(0,0,0,0.24)',
+    margin: '0 auto 16px',
+    '&:hover': {
+      backgroundColor: 'rgba(0,0,0,0.38)',
+    },
   },
   sidebar: {
-    backgroundColor: '#152434',
+    backgroundColor: '#4065E0',
     border: 'none',
-    boxShadow: '0 0 12px 0 rgba(0,0,0,0.6)',
-    '& span': {
-      color: '#fff',
-    },
-    '& svg': {
-      color: '#9cbcdc',
-    },
+  },
+  content: {
+    backgroundColor: '#f9f9f9',
   },
 }));
 
 const CustomStylesDemo = () => {
   const styles = useStyles();
   return (
-    <Root config={standardLayoutPreset}>
+    <Root config={fixedLayoutPreset}>
       {({ headerStyles, sidebarStyles }) => (
         <>
           <CssBaseline />
@@ -62,7 +65,7 @@ const CustomStylesDemo = () => {
           </Header>
           <Sidebar PaperProps={{ classes: { root: styles.sidebar } }}>
             <div className={sidebarStyles.container}>
-              <NavContentMockUp />
+              <TextSidebar />
             </div>
             <CollapseBtn
               className={cx(sidebarStyles.collapseBtn, styles.collapseBtn)}
@@ -70,7 +73,7 @@ const CustomStylesDemo = () => {
               <CollapseIcon />
             </CollapseBtn>
           </Sidebar>
-          <Content>
+          <Content className={styles.content}>
             <ContentMockUp />
           </Content>
           <Footer>
@@ -83,8 +86,8 @@ const CustomStylesDemo = () => {
 };
 // hide-start
 CustomStylesDemo.metadata = {
-  title: 'Custom Theme',
-  path: 'basicExamples/customTheme',
+  title: 'Custom Styles',
+  path: 'basicExamples/customStyles',
   files: [],
   relates: [],
 };

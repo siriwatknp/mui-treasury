@@ -19,13 +19,12 @@ import {
   NavContentMockUp,
 } from '@mui-treasury/mockup/layout';
 
-const config = ConfigGenerator();
+const config = ConfigGenerator({ addOnsIncluded: true });
 config.setPrimarySidebarToInset();
-config.debug({ addOnsIncluded: true });
 
 const InsetSidebarDemo = () => {
   return (
-    <Root config={config.get({ addOnsIncluded: true })}>
+    <Root config={config.get()}>
       {({ headerStyles, containerStyles }) => (
         <>
           <CssBaseline />

@@ -30,7 +30,7 @@ const Content = ({
     <Component
       {...props}
       className={cx(styles.root, transition.root, className)}
-      style={getContentStyle()}
+      style={{ ...style, ...getContentStyle() }}
     >
       {!omitHeaderOffset && <HeaderOffset />}
       {typeof children === 'function' ? children(ctx) : children}

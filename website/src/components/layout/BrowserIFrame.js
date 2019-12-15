@@ -1,4 +1,9 @@
 import React from 'react';
+import cx from 'clsx';
+import Color from 'color';
+import dropRight from 'lodash/dropRight';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
@@ -7,9 +12,34 @@ import StayCurrentLandscape from '@material-ui/icons/StayCurrentLandscape';
 import Tablet from '@material-ui/icons/Tablet';
 import TabletAndroid from '@material-ui/icons/TabletAndroid';
 import LaptopMac from '@material-ui/icons/LaptopMac';
+import DesktopMac from '@material-ui/icons/DesktopMac';
 import { useGutterBorderedGridStyles } from '@mui-treasury/styles/grid/gutterBordered';
 import Browser from './Browser';
 import IFrame from './IFrame';
+import useQueryParams from '../../utils/useQueryParams';
+
+const parseColor = color => (color.length === 6 ? `#${color}` : color);
+
+const useStyles = makeStyles(() => ({
+  btn: ({ dark, accent = '#555' }) => ({
+    '&:hover': {
+      backgroundColor: Color(parseColor(accent))
+        .rotate(12)
+        .fade(0.87)
+        .toString(),
+    },
+    ...(dark && {
+      color: 'rgba(255, 255, 255, 0.7)',
+      '&:hover': {
+        color: 'rgba(255, 255, 255, 0.87)',
+        backgroundColor: 'rgba(255,255,255,0.2)',
+      },
+    }),
+  }),
+  activeBtn: ({ accent = '#007aac' }) => ({
+    color: `${parseColor(accent)} !important`,
+  }),
+}));
 
 const devices = [
   {
@@ -47,11 +77,26 @@ const devices = [
     height: 768,
     screen: 'lg',
   },
+  {
+    name: 'monitor',
+    icon: <DesktopMac />,
+    width: 1680,
+    height: 768,
+    screen: 'xl',
+  },
 ];
 
 const BrowserIFrame = ({ children }) => {
-  const [current, setCurrent] = React.useState(devices[devices.length - 1]);
-  const gutterBorderStyles = useGutterBorderedGridStyles({ height: '60%' });
+  const { accent, dark } = useQueryParams();
+  const isXs = useMediaQuery('(max-width: 767px)');
+  const styles = useStyles({ dark, accent });
+  const [current, setCurrent] = React.useState(
+    devices.find(({ name }) => name === 'laptop')
+  );
+  const gutterBorderStyles = useGutterBorderedGridStyles({
+    height: '40%',
+    borderColor: dark ? 'rgba(255, 255, 255, 0.3)' : '',
+  });
   return (
     <Box
       pt={0.5}
@@ -60,11 +105,14 @@ const BrowserIFrame = ({ children }) => {
       overflow={'auto'}
     >
       <Grid container justify={'center'}>
-        {devices.map(item => (
+        {(isXs ? dropRight(devices) : devices).map(item => (
           <Grid key={item.name} item classes={gutterBorderStyles}>
             <Box px={1}>
               <IconButton
-                color={item.name === current.name ? 'secondary' : 'default'}
+                className={cx(
+                  styles.btn,
+                  item.name === current.name && styles.activeBtn
+                )}
                 onClick={() => setCurrent(item)}
               >
                 {item.icon}
@@ -82,6 +130,10 @@ const BrowserIFrame = ({ children }) => {
           display={'inline-block'}
           px={1.5}
           py={0.5}
+          {...(dark && {
+            color: '#fff',
+            bgcolor: 'rgba(255,255,255,0.2)',
+          })}
         >
           {current.width} x {current.height} -- screen: <b>{current.screen}</b>
         </Box>

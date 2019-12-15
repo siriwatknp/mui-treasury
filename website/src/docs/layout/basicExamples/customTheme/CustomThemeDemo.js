@@ -62,7 +62,7 @@ const CustomThemeDemo = () => {
       {({ headerStyles, sidebarStyles }) => (
         <>
           <CssBaseline />
-          <Header color={'secondary'} elevation={6}>
+          <Header color={'secondary'}>
             <Toolbar>
               <SidebarTrigger className={headerStyles.leftTrigger}>
                 <SidebarTriggerIcon />
