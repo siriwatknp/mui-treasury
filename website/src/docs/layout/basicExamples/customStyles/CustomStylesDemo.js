@@ -20,7 +20,7 @@ import {
   ContentMockUp,
   FooterMockUp,
 } from '@mui-treasury/mockup/layout';
-import BlueSidebar from '@mui-treasury/mockup/sidebars/BlueSidebar';
+import { TextSidebar } from '@mui-treasury/mockup/sidebars';
 
 const useStyles = makeStyles(() => ({
   header: {
@@ -65,7 +65,7 @@ const CustomStylesDemo = () => {
           </Header>
           <Sidebar PaperProps={{ classes: { root: styles.sidebar } }}>
             <div className={sidebarStyles.container}>
-              <BlueSidebar />
+              <TextSidebar />
             </div>
             <CollapseBtn
               className={cx(sidebarStyles.collapseBtn, styles.collapseBtn)}
@@ -86,8 +86,8 @@ const CustomStylesDemo = () => {
 };
 // hide-start
 CustomStylesDemo.metadata = {
-  title: 'Custom Theme',
-  path: 'basicExamples/customTheme',
+  title: 'Custom Styles',
+  path: 'basicExamples/customStyles',
   files: [],
   relates: [],
 };

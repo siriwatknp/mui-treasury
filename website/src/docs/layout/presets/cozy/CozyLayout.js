@@ -15,6 +15,7 @@ import {
 } from '@mui-treasury/layout';
 import {
   NavContentMockUp,
+  NavHeaderMockUp,
   HeaderMockUp,
   ContentMockUp,
   FooterMockUp,
@@ -22,7 +23,7 @@ import {
 
 const CozyLayout = () => (
   <Root config={cozyLayoutPreset}>
-    {({ headerStyles, sidebarStyles }) => (
+    {({ headerStyles, sidebarStyles, collapsed }) => (
       <>
         <CssBaseline />
         <Header>
@@ -34,6 +35,7 @@ const CozyLayout = () => (
           </Toolbar>
         </Header>
         <Sidebar>
+          <NavHeaderMockUp collapsed={collapsed} />
           <div className={sidebarStyles.container}>
             <NavContentMockUp />
           </div>

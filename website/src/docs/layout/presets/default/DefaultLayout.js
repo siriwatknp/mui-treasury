@@ -13,15 +13,16 @@ import {
   SidebarTriggerIcon,
 } from '@mui-treasury/layout';
 import {
-  NavContentMockUp,
   HeaderMockUp,
+  NavHeaderMockUp,
+  NavContentMockUp,
   ContentMockUp,
   FooterMockUp,
 } from '@mui-treasury/mockup/layout';
 
 const DefaultLayout = () => (
   <Root>
-    {({ headerStyles, sidebarStyles }) => (
+    {({ headerStyles, sidebarStyles, collapsed }) => (
       <>
         <CssBaseline />
         <Header>
@@ -33,6 +34,7 @@ const DefaultLayout = () => (
           </Toolbar>
         </Header>
         <Sidebar>
+          <NavHeaderMockUp collapsed={collapsed} />
           <div className={sidebarStyles.container}>
             <NavContentMockUp />
           </div>

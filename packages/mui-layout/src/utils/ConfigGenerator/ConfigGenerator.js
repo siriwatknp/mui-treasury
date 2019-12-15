@@ -4,7 +4,7 @@ import FooterGenerator from './FooterGenerator';
 import HeaderGenerator from './HeaderGenerator';
 import SidebarGenerator from './SidebarGenerator';
 
-export default () => {
+export default ({ addOnsIncluded } = {}) => {
   const addOns = AddOnsGenerator();
   const primarySidebar = SidebarGenerator();
   const secondarySidebar = SidebarGenerator().initSecondary();
@@ -16,7 +16,7 @@ export default () => {
       // eslint-disable-next-line no-console
       console.log(this.get(props));
     },
-    get: ({ addOnsIncluded } = {}) => ({
+    get: () => ({
       ...(addOnsIncluded && addOns.get()),
       sidebar: primarySidebar.get(),
       secondarySidebar: secondarySidebar.get(),

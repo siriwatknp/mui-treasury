@@ -8,7 +8,7 @@ import OfflinePin from '@material-ui/icons/OfflinePin';
 import Publish from '@material-ui/icons/Publish';
 import Backup from '@material-ui/icons/Backup';
 import Delete from '@material-ui/icons/Delete';
-import BlueListItem from '../components/listItem/BlueListItem';
+import { BlueListItem } from '../components';
 
 const list = [
   {
@@ -46,7 +46,7 @@ const list = [
   },
 ];
 
-const BlueSidebar = () => (
+const TextSidebar = () => (
   <List>
     {list.map(item => (
       <BlueListItem accentColor={'#11fedc'} key={item.primaryText} {...item} />
@@ -54,7 +54,4 @@ const BlueSidebar = () => (
   </List>
 );
 
-BlueSidebar.propTypes = {};
-BlueSidebar.defaultProps = {};
-
-export default BlueSidebar;
+export default TextSidebar;

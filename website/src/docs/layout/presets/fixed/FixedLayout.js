@@ -14,15 +14,16 @@ import {
   fixedLayoutPreset,
 } from '@mui-treasury/layout';
 import {
-  NavContentMockUp,
   HeaderMockUp,
+  NavHeaderMockUp,
+  NavContentMockUp,
   ContentMockUp,
   FooterMockUp,
 } from '@mui-treasury/mockup/layout';
 
 const FixedLayout = () => (
   <Root config={fixedLayoutPreset}>
-    {({ headerStyles, sidebarStyles }) => (
+    {({ headerStyles, sidebarStyles, collapsed }) => (
       <>
         <CssBaseline />
         <Header>
@@ -34,6 +35,7 @@ const FixedLayout = () => (
           </Toolbar>
         </Header>
         <Sidebar>
+          <NavHeaderMockUp collapsed={collapsed} />
           <div className={sidebarStyles.container}>
             <NavContentMockUp />
           </div>

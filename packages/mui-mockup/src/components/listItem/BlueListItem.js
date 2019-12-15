@@ -45,7 +45,7 @@ const useStyles = makeStyles(() => ({
     opacity: 0.87,
   }),
   primaryActive: {
-    opacity: 0.87,
+    opacity: 1,
   },
 }));
 
@@ -77,11 +77,15 @@ const BlueListItem = ({
 };
 
 BlueListItem.propTypes = {
+  active: PropTypes.bool,
+  accentColor: PropTypes.string,
   icon: PropTypes.node,
   primaryText: PropTypes.string,
   secondaryText: PropTypes.string,
 };
 BlueListItem.defaultProps = {
+  active: false,
+  accentColor: undefined,
   icon: undefined,
   primaryText: undefined,
   secondaryText: undefined,

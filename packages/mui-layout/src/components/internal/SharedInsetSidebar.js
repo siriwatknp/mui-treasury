@@ -72,7 +72,7 @@ const SharedInsetSidebar = ({
     >
       <div
         {...PaperProps}
-        style={{ ...PaperProps.style, ...getInsetSidebarBodyStyle() }}
+        style={{ ...getInsetSidebarBodyStyle(), ...PaperProps.style }}
         className={cx(
           'InsetSidebar-paper',
           insetPosition === 'sticky' && insetStyles.paperSticky,

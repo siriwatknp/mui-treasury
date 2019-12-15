@@ -75,18 +75,19 @@ export default {
         {
           key: 'custom-theme',
           label: 'Custom theme',
-          to: '/layout/basic-examples/custom-theme',
+          to: '/layout/basic-examples/custom-theme?bgColor=d4b397',
         },
         {
           key: 'custom-styles',
           label: 'Custom styles',
           to:
-            '/layout/basic-examples/custom-styles?primary=213E9B&accent=rgb(17, 254, 220)&dark=true',
+            '/layout/basic-examples/custom-styles?bgColor=213E9B&accent=rgb(17, 254, 220)&dark=true',
         },
         {
           key: 'control-sidebar',
           label: 'Control Sidebar',
-          to: '/layout/basic-examples/control-sidebar',
+          to:
+            '/layout/basic-examples/control-sidebar?bgColor=e9e9e9&primary=36338E&accent=ff9600',
         },
         {
           key: 'secondary-sidebar',
@@ -97,6 +98,17 @@ export default {
           key: 'inset-sidebar',
           label: 'Inset Sidebar',
           to: '/layout/basic-examples/inset-sidebar',
+        },
+      ],
+    },
+    {
+      key: 'clones',
+      label: 'Clones',
+      subMenus: [
+        {
+          key: 'reactjs',
+          label: 'React Doc',
+          to: '/layout/clones/reactjs',
         },
       ],
     },

@@ -39,7 +39,7 @@ const useSidebarStyles = makeStyles(sidebarStyles);
 const useHeaderStyles = makeStyles(headerStyles);
 
 const PageLayout = ({ menus, children, getOpenKeys, hamburgerHidden }) => {
-  const { primary = '' } = useQueryParams();
+  const { bgColor = '' } = useQueryParams();
   const styles = useStyles();
   const headStyles = useHeaderStyles();
   const sbStyles = useSidebarStyles();
@@ -58,8 +58,8 @@ const PageLayout = ({ menus, children, getOpenKeys, hamburgerHidden }) => {
       </Header>
       <Content
         style={{
-          ...(primary && {
-            background: primary.length === 6 ? `#${primary}` : primary,
+          ...(bgColor && {
+            background: bgColor.length === 6 ? `#${bgColor}` : bgColor,
             boxShadow: 'inset 0 0 12px 0 rgba(0,0,0,0.12)',
           }),
         }}
