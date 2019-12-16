@@ -39,13 +39,23 @@ describe('<Child />', () => {
 
   it('should add new className when receive props: classes', () => {
     const deepComponent = deepShallow(<Child classes={{ childRoot: 'new' }} />);
-    expect(deepComponent.dive().props().className.split(' ').length).toEqual(2);
-    expect(deepComponent.dive().props().className.includes('new')).toEqual(true);
+    expect(
+      deepComponent
+        .dive()
+        .props()
+        .className.split(' ').length
+    ).toEqual(2);
+    expect(
+      deepComponent
+        .dive()
+        .props()
+        .className.includes('new')
+    ).toEqual(true);
   });
 
   it('should use only new className when receive props: overrides', () => {
     const deepComponent = deepShallow(
-      <Child overrides={{ childRoot: 'new' }} />,
+      <Child overrides={{ childRoot: 'new' }} />
     );
     expect(deepComponent.dive().props().className).toEqual('new');
   });
@@ -57,7 +67,7 @@ describe('<Child />', () => {
         {...Child.getOverrides({
           childRoot: 'new',
         })}
-      />,
+      />
     );
     expect(deepComponent.dive().props().className).toEqual('new');
   });
@@ -81,9 +91,9 @@ describe('<Child />', () => {
             childOverrides: {
               childRoot: 'childStyles2',
             }, // more important
-          },
+          }
         )}
-      />,
+      />
     );
     expect(deepComponent.dive().props().className).toEqual('childStyles2');
   });

@@ -5,10 +5,12 @@
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@material-ui/core": "^4.6.0",
-    "@material-ui/styles": "^4.6.0",
     "lodash.camelcase": "^4.3.0",
     "lodash.pick": "^4.4.0"
+  },
+  "peerDependencies": {
+    "@material-ui/core": "^4.6.0",
+    "@material-ui/styles": "^4.6.0"
   },
   "scripts": {
     "prebuild": "rimraf build",

@@ -53,6 +53,9 @@
     "@babel/plugin-transform-object-assign": "^7.2.0",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "@material-ui/core": "^4.8.0",
+    "@material-ui/icons": "^4.5.1",
+    "@material-ui/styles": "^4.7.1",
     "@storybook/addon-actions": "^5.1.11",
     "@storybook/addon-knobs": "^5.1.11",
     "@storybook/addon-links": "^5.1.11",
@@ -69,6 +72,7 @@
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-remove-graphql-queries": "^2.7.2",
     "babel-preset-gatsby": "^0.2.8",
+    "clsx": "^1.0.4",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint-config-airbnb": "^17.1.1",
@@ -90,6 +94,9 @@
     "lodash": "^4.17.15",
     "prettier": "^1.18.2",
     "pretty-quick": "^1.11.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
     "react-test-renderer": "^16.9.0",
     "typescript": "^3.6.4"
   }

@@ -5,11 +5,13 @@
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "clsx": "^1.0.4",
+    "@mui-treasury/styles": "^0.3.4",
+    "@mui-treasury/utils": "^0.3.7"
+  },
+  "peerDependencies": {
     "@material-ui/core": "^4.6.0",
     "@material-ui/icons": "^4.2.1",
-    "@mui-treasury/styles": "^0.3.4",
-    "@mui-treasury/utils": "^0.3.7",
-    "clsx": "^1.0.4",
     "prop-types": "^15.7.2"
   },
   "scripts": {
