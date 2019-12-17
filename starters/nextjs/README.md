@@ -1,13 +1,13 @@
 # Mui Treasury + Nextjs
 
 ## Get started
+
 ```bash
 1. git clone https://github.com/siriwatknp/mui-treasury.git
 2. cd starters/nextjs
 3. yarn && yarn dev
 4. visit localhost:3000
 ```
-
 
 ## Create your own nextjs + mui-treasury/layout
 
@@ -16,11 +16,13 @@
 2. run the project and you will see the nextjs starter website
 
 3. add mui-treasury/layout
+
 ```bash
 yarn add @mui-treasury/layout @mui-treasury/mockup next-transpile-modules
 ```
 
 4. create `next.config.js` at root (same level as package.json)
+
 ```bash
 // next.config.js
 const withTM = require('next-transpile-modules');
@@ -31,6 +33,7 @@ module.exports = withTM({
 ```
 
 5. replace this code in `pages/index.js`
+
 ```js
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';

@@ -52,6 +52,4 @@ const StandardLayout = () => (
   </Root>
 );
 
-
-
 export default StandardLayout;

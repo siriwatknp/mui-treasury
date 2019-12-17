@@ -29,7 +29,7 @@ describe('styles utils', () => {
       test6: '',
     });
     expect(
-      mergeStyleCreators(createStyles1, createStyles2, createStyles3)(),
+      mergeStyleCreators(createStyles1, createStyles2, createStyles3)()
     ).toEqual({
       test1: '',
       test2: '',
