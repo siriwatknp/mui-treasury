@@ -86,6 +86,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "aaronhayes",
+      "name": "Aaron Hayes",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/4180720?v=4",
+      "profile": "https://www.linkedin.com/in/aaronhayes1/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
