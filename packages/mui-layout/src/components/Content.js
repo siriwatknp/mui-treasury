@@ -34,7 +34,7 @@ const Content = ({
       style={{ ...style, ...contentModel.getStyle() }}
     >
       {!omitHeaderOffset && <HeaderOffset />}
-      {typeof children === 'function' ? children(ctx) : children}
+      {children}
     </Component>
   );
 };
