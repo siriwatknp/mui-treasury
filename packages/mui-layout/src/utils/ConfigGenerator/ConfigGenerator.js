@@ -1,5 +1,6 @@
 import AddOnsGenerator from './AddOnsGenerator';
 import ContentGenerator from './ContentGenerator';
+import ContainerGenerator from './ContainerGenerator';
 import FooterGenerator from './FooterGenerator';
 import HeaderGenerator from './HeaderGenerator';
 import SidebarGenerator from './SidebarGenerator';
@@ -9,6 +10,7 @@ export default ({ addOnsIncluded } = {}) => {
   const primarySidebar = SidebarGenerator();
   const secondarySidebar = SidebarGenerator().initSecondary();
   const content = ContentGenerator();
+  const container = ContainerGenerator();
   const header = HeaderGenerator();
   const footer = FooterGenerator();
   return {
@@ -20,6 +22,7 @@ export default ({ addOnsIncluded } = {}) => {
       ...(addOnsIncluded && addOns.get()),
       sidebar: primarySidebar.get(),
       secondarySidebar: secondarySidebar.get(),
+      container: container.get(),
       content: content.get(),
       header: header.get(),
       footer: footer.get(),
@@ -64,6 +67,7 @@ export default ({ addOnsIncluded } = {}) => {
     primarySidebar,
     secondarySidebar,
     content,
+    container,
     header,
     footer,
   };
