@@ -1,11 +1,7 @@
 import React from 'react';
 import useTheme from '@material-ui/core/styles/useTheme';
 import PropTypes from 'prop-types';
-import {
-  createLayoutUtils,
-  isSomeExisted,
-  selectConfigByScreen,
-} from '../utils';
+import { isSomeExisted, selectConfigByScreen } from '../utils';
 import useScreen from '../hooks/useScreen';
 import { defaultLayoutPreset } from '../presets';
 
@@ -36,19 +32,11 @@ const LayoutProvider = ({
   const finalConfig = parseConfig(
     isSomeExisted(config, keys) ? selectConfigByScreen(config, screen) : config
   );
-  const utils = createLayoutUtils({
-    opened,
-    collapsed,
-    secondaryOpened,
-    secondaryCollapsed,
-    ...finalConfig,
-  });
   return (
     <LayoutCtx.Provider
       value={{
         screen,
         ...finalConfig,
-        ...utils,
         autoCollapseDisabled: config.autoCollapseDisabled,
         collapsedBreakpoint: config.collapsedBreakpoint,
         heightAdjustmentDisabled: config.heightAdjustmentDisabled,

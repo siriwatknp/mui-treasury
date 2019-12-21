@@ -1,55 +1,27 @@
-import get from 'lodash.get';
-import createSidebarEffect from './sidebarEffect';
+import createAllSidebars from './allSidebars';
+import { reduceWidths } from './width';
 
 export default (ctx = {}) => {
-  const { header = {}, sidebar = {}, secondarySidebar = {} } = ctx;
-  const { getStyle } = createSidebarEffect(ctx, header);
+  const { header = {} } = ctx;
+  const { mainEffect, subEffect, mapSecondaryConfig } = createAllSidebars(ctx);
+  const subHeader = mapSecondaryConfig(header);
   return {
-    getStyle: theme => {
-      const isHeaderOverPrimarySidebar =
-        header.clipped && header.position !== 'static';
-      const isHeaderOverSecondarySidebar =
-        header.secondaryClipped && header.position !== 'static';
-      const isHeaderOnTop =
-        isHeaderOverPrimarySidebar || isHeaderOverSecondarySidebar;
-      const layerStyle = isHeaderOnTop
-        ? { zIndex: get(theme, 'zIndex.drawer', 1200) + 10 }
-        : undefined;
-      if (sidebar.inset && secondarySidebar.inset) {
-        return {};
-      }
-      if (
-        !sidebar.inset &&
-        isHeaderOverPrimarySidebar &&
-        secondarySidebar.inset
-      ) {
-        return layerStyle;
-      }
-      if (
-        sidebar.inset &&
-        !secondarySidebar.inset &&
-        isHeaderOverSecondarySidebar
-      ) {
-        return layerStyle;
-      }
-      if (header.clipped && header.secondaryClipped) {
-        return layerStyle;
-      }
-      if (!header.clipped && header.secondaryClipped) {
-        return {
-          ...layerStyle,
-          ...getStyle({ secondaryDisabled: true }),
-        };
-      }
-      if (header.clipped && !header.secondaryClipped) {
-        return {
-          ...layerStyle,
-          ...getStyle({ primaryDisabled: true }),
-        };
-      }
+    getMarginStyle() {
       return {
-        ...layerStyle,
-        ...getStyle(),
+        ...(!header.clipped && mainEffect.getMarginStyle(header)),
+        ...(!header.secondaryClipped && subEffect.getMarginStyle(subHeader)),
+      };
+    },
+    getWidthStyle() {
+      return reduceWidths([
+        ...(!header.clipped ? [mainEffect.getWidthObj(header)] : []),
+        ...(!header.secondaryClipped ? [subEffect.getWidthObj(subHeader)] : []),
+      ]).getStyle();
+    },
+    getStyle() {
+      return {
+        ...this.getMarginStyle(),
+        ...this.getWidthStyle(),
       };
     },
   };

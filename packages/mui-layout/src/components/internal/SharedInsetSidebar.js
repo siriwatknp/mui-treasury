@@ -9,6 +9,7 @@ import {
   useInsetBreakpoint,
   useWindow,
 } from '../../hooks';
+import createInsetSidebar from '../../models/insetSidebar';
 import * as styles from '../../styles';
 
 const useTransitionStyles = makeStyles(styles.transitionStyles);
@@ -25,14 +26,8 @@ const SharedInsetSidebar = ({
 }) => {
   const { iBody } = useWindow();
   const parsedCtx = useSidebarConfig();
-  const {
-    sidebar,
-    opened,
-    setOpened,
-    getSidebarWidth,
-    getInsetSidebarStyle,
-    getInsetSidebarBodyStyle,
-  } = parsedCtx;
+  const { sidebar, opened, setOpened } = parsedCtx;
+  const { getWidth, getBodyStyle } = createInsetSidebar(parsedCtx);
   const { displayedBelowBreakpoint } = useInsetBreakpoint(parsedCtx);
   const height = useHeightAdjustment(parsedCtx);
   const transition = useTransitionStyles();
@@ -52,7 +47,7 @@ const SharedInsetSidebar = ({
           ...PaperProps,
           style: {
             ...PaperProps.style,
-            width: getSidebarWidth(),
+            width: getWidth(),
           },
         }}
         ModalProps={{
@@ -67,12 +62,12 @@ const SharedInsetSidebar = ({
   return (
     <div
       className={cx('InsetSidebar-root', insetStyles.root, className)}
-      style={{ ...style, ...getInsetSidebarStyle() }}
+      style={{ ...style, width: getWidth() }}
       {...props}
     >
       <div
         {...PaperProps}
-        style={{ ...getInsetSidebarBodyStyle(), ...PaperProps.style }}
+        style={{ ...getBodyStyle(), ...PaperProps.style }}
         className={cx(
           'InsetSidebar-paper',
           insetPosition === 'sticky' && insetStyles.paperSticky,

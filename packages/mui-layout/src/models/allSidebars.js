@@ -1,48 +1,55 @@
 import get from 'lodash.get';
-import createSidebar from './sidebar';
-import createInsetSidebar from './insetSidebar';
+import createEdgeEffect from './edgeEffect';
+import createInsetEffect from './insetEffect';
 import SidebarAdapter from '../adapters/sidebar';
 
 export default (ctx = {}) => {
-  const { header = {}, sidebar = {}, secondarySidebar: secSidebar = {} } = ctx;
-  const primarySidebar = sidebar.inset
-    ? createInsetSidebar(ctx)
-    : createSidebar(ctx);
-  const secondarySidebar = SidebarAdapter.normalize2ndSidebarConfigToFn(
-    secSidebar.inset ? createInsetSidebar : createSidebar,
-    ctx
-  );
+  const { header = {}, sidebar = {}, secondarySidebar = {} } = ctx;
 
-  const getZIndexStyle = theme => ({
-    zIndex: get(theme, 'zIndex.drawer', 1200) + 20,
+  const incrementZIndex = (theme, plus) => ({
+    zIndex: get(theme, 'zIndex.drawer', 1200) + plus,
   });
 
+  const isNotStatic = header.position !== 'static';
+  const isAboveMainSidebar = header.clipped && isNotStatic;
+  const isAboveSubSidebar = header.secondaryClipped && isNotStatic;
+  const isAboveSomeSidebars = isAboveMainSidebar || isAboveSubSidebar;
+
+  const mainEffect = sidebar.inset
+    ? createInsetEffect(ctx)
+    : createEdgeEffect(ctx);
+  const subEffect = SidebarAdapter.normalize2ndSidebarConfigToFn(
+    secondarySidebar.inset ? createInsetEffect : createEdgeEffect,
+    ctx
+  );
   return {
-    primarySidebar,
-    secondarySidebar,
+    isEdgeAndInset:
+      (sidebar.inset && !secondarySidebar.inset) ||
+      (!sidebar.inset && secondarySidebar.inset),
+    isPrimaryEdge: !sidebar.inset,
+    isPrimaryInset: sidebar.inset,
+    isSecondaryEdge: !secondarySidebar.inset,
+    isSecondaryInset: secondarySidebar.inset,
+    mainEffect,
+    subEffect,
+    mapSecondaryConfig: SidebarAdapter.mapSecondaryConfig,
     getPrimaryStyle: theme => {
       if (!header.clipped && header.secondaryClipped) {
-        return getZIndexStyle(theme);
+        return incrementZIndex(theme, 20);
       }
       return undefined;
     },
     getSecondaryStyle: theme => {
       if (header.clipped && !header.secondaryClipped) {
-        return getZIndexStyle(theme);
+        return incrementZIndex(theme, 20);
       }
       return undefined;
     },
-    getTargetProps: (target = {}) => ({
-      primaryWidth: primarySidebar.calculateAffectedWidth(target),
-      secondaryWidth: SidebarAdapter.normalize2ndSidebarConfigToFn(
-        secondarySidebar.calculateAffectedWidth,
-        target
-      ),
-      primaryGap: primarySidebar.calculateGap(target),
-      secondaryGap: SidebarAdapter.normalize2ndSidebarConfigToFn(
-        secondarySidebar.calculateGap,
-        target
-      ),
-    }),
+    getHeaderStyle: theme => {
+      if (isAboveSomeSidebars) {
+        return incrementZIndex(theme, 10);
+      }
+      return undefined;
+    },
   };
 };

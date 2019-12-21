@@ -4,6 +4,7 @@ import cx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 import { transitionStyles } from '../styles';
 import { useLayoutCtx } from '../hooks';
+import createContent from '../models/content';
 import HeaderOffset from './HeaderOffset';
 
 const useStyles = makeStyles(() => ({
@@ -23,17 +24,17 @@ const Content = ({
   ...props
 }) => {
   const ctx = useLayoutCtx();
-  const { getContentStyle } = ctx;
+  const contentModel = createContent(ctx);
   const styles = useStyles(props);
   const transition = useTransitionStyles();
   return (
     <Component
       {...props}
       className={cx(styles.root, transition.root, className)}
-      style={{ ...style, ...getContentStyle() }}
+      style={{ ...style, ...contentModel.getStyle() }}
     >
       {!omitHeaderOffset && <HeaderOffset />}
-      {typeof children === 'function' ? children(ctx) : children}
+      {children}
     </Component>
   );
 };

@@ -16,6 +16,11 @@ export default () => {
       config.secondaryPersistentBehavior = 'fit';
       return this;
     },
+    initContainer() {
+      config.persistentBehavior = 'fit';
+      config.secondaryPersistentBehavior = 'none';
+      return this;
+    },
     initContent() {
       config.persistentBehavior = 'fit';
       config.secondaryPersistentBehavior = 'none';
