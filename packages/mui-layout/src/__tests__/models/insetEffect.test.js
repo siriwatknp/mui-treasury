@@ -1,5 +1,5 @@
 import ConfigGenerator from '../../utils/ConfigGenerator';
-import createInsetEffect from '../../newModels/insetEffect';
+import createInsetEffect from '../../models/insetEffect';
 
 describe('Inset Effect', () => {
   let provider;

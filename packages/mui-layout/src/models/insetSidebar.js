@@ -2,25 +2,22 @@ import get from 'lodash.get';
 
 export default (ctx = {}) => {
   const { sidebar = {} } = ctx;
-  const insetPosition = get(sidebar, 'insetProps.position');
+
+  const insetProps = get(sidebar, 'insetProps', {});
+
   return {
-    ...sidebar,
-    calculateGap: ({ insetBehavior } = {}) => {
-      if (insetBehavior === 'fit') {
-        return sidebar.width;
-      }
-      return 0;
+    getWidth: () => {
+      if (sidebar.hidden) return 0;
+      return sidebar.width;
     },
-    calculateAffectedWidth: () => 'auto',
-    getStyle: () => ({
-      width: sidebar.width,
-    }),
     getBodyStyle: () => ({
       width: sidebar.width,
-      position: insetPosition,
-      ...(insetPosition === 'fixed' && {
+      position: insetProps.position,
+      ...(insetProps.position === 'fixed' && {
         height: '100%',
-        top: 0,
+      }),
+      ...(insetProps.position === 'sticky' && {
+        top: insetProps.top,
       }),
     }),
   };

@@ -1,5 +1,5 @@
 import SidebarGenerator from '../../utils/ConfigGenerator/SidebarGenerator';
-import createEdgeSidebar from '../../newModels/edgeSidebar';
+import createEdgeSidebar from '../../models/edgeSidebar';
 
 describe('EdgeSidebar', () => {
   let provider;

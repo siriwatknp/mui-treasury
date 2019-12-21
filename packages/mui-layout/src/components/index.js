@@ -17,4 +17,4 @@ export {
 } from './SecondarySidebarTriggerIcon';
 export { default as InsetSidebar } from './InsetSidebar';
 export { default as SecondaryInsetSidebar } from './SecondaryInsetSidebar';
-export { default as Container } from './Container';
+export { default as InsetContainer } from './InsetContainer';

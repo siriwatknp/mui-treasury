@@ -4,6 +4,7 @@ import cx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 import { useLayoutCtx, useInsetBreakpoint } from '../hooks';
 import { transitionStyles } from '../styles';
+import createFooter from '../models/footer';
 import upperFirst from '../utils/upperFirst';
 
 const useStyles = makeStyles(({ breakpoints, palette, spacing }) => ({
@@ -11,6 +12,7 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) => ({
     borderTop: '1px solid',
     borderColor: palette.grey[200],
     padding: spacing(2),
+    flex: 'auto',
     [breakpoints.up('sm')]: {
       padding: spacing(3),
     },
@@ -21,11 +23,12 @@ const useTransitionStyles = makeStyles(transitionStyles);
 
 const Footer = ({ className, component: Component, style, ...props }) => {
   const ctx = useLayoutCtx();
-  const { getFooterStyle, sidebar, secondarySidebar } = ctx;
+  const { sidebar, secondarySidebar } = ctx;
+  const footerModel = createFooter(ctx);
   const { isTargetDown, insetHiddenDisabled } = useInsetBreakpoint(ctx);
   const styles = useStyles(props);
   const transition = useTransitionStyles();
-  const footerStyle = getFooterStyle();
+  const footerStyle = footerModel.getStyle();
   if (isTargetDown && !insetHiddenDisabled) {
     if (sidebar.inset) {
       delete footerStyle[`margin${upperFirst(sidebar.anchor)}`];

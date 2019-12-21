@@ -3,6 +3,8 @@ import cx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/styles';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
+import createHeader from '../models/header';
+import createAllSidebars from '../models/allSidebars';
 import { useLayoutCtx } from '../hooks';
 import { transitionStyles } from '../styles';
 
@@ -16,7 +18,8 @@ const useTransitionStyles = makeStyles(transitionStyles);
 
 const Header = ({ className, children, style, ...props }) => {
   const ctx = useLayoutCtx();
-  const { header, getHeaderStyle } = ctx;
+  const headerModel = createHeader(ctx);
+  const allSidebars = createAllSidebars(ctx);
   const styles = useStyles();
   const transition = useTransitionStyles();
   const theme = useTheme();
@@ -25,11 +28,12 @@ const Header = ({ className, children, style, ...props }) => {
       color={'default'}
       elevation={0}
       {...props}
-      position={header.position}
+      position={ctx.header.position}
       className={cx(styles.root, transition.root, className)}
       style={{
         ...style,
-        ...getHeaderStyle(theme),
+        ...headerModel.getStyle(),
+        ...allSidebars.getHeaderStyle(theme),
       }}
     >
       {typeof children === 'function' ? children(ctx) : children}

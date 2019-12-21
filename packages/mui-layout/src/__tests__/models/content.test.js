@@ -1,5 +1,5 @@
 import ConfigGenerator from '../../utils/ConfigGenerator';
-import createContent from '../../newModels/content';
+import createContent from '../../models/content';
 
 describe('Content', () => {
   let provider;

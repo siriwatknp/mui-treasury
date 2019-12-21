@@ -28,5 +28,11 @@ export default (ctx = {}) => {
       ]);
       return finalWidthObj.getStyle();
     },
+    getStyle() {
+      return {
+        ...this.getMarginStyle(),
+        ...this.getWidthStyle(),
+      };
+    },
   };
 };

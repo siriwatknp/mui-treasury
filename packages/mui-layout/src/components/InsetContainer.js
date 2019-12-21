@@ -1,35 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'clsx';
-import MuiContainer from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/styles';
 import { useLayoutCtx } from '../hooks';
+import createContainer from '../models/container';
 import * as styles from '../styles';
 
 const useTransitionStyles = makeStyles(styles.transitionStyles);
 const useContainerStyles = makeStyles(styles.containerStyles);
 
-const Container = ({ className, style, ...props }) => {
+const InsetContainer = ({
+  component: Component,
+  className,
+  style,
+  ...props
+}) => {
   const ctx = useLayoutCtx();
-  const { getContainerStyle } = ctx;
+  const containerModel = createContainer(ctx);
   const transition = useTransitionStyles();
   const containerStyles = useContainerStyles();
   return (
-    <MuiContainer
+    <Component
       {...props}
       className={cx(containerStyles.root, transition.root, className)}
-      style={{ ...style, ...getContainerStyle() }}
+      style={{ ...style, ...containerModel.getStyle() }}
     />
   );
 };
 
-Container.propTypes = {
+InsetContainer.propTypes = {
   className: PropTypes.string,
   style: PropTypes.shape({}),
+  component: PropTypes.elementType,
 };
-Container.defaultProps = {
+InsetContainer.defaultProps = {
   className: undefined,
   style: undefined,
+  component: 'div',
 };
 
-export default Container;
+export default InsetContainer;

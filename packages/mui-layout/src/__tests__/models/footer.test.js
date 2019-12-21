@@ -1,5 +1,5 @@
 import ConfigGenerator from '../../utils/ConfigGenerator';
-import createFooter from '../../newModels/footer';
+import createFooter from '../../models/footer';
 
 describe('Footer', () => {
   let provider;

@@ -1,5 +1,5 @@
 import SidebarGenerator from '../../utils/ConfigGenerator/SidebarGenerator';
-import createInsetSidebar from '../../newModels/insetSidebar';
+import createInsetSidebar from '../../models/insetSidebar';
 
 describe('Inset Sidebar', () => {
   let provider;

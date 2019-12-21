@@ -1,5 +1,5 @@
 import ConfigGenerator from '../../utils/ConfigGenerator';
-import createAllSidebars from '../../newModels/allSidebars';
+import createAllSidebars from '../../models/allSidebars';
 
 describe('All Sidebars', () => {
   let provider;

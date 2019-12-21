@@ -1,4 +1,4 @@
-import createWidth, { reduceWidths } from '../../newModels/width';
+import createWidth, { reduceWidths } from '../../models/width';
 
 describe('Width', () => {
   test('turn width to css auto', () => {

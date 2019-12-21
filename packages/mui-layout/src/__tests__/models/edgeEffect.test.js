@@ -1,5 +1,5 @@
 import ConfigGenerator from '../../utils/ConfigGenerator';
-import createEdgeEffect from '../../newModels/edgeEffect';
+import createEdgeEffect from '../../models/edgeEffect';
 
 describe('Edge Effect', () => {
   let provider;

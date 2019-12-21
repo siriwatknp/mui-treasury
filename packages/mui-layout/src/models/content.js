@@ -1,10 +1,35 @@
-import createSidebarEffect from './sidebarEffect';
+import createAllSidebars from './allSidebars';
+import { reduceWidths } from './width';
 
 export default (ctx = {}) => {
-  const { sidebar = {} } = ctx;
-  const { getStyle } = createSidebarEffect(ctx, ctx.content);
+  const { content = {} } = ctx;
+  const {
+    mainEffect,
+    subEffect,
+    mapSecondaryConfig,
+    isEdgeAndInset,
+  } = createAllSidebars(ctx);
+  const subContent = mapSecondaryConfig(content);
   return {
-    // todo write content.test
-    getStyle: () => (sidebar.inset ? undefined : getStyle()),
+    getMarginStyle() {
+      if (isEdgeAndInset) return undefined;
+      return {
+        ...mainEffect.getMarginStyle(content),
+        ...subEffect.getMarginStyle(subContent),
+      };
+    },
+    getWidthStyle() {
+      if (isEdgeAndInset) return undefined;
+      return reduceWidths([
+        mainEffect.getWidthObj(content),
+        subEffect.getWidthObj(subContent),
+      ]).getStyle();
+    },
+    getStyle() {
+      return {
+        ...this.getMarginStyle(),
+        ...this.getWidthStyle(),
+      };
+    },
   };
 };

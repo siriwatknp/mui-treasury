@@ -6,6 +6,7 @@ import { useTheme, makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import { useAutoCollapse, useHeightAdjustment, useWindow } from '../../hooks';
 import { transitionStyles, sidebarStyles } from '../../styles';
+import createEdgeSidebar from '../../models/edgeSidebar';
 
 const useSidebarStyles = makeStyles(sidebarStyles);
 const useTransitionStyles = makeStyles(transitionStyles);
@@ -26,13 +27,8 @@ const SharedSidebar = ({
   const [entered, setEntered] = React.useState(false);
   const styles = useSidebarStyles();
   const transition = useTransitionStyles();
-  const {
-    sidebar,
-    opened,
-    setOpened,
-    getSidebarWidth,
-    getSidebarZIndex,
-  } = parsedCtx;
+  const { sidebar, opened, setOpened, getSidebarZIndex } = parsedCtx;
+  const { getWidth } = createEdgeSidebar(parsedCtx);
   const isPermanent = sidebar.variant === 'permanent';
   return (
     <Drawer
@@ -57,7 +53,7 @@ const SharedSidebar = ({
         style: {
           ...get(PaperProps, 'style'),
           ...getSidebarZIndex(theme),
-          width: getSidebarWidth(),
+          width: getWidth(),
         },
       }}
       ModalProps={{

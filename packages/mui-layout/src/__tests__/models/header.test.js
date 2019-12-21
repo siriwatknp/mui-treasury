@@ -1,5 +1,5 @@
 import ConfigGenerator from '../../utils/ConfigGenerator';
-import createHeader from '../../newModels/header';
+import createHeader from '../../models/header';
 
 describe('Header', () => {
   let provider;
