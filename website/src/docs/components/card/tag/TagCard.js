@@ -34,9 +34,10 @@ const TagCard = () => {
   );
 };
 
+// hide-start
 TagCard.metadata = {
   title: 'Tag Card',
-  path: 'card/tag', // reference to markdown file
+  path: 'card/tag',
   files: [
     {
       pkg: 'mui-styles',
@@ -48,5 +49,6 @@ TagCard.metadata = {
     bgcolor: '#e9e9e9',
   },
 };
+// hide-end
 
 export default TagCard;
