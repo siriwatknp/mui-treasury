@@ -86,72 +86,64 @@ const generateIconElement = ({ type, style }, state = null) => {
 const createCode = (config, icon) =>
   `
   import React from 'react';
-  import {
-    createMuiTheme,
-    ThemeProvider,
-    makeStyles
-  } from "@material-ui/core/styles";
   import CssBaseline from '@material-ui/core/CssBaseline';
-  import Toolbar from "@material-ui/core/Toolbar";
+  import Toolbar from '@material-ui/core/Toolbar';
   ${generateIconImport(icon)}
   import {
     Root,
     Header,
-    HeaderOffset,
     Sidebar,
     Content,
     Footer,
     CollapseBtn,
     SidebarTrigger,
-    sidebarStyles,
-    headerStyles,
-  } from "@mui-treasury/layout";
+  } from '@mui-treasury/layout';
+  import {
+    HeaderMockUp,
+    NavHeaderMockUp,
+    NavContentMockUp,
+    ContentMockUp,
+    FooterMockUp,
+  } from '@mui-treasury/mockup/layout';
   
   const config = ${JSON.stringify(config, null, 2)};
   
-  const useSidebarStyles = makeStyles(sidebarStyles);
-  const useHeaderStyles = makeStyles(headerStyles);
-  
   const App = () => {
-    const sidebarStyles = useSidebarStyles();
-    const headerStyles = useHeaderStyles();
     return (
-      <ThemeProvider theme={createMuiTheme()}>
-        <Root config={config}>
-          <CssBaseline />
-          <Header>
-            {({ opened }) => (
+      <Root config={config}>
+        {({ headerStyles, sidebarStyles, collapsed, opened }) => (
+          <>
+            <CssBaseline />
+            <Header>
               <Toolbar>
                 <SidebarTrigger className={headerStyles.leftTrigger}>
                   {opened ? ${generateIconElement(icon, 'active')} : ${
-    icon.type === 'svg' ? '<MenuIcon />' : '<Icon>menu</Icon>'
-  }}
+                    icon.type === 'svg' ? '<MenuIcon />' : '<Icon>menu</Icon>'
+                  }}
                 </SidebarTrigger>
-                Header
+                <HeaderMockUp />
               </Toolbar>
-            )}
-          </Header>
-          <HeaderOffset />
-          <Content>
-            Content
-          </Content>
-          <Sidebar>
-            {({ collapsed }) => (
-              <>
-                <div className={sidebarStyles.container}>
-                  Sidebar
-                </div>
-                <CollapseBtn className={sidebarStyles.collapseBtn}>
-                  {collapsed ? ${generateIconElement(
-                    icon
-                  )} : ${generateIconElement(icon, 'active')}}
-                </CollapseBtn>
-              </>
-            )}
-          </Sidebar>
-          <Footer>Footer</Footer>
-        </Root>
-      </ThemeProvider>
+            </Header>
+            <Sidebar>
+              <NavHeaderMockUp collapsed={collapsed} />
+              <div className={sidebarStyles.container}>
+                <NavContentMockUp />
+              </div>
+              <CollapseBtn className={sidebarStyles.collapseBtn}>
+                {collapsed ? ${generateIconElement(
+                  icon
+                )} : ${generateIconElement(icon, 'active')}}
+              </CollapseBtn>
+            </Sidebar>
+            <Content>
+              <ContentMockUp />
+            </Content>
+            <Footer>
+              <FooterMockUp />
+            </Footer>
+          </>
+        )}
+      </Root>
     )
   }
   
@@ -164,6 +156,9 @@ const parseConfig = config => {
     return ({
       [screen]: {
         sidebar: {
+          anchor: 'left',
+          hidden: false,
+          inset: false,
           variant: get(config, ['navVariant', screen]),
           width: get(config, ['navWidth', screen]),
           collapsible: get(config, ['collapsible', screen]),
