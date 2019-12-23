@@ -11,13 +11,13 @@ export default (ctx = {}) => {
       return sidebar.width;
     },
     getBodyStyle: () => ({
-      width: sidebar.width,
       position: insetProps.position,
       ...(insetProps.position === 'fixed' && {
         height: '100%',
       }),
       ...(insetProps.position === 'sticky' && {
         top: insetProps.top,
+        width: '100%',
       }),
     }),
   };

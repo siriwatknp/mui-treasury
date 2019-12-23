@@ -42,7 +42,7 @@ describe('Inset Sidebar', () => {
     provider.setInsetProps({ position: 'sticky', top: 24 });
     provider.set();
     expect(insetSidebar.getBodyStyle()).toStrictEqual({
-      width: 256,
+      width: '100%',
       position: 'sticky',
       top: 24,
     });
@@ -50,7 +50,6 @@ describe('Inset Sidebar', () => {
     provider.setInsetProps({ position: 'fixed' });
     provider.set();
     expect(insetSidebar.getBodyStyle()).toStrictEqual({
-      width: 256,
       position: 'fixed',
       height: '100%',
     });
