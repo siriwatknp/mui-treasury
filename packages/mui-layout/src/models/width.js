@@ -4,6 +4,7 @@ const createWidth = gap => {
     getStyle: defaultValue => {
       if (gap === undefined) return defaultValue;
       if (gap === 'auto') return { width: 'auto' };
+      if (typeof gap === 'string') return { width: `calc(100% - (${gap}))` };
       if (gap === 0) return { width: '100%' };
       return { width: `calc(100% - ${gap}px)` };
     },
@@ -23,6 +24,15 @@ export const reduceWidths = widths => {
         }
         if (curr.gap === 'auto' && result.gap >= 0) {
           return result.gap;
+        }
+        if (typeof curr.gap === 'string' || typeof result.gap === 'string') {
+          if (typeof curr.gap === 'number') {
+            return `${result.gap} + ${curr.gap}px`;
+          }
+          if (typeof result.gap === 'number') {
+            return `${result.gap}px + ${curr.gap}`;
+          }
+          return `${result.gap} + ${curr.gap}`;
         }
         return (result.gap || 0) + (curr.gap || 0);
       })()
