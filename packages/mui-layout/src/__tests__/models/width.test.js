@@ -18,6 +18,11 @@ describe('Width', () => {
       width: 'calc(100% - 300px)',
     });
 
+    widths = [createWidth('25%'), createWidth('auto')];
+    expect(reduceWidths(widths).getStyle()).toEqual({
+      width: 'calc(100% - (25%))',
+    });
+
     widths = [createWidth('25%'), createWidth(200)];
     expect(reduceWidths(widths).getStyle()).toEqual({
       width: 'calc(100% - (25% + 200px))',

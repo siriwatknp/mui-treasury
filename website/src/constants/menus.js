@@ -110,6 +110,11 @@ export default {
           label: 'React Doc',
           to: '/layout/clones/reactjs',
         },
+        {
+          key: 'messenger',
+          label: 'Messenger',
+          to: '/layout/clones/messenger',
+        },
       ],
     },
   ],
