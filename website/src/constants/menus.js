@@ -108,7 +108,12 @@ export default {
         {
           key: 'reactjs',
           label: 'React Doc',
-          to: '/layout/clones/reactjs',
+          to: '/layout/clones/reactjs?bgColor=b6c0d4&accentColor=rgb(40,44,52)',
+        },
+        {
+          key: 'messenger',
+          label: 'Messenger',
+          to: '/layout/clones/messenger?bgColor=rgb(0,153,255)&dark=true',
         },
       ],
     },

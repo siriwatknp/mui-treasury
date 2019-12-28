@@ -42,16 +42,24 @@ describe('Inset Sidebar', () => {
     provider.setInsetProps({ position: 'sticky', top: 24 });
     provider.set();
     expect(insetSidebar.getBodyStyle()).toStrictEqual({
-      width: '100%',
       position: 'sticky',
       top: 24,
     });
 
-    provider.setInsetProps({ position: 'fixed' });
+    provider.setInsetProps({ position: 'fixed', top: 0 });
     provider.set();
     expect(insetSidebar.getBodyStyle()).toStrictEqual({
+      top: 0,
       position: 'fixed',
       height: '100%',
+    });
+
+    provider.setInsetProps({ position: 'absolute', top: 0 });
+    provider.set({ header: { offsetHeight: 60 } });
+    expect(insetSidebar.getBodyStyle()).toStrictEqual({
+      top: 0,
+      position: 'absolute',
+      height: 'calc(100vh - 60px)',
     });
   });
 });

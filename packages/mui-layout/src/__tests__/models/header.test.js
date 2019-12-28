@@ -125,6 +125,8 @@ describe('Header', () => {
     expect(header.getMarginStyle()).toStrictEqual({
       marginLeft: 256,
     });
-    expect(header.getWidthStyle()).toStrictEqual({ width: 'calc(100% - 256px)' });
+    expect(header.getWidthStyle()).toStrictEqual({
+      width: 'calc(100% - 256px)',
+    });
   });
 });

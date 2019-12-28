@@ -1,7 +1,10 @@
 import get from 'lodash.get';
 
+const parseUnit = amount =>
+  typeof amount === 'number' ? `${amount}px` : amount;
+
 export default (ctx = {}) => {
-  const { sidebar = {} } = ctx;
+  const { sidebar = {}, header = {} } = ctx;
 
   const insetProps = get(sidebar, 'insetProps', {});
 
@@ -12,12 +15,12 @@ export default (ctx = {}) => {
     },
     getBodyStyle: () => ({
       position: insetProps.position,
+      top: insetProps.top,
       ...(insetProps.position === 'fixed' && {
         height: '100%',
       }),
-      ...(insetProps.position === 'sticky' && {
-        top: insetProps.top,
-        width: '100%',
+      ...(insetProps.position === 'absolute' && {
+        height: `calc(100vh - ${parseUnit(header.offsetHeight)})`,
       }),
     }),
   };

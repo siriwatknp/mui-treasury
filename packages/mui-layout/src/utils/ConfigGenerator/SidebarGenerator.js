@@ -11,6 +11,7 @@ export default () => {
     inset: false,
     insetProps: {
       position: 'fixed',
+      top: 0,
     },
   };
 
@@ -24,6 +25,7 @@ export default () => {
     inset: false,
     insetProps: {
       position: 'sticky',
+      top: 0,
     },
   };
 
