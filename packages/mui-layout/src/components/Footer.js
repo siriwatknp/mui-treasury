@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 import { useLayoutCtx, useInsetBreakpoint } from '../hooks';
+import SidebarAdapter from '../adapters/sidebar';
 import { transitionStyles } from '../styles';
 import createFooter from '../models/footer';
 import upperFirst from '../utils/upperFirst';
@@ -25,17 +26,17 @@ const Footer = ({ className, component: Component, style, ...props }) => {
   const ctx = useLayoutCtx();
   const { sidebar, secondarySidebar } = ctx;
   const footerModel = createFooter(ctx);
-  const { isTargetDown, insetHiddenDisabled } = useInsetBreakpoint(ctx);
+  const main = useInsetBreakpoint(ctx);
+  const sub = useInsetBreakpoint(SidebarAdapter.mapSecondaryConfig(ctx));
   const styles = useStyles(props);
   const transition = useTransitionStyles();
   const footerStyle = footerModel.getStyle();
-  if (isTargetDown && !insetHiddenDisabled) {
-    if (sidebar.inset) {
-      delete footerStyle[`margin${upperFirst(sidebar.anchor)}`];
-    }
-    if (secondarySidebar.inset) {
-      delete footerStyle[`margin${upperFirst(secondarySidebar.anchor)}`];
-    }
+
+  if (main.isTargetDown && !main.insetHiddenDisabled && sidebar.inset) {
+    delete footerStyle[`margin${upperFirst(sidebar.anchor)}`];
+  }
+  if (sub.isTargetDown && !sub.insetHiddenDisabled && secondarySidebar.inset) {
+    delete footerStyle[`margin${upperFirst(secondarySidebar.anchor)}`];
   }
   return (
     <Component

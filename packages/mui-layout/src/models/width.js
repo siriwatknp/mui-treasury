@@ -19,10 +19,10 @@ export const reduceWidths = widths => {
         if (result.gap === 'auto' && curr.gap === 'auto') {
           return 'auto';
         }
-        if (result.gap === 'auto' && curr.gap >= 0) {
+        if (result.gap === 'auto' && curr.gap !== 'auto') {
           return curr.gap;
         }
-        if (curr.gap === 'auto' && result.gap >= 0) {
+        if (curr.gap === 'auto' && result.gap !== 'auto') {
           return result.gap;
         }
         if (typeof curr.gap === 'string' || typeof result.gap === 'string') {
