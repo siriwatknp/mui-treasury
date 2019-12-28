@@ -10,6 +10,54 @@
 > - :bulb: [Refactor]
 > - :lipstick: [Style]
 
+## _28 Dec 2019_
+
+### website@1.5.0
+
+#### :memo: Docs
+
+- [#315](https://github.com/siriwatknp/mui-treasury/pull/315) docs: ✏️ add create-react-app starter ([@siriwatknp](https://github.com/siriwatknp))
+
+#### :rocket: New Feature
+
+- [#358](https://github.com/siriwatknp/mui-treasury/pull/358) #303 fb messenger clone ([@siriwatknp](https://github.com/siriwatknp))
+
+### @mui-treasury/styles@0.3.5
+
+#### :rocket: New Feature
+
+- [#324](https://github.com/siriwatknp/mui-treasury/pull/324) #213 add tag card style ([@renamoo](https://github.com/renamoo))
+
+### @mui-treasury/mockup@0.3.0
+
+#### :rocket: New Feature
+
+- [#358](https://github.com/siriwatknp/mui-treasury/pull/358) #303 fb messenger clone ([@siriwatknp](https://github.com/siriwatknp))
+
+### @mui-treasury/layout@3.2.0
+
+#### :bug: Bug Fix
+
+- [#358](https://github.com/siriwatknp/mui-treasury/pull/358) #303 fb messenger clone ([@siriwatknp](https://github.com/siriwatknp))
+
+#### :bulb: Refactor
+
+- `mui-layout`
+  - [#323](https://github.com/siriwatknp/mui-treasury/pull/323) 💡Refactor layout 2nd time ([@siriwatknp](https://github.com/siriwatknp))
+
+### `Patch`
+
+- @mui-treasury/utils@0.3.8
+- @mui-treasury/components@0.3.10
+- @mui-treasury/styling@0.2.7
+
+#### Committers: 4
+
+- Aaron Hayes ([@aaronhayes](https://github.com/aaronhayes))
+- Siriwat Kunaporn ([@siriwatknp](https://github.com/siriwatknp))
+- [@dependabot-preview[bot]](https://github.com/apps/dependabot-preview)
+- renamoo ([@renamoo](https://github.com/renamoo))
+
 ## _15 Dec 2019_
 
 ### website@1.4.0
