@@ -1,10 +1,10 @@
 {
   "name": "@mui-treasury/layout",
-  "version": "3.1.1",
+  "version": "3.2.0",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@mui-treasury/styling": "^0.2.6",
+    "@mui-treasury/styling": "^0.2.7",
     "lodash.debounce": "^4.0.8",
     "lodash.get": "^4.4.2"
   },
