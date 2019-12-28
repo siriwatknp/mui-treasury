@@ -7,7 +7,7 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Phone from '@material-ui/icons/Phone';
-import VideoCam from '@material-ui/icons/VideoCam';
+import Videocam from '@material-ui/icons/Videocam';
 import Info from '@material-ui/icons/Info';
 
 const useStyles = makeStyles(() => ({
@@ -51,7 +51,7 @@ const ConversationHead = () => {
           <Phone />
         </IconButton>
         <IconButton className={styles.iconBtn}>
-          <VideoCam />
+          <Videocam />
         </IconButton>
         <IconButton className={styles.iconBtn}>
           <Info />
