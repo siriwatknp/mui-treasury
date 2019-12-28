@@ -42,7 +42,7 @@ async function copyReadMeFile() {
 
 async function run() {
   try {
-    await Promise.all([createPackageFile(), await copyReadMeFile()]);
+    await Promise.all([createPackageFile(), copyReadMeFile()]);
   } catch (err) {
     console.error(err);
     process.exit(1);
