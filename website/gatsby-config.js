@@ -78,19 +78,6 @@ module.exports = {
         trackingId: `UA-136381677-1`,
       },
     },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
-        start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/assets/logo.png`,
-      },
-    },
-    `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,
     {
@@ -107,5 +94,17 @@ module.exports = {
       },
     },
     `gatsby-plugin-remove-trailing-slashes`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Mui Treasury | Jump start Material-ui site`,
+        short_name: `MuiTreasury`,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        theme_color: `#007aac`,
+        display: `minimal-ui`,
+        icon: `src/assets/logo.png`,
+      },
+    },
   ],
 };
