@@ -34,9 +34,15 @@ async function createPackageFile() {
   return newPackageData;
 }
 
+async function copyReadMeFile() {
+  const targetPath = path.resolve(buildPath, './README.md');
+  const sourcePath = path.resolve('./../../', './README.md');
+  return fse.copyFile(sourcePath, targetPath);
+}
+
 async function run() {
   try {
-    await createPackageFile();
+    await Promise.all([createPackageFile(), copyReadMeFile()]);
   } catch (err) {
     console.error(err);
     process.exit(1);
