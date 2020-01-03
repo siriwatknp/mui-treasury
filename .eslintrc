@@ -11,7 +11,6 @@
       }
     ],
     "prettier/prettier": "error",
-    "import/no-unresolved": "off",
     "react/prefer-stateless-function": "warn",
     "react/jsx-curly-brace-presence": "off",
     "react/prop-types": "warn",
@@ -19,6 +18,14 @@
     "import/no-extraneous-dependencies": "off",
     "import/prefer-default-export": "warn",
     "no-param-reassign": "warn"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["website/src"]
+      }
+    },
+    "import/extensions": [".js", ".jsx"]
   },
   "parser": "babel-eslint",
   "env": {

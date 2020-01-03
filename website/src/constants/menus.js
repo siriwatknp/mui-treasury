@@ -115,6 +115,11 @@ export default {
           label: 'Messenger',
           to: '/layout/clones/messenger?bgColor=rgb(0,153,255)&dark=true',
         },
+        {
+          key: 'shopping-cart',
+          label: 'Shopping Cart',
+          to: '/layout/clones/shopping-cart?bgColor=EAEEF1',
+        },
       ],
     },
   ],
