@@ -11,6 +11,7 @@ import './fontawesome';
 
 const App = ({ children, location }) => {
   const path = React.useMemo(() => createPath(location), [location]);
+  console.log('location', location);
   return (
     <>
       <Helmet>

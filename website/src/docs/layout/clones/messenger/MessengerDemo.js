@@ -35,10 +35,13 @@ const useStyles = makeStyles(() => ({
     boxShadow: '0 1px 2px 0 rgba(0, 0, 0, .10)',
     backgroundColor: '#ffffff',
   },
-  insetPaper: {
+  insetBody: {
     borderLeft: '1px solid rgba(0, 0, 0, 0.08)',
-    width: '100%',
     overflowY: 'auto',
+  },
+  insetDrawerPaper: {
+    width: '100%',
+    maxWidth: 300,
   },
   contentContainer: {
     flex: 1,
@@ -144,7 +147,8 @@ const MessengerDemo = () => {
               </Content>
               <SecondaryInsetSidebar
                 className={styles.insetSidebar}
-                PaperProps={{ className: styles.insetPaper }}
+                BodyProps={{ className: styles.insetBody }}
+                PaperProps={{ classes: { root: styles.insetDrawerPaper } }}
               >
                 <ChatSettings />
               </SecondaryInsetSidebar>

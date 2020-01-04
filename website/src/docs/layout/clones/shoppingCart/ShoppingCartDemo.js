@@ -1,10 +1,12 @@
 import React from 'react';
+import cx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Fab from '@material-ui/core/Fab';
 import CreditCard from '@material-ui/icons/CreditCard';
+import Close from '@material-ui/icons/Close';
 import {
   Root,
   Header,
@@ -75,7 +77,7 @@ const useStyles = makeStyles(({ breakpoints }) => ({
       fontSize: 32,
       color: '#fff',
     },
-    zIndex: 1000,
+    zIndex: 1500,
     transition: '0.3s cubic-bezier(.47,1.64,.41,.8)',
     [breakpoints.up('sm')]: {
       bottom: 40,
@@ -83,6 +85,12 @@ const useStyles = makeStyles(({ breakpoints }) => ({
     [breakpoints.up('md')]: {
       transform: 'scale(0)',
     },
+  },
+  fabClose: {
+    top: 8,
+    right: 8,
+    width: 48,
+    height: 48,
   },
 }));
 
@@ -108,15 +116,15 @@ const ShoppingCartDemo = () => {
       overflow={'hidden'}
     >
       <Root theme={dailyShoppingTheme} config={config.get()}>
-        {({ setOpened }) => (
+        {({ opened, setOpened }) => (
           <>
             <CssBaseline />
             <Fab
-              className={styles.fab}
+              className={cx(styles.fab, opened && styles.fabClose)}
               color={'primary'}
-              onClick={() => setOpened(true)}
+              onClick={() => setOpened(!opened)}
             >
-              <CreditCard />
+              {opened ? <Close /> : <CreditCard />}
             </Fab>
             <Header className={styles.header}>
               <Container>
