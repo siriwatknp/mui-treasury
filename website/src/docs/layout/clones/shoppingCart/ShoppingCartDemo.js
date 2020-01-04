@@ -4,7 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Fab from '@material-ui/core/Fab';
-import UnfoldMore from '@material-ui/icons/UnfoldMore';
+import CreditCard from '@material-ui/icons/CreditCard';
 import {
   Root,
   Header,
@@ -22,14 +22,19 @@ import {
   DailySummary,
 } from '@mui-treasury/mockup/brands/dailyShopping';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(({ breakpoints }) => ({
   header: {
     backgroundColor: '#ffffff',
   },
   toolbar: {},
-  sidebarPaper: {
-    width: '100%',
+  sidebarBody: {
     padding: '24px 0 40px 24px',
+  },
+  sidebarPaper: {
+    maxWidth: 400,
+    padding: 16,
+    background: 'none',
+    boxShadow: 'none',
   },
   container: {
     minHeight: 0,
@@ -41,15 +46,42 @@ const useStyles = makeStyles(() => ({
     overflow: 'auto',
   },
   footer: {
+    padding: '16px 0',
     border: 'unset',
+    position: 'relative',
+    '&:before': {
+      content: '" "',
+      position: 'absolute',
+      width: '100%',
+      height: 24,
+      top: 0,
+      left: 0,
+      transform: 'translateY(-50%)',
+      background: 'linear-gradient(to top, #ffffff 60%, transparent)',
+    },
+    [breakpoints.only('sm')]: {
+      paddingRight: 64,
+    },
+    [breakpoints.up('md')]: {
+      paddingBottom: 40,
+    },
   },
   fab: {
     position: 'fixed',
-    bottom: 32,
+    bottom: 16,
     right: 16,
-    color: '#61dafb',
+    color: '#2E3B4D',
     '& svg': {
       fontSize: 32,
+      color: '#fff',
+    },
+    zIndex: 1000,
+    transition: '0.3s cubic-bezier(.47,1.64,.41,.8)',
+    [breakpoints.up('sm')]: {
+      bottom: 40,
+    },
+    [breakpoints.up('md')]: {
+      transform: 'scale(0)',
     },
   },
 }));
@@ -59,7 +91,11 @@ config.header.setPosition('relative');
 config.setPrimarySidebarToInset();
 config.primarySidebar.setAnchor('right');
 config.primarySidebar.setWidth('33%');
-config.primarySidebar.setInsetProps({ position: 'absolute' });
+config.primarySidebar.setInsetProps({
+  position: 'absolute',
+  drawerWidth: '88%',
+  drawerAnchor: 'right',
+});
 config.secondarySidebar.setAnchor('left');
 
 const ShoppingCartDemo = () => {
@@ -80,7 +116,7 @@ const ShoppingCartDemo = () => {
               color={'primary'}
               onClick={() => setOpened(true)}
             >
-              <UnfoldMore />
+              <CreditCard />
             </Fab>
             <Header className={styles.header}>
               <Container>
@@ -93,6 +129,7 @@ const ShoppingCartDemo = () => {
                   <DailyCart />
                 </Content>
                 <InsetSidebar
+                  BodyProps={{ className: styles.sidebarBody }}
                   PaperProps={{ classes: { root: styles.sidebarPaper } }}
                 >
                   <DailyCheckout />

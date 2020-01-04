@@ -13,9 +13,10 @@ const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    background: 'linear-gradient(45deg, #191D29, #2E3B4D)',
+    background: 'linear-gradient(45deg, #191D29, #3c5981)',
     borderRadius: 12,
     height: '100%',
+    overflow: 'auto',
     '& *': {
       color: '#fff',
     },
@@ -135,7 +136,7 @@ const DailyCheckout = () => {
         label={'Name On Card:'}
         value={'Siriwat Knp'}
       />
-      <Box height={24} />
+      <Box height={24} css={{ flex: 'none' }} />
       <TextField
         className={styles.textField}
         fullWidth
@@ -145,7 +146,7 @@ const DailyCheckout = () => {
         label={'Card Number:'}
         value={'••••  ••••  ••••  1829'}
       />
-      <Box height={24} />
+      <Box height={24} css={{ flex: 'none' }} />
       <Grid container spacing={3}>
         <Grid item xs={8}>
           <Typography className={styles.label}>Expiration Date:</Typography>
@@ -191,7 +192,7 @@ const DailyCheckout = () => {
           />
         </Grid>
       </Grid>
-      <Box height={24} />
+      <Box height={24} css={{ flex: 'none' }} />
       <Button
         className={styles.checkoutBtn}
         color={'primary'}

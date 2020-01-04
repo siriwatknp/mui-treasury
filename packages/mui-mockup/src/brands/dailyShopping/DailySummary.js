@@ -18,6 +18,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       fontWeight: 'bold',
       textTransform: 'none',
     },
+    marginRight: 72,
+    [breakpoints.up('sm')]: {
+      marginRight: 'unset',
+    },
   },
   big: {
     fontSize: 16,
@@ -39,7 +43,7 @@ const DailySummary = () => {
       container
       justify={'space-between'}
       className={styles.mainGrid}
-      spacing={4}
+      spacing={2}
     >
       <Grid item xs={12} sm={5} md={4}>
         <Grid container spacing={1}>
