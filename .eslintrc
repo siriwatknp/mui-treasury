@@ -11,14 +11,15 @@
       }
     ],
     "prettier/prettier": "error",
-    "import/no-unresolved": "off",
     "react/prefer-stateless-function": "warn",
     "react/jsx-curly-brace-presence": "off",
     "react/prop-types": "warn",
     "react/destructuring-assignment": "warn",
     "import/no-extraneous-dependencies": "off",
     "import/prefer-default-export": "warn",
-    "no-param-reassign": "warn"
+    "no-param-reassign": "warn",
+    "import/extensions": "warn",
+    "import/no-unresolved": "warn"
   },
   "parser": "babel-eslint",
   "env": {

@@ -22,7 +22,7 @@ const ReactContent = () => (
     <br />
     <Divider />
     <br />
-    <Typography>
+    <Typography component={'div'}>
       <ul>
         <li>Try React</li>
         <li>Learn React</li>

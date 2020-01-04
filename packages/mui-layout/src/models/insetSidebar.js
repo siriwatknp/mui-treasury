@@ -13,6 +13,7 @@ export default (ctx = {}) => {
       if (sidebar.hidden) return 0;
       return sidebar.width;
     },
+    getDrawerAnchor: () => insetProps.drawerAnchor,
     getBodyStyle: () => ({
       position: insetProps.position,
       top: insetProps.top,
@@ -21,6 +22,7 @@ export default (ctx = {}) => {
       }),
       ...(insetProps.position === 'absolute' && {
         height: `calc(100vh - ${parseUnit(header.offsetHeight)})`,
+        width: '100%',
       }),
     }),
   };

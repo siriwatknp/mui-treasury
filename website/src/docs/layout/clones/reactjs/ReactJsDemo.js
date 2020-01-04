@@ -36,7 +36,11 @@ const useStyles = makeStyles(({ breakpoints }) => ({
       minHeight: 60,
     },
   },
-  sidebar: {
+  insetDrawerPaper: {
+    width: '100%',
+    maxWidth: 300,
+  },
+  sidebarBody: {
     backgroundColor: 'rgb(247, 247, 247)',
     marginRight: -999,
     paddingRight: 999,
@@ -107,6 +111,9 @@ const theme = responsiveFontSizes(
 const config = ConfigGenerator({ addOnsIncluded: true });
 config.setPrimarySidebarToInset();
 config.primarySidebar.setAnchor('right');
+config.primarySidebar.setInsetProps({
+  drawerAnchor: 'right',
+});
 config.secondarySidebar.setAnchor('left');
 
 const FooterMenu = ({ isHeader, ...props }) => {
@@ -148,13 +155,8 @@ const ReactJsDemo = () => {
               <ReactContent />
             </Content>
             <InsetSidebar
-              PaperProps={{
-                ...(screen !== 'xs' &&
-                  screen !== 'sm' && {
-                    className: styles.sidebar,
-                  }),
-                style: { width: 'auto' },
-              }}
+              PaperProps={{ classes: { root: styles.insetDrawerPaper } }}
+              BodyProps={{ className: styles.sidebarBody }}
             >
               <Box mt={7.5} ml={3}>
                 {getData()[0].map((label, i) => (

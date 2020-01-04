@@ -44,6 +44,7 @@ const PageLayout = ({ menus, children, getOpenKeys, hamburgerHidden }) => {
   const headStyles = useHeaderStyles();
   const sbStyles = useSidebarStyles();
   const footerStyles = useFooterStyles();
+  console.log('bgColor', bgColor);
   return (
     <>
       <Header className={styles.header}>

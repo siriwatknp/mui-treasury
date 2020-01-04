@@ -30,6 +30,15 @@ describe('Inset Sidebar', () => {
     expect(insetSidebar.getWidth()).toBe(0);
   });
 
+  test('drawer anchor is exactly from config', () => {
+    provider.setInset(true);
+    provider.setInsetProps({
+      drawerAnchor: 'right',
+    });
+    provider.set();
+    expect(insetSidebar.getDrawerAnchor()).toBe('right');
+  });
+
   test('return correct width', () => {
     provider.setInset(true);
     provider.setWidth(200);
@@ -60,6 +69,7 @@ describe('Inset Sidebar', () => {
       top: 0,
       position: 'absolute',
       height: 'calc(100vh - 60px)',
+      width: '100%',
     });
   });
 });

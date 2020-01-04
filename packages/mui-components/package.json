@@ -1,6 +1,6 @@
 {
   "name": "@mui-treasury/components",
-  "version": "0.3.10",
+  "version": "0.3.11",
   "main": "./src/index.js",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "license": "MIT",
