@@ -17,15 +17,9 @@
     "react/destructuring-assignment": "warn",
     "import/no-extraneous-dependencies": "off",
     "import/prefer-default-export": "warn",
-    "no-param-reassign": "warn"
-  },
-  "settings": {
-    "import/resolver": {
-      "node": {
-        "paths": ["website/src"]
-      }
-    },
-    "import/extensions": [".js", ".jsx"]
+    "no-param-reassign": "warn",
+    "import/extensions": "warn",
+    "import/no-unresolved": "warn"
   },
   "parser": "babel-eslint",
   "env": {
