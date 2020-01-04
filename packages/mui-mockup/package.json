@@ -1,9 +1,22 @@
 {
   "name": "@mui-treasury/mockup",
   "version": "0.4.0",
-  "main": "./src/index.js",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
+  "keywords": [
+    "react",
+    "material-ui",
+    "mockup"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/siriwatknp/mui-treasury.git",
+    "directory": "packages/mui-mockup"
+  },
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/siriwatknp/mui-treasury/issues"
+  },
+  "homepage": "https://mui-treasury.com",
   "dependencies": {
     "@material-ui/core": "^4.6.0",
     "@material-ui/icons": "^4.5.1",

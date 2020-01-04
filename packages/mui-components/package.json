@@ -1,9 +1,22 @@
 {
   "name": "@mui-treasury/components",
   "version": "0.3.11",
-  "main": "./src/index.js",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
+  "keywords": [
+    "react",
+    "material-ui",
+    "styles"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/siriwatknp/mui-treasury.git",
+    "directory": "packages/mui-components"
+  },
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/siriwatknp/mui-treasury/issues"
+  },
+  "homepage": "https://mui-treasury.com/components/card",
   "dependencies": {
     "@mui-treasury/styles": "^0.3.5",
     "@mui-treasury/utils": "^0.3.8",
