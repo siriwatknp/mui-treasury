@@ -10,6 +10,34 @@
 > - :bulb: [Refactor]
 > - :lipstick: [Style]
 
+## _4 Jan 2019_
+
+### website@1.6.0
+
+#### :lipstick: Style
+
+- [#371](https://github.com/siriwatknp/mui-treasury/pull/371) #369 Daily shopping clone ([@siriwatknp](https://github.com/siriwatknp))
+
+### @mui-treasury/mockup@0.4.0
+
+#### :lipstick: Style
+
+- [#371](https://github.com/siriwatknp/mui-treasury/pull/371) #369 add Daily shopping mockup ([@siriwatknp](https://github.com/siriwatknp))
+
+### @mui-treasury/layout@3.3.0
+
+#### :lipstick: Style
+
+- [#371](https://github.com/siriwatknp/mui-treasury/pull/371) #369 add drawerAnchor to insetProps & separate BodyProps from PaperProps ([@siriwatknp](https://github.com/siriwatknp))
+
+### `Patch`
+
+- @mui-treasury/components@0.3.11
+
+#### Committers: 1
+
+- Siriwat Kunaporn ([@siriwatknp](https://github.com/siriwatknp))
+
 ## _28 Dec 2019_
 
 ### website@1.5.0
