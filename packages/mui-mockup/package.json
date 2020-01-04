@@ -1,13 +1,13 @@
 {
   "name": "@mui-treasury/mockup",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "main": "./src/index.js",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@material-ui/core": "^4.6.0",
     "@material-ui/icons": "^4.5.1",
-    "@mui-treasury/components": "^0.3.10",
+    "@mui-treasury/components": "^0.3.11",
     "@mui-treasury/styles": "^0.3.5",
     "clsx": "^1.0.4",
     "prop-types": "^15.7.2",
