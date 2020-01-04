@@ -13,6 +13,8 @@ export default (ctx = {}) => {
       if (sidebar.hidden) return 0;
       return sidebar.width;
     },
+    getDrawerWidth: () => insetProps.drawerWidth,
+    getDrawerAnchor: () => insetProps.drawerAnchor,
     getBodyStyle: () => ({
       position: insetProps.position,
       top: insetProps.top,

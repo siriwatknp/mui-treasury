@@ -30,6 +30,24 @@ describe('Inset Sidebar', () => {
     expect(insetSidebar.getWidth()).toBe(0);
   });
 
+  test('drawer width is exactly from config', () => {
+    provider.setInset(true);
+    provider.setInsetProps({
+      drawerWidth: 'anything',
+    });
+    provider.set();
+    expect(insetSidebar.getDrawerWidth()).toBe('anything');
+  });
+
+  test('drawer anchor is exactly from config', () => {
+    provider.setInset(true);
+    provider.setInsetProps({
+      drawerAnchor: 'right',
+    });
+    provider.set();
+    expect(insetSidebar.getDrawerAnchor()).toBe('right');
+  });
+
   test('return correct width', () => {
     provider.setInset(true);
     provider.setWidth(200);

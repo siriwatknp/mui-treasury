@@ -26,8 +26,13 @@ const SharedInsetSidebar = ({
 }) => {
   const { iBody } = useWindow();
   const parsedCtx = useSidebarConfig();
-  const { sidebar, opened, setOpened } = parsedCtx;
-  const { getWidth, getBodyStyle } = createInsetSidebar(parsedCtx);
+  const { opened, setOpened } = parsedCtx;
+  const {
+    getWidth,
+    getBodyStyle,
+    getDrawerWidth,
+    getDrawerAnchor,
+  } = createInsetSidebar(parsedCtx);
   const { displayedBelowBreakpoint } = useInsetBreakpoint(parsedCtx);
   const height = useHeightAdjustment(parsedCtx);
   const transition = useTransitionStyles();
@@ -42,12 +47,12 @@ const SharedInsetSidebar = ({
           setOpened(false);
         }}
         variant={'temporary'}
-        anchor={sidebar.anchor || 'left'}
+        anchor={getDrawerAnchor()}
         PaperProps={{
           ...PaperProps,
           style: {
             ...PaperProps.style,
-            width: getWidth(),
+            width: getDrawerWidth(),
           },
         }}
         ModalProps={{

@@ -92,7 +92,9 @@ const ShoppingCartDemo = () => {
                 <Content className={styles.content}>
                   <DailyCart />
                 </Content>
-                <InsetSidebar PaperProps={{ className: styles.sidebarPaper }}>
+                <InsetSidebar
+                  PaperProps={{ classes: { root: styles.sidebarPaper } }}
+                >
                   <DailyCheckout />
                 </InsetSidebar>
               </InsetContainer>
