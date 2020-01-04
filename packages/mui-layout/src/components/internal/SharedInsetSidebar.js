@@ -20,14 +20,20 @@ const SharedInsetSidebar = ({
   style,
   children,
   useSidebarConfig,
+  BodyProps = {},
   PaperProps = {},
   ModalProps = {},
   ...props
 }) => {
   const { iBody } = useWindow();
   const parsedCtx = useSidebarConfig();
-  const { sidebar, opened, setOpened } = parsedCtx;
-  const { getWidth, getBodyStyle } = createInsetSidebar(parsedCtx);
+  const { opened, setOpened } = parsedCtx;
+  const {
+    getWidth,
+    getBodyStyle,
+    getDrawerWidth,
+    getDrawerAnchor,
+  } = createInsetSidebar(parsedCtx);
   const { displayedBelowBreakpoint } = useInsetBreakpoint(parsedCtx);
   const height = useHeightAdjustment(parsedCtx);
   const transition = useTransitionStyles();
@@ -42,12 +48,12 @@ const SharedInsetSidebar = ({
           setOpened(false);
         }}
         variant={'temporary'}
-        anchor={sidebar.anchor || 'left'}
+        anchor={getDrawerAnchor()}
         PaperProps={{
           ...PaperProps,
           style: {
             ...PaperProps.style,
-            width: getWidth(),
+            width: getDrawerWidth(),
           },
         }}
         ModalProps={{
@@ -66,12 +72,12 @@ const SharedInsetSidebar = ({
       {...props}
     >
       <div
-        {...PaperProps}
-        style={{ ...getBodyStyle(), ...PaperProps.style }}
+        {...BodyProps}
+        style={{ ...getBodyStyle(), ...BodyProps.style }}
         className={cx(
-          'InsetSidebar-paper',
+          'InsetSidebar-body',
           insetPosition === 'sticky' && insetStyles.paperSticky,
-          PaperProps.className
+          BodyProps.className
         )}
       >
         <div
@@ -89,8 +95,11 @@ SharedInsetSidebar.propTypes = {
   className: PropTypes.string,
   style: PropTypes.shape({}),
   children: PropTypes.node,
-  PaperProps: PropTypes.shape({
+  BodyProps: PropTypes.shape({
     className: PropTypes.string,
+    style: PropTypes.shape({}),
+  }),
+  PaperProps: PropTypes.shape({
     style: PropTypes.shape({}),
   }),
   ModalProps: PropTypes.shape({}),
@@ -99,6 +108,7 @@ SharedInsetSidebar.defaultProps = {
   className: undefined,
   style: undefined,
   children: null,
+  BodyProps: undefined,
   PaperProps: undefined,
   ModalProps: undefined,
 };

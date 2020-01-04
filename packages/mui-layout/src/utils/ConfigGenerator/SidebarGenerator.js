@@ -12,6 +12,8 @@ export default () => {
     insetProps: {
       position: 'fixed',
       top: 0,
+      drawerWidth: '100%',
+      drawerAnchor: 'left',
     },
   };
 
@@ -26,6 +28,8 @@ export default () => {
     insetProps: {
       position: 'sticky',
       top: 0,
+      drawerWidth: '100%',
+      drawerAnchor: 'right',
     },
   };
 
