@@ -3,6 +3,11 @@ import createEdgeSidebar from './edgeSidebar';
 import createWidth from './width';
 import { upperFirst } from '../utils';
 
+const attachOperator = (value, operator) =>
+  typeof value === 'number'
+    ? operator * value
+    : `${operator.toString().substr(0, 1)}${value}`;
+
 export default (ctx = {}) => {
   const { header = {}, sidebar = {}, opened } = ctx;
   const edgeSidebar = createEdgeSidebar(ctx);
@@ -16,6 +21,11 @@ export default (ctx = {}) => {
   const isAboveMainSidebar = header.clipped && isNotStatic;
   const isAboveSubSidebar = header.secondaryClipped && isNotStatic;
   const isAboveSomeSidebars = isAboveMainSidebar || isAboveSubSidebar;
+  const getFlexiblePersistentBehaviorMarginValue = () => {
+    if (sidebar.anchor === 'left') return attachOperator(sidebarWidth, +1);
+    if (sidebar.anchor === 'right') return attachOperator(sidebarWidth, -1);
+    return 0;
+  };
   return {
     getHeaderZIndexStyle: theme => {
       if (isAboveSomeSidebars) {
@@ -33,6 +43,22 @@ export default (ctx = {}) => {
         };
       }
       if (sidebar.variant === 'persistent') {
+        if (!opened) {
+          return {
+            [`margin${upperFirst(sidebar.anchor)}`]: 0,
+          };
+        }
+        // opened
+        if (persistentBehavior === 'fit') {
+          return {
+            [`margin${upperFirst(sidebar.anchor)}`]: sidebarWidth,
+          };
+        }
+        if (persistentBehavior === 'flexible') {
+          return {
+            marginLeft: getFlexiblePersistentBehaviorMarginValue(),
+          };
+        }
         return {
           [`margin${upperFirst(sidebar.anchor)}`]:
             opened &&

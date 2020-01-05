@@ -36,7 +36,7 @@ describe('Header', () => {
     provider.secondarySidebar.setAnchor('right');
     provider.secondarySidebar.setVariant('permanent');
     provider.set();
-    expect(header.getMarginStyle()).toStrictEqual({});
+    expect(header.getMarginStyle()).toStrictEqual(undefined);
 
     provider.header.setClipped(false);
     provider.header.setSecondaryClipped(false);
@@ -90,12 +90,12 @@ describe('Header', () => {
     provider.secondarySidebar.setInset(true);
     provider.secondarySidebar.setAnchor('left');
     provider.set();
-    expect(header.getMarginStyle()).toStrictEqual({});
+    expect(header.getMarginStyle()).toStrictEqual(undefined);
 
     provider.header.setClipped(false);
     provider.header.setSecondaryClipped(false);
     provider.set();
-    expect(header.getMarginStyle()).toStrictEqual({});
+    expect(header.getMarginStyle()).toStrictEqual(undefined);
     expect(header.getWidthStyle()).toStrictEqual({ width: 'auto' });
   });
 

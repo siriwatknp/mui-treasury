@@ -27,7 +27,7 @@ describe('Container', () => {
 
     provider.secondarySidebar.setInset(true);
     provider.set();
-    expect(container.getMarginStyle()).toStrictEqual({});
+    expect(container.getMarginStyle()).toStrictEqual(undefined);
     expect(container.getWidthStyle()).toBeUndefined();
   });
 
