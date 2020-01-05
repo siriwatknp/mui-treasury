@@ -1,4 +1,5 @@
 import combineMargin from '../utils/combineMargin';
+import toValidCssValue from '../utils/toValidCssValue';
 
 test('combineMargin', () => {
   expect(combineMargin(undefined, undefined)).toBeUndefined();
@@ -31,4 +32,11 @@ test('combineMargin', () => {
     marginLeft: 'calc(-20rem + 20%)',
     marginRight: 'calc(256px + -256px)',
   });
+});
+
+test('toValidCssValue', () => {
+  expect(toValidCssValue(undefined)).toBe(undefined);
+  expect(toValidCssValue(0)).toBe(0);
+  expect(toValidCssValue(200)).toBe('200px');
+  expect(toValidCssValue('30%')).toBe('30%');
 });
