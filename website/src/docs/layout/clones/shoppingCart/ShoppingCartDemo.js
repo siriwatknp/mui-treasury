@@ -40,9 +40,7 @@ const useStyles = makeStyles(({ breakpoints }) => ({
   },
   container: {
     minHeight: 0,
-  },
-  insetContainer: {
-    height: '100%',
+    display: 'flex',
   },
   content: {
     overflow: 'auto',
@@ -58,8 +56,8 @@ const useStyles = makeStyles(({ breakpoints }) => ({
       height: 24,
       top: 0,
       left: 0,
-      transform: 'translateY(-50%)',
-      background: 'linear-gradient(to top, #ffffff 60%, transparent)',
+      transform: 'translateY(-100%)',
+      background: 'linear-gradient(to top, #ffffff, rgba(255,255,255,0))',
     },
     [breakpoints.only('sm')]: {
       paddingRight: 64,
@@ -132,7 +130,7 @@ const ShoppingCartDemo = () => {
               </Container>
             </Header>
             <Container className={styles.container}>
-              <InsetContainer className={styles.insetContainer}>
+              <InsetContainer>
                 <Content className={styles.content}>
                   <DailyCart />
                 </Content>
