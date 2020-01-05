@@ -63,8 +63,7 @@ describe('Content', () => {
     provider.content.setSecondaryPersistentBehavior('flexible');
     provider.set({ secondaryOpened: true });
     expect(content.getMarginStyle()).toStrictEqual({
-      marginLeft: 256,
-      marginRight: 244,
+      marginLeft: 'calc(256px + -244px)',
     });
     expect(content.getWidthStyle()).toStrictEqual({
       width: 'calc(100% - 256px)',

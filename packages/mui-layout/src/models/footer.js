@@ -1,5 +1,6 @@
 import createAllSidebars from './allSidebars';
 import { reduceWidths } from './width';
+import combineMargin from '../utils/combineMargin';
 
 export default (ctx = {}) => {
   const { footer = {} } = ctx;
@@ -18,10 +19,10 @@ export default (ctx = {}) => {
   const subAttached = !isEdgeAndInset || (isPrimaryEdge && isSecondaryInset);
   return {
     getMarginStyle() {
-      return {
-        ...(mainAttached && mainEffect.getMarginStyle(footer)),
-        ...(subAttached && subEffect.getMarginStyle(subFooter)),
-      };
+      return combineMargin(
+        mainEffect.getMarginStyle(footer),
+        subEffect.getMarginStyle(subFooter)
+      );
     },
     getWidthStyle() {
       const finalWidthObj = reduceWidths([

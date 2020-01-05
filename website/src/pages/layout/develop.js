@@ -27,11 +27,16 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { ContentMockUp } from '@mui-treasury/mockup/layout';
 
 const config = ConfigGenerator({ addOnsIncluded: true });
-config.setPrimarySidebarToNonInset();
-config.primarySidebar.setVariant('persistent');
-config.primarySidebar.setCollapsible(true);
-config.setSecondarySidebarToInset();
-config.footer.setSecondaryInsetBehavior('none');
+config.primarySidebar
+  .setAnchor('right')
+  .setVariant('persistent')
+  .setWidth('20rem')
+  .setCollapsible(true)
+  .setCollapsedWidth(100);
+config.secondarySidebar.setAnchor('left').setVariant('permanent');
+config.header.setClipped(false).setPersistentBehavior('flexible');
+config.content.setPersistentBehavior('none');
+config.footer.setPersistentBehavior('flexible');
 
 // config.primarySidebar.setVariant('persistent');
 // config.primarySidebar.setCollapsible(true);
@@ -54,13 +59,13 @@ const LayoutTest = () => {
         <>
           <Header>
             <Toolbar>
-              <SidebarTrigger className={headerStyles.leftTrigger}>
-                <SidebarTriggerIcon />
-              </SidebarTrigger>
-              <Box flexGrow={1}>test</Box>
               <SecondarySidebarTrigger>
                 <SecondarySidebarTriggerIcon />
               </SecondarySidebarTrigger>
+              <Box flexGrow={1}>test</Box>
+              <SidebarTrigger className={headerStyles.leftTrigger}>
+                <SidebarTriggerIcon />
+              </SidebarTrigger>
             </Toolbar>
           </Header>
 
@@ -71,35 +76,35 @@ const LayoutTest = () => {
             </CollapseBtn>
           </Sidebar>
 
-          {/*<SecondarySidebar>*/}
-          {/*  <div className={sidebarStyles.container}>Sidebar</div>*/}
-          {/*  <SecondaryCollapseBtn className={sidebarStyles.collapseBtn}>*/}
-          {/*    <SecondaryCollapseIcon />*/}
-          {/*  </SecondaryCollapseBtn>*/}
-          {/*</SecondarySidebar>*/}
-          {/*<Content>*/}
-          {/*  <ContentMockUp />*/}
-          {/*</Content>*/}
-          {/*<Footer>Footer</Footer>*/}
+          <SecondarySidebar>
+            <div className={sidebarStyles.container}>Sidebar</div>
+            <SecondaryCollapseBtn className={sidebarStyles.collapseBtn}>
+              <SecondaryCollapseIcon />
+            </SecondaryCollapseBtn>
+          </SecondarySidebar>
+          <Content>
+            <ContentMockUp />
+          </Content>
+          <Footer>Footer</Footer>
 
-          <InsetContainer>
-            {/*<InsetSidebar>*/}
-            {/*  <Box height={300} bgcolor={'grey.100'}>*/}
-            {/*    Inset Sidebar*/}
-            {/*  </Box>*/}
-            {/*</InsetSidebar>*/}
-            <Container className={containerStyles.root}>
-              <Content>
-                <ContentMockUp />
-              </Content>
-              <SecondaryInsetSidebar>
-                <Box bgcolor={'grey.100'}>2nd Inset Sidebar</Box>
-              </SecondaryInsetSidebar>
-            </Container>
-          </InsetContainer>
-          <InsetContainer>
-            <Footer>Footer</Footer>
-          </InsetContainer>
+          {/*<InsetContainer>*/}
+          {/*  /!*<InsetSidebar>*!/*/}
+          {/*  /!*  <Box height={300} bgcolor={'grey.100'}>*!/*/}
+          {/*  /!*    Inset Sidebar*!/*/}
+          {/*  /!*  </Box>*!/*/}
+          {/*  /!*</InsetSidebar>*!/*/}
+          {/*  <Container className={containerStyles.root}>*/}
+          {/*    <Content>*/}
+          {/*      <ContentMockUp />*/}
+          {/*    </Content>*/}
+          {/*    <SecondaryInsetSidebar>*/}
+          {/*      <Box bgcolor={'grey.100'}>2nd Inset Sidebar</Box>*/}
+          {/*    </SecondaryInsetSidebar>*/}
+          {/*  </Container>*/}
+          {/*</InsetContainer>*/}
+          {/*<InsetContainer>*/}
+          {/*  <Footer>Footer</Footer>*/}
+          {/*</InsetContainer>*/}
         </>
       )}
     </Root>
