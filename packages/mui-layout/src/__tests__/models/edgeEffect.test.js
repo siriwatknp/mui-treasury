@@ -118,9 +118,24 @@ describe('Edge Effect', () => {
     expect(effect.getMarginStyle(BEHAVIOR.fit)).toStrictEqual({
       marginRight: 300,
     });
+    // ------------------------------------------------------------
+    // special for persistent behavior : flexible
+    // should only affect marginLeft as negative value, otherwise does not work
+    // css constraint
+    // todo support rtl direction
+    provider.set({ opened: true, collapsed: false });
+    expect(effect.getMarginStyle(BEHAVIOR.flexible)).toStrictEqual({
+      marginLeft: -300,
+    });
     provider.set({ opened: true, collapsed: true });
     expect(effect.getMarginStyle(BEHAVIOR.flexible)).toStrictEqual({
-      marginRight: 64,
+      marginLeft: -64,
+    });
+
+    provider.primarySidebar.setWidth('30%');
+    provider.set({ opened: true, collapsed: false });
+    expect(effect.getMarginStyle(BEHAVIOR.flexible)).toStrictEqual({
+      marginLeft: '-30%',
     });
   });
 

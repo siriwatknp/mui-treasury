@@ -61,10 +61,17 @@ describe('Footer', () => {
     provider.secondarySidebar.setWidth(244);
     provider.secondarySidebar.setAnchor('right');
     provider.secondarySidebar.setVariant('permanent');
-    provider.set();
+    provider.set({ opened: false, collapsed: false });
     expect(footer.getMarginStyle()).toStrictEqual({
+      marginLeft: 0,
       marginRight: 244,
     });
     expect(footer.getWidthStyle()).toStrictEqual({ width: 'auto' });
+
+    provider.set({ opened: true, collapsed: false });
+    expect(footer.getMarginStyle()).toStrictEqual({
+      marginLeft: 256,
+      marginRight: 244,
+    });
   });
 });

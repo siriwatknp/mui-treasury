@@ -11,32 +11,39 @@ const createWidth = gap => {
   };
 };
 
+const InvalidUnit = () => ({
+  combine: other => other || 0,
+});
+const StringUnit = val => ({
+  combine: other => {
+    if (!other) return val;
+    if (other === 'auto') return val;
+    if (typeof other === 'number') return `${val} + ${other}px`;
+    return `${val} + ${other}`;
+  },
+});
+const NumberUnit = val => ({
+  combine: other => {
+    if (!other) return val;
+    if (other === 'auto') return val;
+    if (typeof other === 'string') return `${val}px + ${other}`;
+    return val + other;
+  },
+});
+const AutoUnit = () => ({
+  combine: other => other,
+});
+const UnitFactory = val => {
+  if (val === 'auto') return AutoUnit();
+  if (typeof val === 'string') return StringUnit(val);
+  if (typeof val === 'number') return NumberUnit(val);
+  return InvalidUnit();
+};
+
 export const reduceWidths = widths => {
   if (!widths || !widths.length) return createWidth();
   return widths.reduce((result, curr) =>
-    createWidth(
-      (() => {
-        if (result.gap === 'auto' && curr.gap === 'auto') {
-          return 'auto';
-        }
-        if (result.gap === 'auto' && curr.gap !== 'auto') {
-          return curr.gap;
-        }
-        if (curr.gap === 'auto' && result.gap !== 'auto') {
-          return result.gap;
-        }
-        if (typeof curr.gap === 'string' || typeof result.gap === 'string') {
-          if (typeof curr.gap === 'number') {
-            return `${result.gap} + ${curr.gap}px`;
-          }
-          if (typeof result.gap === 'number') {
-            return `${result.gap}px + ${curr.gap}`;
-          }
-          return `${result.gap} + ${curr.gap}`;
-        }
-        return (result.gap || 0) + (curr.gap || 0);
-      })()
-    )
+    createWidth(UnitFactory(result.gap).combine(curr.gap))
   );
 };
 

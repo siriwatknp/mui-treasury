@@ -1,5 +1,6 @@
 import createAllSidebars from './allSidebars';
 import { reduceWidths } from './width';
+import combineMargin from '../utils/combineMargin';
 
 export default (ctx = {}) => {
   const { header = {} } = ctx;
@@ -7,10 +8,12 @@ export default (ctx = {}) => {
   const subHeader = mapSecondaryConfig(header);
   return {
     getMarginStyle() {
-      return {
-        ...(!header.clipped && mainEffect.getMarginStyle(header)),
-        ...(!header.secondaryClipped && subEffect.getMarginStyle(subHeader)),
-      };
+      return combineMargin(
+        !header.clipped ? mainEffect.getMarginStyle(header) : undefined,
+        !header.secondaryClipped
+          ? subEffect.getMarginStyle(subHeader)
+          : undefined
+      );
     },
     getWidthStyle() {
       return reduceWidths([
