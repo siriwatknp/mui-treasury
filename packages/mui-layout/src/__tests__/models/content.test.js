@@ -79,10 +79,7 @@ describe('Content', () => {
     provider.secondarySidebar.setInset(true);
     provider.secondarySidebar.setAnchor('left');
     provider.set();
-    expect(content.getMarginStyle()).toStrictEqual({});
-
-    provider.set();
-    expect(content.getMarginStyle()).toStrictEqual({});
+    expect(content.getMarginStyle()).toStrictEqual(undefined);
     expect(content.getWidthStyle()).toStrictEqual({ width: 'auto' });
   });
 

@@ -14,11 +14,9 @@ export default (ctx = {}) => {
   return {
     getMarginStyle() {
       if (isEdgeAndInset) return undefined;
-      return (
-        combineMargin(
-          mainEffect.getMarginStyle(content),
-          subEffect.getMarginStyle(subContent)
-        ) || {}
+      return combineMargin(
+        mainEffect.getMarginStyle(content),
+        subEffect.getMarginStyle(subContent)
       );
     },
     getWidthStyle() {

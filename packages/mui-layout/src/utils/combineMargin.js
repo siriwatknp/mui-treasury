@@ -1,7 +1,5 @@
 import isNil from 'lodash/isNil';
-
-const toValidCssValue = value =>
-  typeof value === 'number' ? `${value}px` : value;
+import toValidCssValue from './toValidCssValue';
 
 const getCssValue = (v1, v2) => {
   if (isNil(v1)) return v2;

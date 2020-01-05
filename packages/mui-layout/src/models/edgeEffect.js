@@ -1,5 +1,4 @@
 import get from 'lodash.get';
-import isString from 'lodash/isString';
 import createEdgeSidebar from './edgeSidebar';
 import createWidth from './width';
 import { upperFirst } from '../utils';
