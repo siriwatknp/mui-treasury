@@ -7,8 +7,8 @@ export default (ctx = {}) => {
     ...values,
     insetHiddenDisabled,
     displayedAboveBreakpoint:
-      sidebar.inset && values.isTargetAbove && !insetHiddenDisabled,
+      sidebar && sidebar.inset && values.isTargetAbove && !insetHiddenDisabled,
     displayedBelowBreakpoint:
-      sidebar.inset && values.isTargetDown && !insetHiddenDisabled,
+      sidebar && sidebar.inset && values.isTargetDown && !insetHiddenDisabled,
   };
 };
