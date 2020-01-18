@@ -27,6 +27,8 @@ typographyTheme.overrideThemeStyles = () => {
   };
 };
 typographyTheme.headerLineHeight = 1.45;
+typographyTheme.baseLineHeight = 1.7;
+typographyTheme.baseFontSize = '17px';
 typographyTheme.googleFonts = fonts.theme;
 
 const typography = new Typography(typographyTheme);
