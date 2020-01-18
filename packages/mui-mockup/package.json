@@ -1,6 +1,6 @@
 {
   "name": "@mui-treasury/mockup",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "keywords": [
     "react",
@@ -20,8 +20,8 @@
   "dependencies": {
     "@material-ui/core": "^4.6.0",
     "@material-ui/icons": "^4.5.1",
-    "@mui-treasury/components": "^0.3.11",
-    "@mui-treasury/styles": "^0.3.5",
+    "@mui-treasury/components": "^0.3.12",
+    "@mui-treasury/styles": "^0.3.6",
     "clsx": "^1.0.4",
     "prop-types": "^15.7.2",
     "react-router-dom": "^5.1.2"

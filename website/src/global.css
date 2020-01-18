@@ -4,12 +4,26 @@
  */
 .gatsby-highlight {
   background-color: rgb(40, 44, 52);
-  padding: 1.5em;
+  padding: 1.5em 16px;
+  margin: 0 -16px;
   overflow: auto;
   font-size: 14px;
 }
 
-.gatsby-highlight .token.keyword, .token.script {
+@media (min-width: 600px) {
+  .gatsby-highlight {
+    margin: 0 -1.5em;
+    border-radius: 4px;
+    padding: 1.5em;
+  }
+}
+
+.gatsby-highlight code {
+  color: #eeeeee;
+}
+
+.gatsby-highlight .token.keyword,
+.token.script {
   color: rgb(197, 165, 197);
 }
 
@@ -38,7 +52,6 @@
   padding-left: 0.75em;
   border-left: 0.25em solid #f99;
 }
-
 
 /**
  * Remove the default PrismJS theme background-color, border-radius, margin,
@@ -69,4 +82,19 @@
   padding: 0;
   padding-left: 2.8em;
   overflow: initial;
+}
+
+.gatsby-highlight-code-line {
+  background-color: rgb(53, 59, 69);
+  margin-left: -1.5em;
+  margin-right: -1.5em;
+  padding-left: 1.25em;
+}
+
+:not(pre) > code[class*='language-'] {
+  padding: 2px 8px;
+  color: #1a1a1a;
+  font-size: 16px;
+  background-color: rgba(255, 229, 100, 0.2);
+  font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace;
 }

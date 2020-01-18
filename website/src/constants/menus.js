@@ -31,6 +31,11 @@ export const PKG = {
 export default {
   [PKG.layouts]: [
     { key: 'layout', label: 'Introduction', to: '/layout' },
+    {
+      key: 'tutorial',
+      label: 'Tutorial',
+      to: '/layout/tutorials/dashboard-layout',
+    },
     { key: 'builder', label: 'Builder', to: '/layout/builder' },
     {
       key: 'presets',

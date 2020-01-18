@@ -6,6 +6,9 @@ import { ThemeWrapper } from './utils/theme';
 import banner from './assets/mui-treasury_banner_minified.jpg';
 import PageLayout from './components/layout/PageLayout';
 import createPath from './modules/path';
+
+import 'prismjs/themes/prism-tomorrow.css';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 import './global.css';
 import './fontawesome';
 

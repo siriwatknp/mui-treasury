@@ -1,6 +1,6 @@
 {
   "name": "@mui-treasury/utils",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "main": "./src/index.js",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "keywords": [
