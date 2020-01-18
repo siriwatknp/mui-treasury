@@ -56,8 +56,8 @@ const SloganSection = () => {
           MUI Treasury is an ecosystem of{' '}
           <a
             href="https://material-ui.com"
-            target={'_blank'}
-            rel={'noopener'}
+            target="_blank"
+            rel="noopener noreferrer"
             style={{ marginLeft: 12 }}
           >
             Material-UI
