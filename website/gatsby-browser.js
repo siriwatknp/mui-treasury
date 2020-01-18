@@ -1,6 +1,4 @@
 import React from 'react';
-import 'prismjs/themes/prism-tomorrow.css';
-import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 import App from './src/App';
 import RouterContext from './src/contexts/router';
 
