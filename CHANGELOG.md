@@ -10,7 +10,35 @@
 > - :bulb: [Refactor]
 > - :lipstick: [Style]
 
-## _4 Jan 2019_
+## _19 Jan 2020_
+
+### @mui-treasury/layout@3.3.2
+
+* [#402](https://github.com/siriwatknp/mui-treasury/pull/402) fix: 🐛 empty config error and add more tests to cover ([@siriwatknp](https://github.com/siriwatknp))
+
+* [#394](https://github.com/siriwatknp/mui-treasury/pull/394) [layout] added sidebar check into useInsetBreakpoint hook ([@tokdaniel](https://github.com/tokdaniel))
+
+* [#375](https://github.com/siriwatknp/mui-treasury/pull/375) Fix layout persistent behavior when anchor="right" ([@siriwatknp](https://github.com/siriwatknp))
+
+### website@1.8.0
+
+- [#403](https://github.com/siriwatknp/mui-treasury/pull/403) docs: ✏️ add blog layout tutorial ([@siriwatknp](https://github.com/siriwatknp))
+
+- [#399](https://github.com/siriwatknp/mui-treasury/pull/399) Layout Tutorial Page ([@siriwatknp](https://github.com/siriwatknp))
+
+### `Patch`
+
+- @mui-treasury/mockup@0.4.1
+- @mui-treasury/components@0.3.12
+- @mui-treasury/styles@0.3.6
+- @mui-treasury/utils@0.3.9 
+
+#### Committers: 2
+
+- Siriwat Kunaporn ([@siriwatknp](https://github.com/siriwatknp))
+- [@tokdaniel](https://github.com/tokdaniel)
+
+## _4 Jan 2020_
 
 ### website@1.6.0
 
