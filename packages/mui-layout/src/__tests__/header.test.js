@@ -21,6 +21,12 @@ const initialConfig = {
 describe('Header', function() {
   let header;
   let trigger;
+  test('able to render with empty config', () => {
+    expect(() => {
+      renderWithinLayout(<Header>header</Header>, { config: {} });
+    }).not.toThrow();
+  });
+
   test('Header should have AppBar', () => {
     const { getByText, debug } = renderWithinLayout(<Header>Hello</Header>, {
       config: initialConfig,
