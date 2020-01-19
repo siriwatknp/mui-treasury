@@ -32,9 +32,20 @@ export default {
   [PKG.layouts]: [
     { key: 'layout', label: 'Introduction', to: '/layout' },
     {
-      key: 'tutorial',
-      label: 'Tutorial',
-      to: '/layout/tutorials/dashboard-layout',
+      key: 'tutorials',
+      label: 'Tutorials',
+      subMenus: [
+        {
+          key: 'dashboard-layout',
+          label: 'Dashboard Layout',
+          to: '/layout/tutorials/dashboard-layout',
+        },
+        {
+          key: 'blog-layout',
+          label: 'Blog Layout',
+          to: '/layout/tutorials/blog-layout',
+        },
+      ],
     },
     { key: 'builder', label: 'Builder', to: '/layout/builder' },
     {

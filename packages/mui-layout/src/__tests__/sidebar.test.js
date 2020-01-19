@@ -5,6 +5,14 @@ import Sidebar from '../components/Sidebar';
 import CollapseBtn from '../components/CollapseBtn';
 import SidebarTrigger from '../components/SidebarTrigger';
 
+test('able to render with empty config', () => {
+  expect(() => {
+    renderWithinLayout(<Sidebar>content</Sidebar>, {
+      config: {},
+    });
+  }).not.toThrow();
+});
+
 describe('[Layout_LeftSidebar]', function() {
   let sidebarRoot;
   let sidebarPaper;

@@ -24,7 +24,7 @@ const useTransitionStyles = makeStyles(transitionStyles);
 
 const Footer = ({ className, component: Component, style, ...props }) => {
   const ctx = useLayoutCtx();
-  const { sidebar, secondarySidebar } = ctx;
+  const { sidebar = {}, secondarySidebar = {} } = ctx;
   const footerModel = createFooter(ctx);
   const main = useInsetBreakpoint(ctx);
   const sub = useInsetBreakpoint(SidebarAdapter.mapSecondaryConfig(ctx));

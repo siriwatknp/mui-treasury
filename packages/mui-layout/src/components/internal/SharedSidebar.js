@@ -27,7 +27,7 @@ const SharedSidebar = ({
   const [entered, setEntered] = React.useState(false);
   const styles = useSidebarStyles();
   const transition = useTransitionStyles();
-  const { sidebar, opened, setOpened, getSidebarZIndex } = parsedCtx;
+  const { sidebar = {}, opened, setOpened, getSidebarZIndex } = parsedCtx;
   const { getWidth } = createEdgeSidebar(parsedCtx);
   const isPermanent = sidebar.variant === 'permanent';
   return (

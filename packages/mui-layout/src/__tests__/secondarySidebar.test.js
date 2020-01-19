@@ -5,11 +5,20 @@ import SecondarySidebar from '../components/SecondarySidebar';
 import SecondarySidebarTrigger from '../components/SecondarySidebarTrigger';
 import SecondaryCollapseBtn from '../components/SecondaryCollapseBtn';
 
+test('able to render with empty config', () => {
+  expect(() => {
+    renderWithinLayout(<SecondarySidebar>content</SecondarySidebar>, {
+      config: {},
+    });
+  }).not.toThrow();
+});
+
 describe('[Layout_RightSidebar]', function() {
   let sidebarRoot;
   let sidebarPaper;
   let trigger;
   let backdrop;
+
   test('[Permanent] should always display on screen', () => {
     const { getByTestId } = renderWithinLayout(
       <SecondarySidebar data-testid={'sidebar-root'} />,

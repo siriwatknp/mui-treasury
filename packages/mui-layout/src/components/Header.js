@@ -18,6 +18,7 @@ const useTransitionStyles = makeStyles(transitionStyles);
 
 const Header = ({ className, children, style, ...props }) => {
   const ctx = useLayoutCtx();
+  const { header = {} } = ctx;
   const headerModel = createHeader(ctx);
   const allSidebars = createAllSidebars(ctx);
   const styles = useStyles();
@@ -28,7 +29,7 @@ const Header = ({ className, children, style, ...props }) => {
       color={'default'}
       elevation={0}
       {...props}
-      position={ctx.header.position}
+      position={header.position}
       className={cx(styles.root, transition.root, className)}
       style={{
         ...style,
