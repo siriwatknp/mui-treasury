@@ -41,6 +41,7 @@ const getLayoutHandler = () => {
       },
     }),
     getOpenKeys: () => [
+      'tutorials',
       'presets',
       'basic-examples',
       'advanced-examples',
