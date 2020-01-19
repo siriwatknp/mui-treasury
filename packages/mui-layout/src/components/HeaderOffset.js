@@ -8,7 +8,7 @@ import { transitionStyles } from '../styles';
 const useTransitionStyles = makeStyles(transitionStyles);
 
 const HeaderOffset = ({ className, style, ...props }) => {
-  const { header } = useLayoutCtx();
+  const { header = {} } = useLayoutCtx();
   const transition = useTransitionStyles();
   const hasOffset =
     header.position === 'fixed' || header.position === 'absolute';
