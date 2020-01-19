@@ -19,7 +19,7 @@
 }
 
 .gatsby-highlight code {
-  color: #eeeeee;
+  color: #ddd;
 }
 
 .gatsby-highlight .token.keyword,
@@ -36,7 +36,7 @@
 }
 
 .gatsby-highlight .token.attr-name {
-  color: #ccc;
+  color: #ddd;
 }
 
 .gatsby-highlight .token.tag {
@@ -44,13 +44,18 @@
 }
 
 .gatsby-highlight-code-line {
-  background-color: #feb;
+  background-color: rgb(53, 59, 69);
   display: block;
-  margin-right: -1em;
-  margin-left: -1em;
-  padding-right: 1em;
-  padding-left: 0.75em;
-  border-left: 0.25em solid #f99;
+  margin: 0 -16px;
+  padding: 0 16px;
+  box-shadow: inset 4px 0 0 0 #f99;
+}
+
+@media (min-width: 600px) {
+  .gatsby-highlight-code-line {
+    margin: 0 -1.5em;
+    padding: 0 1.5em;
+  }
 }
 
 /**
@@ -82,13 +87,6 @@
   padding: 0;
   padding-left: 2.8em;
   overflow: initial;
-}
-
-.gatsby-highlight-code-line {
-  background-color: rgb(53, 59, 69);
-  margin-left: -1.5em;
-  margin-right: -1.5em;
-  padding-left: 1.25em;
 }
 
 :not(pre) > code[class*='language-'] {

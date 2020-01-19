@@ -18,6 +18,8 @@ when the process is done, install packages
 ```bash
 cd my-layout
 yarn add @material-ui/core @mui-treasury/layout @mui-treasury/mockup
+
+// note: this tutorial is based on @mui-treasury/layout v3.3.2
 ```
 
 <br>
