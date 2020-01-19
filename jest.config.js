@@ -9,6 +9,7 @@ module.exports = {
   testPathIgnorePatterns: [
     `node_modules`,
     `.cache`,
+    'public',
     'build',
     'assets',
     'starters',

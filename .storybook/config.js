@@ -5,7 +5,6 @@ import { withKnobs } from '@storybook/addon-knobs';
 import CssBaseline from '@material-ui/core/CssBaseline';
 // import all components so that other styles is created after
 import * as core from '@material-ui/core';
-import * as components from '@mui-treasury/components';
 // -----------------------------------------------------------
 import 'prismjs/themes/prism-tomorrow.css';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';

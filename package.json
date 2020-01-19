@@ -28,8 +28,9 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx}": [
-      "prettier",
-      "eslint"
+      "prettier --fix",
+      "eslint",
+      "git add"
     ]
   },
   "scripts": {
@@ -48,41 +49,20 @@
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
-    "@babel/plugin-transform-object-assign": "^7.2.0",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
-    "@material-ui/core": "^4.8.0",
-    "@material-ui/icons": "^4.5.1",
-    "@material-ui/styles": "^4.7.1",
-    "@storybook/addon-actions": "^5.1.11",
-    "@storybook/addon-knobs": "^5.1.11",
-    "@storybook/addon-links": "^5.1.11",
-    "@storybook/addon-notes": "^5.1.11",
-    "@storybook/addons": "^5.1.11",
-    "@storybook/react": "^5.1.11",
+    "@babel/plugin-transform-object-assign": "^7.8.3",
+    "@storybook/addon-actions": "^5.3.6",
+    "@storybook/addon-knobs": "^5.3.6",
+    "@storybook/addon-links": "^5.3.6",
+    "@storybook/addon-notes": "^5.3.6",
+    "@storybook/addons": "^5.3.6",
+    "@storybook/react": "^5.3.6",
     "@testing-library/jest-dom": "^4.2.3",
     "@testing-library/react": "^9.3.1",
     "@types/jest": "^24.0.21",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^10.0.2",
     "babel-jest": "^24.9.0",
-    "babel-loader": "^8.0.6",
     "babel-plugin-module-resolver": "^4.0.0",
-    "babel-plugin-remove-graphql-queries": "^2.7.2",
     "babel-preset-gatsby": "^0.2.8",
-    "clsx": "^1.0.4",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
-    "eslint-config-airbnb": "^17.1.1",
-    "eslint-config-prettier": "^6.0.0",
     "eslint-config-react-app": "^5.0.2",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-react": "^7.14.3",
-    "eslint-plugin-react-hooks": "^2.2.0",
     "firebase-tools": "^7.4.0",
     "fs-extra": "^8.1.0",
     "glob": "^7.1.4",
@@ -97,7 +77,6 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-test-renderer": "^16.9.0",
     "typescript": "^3.6.4"
   }
 }
