@@ -11,6 +11,7 @@ const FadedShadow = () => {
 FadedShadow.metadata = {
   title: 'Faded',
   path: 'shadow/faded',
+  creators: [require('constants/creators').siriwatknp],
   files: [{ pkg: 'mui-styles', path: 'shadow/faded/fadedShadow.styles.js' }],
 };
 // hide-end

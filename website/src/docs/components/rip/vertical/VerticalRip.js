@@ -30,6 +30,7 @@ VerticalRip.metadata = {
   frameProps: {
     bgcolor: 'primary.main',
   },
+  creators: [require('constants/creators').siriwatknp],
   files: [
     {
       pkg: 'mui-styles',

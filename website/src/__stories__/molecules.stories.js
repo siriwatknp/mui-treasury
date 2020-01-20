@@ -14,7 +14,12 @@ import Prism from 'components/molecules/Prism';
 storiesOf('Treasury|molecules', module)
   .addDecorator(createContainer({ maxWidth: 'sm' }))
   .add('ShowcaseWidget', () => (
-    <ShowcaseWidget name={'Button'} onClickCode={action('code-clicked')} />
+    <ShowcaseWidget
+      name={'Button'}
+      creators={[{ name: 'A' }, { face: '', name: 'siriwatkbnp', link: 'https://google.co.th' }]}
+      onClickCode={action('code-clicked')}
+      description={'A great inspiration from pinterest'}
+    />
   ))
   .add('BoxTabs', () => (
     <BoxTabs

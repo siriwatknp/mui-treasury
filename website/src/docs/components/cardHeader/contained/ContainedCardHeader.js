@@ -17,6 +17,7 @@ const ContainedCardHeader = () => {
 ContainedCardHeader.metadata = {
   title: 'Contained',
   path: 'cardHeader/contained',
+  creators: [require('constants/creators').siriwatknp],
   relates: [
     {
       label: 'Official Demo',

@@ -19,6 +19,7 @@ const PeopleCardFooterDemo = () => (
 PeopleCardFooterDemo.metadata = {
   title: 'People',
   path: 'cardFooter/people', // must match its index.md
+  creators: [require('constants/creators').siriwatknp],
   files: [
     {
       pkg: 'mui-components',

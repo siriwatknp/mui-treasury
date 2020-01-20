@@ -86,6 +86,7 @@ const ElevatedHeaderCard = () => {
 ElevatedHeaderCard.metadata = {
   title: 'Elevated Header',
   path: 'card/elevatedHeader',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     {
       pkg: 'mui-styles',

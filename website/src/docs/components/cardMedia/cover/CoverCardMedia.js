@@ -25,6 +25,7 @@ CoverCardMedia.metadata = {
   title: 'Cover',
   description: 'Position is absolute',
   path: 'cardMedia/cover',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     {
       pkg: 'mui-styles',

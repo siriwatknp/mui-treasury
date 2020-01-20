@@ -13,6 +13,7 @@ const SoftRiseShadow = () => {
 SoftRiseShadow.metadata = {
   title: 'Soft Rise',
   path: 'shadow/softRise',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     { pkg: 'mui-styles', path: 'shadow/softRise/softRiseShadow.styles.js' },
   ],

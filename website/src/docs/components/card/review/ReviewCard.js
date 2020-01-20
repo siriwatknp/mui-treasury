@@ -130,6 +130,7 @@ ReviewCard.metadata = {
     { pkg: 'mui-styles', path: 'shadow/faded/fadedShadow.styles.js' },
     { pkg: 'mui-styles', path: 'gutter/pushing/pushingGutter.styles.js' },
   ],
+  creators: [require('constants/creators').siriwatknp],
 };
 // hide-end
 

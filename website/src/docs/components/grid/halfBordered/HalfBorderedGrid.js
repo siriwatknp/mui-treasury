@@ -28,6 +28,7 @@ HalfBorderedGrid.metadata = {
   title: 'Half Bordered',
   path: 'grid/halfBordered',
   size: 'large',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     { pkg: 'mui-styles', path: 'grid/halfBordered/halfBorderedGrid.styles.js' },
   ],

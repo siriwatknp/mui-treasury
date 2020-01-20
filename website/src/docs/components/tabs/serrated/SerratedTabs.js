@@ -43,6 +43,7 @@ SerratedTabs.metadata = {
   title: 'Serrated',
   path: 'tabs/serrated',
   size: 'large',
+  creators: [require('constants/creators').siriwatknp],
   files: [{ pkg: 'mui-styles', path: 'tabs/serrated/serratedTabs.styles.js' }],
 };
 // hide-end

@@ -23,6 +23,7 @@ const LabelIcon = () => {
 LabelIcon.metadata = {
   title: 'Label',
   path: 'icon/label',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     { pkg: 'mui-styles', path: 'gutter/pushing/pushingGutter.styles.js' },
     { pkg: 'mui-styles', path: 'icon/label/labelIcon.styles.js' },

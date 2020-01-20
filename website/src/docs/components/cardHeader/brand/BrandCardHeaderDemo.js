@@ -10,6 +10,7 @@ const BrandCardHeaderDemo = () => (
 BrandCardHeaderDemo.metadata = {
   title: 'Brand',
   path: 'cardHeader/brand',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     { pkg: 'mui-styles', path: 'cardHeader/brand/brandCardHeader.styles.js' },
   ],

@@ -83,6 +83,7 @@ ProfileCard.metadata = {
   title: 'Profile',
   description: 'Social network',
   path: 'card/profile',
+  creators: [require('constants/creators').siriwatknp],
   files: [],
 };
 // hide-end

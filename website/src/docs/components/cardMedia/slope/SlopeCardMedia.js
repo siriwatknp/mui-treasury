@@ -20,6 +20,7 @@ SlopeCardMedia.defaultProps = {};
 SlopeCardMedia.metadata = {
   title: 'Slope',
   path: 'cardMedia/slope',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     {
       pkg: 'mui-styles',

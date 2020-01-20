@@ -61,6 +61,7 @@ ProjectCard.metadata = {
       path: 'cardContent/text03/textCardContent03.styles.js',
     },
   ],
+  creators: [require('constants/creators').siriwatknp],
 };
 // hide-end
 

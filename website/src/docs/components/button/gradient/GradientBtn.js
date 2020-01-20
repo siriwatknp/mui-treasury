@@ -23,6 +23,7 @@ const GradientBtn = () => {
 GradientBtn.metadata = {
   title: 'Gradient',
   path: 'button/gradient',
+  creators: [require('constants/creators').siriwatknp],
   files: [{ pkg: 'mui-styles', path: 'button/gradient/gradientBtn.styles.js' }],
 };
 // hide-end

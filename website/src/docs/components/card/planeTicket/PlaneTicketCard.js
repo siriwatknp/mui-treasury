@@ -156,6 +156,7 @@ PlaneTicketCard.metadata = {
   frameProps: {
     bgcolor: mainColor,
   },
+  creators: [require('constants/creators').siriwatknp],
   files: [
     {
       pkg: 'mui-styles',

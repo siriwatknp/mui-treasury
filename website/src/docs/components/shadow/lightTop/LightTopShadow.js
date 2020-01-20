@@ -13,6 +13,7 @@ const LightTopShadow = () => {
 LightTopShadow.metadata = {
   title: 'Light Top',
   path: 'shadow/lightTop',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     { pkg: 'mui-styles', path: 'shadow/lightTop/lightTopShadow.styles.js' },
   ],

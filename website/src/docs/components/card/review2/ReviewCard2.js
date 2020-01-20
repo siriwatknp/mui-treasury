@@ -129,6 +129,7 @@ ReviewCard2.metadata = {
     { pkg: 'mui-styles', path: 'icon/label/labelIcon.styles.js' },
     { pkg: 'mui-styles', path: 'flex/row/rowFlex.styles.js' },
   ],
+  creators: [require('constants/creators').siriwatknp],
 };
 // hide-end
 

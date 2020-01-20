@@ -20,10 +20,12 @@ const GridShowcase = ({
           title: name = Component.name,
           frameProps,
           description,
+          creators,
         } = Component.metadata;
         return (
           <Grid key={name} item classes={gridStyles} {...GridItemProps}>
             <Wrapper
+              creators={creators}
               name={name}
               description={description}
               frameProps={frameProps}

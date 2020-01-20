@@ -7,6 +7,9 @@ import IconButton from '@material-ui/core/IconButton';
 import CodeRounded from '@material-ui/icons/CodeRounded';
 import Link from '@material-ui/icons/Link';
 import Typography from '@material-ui/core/Typography';
+import Avatar from '@material-ui/core/Avatar';
+import AvatarGroup from '@material-ui/lab/AvatarGroup';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const useStyles = makeStyles(({ palette }) => ({
   hiddenName: {
@@ -35,11 +38,22 @@ const useStyles = makeStyles(({ palette }) => ({
       },
     },
   },
+  creatorLabel: {
+    letterSpacing: 1,
+    fontSize: 12,
+    color: palette.text.secondary,
+  },
+  creatorName: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    marginTop: -2,
+  },
 }));
 
 const ShowcaseWidget = ({
   children,
   name,
+  creators,
   anchor = name,
   description,
   onClickCode,
@@ -56,9 +70,20 @@ const ShowcaseWidget = ({
       {...props}
       className={cx('Showcase-root', className)}
     >
-      <h3 className={styles.hiddenName} id={anchor}>
-        {name}
-      </h3>
+      <Box px={2} py={1}>
+        <h3 className={styles.hiddenName} id={anchor}>
+          {name}
+        </h3>
+        <a href={`#${anchor}`} className={styles.name} aria-label={'Anchor'}>
+          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+          <b>{name}</b> <Link />
+        </a>
+        {description && (
+          <Typography variant={'body2'} color={'textSecondary'}>
+            {description}
+          </Typography>
+        )}
+      </Box>
       <Box
         p={2}
         pb={1}
@@ -77,17 +102,41 @@ const ShowcaseWidget = ({
         {children}
       </Box>
       <Box p={2} pt={1} display={'flex'} alignItems={'center'}>
-        <div>
-          <a href={`#${anchor}`} className={styles.name} aria-label={'Anchor'}>
-            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-            <b>{name}</b> <Link />
-          </a>
-          {description && (
-            <Typography variant={'body2'} color={'textSecondary'}>
-              {description}
-            </Typography>
+        <Box ml={1}>
+          <AvatarGroup>
+            {creators.map(c => (
+              <Tooltip title={c.name}>
+                <Avatar
+                  key={c.name}
+                  {...(typeof c.face === 'string'
+                    ? { alt: c.name, src: c.face }
+                    : { children: c.name.substr(0, 1) })}
+                />
+              </Tooltip>
+            ))}
+          </AvatarGroup>
+        </Box>
+        <Box ml={1.5}>
+          {creators.length > 0 && (
+            <div className={styles.creatorLabel}>
+              {creators.length > 1 ? 'CREATORS' : 'CREATOR'}
+            </div>
           )}
-        </div>
+          <div className={styles.creatorName}>
+            {creators.map((c, i) => (
+              <React.Fragment key={c.name}>
+                {c.link ? (
+                  <a href={c.link} target="_blank" rel="noopener noreferrer">
+                    {c.name}
+                  </a>
+                ) : (
+                  c.name
+                )}
+                {i !== creators.length - 1 && ', '}
+              </React.Fragment>
+            ))}
+          </div>
+        </Box>
         <Box ml={'auto'}>
           <IconButton onClick={onClickCode}>
             <CodeRounded />
@@ -102,13 +151,24 @@ ShowcaseWidget.propTypes = {
   className: PropTypes.string,
   anchor: PropTypes.string,
   name: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  creators: PropTypes.arrayOf(
+    PropTypes.shape({
+      face: PropTypes.string,
+      name: PropTypes.string,
+      link: PropTypes.string,
+    })
+  ),
+  children: PropTypes.node,
   description: PropTypes.string,
   onClickCode: PropTypes.func,
-  frameProps: PropTypes.shape({}),
+  frameProps: PropTypes.shape({
+    className: PropTypes.string,
+  }),
 };
 ShowcaseWidget.defaultProps = {
   className: '',
   anchor: undefined,
+  creators: [],
   name: '',
   description: '',
   onClickCode: () => {},

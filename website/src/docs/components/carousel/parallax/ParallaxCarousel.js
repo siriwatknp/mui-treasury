@@ -229,6 +229,7 @@ ParallaxCarousel.metadata = {
     maxWidth: 840,
     m: 'auto',
   },
+  creators: [require('constants/creators').siriwatknp],
   files: [
     { pkg: 'mui-components', path: 'slide/parallax/ParallaxSlide.js' },
     { pkg: 'mui-components', path: 'indicator/dot/DotIndicator.js' },

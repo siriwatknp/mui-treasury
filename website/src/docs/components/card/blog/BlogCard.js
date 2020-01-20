@@ -105,6 +105,7 @@ BlogCard.metadata = {
   frameProps: {
     my: 3,
   },
+  creators: [require('constants/creators').siriwatknp],
   files: [
     { pkg: 'mui-styles', path: 'shadow/over/overShadow.styles.js' },
     {

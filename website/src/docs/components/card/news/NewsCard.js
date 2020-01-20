@@ -58,6 +58,7 @@ NewsCard.metadata = {
   title: 'News',
   description: 'Best for Blog',
   path: 'card/news',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     { pkg: 'mui-styles', path: 'shadow/bouncy/bouncy.styles.js' },
     {

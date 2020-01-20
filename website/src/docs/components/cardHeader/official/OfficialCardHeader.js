@@ -41,6 +41,7 @@ const OfficialCardHeader = () => {
 OfficialCardHeader.metadata = {
   title: 'Official',
   path: 'cardHeader/official',
+  creators: [require('constants/creators').siriwatknp],
   relates: [
     {
       label: 'Official Demo',

@@ -26,6 +26,7 @@ ContainedTabs.metadata = {
   title: 'Contained',
   path: 'tabs/contained',
   size: 'large',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     { pkg: 'mui-styles', path: 'tabs/contained/containedTabs.styles.js' },
   ],

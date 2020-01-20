@@ -13,6 +13,7 @@ const OverShadow = () => {
 OverShadow.metadata = {
   title: 'Over',
   path: 'shadow/over',
+  creators: [require('constants/creators').siriwatknp],
   files: [{ pkg: 'mui-styles', path: 'shadow/over/overShadow.styles.js' }],
 };
 // hide-end
