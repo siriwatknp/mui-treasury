@@ -37,7 +37,7 @@ const getLayoutHandler = () => {
       ...c,
       sidebar: {
         ...c.sidebar,
-        width: 200,
+        width: 208,
       },
     }),
     getOpenKeys: () => [
