@@ -12,6 +12,7 @@ BouncyShadow.metadata = {
   title: 'Bouncy',
   description: 'Not a bug, just hover it',
   path: 'shadow/faded',
+  creators: [require('constants/creators').siriwatknp],
   files: [{ pkg: 'mui-styles', path: 'shadow/faded/fadedShadow.styles.js' }],
 };
 // hide-end

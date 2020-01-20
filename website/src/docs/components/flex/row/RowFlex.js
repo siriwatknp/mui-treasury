@@ -38,6 +38,7 @@ RowFlex.metadata = {
   description: 'All child has the same width',
   path: 'flex/row',
   size: 'large',
+  creators: [require('constants/creators').siriwatknp],
   files: [{ pkg: 'mui-styles', path: 'flex/row/rowFlex.styles.js' }],
   relates: [],
 };

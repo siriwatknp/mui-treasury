@@ -28,6 +28,7 @@ FullBorderedGrid.metadata = {
   title: 'Full Bordered',
   path: 'grid/fullBordered',
   size: 'large',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     { pkg: 'mui-styles', path: 'grid/fullBordered/fullBorderedGrid.styles.js' },
   ],

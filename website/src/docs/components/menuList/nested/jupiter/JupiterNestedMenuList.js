@@ -185,6 +185,7 @@ const getMenus = () => [
 JupiterNestedMenuList.metadata = {
   title: 'Jupiter Nested',
   path: 'menuList/nested/jupiter',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     { pkg: 'mui-components', path: 'menuList/nested/NestedMenuList.js' },
     {

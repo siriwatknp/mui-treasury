@@ -31,6 +31,7 @@ GutterBorderedGrid.metadata = {
   description: 'show border between each item',
   path: 'grid/gutterBordered',
   size: 'large',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     {
       pkg: 'mui-styles',

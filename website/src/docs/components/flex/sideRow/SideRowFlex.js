@@ -28,6 +28,7 @@ SideRowFlex.metadata = {
   description: 'Last child is pushed to the right',
   path: 'flex/sideRow',
   size: 'large',
+  creators: [require('constants/creators').siriwatknp],
   files: [{ pkg: 'mui-styles', path: 'flex/row/rowFlex.styles.js' }],
   relates: [],
 };

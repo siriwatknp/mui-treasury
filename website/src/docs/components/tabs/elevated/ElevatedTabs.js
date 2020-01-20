@@ -26,6 +26,7 @@ ElevatedTabs.metadata = {
   title: 'Elevated',
   path: 'tabs/elevated',
   size: 'large',
+  creators: [require('constants/creators').davideAntonio],
   files: [{ pkg: 'mui-styles', path: 'tabs/elevated/elevatedTabs.styles.js' }],
 };
 // hide-end

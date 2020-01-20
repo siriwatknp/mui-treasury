@@ -33,6 +33,7 @@ InstagramTabs.metadata = {
   title: 'Instagram',
   path: 'tabs/instagram',
   size: 'large',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     { pkg: 'mui-styles', path: 'tabs/instagram/instagramTabs.styles.js' },
   ],

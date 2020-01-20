@@ -26,6 +26,7 @@ TwitterIconTabs.metadata = {
   title: 'Twitter Icon',
   path: 'tabs/twitterIcon',
   size: 'large',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     { pkg: 'mui-components', path: 'tabs/twitterIcon/TwitterIconTabs.js' },
     { pkg: 'mui-styles', path: 'tabs/twitterIcon/twitterIconTabs.styles.js' },

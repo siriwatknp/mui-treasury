@@ -11,6 +11,7 @@ const FloatShadow = () => {
 FloatShadow.metadata = {
   title: 'Float',
   path: 'shadow/float',
+  creators: [require('constants/creators').siriwatknp],
   files: [{ pkg: 'mui-styles', path: 'shadow/float/floatShadow.styles.js' }],
 };
 // hide-end

@@ -29,6 +29,7 @@ const ChromeInput = () => {
 ChromeInput.metadata = {
   title: 'Chrome',
   path: 'input/chrome',
+  creators: [require('constants/creators').siriwatknp],
   files: [{ pkg: 'mui-styles', path: 'input/chrome/chromeInput.styles.js' }],
   relates: [],
 };

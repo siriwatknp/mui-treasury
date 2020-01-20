@@ -68,6 +68,7 @@ const PostCard = () => {
 PostCard.metadata = {
   title: 'Post',
   path: 'card/post',
+  creators: [require('constants/creators').siriwatknp],
   files: [],
 };
 // hide-end

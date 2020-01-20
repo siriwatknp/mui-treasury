@@ -45,6 +45,7 @@ const GatsbyActionToggleItem = () => {
 GatsbyActionToggleItem.metadata = {
   title: 'Gatsby Action Toggle',
   path: 'menuItem/actionToggle/gatsby',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     {
       pkg: 'mui-styles',

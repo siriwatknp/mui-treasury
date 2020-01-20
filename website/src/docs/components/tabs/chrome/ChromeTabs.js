@@ -26,6 +26,7 @@ ChromeTabs.metadata = {
   title: 'Chrome',
   path: 'tabs/default',
   size: 'large',
+  creators: [require('constants/creators').siriwatknp],
   files: [{ pkg: 'mui-styles', path: 'tabs/chrome/chromeTabs.styles.js' }],
   relates: [
     {

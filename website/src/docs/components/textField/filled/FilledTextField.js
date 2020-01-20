@@ -46,6 +46,7 @@ const FilledTextField = () => {
 FilledTextField.metadata = {
   title: 'Filled',
   path: 'textField/filled',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     { pkg: 'mui-styles', path: 'textField/filled/filledTextField.styles.js' },
   ],

@@ -77,6 +77,7 @@ ParallaxSlideDemo.metadata = {
   title: 'Parallax',
   path: 'slide/parallax',
   size: 'large',
+  creators: [require('constants/creators').siriwatknp],
   files: [{ pkg: 'mui-components', path: 'slide/parallax/ParallaxSlide.js' }],
   relates: [],
 };

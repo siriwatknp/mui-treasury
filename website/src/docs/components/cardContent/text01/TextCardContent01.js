@@ -26,6 +26,7 @@ const TextCardContent01 = () => {
 TextCardContent01.metadata = {
   title: 'Text I',
   path: 'cardContent/text01',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     {
       pkg: 'mui-components',

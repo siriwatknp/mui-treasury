@@ -2,7 +2,6 @@ import React from 'react';
 import { configure, addDecorator, addParameters } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs } from '@storybook/addon-knobs';
-import CssBaseline from '@material-ui/core/CssBaseline';
 // import all components so that other styles is created after
 import * as core from '@material-ui/core';
 // -----------------------------------------------------------
@@ -25,10 +24,7 @@ typography.injectStyles();
 
 const ThemeDecorator = storyFn => (
   <>
-    <ThemeWrapper>
-      <CssBaseline />
-      {storyFn()}
-    </ThemeWrapper>
+    <ThemeWrapper>{storyFn()}</ThemeWrapper>
   </>
 );
 

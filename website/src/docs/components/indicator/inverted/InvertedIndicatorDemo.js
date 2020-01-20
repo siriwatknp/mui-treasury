@@ -26,6 +26,7 @@ InvertedIndicatorDemo.metadata = {
   frameProps: {
     bgcolor: '#1c1c1c',
   },
+  creators: [require('constants/creators').siriwatknp],
   files: [
     {
       pkg: 'mui-styles',
