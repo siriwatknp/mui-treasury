@@ -48,6 +48,7 @@ TagCard.metadata = {
   frameProps: {
     bgcolor: '#e9e9e9',
   },
+  creators: [require('constants/creators').renamoo],
 };
 // hide-end
 

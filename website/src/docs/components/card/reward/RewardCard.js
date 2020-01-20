@@ -92,6 +92,7 @@ RewardCard.metadata = {
   path: 'card/reward',
   size: 'large',
   files: [],
+  creators: [require('constants/creators').siriwatknp],
 };
 // hide-end
 

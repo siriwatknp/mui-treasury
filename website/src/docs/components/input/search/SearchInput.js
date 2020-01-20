@@ -18,6 +18,7 @@ const SearchInput = () => {
 SearchInput.metadata = {
   title: 'Search',
   path: 'input/search',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     {
       pkg: 'mui-styles',

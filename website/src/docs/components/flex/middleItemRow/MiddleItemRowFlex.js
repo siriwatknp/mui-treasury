@@ -39,6 +39,7 @@ MiddleItemRowFlex.metadata = {
   description: 'The middle item is always centered',
   path: 'flex/middleItemRow',
   size: 'large',
+  creators: [require('constants/creators').siriwatknp],
   files: [{ pkg: 'mui-styles', path: 'flex/row/rowFlex.styles.js' }],
   relates: [],
 };

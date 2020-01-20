@@ -29,6 +29,7 @@ const FlexyTag = () => {
 FlexyTag.metadata = {
   title: 'Flexy',
   path: 'tag/flexy',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     {
       pkg: 'mui-styles',

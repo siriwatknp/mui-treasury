@@ -21,6 +21,7 @@ WideCardMedia.metadata = {
   title: 'Wide',
   description: 'size 16:9',
   path: 'cardMedia/wide',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     {
       pkg: 'mui-styles',

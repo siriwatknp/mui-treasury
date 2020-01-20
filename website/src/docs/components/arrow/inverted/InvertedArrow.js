@@ -3,6 +3,7 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
+
 import { useInvertedArrowStyles } from '@mui-treasury/styles/arrow/inverted';
 import { usePushingGutterStyles } from '@mui-treasury/styles/gutter/pushing';
 
@@ -34,6 +35,7 @@ InvertedArrow.metadata = {
   frameProps: {
     bgcolor: '#1c1c1c',
   },
+  creators: [require('constants/creators').siriwatknp],
   files: [
     {
       pkg: 'mui-styles',

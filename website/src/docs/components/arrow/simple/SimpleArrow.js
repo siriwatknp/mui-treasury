@@ -31,6 +31,7 @@ SimpleArrow.defaultProps = {};
 SimpleArrow.metadata = {
   title: 'Simple',
   path: 'arrow/simple',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     {
       pkg: 'mui-styles',

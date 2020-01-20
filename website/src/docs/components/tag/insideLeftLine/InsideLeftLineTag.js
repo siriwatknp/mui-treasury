@@ -34,6 +34,7 @@ InsideLeftLineTag.metadata = {
   frameProps: {
     bgcolor: '#f5f5f5',
   },
+  creators: [require('constants/creators').siriwatknp],
   files: [],
 };
 // hide-end

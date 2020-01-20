@@ -22,6 +22,7 @@ const GithubButton = () => {
 GithubButton.metadata = {
   title: 'Github',
   path: 'button/github',
+  creators: [require('constants/creators').siriwatknp],
   files: [{ pkg: 'mui-styles', path: 'button/github/githubBtn.styles.js' }],
 };
 // hide-end

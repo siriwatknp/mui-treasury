@@ -59,10 +59,11 @@ const PricingCard = () => {
 PricingCard.metadata = {
   title: 'Pricing',
   description: 'For showing information about pricing packages',
+  path: 'card/pricing',
   frameProps: {
     bgcolor: '#e9e9e9',
   },
-  path: 'card/pricing',
+  creators: [],
   files: [],
 };
 // hide-end

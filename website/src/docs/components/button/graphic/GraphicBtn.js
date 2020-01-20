@@ -20,6 +20,7 @@ const GraphicBtn = () => {
 GraphicBtn.metadata = {
   title: 'Graphic',
   path: 'button/graphic',
+  creators: [require('constants/creators').siriwatknp],
   files: [{ pkg: 'mui-styles', path: 'button/graphic/graphicBtn.styles.js' }],
 };
 // hide-end

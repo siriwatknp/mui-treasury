@@ -71,6 +71,7 @@ const BootstrapTextField = () => {
 BootstrapTextField.metadata = {
   title: 'Bootstrap',
   path: 'textField/bootstrap',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     {
       pkg: 'mui-styles',

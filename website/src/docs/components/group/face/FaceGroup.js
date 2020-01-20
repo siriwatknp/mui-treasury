@@ -21,6 +21,7 @@ FaceGroupDemo.defaultProps = {};
 FaceGroupDemo.metadata = {
   title: 'Face',
   path: 'group/face',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     {
       pkg: 'mui-components',

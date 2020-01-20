@@ -31,6 +31,7 @@ NestedRowFlex.metadata = {
   description: 'Every nested child is middle-aligned',
   path: 'flex/nestedRow',
   size: 'large',
+  creators: [require('constants/creators').siriwatknp],
   files: [{ pkg: 'mui-styles', path: 'flex/row/rowFlex.styles.js' }],
   relates: [],
 };

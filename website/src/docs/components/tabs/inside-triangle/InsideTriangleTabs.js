@@ -25,6 +25,7 @@ InsideTriangleTabs.metadata = {
   title: 'Inside Triangle',
   path: 'tabs/inside-triangle',
   size: 'large',
+  creators: [require('constants/creators').punnSiriphanthong],
   files: [
     {
       pkg: 'mui-styles',

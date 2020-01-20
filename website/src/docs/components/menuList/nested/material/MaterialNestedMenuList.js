@@ -161,6 +161,7 @@ const getMenus = () => [
 MaterialNestedMenuList.metadata = {
   title: 'Material Nested',
   path: 'menuList/nested/material',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     { pkg: 'mui-components', path: 'menuList/nested/NestedMenuList.js' },
     {

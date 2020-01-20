@@ -20,6 +20,7 @@ const DotIndicatorDemo = () => {
 DotIndicatorDemo.metadata = {
   title: 'Dot',
   path: 'indicator/dot',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     {
       pkg: 'mui-styles',

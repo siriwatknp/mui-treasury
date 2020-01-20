@@ -24,6 +24,7 @@ const MaterialInfoMenuItemDemo = () => {
 MaterialInfoMenuItemDemo.metadata = {
   title: 'Material Info',
   path: 'menuItem/info/material',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     {
       pkg: 'mui-styles',

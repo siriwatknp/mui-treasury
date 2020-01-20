@@ -26,6 +26,7 @@ PlainTabs.metadata = {
   title: 'Plain',
   path: 'tabs/plain',
   size: 'large',
+  creators: [require('constants/creators').siriwatknp],
   files: [{ pkg: 'mui-styles', path: 'tabs/plain/plainTabs.styles.js' }],
 };
 // hide-end

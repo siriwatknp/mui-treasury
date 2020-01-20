@@ -24,6 +24,7 @@ const GatsbyInfoMenuItem = () => {
 GatsbyInfoMenuItem.metadata = {
   title: 'Gatsby Info',
   path: 'menuItem/info/gatsby',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     {
       pkg: 'mui-styles',

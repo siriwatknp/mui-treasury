@@ -90,6 +90,7 @@ KanbanCard.metadata = {
   frameProps: {
     bgcolor: 'rgb(245, 248, 250)',
   },
+  creators: [require('constants/creators').siriwatknp],
   files: [],
 };
 // hide-end

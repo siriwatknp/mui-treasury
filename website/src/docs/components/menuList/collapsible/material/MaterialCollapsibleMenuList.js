@@ -110,6 +110,7 @@ const subMenus2 = [
 MaterialCollapsibleMenuList.metadata = {
   title: 'Material Collapse',
   path: 'menuList/collapse/material',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     {
       pkg: 'mui-styles',

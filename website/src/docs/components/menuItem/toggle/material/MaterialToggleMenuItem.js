@@ -43,6 +43,7 @@ const MaterialToggleMenuItemDemo = () => {
 MaterialToggleMenuItemDemo.metadata = {
   title: 'Material Toggle',
   path: 'menuItem/toggle/material',
+  creators: [require('constants/creators').siriwatknp],
   files: [
     {
       pkg: 'mui-styles',
