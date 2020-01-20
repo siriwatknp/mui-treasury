@@ -17346,9 +17346,9 @@ react-router@5.1.2:
     tiny-warning "^1.0.0"
 
 react-scroll@^1.7.14:
-  version "1.7.15"
-  resolved "https://registry.yarnpkg.com/react-scroll/-/react-scroll-1.7.15.tgz#90da4a1e953e620ae37be42747e0835b473158db"
-  integrity sha512-4AtQ/4GZmTW7CIQrVQhLvt3pMkITDvyXz6F3DZS3IOoux3fmccBRUR/x9wORupLbuKFlzOX1CoceDMpMgY7Tig==
+  version "1.7.16"
+  resolved "https://registry.yarnpkg.com/react-scroll/-/react-scroll-1.7.16.tgz#814f0b97ed171aad1f27e45dad16a8444817fec8"
+  integrity sha512-f4M5AdL+3cw3MJ7c/T0hPMY2iHCeQLDXV13lRanAFQ6JIt9xyAdHCpTH9mLUQt9SQh4pRarD+Qc7KhU6qMx3Yg==
   dependencies:
     lodash.throttle "^4.1.1"
     prop-types "^15.5.8"
