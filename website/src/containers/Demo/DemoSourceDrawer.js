@@ -5,6 +5,7 @@ import { Link } from 'gatsby';
 import { makeStyles, ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import IconButton from '@material-ui/core/IconButton';
 import Close from '@material-ui/icons/Close';
 import Fade from '@material-ui/core/Fade';
@@ -19,6 +20,7 @@ import { isExternalLink } from 'utils/functions';
 
 import atoms from 'components/atoms';
 import organisms from 'components/organisms';
+import BrowserIFrame from 'components/layout/BrowserIFrame';
 
 import { Consumer } from './context';
 
@@ -38,6 +40,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
   drawerBackdrop: {
     backgroundColor: '#fff',
+    cursor: 'alias',
   },
   closeButton: {
     position: 'fixed',
@@ -57,21 +60,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }));
 
-const sizeConfig = {
-  medium: {},
-  large: {
-    minHeight: 400,
-    minWidth: 600,
-    px: 8,
-  },
-  huge: {
-    minHeight: 400,
-    minWidth: 700,
-    maxWidth: 800,
-  },
-};
-
-const DemoSourceDrawer = ({ title, frameProps }) => {
+const DemoSourceDrawer = ({ title }) => {
   const classes = useStyles();
   const renderList = items => {
     if (!items || !items.length) return null;
@@ -111,12 +100,7 @@ const DemoSourceDrawer = ({ title, frameProps }) => {
       {({ Component, setComponent }) => {
         const { metadata = {}, raw_js: rawSource } = Component;
         const isOpen = Object.keys(metadata).length > 0;
-        const {
-          files = [],
-          relates = [],
-          size = 'medium',
-          frameProps: finalFrameProps = {},
-        } = metadata;
+        const { files = [], relates = [], frameProps } = metadata;
         const mappedFiles = docGen().mapAllFiles(files);
         return (
           <>
@@ -147,7 +131,7 @@ const DemoSourceDrawer = ({ title, frameProps }) => {
                 </h2>
               </Box>
               <Box px={3}>{renderList(relates, 'Relates')}</Box>
-              <Box width={{ xs: '100vw', sm: 500, md: 700 }}>
+              <Box width={{ xs: '100vw', sm: 500, md: 680 }}>
                 <ModuleProjector
                   files={mappedFiles}
                   demoSource={
@@ -169,25 +153,32 @@ const DemoSourceDrawer = ({ title, frameProps }) => {
                       position={'fixed'}
                       top={'50%'}
                       left={'calc(50% - 350px)'}
-                      minWidth={400}
-                      maxWidth={400}
-                      minHeight={300}
                       display={'flex'}
                       justifyContent={'center'}
                       alignItems={'center'}
                       borderRadius={4}
                       bgcolor={'common.white'}
                       zIndex={1500}
-                      {...frameProps}
-                      {...sizeConfig[size]}
-                      {...finalFrameProps}
                       css={{
-                        transform: 'translate(-50%, -50%)',
-                        ...frameProps.css,
-                        ...finalFrameProps.css,
+                        transform: 'scale(0.75) translate(-50%, -50%)',
+                        transformOrigin: '0 0',
                       }}
                     >
-                      {!isEmpty(Component) && <Component />}
+                      {!isEmpty(Component) && (
+                        <BrowserIFrame
+                          includes={['xs', 'xs-h', 'sm', 'md']}
+                          initialKey={'md'}
+                        >
+                          <Box
+                            px={{ xs: 1, sm: 1, md: 2 }}
+                            py={3}
+                            {...frameProps}
+                          >
+                            <CssBaseline />
+                            <Component />
+                          </Box>
+                        </BrowserIFrame>
+                      )}
                     </Box>
                   </Fade>
                 </Portal>

@@ -85,16 +85,20 @@ const ShowcaseWidget = ({
         )}
       </Box>
       <Box
+        mt={2}
+        mb={1}
+        mx={{ xs: 0, sm: 2 }}
         p={2}
-        pb={1}
+        borderRadius={{ xs: 0, sm: 8 }}
+        bgcolor={'grey.50'}
         flex={'auto'}
         display={'flex'}
         justifyContent={'center'}
         alignItems={'center'}
         minHeight={{
-          xs: 200,
-          sm: 240,
-          md: 280,
+          xs: 200 - 24,
+          sm: 240 - 24,
+          md: 280 - 24,
         }}
         {...frameProps}
         className={cx('Showcase-frame', frameProps.className)}

@@ -77,7 +77,7 @@ EngagementCard.metadata = {
     },
     {
       pkg: 'mui-styles',
-      path: 'cardContent/text01/textCardContent01.styles.js',
+      path: 'cardContent/text01/text01CardContent.styles.js',
     },
     {
       pkg: 'mui-components',

@@ -60,7 +60,7 @@ NewsCard.metadata = {
   path: 'card/news',
   creators: [require('constants/creators').siriwatknp],
   files: [
-    { pkg: 'mui-styles', path: 'shadow/bouncy/bouncy.styles.js' },
+    { pkg: 'mui-styles', path: 'shadow/bouncy/bouncyShadow.styles.js' },
     {
       pkg: 'mui-styles',
       path: 'cardMedia/wide/wideCardMedia.styles.js',
@@ -71,7 +71,7 @@ NewsCard.metadata = {
     },
     {
       pkg: 'mui-styles',
-      path: 'cardContent/text01/textCardContent01.styles.js',
+      path: 'cardContent/text01/text01CardContent.styles.js',
     },
   ],
 };

@@ -69,7 +69,7 @@ const PageFooter = () => {
     }
   `);
   return (
-    <Box bgcolor={'grey.100'} py={'3.5rem'}>
+    <Box bgcolor={'grey.50'} py={'3.5rem'}>
       <Container maxWidth={'md'}>
         <Grid container spacing={4} justify={'center'}>
           <Grid item>

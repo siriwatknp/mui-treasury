@@ -58,7 +58,7 @@ ProjectCard.metadata = {
     },
     {
       pkg: 'mui-styles',
-      path: 'cardContent/text03/textCardContent03.styles.js',
+      path: 'cardContent/text03/text03CardContent.styles.js',
     },
   ],
   creators: [require('constants/creators').siriwatknp],
