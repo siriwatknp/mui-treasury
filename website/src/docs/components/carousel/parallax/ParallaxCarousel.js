@@ -227,7 +227,7 @@ ParallaxCarousel.metadata = {
   frameProps: {
     width: '100%',
     maxWidth: 840,
-    m: 'auto',
+    mx: 'auto',
   },
   creators: [require('constants/creators').siriwatknp],
   files: [

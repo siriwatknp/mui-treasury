@@ -16,6 +16,7 @@ const DefaultSection = ({
     <Grid container>
       <Grid item xs={12} sm={5} md={5}>
         <ShowcaseWidget
+          overflow={'auto'}
           {...ShowcaseWidgetProps}
           border={'1px solid #e9e9e9'}
           mr={'-1px'}
