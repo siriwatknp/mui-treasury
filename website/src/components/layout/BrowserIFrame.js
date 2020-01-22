@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'clsx';
 import Color from 'color';
 import dropRight from 'lodash/dropRight';
@@ -43,6 +44,7 @@ const useStyles = makeStyles(() => ({
 
 const devices = [
   {
+    key: 'xs',
     name: 'mobile',
     icon: <StayCurrentPortrait />,
     width: 375,
@@ -50,6 +52,7 @@ const devices = [
     screen: 'xs',
   },
   {
+    key: 'xs-h',
     name: 'mobile horizontal',
     icon: <StayCurrentLandscape />,
     width: 600,
@@ -57,6 +60,7 @@ const devices = [
     screen: 'sm',
   },
   {
+    key: 'sm',
     name: 'tablet',
     icon: <TabletAndroid />,
     width: 768,
@@ -64,6 +68,7 @@ const devices = [
     screen: 'sm',
   },
   {
+    key: 'md',
     name: 'tablet horizontal',
     icon: <Tablet />,
     width: 1024,
@@ -71,6 +76,7 @@ const devices = [
     screen: 'md',
   },
   {
+    key: 'lg',
     name: 'laptop',
     icon: <LaptopMac />,
     width: 1360,
@@ -78,6 +84,7 @@ const devices = [
     screen: 'lg',
   },
   {
+    key: 'xl',
     name: 'monitor',
     icon: <DesktopMac />,
     width: 1680,
@@ -86,12 +93,12 @@ const devices = [
   },
 ];
 
-const BrowserIFrame = ({ children }) => {
+const BrowserIFrame = ({ children, includes, initialKey }) => {
   const { accent, dark } = useQueryParams();
   const isXs = useMediaQuery('(max-width: 767px)');
   const styles = useStyles({ dark, accent });
   const [current, setCurrent] = React.useState(
-    devices.find(({ name }) => name === 'laptop')
+    devices.find(({ key }) => key === initialKey)
   );
   const gutterBorderStyles = useGutterBorderedGridStyles({
     height: '40%',
@@ -105,21 +112,23 @@ const BrowserIFrame = ({ children }) => {
       overflow={'auto'}
     >
       <Grid container justify={'center'}>
-        {(isXs ? dropRight(devices) : devices).map(item => (
-          <Grid key={item.name} item classes={gutterBorderStyles}>
-            <Box px={1}>
-              <IconButton
-                className={cx(
-                  styles.btn,
-                  item.name === current.name && styles.activeBtn
-                )}
-                onClick={() => setCurrent(item)}
-              >
-                {item.icon}
-              </IconButton>
-            </Box>
-          </Grid>
-        ))}
+        {(isXs ? dropRight(devices) : devices)
+          .filter(({ key }) => includes.includes(key))
+          .map(item => (
+            <Grid key={item.name} item classes={gutterBorderStyles}>
+              <Box px={1}>
+                <IconButton
+                  className={cx(
+                    styles.btn,
+                    item.name === current.name && styles.activeBtn
+                  )}
+                  onClick={() => setCurrent(item)}
+                >
+                  {item.icon}
+                </IconButton>
+              </Box>
+            </Grid>
+          ))}
       </Grid>
       <Box pb={1} textAlign={'center'}>
         <Box
@@ -148,6 +157,18 @@ const BrowserIFrame = ({ children }) => {
       </Browser>
     </Box>
   );
+};
+
+BrowserIFrame.propTypes = {
+  children: PropTypes.node.isRequired,
+  includes: PropTypes.arrayOf(
+    PropTypes.oneOf(['xs', 'xs-h', 'sm', 'md', 'lg', 'xl'])
+  ),
+  initialKey: PropTypes.oneOf(['xs', 'xs-h', 'sm', 'md', 'lg', 'xl']),
+};
+BrowserIFrame.defaultProps = {
+  includes: ['xs', 'xs-h', 'sm', 'md', 'lg', 'xl'],
+  initialKey: 'lg',
 };
 
 export default BrowserIFrame;

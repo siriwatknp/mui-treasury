@@ -26,6 +26,11 @@ export const tabItemStyles = ({ palette }) => {
         zIndex: -1,
       },
     }),
+    selected: {
+      '&$root': {
+        opacity: 0.99,
+      },
+    },
     wrapper: ({ labelColor = defaultLabelColor }) => ({
       color: labelColor,
     }),

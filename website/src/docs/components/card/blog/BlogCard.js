@@ -102,9 +102,6 @@ BlogCard.metadata = {
   description: 'Personal Blog',
   path: 'card/blog',
   size: 'large',
-  frameProps: {
-    my: 3,
-  },
   creators: [require('constants/creators').siriwatknp],
   files: [
     { pkg: 'mui-styles', path: 'shadow/over/overShadow.styles.js' },
