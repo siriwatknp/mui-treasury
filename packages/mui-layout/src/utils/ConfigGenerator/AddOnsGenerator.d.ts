@@ -4,9 +4,10 @@ import { ConfigSetter } from '../createSet';
 export interface AddOnsConfig {
   autoCollapseDisabled: boolean;
   collapsedBreakpoint: Breakpoint;
+  heightAdjustmentDisabled: boolean;
   secondaryAutoCollapseDisabled: boolean;
   secondaryCollapseBreakpoint: Breakpoint;
-  heightAdjustmentDisabled: boolean;
+  secondaryHeightAdjustmentDisabled?: boolean;
   insetHiddenBreakpoint?: Breakpoint;
   insetHiddenDisabled?: boolean;
   secondaryInsetHiddenBreakpoint?: Breakpoint;

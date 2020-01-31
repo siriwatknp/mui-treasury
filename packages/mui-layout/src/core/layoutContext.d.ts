@@ -2,7 +2,7 @@ import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
 import { ComponentType, Consumer, Context, ReactNode } from 'react';
 import { Config } from '../utils/ConfigGenerator/ConfigGenerator';
 
-export interface ILayoutContext extends Config<true> {
+export interface ILayoutContext extends ReturnType<Config<true>['get']> {
   screen?: Breakpoint;
   opened: boolean;
   setOpened: (value: boolean) => void;
