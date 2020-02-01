@@ -1,5 +1,5 @@
-import ScreenConfigGenerator from '../utils/ScreenConfigGenerator';
+import { ScreenConfig } from '../utils/ScreenConfigGenerator/ScreenConfigGenerator';
 
-declare const defaultLayoutPreset: ReturnType<ReturnType<typeof ScreenConfigGenerator>['get']>;
+declare const defaultLayoutPreset: ReturnType<ScreenConfig['get']>;
 
 export default defaultLayoutPreset;

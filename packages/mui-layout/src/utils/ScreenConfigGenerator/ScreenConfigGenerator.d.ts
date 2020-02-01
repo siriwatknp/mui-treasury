@@ -1,17 +1,15 @@
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
-import ConfigGenerator from '../ConfigGenerator';
-import AddOnsGenerator from '../ConfigGenerator/AddOnsGenerator';
-
-export type ConfigUpdater = (config: ReturnType<typeof ConfigGenerator>) => void;
+import { AddOns } from '../ConfigGenerator/AddOnsGenerator';
+import { Config } from '../ConfigGenerator/ConfigGenerator';
 
 export interface ScreenConfig {
-  addOns: ReturnType<typeof AddOnsGenerator>;
+  addOns: AddOns;
   get: () => (
-    & ReturnType<ReturnType<typeof AddOnsGenerator>['get']>
-    & Record<Breakpoint, ReturnType<ReturnType<typeof ConfigGenerator>['get']> | undefined>
+    & ReturnType<AddOns['get']>
+    & Record<Breakpoint, ReturnType<Config['get']> | undefined>
   );
-  add(screen: Breakpoint, updater: ConfigUpdater): this;
-  adjust(screen: Breakpoint, updater: ConfigUpdater): this;
+  add(screen: Breakpoint, updater?: (config: Config) => void): this;
+  adjust(screen: Breakpoint, updater?: (config: Config) => void): this;
   remove(screen: Breakpoint): this;
 }
 

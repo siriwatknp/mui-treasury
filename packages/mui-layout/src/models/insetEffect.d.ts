@@ -1,13 +1,13 @@
 import { CSSProperties } from 'react';
 import { ILayoutContext } from '../core/layoutContext';
 import { InsetBehavior } from '../utils/ConfigGenerator/BehaviorGenerator';
-import createWidth from './width';
+import { Width } from './width';
 
 interface IInsetEffect {
-  getWidthObj(): ReturnType<typeof createWidth>;
+  getWidthObj(): Width;
   getHeaderZIndexStyle: () => void;
   getMarginStyle: (behavior?: { insetBehavior: InsetBehavior }) => Pick<CSSProperties, 'marginLeft' | 'marginRight'> | undefined;
-  getWidthStyle(): ReturnType<ReturnType<this['getWidthObj']>['getStyle']>;
+  getWidthStyle(): ReturnType<Width['getStyle']>;
 }
 
 declare const insetEffect: (ctx?: ILayoutContext) => IInsetEffect;

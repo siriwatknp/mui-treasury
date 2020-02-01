@@ -1,3 +1,3 @@
-declare const toValidCssValue: (value: number | string) => string;
+declare const toValidCssValue: (value: number | string) => number | string;
 
 export default toValidCssValue;

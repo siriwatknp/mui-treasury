@@ -1,5 +1,7 @@
-import BehaviorGenerator from './BehaviorGenerator';
+import { Behavior } from './BehaviorGenerator';
 
-declare const FooterGenerator: () => ReturnType<ReturnType<typeof BehaviorGenerator>['initFooter']>;
+export type Footer = ReturnType<Behavior['initFooter']>;
+
+declare const FooterGenerator: () => Footer;
 
 export default FooterGenerator;

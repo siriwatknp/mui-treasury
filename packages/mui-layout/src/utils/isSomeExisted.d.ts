@@ -1,3 +1,6 @@
-declare const isSomeExisted: (source?: Record<string, any>, target?: string[]) => boolean;
+declare const isSomeExisted: (
+  source?: object,
+  target?: (string | number)[]
+) => boolean;
 
 export default isSomeExisted;

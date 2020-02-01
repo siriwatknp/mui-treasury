@@ -13,8 +13,8 @@ export interface SidebarConfig {
   inset: boolean;
   insetProps: {
     position: CSSProperties['position'];
-    top: number;
-    drawerAnchor: DrawerProps['anchor'];
+    top?: number;
+    drawerAnchor?: DrawerProps['anchor'];
     hiddenBreakpoint?: Breakpoint;
   },
 }
@@ -32,6 +32,8 @@ export interface Sidebar {
   setInsetProps: ConfigSetter<SidebarConfig, 'insetProps', this>;
   set(value: SidebarConfig): this;
 }
+
+export type SecondarySidebar = ReturnType<Sidebar['initSecondary']>;
 
 declare const SidebarGenerator: () => Sidebar;
 

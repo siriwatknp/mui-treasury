@@ -1,7 +1,7 @@
-import ConfigGenerator from './ConfigGenerator';
+import { Config } from './ConfigGenerator/ConfigGenerator';
 
-type Config = ReturnType<ReturnType<typeof ConfigGenerator>['get']>;
-
-declare const getDefaultScreenConfig: (configs?: Partial<Config>) => Config;
+declare const getDefaultScreenConfig: (
+  configs?: Partial<ReturnType<Config['get']>>
+) => ReturnType<Config['get']>;
 
 export default getDefaultScreenConfig;

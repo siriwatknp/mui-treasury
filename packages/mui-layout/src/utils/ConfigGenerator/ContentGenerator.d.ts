@@ -1,5 +1,7 @@
-import BehaviorGenerator from './BehaviorGenerator';
+import { Behavior } from './BehaviorGenerator';
 
-declare const ContentGenerator: () => ReturnType<ReturnType<typeof BehaviorGenerator>['initContent']>;
+export type Content = ReturnType<Behavior['initContent']>;
+
+declare const ContentGenerator: () => Content;
 
 export default ContentGenerator;

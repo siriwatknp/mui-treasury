@@ -1,10 +1,10 @@
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
-import ConfigGenerator from './ConfigGenerator';
-import ScreenConfigGenerator from './ScreenConfigGenerator';
+import { Config } from './ConfigGenerator/ConfigGenerator';
+import { ScreenConfig } from './ScreenConfigGenerator/ScreenConfigGenerator';
 
-type Configs = ReturnType<ReturnType<typeof ScreenConfigGenerator>['get']>;
-type Config = ReturnType<ReturnType<typeof ConfigGenerator>['get']>;
-
-declare const selectConfigByScreen: (config: Configs, screen: Breakpoint) => Config;
+declare const selectConfigByScreen: (
+  config: ReturnType<ScreenConfig['get']>,
+  screen: Breakpoint
+) => ReturnType<Config['get']>;
 
 export default selectConfigByScreen;

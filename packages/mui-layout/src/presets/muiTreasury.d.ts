@@ -1,5 +1,5 @@
-import ScreenConfigGenerator from '../utils/ScreenConfigGenerator';
+import { ScreenConfig } from '../utils/ScreenConfigGenerator/ScreenConfigGenerator';
 
-declare const muiTreasuryPreset: ReturnType<ReturnType<typeof ScreenConfigGenerator>['get']>;
+declare const muiTreasuryPreset: ReturnType<ScreenConfig['get']>;
 
 export default muiTreasuryPreset;

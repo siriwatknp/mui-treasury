@@ -1,20 +1,27 @@
-import AddOnsGenerator from './AddOnsGenerator';
-import ContainerGenerator from './ContainerGenerator';
-import ContentGenerator from './ContentGenerator';
-import FooterGenerator from './FooterGenerator';
-import HeaderGenerator from './HeaderGenerator';
-import SidebarGenerator from './SidebarGenerator';
+import { AddOns } from './AddOnsGenerator';
+import { Container } from './ContainerGenerator';
+import { Content } from './ContentGenerator';
+import { Footer } from './FooterGenerator';
+import { Header } from './HeaderGenerator';
+import { SecondarySidebar, Sidebar } from './SidebarGenerator';
 
 export interface Config<I extends boolean = false> {
   debug(props: any): void;
-  get: () => (I extends true ? ReturnType<ReturnType<typeof AddOnsGenerator>['get']> : {}) & {
-    sidebar: ReturnType<ReturnType<typeof SidebarGenerator>['get']>;
-    secondarySidebar: ReturnType<ReturnType<ReturnType<typeof SidebarGenerator>['initSecondary']>['get']>;
-    container: ReturnType<ReturnType<typeof ContainerGenerator>['get']>;
-    content: ReturnType<ReturnType<typeof ContentGenerator>['get']>;
-    header: ReturnType<ReturnType<typeof HeaderGenerator>['get']>;
-    footer: ReturnType<ReturnType<typeof FooterGenerator>['get']>;
-  };
+  get: () => (
+    & (
+      I extends true
+        ? ReturnType<AddOns['get']>
+        : {}
+    )
+    & {
+      sidebar: ReturnType<Sidebar['get']>;
+      secondarySidebar: ReturnType<SecondarySidebar['get']>;
+      container?: ReturnType<Container['get']>;
+      content: ReturnType<Content['get']>;
+      header: ReturnType<Header['get']>;
+      footer: ReturnType<Footer['get']>;
+    }
+  );
   setPrimarySidebarToInset(): this;
   setPrimarySidebarToNonInset(): this;
   setSecondarySidebarToInset(): this;
@@ -23,13 +30,13 @@ export interface Config<I extends boolean = false> {
   switchPrimarySidebarAnchor(): this;
   switchSecondarySidebarAnchor(): this;
   switchAllSidebarAnchors(): this;
-  addOns: ReturnType<typeof AddOnsGenerator>,
-  primarySidebar: ReturnType<typeof SidebarGenerator>;
-  secondarySidebar: ReturnType<typeof SidebarGenerator>;
-  content: ReturnType<typeof ContentGenerator>;
-  container: ReturnType<typeof ContainerGenerator>;
-  header: ReturnType<typeof HeaderGenerator>;
-  footer: ReturnType<typeof FooterGenerator>;
+  addOns: AddOns;
+  primarySidebar: Sidebar;
+  secondarySidebar: SecondarySidebar;
+  content: Content;
+  container: Container;
+  header: Header;
+  footer: Footer;
 }
 
 declare const ConfigGenerator: <I extends boolean = false>(options?: { addOnsIncluded?: I }) => Config<I>;

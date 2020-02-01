@@ -31,4 +31,4 @@ export interface Behavior<S extends object | undefined = undefined> {
 
 declare const BehaviorGenerator: () => Behavior;
 
-export default BehaviorGenerator
+export default BehaviorGenerator;

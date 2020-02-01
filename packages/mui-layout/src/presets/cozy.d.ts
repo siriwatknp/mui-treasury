@@ -1,5 +1,5 @@
-import ScreenConfigGenerator from '../utils/ScreenConfigGenerator';
+import { ScreenConfig } from '../utils/ScreenConfigGenerator/ScreenConfigGenerator';
 
-declare const cozyLayoutPreset: ReturnType<ReturnType<typeof ScreenConfigGenerator>['get']>;
+declare const cozyLayoutPreset: ReturnType<ScreenConfig['get']>;
 
 export default cozyLayoutPreset;
