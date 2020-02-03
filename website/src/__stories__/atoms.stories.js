@@ -8,6 +8,7 @@ import FileCopy from '@material-ui/icons/FileCopy';
 import createContainer, { StylesProvider } from './helpers/containerDecorator';
 
 import Copier from 'components/atoms/Copier';
+import StatusChip from 'components/atoms/StatusChip';
 
 const useIconStyles = makeStyles(() => ({
   root: {
@@ -31,4 +32,5 @@ storiesOf('Treasury|atoms', module)
         </Copier>
       )}
     </StylesProvider>
-  ));
+  ))
+  .add('StatusChip', () => <StatusChip />);

@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import Tooltip from '@material-ui/core/Tooltip';
+import StatusChip from 'components/atoms/StatusChip';
 
 const useStyles = makeStyles(({ palette }) => ({
   hiddenName: {
@@ -59,6 +60,7 @@ const ShowcaseWidget = ({
   onClickCode,
   frameProps,
   className,
+  status,
   ...props
 }) => {
   const styles = useStyles();
@@ -70,19 +72,28 @@ const ShowcaseWidget = ({
       {...props}
       className={cx('Showcase-root', className)}
     >
-      <Box px={2} py={1}>
-        <h3 className={styles.hiddenName} id={anchor}>
-          {name}
-        </h3>
-        <a href={`#${anchor}`} className={styles.name} aria-label={'Anchor'}>
-          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <b>{name}</b> <Link />
-        </a>
-        {description && (
-          <Typography variant={'body2'} color={'textSecondary'}>
-            {description}
-          </Typography>
-        )}
+      <Box
+        px={2}
+        py={1}
+        display={'flex'}
+        alignItems={'flex-end'}
+        justifyContent={'space-between'}
+      >
+        <div>
+          <h3 className={styles.hiddenName} id={anchor}>
+            {name}
+          </h3>
+          <a href={`#${anchor}`} className={styles.name} aria-label={'Anchor'}>
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+            <b>{name}</b> <Link />
+          </a>
+          {description && (
+            <Typography variant={'body2'} color={'textSecondary'}>
+              {description}
+            </Typography>
+          )}
+        </div>
+        {status === 'new' && <StatusChip />}
       </Box>
       <Box
         mt={2}
@@ -162,6 +173,7 @@ ShowcaseWidget.propTypes = {
       link: PropTypes.string,
     })
   ),
+  status: PropTypes.oneOf(['', 'new']),
   children: PropTypes.node,
   description: PropTypes.string,
   onClickCode: PropTypes.func,
@@ -173,6 +185,7 @@ ShowcaseWidget.defaultProps = {
   className: '',
   anchor: undefined,
   creators: [],
+  status: undefined,
   name: '',
   description: '',
   onClickCode: () => {},

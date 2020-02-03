@@ -17,6 +17,14 @@ export const toComponents = bundledObject => {
   return components;
 };
 
+const orderByDate = items => {
+  return items.sort((a, b) => {
+    const dateB = new Date(b.metadata?.createdAt || '1/1/1970');
+    const dateA = new Date(a.metadata?.createdAt || '1/1/1970');
+    return dateB.getTime() - dateA.getTime();
+  });
+};
+
 export const splitDefault = bundledObject => {
   const components = toComponents(bundledObject);
   const [defaultComponent, customComponents] = partition(
@@ -25,7 +33,7 @@ export const splitDefault = bundledObject => {
   );
   return [
     !defaultComponent.length ? FakeComponent : defaultComponent[0],
-    customComponents,
+    orderByDate(customComponents),
   ];
 };
 
