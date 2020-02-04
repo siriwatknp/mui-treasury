@@ -17598,12 +17598,11 @@ react-swipeable-views-utils@^0.13.7:
     react-swipeable-views-core "^0.13.7"
 
 react-swipeable-views@^0.13.3:
-  version "0.13.7"
-  resolved "https://registry.yarnpkg.com/react-swipeable-views/-/react-swipeable-views-0.13.7.tgz#377f024885c180010b0975cc2748fd9e3510dee0"
-  integrity sha512-+A/ouEQkQVyX/naMWy8rK7eiu4FZyYcCm79OsFLEUloUp+Lt6bjG61tZaXNwPb7ybA7VAR72asY7GoOIJY0qMg==
+  version "0.13.8"
+  resolved "https://registry.yarnpkg.com/react-swipeable-views/-/react-swipeable-views-0.13.8.tgz#342ca09d88a1875b4e729e59988f6f5bc4cce97b"
+  integrity sha512-9XsHYNoSyNwmhnjgkS8/JSH2nVmQYzSRBUK8jx7lD0Cs5dEWDxbSHXbMOc1PpqbNkiGsjoR72dn4wVWDgJ0itw==
   dependencies:
     "@babel/runtime" "7.0.0"
-    dom-helpers "^3.2.1"
     prop-types "^15.5.4"
     react-swipeable-views-core "^0.13.7"
     react-swipeable-views-utils "^0.13.7"
