@@ -7086,22 +7086,6 @@ css-selector-tokenizer@^0.7.0:
     fastparse "^1.1.1"
     regexpu-core "^1.0.0"
 
-css-tree@1.0.0-alpha.29:
-  version "1.0.0-alpha.29"
-  resolved "https://registry.yarnpkg.com/css-tree/-/css-tree-1.0.0-alpha.29.tgz#3fa9d4ef3142cbd1c301e7664c1f352bd82f5a39"
-  integrity sha512-sRNb1XydwkW9IOci6iB2xmy8IGCj6r/fr+JWitvJ2JxQRPzN3T4AGGVWCMlVmVwM1gtgALJRmGIlWv5ppnGGkg==
-  dependencies:
-    mdn-data "~1.1.0"
-    source-map "^0.5.3"
-
-css-tree@1.0.0-alpha.33:
-  version "1.0.0-alpha.33"
-  resolved "https://registry.yarnpkg.com/css-tree/-/css-tree-1.0.0-alpha.33.tgz#970e20e5a91f7a378ddd0fc58d0b6c8d4f3be93e"
-  integrity sha512-SPt57bh5nQnpsTBsx/IXbO14sRc9xXu5MtMAVuo0BaQQmyf0NupNPPSoMaqiAF5tDFafYsTkfeH4Q/HCKXkg4w==
-  dependencies:
-    mdn-data "2.0.4"
-    source-map "^0.5.3"
-
 css-tree@1.0.0-alpha.37:
   version "1.0.0-alpha.37"
   resolved "https://registry.yarnpkg.com/css-tree/-/css-tree-1.0.0-alpha.37.tgz#98bebd62c4c1d9f960ec340cf9f7522e30709a22"
@@ -7225,13 +7209,6 @@ cssnano@^4.0.5, cssnano@^4.1.10:
     cssnano-preset-default "^4.0.7"
     is-resolvable "^1.0.0"
     postcss "^7.0.0"
-
-csso@^3.5.1:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/csso/-/csso-3.5.1.tgz#7b9eb8be61628973c1b261e169d2f024008e758b"
-  integrity sha512-vrqULLffYU1Q2tLdJvaCYbONStnfkfimRxXNaGjxMldI0C7JPBC4rB1RyjhfdZ4m1frm8pM9uRPKH3d2knZ8gg==
-  dependencies:
-    css-tree "1.0.0-alpha.29"
 
 csso@^4.0.2:
   version "4.0.2"
@@ -9637,10 +9614,10 @@ gatsby-cli@^2.8.22:
     ink "^2.6.0"
     ink-spinner "^3.0.1"
 
-gatsby-core-utils@^1.0.24, gatsby-core-utils@^1.0.25:
-  version "1.0.25"
-  resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-1.0.25.tgz#8cc8e76a79063c43ac06d9b72100b7c6f1fb5b60"
-  integrity sha512-Pz5xueweH9qv5TIW7wwlTxI/CbyzkiE5xvgLicbHbU+InH+lCNt4VuvGP1gQcIRuHMCIbuVKSiVCC7jnxEbtrA==
+gatsby-core-utils@^1.0.24, gatsby-core-utils@^1.0.25, gatsby-core-utils@^1.0.28:
+  version "1.0.28"
+  resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-1.0.28.tgz#aa66e49cdcc1892e7817a32fdd806cf5e16ea309"
+  integrity sha512-XWKR9Rk2v6iQkmBsTLCdI3adyC9PCh1s5BQ85nlGitlgcVVQq98jZlQdcy0v9mJOrTuce0uf5RqkeGDWFLekoA==
   dependencies:
     ci-info "2.0.0"
     node-object-hash "^2.0.0"
@@ -9765,15 +9742,15 @@ gatsby-plugin-remove-trailing-slashes@^2.1.7:
     "@babel/runtime" "^7.7.6"
 
 gatsby-plugin-sharp@^2.2.11:
-  version "2.3.7"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.3.7.tgz#31e767804fa70b07c9ddb554249dd2d24c42cba8"
-  integrity sha512-dXPjalm+V94oTo6PktOuJPgoTM+iP+WGPtlvif7+5gL/GxplnQ+M2piOM+ttKF2b/BdnN0Rkfq3ZWeaXwow9KQ==
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.4.5.tgz#9c05a426f43546c61936b773b1844d920eac1252"
+  integrity sha512-O2FZcUd78aKNR7Hbommrbc5igW32U2MnenA/Oc55sklFUF+I1fu4N6zMoHfh7sVtWCqZEbQiNO310Zl8jstD5g==
   dependencies:
     "@babel/runtime" "^7.7.6"
     async "^2.6.3"
     bluebird "^3.7.2"
     fs-extra "^8.1.0"
-    gatsby-core-utils "^1.0.24"
+    gatsby-core-utils "^1.0.28"
     got "^8.3.2"
     imagemin "^6.1.0"
     imagemin-mozjpeg "^8.0.0"
@@ -9781,7 +9758,6 @@ gatsby-plugin-sharp@^2.2.11:
     imagemin-webp "^5.1.0"
     lodash "^4.17.15"
     mini-svg-data-uri "^1.1.3"
-    p-defer "^3.0.0"
     potrace "^2.1.2"
     probe-image-size "^4.1.1"
     progress "^2.0.3"
@@ -14216,11 +14192,6 @@ mdn-data@2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/mdn-data/-/mdn-data-2.0.4.tgz#699b3c38ac6f1d728091a64650b65d388502fd5b"
   integrity sha512-iV3XNKw06j5Q7mi6h+9vbx23Tv7JkjEVgKHW4pimwyDGWm0OIQntJJ+u1C6mg6mK1EaTv42XQ7w76yuzH7M2cA==
-
-mdn-data@~1.1.0:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/mdn-data/-/mdn-data-1.1.4.tgz#50b5d4ffc4575276573c4eedb8780812a8419f01"
-  integrity sha512-FSYbp3lyKjyj3E7fMl6rYvUdX0FBXaluGqlFoYESWQlyUTq8R+wp0rkFxoYFqZlHCvsUXGjyJmLQSnXToYhOSA==
 
 mdurl@^1.0.1:
   version "1.0.1"
@@ -19232,7 +19203,7 @@ source-map@0.7.3, source-map@^0.7.3:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.7.3.tgz#5302f8169031735226544092e64981f751750383"
   integrity sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ==
 
-source-map@^0.5.0, source-map@^0.5.3, source-map@^0.5.6, source-map@^0.5.7:
+source-map@^0.5.0, source-map@^0.5.6, source-map@^0.5.7:
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
   integrity sha1-igOdLRAh0i0eoUyA2OpGi6LvP8w=
@@ -19910,7 +19881,7 @@ svg-parser@^2.0.0:
   resolved "https://registry.yarnpkg.com/svg-parser/-/svg-parser-2.0.2.tgz#d134cc396fa2681dc64f518330784e98bd801ec8"
   integrity sha512-1gtApepKFweigFZj3sGO8KT8LvVZK8io146EzXrpVuWCDAbISz/yMucco3hWTkpZNoPabM+dnMOpy6Swue68Zg==
 
-svgo@1.3.2, svgo@^1.0.0:
+svgo@1.3.2, svgo@^1.0.0, svgo@^1.2.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/svgo/-/svgo-1.3.2.tgz#b6dc511c063346c9e415b81e43401145b96d4167"
   integrity sha512-yhy/sQYxR5BkC98CY7o31VGsg014AKLEPxdfhora76l36hD9Rdy5NZA/Ocn6yayNPgSamYdtX2rFJdcv07AYVw==
@@ -19921,25 +19892,6 @@ svgo@1.3.2, svgo@^1.0.0:
     css-select-base-adapter "^0.1.1"
     css-tree "1.0.0-alpha.37"
     csso "^4.0.2"
-    js-yaml "^3.13.1"
-    mkdirp "~0.5.1"
-    object.values "^1.1.0"
-    sax "~1.2.4"
-    stable "^0.1.8"
-    unquote "~1.1.1"
-    util.promisify "~1.0.0"
-
-svgo@^1.2.2:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/svgo/-/svgo-1.3.0.tgz#bae51ba95ded9a33a36b7c46ce9c359ae9154313"
-  integrity sha512-MLfUA6O+qauLDbym+mMZgtXCGRfIxyQoeH6IKVcFslyODEe/ElJNwr0FohQ3xG4C6HK6bk3KYPPXwHVJk3V5NQ==
-  dependencies:
-    chalk "^2.4.1"
-    coa "^2.0.2"
-    css-select "^2.0.0"
-    css-select-base-adapter "^0.1.1"
-    css-tree "1.0.0-alpha.33"
-    csso "^3.5.1"
     js-yaml "^3.13.1"
     mkdirp "~0.5.1"
     object.values "^1.1.0"
