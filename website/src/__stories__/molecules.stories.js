@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { text, boolean } from '@storybook/addon-knobs';
+import { text, boolean, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import TreeView from '@material-ui/lab/TreeView';
 import createContainer, { StylesProvider } from './helpers/containerDecorator';
@@ -16,7 +16,11 @@ storiesOf('Treasury|molecules', module)
   .add('ShowcaseWidget', () => (
     <ShowcaseWidget
       name={'Button'}
-      creators={[{ name: 'A' }, { face: '', name: 'siriwatkbnp', link: 'https://google.co.th' }]}
+      status={select('status', ['new', ''], 'new')}
+      creators={[
+        { name: 'A' },
+        { face: '', name: 'siriwatkbnp', link: 'https://google.co.th' },
+      ]}
       onClickCode={action('code-clicked')}
       description={'A great inspiration from pinterest'}
     />

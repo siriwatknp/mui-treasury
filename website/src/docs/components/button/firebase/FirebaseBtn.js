@@ -20,6 +20,7 @@ const FirebaseButton = () => {
 FirebaseButton.metadata = {
   title: 'Firebase',
   path: 'button/firebase',
+  createdAt: '2/2/2020',
   creators: [require('constants/creators').siriwatknp],
   files: [{ pkg: 'mui-styles', path: 'button/firebase/firebaseBtn.styles.js' }],
 };
