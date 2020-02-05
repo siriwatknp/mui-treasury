@@ -31,9 +31,13 @@ export const splitDefault = bundledObject => {
     components,
     o => o.metadata.isDefault
   );
+  const [datedComponent, undatedComponents] = partition(
+    customComponents,
+    o => !!o.metadata.createdAt
+  );
   return [
     !defaultComponent.length ? FakeComponent : defaultComponent[0],
-    orderByDate(customComponents),
+    [...orderByDate(datedComponent), ...undatedComponents],
   ];
 };
 
