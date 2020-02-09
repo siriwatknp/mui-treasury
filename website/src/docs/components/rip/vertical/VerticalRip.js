@@ -1,6 +1,7 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
 import { useVerticalRipStyles } from '@mui-treasury/styles/rip/vertical';
+import VerticalTicketRip from '@mui-treasury/components/rip/verticalTicket';
 
 const VerticalRip = () => {
   const styles = useVerticalRipStyles({
@@ -10,12 +11,7 @@ const VerticalRip = () => {
   });
   return (
     <Box height={200} display={'flex'} position={'relative'}>
-      <div className={styles.left}>
-        <div className={styles.tear} />
-      </div>
-      <div className={styles.right}>
-        <div className={styles.tear} />
-      </div>
+      <VerticalTicketRip classes={styles} />
     </Box>
   );
 };
