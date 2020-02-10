@@ -14,11 +14,5 @@ module.exports = [
     name: 'name',
     required: true,
     message: 'variant(camelCase) of the component eg. basic',
-  },
-  {
-    type: 'input',
-    name: 'by',
-    required: true,
-    message: 'your name',
   }
 ];

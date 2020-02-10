@@ -13,6 +13,7 @@ import {
   sidebarStyles,
   headerStyles,
 } from '@mui-treasury/layout';
+import Box from '@material-ui/core/Box';
 import Toolbar from '@material-ui/core/Toolbar';
 import PageHeader from 'components/layout/PageHeader';
 import PageFooter from 'components/layout/PageFooter';
@@ -44,7 +45,6 @@ const PageLayout = ({ menus, children, getOpenKeys, hamburgerHidden }) => {
   const headStyles = useHeaderStyles();
   const sbStyles = useSidebarStyles();
   const footerStyles = useFooterStyles();
-  console.log('bgColor', bgColor);
   return (
     <>
       <Header className={styles.header}>
@@ -70,6 +70,7 @@ const PageLayout = ({ menus, children, getOpenKeys, hamburgerHidden }) => {
       <Sidebar>
         <div className={sbStyles.container}>
           <ComponentMenuList menus={menus} getOpenKeys={getOpenKeys} />
+          <Box height={100} />
         </div>
         <CollapseBtn className={sbStyles.collapseBtn}>
           <CollapseIcon />
