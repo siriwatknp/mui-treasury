@@ -50,7 +50,6 @@ config.footer.setPersistentBehavior('flexible');
 // config.content.setSecondaryPersistentBehavior('flexible');
 // config.footer.setPersistentBehavior('flexible');
 // config.footer.setSecondaryPersistentBehavior('flexible');
-config.debug();
 
 const LayoutTest = () => {
   return (

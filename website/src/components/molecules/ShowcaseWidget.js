@@ -120,9 +120,8 @@ const ShowcaseWidget = ({
         <Box ml={1}>
           <AvatarGroup>
             {creators.map(c => (
-              <Tooltip title={c.name}>
+              <Tooltip key={c.name} title={c.name}>
                 <Avatar
-                  key={c.name}
                   {...(typeof c.face === 'string'
                     ? { alt: c.name, src: c.face }
                     : { children: c.name.substr(0, 1) })}
