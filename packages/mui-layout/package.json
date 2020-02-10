@@ -1,6 +1,6 @@
 {
   "name": "@mui-treasury/layout",
-  "version": "3.3.2",
+  "version": "3.3.3",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "description": "Supercharge your site with instant-layout, 100% compatible with material-ui",
   "keywords": [
@@ -19,7 +19,7 @@
   },
   "homepage": "https://mui-treasury.com/layout",
   "dependencies": {
-    "@mui-treasury/styling": "^0.2.7",
+    "@mui-treasury/styling": "^0.2.8",
     "lodash.debounce": "^4.0.8",
     "lodash.get": "^4.4.2"
   },
