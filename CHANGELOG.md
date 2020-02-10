@@ -10,15 +10,48 @@
 > - :bulb: [Refactor]
 > - :lipstick: [Style]
 
+## _10 Feb 2020_
+
+### website@1.9.0
+
+#### :bug: Bug Fix
+
+- [#423](https://github.com/siriwatknp/mui-treasury/pull/423) fix: 🐛 add gatsby-plugin-catch-links for markdown ([@siriwatknp](https://github.com/siriwatknp))
+
+#### :rocket: New Feature
+
+- [#429](https://github.com/siriwatknp/mui-treasury/pull/429) feat: 🎸 add responsive view to components ([@siriwatknp](https://github.com/siriwatknp))
+- [#421](https://github.com/siriwatknp/mui-treasury/pull/421) feat: 🎸 able to add creator to each component ([@siriwatknp](https://github.com/siriwatknp))
+- [#452](https://github.com/siriwatknp/mui-treasury/pull/452) feat: 🎸 AppleTabs ([@siriwatknp](https://github.com/siriwatknp))
+
+### @mui-treasury/styles@0.4.0 (2020-02-10)
+
+#### :rocket: New Feature
+
+- text04CardContent.styles.js
+- fourThreeCardMedia.styles.js
+
+### `Patch`
+
+- @mui-treasury/styling@0.2.8
+- @mui-treasury/components@0.3.13
+- @mui-treasury/mockup@0.4.2
+- @mui-treasury/layout@3.3.3
+
+#### Committers: 2
+
+- Siriwat Kunaporn ([@siriwatknp](https://github.com/siriwatknp))
+- [@dependabot-preview[bot]](https://github.com/apps/dependabot-preview)
+
 ## _19 Jan 2020_
 
 ### @mui-treasury/layout@3.3.2
 
-* [#402](https://github.com/siriwatknp/mui-treasury/pull/402) fix: 🐛 empty config error and add more tests to cover ([@siriwatknp](https://github.com/siriwatknp))
+- [#402](https://github.com/siriwatknp/mui-treasury/pull/402) fix: 🐛 empty config error and add more tests to cover ([@siriwatknp](https://github.com/siriwatknp))
 
-* [#394](https://github.com/siriwatknp/mui-treasury/pull/394) [layout] added sidebar check into useInsetBreakpoint hook ([@tokdaniel](https://github.com/tokdaniel))
+- [#394](https://github.com/siriwatknp/mui-treasury/pull/394) [layout] added sidebar check into useInsetBreakpoint hook ([@tokdaniel](https://github.com/tokdaniel))
 
-* [#375](https://github.com/siriwatknp/mui-treasury/pull/375) Fix layout persistent behavior when anchor="right" ([@siriwatknp](https://github.com/siriwatknp))
+- [#375](https://github.com/siriwatknp/mui-treasury/pull/375) Fix layout persistent behavior when anchor="right" ([@siriwatknp](https://github.com/siriwatknp))
 
 ### website@1.8.0
 
@@ -31,7 +64,7 @@
 - @mui-treasury/mockup@0.4.1
 - @mui-treasury/components@0.3.12
 - @mui-treasury/styles@0.3.6
-- @mui-treasury/utils@0.3.9 
+- @mui-treasury/utils@0.3.9
 
 #### Committers: 2
 

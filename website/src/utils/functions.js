@@ -53,3 +53,20 @@ export const getPathFileName = (path = '') => {
 export const isExternalLink = url => {
   return url.includes('http://') || url.includes('https://');
 };
+
+export const removeTextAt = (text = '', options = {}) => {
+  const { start, end } = options;
+  const startIndex = text.search(start);
+  const endIndex = text.search(end);
+  return `${text.substr(0, startIndex)}${text
+    .substr(endIndex)
+    .replace(end, '')}`;
+};
+
+export const removeRepLinkBreaks = text =>
+  text.replace(/(?<=\n)\n+(?=\n)/g, '');
+
+export const prettifySource = text =>
+  removeRepLinkBreaks(
+    removeTextAt(text, { start: /\/\/.*hide-start/, end: /\/\/.*hide-end/ })
+  );
