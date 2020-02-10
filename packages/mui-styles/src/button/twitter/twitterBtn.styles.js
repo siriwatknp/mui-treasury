@@ -24,6 +24,9 @@ export default ({ shadows, palette }) => ({
   contained: {
     minHeight: 30,
     boxShadow: shadows[0],
+    '&:hover': {
+      boxShadow: shadows[0],
+    },
     '&:active': {
       boxShadow: shadows[0],
     },

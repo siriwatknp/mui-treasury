@@ -28,6 +28,7 @@ export default ({ spacing, palette }) => ({
       backgroundImage: 'linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%)',
       backgroundPosition: '-0.5em',
       borderColor: 'rgba(27,31,35,.35)',
+      boxShadow: 'none',
     },
     '&:active': {
       backgroundColor: '#e9ecef',

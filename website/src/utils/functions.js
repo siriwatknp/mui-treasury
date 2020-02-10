@@ -25,19 +25,23 @@ const orderByDate = items => {
   });
 };
 
+export const orderComponents = components => {
+  const [datedComponent, undatedComponents] = partition(
+    components,
+    o => !!o.metadata.createdAt
+  );
+  return [...orderByDate(datedComponent), ...undatedComponents];
+};
+
 export const splitDefault = bundledObject => {
   const components = toComponents(bundledObject);
   const [defaultComponent, customComponents] = partition(
     components,
     o => o.metadata.isDefault
   );
-  const [datedComponent, undatedComponents] = partition(
-    customComponents,
-    o => !!o.metadata.createdAt
-  );
   return [
     !defaultComponent.length ? FakeComponent : defaultComponent[0],
-    [...orderByDate(datedComponent), ...undatedComponents],
+    customComponents,
   ];
 };
 
