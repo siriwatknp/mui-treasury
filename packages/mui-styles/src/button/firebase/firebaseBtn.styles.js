@@ -17,6 +17,7 @@ export default ({ shadows, palette }) => ({
     color: palette.common.white,
     '&:hover': {
       backgroundColor: '#0388ca',
+      boxShadow: 'none',
       // Reset on touch devices, it doesn't add specificity
       '@media (hover: none)': {
         backgroundColor: '#0388ca',

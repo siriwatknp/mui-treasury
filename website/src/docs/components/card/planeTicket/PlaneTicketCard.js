@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/styles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import AirplanemodeActive from '@material-ui/icons/AirplanemodeActive';
+import VerticalTicketRip from '@mui-treasury/components/rip/verticalTicket';
 import { useVerticalRipStyles } from '@mui-treasury/styles/rip/vertical';
 
 const mainColor = '#003399';
@@ -117,16 +118,17 @@ const PlaneTicketCard = () => {
         <CardMedia
           className={styles.media}
           image={
-            'https://www.clipartwiki.com/clipimg/detail/14-142290_united-airlines-jet-transparent-airplane-clipart-logo.png'
+            'https://dejpknyizje2n.cloudfront.net/marketplace/products/yin-yang-two-fighting-dragons-sticker-1538772130.3390164.png'
           }
         />
       </div>
-      <div className={cx(ripStyles.left, styles.moveLeft)}>
-        <div className={ripStyles.tear} />
-      </div>
-      <div className={cx(ripStyles.right, styles.moveRight)}>
-        <div className={ripStyles.tear} />
-      </div>
+      <VerticalTicketRip
+        classes={{
+          ...ripStyles,
+          left: cx(ripStyles.left, styles.moveLeft),
+          right: cx(ripStyles.right, styles.moveRight),
+        }}
+      />
       <div className={cx(styles.right, styles.moveRight)}>
         <div className={styles.label}>
           <h2 className={styles.heading}>BEK</h2>

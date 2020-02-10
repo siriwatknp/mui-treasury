@@ -21,6 +21,7 @@ const createPseudoElm = size => ({
   borderLeftColor: 'transparent',
   borderRightColor: 'transparent',
 });
+const min = (val, number = 4) => (val < number ? number : val);
 
 export default ({ palette }) => {
   return {
@@ -42,7 +43,11 @@ export default ({ palette }) => {
         borderTopColor: getThemeColor(palette, leftColor),
         borderBottomColor: 'transparent',
       },
-      '& > $tear': {
+      '& $sheet': {
+        right: 0,
+        backgroundColor: leftColor,
+      },
+      '& $tear': {
         right: 0,
         transform: 'translateX(50%)',
       },
@@ -65,14 +70,27 @@ export default ({ palette }) => {
         borderTopColor: getThemeColor(palette, rightColor),
         borderBottomColor: 'transparent',
       },
-      '& > $tear': {
+      '& $sheet': {
+        left: 0,
+        backgroundColor: rightColor,
+      },
+      '& $tear': {
         left: 0,
         transform: 'translateX(-50%)',
       },
     }),
+    sheet: ({ size = initialSize }) => ({
+      width: size,
+      height: '100%',
+      position: 'absolute',
+      overflow: 'hidden',
+    }),
     tear: ({ size = initialSize, tearColor = '#000' }) => ({
       position: 'absolute',
-      borderRight: `${size / 6}px dotted ${getThemeColor(palette, tearColor)}`,
+      borderRight: `${min(size / 6)}px dotted ${getThemeColor(
+        palette,
+        tearColor
+      )}`,
       top: 0,
       height: '100%',
     }),

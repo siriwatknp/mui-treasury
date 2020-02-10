@@ -1,6 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { useMetadata } from 'containers/Demo/context';
+import { orderComponents } from 'utils/functions';
 
 const getStatusByDate = createdAt => {
   const d = new Date(createdAt);
@@ -24,7 +25,7 @@ const GridShowcase = ({
   const { setComponent } = useMetadata();
   return (
     <Grid container classes={gridStyles}>
-      {components.map(Component => {
+      {orderComponents(components).map(Component => {
         const {
           title: name = Component.name,
           frameProps,
