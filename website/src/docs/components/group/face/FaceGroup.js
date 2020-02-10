@@ -25,11 +25,11 @@ FaceGroupDemo.metadata = {
   files: [
     {
       pkg: 'mui-components',
-      path: 'group/Faces.js',
+      path: 'group/face/FaceGroup.js',
     },
     {
       pkg: 'mui-styles',
-      path: 'group/faceGroup.styles.js',
+      path: 'group/face/faceGroup.styles.js',
     },
   ],
   relates: [],

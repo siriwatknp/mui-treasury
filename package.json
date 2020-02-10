@@ -67,6 +67,7 @@
     "fs-extra": "^8.1.0",
     "glob": "^7.1.4",
     "husky": "^4.2.1",
+    "hygen": "^5.0.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
     "lerna": "^3.19.0",
