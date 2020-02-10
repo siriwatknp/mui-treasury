@@ -16,7 +16,7 @@ import Drawer from '@material-ui/core/Drawer';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import SourceFile from 'containers/SourceFile';
 import docGen from 'utils/docGen';
-import { isExternalLink } from 'utils/functions';
+import { isExternalLink, prettifySource } from 'utils/functions';
 
 import atoms from 'components/atoms';
 import organisms from 'components/organisms';
@@ -138,7 +138,7 @@ const DemoSourceDrawer = ({ title }) => {
                     <SourceFile
                       match={metadata.path}
                       fileName={'Demo.js'}
-                      source={rawSource}
+                      source={prettifySource(rawSource)}
                     />
                   }
                 />
