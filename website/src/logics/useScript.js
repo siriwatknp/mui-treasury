@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react';
 
-const defaultTarget = typeof document !== 'undefined' ? document : null;
 let cachedScripts = [];
-function useScript(src, options = {}) {
-  const { target = defaultTarget } = options;
+function useScript(src) {
   // Keeping track of script loaded and error state
   const [state, setState] = useState({
     loaded: false,
-    error: false,
+    error: false
   });
 
   useEffect(
@@ -17,7 +15,7 @@ function useScript(src, options = {}) {
       if (cachedScripts.includes(src)) {
         setState({
           loaded: true,
-          error: false,
+          error: false
         });
       } else {
         cachedScripts.push(src);
@@ -31,7 +29,7 @@ function useScript(src, options = {}) {
         const onScriptLoad = () => {
           setState({
             loaded: true,
-            error: false,
+            error: false
           });
         };
 
@@ -43,7 +41,7 @@ function useScript(src, options = {}) {
 
           setState({
             loaded: true,
-            error: true,
+            error: true
           });
         };
 
@@ -51,9 +49,7 @@ function useScript(src, options = {}) {
         script.addEventListener('error', onScriptError);
 
         // Add script to document body
-        if (target) {
-          target.appendChild(script);
-        }
+        document.body.appendChild(script);
 
         // Remove event listeners on cleanup
         return () => {
@@ -62,7 +58,7 @@ function useScript(src, options = {}) {
         };
       }
     },
-    [target, src] // Only re-run effect if script src changes
+    [src] // Only re-run effect if script src changes
   );
 
   return [state.loaded, state.error];
