@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 // import { Link } from 'gatsby';
 import { makeStyles } from '@material-ui/styles';
 import Box from '@material-ui/core/Box';
+import CarbonAds from '../atoms/CarbonAds';
 // import Button from '@material-ui/core/Button';
 // import { usePushingGutter } from '@mui-treasury/styles';
 
@@ -39,6 +40,7 @@ const ComponentHeading = ({ title, description }) => {
       {/*  <Button {...commonButtonProps}>Customization</Button> */}
       {/*  <Button {...commonButtonProps}>Playground</Button> */}
       {/* </div> */}
+      <CarbonAds />
     </Box>
   );
 };
