@@ -21,6 +21,7 @@ module.exports = {
           docs: './src/docs',
           components: './src/components',
           containers: './src/containers',
+          logics: './src/logics',
           '@mui-treasury/components': '../packages/mui-components/src',
           '@mui-treasury/utils': '../packages/mui-utils/src',
           '@mui-treasury/styling': '../packages/mui-styling/src',

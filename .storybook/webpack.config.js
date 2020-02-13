@@ -28,6 +28,7 @@ module.exports = ({ config }) => {
           components: './website/src/components',
           containers: './website/src/containers',
           utils: './website/src/utils',
+          logics: './website/src/logics',
           constants: './website/src/constants',
           '@mui-treasury/components/src': './packages/mui-components/src',
           '@mui-treasury/components': './packages/mui-components/src',
