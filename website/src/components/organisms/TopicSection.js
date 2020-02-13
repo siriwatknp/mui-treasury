@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import Box from '@material-ui/core/Box';
+import CarbonAds from '../atoms/CarbonAds';
 
 const useStyles = makeStyles(theme => {
   const { palette } = theme;
   return {
     root: {},
     topic: {
-      fontSize: 'calc(12px + 1.5vw)',
+      fontSize: 'calc(18px + 1.5vw)',
     },
     secondaryText: {
       color: palette.text.secondary,
@@ -24,6 +25,7 @@ const TopicSection = ({ title, subtitle, children }) => {
       border={'1px solid #e6f1f4'}
       py={{ xs: '2rem', sm: '3.5rem' }}
     >
+      <CarbonAds pb={{ xs: 4, sm: 6 }} />
       <Box textAlign={'center'}>
         <h2 className={classes.topic}>
           <b>{title}</b>
