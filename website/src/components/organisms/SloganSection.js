@@ -3,6 +3,7 @@ import { navigate } from 'gatsby';
 import { makeStyles } from '@material-ui/styles';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
+import CarbonAds from 'components/atoms/CarbonAds';
 
 const useStyles = makeStyles(theme => {
   const { palette, breakpoints } = theme;
@@ -73,6 +74,9 @@ const SloganSection = () => {
       >
         Get started
       </Button>
+      <Box align={'center'} pt={{ xs: 2, sm: 3 }}>
+        <CarbonAds />
+      </Box>
     </Box>
   );
 };
