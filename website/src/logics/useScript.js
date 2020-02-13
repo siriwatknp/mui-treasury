@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 
+const defaultTarget = typeof document !== 'undefined' ? document : null;
 let cachedScripts = [];
 function useScript(src, options = {}) {
-  const { target = document.body } = options;
+  const { target = defaultTarget } = options;
   // Keeping track of script loaded and error state
   const [state, setState] = useState({
     loaded: false,
