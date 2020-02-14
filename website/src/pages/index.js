@@ -141,6 +141,7 @@ const Homepage = ({ navigate }) => {
     <>
       <SloganSection />
       <TopicSection
+        adsDisplayed
         title={'Why Mui Treasury exists?'}
         subtitle={'Here is my purposes'}
       />

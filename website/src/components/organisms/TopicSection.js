@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => {
   return {
     root: {},
     topic: {
-      fontSize: 'calc(18px + 1.5vw)',
+      fontSize: 'calc(16px + 1.4vw)',
     },
     secondaryText: {
       color: palette.text.secondary,
@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => {
   };
 });
 
-const TopicSection = ({ title, subtitle, children }) => {
+const TopicSection = ({ title, subtitle, children, adsDisplayed }) => {
   const classes = useStyles();
   return (
     <Box
@@ -25,7 +25,7 @@ const TopicSection = ({ title, subtitle, children }) => {
       border={'1px solid #e6f1f4'}
       py={{ xs: '2rem', sm: '3.5rem' }}
     >
-      <CarbonAds pb={{ xs: 4, sm: 6 }} />
+      {adsDisplayed && <CarbonAds pb={{ xs: 4, sm: 6 }} />}
       <Box textAlign={'center'}>
         <h2 className={classes.topic}>
           <b>{title}</b>
@@ -41,10 +41,12 @@ TopicSection.propTypes = {
   title: PropTypes.node.isRequired,
   subtitle: PropTypes.node,
   children: PropTypes.node,
+  adsDisplayed: PropTypes.bool,
 };
 TopicSection.defaultProps = {
   subtitle: null,
   children: null,
+  adsDisplayed: false,
 };
 
 export default TopicSection;

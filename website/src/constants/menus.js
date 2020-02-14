@@ -38,12 +38,12 @@ export default {
         {
           key: 'dashboard-layout',
           label: 'Dashboard Layout',
-          to: '/layout/tutorials/dashboard-layout',
+          to: '/layout/tutorials/dashboard-layout/',
         },
         {
           key: 'blog-layout',
           label: 'Blog Layout',
-          to: '/layout/tutorials/blog-layout',
+          to: '/layout/tutorials/blog-layout/',
         },
       ],
     },
