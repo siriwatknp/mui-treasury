@@ -102,7 +102,6 @@ module.exports = {
         fonts: typography.config,
       },
     },
-    `gatsby-plugin-remove-trailing-slashes`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
