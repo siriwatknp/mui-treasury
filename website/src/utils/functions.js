@@ -64,7 +64,7 @@ export const removeTextAt = (text = '', options = {}) => {
 };
 
 export const removeRepLinkBreaks = text =>
-  text.replace(/(?<=\n)\n+(?=\n)/g, '');
+  text.replace(/\n+(?=\n{2})/g, '');
 
 export const prettifySource = text =>
   removeRepLinkBreaks(
