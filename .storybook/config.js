@@ -29,11 +29,13 @@ const ThemeDecorator = storyFn => (
 );
 
 // automatically import all files ending in *.stories.js
-const req = require.context('../website/src', true, /.stories.js$/);
+const websiteReq = require.context('../website/src', true, /.stories.js$/);
+const muiComponentsReq = require.context('../packages/mui-components/src', true, /.stories.js$/);
 function loadStories() {
   addDecorator(withKnobs);
   addDecorator(ThemeDecorator);
-  req.keys().forEach(filename => req(filename));
+  websiteReq.keys().forEach(filename => websiteReq(filename));
+  muiComponentsReq.keys().forEach(filename => muiComponentsReq(filename));
 }
 
 // Gatsby's Link overrides:
