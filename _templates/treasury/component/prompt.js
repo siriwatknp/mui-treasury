@@ -7,18 +7,12 @@ module.exports = [
     type: 'input',
     name: 'category',
     required: true,
-    message: 'category(camelCase) eg. textField',
+    message: 'category(camelCase) eg. button',
   },
   {
     type: 'input',
     name: 'name',
     required: true,
-    message: 'variant(camelCase) of the component eg. fullWidth',
-  },
-  {
-    type: 'input',
-    name: 'by',
-    required: true,
-    message: 'your name',
+    message: 'variant(camelCase) of the component eg. basic',
   }
 ];
