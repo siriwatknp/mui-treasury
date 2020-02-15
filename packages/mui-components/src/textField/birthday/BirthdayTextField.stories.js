@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import cx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Birthday from './BirthdayTextField';
 import { useBootstrapInputStyles } from '@mui-treasury/styles/input/bootstrap';

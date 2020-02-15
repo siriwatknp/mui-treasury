@@ -40,6 +40,7 @@ export const useNextFocus = (isValid, nextInputName) => {
         input.select();
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isValid]);
   return setFocused;
 };
@@ -88,22 +89,23 @@ export const BirthdayProvider = ({
     }
   };
   const [state, dispatch] = useReducer(reducer, initialState);
-  const changeDay = useCallback(
-    value => dispatch({ type: TYPES.CHANGE_DAY, value }),
-    []
-  );
-  const changeMonth = useCallback(
-    value => dispatch({ type: TYPES.CHANGE_MONTH, value }),
-    []
-  );
-  const changeYear = useCallback(
-    value => dispatch({ type: TYPES.CHANGE_YEAR, value }),
-    []
-  );
+  const changeDay = useCallback(value => {
+    if (state.day !== value) dispatch({ type: TYPES.CHANGE_DAY, value });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const changeMonth = useCallback(value => {
+    if (state.month !== value) dispatch({ type: TYPES.CHANGE_MONTH, value });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const changeYear = useCallback(value => {
+    if (state.year !== value) dispatch({ type: TYPES.CHANGE_YEAR, value });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const reset = useCallback(() => dispatch({ type: TYPES.RESET }), []);
   const clear = useCallback(() => dispatch({ type: TYPES.CLEAR }), []);
   useEffect(() => {
     if (onChange) {
+      console.log('run');
       onChange(state.value, state);
     }
   }, [state, onChange]);

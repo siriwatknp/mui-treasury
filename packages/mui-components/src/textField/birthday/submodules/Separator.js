@@ -6,8 +6,8 @@ const useStyles = makeStyles(
   ({ palette }) => ({
     root: {
       display: 'inline-flex',
-      paddingLeft: 2,
-      paddingRight: 8,
+      paddingLeft: 4,
+      paddingRight: 4,
       color: palette.text.disabled,
     },
   }),

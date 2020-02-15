@@ -12,7 +12,8 @@ export default ({
   updaterName,
   customOnBlur,
 }) => {
-  const Component = ({
+  const InputComponent = ({
+    component: Component,
     classes,
     className,
     inputProps,
@@ -28,7 +29,7 @@ export default ({
     const { [fieldName]: state, [updaterName]: updater } = useBirthday();
     const setFocused = useNextFocus(state.length === maxLength, nextFocus);
     return (
-      <InputBase
+      <Component
         type={'tel'}
         inputProps={{ maxLength, name, ...inputProps }}
         {...props}
@@ -52,8 +53,9 @@ export default ({
       />
     );
   };
-  Component.displayName = displayName;
-  Component.propTypes = {
+  InputComponent.displayName = displayName;
+  InputComponent.propTypes = {
+    component: PropTypes.elementType,
     classes: PropTypes.shape({}),
     className: PropTypes.string,
     inputProps: PropTypes.shape({}),
@@ -64,7 +66,8 @@ export default ({
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
   };
-  Component.defaultProps = {
+  InputComponent.defaultProps = {
+    component: InputBase,
     classes: undefined,
     className: undefined,
     inputProps: undefined,
@@ -75,5 +78,5 @@ export default ({
     onFocus: undefined,
     onBlur: undefined,
   };
-  return Component;
+  return InputComponent;
 };

@@ -21,6 +21,7 @@ const useStyles = makeStyles(
 const BirthdayTextField = ({
   id,
   label,
+  error,
   children,
   InputLabelProps,
   ...props
@@ -28,7 +29,7 @@ const BirthdayTextField = ({
   const styles = useStyles(props);
   return (
     <BirthdayProvider {...props}>
-      <InputLabel htmlFor={id} shrink {...InputLabelProps}>
+      <InputLabel htmlFor={id} error={error} shrink {...InputLabelProps}>
         {label}
       </InputLabel>
       <BirthdayConsumer>
@@ -48,6 +49,7 @@ const BirthdayTextField = ({
 
 BirthdayTextField.propTypes = {
   id: PropTypes.string,
+  error: PropTypes.bool,
   label: PropTypes.node,
   children: PropTypes.node,
   InputLabelProps: PropTypes.shape({}),
@@ -56,15 +58,18 @@ BirthdayTextField.propTypes = {
     month: PropTypes.string,
     year: PropTypes.string,
   }),
+  onChange: PropTypes.func,
   value: PropTypes.string,
   toValue: PropTypes.func,
 };
 BirthdayTextField.defaultProps = {
   id: undefined,
+  error: false,
   label: undefined,
   children: null,
   InputLabelProps: undefined,
   display: undefined,
+  onChange: undefined,
   value: undefined,
   toValue: undefined,
 };

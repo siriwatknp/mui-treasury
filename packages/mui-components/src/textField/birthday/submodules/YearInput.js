@@ -1,11 +1,12 @@
 import createInput from './createInput';
 import { makeStyles } from '@material-ui/core/styles';
-import { prefixZero } from '../BirthdayContext';
 
 const useStyles = makeStyles(
   () => ({
     root: {
-      width: 44,
+      width: 48,
+      paddingLeft: 2,
+      paddingRight: 2,
     },
   }),
   { name: 'YearInput' }
@@ -14,11 +15,6 @@ const useStyles = makeStyles(
 export default createInput({
   displayName: 'YearInput',
   useStyles,
-  customOnBlur: (e, { zeroPrefixDisabled, updater }) => {
-    if (!zeroPrefixDisabled) {
-      updater(prefixZero(e.target.value));
-    }
-  },
   fieldName: 'year',
   updaterName: 'changeYear',
   maxLength: 4,

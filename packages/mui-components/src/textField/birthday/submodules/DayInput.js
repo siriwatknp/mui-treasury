@@ -5,7 +5,9 @@ import { prefixZero } from '../BirthdayContext';
 const useStyles = makeStyles(
   () => ({
     root: {
-      width: 32,
+      width: 36,
+      paddingLeft: 2,
+      paddingRight: 2,
     },
   }),
   { name: 'DayInput' }
