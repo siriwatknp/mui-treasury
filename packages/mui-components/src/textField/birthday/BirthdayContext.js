@@ -1,7 +1,26 @@
-import React, { useState, useReducer, useCallback, useEffect } from 'react';
+import React, {
+  useState,
+  useReducer,
+  useCallback,
+  useEffect,
+  useRef,
+} from 'react';
 import PropTypes from 'prop-types';
+import isEqual from 'dequal';
 
 const BirthdayContext = React.createContext();
+
+const useDeepMemo = deps => {
+  const ref = useRef();
+  if (!isEqual(ref.current, deps)) {
+    ref.current = deps;
+  }
+  return ref.current;
+};
+
+const useDeepEffect = (effect, deps) => {
+  useEffect(effect, useDeepMemo(deps));
+};
 
 const TYPES = {
   CHANGE_DAY: 'CHANGE_DAY',
@@ -89,25 +108,15 @@ export const BirthdayProvider = ({
     }
   };
   const [state, dispatch] = useReducer(reducer, initialState);
-  const changeDay = useCallback(value => {
-    if (state.day !== value) dispatch({ type: TYPES.CHANGE_DAY, value });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  const changeMonth = useCallback(value => {
-    if (state.month !== value) dispatch({ type: TYPES.CHANGE_MONTH, value });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  const changeYear = useCallback(value => {
-    if (state.year !== value) dispatch({ type: TYPES.CHANGE_YEAR, value });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const changeDay = day => dispatch({ type: TYPES.CHANGE_DAY, value: day });
+  const changeMonth = month =>
+    dispatch({ type: TYPES.CHANGE_MONTH, value: month });
+  const changeYear = year => dispatch({ type: TYPES.CHANGE_YEAR, value: year });
   const reset = useCallback(() => dispatch({ type: TYPES.RESET }), []);
   const clear = useCallback(() => dispatch({ type: TYPES.CLEAR }), []);
-  useEffect(() => {
-    if (onChange) {
-      console.log('run');
-      onChange(state.value, state);
-    }
+  useDeepEffect(() => {
+    // eslint-disable-next-line no-unused-expressions
+    onChange?.(state.value, state);
   }, [state, onChange]);
   return (
     <BirthdayContext.Provider
