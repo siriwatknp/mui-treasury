@@ -12,6 +12,14 @@
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.0"
   },
+  "jest": {
+    "transform": {
+      "\\.(ts|tsx)?$": "babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "/^((?!node_modules/@mui-treasury/layout$).)*$/"
+    ]
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
