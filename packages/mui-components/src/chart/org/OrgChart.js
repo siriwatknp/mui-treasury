@@ -83,11 +83,12 @@ OrgChart.propTypes = {
   treeData: PropTypes.oneOfType([
     PropTypes.shape({}),
     PropTypes.arrayOf(PropTypes.shape({})),
-  ]).isRequired,
+  ]),
   renderContent: PropTypes.func,
   useStyles: PropTypes.func,
 };
 OrgChart.defaultProps = {
+  treeData: undefined,
   renderContent: item => <Avatar {...item} />,
   useStyles: undefined,
 };
