@@ -7,6 +7,7 @@ import { customComponents as cardHeaders } from 'docs/components/cardHeader';
 import { customComponents as cardMedia } from 'docs/components/cardMedia';
 import { customComponents as carousels } from 'docs/components/carousel';
 import { customComponents as chatMsgs } from 'docs/components/chatMsg';
+import { customComponents as charts } from 'docs/components/chart';
 import { customComponents as flexs } from 'docs/components/flex';
 import { customComponents as grids } from 'docs/components/grid';
 import { customComponents as groups } from 'docs/components/group';
@@ -195,6 +196,12 @@ export default {
           to: '/components/card-media',
         },
         {
+          key: 'chart',
+          label: 'Chart',
+          total: charts.length,
+          to: '/components/chart',
+        },
+        {
           key: 'chat-msg',
           label: 'Chat Message',
           total: chatMsgs.length,
@@ -227,13 +234,13 @@ export default {
         {
           key: 'input',
           label: 'Input',
-          total: indicators.length,
+          total: inputs.length,
           to: '/components/input',
         },
         {
           key: 'indicator',
           label: 'Indicator',
-          total: inputs.length,
+          total: indicators.length,
           to: '/components/indicator',
         },
         {

@@ -108,6 +108,16 @@ BirthdayTextField.metadata = {
   description: 'Works well for date form',
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Sat Feb 15 2020',
+  files: [
+    { pkg: 'mui-components', path: 'textField/birthday/BirthdayTextField.js' },
+    { pkg: 'mui-components', path: 'textField/birthday/BirthdayContext.js' },
+    { pkg: 'mui-components', path: 'textField/birthday/submodules/createInput.js' },
+    { pkg: 'mui-components', path: 'textField/birthday/submodules/DayInput.js' },
+    { pkg: 'mui-components', path: 'textField/birthday/submodules/MonthInput.js' },
+    { pkg: 'mui-components', path: 'textField/birthday/submodules/YearInput.js' },
+    { pkg: 'mui-components', path: 'textField/birthday/submodules/Separator.js' },
+    { pkg: 'mui-components', path: 'textField/birthday/BirthdayTextField.test.js' },
+  ]
 };
 // hide-end
 

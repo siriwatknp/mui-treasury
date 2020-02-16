@@ -10,6 +10,26 @@
 > - :bulb: [Refactor]
 > - :lipstick: [Style]
 
+## _16 Feb 2020_
+
+### @mui-treasury/components@0.4.0
+
+#### :rocket: New Feature
+
+- [#482](https://github.com/siriwatknp/mui-treasury/pull/482) [New] Component - OrgChart ([@siriwatknp](https://github.com/siriwatknp))
+- [#478](https://github.com/siriwatknp/mui-treasury/pull/478) [New] Component - BirthdayTextField ([@siriwatknp](https://github.com/siriwatknp))
+
+### website@1.15.0 
+
+#### :bug: Bug Fix
+
+- [#472](https://github.com/siriwatknp/mui-treasury/pull/472) fix: 🐛 add babel-jest to transform @mui-treasury/layout ([@siriwatknp](https://github.com/siriwatknp))
+- [#461](https://github.com/siriwatknp/mui-treasury/pull/461) fix: 🐛 remove hide section in source ([@siriwatknp](https://github.com/siriwatknp))
+
+#### Committers: 1
+
+- Siriwat Kunaporn ([@siriwatknp](https://github.com/siriwatknp))
+
 ## _10 Feb 2020_
 
 ### website@1.9.0
