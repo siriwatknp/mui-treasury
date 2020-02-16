@@ -227,13 +227,13 @@ export default {
         {
           key: 'input',
           label: 'Input',
-          total: indicators.length,
+          total: inputs.length,
           to: '/components/input',
         },
         {
           key: 'indicator',
           label: 'Indicator',
-          total: inputs.length,
+          total: indicators.length,
           to: '/components/indicator',
         },
         {
