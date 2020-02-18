@@ -1,14 +1,21 @@
 import { blueGrey } from '@material-ui/core/colors';
 
+const defaultLength = 16;
+const defaultGutter = 12;
+const defaultOutline = `1px solid ${blueGrey[100]}`;
+const createTipStyle = () => ({
+  height: ({ length = defaultLength }) => length,
+  top: ({ length = defaultLength }) => -length,
+  outline: ({ outline = defaultOutline }) => outline,
+});
+
+export const DEFAULT_VAR = {
+  length: defaultLength,
+  gutter: defaultGutter,
+  outline: defaultOutline,
+};
+
 export default () => {
-  const defaultLength = 16;
-  const defaultGutter = 12;
-  const defaultOutline = `1px solid ${blueGrey[100]}`;
-  const createTipStyle = () => ({
-    height: ({ length = defaultLength }) => length,
-    top: ({ length = defaultLength }) => -length,
-    outline: ({ outline = defaultOutline }) => outline,
-  });
   return {
     tree: {},
     trunk: {

@@ -1,8 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import styles from './treeChart.styles';
-
-const useStyles = makeStyles(styles, { name: 'TreeChart' });
+import PropTypes from 'prop-types';
 
 const TreeContext = React.createContext();
 
@@ -16,7 +13,11 @@ export const useTreeStyles = () => {
 
 export const TreeConsumer = TreeContext.Consumer;
 
-export const TreeProvider = props => {
+export const TreeProvider = ({ useStyles, ...props }) => {
   const styles = useStyles(props);
   return <TreeContext.Provider {...props} value={styles} />;
+};
+
+TreeProvider.propTypes = {
+  useStyles: PropTypes.func.isRequired,
 };

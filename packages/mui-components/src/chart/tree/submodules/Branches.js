@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'clsx';
 import { useTreeStyles } from '../TreeContext';
 
-const Branches = ({ className, children, ...props }) => {
+const Branches = ({ className, children }) => {
   const classes = useTreeStyles();
   return <ul className={cx(classes.branches, className)}>{children}</ul>;
 };
