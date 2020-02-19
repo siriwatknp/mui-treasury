@@ -50,13 +50,14 @@ const OrgChartDemo = () => {
 OrgChartDemo.metadata = {
   title: 'Organization',
   path: 'chart/org',
+  description: 'Extends tree to form company component',
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Sun Feb 16 2020',
   size: 'large',
   files: [
     { pkg: 'mui-components', path: 'chart/org/OrgChart.js' },
-    { pkg: 'mui-components', path: 'chart/org/orgChart.styles.js' },
-  ]
+    { pkg: 'mui-components', path: 'chart/org/OrgChart.stories.js' },
+  ],
 };
 // hide-end
 const getData = () => ({

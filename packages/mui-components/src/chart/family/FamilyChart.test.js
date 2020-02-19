@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import FamilyTreeChart from './FamilyTreeChart';
+import FamilyChart from './FamilyChart';
 
-describe('FamilyTreeChart', () => {
+describe('FamilyChart', () => {
   it('render without clashes', () => {
     expect(() => {
-      render(<FamilyTreeChart />);
+      render(<FamilyChart />);
     }).not.toThrow();
   });
 });

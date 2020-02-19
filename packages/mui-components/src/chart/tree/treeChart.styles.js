@@ -19,14 +19,21 @@ export default () => {
   return {
     tree: {},
     trunk: {
+      lineHeight: 1.4,
       textAlign: 'center',
       listStyle: 'none',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       padding: ({ gutter = defaultGutter }) => `0 ${gutter}px`,
+      '& > $branches:first-child': {
+        '&:before': {
+          display: 'none',
+        },
+      },
     },
     branches: {
+      paddingLeft: 0,
       display: 'flex',
       justifyContent: 'center',
       margin: ({ gutter = defaultGutter, length = defaultLength }) =>
@@ -49,10 +56,11 @@ export default () => {
       '&:before': createTipStyle(),
     },
     twig: {
+      lineHeight: 1.4,
       listStyle: 'none',
       display: 'inline-block',
-      lineHeight: 0,
       textAlign: 'center',
+      whiteSpace: 'nowrap',
       padding: ({ gutter = defaultGutter, length = defaultLength }) =>
         `${length}px ${gutter}px 0`,
       position: 'relative',

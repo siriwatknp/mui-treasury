@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'clsx';
 import { Branches, useTreeStyles } from '../../tree';
 
-const Children2 = ({ className, stretch, ...props }) => {
+const Children = ({ className, stretch, ...props }) => {
   const classes = useTreeStyles();
   return (
     <Branches
@@ -13,13 +13,13 @@ const Children2 = ({ className, stretch, ...props }) => {
   );
 };
 
-Children2.propTypes = {
+Children.propTypes = {
   className: PropTypes.string,
   stretch: PropTypes.bool,
 };
-Children2.defaultProps = {
+Children.defaultProps = {
   className: undefined,
   stretch: false,
 };
 
-export default Children2;
+export default Children;
