@@ -58,8 +58,11 @@ export default ({ palette }) => ({
     position: 'absolute',
     left: '50%',
     transform: 'translateX(-50%)',
-    whiteSpace: 'normal',
+    whiteSpace: 'pre-wrap',
     lineHeight: 1.2,
+    margin: 0,
+    width: 72,
+    wordBreak: 'break-word',
   },
   personAvatar: {
     width: ({ avatarSize = defaultAvatarSize }) => avatarSize,
