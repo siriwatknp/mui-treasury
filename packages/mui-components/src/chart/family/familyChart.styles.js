@@ -1,7 +1,7 @@
 import { DEFAULT_VAR, treeChartStyles } from '../tree';
 
-const defaultAvatarSize = 40;
-const defaultPersonHeight = 64;
+const defaultAvatarSize = 48;
+const defaultPersonHeight = 72;
 
 const getStretchLength = ({
   personHeight = defaultPersonHeight,
@@ -35,10 +35,14 @@ export default ({ palette }) => ({
   },
   hasOneSpouse: {
     '&:first-child:before': {
-      left: `calc(50% - ${defaultAvatarSize / 2}px - ${DEFAULT_VAR.gutter}px)`,
+      left: ({ avatarSize = defaultAvatarSize, gutter = DEFAULT_VAR.gutter }) =>
+        `calc(50% - ${avatarSize / 2}px - ${gutter}px)`,
     },
     '&:last-child:not(:first-child):before': {
-      right: `calc(50% + ${defaultAvatarSize / 2}px + ${DEFAULT_VAR.gutter}px)`,
+      right: ({
+        avatarSize = defaultAvatarSize,
+        gutter = DEFAULT_VAR.gutter,
+      }) => `calc(50% + ${avatarSize / 2}px + ${gutter}px)`,
     },
   },
   stretch: {
@@ -50,12 +54,16 @@ export default ({ palette }) => ({
   },
   personName: {
     fontSize: 12,
-    marginTop: 4,
-    marginBottom: 8,
-    display: 'inline-block',
     color: palette.primary.main,
+    position: 'absolute',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    whiteSpace: 'normal',
+    lineHeight: 1.2,
   },
   personAvatar: {
+    width: ({ avatarSize = defaultAvatarSize }) => avatarSize,
+    height: ({ avatarSize = defaultAvatarSize }) => avatarSize,
     boxShadow: '0 2px 8px 0 rgba(0,0,0,0.1)',
   },
 });

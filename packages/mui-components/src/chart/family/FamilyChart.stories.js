@@ -19,26 +19,46 @@ storiesOf('mui-components|Chart', module).add('Family', () => {
         <FamilyChart
           stretchIndexes={[2]}
           tree={{
-            displayName: 'A',
-            spouse: { displayName: 'B' },
+            displayName: 'Alanis',
+            spouse: { displayName: 'Leon' },
             children: [
-              { spouse: {}, children: [{}, {}] },
               {
-                displayName: 'C',
-                spouse: [
-                  {
-                    spouse: {},
-                    children: [
-                      { children: [{}] },
-                      {},
-                      { spouse: {}, children: [{}] },
-                    ],
-                  },
-                  { children: [{}, { spouse: {} }] },
-                  {},
+                displayName: 'Hattie',
+                spouse: { displayName: 'Alessa' },
+                children: [
+                  { displayName: 'Alexander' },
+                  { displayName: 'Bryna' },
                 ],
               },
-              {},
+              {
+                displayName: 'Celina',
+                spouse: [
+                  {
+                    spouse: { displayName: 'Josephe' },
+                    children: [
+                      {
+                        displayName: 'Zandra',
+                        children: [{ displayName: 'Anuj' }],
+                      },
+                      { displayName: 'Damian' },
+                      {
+                        displayName: 'Mary',
+                        spouse: { displayName: 'Celina' },
+                        children: [{ displayName: 'Benita' }],
+                      },
+                    ],
+                  },
+                  {
+                    displayName: 'Claude',
+                    children: [
+                      { displayName: 'Ryanne' },
+                      { spouse: { displayName: 'Cristina' } },
+                    ],
+                  },
+                  { displayName: 'Zlatan' },
+                ],
+              },
+              { displayName: 'Geraldine' },
             ],
           }}
         />

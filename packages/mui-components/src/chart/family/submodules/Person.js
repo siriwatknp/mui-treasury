@@ -13,7 +13,18 @@ const Person = ({ displayName, photoURL }) => {
         src={photoURL}
         className={classes.personAvatar}
       />
-      {displayName && <span className={classes.personName}>{displayName}</span>}
+      <Box
+        mt={0.5}
+        mb={1}
+        minHeight={12}
+        position={'relative'}
+        mx={'auto'}
+        align={'center'}
+      >
+        {displayName && (
+          <p className={classes.personName}>{displayName}</p>
+        )}
+      </Box>
       <div />
     </Box>
   );

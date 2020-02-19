@@ -108,10 +108,10 @@ FamilyChart.defaultProps = {
   tree: undefined,
   renderContent: props => <Person {...props} />,
   stretchIndexes: [],
-  avatarSize: 40,
-  personHeight: 64,
-  length: 16,
-  gutter: 12,
+  avatarSize: 48,
+  personHeight: 72,
+  length: 24,
+  gutter: 24,
   outline: `1px solid ${blueGrey[100]}`,
 };
 

@@ -1,58 +1,11 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import FamilyTree from '@mui-treasury/components/chart/family';
 import Box from '@material-ui/core/Box';
-import Avatar from '@material-ui/core/Avatar';
-
-const usePersonStyles = makeStyles(() => ({
-  avatar: {
-    boxShadow: '0 2px 8px 0 rgba(0,0,0,0.1)',
-  },
-  name: {
-    fontSize: 13,
-    marginTop: 4,
-    marginBottom: 8,
-    display: 'inline-block',
-  },
-}));
 
 const FamilyChart = () => {
-  const classes = usePersonStyles();
   return (
     <Box>
-      <FamilyTree
-        stretchIndexes={[2]}
-        renderContent={({ name }) => (
-          <Box align={'center'} lineHeight={1}>
-            <Avatar className={classes.avatar} />
-            {name && <span className={classes.name}>{name}</span>}
-            <div />
-          </Box>
-        )}
-        tree={{
-          name: 'A',
-          spouse: { name: 'B' },
-          children: [
-            { spouse: {}, children: [{}, {}] },
-            {
-              name: 'C',
-              spouse: [
-                {
-                  spouse: {},
-                  children: [
-                    { children: [{}] },
-                    {},
-                    { spouse: {}, children: [{}] },
-                  ],
-                },
-                { children: [{}, { spouse: {} }] },
-                {},
-              ],
-            },
-            {},
-          ],
-        }}
-      />
+      <FamilyTree stretchIndexes={[2]} tree={getData()} />
     </Box>
   );
 };
@@ -70,5 +23,46 @@ FamilyChart.metadata = {
   ],
 };
 // hide-end
+const getData = () => ({
+  displayName: 'Alanis',
+  spouse: { displayName: 'Leon' },
+  children: [
+    {
+      displayName: 'Hattie',
+      spouse: { displayName: 'Alessa' },
+      children: [{ displayName: 'Alexander' }, { displayName: 'Bryna' }],
+    },
+    {
+      displayName: 'Celina',
+      spouse: [
+        {
+          displayName: 'Dayna',
+          spouse: { displayName: 'Josephe' },
+          children: [
+            {
+              displayName: 'Zandra',
+              children: [{ displayName: 'Anuj' }],
+            },
+            { displayName: 'Damian' },
+            {
+              displayName: 'Mary',
+              spouse: { displayName: 'Celina' },
+              children: [{ displayName: 'Benita' }],
+            },
+          ],
+        },
+        {
+          displayName: 'Claude',
+          children: [
+            { displayName: 'Ryanne' },
+            { displayName: 'Theodora', spouse: { displayName: 'Cristina' } },
+          ],
+        },
+        { displayName: 'Zlatan' },
+      ],
+    },
+    { displayName: 'Geraldine' },
+  ],
+});
 
 export default FamilyChart;
