@@ -4,9 +4,7 @@ import Box from '@material-ui/core/Box';
 import { useNeumorphShadowStyles } from '@mui-treasury/styles/shadow/neumorph';
 
 const NeumorphShadow = () => {
-  const [bgColor, setBgColor] = React.useState(
-    localStorage.getItem('primaryColor') || '#B3D2E6'
-  );
+  const [bgColor, setBgColor] = React.useState('#B3D2E6');
   const classes = useNeumorphShadowStyles({ bgColor });
   return (
     <>
