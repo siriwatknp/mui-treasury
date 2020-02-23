@@ -1,6 +1,6 @@
 {
   "name": "@mui-treasury/components",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "keywords": [
     "react",
@@ -18,7 +18,7 @@
   },
   "homepage": "https://mui-treasury.com/components/card",
   "dependencies": {
-    "@mui-treasury/styles": "^0.4.0",
+    "@mui-treasury/styles": "^0.5.0",
     "@mui-treasury/utils": "^0.3.9",
     "clsx": "^1.0.4",
     "dequal": "^1.0.0"

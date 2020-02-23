@@ -10,6 +10,24 @@
 > - :bulb: [Refactor]
 > - :lipstick: [Style]
 
+## _23 Feb 2020_
+
+### @mui-treasury/styles@0.5.0
+
+#### :rocket: New Feature
+
+- [#499](https://github.com/siriwatknp/mui-treasury/pull/499) #498 new component page layout ([@siriwatknp](https://github.com/siriwatknp))
+- [#494](https://github.com/siriwatknp/mui-treasury/pull/494) feat: 🎸 add neumorph shadow ([@siriwatknp](https://github.com/siriwatknp))
+
+### `Patch`
+
+- @mui-treasury/components@0.5.1
+- @mui-treasury/mockup@0.4.5
+
+#### Committers: 1
+
+- Siriwat Kunaporn ([@siriwatknp](https://github.com/siriwatknp))
+
 ## _16 Feb 2020_
 
 ### @mui-treasury/components@0.4.0
