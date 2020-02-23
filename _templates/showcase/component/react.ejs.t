@@ -11,8 +11,11 @@ const <%= displayName %> = () => {
 <%= displayName %>.metadata = {
   title: '<%= h.changeCase.title(name) %>',
   path: '<%= category %>/<%= name %>',
+  renderedWithoutIframe: false,
   creators: [require('constants/creators').<%= by %>], // add yourself to creators.js first
   createdAt: '<%= h.now() %>',
+  frameProps: {}, // props that applied to Box in grid view
+  size: 'medium', // can be 'large' | 'huge' for grid size
 };
 // hide-end
 

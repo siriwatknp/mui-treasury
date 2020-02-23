@@ -59,9 +59,7 @@ const getFallbackHandler = () => {
     parseConfig: c => c,
     getOpenKeys: ({ menus, lastPath }) => {
       const keyMap = mapNestedPath(menus);
-      return menus
-        .filter(({ key }) => keyMap[key].includes(lastPath))
-        .map(({ key }) => key);
+      return Object.keys(keyMap).filter(key => keyMap[key].includes(lastPath));
     },
   };
 };

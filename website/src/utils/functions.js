@@ -70,3 +70,12 @@ export const prettifySource = text =>
   removeRepLinkBreaks(
     removeTextAt(text, { start: /\/\/.*hide-start/, end: /\/\/.*hide-end/ })
   );
+
+export const getStatusByDate = createdAt => {
+  const d = new Date(createdAt);
+  const aMonth = 30 * 24 * 60 * 60 * 1000;
+  if (Date.now() - d.getTime() <= aMonth) {
+    return 'new';
+  }
+  return '';
+};
