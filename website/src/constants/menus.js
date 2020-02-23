@@ -200,6 +200,28 @@ export default {
           label: 'Chart',
           total: charts.length,
           to: '/components/chart',
+          subMenus: [
+            {
+              key: 'all-tree',
+              label: 'All',
+              to: '/components/chart',
+            },
+            {
+              key: 'tree',
+              label: 'Tree',
+              to: '/components/chart/tree',
+            },
+            {
+              key: 'org',
+              label: 'Organization',
+              to: '/components/chart/org',
+            },
+            {
+              key: 'family',
+              label: 'Family',
+              to: '/components/chart/family',
+            },
+          ],
         },
         {
           key: 'chat-msg',
@@ -298,6 +320,18 @@ export default {
           label: 'TextField',
           total: textFields.length,
           to: '/components/text-field',
+          subMenus: [
+            {
+              key: 'all-textField',
+              label: 'All',
+              to: '/components/text-field',
+            },
+            {
+              key: 'birthday',
+              label: 'Birthday',
+              to: '/components/text-field/birthday',
+            },
+          ]
         },
       ],
     },

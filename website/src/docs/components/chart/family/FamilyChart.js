@@ -13,7 +13,7 @@ const FamilyChart = () => {
 FamilyChart.metadata = {
   title: 'Family',
   path: 'chart/family',
-  description: 'Build for family uses',
+  description: 'Build for family usage',
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Wed Feb 19 2020',
   size: 'huge',

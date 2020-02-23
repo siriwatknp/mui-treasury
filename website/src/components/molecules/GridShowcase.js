@@ -1,16 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { useMetadata } from 'containers/Demo/context';
-import { orderComponents } from 'utils/functions';
-
-const getStatusByDate = createdAt => {
-  const d = new Date(createdAt);
-  const aMonth = 30 * 24 * 60 * 60 * 1000;
-  if (Date.now() - d.getTime() <= aMonth) {
-    return 'new';
-  }
-  return '';
-};
+import { orderComponents, getStatusByDate } from 'utils/functions';
 
 /*
   render component in grid layout
