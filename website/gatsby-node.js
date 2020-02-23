@@ -30,7 +30,7 @@ const createLayoutPagesFromMarkdown = async ({
   const result = await graphql(`
     {
       allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/src/pages/layout" } }
+        filter: { fileAbsolutePath: { regex: "/src/pages/layout/" } }
       ) {
         edges {
           node {
