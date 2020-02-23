@@ -14,7 +14,15 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 };
 
-exports.createPages = async ({ actions, graphql, reporter }) => {
+exports.createPages = async tools => {
+  await createLayoutPagesFromMarkdown(tools);
+};
+
+const createLayoutPagesFromMarkdown = async ({
+  actions,
+  graphql,
+  reporter,
+}) => {
   const { createPage } = actions;
 
   const template = path.resolve(`src/templates/DocTemplate.js`);
@@ -22,7 +30,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const result = await graphql(`
     {
       allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/src/pages/" } }
+        filter: { fileAbsolutePath: { regex: "/src/pages/layout" } }
       ) {
         edges {
           node {

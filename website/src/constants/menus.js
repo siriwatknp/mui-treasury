@@ -200,6 +200,13 @@ export default {
           label: 'Chart',
           total: charts.length,
           to: '/components/chart',
+          subMenus: [
+            {
+              key: 'tree',
+              label: 'Tree',
+              to: '/components/chart/tree',
+            },
+          ],
         },
         {
           key: 'chat-msg',
