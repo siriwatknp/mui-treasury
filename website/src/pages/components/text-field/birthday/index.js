@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ComponentShowcase from 'containers/Showcase/ComponentShowcase';
-import TreeChart from 'docs/components/chart/tree/TreeChart';
+import BirthdayTextField from 'docs/components/textField/birthday/BirthdayTextField';
 
-const TreeChartPage = () => {
+const BirthdayTextFieldPage = () => {
   return (
     <ComponentShowcase
-      metadata={TreeChart.metadata}
-      renderComponent={() => <TreeChart />}
+      metadata={BirthdayTextField.metadata}
+      renderComponent={() => <BirthdayTextField />}
     />
   );
 };
 
-TreeChartPage.propTypes = {
+BirthdayTextFieldPage.propTypes = {
   path: PropTypes.string.isRequired,
   navigate: PropTypes.func.isRequired,
   location: PropTypes.shape({
@@ -24,4 +24,5 @@ TreeChartPage.propTypes = {
   pathContext: PropTypes.shape({}).isRequired,
 };
 
-export default TreeChartPage;
+export default BirthdayTextFieldPage;
+

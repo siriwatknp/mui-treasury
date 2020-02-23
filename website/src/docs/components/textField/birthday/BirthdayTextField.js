@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
 import Input from '@material-ui/core/Input';
 import Typography from '@material-ui/core/Typography';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -28,7 +29,7 @@ const BirthdayTextField = () => {
   const labelStyles = useLabelStyles();
   const bootstrap = useBootstrapInputStyles();
   return (
-    <div>
+    <Box pl={{ xs: 2, sm: 4 }}>
       <Typography color={'textSecondary'}>value : {value}</Typography>
       <FormHelperText>ISO 8601</FormHelperText>
       <br />
@@ -98,7 +99,7 @@ const BirthdayTextField = () => {
         />
         <FormHelperText error>nextFocus is disabled!</FormHelperText>
       </Birthday>
-    </div>
+    </Box>
   );
 };
 // hide-start
@@ -106,18 +107,37 @@ BirthdayTextField.metadata = {
   title: 'Birthday',
   path: 'textField/birthday',
   description: 'Works well for date form',
+  renderedWithoutIframe: true,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Sat Feb 15 2020',
   files: [
     { pkg: 'mui-components', path: 'textField/birthday/BirthdayTextField.js' },
     { pkg: 'mui-components', path: 'textField/birthday/BirthdayContext.js' },
-    { pkg: 'mui-components', path: 'textField/birthday/submodules/createInput.js' },
-    { pkg: 'mui-components', path: 'textField/birthday/submodules/DayInput.js' },
-    { pkg: 'mui-components', path: 'textField/birthday/submodules/MonthInput.js' },
-    { pkg: 'mui-components', path: 'textField/birthday/submodules/YearInput.js' },
-    { pkg: 'mui-components', path: 'textField/birthday/submodules/Separator.js' },
-    { pkg: 'mui-components', path: 'textField/birthday/BirthdayTextField.test.js' },
-  ]
+    {
+      pkg: 'mui-components',
+      path: 'textField/birthday/submodules/createInput.js',
+    },
+    {
+      pkg: 'mui-components',
+      path: 'textField/birthday/submodules/DayInput.js',
+    },
+    {
+      pkg: 'mui-components',
+      path: 'textField/birthday/submodules/MonthInput.js',
+    },
+    {
+      pkg: 'mui-components',
+      path: 'textField/birthday/submodules/YearInput.js',
+    },
+    {
+      pkg: 'mui-components',
+      path: 'textField/birthday/submodules/Separator.js',
+    },
+    {
+      pkg: 'mui-components',
+      path: 'textField/birthday/BirthdayTextField.test.js',
+    },
+  ],
 };
 // hide-end
 

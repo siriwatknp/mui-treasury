@@ -8,12 +8,17 @@ const CarbonAds = props => {
   const { id, error } = useCarbonAds();
   if (error) return null;
   return (
-    <Box position={'relative'} align={'center'} {...props}>
+    <Box position={'relative'} minWidth={300} align={'center'} {...props}>
       <div id={id}>
         <div id={'carbonads-placeholder'}>
           <div className={'placeholder-wrap'}>
             <div className={'placeholder-img'}>
-              <Skeleton animation={'pulse'} variant="rect" width={130} height={100} />
+              <Skeleton
+                animation={'pulse'}
+                variant="rect"
+                width={130}
+                height={100}
+              />
             </div>
             <div className={'placeholder-text'}>
               <Skeleton animation={'pulse'} />

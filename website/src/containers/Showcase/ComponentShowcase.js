@@ -1,18 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
 import Typography from '@material-ui/core/Typography';
-import CarbonAds from 'components/atoms/CarbonAds';
-import BtnGroup from 'components/molecules/BtnGroup';
 import IFrame from 'components/layout/IFrame';
+import BtnGroup from 'components/molecules/BtnGroup';
+import CarbonAds from 'components/atoms/CarbonAds';
+import StatusChip from 'components/atoms/StatusChip';
 import { useNeumorphShadowStyles } from '@mui-treasury/styles/shadow/neumorph';
 
 import useScreenList from 'logics/useScreenList';
+import { getStatusByDate } from 'utils/functions';
 
 const useStyles = makeStyles(({ breakpoints }) => ({
+  frame: {
+    [breakpoints.only('xs')]: {
+      maxWidth: 320,
+    },
+  },
   title: {
     marginBottom: 0,
     fontSize: 36,
@@ -20,7 +29,7 @@ const useStyles = makeStyles(({ breakpoints }) => ({
       fontSize: 48,
     },
     [breakpoints.up('md')]: {
-      fontSize: 64,
+      fontSize: 56,
     },
   },
 }));
@@ -36,14 +45,13 @@ const ComponentShowcase = ({ metadata, renderComponent }) => {
     {
       initialKey: 'sm',
       overrides: {
-        xs: { height: 568 },
-        sm: { height: 568 },
-        md: { height: 568 },
-        lg: { height: 568 },
+        all: { height: 568 },
+        xsh: { height: 375 },
       },
     }
   );
   const isLargeScreen = activeScreen?.width > 1280;
+  const status = getStatusByDate(metadata?.createdAt);
   return (
     <>
       <Container>
@@ -54,10 +62,11 @@ const ComponentShowcase = ({ metadata, renderComponent }) => {
                 pb={{ xs: 2, sm: 0 }}
                 textAlign={{ xs: 'center', sm: 'left' }}
               >
-                <h1 className={classes.title}>Tree Chart</h1>
-                <Typography variant={'h6'} color={'textSecondary'}>
-                  A recursive component made easy.
+                <h1 className={classes.title}>{metadata?.title}</h1>
+                <Typography variant={'h6'} color={'textSecondary'} gutterBottom>
+                  {metadata?.description}
                 </Typography>
+                {status === 'new' && <StatusChip />}
               </Box>
             </Grid>
             <Grid item xs={12} sm={'auto'}>
@@ -73,31 +82,34 @@ const ComponentShowcase = ({ metadata, renderComponent }) => {
         borderRadius={4}
         p={{ xs: 2, sm: 3 }}
       >
-        <BtnGroup
-          buttons={screenList}
-          onClick={selectScreen}
-          getIsActive={getIsActive}
-        />
-        <Box mt={1.5} mb={1} textAlign={'center'}>
-          <Box
-            fontSize={12}
-            borderRadius={20}
-            color={'grey.500'}
-            display={'inline-block'}
-            px={1.5}
-            py={0.5}
-          >
-            {activeScreen?.width} x {activeScreen?.height} -- screen:{' '}
-            <b>{activeScreen?.screen}</b> {isLargeScreen && ', scale 80%'}
+        <Hidden only={'xs'} implementation={'css'}>
+          <BtnGroup
+            buttons={screenList}
+            onClick={selectScreen}
+            getIsActive={getIsActive}
+          />
+          <Box mt={2} mb={-1} textAlign={'center'}>
+            <Box
+              fontSize={12}
+              borderRadius={20}
+              color={'grey.500'}
+              display={'inline-block'}
+              px={1.5}
+              py={0.5}
+            >
+              {activeScreen?.width} x {activeScreen?.height} -- screen:{' '}
+              <b>{activeScreen?.screen}</b> {isLargeScreen && ', scale 80%'}
+            </Box>
           </Box>
-        </Box>
+        </Hidden>
+        <br />
         <Box
-          classes={shadowStyles}
+          className={cx(classes.frame, shadowStyles.root)}
           borderRadius={16}
           width={activeScreen?.width ?? 300}
           height={activeScreen?.height ?? 200}
           mx={'auto'}
-          p={1}
+          pt={3}
           {...(isLargeScreen && {
             mx: 0,
             position: 'relative',
@@ -108,7 +120,13 @@ const ComponentShowcase = ({ metadata, renderComponent }) => {
             },
           })}
         >
-          <IFrame>{renderComponent()}</IFrame>
+          {metadata?.renderedWithoutIframe ? (
+            renderComponent()
+          ) : (
+            <IFrame>
+              <Box display={'flex'}>{renderComponent()}</Box>
+            </IFrame>
+          )}
         </Box>
         {!isLargeScreen && (
           <>

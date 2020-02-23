@@ -1,5 +1,5 @@
 ---
-to: website/src/pages/components/<%= h.changeCase.snake(category) %>.js
+to: website/src/pages/components/<%= h.changeCase.param(category) %>.js
 unless_exists: true
 ---
 import React from 'react';
