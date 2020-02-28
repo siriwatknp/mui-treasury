@@ -7,6 +7,7 @@ import Add from '@material-ui/icons/Add';
 import { useCuteToggleStyles } from '@mui-treasury/styles/toggle/cute';
 import { useGatsbyRowToggleStyles } from '@mui-treasury/styles/rowToggle/gatsby';
 import { useMaterialRowToggleStyles } from '@mui-treasury/styles/rowToggle/material';
+import { useJupiterRowToggleStyles } from '@mui-treasury/styles/rowToggle/jupiter';
 import RowToggle from './RowToggle';
 import SwitchToggle from '../switch';
 
@@ -88,6 +89,18 @@ storiesOf('mui-components|Toggle', module).add('row', () => {
           <RowToggle.Action button>
             <Add />
           </RowToggle.Action>
+        </RowToggle>
+        <RowToggle useStyles={useJupiterRowToggleStyles}>
+          <RowToggle.ListItem selected>Jupiter styles</RowToggle.ListItem>
+          <RowToggle.Action button />
+        </RowToggle>
+        <RowToggle useStyles={useJupiterRowToggleStyles}>
+          <RowToggle.ListItem button>
+            Jupiter with icon
+            <RowToggle.Action button={false}>
+              <Add />
+            </RowToggle.Action>
+          </RowToggle.ListItem>
         </RowToggle>
       </Box>
     );

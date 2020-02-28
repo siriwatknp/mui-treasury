@@ -8,6 +8,7 @@ export default () => ({
     fontSize: 14,
     minHeight: 45,
     lineHeight: '21px',
+    margin: 0,
     padding: '12px 48px 12px 1.5rem',
     '&:before, &:after': {
       content: '" "',

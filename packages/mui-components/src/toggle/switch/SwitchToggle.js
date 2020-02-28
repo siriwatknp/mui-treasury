@@ -19,7 +19,12 @@ const SwitchToggle = ({
   ...props
 }) => {
   const result = useStyles({ classes, ...props });
-  const cls = cx(result.root, toggled && result.toggled, className);
+  const cls = cx(
+    result.root,
+    toggled && result.toggled,
+    button && result.button,
+    className
+  );
   const getChildren = () => {
     if (children) {
       return children;

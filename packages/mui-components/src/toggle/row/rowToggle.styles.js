@@ -12,5 +12,13 @@ export default () => ({
     '&:last-child': {
       marginLeft: 'auto',
     },
+    '&:not($actionButton)': {
+      marginLeft: 'auto',
+      marginRight: -4,
+      minWidth: 'auto',
+      lineHeight: 1,
+    },
   },
+  actionToggled: {},
+  actionButton: {},
 });

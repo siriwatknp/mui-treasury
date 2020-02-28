@@ -20,6 +20,7 @@ export default () => ({
     top: 0,
     bottom: 0,
     right: 0,
+    color: 'rgba(0, 0, 0, 0.54)',
     '&:hover, &:focus': {
       color: '#663399',
       background: 'rgba(241,222,250,0.15)',
@@ -27,5 +28,16 @@ export default () => ({
     '& svg': {
       fontSize: '1.25rem',
     },
+    '&:not($actionButton)': {
+      position: 'static',
+      marginLeft: 'auto',
+      marginRight: -36,
+      minWidth: 'auto',
+      lineHeight: 1,
+    },
+  },
+  actionButton: {},
+  actionToggled: {
+    color: '#663399',
   },
 });

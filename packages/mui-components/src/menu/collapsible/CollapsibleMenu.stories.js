@@ -14,6 +14,8 @@ import { useGatsbyRowToggleStyles } from '@mui-treasury/styles/rowToggle/gatsby'
 import { useGatsbyListItemStyles } from '@mui-treasury/styles/listItem/gatsby';
 import { useMaterialRowToggleStyles } from '@mui-treasury/styles/rowToggle/material';
 import { useMaterialListItemStyles } from '@mui-treasury/styles/listItem/material';
+import { useMaterialCollapsibleMenuStyles } from '@mui-treasury/styles/collapsibleMenu/material';
+import { useJupiterCollapsibleMenuStyles } from '@mui-treasury/styles/collapsibleMenu/jupiter';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -108,7 +110,9 @@ storiesOf('mui-components|Menu', module).add('collapsible', () => {
             collapsed={true}
             renderToggle={({ onClick, collapsed }) => (
               <RowToggle useStyles={useGatsbyRowToggleStyles}>
-                <RowToggle.ListItem button>Gatsby styles</RowToggle.ListItem>
+                <RowToggle.ListItem button selected>
+                  Gatsby styles
+                </RowToggle.ListItem>
                 <RowToggle.Action
                   button
                   toggled={collapsed}
@@ -140,9 +144,65 @@ storiesOf('mui-components|Menu', module).add('collapsible', () => {
             )}
           >
             <ListItem classes={materialListItemStyles}>List item 1</ListItem>
-            <ListItem classes={materialListItemStyles} selected>List item 2</ListItem>
+            <ListItem classes={materialListItemStyles} selected>
+              List item 2
+            </ListItem>
             <ListItem classes={materialListItemStyles}>List item 3</ListItem>
             <ListItem classes={materialListItemStyles}>List item 4</ListItem>
+          </CollapsibleMenu>
+        </Grid>
+        <Grid item xs={4}>
+          <CollapsibleMenu
+            collapsed={true}
+            useStyles={useMaterialCollapsibleMenuStyles}
+            renderToggle={({ onClick, collapsed }) => (
+              <CollapsibleMenu.Row>
+                <CollapsibleMenu.RowItem button selected>
+                  Material with icon
+                </CollapsibleMenu.RowItem>
+                <CollapsibleMenu.Action
+                  button
+                  toggled={collapsed}
+                  onClick={onClick}
+                >
+                  {collapsed ? <Remove /> : <Add />}
+                </CollapsibleMenu.Action>
+              </CollapsibleMenu.Row>
+            )}
+          >
+            <CollapsibleMenu.ListItem>List item 1</CollapsibleMenu.ListItem>
+            <CollapsibleMenu.ListItem selected>
+              List item 2
+            </CollapsibleMenu.ListItem>
+            <CollapsibleMenu.ListItem>List item 3</CollapsibleMenu.ListItem>
+            <CollapsibleMenu.ListItem>List item 4</CollapsibleMenu.ListItem>
+          </CollapsibleMenu>
+        </Grid>
+        <Grid item xs={4}>
+          <CollapsibleMenu
+            collapsed={true}
+            useStyles={useJupiterCollapsibleMenuStyles}
+            renderToggle={({ onClick, collapsed }) => (
+              <CollapsibleMenu.Row>
+                <CollapsibleMenu.RowItem button selected>
+                  Jupiter with icon
+                </CollapsibleMenu.RowItem>
+                <CollapsibleMenu.Action
+                  button
+                  toggled={collapsed}
+                  onClick={onClick}
+                >
+                  {collapsed ? <Remove /> : <Add />}
+                </CollapsibleMenu.Action>
+              </CollapsibleMenu.Row>
+            )}
+          >
+            <CollapsibleMenu.ListItem>List item 1</CollapsibleMenu.ListItem>
+            <CollapsibleMenu.ListItem selected>
+              List item 2
+            </CollapsibleMenu.ListItem>
+            <CollapsibleMenu.ListItem>List item 3</CollapsibleMenu.ListItem>
+            <CollapsibleMenu.ListItem>List item 4</CollapsibleMenu.ListItem>
           </CollapsibleMenu>
         </Grid>
       </Grid>

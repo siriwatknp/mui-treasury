@@ -17,5 +17,12 @@ export default ({ palette }) => ({
     '& svg': {
       fontSize: '1.25rem',
     },
+    '&:not($actionButton)': {
+      marginLeft: 'auto',
+      marginRight: -4,
+      minWidth: 'auto',
+      lineHeight: 1,
+    },
   },
+  actionButton: {},
 });
