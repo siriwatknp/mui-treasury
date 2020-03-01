@@ -124,7 +124,7 @@ const ReviewCard = () => {
 // hide-start
 ReviewCard.metadata = {
   title: 'Review',
-  path: 'card/review',
+  path: 'component/card/review',
   files: [
     { pkg: 'mui-styles', path: 'cardMedia/wide/wideCardMedia.styles.js' },
     { pkg: 'mui-styles', path: 'shadow/faded/fadedShadow.styles.js' },

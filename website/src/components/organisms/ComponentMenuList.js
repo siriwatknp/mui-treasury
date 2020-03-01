@@ -3,91 +3,103 @@ import PropTypes from 'prop-types';
 import last from 'lodash/last';
 import dropRight from 'lodash/dropRight';
 import cx from 'clsx';
+import Color from 'color';
 import { Link } from 'gatsby';
 import { Location } from '@reach/router';
+import { makeStyles } from '@material-ui/core/styles';
 import { useLayoutCtx } from '@mui-treasury/layout';
-import NestedMenuList from '@mui-treasury/components/menuList/nested';
-import ToggleMenuItem from '@mui-treasury/components/menuItem/toggle';
-import { useMaterialInfoMenuItemStyles } from '@mui-treasury/styles/menuItem/info/material';
-import { useMaterialToggleMenuItemStyles } from '@mui-treasury/styles/menuItem/toggle/material';
-import { useJupiterNestedMenuListStyles } from '@mui-treasury/styles/menuList/nested/jupiter';
+import Menu from '@mui-treasury/components/menu/nested';
+import { useMaterialNestedMenuStyles } from '@mui-treasury/styles/nestedMenu/material';
 
-const showTotalChildren = ({ subMenus }) => {
-  if (!subMenus) return '';
-  return `(${subMenus.length})`;
-};
+const useStyles = makeStyles(({ palette }) => {
+  const lightPrimaryBg = Color(palette.primary.main)
+    .rotate(-6)
+    .lighten(0.2)
+    .fade(0.9)
+    .toString();
+  return {
+    lv2Item: {
+      paddingLeft: '1.925rem',
+    },
+    lv3Item: {
+      paddingLeft: '2.875rem',
+      '&:after': {
+        left: '1.925rem',
+        backgroundColor: palette.primary.main,
+      },
+    },
+    lv3List: {
+      '&:before': {
+        left: '1.925rem',
+      },
+    },
+    listItemSelected: {
+      color: `${palette.primary.main} !important`,
+      backgroundColor: `${lightPrimaryBg} !important`,
+    },
+    label: {
+      marginLeft: -4,
+      marginRight: '0.5rem',
+      lineHeight: 1,
+      padding: '4px 6px',
+      borderRadius: 4,
+      backgroundColor: 'rgba(0,0,0,0.04)',
+      fontSize: 12,
+    },
+    labelSelected: {
+      backgroundColor: lightPrimaryBg,
+    },
+  };
+});
 
 const ComponentMenuList = ({ menus, getOpenKeys }) => {
-  const nestedStyles = useJupiterNestedMenuListStyles();
-  const infoStyles = useMaterialInfoMenuItemStyles();
-  const toggleStyles = useMaterialToggleMenuItemStyles();
   const { setOpened: setSidebarOpened } = useLayoutCtx();
+  const styles = useStyles();
   return (
     <Location>
       {({ location }) => {
         const paths = location.pathname.split('/');
         const lastPath = last(paths) || last(dropRight(paths));
         return (
-          <NestedMenuList
-            // you can set initial state with these props
-            // selectedKey={'awsS3'}
-            // initialOpenKeys={['refGuides', 'deployHosting']}
-            // ------------------------------------------------
+          <Menu
             menus={menus}
             selectedKey={lastPath}
-            initialOpenKeys={getOpenKeys({
+            openKeys={getOpenKeys({
               menus,
               pathname: location.pathname,
               lastPath,
             })}
-            classes={nestedStyles}
-            getParentProps={({ data, expanded }) => ({
-              children: `${data.label} ${showTotalChildren(data)}`,
-              className: cx(
-                toggleStyles.root,
-                expanded && toggleStyles.expanded,
-                nestedStyles.menuItem
-              ),
-              symbolClassName: cx(
-                toggleStyles.toggleBtn,
-                nestedStyles.menuItemToggle
-              ),
-            })}
-            renderParent={({
-              children,
-              onToggle,
-              className,
-              symbolClassName,
-            }) => (
-              <ToggleMenuItem
-                classes={{
-                  focusVisible: nestedStyles.menuItemFocus,
-                }}
-                className={className}
-                symbolClassName={symbolClassName}
-                onToggle={onToggle}
-              >
-                {children}
-              </ToggleMenuItem>
-            )}
-            getChildProps={({ data, selected }) => ({
-              children: data.label,
-              to: data.to,
-              info: data.total,
-              component: Link,
+            useStyles={useMaterialNestedMenuStyles}
+            getItemProps={({ to }, { onClick, level, selected }) => ({
+              ...(to && { component: Link, to }),
               onClick: () => {
+                onClick();
                 setSidebarOpened(false);
               },
-              classes: {
-                selected: nestedStyles.menuItemSelected,
-                focusVisible: nestedStyles.menuItemFocus,
-              },
-              className: cx(infoStyles.root, infoStyles.button),
-              infoClassName: cx(
-                infoStyles.info,
-                selected && nestedStyles.infoSelected
+              className: cx(
+                styles[`lv${level}Item`],
+                selected && styles.listItemSelected
               ),
             })}
+            getListProps={(_, { level }) => ({
+              className: cx(styles[`lv${level}List`], 'test'),
+            })}
+            renderItem={(item, { children, ...itemProps }) => (
+              <Menu.ListItem {...itemProps}>
+                {item.total >= 0 && (
+                  <span
+                    className={cx(
+                      styles.label,
+                      itemProps.selected && styles.labelSelected
+                    )}
+                  >
+                    {item.total}
+                  </span>
+                )}
+                {item.label}
+                {children}
+              </Menu.ListItem>
+            )}
           />
         );
       }}

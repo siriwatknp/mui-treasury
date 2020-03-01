@@ -1,6 +1,8 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
 import PeopleCardFooter from '@mui-treasury/components/cardFooter/people';
+// hide
+import FaceGroupDemo from 'docs/components/group/face/FaceGroup';
 
 const faces = [
   'https://i.pravatar.cc/300?img=1',
@@ -18,7 +20,7 @@ const PeopleCardFooterDemo = () => (
 // hide-start
 PeopleCardFooterDemo.metadata = {
   title: 'People',
-  path: 'cardFooter/people', // must match its index.md
+  path: 'component/cardFooter/people', // must match its index.md
   creators: [require('constants/creators').siriwatknp],
   files: [
     {
@@ -29,6 +31,7 @@ PeopleCardFooterDemo.metadata = {
       pkg: 'mui-styles',
       path: 'cardFooter/people/peopleCardFooter.styles.js',
     },
+    ...FaceGroupDemo.metadata.files,
   ],
 };
 // hide-end

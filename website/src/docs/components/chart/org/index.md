@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'chart/org'
+path: 'component/chart/org'
 ---
 
 `embed:components/chart/org/OrgChart.js`

@@ -157,7 +157,7 @@ const ShoppingCartDemo = () => {
 // hide-start
 ShoppingCartDemo.metadata = {
   title: 'Shopping Cart',
-  path: 'clones/shoppingCart',
+  path: 'layout/clones/shoppingCart',
   files: [],
   relates: [],
 };

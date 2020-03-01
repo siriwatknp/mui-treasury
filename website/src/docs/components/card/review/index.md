@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'card/review'
+path: 'component/card/review'
 ---
 
 `embed:components/card/review/ReviewCard.js`

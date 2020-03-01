@@ -119,7 +119,7 @@ const ReviewCard2 = () => {
 // hide-start
 ReviewCard2.metadata = {
   title: 'Review II',
-  path: 'card/review2',
+  path: 'component/card/review2',
   size: 'large',
   frameProps: {
     bgcolor: 'rgb(245, 248, 250)',

@@ -7,6 +7,7 @@ import Tree, { treeChartStyles } from '../tree';
 const defaultUseStyles = makeStyles(treeChartStyles, { name: 'OrgChart' });
 
 const OrgChart = ({ treeData, renderContent, useStyles, ...props }) => {
+  if (!treeData) return null;
   const renderChildren = (children = []) => {
     return (
       <Tree.Branches>

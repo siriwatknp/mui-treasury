@@ -7,7 +7,7 @@ import { useFullBorderedGridStyles } from '@mui-treasury/styles/grid/fullBordere
 
 import createContainer, { StylesProvider } from './helpers/containerDecorator';
 
-storiesOf('Components|Grid', module)
+storiesOf('mui-styles|Grid', module)
   .addDecorator(createContainer({ maxWidth: 'xs' }))
   .add('bordered', () => {
     const colWidth = object('colWidth', { xs: 6, sm: 4, md: 3 });

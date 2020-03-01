@@ -69,7 +69,7 @@ const NewsCard2 = () => {
 NewsCard2.metadata = {
   title: 'News II',
   description: 'Best for Blog',
-  path: 'card/news2',
+  path: 'component/card/news2',
   creators: [require('constants/creators').siriwatknp],
   files: [
     // { pkg: 'mui-styles', path: 'shadow/faded/fadedShadow.styles.js' },

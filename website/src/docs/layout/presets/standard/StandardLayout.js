@@ -57,7 +57,7 @@ const StandardLayout = () => (
 // hide-start
 StandardLayout.metadata = {
   title: 'Standard Layout',
-  path: 'presets/standard',
+  path: 'layout/presets/standard',
   files: [],
   relates: [],
 };

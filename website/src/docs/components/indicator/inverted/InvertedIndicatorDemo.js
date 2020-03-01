@@ -22,7 +22,7 @@ const InvertedIndicatorDemo = () => {
 // hide-start
 InvertedIndicatorDemo.metadata = {
   title: 'Inverted',
-  path: 'indicator/inverted',
+  path: 'component/indicator/inverted',
   frameProps: {
     bgcolor: '#1c1c1c',
   },

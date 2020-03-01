@@ -63,7 +63,7 @@ const EngagementCard = () => {
 EngagementCard.metadata = {
   title: 'Engagement',
   description: "Show people's engagement",
-  path: 'card/engagement',
+  path: 'component/card/engagement',
   creators: [require('constants/creators').siriwatknp],
   files: [
     { pkg: 'mui-styles', path: 'shadow/faded/fadedShadow.styles.js' },

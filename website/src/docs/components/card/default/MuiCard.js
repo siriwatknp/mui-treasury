@@ -53,7 +53,7 @@ const MuiCard = () => {
 MuiCard.metadata = {
   isDefault: true,
   title: 'Default',
-  path: 'card/default',
+  path: 'component/card/default',
   relates: [
     {
       label: 'Official Demo',

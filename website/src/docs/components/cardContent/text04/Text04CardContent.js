@@ -24,9 +24,19 @@ const Text04CardContent = () => {
 // hide-start
 Text04CardContent.metadata = {
   title: 'Text IV',
-  path: 'cardContent/text04',
+  path: 'component/cardContent/text04',
   createdAt: 'Mon Feb 10 2020',
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
+  files: [
+    {
+      pkg: 'mui-components',
+      path: 'cardContent/textInfo/TextInfoCardContent.js',
+    },
+    {
+      pkg: 'mui-styles',
+      path: 'cardContent/text04/text04CardContent.styles.js',
+    },
+  ],
 };
 // hide-end
 

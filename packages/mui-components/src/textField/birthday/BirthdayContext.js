@@ -1,26 +1,8 @@
-import React, {
-  useState,
-  useReducer,
-  useCallback,
-  useEffect,
-  useRef,
-} from 'react';
+import React, { useState, useReducer, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import isEqual from 'dequal';
+import useDeepCompareEffect from 'use-deep-compare-effect';
 
 const BirthdayContext = React.createContext();
-
-const useDeepMemo = deps => {
-  const ref = useRef();
-  if (!isEqual(ref.current, deps)) {
-    ref.current = deps;
-  }
-  return ref.current;
-};
-
-const useDeepEffect = (effect, deps) => {
-  useEffect(effect, useDeepMemo(deps));
-};
 
 const TYPES = {
   CHANGE_DAY: 'CHANGE_DAY',
@@ -114,7 +96,7 @@ export const BirthdayProvider = ({
   const changeYear = year => dispatch({ type: TYPES.CHANGE_YEAR, value: year });
   const reset = useCallback(() => dispatch({ type: TYPES.RESET }), []);
   const clear = useCallback(() => dispatch({ type: TYPES.CLEAR }), []);
-  useDeepEffect(() => {
+  useDeepCompareEffect(() => {
     // eslint-disable-next-line no-unused-expressions
     onChange?.(state.value, state);
   }, [state, onChange]);

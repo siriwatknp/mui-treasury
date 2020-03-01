@@ -1,6 +1,5 @@
 ---
-category: 'layout'
-path: 'clones/shoppingCart'
+path: 'layout/clones/shoppingCart'
 ---
 
 `embed:layout/clones/shoppingCart/ShoppingCartDemo.js`

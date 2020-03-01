@@ -89,7 +89,7 @@ const RewardCard = () => {
 // hide-start
 RewardCard.metadata = {
   title: 'Reward',
-  path: 'card/reward',
+  path: 'component/card/reward',
   size: 'large',
   files: [],
   creators: [require('constants/creators').siriwatknp],

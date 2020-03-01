@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'card/elevatedHeader'
+path: 'component/card/elevatedHeader'
 ---
 
 `embed:components/card/elevatedHeader/ElevatedHeaderCard.js`

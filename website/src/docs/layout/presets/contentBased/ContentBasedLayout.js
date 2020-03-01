@@ -57,7 +57,7 @@ const ContentBasedLayout = () => (
 // hide-start
 ContentBasedLayout.metadata = {
   title: 'Content-based Layout',
-  path: 'presets/contentBased',
+  path: 'layout/presets/contentBased',
   files: [],
   relates: [],
 };

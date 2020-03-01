@@ -7,7 +7,7 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import ParallaxSlide from '@mui-treasury/components/slide/parallax';
 import DotIndicator from '@mui-treasury/components/indicator/dot';
-import { useSimpleArrowStyles } from '@mui-treasury/styles/arrow/simple';
+import { useArrowDarkButtonStyles } from '@mui-treasury/styles/button/arrowDark';
 
 const data = [
   {
@@ -150,7 +150,7 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) => ({
 
 const ParallaxCarousel = () => {
   const classes = useStyles();
-  const arrowStyles = useSimpleArrowStyles();
+  const arrowStyles = useArrowDarkButtonStyles();
   const createStyle = (slideIndex, fineIndex) => {
     const diff = slideIndex - fineIndex;
     if (Math.abs(diff) > 1) return {};
@@ -222,7 +222,7 @@ const ParallaxCarousel = () => {
 // hide-start
 ParallaxCarousel.metadata = {
   title: 'Parallax',
-  path: 'carousel/parallax',
+  path: 'component/carousel/parallax',
   size: 'huge',
   frameProps: {
     width: '100%',

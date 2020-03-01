@@ -2,11 +2,11 @@
 to: website/src/pages/components/<%= h.changeCase.param(category) %>.js
 unless_exists: true
 ---
-import React from 'react';
+<%displayName = h.changeCase.pascal(name) + h.changeCase.pascal(category)%>import React from 'react';
 import DemoPage from 'containers/Demo';
 import { customComponents, DefaultComponent } from 'docs/components/<%= category %>';
 
-const CardContentPage = () => (
+const <%= displayName %>Page = () => (
   <DemoPage
     title={'<%= h.changeCase.title(category) %>'}
     description={'A collection of <%= h.changeCase.title(category) %> components'}
@@ -23,4 +23,4 @@ const CardContentPage = () => (
   />
 );
 
-export default CardContentPage;
+export default <%= displayName %>Page;

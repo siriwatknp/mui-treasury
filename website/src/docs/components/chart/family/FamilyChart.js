@@ -12,7 +12,7 @@ const FamilyChart = () => {
 // hide-start
 FamilyChart.metadata = {
   title: 'Family',
-  path: 'chart/family',
+  path: 'component/chart/family',
   description: 'Build for family usage',
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Wed Feb 19 2020',

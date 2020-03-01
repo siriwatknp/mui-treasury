@@ -20,7 +20,7 @@ FaceGroupDemo.defaultProps = {};
 // hide-start
 FaceGroupDemo.metadata = {
   title: 'Face',
-  path: 'group/face',
+  path: 'component/group/face',
   creators: [require('constants/creators').siriwatknp],
   files: [
     {

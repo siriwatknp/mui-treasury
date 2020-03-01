@@ -37,7 +37,7 @@ const TagCard = () => {
 // hide-start
 TagCard.metadata = {
   title: 'Tag Card',
-  path: 'card/tag',
+  path: 'component/card/tag',
   files: [
     {
       pkg: 'mui-styles',

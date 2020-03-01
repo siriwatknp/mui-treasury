@@ -57,7 +57,7 @@ const MuiTreasuryLayout = () => (
 // hide-start
 MuiTreasuryLayout.metadata = {
   title: 'MUI Treasury Layout',
-  path: 'presets/muiTreasury',
+  path: 'layout/presets/muiTreasury',
   files: [],
   relates: [],
 };
