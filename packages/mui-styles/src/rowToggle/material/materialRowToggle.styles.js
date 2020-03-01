@@ -24,5 +24,8 @@ export default ({ palette }) => ({
       lineHeight: 1,
     },
   },
+  actionToggled: {
+    color: palette.text.primary,
+  },
   actionButton: {},
 });

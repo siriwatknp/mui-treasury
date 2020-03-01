@@ -1,14 +1,14 @@
 ---
-to: website/src/docs/components/<%= category %>/<%= name %>/<%= h.changeCase.pascal(name) + h.changeCase.pascal(category) %>.js
+to: website/src/docs/components/<%= category %>/<%= name %>/<%= h.changeCase.pascal(name) + h.changeCase.pascal(category) %>Demo.js
 unless_exists: true
 ---
 <%displayName = h.changeCase.pascal(name) + h.changeCase.pascal(category)%>import React from 'react';
 
-const <%= displayName %> = () => {
+const <%= displayName %>Demo = () => {
   return <div><%= displayName %></div>
 };
 // hide-start
-<%= displayName %>.metadata = {
+<%= displayName %>Demo.metadata = {
   title: '<%= h.changeCase.title(name) %>',
   path: '<%= category %>/<%= name %>',
   renderedWithoutIframe: false,
@@ -19,4 +19,4 @@ const <%= displayName %> = () => {
 };
 // hide-end
 
-export default <%= displayName %>;
+export default <%= displayName %>Demo;

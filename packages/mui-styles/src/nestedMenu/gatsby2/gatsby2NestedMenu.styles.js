@@ -17,7 +17,7 @@ export default () => ({
       right: 0,
       top: 0,
     },
-    '& > $row > $rowItem': {
+    '& > $row > $rowItem, & > $row > $listItem': {
       textTransform: 'uppercase',
       letterSpacing: '0.075em',
       fontSize: '0.75rem',
@@ -30,6 +30,10 @@ export default () => ({
     '&:before': {
       borderTop: '1px solid rgb(246, 237, 250)',
     },
+    '& > $row > $rowItem, & > $row > $listItem': {
+      color: 'rgb(138, 75, 175)',
+      fontWeight: 'bold',
+    },
     '&$lv1ParentCollapsed': {
       '&:before': {
         left: 0,
@@ -38,7 +42,7 @@ export default () => ({
   },
   lv1ParentCollapsed: {},
   lv2ParentActive: {
-    '& > $row > $rowItem': {
+    '& > $row > $rowItem, & > $row > $listItem': {
       color: 'rgb(138, 75, 175)',
       fontWeight: 500,
     },

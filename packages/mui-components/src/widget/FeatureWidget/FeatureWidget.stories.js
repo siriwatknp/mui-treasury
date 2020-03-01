@@ -1,13 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import FeatureWidget from '@mui-treasury/components/widget/FeatureWidget';
-import { text, boolean } from '@storybook/addon-knobs';
+import Container from '@material-ui/core/Container';
+import FeatureWidget from './FeatureWidget';
 
-import createContainer, { StylesProvider } from './helpers/containerDecorator';
-
-storiesOf('Components|Widget', module)
-  .addDecorator(createContainer({ maxWidth: 'xs' }))
-  .add('default', () => (
+storiesOf('mui-components|Widget', module).add('feature', () => (
+  <Container maxWidth={'xs'}>
     <FeatureWidget
       title={'Reduce UI Development time'}
       content={
@@ -21,4 +18,5 @@ storiesOf('Components|Widget', module)
         <i className={`fa fa-fighter-jet ${className}`} />
       )}
     />
-  ));
+  </Container>
+));

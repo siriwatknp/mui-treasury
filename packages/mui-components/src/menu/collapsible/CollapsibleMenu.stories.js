@@ -1,5 +1,4 @@
 import React from 'react';
-import cx from 'clsx';
 import { storiesOf } from '@storybook/react';
 import { makeStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';

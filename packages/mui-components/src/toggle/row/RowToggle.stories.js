@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import ListItem from '@material-ui/core/ListItem';
 import Add from '@material-ui/icons/Add';
@@ -11,54 +10,24 @@ import { useJupiterRowToggleStyles } from '@mui-treasury/styles/rowToggle/jupite
 import RowToggle from './RowToggle';
 import SwitchToggle from '../switch';
 
-const useStyles = makeStyles(() => ({
-  ex1: {
-    margin: 0,
-  },
-  ex1Toggle: {
-    minHeight: 24,
-    marginLeft: 'auto',
-  },
-  ex2Row: {
-    padding: '0px 16px',
-  },
-  ex3: {
-    margin: 0,
-    paddingLeft: 8,
-  },
-  ex4Row: {
-    paddingRight: 16,
-  },
-  ex4: {
-    margin: 0,
-    marginRight: 8,
-    borderRadius: 8,
-  },
-}));
-
-storiesOf('mui-components|Toggle', module).add('row', () => {
+storiesOf('mui-components|Toggle', module).add('Row', () => {
   const Component = () => {
-    const classes = useStyles();
     const cuteActionStyles = useCuteToggleStyles();
     return (
       <Box maxWidth={400}>
-        <ListItem button className={classes.ex1}>
-          Simple <SwitchToggle className={classes.ex1Toggle} />
+        <ListItem button>
+          Simple <SwitchToggle />
         </ListItem>
-        <RowToggle className={classes.ex2Row}>
-          Material UI
+        <RowToggle>
+          Default
           <RowToggle.Action />
         </RowToggle>
-        <RowToggle className={classes.ex2Row}>
+        <RowToggle>
           <RowToggle.Action button />
-          <ListItem className={classes.ex3} button>
-            Lead Action
-          </ListItem>
+          <ListItem button>Default Lead Action</ListItem>
         </RowToggle>
-        <RowToggle className={classes.ex4Row}>
-          <ListItem className={classes.ex4} button>
-            Custom
-          </ListItem>
+        <RowToggle>
+          <ListItem button>Default Outside</ListItem>
           <RowToggle.Action button classes={cuteActionStyles} />
         </RowToggle>
         <RowToggle useStyles={useGatsbyRowToggleStyles}>

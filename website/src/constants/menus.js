@@ -22,6 +22,7 @@ import { customComponents as slides } from 'docs/components/slide';
 import { customComponents as tabs } from 'docs/components/tabs';
 import { customComponents as tags } from 'docs/components/tag';
 import { customComponents as textFields } from 'docs/components/textField';
+import { customComponents as menu } from 'docs/components/menu';
 
 export const PKG = {
   nav: 'nav',
@@ -143,9 +144,9 @@ export default {
   [PKG.nav]: [
     // { key: 'how-to', label: 'How to' },
     { key: 'components', label: 'Components', to: '/components/button' },
-    { key: 'form', label: 'Form', disabled: true },
+    { key: 'styles', label: 'Styles', disabled: true },
     { key: 'layout', label: 'Layout', to: '/layout' },
-    { key: 'styling', label: 'Styling', disabled: true },
+    { key: 'form', label: 'Form', disabled: true },
     {
       key: 'theme',
       label: 'Theme',
@@ -157,7 +158,7 @@ export default {
   [PKG.components]: [
     {
       key: 'basic',
-      label: 'BASIC',
+      label: 'Basic',
       subMenus: [
         {
           key: 'arrow',
@@ -200,12 +201,8 @@ export default {
           label: 'Chart',
           total: charts.length,
           to: '/components/chart',
+          isToggleOutside: true,
           subMenus: [
-            {
-              key: 'all-tree',
-              label: 'All',
-              to: '/components/chart',
-            },
             {
               key: 'tree',
               label: 'Tree',
@@ -295,7 +292,7 @@ export default {
     },
     {
       key: 'complex',
-      label: 'COMPLEX',
+      label: 'Complex',
       subMenus: [
         {
           key: 'card',
@@ -316,22 +313,24 @@ export default {
           to: '/components/menu-list',
         },
         {
+          key: 'menu',
+          label: 'Menu',
+          total: menu.length,
+          to: '/components/menu',
+        },
+        {
           key: 'text-field',
           label: 'TextField',
           total: textFields.length,
+          isToggleOutside: true,
           to: '/components/text-field',
           subMenus: [
-            {
-              key: 'all-textField',
-              label: 'All',
-              to: '/components/text-field',
-            },
             {
               key: 'birthday',
               label: 'Birthday',
               to: '/components/text-field/birthday',
             },
-          ]
+          ],
         },
       ],
     },

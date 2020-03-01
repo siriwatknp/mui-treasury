@@ -1,48 +1,62 @@
-export default () => ({
-  action: {},
-  actionToggled: {},
-  actionButton: {},
-  row: {},
-  rowSelected: {},
-  rowItem: {},
-  rowItemSelected: {},
-  list: {},
-  listItem: {},
-  listItemSelected: {},
-  parent: {},
-  parentActive: {},
-  parentCollapsed: {},
+import collapsibleMenuStyles from '../collapsible/collapsibleMenu.styles';
 
-  lv1Row: {},
-  lv1RowSelected: {},
-  lv1RowItem: {},
-  lv1RowItemSelected: {},
-  lv1List: {},
-  lv1Item: {},
-  lv1ItemSelected: {},
-  lv1Parent: {},
-  lv1ParentActive: {},
-  lv1ParentCollapsed: {},
+export default theme => {
+  const s = collapsibleMenuStyles(theme);
+  const { palette } = theme;
+  return {
+    action: s.action,
+    actionToggled: s.actionToggled,
+    actionButton: s.actionButton,
+    row: s.row,
+    rowSelected: s.rowSelected,
+    rowItem: s.rowItem,
+    rowItemSelected: s.rowItemSelected,
+    list: s.list,
+    listItem: s.listItem,
+    listItemSelected: s.listItemSelected,
+    parent: {},
+    parentActive: {
+      '& > $row > $rowItem, & > $row > $listItem': {
+        color: palette.text.primary,
+      },
+    },
+    parentCollapsed: {
+      '& > $row > $rowItem, & > $row > $listItem': {
+        color: palette.text.primary,
+      },
+    },
 
-  lv2Row: {},
-  lv2RowSelected: {},
-  lv2RowItem: {},
-  lv2RowItemSelected: {},
-  lv2List: {},
-  lv2Item: {},
-  lv2ItemSelected: {},
-  lv2Parent: {},
-  lv2ParentActive: {},
-  lv2ParentCollapsed: {},
+    lv1Parent: {},
+    lv1ParentActive: {},
+    lv1ParentCollapsed: {},
+    // list start at lv2
+    lv1Row: {},
+    lv1RowSelected: {},
+    lv1RowItem: {},
+    lv1RowItemSelected: {},
+    lv1Item: {},
+    lv1ItemSelected: {},
 
-  lv3Row: {},
-  lv3RowSelected: {},
-  lv3RowItem: {},
-  lv3RowItemSelected: {},
-  lv3List: {},
-  lv3Item: {},
-  lv3ItemSelected: {},
-  lv3Parent: {},
-  lv3ParentActive: {},
-  lv3ParentCollapsed: {},
-});
+    lv2Parent: {},
+    lv2ParentActive: {},
+    lv2ParentCollapsed: {},
+    lv2List: {},
+    lv2Row: {},
+    lv2RowSelected: {},
+    lv2RowItem: {
+      paddingLeft: '2rem',
+    },
+    lv2RowItemSelected: {},
+    lv2Item: {
+      paddingLeft: '2rem',
+      width: 'auto',
+    },
+    lv2ItemSelected: {},
+
+    lv3Item: {
+      paddingLeft: '3rem',
+      width: 'auto',
+    },
+    lv3ItemSelected: {},
+  };
+};

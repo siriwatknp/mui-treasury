@@ -1,38 +1,48 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import NestedMenu from './NestedMenu';
+import Menu from '@mui-treasury/components/menu/nested';
 
-describe('NestedMenu', () => {
-  it('render without clashes', () => {
-    expect(() => {
-      render(<NestedMenu menus={getMenus()} />);
-    }).not.toThrow();
-  });
-
-  it('onOpenKeysChange is called when some menu is toggled', () => {
-    const onOpenKeysChange = jest.fn();
-    const { getByTestId } = render(
-      <NestedMenu
-        menus={getMenus()}
-        onOpenKeysChange={onOpenKeysChange}
-        getActionProps={({ key }) => ({ 'data-testid': `action-${key}` })}
-      />
-    );
-    const toggleBtn = getByTestId('action-refGuides');
-    fireEvent.click(toggleBtn);
-    expect(onOpenKeysChange).toHaveBeenCalledTimes(1);
-    expect(onOpenKeysChange).toHaveBeenCalledWith(['refGuides']);
-
-    fireEvent.click(toggleBtn);
-    expect(onOpenKeysChange).toHaveBeenCalledTimes(2);
-    expect(onOpenKeysChange).toHaveBeenCalledWith([]);
-  });
-});
-
+const NestedMenuDemo = () => {
+  return (
+    <div>
+      <Menu menus={getMenus()}  />
+    </div>
+  );
+};
+// hide-start
+NestedMenuDemo.metadata = {
+  title: 'Nested',
+  path: 'menu/nested',
+  renderedWithoutIframe: false,
+  creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
+  createdAt: 'Sat Feb 29 2020',
+  frameProps: {}, // props that applied to Box in grid view
+  size: 'medium', // can be 'large' | 'huge' for grid size
+};
+// hide-end
 const getMenus = () => [
   {
     key: 'intro',
     label: 'Introduction',
+  },
+  {
+    key: 'quick start',
+    label: 'Quick Start',
+  },
+  {
+    key: 'recipes',
+    label: 'Recipes',
+  },
+  {
+    key: 'pluginLib',
+    label: 'Plugin Library',
+  },
+  {
+    key: 'starterLib',
+    label: 'Starter Library',
+  },
+  {
+    key: 'resources',
+    label: 'Awesome Gatsby Resources',
   },
   {
     key: 'refGuides',
@@ -140,3 +150,5 @@ const getMenus = () => [
     ],
   },
 ];
+
+export default NestedMenuDemo;

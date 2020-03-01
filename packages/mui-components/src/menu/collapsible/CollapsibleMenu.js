@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import usePreserveState from '@mui-treasury/utils/usePreserveState';
 import { makeStyles } from '@material-ui/core/styles';
 import Collapse from '@material-ui/core/Collapse';
 import { StylesProvider } from './StylesContext';
@@ -14,20 +15,36 @@ const CollapsibleMenu = ({
   collapsed: extCollapsed,
   children,
   renderToggle,
+  renderWrapper,
   useStyles,
+  onCollapse,
+  stateBypassed,
   ...props
 }) => {
-  const [collapsed, setCollapsed] = React.useState(extCollapsed);
-  React.useEffect(() => {
-    setCollapsed(c => (c !== extCollapsed ? extCollapsed : c));
-  }, [extCollapsed]);
-  const onToggle = React.useMemo(() => () => setCollapsed(c => !c), []);
+  const [collapsed, setCollapsed] = usePreserveState(
+    extCollapsed,
+    onCollapse,
+    stateBypassed
+  );
+  const onToggle = React.useMemo(() => () => setCollapsed(c => !c), [
+    setCollapsed,
+  ]);
   return (
     <StylesProvider useStyles={useStyles}>
-      {renderToggle({ onClick: onToggle, collapsed }, setCollapsed)}
-      <Collapse {...props} in={collapsed}>
-        {children}
-      </Collapse>
+      {renderWrapper({
+        collapsed,
+        children: (
+          <>
+            {renderToggle(
+              { onClick: stateBypassed ? onCollapse : onToggle, collapsed },
+              setCollapsed
+            )}
+            <Collapse {...props} in={collapsed}>
+              {children}
+            </Collapse>
+          </>
+        ),
+      })}
     </StylesProvider>
   );
 };
@@ -41,13 +58,19 @@ CollapsibleMenu.propTypes = {
   collapsed: PropTypes.bool,
   children: PropTypes.node,
   renderToggle: PropTypes.func,
+  renderWrapper: PropTypes.func,
   useStyles: PropTypes.func,
+  onCollapse: PropTypes.func,
+  stateBypassed: PropTypes.bool,
 };
 CollapsibleMenu.defaultProps = {
   collapsed: false,
   children: undefined,
   renderToggle: () => null,
   useStyles: useDefaultStyles,
+  stateBypassed: false,
+  // eslint-disable-next-line react/prop-types
+  renderWrapper: ({ children }) => <>{children}</>,
 };
 
 export default CollapsibleMenu;

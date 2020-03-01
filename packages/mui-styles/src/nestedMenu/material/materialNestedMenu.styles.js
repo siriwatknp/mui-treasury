@@ -8,20 +8,28 @@ export default theme => {
     list: { padding: 0 },
     listItemSelected: {
       ...s.listItemSelected,
+      fontWeight: 500,
       backgroundColor: palette.grey[100],
     },
     parent: {
       position: 'relative',
     },
+    parentCollapsed: {
+      '& > $row > $rowItem, & > $row > $listItem': {
+        color: palette.text.primary,
+      },
+    },
+    parentActive: {
+      '& > $row > $rowItem, & > $row > $listItem': {
+        color: palette.text.primary,
+      },
+    },
     lv2RowItem: {
       ...s.rowItem,
-      paddingLeft: 40,
-    },
-    lv2RowItemSelected: {
-      ...s.rowItemSelected,
+      paddingLeft: '2rem',
     },
     lv2Item: {
-      paddingLeft: 40,
+      paddingLeft: '2rem',
     },
     lv3List: {
       '&:before': {
@@ -30,14 +38,14 @@ export default theme => {
         width: 2,
         top: 14,
         bottom: 14,
-        left: 40,
-        backgroundColor: palette.grey[200],
+        left: '2rem',
+        backgroundColor: 'rgba(0,0,0,0.08)',
         zIndex: 1,
       },
     },
     lv3Item: {
       position: 'relative',
-      paddingLeft: 56,
+      paddingLeft: '3rem',
       '&:after': {
         content: '" "',
         position: 'absolute',
@@ -45,7 +53,7 @@ export default theme => {
         transform: 'translateY(-50%)',
         width: 2,
         height: '40%',
-        left: 40,
+        left: '2rem',
         zIndex: 2,
         opacity: 0,
         transition: transitions.create(),

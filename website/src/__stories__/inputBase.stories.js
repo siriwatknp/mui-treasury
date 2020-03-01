@@ -8,7 +8,7 @@ import { useContrastInputBaseStyles } from '@mui-treasury/styles/inputBase/contr
 
 import createContainer, { StylesProvider } from './helpers/containerDecorator';
 
-storiesOf('Components|InputBase', module)
+storiesOf('mui-styles|InputBase', module)
   .addDecorator(createContainer({ maxWidth: 'xs' }))
   .add('contrast', () => (
     <StylesProvider useStyles={useContrastInputBaseStyles}>

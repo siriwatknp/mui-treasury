@@ -7,4 +7,4 @@ category: 'component'
 path: '<%= category %>/<%= name %>'
 ---
 
-`embed:components/<%= category %>/<%= name %>/<%= displayName %>.js`
+`embed:components/<%= category %>/<%= name %>/<%= displayName %>Demo.js`
