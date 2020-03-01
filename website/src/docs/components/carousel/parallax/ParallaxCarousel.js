@@ -222,7 +222,7 @@ const ParallaxCarousel = () => {
 // hide-start
 ParallaxCarousel.metadata = {
   title: 'Parallax',
-  path: 'carousel/parallax',
+  path: 'component/carousel/parallax',
   size: 'huge',
   frameProps: {
     width: '100%',

@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'card/profile'
+path: 'component/card/profile'
 ---
 
 `embed:components/card/profile/ProfileCard.js`

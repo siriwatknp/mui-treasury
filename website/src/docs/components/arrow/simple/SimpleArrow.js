@@ -30,7 +30,7 @@ SimpleArrow.defaultProps = {};
 // hide-start
 SimpleArrow.metadata = {
   title: 'Simple',
-  path: 'arrow/simple',
+  path: 'component/arrow/simple',
   creators: [require('constants/creators').siriwatknp],
   files: [
     {

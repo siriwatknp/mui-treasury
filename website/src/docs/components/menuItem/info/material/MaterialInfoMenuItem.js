@@ -23,7 +23,7 @@ const MaterialInfoMenuItemDemo = () => {
 // hide-start
 MaterialInfoMenuItemDemo.metadata = {
   title: 'Material Info',
-  path: 'menuItem/info/material',
+  path: 'component/menuItem/info/material',
   creators: [require('constants/creators').siriwatknp],
   files: [
     {

@@ -86,7 +86,7 @@ const KanbanCard = ({ className }) => {
 KanbanCard.metadata = {
   title: 'Kanban',
   description: 'Project management system',
-  path: 'card/kanban',
+  path: 'component/card/kanban',
   frameProps: {
     bgcolor: 'rgb(245, 248, 250)',
   },

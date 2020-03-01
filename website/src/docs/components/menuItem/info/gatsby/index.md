@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'menuItem/info/gatsby'
+path: 'component/menuItem/info/gatsby'
 ---
 
 `embed:components/menuItem/info/gatsby/GatsbyInfoMenuItem.js`

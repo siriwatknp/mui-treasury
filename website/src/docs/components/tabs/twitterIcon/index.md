@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'tabs/twitterIcon'
+path: 'component/tabs/twitterIcon'
 ---
 
 `embed:components/tabs/twitterIcon/TwitterIconTabs.js`

@@ -42,7 +42,7 @@ const MaterialToggleMenuItemDemo = () => {
 // hide-start
 MaterialToggleMenuItemDemo.metadata = {
   title: 'Material Toggle',
-  path: 'menuItem/toggle/material',
+  path: 'component/menuItem/toggle/material',
   creators: [require('constants/creators').siriwatknp],
   files: [
     {

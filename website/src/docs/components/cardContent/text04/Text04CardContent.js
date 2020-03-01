@@ -24,7 +24,7 @@ const Text04CardContent = () => {
 // hide-start
 Text04CardContent.metadata = {
   title: 'Text IV',
-  path: 'cardContent/text04',
+  path: 'component/cardContent/text04',
   createdAt: 'Mon Feb 10 2020',
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
 };

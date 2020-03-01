@@ -47,7 +47,7 @@ const MaterialActionToggleItemDemo = () => {
 // hide-start
 MaterialActionToggleItemDemo.metadata = {
   title: 'Material Action Toggle',
-  path: 'menuItem/actionToggle/material',
+  path: 'component/menuItem/actionToggle/material',
   creators: [require('constants/creators').siriwatknp],
   files: [
     {

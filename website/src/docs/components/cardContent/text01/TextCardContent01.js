@@ -25,7 +25,7 @@ const TextCardContent01 = () => {
 // hide-start
 TextCardContent01.metadata = {
   title: 'Text I',
-  path: 'cardContent/text01',
+  path: 'component/cardContent/text01',
   creators: [require('constants/creators').siriwatknp],
   files: [
     {

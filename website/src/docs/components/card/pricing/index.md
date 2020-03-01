@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'card/pricing'
+path: 'component/card/pricing'
 ---
 
 `embed:components/card/pricing/PricingCard.js`

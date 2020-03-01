@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'card/project'
+path: 'component/card/project'
 ---
 
 `embed:components/card/project/ProjectCard.js`

@@ -23,7 +23,7 @@ const GatsbyInfoMenuItem = () => {
 // hide-start
 GatsbyInfoMenuItem.metadata = {
   title: 'Gatsby Info',
-  path: 'menuItem/info/gatsby',
+  path: 'component/menuItem/info/gatsby',
   creators: [require('constants/creators').siriwatknp],
   files: [
     {

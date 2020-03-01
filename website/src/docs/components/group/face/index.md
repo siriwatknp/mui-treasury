@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'group/face'
+path: 'component/group/face'
 ---
 
 `embed:components/group/face/FaceGroup.js`

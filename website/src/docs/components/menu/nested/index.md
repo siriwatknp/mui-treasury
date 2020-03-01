@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'menu/nested'
+path: 'component/menu/nested'
 ---
 
 `embed:components/menu/nested/NestedMenuDemo.js`

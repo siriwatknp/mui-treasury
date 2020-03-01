@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'indicator/dot'
+path: 'component/indicator/dot'
 ---
 
 `embed:components/indicator/dot/DotIndicatorDemo.js`

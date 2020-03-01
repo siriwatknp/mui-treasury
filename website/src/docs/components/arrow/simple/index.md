@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'arrow/simple'
+path: 'component/arrow/simple'
 ---
 
 `embed:components/arrow/simple/SimpleArrow.js`

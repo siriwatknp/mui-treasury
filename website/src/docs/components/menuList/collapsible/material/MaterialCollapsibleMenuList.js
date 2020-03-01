@@ -109,7 +109,7 @@ const subMenus2 = [
 // hide-start
 MaterialCollapsibleMenuList.metadata = {
   title: 'Material Collapse',
-  path: 'menuList/collapse/material',
+  path: 'component/menuList/collapse/material',
   creators: [require('constants/creators').siriwatknp],
   files: [
     {

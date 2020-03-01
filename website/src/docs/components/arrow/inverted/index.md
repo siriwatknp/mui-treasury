@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'arrow/inverted'
+path: 'component/arrow/inverted'
 ---
 
 `embed:components/arrow/inverted/InvertedArrow.js`

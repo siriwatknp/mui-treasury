@@ -11,7 +11,7 @@ const NestedMenuDemo = () => {
 // hide-start
 NestedMenuDemo.metadata = {
   title: 'Nested',
-  path: 'menu/nested',
+  path: 'component/menu/nested',
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Sat Feb 29 2020',

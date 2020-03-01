@@ -1,23 +1,23 @@
 import { customComponents as arrows } from 'docs/components/arrow';
-import { customComponents as buttons } from 'docs/components/button';
+import { customComponents as buttons } from 'docs/styles/button';
 import { customComponents as cards } from 'docs/components/card';
 import { customComponents as cardContents } from 'docs/components/cardContent';
 import { customComponents as cardFooters } from 'docs/components/cardFooter';
 import { customComponents as cardHeaders } from 'docs/components/cardHeader';
-import { customComponents as cardMedia } from 'docs/components/cardMedia';
+import { customComponents as cardMedia } from 'docs/styles/cardMedia';
 import { customComponents as carousels } from 'docs/components/carousel';
 import { customComponents as chatMsgs } from 'docs/components/chatMsg';
 import { customComponents as charts } from 'docs/components/chart';
-import { customComponents as flexs } from 'docs/components/flex';
-import { customComponents as grids } from 'docs/components/grid';
+import { customComponents as flexs } from 'docs/styles/flex';
+import { customComponents as grids } from 'docs/styles/grid';
 import { customComponents as groups } from 'docs/components/group';
-import { customComponents as icons } from 'docs/components/icon';
+import { customComponents as icons } from 'docs/styles/icon';
 import { customComponents as indicators } from 'docs/components/indicator';
-import { customComponents as inputs } from 'docs/components/input';
+import { customComponents as inputBases } from 'docs/styles/inputBase';
 import { customComponents as menuItems } from 'docs/components/menuItem';
 import { customComponents as menuList } from 'docs/components/menuList';
 import { customComponents as rips } from 'docs/components/rip';
-import { customComponents as shadows } from 'docs/components/shadow';
+import { customComponents as shadows } from 'docs/styles/shadow';
 import { customComponents as slides } from 'docs/components/slide';
 import { customComponents as tabs } from 'docs/components/tabs';
 import { customComponents as tags } from 'docs/components/tag';
@@ -253,7 +253,7 @@ export default {
         {
           key: 'input',
           label: 'Input',
-          total: inputs.length,
+          total: inputBases.length,
           to: '/components/input',
         },
         {

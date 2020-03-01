@@ -18,7 +18,7 @@ const PeopleCardFooterDemo = () => (
 // hide-start
 PeopleCardFooterDemo.metadata = {
   title: 'People',
-  path: 'cardFooter/people', // must match its index.md
+  path: 'component/cardFooter/people', // must match its index.md
   creators: [require('constants/creators').siriwatknp],
   files: [
     {

@@ -160,7 +160,7 @@ const getMenus = () => [
 // hide-start
 MaterialNestedMenuList.metadata = {
   title: 'Material Nested',
-  path: 'menuList/nested/material',
+  path: 'component/menuList/nested/material',
   creators: [require('constants/creators').siriwatknp],
   files: [
     { pkg: 'mui-components', path: 'menuList/nested/NestedMenuList.js' },

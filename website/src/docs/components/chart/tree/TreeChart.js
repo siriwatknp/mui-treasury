@@ -90,7 +90,7 @@ const TreeChart = () => {
 // hide-start
 TreeChart.metadata = {
   title: 'Tree',
-  path: 'chart/tree',
+  path: 'component/chart/tree',
   description: 'Base component for building tree',
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Wed Feb 19 2020',

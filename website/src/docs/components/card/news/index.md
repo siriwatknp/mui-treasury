@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'card/news'
+path: 'component/card/news'
 ---
 
 `embed:components/card/news/NewsCard.js`

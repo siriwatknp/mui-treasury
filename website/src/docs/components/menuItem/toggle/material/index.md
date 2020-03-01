@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'menuItem/toggle/material'
+path: 'component/menuItem/toggle/material'
 ---
 
 `embed:components/menuItem/toggle/material/MaterialToggleMenuItem.js`

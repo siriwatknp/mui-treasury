@@ -31,7 +31,7 @@ InvertedArrow.defaultProps = {};
 // hide-start
 InvertedArrow.metadata = {
   title: 'Inverted',
-  path: 'arrow/inverted',
+  path: 'component/arrow/inverted',
   frameProps: {
     bgcolor: '#1c1c1c',
   },

@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'menuItem/actionToggle/gatsby'
+path: 'component/menuItem/actionToggle/gatsby'
 ---
 
 `embed:components/menuItem/actionToggle/gatsby/GatsbyActionToggleItem.js`

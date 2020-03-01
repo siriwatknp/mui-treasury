@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'menuList/nested/material'
+path: 'component/menuList/nested/material'
 ---
 
 `embed:components/menuList/nested/material/MaterialNestedMenuList.js`

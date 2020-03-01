@@ -167,7 +167,7 @@ const getMenus = () => [
 // hide-start
 MaterialNestedMenuList.metadata = {
   title: 'Gatsby Nested',
-  path: 'menuList/nested/gatsby',
+  path: 'component/menuList/nested/gatsby',
   creators: [require('constants/creators').siriwatknp],
   files: [
     { pkg: 'mui-components', path: 'menuList/nested/NestedMenuList.js' },

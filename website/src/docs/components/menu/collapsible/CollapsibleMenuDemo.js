@@ -56,7 +56,7 @@ const CollapsibleMenuDemo = () => {
 // hide-start
 CollapsibleMenuDemo.metadata = {
   title: 'Collapsible',
-  path: 'menu/collapsible',
+  path: 'component/menu/collapsible',
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Sat Feb 29 2020',

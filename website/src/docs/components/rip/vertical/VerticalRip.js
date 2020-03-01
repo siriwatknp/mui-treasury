@@ -22,7 +22,7 @@ VerticalRip.defaultProps = {};
 // hide-start
 VerticalRip.metadata = {
   title: 'Vertical',
-  path: 'rip/vertical',
+  path: 'component/rip/vertical',
   frameProps: {
     bgcolor: 'primary.main',
   },

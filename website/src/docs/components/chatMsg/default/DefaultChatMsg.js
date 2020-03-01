@@ -26,7 +26,7 @@ const DefaultChatMsg = () => (
 DefaultChatMsg.metadata = {
   isDefault: true,
   title: 'Default',
-  path: 'chatMsg/default',
+  path: 'component/chatMsg/default',
   files: [
     { pkg: 'mui-components', path: 'chatMsg/ChatMsg.js' },
     { pkg: 'mui-styles', path: 'chatMsg/default/defaultChatMsg.styles.js' },

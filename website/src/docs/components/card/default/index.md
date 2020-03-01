@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'card/default'
+path: 'component/card/default'
 ---
 
 `embed:components/card/default/MuiCard.js`

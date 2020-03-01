@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'cardFooter/people'
+path: 'component/cardFooter/people'
 ---
 
 `embed:components/cardFooter/people/PeopleCardFooterDemo.js`

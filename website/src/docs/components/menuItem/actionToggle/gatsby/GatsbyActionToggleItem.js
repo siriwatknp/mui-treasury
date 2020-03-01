@@ -44,7 +44,7 @@ const GatsbyActionToggleItem = () => {
 // hide-start
 GatsbyActionToggleItem.metadata = {
   title: 'Gatsby Action Toggle',
-  path: 'menuItem/actionToggle/gatsby',
+  path: 'component/menuItem/actionToggle/gatsby',
   creators: [require('constants/creators').siriwatknp],
   files: [
     {
