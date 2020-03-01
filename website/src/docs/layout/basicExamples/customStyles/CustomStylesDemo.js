@@ -87,7 +87,7 @@ const CustomStylesDemo = () => {
 // hide-start
 CustomStylesDemo.metadata = {
   title: 'Custom Styles',
-  path: 'basicExamples/customStyles',
+  path: 'layout/basicExamples/customStyles',
   files: [],
   relates: [],
 };

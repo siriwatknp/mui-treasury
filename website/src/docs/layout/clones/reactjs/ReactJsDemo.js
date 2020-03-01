@@ -231,7 +231,7 @@ const getData = () => [
 // hide-start
 ReactJsDemo.metadata = {
   title: 'ReactJs',
-  path: 'clones/reactjs',
+  path: 'layout/clones/reactjs',
   files: [],
   relates: [],
 };

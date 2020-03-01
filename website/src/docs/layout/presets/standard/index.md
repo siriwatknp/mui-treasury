@@ -1,6 +1,5 @@
 ---
-category: 'layout'
-path: 'presets/standard'
+path: 'layout/presets/standard'
 ---
 
 `embed:layout/presets/standard/StandardLayout.js`

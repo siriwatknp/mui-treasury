@@ -57,7 +57,7 @@ const FixedLayout = () => (
 // hide-start
 FixedLayout.metadata = {
   title: 'Fixed Layout',
-  path: 'presets/fixed',
+  path: 'layout/presets/fixed',
   files: [],
   relates: [],
 };

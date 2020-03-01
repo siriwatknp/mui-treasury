@@ -92,7 +92,7 @@ const CustomThemeDemo = () => {
 // hide-start
 CustomThemeDemo.metadata = {
   title: 'Custom Theme',
-  path: 'basicExamples/customTheme',
+  path: 'layout/basicExamples/customTheme',
   files: [],
   relates: [],
 };

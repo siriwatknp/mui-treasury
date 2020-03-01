@@ -77,7 +77,7 @@ const ControlSidebarDemo = () => {
 // hide-start
 ControlSidebarDemo.metadata = {
   title: 'Control Sidebar',
-  path: 'basicExamples/controlSidebar',
+  path: 'layout/basicExamples/controlSidebar',
   files: [],
   relates: [],
 };

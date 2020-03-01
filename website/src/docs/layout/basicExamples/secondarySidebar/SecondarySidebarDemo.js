@@ -70,7 +70,7 @@ const SecondarySidebarDemo = () => {
 // hide-start
 SecondarySidebarDemo.metadata = {
   title: 'Secondary Sidebar',
-  path: 'basicExamples/secondarySidebar',
+  path: 'layout/basicExamples/secondarySidebar',
   files: [],
   relates: [],
 };
