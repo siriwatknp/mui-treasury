@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@mui-treasury/styling';
-import createStyles from './FeatureWidget.styles';
+import styles from './featureWidget.styles';
 
-const FeatureWidget = withStyles(createStyles, { name: 'FeatureWidget' })(
+const FeatureWidget = withStyles(styles, { name: 'FeatureWidget' })(
   props => {
     const { css, renderIcon, title, content, children } = props;
     return (

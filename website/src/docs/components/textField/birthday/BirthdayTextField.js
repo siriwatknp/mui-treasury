@@ -105,7 +105,7 @@ const BirthdayTextField = () => {
 // hide-start
 BirthdayTextField.metadata = {
   title: 'Birthday',
-  path: 'textField/birthday',
+  path: 'component/textField/birthday',
   description: 'Works well for date form',
   renderedWithoutIframe: true,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first

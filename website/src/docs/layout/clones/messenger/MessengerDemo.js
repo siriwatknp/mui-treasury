@@ -168,7 +168,7 @@ const MessengerDemo = () => {
 // hide-start
 MessengerDemo.metadata = {
   title: 'Messenger',
-  path: 'clones/messenger',
+  path: 'layout/clones/messenger',
   files: [],
   relates: [],
 };

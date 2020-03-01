@@ -28,7 +28,7 @@ const FlexyTag = () => {
 // hide-start
 FlexyTag.metadata = {
   title: 'Flexy',
-  path: 'tag/flexy',
+  path: 'component/tag/flexy',
   creators: [require('constants/creators').siriwatknp],
   files: [
     {

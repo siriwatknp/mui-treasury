@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'tag/flexy'
+path: 'component/tag/flexy'
 ---
 
 `embed:components/tag/flexy/FlexyTag.js`

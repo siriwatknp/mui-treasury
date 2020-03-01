@@ -1,6 +1,5 @@
 ---
-category: 'layout'
-path: 'presets/muiTreasury'
+path: 'layout/presets/muiTreasury'
 ---
 
 `embed:layout/presets/muiTreasury/MuiTreasuryLayout.js`

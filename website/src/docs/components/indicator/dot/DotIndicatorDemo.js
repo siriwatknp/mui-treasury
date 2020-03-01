@@ -19,7 +19,7 @@ const DotIndicatorDemo = () => {
 // hide-start
 DotIndicatorDemo.metadata = {
   title: 'Dot',
-  path: 'indicator/dot',
+  path: 'component/indicator/dot',
   creators: [require('constants/creators').siriwatknp],
   files: [
     {

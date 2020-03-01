@@ -30,7 +30,7 @@ const InsideLeftLineTag = () => {
 // hide-start
 InsideLeftLineTag.metadata = {
   title: 'LeftLine',
-  path: 'tag/insideLeftLine',
+  path: 'component/tag/insideLeftLine',
   frameProps: {
     bgcolor: '#f5f5f5',
   },

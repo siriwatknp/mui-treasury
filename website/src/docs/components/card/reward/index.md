@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'card/reward'
+path: 'component/card/reward'
 ---
 
 `embed:components/card/reward/RewardCard.js`

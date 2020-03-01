@@ -1,6 +1,5 @@
 ---
-category: 'layout'
-path: 'basicExamples/customStyles'
+path: 'layout/basicExamples/customStyles'
 ---
 
 `embed:layout/basicExamples/customStyles/CustomStylesDemo.js`

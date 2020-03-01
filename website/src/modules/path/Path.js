@@ -1,5 +1,9 @@
 import { mapNestedPath } from '@mui-treasury/utils';
-import MENUS, { PKG } from '../../constants/menus';
+import {
+  COMPONENT_MENUS,
+  LAYOUT_MENUS,
+  STYLE_MENUS,
+} from '../../constants/menus';
 
 const getHomeHandler = () => {
   return {
@@ -18,7 +22,14 @@ const getHomeHandler = () => {
 const getComponentHandler = () => {
   return {
     pattern: /\/components.*/g,
-    sidebarMenus: MENUS[PKG.components],
+    sidebarMenus: COMPONENT_MENUS,
+  };
+};
+
+const getStylesHandler = () => {
+  return {
+    pattern: /\/styles.*/g,
+    sidebarMenus: STYLE_MENUS,
   };
 };
 
@@ -32,7 +43,7 @@ const getLayoutDevelop = () => {
 const getLayoutHandler = () => {
   return {
     pattern: /\/layout.*/g,
-    sidebarMenus: MENUS[PKG.layouts],
+    sidebarMenus: LAYOUT_MENUS,
     parseConfig: c => ({
       ...c,
       sidebar: {
@@ -79,6 +90,7 @@ const getPathValue = (pathname, key) =>
   getFirstValue(
     [
       getHomeHandler(),
+      getStylesHandler(),
       getComponentHandler(),
       getLayoutDevelop(),
       getLayoutHandler(),

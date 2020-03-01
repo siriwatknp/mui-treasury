@@ -7,7 +7,7 @@ import GitHubButton from 'react-github-btn';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import HorzMenuList from '@mui-treasury/components/menuList/HorzMenuList';
-import MENUS, { PKG } from 'constants/menus';
+import { NAV_MENUS } from 'constants/menus';
 import { useScreen } from '@mui-treasury/layout';
 
 const useStyles = makeStyles(() => ({
@@ -70,7 +70,7 @@ const PageHeader = () => {
               className={cx(styles.nav, !shouldRenderLogo && styles.navOffset)}
               Link={Link}
               selectedKey={key => firstPath === key}
-              menus={MENUS[PKG.nav]}
+              menus={NAV_MENUS}
             />
             <Box ml={'auto'} mr={2} />
             <Box lineHeight={0}>

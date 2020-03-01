@@ -21,7 +21,6 @@ FamilyChartPage.propTypes = {
   }).isRequired,
   uri: PropTypes.string.isRequired,
   pageContext: PropTypes.shape({}).isRequired,
-  pathContext: PropTypes.shape({}).isRequired,
 };
 
 export default FamilyChartPage;

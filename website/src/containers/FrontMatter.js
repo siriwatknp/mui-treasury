@@ -1,12 +1,11 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 
 const FrontMatter = ({ children, match }) => {
   const data = useStaticQuery(graphql`
     query {
-      allMarkdownRemark(
-        filter: { frontmatter: { category: { eq: "component" } } }
-      ) {
+      allMarkdownRemark {
         nodes {
           frontmatter {
             path
@@ -19,7 +18,11 @@ const FrontMatter = ({ children, match }) => {
   const {
     allMarkdownRemark: { nodes },
   } = data;
-  const result = nodes.find(({ frontmatter: { path } }) => path === match);
+  const result = React.useMemo(
+    () => nodes.find(({ frontmatter: { path } }) => path === match),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [match, nodes.length]
+  );
   if (!match || !result) {
     return null;
   }

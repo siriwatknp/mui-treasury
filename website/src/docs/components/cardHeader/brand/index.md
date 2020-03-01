@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'cardHeader/brand'
+path: 'component/cardHeader/brand'
 ---
 
 `embed:components/cardHeader/brand/BrandCardHeaderDemo.js`

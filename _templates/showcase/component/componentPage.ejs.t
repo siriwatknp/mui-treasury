@@ -5,7 +5,7 @@ unless_exists: true
 <%displayName = h.changeCase.pascal(name) + h.changeCase.pascal(category)%>import React from 'react';
 import PropTypes from 'prop-types';
 import ComponentShowcase from 'containers/Showcase/ComponentShowcase';
-import <%= displayName %> from 'docs/components/<%= category %>/<%= name %>/<%= displayName %>';
+import <%= displayName %> from 'docs/components/<%= category %>/<%= name %>/<%= displayName %>Demo';
 
 const <%= displayName %>Page = () => {
   return (
@@ -25,7 +25,6 @@ const <%= displayName %>Page = () => {
   }).isRequired,
   uri: PropTypes.string.isRequired,
   pageContext: PropTypes.shape({}).isRequired,
-  pathContext: PropTypes.shape({}).isRequired,
 };
 
 export default <%= displayName %>Page;

@@ -153,7 +153,7 @@ const PlaneTicketCard = () => {
 PlaneTicketCard.metadata = {
   title: 'Plane Ticket',
   description: 'An inspiration ticket from Pinterest',
-  path: 'card/planeTicket',
+  path: 'component/card/planeTicket',
   size: 'large',
   frameProps: {
     bgcolor: mainColor,

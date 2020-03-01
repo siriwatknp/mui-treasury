@@ -24,7 +24,7 @@ const TwitterIconTabs = () => {
 // hide-start
 TwitterIconTabs.metadata = {
   title: 'Twitter Icon',
-  path: 'tabs/twitterIcon',
+  path: 'component/tabs/twitterIcon',
   size: 'large',
   creators: [require('constants/creators').siriwatknp],
   files: [

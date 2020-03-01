@@ -85,7 +85,7 @@ const ElevatedHeaderCard = () => {
 // hide-start
 ElevatedHeaderCard.metadata = {
   title: 'Elevated Header',
-  path: 'card/elevatedHeader',
+  path: 'component/card/elevatedHeader',
   creators: [require('constants/creators').siriwatknp],
   files: [
     {

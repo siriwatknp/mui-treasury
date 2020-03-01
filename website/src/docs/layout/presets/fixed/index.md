@@ -1,6 +1,5 @@
 ---
-category: 'layout'
-path: 'presets/fixed'
+path: 'layout/presets/fixed'
 ---
 
 `embed:layout/presets/fixed/FixedLayout.js`

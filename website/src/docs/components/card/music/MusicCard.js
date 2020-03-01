@@ -50,7 +50,7 @@ const MusicCard = () => {
 // hide-start
 MusicCard.metadata = {
   title: 'Music',
-  path: 'card/music',
+  path: 'component/card/music',
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Mon Feb 10 2020',
   files: [

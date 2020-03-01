@@ -1,6 +1,5 @@
 ---
-category: 'layout'
-path: 'basicExamples/secondarySidebar'
+path: 'layout/basicExamples/secondarySidebar'
 ---
 
 `embed:layout/basicExamples/secondarySidebar/SecondarySidebarDemo.js`

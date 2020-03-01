@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'textField/birthday'
+path: 'component/textField/birthday'
 ---
 
 `embed:components/textField/birthday/BirthdayTextField.js`

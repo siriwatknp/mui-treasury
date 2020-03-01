@@ -82,7 +82,7 @@ const ProfileCard = () => {
 ProfileCard.metadata = {
   title: 'Profile',
   description: 'Social network',
-  path: 'card/profile',
+  path: 'component/card/profile',
   creators: [require('constants/creators').siriwatknp],
   files: [],
 };

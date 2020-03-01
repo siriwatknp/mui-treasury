@@ -75,7 +75,7 @@ const ParallaxSlideDemo = () => {
 // hide-start
 ParallaxSlideDemo.metadata = {
   title: 'Parallax',
-  path: 'slide/parallax',
+  path: 'component/slide/parallax',
   size: 'large',
   creators: [require('constants/creators').siriwatknp],
   files: [{ pkg: 'mui-components', path: 'slide/parallax/ParallaxSlide.js' }],

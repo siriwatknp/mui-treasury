@@ -67,7 +67,7 @@ const PostCard = () => {
 // hide-start
 PostCard.metadata = {
   title: 'Post',
-  path: 'card/post',
+  path: 'component/card/post',
   creators: [require('constants/creators').siriwatknp],
   files: [],
 };

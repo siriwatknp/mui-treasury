@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'card/post'
+path: 'component/card/post'
 ---
 
 `embed:components/card/post/PostCard.js`

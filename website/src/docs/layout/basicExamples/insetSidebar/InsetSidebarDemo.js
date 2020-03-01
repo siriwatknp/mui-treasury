@@ -59,7 +59,7 @@ const InsetSidebarDemo = () => {
 // hide-start
 InsetSidebarDemo.metadata = {
   title: 'Inset Sidebar',
-  path: 'basicExamples/insetSidebar',
+  path: 'layout/basicExamples/insetSidebar',
   files: [],
   relates: [],
 };

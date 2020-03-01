@@ -1,6 +1,5 @@
 ---
-category: 'component'
-path: 'card/tag'
+path: 'component/card/tag'
 ---
 
 `embed:components/card/tag/TagCard.js`

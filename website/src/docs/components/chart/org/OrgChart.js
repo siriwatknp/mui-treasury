@@ -49,7 +49,7 @@ const OrgChartDemo = () => {
 // hide-start
 OrgChartDemo.metadata = {
   title: 'Organization',
-  path: 'chart/org',
+  path: 'component/chart/org',
   description: 'Extends tree to form company component',
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Sun Feb 16 2020',

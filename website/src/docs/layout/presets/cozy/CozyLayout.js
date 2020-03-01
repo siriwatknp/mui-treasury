@@ -57,7 +57,7 @@ const CozyLayout = () => (
 // hide-start
 CozyLayout.metadata = {
   title: 'Cozy',
-  path: 'presets/cozy',
+  path: 'layout/presets/cozy',
   files: [],
   relates: [],
 };

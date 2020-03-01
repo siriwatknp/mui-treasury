@@ -100,7 +100,7 @@ const BlogCard = () => {
 BlogCard.metadata = {
   title: 'Blog',
   description: 'Personal Blog',
-  path: 'card/blog',
+  path: 'component/card/blog',
   size: 'large',
   creators: [require('constants/creators').siriwatknp],
   files: [

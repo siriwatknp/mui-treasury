@@ -22,12 +22,13 @@ VerticalRip.defaultProps = {};
 // hide-start
 VerticalRip.metadata = {
   title: 'Vertical',
-  path: 'rip/vertical',
+  path: 'component/rip/vertical',
   frameProps: {
     bgcolor: 'primary.main',
   },
   creators: [require('constants/creators').siriwatknp],
   files: [
+    { pkg: 'mui-components', path: 'rip/verticalTicket/VerticalTicketRip.js' },
     {
       pkg: 'mui-styles',
       path: 'rip/vertical/verticalRip.styles.js',

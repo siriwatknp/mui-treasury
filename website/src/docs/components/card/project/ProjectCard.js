@@ -47,7 +47,7 @@ const ProjectCard = () => {
 // hide-start
 ProjectCard.metadata = {
   title: 'Project',
-  path: 'card/project',
+  path: 'component/card/project',
   files: [
     { pkg: 'mui-styles', path: 'shadow/lightTop/lightTopShadow.styles.js' },
     { pkg: 'mui-components', path: 'cardHeader/brand/BrandCardHeader.js' },
