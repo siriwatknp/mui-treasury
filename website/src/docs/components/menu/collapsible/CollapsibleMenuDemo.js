@@ -62,6 +62,10 @@ CollapsibleMenuDemo.metadata = {
   createdAt: 'Sat Feb 29 2020',
   frameProps: {}, // props that applied to Box in grid view
   size: 'medium', // can be 'large' | 'huge' for grid size
+  files: [
+    { pkg: 'mui-components', path: 'menu/collapsible/CollapsibleMenu.js' },
+    { pkg: 'mui-components', path: 'menu/collapsible/collapsibleMenu.styles.js' },
+  ]
 };
 // hide-end
 

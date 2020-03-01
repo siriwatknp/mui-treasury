@@ -4,7 +4,7 @@ import Menu from '@mui-treasury/components/menu/nested';
 const NestedMenuDemo = () => {
   return (
     <div>
-      <Menu menus={getMenus()}  />
+      <Menu menus={getMenus()} />
     </div>
   );
 };
@@ -17,6 +17,10 @@ NestedMenuDemo.metadata = {
   createdAt: 'Sat Feb 29 2020',
   frameProps: {}, // props that applied to Box in grid view
   size: 'medium', // can be 'large' | 'huge' for grid size
+  files: [
+    { pkg: 'mui-components', path: 'menu/nested/NestedMenu.js' },
+    { pkg: 'mui-components', path: 'menu/nested/nestedMenu.styles.js' },
+  ],
 };
 // hide-end
 const getMenus = () => [

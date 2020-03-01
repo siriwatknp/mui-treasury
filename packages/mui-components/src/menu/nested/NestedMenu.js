@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { mapNestedPath } from '@mui-treasury/utils';
 import usePreserveState from '@mui-treasury/utils/usePreserveState';
 import { StylesProvider } from './StylesContext';
+import List from './submodules/List';
 import ListItem from './submodules/ListItem';
 import Parent from './submodules/Parent';
 import Collapse from './submodules/Collapse';
@@ -124,11 +125,12 @@ const NestedMenu = ({
   };
   return (
     <StylesProvider useStyles={useStyles}>
-      {children || renderChildren(menus, 1)}
+      {children || <List level={1}>{renderChildren(menus, 1)}</List>}
     </StylesProvider>
   );
 };
 
+NestedMenu.List = List;
 NestedMenu.ListItem = ListItem;
 NestedMenu.Parent = Parent;
 NestedMenu.Collapse = Collapse;

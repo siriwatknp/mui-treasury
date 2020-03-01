@@ -8,7 +8,7 @@ import Remove from '@material-ui/icons/Remove';
 import CollapsibleMenu from './CollapsibleMenu';
 import SwitchToggle from '../../toggle/switch';
 import RowToggle from '../../toggle/row';
-import { useCuteToggleStyles } from '@mui-treasury/styles/toggle/cute';
+import { useCuteToggleStyles } from '@mui-treasury/styles/switchToggle/cute';
 import { useGatsbyRowToggleStyles } from '@mui-treasury/styles/rowToggle/gatsby';
 import { useGatsbyListItemStyles } from '@mui-treasury/styles/listItem/gatsby';
 import { useMaterialRowToggleStyles } from '@mui-treasury/styles/rowToggle/material';

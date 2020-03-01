@@ -5,6 +5,8 @@ export default ({ palette }) => ({
   },
   rootSelected: {},
   listItem: {
+    fontFamily:
+      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
     borderRadius: 3,
     color: palette.text.secondary,
     margin: 0,

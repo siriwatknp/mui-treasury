@@ -29,7 +29,7 @@ export default theme => {
     lv1Parent: {},
     lv1ParentActive: {},
     lv1ParentCollapsed: {},
-    // list start at lv2
+    lv1List: {},
     lv1Row: {},
     lv1RowSelected: {},
     lv1RowItem: {},
@@ -53,6 +53,7 @@ export default theme => {
     },
     lv2ItemSelected: {},
 
+    lv3List: {},
     lv3Item: {
       paddingLeft: '3rem',
       width: 'auto',

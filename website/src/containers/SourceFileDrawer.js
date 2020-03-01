@@ -6,7 +6,6 @@ import Fab from '@material-ui/core/Fab';
 import Drawer from '@material-ui/core/Drawer';
 import CodeRounded from '@material-ui/icons/CodeRounded';
 import SourceFile from './SourceFile';
-import LayoutFrontMatter from './LayoutFrontMatter';
 
 const useStyles = makeStyles(({ spacing, breakpoints }) => ({
   sourceTrigger: {
@@ -36,7 +35,6 @@ const SourceFileDrawer = ({ metadata, source }) => {
             <h2 style={{ margin: 0 }}>How to use</h2>
           </Box>
           <SourceFile
-            component={LayoutFrontMatter}
             match={metadata.path}
             fileName={`${metadata.title}.js`}
             source={source}

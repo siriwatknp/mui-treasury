@@ -2,4 +2,4 @@
 path: 'styles/shadow/softRise'
 ---
 
-`embed:components/shadow/softRise/SoftRiseShadow.js`
+`embed:styles/shadow/softRise/SoftRiseShadow.js`

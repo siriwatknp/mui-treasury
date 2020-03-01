@@ -1,4 +1,3 @@
-import { customComponents as arrows } from 'docs/components/arrow';
 import { customComponents as cards } from 'docs/components/card';
 import { customComponents as cardContents } from 'docs/components/cardContent';
 import { customComponents as cardFooters } from 'docs/components/cardFooter';
@@ -8,7 +7,6 @@ import { customComponents as chatMsgs } from 'docs/components/chatMsg';
 import { customComponents as charts } from 'docs/components/chart';
 import { customComponents as groups } from 'docs/components/group';
 import { customComponents as indicators } from 'docs/components/indicator';
-import { customComponents as menuItems } from 'docs/components/menuItem';
 import { customComponents as rips } from 'docs/components/rip';
 import { customComponents as slides } from 'docs/components/slide';
 import { customComponents as tabs } from 'docs/components/tabs';
@@ -161,15 +159,42 @@ export const LAYOUT_MENUS = [
 
 export const COMPONENT_MENUS = [
   {
-    key: 'basic',
-    label: 'Basic',
+    key: 'mui-extended', // use material-ui as a main component and add more features.
+    label: 'Material-UI Extended',
     subMenus: [
       {
-        key: 'arrow',
-        label: 'Arrow',
-        total: arrows.length,
-        to: '/components/arrow',
+        key: 'group',
+        label: 'Group',
+        total: groups.length,
+        to: '/components/group',
       },
+      {
+        key: 'tabs',
+        label: 'Tabs',
+        total: tabs.length,
+        to: '/components/tabs',
+      },
+      { key: 'tag', label: 'Tag', total: tags.length, to: '/components/tag' },
+      {
+        key: 'text-field',
+        label: 'TextField',
+        total: textFields.length,
+        isToggleOutside: true,
+        to: '/components/text-field',
+        subMenus: [
+          {
+            key: 'birthday',
+            label: 'Birthday',
+            to: '/components/text-field/birthday',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    key: 'community-custom', // use some material-ui as a base and material-ui styling solution to create brand new component.
+    label: 'Community Custom',
+    subMenus: [
       {
         key: 'card-content',
         label: 'Card Content',
@@ -187,6 +212,43 @@ export const COMPONENT_MENUS = [
         label: 'Card Header',
         total: cardHeaders.length,
         to: '/components/card-header',
+      },
+      {
+        key: 'chat-msg',
+        label: 'Chat Message',
+        total: chatMsgs.length,
+        to: '/components/chat-msg',
+      },
+      {
+        key: 'indicator',
+        label: 'Indicator',
+        total: indicators.length,
+        to: '/components/indicator',
+      },
+      { key: 'rip', label: 'Rip', total: rips.length, to: '/components/rip' },
+      {
+        key: 'slide',
+        label: 'Slide',
+        total: slides.length,
+        to: '/components/slide',
+      },
+    ],
+  },
+  {
+    key: 'complex-composition', // compose both material-ui component & custom component together to form real world complex component.
+    label: 'Complex Composition',
+    subMenus: [
+      {
+        key: 'card',
+        label: 'Card',
+        total: cards.length,
+        to: '/components/card',
+      },
+      {
+        key: 'carousel',
+        label: 'Carousel',
+        total: carousels.length,
+        to: '/components/carousel',
       },
       {
         key: 'chart',
@@ -213,80 +275,10 @@ export const COMPONENT_MENUS = [
         ],
       },
       {
-        key: 'chat-msg',
-        label: 'Chat Message',
-        total: chatMsgs.length,
-        to: '/components/chat-msg',
-      },
-      {
-        key: 'group',
-        label: 'Group',
-        total: groups.length,
-        to: '/components/group',
-      },
-      {
-        key: 'indicator',
-        label: 'Indicator',
-        total: indicators.length,
-        to: '/components/indicator',
-      },
-      {
-        key: 'menu-item',
-        label: 'Menu Item',
-        total: menuItems.length,
-        to: '/components/menu-item',
-      },
-      { key: 'rip', label: 'Rip', total: rips.length, to: '/components/rip' },
-      {
-        key: 'slide',
-        label: 'Slide',
-        total: slides.length,
-        to: '/components/slide',
-      },
-      {
-        key: 'tabs',
-        label: 'Tabs',
-        total: tabs.length,
-        to: '/components/tabs',
-      },
-      { key: 'tag', label: 'Tag', total: tags.length, to: '/components/tag' },
-    ],
-  },
-  {
-    key: 'complex',
-    label: 'Complex',
-    subMenus: [
-      {
-        key: 'card',
-        label: 'Card',
-        total: cards.length,
-        to: '/components/card',
-      },
-      {
-        key: 'carousel',
-        label: 'Carousel',
-        total: carousels.length,
-        to: '/components/carousel',
-      },
-      {
         key: 'menu',
         label: 'Menu',
         total: menu.length,
         to: '/components/menu',
-      },
-      {
-        key: 'text-field',
-        label: 'TextField',
-        total: textFields.length,
-        isToggleOutside: true,
-        to: '/components/text-field',
-        subMenus: [
-          {
-            key: 'birthday',
-            label: 'Birthday',
-            to: '/components/text-field/birthday',
-          },
-        ],
       },
     ],
   },

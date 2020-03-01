@@ -5,9 +5,9 @@ unless_exists: true
 <%displayName = h.changeCase.pascal(name) + h.changeCase.pascal(category)%>import React from 'react';
 import PropTypes from 'prop-types';
 import ComponentShowcase from 'containers/Showcase/ComponentShowcase';
-import <%= displayName %> from 'docs/styles/<%= category %>/<%= name %>/<%= displayName %>Demo';
+import <%= displayName %> from 'docs/styles/<%= category %>/<%= name %>/<%= displayName %>Style';
 
-const <%= displayName %>Page = () => {
+const <%= displayName %>StylePage = () => {
   return (
     <ComponentShowcase
       metadata={<%= displayName %>.metadata}
@@ -16,7 +16,7 @@ const <%= displayName %>Page = () => {
   );
 };
 
-<%= displayName %>Page.propTypes = {
+<%= displayName %>StylePage.propTypes = {
   path: PropTypes.string.isRequired,
   navigate: PropTypes.func.isRequired,
   location: PropTypes.shape({
@@ -27,5 +27,5 @@ const <%= displayName %>Page = () => {
   pageContext: PropTypes.shape({}).isRequired,
 };
 
-export default <%= displayName %>Page;
+export default <%= displayName %>StylePage;
 

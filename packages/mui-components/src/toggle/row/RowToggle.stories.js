@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import Box from '@material-ui/core/Box';
 import ListItem from '@material-ui/core/ListItem';
 import Add from '@material-ui/icons/Add';
-import { useCuteToggleStyles } from '@mui-treasury/styles/toggle/cute';
+import { useCuteToggleStyles } from '@mui-treasury/styles/switchToggle/cute';
 import { useGatsbyRowToggleStyles } from '@mui-treasury/styles/rowToggle/gatsby';
 import { useMaterialRowToggleStyles } from '@mui-treasury/styles/rowToggle/material';
 import { useJupiterRowToggleStyles } from '@mui-treasury/styles/rowToggle/jupiter';

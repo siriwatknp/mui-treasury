@@ -1,14 +1,14 @@
 ---
-to: website/src/docs/styles/<%= category %>/<%= name %>/<%= name + h.changeCase.pascal(category) %>Demo.js
+to: website/src/docs/styles/<%= category %>/<%= name %>/<%= h.changeCase.pascal(name) + h.changeCase.pascal(category) %>Style.js
 unless_exists: true
 ---
 <%displayName = h.changeCase.pascal(name) + h.changeCase.pascal(category)%>import React from 'react';
 
-const <%= displayName %>Demo = () => {
+const <%= displayName %>Style = () => {
   return <div><%= displayName %></div>
 };
 // hide-start
-<%= displayName %>Demo.metadata = {
+<%= displayName %>Style.metadata = {
   title: '<%= h.changeCase.title(name) %>',
   path: '<%= category %>/<%= name %>',
   renderedWithoutIframe: false,
@@ -16,7 +16,10 @@ const <%= displayName %>Demo = () => {
   createdAt: '<%= h.now() %>',
   frameProps: {}, // props that applied to Box in grid view
   size: 'medium', // can be 'large' | 'huge' for grid size
+  files: [
+    { pkg: 'mui-styles', path: '<%= category %>/<%= name %>/<%= name %><%= h.changeCase.pascal(category) %>.styles.js'},
+  ],
 };
 // hide-end
 
-export default <%= displayName %>Demo;
+export default <%= displayName %>Style;

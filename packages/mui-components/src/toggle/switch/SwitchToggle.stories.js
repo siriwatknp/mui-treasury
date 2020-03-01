@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Add from '@material-ui/icons/Add';
 import Remove from '@material-ui/icons/Remove';
 import SwitchToggle from './SwitchToggle';
-import { useCuteToggleStyles } from '@mui-treasury/styles/toggle/cute';
+import { useCuteToggleStyles } from '@mui-treasury/styles/switchToggle/cute';
 
 storiesOf('mui-components|Toggle', module).add('Switch', () => {
   const Component = () => {

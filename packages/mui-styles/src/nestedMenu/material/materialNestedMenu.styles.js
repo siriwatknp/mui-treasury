@@ -5,7 +5,11 @@ export default theme => {
   const { palette, transitions } = theme;
   return {
     ...s,
-    list: { padding: 0 },
+    list: {
+      '&:not($lv1List)': {
+        padding: 0,
+      },
+    },
     listItemSelected: {
       ...s.listItemSelected,
       fontWeight: 500,
@@ -24,6 +28,7 @@ export default theme => {
         color: palette.text.primary,
       },
     },
+    lv1List: {},
     lv2RowItem: {
       ...s.rowItem,
       paddingLeft: '2rem',
