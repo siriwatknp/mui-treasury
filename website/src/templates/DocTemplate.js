@@ -8,6 +8,8 @@ import SimpleShowcase, { Inline } from '../components/atoms/SimpleShowcase';
 const shortcodes = { Inline, Link, SimpleShowcase };
 
 const DocTemplate = ({ pageContext, children }) => {
+  if (!pageContext)
+    return <MDXProvider components={shortcodes}>{children}</MDXProvider>;
   const { frontmatter } = pageContext;
   return (
     <Box
