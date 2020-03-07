@@ -1,5 +1,5 @@
 ---
-to: website/src/docs/styles/<%= category %>/index.js
+to: website/src/docs/components/<%= category %>/<%= name %>/index.js
 unless_exists: true
 ---
 import { bundleJS } from 'utils/webpack';

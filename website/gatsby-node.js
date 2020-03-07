@@ -4,7 +4,7 @@ const path = require('path');
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
-  if (node.internal.type === `MarkdownRemark`) {
+  if (node.internal.type === `Mdx`) {
     const value = createFilePath({ node, getNode });
     createNodeField({
       name: `slug`,
@@ -14,28 +14,29 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 };
 
-exports.createPages = async tools => {
-  await createLayoutPagesFromMarkdown(tools);
-};
+// exports.createPages = async tools => {
+//   await createPagesFromMarkdown(tools);
+// };
 
-const createLayoutPagesFromMarkdown = async ({
-  actions,
-  graphql,
-  reporter,
-}) => {
+const createPagesFromMarkdown = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
 
-  const template = path.resolve(`src/templates/DocTemplate.js`);
+  const templates = {
+    DocTemplate: path.resolve(`src/templates/DocTemplate.js`),
+  };
 
   const result = await graphql(`
     {
-      allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/src/pages/layout/" } }
+      allMdx(
+        filter: { fileAbsolutePath: { regex: "/src/pages/" } }
       ) {
         edges {
           node {
             fields {
               slug
+            }
+            frontmatter {
+              template
             }
           }
         }
@@ -49,10 +50,10 @@ const createLayoutPagesFromMarkdown = async ({
     return;
   }
 
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  result.data.allMdx.edges.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
-      component: template,
+      component: templates[node.frontmatter.template || 'DocTemplate'],
       context: {
         // Data passed to context is available
         // in page queries as GraphQL variables.

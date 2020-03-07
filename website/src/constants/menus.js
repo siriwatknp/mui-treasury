@@ -24,6 +24,7 @@ import { customComponents as inputBaseStyles } from 'docs/styles/inputBase';
 import { customComponents as shadowStyles } from 'docs/styles/shadow';
 import { customComponents as tabsStyles } from 'docs/styles/tabs';
 import { customComponents as textFieldStyles } from 'docs/styles/textField';
+import { customComponents as textInfoCardContentStyles } from 'docs/styles/textInfoCardContent';
 
 export const PKG = {
   nav: 'nav',
@@ -33,8 +34,8 @@ export const PKG = {
 };
 
 export const NAV_MENUS = [
-  { key: 'components', label: 'Components', to: '/components/card' },
-  { key: 'styles', label: 'Styles', to: '/styles/button' },
+  { key: 'components', label: 'Components', to: '/components' },
+  { key: 'styles', label: 'Styles', to: '/styles' },
   { key: 'layout', label: 'Layout', to: '/layout' },
   { key: 'form', label: 'Form', disabled: true },
   {
@@ -286,64 +287,82 @@ export const COMPONENT_MENUS = [
 
 export const STYLE_MENUS = [
   {
-    key: 'button',
-    label: 'Button',
-    total: buttonStyles.length,
-    to: '/styles/button',
+    key: 'material-ui',
+    label: 'Material-UI',
+    subMenus: [
+      {
+        key: 'button',
+        label: 'Button',
+        total: buttonStyles.length,
+        to: '/styles/button',
+      },
+      {
+        key: 'card-header',
+        label: 'Card Header',
+        total: cardHeaderStyles.length,
+        to: '/styles/card-header',
+      },
+      {
+        key: 'card-media',
+        label: 'Card Media',
+        total: cardMediaStyles.length,
+        to: '/styles/card-media',
+      },
+      {
+        key: 'flex',
+        label: 'Flex',
+        total: flexStyles.length,
+        to: '/styles/flex',
+      },
+      {
+        key: 'grid',
+        label: 'Grid',
+        total: gridStyles.length,
+        to: '/styles/grid',
+      },
+      {
+        key: 'icon',
+        label: 'Icon',
+        total: iconStyles.length,
+        to: '/styles/icon',
+      },
+      {
+        key: 'input',
+        label: 'Input',
+        total: inputBaseStyles.length,
+        to: '/styles/input-base',
+      },
+      {
+        key: 'shadow',
+        label: 'Shadow',
+        total: shadowStyles.length,
+        to: '/styles/shadow',
+      },
+      {
+        key: 'tabs',
+        label: 'Tabs',
+        total: tabsStyles.length,
+        to: '/styles/tabs',
+      },
+      {
+        key: 'text-field',
+        label: 'TextField',
+        total: textFieldStyles.length,
+        to: '/styles/text-field',
+      },
+    ],
   },
   {
-    key: 'card-header',
-    label: 'Card Header',
-    total: cardHeaderStyles.length,
-    to: '/styles/card-header',
-  },
-  {
-    key: 'card-media',
-    label: 'Card Media',
-    total: cardMediaStyles.length,
-    to: '/styles/card-media',
-  },
-  {
-    key: 'flex',
-    label: 'Flex',
-    total: flexStyles.length,
-    to: '/styles/flex',
-  },
-  {
-    key: 'grid',
-    label: 'Grid',
-    total: gridStyles.length,
-    to: '/styles/grid',
-  },
-  {
-    key: 'icon',
-    label: 'Icon',
-    total: iconStyles.length,
-    to: '/styles/icon',
-  },
-  {
-    key: 'input',
-    label: 'Input',
-    total: inputBaseStyles.length,
-    to: '/styles/input-base',
-  },
-  {
-    key: 'shadow',
-    label: 'Shadow',
-    total: shadowStyles.length,
-    to: '/styles/shadow',
-  },
-  {
-    key: 'tabs',
-    label: 'Tabs',
-    total: tabsStyles.length,
-    to: '/styles/tabs',
-  },
-  {
-    key: 'text-field',
-    label: 'TextField',
-    total: textFieldStyles.length,
-    to: '/styles/text-field',
+    key: 'custom-component',
+    label: 'Custom Component',
+    subMenus: [
+      {
+        key: 'text-info-card-content',
+        label: 'TextInfoCardContent',
+        total: textInfoCardContentStyles.length,
+        to: '/styles/text-info-card-content',
+      },
+    ],
   },
 ];
 

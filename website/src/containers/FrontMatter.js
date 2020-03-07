@@ -5,18 +5,18 @@ import { useStaticQuery, graphql } from 'gatsby';
 const FrontMatter = ({ children, match }) => {
   const data = useStaticQuery(graphql`
     query {
-      allMarkdownRemark {
+      allMdx {
         nodes {
           frontmatter {
             path
           }
-          html
+          body
         }
       }
     }
   `);
   const {
-    allMarkdownRemark: { nodes },
+    allMdx: { nodes },
   } = data;
   const result = React.useMemo(
     () => nodes.find(({ frontmatter: { path } }) => path === match),
