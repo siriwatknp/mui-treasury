@@ -17,11 +17,11 @@ You will see on your left that we categorize into 2 sections.
 **_1. Material-UI base component_** : this works right away with Material-UI v4.x component. All you need to do is
 
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import GithubButtonDemo from 'docs/styles/button/github/GithubBtn';
+import GithubButtonStyle from 'docs/styles/button/github';
 
 <ThemeProvider theme={createMuiTheme()}>
   <SimpleShowcase>
-    <GithubButtonDemo />
+    <GithubButtonStyle />
   </SimpleShowcase>
 </ThemeProvider>
 
@@ -34,7 +34,7 @@ the styles is compatible with the component if the name matches.
 
 For example, `useBlogTextInfoCardContentStyles` is compatible with `TextInfoCardContent` component.
 
-import BlogTextInfoCardContentStyle from 'docs/styles/textInfoCardContent/blog/BlogTextInfoCardContentStyle';
+import BlogTextInfoCardContentStyle from 'docs/styles/textInfoCardContent/blog';
 
 <SimpleShowcase>
     <BlogTextInfoCardContentStyle />
