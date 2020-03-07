@@ -12,7 +12,8 @@ import { customComponents as slides } from 'docs/components/slide';
 import { customComponents as tabs } from 'docs/components/tabs';
 import { customComponents as tags } from 'docs/components/tag';
 import { customComponents as textFields } from 'docs/components/textField';
-import { customComponents as menu } from 'docs/components/menu';
+import { customComponents as menus } from 'docs/components/menu';
+import { customComponents as toggles } from 'docs/components/toggle';
 
 import { customComponents as buttonStyles } from 'docs/styles/button';
 import { customComponents as cardHeaderStyles } from 'docs/styles/cardHeader';
@@ -25,6 +26,11 @@ import { customComponents as shadowStyles } from 'docs/styles/shadow';
 import { customComponents as tabsStyles } from 'docs/styles/tabs';
 import { customComponents as textFieldStyles } from 'docs/styles/textField';
 import { customComponents as textInfoCardContentStyles } from 'docs/styles/textInfoCardContent';
+import { customComponents as switchToggleStyles } from 'docs/styles/switchToggle';
+import { customComponents as rowToggleStyles } from 'docs/styles/rowToggle';
+import { customComponents as collapsibleMenuStyles } from 'docs/styles/collapsibleMenu';
+import { customComponents as nestedMenuStyles } from 'docs/styles/nestedMenu';
+import { customComponents as listItemStyles } from 'docs/styles/listItem';
 
 export const PKG = {
   nav: 'nav',
@@ -190,6 +196,12 @@ export const COMPONENT_MENUS = [
           },
         ],
       },
+      {
+        key: 'toggle',
+        label: 'Toggle',
+        total: toggles.length,
+        to: '/components/toggle',
+      },
     ],
   },
   {
@@ -278,7 +290,7 @@ export const COMPONENT_MENUS = [
       {
         key: 'menu',
         label: 'Menu',
-        total: menu.length,
+        total: menus.length,
         to: '/components/menu',
       },
     ],
@@ -309,12 +321,6 @@ export const STYLE_MENUS = [
         to: '/styles/card-media',
       },
       {
-        key: 'flex',
-        label: 'Flex',
-        total: flexStyles.length,
-        to: '/styles/flex',
-      },
-      {
         key: 'grid',
         label: 'Grid',
         total: gridStyles.length,
@@ -333,10 +339,10 @@ export const STYLE_MENUS = [
         to: '/styles/input-base',
       },
       {
-        key: 'shadow',
-        label: 'Shadow',
-        total: shadowStyles.length,
-        to: '/styles/shadow',
+        key: 'list-item',
+        label: 'ListItem',
+        total: listItemStyles.length,
+        to: '/styles/list-item',
       },
       {
         key: 'tabs',
@@ -357,10 +363,52 @@ export const STYLE_MENUS = [
     label: 'Custom Component',
     subMenus: [
       {
+        key: 'collapsible-menu',
+        label: 'CollapsibleMenu',
+        total: collapsibleMenuStyles.length,
+        to: '/styles/collapsible-menu',
+      },
+      {
+        key: 'nested-menu',
+        label: 'NestedMenu',
+        total: nestedMenuStyles.length,
+        to: '/styles/nested-menu',
+      },
+      {
         key: 'text-info-card-content',
         label: 'TextInfoCardContent',
         total: textInfoCardContentStyles.length,
         to: '/styles/text-info-card-content',
+      },
+      {
+        key: 'row-toggle',
+        label: 'RowToggle',
+        total: rowToggleStyles.length,
+        to: '/styles/row-toggle',
+      },
+      {
+        key: 'switch-toggle',
+        label: 'SwitchToggle',
+        total: switchToggleStyles.length,
+        to: '/styles/switch-toggle',
+      },
+    ],
+  },
+  {
+    key: 'utility',
+    label: 'Utility',
+    subMenus: [
+      {
+        key: 'flex',
+        label: 'Flex',
+        total: flexStyles.length,
+        to: '/styles/flex',
+      },
+      {
+        key: 'shadow',
+        label: 'Shadow',
+        total: shadowStyles.length,
+        to: '/styles/shadow',
       },
     ],
   },
