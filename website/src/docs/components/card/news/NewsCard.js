@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import ChevronRightRounded from '@material-ui/icons/ChevronRightRounded';
 import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
 import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia/wide';
-import { useText01CardContentStyles } from '@mui-treasury/styles/cardContent/text01';
+import { useN01TextInfoCardContentStyles } from '@mui-treasury/styles/textInfoCardContent/n01';
 import { useBouncyShadowStyles } from '@mui-treasury/styles/shadow/bouncy';
 
 
@@ -31,7 +31,7 @@ const useStyles = makeStyles(() => ({
 const NewsCard = () => {
   const styles = useStyles();
   const mediaStyles = useWideCardMediaStyles();
-  const textCardContentStyles = useText01CardContentStyles();
+  const textCardContentStyles = useN01TextInfoCardContentStyles();
   const shadowStyles = useBouncyShadowStyles();
   return (
     <Card className={cx(styles.root, shadowStyles.root)}>

@@ -71,11 +71,14 @@ const ComponentMenuList = ({ menus, getOpenKeys }) => {
             })}
             useStyles={useMaterialNestedMenuStyles}
             getItemProps={({ to }, { onClick, level, selected }) => ({
-              ...(to && { component: Link, to }),
-              onClick: () => {
-                onClick();
-                setSidebarOpened(false);
-              },
+              ...(to && {
+                component: Link,
+                to,
+                onClick: () => {
+                  onClick();
+                  setSidebarOpened(false);
+                },
+              }),
               className: cx(
                 styles[`lv${level}Item`],
                 selected && styles.listItemSelected

@@ -23,6 +23,11 @@ const getComponentHandler = () => {
   return {
     pattern: /\/components.*/g,
     sidebarMenus: COMPONENT_MENUS,
+    getOpenKeys: () => [
+      'mui-extended',
+      'community-custom',
+      'complex-composition',
+    ],
   };
 };
 
@@ -30,6 +35,10 @@ const getStylesHandler = () => {
   return {
     pattern: /\/styles.*/g,
     sidebarMenus: STYLE_MENUS,
+    getOpenKeys: () => [
+      'material-ui',
+      'custom-component',
+    ],
   };
 };
 
