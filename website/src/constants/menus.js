@@ -33,8 +33,8 @@ export const PKG = {
 };
 
 export const NAV_MENUS = [
-  { key: 'components', label: 'Components', to: '/components/card' },
-  { key: 'styles', label: 'Styles', to: '/styles/button' },
+  { key: 'components', label: 'Components', to: '/components' },
+  { key: 'styles', label: 'Styles', to: '/styles' },
   { key: 'layout', label: 'Layout', to: '/layout' },
   { key: 'form', label: 'Form', disabled: true },
   {

@@ -1,26 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'clsx';
-import { withStyles } from '@mui-treasury/styling';
+import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import styles from './TextInfoCardContent.styles';
 
-const TextInfoCardContent = withStyles(
-  {
-    overline: {},
-    heading: {},
-    body: {},
-  },
-  { name: 'TextInfo' }
-)(
-  ({
-    css,
-    overline,
-    heading,
-    body,
-    overlineProps,
-    headingProps,
-    bodyProps,
-  }) => (
+const useDefaultStyles = makeStyles(styles, { name: 'TextInfoCardContent' });
+
+const TextInfoCardContent = ({
+  useStyles,
+  overline,
+  heading,
+  body,
+  overlineProps,
+  headingProps,
+  bodyProps,
+  ...props
+}) => {
+  const css = useStyles(props);
+  return (
     <>
       {overline && (
         <Typography
@@ -42,16 +40,23 @@ const TextInfoCardContent = withStyles(
         {body}
       </Typography>
     </>
-  )
-);
+  );
+};
 
 TextInfoCardContent.propTypes = {
   overline: PropTypes.node,
   heading: PropTypes.node,
   body: PropTypes.node,
-  overlineProps: PropTypes.shape({}),
-  headingProps: PropTypes.shape({}),
-  bodyProps: PropTypes.shape({}),
+  overlineProps: PropTypes.shape({
+    className: PropTypes.string,
+  }),
+  headingProps: PropTypes.shape({
+    className: PropTypes.string,
+  }),
+  bodyProps: PropTypes.shape({
+    className: PropTypes.string,
+  }),
+  useStyles: PropTypes.func,
 };
 TextInfoCardContent.defaultProps = {
   overline: null,
@@ -60,6 +65,7 @@ TextInfoCardContent.defaultProps = {
   overlineProps: {},
   headingProps: {},
   bodyProps: {},
+  useStyles: useDefaultStyles,
 };
 
 export default TextInfoCardContent;

@@ -4,24 +4,21 @@ import CardContent from '@material-ui/core/CardContent';
 import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
 import { useText02CardContentStyles } from '@mui-treasury/styles/cardContent/text02';
 
-const TextCardContent02 = () => {
-  const styles = useText02CardContentStyles();
-  return (
-    <Box maxWidth={343}>
-      <CardContent>
-        <TextInfoCardContent
-          classes={styles}
-          overline={'March 8, 2016'}
-          heading={'First Snow Storm'}
-          body={
-            'Snow storm coming in Sommaroy island, Arctic Norway. This is something\n' +
-            '        that you definitely wanna see in your life.'
-          }
-        />
-      </CardContent>
-    </Box>
-  );
-};
+const TextCardContent02 = () => (
+  <Box maxWidth={343}>
+    <CardContent>
+      <TextInfoCardContent
+        useStyles={useText02CardContentStyles}
+        overline={'March 8, 2016'}
+        heading={'First Snow Storm'}
+        body={
+          'Snow storm coming in Sommaroy island, Arctic Norway. This is something\n' +
+          '        that you definitely wanna see in your life.'
+        }
+      />
+    </CardContent>
+  </Box>
+);
 
 // hide-start
 TextCardContent02.metadata = {

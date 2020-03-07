@@ -6,7 +6,7 @@ import FrontMatter from './FrontMatter';
 const SourceFile = ({ component: Component, match, ...props }) => {
   return (
     <Component match={match}>
-      {({ html }) => <Html html={html} {...props} />}
+      {({ body }) => <Html body={body} {...props} />}
     </Component>
   );
 };

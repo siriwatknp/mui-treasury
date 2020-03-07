@@ -4,23 +4,20 @@ import CardContent from '@material-ui/core/CardContent';
 import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
 import { useText03CardContentStyles } from '@mui-treasury/styles/cardContent/text03';
 
-const TextCardContent03 = () => {
-  const styles = useText03CardContentStyles();
-  return (
-    <Box maxWidth={343}>
-      <CardContent>
-        <TextInfoCardContent
-          classes={styles}
-          overline={'GOOGLE INC.'}
-          heading={'Project Polymer'}
-          body={
-            'Web components usher in a new era of web development based on encapsulated and interoperable custom'
-          }
-        />
-      </CardContent>
-    </Box>
-  );
-};
+const TextCardContent03 = () => (
+  <Box maxWidth={343}>
+    <CardContent>
+      <TextInfoCardContent
+        useStyles={useText03CardContentStyles}
+        overline={'GOOGLE INC.'}
+        heading={'Project Polymer'}
+        body={
+          'Web components usher in a new era of web development based on encapsulated and interoperable custom'
+        }
+      />
+    </CardContent>
+  </Box>
+);
 
 // hide-start
 TextCardContent03.metadata = {

@@ -1,10 +1,14 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { Link } from 'gatsby';
+import { MDXProvider } from '@mdx-js/react';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
+import SimpleShowcase, { Inline } from '../components/atoms/SimpleShowcase';
 
-const DocTemplate = ({ data }) => {
-  const { html, frontmatter } = data.markdownRemark;
+const shortcodes = { Inline, Link, SimpleShowcase };
+
+const DocTemplate = ({ pageContext, children }) => {
+  const { frontmatter } = pageContext;
   return (
     <Box
       maxWidth={672}
@@ -16,21 +20,9 @@ const DocTemplate = ({ data }) => {
         {frontmatter.category}
       </Typography>
       <h1>{frontmatter.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: html }} />
+      <MDXProvider components={shortcodes}>{children}</MDXProvider>
     </Box>
   );
 };
-
-export const query = graphql`
-  query($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        category
-        title
-      }
-    }
-  }
-`;
 
 export default DocTemplate;

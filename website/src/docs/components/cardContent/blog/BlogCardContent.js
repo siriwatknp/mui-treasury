@@ -1,5 +1,4 @@
 import React from 'react';
-import omit from 'lodash/omit';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import CardContent from '@material-ui/core/CardContent';
@@ -12,7 +11,7 @@ const TextCardContent01 = () => {
     <Box maxWidth={343}>
       <CardContent>
         <TextInfoCardContent
-          classes={omit(styles, ['button'])}
+          useStyles={useBlogCardContentStyles}
           overline={'28 MAR 2019'}
           heading={'What is Git ?'}
           body={
