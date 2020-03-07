@@ -11,7 +11,7 @@ import FavoriteBorderRounded from '@material-ui/icons/FavoriteBorderRounded';
 import Share from '@material-ui/icons/Share';
 import { useSoftRiseShadowStyles } from '@mui-treasury/styles/shadow/softRise';
 import { useSlopeCardMediaStyles } from '@mui-treasury/styles/cardMedia/slope';
-import { useText01CardContentStyles } from '@mui-treasury/styles/cardContent/text01';
+import { useN01TextInfoCardContentStyles } from '@mui-treasury/styles/textInfoCardContent/n01';
 import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
 
 
@@ -38,7 +38,7 @@ const PostCard = () => {
   const cardStyles = useStyles();
   const mediaStyles = useSlopeCardMediaStyles();
   const shadowStyles = useSoftRiseShadowStyles();
-  const textCardContentStyles = useText01CardContentStyles();
+  const textCardContentStyles = useN01TextInfoCardContentStyles();
   return (
     <Card className={cx(cardStyles.root, shadowStyles.root)}>
       <CardMedia classes={mediaStyles} image={'https://images.unsplash.com/photo-1517147177326-b37599372b73?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2229&q=80'} />

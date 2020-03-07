@@ -5,7 +5,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import BrandCardHeader from '@mui-treasury/components/cardHeader/brand';
 import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
-import { useText03CardContentStyles } from '@mui-treasury/styles/cardContent/text03';
+import { useN03TextInfoCardContentStyles } from '@mui-treasury/styles/textInfoCardContent/n03';
 import { useLightTopShadowStyles } from '@mui-treasury/styles/shadow/lightTop';
 
 const useStyles = makeStyles(() => ({
@@ -19,7 +19,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const ProjectCard = () => {
-  const styles = useText03CardContentStyles();
+  const styles = useN03TextInfoCardContentStyles();
   const shadowStyles = useLightTopShadowStyles();
   const cardStyles = useStyles();
   return (

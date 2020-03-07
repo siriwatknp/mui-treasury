@@ -6,7 +6,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
-import { useBlogCardContentStyles } from '@mui-treasury/styles/cardContent/blog';
+import { useBlogTextInfoCardContentStyles } from '@mui-treasury/styles/textInfoCardContent/blog';
 import { useOverShadowStyles } from '@mui-treasury/styles/shadow/over';
 
 const useStyles = makeStyles(({ breakpoints, spacing }) => ({
@@ -71,7 +71,7 @@ const BlogCard = () => {
   const {
     button: buttonStyles,
     ...cardContentStyles
-  } = useBlogCardContentStyles();
+  } = useBlogTextInfoCardContentStyles();
   const shadowStyles = useOverShadowStyles();
   return (
     <Card className={cx(styles.root, shadowStyles.root)}>

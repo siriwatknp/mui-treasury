@@ -6,7 +6,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
 import { useFourThreeCardMediaStyles } from '@mui-treasury/styles/cardMedia/fourThree';
-import { useText04CardContentStyles } from '@mui-treasury/styles/cardContent/text04';
+import { useN04TextInfoCardContentStyles } from '@mui-treasury/styles/textInfoCardContent/n04';
 import { useOverShadowStyles } from '@mui-treasury/styles/shadow/over';
 
 const useStyles = makeStyles(() => ({
@@ -24,7 +24,7 @@ const useStyles = makeStyles(() => ({
 const MusicCard = () => {
   const styles = useStyles();
   const mediaStyles = useFourThreeCardMediaStyles();
-  const textCardContentStyles = useText04CardContentStyles();
+  const textCardContentStyles = useN04TextInfoCardContentStyles();
   const shadowStyles = useOverShadowStyles({ inactive: true });
   return (
     <Card className={cx(styles.root, shadowStyles.root)}>

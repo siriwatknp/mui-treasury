@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import PeopleCardFooter from '@mui-treasury/components/cardFooter/people';
 import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
-import { useText01CardContentStyles } from '@mui-treasury/styles/cardContent/text01';
+import { useN01TextInfoCardContentStyles } from '@mui-treasury/styles/textInfoCardContent/n01';
 import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia/wide';
 import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
 
@@ -26,7 +26,7 @@ const EngagementCard = () => {
   const cardStyles = useStyles();
   const wideCardMediaStyles = useWideCardMediaStyles();
   const fadeShadowStyles = useFadedShadowStyles();
-  const textCardContentStyles = useText01CardContentStyles();
+  const textCardContentStyles = useN01TextInfoCardContentStyles();
   return (
     <Card className={cx(cardStyles.root, fadeShadowStyles.root)}>
       <CardMedia
