@@ -8,7 +8,7 @@ import Remove from '@material-ui/icons/Remove';
 import CollapsibleMenu from './CollapsibleMenu';
 import SwitchToggle from '../../toggle/switch';
 import RowToggle from '../../toggle/row';
-import { useCuteToggleStyles } from '@mui-treasury/styles/switchToggle/cute';
+import { useCuteSwitchToggleStyles } from '@mui-treasury/styles/switchToggle/cute';
 import { useGatsbyRowToggleStyles } from '@mui-treasury/styles/rowToggle/gatsby';
 import { useGatsbyListItemStyles } from '@mui-treasury/styles/listItem/gatsby';
 import { useMaterialRowToggleStyles } from '@mui-treasury/styles/rowToggle/material';
@@ -30,7 +30,7 @@ const useStyles = makeStyles(() => ({
 
 storiesOf('mui-components|Menu', module).add('collapsible', () => {
   const Component = () => {
-    const cuteToggleStyles = useCuteToggleStyles();
+    const cuteToggleStyles = useCuteSwitchToggleStyles();
     const classes = useStyles();
     const gatsbyListItemStyles = useGatsbyListItemStyles();
     const materialListItemStyles = useMaterialListItemStyles();

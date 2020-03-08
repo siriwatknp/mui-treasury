@@ -1,8 +1,8 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import cuteToggleStyles from './cuteToggle.styles';
+import cuteSwitchToggleStyles from './cuteSwitchToggle.styles';
 
-const useCuteToggleStyles = makeStyles(cuteToggleStyles);
+const useCuteSwitchToggleStyles = makeStyles(cuteSwitchToggleStyles);
 
-export { cuteToggleStyles, useCuteToggleStyles };
+export { cuteSwitchToggleStyles, useCuteSwitchToggleStyles };
 
-export { default } from './cuteToggle.styles';
+export { default } from './cuteSwitchToggle.styles';

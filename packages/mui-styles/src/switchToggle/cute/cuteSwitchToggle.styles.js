@@ -16,6 +16,7 @@ export default ({ palette }) => {
         borderRadius: 8,
         backgroundColor: lightBg,
         color: lightColor,
+        padding: '0.25rem',
       };
     },
     toggled: ({ color = palette.primary.main }) => {

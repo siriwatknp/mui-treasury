@@ -59,7 +59,6 @@ const NestedMenu = ({
               const itemProps = {
                 button: true,
                 selected,
-                onClick,
                 ...toToggleProps(getItemProps),
               };
               if (!isToggleOutside) {
@@ -73,9 +72,13 @@ const NestedMenu = ({
                 return (
                   <Collapse.Row {...rowProps}>
                     {renderItem ? (
-                      renderItem(item, { ...itemProps, children: action })
+                      renderItem(item, {
+                        ...itemProps,
+                        onClick,
+                        children: action,
+                      })
                     ) : (
-                      <Collapse.RowItem {...itemProps}>
+                      <Collapse.RowItem {...itemProps} onClick={onClick}>
                         {label}
                         {action}
                       </Collapse.RowItem>
@@ -86,7 +89,7 @@ const NestedMenu = ({
               return (
                 <Collapse.Row {...rowProps}>
                   {renderItem ? (
-                    renderItem(item, { ...itemProps, children: null })
+                    renderItem(item, { ...itemProps, onClick, children: null })
                   ) : (
                     <Collapse.RowItem {...itemProps}>{label}</Collapse.RowItem>
                   )}
