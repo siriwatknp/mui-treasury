@@ -2,7 +2,7 @@ import React from 'react';
 import DemoPage from 'containers/Demo';
 import { customComponents, DefaultComponent } from 'docs/components/menu';
 
-const CardContentPage = () => (
+const MenuPage = () => (
   <DemoPage
     title={'Menu'}
     description={'A collection of Menu components'}
@@ -19,4 +19,4 @@ const CardContentPage = () => (
   />
 );
 
-export default CardContentPage;
+export default MenuPage;

@@ -6,8 +6,8 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import PeopleCardFooter from '@mui-treasury/components/cardFooter/people';
-import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
-import { useN01TextInfoCardContentStyles } from '@mui-treasury/styles/textInfoCardContent/n01';
+import TextInfoContent from '@mui-treasury/components/content/textInfo';
+import { useN01TextInfoContentStyles } from '@mui-treasury/styles/textInfoContent/n01';
 import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia/wide';
 import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
 
@@ -26,7 +26,7 @@ const EngagementCard = () => {
   const cardStyles = useStyles();
   const wideCardMediaStyles = useWideCardMediaStyles();
   const fadeShadowStyles = useFadedShadowStyles();
-  const textCardContentStyles = useN01TextInfoCardContentStyles();
+  const textCardContentStyles = useN01TextInfoContentStyles();
   return (
     <Card className={cx(cardStyles.root, fadeShadowStyles.root)}>
       <CardMedia
@@ -37,7 +37,7 @@ const EngagementCard = () => {
         }
       />
       <CardContent className={cardStyles.content}>
-        <TextInfoCardContent
+        <TextInfoContent
           classes={textCardContentStyles}
           heading={'Nature Around Us'}
           body={
@@ -73,11 +73,11 @@ EngagementCard.metadata = {
     },
     {
       pkg: 'mui-components',
-      path: 'cardContent/textInfo/TextInfoCardContent.js',
+      path: 'content/textInfo/TextInfoContent.js',
     },
     {
       pkg: 'mui-styles',
-      path: 'cardContent/text01/text01CardContent.styles.js',
+      path: 'textInfoContent/n01/n01TextInfoContent.styles.js',
     },
     {
       pkg: 'mui-components',

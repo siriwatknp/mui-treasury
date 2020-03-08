@@ -2,7 +2,7 @@ import React from 'react';
 import DemoPage from 'containers/Demo';
 import { customComponents, DefaultComponent } from 'docs/components/tag';
 
-const CardContentPage = () => (
+const TagPage = () => (
   <DemoPage
     title={'Tag'}
     description={
@@ -21,4 +21,4 @@ const CardContentPage = () => (
   />
 );
 
-export default CardContentPage;
+export default TagPage;

@@ -4,8 +4,8 @@ import { makeStyles } from '@material-ui/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import BrandCardHeader from '@mui-treasury/components/cardHeader/brand';
-import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
-import { useN03TextInfoCardContentStyles } from '@mui-treasury/styles/textInfoCardContent/n03';
+import TextInfoContent from '@mui-treasury/components/content/textInfo';
+import { useN03TextInfoContentStyles } from '@mui-treasury/styles/textInfoContent/n03';
 import { useLightTopShadowStyles } from '@mui-treasury/styles/shadow/lightTop';
 
 const useStyles = makeStyles(() => ({
@@ -19,7 +19,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const ProjectCard = () => {
-  const styles = useN03TextInfoCardContentStyles();
+  const styles = useN03TextInfoContentStyles();
   const shadowStyles = useLightTopShadowStyles();
   const cardStyles = useStyles();
   return (
@@ -31,7 +31,7 @@ const ProjectCard = () => {
         extra={'7 minutes'}
       />
       <CardContent className={cardStyles.content}>
-        <TextInfoCardContent
+        <TextInfoContent
           classes={styles}
           overline={'FACEBOOK INC.'}
           heading={'React'}
@@ -54,11 +54,11 @@ ProjectCard.metadata = {
     { pkg: 'mui-styles', path: 'cardHeader/brand/brandCardHeader.styles.js' },
     {
       pkg: 'mui-components',
-      path: 'cardContent/textInfo/TextInfoCardContent.js',
+      path: 'content/textInfo/TextInfoContent.js',
     },
     {
       pkg: 'mui-styles',
-      path: 'cardContent/text03/text03CardContent.styles.js',
+      path: 'textInfoContent/n03/n03TextInfoContent.styles.js',
     },
   ],
   creators: [require('constants/creators').siriwatknp],

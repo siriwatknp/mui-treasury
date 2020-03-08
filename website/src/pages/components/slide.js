@@ -2,7 +2,7 @@ import React from 'react';
 import DemoPage from 'containers/Demo';
 import { customComponents, DefaultComponent } from 'docs/components/slide';
 
-const CardContentPage = () => (
+const SlidePage = () => (
   <DemoPage
     title={'Slide'}
     description={'A fancy component that every modern website has'}
@@ -20,4 +20,4 @@ const CardContentPage = () => (
   />
 );
 
-export default CardContentPage;
+export default SlidePage;

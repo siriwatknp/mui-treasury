@@ -4,9 +4,9 @@ import { makeStyles } from '@material-ui/styles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
-import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
+import TextInfoContent from '@mui-treasury/components/content/textInfo';
 import { useFourThreeCardMediaStyles } from '@mui-treasury/styles/cardMedia/fourThree';
-import { useN04TextInfoCardContentStyles } from '@mui-treasury/styles/textInfoCardContent/n04';
+import { useN04TextInfoContentStyles } from '@mui-treasury/styles/textInfoContent/n04';
 import { useOverShadowStyles } from '@mui-treasury/styles/shadow/over';
 
 const useStyles = makeStyles(() => ({
@@ -24,7 +24,7 @@ const useStyles = makeStyles(() => ({
 const MusicCard = () => {
   const styles = useStyles();
   const mediaStyles = useFourThreeCardMediaStyles();
-  const textCardContentStyles = useN04TextInfoCardContentStyles();
+  const textCardContentStyles = useN04TextInfoContentStyles();
   const shadowStyles = useOverShadowStyles({ inactive: true });
   return (
     <Card className={cx(styles.root, shadowStyles.root)}>
@@ -35,7 +35,7 @@ const MusicCard = () => {
         }
       />
       <CardContent className={styles.content}>
-        <TextInfoCardContent
+        <TextInfoContent
           classes={textCardContentStyles}
           overline={'Kesha'}
           heading={'Inner Varnika'}
@@ -56,7 +56,7 @@ MusicCard.metadata = {
   files: [
     {
       pkg: 'mui-components',
-      path: 'cardContent/textInfo/TextInfoCardContent.js',
+      path: 'content/textInfo/TextInfoContent.js',
     },
     {
       pkg: 'mui-styles',
@@ -68,7 +68,7 @@ MusicCard.metadata = {
     },
     {
       pkg: 'mui-styles',
-      path: 'cardContent/text04/text04CardContent.styles.js',
+      path: 'textInfoContent/n04/n04TextInfoContent.styles.js',
     },
   ]
 };

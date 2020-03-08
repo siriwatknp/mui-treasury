@@ -66,12 +66,7 @@ const TagCard = () => {
 TagCard.metadata = {
   title: 'Tag Card',
   path: 'component/card/tag',
-  files: [
-    {
-      pkg: 'mui-styles',
-      path: 'cardContent/tag/tagCard.styles.js',
-    },
-  ],
+  files: [],
   relates: [],
   frameProps: {
     bgcolor: '#e9e9e9',

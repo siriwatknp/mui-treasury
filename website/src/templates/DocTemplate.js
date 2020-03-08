@@ -24,6 +24,7 @@ const DocTemplate = ({ pageContext, children }) => {
       <h1>{frontmatter.title}</h1>
       <MDXProvider components={shortcodes}>{children}</MDXProvider>
     </Box>
+
   );
 };
 

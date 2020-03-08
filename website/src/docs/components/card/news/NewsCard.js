@@ -6,9 +6,9 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import ChevronRightRounded from '@material-ui/icons/ChevronRightRounded';
-import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
+import TextInfoContent from '@mui-treasury/components/content/textInfo';
 import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia/wide';
-import { useN01TextInfoCardContentStyles } from '@mui-treasury/styles/textInfoCardContent/n01';
+import { useN01TextInfoContentStyles } from '@mui-treasury/styles/textInfoContent/n01';
 import { useBouncyShadowStyles } from '@mui-treasury/styles/shadow/bouncy';
 
 
@@ -31,13 +31,13 @@ const useStyles = makeStyles(() => ({
 const NewsCard = () => {
   const styles = useStyles();
   const mediaStyles = useWideCardMediaStyles();
-  const textCardContentStyles = useN01TextInfoCardContentStyles();
+  const textCardContentStyles = useN01TextInfoContentStyles();
   const shadowStyles = useBouncyShadowStyles();
   return (
     <Card className={cx(styles.root, shadowStyles.root)}>
       <CardMedia classes={mediaStyles} image={'https://images.unsplash.com/photo-1468774871041-fc64dd5522f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2689&q=80'} />
       <CardContent className={styles.content}>
-        <TextInfoCardContent
+        <TextInfoContent
           classes={textCardContentStyles}
           overline={'March 20, 2019'}
           heading={'What happened in Thailand?'}
@@ -67,11 +67,11 @@ NewsCard.metadata = {
     },
     {
       pkg: 'mui-components',
-      path: 'cardContent/textInfo/TextInfoCardContent.js',
+      path: 'content/textInfo/TextInfoContent.js',
     },
     {
       pkg: 'mui-styles',
-      path: 'cardContent/text01/text01CardContent.styles.js',
+      path: 'textInfoContent/n01/n01TextInfoContent.styles.js',
     },
   ],
 };

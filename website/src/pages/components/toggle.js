@@ -2,7 +2,7 @@ import React from 'react';
 import DemoPage from 'containers/Demo';
 import { customComponents, DefaultComponent } from 'docs/components/toggle';
 
-const SwitchTogglePage = () => (
+const TogglePage = () => (
   <DemoPage
     title={'Toggle'}
     description={'A collection of Toggle components'}
@@ -19,4 +19,4 @@ const SwitchTogglePage = () => (
   />
 );
 
-export default SwitchTogglePage;
+export default TogglePage;

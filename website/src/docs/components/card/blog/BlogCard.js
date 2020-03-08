@@ -5,8 +5,8 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
-import { useBlogTextInfoCardContentStyles } from '@mui-treasury/styles/textInfoCardContent/blog';
+import TextInfoContent from '@mui-treasury/components/content/textInfo';
+import { useBlogTextInfoContentStyles } from '@mui-treasury/styles/textInfoContent/blog';
 import { useOverShadowStyles } from '@mui-treasury/styles/shadow/over';
 
 const useStyles = makeStyles(({ breakpoints, spacing }) => ({
@@ -70,8 +70,8 @@ const BlogCard = () => {
   const styles = useStyles();
   const {
     button: buttonStyles,
-    ...cardContentStyles
-  } = useBlogTextInfoCardContentStyles();
+    ...contentStyles
+  } = useBlogTextInfoContentStyles();
   const shadowStyles = useOverShadowStyles();
   return (
     <Card className={cx(styles.root, shadowStyles.root)}>
@@ -82,8 +82,8 @@ const BlogCard = () => {
         }
       />
       <CardContent>
-        <TextInfoCardContent
-          classes={cardContentStyles}
+        <TextInfoContent
+          classes={contentStyles}
           overline={'28 MAR 2019'}
           heading={'What is Git ?'}
           body={
@@ -107,11 +107,7 @@ BlogCard.metadata = {
     { pkg: 'mui-styles', path: 'shadow/over/overShadow.styles.js' },
     {
       pkg: 'mui-components',
-      path: 'cardContent/textInfo/TextInfoCardContent.js',
-    },
-    {
-      pkg: 'mui-styles',
-      path: 'cardContent/blog/blogCardContent.styles.js',
+      path: 'content/textInfo/TextInfoContent.js',
     },
   ],
 };
