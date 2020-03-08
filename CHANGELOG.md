@@ -10,6 +10,25 @@
 > - :bulb: [Refactor]
 > - :lipstick: [Style]
 
+## _08 Mar 2020_
+
+### @mui-treasury/components@1.0.0, styles@1.0.0, mockup@1.0.0
+
+#### :boom: Breaking Change
+
+- [#526](https://github.com/siriwatknp/mui-treasury/pull/526) fix: 🐛 folder name and fix minor bugs ([@siriwatknp](https://github.com/siriwatknp))
+- [#524](https://github.com/siriwatknp/mui-treasury/pull/524) feat: 🎸 add Menu styles ([@siriwatknp](https://github.com/siriwatknp))
+- [#519](https://github.com/siriwatknp/mui-treasury/pull/519) Renovate#1 ([@siriwatknp](https://github.com/siriwatknp))
+
+### @mui-treasury/utils@0.4.0
+
+- `usePreserveState`
+
+### website@1.21.0
+
+- [#526](https://github.com/siriwatknp/mui-treasury/pull/526) fix: 🐛 folder name and fix minor bugs ([@siriwatknp](https://github.com/siriwatknp))
+- [#519](https://github.com/siriwatknp/mui-treasury/pull/519) Renovate#1 ([@siriwatknp](https://github.com/siriwatknp))
+
 ## _23 Feb 2020_
 
 ### @mui-treasury/styles@0.5.0
