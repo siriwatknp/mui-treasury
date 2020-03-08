@@ -2,7 +2,7 @@ import React from 'react';
 import DemoPage from 'containers/Demo';
 import { customComponents, DefaultComponent } from 'docs/components/indicator';
 
-const CardContentPage = () => (
+const IndicatorPage = () => (
   <DemoPage
     title={'Indicator'}
     description={'Represent amount of items for some component'}
@@ -19,4 +19,4 @@ const CardContentPage = () => (
   />
 );
 
-export default CardContentPage;
+export default IndicatorPage;

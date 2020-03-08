@@ -15,6 +15,7 @@ NestedMenuDemo.metadata = {
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Sat Feb 29 2020',
+  stylesUrl: '/styles/nested-menu',
   frameProps: {}, // props that applied to Box in grid view
   size: 'medium', // can be 'large' | 'huge' for grid size
   files: [

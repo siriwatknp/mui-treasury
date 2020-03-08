@@ -84,7 +84,10 @@ ProfileCard.metadata = {
   description: 'Social network',
   path: 'component/card/profile',
   creators: [require('constants/creators').siriwatknp],
-  files: [],
+  files: [
+    { pkg: 'mui-styles', path: 'shadow/faded/fadedShadow.styles.js' },
+    { pkg: 'mui-styles', path: 'grid/gutterBordered/gutterBorderedGrid.styles.js' },
+  ],
 };
 // hide-end
 

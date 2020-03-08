@@ -1,15 +1,17 @@
 import React from 'react';
-import cx from 'clsx';
 import PropTypes from 'prop-types';
+import cx from 'clsx';
+import { Link as GatsbyLink } from 'gatsby';
 import { makeStyles } from '@material-ui/styles';
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
-import CodeRounded from '@material-ui/icons/CodeRounded';
-import Link from '@material-ui/icons/Link';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
-import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import Tooltip from '@material-ui/core/Tooltip';
+import AvatarGroup from '@material-ui/lab/AvatarGroup';
+import Link from '@material-ui/icons/Link';
+import CodeRounded from '@material-ui/icons/CodeRounded';
+import ColorLens from '@material-ui/icons/ColorLens';
 import StatusChip from 'components/atoms/StatusChip';
 
 const useStyles = makeStyles(({ palette }) => ({
@@ -57,6 +59,7 @@ const ShowcaseWidget = ({
   creators,
   anchor = name,
   description,
+  stylesUrl,
   onClickCode,
   frameProps,
   className,
@@ -152,9 +155,22 @@ const ShowcaseWidget = ({
           </div>
         </Box>
         <Box ml={'auto'}>
-          <IconButton onClick={onClickCode}>
-            <CodeRounded />
-          </IconButton>
+          {stylesUrl && (
+            <Tooltip title="Browse styles">
+              <IconButton
+                component={GatsbyLink}
+                to={stylesUrl}
+                onClick={onClickCode}
+              >
+                <ColorLens />
+              </IconButton>
+            </Tooltip>
+          )}
+          <Tooltip title="See code">
+            <IconButton onClick={onClickCode}>
+              <CodeRounded />
+            </IconButton>
+          </Tooltip>
         </Box>
       </Box>
     </Box>

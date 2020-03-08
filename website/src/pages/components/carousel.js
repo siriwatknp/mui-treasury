@@ -2,7 +2,7 @@ import React from 'react';
 import DemoPage from 'containers/Demo';
 import { customComponents, DefaultComponent } from 'docs/components/carousel';
 
-const CardContentPage = () => (
+const CarouselPage = () => (
   <DemoPage
     title={'Carousel'}
     description={
@@ -22,4 +22,4 @@ const CardContentPage = () => (
   />
 );
 
-export default CardContentPage;
+export default CarouselPage;

@@ -23,6 +23,7 @@ const GridShowcase = ({
           createdAt,
           description,
           creators,
+          stylesUrl,
         } = Component.metadata;
         return (
           <Grid key={name} item classes={gridStyles} {...GridItemProps}>
@@ -33,6 +34,7 @@ const GridShowcase = ({
               description={description}
               frameProps={frameProps}
               height={'100%'}
+              stylesUrl={stylesUrl}
               onClickCode={() => setComponent(Component)}
             >
               <Component />
