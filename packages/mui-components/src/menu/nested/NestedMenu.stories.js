@@ -3,9 +3,9 @@ import { storiesOf } from '@storybook/react';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import NestedMenu from './NestedMenu';
-import { useGatsby2NestedMenuStyles } from '@mui-treasury/styles/nestedMenu/gatsby2';
+import { useGatsbyNestedMenuStyles } from '@mui-treasury/styles/nestedMenu/gatsby';
 import { useMaterialNestedMenuStyles } from '@mui-treasury/styles/nestedMenu/material';
-import { useJupiter2NestedMenuStyles } from '@mui-treasury/styles/nestedMenu/jupiter2';
+import { useJupiterNestedMenuStyles } from '@mui-treasury/styles/nestedMenu/jupiter';
 
 const DefaultNestedMenu = ({ menus, useStyles }) => (
   <NestedMenu menus={menus} useStyles={useStyles}>
@@ -118,19 +118,19 @@ storiesOf('mui-components|Menu', module).add('nested', () => {
             <NestedMenu menus={getMenus()} />
           </Grid>
           <Grid item xs={4}>
-            <DefaultNestedMenu useStyles={useGatsby2NestedMenuStyles} />
+            <DefaultNestedMenu useStyles={useGatsbyNestedMenuStyles} />
           </Grid>
           <Grid item xs={4}>
             <NestedMenu
               menus={getMenus()}
-              useStyles={useGatsby2NestedMenuStyles}
+              useStyles={useGatsbyNestedMenuStyles}
             />
           </Grid>
           <Grid item xs={4}>
             <DefaultNestedMenu useStyles={useMaterialNestedMenuStyles} />
           </Grid>
           <Grid item xs={4}>
-            <DefaultNestedMenu useStyles={useJupiter2NestedMenuStyles} />
+            <DefaultNestedMenu useStyles={useJupiterNestedMenuStyles} />
           </Grid>
         </Grid>
       </Box>

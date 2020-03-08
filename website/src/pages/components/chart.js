@@ -2,7 +2,7 @@ import React from 'react';
 import DemoPage from 'containers/Demo';
 import { customComponents, DefaultComponent } from 'docs/components/chart';
 
-const CardContentPage = () => (
+const ChartPage = () => (
   <DemoPage
     title={'Chart'}
     description={'A collection of Chart components'}
@@ -19,4 +19,4 @@ const CardContentPage = () => (
   />
 );
 
-export default CardContentPage;
+export default ChartPage;

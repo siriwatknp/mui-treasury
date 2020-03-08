@@ -2,7 +2,7 @@ import React from 'react';
 import DemoPage from 'containers/Demo';
 import { customComponents, DefaultComponent } from 'docs/components/textField';
 
-const CardContentPage = () => (
+const TextFieldPage = () => (
   <DemoPage
     title={'Text Field'}
     description={'Full feature input with accessibility and great ux'}
@@ -19,4 +19,4 @@ const CardContentPage = () => (
   />
 );
 
-export default CardContentPage;
+export default TextFieldPage;

@@ -7,7 +7,7 @@ template: DocTemplate
 The way to use Mui-treasury is to think like composing legos. There are just 2 pieces,
 component and style. Both can be simple or complex depend on shape and feature.
 
-**First** select the main lego ([component](/components)) then the other lego (style) need to
+First select the main lego ([component](/components)) then the other lego (style) need to
 be compatible with the component otherwise they won't fit together and the result is not what you expected.
 
 ### Which style is compatible?
@@ -32,14 +32,14 @@ import GithubButtonStyle from 'docs/styles/button/github/index.js';
 **_2. Custom components_** : These styles can be applied to `Community Custom` and `Complex Composition` component.
 the styles is compatible with the component if the name matches.
 
-For example, `useBlogTextInfoCardContentStyles` is compatible with `TextInfoCardContent` component.
+For example, `useBlogTextInfoContentStyles` is compatible with `TextInfoContent` component.
 
-import BlogTextInfoCardContentStyle from 'docs/styles/textInfoCardContent/blog/index.js';
+import BlogTextInfoContentStyle from 'docs/styles/textInfoContent/blog/index.js';
 
 <SimpleShowcase>
-    <BlogTextInfoCardContentStyle />
+    <BlogTextInfoContentStyle />
 </SimpleShowcase>
 
-`embed:styles/textInfoCardContent/blog/BlogTextInfoCardContentStyle.js`
+`embed:styles/textInfoContent/blog/BlogTextInfoContentStyle.js`
 
 > That's all you need to know about how to use mui-treasury. Happy styling! 

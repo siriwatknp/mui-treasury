@@ -161,6 +161,10 @@ PlaneTicketCard.metadata = {
   creators: [require('constants/creators').siriwatknp],
   files: [
     {
+      pkg: 'mui-components',
+      path: 'rip/verticalTicket/VerticalTicketRip.js',
+    },
+    {
       pkg: 'mui-styles',
       path: 'rip/vertical/verticalRip.styles.js',
     },

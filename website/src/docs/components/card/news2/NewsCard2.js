@@ -72,27 +72,11 @@ NewsCard2.metadata = {
   path: 'component/card/news2',
   creators: [require('constants/creators').siriwatknp],
   files: [
-    // { pkg: 'mui-styles', path: 'shadow/faded/fadedShadow.styles.js' },
-    // {
-    //   pkg: 'mui-styles',
-    //   path: 'cardMedia/wide/wideCardMedia.styles.js',
-    // },
-    // {
-    //   pkg: 'mui-components',
-    //   path: 'cardContent/textInfo/TextInfoCardContent.js',
-    // },
-    // {
-    //   pkg: 'mui-styles',
-    //   path: 'cardContent/text01/textCardContent01.styles.js',
-    // },
-    // {
-    //   pkg: 'mui-components',
-    //   path: 'cardFooter/people/PeopleCardFooter.js',
-    // },
-    // {
-    //   pkg: 'mui-styles',
-    //   path: 'cardFooter/people/peopleCardFooter.styles.js',
-    // },
+    { pkg: 'mui-styles', path: 'shadow/lightTop/lightTopShadow.styles.js' },
+    {
+      pkg: 'mui-styles',
+      path: 'cardMedia/cover/coverCardMedia.styles.js',
+    },
   ],
 };
 // hide-end

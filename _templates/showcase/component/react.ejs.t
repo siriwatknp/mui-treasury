@@ -14,6 +14,7 @@ const <%= displayName %>Demo = () => {
   renderedWithoutIframe: false,
   creators: [require('constants/creators').<%= by %>], // add yourself to creators.js first
   createdAt: '<%= h.now() %>',
+  stylesUrl: '',
   frameProps: {}, // props that applied to Box in grid view
   size: 'medium', // can be 'large' | 'huge' for grid size
   files: [

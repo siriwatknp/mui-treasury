@@ -1,7 +1,13 @@
-import { mergeStyleCreators } from '@mui-treasury/styling';
-import gatsbyMenuItem from '../../menuItem/gatsby/gatsbyMenuItem.styles';
+import { gatsbyCollapsibleMenuStyles } from '../../collapsibleMenu/gatsby';
 
-export default mergeStyleCreators(gatsbyMenuItem, {
+const s = gatsbyCollapsibleMenuStyles();
+
+export default () => ({
+  ...s,
+  list: { padding: 0 },
+  parent: {
+    position: 'relative',
+  },
   lv1Parent: {
     '&:before': {
       content: '" "',
@@ -11,7 +17,7 @@ export default mergeStyleCreators(gatsbyMenuItem, {
       right: 0,
       top: 0,
     },
-    '& > $lv1Item > $menuItem': {
+    '& > $row > $rowItem, & > $row > $listItem': {
       textTransform: 'uppercase',
       letterSpacing: '0.075em',
       fontSize: '0.75rem',
@@ -20,63 +26,39 @@ export default mergeStyleCreators(gatsbyMenuItem, {
     },
   },
   lv1ParentActive: {
+    background: 'rgba(241,222,250,0.15)',
     '&:before': {
       borderTop: '1px solid rgb(246, 237, 250)',
     },
-    background: 'rgba(241,222,250,0.15)',
-    '& > $lv1Item > $menuItem': {
-      fontWeight: 500,
-    },
-    '& > $lv1ItemExpanded > $menuItem': {
+    '& > $row > $rowItem, & > $row > $listItem': {
       color: 'rgb(138, 75, 175)',
+      fontWeight: 'bold',
     },
-    '&$lv1ParentExpanded': {
+    '&$lv1ParentCollapsed': {
       '&:before': {
         left: 0,
       },
     },
   },
-  lv1ParentExpanded: {},
-  lv1Item: {},
-  lv1ItemSelected: {
-    '& $menuItem': {
-      fontWeight: 500,
-    },
-  },
-  lv1ItemExpanded: {},
-  lv2List: {},
+  lv1ParentCollapsed: {},
   lv2ParentActive: {
-    '& > $lv2Item > $menuItem': {
+    '& > $row > $rowItem, & > $row > $listItem': {
       color: 'rgb(138, 75, 175)',
       fontWeight: 500,
     },
   },
   lv2Item: {
-    '& $menuItem': {
-      paddingLeft: '1.5rem',
-    },
+    paddingLeft: '1.5rem',
   },
   lv3Item: {
-    '& $menuItem': {
-      paddingLeft: 48,
-      '&:before': {
-        left: '1.5rem',
-      },
-    },
-  },
-  lv3List: {
+    paddingLeft: 48,
     '&:before': {
-      display: 'none',
+      left: '1.5rem',
     },
   },
   lv3ItemSelected: {
-    '& $menuItem': {
-      '&:after': {
-        width: 'calc(1.5rem + 8px)',
-      },
-    },
     '&:after': {
-      display: 'none',
+      width: 'calc(1.5rem + 8px)',
     },
   },
 });

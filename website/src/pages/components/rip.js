@@ -2,7 +2,7 @@ import React from 'react';
 import DemoPage from 'containers/Demo';
 import { customComponents, DefaultComponent } from 'docs/components/rip';
 
-const CardContentPage = () => (
+const RipPage = () => (
   <DemoPage
     title={'Rip'}
     description={'Used specifically in Ticket.'}
@@ -19,4 +19,4 @@ const CardContentPage = () => (
   />
 );
 
-export default CardContentPage;
+export default RipPage;
