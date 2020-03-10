@@ -14,6 +14,7 @@ import { customComponents as rowToggleStyles } from '../../docs/styles/rowToggle
 import { customComponents as switchToggleStyles } from '../../docs/styles/switchToggle';
 import { customComponents as flexStyles } from '../../docs/styles/flex';
 import { customComponents as shadowStyles } from '../../docs/styles/shadow';
+import { customComponents as switchStyles } from '../../docs/styles/switch';
 
 export default [
   {
@@ -73,6 +74,12 @@ export default [
         label: 'TextField',
         total: textFieldStyles.length,
         to: '/styles/text-field',
+      },
+      {
+        key: 'switch',
+        label: 'Switch',
+        total: switchStyles.length,
+        to: '/styles/switch',
       },
     ],
   },
