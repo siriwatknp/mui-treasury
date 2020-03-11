@@ -1,19 +1,19 @@
 import React from 'react';
 import Switch from '@material-ui/core/Switch';
-import { useIosSwitchStyles } from '@mui-treasury/styles/switch/ios';
+import { useLovelySwitchStyles } from '@mui-treasury/styles/switch/lovely';
 
-const IosSwitchStyle = () => {
+const LovelySwitchStyle = () => {
   const [toggled, setToggled] = React.useState(false);
-  const iosStyles = useIosSwitchStyles();
+  const lovelyStyles = useLovelySwitchStyles();
   return (
     <div>
       <Switch
-        classes={iosStyles}
+        classes={lovelyStyles}
         checked={toggled}
         onChange={e => setToggled(e.target.checked)}
       />
       <Switch
-        classes={iosStyles}
+        classes={lovelyStyles}
         checked={!toggled}
         onChange={e => setToggled(!e.target.checked)}
       />
@@ -21,18 +21,16 @@ const IosSwitchStyle = () => {
   );
 };
 // hide-start
-IosSwitchStyle.metadata = {
-  title: 'Ios',
-  path: 'styles/switch/ios',
+LovelySwitchStyle.metadata = {
+  title: 'Lovely',
+  path: 'styles/switch/lovely',
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
-  createdAt: 'Tue Mar 10 2020',
-  frameProps: {
-    bgcolor: 'grey.100',
-  }, // props that applied to Box in grid view
+  createdAt: 'Wed Mar 11 2020',
+  frameProps: {}, // props that applied to Box in grid view
   size: 'medium', // can be 'large' | 'huge' for grid size
-  files: [{ pkg: 'mui-styles', path: 'switch/ios/iosSwitch.styles.js' }],
+  files: [{ pkg: 'mui-styles', path: 'switch/lovely/lovelySwitch.styles.js' }],
 };
 // hide-end
 
-export default IosSwitchStyle;
+export default LovelySwitchStyle;

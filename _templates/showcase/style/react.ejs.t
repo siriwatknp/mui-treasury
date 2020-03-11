@@ -10,7 +10,7 @@ const <%= displayName %>Style = () => {
 // hide-start
 <%= displayName %>Style.metadata = {
   title: '<%= h.changeCase.title(name) %>',
-  path: '<%= category %>/<%= name %>',
+  path: 'styles/<%= category %>/<%= name %>',
   renderedWithoutIframe: false,
   creators: [require('constants/creators').<%= by %>], // add yourself to creators.js first
   createdAt: '<%= h.now() %>',
