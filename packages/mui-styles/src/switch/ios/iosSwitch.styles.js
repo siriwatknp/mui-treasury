@@ -1,23 +1,26 @@
 const pxToRem = (px, oneRemPx = 16) => `${px / oneRemPx}rem`;
 
 export default theme => {
+  const spacing = 8;
   const size = pxToRem(28);
-  const width = pxToRem(52);
+  const width = pxToRem(52 + 2 * spacing);
   const borderWidth = 2;
-  const height = `calc(${size} + ${borderWidth * 2}px)`;
+  const height = `calc(${size} + ${borderWidth * 2}px + ${pxToRem(
+    2 * spacing
+  )})`;
   return {
     root: {
       width,
       height,
-      padding: 0,
-      margin: theme.spacing(1),
-      overflow: 'unset',
+      padding: pxToRem(spacing),
+      margin: 0,
     },
     switchBase: {
       padding: borderWidth,
+      top: pxToRem(spacing),
+      left: pxToRem(spacing),
       '&$checked': {
-        transform: `translateX(calc(${width} - ${size} - ${borderWidth *
-          2}px))`,
+        transform: `translateX(calc(${width} - ${size} - ${borderWidth * 2}px - ${pxToRem(2 * spacing)}))`,
         color: theme.palette.common.white,
         '& + $track': {
           backgroundColor: '#52d869',
