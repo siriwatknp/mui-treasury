@@ -61,7 +61,7 @@
     "@types/jest": "^25.1.1",
     "babel-jest": "^24.9.0",
     "babel-plugin-module-resolver": "^4.0.0",
-    "babel-preset-gatsby": "^0.2.8",
+    "babel-preset-gatsby": "^0.3.1",
     "eslint-config-react-app": "^5.0.2",
     "firebase-tools": "^7.4.0",
     "fs-extra": "^8.1.0",
