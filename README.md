@@ -5,7 +5,7 @@
 </p>
 
 # Material-UI Treasury [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/siriwatknp/mui-treasury-next/pulls) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Imagine a place with millions of real-world, ready-to-use, and themable components that you can copy & paste or even install to your project. I believe that it will help boosting many projects that want to prove their ideas and make their 1st prototype to make tomorrow better than today.
@@ -82,6 +82,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://twitter.com/davidedantonio"><img src="https://avatars2.githubusercontent.com/u/9164563?v=4" width="100px;" alt=""/><br /><sub><b>Davide D'Antonio</b></sub></a><br /><a href="https://github.com/siriwatknp/mui-treasury/commits?author=davidedantonio" title="Code">💻</a></td>
     <td align="center"><a href="https://www.linkedin.com/in/aaronhayes1/"><img src="https://avatars2.githubusercontent.com/u/4180720?v=4" width="100px;" alt=""/><br /><sub><b>Aaron Hayes</b></sub></a><br /><a href="https://github.com/siriwatknp/mui-treasury/commits?author=aaronhayes" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/tokdaniel"><img src="https://avatars1.githubusercontent.com/u/7677603?v=4" width="100px;" alt=""/><br /><sub><b>tokdaniel</b></sub></a><br /><a href="https://github.com/siriwatknp/mui-treasury/issues?q=author%3Atokdaniel" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/venegasalejandro"><img src="https://avatars3.githubusercontent.com/u/8170561?v=4" width="100px;" alt=""/><br /><sub><b>Alejandro Venegas</b></sub></a><br /><a href="https://github.com/siriwatknp/mui-treasury/commits?author=venegasalejandro" title="Code">💻</a></td>
   </tr>
 </table>
 
