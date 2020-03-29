@@ -52,8 +52,8 @@ export default [
         to: '/styles/icon',
       },
       {
-        key: 'input',
-        label: 'Input',
+        key: 'input-base',
+        label: 'Input Base',
         total: inputBaseStyles.length,
         to: '/styles/input-base',
       },
