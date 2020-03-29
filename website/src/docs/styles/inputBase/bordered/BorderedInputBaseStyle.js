@@ -1,7 +1,6 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
 import InputBase from '@material-ui/core/InputBase';
-import InputAdornment from '@material-ui/core/InputAdornment';
 import Search from '@material-ui/icons/Search';
 import { useBorderedInputBaseStyles } from '@mui-treasury/styles/inputBase/bordered';
 
