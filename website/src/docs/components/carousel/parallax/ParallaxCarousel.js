@@ -233,7 +233,7 @@ ParallaxCarousel.metadata = {
   files: [
     { pkg: 'mui-components', path: 'slide/parallax/ParallaxSlide.js' },
     { pkg: 'mui-components', path: 'indicator/dot/DotIndicator.js' },
-    { pkg: 'mui-styles', path: 'arrow/simple/simpleArrow.styles.js' },
+    { pkg: 'mui-styles', path: 'button/arrowDark/arrowDarkButton.styles.js' },
   ],
   relates: [],
 };
