@@ -1,37 +1,42 @@
 import React from 'react';
-import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
-import { borderedTextFieldStylesHook } from '@mui-treasury/styles/textField/bordered';
+import Box from '@material-ui/core/Box';
+import { shadeTextFieldStylesHook } from '@mui-treasury/styles/textField/shade';
 
-const BorderedTextFieldStyle = () => {
-  const inputBaseStyles = borderedTextFieldStylesHook.useInputBase();
-  const inputLabelStyles = borderedTextFieldStylesHook.useInputLabel();
+const ShadeTextFieldStyle = () => {
+  const inputBaseStyles = shadeTextFieldStylesHook.useInputBase();
+  const inputLabelStyles = shadeTextFieldStylesHook.useInputLabel();
   return (
     <div>
       <TextField
-        label={'Label'}
+        label={'Order Name'}
         placeholder={'Placeholder'}
-        helperText={'Helper Text'}
         margin={'normal'}
+        required
         InputLabelProps={{ shrink: true, classes: inputLabelStyles }}
         InputProps={{ classes: inputBaseStyles, disableUnderline: true }}
       />
-      <Box />
+      <div />
       <TextField
-        label={'Label'}
-        placeholder={'Placeholder'}
-        helperText={'Helper Text'}
+        label={'My License Number'}
+        placeholder={'Disabled'}
         margin={'normal'}
         disabled
         InputLabelProps={{ shrink: true, classes: inputLabelStyles }}
         InputProps={{ classes: inputBaseStyles, disableUnderline: true }}
       />
-      <Box />
+      <div />
       <TextField
         error
-        label={'Label'}
+        label={
+          <>
+            Destination{' '}
+            <Box display="inline-block" color="grey.400">
+              (optional)
+            </Box>
+          </>
+        }
         placeholder={'Placeholder'}
-        helperText={'Helper Text'}
         margin={'normal'}
         InputLabelProps={{ shrink: true, classes: inputLabelStyles }}
         InputProps={{ classes: inputBaseStyles, disableUnderline: true }}
@@ -40,21 +45,20 @@ const BorderedTextFieldStyle = () => {
   );
 };
 // hide-start
-BorderedTextFieldStyle.metadata = {
-  title: 'Bordered',
-  path: 'styles/textField/bordered',
+ShadeTextFieldStyle.metadata = {
+  title: 'Shade',
+  path: 'styles/textField/shade',
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
-  createdAt: 'Sun Mar 29 2020',
-  frameProps: {}, // props that applied to Box in grid view
+  createdAt: 'Mon Mar 30 2020',
+  frameProps: {
+    bgcolor: '#fff',
+  }, // props that applied to Box in grid view
   size: 'medium', // can be 'large' | 'huge' for grid size
   files: [
-    {
-      pkg: 'mui-styles',
-      path: 'textField/bordered/borderedTextField.styles.js',
-    },
+    { pkg: 'mui-styles', path: 'textField/shade/shadeTextField.styles.js' },
   ],
 };
 // hide-end
 
-export default BorderedTextFieldStyle;
+export default ShadeTextFieldStyle;

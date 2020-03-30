@@ -14,7 +14,8 @@ const RoundInputBaseStyle = () => {
       <Box pb={1} />
       <InputBase
         classes={styles}
-        placeholder={'Placeholder'}
+        color={'secondary'}
+        placeholder={'Secondary color'}
         startAdornment={<AccountCircle />}
       />
       <Box pb={1} />

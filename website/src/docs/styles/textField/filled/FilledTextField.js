@@ -47,6 +47,9 @@ FilledTextField.metadata = {
   title: 'Filled',
   path: 'styles/textField/filled',
   creators: [require('constants/creators').siriwatknp],
+  frameProps: {
+    bgcolor: '#fff',
+  },
   files: [
     { pkg: 'mui-styles', path: 'textField/filled/filledTextField.styles.js' },
   ],

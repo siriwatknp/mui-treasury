@@ -7,7 +7,7 @@ export const borderedInputBaseStyles = theme => {
     ...styles(theme),
     formControl: {
       'label + &': {
-        marginTop: 18,
+        marginTop: 22,
       },
     },
   };
