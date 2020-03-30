@@ -14,9 +14,6 @@ export const roundInputBaseStyles = theme => {
 export const roundInputLabelStyles = ({ palette }) => ({
   root: {
     color: palette.grey[700],
-    '&$focused:not($error)': {
-      color: palette.primary.main,
-    },
     marginLeft: '0.75rem',
   },
   error: {},
