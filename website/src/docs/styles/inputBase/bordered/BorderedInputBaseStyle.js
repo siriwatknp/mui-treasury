@@ -10,11 +10,7 @@ const BorderedInputBaseStyle = () => {
     <div>
       <InputBase classes={styles} placeholder={'Placeholder'} />
       <Box pb={1} />
-      <InputBase
-        error
-        classes={styles}
-        placeholder={'Error state'}
-      />
+      <InputBase error classes={styles} placeholder={'Error state'} />
       <Box pb={1} />
       <InputBase
         classes={styles}
@@ -34,7 +30,9 @@ BorderedInputBaseStyle.metadata = {
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Sun Mar 29 2020',
-  frameProps: {}, // props that applied to Box in grid view
+  frameProps: {
+    bgcolor: '#f7fafc',
+  }, // props that applied to Box in grid view
   size: 'medium', // can be 'large' | 'huge' for grid size
   files: [
     {
