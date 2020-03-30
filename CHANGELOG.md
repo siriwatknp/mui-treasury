@@ -10,6 +10,40 @@
 > - :bulb: [Refactor]
 > - :lipstick: [Style]
 
+## _30 Mar 2020_
+
+### website@1.22.0
+
+#### :bug: Bug Fix
+
+- [#588](https://github.com/siriwatknp/mui-treasury/pull/588) fix: 🐛 update path ([@siriwatknp](https://github.com/siriwatknp))
+
+### @mui-treasury/styles@1.1.0
+
+#### :rocket: New Feature
+
+- [#603](https://github.com/siriwatknp/mui-treasury/pull/603) 🎸#533 add shade Input & TextField style ([@siriwatknp](https://github.com/siriwatknp))
+- [#591](https://github.com/siriwatknp/mui-treasury/pull/591) feat: 🎸 add round input & textField style ([@siriwatknp](https://github.com/siriwatknp))
+- [#590](https://github.com/siriwatknp/mui-treasury/pull/590) #531 border input text field ([@siriwatknp](https://github.com/siriwatknp))
+- [#565](https://github.com/siriwatknp/mui-treasury/pull/565) feat: 🎸 add Switch I style & showcase ([@siriwatknp](https://github.com/siriwatknp))
+- [#564](https://github.com/siriwatknp/mui-treasury/pull/564) feat: 🎸 add switch II style ([@siriwatknp](https://github.com/siriwatknp))
+- [#547](https://github.com/siriwatknp/mui-treasury/pull/547) feat: 🎸 complete lovelySwitch style and fix hygen template ([@siriwatknp](https://github.com/siriwatknp))
+- [#543](https://github.com/siriwatknp/mui-treasury/pull/543) feat: 🎸 complete ios switch style ([@siriwatknp](https://github.com/siriwatknp))
+
+### @mui-treasury/layout@3.3.4
+
+#### :rocket: New Feature
+
+- [#440](https://github.com/siriwatknp/mui-treasury/pull/440) #398 typescript support ([@siriwatknp](https://github.com/siriwatknp))
+
+### `Patch`
+
+- @mui-treasury/components@1.0.1
+- @mui-treasury/mockup@1.0.1
+
+#### Committers: 1
+- Siriwat Kunaporn ([@siriwatknp](https://github.com/siriwatknp))
+
 ## _08 Mar 2020_
 
 ### @mui-treasury/components@1.0.0, styles@1.0.0, mockup@1.0.0
