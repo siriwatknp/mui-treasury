@@ -9,12 +9,15 @@ export default ({ palette }) => ({
     '&:hover:not($disabled)': {
       borderColor: blueGrey[500],
     },
-  },
-  adornedStart: {
-    paddingLeft: '0.5rem',
     '& > svg': {
       color: blueGrey[300],
     },
+  },
+  adornedStart: {
+    paddingLeft: '0.5rem',
+  },
+  adornedEnd: {
+    paddingRight: '0.5rem',
   },
   focused: {
     borderColor: blue[700],
