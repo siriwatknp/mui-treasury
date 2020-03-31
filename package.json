@@ -64,7 +64,7 @@
     "babel-preset-gatsby": "^0.2.8",
     "eslint-config-react-app": "^5.0.2",
     "firebase-tools": "^7.4.0",
-    "fs-extra": "^8.1.0",
+    "fs-extra": "^9.0.0",
     "glob": "^7.1.4",
     "husky": "^4.2.1",
     "hygen": "^5.0.3",
