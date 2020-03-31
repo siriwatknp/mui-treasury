@@ -16,6 +16,7 @@ module.exports = {
       options: {
         root: './', // <- will be used as a root dir
         aliases: {
+          assets: './src/assets',
           utils: './src/utils',
           constants: './src/constants',
           docs: './src/docs',
@@ -52,6 +53,7 @@ module.exports = {
         name: `pages`,
       },
     },
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -82,8 +84,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-catch-links`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     `gatsby-plugin-material-ui`,
     {
       resolve: `gatsby-plugin-google-analytics`,

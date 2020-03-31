@@ -1,14 +1,15 @@
 import React from 'react';
 import cx from 'clsx';
 import { Location } from '@reach/router';
-import { useStaticQuery, graphql, Link } from 'gatsby';
-import Image from 'gatsby-image';
+import { Link } from 'gatsby';
 import GitHubButton from 'react-github-btn';
 import { makeStyles } from '@material-ui/core/styles';
+import Avatar from '@material-ui/core/Avatar';
 import Box from '@material-ui/core/Box';
 import HorzMenuList from '@mui-treasury/components/menuList/HorzMenuList';
-import { NAV_MENUS } from 'constants/menus';
 import { useScreen } from '@mui-treasury/layout';
+import { NAV_MENUS } from 'constants/menus';
+import logo from 'assets/logo.png';
 
 const useStyles = makeStyles(() => ({
   nav: {
@@ -21,18 +22,6 @@ const useStyles = makeStyles(() => ({
 }));
 
 const PageHeader = () => {
-  const data = useStaticQuery(graphql`
-    query HeaderQuery {
-      logo: file(absolutePath: { regex: "/logo.png/" }) {
-        childImageSharp {
-          fixed(width: 48, height: 48) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-    }
-  `);
-  const { logo } = data;
   const styles = useStyles();
   const screen = useScreen();
   return (
@@ -63,7 +52,7 @@ const PageHeader = () => {
                 }}
                 aria-label={'go to home page'}
               >
-                <Image fixed={logo.childImageSharp.fixed} />
+                <Avatar variant="square" src={logo} alt="" />
               </Box>
             )}
             <HorzMenuList

@@ -9,7 +9,6 @@ const { BoxTabs, ShowcaseWidget } = molecules;
 const DefaultSection = ({
   Component,
   ShowcaseWidgetProps,
-  componentImage,
   cssTree,
 }) => (
   <Box maxWidth={1152} mx={'auto'}>
@@ -33,7 +32,6 @@ const DefaultSection = ({
           {([key], { wrapContent }) =>
             wrapContent(
               <>
-                {key === 0 && componentImage}
                 {key === 1 && cssTree}
               </>,
               { p: 3, flexGrow: 1 }

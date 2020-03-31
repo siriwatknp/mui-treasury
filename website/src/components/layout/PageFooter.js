@@ -1,6 +1,5 @@
 /* eslint-disable */
 import React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
 import Image from 'gatsby-image';
 import { makeStyles } from '@material-ui/styles';
 import Avatar from '@material-ui/core/Avatar';
@@ -10,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import me from 'assets/avatar-jun.jpg';
 
 const useStyles = makeStyles(() => ({
   avatarRoot: {
@@ -55,19 +55,6 @@ const links = [
 
 const PageFooter = () => {
   const classes = useStyles();
-  const data = useStaticQuery(graphql`
-    query {
-      file(relativePath: { eq: "avatar-jun.jpg" }) {
-        childImageSharp {
-          # Specify the image processing specifications right in the query.
-          # Makes it trivial to update as your page's design changes.
-          fixed(width: 120, height: 120) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-    }
-  `);
   return (
     <Box bgcolor={'grey.50'} py={'3.5rem'}>
       <Container maxWidth={'md'}>
@@ -75,12 +62,11 @@ const PageFooter = () => {
           <Grid item>
             <Box mt={1} />
             <Avatar
-              component={Image}
+              src={me}
               classes={{
                 root: classes.avatarRoot,
                 img: classes.img,
               }}
-              fixed={data.file.childImageSharp.fixed}
             />
           </Grid>
           <Grid item>
