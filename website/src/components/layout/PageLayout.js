@@ -70,7 +70,6 @@ const PageLayout = ({ menus, children, getOpenKeys, hamburgerHidden }) => {
       <Sidebar>
         <div className={sbStyles.container}>
           <ComponentMenuList menus={menus} getOpenKeys={getOpenKeys} />
-          <Box height={100} />
         </div>
         <CollapseBtn className={sbStyles.collapseBtn}>
           <CollapseIcon />
