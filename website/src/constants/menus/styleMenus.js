@@ -15,6 +15,7 @@ import { customComponents as switchToggleStyles } from '../../docs/styles/switch
 import { customComponents as flexStyles } from '../../docs/styles/flex';
 import { customComponents as shadowStyles } from '../../docs/styles/shadow';
 import { customComponents as switchStyles } from '../../docs/styles/switch';
+import { customComponents as checkboxStyles } from '../../docs/styles/checkbox';
 
 export default [
   {
@@ -38,6 +39,12 @@ export default [
         label: 'Card Media',
         total: cardMediaStyles.length,
         to: '/styles/card-media',
+      },
+      {
+        key: 'checkbox',
+        label: 'Checkbox',
+        total: checkboxStyles.length,
+        to: '/styles/checkbox',
       },
       {
         key: 'grid',
