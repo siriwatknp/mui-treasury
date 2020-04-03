@@ -13,7 +13,6 @@ import {
   sidebarStyles,
   headerStyles,
 } from '@mui-treasury/layout';
-import Box from '@material-ui/core/Box';
 import Toolbar from '@material-ui/core/Toolbar';
 import PageHeader from 'components/layout/PageHeader';
 import PageFooter from 'components/layout/PageFooter';
