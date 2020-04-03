@@ -16,19 +16,7 @@ const NeonCheckboxStyle = () => {
             icon={<span />}
           />
         }
-        label={'Default'}
-      />
-      <br />
-      <FormControlLabel
-        control={
-          <Checkbox
-            disableRipple
-            classes={neonStyles}
-            checkedIcon={<span />}
-            icon={<span />}
-          />
-        }
-        label={'Selected'}
+        label={'Awesome'}
       />
       <br />
       <FormControlLabel

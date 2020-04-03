@@ -16,6 +16,7 @@ import { customComponents as flexStyles } from '../../docs/styles/flex';
 import { customComponents as shadowStyles } from '../../docs/styles/shadow';
 import { customComponents as switchStyles } from '../../docs/styles/switch';
 import { customComponents as checkboxStyles } from '../../docs/styles/checkbox';
+import { customComponents as radioStyles } from '../../docs/styles/radio';
 
 export default [
   {
@@ -66,9 +67,15 @@ export default [
       },
       {
         key: 'list-item',
-        label: 'ListItem',
+        label: 'List Item',
         total: listItemStyles.length,
         to: '/styles/list-item',
+      },
+      {
+        key: 'radio',
+        label: 'Radio',
+        total: radioStyles.length,
+        to: '/styles/radio',
       },
       {
         key: 'tabs',
@@ -78,7 +85,7 @@ export default [
       },
       {
         key: 'text-field',
-        label: 'TextField',
+        label: 'Text Field',
         total: textFieldStyles.length,
         to: '/styles/text-field',
       },
