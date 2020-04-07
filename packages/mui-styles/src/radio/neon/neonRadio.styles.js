@@ -5,11 +5,6 @@ const lightColor = Color(mainColor)
   .fade(0.8)
   .toString();
 
-const errorColor = '#d52731';
-const lightErrorColor = Color(errorColor)
-  .fade(0.8)
-  .toString();
-
 export default () => ({
   root: {
     '& + *': {
@@ -37,13 +32,6 @@ export default () => ({
       '& input:hover ~ *, & input:focus + *': {
         boxShadow: `inset 0 0 0 1px ${mainColor}, inset 0 -1px 0 ${mainColor}`,
         backgroundColor: lightColor,
-      },
-      '& input + .Mui-error': {
-        boxShadow: `inset 0 0 0 1px ${errorColor}`,
-        background: lightErrorColor,
-      },
-      '& input:hover + .Mui-error, input:focus + .Mui-error': {
-        boxShadow: `0 0 0 4px ${lightErrorColor}, inset 0 0 0 1px ${errorColor}`,
       },
     },
   },

@@ -45,6 +45,5 @@ export default theme => {
       height: size,
     },
     checked: {},
-    focusVisible: {},
   };
 };
