@@ -129,7 +129,7 @@ const LayoutPage = () => {
         Material UI <Link underline={'none'}>Layout</Link>
       </Typography>
       <Typography gutterBottom>
-        <b>Version 2.0-beta</b>
+        <b>Version 3</b>
       </Typography>
       <Typography indent={'small'}>
         Layout is a group of Material-UI components that are enhanced and

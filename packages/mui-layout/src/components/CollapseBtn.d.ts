@@ -9,7 +9,7 @@ export type CollapseBtnTypeMap<
   D extends ElementType = 'button'
 > = ExtendButtonTypeMap<{
   props: P & {
-    mapContext?: (ctx: ReturnType<typeof useSidebarConfig>) => Pick<ReturnType<typeof useSidebarConfig>, 'setCollapsed' | 'collapsed' | 'opened' | 'sidebar'>;
+    mapContext?: (ctx: ReturnType<typeof useSidebarConfig>) => Pick<ReturnType<typeof useSidebarConfig>, 'setCollapsed' | 'collapsed' | 'open' | 'sidebar'>;
     // useSidebarConfig?: typeof useSidebarConfig;
   };
   defaultComponent: D;

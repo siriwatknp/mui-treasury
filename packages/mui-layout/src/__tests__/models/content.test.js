@@ -43,7 +43,7 @@ describe('Content', () => {
 
     provider.secondarySidebar.setVariant('persistent');
     provider.content.setSecondaryPersistentBehavior('fit');
-    provider.set({ secondaryOpened: false });
+    provider.set({ secondaryOpen: false });
     expect(content.getMarginStyle()).toStrictEqual({
       marginLeft: 256,
       marginRight: 0,
@@ -51,7 +51,7 @@ describe('Content', () => {
     expect(content.getWidthStyle()).toStrictEqual({
       width: 'calc(100% - 256px)',
     });
-    provider.set({ secondaryOpened: true });
+    provider.set({ secondaryOpen: true });
     expect(content.getMarginStyle()).toStrictEqual({
       marginLeft: 256,
       marginRight: 244,
@@ -61,7 +61,7 @@ describe('Content', () => {
     });
 
     provider.content.setSecondaryPersistentBehavior('flexible');
-    provider.set({ secondaryOpened: true });
+    provider.set({ secondaryOpen: true });
     expect(content.getMarginStyle()).toStrictEqual({
       marginLeft: 'calc(256px + -244px)',
     });

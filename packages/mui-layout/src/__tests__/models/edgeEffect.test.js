@@ -77,9 +77,9 @@ describe('Edge Effect', () => {
     expect(effect.getMarginStyle()).toStrictEqual({ marginLeft: 80 });
 
     provider.primarySidebar.setVariant('persistent');
-    provider.set({ opened: false, collapsed: false });
+    provider.set({ open: false, collapsed: false });
     expect(effect.getMarginStyle()).toStrictEqual({ marginLeft: 0 });
-    provider.set({ opened: true, collapsed: false });
+    provider.set({ open: true, collapsed: false });
     // no persistentBehavior provided
     expect(effect.getMarginStyle()).toStrictEqual({ marginLeft: 0 });
     // contain persistentBehavior
@@ -109,9 +109,9 @@ describe('Edge Effect', () => {
     expect(effect.getMarginStyle()).toStrictEqual({ marginRight: 64 });
 
     provider.primarySidebar.setVariant('persistent');
-    provider.set({ opened: false, collapsed: false });
+    provider.set({ open: false, collapsed: false });
     expect(effect.getMarginStyle()).toStrictEqual({ marginRight: 0 });
-    provider.set({ opened: true, collapsed: false });
+    provider.set({ open: true, collapsed: false });
     // no persistentBehavior provided
     expect(effect.getMarginStyle()).toStrictEqual({ marginRight: 0 });
     // contain persistentBehavior
@@ -123,17 +123,17 @@ describe('Edge Effect', () => {
     // should only affect marginLeft as negative value, otherwise does not work
     // css constraint
     // todo support rtl direction
-    provider.set({ opened: true, collapsed: false });
+    provider.set({ open: true, collapsed: false });
     expect(effect.getMarginStyle(BEHAVIOR.flexible)).toStrictEqual({
       marginLeft: -300,
     });
-    provider.set({ opened: true, collapsed: true });
+    provider.set({ open: true, collapsed: true });
     expect(effect.getMarginStyle(BEHAVIOR.flexible)).toStrictEqual({
       marginLeft: -64,
     });
 
     provider.primarySidebar.setWidth('30%');
-    provider.set({ opened: true, collapsed: false });
+    provider.set({ open: true, collapsed: false });
     expect(effect.getMarginStyle(BEHAVIOR.flexible)).toStrictEqual({
       marginLeft: '-30%',
     });
@@ -160,9 +160,9 @@ describe('Edge Effect', () => {
     });
 
     provider.primarySidebar.setVariant('persistent');
-    provider.set({ opened: false, collapsed: false });
+    provider.set({ open: false, collapsed: false });
     expect(effect.getWidthStyle()).toStrictEqual({ width: '100%' });
-    provider.set({ opened: true, collapsed: false });
+    provider.set({ open: true, collapsed: false });
     expect(effect.getWidthStyle()).toStrictEqual({ width: '100%' });
     expect(effect.getWidthStyle(BEHAVIOR.flexible)).toStrictEqual({
       width: '100%',
@@ -170,7 +170,7 @@ describe('Edge Effect', () => {
     expect(effect.getWidthStyle(BEHAVIOR.fit)).toStrictEqual({
       width: 'calc(100% - 300px)',
     });
-    provider.set({ opened: true, collapsed: true });
+    provider.set({ open: true, collapsed: true });
     expect(effect.getWidthStyle(BEHAVIOR.fit)).toStrictEqual({
       width: 'calc(100% - 64px)',
     });

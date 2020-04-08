@@ -61,7 +61,7 @@ describe('Header', () => {
     provider.header.setSecondaryClipped(false);
     provider.header.setSecondaryPersistentBehavior('fit');
     provider.secondarySidebar.setVariant('persistent');
-    provider.set({ secondaryOpened: false });
+    provider.set({ secondaryOpen: false });
     expect(header.getMarginStyle()).toStrictEqual({
       marginLeft: 256,
       marginRight: 0,
@@ -69,7 +69,7 @@ describe('Header', () => {
     expect(header.getWidthStyle()).toStrictEqual({
       width: 'calc(100% - 256px)',
     });
-    provider.set({ secondaryOpened: true });
+    provider.set({ secondaryOpen: true });
     expect(header.getMarginStyle()).toStrictEqual({
       marginLeft: 256,
       marginRight: 244,
@@ -121,7 +121,7 @@ describe('Header', () => {
     });
     expect(header.getWidthStyle()).toStrictEqual({ width: '100%' });
 
-    provider.set({ opened: true });
+    provider.set({ open: true });
     expect(header.getMarginStyle()).toStrictEqual({
       marginLeft: 256,
     });

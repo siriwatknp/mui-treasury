@@ -10,11 +10,11 @@ const CollapseBtn = ({
   ...props
 }) => {
   const ctx = useSidebarConfig();
-  const { setCollapsed, collapsed, opened, sidebar } = mapContext(ctx);
+  const { setCollapsed, collapsed, open, sidebar } = mapContext(ctx);
   if (
     !sidebar ||
     !sidebar.collapsible ||
-    (sidebar.variant === 'persistent' && !opened)
+    (sidebar.variant === 'persistent' && !open)
   ) {
     return null;
   }
