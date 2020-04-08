@@ -3,16 +3,9 @@ import createLayout from '../../modules/path';
 jest.mock('../../constants/menus', () => {
   return {
     __esModule: true,
-    default: {
-      nav: ['nav'],
-      components: ['components'],
-      layouts: ['layouts'],
-    },
-    PKG: {
-      nav: 'nav',
-      components: 'components',
-      layouts: 'layouts',
-    },
+    COMPONENT_MENUS: ['components'],
+    LAYOUT_MENUS: ['layouts'],
+    STYLE_MENUS: [],
   };
 });
 
