@@ -48,7 +48,7 @@ describe('[Layout_LeftSidebar]', function() {
     expect(sidebarPaper.style.visibility).toBe('');
   });
 
-  test('[Temporary] should appear in dom when opened', () => {
+  test('[Temporary] should appear in dom when open', () => {
     const { queryByTestId, getByTestId } = renderWithinLayout(
       <>
         <Sidebar

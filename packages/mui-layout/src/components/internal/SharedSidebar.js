@@ -27,15 +27,15 @@ const SharedSidebar = ({
   const [entered, setEntered] = React.useState(false);
   const styles = useSidebarStyles();
   const transition = useTransitionStyles();
-  const { sidebar = {}, opened, setOpened, getSidebarZIndex } = parsedCtx;
+  const { sidebar = {}, open, setOpen, getSidebarZIndex } = parsedCtx;
   const { getWidth } = createEdgeSidebar(parsedCtx);
   const isPermanent = sidebar.variant === 'permanent';
   return (
     <Drawer
       {...props}
-      open={opened}
+      open={open}
       onClose={() => {
-        setOpened(false);
+        setOpen(false);
       }}
       variant={sidebar.variant}
       anchor={sidebar.anchor || 'left'}

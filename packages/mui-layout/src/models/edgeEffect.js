@@ -9,7 +9,7 @@ const attachOperator = (value, operator) =>
     : `${operator.toString().substr(0, 1)}${value}`;
 
 export default (ctx = {}) => {
-  const { header = {}, sidebar = {}, opened } = ctx;
+  const { header = {}, sidebar = {}, open } = ctx;
   const edgeSidebar = createEdgeSidebar(ctx);
 
   const incrementZIndex = (theme, plus) => ({
@@ -43,12 +43,12 @@ export default (ctx = {}) => {
         };
       }
       if (sidebar.variant === 'persistent') {
-        if (!opened) {
+        if (!open) {
           return {
             [`margin${upperFirst(sidebar.anchor)}`]: 0,
           };
         }
-        // opened
+        // open
         if (persistentBehavior === 'fit') {
           return {
             [`margin${upperFirst(sidebar.anchor)}`]: sidebarWidth,
@@ -61,7 +61,7 @@ export default (ctx = {}) => {
         }
         return {
           [`margin${upperFirst(sidebar.anchor)}`]:
-            opened &&
+            open &&
             (persistentBehavior === 'fit' || persistentBehavior === 'flexible')
               ? sidebarWidth
               : 0,
@@ -75,7 +75,7 @@ export default (ctx = {}) => {
       }
       if (sidebar.variant === 'persistent') {
         return createWidth(
-          opened && persistentBehavior === 'fit' ? sidebarWidth : 0
+          open && persistentBehavior === 'fit' ? sidebarWidth : 0
         );
       }
       return createWidth();

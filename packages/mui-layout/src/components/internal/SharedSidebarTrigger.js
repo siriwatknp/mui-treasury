@@ -10,7 +10,7 @@ const SharedSidebarTrigger = ({
   ...props
 }) => {
   const parsedCtx = useSidebarConfig();
-  const { opened, setOpened, sidebar = {} } = parsedCtx;
+  const { open, setOpen, sidebar = {} } = parsedCtx;
   const { displayedAboveBreakpoint } = useInsetBreakpoint(parsedCtx);
   const isPermanentDrawer = !sidebar.inset && sidebar.variant === 'permanent';
   if (isPermanentDrawer || displayedAboveBreakpoint) {
@@ -21,7 +21,7 @@ const SharedSidebarTrigger = ({
       {...props}
       onClick={e => {
         onClick(e);
-        setOpened(!opened);
+        setOpen(!open);
       }}
     >
       {children}

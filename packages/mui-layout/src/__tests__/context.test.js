@@ -48,12 +48,12 @@ describe('context', () => {
     );
 
     expect(result).toMatchObject({
-      opened: false,
-      setOpened: expect.any(Function),
+      open: false,
+      setOpen: expect.any(Function),
       collapsed: false,
       setCollapsed: expect.any(Function),
-      secondaryOpened: false,
-      setSecondaryOpened: expect.any(Function),
+      secondaryOpen: false,
+      setSecondaryOpen: expect.any(Function),
       secondaryCollapsed: false,
       setSecondaryCollapsed: expect.any(Function),
     });

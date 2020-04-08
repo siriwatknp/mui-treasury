@@ -12,15 +12,17 @@ const LayoutProvider = ({
   config,
   parseConfig,
   children,
-  initialOpened,
+  initialOpened, // removed in next major changed #555
+  initialOpen = initialOpened,
   initialCollapsed,
-  initialSecondaryOpened,
+  initialSecondaryOpened, // removed in next major changed #555
+  initialSecondaryOpen = initialSecondaryOpened,
   initialSecondaryCollapsed,
 }) => {
-  const [opened, setOpened] = React.useState(initialOpened);
+  const [open, setOpen] = React.useState(initialOpen);
   const [collapsed, setCollapsed] = React.useState(initialCollapsed);
-  const [secondaryOpened, setSecondaryOpened] = React.useState(
-    initialSecondaryOpened
+  const [secondaryOpen, setSecondaryOpen] = React.useState(
+    initialSecondaryOpen
   );
   const [secondaryCollapsed, setSecondaryCollapsed] = React.useState(
     initialSecondaryCollapsed
@@ -44,12 +46,14 @@ const LayoutProvider = ({
         secondaryCollapsedBreakpoint: config.secondaryCollapsedBreakpoint,
         secondaryHeightAdjustmentDisabled:
           config.secondaryHeightAdjustmentDisabled,
-        opened,
-        setOpened,
+        open,
+        opened: open, // removed in next major changed #555
+        setOpen,
+        setOpened: setOpen, // removed in next major changed #555
         collapsed,
         setCollapsed,
-        secondaryOpened,
-        setSecondaryOpened,
+        secondaryOpen,
+        setSecondaryOpen,
         secondaryCollapsed,
         setSecondaryCollapsed,
       }}
@@ -59,9 +63,11 @@ const LayoutProvider = ({
   );
 };
 LayoutProvider.propTypes = {
-  initialOpened: PropTypes.bool,
+  initialOpened: PropTypes.bool, // removed in next major changed #555
+  initialOpen: PropTypes.bool,
   initialCollapsed: PropTypes.bool,
-  initialSecondaryOpened: PropTypes.bool,
+  initialSecondaryOpened: PropTypes.bool, // removed in next major changed #555
+  initialSecondaryOpen: PropTypes.bool,
   initialSecondaryCollapsed: PropTypes.bool,
   config: PropTypes.shape({
     autoCollapseDisabled: PropTypes.bool,
@@ -85,8 +91,10 @@ LayoutProvider.propTypes = {
   parseConfig: PropTypes.func,
 };
 LayoutProvider.defaultProps = {
-  initialOpened: false,
-  initialCollapsed: false,
+  initialOpen: undefined,
+  initialOpened: false, // removed in next major changed #555
+  initialCollapsed: false, // removed in next major changed #555
+  initialSecondaryOpen: undefined,
   initialSecondaryOpened: false,
   initialSecondaryCollapsed: false,
   config: defaultLayoutPreset,
