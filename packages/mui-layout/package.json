@@ -32,7 +32,7 @@
     "postpublish": "rimraf build",
     "build": "cross-env NODE_ENV=production babel --config-file ../../babel-config.js ./src --out-dir ./build --ignore \"**/*.test.js\"",
     "prepublishOnly": "yarn copy-files",
-    "copy-files": "node ../../scripts/copy-files.js"
+    "copy-files": "DTS_INCLUDED=true node ../../scripts/copy-files.js"
   },
   "gitHead": "eac20ccd043fa6daf7f1971a373fb155229281c8"
 }
