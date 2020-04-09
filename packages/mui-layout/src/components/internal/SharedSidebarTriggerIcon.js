@@ -5,7 +5,7 @@ import ArrowRight from '@material-ui/icons/KeyboardArrowRightRounded';
 import MenuRounded from '@material-ui/icons/MenuRounded';
 
 const SharedSidebarTriggerIcon = ({ useSidebarConfig, ...props }) => {
-  const { opened, sidebar } = useSidebarConfig();
+  const { open, sidebar } = useSidebarConfig();
   const getArrow = () => {
     if (sidebar.anchor === 'left') {
       return <ArrowLeft {...props} />;
@@ -15,7 +15,7 @@ const SharedSidebarTriggerIcon = ({ useSidebarConfig, ...props }) => {
     }
     return null;
   };
-  return opened ? getArrow() : <MenuRounded {...props} />;
+  return open ? getArrow() : <MenuRounded {...props} />;
 };
 
 SharedSidebarTriggerIcon.propTypes = {

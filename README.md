@@ -15,8 +15,8 @@ I am very excited about this project because I know that there is a lot of devel
 
 ## Roadmap
 #### End of 2019
-- Reach 100 components
-- Release `@mui-treasury/layout` version 2 (before is [`mui-layout`](https://github.com/siriwatknp/mui-layout)) 
+- [x] Reach 100 components
+- [x] Release `@mui-treasury/layout` version 2 (before is [`mui-layout`](https://github.com/siriwatknp/mui-layout)) 
 
 #### 2020 (1st quarter)
 - Reach 200 components

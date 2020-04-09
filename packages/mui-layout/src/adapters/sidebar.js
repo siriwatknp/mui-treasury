@@ -2,8 +2,8 @@ const SidebarAdapter = () => ({});
 
 SidebarAdapter.mapSecondaryConfig = ({
   secondarySidebar,
-  secondaryOpened,
-  setSecondaryOpened,
+  secondaryOpen,
+  setSecondaryOpen,
   secondaryCollapsed,
   setSecondaryCollapsed,
   secondaryClipped,
@@ -24,10 +24,10 @@ SidebarAdapter.mapSecondaryConfig = ({
 } = {}) => ({
   ...rest,
   sidebar: secondarySidebar,
-  opened: secondaryOpened,
+  open: secondaryOpen,
   collapsed: secondaryCollapsed,
   clipped: secondaryClipped,
-  setOpened: setSecondaryOpened,
+  setOpen: setSecondaryOpen,
   setCollapsed: setSecondaryCollapsed,
   autoCollapseDisabled: secondaryAutoCollapseDisabled,
   collapseBreakpoint: secondaryCollapseBreakpoint,

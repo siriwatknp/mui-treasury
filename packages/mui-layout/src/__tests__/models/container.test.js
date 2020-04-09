@@ -56,7 +56,7 @@ describe('Container', () => {
 
     // set primary edge to persistent
     provider.primarySidebar.setVariant('persistent');
-    provider.set({ opened: false, collapsed: false });
+    provider.set({ open: false, collapsed: false });
     expect(container.getMarginStyle()).toStrictEqual({
       marginLeft: 0,
     });
@@ -64,7 +64,7 @@ describe('Container', () => {
       width: '100%',
     });
 
-    provider.set({ opened: true, collapsed: true });
+    provider.set({ open: true, collapsed: true });
     expect(container.getMarginStyle()).toStrictEqual({
       marginLeft: 80,
     });

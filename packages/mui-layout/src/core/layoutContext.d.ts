@@ -4,20 +4,26 @@ import { Config } from '../utils/ConfigGenerator/ConfigGenerator';
 
 export interface ILayoutContext extends ReturnType<Config<true>['get']> {
   screen?: Breakpoint;
-  opened: boolean;
-  setOpened: (value: boolean) => void;
+  open: boolean;
+  opened: boolean; // removed in next major changed #555
+  setOpen: (value: boolean) => void;
+  setOpened: (value: boolean) => void; // removed in next major changed #555
   collapsed: boolean;
   setCollapsed: (value: boolean) => void;
-  secondaryOpened: boolean;
-  setSecondaryOpened: (value: boolean) => void;
+  secondaryOpen: boolean;
+  secondaryOpened: boolean; // removed in next major changed #555
+  setSecondaryOpen: (value: boolean) => void;
+  setSecondaryOpened: (value: boolean) => void; // removed in next major changed #555
   secondaryCollapsed: boolean;
   setSecondaryCollapsed: (value: boolean) => void;
 }
 
 export interface LayoutProviderProps {
-  initialOpened?: boolean;
+  initialOpen?: boolean;
+  initialOpened?: boolean; // removed in next major changed #555
   initialCollapsed?: boolean;
-  initialSecondaryOpened?: boolean;
+  initialSecondaryOpen?: boolean;
+  initialSecondaryOpened?: boolean; // removed in next major changed #555
   initialSecondaryCollapsed?: boolean;
   config?: Partial<Config<true>>;
   children: ReactNode;

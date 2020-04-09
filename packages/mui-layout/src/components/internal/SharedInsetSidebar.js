@@ -27,7 +27,7 @@ const SharedInsetSidebar = ({
 }) => {
   const { iBody } = useWindow();
   const parsedCtx = useSidebarConfig();
-  const { opened, setOpened } = parsedCtx;
+  const { open, setOpen } = parsedCtx;
   const { getWidth, getBodyStyle, getDrawerAnchor } = createInsetSidebar(
     parsedCtx
   );
@@ -40,9 +40,9 @@ const SharedInsetSidebar = ({
     return (
       <Drawer
         {...props}
-        open={opened}
+        open={open}
         onClose={() => {
-          setOpened(false);
+          setOpen(false);
         }}
         variant={'temporary'}
         anchor={getDrawerAnchor()}
