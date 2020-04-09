@@ -44,6 +44,18 @@ const PageLayout = ({ menus, children, getOpenKeys, hamburgerHidden }) => {
   const headStyles = useHeaderStyles();
   const sbStyles = useSidebarStyles();
   const footerStyles = useFooterStyles();
+  React.useEffect(() => {
+    if (document && bgColor) {
+      const main = document.querySelector('main');
+      if (main) {
+        main.style.background = bgColor.length === 6 ? `#${bgColor}` : bgColor;
+        main.style.boxShadow = 'inset 0 0 12px 0 rgba(0,0,0,0.12)';
+      } else {
+        main.style.background = 'unset';
+        main.style.boxShadow = 'none';
+      }
+    }
+  }, [bgColor]);
   return (
     <>
       <Header className={styles.header}>
@@ -56,16 +68,7 @@ const PageLayout = ({ menus, children, getOpenKeys, hamburgerHidden }) => {
           <PageHeader />
         </Toolbar>
       </Header>
-      <Content
-        style={{
-          ...(bgColor && {
-            background: bgColor.length === 6 ? `#${bgColor}` : bgColor,
-            boxShadow: 'inset 0 0 12px 0 rgba(0,0,0,0.12)',
-          }),
-        }}
-      >
-        {children}
-      </Content>
+      <Content>{children}</Content>
       <Sidebar>
         <div className={sbStyles.container}>
           <ComponentMenuList menus={menus} getOpenKeys={getOpenKeys} />
