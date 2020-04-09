@@ -22,6 +22,7 @@ import {
   Footer,
   InsetSidebar,
   ConfigGenerator,
+  containerStyles,
 } from '@mui-treasury/layout';
 import {
   ReactHeader,
@@ -79,6 +80,8 @@ const useStyles = makeStyles(({ breakpoints }) => ({
   },
 }));
 
+const useContainerStyles = makeStyles(containerStyles);
+
 const theme = responsiveFontSizes(
   createMuiTheme({
     palette: {
@@ -131,9 +134,10 @@ const FooterMenu = ({ isHeader, ...props }) => {
 
 const ReactJsDemo = () => {
   const styles = useStyles();
+  const containerStyles = useContainerStyles();
   return (
     <Root theme={theme} config={config.get()}>
-      {({ containerStyles, setOpened, screen }) => (
+      {({ setOpened, screen }) => (
         <>
           <CssBaseline />
           <Fab
