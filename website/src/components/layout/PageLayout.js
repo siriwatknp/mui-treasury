@@ -45,9 +45,9 @@ const PageLayout = ({ menus, children, getOpenKeys, hamburgerHidden }) => {
   const sbStyles = useSidebarStyles();
   const footerStyles = useFooterStyles();
   React.useEffect(() => {
-    if (document && bgColor) {
+    if (document) {
       const main = document.querySelector('main');
-      if (main) {
+      if (bgColor) {
         main.style.background = bgColor.length === 6 ? `#${bgColor}` : bgColor;
         main.style.boxShadow = 'inset 0 0 12px 0 rgba(0,0,0,0.12)';
       } else {
