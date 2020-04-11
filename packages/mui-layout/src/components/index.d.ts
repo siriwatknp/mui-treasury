@@ -3,6 +3,7 @@ export { default as CollapseIcon } from './CollapseIcon';
 export { default as Content } from './Content';
 export { default as Footer } from './Footer';
 export { default as Header } from './Header';
+export { default as HeaderOffset } from './HeaderOffset';
 export { default as HeaderMagnet } from './HeaderMagnet';
 export { default as Root } from './Root';
 export { default as SecondaryCollapseBtn } from './SecondaryCollapseBtn';
