@@ -160,7 +160,7 @@ const DemoSourceDrawer = ({ title }) => {
                       bgcolor={'common.white'}
                       zIndex={1500}
                       css={{
-                        transform: 'scale(0.75) translate(-50%, -50%)',
+                        transform: 'scale(0.50) translate(-50%, -50%)',
                         transformOrigin: '0 0',
                       }}
                     >
