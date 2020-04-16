@@ -8,6 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@material-ui/core": "^4.9.10",
+    "@material-ui/icons": "^4.9.1",
     "@mui-treasury/layout": "^3.3.4",
     "@mui-treasury/mockup": "^1.0.1",
     "next": "^9.3.4",
