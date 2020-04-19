@@ -114,6 +114,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "barthicus",
+      "name": "Bartosz Podgruszecki",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/6414011?v=4",
+      "profile": "https://barthicus.github.io",
+      "contributions": [
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,
