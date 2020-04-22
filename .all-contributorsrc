@@ -132,6 +132,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "aress31",
+      "name": "Alexandre Teyar",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/11601622?v=4",
+      "profile": "https://www.linkedin.com/in/alexandre-teyar/",
+      "contributions": [
+        "a11y"
+      ]
     }
   ],
   "contributorsPerLine": 7,
