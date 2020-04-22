@@ -11,9 +11,9 @@ For `components` tab, it is divided into 3 section (as you can see it in the pan
 
 ### Material-UI Extended
 
-These are components that are extended from Material-UI directly, aim to showcase in a more practical way we use in real life.
+These are components that are extended from Material-UI directly. We aim to showcase them in a more practical way, closer to how we use them in real life.
 
-For example, [Birthday TextField](/components/text-field/birthday)
+For example, [Birthday TextField](/components/text-field)
 
 import Birthday from '@mui-treasury/components/textField/birthday';
 
@@ -37,13 +37,14 @@ import Birthday from '@mui-treasury/components/textField/birthday';
     </Inline>
 </SimpleShowcase>
 
-This component use official [`InputBase`](https://material-ui.com/api/input-base/#inputbase-api) as a main ingredient,
-then compose with some react hook logic and turn it to a powerful form input. (Mostly, there are tests covered)
+This component uses the official [`InputBase`](https://material-ui.com/api/input-base/#inputbase-api) as a main ingredient,
+then compose with some react hook logic and turn it to a powerful form input. (Most of these have test coverage)
 
 ```
+yarn add @material-ui/core
 yarn add @mui-treasury/components
 // in react component
-import BirthdayTextField from "@mui-treasury/components/textField/birthday"
+import Birthday from "@mui-treasury/components/textField/birthday"
 ```
 
 <br />
