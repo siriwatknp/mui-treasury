@@ -25,6 +25,7 @@ const CollapseBtn = ({
         setCollapsed(!collapsed);
       }}
       {...props}
+      aria-label="open drawer"
     />
   );
 };

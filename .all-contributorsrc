@@ -114,6 +114,33 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "barthicus",
+      "name": "Bartosz Podgruszecki",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/6414011?v=4",
+      "profile": "https://barthicus.github.io",
+      "contributions": [
+        "maintenance"
+      ]
+    },
+    {
+      "login": "pacurtin",
+      "name": "Paddy",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/17761806?v=4",
+      "profile": "https://www.hackerrank.com/pacurtin",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "aress31",
+      "name": "Alexandre Teyar",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/11601622?v=4",
+      "profile": "https://www.linkedin.com/in/alexandre-teyar/",
+      "contributions": [
+        "a11y"
+      ]
     }
   ],
   "contributorsPerLine": 7,
