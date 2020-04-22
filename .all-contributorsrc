@@ -123,6 +123,15 @@
       "contributions": [
         "maintenance"
       ]
+    },
+    {
+      "login": "pacurtin",
+      "name": "Paddy",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/17761806?v=4",
+      "profile": "https://www.hackerrank.com/pacurtin",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
