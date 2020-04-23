@@ -33,16 +33,12 @@ const BorderSelect = () => {
 BorderSelect.metadata = {
   title: 'Border', // name that appear in web
   path: 'styles/select/border', // reference to markdown file
-  files: [],
-  relates: []
-  /*renderedWithoutIframe: false,
-  creators: [require('constants/creators').pacurtin], // add yourself to creators.js first
+  relates: [],
+  renderedWithoutIframe: false,
+  creators: [require('constants/creators').paddy], // add yourself to creators.js first
   createdAt: 'Thu Apr 23 2020',
-  frameProps: {
-    bgcolor: '#60A29B',
-  }, // props that applied to Box in grid view
   size: 'medium', // can be 'large' | 'huge' for grid size
-  files: [{ pkg: 'mui-styles', path: 'switch/border/borderSelect.styles.js' }],*/
+  files: [{ pkg: 'mui-styles', path: 'select/border/borderSelect.styles.js' }]
 };
 // hide-end
 
