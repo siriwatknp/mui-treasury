@@ -4883,6 +4883,16 @@ babel-jest@^24.9.0:
     chalk "^2.4.2"
     slash "^2.0.0"
 
+babel-loader@^8.0.0-beta.6:
+  version "8.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.0.0-beta.6.tgz#e28e51e8bd118b97861e6d14880684116e979f30"
+  integrity sha512-T3PmmlhIK8TnCYKTjHf+uNfU8m6GvoE8hu3++GR+yYT9ZtC5Jvuq3ZHKP4OffzDTXlC/7lUJbfvyfU9i/XebNg==
+  dependencies:
+    find-cache-dir "^1.0.0"
+    loader-utils "^1.0.2"
+    mkdirp "^0.5.1"
+    util.promisify "^1.0.0"
+
 babel-loader@^8.0.6:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.1.0.tgz#c611d5112bd5209abe8b9fa84c3e4da25275f1c3"
@@ -9442,6 +9452,15 @@ find-cache-dir@^0.1.1:
     commondir "^1.0.1"
     mkdirp "^0.5.1"
     pkg-dir "^1.0.0"
+
+find-cache-dir@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/find-cache-dir/-/find-cache-dir-1.0.0.tgz#9288e3e9e3cc3748717d39eade17cf71fc30ee6f"
+  integrity sha1-kojj6ePMN0hxfTnq3hfPcfww7m8=
+  dependencies:
+    commondir "^1.0.1"
+    make-dir "^1.0.0"
+    pkg-dir "^2.0.0"
 
 find-cache-dir@^2.1.0:
   version "2.1.0"
