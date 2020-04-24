@@ -34,7 +34,7 @@
     "gatsby-plugin-google-analytics": "2.1.7",
     "gatsby-plugin-manifest": "2.2.5",
     "gatsby-plugin-material-ui": "2.1.6",
-    "gatsby-plugin-mdx": "1.0.75",
+    "gatsby-plugin-mdx": "1.1.11",
     "gatsby-plugin-module-resolver": "1.0.3",
     "gatsby-plugin-prefetch-google-fonts": "1.4.3",
     "gatsby-plugin-react-helmet": "3.1.3",
