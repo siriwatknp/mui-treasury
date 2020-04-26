@@ -19,19 +19,21 @@
   },
   "homepage": "https://mui-treasury.com/layout",
   "dependencies": {
-    "@mui-treasury/styling": "^0.2.8",
-    "lodash.debounce": "^4.0.8",
-    "lodash.get": "^4.4.2"
+    "css-element-queries": "^1.2.3",
+    "debounce": "^1.2.0",
+    "deepmerge": "^4.2.2",
+    "lodash.get": "^4.4.2",
+    "styled-components": "^5.1.0"
   },
   "peerDepdencies": {
-    "@material-ui/core": "^4.5.2",
-    "@material-ui/styles": "^4.5.2"
+    "@material-ui/core": "4.x",
+    "@material-ui/styles": "4.x"
   },
   "types": "./index.d.ts",
   "scripts": {
     "prebuild": "rimraf build",
     "postpublish": "rimraf build",
-    "build": "cross-env NODE_ENV=production babel --config-file ../../babel-config.js ./src --out-dir ./build --ignore \"**/*.test.js\"",
+    "build": "tsc",
     "prepublishOnly": "yarn copy-files",
     "copy-files": "node ../../scripts/copy-files.js"
   },
