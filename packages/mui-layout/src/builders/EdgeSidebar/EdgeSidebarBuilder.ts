@@ -1,60 +1,47 @@
-import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
+import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
+import { normalizeMapById } from '../../utils';
 import {
   EdgeSidebarConfig,
   IEdgeSidebarBuilder,
   IEdgeSidebarRegistry,
   SidebarConfigMap,
   SidebarConfigMapById,
-} from "../../types"
+} from '../../types';
 
 export const isUniqueSidebars = (
-  sidebars: Pick<EdgeSidebarConfig, "id">[]
+  sidebars: Pick<EdgeSidebarConfig, 'id'>[]
 ): boolean => {
-  const keys: string[] = []
-  let isUnique = true
+  const keys: string[] = [];
+  let isUnique = true;
   sidebars.forEach(({ id }) => {
     if (!id) {
-      throw new Error("[Layout] - All Sidebar must have id")
+      throw new Error('[Layout] - All Sidebar must have id');
     }
     if (keys.includes(id)) {
-      isUnique = false
+      isUnique = false;
     } else {
-      keys.push(id)
+      keys.push(id);
     }
-  })
-  return isUnique
-}
+  });
+  return isUnique;
+};
 
 export default (): IEdgeSidebarBuilder => {
-  const sidebarIds: string[] = []
-  const mapByBreakpoint: SidebarConfigMap = {}
-  const mapById: SidebarConfigMapById = {}
+  const sidebarIds: string[] = [];
+  const mapById: SidebarConfigMapById = {};
   const addConfig = (
     breakpoint: Breakpoint,
     config: EdgeSidebarConfig
   ): void => {
     if (!sidebarIds.includes(config.id)) {
-      sidebarIds.push(config.id)
+      sidebarIds.push(config.id);
     }
-
-    if (!mapByBreakpoint[breakpoint]) {
-      mapByBreakpoint[breakpoint] = []
-    }
-    // todo: this can be inconsistent
-    // sidebar {id} can have duplicate "xs" config
-    mapByBreakpoint[breakpoint].push(config)
 
     if (!mapById[config.id]) {
-      mapById[config.id] = {}
+      mapById[config.id] = {};
     }
-    mapById[config.id][breakpoint] = config
-
-    if (!isUniqueSidebars(mapByBreakpoint[breakpoint])) {
-      throw new Error(
-        `Sidebar id: ${config.id} is duplicated at breakpoint "${breakpoint}"`
-      )
-    }
-  }
+    mapById[config.id][breakpoint] = config;
+  };
   return {
     create: function(id, props) {
       const Registry = (): IEdgeSidebarRegistry => ({
@@ -63,38 +50,38 @@ export default (): IEdgeSidebarBuilder => {
             ...config,
             ...props,
             id,
-            variant: "persistent",
-          })
-          return this
+            variant: 'persistent',
+          });
+          return this;
         },
         registerPermanentConfig(breakpoint, config) {
           addConfig(breakpoint, {
             ...config,
             ...props,
             id,
-            variant: "permanent",
-          })
-          return this
+            variant: 'permanent',
+          });
+          return this;
         },
         registerTemporaryConfig(breakpoint, config) {
           addConfig(breakpoint, {
             ...config,
             ...props,
             id,
-            variant: "temporary",
-          })
-          return this
+            variant: 'temporary',
+          });
+          return this;
         },
-      })
-      return Registry()
+      });
+      return Registry();
     },
     getData() {
       return {
         sidebarIds,
-        configMap: mapByBreakpoint,
+        configMap: normalizeMapById(mapById),
         configMapById: mapById,
-      }
+      };
     },
     getSidebarIds: () => sidebarIds,
-  }
-}
+  };
+};

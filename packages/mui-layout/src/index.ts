@@ -1,3 +1,5 @@
+import * as presets from './presets'
+
 export { default } from './builders';
 export * from './components';
 
@@ -8,3 +10,5 @@ export {
   WindowConsumer,
 } from './core/Context';
 export { useScreen, useScrollY, useHeaderResize } from './core/hooks';
+
+export { presets }
