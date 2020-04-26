@@ -24,7 +24,7 @@ import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Toolbar from '@material-ui/core/Toolbar';
 
-import { ContentMockUp } from '@mui-treasury/mockup/layout';
+import { ContentMockUp } from '@mui-treasury/mockup/src/layout';
 
 const config = ConfigGenerator({ addOnsIncluded: true });
 config.primarySidebar
