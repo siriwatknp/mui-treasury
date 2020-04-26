@@ -14,6 +14,9 @@ import './fontawesome';
 
 const App = ({ children, location }) => {
   const path = React.useMemo(() => createPath(location), [location]);
+  presets.muiTreasury.configureEdgeSidebar(builder => {
+    builder.update('primarySidebar', path.parseConfig);
+  });
   return (
     <>
       <Helmet>

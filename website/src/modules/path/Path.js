@@ -1,3 +1,4 @@
+import { presets } from '@mui-treasury/layout';
 import { mapNestedPath } from '@mui-treasury/utils';
 import {
   COMPONENT_MENUS,
@@ -5,17 +6,14 @@ import {
   STYLE_MENUS,
 } from '../../constants/menus';
 
+const { edgeSidebar: { primarySidebar } } = presets.muiTreasury.clone();
+
 const getHomeHandler = () => {
   return {
     pattern: /^\/$/,
     hamburgerHidden: true,
-    parseConfig: c => ({
-      ...c,
-      sidebar: {
-        ...c.sidebar,
-        hidden: true,
-      },
-    }),
+    // todo: add hidden sidebar here
+    parseConfig: c => c,
   };
 };
 
@@ -50,13 +48,9 @@ const getLayoutHandler = () => {
   return {
     pattern: /\/layout.*/g,
     sidebarMenus: LAYOUT_MENUS,
-    parseConfig: c => ({
-      ...c,
-      sidebar: {
-        ...c.sidebar,
-        width: 208,
-      },
-    }),
+    parseConfig: c => {
+      c.lg.width = 208;
+    },
     getOpenKeys: () => [
       'tutorials',
       'presets',
@@ -73,7 +67,9 @@ const getFallbackHandler = () => {
     sidebarMenus: [],
     wrappedByLayout: true,
     hamburgerHidden: false,
-    parseConfig: c => c,
+    parseConfig: c => {
+      c.lg.width = primarySidebar.lg.width;
+    },
     getOpenKeys: ({ menus, lastPath }) => {
       const keyMap = mapNestedPath(menus);
       return Object.keys(keyMap).filter(key => keyMap[key].includes(lastPath));

@@ -4,8 +4,7 @@ import {
   EdgeSidebarConfig,
   IEdgeSidebarBuilder,
   IEdgeSidebarRegistry,
-  SidebarConfigMap,
-  SidebarConfigMapById,
+  EdgeSidebarConfigMapById,
 } from '../../types';
 
 export const isUniqueSidebars = (
@@ -28,7 +27,7 @@ export const isUniqueSidebars = (
 
 export default (): IEdgeSidebarBuilder => {
   const sidebarIds: string[] = [];
-  const mapById: SidebarConfigMapById = {};
+  const mapById: EdgeSidebarConfigMapById = {};
   const addConfig = (
     breakpoint: Breakpoint,
     config: EdgeSidebarConfig
@@ -43,7 +42,7 @@ export default (): IEdgeSidebarBuilder => {
     mapById[config.id][breakpoint] = config;
   };
   return {
-    create: function(id, props) {
+    create(id, props) {
       const Registry = (): IEdgeSidebarRegistry => ({
         registerPersistentConfig(breakpoint, config) {
           addConfig(breakpoint, {
@@ -74,6 +73,13 @@ export default (): IEdgeSidebarBuilder => {
         },
       });
       return Registry();
+    },
+    update(id, updater) {
+      if (mapById[id]) {
+        updater(mapById[id]);
+      } else {
+        console.warn(`No sidebar to update. id: ${id}`);
+      }
     },
     getData() {
       return {
