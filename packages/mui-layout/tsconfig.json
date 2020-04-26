@@ -1,3 +1,22 @@
 {
-  "extends": "../../tsconfig"
+  "compilerOptions": {
+    "outDir": "./build",
+    "noEmitOnError": true,
+    "declaration": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "target": "esnext",
+    "jsx": "react",
+    "lib": ["dom", "es2015", "es2017"]
+  },
+  "exclude": [
+    "node_modules",
+    "./src/__tests__/**/*",
+    "./src/**/*.spec.ts",
+    "./src/**/*.test.ts"
+  ],
+  "include": ["./src/**/*"]
 }
