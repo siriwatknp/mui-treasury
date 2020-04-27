@@ -18,6 +18,9 @@ const App = ({ children, location }) => {
     builder.update('primarySidebar', path.parseConfig);
     builder.hide('primarySidebar', location.pathname === '/')
   });
+  React.useEffect(() => {
+    console.log('simulate did mount!');
+  }, [])
   return (
     <>
       <Helmet>

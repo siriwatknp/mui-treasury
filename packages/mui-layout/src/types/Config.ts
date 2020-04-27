@@ -16,6 +16,7 @@ export type FixedInsetSidebarConfig = {
   width: number | string
   variant: "fixed"
   headerMagnetEnabled?: boolean
+  hidden?: boolean
 }
 
 export type AbsoluteInsetSidebarConfig = {
@@ -23,6 +24,7 @@ export type AbsoluteInsetSidebarConfig = {
   anchor: DrawerAnchor
   width: number | string
   variant: "absolute"
+  hidden?: boolean
 }
 
 export type StickyInsetSidebarConfig = {
@@ -30,6 +32,7 @@ export type StickyInsetSidebarConfig = {
   width: number | string
   top: number | string
   variant: "sticky"
+  hidden?: boolean
 }
 
 export type InsetSidebarConfig =
