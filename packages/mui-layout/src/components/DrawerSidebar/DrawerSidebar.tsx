@@ -1,6 +1,5 @@
 import React from 'react';
 import cx from 'clsx';
-import get from 'lodash/get';
 import { makeStyles } from '@material-ui/core/styles';
 import useTheme from '@material-ui/core/styles/useTheme';
 import { DrawerProps } from '@material-ui/core/Drawer';
@@ -10,7 +9,7 @@ import EdgeHeaderOffset from '../EdgeHeaderOffset';
 import PersistentDrawer from './Persistent';
 import PermanentDrawer from './Permanent';
 import TemporaryDrawer from './Temporary';
-import { createBreakpointStyles, createHiddenStyles } from '../../utils';
+import { get, createBreakpointStyles, createHiddenStyles } from '../../utils';
 import { transitionStyles } from '../../styles';
 import { EdgeSidebarConfig } from '../../types';
 

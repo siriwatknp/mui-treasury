@@ -1,5 +1,5 @@
 import { Theme } from '@material-ui/core/styles';
-import get from 'lodash/get';
+import { get } from '../../utils';
 import { HeaderConfig, IHeaderEffect } from '../../types';
 
 const incrementZIndex = (theme: Theme, plus: number) => ({

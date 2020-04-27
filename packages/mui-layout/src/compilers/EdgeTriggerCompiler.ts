@@ -1,4 +1,4 @@
-import get from 'lodash/get';
+import { get } from '../utils';
 import { Breakpoint, keys } from '@material-ui/core/styles/createBreakpoints';
 import { EdgeSidebarConfig, EdgeSidebarData } from '../types';
 import {
@@ -6,12 +6,14 @@ import {
   isTemporarySidebarConfig,
 } from '../utils/sidebarChecker';
 
-export default (edgeSidebar: Pick<EdgeSidebarData, 'configMapById' | 'hiddenById'>) => {
+export default (
+  edgeSidebar: Pick<EdgeSidebarData, 'configMapById' | 'hiddenById'>
+) => {
   return {
     getHiddenBreakpoints: (sidebarId: string) => {
       if (get(edgeSidebar, ['hiddenById', sidebarId]) === keys) {
         // hidden at all breakpoints if true
-        return keys
+        return keys;
       }
       const result: Breakpoint[] = [];
       let found: boolean = false;

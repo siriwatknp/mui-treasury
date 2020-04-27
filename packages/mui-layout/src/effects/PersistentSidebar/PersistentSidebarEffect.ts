@@ -1,5 +1,4 @@
-import get from 'lodash/get';
-import { upperFirst, getFlexBehaviorValue } from '../../utils';
+import { get, upperFirst, getFlexBehaviorValue } from '../../utils';
 import createEdgeModel, {
   CollapsibleConfigParam,
 } from '../../models/Sidebar/Edge';
