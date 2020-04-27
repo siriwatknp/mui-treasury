@@ -16,6 +16,7 @@ export type EdgeSidebarData = {
   sidebarIds: string[];
   configMap: MapBreakpoint<EdgeSidebarConfig[]>;
   configMapById: Dictionary<MapBreakpoint<EdgeSidebarConfig>>;
+  hiddenById: Dictionary<Breakpoint[]>
 };
 
 export type InsetSidebarData = {
@@ -67,6 +68,7 @@ export interface IEdgeSidebarBuilder {
     id: string,
     updater: (config: MapBreakpoint<Omit<EdgeSidebarConfig, 'id' | 'anchor'>>) => void
   ) => void;
+  hide: (id: string, breakpoints: Breakpoint[] | boolean) => void
   getSidebarIds: () => string[];
   getData: () => EdgeSidebarData;
 }

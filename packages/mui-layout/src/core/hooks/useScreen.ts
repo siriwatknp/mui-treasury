@@ -3,7 +3,7 @@ import debounce from "debounce"
 import useTheme from "@material-ui/core/styles/useTheme"
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
 import { useWindow } from "../Context"
-import mapWidthToScreen from "../../utils/mapWidthToScreen"
+import { mapWidthToScreen } from "../../utils"
 
 function getWindowWidth(w: Window) {
   return typeof w === "object" ? w.innerWidth : undefined

@@ -44,6 +44,7 @@ export interface CollapsibleSidebarConfig {
   collapsedWidth?: number | string
   width: number | string
   headerMagnetEnabled?: boolean
+  hidden?: boolean
 }
 
 export interface PermanentSidebarConfig extends CollapsibleSidebarConfig {
@@ -60,6 +61,7 @@ export interface TemporarySidebarConfig {
   width: number | string
   variant?: "temporary"
   anchor?: DrawerAnchor
+  hidden?: boolean
 }
 
 export type EdgeSidebarConfig =

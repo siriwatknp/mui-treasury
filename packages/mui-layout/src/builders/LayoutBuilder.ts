@@ -28,7 +28,9 @@ export interface ILayoutBuilder {
     callback: BuilderCallback<Pick<IHeaderBuilder, 'create'>>
   ) => void;
   configureEdgeSidebar: (
-    callback: BuilderCallback<Pick<IEdgeSidebarBuilder, 'create' | 'update'>>
+    callback: BuilderCallback<
+      Pick<IEdgeSidebarBuilder, 'create' | 'update' | 'hide'>
+    >
   ) => void;
   configureInsetSidebar: (
     callback: BuilderCallback<Pick<IInsetSidebarBuilder, 'create'>>

@@ -1,10 +1,11 @@
-import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
-import { normalizeMapById } from '../../utils';
+import { Breakpoint, keys } from '@material-ui/core/styles/createBreakpoints';
+import { normalizeMapById, attachHiddenToMapById } from '../../utils';
 import {
   EdgeSidebarConfig,
   IEdgeSidebarBuilder,
   IEdgeSidebarRegistry,
   EdgeSidebarConfigMapById,
+  Dictionary,
 } from '../../types';
 
 export const isUniqueSidebars = (
@@ -26,6 +27,7 @@ export const isUniqueSidebars = (
 };
 
 export default (): IEdgeSidebarBuilder => {
+  const hiddenById: Dictionary<Breakpoint[]> = {};
   const sidebarIds: string[] = [];
   const mapById: EdgeSidebarConfigMapById = {};
   const addConfig = (
@@ -43,6 +45,7 @@ export default (): IEdgeSidebarBuilder => {
   };
   return {
     create(id, props) {
+      hiddenById[id] = [];
       const Registry = (): IEdgeSidebarRegistry => ({
         registerPersistentConfig(breakpoint, config) {
           addConfig(breakpoint, {
@@ -81,11 +84,21 @@ export default (): IEdgeSidebarBuilder => {
         console.warn(`No sidebar to update. id: ${id}`);
       }
     },
+    hide(id, breakpoints) {
+      if (typeof breakpoints === 'boolean') {
+        hiddenById[id] = breakpoints ? keys : [];
+      } else {
+        if (!hiddenById[id]) hiddenById[id] = [];
+        hiddenById[id] = breakpoints;
+      }
+    },
     getData() {
+      const attachedMapById = attachHiddenToMapById(mapById, hiddenById);
       return {
+        configMap: normalizeMapById(attachedMapById),
+        configMapById: attachedMapById,
         sidebarIds,
-        configMap: normalizeMapById(mapById),
-        configMapById: mapById,
+        hiddenById,
       };
     },
     getSidebarIds: () => sidebarIds,
