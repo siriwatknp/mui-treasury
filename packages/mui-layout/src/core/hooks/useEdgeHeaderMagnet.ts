@@ -3,7 +3,7 @@ import { useLayoutCtx } from '../Context';
 import HeaderEffect from '../../effects/Header';
 import useScreen from './useScreen';
 import useScrollY from './useScrollY';
-import useHeaderResize from './useHeaderResize';
+import useHeaderHeight from './useHeaderHeight';
 import { pickNearestBreakpoint, subtractCalc } from '../../utils';
 import { isCollapsibleSidebarConfig } from '../../utils/sidebarChecker';
 
@@ -19,7 +19,7 @@ export const useEdgeHeaderMagnet = (sidebarId: string): { height: string } => {
     edgeSidebar.configMapById[sidebarId],
     screen
   );
-  const resizedHeight = useHeaderResize(headerId);
+  const resizedHeight = useHeaderHeight(headerId);
   const [headerHeight, setHeaderHeight] = useState('');
   const shouldUpdate =
     resizedHeight &&

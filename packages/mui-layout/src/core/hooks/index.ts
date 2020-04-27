@@ -1,5 +1,5 @@
 export * from "./useEdgeHeaderMagnet"
-export * from "./useHeaderResize"
+export * from "./useHeaderHeight"
 export * from "./useInsetSidebar"
 export * from "./useScreen"
 export * from "./useScrollY"

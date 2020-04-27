@@ -1,5 +1,5 @@
 import React from "react"
-import styled from "styled-components"
+import styled from '../../core/styled';
 import { makeStyles } from "@material-ui/core/styles"
 import InsetHeaderOffset from "../InsetHeaderOffset"
 import { useInsetSidebar } from "../../core"

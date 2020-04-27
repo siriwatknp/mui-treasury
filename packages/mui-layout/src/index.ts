@@ -9,6 +9,6 @@ export {
   LayoutConsumer,
   WindowConsumer,
 } from './core/Context';
-export { useScreen, useScrollY, useHeaderResize } from './core/hooks';
+export { useScreen, useScrollY, useHeaderHeight } from './core/hooks';
 
 export { presets }

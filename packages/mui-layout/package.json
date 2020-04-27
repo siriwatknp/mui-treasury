@@ -19,14 +19,13 @@
   },
   "homepage": "https://mui-treasury.com/layout",
   "dependencies": {
-    "css-element-queries": "^1.2.3",
     "debounce": "^1.2.0",
-    "deepmerge": "^4.2.2",
-    "styled-components": "^5.1.0"
+    "deepmerge": "^4.2.2"
   },
   "peerDepdencies": {
     "@material-ui/core": "4.x",
-    "@material-ui/styles": "4.x"
+    "@material-ui/styles": "4.x",
+    "@material-ui/icons": "4.x"
   },
   "types": "./index.d.ts",
   "scripts": {
