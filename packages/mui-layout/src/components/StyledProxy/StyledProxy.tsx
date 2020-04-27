@@ -1,5 +1,5 @@
 import React from "react"
-import styled from "styled-components"
+import styled from '../../core/styled';
 import { MediaQueries } from "../../utils/createBreakpointStyles"
 
 const StyledProxy = ({

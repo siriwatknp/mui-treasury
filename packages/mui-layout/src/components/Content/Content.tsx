@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '../../core/styled';
 import { useTheme } from '@material-ui/core/styles';
 import HeaderOffset from '../HeaderOffset';
 import { useLayoutCtx } from '../../core';
