@@ -11,11 +11,6 @@ const { edgeSidebar: { primarySidebar } } = presets.muiTreasury.clone();
 const getHomeHandler = () => {
   return {
     pattern: /^\/$/,
-    hamburgerHidden: true,
-    // todo: add hidden sidebar here
-    parseConfig: c => {
-
-    },
   };
 };
 
@@ -68,7 +63,6 @@ const getFallbackHandler = () => {
     pattern: /.*/g,
     sidebarMenus: [],
     wrappedByLayout: true,
-    hamburgerHidden: false,
     parseConfig: c => {
       c.lg.width = primarySidebar.lg.width;
 
@@ -117,6 +111,5 @@ export default (location = {}) => {
     wrappedByLayout: getPathValue(pathname, 'wrappedByLayout'),
     parseConfig: getPathValue(pathname, 'parseConfig'),
     getOpenKeys: getPathValue(pathname, 'getOpenKeys'),
-    hamburgerHidden: getPathValue(pathname, 'hamburgerHidden'),
   };
 };

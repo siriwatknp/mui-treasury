@@ -6,9 +6,13 @@ import {
   isTemporarySidebarConfig,
 } from '../utils/sidebarChecker';
 
-export default (edgeSidebar: Pick<EdgeSidebarData, 'configMapById'>) => {
+export default (edgeSidebar: Pick<EdgeSidebarData, 'configMapById' | 'hiddenById'>) => {
   return {
     getHiddenBreakpoints: (sidebarId: string) => {
+      if (get(edgeSidebar, ['hiddenById', sidebarId]) === keys) {
+        // hidden at all breakpoints if true
+        return keys
+      }
       const result: Breakpoint[] = [];
       let found: boolean = false;
       keys.forEach(bp => {
@@ -17,8 +21,9 @@ export default (edgeSidebar: Pick<EdgeSidebarData, 'configMapById'>) => {
           bp,
         ]);
         if (
-          isPersistentSidebarConfig(config) ||
-          isTemporarySidebarConfig(config)
+          (isPersistentSidebarConfig(config) ||
+            isTemporarySidebarConfig(config)) &&
+          !config.hidden
         ) {
           found = true;
         } else if (config || (!config && !found)) {

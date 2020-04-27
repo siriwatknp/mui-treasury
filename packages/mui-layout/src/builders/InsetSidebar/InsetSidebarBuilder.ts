@@ -1,4 +1,4 @@
-import { normalizeMapById } from '../../utils';
+import { attachHiddenToMapById, normalizeMapById } from '../../utils';
 import {
   AbsoluteInsetSidebarConfig,
   Dictionary,
@@ -9,7 +9,7 @@ import {
   SidebarProperties,
   StickyInsetSidebarConfig,
 } from '../../types';
-import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
+import { Breakpoint, keys } from '@material-ui/core/styles/createBreakpoints';
 
 export interface IInsetSidebarRegistry {
   registerStickyConfig: (
@@ -28,6 +28,13 @@ export interface IInsetSidebarRegistry {
 
 export interface IInsetSidebarBuilder {
   create: (id: string, properties: SidebarProperties) => IInsetSidebarRegistry;
+  update: (
+    id: string,
+    updater: (
+      config: MapBreakpoint<Omit<InsetSidebarConfig, 'id' | 'anchor'>>
+    ) => void
+  ) => void;
+  hide: (id: string, breakpoints: Breakpoint[] | boolean) => void;
   getData: () => InsetSidebarData;
 }
 
@@ -36,6 +43,7 @@ export type InsetSidebarConfigMapById = Dictionary<
 >;
 
 export default (): IInsetSidebarBuilder => {
+  const hiddenById: Dictionary<Breakpoint[]> = {};
   const mapById: InsetSidebarConfigMapById = {};
   const addConfig = (bp: Breakpoint, config: InsetSidebarConfig): void => {
     if (!mapById[config.id]) {
@@ -67,9 +75,27 @@ export default (): IInsetSidebarBuilder => {
       });
       return Registry();
     },
-    getData: () => ({
-      configMapById: mapById,
-      configMap: normalizeMapById(mapById),
-    }),
+    update(id, updater) {
+      if (mapById[id]) {
+        updater(mapById[id]);
+      } else {
+        console.warn(`No sidebar to update. id: ${id}`);
+      }
+    },
+    hide(id, breakpoints) {
+      if (typeof breakpoints === 'boolean') {
+        hiddenById[id] = breakpoints ? keys : [];
+      } else {
+        if (!hiddenById[id]) hiddenById[id] = [];
+        hiddenById[id] = breakpoints;
+      }
+    },
+    getData: () => {
+      const attachedMapById = attachHiddenToMapById(mapById, hiddenById);
+      return {
+        configMap: normalizeMapById(attachedMapById),
+        configMapById: attachedMapById,
+      };
+    },
   };
 };
