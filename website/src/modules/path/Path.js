@@ -13,7 +13,9 @@ const getHomeHandler = () => {
     pattern: /^\/$/,
     hamburgerHidden: true,
     // todo: add hidden sidebar here
-    parseConfig: c => c,
+    parseConfig: c => {
+
+    },
   };
 };
 
@@ -69,6 +71,7 @@ const getFallbackHandler = () => {
     hamburgerHidden: false,
     parseConfig: c => {
       c.lg.width = primarySidebar.lg.width;
+
     },
     getOpenKeys: ({ menus, lastPath }) => {
       const keyMap = mapNestedPath(menus);

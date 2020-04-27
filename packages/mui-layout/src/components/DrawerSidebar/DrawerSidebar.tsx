@@ -64,14 +64,14 @@ const DrawerSidebar = ({
       // @ts-ignore
       onEntered: (...args) => {
         if (SlideProps && typeof SlideProps.onEntered === 'function')
-        // @ts-ignore
+          // @ts-ignore
           SlideProps.onEntered(...args);
         setEntered(true);
       },
       // @ts-ignore
       onExit: arg => {
         if (SlideProps && typeof SlideProps.onExit === 'function')
-        // @ts-ignore
+          // @ts-ignore
           SlideProps.onExit(arg);
         setEntered(false);
       },
@@ -88,22 +88,14 @@ const DrawerSidebar = ({
       <TemporaryDrawer
         disableScrollLock
         {...commonProps}
-        hiddenStyles={createHiddenStyles(
-          temporary,
-          [permanent, persistent],
-          breakpoints
-        )}
+        hiddenStyles={createHiddenStyles(temporary, [permanent, persistent], breakpoints)}
         styles={createBreakpointStyles(temporary, breakpoints)}
       >
         {children}
       </TemporaryDrawer>
       <PersistentDrawer
         {...commonProps}
-        hiddenStyles={createHiddenStyles(
-          persistent,
-          [temporary, permanent],
-          breakpoints
-        )}
+        hiddenStyles={createHiddenStyles(persistent, [temporary, permanent], breakpoints)}
         styles={createBreakpointStyles(persistent, breakpoints)}
       >
         {headerAdjustment}
@@ -111,11 +103,7 @@ const DrawerSidebar = ({
       </PersistentDrawer>
       <PermanentDrawer
         {...commonProps}
-        hiddenStyles={createHiddenStyles(
-          permanent,
-          [temporary, persistent],
-          breakpoints
-        )}
+        hiddenStyles={createHiddenStyles(permanent, [temporary, persistent], breakpoints)}
         styles={createBreakpointStyles(permanent, breakpoints)}
       >
         {headerAdjustment}

@@ -12,8 +12,45 @@ import getFlexBehaviorValue from './getFlexBehaviorValue';
 import getSidebarAnchor from './getSidebarAnchor';
 import mapWidthToScreen from './mapWidthToScreen';
 import normalizeMapById from './normalizeMapById';
+import shouldHideStyle from './shouldHideStyle';
+import attachHiddenToMapById from './attachHiddenToMapById';
 
 const breakpoints = createBreakpoints({});
+
+describe('attachHiddenToMapById', () => {
+  it('attach to correct breakpoint', () => {
+    expect(
+      attachHiddenToMapById(
+        { id1: { xs: { width: 256 }, md: { marginLeft: 256 } } },
+        { id1: ['sm', 'lg'] }
+      )
+    ).toStrictEqual({
+      id1: {
+        xs: { width: 256 },
+        sm: { width: 256, hidden: true },
+        md: { marginLeft: 256 },
+        lg: { marginLeft: 256, hidden: true },
+      },
+    });
+  });
+});
+
+describe('shouldHideStyle', () => {
+  it('return correct style', () => {
+    expect(shouldHideStyle(['xs', 'lg'], 'md', { width: '100%' })).toEqual({
+      width: '100%',
+    });
+    expect(
+      shouldHideStyle(['xs', 'md', 'lg'], 'md', {
+        width: '100%',
+        marginLeft: 256,
+      })
+    ).toEqual({
+      width: 'unset',
+      marginLeft: 'unset',
+    });
+  });
+});
 
 describe('normalizeMapById', () => {
   it('return correct config map', () => {
