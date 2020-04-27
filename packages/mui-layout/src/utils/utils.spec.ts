@@ -14,8 +14,29 @@ import mapWidthToScreen from './mapWidthToScreen';
 import normalizeMapById from './normalizeMapById';
 import shouldHideStyle from './shouldHideStyle';
 import attachHiddenToMapById from './attachHiddenToMapById';
+import get from './get';
 
 const breakpoints = createBreakpoints({});
+
+describe('get', () => {
+  const test = {
+    sidebar: {
+      xs: {
+        width: 256,
+      },
+    },
+  };
+  it('return value with . format', () => {
+    expect(get(test, 'sidebar.xs.width')).toEqual(256);
+  });
+  it('return value with [] format', () => {
+    expect(get(test, ['sidebar', 'xs', 'width'])).toEqual(256);
+  });
+  it('return default', () => {
+    expect(get(test, 'sidebar.sm.width', 200)).toEqual(200);
+    expect(get(test, ['sidebar2', 'xs', 'width'], 300)).toEqual(300);
+  });
+});
 
 describe('attachHiddenToMapById', () => {
   it('attach to correct breakpoint', () => {

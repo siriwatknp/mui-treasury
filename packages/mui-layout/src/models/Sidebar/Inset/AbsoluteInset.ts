@@ -1,6 +1,5 @@
-import get from 'lodash/get';
 import { AbsoluteInsetSidebarConfig, HeaderConfig } from '../../../types';
-import { subtractCalc } from '../../../utils';
+import { subtractCalc, get } from '../../../utils';
 
 export default (
   config: AbsoluteInsetSidebarConfig,

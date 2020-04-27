@@ -1,4 +1,4 @@
-import get from 'lodash/get';
+import { get } from '../../../utils';
 import { CollapsibleSidebarConfig, State } from '../../../types';
 
 export type CollapsibleConfigParam = Pick<

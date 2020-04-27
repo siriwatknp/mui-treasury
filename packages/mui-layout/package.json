@@ -22,7 +22,6 @@
     "css-element-queries": "^1.2.3",
     "debounce": "^1.2.0",
     "deepmerge": "^4.2.2",
-    "lodash.get": "^4.4.2",
     "styled-components": "^5.1.0"
   },
   "peerDepdencies": {

@@ -1,7 +1,7 @@
-import get from 'lodash/get';
-import { EdgeSidebarConfig, EdgeSidebarData } from '../types';
 import { Breakpoint, keys } from '@material-ui/core/styles/createBreakpoints';
 import { isCollapsibleSidebarConfig } from '../utils/sidebarChecker';
+import { get } from '../utils';
+import { EdgeSidebarConfig, EdgeSidebarData } from '../types';
 
 export default (edgeSidebar: Pick<EdgeSidebarData, 'configMapById'>) => {
   return {

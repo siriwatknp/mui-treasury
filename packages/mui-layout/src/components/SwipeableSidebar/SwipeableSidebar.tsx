@@ -1,6 +1,5 @@
 import React from 'react';
 import cx from 'clsx';
-import get from 'lodash/get';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { SwipeableDrawerProps } from '@material-ui/core/SwipeableDrawer';
 import { useSidebar, SidebarProvider, useWindow } from '../../core';
@@ -9,7 +8,7 @@ import EdgeHeaderOffset from '../EdgeHeaderOffset';
 import PersistentSwipeableDrawer from './Persistent';
 import PermanentSwipeableDrawer from './Permanent';
 import TemporarySwipeableDrawer from './Temporary';
-import { createBreakpointStyles, createHiddenStyles } from '../../utils';
+import { get, createBreakpointStyles, createHiddenStyles } from '../../utils';
 import { transitionStyles } from '../../styles';
 import { EdgeSidebarConfig } from '../../types';
 

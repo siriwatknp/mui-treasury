@@ -1,4 +1,4 @@
-import get from 'lodash/get';
+import { get } from '../../utils';
 import createEffect from '../../effects/Header/HeaderEffect';
 import createWidthInterface from '../Width';
 import createMarginInterface from '../Margin';
