@@ -1,29 +1,32 @@
-import React from "react"
-import Drawer, { DrawerProps } from "@material-ui/core/Drawer"
+import React from 'react';
+import Drawer, { DrawerProps } from '@material-ui/core/Drawer';
 import SwipeableDrawer, {
   SwipeableDrawerProps,
-} from "@material-ui/core/SwipeableDrawer"
-import { SidebarVariant } from "../../types"
-import { upperFirst } from "../../utils"
-import createHiddenProxyComponent, { HiddenProxyProps } from "./StyledProxy"
+} from '@material-ui/core/SwipeableDrawer';
+import { SidebarVariant } from '../../types';
+import { upperFirst } from '../../utils';
+import createHiddenProxyComponent, { HiddenProxyProps } from './StyledProxy';
 
-const CLS = "MuiTreasury-paper"
+export const CLS = 'MuiTreasury-paper';
 
-const StyledProxyDrawer = createHiddenProxyComponent<DrawerProps>(Drawer, CLS)
-const StyledProxySwipeableDrawer = createHiddenProxyComponent<
+export const StyledProxyDrawer = createHiddenProxyComponent<DrawerProps>(Drawer, CLS);
+export const StyledProxySwipeableDrawer = createHiddenProxyComponent<
   SwipeableDrawerProps
->(SwipeableDrawer, CLS)
+>(SwipeableDrawer, CLS);
 
-export type StyledProxyDrawerProps = DrawerProps & HiddenProxyProps
+export type StyledProxyDrawerProps = DrawerProps & HiddenProxyProps;
 export type StyledProxySwipeableDrawerProps = SwipeableDrawerProps &
-  HiddenProxyProps
+  HiddenProxyProps;
 
-export const createDrawerVariant = (variant: SidebarVariant) => {
+export const createDrawerVariant = (
+  variant: SidebarVariant,
+  StyledComponent = StyledProxyDrawer
+) => {
   const Sidebar: React.FC<StyledProxyDrawerProps> = ({
     PaperProps = {},
     ...props
   }) => (
-    <StyledProxyDrawer
+    <StyledComponent
       {...props}
       PaperProps={{
         ...PaperProps,
@@ -31,18 +34,21 @@ export const createDrawerVariant = (variant: SidebarVariant) => {
       }}
       variant={variant}
     />
-  )
+  );
 
-  Sidebar.displayName = `${upperFirst(variant)}DrawerSidebar`
-  return Sidebar
-}
+  Sidebar.displayName = `${upperFirst(variant)}DrawerSidebar`;
+  return Sidebar;
+};
 
-export const createSwipeableVariant = (variant: SidebarVariant) => {
+export const createSwipeableVariant = (
+  variant: SidebarVariant,
+  StyledComponent = StyledProxySwipeableDrawer
+) => {
   const Sidebar: React.FC<StyledProxySwipeableDrawerProps> = ({
     PaperProps = {},
     ...props
   }) => (
-    <StyledProxySwipeableDrawer
+    <StyledComponent
       {...props}
       PaperProps={{
         ...PaperProps,
@@ -50,8 +56,8 @@ export const createSwipeableVariant = (variant: SidebarVariant) => {
       }}
       variant={variant}
     />
-  )
+  );
 
-  Sidebar.displayName = `${upperFirst(variant)}SwipeableSidebar`
-  return Sidebar
-}
+  Sidebar.displayName = `${upperFirst(variant)}SwipeableSidebar`;
+  return Sidebar;
+};

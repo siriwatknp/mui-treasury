@@ -8,25 +8,29 @@ import { createBreakpointStyles } from '../../utils';
 
 const StyledProxyAppBar = createHiddenProxyComponent<AppBarProps>(AppBar);
 
-const Header: React.FC<AppBarProps> = props => {
-  const { data, state } = useLayoutCtx();
-  const { breakpoints } = useTheme<Theme>();
-  const styles = createBreakpointStyles(
-    HeaderCompiler(state, data.header, data.edgeSidebar).getResultStyle(),
-    breakpoints
-  );
-  return (
-    <StyledProxyAppBar
-      color={'default'}
-      elevation={0}
-      mui-layout={data.headerId}
-      {...props}
-      styles={{
-        transition: 'all 300ms cubic-bezier(0.0, 0, 0.2, 1) 0ms',
-        ...styles,
-      }}
-    />
-  );
-};
+export const createHeader = (StyledComponent = StyledProxyAppBar) => {
+  const Header: React.FC<AppBarProps> = props => {
+    const { data, state } = useLayoutCtx();
+    const { breakpoints } = useTheme<Theme>();
+    const styles = createBreakpointStyles(
+      HeaderCompiler(state, data.header, data.edgeSidebar).getResultStyle(),
+      breakpoints
+    );
+    return (
+      <StyledComponent
+        color={'default'}
+        elevation={0}
+        mui-layout={data.headerId}
+        {...props}
+        styles={{
+          transition: 'all 300ms cubic-bezier(0.0, 0, 0.2, 1) 0ms',
+          ...styles,
+        }}
+      />
+    );
+  };
 
-export default Header;
+  return Header
+}
+
+export default createHeader();

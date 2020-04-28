@@ -1,8 +1,8 @@
-import * as presets from './presets'
+import * as presets from './presets';
 
 export { default } from './builders';
 export * from './components';
-
+export { setupStyled } from './core/styled';
 export {
   useWindow,
   useLayoutCtx,
@@ -11,4 +11,4 @@ export {
 } from './core/Context';
 export { useScreen, useScrollY, useHeaderHeight } from './core/hooks';
 
-export { presets }
+export { presets };

@@ -31,48 +31,51 @@ const StyledProxyIconBtn = createHiddenProxyComponent<IconButtonProps>(
   IconButton
 );
 
-const SidebarTrigger = ({
-  children,
-  sidebarId,
-  onClick,
-  SvgIconProps,
-  ...props
-}: IconButtonProps & CtaProps) => {
-  const {
-    id,
-    anchor,
-    breakpoints,
-    edgeSidebar,
-    state,
-    setOpen,
-  } = useSidebarCta(sidebarId, 'SidebarTrigger');
-  const classes = useStyles({ ...props, anchor });
-  const getArrow = () => {
-    if (!state) return null;
-    if (!state.open) return <MenuRounded {...SvgIconProps} />;
-    if (anchor === 'left') return <ArrowLeft {...SvgIconProps} />;
-    if (anchor === 'right') return <ArrowRight {...SvgIconProps} />;
-    return null;
+export const createSidebarTrigger = (StyledComponent = StyledProxyIconBtn) => {
+  const SidebarTrigger = ({
+    children,
+    sidebarId,
+    onClick,
+    SvgIconProps,
+    ...props
+  }: IconButtonProps & CtaProps) => {
+    const {
+      id,
+      anchor,
+      breakpoints,
+      edgeSidebar,
+      state,
+      setOpen,
+    } = useSidebarCta(sidebarId, 'SidebarTrigger');
+    const classes = useStyles({ ...props, anchor });
+    const getArrow = () => {
+      if (!state) return null;
+      if (!state.open) return <MenuRounded {...SvgIconProps} />;
+      if (anchor === 'left') return <ArrowLeft {...SvgIconProps} />;
+      if (anchor === 'right') return <ArrowRight {...SvgIconProps} />;
+      return null;
+    };
+    const styles = createDisplayNone(
+      EdgeTriggerCompiler(edgeSidebar).getHiddenBreakpoints(id),
+      breakpoints
+    );
+    return (
+      <StyledComponent
+        {...props}
+        styles={styles}
+        classes={classes}
+        onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+          if (typeof onClick === 'function') onClick(e);
+          setOpen(id, !state.open);
+        }}
+      >
+        {typeof children === 'function'
+          ? children({ anchor, ...state })
+          : getArrow()}
+      </StyledComponent>
+    );
   };
-  const styles = createDisplayNone(
-    EdgeTriggerCompiler(edgeSidebar).getHiddenBreakpoints(id),
-    breakpoints
-  );
-  return (
-    <StyledProxyIconBtn
-      {...props}
-      styles={styles}
-      classes={classes}
-      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-        if (typeof onClick === 'function') onClick(e);
-        setOpen(id, !state.open);
-      }}
-    >
-      {typeof children === 'function'
-        ? children({ anchor, ...state })
-        : getArrow()}
-    </StyledProxyIconBtn>
-  );
+  return SidebarTrigger;
 };
 
-export default SidebarTrigger;
+export default createSidebarTrigger;
