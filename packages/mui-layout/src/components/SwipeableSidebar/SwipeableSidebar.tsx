@@ -82,7 +82,7 @@ export const createSwipeableSidebar = (
         ),
       },
       ModalProps: {
-        container: iDocument.body,
+        container: iDocument ? iDocument.body : undefined,
         ...ModalProps,
       },
       SlideProps: {

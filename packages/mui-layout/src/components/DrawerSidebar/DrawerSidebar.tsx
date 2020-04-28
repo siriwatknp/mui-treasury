@@ -64,7 +64,7 @@ export const createDrawerSidebar = (StyledComponent = StyledProxyDrawer, StyledD
         ),
       },
       ModalProps: {
-        container: iDocument.body,
+        container: iDocument ? iDocument.body : undefined,
         ...ModalProps,
       },
       SlideProps: {
