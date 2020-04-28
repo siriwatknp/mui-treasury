@@ -1,5 +1,5 @@
 import React from 'react';
-// import { useBorderSelectStyles } from '@mui-treasury/styles/select/border';
+//import { useBorderSelectStyles } from '@mui-treasury/styles/select/border';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -7,15 +7,7 @@ import FormControl from '@material-ui/core/FormControl';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-
-// PrivateNotchedOutline-root-357 MuiOutlinedInput-notchedOutline-329
-/*
-    MuiOutlinedInput-notchedOutline-329
-    Component: OutlinedInput
-    Classname: $notchedOutline
- */
-
-const useLabelStyles = makeStyles(({ theme, palette }) => ({
+const useStyles = makeStyles(({ theme, palette }) => ({
   myLabelStyle: {
     marginLeft: '4px',
     color: palette.grey[500],
@@ -32,8 +24,8 @@ const useLabelStyles = makeStyles(({ theme, palette }) => ({
     borderWidth: '2px',
     borderRadius: '4px',
     paddingLeft: '24px',
-    paddingTop: '12px',
-    paddingBottom: '13px',
+    paddingTop: '14px',
+    paddingBottom: '15px',
     "&:hover":{
       borderColor: palette.grey[400],
     },
@@ -54,33 +46,62 @@ const useLabelStyles = makeStyles(({ theme, palette }) => ({
     transition: 'fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
     flexShrink: 0,
     userSelect: 'none'
+  },
+  myList: {
+    paddingTop:0,
+    paddingBottom:0,
+    background:'white',
+    "& li.Mui-selected":{
+      fontWeight:700
+    }
   }
 }));
 
 
 const BorderSelect = () => {
   // const borderSelectStyles = useBorderSelectStyles();
-
-  let age = 0;
-  const classes = useLabelStyles();
+  const borderSelectClasses = useStyles();
 
   return (
     <FormControl>
       <InputLabel
-        className={classes.myLabelStyle}
+        className={borderSelectClasses.myLabelStyle}
         id="inputLabel"
       >LABEL</InputLabel>
       <Select
+        //open
         disableUnderline
-        IconComponent={()=>{return (<FontAwesomeIcon className={classes.myIcon} icon={['fas','chevron-down']} size="xs"/>)}}
-        classes={{ root: classes.mySelectStyle, }}
+        classes={{ root: borderSelectClasses.mySelectStyle, }}
         labelId="inputLabel"
-        value={age}
+        defaultValue="Select"
+        IconComponent={
+          () => {
+            return (
+              <FontAwesomeIcon className={borderSelectClasses.myIcon} icon={['fas','chevron-down']}/>
+            ) // chevron-down added in fontawesome.js
+          }
+        }
+        MenuProps={
+          {
+            classes: {
+              list: borderSelectClasses.myList
+            },
+            anchorOrigin: {
+              vertical: "bottom",
+              horizontal: "left"
+            },
+            transformOrigin: {
+              vertical: "top",
+              horizontal: "left"
+            },
+            getContentAnchorEl: null
+          }
+        }
       >
         <MenuItem value={0}>None</MenuItem>
-        <MenuItem value={10}>One</MenuItem>
-        <MenuItem value={20}>Two</MenuItem>
-        <MenuItem value={30}>Three</MenuItem>
+        <MenuItem value={1}>One</MenuItem>
+        <MenuItem value={2}>Two</MenuItem>
+        <MenuItem value={3}>Three</MenuItem>
       </Select>
     </FormControl>
   );
