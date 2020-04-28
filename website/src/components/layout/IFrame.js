@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { StyleSheetManager } from 'styled-components';
 import cx from 'clsx';
 import { create } from 'jss';
 import {
@@ -38,13 +39,19 @@ function IFrame(props) {
   }, []);
 
   const onContentDidMount = () => {
+    const head = instanceRef.current.contentDocument.head;
+    const injectFirstNode = instanceRef.current.contentDocument.createComment(
+      'mui-inject-first'
+    );
+    head.insertBefore(injectFirstNode, head.firstChild);
     setState({
       ready: true,
       jss: create({
         plugins: jssPreset().plugins,
-        insertionPoint: instanceRef.current.contentWindow['demo-frame-jss'],
+        insertionPoint: injectFirstNode,
       }),
       sheetsManager: new Map(),
+      document: instanceRef.current.contentDocument,
       container: instanceRef.current.contentDocument.body,
       window: instanceRef.current.contentWindow,
     });
@@ -67,12 +74,20 @@ function IFrame(props) {
         <div id="demo-frame-jss" />
         {state.ready ? (
           <StylesProvider jss={state.jss} sheetsManager={state.sheetsManager}>
-            {typeof children === 'function'
-              ? children({ container: state.container, window: state.window })
-              : React.cloneElement(children, {
-                  container: state.container,
-                  window: state.window,
-                })}
+            <StyleSheetManager
+              target={instanceRef.current.contentDocument.head}
+            >
+              {typeof children === 'function'
+                ? children({
+                    window: state.window,
+                    document: state.document,
+                    container: state.container,
+                  })
+                : React.cloneElement(children, {
+                    container: state.container,
+                    window: state.window,
+                  })}
+            </StyleSheetManager>
           </StylesProvider>
         ) : null}
       </Frame>

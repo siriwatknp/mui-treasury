@@ -1,18 +1,8 @@
 import React from 'react';
+import styled from 'styled-components';
+import { StylesProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
-import {
-  Root,
-  Header,
-  Sidebar,
-  Content,
-  Footer,
-  CollapseBtn,
-  CollapseIcon,
-  SidebarTrigger,
-  SidebarTriggerIcon,
-  muiTreasuryPreset,
-} from '@mui-treasury/layout';
 import {
   HeaderMockUp,
   NavHeaderMockUp,
@@ -20,40 +10,50 @@ import {
   ContentMockUp,
   FooterMockUp,
 } from '@mui-treasury/mockup/layout';
+import { Root, getLayoutComponents, presets } from '@mui-treasury/layout';
 
-const MuiTreasuryLayout = () => (
-  <Root config={muiTreasuryPreset}>
-    {({ headerStyles, sidebarStyles, collapsed }) => (
-      <>
-        <CssBaseline />
-        <Header>
-          <Toolbar>
-            <SidebarTrigger className={headerStyles.leftTrigger}>
-              <SidebarTriggerIcon />
-            </SidebarTrigger>
-            <HeaderMockUp />
-          </Toolbar>
-        </Header>
-        <Sidebar>
-          <NavHeaderMockUp collapsed={collapsed} />
-          <div className={sidebarStyles.container}>
-            <NavContentMockUp />
-          </div>
-          <CollapseBtn className={sidebarStyles.collapseBtn}>
-            <CollapseIcon />
-          </CollapseBtn>
-        </Sidebar>
-        <Content>
-          <ContentMockUp />
-        </Content>
-        <Footer>
-          <FooterMockUp />
-        </Footer>
-      </>
-    )}
-  </Root>
-);
+const {
+  Header,
+  Content,
+  Footer,
+  DrawerSidebar,
+  SidebarTrigger,
+  SidebarContent,
+  CollapseBtn,
+} = getLayoutComponents(styled);
 
+const MuiTreasuryLayout = () => {
+  return (
+    <StylesProvider injectFirst>
+      <CssBaseline />
+      <Root scheme={presets.muiTreasury}>
+        {({ state: { sidebar } }) => (
+          <>
+            <Header>
+              <Toolbar>
+                <SidebarTrigger sidebarId="primarySidebar" />
+                <HeaderMockUp />
+              </Toolbar>
+            </Header>
+            <DrawerSidebar sidebarId="primarySidebar">
+              <SidebarContent>
+                <NavHeaderMockUp collapsed={sidebar.primarySidebar.collapsed} />
+                <NavContentMockUp />
+              </SidebarContent>
+              <CollapseBtn />
+            </DrawerSidebar>
+            <Content>
+              <ContentMockUp />
+            </Content>
+            <Footer>
+              <FooterMockUp />
+            </Footer>
+          </>
+        )}
+      </Root>
+    </StylesProvider>
+  );
+};
 // hide-start
 MuiTreasuryLayout.metadata = {
   title: 'MUI Treasury Layout',
