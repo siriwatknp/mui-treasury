@@ -1,20 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
-import {
-  Header,
-  DrawerSidebar,
-  SidebarTrigger,
-  SidebarContent,
-  CollapseBtn,
-  Content,
-  Footer,
-} from '@mui-treasury/layout';
+import styled from 'styled-components';
+import { getLayoutComponents } from '@mui-treasury/layout';
 import Toolbar from '@material-ui/core/Toolbar';
 import PageHeader from 'components/layout/PageHeader';
 import PageFooter from 'components/layout/PageFooter';
 import ComponentMenuList from 'components/organisms/ComponentMenuList';
 import useQueryParams from '../../utils/useQueryParams';
+
+const {
+  Header,
+  DrawerSidebar,
+  Content,
+  Footer,
+  CollapseBtn,
+  SidebarTrigger,
+  SidebarContent,
+} = getLayoutComponents(styled);
 
 const useStyles = makeStyles(theme => {
   const { palette } = theme;
@@ -52,9 +55,7 @@ const PageLayout = ({ menus, children, getOpenKeys, hamburgerHidden }) => {
     <>
       <Header className={styles.header}>
         <Toolbar>
-          {!hamburgerHidden && (
-            <SidebarTrigger sidebarId={'primarySidebar'} />
-          )}
+          {!hamburgerHidden && <SidebarTrigger sidebarId={'primarySidebar'} />}
           <PageHeader />
         </Toolbar>
       </Header>

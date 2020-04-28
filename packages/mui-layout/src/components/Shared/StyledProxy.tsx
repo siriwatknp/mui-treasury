@@ -1,37 +1,45 @@
-import React from "react"
-import styled from '../../core/styled';
-import { MediaQueries } from "../../utils/createBreakpointStyles"
+import React from 'react';
+import defaultStyled from '../../core/styled';
+import { MediaQueries } from '../../utils/createBreakpointStyles';
 
 export interface HiddenProxyProps {
-  styles?: MediaQueries
-  hiddenStyles?: MediaQueries
+  styles?: MediaQueries;
+  hiddenStyles?: MediaQueries;
+  className?: string;
+  style?: object;
 }
 
-function createProxyStyledComponent<T>(
-  WrappedComponent: React.ComponentType<T>,
-  refClassName?: string
-) {
-  const ProxyComponent: React.FC<T & HiddenProxyProps> = ({
-    hiddenStyles,
-    styles,
-    ...props
-  }): React.ReactElement => <WrappedComponent {...(props as T)} />
+export const generateStyledProxyCreator = (styled = defaultStyled) => {
+  function createProxyStyledComponent<T>(
+    WrappedComponent: React.ComponentType<T> | keyof JSX.IntrinsicElements,
+    refClassName?: string
+  ) {
+    const ProxyComponent: React.FC<T & HiddenProxyProps> = ({
+      hiddenStyles,
+      styles,
+      ...props
+    }): React.ReactElement => <WrappedComponent {...(props as T)} />;
 
-  const StyledComponent = styled(ProxyComponent)<HiddenProxyProps>(
-    ({ styles, hiddenStyles }) => ({
-      ...hiddenStyles,
-      ...(refClassName
-        ? {
-            [`& .${refClassName}`]: styles,
-          }
-        : styles),
-    })
-  )
+    const StyledComponent = styled(ProxyComponent)<HiddenProxyProps>(
+      ({ styles, hiddenStyles }) => ({
+        ...hiddenStyles,
+        ...(refClassName
+          ? {
+              [`& .${refClassName}`]: styles,
+            }
+          : styles),
+      })
+    );
 
-  StyledComponent.displayName =
-    WrappedComponent.displayName || WrappedComponent.name || "StyledComponent"
+    StyledComponent.displayName =
+      typeof WrappedComponent === 'string'
+        ? 'StyledComponent'
+        : WrappedComponent.displayName || WrappedComponent.name;
 
-  return StyledComponent
-}
+    return StyledComponent;
+  }
 
-export default createProxyStyledComponent
+  return createProxyStyledComponent;
+};
+
+export default generateStyledProxyCreator();

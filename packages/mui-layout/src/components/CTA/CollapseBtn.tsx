@@ -24,52 +24,55 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
 const StyledProxyButton = createHiddenProxyComponent<ButtonProps>(Button);
 
-const CollapseBtn = ({
-  children,
-  sidebarId,
-  onClick,
-  SvgIconProps,
-  ...props
-}: ButtonProps & CtaProps) => {
-  const classes = useStyles(props);
-  const {
-    id,
-    anchor,
-    breakpoints,
-    edgeSidebar,
-    state,
-    setCollapsed,
-  } = useSidebarCta(sidebarId, 'CollapseBtn');
-  const arrowR = <ArrowRight {...SvgIconProps} />;
-  const arrowL = <ArrowLeft {...SvgIconProps} />;
-  const getArrow = () => {
-    if (anchor === 'left') {
-      return state.collapsed ? arrowR : arrowL;
-    }
-    if (anchor === 'right') {
-      return state.collapsed ? arrowL : arrowR;
-    }
-    return null;
+export const createCollapseBtn = (StyledComponent = StyledProxyButton) => {
+  const CollapseBtn = ({
+    children,
+    sidebarId,
+    onClick,
+    SvgIconProps,
+    ...props
+  }: ButtonProps & CtaProps) => {
+    const classes = useStyles(props);
+    const {
+      id,
+      anchor,
+      breakpoints,
+      edgeSidebar,
+      state,
+      setCollapsed,
+    } = useSidebarCta(sidebarId, 'CollapseBtn');
+    const arrowR = <ArrowRight {...SvgIconProps} />;
+    const arrowL = <ArrowLeft {...SvgIconProps} />;
+    const getArrow = () => {
+      if (anchor === 'left') {
+        return state.collapsed ? arrowR : arrowL;
+      }
+      if (anchor === 'right') {
+        return state.collapsed ? arrowL : arrowR;
+      }
+      return null;
+    };
+    const hiddenStyles = createDisplayNone(
+      EdgeCollapseCompiler(edgeSidebar).getHiddenBreakpoints(id),
+      breakpoints
+    );
+    return (
+      <StyledComponent
+        {...props}
+        classes={classes}
+        styles={hiddenStyles}
+        onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+          if (typeof onClick === 'function') onClick(e);
+          setCollapsed(id, !state.collapsed);
+        }}
+      >
+        {typeof children === 'function'
+          ? children({ anchor, ...state })
+          : getArrow()}
+      </StyledComponent>
+    );
   };
-  const hiddenStyles = createDisplayNone(
-    EdgeCollapseCompiler(edgeSidebar).getHiddenBreakpoints(id),
-    breakpoints
-  );
-  return (
-    <StyledProxyButton
-      {...props}
-      classes={classes}
-      styles={hiddenStyles}
-      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-        if (typeof onClick === 'function') onClick(e);
-        setCollapsed(id, !state.collapsed);
-      }}
-    >
-      {typeof children === 'function'
-        ? children({ anchor, ...state })
-        : getArrow()}
-    </StyledProxyButton>
-  );
+  return CollapseBtn;
 };
 
-export default CollapseBtn;
+export default createCollapseBtn();

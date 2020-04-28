@@ -1,43 +1,43 @@
 import React from 'react';
-import styled from '../../core/styled';
 import { useTheme } from '@material-ui/core/styles';
-import HeaderOffset from '../HeaderOffset';
+import { createHeaderOffset } from '../HeaderOffset';
 import { useLayoutCtx } from '../../core';
-import { MediaQueries } from '../../utils/createBreakpointStyles';
 import { createBreakpointStyles } from '../../utils';
 import ContentCompiler from '../../compilers/ContentCompiler';
 import { useFullScreenCtx } from '../../core/Context/FullScreenContext';
+import styledProxy from '../Shared/StyledProxy';
 
-const StyledComponent = styled('main')(
-  ({ styles }: { styles: MediaQueries }) => ({
-    ...styles,
-  })
-);
+const StyledMain = styledProxy('main');
+const Div = styledProxy('div');
 
-const Content = ({
-  children,
-  ...props
-}: React.PropsWithChildren<{ className?: string }>) => {
-  const { breakpoints } = useTheme();
-  const { data, state } = useLayoutCtx();
-  const styles = createBreakpointStyles(
-    ContentCompiler(state, data.edgeSidebar).getResultStyle(data.content.id),
-    breakpoints,
-  );
-  const isFullScreen = useFullScreenCtx();
-  return (
-    <StyledComponent
-      {...props}
-      styles={{
-        transition: 'all 300ms cubic-bezier(0.0, 0, 0.2, 1) 0ms',
-        ...styles,
-        ...(isFullScreen && { flexGrow: 1, minHeight: 0, display: 'flex' }),
-      }}
-    >
-      <HeaderOffset />
-      {children}
-    </StyledComponent>
-  );
+export const createContent = (StyledComponent = StyledMain, StyledDiv = Div) => {
+  const HeaderOffset = createHeaderOffset(StyledDiv)
+  const Content = ({
+    children,
+    ...props
+  }: React.PropsWithChildren<{ className?: string }>) => {
+    const { breakpoints } = useTheme();
+    const { data, state } = useLayoutCtx();
+    const styles = createBreakpointStyles(
+      ContentCompiler(state, data.edgeSidebar).getResultStyle(data.content.id),
+      breakpoints
+    );
+    const isFullScreen = useFullScreenCtx();
+    return (
+      <StyledComponent
+        {...props}
+        styles={{
+          transition: 'all 300ms cubic-bezier(0.0, 0, 0.2, 1) 0ms',
+          ...styles,
+          ...(isFullScreen && { flexGrow: 1, minHeight: 0, display: 'flex' }),
+        }}
+      >
+        <HeaderOffset />
+        {children}
+      </StyledComponent>
+    );
+  };
+  return Content;
 };
 
-export default Content;
+export default createContent();

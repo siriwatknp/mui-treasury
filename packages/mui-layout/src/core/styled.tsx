@@ -1,6 +1,6 @@
 import React from 'react';
 
-let styled = function<T>(
+const DefaultStyled = function<T>(
   WrappedComponent: React.ComponentType<T> | keyof JSX.IntrinsicElements
 ) {
   return function<K>(fn: (c: K) => any): React.FC<T & K> {
@@ -12,13 +12,4 @@ let styled = function<T>(
   };
 };
 
-/**
- * Call this function before App rendered
- * @param styledLib
- */
-// @ts-ignore
-export function setupStyled(styledLib) {
-  styled = styledLib;
-}
-
-export default styled;
+export default DefaultStyled;

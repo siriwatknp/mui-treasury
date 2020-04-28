@@ -16,11 +16,11 @@ const App = ({ children, location }) => {
   const path = React.useMemo(() => createPath(location), [location]);
   presets.muiTreasury.configureEdgeSidebar(builder => {
     builder.update('primarySidebar', path.parseConfig);
-    builder.hide('primarySidebar', location.pathname === '/')
+    builder.hide('primarySidebar', location.pathname === '/');
   });
   React.useEffect(() => {
     console.log('simulate did mount!');
-  }, [])
+  }, []);
   return (
     <>
       <Helmet>
