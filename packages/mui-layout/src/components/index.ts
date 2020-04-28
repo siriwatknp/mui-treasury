@@ -10,41 +10,46 @@ import FullScreen from './FullScreen';
 import InsetContainer from './InsetContainer';
 import SidebarContent from './SidebarContent';
 import { generateStyledProxyCreator } from './Shared/StyledProxy';
-import { createHeader } from './Header/Header';
-import { createContent } from './Content/Content';
+import { createHeader } from './Header';
+import { createContent } from './Content';
 import { createCollapseBtn } from './CTA/CollapseBtn';
 import { createSidebarTrigger } from './CTA/SidebarTrigger';
-import { createDrawerSidebar } from './DrawerSidebar/DrawerSidebar';
+import { createDrawerSidebar } from './DrawerSidebar';
 import { CLS } from './Shared/SharedSidebar';
-import { createFooter } from './Footer/Footer';
+import { createFooter } from './Footer';
 import { createInsetAvoidingView } from './InsetAvoidingView';
-import { createInsetFooter } from './InsetFooter/InsetFooter';
-import { createInsetHeaderOffset } from './InsetHeaderOffset/InsetHeaderOffset';
-import { createInsetSidebar } from './InsetSidebar/InsetSidebar';
-import { createSwipeableSidebar } from './SwipeableSidebar/SwipeableSidebar';
+import { createInsetFooter } from './InsetFooter';
+import { createInsetHeaderOffset } from './InsetHeaderOffset';
+import { createInsetSidebar } from './InsetSidebar';
+import { createSwipeableSidebar } from './SwipeableSidebar';
 
 export const getLayoutComponents = (styled: any) => {
   const styledProxy = generateStyledProxyCreator(styled);
+
+  // StyledComponent
   const Div = styledProxy('div');
-  const Header = createHeader(styledProxy<AppBarProps>(AppBar));
-  const Content = createContent(styledProxy('main'));
-  const CollapseBtn = createCollapseBtn(styledProxy<ButtonProps>(Button));
-  const SidebarTrigger = createSidebarTrigger(
-    styledProxy<IconButtonProps>(IconButton)
+  const Main = styledProxy('main');
+  const StyledFooter = styledProxy('footer');
+  const StyledAppBar = styledProxy<AppBarProps>(AppBar);
+  const StyledButton = styledProxy<ButtonProps>(Button);
+  const StyledIconBtn = styledProxy<IconButtonProps>(IconButton);
+  const StyledDrawer = styledProxy<DrawerProps>(Drawer, CLS);
+  const StyledSwipeableDrawer = styledProxy<SwipeableDrawerProps>(
+    SwipeableDrawer,
+    CLS
   );
-  const DrawerSidebar = createDrawerSidebar(
-    styledProxy<DrawerProps>(Drawer, CLS),
-    Div
-  );
-  const Footer = createFooter(styledProxy('footer'));
+
+  const Header = createHeader(StyledAppBar);
+  const Content = createContent(Main, Div);
+  const CollapseBtn = createCollapseBtn(StyledButton);
+  const SidebarTrigger = createSidebarTrigger(StyledIconBtn);
+  const DrawerSidebar = createDrawerSidebar(StyledDrawer, Div);
+  const Footer = createFooter(StyledFooter);
   const InsetAvoidingView = createInsetAvoidingView(Div);
   const InsetFooter = createInsetFooter(Div);
   const InsetHeaderOffset = createInsetHeaderOffset(Div);
   const InsetSidebar = createInsetSidebar(Div);
-  const SwipeableSidebar = createSwipeableSidebar(
-    styledProxy<SwipeableDrawerProps>(SwipeableDrawer, CLS),
-    Div
-  );
+  const SwipeableSidebar = createSwipeableSidebar(StyledSwipeableDrawer, Div);
   return {
     Header,
     Content,
