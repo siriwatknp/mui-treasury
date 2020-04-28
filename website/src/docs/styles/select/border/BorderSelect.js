@@ -18,7 +18,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const useLabelStyles = makeStyles(({ theme, palette }) => ({
   myLabelStyle: {
     marginLeft: '4px',
-    color: palette.grey[500]
+    color: palette.grey[500],
+    "&.Mui-focused":{
+      color: palette.grey[500],
+    }
   },
   mySelectStyle: {
     minWidth: '200px',
@@ -30,7 +33,15 @@ const useLabelStyles = makeStyles(({ theme, palette }) => ({
     borderRadius: '4px',
     paddingLeft: '24px',
     paddingTop: '12px',
-    paddingBottom: '13px'
+    paddingBottom: '13px',
+    "&:hover":{
+      borderColor: palette.grey[400],
+    },
+    "&:focus":{
+      borderRadius: '4px',
+      background: 'white',
+      borderColor: 'lightblue'
+    }
   },
   myIcon:{
     color: palette.grey[500],
