@@ -1,6 +1,6 @@
 {
   "name": "@mui-treasury/mockup",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "keywords": [
     "react",
@@ -18,8 +18,8 @@
   },
   "homepage": "https://mui-treasury.com",
   "dependencies": {
-    "@mui-treasury/components": "^1.0.2",
-    "@mui-treasury/styles": "^1.1.1",
+    "@mui-treasury/components": "^1.0.3",
+    "@mui-treasury/styles": "^1.1.2",
     "clsx": "^1.0.4",
     "prop-types": "^15.7.2",
     "react-router-dom": "^5.1.2"
