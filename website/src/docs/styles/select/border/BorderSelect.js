@@ -1,90 +1,38 @@
 import React from 'react';
-//import { useBorderSelectStyles } from '@mui-treasury/styles/select/border';
+import { useBorderSelectStyles } from '@mui-treasury/styles/select/border';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-import makeStyles from '@material-ui/core/styles/makeStyles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-const useStyles = makeStyles(({ theme, palette }) => ({
-  myLabelStyle: {
-    marginLeft: '4px',
-    color: palette.grey[500],
-    "&.Mui-focused":{
-      color: palette.grey[500],
-    }
-  },
-  mySelectStyle: {
-    minWidth: '200px',
-    background: 'white',
-    color: palette.grey[700],
-    borderColor: palette.grey[300],
-    borderStyle:'solid',
-    borderWidth: '2px',
-    borderRadius: '4px',
-    paddingLeft: '24px',
-    paddingTop: '14px',
-    paddingBottom: '15px',
-    "&:hover":{
-      borderColor: palette.grey[400],
-    },
-    "&:focus":{
-      borderRadius: '4px',
-      background: 'white',
-      borderColor: 'lightblue'
-    }
-  },
-  myIcon:{
-    color: palette.grey[500],
-    right: 12,
-    position: 'absolute',
-    pointerEvents: 'none',
-    width: '1em',
-    height: '1em',
-    display: 'inline-block',
-    transition: 'fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-    flexShrink: 0,
-    userSelect: 'none'
-  },
-  myList: {
-    paddingTop:0,
-    paddingBottom:0,
-    background:'white',
-    "& li.Mui-selected":{
-      fontWeight:700
-    }
-  }
-}));
 
 
 const BorderSelect = () => {
-  // const borderSelectStyles = useBorderSelectStyles();
-  const borderSelectClasses = useStyles();
+  const borderSelectClasses = useBorderSelectStyles();
 
   return (
     <FormControl>
       <InputLabel
-        className={borderSelectClasses.myLabelStyle}
+        className={borderSelectClasses.label}
         id="inputLabel"
       >LABEL</InputLabel>
       <Select
         //open
         disableUnderline
-        classes={{ root: borderSelectClasses.mySelectStyle, }}
+        classes={{ root: borderSelectClasses.select, }}
         labelId="inputLabel"
         defaultValue="Select"
         IconComponent={
           () => {
             return (
-              <FontAwesomeIcon className={borderSelectClasses.myIcon} icon={['fas','chevron-down']}/>
+              <FontAwesomeIcon className={borderSelectClasses.icon} icon={['fas','chevron-down']}/>
             ) // chevron-down added in fontawesome.js
           }
         }
         MenuProps={
           {
             classes: {
-              list: borderSelectClasses.myList
+              list: borderSelectClasses.list
             },
             anchorOrigin: {
               vertical: "bottom",

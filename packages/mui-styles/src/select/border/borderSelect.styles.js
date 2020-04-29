@@ -1,43 +1,51 @@
-export default () => ({
-  root: {
+import { blue } from '@material-ui/core/colors';
 
-    backgroundColor: 'green',
-    paddingTop: '25px',
-    color: 'green',
-
-    '& + *': {
-      marginTop: '16px',
-      fontSize: '5rem',
-    },
-    '&:hover, &.Mui-focusVisible': {
-      backgroundColor: 'transparent !important',
-    },
-    '& input + *': {
-      borderRadius: '50%',
-      width: 160,
-      height: 160,
-    },
-    '& input:disabled + *': {
-      boxShadow: 'inset 0 0 0 1px rgba(16,22,26,.3) !important',
-      background: 'rgba(206,217,224,.5) !important',
-    },
-    '&:not($checked)': {
-      '& input + *': {
-        boxShadow:
-          '0 1px 3px 0 rgba(0,0,0,0.12), inset 0 0 0 1px rgba(16,22,26,.5)',
-        backgroundColor: 'green',
-      }
-    },
-  },
-  select: {
-    '& input + *': {
-      backgroundColor: 'green',
-      '&:before': {
-        display: 'block',
-        width: 64,
-        height: 64,
-        content: '""',
-      },
+export default ({ palette }) => ({
+  label: {
+    marginLeft: '4px',
+    color: palette.grey[500],
+    "&.Mui-focused":{
+      color: palette.grey[500],
     }
   },
+  select: {
+    minWidth: '200px',
+    background: 'white',
+    color: palette.grey[700],
+    borderColor: palette.grey[300],
+    borderStyle:'solid',
+    borderWidth: '2px',
+    borderRadius: '4px',
+    paddingLeft: '24px',
+    paddingTop: '14px',
+    paddingBottom: '15px',
+    "&:hover":{
+      borderColor: palette.grey[400],
+    },
+    "&:focus":{
+      borderRadius: '4px',
+      background: 'white',
+      borderColor: blue[200]
+    }
+  },
+  icon:{
+    color: palette.grey[500],
+    right: 12,
+    position: 'absolute',
+    pointerEvents: 'none',
+    width: '1em',
+    height: '1em',
+    display: 'inline-block',
+    transition: 'fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+    flexShrink: 0,
+    userSelect: 'none'
+  },
+  list: {
+    paddingTop:0,
+    paddingBottom:0,
+    background:'white',
+    "& li.Mui-selected":{
+      fontWeight:700
+    }
+  }
 });
