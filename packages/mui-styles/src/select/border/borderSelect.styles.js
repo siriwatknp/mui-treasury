@@ -5,7 +5,7 @@ export default ({ palette }) => ({
     marginLeft: '4px',
     color: palette.grey[500],
     "&.Mui-focused":{
-      color: palette.grey[500],
+      color: palette.grey[500], // to overwrite the default behaviour
     }
   },
   select: {
@@ -26,19 +26,16 @@ export default ({ palette }) => ({
       borderRadius: '4px',
       background: 'white',
       borderColor: blue[200]
-    }
+    },
   },
   icon:{
     color: palette.grey[500],
+    marginTop: 4,
     right: 12,
     position: 'absolute',
-    pointerEvents: 'none',
-    width: '1em',
-    height: '1em',
-    display: 'inline-block',
-    transition: 'fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
     flexShrink: 0,
-    userSelect: 'none'
+    userSelect: 'none',
+    pointerEvents: 'none'
   },
   list: {
     paddingTop:0,
