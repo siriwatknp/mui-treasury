@@ -19,7 +19,6 @@ import { CLS } from './Shared/SharedSidebar';
 import { createFooter } from './Footer';
 import { createInsetAvoidingView } from './InsetAvoidingView';
 import { createInsetFooter } from './InsetFooter';
-import { createInsetHeaderOffset } from './InsetHeaderOffset';
 import { createInsetSidebar } from './InsetSidebar';
 import { createSwipeableSidebar } from './SwipeableSidebar';
 
@@ -47,7 +46,6 @@ export const getLayoutComponents = (styled: any) => {
   const Footer = createFooter(StyledFooter);
   const InsetAvoidingView = createInsetAvoidingView(Div);
   const InsetFooter = createInsetFooter(Div);
-  const InsetHeaderOffset = createInsetHeaderOffset(Div);
   const InsetSidebar = createInsetSidebar(Div);
   const SwipeableSidebar = createSwipeableSidebar(StyledSwipeableDrawer, Div);
   return {
@@ -61,7 +59,6 @@ export const getLayoutComponents = (styled: any) => {
     InsetAvoidingView,
     InsetContainer,
     InsetFooter,
-    InsetHeaderOffset,
     InsetSidebar,
     Root,
     SidebarContent,

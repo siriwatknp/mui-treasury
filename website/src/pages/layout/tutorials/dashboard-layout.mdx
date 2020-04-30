@@ -118,7 +118,8 @@ For the code above, we want to create `EdgeSidebar` on the left of browser with 
 > see what each variant looks like real quick [here](https://material-ui.com/components/drawers/#drawer)
 
 At this point, let's render these components on the page so that you don't get surprise at the end.
-But before we can use components, we need to install css-in-js library first. pick one from `styled-components`, `@emotion/styled` or `glamorous`
+But before we can use components, we need to install css-in-js library first. pick one from `styled-components`, `@emotion/styled` or `glamorous`.
+
 styled-components is recommended because [Material-UI v5](https://github.com/mui-org/material-ui/issues/20012) will adopt this lib
 
 ```
@@ -183,17 +184,20 @@ export default App;
 
 Save, and run `yarn start`. You should see something like this on your screen.
 
-![image](https://user-images.githubusercontent.com/18292247/80662164-cdd41580-8aba-11ea-8fdf-98779c5870ab.png)
+![image](https://user-images.githubusercontent.com/18292247/80723265-a026b500-8b2a-11ea-998c-2a442c445fd7.png)
 
 Where is our Sidebar? well, because variant temporary is hidden at initial state.
 Mui-layout store this state inside `Root` and provide a component to trigger `open` state.
 let's update the code to be like this.
 
-```js
+```jsx
+const { 
+  Root, 
+  Header,
+  DrawerSidebar,
 // highlight-next-line
-const { Root, Header, DrawerSidebar, SidebarTrigger } = getLayoutComponents(
-  styled
-);
+  SidebarTrigger
+} = getLayoutComponents(styled);
 
 const App = () => {
   return (
@@ -419,7 +423,7 @@ You can add mockup from `@mui-treasury/mockup` to make it more realistic.
 yarn add @mui-treasury/mockup
 ```
 
-```js
+```jsx
 // ... other import
 import {
   HeaderMockUp,
@@ -434,30 +438,30 @@ import {
 const App = () => {
   return (
     <Root scheme={scheme}>
-    {({ state: { sidebar } }) => (
-      <>
-        <CssBaseline />
-        <Header>
-          <Toolbar>
-            <SidebarTrigger sidebarId="unique_id" />
-            <HeaderMockUp />
-          </Toolbar>
-        </Header>
-        <DrawerSidebar sidebarId="unique_id">
-          <SidebarContent>
-            <NavHeaderMockUp collapsed={sidebar.unique_id.collapsed} />
-            <NavContentMockUp />
-          </SidebarContent>
-          <CollapseBtn />
-        </DrawerSidebar>
-        <Content>
-          <ContentMockUp />
-        </Content>
-        <Footer>
-          <FooterMockUp />
-        </Footer>
-      </>
-    )}
+      {({ state: { sidebar } }) => (
+        <>
+          <CssBaseline />
+          <Header>
+            <Toolbar>
+              <SidebarTrigger sidebarId="unique_id" />
+              <HeaderMockUp />
+            </Toolbar>
+          </Header>
+          <DrawerSidebar sidebarId="unique_id">
+            <SidebarContent>
+              <NavHeaderMockUp collapsed={sidebar.unique_id.collapsed} />
+              <NavContentMockUp />
+            </SidebarContent>
+            <CollapseBtn />
+          </DrawerSidebar>
+          <Content>
+            <ContentMockUp />
+          </Content>
+          <Footer>
+            <FooterMockUp />
+          </Footer>
+        </>
+      )}
     </Root>
   )
 }
