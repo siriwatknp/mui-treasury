@@ -41,6 +41,20 @@ const getLayoutDevelop = () => {
   };
 };
 
+const getLayoutV3Handler = () => {
+  return {
+    pattern: /\/layout\/v3.*/g,
+    sidebarMenus: LAYOUT_MENUS,
+    parseConfig: c => {
+      c.lg.width = 300;
+    },
+    getOpenKeys: () => [
+      'v3',
+      'tutorials-v3',
+    ],
+  };
+};
+
 const getLayoutHandler = () => {
   return {
     pattern: /\/layout.*/g,
@@ -92,6 +106,7 @@ const getPathValue = (pathname, key) =>
       getStylesHandler(),
       getComponentHandler(),
       getLayoutDevelop(),
+      getLayoutV3Handler(),
       getLayoutHandler(),
       getFallbackHandler(),
     ],

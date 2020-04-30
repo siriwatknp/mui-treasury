@@ -26,8 +26,7 @@ scheme.configureEdgeSidebar(builder => {
     })
     .registerPermanentConfig("md", {
       width: 200,
-      collapsible: true,
-      collapsedWidth: 64,
+      collapsible: false,
     })
     .registerPermanentConfig("lg", {
       width: 256,
