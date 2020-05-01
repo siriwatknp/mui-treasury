@@ -8,12 +8,23 @@ export default [
       {
         key: 'dashboard-layout',
         label: 'Dashboard Layout',
-        to: '/layout/tutorials/dashboard-layout/',
+        to: '/layout/tutorials/dashboard-layout',
       },
       {
         key: 'blog-layout',
         label: 'Blog Layout',
-        to: '/layout/tutorials/blog-layout/',
+        to: '/layout/tutorials/blog-layout',
+      },
+    ],
+  },
+  {
+    key: 'advanced',
+    label: 'Advanced',
+    subMenus: [
+      {
+        key: 'controlling-sidebar',
+        label: 'Controlling Sidebar',
+        to: '/layout/advanced/controlling-sidebar',
       },
     ],
   },
@@ -111,6 +122,7 @@ export default [
     key: 'v3',
     label: 'v3.3.4',
     subMenus: [
+      { key: 'builder-v3', label: 'Layout builder', to: '/layout/v3/builder' },
       {
         key: 'tutorials-v3',
         label: 'Tutorial',
@@ -125,8 +137,8 @@ export default [
             label: 'Blog Layout',
             to: '/layout/v3/tutorials/blog-layout-v3/',
           },
-        ]
-      }
+        ],
+      },
     ],
   },
 ];

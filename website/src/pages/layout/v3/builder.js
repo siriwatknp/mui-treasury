@@ -1,5 +1,5 @@
 import React from 'react';
-import LayoutBuilder from '../../__temporary__/LayoutBuilderPage';
+import LayoutBuilder from '../../../__temporary__/LayoutBuilderPage';
 
 const BuilderPage = () => {
   return <LayoutBuilder />;
