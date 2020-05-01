@@ -34,8 +34,12 @@ async function createPackageFile() {
 
 async function copyReadMeFile() {
   const targetPath = path.resolve(buildPath, './README.md');
-  const sourcePath = path.resolve('./../../', './README.md');
-  return fse.copyFile(sourcePath, targetPath);
+  const sourcePath = path.resolve('./README.md');
+  try {
+    await fse.copyFile(sourcePath, targetPath);
+  } catch (e) {
+    console.log(`No readme at ${sourcePath}`)
+  }
 }
 
 async function typescriptCopy({ from, to }) {

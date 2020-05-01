@@ -1,3 +1,4 @@
+import { presets } from '@mui-treasury/layout';
 import { mapNestedPath } from '@mui-treasury/utils';
 import {
   COMPONENT_MENUS,
@@ -5,17 +6,11 @@ import {
   STYLE_MENUS,
 } from '../../constants/menus';
 
+const { edgeSidebar: { primarySidebar } } = presets.muiTreasury.clone();
+
 const getHomeHandler = () => {
   return {
     pattern: /^\/$/,
-    hamburgerHidden: true,
-    parseConfig: c => ({
-      ...c,
-      sidebar: {
-        ...c.sidebar,
-        hidden: true,
-      },
-    }),
   };
 };
 
@@ -46,17 +41,27 @@ const getLayoutDevelop = () => {
   };
 };
 
+const getLayoutV3Handler = () => {
+  return {
+    pattern: /\/layout\/v3.*/g,
+    sidebarMenus: LAYOUT_MENUS,
+    parseConfig: c => {
+      c.lg.width = 300;
+    },
+    getOpenKeys: () => [
+      'v3',
+      'tutorials-v3',
+    ],
+  };
+};
+
 const getLayoutHandler = () => {
   return {
     pattern: /\/layout.*/g,
     sidebarMenus: LAYOUT_MENUS,
-    parseConfig: c => ({
-      ...c,
-      sidebar: {
-        ...c.sidebar,
-        width: 208,
-      },
-    }),
+    parseConfig: c => {
+      c.lg.width = 208;
+    },
     getOpenKeys: () => [
       'tutorials',
       'presets',
@@ -72,8 +77,10 @@ const getFallbackHandler = () => {
     pattern: /.*/g,
     sidebarMenus: [],
     wrappedByLayout: true,
-    hamburgerHidden: false,
-    parseConfig: c => c,
+    parseConfig: c => {
+      c.lg.width = primarySidebar.lg.width;
+
+    },
     getOpenKeys: ({ menus, lastPath }) => {
       const keyMap = mapNestedPath(menus);
       return Object.keys(keyMap).filter(key => keyMap[key].includes(lastPath));
@@ -99,6 +106,7 @@ const getPathValue = (pathname, key) =>
       getStylesHandler(),
       getComponentHandler(),
       getLayoutDevelop(),
+      getLayoutV3Handler(),
       getLayoutHandler(),
       getFallbackHandler(),
     ],
@@ -118,6 +126,5 @@ export default (location = {}) => {
     wrappedByLayout: getPathValue(pathname, 'wrappedByLayout'),
     parseConfig: getPathValue(pathname, 'parseConfig'),
     getOpenKeys: getPathValue(pathname, 'getOpenKeys'),
-    hamburgerHidden: getPathValue(pathname, 'hamburgerHidden'),
   };
 };
