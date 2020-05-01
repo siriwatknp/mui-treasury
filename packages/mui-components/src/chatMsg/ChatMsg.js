@@ -5,12 +5,12 @@ import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 
-import { withStyles } from '@mui-treasury/styling';
+import withStyles from '@material-ui/core/styles/withStyles';
 import defaultChatMsgStyles from '@mui-treasury/styles/chatMsg/default';
 
 const ChatMsg = withStyles(defaultChatMsgStyles, { name: 'ChatMsg' })(props => {
   const {
-    css,
+    classes,
     avatar,
     messages,
     side,
@@ -21,10 +21,10 @@ const ChatMsg = withStyles(defaultChatMsgStyles, { name: 'ChatMsg' })(props => {
   } = props;
   const attachClass = index => {
     if (index === 0) {
-      return css[`${side}First`];
+      return classes[`${side}First`];
     }
     if (index === messages.length - 1) {
-      return css[`${side}Last`];
+      return classes[`${side}Last`];
     }
     return '';
   };
@@ -40,7 +40,7 @@ const ChatMsg = withStyles(defaultChatMsgStyles, { name: 'ChatMsg' })(props => {
           <Avatar
             src={avatar}
             {...AvatarProps}
-            className={cx(css.avatar, AvatarProps.className)}
+            className={cx(classes.avatar, AvatarProps.className)}
           />
         </Grid>
       )}
@@ -49,13 +49,13 @@ const ChatMsg = withStyles(defaultChatMsgStyles, { name: 'ChatMsg' })(props => {
           const TypographyProps = getTypographyProps(msg, i, props);
           return (
             // eslint-disable-next-line react/no-array-index-key
-            <div key={msg.id || i} className={css[`${side}Row`]}>
+            <div key={msg.id || i} className={classes[`${side}Row`]}>
               <Typography
                 align={'left'}
                 {...TypographyProps}
                 className={cx(
-                  css.msg,
-                  css[side],
+                  classes.msg,
+                  classes[side],
                   attachClass(i),
                   TypographyProps.className
                 )}

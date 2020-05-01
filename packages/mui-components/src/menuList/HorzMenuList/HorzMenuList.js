@@ -1,11 +1,11 @@
 import React from 'react';
 import cx from 'clsx';
 import PropTypes from 'prop-types';
-import { withStyles } from '@mui-treasury/styling';
+import withStyles from '@material-ui/core/styles/withStyles';
 import createStyles from './HorzMenuList.styles';
 
 const HorzMenuList = withStyles(createStyles, { name: 'HorzMenuList' })(
-  ({ className, css, menus, selectedKey, getItemProps, Link }) => {
+  ({ className, classes, menus, selectedKey, getItemProps, Link }) => {
     const renderLink = ({ target, to, external, label }) => {
       if (!to) {
         return label;
@@ -24,7 +24,7 @@ const HorzMenuList = withStyles(createStyles, { name: 'HorzMenuList' })(
       );
     };
     return (
-      <ul className={cx(css.navRoot, className)}>
+      <ul className={cx(classes.navRoot, className)}>
         {menus.map((item, index) => {
           const { key, disabled } = item;
           const { ...extItemProps } = getItemProps(item, index);
@@ -32,10 +32,10 @@ const HorzMenuList = withStyles(createStyles, { name: 'HorzMenuList' })(
             <li
               key={key}
               className={cx(
-                css.navItem,
+                classes.navItem,
                 (typeof selectedKey === 'function'
                   ? selectedKey(key)
-                  : key === selectedKey) && css.navSelected
+                  : key === selectedKey) && classes.navSelected
               )}
               {...extItemProps}
               disabled={disabled}

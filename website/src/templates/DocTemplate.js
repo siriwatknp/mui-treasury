@@ -4,9 +4,10 @@ import { MDXProvider } from '@mdx-js/react';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import SimpleShowcase, { Inline } from '../components/atoms/SimpleShowcase';
+import PageNavigation from '../components/molecules/PageNavigation';
 import './documentation.css'
 
-const shortcodes = { Inline, Link, SimpleShowcase };
+const shortcodes = { Inline, Link, SimpleShowcase, PageNavigation };
 
 const DocTemplate = ({ pageContext, children }) => {
   if (!pageContext)
