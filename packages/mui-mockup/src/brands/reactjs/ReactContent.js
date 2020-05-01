@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 
 const ReactContent = () => (
-  <Box mr={{ md: 10 }} py={{ xs: 4, sm: 6, md: 8 }}>
+  <Box mr={{ sm: 3, md: 10 }} py={{ xs: 4, sm: 6, md: 8 }}>
     <Box pb={5}>
       <Typography variant={'h2'}>
         <b>Getting Started</b>

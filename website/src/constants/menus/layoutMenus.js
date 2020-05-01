@@ -1,5 +1,6 @@
 export default [
   { key: 'layout', label: 'Introduction', to: '/layout' },
+  { key: 'core-concept', label: 'Core Concept', to: '/layout/core-concept' },
   {
     key: 'tutorials',
     label: 'Tutorials',
@@ -16,7 +17,6 @@ export default [
       },
     ],
   },
-  { key: 'builder', label: 'Builder', to: '/layout/builder' },
   {
     key: 'presets',
     label: 'Presets',
@@ -53,39 +53,39 @@ export default [
       },
     ],
   },
-  {
-    key: 'basic-examples',
-    label: 'Basic Examples',
-    subMenus: [
-      {
-        key: 'custom-theme',
-        label: 'Custom theme',
-        to: '/layout/basic-examples/custom-theme?bgColor=d4b397',
-      },
-      {
-        key: 'custom-styles',
-        label: 'Custom styles',
-        to:
-          '/layout/basic-examples/custom-styles?bgColor=213E9B&accent=rgb(17, 254, 220)&dark=true',
-      },
-      {
-        key: 'control-sidebar',
-        label: 'Control Sidebar',
-        to:
-          '/layout/basic-examples/control-sidebar?bgColor=e9e9e9&primary=36338E&accent=ff9600',
-      },
-      {
-        key: 'secondary-sidebar',
-        label: '2nd Sidebar',
-        to: '/layout/basic-examples/secondary-sidebar',
-      },
-      {
-        key: 'inset-sidebar',
-        label: 'Inset Sidebar',
-        to: '/layout/basic-examples/inset-sidebar',
-      },
-    ],
-  },
+  // {
+  //   key: 'basic-examples',
+  //   label: 'Basic Examples',
+  //   subMenus: [
+  //     {
+  //       key: 'custom-theme',
+  //       label: 'Custom theme',
+  //       to: '/layout/basic-examples/custom-theme?bgColor=d4b397',
+  //     },
+  //     {
+  //       key: 'custom-styles',
+  //       label: 'Custom styles',
+  //       to:
+  //         '/layout/basic-examples/custom-styles?bgColor=213E9B&accent=rgb(17, 254, 220)&dark=true',
+  //     },
+  //     {
+  //       key: 'control-sidebar',
+  //       label: 'Control Sidebar',
+  //       to:
+  //         '/layout/basic-examples/control-sidebar?bgColor=e9e9e9&primary=36338E&accent=ff9600',
+  //     },
+  //     {
+  //       key: 'secondary-sidebar',
+  //       label: '2nd Sidebar',
+  //       to: '/layout/basic-examples/secondary-sidebar',
+  //     },
+  //     {
+  //       key: 'inset-sidebar',
+  //       label: 'Inset Sidebar',
+  //       to: '/layout/basic-examples/inset-sidebar',
+  //     },
+  //   ],
+  // },
   {
     key: 'clones',
     label: 'Clones',
@@ -105,6 +105,28 @@ export default [
         label: 'Shopping Cart',
         to: '/layout/clones/shopping-cart?bgColor=EAEEF1',
       },
+    ],
+  },
+  {
+    key: 'v3',
+    label: 'v3.3.4',
+    subMenus: [
+      {
+        key: 'tutorials-v3',
+        label: 'Tutorial',
+        subMenus: [
+          {
+            key: 'dashboard-layout-v3',
+            label: 'Dashboard Layout',
+            to: '/layout/v3/tutorials/dashboard-layout-v3/',
+          },
+          {
+            key: 'blog-layout-v3',
+            label: 'Blog Layout',
+            to: '/layout/v3/tutorials/blog-layout-v3/',
+          },
+        ]
+      }
     ],
   },
 ];

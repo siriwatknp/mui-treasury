@@ -38,7 +38,7 @@ const ChatDialog = () => {
             type: 'image',
             alt: 'sticker',
             src:
-              'https://scontent.fbkk12-3.fna.fbcdn.net/v/t39.1997-6/47236319_2150120948374011_4041608446519279616_n.png?_nc_cat=1&_nc_eui2=AeFis6Ozie5kjvkroSrDVnNAgqObZIvcuVVgXzfeKcO4DwwScziUGg6fw_1q8iRI49LMJ2ZJj037zvV3NqoMnVmqCtt9rWUwtLN2RENWfYPQYg&_nc_ohc=KE5rZeqFyBIAQkojKlvtrWdxe2rdAYR6Ps69ry7-0ahej4-YPP8Dyub_g&_nc_ht=scontent.fbkk12-3.fna&oh=95c38213f29607e0a82c34d1a427b2b1&oe=5E9E92B3',
+              'https://www.messenger.com/stickers/asset/?sticker_id=702110433208381&image_type=BestEffortImage',
           },
           'Commodo ullamcorper a lacus vestibulum sed arcu. Sed faucibus turpis in eu mi bibendum neque egestas. Maecenas volutpat blandit aliquam etiam erat velit. Massa placerat duis ultricies lacus sed turpis tincidunt id aliquet. Suspendisse sed nisi lacus sed viverra.',
         ]}

@@ -6,11 +6,11 @@ import Link from '@material-ui/core/Link';
 
 const ReactNextArticle = () => (
   <Box bgcolor={'rgb(40, 44, 52)'}>
-    <Container>
+    <Container disableGutters>
       <Box
-        mr={{ xs: 0, md: '256px' }}
+        mr={{ xs: 0, md: 10 }}
         py={5}
-        px={{ xs: 2, md: 8 }}
+        px={{ xs: 2, sm: 3, md: 0 }}
         textAlign={'right'}
         color={'common.white'}
       >

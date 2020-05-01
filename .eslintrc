@@ -2,30 +2,8 @@
   "globals": {
     "__PATH_PREFIX__": true
   },
-  "extends": ["react-app", "plugin:jsx-a11y/recommended"],
-  "plugins": ["jsx-a11y"],
-  "rules": {
-    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
-    "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [".js", "jsx"]
-      }
-    ],
-    "react/prefer-stateless-function": "warn",
-    "react/jsx-curly-brace-presence": "off",
-    "react/prop-types": "warn",
-    "react/destructuring-assignment": "warn",
-    "import/no-extraneous-dependencies": "off",
-    "import/prefer-default-export": "warn",
-    "no-param-reassign": "warn",
-    "import/extensions": "warn",
-    "import/no-unresolved": "warn"
-  },
-  "parser": "babel-eslint",
-  "env": {
-    "browser": true,
-    "es6": true
-  }
+  "extends": [
+    "react-app",
+    "prettier/@typescript-eslint"
+  ]
 }
