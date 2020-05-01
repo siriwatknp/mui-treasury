@@ -45,7 +45,7 @@ export const getLayoutComponents = (styled: any) => {
   const DrawerSidebar = createDrawerSidebar(StyledDrawer, Div);
   const Footer = createFooter(StyledFooter);
   const InsetAvoidingView = createInsetAvoidingView(Div);
-  const InsetFooter = createInsetFooter(Div);
+  const InsetFooter = createInsetFooter(Div, StyledFooter);
   const InsetSidebar = createInsetSidebar(Div);
   const SwipeableSidebar = createSwipeableSidebar(StyledSwipeableDrawer, Div);
   return {
