@@ -56,14 +56,6 @@ describe("Header + PrimarySidebar + SecondarySidebar + Content", () => {
         })
     })
 
-    scheme.configureContent(builder => {
-      builder.create("content")
-    })
-
-    scheme.configureFooter(builder => {
-      builder.create("footer")
-    })
-
     const state = {
       sidebar: {
         primarySidebar: { open: true, collapsed: false },

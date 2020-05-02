@@ -36,15 +36,16 @@ export interface IInsetSidebarBuilder {
   ) => void;
   hide: (id: string, breakpoints: Breakpoint[] | boolean) => void;
   getData: () => InsetSidebarData;
+  debug: () => void;
 }
 
 export type InsetSidebarConfigMapById = Dictionary<
   MapBreakpoint<InsetSidebarConfig>
 >;
 
-export default (): IInsetSidebarBuilder => {
+export default (initialMapById: InsetSidebarConfigMapById = {}): IInsetSidebarBuilder => {
   const hiddenById: Dictionary<Breakpoint[]> = {};
-  const mapById: InsetSidebarConfigMapById = {};
+  const mapById: InsetSidebarConfigMapById = initialMapById;
   const addConfig = (bp: Breakpoint, config: InsetSidebarConfig): void => {
     if (!mapById[config.id]) {
       mapById[config.id] = {};
@@ -96,6 +97,15 @@ export default (): IInsetSidebarBuilder => {
         configMap: normalizeMapById(attachedMapById),
         configMapById: attachedMapById,
       };
+    },
+    debug() {
+      if (process.env.NODE_ENV !== 'production') {
+        Object.keys(mapById).forEach(id => {
+          console.group("InsetSidebar:", `"${id}"`)
+          console.table(mapById[id])
+          console.groupEnd()
+        })
+      }
     },
   };
 };

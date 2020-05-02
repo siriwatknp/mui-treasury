@@ -46,7 +46,9 @@ const getLayoutV3Handler = () => {
     pattern: /\/layout\/v3.*/g,
     sidebarMenus: LAYOUT_MENUS,
     parseConfig: c => {
-      c.lg.width = 300;
+      if (c && c.lg) {
+        c.lg.width = 300;
+      }
     },
     getOpenKeys: () => [
       'v3',
@@ -60,7 +62,9 @@ const getLayoutHandler = () => {
     pattern: /\/layout.*/g,
     sidebarMenus: LAYOUT_MENUS,
     parseConfig: c => {
-      c.lg.width = 208;
+      if (c && c.lg) {
+        c.lg.width = 208;
+      }
     },
     getOpenKeys: () => [
       'tutorials',
@@ -75,8 +79,9 @@ const getFallbackHandler = () => {
     sidebarMenus: [],
     wrappedByLayout: true,
     parseConfig: c => {
-      c.lg.width = primarySidebar.lg.width;
-
+      if (c && c.lg) {
+        c.lg.width = primarySidebar.lg.width;
+      }
     },
     getOpenKeys: ({ menus, lastPath }) => {
       const keyMap = mapNestedPath(menus);

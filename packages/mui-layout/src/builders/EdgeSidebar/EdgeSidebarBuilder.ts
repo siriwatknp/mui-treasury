@@ -26,10 +26,12 @@ export const isUniqueSidebars = (
   return isUnique;
 };
 
-export default (): IEdgeSidebarBuilder => {
+export default (
+  initialMapById: EdgeSidebarConfigMapById = {}
+): IEdgeSidebarBuilder => {
   const hiddenById: Dictionary<Breakpoint[]> = {};
-  const sidebarIds: string[] = [];
-  const mapById: EdgeSidebarConfigMapById = {};
+  const sidebarIds: string[] = Object.keys(initialMapById);
+  const mapById: EdgeSidebarConfigMapById = initialMapById;
   const addConfig = (
     breakpoint: Breakpoint,
     config: EdgeSidebarConfig
@@ -77,9 +79,6 @@ export default (): IEdgeSidebarBuilder => {
       });
       return Registry();
     },
-    get(id) {
-      return this.create(id, {})
-    },
     update(id, updater) {
       if (mapById[id]) {
         updater(mapById[id]);
@@ -105,5 +104,14 @@ export default (): IEdgeSidebarBuilder => {
       };
     },
     getSidebarIds: () => sidebarIds,
+    debug() {
+      if (process.env.NODE_ENV !== 'production') {
+        sidebarIds.forEach(id => {
+          console.group('EdgeSidebar:', `"${id}"`);
+          console.table(mapById[id]);
+          console.groupEnd();
+        });
+      }
+    },
   };
 };
