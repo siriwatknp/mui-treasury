@@ -5,7 +5,7 @@
 </p>
 
 # Material-UI Treasury [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/siriwatknp/mui-treasury-next/pulls) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-16-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Imagine a place with millions of real-world, ready-to-use, and themable components that you can copy & paste or even install to your project. I believe that it will help boosting many projects that want to prove their ideas and make their 1st prototype to make tomorrow better than today.
@@ -89,6 +89,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/maxwassiljew"><img src="https://avatars0.githubusercontent.com/u/27824730?v=4" width="100px;" alt=""/><br /><sub><b>Max Wassiljew</b></sub></a><br /><a href="https://github.com/siriwatknp/mui-treasury/commits?author=maxwassiljew" title="Code">💻</a></td>
+    <td align="center"><a href="https://qiita.com/TsutomuNakamura"><img src="https://avatars3.githubusercontent.com/u/10674169?v=4" width="100px;" alt=""/><br /><sub><b>tsutomu</b></sub></a><br /><a href="https://github.com/siriwatknp/mui-treasury/commits?author=TsutomuNakamura" title="Code">💻</a></td>
   </tr>
 </table>
 
