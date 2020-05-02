@@ -31,7 +31,7 @@ export default (
 ): IEdgeSidebarBuilder => {
   const hiddenById: Dictionary<Breakpoint[]> = {};
   const sidebarIds: string[] = Object.keys(initialMapById);
-  const mapById: EdgeSidebarConfigMapById = initialMapById;
+  const mapById: EdgeSidebarConfigMapById = Object.assign({}, initialMapById);
   const addConfig = (
     breakpoint: Breakpoint,
     config: EdgeSidebarConfig

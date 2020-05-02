@@ -13,7 +13,7 @@ const INITIAL_HEIGHT = {
 
 export default (initialMap: HeaderConfigMap = {}): IHeaderBuilder => {
   let id: string;
-  const map: HeaderConfigMap = initialMap;
+  const map: HeaderConfigMap = Object.assign({}, initialMap);
 
   return {
     create: function(headerId: string) {

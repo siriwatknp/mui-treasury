@@ -45,25 +45,14 @@ export interface ILayoutBuilder {
 }
 
 type InitialLayout = {
-  global: GlobalConfig;
-  header: HeaderConfigMap;
-  edgeSidebar: EdgeSidebarConfigMapById;
-  insetSidebar: InsetSidebarConfigMapById;
+  global?: GlobalConfig;
+  header?: HeaderConfigMap;
+  edgeSidebar?: EdgeSidebarConfigMapById;
+  insetSidebar?: InsetSidebarConfigMapById;
 };
 
-const defaultLayout = {
-  global: { autoCollapse: {} },
-  header: {},
-  edgeSidebar: {},
-  insetSidebar: {},
-};
-
-export default (
-  initialLayout: InitialLayout = defaultLayout
-): ILayoutBuilder => {
-  const global: GlobalConfig = {
-    autoCollapse: {},
-  };
+export default (initialLayout: InitialLayout = {}): ILayoutBuilder => {
+  const global: GlobalConfig = initialLayout.global || { autoCollapse: {} };
   const header = HeaderBuilder(initialLayout.header);
   const edgeSidebar = EdgeSidebarBuilder(initialLayout.edgeSidebar);
   const insetSidebar = InsetSidebarBuilder(initialLayout.insetSidebar);
