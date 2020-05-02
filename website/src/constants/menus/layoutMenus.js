@@ -31,6 +31,11 @@ export default [
         label: 'Dynamic Config',
         to: '/layout/advanced/dynamic-config/',
       },
+      {
+        key: 'hide-sidebar',
+        label: 'Hide Sidebar',
+        to: '/layout/advanced/hide-sidebar/',
+      },
     ],
   },
   {
