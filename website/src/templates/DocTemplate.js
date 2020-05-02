@@ -4,10 +4,17 @@ import { MDXProvider } from '@mdx-js/react';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import SimpleShowcase, { Inline } from '../components/atoms/SimpleShowcase';
+import CodeSandbox from '../components/atoms/CodeSandbox';
 import PageNavigation from '../components/molecules/PageNavigation';
-import './documentation.css'
+import './documentation.css';
 
-const shortcodes = { Inline, Link, SimpleShowcase, PageNavigation };
+const shortcodes = {
+  Inline,
+  Link,
+  CodeSandbox,
+  SimpleShowcase,
+  PageNavigation,
+};
 
 const DocTemplate = ({ pageContext, children }) => {
   if (!pageContext)
@@ -16,7 +23,7 @@ const DocTemplate = ({ pageContext, children }) => {
   return (
     <Box
       className={'Documentation'}
-      maxWidth={672}
+      maxWidth={`calc(700px + 3rem)`}
       mx={'auto'}
       py={{ xs: '2rem', sm: '3rem' }}
       px={{ xs: 2, sm: '1.5rem' }}

@@ -1,6 +1,6 @@
 export default [
-  { key: 'layout', label: 'Introduction', to: '/layout' },
-  { key: 'core-concept', label: 'Core Concept', to: '/layout/core-concept' },
+  { key: 'layout', label: 'Introduction', to: '/layout/' },
+  { key: 'core-concept', label: 'Core Concept', to: '/layout/core-concept/' },
   {
     key: 'tutorials',
     label: 'Tutorials',
@@ -18,38 +18,64 @@ export default [
     ],
   },
   {
+    key: 'advanced',
+    label: 'Advanced',
+    subMenus: [
+      {
+        key: 'controlling-sidebar',
+        label: 'Controlling Sidebar',
+        to: '/layout/advanced/controlling-sidebar/',
+      },
+      {
+        key: 'dynamic-config',
+        label: 'Dynamic Config',
+        to: '/layout/advanced/dynamic-config/',
+      },
+      {
+        key: 'hide-sidebar',
+        label: 'Hide Sidebar',
+        to: '/layout/advanced/hide-sidebar/',
+      },
+      {
+        key: 'mutate-preset',
+        label: 'Mutate Preset',
+        to: '/layout/advanced/mutate-preset/',
+      },
+    ],
+  },
+  {
     key: 'presets',
     label: 'Presets',
     subMenus: [
       {
         key: 'default',
         label: 'Default',
-        to: '/layout/presets/default',
+        to: '/layout/presets/default/',
       },
       {
         key: 'standard',
         label: 'Standard',
-        to: '/layout/presets/standard',
+        to: '/layout/presets/standard/',
       },
       {
         key: 'content-based',
         label: 'Content Based',
-        to: '/layout/presets/content-based',
+        to: '/layout/presets/content-based/',
       },
       {
         key: 'cozy',
         label: 'Cozy',
-        to: '/layout/presets/cozy',
+        to: '/layout/presets/cozy/',
       },
       {
         key: 'fixed',
         label: 'Fixed',
-        to: '/layout/presets/fixed',
+        to: '/layout/presets/fixed/',
       },
       {
         key: 'mui-treasury',
         label: 'MUI Treasury',
-        to: '/layout/presets/mui-treasury',
+        to: '/layout/presets/mui-treasury/',
       },
     ],
   },
@@ -111,6 +137,7 @@ export default [
     key: 'v3',
     label: 'v3.3.4',
     subMenus: [
+      { key: 'builder-v3', label: 'Layout builder', to: '/layout/v3/builder' },
       {
         key: 'tutorials-v3',
         label: 'Tutorial',
@@ -125,8 +152,8 @@ export default [
             label: 'Blog Layout',
             to: '/layout/v3/tutorials/blog-layout-v3/',
           },
-        ]
-      }
+        ],
+      },
     ],
   },
 ];
