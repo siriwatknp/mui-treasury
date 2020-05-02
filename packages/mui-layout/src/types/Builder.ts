@@ -11,12 +11,14 @@ import {
 import { Dictionary, MapBreakpoint } from './Utils';
 
 export type HeaderConfigMap = MapBreakpoint<HeaderConfig>;
-export type EdgeSidebarConfigMapById = Dictionary<MapBreakpoint<EdgeSidebarConfig>>;
+export type EdgeSidebarConfigMapById = Dictionary<
+  MapBreakpoint<EdgeSidebarConfig>
+>;
 export type EdgeSidebarData = {
   sidebarIds: string[];
   configMap: MapBreakpoint<EdgeSidebarConfig[]>;
   configMapById: Dictionary<MapBreakpoint<EdgeSidebarConfig>>;
-  hiddenById: Dictionary<Breakpoint[]>
+  hiddenById: Dictionary<Breakpoint[]>;
 };
 
 export type InsetSidebarData = {
@@ -34,17 +36,23 @@ export interface IRegistry<ConfigType> {
 export interface IFooterBuilder {
   create: (id: string) => void;
   getData: () => { id: string };
+  debug: () => void;
 }
 
 export interface IContentBuilder {
   create: (id: string) => void;
   getData: () => { id: string };
+  debug: () => void;
 }
 
 export interface IHeaderBuilder {
   create: (id: string) => IRegistry<HeaderConfig>;
+  update: (
+    updater: (config: MapBreakpoint<Omit<HeaderConfig, 'id'>>) => void
+  ) => void;
   getId: () => string;
   getData: () => HeaderConfigMap;
+  debug: () => void;
 }
 
 export interface IEdgeSidebarRegistry {
@@ -66,9 +74,12 @@ export interface IEdgeSidebarBuilder {
   create: (id: string, properties: SidebarProperties) => IEdgeSidebarRegistry;
   update: (
     id: string,
-    updater: (config: MapBreakpoint<Omit<EdgeSidebarConfig, 'id' | 'anchor'>>) => void
+    updater: (
+      config: MapBreakpoint<Omit<EdgeSidebarConfig, 'id' | 'anchor'>>
+    ) => void
   ) => void;
-  hide: (id: string, breakpoints: Breakpoint[] | boolean) => void
+  hide: (id: string, breakpoints: Breakpoint[] | boolean) => void;
   getSidebarIds: () => string[];
   getData: () => EdgeSidebarData;
+  debug: () => void
 }

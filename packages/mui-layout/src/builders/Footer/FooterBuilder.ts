@@ -1,13 +1,19 @@
-import { IFooterBuilder } from "../../types"
+import { IFooterBuilder } from '../../types';
 
 export default (): IFooterBuilder => {
-  let id: string
+  let id: string;
   return {
     create: function(footerId: string) {
-      id = footerId
+      id = footerId;
     },
     getData: () => ({
       id,
     }),
-  }
-}
+    debug: () => {
+      if (process.env.NODE_ENV !== 'production') {
+        console.group('Footer:', `"${id}"`);
+        console.groupEnd()
+      }
+    },
+  };
+};
