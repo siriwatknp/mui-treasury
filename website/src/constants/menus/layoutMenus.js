@@ -1,6 +1,6 @@
 export default [
-  { key: 'layout', label: 'Introduction', to: '/layout' },
-  { key: 'core-concept', label: 'Core Concept', to: '/layout/core-concept' },
+  { key: 'layout', label: 'Introduction', to: '/layout/' },
+  { key: 'core-concept', label: 'Core Concept', to: '/layout/core-concept/' },
   {
     key: 'tutorials',
     label: 'Tutorials',
@@ -8,12 +8,12 @@ export default [
       {
         key: 'dashboard-layout',
         label: 'Dashboard Layout',
-        to: '/layout/tutorials/dashboard-layout',
+        to: '/layout/tutorials/dashboard-layout/',
       },
       {
         key: 'blog-layout',
         label: 'Blog Layout',
-        to: '/layout/tutorials/blog-layout',
+        to: '/layout/tutorials/blog-layout/',
       },
     ],
   },
@@ -24,7 +24,12 @@ export default [
       {
         key: 'controlling-sidebar',
         label: 'Controlling Sidebar',
-        to: '/layout/advanced/controlling-sidebar',
+        to: '/layout/advanced/controlling-sidebar/',
+      },
+      {
+        key: 'dynamic-config',
+        label: 'Dynamic Config',
+        to: '/layout/advanced/dynamic-config/',
       },
     ],
   },
@@ -35,32 +40,32 @@ export default [
       {
         key: 'default',
         label: 'Default',
-        to: '/layout/presets/default',
+        to: '/layout/presets/default/',
       },
       {
         key: 'standard',
         label: 'Standard',
-        to: '/layout/presets/standard',
+        to: '/layout/presets/standard/',
       },
       {
         key: 'content-based',
         label: 'Content Based',
-        to: '/layout/presets/content-based',
+        to: '/layout/presets/content-based/',
       },
       {
         key: 'cozy',
         label: 'Cozy',
-        to: '/layout/presets/cozy',
+        to: '/layout/presets/cozy/',
       },
       {
         key: 'fixed',
         label: 'Fixed',
-        to: '/layout/presets/fixed',
+        to: '/layout/presets/fixed/',
       },
       {
         key: 'mui-treasury',
         label: 'MUI Treasury',
-        to: '/layout/presets/mui-treasury',
+        to: '/layout/presets/mui-treasury/',
       },
     ],
   },
