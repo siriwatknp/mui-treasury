@@ -1,9 +1,15 @@
+import { pickNearestBreakpoint } from '../../utils';
 import {
   HeaderConfig,
   HeaderConfigMap,
   IHeaderBuilder,
   IRegistry,
 } from '../../types';
+
+const INITIAL_HEIGHT = {
+  xs: 56,
+  sm: 64,
+};
 
 export default (initialMap: HeaderConfigMap = {}): IHeaderBuilder => {
   let id: string;
@@ -14,7 +20,11 @@ export default (initialMap: HeaderConfigMap = {}): IHeaderBuilder => {
       id = headerId;
       const Registry = (): IRegistry<HeaderConfig> => ({
         registerConfig(breakpoint, config) {
-          map[breakpoint] = { ...config, id: headerId };
+          map[breakpoint] = {
+            initialHeight: pickNearestBreakpoint(INITIAL_HEIGHT, breakpoint),
+            ...config,
+            id: headerId,
+          };
           return this;
         },
       });
