@@ -7,11 +7,10 @@ import {
   IHeaderBuilder,
   IEdgeSidebarBuilder,
   State,
-  IContentBuilder,
   GlobalConfig,
   LayoutData,
-  IFooterBuilder,
   EdgeSidebarConfigMapById,
+  HeaderConfigMap,
 } from '../types';
 import {
   IInsetSidebarBuilder,
@@ -35,29 +34,34 @@ export interface ILayoutBuilder {
   configureInsetSidebar: (
     callback: BuilderCallback<Pick<IInsetSidebarBuilder, 'create'>>
   ) => void;
-  configureContent: (
-    callback: BuilderCallback<Pick<IContentBuilder, 'create'>>
-  ) => void;
-  configureFooter: (
-    callback: BuilderCallback<Pick<IFooterBuilder, 'create'>>
-  ) => void;
   enableAutoCollapse: (sidebarId: string, breakpoint?: Breakpoint) => void;
   getComponentData: () => LayoutData;
   clone: () => {
     edgeSidebar: EdgeSidebarConfigMapById;
   };
   getInitialState: () => State;
+  debug: () => void;
+  getJSON: () => void;
 }
 
-export default (): ILayoutBuilder => {
-  const global: GlobalConfig = {
-    autoCollapse: {},
-  };
-  const header = HeaderBuilder();
-  const edgeSidebar = EdgeSidebarBuilder();
-  const insetSidebar = InsetSidebarBuilder();
+type InitialLayout = {
+  global?: GlobalConfig;
+  header?: HeaderConfigMap;
+  edgeSidebar?: EdgeSidebarConfigMapById;
+  insetSidebar?: InsetSidebarConfigMapById;
+};
+
+export default (initialLayout: InitialLayout = {}): ILayoutBuilder => {
+  const global: GlobalConfig = initialLayout.global || { autoCollapse: {} };
+  const header = HeaderBuilder(initialLayout.header);
+  const edgeSidebar = EdgeSidebarBuilder(initialLayout.edgeSidebar);
+  const insetSidebar = InsetSidebarBuilder(initialLayout.insetSidebar);
   const content = ContentBuilder();
   const footer = FooterBuilder();
+
+  // setup default id
+  content.create('content');
+  footer.create('footer');
 
   return {
     configureHeader(callback) {
@@ -68,12 +72,6 @@ export default (): ILayoutBuilder => {
     },
     configureInsetSidebar(callback) {
       callback(insetSidebar);
-    },
-    configureContent(callback) {
-      callback(content);
-    },
-    configureFooter(callback) {
-      callback(footer);
     },
     enableAutoCollapse(sidebarId, breakpoint = 'md') {
       global.autoCollapse[sidebarId] = breakpoint;
@@ -91,7 +89,11 @@ export default (): ILayoutBuilder => {
       // use this approach as deep clone for now
       JSON.parse(
         JSON.stringify({
+          header: header.getData(),
           edgeSidebar: edgeSidebar.getData().configMapById,
+          insetSidebar: insetSidebar.getData().configMapById,
+          content: content.getData(),
+          footer: footer.getData(),
         })
       ),
     getInitialState: () => {
@@ -105,6 +107,28 @@ export default (): ILayoutBuilder => {
           {}
         ),
       };
+    },
+    debug() {
+      if (process.env.NODE_ENV !== 'production') {
+        header.debug();
+        edgeSidebar.debug();
+        insetSidebar.debug();
+        content.debug();
+        footer.debug();
+      }
+    },
+    getJSON() {
+      console.log(
+        JSON.stringify(
+          {
+            header: header.getData(),
+            edgeSidebar: edgeSidebar.getData().configMapById,
+            insetSidebar: insetSidebar.getData().configMapById,
+          },
+          null,
+          2
+        )
+      );
     },
   };
 };
