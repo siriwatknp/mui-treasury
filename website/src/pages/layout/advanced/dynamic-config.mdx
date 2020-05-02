@@ -42,12 +42,8 @@ const Dashboard = () => {
   scheme.configureEdgeSidebar(builder => {
     builder
       .create('unique_id', { anchor: 'left' })
-      .registerTemporaryConfig('xs', {
-        anchor: 'left',
-        width: 'auto', // 'auto' is only valid for temporary variant
-      })
-      .registerPermanentConfig('md', {
-        width: 256, // px, (%, rem, em is compatible)
+      .registerPermanentConfig('xs', {
+        width: 200, // px, (%, rem, em is compatible)
         collapsible: true,
         collapsedWidth: 64,
       });
@@ -84,11 +80,7 @@ const Dashboard = () => {
   scheme.configureEdgeSidebar(builder => {
     builder
       .create('unique_id', { anchor: 'left' })
-      .registerTemporaryConfig('xs', {
-        anchor: 'left',
-        width: 'auto',
-      })
-      .registerPermanentConfig('md', {
+      .registerPermanentConfig('xs', {
         // highlight-next-line
         width: width, // use width from state
         collapsible: true,
@@ -130,3 +122,11 @@ Finally, we will get the result like this (try slide the slider and you will see
 <CodeSandbox src="https://codesandbox.io/embed/dynamic-config-step-1-lrg2y?fontsize=14&hidenavigation=1&theme=dark&view=preview" />
 
 **Done!** Feel free to share your use case to me and I will put it in this website to help other people, thanks.
+
+<PageNavigation
+  prev={{ text: 'Controlling sidebar', to: '/layout/advanced/controlling-sidebar/' }}
+  next={{
+    text: 'Hide sidebar conditionally',
+    to: '/layout/advanced/hide-sidebar/',
+  }}
+/>

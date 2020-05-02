@@ -15,10 +15,6 @@ const useStyles = makeStyles(({ breakpoints }) => ({
       marginLeft: 'calc(-36vw + 350px)',
       width: '72vw',
     },
-    [breakpoints.up('lg')]: {
-      marginLeft: 'calc(-40vw + 350px)',
-      width: '80vw',
-    },
   },
 }));
 

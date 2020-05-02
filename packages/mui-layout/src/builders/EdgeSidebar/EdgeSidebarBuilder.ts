@@ -77,6 +77,9 @@ export default (): IEdgeSidebarBuilder => {
       });
       return Registry();
     },
+    get(id) {
+      return this.create(id, {})
+    },
     update(id, updater) {
       if (mapById[id]) {
         updater(mapById[id]);
