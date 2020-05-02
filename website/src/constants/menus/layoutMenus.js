@@ -36,6 +36,11 @@ export default [
         label: 'Hide Sidebar',
         to: '/layout/advanced/hide-sidebar/',
       },
+      {
+        key: 'mutate-preset',
+        label: 'Mutate Preset',
+        to: '/layout/advanced/mutate-preset/',
+      },
     ],
   },
   {
