@@ -1,5 +1,5 @@
-/* eslint-disable no-use-before-define,react/no-array-index-key */
 import React from 'react';
+import styled from 'styled-components';
 import Box from '@material-ui/core/Box';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,16 +10,7 @@ import {
   createMuiTheme,
   responsiveFontSizes,
 } from '@material-ui/core/styles';
-import {
-  Root,
-  Header,
-  Content,
-  Sidebar,
-  SecondaryInsetSidebar,
-  InsetContainer,
-  Footer,
-  ConfigGenerator,
-} from '@mui-treasury/layout';
+import Layout, { getLayoutComponents } from '@mui-treasury/layout';
 import {
   MessengerSearch,
   ChatsHeader,
@@ -30,6 +21,17 @@ import {
   ChatDialog,
 } from '@mui-treasury/mockup/brands/messenger';
 
+const {
+  Root,
+  Header,
+  Content,
+  DrawerSidebar,
+  FullScreen,
+  InsetContainer,
+  InsetSidebar,
+  InsetFooter,
+} = getLayoutComponents(styled);
+
 const useStyles = makeStyles(() => ({
   header: {
     boxShadow: '0 1px 2px 0 rgba(0, 0, 0, .10)',
@@ -38,25 +40,7 @@ const useStyles = makeStyles(() => ({
   insetBody: {
     borderLeft: '1px solid rgba(0, 0, 0, 0.08)',
     overflowY: 'auto',
-  },
-  insetDrawerPaper: {
-    width: '100%',
-    maxWidth: 300,
-  },
-  contentContainer: {
-    flex: 1,
-    minHeight: 0,
-  },
-  content: {
-    maxHeight: '100%',
-    overflowY: 'auto',
-  },
-  footer: {
-    height: 52,
-    display: 'flex',
-    alignItems: 'center',
-    border: 'none',
-    padding: '0 8px',
+    backgroundColor: '#fff',
   },
   edit: {
     backgroundColor: 'rgba(0,0,0,0.04)',
@@ -68,6 +52,9 @@ const theme = responsiveFontSizes(
     palette: {
       primary: {
         main: 'rgb(0, 153, 255)',
+      },
+      background: {
+        default: '#fff',
       },
     },
     typography: {
@@ -89,43 +76,45 @@ const theme = responsiveFontSizes(
   })
 );
 
-const config = ConfigGenerator({ addOnsIncluded: true });
-config.addOns.setCollapsedBreakpoint('sm');
-config.addOns.setSecondaryInsetHiddenBreakpoint('xs');
-config.primarySidebar.setWidth('25%');
-config.primarySidebar.setVariant('permanent');
-config.primarySidebar.setCollapsible(true);
-config.primarySidebar.setCollapsedWidth(80);
-config.header.setPosition('relative');
-config.header.setOffsetHeight(60);
-config.header.setClipped(false);
-config.header.setSecondaryClipped(false);
-
-config.setSecondarySidebarToInset();
-config.footer.setSecondaryInsetBehavior('fit');
-config.secondarySidebar.setWidth('33%');
-config.secondarySidebar.setInsetProps({ position: 'absolute' });
-
 const MessengerDemo = () => {
   const styles = useStyles();
+  const scheme = Layout();
+  scheme.configureHeader(builder => {
+    builder.create('appHeader').registerConfig('xs', {
+      position: 'relative',
+      initialHeight: 60,
+    });
+  });
+  scheme.configureEdgeSidebar(builder => {
+    builder
+      .create('primarySidebar', { anchor: 'left' })
+      .registerPermanentConfig('xs', {
+        width: '25%',
+        collapsible: true,
+        collapsedWidth: 80,
+      });
+  });
+  scheme.enableAutoCollapse('primarySidebar', 'sm');
+  scheme.configureInsetSidebar(builder => {
+    builder
+      .create('secondarySidebar', { anchor: 'right' })
+      .registerAbsoluteConfig('sm', {
+        width: '33%',
+      });
+  });
   return (
-    <Box
-      height={'100vh'}
-      display={'flex'}
-      flexDirection={'column'}
-      overflow={'hidden'}
-    >
-      <Root theme={theme} config={config.get()}>
-        {({ collapsed }) => (
+    <FullScreen>
+      <Root theme={theme} scheme={scheme}>
+        {({ state: { sidebar } }) => (
           <>
             <CssBaseline />
             <Header className={styles.header}>
-              <Toolbar disableGutters className={styles.toolbar}>
+              <Toolbar disableGutters>
                 <ConversationHead />
               </Toolbar>
             </Header>
-            <Sidebar>
-              {collapsed ? (
+            <DrawerSidebar sidebarId={'primarySidebar'}>
+              {sidebar.primarySidebar.collapsed ? (
                 <Box textAlign={'center'} my={1}>
                   <IconButton className={styles.edit}>
                     <Edit />
@@ -139,29 +128,32 @@ const MessengerDemo = () => {
                   </Box>
                 </>
               )}
-              <ChatList concise={collapsed} />
-            </Sidebar>
-            <InsetContainer className={styles.contentContainer}>
-              <Content className={styles.content}>
-                <ChatDialog />
-              </Content>
-              <SecondaryInsetSidebar
-                className={styles.insetSidebar}
-                BodyProps={{ className: styles.insetBody }}
-                PaperProps={{ classes: { root: styles.insetDrawerPaper } }}
+              <ChatList concise={sidebar.primarySidebar.collapsed} />
+            </DrawerSidebar>
+            <Content>
+              <InsetContainer
+                disableGutters
+                rightSidebar={
+                  <InsetSidebar
+                    sidebarId={'secondarySidebar'}
+                    classes={{ paper: styles.insetBody }}
+                  >
+                    <ChatSettings />
+                  </InsetSidebar>
+                }
               >
-                <ChatSettings />
-              </SecondaryInsetSidebar>
-            </InsetContainer>
-            <InsetContainer>
-              <Footer className={styles.footer}>
-                <ChatBar concise={collapsed} />
-              </Footer>
-            </InsetContainer>
+                <ChatDialog />
+              </InsetContainer>
+            </Content>
+            <InsetFooter ContainerProps={{ disableGutters: true }}>
+              <Box display={'flex'} alignItems={'center'} p={1}>
+                <ChatBar concise={sidebar.primarySidebar.collapsed} />
+              </Box>
+            </InsetFooter>
           </>
         )}
       </Root>
-    </Box>
+    </FullScreen>
   );
 };
 

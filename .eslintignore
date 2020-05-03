@@ -1,3 +1,5 @@
+# don't ever lint node_modules
+node_modules
 /stories/*
 /dist/*
 /**/*.test.js

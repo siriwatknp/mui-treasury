@@ -1,5 +1,6 @@
 export default [
-  { key: 'layout', label: 'Introduction', to: '/layout' },
+  { key: 'layout', label: 'Introduction', to: '/layout/' },
+  { key: 'core-concept', label: 'Core Concept', to: '/layout/core-concept/' },
   {
     key: 'tutorials',
     label: 'Tutorials',
@@ -16,7 +17,32 @@ export default [
       },
     ],
   },
-  { key: 'builder', label: 'Builder', to: '/layout/builder' },
+  {
+    key: 'advanced',
+    label: 'Advanced',
+    subMenus: [
+      {
+        key: 'controlling-sidebar',
+        label: 'Controlling Sidebar',
+        to: '/layout/advanced/controlling-sidebar/',
+      },
+      {
+        key: 'dynamic-config',
+        label: 'Dynamic Config',
+        to: '/layout/advanced/dynamic-config/',
+      },
+      {
+        key: 'hide-sidebar',
+        label: 'Hide Sidebar',
+        to: '/layout/advanced/hide-sidebar/',
+      },
+      {
+        key: 'mutate-preset',
+        label: 'Mutate Preset',
+        to: '/layout/advanced/mutate-preset/',
+      },
+    ],
+  },
   {
     key: 'presets',
     label: 'Presets',
@@ -24,68 +50,68 @@ export default [
       {
         key: 'default',
         label: 'Default',
-        to: '/layout/presets/default',
+        to: '/layout/presets/default/',
       },
       {
         key: 'standard',
         label: 'Standard',
-        to: '/layout/presets/standard',
+        to: '/layout/presets/standard/',
       },
       {
         key: 'content-based',
         label: 'Content Based',
-        to: '/layout/presets/content-based',
+        to: '/layout/presets/content-based/',
       },
       {
         key: 'cozy',
         label: 'Cozy',
-        to: '/layout/presets/cozy',
+        to: '/layout/presets/cozy/',
       },
       {
         key: 'fixed',
         label: 'Fixed',
-        to: '/layout/presets/fixed',
+        to: '/layout/presets/fixed/',
       },
       {
         key: 'mui-treasury',
         label: 'MUI Treasury',
-        to: '/layout/presets/mui-treasury',
+        to: '/layout/presets/mui-treasury/',
       },
     ],
   },
-  {
-    key: 'basic-examples',
-    label: 'Basic Examples',
-    subMenus: [
-      {
-        key: 'custom-theme',
-        label: 'Custom theme',
-        to: '/layout/basic-examples/custom-theme?bgColor=d4b397',
-      },
-      {
-        key: 'custom-styles',
-        label: 'Custom styles',
-        to:
-          '/layout/basic-examples/custom-styles?bgColor=213E9B&accent=rgb(17, 254, 220)&dark=true',
-      },
-      {
-        key: 'control-sidebar',
-        label: 'Control Sidebar',
-        to:
-          '/layout/basic-examples/control-sidebar?bgColor=e9e9e9&primary=36338E&accent=ff9600',
-      },
-      {
-        key: 'secondary-sidebar',
-        label: '2nd Sidebar',
-        to: '/layout/basic-examples/secondary-sidebar',
-      },
-      {
-        key: 'inset-sidebar',
-        label: 'Inset Sidebar',
-        to: '/layout/basic-examples/inset-sidebar',
-      },
-    ],
-  },
+  // {
+  //   key: 'basic-examples',
+  //   label: 'Basic Examples',
+  //   subMenus: [
+  //     {
+  //       key: 'custom-theme',
+  //       label: 'Custom theme',
+  //       to: '/layout/basic-examples/custom-theme?bgColor=d4b397',
+  //     },
+  //     {
+  //       key: 'custom-styles',
+  //       label: 'Custom styles',
+  //       to:
+  //         '/layout/basic-examples/custom-styles?bgColor=213E9B&accent=rgb(17, 254, 220)&dark=true',
+  //     },
+  //     {
+  //       key: 'control-sidebar',
+  //       label: 'Control Sidebar',
+  //       to:
+  //         '/layout/basic-examples/control-sidebar?bgColor=e9e9e9&primary=36338E&accent=ff9600',
+  //     },
+  //     {
+  //       key: 'secondary-sidebar',
+  //       label: '2nd Sidebar',
+  //       to: '/layout/basic-examples/secondary-sidebar',
+  //     },
+  //     {
+  //       key: 'inset-sidebar',
+  //       label: 'Inset Sidebar',
+  //       to: '/layout/basic-examples/inset-sidebar',
+  //     },
+  //   ],
+  // },
   {
     key: 'clones',
     label: 'Clones',
@@ -104,6 +130,29 @@ export default [
         key: 'shopping-cart',
         label: 'Shopping Cart',
         to: '/layout/clones/shopping-cart?bgColor=EAEEF1',
+      },
+    ],
+  },
+  {
+    key: 'v3',
+    label: 'v3.3.4',
+    subMenus: [
+      { key: 'builder-v3', label: 'Layout builder', to: '/layout/v3/builder' },
+      {
+        key: 'tutorials-v3',
+        label: 'Tutorial',
+        subMenus: [
+          {
+            key: 'dashboard-layout-v3',
+            label: 'Dashboard Layout',
+            to: '/layout/v3/tutorials/dashboard-layout-v3/',
+          },
+          {
+            key: 'blog-layout-v3',
+            label: 'Blog Layout',
+            to: '/layout/v3/tutorials/blog-layout-v3/',
+          },
+        ],
       },
     ],
   },

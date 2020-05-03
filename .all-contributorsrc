@@ -133,6 +133,33 @@
         "doc",
         "maintenance"
       ]
+    },
+    {
+      "login": "aress31",
+      "name": "Alexandre Teyar",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/11601622?v=4",
+      "profile": "https://www.linkedin.com/in/alexandre-teyar/",
+      "contributions": [
+        "a11y"
+      ]
+    },
+    {
+      "login": "maxwassiljew",
+      "name": "Max Wassiljew",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/27824730?v=4",
+      "profile": "https://github.com/maxwassiljew",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "TsutomuNakamura",
+      "name": "tsutomu",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/10674169?v=4",
+      "profile": "https://qiita.com/TsutomuNakamura",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

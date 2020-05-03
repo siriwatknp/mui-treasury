@@ -85,6 +85,11 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/venegasalejandro"><img src="https://avatars3.githubusercontent.com/u/8170561?v=4" width="100px;" alt=""/><br /><sub><b>Alejandro Venegas</b></sub></a><br /><a href="https://github.com/siriwatknp/mui-treasury/commits?author=venegasalejandro" title="Code">💻</a></td>
     <td align="center"><a href="https://barthicus.github.io"><img src="https://avatars2.githubusercontent.com/u/6414011?v=4" width="100px;" alt=""/><br /><sub><b>Bartosz Podgruszecki</b></sub></a><br /><a href="#maintenance-barthicus" title="Maintenance">🚧</a></td>
     <td align="center"><a href="https://www.hackerrank.com/pacurtin"><img src="https://avatars2.githubusercontent.com/u/17761806?v=4" width="100px;" alt=""/><br /><sub><b>Paddy</b></sub></a><br /><a href="https://github.com/siriwatknp/mui-treasury/commits?author=pacurtin" title="Documentation">📖</a> <a href="#maintenance-pacurtin" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/alexandre-teyar/"><img src="https://avatars3.githubusercontent.com/u/11601622?v=4" width="100px;" alt=""/><br /><sub><b>Alexandre Teyar</b></sub></a><br /><a href="#a11y-aress31" title="Accessibility">️️️️♿️</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/maxwassiljew"><img src="https://avatars0.githubusercontent.com/u/27824730?v=4" width="100px;" alt=""/><br /><sub><b>Max Wassiljew</b></sub></a><br /><a href="https://github.com/siriwatknp/mui-treasury/commits?author=maxwassiljew" title="Code">💻</a></td>
+    <td align="center"><a href="https://qiita.com/TsutomuNakamura"><img src="https://avatars3.githubusercontent.com/u/10674169?v=4" width="100px;" alt=""/><br /><sub><b>tsutomu</b></sub></a><br /><a href="https://github.com/siriwatknp/mui-treasury/commits?author=TsutomuNakamura" title="Code">💻</a></td>
   </tr>
 </table>
 

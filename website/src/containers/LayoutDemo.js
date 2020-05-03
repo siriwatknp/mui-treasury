@@ -9,9 +9,9 @@ const LayoutDemo = ({ Demo }) => {
   return (
     <>
       <BrowserIFrame>
-        {({ window, container }) => {
+        {({ window, document }) => {
           return (
-            <WindowProvider value={{ iWindow: window, iBody: container }}>
+            <WindowProvider value={{ iWindow: window, iDocument: document }}>
               <Demo />
             </WindowProvider>
           );

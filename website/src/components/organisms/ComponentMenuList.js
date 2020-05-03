@@ -53,7 +53,7 @@ const useStyles = makeStyles(({ palette }) => {
 });
 
 const ComponentMenuList = ({ menus, getOpenKeys }) => {
-  const { setOpened: setSidebarOpened } = useLayoutCtx();
+  const { setOpen: setSidebarOpen } = useLayoutCtx();
   const styles = useStyles();
   return (
     <Location>
@@ -76,7 +76,7 @@ const ComponentMenuList = ({ menus, getOpenKeys }) => {
                 to,
                 onClick: () => {
                   onClick();
-                  setSidebarOpened(false);
+                  setSidebarOpen('primarySidebar', false);
                 },
               }),
               className: cx(
