@@ -1,0 +1,61 @@
+---
+category: API REFERENCE
+title: Mui Layout API
+template: DocTemplate
+---
+
+`Layout` is the entry point to build your layout. If you use ES6 with npm, you can write `import Layout from '@mui-treasury/layout'`.
+
+---
+
+## Overview
+
+`Layout` from @mui-treasury/layout is a function that return LayoutBuilder interface.
+
+```js
+import Layout from '@mui-treasury/layout'
+
+const scheme = Layout()
+```
+
+`scheme` is a layout builder that can configure different part of layout such as `Header`, `EdgeSidebar`, `InsetSidebar` and many more.
+
+### Layout builder API
+
+- [scheme.configureHeader](/layout/api-reference/header-builder) : function that provide `Header` builder to a received callback.
+---
+- [scheme.configureEdgeSidebar](/layout/api-reference/edge-sidebar-builder) : function that provide `EdgeSidebar` builder to a received callback.
+---
+- [scheme.configureInsetSidebar](/layout/api-reference/inset-sidebar-builder) : function that provide `InsetSidebar` builder to a received callback.
+---
+- [scheme.enableAutoCollapse](/layout/api-reference/auto-collapse) : enable auto collapse at a breakpoint for specific sidebar.
+---
+- [scheme.clone](/layout/api-reference/auto-collapse) : get a snapshot of layout config at the time it is called.
+---
+- [scheme.getJSON](/layout/api-reference/get-json) : `console.log` a JSON object for setting up layout from [config file]()
+---
+- [scheme.debug](/layout/api-reference/debug) : debug current layout config, log to console as table.
+---
+
+For `Content` and `Footer`, there is no need to configure because it is auto generated and there is no promising feature for them at this point. So to make it simple,
+you can just import the components and that's it.
+
+```jsx
+import styled from 'styled-components';
+import { getLayoutComponents } from '@mui-treasury/layout';
+
+const { Root, Content, Footer } = getLayoutComponents(styled)
+
+const App = () => {
+  return (
+    <Root scheme={yourScheme}>
+      <Content>...</Content>
+      <Footer>...</Footer>
+    </Root>
+  )
+}
+```
+
+<PageNavigation
+  next={{ text: 'Header Builder', to: '/layout/api-reference/header-builder/' }}
+/>
