@@ -44,6 +44,38 @@ export default [
     ],
   },
   {
+    key: 'api-reference',
+    label: 'API Reference',
+    subMenus: [
+      {
+        key: 'builders',
+        label: 'Builders',
+        subMenus: [
+          {
+            key: 'layout-builder',
+            label: 'Layout Builder',
+            to: '/layout/api-reference/layout-builder',
+          },
+          {
+            key: 'header-builder',
+            label: 'Header Builder',
+            to: '/layout/api-reference/header-builder',
+          },
+          {
+            key: 'edge-sidebar-builder',
+            label: 'EdgeSidebar Builder',
+            to: '/layout/api-reference/edge-sidebar-builder',
+          },
+          {
+            key: 'inset-sidebar-builder',
+            label: 'InsetSidebar Builder',
+            to: '/layout/api-reference/inset-sidebar-builder',
+          }
+        ]
+      }
+    ]
+  },
+  {
     key: 'presets',
     label: 'Presets',
     subMenus: [
@@ -157,3 +189,4 @@ export default [
     ],
   },
 ];
+
