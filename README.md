@@ -84,7 +84,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/tokdaniel"><img src="https://avatars1.githubusercontent.com/u/7677603?v=4" width="100px;" alt=""/><br /><sub><b>tokdaniel</b></sub></a><br /><a href="https://github.com/siriwatknp/mui-treasury/issues?q=author%3Atokdaniel" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/venegasalejandro"><img src="https://avatars3.githubusercontent.com/u/8170561?v=4" width="100px;" alt=""/><br /><sub><b>Alejandro Venegas</b></sub></a><br /><a href="https://github.com/siriwatknp/mui-treasury/commits?author=venegasalejandro" title="Code">💻</a></td>
     <td align="center"><a href="https://barthicus.github.io"><img src="https://avatars2.githubusercontent.com/u/6414011?v=4" width="100px;" alt=""/><br /><sub><b>Bartosz Podgruszecki</b></sub></a><br /><a href="#maintenance-barthicus" title="Maintenance">🚧</a></td>
-    <td align="center"><a href="https://www.hackerrank.com/pacurtin"><img src="https://avatars2.githubusercontent.com/u/17761806?v=4" width="100px;" alt=""/><br /><sub><b>Paddy</b></sub></a><br /><a href="https://github.com/siriwatknp/mui-treasury/commits?author=pacurtin" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://www.hackerrank.com/pacurtin"><img src="https://avatars2.githubusercontent.com/u/17761806?v=4" width="100px;" alt=""/><br /><sub><b>Paddy</b></sub></a><br /><a href="https://github.com/siriwatknp/mui-treasury/commits?author=pacurtin" title="Documentation">📖</a> <a href="#maintenance-pacurtin" title="Maintenance">🚧</a></td>
   </tr>
 </table>
 
