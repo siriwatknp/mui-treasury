@@ -12,6 +12,17 @@ template: DocTemplate
 
 `Layout` from @mui-treasury/layout is a function that return LayoutBuilder interface.
 
+**_Interface_**
+
+```typescript
+type Layout = (config?: LayoutConfig) => ILayoutBuilder;
+```
+
+`Layout` can accept initial config, this is useful when you want to use config file like JSON for different environments.
+It is recommended to use configuration API below and then call `scheme.getJSON` to generate JSON file.
+
+**_Usage Example_**
+
 ```js
 import Layout from '@mui-treasury/layout'
 
@@ -20,7 +31,7 @@ const scheme = Layout()
 
 `scheme` is a layout builder that can configure different part of layout such as `Header`, `EdgeSidebar`, `InsetSidebar` and many more.
 
-### Layout builder API
+## Layout builder API
 
 - [scheme.configureHeader](/layout/api-reference/header-builder) : function that provide `Header` builder to a received callback.
 ---
@@ -28,13 +39,13 @@ const scheme = Layout()
 ---
 - [scheme.configureInsetSidebar](/layout/api-reference/inset-sidebar-builder) : function that provide `InsetSidebar` builder to a received callback.
 ---
-- [scheme.enableAutoCollapse](/layout/api-reference/auto-collapse) : enable auto collapse at a breakpoint for specific sidebar.
+- [scheme.enableAutoCollapse](#enableautocollapse) : enable auto collapse at a breakpoint for specific sidebar.
 ---
-- [scheme.clone](/layout/api-reference/auto-collapse) : get a snapshot of layout config at the time it is called.
+- [scheme.clone](#clone) : get a snapshot of layout config at the time it is called.
 ---
-- [scheme.getJSON](/layout/api-reference/get-json) : `console.log` a JSON object for setting up layout from [config file]()
+- [scheme.getJSON](#getjson) : `console.log` a JSON object for setting up layout from [config file]()
 ---
-- [scheme.debug](/layout/api-reference/debug) : debug current layout config, log to console as table.
+- [scheme.debug](#debug) : debug current layout config, log to console as table.
 ---
 
 For `Content` and `Footer`, there is no need to configure because it is auto generated and there is no promising feature for them at this point. So to make it simple,
@@ -55,6 +66,16 @@ const App = () => {
   )
 }
 ```
+
+---
+
+### enableAutoCollapse
+
+### clone
+
+### getJSON
+
+### debug
 
 <PageNavigation
   next={{ text: 'Header Builder', to: '/layout/api-reference/header-builder/' }}
