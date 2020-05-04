@@ -22,7 +22,7 @@ const {
   Header,
   Content,
   DrawerSidebar,
-  FullScreen,
+  Fullscreen,
   InsetFooter,
   InsetSidebar,
   InsetContainer,
@@ -127,7 +127,7 @@ const ShoppingCartDemo = () => {
       })
   })
   return (
-    <FullScreen>
+    <Fullscreen>
       <Root theme={dailyShoppingTheme} scheme={scheme}>
         {({ setOpen, state: { sidebar } }) => {
           const { open } = sidebar.edgeSidebar
@@ -177,7 +177,7 @@ const ShoppingCartDemo = () => {
           )
         }}
       </Root>
-    </FullScreen>
+    </Fullscreen>
   )
 }
 

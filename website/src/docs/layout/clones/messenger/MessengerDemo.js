@@ -26,7 +26,7 @@ const {
   Header,
   Content,
   DrawerSidebar,
-  FullScreen,
+  Fullscreen,
   InsetContainer,
   InsetSidebar,
   InsetFooter,
@@ -103,7 +103,7 @@ const MessengerDemo = () => {
       });
   });
   return (
-    <FullScreen>
+    <Fullscreen>
       <Root theme={theme} scheme={scheme}>
         {({ state: { sidebar } }) => (
           <>
@@ -153,7 +153,7 @@ const MessengerDemo = () => {
           </>
         )}
       </Root>
-    </FullScreen>
+    </Fullscreen>
   );
 };
 

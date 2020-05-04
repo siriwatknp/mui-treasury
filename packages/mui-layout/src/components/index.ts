@@ -6,7 +6,7 @@ import SwipeableDrawer, {
   SwipeableDrawerProps,
 } from '@material-ui/core/SwipeableDrawer';
 import Root from './Root';
-import FullScreen from './FullScreen';
+import Fullscreen from './Fullscreen';
 import InsetContainer from './InsetContainer';
 import SidebarContent from './SidebarContent';
 import { generateStyledProxyCreator } from './Shared/StyledProxy';
@@ -55,7 +55,7 @@ export const getLayoutComponents = (styled: any) => {
     SidebarTrigger,
     DrawerSidebar,
     Footer,
-    FullScreen,
+    Fullscreen,
     InsetAvoidingView,
     InsetContainer,
     InsetFooter,
@@ -68,5 +68,5 @@ export const getLayoutComponents = (styled: any) => {
 
 export { default as Root } from './Root';
 export { default as InsetContainer } from './InsetContainer';
-export { default as FullScreen } from './FullScreen';
+export { default as Fullscreen } from './Fullscreen';
 export { default as SidebarContent } from './SidebarContent';
