@@ -72,6 +72,78 @@ export default [
             to: '/layout/api-reference/inset-sidebar-builder',
           }
         ]
+      },
+      {
+        key: 'layout-components',
+        label: 'Layout components',
+        subMenus: [
+          {
+            key: 'root',
+            label: 'Root',
+            to: '/layout/api-reference/root'
+          },
+          {
+            key: 'header',
+            label: 'Header',
+            to: '/layout/api-reference/header'
+          },
+          {
+            key: 'drawer-sidebar',
+            label: 'Drawer Sidebar',
+            to: '/layout/api-reference/drawer-sidebar'
+          },
+          {
+            key: 'swipeable-sidebar',
+            label: 'Swipeable Sidebar',
+            to: '/layout/api-reference/swipeable-sidebar'
+          },
+          {
+            key: 'inset-sidebar',
+            label: 'Inset Sidebar',
+            to: '/layout/api-reference/inset-sidebar'
+          },
+          {
+            key: 'footer',
+            label: 'Footer',
+            to: '/layout/api-reference/footer'
+          },
+        ]
+      },
+      {
+        key: 'supporting-components',
+        label: 'Supporting components',
+        subMenus: [
+          {
+            key: 'sidebar-trigger',
+            label: 'Sidebar Trigger',
+            to: '/layout/api-reference/sidebar-trigger'
+          },
+          {
+            key: 'collapse-btn',
+            label: 'Collapse Button',
+            to: '/layout/api-reference/collapse-btn'
+          },
+          {
+            key: 'fullscreen',
+            label: 'Fullscreen',
+            to: '/layout/api-reference/fullscreen'
+          },
+          {
+            key: 'inset-avoiding-view',
+            label: 'Inset Avoiding View',
+            to: '/layout/api-reference/inset-avoiding-view'
+          },
+          {
+            key: 'inset-container',
+            label: 'Inset Container',
+            to: '/layout/api-reference/inset-container'
+          },
+          {
+            key: 'inset-footer',
+            label: 'Inset Footer',
+            to: '/layout/api-reference/inset-footer'
+          },
+        ]
       }
     ]
   },

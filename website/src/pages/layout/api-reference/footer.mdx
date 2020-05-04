@@ -1,0 +1,37 @@
+---
+category: API REFERENCE
+title: Footer
+template: DocTemplate
+---
+
+## Usage example
+
+```jsx
+import styled from 'styled-components'
+import Layout, { getLayoutComponents } from '@mui-treasury/layout';
+
+const { Root, Footer } = getLayoutComponents(styled)
+
+cosnt scheme = Layout()
+
+const App = () => {
+  return (
+    <Root scheme={scheme}>
+      <Footer>footer</Footer>
+    </Root>
+  )
+}
+```
+
+## Props
+
+any props will be sent to `<footer />`
+
+## Styling
+
+use `className` instead of `classes`
+
+---
+
+**Related components**
+- [InsetFooter](/layout/api-reference/inset-footer)
