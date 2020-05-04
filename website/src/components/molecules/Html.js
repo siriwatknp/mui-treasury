@@ -6,6 +6,7 @@ import SourceCopier from 'components/atoms/SourceCopier';
 
 const useStyles = makeStyles(() => ({
   div: {
+    paddingLeft: '1rem',
     '& > p': {
       margin: 0,
     },

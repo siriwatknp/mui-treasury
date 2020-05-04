@@ -4,7 +4,7 @@ import { createHeaderOffset } from '../HeaderOffset';
 import { useLayoutCtx } from '../../core';
 import { createBreakpointStyles } from '../../utils';
 import ContentCompiler from '../../compilers/ContentCompiler';
-import { useFullScreenCtx } from '../../core/Context/FullScreenContext';
+import { useFullscreenCtx } from '../../core/Context/FullscreenContext';
 import styledProxy from '../Shared/StyledProxy';
 
 const StyledMain = styledProxy('main');
@@ -22,14 +22,14 @@ export const createContent = (StyledComponent = StyledMain, StyledDiv = Div) => 
       ContentCompiler(state, data.edgeSidebar).getResultStyle(data.content.id),
       breakpoints
     );
-    const isFullScreen = useFullScreenCtx();
+    const isFullscreen = useFullscreenCtx();
     return (
       <StyledComponent
         {...props}
         styles={{
           transition: 'all 300ms cubic-bezier(0.0, 0, 0.2, 1) 0ms',
           ...styles,
-          ...(isFullScreen && { flexGrow: 1, minHeight: 0, display: 'flex' }),
+          ...(isFullscreen && { flexGrow: 1, minHeight: 0, display: 'flex' }),
         }}
       >
         <HeaderOffset />
