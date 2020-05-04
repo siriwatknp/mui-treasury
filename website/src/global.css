@@ -24,6 +24,10 @@
   }
 }
 
+li > .gatsby-highlight {
+  margin-top: 0.75rem;
+}
+
 .gatsby-highlight code {
   color: #ddd;
 }

@@ -57,15 +57,33 @@ const getLayoutV3Handler = () => {
   };
 };
 
+const getLayoutPresetHandler = () => {
+  return {
+    pattern: /\/layout\/presets.*/g,
+    sidebarMenus: LAYOUT_MENUS,
+    getOpenKeys: () => [
+      'presets',
+    ],
+  };
+};
+
+const getLayoutApiHandler = () => {
+  return {
+    pattern: /\/layout\/api-reference.*/g,
+    sidebarMenus: LAYOUT_MENUS,
+    getOpenKeys: () => [
+      'api-reference',
+      'builders',
+      'layout-components',
+    ],
+  };
+};
+
 const getLayoutHandler = () => {
   return {
     pattern: /\/layout.*/g,
     sidebarMenus: LAYOUT_MENUS,
-    parseConfig: c => {
-      if (c && c.lg) {
-        c.lg.width = 208;
-      }
-    },
+    parseConfig: () => {},
     getOpenKeys: () => [
       'tutorials',
       'advanced',
@@ -108,7 +126,9 @@ const getPathValue = (pathname, key) =>
       getStylesHandler(),
       getComponentHandler(),
       getLayoutDevelop(),
+      getLayoutPresetHandler(),
       getLayoutV3Handler(),
+      getLayoutApiHandler(),
       getLayoutHandler(),
       getFallbackHandler(),
     ],
