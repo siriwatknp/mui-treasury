@@ -12,7 +12,7 @@ const useStyles = makeStyles(({ breakpoints }) => ({
     flexWrap: 'wrap',
   },
   root: {
-    minWidth: 160,
+    minWidth: '48%',
     padding: '0 1rem 0.25rem',
     borderRadius: 4,
     border: '1px solid',
