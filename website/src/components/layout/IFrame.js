@@ -39,7 +39,7 @@ function IFrame(props) {
   }, []);
 
   const onContentDidMount = () => {
-    const head = instanceRef.current.contentDocument.head;
+    const head = instanceRef.current.contentWindow['demo-frame-jss']
     const injectFirstNode = instanceRef.current.contentDocument.createComment(
       'mui-inject-first'
     );
@@ -75,7 +75,7 @@ function IFrame(props) {
         {state.ready ? (
           <StylesProvider jss={state.jss} sheetsManager={state.sheetsManager}>
             <StyleSheetManager
-              target={instanceRef.current.contentDocument.head}
+              target={instanceRef.current.contentWindow['demo-frame-jss']}
             >
               {typeof children === 'function'
                 ? children({
