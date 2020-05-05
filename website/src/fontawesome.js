@@ -5,6 +5,9 @@ import {
   faFacebookF,
   faFacebook,
 } from '@fortawesome/free-brands-svg-icons';
+import {
+  faChevronDown
+} from '@fortawesome/free-solid-svg-icons'
 // import {
 //   faFighterJet,
 //   faDiceD8,
@@ -26,5 +29,6 @@ library.add(
   faFacebook,
   faTwitter,
   faGithub,
-  faFacebookF
+  faFacebookF,
+  faChevronDown
 );

@@ -14,6 +14,7 @@ import { customComponents as rowToggleStyles } from '../../docs/styles/rowToggle
 import { customComponents as switchToggleStyles } from '../../docs/styles/switchToggle';
 import { customComponents as flexStyles } from '../../docs/styles/flex';
 import { customComponents as shadowStyles } from '../../docs/styles/shadow';
+import { customComponents as selectStyles } from '../../docs/styles/select';
 import { customComponents as switchStyles } from '../../docs/styles/switch';
 import { customComponents as checkboxStyles } from '../../docs/styles/checkbox';
 import { customComponents as radioStyles } from '../../docs/styles/radio';
@@ -88,6 +89,12 @@ export default [
         label: 'Text Field',
         total: textFieldStyles.length,
         to: '/styles/text-field',
+      },
+      {
+        key: 'select',
+        label: 'Select',
+        total: selectStyles.length,
+        to: '/styles/select',
       },
       {
         key: 'switch',

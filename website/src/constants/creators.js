@@ -21,3 +21,9 @@ export const punnSiriphanthong = {
   name: 'Punn Siriphanthong',
   link: 'https://p-siriphanthong.github.io/',
 };
+
+export const paddy = {
+  face: 'https://avatars2.githubusercontent.com/u/17761806?v=4',
+  name: 'Paddy Curtin',
+  link: 'https://amplifywebpro.com/',
+};
