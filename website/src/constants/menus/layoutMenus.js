@@ -44,6 +44,17 @@ export default [
     ],
   },
   {
+    key: 'layout-feature',
+    label: 'Features',
+    subMenus: [
+      {
+        key: 'persistent-behavior',
+        label: 'Persistent behavior',
+        to: '/layout/features/persistent-behavior',
+      },
+    ]
+  },
+  {
     key: 'api-reference',
     label: 'API Reference',
     subMenus: [
