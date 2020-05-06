@@ -1,5 +1,6 @@
 {
   "name": "@mui-treasury/layout",
+  "module": "./esm/index.js",
   "version": "4.0.0-alpha.6",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "description": "Supercharge your site with instant-layout, 100% compatible with material-ui",
@@ -29,9 +30,13 @@
   },
   "types": "./index.d.ts",
   "scripts": {
+    "analyze": "source-map-explorer ./build/esm/**/*.js",
     "prebuild": "rimraf build",
     "postpublish": "rimraf build",
-    "build": "tsc",
+    "build": "yarn build:cjs && yarn build:esm && yarn build:types",
+    "build:cjs": "cross-env NODE_ENV=production BABEL_ENV=cjs babel --config-file ../../babel-config.js --extensions \".js,.ts,.tsx\" ./src --out-dir ./build --ignore \"**/*.test.ts,**/*.spec.ts\"",
+    "build:esm": "cross-env NODE_ENV=production BABEL_ENV=esm babel --config-file ../../babel-config.js --extensions \".js,.ts,.tsx\" ./src --out-dir ./build/esm --ignore \"**/*.test.ts,**/*.spec.ts\"",
+    "build:types": "tsc -p tsconfig.build.json",
     "prepublishOnly": "yarn copy-files",
     "copy-files": "node ../../scripts/copy-files.js"
   },
