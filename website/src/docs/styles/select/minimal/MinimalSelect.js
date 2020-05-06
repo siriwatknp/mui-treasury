@@ -3,7 +3,7 @@ import { useMinimalSelectStyles } from '@mui-treasury/styles/select/minimal';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 // Original design here: https://github.com/siriwatknp/mui-treasury/issues/540
 
@@ -15,6 +15,11 @@ const MinimalSelect = () => {
   };
 
   const minimalSelectClasses = useMinimalSelectStyles();
+
+  const iconComponent = (props) => {
+    return (
+      <ExpandMoreIcon className={props.className + " " + minimalSelectClasses.icon}/>
+    )};
 
   // moves the menu below the select input
   const menuProps = {
@@ -33,22 +38,14 @@ const MinimalSelect = () => {
     getContentAnchorEl: null
   };
 
-  // IconComponent in Select receives className via props. This is how the arrow up/down animation works.
-  const iconComponent = (props) => {
-    return (
-      <FontAwesomeIcon
-        className={props.className + " " + minimalSelectClasses.icon} icon={['fas','chevron-down']}
-      />
-  )};// chevron-down added in fontawesome.js
-
 
   return (
     <FormControl>
       <Select
         disableUnderline
-        classes={{ root: minimalSelectClasses.select, }}
-        IconComponent={iconComponent}
+        classes={{ root: minimalSelectClasses.select }}
         MenuProps={menuProps}
+        IconComponent={iconComponent}
         value={val}
         onChange={handleChange}
       >

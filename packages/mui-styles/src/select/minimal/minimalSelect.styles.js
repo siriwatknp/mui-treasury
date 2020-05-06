@@ -21,10 +21,8 @@ export default () => ({
   },
   icon:{
     color: deepPurple[300],
-    marginTop: 4,
     right: 12,
     position: 'absolute',
-    flexShrink: 0,
     userSelect: 'none',
     pointerEvents: 'none'
   },
