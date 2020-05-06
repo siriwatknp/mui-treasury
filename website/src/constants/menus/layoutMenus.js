@@ -52,6 +52,16 @@ export default [
         label: 'Persistent behavior',
         to: '/layout/features/persistent-behavior',
       },
+      {
+        key: 'auto-collapse',
+        label: 'Auto Collapse',
+        to: '/layout/features/auto-collapse',
+      },
+      {
+        key: 'header-magnet',
+        label: 'Header Magnet',
+        to: '/layout/features/header-magnet',
+      },
     ]
   },
   {
