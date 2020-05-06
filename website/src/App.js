@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { Root, muiTreasuryPreset } from '@mui-treasury/layout';
+import { Root, presets } from '@mui-treasury/layout';
 import { ThemeWrapper } from './utils/theme';
 import banner from './assets/mui-treasury_banner_minified.jpg';
 import PageLayout from './components/layout/PageLayout';
@@ -14,6 +14,10 @@ import './fontawesome';
 
 const App = ({ children, location }) => {
   const path = React.useMemo(() => createPath(location), [location]);
+  presets.muiTreasury.configureEdgeSidebar(builder => {
+    builder.update('primarySidebar', path.parseConfig);
+    builder.hide('primarySidebar', location.pathname === '/');
+  });
   return (
     <>
       <Helmet>
@@ -53,11 +57,7 @@ const App = ({ children, location }) => {
       </Helmet>
       {path.wrappedByLayout ? (
         <ThemeWrapper>
-          <Root
-            omitThemeProvider
-            config={muiTreasuryPreset}
-            parseConfig={path.parseConfig}
-          >
+          <Root themeProviderOmitted scheme={presets.muiTreasury}>
             <PageLayout
               menus={path.sidebarMenus}
               getOpenKeys={path.getOpenKeys}

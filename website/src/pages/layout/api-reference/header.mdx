@@ -1,0 +1,35 @@
+---
+category: API REFERENCE
+title: Header
+template: DocTemplate
+---
+
+## Usage example
+
+Normally, you might want to put `Toolbar` inside of header as a wrapper.
+
+```jsx
+import styled from 'styled-components'
+import Toolbar from '@material-ui/core/Toolbar';
+import Layout, { getLayoutComponents } from '@mui-treasury/layout';
+
+const { Root, Header } = getLayoutComponents(styled)
+
+cosnt scheme = Layout()
+
+const App = () => {
+  return (
+    <Root scheme={scheme}>
+      <Header>
+        <Toolbar>header</Toolbar>
+      </Header>
+    </Root>
+  )
+}
+```
+
+## Props
+Any props that [AppBar](https://material-ui.com/api/app-bar/#props) accepts 
+
+## Styling
+Refer to [AppBar](https://material-ui.com/api/app-bar/#css) CSS api

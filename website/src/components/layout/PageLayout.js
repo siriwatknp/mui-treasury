@@ -1,23 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
-import {
-  Header,
-  SidebarTrigger,
-  SidebarTriggerIcon,
-  CollapseBtn,
-  CollapseIcon,
-  Content,
-  Footer,
-  Sidebar,
-  sidebarStyles,
-  headerStyles,
-} from '@mui-treasury/layout';
+import styled from 'styled-components';
+import { getLayoutComponents } from '@mui-treasury/layout';
 import Toolbar from '@material-ui/core/Toolbar';
 import PageHeader from 'components/layout/PageHeader';
 import PageFooter from 'components/layout/PageFooter';
 import ComponentMenuList from 'components/organisms/ComponentMenuList';
 import useQueryParams from '../../utils/useQueryParams';
+
+const {
+  Header,
+  DrawerSidebar,
+  Content,
+  Footer,
+  CollapseBtn,
+  SidebarTrigger,
+  SidebarContent,
+} = getLayoutComponents(styled);
 
 const useStyles = makeStyles(theme => {
   const { palette } = theme;
@@ -35,14 +35,9 @@ const useFooterStyles = makeStyles(() => ({
   },
 }));
 
-const useSidebarStyles = makeStyles(sidebarStyles);
-const useHeaderStyles = makeStyles(headerStyles);
-
 const PageLayout = ({ menus, children, getOpenKeys, hamburgerHidden }) => {
   const { bgColor = '' } = useQueryParams();
   const styles = useStyles();
-  const headStyles = useHeaderStyles();
-  const sbStyles = useSidebarStyles();
   const footerStyles = useFooterStyles();
   React.useEffect(() => {
     if (document) {
@@ -60,23 +55,17 @@ const PageLayout = ({ menus, children, getOpenKeys, hamburgerHidden }) => {
     <>
       <Header className={styles.header}>
         <Toolbar>
-          {!hamburgerHidden && (
-            <SidebarTrigger className={headStyles.leftTrigger}>
-              <SidebarTriggerIcon />
-            </SidebarTrigger>
-          )}
+          {!hamburgerHidden && <SidebarTrigger sidebarId={'primarySidebar'} />}
           <PageHeader />
         </Toolbar>
       </Header>
       <Content>{children}</Content>
-      <Sidebar>
-        <div className={sbStyles.container}>
+      <DrawerSidebar sidebarId={'primarySidebar'}>
+        <SidebarContent>
           <ComponentMenuList menus={menus} getOpenKeys={getOpenKeys} />
-        </div>
-        <CollapseBtn className={sbStyles.collapseBtn}>
-          <CollapseIcon />
-        </CollapseBtn>
-      </Sidebar>
+        </SidebarContent>
+        <CollapseBtn />
+      </DrawerSidebar>
       <Footer className={footerStyles.root}>
         <PageFooter />
       </Footer>

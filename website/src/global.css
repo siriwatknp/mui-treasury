@@ -2,6 +2,12 @@
  * Add back the container background-color, border-radius, padding, margin
  * and overflow that we removed from <pre>
  */
+.anchor-header {
+  display: inline-flex;
+  transform: rotate(-45deg) translateY(6px);
+  fill: rgba(0,0,0,0.38);
+}
+
 .gatsby-highlight {
   background-color: rgb(40, 44, 52);
   padding: 1.5em 16px;
@@ -16,6 +22,10 @@
     border-radius: 4px;
     padding: 1.5em;
   }
+}
+
+li > .gatsby-highlight {
+  margin-top: 0.75rem;
 }
 
 .gatsby-highlight code {

@@ -130,7 +130,8 @@
       "avatar_url": "https://avatars2.githubusercontent.com/u/17761806?v=4",
       "profile": "https://www.hackerrank.com/pacurtin",
       "contributions": [
-        "doc"
+        "doc",
+        "maintenance"
       ]
     },
     {
@@ -147,6 +148,15 @@
       "name": "Max Wassiljew",
       "avatar_url": "https://avatars0.githubusercontent.com/u/27824730?v=4",
       "profile": "https://github.com/maxwassiljew",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "TsutomuNakamura",
+      "name": "tsutomu",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/10674169?v=4",
+      "profile": "https://qiita.com/TsutomuNakamura",
       "contributions": [
         "code"
       ]

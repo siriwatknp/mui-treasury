@@ -1,6 +1,6 @@
 {
   "name": "website",
-  "version": "1.22.0",
+  "version": "2.0.0-alpha.6",
   "private": true,
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "license": "MIT",
@@ -18,6 +18,9 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-brands-svg-icons": "^5.11.2",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@fortawesome/pro-duotone-svg-icons": "^5.12.0",
+    "@fortawesome/pro-solid-svg-icons": "^5.12.0",
     "@fortawesome/react-fontawesome": "^0.1.8",
     "@material-ui/core": "^4.8.3",
     "@material-ui/icons": "^4.5.1",
@@ -27,6 +30,7 @@
     "@mdx-js/mdx": "^1.5.7",
     "@mdx-js/react": "^1.5.7",
     "@reach/router": "^1.2.1",
+    "babel-plugin-styled-components": "^1.10.7",
     "color": "^3.1.2",
     "gatsby": "2.15.24",
     "gatsby-image": "2.2.8",
@@ -39,8 +43,10 @@
     "gatsby-plugin-prefetch-google-fonts": "1.4.3",
     "gatsby-plugin-react-helmet": "3.1.3",
     "gatsby-plugin-sharp": "2.2.11",
+    "gatsby-plugin-styled-components": "^3.3.0",
     "gatsby-plugin-typescript": "2.1.15",
     "gatsby-plugin-typography": "2.3.2",
+    "gatsby-remark-autolink-headers": "^2.3.0",
     "gatsby-remark-copy-linked-files": "2.1.5",
     "gatsby-remark-embed-snippet": "4.1.4",
     "gatsby-remark-images": "3.1.11",
@@ -63,6 +69,7 @@
     "react-scroll": "^1.7.14",
     "react-swipeable-views": "^0.13.3",
     "react-typography": "^0.16.19",
+    "styled-components": "^5.1.0",
     "typography": "^0.16.19",
     "typography-theme-kirkham": "^0.16.19"
   }

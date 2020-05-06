@@ -1,25 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@mui-treasury/styling';
+import withStyles from '@material-ui/core/styles/withStyles';
 import styles from './featureWidget.styles';
 
 const FeatureWidget = withStyles(styles, { name: 'FeatureWidget' })(
   props => {
-    const { css, renderIcon, title, content, children } = props;
+    const { classes, renderIcon, title, content, children } = props;
     return (
-      <div className={css.root}>
+      <div className={classes.root}>
         {renderIcon && (
-          <div className={css.iconWrapper}>
-            {renderIcon({ className: css.icon })}
+          <div className={classes.iconWrapper}>
+            {renderIcon({ className: classes.icon })}
           </div>
         )}
-        <h2 className={css.title} dangerouslySetInnerHTML={{ __html: title }} />
+        <h2 className={classes.title} dangerouslySetInnerHTML={{ __html: title }} />
         <p
-          className={css.content}
+          className={classes.content}
           dangerouslySetInnerHTML={{ __html: content }}
         />
         {typeof children === 'function'
-          ? children({ className: css.bottom })
+          ? children({ className: classes.bottom })
           : children}
       </div>
     );
