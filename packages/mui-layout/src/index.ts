@@ -1,5 +1,6 @@
 import * as presets from './presets';
 
+export * from './presets2';
 export { default } from './builders';
 export * from './components';
 export {
