@@ -14,6 +14,5 @@ module.exports = {
     ['@babel/plugin-proposal-object-rest-spread', { loose: true }],
     // for IE 11 support
     '@babel/plugin-transform-object-assign',
-  ],
-  sourceMaps: "inline"
+  ]
 };
