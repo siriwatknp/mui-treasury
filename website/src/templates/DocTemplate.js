@@ -28,7 +28,7 @@ const DocTemplate = ({ pageContext, children }) => {
       py={{ xs: '2rem', sm: '3rem' }}
       px={{ xs: 2, sm: '1.5rem' }}
     >
-      <Typography variant={'subtitle1'} color={'textSecondary'}>
+      <Typography variant={'subtitle1'} color={'textSecondary'} style={{ letterSpacing: 1 }}>
         {frontmatter.category}
       </Typography>
       <h1>{frontmatter.title}</h1>
