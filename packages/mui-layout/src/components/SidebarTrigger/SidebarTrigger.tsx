@@ -10,26 +10,26 @@ import { createDisplayNone } from '../../utils';
 import { CtaProps } from '../../types';
 import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 
-const useStyles = makeStyles(
-  ({ spacing }) => ({
-    // @ts-ignore
-    root: ({ anchor }) => ({
-      ...(anchor === 'left' && {
-        marginLeft: spacing(-1),
-        marginRight: spacing(1),
-      }),
-      ...(anchor === 'right' && {
-        marginLeft: spacing(1),
-        marginRight: spacing(-1),
-      }),
-    }),
-  }),
-  { name: 'SidebarTrigger' }
-);
-
 export default (styled: any) => {
   const styledProxy = generateStyledProxyCreator(styled);
   const StyledIconBtn = styledProxy<IconButtonProps>(IconButton);
+
+  const useStyles = makeStyles(
+    ({ spacing }) => ({
+      // @ts-ignore
+      root: ({ anchor }) => ({
+        ...(anchor === 'left' && {
+          marginLeft: spacing(-1),
+          marginRight: spacing(1),
+        }),
+        ...(anchor === 'right' && {
+          marginLeft: spacing(1),
+          marginRight: spacing(-1),
+        }),
+      }),
+    }),
+    { name: 'SidebarTrigger' }
+  );
 
   const SidebarTrigger = ({
     children,

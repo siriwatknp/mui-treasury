@@ -9,22 +9,22 @@ import { CtaProps } from '../../types';
 import { useSidebarCta } from '../../core';
 import { createDisplayNone } from '../../utils';
 
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
-  root: {
-    backgroundColor: palette.grey[50],
-    textAlign: 'center',
-    borderRadius: 0,
-    borderTop: '1px solid',
-    borderColor: palette.action.hover,
-    [breakpoints.up('sm')]: {
-      minHeight: 40,
-    },
-  },
-}));
-
 export default (styled: any) => {
   const styledProxy = generateStyledProxyCreator(styled);
   const StyledButton = styledProxy<ButtonProps>(Button);
+
+  const useStyles = makeStyles(({ palette, breakpoints }) => ({
+    root: {
+      backgroundColor: palette.grey[50],
+      textAlign: 'center',
+      borderRadius: 0,
+      borderTop: '1px solid',
+      borderColor: palette.action.hover,
+      [breakpoints.up('sm')]: {
+        minHeight: 40,
+      },
+    },
+  }));
 
   const CollapseBtn = ({
     children,

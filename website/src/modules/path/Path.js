@@ -1,4 +1,4 @@
-import { presets } from '@mui-treasury/layout';
+import { getMuiTreasuryScheme } from '@mui-treasury/layout';
 import { mapNestedPath } from '@mui-treasury/utils';
 import {
   COMPONENT_MENUS,
@@ -6,7 +6,7 @@ import {
   STYLE_MENUS,
 } from '../../constants/menus';
 
-export const muiTreasuryScheme = presets.getMuiTreasury()
+export const muiTreasuryScheme = getMuiTreasuryScheme()
 
 const { edgeSidebar: { primarySidebar } } = muiTreasuryScheme.clone();
 

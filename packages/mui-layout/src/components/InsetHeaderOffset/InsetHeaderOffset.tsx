@@ -2,7 +2,7 @@ import React from "react"
 import cx from "clsx"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import { useLayoutCtx } from "../../core/Context"
-import styledProxy from '../Shared/StyledProxy';
+import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 import InsetHeaderOffsetCompiler from "../../compilers/InsetHeaderOffsetCompiler"
 import { createBreakpointStyles } from "../../utils"
 import { useInsetHeaderMagnet } from "../../core/hooks/useInsetHeaderMagnet"
@@ -10,9 +10,10 @@ import { transitionStyles } from "../../styles"
 
 const useTransitionStyles = makeStyles(transitionStyles)
 
-const Div = styledProxy('div')
+export default (styled: any) => {
+  const styledProxy = generateStyledProxyCreator(styled);
+  const Div = styledProxy('div');
 
-export const createInsetHeaderOffset = (StyledComponent = Div) => {
   const InsetHeaderOffset = ({ sidebarId }: { sidebarId: string }) => {
     const { breakpoints } = useTheme()
     const transition = useTransitionStyles()
@@ -24,7 +25,7 @@ export const createInsetHeaderOffset = (StyledComponent = Div) => {
     )
     const inlineStyle = useInsetHeaderMagnet(sidebarId)
     return (
-      <StyledComponent
+      <Div
         className={cx("InsetHeaderOffset", transition.smooth)}
         styles={{ ...styles, flexShrink: 0 }}
         style={inlineStyle}
@@ -33,5 +34,3 @@ export const createInsetHeaderOffset = (StyledComponent = Div) => {
   }
   return InsetHeaderOffset
 }
-
-export default createInsetHeaderOffset()

@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { generateStyledProxyCreator } from '../Shared/StyledProxy';
-import { createInsetHeaderOffset } from '../InsetHeaderOffset';
+import getInsetHeaderOffset from '../InsetHeaderOffset';
 import { useInsetSidebar } from '../../core';
 
 const useStyles = makeStyles(({ palette }) => ({
@@ -17,7 +17,7 @@ const useStyles = makeStyles(({ palette }) => ({
 export default (styled: any) => {
   const styledProxy = generateStyledProxyCreator(styled);
   const Div = styledProxy('div');
-  const InsetHeaderOffset = createInsetHeaderOffset(Div);
+  const InsetHeaderOffset = getInsetHeaderOffset(styled);
 
   const InsetSidebar = ({
     sidebarId,
