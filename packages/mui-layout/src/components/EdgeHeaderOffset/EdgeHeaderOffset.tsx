@@ -8,11 +8,11 @@ import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 import { transitionStyles } from "../../styles"
 import { createBreakpointStyles } from "../../utils"
 
-const useTransitionStyles = makeStyles(transitionStyles)
-
 export default (styled: any) => {
   const styledProxy = generateStyledProxyCreator(styled);
   const Div = styledProxy('div');
+
+  const useTransitionStyles = makeStyles(transitionStyles)
 
   const EdgeHeaderOffset = ({ sidebarId }: { sidebarId: string }) => {
     const { breakpoints } = useTheme()

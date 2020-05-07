@@ -16,10 +16,10 @@ import {
 } from '@material-ui/core/styles';
 import Layout, {
   Root,
-  InsetContainer,
   getHeader,
   getContent,
   getSwipeableSidebar,
+  getInsetContainer,
   getInsetSidebar,
   getInsetAvoidingView,
   getFooter,
@@ -33,6 +33,7 @@ import styled from 'styled-components';
 const Header = getHeader(styled);
 const Content = getContent(styled);
 const SwipeableSidebar = getSwipeableSidebar(styled);
+const InsetContainer = getInsetContainer(styled);
 const InsetSidebar = getInsetSidebar(styled);
 const InsetAvoidingView = getInsetAvoidingView(styled);
 const Footer = getFooter(styled);

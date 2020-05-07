@@ -13,8 +13,6 @@ import { transitionStyles } from '../../styles';
 import { EdgeSidebarConfig } from '../../types';
 import Drawer from '@material-ui/core/Drawer/Drawer';
 
-const useTransitionStyles = makeStyles(transitionStyles);
-
 export default (styled: any) => {
   const styledProxy = generateStyledProxyCreator(styled);
   const StyledDrawer = styledProxy<DrawerProps>(Drawer, CLS);
@@ -23,6 +21,8 @@ export default (styled: any) => {
   const TemporaryDrawer = createDrawerVariant('temporary', StyledDrawer);
   const PermanentDrawer = createDrawerVariant('permanent', StyledDrawer);
   const PersistentDrawer = createDrawerVariant('persistent', StyledDrawer);
+
+  const useTransitionStyles = makeStyles(transitionStyles);
 
   const DrawerSidebar = ({
     sidebarId,

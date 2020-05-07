@@ -8,11 +8,11 @@ import { createBreakpointStyles } from "../../utils"
 import { useInsetHeaderMagnet } from "../../core/hooks/useInsetHeaderMagnet"
 import { transitionStyles } from "../../styles"
 
-const useTransitionStyles = makeStyles(transitionStyles)
-
 export default (styled: any) => {
   const styledProxy = generateStyledProxyCreator(styled);
   const Div = styledProxy('div');
+
+  const useTransitionStyles = makeStyles(transitionStyles)
 
   const InsetHeaderOffset = ({ sidebarId }: { sidebarId: string }) => {
     const { breakpoints } = useTheme()

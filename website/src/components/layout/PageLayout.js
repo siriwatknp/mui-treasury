@@ -5,11 +5,11 @@ import styled from 'styled-components';
 import {
   getHeader,
   getDrawerSidebar,
+  getSidebarContent,
   getContent,
   getFooter,
   getCollapseBtn,
   getSidebarTrigger,
-  SidebarContent,
 } from '@mui-treasury/layout';
 import Toolbar from '@material-ui/core/Toolbar';
 import PageHeader from 'components/layout/PageHeader';
@@ -19,6 +19,7 @@ import useQueryParams from '../../utils/useQueryParams';
 
 const Header = getHeader(styled);
 const DrawerSidebar = getDrawerSidebar(styled);
+const SidebarContent = getSidebarContent(styled);
 const Content = getContent(styled);
 const Footer = getFooter(styled);
 const CollapseBtn = getCollapseBtn(styled);

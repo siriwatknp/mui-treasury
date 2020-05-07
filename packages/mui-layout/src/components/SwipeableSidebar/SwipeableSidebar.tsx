@@ -13,8 +13,6 @@ import { transitionStyles } from '../../styles';
 import { EdgeSidebarConfig } from '../../types';
 import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 
-const useTransitionStyles = makeStyles(transitionStyles);
-
 export default (styled: any) => {
   const styledProxy = generateStyledProxyCreator(styled);
   const StyledSwipeableDrawer = styledProxy<SwipeableDrawerProps>(
@@ -34,6 +32,8 @@ export default (styled: any) => {
     'persistent',
     StyledSwipeableDrawer
   );
+
+  const useTransitionStyles = makeStyles(transitionStyles);
 
   const SwipeableSidebar = ({
     onClose,

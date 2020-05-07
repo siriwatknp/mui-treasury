@@ -1,4 +1,7 @@
 export { default as Root } from './Root';
+export { default as getInsetContainer } from './InsetContainer';
+export { default as getFullscreen } from './Fullscreen';
+export { default as getSidebarContent } from './SidebarContent';
 export { default as getHeader } from './Header';
 export { default as getContent } from './Content';
 export { default as getCollapseBtn } from './CollapseBtn';
@@ -9,6 +12,3 @@ export { default as getInsetAvoidingView } from './InsetAvoidingView';
 export { default as getInsetFooter } from './InsetFooter';
 export { default as getInsetSidebar } from './InsetSidebar';
 export { default as getSwipeableSidebar } from './SwipeableSidebar';
-export { default as InsetContainer } from './InsetContainer';
-export { default as Fullscreen } from './Fullscreen';
-export { default as SidebarContent } from './SidebarContent';

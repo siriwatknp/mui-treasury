@@ -12,10 +12,10 @@ import {
 } from '@mui-treasury/mockup/layout';
 import {
   Root,
-  SidebarContent,
   getHeader,
   getContent,
   getDrawerSidebar,
+  getSidebarContent,
   getFooter,
   getSidebarTrigger,
   getCollapseBtn,
@@ -25,6 +25,7 @@ import {
 const Header = getHeader(styled);
 const Content = getContent(styled);
 const DrawerSidebar = getDrawerSidebar(styled);
+const SidebarContent = getSidebarContent(styled);
 const Footer = getFooter(styled);
 const SidebarTrigger = getSidebarTrigger(styled);
 const CollapseBtn = getCollapseBtn(styled);
