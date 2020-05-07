@@ -6,23 +6,24 @@ import { DrawerProps } from '@material-ui/core/Drawer';
 import { useSidebar, SidebarProvider, useWindow } from '../../core';
 import { useBreakpointConfig, useSidebarAutoCollapse } from '../../core/hooks';
 import { createEdgeHeaderOffset } from '../EdgeHeaderOffset';
-import {
-  createDrawerVariant,
-  StyledProxyDrawer,
-} from '../Shared/SharedSidebar';
-import styledProxy from '../Shared/StyledProxy';
+import { CLS, createDrawerVariant } from '../Shared/SharedSidebar';
+import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 import { get, createBreakpointStyles, createHiddenStyles } from '../../utils';
 import { transitionStyles } from '../../styles';
 import { EdgeSidebarConfig } from '../../types';
+import Drawer from '@material-ui/core/Drawer/Drawer';
 
 const useTransitionStyles = makeStyles(transitionStyles);
-const Div = styledProxy('div')
 
-export const createDrawerSidebar = (StyledComponent = StyledProxyDrawer, StyledDiv = Div) => {
-  const TemporaryDrawer = createDrawerVariant('temporary', StyledComponent);
-  const PermanentDrawer = createDrawerVariant('permanent', StyledComponent);
-  const PersistentDrawer = createDrawerVariant('persistent', StyledComponent);
-  const EdgeHeaderOffset = createEdgeHeaderOffset(StyledDiv)
+export default (styled: any) => {
+  const styledProxy = generateStyledProxyCreator(styled);
+  const Div = styledProxy('div');
+  const StyledDrawer = styledProxy<DrawerProps>(Drawer, CLS);
+
+  const TemporaryDrawer = createDrawerVariant('temporary', StyledDrawer);
+  const PermanentDrawer = createDrawerVariant('permanent', StyledDrawer);
+  const PersistentDrawer = createDrawerVariant('persistent', StyledDrawer);
+  const EdgeHeaderOffset = createEdgeHeaderOffset(Div);
   const DrawerSidebar = ({
     sidebarId,
     onClose,
@@ -135,5 +136,3 @@ export const createDrawerSidebar = (StyledComponent = StyledProxyDrawer, StyledD
 
   return DrawerSidebar;
 };
-
-export default createDrawerSidebar();

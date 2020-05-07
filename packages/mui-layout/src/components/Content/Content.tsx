@@ -5,13 +5,15 @@ import { useLayoutCtx } from '../../core';
 import { createBreakpointStyles } from '../../utils';
 import ContentCompiler from '../../compilers/ContentCompiler';
 import { useFullscreenCtx } from '../../core/Context/FullscreenContext';
-import styledProxy from '../Shared/StyledProxy';
+import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 
-const StyledMain = styledProxy('main');
-const Div = styledProxy('div');
+export default (styled: any) => {
+  const styledProxy = generateStyledProxyCreator(styled);
+  const Div = styledProxy('div');
+  const Main = styledProxy('main');
 
-export const createContent = (StyledComponent = StyledMain, StyledDiv = Div) => {
-  const HeaderOffset = createHeaderOffset(StyledDiv)
+  const HeaderOffset = createHeaderOffset(Div)
+
   const Content = ({
     children,
     ...props
@@ -24,7 +26,7 @@ export const createContent = (StyledComponent = StyledMain, StyledDiv = Div) => 
     );
     const isFullscreen = useFullscreenCtx();
     return (
-      <StyledComponent
+      <Main
         {...props}
         styles={{
           transition: 'all 300ms cubic-bezier(0.0, 0, 0.2, 1) 0ms',
@@ -34,10 +36,8 @@ export const createContent = (StyledComponent = StyledMain, StyledDiv = Div) => 
       >
         <HeaderOffset />
         {children}
-      </StyledComponent>
+      </Main>
     );
   };
   return Content;
 };
-
-export default createContent();

@@ -1,16 +1,6 @@
-// import as function for treeshakeable
-import getContentBased from './contentBased';
-import getCozy from './cozy';
-import getDefault from './default';
-import getFixed from './fixed';
-import getMuiTreasury from './muiTreasury';
-import getStandard from './standard';
-
-export default {
-  getContentBased,
-  getCozy,
-  getDefault,
-  getFixed,
-  getMuiTreasury,
-  getStandard
-}
+export { default as getContentBased } from './contentBased';
+export { default as getCozy } from './cozy';
+export { default as getDefault } from './default';
+export { default as getFixed } from './fixed';
+export { default as getMuiTreasury } from './muiTreasury';
+export { default as getStandard } from './standard';

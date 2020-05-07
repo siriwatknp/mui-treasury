@@ -69,6 +69,21 @@ const getLayoutPresetHandler = () => {
   };
 };
 
+const getLayoutCloneHandler = () => {
+  return {
+    pattern: /\/layout\/clones.*/g,
+    sidebarMenus: LAYOUT_MENUS,
+    parseConfig: c => {
+      if (c && c.lg) {
+        c.lg.width = 208;
+      }
+    },
+    getOpenKeys: () => [
+      'clones',
+    ],
+  };
+};
+
 const getLayoutApiHandler = () => {
   return {
     pattern: /\/layout\/api-reference.*/g,
@@ -128,6 +143,7 @@ const getPathValue = (pathname, key) =>
       getComponentHandler(),
       getLayoutDevelop(),
       getLayoutPresetHandler(),
+      getLayoutCloneHandler(),
       getLayoutV3Handler(),
       getLayoutApiHandler(),
       getLayoutHandler(),
