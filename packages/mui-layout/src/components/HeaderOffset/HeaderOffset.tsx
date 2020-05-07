@@ -3,18 +3,19 @@ import useTheme from "@material-ui/core/styles/useTheme"
 import { useLayoutCtx } from "../../core/Context"
 import HeaderOffsetCompiler from "../../compilers/HeaderOffsetCompiler"
 import { createBreakpointStyles } from "../../utils"
-import styledProxy from '../Shared/StyledProxy';
+import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 
-const StyledProxy = styledProxy('div')
+export default (styled: any) => {
+  const styledProxy = generateStyledProxyCreator(styled);
+  const Div = styledProxy('div');
 
-export const createHeaderOffset = (StyledComponent = StyledProxy) => {
   const HeaderOffset = () => {
     const { breakpoints } = useTheme()
     const { data } = useLayoutCtx()
     const compiler = HeaderOffsetCompiler(data.header)
     const styles = createBreakpointStyles(compiler.getResultStyle(), breakpoints)
     return (
-      <StyledComponent
+      <Div
         className={"HeaderOffset"}
         styles={{ ...styles, flexShrink: 0 }}
       />
@@ -22,5 +23,3 @@ export const createHeaderOffset = (StyledComponent = StyledProxy) => {
   }
   return HeaderOffset
 }
-
-export default createHeaderOffset()

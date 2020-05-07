@@ -4,10 +4,10 @@ export { default as Fullscreen } from './Fullscreen';
 export { default as SidebarContent } from './SidebarContent';
 export { default as getHeader } from './Header';
 export { default as getContent } from './Content';
-export { default as getCollapseBtn } from './CTA/CollapseBtn';
-export { default as getSidebarTrigger } from './CTA/SidebarTrigger';
+export { default as getCollapseBtn } from './CollapseBtn';
+export { default as getSidebarTrigger } from './SidebarTrigger';
 export { default as getDrawerSidebar } from './DrawerSidebar';
-export { default as getFooter } from './Footer'
+export { default as getFooter } from './Footer';
 export { default as getInsetAvoidingView } from './InsetAvoidingView';
 export { default as getInsetFooter } from './InsetFooter';
 export { default as getInsetSidebar } from './InsetSidebar';

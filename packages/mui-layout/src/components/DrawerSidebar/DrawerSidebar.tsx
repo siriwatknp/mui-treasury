@@ -5,7 +5,7 @@ import useTheme from '@material-ui/core/styles/useTheme';
 import { DrawerProps } from '@material-ui/core/Drawer';
 import { useSidebar, SidebarProvider, useWindow } from '../../core';
 import { useBreakpointConfig, useSidebarAutoCollapse } from '../../core/hooks';
-import { createEdgeHeaderOffset } from '../EdgeHeaderOffset';
+import getEdgeHeaderOffset from '../EdgeHeaderOffset';
 import { CLS, createDrawerVariant } from '../Shared/SharedSidebar';
 import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 import { get, createBreakpointStyles, createHiddenStyles } from '../../utils';
@@ -17,13 +17,13 @@ const useTransitionStyles = makeStyles(transitionStyles);
 
 export default (styled: any) => {
   const styledProxy = generateStyledProxyCreator(styled);
-  const Div = styledProxy('div');
   const StyledDrawer = styledProxy<DrawerProps>(Drawer, CLS);
+  const EdgeHeaderOffset = getEdgeHeaderOffset(styled);
 
   const TemporaryDrawer = createDrawerVariant('temporary', StyledDrawer);
   const PermanentDrawer = createDrawerVariant('permanent', StyledDrawer);
   const PersistentDrawer = createDrawerVariant('persistent', StyledDrawer);
-  const EdgeHeaderOffset = createEdgeHeaderOffset(Div);
+
   const DrawerSidebar = ({
     sidebarId,
     onClose,

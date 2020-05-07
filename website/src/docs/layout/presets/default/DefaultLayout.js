@@ -11,7 +11,6 @@ import {
   FooterMockUp,
 } from '@mui-treasury/mockup/layout';
 import {
-  presets,
   Root,
   SidebarContent,
   getHeader,
@@ -20,6 +19,7 @@ import {
   getFooter,
   getSidebarTrigger,
   getCollapseBtn,
+  getDefaultScheme,
 } from '@mui-treasury/layout';
 
 const Header = getHeader(styled);
@@ -29,7 +29,7 @@ const Footer = getFooter(styled);
 const SidebarTrigger = getSidebarTrigger(styled);
 const CollapseBtn = getCollapseBtn(styled);
 
-const defaultScheme = presets.getDefault();
+const defaultScheme = getDefaultScheme();
 
 const DefaultLayout = () => {
   return (

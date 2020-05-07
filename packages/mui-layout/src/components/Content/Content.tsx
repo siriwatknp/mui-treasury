@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
-import { createHeaderOffset } from '../HeaderOffset';
+import getHeaderOffset from '../HeaderOffset';
 import { useLayoutCtx } from '../../core';
 import { createBreakpointStyles } from '../../utils';
 import ContentCompiler from '../../compilers/ContentCompiler';
@@ -9,10 +9,9 @@ import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 
 export default (styled: any) => {
   const styledProxy = generateStyledProxyCreator(styled);
-  const Div = styledProxy('div');
   const Main = styledProxy('main');
 
-  const HeaderOffset = createHeaderOffset(Div)
+  const HeaderOffset = getHeaderOffset(styled)
 
   const Content = ({
     children,

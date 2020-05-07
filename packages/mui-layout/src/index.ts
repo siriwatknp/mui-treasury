@@ -1,7 +1,5 @@
-import * as presets from './presets'
-
 export { default } from './builders';
-export { presets }
+export * from './presets';
 export * from './components';
 export {
   LayoutConsumer,

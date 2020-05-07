@@ -4,15 +4,16 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 import { useLayoutCtx } from "../../core/Context"
 import EdgeHeaderOffsetCompiler from "../../compilers/EdgeHeaderOffsetCompiler"
 import { useEdgeHeaderMagnet } from "../../core/hooks"
-import styledProxy from '../Shared/StyledProxy'
+import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 import { transitionStyles } from "../../styles"
 import { createBreakpointStyles } from "../../utils"
 
 const useTransitionStyles = makeStyles(transitionStyles)
 
-const StyledProxy = styledProxy('div')
+export default (styled: any) => {
+  const styledProxy = generateStyledProxyCreator(styled);
+  const Div = styledProxy('div');
 
-export const createEdgeHeaderOffset = (StyledComponent = StyledProxy) => {
   const EdgeHeaderOffset = ({ sidebarId }: { sidebarId: string }) => {
     const { breakpoints } = useTheme()
     const transition = useTransitionStyles()
@@ -24,7 +25,7 @@ export const createEdgeHeaderOffset = (StyledComponent = StyledProxy) => {
     )
     const inlineStyle = useEdgeHeaderMagnet(sidebarId)
     return (
-      <StyledComponent
+      <Div
         className={cx("EdgeHeaderOffset", transition.smooth)}
         styles={{ ...styles, flexShrink: 0 }}
         style={inlineStyle}
@@ -33,5 +34,3 @@ export const createEdgeHeaderOffset = (StyledComponent = StyledProxy) => {
   }
   return EdgeHeaderOffset
 }
-
-export default createEdgeHeaderOffset()

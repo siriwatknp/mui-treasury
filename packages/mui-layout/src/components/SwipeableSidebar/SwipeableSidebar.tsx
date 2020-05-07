@@ -6,7 +6,7 @@ import SwipeableDrawer, {
 } from '@material-ui/core/SwipeableDrawer';
 import { useSidebar, SidebarProvider, useWindow } from '../../core';
 import { useBreakpointConfig, useSidebarAutoCollapse } from '../../core/hooks';
-import { createEdgeHeaderOffset } from '../EdgeHeaderOffset';
+import getEdgeHeaderOffset from '../EdgeHeaderOffset';
 import { CLS, createSwipeableVariant } from '../Shared/SharedSidebar';
 import { get, createBreakpointStyles, createHiddenStyles } from '../../utils';
 import { transitionStyles } from '../../styles';
@@ -21,7 +21,7 @@ export default (styled: any) => {
     SwipeableDrawer,
     CLS
   );
-  const Div = styledProxy('div');
+  const EdgeHeaderOffset = getEdgeHeaderOffset(styled);
   const TemporarySwipeableDrawer = createSwipeableVariant(
     'temporary',
     StyledSwipeableDrawer
@@ -34,7 +34,6 @@ export default (styled: any) => {
     'persistent',
     StyledSwipeableDrawer
   );
-  const EdgeHeaderOffset = createEdgeHeaderOffset(Div);
 
   const SwipeableSidebar = ({
     onClose,
