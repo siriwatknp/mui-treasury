@@ -10,23 +10,32 @@ import {
   ContentMockUp,
   FooterMockUp,
 } from '@mui-treasury/mockup/layout';
-import { Root, getLayoutComponents, presets } from '@mui-treasury/layout';
-
-const {
-  Header,
-  Content,
-  Footer,
-  DrawerSidebar,
-  SidebarTrigger,
+import {
+  presets,
+  Root,
   SidebarContent,
-  CollapseBtn,
-} = getLayoutComponents(styled);
+  getHeader,
+  getContent,
+  getDrawerSidebar,
+  getFooter,
+  getSidebarTrigger,
+  getCollapseBtn,
+} from '@mui-treasury/layout';
+
+const Header = getHeader(styled);
+const Content = getContent(styled);
+const DrawerSidebar = getDrawerSidebar(styled);
+const Footer = getFooter(styled);
+const SidebarTrigger = getSidebarTrigger(styled);
+const CollapseBtn = getCollapseBtn(styled);
+
+const contentBasedScheme = presets.getContentBased();
 
 const ContentBasedLayout = () => {
   return (
     <StylesProvider injectFirst>
       <CssBaseline />
-      <Root scheme={presets.contentBased}>
+      <Root scheme={contentBasedScheme}>
         {({ state: { sidebar } }) => (
           <>
             <Header>

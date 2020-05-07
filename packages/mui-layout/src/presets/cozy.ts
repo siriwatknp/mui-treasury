@@ -1,44 +1,47 @@
 import LayoutBuilder from "../builders"
 
-const scheme = LayoutBuilder()
+export default () => {
 
-scheme.configureHeader(builder => {
-  builder
-    .create("appHeader")
-    .registerConfig("xs", {
-      position: "fixed",
-      initialHeight: 56,
-    })
-    .registerConfig("sm", {
-      position: "fixed",
-      initialHeight: 64,
-    })
-    .registerConfig("md", {
-      position: "fixed",
-      clipped: true,
-      initialHeight: 64,
-    })
-})
+  const scheme = LayoutBuilder()
 
-scheme.configureEdgeSidebar(builder => {
-  builder
-    .create("primarySidebar", {
-      anchor: "left",
-    })
-    .registerTemporaryConfig("xs", {
-      width: 256,
-    })
-    .registerPermanentConfig("sm", {
-      width: 64,
-      collapsible: false,
-    })
-    .registerPermanentConfig("md", {
-      width: 256,
-      collapsible: true,
-      collapsedWidth: 64,
-    })
-})
+  scheme.configureHeader(builder => {
+    builder
+      .create("appHeader")
+      .registerConfig("xs", {
+        position: "fixed",
+        initialHeight: 56,
+      })
+      .registerConfig("sm", {
+        position: "fixed",
+        initialHeight: 64,
+      })
+      .registerConfig("md", {
+        position: "fixed",
+        clipped: true,
+        initialHeight: 64,
+      })
+  })
 
-scheme.enableAutoCollapse("primarySidebar", "md")
+  scheme.configureEdgeSidebar(builder => {
+    builder
+      .create("primarySidebar", {
+        anchor: "left",
+      })
+      .registerTemporaryConfig("xs", {
+        width: 256,
+      })
+      .registerPermanentConfig("sm", {
+        width: 64,
+        collapsible: false,
+      })
+      .registerPermanentConfig("md", {
+        width: 256,
+        collapsible: true,
+        collapsedWidth: 64,
+      })
+  })
 
-export default scheme
+  scheme.enableAutoCollapse("primarySidebar", "md")
+
+  return scheme
+}

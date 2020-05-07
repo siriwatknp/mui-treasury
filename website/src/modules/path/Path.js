@@ -6,7 +6,9 @@ import {
   STYLE_MENUS,
 } from '../../constants/menus';
 
-const { edgeSidebar: { primarySidebar } } = presets.muiTreasury.clone();
+export const muiTreasuryScheme = presets.getMuiTreasury()
+
+const { edgeSidebar: { primarySidebar } } = muiTreasuryScheme.clone();
 
 const getHomeHandler = () => {
   return {
@@ -45,11 +47,6 @@ const getLayoutV3Handler = () => {
   return {
     pattern: /\/layout\/v3.*/g,
     sidebarMenus: LAYOUT_MENUS,
-    parseConfig: c => {
-      if (c && c.lg) {
-        c.lg.width = 300;
-      }
-    },
     getOpenKeys: () => [
       'v3',
       'tutorials-v3',
@@ -61,6 +58,11 @@ const getLayoutPresetHandler = () => {
   return {
     pattern: /\/layout\/presets.*/g,
     sidebarMenus: LAYOUT_MENUS,
+    parseConfig: c => {
+      if (c && c.lg) {
+        c.lg.width = 208;
+      }
+    },
     getOpenKeys: () => [
       'presets',
     ],
@@ -83,7 +85,6 @@ const getLayoutHandler = () => {
   return {
     pattern: /\/layout.*/g,
     sidebarMenus: LAYOUT_MENUS,
-    parseConfig: () => {},
     getOpenKeys: () => [
       'tutorials',
       'advanced',

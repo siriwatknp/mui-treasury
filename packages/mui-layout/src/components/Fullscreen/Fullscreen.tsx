@@ -12,7 +12,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Fullscreen: React.FC<{ className: string }> = ({
+const Fullscreen: React.FC<{ className?: string }> = ({
   children,
   className,
   ...props

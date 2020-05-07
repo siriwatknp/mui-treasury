@@ -1,17 +1,16 @@
-import contentBased from './contentBased';
-import cozy from './cozy';
-import defaultLayout from './default';
-import fixed from './fixed';
-import muiTreasury from './muiTreasury';
-import standard from './standard';
-import getStandard from './getStandard';
+// import as function for treeshakeable
+import getContentBased from './contentBased';
+import getCozy from './cozy';
+import getDefault from './default';
+import getFixed from './fixed';
+import getMuiTreasury from './muiTreasury';
+import getStandard from './standard';
 
-export {
-  contentBased,
-  cozy,
-  defaultLayout,
-  fixed,
-  muiTreasury,
-  standard,
-  getStandard,
-};
+export default {
+  getContentBased,
+  getCozy,
+  getDefault,
+  getFixed,
+  getMuiTreasury,
+  getStandard
+}

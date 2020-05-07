@@ -7,7 +7,16 @@ import Box from "@material-ui/core/Box"
 import Fab from "@material-ui/core/Fab"
 import CreditCard from "@material-ui/icons/CreditCard"
 import Close from "@material-ui/icons/Close"
-import Layout, { getLayoutComponents } from '@mui-treasury/layout';
+import Layout, {
+  Root,
+  Fullscreen,
+  InsetContainer,
+  getHeader,
+  getContent,
+  getDrawerSidebar,
+  getInsetSidebar,
+  getInsetFooter,
+} from '@mui-treasury/layout';
 import {
   dailyShoppingTheme,
   DailyHeader,
@@ -17,16 +26,11 @@ import {
 } from "@mui-treasury/mockup/brands/dailyShopping"
 import styled from 'styled-components';
 
-const {
-  Root,
-  Header,
-  Content,
-  DrawerSidebar,
-  Fullscreen,
-  InsetFooter,
-  InsetSidebar,
-  InsetContainer,
-} = getLayoutComponents(styled);
+const Header = getHeader(styled)
+const Content = getContent(styled)
+const DrawerSidebar = getDrawerSidebar(styled)
+const InsetSidebar = getInsetSidebar(styled)
+const InsetFooter = getInsetFooter(styled)
 
 const useStyles = makeStyles(({ breakpoints }) => ({
   header: {

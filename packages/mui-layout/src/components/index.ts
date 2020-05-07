@@ -5,10 +5,6 @@ import Drawer, { DrawerProps } from '@material-ui/core/Drawer';
 import SwipeableDrawer, {
   SwipeableDrawerProps,
 } from '@material-ui/core/SwipeableDrawer';
-import Root from './Root';
-import Fullscreen from './Fullscreen';
-import InsetContainer from './InsetContainer';
-import SidebarContent from './SidebarContent';
 import { generateStyledProxyCreator } from './Shared/StyledProxy';
 import { createHeader } from './Header';
 import { createContent } from './Content';
@@ -22,51 +18,81 @@ import { createInsetFooter } from './InsetFooter';
 import { createInsetSidebar } from './InsetSidebar';
 import { createSwipeableSidebar } from './SwipeableSidebar';
 
-export const getLayoutComponents = (styled: any) => {
-  const styledProxy = generateStyledProxyCreator(styled);
-
-  // StyledComponent
-  const Div = styledProxy('div');
-  const Main = styledProxy('main');
-  const StyledFooter = styledProxy('footer');
-  const StyledAppBar = styledProxy<AppBarProps>(AppBar);
-  const StyledButton = styledProxy<ButtonProps>(Button);
-  const StyledIconBtn = styledProxy<IconButtonProps>(IconButton);
-  const StyledDrawer = styledProxy<DrawerProps>(Drawer, CLS);
-  const StyledSwipeableDrawer = styledProxy<SwipeableDrawerProps>(
-    SwipeableDrawer,
-    CLS
-  );
-
-  const Header = createHeader(StyledAppBar);
-  const Content = createContent(Main, Div);
-  const CollapseBtn = createCollapseBtn(StyledButton);
-  const SidebarTrigger = createSidebarTrigger(StyledIconBtn);
-  const DrawerSidebar = createDrawerSidebar(StyledDrawer, Div);
-  const Footer = createFooter(StyledFooter);
-  const InsetAvoidingView = createInsetAvoidingView(Div);
-  const InsetFooter = createInsetFooter(Div, StyledFooter);
-  const InsetSidebar = createInsetSidebar(Div);
-  const SwipeableSidebar = createSwipeableSidebar(StyledSwipeableDrawer, Div);
-  return {
-    Header,
-    Content,
-    CollapseBtn,
-    SidebarTrigger,
-    DrawerSidebar,
-    Footer,
-    Fullscreen,
-    InsetAvoidingView,
-    InsetContainer,
-    InsetFooter,
-    InsetSidebar,
-    Root,
-    SidebarContent,
-    SwipeableSidebar,
-  };
-};
-
 export { default as Root } from './Root';
 export { default as InsetContainer } from './InsetContainer';
 export { default as Fullscreen } from './Fullscreen';
 export { default as SidebarContent } from './SidebarContent';
+
+/**
+ * export as getter function for tree shakeable
+ * @param styled
+ */
+export const getHeader = (styled: any) => {
+  const styledProxy = generateStyledProxyCreator(styled);
+  const StyledAppBar = styledProxy<AppBarProps>(AppBar);
+  return createHeader(StyledAppBar);
+};
+
+export const getContent = (styled: any) => {
+  const styledProxy = generateStyledProxyCreator(styled);
+  const Div = styledProxy('div');
+  const Main = styledProxy('main');
+  return createContent(Main, Div);
+};
+
+export const getCollapseBtn = (styled: any) => {
+  const styledProxy = generateStyledProxyCreator(styled);
+  const StyledButton = styledProxy<ButtonProps>(Button);
+  return createCollapseBtn(StyledButton);
+};
+
+export const getSidebarTrigger = (styled: any) => {
+  const styledProxy = generateStyledProxyCreator(styled);
+  const StyledIconBtn = styledProxy<IconButtonProps>(IconButton);
+  return createSidebarTrigger(StyledIconBtn);
+}
+
+export const getDrawerSidebar = (styled: any) => {
+  const styledProxy = generateStyledProxyCreator(styled);
+  const Div = styledProxy('div');
+  const StyledDrawer = styledProxy<DrawerProps>(Drawer, CLS);
+  return createDrawerSidebar(StyledDrawer, Div);
+};
+
+export const getFooter = (styled: any) => {
+  const styledProxy = generateStyledProxyCreator(styled);
+  const StyledFooter = styledProxy('footer');
+  return createFooter(StyledFooter);
+};
+
+export const getInsetAvoidingView = (styled: any) => {
+  const styledProxy = generateStyledProxyCreator(styled);
+  const Div = styledProxy('div');
+  return createInsetAvoidingView(Div);
+};
+
+export const getInsetFooter = (styled: any) => {
+  const styledProxy = generateStyledProxyCreator(styled);
+  const Div = styledProxy('div');
+  const StyledFooter = styledProxy('footer');
+  return createInsetFooter(Div, StyledFooter);
+};
+
+export const getInsetSidebar = (styled: any) => {
+  const styledProxy = generateStyledProxyCreator(styled);
+  const Div = styledProxy('div');
+  return createInsetSidebar(Div);
+};
+
+export const getSwipeableSidebar = (styled: any) => {
+  const styledProxy = generateStyledProxyCreator(styled);
+  const StyledSwipeableDrawer = styledProxy<SwipeableDrawerProps>(
+    SwipeableDrawer,
+    CLS
+  );
+  const Div = styledProxy('div');
+  return createSwipeableSidebar(StyledSwipeableDrawer, Div);
+};
+/**
+ *  --------------------------------------------------------------
+ */

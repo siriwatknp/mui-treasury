@@ -44,7 +44,7 @@ export default [
     ],
   },
   {
-    key: 'layout-feature',
+    key: 'features',
     label: 'Features',
     subMenus: [
       {
