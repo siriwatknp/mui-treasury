@@ -25,9 +25,11 @@ describe('HeaderBuilder', () => {
         initialHeight: 64,
       },
     });
+    expect(builder.getId()).toEqual('header')
 
     builder.create('newHeader')
     expect(builder.getData()).toEqual({})
+    expect(builder.getId()).toEqual('newHeader')
   });
 
   it('should accept initial map', () => {

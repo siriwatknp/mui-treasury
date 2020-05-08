@@ -5,7 +5,6 @@ export default () => {
 
   scheme.configureHeader(builder => {
     builder
-      .create("appHeader")
       .registerConfig("xs", {
         position: "relative",
         initialHeight: 56,

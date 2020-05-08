@@ -12,7 +12,7 @@ const INITIAL_HEIGHT = {
 };
 
 export default (initialMap: HeaderConfigMap = {}): IHeaderBuilder => {
-  let id: string;
+  let id: string = 'header';
   let map: HeaderConfigMap = Object.assign({}, initialMap);
 
   const Registry = (headerId: string): IRegistry<HeaderConfig> => ({
@@ -26,7 +26,7 @@ export default (initialMap: HeaderConfigMap = {}): IHeaderBuilder => {
     },
   });
 
-  const defaultRegistry = Registry('header')
+  const defaultRegistry = Registry(id)
 
   return {
     create: function(headerId: string) {

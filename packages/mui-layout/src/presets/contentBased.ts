@@ -1,28 +1,28 @@
-import LayoutBuilder from "../builders"
+import LayoutBuilder from '../builders';
 
 export default () => {
-  const scheme = LayoutBuilder()
+  const scheme = LayoutBuilder();
 
   scheme.configureHeader(builder => {
-    builder.create("appHeader").registerConfig("xs", {
-      position: "relative",
+    builder.registerConfig('xs', {
+      position: 'relative',
       clipped: false,
-    })
-  })
+    });
+  });
 
   scheme.configureEdgeSidebar(builder => {
     builder
-      .create("primarySidebar", {
-        anchor: "left",
+      .create('primarySidebar', {
+        anchor: 'left',
       })
-      .registerTemporaryConfig("xs", {
+      .registerTemporaryConfig('xs', {
         width: 256,
       })
-      .registerPersistentConfig("sm", {
-        persistentBehavior: "flexible",
+      .registerPersistentConfig('sm', {
+        persistentBehavior: 'flexible',
         width: 256,
         collapsible: false,
-      })
-  })
-  return scheme
-}
+      });
+  });
+  return scheme;
+};
