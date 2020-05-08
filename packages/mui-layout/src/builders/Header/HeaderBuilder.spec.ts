@@ -1,6 +1,35 @@
 import HeaderBuilder from './HeaderBuilder';
 
 describe('HeaderBuilder', () => {
+  it('should have default registry and overridden by a new one', () => {
+    const builder = HeaderBuilder();
+    builder
+      .registerConfig('xs', {
+        position: 'sticky',
+        clipped: true,
+      })
+      .registerConfig('md', {
+        position: 'relative',
+      });
+
+    expect(builder.getData()).toStrictEqual({
+      xs: {
+        id: 'header',
+        position: 'sticky',
+        clipped: true,
+        initialHeight: 56,
+      },
+      md: {
+        id: 'header',
+        position: 'relative',
+        initialHeight: 64,
+      },
+    });
+
+    builder.create('newHeader')
+    expect(builder.getData()).toEqual({})
+  });
+
   it('should accept initial map', () => {
     const map = {
       xs: {
@@ -36,7 +65,7 @@ describe('HeaderBuilder', () => {
       .registerConfig('xl', {
         position: 'absolute',
         initialHeight: 80,
-      })
+      });
     expect(builder.getData()).toStrictEqual({
       xl: {
         id: 'header',
