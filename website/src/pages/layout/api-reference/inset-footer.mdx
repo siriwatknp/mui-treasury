@@ -11,13 +11,14 @@ This component is a combination of `Footer`, `Container` and `InsetAvoidingView`
 ```jsx
 import styled from 'styled-components'
 import Container from '@material-ui/core/Container';
-import Layout, { getLayoutComponents } from '@mui-treasury/layout';
-
-const {
+import Layout, {
   Root,
-  InsetFooter,
-  InsetAvoidingView,
-} = getLayoutComponents(styled)
+  getInsetFooter,
+  getInsetAvoidingView
+} from '@mui-treasury/layout';
+
+const InsetFooter = getInsetFooter(styled)
+const InsetAvoidingView = getInsetAvoidingView(styled)
 
 cosnt scheme = Layout()
 

@@ -11,13 +11,14 @@ Read more about [Inset sidebar config](/layout/api-reference/inset-sidebar-build
 
 ```jsx
 import styled from 'styled-components'
-import Layout, { getLayoutComponents } from '@mui-treasury/layout';
+import Layout, {
+ Root,
+ getInsetContainer,
+ getInsetSidebar
+} from '@mui-treasury/layout';
 
-const {
-  Root,
-  InsetContainer,
-  InsetSidebar
-} = getLayoutComponents(styled)
+const InsetContainer = getInsetContainer(styled)
+const InsetSidebar = getInsetSidebar(styled)
 
 cosnt scheme = Layout()
 

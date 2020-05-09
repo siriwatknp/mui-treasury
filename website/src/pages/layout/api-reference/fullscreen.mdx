@@ -19,7 +19,9 @@ This component is a simple `<div />` that has these style. Mostly, for AbsoluteI
 
 ```jsx
 import styled from 'styled-components'
-import Layout, { Root, Fullscreen } from '@mui-treasury/layout';
+import Layout, { Root, getFullscreen } from '@mui-treasury/layout';
+
+const Fullscreen = getFullscreen(styled)
 
 cosnt scheme = Layout()
 

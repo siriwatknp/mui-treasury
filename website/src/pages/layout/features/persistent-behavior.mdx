@@ -12,9 +12,10 @@ adjusts when PersistentEdgeSidebar open.
 
 ```js
 scheme.configureHeader(builder => {
-  builder.create('appHeader').registerConfig('xs', {
-    position: 'sticky',
-  });
+  builder
+    .registerConfig('xs', {
+      position: 'sticky',
+    });
 });
 
 scheme.configureEdgeSidebar(builder => {
@@ -41,7 +42,7 @@ scheme.configureEdgeSidebar(builder => {
       collapsible: true,
       collapsedWidth: 64,
       persistentBehavior: {
-        header_id: 'fit',
+        header: 'fit',
         content: 'flexible',
         footer: 'none'
       }
@@ -49,7 +50,7 @@ scheme.configureEdgeSidebar(builder => {
 });
 ```
 
-use `content` to target Content & `footer` to target Footer (They are fixed id).
+use `header` to target Header (if you don't specify id), `content` to target Content and `footer` to target Footer (They are fixed id).
 
 ---
 
