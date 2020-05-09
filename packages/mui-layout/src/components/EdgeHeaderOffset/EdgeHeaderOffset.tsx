@@ -1,9 +1,9 @@
 import React from "react"
 import cx from "clsx"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
-import { useLayoutCtx } from "../../core/Context"
+import { useLayoutCtx } from "../../contexts"
 import EdgeHeaderOffsetCompiler from "../../compilers/EdgeHeaderOffsetCompiler"
-import { useEdgeHeaderMagnet } from "../../core/hooks"
+import { useEdgeHeaderMagnet } from "../../hooks"
 import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 import { transitionStyles } from "../../styles"
 import { createBreakpointStyles } from "../../utils"

@@ -1,7 +1,7 @@
 import React, { HTMLProps } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Container, { ContainerProps } from '@material-ui/core/Container';
-import { useFullscreenCtx } from '../../core/Context/FullscreenContext';
+import { useFullscreenCtx } from '../../contexts/FullscreenContext';
 
 export type InsetContainerProps = {
   leftSidebar?: React.ReactNode;

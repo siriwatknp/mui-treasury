@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react"
 import debounce from "debounce"
-import { useWindow } from "../Context"
+import { useWindowCtx } from "../contexts"
 
 function getScrollY(obj: Window) {
   return typeof obj === "object" ? obj.scrollY : 0
 }
 
 export const useScrollY = () => {
-  const { iWindow } = useWindow()
+  const { iWindow } = useWindowCtx()
   const [scrollY, setScrollY] = useState(getScrollY(iWindow))
   const debounceScrollListener = useRef(
     debounce(() => {

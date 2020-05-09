@@ -6,7 +6,7 @@ import ArrowRight from '@material-ui/icons/KeyboardArrowRightRounded';
 import EdgeCollapseCompiler from '../../compilers/EdgeCollapseCompiler';
 import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 import { CtaProps } from '../../types';
-import { useSidebarCta } from '../../core';
+import { useSidebarCta } from '../../hooks';
 import { createDisplayNone } from '../../utils';
 
 export default (styled: any) => {

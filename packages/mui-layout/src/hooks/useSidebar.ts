@@ -1,7 +1,7 @@
 import { useTheme } from '@material-ui/core/styles';
-import EdgeSidebarCompiler from '../../compilers/EdgeSidebarCompiler';
-import { useLayoutCtx } from '../Context';
-import { getSidebarAnchor, createDisplayNone } from '../../utils';
+import EdgeSidebarCompiler from '../compilers/EdgeSidebarCompiler';
+import { useLayoutCtx } from '../contexts';
+import { getSidebarAnchor, createDisplayNone } from '../utils';
 
 export const useSidebar = (id: string, consumer?: string) => {
   if (!id) {

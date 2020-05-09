@@ -1,10 +1,10 @@
 import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import getHeaderOffset from '../HeaderOffset';
-import { useLayoutCtx } from '../../core';
+import { useLayoutCtx } from '../../contexts';
 import { createBreakpointStyles } from '../../utils';
 import ContentCompiler from '../../compilers/ContentCompiler';
-import { useFullscreenCtx } from '../../core/Context/FullscreenContext';
+import { useFullscreenCtx } from '../../contexts/FullscreenContext';
 import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 
 export default (styled: any) => {

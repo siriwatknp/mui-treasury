@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 import getInsetHeaderOffset from '../InsetHeaderOffset';
-import { useInsetSidebar } from '../../core';
+import { useInsetSidebar } from '../../hooks';
 
 export default (styled: any) => {
   const styledProxy = generateStyledProxyCreator(styled);

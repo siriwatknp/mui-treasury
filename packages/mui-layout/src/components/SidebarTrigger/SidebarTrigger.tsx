@@ -5,7 +5,7 @@ import ArrowLeft from '@material-ui/icons/KeyboardArrowLeftRounded';
 import ArrowRight from '@material-ui/icons/KeyboardArrowRightRounded';
 import MenuRounded from '@material-ui/icons/MenuRounded';
 import EdgeTriggerCompiler from '../../compilers/EdgeTriggerCompiler';
-import { useSidebarCta } from '../../core';
+import { useSidebarCta } from '../../hooks';
 import { createDisplayNone } from '../../utils';
 import { CtaProps } from '../../types';
 import { generateStyledProxyCreator } from '../Shared/StyledProxy';

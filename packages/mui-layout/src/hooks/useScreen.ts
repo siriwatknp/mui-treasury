@@ -2,8 +2,8 @@ import React from "react"
 import debounce from "debounce"
 import useTheme from "@material-ui/core/styles/useTheme"
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
-import { useWindow } from "../Context"
-import { mapWidthToScreen } from "../../utils"
+import { useWindowCtx } from "../contexts"
+import { mapWidthToScreen } from "../utils"
 
 function getWindowWidth(w: Window) {
   return typeof w === "object" ? w.innerWidth : undefined
@@ -11,7 +11,7 @@ function getWindowWidth(w: Window) {
 
 export const useScreen = (): Breakpoint => {
   const { breakpoints } = useTheme()
-  const { iWindow } = useWindow()
+  const { iWindow } = useWindowCtx()
   const getScreen = (): Breakpoint =>
     mapWidthToScreen(getWindowWidth(iWindow), breakpoints)
 
