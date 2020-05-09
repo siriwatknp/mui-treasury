@@ -2,22 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import styled from 'styled-components';
-import { getLayoutComponents } from '@mui-treasury/layout';
+import {
+  getHeader,
+  getDrawerSidebar,
+  getSidebarContent,
+  getContent,
+  getFooter,
+  getCollapseBtn,
+  getSidebarTrigger,
+} from '@mui-treasury/layout';
 import Toolbar from '@material-ui/core/Toolbar';
 import PageHeader from 'components/layout/PageHeader';
 import PageFooter from 'components/layout/PageFooter';
 import ComponentMenuList from 'components/organisms/ComponentMenuList';
 import useQueryParams from '../../utils/useQueryParams';
 
-const {
-  Header,
-  DrawerSidebar,
-  Content,
-  Footer,
-  CollapseBtn,
-  SidebarTrigger,
-  SidebarContent,
-} = getLayoutComponents(styled);
+const Header = getHeader(styled);
+const DrawerSidebar = getDrawerSidebar(styled);
+const SidebarContent = getSidebarContent(styled);
+const Content = getContent(styled);
+const Footer = getFooter(styled);
+const CollapseBtn = getCollapseBtn(styled);
+const SidebarTrigger = getSidebarTrigger(styled);
 
 const useStyles = makeStyles(theme => {
   const { palette } = theme;

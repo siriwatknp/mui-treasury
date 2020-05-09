@@ -60,13 +60,31 @@ export const LayoutProvider = ({
     reducer,
     merge(autoGenInitialState, controlledInitialState || {})
   );
-  const setOpen = (id: string, value: boolean) =>
-    dispatch({ type: 'SET_OPEN', payload: { id, value } });
-  const setCollapsed = (id: string, value: boolean) =>
-    dispatch({
+  const setOpen = (id: string, value: boolean) => {
+    if (typeof id !== 'string') {
+      if (process.env.NODE_ENV !== 'production') {
+        throw new Error(
+          'To call `setOpen`, You must pass 1st argument(sidebarId) as string'
+        );
+      }
+      return;
+    }
+    return dispatch({ type: 'SET_OPEN', payload: { id, value } });
+  };
+  const setCollapsed = (id: string, value: boolean) => {
+    if (typeof id !== 'string') {
+      if (process.env.NODE_ENV !== 'production') {
+        throw new Error(
+          'To call `setCollapsed`, You must pass 1st argument(sidebarId) as string'
+        );
+      }
+      return;
+    }
+    return dispatch({
       type: 'SET_COLLAPSED',
       payload: { id, value },
     });
+  };
   const data = scheme.getComponentData();
   return (
     <Context.Provider

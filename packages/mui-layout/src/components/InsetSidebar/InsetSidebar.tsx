@@ -1,23 +1,23 @@
 import React from 'react';
-import styledProxy from '../Shared/StyledProxy';
 import { makeStyles } from '@material-ui/core/styles';
-import { createInsetHeaderOffset } from '../InsetHeaderOffset';
+import { generateStyledProxyCreator } from '../Shared/StyledProxy';
+import getInsetHeaderOffset from '../InsetHeaderOffset';
 import { useInsetSidebar } from '../../core';
 
-const useStyles = makeStyles(({ palette }) => ({
-  root: {
-    position: 'relative',
-    flexShrink: 0,
-  },
-  paper: {
-    backgroundColor: palette.grey[100],
-  },
-}));
+export default (styled: any) => {
+  const styledProxy = generateStyledProxyCreator(styled);
+  const Div = styledProxy('div');
+  const InsetHeaderOffset = getInsetHeaderOffset(styled);
 
-const Div = styledProxy('div');
-
-export const createInsetSidebar = (StyledComponent = Div) => {
-  const InsetHeaderOffset = createInsetHeaderOffset(StyledComponent);
+  const useStyles = makeStyles(({ palette }) => ({
+    root: {
+      position: 'relative',
+      flexShrink: 0,
+    },
+    paper: {
+      backgroundColor: palette.grey[100],
+    },
+  }));
 
   const InsetSidebar = ({
     sidebarId,
@@ -30,21 +30,19 @@ export const createInsetSidebar = (StyledComponent = Div) => {
     const classes = useStyles(props);
     const { rootStyles, bodyStyles } = useInsetSidebar(sidebarId);
     return (
-      <StyledComponent
+      <Div
         className={`InsetSidebar-root ${classes.root}`}
         styles={rootStyles}
       >
-        <StyledComponent
+        <Div
           className={`InsetSidebar-paper ${classes.paper}`}
           styles={bodyStyles}
         >
           <InsetHeaderOffset sidebarId={sidebarId} />
           {children}
-        </StyledComponent>
-      </StyledComponent>
+        </Div>
+      </Div>
     );
   };
   return InsetSidebar;
 };
-
-export default createInsetSidebar();

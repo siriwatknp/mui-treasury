@@ -2,11 +2,12 @@ import React from "react"
 import useTheme from "@material-ui/core/styles/useTheme"
 import { useLayoutCtx } from "../../core"
 import InsetAvoidingViewCompiler from "../../compilers/InsetAvoidingViewCompiler"
-import styledProxy from '../Shared/StyledProxy';
+import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 
-const Div = styledProxy('div')
+export default (styled: any) => {
+  const styledProxy = generateStyledProxyCreator(styled);
+  const Div = styledProxy('div');
 
-export const createInsetAvoidingView = (StyledComponent = Div) => {
   const InsetAvoidingView = (
     props: React.PropsWithChildren<{ className?: string }>
   ) => {
@@ -16,7 +17,7 @@ export const createInsetAvoidingView = (StyledComponent = Div) => {
       data.insetSidebar
     ).getMediaQueryStyle(breakpoints)
     return (
-      <StyledComponent
+      <Div
         {...props}
         styles={{
           transition: "all 225ms",
@@ -27,5 +28,3 @@ export const createInsetAvoidingView = (StyledComponent = Div) => {
   }
   return InsetAvoidingView
 }
-
-export default createInsetAvoidingView()

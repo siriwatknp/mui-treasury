@@ -1,39 +1,40 @@
 import React from 'react';
 import cx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { SwipeableDrawerProps } from '@material-ui/core/SwipeableDrawer';
+import SwipeableDrawer, {
+  SwipeableDrawerProps,
+} from '@material-ui/core/SwipeableDrawer';
 import { useSidebar, SidebarProvider, useWindow } from '../../core';
 import { useBreakpointConfig, useSidebarAutoCollapse } from '../../core/hooks';
-import { createEdgeHeaderOffset } from '../EdgeHeaderOffset';
-import {
-  createSwipeableVariant,
-  StyledProxySwipeableDrawer,
-} from '../Shared/SharedSidebar';
+import getEdgeHeaderOffset from '../EdgeHeaderOffset';
+import { CLS, createSwipeableVariant } from '../Shared/SharedSidebar';
 import { get, createBreakpointStyles, createHiddenStyles } from '../../utils';
 import { transitionStyles } from '../../styles';
 import { EdgeSidebarConfig } from '../../types';
-import styledProxy from '../Shared/StyledProxy';
+import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 
-const useTransitionStyles = makeStyles(transitionStyles);
-const Div = styledProxy('div');
-
-export const createSwipeableSidebar = (
-  StyledComponent = StyledProxySwipeableDrawer,
-  StyledDiv = Div
-) => {
+export default (styled: any) => {
+  const styledProxy = generateStyledProxyCreator(styled);
+  const StyledSwipeableDrawer = styledProxy<SwipeableDrawerProps>(
+    SwipeableDrawer,
+    CLS
+  );
+  const EdgeHeaderOffset = getEdgeHeaderOffset(styled);
   const TemporarySwipeableDrawer = createSwipeableVariant(
     'temporary',
-    StyledComponent
+    StyledSwipeableDrawer
   );
   const PermanentSwipeableDrawer = createSwipeableVariant(
     'permanent',
-    StyledComponent
+    StyledSwipeableDrawer
   );
   const PersistentSwipeableDrawer = createSwipeableVariant(
     'persistent',
-    StyledComponent
+    StyledSwipeableDrawer
   );
-  const EdgeHeaderOffset = createEdgeHeaderOffset(StyledDiv);
+
+  const useTransitionStyles = makeStyles(transitionStyles);
+
   const SwipeableSidebar = ({
     onClose,
     onOpen,
@@ -153,5 +154,3 @@ export const createSwipeableSidebar = (
   };
   return SwipeableSidebar;
 };
-
-export default createSwipeableSidebar();

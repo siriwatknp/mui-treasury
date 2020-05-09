@@ -8,30 +8,29 @@ import EdgeTriggerCompiler from '../../compilers/EdgeTriggerCompiler';
 import { useSidebarCta } from '../../core';
 import { createDisplayNone } from '../../utils';
 import { CtaProps } from '../../types';
-import createHiddenProxyComponent from '../Shared/StyledProxy';
+import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 
-const useStyles = makeStyles(
-  ({ spacing }) => ({
-    // @ts-ignore
-    root: ({ anchor }) => ({
-      ...(anchor === 'left' && {
-        marginLeft: spacing(-1),
-        marginRight: spacing(1),
-      }),
-      ...(anchor === 'right' && {
-        marginLeft: spacing(1),
-        marginRight: spacing(-1),
+export default (styled: any) => {
+  const styledProxy = generateStyledProxyCreator(styled);
+  const StyledIconBtn = styledProxy<IconButtonProps>(IconButton);
+
+  const useStyles = makeStyles(
+    ({ spacing }) => ({
+      // @ts-ignore
+      root: ({ anchor }) => ({
+        ...(anchor === 'left' && {
+          marginLeft: spacing(-1),
+          marginRight: spacing(1),
+        }),
+        ...(anchor === 'right' && {
+          marginLeft: spacing(1),
+          marginRight: spacing(-1),
+        }),
       }),
     }),
-  }),
-  { name: 'SidebarTrigger' }
-);
+    { name: 'SidebarTrigger' }
+  );
 
-const StyledProxyIconBtn = createHiddenProxyComponent<IconButtonProps>(
-  IconButton
-);
-
-export const createSidebarTrigger = (StyledComponent = StyledProxyIconBtn) => {
   const SidebarTrigger = ({
     children,
     sidebarId,
@@ -60,7 +59,7 @@ export const createSidebarTrigger = (StyledComponent = StyledProxyIconBtn) => {
       breakpoints
     );
     return (
-      <StyledComponent
+      <StyledIconBtn
         {...props}
         styles={styles}
         classes={classes}
@@ -72,10 +71,9 @@ export const createSidebarTrigger = (StyledComponent = StyledProxyIconBtn) => {
         {typeof children === 'function'
           ? children({ anchor, ...state })
           : getArrow()}
-      </StyledComponent>
+      </StyledIconBtn>
     );
   };
   return SidebarTrigger;
 };
 
-export default createSidebarTrigger;

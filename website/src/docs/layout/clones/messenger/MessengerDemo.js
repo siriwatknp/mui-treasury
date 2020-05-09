@@ -10,7 +10,16 @@ import {
   createMuiTheme,
   responsiveFontSizes,
 } from '@material-ui/core/styles';
-import Layout, { getLayoutComponents } from '@mui-treasury/layout';
+import Layout, {
+  Root,
+  getHeader,
+  getContent,
+  getFullscreen,
+  getDrawerSidebar,
+  getInsetContainer,
+  getInsetSidebar,
+  getInsetFooter,
+} from '@mui-treasury/layout';
 import {
   MessengerSearch,
   ChatsHeader,
@@ -21,16 +30,13 @@ import {
   ChatDialog,
 } from '@mui-treasury/mockup/brands/messenger';
 
-const {
-  Root,
-  Header,
-  Content,
-  DrawerSidebar,
-  Fullscreen,
-  InsetContainer,
-  InsetSidebar,
-  InsetFooter,
-} = getLayoutComponents(styled);
+const Header = getHeader(styled);
+const Content = getContent(styled);
+const Fullscreen = getFullscreen(styled);
+const DrawerSidebar = getDrawerSidebar(styled);
+const InsetSidebar = getInsetSidebar(styled);
+const InsetFooter = getInsetFooter(styled);
+const InsetContainer = getInsetContainer(styled);
 
 const useStyles = makeStyles(() => ({
   header: {

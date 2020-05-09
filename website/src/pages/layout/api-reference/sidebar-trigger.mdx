@@ -12,9 +12,10 @@ assign any props to it except sidebarId that it need to know which sidebar shoul
 
 ```jsx
 import styled from 'styled-components'
-import Layout, { getLayoutComponents } from '@mui-treasury/layout';
+import Layout, { Root, getDrawerSidebar, getSidebarTrigger } from '@mui-treasury/layout';
 
-const { Root, DrawerSidebar, SidebarTrigger } = getLayoutComponents(styled)
+const DrawerSidebar = getDrawerSidebar(styled)
+const SidebarTrigger = getSidebarTrigger(styled)
 
 cosnt scheme = Layout()
 

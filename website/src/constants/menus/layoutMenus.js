@@ -44,7 +44,7 @@ export default [
     ],
   },
   {
-    key: 'layout-feature',
+    key: 'features',
     label: 'Features',
     subMenus: [
       {
@@ -204,39 +204,39 @@ export default [
       },
     ],
   },
-  // {
-  //   key: 'basic-examples',
-  //   label: 'Basic Examples',
-  //   subMenus: [
-  //     {
-  //       key: 'custom-theme',
-  //       label: 'Custom theme',
-  //       to: '/layout/basic-examples/custom-theme?bgColor=d4b397',
-  //     },
-  //     {
-  //       key: 'custom-styles',
-  //       label: 'Custom styles',
-  //       to:
-  //         '/layout/basic-examples/custom-styles?bgColor=213E9B&accent=rgb(17, 254, 220)&dark=true',
-  //     },
-  //     {
-  //       key: 'control-sidebar',
-  //       label: 'Control Sidebar',
-  //       to:
-  //         '/layout/basic-examples/control-sidebar?bgColor=e9e9e9&primary=36338E&accent=ff9600',
-  //     },
-  //     {
-  //       key: 'secondary-sidebar',
-  //       label: '2nd Sidebar',
-  //       to: '/layout/basic-examples/secondary-sidebar',
-  //     },
-  //     {
-  //       key: 'inset-sidebar',
-  //       label: 'Inset Sidebar',
-  //       to: '/layout/basic-examples/inset-sidebar',
-  //     },
-  //   ],
-  // },
+  {
+    key: 'examples',
+    label: 'Examples',
+    subMenus: [
+      {
+        key: 'custom-theme',
+        label: 'Custom theme',
+        to: '/layout/examples/custom-theme?bgColor=d4b397',
+      },
+      {
+        key: 'custom-styles',
+        label: 'Custom styles',
+        to:
+          '/layout/examples/custom-styles?bgColor=213E9B&accent=rgb(17, 254, 220)&dark=true',
+      },
+      {
+        key: 'control-sidebar',
+        label: 'Control Sidebar',
+        to:
+          '/layout/examples/control-sidebar?bgColor=e9e9e9&primary=36338E&accent=ff9600',
+      },
+      {
+        key: 'secondary-sidebar',
+        label: '2nd Sidebar',
+        to: '/layout/examples/secondary-sidebar',
+      },
+      {
+        key: 'inset-sidebar',
+        label: 'Inset Sidebar',
+        to: '/layout/examples/inset-sidebar?bgColor=ffe4ee',
+      },
+    ],
+  },
   {
     key: 'clones',
     label: 'Clones',
