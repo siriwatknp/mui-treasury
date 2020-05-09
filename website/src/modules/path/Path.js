@@ -156,7 +156,6 @@ const getPathValue = (pathname, key) =>
       getHomeHandler(),
       getStylesHandler(),
       getComponentHandler(),
-      getLayoutDevelop(),
       getLayoutPresetHandler(),
       getLayoutExampleHandler(),
       getLayoutCloneHandler(),
