@@ -3,11 +3,12 @@ import { useLayoutCtx } from '../../core';
 import { useTheme } from '@material-ui/core';
 import { createBreakpointStyles } from '../../utils';
 import ContentCompiler from '../../compilers/ContentCompiler';
-import createStyledProxy from '../Shared/StyledProxy';
+import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 
-const StyledFooter = createStyledProxy('footer');
+export default (styled: any) => {
+  const styledProxy = generateStyledProxyCreator(styled);
+  const StyledFooter = styledProxy('footer');
 
-export const createFooter = (StyledComponent = StyledFooter) => {
   const Footer = (props: React.PropsWithChildren<{ className?: string }>) => {
     const { breakpoints } = useTheme();
     const { data, state } = useLayoutCtx();
@@ -17,7 +18,7 @@ export const createFooter = (StyledComponent = StyledFooter) => {
       breakpoints
     );
     return (
-      <StyledComponent
+      <StyledFooter
         {...props}
         styles={{ transition: 'all 225ms', ...styles }}
       />
@@ -26,4 +27,3 @@ export const createFooter = (StyledComponent = StyledFooter) => {
   return Footer
 }
 
-export default createFooter();

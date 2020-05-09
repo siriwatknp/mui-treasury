@@ -10,9 +10,9 @@ Drawer sidebar will look for edge sidebar config and render based on them.
 
 ```jsx
 import styled from 'styled-components'
-import Layout, { getLayoutComponents } from '@mui-treasury/layout';
+import Layout, { Root, getDrawerSidebar } from '@mui-treasury/layout';
 
-const { Root, DrawerSidebar } = getLayoutComponents(styled)
+const DrawerSidebar = getDrawerSidebar(styled)
 
 cosnt scheme = Layout()
 

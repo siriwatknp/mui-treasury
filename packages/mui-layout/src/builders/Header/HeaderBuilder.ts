@@ -12,24 +12,29 @@ const INITIAL_HEIGHT = {
 };
 
 export default (initialMap: HeaderConfigMap = {}): IHeaderBuilder => {
-  let id: string;
-  const map: HeaderConfigMap = Object.assign({}, initialMap);
+  let id: string = 'header';
+  let map: HeaderConfigMap = Object.assign({}, initialMap);
+
+  const Registry = (headerId: string): IRegistry<HeaderConfig> => ({
+    registerConfig(breakpoint, config) {
+      map[breakpoint] = {
+        initialHeight: pickNearestBreakpoint(INITIAL_HEIGHT, breakpoint),
+        ...config,
+        id: headerId,
+      };
+      return this;
+    },
+  });
+
+  const defaultRegistry = Registry(id)
 
   return {
     create: function(headerId: string) {
       id = headerId;
-      const Registry = (): IRegistry<HeaderConfig> => ({
-        registerConfig(breakpoint, config) {
-          map[breakpoint] = {
-            initialHeight: pickNearestBreakpoint(INITIAL_HEIGHT, breakpoint),
-            ...config,
-            id: headerId,
-          };
-          return this;
-        },
-      });
-      return Registry();
+      map = Object.assign({}, initialMap); // reset map
+      return Registry(headerId); // return new registry
     },
+    registerConfig: defaultRegistry.registerConfig,
     update: function(updater) {
       updater(map);
     },

@@ -3,20 +3,14 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import {
   Root,
-  Header,
-  Sidebar,
-  Content,
-  Footer,
-  CollapseBtn,
-  CollapseIcon,
-  SidebarTrigger,
-  SidebarTriggerIcon,
-  SecondarySidebar,
-  SecondarySidebarTrigger,
-  SecondarySidebarTriggerIcon,
-  SecondaryCollapseBtn,
-  SecondaryCollapseIcon,
-  cozyLayoutPreset,
+  getHeader,
+  getContent,
+  getFooter,
+  getDrawerSidebar,
+  getSidebarTrigger,
+  getSidebarContent,
+  getCollapseBtn,
+  getCozyScheme,
 } from '@mui-treasury/layout';
 import {
   HeaderMockUp,
@@ -24,38 +18,52 @@ import {
   ContentMockUp,
   FooterMockUp,
 } from '@mui-treasury/mockup/layout';
+import styled from 'styled-components';
+
+const Header = getHeader(styled);
+const DrawerSidebar = getDrawerSidebar(styled);
+const SidebarTrigger = getSidebarTrigger(styled);
+const SidebarContent = getSidebarContent(styled);
+const CollapseBtn = getCollapseBtn(styled);
+const Content = getContent(styled);
+const Footer = getFooter(styled);
+
+const cozyScheme = getCozyScheme();
+
+cozyScheme.configureEdgeSidebar(builder => {
+  builder
+    .create('secondarySidebar', { anchor: 'right' })
+    .registerPersistentConfig('md', {
+      width: 196,
+      persistentBehavior: 'none',
+      collapsible: true,
+      collapsedWidth: 64,
+    });
+});
 
 const SecondarySidebarDemo = () => {
   return (
-    <Root config={cozyLayoutPreset}>
-      {({ headerStyles, sidebarStyles, setOpened }) => (
+    <Root scheme={cozyScheme}>
+      {({ setOpen }) => (
         <>
           <CssBaseline />
           <Header>
             <Toolbar>
-              <SidebarTrigger className={headerStyles.leftTrigger}>
-                <SidebarTriggerIcon />
-              </SidebarTrigger>
+              <SidebarTrigger sidebarId="primarySidebar"  />
               <HeaderMockUp />
-              <SecondarySidebarTrigger className={headerStyles.rightTrigger}>
-                <SecondarySidebarTriggerIcon />
-              </SecondarySidebarTrigger>
+              <SidebarTrigger sidebarId="secondarySidebar" />
             </Toolbar>
           </Header>
-          <Sidebar>
-            <div className={sidebarStyles.container}>
-              <NavContentMockUp onClickItem={() => setOpened(false)} />
-            </div>
-            <CollapseBtn className={sidebarStyles.collapseBtn}>
-              <CollapseIcon />
-            </CollapseBtn>
-          </Sidebar>
-          <SecondarySidebar>
-            <div className={sidebarStyles.container}>2nd sidebar content</div>
-            <SecondaryCollapseBtn className={sidebarStyles.collapseBtn}>
-              <SecondaryCollapseIcon />
-            </SecondaryCollapseBtn>
-          </SecondarySidebar>
+          <DrawerSidebar sidebarId="primarySidebar">
+            <SidebarContent>
+              <NavContentMockUp onClickItem={() => setOpen('primarySidebar', false)} />
+            </SidebarContent>
+            <CollapseBtn />
+          </DrawerSidebar>
+          <DrawerSidebar sidebarId="secondarySidebar">
+            <SidebarContent>2nd sidebar content</SidebarContent>
+            <CollapseBtn />
+          </DrawerSidebar>
           <Content>
             <ContentMockUp />
           </Content>

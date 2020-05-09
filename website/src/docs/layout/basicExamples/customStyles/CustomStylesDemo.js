@@ -1,19 +1,19 @@
 import React from 'react';
+import styled from 'styled-components';
 import cx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import {
   Root,
-  Header,
-  Sidebar,
-  Content,
-  Footer,
-  CollapseBtn,
-  CollapseIcon,
-  SidebarTrigger,
-  SidebarTriggerIcon,
-  fixedLayoutPreset,
+  getHeader,
+  getDrawerSidebar,
+  getSidebarTrigger,
+  getSidebarContent,
+  getCollapseBtn,
+  getContent,
+  getFooter,
+  getFixedScheme,
 } from '@mui-treasury/layout';
 import {
   HeaderMockUp,
@@ -21,6 +21,16 @@ import {
   FooterMockUp,
 } from '@mui-treasury/mockup/layout';
 import { TextSidebar } from '@mui-treasury/mockup/sidebars';
+
+const Header = getHeader(styled);
+const DrawerSidebar = getDrawerSidebar(styled);
+const SidebarTrigger = getSidebarTrigger(styled);
+const SidebarContent = getSidebarContent(styled);
+const CollapseBtn = getCollapseBtn(styled);
+const Content = getContent(styled);
+const Footer = getFooter(styled);
+
+const fixedScheme = getFixedScheme();
 
 const useStyles = makeStyles(() => ({
   header: {
@@ -51,36 +61,29 @@ const useStyles = makeStyles(() => ({
 const CustomStylesDemo = () => {
   const styles = useStyles();
   return (
-    <Root config={fixedLayoutPreset}>
-      {({ headerStyles, sidebarStyles }) => (
-        <>
-          <CssBaseline />
-          <Header className={styles.header}>
-            <Toolbar>
-              <SidebarTrigger className={headerStyles.leftTrigger}>
-                <SidebarTriggerIcon />
-              </SidebarTrigger>
-              <HeaderMockUp />
-            </Toolbar>
-          </Header>
-          <Sidebar PaperProps={{ classes: { root: styles.sidebar } }}>
-            <div className={sidebarStyles.container}>
-              <TextSidebar />
-            </div>
-            <CollapseBtn
-              className={cx(sidebarStyles.collapseBtn, styles.collapseBtn)}
-            >
-              <CollapseIcon />
-            </CollapseBtn>
-          </Sidebar>
-          <Content className={styles.content}>
-            <ContentMockUp />
-          </Content>
-          <Footer>
-            <FooterMockUp />
-          </Footer>
-        </>
-      )}
+    <Root scheme={fixedScheme}>
+      <CssBaseline />
+      <Header className={styles.header}>
+        <Toolbar>
+          <SidebarTrigger sidebarId={'primarySidebar'} />
+          <HeaderMockUp />
+        </Toolbar>
+      </Header>
+      <DrawerSidebar
+        sidebarId={'primarySidebar'}
+        PaperProps={{ className: styles.sidebar }}
+      >
+        <SidebarContent>
+          <TextSidebar />
+        </SidebarContent>
+        <CollapseBtn className={cx(styles.collapseBtn)} />
+      </DrawerSidebar>
+      <Content className={styles.content}>
+        <ContentMockUp />
+      </Content>
+      <Footer>
+        <FooterMockUp />
+      </Footer>
     </Root>
   );
 };

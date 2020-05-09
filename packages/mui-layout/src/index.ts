@@ -1,6 +1,5 @@
-import * as presets from './presets';
-
 export { default } from './builders';
+export * from './presets';
 export * from './components';
 export {
   LayoutConsumer,
@@ -10,5 +9,3 @@ export {
   useWindow,
 } from './core/Context';
 export { useScreen, useScrollY, useHeaderHeight } from './core/hooks';
-
-export { presets };

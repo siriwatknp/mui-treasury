@@ -24,7 +24,7 @@ interface BuilderCallback<T> {
 
 export interface ILayoutBuilder {
   configureHeader: (
-    callback: BuilderCallback<Pick<IHeaderBuilder, 'create'>>
+    callback: BuilderCallback<Pick<IHeaderBuilder, 'create' | 'registerConfig'>>
   ) => void;
   configureEdgeSidebar: (
     callback: BuilderCallback<

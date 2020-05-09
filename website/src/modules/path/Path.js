@@ -1,4 +1,4 @@
-import { presets } from '@mui-treasury/layout';
+import { getMuiTreasuryScheme } from '@mui-treasury/layout';
 import { mapNestedPath } from '@mui-treasury/utils';
 import {
   COMPONENT_MENUS,
@@ -6,7 +6,9 @@ import {
   STYLE_MENUS,
 } from '../../constants/menus';
 
-const { edgeSidebar: { primarySidebar } } = presets.muiTreasury.clone();
+export const muiTreasuryScheme = getMuiTreasuryScheme()
+
+const { edgeSidebar: { primarySidebar } } = muiTreasuryScheme.clone();
 
 const getHomeHandler = () => {
   return {
@@ -34,22 +36,17 @@ const getStylesHandler = () => {
   };
 };
 
-const getLayoutDevelop = () => {
-  return {
-    pattern: /\/layout\/develop/g,
-    wrappedByLayout: false,
-  };
-};
+// const getLayoutDevelop = () => {
+//   return {
+//     pattern: /\/layout\/develop/g,
+//     wrappedByLayout: false,
+//   };
+// };
 
 const getLayoutV3Handler = () => {
   return {
     pattern: /\/layout\/v3.*/g,
     sidebarMenus: LAYOUT_MENUS,
-    parseConfig: c => {
-      if (c && c.lg) {
-        c.lg.width = 300;
-      }
-    },
     getOpenKeys: () => [
       'v3',
       'tutorials-v3',
@@ -61,8 +58,43 @@ const getLayoutPresetHandler = () => {
   return {
     pattern: /\/layout\/presets.*/g,
     sidebarMenus: LAYOUT_MENUS,
+    parseConfig: c => {
+      if (c && c.lg) {
+        c.lg.width = 208;
+      }
+    },
     getOpenKeys: () => [
       'presets',
+    ],
+  };
+};
+
+const getLayoutExampleHandler = () => {
+  return {
+    pattern: /\/layout\/examples.*/g,
+    sidebarMenus: LAYOUT_MENUS,
+    parseConfig: c => {
+      if (c && c.lg) {
+        c.lg.width = 208;
+      }
+    },
+    getOpenKeys: () => [
+      'examples',
+    ],
+  };
+};
+
+const getLayoutCloneHandler = () => {
+  return {
+    pattern: /\/layout\/clones.*/g,
+    sidebarMenus: LAYOUT_MENUS,
+    parseConfig: c => {
+      if (c && c.lg) {
+        c.lg.width = 208;
+      }
+    },
+    getOpenKeys: () => [
+      'clones',
     ],
   };
 };
@@ -83,7 +115,6 @@ const getLayoutHandler = () => {
   return {
     pattern: /\/layout.*/g,
     sidebarMenus: LAYOUT_MENUS,
-    parseConfig: () => {},
     getOpenKeys: () => [
       'tutorials',
       'advanced',
@@ -125,8 +156,9 @@ const getPathValue = (pathname, key) =>
       getHomeHandler(),
       getStylesHandler(),
       getComponentHandler(),
-      getLayoutDevelop(),
       getLayoutPresetHandler(),
+      getLayoutExampleHandler(),
+      getLayoutCloneHandler(),
       getLayoutV3Handler(),
       getLayoutApiHandler(),
       getLayoutHandler(),

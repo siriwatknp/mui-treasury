@@ -8,9 +8,9 @@ template: DocTemplate
 
 ```jsx
 import styled from 'styled-components'
-import Layout, { getLayoutComponents } from '@mui-treasury/layout';
+import Layout, { Root, getFooter } from '@mui-treasury/layout';
 
-const { Root, Footer } = getLayoutComponents(styled)
+const Footer = getFooter(styled)
 
 cosnt scheme = Layout()
 

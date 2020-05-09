@@ -11,9 +11,9 @@ Normally, you might want to put `Toolbar` inside of header as a wrapper.
 ```jsx
 import styled from 'styled-components'
 import Toolbar from '@material-ui/core/Toolbar';
-import Layout, { getLayoutComponents } from '@mui-treasury/layout';
+import Layout, { Root, getHeader } from '@mui-treasury/layout';
 
-const { Root, Header } = getLayoutComponents(styled)
+const Header = getHeader(styled)
 
 cosnt scheme = Layout()
 
@@ -21,7 +21,7 @@ const App = () => {
   return (
     <Root scheme={scheme}>
       <Header>
-        <Toolbar>header</Toolbar>
+        <Toolbar>header</Toolbar>s
       </Header>
     </Root>
   )

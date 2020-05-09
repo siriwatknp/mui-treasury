@@ -4,27 +4,28 @@ import Button, { ButtonProps } from '@material-ui/core/Button';
 import ArrowLeft from '@material-ui/icons/KeyboardArrowLeftRounded';
 import ArrowRight from '@material-ui/icons/KeyboardArrowRightRounded';
 import EdgeCollapseCompiler from '../../compilers/EdgeCollapseCompiler';
-import createHiddenProxyComponent from '../Shared/StyledProxy';
+import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 import { CtaProps } from '../../types';
 import { useSidebarCta } from '../../core';
 import { createDisplayNone } from '../../utils';
 
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
-  root: {
-    backgroundColor: palette.grey[50],
-    textAlign: 'center',
-    borderRadius: 0,
-    borderTop: '1px solid',
-    borderColor: palette.action.hover,
-    [breakpoints.up('sm')]: {
-      minHeight: 40,
+export default (styled: any) => {
+  const styledProxy = generateStyledProxyCreator(styled);
+  const StyledButton = styledProxy<ButtonProps>(Button);
+
+  const useStyles = makeStyles(({ palette, breakpoints }) => ({
+    root: {
+      backgroundColor: palette.grey[50],
+      textAlign: 'center',
+      borderRadius: 0,
+      borderTop: '1px solid',
+      borderColor: palette.action.hover,
+      [breakpoints.up('sm')]: {
+        minHeight: 40,
+      },
     },
-  },
-}));
+  }));
 
-const StyledProxyButton = createHiddenProxyComponent<ButtonProps>(Button);
-
-export const createCollapseBtn = (StyledComponent = StyledProxyButton) => {
   const CollapseBtn = ({
     children,
     sidebarId,
@@ -57,7 +58,7 @@ export const createCollapseBtn = (StyledComponent = StyledProxyButton) => {
       breakpoints
     );
     return (
-      <StyledComponent
+      <StyledButton
         {...props}
         classes={classes}
         styles={hiddenStyles}
@@ -69,10 +70,8 @@ export const createCollapseBtn = (StyledComponent = StyledProxyButton) => {
         {typeof children === 'function'
           ? children({ anchor, ...state })
           : getArrow()}
-      </StyledComponent>
+      </StyledButton>
     );
   };
   return CollapseBtn;
 };
-
-export default createCollapseBtn();
