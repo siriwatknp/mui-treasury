@@ -36,12 +36,12 @@ const getStylesHandler = () => {
   };
 };
 
-const getLayoutDevelop = () => {
-  return {
-    pattern: /\/layout\/develop/g,
-    wrappedByLayout: false,
-  };
-};
+// const getLayoutDevelop = () => {
+//   return {
+//     pattern: /\/layout\/develop/g,
+//     wrappedByLayout: false,
+//   };
+// };
 
 const getLayoutV3Handler = () => {
   return {
