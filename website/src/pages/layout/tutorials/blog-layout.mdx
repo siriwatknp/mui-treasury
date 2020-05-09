@@ -19,7 +19,15 @@ If you've already deleted the code, below is the final source code. Replace it i
 ```jsx
 import React from "react";
 import styled from "styled-components";
-import Layout, { getLayoutComponents } from "@mui-treasury/layout";
+import Layout, {
+  getHeader,
+  getDrawerSidebar,
+  getSidebarTrigger,
+  getSidebarContent,
+  getCollapseBtn,
+  getContent,
+  getFooter,
+} from "@mui-treasury/layout";
 import Toolbar from "@material-ui/core/Toolbar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import {
@@ -29,16 +37,13 @@ import {
   FooterMockUp,
 } from '@mui-treasury/mockup/layout';
 
-const {
-  Root,
-  Header,
-  DrawerSidebar,
-  SidebarTrigger,
-  SidebarContent,
-  CollapseBtn,
-  Content,
-  Footer,
-} = getLayoutComponents(styled);
+const Header = getHeader(styled)
+const DrawerSidebar = getDrawerSidebar(styled)
+const SidebarTrigger = getSidebarTrigger(styled)
+const SidebarContent = getSidebarContent(styled)
+const CollapseBtn = getCollapseBtn(styled)
+const Content = getContent(styled)
+const Footer = getFooter(styled)
 
 const scheme = Layout();
 
@@ -113,7 +118,7 @@ Before we begin, I want to point out something that I haven't explained in the p
 can use that to change, or control your component. Ex, my `NavHeaderMockup` need props `collapsed` to
 reduce the width of avatar when sidebar collapsed. It can receive from `primarySidebar` in context value.
 
-![gif](https://media.giphy.com/media/KFsdkitrFSBLD3Dv9y/giphy.gif)
+<div style="width:100%;height:0;padding-bottom:59%;position:relative;"><iframe src="https://giphy.com/embed/KFsdkitrFSBLD3Dv9y" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/KFsdkitrFSBLD3Dv9y">via GIPHY</a></p>
 
 Here is what context value looks like. (you can console.log in devtool)
 ```typescript
@@ -183,20 +188,23 @@ The config part is done, let's add `InsetSidebar` component to the screen. You a
 so everything works properly. (I encourage you to look at these DOM in devtool once it is rendered to see why we need container)
 
 ```jsx
-const {
-  Root,
-  Header,
-  DrawerSidebar,
-  SidebarTrigger,
-  SidebarContent,
-  CollapseBtn,
-  Content,
-  Footer,
-// highlight-start
-  InsetContainer,
-  InsetSidebar,
+import Layout, {
+  getHeader,
+  getDrawerSidebar,
+  getSidebarTrigger,
+  getSidebarContent,
+  getCollapseBtn,
+  getContent,
+  getFooter,
+  // highlight-start
+  getInsetContainer,
+  getInsetSidebar,
 // highlight-end
-} = getLayoutComponents(styled);
+} from "@mui-treasury/layout";
+
+// other components
+const InsetContainer = getInsetContainer(styled)
+const InsetSidebar = getInsetSidebar(styled)
 
 const App = () => {
   return (
@@ -287,13 +295,13 @@ import React from "react";
 import Container from "@material-ui/core/Container";
 // ...
 
-const {
+import Layout, {
   // ...
-  InsetContainer,
-  InsetSidebar,
-// highlight-next-line
-  InsetAvoidingView,
-} = getLayoutComponents(styled);
+  // highlight-next-line
+  getInsetAvoidingView,
+} from "@mui-treasury/layout";
+
+const InsetAvoidingView = getInsetAvoidingView(styled)
 
 const Blog = () => {
   return (
@@ -329,11 +337,13 @@ import React from "react";
 import Container from "@material-ui/core/Container";
 // ...
 
-const {
+import Layout, {
   // ...
-// highlight-next-line
-  InsetFooter,
-} = getLayoutComponents(styled);
+  // highlight-next-line
+  getInsetFooter,
+} from "@mui-treasury/layout";
+
+const InsetFooter = getInsetFooter(styled)
 
 const Blog = () => {
   return (
@@ -368,7 +378,17 @@ You can look at clone examples to see advance layout like documentation site, e-
 ```jsx
 import React from "react";
 import styled from "styled-components";
-import Layout, { getLayoutComponents } from "@mui-treasury/layout";
+import Layout, {
+  getHeader,
+  getDrawerSidebar,
+  getSidebarTrigger,
+  getSidebarContent,
+  getCollapseBtn,
+  getContent,
+  getInsetContainer,
+  getInsetSidebar,
+  getInsetFooter,
+} from "@mui-treasury/layout";
 import Toolbar from "@material-ui/core/Toolbar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import {
@@ -379,18 +399,15 @@ import {
   FooterMockUp,
 } from "@mui-treasury/mockup/layout";
 
-const {
-  Root,
-  Header,
-  DrawerSidebar,
-  SidebarTrigger,
-  SidebarContent,
-  CollapseBtn,
-  Content,
-  InsetContainer,
-  InsetSidebar,
-  InsetFooter,
-} = getLayoutComponents(styled);
+const Header = getHeader(styled)
+const DrawerSidebar = getDrawerSidebar(styled)
+const SidebarTrigger = getSidebarTrigger(styled)
+const SidebarContent = getSidebarContent(styled)
+const CollapseBtn = getCollapseBtn(styled)
+const Content = getContent(styled)
+const InsetContainer = getInsetContainer(styled)
+const InsetSidebar = getInsetSidebar(styled)
+const InsetFooter = getInsetFooter(styled)
 
 const scheme = Layout();
 

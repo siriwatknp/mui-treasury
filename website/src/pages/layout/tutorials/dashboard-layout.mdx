@@ -18,7 +18,7 @@ when the process is done, install packages
 cd my-layout
 yarn add @material-ui/core @material-ui/icons @mui-treasury/layout @mui-treasury/mockup
 
-// note: this tutorial is based on @mui-treasury/layout v4, please recheck package.json after installation
+// note: this tutorial is based on @mui-treasury/layout v4 (not alpha), please recheck package.json after installation
 ```
 
 Now, when you run `yarn start`, you will see react logo in the browser.
@@ -52,14 +52,16 @@ import Layout from '@mui-treasury/layout';
 const scheme = Layout();
 
 scheme.configureHeader(builder => {
-  builder.create('whatever_id').registerConfig('xs', {
+  builder.registerConfig('xs', {
     position: 'sticky',
   });
 });
 ```
 
-Let me translate it to human language. By doing this, we can say that we want to create a `Header` with an id `whatever_id`
+Let me translate it to human language. By doing this, we can say that we want to create a `Header`
 that has `position: sticky` from breakpoint `xs` **up**.
+
+> Note: by default Header is created with `id: 'header'` but you can choose your own id by `builder.create('your_id').registerConfig(...)`
 
 I want to pause here for a moment and emphasize the word **up**. This is quite important for you to
 know that this library follow mobile first responsive design which means the config you define
@@ -82,7 +84,6 @@ const scheme = Layout();
 
 scheme.configureHeader(builder => {
   builder
-    .create('whatever_id')
     .registerConfig('xs', {
       position: 'sticky',
     })
@@ -111,9 +112,11 @@ scheme.configureEdgeSidebar(builder => {
 // highlight-end
 ```
 
-The api is similar to `Header`. One thing worth mentioning here is that order of calling `scheme.config...`
+The api is similar to `Header`. One thing worth mentioning here is that the order of calling `scheme.configure...`
 is not important. You can also configure sidebar before header if you are more comfortable with.
 For the code above, we want to create `EdgeSidebar` on the left of browser with temporary variant for all breakpoints (same as saying `xs` **up**)
+
+> Since layout can have multiple sidebars, you need to specify `id` by using `builder.create('some_id')` first.
 
 > see what each variant looks like real quick [here](https://material-ui.com/components/drawers/#drawer)
 
@@ -130,19 +133,20 @@ yarn add styled-components
 import React from 'react';
 // highlight-start
 import styled from 'styled-components';
-import Layout, { getLayoutComponents } from '@mui-treasury/layout';
+import Layout, { Root, getHeader, getDrawerSidebar } from '@mui-treasury/layout';
 import Toolbar from '@material-ui/core/Toolbar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 // highlight-end
 
-// highlight-next-line
-const { Root, Header, DrawerSidebar } = getLayoutComponents(styled);
+// highlight-start
+const Header = getHeader(styled);
+const DrawerSidebar = getDrawerSidebar(styled);
+// highlight-end
 
 const scheme = Layout();
 
 scheme.configureHeader(builder => {
   builder
-    .create('whatever_id')
     .registerConfig('xs', {
       position: 'sticky',
     })
@@ -168,8 +172,7 @@ const App = () => {
         <Toolbar>Header</Toolbar>
       </Header>
       <DrawerSidebar sidebarId={'unique_id'}>
-        {' '}
-        // sidebar id is required sidebar content
+        sidebar id is required sidebar content
       </DrawerSidebar>
     </Root>
     // highlight-end
@@ -191,13 +194,12 @@ Mui-layout store this state inside `Root` and provide a component to trigger `op
 let's update the code to be like this.
 
 ```jsx
-const { 
-  Root, 
-  Header,
-  DrawerSidebar,
+// other import
 // highlight-next-line
-  SidebarTrigger
-} = getLayoutComponents(styled);
+const { getSidebarTrigger } from '@mui-treasury/layout';
+
+// highlight-next-line
+const SidebarTrigger = getSidebarTrigger(styled)
 
 const App = () => {
   return (
@@ -246,16 +248,12 @@ scheme.configureEdgeSidebar(builder => {
 To achieve collapsible mode, we need to add `CollapseBtn` at the bottom of the sidebar.
 
 ```jsx
-const {
-  Root,
-  Header,
-  DrawerSidebar,
-  SidebarTrigger,
-// highlight-next-line
-  SidebarContent,
-// highlight-next-line
-  CollapseBtn,
-} = getLayoutComponents(styled);
+// highlight-start
+const { getSidebarContent, getCollapseBtn } = getLayoutComponents(styled);
+
+const SidebarContent = getSidebarContent(styled)
+const CollapseBtn = getCollapseBtn(styled)
+// highlight-end
 
 const App = () => {
   return (
@@ -294,18 +292,12 @@ Last step, let's add `Content` and `Footer` to the page. Both of the components 
 so you don't need to configure explicitly (actually it is already configured with default for you)
 
 ```jsx
-const {
-  Root,
-  Header,
-  DrawerSidebar,
-  SidebarTrigger,
-  SidebarContent,
-  CollapseBtn,
-// highlight-next-line
-  Content,
-// highlight-next-line
-  Footer,
-} = getLayoutComponents(styled);
+// highlight-start
+const { getContent, getFooter } = getLayoutComponents(styled);
+
+const Content = getContent(styled)
+const Footer = getFooter(styled)
+// highlight-end
 
 const App = () => {
   return (
@@ -341,21 +333,26 @@ const App = () => {
 
 ```jsx
 import React from "react";
-import styled from "styled-components";
-import Layout, { getLayoutComponents } from "@mui-treasury/layout";
+import styled from "styled-components"; // or import styled from '@emotion/styled'
+import Layout, {
+  getHeader,
+  getDrawerSidebar,
+  getSidebarTrigger,
+  getSidebarContent,
+  getCollapseBtn,
+  getContent,
+  getFooter,
+} from "@mui-treasury/layout";
 import Toolbar from "@material-ui/core/Toolbar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
-const {
-  Root,
-  Header,
-  DrawerSidebar,
-  SidebarTrigger,
-  SidebarContent,
-  CollapseBtn,
-  Content,
-  Footer,
-} = getLayoutComponents(styled);
+const Header = getHeader(styled)
+const DrawerSidebar = getDrawerSidebar(styled)
+const SidebarTrigger = getSidebarTrigger(styled)
+const SidebarContent = getSidebarContent(styled)
+const CollapseBtn = getCollapseBtn(styled)
+const Content = getContent(styled)
+const Footer = getFooter(styled)
 
 const scheme = Layout();
 
