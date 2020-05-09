@@ -8,48 +8,39 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-16-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-Imagine a place with millions of real-world, ready-to-use, and themable components that you can copy & paste or even install to your project. I believe that it will help boosting many projects that want to prove their ideas and make their 1st prototype to make tomorrow better than today.
+Imagine a place with millions of real-world, ready-to-use, and themable components that you can install to your project. I believe that it will boost many projects that want to prove their ideas or even improve complex monolith project to move faster.
 ## Curious? checkout [Website](https://mui-treasury.com)
 
 I am very excited about this project because I know that there is a lot of developers who are struggling at building ui and waiting for something like this to come true. It will take a lot of time for me alone to reach thousand components. So if you want to do something great and fun, please read our [contribution section](#Contribution)
 
 ## Roadmap
-#### End of 2019
-- [x] Reach 100 components
-- [x] Release `@mui-treasury/layout` version 2 (before is [`mui-layout`](https://github.com/siriwatknp/mui-layout)) 
 
-#### 2020 (1st quarter)
-- Reach 200 components
-- Release `@mui-treasury/formik` an integration between material-ui & formik to help building form without tears.
+#### Q3/2020
+- Integrate material-ui with form (formik | react-hook-form)
 
-#### 2020 (2nd quarter)
+#### Q2/2020
 - Reach 300 components
 - Introducing application demo (example of real-world app that combine existing components in mui-treasury)
+- Release Layout v4
+
+#### Q1/2020
+- Reach 200 components
 
 ## Latest Version
-> - @mui-treasury/components `0.3.13`
-> - @mui-treasury/layout `3.3.3`
-> - @mui-treasury/mockup `0.4.2`
-> - @mui-treasury/styles `0.4.0`
-> - @mui-treasury/styling `0.2.8`
-> - @mui-treasury/utils `0.3.5`
+> - [@mui-treasury/components `1.0.8`](https://mui-treasury.com/components)
+> - [@mui-treasury/layout `4.0.0`](https://mui-treasury.com/layout)
+> - [@mui-treasury/styles `1.1.6`](https://mui-treasury.com/styles)
+> - @mui-treasury/mockup `1.1.3`
+> - @mui-treasury/utils `0.4.0`
 >
 >  [All changelog](/CHANGELOG.md)
 
-## Announcements
+## Donation
 
-- I am proudly to announce that the new site is in beta now after 3 months of renovating (using Gatsby, it is super fast). prove it yourself! [https://mui-treasury.com](https://mui-treasury.com)
+To help me keep this project alive! every dollar matters.
 
-    <img alt="performace_report" src="https://user-images.githubusercontent.com/18292247/65976784-e2a3e880-e49a-11e9-82e7-b747a1bd2776.png" width="400" />
-    
-    the top report is the [deprecated site](https://deprecate.mui-treasury.com), the bottom is the [new one](https://mui-treasury.com)
-
-## How to use
-
-1. [Open mui-treasury website](https://mui-treasury.com)
-2. In the components panel, choose one that you like.
-3. Click `</>` icon to see the code and customize it in [codesandbox template](https://codesandbox.io/s/mui-treasury-demo-template-3i5hn)
-![image](https://user-images.githubusercontent.com/18292247/68522873-7317e900-02e3-11ea-922f-3598828a2481.png)
+- [Open Collective](https://opencollective.com/mui-treasury)
+- [Patreon](https://www.patreon.com/user?u=16324303&fan_landing=true)
 
 
 ## Contribution

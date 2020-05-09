@@ -52,7 +52,6 @@ jobs:
   release:
     executor: node-executor
     working_directory: ~/repo
-    resource_class: large
     steps:
       - gatsby-build
       - run:
