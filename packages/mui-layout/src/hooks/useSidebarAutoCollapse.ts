@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react"
 import { keys } from "@material-ui/core/styles/createBreakpoints"
 import { useScreen } from "./useScreen"
-import { useLayoutCtx } from "../Context"
+import { useLayoutCtx } from "../contexts"
 
 export const useSidebarAutoCollapse = (sidebarId: string) => {
   const {

@@ -4,8 +4,8 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import SwipeableDrawer, {
   SwipeableDrawerProps,
 } from '@material-ui/core/SwipeableDrawer';
-import { useSidebar, SidebarProvider, useWindow } from '../../core';
-import { useBreakpointConfig, useSidebarAutoCollapse } from '../../core/hooks';
+import { SidebarProvider, useWindowCtx } from '../../contexts';
+import { useBreakpointConfig, useSidebarAutoCollapse, useSidebar } from '../../hooks';
 import getEdgeHeaderOffset from '../EdgeHeaderOffset';
 import { CLS, createSwipeableVariant } from '../Shared/SharedSidebar';
 import { get, createBreakpointStyles, createHiddenStyles } from '../../utils';
@@ -50,7 +50,7 @@ export default (styled: any) => {
   }) => {
     const { sidebarId } = props;
     useSidebarAutoCollapse(sidebarId);
-    const { iDocument } = useWindow();
+    const { iDocument } = useWindowCtx();
     const transition = useTransitionStyles();
     const [entered, setEntered] = React.useState(false);
     const { breakpoints } = useTheme();

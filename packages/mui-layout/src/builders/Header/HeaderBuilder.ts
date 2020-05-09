@@ -5,20 +5,16 @@ import {
   IHeaderBuilder,
   IRegistry,
 } from '../../types';
-
-const INITIAL_HEIGHT = {
-  xs: 56,
-  sm: 64,
-};
+import { INITIAL_HEADER_HEIGHT, DEFAULT_HEADER_ID } from '../../utils';
 
 export default (initialMap: HeaderConfigMap = {}): IHeaderBuilder => {
-  let id: string = 'header';
+  let id: string = DEFAULT_HEADER_ID;
   let map: HeaderConfigMap = Object.assign({}, initialMap);
 
   const Registry = (headerId: string): IRegistry<HeaderConfig> => ({
     registerConfig(breakpoint, config) {
       map[breakpoint] = {
-        initialHeight: pickNearestBreakpoint(INITIAL_HEIGHT, breakpoint),
+        initialHeight: pickNearestBreakpoint(INITIAL_HEADER_HEIGHT, breakpoint),
         ...config,
         id: headerId,
       };
@@ -26,7 +22,7 @@ export default (initialMap: HeaderConfigMap = {}): IHeaderBuilder => {
     },
   });
 
-  const defaultRegistry = Registry(id)
+  const defaultRegistry = Registry(id);
 
   return {
     create: function(headerId: string) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import AppBar, { AppBarProps } from '@material-ui/core/AppBar';
 import { Theme, useTheme } from '@material-ui/core/styles';
-import { useLayoutCtx } from '../../core';
+import { useLayoutCtx } from '../../contexts';
 import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 import HeaderCompiler from '../../compilers/HeaderCompiler';
 import { createBreakpointStyles } from '../../utils';

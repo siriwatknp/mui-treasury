@@ -6,6 +6,7 @@ export {
   useLayoutCtx,
   WindowConsumer,
   WindowProvider,
-  useWindow,
-} from './core/Context';
-export { useScreen, useScrollY, useHeaderHeight } from './core/hooks';
+  useWindowCtx,
+} from './contexts';
+export { useScreen, useScrollY, useHeaderHeight } from './hooks';
+

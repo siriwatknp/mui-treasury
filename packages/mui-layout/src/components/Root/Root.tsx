@@ -4,8 +4,8 @@ import {
   ContextValue,
   LayoutProvider,
   LayoutProviderProps,
-} from "../../core/Context"
-import { useLayoutCtx } from "../../core/Context"
+} from "../../contexts"
+import { useLayoutCtx } from "../../contexts"
 
 const baseTheme = createMuiTheme()
 

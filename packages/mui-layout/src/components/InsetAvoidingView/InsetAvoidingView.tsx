@@ -1,6 +1,6 @@
 import React from "react"
 import useTheme from "@material-ui/core/styles/useTheme"
-import { useLayoutCtx } from "../../core"
+import { useLayoutCtx } from "../../contexts"
 import InsetAvoidingViewCompiler from "../../compilers/InsetAvoidingViewCompiler"
 import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 

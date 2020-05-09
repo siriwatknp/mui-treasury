@@ -1,5 +1,5 @@
 import { Theme, useTheme } from "@material-ui/core"
-import { useSidebarCtx } from "../Context"
+import { useSidebarCtx } from "../contexts"
 import useSidebar from "./useSidebar"
 
 export const useSidebarCta = (sidebarId: string, consumer?: string) => {

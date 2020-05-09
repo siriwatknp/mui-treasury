@@ -1,11 +1,11 @@
 import React from "react"
 import cx from "clsx"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
-import { useLayoutCtx } from "../../core/Context"
+import { useLayoutCtx } from "../../contexts"
 import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 import InsetHeaderOffsetCompiler from "../../compilers/InsetHeaderOffsetCompiler"
 import { createBreakpointStyles } from "../../utils"
-import { useInsetHeaderMagnet } from "../../core/hooks/useInsetHeaderMagnet"
+import { useInsetHeaderMagnet } from "../../hooks/useInsetHeaderMagnet"
 import { transitionStyles } from "../../styles"
 
 export default (styled: any) => {

@@ -1,6 +1,6 @@
 import React, { HTMLProps } from 'react';
 import cx from 'clsx';
-import FullscreenContext from '../../core/Context/FullscreenContext';
+import FullscreenContext from '../../contexts/FullscreenContext';
 
 export default (styled: any) => {
   const Div = styled('div')`

@@ -1,6 +1,6 @@
 import React from 'react';
-import { useLayoutCtx } from '../../core';
 import { useTheme } from '@material-ui/core';
+import { useLayoutCtx } from '../../contexts';
 import { createBreakpointStyles } from '../../utils';
 import ContentCompiler from '../../compilers/ContentCompiler';
 import { generateStyledProxyCreator } from '../Shared/StyledProxy';

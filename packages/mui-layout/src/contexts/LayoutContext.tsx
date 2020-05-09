@@ -1,8 +1,8 @@
 import React from 'react';
 import merge from 'deepmerge';
-import LayoutBuilder from '../../builders';
-import { ILayoutBuilder } from '../../builders';
-import { LayoutData, State } from '../../types';
+import LayoutBuilder from '../builders';
+import { ILayoutBuilder } from '../builders';
+import { LayoutData, State } from '../types';
 
 const Context = React.createContext<ContextValue>(null);
 Context.displayName = 'MuiLayoutCtx';

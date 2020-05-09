@@ -1,28 +1,32 @@
-import { useLayoutCtx } from '../Context';
+import { useState, useEffect } from 'react';
+import { useLayoutCtx } from '../contexts';
+import HeaderEffect from '../effects/Header';
 import useScreen from './useScreen';
 import useScrollY from './useScrollY';
 import useHeaderHeight from './useHeaderHeight';
-import { pickNearestBreakpoint, subtractCalc } from '../../utils';
-import { useEffect, useState } from 'react';
-import { isFixedInsetSidebarConfig } from '../../utils/sidebarChecker';
+import { pickNearestBreakpoint, subtractCalc } from '../utils';
+import { isCollapsibleSidebarConfig } from '../utils/sidebarChecker';
 
-export const useInsetHeaderMagnet = (sidebarId: string) => {
+export const useEdgeHeaderMagnet = (sidebarId: string): { height: string } => {
   const screen = useScreen();
   const scrollY = useScrollY();
   const {
-    data: { header, headerId, insetSidebar },
+    data: { header, headerId, edgeSidebar },
   } = useLayoutCtx();
   const headerConfig = pickNearestBreakpoint(header, screen);
+  const headerEffect = HeaderEffect(headerConfig);
   const sidebarConfig = pickNearestBreakpoint(
-    insetSidebar.configMapById[sidebarId],
+    edgeSidebar.configMapById[sidebarId],
     screen
   );
   const resizedHeight = useHeaderHeight(headerId);
   const [headerHeight, setHeaderHeight] = useState('');
   const shouldUpdate =
     resizedHeight &&
+    headerConfig &&
     headerConfig.position === 'relative' &&
-    isFixedInsetSidebarConfig(sidebarConfig) &&
+    headerEffect.isObjectClipped(sidebarId) &&
+    isCollapsibleSidebarConfig(sidebarConfig) &&
     sidebarConfig.headerMagnetEnabled;
   useEffect(() => {
     if (shouldUpdate) {
@@ -32,7 +36,7 @@ export const useInsetHeaderMagnet = (sidebarId: string) => {
     }
   }, [shouldUpdate, resizedHeight, screen, scrollY]);
 
-  return { height: headerHeight };
+  return { height: headerHeight }; // inline style
 };
 
-export default useInsetHeaderMagnet;
+export default useEdgeHeaderMagnet;

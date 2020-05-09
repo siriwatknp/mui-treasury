@@ -1,7 +1,8 @@
-import { useWindow } from '../Context';
+import { useWindowCtx } from '../contexts';
+import { DEFAULT_HEADER_ID } from '../utils';
 
-export const useHeaderHeight = (headerId: string) => {
-  const { iDocument } = useWindow();
+export const useHeaderHeight = (headerId: string = DEFAULT_HEADER_ID) => {
+  const { iDocument } = useWindowCtx();
   const headerElm = iDocument
     ? iDocument.querySelector(`[mui-layout='${headerId}']`)
     : null;

@@ -1,3 +1,4 @@
+import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
 import HeaderBuilder from './Header';
 import EdgeSidebarBuilder from './EdgeSidebar';
 import ContentBuilder from './Content';
@@ -16,7 +17,7 @@ import {
   IInsetSidebarBuilder,
   InsetSidebarConfigMapById,
 } from './InsetSidebar/InsetSidebarBuilder';
-import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
+import { DEFAULT_CONTENT_ID, DEFAULT_FOOTER_ID } from '../utils';
 
 interface BuilderCallback<T> {
   (builder: T): void;
@@ -60,8 +61,8 @@ export default (initialLayout: InitialLayout = {}): ILayoutBuilder => {
   const footer = FooterBuilder();
 
   // setup default id
-  content.create('content');
-  footer.create('footer');
+  content.create(DEFAULT_CONTENT_ID);
+  footer.create(DEFAULT_FOOTER_ID);
 
   return {
     configureHeader(callback) {

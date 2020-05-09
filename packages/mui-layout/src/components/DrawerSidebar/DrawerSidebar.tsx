@@ -3,8 +3,8 @@ import cx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import useTheme from '@material-ui/core/styles/useTheme';
 import { DrawerProps } from '@material-ui/core/Drawer';
-import { useSidebar, SidebarProvider, useWindow } from '../../core';
-import { useBreakpointConfig, useSidebarAutoCollapse } from '../../core/hooks';
+import { SidebarProvider, useWindowCtx } from '../../contexts';
+import { useSidebar, useBreakpointConfig, useSidebarAutoCollapse } from '../../hooks';
 import getEdgeHeaderOffset from '../EdgeHeaderOffset';
 import { CLS, createDrawerVariant } from '../Shared/SharedSidebar';
 import { generateStyledProxyCreator } from '../Shared/StyledProxy';
@@ -36,7 +36,7 @@ export default (styled: any) => {
     sidebarId: string;
   }) => {
     useSidebarAutoCollapse(sidebarId);
-    const { iDocument } = useWindow();
+    const { iDocument } = useWindowCtx();
     const transition = useTransitionStyles();
     const [entered, setEntered] = React.useState(false);
     const { breakpoints } = useTheme();

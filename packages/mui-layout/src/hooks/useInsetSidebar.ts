@@ -1,8 +1,8 @@
 import merge from "deepmerge"
 import { Theme, useTheme } from "@material-ui/core/styles"
-import { useLayoutCtx } from "../Context"
-import InsetSidebarCompiler from "../../compilers/InsetSidebarCompiler"
-import { createBreakpointStyles, createHiddenStyles } from "../../utils"
+import { useLayoutCtx } from "../contexts"
+import InsetSidebarCompiler from "../compilers/InsetSidebarCompiler"
+import { createBreakpointStyles, createHiddenStyles } from "../utils"
 
 export const useInsetSidebar = (id: string) => {
   const {
