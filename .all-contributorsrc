@@ -161,6 +161,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "david0178418",
+      "name": "David Granado",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/128739?v=4",
+      "profile": "https://github.com/david0178418",
+      "contributions": [
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,
