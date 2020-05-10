@@ -35,6 +35,7 @@
   "scripts": {
     "cm": "npx git-cz",
     "build": "yarn workspace website build",
+    "build:ci": "npx hygen ci production && yarn install && yarn build",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "yarn workspace website start",
     "serve": "yarn workspace website serve",
