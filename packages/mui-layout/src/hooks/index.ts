@@ -5,5 +5,6 @@ export * from './useScreen';
 export * from './useScrollY';
 export * from './useSidebar';
 export * from './useSidebarAutoCollapse';
-export * from './useSidebarCta';
 export * from './useBreakpointConfig';
+export * from './useSidebarCollapse';
+export * from './useSidebarTrigger';
