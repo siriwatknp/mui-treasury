@@ -9,7 +9,8 @@ export const useSidebar = (id: string, consumer?: string) => {
   }
   const { breakpoints } = useTheme();
   const { state, data, setOpen, setCollapsed } = useLayoutCtx();
-  const anchor = getSidebarAnchor(data.edgeSidebar.configMapById[id]);
+  const sidebarConfigMap = data.edgeSidebar.configMapById[id];
+  const anchor = getSidebarAnchor(sidebarConfigMap);
   const styles = EdgeSidebarCompiler(
     state,
     data.edgeSidebar,
@@ -17,6 +18,7 @@ export const useSidebar = (id: string, consumer?: string) => {
   ).getResultStyle(id);
   return {
     anchor,
+    sidebarConfigMap,
     state: state.sidebar[id],
     edgeSidebar: data.edgeSidebar,
     hiddenStyles: createDisplayNone(
