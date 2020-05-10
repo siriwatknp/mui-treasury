@@ -19,12 +19,12 @@ commands:
       - run: cat ~/repo/.npmrc
       - run:
           name: Install Dependencies
-          command: yarn install && npm rebuild
+          command: yarn install
       - save_cache:
           key: yarn-cache-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
-      - restore_cache:
+      - restore_cache:k
           keys:
             - gatsby-plublic-cache-{{ .Branch }}
       - run:
