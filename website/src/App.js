@@ -12,10 +12,6 @@ import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 import './global.css';
 import './fontawesome';
 
-if (process.env.GATSBY_FONT_AWESOME_PRO === 'true') {
-  require('./fontawesome-pro')
-}
-
 const App = ({ children, location }) => {
   const path = React.useMemo(() => createPath(location), [location]);
   muiTreasuryScheme.configureEdgeSidebar(builder => {

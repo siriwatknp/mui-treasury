@@ -4,9 +4,7 @@ import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
 import ArrowLeft from '@material-ui/icons/KeyboardArrowLeftRounded';
 import ArrowRight from '@material-ui/icons/KeyboardArrowRightRounded';
 import MenuRounded from '@material-ui/icons/MenuRounded';
-import EdgeTriggerCompiler from '../../compilers/EdgeTriggerCompiler';
-import { useSidebarCta } from '../../hooks';
-import { createDisplayNone } from '../../utils';
+import { useSidebarTrigger } from '../../hooks';
 import { CtaProps } from '../../types';
 import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 
@@ -38,14 +36,10 @@ export default (styled: any) => {
     SvgIconProps,
     ...props
   }: IconButtonProps & CtaProps) => {
-    const {
-      id,
-      anchor,
-      breakpoints,
-      edgeSidebar,
-      state,
-      setOpen,
-    } = useSidebarCta(sidebarId, 'SidebarTrigger');
+    const { id, anchor, hiddenStyles, state, setOpen } = useSidebarTrigger(
+      sidebarId,
+      'SidebarTrigger'
+    );
     const classes = useStyles({ ...props, anchor });
     const getArrow = () => {
       if (!state) return null;
@@ -54,14 +48,10 @@ export default (styled: any) => {
       if (anchor === 'right') return <ArrowRight {...SvgIconProps} />;
       return null;
     };
-    const styles = createDisplayNone(
-      EdgeTriggerCompiler(edgeSidebar).getHiddenBreakpoints(id),
-      breakpoints
-    );
     return (
       <StyledIconBtn
         {...props}
-        styles={styles}
+        styles={hiddenStyles}
         classes={classes}
         onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
           if (typeof onClick === 'function') onClick(e);
@@ -76,4 +66,3 @@ export default (styled: any) => {
   };
   return SidebarTrigger;
 };
-

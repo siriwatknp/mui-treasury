@@ -8,5 +8,10 @@ export {
   WindowProvider,
   useWindowCtx,
 } from './contexts';
-export { useScreen, useScrollY, useHeaderHeight } from './hooks';
-
+export {
+  useScreen,
+  useScrollY,
+  useHeaderHeight,
+  useSidebarTrigger,
+  useSidebarCollapse,
+} from './hooks';

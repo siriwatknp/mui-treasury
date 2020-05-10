@@ -27,6 +27,11 @@ export default [
         to: '/layout/advanced/controlling-sidebar/',
       },
       {
+        key: 'custom-trigger',
+        label: 'Custom Trigger',
+        to: '/layout/advanced/custom-trigger/',
+      },
+      {
         key: 'dynamic-config',
         label: 'Dynamic Config',
         to: '/layout/advanced/dynamic-config/',

@@ -1,4 +1,8 @@
 const typography = require('./src/constants/fonts');
+// console.log('process.env.GATSBY_FONT_AWESOME_PRO', process.env.GATSBY_FONT_AWESOME_PRO);
+if (process.env.GATSBY_FONT_AWESOME_PRO === 'true') {
+  require('./fontawesome-pro')
+}
 
 module.exports = {
   siteMetadata: {

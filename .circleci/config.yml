@@ -29,7 +29,7 @@ commands:
             - gatsby-plublic-cache-{{ .Branch }}
       - run:
           name: Gatsby Build
-          command: GATSBY_CPU_COUNT=1 GATSBY_FONT_AWESOME_PRO=true yarn build
+          command: GATSBY_CPU_COUNT=1 yarn build:ci
       - save_cache:
           key: gatsby-public-cache-{{ .Branch }}
           paths:
@@ -52,7 +52,6 @@ jobs:
   release:
     executor: node-executor
     working_directory: ~/repo
-    resource_class: large
     steps:
       - gatsby-build
       - run:

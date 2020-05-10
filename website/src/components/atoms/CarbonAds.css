@@ -1,3 +1,23 @@
+.CarbonVertical,
+.CarbonVertical #cabonads,
+.CarbonVertical #carbonads-placeholder {
+  max-width: 150px;
+}
+
+.CarbonVertical .carbon-wrap,
+.CarbonVertical .placeholder-wrap {
+  flex-direction: column;
+}
+.CarbonVertical .carbon-text {
+  margin-top: 10px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+.CarbonVertical .carbon-poweredby {
+  left: 10px;
+  bottom: 10px;
+}
+
 #root-carbon {
   min-height: 120px;
 }

@@ -3,11 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button, { ButtonProps } from '@material-ui/core/Button';
 import ArrowLeft from '@material-ui/icons/KeyboardArrowLeftRounded';
 import ArrowRight from '@material-ui/icons/KeyboardArrowRightRounded';
-import EdgeCollapseCompiler from '../../compilers/EdgeCollapseCompiler';
 import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 import { CtaProps } from '../../types';
-import { useSidebarCta } from '../../hooks';
-import { createDisplayNone } from '../../utils';
+import { useSidebarCollapse } from '../../hooks';
 
 export default (styled: any) => {
   const styledProxy = generateStyledProxyCreator(styled);
@@ -37,11 +35,10 @@ export default (styled: any) => {
     const {
       id,
       anchor,
-      breakpoints,
-      edgeSidebar,
+      hiddenStyles,
       state,
       setCollapsed,
-    } = useSidebarCta(sidebarId, 'CollapseBtn');
+    } = useSidebarCollapse(sidebarId, 'CollapseBtn');
     const arrowR = <ArrowRight {...SvgIconProps} />;
     const arrowL = <ArrowLeft {...SvgIconProps} />;
     const getArrow = () => {
@@ -53,10 +50,6 @@ export default (styled: any) => {
       }
       return null;
     };
-    const hiddenStyles = createDisplayNone(
-      EdgeCollapseCompiler(edgeSidebar).getHiddenBreakpoints(id),
-      breakpoints
-    );
     return (
       <StyledButton
         {...props}
