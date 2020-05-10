@@ -4,7 +4,7 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 // Original design here: https://github.com/siriwatknp/mui-treasury/issues/541
 
@@ -33,14 +33,10 @@ const BorderSelect = () => {
     getContentAnchorEl: null
   };
 
-  // IconComponent in Select receives className via props. This is how the arrow up/down animation works.
   const iconComponent = (props) => {
     return (
-      <FontAwesomeIcon
-        className={props.className + " " + borderSelectClasses.icon} icon={['fas','chevron-down']}
-      />
-  )};// chevron-down added in fontawesome.js
-
+      <ExpandMoreIcon className={props.className + " " + borderSelectClasses.icon}/>
+    )};
 
   return (
     <FormControl>
