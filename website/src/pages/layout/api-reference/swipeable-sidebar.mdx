@@ -11,9 +11,9 @@ Swipeable sidebar will look for edge sidebar config and render based on them. Ev
 
 ```jsx
 import styled from 'styled-components'
-import Layout, { getLayoutComponents } from '@mui-treasury/layout';
+import Layout, { Root, getSwipeableSidebar } from '@mui-treasury/layout';
 
-const { Root, SwipeableSidebar } = getLayoutComponents(styled)
+const SwipeableSidebar = getSwipeableSidebar(styled)
 
 cosnt scheme = Layout()
 

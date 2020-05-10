@@ -10,6 +10,17 @@
 > - :bulb: [Refactor]
 > - :lipstick: [Style]
 
+## _10 May 2020__
+
+### website@2.0.0
+- almost cover documetation for v4
+
+### @mui-treasury/layout@4.1.0
+- export `useSidebarTrigger` and `useSidebarCollapse` for custom triggers
+- add EdgeSidebar expandable on collapsed feature
+
+---
+
 ## _30 Mar 2020_
 
 ### website@1.22.0

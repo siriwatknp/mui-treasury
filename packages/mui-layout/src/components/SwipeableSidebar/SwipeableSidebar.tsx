@@ -1,39 +1,44 @@
 import React from 'react';
 import cx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { SwipeableDrawerProps } from '@material-ui/core/SwipeableDrawer';
-import { useSidebar, SidebarProvider, useWindow } from '../../core';
-import { useBreakpointConfig, useSidebarAutoCollapse } from '../../core/hooks';
-import { createEdgeHeaderOffset } from '../EdgeHeaderOffset';
+import SwipeableDrawer, {
+  SwipeableDrawerProps,
+} from '@material-ui/core/SwipeableDrawer';
+import { SidebarProvider, SidebarConsumer, useWindowCtx } from '../../contexts';
 import {
-  createSwipeableVariant,
-  StyledProxySwipeableDrawer,
-} from '../Shared/SharedSidebar';
+  useBreakpointConfig,
+  useSidebarAutoCollapse,
+  useSidebar,
+} from '../../hooks';
+import getEdgeHeaderOffset from '../EdgeHeaderOffset';
+import { CLS, createSwipeableVariant } from '../Shared/SharedSidebar';
 import { get, createBreakpointStyles, createHiddenStyles } from '../../utils';
 import { transitionStyles } from '../../styles';
 import { EdgeSidebarConfig } from '../../types';
-import styledProxy from '../Shared/StyledProxy';
+import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 
-const useTransitionStyles = makeStyles(transitionStyles);
-const Div = styledProxy('div');
-
-export const createSwipeableSidebar = (
-  StyledComponent = StyledProxySwipeableDrawer,
-  StyledDiv = Div
-) => {
+export default (styled: any) => {
+  const styledProxy = generateStyledProxyCreator(styled);
+  const StyledSwipeableDrawer = styledProxy<SwipeableDrawerProps>(
+    SwipeableDrawer,
+    CLS
+  );
+  const EdgeHeaderOffset = getEdgeHeaderOffset(styled);
   const TemporarySwipeableDrawer = createSwipeableVariant(
     'temporary',
-    StyledComponent
+    StyledSwipeableDrawer
   );
   const PermanentSwipeableDrawer = createSwipeableVariant(
     'permanent',
-    StyledComponent
+    StyledSwipeableDrawer
   );
   const PersistentSwipeableDrawer = createSwipeableVariant(
     'persistent',
-    StyledComponent
+    StyledSwipeableDrawer
   );
-  const EdgeHeaderOffset = createEdgeHeaderOffset(StyledDiv);
+
+  const useTransitionStyles = makeStyles(transitionStyles);
+
   const SwipeableSidebar = ({
     onClose,
     onOpen,
@@ -49,9 +54,8 @@ export const createSwipeableSidebar = (
   }) => {
     const { sidebarId } = props;
     useSidebarAutoCollapse(sidebarId);
-    const { iDocument } = useWindow();
+    const { iDocument } = useWindowCtx();
     const transition = useTransitionStyles();
-    const [entered, setEntered] = React.useState(false);
     const { breakpoints } = useTheme();
     const {
       anchor,
@@ -71,87 +75,94 @@ export const createSwipeableSidebar = (
     const config = useBreakpointConfig<EdgeSidebarConfig>(
       edgeSidebar.configMapById[sidebarId]
     );
-    const commonProps = {
-      ...props,
-      PaperProps: {
-        ...PaperProps,
-        className: cx(
-          (entered || get(config, 'variant') === 'permanent') &&
-            transition.root,
-          get(PaperProps, 'className')
-        ),
-      },
-      ModalProps: {
-        container: iDocument ? iDocument.body : undefined,
-        ...ModalProps,
-      },
-      SlideProps: {
-        ...SlideProps,
-        // @ts-ignore
-        onEntered: (...args) => {
-          if (SlideProps && typeof SlideProps.onEntered === 'function')
-            // @ts-ignore
-            SlideProps.onEntered(...args);
-          setEntered(true);
-        },
-        // @ts-ignore
-        onExit: arg => {
-          if (SlideProps && typeof SlideProps.onExit === 'function')
-            // @ts-ignore
-            SlideProps.onExit(arg);
-          setEntered(false);
-        },
-      },
-      anchor,
-      open: state.open,
-      onOpen: wrappedOnOpen,
-      onClose: wrappedOnClose,
-    };
 
     const headerAdjustment = <EdgeHeaderOffset sidebarId={sidebarId} />;
 
     return (
-      <SidebarProvider id={sidebarId}>
-        <TemporarySwipeableDrawer
-          disableScrollLock
-          {...commonProps}
-          hiddenStyles={createHiddenStyles(
-            temporary,
-            [permanent, persistent],
-            breakpoints
-          )}
-          styles={createBreakpointStyles(temporary, breakpoints)}
-        >
-          {children}
-        </TemporarySwipeableDrawer>
-        <PersistentSwipeableDrawer
-          {...commonProps}
-          hiddenStyles={createHiddenStyles(
-            persistent,
-            [temporary, permanent],
-            breakpoints
-          )}
-          styles={createBreakpointStyles(persistent, breakpoints)}
-        >
-          {headerAdjustment}
-          {children}
-        </PersistentSwipeableDrawer>
-        <PermanentSwipeableDrawer
-          {...commonProps}
-          hiddenStyles={createHiddenStyles(
-            permanent,
-            [temporary, persistent],
-            breakpoints
-          )}
-          styles={createBreakpointStyles(permanent, breakpoints)}
-        >
-          {headerAdjustment}
-          {children}
-        </PermanentSwipeableDrawer>
+      <SidebarProvider id={sidebarId} config={config} sidebarState={state}>
+        <SidebarConsumer>
+          {({
+            entered,
+            inlineStyle,
+            wrapOnEntered,
+            wrapOnExit,
+            wrapOnMouseEnter,
+            wrapOnMouseLeave,
+          }) => {
+            const commonProps = {
+              ...props,
+              PaperProps: {
+                ...PaperProps,
+                style: {
+                  ...get(PaperProps, 'style'),
+                  ...inlineStyle,
+                },
+                className: cx(
+                  (entered || get(config, 'variant') === 'permanent') &&
+                    transition.root,
+                  get(PaperProps, 'className')
+                ),
+                onMouseEnter: wrapOnMouseEnter(PaperProps),
+                onMouseLeave: wrapOnMouseLeave(PaperProps),
+              },
+              ModalProps: {
+                container: iDocument ? iDocument.body : undefined,
+                ...ModalProps,
+              },
+              SlideProps: {
+                ...SlideProps,
+                onEntered: wrapOnEntered(SlideProps),
+                onExit: wrapOnExit(SlideProps),
+              },
+              anchor,
+              open: state.open,
+              onOpen: wrappedOnOpen,
+              onClose: wrappedOnClose,
+            };
+            return (
+              <>
+                <TemporarySwipeableDrawer
+                  disableScrollLock
+                  {...commonProps}
+                  hiddenStyles={createHiddenStyles(
+                    temporary,
+                    [permanent, persistent],
+                    breakpoints
+                  )}
+                  styles={createBreakpointStyles(temporary, breakpoints)}
+                >
+                  {children}
+                </TemporarySwipeableDrawer>
+                <PersistentSwipeableDrawer
+                  {...commonProps}
+                  hiddenStyles={createHiddenStyles(
+                    persistent,
+                    [temporary, permanent],
+                    breakpoints
+                  )}
+                  styles={createBreakpointStyles(persistent, breakpoints)}
+                >
+                  {headerAdjustment}
+                  {children}
+                </PersistentSwipeableDrawer>
+                <PermanentSwipeableDrawer
+                  {...commonProps}
+                  hiddenStyles={createHiddenStyles(
+                    permanent,
+                    [temporary, persistent],
+                    breakpoints
+                  )}
+                  styles={createBreakpointStyles(permanent, breakpoints)}
+                >
+                  {headerAdjustment}
+                  {children}
+                </PermanentSwipeableDrawer>
+              </>
+            );
+          }}
+        </SidebarConsumer>
       </SidebarProvider>
     );
   };
   return SwipeableSidebar;
 };
-
-export default createSwipeableSidebar();

@@ -1,19 +1,18 @@
 import React from 'react';
+import styled from 'styled-components';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Toolbar from '@material-ui/core/Toolbar';
 import { makeStyles } from '@material-ui/core/styles';
-import {
+import Layout, {
   Root,
-  Header,
-  Sidebar,
-  Content,
-  Footer,
-  CollapseBtn,
-  CollapseIcon,
-  SidebarTrigger,
-  SidebarTriggerIcon,
-  ConfigGenerator,
+  getHeader,
+  getDrawerSidebar,
+  getSidebarTrigger,
+  getSidebarContent,
+  getCollapseBtn,
+  getContent,
+  getFooter,
 } from '@mui-treasury/layout';
 import {
   HeaderMockUp,
@@ -21,6 +20,14 @@ import {
   FooterMockUp,
 } from '@mui-treasury/mockup/layout';
 import { RoundIconSidebar } from '@mui-treasury/mockup/sidebars';
+
+const Header = getHeader(styled);
+const DrawerSidebar = getDrawerSidebar(styled);
+const SidebarTrigger = getSidebarTrigger(styled);
+const SidebarContent = getSidebarContent(styled);
+const CollapseBtn = getCollapseBtn(styled);
+const Content = getContent(styled);
+const Footer = getFooter(styled);
 
 const useStyles = makeStyles(() => ({
   header: {
@@ -31,36 +38,55 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const config = ConfigGenerator();
-config.primarySidebar
-  .setCollapsible(false)
-  .setVariant('persistent')
-  .setWidth(84);
-config.header.unclipPrimary();
+const scheme = Layout();
+
+scheme.configureHeader(builder => {
+  builder.registerConfig('xs', {
+    position: 'sticky',
+    clipped: false,
+  });
+});
+
+scheme.configureEdgeSidebar(builder => {
+  builder
+    .create('primarySidebar', { anchor: 'left' })
+    .registerPersistentConfig('xs', {
+      width: 84,
+      collapsible: false,
+      persistentBehavior: {
+        header: 'fit',
+        _other: 'none'
+      }
+    });
+});
 
 const ControlSidebarDemo = () => {
   const styles = useStyles();
   return (
-    <Root initialOpened config={config.get()}>
-      {({ headerStyles, sidebarStyles, setOpened }) => (
+    <Root
+      scheme={scheme}
+      initialState={{ sidebar: { primarySidebar: { open: true } } }}
+    >
+      {({ setOpen }) => (
         <>
           <CssBaseline />
           <Header className={styles.header}>
             <Toolbar>
-              <SidebarTrigger className={headerStyles.leftTrigger}>
-                <SidebarTriggerIcon />
-              </SidebarTrigger>
+              <SidebarTrigger sidebarId={'primarySidebar'} />
               <HeaderMockUp />
             </Toolbar>
           </Header>
-          <Sidebar PaperProps={{ classes: { root: styles.sidebar } }}>
-            <div className={sidebarStyles.container}>
-              <RoundIconSidebar onClickItem={() => setOpened(false)} />
-            </div>
-            <CollapseBtn className={sidebarStyles.collapseBtn}>
-              <CollapseIcon />
-            </CollapseBtn>
-          </Sidebar>
+          <DrawerSidebar
+            sidebarId={'primarySidebar'}
+            PaperProps={{ className: styles.sidebar }}
+          >
+            <SidebarContent>
+              <RoundIconSidebar
+                onClickItem={() => setOpen('primarySidebar', false)}
+              />
+            </SidebarContent>
+            <CollapseBtn />
+          </DrawerSidebar>
           <Content>
             <Container>
               <ContentMockUp />

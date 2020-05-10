@@ -1,21 +1,24 @@
-import React from "react"
-import cx from "clsx"
-import { makeStyles } from "@material-ui/core/styles"
+import React, { HTMLProps } from 'react';
+import cx from 'clsx';
 
-const useStyles = makeStyles({
-  root: {
-    minHeight: 0,
-    flexGrow: 1,
-    overflow: "auto",
-  },
-})
+export default (styled: any) => {
+  const Div = styled('div')`
+    min-height: 0;
+    flex-grow: 1;
+    overflow: auto;
+  `;
 
-const SidebarContent: React.FC<{ className?: string }> = ({
-  className,
-  ...props
-}) => {
-  const classes = useStyles()
-  return <div className={cx("SidebarContent", className, classes.root)} {...props} />
-}
+  const SidebarContent: React.FC<HTMLProps<HTMLDivElement>> = ({
+    className,
+    ...props
+  }) => {
+    return (
+      <Div
+        className={cx('SidebarContent', className)}
+        {...props}
+      />
+    );
+  };
 
-export default SidebarContent
+  return SidebarContent;
+};

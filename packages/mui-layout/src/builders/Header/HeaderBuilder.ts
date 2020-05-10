@@ -5,31 +5,32 @@ import {
   IHeaderBuilder,
   IRegistry,
 } from '../../types';
-
-const INITIAL_HEIGHT = {
-  xs: 56,
-  sm: 64,
-};
+import { INITIAL_HEADER_HEIGHT, DEFAULT_HEADER_ID } from '../../utils';
 
 export default (initialMap: HeaderConfigMap = {}): IHeaderBuilder => {
-  let id: string;
-  const map: HeaderConfigMap = Object.assign({}, initialMap);
+  let id: string = DEFAULT_HEADER_ID;
+  let map: HeaderConfigMap = Object.assign({}, initialMap);
+
+  const Registry = (headerId: string): IRegistry<HeaderConfig> => ({
+    registerConfig(breakpoint, config) {
+      map[breakpoint] = {
+        initialHeight: pickNearestBreakpoint(INITIAL_HEADER_HEIGHT, breakpoint),
+        ...config,
+        id: headerId,
+      };
+      return this;
+    },
+  });
+
+  const defaultRegistry = Registry(id);
 
   return {
     create: function(headerId: string) {
       id = headerId;
-      const Registry = (): IRegistry<HeaderConfig> => ({
-        registerConfig(breakpoint, config) {
-          map[breakpoint] = {
-            initialHeight: pickNearestBreakpoint(INITIAL_HEIGHT, breakpoint),
-            ...config,
-            id: headerId,
-          };
-          return this;
-        },
-      });
-      return Registry();
+      map = Object.assign({}, initialMap); // reset map
+      return Registry(headerId); // return new registry
     },
+    registerConfig: defaultRegistry.registerConfig,
     update: function(updater) {
       updater(map);
     },

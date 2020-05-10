@@ -1,11 +1,11 @@
 import React from 'react';
 import Container, { ContainerProps } from '@material-ui/core/Container';
-import { createFooter } from '../Footer';
-import { createInsetAvoidingView } from '../InsetAvoidingView';
+import getFooter from '../Footer';
+import getInsetAvoidingView from '../InsetAvoidingView';
 
-export const createInsetFooter = (Div?: any, StyledFooter?: any) => {
-  const Footer = createFooter(StyledFooter);
-  const InsetAvoidingView = createInsetAvoidingView(Div);
+export default (styled: any) => {
+  const Footer = getFooter(styled);
+  const InsetAvoidingView = getInsetAvoidingView(styled);
 
   const InsetFooter: React.FC<{
     ContainerProps?: ContainerProps;
@@ -21,5 +21,3 @@ export const createInsetFooter = (Div?: any, StyledFooter?: any) => {
   );
   return InsetFooter;
 };
-
-export default createInsetFooter();

@@ -11,12 +11,12 @@ to configure layout from [these tutorials](/layout/dashboard-layout)
 This is how you use a `standard` preset from `@mui-treasury/layout`
 
 ```jsx
-import Layout, { getLayoutComponents, presets } from '@mui-treasury/layout';
+import Layout, { getStandardScheme } from '@mui-treasury/layout';
 
-// ... getLayoutComponents section
+const standardScheme = getStandardScheme()
 
 const Dashboard = () => {
-  return <Root scheme={presets.standard}>...</Root>;
+  return <Root scheme={standardScheme}>...</Root>;
 };
 ```
 
@@ -24,43 +24,45 @@ Super easy, isn't it? you can remove all of configure code and replace that with
 Let me show you the code of `standard` preset.
 
 ```js
-import LayoutBuilder from '../builders';
+import LayoutBuilder from "../builders"
 // LayoutBuilder = Layout from @mui-treasury/layout
-const scheme = LayoutBuilder();
 
-scheme.configureHeader(builder => {
-  builder
-    .create('appHeader')
-    .registerConfig('xs', {
-      position: 'sticky',
-      initialHeight: 56,
-    })
-    .registerConfig('md', {
-      position: 'relative',
-      initialHeight: 64,
-      clipped: true,
-    });
-});
+export default () => {
+  const scheme = LayoutBuilder()
 
-scheme.configureEdgeSidebar(builder => {
-  builder
-    .create('primarySidebar', {
-      anchor: 'left',
-    })
-    .registerTemporaryConfig('xs', {
-      width: 256,
-    })
-    .registerPermanentConfig('sm', {
-      width: 256,
-      collapsible: true,
-      collapsedWidth: 64,
-      headerMagnetEnabled: true,
-    });
-});
+  scheme.configureHeader(builder => {
+    builder
+      .registerConfig("xs", {
+        position: "sticky",
+        initialHeight: 56,
+      })
+      .registerConfig("md", {
+        position: "relative",
+        initialHeight: 64,
+        clipped: true,
+      })
+  })
 
-scheme.enableAutoCollapse('primarySidebar', 'sm');
+  scheme.configureEdgeSidebar(builder => {
+    builder
+      .create("primarySidebar", {
+        anchor: "left",
+      })
+      .registerTemporaryConfig("xs", {
+        width: 256,
+      })
+      .registerPermanentConfig("sm", {
+        width: 256,
+        collapsible: true,
+        collapsedWidth: 64,
+        headerMagnetEnabled: true
+      })
+  })
 
-export default scheme;
+  scheme.enableAutoCollapse("primarySidebar", "sm")
+
+  return scheme
+}
 ```
 
 Look familiar? well, to be exact it is the same function that you see all over the documentation, lol.
@@ -71,18 +73,20 @@ That means if you want to customize or even remove some of the config in a prese
 Take this example, I love `standard` preset but I don't want it to be collapsible in permanent config. This is how I update the config,
 
 ```jsx
-import Layout, { getLayoutComponents, presets } from '@mui-treasury/layout';
+import Layout, { getStandardScheme } from '@mui-treasury/layout';
 
 // ... getLayoutComponents section
 
-presets.standard.configureEdgeSidebar(builder => {
+const standardScheme = getStandardScheme()
+
+standardScheme.configureEdgeSidebar(builder => {
   builder.update('primarySidebar', config => {
     config.sm.collapsible = false;
   });
 });
 
 const Dashboard = () => {
-  return <Root scheme={presets.standard}>...</Root>;
+  return <Root scheme={standardScheme}>...</Root>;
 };
 ```
 

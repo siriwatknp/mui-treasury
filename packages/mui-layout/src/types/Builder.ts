@@ -47,6 +47,7 @@ export interface IContentBuilder {
 
 export interface IHeaderBuilder {
   create: (id: string) => IRegistry<HeaderConfig>;
+  registerConfig: IRegistry<HeaderConfig>['registerConfig'];
   update: (
     updater: (config: MapBreakpoint<Omit<HeaderConfig, 'id'>>) => void
   ) => void;

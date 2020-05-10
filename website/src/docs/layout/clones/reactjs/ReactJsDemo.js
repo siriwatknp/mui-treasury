@@ -14,23 +14,29 @@ import {
   createMuiTheme,
   responsiveFontSizes,
 } from '@material-ui/core/styles';
-import Layout, { getLayoutComponents } from '@mui-treasury/layout';
+import Layout, {
+  Root,
+  getHeader,
+  getContent,
+  getSwipeableSidebar,
+  getInsetContainer,
+  getInsetSidebar,
+  getInsetAvoidingView,
+  getFooter,
+} from '@mui-treasury/layout';
 import {
   ReactHeader,
   ReactNextArticle,
   ReactContent,
 } from '@mui-treasury/mockup/brands';
 import styled from 'styled-components';
-const {
-  Root,
-  Header,
-  Content,
-  SwipeableSidebar,
-  InsetContainer,
-  InsetSidebar,
-  InsetAvoidingView,
-  Footer,
-} = getLayoutComponents(styled);
+const Header = getHeader(styled);
+const Content = getContent(styled);
+const SwipeableSidebar = getSwipeableSidebar(styled);
+const InsetContainer = getInsetContainer(styled);
+const InsetSidebar = getInsetSidebar(styled);
+const InsetAvoidingView = getInsetAvoidingView(styled);
+const Footer = getFooter(styled);
 
 const useStyles = makeStyles(({ breakpoints }) => ({
   toolbar: {
@@ -148,7 +154,7 @@ const ReactJsDemo = () => {
       })
       .registerFixedConfig('md', {
         width: 256,
-      })
+      });
   });
   const sidebarContent = (
     <Box mt={7.5} ml={3}>

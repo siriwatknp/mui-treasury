@@ -1,18 +1,18 @@
 import React from 'react';
+import styled from 'styled-components';
 import { createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import {
   Root,
-  Header,
-  Sidebar,
-  Content,
-  Footer,
-  CollapseBtn,
-  CollapseIcon,
-  SidebarTrigger,
-  SidebarTriggerIcon,
-  standardLayoutPreset,
+  getHeader,
+  getDrawerSidebar,
+  getSidebarTrigger,
+  getSidebarContent,
+  getCollapseBtn,
+  getContent,
+  getFooter,
+  getStandardScheme,
 } from '@mui-treasury/layout';
 import {
   HeaderMockUp,
@@ -20,6 +20,16 @@ import {
   ContentMockUp,
   FooterMockUp,
 } from '@mui-treasury/mockup/layout';
+
+const Header = getHeader(styled);
+const DrawerSidebar = getDrawerSidebar(styled);
+const SidebarTrigger = getSidebarTrigger(styled);
+const SidebarContent = getSidebarContent(styled);
+const CollapseBtn = getCollapseBtn(styled);
+const Content = getContent(styled);
+const Footer = getFooter(styled);
+
+const standardScheme = getStandardScheme();
 
 const theme = createMuiTheme({
   palette: {
@@ -55,37 +65,29 @@ const theme = createMuiTheme({
 
 const CustomThemeDemo = () => {
   // by default, Root will render ThemeProvider, pass "theme" to override default theme
-  // If you want to use your own ThemeProvider, pass "omitThemeProvider" to Root and wrapped it with your ThemeProvider
-  // note: If you set "omitThemeProvider=true" to Root without your own ThemeProvider, you will see error "cannot read palette of undefined"
+  // If you want to use your own ThemeProvider, pass "themeProvidedOmitted" to Root and wrapped it with your ThemeProvider
+  // note: If you set "themeProvidedOmitted=true" to Root without your own ThemeProvider, you will see error "cannot read palette of undefined"
   return (
-    <Root theme={theme} config={standardLayoutPreset}>
-      {({ headerStyles, sidebarStyles }) => (
-        <>
-          <CssBaseline />
-          <Header color={'secondary'}>
-            <Toolbar>
-              <SidebarTrigger className={headerStyles.leftTrigger}>
-                <SidebarTriggerIcon />
-              </SidebarTrigger>
-              <HeaderMockUp />
-            </Toolbar>
-          </Header>
-          <Sidebar>
-            <div className={sidebarStyles.container}>
-              <NavContentMockUp />
-            </div>
-            <CollapseBtn className={sidebarStyles.collapseBtn}>
-              <CollapseIcon />
-            </CollapseBtn>
-          </Sidebar>
-          <Content>
-            <ContentMockUp />
-          </Content>
-          <Footer>
-            <FooterMockUp />
-          </Footer>
-        </>
-      )}
+    <Root theme={theme} scheme={standardScheme}>
+      <CssBaseline />
+      <Header color={'secondary'}>
+        <Toolbar>
+          <SidebarTrigger sidebarId={'primarySidebar'} />
+          <HeaderMockUp />
+        </Toolbar>
+      </Header>
+      <DrawerSidebar sidebarId={'primarySidebar'}>
+        <SidebarContent>
+          <NavContentMockUp />
+        </SidebarContent>
+        <CollapseBtn />
+      </DrawerSidebar>
+      <Content>
+        <ContentMockUp />
+      </Content>
+      <Footer>
+        <FooterMockUp />
+      </Footer>
     </Root>
   );
 };

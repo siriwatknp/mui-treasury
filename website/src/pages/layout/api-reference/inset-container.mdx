@@ -11,12 +11,9 @@ Always use this component along with `InsetSidebar` for inset layout pattern.
 
 ```jsx
 import styled from 'styled-components'
-import Layout, { getLayoutComponents } from '@mui-treasury/layout';
+import Layout, { Root, getInsetContainer } from '@mui-treasury/layout';
 
-const {
-  Root,
-  InsetContainer,
-} = getLayoutComponents(styled)
+const InsetContainer = getInsetContainer(styled)
 
 cosnt scheme = Layout()
 

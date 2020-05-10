@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { Root, presets } from '@mui-treasury/layout';
+import { Root } from '@mui-treasury/layout';
 import { ThemeWrapper } from './utils/theme';
 import banner from './assets/mui-treasury_banner_minified.jpg';
 import PageLayout from './components/layout/PageLayout';
-import createPath from './modules/path';
+import createPath, { muiTreasuryScheme } from './modules/path';
 
 import 'prismjs/themes/prism-tomorrow.css';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
@@ -14,7 +14,7 @@ import './fontawesome';
 
 const App = ({ children, location }) => {
   const path = React.useMemo(() => createPath(location), [location]);
-  presets.muiTreasury.configureEdgeSidebar(builder => {
+  muiTreasuryScheme.configureEdgeSidebar(builder => {
     builder.update('primarySidebar', path.parseConfig);
     builder.hide('primarySidebar', location.pathname === '/');
   });
@@ -57,7 +57,7 @@ const App = ({ children, location }) => {
       </Helmet>
       {path.wrappedByLayout ? (
         <ThemeWrapper>
-          <Root themeProviderOmitted scheme={presets.muiTreasury}>
+          <Root themeProviderOmitted scheme={muiTreasuryScheme}>
             <PageLayout
               menus={path.sidebarMenus}
               getOpenKeys={path.getOpenKeys}

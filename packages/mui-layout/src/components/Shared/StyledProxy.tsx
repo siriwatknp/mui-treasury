@@ -1,5 +1,4 @@
 import React from 'react';
-import defaultStyled from '../../core/styled';
 import { MediaQueries } from '../../utils/createBreakpointStyles';
 
 export interface HiddenProxyProps {
@@ -9,7 +8,19 @@ export interface HiddenProxyProps {
   style?: object;
 }
 
-export const generateStyledProxyCreator = (styled = defaultStyled) => {
+const DefaultStyled = function<T>(
+  WrappedComponent: React.ComponentType<T> | keyof JSX.IntrinsicElements
+) {
+  return function<K>(fn: (c: K) => any): React.FC<T & K> {
+    return function(
+      props: React.PropsWithChildren<{ className?: string } & K>
+    ) {
+      return <WrappedComponent {...(props as T & K)} />;
+    };
+  };
+};
+
+export const generateStyledProxyCreator = (styled = DefaultStyled) => {
   function createProxyStyledComponent<T>(
     WrappedComponent: React.ComponentType<T> | keyof JSX.IntrinsicElements,
     refClassName?: string

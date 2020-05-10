@@ -11,14 +11,16 @@ same as [SidebarTrigger](/layout/api-reference/sidebar-trigger)
 
 ```jsx
 import styled from 'styled-components'
-import Layout, { getLayoutComponents } from '@mui-treasury/layout';
-
-const {
+import Layout, {
   Root,
-  DrawerSidebar,
-  CollapseBtn,
-  SidebarContent
-} = getLayoutComponents(styled)
+  getDrawerSidebar,
+  getSidebarTrigger,
+  getCollapseBtn,
+} from "@mui-treasury/layout";
+
+const DrawerSiderbar = getDrawerSidebar(styled)
+const SidebarTrigger = getSidebarTrigger(styled)
+const CollapseBtn = getCollapseBtn(styled)
 
 cosnt scheme = Layout()
 

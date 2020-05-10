@@ -12,7 +12,7 @@ const useStyles = makeStyles(({ breakpoints }) => ({
       height: 500,
     },
     [breakpoints.up('md')]: {
-      marginLeft: 'calc(-36vw + 350px)',
+      marginLeft: 'calc(-36vw + 440px)',
       width: '72vw',
     },
   },

@@ -1,2 +1,7 @@
-export const PERSISTENT_BEHAVIORS = ["fit", "flexible"]
-
+export const DEFAULT_HEADER_ID = 'header'
+export const DEFAULT_CONTENT_ID = 'content'
+export const DEFAULT_FOOTER_ID = 'footer'
+export const INITIAL_HEADER_HEIGHT = {
+  xs: 56,
+  sm: 64,
+};

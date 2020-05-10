@@ -1,17 +1,18 @@
 import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
-import { createHeaderOffset } from '../HeaderOffset';
-import { useLayoutCtx } from '../../core';
+import getHeaderOffset from '../HeaderOffset';
+import { useLayoutCtx } from '../../contexts';
 import { createBreakpointStyles } from '../../utils';
 import ContentCompiler from '../../compilers/ContentCompiler';
-import { useFullscreenCtx } from '../../core/Context/FullscreenContext';
-import styledProxy from '../Shared/StyledProxy';
+import { useFullscreenCtx } from '../../contexts/FullscreenContext';
+import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 
-const StyledMain = styledProxy('main');
-const Div = styledProxy('div');
+export default (styled: any) => {
+  const styledProxy = generateStyledProxyCreator(styled);
+  const Main = styledProxy('main');
 
-export const createContent = (StyledComponent = StyledMain, StyledDiv = Div) => {
-  const HeaderOffset = createHeaderOffset(StyledDiv)
+  const HeaderOffset = getHeaderOffset(styled)
+
   const Content = ({
     children,
     ...props
@@ -24,7 +25,7 @@ export const createContent = (StyledComponent = StyledMain, StyledDiv = Div) => 
     );
     const isFullscreen = useFullscreenCtx();
     return (
-      <StyledComponent
+      <Main
         {...props}
         styles={{
           transition: 'all 300ms cubic-bezier(0.0, 0, 0.2, 1) 0ms',
@@ -34,10 +35,8 @@ export const createContent = (StyledComponent = StyledMain, StyledDiv = Div) => 
       >
         <HeaderOffset />
         {children}
-      </StyledComponent>
+      </Main>
     );
   };
   return Content;
 };
-
-export default createContent();

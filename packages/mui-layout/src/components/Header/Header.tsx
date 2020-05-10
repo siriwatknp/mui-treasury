@@ -1,14 +1,15 @@
 import React from 'react';
 import AppBar, { AppBarProps } from '@material-ui/core/AppBar';
 import { Theme, useTheme } from '@material-ui/core/styles';
-import { useLayoutCtx } from '../../core';
-import createHiddenProxyComponent from '../Shared/StyledProxy';
+import { useLayoutCtx } from '../../contexts';
+import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 import HeaderCompiler from '../../compilers/HeaderCompiler';
 import { createBreakpointStyles } from '../../utils';
 
-const StyledProxyAppBar = createHiddenProxyComponent<AppBarProps>(AppBar);
+export default (styled: any) => {
+  const styledProxy = generateStyledProxyCreator(styled);
+  const StyledAppBar = styledProxy<AppBarProps>(AppBar);
 
-export const createHeader = (StyledComponent = StyledProxyAppBar) => {
   const Header: React.FC<AppBarProps> = props => {
     const { data, state } = useLayoutCtx();
     const { breakpoints } = useTheme<Theme>();
@@ -17,7 +18,7 @@ export const createHeader = (StyledComponent = StyledProxyAppBar) => {
       breakpoints
     );
     return (
-      <StyledComponent
+      <StyledAppBar
         color={'default'}
         elevation={0}
         mui-layout={data.headerId}
@@ -30,7 +31,5 @@ export const createHeader = (StyledComponent = StyledProxyAppBar) => {
     );
   };
 
-  return Header
-}
-
-export default createHeader();
+  return Header;
+};

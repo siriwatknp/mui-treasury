@@ -12,13 +12,14 @@ in combination with `Footer` and `Container`.
 ```jsx
 import styled from 'styled-components'
 import Container from '@material-ui/core/Container';
-import Layout, { getLayoutComponents } from '@mui-treasury/layout';
-
-const {
+import Layout, {
   Root,
-  Footer,
-  InsetAvoidingView,
-} = getLayoutComponents(styled)
+  getFooter,
+  getInsetAvoidingView
+} from '@mui-treasury/layout';
+
+const Footer = getFooter(styled);
+const InsetAvoidingView = getInsetAvoidingView(styled);
 
 cosnt scheme = Layout()
 
