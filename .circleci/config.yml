@@ -24,7 +24,7 @@ commands:
           key: yarn-cache-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
-      - restore_cache:k
+      - restore_cache:
           keys:
             - gatsby-plublic-cache-{{ .Branch }}
       - run:
