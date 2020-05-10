@@ -36,14 +36,10 @@ export default (styled: any) => {
     SvgIconProps,
     ...props
   }: IconButtonProps & CtaProps) => {
-    const {
-      id,
-      anchor,
-      hiddenStyles,
-      state,
-      setOpen,
-    } = useSidebarTrigger(sidebarId, 'SidebarTrigger');
-    console.log('hiddenStyles', hiddenStyles);
+    const { id, anchor, hiddenStyles, state, setOpen } = useSidebarTrigger(
+      sidebarId,
+      'SidebarTrigger'
+    );
     const classes = useStyles({ ...props, anchor });
     const getArrow = () => {
       if (!state) return null;
@@ -70,4 +66,3 @@ export default (styled: any) => {
   };
   return SidebarTrigger;
 };
-
