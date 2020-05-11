@@ -36,6 +36,8 @@
     "cm": "npx git-cz",
     "build": "yarn workspace website build",
     "build:ci": "npx hygen ci production && yarn install && yarn build",
+    "deploy": "yarn build:ci && firebase deploy --only hosting:current",
+    "postdeploy": "git reset --hard",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "yarn workspace website start",
     "serve": "yarn workspace website serve",
