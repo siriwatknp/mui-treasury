@@ -1,6 +1,7 @@
 export default [
   { key: 'layout', label: 'Introduction', to: '/layout/' },
   { key: 'core-concept', label: 'Core Concept', to: '/layout/core-concept/' },
+  { key: 'starters', label: 'Starters', to: '/layout/starters/' },
   {
     key: 'tutorials',
     label: 'Tutorials',
@@ -68,6 +69,96 @@ export default [
         to: '/layout/features/header-magnet',
       },
     ]
+  },
+  {
+    key: 'presets',
+    label: 'Presets',
+    subMenus: [
+      {
+        key: 'default',
+        label: 'Default',
+        to: '/layout/presets/default/',
+      },
+      {
+        key: 'standard',
+        label: 'Standard',
+        to: '/layout/presets/standard/',
+      },
+      {
+        key: 'content-based',
+        label: 'Content Based',
+        to: '/layout/presets/content-based/',
+      },
+      {
+        key: 'cozy',
+        label: 'Cozy',
+        to: '/layout/presets/cozy/',
+      },
+      {
+        key: 'fixed',
+        label: 'Fixed',
+        to: '/layout/presets/fixed/',
+      },
+      {
+        key: 'mui-treasury',
+        label: 'MUI Treasury',
+        to: '/layout/presets/mui-treasury/',
+      },
+    ],
+  },
+  {
+    key: 'examples',
+    label: 'Examples',
+    subMenus: [
+      {
+        key: 'custom-theme',
+        label: 'Custom theme',
+        to: '/layout/examples/custom-theme?bgColor=d4b397',
+      },
+      {
+        key: 'custom-styles',
+        label: 'Custom styles',
+        to:
+          '/layout/examples/custom-styles?bgColor=213E9B&accent=rgb(17, 254, 220)&dark=true',
+      },
+      {
+        key: 'control-sidebar',
+        label: 'Control Sidebar',
+        to:
+          '/layout/examples/control-sidebar?bgColor=e9e9e9&primary=36338E&accent=ff9600',
+      },
+      {
+        key: 'secondary-sidebar',
+        label: '2nd Sidebar',
+        to: '/layout/examples/secondary-sidebar',
+      },
+      {
+        key: 'inset-sidebar',
+        label: 'Inset Sidebar',
+        to: '/layout/examples/inset-sidebar?bgColor=ffe4ee',
+      },
+    ],
+  },
+  {
+    key: 'clones',
+    label: 'Clones',
+    subMenus: [
+      {
+        key: 'reactjs',
+        label: 'React Doc',
+        to: '/layout/clones/reactjs?bgColor=b6c0d4',
+      },
+      {
+        key: 'messenger',
+        label: 'Messenger',
+        to: '/layout/clones/messenger?bgColor=rgb(0,153,255)&dark=true',
+      },
+      {
+        key: 'shopping-cart',
+        label: 'Shopping Cart',
+        to: '/layout/clones/shopping-cart?bgColor=EAEEF1',
+      },
+    ],
   },
   {
     key: 'api-reference',
@@ -172,96 +263,6 @@ export default [
         ]
       }
     ]
-  },
-  {
-    key: 'presets',
-    label: 'Presets',
-    subMenus: [
-      {
-        key: 'default',
-        label: 'Default',
-        to: '/layout/presets/default/',
-      },
-      {
-        key: 'standard',
-        label: 'Standard',
-        to: '/layout/presets/standard/',
-      },
-      {
-        key: 'content-based',
-        label: 'Content Based',
-        to: '/layout/presets/content-based/',
-      },
-      {
-        key: 'cozy',
-        label: 'Cozy',
-        to: '/layout/presets/cozy/',
-      },
-      {
-        key: 'fixed',
-        label: 'Fixed',
-        to: '/layout/presets/fixed/',
-      },
-      {
-        key: 'mui-treasury',
-        label: 'MUI Treasury',
-        to: '/layout/presets/mui-treasury/',
-      },
-    ],
-  },
-  {
-    key: 'examples',
-    label: 'Examples',
-    subMenus: [
-      {
-        key: 'custom-theme',
-        label: 'Custom theme',
-        to: '/layout/examples/custom-theme?bgColor=d4b397',
-      },
-      {
-        key: 'custom-styles',
-        label: 'Custom styles',
-        to:
-          '/layout/examples/custom-styles?bgColor=213E9B&accent=rgb(17, 254, 220)&dark=true',
-      },
-      {
-        key: 'control-sidebar',
-        label: 'Control Sidebar',
-        to:
-          '/layout/examples/control-sidebar?bgColor=e9e9e9&primary=36338E&accent=ff9600',
-      },
-      {
-        key: 'secondary-sidebar',
-        label: '2nd Sidebar',
-        to: '/layout/examples/secondary-sidebar',
-      },
-      {
-        key: 'inset-sidebar',
-        label: 'Inset Sidebar',
-        to: '/layout/examples/inset-sidebar?bgColor=ffe4ee',
-      },
-    ],
-  },
-  {
-    key: 'clones',
-    label: 'Clones',
-    subMenus: [
-      {
-        key: 'reactjs',
-        label: 'React Doc',
-        to: '/layout/clones/reactjs?bgColor=b6c0d4',
-      },
-      {
-        key: 'messenger',
-        label: 'Messenger',
-        to: '/layout/clones/messenger?bgColor=rgb(0,153,255)&dark=true',
-      },
-      {
-        key: 'shopping-cart',
-        label: 'Shopping Cart',
-        to: '/layout/clones/shopping-cart?bgColor=EAEEF1',
-      },
-    ],
   },
   {
     key: 'v3',
