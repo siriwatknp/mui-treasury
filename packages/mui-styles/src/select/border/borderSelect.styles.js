@@ -30,10 +30,8 @@ export default ({ palette }) => ({
   },
   icon:{
     color: palette.grey[500],
-    marginTop: 4,
     right: 12,
     position: 'absolute',
-    flexShrink: 0,
     userSelect: 'none',
     pointerEvents: 'none'
   },

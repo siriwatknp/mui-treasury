@@ -5,6 +5,5 @@ import {
   faFacebookF,
   faFacebook,
 } from '@fortawesome/free-brands-svg-icons';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faFacebook, faTwitter, faGithub, faFacebookF, faChevronDown);
+library.add(faFacebook, faTwitter, faGithub, faFacebookF);
