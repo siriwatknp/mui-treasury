@@ -1,53 +1,65 @@
-import { deepPurple } from '@material-ui/core/colors';
+import { blue } from '@material-ui/core/colors';
+import { grey } from '@material-ui/core/colors';
+
 
 export default () => ({
   select: {
-    minWidth: 200,
+    display: 'flex',
+    minWidth: 240,
     background: 'white',
-    color: deepPurple[50],
-    fontWeight:200,
     borderStyle:'none',
-    borderWidth: 2,
-    borderRadius: 12,
+    borderRadius: 8,
     paddingLeft: 24,
     paddingTop: 14,
     paddingBottom: 15,
-    boxShadow: '0px 5px 8px -3px rgba(0,0,0,0.14)',
+    boxShadow: 'none',
     "&:focus":{
-      borderRadius: 12,
+      borderRadius: 8,
       background: 'white',
-      borderColor: deepPurple[100]
     },
+    '&[aria-expanded="true"]':{
+      background: grey[50]
+    },
+    "& > div":{
+      display:'inline-flex' // this shows the icon in the SelectInput but not the dropdown
+    }
   },
   icon:{
-    color: deepPurple[300],
+    color: blue[500],
     right: 12,
     position: 'absolute',
     userSelect: 'none',
     pointerEvents: 'none'
   },
   paper: {
-    borderRadius: 12,
+    borderRadius: 4,
     marginTop: 8
   },
   list: {
     paddingTop:0,
     paddingBottom:0,
+    paddingRight:8,
+    paddingLeft:8,
     background:'white',
     "& li":{
-      fontWeight:200,
       paddingTop:12,
       paddingBottom:12,
+      paddingRight:8,
+      paddingLeft:8,
     },
     "& li:hover":{
-      background: deepPurple[100]
+      background: blue[50]
     },
     "& li.Mui-selected":{
-      color:'white',
-      background: deepPurple[400]
+      color:'black',
+      background: 'white'
     },
     "& li.Mui-selected:hover":{
-      background: deepPurple[500]
+      background: blue[50]
     }
+  },
+  listIcon: {
+    minWidth: 32,
+    display: 'none' // hide the ListItemIcon in the dropdown
   }
 });

@@ -3,12 +3,14 @@ import { useOutlineSelectStyles } from '@mui-treasury/styles/select/outline';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
+import SortIcon from '@material-ui/icons/Sort';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
 
-// Original design here: https://github.com/siriwatknp/mui-treasury/issues/540
+// Original design here: https://github.com/siriwatknp/mui-treasury/issues/539
 
 const OutlineSelect = () => {
-  const [val,setVal] = useState(1);
+  const [val,setVal] = useState(0);
 
   const handleChange = (event) => {
     setVal(event.target.value);
@@ -18,7 +20,7 @@ const OutlineSelect = () => {
 
   const iconComponent = (props) => {
     return (
-      <ExpandMoreIcon className={props.className + " " + outlineSelectClasses.icon}/>
+      <ExpandMoreRoundedIcon className={props.className + " " + outlineSelectClasses.icon}/>
     )};
 
   // moves the menu below the select input
@@ -38,7 +40,6 @@ const OutlineSelect = () => {
     getContentAnchorEl: null
   };
 
-
   return (
     <FormControl>
       <Select
@@ -49,10 +50,22 @@ const OutlineSelect = () => {
         value={val}
         onChange={handleChange}
       >
-        <MenuItem value={0}>Principle</MenuItem>
-        <MenuItem value={1}>Sketch</MenuItem>
-        <MenuItem value={2}>Photoshop</MenuItem>
-        <MenuItem value={3}>Framer</MenuItem>
+        <MenuItem value={0}>
+          <ListItemIcon classes={{ root: outlineSelectClasses.listIcon }}>
+            <SortIcon/>
+          </ListItemIcon>
+          <span style={{marginTop:3}}>
+            Sort by Date Created
+          </span>
+        </MenuItem>
+        <MenuItem value={1}>
+          <ListItemIcon classes={{ root: outlineSelectClasses.listIcon }}>
+            <SortIcon/>
+          </ListItemIcon>
+          <span style={{marginTop:3}}>
+            Sort by Name
+          </span>
+        </MenuItem>
       </Select>
     </FormControl>
   );
