@@ -4,6 +4,7 @@ export { default as getFullscreen } from './Fullscreen';
 export { default as getSidebarContent } from './SidebarContent';
 export { default as getHeader } from './Header';
 export { default as getContent } from './Content';
+export { default as getCollapseIcon } from './CollapseIcon';
 export { default as getCollapseBtn } from './CollapseBtn';
 export { default as getSidebarTrigger } from './SidebarTrigger';
 export { default as getDrawerSidebar } from './DrawerSidebar';
