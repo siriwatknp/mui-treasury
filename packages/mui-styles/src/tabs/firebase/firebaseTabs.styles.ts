@@ -1,4 +1,9 @@
-export const tabsStyles = ({ spacing, palette }) => ({
+import { Theme } from '@material-ui/core';
+
+export const tabsStyles = ({
+  spacing,
+  palette,
+}: Pick<Theme, 'spacing' | 'palette'>) => ({
   root: {
     marginLeft: spacing(1),
   },
@@ -10,7 +15,10 @@ export const tabsStyles = ({ spacing, palette }) => ({
   },
 });
 
-export const tabItemStyles = ({ breakpoints, spacing }) => ({
+export const tabItemStyles = ({
+  breakpoints,
+  spacing,
+}: Pick<Theme, 'breakpoints' | 'spacing'>) => ({
   root: {
     textTransform: 'initial',
     margin: spacing(0, 2),

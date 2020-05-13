@@ -1,4 +1,6 @@
-export const tabsStyles = {
+import { Theme } from '@material-ui/core';
+
+export const tabsStyles = () => ({
   root: {
     backgroundColor: '#eee',
     borderRadius: 10,
@@ -18,9 +20,9 @@ export const tabsStyles = {
     backgroundColor: '#fff',
     boxShadow: '0 4px 12px 0 rgba(0,0,0,0.16)',
   },
-};
+});
 
-export const tabItemStyles = ({ palette, breakpoints }) => ({
+export const tabItemStyles = ({ palette, breakpoints }: Theme) => ({
   root: {
     '&:hover': {
       opacity: 1,

@@ -1,3 +1,5 @@
+import { Theme } from '@material-ui/core';
+
 export const tabsStyles = () => ({
   root: {
     width: '100%',
@@ -8,7 +10,7 @@ export const tabsStyles = () => ({
   },
 });
 
-export const tabItemStyles = ({ breakpoints }) => ({
+export const tabItemStyles = ({ breakpoints }: Theme) => ({
   root: {
     minHeight: 53,
     minWidth: 80,
@@ -52,7 +54,7 @@ export const tabItemStyles = ({ breakpoints }) => ({
   },
 });
 
-export const badgeStyles = ({ palette }) => ({
+export const badgeStyles = ({ palette }: Pick<Theme, 'palette'>) => ({
   root: {
     [`&.MuiBadge--dotted, &.MuiBadge--number`]: {
       '& .MuiBadge-badge': {

@@ -1,3 +1,4 @@
+import { Theme } from '@material-ui/core';
 import Color from 'color';
 
 export const tabsStyles = () => ({
@@ -12,13 +13,17 @@ export const tabsStyles = () => ({
   },
 });
 
-export const tabItemStyles = ({ palette, spacing, breakpoints }) => {
+export const tabItemStyles = ({
+  palette,
+  spacing,
+  breakpoints,
+}: Pick<Theme, 'breakpoints' | 'palette' | 'spacing'>) => {
   const defaultBgColor = palette.grey[500];
   const defaultSelectedBgColor = '#ffffff';
   const defaultMinWidth = {
     md: 120,
   };
-  const getTextColor = color => {
+  const getTextColor = (color: string) => {
     if (Color(color).isLight()) return palette.text.primary;
     return palette.common.white;
   };
