@@ -10,7 +10,8 @@ import createPath, { muiTreasuryScheme } from './modules/path';
 import 'prismjs/themes/prism-tomorrow.css';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 import './global.css';
-import './fontawesome';
+
+// font-awesome
 
 const App = ({ children, location }) => {
   const path = React.useMemo(() => createPath(location), [location]);
