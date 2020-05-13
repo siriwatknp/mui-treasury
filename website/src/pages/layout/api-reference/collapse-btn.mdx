@@ -70,6 +70,17 @@ const App = () => {
       );
     };
     ```
+- `children`
+  - **type** : ReactNode | ({ collapsed: boolean, anchor: 'left' | 'right' }) => ReactNode
+  - **description** : you can provide children as a child to customise icon based on state & anchor
+    ```jsx
+    <CollapseBtn>
+      {({ collapsed, anchor }) => {
+        if (collapsed) return 'Expand'
+        return 'Collapse'
+      }}
+    </CollapseBtn>
+    ```
 - `SvgIconProps`
   - **type** : object
   - **description** : props that are sent to [SvgIcon](https://material-ui.com/api/svg-icon/#props)
@@ -95,5 +106,6 @@ SidebarTrigger use `Button` that contains `SvgIcon` insider. All of the props th
 
 **Related components**
 
+- [CollapseIcon](/layout/api-reference/collapse-icon)
 - [SidebarTrigger](/layout/api-reference/sidebar-trigger)
 - [SidebarContent](/layout/api-reference/sidebar-content)
