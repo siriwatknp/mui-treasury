@@ -1,3 +1,5 @@
+import { Theme } from '@material-ui/core';
+
 export const tabsStyles = () => ({
   root: {
     width: '100%',
@@ -8,7 +10,7 @@ export const tabsStyles = () => ({
   },
 });
 
-export const tabItemStyles = ({ breakpoints }) => ({
+export const tabItemStyles = ({ breakpoints }: Pick<Theme, 'breakpoints'>) => ({
   root: {
     minHeight: 53,
     minWidth: 80,
