@@ -18,6 +18,7 @@ import { customComponents as selectStyles } from '../../docs/styles/select';
 import { customComponents as switchStyles } from '../../docs/styles/switch';
 import { customComponents as checkboxStyles } from '../../docs/styles/checkbox';
 import { customComponents as radioStyles } from '../../docs/styles/radio';
+import { customComponents as gutterStyles } from '../../docs/styles/gutter';
 
 export default [
   {
@@ -149,6 +150,12 @@ export default [
         label: 'Flex',
         total: flexStyles.length,
         to: '/styles/flex',
+      },
+      {
+        key: 'gutter',
+        label: 'Gutter',
+        total: gutterStyles.length,
+        to: '/styles/gutter',
       },
       {
         key: 'shadow',
