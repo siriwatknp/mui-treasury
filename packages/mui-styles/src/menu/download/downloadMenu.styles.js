@@ -24,10 +24,16 @@ export default () => ({
     pointerEvents: 'none',
     marginRight:8
   },
-  expandIcon:{
+  downIcon:{
     color: blue[400],
     userSelect: 'none',
     pointerEvents: 'none'
+  },
+  upIcon:{
+    color: blue[400],
+    userSelect: 'none',
+    pointerEvents: 'none',
+    transform: "rotate(180deg)"
   },
   paper: {
     minWidth:minWidth,

@@ -33,7 +33,7 @@ const DownloadMenu = () => {
       >
         <GetAppRoundedIcon className={downloadMenuClasses.downloadIcon}/>
         <span>Download</span>
-        <ExpandMoreIcon className={downloadMenuClasses.expandIcon}/>
+        <ExpandMoreIcon className={anchorEl ? downloadMenuClasses.downIcon : downloadMenuClasses.upIcon}/>
       </Button>
       <Menu
         id="simple-menu"
