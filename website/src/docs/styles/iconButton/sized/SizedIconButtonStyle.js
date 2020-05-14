@@ -34,6 +34,7 @@ const SizedIconButtonStyle = () => {
 // hide-start
 SizedIconButtonStyle.metadata = {
   title: 'Sized',
+  description: 'custom button and icon size dynamically',
   path: 'styles/iconButton/sized',
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first

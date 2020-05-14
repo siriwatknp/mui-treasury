@@ -4,10 +4,14 @@ import { useRowGutterStyles } from '@mui-treasury/styles/gutter/row';
 
 const RowGutterStyle = () => {
   const gutterStyles = useRowGutterStyles();
-  const largeGutterStyles = useRowGutterStyles({ size: 2 });
-  const allGutterStyles = useRowGutterStyles({ size: 2, before: 2, after: 2 });
+  const largeGutterStyles = useRowGutterStyles({ size: '1rem' });
+  const allGutterStyles = useRowGutterStyles({
+    size: 16, // turn to px
+    before: 20, // turn to px
+    after: 20, // turn to px
+  });
   const size = { width: 48, height: 48, display: 'inline-block' };
-  const parentProps = { lineHeight: 0 }
+  const parentProps = { lineHeight: 0 };
   return (
     <div>
       <Box className={gutterStyles.parent} {...parentProps}>
@@ -22,7 +26,11 @@ const RowGutterStyle = () => {
         <Box {...size} bgcolor={'secondary.main'} />
       </Box>
       <br />
-      <Box bgcolor={'grey.300'} className={allGutterStyles.parent} {...parentProps}>
+      <Box
+        bgcolor={'grey.300'}
+        className={allGutterStyles.parent}
+        {...parentProps}
+      >
         <Box {...size} bgcolor={'primary.main'} />
         <Box {...size} bgcolor={'primary.main'} />
         <Box {...size} bgcolor={'primary.main'} />
@@ -34,6 +42,7 @@ const RowGutterStyle = () => {
 // hide-start
 RowGutterStyle.metadata = {
   title: 'Row',
+  description: 'add margin to children',
   path: 'styles/gutter/row',
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
