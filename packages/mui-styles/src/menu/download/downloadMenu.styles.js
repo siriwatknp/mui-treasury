@@ -1,53 +1,37 @@
-import { deepPurple } from '@material-ui/core/colors';
+import { blue } from '@material-ui/core/colors';
+
+const minWidth = 140;
 
 export default () => ({
-  select: {
-    minWidth: 200,
+  button: {
+    minWidth:minWidth,
     background: 'white',
-    color: deepPurple[50],
-    fontWeight:200,
-    borderStyle:'none',
-    borderWidth: 2,
-    borderRadius: 12,
-    paddingLeft: 24,
-    paddingTop: 14,
-    paddingBottom: 15,
-    boxShadow: '0px 5px 8px -3px rgba(0,0,0,0.14)',
-    "&:focus":{
-      borderRadius: 12,
-      background: 'white',
-      borderColor: deepPurple[100]
-    },
+    fontWeight:500,
+    textTransform:'capitalize',
+    borderColor: blue[500],
+    borderStyle:'solid',
+    borderWidth: '2px',
+    borderRadius: 4,
+    paddingTop: 8,
+    paddingBottom: 8,
+    "& > span": {
+      fontSize:'0.9em'
+    }
   },
-  icon:{
-    color: deepPurple[300],
-    right: 12,
-    position: 'absolute',
+  downloadIcon:{
+    color: blue[400],
+    userSelect: 'none',
+    pointerEvents: 'none',
+    marginRight:8
+  },
+  expandIcon:{
+    color: blue[400],
     userSelect: 'none',
     pointerEvents: 'none'
   },
   paper: {
-    borderRadius: 12,
+    minWidth:minWidth,
+    borderRadius: 4,
     marginTop: 8
-  },
-  list: {
-    paddingTop:0,
-    paddingBottom:0,
-    background:'white',
-    "& li":{
-      fontWeight:200,
-      paddingTop:12,
-      paddingBottom:12,
-    },
-    "& li:hover":{
-      background: deepPurple[100]
-    },
-    "& li.Mui-selected":{
-      color:'white',
-      background: deepPurple[400]
-    },
-    "& li.Mui-selected:hover":{
-      background: deepPurple[500]
-    }
   }
 });

@@ -1,60 +1,65 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDownloadMenuStyles } from '@mui-treasury/styles/menu/download';
-import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import GetAppRoundedIcon from '@material-ui/icons/GetAppRounded';
+import Menu from '@material-ui/core/Menu';
+import Button from '@material-ui/core/Button';
+
 
 // Original design here: https://github.com/siriwatknp/mui-treasury/issues/777
 
 const DownloadMenu = () => {
-  const [val,setVal] = useState(1);
 
-  const handleChange = (event) => {
-    setVal(event.target.value);
-  };
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
   const downloadMenuClasses = useDownloadMenuStyles();
 
-  const iconComponent = (props) => {
-    return (
-      <ExpandMoreIcon className={props.className + " " + downloadMenuClasses.icon}/>
-    )};
-
-  // moves the menu below the menu input
-  const menuProps = {
-    classes: {
-      paper: downloadMenuClasses.paper,
-      list: downloadMenuClasses.list
-    },
-    anchorOrigin: {
-      vertical: "bottom",
-        horizontal: "left"
-    },
-    transformOrigin: {
-      vertical: "top",
-        horizontal: "left"
-    },
-    getContentAnchorEl: null
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
   };
 
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
-    <FormControl>
-      <Select
-        disableUnderline
-        classes={{ root: downloadMenuClasses.select }}
-        MenuProps={menuProps}
-        IconComponent={iconComponent}
-        value={val}
-        onChange={handleChange}
+    <div>
+      <Button
+        className={downloadMenuClasses.button}
+        aria-controls="simple-menu"
+        aria-haspopup="true"
+        onClick={handleClick}
       >
-        <MenuItem value={0}>Principle</MenuItem>
-        <MenuItem value={1}>Sketch</MenuItem>
-        <MenuItem value={2}>Photoshop</MenuItem>
-        <MenuItem value={3}>Framer</MenuItem>
-      </Select>
-    </FormControl>
+        <GetAppRoundedIcon className={downloadMenuClasses.downloadIcon}/>
+        <span>Download</span>
+        <ExpandMoreIcon className={downloadMenuClasses.expandIcon}/>
+      </Button>
+      <Menu
+        id="simple-menu"
+        classes={{
+          paper:downloadMenuClasses.paper,
+          list: downloadMenuClasses.list
+        }}
+        getContentAnchorEl={null}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left"
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "left"
+        }}
+        keepMounted
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <MenuItem onClick={handleClose}>PDF File</MenuItem>
+        <MenuItem onClick={handleClose}>CSV File</MenuItem>
+        <MenuItem onClick={handleClose}>XLS File</MenuItem>
+      </Menu>
+    </div>
   );
 };
 
