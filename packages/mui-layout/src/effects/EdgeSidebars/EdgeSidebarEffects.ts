@@ -27,14 +27,17 @@ export const getEdgeSidebarEffect = (
 };
 
 export default (state: State, edgeSidebar: EdgeSidebarData) => {
-  const breakpoints = Object.keys(edgeSidebar.configMap);
+  const { configMap, configMapById, sidebarIds } = edgeSidebar
+  const breakpoints = Object.keys(configMap);
   const effectsMap: Dictionary<ISidebarEffect[]> = {};
   breakpoints.forEach((bp: Breakpoint) => {
     effectsMap[bp] = [];
-    edgeSidebar.configMap[bp].forEach(config => {
+    // iterate all sidebars
+    sidebarIds.forEach(aSidebarId => {
+      const config = pickNearestBreakpoint(configMapById[aSidebarId], bp)
       const effect = getEdgeSidebarEffect(state, config);
       if (effect) effectsMap[bp].push(effect);
-    });
+    })
   });
   return {
     iterateBreakpointEffects: (
@@ -42,7 +45,7 @@ export default (state: State, edgeSidebar: EdgeSidebarData) => {
       getEffects: (breakpoint: Breakpoint, effects?: ISidebarEffect[]) => void
     ) => {
       let foundAllSidebars = false;
-      const sidebarCount = edgeSidebar.sidebarIds.length;
+      const sidebarCount = sidebarIds.length;
       inputs.forEach(bp => {
         const effects: ISidebarEffect[] = pickNearestBreakpoint(effectsMap, bp);
         if (effects) {
@@ -53,14 +56,14 @@ export default (state: State, edgeSidebar: EdgeSidebarData) => {
           if (foundAllSidebars && effects.length < sidebarCount) {
             // attach all
             const existingIds = effects.map(({ id }) => id);
-            const missingIds: string[] = edgeSidebar.sidebarIds.filter(
+            const missingIds: string[] = sidebarIds.filter(
               (id: string) => !existingIds.includes(id)
             );
             missingIds.forEach(id => {
               effects.push(
                 getEdgeSidebarEffect(
                   state,
-                  pickNearestBreakpoint(edgeSidebar.configMapById[id], bp)
+                  pickNearestBreakpoint(configMapById[id], bp)
                 )
               );
             });

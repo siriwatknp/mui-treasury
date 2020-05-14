@@ -1,21 +1,25 @@
 ---
 category: API REFERENCE
-title: Sidebar Trigger
+title: Collapse Icon
 template: DocTemplate
 ---
 
-A component for trigger `open` state of Temporary and Persistent of EdgeSidebar.
-This component will be hidden based on the configuration of EdgeSidebar, so you don't need to
-assign any props to it except sidebarId that it need to know which sidebar should update.
+Functionality is the same as [CollapseBtn](/layout/api-reference/collapse-btn) but use `IconButton` instead of `Button`
 
 ## Usage example
 
 ```jsx
 import styled from 'styled-components'
-import Layout, { Root, getDrawerSidebar, getSidebarTrigger } from '@mui-treasury/layout';
+import Layout, {
+  Root,
+  getDrawerSidebar,
+  getSidebarTrigger,
+  getCollapseIcon,
+} from "@mui-treasury/layout";
 
-const DrawerSidebar = getDrawerSidebar(styled)
+const DrawerSiderbar = getDrawerSidebar(styled)
 const SidebarTrigger = getSidebarTrigger(styled)
+const CollapseIcon = getCollapseIcon(styled)
 
 cosnt scheme = Layout()
 
@@ -32,14 +36,19 @@ scheme.configureEdgeSidebar((builder) => {
 const App = () => {
   return (
     <Root scheme={scheme}>
-      <SidebarTrigger sidebarId="primarySidebar" />
+      <CollapseIcon sidebarId="primarySidebar" />
       <DrawerSidebar sidebarId="primarySidebar">
-        sidebar content
+        <SidebarContent>
+          sidebar content
+        </SidebarContent>
+        <CollapseIcon />
       </DrawerSidebar>
     </Root>
   )
 }
 ```
+
+`SidebarContent` is a flex-item that will stretch the content and push `CollapseIcon` to the bottom of sidebar
 
 ## Props
 
@@ -47,29 +56,30 @@ const App = () => {
   - **type** : string
   - **required** : yes
   - **description** : sidebarId that will be updated. If this component renders inside of EdgeSidebar you don't need to specify `sidebarId`
-    unless you want to target to other sidebar.
+    unless you want to update other sidebar.
     ```jsx
     const App = () => {
       return (
         <Root scheme={scheme}>
           <DrawerSidebar sidebarId="primarySidebar">
-            <SidebarTrigger /> // will trigger primarySidebar sidebar content
+            sidebar content
+            <CollapseIcon /> // will trigger primarySidebar
+            <CollapseIcon sidebarId="2ndSidebar" /> // will trigger 2ndSidebar
           </DrawerSidebar>
         </Root>
       );
     };
     ```
 - `children`
-  - **type** : ReactNode | ({ open: boolean, anchor: 'left' | 'right' }) => ReactNode
+  - **type** : ReactNode | ({ collapsed: boolean, anchor: 'left' | 'right' }) => ReactNode
   - **description** : you can provide children as a child to customise icon based on state & anchor
     ```jsx
-    <SidebarTrigger>
-      {({ open, anchor }) => {
-        if (!open) return 'Open'
-        if (anchor === 'left') return '<-'
-        if (anchor === 'right') return '->'
+    <CollapseIcon>
+      {({ collapsed, anchor }) => {
+        if (collapsed) return 'Expand'
+        return 'Collapse'
       }}
-    </SidebarTrigger>
+    </CollapseIcon>
     ```
 - `SvgIconProps`
   - **type** : object
@@ -84,7 +94,7 @@ SidebarTrigger use `IconButton` that contains `SvgIcon` insider. All of the prop
 - [SvgIcon](https://material-ui.com/api/svg-icon/#props)
 
 ```jsx
-<SidebarTrigger
+<CollapseIcon
   classes={{ root: 'custom-trigger' }}
   SvgIconProps={{
     className: 'custom-icon',
@@ -97,4 +107,5 @@ SidebarTrigger use `IconButton` that contains `SvgIcon` insider. All of the prop
 **Related components**
 
 - [CollapseBtn](/layout/api-reference/collapse-btn)
-- [CollapseIcon](/layout/api-reference/collapse-icon)
+- [SidebarTrigger](/layout/api-reference/sidebar-trigger)
+- [SidebarContent](/layout/api-reference/sidebar-content)

@@ -1,4 +1,6 @@
-import { makeStyles } from '@material-ui/styles';
+import { Theme, ThemeOptions } from '@material-ui/core';
+import { createStyles, makeStyles } from '@material-ui/styles';
+import Color from 'color';
 import * as chromeTabsStyles from './chrome/chromeTabs.styles';
 import * as containedTabsStyles from './contained/containedTabs.styles';
 import * as elevatedTabsStyles from './elevated/elevatedTabs.styles';
@@ -19,58 +21,58 @@ const plainTabsStylesHook = {
 
 const chromeTabsStylesHook = {
   useTabs: makeStyles(chromeTabsStyles.tabsStyles),
-  useTabItem: makeStyles(chromeTabsStyles.tabItemStyles),
+  useTabItem: makeStyles(createStyles(chromeTabsStyles.tabItemStyles)),
 };
 
 const containedTabsStylesHook = {
   useTabs: makeStyles(containedTabsStyles.tabsStyles),
-  useTabItem: makeStyles(containedTabsStyles.tabItemStyles),
+  useTabItem: makeStyles(createStyles(containedTabsStyles.tabItemStyles)),
 };
 
 const elevatedTabsStylesHook = {
   useTabs: makeStyles(elevatedTabsStyles.tabsStyles),
-  useTabItem: makeStyles(elevatedTabsStyles.tabItemStyles),
+  useTabItem: makeStyles(createStyles(elevatedTabsStyles.tabItemStyles)),
 };
 
 const firebaseTabsStylesHook = {
   useTabs: makeStyles(firebaseTabsStyles.tabsStyles),
-  useTabItem: makeStyles(firebaseTabsStyles.tabItemStyles),
+  useTabItem: makeStyles(createStyles(firebaseTabsStyles.tabItemStyles)),
 };
 
 const insideTriangleTabsStylesHook = {
   useTabs: makeStyles(insideTriangleTabsStyles.tabsStyles),
-  useTabItem: makeStyles(insideTriangleTabsStyles.tabItemStyles),
+  useTabItem: makeStyles(createStyles(insideTriangleTabsStyles.tabItemStyles)),
 };
 
 const instagramTabsStylesHook = {
   useTabs: makeStyles(instagramTabsStyles.tabsStyles),
-  useTabItem: makeStyles(instagramTabsStyles.tabItemStyles),
+  useTabItem: makeStyles(createStyles(instagramTabsStyles.tabItemStyles)),
 };
 
 const pillTabsStylesHook = {
   useTabs: makeStyles(pillTabsStyles.tabsStyles),
-  useTabItem: makeStyles(pillTabsStyles.tabItemStyles),
+  useTabItem: makeStyles(createStyles(pillTabsStyles.tabItemStyles)),
 };
 
 const serratedTabsStylesHook = {
   useTabs: makeStyles(serratedTabsStyles.tabsStyles),
-  useTabItem: makeStyles(serratedTabsStyles.tabItemStyles),
+  useTabItem: makeStyles(createStyles(serratedTabsStyles.tabItemStyles)),
 };
 
 const twitterIconTabsStylesHook = {
   useTabs: makeStyles(twitterIconTabsStyles.tabsStyles),
-  useTabItem: makeStyles(twitterIconTabsStyles.tabItemStyles),
+  useTabItem: makeStyles(createStyles(twitterIconTabsStyles.tabItemStyles)),
   useBadge: makeStyles(twitterIconTabsStyles.badgeStyles),
 };
 
 const twitterTabsStylesHook = {
   useTabs: makeStyles(twitterTabsStyles.tabsStyles),
-  useTabItem: makeStyles(twitterTabsStyles.tabItemStyles),
+  useTabItem: makeStyles(createStyles(twitterTabsStyles.tabItemStyles)),
 };
 
 const appleTabsStylesHook = {
-  useTabs: makeStyles(appleTabs.tabsStyles),
-  useTabItem: makeStyles(appleTabs.tabItemStyles),
+  useTabs: makeStyles(createStyles(appleTabs.tabsStyles)),
+  useTabItem: makeStyles(createStyles(appleTabs.tabItemStyles)),
 };
 
 export {

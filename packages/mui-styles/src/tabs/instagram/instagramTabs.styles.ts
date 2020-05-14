@@ -1,3 +1,5 @@
+import { Theme } from '@material-ui/core';
+
 export const tabsStyles = () => ({
   root: {
     boxShadow: 'inset 0 1px 0 0 #efefef',
@@ -13,7 +15,7 @@ export const tabsStyles = () => ({
   },
 });
 
-export const tabItemStyles = ({ breakpoints }) => ({
+export const tabItemStyles = ({ breakpoints }: Pick<Theme, 'breakpoints'>) => ({
   root: {
     lineHeight: 'inherit',
     minWidth: 0,

@@ -1,6 +1,6 @@
 ---
 inject: true
 to: website/src/App.js
-after: ./fontawesome
+after: // fontawesome
 ---
-import './fontawesome-pro';
+import './fontawesome';

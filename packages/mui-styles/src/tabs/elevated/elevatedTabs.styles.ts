@@ -1,4 +1,6 @@
-export const tabsStyles = ({ spacing }) => {
+import { Theme } from '@material-ui/core';
+
+export const tabsStyles = ({ spacing }: Theme) => {
   const tabsBackground = 'linear-gradient(60deg, #ab47bc, #8e24aa)';
   const indicatorBackground = 'rgba(255, 255, 255, .2)';
   const borderRadius = spacing(1);
@@ -18,7 +20,10 @@ export const tabsStyles = ({ spacing }) => {
   };
 };
 
-export const tabItemStyles = ({ breakpoints, spacing }) => {
+export const tabItemStyles = ({
+  breakpoints,
+  spacing,
+}: Pick<Theme, 'breakpoints' | 'spacing'>) => {
   const tabsGutter = spacing(2);
   const labelColor = '#ffffff';
   return {

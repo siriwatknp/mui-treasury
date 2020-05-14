@@ -241,6 +241,11 @@ export default [
             to: '/layout/api-reference/collapse-btn'
           },
           {
+            key: 'collapse-icon',
+            label: 'Collapse Icon',
+            to: '/layout/api-reference/collapse-icon'
+          },
+          {
             key: 'fullscreen',
             label: 'Fullscreen',
             to: '/layout/api-reference/fullscreen'

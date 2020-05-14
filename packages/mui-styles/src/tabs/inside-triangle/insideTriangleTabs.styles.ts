@@ -1,10 +1,12 @@
+import { Theme } from '@material-ui/core';
+
 export const tabsStyles = () => ({
   indicator: {
     display: 'none',
   },
 });
 
-export const tabItemStyles = ({ palette }) => {
+export const tabItemStyles = ({ palette }: Pick<Theme, 'palette'>) => {
   const defaultLabelColor = palette.common.white;
   const defaultBgColor = palette.primary.main;
   return {
