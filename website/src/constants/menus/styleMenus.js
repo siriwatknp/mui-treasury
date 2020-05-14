@@ -19,6 +19,7 @@ import { customComponents as switchStyles } from '../../docs/styles/switch';
 import { customComponents as checkboxStyles } from '../../docs/styles/checkbox';
 import { customComponents as radioStyles } from '../../docs/styles/radio';
 import { customComponents as gutterStyles } from '../../docs/styles/gutter';
+import { customComponents as iconButtonStyles } from '../../docs/styles/iconButton';
 
 export default [
   {
@@ -60,6 +61,12 @@ export default [
         label: 'Icon',
         total: iconStyles.length,
         to: '/styles/icon',
+      },
+      {
+        key: 'icon-button',
+        label: 'Icon Button',
+        total: iconButtonStyles.length,
+        to: '/styles/icon-button',
       },
       {
         key: 'input-base',
