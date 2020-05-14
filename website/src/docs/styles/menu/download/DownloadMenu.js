@@ -37,10 +37,7 @@ const DownloadMenu = () => {
       </Button>
       <Menu
         id="simple-menu"
-        classes={{
-          paper:downloadMenuClasses.paper,
-          list: downloadMenuClasses.list
-        }}
+        classes={{ paper:downloadMenuClasses.paper }}
         getContentAnchorEl={null}
         anchorOrigin={{
           vertical: "bottom",
@@ -70,7 +67,7 @@ DownloadMenu.metadata = {
   relates: [],
   renderedWithoutIframe: false,
   creators: [require('constants/creators').paddy], // add yourself to creators.js first
-  createdAt: 'Thu Apr 23 2020',
+  createdAt: 'Thu May 14 2020',
   frameProps: {
     bgcolor: '#f2f2f2',
   }, // props that applied to Box in grid view
