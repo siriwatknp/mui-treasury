@@ -58,7 +58,7 @@
     "@storybook/addon-notes": "^5.3.6",
     "@storybook/addons": "^5.3.6",
     "@storybook/react": "^5.3.6",
-    "@testing-library/jest-dom": "^4.2.3",
+    "@testing-library/jest-dom": "^5.7.0",
     "@testing-library/react": "^9.3.1",
     "@testing-library/react-hooks": "^3.2.1",
     "@types/debounce": "^1.2.0",
