@@ -14,12 +14,19 @@ import { customComponents as cards } from '../../docs/components/card';
 import { customComponents as carousels } from '../../docs/components/carousel';
 import { customComponents as charts } from '../../docs/components/chart';
 import { customComponents as menus } from '../../docs/components/menu';
+import { customComponents as buttons } from '../../docs/components/button';
 
 export default [
   {
     key: 'mui-extended', // use material-ui as a main component and add more features.
     label: 'Material-UI Extended',
     subMenus: [
+      {
+        key: 'button',
+        label: 'Button',
+        total: buttons.length,
+        to: '/components/button'
+      },
       {
         key: 'group',
         label: 'Group',
