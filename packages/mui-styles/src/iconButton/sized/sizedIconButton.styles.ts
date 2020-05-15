@@ -1,14 +1,11 @@
-const toCss = val => typeof val === 'number' ? `${val}px` : val;
-
 export default () => ({
-  root: ({ buttonSize = 48, fontSize = 24, color }) => ({
+  root: ({ padding = 12, color }) => ({
     color,
-    fontSize,
-    padding: `calc((${toCss(buttonSize)} - ${toCss(fontSize)}) / 2)`,
+    padding,
   }),
-  label: ({ fontSize }) => ({
+  label: ({ childSize = 24 }) => ({
     '& > *': {
-      fontSize,
+      fontSize: childSize,
     },
   }),
 });

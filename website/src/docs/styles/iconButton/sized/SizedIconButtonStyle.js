@@ -8,15 +8,15 @@ import Delete from '@material-ui/icons/Delete';
 const SizedIconButtonStyle = () => {
   const tiny = useSizedIconButtonStyles({
     color: '#6894ff',
-    buttonSize: '2rem',
-    fontSize: '1rem',
+    padding: '1rem',
+    childSize: '1rem',
   });
   const small = useSizedIconButtonStyles({
     color: '#000',
-    buttonSize: 40,
-    fontSize: 24,
+    padding: 8,
+    childSize: 24,
   });
-  const large = useSizedIconButtonStyles({ buttonSize: 64, fontSize: 32 });
+  const large = useSizedIconButtonStyles({ padding: 16, childSize: 32 });
   return (
     <div>
       <IconButton classes={tiny}>
@@ -42,7 +42,7 @@ SizedIconButtonStyle.metadata = {
   frameProps: {}, // props that applied to Box in grid view
   size: 'medium', // can be 'large' | 'huge' for grid size
   files: [
-    { pkg: 'mui-styles', path: 'iconButton/sized/sizedIconButton.styles.js' },
+    { pkg: 'mui-styles', path: 'iconButton/sized/sizedIconButton.styles.ts' },
   ],
 };
 // hide-end
