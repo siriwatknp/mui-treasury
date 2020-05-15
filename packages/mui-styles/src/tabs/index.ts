@@ -1,6 +1,4 @@
-import { Theme, ThemeOptions } from '@material-ui/core';
 import { createStyles, makeStyles } from '@material-ui/styles';
-import Color from 'color';
 import * as chromeTabsStyles from './chrome/chromeTabs.styles';
 import * as containedTabsStyles from './contained/containedTabs.styles';
 import * as elevatedTabsStyles from './elevated/elevatedTabs.styles';
