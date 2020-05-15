@@ -2,7 +2,7 @@ import React from 'react';
 import { DrawerProps } from '@material-ui/core/Drawer';
 import { PaperProps } from '@material-ui/core/Paper';
 import { SlideProps } from '@material-ui/core/Slide';
-import { get } from '../utils';
+import { get, EDGE_SIDEBAR_EXPAND_DELAY } from '../utils';
 import { Dictionary, EdgeSidebarConfig, SidebarState } from '../types';
 
 type SidebarContextValue = {
@@ -52,12 +52,7 @@ export const SidebarProvider = ({
   sidebarState: SidebarState;
 }>) => {
   const [state, setState] = React.useState(initialState);
-
-  React.useEffect(() => {
-    if (!sidebarState.collapsed) {
-      setState(prevState => ({ ...prevState, expanded: false }));
-    }
-  }, [sidebarState.collapsed]);
+  const isMouseOverSidebar = React.useRef(false);
 
   const setEntered = React.useCallback(
     payload => setState(prevState => ({ ...prevState, entered: payload })),
@@ -73,7 +68,12 @@ export const SidebarProvider = ({
         paper.onMouseEnter(...args);
       }
       if (sidebarState.collapsed) {
-        setExpanded(true);
+        isMouseOverSidebar.current = true
+        setTimeout(() => {
+          if (isMouseOverSidebar.current) {
+            setExpanded(true)
+          }
+        }, EDGE_SIDEBAR_EXPAND_DELAY)
       }
     },
     [setExpanded, sidebarState.collapsed]
@@ -83,6 +83,7 @@ export const SidebarProvider = ({
       if (paper && typeof paper.onMouseLeave === 'function') {
         paper.onMouseLeave(...args);
       }
+      isMouseOverSidebar.current = false
       setExpanded(false);
     },
     [setExpanded]
@@ -102,6 +103,13 @@ export const SidebarProvider = ({
     },
     [setEntered]
   );
+
+  React.useEffect(() => {
+    if (!sidebarState.collapsed) {
+      setState(prevState => ({ ...prevState, expanded: false }));
+    }
+  }, [sidebarState.collapsed]);
+
   return (
     <Context.Provider
       value={{
