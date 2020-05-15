@@ -20,12 +20,19 @@ import { customComponents as checkboxStyles } from '../../docs/styles/checkbox';
 import { customComponents as radioStyles } from '../../docs/styles/radio';
 import { customComponents as gutterStyles } from '../../docs/styles/gutter';
 import { customComponents as iconButtonStyles } from '../../docs/styles/iconButton';
+import { customComponents as avatarStyles } from '../../docs/styles/avatar';
 
 export default [
   {
     key: 'material-ui',
     label: 'Material-UI',
     subMenus: [
+      {
+        key: 'avatar',
+        label: 'Avatar',
+        total: avatarStyles.length,
+        to: '/styles/avatar',
+      },
       {
         key: 'button',
         label: 'Button',

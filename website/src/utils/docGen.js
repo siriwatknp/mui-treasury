@@ -2,13 +2,13 @@ import { bundleStyles } from 'utils/webpack';
 import { getPathFileName } from './functions';
 
 const reqSourceStyles = bundleStyles(
-  require.context('!raw-loader!../../../packages/mui-styles/src', true, /\.js$/)
+  require.context('!raw-loader!../../../packages/mui-styles/src', true, /\.js|\.ts$/)
 );
 const reqSourceComponents = bundleStyles(
   require.context(
     '!raw-loader!../../../packages/mui-components/src',
     true,
-    /\.js$/
+    /\.js|\.ts$/
   )
 );
 
