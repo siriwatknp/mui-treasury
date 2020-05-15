@@ -5,6 +5,7 @@ import { customComponents as gridStyles } from '../../docs/styles/grid';
 import { customComponents as iconStyles } from '../../docs/styles/icon';
 import { customComponents as inputBaseStyles } from '../../docs/styles/inputBase';
 import { customComponents as listItemStyles } from '../../docs/styles/listItem';
+import { customComponents as menuStyles } from '../../docs/styles/menu';
 import { customComponents as tabsStyles } from '../../docs/styles/tabs';
 import { customComponents as textFieldStyles } from '../../docs/styles/textField';
 import { customComponents as collapsibleMenuStyles } from '../../docs/styles/collapsibleMenu';
@@ -86,6 +87,12 @@ export default [
         label: 'List Item',
         total: listItemStyles.length,
         to: '/styles/list-item',
+      },
+      {
+        key: 'menu',
+        label: 'Menu',
+        total: menuStyles.length,
+        to: '/styles/menu',
       },
       {
         key: 'radio',
