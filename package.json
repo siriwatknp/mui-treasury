@@ -45,7 +45,7 @@
     "typecheck": "tsc --skipLibCheck",
     "storybook": "NODE_ENV=development start-storybook -p 6006",
     "build-storybook": "NODE_ENV=production build-storybook -s public",
-    "release": "lerna run --scope \"@mui-treasury/*\" build && lerna publish --contents build",
+    "release": "npm whoami && lerna run --scope \"@mui-treasury/*\" build && lerna publish --contents build",
     "changelog": "source .env && lerna-changelog | pbcopy"
   },
   "devDependencies": {
