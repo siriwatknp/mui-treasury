@@ -5,3 +5,4 @@ export const INITIAL_HEADER_HEIGHT = {
   xs: 56,
   sm: 64,
 };
+export const EDGE_SIDEBAR_EXPAND_DELAY = 350
