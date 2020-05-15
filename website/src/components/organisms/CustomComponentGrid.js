@@ -53,6 +53,12 @@ const Section = ({ size, component: Component, components }) => {
   );
 };
 
+const ORDER = {
+  huge: 0,
+  large: 10,
+  medium: 20,
+};
+
 const CustomComponentGrid = ({
   noHeader,
   components,
@@ -69,14 +75,16 @@ const CustomComponentGrid = ({
           <h3>Custom Styles</h3>
         </Box>
       )}
-      {Object.keys(groupBySize).map(size => (
-        <Section
-          key={size}
-          component={CustomGrid}
-          size={size}
-          components={groupBySize[size]}
-        />
-      ))}
+      {Object.keys(groupBySize)
+        .sort((a, b) => ORDER[a] - ORDER[b])
+        .map(size => (
+          <Section
+            key={size}
+            component={CustomGrid}
+            size={size}
+            components={groupBySize[size]}
+          />
+        ))}
     </Box>
   );
 };

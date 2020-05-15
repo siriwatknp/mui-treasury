@@ -73,6 +73,8 @@ const appleTabsStylesHook = {
   useTabItem: makeStyles(createStyles(appleTabs.tabItemStyles)),
 };
 
+export * from './gmail'
+
 export {
   chromeTabsStylesHook,
   containedTabsStylesHook,
