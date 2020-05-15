@@ -53,6 +53,7 @@ typings/
 
 # dotenv environment variables file
 .env.local
+.npmrc
 
 # gatsby files
 .cache/
