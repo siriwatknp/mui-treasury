@@ -58,7 +58,7 @@ export const tabItemStyles = () => ({
   },
   wrapper: ({ color }: GmailTabItemStyleProps) => ({
     color: 'rgba(0,0,0,0.6)',
-    flexDirection: 'row',
+    flexDirection: 'row' as const,
     justifyContent: 'flex-start',
     fontSize: 14,
     fontFamily: "'Google Sans', Roboto,RobotoDraft,Helvetica,Arial,sans-serif",

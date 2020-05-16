@@ -24,7 +24,7 @@ export default () => ({
     fontSize: 14,
   },
   selected: ({ color = '#202124' }: GmailListItemStyleProps) => ({
-    fontWeight: 'bold',
+    fontWeight: 'bold' as const,
     color,
     backgroundColor: `${Color(color)
       .saturate(0.5)
