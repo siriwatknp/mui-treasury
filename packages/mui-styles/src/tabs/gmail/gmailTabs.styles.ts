@@ -68,7 +68,7 @@ export const tabItemStyles = () => ({
       alignItems: 'center',
     },
     '& .MuiTabItem-subLabel': {
-      color: '#5f6368',
+      color: 'rgba(0,0,0,0.38)',
       fontSize: '0.75rem',
       textAlign: 'left',
       fontWeight: 'normal',

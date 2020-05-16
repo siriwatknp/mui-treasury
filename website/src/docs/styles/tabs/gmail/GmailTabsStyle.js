@@ -38,7 +38,7 @@ const GmailTabsStyle = () => {
             <div className={'MuiTabItem-label'}>
               Social <span className={'MuiTabItem-tag'}>2 new</span>
             </div>
-            <div className={'MuiTabItem-subLabel'}>LinkedIn</div>
+            <div className={'MuiTabItem-subLabel'}>Youtube, LinkedIn</div>
           </div>
         }
         icon={<People />}
