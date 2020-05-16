@@ -2,17 +2,24 @@ import Color from 'color';
 
 export type GmailListItemStyleProps = {
   color: string;
+  collapsed?: boolean;
 };
 
 export default () => ({
-  root: {
+  root: ({ collapsed }: GmailListItemStyleProps) => ({
     borderTopRightRadius: 20,
     borderBottomRightRadius: 20,
     minHeight: 32,
     '-webkit-font-smoothing': 'antialiased',
-    padding: '0 12px 0 26px',
+    padding: collapsed ? '0px 6px' : '0 12px 0 26px',
+    width: collapsed ? 32 : 'auto',
+    borderRadius: collapsed ? 20 : 0,
+    overflow: collapsed ? 'hidden' : 'visible',
+    marginLeft: collapsed ? 20 : '',
+    fontSize: 14,
     '& > svg:first-child': {
       marginRight: 18,
+      fontSize: 20,
       opacity: 0.54,
     },
     '& .MuiLabel-amount': {
@@ -21,8 +28,7 @@ export default () => ({
       marginLeft: 'auto',
       paddingLeft: 16,
     },
-    fontSize: 14,
-  },
+  }),
   selected: ({ color = '#202124' }: GmailListItemStyleProps) => ({
     fontWeight: 'bold' as const,
     color,

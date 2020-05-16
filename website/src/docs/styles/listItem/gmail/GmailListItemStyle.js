@@ -8,22 +8,39 @@ import Star from '@material-ui/icons/Star';
 import InsertDriveFile from '@material-ui/icons/InsertDriveFile';
 
 const GmailListItemStyle = () => {
-  const selectedStyles = useGmailListItemStyles({ color: '#da3125' });
-  const styles = useGmailListItemStyles();
+  const [collapsed, setCollapsed] = React.useState(false);
+  const selectedStyles = useGmailListItemStyles({
+    color: '#da3125',
+    collapsed,
+  });
+  const styles = useGmailListItemStyles({ collapsed });
   return (
     <Box minWidth={256} bgcolor={'#fff'}>
       <List>
-        <ListItem classes={selectedStyles} button selected>
-          <Inbox fontSize={'small'} />
+        <ListItem
+          classes={selectedStyles}
+          button
+          selected
+          onClick={() => setCollapsed(!collapsed)}
+        >
+          <Inbox />
           Inbox
           <span className={'MuiLabel-amount'}>1,183</span>
         </ListItem>
-        <ListItem classes={styles} button>
-          <Star fontSize={'small'} />
+        <ListItem
+          classes={styles}
+          button
+          onClick={() => setCollapsed(!collapsed)}
+        >
+          <Star />
           Starred
         </ListItem>
-        <ListItem classes={styles} button>
-          <InsertDriveFile fontSize={'small'} />
+        <ListItem
+          classes={styles}
+          button
+          onClick={() => setCollapsed(!collapsed)}
+        >
+          <InsertDriveFile />
           <b>Drafts</b>
           <span className={'MuiLabel-amount'}>5</span>
         </ListItem>
