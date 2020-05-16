@@ -35,6 +35,7 @@ const GmailSidebarItem = ({
   const styles = useStyles({ classes, color });
   return (
     <ButtonBase
+      disableTouchRipple
       {...ButtonBaseProps}
       onClick={onClick}
       classes={{

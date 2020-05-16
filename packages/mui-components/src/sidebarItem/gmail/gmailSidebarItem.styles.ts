@@ -29,7 +29,7 @@ export default () => {
       },
       '& .GmailSidebarItem-startIcon': {
         display: 'inline-flex',
-        opacity: 0.54,
+        opacity: 0.72,
         marginRight: 18,
         '& > *': {
           fontSize: 20,
