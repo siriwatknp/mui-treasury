@@ -1,11 +1,17 @@
 import React from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
+import Button, { ButtonProps } from '@material-ui/core/Button';
+import { Theme } from '@material-ui/core';
 
-export const gmailButtonStyles = ({ palette }) => {
+export type GmailButtonStyleProps = {
+  collapsed: boolean
+}
+export type GmailButtonClassKey = 'root' | 'label' | 'img'
+
+export const gmailButtonStyles = ({ palette }: Theme) => {
   return {
-    root: ({ collapsed }) => ({
+    root: ({ collapsed }: GmailButtonStyleProps) => ({
       minWidth: collapsed ? 56 : 64,
       minHeight: collapsed ? 56 : 48,
       backgroundColor: palette.common.white,
@@ -28,12 +34,9 @@ export const gmailButtonStyles = ({ palette }) => {
       fontFamily:
         "'Google Sans', Roboto,RobotoDraft,Helvetica,Arial,sans-serif",
       color: '#3c4043',
-      textTransform: 'none',
+      textTransform: 'none' as const,
       fontWeight: 500,
     },
-    startIcon: ({ collapsed }) => ({
-      ...(collapsed && { margin: 0 }),
-    }),
     img: {
       width: 32,
       height: 32,
@@ -41,8 +44,13 @@ export const gmailButtonStyles = ({ palette }) => {
   };
 };
 
+export type GmailButtonProps = {
+  collapsed: boolean;
+  classes?: Partial<Record<GmailButtonClassKey, string>>;
+} & ButtonProps
+
 const GmailButton = withStyles(gmailButtonStyles, { name: 'GmailButton' })(
-  ({ collapsed, classes, ...props }) => {
+  ({ collapsed, classes, ...props }: GmailButtonProps) => {
     const { img: imgClassName, ...buttonClasses } = classes;
     return (
       <Button

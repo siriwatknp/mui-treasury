@@ -22,7 +22,7 @@ GmailButtonDemo.metadata = {
   stylesUrl: '',
   frameProps: {}, // props that applied to Box in grid view
   size: 'medium', // can be 'large' | 'huge' for grid size
-  files: [{ pkg: 'mui-components', path: 'button/gmail/GmailButton.js' }],
+  files: [{ pkg: 'mui-components', path: 'button/gmail/GmailButton.tsx' }],
 };
 // hide-end
 

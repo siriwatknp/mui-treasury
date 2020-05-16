@@ -8,7 +8,7 @@ const reqSourceComponents = bundleStyles(
   require.context(
     '!raw-loader!../../../packages/mui-components/src',
     true,
-    /\.js|\.ts$/
+    /\.js|\.ts|\.tsx$/
   )
 );
 

@@ -6,7 +6,7 @@ unless_exists: true
 import DemoPage from 'containers/Demo';
 import { customComponents, DefaultComponent } from 'docs/components/<%= category %>';
 
-const <%= h.changeCase.param(category) %>Page = () => (
+const <%= h.changeCase.pascal(category) %>Page = () => (
   <DemoPage
     title={'<%= h.changeCase.title(category) %>'}
     description={'A collection of <%= h.changeCase.title(category) %> components'}
@@ -23,4 +23,4 @@ const <%= h.changeCase.param(category) %>Page = () => (
   />
 );
 
-export default <%= h.changeCase.param(category) %>Page;
+export default <%= h.changeCase.pascal(category) %>Page;

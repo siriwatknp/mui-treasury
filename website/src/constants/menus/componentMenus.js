@@ -15,6 +15,7 @@ import { customComponents as carousels } from '../../docs/components/carousel';
 import { customComponents as charts } from '../../docs/components/chart';
 import { customComponents as menus } from '../../docs/components/menu';
 import { customComponents as buttons } from '../../docs/components/button';
+import { customComponents as sidebarItems } from '../../docs/components/sidebarItem';
 
 export default [
   {
@@ -97,6 +98,12 @@ export default [
         to: '/components/indicator',
       },
       { key: 'rip', label: 'Rip', total: rips.length, to: '/components/rip' },
+      {
+        key: 'sidebar-item',
+        label: 'Sidebar Item',
+        total: sidebarItems.length,
+        to: '/components/sidebar-item',
+      },
       {
         key: 'slide',
         label: 'Slide',

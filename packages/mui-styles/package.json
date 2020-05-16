@@ -1,5 +1,6 @@
 {
   "name": "@mui-treasury/styles",
+  "module": "./esm/index.js",
   "version": "1.3.0",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "types": "./index.d.ts",
