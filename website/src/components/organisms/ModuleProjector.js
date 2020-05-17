@@ -38,9 +38,9 @@ const ModuleProjector = ({ demoSource, files }) => {
           labelPlacement="end"
         />
       </Box>
-      <Box px={2}>
+      <Box className={'ModuleProjector-sourceCode'} fontSize={14} px={'1.5em'} width={{ lg: 620, xl: 800 }}>
         {sourceDisplayed ? (
-          <Box mx={-2}>
+          <Box fontSize={'inherit'} mx={'-1.5em'}>
             {files.length > 0 && (
               <Tabs
                 variant={'scrollable'}

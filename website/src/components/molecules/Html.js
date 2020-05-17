@@ -6,12 +6,11 @@ import SourceCopier from 'components/atoms/SourceCopier';
 
 const useStyles = makeStyles(() => ({
   div: {
-    paddingLeft: '1rem',
     '& > p': {
       margin: 0,
     },
   },
-}));
+}), { name: 'Html' });
 
 const Html = ({ body, source, fileName }) => {
   const styles = useStyles();

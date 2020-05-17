@@ -23,7 +23,7 @@ const useStyles = makeStyles(() => ({
 const SourceCopier = ({ source, sourceName, children }) => {
   const styles = useStyles();
   return (
-    <Box position={'relative'}>
+    <Box className={'SourceCopier-root'} position={'relative'}>
       {children}
       <Copier text={source}>
         {({ copied }) => (

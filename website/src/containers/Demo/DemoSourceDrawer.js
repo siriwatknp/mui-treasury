@@ -4,16 +4,23 @@ import isEmpty from 'lodash/isEmpty';
 import { Link } from 'gatsby';
 import { makeStyles, ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 import Box from '@material-ui/core/Box';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import Close from '@material-ui/icons/Close';
+import Slide from '@material-ui/core/Slide';
+import Dialog from '@material-ui/core/Dialog';
 import Fade from '@material-ui/core/Fade';
 import Hidden from '@material-ui/core/Hidden';
 import Portal from '@material-ui/core/Portal';
 import Grid from '@material-ui/core/Grid';
 import Drawer from '@material-ui/core/Drawer';
+
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import Close from '@material-ui/icons/Close';
+
 import SourceFile from 'containers/SourceFile';
 import docGen from 'utils/docGen';
 import { isExternalLink, prettifySource } from 'utils/functions';
@@ -58,7 +65,46 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       },
     },
   },
+  gridContainer: {
+    height: 'calc(100vh - 56px)',
+    [breakpoints.up('sm')]: {
+      height: 'calc(100vh - 64px)'
+    }
+  },
+  codeSection: {
+    flexGrow: 1,
+    maxWidth: '100vw',
+    zIndex: 1,
+    backgroundColor: '#fff',
+    boxShadow: '0 0 8px -2px rgba(0,0,0,0.12)',
+    [breakpoints.up('lg')]: {
+      height: '100%',
+      flexGrow: 0,
+      display: 'flex',
+      flexDirection: 'column',
+      '& .ModuleProjector-sourceCode': {
+        flexGrow: 1,
+        minHeight: 0,
+        overflow: 'auto',
+        '& > div': {
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+        }
+      },
+      '& .SourceCopier-root': {
+        flexGrow: 1,
+        '& > .prism-code': {
+          height: '100%',
+        }
+      }
+    }
+  }
 }));
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 const DemoSourceDrawer = ({ title }) => {
   const classes = useStyles();
@@ -102,65 +148,28 @@ const DemoSourceDrawer = ({ title }) => {
         const isOpen = Object.keys(metadata).length > 0;
         const { files = [], relates = [], frameProps } = metadata;
         const mappedFiles = docGen().mapAllFiles(files);
+        const onClose = () => setComponent({})
         return (
-          <>
-            <Drawer
-              classes={{
-                paper: classes.paper,
-              }}
-              open={isOpen}
-              anchor={'right'}
-              variant={'temporary'}
-              onClose={() => setComponent({})}
-              ModalProps={{
-                BackdropProps: {
-                  className: classes.drawerBackdrop,
-                },
-              }}
-              elevation={0}
-            >
-              <IconButton
-                className={classes.closeButton}
-                onClick={() => setComponent({})}
-              >
-                <Close />
-              </IconButton>
-              <Box mt={3} px={3}>
-                <h2>
+          <Dialog fullScreen open={isOpen} onClose={onClose} TransitionComponent={Transition}>
+            <AppBar color={'default'} elevation={0} position={'sticky'}>
+              <Toolbar>
+                <IconButton edge="start" color="inherit" onClick={onClose} aria-label="close">
+                  <Close />
+                </IconButton>
+                <Typography variant="h6" className={classes.title}>
                   {metadata.title} {title}
-                </h2>
-              </Box>
-              <Box px={3}>{renderList(relates, 'Relates')}</Box>
-              <Box width={{ xs: '100vw', sm: 500, md: 680 }}>
-                <ModuleProjector
-                  files={mappedFiles}
-                  demoSource={
-                    <SourceFile
-                      match={metadata.path}
-                      fileName={'Demo.js'}
-                      source={prettifySource(rawSource)}
-                    />
-                  }
-                />
-              </Box>
-              <Box css={{ flexGrow: 1 }} bgcolor={'rgb(40, 44, 52)'} />
-            </Drawer>
-            <ThemeProvider theme={baseTheme}>
-              <Hidden smDown>
-                <Portal>
-                  <Fade in={isOpen}>
+                </Typography>
+              </Toolbar>
+            </AppBar>
+            <Grid container className={classes.gridContainer}>
+              <Grid item xs={12} lg>
+                <Box minHeight={400}>
+                  <ThemeProvider theme={baseTheme}>
                     <Box
-                      position={'fixed'}
-                      top={'50%'}
-                      left={'calc(50% - 350px)'}
-                      display={'flex'}
-                      justifyContent={'center'}
-                      alignItems={'center'}
-                      borderRadius={4}
-                      bgcolor={'common.white'}
-                      zIndex={1500}
+                      position={'absolute'}
+                      flexGrow={{ xs: 1, lg: 0 }}
                       css={{
-                        transform: 'scale(0.50) translate(-50%, -50%)',
+                        transform: 'scale(0.72)',
                         transformOrigin: '0 0',
                       }}
                     >
@@ -180,12 +189,25 @@ const DemoSourceDrawer = ({ title }) => {
                         </BrowserIFrame>
                       )}
                     </Box>
-                  </Fade>
-                </Portal>
-              </Hidden>
-            </ThemeProvider>
-          </>
-        );
+                  </ThemeProvider>
+                </Box>
+              </Grid>
+              <div className={classes.codeSection}>
+                <Box px={3}>{renderList(relates, 'Relates')}</Box>
+                <ModuleProjector
+                  files={mappedFiles}
+                  demoSource={
+                    <SourceFile
+                      match={metadata.path}
+                      fileName={'Demo.js'}
+                      source={prettifySource(rawSource)}
+                    />
+                  }
+                />
+              </div>
+            </Grid>
+          </Dialog>
+        )
       }}
     </Consumer>
   );

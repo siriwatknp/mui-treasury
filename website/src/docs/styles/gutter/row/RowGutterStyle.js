@@ -49,7 +49,7 @@ RowGutterStyle.metadata = {
   createdAt: 'Thu May 14 2020',
   frameProps: {}, // props that applied to Box in grid view
   size: 'medium', // can be 'large' | 'huge' for grid size
-  files: [{ pkg: 'mui-styles', path: 'gutter/row/rowGutter.styles.js' }],
+  files: [{ pkg: 'mui-styles', path: 'gutter/row/rowGutter.styles.ts' }],
 };
 // hide-end
 

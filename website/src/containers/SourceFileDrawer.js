@@ -34,11 +34,13 @@ const SourceFileDrawer = ({ metadata, source }) => {
           <Box p={{ xs: 2, sm: 3 }}>
             <h2 style={{ margin: 0 }}>How to use</h2>
           </Box>
-          <SourceFile
-            match={metadata.path}
-            fileName={`${metadata.title}.js`}
-            source={source}
-          />
+          <Box pl={2}>
+            <SourceFile
+              match={metadata.path}
+              fileName={`${metadata.title}.js`}
+              source={source}
+            />
+          </Box>
         </Box>
       </Drawer>
       <Fab color={'primary'} className={styles.sourceTrigger}>
