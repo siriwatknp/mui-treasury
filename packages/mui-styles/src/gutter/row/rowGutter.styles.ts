@@ -17,5 +17,10 @@ export default () => {
         marginRight: after,
       },
     }),
+    child: ({ size = '0.5rem' }: RowGutterStyleProps) => ({
+      '& ~ *': {
+        marginLeft: size,
+      },
+    })
   };
 };

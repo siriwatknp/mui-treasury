@@ -25,8 +25,8 @@ const SizedIconButtonStyle = () => {
       <IconButton classes={small}>
         <Add />
       </IconButton>
-      <IconButton classes={large}>
-        <Delete color={'secondary'} />
+      <IconButton classes={large} color={'secondary'}>
+        <Delete />
       </IconButton>
     </div>
   );
