@@ -1,5 +1,5 @@
 import React from 'react';
-import withStyles from '@material-ui/core/styles/withStyles';
+import makeStyles from '@material-ui/core/styles/makeStyles';
 import Avatar from '@material-ui/core/Avatar';
 import Button, { ButtonProps } from '@material-ui/core/Button';
 import { Theme } from '@material-ui/core';
@@ -7,7 +7,7 @@ import { Theme } from '@material-ui/core';
 export type GmailButtonStyleProps = {
   collapsed: boolean
 }
-export type GmailButtonClassKey = 'root' | 'label' | 'img'
+export type GmailButtonClassKey = 'root' | 'label' | 'img' | 'startIcon'
 
 export const gmailButtonStyles = ({ palette }: Theme) => {
   return {
@@ -41,6 +41,9 @@ export const gmailButtonStyles = ({ palette }: Theme) => {
       width: 32,
       height: 32,
     },
+    startIcon: ({ collapsed }: GmailButtonStyleProps) => ({
+      margin: collapsed ? 0 : '',
+    }),
   };
 };
 
@@ -49,27 +52,28 @@ export type GmailButtonProps = {
   classes?: Partial<Record<GmailButtonClassKey, string>>;
 } & ButtonProps
 
-const GmailButton = withStyles(gmailButtonStyles, { name: 'GmailButton' })(
-  ({ collapsed, classes, ...props }: GmailButtonProps) => {
-    const { img: imgClassName, ...buttonClasses } = classes;
-    return (
-      <Button
-        disableRipple
-        {...props}
-        classes={buttonClasses}
-        startIcon={
-          <Avatar
-            className={imgClassName}
-            src={
-              'https://www.gstatic.com/images/icons/material/colored_icons/2x/create_32dp.png'
-            }
-          />
-        }
-      >
-        {!collapsed && 'Compose'}
-      </Button>
-    );
-  }
-);
+const useStyles = makeStyles(gmailButtonStyles, { name: 'GmailButton' })
+
+const GmailButton = ({ collapsed, classes, ...props }: GmailButtonProps) => {
+  const styles = useStyles({ collapsed, ...props })
+  const { img: imgClassName, ...buttonClasses } = styles;
+  return (
+    <Button
+      disableRipple
+      {...props}
+      classes={buttonClasses}
+      startIcon={
+        <Avatar
+          className={imgClassName}
+          src={
+            'https://www.gstatic.com/images/icons/material/colored_icons/2x/create_32dp.png'
+          }
+        />
+      }
+    >
+      {!collapsed && 'Compose'}
+    </Button>
+  );
+}
 
 export default GmailButton;
