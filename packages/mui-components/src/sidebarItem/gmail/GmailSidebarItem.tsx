@@ -6,8 +6,8 @@ import styles, { GmailSidebarClassKey } from './gmailSidebarItem.styles';
 
 export type GmailSidebarItemProps = {
   startIcon: React.ReactElement;
-  label: React.ReactElement;
-  amount?: React.ReactElement;
+  label: React.ReactNode;
+  amount?: React.ReactNode;
   collapsed?: boolean;
   dotOnCollapsed?: boolean;
   selected?: boolean;
