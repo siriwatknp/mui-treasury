@@ -4,7 +4,7 @@ import useSidebar from "./useSidebar"
 import { createDisplayNone } from '../utils';
 import EdgeCollapseCompiler from '../compilers/EdgeCollapseCompiler';
 
-export const useSidebarCollapse = (sidebarId: string, consumer?: string) => {
+export const useSidebarCollapse = (sidebarId?: string, consumer?: string) => {
   const { breakpoints } = useTheme<Theme>()
   const { id = sidebarId } = useSidebarCtx()
   const { edgeSidebar, ...props } = useSidebar(id, consumer)

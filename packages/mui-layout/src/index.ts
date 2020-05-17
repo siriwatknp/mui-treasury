@@ -7,6 +7,8 @@ export {
   WindowConsumer,
   WindowProvider,
   useWindowCtx,
+  SidebarConsumer,
+  useSidebarCtx,
 } from './contexts';
 export {
   useScreen,

@@ -49,7 +49,7 @@ export default (styled: any) => {
       styles: { permanent, persistent, temporary },
       state,
       setOpen,
-    } = useSidebar(sidebarId);
+    } = useSidebar(sidebarId, 'DrawerSidebar');
     const wrappedOnClose: DrawerProps['onClose'] = (...args) => {
       if (typeof onClose === 'function') onClose(...args);
       setOpen(sidebarId, false);
