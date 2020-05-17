@@ -50,22 +50,21 @@ const PageHeader = () => {
             width={'100%'}
             overflow={'auto'}
           >
-            {shouldRenderLogo && (
-              <Box
-                mr={{ xs: 1, md: 2 }}
-                component={Link}
-                to={'/'}
-                borderBottom={'none !important'}
-                css={{
-                  '& img': {
-                    margin: 0,
-                  },
-                }}
-                aria-label={'go to home page'}
-              >
-                <Image fixed={logo.childImageSharp.fixed} />
-              </Box>
-            )}
+            <Box
+              mr={{ xs: 1, md: 2 }}
+              display={shouldRenderLogo ? '' : 'none'}
+              component={Link}
+              to={'/'}
+              borderBottom={'none !important'}
+              css={{
+                '& img': {
+                  margin: 0,
+                },
+              }}
+              aria-label={'go to home page'}
+            >
+              <Image fixed={logo.childImageSharp.fixed} />
+            </Box>
             <HorzMenuList
               className={cx(styles.nav, !shouldRenderLogo && styles.navOffset)}
               Link={Link}

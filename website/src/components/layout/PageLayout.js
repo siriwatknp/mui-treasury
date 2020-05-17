@@ -32,6 +32,9 @@ const useStyles = makeStyles(theme => {
       backgroundColor: palette.common.white,
       borderBottom: `1px solid ${palette.divider}`,
     },
+    trigger: ({ hamburgerHidden }) => ({
+      display: hamburgerHidden ? 'none' : ''
+    })
   };
 });
 
@@ -43,7 +46,7 @@ const useFooterStyles = makeStyles(() => ({
 
 const PageLayout = ({ menus, children, getOpenKeys, hamburgerHidden }) => {
   const { bgColor = '' } = useQueryParams();
-  const styles = useStyles();
+  const styles = useStyles({ hamburgerHidden });
   const footerStyles = useFooterStyles();
   React.useEffect(() => {
     if (document) {
@@ -61,7 +64,7 @@ const PageLayout = ({ menus, children, getOpenKeys, hamburgerHidden }) => {
     <>
       <Header className={styles.header}>
         <Toolbar>
-          {!hamburgerHidden && <SidebarTrigger sidebarId={'primarySidebar'} />}
+          <SidebarTrigger className={styles.trigger} sidebarId={'primarySidebar'} />
           <PageHeader />
         </Toolbar>
       </Header>

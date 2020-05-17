@@ -12,11 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Slide from '@material-ui/core/Slide';
 import Dialog from '@material-ui/core/Dialog';
-import Fade from '@material-ui/core/Fade';
-import Hidden from '@material-ui/core/Hidden';
-import Portal from '@material-ui/core/Portal';
 import Grid from '@material-ui/core/Grid';
-import Drawer from '@material-ui/core/Drawer';
 
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import Close from '@material-ui/icons/Close';

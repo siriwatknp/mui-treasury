@@ -49,11 +49,11 @@ const DocTemplate = ({ pageContext, children }) => {
       }
     >
       <Box
-        maxWidth={`calc(700px + 3rem)`}
+        maxWidth={{ xs: '100%', md: `calc(700px + 3rem)`}}
         mx={'auto'}
         py={{ xs: '2rem', sm: '3rem' }}
-        pr={{ xs: 2, lg: '1.5rem' }}
-        pl={{ xs: 2, lg: 0 }}
+        pr={{ sm: '1rem', lg: '1.5rem' }}
+        pl={{ sm: '1rem', lg: 0 }}
         css={{ flexGrow: 1 }}
       >
         <Typography
