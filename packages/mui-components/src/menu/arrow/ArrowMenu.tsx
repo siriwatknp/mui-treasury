@@ -4,9 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Popper from '@material-ui/core/Popper';
 import Fade from '@material-ui/core/Fade';
 import Paper from '@material-ui/core/Paper';
-import ClickAwayListener, {
-  ClickAwayListenerProps,
-} from '@material-ui/core/ClickAwayListener';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import MenuList, { MenuListProps } from '@material-ui/core/MenuList';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowDropdown from '@material-ui/icons/ArrowDropdown';
@@ -36,17 +34,21 @@ export const arrowMenuStyles = {
   }
 };
 
+export type ArrowMenuClassKey = keyof typeof arrowMenuStyles
+
 const useStyles = makeStyles(arrowMenuStyles, { name: 'ArrowMenu' });
 
 export type ArrowMenuProps = {
   renderElement: (props: {
-    styles: Record<keyof typeof arrowMenuStyles, string>;
-    onClose: Function;
+    styles: Record<ArrowMenuClassKey, string>;
+    onClose: () => void;
   }) => React.ReactNode;
-  children: (props: {
-    styles: Record<keyof typeof arrowMenuStyles, string>;
-    onClose: Function;
-  }) => React.ReactNode | React.ReactNode;
+  children:
+    | ((props: {
+        styles: Record<ArrowMenuClassKey, string>;
+        onClose: () => void;
+      }) => React.ReactNode)
+    | React.ReactNode;
 } & Omit<MenuProps, 'open'>;
 
 const ArrowMenu = ({ children, renderElement, ...props }: ArrowMenuProps) => {
@@ -58,7 +60,7 @@ const ArrowMenu = ({ children, renderElement, ...props }: ArrowMenuProps) => {
     setOpen(prevOpen => !prevOpen);
   };
 
-  const handleClose: ClickAwayListenerProps['onClickAway'] = event => {
+  const handleClose = () => {
     setOpen(false);
   };
 
@@ -108,6 +110,7 @@ const ArrowMenu = ({ children, renderElement, ...props }: ArrowMenuProps) => {
                   onKeyDown={handleListKeyDown}
                 >
                   {typeof children === 'function'
+                    // @ts-ignore
                     ? children({ onClose: handleClose, styles })
                     : children}
                 </MenuList>
