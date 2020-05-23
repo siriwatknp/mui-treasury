@@ -27,7 +27,7 @@ ElevatedTabs.metadata = {
   path: 'styles/tabs/elevated',
   size: 'large',
   creators: [require('constants/creators').davideAntonio],
-  files: [{ pkg: 'mui-styles', path: 'tabs/elevated/elevatedTabs.styles.js' }],
+  files: [{ pkg: 'mui-styles', path: 'tabs/elevated/elevatedTabs.styles.ts' }],
 };
 // hide-end
 

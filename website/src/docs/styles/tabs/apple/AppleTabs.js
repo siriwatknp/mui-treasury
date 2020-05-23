@@ -27,7 +27,7 @@ AppleTabs.metadata = {
   size: 'large',
   createdAt: '4 feb 2020',
   creators: [require('constants/creators').siriwatknp],
-  files: [{ pkg: 'mui-styles', path: 'tabs/apple/appleTabs.styles.js' }],
+  files: [{ pkg: 'mui-styles', path: 'tabs/apple/appleTabs.styles.ts' }],
 };
 // hide-end
 

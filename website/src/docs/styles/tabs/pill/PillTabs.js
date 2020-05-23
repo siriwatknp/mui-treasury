@@ -27,7 +27,7 @@ PillTabs.metadata = {
   path: 'styles/tabs/pill',
   size: 'large',
   creators: [require('constants/creators').davideAntonio],
-  files: [{ pkg: 'mui-styles', path: 'tabs/pill/pillTabs.styles.js' }],
+  files: [{ pkg: 'mui-styles', path: 'tabs/pill/pillTabs.styles.ts' }],
 };
 // hide-end
 

@@ -23,13 +23,13 @@ const InsideTriangleTabs = () => {
 // hide-start
 InsideTriangleTabs.metadata = {
   title: 'Inside Triangle',
-  path: 'stylestabs/inside-triangle',
+  path: 'styles/tabs/inside-triangle',
   size: 'large',
   creators: [require('constants/creators').punnSiriphanthong],
   files: [
     {
       pkg: 'mui-styles',
-      path: 'tabs/inside-triangle/insideTriangleTabs.styles.js',
+      path: 'tabs/inside-triangle/insideTriangleTabs.styles.ts',
     },
   ],
 };

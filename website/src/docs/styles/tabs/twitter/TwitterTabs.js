@@ -28,7 +28,7 @@ TwitterTabs.metadata = {
   path: 'styles/tabs/twitter',
   size: 'large',
   creators: [require('constants/creators').siriwatknp],
-  files: [{ pkg: 'mui-styles', path: 'tabs/twitter/twitterTabs.styles.js' }],
+  files: [{ pkg: 'mui-styles', path: 'tabs/twitter/twitterTabs.styles.ts' }],
 };
 // hide-end
 

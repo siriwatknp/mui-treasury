@@ -30,7 +30,7 @@ FirebaseTabs.metadata = {
   path: 'styles/tabs/firebase',
   size: 'large',
   creators: [require('constants/creators').siriwatknp],
-  files: [{ pkg: 'mui-styles', path: 'tabs/firebase/firebaseTabs.styles.js' }],
+  files: [{ pkg: 'mui-styles', path: 'tabs/firebase/firebaseTabs.styles.ts' }],
 };
 // hide-end
 

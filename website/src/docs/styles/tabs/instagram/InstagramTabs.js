@@ -35,7 +35,7 @@ InstagramTabs.metadata = {
   size: 'large',
   creators: [require('constants/creators').siriwatknp],
   files: [
-    { pkg: 'mui-styles', path: 'tabs/instagram/instagramTabs.styles.js' },
+    { pkg: 'mui-styles', path: 'tabs/instagram/instagramTabs.styles.ts' },
   ],
 };
 // hide-end

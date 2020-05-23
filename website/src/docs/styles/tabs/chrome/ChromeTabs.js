@@ -24,10 +24,10 @@ const ChromeTabs = () => {
 // hide-start
 ChromeTabs.metadata = {
   title: 'Chrome',
-  path: 'stylestabs/default',
+  path: 'styles/tabs/chrome',
   size: 'large',
   creators: [require('constants/creators').siriwatknp],
-  files: [{ pkg: 'mui-styles', path: 'tabs/chrome/chromeTabs.styles.js' }],
+  files: [{ pkg: 'mui-styles', path: 'tabs/chrome/chromeTabs.styles.ts' }],
   relates: [
     {
       label: 'Qix-/Color',
