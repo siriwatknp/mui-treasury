@@ -1,8 +1,17 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import rowGutterStyles from './rowGutter.styles';
+import rowGutterStyles, {
+  RowGutterClassKey,
+  RowGutterStyleProps,
+} from './rowGutter.styles';
+import { ClassNameMap } from '@material-ui/styles';
 
-const useRowGutterStyles = makeStyles(rowGutterStyles, { name: 'RowGutter' });
+const useRowGutterStyles: (
+  props?: RowGutterStyleProps
+) => ClassNameMap<RowGutterClassKey> = makeStyles(rowGutterStyles, {
+  name: 'RowGutter',
+});
 
 export { rowGutterStyles, useRowGutterStyles };
+export * from './rowGutter.styles'
 
 export { default } from './rowGutter.styles';

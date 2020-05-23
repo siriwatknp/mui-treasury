@@ -4,7 +4,9 @@ export type RowGutterStyleProps = {
   size: string | number;
 };
 
-export default () => {
+export type RowGutterClassKey = keyof ReturnType<typeof rowGutterStyles>
+
+const rowGutterStyles = () => {
   return {
     parent: ({ before, after, size = '0.5rem' }: RowGutterStyleProps) => ({
       '& > *:not(:first-child)': {
@@ -24,3 +26,5 @@ export default () => {
     })
   };
 };
+
+export default rowGutterStyles

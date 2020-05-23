@@ -1,15 +1,19 @@
 import Color from 'color';
 
 export type SizedIconButtonStyleProps = {
-  padding: string | number;
-  color: string;
+  padding?: string | number;
+  color?: string;
   childSize?: string | number;
+  radius?: string | number;
 };
 
-export default () => ({
-  root: ({ padding = 12, color = '' }: SizedIconButtonStyleProps) => ({
+export type SizedIconButtonClassKey = keyof ReturnType<typeof sizedIconButtonStyles>
+
+const sizedIconButtonStyles = () => ({
+  root: ({ padding = 12, color = '', radius = 40 }: SizedIconButtonStyleProps) => ({
     color,
     padding,
+    borderRadius: radius,
     '&:hover': {
       backgroundColor: color ? Color(color).rotate(-6).fade(0.92).toString() : ''
     }
@@ -22,3 +26,5 @@ export default () => ({
     },
   }),
 });
+
+export default sizedIconButtonStyles
