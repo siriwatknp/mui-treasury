@@ -20,7 +20,7 @@ const GmailCollapsibleMenuStyle = () => {
         renderToggle={({ collapsed, onClick }) => (
           <GmailSidebarItem
             startIcon={collapsed ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
-            label={collapsed ? 'More' : 'Less'}
+            label={collapsed ? 'Less' : 'More'}
             onClick={onClick}
           />
         )}
@@ -71,8 +71,8 @@ GmailCollapsibleMenuStyle.metadata = {
   size: 'medium', // can be 'large' | 'huge' for grid size
   files: [
     {
-      pkg: 'mui-styles',
-      path: 'collapsibleMenu/gmail/gmailCollapsibleMenu.styles.js',
+      pkg: 'mui-components',
+      path: 'sidebarItem/gmail/GmailSidebarItem.tsx',
     },
   ],
 };

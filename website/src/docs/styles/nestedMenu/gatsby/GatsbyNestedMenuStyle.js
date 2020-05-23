@@ -13,7 +13,7 @@ const GatsbyNestedMenuStyle = () => {
 // hide-start
 GatsbyNestedMenuStyle.metadata = {
   title: 'Gatsby',
-  path: 'nestedMenu/gatsby',
+  path: 'styles/nestedMenu/gatsby',
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Sat Mar 07 2020',

@@ -13,7 +13,7 @@ const JupiterNestedMenuStyle = () => {
 // hide-start
 JupiterNestedMenuStyle.metadata = {
   title: 'Jupiter',
-  path: 'nestedMenu/jupiter',
+  path: 'styles/nestedMenu/jupiter',
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Sat Mar 07 2020',

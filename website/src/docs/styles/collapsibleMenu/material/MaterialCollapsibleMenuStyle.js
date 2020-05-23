@@ -43,7 +43,7 @@ const MaterialCollapsibleMenuStyle = () => {
 // hide-start
 MaterialCollapsibleMenuStyle.metadata = {
   title: 'Material',
-  path: 'collapsibleMenu/material',
+  path: 'styles/collapsibleMenu/material',
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Sat Mar 07 2020',

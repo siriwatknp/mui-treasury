@@ -13,7 +13,7 @@ const MaterialNestedMenuStyle = () => {
 // hide-start
 MaterialNestedMenuStyle.metadata = {
   title: 'Material',
-  path: 'nestedMenu/material',
+  path: 'styles/nestedMenu/material',
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Sat Mar 07 2020',

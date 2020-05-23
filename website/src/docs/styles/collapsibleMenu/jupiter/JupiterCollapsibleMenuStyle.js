@@ -45,7 +45,7 @@ const JupiterCollapsibleMenuStyle = () => {
 // hide-start
 JupiterCollapsibleMenuStyle.metadata = {
   title: 'Jupiter',
-  path: 'collapsibleMenu/jupiter',
+  path: 'styles/collapsibleMenu/jupiter',
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Sat Mar 07 2020',
