@@ -4,6 +4,7 @@ import Tabs, { TabsProps } from '@material-ui/core/Tabs';
 import {
   useGmailTabsStyles,
   useGmailTabItemStyles,
+  // @ts-ignore
 } from '@mui-treasury/styles/tabs/gmail';
 
 export interface GmailTabItemProps extends TabProps {
