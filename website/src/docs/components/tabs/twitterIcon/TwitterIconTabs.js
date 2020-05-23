@@ -29,7 +29,7 @@ TwitterIconTabs.metadata = {
   creators: [require('constants/creators').siriwatknp],
   files: [
     { pkg: 'mui-components', path: 'tabs/twitterIcon/TwitterIconTabs.js' },
-    { pkg: 'mui-styles', path: 'tabs/twitterIcon/twitterIconTabs.styles.js' },
+    { pkg: 'mui-styles', path: 'tabs/twitterIcon/twitterIconTabs.styles.ts' },
   ],
 };
 // hide-end

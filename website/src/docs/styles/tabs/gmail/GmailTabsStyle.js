@@ -10,19 +10,23 @@ import LocalOffer from '@material-ui/icons/LocalOffer';
 import People from '@material-ui/icons/People';
 import Info from '@material-ui/icons/Info';
 
+const indicatorColors = ['#d93025', '#1a73e8', '#188038', '#e37400'];
+
 const GmailTabsStyle = () => {
   const [tabIndex, setTabIndex] = React.useState(0);
-  const tabsStyles = useGmailTabsStyles();
-  const tabItem1Styles = useGmailTabItemStyles({ color: '#d93025' });
-  const tabItem2Styles = useGmailTabItemStyles({ color: '#1a73e8' });
-  const tabItem3Styles = useGmailTabItemStyles({ color: '#188038' });
-  const tabItem4Styles = useGmailTabItemStyles({ color: '#e37400' });
+  const tabsStyles = useGmailTabsStyles({ indicatorColors });
+  const tabItem1Styles = useGmailTabItemStyles({ color: indicatorColors[0] });
+  const tabItem2Styles = useGmailTabItemStyles({ color: indicatorColors[1] });
+  const tabItem3Styles = useGmailTabItemStyles({ color: indicatorColors[2] });
+  const tabItem4Styles = useGmailTabItemStyles({ color: indicatorColors[3] });
   return (
     <Tabs
       classes={tabsStyles}
       value={tabIndex}
       onChange={(e, index) => setTabIndex(index)}
-      TabIndicatorProps={{ children: <div className={`MuiIndicator-${tabIndex}`} /> }}
+      TabIndicatorProps={{
+        children: <div className={`MuiIndicator-${tabIndex}`} />,
+      }}
     >
       <Tab
         classes={tabItem1Styles}

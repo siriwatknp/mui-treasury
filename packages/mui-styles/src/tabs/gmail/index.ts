@@ -1,8 +1,20 @@
+import { ClassNameMap } from '@material-ui/styles';
 import { makeStyles } from '@material-ui/styles';
-import { tabsStyles, tabItemStyles } from './gmailTabs.styles';
+import {
+  tabsStyles,
+  tabItemStyles,
+  GmailTabsStyleProps,
+  GmailTabsClassKey,
+  GmailTabItemStyleProps,
+  GmailTabItemClassKey,
+} from './gmailTabs.styles';
 
-export { tabsStyles as gmailTabsStyles, tabItemStyles as gmailTabItemStyles }
+export { tabsStyles as gmailTabsStyles, tabItemStyles as gmailTabItemStyles };
 
-export const useGmailTabsStyles = makeStyles(tabsStyles)
+export const useGmailTabsStyles: (
+  props?: GmailTabsStyleProps
+) => ClassNameMap<GmailTabsClassKey> = makeStyles(tabsStyles);
 
-export const useGmailTabItemStyles = makeStyles(tabItemStyles)
+export const useGmailTabItemStyles: (
+  props?: GmailTabItemStyleProps
+) => ClassNameMap<GmailTabItemClassKey> = makeStyles(tabItemStyles);
