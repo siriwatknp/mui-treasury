@@ -1,11 +1,13 @@
 import React from 'react';
+import ButtonBase from '@material-ui/core/ButtonBase';
 import Tab, { TabProps } from '@material-ui/core/Tab';
-import Tabs, { TabsProps } from '@material-ui/core/Tabs';
+import Tabs, { TabsTypeMap } from '@material-ui/core/Tabs';
 import {
   useGmailTabsStyles,
   useGmailTabItemStyles,
   // @ts-ignore
 } from '@mui-treasury/styles/tabs/gmail';
+import { OverridableComponent } from '../../_types';
 
 export interface GmailTabItemProps extends TabProps {
   color?: string;
@@ -39,17 +41,24 @@ export const GmailTabItem = ({
   );
 };
 
-export interface GmailTabsProps extends TabsProps {
-  indicatorColors?: Array<string>;
-  children: React.ReactElement;
-}
+export type GmailTabsTypeMap<
+  P = {},
+  D extends React.ElementType = typeof ButtonBase
+> = TabsTypeMap<
+  {
+    indicatorColors?: Array<string>;
+    children: React.ReactElement | React.ReactElement[];
+  },
+  D
+>;
 
-export const GmailTabs = ({
+export const GmailTabs: OverridableComponent<GmailTabsTypeMap> = ({
   indicatorColors = ['#d93025', '#1a73e8', '#188038', '#e37400'],
   ...props
-}: GmailTabsProps) => {
+}) => {
   const tabsStyles = useGmailTabsStyles({ ...props, indicatorColors });
   return (
+    // @ts-ignore
     <Tabs
       {...props}
       children={React.Children.map(props.children, (child, index) =>
