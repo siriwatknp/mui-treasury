@@ -1,4 +1,11 @@
-export default () => ({
+export type GoogleAvatarStyleProps = {
+  ringSize?: number | string;
+  avatarSize?: number | string;
+}
+
+export type GoogleAvatarClassKey = keyof ReturnType<typeof googleAvatarStyles>
+
+const googleAvatarStyles = () => ({
   root: ({ ringSize = 48, avatarSize = 40 }) => ({
     position: 'relative' as const,
     '& > *': {
@@ -20,3 +27,5 @@ export default () => ({
     }
   })
 })
+
+export default googleAvatarStyles

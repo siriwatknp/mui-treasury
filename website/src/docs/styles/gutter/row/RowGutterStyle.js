@@ -10,6 +10,7 @@ const RowGutterStyle = () => {
     before: 20, // turn to px
     after: 20, // turn to px
   });
+  const adjacentStyles = useRowGutterStyles({ size: 16, before: 24 })
   const size = { width: 48, height: 48, display: 'inline-block' };
   const parentProps = { lineHeight: 0 };
   return (
@@ -34,6 +35,14 @@ const RowGutterStyle = () => {
         <Box {...size} bgcolor={'primary.main'} />
         <Box {...size} bgcolor={'primary.main'} />
         <Box {...size} bgcolor={'primary.main'} />
+        <Box {...size} bgcolor={'primary.main'} />
+      </Box>
+      <br />
+      <Box
+        bgcolor={'grey.300'}
+        {...parentProps}
+      >
+        <Box {...size} className={adjacentStyles.adjacent} bgcolor={'primary.main'} />
         <Box {...size} bgcolor={'primary.main'} />
       </Box>
     </div>
