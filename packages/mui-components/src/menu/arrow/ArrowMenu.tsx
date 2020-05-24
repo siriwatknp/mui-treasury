@@ -7,7 +7,7 @@ import Paper from '@material-ui/core/Paper';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import MenuList, { MenuListProps } from '@material-ui/core/MenuList';
 import IconButton from '@material-ui/core/IconButton';
-import ArrowDropdown from '@material-ui/icons/ArrowDropdown';
+import ArrowDropDown from '@material-ui/icons/ArrowDropDown';
 import { MenuProps } from '@material-ui/core/Menu';
 
 export const arrowMenuStyles = {
@@ -84,7 +84,7 @@ const ArrowMenu = ({ children, renderElement, ...props }: ArrowMenuProps) => {
     <div ref={anchorRef} className={cx(styles.root, { [styles.open]: open })}>
       {renderElement && renderElement({ onClose: handleClose, styles })}
       <IconButton className={cx(styles.button, styles.arrowBtn)}>
-        <ArrowDropdown fontSize={'inherit'} onClick={handleToggle} />
+        <ArrowDropDown fontSize={'inherit'} onClick={handleToggle} />
       </IconButton>
       <Popper
         open={open}

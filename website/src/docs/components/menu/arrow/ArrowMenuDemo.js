@@ -74,7 +74,7 @@ ArrowMenuDemo.metadata = {
   stylesUrl: '',
   frameProps: {}, // props that applied to Box in grid view
   size: 'medium', // can be 'large' | 'huge' for grid size
-  files: [{ pkg: 'mui-components', path: 'menu/arrow/ArrowMenu.js' }],
+  files: [{ pkg: 'mui-components', path: 'menu/arrow/ArrowMenu.tsx' }],
 };
 // hide-end
 
