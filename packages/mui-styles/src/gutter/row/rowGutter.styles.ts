@@ -9,10 +9,14 @@ export type RowGutterClassKey = keyof ReturnType<typeof rowGutterStyles>
 const rowGutterStyles = () => {
   return {
     parent: ({ before, after, size = '0.5rem' }: RowGutterStyleProps) => ({
-      marginLeft: before,
-      marginRight: after,
       '& > *:not(:first-child)': {
         marginLeft: size,
+      },
+      '& > *:first-child': {
+        marginLeft: before,
+      },
+      '& > *:last-child': {
+        marginRight: after,
       },
     }),
     adjacent: ({ before, after, size = '0.5rem' }: RowGutterStyleProps) => ({
