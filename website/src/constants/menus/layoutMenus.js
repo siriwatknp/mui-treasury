@@ -144,6 +144,11 @@ export default [
     label: 'Clones',
     subMenus: [
       {
+        key: 'gmail',
+        label: 'Gmail',
+        to: '/layout/clones/gmail?bgColor=ff5c52&dark=true&accent=eeff00',
+      },
+      {
         key: 'reactjs',
         label: 'React Doc',
         to: '/layout/clones/reactjs?bgColor=b6c0d4',
