@@ -2,8 +2,15 @@
   "globals": {
     "__PATH_PREFIX__": true
   },
+  "env": {
+    "cypress/globals": true
+  },
   "extends": [
     "react-app",
-    "prettier/@typescript-eslint"
+    "prettier/@typescript-eslint",
+    "plugin:cypress/recommended"
+  ],
+  "plugins": [
+    "cypress"
   ]
 }
