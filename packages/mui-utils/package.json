@@ -19,12 +19,8 @@
   },
   "homepage": "https://mui-treasury.com",
   "dependencies": {
-    "clsx": "^1.0.4",
     "lodash.get": "^4.4.2",
     "lodash.isequal": "^4.5.0"
-  },
-  "peerDependencies": {
-    "react": ">=16.0.0"
   },
   "scripts": {
     "prebuild": "rimraf build",

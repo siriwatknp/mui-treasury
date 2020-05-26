@@ -9,7 +9,6 @@ module.exports = {
     '@mui-treasury/layout(.*)$': '<rootDir>/packages/mui-layout/src/$1',
     '@mui-treasury/mockup(.*)$': '<rootDir>/packages/mui-mockup/src/$1',
     '@mui-treasury/styles(.*)$': '<rootDir>/packages/mui-styles/src/$1',
-    '@mui-treasury/styling(.*)$': '<rootDir>/packages/mui-styling/src/$1',
     '@mui-treasury/utils(.*)$': '<rootDir>/packages/mui-utils/src/$1',
   },
   testPathIgnorePatterns: [

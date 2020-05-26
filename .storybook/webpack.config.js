@@ -34,8 +34,6 @@ module.exports = ({ config }) => {
           '@mui-treasury/components': './packages/mui-components/src',
           '@mui-treasury/utils/src': './packages/mui-utils/src',
           '@mui-treasury/utils': './packages/mui-utils/src',
-          '@mui-treasury/styling/src': './packages/mui-styling/src',
-          '@mui-treasury/styling': './packages/mui-styling/src',
           '@mui-treasury/layout/src': './packages/mui-layout/src',
           '@mui-treasury/layout': './packages/mui-layout/src',
           '@mui-treasury/styles/src': './packages/mui-styles/src',

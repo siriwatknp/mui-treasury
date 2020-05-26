@@ -24,7 +24,6 @@ module.exports = {
           logics: './src/logics',
           '@mui-treasury/components': '../packages/mui-components/src',
           '@mui-treasury/utils': '../packages/mui-utils/src',
-          '@mui-treasury/styling': '../packages/mui-styling/src',
           '@mui-treasury/layout': '../packages/mui-layout/src',
           '@mui-treasury/styles': '../packages/mui-styles/src',
           '@mui-treasury/mockup': '../packages/mui-mockup/src',

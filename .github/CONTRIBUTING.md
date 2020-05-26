@@ -109,7 +109,6 @@ located in `packages` folder
 │   └── mui-components/
 │   └── mui-layout/
 │   └── mui-styles/
-│   └── mui-styling/
 │   └── mui-utils/
 ```
 
