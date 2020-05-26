@@ -11,9 +11,7 @@
     "start": "yarn develop",
     "serve": "gatsby serve",
     "test": "jest",
-    "typecheck": "tsc --skipLibCheck",
-    "storybook": "NODE_ENV=development start-storybook -p 6006",
-    "build-storybook": "NODE_ENV=production build-storybook -s public"
+    "typecheck": "tsc --skipLibCheck"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
