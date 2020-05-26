@@ -2,6 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { useMetadata } from 'containers/Demo/context';
 import { orderComponents, getStatusByDate } from 'utils/functions';
+import ShowcaseWidget from './ShowcaseWidget';
 
 /*
   render component in grid layout
@@ -11,7 +12,6 @@ const GridShowcase = ({
   components,
   gridStyles,
   GridItemProps,
-  renderComponentWrapper: Wrapper,
 }) => {
   const { setComponent } = useMetadata();
   return (
@@ -27,7 +27,7 @@ const GridShowcase = ({
         } = Component.metadata;
         return (
           <Grid key={name} item classes={gridStyles} {...GridItemProps}>
-            <Wrapper
+            <ShowcaseWidget
               creators={creators}
               name={name}
               status={getStatusByDate(createdAt)}
@@ -38,7 +38,7 @@ const GridShowcase = ({
               onClickCode={() => setComponent(Component)}
             >
               <Component />
-            </Wrapper>
+            </ShowcaseWidget>
           </Grid>
         );
       })}

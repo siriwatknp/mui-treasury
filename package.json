@@ -34,6 +34,8 @@
   },
   "scripts": {
     "cm": "npx git-cz",
+    "cy:run": "cypress run --browser chrome --config-file cypress/cypress.json",
+    "cy:open": "cypress open --browser chrome --config-file cypress/cypress.json",
     "build": "yarn workspace website build",
     "build:ci": "npx hygen ci production && yarn install && yarn build",
     "deploy": "yarn build:ci && firebase deploy --only hosting:current",

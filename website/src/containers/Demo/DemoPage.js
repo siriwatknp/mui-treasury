@@ -50,12 +50,6 @@ const DemoPage = ({
               <CustomComponentGrid
                 noHeader={noDefaultSection}
                 components={customComponents}
-                renderGrid={gridProps => (
-                  <GridShowcase
-                    {...gridProps}
-                    renderComponentWrapper={ShowcaseWidget}
-                  />
-                )}
               />
             </ThemeProvider>
           );

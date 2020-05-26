@@ -32,7 +32,7 @@ const { ModuleProjector } = organisms;
 
 const baseTheme = createMuiTheme();
 
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
+const useStyles = makeStyles(({ palette, breakpoints, spacing }) => ({
   paper: {
     display: 'flex',
     flexDirection: 'column',
@@ -95,6 +95,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
         }
       }
     }
+  },
+  title: {
+    marginLeft: spacing(1)
   }
 }));
 
@@ -146,13 +149,24 @@ const DemoSourceDrawer = ({ title }) => {
         const mappedFiles = docGen().mapAllFiles(files);
         const onClose = () => setComponent({})
         return (
-          <Dialog fullScreen open={isOpen} onClose={onClose} TransitionComponent={Transition}>
+          <Dialog
+            fullScreen
+            open={isOpen}
+            onClose={onClose}
+            TransitionComponent={Transition}
+          >
             <AppBar color={'default'} elevation={0} position={'sticky'}>
               <Toolbar>
-                <IconButton edge="start" color="inherit" onClick={onClose} aria-label="close">
+                <IconButton
+                  edge="start"
+                  color="inherit"
+                  onClick={onClose}
+                  aria-label="close"
+                  data-testid="close-projector"
+                >
                   <Close />
                 </IconButton>
-                <Typography variant="h6" className={classes.title}>
+                <Typography data-testid="variant-name" variant="h6" className={classes.title}>
                   {metadata.title} {title}
                 </Typography>
               </Toolbar>
@@ -203,7 +217,7 @@ const DemoSourceDrawer = ({ title }) => {
               </div>
             </Grid>
           </Dialog>
-        )
+        );
       }}
     </Consumer>
   );

@@ -88,7 +88,10 @@ const ComponentMenuList = ({ menus, getOpenKeys }) => {
               className: cx(styles[`lv${level}List`], 'test'),
             })}
             renderItem={(item, { children, ...itemProps }) => (
-              <Menu.ListItem {...itemProps}>
+              <Menu.ListItem
+                {...(item.to && { 'data-testid': 'app-sidebar-link' })}
+                {...itemProps}
+              >
                 {item.total >= 0 && (
                   <span
                     className={cx(

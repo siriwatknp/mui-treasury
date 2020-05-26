@@ -38,7 +38,7 @@ const ModuleProjector = ({ demoSource, files }) => {
           labelPlacement="end"
         />
       </Box>
-      <Box className={'ModuleProjector-sourceCode'} fontSize={14} px={'1.5em'} width={{ lg: 620, xl: 800 }}>
+      <Box data-testid="source-code-projector" className={'ModuleProjector-sourceCode'} fontSize={14} px={'1.5em'} width={{ lg: 620, xl: 800 }}>
         {sourceDisplayed ? (
           <Box fontSize={'inherit'} mx={'-1.5em'}>
             {files.length > 0 && (
