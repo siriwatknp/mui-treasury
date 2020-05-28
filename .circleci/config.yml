@@ -20,8 +20,21 @@ commands:
       - run:
           name: Gatsby Build
           command: GATSBY_CPU_COUNT=1 yarn build:ci
+orbs:
+  cypress: cypress-io/cypress@1
 workflows:
   version: 2
+  e2e-check:
+    jobs:
+      - cypress/run:
+          start: yarn start
+          wait-on: 'http://localhost:8000'
+          browser: chrome
+          config-file: cypress/cypress.json
+          store_artifacts: true
+          post-steps:
+            - store_test_results:
+                path: cypress/results
   build-deploy:
     jobs:
       - release:
