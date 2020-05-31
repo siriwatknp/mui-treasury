@@ -92,6 +92,11 @@ export default [
         to: '/components/chat-msg',
       },
       {
+        key: 'flex',
+        label: 'Flex',
+        to: '/components/flex'
+      },
+      {
         key: 'indicator',
         label: 'Indicator',
         total: indicators.length,

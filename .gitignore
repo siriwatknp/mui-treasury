@@ -81,3 +81,7 @@ yarn-error.log
 
 # lerna
 lerna-debug.log
+
+# cypress
+cypress/screenshots/
+cypress/videos/

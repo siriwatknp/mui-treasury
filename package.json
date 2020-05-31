@@ -83,6 +83,7 @@
     "hygen": "^5.0.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
+    "jest-each": "^26.0.1",
     "lerna": "^3.19.0",
     "lint-staged": "^10.0.7",
     "lodash": "^4.17.15",

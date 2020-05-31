@@ -60,5 +60,8 @@
     "styled-components": "^5.1.0",
     "typography": "^0.16.19",
     "typography-theme-kirkham": "^0.16.19"
+  },
+  "devDependencies": {
+    "gatsby-plugin-root-import": "^2.0.5"
   }
 }

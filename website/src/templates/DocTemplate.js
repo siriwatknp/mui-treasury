@@ -10,6 +10,7 @@ import CarbonAds from '../components/atoms/CarbonAds';
 import CodeSandbox from '../components/atoms/CodeSandbox';
 import PageNavigation from '../components/molecules/PageNavigation';
 import BrandCard from '../components/molecules/BrandCard';
+import Image from '../components/atoms/Image';
 import { muiTreasuryScheme } from '../modules/path';
 import './documentation.css';
 
@@ -19,6 +20,8 @@ const InsetSidebar = getInsetSidebar(styled);
 const shortcodes = {
   Inline,
   Link,
+  Box,
+  Image,
   CodeSandbox,
   SimpleShowcase,
   PageNavigation,
