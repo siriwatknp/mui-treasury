@@ -31,7 +31,6 @@ workflows:
           yarn: true
           start: yarn start
           wait-on: 'http://localhost:8000'
-          browser: chrome
           config-file: cypress/cypress.json
           store_artifacts: true
           post-steps:
