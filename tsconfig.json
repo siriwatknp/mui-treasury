@@ -22,11 +22,15 @@
   "baseUrl": "./",
   "paths": {
     "@mui-treasury/components/*": "packages/mui-components/src/*",
-    "@mui-treasury/styles/*": "packages/mui-styles/src/*"
+    "@mui-treasury/styles/*": "packages/mui-styles/src/*",
+    "@mui-treasury/layout/*": "packages/mui-layout/src/*",
+    "@mui-treasury/mockup/*": "packages/mui-mockup/src/*"
   },
   "include": [
+    "./website/src/**/*",
     "./packages/mui-components/src/**/*",
     "./packages/mui-styles/src/**/*",
-    "./website/src/**/*"
+    "./packages/mui-layout/src/**/*",
+    "./packages/mui-mockup/src/**/*"
   ]
 }
