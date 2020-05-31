@@ -20,7 +20,7 @@ const JupiterListItemStyle = () => {
 // hide-start
 JupiterListItemStyle.metadata = {
   title: 'Jupiter',
-  path: 'listItem/jupiter',
+  path: 'styles/listItem/jupiter',
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Sat Mar 07 2020',

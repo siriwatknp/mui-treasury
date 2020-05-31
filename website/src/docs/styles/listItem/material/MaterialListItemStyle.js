@@ -20,7 +20,7 @@ const MaterialListItemStyle = () => {
 // hide-start
 MaterialListItemStyle.metadata = {
   title: 'Material',
-  path: 'listItem/material',
+  path: 'styles/listItem/material',
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Sat Mar 07 2020',
