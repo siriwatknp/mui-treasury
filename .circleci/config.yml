@@ -27,6 +27,7 @@ workflows:
   e2e-check:
     jobs:
       - cypress/run:
+          executor: cypress/default
           yarn: true
           start: yarn start
           wait-on: 'http://localhost:8000'
