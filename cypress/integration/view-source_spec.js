@@ -25,14 +25,12 @@ const runCodeProjectorTests = () => {
 
 describe('Code Projector', () => {
   it('should be able to view code in /styles', () => {
-    cy.visit('http://localhost:8000');
-    cy.get('[href="/styles"]').click();
+    cy.visit('http://localhost:8000/styles');
     runCodeProjectorTests()
   });
 
   it('should be able to view code in /components', () => {
-    cy.visit('http://localhost:8000');
-    cy.get('[href="/components"]').click();
+    cy.visit('http://localhost:8000/components');
     runCodeProjectorTests()
   });
 });

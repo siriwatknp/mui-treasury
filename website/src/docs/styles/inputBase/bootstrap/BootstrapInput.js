@@ -22,7 +22,7 @@ const BootstrapInput = () => {
 // hide-start
 BootstrapInput.metadata = {
   title: 'Bootstrap',
-  path: 'styles/input/bootstrap',
+  path: 'styles/inputBase/bootstrap',
   creators: [require('constants/creators').siriwatknp],
   files: [
     { pkg: 'mui-styles', path: 'input/bootstrap/bootstrapInput.styles.js' },
