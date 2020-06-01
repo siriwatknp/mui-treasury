@@ -1,22 +1,23 @@
 import React from 'react';
 import cx from 'clsx';
 import Item, { ItemProps } from './Item';
-import { Provider } from './core';
+import { Provider, useFlexCtx, Gutter } from './core';
 
 export type RowProps = ItemProps & {
-  gutter: number | string | 'inherit';
-  children: React.ReactElement | React.ReactElement[];
+  gutter?: Gutter;
+  children: React.ReactNode | React.ReactElement | React.ReactElement[];
 };
 
 const Row = ({ className, children, gutter, ...props }: RowProps) => {
+  const inheritGutter = useFlexCtx() ? gutter || 'inherit' : gutter;
   return (
     <Item
       className={cx('FlexRow', className)}
       display={'flex'}
-      p={gutter !== 'inherit' ? gutter : ''}
+      {...inheritGutter !== 'inherit' && { p: inheritGutter }}
       {...props}
     >
-      <Provider flexDirection={'row'} gutter={gutter}>
+      <Provider flexDirection={'row'} gutter={inheritGutter}>
         {children}
       </Provider>
     </Item>

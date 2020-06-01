@@ -5,7 +5,7 @@ import { Position, useFlexStyles, useGutterProps } from './core';
 
 export type ItemProps = {
   position?: Position;
-  itemIndex?: number;
+  'data-flexindex'?: number;
   grow?: boolean | number;
   shrink?: number;
   cssPosition?: 'fixed' | 'absolute' | 'sticky' | 'static' | 'relative';
@@ -17,7 +17,7 @@ const Item = ({
   cssPosition,
   grow,
   shrink,
-  itemIndex,
+  'data-flexindex': itemIndex,
   ...props
 }: ItemProps) => {
   const gutterProps = useGutterProps(itemIndex);

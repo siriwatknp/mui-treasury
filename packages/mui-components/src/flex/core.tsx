@@ -35,7 +35,7 @@ export const positionInsideColumn = (position: Position) => {
   if (position === 'middle') return { marginTop: 'auto', marginBottom: 'auto' };
   if (position === 'center')
     return { alignSelf: 'center', marginTop: 'auto', marginBottom: 'auto' };
-}
+};
 
 export const gutterInsideRow = (value: any) => ({
   pl: value,
@@ -55,16 +55,24 @@ export const useGutterProps = (itemIndex: number) => {
   }
 };
 
+export const useFlexCtx = () => React.useContext(FlexContext);
+
 export const useFlexStyles = (position: Position) => {
   const flex = React.useContext(FlexContext);
   if (flex === 'row') return positionInsideRow(position);
   if (flex === 'column') return positionInsideColumn(position);
 };
 
+export type Gutter =
+  | number
+  | string
+  | 'inherit'
+  | Partial<Record<'xs' | 'sm' | 'md' | 'lg' | 'xl', string | number>>;
+
 export type ProviderProps = {
   flexDirection: FlexContextValue;
-  gutter: number | string | 'inherit';
-  children: React.ReactElement | React.ReactElement[];
+  gutter: Gutter;
+  children: React.ReactNode | React.ReactElement | React.ReactElement[];
 };
 
 export const Provider = ({
@@ -72,13 +80,13 @@ export const Provider = ({
   gutter,
   children,
 }: React.PropsWithChildren<ProviderProps>) => {
-  const inheritedGutter = useGutterCtx()
+  const inheritedGutter = useGutterCtx();
   return (
     <FlexProvider value={flexDirection}>
       <GutterProvider value={gutter === 'inherit' ? inheritedGutter : gutter}>
         {React.Children.map(children, (child, index) => {
           if (React.isValidElement(child)) {
-            return React.cloneElement(child, { itemIndex: index });
+            return React.cloneElement(child, { 'data-flexindex': index });
           }
           return child;
         })}
