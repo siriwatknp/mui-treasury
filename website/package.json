@@ -6,9 +6,9 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop -o",
+    "dev": "gatsby develop -o",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "yarn develop",
+    "start": "gatsby develop",
     "serve": "gatsby serve",
     "test": "jest",
     "typecheck": "tsc --skipLibCheck"

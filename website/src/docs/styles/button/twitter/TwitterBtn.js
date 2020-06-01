@@ -46,7 +46,7 @@ const TwitterButton = () => {
 // hide-start
 TwitterButton.metadata = {
   title: 'Twitter',
-  path: 'stylesbutton/twitter',
+  path: 'styles/button/twitter',
   creators: [require('constants/creators').siriwatknp],
   files: [{ pkg: 'mui-styles', path: 'button/twitter/twitterBtn.styles.js' }],
 };

@@ -20,7 +20,7 @@ const GatsbyListItemStyle = () => {
 // hide-start
 GatsbyListItemStyle.metadata = {
   title: 'Gatsby',
-  path: 'listItem/gatsby',
+  path: 'styles/listItem/gatsby',
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Sat Mar 07 2020',

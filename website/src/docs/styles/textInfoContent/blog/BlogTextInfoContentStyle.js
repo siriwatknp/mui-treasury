@@ -26,7 +26,7 @@ const BlogTextInfoContentStyle = () => {
 // hide-start
 BlogTextInfoContentStyle.metadata = {
   title: 'Blog',
-  path: 'TextInfoContent/blog',
+  path: 'styles/textInfoContent/blog',
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   frameProps: {}, // props that applied to Box in grid view

@@ -167,7 +167,7 @@ const ShowcaseWidget = ({
             </Tooltip>
           )}
           <Tooltip title="See code">
-            <IconButton onClick={onClickCode}>
+            <IconButton data-testid="view-code-button" onClick={onClickCode}>
               <CodeRounded />
             </IconButton>
           </Tooltip>

@@ -28,7 +28,7 @@ const ChromeInput = () => {
 // hide-start
 ChromeInput.metadata = {
   title: 'Chrome',
-  path: 'styles/input/chrome',
+  path: 'styles/inputBase/chrome',
   creators: [require('constants/creators').siriwatknp],
   files: [{ pkg: 'mui-styles', path: 'input/chrome/chromeInput.styles.js' }],
   relates: [],

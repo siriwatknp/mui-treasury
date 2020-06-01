@@ -23,7 +23,7 @@ const N03TextInfoContentStyle = () => {
 // hide-start
 N03TextInfoContentStyle.metadata = {
   title: 'N03',
-  path: 'textInfoContent/n03',
+  path: 'styles/textInfoContent/n03',
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   frameProps: {}, // props that applied to Box in grid view

@@ -17,7 +17,7 @@ const SearchInput = () => {
 // hide-start
 SearchInput.metadata = {
   title: 'Search',
-  path: 'styles/input/search',
+  path: 'styles/inputBase/search',
   creators: [require('constants/creators').siriwatknp],
   files: [
     {

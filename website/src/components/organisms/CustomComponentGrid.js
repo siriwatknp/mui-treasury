@@ -3,6 +3,7 @@ import groupBy from 'lodash/groupBy';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import { useHalfBorderedGridStyles } from '@mui-treasury/styles/grid/halfBordered';
+import GridShowcase from '../molecules/GridShowcase';
 
 /*
   categorize components into 2 group (medium, large)
@@ -44,11 +45,11 @@ const useGridProps = size => {
   };
 };
 
-const Section = ({ size, component: Component, components }) => {
+const Section = ({ size, components }) => {
   const gridProps = useGridProps(size);
   return (
     <Box mt={'-1px'}>
-      <Component components={components} {...gridProps} />
+      <GridShowcase components={components} {...gridProps} />
     </Box>
   );
 };

@@ -32,7 +32,7 @@ const CuteSwitchToggleStyle = () => {
 // hide-start
 CuteSwitchToggleStyle.metadata = {
   title: 'Cute',
-  path: 'switchToggle/cute',
+  path: 'styles/switchToggle/cute',
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Sat Mar 07 2020',
