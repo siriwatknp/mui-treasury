@@ -34,7 +34,7 @@ const GatsbyRowToggleStyle = () => {
 // hide-start
 GatsbyRowToggleStyle.metadata = {
   title: 'Gatsby',
-  path: 'rowToggle/gatsby',
+  path: 'styles/rowToggle/gatsby',
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Sat Mar 07 2020',

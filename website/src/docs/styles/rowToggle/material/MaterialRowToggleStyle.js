@@ -34,7 +34,7 @@ const MaterialRowToggleStyle = () => {
 // hide-start
 MaterialRowToggleStyle.metadata = {
   title: 'Material',
-  path: 'rowToggle/material',
+  path: 'styles/rowToggle/material',
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Sat Mar 07 2020',

@@ -4,9 +4,10 @@ const runCodeProjectorTests = () => {
     .find('[data-testid="app-sidebar-link"]')
     .each(elm => {
       cy.get(elm).click();
+      // eslint-disable-next-line cypress/no-unnecessary-waiting
+      cy.wait(200);
       // show each page
       cy.get('main').then(main => {
-        console.log(main.find('[data-testid="view-code-button"]'));
         if (main.find('[data-testid="view-code-button"]').length) {
           cy.get('[data-testid="view-code-button"]').each(item => {
             cy.get(item).click();
