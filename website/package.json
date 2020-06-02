@@ -53,6 +53,7 @@
     "react-dom": "^16.9.0",
     "react-frame-component": "^4.1.1",
     "react-github-btn": "^1.0.6",
+    "react-google-font-loader": "^1.1.0",
     "react-helmet": "^5.2.1",
     "react-scroll": "^1.7.14",
     "react-swipeable-views": "^0.13.3",

@@ -71,6 +71,7 @@ function GmailDemo() {
   const onTabIndexChange = React.useCallback((index) => {
     const indicatorColors = ['ff4a3e', '2ea6ff', '3fda62', 'ffa939'];
     navigate(`${location.pathname}?bgColor=${indicatorColors[index]}&accent=000000&dark=true`, { replace: true })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
     <StylesProvider injectFirst>
