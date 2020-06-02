@@ -3,12 +3,11 @@ import cx from 'clsx';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import { useStyleCtx } from './Info';
 
-const InfoSubtitle = ({ className, children, ...props }: TypographyProps) => {
+const InfoCaption = ({ className, children, ...props }: TypographyProps) => {
   const styles = useStyleCtx();
   return (
     <Typography
-      className={cx('InfoSubtitle', styles.subtitle, className)}
-      variant={'subtitle1'}
+      className={cx('InfoCaption', styles.caption, className)}
       {...props}
     >
       {children}
@@ -16,4 +15,4 @@ const InfoSubtitle = ({ className, children, ...props }: TypographyProps) => {
   );
 };
 
-export default InfoSubtitle;
+export default InfoCaption;

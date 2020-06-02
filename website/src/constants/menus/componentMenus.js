@@ -102,6 +102,11 @@ export default [
         total: indicators.length,
         to: '/components/indicator',
       },
+      {
+        key: 'info',
+        label: 'Info',
+        to: '/components/info'
+      },
       { key: 'rip', label: 'Rip', total: rips.length, to: '/components/rip' },
       {
         key: 'sidebar-item',
