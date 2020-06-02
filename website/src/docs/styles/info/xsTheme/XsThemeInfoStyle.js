@@ -24,6 +24,14 @@ const XsThemeInfoStyle = () => {
         <InfoSubtitle>Yung Bans</InfoSubtitle>
         <InfoCaption>21d • #hiphop #rap</InfoCaption>
       </Info>
+      <Item>
+        <Divider />
+      </Item>
+      <Info useStyles={useXsThemeInfoStyles}>
+        <InfoCaption>21d • #hiphop #rap</InfoCaption>
+        <InfoTitle>Lonely ft.Lil Skies</InfoTitle>
+        <InfoSubtitle>Yung Bans</InfoSubtitle>
+      </Info>
     </Column>
   );
 };

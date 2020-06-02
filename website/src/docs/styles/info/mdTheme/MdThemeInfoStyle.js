@@ -24,13 +24,21 @@ const MdThemeInfoStyle = () => {
         <InfoSubtitle>Gozilla</InfoSubtitle>
         <InfoCaption>3d • #alternative</InfoCaption>
       </Info>
+      <Item>
+        <Divider />
+      </Item>
+      <Info useStyles={useMdThemeInfoStyles}>
+        <InfoCaption>3d • #alternative</InfoCaption>
+        <InfoTitle>Old Town Road</InfoTitle>
+        <InfoSubtitle>Gozilla</InfoSubtitle>
+      </Info>
     </Column>
   )
 };
 // hide-start
 MdThemeInfoStyle.metadata = {
   title: 'Md Theme',
-  description: 'total height ~ [3rem, 4.35rem]',
+  description: 'total height ~ [3rem, 4.5rem]',
   path: 'styles/info/mdTheme',
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first

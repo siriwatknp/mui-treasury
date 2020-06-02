@@ -1,6 +1,4 @@
 import React from 'react';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
 import {
   Info,
@@ -8,26 +6,33 @@ import {
   InfoSubtitle,
   InfoCaption,
 } from '@mui-treasury/components/info';
+import { Column, Item } from '@mui-treasury/components/flex';
 import { useSmThemeInfoStyles } from '@mui-treasury/styles/info/smTheme';
 
 const SmThemeInfoStyle = () => {
   return (
-    <List>
-      <ListItem button>
-        <Info useStyles={useSmThemeInfoStyles}>
-          <InfoTitle>No Problem (feat. Lil Wayne)</InfoTitle>
-          <InfoSubtitle>Chance the Rapper</InfoSubtitle>
-        </Info>
-      </ListItem>
-      <Divider />
-      <ListItem button>
-        <Info useStyles={useSmThemeInfoStyles}>
-          <InfoCaption>19d • #hiphop #rap</InfoCaption>
-          <InfoTitle>No Problem (feat. Lil Wayne)</InfoTitle>
-          <InfoSubtitle>Chance the Rapper</InfoSubtitle>
-        </Info>
-      </ListItem>
-    </List>
+    <Column gutter={1.5} bgcolor={'#fff'} minWidth={200}>
+      <Info useStyles={useSmThemeInfoStyles}>
+        <InfoTitle>No Problem (feat. Lil Wayne)</InfoTitle>
+        <InfoSubtitle>Chance the Rapper</InfoSubtitle>
+      </Info>
+      <Item>
+        <Divider />
+      </Item>
+      <Info useStyles={useSmThemeInfoStyles}>
+        <InfoCaption>19d • #hiphop #rap</InfoCaption>
+        <InfoTitle>No Problem (feat. Lil Wayne)</InfoTitle>
+        <InfoSubtitle>Chance the Rapper</InfoSubtitle>
+      </Info>
+      <Item>
+        <Divider />
+      </Item>
+      <Info useStyles={useSmThemeInfoStyles}>
+        <InfoTitle>No Problem (feat. Lil Wayne)</InfoTitle>
+        <InfoSubtitle>Chance the Rapper</InfoSubtitle>
+        <InfoCaption>19d • #hiphop #rap</InfoCaption>
+      </Info>
+    </Column>
   );
 };
 // hide-start
