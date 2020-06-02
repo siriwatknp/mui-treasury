@@ -6,19 +6,25 @@ import NoSsr from '@material-ui/core/NoSsr';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import CardActionArea from '@material-ui/core/CardActionArea';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import { useFourThreeCardMediaStyles } from '@mui-treasury/styles/cardMedia/fourThree';
 
 const useStyles = makeStyles(() => ({
-  card: ({ color }) => ({
-    minWidth: 256,
-    boxShadow: 'none',
+  actionArea: {
     borderRadius: 16,
     transition: '0.2s',
     '&:hover': {
       transform: 'scale(1.1)',
+    },
+  },
+  card: ({ color }) => ({
+    minWidth: 256,
+    borderRadius: 16,
+    boxShadow: 'none',
+    '&:hover': {
       boxShadow: `0 6px 12px 0 ${Color(color)
         .rotate(-12)
         .darken(0.2)
@@ -50,15 +56,17 @@ const useStyles = makeStyles(() => ({
 const CustomCard = ({ classes, image, title, subtitle }) => {
   const mediaStyles = useFourThreeCardMediaStyles();
   return (
-    <Card className={classes.card}>
-      <CardMedia classes={mediaStyles} image={image} />
-      <CardContent className={classes.content}>
-        <Typography className={classes.title} variant={'h2'}>
-          {title}
-        </Typography>
-        <Typography className={classes.subtitle}>{subtitle}</Typography>
-      </CardContent>
-    </Card>
+    <CardActionArea className={classes.actionArea}>
+      <Card className={classes.card}>
+        <CardMedia classes={mediaStyles} image={image} />
+        <CardContent className={classes.content}>
+          <Typography className={classes.title} variant={'h2'}>
+            {title}
+          </Typography>
+          <Typography className={classes.subtitle}>{subtitle}</Typography>
+        </CardContent>
+      </Card>
+    </CardActionArea>
   );
 };
 
@@ -111,7 +119,9 @@ const SolidGameCardDemo = () => {
               classes={styles3}
               title={'Overwatch'}
               subtitle={'What are you waiting?'}
-              image={'https://images5.alphacoders.com/690/thumb-1920-690653.png'}
+              image={
+                'https://images5.alphacoders.com/690/thumb-1920-690653.png'
+              }
             />
           </Grid>
         </Grid>
