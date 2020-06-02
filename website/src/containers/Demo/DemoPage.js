@@ -2,13 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createMuiTheme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
-import molecules from 'components/molecules';
 import organisms from 'components/organisms';
 import ComponentHeading from 'components/organisms/ComponentHeading';
 import DemoSourceDrawer from './DemoSourceDrawer';
 import MetadataContext from './context';
 
-const { GridShowcase, ShowcaseWidget } = molecules;
 const { DefaultSection, CustomComponentGrid } = organisms;
 
 const baseTheme = createMuiTheme();
