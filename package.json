@@ -55,7 +55,7 @@
     "@babel/core": "^7.5.5",
     "@babel/plugin-transform-object-assign": "^7.8.3",
     "@testing-library/jest-dom": "^4.2.3",
-    "@testing-library/react": "^9.3.1",
+    "@testing-library/react": "^10.0.5",
     "@testing-library/react-hooks": "^3.2.1",
     "@types/debounce": "^1.2.0",
     "@types/deepmerge": "^2.2.0",
