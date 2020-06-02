@@ -131,7 +131,7 @@ SolidGameCardDemo.metadata = {
     bgcolor: '#f7f7fe',
   }, // props that applied to Box in grid view
   size: 'huge', // can be 'large' | 'huge' for grid size
-  files: [{ pkg: 'mui-components', path: 'card/solidGame/SolidGameCard.js' }],
+  files: [],
 };
 // hide-end
 
