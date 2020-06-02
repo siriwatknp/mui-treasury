@@ -11,7 +11,7 @@ import { useMdThemeInfoStyles } from '@mui-treasury/styles/info/mdTheme';
 
 const MdThemeInfoStyle = () => {
   return (
-    <Column gutter={1.5} bgcolor={'#fff'}>
+    <Column gutter={1.5} bgcolor={'#fff'} minWidth={200}>
       <Info useStyles={useMdThemeInfoStyles}>
         <InfoTitle>Old Town Road</InfoTitle>
         <InfoSubtitle>Gozilla</InfoSubtitle>

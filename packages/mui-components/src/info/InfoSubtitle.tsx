@@ -8,7 +8,6 @@ const InfoSubtitle = ({ className, children, ...props }: TypographyProps) => {
   return (
     <Typography
       className={cx('InfoSubtitle', styles.subtitle, className)}
-      variant={'subtitle1'}
       {...props}
     >
       {children}

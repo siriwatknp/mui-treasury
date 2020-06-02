@@ -33,7 +33,7 @@ const SmThemeInfoStyle = () => {
 // hide-start
 SmThemeInfoStyle.metadata = {
   title: 'Sm Theme',
-  description: 'total height ~ [2.5rem, 4.35rem]',
+  description: 'total height ~ [2.5rem, 3.8rem]',
   path: 'styles/info/smTheme',
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
