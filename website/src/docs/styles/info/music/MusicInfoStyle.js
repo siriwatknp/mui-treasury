@@ -14,13 +14,7 @@ const MusicInfoStyle = () => {
   return (
     <>
       <NoSsr>
-        <GoogleFontLoader
-          fonts={[
-            {
-              font: 'Questrial',
-            },
-          ]}
-        />
+        <GoogleFontLoader fonts={[{ font: 'Questrial' }]} />
       </NoSsr>
       <Column gutter={2}>
         <Info useStyles={useMusicInfoStyles}>
