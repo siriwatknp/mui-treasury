@@ -23,8 +23,8 @@ const GalaxyInfoStyle = () => {
       </NoSsr>
       <Column gutter={2}>
         <Info useStyles={useGalaxyInfoStyles}>
-          <InfoTitle>Galaxy</InfoTitle>
-          <InfoSubtitle>Buds 2019</InfoSubtitle>
+          <InfoSubtitle>Galaxy</InfoSubtitle>
+          <InfoTitle>Buds 2019</InfoTitle>
           <InfoCaption>Perfect for everyone</InfoCaption>
         </Info>
       </Column>
