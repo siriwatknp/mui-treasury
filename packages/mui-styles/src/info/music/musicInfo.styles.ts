@@ -8,7 +8,6 @@ const family = "'Questrial', sans-serif"
 export type MusicThemeInfoClassKey = keyof ReturnType<typeof musicThemeInfoStyles>
 
 const musicThemeInfoStyles = ({ palette }: Theme) => ({
-  root: {},
   title: {
     fontFamily: family,
     fontSize: titleFontSize,

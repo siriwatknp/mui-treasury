@@ -3,7 +3,7 @@ import cx from 'clsx';
 import Item, { ItemProps } from '../flex/Item';
 
 type InfoStyles = Partial<
-  Record<'root' | 'title' | 'subtitle' | 'caption', string>
+  Record<'title' | 'subtitle' | 'caption', string>
 >;
 
 const StyleContext = React.createContext<InfoStyles>({});
@@ -24,7 +24,7 @@ const Info = ({
 }: InfoProps) => {
   const styles = useStyles();
   return (
-    <Item className={cx('Info', styles.root, className)} {...props}>
+    <Item className={cx('Info', className)} {...props}>
       <StyleProvider value={styles}>{children}</StyleProvider>
     </Item>
   );

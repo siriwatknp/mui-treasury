@@ -8,7 +8,6 @@ const captionMarginBottom = '0.25rem'
 export type LgThemeInfoClassKey = keyof ReturnType<typeof lgThemeInfoStyles>
 
 const lgThemeInfoStyles = ({ palette }: Theme) => ({
-  root: {},
   title: {
     fontWeight: 500 as const,
     fontSize: titleFontSize,

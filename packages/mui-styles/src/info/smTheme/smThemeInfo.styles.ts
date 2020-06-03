@@ -8,7 +8,6 @@ const captionMarginBottom = '0.25rem'
 export type SmThemeInfoClassKey = keyof ReturnType<typeof smThemeInfoStyles>
 
 const smThemeInfoStyles = ({ palette }: Theme) => ({
-  root: {},
   title: {
     fontSize: titleFontSize,
     lineHeight: 1.4,

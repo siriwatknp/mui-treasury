@@ -8,7 +8,6 @@ const captionMarginBottom = '0.125rem'
 export type XsThemeInfoClassKey = keyof ReturnType<typeof xsThemeInfoStyles>
 
 const xsThemeInfoStyles = ({ palette }: Theme) => ({
-  root: {},
   title: {
     fontSize: titleFontSize,
     lineHeight: 1.4,

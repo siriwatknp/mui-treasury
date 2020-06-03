@@ -6,7 +6,6 @@ const family = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica
 export type D01ThemeInfoClassKey = keyof ReturnType<typeof d01ThemeInfoStyles>
 
 const d01ThemeInfoStyles = () => ({
-  root: {},
   title: {
     fontFamily: family,
     color: 'rgba(255, 255, 255, 0.87)',

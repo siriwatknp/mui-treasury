@@ -8,7 +8,6 @@ const captionMarginBottom = '0.25rem'
 export type MdThemeInfoClassKey = keyof ReturnType<typeof mdThemeInfoStyles>
 
 const mdThemeInfoStyles = ({ palette }: Theme) => ({
-  root: {},
   title: {
     fontWeight: 500 as const,
     fontSize: titleFontSize,
