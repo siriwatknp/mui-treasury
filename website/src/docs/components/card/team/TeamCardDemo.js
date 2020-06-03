@@ -27,10 +27,11 @@ const useStyles = makeStyles(() => ({
       backgroundColor: '#d9daf1',
       borderRadius: '1rem',
       zIndex: 0,
+      bottom: 0,
     },
     '&:hover': {
       '&:before': {
-        transform: 'translateY(6px)',
+        bottom: -6
       },
       '& $card': {
         boxShadow: '-12px 12px 64px 0 #bcc3d6',
