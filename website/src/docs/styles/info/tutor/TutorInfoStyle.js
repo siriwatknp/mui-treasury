@@ -3,36 +3,36 @@ import NoSsr from '@material-ui/core/NoSsr';
 import GoogleFontLoader from 'react-google-font-loader';
 import { Column } from '@mui-treasury/components/flex';
 import { Info, InfoSubtitle, InfoTitle } from '@mui-treasury/components/info';
-import { useApexInfoStyles } from '@mui-treasury/styles/info/apex';
+import { useTutorInfoStyles } from '@mui-treasury/styles/info/tutor';
 
-const ApexInfoStyle = () => {
+const TutorInfoStyle = () => {
   return (
     <>
       <NoSsr>
-        <GoogleFontLoader fonts={[{ font: 'Ubuntu', weights: [400, 700] }]} />
+        <GoogleFontLoader fonts={[{ font: 'Open Sans', weights: [500, 700] }]} />
       </NoSsr>
       <Column gutter={2}>
-        <Info useStyles={useApexInfoStyles}>
-          <InfoTitle>APEX Legends: Assemble!</InfoTitle>
-          <InfoSubtitle>Created by siriwatknp</InfoSubtitle>
+        <Info useStyles={useTutorInfoStyles}>
+          <InfoTitle>Kenny Foster</InfoTitle>
+          <InfoSubtitle>@fosterlive</InfoSubtitle>
         </Info>
       </Column>
     </>
   )
 };
 // hide-start
-ApexInfoStyle.metadata = {
-  title: 'Apex',
-  path: 'styles/info/apex',
+TutorInfoStyle.metadata = {
+  title: 'Tutor',
+  path: 'styles/info/tutor',
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Wed Jun 03 2020',
   frameProps: {}, // props that applied to Box in grid view
   size: 'medium', // can be 'large' | 'huge' for grid size
   files: [
-    { pkg: 'mui-styles', path: 'info/apex/apexInfo.styles.ts'},
+    { pkg: 'mui-styles', path: 'info/tutor/tutorInfo.styles.ts'},
   ],
 };
 // hide-end
 
-export default ApexInfoStyle;
+export default TutorInfoStyle;
