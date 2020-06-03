@@ -5,9 +5,9 @@ const subtitleFontSize = '0.625rem'
 const captionFontSize = '0.625rem'
 const captionMarginBottom = '0.125rem'
 
-export type XsThemeInfoClassKey = keyof ReturnType<typeof xsThemeInfoStyles>
+export type ThemeXsInfoClassKey = keyof ReturnType<typeof themeXsInfoStyles>
 
-const xsThemeInfoStyles = ({ palette }: Theme) => ({
+const themeXsInfoStyles = ({ palette }: Theme) => ({
   title: {
     fontSize: titleFontSize,
     lineHeight: 1.4,
@@ -27,4 +27,4 @@ const xsThemeInfoStyles = ({ palette }: Theme) => ({
   }
 })
 
-export default xsThemeInfoStyles
+export default themeXsInfoStyles

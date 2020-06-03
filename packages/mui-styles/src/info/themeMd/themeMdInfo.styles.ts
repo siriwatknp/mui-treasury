@@ -1,22 +1,22 @@
 import { Theme } from '@material-ui/core/styles';
 
-const titleFontSize = '1.25rem'
-const subtitleFontSize = '1.125rem'
+const titleFontSize = '1rem'
+const subtitleFontSize = '1rem'
 const captionFontSize = '0.875rem'
 const captionMarginBottom = '0.25rem'
 
-export type LgThemeInfoClassKey = keyof ReturnType<typeof lgThemeInfoStyles>
+export type ThemeMdInfoClassKey = keyof ReturnType<typeof themeMdInfoStyles>
 
-const lgThemeInfoStyles = ({ palette }: Theme) => ({
+const themeMdInfoStyles = ({ palette }: Theme) => ({
   title: {
     fontWeight: 500 as const,
     fontSize: titleFontSize,
-    lineHeight: 1.66,
+    lineHeight: 1.4,
   },
   subtitle: {
     color: 'rgba(0,0,0,0.72)',
     fontSize: subtitleFontSize,
-    lineHeight: 1.7
+    lineHeight: 1.6
   },
   caption: {
     color: palette.text.secondary,
@@ -28,4 +28,4 @@ const lgThemeInfoStyles = ({ palette }: Theme) => ({
   }
 })
 
-export default lgThemeInfoStyles
+export default themeMdInfoStyles

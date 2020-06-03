@@ -5,9 +5,9 @@ const subtitleFontSize = '0.8rem'
 const captionFontSize = '0.75rem'
 const captionMarginBottom = '0.25rem'
 
-export type SmThemeInfoClassKey = keyof ReturnType<typeof smThemeInfoStyles>
+export type ThemeSmInfoClassKey = keyof ReturnType<typeof themeSmInfoStyles>
 
-const smThemeInfoStyles = ({ palette }: Theme) => ({
+const themeSmInfoStyles = ({ palette }: Theme) => ({
   title: {
     fontSize: titleFontSize,
     lineHeight: 1.4,
@@ -27,4 +27,4 @@ const smThemeInfoStyles = ({ palette }: Theme) => ({
   }
 })
 
-export default smThemeInfoStyles
+export default themeSmInfoStyles

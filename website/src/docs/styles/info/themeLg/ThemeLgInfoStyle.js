@@ -7,19 +7,19 @@ import {
   InfoCaption,
 } from '@mui-treasury/components/info';
 import { Column, Item } from '@mui-treasury/components/flex';
-import { useLgThemeInfoStyles } from '@mui-treasury/styles/info/lgTheme';
+import { useThemeLgInfoStyles } from '@mui-treasury/styles/info/themeLg';
 
-const LgThemeInfoStyle = () => {
+const ThemeLgInfoStyle = () => {
   return (
     <Column gutter={1.5} bgcolor={'#fff'} minWidth={240}>
-      <Info useStyles={useLgThemeInfoStyles}>
+      <Info useStyles={useThemeLgInfoStyles}>
         <InfoTitle>#BlackOutTuesday</InfoTitle>
         <InfoSubtitle>1.5M Tweets</InfoSubtitle>
       </Info>
       <Item>
         <Divider />
       </Item>
-      <Info useStyles={useLgThemeInfoStyles}>
+      <Info useStyles={useThemeLgInfoStyles}>
         <InfoCaption>Trending in Thailand</InfoCaption>
         <InfoTitle>#BlackOutTuesday</InfoTitle>
         <InfoSubtitle>1.5M Tweets</InfoSubtitle>
@@ -27,7 +27,7 @@ const LgThemeInfoStyle = () => {
       <Item>
         <Divider />
       </Item>
-      <Info useStyles={useLgThemeInfoStyles}>
+      <Info useStyles={useThemeLgInfoStyles}>
         <InfoTitle>#BlackOutTuesday</InfoTitle>
         <InfoSubtitle>1.5M Tweets</InfoSubtitle>
         <InfoCaption>Trending in Thailand</InfoCaption>
@@ -36,17 +36,17 @@ const LgThemeInfoStyle = () => {
   );
 };
 // hide-start
-LgThemeInfoStyle.metadata = {
-  title: 'Lg Theme',
+ThemeLgInfoStyle.metadata = {
+  title: 'Theme Lg',
   description: 'total height ~ [4rem, 5.5rem]',
-  path: 'styles/info/lgTheme',
+  path: 'styles/info/themeLg',
   renderedWithoutIframe: false,
   creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Wed Jun 03 2020',
   frameProps: {}, // props that applied to Box in grid view
   size: 'medium', // can be 'large' | 'huge' for grid size
-  files: [{ pkg: 'mui-styles', path: 'info/lgTheme/lgThemeInfo.styles.ts' }],
+  files: [{ pkg: 'mui-styles', path: 'info/themeLg/themeLgInfo.styles.ts' }],
 };
 // hide-end
 
-export default LgThemeInfoStyle;
+export default ThemeLgInfoStyle;
