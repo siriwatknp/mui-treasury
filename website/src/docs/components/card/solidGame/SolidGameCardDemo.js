@@ -74,6 +74,7 @@ const SolidGameCardDemo = () => {
   const styles = useStyles({ color: '#203f52' });
   const styles2 = useStyles({ color: '#4d137f' });
   const styles3 = useStyles({ color: '#ff9900' });
+  const styles4 = useStyles({ color: '#34241e' });
   return (
     <div>
       {/*// hide-start*/}
@@ -121,6 +122,15 @@ const SolidGameCardDemo = () => {
               subtitle={'What are you waiting?'}
               image={
                 'https://images5.alphacoders.com/690/thumb-1920-690653.png'
+              }
+            />
+          </Grid><Grid item>
+            <CustomCard
+              classes={styles4}
+              title={'PUBG'}
+              subtitle={'Are you ready?'}
+              image={
+                'https://www.itp.net/public/styles/full_img_sml/public/images/2019/05/27/44485-pubg_base1.jpg?itok=EF911Xan'
               }
             />
           </Grid>
