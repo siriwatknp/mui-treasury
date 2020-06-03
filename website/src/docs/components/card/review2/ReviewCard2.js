@@ -109,7 +109,7 @@ const ReviewCard2 = () => {
       <CardMedia
         className={styles.media}
         image={
-          'https://www.brighttv.co.th/wp-content/uploads/2018/04/29739332_996623360491913_2322116227981377536_n.jpg'
+          'https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
         }
       />
     </Card>

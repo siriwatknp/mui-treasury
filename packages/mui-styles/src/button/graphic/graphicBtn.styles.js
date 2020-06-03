@@ -15,7 +15,6 @@ export default ({ palette }) => {
       boxShadow: 'none',
       backgroundColor: palette.grey[200],
       '&:focus': {
-        transform: 'translateY(-1px)',
         boxShadow: initialShadow,
       },
       '&:active': {
@@ -27,7 +26,6 @@ export default ({ palette }) => {
       transition: '0.2s',
       background: `linear-gradient(to top, ${palette.primary.main}, #7fb8d0)`,
       boxShadow: initialShadow,
-      transform: 'translateY(-1px)',
       '& $label': {
         textTransform: 'uppercase',
         letterSpacing: '0.5px',

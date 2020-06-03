@@ -12,6 +12,14 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import { useFourThreeCardMediaStyles } from '@mui-treasury/styles/cardMedia/fourThree';
 
+const useGridStyles = makeStyles(({ breakpoints }) => ({
+  root: {
+    [breakpoints.up('md')]: {
+      justifyContent: 'center'
+    }
+  }
+}))
+
 const useStyles = makeStyles(() => ({
   actionArea: {
     borderRadius: 16,
@@ -71,6 +79,7 @@ const CustomCard = ({ classes, image, title, subtitle }) => {
 };
 
 const SolidGameCardDemo = () => {
+  const gridStyles = useGridStyles();
   const styles = useStyles({ color: '#203f52' });
   const styles2 = useStyles({ color: '#4d137f' });
   const styles3 = useStyles({ color: '#ff9900' });
@@ -94,7 +103,7 @@ const SolidGameCardDemo = () => {
       </NoSsr>
       {/*// hide-end*/}
       <Box maxWidth={'calc(100vw - 32px)'} m={-5} p={5} overflow={'scroll'}>
-        <Grid container justify={'center'} spacing={4} wrap={'nowrap'}>
+        <Grid classes={gridStyles} container spacing={4} wrap={'nowrap'}>
           <Grid item>
             <CustomCard
               classes={styles}

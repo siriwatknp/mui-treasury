@@ -1,7 +1,7 @@
 import { Theme } from '@material-ui/core';
 
 const titleFontSize = '0.875rem';
-const subtitleFontSize = '0.875rem';
+const subtitleFontSize = '0.75rem';
 const family = "'Ubuntu', sans-serif";
 
 export type ApexInfoClassKey = keyof ReturnType<
