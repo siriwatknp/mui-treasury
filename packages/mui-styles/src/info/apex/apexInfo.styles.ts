@@ -4,11 +4,11 @@ const titleFontSize = '0.875rem';
 const subtitleFontSize = '0.875rem';
 const family = "'Ubuntu', sans-serif";
 
-export type ApexThemeInfoClassKey = keyof ReturnType<
-  typeof apexThemeInfoStyles
+export type ApexInfoClassKey = keyof ReturnType<
+  typeof apexInfoStyles
 >;
 
-const apexThemeInfoStyles = ({ palette }: Theme) => ({
+const apexInfoStyles = ({ palette }: Theme) => ({
   title: {
     fontFamily: family,
     color: '#4d4b5f',
@@ -26,4 +26,4 @@ const apexThemeInfoStyles = ({ palette }: Theme) => ({
   },
 });
 
-export default apexThemeInfoStyles;
+export default apexInfoStyles;

@@ -5,9 +5,9 @@ const subtitleFontSize = '0.875rem'
 const captionFontSize = '0.75rem'
 const family = "'Questrial', sans-serif"
 
-export type MusicThemeInfoClassKey = keyof ReturnType<typeof musicThemeInfoStyles>
+export type MusicInfoClassKey = keyof ReturnType<typeof musicInfoStyles>
 
-const musicThemeInfoStyles = ({ palette }: Theme) => ({
+const musicInfoStyles = ({ palette }: Theme) => ({
   title: {
     fontFamily: family,
     fontSize: titleFontSize,
@@ -27,4 +27,4 @@ const musicThemeInfoStyles = ({ palette }: Theme) => ({
   }
 })
 
-export default musicThemeInfoStyles
+export default musicInfoStyles

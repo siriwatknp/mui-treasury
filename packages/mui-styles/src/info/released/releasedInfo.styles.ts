@@ -2,9 +2,9 @@ const titleFontSize = '0.875rem'
 const subtitleFontSize = '0.75rem'
 const family = "'DM Sans', sans-serif"
 
-export type ReleasedThemeInfoClassKey = keyof ReturnType<typeof releasedThemeInfoStyles>
+export type ReleasedInfoClassKey = keyof ReturnType<typeof releasedInfoStyles>
 
-const releasedThemeInfoStyles = () => ({
+const releasedInfoStyles = () => ({
   title: {
     fontFamily: family,
     fontSize: titleFontSize,
@@ -19,4 +19,4 @@ const releasedThemeInfoStyles = () => ({
   },
 })
 
-export default releasedThemeInfoStyles
+export default releasedInfoStyles

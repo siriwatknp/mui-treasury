@@ -1,9 +1,9 @@
 import { ClassNameMap } from '@material-ui/styles';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import galaxyInfoStyles, { GalaxyThemeInfoClassKey } from './galaxyInfo.styles';
+import galaxyInfoStyles, { GalaxyInfoClassKey } from './galaxyInfo.styles';
 
 const useGalaxyInfoStyles: () => ClassNameMap<
-  GalaxyThemeInfoClassKey
+  GalaxyInfoClassKey
 > = makeStyles(galaxyInfoStyles, { name: 'GalaxyInfo' });
 
 export { galaxyInfoStyles, useGalaxyInfoStyles };

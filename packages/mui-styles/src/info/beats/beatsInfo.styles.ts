@@ -3,9 +3,9 @@ const subtitleFontSize = '1.25rem'
 const captionFontSize = '1rem'
 const family = "'Spartan', sans-serif"
 
-export type BeatsThemeInfoClassKey = keyof ReturnType<typeof beatsThemeInfoStyles>
+export type BeatsInfoClassKey = keyof ReturnType<typeof beatsInfoStyles>
 
-const beatsThemeInfoStyles = () => ({
+const beatsInfoStyles = () => ({
   title: {
     fontFamily: family,
     fontSize: titleFontSize,
@@ -29,4 +29,4 @@ const beatsThemeInfoStyles = () => ({
   }
 })
 
-export default beatsThemeInfoStyles
+export default beatsInfoStyles

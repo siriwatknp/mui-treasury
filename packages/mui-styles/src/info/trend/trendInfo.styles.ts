@@ -4,11 +4,11 @@ const titleFontSize = '0.875rem';
 const subtitleFontSize = '0.75rem';
 const family = "'Manrope', sans-serif";
 
-export type TrendThemeInfoClassKey = keyof ReturnType<
-  typeof trendThemeInfoStyles
+export type TrendInfoClassKey = keyof ReturnType<
+  typeof trendInfoStyles
 >;
 
-const trendThemeInfoStyles = ({ palette }: Theme) => ({
+const trendInfoStyles = ({ palette }: Theme) => ({
   title: {
     fontFamily: family,
     fontSize: titleFontSize,
@@ -27,4 +27,4 @@ const trendThemeInfoStyles = ({ palette }: Theme) => ({
   },
 });
 
-export default trendThemeInfoStyles;
+export default trendInfoStyles;

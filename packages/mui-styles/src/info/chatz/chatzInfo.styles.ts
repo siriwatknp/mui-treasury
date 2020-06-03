@@ -5,9 +5,9 @@ const subtitleFontSize = '0.875rem'
 const captionFontSize = '0.75rem'
 const family = "'Maven Pro', sans-serif"
 
-export type ChatzThemeInfoClassKey = keyof ReturnType<typeof chatzThemeInfoStyles>
+export type ChatzInfoClassKey = keyof ReturnType<typeof chatzInfoStyles>
 
-const chatzThemeInfoStyles = ({ palette }: Theme) => ({
+const chatzInfoStyles = ({ palette }: Theme) => ({
   title: {
     fontFamily: family,
     fontSize: titleFontSize,
@@ -29,4 +29,4 @@ const chatzThemeInfoStyles = ({ palette }: Theme) => ({
   }
 })
 
-export default chatzThemeInfoStyles
+export default chatzInfoStyles

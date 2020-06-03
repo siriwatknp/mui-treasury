@@ -3,11 +3,11 @@ const subtitleFontSize = '0.75rem';
 const captionFontSize = '0.875rem';
 const family = "'Poppins', sans-serif";
 
-export type PopularThemeInfoClassKey = keyof ReturnType<
-typeof popularThemeInfoStyles
+export type PopularInfoClassKey = keyof ReturnType<
+typeof popularInfoStyles
 >;
 
-const popularThemeInfoStyles = () => ({
+const popularInfoStyles = () => ({
   title: {
     fontFamily: family,
     fontSize: titleFontSize,
@@ -34,4 +34,4 @@ const popularThemeInfoStyles = () => ({
   },
 });
 
-export default popularThemeInfoStyles;
+export default popularInfoStyles;

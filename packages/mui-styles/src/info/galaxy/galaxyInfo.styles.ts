@@ -4,16 +4,16 @@ const captionFontSize = '0.875rem';
 const subtitleFamily = "'Spartan', sans-serif";
 const family = "'Montserrat', sans-serif";
 
-export type GalaxyThemeInfoClassKey = keyof ReturnType<
-  typeof galaxyThemeInfoStyles
+export type GalaxyInfoClassKey = keyof ReturnType<
+  typeof galaxyInfoStyles
 >;
 
-const galaxyThemeInfoStyles = () => ({
+const galaxyInfoStyles = () => ({
   title: {
     fontFamily: family,
     color: '#fff',
     fontSize: titleFontSize,
-    fontWeight: 'bold',
+    fontWeight: 'bold' as const,
     lineHeight: 1.2,
   },
   subtitle: {
@@ -35,4 +35,4 @@ const galaxyThemeInfoStyles = () => ({
   },
 });
 
-export default galaxyThemeInfoStyles;
+export default galaxyInfoStyles;

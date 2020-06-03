@@ -1,11 +1,11 @@
 import { ClassNameMap } from '@material-ui/styles';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import popularInfoStyles, {
-  PopularThemeInfoClassKey,
+  PopularInfoClassKey,
 } from './popularInfo.styles';
 
 const usePopularInfoStyles: () => ClassNameMap<
-  PopularThemeInfoClassKey
+  PopularInfoClassKey
 > = makeStyles(popularInfoStyles, { name: 'PopularInfo' });
 
 export { popularInfoStyles, usePopularInfoStyles };

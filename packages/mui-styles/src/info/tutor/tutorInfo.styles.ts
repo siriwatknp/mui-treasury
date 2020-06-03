@@ -2,11 +2,11 @@ const titleFontSize = '1rem';
 const subtitleFontSize = '0.75rem';
 const family = "'Open Sans', sans-serif";
 
-export type TutorThemeInfoClassKey = keyof ReturnType<
-  typeof tutorThemeInfoStyles
+export type TutorInfoClassKey = keyof ReturnType<
+  typeof tutorInfoStyles
 >;
 
-const tutorThemeInfoStyles = () => ({
+const tutorInfoStyles = () => ({
   title: {
     fontFamily: family,
     color: '#4d4b5f',
@@ -24,4 +24,4 @@ const tutorThemeInfoStyles = () => ({
   },
 });
 
-export default tutorThemeInfoStyles;
+export default tutorInfoStyles;

@@ -4,11 +4,11 @@ const titleFontSize = '1rem';
 const subtitleFontSize = '0.875rem';
 const family = "'Sen', sans-serif";
 
-export type NewsThemeInfoClassKey = keyof ReturnType<
-  typeof newsThemeInfoStyles
+export type NewsInfoClassKey = keyof ReturnType<
+  typeof newsInfoStyles
 >;
 
-const newsThemeInfoStyles = ({ palette }: Theme) => ({
+const newsInfoStyles = ({ palette }: Theme) => ({
   title: {
     fontFamily: family,
     fontSize: titleFontSize,
@@ -22,4 +22,4 @@ const newsThemeInfoStyles = ({ palette }: Theme) => ({
   },
 });
 
-export default newsThemeInfoStyles;
+export default newsInfoStyles;

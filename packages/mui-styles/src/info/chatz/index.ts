@@ -1,9 +1,9 @@
 import { ClassNameMap } from '@material-ui/styles';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import chatzInfoStyles, { ChatzThemeInfoClassKey } from './chatzInfo.styles';
+import chatzInfoStyles, { ChatzInfoClassKey } from './chatzInfo.styles';
 
 const useChatzInfoStyles: () => ClassNameMap<
-  ChatzThemeInfoClassKey
+  ChatzInfoClassKey
 > = makeStyles(chatzInfoStyles, { name: 'ChatzInfo' });
 
 export { chatzInfoStyles, useChatzInfoStyles };
