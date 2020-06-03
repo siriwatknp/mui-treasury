@@ -22,6 +22,7 @@ import { customComponents as radioStyles } from '../../docs/styles/radio';
 import { customComponents as gutterStyles } from '../../docs/styles/gutter';
 import { customComponents as iconButtonStyles } from '../../docs/styles/iconButton';
 import { customComponents as avatarStyles } from '../../docs/styles/avatar';
+import { customComponents as infoStyles } from '../../docs/styles/info';
 
 export default [
   {
@@ -135,6 +136,12 @@ export default [
         label: 'Collapsible Menu',
         total: collapsibleMenuStyles.length,
         to: '/styles/collapsible-menu',
+      },
+      {
+        key: 'info',
+        label: 'Info',
+        total: infoStyles.length,
+        to: '/styles/info',
       },
       {
         key: 'nested-menu',
