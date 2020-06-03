@@ -1,5 +1,5 @@
 export default () => ({
-  root: ({ bgColor = 'rgba(0, 0, 0, 0.08)' }) => ({
+  root: ({ bgColor = 'rgba(0, 0, 0, 0.08)', bgPosition = 'center' }) => ({
     position: 'absolute',
     width: '100%',
     height: '100%',
@@ -7,5 +7,6 @@ export default () => ({
     left: 0,
     zIndex: 0,
     backgroundColor: bgColor,
+    backgroundPosition: bgPosition,
   }),
 });
