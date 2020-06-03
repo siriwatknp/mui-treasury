@@ -1,7 +1,7 @@
 {
   "name": "@mui-treasury/styles",
   "module": "./esm/index.js",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "types": "./index.d.ts",
   "keywords": [
@@ -21,7 +21,7 @@
   },
   "homepage": "https://mui-treasury.com/components/card",
   "dependencies": {
-    "@mui-treasury/utils": "^0.4.0",
+    "@mui-treasury/utils": "^0.4.1",
     "color": "^3.1.2"
   },
   "peerDependencies": {
