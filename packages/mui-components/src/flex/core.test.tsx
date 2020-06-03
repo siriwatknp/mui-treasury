@@ -19,6 +19,7 @@ describe('Flex', () => {
       ['top', { alignSelf: 'flex-start' }],
       ['bottom', { alignSelf: 'flex-end' }],
       ['middle', { alignSelf: 'center' }],
+      ['middle-right', { alignSelf: 'center', marginLeft: 'auto' }],
       [
         'center',
         { alignSelf: 'center', marginLeft: 'auto', marginRight: 'auto' },
@@ -78,6 +79,7 @@ describe('Flex', () => {
       ['top', undefined],
       ['bottom', { marginTop: 'auto' }],
       ['middle', { marginTop: 'auto', marginBottom: 'auto' }],
+      ['middle-right', { alignSelf: 'flex-end', marginTop: 'auto', marginBottom: 'auto' }],
       [
         'center',
         { alignSelf: 'center', marginTop: 'auto', marginBottom: 'auto' },

@@ -14,6 +14,7 @@ export type Position =
   | 'top'
   | 'bottom'
   | 'middle'
+  | 'middle-right'
   | 'center'
   | string;
 
@@ -23,6 +24,7 @@ export const positionInsideRow = (position: Position) => {
   if (position === 'top') return { alignSelf: 'flex-start' };
   if (position === 'bottom') return { alignSelf: 'flex-end' };
   if (position === 'middle') return { alignSelf: 'center' };
+  if (position === 'middle-right') return { alignSelf: 'center', marginLeft: 'auto' };
   if (position === 'center')
     return { alignSelf: 'center', marginLeft: 'auto', marginRight: 'auto' };
 };
@@ -33,6 +35,7 @@ export const positionInsideColumn = (position: Position) => {
   if (position === 'top') return undefined;
   if (position === 'bottom') return { marginTop: 'auto' };
   if (position === 'middle') return { marginTop: 'auto', marginBottom: 'auto' };
+  if (position === 'middle-right') return { alignSelf: 'flex-end', marginTop: 'auto', marginBottom: 'auto' };
   if (position === 'center')
     return { alignSelf: 'center', marginTop: 'auto', marginBottom: 'auto' };
 };

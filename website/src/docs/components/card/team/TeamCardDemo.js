@@ -86,7 +86,7 @@ const CustomCard = ({ thumbnail, title, subtitle, description, joined }) => {
         >
           {description}
         </Box>
-        <Row gutter={2} alignItems={'center'} position={'bottom'}>
+        <Row gutter={2} position={'bottom'}>
           <Item>
             <AvatarGroup max={4} classes={{ avatar: styles.avatar }}>
               {new Array(5).fill(0).map((_, index) => (
@@ -99,7 +99,7 @@ const CustomCard = ({ thumbnail, title, subtitle, description, joined }) => {
               ))}
             </AvatarGroup>
           </Item>
-          <Item position={'right'}>
+          <Item position={'middle-right'}>
             <Button
               className={styles.join}
               classes={btnStyles}
