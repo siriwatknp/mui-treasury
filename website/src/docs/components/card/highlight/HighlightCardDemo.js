@@ -17,13 +17,13 @@ const useGridStyles = makeStyles(({ breakpoints }) => ({
     [breakpoints.only('xs')]: {
       '& > *:not(:first-child)': {
         paddingLeft: 0,
-      }
+      },
     },
     [breakpoints.up('sm')]: {
-      justifyContent: 'center'
-    }
-  }
-}))
+      justifyContent: 'center',
+    },
+  },
+}));
 
 const useStyles = makeStyles(({ palette }) => ({
   color: ({ color }) => ({
@@ -66,14 +66,27 @@ const useStyles = makeStyles(({ palette }) => ({
     position: 'relative',
     zIndex: 1,
     borderRadius: '1rem',
-    background: `linear-gradient(to top, ${color}, ${Color(color)
-      .rotate(24)
-      .lighten(0.12)})`,
     boxShadow: `0 6px 16px 0 ${Color(color).fade(0.5)}`,
+    '&:before': {
+      content: '""',
+      display: 'block',
+      position: 'absolute',
+      left: 0,
+      top: 0,
+      zIndex: 0,
+      width: '100%',
+      height: '100%',
+      clipPath:
+        'polygon(0% 100%, 0% 35%, 0.3% 33%, 1% 31%, 1.5% 30%, 2% 29%, 2.5% 28.4%, 3% 27.9%, 3.3% 27.6%, 5% 27%,95% 0%,100% 0%, 100% 100%)',
+      borderRadius: '1rem',
+      background: `linear-gradient(to top, ${color}, ${Color(color)
+        .rotate(24)
+        .lighten(0.12)})`,
+    }
   }),
   title: {
     fontFamily: 'Fjalla One',
-    fontSize: '1.5rem',
+    fontSize: '1.25rem',
     color: '#fff',
     margin: 0,
   },
@@ -104,29 +117,24 @@ const CustomCard = ({ styles, cover, logo, title, brand, date }) => {
   const mediaStyles = useCoverCardMediaStyles();
   return (
     <Box className={cx(styles.root, styles.color)} pt={20}>
-      <CardMedia
-        image={cover}
-        className={styles.cover}
-        classes={mediaStyles}
-      />
+      <CardMedia image={cover} className={styles.cover} classes={mediaStyles} />
       <Box className={styles.content} p={2}>
-        <Row p={0} gutter={2}>
-          <Avatar
-            className={styles.logo}
-            src={logo}
-          />
-          <Item position={'bottom'}>
-            <h2 className={styles.title}>{title}</h2>
-          </Item>
-        </Row>
-        <Row mt={4} alignItems={'center'}>
-          <Item>
-            <div className={styles.team}>{brand}</div>
-          </Item>
-          <Item position={'right'}>
-            <div className={styles.date}>{date}</div>
-          </Item>
-        </Row>
+        <Box position={'relative'} zIndex={1}>
+          <Row p={0} gutter={2}>
+            <Avatar className={styles.logo} src={logo} />
+            <Item position={'bottom'}>
+              <h2 className={styles.title}>{title}</h2>
+            </Item>
+          </Row>
+          <Row mt={4} alignItems={'center'}>
+            <Item>
+              <div className={styles.team}>{brand}</div>
+            </Item>
+            <Item position={'right'}>
+              <div className={styles.date}>{date}</div>
+            </Item>
+          </Row>
+        </Box>
       </Box>
     </Box>
   );
@@ -135,7 +143,7 @@ const CustomCard = ({ styles, cover, logo, title, brand, date }) => {
 const HighlightCardDemo = () => {
   const styles1 = useStyles({ color: '#fc7944' });
   const styles2 = useStyles({ color: '#5357ce' });
-  const gridStyles = useGridStyles()
+  const gridStyles = useGridStyles();
   return (
     <>
       <NoSsr>
@@ -149,7 +157,9 @@ const HighlightCardDemo = () => {
             styles={styles1}
             brand={'Overwatch Official'}
             date={'02.04.2020'}
-            cover={'https://cdn.vox-cdn.com/thumbor/C6_-SDnnoFdS19XRH4XvAYN1BT8=/148x0:1768x1080/1400x1400/filters:focal(148x0:1768x1080):format(jpeg)/cdn.vox-cdn.com/uploads/chorus_image/image/49641465/tracer_overwatch.0.0.jpg'}
+            cover={
+              'https://cdn.vox-cdn.com/thumbor/C6_-SDnnoFdS19XRH4XvAYN1BT8=/148x0:1768x1080/1400x1400/filters:focal(148x0:1768x1080):format(jpeg)/cdn.vox-cdn.com/uploads/chorus_image/image/49641465/tracer_overwatch.0.0.jpg'
+            }
             logo={'https://d3fa68hw0m2vcc.cloudfront.net/bf4/156511609.jpeg'}
             title={
               <>
@@ -164,8 +174,12 @@ const HighlightCardDemo = () => {
             styles={styles2}
             brand={'League of Legends Official'}
             date={'02.04.2020'}
-            cover={'https://www.pcclean.io/wp-content/uploads/2019/04/559308.jpg'}
-            logo={'https://vignette.wikia.nocookie.net/youtube/images/7/77/LeagueOfLegends.jpg/revision/latest?cb=20180718040905'}
+            cover={
+              'https://www.pcclean.io/wp-content/uploads/2019/04/559308.jpg'
+            }
+            logo={
+              'https://vignette.wikia.nocookie.net/youtube/images/7/77/LeagueOfLegends.jpg/revision/latest?cb=20180718040905'
+            }
             title={
               <>
                 Astronomy Binoculars
