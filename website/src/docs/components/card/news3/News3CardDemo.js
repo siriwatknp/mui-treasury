@@ -159,7 +159,7 @@ News3CardDemo.metadata = {
   stylesUrl: '',
   frameProps: { pb: '4rem' }, // props that applied to Box in grid view
   size: 'medium', // can be 'large' | 'huge' for grid size
-  files: [{ pkg: 'mui-components', path: 'card/news3/News3Card.js' }],
+  files: [],
 };
 // hide-end
 

@@ -179,7 +179,7 @@ TeamCardDemo.metadata = {
   stylesUrl: '',
   frameProps: { bgcolor: '#f4f7fc' }, // props that applied to Box in grid view
   size: 'huge', // can be 'large' | 'huge' for grid size
-  files: [{ pkg: 'mui-components', path: 'card/team/TeamCard.js' }],
+  files: [],
 };
 // hide-end
 
