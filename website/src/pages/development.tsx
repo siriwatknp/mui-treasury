@@ -12,24 +12,24 @@ export default () => {
           <Box width={'100%'} minWidth={300} maxWidth={500} height={100} bgcolor={'primary.main'} />
         </Item>
         <Row ml={{ sm: 'auto' }}>
-          <Item grow>
+          <Item flex={1}>
             <Button fullWidth variant={'contained'}>Submit</Button>
           </Item>
-          <Item grow>
+          <Item flex={1}>
             <Button fullWidth>Cancel</Button>
           </Item>
         </Row>
       </ColumnToRow>
       <br />
-      <ColumnToRow gutter={2} at={'sm'}>
+      <ColumnToRow gutter={2} at={'sm'} justifyContent={'space-between'}>
         <Item>
           <Box width={'100%'} minWidth={300} maxWidth={500} height={100} bgcolor={'primary.main'} />
         </Item>
-        <RowToColumn gutter={1} ml={'auto'} at={'sm'} columnReversed>
-          <Item grow>
+        <RowToColumn gutter={1} at={500} columnReversed>
+          <Item flex={1}>
             <Button fullWidth>Cancel</Button>
           </Item>
-          <Item grow>
+          <Item flex={1}>
             <Button fullWidth variant={'contained'}>Submit</Button>
           </Item>
         </RowToColumn>

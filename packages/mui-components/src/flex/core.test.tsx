@@ -9,7 +9,6 @@ import { positionInsideRow, positionInsideColumn } from './core';
 import Column from './Column';
 import Row from './Row';
 import Item from './Item';
-import ColumnToRow from './ColumnToRow';
 import Box from '@material-ui/core/Box';
 
 describe('Flex', () => {
@@ -131,34 +130,6 @@ describe('Flex', () => {
       expect(screen.getByText(/item3/)).toHaveStyle('padding-top: 16px');
     });
   });
-
-  describe('Wrap', () => {
-    // it('display as row when viewport is more than breakpoint', () => {
-    //   console.log(window.innerWidth)
-    //   render(
-    //     // window in jest-dom is 1024px
-    //     <ColumnToRow data-testid={'wrap'} breakpoint={1025}>
-    //       <Item>item1</Item>
-    //       <Item>item2</Item>
-    //       <Item>item3</Item>
-    //     </ColumnToRow>
-    //   )
-    //   expect(screen.getByTestId('wrap')).not.toHaveStyle('flex-direction: column')
-    // })
-    //
-    // it('display as column when viewport is less than breakpoint', () => {
-    //   console.log(window.innerWidth)
-    //   render(
-    //     // window in jest-dom is 1024px
-    //     <ColumnToRow data-testid={'wrap'} breakpoint={960}>
-    //       <Item>item1</Item>
-    //       <Item>item2</Item>
-    //       <Item>item3</Item>
-    //     </ColumnToRow>
-    //   )
-    //   expect(screen.getByTestId('wrap')).toHaveStyle('flex-direction: column')
-    // })
-  })
 
   describe('Item', () => {
     each([

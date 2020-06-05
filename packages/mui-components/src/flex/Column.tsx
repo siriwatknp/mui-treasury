@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'clsx';
 import Item, { ItemProps } from './Item';
-import { Provider, useFlexCtx, Gutter } from './core';
+import { Provider, useGutterLookup, Gutter } from './core';
 
 export type ColumnProps = ItemProps & {
   gutter?: Gutter;
@@ -9,16 +9,16 @@ export type ColumnProps = ItemProps & {
 };
 
 const Column = ({ className, children, gutter, ...props }: ColumnProps) => {
-  const inheritGutter = useFlexCtx() ? 'inherit' : gutter;
+  const { calculatedGutter, itemProps } = useGutterLookup(gutter);
   return (
     <Item
       className={cx('FlexColumn', className)}
       display={'flex'}
       flexDirection={'column'}
-      {...(inheritGutter !== 'inherit' && { p: inheritGutter })}
+      {...itemProps}
       {...props}
     >
-      <Provider flexDirection={'column'} gutter={gutter || inheritGutter}>
+      <Provider flexDirection={'column'} gutter={calculatedGutter}>
         {children}
       </Provider>
     </Item>

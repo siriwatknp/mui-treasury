@@ -3,15 +3,21 @@ import * as CSS from 'csstype';
 import cx from 'clsx';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import { Theme } from '@material-ui/core';
-import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
-import { Provider, useFlexCtx, useGutterCtx, Gutter } from './core';
+import {
+  At,
+  Gutter,
+  Provider,
+  useGutterLookup,
+  BreakpointProvider,
+  useBreakpointLookup,
+} from './core';
 import Item, { ItemProps } from './Item';
 import { gutterToCss, getLowerMediaQuery } from './utils';
 
 export type RowToColumnProps = ItemProps & {
   rowStyle?: CSS.Properties;
   columnStyle?: CSS.Properties;
-  at: Breakpoint | number;
+  at?: At;
   gutter?: Gutter;
   columnReversed?: boolean;
   children: React.ReactNode | React.ReactElement | React.ReactElement[];
@@ -67,24 +73,23 @@ const RowToColumn = ({
   rowStyle,
   ...props
 }: RowToColumnProps) => {
-  // todo refactor gutter name
-  const inheritGutter = useFlexCtx() ? 'inherit' : gutter;
-  const parentGutter = useGutterCtx();
+  const { calculatedAt } = useBreakpointLookup(at);
+  const { calculatedGutter, itemProps } = useGutterLookup(gutter);
   const styles = useStyles({
-    at,
+    at: calculatedAt,
     columnReversed,
     columnStyle,
     rowStyle,
-    gutter: gutter || (inheritGutter === 'inherit' ? parentGutter : inheritGutter),
+    gutter: calculatedGutter,
   });
   return (
     <Item
       className={cx('FlexRowToColumn', styles.root, className)}
-      {...(inheritGutter !== 'inherit' && { p: inheritGutter })}
+      {...itemProps}
       {...props}
     >
-      <Provider flexDirection={'row-column'} gutter={inheritGutter || gutter}>
-        {children}
+      <Provider flexDirection={'row-column'} gutter={calculatedGutter}>
+        <BreakpointProvider at={calculatedAt}>{children}</BreakpointProvider>
       </Provider>
     </Item>
   );

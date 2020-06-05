@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'clsx';
 import Item, { ItemProps } from './Item';
-import { Provider, useFlexCtx, Gutter } from './core';
+import { Provider, useGutterLookup, Gutter } from './core';
 
 export type RowProps = ItemProps & {
   gutter?: Gutter;
@@ -9,15 +9,15 @@ export type RowProps = ItemProps & {
 };
 
 const Row = ({ className, children, gutter, ...props }: RowProps) => {
-  const inheritGutter = useFlexCtx() ? 'inherit' : gutter;
+  const { calculatedGutter, itemProps } = useGutterLookup(gutter);
   return (
     <Item
       className={cx('FlexRow', className)}
       display={'flex'}
-      {...inheritGutter !== 'inherit' && { p: inheritGutter }}
+      {...itemProps}
       {...props}
     >
-      <Provider flexDirection={'row'} gutter={gutter || inheritGutter}>
+      <Provider flexDirection={'row'} gutter={calculatedGutter}>
         {children}
       </Provider>
     </Item>
