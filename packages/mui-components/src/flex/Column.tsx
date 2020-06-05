@@ -9,7 +9,7 @@ export type ColumnProps = ItemProps & {
 };
 
 const Column = ({ className, children, gutter, ...props }: ColumnProps) => {
-  const inheritGutter = useFlexCtx() ? gutter || 'inherit' : gutter;
+  const inheritGutter = useFlexCtx() ? 'inherit' : gutter;
   return (
     <Item
       className={cx('FlexColumn', className)}
@@ -18,7 +18,7 @@ const Column = ({ className, children, gutter, ...props }: ColumnProps) => {
       {...(inheritGutter !== 'inherit' && { p: inheritGutter })}
       {...props}
     >
-      <Provider flexDirection={'column'} gutter={inheritGutter}>
+      <Provider flexDirection={'column'} gutter={gutter || inheritGutter}>
         {children}
       </Provider>
     </Item>

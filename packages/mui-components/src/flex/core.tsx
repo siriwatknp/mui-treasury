@@ -1,6 +1,6 @@
 import React from 'react';
 
-type FlexContextValue = 'row' | 'column';
+type FlexContextValue = 'row' | 'column' | 'row-column' | 'column-row';
 
 const FlexContext = React.createContext<FlexContextValue>(undefined);
 const GutterContext = React.createContext(undefined);

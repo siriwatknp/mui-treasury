@@ -9,6 +9,7 @@ import { positionInsideRow, positionInsideColumn } from './core';
 import Column from './Column';
 import Row from './Row';
 import Item from './Item';
+import ColumnToRow from './ColumnToRow';
 import Box from '@material-ui/core/Box';
 
 describe('Flex', () => {
@@ -131,6 +132,34 @@ describe('Flex', () => {
     });
   });
 
+  describe('Wrap', () => {
+    // it('display as row when viewport is more than breakpoint', () => {
+    //   console.log(window.innerWidth)
+    //   render(
+    //     // window in jest-dom is 1024px
+    //     <ColumnToRow data-testid={'wrap'} breakpoint={1025}>
+    //       <Item>item1</Item>
+    //       <Item>item2</Item>
+    //       <Item>item3</Item>
+    //     </ColumnToRow>
+    //   )
+    //   expect(screen.getByTestId('wrap')).not.toHaveStyle('flex-direction: column')
+    // })
+    //
+    // it('display as column when viewport is less than breakpoint', () => {
+    //   console.log(window.innerWidth)
+    //   render(
+    //     // window in jest-dom is 1024px
+    //     <ColumnToRow data-testid={'wrap'} breakpoint={960}>
+    //       <Item>item1</Item>
+    //       <Item>item2</Item>
+    //       <Item>item3</Item>
+    //     </ColumnToRow>
+    //   )
+    //   expect(screen.getByTestId('wrap')).toHaveStyle('flex-direction: column')
+    // })
+  })
+
   describe('Item', () => {
     each([
       ['cssPosition', 'relative', 'position: relative'],
@@ -184,6 +213,27 @@ describe('Flex', () => {
         'padding-top: 16px'
       );
     });
+
+    it('Nested has correct gutter', () => {
+      render(
+        <Row gutter={2}>
+          <Item>item1</Item>
+          <Row gutter={1} data-testid={'nested-row'}>
+            <Item>nested-row item1</Item>
+            <Item>nested-row item2</Item>
+          </Row>
+          <Column gutter={3} data-testid={'nested-column'}>
+            <Item>nested-column item1</Item>
+            <Item>nested-column item2</Item>
+            <Item>nested-column item3</Item>
+          </Column>
+        </Row>
+      );
+      expect(screen.getByTestId('nested-row')).not.toHaveStyle('padding: 8px 8px 8px 16px')
+      expect(screen.getByTestId('nested-row')).toHaveStyle('padding-left: 16px')
+      expect(screen.getByTestId('nested-column')).not.toHaveStyle('padding: 24px 24px 24px 16px')
+      expect(screen.getByTestId('nested-column')).toHaveStyle('padding-left: 16px')
+    })
   });
 
   describe('Real world', () => {

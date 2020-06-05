@@ -17,7 +17,7 @@ const App = ({ children, location }) => {
   const path = React.useMemo(() => createPath(location), [location]);
   muiTreasuryScheme.configureEdgeSidebar(builder => {
     builder.update('primarySidebar', path.parseConfig);
-    builder.hide('primarySidebar', location.pathname === '/');
+    builder.hide('primarySidebar', location.pathname === '/' || location.pathname === '/development');
   });
   return (
     <>

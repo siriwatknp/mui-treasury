@@ -9,7 +9,7 @@ export type RowProps = ItemProps & {
 };
 
 const Row = ({ className, children, gutter, ...props }: RowProps) => {
-  const inheritGutter = useFlexCtx() ? gutter || 'inherit' : gutter;
+  const inheritGutter = useFlexCtx() ? 'inherit' : gutter;
   return (
     <Item
       className={cx('FlexRow', className)}
@@ -17,7 +17,7 @@ const Row = ({ className, children, gutter, ...props }: RowProps) => {
       {...inheritGutter !== 'inherit' && { p: inheritGutter }}
       {...props}
     >
-      <Provider flexDirection={'row'} gutter={inheritGutter}>
+      <Provider flexDirection={'row'} gutter={gutter || inheritGutter}>
         {children}
       </Provider>
     </Item>
