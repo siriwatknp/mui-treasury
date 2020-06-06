@@ -42,7 +42,6 @@ const AvatarStylesPage = () => {
       />
       <div className={styles.root}>
         {orderIndex(components).map(Component => {
-          console.log('Component', Component);
           const { colSpan = 1, rowSpan = 2, createdAt } =
             Component?.metadata ?? {};
           return (
