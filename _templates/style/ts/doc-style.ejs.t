@@ -4,7 +4,6 @@ unless_exists: true
 ---
 <%displayName = h.changeCase.pascal(name) + h.changeCase.pascal(category)%>import React from 'react';
 
-// @ts-ignore
 import { use<%= displayName %>Styles } from '@mui-treasury/styles/<%= category %>/<%= name %>';
 
 // IComposition is for internal usage only
@@ -18,7 +17,10 @@ export const <%= displayName %>Style: React.FC<{}> & IComposition = () => {
 };
 // hide-start
 // eslint-disable-next-line import/first
-import Showcase, { IMetadata, ShowcaseProps } from '../../../../components/Showcase';
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
 
 interface IComposition {
   Showcase: React.FC<ShowcaseProps>
