@@ -33,6 +33,8 @@ DynamicAvatarStyle.Showcase = props => (
 )
 DynamicAvatarStyle.metadata = {
   path: 'styles/avatar/dynamic',
+  colSpan: 4,
+  rowSpan: 2,
   createdAt: 'Sat Jun 06 2020',
   files: [{ pkg: 'mui-styles', path: 'avatar/dynamic/dynamicAvatar.styles.ts' }],
 };

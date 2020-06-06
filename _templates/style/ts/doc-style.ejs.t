@@ -37,6 +37,8 @@ interface IComposition {
 )
 <%= displayName %>Style.metadata = {
   path: 'styles/<%= category %>/<%= name %>',
+  colSpan: 1,
+  rowSpan: 2,
   createdAt: '<%= h.now() %>',
   files: [{ pkg: 'mui-styles', path: '<%= category %>/<%= name %>/<%= name + h.changeCase.pascal(category) %>.styles.ts' }],
 };

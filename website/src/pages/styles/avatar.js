@@ -51,6 +51,11 @@ const AvatarStylesPage = () => {
               flexDirection={'column'}
               gridColumn={`span ${colSpan}`}
               gridRow={`span ${rowSpan}`}
+              css={{
+                '& > .FlexItem': {
+                  height: '100%',
+                },
+              }}
             >
               <Component.Showcase
                 variant={colSpan >= 3 ? 'row' : 'column'}

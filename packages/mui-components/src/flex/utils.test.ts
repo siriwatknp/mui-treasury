@@ -16,7 +16,10 @@ describe('flex utils', () => {
       [
         'object',
         { sm: 2, lg: '24px' },
-        { '@media (min-width:600px)': 16, '@media (min-width:1280px)': '24px' },
+        {
+          '@media (min-width:600px)': { paddingLeft: 16 },
+          '@media (min-width:1280px)': { paddingLeft: '24px' },
+        },
       ],
       ['undefined', undefined, undefined],
       ['null', null, undefined],
@@ -40,12 +43,9 @@ describe('flex utils', () => {
       ['md', '@media (max-width:959.95px)'],
       ['lg', '@media (max-width:1279.95px)'],
       ['xl', '@media (max-width:1919.95px)'],
-    ]).it(
-      '%s return expected media query',
-      (value, expected) => {
-        const breakpoints = createBreakpoints({});
-        expect(getLowerMediaQuery({ breakpoints }, value)).toEqual(expected);
-      }
-    );
+    ]).it('%s return expected media query', (value, expected) => {
+      const breakpoints = createBreakpoints({});
+      expect(getLowerMediaQuery({ breakpoints }, value)).toEqual(expected);
+    });
   });
 });

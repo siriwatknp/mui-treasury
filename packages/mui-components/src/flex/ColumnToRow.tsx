@@ -36,6 +36,11 @@ const styles = (theme: Theme) => {
       ColumnToRowProps,
       'columnStyle' | 'rowStyle' | 'at' | 'gutter' | 'rowReversed'
     >) => {
+      console.log('gutter', gutter);
+      const result = gutterToCss(theme)(gutter, (value: string) => ({
+        '& > *:not(:first-child)': { paddingTop: value },
+      }))
+      console.log('result', result);
       return {
         display: 'flex',
         [getLowerMediaQuery(theme, at)]: {

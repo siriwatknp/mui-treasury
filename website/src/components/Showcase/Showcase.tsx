@@ -13,7 +13,13 @@ import CallMade from '@material-ui/icons/CallMade';
 
 // @mui-treasury
 import { useSizedIconButtonStyles } from '@mui-treasury/styles/iconButton/sized';
-import { Column, Item, Row, RowProps } from '@mui-treasury/components/flex';
+import {
+  Column,
+  ColumnToRow,
+  Item,
+  Row,
+  RowProps,
+} from '@mui-treasury/components/flex';
 import StatusChip from '../atoms/StatusChip';
 
 const StyledStatusChip = withStyles({
@@ -134,10 +140,16 @@ const useStyles = makeStyles(({ breakpoints }) => ({
   card: {
     border: '2px solid',
     borderColor: '#E7EDF3',
-    borderRadius: 16,
+    borderRadius: 4,
     transition: '0.4s',
     '&:hover': {
       borderColor: '#5B9FED',
+    },
+    [breakpoints.up('sm')]: {
+      borderRadius: 12,
+    },
+    [breakpoints.up('lg')]: {
+      borderRadius: 16,
     },
   },
   frame: {
@@ -146,15 +158,25 @@ const useStyles = makeStyles(({ breakpoints }) => ({
       justifyContent: 'center',
     },
   },
+  hiddenXs: {
+    [breakpoints.only('xs')]: {
+      display: 'none',
+    },
+  },
+  hiddenAboveXs: {
+    [breakpoints.up('sm')]: {
+      display: 'none',
+    },
+  },
 }));
 
 export type IMetadata = {
-  path: string,
-  colSpan?: 1 | 2 | 3 | 4,
-  rowSpan?: 2 | 3 | 4,
-  createdAt?: string,
-  files?: Array<{ pkg: 'mui-styles' | 'mui-components'; path: string }>
-}
+  path: string;
+  colSpan?: 1 | 2 | 3 | 4;
+  rowSpan?: 2 | 3 | 4;
+  createdAt?: string;
+  files?: Array<{ pkg: 'mui-styles' | 'mui-components'; path: string }>;
+};
 
 export type ShowcaseProps = {
   variant?: 'row' | 'column';
@@ -174,37 +196,54 @@ const Showcase = ({
 }: React.PropsWithChildren<ShowcaseProps>) => {
   const styles = useStyles();
   const commonProps = {
+    height: '100%',
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
     bgcolor: '#F4F7FA',
     borderRadius: 8,
     p: 2,
-    ...status && { pt: 5 },
+    ...(status && { pt: 5 }),
     minHeight: 160,
     overflow: 'auto',
     className: cx(frameProps.className, styles.frame),
   };
   if (variant === 'row') {
     return (
-      <Row className={styles.card} gutter={{ xs: 1, sm: 1.5, lg: 2 }}>
-        <Item grow>
-          <Box {...commonProps} {...frameProps}>
-            {status === 'new' && <StyledStatusChip />}
-            {children}
-          </Box>
-        </Item>
-        <Column gutter={'inherit'}>
-          <CardHeader title={title} description={description} />
-          <BasicProfile position={'bottom'} creators={creators} />
+      <ColumnToRow
+        className={styles.card}
+        rowStyle={{ alignItems: 'unset' }}
+        at={'sm'}
+        gutter={{ xs: 1, sm: 1.5, lg: 2 }}
+      >
+        <Column grow>
+          <CardHeader
+            className={styles.hiddenAboveXs}
+            title={title}
+            description={description}
+          />
+          <Item grow pt={{ xs: 1, sm: 0 }}>
+            <Box {...commonProps} {...frameProps}>
+              {status === 'new' && <StyledStatusChip />}
+              {children}
+            </Box>
+          </Item>
         </Column>
-      </Row>
+        <Column maxWidth={{ sm: '28%', md: 'auto' }}>
+          <CardHeader
+            className={styles.hiddenXs}
+            title={title}
+            description={description}
+          />
+          <BasicProfile pt={0} position={'bottom'} creators={creators} />
+        </Column>
+      </ColumnToRow>
     );
   }
   return (
     <Column className={styles.card} gutter={{ xs: 1, sm: 1.5, lg: 2 }}>
       <CardHeader title={title} description={description} />
-      <Item>
+      <Item grow>
         <Box {...commonProps} {...frameProps}>
           {status === 'new' && <StyledStatusChip />}
           {children}

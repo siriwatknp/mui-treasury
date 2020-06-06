@@ -22,7 +22,7 @@ export const gutterToCss = (theme: Pick<Theme, 'breakpoints' | 'spacing'>) => (
       ...result,
       [bp.up(current[0] as Breakpoint)]: gutterToCss(theme)(
         current[1],
-        value => value
+        callback
       ),
     }),
     {}
