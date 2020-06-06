@@ -14,8 +14,8 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const StatusChip = ({ label }) => {
-  const classes = useStyles();
+const StatusChip = ({ label, ...props }) => {
+  const classes = useStyles(props);
   return (
     <MuiChip
       icon={<StarRounded />}

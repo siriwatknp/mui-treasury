@@ -8,6 +8,7 @@ export type GoogleAvatarClassKey = keyof ReturnType<typeof googleAvatarStyles>
 const googleAvatarStyles = () => ({
   root: ({ ringSize = 48, avatarSize = 40 }) => ({
     position: 'relative' as const,
+    display: 'inline-block',
     '& > *': {
       width: avatarSize,
       height: avatarSize,
