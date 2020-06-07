@@ -5,3 +5,5 @@ export * from './chatz/ChatzListItemDemo'
 
 export * from './trendy/TrendyListItemDemo'
 
+export * from './popular/PopularListItemDemo'
+

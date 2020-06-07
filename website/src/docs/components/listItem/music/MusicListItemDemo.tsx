@@ -1,4 +1,6 @@
 import React from 'react';
+import NoSsr from '@material-ui/core/NoSsr';
+import GoogleFontLoader from 'react-google-font-loader';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
@@ -47,39 +49,44 @@ export const MusicListItemDemo = React.memo(function MusicListItem() {
   });
   const styles = useStyles();
   return (
-    <Column gutter={2} width={'100%'}>
-      <Row>
-        <div className={avatarStyles.root}>
-          <Avatar src={src} />
-        </div>
-        <Info useStyles={useMusicInfoStyles} minWidth={0}>
-          <InfoTitle>Money Longer</InfoTitle>
-          <InfoSubtitle>Lil Uzi Vert</InfoSubtitle>
-        </Info>
-        <Item position={'right'}>
-          <IconButton size={'small'}>
-            <MoreHoriz />
-          </IconButton>
-        </Item>
-      </Row>
-      <Row mt={2}>
-        <div className={avatarStyles2.root}>
-          <Avatar src={src2} />
-        </div>
-        <Info useStyles={useMusicInfoStyles} minWidth={0}>
-          <InfoTitle>Wait For You</InfoTitle>
-          <InfoSubtitle>Jake Miller</InfoSubtitle>
-          <InfoCaption className={styles.text}>
-            <PlayCircleFilled /> playing...
-          </InfoCaption>
-        </Info>
-        <Item position={'right'}>
-          <IconButton size={'small'}>
-            <MoreHoriz />
-          </IconButton>
-        </Item>
-      </Row>
-    </Column>
+    <>
+      <NoSsr>
+        <GoogleFontLoader fonts={[{ font: 'Questrial' }]} />
+      </NoSsr>
+      <Column gutter={2} width={'100%'}>
+        <Row>
+          <div className={avatarStyles.root}>
+            <Avatar src={src} />
+          </div>
+          <Info useStyles={useMusicInfoStyles} minWidth={0}>
+            <InfoTitle>Money Longer</InfoTitle>
+            <InfoSubtitle>Lil Uzi Vert</InfoSubtitle>
+          </Info>
+          <Item position={'right'}>
+            <IconButton size={'small'}>
+              <MoreHoriz />
+            </IconButton>
+          </Item>
+        </Row>
+        <Row mt={2}>
+          <div className={avatarStyles2.root}>
+            <Avatar src={src2} />
+          </div>
+          <Info useStyles={useMusicInfoStyles} minWidth={0}>
+            <InfoTitle>Wait For You</InfoTitle>
+            <InfoSubtitle>Jake Miller</InfoSubtitle>
+            <InfoCaption className={styles.text}>
+              <PlayCircleFilled /> playing...
+            </InfoCaption>
+          </Info>
+          <Item position={'right'}>
+            <IconButton size={'small'}>
+              <MoreHoriz />
+            </IconButton>
+          </Item>
+        </Row>
+      </Column>
+    </>
   );
 });
 // hide-start

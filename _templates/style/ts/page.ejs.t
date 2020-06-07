@@ -30,8 +30,8 @@ const <%= h.changeCase.pascal(category) %>StylesPage = () => {
     <div>
       <SourceDrawer Component={selectedComponent} setComponent={setComponent} />
       <ComponentHeading
-        title={'Avatar'}
-        description={'A collection of Avatar components'}
+        title={'<%= changeCase.h.pascal(category) %>'}
+        description={''}
       />
       <GridContainer>
         {orderIndex(components).map((Component: IShowcase) => {

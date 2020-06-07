@@ -3,29 +3,39 @@ import NoSsr from '@material-ui/core/NoSsr';
 import GoogleFontLoader from 'react-google-font-loader';
 import Avatar from '@material-ui/core/Avatar';
 import { Row, Item } from '@mui-treasury/components/flex';
-import { Info, InfoTitle, InfoSubtitle } from '@mui-treasury/components/info';
+import {
+  Info,
+  InfoTitle,
+  InfoSubtitle,
+  InfoCaption,
+} from '@mui-treasury/components/info';
 import { useDynamicAvatarStyles } from '@mui-treasury/styles/avatar/dynamic';
-import { useTrendInfoStyles } from '@mui-treasury/styles/info/trend';
+import { usePopularInfoStyles } from '@mui-treasury/styles/info/popular';
 
-export const TrendyListItemDemo = React.memo(function TrendyListItem() {
-  const avatarStyles = useDynamicAvatarStyles({ size: 48, radius: 6 });
+export const PopularListItemDemo = React.memo(function PopularListItem() {
+  const avatarStyles = useDynamicAvatarStyles({
+    height: 56,
+    width: 64,
+    radius: 8,
+  });
   return (
     <>
       <NoSsr>
-        <GoogleFontLoader fonts={[{ font: 'Manrope', weights: [500, 700] }]} />
+        <GoogleFontLoader fonts={[{ font: 'Poppins', weights: [400, 700] }]} />
       </NoSsr>
       <Row gutter={3}>
         <Avatar
           variant={'rounded'}
           classes={avatarStyles}
           src={
-            'https://imgcache.dealmoon.com/thumbimg.dealmoon.com/dealmoon/923/a5d/cff/399ac7fa0f6e82bf24f9363.jpg_300_300_2_f169.jpg'
+            'https://freedesignfile.com/upload/2016/03/Abstract-geometric-petals-vector-graphic-03.jpg'
           }
         />
         <Item position={'middle'}>
-          <Info useStyles={useTrendInfoStyles}>
-            <InfoTitle>Beats X Super Fast Charge</InfoTitle>
-            <InfoSubtitle>Starts from $250</InfoSubtitle>
+          <Info useStyles={usePopularInfoStyles}>
+            <InfoSubtitle>Design</InfoSubtitle>
+            <InfoTitle>Most Awaited - Figma Launches Plugin</InfoTitle>
+            <InfoCaption>14 sec ago</InfoCaption>
           </Info>
         </Item>
       </Row>
@@ -42,22 +52,22 @@ import Showcase, {
 const AttachedShowcase = (props: ShowcaseProps) => (
   <Showcase
     {...props}
-    title={'Trendy'}
+    title={'Popular'}
     description={''}
     creators={[require('constants/creators').siriwatknp]}
   >
-    <TrendyListItemDemo />
+    <PopularListItemDemo />
   </Showcase>
 );
 const metadata: IMetadata = {
-  path: 'components/listItem/trendy',
-  colSpan: 1,
+  path: 'components/listItem/popular',
+  colSpan: 2,
   rowSpan: 2,
   createdAt: 'Sun Jun 07 2020',
   files: [],
 };
 // @ts-ignore
-TrendyListItemDemo.Showcase = AttachedShowcase;
+PopularListItemDemo.Showcase = AttachedShowcase;
 // @ts-ignore
-TrendyListItemDemo.metadata = metadata;
+PopularListItemDemo.metadata = metadata;
 // hide-end

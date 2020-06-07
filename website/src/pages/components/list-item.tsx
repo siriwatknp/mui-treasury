@@ -26,8 +26,8 @@ const ListItemDemoPage = () => {
     <div>
       <SourceDrawer Component={selectedComponent} setComponent={setComponent} />
       <ComponentHeading
-        title={'Avatar'}
-        description={'A collection of Avatar components'}
+        title={'List Item'}
+        description={'One of the most frequently seen in web design'}
       />
       <GridContainer>
         {orderIndex(components).map((Component: IShowcase) => {
