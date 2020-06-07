@@ -1,35 +1,39 @@
 export type OnlineAvatarStyleProps = {
   color?: string;
-  avatarSize?: number;
-  ringSize?: number;
-  radius?: number;
-}
+  size?: number;
+  thickness?: number;
+  gap?: number;
+};
 
-export type OnlineAvatarClassKey = keyof ReturnType<typeof onlineAvatarStyles>
+export type OnlineAvatarClassKey = keyof ReturnType<typeof onlineAvatarStyles>;
 
 const onlineAvatarStyles = () => ({
-  root: ({ color, avatarSize = 40, ringSize = avatarSize + 8, radius = 40 }: OnlineAvatarStyleProps) => ({
+  root: ({
+    color,
+    size = 40,
+    thickness = 2,
+    gap = 2,
+  }: OnlineAvatarStyleProps) => ({
     position: 'relative' as const,
     display: 'inline-block',
     '& > *': {
-      width: avatarSize,
-      height: avatarSize,
-      borderRadius: radius,
+      width: size,
+      height: size,
     },
     '&:before': {
       content: '""',
       display: 'block',
       position: 'absolute' as const,
-      width: ringSize,
-      height: ringSize,
+      width: size + thickness * 2 + gap * 2,
+      height: size + thickness * 2 + gap * 2,
       left: '50%',
       top: '50%',
+      borderRadius: '50%',
       transform: 'translate(-50%, -50%)',
-      borderRadius: radius,
-      border: '2px solid',
+      border: `${thickness}px solid`,
       borderColor: color,
-    }
-  })
-})
+    },
+  }),
+});
 
-export default onlineAvatarStyles
+export default onlineAvatarStyles;

@@ -12,9 +12,9 @@ export const OnlineAvatarStyle: React.FC<{}> & IComposition = () => {
   const styles = useOnlineAvatarStyles({ color: '#f05a99' });
   const styles2 = useOnlineAvatarStyles({
     color: '#1081f8',
-    radius: 4,
-    avatarSize: 64,
-    ringSize: 72,
+    size: 100,
+    thickness: 4,
+    gap: 4,
   });
   return (
     <Box className={gutterStyles.parent}>
@@ -43,7 +43,7 @@ OnlineAvatarStyle.Showcase = props => (
   <Showcase
     {...props}
     title={'Online'}
-    description={''}
+    description={'only for solid color'}
     creators={[require('constants/creators').siriwatknp]}
   >
     <OnlineAvatarStyle />
