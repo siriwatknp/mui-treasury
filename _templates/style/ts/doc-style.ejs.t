@@ -6,7 +6,7 @@ unless_exists: true
 
 import { use<%= displayName %>Styles } from '@mui-treasury/styles/<%= category %>/<%= name %>';
 
-export const <%= displayName %>Style: React.FC<{}> = React.memo(
+export const <%= displayName %>Style = React.memo(
   function <%= displayName %>() {
     return (
       <>

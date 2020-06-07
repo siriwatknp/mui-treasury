@@ -4,7 +4,7 @@ unless_exists: true
 ---
 <%displayName = h.changeCase.pascal(name) + h.changeCase.pascal(category)%>import React from 'react';
 
-export const <%= displayName %>Demo: React.FC<{}> = React.memo(
+export const <%= displayName %>Demo = React.memo(
   function <%= displayName %>() {
     return (
       <>

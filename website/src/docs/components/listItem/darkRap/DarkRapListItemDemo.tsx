@@ -1,7 +1,5 @@
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import MoreHoriz from '@material-ui/icons/MoreHoriz';
 import { Row, Column, Item } from '@mui-treasury/components/flex';
 import {
   Info,
@@ -31,11 +29,6 @@ export const DarkRapListItemDemo: React.FC<{}> = React.memo(
               <InfoTitle>Humility (feat. George Benson)</InfoTitle>
               <InfoSubtitle>Gorillaz</InfoSubtitle>
             </Info>
-          </Item>
-          <Item>
-            <IconButton>
-              <MoreHoriz />
-            </IconButton>
           </Item>
         </Row>
         <Row>

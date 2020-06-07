@@ -3,18 +3,21 @@ export type GrowAvatarStyleProps = {
   blur?: string;
   size?: string | number;
   radius?: string | number;
+  opacity?: number;
 };
 
 export type GrowAvatarClassKey = keyof ReturnType<typeof growAvatarStyles>;
 
 const growAvatarStyles = () => ({
-  root: ({ src, blur = '8px', size, radius }: GrowAvatarStyleProps) => ({
+  root: ({ src, blur = '8px', size, radius = '50%', opacity = 0.8 }: GrowAvatarStyleProps) => ({
     position: 'relative',
     zIndex: 0,
     width: size,
     height: size,
     overflow: 'visible',
-    '& > img': {
+    '& > div': {
+      width: size,
+      height: size,
       borderRadius: radius,
     },
     '&:before': {
@@ -32,6 +35,7 @@ const growAvatarStyles = () => ({
       left: 0,
       bottom: 0,
       right: 0,
+      opacity,
     },
   }),
 });
