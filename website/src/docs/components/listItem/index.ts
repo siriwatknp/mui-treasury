@@ -3,3 +3,5 @@ export * from './music/MusicListItemDemo'
 
 export * from './chatz/ChatzListItemDemo'
 
+export * from './trendy/TrendyListItemDemo'
+

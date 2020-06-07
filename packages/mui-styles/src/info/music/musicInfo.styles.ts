@@ -12,12 +12,18 @@ const musicInfoStyles = ({ palette }: Theme) => ({
     fontFamily: family,
     fontSize: titleFontSize,
     lineHeight: 1.6,
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
   },
   subtitle: {
     fontFamily: family,
     color: palette.grey['500'],
     fontSize: subtitleFontSize,
-    lineHeight: 1.6
+    lineHeight: 1.6,
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
   },
   caption: {
     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',

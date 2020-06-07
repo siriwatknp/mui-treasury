@@ -47,17 +47,15 @@ export const MusicListItemDemo = React.memo(function MusicListItem() {
   });
   const styles = useStyles();
   return (
-    <Column gutter={2}>
+    <Column gutter={2} width={'100%'}>
       <Row>
         <div className={avatarStyles.root}>
           <Avatar src={src} />
         </div>
-        <Item>
-          <Info useStyles={useMusicInfoStyles}>
-            <InfoTitle>Money Longer</InfoTitle>
-            <InfoSubtitle>Lil Uzi Vert</InfoSubtitle>
-          </Info>
-        </Item>
+        <Info useStyles={useMusicInfoStyles} minWidth={0}>
+          <InfoTitle>Money Longer</InfoTitle>
+          <InfoSubtitle>Lil Uzi Vert</InfoSubtitle>
+        </Info>
         <Item position={'right'}>
           <IconButton size={'small'}>
             <MoreHoriz />
@@ -68,15 +66,13 @@ export const MusicListItemDemo = React.memo(function MusicListItem() {
         <div className={avatarStyles2.root}>
           <Avatar src={src2} />
         </div>
-        <Item>
-          <Info useStyles={useMusicInfoStyles}>
-            <InfoTitle>Wait For You</InfoTitle>
-            <InfoSubtitle>Jake Miller</InfoSubtitle>
-            <InfoCaption className={styles.text}>
-              <PlayCircleFilled /> playing...
-            </InfoCaption>
-          </Info>
-        </Item>
+        <Info useStyles={useMusicInfoStyles} minWidth={0}>
+          <InfoTitle>Wait For You</InfoTitle>
+          <InfoSubtitle>Jake Miller</InfoSubtitle>
+          <InfoCaption className={styles.text}>
+            <PlayCircleFilled /> playing...
+          </InfoCaption>
+        </Info>
         <Item position={'right'}>
           <IconButton size={'small'}>
             <MoreHoriz />
