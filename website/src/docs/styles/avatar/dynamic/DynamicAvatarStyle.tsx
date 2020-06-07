@@ -5,9 +5,7 @@ import Box from '@material-ui/core/Box';
 import { useDynamicAvatarStyles } from '@mui-treasury/styles/avatar/dynamic';
 import { useRowGutterStyles } from '@mui-treasury/styles/gutter/row';
 
-// IComposition is for internal usage only
-// you can remove IComposition in your project
-export const DynamicAvatarStyle: React.FC<{}> & IComposition = () => {
+export const DynamicAvatarStyle: React.FC<{}> = React.memo(() => {
   const styles = useDynamicAvatarStyles({ size: 48 });
   const styles2 = useDynamicAvatarStyles({ size: 64, radius: 8 });
   const styles3 = useDynamicAvatarStyles({ size: 32 });
@@ -23,7 +21,7 @@ export const DynamicAvatarStyle: React.FC<{}> & IComposition = () => {
       />
     </Box>
   );
-};
+});
 // hide-start
 // eslint-disable-next-line import/first
 import Showcase, {
@@ -31,12 +29,7 @@ import Showcase, {
   ShowcaseProps,
 } from '../../../../components/Showcase';
 
-interface IComposition {
-  Showcase: React.FC<ShowcaseProps>;
-  metadata: IMetadata;
-}
-
-DynamicAvatarStyle.Showcase = props => (
+const AttachedShowcase = (props: ShowcaseProps) => (
   <Showcase
     {...props}
     title={'Dynamic'}
@@ -46,7 +39,7 @@ DynamicAvatarStyle.Showcase = props => (
     <DynamicAvatarStyle />
   </Showcase>
 );
-DynamicAvatarStyle.metadata = {
+const metadata: IMetadata = {
   path: 'styles/avatar/dynamic',
   colSpan: 1,
   rowSpan: 2,
@@ -55,4 +48,8 @@ DynamicAvatarStyle.metadata = {
     { pkg: 'mui-styles', path: 'avatar/dynamic/dynamicAvatar.styles.ts' },
   ],
 };
+// @ts-ignore
+DynamicAvatarStyle.Showcase = AttachedShowcase
+// @ts-ignore
+DynamicAvatarStyle.metadata = metadata
 // hide-end

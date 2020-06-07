@@ -5,9 +5,7 @@ import Box from '@material-ui/core/Box';
 import { useOnlineAvatarStyles } from '@mui-treasury/styles/avatar/online';
 import { useRowGutterStyles } from '@mui-treasury/styles/gutter/row';
 
-// IComposition is for internal usage only
-// you can remove IComposition in your project
-export const OnlineAvatarStyle: React.FC<{}> & IComposition = () => {
+export const OnlineAvatarStyle: React.FC<{}> = React.memo(() => {
   const gutterStyles = useRowGutterStyles({ size: 16 });
   const styles = useOnlineAvatarStyles({ color: '#f05a99' });
   const styles2 = useOnlineAvatarStyles({
@@ -26,7 +24,7 @@ export const OnlineAvatarStyle: React.FC<{}> & IComposition = () => {
       </div>
     </Box>
   );
-};
+});
 // hide-start
 // eslint-disable-next-line import/first
 import Showcase, {
@@ -34,12 +32,7 @@ import Showcase, {
   ShowcaseProps,
 } from '../../../../components/Showcase';
 
-interface IComposition {
-  Showcase: React.FC<ShowcaseProps>;
-  metadata: IMetadata;
-}
-
-OnlineAvatarStyle.Showcase = props => (
+const AttachedShowcase = (props: ShowcaseProps) => (
   <Showcase
     {...props}
     title={'Online'}
@@ -49,11 +42,15 @@ OnlineAvatarStyle.Showcase = props => (
     <OnlineAvatarStyle />
   </Showcase>
 );
-OnlineAvatarStyle.metadata = {
+const metadata: IMetadata = {
   path: 'styles/avatar/online',
   colSpan: 1,
   rowSpan: 2,
   createdAt: 'Sat Jun 06 2020',
   files: [{ pkg: 'mui-styles', path: 'avatar/online/onlineAvatar.styles.ts' }],
 };
+// @ts-ignore
+OnlineAvatarStyle.Showcase = AttachedShowcase
+// @ts-ignore
+OnlineAvatarStyle.metadata = metadata
 // hide-end

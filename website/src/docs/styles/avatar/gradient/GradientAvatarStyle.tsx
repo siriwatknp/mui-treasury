@@ -3,9 +3,7 @@ import Avatar from '@material-ui/core/Avatar';
 
 import { useGradientAvatarStyles } from '@mui-treasury/styles/avatar/gradient';
 
-// IComposition is for internal usage only
-// you can remove IComposition in your project
-export const GradientAvatarStyle: React.FC<{}> & IComposition = () => {
+export const GradientAvatarStyle = React.memo(() => {
   const styles = useGradientAvatarStyles({
     size: 80,
     gap: 3,
@@ -20,7 +18,7 @@ export const GradientAvatarStyle: React.FC<{}> & IComposition = () => {
       </div>
     </>
   );
-};
+});
 // hide-start
 // eslint-disable-next-line import/first
 import Showcase, {
@@ -28,12 +26,7 @@ import Showcase, {
   ShowcaseProps,
 } from '../../../../components/Showcase';
 
-interface IComposition {
-  Showcase: React.FC<ShowcaseProps>;
-  metadata: IMetadata;
-}
-
-GradientAvatarStyle.Showcase = props => (
+const AttachedShowcase = (props: ShowcaseProps) => (
   <Showcase
     {...props}
     title={'Gradient'}
@@ -43,7 +36,7 @@ GradientAvatarStyle.Showcase = props => (
     <GradientAvatarStyle />
   </Showcase>
 );
-GradientAvatarStyle.metadata = {
+const metadata: IMetadata = {
   path: 'styles/avatar/gradient',
   colSpan: 1,
   rowSpan: 2,
@@ -52,4 +45,8 @@ GradientAvatarStyle.metadata = {
     { pkg: 'mui-styles', path: 'avatar/gradient/gradientAvatar.styles.ts' },
   ],
 };
+// @ts-ignore
+GradientAvatarStyle.Showcase = AttachedShowcase
+// @ts-ignore
+GradientAvatarStyle.metadata = metadata
 // hide-end

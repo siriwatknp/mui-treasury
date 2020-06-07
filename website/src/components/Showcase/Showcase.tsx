@@ -5,20 +5,19 @@ import Avatar from '@material-ui/core/Avatar';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import Box, { BoxProps } from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
+// import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 
 // Icons
 import CallMade from '@material-ui/icons/CallMade';
 
 // @mui-treasury
-import { useSizedIconButtonStyles } from '@mui-treasury/styles/iconButton/sized';
+// import { useSizedIconButtonStyles } from '@mui-treasury/styles/iconButton/sized';
 import {
   Column,
   ColumnToRow,
   Item,
   Row,
-  RowProps,
 } from '@mui-treasury/components/flex';
 import StatusChip from '../atoms/StatusChip';
 
@@ -30,13 +29,13 @@ const StyledStatusChip = withStyles({
   },
 })(StatusChip);
 
-const StyledTooltip = withStyles({
-  tooltip: {
-    marginTop: '0.2rem',
-    backgroundColor: 'rgba(0,0,0,0.72)',
-    color: '#fff',
-  },
-})(Tooltip);
+// const StyledTooltip = withStyles({
+//   tooltip: {
+//     marginTop: '0.2rem',
+//     backgroundColor: 'rgba(0,0,0,0.72)',
+//     color: '#fff',
+//   },
+// })(Tooltip);
 
 const useCardHeaderStyles = makeStyles(() => ({
   root: { paddingBottom: 0 },
@@ -54,11 +53,11 @@ const useCardHeaderStyles = makeStyles(() => ({
 type CardHeaderProps = {
   title: React.ReactNode;
   description?: React.ReactNode;
-} & RowProps;
+} & BoxProps;
 
 const CardHeader = ({ title, description, ...props }: CardHeaderProps) => {
   const styles = useCardHeaderStyles();
-  const iconBtnStyles = useSizedIconButtonStyles({ padding: 8, childSize: 20 });
+  // const iconBtnStyles = useSizedIconButtonStyles({ padding: 8, childSize: 20 });
   return (
     <Row {...props}>
       <Item position={'middle'}>
@@ -66,11 +65,11 @@ const CardHeader = ({ title, description, ...props }: CardHeaderProps) => {
         <Typography className={styles.subheader}>{description}</Typography>
       </Item>
       <Item position={'right'} mr={-0.5}>
-        <StyledTooltip title={'See details'}>
-          <IconButton classes={iconBtnStyles}>
-            <CallMade />
-          </IconButton>
-        </StyledTooltip>
+        {/*<StyledTooltip title={'See details'}>*/}
+        {/*  <IconButton classes={iconBtnStyles}>*/}
+        {/*    <CallMade />*/}
+        {/*  </IconButton>*/}
+        {/*</StyledTooltip>*/}
       </Item>
     </Row>
   );
@@ -96,9 +95,10 @@ const useBasicProfileStyles = makeStyles(({ palette }) => ({
 
 type BasicProfileProps = {
   creators: Array<{ face: string; name: string; link: string }>;
-} & RowProps;
+  actions?: React.ReactNode;
+} & BoxProps;
 
-const BasicProfile = ({ creators, ...props }: BasicProfileProps) => {
+const BasicProfile = ({ creators, actions, ...props }: BasicProfileProps) => {
   const styles = useBasicProfileStyles();
   return (
     <Row gutter={'inherit'} {...props}>
@@ -132,6 +132,7 @@ const BasicProfile = ({ creators, ...props }: BasicProfileProps) => {
           ))}
         </Typography>
       </Item>
+      {actions}
     </Row>
   );
 };
@@ -183,12 +184,13 @@ export type ShowcaseProps = {
   frameProps?: BoxProps;
   status?: string;
 } & Pick<CardHeaderProps, 'title' | 'description'> &
-  Pick<BasicProfileProps, 'creators'>;
+  Pick<BasicProfileProps, 'creators' | 'actions'>;
 
 const Showcase = ({
   title,
   description,
   creators = [],
+  actions,
   variant = 'column',
   children,
   frameProps = {},
@@ -235,7 +237,12 @@ const Showcase = ({
             title={title}
             description={description}
           />
-          <BasicProfile pt={0} position={'bottom'} creators={creators} />
+          <BasicProfile
+            pt={0}
+            position={'bottom'}
+            creators={creators}
+            actions={actions}
+          />
         </Column>
       </ColumnToRow>
     );
@@ -249,7 +256,7 @@ const Showcase = ({
           {children}
         </Box>
       </Item>
-      <BasicProfile creators={creators} />
+      <BasicProfile creators={creators} actions={actions} />
     </Column>
   );
 };

@@ -6,15 +6,13 @@ unless_exists: true
 
 import { use<%= displayName %>Styles } from '@mui-treasury/styles/<%= category %>/<%= name %>';
 
-// IComposition is for internal usage only
-// you can remove IComposition in your project
-export const <%= displayName %>Style: React.FC<{}> & IComposition = () => {
+export const <%= displayName %>Style: React.FC<{}> = React.memo(() => {
   return (
     <>
       Style showcase goes here!
     </>
   );
-};
+});
 // hide-start
 // eslint-disable-next-line import/first
 import Showcase, {
@@ -22,12 +20,7 @@ import Showcase, {
   ShowcaseProps,
 } from '../../../../components/Showcase';
 
-interface IComposition {
-  Showcase: React.FC<ShowcaseProps>
-  metadata: IMetadata
-}
-
-<%= displayName %>Style.Showcase = props => (
+const AttachedShowcase = (props: ShowcaseProps) => (
   <Showcase
     {...props}
     title={'<%= h.changeCase.pascal(name) %>'}
@@ -37,11 +30,15 @@ interface IComposition {
     <<%= displayName %>Style />
   </Showcase>
 )
-<%= displayName %>Style.metadata = {
+const metadata: IMetadata = {
   path: 'styles/<%= category %>/<%= name %>',
   colSpan: 1,
   rowSpan: 2,
   createdAt: '<%= h.now() %>',
   files: [{ pkg: 'mui-styles', path: '<%= category %>/<%= name %>/<%= name + h.changeCase.pascal(category) %>.styles.ts' }],
 };
+// @ts-ignore
+<%= displayName %>Style.Showcase = AttachedShowcase
+// @ts-ignore
+<%= displayName %>Style.metadata = metadata
 // hide-end

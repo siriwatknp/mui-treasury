@@ -2,12 +2,9 @@ import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Box from '@material-ui/core/Box';
 
-// @ts-ignore
 import { useGoogleAvatarStyles } from '@mui-treasury/styles/avatar/google';
 
-// IComposition is for internal usage only
-// you can remove IComposition in your project
-export const GoogleAvatarStyle: React.FC<{}> & IComposition = () => {
+export const GoogleAvatarStyle: React.FC<{}> = React.memo(() => {
   const google = useGoogleAvatarStyles();
   const googleLarge = useGoogleAvatarStyles({ ringSize: 88, avatarSize: 76 });
   return (
@@ -28,17 +25,12 @@ export const GoogleAvatarStyle: React.FC<{}> & IComposition = () => {
       </Box>
     </>
   );
-};
+});
 // hide-start
 // eslint-disable-next-line import/first
 import Showcase, { IMetadata, ShowcaseProps } from '../../../../components/Showcase';
 
-interface IComposition {
-  Showcase: React.FC<ShowcaseProps>
-  metadata: IMetadata
-}
-
-GoogleAvatarStyle.Showcase = props => (
+const AttachedShowcase = (props: ShowcaseProps) => (
   <Showcase
     {...props}
     title={'Google'}
@@ -48,9 +40,13 @@ GoogleAvatarStyle.Showcase = props => (
     <GoogleAvatarStyle />
   </Showcase>
 )
-GoogleAvatarStyle.metadata = {
+const metadata: IMetadata = {
   path: 'styles/avatar/google',
   createdAt: 'Fri May 15 2020',
   files: [{ pkg: 'mui-styles', path: 'avatar/google/googleAvatar.styles.ts' }],
 };
+// @ts-ignore
+GoogleAvatarStyle.Showcase = AttachedShowcase
+// @ts-ignore
+GoogleAvatarStyle.metadata = metadata
 // hide-end
