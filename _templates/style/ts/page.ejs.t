@@ -30,7 +30,7 @@ const <%= h.changeCase.pascal(category) %>StylesPage = () => {
     <div>
       <SourceDrawer Component={selectedComponent} setComponent={setComponent} />
       <ComponentHeading
-        title={'<%= changeCase.h.pascal(category) %>'}
+        title={'<%= h.changeCase.pascal(category) %>'}
         description={''}
       />
       <GridContainer>

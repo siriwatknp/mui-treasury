@@ -8,7 +8,7 @@ export type DynamicAvatarStyleProps = {
 export type DynamicAvatarClassKey = keyof ReturnType<typeof dynamicAvatarStyles>
 
 const dynamicAvatarStyles = () => ({
-  root: ({ size, width, height, radius }: DynamicAvatarStyleProps) => ({
+  root: ({ size = 48, width, height, radius }: DynamicAvatarStyleProps) => ({
     width: width || size,
     height: height || size,
     borderRadius: radius,

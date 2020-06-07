@@ -7,3 +7,5 @@ export * from './trendy/TrendyListItemDemo'
 
 export * from './popular/PopularListItemDemo'
 
+export * from './news/NewsListItemDemo'
+

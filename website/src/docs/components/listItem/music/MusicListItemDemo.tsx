@@ -29,24 +29,18 @@ const useStyles = makeStyles(() => ({
 }));
 
 export const MusicListItemDemo = React.memo(function MusicListItem() {
+  const commonProps = {
+    blur: '12px',
+    radius: 16,
+    size: 48,
+    opacity: 0.6,
+  };
   const src =
     'https://cdn1.vectorstock.com/i/1000x1000/85/40/music-abstract-poster-cover-1980s-style-background-vector-11958540.jpg';
-  const avatarStyles = useGrowAvatarStyles({
-    src,
-    blur: '12px',
-    radius: 8,
-    size: 48,
-    opacity: 0.6,
-  });
+  const avatarStyles = useGrowAvatarStyles({ src, ...commonProps });
   const src2 =
     'https://www.designformusic.com/wp-content/uploads/2016/04/orion-trailer-music-album-cover-design.jpg';
-  const avatarStyles2 = useGrowAvatarStyles({
-    src: src2,
-    blur: '12px',
-    radius: 8,
-    size: 48,
-    opacity: 0.6,
-  });
+  const avatarStyles2 = useGrowAvatarStyles({ src: src2, ...commonProps });
   const styles = useStyles();
   return (
     <>
