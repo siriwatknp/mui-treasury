@@ -111,7 +111,7 @@ export default [
         key: 'list-item',
         label: 'ListItem',
         to: '/components/list-item',
-        total: 1,
+        total: 5,
       },
       { key: 'rip', label: 'Rip', total: rips.length, to: '/components/rip' },
       {
