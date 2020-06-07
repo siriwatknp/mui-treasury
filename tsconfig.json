@@ -24,7 +24,10 @@
     "@mui-treasury/components/*": "packages/mui-components/src/*",
     "@mui-treasury/styles/*": "packages/mui-styles/src/*",
     "@mui-treasury/layout/*": "packages/mui-layout/src/*",
-    "@mui-treasury/mockup/*": "packages/mui-mockup/src/*"
+    "@mui-treasury/mockup/*": "packages/mui-mockup/src/*",
+    "components/*": "website/src/components/*",
+    "containers/*": "website/src/containers/*",
+    "utils/*": "website/src/utils/*"
   },
   "include": [
     "./website/src/**/*",

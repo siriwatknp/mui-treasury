@@ -6,13 +6,15 @@ unless_exists: true
 
 import { use<%= displayName %>Styles } from '@mui-treasury/styles/<%= category %>/<%= name %>';
 
-export const <%= displayName %>Style: React.FC<{}> = React.memo(() => {
-  return (
-    <>
-      Style showcase goes here!
-    </>
-  );
-});
+export const <%= displayName %>Style: React.FC<{}> = React.memo(
+  function <%= displayName %>() {
+    return (
+      <>
+        Style showcase goes here!
+      </>
+    );
+  }
+);
 // hide-start
 // eslint-disable-next-line import/first
 import Showcase, {

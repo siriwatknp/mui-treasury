@@ -3,7 +3,7 @@ import Avatar from '@material-ui/core/Avatar';
 
 import { useGradientAvatarStyles } from '@mui-treasury/styles/avatar/gradient';
 
-export const GradientAvatarStyle = React.memo(() => {
+export const GradientAvatarStyle = React.memo(function GradientAvatar() {
   const styles = useGradientAvatarStyles({
     size: 80,
     gap: 3,
@@ -46,7 +46,7 @@ const metadata: IMetadata = {
   ],
 };
 // @ts-ignore
-GradientAvatarStyle.Showcase = AttachedShowcase
+GradientAvatarStyle.Showcase = AttachedShowcase;
 // @ts-ignore
-GradientAvatarStyle.metadata = metadata
+GradientAvatarStyle.metadata = metadata;
 // hide-end

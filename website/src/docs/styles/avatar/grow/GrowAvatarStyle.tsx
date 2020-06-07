@@ -3,10 +3,15 @@ import Avatar from '@material-ui/core/Avatar';
 
 import { useGrowAvatarStyles } from '@mui-treasury/styles/avatar/grow';
 
-export const GrowAvatarStyle: React.FC<{}> = React.memo(() => {
+export const GrowAvatarStyle: React.FC<{}> = React.memo(function GrowAvatar() {
   const src =
     'https://freedesignfile.com/upload/2017/05/Sunrise-tropical-island-beach-view-HD-picture-01.jpg';
-  const styles = useGrowAvatarStyles({ src, size: 100, radius: 16, blur: '16px' });
+  const styles = useGrowAvatarStyles({
+    src,
+    size: 100,
+    radius: 16,
+    blur: '16px',
+  });
   return (
     <>
       <Avatar classes={styles} src={src} />
@@ -38,7 +43,7 @@ const metadata: IMetadata = {
   files: [{ pkg: 'mui-styles', path: 'avatar/grow/growAvatar.styles.ts' }],
 };
 // @ts-ignore
-GrowAvatarStyle.Showcase = AttachedShowcase
+GrowAvatarStyle.Showcase = AttachedShowcase;
 // @ts-ignore
-GrowAvatarStyle.metadata = metadata
+GrowAvatarStyle.metadata = metadata;
 // hide-end

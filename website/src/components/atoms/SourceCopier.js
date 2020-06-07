@@ -25,19 +25,21 @@ const SourceCopier = ({ source, sourceName, children }) => {
   return (
     <Box className={'SourceCopier-root'} position={'relative'}>
       {children}
-      <Copier text={source}>
-        {({ copied }) => (
-          <Button
-            variant={'contained'}
-            color={'secondary'}
-            size={'small'}
-            className={styles.button}
-          >
-            {!copied && <FileCopy className={styles.icon} />}{' '}
-            {copied ? 'Copied!' : sourceName}
-          </Button>
-        )}
-      </Copier>
+      {source && (
+        <Copier text={source}>
+          {({ copied }) => (
+            <Button
+              variant={'contained'}
+              color={'secondary'}
+              size={'small'}
+              className={styles.button}
+            >
+              {!copied && <FileCopy className={styles.icon} />}{' '}
+              {copied ? 'Copied!' : sourceName}
+            </Button>
+          )}
+        </Copier>
+      )}
     </Box>
   );
 };

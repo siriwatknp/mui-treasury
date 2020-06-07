@@ -5,23 +5,25 @@ import Box from '@material-ui/core/Box';
 import { useDynamicAvatarStyles } from '@mui-treasury/styles/avatar/dynamic';
 import { useRowGutterStyles } from '@mui-treasury/styles/gutter/row';
 
-export const DynamicAvatarStyle: React.FC<{}> = React.memo(() => {
-  const styles = useDynamicAvatarStyles({ size: 48 });
-  const styles2 = useDynamicAvatarStyles({ size: 64, radius: 8 });
-  const styles3 = useDynamicAvatarStyles({ size: 32 });
-  const gutterStyles = useRowGutterStyles({ size: 8 });
-  return (
-    <Box display={'flex'} className={gutterStyles.parent}>
-      <Avatar classes={styles} src={'https://i.pravatar.cc/300?img=11'} />
-      <Avatar classes={styles2} src={'https://i.pravatar.cc/300?img=12'} />
-      <Avatar
-        classes={styles3}
-        variant={'square'}
-        src={'https://i.pravatar.cc/300?img=13'}
-      />
-    </Box>
-  );
-});
+export const DynamicAvatarStyle: React.FC<{}> = React.memo(
+  function DynamicAvatar() {
+    const styles = useDynamicAvatarStyles({ size: 48 });
+    const styles2 = useDynamicAvatarStyles({ size: 64, radius: 8 });
+    const styles3 = useDynamicAvatarStyles({ size: 32 });
+    const gutterStyles = useRowGutterStyles({ size: 8 });
+    return (
+      <Box display={'flex'} className={gutterStyles.parent}>
+        <Avatar classes={styles} src={'https://i.pravatar.cc/300?img=11'} />
+        <Avatar classes={styles2} src={'https://i.pravatar.cc/300?img=12'} />
+        <Avatar
+          classes={styles3}
+          variant={'square'}
+          src={'https://i.pravatar.cc/300?img=13'}
+        />
+      </Box>
+    );
+  }
+);
 // hide-start
 // eslint-disable-next-line import/first
 import Showcase, {
@@ -49,7 +51,7 @@ const metadata: IMetadata = {
   ],
 };
 // @ts-ignore
-DynamicAvatarStyle.Showcase = AttachedShowcase
+DynamicAvatarStyle.Showcase = AttachedShowcase;
 // @ts-ignore
-DynamicAvatarStyle.metadata = metadata
+DynamicAvatarStyle.metadata = metadata;
 // hide-end

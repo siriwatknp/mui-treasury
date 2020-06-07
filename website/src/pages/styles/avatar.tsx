@@ -12,6 +12,7 @@ import { orderIndex, getStatusByDate } from '../../utils/functions2';
 import { IMetadata, ShowcaseProps } from 'website/src/components/Showcase';
 
 import { Row, Item } from '../../../../packages/mui-components/src/flex';
+import SourceDrawer from 'website/src/containers/SourceDrawer';
 
 interface IShowcase {
   name: string;
@@ -20,25 +21,30 @@ interface IShowcase {
 }
 
 const AvatarStylesPage = () => {
+  const [selectedComponent, setComponent] = React.useState({});
   return (
     <div>
+      <SourceDrawer Component={selectedComponent} setComponent={setComponent} />
       <ComponentHeading
         title={'Avatar'}
         description={'A collection of Avatar components'}
       />
       <GridContainer>
         {orderIndex(components).map((Component: IShowcase) => {
-          const { colSpan = 1, rowSpan = 2, createdAt } =
+          const { colSpan = 1, rowSpan = 2, createdAt, path } =
             Component?.metadata ?? {};
           return (
-            <GridItem key={Component.name} colSpan={colSpan} rowSpan={rowSpan}>
+            <GridItem key={path} colSpan={colSpan} rowSpan={rowSpan}>
               <Component.Showcase
                 variant={colSpan >= 3 ? 'row' : 'column'}
                 status={getStatusByDate(createdAt)}
                 actions={
                   <Row position={'middle-right'}>
                     <Item>
-                      <IconButton data-testid="view-code-button">
+                      <IconButton
+                        onClick={() => setComponent(Component)}
+                        data-testid="view-code-button"
+                      >
                         <CodeRounded />
                       </IconButton>
                     </Item>
