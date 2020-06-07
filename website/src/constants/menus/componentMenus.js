@@ -107,6 +107,12 @@ export default [
         label: 'Info',
         to: '/components/info'
       },
+      {
+        key: 'list-item',
+        label: 'ListItem',
+        to: '/components/list-item',
+        total: 1,
+      },
       { key: 'rip', label: 'Rip', total: rips.length, to: '/components/rip' },
       {
         key: 'sidebar-item',

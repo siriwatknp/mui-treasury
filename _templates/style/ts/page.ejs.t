@@ -1,8 +1,12 @@
-import React from 'react';
+---
+to: website/src/pages/styles/<%= h.changeCase.paramCase(category) %>.tsx
+unless_exists: true
+---
+<%displayName = h.changeCase.pascal(name) + h.changeCase.pascal(category)%>import React from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import CodeRounded from '@material-ui/icons/CodeRounded';
 
-import * as components from '../../docs/styles/avatar';
+import * as components from '../../docs/styles/<%= category %>';
 import ComponentHeading from '../../components/organisms/ComponentHeading';
 import {
   GridContainer,
@@ -20,7 +24,7 @@ interface IShowcase {
   metadata: IMetadata;
 }
 
-const AvatarStylesPage = () => {
+const <%= h.changeCase.pascal(category) %>StylesPage = () => {
   const [selectedComponent, setComponent] = React.useState({});
   return (
     <div>
@@ -60,4 +64,4 @@ const AvatarStylesPage = () => {
   );
 };
 
-export default AvatarStylesPage;
+export default <%= h.changeCase.pascal(category) %>StylesPage;

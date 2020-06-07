@@ -175,6 +175,7 @@ export type IMetadata = {
   path: string;
   colSpan?: 1 | 2 | 3 | 4;
   rowSpan?: 2 | 3 | 4;
+  frameProps?: BoxProps;
   createdAt?: string;
   files?: Array<{ pkg: 'mui-styles' | 'mui-components'; path: string }>;
 };

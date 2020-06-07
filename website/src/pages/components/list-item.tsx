@@ -2,7 +2,7 @@ import React from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import CodeRounded from '@material-ui/icons/CodeRounded';
 
-import * as components from '../../docs/styles/avatar';
+import * as components from '../../docs/components/listItem';
 import ComponentHeading from '../../components/organisms/ComponentHeading';
 import {
   GridContainer,
@@ -20,7 +20,7 @@ interface IShowcase {
   metadata: IMetadata;
 }
 
-const AvatarStylesPage = () => {
+const ListItemDemoPage = () => {
   const [selectedComponent, setComponent] = React.useState({});
   return (
     <div>
@@ -60,4 +60,4 @@ const AvatarStylesPage = () => {
   );
 };
 
-export default AvatarStylesPage;
+export default ListItemDemoPage;

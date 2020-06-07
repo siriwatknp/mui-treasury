@@ -31,7 +31,7 @@ export default [
       {
         key: 'avatar',
         label: 'Avatar',
-        total: 1,
+        total: 5,
         to: '/styles/avatar',
       },
       {
