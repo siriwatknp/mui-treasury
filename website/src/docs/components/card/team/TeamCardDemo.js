@@ -71,7 +71,7 @@ const CustomCard = ({ thumbnail, title, subtitle, description, joined }) => {
   return (
     <div className={styles.root}>
       <Column className={styles.card}>
-        <Row gutter={2}>
+        <Row gap={2}>
           <Avatar className={styles.logo} variant={'rounded'} src={thumbnail} />
           <Info position={'middle'} useStyles={useApexInfoStyles}>
             <InfoTitle>{title}</InfoTitle>
@@ -87,7 +87,7 @@ const CustomCard = ({ thumbnail, title, subtitle, description, joined }) => {
         >
           {description}
         </Box>
-        <Row gutter={2} position={'bottom'}>
+        <Row gap={2} position={'bottom'}>
           <Item>
             <AvatarGroup max={4} classes={{ avatar: styles.avatar }}>
               {new Array(5).fill(0).map((_, index) => (

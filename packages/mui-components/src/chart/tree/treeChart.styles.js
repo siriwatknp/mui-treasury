@@ -11,7 +11,7 @@ const createTipStyle = () => ({
 
 export const DEFAULT_VAR = {
   length: defaultLength,
-  gutter: defaultGutter,
+  gap: defaultGutter,
   outline: defaultOutline,
 };
 

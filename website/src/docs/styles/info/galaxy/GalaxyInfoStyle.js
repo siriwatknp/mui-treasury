@@ -21,7 +21,7 @@ const GalaxyInfoStyle = () => {
           ]}
         />
       </NoSsr>
-      <Column gutter={2}>
+      <Column gap={2}>
         <Info useStyles={useGalaxyInfoStyles}>
           <InfoSubtitle>Galaxy</InfoSubtitle>
           <InfoTitle>Buds 2019</InfoTitle>

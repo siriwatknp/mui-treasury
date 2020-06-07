@@ -13,7 +13,7 @@ const ChatzInfoStyle = () => {
           fonts={[{ font: 'Maven Pro', weights: [400, 500] }]}
         />
       </NoSsr>
-      <Column gutter={2}>
+      <Column gap={2}>
         <Info useStyles={useChatzInfoStyles}>
           <InfoTitle>Phawta Tuntayakul</InfoTitle>
           <InfoSubtitle>Great, I'll join you tomorrow...</InfoSubtitle>

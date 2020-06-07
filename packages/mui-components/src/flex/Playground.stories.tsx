@@ -4,17 +4,10 @@ import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 
-const Wrap = ({ children }) => {
-  return <div>{children}</div>;
-};
-
 export default () => {
   return (
     <>
-      <Wrap breakpoint={'xs'}>
-
-      </Wrap>
-      <Row gutter={2} position={'bottom'}>
+      <Row gap={2} position={'bottom'}>
         <Item>
           <AvatarGroup max={4}>
             {new Array(5).fill(0).map((_, index) => (

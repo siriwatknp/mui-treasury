@@ -16,7 +16,7 @@ const MusicInfoStyle = () => {
       <NoSsr>
         <GoogleFontLoader fonts={[{ font: 'Questrial' }]} />
       </NoSsr>
-      <Column gutter={2}>
+      <Column gap={2}>
         <Info useStyles={useMusicInfoStyles}>
           <InfoTitle>Money Longer</InfoTitle>
           <InfoSubtitle>Lil Uzi Vert</InfoSubtitle>

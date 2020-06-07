@@ -11,7 +11,7 @@ const TutorInfoStyle = () => {
       <NoSsr>
         <GoogleFontLoader fonts={[{ font: 'Open Sans', weights: [500, 700] }]} />
       </NoSsr>
-      <Column gutter={2}>
+      <Column gap={2}>
         <Info useStyles={useTutorInfoStyles}>
           <InfoTitle>Kenny Foster</InfoTitle>
           <InfoSubtitle>@fosterlive</InfoSubtitle>

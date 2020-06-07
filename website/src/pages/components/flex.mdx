@@ -121,7 +121,7 @@ const BasicProfile = props => {
   // same styles
   const styles = useBasicProfileStyles()
   return (
-    <Row gutter={1.5} {...props}>
+    <Row gap={1.5} {...props}>
       <Avatar className={styles.avatar}>S</Avatar>
       <Item position={'middle'}>
         <Typography className={styles.overline}>
@@ -136,7 +136,7 @@ const BasicProfile = props => {
 }
 ```
 
-`Row` is flex by default with `flex-direction: row`, it can accept `gutter` props to specify gap between its children.
+`Row` is flex by default with `flex-direction: row`, it can accept `gap` props to specify gap between its children.
 `1.5` is unit related to material-ui spacing spec, but you can also use string like `1rem`.
 
 For `Item`, it is a simple div with some props that works with flexbox, one of them is `position` (not css position).
@@ -158,7 +158,7 @@ As you can see on the right hand-side of the picture, it looks like a `Column` l
 import { Column, Item } from '@mui-treasury/components/flex'
 
 const Card = () => (
-  <Column className={styles.card} gutter={1.5}>
+  <Column className={styles.card} gap={1.5}>
     <Item>Card Header</Item>
     <Item>
       <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8}>
@@ -178,7 +178,7 @@ Replace `<Item>Basic Profile</Item>` with `BasicProfile` that we have earlier.
 import { Row, Column, Item } from '@mui-treasury/components/flex'
 
 const Card = () => (
-  <Column className={styles.card} gutter={1.5}>
+  <Column className={styles.card} gap={1.5}>
     <Item>Card Header</Item>
     <Item>
       <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8}>
@@ -186,7 +186,7 @@ const Card = () => (
       </Box>
     </Item>
 // highlight-start
-    <Row gutter={'inherit'} {...props}>
+    <Row gap={'inherit'} {...props}>
       <Avatar className={styles.avatar}>S</Avatar>
       <Item position={'middle'}>
         <Typography className={styles.overline}>
@@ -202,9 +202,9 @@ const Card = () => (
 )
 ```
 
-`gutter` can be `inherit` from the nearest `Row` or `Column`. By saying inherit, it will apply to their direct `Items`.
+`gap` can be `inherit` from the nearest `Row` or `Column`. By saying inherit, it will apply to their direct `Items`.
 
-In this example, `Column` ==gutter(1.5)==> `Row` ==gutter(inherit = 1.5)==> `Item`
+In this example, `Column` ==gap(1.5)==> `Row` ==gap(inherit = 1.5)==> `Item`
 
 Then we can achieve the same thing for `CardHeader` with this.
 
@@ -212,7 +212,7 @@ Then we can achieve the same thing for `CardHeader` with this.
 import { Row, Column, Item } from '@mui-treasury/components/flex'
 
 const Card = () => (
-  <Column className={styles.card} gutter={1.5}>
+  <Column className={styles.card} gap={1.5}>
 // highlight-start
     <Row>
       <Item>
@@ -235,7 +235,7 @@ const Card = () => (
   
       </Box>
     </Item>
-    <Row gutter={'inherit'} {...props}>
+    <Row gap={'inherit'} {...props}>
       <Avatar className={styles.avatar}>S</Avatar>
       <Item position={'middle'}>
         <Typography className={styles.overline}>
@@ -260,7 +260,7 @@ By using this approach, we can swap order to achieve different direction without
 import { Row, Column, Item } from '@mui-treasury/components/flex'
 
 const Card = () => (
-  <Row className={styles.card} gutter={1.5}>
+  <Row className={styles.card} gap={1.5}>
 // highlight-start
     <Item grow>
 // highlight-end
@@ -268,7 +268,7 @@ const Card = () => (
   
       </Box>
     </Item>
-    <Column gutter={'inherit'}>
+    <Column gap={'inherit'}>
       <Row>
         <Item>
           <Typography className={styles.title}>
@@ -284,7 +284,7 @@ const Card = () => (
           </IconButton>
         </Item>
       </Row>
-      <Row gutter={'inherit'} position={'bottom'}>
+      <Row gap={'inherit'} position={'bottom'}>
         <Avatar className={styles.avatar}>S</Avatar>
         <Item position={'middle'}>
           <Typography className={styles.overline}>

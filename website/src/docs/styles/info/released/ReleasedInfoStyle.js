@@ -15,7 +15,7 @@ const ReleasedInfoStyle = () => {
       <NoSsr>
         <GoogleFontLoader fonts={[{ font: 'DM Sans', weights: [500, 600] }]} />
       </NoSsr>
-      <Column gutter={2}>
+      <Column gap={2}>
         <Info useStyles={useReleasedInfoStyles}>
           <InfoTitle>Released Date</InfoTitle>
           <InfoSubtitle>10 Feb 2021</InfoSubtitle>

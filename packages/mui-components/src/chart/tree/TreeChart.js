@@ -14,14 +14,14 @@ const TreeChart = ({ children, ...props }) => {
 TreeChart.propTypes = {
   children: PropTypes.node,
   length: PropTypes.number,
-  gutter: PropTypes.number,
+  gap: PropTypes.number,
   outline: PropTypes.string,
   useStyles: PropTypes.func,
 };
 TreeChart.defaultProps = {
   children: null,
   length: 16,
-  gutter: 12,
+  gap: 12,
   outline: `1px solid ${blueGrey[100]}`,
   useStyles: useDefaultStyles,
 };

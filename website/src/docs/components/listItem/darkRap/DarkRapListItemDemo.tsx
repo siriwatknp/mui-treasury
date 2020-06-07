@@ -14,7 +14,7 @@ export const DarkRapListItemDemo: React.FC<{}> = React.memo(
   function DarkRapListItem() {
     const avatarStyles = useDynamicAvatarStyles({ size: 70 });
     return (
-      <Column gutter={2}>
+      <Column gap={2}>
         <Row>
           <Avatar
             variant={'rounded'}

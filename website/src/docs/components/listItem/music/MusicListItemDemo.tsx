@@ -47,7 +47,7 @@ export const MusicListItemDemo = React.memo(function MusicListItem() {
       <NoSsr>
         <GoogleFontLoader fonts={[{ font: 'Questrial' }]} />
       </NoSsr>
-      <Column gutter={2} width={'100%'}>
+      <Column gap={2} width={'100%'}>
         <Row>
           <div className={avatarStyles.root}>
             <Avatar src={src} />

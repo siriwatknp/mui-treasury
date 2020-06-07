@@ -14,7 +14,7 @@ export const TrendyListItemDemo = React.memo(function TrendyListItem() {
       <NoSsr>
         <GoogleFontLoader fonts={[{ font: 'Manrope', weights: [500, 700] }]} />
       </NoSsr>
-      <Row gutter={3}>
+      <Row gap={3}>
         <Avatar
           variant={'rounded'}
           classes={avatarStyles}

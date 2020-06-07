@@ -13,14 +13,14 @@ export default ({ palette }) => ({
   spouse: {
     display: 'inline-flex',
     position: 'relative',
-    marginLeft: ({ gutter = DEFAULT_VAR.gutter }) => gutter * 2,
+    marginLeft: ({ gutter = DEFAULT_VAR.gap }) => gutter * 2,
     '&:before': {
       content: '""',
       position: 'absolute',
-      width: ({ gutter = DEFAULT_VAR.gutter }) => gutter * 2,
+      width: ({ gutter = DEFAULT_VAR.gap }) => gutter * 2,
       outline: DEFAULT_VAR.outline,
       top: '50%',
-      left: ({ gutter = DEFAULT_VAR.gutter }) => -gutter * 2,
+      left: ({ gutter = DEFAULT_VAR.gap }) => -gutter * 2,
     },
   },
   spouseWithChildren: {
@@ -30,18 +30,18 @@ export default ({ palette }) => ({
       height: '50%',
       outline: ({ outline = DEFAULT_VAR.outline }) => outline,
       top: '50%',
-      left: ({ gutter = DEFAULT_VAR.gutter }) => -gutter,
+      left: ({ gutter = DEFAULT_VAR.gap }) => -gutter,
     },
   },
   hasOneSpouse: {
     '&:first-child:before': {
-      left: ({ avatarSize = defaultAvatarSize, gutter = DEFAULT_VAR.gutter }) =>
+      left: ({ avatarSize = defaultAvatarSize, gutter = DEFAULT_VAR.gap }) =>
         `calc(50% - ${avatarSize / 2}px - ${gutter}px)`,
     },
     '&:last-child:not(:first-child):before': {
       right: ({
         avatarSize = defaultAvatarSize,
-        gutter = DEFAULT_VAR.gutter,
+        gutter = DEFAULT_VAR.gap,
       }) => `calc(50% + ${avatarSize / 2}px + ${gutter}px)`,
     },
   },

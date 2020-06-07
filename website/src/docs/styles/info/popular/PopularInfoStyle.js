@@ -16,7 +16,7 @@ const PopularInfoStyle = () => {
       <NoSsr>
         <GoogleFontLoader fonts={[{ font: 'Poppins', weights: [400, 700] }]} />
       </NoSsr>
-      <Column gutter={2}>
+      <Column gap={2}>
         <Info useStyles={usePopularInfoStyles}>
           <InfoSubtitle>Design</InfoSubtitle>
           <InfoTitle>Most Awaited - Figma Launches Plugin</InfoTitle>

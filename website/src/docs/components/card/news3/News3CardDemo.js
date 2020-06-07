@@ -134,7 +134,7 @@ const News3CardDemo = () => {
           className={styles.author}
           px={3}
           pb={3}
-          gutter={2}
+          gap={2}
           bgcolor={'common.white'}
         >
           <Avatar className={styles.avatar} src={'https://i.pravatar.cc/300?img=13'} />

@@ -1,7 +1,7 @@
 import each from 'jest-each';
 import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
 import createSpacing from '@material-ui/core/styles/createSpacing';
-import { gutterToCss, getLowerMediaQuery } from './utils';
+import { gapToCss, getLowerMediaQuery } from './utils';
 
 describe('flex utils', () => {
   describe('gutterToCss', () => {
@@ -26,7 +26,7 @@ describe('flex utils', () => {
     ]).it(
       'return correct result given gutter is type %s',
       (_, gutter, expected) => {
-        expect(gutterToCss(theme)(gutter, callback)).toEqual(expected);
+        expect(gapToCss(theme)(gutter, callback)).toEqual(expected);
       }
     );
 

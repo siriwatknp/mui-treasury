@@ -15,7 +15,7 @@ const TrendInfoStyle = () => {
       <NoSsr>
         <GoogleFontLoader fonts={[{ font: 'Manrope', weights: [500, 700] }]} />
       </NoSsr>
-      <Column gutter={2}>
+      <Column gap={2}>
         <Info useStyles={useTrendInfoStyles}>
           <InfoTitle>Beats X Super Fast Charge</InfoTitle>
           <InfoSubtitle>Starts from $250</InfoSubtitle>

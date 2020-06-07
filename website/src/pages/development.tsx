@@ -7,7 +7,7 @@ import { ColumnToRow, RowToColumn, Row, Column, Item } from '@mui-treasury/compo
 export default () => {
   return (
     <Box p={3}>
-      <ColumnToRow gutter={2} at={'sm'}>
+      <ColumnToRow gap={2} at={'sm'}>
         <Item>
           <Box width={'100%'} minWidth={300} maxWidth={500} height={100} bgcolor={'primary.main'} />
         </Item>
@@ -21,11 +21,11 @@ export default () => {
         </Row>
       </ColumnToRow>
       <br />
-      <ColumnToRow gutter={2} at={'sm'} justifyContent={'space-between'}>
+      <ColumnToRow gap={2} at={'sm'} justifyContent={'space-between'}>
         <Item>
           <Box width={'100%'} minWidth={300} maxWidth={500} height={100} bgcolor={'primary.main'} />
         </Item>
-        <RowToColumn gutter={1} at={500} columnReversed>
+        <RowToColumn gap={1} at={500} columnReversed>
           <Item flex={1}>
             <Button fullWidth>Cancel</Button>
           </Item>
@@ -35,13 +35,13 @@ export default () => {
         </RowToColumn>
       </ColumnToRow>
       <br />
-      <Row gutter={2}>
+      <Row gap={2}>
         <Item>item1</Item>
-        <Row gutter={1} data-testid={'nested-row'}>
+        <Row gap={1} data-testid={'nested-row'}>
           <Item>nested-row item1</Item>
           <Item>nested-row item2</Item>
         </Row>
-        <Column gutter={3} data-testid={'nested-column'}>
+        <Column gap={3} data-testid={'nested-column'}>
           <Item>nested-column item1</Item>
           <Item>nested-column item2</Item>
           <Item>nested-column item3</Item>

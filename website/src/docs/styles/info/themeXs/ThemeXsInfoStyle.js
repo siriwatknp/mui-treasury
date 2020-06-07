@@ -11,7 +11,7 @@ import { useThemeXsInfoStyles } from '@mui-treasury/styles/info/themeXs';
 
 const ThemeXsInfoStyle = () => {
   return (
-    <Column gutter={1.5} bgcolor={'#fff'} minWidth={200}>
+    <Column gap={1.5} bgcolor={'#fff'} minWidth={200}>
       <Info useStyles={useThemeXsInfoStyles}>
         <InfoTitle>Lonely ft.Lil Skies</InfoTitle>
         <InfoSubtitle>Yung Bans</InfoSubtitle>

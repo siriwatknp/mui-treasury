@@ -11,7 +11,7 @@ import { useThemeSmInfoStyles } from '@mui-treasury/styles/info/themeSm';
 
 const ThemeSmInfoStyle = () => {
   return (
-    <Column gutter={1.5} bgcolor={'#fff'} minWidth={200}>
+    <Column gap={1.5} bgcolor={'#fff'} minWidth={200}>
       <Info useStyles={useThemeSmInfoStyles}>
         <InfoTitle>No Problem (feat. Lil Wayne)</InfoTitle>
         <InfoSubtitle>Chance the Rapper</InfoSubtitle>

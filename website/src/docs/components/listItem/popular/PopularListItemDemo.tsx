@@ -23,7 +23,7 @@ export const PopularListItemDemo = React.memo(function PopularListItem() {
       <NoSsr>
         <GoogleFontLoader fonts={[{ font: 'Poppins', weights: [400, 700] }]} />
       </NoSsr>
-      <Row gutter={3}>
+      <Row gap={3}>
         <Avatar
           variant={'rounded'}
           classes={avatarStyles}

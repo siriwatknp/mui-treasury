@@ -5,20 +5,20 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import { Theme } from '@material-ui/core';
 import {
   At,
-  Gutter,
+  Gap,
   Provider,
-  useGutterLookup,
+  useGapLookup,
   BreakpointProvider,
   useBreakpointLookup,
 } from './core';
 import Item, { ItemProps } from './Item';
-import { gutterToCss, getLowerMediaQuery } from './utils';
+import { gapToCss, getLowerMediaQuery } from './utils';
 
 export type ColumnToRowProps = ItemProps & {
   columnStyle?: CSS.Properties;
   rowStyle?: CSS.Properties;
   at?: At;
-  gutter?: Gutter;
+  gap?: Gap;
   rowReversed?: boolean;
   children: React.ReactNode | React.ReactElement | React.ReactElement[];
 };
@@ -28,40 +28,33 @@ const styles = (theme: Theme) => {
   return {
     root: ({
       at,
-      gutter,
+      gap,
       columnStyle,
       rowStyle,
       rowReversed,
     }: Pick<
       ColumnToRowProps,
-      'columnStyle' | 'rowStyle' | 'at' | 'gutter' | 'rowReversed'
-    >) => {
-      console.log('gutter', gutter);
-      const result = gutterToCss(theme)(gutter, (value: string) => ({
-        '& > *:not(:first-child)': { paddingTop: value },
-      }))
-      console.log('result', result);
-      return {
-        display: 'flex',
-        [getLowerMediaQuery(theme, at)]: {
-          ...columnStyle,
-          flexDirection: 'column' as const,
-          ...gutterToCss(theme)(gutter, (value: string) => ({
-            '& > *:not(:first-child)': { paddingTop: value },
-          })),
-        },
-        [breakpoints.up(at)]: {
-          alignItems: 'center',
-          flexDirection: rowReversed ? 'row-reverse' : ('row' as const),
-          ...rowStyle,
-          ...gutterToCss(theme)(gutter, (value: string | number) => ({
-            [`& > *:not(:${rowReversed ? 'last' : 'first'}-child)`]: {
-              paddingLeft: value,
-            },
-          })),
-        },
-      };
-    },
+      'columnStyle' | 'rowStyle' | 'at' | 'gap' | 'rowReversed'
+    >) => ({
+      display: 'flex',
+      [getLowerMediaQuery(theme, at)]: {
+        ...columnStyle,
+        flexDirection: 'column' as const,
+        ...gapToCss(theme)(gap, (value: string) => ({
+          '& > *:not(:first-child)': { paddingTop: value },
+        })),
+      },
+      [breakpoints.up(at)]: {
+        alignItems: 'center',
+        flexDirection: rowReversed ? 'row-reverse' : ('row' as const),
+        ...rowStyle,
+        ...gapToCss(theme)(gap, (value: string | number) => ({
+          [`& > *:not(:${rowReversed ? 'last' : 'first'}-child)`]: {
+            paddingLeft: value,
+          },
+        })),
+      },
+    }),
   };
 };
 
@@ -70,7 +63,7 @@ const useStyles = makeStyles(styles, { name: 'FlexColumnToRow' });
 const ColumnToRow = ({
   className,
   children,
-  gutter,
+  gap,
   at,
   columnStyle,
   rowStyle,
@@ -78,13 +71,13 @@ const ColumnToRow = ({
   ...props
 }: ColumnToRowProps) => {
   const { calculatedAt } = useBreakpointLookup(at)
-  const { calculatedGutter, itemProps } = useGutterLookup(gutter);
+  const { calculatedGap, itemProps } = useGapLookup(gap);
   const styles = useStyles({
     at: calculatedAt,
     columnStyle,
     rowStyle,
     rowReversed,
-    gutter: calculatedGutter,
+    gap: calculatedGap,
   });
   return (
     <Item
@@ -92,7 +85,7 @@ const ColumnToRow = ({
       {...itemProps}
       {...props}
     >
-      <Provider flexDirection={'column-row'} gutter={calculatedGutter}>
+      <Provider flexDirection={'column-row'} gap={calculatedGap}>
         <BreakpointProvider at={calculatedAt}>
           {children}
         </BreakpointProvider>

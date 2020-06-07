@@ -40,7 +40,7 @@ const useBasicProfileStyles = makeStyles(({ palette }) => ({
 const BasicProfile = props => {
   const styles = useBasicProfileStyles()
   return (
-    <Row gutter={'inherit'} {...props}>
+    <Row {...props}>
       <Avatar className={styles.avatar}>S</Avatar>
       <Item position={'middle'} pl={{ xs: 1, sm: 1.5 }}>
         <Typography className={styles.overline}>
@@ -107,7 +107,7 @@ const ShowcaseCardDemo = () => {
   return (
     <Grid container spacing={4} justify={'center'}>
       <Grid item xs={12} sm={4} md={3}>
-        <Column className={styles.card} gutter={{ xs: 1, sm: 1.5, lg: 2 }}>
+        <Column className={styles.card} gap={{ xs: 1, sm: 1.5, lg: 2 }}>
           <CardHeader />
           <Item>
             <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8}>
@@ -118,13 +118,13 @@ const ShowcaseCardDemo = () => {
         </Column>
       </Grid>
       <Grid item xs={12} sm={8} lg={7}>
-        <Row className={styles.card} gutter={{ xs: 1, sm: 1.5, lg: 2 }}>
+        <Row className={styles.card} gap={{ xs: 1, sm: 1.5, lg: 2 }}>
           <Item grow>
             <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8}>
 
             </Box>
           </Item>
-          <Column gutter={'inherit'}>
+          <Column>
             <CardHeader />
             <BasicProfile position={'bottom'} />
           </Column>

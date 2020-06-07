@@ -11,7 +11,7 @@ const NewsInfoStyle = () => {
       <NoSsr>
         <GoogleFontLoader fonts={[{ font: 'Sen' }]} />
       </NoSsr>
-      <Column gutter={2}>
+      <Column gap={2}>
         <Info useStyles={useNewsInfoStyles}>
           <InfoTitle>Nadine Petrolli</InfoTitle>
           <InfoSubtitle>Jul 20 | 2 Min Read</InfoSubtitle>

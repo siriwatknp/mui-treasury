@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'clsx';
 import Box, { BoxProps } from '@material-ui/core/Box';
-import { Position, useFlexStyles, useGutterProps } from './core';
+import { Position, useFlexStyles, useGapProps } from './core';
 
 export type ItemProps = {
   position?: Position;
@@ -20,7 +20,7 @@ const Item = ({
   'data-flexindex': itemIndex,
   ...props
 }: ItemProps) => {
-  const gutterProps = useGutterProps(itemIndex);
+  const gutterProps = useGapProps(itemIndex);
   const flexStyles = useFlexStyles(position);
   return (
     <Box

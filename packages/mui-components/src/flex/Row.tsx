@@ -1,15 +1,15 @@
 import React from 'react';
 import cx from 'clsx';
 import Item, { ItemProps } from './Item';
-import { Provider, useGutterLookup, Gutter } from './core';
+import { Provider, useGapLookup, Gap } from './core';
 
 export type RowProps = ItemProps & {
-  gutter?: Gutter;
+  gap?: Gap;
   children: React.ReactNode | React.ReactElement | React.ReactElement[];
 };
 
-const Row = ({ className, children, gutter, ...props }: RowProps) => {
-  const { calculatedGutter, itemProps } = useGutterLookup(gutter);
+const Row = ({ className, children, gap, ...props }: RowProps) => {
+  const { calculatedGap, itemProps } = useGapLookup(gap);
   return (
     <Item
       className={cx('FlexRow', className)}
@@ -17,7 +17,7 @@ const Row = ({ className, children, gutter, ...props }: RowProps) => {
       {...itemProps}
       {...props}
     >
-      <Provider flexDirection={'row'} gutter={calculatedGutter}>
+      <Provider flexDirection={'row'} gap={calculatedGap}>
         {children}
       </Provider>
     </Item>

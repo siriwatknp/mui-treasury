@@ -1,12 +1,12 @@
 import { Theme } from '@material-ui/core';
-import { Gutter } from './core';
+import { Gap } from './core';
 import { Breakpoint, Breakpoints } from '@material-ui/core/styles/createBreakpoints';
 
 type Callback = (value: string | number) => any;
 
 // @ts-ignore
-export const gutterToCss = (theme: Pick<Theme, 'breakpoints' | 'spacing'>) => (
-  gutter: Gutter,
+export const gapToCss = (theme: Pick<Theme, 'breakpoints' | 'spacing'>) => (
+  gutter: Gap,
   callback: Callback = val => val
 ) => {
   if (typeof gutter === 'undefined' || gutter === null) return undefined;
@@ -20,7 +20,7 @@ export const gutterToCss = (theme: Pick<Theme, 'breakpoints' | 'spacing'>) => (
   return Object.entries(gutter).reduce(
     (result, current) => ({
       ...result,
-      [bp.up(current[0] as Breakpoint)]: gutterToCss(theme)(
+      [bp.up(current[0] as Breakpoint)]: gapToCss(theme)(
         current[1],
         callback
       ),

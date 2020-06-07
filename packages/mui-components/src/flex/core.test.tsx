@@ -34,9 +34,9 @@ describe('Flex', () => {
       ['em', '1em', '1em'],
       ['rem', '1rem', '1rem'],
       ['px', '12px', '12px'],
-    ]).it('gutter support value as %s', (unit, value, expected) => {
+    ]).it('gap support value as %s', (unit, value, expected) => {
       render(
-        <Row data-testid={'row'} gutter={value}>
+        <Row data-testid={'row'} gap={value}>
           <Item />
           test
         </Row>
@@ -48,7 +48,7 @@ describe('Flex', () => {
 
     it('has display flex with direction=row', () => {
       render(
-        <Row data-testid={'row'} gutter={2}>
+        <Row data-testid={'row'} gap={2}>
           <Item>item</Item>
         </Row>
       );
@@ -58,9 +58,9 @@ describe('Flex', () => {
       );
     });
 
-    it('[direction: row] children has correct gutter', () => {
+    it('[direction: row] children has correct gap', () => {
       render(
-        <Row gutter={2}>
+        <Row gap={2}>
           <Item>item1</Item>
           <Item>item2</Item>
           <Item>item3</Item>
@@ -94,9 +94,9 @@ describe('Flex', () => {
       ['em', '1em', '1em'],
       ['rem', '1rem', '1rem'],
       ['px', '12px', '12px'],
-    ]).it('gutter support value as %s', (unit, value, expected) => {
+    ]).it('gap support value as %s', (unit, value, expected) => {
       render(
-        <Column data-testid={'column'} gutter={value}>
+        <Column data-testid={'column'} gap={value}>
           <Item />
         </Column>
       );
@@ -107,7 +107,7 @@ describe('Flex', () => {
 
     it('has display flex with direction=column', () => {
       render(
-        <Column data-testid={'column'} gutter={2}>
+        <Column data-testid={'column'} gap={2}>
           <Item>item</Item>
         </Column>
       );
@@ -117,9 +117,9 @@ describe('Flex', () => {
       );
     });
 
-    it('[direction: row] children has correct gutter', () => {
+    it('[direction: row] children has correct gap', () => {
       render(
-        <Column gutter={2}>
+        <Column gap={2}>
           <Item>item1</Item>
           <Item>item2</Item>
           <Item>item3</Item>
@@ -152,7 +152,7 @@ describe('Flex', () => {
   describe('Nested', () => {
     it('NestedRow,Column has correct style', () => {
       render(
-        <Row data-testid={'row'} gutter={2}>
+        <Row data-testid={'row'} gap={2}>
           <Item>item1</Item>
           <Row data-testid={'nested-row'}>
             <Item>nested-row item1</Item>
@@ -185,15 +185,15 @@ describe('Flex', () => {
       );
     });
 
-    it('Nested has correct gutter', () => {
+    it('Nested has correct gap', () => {
       render(
-        <Row gutter={2}>
+        <Row gap={2}>
           <Item>item1</Item>
-          <Row gutter={1} data-testid={'nested-row'}>
+          <Row gap={1} data-testid={'nested-row'}>
             <Item>nested-row item1</Item>
             <Item>nested-row item2</Item>
           </Row>
-          <Column gutter={3} data-testid={'nested-column'}>
+          <Column gap={3} data-testid={'nested-column'}>
             <Item>nested-column item1</Item>
             <Item>nested-column item2</Item>
             <Item>nested-column item3</Item>
@@ -242,7 +242,7 @@ describe('Flex', () => {
 
     it("Showcase direction:column should have correct style", () => {
       render(
-        <Column gutter={2} data-testid={'column-root'}>
+        <Column gap={2} data-testid={'column-root'}>
           <CardHeader />
           <Item>
             <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8}>
@@ -264,7 +264,7 @@ describe('Flex', () => {
 
     it("Showcase direction:row should have correct style", () => {
       render(
-        <Row gutter={2} data-testid={'row-root'}>
+        <Row gap={2} data-testid={'row-root'}>
           <Item>
             <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8}>
 

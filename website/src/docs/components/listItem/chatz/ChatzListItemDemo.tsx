@@ -29,7 +29,7 @@ export const ChatzListItemDemo = React.memo(function ChatzListItem() {
           fonts={[{ font: 'Maven Pro', weights: [400, 500] }]}
         />
       </NoSsr>
-      <Column>
+      <Column gap={2}>
         <Row alignItems={'center'}>
           <div className={avatarStyles.root}>
             <Avatar src={'https://avatarfiles.alphacoders.com/816/81602.jpg'} />

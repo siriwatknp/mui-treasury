@@ -14,7 +14,7 @@ export const NewsListItemDemo = React.memo(function NewsListItem() {
       <NoSsr>
         <GoogleFontLoader fonts={[{ font: 'Sen' }]} />
       </NoSsr>
-      <Row>
+      <Row gap={2}>
         <Avatar
           classes={avatarStyles}
           src={'https://hapskorea.com/wp-content/uploads/2012/11/PSY4.jpg'}

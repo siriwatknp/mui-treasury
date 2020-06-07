@@ -101,7 +101,7 @@ type BasicProfileProps = {
 const BasicProfile = ({ creators, actions, ...props }: BasicProfileProps) => {
   const styles = useBasicProfileStyles();
   return (
-    <Row gutter={'inherit'} {...props}>
+    <Row {...props}>
       <AvatarGroup>
         {creators.map(c => (
           <Tooltip key={c.name} title={c.name}>
@@ -217,7 +217,7 @@ const Showcase = ({
         className={styles.card}
         rowStyle={{ alignItems: 'unset' }}
         at={'sm'}
-        gutter={{ xs: 1, sm: 1.5, lg: 2 }}
+        gap={{ xs: 1, sm: 1.5, lg: 2 }}
       >
         <Column grow>
           <CardHeader
@@ -249,7 +249,7 @@ const Showcase = ({
     );
   }
   return (
-    <Column className={styles.card} gutter={{ xs: 1, sm: 1.5, lg: 2 }}>
+    <Column className={styles.card} gap={{ xs: 1, sm: 1.5, lg: 2 }}>
       <CardHeader title={title} description={description} />
       <Item grow>
         <Box {...commonProps} {...frameProps}>

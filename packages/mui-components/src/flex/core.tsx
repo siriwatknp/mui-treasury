@@ -5,11 +5,11 @@ type FlexContextValue = 'row' | 'column' | 'row-column' | 'column-row';
 export type At = Breakpoint | number;
 
 const FlexContext = React.createContext<FlexContextValue>(undefined);
-const GutterContext = React.createContext<Gutter>(undefined);
+const GapContext = React.createContext<Gap>(undefined);
 const BreakpointContext = React.createContext<At>(undefined);
 
 export const FlexProvider = FlexContext.Provider;
-export const GutterProvider = GutterContext.Provider;
+export const GapProvider = GapContext.Provider;
 
 export type Position =
   | 'left'
@@ -45,38 +45,38 @@ export const positionInsideColumn = (position: Position) => {
     return { alignSelf: 'center', marginTop: 'auto', marginBottom: 'auto' };
 };
 
-export const gutterInsideRow = (value: any) => ({
+export const gapInsideRow = (value: any) => ({
   pl: value,
 });
-export const gutterInsideColumn = (value: any) => ({
+export const gapInsideColumn = (value: any) => ({
   pt: value,
 });
 
-export const useGutterCtx = () => React.useContext(GutterContext);
+export const useGapCtx = () => React.useContext(GapContext);
 
-export const useGutterProps = (itemIndex: number) => {
+export const useGapProps = (itemIndex: number) => {
   const flex = React.useContext(FlexContext);
-  const gutter = React.useContext(GutterContext);
+  const gap = React.useContext(GapContext);
   if (itemIndex) {
-    if (flex === 'row') return gutterInsideRow(gutter);
-    if (flex === 'column') return gutterInsideColumn(gutter);
+    if (flex === 'row') return gapInsideRow(gap);
+    if (flex === 'column') return gapInsideColumn(gap);
   }
 };
 
-export const useGutterLookup = (gutter: Gutter) => {
-  const isValidGutter = typeof gutter !== 'undefined';
-  const inheritedGutter = useGutterCtx();
-  const hasInheritedGutter = typeof inheritedGutter !== 'undefined';
-  let calculatedGutter = gutter;
-  if (!isValidGutter) {
-    calculatedGutter = inheritedGutter;
+export const useGapLookup = (gap: Gap) => {
+  const isValidGap = typeof gap !== 'undefined';
+  const inheritedGap = useGapCtx();
+  const hasInheritedGap = typeof inheritedGap !== 'undefined';
+  let calculatedGap = gap;
+  if (!isValidGap) {
+    calculatedGap = inheritedGap;
   }
   return {
-    isValidGutter,
-    hasInheritedGutter,
-    calculatedGutter,
+    isValidGap,
+    hasInheritedGap,
+    calculatedGap,
     itemProps: {
-      ...(!hasInheritedGutter && { p: calculatedGutter }),
+      ...(!hasInheritedGap && { p: calculatedGap }),
     },
   };
 };
@@ -89,7 +89,7 @@ export const useFlexStyles = (position: Position) => {
   if (flex === 'column') return positionInsideColumn(position);
 };
 
-export type Gutter =
+export type Gap =
   | number
   | string
   | 'inherit'
@@ -97,26 +97,26 @@ export type Gutter =
 
 export type ProviderProps = {
   flexDirection: FlexContextValue;
-  gutter: Gutter;
+  gap: Gap;
   children: React.ReactNode | React.ReactElement | React.ReactElement[];
 };
 
 export const Provider = ({
   flexDirection,
-  gutter,
+  gap,
   children,
 }: React.PropsWithChildren<ProviderProps>) => {
-  const inheritedGutter = useGutterCtx();
+  const inheritedGap = useGapCtx();
   return (
     <FlexProvider value={flexDirection}>
-      <GutterProvider value={gutter === 'inherit' ? inheritedGutter : gutter}>
+      <GapProvider value={gap === 'inherit' ? inheritedGap : gap}>
         {React.Children.map(children, (child, index) => {
           if (React.isValidElement(child)) {
             return React.cloneElement(child, { 'data-flexindex': index });
           }
           return child;
         })}
-      </GutterProvider>
+      </GapProvider>
     </FlexProvider>
   );
 };

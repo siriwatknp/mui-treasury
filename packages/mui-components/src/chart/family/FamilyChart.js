@@ -101,7 +101,7 @@ FamilyChart.propTypes = {
   avatarSize: PropTypes.number,
   personHeight: PropTypes.number,
   length: PropTypes.number,
-  gutter: PropTypes.number,
+  gap: PropTypes.number,
   outline: PropTypes.string,
 };
 FamilyChart.defaultProps = {
@@ -111,7 +111,7 @@ FamilyChart.defaultProps = {
   avatarSize: 48,
   personHeight: 72,
   length: 24,
-  gutter: 24,
+  gap: 24,
   outline: `1px solid ${blueGrey[100]}`,
 };
 

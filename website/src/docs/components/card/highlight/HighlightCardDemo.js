@@ -120,7 +120,7 @@ const CustomCard = ({ styles, cover, logo, title, brand, date }) => {
       <CardMedia image={cover} className={styles.cover} classes={mediaStyles} />
       <Box className={styles.content} p={2}>
         <Box position={'relative'} zIndex={1}>
-          <Row p={0} gutter={2}>
+          <Row p={0} gap={2}>
             <Avatar className={styles.logo} src={logo} />
             <Item position={'bottom'}>
               <h2 className={styles.title}>{title}</h2>

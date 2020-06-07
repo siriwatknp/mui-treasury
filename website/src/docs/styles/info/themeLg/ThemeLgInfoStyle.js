@@ -11,7 +11,7 @@ import { useThemeLgInfoStyles } from '@mui-treasury/styles/info/themeLg';
 
 const ThemeLgInfoStyle = () => {
   return (
-    <Column gutter={1.5} bgcolor={'#fff'} minWidth={240}>
+    <Column gap={1.5} bgcolor={'#fff'} minWidth={240}>
       <Info useStyles={useThemeLgInfoStyles}>
         <InfoTitle>#BlackOutTuesday</InfoTitle>
         <InfoSubtitle>1.5M Tweets</InfoSubtitle>
