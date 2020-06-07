@@ -5,3 +5,5 @@ export * from './online/OnlineAvatarStyle'
 
 export * from './grow/GrowAvatarStyle'
 
+export * from './gradient/GradientAvatarStyle'
+
