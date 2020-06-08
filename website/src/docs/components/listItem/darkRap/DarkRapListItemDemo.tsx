@@ -70,8 +70,8 @@ const AttachedShowcase = (props: ShowcaseProps) => (
 );
 const metadata: IMetadata = {
   path: 'components/listItem/darkRap',
-  colSpan: 2,
-  rowSpan: 3,
+  colSpan: 4,
+  rowSpan: 2,
   frameProps: {
     bgcolor: '#172338',
   },

@@ -11,7 +11,6 @@ import { useN01TextInfoContentStyles } from '@mui-treasury/styles/textInfoConten
 import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia/wide';
 import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
 
-
 const useStyles = makeStyles(() => ({
   root: {
     maxWidth: 304,
@@ -22,7 +21,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const EngagementCard = () => {
+export const EngagementCardDemo = React.memo(function EngagementCard() {
   const cardStyles = useStyles();
   const wideCardMediaStyles = useWideCardMediaStyles();
   const fadeShadowStyles = useFadedShadowStyles();
@@ -57,38 +56,33 @@ const EngagementCard = () => {
       </Box>
     </Card>
   );
-};
+});
 
 // hide-start
-EngagementCard.metadata = {
-  title: 'Engagement',
-  description: "Show people's engagement",
-  path: 'component/card/engagement',
-  creators: [require('constants/creators').siriwatknp],
-  files: [
-    { pkg: 'mui-styles', path: 'shadow/faded/fadedShadow.styles.js' },
-    {
-      pkg: 'mui-styles',
-      path: 'cardMedia/wide/wideCardMedia.styles.js',
-    },
-    {
-      pkg: 'mui-components',
-      path: 'content/textInfo/TextInfoContent.js',
-    },
-    {
-      pkg: 'mui-styles',
-      path: 'textInfoContent/n01/n01TextInfoContent.styles.js',
-    },
-    {
-      pkg: 'mui-components',
-      path: 'cardFooter/people/PeopleCardFooter.js',
-    },
-    {
-      pkg: 'mui-styles',
-      path: 'cardFooter/people/peopleCardFooter.styles.js',
-    },
-  ],
-};
-// hide-end
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
 
-export default EngagementCard;
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'Engagement'}
+    description={'Show people\'s engagement'}
+    creators={[require('constants/creators').siriwatknp]}
+  >
+    <EngagementCardDemo />
+  </Showcase>
+);
+const metadata: IMetadata = {
+  path: 'component/card/engagement',
+  // colSpan: 1,
+  // rowSpan: 3,
+  files: [],
+};
+// @ts-ignore
+EngagementCardDemo.Showcase = AttachedShowcase;
+// @ts-ignore
+EngagementCardDemo.metadata = metadata;
+// hide-end

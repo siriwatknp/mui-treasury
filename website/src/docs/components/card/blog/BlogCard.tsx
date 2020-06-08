@@ -66,7 +66,7 @@ const useStyles = makeStyles(({ breakpoints, spacing }) => ({
   },
 }));
 
-const BlogCard = () => {
+export const BlogCardDemo = React.memo(function BlogCard() {
   const styles = useStyles();
   const {
     button: buttonStyles,
@@ -94,23 +94,34 @@ const BlogCard = () => {
       </CardContent>
     </Card>
   );
-};
+});
 
 // hide-start
-BlogCard.metadata = {
-  title: 'Blog',
-  description: 'Personal Blog',
-  path: 'component/card/blog',
-  size: 'large',
-  creators: [require('constants/creators').siriwatknp],
-  files: [
-    { pkg: 'mui-styles', path: 'shadow/over/overShadow.styles.js' },
-    {
-      pkg: 'mui-components',
-      path: 'content/textInfo/TextInfoContent.js',
-    },
-  ],
-};
-// hide-end
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
 
-export default BlogCard;
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'Blog'}
+    description={'Personal Blog'}
+    creators={[require('constants/creators').siriwatknp]}
+  >
+    <BlogCardDemo />
+  </Showcase>
+);
+const metadata: IMetadata = {
+  path: 'component/card/blog',
+  // colSpan: { sm: 2, md: 3 },
+  // rowSpan: { sm: 3, md: 2 },
+  frameProps: { p: { xs: 4 } },
+  files: [],
+};
+// @ts-ignore
+BlogCardDemo.Showcase = AttachedShowcase;
+// @ts-ignore
+BlogCardDemo.metadata = metadata;
+// hide-end

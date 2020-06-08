@@ -46,8 +46,8 @@ const AttachedShowcase = (props: ShowcaseProps) => (
 );
 const metadata: IMetadata = {
   path: 'components/listItem/news',
-  colSpan: 1,
-  rowSpan: 2,
+  colSpan: 3,
+  rowSpan: 1,
   createdAt: 'Sun Jun 07 2020',
   files: [],
 };

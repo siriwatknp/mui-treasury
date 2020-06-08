@@ -7,12 +7,11 @@ import Close from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import { makeStyles, ThemeProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Dialog from '@material-ui/core/Dialog';
 import Slide from '@material-ui/core/Slide';
 import { Theme } from '@material-ui/core/styles';
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 
 import BrowserIFrame from 'website/src/components/layout/BrowserIFrame';
 import SourceFile from 'website/src/containers/SourceFile';

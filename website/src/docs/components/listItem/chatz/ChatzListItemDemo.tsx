@@ -81,8 +81,8 @@ const AttachedShowcase = (props: ShowcaseProps) => (
 );
 const metadata: IMetadata = {
   path: 'components/listItem/chatz',
-  colSpan: 2,
-  rowSpan: 3,
+  colSpan: 6,
+  rowSpan: 2,
   createdAt: 'Sun Jun 07 2020',
   files: [],
 };

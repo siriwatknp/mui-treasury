@@ -29,3 +29,20 @@ export const getStatusByDate = createdAt => {
   }
   return '';
 };
+
+const getMdColSpan = lgSpan => {
+  if (lgSpan >= 8) return lgSpan
+  if (lgSpan >= 6) return lgSpan + 1
+  return lgSpan + 2
+}
+
+const getSmColSpan = lgSpan => {
+  if (lgSpan >= 8) return 12
+  if (lgSpan >= 6) return lgSpan + 2
+  return 6
+}
+
+export const getResponsiveColSpan = (colSpan) => {
+  if (typeof colSpan === 'object') return colSpan
+  return { sm: getSmColSpan(colSpan), md: getMdColSpan(colSpan), lg: colSpan }
+}

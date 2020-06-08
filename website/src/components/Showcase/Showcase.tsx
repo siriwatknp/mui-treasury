@@ -9,16 +9,11 @@ import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
 
 // Icons
-import CallMade from '@material-ui/icons/CallMade';
+// import CallMade from '@material-ui/icons/CallMade';
 
 // @mui-treasury
 // import { useSizedIconButtonStyles } from '@mui-treasury/styles/iconButton/sized';
-import {
-  Column,
-  ColumnToRow,
-  Item,
-  Row,
-} from '@mui-treasury/components/flex';
+import { Column, ColumnToRow, Item, Row } from '@mui-treasury/components/flex';
 import StatusChip from '../atoms/StatusChip';
 
 const StyledStatusChip = withStyles({
@@ -139,15 +134,16 @@ const BasicProfile = ({ creators, actions, ...props }: BasicProfileProps) => {
 
 const useStyles = makeStyles(({ breakpoints }) => ({
   card: {
-    border: '2px solid',
+    borderBottomWidth: 2,
+    borderBottomStyle: 'solid',
     borderColor: '#E7EDF3',
-    borderRadius: 4,
     transition: '0.4s',
-    '&:hover': {
-      borderColor: '#5B9FED',
-    },
     [breakpoints.up('sm')]: {
+      border: '2px solid #E7EDF3',
       borderRadius: 12,
+      '&:hover': {
+        borderColor: '#5B9FED',
+      },
     },
     [breakpoints.up('lg')]: {
       borderRadius: 16,
@@ -171,10 +167,21 @@ const useStyles = makeStyles(({ breakpoints }) => ({
   },
 }));
 
+export type RowSpan = 1 | 2 | 3;
+export type ColSpan = 3 | 4 | 5 | 6 | 7 | 8 | 9 | 12;
+
+export type ColSpanProp =
+  | ColSpan
+  | Partial<Record<'sm' | 'md' | 'lg' | 'xl', ColSpan>>;
+
+export type RowSpanProp =
+  | RowSpan
+  | Partial<Record<'sm' | 'md' | 'lg' | 'xl', RowSpan>>;
+
 export type IMetadata = {
   path: string;
-  colSpan?: 1 | 2 | 3 | 4;
-  rowSpan?: 2 | 3 | 4;
+  colSpan?: ColSpanProp;
+  rowSpan?: RowSpanProp;
   frameProps?: BoxProps;
   createdAt?: string;
   files?: Array<{ pkg: 'mui-styles' | 'mui-components'; path: string }>;
@@ -232,7 +239,7 @@ const Showcase = ({
             </Box>
           </Item>
         </Column>
-        <Column maxWidth={{ sm: '28%', md: 'auto' }}>
+        <Column>
           <CardHeader
             className={styles.hiddenXs}
             title={title}

@@ -23,8 +23,12 @@ const useStyles = makeStyles(({ spacing }) => ({
     background: '#ffffff',
   },
   content: {
+    paddingTop: 0,
     textAlign: 'left',
     overflowX: 'auto',
+    '& table': {
+      marginBottom: 0,
+    }
   },
 }));
 
@@ -43,7 +47,7 @@ const rows = [
   createData('Gingerbread', 16.0, 3.9),
 ];
 
-const ElevatedHeaderCard = () => {
+export const ElevatedHeaderCardDemo = React.memo(function ElevatedHeaderCard() {
   const classes = useStyles();
   const cardHeaderStyles = useContainedCardHeaderStyles();
   const cardShadowStyles = useSoftRiseShadowStyles({ inactive: true });
@@ -80,20 +84,34 @@ const ElevatedHeaderCard = () => {
       </CardContent>
     </Card>
   );
-};
+});
 
 // hide-start
-ElevatedHeaderCard.metadata = {
-  title: 'Elevated Header',
-  path: 'component/card/elevatedHeader',
-  creators: [require('constants/creators').siriwatknp],
-  files: [
-    {
-      pkg: 'mui-styles',
-      path: 'cardHeader/contained/containedCardHeader.styles.js',
-    },
-  ],
-};
-// hide-end
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
 
-export default ElevatedHeaderCard;
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'Elevated Header'}
+    description={''}
+    creators={[require('constants/creators').siriwatknp]}
+  >
+    <ElevatedHeaderCardDemo />
+  </Showcase>
+);
+const metadata: IMetadata = {
+  path: 'component/card/elevatedHeader',
+  // colSpan: 1,
+  // rowSpan: 3,
+  frameProps: { p: 1 },
+  files: [],
+};
+// @ts-ignore
+ElevatedHeaderCardDemo.Showcase = AttachedShowcase;
+// @ts-ignore
+ElevatedHeaderCardDemo.metadata = metadata;
+// hide-end

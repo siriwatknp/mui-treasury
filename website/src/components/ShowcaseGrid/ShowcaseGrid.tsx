@@ -2,11 +2,11 @@ import React from 'react';
 import cx from 'clsx';
 import Box, { BoxProps } from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
-import { IMetadata } from 'website/src/components/Showcase';
+import { IMetadata, ColSpanProp, RowSpanProp } from '../../components/Showcase';
 
 const useStyles = makeStyles(
   ({ breakpoints }) => ({
-    root: {
+    root: ({ rowHeight }: { rowHeight: string | number }) => ({
       padding: 8,
       [breakpoints.only('xs')]: {
         '& > div:not(:first-child)': {
@@ -14,41 +14,60 @@ const useStyles = makeStyles(
         },
       },
       [breakpoints.up('sm')]: {
-        padding: 16,
+        padding: 8,
         display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gridAutoRows: 160,
+        gridTemplateColumns: `repeat(12, ${100 / 12}%)`,
         gridAutoFlow: 'dense',
-        gridGap: 16,
+        '& > div': {
+          padding: 8,
+        },
       },
       [breakpoints.up(1440)]: {
-        padding: 24,
-        gridTemplateColumns: 'repeat(4, 1fr)',
-        gridGap: 24,
+        padding: 12,
+        '& > div': {
+          padding: 12,
+        },
       },
-    },
+    }),
   }),
   { name: 'GridContainer' }
 );
 
-const userItemStyles = makeStyles(() => ({
-  root: {
-    '& > .FlexItem': {
-      height: '100%',
+const userItemStyles = makeStyles(
+  () => ({
+    root: {
+      '& > .FlexItem': {
+        height: '100%',
+      },
     },
-  },
-}), { name: 'GridItem' })
+  }),
+  { name: 'GridItem' }
+);
 
 export const GridContainer = ({
   children,
   className,
+  rowHeight = 160,
   ...props
-}: React.PropsWithChildren<React.HTMLProps<HTMLDivElement>>) => {
-  const styles = useStyles();
+}: React.PropsWithChildren<
+  { rowHeight?: string | number } & React.HTMLProps<HTMLDivElement>
+>) => {
+  const styles = useStyles({ rowHeight });
   return (
     <div className={cx(styles.root, className)} {...props}>
       {children}
     </div>
+  );
+};
+
+const toCssSpan = (span: ColSpanProp | RowSpanProp) => {
+  if (typeof span === 'number') return `span ${span}`;
+  return Object.entries(span).reduce(
+    (result, [screen, value]) => ({
+      ...result,
+      [screen]: `span ${value}`,
+    }),
+    {}
   );
 };
 
@@ -62,14 +81,14 @@ export const GridItem = ({
   colSpan: IMetadata['colSpan'];
   rowSpan: IMetadata['rowSpan'];
 }) => {
-  const styles = userItemStyles()
+  const styles = userItemStyles();
   return (
     <Box
       className={cx(styles.root, className)}
       display={'flex'}
       flexDirection={'column'}
-      gridColumn={`span ${colSpan}`}
-      gridRow={`span ${rowSpan}`}
+      gridColumn={toCssSpan(colSpan)}
+      gridRow={toCssSpan(rowSpan)}
       {...props}
     >
       {children}
