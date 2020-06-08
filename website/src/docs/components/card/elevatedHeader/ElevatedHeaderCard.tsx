@@ -105,8 +105,8 @@ const AttachedShowcase = (props: ShowcaseProps) => (
 );
 const metadata: IMetadata = {
   path: 'component/card/elevatedHeader',
-  // colSpan: 1,
-  // rowSpan: 3,
+  colSpan: 4,
+  rowSpan: 1,
   frameProps: { p: 1 },
   files: [],
 };
@@ -115,3 +115,4 @@ ElevatedHeaderCardDemo.Showcase = AttachedShowcase;
 // @ts-ignore
 ElevatedHeaderCardDemo.metadata = metadata;
 // hide-end
+export default ElevatedHeaderCardDemo

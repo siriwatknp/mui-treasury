@@ -46,7 +46,7 @@ const useStyles = makeStyles(({ breakpoints, spacing }) => ({
     opacity: 0.7,
   },
   heading: {
-    fontWeight: '900',
+    fontWeight: 900,
     color: '#ffffff',
     letterSpacing: 0.5,
   },
@@ -67,12 +67,15 @@ const useStyles = makeStyles(({ breakpoints, spacing }) => ({
   },
 }));
 
-const RewardCard = () => {
+export const RewardCardDemo = React.memo(function RewardCard() {
   const styles = useStyles();
   return (
     <Card className={styles.card}>
-      <CardMedia className={styles.media} image={'https://jkkm.info/ui/images/awards/victory.png'} />
-      <CardContent className={styles.content}>
+      <CardMedia
+        className={styles.media}
+        image={'https://jkkm.info/ui/images/awards/victory.png'}
+      />
+      <CardContent>
         <Typography className={styles.overline} variant={'overline'}>
           Songkran Festival Contest
         </Typography>
@@ -83,16 +86,35 @@ const RewardCard = () => {
       </CardContent>
     </Card>
   );
-};
+});
 
 // hide-start
-RewardCard.metadata = {
-  title: 'Reward',
-  path: 'component/card/reward',
-  size: 'large',
-  files: [],
-  creators: [require('constants/creators').siriwatknp],
-};
-// hide-end
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
 
-export default RewardCard;
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'Reward'}
+    description={''}
+    creators={[require('constants/creators').siriwatknp]}
+  >
+    <RewardCardDemo />
+  </Showcase>
+);
+const metadata: IMetadata = {
+  path: 'components/card/reward',
+  colSpan: 5,
+  rowSpan: 1,
+  frameProps: { p: 1 },
+  files: [],
+};
+// @ts-ignore
+RewardCardDemo.Showcase = AttachedShowcase;
+// @ts-ignore
+RewardCardDemo.metadata = metadata;
+// hide-end
+export default RewardCardDemo

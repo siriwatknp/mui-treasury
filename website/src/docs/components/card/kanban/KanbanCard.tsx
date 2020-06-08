@@ -6,7 +6,6 @@ import Card from '@material-ui/core/Card';
 import Avatar from '@material-ui/core/Avatar';
 import Slider from '@material-ui/core/Slider';
 
-
 const useStyles = makeStyles(({ spacing, palette }) => {
   const family =
     '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
@@ -64,11 +63,11 @@ const useSliderStyles = makeStyles(() => ({
   },
 }));
 
-const KanbanCard = ({ className }) => {
+export const KanbanCardDemo = React.memo(function KanbanCard() {
   const styles = useStyles();
   const sliderStyles = useSliderStyles();
   return (
-    <Card className={cx(styles.card, className)} elevation={0}>
+    <Card className={cx(styles.card)} elevation={0}>
       <Avatar src={'https://i.pravatar.cc/300'} className={styles.avatar} />
       <Box>
         <h3 className={styles.heading}>Sarah Onella</h3>
@@ -80,19 +79,36 @@ const KanbanCard = ({ className }) => {
       </Box>
     </Card>
   );
-};
+});
 
 // hide-start
-KanbanCard.metadata = {
-  title: 'Kanban',
-  description: 'Project management system',
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
+
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'Kanban'}
+    description={'Project management system'}
+    creators={[require('constants/creators').siriwatknp]}
+  >
+    <KanbanCardDemo />
+  </Showcase>
+);
+const metadata: IMetadata = {
   path: 'component/card/kanban',
-  frameProps: {
-    bgcolor: 'rgb(245, 248, 250)',
-  },
-  creators: [require('constants/creators').siriwatknp],
+  colSpan: 4,
+  rowSpan: 1,
+  frameProps: {},
   files: [],
 };
+// @ts-ignore
+KanbanCardDemo.Showcase = AttachedShowcase;
+// @ts-ignore
+KanbanCardDemo.metadata = metadata;
 // hide-end
 
-export default KanbanCard;
+export default KanbanCardDemo;

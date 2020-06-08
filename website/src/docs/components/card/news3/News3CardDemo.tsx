@@ -27,7 +27,7 @@ const useStyles = makeStyles(() => ({
       },
       '& $shadow2': {
         bottom: '-2.5rem',
-      }
+      },
     },
     '&:before': {
       content: '""',
@@ -39,7 +39,7 @@ const useStyles = makeStyles(() => ({
       height: '100%',
       borderRadius: '1.5rem',
       backgroundColor: 'rgba(0,0,0,0.08)',
-    }
+    },
   },
   main: {
     overflow: 'hidden',
@@ -54,7 +54,7 @@ const useStyles = makeStyles(() => ({
       width: '100%',
       height: '100%',
       background: 'linear-gradient(to top, #014a7d, rgba(0,0,0,0))',
-    }
+    },
   },
   content: {
     position: 'absolute',
@@ -104,10 +104,10 @@ const useStyles = makeStyles(() => ({
     bottom: 0,
     width: '72%',
     backgroundColor: 'rgba(0,0,0,0.04)',
-  }
+  },
 }));
 
-const News3CardDemo = () => {
+export const News3CardDemo = React.memo(function News3Card() {
   const styles = useStyles();
   const mediaStyles = useCoverCardMediaStyles();
   return (
@@ -132,12 +132,15 @@ const News3CardDemo = () => {
         </Box>
         <Row
           className={styles.author}
-          px={3}
-          pb={3}
+          p={3}
+          pt={2}
           gap={2}
           bgcolor={'common.white'}
         >
-          <Avatar className={styles.avatar} src={'https://i.pravatar.cc/300?img=13'} />
+          <Avatar
+            className={styles.avatar}
+            src={'https://i.pravatar.cc/300?img=13'}
+          />
           <Info position={'middle'} useStyles={useNewsInfoStyles}>
             <InfoTitle>Nadine Petrolli</InfoTitle>
             <InfoSubtitle>Jul 20 | 2 Min Read</InfoSubtitle>
@@ -148,19 +151,35 @@ const News3CardDemo = () => {
       </Card>
     </>
   );
-};
+});
 // hide-start
-News3CardDemo.metadata = {
-  title: 'News3',
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
+
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'News3'}
+    description={''}
+    creators={[require('constants/creators').siriwatknp]}
+  >
+    <News3CardDemo />
+  </Showcase>
+);
+const metadata: IMetadata = {
   path: 'components/card/news3',
-  renderedWithoutIframe: false,
-  creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Wed Jun 03 2020',
-  stylesUrl: '',
-  frameProps: { pb: '4rem' }, // props that applied to Box in grid view
-  size: 'medium', // can be 'large' | 'huge' for grid size
+  colSpan: 4,
+  rowSpan: 1,
+  frameProps: { py: 6 },
   files: [],
 };
+// @ts-ignore
+News3CardDemo.Showcase = AttachedShowcase;
+// @ts-ignore
+News3CardDemo.metadata = metadata;
 // hide-end
-
-export default News3CardDemo;
+export default News3CardDemo

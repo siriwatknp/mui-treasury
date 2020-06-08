@@ -226,7 +226,7 @@ const Showcase = ({
         at={'sm'}
         gap={{ xs: 1, sm: 1.5, lg: 2 }}
       >
-        <Column grow>
+        <Column grow minWidth={0}>
           <CardHeader
             className={styles.hiddenAboveXs}
             title={title}

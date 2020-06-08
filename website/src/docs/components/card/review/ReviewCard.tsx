@@ -20,6 +20,7 @@ const useStyles = makeStyles(() => ({
   root: {
     overflow: 'initial',
     maxWidth: 304,
+    backgroundColor: 'transparent',
   },
   title: {
     marginBottom: 0,
@@ -46,7 +47,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const ReviewCard = () => {
+export const ReviewCardDemo = React.memo(function ReviewCard() {
   const styles = useStyles();
   const mediaStyles = useWideCardMediaStyles();
   const shadowStyles = useFadedShadowStyles();
@@ -119,19 +120,35 @@ const ReviewCard = () => {
       </CardContent>
     </Card>
   );
-};
+});
 
 // hide-start
-ReviewCard.metadata = {
-  title: 'Review',
-  path: 'component/card/review',
-  files: [
-    { pkg: 'mui-styles', path: 'cardMedia/wide/wideCardMedia.styles.js' },
-    { pkg: 'mui-styles', path: 'shadow/faded/fadedShadow.styles.js' },
-    { pkg: 'mui-styles', path: 'gutter/pushing/pushingGutter.styles.js' },
-  ],
-  creators: [require('constants/creators').siriwatknp],
-};
-// hide-end
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
 
-export default ReviewCard;
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'Review'}
+    description={''}
+    creators={[require('constants/creators').siriwatknp]}
+  >
+    <ReviewCardDemo />
+  </Showcase>
+);
+const metadata: IMetadata = {
+  path: 'component/card/review',
+  colSpan: 4,
+  rowSpan: 1,
+  frameProps: {},
+  files: [],
+};
+// @ts-ignore
+ReviewCardDemo.Showcase = AttachedShowcase;
+// @ts-ignore
+ReviewCardDemo.metadata = metadata;
+// hide-end
+export default ReviewCardDemo

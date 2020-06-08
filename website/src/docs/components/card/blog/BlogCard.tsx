@@ -115,8 +115,8 @@ const AttachedShowcase = (props: ShowcaseProps) => (
 );
 const metadata: IMetadata = {
   path: 'component/card/blog',
-  // colSpan: { sm: 2, md: 3 },
-  // rowSpan: { sm: 3, md: 2 },
+  colSpan: 6,
+  rowSpan: 1,
   frameProps: { p: { xs: 4 } },
   files: [],
 };
@@ -125,3 +125,4 @@ BlogCardDemo.Showcase = AttachedShowcase;
 // @ts-ignore
 BlogCardDemo.metadata = metadata;
 // hide-end
+export default BlogCardDemo

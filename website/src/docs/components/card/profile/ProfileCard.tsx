@@ -9,7 +9,6 @@ import Divider from '@material-ui/core/Divider';
 import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
 import { useGutterBorderedGridStyles } from '@mui-treasury/styles/grid/gutterBordered';
 
-
 const useStyles = makeStyles(({ palette }) => ({
   card: {
     borderRadius: 12,
@@ -49,7 +48,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 }));
 
-const ProfileCard = () => {
+export const ProfileCardDemo = React.memo(function ProfileCard() {
   const styles = useStyles();
   const shadowStyles = useFadedShadowStyles();
   const borderedGridStyles = useGutterBorderedGridStyles({
@@ -76,19 +75,35 @@ const ProfileCard = () => {
       </Box>
     </Card>
   );
-};
+});
 
 // hide-start
-ProfileCard.metadata = {
-  title: 'Profile',
-  description: 'Social network',
-  path: 'component/card/profile',
-  creators: [require('constants/creators').siriwatknp],
-  files: [
-    { pkg: 'mui-styles', path: 'shadow/faded/fadedShadow.styles.js' },
-    { pkg: 'mui-styles', path: 'grid/gutterBordered/gutterBorderedGrid.styles.js' },
-  ],
-};
-// hide-end
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
 
-export default ProfileCard;
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'Profile'}
+    description={'Social network'}
+    creators={[require('constants/creators').siriwatknp]}
+  >
+    <ProfileCardDemo />
+  </Showcase>
+);
+const metadata: IMetadata = {
+  path: 'component/card/profile',
+  colSpan: 3,
+  rowSpan: 1,
+  frameProps: {},
+  files: [],
+};
+// @ts-ignore
+ProfileCardDemo.Showcase = AttachedShowcase;
+// @ts-ignore
+ProfileCardDemo.metadata = metadata;
+// hide-end
+export default ProfileCardDemo

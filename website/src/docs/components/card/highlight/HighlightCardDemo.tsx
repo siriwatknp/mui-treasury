@@ -82,7 +82,7 @@ const useStyles = makeStyles(({ palette }) => ({
       background: `linear-gradient(to top, ${color}, ${Color(color)
         .rotate(24)
         .lighten(0.12)})`,
-    }
+    },
   }),
   title: {
     fontFamily: 'Fjalla One',
@@ -140,7 +140,7 @@ const CustomCard = ({ styles, cover, logo, title, brand, date }) => {
   );
 };
 
-const HighlightCardDemo = () => {
+export const HighlightCardDemo = React.memo(function HighlightCard() {
   const styles1 = useStyles({ color: '#fc7944' });
   const styles2 = useStyles({ color: '#5357ce' });
   const gridStyles = useGridStyles();
@@ -151,7 +151,13 @@ const HighlightCardDemo = () => {
           fonts={[{ font: 'Fjalla One' }, { font: 'Sen', weights: [500] }]}
         />
       </NoSsr>
-      <Grid classes={gridStyles} wrap={'nowrap'} container spacing={4}>
+      <Grid
+        style={{ padding: 16 }}
+        classes={gridStyles}
+        wrap={'nowrap'}
+        container
+        spacing={4}
+      >
         <Grid item>
           <CustomCard
             styles={styles1}
@@ -191,19 +197,36 @@ const HighlightCardDemo = () => {
       </Grid>
     </>
   );
-};
+});
 // hide-start
-HighlightCardDemo.metadata = {
-  title: 'Highlight',
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
+
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'Highlight'}
+    description={''}
+    creators={[require('constants/creators').siriwatknp]}
+  >
+    <HighlightCardDemo />
+  </Showcase>
+);
+const metadata: IMetadata = {
   path: 'components/card/highlight',
-  renderedWithoutIframe: false,
-  creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Thu Jun 04 2020',
-  stylesUrl: '',
-  frameProps: {}, // props that applied to Box in grid view
-  size: 'huge', // can be 'large' | 'huge' for grid size
+  colSpan: 9,
+  rowSpan: 1,
+  frameProps: {},
   files: [],
 };
+// @ts-ignore
+HighlightCardDemo.Showcase = AttachedShowcase;
+// @ts-ignore
+HighlightCardDemo.metadata = metadata;
 // hide-end
 
 export default HighlightCardDemo;

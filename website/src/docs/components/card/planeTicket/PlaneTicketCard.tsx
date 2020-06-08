@@ -105,7 +105,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   moveRight: {},
 }));
 
-const PlaneTicketCard = () => {
+export const PlaneTicketCardDemo = React.memo(function PlaneTicketCard() {
   const styles = useStyles();
   const ripStyles = useVerticalRipStyles({
     size: 24,
@@ -147,29 +147,35 @@ const PlaneTicketCard = () => {
       </div>
     </Card>
   );
-};
+});
 
 // hide-start
-PlaneTicketCard.metadata = {
-  title: 'Plane Ticket',
-  description: 'An inspiration ticket from Pinterest',
-  path: 'component/card/planeTicket',
-  size: 'large',
-  frameProps: {
-    bgcolor: mainColor,
-  },
-  creators: [require('constants/creators').siriwatknp],
-  files: [
-    {
-      pkg: 'mui-components',
-      path: 'rip/verticalTicket/VerticalTicketRip.js',
-    },
-    {
-      pkg: 'mui-styles',
-      path: 'rip/vertical/verticalRip.styles.js',
-    },
-  ],
-};
-// hide-end
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
 
-export default PlaneTicketCard;
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'Plane Ticket'}
+    description={'An inspiration ticket from Pinterest'}
+    creators={[require('constants/creators').siriwatknp]}
+  >
+    <PlaneTicketCardDemo />
+  </Showcase>
+);
+const metadata: IMetadata = {
+  path: 'component/card/planeTicket',
+  colSpan: 5,
+  rowSpan: 1,
+  frameProps: { bgcolor: 'rgb(0, 51, 153)' },
+  files: [],
+};
+// @ts-ignore
+PlaneTicketCardDemo.Showcase = AttachedShowcase;
+// @ts-ignore
+PlaneTicketCardDemo.metadata = metadata;
+// hide-end
+export default PlaneTicketCardDemo;

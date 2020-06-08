@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import RestaurantMenuRounded from '@material-ui/icons/RestaurantMenuRounded';
 import TripOrigin from '@material-ui/icons/TripOrigin';
 
-const useTagCardStyles = makeStyles(({ palette }) => ({
+const useTagCardDemoStyles = makeStyles(({ palette }) => ({
   card: {
     width: '180px',
     height: '230px',
@@ -34,8 +34,8 @@ const useTagCardStyles = makeStyles(({ palette }) => ({
   },
 }));
 
-const TagCard = () => {
-  const tagStyles = useTagCardStyles();
+export const TagCardDemo = React.memo(function TagCard() {
+  const tagStyles = useTagCardDemoStyles();
   return (
     <Card className={tagStyles.card} elevation={0}>
       <CardContent>
@@ -60,19 +60,35 @@ const TagCard = () => {
       </CardContent>
     </Card>
   );
-};
+});
 
 // hide-start
-TagCard.metadata = {
-  title: 'Tag Card',
-  path: 'component/card/tag',
-  files: [],
-  relates: [],
-  frameProps: {
-    bgcolor: '#e9e9e9',
-  },
-  creators: [require('constants/creators').renamoo],
-};
-// hide-end
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
 
-export default TagCard;
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'Tag Card'}
+    description={''}
+    creators={[require('constants/creators').renamoo]}
+  >
+    <TagCardDemo />
+  </Showcase>
+);
+const metadata: IMetadata = {
+  path: 'components/card/tag',
+  colSpan: 3,
+  rowSpan: 1,
+  frameProps: { bgcolor: '#fff' },
+  files: [],
+};
+// @ts-ignore
+TagCardDemo.Showcase = AttachedShowcase;
+// @ts-ignore
+TagCardDemo.metadata = metadata;
+// hide-end
+export default TagCardDemo

@@ -2,4 +2,4 @@
 path: 'component/card/news'
 ---
 
-`embed:components/card/news/NewsCard.js`
+`embed:components/card/news/NewsCard.tsx`

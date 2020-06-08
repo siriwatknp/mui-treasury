@@ -29,10 +29,10 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const PricingCard = () => {
+export const PricingCardDemo = React.memo(function PricingCard() {
   const classes = useStyles();
   return (
-    <Card className={classes.root} width="400px">
+    <Card className={classes.root}>
       <CardHeader title="Basic Plan" className={classes.header} />
       <Divider variant="middle" />
       <CardContent>
@@ -53,19 +53,34 @@ const PricingCard = () => {
       </CardActions>
     </Card>
   );
-};
+});
 
 // hide-start
-PricingCard.metadata = {
-  title: 'Pricing',
-  description: 'For showing information about pricing packages',
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
+
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'Pricing'}
+    description={'For showing information about pricing packages'}
+  >
+    <PricingCardDemo />
+  </Showcase>
+);
+const metadata: IMetadata = {
   path: 'component/card/pricing',
-  frameProps: {
-    bgcolor: '#e9e9e9',
-  },
-  creators: [],
+  colSpan: 3,
+  rowSpan: 1,
+  frameProps: { bgcolor: '#e9e9e9' },
   files: [],
 };
+// @ts-ignore
+PricingCardDemo.Showcase = AttachedShowcase;
+// @ts-ignore
+PricingCardDemo.metadata = metadata;
 // hide-end
-
-export default PricingCard;
+export default PricingCardDemo

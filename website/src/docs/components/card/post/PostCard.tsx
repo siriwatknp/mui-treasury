@@ -14,7 +14,6 @@ import { useSlopeCardMediaStyles } from '@mui-treasury/styles/cardMedia/slope';
 import { useN01TextInfoContentStyles } from '@mui-treasury/styles/textInfoContent/n01';
 import TextInfoContent from '@mui-treasury/components/content/textInfo';
 
-
 const useStyles = makeStyles(() => ({
   root: {
     maxWidth: 304,
@@ -34,14 +33,19 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const PostCard = () => {
+export const PostCardDemo = React.memo(function PostCard() {
   const cardStyles = useStyles();
   const mediaStyles = useSlopeCardMediaStyles();
   const shadowStyles = useSoftRiseShadowStyles();
   const textCardContentStyles = useN01TextInfoContentStyles();
   return (
     <Card className={cx(cardStyles.root, shadowStyles.root)}>
-      <CardMedia classes={mediaStyles} image={'https://images.unsplash.com/photo-1517147177326-b37599372b73?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2229&q=80'} />
+      <CardMedia
+        classes={mediaStyles}
+        image={
+          'https://images.unsplash.com/photo-1517147177326-b37599372b73?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2229&q=80'
+        }
+      />
       <Avatar className={cardStyles.avatar} src={'https://i.pravatar.cc/300'} />
       <CardContent className={cardStyles.content}>
         <TextInfoContent
@@ -62,20 +66,35 @@ const PostCard = () => {
       </Box>
     </Card>
   );
-};
+});
 
 // hide-start
-PostCard.metadata = {
-  title: 'Post',
-  path: 'component/card/post',
-  creators: [require('constants/creators').siriwatknp],
-  files: [
-    { pkg: 'mui-styles', path: 'shadow/softRise/softRiseShadow.styles.js' },
-    { pkg: 'mui-styles', path: 'cardMedia/slope/slopeCardMedia.styles.js' },
-    { pkg: 'mui-components', path: 'content/textInfo/TextInfoContent.js' },
-    { pkg: 'mui-styles', path: 'textInfoContent/n01/n01TextInfoContent.styles.js' },
-  ],
-};
-// hide-end
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
 
-export default PostCard;
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'Post'}
+    description={''}
+    creators={[require('constants/creators').siriwatknp]}
+  >
+    <PostCardDemo />
+  </Showcase>
+);
+const metadata: IMetadata = {
+  path: 'component/card/post',
+  colSpan: 4,
+  rowSpan: 1,
+  frameProps: {},
+  files: [],
+};
+// @ts-ignore
+PostCardDemo.Showcase = AttachedShowcase;
+// @ts-ignore
+PostCardDemo.metadata = metadata;
+// hide-end
+export default PostCardDemo;

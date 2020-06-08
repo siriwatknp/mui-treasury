@@ -21,7 +21,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const MusicCard = () => {
+export const MusicCardDemo = React.memo(function MusicCard() {
   const styles = useStyles();
   const mediaStyles = useFourThreeCardMediaStyles();
   const textCardContentStyles = useN04TextInfoContentStyles();
@@ -34,7 +34,7 @@ const MusicCard = () => {
           'https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80'
         }
       />
-      <CardContent className={styles.content}>
+      <CardContent>
         <TextInfoContent
           classes={textCardContentStyles}
           overline={'Kesha'}
@@ -46,32 +46,35 @@ const MusicCard = () => {
       </CardContent>
     </Card>
   );
-};
+});
 // hide-start
-MusicCard.metadata = {
-  title: 'Music',
-  path: 'component/card/music',
-  creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
-  createdAt: 'Mon Feb 10 2020',
-  files: [
-    {
-      pkg: 'mui-components',
-      path: 'content/textInfo/TextInfoContent.js',
-    },
-    {
-      pkg: 'mui-styles',
-      path: 'shadow/over/overShadow.styles.js',
-    },
-    {
-      pkg: 'mui-styles',
-      path: 'cardMedia/fourThree/fourThreeCardMedia.styles.js',
-    },
-    {
-      pkg: 'mui-styles',
-      path: 'textInfoContent/n04/n04TextInfoContent.styles.js',
-    },
-  ]
-};
-// hide-end
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
 
-export default MusicCard;
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'Music'}
+    description={''}
+    creators={[require('constants/creators').siriwatknp]}
+  >
+    <MusicCardDemo />
+  </Showcase>
+);
+const metadata: IMetadata = {
+  path: 'component/card/music',
+  createdAt: 'Mon Feb 10 2020',
+  colSpan: 4,
+  rowSpan: 1,
+  frameProps: {},
+  files: [],
+};
+// @ts-ignore
+MusicCardDemo.Showcase = AttachedShowcase;
+// @ts-ignore
+MusicCardDemo.metadata = metadata;
+// hide-end
+export default MusicCardDemo

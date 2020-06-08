@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import CallMade from '@material-ui/icons/CallMade';
 
-import { Row, Column, Item } from '@mui-treasury/components/flex'
+import { Row, Column, Item } from '@mui-treasury/components/flex';
 import { useSizedIconButtonStyles } from '@mui-treasury/styles/iconButton/sized';
 
 const StyledTooltip = withStyles({
@@ -22,7 +22,7 @@ const StyledTooltip = withStyles({
 const useBasicProfileStyles = makeStyles(({ palette }) => ({
   avatar: {
     borderRadius: 8,
-    backgroundColor: '#495869'
+    backgroundColor: '#495869',
   },
   overline: {
     fontSize: 10,
@@ -34,25 +34,21 @@ const useBasicProfileStyles = makeStyles(({ palette }) => ({
     fontSize: 14,
     fontWeight: 500,
     color: '#495869',
-  }
-}))
+  },
+}));
 
 const BasicProfile = props => {
-  const styles = useBasicProfileStyles()
+  const styles = useBasicProfileStyles();
   return (
     <Row {...props}>
       <Avatar className={styles.avatar}>S</Avatar>
       <Item position={'middle'} pl={{ xs: 1, sm: 1.5 }}>
-        <Typography className={styles.overline}>
-          CREATOR
-        </Typography>
-        <Typography className={styles.name}>
-          siriwatknp
-        </Typography>
+        <Typography className={styles.overline}>CREATOR</Typography>
+        <Typography className={styles.name}>siriwatknp</Typography>
       </Item>
     </Row>
-  )
-}
+  );
+};
 
 const useCardHeaderStyles = makeStyles(() => ({
   root: { paddingBottom: 0 },
@@ -64,10 +60,10 @@ const useCardHeaderStyles = makeStyles(() => ({
     fontSize: '0.875rem',
     color: '#495869',
   },
-}))
+}));
 
 const CardHeader = props => {
-  const styles = useCardHeaderStyles()
+  const styles = useCardHeaderStyles();
   const iconBtnStyles = useSizedIconButtonStyles({ padding: 8, childSize: 20 });
   return (
     <Row {...props}>
@@ -87,8 +83,8 @@ const CardHeader = props => {
         </StyledTooltip>
       </Item>
     </Row>
-  )
-}
+  );
+};
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -98,31 +94,28 @@ const useStyles = makeStyles(() => ({
     transition: '0.4s',
     '&:hover': {
       borderColor: '#5B9FED',
-    }
-  }
-}))
+    },
+  },
+}));
 
-const ShowcaseCardDemo = () => {
-  const styles = useStyles()
+export const ShowcaseCardDemo = React.memo(function ShowcaseCard() {
+  const styles = useStyles();
+  const gap = { xs: 1, sm: 1.5, lg: 2 }
   return (
     <Grid container spacing={4} justify={'center'}>
       <Grid item xs={12} sm={4} md={3}>
-        <Column className={styles.card} gap={{ xs: 1, sm: 1.5, lg: 2 }}>
+        <Column className={styles.card} p={gap} gap={gap}>
           <CardHeader />
           <Item>
-            <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8}>
-
-            </Box>
+            <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8} />
           </Item>
           <BasicProfile />
         </Column>
       </Grid>
       <Grid item xs={12} sm={8} lg={7}>
-        <Row className={styles.card} gap={{ xs: 1, sm: 1.5, lg: 2 }}>
+        <Row className={styles.card} p={gap} gap={gap}>
           <Item grow>
-            <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8}>
-
-            </Box>
+            <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8} />
           </Item>
           <Column>
             <CardHeader />
@@ -131,22 +124,36 @@ const ShowcaseCardDemo = () => {
         </Row>
       </Grid>
     </Grid>
-  )
-};
+  );
+});
 // hide-start
-ShowcaseCardDemo.metadata = {
-  title: 'Showcase',
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
+
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'Showcase'}
+    description={''}
+    creators={[require('constants/creators').siriwatknp]}
+  >
+    <ShowcaseCardDemo />
+  </Showcase>
+);
+const metadata: IMetadata = {
   path: 'components/card/showcase',
-  renderedWithoutIframe: false,
-  creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Sun May 31 2020',
-  stylesUrl: '',
-  frameProps: {
-    bgcolor: '#fff'
-  }, // props that applied to Box in grid view
-  size: 'huge', // can be 'large' | 'huge' for grid size
+  colSpan: 12,
+  rowSpan: 1,
+  frameProps: { bgcolor: '#fff' },
   files: [],
 };
+// @ts-ignore
+ShowcaseCardDemo.Showcase = AttachedShowcase;
+// @ts-ignore
+ShowcaseCardDemo.metadata = metadata;
 // hide-end
-
-export default ShowcaseCardDemo;
+export default ShowcaseCardDemo

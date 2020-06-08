@@ -2,4 +2,4 @@
 path: 'components/card/team'
 ---
 
-`embed:components/card/team/TeamCardDemo.js`
+`embed:components/card/team/TeamCardDemo.tsx`

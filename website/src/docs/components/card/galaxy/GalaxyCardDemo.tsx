@@ -37,11 +37,11 @@ const useStyles = makeStyles(() => ({
     zIndex: 2,
     bottom: 0,
     width: '100%',
-  }
+  },
 }));
 
-const GalaxyCardDemo = () => {
-  const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'top'});
+export const GalaxyCardDemo = React.memo(function GalaxyCard() {
+  const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'top' });
   const styles = useStyles();
   return (
     <>
@@ -70,19 +70,35 @@ const GalaxyCardDemo = () => {
       </Card>
     </>
   );
-};
+});
 // hide-start
-GalaxyCardDemo.metadata = {
-  title: 'Galaxy',
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
+
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'Galaxy'}
+    description={''}
+    creators={[require('constants/creators').siriwatknp]}
+  >
+    <GalaxyCardDemo />
+  </Showcase>
+);
+const metadata: IMetadata = {
   path: 'components/card/galaxy',
-  renderedWithoutIframe: false,
-  creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Wed Jun 03 2020',
-  stylesUrl: '',
-  frameProps: {}, // props that applied to Box in grid view
-  size: 'medium', // can be 'large' | 'huge' for grid size
+  colSpan: 3,
+  rowSpan: 1,
+  frameProps: { p: 1 },
   files: [],
 };
+// @ts-ignore
+GalaxyCardDemo.Showcase = AttachedShowcase;
+// @ts-ignore
+GalaxyCardDemo.metadata = metadata;
 // hide-end
-
-export default GalaxyCardDemo;
+export default GalaxyCardDemo

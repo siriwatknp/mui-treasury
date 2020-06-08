@@ -2,4 +2,4 @@
 path: 'component/card/project'
 ---
 
-`embed:components/card/project/ProjectCard.js`
+`embed:components/card/project/ProjectCard.tsx`

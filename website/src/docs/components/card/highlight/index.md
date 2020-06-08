@@ -2,4 +2,4 @@
 path: 'components/card/highlight'
 ---
 
-`embed:components/card/highlight/HighlightCardDemo.js`
+`embed:components/card/highlight/HighlightCardDemo.tsx`

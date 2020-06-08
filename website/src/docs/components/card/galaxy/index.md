@@ -2,4 +2,4 @@
 path: 'components/card/galaxy'
 ---
 
-`embed:components/card/galaxy/GalaxyCardDemo.js`
+`embed:components/card/galaxy/GalaxyCardDemo.tsx`

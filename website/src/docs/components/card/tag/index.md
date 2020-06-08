@@ -2,4 +2,4 @@
 path: 'component/card/tag'
 ---
 
-`embed:components/card/tag/TagCard.js`
+`embed:components/card/tag/TagCard.tsx`

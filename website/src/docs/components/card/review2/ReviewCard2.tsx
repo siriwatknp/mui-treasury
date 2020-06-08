@@ -59,7 +59,7 @@ const useStyles = makeStyles(({ spacing, palette }) => ({
   },
 }));
 
-const ReviewCard2 = () => {
+export const ReviewCard2Demo = React.memo(function() {
   const styles = useStyles();
   const gutterStyles = usePushingGutterStyles({ space: 1.5 });
   const labelStyles = useLabelIconStyles({ linked: true });
@@ -114,23 +114,35 @@ const ReviewCard2 = () => {
       />
     </Card>
   );
-};
+});
 
 // hide-start
-ReviewCard2.metadata = {
-  title: 'Review II',
-  path: 'component/card/review2',
-  size: 'large',
-  frameProps: {
-    bgcolor: 'rgb(245, 248, 250)',
-  },
-  files: [
-    { pkg: 'mui-styles', path: 'gutter/pushing/pushingGutter.styles.js' },
-    { pkg: 'mui-styles', path: 'icon/label/labelIcon.styles.js' },
-    { pkg: 'mui-styles', path: 'flex/row/rowFlex.styles.js' },
-  ],
-  creators: [require('constants/creators').siriwatknp],
-};
-// hide-end
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
 
-export default ReviewCard2;
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'Review II'}
+    description={'component/card/review2'}
+    creators={[require('constants/creators').siriwatknp]}
+  >
+    <ReviewCard2Demo />
+  </Showcase>
+);
+const metadata: IMetadata = {
+  path: 'components/card/review2',
+  colSpan: 6,
+  rowSpan: 1,
+  frameProps: { bgcolor: 'rgb(245, 248, 250)' },
+  files: [],
+};
+// @ts-ignore
+ReviewCard2Demo.Showcase = AttachedShowcase;
+// @ts-ignore
+ReviewCard2Demo.metadata = metadata;
+// hide-end
+export default ReviewCard2Demo

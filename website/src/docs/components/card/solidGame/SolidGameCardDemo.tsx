@@ -13,12 +13,11 @@ import { useFourThreeCardMediaStyles } from '@mui-treasury/styles/cardMedia/four
 
 const useGridStyles = makeStyles(({ breakpoints }) => ({
   root: {
-    overflow: 'auto',
     [breakpoints.up('md')]: {
-      justifyContent: 'center'
-    }
-  }
-}))
+      justifyContent: 'center',
+    },
+  },
+}));
 
 const useStyles = makeStyles(() => ({
   actionArea: {
@@ -78,7 +77,7 @@ const CustomCard = ({ classes, image, title, subtitle }) => {
   );
 };
 
-const SolidGameCardDemo = () => {
+export const SolidGameCardDemo = React.memo(function SolidGameCard() {
   const gridStyles = useGridStyles();
   const styles = useStyles({ color: '#203f52' });
   const styles2 = useStyles({ color: '#4d137f' });
@@ -128,38 +127,51 @@ const SolidGameCardDemo = () => {
             classes={styles3}
             title={'Overwatch'}
             subtitle={'What are you waiting?'}
+            image={'https://images5.alphacoders.com/690/thumb-1920-690653.png'}
+          />
+        </Grid>
+        <Grid item>
+          <CustomCard
+            classes={styles4}
+            title={'PUBG'}
+            subtitle={'Are you ready?'}
             image={
-              'https://images5.alphacoders.com/690/thumb-1920-690653.png'
+              'https://www.itp.net/public/styles/full_img_sml/public/images/2019/05/27/44485-pubg_base1.jpg?itok=EF911Xan'
             }
           />
-        </Grid><Grid item>
-        <CustomCard
-          classes={styles4}
-          title={'PUBG'}
-          subtitle={'Are you ready?'}
-          image={
-            'https://www.itp.net/public/styles/full_img_sml/public/images/2019/05/27/44485-pubg_base1.jpg?itok=EF911Xan'
-          }
-        />
-      </Grid>
+        </Grid>
       </Grid>
     </>
   );
-};
+});
 // hide-start
-SolidGameCardDemo.metadata = {
-  title: 'Solid Game',
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
+
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'Solid Game'}
+    description={''}
+    creators={[require('constants/creators').siriwatknp]}
+  >
+    <SolidGameCardDemo />
+  </Showcase>
+);
+const metadata: IMetadata = {
   path: 'components/card/solidGame',
-  renderedWithoutIframe: false,
-  creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Tue Jun 02 2020',
-  stylesUrl: '',
-  frameProps: {
-    bgcolor: '#f7f7fe',
-  }, // props that applied to Box in grid view
-  size: 'huge', // can be 'large' | 'huge' for grid size
+  colSpan: 12,
+  rowSpan: 1,
+  frameProps: { p: 5, bgcolor: '#f7f7fe', overflow: 'auto' },
   files: [],
 };
+// @ts-ignore
+SolidGameCardDemo.Showcase = AttachedShowcase;
+// @ts-ignore
+SolidGameCardDemo.metadata = metadata;
 // hide-end
-
-export default SolidGameCardDemo;
+export default SolidGameCardDemo

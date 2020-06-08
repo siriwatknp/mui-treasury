@@ -18,7 +18,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const ProjectCard = () => {
+export const ProjectCardDemo = React.memo(function ProjectCard() {
   const styles = useN03TextInfoContentStyles();
   const shadowStyles = useLightTopShadowStyles();
   const cardStyles = useStyles();
@@ -42,27 +42,35 @@ const ProjectCard = () => {
       </CardContent>
     </Card>
   );
-};
+});
 
 // hide-start
-ProjectCard.metadata = {
-  title: 'Project',
-  path: 'component/card/project',
-  files: [
-    { pkg: 'mui-styles', path: 'shadow/lightTop/lightTopShadow.styles.js' },
-    { pkg: 'mui-components', path: 'cardHeader/brand/BrandCardHeader.js' },
-    { pkg: 'mui-styles', path: 'cardHeader/brand/brandCardHeader.styles.js' },
-    {
-      pkg: 'mui-components',
-      path: 'content/textInfo/TextInfoContent.js',
-    },
-    {
-      pkg: 'mui-styles',
-      path: 'textInfoContent/n03/n03TextInfoContent.styles.js',
-    },
-  ],
-  creators: [require('constants/creators').siriwatknp],
-};
-// hide-end
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
 
-export default ProjectCard;
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'Project'}
+    description={''}
+    creators={[require('constants/creators').siriwatknp]}
+  >
+    <ProjectCardDemo />
+  </Showcase>
+);
+const metadata: IMetadata = {
+  path: 'component/card/project',
+  colSpan: 6,
+  rowSpan: 2,
+  frameProps: {},
+  files: [],
+};
+// @ts-ignore
+ProjectCardDemo.Showcase = AttachedShowcase;
+// @ts-ignore
+ProjectCardDemo.metadata = metadata;
+// hide-end
+export default ProjectCardDemo

@@ -10,7 +10,6 @@ import Typography from '@material-ui/core/Typography';
 import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
 import { useLightTopShadowStyles } from '@mui-treasury/styles/shadow/lightTop';
 
-
 const useStyles = makeStyles(() => ({
   root: {
     maxWidth: 304,
@@ -35,13 +34,18 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const NewsCard2 = () => {
+export const NewsCard2Demo = React.memo(function NewsCard2() {
   const styles = useStyles();
   const mediaStyles = useCoverCardMediaStyles();
   const shadowStyles = useLightTopShadowStyles();
   return (
     <Card className={cx(styles.root, shadowStyles.root)}>
-      <CardMedia classes={mediaStyles} image={'https://images.unsplash.com/photo-1519810755548-39cd217da494?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80'} />
+      <CardMedia
+        classes={mediaStyles}
+        image={
+          'https://images.unsplash.com/photo-1519810755548-39cd217da494?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80'
+        }
+      />
       <CardActionArea>
         <CardContent className={styles.content}>
           <Box
@@ -63,22 +67,35 @@ const NewsCard2 = () => {
       </CardActionArea>
     </Card>
   );
-};
+});
 
 // hide-start
-NewsCard2.metadata = {
-  title: 'News II',
-  description: 'Best for Blog',
-  path: 'component/card/news2',
-  creators: [require('constants/creators').siriwatknp],
-  files: [
-    { pkg: 'mui-styles', path: 'shadow/lightTop/lightTopShadow.styles.js' },
-    {
-      pkg: 'mui-styles',
-      path: 'cardMedia/cover/coverCardMedia.styles.js',
-    },
-  ],
-};
-// hide-end
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
 
-export default NewsCard2;
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'News II'}
+    description={'Best for Blog'}
+    creators={[require('constants/creators').siriwatknp]}
+  >
+    <NewsCard2Demo />
+  </Showcase>
+);
+const metadata: IMetadata = {
+  path: 'component/card/news2',
+  colSpan: 4,
+  rowSpan: 2,
+  frameProps: {},
+  files: [],
+};
+// @ts-ignore
+NewsCard2Demo.Showcase = AttachedShowcase;
+// @ts-ignore
+NewsCard2Demo.metadata = metadata;
+// hide-end
+export default NewsCard2Demo

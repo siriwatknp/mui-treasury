@@ -1,4 +1,5 @@
 import React from 'react';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import CodeRounded from '@material-ui/icons/CodeRounded';
 
@@ -20,42 +21,46 @@ interface IShowcase {
   metadata: IMetadata;
 }
 
+const baseTheme = createMuiTheme();
+
 const DemoSection = ({ components, setComponent }) => {
   const iconBtnStyles = useSizedIconButtonStyles({ padding: 8 });
   return (
-    <GridContainer>
-      {orderIndex(components).map((Component: IShowcase) => {
-        const { colSpan = 4, rowSpan = 1, createdAt, path, frameProps } =
-          Component?.metadata ?? {};
-        const responsiveColSpan = getResponsiveColSpan(colSpan);
-        return (
-          <GridItem key={path} colSpan={responsiveColSpan} rowSpan={rowSpan}>
-            <ShowcaseVariant colSpan={responsiveColSpan}>
-              {variant => (
-                <Component.Showcase
-                  variant={variant}
-                  frameProps={frameProps}
-                  status={getStatusByDate(createdAt)}
-                  actions={
-                    <Row position={'middle-right'}>
-                      <Item>
-                        <IconButton
-                          classes={iconBtnStyles}
-                          onClick={() => setComponent(Component)}
-                          data-testid="view-code-button"
-                        >
-                          <CodeRounded />
-                        </IconButton>
-                      </Item>
-                    </Row>
-                  }
-                />
-              )}
-            </ShowcaseVariant>
-          </GridItem>
-        );
-      })}
-    </GridContainer>
+    <ThemeProvider theme={baseTheme}>
+      <GridContainer>
+        {orderIndex(components).map((Component: IShowcase) => {
+          const { colSpan = 4, rowSpan = 1, createdAt, path, frameProps } =
+            Component?.metadata ?? {};
+          const responsiveColSpan = getResponsiveColSpan(colSpan);
+          return (
+            <GridItem key={path} colSpan={responsiveColSpan} rowSpan={rowSpan}>
+              <ShowcaseVariant colSpan={responsiveColSpan}>
+                {variant => (
+                  <Component.Showcase
+                    variant={variant}
+                    frameProps={frameProps}
+                    status={getStatusByDate(createdAt)}
+                    actions={
+                      <Row position={'middle-right'}>
+                        <Item>
+                          <IconButton
+                            classes={iconBtnStyles}
+                            onClick={() => setComponent(Component)}
+                            data-testid="view-code-button"
+                          >
+                            <CodeRounded />
+                          </IconButton>
+                        </Item>
+                      </Row>
+                    }
+                  />
+                )}
+              </ShowcaseVariant>
+            </GridItem>
+          );
+        })}
+      </GridContainer>
+    </ThemeProvider>
   );
 };
 

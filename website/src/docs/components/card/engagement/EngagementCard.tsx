@@ -86,3 +86,4 @@ EngagementCardDemo.Showcase = AttachedShowcase;
 // @ts-ignore
 EngagementCardDemo.metadata = metadata;
 // hide-end
+export default EngagementCardDemo

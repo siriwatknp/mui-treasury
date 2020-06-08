@@ -31,12 +31,12 @@ const useStyles = makeStyles(() => ({
     },
     '&:hover': {
       '&:before': {
-        bottom: -6
+        bottom: -6,
       },
       '& $card': {
         boxShadow: '-12px 12px 64px 0 #bcc3d6',
-      }
-    }
+      },
+    },
   },
   card: {
     zIndex: 1,
@@ -65,13 +65,19 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const CustomCard = ({ thumbnail, title, subtitle, description, joined }) => {
+const CustomCard = ({
+  thumbnail,
+  title,
+  subtitle,
+  description,
+  joined = false,
+}) => {
   const styles = useStyles();
   const btnStyles = useGraphicBtnStyles();
   return (
     <div className={styles.root}>
       <Column className={styles.card}>
-        <Row gap={2}>
+        <Row p={2} gap={2}>
           <Avatar className={styles.logo} variant={'rounded'} src={thumbnail} />
           <Info position={'middle'} useStyles={useApexInfoStyles}>
             <InfoTitle>{title}</InfoTitle>
@@ -87,7 +93,7 @@ const CustomCard = ({ thumbnail, title, subtitle, description, joined }) => {
         >
           {description}
         </Box>
-        <Row gap={2} position={'bottom'}>
+        <Row p={2} gap={2} position={'bottom'}>
           <Item>
             <AvatarGroup max={4} classes={{ avatar: styles.avatar }}>
               {new Array(5).fill(0).map((_, index) => (
@@ -117,14 +123,14 @@ const CustomCard = ({ thumbnail, title, subtitle, description, joined }) => {
   );
 };
 
-const TeamCardDemo = () => {
+export const TeamCardDemo = React.memo(function TeamCard() {
   return (
     <>
       <NoSsr>
         <GoogleFontLoader fonts={[{ font: 'Ubuntu', weights: [400, 700] }]} />
       </NoSsr>
       <Grid container spacing={4}>
-        <Grid item xs={12} sm={6} lg={4}>
+        <Grid item xs={12} md={6} lg={4}>
           <CustomCard
             thumbnail={
               'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRQHCBAj8nRJkEwjWg5TpNuSZZG9iscsf43V1mfx0LZHNDYW3S_&usqp=CAU'
@@ -139,7 +145,7 @@ const TeamCardDemo = () => {
             }
           />
         </Grid>
-        <Grid item xs={12} sm={6} lg={4}>
+        <Grid item xs={12} md={6} lg={4}>
           <CustomCard
             joined
             thumbnail={
@@ -150,10 +156,9 @@ const TeamCardDemo = () => {
             description={
               'You are already a member of this group since April 5th 2019.'
             }
-            btnLabel={'Leave group'}
           />
         </Grid>
-        <Grid item xs={12} sm={6} lg={4}>
+        <Grid item xs={12} md={6} lg={4}>
           <CustomCard
             thumbnail={'https://avatarfiles.alphacoders.com/537/53765.jpg'}
             title={'Overwatch official'}
@@ -168,19 +173,35 @@ const TeamCardDemo = () => {
       </Grid>
     </>
   );
-};
+});
 // hide-start
-TeamCardDemo.metadata = {
-  title: 'Team',
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
+
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'Team'}
+    description={''}
+    creators={[require('constants/creators').siriwatknp]}
+  >
+    <TeamCardDemo />
+  </Showcase>
+);
+const metadata: IMetadata = {
   path: 'components/card/team',
-  renderedWithoutIframe: false,
-  creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
   createdAt: 'Wed Jun 03 2020',
-  stylesUrl: '',
-  frameProps: { bgcolor: '#f4f7fc' }, // props that applied to Box in grid view
-  size: 'huge', // can be 'large' | 'huge' for grid size
+  colSpan: 12,
+  rowSpan: 1,
+  frameProps: { bgcolor: '#f4f7fc' },
   files: [],
 };
+// @ts-ignore
+TeamCardDemo.Showcase = AttachedShowcase;
+// @ts-ignore
+TeamCardDemo.metadata = metadata;
 // hide-end
-
-export default TeamCardDemo;
+export default TeamCardDemo

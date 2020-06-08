@@ -11,7 +11,6 @@ import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia/wide';
 import { useN01TextInfoContentStyles } from '@mui-treasury/styles/textInfoContent/n01';
 import { useBouncyShadowStyles } from '@mui-treasury/styles/shadow/bouncy';
 
-
 const useStyles = makeStyles(() => ({
   root: {
     maxWidth: 304,
@@ -28,14 +27,19 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const NewsCard = () => {
+export const NewsCardDemo = React.memo(function NewsCard() {
   const styles = useStyles();
   const mediaStyles = useWideCardMediaStyles();
   const textCardContentStyles = useN01TextInfoContentStyles();
   const shadowStyles = useBouncyShadowStyles();
   return (
     <Card className={cx(styles.root, shadowStyles.root)}>
-      <CardMedia classes={mediaStyles} image={'https://images.unsplash.com/photo-1468774871041-fc64dd5522f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2689&q=80'} />
+      <CardMedia
+        classes={mediaStyles}
+        image={
+          'https://images.unsplash.com/photo-1468774871041-fc64dd5522f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2689&q=80'
+        }
+      />
       <CardContent className={styles.content}>
         <TextInfoContent
           classes={textCardContentStyles}
@@ -51,30 +55,35 @@ const NewsCard = () => {
       </CardContent>
     </Card>
   );
-};
+});
 
 // hide-start
-NewsCard.metadata = {
-  title: 'News',
-  description: 'Best for Blog',
-  path: 'component/card/news',
-  creators: [require('constants/creators').siriwatknp],
-  files: [
-    { pkg: 'mui-styles', path: 'shadow/bouncy/bouncyShadow.styles.js' },
-    {
-      pkg: 'mui-styles',
-      path: 'cardMedia/wide/wideCardMedia.styles.js',
-    },
-    {
-      pkg: 'mui-components',
-      path: 'content/textInfo/TextInfoContent.js',
-    },
-    {
-      pkg: 'mui-styles',
-      path: 'textInfoContent/n01/n01TextInfoContent.styles.js',
-    },
-  ],
-};
-// hide-end
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
 
-export default NewsCard;
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'News'}
+    description={'Best for Blog'}
+    creators={[require('constants/creators').siriwatknp]}
+  >
+    <NewsCardDemo />
+  </Showcase>
+);
+const metadata: IMetadata = {
+  path: 'component/card/news',
+  colSpan: 4,
+  rowSpan: 2,
+  frameProps: {},
+  files: [],
+};
+// @ts-ignore
+NewsCardDemo.Showcase = AttachedShowcase;
+// @ts-ignore
+NewsCardDemo.metadata = metadata;
+// hide-end
+export default NewsCardDemo
