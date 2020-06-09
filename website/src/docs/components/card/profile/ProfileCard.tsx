@@ -96,7 +96,7 @@ const AttachedShowcase = (props: ShowcaseProps) => (
 );
 const metadata: IMetadata = {
   path: 'component/card/profile',
-  colSpan: 3,
+  colSpan: 4,
   rowSpan: 1,
   frameProps: {},
   files: [],

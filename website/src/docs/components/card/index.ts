@@ -22,3 +22,5 @@ export * from './tag/TagCard';
 export * from './team/TeamCardDemo';
 export * from './tutor/TutorCardDemo'
 
+export * from './offer/OfferCardDemo'
+
