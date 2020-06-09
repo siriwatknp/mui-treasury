@@ -68,7 +68,7 @@ const metadata: IMetadata = {
   path: 'component/card/music',
   createdAt: 'Mon Feb 10 2020',
   colSpan: 4,
-  rowSpan: 1,
+  rowSpan: 2,
   frameProps: {},
   files: [],
 };

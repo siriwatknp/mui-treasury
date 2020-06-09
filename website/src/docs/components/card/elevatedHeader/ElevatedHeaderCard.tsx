@@ -106,7 +106,7 @@ const AttachedShowcase = (props: ShowcaseProps) => (
 const metadata: IMetadata = {
   path: 'component/card/elevatedHeader',
   colSpan: 4,
-  rowSpan: 1,
+  rowSpan: 2,
   frameProps: { p: 1 },
   files: [],
 };

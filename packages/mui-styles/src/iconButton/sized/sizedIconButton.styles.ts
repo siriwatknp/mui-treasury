@@ -10,7 +10,7 @@ export type SizedIconButtonStyleProps = {
 export type SizedIconButtonClassKey = keyof ReturnType<typeof sizedIconButtonStyles>
 
 const sizedIconButtonStyles = () => ({
-  root: ({ padding = 12, color = '', radius = 40 }: SizedIconButtonStyleProps) => ({
+  root: ({ padding = 8, color = '', radius = 40 }: SizedIconButtonStyleProps) => ({
     color,
     padding,
     borderRadius: radius,

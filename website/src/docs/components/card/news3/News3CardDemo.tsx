@@ -173,7 +173,7 @@ const metadata: IMetadata = {
   path: 'components/card/news3',
   createdAt: 'Wed Jun 03 2020',
   colSpan: 4,
-  rowSpan: 1,
+  rowSpan: 2,
   frameProps: { py: 6 },
   files: [],
 };

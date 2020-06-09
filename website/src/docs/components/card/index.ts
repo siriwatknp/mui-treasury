@@ -20,3 +20,5 @@ export * from './showcase/ShowcaseCardDemo';
 export * from './solidGame/SolidGameCardDemo';
 export * from './tag/TagCard';
 export * from './team/TeamCardDemo';
+export * from './tutor/TutorCardDemo'
+

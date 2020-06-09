@@ -77,8 +77,8 @@ const AttachedShowcase = (props: ShowcaseProps) => (
 );
 const metadata: IMetadata = {
   path: 'component/card/engagement',
-  // colSpan: 1,
-  // rowSpan: 3,
+  colSpan: 3,
+  rowSpan: 2,
   files: [],
 };
 // @ts-ignore
