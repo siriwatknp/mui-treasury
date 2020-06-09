@@ -4,7 +4,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CodeRounded from '@material-ui/icons/CodeRounded';
 
 import { GridContainer, GridItem } from '../../components/ShowcaseGrid';
-import { ShowcaseVariant } from '../../logics/useShowcaseVariant';
+// import { ShowcaseVariant } from '../../logics/useShowcaseVariant';
 import { IMetadata, ShowcaseProps } from '../../components/Showcase';
 import { Item, Row } from '@mui-treasury/components/flex';
 import { useSizedIconButtonStyles } from '@mui-treasury/styles/iconButton/sized';
@@ -34,28 +34,46 @@ const DemoSection = ({ components, setComponent }) => {
           const responsiveColSpan = getResponsiveColSpan(colSpan);
           return (
             <GridItem key={path} colSpan={responsiveColSpan} rowSpan={rowSpan}>
-              <ShowcaseVariant colSpan={responsiveColSpan}>
-                {variant => (
-                  <Component.Showcase
-                    variant={variant}
-                    frameProps={frameProps}
-                    status={getStatusByDate(createdAt)}
-                    actions={
-                      <Row position={'middle-right'}>
-                        <Item>
-                          <IconButton
-                            classes={iconBtnStyles}
-                            onClick={() => setComponent(Component)}
-                            data-testid="view-code-button"
-                          >
-                            <CodeRounded />
-                          </IconButton>
-                        </Item>
-                      </Row>
-                    }
-                  />
-                )}
-              </ShowcaseVariant>
+              <Component.Showcase
+                variant={'column'}
+                frameProps={frameProps}
+                status={getStatusByDate(createdAt)}
+                actions={
+                  <Row position={'middle-right'}>
+                    <Item>
+                      <IconButton
+                        classes={iconBtnStyles}
+                        onClick={() => setComponent(Component)}
+                        data-testid="view-code-button"
+                      >
+                        <CodeRounded />
+                      </IconButton>
+                    </Item>
+                  </Row>
+                }
+              />
+              {/*<ShowcaseVariant colSpan={responsiveColSpan}>*/}
+              {/*  {variant => (*/}
+              {/*    <Component.Showcase*/}
+              {/*      variant={variant}*/}
+              {/*      frameProps={frameProps}*/}
+              {/*      status={getStatusByDate(createdAt)}*/}
+              {/*      actions={*/}
+              {/*        <Row position={'middle-right'}>*/}
+              {/*          <Item>*/}
+              {/*            <IconButton*/}
+              {/*              classes={iconBtnStyles}*/}
+              {/*              onClick={() => setComponent(Component)}*/}
+              {/*              data-testid="view-code-button"*/}
+              {/*            >*/}
+              {/*              <CodeRounded />*/}
+              {/*            </IconButton>*/}
+              {/*          </Item>*/}
+              {/*        </Row>*/}
+              {/*      }*/}
+              {/*    />*/}
+              {/*  )}*/}
+              {/*</ShowcaseVariant>*/}
             </GridItem>
           );
         })}
