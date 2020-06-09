@@ -37,8 +37,8 @@ const AttachedShowcase = (props: ShowcaseProps) => (
 );
 const metadata: IMetadata = {
   path: 'styles/avatar/grow',
-  colSpan: 1,
-  rowSpan: 2,
+  colSpan: { sm: 6, md: 4, lg: 3 },
+  rowSpan: 1,
   createdAt: 'Sat Jun 06 2020',
   files: [{ pkg: 'mui-styles', path: 'avatar/grow/growAvatar.styles.ts' }],
 };

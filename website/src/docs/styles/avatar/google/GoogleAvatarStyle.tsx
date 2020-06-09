@@ -47,6 +47,8 @@ const AttachedShowcase = (props: ShowcaseProps) => (
 );
 const metadata: IMetadata = {
   path: 'styles/avatar/google',
+  colSpan: { sm: 6, md: 4, lg: 3 },
+  rowSpan: 1,
   createdAt: 'Fri May 15 2020',
   files: [{ pkg: 'mui-styles', path: 'avatar/google/googleAvatar.styles.ts' }],
 };
