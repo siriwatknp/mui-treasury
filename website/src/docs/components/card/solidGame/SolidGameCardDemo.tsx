@@ -165,7 +165,6 @@ const metadata: IMetadata = {
   path: 'components/card/solidGame',
   createdAt: 'Tue Jun 02 2020',
   colSpan: 12,
-  rowSpan: 1,
   frameProps: { p: 5, bgcolor: '#f7f7fe', overflow: 'auto' },
   files: [],
 };

@@ -88,7 +88,6 @@ const AttachedShowcase = (props: ShowcaseProps) => (
 const metadata: IMetadata = {
   path: 'component/card/post',
   colSpan: 4,
-  rowSpan: 2,
   frameProps: {},
   files: [],
 };

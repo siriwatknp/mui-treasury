@@ -92,7 +92,6 @@ const metadata: IMetadata = {
   path: 'components/card/galaxy',
   createdAt: 'Wed Jun 03 2020',
   colSpan: 3,
-  rowSpan: 2,
   frameProps: { p: 1 },
   files: [],
 };

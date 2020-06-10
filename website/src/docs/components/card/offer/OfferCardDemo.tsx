@@ -129,7 +129,7 @@ const AttachedShowcase = (props: ShowcaseProps) => (
 const metadata: IMetadata = {
   path: 'components/card/offer',
   colSpan: 5,
-  rowSpan: 1,
+  rowSpan: 2,
   createdAt: 'Tue Jun 09 2020',
   frameProps: { bgcolor: '#fff' },
   files: [],

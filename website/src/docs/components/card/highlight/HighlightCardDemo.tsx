@@ -219,7 +219,6 @@ const metadata: IMetadata = {
   path: 'components/card/highlight',
   createdAt: 'Thu Jun 04 2020',
   colSpan: 9,
-  rowSpan: 2,
   frameProps: {},
   files: [],
 };

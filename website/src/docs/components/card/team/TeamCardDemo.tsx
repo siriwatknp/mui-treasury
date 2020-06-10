@@ -195,7 +195,6 @@ const metadata: IMetadata = {
   path: 'components/card/team',
   createdAt: 'Wed Jun 03 2020',
   colSpan: 12,
-  rowSpan: 1,
   frameProps: { bgcolor: '#f4f7fc' },
   files: [],
 };

@@ -147,7 +147,6 @@ const metadata: IMetadata = {
   path: 'components/card/showcase',
   createdAt: 'Sun May 31 2020',
   colSpan: 12,
-  rowSpan: 1,
   frameProps: { bgcolor: '#fff' },
   files: [],
 };

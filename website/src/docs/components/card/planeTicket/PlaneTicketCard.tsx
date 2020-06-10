@@ -169,7 +169,7 @@ const AttachedShowcase = (props: ShowcaseProps) => (
 const metadata: IMetadata = {
   path: 'component/card/planeTicket',
   colSpan: 5,
-  rowSpan: 1,
+  rowSpan: 2,
   frameProps: { bgcolor: 'rgb(0, 51, 153)' },
   files: [],
 };

@@ -29,7 +29,7 @@ const DemoSection = ({ components, setComponent }) => {
     <ThemeProvider theme={baseTheme}>
       <GridContainer>
         {orderIndex(components).map((Component: IShowcase) => {
-          const { colSpan = 4, rowSpan = 1, createdAt, path, frameProps } =
+          const { colSpan = 4, rowSpan = 3, createdAt, path, frameProps } =
             Component?.metadata ?? {};
           const responsiveColSpan = getResponsiveColSpan(colSpan);
           return (
