@@ -134,7 +134,7 @@ export default [
       {
         key: 'card',
         label: 'Card',
-        total: 22,
+        total: 25,
         to: '/components/card',
       },
       {
