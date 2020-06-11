@@ -57,19 +57,6 @@ describe('Flex', () => {
         'flex-direction: column'
       );
     });
-
-    it('[direction: row] children has correct gap', () => {
-      render(
-        <Row gap={2}>
-          <Item>item1</Item>
-          <Item>item2</Item>
-          <Item>item3</Item>
-        </Row>
-      );
-      expect(screen.getByText(/item1/)).toHaveStyle('');
-      expect(screen.getByText(/item2/)).toHaveStyle('padding-left: 16px');
-      expect(screen.getByText(/item3/)).toHaveStyle('padding-left: 16px');
-    });
   });
 
   describe('Column', () => {
@@ -79,7 +66,10 @@ describe('Flex', () => {
       ['top', undefined],
       ['bottom', { marginTop: 'auto' }],
       ['middle', { marginTop: 'auto', marginBottom: 'auto' }],
-      ['middle-right', { alignSelf: 'flex-end', marginTop: 'auto', marginBottom: 'auto' }],
+      [
+        'middle-right',
+        { alignSelf: 'flex-end', marginTop: 'auto', marginBottom: 'auto' },
+      ],
       [
         'center',
         { alignSelf: 'center', marginTop: 'auto', marginBottom: 'auto' },
@@ -116,19 +106,6 @@ describe('Flex', () => {
         'flex-direction: column'
       );
     });
-
-    it('[direction: row] children has correct gap', () => {
-      render(
-        <Column gap={2}>
-          <Item>item1</Item>
-          <Item>item2</Item>
-          <Item>item3</Item>
-        </Column>
-      );
-      expect(screen.getByText(/item1/)).toHaveStyle('');
-      expect(screen.getByText(/item2/)).toHaveStyle('padding-top: 16px');
-      expect(screen.getByText(/item3/)).toHaveStyle('padding-top: 16px');
-    });
   });
 
   describe('Item', () => {
@@ -147,10 +124,21 @@ describe('Flex', () => {
         expect(screen.getByText('item')).toHaveStyle(expected);
       }
     );
+
+    it('has padding half of gap', () => {
+      render(
+        <Row gap={2}>
+          <Item>item1</Item>
+          <Item>item2</Item>
+        </Row>
+      );
+      expect(screen.getByText('item1')).toHaveStyle('padding: 16px');
+      expect(screen.getByText('item2')).toHaveStyle('padding: 16px');
+    });
   });
 
   describe('Nested', () => {
-    it('NestedRow,Column has correct style', () => {
+    it('NestedRow,Column should not have padding because of inherit', () => {
       render(
         <Row data-testid={'row'} gap={2}>
           <Item>item1</Item>
@@ -165,27 +153,15 @@ describe('Flex', () => {
           </Column>
         </Row>
       );
-      expect(screen.getByTestId('nested-row')).toHaveStyle(
-        `padding-left: 16px`
+      expect(screen.getByTestId('nested-row')).not.toHaveStyle(
+        `padding: 16px`
       );
-      expect(screen.getByText('nested-row item1')).toHaveStyle('');
-      expect(screen.getByText('nested-row item2')).toHaveStyle(
-        'padding-left: 16px'
-      );
-
-      expect(screen.getByTestId('nested-column')).toHaveStyle(
-        'padding-left: 16px'
-      );
-      expect(screen.getByText('nested-column item1')).toHaveStyle('');
-      expect(screen.getByText('nested-column item2')).toHaveStyle(
-        'padding-top: 16px'
-      );
-      expect(screen.getByText('nested-column item3')).toHaveStyle(
-        'padding-top: 16px'
+      expect(screen.getByTestId('nested-column')).not.toHaveStyle(
+        'padding: 16px'
       );
     });
 
-    it('Nested has correct gap', () => {
+    it('NestedItem should have padding related to nearest Provider', () => {
       render(
         <Row gap={2}>
           <Item>item1</Item>
@@ -200,11 +176,12 @@ describe('Flex', () => {
           </Column>
         </Row>
       );
-      expect(screen.getByTestId('nested-row')).not.toHaveStyle('padding: 8px 8px 8px 16px')
-      expect(screen.getByTestId('nested-row')).toHaveStyle('padding-left: 16px')
-      expect(screen.getByTestId('nested-column')).not.toHaveStyle('padding: 24px 24px 24px 16px')
-      expect(screen.getByTestId('nested-column')).toHaveStyle('padding-left: 16px')
-    })
+      expect(screen.getByTestId('nested-row')).toHaveStyle('padding: 16px; margin: -8px');
+      expect(screen.getByText('nested-row item1')).toHaveStyle('padding: 8px');
+
+      expect(screen.getByTestId('nested-column')).toHaveStyle('padding: 16px; margin: -24px');
+      expect(screen.getByText('nested-column item2')).toHaveStyle('padding: 24px');
+    });
   });
 
   describe('Real world', () => {
@@ -227,9 +204,7 @@ describe('Flex', () => {
             <Typography>
               <b>Firebase</b>
             </Typography>
-            <Typography>
-              Similar to firebase theme
-            </Typography>
+            <Typography>Similar to firebase theme</Typography>
           </Item>
           <Item data-testid={'cardHeader-iconBtn'} position={'right'} mr={-0.5}>
             <IconButton>
@@ -240,52 +215,70 @@ describe('Flex', () => {
       );
     };
 
-    it("Showcase direction:column should have correct style", () => {
+    it('Showcase direction:column should have correct style', () => {
       render(
         <Column gap={2} data-testid={'column-root'}>
           <CardHeader />
           <Item>
-            <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8}>
-
-            </Box>
+            <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8}></Box>
           </Item>
           <BasicProfile />
         </Column>
-      )
+      );
 
       expect(screen.getByTestId('column-root')).toHaveStyle('padding: 16px');
-      expect(screen.getByTestId('cardHeader-row')).not.toHaveStyle('padding: 16px');
-      expect(screen.getByTestId('cardHeader-info')).toHaveStyle('align-self: center');
-      expect(screen.getByTestId('cardHeader-iconBtn')).toHaveStyle('margin-left: auto; margin-right: -4px');
+      expect(screen.getByTestId('cardHeader-row')).not.toHaveStyle(
+        'padding: 16px'
+      );
+      expect(screen.getByTestId('cardHeader-info')).toHaveStyle(
+        'align-self: center'
+      );
+      expect(screen.getByTestId('cardHeader-iconBtn')).toHaveStyle(
+        'margin-left: auto; margin-right: -4px'
+      );
 
-      expect(screen.getByTestId('basicProfile-row')).toHaveStyle('padding-top: 16px');
-      expect(screen.getByTestId('basicProfile-item')).toHaveStyle('align-self: center; padding-left: 8px');
-    })
+      expect(screen.getByTestId('basicProfile-row')).not.toHaveStyle(
+        'padding: 16px'
+      );
+      expect(screen.getByTestId('basicProfile-item')).toHaveStyle(
+        'align-self: center; padding-left: 8px'
+      );
+    });
 
-    it("Showcase direction:row should have correct style", () => {
+    it('Showcase direction:row should have correct style', () => {
       render(
         <Row gap={2} data-testid={'row-root'}>
           <Item>
-            <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8}>
-
-            </Box>
+            <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8}></Box>
           </Item>
           <Column data-testid={'column-wrapper'}>
             <CardHeader />
             <BasicProfile position={'bottom'} />
           </Column>
         </Row>
-      )
+      );
 
       expect(screen.getByTestId('row-root')).toHaveStyle('padding: 16px');
-      expect(screen.getByTestId('column-wrapper')).toHaveStyle('padding-left: 16px');
+      expect(screen.getByTestId('column-wrapper')).not.toHaveStyle(
+        'padding: 16px'
+      );
 
-      expect(screen.getByTestId('cardHeader-row')).not.toHaveStyle('padding: 16px');
-      expect(screen.getByTestId('cardHeader-info')).toHaveStyle('align-self: center');
-      expect(screen.getByTestId('cardHeader-iconBtn')).toHaveStyle('margin-left: auto; margin-right: -4px');
+      expect(screen.getByTestId('cardHeader-row')).not.toHaveStyle(
+        'padding: 16px'
+      );
+      expect(screen.getByTestId('cardHeader-info')).toHaveStyle(
+        'align-self: center'
+      );
+      expect(screen.getByTestId('cardHeader-iconBtn')).toHaveStyle(
+        'margin-left: auto; margin-right: -4px'
+      );
 
-      expect(screen.getByTestId('basicProfile-row')).toHaveStyle('margin-top: auto; padding-top: 16px');
-      expect(screen.getByTestId('basicProfile-item')).toHaveStyle('align-self: center; padding-left: 8px');
-    })
+      expect(screen.getByTestId('basicProfile-row')).toHaveStyle(
+        'margin-top: auto'
+      );
+      expect(screen.getByTestId('basicProfile-item')).toHaveStyle(
+        'align-self: center; padding-left: 8px'
+      );
+    });
   });
 });

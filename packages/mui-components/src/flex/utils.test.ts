@@ -1,24 +1,28 @@
 import each from 'jest-each';
 import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
 import createSpacing from '@material-ui/core/styles/createSpacing';
-import { gapToCss, getLowerMediaQuery } from './utils';
+import { gapToCss, getLowerMediaQuery, getThemeCssValue } from './utils';
 
 describe('flex utils', () => {
+  describe('getThemeCssValue', () => {
+    expect(getThemeCssValue(2)).toEqual('calc(16px / 2)')
+    expect(getThemeCssValue('1rem')).toEqual('calc(1rem / 2)')
+  })
+
   describe('gutterToCss', () => {
     const theme = {
       breakpoints: createBreakpoints({}),
       spacing: createSpacing(8),
     };
-    const callback = val => ({ paddingLeft: val });
     each([
-      ['string', '12px', { paddingLeft: '12px' }],
-      ['number', 2, { paddingLeft: 16 }],
+      ['string', '12px', 'calc(12px / 2)'],
+      ['number', 2, 'calc(16px / 2)'],
       [
         'object',
         { sm: 2, lg: '24px' },
         {
-          '@media (min-width:600px)': { paddingLeft: 16 },
-          '@media (min-width:1280px)': { paddingLeft: '24px' },
+          sm: 'calc(16px / 2)',
+          lg: 'calc(24px / 2)',
         },
       ],
       ['undefined', undefined, undefined],
@@ -26,7 +30,7 @@ describe('flex utils', () => {
     ]).it(
       'return correct result given gutter is type %s',
       (_, gutter, expected) => {
-        expect(gapToCss(theme)(gutter, callback)).toEqual(expected);
+        expect(gapToCss(theme, getThemeCssValue)(gutter)).toEqual(expected);
       }
     );
 

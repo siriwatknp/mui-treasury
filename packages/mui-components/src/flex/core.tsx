@@ -1,5 +1,7 @@
 import React from 'react';
+import useTheme from '@material-ui/core/styles/useTheme';
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
+import { gapToCss } from './utils'
 
 type FlexContextValue = 'row' | 'column' | 'row-column' | 'column-row';
 export type At = Breakpoint | number;
@@ -45,23 +47,7 @@ export const positionInsideColumn = (position: Position) => {
     return { alignSelf: 'center', marginTop: 'auto', marginBottom: 'auto' };
 };
 
-export const gapInsideRow = (value: any) => ({
-  pl: value,
-});
-export const gapInsideColumn = (value: any) => ({
-  pt: value,
-});
-
 export const useGapCtx = () => React.useContext(GapContext);
-
-export const useGapProps = (itemIndex: number) => {
-  const flex = React.useContext(FlexContext);
-  const gap = React.useContext(GapContext);
-  if (itemIndex) {
-    if (flex === 'row') return gapInsideRow(gap);
-    if (flex === 'column') return gapInsideColumn(gap);
-  }
-};
 
 export const useGapLookup = (gap: Gap) => {
   const isValidGap = typeof gap !== 'undefined';
@@ -71,13 +57,30 @@ export const useGapLookup = (gap: Gap) => {
   if (!isValidGap) {
     calculatedGap = inheritedGap;
   }
+  const theme = useTheme();
   return {
     isValidGap,
     hasInheritedGap,
     calculatedGap,
     itemProps: {
-      ...(!hasInheritedGap && { p: calculatedGap }),
+      ...(!hasInheritedGap && {
+        // need to do this, otherwise cannot test calc() with .toHaveStyle
+        p: gapToCss(theme)(calculatedGap),
+      }),
+      ...(hasInheritedGap &&
+        isValidGap && {
+          p: gapToCss(theme)(inheritedGap),
+          m: gapToCss(theme)(typeof gap === 'number' ? -gap : `-${gap}`),
+        }),
     },
+  };
+};
+
+export const useGapItem = () => {
+  const theme = useTheme();
+  const gap = useGapCtx();
+  return {
+    p: gapToCss(theme)(gap),
   };
 };
 
@@ -92,13 +95,11 @@ export const useFlexStyles = (position: Position) => {
 export type Gap =
   | number
   | string
-  | 'inherit'
   | Partial<Record<'xs' | 'sm' | 'md' | 'lg' | 'xl', string | number>>;
 
 export type ProviderProps = {
   flexDirection: FlexContextValue;
   gap: Gap;
-  children: React.ReactNode | React.ReactElement | React.ReactElement[];
 };
 
 export const Provider = ({
@@ -106,16 +107,10 @@ export const Provider = ({
   gap,
   children,
 }: React.PropsWithChildren<ProviderProps>) => {
-  const inheritedGap = useGapCtx();
   return (
     <FlexProvider value={flexDirection}>
-      <GapProvider value={gap === 'inherit' ? inheritedGap : gap}>
-        {React.Children.map(children, (child, index) => {
-          if (React.isValidElement(child)) {
-            return React.cloneElement(child, { 'data-flexindex': index });
-          }
-          return child;
-        })}
+      <GapProvider value={gap}>
+        {children}
       </GapProvider>
     </FlexProvider>
   );

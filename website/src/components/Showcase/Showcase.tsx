@@ -97,18 +97,20 @@ const BasicProfile = ({ creators, actions, ...props }: BasicProfileProps) => {
   const styles = useBasicProfileStyles();
   return (
     <Row {...props}>
-      <AvatarGroup>
-        {creators.map(c => (
-          <Tooltip key={c.name} title={c.name}>
-            <Avatar
-              {...(typeof c.face === 'string'
-                ? { alt: c.name, src: c.face }
-                : { children: c.name.substr(0, 1) })}
-            />
-          </Tooltip>
-        ))}
-      </AvatarGroup>
-      <Item position={'middle'} pl={{ xs: 1, sm: 1.5 }}>
+      <Item position={'middle'}>
+        <AvatarGroup>
+          {creators.map(c => (
+            <Tooltip key={c.name} title={c.name}>
+              <Avatar
+                {...(typeof c.face === 'string'
+                  ? { alt: c.name, src: c.face }
+                  : { children: c.name.substr(0, 1) })}
+              />
+            </Tooltip>
+          ))}
+        </AvatarGroup>
+      </Item>
+      <Item position={'middle'} pl={{ sm: 0.5 }}>
         <Typography className={styles.overline}>
           {creators.length > 1 ? 'CREATORS' : 'CREATOR'}
         </Typography>

@@ -1,13 +1,13 @@
 import React from 'react';
 import cx from 'clsx';
 import Box, { BoxProps } from '@material-ui/core/Box';
-import { Position, useFlexStyles, useGapProps } from './core';
+import { Position, useFlexStyles, useGapItem } from './core';
 
 export type ItemProps = {
   position?: Position;
-  'data-flexindex'?: number;
   grow?: boolean | number;
   shrink?: number;
+  gapDisabled?: boolean;
   cssPosition?: 'fixed' | 'absolute' | 'sticky' | 'static' | 'relative';
 } & BoxProps;
 
@@ -17,16 +17,17 @@ const Item = ({
   cssPosition,
   grow,
   shrink,
-  'data-flexindex': itemIndex,
+  gapDisabled,
   ...props
 }: ItemProps) => {
-  const gutterProps = useGapProps(itemIndex);
   const flexStyles = useFlexStyles(position);
+  const itemProps = useGapItem();
+  console.log('itemProps', itemProps);
   return (
     <Box
       className={cx('FlexItem', className)}
       {...flexStyles}
-      {...gutterProps}
+      {...!gapDisabled && itemProps}
       flexGrow={typeof grow === 'boolean' ? 1 : grow}
       flexShrink={shrink}
       {...props}

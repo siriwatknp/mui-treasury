@@ -6,7 +6,7 @@ import { ColumnToRow, RowToColumn, Row, Column, Item } from '@mui-treasury/compo
 
 export default () => {
   return (
-    <Box p={3}>
+    <Box p={'calc(24px / 2)'}>
       <ColumnToRow gap={2} at={'sm'}>
         <Item>
           <Box width={'100%'} minWidth={300} maxWidth={500} height={100} bgcolor={'primary.main'} />

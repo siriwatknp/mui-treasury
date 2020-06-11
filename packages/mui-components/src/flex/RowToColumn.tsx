@@ -1,7 +1,7 @@
 import React from 'react';
 import * as CSS from 'csstype';
 import cx from 'clsx';
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import { Theme } from '@material-ui/core';
 import {
   At,
@@ -12,7 +12,7 @@ import {
   useBreakpointLookup,
 } from './core';
 import Item, { ItemProps } from './Item';
-import { gapToCss, getLowerMediaQuery } from './utils';
+import { getLowerMediaQuery } from './utils';
 
 export type RowToColumnProps = ItemProps & {
   rowStyle?: CSS.Properties;
@@ -25,10 +25,9 @@ export type RowToColumnProps = ItemProps & {
 
 const styles = (theme: Theme) => {
   const { breakpoints } = theme;
-  return {
+  return createStyles({
     root: ({
       at,
-      gap,
       columnStyle,
       rowStyle,
       columnReversed,
@@ -40,25 +39,15 @@ const styles = (theme: Theme) => {
         display: 'flex',
         [breakpoints.up(at)]: {
           ...columnStyle,
-          flexDirection: columnReversed
-            ? 'column-reverse'
-            : ('column' as const),
-          ...gapToCss(theme)(gap, (value: string) => ({
-            [`& > *:not(:${columnReversed ? 'last' : 'first'}-child)`]: {
-              paddingTop: value,
-            },
-          })),
+          flexDirection: columnReversed ? 'column-reverse' : 'column',
         },
         [getLowerMediaQuery(theme, at)]: {
           alignItems: 'center',
           ...rowStyle,
-          ...gapToCss(theme)(gap, (value: string | number) => ({
-            '& > *:not(:first-child)': { paddingLeft: value },
-          })),
         },
       };
     },
-  };
+  });
 };
 
 const useStyles = makeStyles(styles, { name: 'FlexRowToColumn' });

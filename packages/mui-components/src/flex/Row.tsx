@@ -5,7 +5,7 @@ import { Provider, useGapLookup, Gap } from './core';
 
 export type RowProps = ItemProps & {
   gap?: Gap;
-  children: React.ReactNode | React.ReactElement | React.ReactElement[];
+  children: React.ReactNode;
 };
 
 const Row = ({ className, children, gap, ...props }: RowProps) => {
@@ -16,6 +16,7 @@ const Row = ({ className, children, gap, ...props }: RowProps) => {
       display={'flex'}
       {...itemProps}
       {...props}
+      gapDisabled
     >
       <Provider flexDirection={'row'} gap={calculatedGap}>
         {children}
