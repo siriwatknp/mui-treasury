@@ -24,3 +24,5 @@ export * from './tutor/TutorCardDemo'
 
 export * from './offer/OfferCardDemo'
 
+export * from './sysi/SysiCardDemo'
+

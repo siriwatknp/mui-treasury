@@ -33,7 +33,6 @@ const AttachedShowcase = (props: ShowcaseProps) => (
 const metadata: IMetadata = {
   path: 'components/<%= category %>/<%= name %>',
   colSpan: 4,
-  rowSpan: 1,
   createdAt: '<%= h.now() %>',
   files: [],
 };

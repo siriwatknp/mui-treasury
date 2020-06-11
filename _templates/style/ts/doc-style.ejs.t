@@ -35,7 +35,6 @@ const AttachedShowcase = (props: ShowcaseProps) => (
 const metadata: IMetadata = {
   path: 'styles/<%= category %>/<%= name %>',
   colSpan: 4,
-  rowSpan: 1,
   createdAt: '<%= h.now() %>',
   files: [{ pkg: 'mui-styles', path: '<%= category %>/<%= name %>/<%= name + h.changeCase.pascal(category) %>.styles.ts' }],
 };
