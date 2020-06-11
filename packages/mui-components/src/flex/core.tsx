@@ -1,7 +1,7 @@
 import React from 'react';
 import useTheme from '@material-ui/core/styles/useTheme';
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
-import { gapToCss } from './utils'
+import { gapToCss, resolveGap } from './utils';
 
 type FlexContextValue = 'row' | 'column' | 'row-column' | 'column-row';
 export type At = Breakpoint | number;
@@ -70,7 +70,9 @@ export const useGapLookup = (gap: Gap) => {
       ...(hasInheritedGap &&
         isValidGap && {
           p: gapToCss(theme)(inheritedGap),
-          m: gapToCss(theme)(typeof gap === 'number' ? -gap : `-${gap}`),
+          m: gapToCss(theme, value =>
+            resolveGap(typeof value === 'number' ? -value : `-${value}`)
+          )(gap),
         }),
     },
   };
@@ -109,9 +111,7 @@ export const Provider = ({
 }: React.PropsWithChildren<ProviderProps>) => {
   return (
     <FlexProvider value={flexDirection}>
-      <GapProvider value={gap}>
-        {children}
-      </GapProvider>
+      <GapProvider value={gap}>{children}</GapProvider>
     </FlexProvider>
   );
 };

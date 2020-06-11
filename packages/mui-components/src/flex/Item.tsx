@@ -7,6 +7,7 @@ export type ItemProps = {
   position?: Position;
   grow?: boolean | number;
   shrink?: number;
+  stretched?: boolean;
   gapDisabled?: boolean;
   cssPosition?: 'fixed' | 'absolute' | 'sticky' | 'static' | 'relative';
 } & BoxProps;
@@ -17,6 +18,7 @@ const Item = ({
   cssPosition,
   grow,
   shrink,
+  stretched,
   gapDisabled,
   ...props
 }: ItemProps) => {
@@ -28,6 +30,7 @@ const Item = ({
       {...flexStyles}
       {...!gapDisabled && itemProps}
       flexGrow={typeof grow === 'boolean' ? 1 : grow}
+      {...stretched && { flexGrow: 100000 }}
       flexShrink={shrink}
       {...props}
       position={cssPosition}

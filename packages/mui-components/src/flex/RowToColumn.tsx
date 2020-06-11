@@ -76,6 +76,7 @@ const RowToColumn = ({
       className={cx('FlexRowToColumn', styles.root, className)}
       {...itemProps}
       {...props}
+      gapDisabled
     >
       <Provider flexDirection={'row-column'} gap={calculatedGap}>
         <BreakpointProvider at={calculatedAt}>{children}</BreakpointProvider>
