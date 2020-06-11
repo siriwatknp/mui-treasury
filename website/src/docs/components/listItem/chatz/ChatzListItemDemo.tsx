@@ -31,32 +31,32 @@ export const ChatzListItemDemo = React.memo(function ChatzListItem() {
       </NoSsr>
       <Column gap={2}>
         <Row alignItems={'center'}>
-          <div className={avatarStyles.root}>
-            <Avatar src={'https://avatarfiles.alphacoders.com/816/81602.jpg'} />
-          </div>
-          <Item>
-            <Info useStyles={useChatzInfoStyles}>
-              <InfoTitle>Phawta Tuntayakul</InfoTitle>
-              <InfoSubtitle>Great, I'll join you tomorrow...</InfoSubtitle>
-              <InfoCaption>10 m</InfoCaption>
-            </Info>
+          <Item position={'middle'}>
+            <div className={avatarStyles.root}>
+              <Avatar src={'https://avatarfiles.alphacoders.com/816/81602.jpg'} />
+            </div>
           </Item>
+          <Info useStyles={useChatzInfoStyles}>
+            <InfoTitle>Phawta Tuntayakul</InfoTitle>
+            <InfoSubtitle>Great, I'll join you tomorrow...</InfoSubtitle>
+            <InfoCaption>10 m</InfoCaption>
+          </Info>
           <Item minWidth={48} textAlign={'right'}>
             <Chip color={'secondary'} label={2} size={'small'} />
           </Item>
         </Row>
         <Row mt={2} alignItems={'center'}>
-          <Avatar
-            classes={avatarStyles2}
-            src={'https://avatarfiles.alphacoders.com/166/166630.jpg'}
-          />
-          <Item>
-            <Info useStyles={useChatzInfoStyles}>
-              <InfoTitle>Maria Illesaca</InfoTitle>
-              <InfoSubtitle>Can you please send me more detail...</InfoSubtitle>
-              <InfoCaption>10:45 AM</InfoCaption>
-            </Info>
+          <Item position={'middle'}>
+            <Avatar
+              classes={avatarStyles2}
+              src={'https://avatarfiles.alphacoders.com/166/166630.jpg'}
+            />
           </Item>
+          <Info useStyles={useChatzInfoStyles}>
+            <InfoTitle>Maria Illesaca</InfoTitle>
+            <InfoSubtitle>Can you please send me more detail...</InfoSubtitle>
+            <InfoCaption>10:45 AM</InfoCaption>
+          </Info>
         </Row>
       </Column>
     </>

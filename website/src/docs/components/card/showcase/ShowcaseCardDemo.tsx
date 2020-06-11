@@ -41,8 +41,8 @@ const BasicProfile = props => {
   const styles = useBasicProfileStyles();
   return (
     <Row {...props}>
-      <Avatar className={styles.avatar}>S</Avatar>
-      <Item position={'middle'} pl={{ xs: 1, sm: 1.5 }}>
+      <Item><Avatar className={styles.avatar}>S</Avatar></Item>
+      <Item position={'middle'} pl={{ sm: 0.5, lg: 0.5 }}>
         <Typography className={styles.overline}>CREATOR</Typography>
         <Typography className={styles.name}>siriwatknp</Typography>
       </Item>
@@ -104,7 +104,7 @@ export const ShowcaseCardDemo = React.memo(function ShowcaseCard() {
   return (
     <Grid container spacing={4} justify={'center'}>
       <Grid item xs={12} sm={4} md={3}>
-        <Column className={styles.card} p={gap} gap={gap}>
+        <Column className={styles.card} p={{ xs: 0.5, sm: 0.75, lg: 1 }} gap={gap}>
           <CardHeader />
           <Item>
             <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8} />
@@ -113,7 +113,7 @@ export const ShowcaseCardDemo = React.memo(function ShowcaseCard() {
         </Column>
       </Grid>
       <Grid item xs={12} sm={8} lg={7}>
-        <Row className={styles.card} p={gap} gap={gap}>
+        <Row className={styles.card} p={{ xs: 0.5, sm: 0.75, lg: 1 }} gap={gap}>
           <Item grow>
             <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8} />
           </Item>

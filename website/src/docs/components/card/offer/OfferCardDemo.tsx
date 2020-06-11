@@ -15,7 +15,7 @@ const useStyles = makeStyles(() => ({
   card: {
     position: 'relative',
     borderRadius: 16,
-    padding: 24,
+    padding: 12,
     backgroundColor: '#e5fcfb',
     minWidth: 300,
   },

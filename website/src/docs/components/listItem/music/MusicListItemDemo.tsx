@@ -49,9 +49,11 @@ export const MusicListItemDemo = React.memo(function MusicListItem() {
       </NoSsr>
       <Column gap={2} width={'100%'}>
         <Row>
-          <div className={avatarStyles.root}>
-            <Avatar src={src} />
-          </div>
+          <Item>
+            <div className={avatarStyles.root}>
+              <Avatar src={src} />
+            </div>
+          </Item>
           <Info useStyles={useMusicInfoStyles} minWidth={0}>
             <InfoTitle>Money Longer</InfoTitle>
             <InfoSubtitle>Lil Uzi Vert</InfoSubtitle>
@@ -63,9 +65,11 @@ export const MusicListItemDemo = React.memo(function MusicListItem() {
           </Item>
         </Row>
         <Row mt={2}>
-          <div className={avatarStyles2.root}>
-            <Avatar src={src2} />
-          </div>
+          <Item>
+            <div className={avatarStyles2.root}>
+              <Avatar src={src2} />
+            </div>
+          </Item>
           <Info useStyles={useMusicInfoStyles} minWidth={0}>
             <InfoTitle>Wait For You</InfoTitle>
             <InfoSubtitle>Jake Miller</InfoSubtitle>

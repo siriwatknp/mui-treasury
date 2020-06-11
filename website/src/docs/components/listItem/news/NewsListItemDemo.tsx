@@ -2,7 +2,7 @@ import React from 'react';
 import NoSsr from '@material-ui/core/NoSsr';
 import GoogleFontLoader from 'react-google-font-loader';
 import Avatar from '@material-ui/core/Avatar';
-import { Row } from '@mui-treasury/components/flex';
+import { Row, Item } from '@mui-treasury/components/flex';
 import { Info, InfoTitle, InfoSubtitle } from '@mui-treasury/components/info';
 import { useDynamicAvatarStyles } from '@mui-treasury/styles/avatar/dynamic';
 import { useNewsInfoStyles } from '@mui-treasury/styles/info/news';
@@ -15,10 +15,12 @@ export const NewsListItemDemo = React.memo(function NewsListItem() {
         <GoogleFontLoader fonts={[{ font: 'Sen' }]} />
       </NoSsr>
       <Row gap={2}>
-        <Avatar
-          classes={avatarStyles}
-          src={'https://hapskorea.com/wp-content/uploads/2012/11/PSY4.jpg'}
-        />
+        <Item>
+          <Avatar
+            classes={avatarStyles}
+            src={'https://hapskorea.com/wp-content/uploads/2012/11/PSY4.jpg'}
+          />
+        </Item>
         <Info useStyles={useNewsInfoStyles}>
           <InfoTitle>Nadine Petrolli</InfoTitle>
           <InfoSubtitle>Jul 20 | 2 Min Read</InfoSubtitle>

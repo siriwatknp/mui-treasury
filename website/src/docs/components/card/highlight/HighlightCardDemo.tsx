@@ -26,7 +26,7 @@ const useGridStyles = makeStyles(({ breakpoints }) => ({
 }));
 
 const useStyles = makeStyles(({ palette }) => ({
-  color: ({ color }) => ({
+  color: ({ color }: { color: string }) => ({
     '&:before': {
       backgroundColor: Color(color)
         .darken(0.3)
@@ -62,7 +62,7 @@ const useStyles = makeStyles(({ palette }) => ({
   cover: {
     borderRadius: '1rem',
   },
-  content: ({ color }) => ({
+  content: ({ color }: { color: string }) => ({
     position: 'relative',
     zIndex: 1,
     borderRadius: '1rem',
@@ -121,7 +121,9 @@ const CustomCard = ({ styles, cover, logo, title, brand, date }) => {
       <Box className={styles.content} p={2}>
         <Box position={'relative'} zIndex={1}>
           <Row p={0} gap={2}>
-            <Avatar className={styles.logo} src={logo} />
+            <Item>
+              <Avatar className={styles.logo} src={logo} />
+            </Item>
             <Item position={'bottom'}>
               <h2 className={styles.title}>{title}</h2>
             </Item>

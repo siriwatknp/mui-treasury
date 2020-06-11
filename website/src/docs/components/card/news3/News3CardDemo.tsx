@@ -7,7 +7,7 @@ import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import { Row } from '@mui-treasury/components/flex';
+import { Row, Item } from '@mui-treasury/components/flex';
 import { Info, InfoSubtitle, InfoTitle } from '@mui-treasury/components/info';
 import { useNewsInfoStyles } from '@mui-treasury/styles/info/news';
 import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
@@ -132,15 +132,18 @@ export const News3CardDemo = React.memo(function News3Card() {
         </Box>
         <Row
           className={styles.author}
+          m={0}
           p={3}
           pt={2}
           gap={2}
           bgcolor={'common.white'}
         >
-          <Avatar
-            className={styles.avatar}
-            src={'https://i.pravatar.cc/300?img=13'}
-          />
+          <Item>
+            <Avatar
+              className={styles.avatar}
+              src={'https://i.pravatar.cc/300?img=13'}
+            />
+          </Item>
           <Info position={'middle'} useStyles={useNewsInfoStyles}>
             <InfoTitle>Nadine Petrolli</InfoTitle>
             <InfoSubtitle>Jul 20 | 2 Min Read</InfoSubtitle>

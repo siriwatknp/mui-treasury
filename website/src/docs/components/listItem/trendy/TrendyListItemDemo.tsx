@@ -15,19 +15,19 @@ export const TrendyListItemDemo = React.memo(function TrendyListItem() {
         <GoogleFontLoader fonts={[{ font: 'Manrope', weights: [500, 700] }]} />
       </NoSsr>
       <Row gap={3}>
-        <Avatar
-          variant={'rounded'}
-          classes={avatarStyles}
-          src={
-            'https://imgcache.dealmoon.com/thumbimg.dealmoon.com/dealmoon/923/a5d/cff/399ac7fa0f6e82bf24f9363.jpg_300_300_2_f169.jpg'
-          }
-        />
-        <Item position={'middle'}>
-          <Info useStyles={useTrendInfoStyles}>
-            <InfoTitle>Beats X Super Fast Charge</InfoTitle>
-            <InfoSubtitle>Starts from $250</InfoSubtitle>
-          </Info>
+        <Item>
+          <Avatar
+            variant={'rounded'}
+            classes={avatarStyles}
+            src={
+              'https://imgcache.dealmoon.com/thumbimg.dealmoon.com/dealmoon/923/a5d/cff/399ac7fa0f6e82bf24f9363.jpg_300_300_2_f169.jpg'
+            }
+          />
         </Item>
+        <Info useStyles={useTrendInfoStyles}>
+          <InfoTitle>Beats X Super Fast Charge</InfoTitle>
+          <InfoSubtitle>Starts from $250</InfoSubtitle>
+        </Info>
       </Row>
     </>
   );

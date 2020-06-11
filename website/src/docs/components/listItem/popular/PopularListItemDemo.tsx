@@ -24,20 +24,20 @@ export const PopularListItemDemo = React.memo(function PopularListItem() {
         <GoogleFontLoader fonts={[{ font: 'Poppins', weights: [400, 700] }]} />
       </NoSsr>
       <Row gap={3}>
-        <Avatar
-          variant={'rounded'}
-          classes={avatarStyles}
-          src={
-            'https://freedesignfile.com/upload/2016/03/Abstract-geometric-petals-vector-graphic-03.jpg'
-          }
-        />
-        <Item position={'middle'}>
-          <Info useStyles={usePopularInfoStyles}>
-            <InfoSubtitle>Design</InfoSubtitle>
-            <InfoTitle>Most Awaited - Figma Launches Plugin</InfoTitle>
-            <InfoCaption>14 sec ago</InfoCaption>
-          </Info>
+        <Item>
+          <Avatar
+            variant={'rounded'}
+            classes={avatarStyles}
+            src={
+              'https://freedesignfile.com/upload/2016/03/Abstract-geometric-petals-vector-graphic-03.jpg'
+            }
+          />
         </Item>
+        <Info useStyles={usePopularInfoStyles}>
+          <InfoSubtitle>Design</InfoSubtitle>
+          <InfoTitle>Most Awaited - Figma Launches Plugin</InfoTitle>
+          <InfoCaption>14 sec ago</InfoCaption>
+        </Info>
       </Row>
     </>
   );

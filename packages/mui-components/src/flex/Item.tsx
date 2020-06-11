@@ -22,7 +22,6 @@ const Item = ({
 }: ItemProps) => {
   const flexStyles = useFlexStyles(position);
   const itemProps = useGapItem();
-  console.log('itemProps', itemProps);
   return (
     <Box
       className={cx('FlexItem', className)}

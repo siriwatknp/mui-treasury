@@ -16,36 +16,36 @@ export const DarkRapListItemDemo: React.FC<{}> = React.memo(
     return (
       <Column gap={2}>
         <Row>
-          <Avatar
-            variant={'rounded'}
-            classes={avatarStyles}
-            src={
-              'https://shopage.s3.amazonaws.com/media/f855/580321926366_PEnByxR6Xdn7soyNMiGPG4ZPMng1N4CN4D4XvB7j.jpg'
-            }
-          />
           <Item>
-            <Info useStyles={useD01InfoStyles}>
-              <InfoCaption>3d • #triphop #rap</InfoCaption>
-              <InfoTitle>Humility (feat. George Benson)</InfoTitle>
-              <InfoSubtitle>Gorillaz</InfoSubtitle>
-            </Info>
+            <Avatar
+              variant={'rounded'}
+              classes={avatarStyles}
+              src={
+                'https://shopage.s3.amazonaws.com/media/f855/580321926366_PEnByxR6Xdn7soyNMiGPG4ZPMng1N4CN4D4XvB7j.jpg'
+              }
+            />
           </Item>
+          <Info useStyles={useD01InfoStyles}>
+            <InfoCaption>3d • #triphop #rap</InfoCaption>
+            <InfoTitle>Humility (feat. George Benson)</InfoTitle>
+            <InfoSubtitle>Gorillaz</InfoSubtitle>
+          </Info>
         </Row>
-        <Row>
-          <Avatar
-            variant={'rounded'}
-            classes={avatarStyles}
-            src={
-              'https://music-artwork.com/wp-content/uploads/2018/04/dec110.jpg'
-            }
-          />
+        <Row mt={2}>
           <Item>
-            <Info useStyles={useD01InfoStyles}>
-              <InfoCaption>28d • #hiphop #rap</InfoCaption>
-              <InfoTitle>Old Town Road</InfoTitle>
-              <InfoSubtitle>Unknown</InfoSubtitle>
-            </Info>
+            <Avatar
+              variant={'rounded'}
+              classes={avatarStyles}
+              src={
+                'https://music-artwork.com/wp-content/uploads/2018/04/dec110.jpg'
+              }
+            />
           </Item>
+          <Info useStyles={useD01InfoStyles}>
+            <InfoCaption>28d • #hiphop #rap</InfoCaption>
+            <InfoTitle>Old Town Road</InfoTitle>
+            <InfoSubtitle>Unknown</InfoSubtitle>
+          </Info>
         </Row>
       </Column>
     );

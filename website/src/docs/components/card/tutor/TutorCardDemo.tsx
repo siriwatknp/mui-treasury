@@ -25,7 +25,7 @@ export const TutorCardDemo = React.memo(function TutorCard() {
   const iconBtnStyles = useSizedIconButtonStyles({ padding: 6 });
   const avatarStyles = useDynamicAvatarStyles({ radius: 12, size: 48 });
   return (
-    <Row p={3} gap={2} bgcolor={'#f5f5f5'} borderRadius={16}>
+    <Row p={1.5} gap={2} bgcolor={'#f5f5f5'} borderRadius={16}>
       <Item>
         <Avatar
           classes={avatarStyles}
