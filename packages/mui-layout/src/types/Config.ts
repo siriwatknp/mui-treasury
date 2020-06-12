@@ -45,6 +45,7 @@ export interface CollapsibleSidebarConfig {
   anchor?: DrawerAnchor
   collapsible: boolean
   collapsedWidth?: number | string
+  autoExpanded?: boolean
   width: number | string
   headerMagnetEnabled?: boolean
   hidden?: boolean

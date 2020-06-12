@@ -33,6 +33,7 @@ scheme.configureEdgeSidebar(builder => {
       width: 256,
       collapsible: true,
       collapsedWidth: 72,
+      autoExpanded: true
     });
 
   builder
