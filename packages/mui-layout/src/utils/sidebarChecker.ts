@@ -10,6 +10,10 @@ import {
   CollapsibleSidebarConfig,
 } from "../types"
 
+export const hasAutoExpanded = (config: EdgeSidebarConfig): config is CollapsibleSidebarConfig => {
+  return !!config && typeof (config as CollapsibleSidebarConfig).autoExpanded === 'boolean'
+}
+
 export const isCollapsibleSidebarConfig = (
   config: EdgeSidebarConfig
 ): config is CollapsibleSidebarConfig => {
