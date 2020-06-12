@@ -43,23 +43,26 @@ const PersonItem = ({ src, name, friendCount }) => {
       <Item>
         <Avatar classes={avatarStyles} src={src} />
       </Item>
-      <Item position={'middle'} grow minWidth={0}>
-        <div className={cx(styles.name, styles.text)}>{name}</div>
-        <div className={cx(styles.caption, styles.text)}>
-          {friendCount} mutual friends
-        </div>
-      </Item>
-      <Item mt={'6px'}>
-        <Button className={styles.btn} variant={'outlined'}>
-          Follow
-        </Button>
-      </Item>
+      <Row wrap grow gap={0.5} minWidth={0}>
+        <Item grow minWidth={0}>
+          <div className={cx(styles.name, styles.text)}>{name}</div>
+          <div className={cx(styles.caption, styles.text)}>
+            {friendCount} mutual friends
+          </div>
+        </Item>
+        <Item position={'middle'}>
+          <Button className={styles.btn} variant={'outlined'}>
+            Follow
+          </Button>
+        </Item>
+      </Row>
     </Row>
   );
 };
 
 const useStyles = makeStyles(() => ({
   card: {
+    width: '100%',
     borderRadius: 16,
     boxShadow: '0 8px 16px 0 #BDC9D7',
     overflow: 'hidden',
@@ -95,9 +98,9 @@ export const SocialCardDemo = React.memo(function SocialCard() {
         <GoogleFontLoader fonts={[{ font: 'Barlow', weights: [400, 600] }]} />
       </NoSsr>
       <Column p={0} gap={0} className={styles.card}>
-        <Row p={2} alignItems={'baseline'} className={styles.header}>
-          <Item className={styles.headline}>Who to follow</Item>
-          <Item className={styles.actions} position={'right'}>
+        <Row wrap p={2} alignItems={'baseline'} className={styles.header}>
+          <Item stretched className={styles.headline}>Who to follow</Item>
+          <Item className={styles.actions}>
             <Link className={styles.link}>Refresh</Link> •{' '}
             <Link className={styles.link}>See all</Link>
           </Item>
