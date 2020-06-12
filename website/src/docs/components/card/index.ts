@@ -26,3 +26,5 @@ export * from './offer/OfferCardDemo'
 
 export * from './sysi/SysiCardDemo'
 
+export * from './social/SocialCardDemo'
+
