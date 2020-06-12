@@ -51,6 +51,8 @@ export default (
       const Registry = (): IEdgeSidebarRegistry => ({
         registerPersistentConfig(breakpoint, config) {
           addConfig(breakpoint, {
+            autoExpanded: false,
+            headerMagnetEnabled: false,
             ...config,
             ...props,
             id,
@@ -60,6 +62,8 @@ export default (
         },
         registerPermanentConfig(breakpoint, config) {
           addConfig(breakpoint, {
+            autoExpanded: false,
+            headerMagnetEnabled: false,
             ...config,
             ...props,
             id,

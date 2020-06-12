@@ -72,6 +72,7 @@ type registerPermanentConfig = (
     width: number(px) | 'rem' | 'em' | 'x%', // auto is not allowed for this variant
     collapsible: boolean,
     collapsedWidth?: number(px) | 'rem' | 'em' | 'x%',
+    autoExpanded?: boolean,
     headerMagnetEnabled?: boolean
   }
 ) => IEdgeSidebarRegistry;
@@ -89,6 +90,7 @@ scheme.configureEdgeSidebar(builder => {
       width: 256, // recommended width
       collapsible: true,
       collapsedWidth: 64,
+      autoExpanded: true,
       headerMagnetEnabled: true,
     });
   // you can register more breakpoint, if needed.
@@ -109,6 +111,10 @@ scheme.configureEdgeSidebar(builder => {
   - **type** : `number(px) | 'px' | 'rem' | 'em'`
   - **default** : 64
   - **description** : width of the sidebar if `collapsed` state is true
+- `autoExpanded`
+  - **type** : `boolean`
+  - **default** : false
+  - **description** : sidebar will expand automatically on mouseover if `collapsed` state is true
 - `headerMagnetEnabled`
   - **type** : `boolean`
   - **default** : false
@@ -125,6 +131,7 @@ type registerPersistentConfig = (
     width: number(px) | 'rem' | 'em' | 'x%', // auto is not allowed for this variant
     collapsible: boolean,
     collapsedWidth?: number(px) | 'rem' | 'em' | 'x%',
+    autoExpanded: boolean,
     headerMagnetEnabled?: boolean,
     persistentBehavior?: 'fit' | 'flexible' | 'none' | Dictionary<'fit' | 'flexible' | 'none'>
   }
@@ -143,6 +150,7 @@ scheme.configureEdgeSidebar(builder => {
       width: 256, // recommended width
       collapsible: true,
       collapsedWidth: 64,
+      autoExpanded: true,
       headerMagnetEnabled: true,
       persistentBehavior: 'fit'
     });
@@ -152,7 +160,7 @@ scheme.configureEdgeSidebar(builder => {
 
 **_Config_**
 
-- `width`, `collapsible`, `collapsedWidth` and `headerMagnetEnabled` is the same as permanentConfig
+- `width`, `collapsible`, `collapsedWidth`, `autoExpanded` and `headerMagnetEnabled` is the same as permanentConfig
 - `persistentBehavior`
   - **type** : `'fit' | 'flexible' | 'none' | Dictionary<'fit' | 'flexible' | 'none'>`
   - **default** : `'none'`

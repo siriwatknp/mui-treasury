@@ -68,6 +68,11 @@ export default [
         label: 'Header Magnet',
         to: '/layout/features/header-magnet',
       },
+      {
+        key: 'auto-expanded',
+        label: 'Auto Expanded',
+        to: '/layout/features/auto-expanded',
+      },
     ]
   },
   {
