@@ -1,7 +1,7 @@
 {
   "name": "@mui-treasury/layout",
   "module": "./esm/index.js",
-  "version": "4.2.3",
+  "version": "4.3.0",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "description": "Supercharge your site with instant-layout, 100% compatible with material-ui",
   "keywords": [
