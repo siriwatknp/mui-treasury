@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
 import ArrowLeft from '@material-ui/icons/KeyboardArrowLeftRounded';
 import ArrowRight from '@material-ui/icons/KeyboardArrowRightRounded';
@@ -13,16 +13,16 @@ export default (styled: any) => {
   const StyledIconBtn = styledProxy<IconButtonProps>(IconButton);
 
   const useStyles = makeStyles(
-    ({ spacing }) => ({
+    ({ spacing, direction }) => ({
       // @ts-ignore
       root: ({ anchor }) => ({
         ...(anchor === 'left' && {
-          marginLeft: spacing(-1),
-          marginRight: spacing(1),
+          marginLeft: spacing(direction === 'rtl' ? 1 : -1),
+          marginRight: spacing(direction === 'rtl' ? -1 : 1),
         }),
         ...(anchor === 'right' && {
-          marginLeft: spacing(1),
-          marginRight: spacing(-1),
+          marginLeft: spacing(direction === 'rtl' ? -1 : 1),
+          marginRight: spacing(direction === 'rtl' ? 1 : -1),
         }),
       }),
     }),
@@ -40,10 +40,13 @@ export default (styled: any) => {
       sidebarId,
       'SidebarTrigger'
     );
+    const theme = useTheme()
     const classes = useStyles({ ...props, anchor });
     const getArrow = () => {
       if (!state) return null;
       if (!state.open) return <MenuRounded {...SvgIconProps} />;
+      if (theme.direction === 'rtl' && anchor === 'left') return <ArrowRight {...SvgIconProps} />;
+      if (theme.direction === 'rtl' && anchor === 'right') return <ArrowLeft {...SvgIconProps} />;
       if (anchor === 'left') return <ArrowLeft {...SvgIconProps} />;
       if (anchor === 'right') return <ArrowRight {...SvgIconProps} />;
       return null;

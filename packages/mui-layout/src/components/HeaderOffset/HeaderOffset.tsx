@@ -10,10 +10,10 @@ export default (styled: any) => {
   const Div = styledProxy('div');
 
   const HeaderOffset = () => {
-    const { breakpoints } = useTheme()
+    const theme = useTheme()
     const { data } = useLayoutCtx()
     const compiler = HeaderOffsetCompiler(data.header)
-    const styles = createBreakpointStyles(compiler.getResultStyle(), breakpoints)
+    const styles = createBreakpointStyles(compiler.getResultStyle(), theme)
     return (
       <Div
         className={"HeaderOffset"}

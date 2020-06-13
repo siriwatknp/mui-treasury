@@ -11,17 +11,17 @@ export default (styled: any) => {
   const styledProxy = generateStyledProxyCreator(styled);
   const Main = styledProxy('main');
 
-  const HeaderOffset = getHeaderOffset(styled)
+  const HeaderOffset = getHeaderOffset(styled);
 
   const Content = ({
     children,
     ...props
   }: React.PropsWithChildren<{ className?: string }>) => {
-    const { breakpoints } = useTheme();
+    const theme = useTheme();
     const { data, state } = useLayoutCtx();
     const styles = createBreakpointStyles(
       ContentCompiler(state, data.edgeSidebar).getResultStyle(data.content.id),
-      breakpoints
+      theme
     );
     const isFullscreen = useFullscreenCtx();
     return (

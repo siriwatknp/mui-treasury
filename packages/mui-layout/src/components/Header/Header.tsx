@@ -12,10 +12,10 @@ export default (styled: any) => {
 
   const Header: React.FC<AppBarProps> = props => {
     const { data, state } = useLayoutCtx();
-    const { breakpoints } = useTheme<Theme>();
+    const theme = useTheme<Theme>();
     const styles = createBreakpointStyles(
       HeaderCompiler(state, data.header, data.edgeSidebar).getResultStyle(),
-      breakpoints
+      theme
     );
     return (
       <StyledAppBar

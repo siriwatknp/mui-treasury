@@ -1,10 +1,12 @@
 import React from 'react';
+import { useTheme } from '@material-ui/core/styles';
 import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
 import ArrowLeft from '@material-ui/icons/KeyboardArrowLeftRounded';
 import ArrowRight from '@material-ui/icons/KeyboardArrowRightRounded';
 import { generateStyledProxyCreator } from '../Shared/StyledProxy';
-import { CtaProps } from '../../types';
+import { CtaProps, DrawerAnchor } from '../../types';
 import { useSidebarCollapse } from '../../hooks';
+import { switchDirection } from '../../utils/resolveDirection';
 
 export default (styled: any) => {
   const styledProxy = generateStyledProxyCreator(styled);
@@ -24,13 +26,14 @@ export default (styled: any) => {
       state,
       setCollapsed,
     } = useSidebarCollapse(sidebarId, 'CollapseIcon');
+    const theme = useTheme();
     const arrowR = <ArrowRight {...SvgIconProps} />;
     const arrowL = <ArrowLeft {...SvgIconProps} />;
-    const getArrow = () => {
-      if (anchor === 'left') {
+    const getArrow = (direction: 'left' | 'right') => {
+      if (direction === 'left') {
         return state.collapsed ? arrowR : arrowL;
       }
-      if (anchor === 'right') {
+      if (direction === 'right') {
         return state.collapsed ? arrowL : arrowR;
       }
       return null;
@@ -46,7 +49,11 @@ export default (styled: any) => {
       >
         {typeof children === 'function'
           ? children({ anchor, ...state })
-          : getArrow()}
+          : getArrow(
+              theme.direction === 'rtl'
+                ? (switchDirection(anchor) as DrawerAnchor)
+                : anchor
+            )}
       </StyledIconButton>
     );
   };

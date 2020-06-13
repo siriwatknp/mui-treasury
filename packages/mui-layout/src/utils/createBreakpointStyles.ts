@@ -1,20 +1,28 @@
-import {
-  Breakpoint,
-  Breakpoints,
-} from '@material-ui/core/styles/createBreakpoints';
+import { Theme } from '@material-ui/core/styles/createMuiTheme';
+import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
 import { Dictionary, ResultStyle } from '../types';
+import resolveDirection from './resolveDirection';
 
 export type Value = Dictionary<string | number>;
 export type MediaQueries = Dictionary<Value | string | number>;
 
-export default (breakpointsObject: ResultStyle, breakpoints: Breakpoints) => {
+export default (
+  breakpointsObject: ResultStyle,
+  theme: Pick<Theme, 'breakpoints' | 'direction'>
+) => {
   const entries = Object.entries(breakpointsObject);
   let mediaQueries: MediaQueries = {};
   entries.forEach(([key, value]: [Breakpoint, Value]) => {
     if (key === 'xs') {
-      mediaQueries = { ...mediaQueries, ...value };
+      mediaQueries = {
+        ...mediaQueries,
+        ...resolveDirection(theme.direction, value),
+      };
     } else {
-      mediaQueries[breakpoints.up(key)] = value;
+      mediaQueries[theme.breakpoints.up(key)] = resolveDirection(
+        theme.direction,
+        value
+      );
     }
   });
 
