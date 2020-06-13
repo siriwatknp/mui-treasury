@@ -5,7 +5,7 @@ import Search from '@material-ui/icons/Search';
 import Add from '@material-ui/icons/Add';
 import Delete from '@material-ui/icons/Delete';
 
-const SizedIconButtonStyle = () => {
+export const SizedIconButtonStyle = () => {
   const tiny = useSizedIconButtonStyles({
     color: '#6894ff',
     padding: '1rem',
@@ -32,19 +32,32 @@ const SizedIconButtonStyle = () => {
   );
 };
 // hide-start
-SizedIconButtonStyle.metadata = {
-  title: 'Sized',
-  description: 'custom button and icon size dynamically',
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
+
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'Sized'}
+    description={'custom button and icon size dynamically'}
+    creators={[require('constants/creators').siriwatknp]}
+  >
+    <SizedIconButtonStyle />
+  </Showcase>
+)
+const metadata: IMetadata = {
   path: 'styles/iconButton/sized',
-  renderedWithoutIframe: false,
-  creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
+  colSpan: 4,
   createdAt: 'Thu May 14 2020',
-  frameProps: {}, // props that applied to Box in grid view
-  size: 'medium', // can be 'large' | 'huge' for grid size
-  files: [
-    { pkg: 'mui-styles', path: 'iconButton/sized/sizedIconButton.styles.ts' },
-  ],
+  files: [{ pkg: 'mui-styles', path: 'iconButton/sized/sizedIconButton.styles.ts' }],
 };
+// @ts-ignore
+SizedIconButtonStyle.Showcase = AttachedShowcase
+// @ts-ignore
+SizedIconButtonStyle.metadata = metadata
 // hide-end
 
 export default SizedIconButtonStyle;
