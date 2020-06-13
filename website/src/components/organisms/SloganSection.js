@@ -69,7 +69,7 @@ const SloganSection = () => {
         variant={'contained'}
         color={'primary'}
         classes={{ label: classes.buttonLabel }}
-        onClick={() => navigate('/components/card')}
+        onClick={() => navigate('/components/card/')}
       >
         Get started
       </Button>

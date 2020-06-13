@@ -97,7 +97,7 @@ const DemoSection = ({ components, setComponent }) => {
             />
           </PlugCard>
         </GridItem>
-        <GridItem colSpan={2} rowSpan={2}>
+        <GridItem colSpan={{ sm: 3, lg: 2 }} rowSpan={2}>
           <PlugCard label={'Follow me'}>
             <IconBtnLink
               href={'https://twitter.com/siriwatknp'}

@@ -56,22 +56,22 @@ export default [
       {
         key: 'persistent-behavior',
         label: 'Persistent behavior',
-        to: '/layout/features/persistent-behavior',
+        to: '/layout/features/persistent-behavior/',
       },
       {
         key: 'auto-collapse',
         label: 'Auto Collapse',
-        to: '/layout/features/auto-collapse',
+        to: '/layout/features/auto-collapse/',
       },
       {
         key: 'header-magnet',
         label: 'Header Magnet',
-        to: '/layout/features/header-magnet',
+        to: '/layout/features/header-magnet/',
       },
       {
         key: 'auto-expanded',
         label: 'Auto Expanded',
-        to: '/layout/features/auto-expanded',
+        to: '/layout/features/auto-expanded/',
       },
     ]
   },
@@ -145,7 +145,7 @@ export default [
       {
         key: 'rtl-support',
         label: 'RTL Support',
-        to: '/layout/examples/rtl-support',
+        to: '/layout/examples/rtl-support/',
       },
     ],
   },
@@ -186,22 +186,22 @@ export default [
           {
             key: 'layout-builder',
             label: 'Layout Builder',
-            to: '/layout/api-reference/layout-builder',
+            to: '/layout/api-reference/layout-builder/',
           },
           {
             key: 'header-builder',
             label: 'Header Builder',
-            to: '/layout/api-reference/header-builder',
+            to: '/layout/api-reference/header-builder/',
           },
           {
             key: 'edge-sidebar-builder',
             label: 'EdgeSidebar Builder',
-            to: '/layout/api-reference/edge-sidebar-builder',
+            to: '/layout/api-reference/edge-sidebar-builder/',
           },
           {
             key: 'inset-sidebar-builder',
             label: 'InsetSidebar Builder',
-            to: '/layout/api-reference/inset-sidebar-builder',
+            to: '/layout/api-reference/inset-sidebar-builder/',
           }
         ]
       },
@@ -212,32 +212,32 @@ export default [
           {
             key: 'root',
             label: 'Root',
-            to: '/layout/api-reference/root'
+            to: '/layout/api-reference/root/'
           },
           {
             key: 'header',
             label: 'Header',
-            to: '/layout/api-reference/header'
+            to: '/layout/api-reference/header/'
           },
           {
             key: 'drawer-sidebar',
             label: 'Drawer Sidebar',
-            to: '/layout/api-reference/drawer-sidebar'
+            to: '/layout/api-reference/drawer-sidebar/'
           },
           {
             key: 'swipeable-sidebar',
             label: 'Swipeable Sidebar',
-            to: '/layout/api-reference/swipeable-sidebar'
+            to: '/layout/api-reference/swipeable-sidebar/'
           },
           {
             key: 'inset-sidebar',
             label: 'Inset Sidebar',
-            to: '/layout/api-reference/inset-sidebar'
+            to: '/layout/api-reference/inset-sidebar/'
           },
           {
             key: 'footer',
             label: 'Footer',
-            to: '/layout/api-reference/footer'
+            to: '/layout/api-reference/footer/'
           },
         ]
       },
@@ -248,37 +248,37 @@ export default [
           {
             key: 'sidebar-trigger',
             label: 'Sidebar Trigger',
-            to: '/layout/api-reference/sidebar-trigger'
+            to: '/layout/api-reference/sidebar-trigger/'
           },
           {
             key: 'collapse-btn',
             label: 'Collapse Button',
-            to: '/layout/api-reference/collapse-btn'
+            to: '/layout/api-reference/collapse-btn/'
           },
           {
             key: 'collapse-icon',
             label: 'Collapse Icon',
-            to: '/layout/api-reference/collapse-icon'
+            to: '/layout/api-reference/collapse-icon/'
           },
           {
             key: 'fullscreen',
             label: 'Fullscreen',
-            to: '/layout/api-reference/fullscreen'
+            to: '/layout/api-reference/fullscreen/'
           },
           {
             key: 'inset-avoiding-view',
             label: 'Inset Avoiding View',
-            to: '/layout/api-reference/inset-avoiding-view'
+            to: '/layout/api-reference/inset-avoiding-view/'
           },
           {
             key: 'inset-container',
             label: 'Inset Container',
-            to: '/layout/api-reference/inset-container'
+            to: '/layout/api-reference/inset-container/'
           },
           {
             key: 'inset-footer',
             label: 'Inset Footer',
-            to: '/layout/api-reference/inset-footer'
+            to: '/layout/api-reference/inset-footer/'
           },
         ]
       }
@@ -288,7 +288,7 @@ export default [
     key: 'v3',
     label: 'v3.3.4',
     subMenus: [
-      { key: 'builder-v3', label: 'Layout builder', to: '/layout/v3/builder' },
+      { key: 'builder-v3', label: 'Layout builder', to: '/layout/v3/builder/' },
       {
         key: 'tutorials-v3',
         label: 'Tutorial',

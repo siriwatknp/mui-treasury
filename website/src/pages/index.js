@@ -175,7 +175,7 @@ const Homepage = ({ navigate }) => {
           variant={'contained'}
           color={'primary'}
           classes={{ label: classes.buttonLabel }}
-          onClick={() => navigate('/components/tabs')}
+          onClick={() => navigate('/components/tabs/')}
         >
           Show me
         </Button>

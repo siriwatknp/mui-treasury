@@ -9,6 +9,7 @@ import { useSizedIconButtonStyles } from '@mui-treasury/styles/iconButton/sized'
 export type IconBtnLinkProps = {
   src: string;
   label: React.ReactNode;
+  href?: string;
 } & IconButtonProps;
 
 const useStyles = makeStyles(() => ({

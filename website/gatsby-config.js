@@ -102,9 +102,10 @@ module.exports = {
     },
     `gatsby-plugin-styled-components`,
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-tagmanager`,
       options: {
-        trackingId: `UA-136381677-1`,
+        id: `GTM-N39GBFW`,
+        // includeInDevelopment: true,
       },
     },
     `gatsby-plugin-react-helmet`,
