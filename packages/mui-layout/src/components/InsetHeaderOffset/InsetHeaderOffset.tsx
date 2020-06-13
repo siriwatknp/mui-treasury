@@ -15,13 +15,13 @@ export default (styled: any) => {
   const useTransitionStyles = makeStyles(transitionStyles)
 
   const InsetHeaderOffset = ({ sidebarId }: { sidebarId: string }) => {
-    const { breakpoints } = useTheme()
+    const theme = useTheme()
     const transition = useTransitionStyles()
     const { data } = useLayoutCtx()
     const compiler = InsetHeaderOffsetCompiler(data.insetSidebar, data.header)
     const styles = createBreakpointStyles(
       compiler.getResultStyle(sidebarId),
-      breakpoints
+      theme
     )
     const inlineStyle = useInsetHeaderMagnet(sidebarId)
     return (

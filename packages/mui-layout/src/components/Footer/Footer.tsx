@@ -10,12 +10,12 @@ export default (styled: any) => {
   const StyledFooter = styledProxy('footer');
 
   const Footer = (props: React.PropsWithChildren<{ className?: string }>) => {
-    const { breakpoints } = useTheme();
+    const theme = useTheme();
     const { data, state } = useLayoutCtx();
     const styles = createBreakpointStyles(
       // can reuse content compiler at this point
       ContentCompiler(state, data.edgeSidebar).getResultStyle(data.footer.id),
-      breakpoints
+      theme
     );
     return (
       <StyledFooter

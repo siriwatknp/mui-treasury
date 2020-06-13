@@ -142,6 +142,11 @@ export default [
         label: 'Inset Sidebar',
         to: '/layout/examples/inset-sidebar?bgColor=ffe4ee',
       },
+      {
+        key: 'rtl-support',
+        label: 'RTL Support',
+        to: '/layout/examples/rtl-support',
+      },
     ],
   },
   {

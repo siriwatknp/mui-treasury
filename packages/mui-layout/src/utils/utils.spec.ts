@@ -1,5 +1,5 @@
 import each from 'jest-each';
-import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
+import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import pickNearestBreakpoint from './pickNearestBreakpoint';
 import createBreakpointStyles from './createBreakpointStyles';
 import combineBreakpoints from './combineBreakpoints';
@@ -14,9 +14,33 @@ import mapWidthToScreen from './mapWidthToScreen';
 import normalizeMapById from './normalizeMapById';
 import shouldHideStyle from './shouldHideStyle';
 import attachHiddenToMapById from './attachHiddenToMapById';
+import resolveDirection, { switchDirection } from './resolveDirection';
 import get from './get';
 
-const breakpoints = createBreakpoints({});
+const theme = createMuiTheme();
+const { breakpoints } = theme;
+
+describe('resolveDirection', () => {
+  it('switch string "left" to "right" and "right" to "left"', () => {
+    expect(switchDirection('left')).toEqual('right')
+    expect(switchDirection('right')).toEqual('left')
+    expect(switchDirection('Left')).toEqual('Right')
+    expect(switchDirection('Right')).toEqual('Left')
+  })
+  it('do nothing if direction is not rtl', () => {
+    const value = {
+      marginLeft: 16,
+      marginRight: 24,
+      width: 'calc(100% - 256px)'
+    };
+    expect(resolveDirection('ltr', value)).toEqual(value);
+    expect(resolveDirection('rtl', value)).toEqual({
+      marginRight: 16,
+      marginLeft: 24,
+      width: 'calc(100% - 256px)'
+    });
+  });
+});
 
 describe('get', () => {
   const test = {
@@ -281,7 +305,7 @@ describe('createBreakpointStyles', () => {
           lg: { margin: 3 },
           xl: { margin: 4 },
         },
-        breakpoints
+        theme
       )
     ).toEqual({
       margin: 0,
@@ -307,7 +331,7 @@ describe('createBreakpointStyles', () => {
           margin: 2,
         },
       },
-      breakpoints
+      theme
     );
     expect(result).toEqual({
       '@media (min-width:600px)': {

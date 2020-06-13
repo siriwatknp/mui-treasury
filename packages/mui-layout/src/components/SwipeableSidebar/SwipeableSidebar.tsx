@@ -56,7 +56,8 @@ export default (styled: any) => {
     useSidebarAutoCollapse(sidebarId);
     const { iDocument } = useWindowCtx();
     const transition = useTransitionStyles();
-    const { breakpoints } = useTheme();
+    const theme = useTheme();
+    const { breakpoints } = theme;
     const {
       anchor,
       edgeSidebar,
@@ -129,7 +130,7 @@ export default (styled: any) => {
                     [permanent, persistent],
                     breakpoints
                   )}
-                  styles={createBreakpointStyles(temporary, breakpoints)}
+                  styles={createBreakpointStyles(temporary, theme)}
                 >
                   {children}
                 </TemporarySwipeableDrawer>
@@ -140,7 +141,7 @@ export default (styled: any) => {
                     [temporary, permanent],
                     breakpoints
                   )}
-                  styles={createBreakpointStyles(persistent, breakpoints)}
+                  styles={createBreakpointStyles(persistent, theme)}
                 >
                   {headerAdjustment}
                   {children}
@@ -152,7 +153,7 @@ export default (styled: any) => {
                     [temporary, persistent],
                     breakpoints
                   )}
-                  styles={createBreakpointStyles(permanent, breakpoints)}
+                  styles={createBreakpointStyles(permanent, theme)}
                 >
                   {headerAdjustment}
                   {children}
