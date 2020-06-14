@@ -11,7 +11,14 @@ import Favorite from '@material-ui/icons/Favorite';
 import Phone from '@material-ui/icons/Phone';
 import Camera from '@material-ui/icons/Camera';
 
-const styles = ({ spacing, transitions, breakpoints, palette, shape }) => ({
+const styles = ({
+  direction,
+  spacing,
+  transitions,
+  breakpoints,
+  palette,
+  shape,
+}) => ({
   header: {
     fontWeight: 900,
     minWidth: 0,
@@ -24,9 +31,10 @@ const styles = ({ spacing, transitions, breakpoints, palette, shape }) => ({
     position: 'relative',
     marginRight: 8,
     borderRadius: shape.borderRadius,
-    background: palette.grey[200],
+    background:
+      palette.type === 'dark' ? palette.background.default : palette.grey[200],
     '&:hover': {
-      background: palette.grey[300],
+      background: palette.type === 'dark' ? palette.background.paper : palette.grey[300],
     },
     marginLeft: 0,
     width: '100%',
@@ -51,9 +59,9 @@ const styles = ({ spacing, transitions, breakpoints, palette, shape }) => ({
   inputInput: {
     borderRadius: 4,
     paddingTop: spacing(1),
-    paddingRight: spacing(1),
+    paddingRight: spacing(direction === 'rtl' ? 10 : 1),
     paddingBottom: spacing(1),
-    paddingLeft: spacing(10),
+    paddingLeft: spacing(direction === 'rtl' ? 1 : 10),
     transition: transitions.create('width'),
     width: '100%',
     [breakpoints.up('sm')]: {

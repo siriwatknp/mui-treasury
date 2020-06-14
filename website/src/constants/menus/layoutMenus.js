@@ -147,6 +147,11 @@ export default [
         label: 'RTL Support',
         to: '/layout/examples/rtl-support/',
       },
+      {
+        key: 'dark-theme',
+        label: 'Dark Theme',
+        to: '/layout/examples/dark-theme/',
+      },
     ],
   },
   {
