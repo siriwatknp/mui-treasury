@@ -78,6 +78,7 @@ export type Position = "relative" | "sticky" | "absolute" | "fixed"
 export interface HeaderConfig {
   id: string
   position: Position
+  top?: number | string
   clipped?: AppendDictionary<boolean>
   initialHeight?: number | string
 }

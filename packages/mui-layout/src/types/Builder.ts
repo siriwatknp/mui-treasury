@@ -11,6 +11,14 @@ import {
 import { Dictionary, MapBreakpoint } from './Utils';
 
 export type HeaderConfigMap = MapBreakpoint<HeaderConfig>;
+
+export type SubheaderConfigMapById = Dictionary<MapBreakpoint<HeaderConfig>>;
+
+export type SubheaderData = {
+  configMapById: SubheaderConfigMapById;
+  configMap: MapBreakpoint<HeaderConfig[]>;
+}
+
 export type EdgeSidebarConfigMapById = Dictionary<
   MapBreakpoint<EdgeSidebarConfig>
 >;

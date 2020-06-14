@@ -1,5 +1,6 @@
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
 import HeaderBuilder from './Header';
+import SubheaderBuilder from './Subheader';
 import EdgeSidebarBuilder from './EdgeSidebar';
 import ContentBuilder from './Content';
 import FooterBuilder from './Footer';
@@ -11,12 +12,14 @@ import {
   GlobalConfig,
   LayoutData,
   EdgeSidebarConfigMapById,
+  SubheaderConfigMapById,
   HeaderConfigMap,
 } from '../types';
 import {
   IInsetSidebarBuilder,
   InsetSidebarConfigMapById,
 } from './InsetSidebar/InsetSidebarBuilder';
+import { ISubheaderBuilder } from './Subheader/SubheaderBuilder';
 import { DEFAULT_CONTENT_ID, DEFAULT_FOOTER_ID } from '../utils';
 
 interface BuilderCallback<T> {
@@ -26,6 +29,9 @@ interface BuilderCallback<T> {
 export interface ILayoutBuilder {
   configureHeader: (
     callback: BuilderCallback<Pick<IHeaderBuilder, 'create' | 'registerConfig'>>
+  ) => void;
+  configureSubheader: (
+    callback: BuilderCallback<Pick<ISubheaderBuilder, 'create' | 'update' | 'hide'>>
   ) => void;
   configureEdgeSidebar: (
     callback: BuilderCallback<
@@ -48,6 +54,7 @@ export interface ILayoutBuilder {
 type InitialLayout = {
   global?: GlobalConfig;
   header?: HeaderConfigMap;
+  subheader?: SubheaderConfigMapById;
   edgeSidebar?: EdgeSidebarConfigMapById;
   insetSidebar?: InsetSidebarConfigMapById;
 };
@@ -55,6 +62,7 @@ type InitialLayout = {
 export default (initialLayout: InitialLayout = {}): ILayoutBuilder => {
   const global: GlobalConfig = initialLayout.global || { autoCollapse: {} };
   const header = HeaderBuilder(initialLayout.header);
+  const subheader = SubheaderBuilder(initialLayout.subheader);
   const edgeSidebar = EdgeSidebarBuilder(initialLayout.edgeSidebar);
   const insetSidebar = InsetSidebarBuilder(initialLayout.insetSidebar);
   const content = ContentBuilder();
@@ -67,6 +75,9 @@ export default (initialLayout: InitialLayout = {}): ILayoutBuilder => {
   return {
     configureHeader(callback) {
       callback(header);
+    },
+    configureSubheader(callback) {
+      callback(subheader)
     },
     configureEdgeSidebar(callback) {
       callback(edgeSidebar);
