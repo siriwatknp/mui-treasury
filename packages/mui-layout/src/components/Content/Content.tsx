@@ -28,7 +28,7 @@ export default (styled: any) => {
       <Main
         {...props}
         styles={{
-          transition: 'all 300ms cubic-bezier(0.0, 0, 0.2, 1) 0ms',
+          transition: 'all 300ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, color 0s',
           ...styles,
           ...(isFullscreen && { flexGrow: 1, minHeight: 0, display: 'flex' }),
         }}

@@ -14,7 +14,8 @@ export default (styled: any) => {
 
   const useStyles = makeStyles(({ palette, breakpoints }) => ({
     root: {
-      backgroundColor: palette.grey[50],
+      backgroundColor:
+        palette.type === 'dark' ? palette.background.paper : palette.grey[50],
       textAlign: 'center',
       borderRadius: 0,
       borderTop: '1px solid',
