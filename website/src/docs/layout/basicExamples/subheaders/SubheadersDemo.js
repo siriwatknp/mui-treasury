@@ -43,12 +43,15 @@ standardScheme.configureHeader(builder => {
   builder.create('header')
     .registerConfig('xs', {
       position: 'sticky',
+      top: 20,
     })
 });
 
 standardScheme.configureSubheader(builder => {
   builder.create('subheader_1').registerConfig('xs', {
-    position: 'sticky',
+    position: 'fixed',
+    clipped: true,
+    initialHeight: 20,
   });
 
   builder.create('subheader_2').registerConfig('xs', {
@@ -62,7 +65,7 @@ standardScheme.configureEdgeSidebar(builder => {
     .registerPersistentConfig('xs', {
       width: 56,
       collapsible: false,
-      headerMagnetEnabled: true,
+      headerMagnetEnabled: 'subheader_1',
       persistentBehavior: 'fit',
     });
 });

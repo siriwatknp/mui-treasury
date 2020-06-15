@@ -4,7 +4,7 @@ import HeaderEffect from '../effects/Header';
 import useScreen from './useScreen';
 import useScrollY from './useScrollY';
 import useHeaderHeight from './useHeaderHeight';
-import { pickNearestBreakpoint, subtractCalc } from '../utils';
+import { pickNearestBreakpoint } from '../utils';
 import { isCollapsibleSidebarConfig } from '../utils/sidebarChecker';
 
 export const useEdgeHeaderMagnet = (sidebarId: string): { height: string } => {
@@ -30,7 +30,7 @@ export const useEdgeHeaderMagnet = (sidebarId: string): { height: string } => {
     sidebarConfig.headerMagnetEnabled;
   useEffect(() => {
     if (shouldUpdate) {
-      setHeaderHeight(subtractCalc(resizedHeight, scrollY));
+      setHeaderHeight(`calc(${resizedHeight}px)`);
     } else {
       setHeaderHeight('');
     }

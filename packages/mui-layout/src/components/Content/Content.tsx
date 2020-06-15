@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
-import getHeaderOffset from '../HeaderOffset';
 import { useLayoutCtx } from '../../contexts';
 import { createBreakpointStyles } from '../../utils';
 import ContentCompiler from '../../compilers/ContentCompiler';
@@ -10,8 +9,6 @@ import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 export default (styled: any) => {
   const styledProxy = generateStyledProxyCreator(styled);
   const Main = styledProxy('main');
-
-  const HeaderOffset = getHeaderOffset(styled);
 
   const Content = ({
     children,
@@ -33,7 +30,6 @@ export default (styled: any) => {
           ...(isFullscreen && { flexGrow: 1, minHeight: 0, display: 'flex' }),
         }}
       >
-        <HeaderOffset />
         {children}
       </Main>
     );
