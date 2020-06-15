@@ -51,7 +51,7 @@ export default (config: HeaderConfig, sidebarEffects: ISidebarEffect[]) => {
   return {
     getStyle: () => ({
       position: config.position,
-      top: config.top,
+      ...config.top && { top: config.top },
       ...marginStyle,
       ...widthStyle,
       ...headerEffect.getHeaderZIndex(),

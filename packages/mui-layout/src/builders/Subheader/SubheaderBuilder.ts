@@ -17,7 +17,7 @@ export interface ISubheaderBuilder {
 
 export type HeaderConfigMapById = Dictionary<MapBreakpoint<HeaderConfig>>
 
-export default (initialMapById: HeaderConfigMapById): ISubheaderBuilder => {
+export default (initialMapById?: HeaderConfigMapById): ISubheaderBuilder => {
   const hiddenById: Dictionary<Breakpoint[]> = {};
   const mapById: HeaderConfigMapById = Object.assign({}, initialMapById)
   const addConfig = (bp: Breakpoint, config: HeaderConfig): void => {

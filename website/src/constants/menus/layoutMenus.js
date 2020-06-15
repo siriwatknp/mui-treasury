@@ -152,6 +152,11 @@ export default [
         label: 'Dark Theme',
         to: '/layout/examples/dark-theme/',
       },
+      {
+        key: 'subheaders',
+        label: 'Subheaders',
+        to: '/layout/examples/subheaders/',
+      },
     ],
   },
   {

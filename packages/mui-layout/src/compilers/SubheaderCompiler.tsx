@@ -1,12 +1,11 @@
-import { ResultStyle } from '../types';
-import EdgeSidebars from '../effects/EdgeSidebars'
+import { EdgeSidebarData, ResultStyle, State, SubheaderData } from '../types';
+import HeaderCompiler from './HeaderCompiler';
 
-export default () => {
+export default (state: State, subheader: SubheaderData, edgeSidebar: EdgeSidebarData) => {
   return {
-    getResultStyle: (): ResultStyle => {
-      const result: ResultStyle = {}
-
-      return result
+    getResultStyle: (subheaderId: string): ResultStyle => {
+      const configMap = subheader.configMapById[subheaderId]
+      return HeaderCompiler(state, configMap, edgeSidebar).getResultStyle()
     }
   }
 }

@@ -94,6 +94,7 @@ export default (initialLayout: InitialLayout = {}): ILayoutBuilder => {
       insetSidebar: insetSidebar.getData(),
       header: header.getData(),
       headerId: header.getId(),
+      subheader: subheader.getData(),
       content: content.getData(),
       footer: footer.getData(),
     }),
@@ -102,6 +103,7 @@ export default (initialLayout: InitialLayout = {}): ILayoutBuilder => {
       JSON.parse(
         JSON.stringify({
           header: header.getData(),
+          subheader: subheader.getData(),
           edgeSidebar: edgeSidebar.getData().configMapById,
           insetSidebar: insetSidebar.getData().configMapById,
           content: content.getData(),
@@ -123,6 +125,7 @@ export default (initialLayout: InitialLayout = {}): ILayoutBuilder => {
     debug() {
       if (process.env.NODE_ENV !== 'production') {
         header.debug();
+        subheader.debug();
         edgeSidebar.debug();
         insetSidebar.debug();
         content.debug();
@@ -134,6 +137,7 @@ export default (initialLayout: InitialLayout = {}): ILayoutBuilder => {
         JSON.stringify(
           {
             header: header.getData(),
+            subheader: subheader.getData(),
             edgeSidebar: edgeSidebar.getData().configMapById,
             insetSidebar: insetSidebar.getData().configMapById,
           },
