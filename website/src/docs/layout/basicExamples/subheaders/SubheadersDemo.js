@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import {
   Root,
@@ -40,11 +38,20 @@ const Footer = getFooter(styled);
 const standardScheme = getStandardScheme();
 
 standardScheme.configureHeader(builder => {
-  builder.create('header')
+  builder
+    .create('header')
     .registerConfig('xs', {
-      position: 'sticky',
+      position: 'fixed',
       top: 20,
+      clipped: true,
+      layer: 1,
     })
+    .registerConfig('md', {
+      position: 'fixed',
+      top: 20,
+      clipped: true,
+      layer: 1,
+    });
 });
 
 standardScheme.configureSubheader(builder => {
@@ -52,11 +59,17 @@ standardScheme.configureSubheader(builder => {
     position: 'fixed',
     clipped: true,
     initialHeight: 20,
+    layer: 1,
   });
 
   builder.create('subheader_2').registerConfig('xs', {
     position: 'relative',
-  })
+    initialHeight: 56,
+    clipped: {
+      primarySidebar: true,
+      tertiary: true,
+    },
+  });
 });
 
 standardScheme.configureEdgeSidebar(builder => {
@@ -73,6 +86,7 @@ standardScheme.configureEdgeSidebar(builder => {
 standardScheme.configureInsetSidebar(builder => {
   builder.create('tertiary', { anchor: 'right' }).registerFixedConfig('md', {
     width: 200,
+    headerMagnetEnabled: true,
   });
 });
 
@@ -94,6 +108,11 @@ const SubheadersDemo = () => {
           <SidebarTrigger sidebarId={'secondary'} />
         </Toolbar>
       </Header>
+      <Subheader subheaderId={'subheader_2'}>
+        <Box bgcolor={'#e6fbff'} px={2} minHeight={56} display={'flex'} alignItems={'center'}>
+          This is a another subheader.
+        </Box>
+      </Subheader>
       <DrawerSidebar sidebarId={'primarySidebar'}>
         <SidebarContent>
           <NavContentMockUp />

@@ -1,38 +1,45 @@
 import { useLayoutCtx } from '../contexts';
 import useScreen from './useScreen';
 import useScrollY from './useScrollY';
-import useHeaderHeight from './useHeaderHeight';
-import { pickNearestBreakpoint, subtractCalc } from '../utils';
-import { useEffect, useState } from 'react';
+import { pickNearestBreakpoint } from '../utils';
 import { isFixedInsetSidebarConfig } from '../utils/sidebarChecker';
+import useSumHeadersHeight from './useSumHeadersHeight';
 
-export const useInsetHeaderMagnet = (sidebarId: string) => {
+export const useInsetHeaderMagnet = (
+  sidebarId: string
+): { height: string | number } => {
   const screen = useScreen();
   const scrollY = useScrollY();
   const {
-    data: { header, headerId, insetSidebar },
+    data: { header, insetSidebar, subheader },
   } = useLayoutCtx();
   const headerConfig = pickNearestBreakpoint(header, screen);
+  const subheaderConfigs = Object.keys(subheader.configMapById)
+    .map(subheaderId => {
+      return pickNearestBreakpoint(
+        subheader.configMapById[subheaderId],
+        screen
+      );
+    })
+    .filter(c => !!c);
+  const info = useSumHeadersHeight(
+    [headerConfig, ...subheaderConfigs],
+    sidebarId
+  );
+  if (!info) return { height: '' } // document is not ready
+  const { baseHeight, abstractHeight } = info
+  if (!baseHeight && !abstractHeight) return { height: '' } // handle case: component is not mounted, so height should not be set
+  const calculatedHeight = baseHeight + (abstractHeight - scrollY < 0 ? 0 : abstractHeight - scrollY);
+
   const sidebarConfig = pickNearestBreakpoint(
     insetSidebar.configMapById[sidebarId],
     screen
   );
-  const resizedHeight = useHeaderHeight(headerId);
-  const [headerHeight, setHeaderHeight] = useState('');
-  const shouldUpdate =
-    resizedHeight &&
-    headerConfig.position === 'relative' &&
+  const shouldHaveHeight =
     isFixedInsetSidebarConfig(sidebarConfig) &&
     sidebarConfig.headerMagnetEnabled;
-  useEffect(() => {
-    if (shouldUpdate) {
-      setHeaderHeight(subtractCalc(resizedHeight, scrollY));
-    } else {
-      setHeaderHeight('');
-    }
-  }, [shouldUpdate, resizedHeight, screen, scrollY]);
 
-  return { height: headerHeight };
+  return { height: shouldHaveHeight ? calculatedHeight : '' }; // inline style
 };
 
 export default useInsetHeaderMagnet;

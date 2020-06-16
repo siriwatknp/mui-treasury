@@ -1,42 +1,45 @@
-import { useState, useEffect } from 'react';
 import { useLayoutCtx } from '../contexts';
-import HeaderEffect from '../effects/Header';
 import useScreen from './useScreen';
 import useScrollY from './useScrollY';
-import useHeaderHeight from './useHeaderHeight';
+import useSumHeadersHeight from './useSumHeadersHeight';
 import { pickNearestBreakpoint } from '../utils';
 import { isCollapsibleSidebarConfig } from '../utils/sidebarChecker';
 
-export const useEdgeHeaderMagnet = (sidebarId: string): { height: string } => {
+export const useEdgeHeaderMagnet = (
+  sidebarId: string
+): { height: string | number } => {
   const screen = useScreen();
   const scrollY = useScrollY();
   const {
-    data: { header, headerId, edgeSidebar },
+    data: { header, edgeSidebar, subheader },
   } = useLayoutCtx();
   const headerConfig = pickNearestBreakpoint(header, screen);
-  const headerEffect = HeaderEffect(headerConfig);
+  const subheaderConfigs = Object.keys(subheader.configMapById)
+    .map(subheaderId => {
+      return pickNearestBreakpoint(
+        subheader.configMapById[subheaderId],
+        screen
+      );
+    })
+    .filter(c => !!c);
+  const info = useSumHeadersHeight(
+    [headerConfig, ...subheaderConfigs],
+    sidebarId
+  );
+  if (!info) return { height: '' } // document is not ready
+  const { baseHeight, abstractHeight } = info
+  if (!baseHeight && !abstractHeight) return { height: '' } // handle case: component is not mounted, so height should not be set
+  const calculatedHeight = baseHeight + (abstractHeight - scrollY < 0 ? 0 : abstractHeight - scrollY);
+
   const sidebarConfig = pickNearestBreakpoint(
     edgeSidebar.configMapById[sidebarId],
     screen
   );
-  const resizedHeight = useHeaderHeight(headerId);
-  const [headerHeight, setHeaderHeight] = useState('');
-  const shouldUpdate =
-    resizedHeight &&
-    headerConfig &&
-    headerConfig.position === 'relative' &&
-    headerEffect.isObjectClipped(sidebarId) &&
+  const shouldHaveHeight =
     isCollapsibleSidebarConfig(sidebarConfig) &&
     sidebarConfig.headerMagnetEnabled;
-  useEffect(() => {
-    if (shouldUpdate) {
-      setHeaderHeight(`calc(${resizedHeight}px)`);
-    } else {
-      setHeaderHeight('');
-    }
-  }, [shouldUpdate, resizedHeight, screen, scrollY]);
 
-  return { height: headerHeight }; // inline style
+  return { height: shouldHaveHeight ? calculatedHeight : '' }; // inline style
 };
 
 export default useEdgeHeaderMagnet;

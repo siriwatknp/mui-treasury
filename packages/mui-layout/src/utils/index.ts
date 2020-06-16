@@ -16,3 +16,4 @@ export { default as mapWidthToScreen } from './mapWidthToScreen';
 export { default as normalizeMapById } from './normalizeMapById';
 export { default as shouldHideStyle } from './shouldHideStyle';
 export { default as attachHiddenToMapById } from './attachHiddenToMapById';
+export { default as isHeaderClipped } from './isHeaderClipped'

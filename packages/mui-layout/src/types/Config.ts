@@ -79,6 +79,7 @@ export interface HeaderConfig {
   id: string
   position: Position
   top?: number | string
+  layer?: number,
   clipped?: AppendDictionary<boolean>
   initialHeight?: number | string
 }
