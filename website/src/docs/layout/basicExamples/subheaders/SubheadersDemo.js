@@ -47,10 +47,10 @@ standardScheme.configureHeader(builder => {
       layer: 1,
     })
     .registerConfig('md', {
-      position: 'fixed',
-      top: 20,
+      position: 'sticky',
+      top: 0,
       clipped: true,
-      layer: 1,
+      layer: 2,
     });
 });
 

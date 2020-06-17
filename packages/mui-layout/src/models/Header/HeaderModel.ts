@@ -40,7 +40,7 @@ export default (config: HeaderConfig, sidebarEffects: ISidebarEffect[]) => {
   return {
     getStyle: () => ({
       position: config.position,
-      ...config.top && { top: config.top },
+      ...config.top !== undefined && { top: config.top },
       ...marginStyle,
       ...widthStyle,
       ...headerEffect.getHeaderZIndex(),

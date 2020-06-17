@@ -8,8 +8,8 @@ import useSumHeadersHeight from './useSumHeadersHeight';
 export const useInsetHeaderMagnet = (
   sidebarId: string
 ): { height: string | number } => {
+  useScrollY();
   const screen = useScreen();
-  const scrollY = useScrollY();
   const {
     data: { header, insetSidebar, subheader },
   } = useLayoutCtx();
@@ -22,14 +22,11 @@ export const useInsetHeaderMagnet = (
       );
     })
     .filter(c => !!c);
-  const info = useSumHeadersHeight(
+  const highestHeight = useSumHeadersHeight(
     [headerConfig, ...subheaderConfigs],
     sidebarId
   );
-  if (!info) return { height: '' } // document is not ready
-  const { baseHeight, abstractHeight } = info
-  if (!baseHeight && !abstractHeight) return { height: '' } // handle case: component is not mounted, so height should not be set
-  const calculatedHeight = baseHeight + (abstractHeight - scrollY < 0 ? 0 : abstractHeight - scrollY);
+  if (!highestHeight) return { height: '' } // document is not ready | component is not mounted | height is 0
 
   const sidebarConfig = pickNearestBreakpoint(
     insetSidebar.configMapById[sidebarId],
@@ -39,7 +36,7 @@ export const useInsetHeaderMagnet = (
     isFixedInsetSidebarConfig(sidebarConfig) &&
     sidebarConfig.headerMagnetEnabled;
 
-  return { height: shouldHaveHeight ? calculatedHeight : '' }; // inline style
+  return { height: shouldHaveHeight ? highestHeight : '' }; // inline style
 };
 
 export default useInsetHeaderMagnet;
