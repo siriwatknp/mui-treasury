@@ -2,7 +2,11 @@ import React from 'react';
 import cx from 'clsx';
 import useTheme from '@material-ui/core/styles/useTheme';
 import { generateStyledProxyCreator } from '../Shared/StyledProxy';
-import { createBreakpointStyles } from '../../utils';
+import {
+  createBreakpointStyles,
+  CSS_TRANSITION,
+  createDisplayNone,
+} from '../../utils';
 import { useLayoutCtx } from '../../contexts';
 import SubheaderCompiler from '../../compilers/SubheaderCompiler';
 import HeaderOffsetCompiler from '../../compilers/HeaderOffsetCompiler';
@@ -33,17 +37,23 @@ export default (styled: any) => {
       offsetCompiler.getResultStyle(),
       theme
     );
+    const hiddenStyles = createDisplayNone(
+      data.subheader.hiddenById[subheaderId],
+      theme.breakpoints
+    );
     return (
       <>
         <Div
           className={cx('Subheader', className)}
           mui-layout={subheaderId}
-          styles={{ zIndex: 1000, ...styles }}
+          styles={{ zIndex: 1000, transition: CSS_TRANSITION, ...styles }}
+          hiddenStyles={hiddenStyles}
           {...props}
         />
         <Div
           className={cx('SubheaderOffset', className)}
           styles={offsetStyles}
+          hiddenStyles={hiddenStyles}
         />
       </>
     );

@@ -56,6 +56,7 @@ export default (initialMapById?: HeaderConfigMapById): ISubheaderBuilder => {
       return {
         configMap: normalizeMapById(attachedMapById),
         configMapById: attachedMapById,
+        hiddenById,
       };
     },
     debug() {

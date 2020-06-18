@@ -1,3 +1,4 @@
+import { useState, useRef } from 'react'
 import { useLayoutCtx } from '../contexts';
 import useScreen from './useScreen';
 import useScrollY from './useScrollY';
@@ -9,6 +10,8 @@ export const useEdgeHeaderMagnet = (
   sidebarId: string
 ): { height: string | number } => {
   useScrollY();
+  const [counter, setCounter] = useState(0)
+  const hiddenRef = useRef(null)
   const screen = useScreen();
   const {
     data: { header, edgeSidebar, subheader },
@@ -21,12 +24,17 @@ export const useEdgeHeaderMagnet = (
         screen
       );
     })
-    .filter(c => !!c);
+    .filter(c => !!c && !c.hidden);
   const highestHeight = useSumHeadersHeight(
     [headerConfig, ...subheaderConfigs],
     sidebarId
   );
   if (!highestHeight) return { height: '' } // document is not ready | component is not mounted | height is 0
+  if (hiddenRef.current !== subheaderConfigs.length) {
+    // need to use setTimeout to let always set height after browser finishes painting
+    setTimeout(() => setCounter(counter + 1), 0)
+    hiddenRef.current = subheaderConfigs.length
+  }
 
   const sidebarConfig = pickNearestBreakpoint(
     edgeSidebar.configMapById[sidebarId],
@@ -35,7 +43,6 @@ export const useEdgeHeaderMagnet = (
   const shouldHaveHeight =
     isCollapsibleSidebarConfig(sidebarConfig) &&
     sidebarConfig.headerMagnetEnabled;
-
   return { height: shouldHaveHeight ? highestHeight : '' }; // inline style
 };
 

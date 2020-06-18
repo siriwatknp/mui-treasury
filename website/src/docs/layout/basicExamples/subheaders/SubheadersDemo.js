@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Box from '@material-ui/core/Box';
 import Toolbar from '@material-ui/core/Toolbar';
+import Link from '@material-ui/core/Link';
+import ArrowUpward from '@material-ui/icons/ArrowUpward';
 import {
   Root,
   getHeader,
@@ -42,7 +44,7 @@ standardScheme.configureHeader(builder => {
     .create('header')
     .registerConfig('xs', {
       position: 'fixed',
-      top: 20,
+      top: 32,
       clipped: true,
       layer: 1,
     })
@@ -58,7 +60,7 @@ standardScheme.configureSubheader(builder => {
   builder.create('subheader_1').registerConfig('xs', {
     position: 'fixed',
     clipped: true,
-    initialHeight: 20,
+    initialHeight: 32,
     layer: 1,
   });
 
@@ -94,12 +96,32 @@ const SubheadersDemo = () => {
   // by default, Root will render ThemeProvider, pass "theme" to override default theme
   // If you want to use your own ThemeProvider, pass "themeProvidedOmitted" to Root and wrapped it with your ThemeProvider
   // note: If you set "themeProvidedOmitted=true" to Root without your own ThemeProvider, you will see error "cannot read palette of undefined"
+  const [hidden, setHidden] = React.useState(false);
+  standardScheme.configureHeader(builder => {
+    builder.update(configMap => {
+      if (hidden) {
+        configMap.xs.top = 0;
+      }
+    });
+  });
+  standardScheme.configureSubheader(builder => {
+    builder.hide('subheader_1', hidden);
+  });
   return (
     <Root scheme={standardScheme}>
       <CssBaseline />
       <Subheader subheaderId={'subheader_1'}>
-        <Box bgcolor={'#121212'} color={'common.white'} textAlign={'center'}>
-          This is a subheader.
+        <Box
+          bgcolor={'#dcdcdc'}
+          height={'100%'}
+          display={'flex'}
+          justifyContent={'center'}
+          alignItems={'center'}
+        >
+          This is a subheader.{' '}
+          <Link color={'secondary'} onClick={() => setHidden(true)}>
+            <b>Hide</b>
+          </Link>
         </Box>
       </Subheader>
       <Header color={'default'}>
@@ -109,8 +131,19 @@ const SubheadersDemo = () => {
         </Toolbar>
       </Header>
       <Subheader subheaderId={'subheader_2'}>
-        <Box bgcolor={'#e6fbff'} px={2} minHeight={56} display={'flex'} alignItems={'center'}>
-          This is a another subheader.
+        <Box
+          bgcolor={'#e6fbff'}
+          px={2}
+          minHeight={56}
+          display={'flex'}
+          alignItems={'center'}
+        >
+          <span>This is a another subheader.</span>
+          <Box ml={'auto'} mr={2}>
+            try this menu
+          </Box>
+          <ArrowUpward />
+          <Box width={12} />
         </Box>
       </Subheader>
       <DrawerSidebar sidebarId={'primarySidebar'}>

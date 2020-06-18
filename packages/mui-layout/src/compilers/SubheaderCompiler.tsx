@@ -6,6 +6,6 @@ export default (state: State, subheader: SubheaderData, edgeSidebar: EdgeSidebar
     getResultStyle: (subheaderId: string): ResultStyle => {
       const configMap = subheader.configMapById[subheaderId]
       return HeaderCompiler(state, configMap, edgeSidebar).getResultStyle()
-    }
+    },
   }
 }

@@ -28,7 +28,7 @@ interface BuilderCallback<T> {
 
 export interface ILayoutBuilder {
   configureHeader: (
-    callback: BuilderCallback<Pick<IHeaderBuilder, 'create' | 'registerConfig'>>
+    callback: BuilderCallback<Pick<IHeaderBuilder, 'create' | 'registerConfig' | 'update'>>
   ) => void;
   configureSubheader: (
     callback: BuilderCallback<Pick<ISubheaderBuilder, 'create' | 'update' | 'hide'>>

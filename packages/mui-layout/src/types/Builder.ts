@@ -17,6 +17,7 @@ export type SubheaderConfigMapById = Dictionary<MapBreakpoint<HeaderConfig>>;
 export type SubheaderData = {
   configMapById: SubheaderConfigMapById;
   configMap: MapBreakpoint<HeaderConfig[]>;
+  hiddenById: Dictionary<Breakpoint[]>;
 }
 
 export type EdgeSidebarConfigMapById = Dictionary<
@@ -37,7 +38,7 @@ export type InsetSidebarData = {
 export interface IRegistry<ConfigType> {
   registerConfig: (
     breakpoint: Breakpoint,
-    config: Omit<ConfigType, 'id'>
+    config: Omit<ConfigType, 'id' | 'hidden'>
   ) => IRegistry<ConfigType>;
 }
 

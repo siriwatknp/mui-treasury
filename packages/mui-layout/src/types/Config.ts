@@ -82,6 +82,7 @@ export interface HeaderConfig {
   layer?: number,
   clipped?: AppendDictionary<boolean>
   initialHeight?: number | string
+  hidden?: boolean
 }
 
 export interface GlobalConfig {

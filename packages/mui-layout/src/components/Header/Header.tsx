@@ -5,7 +5,7 @@ import getHeaderOffset from '../HeaderOffset';
 import { useLayoutCtx } from '../../contexts';
 import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 import HeaderCompiler from '../../compilers/HeaderCompiler';
-import { createBreakpointStyles } from '../../utils';
+import { createBreakpointStyles, CSS_TRANSITION } from '../../utils';
 
 export default (styled: any) => {
   const styledProxy = generateStyledProxyCreator(styled);
@@ -27,7 +27,7 @@ export default (styled: any) => {
           mui-layout={data.headerId}
           {...props}
           styles={{
-            transition: 'all 300ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, color 0s',
+            transition: CSS_TRANSITION,
             ...styles,
           }}
         />
