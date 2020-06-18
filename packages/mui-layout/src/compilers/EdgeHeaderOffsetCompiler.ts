@@ -52,7 +52,7 @@ export default (
                 bp
               );
             }
-          ).filter(c => !!c);
+          ).filter(c => !!c && !c.hidden);
           const interaction = MultiHeaders([
             headerConfig,
             ...subheaderConfigs,

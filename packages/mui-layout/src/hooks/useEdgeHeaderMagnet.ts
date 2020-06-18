@@ -43,6 +43,7 @@ export const useEdgeHeaderMagnet = (
   const shouldHaveHeight =
     isCollapsibleSidebarConfig(sidebarConfig) &&
     sidebarConfig.headerMagnetEnabled;
+
   return { height: shouldHaveHeight ? highestHeight : '' }; // inline style
 };
 
