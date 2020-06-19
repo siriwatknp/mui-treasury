@@ -35,11 +35,11 @@ export type InsetSidebarData = {
   configMap: MapBreakpoint<InsetSidebarConfig[]>;
 };
 
-export interface IRegistry<ConfigType> {
+export interface IRegistryOld<ConfigType> {
   registerConfig: (
     breakpoint: Breakpoint,
     config: Omit<ConfigType, 'id' | 'hidden'>
-  ) => IRegistry<ConfigType>;
+  ) => IRegistryOld<ConfigType>;
 }
 
 export interface IFooterBuilder {
@@ -55,8 +55,8 @@ export interface IContentBuilder {
 }
 
 export interface IHeaderBuilder {
-  create: (id: string) => IRegistry<HeaderConfig>;
-  registerConfig: IRegistry<HeaderConfig>['registerConfig'];
+  create: (id: string) => IRegistryOld<HeaderConfig>;
+  registerConfig: IRegistryOld<HeaderConfig>['registerConfig'];
   update: (
     updater: (config: MapBreakpoint<Omit<HeaderConfig, 'id'>>) => void
   ) => void;

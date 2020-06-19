@@ -76,7 +76,7 @@ export type EdgeSidebarConfig =
 export type Position = "relative" | "sticky" | "absolute" | "fixed"
 
 export interface HeaderConfig {
-  id: string
+  id?: string
   position: Position
   top?: number | string
   layer?: number,
