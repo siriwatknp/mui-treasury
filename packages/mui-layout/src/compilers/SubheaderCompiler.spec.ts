@@ -46,6 +46,7 @@ describe("SubheaderCompiler", () => {
 
     expect(compiler.getResultStyle(SUBHEADER_1)).toStrictEqual({
       xs: {
+        height: 56,
         zIndex: 1210,
         marginLeft: 0,
         marginRight: 0,
@@ -53,11 +54,13 @@ describe("SubheaderCompiler", () => {
         position: "sticky",
       },
       md: {
+        height: 64,
         width: "calc(100% - 256px)",
         marginLeft: 256,
         position: "sticky",
       },
       lg: {
+        height: 64,
         width: '100%',
         position: 'fixed',
         zIndex: 1210,
@@ -65,6 +68,7 @@ describe("SubheaderCompiler", () => {
         marginRight: 0,
       },
       xl: {
+        height: 64,
         zIndex: 1210,
         marginLeft: 0,
         marginRight: 0,

@@ -45,14 +45,14 @@ export default (
         breakpoints.forEach(bp => {
           const sidebarConfig = pickNearestBreakpoint(configMap, bp);
           const headerConfig = pickNearestBreakpoint(header, bp);
-          const subheaderConfigs = Object.keys(subheader.configMapById).map(
-            subheaderId => {
+          const subheaderConfigs = Object.keys(subheader.configMapById)
+            .map(subheaderId => {
               return pickNearestBreakpoint(
                 subheader.configMapById[subheaderId],
                 bp
               );
-            }
-          ).filter(c => !!c && !c.hidden);
+            })
+            .filter(c => !!c && !c.hidden);
           const interaction = MultiHeaders([
             headerConfig,
             ...subheaderConfigs,

@@ -1,4 +1,3 @@
-import HeaderEffect from '../effects/Header';
 import {
   HeaderConfig,
   HeaderConfigMap,
@@ -11,16 +10,12 @@ import { isFixedInsetSidebarConfig } from '../utils/sidebarChecker';
 
 const MultiHeaders = (headerConfigs: HeaderConfig[]) => {
   return {
-    getSidebarInteraction: (sidebarId: string) => {
-      const clippedConfigs = headerConfigs.filter(c =>
-        HeaderEffect(c).isObjectClipped(sidebarId)
-      );
+    getSidebarInteraction: () => {
       return {
-        isClipped: clippedConfigs.length > 0,
         clippedHeight:
-          clippedConfigs.length === 1
-            ? clippedConfigs[0].initialHeight
-            : plusCalc(...clippedConfigs.map(c => c.initialHeight)),
+          headerConfigs.length === 1
+            ? headerConfigs[0].initialHeight
+            : plusCalc(...headerConfigs.map(c => c.initialHeight)),
       };
     },
   };
@@ -56,13 +51,9 @@ export default (
           const interaction = MultiHeaders([
             headerConfig,
             ...subheaderConfigs,
-          ]).getSidebarInteraction(sidebarId);
+          ]).getSidebarInteraction();
           if (sidebarConfig) {
-            if (
-              headerConfig &&
-              interaction.isClipped &&
-              isFixedInsetSidebarConfig(sidebarConfig)
-            ) {
+            if (headerConfig && isFixedInsetSidebarConfig(sidebarConfig)) {
               found = true;
               result[bp] = {
                 height: interaction.clippedHeight,

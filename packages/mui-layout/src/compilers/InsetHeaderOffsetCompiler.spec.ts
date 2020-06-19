@@ -1,9 +1,10 @@
 import HeaderBuilder from "../builders/Header"
 import InsetSidebarBuilder from "../builders/InsetSidebar"
+import SubheaderBuilder from '../builders/Subheader';
 import InsetHeaderOffsetCompiler from "./InsetHeaderOffsetCompiler"
 
 describe("InsetHeaderOffsetCompiler", () => {
-  it("return correct result", () => {
+  it.only("return correct result", () => {
     const header = HeaderBuilder()
 
     header
@@ -16,6 +17,8 @@ describe("InsetHeaderOffsetCompiler", () => {
         initialHeight: 64,
         position: "fixed",
       })
+
+    const subheader = SubheaderBuilder()
 
     const insetSidebar = InsetSidebarBuilder()
 
@@ -37,7 +40,8 @@ describe("InsetHeaderOffsetCompiler", () => {
 
     const compiler = InsetHeaderOffsetCompiler(
       insetSidebar.getData(),
-      header.getData()
+      header.getData(),
+      subheader.getData()
     )
     expect(compiler.getResultStyle("inset-sidebar")).toStrictEqual({
       sm: {
