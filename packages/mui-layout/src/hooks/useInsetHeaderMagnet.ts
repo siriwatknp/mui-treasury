@@ -29,7 +29,6 @@ export const useInsetHeaderMagnet = (
     [headerConfig, ...subheaderConfigs],
     sidebarId
   );
-  console.log('highestHeight', highestHeight);
   if (!highestHeight) return { height: '' } // document is not ready | component is not mounted | height is 0
   if (hiddenRef.current !== subheaderConfigs.length) {
     // need to use setTimeout to let always set height after browser finishes painting
