@@ -1,32 +1,33 @@
-import {
-  HeaderConfigMap,
-  IHeaderBuilder,
-} from '../../types';
+import { HeaderConfig, HeaderConfigMap, IHeaderBuilder } from '../../types';
 import { DEFAULT_HEADER_ID } from '../../utils';
 import { HeaderRegistry } from '../../Header';
+import { createSingleObjState, SingleObjData } from '../../shared/State';
+
+export type HeaderData = SingleObjData<HeaderConfig>;
 
 export default (initialMap: HeaderConfigMap = {}): IHeaderBuilder => {
-  let registry = new HeaderRegistry(DEFAULT_HEADER_ID);
-  registry.rpsConfig = initialMap
+  let state: HeaderData = createSingleObjState({
+    id: DEFAULT_HEADER_ID,
+    rpsConfig: initialMap,
+  });
+  let registry = HeaderRegistry(state);
 
   return {
+    ...registry,
     create: function(headerId: string) {
-      registry = new HeaderRegistry(headerId)
+      state = createSingleObjState({ id: headerId });
+      registry = HeaderRegistry(state);
       return registry; // return new registry
     },
-    registerConfig(...args) {
-      registry.registerConfig(...args)
-      return registry
-    },
     update: function(updater) {
-      updater(registry.rpsConfig);
+      updater(state.rpsConfig);
     },
-    getId: () => registry.id,
-    getData: () => registry.rpsConfig,
+    getId: () => state.id,
+    getData: () => state.rpsConfig,
     debug: () => {
       if (process.env.NODE_ENV !== 'production') {
-        console.group('Header:', `"${registry.id}"`);
-        console.table(registry.rpsConfig);
+        console.group('Header:', `"${state.id}"`);
+        console.table(state.rpsConfig);
         console.groupEnd();
       }
     },
