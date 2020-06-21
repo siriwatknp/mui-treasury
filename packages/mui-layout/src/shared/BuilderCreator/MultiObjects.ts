@@ -1,4 +1,5 @@
 import { Breakpoint, keys } from '@material-ui/core/styles/createBreakpoints';
+import mapValues from 'lodash.mapvalues';
 import {
   createMultiObjData,
   createSingleObjData,
@@ -54,28 +55,16 @@ export const createMultiObjBuilder = <
       const mapById = getFieldById(state.dataById, 'rpsConfig');
       const hiddenById = getFieldById(state.dataById, 'hidden');
       const propsById = getFieldById(state.dataById, 'props');
-      const finalMapById = Object.keys(mapById).reduce((result, id) => {
-        return {
-          ...result,
-          [id]: Object.keys(mapById[id]).reduce(
-            (obj, breakpoint: Breakpoint) => ({
-              ...obj,
-              [breakpoint]: {
-                ...mapById[id][breakpoint],
-                ...propsById[id],
-              },
-            }),
-            {}
-          ),
-        };
-      }, {});
+      const finalMapById = mapValues(mapById, (value, key) =>
+        mapValues(value, nestedValue => ({
+          ...nestedValue,
+          ...propsById[key],
+        }))
+      );
       const attachedMapById = attachHiddenToMapById(finalMapById, hiddenById);
       return {
         configMap: normalizeMapById(attachedMapById),
         configMapById: attachedMapById,
-      } as {
-        configMapById: Dictionary<RpsConfig<Config & Props>>;
-        configMap: RpsConfigArray<Config & Props>;
       };
     };
     return {

@@ -20,8 +20,10 @@
   },
   "homepage": "https://mui-treasury.com/layout",
   "dependencies": {
+    "@types/lodash.mapvalues": "^4.6.6",
     "debounce": "^1.2.0",
-    "deepmerge": "^4.2.2"
+    "deepmerge": "^4.2.2",
+    "lodash.mapvalues": "^4.6.0"
   },
   "peerDepdencies": {
     "@material-ui/core": "4.x",
