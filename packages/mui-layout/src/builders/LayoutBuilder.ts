@@ -20,7 +20,7 @@ import {
   InsetSidebarConfigMapById,
 } from './InsetSidebar/InsetSidebarBuilder';
 import { ISubheaderBuilder } from './Subheader/SubheaderBuilder';
-import { DEFAULT_CONTENT_ID, DEFAULT_FOOTER_ID } from '../utils';
+import { DEFAULT_CONTENT_ID } from '../utils';
 
 interface BuilderCallback<T> {
   (builder: T): void;
@@ -70,7 +70,6 @@ export default (initialLayout: InitialLayout = {}): ILayoutBuilder => {
 
   // setup default id
   content.create(DEFAULT_CONTENT_ID);
-  footer.create(DEFAULT_FOOTER_ID);
 
   return {
     configureHeader(callback) {
@@ -95,8 +94,8 @@ export default (initialLayout: InitialLayout = {}): ILayoutBuilder => {
       header: header.getData(),
       headerId: header.getId(),
       subheader: subheader.getData(),
-      content: content.getData(),
-      footer: footer.getData(),
+      content: { id: content.getId() },
+      footer: { id: footer.getId() },
     }),
     clone: () =>
       // use this approach as deep clone for now

@@ -1,19 +1,9 @@
-import { IFooterBuilder } from '../../types';
+import { createSingleObjBuilder } from '../../shared/BuilderCreator';
+import { DEFAULT_FOOTER_ID } from '../../utils';
 
-export default (): IFooterBuilder => {
-  let id: string;
-  return {
-    create: function(footerId: string) {
-      id = footerId;
-    },
-    getData: () => ({
-      id,
-    }),
-    debug: () => {
-      if (process.env.NODE_ENV !== 'production') {
-        console.group('Footer:', `"${id}"`);
-        console.groupEnd()
-      }
-    },
-  };
-};
+const FooterBuilder = createSingleObjBuilder({
+  defaultId: DEFAULT_FOOTER_ID,
+  component: 'Footer',
+});
+
+export default FooterBuilder

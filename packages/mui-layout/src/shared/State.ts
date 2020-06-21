@@ -11,7 +11,7 @@ export type SingleObjData<T> = {
 
 export type MultiObjData<T> = {
   ids: string[];
-  rpsConfigById: Dictionary<RspConfig<T>>;
+  rspConfigById: Dictionary<RspConfig<T>>;
   hiddenById: Dictionary<Breakpoint[]>;
 };
 
