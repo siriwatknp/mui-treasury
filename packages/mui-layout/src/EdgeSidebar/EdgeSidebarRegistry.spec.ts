@@ -5,7 +5,9 @@ import { EdgeSidebarConfig } from '../types';
 describe('EdgeSidebarRegistry', () => {
   it('should mutate state correctly', () => {
     const state = createSingleObjData<EdgeSidebarConfig>({ id: 'sidebar' });
-    const registry = EdgeSidebarRegistry(state);
+    const registry = EdgeSidebarRegistry(state, {
+      anchor: 'left',
+    });
     registry
       .registerTemporaryConfig('xs', {
         width: 'auto',
@@ -20,26 +22,29 @@ describe('EdgeSidebarRegistry', () => {
         collapsible: false,
         persistentBehavior: 'fit',
       });
-    expect(state).toEqual({
+    expect(state).toMatchObject({
       hidden: [],
       id: 'sidebar',
       rpsConfig: {
         lg: {
-          collapsible: false,
           id: 'sidebar',
+          anchor: 'left',
+          collapsible: false,
           persistentBehavior: 'fit',
           variant: 'persistent',
           width: 300,
         },
         sm: {
+          id: 'sidebar',
+          anchor: 'left',
           collapsedWidth: 64,
           collapsible: true,
-          id: 'sidebar',
           variant: 'permanent',
           width: 256,
         },
         xs: {
           id: 'sidebar',
+          anchor: 'left',
           variant: 'temporary',
           width: 'auto',
         },

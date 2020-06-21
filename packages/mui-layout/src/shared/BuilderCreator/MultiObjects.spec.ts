@@ -2,7 +2,8 @@ import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
 import { createMultiObjBuilder } from './MultiObjects';
 import { SingleObjData } from '../../shared/State';
 
-type Config = { count: number };
+type Props = { name?: string }
+type Config = { count: number } & Props;
 interface IFakeRegistry {
   updateConfig: (breakpoint: Breakpoint, config: Config) => IFakeRegistry;
 }
@@ -24,7 +25,7 @@ describe('createMultiObjBuilder', () => {
     builder.create('fake', {}).updateConfig('xs', { count: 3 });
     expect(builder.getData()).toMatchObject({
       ids: ['fake'],
-      rpsConfigById: {
+      configMapById: {
         fake: {
           xs: {
             count: 3,
@@ -34,7 +35,30 @@ describe('createMultiObjBuilder', () => {
     });
   });
 
-  it('can "update" rpsConfigById', () => {
+  it('"create" with props', () => {
+    const FakeBuilder = createMultiObjBuilder<typeof FakeRegistry, Config>({
+      Registry: FakeRegistry,
+    });
+    const builder = FakeBuilder();
+    builder.create('fake', { name: 'siriwatknp' })
+      .updateConfig('md', { count: 1 })
+
+    const data = builder.getData()
+    expect(data.ids).toEqual(['fake'])
+    expect(data.configMapById).toStrictEqual({
+      fake: {
+        md: {
+          count: 1,
+          name: 'siriwatknp',
+        }
+      }
+    })
+    expect(data.propsById).toStrictEqual({
+      fake: { name: 'siriwatknp' }
+    })
+  })
+
+  it('can "update" configMapById', () => {
     const FakeBuilder = createMultiObjBuilder<typeof FakeRegistry, Config>({
       Registry: FakeRegistry,
     });
@@ -45,7 +69,7 @@ describe('createMultiObjBuilder', () => {
       .updateConfig('md', { count: 10 });
 
     expect(builder.getData()).toMatchObject({
-      rpsConfigById: {
+      configMapById: {
         fake: {
           md: {
             count: 10,
@@ -59,7 +83,7 @@ describe('createMultiObjBuilder', () => {
     });
 
     expect(builder.getData()).toMatchObject({
-      rpsConfigById: {
+      configMapById: {
         fake: {
           md: {
             count: 20,

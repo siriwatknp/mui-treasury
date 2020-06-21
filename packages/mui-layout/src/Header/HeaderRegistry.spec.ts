@@ -16,7 +16,7 @@ describe('HeaderRegistry', () => {
         top: 0,
       });
 
-    expect(state).toEqual({
+    expect(state).toMatchObject({
       id: 'header',
       hidden: [],
       rpsConfig: {

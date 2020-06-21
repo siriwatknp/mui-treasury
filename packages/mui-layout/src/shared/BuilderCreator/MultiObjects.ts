@@ -1,11 +1,21 @@
 import { Breakpoint, keys } from '@material-ui/core/styles/createBreakpoints';
-import { createMultiObjData, createSingleObjData, RpsConfig, SingleObjData } from '../State';
+import {
+  createMultiObjData,
+  createSingleObjData,
+  RpsConfig,
+  RpsConfigArray,
+} from '../State';
 import { DummyRegistry } from './SingleObject';
 import { Dictionary } from '../../types';
+import {
+  attachHiddenToMapById,
+  normalizeMapById,
+  getFieldById,
+} from '../../utils';
 
 type Params<R> = {
   Registry?: R;
-  component?: 'EdgeSidebar' | 'InsetSidebar' | 'Subheader'
+  component?: 'EdgeSidebar' | 'InsetSidebar' | 'Subheader';
 };
 
 export interface MultiObjBuilderResult<
@@ -14,14 +24,15 @@ export interface MultiObjBuilderResult<
   Props = {}
 > {
   create: (id: string, props: Props) => ReturnType<R>;
-  update: (
-    id: string,
-    updater: (rpsConfig: RpsConfig<Config>) => void
-  ) => void;
+  update: (id: string, updater: (rpsConfig: RpsConfig<Config>) => void) => void;
   hide: (id: string, breakpoints: Breakpoint[] | boolean) => void;
   getData: () => {
     ids: string[];
-    rpsConfigById: Dictionary<RpsConfig<Config>>;
+    sidebarIds: string[];
+    propsById: Dictionary<Props>;
+    configMapById: Dictionary<RpsConfig<Config & Props>>;
+    configMap: RpsConfigArray<Config & Props>;
+    hiddenById: Dictionary<Breakpoint[]>;
   };
   debug?: () => void;
 }
@@ -29,32 +40,56 @@ export interface MultiObjBuilderResult<
 export const createMultiObjBuilder = <
   R extends DummyRegistry<Config>,
   Config = undefined,
-  Props = {}
+  Props = Partial<Config>
 >({
   Registry,
   component,
 }: Params<R>) => {
-  const MultiObjBuilder = (): MultiObjBuilderResult<R, Config, Props> => {
-    let state = createMultiObjData<Config>();
-    const getRpsConfigById = (field: keyof SingleObjData<Config>) => state.ids.reduce(
-      (result, id) => ({
-        ...result,
-        [id]: state.dataById[id][field],
-      }),
-      {}
-    )
+  const MultiObjBuilder = (
+    initialRpsConfigById: Dictionary<RpsConfig<Config>> = {}
+  ): MultiObjBuilderResult<R, Config, Props> => {
+    let state = createMultiObjData<Config, Props>(initialRpsConfigById);
+
+    const getMapById = () => {
+      const mapById = getFieldById(state.dataById, 'rpsConfig');
+      const hiddenById = getFieldById(state.dataById, 'hidden');
+      const propsById = getFieldById(state.dataById, 'props');
+      const finalMapById = Object.keys(mapById).reduce((result, id) => {
+        return {
+          ...result,
+          [id]: Object.keys(mapById[id]).reduce((obj, breakpoint: Breakpoint) => ({
+            ...obj,
+            [breakpoint]: {
+              ...mapById[id][breakpoint],
+              ...propsById[id],
+            }
+          }), {})
+        }
+      }, {})
+      const attachedMapById = attachHiddenToMapById(
+        finalMapById,
+        hiddenById,
+      );
+      return {
+        configMap: normalizeMapById(attachedMapById),
+        configMapById: attachedMapById,
+      } as {
+        configMapById: Dictionary<RpsConfig<Config & Props>>;
+        configMap: RpsConfigArray<Config & Props>;
+      };
+    };
     return {
       create(id, props) {
-        if (state.ids.includes(id)) {
-          throw new Error(
-            `id: ${id} already exists, please define another unique id`
-          );
+        if (!state.ids.includes(id)) {
+          // throw new Error(
+          //   `id: ${id} already exists, please define another unique id`
+          // );
+          state.ids.push(id);
+          state.dataById[id] = createSingleObjData<Config, Props>({
+            id,
+            props,
+          });
         }
-        state.ids.push(id);
-        const objData = createSingleObjData({ id });
-        objData.rpsConfig = props;
-        // @ts-ignore
-        state.dataById[id] = objData;
         return Registry(state.dataById[id]) as ReturnType<R>;
       },
       update(id, updater) {
@@ -68,27 +103,29 @@ export const createMultiObjBuilder = <
         if (typeof breakpoints === 'boolean') {
           state.dataById[id].hidden = breakpoints ? keys : [];
         } else {
-          state.dataById[id].hidden = breakpoints
+          state.dataById[id].hidden = breakpoints;
         }
       },
       getData() {
         return {
           ids: state.ids,
-          rpsConfigById: getRpsConfigById('rpsConfig'),
-          hiddenById: getRpsConfigById('hidden')
+          sidebarIds: state.ids,
+          propsById: getFieldById(state.dataById,'props'),
+          hiddenById: getFieldById(state.dataById,'hidden'),
+          ...getMapById(),
         };
       },
       debug() {
         if (process.env.NODE_ENV !== 'production') {
-          const data = this.getData()
+          const data = this.getData();
           state.ids.forEach(id => {
             console.group(`${component}: `, `"${id}"`);
-            console.table(data.rpsConfigById[id]);
+            console.table(data.configMapById[id]);
             console.table(data.hiddenById[id]);
             console.groupEnd();
           });
         }
-      }
+      },
     };
   };
 

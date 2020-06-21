@@ -6,8 +6,9 @@ type Params<R> = {
   component?: 'Header' | 'Footer' | 'Content';
   Registry?: R;
 };
-export type DummyRegistry<Config = undefined> =(
-  state: SingleObjData<Config>
+export type DummyRegistry<Config = undefined, Props = {}> =(
+  state: SingleObjData<Config>,
+  props?: Props
 ) => {};
 
 export interface SingleObjBuilderResult<

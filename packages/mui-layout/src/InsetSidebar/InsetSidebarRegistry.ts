@@ -1,43 +1,43 @@
 import {
-  EdgeSidebarConfig,
-  IEdgeSidebarRegistry,
+  IInsetSidebarRegistry,
+  InsetSidebarConfig,
   SidebarProperties,
 } from '../types';
 import { SingleObjData } from '../shared/State';
 
-const EdgeSidebarRegistry = (
-  state: SingleObjData<EdgeSidebarConfig>,
+const InsetSidebarRegistry = (
+  state: SingleObjData<InsetSidebarConfig>,
   props: SidebarProperties
-): IEdgeSidebarRegistry => {
+): IInsetSidebarRegistry => {
   return {
-    registerPermanentConfig(breakpoint, config) {
+    registerFixedConfig(breakpoint, config) {
       state.rpsConfig[breakpoint] = {
         ...config,
         ...props,
         id: state.id,
-        variant: 'permanent',
+        variant: 'fixed',
       };
       return this;
     },
-    registerPersistentConfig(breakpoint, config) {
+    registerAbsoluteConfig(breakpoint, config) {
       state.rpsConfig[breakpoint] = {
         ...config,
         ...props,
         id: state.id,
-        variant: 'persistent',
+        variant: 'absolute',
       };
       return this;
     },
-    registerTemporaryConfig(breakpoint, config) {
+    registerStickyConfig(breakpoint, config) {
       state.rpsConfig[breakpoint] = {
         ...config,
         ...props,
         id: state.id,
-        variant: 'temporary',
+        variant: 'sticky',
       };
       return this;
     },
   };
 };
 
-export default EdgeSidebarRegistry;
+export default InsetSidebarRegistry;

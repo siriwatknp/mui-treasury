@@ -91,7 +91,7 @@ export interface GlobalConfig {
 
 export interface LayoutData {
   global: GlobalConfig
-  edgeSidebar: EdgeSidebarData
+  edgeSidebar: Omit<EdgeSidebarData, 'ids'>
   insetSidebar: InsetSidebarData
   headerId: string
   header: HeaderConfigMap
