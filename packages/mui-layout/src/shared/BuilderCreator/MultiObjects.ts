@@ -57,19 +57,19 @@ export const createMultiObjBuilder = <
       const finalMapById = Object.keys(mapById).reduce((result, id) => {
         return {
           ...result,
-          [id]: Object.keys(mapById[id]).reduce((obj, breakpoint: Breakpoint) => ({
-            ...obj,
-            [breakpoint]: {
-              ...mapById[id][breakpoint],
-              ...propsById[id],
-            }
-          }), {})
-        }
-      }, {})
-      const attachedMapById = attachHiddenToMapById(
-        finalMapById,
-        hiddenById,
-      );
+          [id]: Object.keys(mapById[id]).reduce(
+            (obj, breakpoint: Breakpoint) => ({
+              ...obj,
+              [breakpoint]: {
+                ...mapById[id][breakpoint],
+                ...propsById[id],
+              },
+            }),
+            {}
+          ),
+        };
+      }, {});
+      const attachedMapById = attachHiddenToMapById(finalMapById, hiddenById);
       return {
         configMap: normalizeMapById(attachedMapById),
         configMapById: attachedMapById,
@@ -110,8 +110,8 @@ export const createMultiObjBuilder = <
         return {
           ids: state.ids,
           sidebarIds: state.ids,
-          propsById: getFieldById(state.dataById,'props'),
-          hiddenById: getFieldById(state.dataById,'hidden'),
+          propsById: getFieldById(state.dataById, 'props'),
+          hiddenById: getFieldById(state.dataById, 'hidden'),
           ...getMapById(),
         };
       },

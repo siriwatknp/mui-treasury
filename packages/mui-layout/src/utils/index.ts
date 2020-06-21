@@ -18,3 +18,4 @@ export { default as shouldHideStyle } from './shouldHideStyle';
 export { default as attachHiddenToMapById } from './attachHiddenToMapById';
 export { default as isHeaderClipped } from './isHeaderClipped'
 export * from './getFieldById'
+export * from './toObject'

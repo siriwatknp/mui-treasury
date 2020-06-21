@@ -20,7 +20,7 @@ import {
   InsetSidebarConfigMapById,
 } from './InsetSidebar/InsetSidebarBuilder';
 import { ISubheaderBuilder } from './Subheader/SubheaderBuilder';
-import { DEFAULT_CONTENT_ID } from '../utils';
+import { DEFAULT_CONTENT_ID, toObject } from '../utils';
 
 interface BuilderCallback<T> {
   (builder: T): void;
@@ -28,10 +28,14 @@ interface BuilderCallback<T> {
 
 export interface ILayoutBuilder {
   configureHeader: (
-    callback: BuilderCallback<Pick<IHeaderBuilder, 'create' | 'registerConfig' | 'update'>>
+    callback: BuilderCallback<
+      Pick<IHeaderBuilder, 'create' | 'registerConfig' | 'update'>
+    >
   ) => void;
   configureSubheader: (
-    callback: BuilderCallback<Pick<ISubheaderBuilder, 'create' | 'update' | 'hide'>>
+    callback: BuilderCallback<
+      Pick<ISubheaderBuilder, 'create' | 'update' | 'hide'>
+    >
   ) => void;
   configureEdgeSidebar: (
     callback: BuilderCallback<
@@ -76,7 +80,7 @@ export default (initialLayout: InitialLayout = {}): ILayoutBuilder => {
       callback(header);
     },
     configureSubheader(callback) {
-      callback(subheader)
+      callback(subheader);
     },
     configureEdgeSidebar(callback) {
       callback(edgeSidebar);
@@ -110,15 +114,12 @@ export default (initialLayout: InitialLayout = {}): ILayoutBuilder => {
         })
       ),
     getInitialState: () => {
-      const ids = edgeSidebar.getSidebarIds();
+      const { ids } = edgeSidebar.getData();
       return {
-        sidebar: ids.reduce(
-          (result, curr) => ({
-            ...result,
-            [curr]: { open: false, collapsed: false },
-          }),
-          {}
-        ),
+        sidebar: toObject(ids, () => ({
+          open: false,
+          collapsed: false,
+        })),
       };
     },
     debug() {
