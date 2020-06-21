@@ -1,10 +1,10 @@
 import HeaderRegistry from './HeaderRegistry';
-import { createSingleObjState } from '../shared/State';
+import { createSingleObjData } from '../shared/State';
 import { HeaderConfig } from '../types';
 
 describe('HeaderRegistry', () => {
   it('can chain registerConfig', () => {
-    const state = createSingleObjState<HeaderConfig>({ id: 'header' });
+    const state = createSingleObjData<HeaderConfig>({ id: 'header' });
     const registry = HeaderRegistry(state);
     registry
       .registerConfig('xs', {

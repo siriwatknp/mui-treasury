@@ -46,6 +46,7 @@ export default (
     mapById[config.id][breakpoint] = config;
   };
   return {
+
     create(id, props) {
       hiddenById[id] = [];
       const Registry = (): IEdgeSidebarRegistry => ({

@@ -18,7 +18,7 @@ export type SubheaderData = {
   configMapById: SubheaderConfigMapById;
   configMap: MapBreakpoint<HeaderConfig[]>;
   hiddenById: Dictionary<Breakpoint[]>;
-}
+};
 
 export type EdgeSidebarConfigMapById = Dictionary<
   MapBreakpoint<EdgeSidebarConfig>
@@ -68,15 +68,18 @@ export interface IHeaderBuilder {
 export interface IEdgeSidebarRegistry {
   registerPersistentConfig: (
     breakpoint: Breakpoint,
-    config: Omit<PersistentSidebarConfig, 'id' | 'anchor' | 'variant'>
+    config: Omit<
+      PersistentSidebarConfig,
+      'id' | 'anchor' | 'variant' | 'hidden'
+    >
   ) => IEdgeSidebarRegistry;
   registerPermanentConfig: (
     breakpoint: Breakpoint,
-    config: Omit<PermanentSidebarConfig, 'id' | 'anchor' | 'variant'>
+    config: Omit<PermanentSidebarConfig, 'id' | 'anchor' | 'variant' | 'hidden'>
   ) => IEdgeSidebarRegistry;
   registerTemporaryConfig: (
     breakpoint: Breakpoint,
-    config: Omit<TemporarySidebarConfig, 'id' | 'anchor' | 'variant'>
+    config: Omit<TemporarySidebarConfig, 'id' | 'anchor' | 'variant' | 'hidden'>
   ) => IEdgeSidebarRegistry;
 }
 
@@ -91,5 +94,5 @@ export interface IEdgeSidebarBuilder {
   hide: (id: string, breakpoints: Breakpoint[] | boolean) => void;
   getSidebarIds: () => string[];
   getData: () => EdgeSidebarData;
-  debug: () => void
+  debug: () => void;
 }

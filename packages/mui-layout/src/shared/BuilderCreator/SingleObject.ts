@@ -1,40 +1,44 @@
 import { Breakpoint, keys } from '@material-ui/core/styles/createBreakpoints';
-import { createSingleObjState, RspConfig, SingleObjData } from '../State';
+import { createSingleObjData, RpsConfig, SingleObjData } from '../State';
 
 type Params<R> = {
   defaultId: string;
-  component: 'Header' | 'Footer' | 'Content';
+  component?: 'Header' | 'Footer' | 'Content';
   Registry?: R;
 };
-export type DummyRegistry = (...args: any[]) => {};
+export type DummyRegistry<Config = undefined> =(
+  state: SingleObjData<Config>
+) => {};
 
 export interface SingleObjBuilderResult<
-  R extends DummyRegistry,
+  R extends DummyRegistry<Config>,
   Config = undefined
 > {
   create: (id: string) => ReturnType<R>;
-  update: (updater: (config: RspConfig<Config>) => void) => void;
+  update: (updater: (config: RpsConfig<Config>) => void) => void;
   hide: (breakpoints: Breakpoint[] | boolean) => void;
   getId: () => string;
-  getData: () => RspConfig<Config>;
+  getData: () => RpsConfig<Config>;
   debug?: () => void;
 }
 
-export type BuilderResult<
-  R extends DummyRegistry,
-  Config = undefined
-> = ReturnType<R> & SingleObjBuilderResult<R, Config>;
+type BuilderResult<R extends DummyRegistry<Config>, Config = undefined> = ReturnType<
+  R
+> &
+  SingleObjBuilderResult<R, Config>;
+
+const makeRegistry = (id: string) => (state = createSingleObjData({ id })) => {}
 
 export const createSingleObjBuilder = <
-  R extends DummyRegistry,
+  R extends DummyRegistry<Config>,
   Config = undefined
 >({
   defaultId,
   component,
-  Registry = (() => {}) as R,
+  Registry = makeRegistry(defaultId) as R,
 }: Params<R>) => {
   const Builder = (initialRpsConfig = {}): BuilderResult<R, Config> => {
-    let state: SingleObjData<Config> = createSingleObjState({
+    let state: SingleObjData<Config> = createSingleObjData({
       id: defaultId,
       rpsConfig: initialRpsConfig,
     });
@@ -43,18 +47,16 @@ export const createSingleObjBuilder = <
     return {
       ...registry,
       create(id: string) {
-        state = createSingleObjState({ id });
+        state = createSingleObjData({ id });
         registry = Registry(state);
         return registry;
       },
-      update(updater: (config: RspConfig<Config>) => void) {
+      update(updater: (config: RpsConfig<Config>) => void) {
         updater(state.rpsConfig);
       },
       hide(breakpoints: Breakpoint[]) {
         if (typeof breakpoints === 'boolean') {
-          if (breakpoints) {
-            state.hidden = keys;
-          }
+          state.hidden = breakpoints ? keys : [];
         } else {
           state.hidden = breakpoints;
         }
