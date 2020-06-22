@@ -1,4 +1,5 @@
 import { Direction } from '@material-ui/core/styles/createMuiTheme';
+import { mapObject } from '../utils';
 import { Dictionary } from '../types';
 
 export const switchDirection = (word: string) => {
@@ -7,16 +8,10 @@ export const switchDirection = (word: string) => {
   if (word.includes('left')) return word.replace('left', 'right');
   if (word.includes('Right')) return word.replace('Right', 'Left');
   if (word.includes('right')) return word.replace('right', 'left');
-  return word
+  return word;
 };
 
-export default (direction: Direction, style: Dictionary<any>) => {
+export default <T>(direction: Direction, style: Dictionary<T>) => {
   if (direction !== 'rtl') return style;
-  return Object.keys(style).reduce(
-    (result, key) => ({
-      ...result,
-      [switchDirection(key)]: style[key],
-    }),
-    {}
-  );
+  return mapObject(style, (_, key) => switchDirection(key));
 };

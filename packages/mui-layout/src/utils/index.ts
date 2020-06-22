@@ -19,3 +19,4 @@ export { default as attachHiddenToMapById } from './attachHiddenToMapById';
 export { default as isHeaderClipped } from './isHeaderClipped'
 export * from './getFieldById'
 export * from './toObject'
+export * from './mapObject'
