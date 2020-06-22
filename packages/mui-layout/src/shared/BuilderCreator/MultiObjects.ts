@@ -19,6 +19,15 @@ type Params<R> = {
   component?: 'EdgeSidebar' | 'InsetSidebar' | 'Subheader';
 };
 
+export type ComponentData<Config, Props = {}> = {
+  ids: string[];
+  sidebarIds: string[];
+  propsById: Dictionary<Props>;
+  configMapById: Dictionary<RpsConfig<Config & Props>>;
+  configMap: RpsConfigArray<Config & Props>;
+  hiddenById: Dictionary<Breakpoint[]>;
+}
+
 export interface MultiObjBuilderResult<
   R extends DummyRegistry,
   Config = undefined,
@@ -27,14 +36,7 @@ export interface MultiObjBuilderResult<
   create: (id: string, props: Props) => ReturnType<R>;
   update: (id: string, updater: (rpsConfig: RpsConfig<Config>) => void) => void;
   hide: (id: string, breakpoints: Breakpoint[] | boolean) => void;
-  getData: () => {
-    ids: string[];
-    sidebarIds: string[];
-    propsById: Dictionary<Props>;
-    configMapById: Dictionary<RpsConfig<Config & Props>>;
-    configMap: RpsConfigArray<Config & Props>;
-    hiddenById: Dictionary<Breakpoint[]>;
-  };
+  getData: () => ComponentData<Config, Props>;
   debug?: () => void;
 }
 
