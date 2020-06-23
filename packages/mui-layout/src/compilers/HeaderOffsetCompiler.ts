@@ -8,7 +8,7 @@ export default (header: HeaderConfigMap) => {
       let found: boolean = false
       Object.entries(header).forEach(
         ([bp, config]: [Breakpoint, HeaderConfig]) => {
-          if (config.position === "fixed") {
+          if (config.position === "fixed" && !config.hidden) {
             found = true
             result[bp] = {
               height: config.initialHeight,

@@ -39,7 +39,7 @@ export default (config: HeaderConfig, sidebarEffects: ISidebarEffect[]) => {
       : undefined;
   return {
     getStyle: () => ({
-      height: config.initialHeight,
+      height: config.hidden ? 0 : config.initialHeight,
       position: config.position,
       ...config.top !== undefined && { top: config.top },
       ...marginStyle,
