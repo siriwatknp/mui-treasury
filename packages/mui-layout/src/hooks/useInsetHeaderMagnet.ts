@@ -1,50 +1,26 @@
-import { useRef, useState } from 'react';
 import { useLayoutCtx } from '../contexts';
 import useScreen from './useScreen';
-import useScrollY from './useScrollY';
-import { pickNearestBreakpoint } from '../utils';
 import { isFixedInsetSidebarConfig } from '../utils/sidebarChecker';
-import useSumHeadersHeight from './useSumHeadersHeight';
+import { MultiResponsiveObj } from '../shared/Responsive';
+import { InsetSidebarConfig } from '../types';
+import { useHeaderMagnet } from './useHeaderMagnet';
 
 export const useInsetHeaderMagnet = (
   sidebarId: string
 ): { height: string | number } => {
-  useScrollY();
-  const [counter, setCounter] = useState(0)
-  const hiddenRef = useRef(null)
   const screen = useScreen();
   const {
-    data: { header, insetSidebar, subheader },
+    data: { insetSidebar },
   } = useLayoutCtx();
-  const headerConfig = pickNearestBreakpoint(header, screen);
-  const subheaderConfigs = Object.keys(subheader.configMapById)
-    .map(subheaderId => {
-      return pickNearestBreakpoint(
-        subheader.configMapById[subheaderId],
-        screen
-      );
-    })
-    .filter(c => !!c && !c.hidden);
-  const highestHeight = useSumHeadersHeight(
-    [headerConfig, ...subheaderConfigs],
-    sidebarId
-  );
-  if (!highestHeight) return { height: '' } // document is not ready | component is not mounted | height is 0
-  if (hiddenRef.current !== subheaderConfigs.length) {
-    // need to use setTimeout to let always set height after browser finishes painting
-    setTimeout(() => setCounter(counter + 1), 0)
-    hiddenRef.current = subheaderConfigs.length
-  }
 
-  const sidebarConfig = pickNearestBreakpoint(
-    insetSidebar.configMapById[sidebarId],
-    screen
-  );
-  const shouldHaveHeight =
+  const sidebarConfig = MultiResponsiveObj<InsetSidebarConfig>(
+    insetSidebar
+  ).getNearestConfig(sidebarId, screen);
+  const dynamicHeight =
     isFixedInsetSidebarConfig(sidebarConfig) &&
     sidebarConfig.headerMagnetEnabled;
 
-  return { height: shouldHaveHeight ? highestHeight : '' }; // inline style
+  return useHeaderMagnet(sidebarId, dynamicHeight);
 };
 
 export default useInsetHeaderMagnet;
