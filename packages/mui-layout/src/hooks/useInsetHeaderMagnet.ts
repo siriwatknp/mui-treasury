@@ -7,7 +7,7 @@ import { useHeaderMagnet } from './useHeaderMagnet';
 
 export const useInsetHeaderMagnet = (
   sidebarId: string
-): { height: string | number } => {
+): { marginTop: string } => {
   const screen = useScreen();
   const {
     data: { insetSidebar },
