@@ -1,7 +1,7 @@
+import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
 import { ComponentData } from './BuilderCreator/MultiObjects';
 import { pickNearestBreakpoint } from '../utils';
 import { RpsConfig } from '../shared/State';
-import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
 
 export const SingleResponsiveObj = <T>(data: RpsConfig<T>) => {
   return {
