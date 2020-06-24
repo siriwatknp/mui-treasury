@@ -1,7 +1,14 @@
-import { toValidCssValue } from "./index"
+import { toValidCssValue } from './index';
+import isNotNilOrEmpty from './isNotNilOrEmpty';
 
-export const subtractCalc = (...args: (string | number)[]) =>
-  `calc(${args.map(toValidCssValue).join(" - ")})`
+export const subtractCalc = (...args: (string | number)[]): string =>
+  `calc(${args
+    .filter(isNotNilOrEmpty)
+    .map(toValidCssValue)
+    .join(' - ')})`;
 
-export const plusCalc = (...args: (string | number)[]) =>
-  `calc(${args.map(toValidCssValue).join(" + ")})`
+export const plusCalc = (...args: (string | number)[]): string =>
+  `calc(${args
+    .filter(isNotNilOrEmpty)
+    .map(toValidCssValue)
+    .join(' + ')})`;
