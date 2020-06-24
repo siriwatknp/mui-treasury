@@ -73,6 +73,11 @@ export default [
         label: 'Auto Expanded',
         to: '/layout/features/auto-expanded/',
       },
+      {
+        key: 'multiple-headers',
+        label: 'Multiple Headers',
+        to: '/layout/features/multiple-headers/',
+      },
     ]
   },
   {
@@ -204,6 +209,11 @@ export default [
             to: '/layout/api-reference/header-builder/',
           },
           {
+            key: 'subheader-builder',
+            label: 'Subheader Builder',
+            to: '/layout/api-reference/subheader-builder/',
+          },
+          {
             key: 'edge-sidebar-builder',
             label: 'EdgeSidebar Builder',
             to: '/layout/api-reference/edge-sidebar-builder/',
@@ -212,7 +222,7 @@ export default [
             key: 'inset-sidebar-builder',
             label: 'InsetSidebar Builder',
             to: '/layout/api-reference/inset-sidebar-builder/',
-          }
+          },
         ]
       },
       {
@@ -228,6 +238,11 @@ export default [
             key: 'header',
             label: 'Header',
             to: '/layout/api-reference/header/'
+          },
+          {
+            key: 'subheader',
+            label: 'Subheader',
+            to: '/layout/api-reference/subheader/'
           },
           {
             key: 'drawer-sidebar',
