@@ -1,13 +1,11 @@
-import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
 import { Dictionary, MapBreakpoint } from '../types';
+import { iterateRpsById } from './iterateRpsById';
 
 export default <T>(mapById: Dictionary<MapBreakpoint<T>>) => {
   const result: MapBreakpoint<T[]> = {};
-  Object.keys(mapById).forEach(key => {
-    Object.keys(mapById[key]).forEach((bp: Breakpoint) => {
-      if (!result[bp]) result[bp] = [];
-      result[bp].push(mapById[key][bp]);
-    });
+  iterateRpsById(mapById, (_, bp, value) => {
+    if (!result[bp]) result[bp] = [];
+    result[bp].push(value);
   });
   return result;
 };

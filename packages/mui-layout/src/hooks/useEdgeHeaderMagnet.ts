@@ -1,42 +1,26 @@
-import { useState, useEffect } from 'react';
 import { useLayoutCtx } from '../contexts';
-import HeaderEffect from '../effects/Header';
 import useScreen from './useScreen';
-import useScrollY from './useScrollY';
-import useHeaderHeight from './useHeaderHeight';
-import { pickNearestBreakpoint, subtractCalc } from '../utils';
 import { isCollapsibleSidebarConfig } from '../utils/sidebarChecker';
+import { MultiResponsiveObj } from '../shared/Responsive';
+import { EdgeSidebarConfig } from '../types';
+import { useHeaderMagnet } from './useHeaderMagnet';
 
-export const useEdgeHeaderMagnet = (sidebarId: string): { height: string } => {
+export const useEdgeHeaderMagnet = (
+  sidebarId: string
+): { marginTop: string } => {
   const screen = useScreen();
-  const scrollY = useScrollY();
   const {
-    data: { header, headerId, edgeSidebar },
+    data: { edgeSidebar },
   } = useLayoutCtx();
-  const headerConfig = pickNearestBreakpoint(header, screen);
-  const headerEffect = HeaderEffect(headerConfig);
-  const sidebarConfig = pickNearestBreakpoint(
-    edgeSidebar.configMapById[sidebarId],
-    screen
-  );
-  const resizedHeight = useHeaderHeight(headerId);
-  const [headerHeight, setHeaderHeight] = useState('');
-  const shouldUpdate =
-    resizedHeight &&
-    headerConfig &&
-    headerConfig.position === 'relative' &&
-    headerEffect.isObjectClipped(sidebarId) &&
+
+  const sidebarConfig = MultiResponsiveObj<EdgeSidebarConfig>(
+    edgeSidebar
+  ).getNearestConfig(sidebarId, screen);
+  const dynamicHeight =
     isCollapsibleSidebarConfig(sidebarConfig) &&
     sidebarConfig.headerMagnetEnabled;
-  useEffect(() => {
-    if (shouldUpdate) {
-      setHeaderHeight(subtractCalc(resizedHeight, scrollY));
-    } else {
-      setHeaderHeight('');
-    }
-  }, [shouldUpdate, resizedHeight, screen, scrollY]);
 
-  return { height: headerHeight }; // inline style
+  return useHeaderMagnet(sidebarId, dynamicHeight);
 };
 
 export default useEdgeHeaderMagnet;

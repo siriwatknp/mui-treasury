@@ -6,7 +6,34 @@ template: DocTemplate
 
 ## Usage example
 
-Normally, you might want to put `Toolbar` inside of header as a wrapper.
+#### From `v4.5.0` onward
+
+You don't need to use `Toolbar` component from Material-UI since `css: height`
+will be attached to Header by `initialHeight` config and Header will have `display: flex` by default.
+
+```jsx
+import styled from 'styled-components'
+import Layout, { Root, getHeader } from '@mui-treasury/layout';
+
+const Header = getHeader(styled)
+
+cosnt scheme = Layout()
+
+const App = () => {
+  return (
+    <Root scheme={scheme}>
+      <Header>
+        <img alt={'logo'} src={'...'} />
+        <div>
+          ...
+        </div>
+      </Header>
+    </Root>
+  )
+}
+```
+
+#### Before v4.5.0
 
 ```jsx
 import styled from 'styled-components'
@@ -27,6 +54,8 @@ const App = () => {
   )
 }
 ```
+
+Normally, you might want to put `Toolbar` inside of header as a wrapper.
 
 ## Props
 Any props that [AppBar](https://material-ui.com/api/app-bar/#props) accepts 

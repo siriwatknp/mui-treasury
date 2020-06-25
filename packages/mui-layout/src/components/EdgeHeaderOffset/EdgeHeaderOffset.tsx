@@ -18,7 +18,11 @@ export default (styled: any) => {
     const theme = useTheme();
     const transition = useTransitionStyles();
     const { data } = useLayoutCtx();
-    const compiler = EdgeHeaderOffsetCompiler(data.edgeSidebar, data.header);
+    const compiler = EdgeHeaderOffsetCompiler(
+      data.edgeSidebar,
+      data.header,
+      data.subheader
+    );
     const styles = createBreakpointStyles(
       compiler.getResultStyle(sidebarId),
       theme

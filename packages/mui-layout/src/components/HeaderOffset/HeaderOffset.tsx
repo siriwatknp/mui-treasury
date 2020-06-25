@@ -13,7 +13,8 @@ export default (styled: any) => {
     const theme = useTheme()
     const { data } = useLayoutCtx()
     const compiler = HeaderOffsetCompiler(data.header)
-    const styles = createBreakpointStyles(compiler.getResultStyle(), theme)
+    const styles = createBreakpointStyles(
+      compiler.getResultStyle(), theme)
     return (
       <Div
         className={"HeaderOffset"}

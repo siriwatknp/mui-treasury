@@ -40,6 +40,7 @@ type registerConfig = (
     position: 'relative' | 'sticky' | 'absolute' | 'fixed';
     clipped?: boolean | Dictionary<boolean>;
     initialHeight?: number | string;
+    layer?: number
   }
 ) => IHeaderRegistry;
 ```
@@ -84,7 +85,11 @@ scheme.configureHeader(builder => {
   - **type** : `number(px) | 'px' | 'rem' | 'em'`
   - **default** : 56 (>=xs), 64 (>=md)
   - **description** : initial height of header for clipped EdgeSidebar, fixed InsetSidebar and Content to calculate offset. You don't need to think about the condition, just use the same height when you inspect with devtool or from design.
-
+  !important note, from v4.5.0+ this parameter will become css `height` of the Header
+- `layer` (v4.5.0+)
+  - **type** : `number`
+  - **default** : undefined
+  - **description** : for increasing z-index when you have multiple headers
 <PageNavigation
   prev={{
     text: 'Layout Builder',

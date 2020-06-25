@@ -1,5 +1,5 @@
 import { AppendDictionary, Dictionary } from "./Utils"
-import { EdgeSidebarData, HeaderConfigMap, InsetSidebarData } from "./Builder"
+import { EdgeSidebarData, HeaderConfigMap, InsetSidebarData, SubheaderData } from './Builder';
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
 
 export type PersistentBehavior = "fit" | "flexible" | "none"
@@ -76,10 +76,13 @@ export type EdgeSidebarConfig =
 export type Position = "relative" | "sticky" | "absolute" | "fixed"
 
 export interface HeaderConfig {
-  id: string
+  id?: string
   position: Position
+  top?: number | string
+  layer?: number,
   clipped?: AppendDictionary<boolean>
   initialHeight?: number | string
+  hidden?: boolean
 }
 
 export interface GlobalConfig {
@@ -88,10 +91,11 @@ export interface GlobalConfig {
 
 export interface LayoutData {
   global: GlobalConfig
-  edgeSidebar: EdgeSidebarData
+  edgeSidebar: Omit<EdgeSidebarData, 'ids'>
   insetSidebar: InsetSidebarData
   headerId: string
   header: HeaderConfigMap
+  subheader: SubheaderData
   content: { id: string }
   footer: { id: string }
 }

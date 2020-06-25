@@ -1,5 +1,6 @@
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
 import HeaderBuilder from './Header';
+import SubheaderBuilder from './Subheader';
 import EdgeSidebarBuilder from './EdgeSidebar';
 import ContentBuilder from './Content';
 import FooterBuilder from './Footer';
@@ -11,13 +12,15 @@ import {
   GlobalConfig,
   LayoutData,
   EdgeSidebarConfigMapById,
+  SubheaderConfigMapById,
   HeaderConfigMap,
 } from '../types';
 import {
   IInsetSidebarBuilder,
   InsetSidebarConfigMapById,
 } from './InsetSidebar/InsetSidebarBuilder';
-import { DEFAULT_CONTENT_ID, DEFAULT_FOOTER_ID } from '../utils';
+import { ISubheaderBuilder } from './Subheader/SubheaderBuilder';
+import { DEFAULT_CONTENT_ID, toObject } from '../utils';
 
 interface BuilderCallback<T> {
   (builder: T): void;
@@ -25,7 +28,14 @@ interface BuilderCallback<T> {
 
 export interface ILayoutBuilder {
   configureHeader: (
-    callback: BuilderCallback<Pick<IHeaderBuilder, 'create' | 'registerConfig'>>
+    callback: BuilderCallback<
+      Pick<IHeaderBuilder, 'create' | 'registerConfig' | 'update'>
+    >
+  ) => void;
+  configureSubheader: (
+    callback: BuilderCallback<
+      Pick<ISubheaderBuilder, 'create' | 'update' | 'hide'>
+    >
   ) => void;
   configureEdgeSidebar: (
     callback: BuilderCallback<
@@ -48,6 +58,7 @@ export interface ILayoutBuilder {
 type InitialLayout = {
   global?: GlobalConfig;
   header?: HeaderConfigMap;
+  subheader?: SubheaderConfigMapById;
   edgeSidebar?: EdgeSidebarConfigMapById;
   insetSidebar?: InsetSidebarConfigMapById;
 };
@@ -55,6 +66,7 @@ type InitialLayout = {
 export default (initialLayout: InitialLayout = {}): ILayoutBuilder => {
   const global: GlobalConfig = initialLayout.global || { autoCollapse: {} };
   const header = HeaderBuilder(initialLayout.header);
+  const subheader = SubheaderBuilder(initialLayout.subheader);
   const edgeSidebar = EdgeSidebarBuilder(initialLayout.edgeSidebar);
   const insetSidebar = InsetSidebarBuilder(initialLayout.insetSidebar);
   const content = ContentBuilder();
@@ -62,11 +74,13 @@ export default (initialLayout: InitialLayout = {}): ILayoutBuilder => {
 
   // setup default id
   content.create(DEFAULT_CONTENT_ID);
-  footer.create(DEFAULT_FOOTER_ID);
 
   return {
     configureHeader(callback) {
       callback(header);
+    },
+    configureSubheader(callback) {
+      callback(subheader);
     },
     configureEdgeSidebar(callback) {
       callback(edgeSidebar);
@@ -83,14 +97,16 @@ export default (initialLayout: InitialLayout = {}): ILayoutBuilder => {
       insetSidebar: insetSidebar.getData(),
       header: header.getData(),
       headerId: header.getId(),
-      content: content.getData(),
-      footer: footer.getData(),
+      subheader: subheader.getData(),
+      content: { id: content.getId() },
+      footer: { id: footer.getId() },
     }),
     clone: () =>
       // use this approach as deep clone for now
       JSON.parse(
         JSON.stringify({
           header: header.getData(),
+          subheader: subheader.getData(),
           edgeSidebar: edgeSidebar.getData().configMapById,
           insetSidebar: insetSidebar.getData().configMapById,
           content: content.getData(),
@@ -98,20 +114,18 @@ export default (initialLayout: InitialLayout = {}): ILayoutBuilder => {
         })
       ),
     getInitialState: () => {
-      const ids = edgeSidebar.getSidebarIds();
+      const { ids } = edgeSidebar.getData();
       return {
-        sidebar: ids.reduce(
-          (result, curr) => ({
-            ...result,
-            [curr]: { open: false, collapsed: false },
-          }),
-          {}
-        ),
+        sidebar: toObject(ids, () => ({
+          open: false,
+          collapsed: false,
+        })),
       };
     },
     debug() {
       if (process.env.NODE_ENV !== 'production') {
         header.debug();
+        subheader.debug();
         edgeSidebar.debug();
         insetSidebar.debug();
         content.debug();
@@ -123,6 +137,7 @@ export default (initialLayout: InitialLayout = {}): ILayoutBuilder => {
         JSON.stringify(
           {
             header: header.getData(),
+            subheader: subheader.getData(),
             edgeSidebar: edgeSidebar.getData().configMapById,
             insetSidebar: insetSidebar.getData().configMapById,
           },

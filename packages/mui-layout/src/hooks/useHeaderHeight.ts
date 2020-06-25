@@ -7,7 +7,8 @@ export const useHeaderHeight = (headerId: string = DEFAULT_HEADER_ID) => {
     ? iDocument.querySelector(`[mui-layout='${headerId}']`)
     : null;
   if (headerElm) {
-    return headerElm.clientHeight;
+    const { height, top } = headerElm.getBoundingClientRect();
+    return height + top
   }
   return 0;
 };

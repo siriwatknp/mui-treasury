@@ -3,6 +3,7 @@ export { default as getInsetContainer } from './InsetContainer';
 export { default as getFullscreen } from './Fullscreen';
 export { default as getSidebarContent } from './SidebarContent';
 export { default as getHeader } from './Header';
+export { default as getSubheader } from './Subheader'
 export { default as getContent } from './Content';
 export { default as getCollapseIcon } from './CollapseIcon';
 export { default as getCollapseBtn } from './CollapseBtn';

@@ -1,5 +1,5 @@
 import { Theme } from '@material-ui/core/styles';
-import { get } from '../../utils';
+import { get, isHeaderClipped } from '../../utils';
 import { HeaderConfig, IHeaderEffect } from '../../types';
 
 const incrementZIndex = (theme: Theme, plus: number) => ({
@@ -20,17 +20,16 @@ export const isSomeClipped = ({
 
 export default (header: Partial<HeaderConfig>): IHeaderEffect => {
   const isAboveSomeSidebars = isSomeClipped(header);
-  const isObjectClipped = (sidebarId?: string) =>
-    (typeof header.clipped === 'boolean' && header.clipped) ||
-    (typeof header.clipped === 'object' && get(header, ['clipped', sidebarId]));
   return {
     id: get(header, 'id'),
     getHeaderZIndex: (theme?: Theme) =>
-      isAboveSomeSidebars ? incrementZIndex(theme, 10) : undefined,
+      isAboveSomeSidebars
+        ? incrementZIndex(theme, 10 + (header.layer || 0))
+        : undefined,
     getEdgeSidebarZIndex: (sidebarId: string, theme?: Theme) =>
-      isAboveSomeSidebars && !isObjectClipped(sidebarId)
+      isAboveSomeSidebars && !isHeaderClipped(header, sidebarId)
         ? incrementZIndex(theme, 20)
         : undefined,
-    isObjectClipped,
+    isObjectClipped: sidebarId => isHeaderClipped(header, sidebarId),
   };
 };

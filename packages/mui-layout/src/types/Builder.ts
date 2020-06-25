@@ -6,11 +6,20 @@ import {
   EdgeSidebarConfig,
   TemporarySidebarConfig,
   InsetSidebarConfig,
-  SidebarProperties,
+  SidebarProperties, StickyInsetSidebarConfig, AbsoluteInsetSidebarConfig, FixedInsetSidebarConfig,
 } from './Config';
 import { Dictionary, MapBreakpoint } from './Utils';
 
 export type HeaderConfigMap = MapBreakpoint<HeaderConfig>;
+
+export type SubheaderConfigMapById = Dictionary<MapBreakpoint<HeaderConfig>>;
+
+export type SubheaderData = {
+  configMapById: SubheaderConfigMapById;
+  configMap: MapBreakpoint<HeaderConfig[]>;
+  hiddenById: Dictionary<Breakpoint[]>;
+};
+
 export type EdgeSidebarConfigMapById = Dictionary<
   MapBreakpoint<EdgeSidebarConfig>
 >;
@@ -26,28 +35,16 @@ export type InsetSidebarData = {
   configMap: MapBreakpoint<InsetSidebarConfig[]>;
 };
 
-export interface IRegistry<ConfigType> {
+export interface IRegistryOld<ConfigType> {
   registerConfig: (
     breakpoint: Breakpoint,
-    config: Omit<ConfigType, 'id'>
-  ) => IRegistry<ConfigType>;
-}
-
-export interface IFooterBuilder {
-  create: (id: string) => void;
-  getData: () => { id: string };
-  debug: () => void;
-}
-
-export interface IContentBuilder {
-  create: (id: string) => void;
-  getData: () => { id: string };
-  debug: () => void;
+    config: Omit<ConfigType, 'id' | 'hidden'>
+  ) => IRegistryOld<ConfigType>;
 }
 
 export interface IHeaderBuilder {
-  create: (id: string) => IRegistry<HeaderConfig>;
-  registerConfig: IRegistry<HeaderConfig>['registerConfig'];
+  create: (id: string) => IRegistryOld<HeaderConfig>;
+  registerConfig: IRegistryOld<HeaderConfig>['registerConfig'];
   update: (
     updater: (config: MapBreakpoint<Omit<HeaderConfig, 'id'>>) => void
   ) => void;
@@ -59,15 +56,18 @@ export interface IHeaderBuilder {
 export interface IEdgeSidebarRegistry {
   registerPersistentConfig: (
     breakpoint: Breakpoint,
-    config: Omit<PersistentSidebarConfig, 'id' | 'anchor' | 'variant'>
+    config: Omit<
+      PersistentSidebarConfig,
+      'id' | 'anchor' | 'variant' | 'hidden'
+    >
   ) => IEdgeSidebarRegistry;
   registerPermanentConfig: (
     breakpoint: Breakpoint,
-    config: Omit<PermanentSidebarConfig, 'id' | 'anchor' | 'variant'>
+    config: Omit<PermanentSidebarConfig, 'id' | 'anchor' | 'variant' | 'hidden'>
   ) => IEdgeSidebarRegistry;
   registerTemporaryConfig: (
     breakpoint: Breakpoint,
-    config: Omit<TemporarySidebarConfig, 'id' | 'anchor' | 'variant'>
+    config: Omit<TemporarySidebarConfig, 'id' | 'anchor' | 'variant' | 'hidden'>
   ) => IEdgeSidebarRegistry;
 }
 
@@ -82,5 +82,20 @@ export interface IEdgeSidebarBuilder {
   hide: (id: string, breakpoints: Breakpoint[] | boolean) => void;
   getSidebarIds: () => string[];
   getData: () => EdgeSidebarData;
-  debug: () => void
+  debug: () => void;
+}
+
+export interface IInsetSidebarRegistry {
+  registerStickyConfig: (
+    breakpoint: Breakpoint,
+    config: Omit<StickyInsetSidebarConfig, 'id' | 'anchor' | 'variant'>
+  ) => IInsetSidebarRegistry;
+  registerAbsoluteConfig: (
+    breakpoint: Breakpoint,
+    config: Omit<AbsoluteInsetSidebarConfig, 'id' | 'anchor' | 'variant'>
+  ) => IInsetSidebarRegistry;
+  registerFixedConfig: (
+    breakpoint: Breakpoint,
+    config: Omit<FixedInsetSidebarConfig, 'id' | 'anchor' | 'variant'>
+  ) => IInsetSidebarRegistry;
 }

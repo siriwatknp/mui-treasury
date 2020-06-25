@@ -45,16 +45,19 @@ describe("HeaderCompiler", () => {
         marginRight: 0,
         width: "100%",
         position: "sticky",
+        height: 56,
       },
       md: {
         width: "calc(100% - 256px)",
         marginLeft: 256,
         position: "sticky",
+        height: 64,
       },
       xl: {
         marginLeft: "calc(30%)",
         width: "calc(100% - (30%))",
         position: "sticky",
+        height: 64,
       },
     })
   })

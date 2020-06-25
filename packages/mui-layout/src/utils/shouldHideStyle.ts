@@ -1,5 +1,6 @@
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
 import { Dictionary } from '../types';
+import mapValues from 'lodash.mapvalues';
 
 export default (
   hiddenBreakpoints: Breakpoint[] = [],
@@ -7,9 +8,5 @@ export default (
   style: Dictionary<string | number> = {}
 ) => {
   if (!hiddenBreakpoints.includes(bp)) return style;
-  const result: Dictionary<string | number> = {};
-  Object.keys(style).forEach(key => {
-    result[key] = 'unset';
-  });
-  return result;
+  return mapValues(style, () => 'unset');
 };

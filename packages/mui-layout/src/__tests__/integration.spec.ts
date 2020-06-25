@@ -100,11 +100,13 @@ describe("Header + PrimarySidebar + SecondarySidebar + Content", () => {
     expect(headerCompiler.getResultStyle()).toStrictEqual({
       xs: {
         position: "fixed",
+        height: 56,
       },
       sm: {
         marginLeft: 256,
         width: "calc(100% - 256px)",
         position: "fixed",
+        height: 56,
       },
       md: {
         marginLeft: "calc(0px + 0px)",
@@ -112,6 +114,7 @@ describe("Header + PrimarySidebar + SecondarySidebar + Content", () => {
         width: "100%",
         zIndex: 1210,
         position: "relative",
+        height: 64,
       },
       lg: {
         marginLeft: "calc(0px + 0px)",
@@ -119,6 +122,7 @@ describe("Header + PrimarySidebar + SecondarySidebar + Content", () => {
         width: "100%",
         zIndex: 1210,
         position: "relative",
+        height: 64,
       },
     })
 

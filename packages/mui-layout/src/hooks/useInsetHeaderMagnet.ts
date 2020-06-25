@@ -1,38 +1,26 @@
 import { useLayoutCtx } from '../contexts';
 import useScreen from './useScreen';
-import useScrollY from './useScrollY';
-import useHeaderHeight from './useHeaderHeight';
-import { pickNearestBreakpoint, subtractCalc } from '../utils';
-import { useEffect, useState } from 'react';
 import { isFixedInsetSidebarConfig } from '../utils/sidebarChecker';
+import { MultiResponsiveObj } from '../shared/Responsive';
+import { InsetSidebarConfig } from '../types';
+import { useHeaderMagnet } from './useHeaderMagnet';
 
-export const useInsetHeaderMagnet = (sidebarId: string) => {
+export const useInsetHeaderMagnet = (
+  sidebarId: string
+): { marginTop: string } => {
   const screen = useScreen();
-  const scrollY = useScrollY();
   const {
-    data: { header, headerId, insetSidebar },
+    data: { insetSidebar },
   } = useLayoutCtx();
-  const headerConfig = pickNearestBreakpoint(header, screen);
-  const sidebarConfig = pickNearestBreakpoint(
-    insetSidebar.configMapById[sidebarId],
-    screen
-  );
-  const resizedHeight = useHeaderHeight(headerId);
-  const [headerHeight, setHeaderHeight] = useState('');
-  const shouldUpdate =
-    resizedHeight &&
-    headerConfig.position === 'relative' &&
+
+  const sidebarConfig = MultiResponsiveObj<InsetSidebarConfig>(
+    insetSidebar
+  ).getNearestConfig(sidebarId, screen);
+  const dynamicHeight =
     isFixedInsetSidebarConfig(sidebarConfig) &&
     sidebarConfig.headerMagnetEnabled;
-  useEffect(() => {
-    if (shouldUpdate) {
-      setHeaderHeight(subtractCalc(resizedHeight, scrollY));
-    } else {
-      setHeaderHeight('');
-    }
-  }, [shouldUpdate, resizedHeight, screen, scrollY]);
 
-  return { height: headerHeight };
+  return useHeaderMagnet(sidebarId, dynamicHeight);
 };
 
 export default useInsetHeaderMagnet;

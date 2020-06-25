@@ -16,22 +16,25 @@ I am very excited about this project because I know that there is a lot of devel
 ## Roadmap
 
 #### Q3/2020
-- Integrate material-ui with form (formik | react-hook-form)
+- More components & styles for using with @mui-treasury/layout
+  - Header
+  - Sidebar
+  - Footer
 
 #### Q2/2020
-- Reach 300 components
-- Introducing application demo (example of real-world app that combine existing components in mui-treasury)
-- Release Layout v4
+- [x] Reach 300 components + styles
+- [x] Introducing application demo (example of real-world app that combine existing components in mui-treasury)
+- [x] Release Layout v4
 
 #### Q1/2020
-- Reach 200 components
+- [x] Reach 200 components
 
 ## Latest Version
-> - [@mui-treasury/components `1.0.8`](https://mui-treasury.com/components)
-> - [@mui-treasury/layout `4.0.0`](https://mui-treasury.com/layout)
-> - [@mui-treasury/styles `1.1.6`](https://mui-treasury.com/styles)
-> - @mui-treasury/mockup `1.1.3`
-> - @mui-treasury/utils `0.4.0`
+> - [@mui-treasury/components `1.5.2`](https://mui-treasury.com/components)
+> - [@mui-treasury/layout `4.5.0`](https://mui-treasury.com/layout)
+> - [@mui-treasury/styles `1.8.0`](https://mui-treasury.com/styles)
+> - @mui-treasury/mockup `1.2.4`
+> - @mui-treasury/utils `0.4.1`
 >
 >  [All changelog](/CHANGELOG.md)
 

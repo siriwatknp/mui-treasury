@@ -16,3 +16,10 @@ export { default as mapWidthToScreen } from './mapWidthToScreen';
 export { default as normalizeMapById } from './normalizeMapById';
 export { default as shouldHideStyle } from './shouldHideStyle';
 export { default as attachHiddenToMapById } from './attachHiddenToMapById';
+export { default as isHeaderClipped } from './isHeaderClipped'
+export * from './getFieldById'
+export * from './toObject'
+export * from './mapObject'
+export * from './mapRpsById'
+export * from './iterateRpsById'
+export * from './genHiddenBreakpoints'

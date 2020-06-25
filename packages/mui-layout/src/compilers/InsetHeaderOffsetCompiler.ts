@@ -1,36 +1,28 @@
-import { HeaderConfigMap, InsetSidebarData, ResultStyle } from "../types"
-import { combineBreakpoints, pickNearestBreakpoint } from "../utils"
-import { isFixedInsetSidebarConfig } from "../utils/sidebarChecker"
+import {
+  HeaderConfigMap,
+  InsetSidebarConfig,
+  InsetSidebarData,
+  SubheaderData,
+} from '../types';
+import { isFixedInsetSidebarConfig } from '../utils/sidebarChecker';
+import MultiHeadersModel from '../models/MultiHeaders';
+import OffsetCompiler from './OffsetCompiler';
 
 export default (
-  insetSidebar: Pick<InsetSidebarData, "configMapById">,
-  header: HeaderConfigMap
+  insetSidebar: Pick<InsetSidebarData, 'configMapById'>,
+  header: HeaderConfigMap,
+  subheader: SubheaderData
 ) => {
   return {
     getResultStyle: (sidebarId: string) => {
-      const result: ResultStyle = {}
-      let found: boolean = false
-      const configMap = insetSidebar.configMapById[sidebarId]
-      if (configMap) {
-        const breakpoints = combineBreakpoints(configMap, header)
-        breakpoints.forEach(bp => {
-          const config = pickNearestBreakpoint(configMap, bp)
-          if (config) {
-            if (isFixedInsetSidebarConfig(config)) {
-              found = true
-              result[bp] = {
-                height: pickNearestBreakpoint(header, bp).initialHeight,
-              }
-            } else if (found) {
-              found = false
-              result[bp] = {
-                height: 0,
-              }
-            }
-          }
-        })
-      }
-      return result
+      return OffsetCompiler(insetSidebar, header, subheader).getResultStyle<
+        InsetSidebarConfig
+      >(
+        sidebarId,
+        (sidebarConfig, headerConfig) =>
+          headerConfig && isFixedInsetSidebarConfig(sidebarConfig),
+        headerConfigs => MultiHeadersModel(headerConfigs).totalHeight
+      );
     },
-  }
-}
+  };
+};

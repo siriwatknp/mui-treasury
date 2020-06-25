@@ -1,19 +1,8 @@
-import { get } from '../../utils';
+import { isHeaderClipped } from '../../utils';
 import createEffect from '../../effects/Header/HeaderEffect';
 import createWidthInterface from '../Width';
 import createMarginInterface from '../Margin';
 import { ISidebarEffect, HeaderConfig, IMargin, IWidth } from '../../types';
-
-const shouldClipped = (
-  config: Pick<HeaderConfig, 'clipped'>,
-  objectId: string
-) => {
-  return (
-    (typeof config.clipped === 'boolean' && config.clipped) ||
-    (typeof config.clipped === 'object' &&
-      get(config, ['clipped', objectId], get(config, 'clipped._other')))
-  );
-};
 
 export default (config: HeaderConfig, sidebarEffects: ISidebarEffect[]) => {
   const headerEffect = createEffect(config);
@@ -24,12 +13,12 @@ export default (config: HeaderConfig, sidebarEffects: ISidebarEffect[]) => {
   sidebarEffects.forEach(
     ({ id: sidebarId, getObjectWidth, getObjectMargin }) => {
       widthInterfaces.push(
-        shouldClipped(config, sidebarId)
+        isHeaderClipped(config, sidebarId)
           ? createWidthInterface(0)
           : getObjectWidth(config.id)
       );
       marginInterfaces.push(
-        shouldClipped(config, sidebarId)
+        isHeaderClipped(config, sidebarId)
           ? createMarginInterface({ marginLeft: 0, marginRight: 0 })
           : getObjectMargin(config.id)
       );
@@ -50,7 +39,9 @@ export default (config: HeaderConfig, sidebarEffects: ISidebarEffect[]) => {
       : undefined;
   return {
     getStyle: () => ({
+      height: config.hidden ? 0 : config.initialHeight,
       position: config.position,
+      ...config.top !== undefined && { top: config.top },
       ...marginStyle,
       ...widthStyle,
       ...headerEffect.getHeaderZIndex(),
