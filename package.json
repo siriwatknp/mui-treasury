@@ -48,7 +48,8 @@
     "storybook": "NODE_ENV=development start-storybook -p 6006",
     "build-storybook": "NODE_ENV=production build-storybook -s public",
     "release": "npm whoami && lerna run --scope \"@mui-treasury/*\" build && lerna publish --contents build",
-    "changelog": "source .env && lerna-changelog | pbcopy"
+    "changelog": "source .env && lerna-changelog | pbcopy",
+    "list-versions": "lerna list -l" 
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",

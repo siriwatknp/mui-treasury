@@ -10,6 +10,23 @@
 > - :bulb: [Refactor]
 > - :lipstick: [Style]
 
+## _25 Jun 2020__
+### @mui-treasury/layout@4.5.0
+- :boom: Multiple subheaders
+  - Header will have `display: flex` and `height: initialHeight` by default (no need to use Toolbar from Material-UI)
+
+## _14 Jun 2020__
+### @mui-treasury/layout@4.4.1
+- :bug: fix support components to for dark mode
+
+## _13 Jun 2020__
+### @mui-treasury/layout@4.4.0
+- :rocket: support RTL
+
+## _12 Jun 2020__
+### @mui-treasury/layout@4.3.0
+- add config to enable auto-expanded feature
+
 ## _10 May 2020__
 
 ### website@2.0.0
