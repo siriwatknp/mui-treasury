@@ -1,5 +1,5 @@
 import { ClassNameMap } from '@material-ui/styles';
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 type StyleProps = { gutter?: string | number };
 type ClassKey = keyof ReturnType<typeof defaultStyles>;
@@ -11,7 +11,7 @@ export const useDefaultStyles: (
 });
 
 export default function defaultStyles({ palette, spacing }: Theme) {
-  return {
+  return createStyles({
     menu: {
       display: 'flex',
       overflow: 'auto',
@@ -29,7 +29,7 @@ export default function defaultStyles({ palette, spacing }: Theme) {
         backgroundColor: 'rgba(0,0,0,0.04)',
       },
       '&:not(:first-child)': {
-        marginLeft: gutter,
+        marginLeft: typeof gutter === 'number' ? spacing(gutter) : gutter,
       },
     }),
     itemActive: {
@@ -38,5 +38,5 @@ export default function defaultStyles({ palette, spacing }: Theme) {
         backgroundColor: `rgba(0,0,0,0.08) !important`,
       },
     },
-  };
+  });
 }

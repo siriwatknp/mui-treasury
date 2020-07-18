@@ -21,6 +21,7 @@ import { customComponents as checkboxStyles } from '../../docs/styles/checkbox';
 import { customComponents as radioStyles } from '../../docs/styles/radio';
 import { customComponents as gutterStyles } from '../../docs/styles/gutter';
 import { customComponents as infoStyles } from '../../docs/styles/info';
+import * as navigationMenuStyles from '../../docs/styles/navigationMenu';
 
 export default [
   {
@@ -140,6 +141,12 @@ export default [
         label: 'Info',
         total: infoStyles.length,
         to: '/styles/info/',
+      },
+      {
+        key: 'navigation-menu',
+        label: 'Navigation Menu',
+        total: Object.keys(navigationMenuStyles).length,
+        to: '/styles/navigation-menu/',
       },
       {
         key: 'nested-menu',
