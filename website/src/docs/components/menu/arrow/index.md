@@ -2,4 +2,4 @@
 path: 'components/menu/arrow'
 ---
 
-`embed:components/menu/arrow/ArrowMenuDemo.js`
+`embed:components/menu/arrow/ArrowMenuDemo.tsx`

@@ -1,7 +1,7 @@
 import React from 'react';
 import Menu from '@mui-treasury/components/menu/nested';
 
-const NestedMenuDemo = () => {
+export const NestedMenuDemo = () => {
   return (
     <div>
       <Menu menus={getMenus()} />
@@ -9,21 +9,34 @@ const NestedMenuDemo = () => {
   );
 };
 // hide-start
-NestedMenuDemo.metadata = {
-  title: 'Nested',
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
+
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'Nested'}
+    description={''}
+    creators={[require('constants/creators').siriwatknp]}
+  >
+    <NestedMenuDemo />
+  </Showcase>
+)
+const metadata: IMetadata = {
   path: 'component/menu/nested',
-  renderedWithoutIframe: false,
-  creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
+  colSpan: 4,
   createdAt: 'Sat Feb 29 2020',
-  stylesUrl: '/styles/nested-menu',
-  frameProps: {}, // props that applied to Box in grid view
-  size: 'medium', // can be 'large' | 'huge' for grid size
-  files: [
-    { pkg: 'mui-components', path: 'menu/nested/NestedMenu.js' },
-    { pkg: 'mui-components', path: 'menu/nested/nestedMenu.styles.js' },
-  ],
+  files: [],
 };
+// @ts-ignore
+NestedMenuDemo.Showcase = AttachedShowcase
+// @ts-ignore
+NestedMenuDemo.metadata = metadata
 // hide-end
+
 const getMenus = () => [
   {
     key: 'intro',
@@ -155,5 +168,3 @@ const getMenus = () => [
     ],
   },
 ];
-
-export default NestedMenuDemo;

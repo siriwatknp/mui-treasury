@@ -12,7 +12,6 @@ import { customComponents as rips } from '../../docs/components/rip';
 import { customComponents as slides } from '../../docs/components/slide';
 import { customComponents as carousels } from '../../docs/components/carousel';
 import { customComponents as charts } from '../../docs/components/chart';
-import { customComponents as menus } from '../../docs/components/menu';
 import { customComponents as buttons } from '../../docs/components/button';
 import { customComponents as sidebarItems } from '../../docs/components/sidebarItem';
 
@@ -170,7 +169,7 @@ export default [
       {
         key: 'menu',
         label: 'Menu',
-        total: menus.length,
+        total: 4,
         to: '/components/menu/',
       },
     ],
