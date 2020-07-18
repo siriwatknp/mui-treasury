@@ -1,4 +1,5 @@
 import React from 'react';
+import Box from '@material-ui/core/Box';
 import { orange } from '@material-ui/core/colors';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { NavMenu, NavItem } from '@mui-treasury/components/menu/navigation';
@@ -13,33 +14,32 @@ const theme = createMuiTheme({
       main: orange['700'],
     },
   },
-  typography: {
-    fontFamily: "'Poppins', sans-serif",
-  },
 });
 
 export const LineNavigationMenuStyle = React.memo(
   function LineNavigationMenu() {
     // <FontProvider /> & <Font /> is only for showcasing
     return (
-      <ThemeProvider theme={theme}>
-        <FontProvider fonts={[{ font: 'Poppins' }]}>
-          <NavMenu useStyles={useLineNavigationMenuStyles}>
-            <NavItem active>
-              <Font>Platform</Font> <KeyboardArrowDown />
-            </NavItem>
-            <NavItem>
-              <Font>Business cases</Font> <KeyboardArrowDown />
-            </NavItem>
-            <NavItem>
-              <Font>Developers</Font>
-            </NavItem>
-            <NavItem>
-              <Font>Security</Font>
-            </NavItem>
-          </NavMenu>
-        </FontProvider>
-      </ThemeProvider>
+      <Box height={48} display={'flex'}>
+        <ThemeProvider theme={theme}>
+          <FontProvider fonts={[{ font: 'Poppins' }]}>
+            <NavMenu useStyles={useLineNavigationMenuStyles}>
+              <NavItem active>
+                <Font>Platform</Font> <KeyboardArrowDown />
+              </NavItem>
+              <NavItem>
+                <Font>Business cases</Font> <KeyboardArrowDown />
+              </NavItem>
+              <NavItem>
+                <Font>Developers</Font>
+              </NavItem>
+              <NavItem>
+                <Font>Security</Font>
+              </NavItem>
+            </NavMenu>
+          </FontProvider>
+        </ThemeProvider>
+      </Box>
     );
   }
 );
