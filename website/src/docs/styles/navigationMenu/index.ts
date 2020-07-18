@@ -6,3 +6,5 @@ export * from './zoom/ZoomNavigationMenuStyle'
 
 export * from './point/PointNavigationMenuStyle'
 
+export * from './bulb/BulbNavigationMenuStyle'
+

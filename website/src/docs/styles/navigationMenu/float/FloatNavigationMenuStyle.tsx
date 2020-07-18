@@ -9,7 +9,7 @@ export const FloatNavigationMenuStyle = React.memo(
       <>
         <NavMenu gutter={1} useStyles={useFloatNavigationMenuStyles}>
           <NavItem active>Systems</NavItem>
-          <NavItem as={Link}>Illustrations</NavItem>
+          <NavItem as={Link} to={'/components/menu/'}>Illustrations</NavItem>
           <NavItem>Templates</NavItem>
           <NavItem>Mockups</NavItem>
         </NavMenu>

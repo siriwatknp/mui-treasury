@@ -64,7 +64,7 @@ const AttachedShowcase = (props: ShowcaseProps) => (
 );
 const metadata: IMetadata = {
   path: 'styles/navigationMenu/point',
-  colSpan: 4,
+  colSpan: 5,
   createdAt: 'Sat Jul 18 2020',
   files: [
     {
