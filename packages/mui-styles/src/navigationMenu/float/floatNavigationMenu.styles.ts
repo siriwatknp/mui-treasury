@@ -10,6 +10,8 @@ const floatNavigationMenuStyles = ({ palette, spacing }: Theme) => createStyles(
   },
   item: ({ gutter }: FloatNavigationMenuStyleProps) => ({
     flexShrink: 0,
+    display: 'flex',
+    alignItems: 'center',
     color: palette.text.secondary,
     borderRadius: 4,
     padding: spacing(1, 2),
