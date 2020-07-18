@@ -4,3 +4,5 @@ export * from './line/LineNavigationMenuStyle'
 
 export * from './zoom/ZoomNavigationMenuStyle'
 
+export * from './point/PointNavigationMenuStyle'
+

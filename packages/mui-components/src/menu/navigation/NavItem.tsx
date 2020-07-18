@@ -4,8 +4,8 @@ import { useNavItemStyles } from './StylesContext';
 
 type AnyTag = 'a' | React.ComponentType<any>;
 
-type PropsOf<Tag> = Tag extends 'a'
-  ? JSX.IntrinsicElements['a'] & { active?: boolean }
+type PropsOf<Tag> = Tag extends keyof JSX.IntrinsicElements
+  ? JSX.IntrinsicElements[Tag] & { active?: boolean }
   : Tag extends React.ComponentType<infer Props>
   ? Props & JSX.IntrinsicAttributes
   : any;
