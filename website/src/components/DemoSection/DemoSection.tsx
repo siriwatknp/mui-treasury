@@ -1,7 +1,13 @@
 import React from 'react';
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { Link } from 'gatsby';
+import {
+  ThemeProvider,
+  createMuiTheme,
+  withStyles,
+} from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import CodeRounded from '@material-ui/icons/CodeRounded';
+import ColorLens from '@material-ui/icons/ColorLens';
 
 import { GridContainer, GridItem } from '../../components/ShowcaseGrid';
 // import { ShowcaseVariant } from '../../logics/useShowcaseVariant';
@@ -16,12 +22,21 @@ import {
   getStatusByDate,
   getResponsiveColSpan,
 } from '../../utils/functions2';
+import Tooltip from '@material-ui/core/Tooltip';
 
 interface IShowcase {
   name: string;
   Showcase: React.FC<Omit<ShowcaseProps, 'title' | 'creators'>>;
   metadata: IMetadata;
 }
+
+const StyledTooltip = withStyles({
+  tooltip: {
+    marginTop: '0.2rem',
+    backgroundColor: 'rgba(0,0,0,0.72)',
+    color: '#fff',
+  },
+})(Tooltip);
 
 const baseTheme = createMuiTheme();
 
@@ -31,8 +46,14 @@ const DemoSection = ({ components, setComponent }) => {
     <ThemeProvider theme={baseTheme}>
       <GridContainer>
         {orderIndex(components).map((Component: IShowcase) => {
-          const { colSpan = 4, rowSpan = 3, createdAt, path, frameProps } =
-            Component?.metadata ?? {};
+          const {
+            colSpan = 4,
+            rowSpan = 3,
+            createdAt,
+            path,
+            frameProps,
+            stylesUrl,
+          } = Component?.metadata ?? {};
           const responsiveColSpan = getResponsiveColSpan(colSpan);
           return (
             <GridItem key={path} colSpan={responsiveColSpan} rowSpan={rowSpan}>
@@ -42,14 +63,30 @@ const DemoSection = ({ components, setComponent }) => {
                 status={getStatusByDate(createdAt)}
                 actions={
                   <Row position={'middle-right'}>
+                    {stylesUrl && (
+                      <Item>
+                        <StyledTooltip title="View all styles">
+                          <IconButton
+                            component={Link}
+                            to={stylesUrl}
+                            classes={iconBtnStyles}
+                            data-testid="view-all-styles"
+                          >
+                            <ColorLens />
+                          </IconButton>
+                        </StyledTooltip>
+                      </Item>
+                    )}
                     <Item>
-                      <IconButton
-                        classes={iconBtnStyles}
-                        onClick={() => setComponent(Component)}
-                        data-testid="view-code-button"
-                      >
-                        <CodeRounded />
-                      </IconButton>
+                      <StyledTooltip title="View code">
+                        <IconButton
+                          classes={iconBtnStyles}
+                          onClick={() => setComponent(Component)}
+                          data-testid="view-code-button"
+                        >
+                          <CodeRounded />
+                        </IconButton>
+                      </StyledTooltip>
                     </Item>
                   </Row>
                 }

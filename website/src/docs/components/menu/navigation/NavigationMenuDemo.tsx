@@ -42,6 +42,7 @@ const metadata: IMetadata = {
   frameProps: {
     bgcolor: 'transparent',
   },
+  stylesUrl: '/styles/navigation-menu/',
   files: [],
 };
 // @ts-ignore
