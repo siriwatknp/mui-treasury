@@ -24,14 +24,6 @@ const StyledStatusChip = withStyles({
   },
 })(StatusChip);
 
-// const StyledTooltip = withStyles({
-//   tooltip: {
-//     marginTop: '0.2rem',
-//     backgroundColor: 'rgba(0,0,0,0.72)',
-//     color: '#fff',
-//   },
-// })(Tooltip);
-
 const useCardHeaderStyles = makeStyles(() => ({
   root: { paddingBottom: 0 },
   title: {
@@ -110,7 +102,7 @@ const BasicProfile = ({ creators, actions, ...props }: BasicProfileProps) => {
           ))}
         </AvatarGroup>
       </Item>
-      <Item position={'middle'} pl={{ sm: 0.5 }}>
+      <Item position={'middle'} pl={{ sm: 0, lg: 0 }}>
         <Typography className={styles.overline}>
           {creators.length > 1 ? 'CREATORS' : 'CREATOR'}
         </Typography>
@@ -187,6 +179,7 @@ export type IMetadata = {
   frameProps?: BoxProps;
   createdAt?: string;
   files?: Array<{ pkg: 'mui-styles' | 'mui-components'; path: string }>;
+  stylesUrl?: string;
 };
 
 export type ShowcaseProps = {

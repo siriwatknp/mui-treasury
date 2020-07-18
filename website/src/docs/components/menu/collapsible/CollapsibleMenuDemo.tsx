@@ -6,7 +6,7 @@ import SwitchToggle from '@mui-treasury/components/toggle/switch';
 import RowToggle from '@mui-treasury/components/toggle/row';
 import Menu from '@mui-treasury/components/menu/collapsible';
 
-const CollapsibleMenuDemo = () => {
+export const CollapsibleMenuDemo = () => {
   return (
     <div>
       <Menu
@@ -54,20 +54,30 @@ const CollapsibleMenuDemo = () => {
   );
 };
 // hide-start
-CollapsibleMenuDemo.metadata = {
-  title: 'Collapsible',
-  path: 'component/menu/collapsible',
-  renderedWithoutIframe: false,
-  creators: [require('constants/creators').siriwatknp], // add yourself to creators.js first
-  createdAt: 'Sat Feb 29 2020',
-  stylesUrl: '/styles/collapsible-menu',
-  frameProps: {}, // props that applied to Box in grid view
-  size: 'medium', // can be 'large' | 'huge' for grid size
-  files: [
-    { pkg: 'mui-components', path: 'menu/collapsible/CollapsibleMenu.js' },
-    { pkg: 'mui-components', path: 'menu/collapsible/collapsibleMenu.styles.js' },
-  ]
-};
-// hide-end
+// eslint-disable-next-line import/first
+import Showcase, {
+  IMetadata,
+  ShowcaseProps,
+} from '../../../../components/Showcase';
 
-export default CollapsibleMenuDemo;
+const AttachedShowcase = (props: ShowcaseProps) => (
+  <Showcase
+    {...props}
+    title={'Collapsible'}
+    description={''}
+    creators={[require('constants/creators').siriwatknp]}
+  >
+    <CollapsibleMenuDemo />
+  </Showcase>
+)
+const metadata: IMetadata = {
+  path: 'component/menu/collapsible',
+  colSpan: 4,
+  createdAt: 'Sat Feb 29 2020',
+  files: [],
+};
+// @ts-ignore
+CollapsibleMenuDemo.Showcase = AttachedShowcase
+// @ts-ignore
+CollapsibleMenuDemo.metadata = metadata
+// hide-end

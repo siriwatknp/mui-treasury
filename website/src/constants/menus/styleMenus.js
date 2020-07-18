@@ -142,6 +142,12 @@ export default [
         to: '/styles/info/',
       },
       {
+        key: 'navigation-menu',
+        label: 'Navigation Menu',
+        total: 2,
+        to: '/styles/navigation-menu/',
+      },
+      {
         key: 'nested-menu',
         label: 'Nested Menu',
         total: nestedMenuStyles.length,
