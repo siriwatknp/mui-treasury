@@ -1,18 +1,31 @@
-import React from 'react'
+import React from 'react';
 import cx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import { useNavItemStyles } from './StylesContext';
 
-const useStyles = makeStyles(({ palette }) => ({
-  item: {
+type AnyTag = 'a' | React.ComponentType<any>;
 
-  }
-}), { name: 'NavItem' })
+type PropsOf<Tag> = Tag extends 'a'
+  ? JSX.IntrinsicElements['a'] & { active?: boolean }
+  : Tag extends React.ComponentType<infer Props>
+  ? Props & JSX.IntrinsicAttributes
+  : any;
 
-function NavItem() {
-  const classes = useStyles()
+function NavItem<T extends AnyTag = 'a'>({
+  as: Component = 'a',
+  active,
+  children,
+  ...props
+}: React.PropsWithChildren<{ as?: T }> & PropsOf<T>) {
+  const classes = useNavItemStyles();
   return (
-    <a className={classes.item}>nav item</a>
-  )
+    <Component
+      className={cx(classes.item, active && classes.active, props.className)}
+      {...Component !== 'a' && { activeClassName: classes.active }}
+      {...props}
+    >
+      {children}
+    </Component>
+  );
 }
 
-export default NavItem
+export default NavItem;

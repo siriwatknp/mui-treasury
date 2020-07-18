@@ -1,15 +1,22 @@
 import React from 'react';
-import { NavItem } from '@mui-treasury/components/menu/navigation';
+import { Link } from 'gatsby';
+import { NavItem, NavMenu } from '@mui-treasury/components/menu/navigation';
 
-export const NavigationMenuDemo = React.memo(
-  function NavigationMenu() {
-    return (
-      <>
-        <NavItem>Hello</NavItem>
-      </>
-    );
-  }
-);
+export const NavigationMenuDemo = React.memo(function NavigationMenu() {
+  return (
+    <>
+      <NavMenu gutter={'8px'}>
+        <NavItem as={Link} to={'/components/menu/'}>
+          Products
+        </NavItem>
+        <NavItem>Services</NavItem>
+        <NavItem>Blog</NavItem>
+        <NavItem active>Help</NavItem>
+        <NavItem>Contact Us</NavItem>
+      </NavMenu>
+    </>
+  );
+});
 // hide-start
 // eslint-disable-next-line import/first
 import Showcase, {
@@ -26,16 +33,19 @@ const AttachedShowcase = (props: ShowcaseProps) => (
   >
     <NavigationMenuDemo />
   </Showcase>
-)
+);
 const metadata: IMetadata = {
   path: 'components/menu/navigation',
   colSpan: 6,
   rowSpan: 2,
   createdAt: 'Sat Jul 18 2020',
+  frameProps: {
+    bgcolor: 'transparent',
+  },
   files: [],
 };
 // @ts-ignore
-NavigationMenuDemo.Showcase = AttachedShowcase
+NavigationMenuDemo.Showcase = AttachedShowcase;
 // @ts-ignore
-NavigationMenuDemo.metadata = metadata
+NavigationMenuDemo.metadata = metadata;
 // hide-end

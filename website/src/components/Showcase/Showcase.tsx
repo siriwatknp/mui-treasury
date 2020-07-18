@@ -110,7 +110,7 @@ const BasicProfile = ({ creators, actions, ...props }: BasicProfileProps) => {
           ))}
         </AvatarGroup>
       </Item>
-      <Item position={'middle'} pl={{ sm: 0.5 }}>
+      <Item position={'middle'} pl={{ sm: 0, lg: 0 }}>
         <Typography className={styles.overline}>
           {creators.length > 1 ? 'CREATORS' : 'CREATOR'}
         </Typography>
