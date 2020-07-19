@@ -32,7 +32,7 @@ const lineNavigationMenuStyles = ({ spacing, palette }: Theme) => createStyles({
       transform: 'scale(0, 1)',
       transition: '0.2s ease-out',
       opacity: 0,
-      backgroundColor: palette.primary.main
+      backgroundColor: palette.primary.light
     },
     '&:hover': {
       color: palette.primary.main,
@@ -51,6 +51,7 @@ const lineNavigationMenuStyles = ({ spacing, palette }: Theme) => createStyles({
       '&:after': {
         opacity: 1,
         transform: 'scale(1, 1)',
+        backgroundColor: palette.primary.main
       }
     },
   },

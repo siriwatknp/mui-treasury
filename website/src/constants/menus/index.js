@@ -15,7 +15,6 @@ export const NAV_MENUS = [
   { key: 'components', label: 'Components', to: '/components/' },
   { key: 'styles', label: 'Styles', to: '/styles/' },
   { key: 'layout', label: 'Layout', to: '/layout/' },
-  { key: 'form', label: 'Form', disabled: true },
   {
     key: 'theme',
     label: 'Theme',

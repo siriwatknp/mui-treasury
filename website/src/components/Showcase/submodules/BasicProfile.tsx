@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { BoxProps } from '@material-ui/core/Box';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -27,7 +27,7 @@ const useBasicProfileStyles = makeStyles(({ palette }) => ({
   name: {
     fontSize: 14,
     fontWeight: 500,
-    color: '#495869',
+    color: palette.type === 'dark' ? palette.text.secondary : '#495869',
   },
 }));
 
@@ -56,7 +56,12 @@ const BasicProfile = ({ creators, actions, ...props }: BasicProfileProps) => {
           {creators.map((c, i) => (
             <React.Fragment key={c.name}>
               {c.link ? (
-                <a href={c.link} target="_blank" rel="noopener noreferrer">
+                <a
+                  className={styles.name}
+                  href={c.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {c.name}
                 </a>
               ) : (
@@ -72,4 +77,4 @@ const BasicProfile = ({ creators, actions, ...props }: BasicProfileProps) => {
   );
 };
 
-export default BasicProfile
+export default BasicProfile;

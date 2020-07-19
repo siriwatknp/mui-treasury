@@ -191,7 +191,7 @@ function withDarkTheme() {
     frameProps = {},
     ...props
   }: React.PropsWithChildren<
-    { theme: ThemeOptions; hasDarkTheme?: boolean } & ShowcaseProps
+    { theme?: ThemeOptions; hasDarkTheme?: boolean } & ShowcaseProps
   >) {
     const [isDark, setIsDark] = useState(false);
     const iconBtnStyles = useSizedIconButtonStyles({ padding: 8 });

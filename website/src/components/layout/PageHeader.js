@@ -6,14 +6,15 @@ import Image from 'gatsby-image';
 import GitHubButton from 'react-github-btn';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-import HorzMenuList from '@mui-treasury/components/menuList/HorzMenuList';
 import { NAV_MENUS } from 'constants/menus';
 import { useScreen } from '@mui-treasury/layout';
+import { NavMenu, NavItem } from '@mui-treasury/components/menu/navigation';
+import { useLineNavigationMenuStyles } from '@mui-treasury/styles/navigationMenu/line';
 
 const useStyles = makeStyles(() => ({
   nav: {
+    height: '100%',
     minWidth: 0,
-    overflow: 'auto',
   },
   navOffset: {
     marginLeft: -12,
@@ -65,12 +66,22 @@ const PageHeader = () => {
             >
               <Image fixed={logo.childImageSharp.fixed} />
             </Box>
-            <HorzMenuList
+            <NavMenu
               className={cx(styles.nav, !shouldRenderLogo && styles.navOffset)}
-              Link={Link}
-              selectedKey={key => firstPath === key}
-              menus={NAV_MENUS}
-            />
+              useStyles={useLineNavigationMenuStyles}
+            >
+              {NAV_MENUS.map(({ label, to, key, external, target }) => (
+                external ? (
+                  <NavItem key={key} href={to} target={target} rel={'noopener noreferer'}>
+                    {label}
+                  </NavItem>
+                ) : (
+                  <NavItem key={key} to={to} as={Link} active={key === firstPath}>
+                    {label}
+                  </NavItem>
+                )
+              ))}
+            </NavMenu>
             <Box ml={'auto'} mr={2} />
             <Box lineHeight={0}>
               <GitHubButton
