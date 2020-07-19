@@ -1,19 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import cx from 'clsx';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
-import AvatarGroup from '@material-ui/lab/AvatarGroup';
+import {
+  makeStyles,
+  withStyles,
+  ThemeProvider,
+  createMuiTheme,
+  ThemeOptions,
+} from '@material-ui/core/styles';
 import Box, { BoxProps } from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-// import IconButton from '@material-ui/core/IconButton';
+import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
+import BasicProfile, { BasicProfileProps } from './submodules/BasicProfile';
+import CardHeader, { CardHeaderProps } from './submodules/CardHeader';
 
 // Icons
-// import CallMade from '@material-ui/icons/CallMade';
+import Brightness4 from '@material-ui/icons/Brightness4';
+import WbSunny from '@material-ui/icons/WbSunny';
 
 // @mui-treasury
-// import { useSizedIconButtonStyles } from '@mui-treasury/styles/iconButton/sized';
-import { Column, ColumnToRow, Item, Row } from '@mui-treasury/components/flex';
+import { useSizedIconButtonStyles } from '@mui-treasury/styles/iconButton/sized';
+import { Column, ColumnToRow, Item } from '@mui-treasury/components/flex';
 import StatusChip from '../atoms/StatusChip';
 
 const StyledStatusChip = withStyles({
@@ -24,116 +30,26 @@ const StyledStatusChip = withStyles({
   },
 })(StatusChip);
 
-const useCardHeaderStyles = makeStyles(() => ({
-  root: { paddingBottom: 0 },
-  title: {
-    fontSize: '1.25rem',
-    color: '#122740',
-    fontWeight: 'bold',
+const StyledTooltip = withStyles({
+  tooltip: {
+    marginTop: '0.2rem',
+    backgroundColor: 'rgba(0,0,0,0.72)',
+    color: '#fff',
   },
-  subheader: {
-    fontSize: '0.875rem',
-    color: '#495869',
-  },
-}));
+})(Tooltip);
 
-type CardHeaderProps = {
-  title: React.ReactNode;
-  description?: React.ReactNode;
-} & BoxProps;
-
-const CardHeader = ({ title, description, ...props }: CardHeaderProps) => {
-  const styles = useCardHeaderStyles();
-  // const iconBtnStyles = useSizedIconButtonStyles({ padding: 8, childSize: 20 });
-  return (
-    <Row {...props}>
-      <Item position={'middle'}>
-        <Typography className={styles.title}>{title}</Typography>
-        <Typography className={styles.subheader}>{description}</Typography>
-      </Item>
-      <Item position={'right'} mr={-0.5}>
-        {/*<StyledTooltip title={'See details'}>*/}
-        {/*  <IconButton classes={iconBtnStyles}>*/}
-        {/*    <CallMade />*/}
-        {/*  </IconButton>*/}
-        {/*</StyledTooltip>*/}
-      </Item>
-    </Row>
-  );
-};
-
-const useBasicProfileStyles = makeStyles(({ palette }) => ({
-  avatar: {
-    borderRadius: 8,
-    backgroundColor: '#495869',
-  },
-  overline: {
-    fontSize: 10,
-    textTransform: 'uppercase',
-    letterSpacing: 1,
-    color: '#8D9CAD',
-  },
-  name: {
-    fontSize: 14,
-    fontWeight: 500,
-    color: '#495869',
-  },
-}));
-
-type BasicProfileProps = {
-  creators: Array<{ face: string; name: string; link: string }>;
-  actions?: React.ReactNode;
-} & BoxProps;
-
-const BasicProfile = ({ creators, actions, ...props }: BasicProfileProps) => {
-  const styles = useBasicProfileStyles();
-  return (
-    <Row {...props}>
-      <Item position={'middle'}>
-        <AvatarGroup>
-          {creators.map(c => (
-            <Tooltip key={c.name} title={c.name}>
-              <Avatar
-                {...(typeof c.face === 'string'
-                  ? { alt: c.name, src: c.face }
-                  : { children: c.name.substr(0, 1) })}
-              />
-            </Tooltip>
-          ))}
-        </AvatarGroup>
-      </Item>
-      <Item position={'middle'} pl={{ sm: 0, lg: 0 }}>
-        <Typography className={styles.overline}>
-          {creators.length > 1 ? 'CREATORS' : 'CREATOR'}
-        </Typography>
-        <Typography className={styles.name}>
-          {creators.map((c, i) => (
-            <React.Fragment key={c.name}>
-              {c.link ? (
-                <a href={c.link} target="_blank" rel="noopener noreferrer">
-                  {c.name}
-                </a>
-              ) : (
-                c.name
-              )}
-              {i !== creators.length - 1 && ', '}
-            </React.Fragment>
-          ))}
-        </Typography>
-      </Item>
-      {actions}
-    </Row>
-  );
-};
-
-const useStyles = makeStyles(({ breakpoints }) => ({
+const useStyles = makeStyles(({ breakpoints, palette }) => ({
   card: {
     borderBottomWidth: 2,
     borderBottomStyle: 'solid',
-    borderColor: '#E7EDF3',
-    transition: '0.4s',
+    borderColor:
+      palette.type === 'dark' ? palette.background.default : '#E7EDF3',
+    backgroundColor: palette.type === 'dark' && palette.background.default,
+    transition: '0.4s, background-color 0s',
     [breakpoints.up('sm')]: {
-      border: '2px solid #E7EDF3',
+      border: '2px solid',
+      borderColor:
+        palette.type === 'dark' ? palette.background.default : '#E7EDF3',
       borderRadius: 12,
       '&:hover': {
         borderColor: '#5B9FED',
@@ -186,6 +102,7 @@ export type ShowcaseProps = {
   variant?: 'row' | 'column';
   frameProps?: BoxProps;
   status?: string;
+  headerAction?: React.ReactNode;
 } & Pick<CardHeaderProps, 'title' | 'description'> &
   Pick<BasicProfileProps, 'creators' | 'actions'>;
 
@@ -198,6 +115,7 @@ const Showcase = ({
   children,
   frameProps = {},
   status,
+  headerAction,
 }: React.PropsWithChildren<ShowcaseProps>) => {
   const styles = useStyles();
   const commonProps = {
@@ -205,7 +123,6 @@ const Showcase = ({
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
-    bgcolor: '#F4F7FA',
     borderRadius: 8,
     p: 2,
     ...(status && { pt: 5 }),
@@ -213,46 +130,49 @@ const Showcase = ({
     overflow: 'auto',
     className: cx(frameProps.className, styles.frame),
   };
-  if (variant === 'row') {
-    return (
-      <ColumnToRow
-        className={styles.card}
-        rowStyle={{ alignItems: 'unset' }}
-        at={'sm'}
-        gap={{ xs: 1, sm: 1.5, lg: 2 }}
-      >
-        <Column grow minWidth={0}>
-          <CardHeader
-            className={styles.hiddenAboveXs}
-            title={title}
-            description={description}
-          />
-          <Item grow pt={{ xs: 1, sm: 0 }}>
-            <Box {...commonProps} {...frameProps}>
-              {status === 'new' && <StyledStatusChip />}
-              {children}
-            </Box>
-          </Item>
-        </Column>
-        <Column>
-          <CardHeader
-            className={styles.hiddenXs}
-            title={title}
-            description={description}
-          />
-          <BasicProfile
-            pt={0}
-            position={'bottom'}
-            creators={creators}
-            actions={actions}
-          />
-        </Column>
-      </ColumnToRow>
-    );
-  }
-  return (
+  return variant === 'row' ? (
+    <ColumnToRow
+      className={styles.card}
+      rowStyle={{ alignItems: 'unset' }}
+      at={'sm'}
+      gap={{ xs: 1, sm: 1.5, lg: 2 }}
+    >
+      <Column grow minWidth={0}>
+        <CardHeader
+          className={styles.hiddenAboveXs}
+          title={title}
+          description={description}
+          action={headerAction}
+        />
+        <Item grow pt={{ xs: 1, sm: 0 }}>
+          <Box {...commonProps} {...frameProps}>
+            {status === 'new' && <StyledStatusChip />}
+            {children}
+          </Box>
+        </Item>
+      </Column>
+      <Column>
+        <CardHeader
+          className={styles.hiddenXs}
+          title={title}
+          description={description}
+          action={headerAction}
+        />
+        <BasicProfile
+          pt={0}
+          position={'bottom'}
+          creators={creators}
+          actions={actions}
+        />
+      </Column>
+    </ColumnToRow>
+  ) : (
     <Column className={styles.card} gap={{ xs: 1, sm: 1.5, lg: 2 }}>
-      <CardHeader title={title} description={description} />
+      <CardHeader
+        title={title}
+        description={description}
+        action={headerAction}
+      />
       <Item grow>
         <Box {...commonProps} {...frameProps}>
           {status === 'new' && <StyledStatusChip />}
@@ -264,4 +184,44 @@ const Showcase = ({
   );
 };
 
-export default Showcase;
+function withDarkTheme() {
+  function EnhancedShowcase({
+    theme = {},
+    hasDarkTheme,
+    frameProps = {},
+    ...props
+  }: React.PropsWithChildren<
+    { theme: ThemeOptions; hasDarkTheme?: boolean } & ShowcaseProps
+  >) {
+    const [isDark, setIsDark] = useState(false);
+    const iconBtnStyles = useSizedIconButtonStyles({ padding: 8 });
+
+    const action = hasDarkTheme && (
+      <StyledTooltip
+        title={isDark ? 'Switch to Light mode' : 'Switch to Dark mode'}
+      >
+        <IconButton classes={iconBtnStyles} onClick={() => setIsDark(!isDark)}>
+          {isDark ? <WbSunny /> : <Brightness4 />}
+        </IconButton>
+      </StyledTooltip>
+    );
+    if (!theme.palette) theme.palette = {};
+    theme.palette.type = isDark ? 'dark' : 'light';
+    return (
+      <ThemeProvider theme={createMuiTheme(theme)}>
+        <Showcase
+          {...props}
+          frameProps={{
+            ...frameProps,
+            bgcolor: isDark ? '#424242' : frameProps.bgcolor || '#F4F7FA',
+          }}
+          headerAction={action}
+        />
+      </ThemeProvider>
+    );
+  }
+
+  return EnhancedShowcase;
+}
+
+export default withDarkTheme();

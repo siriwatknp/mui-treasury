@@ -144,7 +144,7 @@ export default [
       {
         key: 'navigation-menu',
         label: 'Navigation Menu',
-        total: 2,
+        total: 5,
         to: '/styles/navigation-menu/',
       },
       {
