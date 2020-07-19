@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import ChevronRight from '@material-ui/icons/ChevronRight';
 import {
   CategoryProvider,
   CategoryTitle,
