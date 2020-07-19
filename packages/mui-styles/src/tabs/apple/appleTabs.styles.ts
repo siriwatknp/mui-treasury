@@ -1,6 +1,6 @@
-import { Theme } from '@material-ui/core';
+import { createStyles, Theme } from '@material-ui/core/styles';
 
-export const tabsStyles = ({ palette, breakpoints }) => ({
+export const tabsStyles = ({ palette, breakpoints }: Theme) => createStyles({
   root: {
     backgroundColor: palette.type === 'light' ? '#eee' : palette.divider,
     borderRadius: 10,
@@ -37,7 +37,7 @@ export const tabsStyles = ({ palette, breakpoints }) => ({
   }
 });
 
-export const tabItemStyles = ({ palette, breakpoints }: Theme) => ({
+export const tabItemStyles = ({ palette, breakpoints }: Theme) => createStyles({
   root: {
     '&:hover': {
       opacity: 1
