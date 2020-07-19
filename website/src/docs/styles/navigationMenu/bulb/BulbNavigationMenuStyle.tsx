@@ -46,6 +46,7 @@ const AttachedShowcase = (props: ShowcaseProps) => (
     description={''}
     creators={[require('constants/creators').siriwatknp]}
     frameProps={{ bgcolor: 'common.white' }}
+    hasDarkTheme
     theme={{
       palette: {
         primary: {

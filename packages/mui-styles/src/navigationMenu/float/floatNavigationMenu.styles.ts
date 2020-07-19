@@ -20,7 +20,7 @@ const floatNavigationMenuStyles = ({ palette, spacing }: Theme) => createStyles(
     transition: '0.2s ease-out',
     '&:hover': {
       transform: 'translateY(-4px)',
-      color: palette.primary.main,
+      color: palette.type === 'dark' ? '#fff' : palette.primary.main,
     },
     '&:not(:first-child)': {
       marginLeft: typeof gutter === 'number' ? spacing(gutter) : gutter,
@@ -28,7 +28,7 @@ const floatNavigationMenuStyles = ({ palette, spacing }: Theme) => createStyles(
   }),
   itemActive: {
     '&$item': {
-      color: palette.primary.main,
+      color: palette.type === 'dark' ? '#fff' : palette.primary.main,
     },
   },
 })

@@ -42,6 +42,7 @@ const AttachedShowcase = (props: ShowcaseProps) => (
     title={'Zoom'}
     description={''}
     creators={[require('constants/creators').siriwatknp]}
+    hasDarkTheme
   >
     <ZoomNavigationMenuStyle />
   </Showcase>
