@@ -154,6 +154,12 @@ export default [
         to: '/styles/nested-menu/',
       },
       {
+        key: 'social-link',
+        label: 'Social Link',
+        total: 5,
+        to: '/styles/social-link',
+      },
+      {
         key: 'text-info-content',
         label: 'TextInfo Content',
         total: textInfoContentStyles.length,
