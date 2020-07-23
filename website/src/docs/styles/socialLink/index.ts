@@ -5,3 +5,5 @@ export * from './moon/MoonSocialLinkStyle'
 
 export * from './ball/BallSocialLinkStyle'
 
+export * from './poof/PoofSocialLinkStyle'
+

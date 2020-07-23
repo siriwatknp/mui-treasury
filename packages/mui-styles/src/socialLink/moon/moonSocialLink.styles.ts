@@ -13,7 +13,7 @@ const moonSocialLinkStyles = ({ palette }: Theme) => createStyles({
     borderRadius: 40,
     border: '1px solid',
     borderColor: palette.divider,
-    color: palette.type === 'dark' ? palette.text.hint : palette.text.secondary,
+    color: palette.text.secondary,
     transition: '0.3s ease-out',
     '&:not(:first-of-type)': {
       marginLeft: '0.5rem',
