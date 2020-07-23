@@ -7,5 +7,11 @@ export type SocialIconProps = {
 
 export default function SocialIcon({ brand, ...props }: SocialIconProps) {
   const Icon = React.useMemo(() => Icons[brand], [brand])
+  if (!Icon) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn(`brand: '${brand}' is invalid for SocialIcon`)
+    }
+    return null
+  }
   return <Icon {...props} />
 }

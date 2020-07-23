@@ -13,15 +13,15 @@ const moonSocialLinkStyles = ({ palette }: Theme) => createStyles({
     borderRadius: 40,
     border: '1px solid',
     borderColor: palette.divider,
-    color: palette.type === 'dark' ? palette.text.hint : palette.primary.light,
+    color: palette.type === 'dark' ? palette.text.hint : palette.text.secondary,
     transition: '0.3s ease-out',
     '&:not(:first-of-type)': {
       marginLeft: '0.5rem',
     },
     '&:hover, &:focus': {
       transform: 'translateY(-4px)',
-      borderColor: palette.type === 'dark' ? palette.text.secondary : palette.primary.light,
-      color: palette.type === 'dark' ? '#fff' : palette.primary.main,
+      borderColor: palette.text.secondary,
+      color: palette.type === 'dark' ? '#fff' : palette.text.primary,
     },
   },
   icon: {},

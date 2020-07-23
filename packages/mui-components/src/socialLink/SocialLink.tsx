@@ -12,7 +12,7 @@ export function SocialLink({
   brand,
   className,
   ...props
-}: BrandLinkProps) {
+}: SocialLinkProps) {
   const styles = useCtxStyles();
   return (
     <a
