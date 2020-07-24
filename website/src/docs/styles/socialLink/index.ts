@@ -7,3 +7,5 @@ export * from './ball/BallSocialLinkStyle'
 
 export * from './poof/PoofSocialLinkStyle'
 
+export * from './round/RoundSocialLinkStyle'
+
