@@ -7,9 +7,9 @@ export const MoonSocialLinkStyle = React.memo(
     return (
       <>
         <SocialProvider useStyles={useMoonSocialLinkStyles}>
-          <SocialLink brand={'Facebook'} href={'https://www.facebook.com/siriwat.kunaporn/'} />
+          <SocialLink brand={'FacebookCircle'} href={'https://www.facebook.com/siriwat.kunaporn/'} />
           <SocialLink brand={'Twitter'} href={'https://twitter.com/siriwatknp'} />
-          <SocialLink brand={'Instagram'} href={'https://www.instagram.com/siriwatknp/'} />
+          <SocialLink brand={'Instagram'} href={''} />
           <SocialLink brand={'LinkedIn'} href={'https://www.linkedin.com/in/siriwat-kunaporn-1b4095158/'} />
         </SocialProvider>
       </>
