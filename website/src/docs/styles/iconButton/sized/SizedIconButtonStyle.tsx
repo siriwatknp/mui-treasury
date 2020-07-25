@@ -5,7 +5,7 @@ import Search from '@material-ui/icons/Search';
 import Add from '@material-ui/icons/Add';
 import Delete from '@material-ui/icons/Delete';
 
-export const SizedIconButtonStyle = () => {
+export const SizedIconButtonStyle = React.memo(() => {
   const tiny = useSizedIconButtonStyles({
     color: '#6894ff',
     padding: '1rem',
@@ -30,7 +30,7 @@ export const SizedIconButtonStyle = () => {
       </IconButton>
     </div>
   );
-};
+});
 // hide-start
 // eslint-disable-next-line import/first
 import Showcase, {

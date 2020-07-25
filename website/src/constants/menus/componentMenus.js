@@ -124,6 +124,11 @@ export default [
         total: slides.length,
         to: '/components/slide/',
       },
+      {
+        key: 'social-link',
+        label: 'Social Link',
+        to: '/components/social-link/',
+      },
     ],
   },
   {
