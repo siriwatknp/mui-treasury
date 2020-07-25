@@ -6,9 +6,9 @@ export type RoundSocialLinkClassKey = keyof ReturnType<typeof roundSocialLinkSty
 
 const roundSocialLinkStyles = ({ palette }: Theme) => {
   const extraLightPrimary = Color(palette.primary.main)
-    .rotate(-12)
-    .lighten(0.6)
-    .fade(0.6)
+    .rotate(-6)
+    .lighten(0.4)
+    .fade(0.72)
     .toString();
   return createStyles({
     anchor: {

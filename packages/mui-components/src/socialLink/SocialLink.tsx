@@ -19,6 +19,9 @@ export function SocialLink({
       className={cx(styles.anchor, className)}
       target={'_blank'}
       rel={'noopener noreferrer'}
+      aria-label={`Link to ${(brand || '')
+        .replace('Circle', '')
+        .replace('Square', '')}`}
       {...props}
     >
       <SocialIcon className={styles.icon} brand={brand} />
