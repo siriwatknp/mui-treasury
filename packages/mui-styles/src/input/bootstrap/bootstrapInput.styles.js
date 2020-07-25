@@ -4,7 +4,7 @@ export default ({ palette, transitions }) => {
   const { white } = palette.common;
   const inputRadius = 4;
   const borderWidth = 1;
-  const inputPadding = '10px 12px';
+  const inputPadding = '.375rem .75rem';
   const fontFamily = [
     '-apple-system',
     'BlinkMacSystemFont',
@@ -41,6 +41,7 @@ export default ({ palette, transitions }) => {
       },
     },
     input: {
+      boxSizing: 'border-box',
       borderRadius: inputRadius,
       position: 'relative',
       backgroundColor: white,
@@ -48,15 +49,20 @@ export default ({ palette, transitions }) => {
       borderStyle: 'solid',
       borderColor,
       fontSize: 16,
+      height: 'calc(1.5em + .75rem + 2px)',
       width: 'auto',
       padding: inputPadding,
-      transition: transitions.create(['border-color', 'box-shadow']),
+      lineHeight: 1.5,
+      transition: 'border-color .15s ease-in-out,box-shadow .15s ease-in-out',
       // Use the system font instead of the default Roboto font.
       fontFamily,
       '&:focus': {
+        outline: 'none',
         borderRadius: inputRadius,
         borderColor: normalColor,
-        boxShadow: `0 0 0 0.2rem ${Color(normalColor).fade(0.75)}`,
+        boxShadow: `0 0 0 0.2rem ${Color(normalColor).fade(
+          palette.type === 'dark' ? 0.48 : 0.75
+        )}`,
       },
     },
   };

@@ -12,6 +12,7 @@ export const BootstrapEmailSubscribeStyle = React.memo(
       <>
         <EmailSubscribe
           onSubmit={email => alert(`Your email is ${email}.`)}
+          useStyles={useBootstrapEmailSubscribeStyles}
           inputClearedAfterSubmit
         >
           <EmailTextInput placeholder="Enter your email" />
@@ -34,6 +35,7 @@ const AttachedShowcase = (props: ShowcaseProps) => (
     title={'Bootstrap'}
     description={''}
     creators={[require('constants/creators').siriwatknp]}
+    frameProps={{ bgcolor: '#fff' }}
     hasDarkTheme
   >
     <BootstrapEmailSubscribeStyle />

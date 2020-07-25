@@ -13,7 +13,7 @@ export const useDefaultStyles: (
 export default function defaultStyles({ palette, spacing }: Theme) {
   return createStyles({
     form: {
-      display: 'inline-flex',
+      display: 'flex',
       alignItems: 'center',
       borderRadius: 4,
       '&:focus-within': {
@@ -23,6 +23,7 @@ export default function defaultStyles({ palette, spacing }: Theme) {
     input: {
       backgroundColor: palette.background.paper,
       minWidth: 256,
+      flex: 1,
       alignSelf: 'stretch',
       border: '1px solid',
       borderColor: palette.action.disabled,
