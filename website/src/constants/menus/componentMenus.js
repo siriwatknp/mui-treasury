@@ -90,6 +90,11 @@ export default [
         to: '/components/chat-msg/',
       },
       {
+        key: 'email-subscribe',
+        label: 'Email Subscribe',
+        to: '/components/email-subscribe/',
+      },
+      {
         key: 'flex',
         label: 'Flex',
         to: '/components/flex/'

@@ -1,0 +1,21 @@
+---
+category: Component
+title: EmailSubscribe
+template: DocTemplate
+---
+
+import InputLabel from '@material-ui/core/InputLabel'
+import {
+  EmailSubscribe,
+  EmailTextInput,
+  SubmitButton,
+} from '@mui-treasury/components/EmailSubscribe';
+
+<SimpleShowcase>
+    <Box textAlign="left">
+        <EmailSubscribe onSubmit={email => alert(`Your email is ${email}.`)}>
+            <EmailTextInput variant="outlined" />
+            <SubmitButton>Subscribe</SubmitButton>
+        </EmailSubscribe>
+    </Box>
+</SimpleShowcase>
