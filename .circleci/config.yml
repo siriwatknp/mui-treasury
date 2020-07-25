@@ -33,6 +33,10 @@ workflows:
           wait-on: 'http://localhost:8000'
           config-file: cypress/cypress.json
           store_artifacts: true
+          filters:
+            branches:
+              only:
+                - master
   build-deploy:
     jobs:
       - release:
