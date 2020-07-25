@@ -130,6 +130,12 @@ export default [
     label: 'Custom Component',
     subMenus: [
       {
+        key: 'category-menu',
+        label: 'Category Menu',
+        total: 2,
+        to: '/styles/category-menu/',
+      },
+      {
         key: 'collapsible-menu',
         label: 'Collapsible Menu',
         total: collapsibleMenuStyles.length,

@@ -8,7 +8,8 @@ typographyTheme.overrideThemeStyles = () => {
   return {
     a: {
       color: theme.palette.primary.main,
-      textDecorationColor: `rgba(0, 122, 172, 0.5)`
+      textDecoration: 'none',
+      // textDecorationColor: `rgba(0, 122, 172, 0.5)`
     },
     'a:not[class^="Mui"]': {
       borderBottom: `1px solid ${Color(theme.palette.primary.light)
