@@ -7,3 +7,5 @@ export * from './minimal/MinimalEmailSubscribeStyle'
 
 export * from './ready/ReadyEmailSubscribeStyle'
 
+export * from './info/InfoEmailSubscribeStyle'
+
