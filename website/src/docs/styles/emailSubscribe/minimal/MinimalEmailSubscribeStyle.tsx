@@ -50,7 +50,7 @@ const AttachedShowcase = (props: ShowcaseProps) => (
 );
 const metadata: IMetadata = {
   path: 'styles/emailSubscribe/minimal',
-  colSpan: 4,
+  colSpan: 5,
   createdAt: 'Sun Jul 26 2020',
   files: [
     {

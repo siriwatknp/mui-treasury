@@ -5,3 +5,5 @@ export * from './bootstrap/BootstrapEmailSubscribeStyle'
 
 export * from './minimal/MinimalEmailSubscribeStyle'
 
+export * from './ready/ReadyEmailSubscribeStyle'
+
