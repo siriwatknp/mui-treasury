@@ -10,11 +10,11 @@ export const EmailTextInput = forwardRef<HTMLInputElement, EmailTextInputProps>(
     return (
       <input
         placeholder="Type your email"
+        name="email"
         {...props}
         className={cx(styles.input, props.className)}
         ref={ref}
         type="email"
-        name="email"
         required
       />
     );
