@@ -14,12 +14,13 @@ function NavItem<T extends AnyTag = 'a'>({
   as: Component = 'a',
   active,
   children,
+  className,
   ...props
 }: React.PropsWithChildren<{ as?: T; active?: boolean }> & PropsOf<T>) {
   const classes = useNavItemStyles();
   return (
     <Component
-      className={cx(classes.item, active && classes.active, props.className)}
+      className={cx(classes.item, active && classes.active, className)}
       {...(typeof Component !== 'string' && {
         activeClassName: classes.active,
       })}

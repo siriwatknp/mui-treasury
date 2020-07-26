@@ -30,6 +30,7 @@ const AttachedShowcase = (props: ShowcaseProps) => (
     title={'Navigation'}
     description={''}
     creators={[require('constants/creators').siriwatknp]}
+    hasDarkTheme
   >
     <NavigationMenuDemo />
   </Showcase>
