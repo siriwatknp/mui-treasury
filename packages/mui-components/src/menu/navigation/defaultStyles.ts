@@ -26,9 +26,9 @@ export default function defaultStyles({ palette, spacing }: Theme) {
       cursor: 'pointer',
       textDecoration: 'none',
       transition: '0.2s ease-out',
-      '&:hover': {
+      '&:hover, &:focus': {
         color: palette.text.primary,
-        backgroundColor: 'rgba(0,0,0,0.04)',
+        backgroundColor: palette.action.selected,
       },
       '&:not(:first-child)': {
         marginLeft: typeof gutter === 'number' ? spacing(gutter) : gutter,
@@ -37,7 +37,7 @@ export default function defaultStyles({ palette, spacing }: Theme) {
     itemActive: {
       '&$item': {
         color: palette.text.primary,
-        backgroundColor: `rgba(0,0,0,0.08) !important`,
+        backgroundColor: palette.action.selected,
       },
     },
   });
