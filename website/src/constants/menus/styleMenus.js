@@ -142,6 +142,12 @@ export default [
         to: '/styles/collapsible-menu/',
       },
       {
+        key: 'email-subscribe',
+        label: 'Email Subscribe',
+        total: 5,
+        to: '/styles/email-subscribe/',
+      },
+      {
         key: 'info',
         label: 'Info',
         total: infoStyles.length,
