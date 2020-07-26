@@ -144,7 +144,7 @@ export default [
       {
         key: 'email-subscribe',
         label: 'Email Subscribe',
-        total: 2,
+        total: 5,
         to: '/styles/email-subscribe/',
       },
       {
