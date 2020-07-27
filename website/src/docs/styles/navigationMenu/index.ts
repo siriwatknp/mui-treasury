@@ -8,3 +8,5 @@ export * from './point/PointNavigationMenuStyle'
 
 export * from './bulb/BulbNavigationMenuStyle'
 
+export * from './plain/PlainNavigationMenuStyle'
+

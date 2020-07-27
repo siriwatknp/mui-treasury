@@ -141,6 +141,12 @@ export default [
     label: 'Complex Composition',
     subMenus: [
       {
+        key: 'app-footer',
+        label: 'App Footer',
+        total: 2,
+        to: '/components/app-footer/',
+      },
+      {
         key: 'card',
         label: 'Card',
         total: 25,

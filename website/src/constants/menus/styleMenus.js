@@ -156,7 +156,7 @@ export default [
       {
         key: 'navigation-menu',
         label: 'Navigation Menu',
-        total: 5,
+        total: 6,
         to: '/styles/navigation-menu/',
       },
       {
