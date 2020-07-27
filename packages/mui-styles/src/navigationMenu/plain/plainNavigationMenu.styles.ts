@@ -1,5 +1,4 @@
 import { createStyles, Theme } from '@material-ui/core/styles';
-import { FloatNavigationMenuStyleProps } from 'src/navigationMenu/float/floatNavigationMenu.styles';
 export type PlainNavigationMenuStyleProps = { gutter?: string | number };
 
 export type PlainNavigationMenuClassKey = keyof ReturnType<
@@ -11,7 +10,7 @@ const plainNavigationMenuStyles = ({ palette, spacing }: Theme) =>
     menu: {
       display: 'flex',
     },
-    item: ({ gutter }: FloatNavigationMenuStyleProps) => ({
+    item: ({ gutter }: PlainNavigationMenuStyleProps) => ({
       flexShrink: 0,
       display: 'flex',
       alignItems: 'center',
