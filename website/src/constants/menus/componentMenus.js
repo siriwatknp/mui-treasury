@@ -143,7 +143,7 @@ export default [
       {
         key: 'app-footer',
         label: 'App Footer',
-        total: 1,
+        total: 2,
         to: '/components/app-footer/',
       },
       {

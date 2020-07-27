@@ -7,10 +7,10 @@ export const PlainNavigationMenuStyle = React.memo(
   function PlainNavigationMenu() {
     return (
       <NavMenu useStyles={usePlainNavigationMenuStyles}>
-        <NavItem active>Systems</NavItem>
-        <NavItem as={Link} to={'/components/menu/'}>Illustrations</NavItem>
-        <NavItem>Templates</NavItem>
-        <NavItem>Mockups</NavItem>
+        <NavItem active>Item 1</NavItem>
+        <NavItem as={Link} to={'/components/menu/'}>Item 2</NavItem>
+        <NavItem>Item 3</NavItem>
+        <NavItem>Item 4</NavItem>
       </NavMenu>
     );
   }
@@ -34,7 +34,7 @@ const AttachedShowcase = (props: ShowcaseProps) => (
 )
 const metadata: IMetadata = {
   path: 'styles/navigationMenu/plain',
-  colSpan: 4,
+  colSpan: 7,
   createdAt: 'Sun Jul 26 2020',
   files: [{ pkg: 'mui-styles', path: 'navigationMenu/plain/plainNavigationMenu.styles.ts' }],
 };
