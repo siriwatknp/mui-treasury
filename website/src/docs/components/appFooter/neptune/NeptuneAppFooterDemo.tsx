@@ -154,7 +154,6 @@ import Showcase, {
   IMetadata,
   ShowcaseProps,
 } from '../../../../components/Showcase';
-import { breakpoints } from '@material-ui/system';
 
 const AttachedShowcase = (props: ShowcaseProps) => (
   <Showcase
