@@ -95,6 +95,7 @@ export default [
         to: '/components/email-subscribe/',
       },
       {
+
         key: 'flex',
         label: 'Flex',
         to: '/components/flex/'
@@ -143,7 +144,7 @@ export default [
       {
         key: 'app-footer',
         label: 'App Footer',
-        total: 2,
+        total: 3,
         to: '/components/app-footer/',
       },
       {
