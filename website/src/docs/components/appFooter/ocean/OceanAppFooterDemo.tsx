@@ -31,7 +31,7 @@ import { FontProvider, Font } from 'website/src/components/Font';
 export const OceanAppFooterDemo = React.memo(function OceanAppFooter() {
   return (
     <FontProvider fonts={[{ font: 'Oswald' }]}>
-      <Box width={'100%'}>
+      <Box width={'100%'} px={{ xs: 2, sm: 3, lg: 4 }}>
         <Box pt={6} pb={{ md: 6 }}>
           <Grid container spacing={4}>
             <Grid item xs={12} md={4} lg={3}>

@@ -118,7 +118,7 @@ export const SolidGameCardDemo = React.memo(function SolidGameCard() {
             title={'Fortnite'}
             subtitle={'Time to choose side!'}
             image={
-              'https://allyourgames.com/wp-content/uploads/2019/09/10.40.png'
+              'https://progameguides.com/wp-content/uploads/2019/10/fortnite-outfit-scratch.jpg'
             }
           />
         </Grid>
@@ -157,6 +157,10 @@ const AttachedShowcase = (props: ShowcaseProps) => (
     title={'Solid Game'}
     description={''}
     creators={[require('constants/creators').siriwatknp]}
+    frameProps={{
+      p: 5,
+      bgcolor: '#f7f7fe',
+    }}
   >
     <SolidGameCardDemo />
   </Showcase>
@@ -165,7 +169,6 @@ const metadata: IMetadata = {
   path: 'components/card/solidGame',
   createdAt: 'Tue Jun 02 2020',
   colSpan: 12,
-  frameProps: { p: 5, bgcolor: '#f7f7fe', overflow: 'auto' },
   files: [],
 };
 // @ts-ignore

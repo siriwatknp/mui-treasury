@@ -54,12 +54,21 @@ const DemoSection = ({ components, setComponent }) => {
             frameProps,
             stylesUrl,
           } = Component?.metadata ?? {};
+          console.log('colSpan', colSpan);
           const responsiveColSpan = getResponsiveColSpan(colSpan);
           return (
             <GridItem key={path} colSpan={responsiveColSpan} rowSpan={rowSpan}>
               <Component.Showcase
                 variant={'column'}
-                frameProps={frameProps}
+                frameProps={{
+                  ...(colSpan === 12 && {
+                    margin: { xs: '0 -16px', sm: '0 -32px', lg: '0  -42px' },
+                    overflow: 'hididen',
+                    paddingLeft: 0,
+                    paddingRight: 0,
+                  }),
+                  ...frameProps,
+                }}
                 status={getStatusByDate(createdAt)}
                 actions={
                   <Row position={'middle-right'}>

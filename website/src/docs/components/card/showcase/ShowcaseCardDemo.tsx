@@ -139,6 +139,7 @@ const AttachedShowcase = (props: ShowcaseProps) => (
     title={'Showcase'}
     description={''}
     creators={[require('constants/creators').siriwatknp]}
+    frameProps={{ bgcolor: '#fff' }}
   >
     <ShowcaseCardDemo />
   </Showcase>
@@ -147,7 +148,6 @@ const metadata: IMetadata = {
   path: 'components/card/showcase',
   createdAt: 'Sun May 31 2020',
   colSpan: 12,
-  frameProps: { bgcolor: '#fff' },
   files: [],
 };
 // @ts-ignore
