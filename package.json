@@ -91,7 +91,7 @@
     "lerna": "^3.19.0",
     "lint-staged": "^10.0.7",
     "lodash": "^4.17.15",
-    "prettier": "^1.18.2",
+    "prettier": "^2.2.1",
     "pretty-quick": "^2.0.1",
     "prop-types": "^15.7.2",
     "react-test-renderer": "^16.13.0",
