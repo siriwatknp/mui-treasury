@@ -10,6 +10,23 @@
 > - :bulb: [Refactor]
 > - :lipstick: [Style]
 
+## _7 Dec 2020__
+### website@2.19.0
+- [#995](https://github.com/siriwatknp/mui-treasury/pull/995) fix: 🐛 with workaround solution by replaceHydrateFunction ([@siriwatknp](https://github.com/siriwatknp))
+
+## @mui-treasury/styles@1.13.1
+- [#959](https://github.com/siriwatknp/mui-treasury/pull/959) Fix font color typo in minimalSelect.styles.js ([@MareoRaft](https://github.com/MareoRaft))
+
+## @mui-treasury/components@1.9.2
+- [#914](https://github.com/siriwatknp/mui-treasury/pull/914) feat: 🎸 add arcAppFooter & minor fixes ([@siriwatknp](https://github.com/siriwatknp))
+
+## @mui-treasury/mockup@1.2.10 (patched)
+
+#### Committers: 2
+- Matthew Lancellotti ([@MareoRaft](https://github.com/MareoRaft))
+- Siriwat Kunaporn ([@siriwatknp](https://github.com/siriwatknp))
+
+
 ## _25 Jun 2020__
 ### @mui-treasury/layout@4.5.0
 - :boom: Multiple subheaders
