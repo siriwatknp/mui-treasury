@@ -54,7 +54,6 @@ const DemoSection = ({ components, setComponent }) => {
             frameProps,
             stylesUrl,
           } = Component?.metadata ?? {};
-          console.log('colSpan', colSpan);
           const responsiveColSpan = getResponsiveColSpan(colSpan);
           return (
             <GridItem key={path} colSpan={responsiveColSpan} rowSpan={rowSpan}>
