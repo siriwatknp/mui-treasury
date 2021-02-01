@@ -12,6 +12,7 @@ export const ZoomSocialLinkStyle = React.memo(
           <SocialLink brand={'Twitter'} href={'https://twitter.com/siriwatknp'} />
           <SocialLink brand={'Instagram'} href={''} />
           <SocialLink brand={'LinkedIn'} href={'https://www.linkedin.com/in/siriwat-kunaporn-1b4095158/'} />
+          <SocialLink brand={'Whatsapp'} href={'https://www.whatsapp.com/?lang=en'} />
         </SocialProvider>
       </>
     );

@@ -11,5 +11,5 @@ const fonts = [
 
 module.exports = {
   theme: fonts,
-  config: fonts.map(aFont => `${aFont.name}\:${aFont.styles.join(',')}`),
+  config: fonts.map(aFont => `${aFont.name}:${aFont.styles.join(',')}`),
 };
