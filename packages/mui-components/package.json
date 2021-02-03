@@ -4,6 +4,9 @@
   "version": "1.10.0",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "types": "./index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "react",
     "material-ui",
