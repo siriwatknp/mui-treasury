@@ -1,7 +1,7 @@
 {
   "name": "@mui-treasury/components",
   "module": "./esm/index.js",
-  "version": "1.10.0",
+  "version": "1.10.1",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "types": "./index.d.ts",
   "publishConfig": {
