@@ -179,6 +179,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "MareoRaft",
+      "name": "Matthew Lancellotti",
+      "avatar_url": "https://avatars.githubusercontent.com/u/860303?v=4",
+      "profile": "http://matthewlancellotti.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
