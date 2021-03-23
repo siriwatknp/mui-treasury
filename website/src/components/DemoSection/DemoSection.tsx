@@ -62,7 +62,7 @@ const DemoSection = ({ components, setComponent }) => {
                 frameProps={{
                   ...(colSpan === 12 && {
                     margin: { xs: '0 -16px', sm: '0 -32px', lg: '0  -42px' },
-                    overflow: 'hididen',
+                    overflow: 'hidden',
                     paddingLeft: 0,
                     paddingRight: 0,
                   }),
