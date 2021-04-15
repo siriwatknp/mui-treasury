@@ -4,6 +4,20 @@
   </a>
 </p>
 
+# 🛠 Upgrading to V5
+
+### `Layout`
+I'm working on upgrading layout package to v5. It should be ready at the beginning of May 2021 (so far, migration is done, working on documentation)
+
+**Summary Highlight**
+- smaller size
+- faster
+- single sidebar (no duplicate for all variants)
+
+### `Components & Styles`
+Might takes a while to migrate all existing components & styles to v5. https://github.com/siriwatknp/mui-treasury/issues/1048
+
+
 # Material-UI Treasury [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/siriwatknp/mui-treasury-next/pulls) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-19-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
