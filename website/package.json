@@ -40,7 +40,7 @@
     "gatsby-remark-embed-snippet": "4.1.4",
     "gatsby-remark-images": "3.1.11",
     "gatsby-remark-prismjs": "3.3.5",
-    "gatsby-remark-responsive-iframe": "2.2.4",
+    "gatsby-remark-responsive-iframe": "4.2.0",
     "gatsby-remark-smartypants": "2.1.2",
     "gatsby-source-filesystem": "2.1.9",
     "gatsby-transformer-sharp": "2.2.6",
