@@ -22,7 +22,7 @@
     "babel-plugin-styled-components": "^1.10.7",
     "color": "^3.1.2",
     "gatsby": "2.15.24",
-    "gatsby-image": "2.2.8",
+    "gatsby-image": "3.6.0",
     "gatsby-plugin-catch-links": "2.1.24",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-google-tagmanager": "^2.3.5",
