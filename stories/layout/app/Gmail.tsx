@@ -78,7 +78,6 @@ const Gmail = () => {
                 persistentBehavior: "fit",
               },
             },
-            hidden: ["md"],
           },
         }}
       >
