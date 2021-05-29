@@ -1,6 +1,6 @@
 {
   "name": "@mui-treasury/component-number-input",
-  "version": "0.0.1-alpha.3",
+  "version": "0.0.1-alpha.4",
   "description": "mui-treasury | component-number-input",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "homepage": "https://github.com/siriwatknp/mui-treasury-next#readme",
@@ -33,7 +33,7 @@
     "@material-ui/core": "^5.0.0"
   },
   "dependencies": {
-    "@mui-treasury/use-number-input": "^0.1.0-alpha.2"
+    "@mui-treasury/use-number-input": "^0.1.0-alpha.3"
   },
   "releasedDependencies": {
     "@mui-treasury/use-number-input": "^0.1.0-alpha.0"
