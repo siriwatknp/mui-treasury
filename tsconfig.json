@@ -1,39 +1,65 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": false,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react"
-  },
-  "baseUrl": "./",
-  "paths": {
-    "@mui-treasury/components/*": "packages/mui-components/src/*",
-    "@mui-treasury/styles/*": "packages/mui-styles/src/*",
-    "@mui-treasury/layout/*": "packages/mui-layout/src/*",
-    "@mui-treasury/mockup/*": "packages/mui-mockup/src/*",
-    "components/*": "website/src/components/*",
-    "containers/*": "website/src/containers/*",
-    "utils/*": "website/src/utils/*"
-  },
+  "extends": "./tsconfig.build.json",
   "include": [
-    "./website/src/**/*",
-    "./packages/mui-components/src/**/*",
-    "./packages/mui-styles/src/**/*",
-    "./packages/mui-layout/src/**/*",
-    "./packages/mui-mockup/src/**/*"
-  ]
+    "packages",
+    "types",
+    "scripts",
+    ".storybook/preview.tsx",
+    "stories",
+    "./setupTests.ts"
+  ],
+  "exclude": ["node_modules", "**/*.test.*", "**/*.spec.*", "dist"],
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "es2018",
+    "lib": ["dom", "esnext"],
+    "importHelpers": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowJs": true,
+    "typeRoots": ["./node_modules/@types", "./types"],
+    "types": ["jest", "node"],
+    "baseUrl": "./",
+    "paths": {
+      "@mui-treasury/theme-treasury": ["packages/theme-treasury/src/"],
+      "@mui-treasury/component-sticker": ["packages/component-sticker/src"],
+      "@mui-treasury/component-formaddon": ["packages/component-formaddon/src"],
+      "@mui-treasury/component-groupy": ["packages/component-groupy/src"],
+      "@mui-treasury/component-number-input": [
+        "packages/component-number-input/src/"
+      ],
+      "@mui-treasury/component-number-spinner": [
+        "packages/component-number-spinner/src/"
+      ],
+      // hygen-component-target
+
+      "@mui-treasury/style-sticker-glow": ["packages/style-sticker-glow/src/"],
+      "@mui-treasury/style-button-bootstrap": [
+        "packages/style-button-bootstrap/src/"
+      ],
+      "@mui-treasury/style-menu-bootstrap": [
+        "packages/style-menu-bootstrap/src/"
+      ],
+      "@mui-treasury/style-textfield-ant": [
+        "packages/style-textfield-ant/src/"
+      ],
+      "@mui-treasury/style-textfield-bootstrap": [
+        "packages/style-textfield-bootstrap/src/"
+      ],
+      "@mui-treasury/style-textfield-standard": [
+        "packages/style-textfield-standard/src/"
+      ],
+      "@mui-treasury/style-textfield-tailwind": [
+        "packages/style-textfield-tailwind/src/"
+      ],
+      "@mui-treasury/style-slider-apollo": [
+        "packages/style-slider-apollo/src/"
+      ],
+      // hygen-style-target
+
+      "@mui-treasury/use-number-input": ["packages/use-number-input/src/"],
+      // hygen-hook-target
+      "@mui-treasury/layout": ["packages/layout/src"],
+      "@mui-treasury/mockup/*": ["packages/mockup/src/*"]
+    }
+  }
 }

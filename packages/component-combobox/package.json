@@ -1,0 +1,30 @@
+{
+  "name": "@mui-treasury/component-combobox",
+  "private": true,
+  "version": "0.0.0-alpha.4",
+  "description": "mui-treasury | component-comboBox",
+  "author": "siriwatknp <siriwatkunaporn@gmail.com>",
+  "homepage": "https://github.com/siriwatknp/mui-treasury-next#readme",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "esm/index.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siriwatknp/mui-treasury-next.git"
+  },
+  "scripts": {
+    "test": "jest --verbose",
+    "clean": "rimraf dist"
+  },
+  "bugs": {
+    "url": "https://github.com/siriwatknp/mui-treasury-next/issues"
+  },
+  "peerDependencies": {
+    "@material-ui/core": "^5.0.0"
+  }
+}

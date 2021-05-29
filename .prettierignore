@@ -1,8 +1,0 @@
-node_modules
-.cache
-package.json
-package-lock.json
-public
-website/.cache
-website/public
-website/node_modules

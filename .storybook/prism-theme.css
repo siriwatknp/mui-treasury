@@ -1,0 +1,190 @@
+/**
+ * Darcula theme
+ *
+ * Adapted from a theme based on:
+ * IntelliJ Darcula Theme (https://github.com/bulenkov/Darcula)
+ *
+ * @author Alexandre Paradis <service.paradis@gmail.com>
+ * @version 1.0
+ */
+
+.sb-show-main .docblock-source {
+  border: 1px solid #1a1a1a;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+
+.sb-show-main.sb-show-main .sbdocs .prismjs code {
+  background-color: unset;
+}
+.sb-show-main.sb-show-main .sbdocs .prismjs span {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace;
+}
+
+.sb-show-main.sb-show-main code[class*="language-"],
+.sb-show-main.sb-show-main pre[class*="language-"] {
+  color: #d3dde7;
+  font-size: 14px;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+.sb-show-main.sb-show-main pre[class*="language-"]::-moz-selection,
+.sb-show-main.sb-show-main pre[class*="language-"] ::-moz-selection,
+.sb-show-main.sb-show-main code[class*="language-"]::-moz-selection,
+.sb-show-main.sb-show-main code[class*="language-"] ::-moz-selection {
+  color: inherit;
+  background: rgba(33, 66, 131, 0.85);
+}
+
+.sb-show-main.sb-show-main pre[class*="language-"]::selection,
+.sb-show-main.sb-show-main pre[class*="language-"] ::selection,
+.sb-show-main.sb-show-main code[class*="language-"]::selection,
+.sb-show-main.sb-show-main code[class*="language-"] ::selection {
+  color: inherit;
+  background: rgba(33, 66, 131, 0.85);
+}
+
+/* Code blocks */
+.sb-show-main.sb-show-main pre[class*="language-"] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+}
+
+.sb-show-main.sb-show-main :not(pre) > code[class*="language-"],
+.sb-show-main.sb-show-main pre.prismjs {
+  background: #2b2b2b;
+}
+
+/* Inline code */
+.sb-show-main.sb-show-main :not(pre) > code[class*="language-"] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+}
+
+.sb-show-main.sb-show-main .token.comment,
+.sb-show-main.sb-show-main .token.prolog,
+.sb-show-main.sb-show-main .token.cdata {
+  color: #808080;
+}
+
+.sb-show-main.sb-show-main .token.tag,
+.sb-show-main.sb-show-main .token.tag .punctuation,
+.sb-show-main.sb-show-main .token.doctype,
+.sb-show-main.sb-show-main .token.builtin,
+.sb-show-main.sb-show-main .token.maybe-class-name:not(.imports) {
+  color: #e8bf6a;
+}
+
+.sb-show-main.sb-show-main .token.delimiter,
+.sb-show-main.sb-show-main .token.boolean,
+.sb-show-main.sb-show-main .token.keyword,
+.sb-show-main.sb-show-main .token.selector,
+.sb-show-main.sb-show-main .token.important,
+.sb-show-main.sb-show-main .token.atrule {
+  color: #e2863b;
+}
+.sb-show-main.sb-show-main .token.keyword + span {
+  color: #b4c1cf;
+}
+
+.sb-show-main.sb-show-main .token.operator,
+.sb-show-main.sb-show-main .token.punctuation,
+.sb-show-main.sb-show-main .token.punctuation + .token.script {
+  color: #b4c1cf;
+}
+.sb-show-main.sb-show-main .token.attr-name {
+  color: #d3dde7;
+}
+
+.sb-show-main.sb-show-main .token.entity,
+.sb-show-main.sb-show-main .token.number,
+.sb-show-main.sb-show-main .token.symbol {
+  color: #4eb0fa;
+}
+
+.sb-show-main.sb-show-main .token.property,
+.sb-show-main.sb-show-main .token.constant,
+.sb-show-main.sb-show-main .token.variable {
+  color: #9876aa;
+}
+
+.sb-show-main.sb-show-main .token.string,
+.sb-show-main.sb-show-main .token.char {
+  color: #7eac64;
+}
+
+.sb-show-main.sb-show-main .token.attr-value,
+.sb-show-main.sb-show-main .token.attr-value .punctuation {
+  color: #a5c261;
+}
+
+.sb-show-main.sb-show-main .token.attr-value .punctuation:first-child {
+  color: #b4c1cf;
+}
+
+.sb-show-main.sb-show-main .token.url {
+  color: #287bde;
+  text-decoration: underline;
+}
+
+.sb-show-main.sb-show-main .token.function {
+  color: #ffc66d;
+}
+
+.sb-show-main.sb-show-main .token.regex {
+  background: #364135;
+}
+
+.sb-show-main.sb-show-main .token.bold {
+  font-weight: bold;
+}
+
+.sb-show-main.sb-show-main .token.italic {
+  font-style: italic;
+}
+
+.sb-show-main.sb-show-main .token.inserted {
+  background: #294436;
+}
+
+.sb-show-main.sb-show-main .token.deleted {
+  background: #484a4a;
+}
+
+.sb-show-main.sb-show-main code.language-css .token.id {
+  color: #ffc66d;
+}
+
+.sb-show-main.sb-show-main code.language-css .token.selector > .token.class,
+.sb-show-main.sb-show-main code.language-css .token.selector > .token.attribute,
+.sb-show-main.sb-show-main
+  code.language-css
+  .token.selector
+  > .token.pseudo-class,
+.sb-show-main.sb-show-main
+  code.language-css
+  .token.selector
+  > .token.pseudo-element {
+  color: #ffc66d;
+}
+
+.sb-show-main .sbdocs code.language-css .token.property,
+.sb-show-main .sbdocs code.language-css .token.property + .token.punctuation {
+  color: #fff;
+}

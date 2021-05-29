@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "es2020",
+    "target": "es2018",
+    "sourceMap": true,
+    "noEmitOnError": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "strict": true,
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node"
+  },
+  "exclude": [
+    "node_modules",
+    "**/*.test.*",
+    "**/*.spec.*",
+    "**/*.stories.*",
+    "dist"
+  ]
+}

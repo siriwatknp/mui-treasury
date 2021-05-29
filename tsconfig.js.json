@@ -1,0 +1,13 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "jsx": "react-native",
+    "module": "es2020",
+    "target": "es2020",
+    "lib": ["dom", "esnext"],
+    "declaration": false,
+    "allowJs": true,
+    "esModuleInterop": true,
+    "moduleResolution": "Node"
+  }
+}

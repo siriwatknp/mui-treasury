@@ -1,8 +1,19 @@
 {
-  "packages": ["packages/*", "website"],
   "npmClient": "yarn",
-  "version": "independent",
   "useWorkspaces": true,
+  "version": "independent",
+  "ignoreChanges": [
+    "**/__fixtures__/**",
+    "**/__tests__/**",
+    "**/*.md",
+    "**/javascript/**",
+    "**/*.test.{js|ts|tsx}"
+  ],
+  "publish": {
+    "conventionalCommits": true,
+    "message": "chore(release): publish 🎉 [skip ci]",
+    "registry": "https://registry.npmjs.org"
+  },
   "changelog": {
     "ignoreCommitters": [
       "allcontributors",

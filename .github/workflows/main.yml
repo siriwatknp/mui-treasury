@@ -1,0 +1,71 @@
+name: Main
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test-build-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          # pulls all commits (needed for lerna / semantic release to correctly version)
+          fetch-depth: "0"
+
+      - uses: c-hive/gha-yarn-cache@v1
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Run unit-tests
+        run: yarn test
+
+      - name: Build Packages
+        run: yarn build:packages
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Git Identity
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/$GITHUB_REPOSITORY
+          git remote -v
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Authenticate with Registry
+        run: |
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+          npm whoami
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # lerna will run prepublishOnly that contains build script
+      # --no-verify-access is to fix 403 from npm because NPM_TOKEN is for automation
+      - name: Publish Packages
+        run: yarn publish-packages --dist-tag next
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Build storybook
+        run: yarn build:storybook
+      - name: Deploy Storybook 🚀
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: storybook-static # The folder that the build-storybook script generates files.
+          CLEAN: true # Automatically remove deleted files from the deploy branch
+      - name: Publish storybook to Chromatic
+        uses: chromaui/action@v1
+        # Chromatic GitHub Action options
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # 👇 Chromatic projectToken, refer to the manage page to obtain it.
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          storybookBuildDir: storybook-static

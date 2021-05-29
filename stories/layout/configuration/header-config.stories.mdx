@@ -1,0 +1,54 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Layout/Configuration/Header" />
+
+<style>{`
+  .sbdocs-content {
+    max-width: 720px;
+  }
+`}</style>
+
+# Header Configuration
+
+```tsx
+<Root
+  scheme={{
+    header: {
+      config: Responsive<HeaderConfig>
+    },
+    topHeader: {
+      config: Responsive<HeaderConfig>
+    },
+    subheader: {
+      config: Responsive<HeaderConfig>
+    },
+  }}
+></Root>
+```
+
+### API
+
+```ts
+{
+  /**
+   * css position. For calculating offset in other components.
+   */
+  position: "relative" | "sticky" | "fixed";
+  /**
+   * css height, support all unit that works in CSS. For calculating offset in other components.
+   */
+  height: number | string;
+  /**
+   * css top, support all unit that works in CSS.
+   */
+  top?: number | string;
+  /**
+   * to identify which Header stay on top of other (the larger number).
+   */
+  layer?: number;
+  /**
+   * If `true`, stay on top of EdgeSidebar and EdgeSidebar's width have no effect on Header.
+   */
+  clipped?: boolean | Partial<Record<ClippableElement, boolean>>;
+}
+```

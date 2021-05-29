@@ -1,0 +1,13 @@
+{
+  "exclude": ["node_modules", "**/*.test.*", "**/*.spec.*"],
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "es2015",
+    "moduleResolution": "node",
+    "strict": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": false,
+    "outDir": "dist"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "mui-treasury",
+  "version": "0.1.5-alpha.3",
+  "description": "> TODO: description",
+  "author": "siriwatknp <siriwatkunaporn@gmail.com>",
+  "homepage": "https://github.com/siriwatknp/mui-treasury-next#readme",
+  "license": "MIT",
+  "bin": {
+    "mui-treasury": "dist/index.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/siriwatknp/mui-treasury-next",
+    "directory": "packages/cli"
+  },
+  "scripts": {
+    "test": "jest",
+    "dev": "tsc --watch",
+    "clean": "rimraf dist",
+    "build": "yarn clean && tsc",
+    "prepare-dist": "ts-node ../../scripts/prerelease.ts cli",
+    "prepublishOnly": "yarn prepare-dist"
+  },
+  "bugs": {
+    "url": "https://github.com/siriwatknp/mui-treasury-next/issues"
+  },
+  "dependencies": {
+    "@types/got": "9.6.11",
+    "@types/rimraf": "3.0.0",
+    "@types/tar": "4.0.4",
+    "chalk": "4.1.0",
+    "commander": "7.1.0",
+    "cpy": "8.1.1",
+    "got": "11.8.2",
+    "rimraf": "3.0.2",
+    "tar": "6.1.0",
+    "update-check": "1.5.4"
+  }
+}

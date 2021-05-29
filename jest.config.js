@@ -1,30 +1,19 @@
 module.exports = {
+  roots: ["<rootDir>"],
+  preset: "ts-jest",
+  setupFilesAfterEnv: ["<rootDir>/setupTests.ts", "jest-extended"],
+  modulePathIgnorePatterns: ["dist", "cli"],
   transform: {
-    '^.+\\.(tsx?|jsx?|js?)$': `<rootDir>/jest-preprocess.js`,
+    "^.+\\.(ts|tsx|js)$": "ts-jest",
   },
-  moduleNameMapper: {
-    '.+\\.(css|styl|less|sass|scss)$': `identity-obj-proxy`,
-    // '.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': `<rootDir>/__mocks__/file-mock.js`,
-    '@mui-treasury/components(.*)$': '<rootDir>/packages/mui-components/src/$1',
-    '@mui-treasury/layout(.*)$': '<rootDir>/packages/mui-layout/src/$1',
-    '@mui-treasury/mockup(.*)$': '<rootDir>/packages/mui-mockup/src/$1',
-    '@mui-treasury/styles(.*)$': '<rootDir>/packages/mui-styles/src/$1',
-    '@mui-treasury/utils(.*)$': '<rootDir>/packages/mui-utils/src/$1',
-  },
-  testPathIgnorePatterns: [
-    `node_modules`,
-    `.cache`,
-    'public/',
-    'build/',
-    'assets/',
-    'starters/',
+  transformIgnorePatterns: [
+    "<rootDir>/node_modules/(?!(@material-ui/core|@babel/runtime)/)",
   ],
-  transformIgnorePatterns: [`node_modules/(?!(gatsby)/)`],
-  modulePaths: ['<rootDir>/'],
-  globals: {
-    __PATH_PREFIX__: ``,
+  testMatch: [
+    "**/__tests__/**/*.+(ts|tsx|js)",
+    "**/?(*.)+(spec|test).+(ts|tsx|js)",
+  ],
+  moduleNameMapper: {
+    "@mui-treasury/(.*)": ["<rootDir>/packages/$1/src/"],
   },
-  testURL: `http://localhost`,
-  setupFiles: [`<rootDir>/loadershim.js`],
-  setupFilesAfterEnv: ['<rootDir>/setupTests.js'],
 };

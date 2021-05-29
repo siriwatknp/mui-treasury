@@ -1,0 +1,74 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Layout/Feature/Auto-collapse" />
+
+<style>{`
+  .sbdocs-content {
+    max-width: 720px;
+  }
+`}</style>
+
+# Auto-collapse
+
+Auto-collapse supports only `Persistent` & `Permanent` EdgeSidebar if they are configure to be collapsible.
+
+The calculation happens only at client side (not in SSR) since it use `window`'s width to compare between breakpoint.
+The first calculation is when component mounted to DOM, the logic compare current viewport with the value specified in config
+
+**Example 1**
+
+```jsx
+<Root
+  scheme={{
+    leftEdgeSidebar: {
+      autoCollapse: "md",
+      config: {
+        md: {
+          variant: "permanent",
+          width: 256,
+          collapsible: true,
+          collapsedWidth: 64,
+        },
+      },
+    },
+  }}
+></Root>
+```
+
+|           | xs  | sm  | md  | lg  | xl  |
+| --------- | --- | --- | --- | --- | --- |
+| collapsed | ✅  | ✅  | ✅  | ✘   | ✘   |
+
+<br />
+
+**Example 2**
+
+```js
+<Root
+  scheme={{
+    leftEdgeSidebar: {
+      autoCollapse: "sm",
+      config: {
+        md: {
+          variant: "permanent",
+          width: 256,
+          collapsible: true,
+          collapsedWidth: 64,
+        },
+      },
+    },
+  }}
+></Root>
+```
+
+|           | xs  | sm  | md  | lg  | xl  |
+| --------- | --- | --- | --- | --- | --- |
+| collapsed | ✅  | ✅  | ✘   | ✘   | ✘   |
+
+When you open you website at xs | sm | md, `primarySidebar` will collapse. After that, when user increase
+viewport it will trigger recalculation.
+
+If current viewport > `breakpoint`, the sidebar will be uncollapsed and if
+user lower the viewpoint <= `breakpoint`, the sidebar will collapse.
+
+![gif](https://media.giphy.com/media/fwbY6vc6kbubwvyFIN/giphy.gif)
