@@ -26,7 +26,7 @@ jobs:
 
       - uses: actions/setup-node@v1
         with:
-          node-version: "12"
+          node-version: "14"
           registry-url: "https://registry.npmjs.org"
 
       - name: Git Identity
@@ -51,6 +51,9 @@ jobs:
         run: yarn publish-packages --dist-tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Push publish commit
+        run: git push --tags
 
       - name: Build storybook
         run: yarn build:storybook
