@@ -23,17 +23,17 @@ async function run() {
   const file = await fsp.readFile("package.json", "utf8");
 
   if (packageType === "cli") {
-    await Promise.resolve(
-      set(file, "bin.mui-treasury", "index.js")
-    ).then((result) => fsp.writeFile(`${PUBLISH_DIR}/package.json`, result));
+    await Promise.resolve(set(file, "bin.mui-treasury", "index.js")).then(
+      (result) => fsp.writeFile(`${PUBLISH_DIR}/package.json`, result)
+    );
   }
   if (["component", "style", "theme", "hook", "mockup"].includes(packageType)) {
     await Promise.resolve(set(file, "main", "index.js"))
       .then((newFile) => set(newFile, "types", "index.d.ts"))
-      .then((newFile) => del(newFile, "dependencies"))
-      .then((newFile) =>
-        newFile.replace("releasedDependencies", "dependencies")
-      )
+      // .then((newFile) => del(newFile, "dependencies"))
+      // .then((newFile) =>
+      //   newFile.replace("releasedDependencies", "dependencies")
+      // )
       .then((result) => fsp.writeFile(`${PUBLISH_DIR}/package.json`, result));
   }
   if (packageType === "layout") {

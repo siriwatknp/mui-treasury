@@ -6,6 +6,7 @@ import { unstable_composeClasses as composeClasses } from "@material-ui/unstyled
 import { SxProps } from "@material-ui/system";
 import useThemeProps from "@material-ui/core/styles/useThemeProps";
 import { getStickerUtilityClass, stickerClasses } from "./stickerClasses";
+import { OverridableComponent } from "@mui-treasury/types";
 
 export type StickerClassKey = keyof typeof stickerClasses;
 export type StickerClasses = Partial<typeof stickerClasses>;
@@ -133,22 +134,13 @@ const StickerRoot = styled(
   })
 );
 
-interface StickerComponent {
-  <P extends { as?: React.ElementType }>(
-    props: P extends { as: infer As }
-      ? As extends keyof JSX.IntrinsicElements
-        ? P & StickerProps & JSX.IntrinsicElements[As]
-        : As extends React.ComponentType<infer AsProps>
-        ? P & StickerProps & AsProps
-        : PropsWithChildren<P & StickerProps>
-      : PropsWithChildren<P & StickerProps>
-  ): JSX.Element | null;
-}
+interface StickerComponent
+  extends OverridableComponent<PropsWithChildren<StickerProps>> {}
 
 export const Sticker: StickerComponent = React.forwardRef<
   any,
-  PropsWithChildren<StickerProps>
->(function Sticker({ children, ...inProps }, ref) {
+  PropsWithChildren<StickerProps & { component?: React.ElementType }>
+>(function Sticker({ children, component, ...inProps }, ref) {
   const props = useThemeProps<Theme, StickerProps, "JunSticker">({
     props: inProps,
     name: "JunSticker",
@@ -173,6 +165,7 @@ export const Sticker: StickerComponent = React.forwardRef<
   return (
     <StickerRoot
       ref={ref}
+      as={component}
       {...other}
       styleProps={styleProps}
       className={cx(classes.root, props.className)}

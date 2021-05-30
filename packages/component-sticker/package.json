@@ -31,9 +31,6 @@
   "bugs": {
     "url": "https://github.com/siriwatknp/mui-treasury/issues"
   },
-  "dependencies": {
-    "@mui-treasury/theme-treasury": "^0.3.0-alpha.10"
-  },
   "peerDependencies": {
     "@mui-treasury/theme-treasury": "^0.3.0-alpha.7"
   }

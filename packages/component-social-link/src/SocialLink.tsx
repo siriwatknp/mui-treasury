@@ -38,30 +38,33 @@ const SocialLinkRoot = styled(
   },
 }));
 
-export const SocialLink: OverridableComponent<SocialLinkProps> =
-  React.forwardRef<HTMLAnchorElement, PropsWithChildren<SocialLinkProps>>(
-    function SocialLink({ children, ...inProps }, ref) {
-      const props = useThemeProps<Theme, SocialLinkProps, "JunSocialLink">({
-        props: inProps,
-        name: "JunSocialLink",
-      });
-      const { ...other } = props;
+export const SocialLink: OverridableComponent<
+  PropsWithChildren<SocialLinkProps>
+> = React.forwardRef<
+  HTMLAnchorElement,
+  PropsWithChildren<SocialLinkProps & { component?: React.ElementType }>
+>(function SocialLink({ children, component, ...inProps }, ref) {
+  const props = useThemeProps<Theme, SocialLinkProps, "JunSocialLink">({
+    props: inProps,
+    name: "JunSocialLink",
+  });
+  const { ...other } = props;
 
-      const styleProps = {
-        ...props,
-      };
+  const styleProps = {
+    ...props,
+  };
 
-      return (
-        <SocialLinkRoot
-          ref={ref}
-          target="_blank"
-          rel="noopener noreferrer"
-          {...other}
-          styleProps={styleProps}
-          className={cx("JunSocialLink-root", props.className)}
-        >
-          {children}
-        </SocialLinkRoot>
-      );
-    }
+  return (
+    <SocialLinkRoot
+      ref={ref}
+      as={component}
+      target="_blank"
+      rel="noopener noreferrer"
+      {...other}
+      styleProps={styleProps}
+      className={cx("JunSocialLink-root", props.className)}
+    >
+      {children}
+    </SocialLinkRoot>
   );
+});

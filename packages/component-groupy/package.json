@@ -32,5 +32,8 @@
   },
   "peerDependencies": {
     "@material-ui/core": "^5.0.0"
+  },
+  "dependencies": {
+    "@mui-treasury/types": "^0.1.0-alpha.0"
   }
 }

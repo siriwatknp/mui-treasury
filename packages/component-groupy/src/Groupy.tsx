@@ -7,6 +7,7 @@ import {
 } from "@material-ui/core/styles";
 import { unstable_composeClasses as composeClasses } from "@material-ui/unstyled";
 import { SxProps } from "@material-ui/system";
+import { OverridableComponent } from "@mui-treasury/types";
 import { getGroupyUtilityClass, groupyClasses } from "./groupyClasses";
 
 export type GroupyClassKey = keyof typeof groupyClasses;
@@ -105,22 +106,12 @@ const GroupyRoot = styled(
   }),
 }));
 
-interface GroupyComponent {
-  <P extends { as?: React.ElementType }>(
-    props: P extends { as: infer As }
-      ? As extends keyof JSX.IntrinsicElements
-        ? P & GroupyProps & JSX.IntrinsicElements[As]
-        : As extends React.ComponentType<infer AsProps>
-        ? P & GroupyProps & AsProps
-        : PropsWithChildren<P & GroupyProps>
-      : PropsWithChildren<P & GroupyProps>
-  ): JSX.Element | null;
-}
+type GroupyComponent = OverridableComponent<PropsWithChildren<GroupyProps>>;
 
 export const Groupy: GroupyComponent = React.forwardRef<
   any,
-  PropsWithChildren<GroupyProps>
->(function Groupy({ children, ...inProps }, ref) {
+  PropsWithChildren<GroupyProps & { component?: React.ElementType }>
+>(function Groupy({ children, component, ...inProps }, ref) {
   const props = useThemeProps<Theme, GroupyProps, "JunGroupy">({
     props: inProps,
     name: "JunGroupy",
@@ -137,6 +128,7 @@ export const Groupy: GroupyComponent = React.forwardRef<
   return (
     <GroupyRoot
       ref={ref}
+      as={component}
       {...other}
       styleProps={styleProps}
       className={cx(classes.root, props.className)}

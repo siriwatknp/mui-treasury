@@ -34,9 +34,6 @@
     "@material-ui/core": "^5.0.0"
   },
   "dependencies": {
-    "@mui-treasury/use-number-input": "^0.1.0-alpha.4"
-  },
-  "releasedDependencies": {
-    "@mui-treasury/use-number-input": "^0.1.0-alpha.0"
+    "@mui-treasury/use-number-input": "^0.1.0-alpha.3"
   }
 }

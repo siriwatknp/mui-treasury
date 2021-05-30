@@ -7,6 +7,7 @@ import {
 } from "@material-ui/core/styles";
 import { unstable_composeClasses as composeClasses } from "@material-ui/unstyled";
 import { SxProps } from "@material-ui/system";
+import { OverridableComponent } from "@mui-treasury/types";
 import { getFormAddonUtilityClass, formAddonClasses } from "./formAddonClasses";
 
 export type FormAddonClassKey = keyof typeof formAddonClasses;
@@ -62,22 +63,13 @@ const FormAddonRoot = styled(
   backgroundColor: theme.palette.grey[100],
 }));
 
-interface FormAddonComponent {
-  <P extends { as?: React.ElementType }>(
-    props: P extends { as: infer As }
-      ? As extends keyof JSX.IntrinsicElements
-        ? P & FormAddonProps & JSX.IntrinsicElements[As]
-        : As extends React.ComponentType<infer AsProps>
-        ? P & FormAddonProps & AsProps
-        : PropsWithChildren<P & FormAddonProps>
-      : PropsWithChildren<P & FormAddonProps>
-  ): JSX.Element | null;
-}
-
+type FormAddonComponent = OverridableComponent<
+  PropsWithChildren<FormAddonProps>
+>;
 export const FormAddon: FormAddonComponent = React.forwardRef<
   any,
-  PropsWithChildren<FormAddonProps>
->(function FormAddon({ children, ...inProps }, ref) {
+  PropsWithChildren<FormAddonProps & { component?: React.ElementType }>
+>(function FormAddon({ children, component, ...inProps }, ref) {
   const props = useThemeProps<Theme, FormAddonProps, "JunFormAddon">({
     props: inProps,
     name: "JunFormAddon",
@@ -93,6 +85,7 @@ export const FormAddon: FormAddonComponent = React.forwardRef<
   return (
     <FormAddonRoot
       ref={ref}
+      as={component}
       {...other}
       styleProps={styleProps}
       className={cx(classes.root, props.className)}

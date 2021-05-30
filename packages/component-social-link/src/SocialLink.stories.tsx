@@ -45,7 +45,7 @@ export const Link: Story<SocialLinkProps> = (args) => {
       <SocialLink {...args}>
         <FacebookCircle />
       </SocialLink>
-      <SocialLink as={RoutingLink} to={args.href!} {...args}>
+      <SocialLink component={RoutingLink} to={args.href!} {...args}>
         <FacebookSquare />
       </SocialLink>
     </Box>
