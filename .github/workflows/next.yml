@@ -22,7 +22,7 @@ jobs:
         run: yarn test
 
       - name: Build Packages
-        run: yarn build:packages --since=next
+        run: yarn build:packages
 
       - uses: actions/setup-node@v1
         with:
