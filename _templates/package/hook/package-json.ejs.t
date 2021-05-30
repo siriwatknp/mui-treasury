@@ -9,8 +9,9 @@ unless_exists: true
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "homepage": "https://github.com/siriwatknp/mui-treasury-next#readme",
   "license": "MIT",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "src/index.ts",
+  "module": "esm/index.js",
+  "types": "src/index.ts",
   "publishConfig": {
     "access": "public"
   },
