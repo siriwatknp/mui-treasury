@@ -1,15 +1,10 @@
 import { promises as fsp } from "fs";
-import commander from "commander";
 import cpy from "cpy";
 import { set } from "edit-package-json";
 
 const PUBLISH_DIR = "dist";
 
 type PackageType = "cli" | "theme" | "component" | "style" | "layout";
-
-const program = new commander.Command();
-
-program.command("type <>");
 
 async function run() {
   // ts-node  prerelease.ts  component
@@ -35,16 +30,16 @@ async function run() {
   if (packageType === "layout") {
     await fsp.writeFile(`${PUBLISH_DIR}/package.json`, file);
   }
-  try {
-    await cpy("README.md", PUBLISH_DIR);
-  } catch (error) {
-    console.log("error", error);
-  }
-  try {
-    await cpy("CHANGELOG.md", PUBLISH_DIR);
-  } catch (error) {
-    console.log("error", error);
-  }
+  // try {
+  //   await cpy("README.md", PUBLISH_DIR);
+  // } catch (error) {
+  //   console.log("error", error);
+  // }
+  // try {
+  //   await cpy("CHANGELOG.md", PUBLISH_DIR);
+  // } catch (error) {
+  //   console.log("error", error);
+  // }
 }
 
 run().catch((error) => {
