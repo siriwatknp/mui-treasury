@@ -60,6 +60,9 @@
       "@mui-treasury/style-slider-apollo": [
         "packages/style-slider-apollo/src/"
       ],
+      "@mui-treasury/style-sociallink-ball": [
+        "packages/style-sociallink-ball/src/"
+      ],
       // hygen-style-target
 
       "@mui-treasury/use-number-input": ["packages/use-number-input/src/"],

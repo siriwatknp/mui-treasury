@@ -7,22 +7,32 @@ import {
   Theme,
 } from "@material-ui/core/styles";
 
-export const withMuiThemeProvider = (baseTheme?: Theme) => (
-  Story: any,
-  context: StoryContext
-) => {
-  const mode = context.globals?.muiMode ?? "light";
-  const [theme, setTheme] = useState(createTheme(baseTheme));
-  useEffect(() => {
-    setTheme(
-      createTheme({ ...baseTheme, palette: { ...baseTheme?.palette, mode } })
+export const withMuiThemeProvider =
+  (themeFn?: Theme | ((t: Theme) => Theme)) =>
+  (Story: any, context: StoryContext) => {
+    const mode = context.globals?.muiMode ?? "light";
+    const [theme, setTheme] = useState(
+      createTheme(
+        typeof themeFn === "function"
+          ? themeFn(createTheme({ palette: { mode } }))
+          : themeFn
+      )
     );
-  }, [mode]);
-  return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
-        <Story {...context} setTheme={setTheme} />
-      </ThemeProvider>
-    </StyledEngineProvider>
-  );
-};
+    useEffect(() => {
+      setTheme(
+        typeof themeFn === "function"
+          ? themeFn(createTheme({ palette: { mode } }))
+          : createTheme({
+              ...themeFn,
+              palette: { ...themeFn?.palette, mode },
+            })
+      );
+    }, [mode]);
+    return (
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          <Story {...context} setTheme={setTheme} />
+        </ThemeProvider>
+      </StyledEngineProvider>
+    );
+  };
