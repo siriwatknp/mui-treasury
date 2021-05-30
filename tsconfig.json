@@ -30,6 +30,12 @@
       "@mui-treasury/component-number-spinner": [
         "packages/component-number-spinner/src/"
       ],
+      "@mui-treasury/component-social-link": [
+        "packages/component-social-link/src/"
+      ],
+      "@mui-treasury/component-social-link/*": [
+        "packages/component-social-link/src/*"
+      ],
       // hygen-component-target
 
       "@mui-treasury/style-sticker-glow": ["packages/style-sticker-glow/src/"],
@@ -59,7 +65,9 @@
       "@mui-treasury/use-number-input": ["packages/use-number-input/src/"],
       // hygen-hook-target
       "@mui-treasury/layout": ["packages/layout/src"],
-      "@mui-treasury/mockup/*": ["packages/mockup/src/*"]
+      "@mui-treasury/mockup/*": ["packages/mockup/src/*"],
+
+      "@mui-treasury/types": ["packages/types/index.d.ts"]
     }
   }
 }
