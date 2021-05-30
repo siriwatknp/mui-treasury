@@ -1,7 +1,7 @@
 import { promises as fsp } from "fs";
 import commander from "commander";
 import cpy from "cpy";
-import { set, del } from "edit-package-json";
+import { set } from "edit-package-json";
 
 const PUBLISH_DIR = "dist";
 
@@ -30,10 +30,6 @@ async function run() {
   if (["component", "style", "theme", "hook", "mockup"].includes(packageType)) {
     await Promise.resolve(set(file, "main", "index.js"))
       .then((newFile) => set(newFile, "types", "index.d.ts"))
-      // .then((newFile) => del(newFile, "dependencies"))
-      // .then((newFile) =>
-      //   newFile.replace("releasedDependencies", "dependencies")
-      // )
       .then((result) => fsp.writeFile(`${PUBLISH_DIR}/package.json`, result));
   }
   if (packageType === "layout") {
@@ -52,5 +48,5 @@ async function run() {
 }
 
 run().catch((error) => {
-  throw error;
+  console.error(error);
 });

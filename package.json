@@ -1,6 +1,7 @@
 {
   "name": "mui-treasury",
   "private": true,
+  "license": "MIT",
   "workspaces": [
     "packages/*"
   ],
