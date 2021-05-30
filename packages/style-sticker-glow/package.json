@@ -1,6 +1,6 @@
 {
   "name": "@mui-treasury/style-sticker-glow",
-  "version": "0.1.0-alpha.6",
+  "version": "0.1.0-alpha.7",
   "description": "> TODO: description",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "homepage": "https://github.com/siriwatknp/mui-treasury#readme",
@@ -36,7 +36,7 @@
     "@mui-treasury/theme-treasury": "^0.3.0-alpha.7"
   },
   "dependencies": {
-    "@mui-treasury/component-sticker": "^0.1.0-alpha.6",
-    "@mui-treasury/theme-treasury": "^0.3.0-alpha.9"
+    "@mui-treasury/component-sticker": "^0.1.0-alpha.7",
+    "@mui-treasury/theme-treasury": "^0.3.0-alpha.10"
   }
 }

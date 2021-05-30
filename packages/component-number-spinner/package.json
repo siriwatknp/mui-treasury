@@ -1,6 +1,6 @@
 {
   "name": "@mui-treasury/component-number-spinner",
-  "version": "0.1.0-alpha.3",
+  "version": "0.1.0-alpha.4",
   "description": "mui-treasury | component-number-spinner",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "homepage": "https://github.com/siriwatknp/mui-treasury#readme",
@@ -34,7 +34,7 @@
     "@material-ui/core": "^5.0.0"
   },
   "dependencies": {
-    "@mui-treasury/use-number-input": "^0.1.0-alpha.3"
+    "@mui-treasury/use-number-input": "^0.1.0-alpha.4"
   },
   "releasedDependencies": {
     "@mui-treasury/use-number-input": "^0.1.0-alpha.0"
