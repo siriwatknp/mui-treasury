@@ -53,8 +53,8 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Push publish commit
-        run: git push --tags
+      - name: Push publish commit with tags
+        run: git push origin HEAD --tags
 
       - name: Build storybook
         run: yarn build:storybook
