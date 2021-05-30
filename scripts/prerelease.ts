@@ -10,6 +10,7 @@ async function run() {
   // ts-node  prerelease.ts  component
   // 0      | 1            | 2
   const packageType = process.argv[2] as PackageType;
+  console.info("packageType", packageType);
 
   if (!packageType) {
     throw new Error("arg must not be undefined");
@@ -23,9 +24,19 @@ async function run() {
     );
   }
   if (["component", "style", "theme", "hook", "mockup"].includes(packageType)) {
-    await Promise.resolve(set(file, "main", "index.js"))
-      .then((newFile) => set(newFile, "types", "index.d.ts"))
-      .then((result) => fsp.writeFile(`${PUBLISH_DIR}/package.json`, result));
+    await Promise.resolve(file)
+      .then((newFile) => {
+        console.info('replacing "main"');
+        return set(newFile, "main", "index.js");
+      })
+      .then((newFile) => {
+        console.info('replacing "types"');
+        return set(newFile, "types", "index.d.ts");
+      })
+      .then((result) => {
+        console.info("writing file to dir:", PUBLISH_DIR);
+        return fsp.writeFile(`${PUBLISH_DIR}/package.json`, result);
+      });
   }
   if (packageType === "layout") {
     await fsp.writeFile(`${PUBLISH_DIR}/package.json`, file);
