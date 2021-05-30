@@ -1,6 +1,7 @@
 {
   "name": "@mui-treasury/theme-treasury",
   "version": "0.3.0-alpha.9",
+  "private": true,
   "description": "> TODO: description",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "homepage": "https://github.com/siriwatknp/mui-treasury#readme",
@@ -23,8 +24,7 @@
     "build:cjs": "cross-env NODE_ENV=production BABEL_ENV=cjs babel --config-file ../../babel-config.js --extensions \".js,.ts,.tsx\" ./src --out-dir ./dist --ignore \"**/*.test.ts,**/*.test.tsx,**/*.stories.tsx\"",
     "build:esm": "cross-env NODE_ENV=production BABEL_ENV=esm babel --config-file ../../babel-config.js --extensions \".js,.ts,.tsx\" ./src --out-dir ./dist/esm --ignore \"**/*.test.ts,**/*.test.tsx,**/*.stories.tsx\"",
     "build:types": "tsc -p tsconfig.build.json",
-    "prepare-dist": "ts-node ../../scripts/prerelease.ts theme",
-    "prepublishOnly": "yarn prepare-dist"
+    "prepare-dist": "ts-node ../../scripts/prerelease.ts theme"
   },
   "bugs": {
     "url": "https://github.com/siriwatknp/mui-treasury/issues"
