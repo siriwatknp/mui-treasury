@@ -31,7 +31,7 @@
     "url": "https://github.com/siriwatknp/mui-treasury/issues"
   },
   "peerDependencies": {
-    "@material-ui/core": "^5.0.0"
+    "@material-ui/core": "^5.0.0-alpha.34"
   },
   "dependencies": {
     "@mui-treasury/types": "^0.1.0-alpha.0"
