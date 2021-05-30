@@ -3,7 +3,7 @@
   "version": "0.1.0-alpha.6",
   "description": "> TODO: description",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
-  "homepage": "https://github.com/siriwatknp/mui-treasury-next#readme",
+  "homepage": "https://github.com/siriwatknp/mui-treasury#readme",
   "license": "MIT",
   "main": "src/index.ts",
   "module": "esm/index.js",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/siriwatknp/mui-treasury-next.git"
+    "url": "git+https://github.com/siriwatknp/mui-treasury.git"
   },
   "scripts": {
     "test": "jest --verbose",
@@ -29,7 +29,7 @@
     "prepublishOnly": "yarn prepare-dist"
   },
   "bugs": {
-    "url": "https://github.com/siriwatknp/mui-treasury-next/issues"
+    "url": "https://github.com/siriwatknp/mui-treasury/issues"
   },
   "dependencies": {
     "@mui-treasury/theme-treasury": "^0.3.0-alpha.9"

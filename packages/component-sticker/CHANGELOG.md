@@ -7,5 +7,5 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- add cli, component and style packages for POC ([ddd4978](https://github.com/siriwatknp/mui-treasury-next/commit/ddd4978e2b687823c1be316f7c55164735a56811))
-- ready to build ([296acf0](https://github.com/siriwatknp/mui-treasury-next/commit/296acf0071cf270efbcef9b651290449ee2685a1))
+- add cli, component and style packages for POC ([ddd4978](https://github.com/siriwatknp/mui-treasury/commit/ddd4978e2b687823c1be316f7c55164735a56811))
+- ready to build ([296acf0](https://github.com/siriwatknp/mui-treasury/commit/296acf0071cf270efbcef9b651290449ee2685a1))

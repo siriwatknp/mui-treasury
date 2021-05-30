@@ -3,7 +3,7 @@
   "version": "0.1.0-alpha.0",
   "description": "> TODO: description",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
-  "homepage": "https://github.com/siriwatknp/mui-treasury-next#readme",
+  "homepage": "https://github.com/siriwatknp/mui-treasury#readme",
   "license": "MIT",
   "types": "./index.d.ts",
   "files": [
@@ -15,11 +15,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/siriwatknp/mui-treasury-next.git"
+    "url": "git+https://github.com/siriwatknp/mui-treasury.git"
   },
   "scripts": {},
   "bugs": {
-    "url": "https://github.com/siriwatknp/mui-treasury-next/issues"
+    "url": "https://github.com/siriwatknp/mui-treasury/issues"
   },
   "peerDependencies": {
     "@types/react": "*"

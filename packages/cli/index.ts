@@ -93,11 +93,11 @@ function downloadAndExtractCode(
 ): Promise<void> {
   return pipeline(
     got.stream(
-      "https://codeload.github.com/siriwatknp/mui-treasury-next/tar.gz/main"
+      "https://codeload.github.com/siriwatknp/mui-treasury/tar.gz/main"
     ),
     tar.extract(
       { cwd: root, strip: 2 },
-      sources.map((src) => `mui-treasury-next-main/packages/${src}`)
+      sources.map((src) => `mui-treasury-main/packages/${src}`)
     )
   );
 }

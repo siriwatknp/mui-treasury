@@ -7,7 +7,7 @@ unless_exists: true
   "version": "0.1.0-alpha.0",
   "description": "mui-treasury | <%=h.changeCase.param(name)%>",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
-  "homepage": "https://github.com/siriwatknp/mui-treasury-next#readme",
+  "homepage": "https://github.com/siriwatknp/mui-treasury#readme",
   "license": "MIT",
   "main": "src/index.ts",
   "module": "esm/index.js",
@@ -17,7 +17,7 @@ unless_exists: true
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/siriwatknp/mui-treasury-next.git"
+    "url": "git+https://github.com/siriwatknp/mui-treasury.git"
   },
   "scripts": {
     "test": "jest --verbose",
@@ -32,7 +32,7 @@ unless_exists: true
     "prepublishOnly": "yarn prepare-dist"
   },
   "bugs": {
-    "url": "https://github.com/siriwatknp/mui-treasury-next/issues"
+    "url": "https://github.com/siriwatknp/mui-treasury/issues"
   },
   "peerDependencies": {
     "react": ">=16.8.0"

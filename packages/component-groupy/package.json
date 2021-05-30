@@ -3,7 +3,7 @@
   "version": "0.0.1-alpha.4",
   "description": "mui-treasury | component-groupy",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
-  "homepage": "https://github.com/siriwatknp/mui-treasury-next#readme",
+  "homepage": "https://github.com/siriwatknp/mui-treasury#readme",
   "license": "MIT",
   "main": "src/index.ts",
   "module": "esm/index.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/siriwatknp/mui-treasury-next.git"
+    "url": "git+https://github.com/siriwatknp/mui-treasury.git"
   },
   "scripts": {
     "test": "jest --verbose",
@@ -28,7 +28,7 @@
     "prepublishOnly": "yarn prepare-dist"
   },
   "bugs": {
-    "url": "https://github.com/siriwatknp/mui-treasury-next/issues"
+    "url": "https://github.com/siriwatknp/mui-treasury/issues"
   },
   "peerDependencies": {
     "@material-ui/core": "^5.0.0"
