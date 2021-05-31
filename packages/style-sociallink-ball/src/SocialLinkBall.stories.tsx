@@ -1,15 +1,24 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
-import { createTheme } from "@material-ui/core/styles";
+import {
+  createTheme,
+  experimentalStyled as styled,
+} from "@material-ui/core/styles";
 
 import {
   SocialLink,
   SocialLinkProps,
 } from "@mui-treasury/component-social-link";
-import { Dribbble } from "@mui-treasury/component-social-link/icons";
+import {
+  Dribbble,
+  FacebookCircle,
+} from "@mui-treasury/component-social-link/icons";
 
-import { createSocialLinkBallStyles } from "@mui-treasury/style-sociallink-ball";
+import {
+  getSocialLinkBallTheme,
+  getSocialLinkBallStyles,
+} from "@mui-treasury/style-sociallink-ball";
 
 import { withMuiThemeProvider } from "stories/_internal/decorators";
 
@@ -22,6 +31,16 @@ export default {
   },
 } as Meta;
 
+const SocialLinkBall = styled(SocialLink)(getSocialLinkBallStyles);
+
+export const PerComponent: Story<SocialLinkProps> = (args) => {
+  return (
+    <SocialLinkBall {...args}>
+      <FacebookCircle />
+    </SocialLinkBall>
+  );
+};
+
 export const GlobalTheme: Story<SocialLinkProps> = (args) => {
   return (
     <SocialLink {...args}>
@@ -31,6 +50,6 @@ export const GlobalTheme: Story<SocialLinkProps> = (args) => {
 };
 GlobalTheme.decorators = [
   withMuiThemeProvider((theme) =>
-    createTheme({ components: createSocialLinkBallStyles(theme) })
+    createTheme({ components: getSocialLinkBallTheme(theme) })
   ),
 ];

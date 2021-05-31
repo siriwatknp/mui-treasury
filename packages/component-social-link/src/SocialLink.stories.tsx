@@ -66,6 +66,7 @@ export const AllSvgs: Story<SvgIconProps> = (args) => {
         {Object.entries(Icons as { [k: string]: React.ElementType }).map(
           ([name, IconComponent]) => (
             <Box
+              key={name}
               sx={{
                 borderRadius: 1,
                 transition: "0.2s",
