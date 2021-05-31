@@ -51,7 +51,7 @@
     "storybook-addon-mdx-embed": "0.0.19",
     "storybook-addon-mui-mode": "0.0.2",
     "stylis": "4.0.10",
-    "stylis-plugin-rtl": "2.0.2",
+    "stylis-plugin-rtl": "2.1.0",
     "ts-jest": "26.5.1",
     "ts-node": "9.1.1",
     "tsconfig-paths-webpack-plugin": "3.3.0",
