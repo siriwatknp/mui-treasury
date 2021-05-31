@@ -1,10 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
-import {
-  createTheme,
-  experimentalStyled as styled,
-} from "@material-ui/core/styles";
+import { experimentalStyled as styled } from "@material-ui/core/styles";
 
 import {
   SocialLink,
@@ -47,7 +44,11 @@ export const Ball: Story<SocialLinkProps> = (args) => {
   );
 };
 Ball.decorators = [
-  withMuiThemeProvider((theme) =>
-    createTheme({ components: getSocialLinkBallTheme(theme) })
-  ),
+  withMuiThemeProvider((theme) => {
+    theme.components = {
+      ...theme.components,
+      ...getSocialLinkBallTheme(theme),
+    };
+    return theme;
+  }),
 ];
