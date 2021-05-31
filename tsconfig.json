@@ -72,6 +72,9 @@
       "@mui-treasury/style-sociallink-round": [
         "packages/style-sociallink-round/src/"
       ],
+      "@mui-treasury/style-sociallink-zoom": [
+        "packages/style-sociallink-zoom/src/"
+      ],
       // hygen-style-target
 
       "@mui-treasury/use-number-input": ["packages/use-number-input/src/"],
