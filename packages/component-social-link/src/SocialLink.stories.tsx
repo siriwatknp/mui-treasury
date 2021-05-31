@@ -99,3 +99,11 @@ export const AllSvgs: Story<SvgIconProps> = (args) => {
 AllSvgs.parameters = {
   layout: "fullscreen",
 };
+AllSvgs.argTypes = {
+  color: {
+    control: {
+      type: "select",
+      options: ["inherit", "disabled", "action", "primary", "secondary"],
+    },
+  },
+};
