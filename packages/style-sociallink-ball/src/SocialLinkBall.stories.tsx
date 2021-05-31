@@ -23,7 +23,8 @@ import {
 import { withMuiThemeProvider } from "stories/_internal/decorators";
 
 export default {
-  title: "Component/SocialLink/Ball",
+  title: "Component/SocialLink/style-packages",
+  component: SocialLink,
   argTypes: {},
   args: {},
   parameters: {
@@ -33,22 +34,19 @@ export default {
 
 const SocialLinkBall = styled(SocialLink)(getSocialLinkBallStyles);
 
-export const PerComponent: Story<SocialLinkProps> = (args) => {
+export const Ball: Story<SocialLinkProps> = (args) => {
   return (
-    <SocialLinkBall {...args}>
-      <FacebookCircle />
-    </SocialLinkBall>
+    <>
+      <SocialLinkBall {...args}>
+        <FacebookCircle />
+      </SocialLinkBall>
+      <SocialLink {...args}>
+        <Dribbble />
+      </SocialLink>
+    </>
   );
 };
-
-export const GlobalTheme: Story<SocialLinkProps> = (args) => {
-  return (
-    <SocialLink {...args}>
-      <Dribbble />
-    </SocialLink>
-  );
-};
-GlobalTheme.decorators = [
+Ball.decorators = [
   withMuiThemeProvider((theme) =>
     createTheme({ components: getSocialLinkBallTheme(theme) })
   ),
