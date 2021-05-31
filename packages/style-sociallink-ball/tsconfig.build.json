@@ -1,9 +1,7 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.build.json",
   "include": ["src"],
-  "exclude": ["node_modules", "**/*.test.*", "**/*.spec.*", "**/*.stories.*"],
   "compilerOptions": {
-    "outDir": "dist",
-    "noEmitOnError": false
+    "outDir": "dist"
   }
 }

@@ -1,3 +1,4 @@
+import "@mui-treasury/component-social-link";
 import { Theme } from "@material-ui/core/styles";
 import { Components } from "@material-ui/core/styles/components";
 
