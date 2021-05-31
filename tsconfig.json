@@ -66,6 +66,9 @@
       "@mui-treasury/style-sociallink-moon": [
         "packages/style-sociallink-moon/src/"
       ],
+      "@mui-treasury/style-sociallink-poof": [
+        "packages/style-sociallink-poof/src/"
+      ],
       // hygen-style-target
 
       "@mui-treasury/use-number-input": ["packages/use-number-input/src/"],
