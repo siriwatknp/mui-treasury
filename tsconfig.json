@@ -36,6 +36,9 @@
       "@mui-treasury/component-social-link/*": [
         "packages/component-social-link/src/*"
       ],
+      "@mui-treasury/component-emailsubscribe": [
+        "packages/component-emailsubscribe/src/"
+      ],
       // hygen-component-target
 
       "@mui-treasury/style-sticker-glow": ["packages/style-sticker-glow/src/"],

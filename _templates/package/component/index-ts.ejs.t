@@ -5,3 +5,4 @@ unless_exists: true
 import "./theme-extended";
 
 export * from "./<%=h.toName(name)%>";
+export * from "./<%=h.toNameCamel(name)%>Classes";
