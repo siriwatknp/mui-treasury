@@ -4,7 +4,7 @@ unless_exists: true
 ---
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { <%= Name=h.toName(name) %>, <%=Name%>Props } from './<%=Name%>';
+import { <%= Name=h.toName(name) %>, <%=Name%>Props } from '@mui-treasury/<%=h.toNamePath(name)%>';
 
 export default {
   title: 'Component/<%=Name%>',

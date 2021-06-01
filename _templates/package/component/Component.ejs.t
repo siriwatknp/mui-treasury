@@ -55,7 +55,7 @@ const <%=Name%>Root = styled(
   }
 )<{ styleProps: <%=Name%>Props }>({});
 
-export const <%=Name%>: OverridableComponent<<%=Name%>> = React.forwardRef<
+export const <%=Name%>: OverridableComponent<<%=Name%>Props> = React.forwardRef<
   any,
   PropsWithChildren<<%=Name%>Props>
 >(function <%=Name%>({ children, ...inProps }, ref) {
