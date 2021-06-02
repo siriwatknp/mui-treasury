@@ -29,6 +29,11 @@ export type EmailSubscribeFormProps = Omit<
   "onSubmit"
 > & {
   /**
+   * input is cleared after email is submitted
+   * @default true
+   */
+  inputClearedAfterSubmit?: boolean;
+  /**
    * a function to be called with valid email
    */
   onSubmit: (value: string) => void;
@@ -38,42 +43,47 @@ export type EmailSubscribeFormProps = Omit<
   sx?: SxProps<Theme>;
 };
 
-export const Form = React.forwardRef<
-  HTMLFormElement,
-  Omit<JSX.IntrinsicElements["form"], "onSubmit"> & {
-    onSubmit: (value: string) => void;
-  }
->(function EmailSubscribeForm({ children, ...inProps }, ref) {
-  const props = useThemeProps<
-    Theme,
-    EmailSubscribeFormProps,
-    "JunEmailSubscribe"
-  >({
-    props: inProps,
-    name: "JunEmailSubscribe",
-  });
-  const { onSubmit, className, ...other } = props;
+export const Form = React.forwardRef<HTMLFormElement, EmailSubscribeFormProps>(
+  function EmailSubscribeForm(
+    { children, inputClearedAfterSubmit = true, ...inProps },
+    ref
+  ) {
+    const props = useThemeProps<
+      Theme,
+      EmailSubscribeFormProps,
+      "JunEmailSubscribe"
+    >({
+      props: inProps,
+      name: "JunEmailSubscribe",
+    });
+    const { onSubmit, className, ...other } = props;
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const target = event.target as {
-      elements?: { email?: { value: string } };
-    };
-    onSubmit(target?.elements?.email?.value ?? "");
-  }
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+      event.preventDefault();
+      const target = event.target as {
+        elements?: { email?: { value: string } };
+      };
+      onSubmit(target?.elements?.email?.value ?? "");
+      if (inputClearedAfterSubmit) {
+        if (target.elements?.email) {
+          target.elements.email.value = "";
+        }
+      }
+    }
 
-  return (
-    <FormRoot
-      aria-label="email subscribe"
-      ref={ref}
-      className={cx(emailSubscribeClasses.form, className)}
-      onSubmit={handleSubmit}
-      {...other}
-    >
-      {children}
-    </FormRoot>
-  );
-});
+    return (
+      <FormRoot
+        aria-label="email subscribe"
+        ref={ref}
+        className={cx(emailSubscribeClasses.form, className)}
+        onSubmit={handleSubmit}
+        {...other}
+      >
+        {children}
+      </FormRoot>
+    );
+  }
+);
 
 const InputRoot = styled(
   "input",
