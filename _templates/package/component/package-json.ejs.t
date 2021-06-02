@@ -3,9 +3,9 @@ to: packages/<%=h.toNamePath(name)%>/package.json
 unless_exists: true
 ---
 {
-  "name": "@mui-treasury/<%=h.changeCase.param(name)%>",
+  "name": "@mui-treasury/<%=h.toNamePath(name)%>",
   "version": "0.1.0-alpha.0",
-  "description": "mui-treasury | <%=h.changeCase.param(name)%>",
+  "description": "mui-treasury | <%=h.toNamePath(name)%>",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "homepage": "https://github.com/siriwatknp/mui-treasury#readme",
   "license": "MIT",

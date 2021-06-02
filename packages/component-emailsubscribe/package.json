@@ -1,7 +1,7 @@
 {
-  "name": "@mui-treasury/component-email-subscribe",
+  "name": "@mui-treasury/component-emailsubscribe",
   "version": "0.1.0-alpha.0",
-  "description": "mui-treasury | component-email-subscribe",
+  "description": "mui-treasury | component-emailsubscribe",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "homepage": "https://github.com/siriwatknp/mui-treasury#readme",
   "license": "MIT",

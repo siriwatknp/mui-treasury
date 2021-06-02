@@ -29,5 +29,8 @@
   },
   "bugs": {
     "url": "https://github.com/siriwatknp/mui-treasury/issues"
+  },
+  "peerDependencies": {
+    "@mui-treasury/component-emailsubscribe": "^0.1.0-alpha.0"
   }
 }
