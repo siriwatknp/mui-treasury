@@ -20,9 +20,6 @@ const FormRoot = styled(
 )({
   display: "flex",
   borderRadius: 4,
-  "&:focus-within": {
-    boxShadow: "0 4px 12px 0 rgba(0,0,0,0.16)",
-  },
 });
 
 export type EmailSubscribeFormProps = Omit<
@@ -86,12 +83,12 @@ const InputRoot = styled(
   }
 )(({ theme: { palette, typography } }) => ({
   backgroundColor: palette.background.paper,
-  minWidth: 256,
-  flex: 1,
+  minWidth: 0,
+  flexGrow: 1,
+  flexBasis: 256,
   fontSize: "1rem",
   fontFamily: typography.fontFamily,
   lineHeight: 1.5,
-  alignSelf: "stretch",
   border: "1px solid",
   borderColor:
     palette.mode === "dark" ? palette.grey[700] : palette.action.disabled,
@@ -181,7 +178,7 @@ export const Submit = React.forwardRef<
   HTMLButtonElement,
   EmailSubscribeSubmitProps
 >(function EmailSubscribeSubmit(
-  { children = "Submit", className, ...inProps },
+  { children = "Subscribe", className, ...inProps },
   ref
 ) {
   const props = useThemeProps<
