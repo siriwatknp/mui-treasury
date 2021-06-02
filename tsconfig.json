@@ -78,6 +78,9 @@
       "@mui-treasury/style-sociallink-zoom": [
         "packages/style-sociallink-zoom/src/"
       ],
+      "@mui-treasury/style-emailsubscribe-bootstrap": [
+        "packages/style-emailsubscribe-bootstrap/src/"
+      ],
       // hygen-style-target
 
       "@mui-treasury/use-number-input": ["packages/use-number-input/src/"],
