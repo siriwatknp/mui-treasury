@@ -19,7 +19,8 @@ const FormRoot = styled(
   }
 )({
   display: "flex",
-  borderRadius: 4,
+  width: 296,
+  maxWidth: "100%",
 });
 
 export type EmailSubscribeFormProps = Omit<
