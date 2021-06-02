@@ -93,6 +93,9 @@
       "@mui-treasury/style-emailsubscribe-ready": [
         "packages/style-emailsubscribe-ready/src/"
       ],
+      "@mui-treasury/style-emailsubscribe-translucent": [
+        "packages/style-emailsubscribe-translucent/src/"
+      ],
       // hygen-style-target
 
       "@mui-treasury/use-number-input": ["packages/use-number-input/src/"],

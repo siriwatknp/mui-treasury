@@ -6,9 +6,9 @@ import { experimentalStyled as styled } from "@material-ui/core/styles";
 import * as EmailSubscribe from "@mui-treasury/component-emailsubscribe";
 
 import {
-  getEmailSubscribeReadyStyles,
-  getEmailSubscribeReadyTheme,
-} from "@mui-treasury/style-emailsubscribe-ready";
+  getEmailSubscribeTranslucentStyles,
+  getEmailSubscribeTranslucentTheme,
+} from "@mui-treasury/style-emailsubscribe-translucent";
 
 import { withMuiThemeProvider } from "stories/_internal/decorators";
 
@@ -23,17 +23,17 @@ export default {
   },
 } as Meta;
 
-const EmailSubscribeReady = styled(EmailSubscribe.Form)(
-  getEmailSubscribeReadyStyles
+const EmailSubscribeTranslucent = styled(EmailSubscribe.Form)(
+  getEmailSubscribeTranslucentStyles
 );
 
-export const Ready: Story = (args) => {
+export const Translucent: Story = (args) => {
   return (
     <>
-      <EmailSubscribeReady onSubmit={args.onSubmit}>
+      <EmailSubscribeTranslucent onSubmit={args.onSubmit}>
         <EmailSubscribe.Input />
         <EmailSubscribe.Submit />
-      </EmailSubscribeReady>
+      </EmailSubscribeTranslucent>
       <br />
       <EmailSubscribe.Form onSubmit={args.onSubmit}>
         <EmailSubscribe.Input />
@@ -42,11 +42,11 @@ export const Ready: Story = (args) => {
     </>
   );
 };
-Ready.decorators = [
+Translucent.decorators = [
   withMuiThemeProvider((theme) => {
     theme.components = {
       ...theme.components,
-      ...getEmailSubscribeReadyTheme(theme),
+      ...getEmailSubscribeTranslucentTheme(theme),
     };
     return theme;
   }),

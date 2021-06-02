@@ -36,7 +36,9 @@ export const Minimal: Story = (args) => {
   return (
     <>
       <FormControl margin="normal">
-        <FormLabel htmlFor={"newsletter-style"}>Newsletter</FormLabel>
+        <FormLabel htmlFor={"newsletter-style"} sx={{ mb: 0.5 }}>
+          Newsletter
+        </FormLabel>
         <EmailSubscribeMinimal onSubmit={args.onSubmit}>
           <EmailSubscribe.Input id={"newsletter-style"} />
           <EmailSubscribe.Submit>
@@ -46,7 +48,9 @@ export const Minimal: Story = (args) => {
       </FormControl>
       <br />
       <FormControl margin="normal">
-        <FormLabel htmlFor={"newsletter-theme"}>Newsletter</FormLabel>
+        <FormLabel htmlFor={"newsletter-theme"} sx={{ mb: 0.5 }}>
+          Newsletter
+        </FormLabel>
         <EmailSubscribe.Form onSubmit={args.onSubmit}>
           <EmailSubscribe.Input id={"newsletter-theme"} />
           <EmailSubscribe.Submit>
