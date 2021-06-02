@@ -81,6 +81,9 @@
       "@mui-treasury/style-emailsubscribe-bootstrap": [
         "packages/style-emailsubscribe-bootstrap/src/"
       ],
+      "@mui-treasury/style-emailsubscribe-info": [
+        "packages/style-emailsubscribe-info/src/"
+      ],
       // hygen-style-target
 
       "@mui-treasury/use-number-input": ["packages/use-number-input/src/"],

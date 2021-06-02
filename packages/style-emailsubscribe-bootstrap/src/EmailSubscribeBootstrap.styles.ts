@@ -1,3 +1,4 @@
+import "@mui-treasury/component-emailsubscribe";
 import { emailSubscribeClasses } from "@mui-treasury/component-emailsubscribe";
 import { Theme, alpha } from "@material-ui/core/styles";
 import { CSSProperties } from "@material-ui/styles";
@@ -31,12 +32,9 @@ const getInputStyles = ({ palette }: Theme): CSSProperties => {
     position: "relative",
     backgroundColor: white,
     borderWidth,
-    borderStyle: "solid",
     borderColor,
-    fontSize: 16,
     height: "calc(1.5em + .75rem + 2px)",
     padding: inputPadding,
-    lineHeight: 1.5,
     transition: "border-color .15s ease-in-out,box-shadow .15s ease-in-out",
     // Use the system font instead of the default Roboto font.
     fontFamily,
