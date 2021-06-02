@@ -90,6 +90,9 @@
       "@mui-treasury/style-emailsubscribe-minimal": [
         "packages/style-emailsubscribe-minimal/src/"
       ],
+      "@mui-treasury/style-emailsubscribe-ready": [
+        "packages/style-emailsubscribe-ready/src/"
+      ],
       // hygen-style-target
 
       "@mui-treasury/use-number-input": ["packages/use-number-input/src/"],

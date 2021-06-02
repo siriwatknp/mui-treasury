@@ -8,9 +8,9 @@ import * as EmailSubscribe from "@mui-treasury/component-emailsubscribe";
 import ArrowForward from "@material-ui/icons/ArrowForward";
 
 import {
-  getEmailSubscribeInfoStyles,
-  getEmailSubscribeInfoTheme,
-} from "@mui-treasury/style-emailsubscribe-info";
+  getEmailSubscribeReadyStyles,
+  getEmailSubscribeReadyTheme,
+} from "@mui-treasury/style-emailsubscribe-ready";
 
 import { withMuiThemeProvider } from "stories/_internal/decorators";
 
@@ -25,34 +25,30 @@ export default {
   },
 } as Meta;
 
-const EmailSubscribeInfo = styled(EmailSubscribe.Form)(
-  getEmailSubscribeInfoStyles
+const EmailSubscribeReady = styled(EmailSubscribe.Form)(
+  getEmailSubscribeReadyStyles
 );
 
-export const Info: Story = (args) => {
+export const Ready: Story = (args) => {
   return (
     <>
-      <EmailSubscribeInfo onSubmit={args.onSubmit}>
+      <EmailSubscribeReady onSubmit={args.onSubmit}>
         <EmailSubscribe.Input />
-        <EmailSubscribe.Submit aria-label="Subscribe">
-          <ArrowForward />
-        </EmailSubscribe.Submit>
-      </EmailSubscribeInfo>
+        <EmailSubscribe.Submit />
+      </EmailSubscribeReady>
       <br />
       <EmailSubscribe.Form onSubmit={args.onSubmit}>
         <EmailSubscribe.Input />
-        <EmailSubscribe.Submit aria-label="Subscribe">
-          <ArrowForward />
-        </EmailSubscribe.Submit>
+        <EmailSubscribe.Submit />
       </EmailSubscribe.Form>
     </>
   );
 };
-Info.decorators = [
+Ready.decorators = [
   withMuiThemeProvider((theme) => {
     theme.components = {
       ...theme.components,
-      ...getEmailSubscribeInfoTheme(theme),
+      ...getEmailSubscribeReadyTheme(theme),
     };
     return theme;
   }),
