@@ -117,6 +117,9 @@
       "@mui-treasury/style-navigation-zoom": [
         "packages/style-navigation-zoom/src/"
       ],
+      "@mui-treasury/style-navigation-plain": [
+        "packages/style-navigation-plain/src/"
+      ],
       // hygen-style-target
 
       "@mui-treasury/use-number-input": ["packages/use-number-input/src/"],
