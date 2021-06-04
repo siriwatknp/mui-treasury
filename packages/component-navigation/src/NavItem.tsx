@@ -103,7 +103,8 @@ export const NavItem: OverridableComponent<PropsWithChildren<NavItemProps>> =
           styleProps={styleProps}
           className={cx(
             navigationClasses.item,
-            active && navigationClasses.itemActive,
+            active && "Mui-active",
+            disabled && "Mui-disabled",
             props.className
           )}
         >

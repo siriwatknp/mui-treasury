@@ -10,5 +10,4 @@ export function getNavigationUtilityClass(slot: string) {
 export const navigationClasses = generateUtilityClasses("JunNavigation", [
   "root",
   "item",
-  "itemActive",
 ]);

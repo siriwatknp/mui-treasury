@@ -102,6 +102,9 @@
       "@mui-treasury/style-emailsubscribe-translucent": [
         "packages/style-emailsubscribe-translucent/src/"
       ],
+      "@mui-treasury/style-navigation-bulb": [
+        "packages/style-navigation-bulb/src/"
+      ],
       // hygen-style-target
 
       "@mui-treasury/use-number-input": ["packages/use-number-input/src/"],

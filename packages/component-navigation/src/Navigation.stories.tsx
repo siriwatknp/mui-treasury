@@ -23,8 +23,8 @@ export const Demo: Story<NavigationProps> = (args) => {
       {[...Array(5)].map((_, index) => (
         <NavItem
           key={index}
+          // href="#"
           active={activeIndex === index}
-          href={index !== 3 ? "#" : undefined}
           disabled={index === 3}
           onClick={() => setActiveIndex(index)}
         >
