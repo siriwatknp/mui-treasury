@@ -111,6 +111,9 @@
       "@mui-treasury/style-navigation-line": [
         "packages/style-navigation-line/src/"
       ],
+      "@mui-treasury/style-navigation-point": [
+        "packages/style-navigation-point/src/"
+      ],
       // hygen-style-target
 
       "@mui-treasury/use-number-input": ["packages/use-number-input/src/"],

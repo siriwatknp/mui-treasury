@@ -19,9 +19,7 @@ const getItemStyles = ({ spacing, palette }: Theme): CSSProperties => {
     cursor: "pointer",
     textDecoration: "none",
     borderRadius: "8px / 50%",
-    [`&:not(.Mui-disabled)`]: {
-      color: palette.mode === "dark" ? palette.text.secondary : "#121212",
-    },
+    color: palette.mode === "dark" ? palette.text.secondary : "#121212",
     [`&.Mui-active`]: {
       backgroundColor: activeColor,
       color: palette.mode === "dark" ? "#fff" : palette.primary.main,

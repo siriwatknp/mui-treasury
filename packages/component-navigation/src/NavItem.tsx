@@ -59,24 +59,23 @@ const NavItemRoot = styled(
       palette.mode === "dark"
         ? "rgba(255,255,255,0.57)"
         : palette.text.secondary,
+    position: "relative",
     padding: spacing(1, 2),
     borderRadius: shape.borderRadius,
     cursor: "pointer",
     textDecoration: "none",
     transition: "0.2s ease-out",
     "&:hover, &:focus": {
-      ...(!styleProps.active && {
-        color: palette.mode === "dark" ? "#fff" : "rgba(0,0,0,0.72)",
-      }),
+      color: palette.mode === "dark" ? "#fff" : "rgba(0,0,0,0.72)",
       outline: "none",
     },
-    ...(styleProps.active && {
+    "&.Mui-active": {
       color: palette.mode === "dark" ? "#fff" : palette.text.primary,
-    }),
-    ...(styleProps.disabled && {
+    },
+    "&.Mui-disabled": {
       color: palette.action.disabled,
       pointerEvents: "none",
-    }),
+    },
   })
 );
 

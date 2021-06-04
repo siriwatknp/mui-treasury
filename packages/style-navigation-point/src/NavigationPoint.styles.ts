@@ -6,21 +6,20 @@ import { Components } from "@material-ui/core/styles/components";
 
 type Output = Required<Pick<Components, "JunNavigation">>;
 
-const itemHorzPadding = 2;
-
-const getItemStyles = ({ palette, spacing }: Theme): CSSProperties => {
+const getItemStyles = ({ palette }: Theme): CSSProperties => {
   return {
-    color: palette.text.secondary,
+    color:
+      palette.mode === "dark" ? palette.text.secondary : palette.text.primary,
     "&.Mui-active": {
-      color:
-        palette.mode === "dark" ? palette.primary.light : palette.primary.main,
+      color: palette.mode === "dark" ? "#fff" : palette.primary.dark,
       "&:after": {
         opacity: 1,
-        transform: "scale(1, 1)",
+        width: 40,
         backgroundColor:
           palette.mode === "dark"
-            ? palette.primary.light
+            ? "rgba(255,255,255,0.8)"
             : palette.primary.main,
+        transform: "scale(1) translateX(-50%)",
       },
     },
     "&:after": {
@@ -28,26 +27,29 @@ const getItemStyles = ({ palette, spacing }: Theme): CSSProperties => {
       display: "block",
       position: "absolute",
       bottom: 0,
-      left: spacing(itemHorzPadding),
-      width: `calc(100% - ${spacing(itemHorzPadding * 2)})`,
-      height: 3,
-      transform: "scale(0, 1)",
-      transition: "0.2s ease-out",
+      left: "50%",
+      width: 6,
+      height: 6,
+      borderRadius: 50,
+      transform: "scale(0) translateX(-50%)",
+      transition: "0.3s ease-out",
       opacity: 0,
-      backgroundColor: palette.primary.light,
+      backgroundColor:
+        palette.mode === "dark"
+          ? "rgba(255,255,255,0.8)"
+          : palette.primary.main,
     },
     "&:hover": {
-      color:
-        palette.mode === "dark" ? palette.primary.light : palette.primary.main,
+      color: palette.text.primary,
       "&:after": {
         opacity: 1,
-        transform: "scale(1, 1)",
+        transform: "scale(1) translateX(-50%)",
       },
     },
   };
 };
 
-export const getNavigationLineStyles = ({
+export const getNavigationPointStyles = ({
   theme,
 }: {
   theme: Theme;
@@ -55,7 +57,7 @@ export const getNavigationLineStyles = ({
   [`& .${navigationClasses.item}`]: getItemStyles(theme),
 });
 
-export const getNavigationLineTheme = (theme: Theme): Output => {
+export const getNavigationPointTheme = (theme: Theme): Output => {
   return {
     JunNavigation: {
       styleOverrides: {
