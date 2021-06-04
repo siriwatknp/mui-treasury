@@ -10,7 +10,7 @@ import { Components } from "@material-ui/core/styles/components";
 type Output = Required<Pick<Components, "Jun<%=h.extractComponentName(name)%>">>;
 
 export const get<%= h.toName(name) %>Styles = ({
-  theme: { palette },
+  theme,
 }: {
   theme: Theme;
 }): CSSProperties => ({
