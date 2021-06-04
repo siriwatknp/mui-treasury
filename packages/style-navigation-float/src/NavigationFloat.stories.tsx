@@ -10,9 +10,9 @@ import {
 } from "@mui-treasury/component-navigation";
 
 import {
-  getNavigationBulbTheme,
-  getNavigationBulbStyles,
-} from "@mui-treasury/style-navigation-bulb";
+  getNavigationFloatTheme,
+  getNavigationFloatStyles,
+} from "@mui-treasury/style-navigation-float";
 
 import { withMuiThemeProvider } from "stories/_internal/decorators";
 
@@ -26,9 +26,9 @@ export default {
   },
 } as Meta;
 
-const NavigationBulb = styled(Navigation)(getNavigationBulbStyles);
+const NavigationFloat = styled(Navigation)(getNavigationFloatStyles);
 
-export const Bulb: Story<NavigationProps> = (args) => {
+export const Float: Story<NavigationProps> = (args) => {
   const [activeIndex, setActiveIndex] = React.useState(0);
   const items = [...Array(5)].map((_, index) => (
     <NavItem
@@ -43,17 +43,17 @@ export const Bulb: Story<NavigationProps> = (args) => {
   ));
   return (
     <>
-      <NavigationBulb {...args}>{items}</NavigationBulb>
+      <NavigationFloat {...args}>{items}</NavigationFloat>
       <br />
       <Navigation {...args}>{items}</Navigation>
     </>
   );
 };
-Bulb.decorators = [
+Float.decorators = [
   withMuiThemeProvider((theme) => {
     theme.components = {
       ...theme.components,
-      ...getNavigationBulbTheme(theme),
+      ...getNavigationFloatTheme(theme),
     };
     return theme;
   }),

@@ -65,10 +65,9 @@ const NavItemRoot = styled(
     textDecoration: "none",
     transition: "0.2s ease-out",
     "&:hover, &:focus": {
-      ...(!styleProps.active &&
-        !styleProps.disabled && {
-          color: palette.mode === "dark" ? "#fff" : "rgba(0,0,0,0.72)",
-        }),
+      ...(!styleProps.active && {
+        color: palette.mode === "dark" ? "#fff" : "rgba(0,0,0,0.72)",
+      }),
       outline: "none",
     },
     ...(styleProps.active && {

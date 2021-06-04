@@ -105,6 +105,9 @@
       "@mui-treasury/style-navigation-bulb": [
         "packages/style-navigation-bulb/src/"
       ],
+      "@mui-treasury/style-navigation-float": [
+        "packages/style-navigation-float/src/"
+      ],
       // hygen-style-target
 
       "@mui-treasury/use-number-input": ["packages/use-number-input/src/"],
