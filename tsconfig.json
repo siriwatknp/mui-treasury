@@ -42,6 +42,12 @@
       "@mui-treasury/component-emailsubscribe/*": [
         "packages/component-emailsubscribe/src/*"
       ],
+      "@mui-treasury/component-navigation": [
+        "packages/component-navigation/src/"
+      ],
+      "@mui-treasury/component-navigation/*": [
+        "packages/component-navigation/src/*"
+      ],
       // hygen-component-target
 
       "@mui-treasury/style-sticker-glow": ["packages/style-sticker-glow/src/"],
