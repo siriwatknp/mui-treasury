@@ -1,7 +1,7 @@
 {
-  "name": "@mui-treasury/component-number-input",
+  "name": "@mui-treasury/component-numberinput",
   "version": "0.0.1-alpha.6",
-  "description": "mui-treasury | component-number-input",
+  "description": "mui-treasury | component-numberinput",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "homepage": "https://github.com/siriwatknp/mui-treasury#readme",
   "license": "MIT",

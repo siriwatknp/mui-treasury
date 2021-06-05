@@ -24,8 +24,8 @@
       "@mui-treasury/component-sticker": ["packages/component-sticker/src"],
       "@mui-treasury/component-formaddon": ["packages/component-formaddon/src"],
       "@mui-treasury/component-groupy": ["packages/component-groupy/src"],
-      "@mui-treasury/component-number-input": [
-        "packages/component-number-input/src/"
+      "@mui-treasury/component-numberinput": [
+        "packages/component-numberinput/src/"
       ],
       "@mui-treasury/component-number-spinner": [
         "packages/component-number-spinner/src/"

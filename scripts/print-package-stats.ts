@@ -4,7 +4,7 @@ const folders = [
   "cli",
   "component-formaddon",
   "component-groupy",
-  "component-number-input",
+  "component-numberinput",
   "component-number-spinner",
   "component-sticker",
   "layout",

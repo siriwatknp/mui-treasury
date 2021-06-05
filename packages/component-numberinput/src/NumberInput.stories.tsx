@@ -8,7 +8,7 @@ import {
   NumberInput,
   NumberInputProps,
   NumberInputError,
-} from "@mui-treasury/component-number-input";
+} from "@mui-treasury/component-numberinput";
 
 export default {
   title: "Component/NumberInput",
