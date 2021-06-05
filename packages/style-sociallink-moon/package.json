@@ -29,5 +29,8 @@
   },
   "bugs": {
     "url": "https://github.com/siriwatknp/mui-treasury/issues"
+  },
+  "peerDependencies": {
+    "@mui-treasury/component-sociallink": "^0.1.0-alpha.4"
   }
 }
