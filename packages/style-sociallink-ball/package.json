@@ -31,6 +31,6 @@
     "url": "https://github.com/siriwatknp/mui-treasury/issues"
   },
   "peerDependencies": {
-    "@mui-treasury/component-social-link": "^0.1.0-alpha.1"
+    "@mui-treasury/component-sociallink": "^0.1.0-alpha.1"
   }
 }

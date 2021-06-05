@@ -30,11 +30,11 @@
       "@mui-treasury/component-numberspinner": [
         "packages/component-numberspinner/src/"
       ],
-      "@mui-treasury/component-social-link": [
-        "packages/component-social-link/src/"
+      "@mui-treasury/component-sociallink": [
+        "packages/component-sociallink/src/"
       ],
-      "@mui-treasury/component-social-link/*": [
-        "packages/component-social-link/src/*"
+      "@mui-treasury/component-sociallink/*": [
+        "packages/component-sociallink/src/*"
       ],
       "@mui-treasury/component-emailsubscribe": [
         "packages/component-emailsubscribe/src/"

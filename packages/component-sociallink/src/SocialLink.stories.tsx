@@ -7,8 +7,8 @@ import { SvgIconProps } from "@material-ui/core/SvgIcon";
 import {
   SocialLink,
   SocialLinkProps,
-} from "@mui-treasury/component-social-link";
-import * as Icons from "@mui-treasury/component-social-link/icons";
+} from "@mui-treasury/component-sociallink";
+import * as Icons from "@mui-treasury/component-sociallink/icons";
 
 const { FacebookCircle, FacebookSquare } = Icons;
 

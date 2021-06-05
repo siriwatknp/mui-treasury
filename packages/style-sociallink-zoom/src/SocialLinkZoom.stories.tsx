@@ -6,11 +6,11 @@ import { experimentalStyled as styled } from "@material-ui/core/styles";
 import {
   SocialLink,
   SocialLinkProps,
-} from "@mui-treasury/component-social-link";
+} from "@mui-treasury/component-sociallink";
 import {
   Dribbble,
   FacebookCircle,
-} from "@mui-treasury/component-social-link/icons";
+} from "@mui-treasury/component-sociallink/icons";
 
 import {
   getSocialLinkZoomTheme,
