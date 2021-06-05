@@ -23,7 +23,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<UseBirthdateInputOptions> = (args) => {
+export const NativeInput: Story<UseBirthdateInputOptions> = (args) => {
   const { getInputA11yProps, getInputHandlerProps } = useBirthdateInput(args);
   return (
     <div>
@@ -38,8 +38,6 @@ const Template: Story<UseBirthdateInputOptions> = (args) => {
     </div>
   );
 };
-
-export const NativeInput = Template.bind({});
 
 const FormikInput = () => {
   const [field, meta, helpers] = useField<string>("birthdate");
