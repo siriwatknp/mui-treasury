@@ -123,6 +123,9 @@
       // hygen-style-target
 
       "@mui-treasury/use-number-input": ["packages/use-number-input/src/"],
+      "@mui-treasury/use-birthdate-input": [
+        "packages/use-birthdate-input/src/"
+      ],
       // hygen-hook-target
       "@mui-treasury/layout": ["packages/layout/src"],
       "@mui-treasury/mockup/*": ["packages/mockup/src/*"],

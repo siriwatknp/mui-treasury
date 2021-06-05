@@ -7,7 +7,7 @@ import {
 } from "@mui-treasury/use-number-input";
 
 export default {
-  title: "Hook/UseNumberInput",
+  title: "Hook/useNumberInput",
   argTypes: {
     onChange: { action: "changed" },
     min: {

@@ -1,7 +1,7 @@
 {
-  "name": "@mui-treasury/use-number-input",
-  "version": "0.1.0-alpha.5",
-  "description": "mui-treasury | use-number-input",
+  "name": "@mui-treasury/use-birthdate-input",
+  "version": "0.1.0-alpha.0",
+  "description": "mui-treasury | use-birthdate-input",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "homepage": "https://github.com/siriwatknp/mui-treasury#readme",
   "license": "MIT",
