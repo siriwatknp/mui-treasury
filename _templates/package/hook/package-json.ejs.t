@@ -9,6 +9,7 @@ unless_exists: true
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "homepage": "https://github.com/siriwatknp/mui-treasury#readme",
   "license": "MIT",
+  "sideEffects": false,
   "main": "src/index.ts",
   "module": "esm/index.js",
   "types": "src/index.ts",
