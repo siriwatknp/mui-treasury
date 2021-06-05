@@ -5,7 +5,7 @@ import FilledInput from "@material-ui/core/FilledInput";
 import {
   NumberSpinner,
   NumberSpinnerProps,
-} from "@mui-treasury/component-number-spinner";
+} from "@mui-treasury/component-numberspinner";
 
 export default {
   title: "Component/NumberSpinner",
@@ -32,10 +32,5 @@ export const Outlined: Story<NumberSpinnerProps> = (args) => {
 };
 
 export const Filled: Story<NumberSpinnerProps> = (args) => {
-  return (
-    <NumberSpinner
-      {...args}
-      inputElement={<FilledInput disableUnderline hiddenLabel />}
-    />
-  );
+  return <NumberSpinner {...args} inputElement={<FilledInput hiddenLabel />} />;
 };

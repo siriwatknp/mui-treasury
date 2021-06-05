@@ -27,8 +27,8 @@
       "@mui-treasury/component-numberinput": [
         "packages/component-numberinput/src/"
       ],
-      "@mui-treasury/component-number-spinner": [
-        "packages/component-number-spinner/src/"
+      "@mui-treasury/component-numberspinner": [
+        "packages/component-numberspinner/src/"
       ],
       "@mui-treasury/component-social-link": [
         "packages/component-social-link/src/"

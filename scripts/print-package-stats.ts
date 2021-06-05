@@ -5,7 +5,7 @@ const folders = [
   "component-formaddon",
   "component-groupy",
   "component-numberinput",
-  "component-number-spinner",
+  "component-numberspinner",
   "component-sticker",
   "layout",
   "style-button-bootstrap",
