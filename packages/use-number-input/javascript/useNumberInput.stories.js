@@ -46,8 +46,8 @@ export default {
 export const NumberInput = (args) => {
   const {
     inputRef,
-    getInputHandlerProps,
-    getInputA11yProps,
+    getInputProps: getInputHandlerProps,
+    getInputProps: getInputA11yProps,
     getDecrementProps,
     getIncrementProps,
   } = useNumberInput(args);
@@ -89,8 +89,8 @@ export const NumberInput = (args) => {
 export const Spinner = (args) => {
   const {
     inputRef,
-    getInputHandlerProps,
-    getInputA11yProps,
+    getInputProps: getInputHandlerProps,
+    getInputProps: getInputA11yProps,
     getDecrementProps,
     getIncrementProps,
   } = useNumberInput(args);

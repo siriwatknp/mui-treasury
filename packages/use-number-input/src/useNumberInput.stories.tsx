@@ -51,13 +51,8 @@ export default {
 } as Meta;
 
 export const NumberInput: Story<UseNumberInputOptions> = (args) => {
-  const {
-    inputRef,
-    getInputHandlerProps,
-    getInputA11yProps,
-    getDecrementProps,
-    getIncrementProps,
-  } = useNumberInput(args);
+  const { inputRef, getInputProps, getDecrementProps, getIncrementProps } =
+    useNumberInput(args);
   return (
     <div style={{ display: "flex" }}>
       <input
@@ -67,8 +62,7 @@ export const NumberInput: Story<UseNumberInputOptions> = (args) => {
           style: {
             padding: 8,
           },
-          ...getInputHandlerProps(),
-          ...getInputA11yProps(),
+          ...getInputProps(),
         }}
       />
       <div style={{ display: "flex", flexDirection: "column" }}>
@@ -95,13 +89,8 @@ export const NumberInput: Story<UseNumberInputOptions> = (args) => {
 };
 
 export const Spinner: Story<UseNumberInputOptions> = (args) => {
-  const {
-    inputRef,
-    getInputHandlerProps,
-    getInputA11yProps,
-    getDecrementProps,
-    getIncrementProps,
-  } = useNumberInput(args);
+  const { inputRef, getInputProps, getDecrementProps, getIncrementProps } =
+    useNumberInput(args);
   return (
     <div style={{ display: "flex" }}>
       <button {...getDecrementProps()} style={{ marginRight: 4 }}>
@@ -115,8 +104,7 @@ export const Spinner: Story<UseNumberInputOptions> = (args) => {
           style: {
             padding: 8,
           },
-          ...getInputHandlerProps(),
-          ...getInputA11yProps(),
+          ...getInputProps(),
         }}
       />
       <button {...getIncrementProps()} style={{ marginLeft: 4 }}>

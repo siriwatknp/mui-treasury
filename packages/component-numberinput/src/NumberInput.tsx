@@ -162,21 +162,15 @@ export const NumberInput = React.forwardRef<
 
   const classes = useUtilityClasses(styleProps);
 
-  const {
-    inputRef,
-    getInputA11yProps,
-    getInputHandlerProps,
-    getIncrementProps,
-    getDecrementProps,
-  } = useNumberInput(props);
+  const { inputRef, getInputProps, getIncrementProps, getDecrementProps } =
+    useNumberInput(props);
 
   return React.cloneElement(inputElement, {
     ref,
     size,
     ...other,
-    ...getInputHandlerProps(props),
     inputRef,
-    inputProps: getInputA11yProps(),
+    inputProps: getInputProps(props),
     endAdornment: (
       <>
         {endAdornment}

@@ -148,19 +148,13 @@ export const NumberSpinner = React.forwardRef<
 
   const classes = useUtilityClasses(styleProps);
 
-  const {
-    inputRef,
-    getInputA11yProps,
-    getInputHandlerProps,
-    getIncrementProps,
-    getDecrementProps,
-  } = useNumberInput({ ...props, min });
+  const { inputRef, getInputProps, getIncrementProps, getDecrementProps } =
+    useNumberInput({ ...props, min });
 
   return React.cloneElement(inputElement, {
     ref,
     readOnly: true,
     ...other,
-    ...getInputHandlerProps(props),
     sx: {
       "& input": {
         textAlign: "center",
@@ -171,7 +165,7 @@ export const NumberSpinner = React.forwardRef<
     inputProps: {
       size: 4,
       ...inputElement.props?.inputProps,
-      ...getInputA11yProps(),
+      ...getInputProps(props),
     },
     startAdornment: (
       <InputAdornment position="start">
