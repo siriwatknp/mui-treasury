@@ -8,16 +8,16 @@ import {
 import { act } from "react-dom/test-utils";
 
 const UI = (props?: UseDayMonthYearInputOptions) => {
-  const { getDayProps, getMonthProps, getYearProps } =
+  const { getDayInputProps, getMonthInputProps, getYearInputProps } =
     useDayMonthYearInput(props);
   return (
     <div>
       <label htmlFor="day">day</label>
-      <input id="day" {...getDayProps()} />
+      <input id="day" {...getDayInputProps()} />
       <label htmlFor="month">month</label>
-      <input id="month" {...getMonthProps()} />
+      <input id="month" {...getMonthInputProps()} />
       <label htmlFor="year">year</label>
-      <input id="year" {...getYearProps()} />
+      <input id="year" {...getYearInputProps()} />
     </div>
   );
 };

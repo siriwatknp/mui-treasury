@@ -28,8 +28,11 @@ export default {
 } as Meta;
 
 export const NativeInput: Story<UseDayMonthYearInputOptions> = (args) => {
-  const { getDayProps, getMonthProps, getYearProps } =
-    useDayMonthYearInput(args);
+  const {
+    getDayInputProps: getDayProps,
+    getMonthInputProps: getMonthProps,
+    getYearInputProps: getYearProps,
+  } = useDayMonthYearInput(args);
   return (
     <div style={{ display: "flex" }}>
       <div>
@@ -62,7 +65,11 @@ export const NativeInput: Story<UseDayMonthYearInputOptions> = (args) => {
 
 const FormikInput = () => {
   const [field, meta, helpers] = useField<DayMonthYear>("dob");
-  const { getDayProps, getMonthProps, getYearProps } = useDayMonthYearInput({
+  const {
+    getDayInputProps: getDayProps,
+    getMonthInputProps: getMonthProps,
+    getYearInputProps: getYearProps,
+  } = useDayMonthYearInput({
     value: field.value,
     onChange: helpers.setValue,
     onBlur: () => helpers.setTouched(true),
