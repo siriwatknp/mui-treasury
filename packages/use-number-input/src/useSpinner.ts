@@ -113,7 +113,6 @@ export function useSpinner<T>(
    */
   useInterval(
     () => {
-      console.log("paramsRef.current", paramsRef.current);
       if (action === "increment") {
         increment(paramsRef.current);
       }
