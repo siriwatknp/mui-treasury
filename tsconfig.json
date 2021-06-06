@@ -126,6 +126,9 @@
       "@mui-treasury/use-birthdate-input": [
         "packages/use-birthdate-input/src/"
       ],
+      "@mui-treasury/use-daymonthyear-input": [
+        "packages/use-daymonthyear-input/src/"
+      ],
       // hygen-hook-target
       "@mui-treasury/layout": ["packages/layout/src"],
       "@mui-treasury/mockup/*": ["packages/mockup/src/*"],
