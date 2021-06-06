@@ -31,7 +31,11 @@ export const useBirthdateInput = (options?: UseBirthdateInputOptions) => {
   const [value, setValue] = React.useState(defaultValue || "");
   const codeRef = React.useRef<string | undefined>();
   return {
-    getInputHandlerProps: (handlers?: InputHanders) => ({
+    getInputProps: (handlers?: InputHanders) => ({
+      maxLength: 10,
+      size: 10,
+      pattern: "[0-9]{2}.[0-9]{2}.[0-9]{4}",
+      type: "tel",
       value,
       onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
         handlers?.onChange?.(event);
@@ -73,12 +77,6 @@ export const useBirthdateInput = (options?: UseBirthdateInputOptions) => {
         handlers?.onKeyDown?.(event);
         codeRef.current = event.code;
       },
-    }),
-    getInputA11yProps: () => ({
-      maxLength: 10,
-      size: 10,
-      pattern: "[0-9]{2}.[0-9]{2}.[0-9]{4}",
-      type: "tel",
     }),
   };
 };

@@ -7,15 +7,11 @@ import {
 } from "./useBirthdateInput";
 
 const BirthdateInput = (props: UseBirthdateInputOptions) => {
-  const { getInputA11yProps, getInputHandlerProps } = useBirthdateInput(props);
+  const { getInputProps } = useBirthdateInput(props);
   return (
     <div>
       <label htmlFor="birthdate">birthdate</label>
-      <input
-        id="birthdate"
-        {...getInputA11yProps()}
-        {...getInputHandlerProps()}
-      />
+      <input id="birthdate" {...getInputProps()} />
     </div>
   );
 };
@@ -132,15 +128,11 @@ describe("useBirthdateInput", () => {
     const onChange = jest.fn();
     const onKeyDown = jest.fn();
     const Input = () => {
-      const { getInputA11yProps, getInputHandlerProps } = useBirthdateInput();
+      const { getInputProps } = useBirthdateInput();
       return (
         <div>
           <label htmlFor="birthdate">birthdate</label>
-          <input
-            id="birthdate"
-            {...getInputA11yProps()}
-            {...getInputHandlerProps({ onChange, onKeyDown })}
-          />
+          <input id="birthdate" {...getInputProps({ onChange, onKeyDown })} />
         </div>
       );
     };

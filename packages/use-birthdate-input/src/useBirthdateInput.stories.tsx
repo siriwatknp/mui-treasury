@@ -24,24 +24,20 @@ export default {
 } as Meta;
 
 export const NativeInput: Story<UseBirthdateInputOptions> = (args) => {
-  const { getInputA11yProps, getInputHandlerProps } = useBirthdateInput(args);
+  const { getInputProps } = useBirthdateInput(args);
   return (
     <div>
       <div>
         <label htmlFor="birthdate">Birthdate</label>
       </div>
-      <input
-        id="birthdate"
-        {...getInputA11yProps()}
-        {...getInputHandlerProps()}
-      />
+      <input id="birthdate" {...getInputProps()} />
     </div>
   );
 };
 
 const FormikInput = () => {
   const [field, meta, helpers] = useField<string>("birthdate");
-  const { getInputA11yProps, getInputHandlerProps } = useBirthdateInput({
+  const { getInputProps } = useBirthdateInput({
     onChange: helpers.setValue,
   });
   return (
@@ -49,13 +45,7 @@ const FormikInput = () => {
       <div>
         <label htmlFor="birthdate">Birthdate</label>
       </div>
-      <input
-        id="birthdate"
-        required
-        {...field}
-        {...getInputA11yProps()}
-        {...getInputHandlerProps()}
-      />
+      <input id="birthdate" required {...field} {...getInputProps()} />
       {meta.touched && meta.error ? (
         <div style={{ color: "#ff5252" }}>{meta.error}</div>
       ) : null}
