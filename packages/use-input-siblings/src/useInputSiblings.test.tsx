@@ -4,10 +4,12 @@ import userEvent from "@testing-library/user-event";
 import {
   useInput,
   useTwoNumbersInput,
-  useInputSiblings,
   UseInputOptions,
   UseTwoNumbersInputOptions,
-} from "./useInputSiblings";
+  useSeparatorInput,
+  UseSeparatorInputOptions,
+  useInputSiblings,
+} from "./index";
 
 describe("useInput", () => {
   const Input = (props?: Partial<UseInputOptions>) => {
@@ -16,17 +18,19 @@ describe("useInput", () => {
     return <input {...getInputProps()} />;
   };
   const getInput = () => screen.getByRole("textbox");
-  it("has correct a11y props", () => {
-    render(<Input />);
-
-    expect(getInput()).toHaveAttribute("maxlength", "4");
-    expect(getInput()).toHaveAttribute("size", "4");
-  });
 
   it("accept defaultValue", () => {
     render(<Input defaultValue="hello" />);
 
-    expect(getInput()).toHaveValue("hello");
+    expect(getInput()).toHaveValue("hell");
+  });
+
+  it("cannot type more than maxLength", () => {
+    render(<Input />);
+
+    userEvent.type(getInput(), "hello");
+
+    expect(getInput()).toHaveValue("hell");
   });
 
   it("sync with value prop", () => {
@@ -155,9 +159,8 @@ describe("useInputSiblings", () => {
       maxLength: 4,
       defaultValue: props?.defaultValue?.year,
     });
-    const {
-      inputs: [getDayInputProps, getMonthInputProps, getYearInputProps],
-    } = useInputSiblings({ siblings: [day, month, year], onBlur });
+    const [getDayInputProps, getMonthInputProps, getYearInputProps] =
+      useInputSiblings({ siblings: [day, month, year], onBlur });
 
     return (
       <div>
@@ -252,5 +255,196 @@ describe("useInputSiblings", () => {
     waitFor(() => {
       expect(onBlur).toHaveBeenCalled();
     });
+  });
+});
+
+describe("useSeparatorInput", () => {
+  const BirthdateInput = (props?: Partial<UseSeparatorInputOptions>) => {
+    const { getInputProps } = useSeparatorInput({
+      maxLength: [2, 2, 4],
+      ...props,
+    });
+    return (
+      <div>
+        <label htmlFor="birthdate">birthdate</label>
+        <input id="birthdate" {...getInputProps()} />
+      </div>
+    );
+  };
+  const getInput = () => screen.getByLabelText("birthdate");
+
+  it("receive default value as string", () => {
+    render(<BirthdateInput defaultValue="10/01/2000400" />);
+
+    expect(getInput()).toHaveValue("10/01/2000");
+  });
+
+  it("allow maxLength characters including separator", () => {
+    render(<BirthdateInput />);
+
+    userEvent.type(getInput(), "10012000500");
+
+    expect(getInput()).toHaveValue("10/01/2000");
+  });
+
+  it("append separator to initial value", () => {
+    render(<BirthdateInput value="10/01" />);
+
+    expect(getInput()).toHaveValue("10/01/");
+  });
+
+  it("insert separator at third and fifth position", () => {
+    render(<BirthdateInput defaultValue="1" />);
+
+    expect(getInput()).toHaveValue("1");
+
+    userEvent.type(getInput(), "0");
+    expect(getInput()).toHaveValue("10/");
+
+    userEvent.type(getInput(), "01");
+    expect(getInput()).toHaveValue("10/01/");
+  });
+
+  describe("⌫ backspace", () => {
+    it("backspace on the first character", () => {
+      render(<BirthdateInput />);
+
+      userEvent.type(getInput(), "1{backspace}");
+      expect(getInput()).toHaveValue("");
+    });
+
+    it("backspace on separator should also remove second character", () => {
+      render(<BirthdateInput defaultValue="10/" />);
+
+      userEvent.type(getInput(), "{backspace}");
+      expect(getInput()).toHaveValue("1");
+    });
+
+    it("backspace on separator should also remove fifth character", () => {
+      render(<BirthdateInput defaultValue="10/01/" />);
+
+      userEvent.type(getInput(), "{backspace}");
+      expect(getInput()).toHaveValue("10/0");
+    });
+  });
+
+  it("call onChange with the value", () => {
+    const onChange = jest.fn();
+    render(<BirthdateInput onChange={onChange} />);
+
+    userEvent.type(getInput(), "02");
+    expect(onChange).toHaveBeenLastCalledWith("02/");
+  });
+
+  it("call all handlers", () => {
+    const onChange = jest.fn();
+    const onKeyDown = jest.fn();
+    const Input = () => {
+      const { getInputProps } = useSeparatorInput({ maxLength: [2, 2, 4] });
+      return (
+        <div>
+          <label htmlFor="birthdate">birthdate</label>
+          <input id="birthdate" {...getInputProps({ onChange, onKeyDown })} />
+        </div>
+      );
+    };
+
+    render(<Input />);
+
+    userEvent.type(getInput(), "10");
+    expect(onChange).toHaveBeenLastCalledWith(
+      expect.objectContaining({
+        target: expect.objectContaining({ value: "10/" }),
+      })
+    );
+    expect(onKeyDown).toHaveBeenCalledTimes(2);
+  });
+});
+
+describe("Credit Card", () => {
+  const CreditCard = () => {
+    const cardNumber = useSeparatorInput({
+      maxLength: [4, 4, 4, 4],
+      separator: " ",
+    });
+    const expiration = useSeparatorInput({ maxLength: [2, 2] });
+    const ccv = useInput({ maxLength: 4 });
+    const inputs = useInputSiblings({
+      siblings: [cardNumber, expiration, ccv],
+    });
+    return (
+      <div>
+        <label htmlFor="card" style={{ fontSize: 12 }}>
+          Card Number
+        </label>
+        <input id="card" {...inputs[0]()} />
+        <label htmlFor="exp" style={{ fontSize: 12 }}>
+          Expiration
+        </label>
+        <input id="exp" placeholder="MM/YY" {...inputs[1]()} />
+        <label htmlFor="ccv" style={{ fontSize: 12 }}>
+          CCV
+        </label>
+        <input id="ccv" {...inputs[2]()} />
+      </div>
+    );
+  };
+  const getInput = (type: "Card Number" | "Expiration" | "CCV") =>
+    screen.getByLabelText(type);
+
+  it("able to type in card and backspace", () => {
+    render(<CreditCard />);
+
+    userEvent.type(getInput("Card Number"), "1111222");
+    expect(getInput("Card Number")).toHaveValue("1111 222");
+
+    userEvent.type(
+      getInput("Card Number"),
+      "{backspace}{backspace}{backspace}{backspace}"
+    );
+    expect(getInput("Card Number")).toHaveValue("111");
+  });
+
+  it("able to type in expiration and backspace", () => {
+    render(<CreditCard />);
+
+    userEvent.type(getInput("Expiration"), "122");
+    expect(getInput("Expiration")).toHaveValue("12/2");
+
+    userEvent.type(getInput("Expiration"), "{backspace}{backspace}");
+    expect(getInput("Expiration")).toHaveValue("1");
+  });
+
+  it("auto jumping between input", () => {
+    render(<CreditCard />);
+
+    userEvent.type(getInput("Card Number"), "1111222233334444");
+    expect(getInput("Card Number")).toHaveValue("1111 2222 3333 4444");
+
+    expect(getInput("Expiration")).toHaveFocus();
+
+    userEvent.type(getInput("Expiration"), "1220");
+    expect(getInput("Expiration")).toHaveValue("12/20");
+
+    expect(getInput("CCV")).toHaveFocus();
+
+    userEvent.type(getInput("CCV"), "123");
+    expect(getInput("CCV")).toHaveValue("123");
+
+    userEvent.type(
+      getInput("CCV"),
+      "{backspace}{backspace}{backspace}{backspace}"
+    );
+
+    expect(getInput("Expiration")).toHaveFocus();
+    expect(getInput("Expiration")).toHaveValue("12/2");
+
+    userEvent.type(
+      getInput("CCV"),
+      "{backspace}{backspace}{backspace}{backspace}"
+    );
+
+    expect(getInput("Card Number")).toHaveFocus();
+    expect(getInput("Card Number")).toHaveValue("1111 2222 3333 444");
   });
 });
