@@ -293,6 +293,18 @@ describe("useSeparatorInput", () => {
     expect(getInput()).toHaveValue("10/01/");
   });
 
+  it("only reflect change if it pass validator", () => {
+    render(
+      <BirthdateInput
+        validator={(value) => new RegExp(/\d/).test(value.substr(-1))}
+      />
+    );
+
+    userEvent.type(getInput(), "a10cd/0a4");
+
+    expect(getInput()).toHaveValue("10/04/");
+  });
+
   it("insert separator at third and fifth position", () => {
     render(<BirthdateInput defaultValue="1" />);
 

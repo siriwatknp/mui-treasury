@@ -49,7 +49,13 @@ export interface UseSeparatorInputOptions {
   onChange?: (value: string) => void;
 }
 export const useSeparatorInput = (options: UseSeparatorInputOptions) => {
-  const { autoFocus = false, value, maxLength, separator = "/" } = options;
+  const {
+    autoFocus = false,
+    value,
+    maxLength,
+    separator = "/",
+    validator,
+  } = options;
   const maxCharaters =
     maxLength.reduce((total, num) => total + num) + maxLength.length - 1;
   const separatorIndexes = getSeparatorChars(maxLength);
@@ -90,8 +96,8 @@ export const useSeparatorInput = (options: UseSeparatorInputOptions) => {
           const latestChar = inputValue.substr(-1);
           if (
             !!latestChar &&
-            latestChar !== separator &&
-            !/\d/.test(latestChar)
+            typeof validator === "function" &&
+            !validator(inputValue)
           )
             return; // should be separator or number
           if (someEqual(inputValue.length, separatorIndexes)) {
