@@ -87,7 +87,6 @@ export function useSpinner(increment, decrement) {
    */
   useInterval(
     () => {
-      console.log("paramsRef.current", paramsRef.current);
       if (action === "increment") {
         increment(paramsRef.current);
       }

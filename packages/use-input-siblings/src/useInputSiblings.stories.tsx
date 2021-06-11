@@ -140,15 +140,7 @@ export const Pin = () => {
       <input size={1} {...inputs[0]()} />
       <input size={1} {...inputs[1]()} style={{ marginLeft: 4 }} />
       <input size={1} {...inputs[2]()} style={{ marginLeft: 4 }} />
-      <input
-        size={1}
-        {...inputs[3]({
-          onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
-            console.log(event.target.value);
-          },
-        })}
-        style={{ marginLeft: 4 }}
-      />
+      <input size={1} {...inputs[3]()} style={{ marginLeft: 4 }} />
     </div>
   );
 };
