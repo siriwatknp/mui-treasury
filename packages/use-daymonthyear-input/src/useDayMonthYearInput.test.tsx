@@ -173,7 +173,7 @@ describe("useDayMonthYearInput", () => {
     });
   });
 
-  it("only call onBlur if activeElement is not one of the inputs", () => {
+  it("only call onBlur if activeElement is not one of the inputs", async () => {
     const onBlur = jest.fn();
     render(<UI onBlur={onBlur} />);
 
@@ -192,7 +192,7 @@ describe("useDayMonthYearInput", () => {
     act(() => {
       getInput("year").blur();
     });
-    waitFor(() => {
+    await waitFor(() => {
       expect(onBlur).toHaveBeenCalled();
     });
   });

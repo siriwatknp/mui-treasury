@@ -85,7 +85,13 @@ export const useTwoNumbersInput = (options?: UseTwoNumbersInputOptions) => {
   if (typeof value !== "undefined") {
     value = prependZero(value);
   }
-  const result = useInput({ ...options, defaultValue, value, maxLength: 2 });
+  const result = useInput({
+    validator: (value) => new RegExp(/^\d{0,2}$/).test(value),
+    ...options,
+    defaultValue,
+    value,
+    maxLength: 2,
+  });
   return {
     ...result,
     getInputProps: (handlers?: Pick<InputHanders, "onChange" | "onBlur">) => ({

@@ -1,4 +1,9 @@
 import React from "react";
+import {
+  useInput,
+  useTwoNumbersInput,
+  useInputSiblings,
+} from "@mui-treasury/use-input-siblings";
 
 export interface DayMonthYear {
   day: string;
@@ -32,175 +37,74 @@ interface InputHanders {
   onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
-const prependZero = (value?: string) => {
-  if (!value) return "";
-  return value.length === 1 ? `0${value}` : value;
-};
 const parseDayMonthYear = (value: Partial<DayMonthYear>) => {
   return {
-    day: prependZero(value.day),
-    month: prependZero(value.month),
+    day: value.day || "",
+    month: value.month || "",
     year: value.year || "",
   };
 };
 
 export const useDayMonthYearInput = (options?: UseDayMonthYearInputOptions) => {
   const { defaultValue, value } = options || {};
-  const [state, setState] = React.useState(
-    parseDayMonthYear(defaultValue || {})
-  );
-  const blurEvent =
-    React.useRef<React.FocusEvent<HTMLInputElement> | undefined>(undefined);
-  const [unFocused, setUnFocused] = React.useState(false);
-  const dayRef = React.useRef<HTMLInputElement | null>(null);
-  const monthRef = React.useRef<HTMLInputElement | null>(null);
-  const yearRef = React.useRef<HTMLInputElement | null>(null);
+  const parsedValue = parseDayMonthYear(value || defaultValue || {});
+
+  const day = useTwoNumbersInput({
+    defaultValue: defaultValue?.day,
+    value: parsedValue.day,
+  });
+  const month = useTwoNumbersInput({
+    defaultValue: defaultValue?.month,
+    value: parsedValue.month,
+  });
+  const year = useInput({
+    maxLength: 4,
+    defaultValue: defaultValue?.year,
+    value: parsedValue.year,
+    validator: (value) =>
+      new RegExp(/^(^$|[1-2]|[1-2][0-9]{0,3})$/).test(value),
+  });
+  const [getDayInputProps, getMonthInputProps, getYearInputProps] =
+    useInputSiblings({ siblings: [day, month, year], onBlur: options?.onBlur });
 
   React.useEffect(() => {
-    options?.onChange?.(state);
-  }, [state]);
-
-  React.useEffect(() => {
-    if (value) {
-      if (
-        value?.day !== state.day ||
-        value?.month !== state.month ||
-        value?.year !== state.year
-      ) {
-        // always trust the external value
-        setState(parseDayMonthYear(value || {}));
-      }
+    if (
+      parsedValue.day !== day.value ||
+      parsedValue.month !== month.value ||
+      parsedValue.year !== year.value
+    ) {
+      options?.onChange?.({
+        day: day.value,
+        month: month.value,
+        year: year.value,
+      });
     }
-  }, [value?.day, value?.month, value?.year]);
-
-  React.useEffect(() => {
-    if (unFocused) {
-      if (
-        [dayRef.current, monthRef.current, yearRef.current].every((dom) => {
-          return dom?.ownerDocument.activeElement !== dom;
-        })
-      ) {
-        blurEvent.current && options?.onBlur?.(blurEvent.current);
-      }
-    }
-  }, [unFocused]);
+  }, [day.value, month.value, year.value]);
 
   return {
-    dayRef,
-    monthRef,
-    yearRef,
+    day,
+    month,
+    year,
     getDayInputProps: (handlers?: Omit<InputHanders, "onKeyDown">) => ({
       pattern: "^(^$|[0-9]|0[0-9]|1[0-9]|2[0-9]|3[0-1])$",
       size: 2,
       maxLength: 2,
       type: "tel",
-      ref: dayRef,
-      value: state.day,
-      onFocus: (event: React.FocusEvent<HTMLInputElement>) => {
-        handlers?.onFocus?.(event);
-        setUnFocused(false);
-      },
-      onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
-        handlers?.onChange?.(event);
-        const { value } = event.target;
-        if (
-          new RegExp(/^(^$|[0-9]|0[0-9]|1[0-9]|2[0-9]|3[0-1])$/).test(value)
-        ) {
-          setState((currentState) => ({ ...currentState, day: value }));
-        }
-        if (value.length === 2) {
-          monthRef.current?.focus();
-          monthRef.current?.setSelectionRange(0, 2);
-        }
-      },
-      onBlur: (event: React.FocusEvent<HTMLInputElement>) => {
-        handlers?.onBlur?.(event);
-        blurEvent.current = event;
-        setUnFocused(true);
-        setState((currentState) => ({
-          ...currentState,
-          day:
-            currentState.day.length === 1
-              ? `0${currentState.day}`
-              : currentState.day,
-        }));
-      },
+      ...getDayInputProps(handlers),
     }),
     getMonthInputProps: (handlers?: InputHanders) => ({
       pattern: "^(^$|[0-9]|0[1-9]|1[0-2])$",
       size: 2,
       maxLength: 2,
       type: "tel",
-      ref: monthRef,
-      value: state.month,
-      onFocus: (event: React.FocusEvent<HTMLInputElement>) => {
-        handlers?.onFocus?.(event);
-        setUnFocused(false);
-      },
-      onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
-        handlers?.onChange?.(event);
-        const { value } = event.target;
-        if (new RegExp(/^(^$|[0-9]|0[1-9]|1[0-2])$/).test(value)) {
-          // allow only number
-          setState((currentState) => ({ ...currentState, month: value }));
-          if (value.length === 2) {
-            yearRef.current?.focus();
-            yearRef.current?.setSelectionRange(0, 4);
-          }
-        }
-      },
-      onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => {
-        handlers?.onKeyDown?.(event);
-        // Note: `day: "10", month: ""`
-        // keydown on Month trigger this fn, this event (Backspace) pass to dayRef
-        // as a result `dat: "1"`
-        if (event.code === "Backspace" && !state.month.length) {
-          dayRef.current?.focus();
-        }
-      },
-      onBlur: (event: React.FocusEvent<HTMLInputElement>) => {
-        handlers?.onFocus?.(event);
-        blurEvent.current = event;
-        setUnFocused(true);
-        setState((currentState) => ({
-          ...currentState,
-          month:
-            currentState.month.length === 1
-              ? `0${currentState.month}`
-              : currentState.month,
-        }));
-      },
+      ...getMonthInputProps(handlers),
     }),
     getYearInputProps: (handlers?: InputHanders) => ({
       pattern: "^(^$|[1-2]|[1-2][0-9]{0,3})$",
       size: 4,
       maxLength: 4,
       type: "tel",
-      ref: yearRef,
-      value: state.year,
-      onFocus: (event: React.FocusEvent<HTMLInputElement>) => {
-        handlers?.onFocus?.(event);
-        setUnFocused(false);
-      },
-      onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
-        handlers?.onChange?.(event);
-        const { value } = event.target;
-        // year 1000-2999
-        if (new RegExp(/^(^$|[1-2]|[1-2][0-9]{0,3})$/).test(value)) {
-          setState((currentState) => ({ ...currentState, year: value }));
-        }
-      },
-      onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => {
-        handlers?.onKeyDown?.(event);
-        if (event.code === "Backspace" && !state.year.length) {
-          monthRef.current?.focus();
-        }
-      },
-      onBlur: (event: React.FocusEvent<HTMLInputElement>) => {
-        handlers?.onBlur?.(event);
-        blurEvent.current = event;
-        setUnFocused(true);
-      },
+      ...getYearInputProps(handlers),
     }),
   };
 };

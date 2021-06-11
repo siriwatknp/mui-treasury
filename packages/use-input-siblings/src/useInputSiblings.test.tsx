@@ -234,7 +234,7 @@ describe("useInputSiblings", () => {
     });
   });
 
-  it("only call onBlur if activeElement is not one of the inputs", () => {
+  it("only call onBlur if activeElement is not one of the inputs", async () => {
     render(<UI />);
 
     userEvent.click(getInput("day"));
@@ -252,7 +252,7 @@ describe("useInputSiblings", () => {
     act(() => {
       getInput("year").blur();
     });
-    waitFor(() => {
+    await waitFor(() => {
       expect(onBlur).toHaveBeenCalled();
     });
   });
