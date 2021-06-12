@@ -4,5 +4,8 @@ unless_exists: true
 ---
 {
   "extends": "../../tsconfig.types.json",
-  "include": ["src"]
+  "include": ["src"],
+  "compilerOptions": {
+    "outDir": "dist"
+  }
 }
