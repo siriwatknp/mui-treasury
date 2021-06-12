@@ -29,7 +29,7 @@ export const useBirthdateInput = (options?: UseBirthdateInputOptions) => {
   const result = useSeparatorInput({
     ...options,
     maxLength: [2, 2, 4],
-    validator: (value) => new RegExp(/(\d|\/)/).test(value.substr(-1)), // last char must be number or separator
+    validator: (value) => new RegExp(/\d/).test(value.substr(-1)), // last char must be number or separator
   });
   return {
     ...result,
