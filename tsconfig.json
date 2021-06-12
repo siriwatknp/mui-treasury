@@ -130,6 +130,7 @@
         "packages/use-daymonthyear-input/src/"
       ],
       "@mui-treasury/use-input-siblings": ["packages/use-input-siblings/src/"],
+      "@mui-treasury/use-pin-input": ["packages/use-pin-input/src/"],
       // hygen-hook-target
       "@mui-treasury/layout": ["packages/layout/src"],
       "@mui-treasury/mockup/*": ["packages/mockup/src/*"],
