@@ -77,6 +77,14 @@ describe("useBirthdateInput", () => {
       userEvent.type(getInput(), "{backspace}");
       expect(getInput()).toHaveValue("10/0");
     });
+
+    it("backspace from the bottom", () => {
+      render(<BirthdateInput defaultValue="10/01/2010" />);
+
+      const backspaces = [...Array(8)].map(() => "{backspace}").join("");
+      userEvent.type(getInput(), backspaces);
+      expect(getInput()).toHaveValue("");
+    });
   });
 
   it("call onChange with the value", () => {

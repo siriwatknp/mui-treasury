@@ -25,11 +25,14 @@ interface InputHanders {
   onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
-export const useBirthdateInput = (options?: UseBirthdateInputOptions) => {
+export const useBirthdateInput = (options: UseBirthdateInputOptions = {}) => {
+  const { separator = "/" } = options;
   const result = useSeparatorInput({
     ...options,
+    separator,
     maxLength: [2, 2, 4],
-    validator: (value) => new RegExp(/\d/).test(value.substr(-1)), // last char must be number or separator
+    validator: (value) =>
+      new RegExp(/^\d+$/).test(value.replace(new RegExp(separator, "g"), "")), // last char must be number or separator
   });
   return {
     ...result,
