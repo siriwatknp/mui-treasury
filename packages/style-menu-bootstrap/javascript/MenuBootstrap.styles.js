@@ -33,10 +33,11 @@ export const createMenuBootstrapStyles = (theme) => ({
         "&:hover, &:focus": {
           backgroundColor: "#e9ecef",
         },
-        "&:active, &.Mui-selected, &.Mui-selected.Mui-focusVisible, &.Mui-selected:hover": {
-          color: "#fff",
-          backgroundColor: "#0d6efd",
-        },
+        "&:active, &.Mui-selected, &.Mui-selected.Mui-focusVisible, &.Mui-selected:hover":
+          {
+            color: "#fff",
+            backgroundColor: "#0d6efd",
+          },
       },
     },
   },

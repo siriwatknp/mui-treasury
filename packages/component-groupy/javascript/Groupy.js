@@ -60,7 +60,7 @@ const GroupyRoot = styled(
   }),
   ...(styleProps.orientation === "vertical" && {
     flexDirection: "column",
-    "& > :not(:first-child)": {
+    "& > :not(:first-of-type)": {
       marginTop: -1,
       borderTopLeftRadius: 0,
       borderTopRightRadius: 0,
@@ -72,7 +72,7 @@ const GroupyRoot = styled(
   }),
 }));
 export const Groupy = React.forwardRef(function Groupy(
-  { children, ...inProps },
+  { children, component, ...inProps },
   ref
 ) {
   const props = useThemeProps({
@@ -88,6 +88,7 @@ export const Groupy = React.forwardRef(function Groupy(
   return (
     <GroupyRoot
       ref={ref}
+      as={component}
       {...other}
       styleProps={styleProps}
       className={cx(classes.root, props.className)}

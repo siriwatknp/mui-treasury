@@ -35,7 +35,7 @@ const FormAddonRoot = styled(
   backgroundColor: theme.palette.grey[100],
 }));
 export const FormAddon = React.forwardRef(function FormAddon(
-  { children, ...inProps },
+  { children, component, ...inProps },
   ref
 ) {
   const props = useThemeProps({
@@ -50,6 +50,7 @@ export const FormAddon = React.forwardRef(function FormAddon(
   return (
     <FormAddonRoot
       ref={ref}
+      as={component}
       {...other}
       styleProps={styleProps}
       className={cx(classes.root, props.className)}

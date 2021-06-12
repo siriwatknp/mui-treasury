@@ -9,5 +9,6 @@
     "allowJs": true,
     "esModuleInterop": true,
     "moduleResolution": "Node"
-  }
+  },
+  "exclude": ["node_modules", "**/*.stories.*", "**/*.test.*", "**/*.spec.*"]
 }

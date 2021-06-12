@@ -239,7 +239,7 @@ function NumberInput() {
     keepWithinRange && typeof numberValue === "number" && numberValue <= min;
   return {
     inputRef,
-    getInputA11yProps: () => ({
+    getInputProps: (handlers) => ({
       pattern: "[0-9]*(.[0-9]+)?",
       role: "spinbutton",
       "aria-valuemin": min,
@@ -248,8 +248,6 @@ function NumberInput() {
       autoCorrect: "off",
       "aria-valuetext": interfaceValue,
       "aria-valuenow": numberValue,
-    }),
-    getInputHandlerProps: (handlers) => ({
       value: interfaceValue,
       onChange: handleChange,
       onBlur: callAllHandlers(handleBlur, handlers?.onBlur),

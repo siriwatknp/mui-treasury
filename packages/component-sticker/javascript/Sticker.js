@@ -72,7 +72,7 @@ const StickerRoot = styled(
   }),
 }));
 export const Sticker = React.forwardRef(function Sticker(
-  { children, ...inProps },
+  { children, component, ...inProps },
   ref
 ) {
   const props = useThemeProps({
@@ -96,6 +96,7 @@ export const Sticker = React.forwardRef(function Sticker(
   return (
     <StickerRoot
       ref={ref}
+      as={component}
       {...other}
       styleProps={styleProps}
       className={cx(classes.root, props.className)}

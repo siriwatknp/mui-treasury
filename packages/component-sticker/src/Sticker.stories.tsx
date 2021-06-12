@@ -136,7 +136,7 @@ export const AsButton: Story<StickerProps> = (args) => {
   return (
     <Sticker
       {...args}
-      as={ButtonBase}
+      component={ButtonBase}
       centerRipple
       sx={{
         width: 72,
@@ -155,11 +155,11 @@ export const Text: Story<StickerProps> = (args) => {
   return (
     <Stack spacing={2} alignItems="center" sx={{ fontSize: 14 }}>
       <Sticker {...args}>Status</Sticker>
-      <Sticker {...args} as={ButtonBase}>
+      <Sticker {...args} component={ButtonBase}>
         <Add fontSize="inherit" />
         Status
       </Sticker>
-      <Sticker {...args} as={ButtonBase}>
+      <Sticker {...args} component={ButtonBase}>
         Status
         <DeleteForever fontSize="inherit" />
       </Sticker>
