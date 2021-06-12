@@ -51,7 +51,7 @@ export interface UsePinInputOptions {
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
 }
 
-export const usePinInput = (options: UsePinInputOptions) => {
+export const usePinInput = (options: UsePinInputOptions = {}) => {
   const {
     pinLength = 4,
     defaultValue,
