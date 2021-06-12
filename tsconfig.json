@@ -1,5 +1,4 @@
 {
-  "extends": "./tsconfig.build.json",
   "include": [
     "packages",
     "types",
@@ -13,6 +12,13 @@
     "module": "CommonJS",
     "target": "es2018",
     "lib": ["dom", "esnext"],
+    "sourceMap": true,
+    "noEmitOnError": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "strict": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
     "importHelpers": true,
     "noFallthroughCasesInSwitch": true,
     "allowJs": true,
