@@ -37,6 +37,9 @@ export const useInput = (options: UseInputOptions) => {
   useEffect(() => {
     if (autoFocus && ref.current) {
       ref.current.focus();
+      if (ref.current.value.length !== 0) {
+        ref.current.setSelectionRange(0, ref.current.value.length);
+      }
     }
   }, [autoFocus]);
 
@@ -58,7 +61,8 @@ export const useInput = (options: UseInputOptions) => {
         const inputValue = event.target.value;
         handlers?.onChange?.(event);
         if (
-          (typeof options.validator !== "function" ||
+          (inputValue === "" ||
+            typeof options.validator !== "function" ||
             options.validator(inputValue)) &&
           inputValue.length <= options.maxLength
         ) {

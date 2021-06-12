@@ -33,6 +33,19 @@ describe("useInput", () => {
     expect(getInput()).toHaveValue("hell");
   });
 
+  it("can clear the input even does not pass validator", () => {
+    render(
+      <Input
+        defaultValue="1234"
+        validator={(value) => new RegExp(/\d+/).test(value)}
+      />
+    );
+
+    userEvent.clear(getInput());
+
+    expect(getInput()).toHaveValue("");
+  });
+
   it("sync with value prop", () => {
     const onChange = jest.fn();
     const { rerender } = render(
@@ -285,6 +298,19 @@ describe("useSeparatorInput", () => {
     userEvent.type(getInput(), "10012000500");
 
     expect(getInput()).toHaveValue("10/01/2000");
+  });
+
+  it("can be cleared", () => {
+    render(
+      <BirthdateInput
+        defaultValue="10/02"
+        validator={(value) => new RegExp(/(\d|\/)/).test(value.substr(-1))}
+      />
+    );
+
+    userEvent.clear(getInput());
+
+    expect(getInput()).toHaveValue("");
   });
 
   it("append separator to initial value", () => {

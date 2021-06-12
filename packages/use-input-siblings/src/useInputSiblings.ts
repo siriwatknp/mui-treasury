@@ -13,7 +13,10 @@ interface Sibling {
   /**
    * options that contain `maxLength`
    */
-  options: { maxLength: number | Array<number> };
+  options: {
+    maxLength: number | Array<number>;
+    validator?: (value: string) => boolean;
+  };
 }
 export interface UseInputSiblingsOptions {
   siblings: Array<Sibling>;
@@ -58,11 +61,12 @@ export const useInputSiblings = (options: UseInputSiblingsOptions) => {
           inputProps.onChange?.(event);
           const { value } = event.target;
           const jumpLength = getJumpLength(input.options.maxLength);
-          if (value.length === jumpLength) {
+          let validator = input.options.validator || (() => true);
+          if (value.length === jumpLength && validator(value)) {
             const nextDOM = siblings[index + 1]?.getDOM();
             if (nextDOM) {
               nextDOM.focus();
-              nextDOM.setSelectionRange(0, jumpLength);
+              nextDOM.setSelectionRange(0, nextDOM.value.length);
             }
           }
         },
