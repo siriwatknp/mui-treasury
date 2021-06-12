@@ -1,6 +1,6 @@
 {
   "name": "@mui-treasury/use-card-input",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "description": "mui-treasury | use-card-input",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "homepage": "https://github.com/siriwatknp/mui-treasury#readme",
@@ -32,7 +32,7 @@
     "url": "https://github.com/siriwatknp/mui-treasury/issues"
   },
   "dependencies": {
-    "@mui-treasury/use-input-siblings": "^0.1.0-alpha.1"
+    "@mui-treasury/use-input-siblings": "^0.1.0-alpha.2"
   },
   "peerDependencies": {
     "react": ">=16.8.0"
