@@ -1,12 +1,10 @@
 import React from "react";
-import { useInput, useInputSiblings } from "@mui-treasury/use-input-siblings";
-
-interface InputHanders {
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
-  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
-  onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
-}
+import {
+  useInput,
+  useInputSiblings,
+  useIsFirstMount,
+  InputHanders,
+} from "@mui-treasury/use-input-siblings";
 
 const numberValidator = (value: string) => new RegExp(/\d/).test(value);
 const alphanumericValidator = (value: string) =>
@@ -44,7 +42,7 @@ export interface UsePinInputOptions {
   /**
    * a callback function when input value changed
    */
-  onChange?: (value: string) => void;
+  onChange?: (value: string, meta: { invalid: boolean }) => void;
   /**
    * a callback function when all inputs are not focused
    */
@@ -70,11 +68,13 @@ export const usePinInput = (options: UsePinInputOptions = {}) => {
     })
   );
 
+  const isFirstMount = useIsFirstMount();
   const pinArray = siblings.map(({ value }) => value);
   React.useEffect(() => {
-    const pinString = pinArray.join("");
-    if (pinString !== (value || defaultValue || "")) {
-      options.onChange?.(pinString);
+    if (!isFirstMount) {
+      options.onChange?.(pinArray.join(""), {
+        invalid: siblings.some((pinInput) => pinInput.invalid),
+      });
     }
   }, pinArray);
 
@@ -99,6 +99,7 @@ export const usePinInput = (options: UsePinInputOptions = {}) => {
           onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
             const inputValue = event.target.value;
             if (inputValue.length > 1) {
+              handlers?.onChange?.(event);
               // copy & paste
               const valueArray = inputValue
                 .split("")

@@ -15,7 +15,6 @@ interface Sibling {
    */
   options: {
     maxLength: number | Array<number>;
-    validator?: (value: string) => boolean;
   };
 }
 export interface UseInputSiblingsOptions {
@@ -61,8 +60,7 @@ export const useInputSiblings = (options: UseInputSiblingsOptions) => {
           inputProps.onChange?.(event);
           const { value } = event.target;
           const jumpLength = getJumpLength(input.options.maxLength);
-          let validator = input.options.validator || (() => true);
-          if (value.length === jumpLength && validator(value)) {
+          if (value.length === jumpLength) {
             const nextDOM = siblings[index + 1]?.getDOM();
             if (nextDOM) {
               nextDOM.focus();

@@ -92,7 +92,7 @@ describe("usePinInput", () => {
 
     userEvent.type(getInput(0), "3562");
 
-    expect(onChange).toHaveBeenLastCalledWith("3562");
+    expect(onChange).toHaveBeenLastCalledWith("3562", { invalid: false });
     expect(onChange).toHaveBeenCalledTimes(4);
   });
 
@@ -122,7 +122,9 @@ describe("usePinInput", () => {
       strokes.forEach((s, index) => {
         expect(getInput(index)).toHaveValue(s);
       });
-      expect(onChange).toHaveBeenLastCalledWith(strokes.join(""));
+      expect(onChange).toHaveBeenLastCalledWith(strokes.join(""), {
+        invalid: false,
+      });
     });
   });
 });
