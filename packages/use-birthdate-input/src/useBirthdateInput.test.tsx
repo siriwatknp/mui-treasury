@@ -31,13 +31,6 @@ describe("useBirthdateInput", () => {
     expect(getInput()).toHaveAttribute("inputmode", "numeric");
   });
 
-  it("receive only number", () => {
-    render(<BirthdateInput />);
-
-    userEvent.type(getInput(), "abc/.");
-    expect(getInput()).toHaveValue("");
-  });
-
   describe("insert separator", () => {
     it("able to type separator at third", () => {
       render(<BirthdateInput defaultValue="1" />);
@@ -92,7 +85,10 @@ describe("useBirthdateInput", () => {
     render(<BirthdateInput onChange={onChange} />);
 
     userEvent.type(getInput(), "02");
-    expect(onChange).toHaveBeenLastCalledWith("02/");
+    expect(onChange).toHaveBeenLastCalledWith("02/", { invalid: true });
+
+    userEvent.type(getInput(), "121998");
+    expect(onChange).toHaveBeenLastCalledWith("02/12/1998", { invalid: false });
   });
 
   it("call all handlers", () => {

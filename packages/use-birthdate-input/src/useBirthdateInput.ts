@@ -18,12 +18,23 @@ export interface UseBirthdateInputOptions {
   /**
    * a callback function when input value changed
    */
-  onChange?: (value: string) => void;
+  onChange?: (value: string, meta: { invalid: boolean }) => void;
 }
 interface InputHanders {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
+
+const dayMonthYearValidator = (day?: string, month?: string, year?: string) => {
+  return (
+    Number(day) >= 1 &&
+    Number(day) <= 31 &&
+    Number(month) >= 1 &&
+    Number(month) <= 12 &&
+    Number(year) >= 1500 &&
+    Number(year) <= 2999
+  );
+};
 
 export const useBirthdateInput = (options: UseBirthdateInputOptions = {}) => {
   const { separator = "/" } = options;
@@ -31,8 +42,7 @@ export const useBirthdateInput = (options: UseBirthdateInputOptions = {}) => {
     ...options,
     separator,
     maxLength: [2, 2, 4],
-    validator: (value) =>
-      new RegExp(/^\d+$/).test(value.replace(new RegExp(separator, "g"), "")), // last char must be number or separator
+    validator: (value) => dayMonthYearValidator(...value.split(separator)),
   });
   return {
     ...result,
