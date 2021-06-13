@@ -138,6 +138,7 @@
       "@mui-treasury/use-input-siblings": ["packages/use-input-siblings/src/"],
       "@mui-treasury/use-pin-input": ["packages/use-pin-input/src/"],
       "@mui-treasury/use-card-input": ["packages/use-card-input/src/"],
+      "@mui-treasury/use-expiry-input": ["packages/use-expiry-input/src/"],
       // hygen-hook-target
       "@mui-treasury/layout": ["packages/layout/src"],
       "@mui-treasury/mockup/*": ["packages/mockup/src/*"],
