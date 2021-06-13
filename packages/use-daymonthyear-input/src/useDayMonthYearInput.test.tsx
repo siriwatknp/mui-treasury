@@ -1,11 +1,10 @@
 import React from "react";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, act } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {
   useDayMonthYearInput,
   UseDayMonthYearInputOptions,
 } from "./useDayMonthYearInput";
-import { act } from "react-dom/test-utils";
 
 const UI = (props?: UseDayMonthYearInputOptions) => {
   const { getDayInputProps, getMonthInputProps, getYearInputProps } =
@@ -74,7 +73,7 @@ describe("useDayMonthYearInput", () => {
 
   describe("⌫ backspace", () => {
     it("backspace first char on Month should still focus on Day", () => {
-      render(<UI defaultValue={{ day: "10" }} />);
+      render(<UI defaultValue={{ day: 10 }} />);
 
       userEvent.type(getInput("month"), "1{backspace}");
       expect(getInput("month")).toHaveValue("");
@@ -82,7 +81,7 @@ describe("useDayMonthYearInput", () => {
     });
 
     it("backspace on empty Month should auto focus on Day and remove 1 char", () => {
-      render(<UI defaultValue={{ day: "20" }} />);
+      render(<UI defaultValue={{ day: 20 }} />);
 
       userEvent.type(getInput("month"), "{backspace}");
 
@@ -99,7 +98,7 @@ describe("useDayMonthYearInput", () => {
     });
 
     it("backspace on empty Year should auto focus on Month and remove 1 char", () => {
-      render(<UI defaultValue={{ month: "02" }} />);
+      render(<UI defaultValue={{ month: 2 }} />);
 
       userEvent.type(getInput("year"), "{backspace}");
 
@@ -109,7 +108,7 @@ describe("useDayMonthYearInput", () => {
   });
 
   it("should pass default value to inputs", () => {
-    render(<UI defaultValue={{ day: "1", month: "3", year: "2020" }} />);
+    render(<UI defaultValue={{ day: 1, month: 3, year: 2020 }} />);
     expect(getInput("day")).toHaveValue("01");
     expect(getInput("month")).toHaveValue("03");
     expect(getInput("year")).toHaveValue("2020");
@@ -141,31 +140,48 @@ describe("useDayMonthYearInput", () => {
 
     userEvent.type(getInput("day"), "7");
     userEvent.tab();
-    expect(onChange).toHaveBeenCalledWith({ day: "07", month: "", year: "" });
+    expect(onChange).toHaveBeenCalledWith(
+      {
+        day: 7,
+        month: undefined,
+        year: undefined,
+      },
+      { invalid: true }
+    );
 
     userEvent.type(document.activeElement as Element, "2");
     userEvent.tab();
-    expect(onChange).toHaveBeenCalledWith({ day: "07", month: "02", year: "" });
+    expect(onChange).toHaveBeenCalledWith(
+      {
+        day: 7,
+        month: 2,
+        year: undefined,
+      },
+      { invalid: true }
+    );
 
     userEvent.type(document.activeElement as Element, "2019");
-    expect(onChange).toHaveBeenCalledWith({
-      day: "07",
-      month: "02",
-      year: "2019",
-    });
+    expect(onChange).toHaveBeenCalledWith(
+      {
+        day: 7,
+        month: 2,
+        year: 2019,
+      },
+      { invalid: false }
+    );
   });
 
   describe("prop: value", () => {
     it("inputs value sync with `value` prop", () => {
       const { rerender } = render(
-        <UI value={{ day: "10", month: "05", year: "2020" }} />
+        <UI value={{ day: 10, month: 5, year: 2020 }} />
       );
 
       expect(getInput("day")).toHaveValue("10");
       expect(getInput("month")).toHaveValue("05");
       expect(getInput("year")).toHaveValue("2020");
 
-      rerender(<UI value={{ day: "07", month: "01" }} />);
+      rerender(<UI value={{ day: 7, month: 1 }} />);
 
       expect(getInput("day")).toHaveValue("07");
       expect(getInput("month")).toHaveValue("01");
