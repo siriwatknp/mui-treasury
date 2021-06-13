@@ -1,5 +1,6 @@
 import React from "react";
 import { InputHanders } from "./types";
+import { useIsFirstMount } from "./useInput";
 
 const someEqual = <T>(value: T, matches: Array<T>) =>
   matches.some((match) => value === match);
@@ -46,11 +47,12 @@ export interface UseSeparatorInputOptions {
   /**
    * a callback function when input value changed
    */
-  onChange?: (value: string) => void;
+  onChange?: (value: string, meta: { invalid: boolean }) => void;
 }
 export const useSeparatorInput = (options: UseSeparatorInputOptions) => {
   const {
     autoFocus = false,
+    defaultValue,
     value,
     maxLength,
     separator = "/",
@@ -64,7 +66,7 @@ export const useSeparatorInput = (options: UseSeparatorInputOptions) => {
   const codeRef = React.useRef<string | undefined>();
   const [internalValue, setInternalValue] = React.useState(
     appendSeparator(
-      (value || options.defaultValue || "").slice(0, maxCharaters),
+      (value || defaultValue || "").slice(0, maxCharaters),
       separatorIndexes
     )
   );
@@ -75,10 +77,19 @@ export const useSeparatorInput = (options: UseSeparatorInputOptions) => {
     }
   }, [autoFocus]);
 
+  const isFirstMount = useIsFirstMount();
+
+  React.useEffect(() => {
+    if (!isFirstMount) {
+      setInternalValue(value || "");
+    }
+  }, [value]);
+
   return {
     options,
     value: internalValue,
     setValue: setInternalValue,
+    invalid: typeof validator === "function" && !validator(internalValue),
     getDOM: () => ref.current,
     getInputProps: (handlers?: InputHanders) => ({
       ref,
@@ -93,22 +104,16 @@ export const useSeparatorInput = (options: UseSeparatorInputOptions) => {
         ) {
           newValue = inputValue.slice(0, -1);
         } else {
-          const latestChar = inputValue.substr(-1);
-          if (
-            !!latestChar &&
-            typeof validator === "function" &&
-            !validator(inputValue)
-          )
-            return; // should be separator or number
           if (someEqual(inputValue.length, separatorIndexes)) {
             newValue = `${inputValue}${separator}`;
           }
         }
 
-        if (newValue.length <= maxCharaters) {
-          setInternalValue(newValue);
-          options?.onChange?.(newValue);
-        }
+        newValue = newValue.substr(0, maxCharaters);
+        setInternalValue(newValue);
+        options?.onChange?.(newValue, {
+          invalid: typeof validator === "function" && !validator(newValue),
+        });
       },
       onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => {
         handlers?.onKeyDown?.(event);

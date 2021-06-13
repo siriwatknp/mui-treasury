@@ -56,19 +56,28 @@ describe("useInput", () => {
 
     userEvent.type(getInput(), "bar");
 
-    expect(onChange).toHaveBeenLastCalledWith("foobar");
+    expect(onChange).toHaveBeenLastCalledWith("foobar", expect.anything());
     expect(getInput()).toHaveValue("foobar");
 
     rerender(<Input value="new" />);
-
     expect(getInput()).toHaveValue("new");
+
+    rerender(<Input />);
+    expect(getInput()).toHaveValue("");
   });
 
-  it("validate value before change", () => {
-    render(<Input validator={(value) => new RegExp(/^\d+$/).test(value)} />);
+  it("add validation info to onChange", () => {
+    const onChange = jest.fn();
+    render(
+      <Input
+        onChange={onChange}
+        validator={(value) => new RegExp(/^\d+$/).test(value)}
+      />
+    );
 
     userEvent.type(getInput(), "1Y2");
-    expect(getInput()).toHaveValue("12");
+    expect(getInput()).toHaveValue("1Y2");
+    expect(onChange).toHaveBeenCalledWith("1Y2", { invalid: true });
   });
 
   it("autofocus at mount", () => {
@@ -152,6 +161,140 @@ describe("useTwoNumbersInput", () => {
     rerender(<Input value="4" />);
 
     expect(getInput()).toHaveValue("04");
+  });
+});
+
+describe("useSeparatorInput", () => {
+  const BirthdateInput = (props?: Partial<UseSeparatorInputOptions>) => {
+    const { getInputProps } = useSeparatorInput({
+      maxLength: [2, 2, 4],
+      ...props,
+    });
+    return (
+      <div>
+        <label htmlFor="birthdate">birthdate</label>
+        <input id="birthdate" {...getInputProps()} />
+      </div>
+    );
+  };
+  const getInput = () => screen.getByLabelText("birthdate");
+
+  it("receive default value as string", () => {
+    render(<BirthdateInput defaultValue="10/01/2000400" />);
+
+    expect(getInput()).toHaveValue("10/01/2000");
+  });
+
+  it("allow maxLength characters including separator", () => {
+    render(<BirthdateInput />);
+
+    userEvent.type(getInput(), "10012000500");
+
+    expect(getInput()).toHaveValue("10/01/2000");
+  });
+
+  it("can be cleared", () => {
+    render(
+      <BirthdateInput
+        defaultValue="10/02"
+        validator={(value) => new RegExp(/(\d|\/)/).test(value.substr(-1))}
+      />
+    );
+
+    userEvent.clear(getInput());
+
+    expect(getInput()).toHaveValue("");
+  });
+
+  it("sync with value", () => {
+    const { rerender } = render(<BirthdateInput value="10/02" />);
+
+    expect(getInput()).toHaveValue("10/02/");
+
+    rerender(<BirthdateInput value={undefined} />);
+
+    expect(getInput()).toHaveValue("");
+  });
+
+  it("append separator to initial value", () => {
+    render(<BirthdateInput value="10/01" />);
+
+    expect(getInput()).toHaveValue("10/01/");
+  });
+
+  it("insert separator at third and fifth position", () => {
+    render(<BirthdateInput defaultValue="1" />);
+
+    expect(getInput()).toHaveValue("1");
+
+    userEvent.type(getInput(), "0");
+    expect(getInput()).toHaveValue("10/");
+
+    userEvent.type(getInput(), "01");
+    expect(getInput()).toHaveValue("10/01/");
+  });
+
+  describe("⌫ backspace", () => {
+    it("backspace on the first character", () => {
+      render(<BirthdateInput />);
+
+      userEvent.type(getInput(), "1{backspace}");
+      expect(getInput()).toHaveValue("");
+    });
+
+    it("backspace on separator should also remove second character", () => {
+      render(<BirthdateInput defaultValue="10/" />);
+
+      userEvent.type(getInput(), "{backspace}");
+      expect(getInput()).toHaveValue("1");
+    });
+
+    it("backspace on separator should also remove fifth character", () => {
+      render(<BirthdateInput defaultValue="10/01/" />);
+
+      userEvent.type(getInput(), "{backspace}");
+      expect(getInput()).toHaveValue("10/0");
+    });
+  });
+
+  it("call onChange with the value and invalid", () => {
+    const onChange = jest.fn();
+    render(
+      <BirthdateInput
+        onChange={onChange}
+        validator={(value) => new RegExp(/^\d{0,2}\/$/).test(value)}
+      />
+    );
+
+    userEvent.type(getInput(), "02");
+    expect(onChange).toHaveBeenLastCalledWith("02/", { invalid: false });
+
+    userEvent.type(getInput(), "abc");
+    expect(onChange).toHaveBeenLastCalledWith("02/ab/c", { invalid: true });
+  });
+
+  it("call all handlers", () => {
+    const onChange = jest.fn();
+    const onKeyDown = jest.fn();
+    const Input = () => {
+      const { getInputProps } = useSeparatorInput({ maxLength: [2, 2, 4] });
+      return (
+        <div>
+          <label htmlFor="birthdate">birthdate</label>
+          <input id="birthdate" {...getInputProps({ onChange, onKeyDown })} />
+        </div>
+      );
+    };
+
+    render(<Input />);
+
+    userEvent.type(getInput(), "10");
+    expect(onChange).toHaveBeenLastCalledWith(
+      expect.objectContaining({
+        target: expect.objectContaining({ value: "10/" }),
+      })
+    );
+    expect(onKeyDown).toHaveBeenCalledTimes(2);
   });
 });
 
@@ -268,134 +411,6 @@ describe("useInputSiblings", () => {
     await waitFor(() => {
       expect(onBlur).toHaveBeenCalled();
     });
-  });
-});
-
-describe("useSeparatorInput", () => {
-  const BirthdateInput = (props?: Partial<UseSeparatorInputOptions>) => {
-    const { getInputProps } = useSeparatorInput({
-      maxLength: [2, 2, 4],
-      ...props,
-    });
-    return (
-      <div>
-        <label htmlFor="birthdate">birthdate</label>
-        <input id="birthdate" {...getInputProps()} />
-      </div>
-    );
-  };
-  const getInput = () => screen.getByLabelText("birthdate");
-
-  it("receive default value as string", () => {
-    render(<BirthdateInput defaultValue="10/01/2000400" />);
-
-    expect(getInput()).toHaveValue("10/01/2000");
-  });
-
-  it("allow maxLength characters including separator", () => {
-    render(<BirthdateInput />);
-
-    userEvent.type(getInput(), "10012000500");
-
-    expect(getInput()).toHaveValue("10/01/2000");
-  });
-
-  it("can be cleared", () => {
-    render(
-      <BirthdateInput
-        defaultValue="10/02"
-        validator={(value) => new RegExp(/(\d|\/)/).test(value.substr(-1))}
-      />
-    );
-
-    userEvent.clear(getInput());
-
-    expect(getInput()).toHaveValue("");
-  });
-
-  it("append separator to initial value", () => {
-    render(<BirthdateInput value="10/01" />);
-
-    expect(getInput()).toHaveValue("10/01/");
-  });
-
-  it("only reflect change if it pass validator", () => {
-    render(
-      <BirthdateInput
-        validator={(value) => new RegExp(/\d/).test(value.substr(-1))}
-      />
-    );
-
-    userEvent.type(getInput(), "a10cd/0a4");
-
-    expect(getInput()).toHaveValue("10/04/");
-  });
-
-  it("insert separator at third and fifth position", () => {
-    render(<BirthdateInput defaultValue="1" />);
-
-    expect(getInput()).toHaveValue("1");
-
-    userEvent.type(getInput(), "0");
-    expect(getInput()).toHaveValue("10/");
-
-    userEvent.type(getInput(), "01");
-    expect(getInput()).toHaveValue("10/01/");
-  });
-
-  describe("⌫ backspace", () => {
-    it("backspace on the first character", () => {
-      render(<BirthdateInput />);
-
-      userEvent.type(getInput(), "1{backspace}");
-      expect(getInput()).toHaveValue("");
-    });
-
-    it("backspace on separator should also remove second character", () => {
-      render(<BirthdateInput defaultValue="10/" />);
-
-      userEvent.type(getInput(), "{backspace}");
-      expect(getInput()).toHaveValue("1");
-    });
-
-    it("backspace on separator should also remove fifth character", () => {
-      render(<BirthdateInput defaultValue="10/01/" />);
-
-      userEvent.type(getInput(), "{backspace}");
-      expect(getInput()).toHaveValue("10/0");
-    });
-  });
-
-  it("call onChange with the value", () => {
-    const onChange = jest.fn();
-    render(<BirthdateInput onChange={onChange} />);
-
-    userEvent.type(getInput(), "02");
-    expect(onChange).toHaveBeenLastCalledWith("02/");
-  });
-
-  it("call all handlers", () => {
-    const onChange = jest.fn();
-    const onKeyDown = jest.fn();
-    const Input = () => {
-      const { getInputProps } = useSeparatorInput({ maxLength: [2, 2, 4] });
-      return (
-        <div>
-          <label htmlFor="birthdate">birthdate</label>
-          <input id="birthdate" {...getInputProps({ onChange, onKeyDown })} />
-        </div>
-      );
-    };
-
-    render(<Input />);
-
-    userEvent.type(getInput(), "10");
-    expect(onChange).toHaveBeenLastCalledWith(
-      expect.objectContaining({
-        target: expect.objectContaining({ value: "10/" }),
-      })
-    );
-    expect(onKeyDown).toHaveBeenCalledTimes(2);
   });
 });
 
