@@ -24,17 +24,29 @@ export default {
 } as Meta;
 
 export const CreditCard: Story<Partial<UseCardInputOptions>> = (args) => {
-  const { getCardInputProps, getExpInputProps, getCCVInputProps } =
-    useCardInput(args);
+  const {
+    getCardNameInputProps,
+    getCardNumberInputProps,
+    getExpInputProps,
+    getCSCInputProps,
+  } = useCardInput(args);
   return (
     <>
+      <div>
+        <div>
+          <label htmlFor="card-number" style={{ fontSize: 12 }}>
+            Card Name
+          </label>
+        </div>
+        <input id="card-name" {...getCardNameInputProps()} />
+      </div>
       <div>
         <div>
           <label htmlFor="card-number" style={{ fontSize: 12 }}>
             Card Number
           </label>
         </div>
-        <input id="card-number" {...getCardInputProps()} />
+        <input id="card-number" {...getCardNumberInputProps()} />
       </div>
       <div style={{ display: "flex" }}>
         <div>
@@ -43,11 +55,7 @@ export const CreditCard: Story<Partial<UseCardInputOptions>> = (args) => {
               Expiration
             </label>
           </div>
-          <input
-            id="exp"
-            placeholder={args.fullYear ? "MM/YYYY" : "MM/YY"}
-            {...getExpInputProps()}
-          />
+          <input id="exp" {...getExpInputProps()} />
         </div>
         <div style={{ marginLeft: 8 }}>
           <div>
@@ -55,7 +63,7 @@ export const CreditCard: Story<Partial<UseCardInputOptions>> = (args) => {
               CCV
             </label>
           </div>
-          <input id="ccv" {...getCCVInputProps()} />
+          <input id="ccv" {...getCSCInputProps()} />
         </div>
       </div>
     </>

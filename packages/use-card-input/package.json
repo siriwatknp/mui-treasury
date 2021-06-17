@@ -32,7 +32,8 @@
     "url": "https://github.com/siriwatknp/mui-treasury/issues"
   },
   "dependencies": {
-    "@mui-treasury/use-input-siblings": "^0.1.0-alpha.2"
+    "@mui-treasury/use-input-siblings": "^0.1.0-alpha.2",
+    "@mui-treasury/use-expiry-input": "^0.1.0-alpha.0"
   },
   "peerDependencies": {
     "react": ">=16.8.0"

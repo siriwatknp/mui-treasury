@@ -3,7 +3,9 @@ import {
   useSeparatorInput,
   useInput,
   useInputSiblings,
+  useIsFirstMount,
 } from "@mui-treasury/use-input-siblings";
+import { useExpiryInput } from "@mui-treasury/use-expiry-input";
 
 interface InputHanders {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -12,10 +14,11 @@ interface InputHanders {
   onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 export interface CardValue {
+  cardName?: string;
   cardNumber?: string;
   expMonth?: number;
   expYear?: number;
-  ccv?: string;
+  csc?: string;
 }
 export interface UseCardInputOptions {
   /**
@@ -42,7 +45,7 @@ export interface UseCardInputOptions {
   /**
    * a callback function when input value changed
    */
-  onChange?: (value: CardValue) => void;
+  onChange?: (value: CardValue, meta: { invalid: boolean }) => void;
   /**
    * a callback function when all inputs are not focused
    */
@@ -66,24 +69,15 @@ const prependZero = (value: number | undefined) => {
 };
 
 const parseCard = (value: CardValue | undefined) => {
-  if (!value) return { cardNumber: "", exp: "", ccv: "" };
+  if (!value) return { cardName: "", cardNumber: "", exp: "", csc: "" };
   return {
+    cardName: value.cardName,
     cardNumber: chunk(value.cardNumber || "", 4),
     exp: value.expMonth
       ? `${prependZero(value.expMonth)}/${value.expYear || ""}`
       : "",
-    ccv: value.ccv || "",
+    csc: value.csc || "",
   };
-};
-const isObjectEqual = <T extends { [k: string]: any }>(root: T, target: T) => {
-  let isEqual = true;
-  for (const key in root) {
-    if (root[key] !== target[key]) {
-      isEqual = false;
-      break;
-    }
-  }
-  return isEqual;
 };
 
 export const useCardInput = (options: UseCardInputOptions = {}) => {
@@ -97,77 +91,99 @@ export const useCardInput = (options: UseCardInputOptions = {}) => {
   const removeSeparator = (value: string) =>
     value.replace(new RegExp(cardSeparator, "g"), "");
   const parsedValue = parseCard(value || defaultValue);
-  const card = useSeparatorInput({
+  const name = useInput({
     autoFocus,
+    value: parsedValue.cardName,
+    maxLength: 26,
+    validator: (value) => value.length >= 2 && value.length <= 26,
+  });
+  const card = useSeparatorInput({
     maxLength: [4, 4, 4, 4],
     separator: cardSeparator,
     value: parsedValue.cardNumber,
-    validator: (value) => new RegExp(/\d+/).test(removeSeparator(value)),
+    validator: (value) => new RegExp(/\d{16}/).test(removeSeparator(value)),
   });
-  const exp = useSeparatorInput({
-    maxLength: [2, fullYear ? 4 : 2],
-    separator: "/",
-    value: parsedValue.exp,
-    validator: (value) =>
-      new RegExp(/^(\d{0,2}\/?|\d{0,2}\/\d{0,4})$/).test(value),
+  const exp = useExpiryInput({
+    value: {
+      expMonth: value?.expMonth || defaultValue?.expMonth,
+      expYear: value?.expYear || defaultValue?.expYear,
+    },
+    fullYear,
   });
-  const ccv = useInput({
+  const csc = useInput({
     maxLength: 4,
-    value: parsedValue.ccv,
-    validator: (value) => new RegExp(/^\d+$/).test(value),
+    value: parsedValue.csc,
+    validator: (value) => new RegExp(/^\d{3,4}$/).test(value),
   });
-  const inputs = useInputSiblings({
-    siblings: [card, exp, ccv],
+
+  const [
+    getNameInputProps,
+    getCardInputProps,
+    getExpInputProps,
+    getCSCInputProps,
+  ] = useInputSiblings({
+    siblings: [name, card, exp, csc],
     onBlur: options.onBlur,
   });
 
+  const isFirstMount = useIsFirstMount();
+
   React.useEffect(() => {
-    const [expMonth, expYear] = exp.value.split("/");
-    const result: CardValue = {
-      cardNumber: removeSeparator(card.value),
-      expMonth: Number(expMonth) || undefined,
-      expYear: Number(expYear) || undefined,
-      ccv: ccv.value,
-    };
-    if (!isObjectEqual(result, parsedValue)) {
-      options.onChange?.(result);
+    if (!isFirstMount) {
+      const [expMonth, expYear] = exp.value.split("/");
+      const result: CardValue = {
+        cardName: name.value,
+        cardNumber: removeSeparator(card.value),
+        expMonth: Number(expMonth) || undefined,
+        expYear: Number(expYear) || undefined,
+        csc: csc.value,
+      };
+      options.onChange?.(result, {
+        // TODO should send which field is invalid
+        invalid: card.invalid || exp.invalid || csc.invalid,
+      });
     }
-  }, [card.value, exp.value, ccv.value]);
+  }, [card.value, exp.value, csc.value]);
 
   return {
-    getCardInputProps: (handlers?: InputHanders) => ({
+    getCardNameInputProps: (handlers?: InputHanders) => ({
+      size: 26,
+      type: "text",
+      placeholder: "Full Name",
+      autoComplete: "cc-name",
+      name: "ccname",
+      required: true,
+      ...getNameInputProps(handlers),
+    }),
+    getCardNumberInputProps: (handlers?: InputHanders) => ({
       size: 19,
       type: "tel",
+      name: "cardnumber",
       inputMode: "numeric" as const,
-      ...inputs[0](handlers),
+      autoComplete: "cc-number",
+      pattern:
+        "^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35d{3})d{11})$",
+      required: true,
+      ...getCardInputProps(handlers),
     }),
-    getExpInputProps: (handlers?: InputHanders) => {
-      const inputProps = inputs[1](handlers);
-      return {
-        size: fullYear ? 7 : 5,
-        type: "tel",
-        inputMode: "numeric" as const,
-        ...inputProps,
-        onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
-          handlers?.onChange?.(event);
-          const inputValue = event.target.value;
-          if (
-            inputValue.length === 2 &&
-            Number.isInteger(Number(inputValue[0])) &&
-            inputValue[1] === "/"
-          ) {
-            exp.setValue(`0${inputValue}`);
-          } else {
-            inputProps.onChange(event);
-          }
-        },
-      };
-    },
-    getCCVInputProps: (handlers?: InputHanders) => ({
+    getExpInputProps: (handlers?: InputHanders) => ({
+      size: fullYear ? 7 : 5,
+      type: "tel",
+      inputMode: "numeric" as const,
+      autoComplete: "cc-exp",
+      name: "ccexp",
+      placeholder: fullYear ? "MM/YYYY" : "MM/YY",
+      required: true,
+      ...getExpInputProps(handlers),
+    }),
+    getCSCInputProps: (handlers?: InputHanders) => ({
       size: 4,
       type: "tel",
       inputMode: "numeric" as const,
-      ...inputs[2](handlers),
+      name: "csc",
+      autoComplete: "cc-csc",
+      required: true,
+      ...getCSCInputProps(handlers),
     }),
   };
 };
