@@ -1,5 +1,6 @@
 {
   "name": "@mui-treasury/mockup",
+  "private": true,
   "version": "2.0.0-alpha.1",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "keywords": [
