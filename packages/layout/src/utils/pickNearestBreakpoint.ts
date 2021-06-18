@@ -1,4 +1,4 @@
-import { Breakpoint } from "@material-ui/core/styles/createBreakpoints";
+import { Breakpoint } from "@material-ui/system";
 import { BREAKPOINT_KEYS } from "./muiBreakpoints";
 
 export const pickNearestBreakpoint = <T>(

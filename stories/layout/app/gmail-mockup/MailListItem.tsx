@@ -2,7 +2,7 @@ import React from "react";
 import cx from "clsx";
 import styled from "@emotion/styled";
 
-import { withStyles } from "@material-ui/core/styles";
+import withStyles from "@material-ui/styles/withStyles";
 import Box from "@material-ui/core/Box";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";

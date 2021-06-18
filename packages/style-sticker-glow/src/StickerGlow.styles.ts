@@ -1,5 +1,5 @@
 import { alpha } from "@material-ui/core/styles";
-import { makeStyles } from "@material-ui/core/styles";
+import makeStyles from "@material-ui/styles/makeStyles";
 import { StickerProps } from "@mui-treasury/component-sticker";
 
 type Props = Pick<StickerProps, "palette">;

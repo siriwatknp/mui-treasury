@@ -1,4 +1,4 @@
-import { Breakpoint } from "@material-ui/core/styles/createBreakpoints";
+import { Breakpoint } from "@material-ui/system";
 import { Responsive } from "./types";
 
 export const toResponsiveCssValue = (value: Responsive<string | number>) => {

@@ -1,4 +1,4 @@
-import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
+import { createBreakpoints } from "@material-ui/system";
 
 const MuiBreakpoints = createBreakpoints({});
 

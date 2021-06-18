@@ -1,4 +1,6 @@
-import { createStyles, makeStyles, alpha } from "@material-ui/core/styles";
+import { alpha } from "@material-ui/core/styles";
+import createStyles from "@material-ui/styles/createStyles";
+import makeStyles from "@material-ui/styles/makeStyles";
 export const ButtonBootstrapStyles = ({ palette }) =>
   createStyles({
     root: {

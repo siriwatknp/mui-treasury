@@ -1,5 +1,5 @@
 import { CSSProperties } from "react";
-import { Breakpoint } from "@material-ui/core/styles/createBreakpoints";
+import { Breakpoint } from "@material-ui/system";
 import { HeaderBuilder } from "../Header/HeaderBuilder";
 import { ResponsiveBuilder } from "../shared/ResponsiveBuilder";
 import { combineBreakpoints } from "../utils/combineBreakpoints";
@@ -159,9 +159,8 @@ export class EdgeSidebarBuilder extends ResponsiveBuilder<EdgeSidebarConfig> {
       const bp = key as Breakpoint;
       if (this.id) {
         const isClipped = this.effectedBy.header.isClipped(this.id, bp);
-        const isAboveSomeEdgeSidebar = this.effectedBy.header.isAboveSomeEdgeSidebar(
-          bp
-        );
+        const isAboveSomeEdgeSidebar =
+          this.effectedBy.header.isAboveSomeEdgeSidebar(bp);
         result[bp] =
           theme.zIndex.drawer + (isAboveSomeEdgeSidebar && !isClipped ? 20 : 0);
       } else {

@@ -1,5 +1,5 @@
 import { Theme } from "@emotion/react";
-import { makeStyles } from "@material-ui/core/styles";
+import makeStyles from "@material-ui/styles/makeStyles";
 import { Components } from "@material-ui/core/styles/components";
 
 type Output = Required<Pick<Components, "MuiMenu" | "MuiMenuItem">>;
@@ -38,10 +38,11 @@ export const createMenuBootstrapStyles = (theme: Theme): Output => ({
         "&:hover, &:focus": {
           backgroundColor: "#e9ecef",
         },
-        "&:active, &.Mui-selected, &.Mui-selected.Mui-focusVisible, &.Mui-selected:hover": {
-          color: "#fff",
-          backgroundColor: "#0d6efd",
-        },
+        "&:active, &.Mui-selected, &.Mui-selected.Mui-focusVisible, &.Mui-selected:hover":
+          {
+            color: "#fff",
+            backgroundColor: "#0d6efd",
+          },
       },
     },
   },

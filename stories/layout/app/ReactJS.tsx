@@ -1,11 +1,11 @@
 import React from "react";
 import cx from "clsx";
 import {
-  makeStyles,
   createTheme,
   responsiveFontSizes,
   ThemeProvider,
 } from "@material-ui/core/styles";
+import makeStyles from "@material-ui/styles/makeStyles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
@@ -100,6 +100,16 @@ const theme = responsiveFontSizes(
   })
 );
 
+function withThemeProvider(Component: React.ElementType) {
+  return function ThemeProviderHOC() {
+    return (
+      <ThemeProvider theme={theme}>
+        <Component />
+      </ThemeProvider>
+    );
+  };
+}
+
 // @ts-ignore
 const FooterMenu = ({ isHeader, ...props }) => {
   const styles = useStyles();
@@ -130,108 +140,106 @@ const ReactJs = () => {
     </Box>
   );
   return (
-    <ThemeProvider theme={theme}>
-      <Root
-        scheme={{
-          header: {
-            config: {
-              xs: {
-                position: "fixed",
-                height: 60,
-              },
+    <Root
+      scheme={{
+        header: {
+          config: {
+            xs: {
+              position: "fixed",
+              height: 60,
             },
           },
-          rightEdgeSidebar: {
-            config: {
-              xs: {
-                variant: "temporary",
-                width: 256,
-              },
+        },
+        rightEdgeSidebar: {
+          config: {
+            xs: {
+              variant: "temporary",
+              width: 256,
             },
           },
-          rightInsetSidebar: {
-            config: {
-              sm: {
-                position: "fixed",
-                width: 200,
-              },
-              md: {
-                position: "fixed",
-                width: 256,
-              },
+        },
+        rightInsetSidebar: {
+          config: {
+            sm: {
+              position: "fixed",
+              width: 200,
+            },
+            md: {
+              position: "fixed",
+              width: 256,
             },
           },
-        }}
-      >
-        {({ setOpen }) => (
-          <>
-            <CssBaseline />
-            <Fab
-              className={styles.fab}
-              color={"primary"}
-              onClick={() => setOpen("rightEdgeSidebar", true)}
+        },
+      }}
+    >
+      {({ setOpen }) => (
+        <>
+          <CssBaseline />
+          <Fab
+            className={styles.fab}
+            color={"primary"}
+            onClick={() => setOpen("rightEdgeSidebar", true)}
+          >
+            <UnfoldMore />
+          </Fab>
+          <Header color={"primary"}>
+            <Container>
+              <Toolbar disableGutters className={styles.toolbar}>
+                <ReactHeader concise />
+              </Toolbar>
+            </Container>
+          </Header>
+          <EdgeSidebar anchor="right">{sidebarContent}</EdgeSidebar>
+          <Content>
+            <InsetContainer
+              rightSidebar={
+                <InsetSidebar classes={{ paper: styles.insetSidebar }}>
+                  {sidebarContent}
+                </InsetSidebar>
+              }
             >
-              <UnfoldMore />
-            </Fab>
-            <Header color={"primary"}>
+              <ReactContent />
+            </InsetContainer>
+          </Content>
+          <Footer>
+            <Box bgcolor={"rgb(40, 44, 52)"}>
               <Container>
-                <Toolbar disableGutters className={styles.toolbar}>
-                  <ReactHeader concise />
-                </Toolbar>
+                <InsetAvoidingView>
+                  <ReactNextArticle />
+                </InsetAvoidingView>
               </Container>
-            </Header>
-            <EdgeSidebar anchor="right">{sidebarContent}</EdgeSidebar>
-            <Content>
-              <InsetContainer
-                rightSidebar={
-                  <InsetSidebar classes={{ paper: styles.insetSidebar }}>
-                    {sidebarContent}
-                  </InsetSidebar>
-                }
-              >
-                <ReactContent />
-              </InsetContainer>
-            </Content>
-            <Footer>
-              <Box bgcolor={"rgb(40, 44, 52)"}>
-                <Container>
-                  <InsetAvoidingView>
-                    <ReactNextArticle />
-                  </InsetAvoidingView>
-                </Container>
-              </Box>
-              <Box bgcolor={"#20232a"}>
-                <Container>
-                  <InsetAvoidingView>
-                    {/* @ts-ignore */}
-                    <Box pr={{ xs: 0, md: 5 }} pb={5}>
-                      <Grid container>
-                        <Grid item lg={4} />
-                        <Grid item lg={8} container>
-                          {getData().map((category, i) => (
-                            <Grid key={i} item xs={6}>
-                              {category.map((label, j) => (
-                                <FooterMenu key={j} isHeader={j === 0}>
-                                  {label}
-                                </FooterMenu>
-                              ))}
-                            </Grid>
-                          ))}
-                        </Grid>
+            </Box>
+            <Box bgcolor={"#20232a"}>
+              <Container>
+                <InsetAvoidingView>
+                  {/* @ts-ignore */}
+                  <Box pr={{ xs: 0, md: 5 }} pb={5}>
+                    <Grid container>
+                      <Grid item lg={4} />
+                      <Grid item lg={8} container>
+                        {getData().map((category, i) => (
+                          <Grid key={i} item xs={6}>
+                            {category.map((label, j) => (
+                              <FooterMenu key={j} isHeader={j === 0}>
+                                {label}
+                              </FooterMenu>
+                            ))}
+                          </Grid>
+                        ))}
                       </Grid>
-                    </Box>
-                  </InsetAvoidingView>
-                </Container>
-              </Box>
-            </Footer>
-          </>
-        )}
-      </Root>
-    </ThemeProvider>
+                    </Grid>
+                  </Box>
+                </InsetAvoidingView>
+              </Container>
+            </Box>
+          </Footer>
+        </>
+      )}
+    </Root>
   );
 };
 
-export default ReactJs;
+export default withThemeProvider(ReactJs);
 
 const getData = () => [
   [

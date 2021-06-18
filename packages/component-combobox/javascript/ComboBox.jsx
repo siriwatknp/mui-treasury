@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import makeStyles from "@material-ui/styles/makeStyles";
 import useAutocomplete from "@material-ui/core/useAutocomplete";
 import { ComboBoxContext, AnchorContext } from "./ComboBoxContext";
 import {

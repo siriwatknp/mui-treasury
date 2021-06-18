@@ -1,4 +1,5 @@
-import { makeStyles, alpha } from "@material-ui/core/styles";
+import { alpha } from "@material-ui/core/styles";
+import makeStyles from "@material-ui/styles/makeStyles";
 export const createSliderApolloStyles = (theme) => {
   return {
     MuiSlider: {

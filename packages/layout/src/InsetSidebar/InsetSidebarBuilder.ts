@@ -1,4 +1,4 @@
-import { Breakpoint } from "@material-ui/core/styles/createBreakpoints";
+import { Breakpoint } from "@material-ui/system";
 import { HeaderBuilder } from "../Header/HeaderBuilder";
 import { subtractCalc } from "../utils/calc";
 import { pickNearestBreakpoint } from "../utils/pickNearestBreakpoint";

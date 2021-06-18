@@ -1,9 +1,6 @@
 import React from "react";
-import {
-  ThemeProvider,
-  createTheme,
-  makeStyles,
-} from "@material-ui/core/styles";
+import { ThemeProvider, createTheme } from "@material-ui/core/styles";
+import makeStyles from "@material-ui/styles/makeStyles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 import IconButton from "@material-ui/core/IconButton";

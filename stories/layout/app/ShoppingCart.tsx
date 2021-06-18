@@ -1,6 +1,7 @@
 import React from "react";
 import cx from "clsx";
-import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/core/styles";
+import makeStyles from "@material-ui/styles/makeStyles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
@@ -102,91 +103,99 @@ const useStyles = makeStyles(({ breakpoints }) => ({
   },
 }));
 
+function withThemeProvider(Component: React.ElementType) {
+  return function ThemeProviderHOC() {
+    return (
+      <ThemeProvider theme={dailyShoppingTheme}>
+        <Component />
+      </ThemeProvider>
+    );
+  };
+}
+
 const ShoppingCart = () => {
   const styles = useStyles();
   return (
-    <ThemeProvider theme={dailyShoppingTheme}>
-      <Fullscreen>
-        <Root
-          scheme={{
-            header: {
-              config: {
-                xs: {
-                  position: "relative",
-                  height: 64,
-                },
+    <Fullscreen>
+      <Root
+        scheme={{
+          header: {
+            config: {
+              xs: {
+                position: "relative",
+                height: 64,
               },
             },
-            rightInsetSidebar: {
-              config: {
-                md: {
-                  position: "absolute",
-                  width: "max(33%, 256px)",
-                },
+          },
+          rightInsetSidebar: {
+            config: {
+              md: {
+                position: "absolute",
+                width: "max(33%, 256px)",
               },
             },
-            rightEdgeSidebar: {
-              config: {
-                xs: {
-                  variant: "temporary",
-                  width: "88%",
-                },
+          },
+          rightEdgeSidebar: {
+            config: {
+              xs: {
+                variant: "temporary",
+                width: "88%",
               },
             },
-          }}
-        >
-          {({ toggleRightSidebarOpen, state: { rightEdgeSidebar } }) => {
-            return (
-              <>
-                <CssBaseline />
-                <Fab
-                  className={cx(
-                    styles.fab,
-                    rightEdgeSidebar?.open && styles.fabClose
-                  )}
-                  color={"primary"}
-                  onClick={toggleRightSidebarOpen}
+          },
+        }}
+      >
+        {({ toggleRightSidebarOpen, state: { rightEdgeSidebar } }) => {
+          return (
+            <>
+              <CssBaseline />
+              <Fab
+                className={cx(
+                  styles.fab,
+                  rightEdgeSidebar?.open && styles.fabClose
+                )}
+                color={"primary"}
+                onClick={toggleRightSidebarOpen}
+              >
+                {rightEdgeSidebar?.open ? <Close /> : <CreditCard />}
+              </Fab>
+              <Header className={styles.header}>
+                <Container>
+                  <DailyHeader />
+                </Container>
+              </Header>
+              <EdgeSidebar
+                anchor="right"
+                PaperProps={{ className: styles.edgeSidebarBody }}
+              >
+                <DailyCheckout />
+              </EdgeSidebar>
+              <Content>
+                <InsetContainer
+                  rightSidebar={
+                    <InsetSidebar classes={{ paper: styles.sidebarBody }}>
+                      <DailyCheckout />
+                    </InsetSidebar>
+                  }
                 >
-                  {rightEdgeSidebar?.open ? <Close /> : <CreditCard />}
-                </Fab>
-                <Header className={styles.header}>
-                  <Container>
-                    <DailyHeader />
-                  </Container>
-                </Header>
-                <EdgeSidebar
-                  anchor="right"
-                  PaperProps={{ className: styles.edgeSidebarBody }}
-                >
-                  <DailyCheckout />
-                </EdgeSidebar>
-                <Content>
-                  <InsetContainer
-                    rightSidebar={
-                      <InsetSidebar classes={{ paper: styles.sidebarBody }}>
-                        <DailyCheckout />
-                      </InsetSidebar>
-                    }
-                  >
-                    <DailyCart />
-                  </InsetContainer>
-                </Content>
-                <Footer>
-                  <Container>
-                    <InsetAvoidingView className={styles.footer}>
-                      <Box pb={3}>
-                        <DailySummary />
-                      </Box>
-                    </InsetAvoidingView>
-                  </Container>
-                </Footer>
-              </>
-            );
-          }}
-        </Root>
-      </Fullscreen>
-    </ThemeProvider>
+                  <DailyCart />
+                </InsetContainer>
+              </Content>
+              <Footer>
+                <Container>
+                  <InsetAvoidingView className={styles.footer}>
+                    <Box pb={3}>
+                      <DailySummary />
+                    </Box>
+                  </InsetAvoidingView>
+                </Container>
+              </Footer>
+            </>
+          );
+        }}
+      </Root>
+    </Fullscreen>
   );
 };
 
-export default ShoppingCart;
+export default withThemeProvider(ShoppingCart);

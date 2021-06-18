@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, ReactElement, useContext } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import makeStyles from "@material-ui/styles/makeStyles";
 import useAutocomplete, {
   AutocompleteGroupedOption,
   UseAutocompleteProps,
