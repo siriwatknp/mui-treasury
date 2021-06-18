@@ -1,5 +1,6 @@
 import React from 'react';
-import { fade, withStyles } from '@material-ui/core/styles';
+import { alpha } from '@material-ui/core/styles';
+import withStyles from '@material-ui/styles/withStyles';
 import TreeItem from '@material-ui/lab/TreeItem';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import Collapse from '@material-ui/core/Collapse';
@@ -38,7 +39,7 @@ const SignTreeItem = withStyles(theme => ({
   group: {
     marginLeft: 12,
     paddingLeft: 12,
-    borderLeft: `1px dashed ${fade(theme.palette.text.primary, 0.4)}`,
+    borderLeft: `1px dashed ${alpha(theme.palette.text.primary, 0.4)}`,
   },
   content: {
     padding: 4,

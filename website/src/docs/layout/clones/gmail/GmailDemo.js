@@ -8,12 +8,8 @@ import Layout, {
   getHeader,
   getCollapseIcon,
 } from '@mui-treasury/layout';
-import {
-  StylesProvider,
-  CssBaseline,
-  createTheme,
-  makeStyles,
-} from '@material-ui/core';
+import { StylesProvider, CssBaseline, createTheme } from '@material-ui/core';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Menu from '@material-ui/icons/Menu';
 import AppHeader from '@mui-treasury/mockup/brands/gmail/AppHeader';
 import AppSidebar from '@mui-treasury/mockup/brands/gmail/AppSidebar';

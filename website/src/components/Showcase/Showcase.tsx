@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import cx from 'clsx';
 import {
-  makeStyles,
   withStyles,
   ThemeProvider,
   createTheme,
   ThemeOptions,
 } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Box, { BoxProps } from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';

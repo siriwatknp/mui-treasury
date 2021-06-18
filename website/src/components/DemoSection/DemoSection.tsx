@@ -1,10 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import {
-  ThemeProvider,
-  createTheme,
-  withStyles,
-} from '@material-ui/core/styles';
+import { ThemeProvider, createTheme } from '@material-ui/core/styles';
+import withStyles from '@material-ui/styles/withStyles';
 import IconButton from '@material-ui/core/IconButton';
 import CodeRounded from '@material-ui/icons/CodeRounded';
 import ColorLens from '@material-ui/icons/ColorLens';

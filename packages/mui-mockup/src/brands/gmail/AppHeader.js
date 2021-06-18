@@ -2,14 +2,8 @@ import React from 'react';
 import { useSizedIconButtonStyles } from '@mui-treasury/styles/iconButton/sized';
 import { useRowGutterStyles } from '@mui-treasury/styles/gutter/row';
 import { useGoogleAvatarStyles } from '@mui-treasury/styles/avatar/google';
-import {
-  Box,
-  Toolbar,
-  makeStyles,
-  InputBase,
-  IconButton,
-  Avatar,
-} from '@material-ui/core';
+import { Box, Toolbar, InputBase, IconButton, Avatar } from '@material-ui/core';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Search from '@material-ui/icons/Search';
 import ArrowDropDown from '@material-ui/icons/ArrowDropDown';
 import HelpOutline from '@material-ui/icons/HelpOutline';

@@ -9,11 +9,8 @@ import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
 import UnfoldMore from '@material-ui/icons/UnfoldMore';
 import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown';
-import {
-  makeStyles,
-  createTheme,
-  responsiveFontSizes,
-} from '@material-ui/core/styles';
+import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Layout, {
   Root,
   getHeader,

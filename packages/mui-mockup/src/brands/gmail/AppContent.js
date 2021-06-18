@@ -1,32 +1,32 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 import {
   Box,
   IconButton,
   MenuItem,
   Checkbox,
   ListItemIcon,
-  makeStyles,
-} from "@material-ui/core";
-import MoreVert from "@material-ui/icons/MoreVert";
-import Refresh from "@material-ui/icons/Refresh";
-import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
-import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
-import Settings from "@material-ui/icons/Settings";
-import Keyboard from "@material-ui/icons/Keyboard";
-import Edit from "@material-ui/icons/Edit";
-import Inbox from "@material-ui/icons/Inbox";
-import LocalOffer from "@material-ui/icons/LocalOffer";
-import People from "@material-ui/icons/People";
-import Info from "@material-ui/icons/Info";
-import { useSizedIconButtonStyles } from "@mui-treasury/styles/iconButton/sized";
-import { useRowGutterStyles } from "@mui-treasury/styles/gutter/row";
-import ArrowMenu from "@mui-treasury/components/menu/arrow";
-import { GmailTabs, GmailTabItem } from "@mui-treasury/components/tabs/gmail";
-import MailListItem from "./MailListItem";
+} from '@material-ui/core';
+import makeStyles from '@material-ui/styles/makeStyles';
+import MoreVert from '@material-ui/icons/MoreVert';
+import Refresh from '@material-ui/icons/Refresh';
+import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import Settings from '@material-ui/icons/Settings';
+import Keyboard from '@material-ui/icons/Keyboard';
+import Edit from '@material-ui/icons/Edit';
+import Inbox from '@material-ui/icons/Inbox';
+import LocalOffer from '@material-ui/icons/LocalOffer';
+import People from '@material-ui/icons/People';
+import Info from '@material-ui/icons/Info';
+import { useSizedIconButtonStyles } from '@mui-treasury/styles/iconButton/sized';
+import { useRowGutterStyles } from '@mui-treasury/styles/gutter/row';
+import ArrowMenu from '@mui-treasury/components/menu/arrow';
+import { GmailTabs, GmailTabItem } from '@mui-treasury/components/tabs/gmail';
+import MailListItem from './MailListItem';
 import AppFooter from './AppFooter';
 
-const Toolbar = styled("div")`
+const Toolbar = styled('div')`
   height: 48px;
   padding: 0 16px;
   box-shadow: inset 0 -1px 0 0 rgba(100, 121, 143, 0.122);
@@ -37,15 +37,15 @@ const Toolbar = styled("div")`
 const ScrollView = styled('div')`
   height: calc(100vh - (64px + 48px));
   overflow: scroll;
-  
+
   &::-webkit-scrollbar {
     width: 10px;
     height: 10px;
   }
   &::-webkit-scrollbar-track {
     &:hover {
-      background-color: rgba(0,0,0,0.04);
-      box-shadow: inset 1px 0 0 rgba(0,0,0,0.1)
+      background-color: rgba(0, 0, 0, 0.04);
+      box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.1);
     }
   }
   &::-webkit-scrollbar-button {
@@ -57,13 +57,14 @@ const ScrollView = styled('div')`
     background-color: transparent;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: rgba(0,0,0,0.2);
-    box-shadow: inset 1px 1px 0 rgba(0,0,0,0.10), inset 0 -1px 0 rgba(0,0,0,0.07);
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.07);
     &:hover {
-      background-color: rgba(0,0,0,0.38);
+      background-color: rgba(0, 0, 0, 0.38);
     }
   }
-`
+`;
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -81,13 +82,13 @@ const useCheckboxStyles = makeStyles(({ palette }) => ({
 
 const AppContent = ({ onTabIndexChange }) => {
   const actionStyles = useSizedIconButtonStyles({ padding: 8, childSize: 20 });
-  const gutterStyles = useRowGutterStyles({ size: "0.25rem" });
+  const gutterStyles = useRowGutterStyles({ size: '0.25rem' });
   const menuItemClasses = useStyles();
   const checkboxClasses = useCheckboxStyles();
   const [index, setIndex] = React.useState(0);
   React.useEffect(() => {
-    onTabIndexChange(index)
-  }, [index, onTabIndexChange])
+    onTabIndexChange(index);
+  }, [index, onTabIndexChange]);
   return (
     <>
       <Toolbar>
@@ -97,7 +98,7 @@ const AppContent = ({ onTabIndexChange }) => {
               <Checkbox
                 classes={checkboxClasses}
                 className={styles.button}
-                color={"default"}
+                color={'default'}
                 onChange={onClose}
               />
             )}
@@ -133,7 +134,7 @@ const AppContent = ({ onTabIndexChange }) => {
             renderElement={({ styles, onClose }) => (
               <IconButton
                 className={styles.button}
-                color={"default"}
+                color={'default'}
                 onChange={onClose}
               >
                 <Keyboard />
@@ -142,7 +143,7 @@ const AppContent = ({ onTabIndexChange }) => {
           >
             <MenuItem classes={menuItemClasses}>
               <ListItemIcon style={{ minWidth: 32 }}>
-                <Edit fontSize={"small"} />
+                <Edit fontSize={'small'} />
               </ListItemIcon>
               English
             </MenuItem>
@@ -154,19 +155,19 @@ const AppContent = ({ onTabIndexChange }) => {
       </Toolbar>
       <ScrollView>
         <GmailTabs value={index} onChange={(_, value) => setIndex(value)}>
-          <GmailTabItem icon={<Inbox />} label={"Primary"} />
+          <GmailTabItem icon={<Inbox />} label={'Primary'} />
           <GmailTabItem
             icon={<People />}
-            label={"Social"}
-            tag={"2 new"}
-            subLabel={"Youtube, LinkedIn"}
+            label={'Social'}
+            tag={'2 new'}
+            subLabel={'Youtube, LinkedIn'}
           />
           <GmailTabItem
             icon={<LocalOffer />}
-            label={"Promotions"}
-            subLabel={"Pattern Matching, Medium Daily"}
+            label={'Promotions'}
+            subLabel={'Pattern Matching, Medium Daily'}
           />
-          <GmailTabItem icon={<Info />} label={"Updates"} tag={"15 new"} />
+          <GmailTabItem icon={<Info />} label={'Updates'} tag={'15 new'} />
         </GmailTabs>
         {getMailList().map((mail, i) => (
           <MailListItem key={i} {...mail} />
@@ -205,39 +206,39 @@ const getMailList = () => [
         <span>8</span>
       </>
     ),
-    description: "MUI Treasury - A Quick Question and Thank you :)",
-    date: "May 21",
+    description: 'MUI Treasury - A Quick Question and Thank you :)',
+    date: 'May 21',
   },
   {
     labeled: true,
     read: true,
-    title: "Google",
+    title: 'Google',
     description:
-      "Security alert - iMovie was granted access to your Google Account xxx If you did not grant access, you should check this activity and secure your account. Check activity You received this email to",
-    date: "May 20",
+      'Security alert - iMovie was granted access to your Google Account xxx If you did not grant access, you should check this activity and secure your account. Check activity You received this email to',
+    date: 'May 20',
   },
   {
     labeled: true,
     read: true,
-    title: "Alexandre Teyar",
+    title: 'Alexandre Teyar',
     description:
-      "[siriwatknp/mui-treasury] New component suggestion -> InsetHeader (#817)",
-    date: "May 18",
+      '[siriwatknp/mui-treasury] New component suggestion -> InsetHeader (#817)',
+    date: 'May 18',
   },
   {
     read: true,
-    title: "Google",
+    title: 'Google',
     description:
-      "2-Step Verification turned on - 2-Step Verification turned on xxx Your Google Account xxx is now protected with 2-Step Verification. When you sign in on a new or untrusted device, you",
-    date: "May 20",
+      '2-Step Verification turned on - 2-Step Verification turned on xxx Your Google Account xxx is now protected with 2-Step Verification. When you sign in on a new or untrusted device, you',
+    date: 'May 20',
   },
   {
     read: true,
     labeled: true,
-    title: "Olivier Tassinari",
+    title: 'Olivier Tassinari',
     description:
-      "Re: [mui-org/material-ui] [docs] Improve mui-treasury integration (#21054)",
-    date: "May 16",
+      'Re: [mui-org/material-ui] [docs] Improve mui-treasury integration (#21054)',
+    date: 'May 16',
   },
   {
     read: true,
@@ -249,16 +250,16 @@ const getMailList = () => [
       </>
     ),
     description:
-      "Re: [mui-org/material-ui] [docs] Improve mui-treasury integration (#21054)",
-    date: "May 16",
+      'Re: [mui-org/material-ui] [docs] Improve mui-treasury integration (#21054)',
+    date: 'May 16',
   },
   {
     read: true,
     labeled: true,
-    title: "Sebastian Silbermann",
+    title: 'Sebastian Silbermann',
     description:
-      "Re: [mui-org/material-ui] [docs] update links to mui-treasury (#21054)",
-    date: "May 16",
+      'Re: [mui-org/material-ui] [docs] update links to mui-treasury (#21054)',
+    date: 'May 16',
   },
   {
     labeled: true,
@@ -282,17 +283,17 @@ const getMailList = () => [
   {
     read: true,
     labeled: true,
-    title: "Alexandre Teyar",
-    description: "[siriwatknp/mui-treasury] [Discussion] Nested menu (#798)",
-    date: "May 14",
+    title: 'Alexandre Teyar',
+    description: '[siriwatknp/mui-treasury] [Discussion] Nested menu (#798)',
+    date: 'May 14',
   },
   {
     read: true,
     labeled: true,
-    title: "Aaron Hayes",
+    title: 'Aaron Hayes',
     description:
-      "[siriwatknp/mui-treasury] [Discussion] Form Components  (#792)",
-    date: "May 14",
+      '[siriwatknp/mui-treasury] [Discussion] Form Components  (#792)',
+    date: 'May 14',
   },
   {
     read: true,
@@ -303,55 +304,55 @@ const getMailList = () => [
         <span>6</span>
       </>
     ),
-    description: "[mui-org/material-ui] [core] Batch small changes (#20877)",
-    date: "May 4",
+    description: '[mui-org/material-ui] [core] Batch small changes (#20877)',
+    date: 'May 4',
   },
   {
     read: true,
     labeled: true,
-    title: "webface",
+    title: 'webface',
     description:
-      "Re: [siriwatknp/mui-treasury] Overlay does not appear in mobile breakpoint other than with a preset config (#686)",
-    date: "May 3",
+      'Re: [siriwatknp/mui-treasury] Overlay does not appear in mobile breakpoint other than with a preset config (#686)',
+    date: 'May 3',
   },
   {
     read: true,
     label: true,
-    title: "Alexandre Teyar",
+    title: 'Alexandre Teyar',
     description:
-      "Re: [siriwatknp/mui-treasury] Header default config not working (#714)",
-    date: "May 3",
+      'Re: [siriwatknp/mui-treasury] Header default config not working (#714)',
+    date: 'May 3',
   },
   {
     read: true,
     labeled: true,
-    title: "Siriwat",
+    title: 'Siriwat',
     description:
-      "Re: [siriwatknp/mui-treasury] Overlay does not appear in mobile breakpoint other than with a preset config (#686)",
-    date: "Apr 29",
+      'Re: [siriwatknp/mui-treasury] Overlay does not appear in mobile breakpoint other than with a preset config (#686)',
+    date: 'Apr 29',
   },
   {
     read: true,
     label: true,
-    title: "Mine",
+    title: 'Mine',
     description:
-      "Re: [siriwatknp/mui-treasury] Header default config not working (#714)",
-    date: "Apr 29",
+      'Re: [siriwatknp/mui-treasury] Header default config not working (#714)',
+    date: 'Apr 29',
   },
   {
     labeled: true,
-    title: "webface",
+    title: 'webface',
     description:
-      "Re: [siriwatknp/mui-treasury] Overlay does not appear in mobile breakpoint other than with a preset config (#686)",
-    date: "Apr 28",
+      'Re: [siriwatknp/mui-treasury] Overlay does not appear in mobile breakpoint other than with a preset config (#686)',
+    date: 'Apr 28',
   },
   {
     read: true,
     label: true,
-    title: "Alexandre Teyar",
+    title: 'Alexandre Teyar',
     description:
-      "Re: [siriwatknp/mui-treasury] Header default config not working (#714)",
-    date: "Apr 22",
+      'Re: [siriwatknp/mui-treasury] Header default config not working (#714)',
+    date: 'Apr 22',
   },
   {
     title: (
@@ -365,40 +366,37 @@ const getMailList = () => [
         [siriwatknp/mui-treasury] docs: add pacurtin as a contributor (#678)
       </b>
     ),
-    date: "Apr 22",
+    date: 'Apr 22',
   },
   {
     title: <b>allcontributors[bot]</b>,
     description: (
-      <b>
-        [siriwatknp/mui-treasury] docs: add aress31 as a contributor (#679)
-      </b>
+      <b>[siriwatknp/mui-treasury] docs: add aress31 as a contributor (#679)</b>
     ),
-    date: "Apr 22",
+    date: 'Apr 22',
   },
   {
     read: true,
     label: true,
-    title: "Alice Wonder",
-    description:
-      "Lead / Senior Engineers For Bangkok",
-    date: "Apr 21",
+    title: 'Alice Wonder',
+    description: 'Lead / Senior Engineers For Bangkok',
+    date: 'Apr 21',
   },
   {
     read: true,
     labeled: true,
-    title: "webface",
+    title: 'webface',
     description:
-      "Re: [siriwatknp/mui-treasury] Overlay does not appear in mobile breakpoint other than with a preset config (#686)",
-    date: "Mar 30",
+      'Re: [siriwatknp/mui-treasury] Overlay does not appear in mobile breakpoint other than with a preset config (#686)',
+    date: 'Mar 30',
   },
   {
     read: true,
     label: true,
-    title: "Alexandre Teyar",
+    title: 'Alexandre Teyar',
     description:
-      "Re: [siriwatknp/mui-treasury] Header default config not working (#714)",
-    date: "Mar 27",
+      'Re: [siriwatknp/mui-treasury] Header default config not working (#714)',
+    date: 'Mar 27',
   },
 ];
 

@@ -1,4 +1,4 @@
-import { Theme } from '@material-ui/core/styles/createTheme';
+import { Theme } from '@material-ui/system';
 import { Breakpoint } from '@material-ui/system';
 import { Dictionary, ResultStyle } from '../types';
 import resolveDirection from './resolveDirection';

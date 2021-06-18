@@ -3,12 +3,8 @@ import PropTypes from 'prop-types';
 import { StyleSheetManager } from 'styled-components';
 import cx from 'clsx';
 import { create } from 'jss';
-import {
-  useTheme,
-  jssPreset,
-  StylesProvider,
-  makeStyles,
-} from '@material-ui/core/styles';
+import { useTheme, jssPreset, StylesProvider } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import NoSsr from '@material-ui/core/NoSsr';
 import Frame from 'react-frame-component';
 
@@ -39,7 +35,7 @@ function IFrame(props) {
   }, []);
 
   const onContentDidMount = () => {
-    const head = instanceRef.current.contentWindow['demo-frame-jss']
+    const head = instanceRef.current.contentWindow['demo-frame-jss'];
     const injectFirstNode = instanceRef.current.contentDocument.createComment(
       'mui-inject-first'
     );

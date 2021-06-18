@@ -1,4 +1,4 @@
-import { Direction } from '@material-ui/core/styles/createTheme';
+import { Direction } from '@material-ui/system';
 import { mapObject } from '../utils';
 import { Dictionary } from '../types';
 

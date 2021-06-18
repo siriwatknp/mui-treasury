@@ -1,5 +1,5 @@
 import each from 'jest-each';
-import createTheme from '@material-ui/core/styles/createTheme';
+import { createTheme } from '@material-ui/core/styles';
 import pickNearestBreakpoint from './pickNearestBreakpoint';
 import createBreakpointStyles from './createBreakpointStyles';
 import combineBreakpoints from './combineBreakpoints';
