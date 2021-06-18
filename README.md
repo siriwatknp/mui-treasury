@@ -4,25 +4,56 @@
   </a>
 </p>
 
-# 🛠 Upgrading to V5
-
-### `Layout`
-I'm working on upgrading layout package to v5. It should be ready at the beginning of May 2021 (so far, migration is done, working on documentation)
-
-**Summary Highlight**
-- smaller size
-- faster
-- single sidebar (no duplicate for all variants)
-
-### `Components & Styles`
-Might takes a while to migrate all existing components & styles to v5. https://github.com/siriwatknp/mui-treasury/issues/1048
-
-
 # Material-UI Treasury [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/siriwatknp/mui-treasury-next/pulls) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-19-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Imagine a place with millions of real-world, ready-to-use, and themable components that you can install to your project. I believe that it will boost many projects that want to prove their ideas or even improve complex monolith project to move faster.
+
+## Material-UI v5
+
+### `@mui-treasury/layout`
+
+**BREAKING CHANGE** see [v5 documentation]()
+
+**Summary Highlight**
+- smaller bundle size (-30%)
+- faster
+- single sidebar (no duplicate for all variants)
+
+### `@mui-treasury/components, @mui-treasury/styles`
+
+1. upgrade material-ui
+   
+  ```bash
+  yarn add @material-ui/core@next @material-ui/styles@next
+  // make sure that it is 5.0.0-alpha.37
+  ```
+
+  > Note: the above installation requires `@material-ui/styles` because mui-treasury depends on it.
+
+2. upgrade mui-treasury
+
+  ```bash
+  yarn add @mui-treasury/components@next @mui-treasury/styles@next
+  ```
+
+As a result, you will get `2.0.0-alpha` for both packages. However, these packages still use the old style-engine (JSS) while material-ui v5 have moved to either emotion or styled-components. This will increase the bundle size a bit because you will have 2 style-engine in the project (JSS + emotion or styled-components).
+
+In the future, you will be able to migrate to proper packages that I am working on, which uses material-ui v5 style-engine.
+
+
+## Material-UI v4
+
+### Latest Version
+> - [@mui-treasury/components `1.5.2`](https://mui-treasury.com/components)
+> - [@mui-treasury/layout `4.5.0`](https://mui-treasury.com/layout)
+> - [@mui-treasury/styles `1.8.0`](https://mui-treasury.com/styles)
+> - @mui-treasury/mockup `1.2.4`
+> - @mui-treasury/utils `0.4.1`
+>
+>  [All changelog](/CHANGELOG.md)
+
 ## Curious? checkout [Website](https://mui-treasury.com)
 
 I am very excited about this project because I know that there is a lot of developers who are struggling at building ui and waiting for something like this to come true. It will take a lot of time for me alone to reach thousand components. So if you want to do something great and fun, please read our [contribution section](#Contribution)
@@ -42,15 +73,6 @@ I am very excited about this project because I know that there is a lot of devel
 
 #### Q1/2020
 - [x] Reach 200 components
-
-## Latest Version
-> - [@mui-treasury/components `1.5.2`](https://mui-treasury.com/components)
-> - [@mui-treasury/layout `4.5.0`](https://mui-treasury.com/layout)
-> - [@mui-treasury/styles `1.8.0`](https://mui-treasury.com/styles)
-> - @mui-treasury/mockup `1.2.4`
-> - @mui-treasury/utils `0.4.1`
->
->  [All changelog](/CHANGELOG.md)
 
 ## Donation
 
