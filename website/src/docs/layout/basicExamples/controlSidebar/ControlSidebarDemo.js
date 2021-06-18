@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Toolbar from '@material-ui/core/Toolbar';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Layout, {
   Root,
   getHeader,
@@ -55,8 +55,8 @@ scheme.configureEdgeSidebar(builder => {
       collapsible: false,
       persistentBehavior: {
         header: 'fit',
-        _other: 'none'
-      }
+        _other: 'none',
+      },
     });
 });
 

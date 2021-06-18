@@ -1,13 +1,13 @@
 import each from 'jest-each';
-import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
-import createSpacing from '@material-ui/core/styles/createSpacing';
+import createBreakpoints from '@material-ui/system/createTheme/createBreakpoints';
+import createSpacing from '@material-ui/system/createTheme/createSpacing';
 import { gapToCss, getLowerMediaQuery, getThemeCssValue } from './utils';
 
 describe('flex utils', () => {
   describe('getThemeCssValue', () => {
-    expect(getThemeCssValue(2)).toEqual('calc(16px / 2)')
-    expect(getThemeCssValue('1rem')).toEqual('calc(1rem / 2)')
-  })
+    expect(getThemeCssValue(2)).toEqual('calc(16px / 2)');
+    expect(getThemeCssValue('1rem')).toEqual('calc(1rem / 2)');
+  });
 
   describe('gutterToCss', () => {
     const theme = {

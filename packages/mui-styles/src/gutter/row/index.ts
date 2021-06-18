@@ -1,4 +1,4 @@
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import rowGutterStyles, {
   RowGutterClassKey,
   RowGutterStyleProps,
@@ -12,6 +12,6 @@ const useRowGutterStyles: (
 });
 
 export { rowGutterStyles, useRowGutterStyles };
-export * from './rowGutter.styles'
+export * from './rowGutter.styles';
 
 export { default } from './rowGutter.styles';

@@ -1,5 +1,7 @@
 import { ClassNameMap } from '@material-ui/styles';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import createStyles from '@material-ui/styles/createStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
+import { Theme } from '@material-ui/core/styles';
 
 type StyleProps = {};
 type ClassKey = keyof ReturnType<typeof defaultStyles>;
@@ -34,25 +36,29 @@ export default function defaultStyles({ palette, spacing }: Theme) {
       color: palette.text.primary,
       '&:hover, &:focus': {
         borderColor:
-          palette.type === 'dark'
+          palette.mode === 'dark'
             ? palette.text.secondary
             : palette.primary.main,
         boxShadow: `inset 0 0 0 1px ${
-          palette.type === 'dark'
+          palette.mode === 'dark'
             ? palette.text.secondary
             : palette.primary.main
         }`,
         backgroundColor:
-          palette.type === 'dark' ? palette.action.hover : '#f9f9f9',
+          palette.mode === 'dark' ? palette.action.hover : '#f9f9f9',
       },
     },
     submit: {
       padding: spacing(1, 2),
       borderRadius: '0 4px 4px 0',
       color: palette.common.white,
-      backgroundColor: palette.type === 'dark' ? palette.divider : palette.primary.main,
+      backgroundColor:
+        palette.mode === 'dark' ? palette.divider : palette.primary.main,
       '&:hover, &:focus': {
-        backgroundColor: palette.type === 'dark' ? 'rgba(255,255,255,0.2)' : palette.primary.dark,
+        backgroundColor:
+          palette.mode === 'dark'
+            ? 'rgba(255,255,255,0.2)'
+            : palette.primary.dark,
       },
     },
   });

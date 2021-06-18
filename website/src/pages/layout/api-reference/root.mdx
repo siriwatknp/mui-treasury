@@ -26,7 +26,7 @@ const App = () => {
 
 - `theme`
   - **type** : Material-ui Theme
-  - **default** : `createMuiTheme()`
+  - **default** : `createTheme()`
   - **description** : your app's theme
 - `themeProviderOmitted`
   - **type** : boolean
@@ -36,6 +36,7 @@ const App = () => {
   - **type** : State
   - **default** :
   - **description** : initial state for layout (sidebar's collapsed and open)
+
     ```jsx
     const initialState = {
       sidebar: {
@@ -43,7 +44,7 @@ const App = () => {
         id2: { open: true },
       },
     }
-    
+
     <Root initialState={initialState} />
     ```
 - `children`
@@ -66,4 +67,5 @@ const App = () => {
     ```
 
 ## Styling
+
 Root does not render DOM, no need to style.

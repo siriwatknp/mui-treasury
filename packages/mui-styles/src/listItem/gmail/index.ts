@@ -1,7 +1,9 @@
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import gmailListItemStyles from './gmailListItem.styles';
 
-const useGmailListItemStyles = makeStyles(gmailListItemStyles, { name: "GmailListItem" });
+const useGmailListItemStyles = makeStyles(gmailListItemStyles, {
+  name: 'GmailListItem',
+});
 
 export { gmailListItemStyles, useGmailListItemStyles };
 

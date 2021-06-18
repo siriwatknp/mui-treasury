@@ -4,7 +4,7 @@ import Box from '@material-ui/core/Box';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { useSelectItem } from '@mui-treasury/utils';
-import { makeStyles } from '@material-ui/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 
 const useTabsStyles = makeStyles(() => {
   return {

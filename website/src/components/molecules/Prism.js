@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import prismTheme from 'prism-react-renderer/themes/oceanicNext';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 

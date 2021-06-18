@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Card from '@material-ui/core/Card';
 import Table from '@material-ui/core/Table';
 import TableHead from '@material-ui/core/TableHead';
@@ -28,7 +28,7 @@ const useStyles = makeStyles(({ spacing }) => ({
     overflowX: 'auto',
     '& table': {
       marginBottom: 0,
-    }
+    },
   },
 }));
 
@@ -114,4 +114,4 @@ ElevatedHeaderCardDemo.Showcase = AttachedShowcase;
 // @ts-ignore
 ElevatedHeaderCardDemo.metadata = metadata;
 // hide-end
-export default ElevatedHeaderCardDemo
+export default ElevatedHeaderCardDemo;

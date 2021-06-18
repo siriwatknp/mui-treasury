@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import { neumorphShadowStyles } from '@mui-treasury/styles/shadow/neumorph';

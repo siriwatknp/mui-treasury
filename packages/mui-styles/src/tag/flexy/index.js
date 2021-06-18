@@ -1,4 +1,4 @@
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import flexyTagStyles from './flexyTag.styles';
 
 const useFlexyTagStyles = makeStyles(flexyTagStyles);

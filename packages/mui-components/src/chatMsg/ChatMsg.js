@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 
-import withStyles from '@material-ui/core/styles/withStyles';
+import withStyles from '@material-ui/styles/withStyles';
 import defaultChatMsgStyles from '@mui-treasury/styles/chatMsg/default';
 
 const ChatMsg = withStyles(defaultChatMsgStyles, { name: 'ChatMsg' })(props => {

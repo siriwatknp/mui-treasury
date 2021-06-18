@@ -1,7 +1,7 @@
 import React from 'react';
 import GoogleFontLoader from 'react-google-font-loader';
 import NoSsr from '@material-ui/core/NoSsr';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Avatar from '@material-ui/core/Avatar';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import Box from '@material-ui/core/Box';
@@ -203,4 +203,4 @@ TeamCardDemo.Showcase = AttachedShowcase;
 // @ts-ignore
 TeamCardDemo.metadata = metadata;
 // hide-end
-export default TeamCardDemo
+export default TeamCardDemo;

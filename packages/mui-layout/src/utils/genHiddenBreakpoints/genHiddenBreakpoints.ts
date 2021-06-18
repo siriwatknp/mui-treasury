@@ -1,4 +1,4 @@
-import { Breakpoint, keys } from '@material-ui/core/styles/createBreakpoints';
+import { Breakpoint, keys } from '@material-ui/system';
 import { ComponentData } from '../../shared/BuilderCreator/MultiObjects';
 import get from '../get';
 

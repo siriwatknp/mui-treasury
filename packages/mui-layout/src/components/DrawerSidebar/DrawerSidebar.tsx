@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import useTheme from '@material-ui/core/styles/useTheme';
 import { DrawerProps } from '@material-ui/core/Drawer';
 import { SidebarProvider, SidebarConsumer, useWindowCtx } from '../../contexts';

@@ -1,5 +1,5 @@
 import React, { HTMLProps } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Container, { ContainerProps } from '@material-ui/core/Container';
 import { useFullscreenCtx } from '../../contexts/FullscreenContext';
 
@@ -35,11 +35,7 @@ export default (styled: any) => {
     return (
       <Container {...props} classes={classes}>
         {leftSidebar}
-        {isFullscreen ? (
-          <Div {...WrapperProps}>{children}</Div>
-        ) : (
-          children
-        )}
+        {isFullscreen ? <Div {...WrapperProps}>{children}</Div> : children}
         {rightSidebar}
       </Container>
     );

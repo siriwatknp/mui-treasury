@@ -1,7 +1,9 @@
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import materialRowToggleStyles from './materialRowToggle.styles';
 
-const useMaterialRowToggleStyles = makeStyles(materialRowToggleStyles, { name: "MaterialRowToggle" });
+const useMaterialRowToggleStyles = makeStyles(materialRowToggleStyles, {
+  name: 'MaterialRowToggle',
+});
 
 export { materialRowToggleStyles, useMaterialRowToggleStyles };
 

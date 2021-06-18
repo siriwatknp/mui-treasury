@@ -8,7 +8,12 @@ import Layout, {
   getHeader,
   getCollapseIcon,
 } from '@mui-treasury/layout';
-import { StylesProvider, CssBaseline, createMuiTheme, makeStyles } from '@material-ui/core';
+import {
+  StylesProvider,
+  CssBaseline,
+  createTheme,
+  makeStyles,
+} from '@material-ui/core';
 import Menu from '@material-ui/icons/Menu';
 import AppHeader from '@mui-treasury/mockup/brands/gmail/AppHeader';
 import AppSidebar from '@mui-treasury/mockup/brands/gmail/AppSidebar';
@@ -33,7 +38,7 @@ scheme.configureEdgeSidebar(builder => {
       width: 256,
       collapsible: true,
       collapsedWidth: 72,
-      autoExpanded: true
+      autoExpanded: true,
     });
 
   builder
@@ -50,7 +55,7 @@ const CollapseIcon = getCollapseIcon(styled);
 const Content = getContent(styled);
 const DrawerSidebar = getDrawerSidebar(styled);
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     background: {
       default: '#fff',
@@ -62,18 +67,21 @@ const useDrawerStyles = makeStyles(() => ({
   paper: {
     border: 'none',
     overflow: 'visible',
-  }
-}))
+  },
+}));
 
 function GmailDemo() {
   const drawerStyles = useDrawerStyles();
   const location = useLocation();
   const navigate = useNavigate();
-  const onTabIndexChange = React.useCallback((index) => {
+  const onTabIndexChange = React.useCallback(index => {
     const indicatorColors = ['ff4a3e', '2ea6ff', '3fda62', 'ffa939'];
-    navigate(`${location.pathname}?bgColor=${indicatorColors[index]}&accent=000000&dark=true`, { replace: true })
+    navigate(
+      `${location.pathname}?bgColor=${indicatorColors[index]}&accent=000000&dark=true`,
+      { replace: true }
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
   return (
     <StylesProvider injectFirst>
       <Root
@@ -90,9 +98,7 @@ function GmailDemo() {
         <Header>
           <AppHeader
             collapse={
-              <CollapseIcon
-                sidebarId={'primarySidebar'}
-              >
+              <CollapseIcon sidebarId={'primarySidebar'}>
                 {() => <Menu />}
               </CollapseIcon>
             }

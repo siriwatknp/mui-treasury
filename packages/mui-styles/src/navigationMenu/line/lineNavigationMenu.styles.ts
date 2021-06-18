@@ -39,7 +39,7 @@ const lineNavigationMenuStyles = ({ spacing, palette }: Theme) =>
       },
       '&:hover': {
         color:
-          palette.type === 'dark'
+          palette.mode === 'dark'
             ? palette.primary.light
             : palette.primary.main,
         '&:after': {
@@ -54,14 +54,14 @@ const lineNavigationMenuStyles = ({ spacing, palette }: Theme) =>
     itemActive: {
       '&$item': {
         color:
-          palette.type === 'dark'
+          palette.mode === 'dark'
             ? palette.primary.light
             : palette.primary.main,
         '&:after': {
           opacity: 1,
           transform: 'scale(1, 1)',
           backgroundColor:
-            palette.type === 'dark'
+            palette.mode === 'dark'
               ? palette.primary.light
               : palette.primary.main,
         },

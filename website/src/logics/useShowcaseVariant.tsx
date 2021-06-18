@@ -1,6 +1,6 @@
 import { useScreen } from '@mui-treasury/layout';
 import { ShowcaseProps, SpanProp } from 'website/src/components/Showcase';
-import { Breakpoint, keys } from '@material-ui/core/styles/createBreakpoints';
+import { Breakpoint, keys } from '@material-ui/system';
 
 const getNearestBreakpointValue = (
   value: Partial<Record<Breakpoint, any>>,
@@ -19,7 +19,7 @@ const useShowcaseVariant = (colSpan: SpanProp): ShowcaseProps['variant'] => {
   if (typeof colSpan === 'object') {
     result = getNearestBreakpointValue(colSpan, screen);
   }
-  const map = { sm: 9, md: 8, lg: 8, xl: 8 }
+  const map = { sm: 9, md: 8, lg: 8, xl: 8 };
   return result >= map[screen] ? 'row' : 'column';
 };
 

@@ -1,5 +1,5 @@
 import { ClassNameMap } from '@material-ui/styles';
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import zoomNavigationMenuStyles, {
   ZoomNavigationMenuClassKey,
   ZoomNavigationMenuStyleProps,
@@ -7,9 +7,12 @@ import zoomNavigationMenuStyles, {
 
 const useZoomNavigationMenuStyles: (
   props?: ZoomNavigationMenuStyleProps
-) => ClassNameMap<ZoomNavigationMenuClassKey> = makeStyles(zoomNavigationMenuStyles, {
-  name: 'ZoomNavigationMenu',
-});
+) => ClassNameMap<ZoomNavigationMenuClassKey> = makeStyles(
+  zoomNavigationMenuStyles,
+  {
+    name: 'ZoomNavigationMenu',
+  }
+);
 
 export { zoomNavigationMenuStyles, useZoomNavigationMenuStyles };
 

@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import {
   makeStyles,
   ThemeProvider,
-  createMuiTheme,
+  createTheme,
 } from '@material-ui/core/styles';
 import { FontProvider, Font } from 'website/src/components/Font';
 
@@ -33,7 +33,7 @@ import { usePoofSocialLinkStyles } from '@mui-treasury/styles/socialLink/poof';
 import { useReadyEmailSubscribeStyles } from '@mui-treasury/styles/emailSubscribe/ready';
 import { usePlainNavigationMenuStyles } from '@mui-treasury/styles/navigationMenu/plain';
 
-const darkTheme = createMuiTheme({ palette: { type: 'dark' } });
+const darkTheme = createTheme({ palette: { type: 'dark' } });
 
 const useStyles = makeStyles(({ palette, typography }) => ({
   top: {
@@ -41,11 +41,11 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     overflow: 'hidden',
   },
   middle: {
-    backgroundColor: palette.type === 'dark' ? '#192D36' : palette.action.hover,
+    backgroundColor: palette.mode === 'dark' ? '#192D36' : palette.action.hover,
   },
   bottom: {
     backgroundColor:
-      palette.type === 'dark' ? '#0F2128' : palette.action.selected,
+      palette.mode === 'dark' ? '#0F2128' : palette.action.selected,
   },
   newsletterText: {
     color: '#fff',
@@ -86,7 +86,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     ...typography.caption,
     color: palette.text.hint,
     marginTop: 8,
-  }
+  },
 }));
 
 export const ArcAppFooterDemo = React.memo(function ArcAppFooter() {
@@ -153,9 +153,7 @@ export const ArcAppFooterDemo = React.memo(function ArcAppFooter() {
                 </Typography>
 
                 <Typography className={classes.info}>
-                  <Font index={1}>
-                    admin@arc.fake
-                  </Font>
+                  <Font index={1}>admin@arc.fake</Font>
                 </Typography>
               </Grid>
               <Grid item xs={12} md={8} lg={6}>

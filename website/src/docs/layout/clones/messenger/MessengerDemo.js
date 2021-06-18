@@ -7,7 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Edit from '@material-ui/icons/Edit';
 import {
   makeStyles,
-  createMuiTheme,
+  createTheme,
   responsiveFontSizes,
 } from '@material-ui/core/styles';
 import Layout, {
@@ -54,7 +54,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const theme = responsiveFontSizes(
-  createMuiTheme({
+  createTheme({
     palette: {
       primary: {
         main: 'rgb(0, 153, 255)',

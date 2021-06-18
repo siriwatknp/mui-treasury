@@ -1,7 +1,10 @@
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import jupiterCollapsibleMenuStyles from './jupiterCollapsibleMenu.styles';
 
-const useJupiterCollapsibleMenuStyles = makeStyles(jupiterCollapsibleMenuStyles, { name: "JupiterCollapsibleMenu" });
+const useJupiterCollapsibleMenuStyles = makeStyles(
+  jupiterCollapsibleMenuStyles,
+  { name: 'JupiterCollapsibleMenu' }
+);
 
 export { jupiterCollapsibleMenuStyles, useJupiterCollapsibleMenuStyles };
 

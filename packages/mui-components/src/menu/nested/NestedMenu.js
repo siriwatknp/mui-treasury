@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import { mapNestedPath } from '@mui-treasury/utils';
 import usePreserveState from '@mui-treasury/utils/usePreserveState';
 import { StylesProvider } from './StylesContext';

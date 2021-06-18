@@ -1,5 +1,5 @@
 import { ClassNameMap } from '@material-ui/styles';
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import floatNavigationMenuStyles, {
   FloatNavigationMenuClassKey,
   FloatNavigationMenuStyleProps,
@@ -7,9 +7,12 @@ import floatNavigationMenuStyles, {
 
 const useFloatNavigationMenuStyles: (
   props?: FloatNavigationMenuStyleProps
-) => ClassNameMap<FloatNavigationMenuClassKey> = makeStyles(floatNavigationMenuStyles, {
-  name: 'FloatNavigationMenu',
-});
+) => ClassNameMap<FloatNavigationMenuClassKey> = makeStyles(
+  floatNavigationMenuStyles,
+  {
+    name: 'FloatNavigationMenu',
+  }
+);
 
 export { floatNavigationMenuStyles, useFloatNavigationMenuStyles };
 

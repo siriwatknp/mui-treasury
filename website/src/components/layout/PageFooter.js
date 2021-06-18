@@ -2,7 +2,7 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import Image from 'gatsby-image';
-import { makeStyles } from '@material-ui/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Avatar from '@material-ui/core/Avatar';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';

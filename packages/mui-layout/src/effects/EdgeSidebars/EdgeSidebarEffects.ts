@@ -11,12 +11,12 @@ import {
   isPermanentSidebarConfig,
   isPersistentSidebarConfig,
 } from '../../utils/sidebarChecker';
-import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
+import { Breakpoint } from '@material-ui/system';
 import { pickNearestBreakpoint } from '../../utils';
 
 export const getEdgeSidebarEffect = (
   state: State,
-  config: EdgeSidebarConfig,
+  config: EdgeSidebarConfig
 ) => {
   if (isPermanentSidebarConfig(config)) {
     return createPermanentSidebarEffect(config, state);
@@ -27,17 +27,17 @@ export const getEdgeSidebarEffect = (
 };
 
 export default (state: State, edgeSidebar: EdgeSidebarData) => {
-  const { configMap, configMapById, sidebarIds } = edgeSidebar
+  const { configMap, configMapById, sidebarIds } = edgeSidebar;
   const breakpoints = Object.keys(configMap);
   const effectsMap: Dictionary<ISidebarEffect[]> = {};
   breakpoints.forEach((bp: Breakpoint) => {
     effectsMap[bp] = [];
     // iterate all sidebars
     sidebarIds.forEach(aSidebarId => {
-      const config = pickNearestBreakpoint(configMapById[aSidebarId], bp)
+      const config = pickNearestBreakpoint(configMapById[aSidebarId], bp);
       const effect = getEdgeSidebarEffect(state, config);
       if (effect) effectsMap[bp].push(effect);
-    })
+    });
   });
   return {
     iterateBreakpointEffects: (

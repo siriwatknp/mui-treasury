@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import BrandCardHeader from '@mui-treasury/components/cardHeader/brand';
@@ -72,4 +72,4 @@ ProjectCardDemo.Showcase = AttachedShowcase;
 // @ts-ignore
 ProjectCardDemo.metadata = metadata;
 // hide-end
-export default ProjectCardDemo
+export default ProjectCardDemo;

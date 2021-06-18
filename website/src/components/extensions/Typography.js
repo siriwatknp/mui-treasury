@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'clsx';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Link from '@material-ui/core/Link';
 import MuiTypography from '@material-ui/core/Typography';
 

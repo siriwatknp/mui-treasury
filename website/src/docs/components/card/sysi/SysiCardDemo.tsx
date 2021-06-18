@@ -3,7 +3,7 @@ import cx from 'clsx';
 import { blueGrey } from '@material-ui/core/colors';
 import NoSsr from '@material-ui/core/NoSsr';
 import GoogleFontLoader from 'react-google-font-loader';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import { Column, Row, Item } from '@mui-treasury/components/flex';
@@ -74,9 +74,7 @@ export const SysiCardDemo = React.memo(function SysiCard() {
   return (
     <>
       <NoSsr>
-        <GoogleFontLoader
-          fonts={[{ font: 'Kanit', weights: [400, 700] }]}
-        />
+        <GoogleFontLoader fonts={[{ font: 'Kanit', weights: [400, 700] }]} />
       </NoSsr>
       <Box maxWidth={343}>
         <Column p={0} gap={3} className={styles.card}>

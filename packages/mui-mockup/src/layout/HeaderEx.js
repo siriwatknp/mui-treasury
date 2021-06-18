@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@material-ui/styles/withStyles';
 import { isWidthUp } from '@material-ui/core/withWidth';
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
@@ -32,9 +32,10 @@ const styles = ({
     marginRight: 8,
     borderRadius: shape.borderRadius,
     background:
-      palette.type === 'dark' ? palette.background.default : palette.grey[200],
+      palette.mode === 'dark' ? palette.background.default : palette.grey[200],
     '&:hover': {
-      background: palette.type === 'dark' ? palette.background.paper : palette.grey[300],
+      background:
+        palette.mode === 'dark' ? palette.background.paper : palette.grey[300],
     },
     marginLeft: 0,
     width: '100%',

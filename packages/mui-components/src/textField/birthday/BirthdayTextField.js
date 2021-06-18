@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputBase from '@material-ui/core/InputBase';
 import { BirthdayProvider, BirthdayConsumer } from './BirthdayContext';

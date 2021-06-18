@@ -1,5 +1,5 @@
 import { ClassNameMap } from '@material-ui/styles';
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import translucentEmailSubscribeStyles, {
   TranslucentEmailSubscribeClassKey,
   TranslucentEmailSubscribeStyleProps,
@@ -7,9 +7,12 @@ import translucentEmailSubscribeStyles, {
 
 const useTranslucentEmailSubscribeStyles: (
   props?: TranslucentEmailSubscribeStyleProps
-) => ClassNameMap<TranslucentEmailSubscribeClassKey> = makeStyles(translucentEmailSubscribeStyles, {
-  name: 'TranslucentEmailSubscribe',
-});
+) => ClassNameMap<TranslucentEmailSubscribeClassKey> = makeStyles(
+  translucentEmailSubscribeStyles,
+  {
+    name: 'TranslucentEmailSubscribe',
+  }
+);
 
 export { translucentEmailSubscribeStyles, useTranslucentEmailSubscribeStyles };
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import {
-  createMuiTheme,
+  createTheme,
   ThemeProvider,
   responsiveFontSizes,
 } from '@material-ui/core/styles';
 
-const { palette } = createMuiTheme({
+const { palette } = createTheme({
   palette: {
     primary: {
       main: '#007aac',
@@ -18,7 +18,7 @@ const { palette } = createMuiTheme({
 });
 
 const theme = responsiveFontSizes(
-  createMuiTheme({
+  createTheme({
     palette,
     typography: {
       fontFamily: "'Fira Sans', sans-serif",

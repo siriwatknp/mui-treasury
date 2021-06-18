@@ -1,4 +1,4 @@
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import dotIndicatorStyles from './dotIndicator.styles';
 
 const useDotIndicatorStyles = makeStyles(dotIndicatorStyles);

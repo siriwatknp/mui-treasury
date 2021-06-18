@@ -1,16 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { makeStyles } from '@material-ui/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import SourceCopier from 'components/atoms/SourceCopier';
 
-const useStyles = makeStyles(() => ({
-  div: {
-    '& > p': {
-      margin: 0,
+const useStyles = makeStyles(
+  () => ({
+    div: {
+      '& > p': {
+        margin: 0,
+      },
     },
-  },
-}), { name: 'Html' });
+  }),
+  { name: 'Html' }
+);
 
 const Html = ({ body, source, fileName }) => {
   const styles = useStyles();

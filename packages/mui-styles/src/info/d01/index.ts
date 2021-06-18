@@ -1,5 +1,5 @@
 import { ClassNameMap } from '@material-ui/styles';
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import d01InfoStyles, { D01InfoClassKey } from './d01Info.styles';
 
 const useD01InfoStyles: () => ClassNameMap<

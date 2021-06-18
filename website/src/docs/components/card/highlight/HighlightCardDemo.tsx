@@ -3,7 +3,7 @@ import cx from 'clsx';
 import Color from 'color';
 import GoogleFontLoader from 'react-google-font-loader';
 import NoSsr from '@material-ui/core/NoSsr';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Avatar from '@material-ui/core/Avatar';
 import Box from '@material-ui/core/Box';
 import CardMedia from '@material-ui/core/CardMedia';

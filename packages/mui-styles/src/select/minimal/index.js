@@ -1,7 +1,9 @@
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import minimalSelectStyles from './minimalSelect.styles';
 
-const useMinimalSelectStyles = makeStyles(minimalSelectStyles, { name: "MinimalSelect" });
+const useMinimalSelectStyles = makeStyles(minimalSelectStyles, {
+  name: 'MinimalSelect',
+});
 
 export { minimalSelectStyles, useMinimalSelectStyles };
 

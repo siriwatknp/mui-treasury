@@ -1,7 +1,9 @@
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import lovelySwitchStyles from './lovelySwitch.styles';
 
-const useLovelySwitchStyles = makeStyles(lovelySwitchStyles, { name: "LovelySwitch" });
+const useLovelySwitchStyles = makeStyles(lovelySwitchStyles, {
+  name: 'LovelySwitch',
+});
 
 export { lovelySwitchStyles, useLovelySwitchStyles };
 

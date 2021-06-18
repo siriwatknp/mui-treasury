@@ -1,4 +1,4 @@
-import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
+import createBreakpoints from '@material-ui/system/createTheme/createBreakpoints';
 import InsetSidebarBuilder from '../builders/InsetSidebar';
 import InsetAvoidingViewCompiler from './InsetAvoidingViewCompiler';
 

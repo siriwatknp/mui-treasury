@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';

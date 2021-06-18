@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Birthday from './BirthdayTextField';
 import { useBootstrapInputStyles } from '@mui-treasury/styles/input/bootstrap';
 

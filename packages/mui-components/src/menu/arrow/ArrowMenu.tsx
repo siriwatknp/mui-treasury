@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Popper from '@material-ui/core/Popper';
 import Fade from '@material-ui/core/Fade';
 import Paper from '@material-ui/core/Paper';
@@ -31,10 +31,10 @@ export const arrowMenuStyles = {
   },
   open: {
     backgroundColor: 'rgba(0,0,0,0.12)',
-  }
+  },
 };
 
-export type ArrowMenuClassKey = keyof typeof arrowMenuStyles
+export type ArrowMenuClassKey = keyof typeof arrowMenuStyles;
 
 const useStyles = makeStyles(arrowMenuStyles, { name: 'ArrowMenu' });
 
@@ -110,8 +110,8 @@ const ArrowMenu = ({ children, renderElement, ...props }: ArrowMenuProps) => {
                   onKeyDown={handleListKeyDown}
                 >
                   {typeof children === 'function'
-                    // @ts-ignore
-                    ? children({ onClose: handleClose, styles })
+                    ? // @ts-ignore
+                      children({ onClose: handleClose, styles })
                     : children}
                 </MenuList>
               </ClickAwayListener>

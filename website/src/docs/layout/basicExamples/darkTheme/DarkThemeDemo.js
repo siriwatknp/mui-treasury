@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -67,7 +67,7 @@ const DarkThemeDemo = () => {
   const [dark, setDark] = React.useState(true);
   return (
     <Root
-      theme={createMuiTheme({ palette: { type: dark ? 'dark' : 'light' } })}
+      theme={createTheme({ palette: { type: dark ? 'dark' : 'light' } })}
       scheme={standardScheme}
     >
       <CssBaseline />

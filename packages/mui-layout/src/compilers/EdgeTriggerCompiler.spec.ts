@@ -1,4 +1,4 @@
-import { keys } from '@material-ui/core/styles/createBreakpoints';
+import { keys } from '@material-ui/system';
 import EdgeSidebarBuilder from '../builders/EdgeSidebar';
 import EdgeTriggerCompiler from './EdgeTriggerCompiler';
 
@@ -76,5 +76,5 @@ describe('EdgeTriggerCompiler', () => {
     sidebar.hide('sidebar', true);
     const compiler = EdgeTriggerCompiler(sidebar.getData());
     expect(compiler.getHiddenBreakpoints('sidebar')).toStrictEqual(keys);
-  })
+  });
 });

@@ -1,5 +1,6 @@
 import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
+import { useTheme } from '@material-ui/core/styles';
 import Button, { ButtonProps } from '@material-ui/core/Button';
 import ArrowLeft from '@material-ui/icons/KeyboardArrowLeftRounded';
 import ArrowRight from '@material-ui/icons/KeyboardArrowRightRounded';
@@ -15,7 +16,7 @@ export default (styled: any) => {
   const useStyles = makeStyles(({ palette, breakpoints }) => ({
     root: {
       backgroundColor:
-        palette.type === 'dark' ? palette.background.paper : palette.grey[50],
+        palette.mode === 'dark' ? palette.background.paper : palette.grey[50],
       textAlign: 'center',
       borderRadius: 0,
       borderTop: '1px solid',

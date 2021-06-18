@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'clsx';
 import Box, { BoxProps } from '@material-ui/core/Box';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import { IMetadata, ColSpanProp, RowSpanProp } from '../../components/Showcase';
 
 const useStyles = makeStyles(

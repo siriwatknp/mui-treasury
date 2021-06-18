@@ -4,7 +4,7 @@ import cx from 'clsx';
 import Color from 'color';
 import dropRight from 'lodash/dropRight';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';

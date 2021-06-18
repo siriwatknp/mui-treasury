@@ -1,4 +1,4 @@
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import chromeInputStyles from './chromeInput.styles';
 
 const useChromeInputStyles = makeStyles(chromeInputStyles);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { Column, Item } from '@mui-treasury/components/flex';

@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text, boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import { makeStyles } from '@material-ui/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Button from '@material-ui/core/Button';
 import FileCopy from '@material-ui/icons/FileCopy';
 import createContainer, { StylesProvider } from './helpers/containerDecorator';

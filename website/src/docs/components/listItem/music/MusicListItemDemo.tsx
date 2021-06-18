@@ -1,7 +1,7 @@
 import React from 'react';
 import NoSsr from '@material-ui/core/NoSsr';
 import GoogleFontLoader from 'react-google-font-loader';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import MoreHoriz from '@material-ui/icons/MoreHoriz';

@@ -25,13 +25,13 @@
     "color": "^3.1.2"
   },
   "peerDependencies": {
-    "@material-ui/core": "4.x",
-    "@material-ui/styles": "4.x"
+    "@material-ui/core": ">=5.0.0-alpha.37",
+    "@material-ui/styles": ">=5.0.0-alpha.35"
   },
   "scripts": {
     "prebuild": "rimraf build",
     "postpublish": "rimraf build",
-    "build": "yarn build:cjs && yarn build:esm && yarn build:types",
+    "build": "yarn build:types || yarn build:cjs && yarn build:esm",
     "build:cjs": "cross-env NODE_ENV=production BABEL_ENV=cjs babel --config-file ../../babel-config.js --extensions \".js,.ts,.tsx\" ./src --out-dir ./build --ignore \"**/*.test.ts,**/*.spec.ts\"",
     "build:esm": "cross-env NODE_ENV=production BABEL_ENV=esm babel --config-file ../../babel-config.js --extensions \".js,.ts,.tsx\" ./src --out-dir ./build/esm --ignore \"**/*.test.ts,**/*.spec.ts\"",
     "build:types": "tsc -p tsconfig.build.json",

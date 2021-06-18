@@ -61,7 +61,7 @@ export default ({ palette, transitions }) => {
         borderRadius: inputRadius,
         borderColor: normalColor,
         boxShadow: `0 0 0 0.2rem ${Color(normalColor).fade(
-          palette.type === 'dark' ? 0.48 : 0.75
+          palette.mode === 'dark' ? 0.48 : 0.75
         )}`,
       },
     },

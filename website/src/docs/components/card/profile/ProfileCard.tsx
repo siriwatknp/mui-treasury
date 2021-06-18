@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -106,4 +106,4 @@ ProfileCardDemo.Showcase = AttachedShowcase;
 // @ts-ignore
 ProfileCardDemo.metadata = metadata;
 // hide-end
-export default ProfileCardDemo
+export default ProfileCardDemo;

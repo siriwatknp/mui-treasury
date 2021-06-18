@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
 import Card from '@material-ui/core/Card';
@@ -145,4 +145,4 @@ ReviewCard2Demo.Showcase = AttachedShowcase;
 // @ts-ignore
 ReviewCard2Demo.metadata = metadata;
 // hide-end
-export default ReviewCard2Demo
+export default ReviewCard2Demo;

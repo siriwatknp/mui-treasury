@@ -1,6 +1,6 @@
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import createTheme from '@material-ui/core/styles/createTheme';
 
-export default createMuiTheme({
+export default createTheme({
   typography: {
     fontFamily: '"Fira Sans", "Roboto", "Helvetica", "Arial", sans-serif',
     h1: {

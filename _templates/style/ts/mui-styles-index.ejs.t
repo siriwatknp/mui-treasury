@@ -3,7 +3,7 @@ to: packages/mui-styles/src/<%= category %>/<%= name %>/index.ts
 unless_exists: true
 ---
 <% type = h.changeCase.pascal(name) + h.changeCase.pascal(category) %><% fileName = name + h.changeCase.pascal(category) %>import { ClassNameMap } from '@material-ui/styles';
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import <%= fileName %>Styles, {
   <%= type %>ClassKey,
   <%= type %>StyleProps,

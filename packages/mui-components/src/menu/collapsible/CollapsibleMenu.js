@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import usePreserveState from '@mui-treasury/utils/usePreserveState';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Collapse from '@material-ui/core/Collapse';
 import { StylesProvider } from './StylesContext';
 import Row from './submodules/Row';

@@ -1,4 +1,4 @@
-import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
+import { Breakpoint } from '@material-ui/system';
 import {
   HeaderConfig,
   PermanentSidebarConfig,
@@ -6,7 +6,10 @@ import {
   EdgeSidebarConfig,
   TemporarySidebarConfig,
   InsetSidebarConfig,
-  SidebarProperties, StickyInsetSidebarConfig, AbsoluteInsetSidebarConfig, FixedInsetSidebarConfig,
+  SidebarProperties,
+  StickyInsetSidebarConfig,
+  AbsoluteInsetSidebarConfig,
+  FixedInsetSidebarConfig,
 } from './Config';
 import { Dictionary, MapBreakpoint } from './Utils';
 

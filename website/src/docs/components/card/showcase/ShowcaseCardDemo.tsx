@@ -1,5 +1,6 @@
 import React from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import withStyles from '@material-ui/styles/withStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -41,7 +42,9 @@ const BasicProfile = props => {
   const styles = useBasicProfileStyles();
   return (
     <Row {...props}>
-      <Item><Avatar className={styles.avatar}>S</Avatar></Item>
+      <Item>
+        <Avatar className={styles.avatar}>S</Avatar>
+      </Item>
       <Item position={'middle'} pl={{ sm: 0.5, lg: 0.5 }}>
         <Typography className={styles.overline}>CREATOR</Typography>
         <Typography className={styles.name}>siriwatknp</Typography>
@@ -100,11 +103,15 @@ const useStyles = makeStyles(() => ({
 
 export const ShowcaseCardDemo = React.memo(function ShowcaseCard() {
   const styles = useStyles();
-  const gap = { xs: 1, sm: 1.5, lg: 2 }
+  const gap = { xs: 1, sm: 1.5, lg: 2 };
   return (
     <Grid container spacing={4} justify={'center'}>
       <Grid item xs={12} sm={4} md={3}>
-        <Column className={styles.card} p={{ xs: 0.5, sm: 0.75, lg: 1 }} gap={gap}>
+        <Column
+          className={styles.card}
+          p={{ xs: 0.5, sm: 0.75, lg: 1 }}
+          gap={gap}
+        >
           <CardHeader />
           <Item>
             <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8} />
@@ -155,4 +162,4 @@ ShowcaseCardDemo.Showcase = AttachedShowcase;
 // @ts-ignore
 ShowcaseCardDemo.metadata = metadata;
 // hide-end
-export default ShowcaseCardDemo
+export default ShowcaseCardDemo;

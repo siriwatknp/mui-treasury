@@ -4,26 +4,31 @@ title: SocialLink
 template: DocTemplate
 ---
 
-import { SocialLink, SocialProvider } from '@mui-treasury/components/socialLink';
+import {
+  SocialLink,
+  SocialProvider,
+} from '@mui-treasury/components/socialLink';
 import * as Icons from '@mui-treasury/components/socialLink/icons';
 
 A small collection of handy icons that 99% of the website would have at least one. Since Material-UI does not provide these icons,
 so I download free icons from [FontAwesome 5](https://fontawesome.com/) and put it in this library.
 
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
 <SimpleShowcase>
   <SocialProvider>
     <Grid container spacing={4}>
-        {Object.keys(Icons).map((name) => (
-           <Grid item key={name} xs={4} lg={3}>
-              <Box display="flex" flexDirection="column" alignItems="center">
-                <SocialLink brand={name} />
-                <Typography variant="caption" color="textSecondary">{name}</Typography>
-              </Box>
-           </Grid> 
-        ))}
+      {Object.keys(Icons).map(name => (
+        <Grid item key={name} xs={4} lg={3}>
+          <Box display="flex" flexDirection="column" alignItems="center">
+            <SocialLink brand={name} />
+            <Typography variant="caption" color="textSecondary">
+              {name}
+            </Typography>
+          </Box>
+        </Grid>
+      ))}
     </Grid>
   </SocialProvider>
 </SimpleShowcase>
@@ -52,7 +57,7 @@ function App() {
 Create a useStyles hook with `{ anchor, icon }` and provide to `SocialLinkProvider` (default styles will be removed).
 
 ```jsx
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import { SocialLink, SocialProvider } from '@mui-treasury/components/socialLink';
 
 const useStyles = makeStyles({
@@ -110,29 +115,23 @@ function App() {
   )
 }
 ```
+
 import { useRoundSocialLinkStyles } from '@mui-treasury/styles/socialLink/round';
 
 <SimpleShowcase>
-    <SocialProvider useStyles={useRoundSocialLinkStyles}>
-      <SocialLink
-        brand={'FacebookCircle'}
-        href={'https://www.facebook.com/siriwat.kunaporn/'}
-      />
-      <SocialLink brand={'Twitter'} href={'https://twitter.com/siriwatknp'} />
-      <SocialLink
-        brand={'Instagram'}
-        href={''}
-      />
-      <SocialLink
-        brand={'LinkedIn'}
-        href={'https://www.linkedin.com/in/siriwat-kunaporn-1b4095158/'}
-      />
-      <SocialLink
-        brand={'GithubCircle'}
-      />
-    </SocialProvider>
+  <SocialProvider useStyles={useRoundSocialLinkStyles}>
+    <SocialLink
+      brand={'FacebookCircle'}
+      href={'https://www.facebook.com/siriwat.kunaporn/'}
+    />
+    <SocialLink brand={'Twitter'} href={'https://twitter.com/siriwatknp'} />
+    <SocialLink brand={'Instagram'} href={''} />
+    <SocialLink
+      brand={'LinkedIn'}
+      href={'https://www.linkedin.com/in/siriwat-kunaporn-1b4095158/'}
+    />
+    <SocialLink brand={'GithubCircle'} />
+  </SocialProvider>
 </SimpleShowcase>
 
 > Don't forget to star this project if you like! [Mui Treasury Github](https://github.com/siriwatknp/mui-treasury/)
-
-

@@ -6,7 +6,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Link from '@material-ui/core/Link';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import { Column, Row, Item } from '@mui-treasury/components/flex';
 import { useDynamicAvatarStyles } from '@mui-treasury/styles/avatar/dynamic';
 
@@ -82,12 +82,12 @@ const useStyles = makeStyles(() => ({
     fontSize: '0.875rem',
   },
   actions: {
-    color: '#BDC9D7'
+    color: '#BDC9D7',
   },
   divider: {
     backgroundColor: '#d9e2ee',
     margin: '0 20px',
-  }
+  },
 }));
 
 export const SocialCardDemo = React.memo(function SocialCard() {
@@ -99,17 +99,31 @@ export const SocialCardDemo = React.memo(function SocialCard() {
       </NoSsr>
       <Column p={0} gap={0} className={styles.card}>
         <Row wrap p={2} alignItems={'baseline'} className={styles.header}>
-          <Item stretched className={styles.headline}>Who to follow</Item>
+          <Item stretched className={styles.headline}>
+            Who to follow
+          </Item>
           <Item className={styles.actions}>
             <Link className={styles.link}>Refresh</Link> •{' '}
             <Link className={styles.link}>See all</Link>
           </Item>
         </Row>
-        <PersonItem name={'Amber Matthews'} friendCount={6} src={'https://i.pravatar.cc/300?img=10'} />
+        <PersonItem
+          name={'Amber Matthews'}
+          friendCount={6}
+          src={'https://i.pravatar.cc/300?img=10'}
+        />
         <Divider variant={'middle'} className={styles.divider} />
-        <PersonItem name={'Russel Robertson'} friendCount={2} src={'https://i.pravatar.cc/300?img=20'} />
+        <PersonItem
+          name={'Russel Robertson'}
+          friendCount={2}
+          src={'https://i.pravatar.cc/300?img=20'}
+        />
         <Divider variant={'middle'} className={styles.divider} />
-        <PersonItem name={'Kathleen Ellis'} friendCount={2} src={'https://i.pravatar.cc/300?img=30'} />
+        <PersonItem
+          name={'Kathleen Ellis'}
+          friendCount={2}
+          src={'https://i.pravatar.cc/300?img=30'}
+        />
       </Column>
     </>
   );

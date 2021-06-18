@@ -1,7 +1,7 @@
 import React from 'react';
 import GoogleFontLoader from 'react-google-font-loader';
 import NoSsr from '@material-ui/core/NoSsr';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -100,4 +100,4 @@ GalaxyCardDemo.Showcase = AttachedShowcase;
 // @ts-ignore
 GalaxyCardDemo.metadata = metadata;
 // hide-end
-export default GalaxyCardDemo
+export default GalaxyCardDemo;

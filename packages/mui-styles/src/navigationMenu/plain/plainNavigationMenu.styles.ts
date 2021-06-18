@@ -15,7 +15,7 @@ const plainNavigationMenuStyles = ({ palette, spacing }: Theme) =>
       display: 'flex',
       alignItems: 'center',
       color:
-        palette.type === 'dark'
+        palette.mode === 'dark'
           ? 'rgba(255,255,255,0.57)'
           : palette.text.secondary,
       borderRadius: 4,
@@ -24,7 +24,7 @@ const plainNavigationMenuStyles = ({ palette, spacing }: Theme) =>
       textDecoration: 'none',
       transition: '0.2s ease-out',
       '&:hover': {
-        color: palette.type === 'dark' ? '#fff' : palette.text.primary,
+        color: palette.mode === 'dark' ? '#fff' : palette.text.primary,
       },
       '&:not(:first-child)': {
         marginLeft: typeof gutter === 'number' ? spacing(gutter) : gutter,
@@ -32,7 +32,7 @@ const plainNavigationMenuStyles = ({ palette, spacing }: Theme) =>
     }),
     itemActive: {
       '&$item': {
-        color: palette.type === 'dark' ? '#fff' : palette.text.primary,
+        color: palette.mode === 'dark' ? '#fff' : palette.text.primary,
       },
     },
   });

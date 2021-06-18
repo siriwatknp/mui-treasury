@@ -1,4 +1,4 @@
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import sizedIconButtonStyles, {
   SizedIconButtonStyleProps,
   SizedIconButtonClassKey,
@@ -12,6 +12,6 @@ const useSizedIconButtonStyles: (
 });
 
 export { sizedIconButtonStyles, useSizedIconButtonStyles };
-export * from './sizedIconButton.styles' // export types
+export * from './sizedIconButton.styles'; // export types
 
 export { default } from './sizedIconButton.styles';

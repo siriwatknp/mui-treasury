@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import {
   ThemeProvider,
-  createMuiTheme,
+  createTheme,
   withStyles,
 } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
@@ -38,7 +38,7 @@ const StyledTooltip = withStyles({
   },
 })(Tooltip);
 
-const baseTheme = createMuiTheme();
+const baseTheme = createTheme();
 
 const DemoSection = ({ components, setComponent }) => {
   const iconBtnStyles = useSizedIconButtonStyles({ padding: 8 });

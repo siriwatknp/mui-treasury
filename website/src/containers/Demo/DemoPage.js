@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createMuiTheme } from '@material-ui/core';
+import { createTheme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import organisms from 'components/organisms';
 import ComponentHeading from 'components/organisms/ComponentHeading';
@@ -9,7 +9,7 @@ import MetadataContext from './context';
 
 const { DefaultSection, CustomComponentGrid } = organisms;
 
-const baseTheme = createMuiTheme();
+const baseTheme = createTheme();
 
 const DemoPage = ({
   title,

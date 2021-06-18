@@ -6,7 +6,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 
 import { Item, Row } from '@mui-treasury/components/flex';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 
 export type BasicProfileProps = {
   creators: Array<{ face: string; name: string; link: string }>;
@@ -27,7 +27,7 @@ const useBasicProfileStyles = makeStyles(({ palette }) => ({
   name: {
     fontSize: 14,
     fontWeight: 500,
-    color: palette.type === 'dark' ? palette.text.secondary : '#495869',
+    color: palette.mode === 'dark' ? palette.text.secondary : '#495869',
   },
 }));
 

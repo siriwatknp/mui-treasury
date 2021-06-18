@@ -1,7 +1,8 @@
 import React from 'react';
 import * as CSS from 'csstype';
 import cx from 'clsx';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
+import createStyles from '@material-ui/styles/createStyles';
 import { Theme } from '@material-ui/core';
 import {
   At,
@@ -61,7 +62,7 @@ const ColumnToRow = ({
   rowReversed,
   ...props
 }: ColumnToRowProps) => {
-  const { calculatedAt } = useBreakpointLookup(at)
+  const { calculatedAt } = useBreakpointLookup(at);
   const { calculatedGap, itemProps } = useGapLookup(gap);
   const styles = useStyles({
     at: calculatedAt,
@@ -78,9 +79,7 @@ const ColumnToRow = ({
       gapDisabled
     >
       <Provider flexDirection={'column-row'} gap={calculatedGap}>
-        <BreakpointProvider at={calculatedAt}>
-          {children}
-        </BreakpointProvider>
+        <BreakpointProvider at={calculatedAt}>{children}</BreakpointProvider>
       </Provider>
     </Item>
   );

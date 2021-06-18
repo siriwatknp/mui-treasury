@@ -1,4 +1,4 @@
-import { Breakpoint, keys } from '@material-ui/core/styles/createBreakpoints';
+import { Breakpoint, keys } from '@material-ui/system';
 import mapValues from 'lodash.mapvalues';
 import {
   createMultiObjData,
@@ -26,7 +26,7 @@ export type ComponentData<Config, Props = {}> = {
   configMapById: Dictionary<RpsConfig<Config & Props>>;
   configMap: RpsConfigArray<Config & Props>;
   hiddenById: Dictionary<Breakpoint[]>;
-}
+};
 
 export interface MultiObjBuilderResult<
   R extends DummyRegistry,

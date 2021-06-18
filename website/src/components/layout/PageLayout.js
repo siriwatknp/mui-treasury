@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import styled from 'styled-components';
 import {
   getHeader,
@@ -33,8 +33,8 @@ const useStyles = makeStyles(theme => {
       borderBottom: `1px solid ${palette.divider}`,
     },
     trigger: ({ hamburgerHidden }) => ({
-      display: hamburgerHidden ? 'none' : ''
-    })
+      display: hamburgerHidden ? 'none' : '',
+    }),
   };
 });
 
@@ -64,7 +64,10 @@ const PageLayout = ({ menus, children, getOpenKeys, hamburgerHidden }) => {
     <>
       <Header className={styles.header}>
         <Toolbar>
-          <SidebarTrigger className={styles.trigger} sidebarId={'primarySidebar'} />
+          <SidebarTrigger
+            className={styles.trigger}
+            sidebarId={'primarySidebar'}
+          />
           <PageHeader />
         </Toolbar>
       </Header>

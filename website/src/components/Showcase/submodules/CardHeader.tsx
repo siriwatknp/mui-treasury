@@ -1,5 +1,6 @@
 import React from 'react';
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
+import { useTheme } from '@material-ui/core/styles';
 import { BoxProps } from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 
@@ -9,12 +10,12 @@ const useCardHeaderStyles = makeStyles(({ palette }: Theme) => ({
   root: { paddingBottom: 0 },
   title: {
     fontSize: '1.25rem',
-    color: palette.type === 'dark' ? palette.text.primary : '#122740',
+    color: palette.mode === 'dark' ? palette.text.primary : '#122740',
     fontWeight: 'bold',
   },
   subheader: {
     fontSize: '0.875rem',
-    color: palette.type === 'dark' ? palette.text.hint : '#495869',
+    color: palette.mode === 'dark' ? palette.text.hint : '#495869',
   },
 }));
 
@@ -45,4 +46,4 @@ const CardHeader = ({
   );
 };
 
-export default CardHeader
+export default CardHeader;

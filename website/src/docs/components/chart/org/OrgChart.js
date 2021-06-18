@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import OrgChart from '@mui-treasury/components/chart/org';
 import Box from '@material-ui/core/Box';
 import Avatar from '@material-ui/core/Avatar';

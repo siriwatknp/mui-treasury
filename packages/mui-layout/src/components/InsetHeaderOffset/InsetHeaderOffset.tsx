@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
+import { useTheme } from '@material-ui/core/styles';
 import { useLayoutCtx } from '../../contexts';
 import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 import InsetHeaderOffsetCompiler from '../../compilers/InsetHeaderOffsetCompiler';

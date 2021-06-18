@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -117,4 +117,4 @@ RewardCardDemo.Showcase = AttachedShowcase;
 // @ts-ignore
 RewardCardDemo.metadata = metadata;
 // hide-end
-export default RewardCardDemo
+export default RewardCardDemo;

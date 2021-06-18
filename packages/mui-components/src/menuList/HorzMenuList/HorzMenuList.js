@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'clsx';
 import PropTypes from 'prop-types';
-import withStyles from '@material-ui/core/styles/withStyles';
+import withStyles from '@material-ui/styles/withStyles';
 import createStyles from './HorzMenuList.styles';
 
 const HorzMenuList = withStyles(createStyles, { name: 'HorzMenuList' })(

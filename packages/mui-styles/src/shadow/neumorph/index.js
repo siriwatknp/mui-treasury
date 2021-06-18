@@ -1,4 +1,4 @@
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import neumorphShadowStyles from './neumorphShadow.styles';
 
 const useNeumorphShadowStyles = makeStyles(neumorphShadowStyles);

@@ -4,7 +4,7 @@ import {
   makeStyles,
   withStyles,
   ThemeProvider,
-  createMuiTheme,
+  createTheme,
   ThemeOptions,
 } from '@material-ui/core/styles';
 import Box, { BoxProps } from '@material-ui/core/Box';
@@ -43,13 +43,13 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     borderBottomWidth: 2,
     borderBottomStyle: 'solid',
     borderColor:
-      palette.type === 'dark' ? palette.background.default : '#E7EDF3',
-    backgroundColor: palette.type === 'dark' && palette.background.default,
+      palette.mode === 'dark' ? palette.background.default : '#E7EDF3',
+    backgroundColor: palette.mode === 'dark' && palette.background.default,
     transition: '0.4s, background-color 0s',
     [breakpoints.up('sm')]: {
       border: '2px solid',
       borderColor:
-        palette.type === 'dark' ? palette.background.default : '#E7EDF3',
+        palette.mode === 'dark' ? palette.background.default : '#E7EDF3',
       borderRadius: 12,
       '&:hover': {
         borderColor: '#5B9FED',
@@ -206,9 +206,9 @@ function withDarkTheme() {
       </StyledTooltip>
     );
     if (!theme.palette) theme.palette = {};
-    theme.palette.type = isDark ? 'dark' : 'light';
+    theme.palette.mode = isDark ? 'dark' : 'light';
     return (
-      <ThemeProvider theme={createMuiTheme(theme)}>
+      <ThemeProvider theme={createTheme(theme)}>
         <Showcase
           {...props}
           frameProps={{

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { blueGrey } from '@material-ui/core/colors';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import { TreeProvider } from './TreeContext';
 import styles from './treeChart.styles';
 

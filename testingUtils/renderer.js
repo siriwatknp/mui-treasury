@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider, createTheme } from '@material-ui/core/styles';
 import { LayoutProvider } from '../packages/mui-layout/src/core/layoutContext';
 
-const baseTheme = createMuiTheme();
+const baseTheme = createTheme();
 
 const renderWithinTheme = ui => {
   const utils = render(<ThemeProvider theme={baseTheme}>{ui}</ThemeProvider>);

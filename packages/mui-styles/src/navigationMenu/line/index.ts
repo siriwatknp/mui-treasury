@@ -1,5 +1,5 @@
 import { ClassNameMap } from '@material-ui/styles';
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import lineNavigationMenuStyles, {
   LineNavigationMenuClassKey,
   LineNavigationMenuStyleProps,
@@ -7,9 +7,12 @@ import lineNavigationMenuStyles, {
 
 const useLineNavigationMenuStyles: (
   props?: LineNavigationMenuStyleProps
-) => ClassNameMap<LineNavigationMenuClassKey> = makeStyles(lineNavigationMenuStyles, {
-  name: 'LineNavigationMenu',
-});
+) => ClassNameMap<LineNavigationMenuClassKey> = makeStyles(
+  lineNavigationMenuStyles,
+  {
+    name: 'LineNavigationMenu',
+  }
+);
 
 export { lineNavigationMenuStyles, useLineNavigationMenuStyles };
 

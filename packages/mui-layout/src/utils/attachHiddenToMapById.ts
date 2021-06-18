@@ -1,4 +1,4 @@
-import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
+import { Breakpoint } from '@material-ui/system';
 import { Dictionary, MapBreakpoint } from '../types';
 import pickNearestBreakpoint from './pickNearestBreakpoint';
 

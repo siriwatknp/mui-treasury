@@ -1,5 +1,5 @@
 import { iterateRpsById } from './iterateRpsById';
-import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
+import { Breakpoint } from '@material-ui/system';
 
 type Dictionary<T> = {
   [key: string]: T;
@@ -35,7 +35,7 @@ describe('Utils', () => {
     };
     const result = {} as Dictionary<(Config & { breakpoint: Breakpoint })[]>;
     iterateRpsById<Config>(rpsById, (id, breakpoint, value) => {
-      if(!result[id]) {
+      if (!result[id]) {
         result[id] = [];
       }
       result[id].push({

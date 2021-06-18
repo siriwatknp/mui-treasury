@@ -1,4 +1,4 @@
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import faceGroupStyles from './faceGroup.styles';
 
 const useFaceGroupStyles = makeStyles(faceGroupStyles);

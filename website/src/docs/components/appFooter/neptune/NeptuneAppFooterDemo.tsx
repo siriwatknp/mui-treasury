@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Divider from '@material-ui/core/Divider';
@@ -28,7 +28,7 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
     ...typography.caption,
     justifyContent: 'center',
     color:
-      palette.type === 'dark'
+      palette.mode === 'dark'
         ? 'rgba(255,255,255,0.57)'
         : palette.text.secondary,
     position: 'relative',
@@ -48,7 +48,7 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
   },
   navMenu: {
     flexWrap: 'wrap',
-  }
+  },
 }));
 
 export const NeptuneAppFooterDemo = React.memo(function NeptuneAppFooter() {

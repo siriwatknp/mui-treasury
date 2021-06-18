@@ -1,5 +1,6 @@
 import React from 'react';
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
+import { useTheme } from '@material-ui/core/styles';
 import { generateStyledProxyCreator } from '../Shared/StyledProxy';
 import getInsetHeaderOffset from '../InsetHeaderOffset';
 import { useInsetSidebar } from '../../hooks';
@@ -16,7 +17,7 @@ export default (styled: any) => {
     },
     paper: {
       backgroundColor:
-        palette.type === 'dark' ? palette.background.paper : palette.grey[100],
+        palette.mode === 'dark' ? palette.background.paper : palette.grey[100],
     },
   }));
 

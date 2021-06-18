@@ -1,7 +1,7 @@
 import React from 'react';
 import Color from 'color';
 import GoogleFont from 'react-google-font-loader';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import NoSsr from '@material-ui/core/NoSsr';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -176,4 +176,4 @@ SolidGameCardDemo.Showcase = AttachedShowcase;
 // @ts-ignore
 SolidGameCardDemo.metadata = metadata;
 // hide-end
-export default SolidGameCardDemo
+export default SolidGameCardDemo;

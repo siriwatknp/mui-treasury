@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -81,7 +81,7 @@ const AttachedShowcase = (props: ShowcaseProps) => (
   >
     <ArrowMenuDemo />
   </Showcase>
-)
+);
 const metadata: IMetadata = {
   path: 'components/menu/navigation',
   colSpan: 3,
@@ -90,7 +90,7 @@ const metadata: IMetadata = {
   files: [],
 };
 // @ts-ignore
-ArrowMenuDemo.Showcase = AttachedShowcase
+ArrowMenuDemo.Showcase = AttachedShowcase;
 // @ts-ignore
-ArrowMenuDemo.metadata = metadata
+ArrowMenuDemo.metadata = metadata;
 // hide-end

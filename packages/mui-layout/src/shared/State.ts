@@ -1,8 +1,8 @@
-import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
+import { Breakpoint } from '@material-ui/system';
 import { Dictionary, MapBreakpoint } from '../types';
 
 export type RpsConfig<T> = MapBreakpoint<T>;
-export type RpsConfigArray<T> = MapBreakpoint<T[]>
+export type RpsConfigArray<T> = MapBreakpoint<T[]>;
 
 export type SingleObjData<T, P = {}> = {
   id: string;
@@ -31,19 +31,23 @@ export const createSingleObjData = <T, P = {}>({
 export const createMultiObjData = <T, P = {}>(
   rpsConfigById?: Dictionary<RpsConfig<T>>
 ): MultiObjData<T, P> => {
-  if (!rpsConfigById) return {
-    ids: [],
-    dataById: {},
-  }
-  const ids = Object.keys(rpsConfigById)
+  if (!rpsConfigById)
+    return {
+      ids: [],
+      dataById: {},
+    };
+  const ids = Object.keys(rpsConfigById);
   return {
     ids,
-    dataById: ids.reduce((result, id) => ({
-      ...result,
-      [id]: createSingleObjData({
-        id,
-        rpsConfig: rpsConfigById[id],
-      })
-    }), {})
-  }
+    dataById: ids.reduce(
+      (result, id) => ({
+        ...result,
+        [id]: createSingleObjData({
+          id,
+          rpsConfig: rpsConfigById[id],
+        }),
+      }),
+      {}
+    ),
+  };
 };

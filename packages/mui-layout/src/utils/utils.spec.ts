@@ -1,5 +1,5 @@
 import each from 'jest-each';
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import createTheme from '@material-ui/core/styles/createTheme';
 import pickNearestBreakpoint from './pickNearestBreakpoint';
 import createBreakpointStyles from './createBreakpointStyles';
 import combineBreakpoints from './combineBreakpoints';
@@ -17,28 +17,28 @@ import attachHiddenToMapById from './attachHiddenToMapById';
 import resolveDirection, { switchDirection } from './resolveDirection';
 import get from './get';
 
-const theme = createMuiTheme();
+const theme = createTheme();
 const { breakpoints } = theme;
 
 describe('Utils', () => {
   describe('resolveDirection', () => {
     it('switch string "left" to "right" and "right" to "left"', () => {
-      expect(switchDirection('left')).toEqual('right')
-      expect(switchDirection('right')).toEqual('left')
-      expect(switchDirection('Left')).toEqual('Right')
-      expect(switchDirection('Right')).toEqual('Left')
-    })
+      expect(switchDirection('left')).toEqual('right');
+      expect(switchDirection('right')).toEqual('left');
+      expect(switchDirection('Left')).toEqual('Right');
+      expect(switchDirection('Right')).toEqual('Left');
+    });
     it('do nothing if direction is not rtl', () => {
       const value = {
         marginLeft: 16,
         marginRight: 24,
-        width: 'calc(100% - 256px)'
+        width: 'calc(100% - 256px)',
       };
       expect(resolveDirection('ltr', value)).toEqual(value);
       expect(resolveDirection('rtl', value)).toEqual({
         marginRight: 16,
         marginLeft: 24,
-        width: 'calc(100% - 256px)'
+        width: 'calc(100% - 256px)',
       });
     });
   });
@@ -341,4 +341,4 @@ describe('Utils', () => {
       });
     });
   });
-})
+});

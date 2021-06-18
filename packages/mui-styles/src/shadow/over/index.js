@@ -1,4 +1,4 @@
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import overShadowStyles from './overShadow.styles';
 
 const useOverShadowStyles = makeStyles(overShadowStyles);

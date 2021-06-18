@@ -1,5 +1,6 @@
 import React from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import withStyles from '@material-ui/styles/withStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Avatar from '@material-ui/core/Avatar';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
@@ -10,9 +11,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 // Icons
 import CallMade from '@material-ui/icons/CallMade';
 
-import { Row, Column, Item } from '@mui-treasury/components/flex'
+import { Row, Column, Item } from '@mui-treasury/components/flex';
 import { useSizedIconButtonStyles } from '@mui-treasury/styles/iconButton/sized';
-
 
 const StyledTooltip = withStyles({
   tooltip: {
@@ -25,7 +25,7 @@ const StyledTooltip = withStyles({
 const useBasicProfileStyles = makeStyles(({ palette }) => ({
   avatar: {
     borderRadius: 8,
-    backgroundColor: '#495869'
+    backgroundColor: '#495869',
   },
   overline: {
     fontSize: 10,
@@ -37,25 +37,21 @@ const useBasicProfileStyles = makeStyles(({ palette }) => ({
     fontSize: 14,
     fontWeight: 500,
     color: '#495869',
-  }
-}))
+  },
+}));
 
 const BasicProfile = props => {
-  const styles = useBasicProfileStyles()
+  const styles = useBasicProfileStyles();
   return (
     <Row gutter={'inherit'} {...props}>
       <Avatar className={styles.avatar}>S</Avatar>
       <Item position={'middle'} pl={{ xs: 1, sm: 1.5 }}>
-        <Typography className={styles.overline}>
-          CREATOR
-        </Typography>
-        <Typography className={styles.name}>
-          siriwatknp
-        </Typography>
+        <Typography className={styles.overline}>CREATOR</Typography>
+        <Typography className={styles.name}>siriwatknp</Typography>
       </Item>
     </Row>
-  )
-}
+  );
+};
 
 const useCardHeaderStyles = makeStyles(() => ({
   root: { paddingBottom: 0 },
@@ -67,10 +63,10 @@ const useCardHeaderStyles = makeStyles(() => ({
     fontSize: '0.875rem',
     color: '#495869',
   },
-}))
+}));
 
 const CardHeader = props => {
-  const styles = useCardHeaderStyles()
+  const styles = useCardHeaderStyles();
   const iconBtnStyles = useSizedIconButtonStyles({ padding: 8, childSize: 20 });
   return (
     <Row {...props}>
@@ -90,8 +86,8 @@ const CardHeader = props => {
         </StyledTooltip>
       </Item>
     </Row>
-  )
-}
+  );
+};
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -101,22 +97,20 @@ const useStyles = makeStyles(() => ({
     transition: '0.4s',
     '&:hover': {
       borderColor: '#5B9FED',
-    }
-  }
-}))
+    },
+  },
+}));
 
 export default () => {
-  const styles = useStyles()
+  const styles = useStyles();
   return (
     <Box p={3}>
-      <Grid container spacing={4} >
+      <Grid container spacing={4}>
         <Grid item xs={3}>
           <Column className={styles.card} gutter={{ xs: 1, sm: 1.5, lg: 2 }}>
             <CardHeader />
             <Item>
-              <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8}>
-
-              </Box>
+              <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8}></Box>
             </Item>
             <BasicProfile />
           </Column>
@@ -124,9 +118,7 @@ export default () => {
         <Grid item xs={9}>
           <Row className={styles.card} gutter={{ xs: 1, sm: 1.5, lg: 2 }}>
             <Item grow>
-              <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8}>
-
-              </Box>
+              <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8}></Box>
             </Item>
             <Column gutter={'inherit'}>
               <CardHeader />
@@ -136,5 +128,5 @@ export default () => {
         </Grid>
       </Grid>
     </Box>
-  )
-}
+  );
+};

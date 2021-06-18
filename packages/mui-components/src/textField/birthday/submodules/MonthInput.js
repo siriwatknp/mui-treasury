@@ -1,5 +1,5 @@
 import createInput from './createInput';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import { prefixZero } from '../BirthdayContext';
 
 const useStyles = makeStyles(
@@ -24,4 +24,4 @@ export default createInput({
   fieldName: 'month',
   updaterName: 'changeMonth',
   maxLength: 2,
-})
+});

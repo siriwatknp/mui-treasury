@@ -1,7 +1,9 @@
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import roundInputBaseStyles from './roundInputBase.styles';
 
-const useRoundInputBaseStyles = makeStyles(roundInputBaseStyles, { name: "RoundInputBase" });
+const useRoundInputBaseStyles = makeStyles(roundInputBaseStyles, {
+  name: 'RoundInputBase',
+});
 
 export { roundInputBaseStyles, useRoundInputBaseStyles };
 

@@ -1,5 +1,7 @@
 import { ClassNameMap } from '@material-ui/styles';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import createStyles from '@material-ui/styles/createStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
+import { Theme } from '@material-ui/core/styles';
 
 type StyleProps = { gutter?: string | number };
 type ClassKey = keyof ReturnType<typeof defaultStyles>;
@@ -24,10 +26,8 @@ export default function defaultStyles({ palette, spacing }: Theme) {
       },
       '&:hover, &:focus': {
         color: palette.text.primary,
-      }
+      },
     },
-    icon: {
-
-    }
+    icon: {},
   });
 }

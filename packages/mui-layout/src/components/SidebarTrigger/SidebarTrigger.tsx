@@ -1,5 +1,6 @@
 import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
+import { useTheme } from '@material-ui/core/styles';
 import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
 import ArrowLeft from '@material-ui/icons/KeyboardArrowLeftRounded';
 import ArrowRight from '@material-ui/icons/KeyboardArrowRightRounded';
@@ -40,13 +41,15 @@ export default (styled: any) => {
       sidebarId,
       'SidebarTrigger'
     );
-    const theme = useTheme()
+    const theme = useTheme();
     const classes = useStyles({ ...props, anchor });
     const getArrow = () => {
       if (!state) return null;
       if (!state.open) return <MenuRounded {...SvgIconProps} />;
-      if (theme.direction === 'rtl' && anchor === 'left') return <ArrowRight {...SvgIconProps} />;
-      if (theme.direction === 'rtl' && anchor === 'right') return <ArrowLeft {...SvgIconProps} />;
+      if (theme.direction === 'rtl' && anchor === 'left')
+        return <ArrowRight {...SvgIconProps} />;
+      if (theme.direction === 'rtl' && anchor === 'right')
+        return <ArrowLeft {...SvgIconProps} />;
       if (anchor === 'left') return <ArrowLeft {...SvgIconProps} />;
       if (anchor === 'right') return <ArrowRight {...SvgIconProps} />;
       return null;

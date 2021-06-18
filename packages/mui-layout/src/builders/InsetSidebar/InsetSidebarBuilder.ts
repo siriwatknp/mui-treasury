@@ -6,7 +6,7 @@ import {
   MapBreakpoint,
   SidebarProperties,
 } from '../../types';
-import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
+import { Breakpoint } from '@material-ui/system';
 import { InsetSidebarRegistry } from '../../InsetSidebar';
 import { createMultiObjBuilder } from '../../shared/BuilderCreator/MultiObjects';
 

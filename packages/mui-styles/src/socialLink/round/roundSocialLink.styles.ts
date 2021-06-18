@@ -1,8 +1,10 @@
 import { createStyles, Theme } from '@material-ui/core/styles';
 import Color from 'color';
-export type RoundSocialLinkStyleProps = {}
+export type RoundSocialLinkStyleProps = {};
 
-export type RoundSocialLinkClassKey = keyof ReturnType<typeof roundSocialLinkStyles>
+export type RoundSocialLinkClassKey = keyof ReturnType<
+  typeof roundSocialLinkStyles
+>;
 
 const roundSocialLinkStyles = ({ palette }: Theme) => {
   const extraLightPrimary = Color(palette.primary.main)
@@ -20,7 +22,10 @@ const roundSocialLinkStyles = ({ palette }: Theme) => {
       borderRadius: 8,
       border: '2px solid',
       borderColor: extraLightPrimary,
-      color: palette.type === 'dark' ? palette.text.secondary : palette.primary.light,
+      color:
+        palette.mode === 'dark'
+          ? palette.text.secondary
+          : palette.primary.light,
       transition: '0.3s ease-out',
       '&:not(:first-of-type)': {
         marginLeft: '0.5rem',
@@ -28,18 +33,18 @@ const roundSocialLinkStyles = ({ palette }: Theme) => {
       '&:hover, &:focus': {
         boxShadow: `0 0 12px 0 ${palette.divider}`,
         borderColor: palette.text.secondary,
-        color: palette.type === 'dark' ? '#fff' : palette.text.primary,
+        color: palette.mode === 'dark' ? '#fff' : palette.text.primary,
       },
       '&:active': {
         '& $icon': {
           transform: 'scale(0.8)',
-        }
-      }
+        },
+      },
     },
     icon: {
       transition: '0.2s cubic-bezier(.47,1.64,.41,.8), color 0s',
     },
   });
-}
+};
 
-export default roundSocialLinkStyles
+export default roundSocialLinkStyles;

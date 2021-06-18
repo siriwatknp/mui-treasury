@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { ClassNameMap } from '@material-ui/styles'
-import { Omit } from '@material-ui/types';
+import { ClassNameMap } from '@material-ui/styles';
 
 export interface StyledComponentProps<ClassKey extends string = string> {
   /**
@@ -16,7 +15,9 @@ export interface StyledComponentProps<ClassKey extends string = string> {
  * Adjusts valid props based on the type of `component`.
  */
 export interface OverridableComponent<M extends OverridableTypeMap> {
-  <C extends React.ElementType>(props: { component: C } & OverrideProps<M, C>): JSX.Element;
+  <C extends React.ElementType>(
+    props: { component: C } & OverrideProps<M, C>
+  ): JSX.Element;
   (props: DefaultComponentProps<M>): JSX.Element;
 }
 
@@ -72,4 +73,6 @@ export type Simplify<T> = T extends any ? { [K in keyof T]: T[K] } : never;
  * @deprecated Not used in this library.
  */
 // tslint:disable-next-line: deprecation
-export type SimplifiedPropsOf<C extends React.ElementType> = Simplify<React.ComponentProps<C>>;
+export type SimplifiedPropsOf<C extends React.ElementType> = Simplify<
+  React.ComponentProps<C>
+>;

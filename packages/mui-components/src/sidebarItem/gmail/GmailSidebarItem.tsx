@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import ButtonBase, { ButtonBaseProps } from '@material-ui/core/ButtonBase';
 import styles, { GmailSidebarClassKey } from './gmailSidebarItem.styles';
 
@@ -50,11 +50,7 @@ const GmailSidebarItem = ({
     >
       <div className={'GmailSidebarItem-startIcon'}>{startIcon}</div>
       <div className={'GmailSidebarItem-label'}>{label}</div>
-      {amount && (
-        <div className={'GmailSidebarItem-amount'}>
-          {amount}
-        </div>
-      )}
+      {amount && <div className={'GmailSidebarItem-amount'}>{amount}</div>}
     </ButtonBase>
   );
 };

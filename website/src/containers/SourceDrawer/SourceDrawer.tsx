@@ -11,13 +11,14 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Dialog from '@material-ui/core/Dialog';
 import Slide from '@material-ui/core/Slide';
 import { Theme } from '@material-ui/core/styles';
-import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
+import { ThemeProvider, createTheme } from '@material-ui/core/styles';
 
 import BrowserIFrame from 'website/src/components/layout/BrowserIFrame';
 import SourceFile from 'website/src/containers/SourceFile';
 import FrontMatter from 'website/src/containers/FrontMatter';
 
-const baseTheme = createMuiTheme();
+const baseTheme = createTheme();
 
 const useStyles = makeStyles(({ palette, breakpoints, spacing }: Theme) => ({
   paper: {

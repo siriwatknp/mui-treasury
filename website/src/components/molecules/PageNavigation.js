@@ -3,7 +3,7 @@ import cx from 'clsx';
 import { Link } from 'gatsby';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import ArrowRight from '@material-ui/icons/ChevronRight';
 import ArrowLeft from '@material-ui/icons/ChevronLeft';
 

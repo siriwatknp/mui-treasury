@@ -1,5 +1,5 @@
 import { ClassNameMap } from '@material-ui/styles';
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import pointNavigationMenuStyles, {
   PointNavigationMenuClassKey,
   PointNavigationMenuStyleProps,
@@ -7,9 +7,12 @@ import pointNavigationMenuStyles, {
 
 const usePointNavigationMenuStyles: (
   props?: PointNavigationMenuStyleProps
-) => ClassNameMap<PointNavigationMenuClassKey> = makeStyles(pointNavigationMenuStyles, {
-  name: 'PointNavigationMenu',
-});
+) => ClassNameMap<PointNavigationMenuClassKey> = makeStyles(
+  pointNavigationMenuStyles,
+  {
+    name: 'PointNavigationMenu',
+  }
+);
 
 export { pointNavigationMenuStyles, usePointNavigationMenuStyles };
 

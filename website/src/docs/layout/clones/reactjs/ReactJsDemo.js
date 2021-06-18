@@ -11,7 +11,7 @@ import UnfoldMore from '@material-ui/icons/UnfoldMore';
 import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown';
 import {
   makeStyles,
-  createMuiTheme,
+  createTheme,
   responsiveFontSizes,
 } from '@material-ui/core/styles';
 import Layout, {
@@ -88,7 +88,7 @@ const useStyles = makeStyles(({ breakpoints }) => ({
 }));
 
 const theme = responsiveFontSizes(
-  createMuiTheme({
+  createTheme({
     palette: {
       primary: {
         main: '#20232a',

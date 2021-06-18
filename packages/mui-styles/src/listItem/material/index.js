@@ -1,7 +1,9 @@
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import materialListItemStyles from './materialListItem.styles';
 
-const useMaterialListItemStyles = makeStyles(materialListItemStyles, { name: "MaterialListItem" });
+const useMaterialListItemStyles = makeStyles(materialListItemStyles, {
+  name: 'MaterialListItem',
+});
 
 export { materialListItemStyles, useMaterialListItemStyles };
 

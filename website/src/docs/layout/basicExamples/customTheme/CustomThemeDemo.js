@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import {
@@ -31,7 +31,7 @@ const Footer = getFooter(styled);
 
 const standardScheme = getStandardScheme();
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: {
       main: '#7d4709',

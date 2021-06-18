@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import createInput from './createInput';
 import { prefixZero } from '../BirthdayContext';
 

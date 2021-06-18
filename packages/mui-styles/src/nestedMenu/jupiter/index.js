@@ -1,7 +1,9 @@
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import jupiterNestedMenuStyles from './jupiterNestedMenu.styles';
 
-const useJupiterNestedMenuStyles = makeStyles(jupiterNestedMenuStyles, { name: "JupiterNestedMenu" });
+const useJupiterNestedMenuStyles = makeStyles(jupiterNestedMenuStyles, {
+  name: 'JupiterNestedMenu',
+});
 
 export { jupiterNestedMenuStyles, useJupiterNestedMenuStyles };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import InputBase from '@material-ui/core/InputBase';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Search from '@material-ui/icons/Search';

@@ -1,7 +1,9 @@
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import airbnbSwitchStyles from './airbnbSwitch.styles';
 
-const useAirbnbSwitchStyles = makeStyles(airbnbSwitchStyles, { name: "AirbnbSwitch" });
+const useAirbnbSwitchStyles = makeStyles(airbnbSwitchStyles, {
+  name: 'AirbnbSwitch',
+});
 
 export { airbnbSwitchStyles, useAirbnbSwitchStyles };
 

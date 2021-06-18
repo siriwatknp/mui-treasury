@@ -1,7 +1,10 @@
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import materialCollapsibleMenuStyles from './materialCollapsibleMenu.styles';
 
-const useMaterialCollapsibleMenuStyles = makeStyles(materialCollapsibleMenuStyles, { name: "MaterialCollapsibleMenu" });
+const useMaterialCollapsibleMenuStyles = makeStyles(
+  materialCollapsibleMenuStyles,
+  { name: 'MaterialCollapsibleMenu' }
+);
 
 export { materialCollapsibleMenuStyles, useMaterialCollapsibleMenuStyles };
 

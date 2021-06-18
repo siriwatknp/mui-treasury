@@ -1,5 +1,5 @@
 import { ClassNameMap } from '@material-ui/styles';
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import readyEmailSubscribeStyles, {
   ReadyEmailSubscribeClassKey,
   ReadyEmailSubscribeStyleProps,
@@ -7,9 +7,12 @@ import readyEmailSubscribeStyles, {
 
 const useReadyEmailSubscribeStyles: (
   props?: ReadyEmailSubscribeStyleProps
-) => ClassNameMap<ReadyEmailSubscribeClassKey> = makeStyles(readyEmailSubscribeStyles, {
-  name: 'ReadyEmailSubscribe',
-});
+) => ClassNameMap<ReadyEmailSubscribeClassKey> = makeStyles(
+  readyEmailSubscribeStyles,
+  {
+    name: 'ReadyEmailSubscribe',
+  }
+);
 
 export { readyEmailSubscribeStyles, useReadyEmailSubscribeStyles };
 

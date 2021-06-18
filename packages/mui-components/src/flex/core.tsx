@@ -1,6 +1,6 @@
 import React from 'react';
 import useTheme from '@material-ui/core/styles/useTheme';
-import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
+import { Breakpoint } from '@material-ui/system';
 import { gapToCss, resolveGap } from './utils';
 
 type FlexContextValue = 'row' | 'column' | 'row-column' | 'column-row';

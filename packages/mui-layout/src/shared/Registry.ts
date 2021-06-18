@@ -1,5 +1,5 @@
 import { IBaseRegistry, MapBreakpoint } from '../types';
-import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
+import { Breakpoint } from '@material-ui/system';
 
 export class BaseRegistry<T> implements IBaseRegistry<T> {
   readonly id: string;

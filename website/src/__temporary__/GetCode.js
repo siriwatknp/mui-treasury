@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { useState } from 'react';
 import get from 'lodash/get';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@material-ui/styles/withStyles';
 import Dialog from '@material-ui/core/Dialog';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -118,8 +118,8 @@ const createCode = (config, icon) =>
               <Toolbar>
                 <SidebarTrigger className={headerStyles.leftTrigger}>
                   {opened ? ${generateIconElement(icon, 'active')} : ${
-                    icon.type === 'svg' ? '<MenuIcon />' : '<Icon>menu</Icon>'
-                  }}
+    icon.type === 'svg' ? '<MenuIcon />' : '<Icon>menu</Icon>'
+  }}
                 </SidebarTrigger>
                 <HeaderMockUp />
               </Toolbar>
@@ -153,7 +153,7 @@ const createCode = (config, icon) =>
 const parseConfig = config => {
   const createScreenConfig = (screen, offsetHeight) => {
     const squeezed = get(config, ['squeezed', screen]);
-    return ({
+    return {
       [screen]: {
         sidebar: {
           anchor: 'left',
@@ -177,7 +177,7 @@ const parseConfig = config => {
           persistentBehavior: squeezed ? 'fit' : 'flexible',
         },
       },
-    });
+    };
   };
   return {
     autoCollapseDisabled: false,

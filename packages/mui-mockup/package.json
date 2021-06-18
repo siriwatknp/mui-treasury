@@ -25,8 +25,8 @@
     "react-router-dom": "^5.1.2"
   },
   "peerDepdencies": {
-    "@material-ui/core": "^4.x",
-    "@material-ui/styles": "^4.x"
+    "@material-ui/core": ">=5.0.0-alpha.37",
+    "@material-ui/styles": ">=5.0.0-alpha.35"
   },
   "scripts": {
     "prebuild": "rimraf build",

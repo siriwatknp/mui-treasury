@@ -32,9 +32,7 @@ const poofSocialLinkStyles = ({ palette }: Theme) => {
         bottom: 0,
         zIndex: 0,
         backgroundColor:
-          palette.type === 'dark'
-            ? palette.action.focus
-            : extraLightPrimary,
+          palette.mode === 'dark' ? palette.action.focus : extraLightPrimary,
         borderRadius: 40,
         transition: '0.3s cubic-bezier(.47,1.64,.41,.8)',
         transform: 'scale(0)',
@@ -43,7 +41,7 @@ const poofSocialLinkStyles = ({ palette }: Theme) => {
         marginLeft: '0.5rem',
       },
       '&:hover, &:focus': {
-        color: palette.type === 'dark' ? '#fff' : palette.primary.main,
+        color: palette.mode === 'dark' ? '#fff' : palette.primary.main,
         '&:after': {
           transform: 'scale(1)',
         },

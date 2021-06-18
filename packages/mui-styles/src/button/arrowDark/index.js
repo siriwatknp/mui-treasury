@@ -1,7 +1,9 @@
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import arrowDarkButtonStyles from './arrowDarkButton.styles';
 
-const useArrowDarkButtonStyles = makeStyles(arrowDarkButtonStyles, { name: "ArrowDarkButton" });
+const useArrowDarkButtonStyles = makeStyles(arrowDarkButtonStyles, {
+  name: 'ArrowDarkButton',
+});
 
 export { arrowDarkButtonStyles, useArrowDarkButtonStyles };
 

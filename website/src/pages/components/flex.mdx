@@ -14,8 +14,8 @@ has `Avatar` and 2 `Typography`.
 
 Here is the code I built it from scratch
 
-import Avatar from '@material-ui/core/Avatar'
-import { makeStyles } from '@material-ui/core/styles'
+import Avatar from '@material-ui/core/Avatar';
+import makeStyles from '@material-ui/styles/makeStyles';
 
 export const useBasicProfileStyles = makeStyles(({ palette }) => ({
   root: {
@@ -27,7 +27,7 @@ export const useBasicProfileStyles = makeStyles(({ palette }) => ({
   },
   avatar: {
     borderRadius: 8,
-    backgroundColor: '#495869'
+    backgroundColor: '#495869',
   },
   overline: {
     fontSize: 10,
@@ -39,73 +39,65 @@ export const useBasicProfileStyles = makeStyles(({ palette }) => ({
     fontSize: 14,
     fontWeight: 500,
     color: '#495869',
-  }
-}))
+  },
+}));
 
 export const BasicProfile = props => {
-  const styles = useBasicProfileStyles()
+  const styles = useBasicProfileStyles();
   return (
     <div className={styles.root}>
       <Avatar className={styles.avatar}>S</Avatar>
       <div className={styles.info}>
-        <Typography className={styles.overline}>
-          CREATOR
-        </Typography>
-        <Typography className={styles.name}>
-          siriwatknp
-        </Typography>
+        <Typography className={styles.overline}>CREATOR</Typography>
+        <Typography className={styles.name}>siriwatknp</Typography>
       </div>
     </div>
-  )
-}
+  );
+};
 
 ```jsx
-import Avatar from '@material-ui/core/Avatar'
-import { makeStyles } from '@material-ui/core/styles'
+import Avatar from '@material-ui/core/Avatar';
+import makeStyles from '@material-ui/styles/makeStyles';
 
 const useBasicProfileStyles = makeStyles({
- // highlight-start
-   root: {
-     display: 'flex',
-     alignItems: 'center',
-   },
-   info: {
-     marginRight: 12,
-   },
- // highlight-end
-   avatar: {
-     borderRadius: 8,
-     backgroundColor: '#495869'
-   },
-   overline: {
-     fontSize: 10,
-     textTransform: 'uppercase',
-     letterSpacing: 1,
-     color: '#8D9CAD',
-   },
-   name: {
-     fontSize: 14,
-     fontWeight: 500,
-     color: '#495869',
-   }
- })
+  // highlight-start
+  root: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  info: {
+    marginRight: 12,
+  },
+  // highlight-end
+  avatar: {
+    borderRadius: 8,
+    backgroundColor: '#495869',
+  },
+  overline: {
+    fontSize: 10,
+    textTransform: 'uppercase',
+    letterSpacing: 1,
+    color: '#8D9CAD',
+  },
+  name: {
+    fontSize: 14,
+    fontWeight: 500,
+    color: '#495869',
+  },
+});
 
 const BasicProfile = () => {
-  const styles = useBasicProfileStyles()
+  const styles = useBasicProfileStyles();
   return (
     <div className={styles.root}>
       <Avatar className={styles.avatar}>S</Avatar>
       <div className={styles.info}>
-        <Typography className={styles.overline}>
-          CREATOR
-        </Typography>
-        <Typography className={styles.name}>
-          siriwatknp
-        </Typography>
+        <Typography className={styles.overline}>CREATOR</Typography>
+        <Typography className={styles.name}>siriwatknp</Typography>
       </div>
     </div>
-  )
-}
+  );
+};
 ```
 
 Building ui like this one time in your life is okay, but the second time? I don't think so, because you will need to
@@ -115,25 +107,21 @@ to create gap between flex item. 😤
 That's enough. Let's do it one more time with `Row` & `Item`.
 
 ```jsx
-import { Row, Item } from '@mui-treasury/components/flex'
+import { Row, Item } from '@mui-treasury/components/flex';
 
 const BasicProfile = props => {
   // same styles
-  const styles = useBasicProfileStyles()
+  const styles = useBasicProfileStyles();
   return (
     <Row gap={1.5} {...props}>
       <Avatar className={styles.avatar}>S</Avatar>
       <Item position={'middle'}>
-        <Typography className={styles.overline}>
-          CREATOR
-        </Typography>
-        <Typography className={styles.name}>
-          siriwatknp
-        </Typography>
+        <Typography className={styles.overline}>CREATOR</Typography>
+        <Typography className={styles.name}>siriwatknp</Typography>
       </Item>
     </Row>
-  )
-}
+  );
+};
 ```
 
 `Row` is flex by default with `flex-direction: row`, it can accept `gap` props to specify gap between its children.
@@ -155,51 +143,43 @@ Let's make something more fancy.
 As you can see on the right hand-side of the picture, it looks like a `Column` layout rather than a `Row`. Let's see the code.
 
 ```jsx
-import { Column, Item } from '@mui-treasury/components/flex'
+import { Column, Item } from '@mui-treasury/components/flex';
 
 const Card = () => (
   <Column className={styles.card} gap={1.5}>
     <Item>Card Header</Item>
     <Item>
-      <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8}>
-  
-      </Box>
+      <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8}></Box>
     </Item>
-// highlight-start
+    // highlight-start
     <Item>Basic Profile</Item>
-// highlight-end
+    // highlight-end
   </Column>
-)
+);
 ```
 
 Replace `<Item>Basic Profile</Item>` with `BasicProfile` that we have earlier.
 
 ```jsx
-import { Row, Column, Item } from '@mui-treasury/components/flex'
+import { Row, Column, Item } from '@mui-treasury/components/flex';
 
 const Card = () => (
   <Column className={styles.card} gap={1.5}>
     <Item>Card Header</Item>
     <Item>
-      <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8}>
-  
-      </Box>
+      <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8}></Box>
     </Item>
-// highlight-start
+    // highlight-start
     <Row gap={'inherit'} {...props}>
       <Avatar className={styles.avatar}>S</Avatar>
       <Item position={'middle'}>
-        <Typography className={styles.overline}>
-          CREATOR
-        </Typography>
-        <Typography className={styles.name}>
-          siriwatknp
-        </Typography>
+        <Typography className={styles.overline}>CREATOR</Typography>
+        <Typography className={styles.name}>siriwatknp</Typography>
       </Item>
     </Row>
-// highlight-end
+    // highlight-end
   </Column>
-)
+);
 ```
 
 `gap` can be `inherit` from the nearest `Row` or `Column`. By saying inherit, it will apply to their direct `Items`.
@@ -209,11 +189,11 @@ In this example, `Column` ==gap(1.5)==> `Row` ==gap(inherit = 1.5)==> `Item`
 Then we can achieve the same thing for `CardHeader` with this.
 
 ```jsx
-import { Row, Column, Item } from '@mui-treasury/components/flex'
+import { Row, Column, Item } from '@mui-treasury/components/flex';
 
 const Card = () => (
   <Column className={styles.card} gap={1.5}>
-// highlight-start
+    // highlight-start
     <Row>
       <Item>
         <Typography className={styles.title}>
@@ -226,28 +206,22 @@ const Card = () => (
       <Item position={'right'} mr={-0.5}>
         <IconButton>
           <CallMade />
-       </IconButton>
+        </IconButton>
       </Item>
     </Row>
-// highlight-end
+    // highlight-end
     <Item>
-      <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8}>
-  
-      </Box>
+      <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8}></Box>
     </Item>
     <Row gap={'inherit'} {...props}>
       <Avatar className={styles.avatar}>S</Avatar>
       <Item position={'middle'}>
-        <Typography className={styles.overline}>
-          CREATOR
-        </Typography>
-        <Typography className={styles.name}>
-          siriwatknp
-        </Typography>
+        <Typography className={styles.overline}>CREATOR</Typography>
+        <Typography className={styles.name}>siriwatknp</Typography>
       </Item>
     </Row>
   </Column>
-)
+);
 ```
 
 `Row` & `Column` internally are `Item` that contain react context inside.
@@ -257,26 +231,24 @@ By using this approach, we can swap order to achieve different direction without
 ![image](https://user-images.githubusercontent.com/18292247/83355248-75798780-a388-11ea-8d4a-985c47ea288b.png)
 
 ```jsx
-import { Row, Column, Item } from '@mui-treasury/components/flex'
+import { Row, Column, Item } from '@mui-treasury/components/flex';
 
 const Card = () => (
   <Row className={styles.card} gap={1.5}>
-// highlight-start
+    // highlight-start
     <Item grow>
-// highlight-end
-      <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8}>
-  
-      </Box>
+      // highlight-end
+      <Box minHeight={200} bgcolor={'#F4F7FA'} borderRadius={8}></Box>
     </Item>
     <Column gap={'inherit'}>
       <Row>
         <Item>
           <Typography className={styles.title}>
             <b>Firebase</b>
-         </Typography>
-         <Typography className={styles.subheader}>
-           Similar to firebase theme
-         </Typography>
+          </Typography>
+          <Typography className={styles.subheader}>
+            Similar to firebase theme
+          </Typography>
         </Item>
         <Item position={'right'} mr={-0.5}>
           <IconButton>
@@ -287,17 +259,13 @@ const Card = () => (
       <Row gap={'inherit'} position={'bottom'}>
         <Avatar className={styles.avatar}>S</Avatar>
         <Item position={'middle'}>
-          <Typography className={styles.overline}>
-            CREATOR
-          </Typography>
-          <Typography className={styles.name}>
-            siriwatknp
-          </Typography>
+          <Typography className={styles.overline}>CREATOR</Typography>
+          <Typography className={styles.name}>siriwatknp</Typography>
         </Item>
       </Row>
     </Column>
   </Row>
-)
+);
 ```
 
 Finally, `Row` `Column` & `Item` accept `grow` and `shrink` to stretch or keep size unchanged.

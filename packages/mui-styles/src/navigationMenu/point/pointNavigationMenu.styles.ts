@@ -24,7 +24,7 @@ const pointNavigationMenuStyles = ({ palette, spacing }: Theme) =>
       textDecoration: 'none',
       transition: '0.2s ease-out',
       color:
-        palette.type === 'dark' ? palette.text.secondary : palette.text.primary,
+        palette.mode === 'dark' ? palette.text.secondary : palette.text.primary,
       '&:after': {
         content: '""',
         display: 'block',
@@ -38,7 +38,9 @@ const pointNavigationMenuStyles = ({ palette, spacing }: Theme) =>
         transition: '0.3s ease-out',
         opacity: 0,
         backgroundColor:
-          palette.type === 'dark' ? 'rgba(255,255,255,0.8)' : palette.primary.main,
+          palette.mode === 'dark'
+            ? 'rgba(255,255,255,0.8)'
+            : palette.primary.main,
       },
       '&:hover': {
         color: palette.text.primary,
@@ -53,12 +55,12 @@ const pointNavigationMenuStyles = ({ palette, spacing }: Theme) =>
     }),
     itemActive: {
       '&$item': {
-        color: palette.type === 'dark' ? '#fff' : palette.primary.main,
+        color: palette.mode === 'dark' ? '#fff' : palette.primary.main,
         '&:after': {
           opacity: 1,
           width: 40,
           backgroundColor:
-            palette.type === 'dark'
+            palette.mode === 'dark'
               ? 'rgba(255,255,255,0.8)'
               : palette.primary.light,
           transform: 'scale(1) translateX(-50%)',

@@ -1,4 +1,4 @@
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import gatsbyRowToggleStyles from './gatsbyRowToggle.styles';
 
 const useGatsbyRowToggleStyles = makeStyles(gatsbyRowToggleStyles, {

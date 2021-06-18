@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import DragIndicator from '@material-ui/icons/DragIndicator';
 import { useGrabIconStyles } from '@mui-treasury/styles/icon/grab';
 

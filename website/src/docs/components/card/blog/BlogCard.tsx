@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
@@ -125,4 +125,4 @@ BlogCardDemo.Showcase = AttachedShowcase;
 // @ts-ignore
 BlogCardDemo.metadata = metadata;
 // hide-end
-export default BlogCardDemo
+export default BlogCardDemo;

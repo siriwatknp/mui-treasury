@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -91,4 +91,4 @@ TagCardDemo.Showcase = AttachedShowcase;
 // @ts-ignore
 TagCardDemo.metadata = metadata;
 // hide-end
-export default TagCardDemo
+export default TagCardDemo;

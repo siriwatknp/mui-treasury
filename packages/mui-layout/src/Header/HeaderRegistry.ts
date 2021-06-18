@@ -1,4 +1,4 @@
-import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
+import { Breakpoint } from '@material-ui/system';
 import { HeaderConfig } from '../types';
 import { INITIAL_HEADER_HEIGHT, pickNearestBreakpoint } from '../utils';
 import { SingleObjData } from '../shared/State';

@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
+import { useTheme } from '@material-ui/core/styles';
 import SwipeableDrawer, {
   SwipeableDrawerProps,
 } from '@material-ui/core/SwipeableDrawer';

@@ -2,12 +2,12 @@ import React from 'react';
 import cx from 'clsx';
 import NoSsr from '@material-ui/core/NoSsr';
 import GoogleFontLoader from 'react-google-font-loader';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import { Column, Item } from '@mui-treasury/components/flex';
 import { Info, InfoTitle, InfoSubtitle } from '@mui-treasury/components/info';
-import { useSoftRiseShadowStyles } from '@mui-treasury/styles/shadow/softRise'
+import { useSoftRiseShadowStyles } from '@mui-treasury/styles/shadow/softRise';
 
 const family = 'Rubik';
 
@@ -58,7 +58,7 @@ const useStyles = makeStyles(() => ({
       bottom: 0,
       margin: '-16%',
       backgroundColor: 'rgba(71, 167, 162, 0.08)',
-    }
+    },
   },
 }));
 

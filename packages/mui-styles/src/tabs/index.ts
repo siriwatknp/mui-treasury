@@ -1,4 +1,5 @@
-import { createStyles, makeStyles } from '@material-ui/styles';
+import createStyles from '@material-ui/styles/createStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import * as chromeTabsStyles from './chrome/chromeTabs.styles';
 import * as containedTabsStyles from './contained/containedTabs.styles';
 import * as elevatedTabsStyles from './elevated/elevatedTabs.styles';
@@ -73,7 +74,7 @@ const appleTabsStylesHook = {
   useTabItem: makeStyles(createStyles(appleTabs.tabItemStyles)),
 };
 
-export * from './gmail'
+export * from './gmail';
 
 export {
   chromeTabsStylesHook,

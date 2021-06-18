@@ -1,4 +1,4 @@
-import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
+import { Breakpoint } from '@material-ui/system';
 import EdgeSidebarEffects from '../effects/EdgeSidebars';
 import createListEffect from '../effects/SidebarList/SidebarListEffect';
 import { sortBreakpoints } from '../utils/createHiddenStyles';

@@ -1,13 +1,13 @@
 import React from 'react';
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Avatar from '@material-ui/core/Avatar';
 import Button, { ButtonProps } from '@material-ui/core/Button';
 import { Theme } from '@material-ui/core';
 
 export type GmailButtonStyleProps = {
-  collapsed: boolean
-}
-export type GmailButtonClassKey = 'root' | 'label' | 'img' | 'startIcon'
+  collapsed: boolean;
+};
+export type GmailButtonClassKey = 'root' | 'label' | 'img' | 'startIcon';
 
 export const gmailButtonStyles = ({ palette }: Theme) => {
   return {
@@ -50,12 +50,12 @@ export const gmailButtonStyles = ({ palette }: Theme) => {
 export type GmailButtonProps = {
   collapsed: boolean;
   classes?: Partial<Record<GmailButtonClassKey, string>>;
-} & ButtonProps
+} & ButtonProps;
 
-const useStyles = makeStyles(gmailButtonStyles, { name: 'GmailButton' })
+const useStyles = makeStyles(gmailButtonStyles, { name: 'GmailButton' });
 
 const GmailButton = ({ collapsed, classes, ...props }: GmailButtonProps) => {
-  const styles = useStyles({ collapsed, ...props })
+  const styles = useStyles({ collapsed, ...props });
   const { img: imgClassName, ...buttonClasses } = styles;
   return (
     <Button
@@ -74,6 +74,6 @@ const GmailButton = ({ collapsed, classes, ...props }: GmailButtonProps) => {
       {!collapsed && 'Compose'}
     </Button>
   );
-}
+};
 
 export default GmailButton;

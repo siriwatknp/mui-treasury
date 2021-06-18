@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import { blueGrey } from '@material-ui/core/colors';
 import Tree from '../tree';
 import { Inheritor, Spouse, Children, Person } from './submodules';

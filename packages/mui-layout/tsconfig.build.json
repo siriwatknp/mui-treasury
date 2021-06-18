@@ -5,6 +5,7 @@
   "compilerOptions": {
     "declaration": true,
     "noEmit": false,
+    "noEmitOnError": false,
     "emitDeclarationOnly": true
   }
 }

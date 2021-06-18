@@ -9,11 +9,14 @@ export type BulbNavigationMenuClassKey = keyof ReturnType<
 
 const itemHorzPadding = 3;
 const bulbNavigationMenuStyles = ({ spacing, palette }: Theme) => {
-  const activeColor = palette.type === 'dark' ? 'rgba(255,255,255,0.2)' : Color(palette.primary.main)
-    .rotate(-6)
-    .lighten(0.4)
-    .fade(0.87)
-    .toString()
+  const activeColor =
+    palette.mode === 'dark'
+      ? 'rgba(255,255,255,0.2)'
+      : Color(palette.primary.main)
+          .rotate(-6)
+          .lighten(0.4)
+          .fade(0.87)
+          .toString();
   return createStyles({
     menu: {
       display: 'flex',
@@ -27,7 +30,7 @@ const bulbNavigationMenuStyles = ({ spacing, palette }: Theme) => {
       padding: spacing(1, itemHorzPadding),
       cursor: 'pointer',
       textDecoration: 'none',
-      color: palette.type === 'dark' ? palette.text.secondary : '#121212',
+      color: palette.mode === 'dark' ? palette.text.secondary : '#121212',
       borderRadius: '8px / 50%',
       '&:hover': {
         backgroundColor: activeColor,
@@ -39,7 +42,7 @@ const bulbNavigationMenuStyles = ({ spacing, palette }: Theme) => {
     itemActive: {
       '&$item': {
         backgroundColor: activeColor,
-        color: palette.type === 'dark' ? '#fff' : palette.primary.main,
+        color: palette.mode === 'dark' ? '#fff' : palette.primary.main,
       },
     },
   });

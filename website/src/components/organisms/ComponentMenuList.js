@@ -6,7 +6,7 @@ import cx from 'clsx';
 import Color from 'color';
 import { Link } from 'gatsby';
 import { Location } from '@reach/router';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import { useLayoutCtx } from '@mui-treasury/layout';
 import Menu from '@mui-treasury/components/menu/nested';
 import { useMaterialNestedMenuStyles } from '@mui-treasury/styles/nestedMenu/material';

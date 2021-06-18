@@ -56,9 +56,9 @@ but you can also add custom theme to Root by doing this
 import React from 'react';
 import { Root } from '@mui-treasury/layout';
 // highlight-start
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 
-const customTheme = createMuiTheme({
+const customTheme = createTheme({
   palette: { primary: { main: '#ff5252' } },
 });
 // highlight-end
@@ -85,9 +85,9 @@ import React from 'react';
 import { Root, Sidebar } from '@mui-treasury/layout';
 import { NavHeaderMockUp, NavContentMockUp } from '@mui-treasury/mockup/layout';
 // highlight-end
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 
-const customTheme = createMuiTheme({
+const customTheme = createTheme({
   palette: { primary: { main: '#ff5252' } },
 });
 
@@ -458,6 +458,7 @@ const config = {
   footer: { ... }
 };
 ```
+
 <br />
 
 ### Congratulations! you have completed this tutorial.

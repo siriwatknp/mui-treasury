@@ -11,7 +11,7 @@ const minimalEmailSubscribeStyles = ({ palette }: Theme) =>
     form: {
       display: 'flex',
       backgroundColor:
-        palette.type === 'dark' ? palette.background.default : blueGrey[50],
+        palette.mode === 'dark' ? palette.background.default : blueGrey[50],
       position: 'relative',
       minWidth: 256,
       maxWidth: '100%',

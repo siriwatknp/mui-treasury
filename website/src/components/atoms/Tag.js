@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'clsx';
 import Color from 'color';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(({ spacing, palette }) => {

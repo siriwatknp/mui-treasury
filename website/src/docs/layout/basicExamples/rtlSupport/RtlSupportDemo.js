@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -69,7 +69,7 @@ const RtlSupportDemo = () => {
   const direction = rtl ? 'rtl' : 'ltr';
   return (
     <div dir={direction}>
-      <Root theme={createMuiTheme({ direction })} scheme={standardScheme}>
+      <Root theme={createTheme({ direction })} scheme={standardScheme}>
         <CssBaseline />
         <Header color={'default'}>
           <Toolbar>

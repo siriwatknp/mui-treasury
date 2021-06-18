@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import MuiChip from '@material-ui/core/Chip';
 import StarRounded from '@material-ui/icons/StarRounded';
 

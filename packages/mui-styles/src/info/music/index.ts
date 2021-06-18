@@ -1,5 +1,5 @@
 import { ClassNameMap } from '@material-ui/styles';
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import musicInfoStyles, { MusicInfoClassKey } from './musicInfo.styles';
 
 const useMusicInfoStyles: () => ClassNameMap<

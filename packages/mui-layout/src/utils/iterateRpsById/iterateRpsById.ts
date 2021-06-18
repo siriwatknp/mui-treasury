@@ -1,6 +1,6 @@
 import { Dictionary } from '../../types';
 import { RpsConfig } from '../../shared/State';
-import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
+import { Breakpoint } from '@material-ui/system';
 
 export const iterateRpsById = <T>(
   rpsById: Dictionary<RpsConfig<T>>,
@@ -8,7 +8,7 @@ export const iterateRpsById = <T>(
 ) => {
   Object.keys(rpsById).forEach(id => {
     Object.keys(rpsById[id]).forEach((breakpoint: Breakpoint) => {
-      iteratee(id, breakpoint, rpsById[id][breakpoint])
+      iteratee(id, breakpoint, rpsById[id][breakpoint]);
     });
   });
 };

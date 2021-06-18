@@ -1,8 +1,8 @@
-import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
+import { Breakpoint } from '@material-ui/system';
 import { createMultiObjBuilder } from './MultiObjects';
 import { SingleObjData } from '../../shared/State';
 
-type Props = { name?: string }
+type Props = { name?: string };
 type Config = { count: number } & Props;
 interface IFakeRegistry {
   updateConfig: (breakpoint: Breakpoint, config: Config) => IFakeRegistry;
@@ -40,23 +40,24 @@ describe('createMultiObjBuilder', () => {
       Registry: FakeRegistry,
     });
     const builder = FakeBuilder();
-    builder.create('fake', { name: 'siriwatknp' })
-      .updateConfig('md', { count: 1 })
+    builder
+      .create('fake', { name: 'siriwatknp' })
+      .updateConfig('md', { count: 1 });
 
-    const data = builder.getData()
-    expect(data.ids).toEqual(['fake'])
+    const data = builder.getData();
+    expect(data.ids).toEqual(['fake']);
     expect(data.configMapById).toStrictEqual({
       fake: {
         md: {
           count: 1,
           name: 'siriwatknp',
-        }
-      }
-    })
+        },
+      },
+    });
     expect(data.propsById).toStrictEqual({
-      fake: { name: 'siriwatknp' }
-    })
-  })
+      fake: { name: 'siriwatknp' },
+    });
+  });
 
   it('can "update" configMapById', () => {
     const FakeBuilder = createMultiObjBuilder<typeof FakeRegistry, Config>({
@@ -105,7 +106,7 @@ describe('createMultiObjBuilder', () => {
     expect(builder.getData()).toMatchObject({
       ids: ['fake'],
       hiddenById: {
-        fake: ['xs', 'sm', 'md', 'lg', 'xl']
+        fake: ['xs', 'sm', 'md', 'lg', 'xl'],
       },
     });
   });

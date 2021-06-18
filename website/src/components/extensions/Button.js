@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import Color from 'color';
 import cx from 'clsx';
-import { makeStyles } from '@material-ui/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import MuiButton from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Icon from './Icon';

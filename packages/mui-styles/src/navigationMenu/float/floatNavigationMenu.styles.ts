@@ -1,36 +1,39 @@
 import { createStyles, Theme } from '@material-ui/core/styles';
-export type FloatNavigationMenuStyleProps = { gutter?: string | number }
+export type FloatNavigationMenuStyleProps = { gutter?: string | number };
 
-export type FloatNavigationMenuClassKey = keyof ReturnType<typeof floatNavigationMenuStyles>
+export type FloatNavigationMenuClassKey = keyof ReturnType<
+  typeof floatNavigationMenuStyles
+>;
 
-const floatNavigationMenuStyles = ({ palette, spacing }: Theme) => createStyles({
-  menu: {
-    display: 'flex',
-    overflow: 'auto',
-  },
-  item: ({ gutter }: FloatNavigationMenuStyleProps) => ({
-    flexShrink: 0,
-    display: 'flex',
-    alignItems: 'center',
-    color: palette.text.secondary,
-    borderRadius: 4,
-    padding: spacing(1, 2),
-    cursor: 'pointer',
-    textDecoration: 'none',
-    transition: '0.2s ease-out',
-    '&:hover': {
-      transform: 'translateY(-4px)',
-      color: palette.type === 'dark' ? '#fff' : palette.primary.main,
+const floatNavigationMenuStyles = ({ palette, spacing }: Theme) =>
+  createStyles({
+    menu: {
+      display: 'flex',
+      overflow: 'auto',
     },
-    '&:not(:first-child)': {
-      marginLeft: typeof gutter === 'number' ? spacing(gutter) : gutter,
+    item: ({ gutter }: FloatNavigationMenuStyleProps) => ({
+      flexShrink: 0,
+      display: 'flex',
+      alignItems: 'center',
+      color: palette.text.secondary,
+      borderRadius: 4,
+      padding: spacing(1, 2),
+      cursor: 'pointer',
+      textDecoration: 'none',
+      transition: '0.2s ease-out',
+      '&:hover': {
+        transform: 'translateY(-4px)',
+        color: palette.mode === 'dark' ? '#fff' : palette.primary.main,
+      },
+      '&:not(:first-child)': {
+        marginLeft: typeof gutter === 'number' ? spacing(gutter) : gutter,
+      },
+    }),
+    itemActive: {
+      '&$item': {
+        color: palette.mode === 'dark' ? '#fff' : palette.primary.main,
+      },
     },
-  }),
-  itemActive: {
-    '&$item': {
-      color: palette.type === 'dark' ? '#fff' : palette.primary.main,
-    },
-  },
-})
+  });
 
-export default floatNavigationMenuStyles
+export default floatNavigationMenuStyles;

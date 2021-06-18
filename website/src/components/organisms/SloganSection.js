@@ -1,6 +1,6 @@
 import React from 'react';
 import { navigate } from 'gatsby';
-import { makeStyles } from '@material-ui/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 

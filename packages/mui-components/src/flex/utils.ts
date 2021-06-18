@@ -1,9 +1,9 @@
 import { Theme } from '@material-ui/core';
 import { Gap } from './core';
-import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
-import { createMuiTheme } from '@material-ui/core/styles';
+import { Breakpoint } from '@material-ui/system';
+import { createTheme } from '@material-ui/core/styles';
 
-const baseTheme = createMuiTheme();
+const baseTheme = createTheme();
 
 export const getThemeCssValue = (
   gap: string | number,

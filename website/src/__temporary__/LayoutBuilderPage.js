@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import mapValues from 'lodash/mapValues';
 import { animateScroll as scroll } from 'react-scroll';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@material-ui/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
 import Box from 'components/atoms/Box';
 import Button from 'components/extensions/Button';

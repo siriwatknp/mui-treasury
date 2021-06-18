@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown';
 

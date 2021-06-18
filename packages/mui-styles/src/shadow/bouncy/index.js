@@ -1,4 +1,4 @@
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import bouncyShadowStyles from './bouncyShadow.styles';
 
 const useBouncyShadowStyles = makeStyles(bouncyShadowStyles);

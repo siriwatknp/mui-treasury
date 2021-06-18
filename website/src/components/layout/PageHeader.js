@@ -4,7 +4,7 @@ import { Location } from '@reach/router';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import Image from 'gatsby-image';
 import GitHubButton from 'react-github-btn';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import Box from '@material-ui/core/Box';
 import { NAV_MENUS } from 'constants/menus';
 import { useScreen } from '@mui-treasury/layout';
@@ -70,17 +70,27 @@ const PageHeader = () => {
               className={cx(styles.nav, !shouldRenderLogo && styles.navOffset)}
               useStyles={useLineNavigationMenuStyles}
             >
-              {NAV_MENUS.map(({ label, to, key, external, target }) => (
+              {NAV_MENUS.map(({ label, to, key, external, target }) =>
                 external ? (
-                  <NavItem key={key} href={to} target={target} rel={'noopener noreferer'}>
+                  <NavItem
+                    key={key}
+                    href={to}
+                    target={target}
+                    rel={'noopener noreferer'}
+                  >
                     {label}
                   </NavItem>
                 ) : (
-                  <NavItem key={key} to={to} as={Link} active={key === firstPath}>
+                  <NavItem
+                    key={key}
+                    to={to}
+                    as={Link}
+                    active={key === firstPath}
+                  >
                     {label}
                   </NavItem>
                 )
-              ))}
+              )}
             </NavMenu>
             <Box ml={'auto'} mr={2} />
             <Box lineHeight={0}>

@@ -1,10 +1,10 @@
 import React from 'react';
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider, createTheme } from '@material-ui/core/styles';
 import { orange, purple } from '@material-ui/core/colors';
 import TextField from '@material-ui/core/TextField';
 import { roundTextFieldStylesHook } from '@mui-treasury/styles/textField/round';
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: {
       main: orange[700],

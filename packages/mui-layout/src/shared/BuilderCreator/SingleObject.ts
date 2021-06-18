@@ -1,4 +1,4 @@
-import { Breakpoint, keys } from '@material-ui/core/styles/createBreakpoints';
+import { Breakpoint, keys } from '@material-ui/system';
 import { createSingleObjData, RpsConfig, SingleObjData } from '../State';
 
 type Params<R> = {
@@ -6,7 +6,7 @@ type Params<R> = {
   component?: 'Header' | 'Footer' | 'Content';
   Registry?: R;
 };
-export type DummyRegistry<Config = undefined, Props = {}> =(
+export type DummyRegistry<Config = undefined, Props = {}> = (
   state: SingleObjData<Config>,
   props?: Props
 ) => {};
@@ -23,12 +23,14 @@ export interface SingleObjBuilderResult<
   debug?: () => void;
 }
 
-type BuilderResult<R extends DummyRegistry<Config>, Config = undefined> = ReturnType<
-  R
-> &
-  SingleObjBuilderResult<R, Config>;
+type BuilderResult<
+  R extends DummyRegistry<Config>,
+  Config = undefined
+> = ReturnType<R> & SingleObjBuilderResult<R, Config>;
 
-const makeRegistry = (id: string) => (state = createSingleObjData({ id })) => {}
+const makeRegistry = (id: string) => (
+  state = createSingleObjData({ id })
+) => {};
 
 export const createSingleObjBuilder = <
   R extends DummyRegistry<Config>,

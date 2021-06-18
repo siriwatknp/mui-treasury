@@ -1,5 +1,5 @@
 import createInput from './createInput';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 
 const useStyles = makeStyles(
   () => ({
@@ -18,4 +18,4 @@ export default createInput({
   fieldName: 'year',
   updaterName: 'changeYear',
   maxLength: 4,
-})
+});
