@@ -42,6 +42,8 @@ As a result, you will get `2.0.0-alpha` for both packages. However, these packag
 
 In the future, you will be able to migrate to proper packages that I am working on, which uses material-ui v5 style-engine.
 
+Take a look at this [working CodeSandbox example](https://codesandbox.io/s/jovial-yonath-7rmmz?file=/src/Card.tsx). Also make sure to check `<StyledEngineProvider injectFirst>` in `App.tsx` (in the link).
+
 
 ## Material-UI v4
 
