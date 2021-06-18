@@ -40,9 +40,9 @@ describe('flex utils', () => {
     });
   });
 
-  describe('getUpperMediaQuery', function() {
+  describe('getLowerMediaQuery', function() {
     each([
-      ['xs', '@media (max-width:NaNpx)'],
+      ['xs', '@media (max-width:-0.05px)'],
       ['sm', '@media (max-width:599.95px)'],
       ['md', '@media (max-width:959.95px)'],
       ['lg', '@media (max-width:1279.95px)'],

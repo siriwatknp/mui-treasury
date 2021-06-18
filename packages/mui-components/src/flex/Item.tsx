@@ -28,9 +28,9 @@ const Item = ({
     <Box
       className={cx('FlexItem', className)}
       {...flexStyles}
-      {...!gapDisabled && itemProps}
+      {...(!gapDisabled && itemProps)}
       flexGrow={typeof grow === 'boolean' ? 1 : grow}
-      {...stretched && { flexGrow: 100000 }}
+      {...(stretched && { flexGrow: 100000 })}
       flexShrink={shrink}
       {...props}
       position={cssPosition}

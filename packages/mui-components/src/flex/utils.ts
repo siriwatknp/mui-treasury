@@ -5,10 +5,14 @@ import { createTheme } from '@material-ui/core/styles';
 
 const baseTheme = createTheme();
 
+const toCssValue = (value: number | string) =>
+  typeof value === 'number' ? `${value}px` : value;
+
 export const getThemeCssValue = (
   gap: string | number,
   theme: Pick<Theme, 'spacing'> = baseTheme
-) => `calc(${typeof gap === 'number' ? theme.spacing(gap) + 'px' : gap} / 2)`;
+) =>
+  `calc(${typeof gap === 'number' ? toCssValue(theme.spacing(gap)) : gap} / 2)`;
 
 export const resolveGap = (
   gap: string | number,
@@ -38,7 +42,7 @@ export const getLowerMediaQuery = (
   bp: Breakpoint | number
 ) => {
   if (typeof bp === 'string') {
-    return breakpoints.down(breakpoints.keys[breakpoints.keys.indexOf(bp) - 1]);
+    return breakpoints.down(breakpoints.keys[breakpoints.keys.indexOf(bp)]);
   }
   return breakpoints.down(bp);
 };
