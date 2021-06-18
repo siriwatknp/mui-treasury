@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import cx from "clsx";
 import {
-  experimentalStyled,
+  styled,
   unstable_useThemeProps as useThemeProps,
   Theme,
 } from "@material-ui/core/styles";
@@ -34,15 +34,16 @@ export interface EdgeSidebarProps
   anchor: "left" | "right";
 }
 
-export const SidebarContext = React.createContext<
-  | undefined
-  | {
-      id: EDGE_SIDEBAR_ID;
-      anchor: DrawerAnchor;
-      expanded: boolean;
-      setExpanded: React.Dispatch<React.SetStateAction<boolean>>;
-    }
->(undefined);
+export const SidebarContext =
+  React.createContext<
+    | undefined
+    | {
+        id: EDGE_SIDEBAR_ID;
+        anchor: DrawerAnchor;
+        expanded: boolean;
+        setExpanded: React.Dispatch<React.SetStateAction<boolean>>;
+      }
+  >(undefined);
 
 export const useSidebarCtx = () => {
   const ctx = useContext(SidebarContext);
@@ -68,15 +69,11 @@ const hasAutoExpanded = (
   );
 };
 
-const EdgeSidebarRoot = experimentalStyled(
-  Drawer,
-  {},
-  {
-    name: "AppEdgeSidebar",
-    slot: "Root",
-    overridesResolver: (props, styles) => styles.root,
-  }
-)<{ styleProps: EdgeSidebarProps & { entered: boolean } }>(
+const EdgeSidebarRoot = styled(Drawer, {
+  name: "AppEdgeSidebar",
+  slot: "Root",
+  overridesResolver: (props, styles) => styles.root,
+})<{ styleProps: EdgeSidebarProps & { entered: boolean } }>(
   ({ styleProps }) => ({
     ...((styleProps.entered ||
       styleProps.variant === "permanent" ||

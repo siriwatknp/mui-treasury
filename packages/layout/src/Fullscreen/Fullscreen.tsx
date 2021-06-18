@@ -1,13 +1,9 @@
 import React from "react";
 import cx from "clsx";
-import { experimentalStyled } from "@material-ui/core/styles";
+import { styled } from "@material-ui/core/styles";
 import FullscreenContext from "./FullscreenContext";
 
-const FullscreenRoot = experimentalStyled(
-  "div",
-  {},
-  { name: "Fullscreen", slot: "Root" }
-)({
+const FullscreenRoot = styled("div", { name: "Fullscreen", slot: "Root" })({
   height: "100vh",
   display: "flex",
   flexDirection: "column",

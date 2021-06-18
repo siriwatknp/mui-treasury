@@ -5,7 +5,7 @@ unless_exists: true
 import React, { PropsWithChildren } from "react";
 import cx from "clsx";
 import {
-  experimentalStyled as styled,
+  styled,
   unstable_useThemeProps as useThemeProps,
   Theme,
 } from "@material-ui/core/styles";
@@ -47,7 +47,6 @@ const useUtilityClasses = (styleProps: <%=Name%>Props) => {
 
 const <%=Name%>Root = styled(
   "div",
-  {},
   {
     name: "Jun<%=Name%>",
     slot: "Root",

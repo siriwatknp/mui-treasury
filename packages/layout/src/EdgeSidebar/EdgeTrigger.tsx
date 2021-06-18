@@ -1,13 +1,9 @@
 import React, { ReactNode } from "react";
-import { experimentalStyled } from "@material-ui/core/styles";
+import { styled } from "@material-ui/core/styles";
 import { DrawerAnchor } from "./EdgeSidebarBuilder";
 import { useEdgeSidebar } from "./useEdgeSidebar";
 
-const EdgeTriggerRoot = experimentalStyled(
-  "div",
-  {},
-  { name: "EdgeTrigger" }
-)({});
+const EdgeTriggerRoot = styled("div", { name: "EdgeTrigger" })({});
 
 export type EdgeTriggerProps = Parameters<typeof EdgeTriggerRoot>[0] & {
   target: {

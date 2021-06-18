@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import cx from "clsx";
 import {
-  experimentalStyled as styled,
+  styled,
   unstable_useThemeProps as useThemeProps,
   Theme,
 } from "@material-ui/core/styles";
@@ -41,15 +41,11 @@ const useUtilityClasses = (styleProps: FormAddonProps) => {
   );
 };
 
-const FormAddonRoot = styled(
-  "div",
-  {},
-  {
-    name: "JunFormAddon",
-    slot: "Root",
-    overridesResolver: (props, styles) => styles.root,
-  }
-)<{ styleProps: FormAddonProps }>(({ theme }) => ({
+const FormAddonRoot = styled("div", {
+  name: "JunFormAddon",
+  slot: "Root",
+  overridesResolver: (props, styles) => styles.root,
+})<{ styleProps: FormAddonProps }>(({ theme }) => ({
   display: "inline-flex",
   alignItems: "center",
   gap: 4,

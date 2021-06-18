@@ -2,20 +2,16 @@ import React from "react";
 import cx from "clsx";
 import Container, { ContainerProps } from "@material-ui/core/Container";
 import {
-  experimentalStyled as styled,
+  styled,
   Theme,
   unstable_useThemeProps as useThemeProps,
 } from "@material-ui/core/styles";
 
-const InsetContainerRoot = styled(
-  Container,
-  {},
-  {
-    name: "AppInsetContainer",
-    slot: "Root",
-    overridesResolver: (props, styles) => styles.root,
-  }
-)({
+const InsetContainerRoot = styled(Container, {
+  name: "AppInsetContainer",
+  slot: "Root",
+  overridesResolver: (props, styles) => styles.root,
+})({
   display: "flex",
   flexFlow: "row nowrap",
   flexGrow: 1,

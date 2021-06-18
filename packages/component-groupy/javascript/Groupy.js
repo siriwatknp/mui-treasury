@@ -1,7 +1,7 @@
 import React from "react";
 import cx from "clsx";
 import {
-  experimentalStyled as styled,
+  styled,
   unstable_useThemeProps as useThemeProps,
 } from "@material-ui/core/styles";
 import { unstable_composeClasses as composeClasses } from "@material-ui/unstyled";

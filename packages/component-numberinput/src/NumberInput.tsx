@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import cx from "clsx";
 import {
-  experimentalStyled as styled,
+  styled,
   unstable_useThemeProps as useThemeProps,
   Theme,
 } from "@material-ui/core/styles";
@@ -63,38 +63,30 @@ const useUtilityClasses = (styleProps: NumberInputProps) => {
   );
 };
 
-const NumberInputStepper = styled(
-  "div",
-  {},
-  {
-    name: "JunNumberInput",
-    slot: "Stepper",
-    overridesResolver: (props, styles) => ({
-      ...styles.stepper,
-      ...(props.size && styles[`size${capitalize(props.size)}`]),
-    }),
-  }
-)({
+const NumberInputStepper = styled("div", {
+  name: "JunNumberInput",
+  slot: "Stepper",
+  overridesResolver: (props, styles) => ({
+    ...styles.stepper,
+    ...(props.size && styles[`size${capitalize(props.size)}`]),
+  }),
+})({
   display: "flex",
   flexDirection: "column",
   marginRight: -8,
 });
 
-const NumberInputButton = styled(
-  ButtonBase,
-  {},
-  {
-    name: "JunNumberInput",
-    slot: "Button",
-    overridesResolver: (props, styles) => {
-      const { styleProps } = props;
-      return {
-        ...styles.button,
-        ...styles[styleProps.type],
-      };
-    },
-  }
-)<{
+const NumberInputButton = styled(ButtonBase, {
+  name: "JunNumberInput",
+  slot: "Button",
+  overridesResolver: (props, styles) => {
+    const { styleProps } = props;
+    return {
+      ...styles.button,
+      ...styles[styleProps.type],
+    };
+  },
+})<{
   styleProps: { size: "small" | "medium" };
 }>(({ theme, styleProps }) => ({
   display: "flex",

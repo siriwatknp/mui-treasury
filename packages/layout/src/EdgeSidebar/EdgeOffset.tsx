@@ -1,5 +1,5 @@
 import React, { CSSProperties } from "react";
-import { experimentalStyled, useTheme } from "@material-ui/core/styles";
+import { styled, useTheme } from "@material-ui/core/styles";
 import { ClippableElement } from "../Header/HeaderBuilder";
 import { useLayoutCtx } from "../Root/Root";
 import { useScreen } from "../hooks/useScreen";
@@ -9,11 +9,9 @@ import { useScrollY } from "../hooks/useScrollY";
 import { HeadersCompiler } from "../MultiHeaders/HeadersCompiler";
 import { getEdgeOffsetSxProps } from "./getEdgeOffsetSxProps";
 
-const OffsetRoot = experimentalStyled(
-  "div",
-  {},
-  { name: "EdgeSidebarOffset", slot: "Root" }
-)({});
+const OffsetRoot = styled("div", { name: "EdgeSidebarOffset", slot: "Root" })(
+  {}
+);
 
 export const EdgeOffset = ({ sidebarId }: { sidebarId: ClippableElement }) => {
   const { builder } = useLayoutCtx();

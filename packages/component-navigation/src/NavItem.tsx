@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import cx from "clsx";
 import {
-  experimentalStyled as styled,
+  styled,
   unstable_useThemeProps as useThemeProps,
   Theme,
 } from "@material-ui/core/styles";
@@ -33,22 +33,18 @@ export type NavItemProps = {
   sx?: SxProps<Theme>;
 } & Omit<JSX.IntrinsicElements["a"], "ref">;
 
-const NavItemRoot = styled(
-  "a",
-  {},
-  {
-    name: "JunNavigation",
-    slot: "Item",
-    overridesResolver: (props, styles) => {
-      const { styleProps } = props;
-      return {
-        ...styles.item,
-        ...(styleProps.active && styles.itemActive),
-        ...(styleProps.disabled && styles.itemDisabled),
-      };
-    },
-  }
-)<{ styleProps: NavItemProps }>(
+const NavItemRoot = styled("a", {
+  name: "JunNavigation",
+  slot: "Item",
+  overridesResolver: (props, styles) => {
+    const { styleProps } = props;
+    return {
+      ...styles.item,
+      ...(styleProps.active && styles.itemActive),
+      ...(styleProps.disabled && styles.itemDisabled),
+    };
+  },
+})<{ styleProps: NavItemProps }>(
   ({ theme: { palette, shape, spacing, typography }, styleProps }) => ({
     ...typography.body1,
     fontWeight: 500,

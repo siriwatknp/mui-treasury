@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import cx from "clsx";
 import {
-  experimentalStyled as styled,
+  styled,
   unstable_useThemeProps as useThemeProps,
   Theme,
 } from "@material-ui/core/styles";
@@ -16,15 +16,11 @@ export type SocialLinkProps = {
   sx?: SxProps<Theme>;
 } & Omit<JSX.IntrinsicElements["a"], "ref">;
 
-const SocialLinkRoot = styled(
-  "a",
-  {},
-  {
-    name: "JunSocialLink",
-    slot: "Root",
-    overridesResolver: (props, styles) => styles.root,
-  }
-)<{ styleProps: SocialLinkProps }>(({ theme: { palette } }) => ({
+const SocialLinkRoot = styled("a", {
+  name: "JunSocialLink",
+  slot: "Root",
+  overridesResolver: (props, styles) => styles.root,
+})<{ styleProps: SocialLinkProps }>(({ theme: { palette } }) => ({
   display: "inline-flex",
   alignItems: "center",
   cursor: "pointer",

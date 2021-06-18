@@ -1,7 +1,7 @@
 import React from "react";
 import AppBar, { AppBarProps } from "@material-ui/core/AppBar";
 import {
-  experimentalStyled,
+  styled,
   Theme,
   unstable_useThemeProps as useThemeProps,
 } from "@material-ui/core/styles";
@@ -12,7 +12,7 @@ import { CSS_TRANSITION } from "../utils/constant";
 
 type DivProps = JSX.IntrinsicElements["div"];
 
-const OffsetRoot = experimentalStyled("div")({ flexShrink: 0 });
+const OffsetRoot = styled("div")({ flexShrink: 0 });
 const Offset = ({
   element,
 }: {
@@ -31,15 +31,11 @@ export interface TopHeaderProps extends DivProps {
   sx?: SxProps<Theme>;
 }
 export type TopHeaderClassKey = "root";
-const TopHeaderRoot = experimentalStyled(
-  "div",
-  {},
-  {
-    name: "AppTopHeader",
-    slot: "Root",
-    overridesResolver: (props, styles) => styles.root,
-  }
-)({
+const TopHeaderRoot = styled("div", {
+  name: "AppTopHeader",
+  slot: "Root",
+  overridesResolver: (props, styles) => styles.root,
+})({
   zIndex: 1,
   transition: CSS_TRANSITION,
 });
@@ -73,15 +69,11 @@ export interface SubheaderProps extends DivProps {
   sx?: SxProps<Theme>;
 }
 export type SubheaderClassKey = "root";
-const SubheaderRoot = experimentalStyled(
-  "div",
-  {},
-  {
-    name: "AppSubheader",
-    slot: "Root",
-    overridesResolver: (props, styles) => styles.root,
-  }
-)({
+const SubheaderRoot = styled("div", {
+  name: "AppSubheader",
+  slot: "Root",
+  overridesResolver: (props, styles) => styles.root,
+})({
   zIndex: 1,
   transition: CSS_TRANSITION,
 });
@@ -113,15 +105,11 @@ export const Subheader = ({
 
 export interface HeaderProps extends AppBarProps {}
 export type HeaderClassKey = "root";
-const HeaderRoot = experimentalStyled(
-  AppBar,
-  {},
-  {
-    name: "AppHeader",
-    slot: "Root",
-    overridesResolver: (props, styles) => styles.root,
-  }
-)({ transition: CSS_TRANSITION });
+const HeaderRoot = styled(AppBar, {
+  name: "AppHeader",
+  slot: "Root",
+  overridesResolver: (props, styles) => styles.root,
+})({ transition: CSS_TRANSITION });
 export const Header = ({
   children,
   ...inProps

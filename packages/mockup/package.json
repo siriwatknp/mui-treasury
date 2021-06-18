@@ -26,7 +26,7 @@
     "url": "https://github.com/siriwatknp/mui-treasury/issues"
   },
   "dependencies": {
-    "@material-ui/core": "^5.0.0-alpha.34",
-    "@material-ui/icons": "^5.0.0-alpha.34"
+    "@material-ui/core": "^5.0.0-alpha.37",
+    "@material-ui/icons": "^5.0.0-alpha.37"
   }
 }

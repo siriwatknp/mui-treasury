@@ -1,16 +1,12 @@
 import React from "react";
-import { experimentalStyled, Theme } from "@material-ui/core/styles";
+import { styled, Theme } from "@material-ui/core/styles";
 import { SxProps } from "@material-ui/system";
 
-const SidebarContentRoot = experimentalStyled(
-  "div",
-  {},
-  {
-    name: "AppSidebarContent",
-    slot: "Root",
-    overridesResolver: (props, styles) => styles.root,
-  }
-)({
+const SidebarContentRoot = styled("div", {
+  name: "AppSidebarContent",
+  slot: "Root",
+  overridesResolver: (props, styles) => styles.root,
+})({
   minHeight: 0,
   flexGrow: 1,
   overflow: "auto",

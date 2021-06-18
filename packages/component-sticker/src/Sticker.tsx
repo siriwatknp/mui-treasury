@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from "react";
 import cx from "clsx";
-import { experimentalStyled as styled, Theme } from "@material-ui/core/styles";
+import { styled, Theme } from "@material-ui/core/styles";
 import { Palette } from "@mui-treasury/theme-treasury";
 import { unstable_composeClasses as composeClasses } from "@material-ui/unstyled";
 import { SxProps } from "@material-ui/system";
@@ -74,15 +74,11 @@ const useUtilityClasses = (styleProps: StickerProps) => {
   );
 };
 
-const StickerRoot = styled(
-  "div",
-  {},
-  {
-    name: "JunSticker",
-    slot: "Root",
-    overridesResolver,
-  }
-)(
+const StickerRoot = styled("div", {
+  name: "JunSticker",
+  slot: "Root",
+  overridesResolver,
+})(
   ({
     theme: { treasury, ...theme },
     styleProps,

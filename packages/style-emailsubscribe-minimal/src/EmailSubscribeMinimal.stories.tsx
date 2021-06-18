@@ -4,7 +4,7 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 
-import { experimentalStyled as styled } from "@material-ui/core/styles";
+import { styled } from "@material-ui/core/styles";
 
 import * as EmailSubscribe from "@mui-treasury/component-emailsubscribe";
 

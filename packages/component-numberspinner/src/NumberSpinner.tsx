@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import cx from "clsx";
 import {
-  experimentalStyled as styled,
+  styled,
   unstable_useThemeProps as useThemeProps,
   Theme,
 } from "@material-ui/core/styles";
@@ -62,21 +62,17 @@ const useUtilityClasses = (styleProps: NumberSpinnerProps) => {
   );
 };
 
-const NumberSpinnerButton = styled(
-  ButtonBase,
-  {},
-  {
-    name: "JunNumberSpinner",
-    slot: "Button",
-    overridesResolver: (props, styles) => {
-      const { styleProps } = props;
-      return {
-        ...styles.button,
-        ...styles[styleProps.type],
-      };
-    },
-  }
-)<{ styleProps: { type: "increment" | "decrement" } }>(
+const NumberSpinnerButton = styled(ButtonBase, {
+  name: "JunNumberSpinner",
+  slot: "Button",
+  overridesResolver: (props, styles) => {
+    const { styleProps } = props;
+    return {
+      ...styles.button,
+      ...styles[styleProps.type],
+    };
+  },
+})<{ styleProps: { type: "increment" | "decrement" } }>(
   ({ theme, styleProps }) => ({
     display: "flex",
     justifyContent: "center",

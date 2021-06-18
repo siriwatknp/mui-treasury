@@ -1,7 +1,7 @@
 import React from "react";
 import cx from "clsx";
 import {
-  experimentalStyled,
+  styled,
   Theme,
   unstable_useThemeProps as useThemeProps,
 } from "@material-ui/core/styles";
@@ -18,15 +18,11 @@ export interface ContentProps extends MainProps {
   sx?: SxProps<Theme>;
 }
 
-const ContentRoot = experimentalStyled(
-  "main",
-  {},
-  {
-    name: "AppContent",
-    slot: "Root",
-    overridesResolver: (props, styles) => styles.root,
-  }
-)<{ styleProps: { isFullscreen: boolean } }>(({ styleProps }) => ({
+const ContentRoot = styled("main", {
+  name: "AppContent",
+  slot: "Root",
+  overridesResolver: (props, styles) => styles.root,
+})<{ styleProps: { isFullscreen: boolean } }>(({ styleProps }) => ({
   transition: CSS_TRANSITION,
   ...(styleProps.isFullscreen && {
     flexGrow: 1,

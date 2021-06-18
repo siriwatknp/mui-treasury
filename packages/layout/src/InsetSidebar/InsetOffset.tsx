@@ -1,5 +1,5 @@
 import React, { CSSProperties } from "react";
-import { experimentalStyled } from "@material-ui/core/styles";
+import { styled } from "@material-ui/core/styles";
 import { useLayoutCtx } from "../Root/Root";
 import { InsetSidebarBuilder } from "./InsetSidebarBuilder";
 import { useScrollY } from "../hooks/useScrollY";
@@ -7,16 +7,14 @@ import { useScreen } from "../hooks/useScreen";
 import { HeadersCompiler } from "../MultiHeaders/HeadersCompiler";
 import { pickNearestBreakpoint } from "../utils/pickNearestBreakpoint";
 
-const OffsetRoot = experimentalStyled(
-  "div",
-  {},
-  { name: "InsetSidebarOffset", slot: "Root" }
-)(({ theme }) => ({
-  transition: theme.transitions.create(["all"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.short,
-  }),
-}));
+const OffsetRoot = styled("div", { name: "InsetSidebarOffset", slot: "Root" })(
+  ({ theme }) => ({
+    transition: theme.transitions.create(["all"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.short,
+    }),
+  })
+);
 
 export const InsetOffset = ({
   sidebar,

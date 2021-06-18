@@ -1,12 +1,11 @@
 import React from "react";
-import { experimentalStyled } from "@material-ui/core/styles";
+import { styled } from "@material-ui/core/styles";
 import { useLayoutCtx } from "../Root/Root";
 
-const InsetAvoidingViewRoot = experimentalStyled(
-  "div",
-  {},
-  { name: "InsetAvoidingView", slot: "Root" }
-)({
+const InsetAvoidingViewRoot = styled("div", {
+  name: "InsetAvoidingView",
+  slot: "Root",
+})({
   transition: "all 225ms",
 });
 

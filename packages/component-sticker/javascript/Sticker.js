@@ -1,6 +1,6 @@
 import React from "react";
 import cx from "clsx";
-import { experimentalStyled as styled } from "@material-ui/core/styles";
+import { styled } from "@material-ui/core/styles";
 import { unstable_composeClasses as composeClasses } from "@material-ui/unstyled";
 import useThemeProps from "@material-ui/core/styles/useThemeProps";
 import { getStickerUtilityClass } from "./stickerClasses";

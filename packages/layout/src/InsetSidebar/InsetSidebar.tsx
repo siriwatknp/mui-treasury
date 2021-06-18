@@ -1,32 +1,24 @@
 import React from "react";
 import cx from "clsx";
-import { experimentalStyled, Theme } from "@material-ui/core/styles";
+import { styled, Theme } from "@material-ui/core/styles";
 import { SxProps } from "@material-ui/system";
 import { useLayoutCtx, PropsWithFunctionChildren } from "../Root/Root";
 import { DrawerAnchor } from "./InsetSidebarBuilder";
 import { InsetOffset } from "./InsetOffset";
 
-const InsetSidebarRoot = experimentalStyled(
-  "div",
-  {},
-  {
-    name: "AppInsetSidebar",
-    slot: "Root",
-    overridesResolver: (props, styles) => styles.root,
-  }
-)({
+const InsetSidebarRoot = styled("div", {
+  name: "AppInsetSidebar",
+  slot: "Root",
+  overridesResolver: (props, styles) => styles.root,
+})({
   position: "relative",
   flexShrink: 0,
 });
-const InsetSidebarBody = experimentalStyled(
-  "div",
-  {},
-  {
-    name: "AppInsetSidebar",
-    slot: "Body",
-    overridesResolver: (props, styles) => styles.body,
-  }
-)<{ styleProps: { anchor?: "left" | "right" } }>(({ theme, styleProps }) => ({
+const InsetSidebarBody = styled("div", {
+  name: "AppInsetSidebar",
+  slot: "Body",
+  overridesResolver: (props, styles) => styles.body,
+})<{ styleProps: { anchor?: "left" | "right" } }>(({ theme, styleProps }) => ({
   display: "flex",
   flexDirection: "column",
   overflow: "auto",

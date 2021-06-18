@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import cx from "clsx";
 import {
-  experimentalStyled as styled,
+  styled,
   unstable_useThemeProps as useThemeProps,
   Theme,
 } from "@material-ui/core/styles";
@@ -47,21 +47,17 @@ const useUtilityClasses = (styleProps: GroupyProps) => {
   );
 };
 
-const GroupyRoot = styled(
-  "div",
-  {},
-  {
-    name: "JunGroupy",
-    slot: "Root",
-    overridesResolver: (props: { styleProps: GroupyProps }, styles) => {
-      const { styleProps } = props;
-      return {
-        ...styles.root,
-        ...(styleProps.orientation && styles[styleProps.orientation]),
-      };
-    },
-  }
-)<{ styleProps: GroupyProps }>(({ styleProps }) => ({
+const GroupyRoot = styled("div", {
+  name: "JunGroupy",
+  slot: "Root",
+  overridesResolver: (props: { styleProps: GroupyProps }, styles) => {
+    const { styleProps } = props;
+    return {
+      ...styles.root,
+      ...(styleProps.orientation && styles[styleProps.orientation]),
+    };
+  },
+})<{ styleProps: GroupyProps }>(({ styleProps }) => ({
   display: "flex",
   ...(styleProps.orientation === "horizontal" && {
     flexDirection: "row",

@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import cx from "clsx";
 import {
-  experimentalStyled as styled,
+  styled,
   unstable_useThemeProps as useThemeProps,
   Theme,
 } from "@material-ui/core/styles";
@@ -23,15 +23,11 @@ export type NavigationProps = {
   sx?: SxProps<Theme>;
 } & Omit<JSX.IntrinsicElements["nav"], "ref">;
 
-const NavigationRoot = styled(
-  "nav",
-  {},
-  {
-    name: "JunNavigation",
-    slot: "Root",
-    overridesResolver: (props, styles) => styles.root,
-  }
-)<{ styleProps: NavigationProps }>({
+const NavigationRoot = styled("nav", {
+  name: "JunNavigation",
+  slot: "Root",
+  overridesResolver: (props, styles) => styles.root,
+})<{ styleProps: NavigationProps }>({
   display: "flex",
   overflow: "auto",
   // Hide dimensionless scrollbar on MacOS
