@@ -1,101 +1,94 @@
-import {
-  createStyles,
-  makeStyles,
-  Theme,
-  alpha,
-} from "@material-ui/core/styles";
+import { Theme, alpha } from "@material-ui/core/styles";
+import { Components } from "@material-ui/core/styles/components";
 
-export const ButtonBootstrapStyles = ({ palette }: Theme) =>
-  createStyles({
-    root: {
-      padding: ".375rem .75rem",
-      textTransform: "none",
-      transition:
-        "color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out",
-      boxShadow: "none",
-      letterSpacing: "normal",
-      "&.Mui-disabled": {
-        opacity: 0.65,
-      },
+type Output = Required<Pick<Components, "MuiButton">>;
+
+export const createButtonBootstrapStyles = ({ palette }: Theme): Output => ({
+  MuiButton: {
+    defaultProps: {
+      disableElevation: true,
+      disableTouchRipple: true,
     },
-    contained: {
-      "&:hover": {
-        boxShadow: "none",
+    styleOverrides: {
+      root: {
+        padding: ".375rem .75rem",
+        textTransform: "none",
+        transition:
+          "color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out",
+        letterSpacing: "normal",
       },
-      "&:focus": {
-        boxShadow: `0 0 0 0.25rem ${palette.grey[200]}`,
+      contained: {
+        "&:focus": {
+          boxShadow: `0 0 0 0.25rem ${palette.grey[200]}`,
+        },
+        "&.Mui-disabled": {
+          // note: it will be overridden by `containedPrimary`
+          opacity: 0.65,
+        },
       },
-      "&.Mui-disabled": {
-        color: palette.text.primary,
+      containedPrimary: {
+        "&:active": {
+          backgroundColor: palette.primary.dark,
+        },
+        "&:focus": {
+          boxShadow: `0 0 0 0.25rem ${alpha(palette.primary.light, 0.5)}`,
+        },
+        "&.Mui-disabled": {
+          color: "#fff",
+          backgroundColor: palette.primary.main,
+          opacity: 0.65,
+        },
       },
-    },
-    containedPrimary: {
-      "&:active": {
-        backgroundColor: palette.primary.dark,
+      containedSecondary: {
+        "&:active": {
+          backgroundColor: palette.secondary.dark,
+        },
+        "&:focus": {
+          boxShadow: `0 0 0 0.25rem ${alpha(palette.secondary.light, 0.5)}`,
+        },
+        "&.Mui-disabled": {
+          color: "#fff",
+          backgroundColor: palette.secondary.main,
+          opacity: 0.65,
+        },
       },
-      "&:focus": {
-        boxShadow: `0 0 0 0.25rem ${palette.primary.light}`,
+      outlined: {
+        "&.Mui-disabled": {
+          color: palette.text.primary,
+          borderColor: palette.grey[300],
+          opacity: 0.65,
+        },
       },
-      "&.Mui-disabled": {
-        color: "#fff",
-        backgroundColor: palette.primary.main,
-      },
-    },
-    containedSecondary: {
-      "&:active": {
-        backgroundColor: palette.secondary.dark,
-      },
-      "&:focus": {
-        boxShadow: `0 0 0 0.25rem ${alpha(palette.secondary.light, 0.6)}`,
-      },
-      "&.Mui-disabled": {
-        color: "#fff",
-        backgroundColor: palette.secondary.main,
-      },
-    },
-    outlined: {
-      "&.Mui-disabled": {
-        color: palette.text.primary,
-        borderColor: palette.grey[300],
-      },
-    },
-    outlinedPrimary: {
-      borderColor: palette.primary.main,
-      "&:hover": {
-        backgroundColor: palette.primary.main,
-        color: "#fff",
-      },
-      "&:focus": {
-        boxShadow: `0 0 0 0.25rem ${palette.primary.light}`,
-      },
-      "&.Mui-disabled": {
-        color: palette.primary.main,
+      outlinedPrimary: {
         borderColor: palette.primary.main,
+        "&:hover": {
+          backgroundColor: palette.primary.main,
+          color: "#fff",
+        },
+        "&:focus": {
+          boxShadow: `0 0 0 0.25rem ${alpha(palette.primary.light, 0.5)}`,
+        },
+        "&.Mui-disabled": {
+          color: palette.primary.main,
+          borderColor: palette.primary.main,
+          opacity: 0.65,
+        },
       },
-    },
-    outlinedSecondary: {
-      borderColor: palette.secondary.main,
-      "&:hover": {
-        backgroundColor: palette.secondary.main,
-        color: "#fff",
-      },
-      "&:focus": {
-        boxShadow: `0 0 0 0.25rem ${alpha(palette.secondary.light, 0.6)}`,
-      },
-      "&.Mui-disabled": {
-        color: palette.secondary.main,
+      outlinedSecondary: {
         borderColor: palette.secondary.main,
+        "&:hover": {
+          backgroundColor: palette.secondary.main,
+          color: "#fff",
+        },
+        "&:focus": {
+          boxShadow: `0 0 0 0.25rem ${alpha(palette.secondary.light, 0.5)}`,
+        },
+        "&.Mui-disabled": {
+          color: palette.secondary.main,
+          borderColor: palette.secondary.main,
+          opacity: 0.65,
+        },
       },
     },
-  });
-
-export const useButtonBootstrapStyles = makeStyles(ButtonBootstrapStyles, {
-  name: "MuiButtonBootstrap",
+  },
 });
-
-export type ButtonBootstrapClassKey = keyof ReturnType<
-  typeof useButtonBootstrapStyles
->;
-export type ButtonBootstrapClasses = Partial<
-  Record<ButtonBootstrapClassKey, string>
->;

@@ -1,31 +1,56 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react/types-6-0";
+import { Story, Meta, StoryContext } from "@storybook/react/types-6-0";
+import { ThemeProvider, createTheme } from "@material-ui/core/styles";
 import Button, { ButtonProps } from "@material-ui/core/Button";
-import { useButtonBootstrapStyles } from "./ButtonBootstrap.styles";
+import { createButtonBootstrapStyles } from "./ButtonBootstrap.styles";
+
+const baseTheme = createTheme({
+  typography: {
+    fontFamily:
+      'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
+  },
+  palette: {
+    primary: {
+      main: "#0d6efd",
+    },
+    secondary: {
+      main: "#6c757d",
+    },
+  },
+});
+const styles = createButtonBootstrapStyles(baseTheme);
+function withTheme(Story: any, context: StoryContext) {
+  return (
+    <ThemeProvider
+      theme={{
+        ...baseTheme,
+        components: styles,
+      }}
+    >
+      <Story {...context} />
+    </ThemeProvider>
+  );
+}
 
 export default {
   title: "Component/Button/Bootstrap",
   component: Button,
   argTypes: {},
-  args: {
-    disableTouchRipple: true,
-  },
+  args: {},
   parameters: {
     layout: "centered",
   },
+  decorators: [withTheme],
 } as Meta;
 
 export const Contained: Story<ButtonProps> = (args) => {
-  const classes = useButtonBootstrapStyles();
   return (
     <div style={{ gap: 12, display: "flex" }}>
-      <Button {...args} classes={classes}>
-        Default
-      </Button>
-      <Button {...args} classes={classes} color="primary">
+      <Button {...args}>Default</Button>
+      <Button {...args} color="primary">
         Primary
       </Button>
-      <Button {...args} classes={classes} color="secondary">
+      <Button {...args} color="secondary">
         Secondary
       </Button>
     </div>
@@ -36,16 +61,13 @@ Contained.args = {
 };
 
 export const Outlined: Story<ButtonProps> = (args) => {
-  const classes = useButtonBootstrapStyles();
   return (
     <div style={{ gap: 12, display: "flex" }}>
-      <Button {...args} classes={classes}>
-        Default
-      </Button>
-      <Button {...args} classes={classes} color="primary">
+      <Button {...args}>Default</Button>
+      <Button {...args} color="primary">
         Primary
       </Button>
-      <Button {...args} classes={classes} color="secondary">
+      <Button {...args} color="secondary">
         Secondary
       </Button>
     </div>
@@ -56,25 +78,24 @@ Outlined.args = {
 };
 
 export const Disabled: Story<ButtonProps> = (args) => {
-  const classes = useButtonBootstrapStyles();
   return (
     <div style={{ gap: 12, display: "flex" }}>
-      <Button {...args} classes={classes} variant="contained">
+      <Button {...args} variant="contained">
         Default
       </Button>
-      <Button {...args} classes={classes} variant="contained" color="primary">
+      <Button {...args} variant="contained" color="primary">
         Primary
       </Button>
-      <Button {...args} classes={classes} variant="contained" color="secondary">
+      <Button {...args} variant="contained" color="secondary">
         Secondary
       </Button>
-      <Button {...args} classes={classes} variant="outlined">
+      <Button {...args} variant="outlined">
         Default
       </Button>
-      <Button {...args} classes={classes} variant="outlined" color="primary">
+      <Button {...args} variant="outlined" color="primary">
         Primary
       </Button>
-      <Button {...args} classes={classes} variant="outlined" color="secondary">
+      <Button {...args} variant="outlined" color="secondary">
         Secondary
       </Button>
     </div>
