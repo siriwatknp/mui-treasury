@@ -2,7 +2,7 @@ import React from "react";
 import { Story, Meta, StoryContext } from "@storybook/react/types-6-0";
 import { ThemeProvider, createTheme } from "@material-ui/core/styles";
 import Button, { ButtonProps } from "@material-ui/core/Button";
-import { createButtonBootstrapStyles } from "./ButtonBootstrap.styles";
+import { getButtonBootstrapTheme } from "./ButtonBootstrap.styles";
 
 const baseTheme = createTheme({
   typography: {
@@ -18,13 +18,13 @@ const baseTheme = createTheme({
     },
   },
 });
-const styles = createButtonBootstrapStyles(baseTheme);
+
 function withTheme(Story: any, context: StoryContext) {
   return (
     <ThemeProvider
       theme={{
         ...baseTheme,
-        components: styles,
+        components: getButtonBootstrapTheme(baseTheme),
       }}
     >
       <Story {...context} />
