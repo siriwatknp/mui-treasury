@@ -64,6 +64,12 @@
       "@mui-treasury/component-birthdatefield/*": [
         "packages/component-birthdatefield/src/*"
       ],
+      "@mui-treasury/component-daymonthyear": [
+        "packages/component-daymonthyear/src/"
+      ],
+      "@mui-treasury/component-daymonthyear/*": [
+        "packages/component-daymonthyear/src/*"
+      ],
       // hygen-component-target
 
       "@mui-treasury/style-sticker-glow": ["packages/style-sticker-glow/src/"],

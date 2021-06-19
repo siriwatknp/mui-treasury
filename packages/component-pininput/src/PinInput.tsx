@@ -80,21 +80,11 @@ export const PinInput: OverridableComponent<PinInputProps> = React.forwardRef<
         const inputElement = children[index];
         return (
           <React.Fragment key={index}>
-            {React.cloneElement(
-              inputElement,
-              // @ts-expect-error
-              inputElement.type?.muiName === "Input"
-                ? {
-                    inputProps: getInputProps({
-                      ...inputElement.props.inputProps,
-                    }),
-                  }
-                : {
-                    ...getInputProps({
-                      ...inputElement.props,
-                    }),
-                  }
-            )}
+            {React.cloneElement(inputElement, {
+              inputProps: getInputProps({
+                ...inputElement.props.inputProps,
+              }),
+            })}
           </React.Fragment>
         );
       })}
