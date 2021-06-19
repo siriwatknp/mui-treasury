@@ -1,34 +1,60 @@
-import { alpha } from "@material-ui/core/styles";
-import makeStyles from "@material-ui/styles/makeStyles";
-import { StickerProps } from "@mui-treasury/component-sticker";
+import { CSSObject } from "@material-ui/system";
+import { alpha, Theme } from "@material-ui/core/styles";
+import { StickerProps, stickerClasses } from "@mui-treasury/component-sticker";
+import { Components } from "@material-ui/core/styles/components";
 
-type Props = Pick<StickerProps, "palette">;
+type Output = Required<Pick<Components, "JunSticker">>;
 
-export const useStickerGlowStyles = makeStyles(
-  ({ treasury, ...theme }) => ({
-    root: (props: Props) => ({
-      boxShadow: `0 2px 8px 0 ${
-        props.palette
-          ? alpha(treasury.getColor(props?.palette, "500")!, 0.6)
-          : "rgba(0,0,0,0.2)"
-      }`,
-      border: "4px solid",
-      borderColor: theme.palette.background.paper,
-    }),
-    none: {
-      backgroundColor: theme.palette.background.paper,
+const PALETTE: Array<NonNullable<StickerProps["palette"]>> = [
+  "primary",
+  "secondary",
+  "error",
+  "info",
+  "success",
+  "warning",
+  "grey",
+];
+
+export const getStickerGlowStyles = (
+  arg: Theme | { theme: Theme }
+): CSSObject => {
+  const { palette, treasury } = "theme" in arg ? arg.theme : arg;
+  return {
+    border: "4px solid",
+    borderColor: palette.background.paper,
+    boxShadow: "0 2px 8px 0 rgba(0,0,0,0.2)",
+    [`&.${stickerClasses.none}`]: {
+      backgroundColor: palette.background.paper,
     },
-    outlined: (props: Props) => ({
+    [`&.${stickerClasses.outlined}`]: {
       "&:before": {
         display: "none",
       },
-      borderColor: treasury.getColor(props?.palette, "500"),
-    }),
-  }),
-  {
-    name: "JunSquareSticker",
-  }
-);
+    },
+    ...PALETTE.reduce(
+      (result, curr) => ({
+        ...result,
+        [`&.${stickerClasses[curr]}`]: {
+          boxShadow: `0 2px 8px 0 ${alpha(
+            treasury.getColor(curr, "500")!,
+            0.6
+          )}`,
+          [`&.${stickerClasses.outlined}`]: {
+            borderColor: treasury.getColor(curr, "500"),
+          },
+        },
+      }),
+      {}
+    ),
+  };
+};
 
-export type StickerGlowClassKey = keyof ReturnType<typeof useStickerGlowStyles>;
-export type StickerGlowClasses = Partial<Record<StickerGlowClassKey, string>>;
+export const getStickerGlowTheme = (theme: Theme): Output => {
+  return {
+    JunSticker: {
+      styleOverrides: {
+        root: getStickerGlowStyles(theme),
+      },
+    },
+  };
+};

@@ -1,12 +1,13 @@
 import React, { PropsWithChildren } from "react";
 import cx from "clsx";
 import { styled, Theme } from "@material-ui/core/styles";
+import useThemeProps from "@material-ui/core/styles/useThemeProps";
 import { Palette } from "@mui-treasury/theme-treasury";
 import { unstable_composeClasses as composeClasses } from "@material-ui/unstyled";
 import { SxProps } from "@material-ui/system";
-import useThemeProps from "@material-ui/core/styles/useThemeProps";
-import { getStickerUtilityClass, stickerClasses } from "./stickerClasses";
 import { OverridableComponent } from "@mui-treasury/types";
+import { capitalize } from "@material-ui/core/utils";
+import { getStickerUtilityClass, stickerClasses } from "./stickerClasses";
 
 export type StickerClassKey = keyof typeof stickerClasses;
 export type StickerClasses = Partial<typeof stickerClasses>;
@@ -57,6 +58,7 @@ const overridesResolver = (props: any, styles: Record<string, object>) => {
   return {
     ...styles.root,
     ...styles[styleProps.variant],
+    ...styles[styleProps[`color${capitalize(styleProps.palette)}`]],
     ...(styleProps.hasText && styles.hasText),
     ...(styleProps.round && styles.round),
   };
@@ -65,7 +67,13 @@ const overridesResolver = (props: any, styles: Record<string, object>) => {
 const useUtilityClasses = (styleProps: StickerProps) => {
   const { variant, round, palette, hasText, classes } = styleProps;
   const slots = {
-    root: ["root", round && "round", hasText && "hasText", variant, palette],
+    root: [
+      "root",
+      round && "round",
+      hasText && "hasText",
+      variant,
+      palette && `color${capitalize(palette)}`,
+    ],
   };
   return composeClasses(
     slots,
@@ -78,14 +86,8 @@ const StickerRoot = styled("div", {
   name: "JunSticker",
   slot: "Root",
   overridesResolver,
-})(
-  ({
-    theme: { treasury, ...theme },
-    styleProps,
-  }: {
-    theme: Theme;
-    styleProps: StickerProps;
-  }) => ({
+})<{ styleProps: StickerProps }>(
+  ({ theme: { treasury, ...theme }, styleProps }) => ({
     display: "inline-flex",
     justifyContent: "center",
     alignItems: "center",
