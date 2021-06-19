@@ -58,6 +58,12 @@
       "@mui-treasury/component-pininput/*": [
         "packages/component-pininput/src/*"
       ],
+      "@mui-treasury/component-birthdatefield": [
+        "packages/component-birthdatefield/src/"
+      ],
+      "@mui-treasury/component-birthdatefield/*": [
+        "packages/component-birthdatefield/src/*"
+      ],
       // hygen-component-target
 
       "@mui-treasury/style-sticker-glow": ["packages/style-sticker-glow/src/"],

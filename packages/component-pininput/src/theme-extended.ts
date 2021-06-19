@@ -1,5 +1,6 @@
 import { CSSInterpolation } from "@material-ui/system";
-import { PinInputClassKey, PinInputProps } from "./PinInput";
+import { PinInputClassKey } from "./pinInputClasses";
+import { PinInputProps } from "./PinInput";
 
 type OverridesStyleRules<ClassKey extends string = string> = Record<
   ClassKey,
@@ -10,7 +11,7 @@ declare module "@material-ui/core/styles/components" {
   interface Components {
     JunPinInput?: {
       defaultProps?: Partial<PinInputProps>;
-      styleOverrides?: Partial<CSSInterpolation<PinInputClassKey>>;
+      styleOverrides?: Partial<OverridesStyleRules<PinInputClassKey>>;
     };
   }
 }
