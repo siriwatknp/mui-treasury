@@ -1,9 +1,12 @@
-import { Theme } from "@emotion/react";
+import { CSSObject } from "@material-ui/system";
+import { Theme } from "@material-ui/core/styles";
 import { Components } from "@material-ui/core/styles/components";
 
 type Output = Required<Pick<Components, "MuiMenu" | "MuiMenuItem">>;
 
-export const getMenuBootstrapStyles = (arg: Theme | { theme: Theme }) => {
+export const getMenuBootstrapStyles = (
+  arg: Theme | { theme: Theme }
+): CSSObject => {
   const theme = "theme" in arg ? arg.theme : arg;
   return {
     "& .MuiMenu-paper, .MuiPaper-root": {
