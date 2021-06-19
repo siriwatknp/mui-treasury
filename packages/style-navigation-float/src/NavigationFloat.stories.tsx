@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
-import { styled } from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
 
 import {
   Navigation,
@@ -26,9 +26,9 @@ export default {
   },
 } as Meta;
 
-const NavigationFloat = styled(Navigation)(getNavigationFloatStyles);
-
 export const Float: Story<NavigationProps> = (args) => {
+  const theme = useTheme();
+  const styles = getNavigationFloatStyles(theme);
   const [activeIndex, setActiveIndex] = React.useState(0);
   const items = [...Array(5)].map((_, index) => (
     <NavItem
@@ -43,7 +43,9 @@ export const Float: Story<NavigationProps> = (args) => {
   ));
   return (
     <>
-      <NavigationFloat {...args}>{items}</NavigationFloat>
+      <Navigation {...args} sx={styles}>
+        {items}
+      </Navigation>
       <br />
       <Navigation {...args}>{items}</Navigation>
     </>

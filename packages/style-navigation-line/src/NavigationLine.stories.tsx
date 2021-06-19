@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
-import { styled } from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
 
 import {
   Navigation,
@@ -26,9 +26,9 @@ export default {
   },
 } as Meta;
 
-const NavigationLine = styled(Navigation)(getNavigationLineStyles);
-
 export const Line: Story<NavigationProps> = (args) => {
+  const theme = useTheme();
+  const styles = getNavigationLineStyles(theme);
   const [activeIndex, setActiveIndex] = React.useState(0);
   const items = [...Array(5)].map((_, index) => (
     <NavItem
@@ -43,7 +43,9 @@ export const Line: Story<NavigationProps> = (args) => {
   ));
   return (
     <>
-      <NavigationLine {...args}>{items}</NavigationLine>
+      <Navigation {...args} sx={styles}>
+        {items}
+      </Navigation>
       <br />
       <Navigation {...args}>{items}</Navigation>
     </>
