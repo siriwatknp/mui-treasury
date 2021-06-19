@@ -4,7 +4,7 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 
-import { styled } from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
 
 import * as EmailSubscribe from "@mui-treasury/component-emailsubscribe";
 
@@ -28,23 +28,21 @@ export default {
   },
 } as Meta;
 
-const EmailSubscribeMinimal = styled(EmailSubscribe.Form)(
-  getEmailSubscribeMinimalStyles
-);
-
 export const Minimal: Story = (args) => {
+  const theme = useTheme();
+  const styles = getEmailSubscribeMinimalStyles(theme);
   return (
     <>
       <FormControl margin="normal">
         <FormLabel htmlFor={"newsletter-style"} sx={{ mb: 0.5 }}>
           Newsletter
         </FormLabel>
-        <EmailSubscribeMinimal onSubmit={args.onSubmit}>
+        <EmailSubscribe.Form onSubmit={args.onSubmit} sx={styles}>
           <EmailSubscribe.Input id={"newsletter-style"} />
           <EmailSubscribe.Submit>
             <Send />
           </EmailSubscribe.Submit>
-        </EmailSubscribeMinimal>
+        </EmailSubscribe.Form>
       </FormControl>
       <br />
       <FormControl margin="normal">
