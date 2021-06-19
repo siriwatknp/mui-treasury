@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
-import { styled } from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
 
 import * as EmailSubscribe from "@mui-treasury/component-emailsubscribe";
 
@@ -25,19 +25,17 @@ export default {
   },
 } as Meta;
 
-const EmailSubscribeInfo = styled(EmailSubscribe.Form)(
-  getEmailSubscribeInfoStyles
-);
-
 export const Info: Story = (args) => {
+  const theme = useTheme();
+  const styles = getEmailSubscribeInfoStyles(theme);
   return (
     <>
-      <EmailSubscribeInfo onSubmit={args.onSubmit}>
+      <EmailSubscribe.Form onSubmit={args.onSubmit} sx={styles}>
         <EmailSubscribe.Input />
         <EmailSubscribe.Submit aria-label="Subscribe">
           <ArrowForward />
         </EmailSubscribe.Submit>
-      </EmailSubscribeInfo>
+      </EmailSubscribe.Form>
       <br />
       <EmailSubscribe.Form onSubmit={args.onSubmit}>
         <EmailSubscribe.Input />
