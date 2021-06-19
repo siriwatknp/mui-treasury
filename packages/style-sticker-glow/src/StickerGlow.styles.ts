@@ -1,3 +1,4 @@
+import "@mui-treasury/component-sticker";
 import { CSSObject } from "@material-ui/system";
 import { alpha, Theme } from "@material-ui/core/styles";
 import { StickerProps, stickerClasses } from "@mui-treasury/component-sticker";

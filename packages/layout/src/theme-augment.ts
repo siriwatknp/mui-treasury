@@ -1,4 +1,4 @@
-import { StyleRules } from "@material-ui/core/styles";
+import { CSSInterpolation } from "@material-ui/system";
 import { ContainerClassKey, ContainerProps } from "@material-ui/core/Container";
 import {
   HeaderProps,
@@ -23,43 +23,48 @@ import {
   SidebarContentClassKey,
 } from "./Content/SidebarContent";
 
+type OverridesStyleRules<ClassKey extends string = string> = Record<
+  ClassKey,
+  CSSInterpolation
+>;
+
 declare module "@material-ui/core/styles/components" {
   interface Components {
     AppHeader?: {
       defaultProps?: Partial<HeaderProps>;
-      styleOverrides?: Partial<StyleRules<HeaderClassKey>>;
+      styleOverrides?: Partial<OverridesStyleRules<HeaderClassKey>>;
     };
     AppTopHeader?: {
       defaultProps?: Partial<TopHeaderProps>;
-      styleOverrides?: Partial<StyleRules<TopHeaderClassKey>>;
+      styleOverrides?: Partial<OverridesStyleRules<TopHeaderClassKey>>;
     };
     AppSubheader?: {
       defaultProps?: Partial<SubheaderProps>;
-      styleOverrides?: Partial<StyleRules<SubheaderClassKey>>;
+      styleOverrides?: Partial<OverridesStyleRules<SubheaderClassKey>>;
     };
     AppEdgeSidebar?: {
       defaultProps?: Partial<EdgeSidebarProps>;
-      styleOverrides?: Partial<StyleRules<EdgeSidebarClassKey>>;
+      styleOverrides?: Partial<OverridesStyleRules<EdgeSidebarClassKey>>;
     };
     AppContent?: {
       defaultProps?: Partial<ContentProps>;
-      styleOverrides?: Partial<StyleRules<ContentClassKey>>;
+      styleOverrides?: Partial<OverridesStyleRules<ContentClassKey>>;
     };
     AppInsetSidebar?: {
       defaultProps?: Partial<InsetSidebarProps>;
-      styleOverrides?: Partial<StyleRules<InsetSidebarClassKey>>;
+      styleOverrides?: Partial<OverridesStyleRules<InsetSidebarClassKey>>;
     };
     AppInsetContainer?: {
       defaultProps?: Partial<ContainerProps>;
-      styleOverrides?: Partial<StyleRules<ContainerClassKey>>;
+      styleOverrides?: Partial<OverridesStyleRules<ContainerClassKey>>;
     };
     AppFooter?: {
       defaultProps?: Partial<FooterProps>;
-      styleOverrides?: Partial<StyleRules<FooterClassKey>>;
+      styleOverrides?: Partial<OverridesStyleRules<FooterClassKey>>;
     };
     AppSidebarContent?: {
       defaultProps?: Partial<SidebarContentProps>;
-      styleOverrides?: Partial<StyleRules<SidebarContentClassKey>>;
+      styleOverrides?: Partial<OverridesStyleRules<SidebarContentClassKey>>;
     };
   }
 }

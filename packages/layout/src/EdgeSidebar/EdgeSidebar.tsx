@@ -18,6 +18,7 @@ import { useSidebarAutoCollapse } from "../hooks/useSidebarAutoCollapse";
 import {
   CollapsibleSidebarConfig,
   DrawerAnchor,
+  DrawerVariant,
   EdgeSidebarConfig,
 } from "./EdgeSidebarBuilder";
 import {
@@ -73,18 +74,18 @@ const EdgeSidebarRoot = styled(Drawer, {
   name: "AppEdgeSidebar",
   slot: "Root",
   overridesResolver: (props, styles) => styles.root,
-})<{ styleProps: EdgeSidebarProps & { entered: boolean } }>(
-  ({ styleProps }) => ({
-    ...((styleProps.entered ||
-      styleProps.variant === "permanent" ||
-      styleProps.variant === "persistent") && {
-      [`& .${drawerClasses.paper}`]: {
-        transition: `${CSS_TRANSITION} !important`,
-        transitionProperty: "all !important",
-      },
-    }),
-  })
-);
+})<{
+  styleProps: EdgeSidebarProps & { entered: boolean; variant: DrawerVariant };
+}>(({ styleProps }) => ({
+  ...((styleProps.entered ||
+    styleProps.variant === "permanent" ||
+    styleProps.variant === "persistent") && {
+    [`& .${drawerClasses.paper}`]: {
+      transition: `${CSS_TRANSITION} !important`,
+      transitionProperty: "all !important",
+    },
+  }),
+}));
 
 export const EdgeSidebar = ({
   children,
@@ -97,11 +98,10 @@ export const EdgeSidebar = ({
     isMouseOverSidebar: boolean;
   }
 >) => {
-  const { theme, ...props } = useThemeProps<
-    Theme,
-    EdgeSidebarProps,
-    "AppEdgeSidebar"
-  >({ props: inProps, name: "AppEdgeSidebar" });
+  const props = useThemeProps<Theme, EdgeSidebarProps, "AppEdgeSidebar">({
+    props: inProps,
+    name: "AppEdgeSidebar",
+  });
   const { anchor } = props;
   if (!anchor) {
     throw new Error('Missing prop "anchor" on EdgeSidebar component');
