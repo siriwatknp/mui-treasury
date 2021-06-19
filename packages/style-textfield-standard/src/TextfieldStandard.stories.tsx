@@ -13,10 +13,8 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import FormHelperText from "@material-ui/core/FormHelperText";
 
 import MailOutlined from "@material-ui/icons/MailOutlined";
-import {
-  createTextfieldStandardStyles,
-  useTextfieldStandardStyles,
-} from "./TextfieldStandard.styles";
+
+import { getTextFieldStandardTheme } from "./TextfieldStandard.styles";
 
 function withContainer(Story: any, context: StoryContext) {
   return (
@@ -27,12 +25,11 @@ function withContainer(Story: any, context: StoryContext) {
 }
 
 const baseTheme = createTheme();
-const textfieldStandardStyles = createTextfieldStandardStyles(baseTheme);
 function withTheme(Story: any, context: StoryContext) {
   return (
     <ThemeProvider
       theme={createTheme({
-        components: textfieldStandardStyles,
+        components: getTextFieldStandardTheme(baseTheme),
       })}
     >
       <Story {...context} />
@@ -279,72 +276,3 @@ ManuallyCompose.args = {
   size: "medium",
   margin: "normal",
 };
-
-function withBaseTheme(Story: any, context: StoryContext) {
-  return (
-    <ThemeProvider theme={baseTheme}>
-      <Story {...context} />
-    </ThemeProvider>
-  );
-}
-export const OutsideTheme: Story<TextFieldProps> = (args) => {
-  const [value, setValue] = useState("");
-  const styles = useTextfieldStandardStyles();
-  return (
-    <>
-      {/* @ts-ignore */}
-      <TextField
-        {...args}
-        InputLabelProps={{ classes: styles.InputLabel }}
-        InputProps={{
-          classes: styles.Input,
-          disableUnderline: true,
-          startAdornment: (
-            <InputAdornment position="start" classes={styles.InputAdornment}>
-              <MailOutlined />
-            </InputAdornment>
-          ),
-        }}
-        FormHelperTextProps={{
-          classes: styles.FormHelperText,
-        }}
-        placeholder="placeholder"
-        helperText="Only standard variant works with this approach!"
-      />
-      <br />
-      {/* @ts-ignore */}
-      <TextField
-        {...args}
-        select
-        SelectProps={{ displayEmpty: true, classes: styles.Select }}
-        InputLabelProps={{ classes: styles.InputLabel }}
-        InputProps={{
-          classes: styles.Input,
-          disableUnderline: true,
-          endAdornment: (
-            <InputAdornment position="end" classes={styles.InputAdornment}>
-              <MailOutlined />
-            </InputAdornment>
-          ),
-        }}
-        helperText="Only standard variant works with this approach!"
-        FormHelperTextProps={{
-          classes: styles.FormHelperText,
-        }}
-        value={value}
-        onChange={(event) => setValue(event.target.value)}
-      >
-        <MenuItem value="">
-          <em>Select Option</em>
-        </MenuItem>
-        <MenuItem value={1}>Option 1</MenuItem>
-        <MenuItem value={2}>Option 2</MenuItem>
-        <MenuItem value={3}>Option 3</MenuItem>
-      </TextField>
-    </>
-  );
-};
-OutsideTheme.args = {
-  margin: "dense",
-};
-OutsideTheme.decorators = [withBaseTheme];

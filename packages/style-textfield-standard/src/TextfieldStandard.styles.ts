@@ -1,6 +1,5 @@
 import { Theme } from "@material-ui/core/styles";
 import { Components } from "@material-ui/core/styles/components";
-import makeStyles from "@material-ui/styles/makeStyles";
 
 type Output = Required<
   Pick<
@@ -18,7 +17,7 @@ const getPlaceholderVisible = (theme: Theme) => {
     opacity: `${light ? 0.42 : 0.5} !important`,
   };
 };
-export const createTextfieldStandardStyles = (theme: Theme): Output => {
+export const getTextFieldStandardTheme = (theme: Theme): Output => {
   const placeholderVisible = getPlaceholderVisible(theme);
   return {
     MuiInputLabel: {
@@ -164,42 +163,5 @@ export const createTextfieldStandardStyles = (theme: Theme): Output => {
         },
       },
     },
-  };
-};
-
-const useInputLabelStyles = makeStyles(
-  // @ts-expect-error
-  (theme) => createTextfieldStandardStyles(theme).MuiInputLabel.styleOverrides
-);
-
-const useInputStyles = makeStyles(
-  // @ts-expect-error
-  (theme) => createTextfieldStandardStyles(theme).MuiInput.styleOverrides
-);
-
-const useInputAdornmentStyles = makeStyles(
-  // @ts-expect-error
-  (theme) =>
-    createTextfieldStandardStyles(theme).MuiInputAdornment.styleOverrides
-);
-
-const useSelectStyles = makeStyles(
-  // @ts-expect-error
-  (theme) => createTextfieldStandardStyles(theme).MuiSelect.styleOverrides
-);
-
-const useFormHelperTextStyles = makeStyles(
-  // @ts-expect-error
-  (theme) =>
-    createTextfieldStandardStyles(theme).MuiFormHelperText.styleOverrides
-);
-
-export const useTextfieldStandardStyles = () => {
-  return {
-    InputLabel: useInputLabelStyles(),
-    Input: useInputStyles(),
-    InputAdornment: useInputAdornmentStyles(),
-    Select: useSelectStyles(),
-    FormHelperText: useFormHelperTextStyles(),
   };
 };

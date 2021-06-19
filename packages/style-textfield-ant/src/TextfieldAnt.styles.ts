@@ -1,6 +1,5 @@
 import { Theme } from "@material-ui/core/styles";
 import { Components } from "@material-ui/core/styles/components";
-import makeStyles from "@material-ui/styles/makeStyles";
 
 type Output = Required<
   Pick<
@@ -21,7 +20,7 @@ const getPlaceholderVisible = (theme: Theme) => {
     letterSpacing: 0,
   };
 };
-export const createTextfieldAntStyles = (theme: Theme): Output => {
+export const getTextFieldAntTheme = (theme: Theme): Output => {
   const placeholderVisible = getPlaceholderVisible(theme);
   return {
     MuiInputLabel: {
@@ -169,40 +168,5 @@ export const createTextfieldAntStyles = (theme: Theme): Output => {
         },
       },
     },
-  };
-};
-
-const useInputLabelStyles = makeStyles(
-  // @ts-expect-error
-  (theme) => createTextfieldAntStyles(theme).MuiInputLabel.styleOverrides
-);
-
-const useInputStyles = makeStyles(
-  // @ts-expect-error
-  (theme) => createTextfieldAntStyles(theme).MuiInput.styleOverrides
-);
-
-const useInputAdornmentStyles = makeStyles(
-  // @ts-expect-error
-  (theme) => createTextfieldAntStyles(theme).MuiInputAdornment.styleOverrides
-);
-
-const useSelectStyles = makeStyles(
-  // @ts-expect-error
-  (theme) => createTextfieldAntStyles(theme).MuiSelect.styleOverrides
-);
-
-const useFormHelperTextStyles = makeStyles(
-  // @ts-expect-error
-  (theme) => createTextfieldAntStyles(theme).MuiFormHelperText.styleOverrides
-);
-
-export const useTextfieldAntStyles = () => {
-  return {
-    InputLabel: useInputLabelStyles(),
-    Input: useInputStyles(),
-    InputAdornment: useInputAdornmentStyles(),
-    Select: useSelectStyles(),
-    FormHelperText: useFormHelperTextStyles(),
   };
 };
