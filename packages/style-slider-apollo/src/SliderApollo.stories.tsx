@@ -5,7 +5,7 @@ import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Slider, { SliderProps } from "@material-ui/core/Slider";
 
-import { createSliderApolloStyles } from "./SliderApollo.styles";
+import { getSliderApolloTheme } from "./SliderApollo.styles";
 
 const baseTheme = createTheme({
   typography: {
@@ -13,13 +13,12 @@ const baseTheme = createTheme({
       'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
   },
 });
-const textfieldStandardStyles = createSliderApolloStyles(baseTheme);
 function withTheme(Story: any, context: StoryContext) {
   return (
     <ThemeProvider
       theme={{
         ...baseTheme,
-        components: textfieldStandardStyles,
+        components: getSliderApolloTheme(baseTheme),
       }}
     >
       <Story {...context} />
