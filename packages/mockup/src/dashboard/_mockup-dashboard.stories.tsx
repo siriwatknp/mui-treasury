@@ -1,4 +1,5 @@
 import React from "react";
+import { Meta } from "@storybook/react/types-6-0";
 import {
   SideNavUserInfoMockup,
   StatCardMockup,
@@ -10,7 +11,10 @@ import {
 
 export default {
   title: "Mockup/Dashboard",
-};
+  parameters: {
+    chromatic: { disableSnapshot: true },
+  },
+} as Meta;
 
 export const SideNavUserInfo = () => <SideNavUserInfoMockup />;
 

@@ -39,5 +39,5 @@ const createStory = (name: keyof typeof Pages) => {
     },
     backgrounds: {},
   };
-  return StoryComponent;
+  return StoryComponent as Story;
 };

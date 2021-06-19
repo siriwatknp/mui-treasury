@@ -1,5 +1,5 @@
 import React from "react";
-import { Meta } from "@storybook/react/types-6-0";
+import { Meta, Story } from "@storybook/react/types-6-0";
 import { Source } from "@storybook/addon-docs/blocks";
 
 const Pages = {
@@ -40,10 +40,14 @@ const createStory = (name: keyof typeof Pages) => {
     },
     backgrounds: {},
   };
-  return StoryComponent;
+  return StoryComponent as Story;
 };
 export const Gmail = createStory("Gmail");
 export const Messenger = createStory("Messenger");
 export const ReactJS = createStory("ReactJS");
 export const ShoppingCart = createStory("ShoppingCart");
 export const Analytics = createStory("Analytics");
+Analytics.parameters = {
+  // disables Chromatic's snapshotting on a story level
+  chromatic: { disableSnapshot: true },
+};

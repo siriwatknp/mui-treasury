@@ -1,5 +1,5 @@
 import React from "react";
-import { Meta } from "@storybook/react/types-6-0";
+import { Meta, Story } from "@storybook/react/types-6-0";
 import { Source } from "@storybook/addon-docs/blocks";
 import { withMuiThemeProvider } from "stories/_internal/decorators";
 
@@ -18,6 +18,7 @@ export default {
     },
     layout: "fullscreen",
     controls: { hideNoControlsWarning: true },
+    chromatic: { disableSnapshot: true },
   },
 } as Meta;
 
@@ -41,7 +42,7 @@ const createStory = (name: keyof typeof Pages) => {
     backgrounds: {},
   };
   StoryComponent.decorators = [withMuiThemeProvider()];
-  return StoryComponent;
+  return StoryComponent as Story;
 };
 export const ContentBased = createStory("ContentBased");
 export const Cozy = createStory("Cozy");
