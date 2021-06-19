@@ -31,6 +31,9 @@
   "bugs": {
     "url": "https://github.com/siriwatknp/mui-treasury/issues"
   },
+  "dependencies": {
+    "@mui-treasury/use-birthdate-input": "^0.1.0-alpha.5"
+  },
   "peerDependencies": {
     "@material-ui/core": "^5.0.0-alpha.37"
   }
