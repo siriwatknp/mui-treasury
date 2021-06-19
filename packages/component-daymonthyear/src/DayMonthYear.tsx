@@ -102,9 +102,15 @@ export const DayMonthYear: OverridableComponent<DayMonthYearProps> =
           // @ts-expect-error
           const getInputProps = inputMapping[child.props["data-slot"]];
           if (!getInputProps) {
+            if (process.env.NODE_ENV !== "production") {
+              console.error(
+                'DayMonthYear: <Input data-slot="day | month | year" /> data-slot is missing or invalid'
+              );
+            }
             return null;
           }
           return React.cloneElement(child, {
+            key: child.props["data-slot"],
             inputProps: getInputProps({
               ...child.props.inputProps,
             }),
