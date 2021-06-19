@@ -79,4 +79,4 @@ jobs:
         with:
           args: deploy --only hosting:next
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MUI_TREASURY }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
