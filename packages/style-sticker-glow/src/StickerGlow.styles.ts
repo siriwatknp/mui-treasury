@@ -2,6 +2,7 @@ import { CSSObject } from "@material-ui/system";
 import { alpha, Theme } from "@material-ui/core/styles";
 import { StickerProps, stickerClasses } from "@mui-treasury/component-sticker";
 import { Components } from "@material-ui/core/styles/components";
+import { capitalize } from "@material-ui/core";
 
 type Output = Required<Pick<Components, "JunSticker">>;
 
@@ -34,7 +35,11 @@ export const getStickerGlowStyles = (
     ...PALETTE.reduce(
       (result, curr) => ({
         ...result,
-        [`&.${stickerClasses[curr]}`]: {
+        [`&.${
+          stickerClasses[
+            `color${capitalize(curr)}` as `color${Capitalize<typeof curr>}`
+          ]
+        }`]: {
           boxShadow: `0 2px 8px 0 ${alpha(
             treasury.getColor(curr, "500")!,
             0.6
