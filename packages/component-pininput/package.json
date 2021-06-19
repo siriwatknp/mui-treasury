@@ -1,11 +1,7 @@
----
-to: packages/<%=h.toNamePath(name)%>/package.json
-unless_exists: true
----
 {
-  "name": "@mui-treasury/<%=h.toNamePath(name)%>",
+  "name": "@mui-treasury/component-pininput",
   "version": "0.1.0-alpha.0",
-  "description": "mui-treasury | <%=h.toNamePath(name)%>",
+  "description": "mui-treasury | component-pininput",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "homepage": "https://github.com/siriwatknp/mui-treasury#readme",
   "license": "MIT",
@@ -34,6 +30,9 @@ unless_exists: true
   },
   "bugs": {
     "url": "https://github.com/siriwatknp/mui-treasury/issues"
+  },
+  "dependencies": {
+    "@mui-treasury/use-pin-input": "^0.1.0-alpha.2"
   },
   "peerDependencies": {
     "@material-ui/core": "^5.0.0-alpha.37"

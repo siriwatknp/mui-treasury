@@ -97,8 +97,12 @@ export const usePinInput = (options: UsePinInputOptions = {}) => {
           autoComplete: options.otp ? "one-time-code" : "off",
           ...inputProps,
           onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
-            const inputValue = event.target.value;
-            if (inputValue.length > 1) {
+            let inputValue = event.target.value;
+            if (inputValue.length > 2) {
+              inputValue =
+                inputValue[0] === inputProps.value
+                  ? inputValue.slice(1)
+                  : inputValue.substring(-1);
               handlers?.onChange?.(event);
               // copy & paste
               const valueArray = inputValue

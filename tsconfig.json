@@ -54,6 +54,10 @@
       "@mui-treasury/component-navigation/*": [
         "packages/component-navigation/src/*"
       ],
+      "@mui-treasury/component-pininput": ["packages/component-pininput/src/"],
+      "@mui-treasury/component-pininput/*": [
+        "packages/component-pininput/src/*"
+      ],
       // hygen-component-target
 
       "@mui-treasury/style-sticker-glow": ["packages/style-sticker-glow/src/"],
