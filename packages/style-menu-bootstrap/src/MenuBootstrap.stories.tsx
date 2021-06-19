@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Story, Meta, StoryContext } from "@storybook/react/types-6-0";
 
-import { ThemeProvider, createTheme } from "@material-ui/core/styles";
+import { ThemeProvider, createTheme, useTheme } from "@material-ui/core/styles";
+import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuList from "@material-ui/core/MenuList";
@@ -14,8 +15,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 
 import {
-  createMenuBootstrapStyles,
-  useMenuBootstrapStyles,
+  getMenuBootstrapStyles,
+  getMenuBootstrapTheme,
 } from "./MenuBootstrap.styles";
 
 const baseTheme = createTheme({
@@ -24,13 +25,13 @@ const baseTheme = createTheme({
       'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
   },
 });
-const textfieldStandardStyles = createMenuBootstrapStyles(baseTheme);
+const styles = getMenuBootstrapTheme(baseTheme);
 function withTheme(Story: any, context: StoryContext) {
   return (
     <ThemeProvider
       theme={{
         ...baseTheme,
-        components: textfieldStandardStyles,
+        components: styles,
       }}
     >
       <Story {...context} />
@@ -99,14 +100,18 @@ export function BasicMenu() {
 }
 
 export function MenuListComposition() {
+  const theme = useTheme();
+  const bootstrapStyles = getMenuBootstrapStyles(theme);
   return (
-    <Paper>
-      <MenuList>
-        <MenuItem>Profile</MenuItem>
-        <MenuItem>My account</MenuItem>
-        <MenuItem>Logout</MenuItem>
-      </MenuList>
-    </Paper>
+    <Box sx={bootstrapStyles}>
+      <Paper>
+        <MenuList>
+          <MenuItem>Profile</MenuItem>
+          <MenuItem>My account</MenuItem>
+          <MenuItem>Logout</MenuItem>
+        </MenuList>
+      </Paper>
+    </Box>
   );
 }
 
@@ -171,9 +176,11 @@ function withBaseTheme(Story: any, context: StoryContext) {
     </ThemeProvider>
   );
 }
+
 export const OutsideTheme = () => {
   const [value, setValue] = useState("");
-  const styles = useMenuBootstrapStyles();
+  const theme = useTheme();
+  const bootstrapStyles = getMenuBootstrapStyles(theme);
   return (
     <>
       <TextField
@@ -185,7 +192,6 @@ export const OutsideTheme = () => {
         SelectProps={{
           displayEmpty: true,
           MenuProps: {
-            classes: styles.Menu,
             anchorOrigin: {
               vertical: "bottom",
               horizontal: "center",
@@ -194,28 +200,22 @@ export const OutsideTheme = () => {
               horizontal: "center",
               vertical: "top",
             },
+            sx: bootstrapStyles,
           },
         }}
       >
-        <MenuItem classes={styles.MenuItem} value="">
+        <MenuItem value="">
           <em>Select Option</em>
         </MenuItem>
-        <MenuItem classes={styles.MenuItem} value={1}>
-          Option 1
-        </MenuItem>
-        <MenuItem classes={styles.MenuItem} value={2}>
-          Option 2
-        </MenuItem>
-        <MenuItem classes={styles.MenuItem} value={3}>
-          Option 3
-        </MenuItem>
+        <MenuItem value={1}>Option 1</MenuItem>
+        <MenuItem value={2}>Option 2</MenuItem>
+        <MenuItem value={3}>Option 3</MenuItem>
       </TextField>
       <br />
       <Select
         displayEmpty
         value={value}
         MenuProps={{
-          classes: styles.Menu,
           anchorOrigin: {
             vertical: "bottom",
             horizontal: "left",
@@ -224,21 +224,16 @@ export const OutsideTheme = () => {
             horizontal: "left",
             vertical: "top",
           },
+          sx: bootstrapStyles,
         }}
         onChange={(event) => setValue(event.target.value)}
       >
-        <MenuItem classes={styles.MenuItem} value="">
+        <MenuItem value="">
           <em>Select Option</em>
         </MenuItem>
-        <MenuItem classes={styles.MenuItem} value={1}>
-          Option 1
-        </MenuItem>
-        <MenuItem classes={styles.MenuItem} value={2}>
-          Option 2
-        </MenuItem>
-        <MenuItem classes={styles.MenuItem} value={3}>
-          Option 3
-        </MenuItem>
+        <MenuItem value={1}>Option 1</MenuItem>
+        <MenuItem value={2}>Option 2</MenuItem>
+        <MenuItem value={3}>Option 3</MenuItem>
       </Select>
     </>
   );

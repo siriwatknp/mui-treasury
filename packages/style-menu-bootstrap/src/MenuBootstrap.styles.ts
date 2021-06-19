@@ -1,10 +1,32 @@
 import { Theme } from "@emotion/react";
-import makeStyles from "@material-ui/styles/makeStyles";
 import { Components } from "@material-ui/core/styles/components";
 
 type Output = Required<Pick<Components, "MuiMenu" | "MuiMenuItem">>;
 
-export const createMenuBootstrapStyles = (theme: Theme): Output => ({
+export const getMenuBootstrapStyles = (arg: Theme | { theme: Theme }) => {
+  const theme = "theme" in arg ? arg.theme : arg;
+  return {
+    "& .MuiMenu-paper, .MuiPaper-root": {
+      boxShadow: "none",
+      border: "1px solid",
+      borderColor: "rgba(0,0,0,.15)",
+      marginTop: 2,
+    },
+    "& .MuiMenuItem-root": {
+      transition: "none",
+      "&:hover, &:focus": {
+        backgroundColor: "#e9ecef",
+      },
+      "&:active, &.Mui-selected, &.Mui-selected.Mui-focusVisible, &.Mui-selected:hover":
+        {
+          color: "#fff",
+          backgroundColor: "#0d6efd",
+        },
+    },
+  };
+};
+
+export const getMenuBootstrapTheme = (theme: Theme): Output => ({
   MuiMenu: {
     defaultProps: {
       anchorOrigin: {
@@ -17,14 +39,7 @@ export const createMenuBootstrapStyles = (theme: Theme): Output => ({
       },
     },
     styleOverrides: {
-      paper: {
-        "&.MuiPaper-root": {
-          boxShadow: "none",
-        },
-        border: "1px solid",
-        borderColor: "rgba(0,0,0,.15)",
-        marginTop: 2,
-      },
+      root: getMenuBootstrapStyles(theme),
     },
   },
   MuiMenuItem: {
@@ -32,35 +47,5 @@ export const createMenuBootstrapStyles = (theme: Theme): Output => ({
       // @ts-expect-error
       disableRipple: true,
     },
-    styleOverrides: {
-      root: {
-        transition: "none",
-        "&:hover, &:focus": {
-          backgroundColor: "#e9ecef",
-        },
-        "&:active, &.Mui-selected, &.Mui-selected.Mui-focusVisible, &.Mui-selected:hover":
-          {
-            color: "#fff",
-            backgroundColor: "#0d6efd",
-          },
-      },
-    },
   },
 });
-
-const useMenuStyles = makeStyles(
-  // @ts-expect-error
-  (theme) => createMenuBootstrapStyles(theme).MuiMenu.styleOverrides
-);
-
-const useMenuItemStyles = makeStyles(
-  // @ts-expect-error
-  (theme) => createMenuBootstrapStyles(theme).MuiMenuItem.styleOverrides
-);
-
-export const useMenuBootstrapStyles = () => {
-  return {
-    Menu: useMenuStyles(),
-    MenuItem: useMenuItemStyles(),
-  };
-};
