@@ -7,10 +7,17 @@ import {
   generateUtilityClasses,
 } from "@material-ui/unstyled";
 
+export interface <%=Name = h.toName(name)%>Classes {
+  /** Styles applied to the root element. */
+  root: string;
+};
+
+export type <%=Name%>ClassKey = keyof typeof <%= nameCamel=h.toNameCamel(name) %>Classes;
+
 export function get<%= h.toName(name) %>UtilityClass(slot: string) {
   return generateUtilityClass("Jun<%=h.toName(name)%>", slot);
 }
 
-export const <%= h.toNameCamel(name) %>Classes = generateUtilityClasses("Jun<%=h.toName(name)%>", [
+export const <%= h.toNameCamel(name) %>Classes: <%=Name%>Classes = generateUtilityClasses("Jun<%=h.toName(name)%>", [
   "root",
 ]);

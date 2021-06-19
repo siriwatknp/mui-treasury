@@ -11,11 +11,10 @@ import {
 } from "@material-ui/core/styles";
 import { unstable_composeClasses as composeClasses } from "@material-ui/unstyled";
 import { SxProps } from "@material-ui/system";
-import { get<%=Name = h.toName(name)%>UtilityClass, <%= nameCamel=h.toNameCamel(name) %>Classes } from "./<%= nameCamel %>Classes";
 import { OverridableComponent } from "@mui-treasury/types";
 
-export type <%=Name%>ClassKey = keyof typeof <%= nameCamel %>Classes;
-export type <%=Name%>Classes = Partial<typeof <%= nameCamel %>Classes>;
+import { get<%=Name = h.toName(name)%>UtilityClass, <%=Name%>Classes } from "./<%= nameCamel=h.toNameCamel(name) %>Classes";
+
 export type <%=Name%>Props = {
   /**
    * className append to the root element
@@ -25,7 +24,7 @@ export type <%=Name%>Props = {
   /**
    * Override or extend the styles applied to the component.
    */
-  classes?: <%=Name%>Classes;
+  classes?: Partial<<%=Name%>Classes>;
 
   /**
    * The system prop that allows defining system overrides as well as additional CSS styles.
@@ -38,11 +37,7 @@ const useUtilityClasses = (styleProps: <%=Name%>Props) => {
   const slots = {
     root: ["root"],
   };
-  return composeClasses(
-    slots,
-    get<%=Name%>UtilityClass,
-    classes as Required<<%=Name%>Props["classes"]>
-  );
+  return composeClasses(slots, get<%=Name%>UtilityClass, classes);
 };
 
 const <%=Name%>Root = styled(
