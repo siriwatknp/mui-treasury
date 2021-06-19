@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
-import { styled } from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
 
 import {
   SocialLink,
@@ -29,14 +29,14 @@ export default {
   },
 } as Meta;
 
-const SocialLinkRound = styled(SocialLink)(getSocialLinkRoundStyles);
-
 export const Round: Story<SocialLinkProps> = (args) => {
+  const theme = useTheme();
+  const styles = getSocialLinkRoundStyles(theme);
   return (
     <>
-      <SocialLinkRound {...args}>
+      <SocialLink {...args} sx={styles}>
         <FacebookCircle />
-      </SocialLinkRound>
+      </SocialLink>
       <SocialLink {...args}>
         <Dribbble />
       </SocialLink>

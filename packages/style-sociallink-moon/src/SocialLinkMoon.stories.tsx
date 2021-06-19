@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
-import { styled } from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
 
 import {
   SocialLink,
@@ -29,14 +29,14 @@ export default {
   },
 } as Meta;
 
-const SocialLinkMoon = styled(SocialLink)(getSocialLinkMoonStyles);
-
 export const Moon: Story<SocialLinkProps> = (args) => {
+  const theme = useTheme();
+  const styles = getSocialLinkMoonStyles(theme);
   return (
     <>
-      <SocialLinkMoon {...args}>
+      <SocialLink {...args} sx={styles}>
         <FacebookCircle />
-      </SocialLinkMoon>
+      </SocialLink>
       <SocialLink {...args}>
         <Dribbble />
       </SocialLink>

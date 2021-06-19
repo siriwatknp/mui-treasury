@@ -1,22 +1,21 @@
 import "@mui-treasury/component-sociallink";
 import { Theme, alpha, lighten } from "@material-ui/core/styles";
-import { CSSProperties } from "@material-ui/styles";
+import { CSSObject } from "@material-ui/system";
 import { Components } from "@material-ui/core/styles/components";
 
 type Output = Required<Pick<Components, "JunSocialLink">>;
 
-export const getSocialLinkPoofStyles = ({
-  theme: { palette },
-}: {
-  theme: Theme;
-}): CSSProperties => {
+export const getSocialLinkPoofStyles = (
+  arg: Theme | { theme: Theme }
+): CSSObject => {
+  const { palette } = "theme" in arg ? arg.theme : arg;
   const extraLightPrimary = alpha(lighten(palette.primary.main, 0.84), 0.84);
   return {
     display: "inline-flex",
     alignItems: "center",
     cursor: "pointer",
     fontSize: 24,
-    padding: 12,
+    padding: "12px",
     borderColor: palette.divider,
     color: palette.text.secondary,
     position: "relative",
@@ -31,7 +30,7 @@ export const getSocialLinkPoofStyles = ({
       zIndex: 0,
       backgroundColor:
         palette.mode === "dark" ? palette.action.focus : extraLightPrimary,
-      borderRadius: 40,
+      borderRadius: "40px",
       transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
       transform: "scale(0)",
     },
@@ -55,7 +54,7 @@ export const getSocialLinkPoofTheme = (theme: Theme): Output => {
   return {
     JunSocialLink: {
       styleOverrides: {
-        root: getSocialLinkPoofStyles({ theme }),
+        root: getSocialLinkPoofStyles(theme),
       },
     },
   };

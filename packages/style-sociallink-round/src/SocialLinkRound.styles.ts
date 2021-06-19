@@ -1,23 +1,22 @@
 import "@mui-treasury/component-sociallink";
 import { Theme, alpha, lighten } from "@material-ui/core/styles";
-import { CSSProperties } from "@material-ui/styles";
+import { CSSObject } from "@material-ui/system";
 import { Components } from "@material-ui/core/styles/components";
 
 type Output = Required<Pick<Components, "JunSocialLink">>;
 
-export const getSocialLinkRoundStyles = ({
-  theme: { palette },
-}: {
-  theme: Theme;
-}): CSSProperties => {
+export const getSocialLinkRoundStyles = (
+  arg: Theme | { theme: Theme }
+): CSSObject => {
+  const { palette } = "theme" in arg ? arg.theme : arg;
   const extraLightPrimary = alpha(lighten(palette.primary.main, 0.4), 0.72);
   return {
     display: "inline-flex",
     alignItems: "center",
     cursor: "pointer",
     fontSize: 24,
-    padding: 8,
-    borderRadius: 8,
+    padding: "8px",
+    borderRadius: "8px",
     border: "2px solid",
     borderColor: extraLightPrimary,
     color:
@@ -43,7 +42,7 @@ export const getSocialLinkRoundTheme = (theme: Theme): Output => {
   return {
     JunSocialLink: {
       styleOverrides: {
-        root: getSocialLinkRoundStyles({ theme }),
+        root: getSocialLinkRoundStyles(theme),
       },
     },
   };
