@@ -45,7 +45,18 @@ export interface UseCardInputOptions {
   /**
    * a callback function when input value changed
    */
-  onChange?: (value: CardValue, meta: { invalid: boolean }) => void;
+  onChange?: (
+    value: CardValue,
+    meta: {
+      invalid: boolean;
+      invalidFields: {
+        ccName: boolean;
+        ccNumber: boolean;
+        ccExp: boolean;
+        ccSecurity: boolean;
+      };
+    }
+  ) => void;
   /**
    * a callback function when all inputs are not focused
    */
@@ -139,11 +150,16 @@ export const useCardInput = (options: UseCardInputOptions = {}) => {
         csc: csc.value,
       };
       options.onChange?.(result, {
-        // TODO should send which field is invalid
-        invalid: card.invalid || exp.invalid || csc.invalid,
+        invalid: name.invalid || card.invalid || exp.invalid || csc.invalid,
+        invalidFields: {
+          ccName: name.invalid,
+          ccNumber: card.invalid,
+          ccExp: exp.invalid,
+          ccSecurity: csc.invalid,
+        },
       });
     }
-  }, [card.value, exp.value, csc.value]);
+  }, [name.value, card.value, exp.value, csc.value]);
 
   return {
     getCardNameInputProps: (handlers?: InputHanders) => ({

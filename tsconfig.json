@@ -70,6 +70,12 @@
       "@mui-treasury/component-daymonthyear/*": [
         "packages/component-daymonthyear/src/*"
       ],
+      "@mui-treasury/component-creditcard": [
+        "packages/component-creditcard/src/"
+      ],
+      "@mui-treasury/component-creditcard/*": [
+        "packages/component-creditcard/src/*"
+      ],
       // hygen-component-target
 
       "@mui-treasury/style-sticker-glow": ["packages/style-sticker-glow/src/"],
