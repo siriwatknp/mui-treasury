@@ -94,7 +94,15 @@ describe("useCardInput", () => {
 
       expect(onChange).toHaveBeenCalledWith(
         expect.objectContaining({ cardNumber: "4111111111111111" }),
-        { invalid: true }
+        expect.objectContaining({
+          invalid: true,
+          invalidFields: {
+            ccName: false,
+            ccNumber: false,
+            ccExp: true,
+            ccSecurity: true,
+          },
+        })
       );
 
       // should focus on Exp
@@ -102,7 +110,15 @@ describe("useCardInput", () => {
 
       expect(onChange).toHaveBeenCalledWith(
         expect.objectContaining({ expMonth: 4, expYear: 26 }),
-        { invalid: true }
+        expect.objectContaining({
+          invalid: true,
+          invalidFields: {
+            ccName: false,
+            ccNumber: false,
+            ccExp: false,
+            ccSecurity: true,
+          },
+        })
       );
 
       // should focus on CSC
@@ -115,7 +131,15 @@ describe("useCardInput", () => {
           expYear: 26,
           csc: "235",
         },
-        { invalid: false }
+        {
+          invalid: false,
+          invalidFields: {
+            ccName: false,
+            ccNumber: false,
+            ccExp: false,
+            ccSecurity: false,
+          },
+        }
       );
     });
   });
