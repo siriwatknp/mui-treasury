@@ -5,8 +5,6 @@ unless_exists: true
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import { styled } from "@material-ui/core/styles";
-
 import {
   <%=h.extractComponentName(name)%>,
   <%=h.extractComponentName(name)%>Props,
@@ -29,14 +27,9 @@ export default {
   },
 } as Meta;
 
-const <%=h.toName(name)%> = styled(<%=h.extractComponentName(name)%>)(get<%=h.toName(name)%>Styles);
-
 export const <%=h.extractStyleName(name)%>: Story<<%=h.extractComponentName(name)%>Props> = (args) => {
   return (
-    <>
-      <<%=h.toName(name)%> {...args} />
-      <<%=h.extractComponentName(name)%> {...args} />
-    </>
+    <<%=h.toName(name)%> {...args} />
   );
 };
 <%=h.extractStyleName(name)%>.decorators = [

@@ -53,3 +53,8 @@ export const InfoHead: OverridableComponent<InfoHeadProps> = React.forwardRef<
     </InfoHeadRoot>
   );
 });
+
+/**
+ * @deprecated use InfoHead instead
+ */
+export const InfoTitle = InfoHead;

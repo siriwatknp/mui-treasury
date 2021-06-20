@@ -25,7 +25,7 @@ export type InfoEyebrowProps = {
 const InfoEyebrowRoot = styled("div", {
   name: "JunInfo",
   slot: "Eyebrow",
-  overridesResolver: (props, styles) => styles.caption,
+  overridesResolver: (props, styles) => styles.eyebrow,
 })<{ styleProps: InfoEyebrowProps }>(({ theme }) => ({
   color: theme.palette.text.secondary,
   fontSize: "0.875rem",
@@ -54,3 +54,8 @@ export const InfoEyebrow: OverridableComponent<InfoEyebrowProps> =
       </InfoEyebrowRoot>
     );
   });
+
+/**
+ * @deprecated use InfoEyebrow instead
+ */
+export const InfoCaption = InfoEyebrow;

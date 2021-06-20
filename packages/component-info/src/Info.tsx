@@ -14,6 +14,12 @@ type ValueFunction<T> = T | ((theme: Theme) => T);
 
 export interface InfoPropsVariantOverrides {}
 
+export type InfoSlotStyles = {
+  $head: CSSProperties;
+  $paragraph: CSSProperties;
+  $eyebrow: CSSProperties;
+};
+
 export type InfoProps = {
   /**
    * className append to the root element
@@ -29,13 +35,7 @@ export type InfoProps = {
   /**
    * The system prop that allows defining system overrides as well as additional CSS styles.
    */
-  sx?: ValueFunction<
-    SxProps<Theme> & {
-      $head?: CSSProperties;
-      $paragraph?: CSSProperties;
-      $eyebrow?: CSSProperties;
-    }
-  >;
+  sx?: ValueFunction<SxProps<Theme> & Partial<InfoSlotStyles>>;
 } & Omit<JSX.IntrinsicElements["div"], "ref">;
 
 type StylesCtxValue = {

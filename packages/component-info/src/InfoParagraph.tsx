@@ -52,3 +52,8 @@ export const InfoParagraph: OverridableComponent<InfoParagraphProps> =
       );
     }
   );
+
+/**
+ * @deprecated use InfoSubtitle instead
+ */
+export const InfoSubtitle = InfoParagraph;

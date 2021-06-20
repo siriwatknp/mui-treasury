@@ -150,6 +150,7 @@
       "@mui-treasury/style-navigation-plain": [
         "packages/style-navigation-plain/src/"
       ],
+      "@mui-treasury/style-info-n01": ["packages/style-info-n01/src/"],
       // hygen-style-target
 
       "@mui-treasury/use-number-input": ["packages/use-number-input/src/"],

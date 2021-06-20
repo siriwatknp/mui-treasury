@@ -1,4 +1,4 @@
-import "./theme-extended";
+export * from "./theme-extended";
 
 export * from "./Info";
 export * from "./InfoHead";
