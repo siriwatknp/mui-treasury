@@ -9,3 +9,11 @@ export interface OverridableComponent<Props> {
       : P & Props
   ): JSX.Element | null;
 }
+
+// from @material-ui/styles
+export type GenerateStringUnion<T> = Extract<
+  {
+    [Key in keyof T]: true extends T[Key] ? Key : never;
+  }[keyof T],
+  string
+>;

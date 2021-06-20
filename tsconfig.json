@@ -76,6 +76,8 @@
       "@mui-treasury/component-creditcard/*": [
         "packages/component-creditcard/src/*"
       ],
+      "@mui-treasury/component-info": ["packages/component-info/src/"],
+      "@mui-treasury/component-info/*": ["packages/component-info/src/*"],
       // hygen-component-target
 
       "@mui-treasury/style-sticker-glow": ["packages/style-sticker-glow/src/"],
