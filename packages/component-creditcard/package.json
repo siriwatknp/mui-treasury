@@ -1,6 +1,6 @@
 {
   "name": "@mui-treasury/component-creditcard",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "description": "mui-treasury | component-creditcard",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "homepage": "https://github.com/siriwatknp/mui-treasury#readme",
@@ -32,7 +32,7 @@
     "url": "https://github.com/siriwatknp/mui-treasury/issues"
   },
   "dependencies": {
-    "@mui-treasury/use-card-input": "^0.1.0-alpha.3"
+    "@mui-treasury/use-card-input": "^0.1.0-alpha.4"
   },
   "peerDependencies": {
     "@material-ui/core": "^5.0.0-alpha.37"
