@@ -73,7 +73,7 @@
     "dev:cli": "yarn workspace mui-treasury run dev",
     "create-layout-storybook": "npx hygen layout storybook",
     "print-package-stats": "ts-node scripts/print-package-stats",
-    "build:packages": "lerna run build --since",
+    "build:packages": "yarn && lerna run build --since",
     "build:storybook": "build-storybook",
     "publish-packages": "lerna publish prerelease --no-commit-hooks --no-push --yes --no-verify-access --contents dist"
   }

@@ -1,8 +1,11 @@
-import { InfoThemeVariant } from "@mui-treasury/component-info";
+import { CSSObject } from "@material-ui/system";
 import { Theme } from "@material-ui/core/styles";
 import { Components } from "@material-ui/core/styles/components";
-import { infoClasses, InfoSlotStyles } from "@mui-treasury/component-info";
-import { CSSProperties } from "react";
+import {
+  infoClasses,
+  InfoSlotStyles,
+  InfoThemeVariant,
+} from "@mui-treasury/component-info";
 
 type Output = Required<Pick<Components, "JunInfo">>;
 
@@ -14,7 +17,7 @@ declare module "@mui-treasury/component-info" {
 
 export const getInfoN01Styles = (
   arg: Theme | { theme: Theme }
-): CSSProperties & InfoSlotStyles => {
+): CSSObject & InfoSlotStyles => {
   const { palette } = "theme" in arg ? arg.theme : arg;
   return {
     $eyebrow: {

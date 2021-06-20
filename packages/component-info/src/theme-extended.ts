@@ -1,15 +1,15 @@
-import { CSSProperties } from "react";
+import { CSSObject } from "@material-ui/system";
 import { InfoProps } from "./Info";
 import { InfoClassKey } from "./infoClasses";
 
 type OverridesStyleRules<ClassKey extends string = string> = Record<
   ClassKey,
-  CSSProperties
+  CSSObject
 >;
 
 export type InfoThemeVariant = {
   props: Partial<InfoProps>;
-  style: CSSProperties;
+  style: CSSObject;
 };
 
 declare module "@material-ui/core/styles/components" {

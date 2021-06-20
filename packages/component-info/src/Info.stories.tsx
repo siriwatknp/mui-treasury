@@ -1,7 +1,6 @@
-import React, { CSSProperties } from "react";
+import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import { SxProps } from "@material-ui/system";
-import { Theme, ThemeProvider, createTheme } from "@material-ui/core/styles";
+import { ThemeProvider, createTheme } from "@material-ui/core/styles";
 import {
   Info,
   InfoProps,
@@ -20,22 +19,9 @@ export default {
   },
 } as Meta;
 
-const getInfoThemeMdStyles = (
-  theme: Theme
-): SxProps<Theme> & {
-  $head?: CSSProperties;
-  $subhead?: CSSProperties;
-  $caption?: CSSProperties;
-} => ({
-  p: 2,
-  $head: {
-    // fontWeight: "bold",
-  },
-});
-
 export const Base: Story<InfoProps> = (args) => {
   return (
-    <Info sx={getInfoThemeMdStyles}>
+    <Info>
       <InfoEyebrow>Material Blog</InfoEyebrow>
       <InfoHead>Unveiling Material You</InfoHead>
       <InfoParagraph>The next stage for Material Design</InfoParagraph>

@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React from "react";
 import cx from "clsx";
 import {
   styled,
@@ -6,7 +6,7 @@ import {
   Theme,
   useTheme,
 } from "@material-ui/core/styles";
-import { SxProps } from "@material-ui/system";
+import { SxProps, CSSObject } from "@material-ui/system";
 import { OverridableComponent, GenerateStringUnion } from "@mui-treasury/types";
 import { infoClasses } from "./infoClasses";
 
@@ -15,9 +15,9 @@ type ValueFunction<T> = T | ((theme: Theme) => T);
 export interface InfoPropsVariantOverrides {}
 
 export type InfoSlotStyles = {
-  $head: CSSProperties;
-  $paragraph: CSSProperties;
-  $eyebrow: CSSProperties;
+  $head: CSSObject;
+  $paragraph: CSSObject;
+  $eyebrow: CSSObject;
 };
 
 export type InfoProps = {
@@ -39,9 +39,9 @@ export type InfoProps = {
 } & Omit<JSX.IntrinsicElements["div"], "ref">;
 
 type StylesCtxValue = {
-  head?: CSSProperties;
-  paragraph?: CSSProperties;
-  eyebrow?: CSSProperties;
+  head?: CSSObject;
+  paragraph?: CSSObject;
+  eyebrow?: CSSObject;
 };
 
 const StylesContext =
