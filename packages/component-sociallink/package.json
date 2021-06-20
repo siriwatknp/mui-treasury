@@ -1,6 +1,6 @@
 {
   "name": "@mui-treasury/component-sociallink",
-  "version": "0.1.0-alpha.6",
+  "version": "0.1.0-alpha.7",
   "description": "mui-treasury | component-sociallink",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "homepage": "https://github.com/siriwatknp/mui-treasury#readme",
@@ -34,6 +34,6 @@
     "@material-ui/core": "^5.0.0-alpha.37"
   },
   "dependencies": {
-    "@mui-treasury/types": "^0.1.0-alpha.1"
+    "@mui-treasury/types": "^0.1.0-alpha.2"
   }
 }
