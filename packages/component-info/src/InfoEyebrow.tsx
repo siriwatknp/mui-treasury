@@ -4,7 +4,7 @@ import { styled, Theme } from "@material-ui/core/styles";
 import { SxProps } from "@material-ui/system";
 import { OverridableComponent } from "@mui-treasury/types";
 import { infoClasses } from "./infoClasses";
-import { useStylesCtx } from "./Info";
+import { useStylesCtx, AppendUseStyles } from "./Info";
 
 export type InfoEyebrowProps = {
   /**
@@ -26,29 +26,31 @@ const InfoEyebrowRoot = styled("div", {
   name: "JunInfo",
   slot: "Eyebrow",
   overridesResolver: (props, styles) => styles.eyebrow,
-})<{ styleProps: InfoEyebrowProps }>(({ theme }) => ({
-  color: theme.palette.text.secondary,
-  fontSize: "0.875rem",
-  marginBottom: "0.25rem",
-  lineHeight: "1.25rem",
-  textTransform: "uppercase",
-}));
+})<{ styleProps: AppendUseStyles<InfoEyebrowProps> }>(
+  ({ theme, styleProps }) => ({
+    color: theme.palette.text.secondary,
+    fontSize: "0.875rem",
+    marginBottom: "0.25rem",
+    lineHeight: "1.25rem",
+    textTransform: "uppercase",
+    ...styleProps.useStyles(theme).eyebrow,
+  })
+);
 
 export const InfoEyebrow: OverridableComponent<InfoEyebrowProps> =
   React.forwardRef<HTMLDivElement, InfoEyebrowProps>(function InfoEyebrow(
     props,
     ref
   ) {
-    const { children, component, className, sx, ...other } = props;
-    const context = useStylesCtx();
+    const { children, component, className, ...other } = props;
+    const useStyles = useStylesCtx();
     return (
       <InfoEyebrowRoot
         ref={ref}
         {...other}
         as={component}
         className={cx(infoClasses.eyebrow, className)}
-        styleProps={props}
-        sx={{ ...context.eyebrow, ...sx }}
+        styleProps={{ ...props, useStyles }}
       >
         {children}
       </InfoEyebrowRoot>

@@ -4,7 +4,7 @@ import { styled, Theme } from "@material-ui/core/styles";
 import { SxProps } from "@material-ui/system";
 import { OverridableComponent } from "@mui-treasury/types";
 import { infoClasses } from "./infoClasses";
-import { useStylesCtx } from "./Info";
+import { useStylesCtx, AppendUseStyles } from "./Info";
 
 export type InfoParagraphProps = {
   /**
@@ -26,26 +26,28 @@ const InfoParagraphRoot = styled("p", {
   name: "JunInfo",
   slot: "Paragraph",
   overridesResolver: (props, styles) => styles.paragraph,
-})<{ styleProps: InfoParagraphProps }>(({ theme }) => ({
-  color: theme.palette.text.secondary,
-  lineHeight: 1.5,
-  fontSize: "1rem",
-  margin: 0,
-}));
+})<{ styleProps: AppendUseStyles<InfoParagraphProps> }>(
+  ({ theme, styleProps }) => ({
+    color: theme.palette.text.secondary,
+    lineHeight: 1.5,
+    fontSize: "1rem",
+    margin: 0,
+    ...styleProps.useStyles(theme).paragraph,
+  })
+);
 
 export const InfoParagraph: OverridableComponent<InfoParagraphProps> =
   React.forwardRef<HTMLParagraphElement, InfoParagraphProps>(
     function InfoParagraph(props, ref) {
-      const { children, component, className, sx, ...other } = props;
-      const context = useStylesCtx();
+      const { children, component, className, ...other } = props;
+      const useStyles = useStylesCtx();
       return (
         <InfoParagraphRoot
           ref={ref}
           {...other}
           as={component}
           className={cx(infoClasses.paragraph, className)}
-          styleProps={props}
-          sx={{ ...context.paragraph, ...sx }}
+          styleProps={{ ...props, useStyles }}
         >
           {children}
         </InfoParagraphRoot>

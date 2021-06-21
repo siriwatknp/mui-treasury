@@ -9,6 +9,7 @@
     "@babel/cli": "7.13.16",
     "@babel/core": "^7.12.17",
     "@babel/plugin-transform-object-assign": "7.12.13",
+    "@emotion/jest": "11.3.0",
     "@emotion/react": "11.1.5",
     "@emotion/styled": "11.1.5",
     "@material-ui/core": "5.0.0-alpha.37",

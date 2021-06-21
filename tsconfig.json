@@ -5,6 +5,7 @@
     "scripts",
     ".storybook/preview.tsx",
     "stories",
+    "test",
     "./setupTests.ts"
   ],
   "exclude": ["node_modules", "**/dist/"],

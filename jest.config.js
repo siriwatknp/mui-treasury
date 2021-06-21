@@ -15,5 +15,6 @@ module.exports = {
   ],
   moduleNameMapper: {
     "@mui-treasury/(.*)": ["<rootDir>/packages/$1/src/"],
+    "test/(.*)": ["<rootDir>/test/$1"],
   },
 };

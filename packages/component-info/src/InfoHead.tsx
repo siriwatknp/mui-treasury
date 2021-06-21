@@ -4,7 +4,7 @@ import { styled, Theme } from "@material-ui/core/styles";
 import { SxProps } from "@material-ui/system";
 import { OverridableComponent } from "@mui-treasury/types";
 import { infoClasses } from "./infoClasses";
-import { useStylesCtx } from "./Info";
+import { useStylesCtx, AppendUseStyles } from "./Info";
 
 export type InfoHeadProps = {
   /**
@@ -26,28 +26,28 @@ const InfoHeadRoot = styled("h4", {
   name: "JunInfo",
   slot: "Head",
   overridesResolver: (props, styles) => styles.head,
-})<{ styleProps: InfoHeadProps }>({
+})<{ styleProps: AppendUseStyles<InfoHeadProps> }>(({ theme, styleProps }) => ({
   letterSpacing: "0.0073529412em",
   fontSize: "1.25rem",
   fontWeight: "normal",
   margin: "0 0 0.5rem 0",
   lineHeight: "1.5rem",
-});
+  ...styleProps.useStyles(theme).head,
+}));
 
 export const InfoHead: OverridableComponent<InfoHeadProps> = React.forwardRef<
   HTMLHeadingElement,
   InfoHeadProps
 >(function InfoHead(props, ref) {
-  const { children, component, className, sx, ...other } = props;
-  const context = useStylesCtx();
+  const { children, component, className, ...other } = props;
+  const useStyles = useStylesCtx();
   return (
     <InfoHeadRoot
       ref={ref}
       {...other}
       as={component}
       className={cx(infoClasses.head, className)}
-      styleProps={props}
-      sx={{ ...context.head, ...sx }}
+      styleProps={{ ...props, useStyles }}
     >
       {children}
     </InfoHeadRoot>

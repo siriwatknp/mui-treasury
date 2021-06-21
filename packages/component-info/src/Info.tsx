@@ -1,23 +1,24 @@
 import React from "react";
 import cx from "clsx";
-import {
-  styled,
-  unstable_useThemeProps as useThemeProps,
-  Theme,
-  useTheme,
-} from "@material-ui/core/styles";
+import { styled, Theme } from "@material-ui/core/styles";
+import useThemeProps from "@material-ui/core/styles/useThemeProps";
 import { SxProps, CSSObject } from "@material-ui/system";
 import { OverridableComponent, GenerateStringUnion } from "@mui-treasury/types";
 import { infoClasses } from "./infoClasses";
 
-type ValueFunction<T> = T | ((theme: Theme) => T);
+const defaultUseStyles = () => ({});
 
 export interface InfoPropsVariantOverrides {}
 
 export type InfoSlotStyles = {
-  $head: CSSObject;
-  $paragraph: CSSObject;
-  $eyebrow: CSSObject;
+  root: CSSObject;
+  head: CSSObject;
+  paragraph: CSSObject;
+  eyebrow: CSSObject;
+};
+
+export type AppendUseStyles<T> = T & {
+  useStyles: (theme: Theme) => Partial<InfoSlotStyles>;
 };
 
 export type InfoProps = {
@@ -32,20 +33,16 @@ export type InfoProps = {
 
   variant?: GenerateStringUnion<InfoPropsVariantOverrides>;
 
+  useStyles?: (theme: Theme) => Partial<InfoSlotStyles>;
+
   /**
    * The system prop that allows defining system overrides as well as additional CSS styles.
    */
-  sx?: ValueFunction<SxProps<Theme> & Partial<InfoSlotStyles>>;
+  sx?: SxProps<Theme>;
 } & Omit<JSX.IntrinsicElements["div"], "ref">;
 
-type StylesCtxValue = {
-  head?: CSSObject;
-  paragraph?: CSSObject;
-  eyebrow?: CSSObject;
-};
-
 const StylesContext =
-  React.createContext<StylesCtxValue | undefined>(undefined);
+  React.createContext<InfoProps["useStyles"] | undefined>(undefined);
 
 export const useStylesCtx = () => {
   const value = React.useContext(StylesContext);
@@ -65,9 +62,10 @@ const InfoRoot = styled("div", {
       ...(styleProps.variant && styles[styleProps.variant]),
     };
   },
-})<{ styleProps: InfoProps }>({
+})<{ styleProps: InfoProps }>(({ theme, styleProps }) => ({
   display: "block",
-});
+  ...(styleProps.useStyles && styleProps.useStyles(theme).root),
+}));
 
 export const Info: OverridableComponent<InfoProps> = React.forwardRef<
   HTMLDivElement,
@@ -77,13 +75,12 @@ export const Info: OverridableComponent<InfoProps> = React.forwardRef<
     props: inProps,
     name: "JunInfo",
   });
-  const theme = useTheme();
-  const { children, component, variant, ...other } = props;
-  const sx = typeof props.sx === "function" ? props.sx(theme) : props.sx;
+  const { children, component, variant, useStyles, ...other } = props;
 
   const styleProps = {
     ...props,
     variant,
+    useStyles,
   };
 
   return (
@@ -91,17 +88,10 @@ export const Info: OverridableComponent<InfoProps> = React.forwardRef<
       ref={ref}
       {...other}
       as={component}
-      sx={sx}
       className={cx(infoClasses.root, props.className)}
       styleProps={styleProps}
     >
-      <StylesContext.Provider
-        value={{
-          head: sx?.$head,
-          paragraph: sx?.$paragraph,
-          eyebrow: sx?.$eyebrow,
-        }}
-      >
+      <StylesContext.Provider value={useStyles || defaultUseStyles}>
         {children}
       </StylesContext.Provider>
     </InfoRoot>
