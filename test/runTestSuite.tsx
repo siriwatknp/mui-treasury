@@ -1,6 +1,8 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import { ThemeProvider, createTheme } from "@material-ui/core/styles";
+import { ThemeProvider, createTheme, Theme } from "@material-ui/core/styles";
+
+const theme = createTheme();
 
 export const runComponentStylingTests = (
   element: React.ReactElement,
@@ -87,4 +89,65 @@ export const runComponentStylingTests = (
       });
     });
   });
+};
+
+export const runStyleTests = ({
+  getStyles,
+  getTheme,
+  getVariant,
+  slots,
+  componentName,
+  variantProps,
+}: {
+  getStyles?: (theme: Theme) => any;
+  getTheme?: (theme: Theme) => any;
+  getVariant?: (theme: Theme) => any;
+  slots: Array<string>;
+  componentName: string;
+  variantProps: Record<string, unknown>;
+}) => {
+  if (getStyles) {
+    it("should return correct styles", () => {
+      const styles = getStyles(theme);
+      slots.forEach((slot) => {
+        expect(Object.keys(styles).includes(slot)).toBeTruthy();
+      });
+    });
+  }
+
+  if (getTheme) {
+    it("should return correct theme", () => {
+      if (!componentName) {
+        throw new Error("missing `componentName` in runStyleTests options");
+      }
+      const styles = getTheme(theme);
+      if (!styles[componentName]) {
+        throw new Error("please change `componentName` again");
+      }
+      slots.forEach((slot) => {
+        expect(
+          Object.keys(styles[componentName].styleOverrides).includes(slot)
+        ).toBeTruthy();
+      });
+    });
+  }
+
+  if (getVariant) {
+    it("should return correct variant", () => {
+      const result = getVariant(theme);
+      expect(result).toMatchObject({
+        props: variantProps,
+      });
+
+      slots.forEach((slot) => {
+        if (slot !== "root") {
+          expect(result).toMatchObject({
+            style: expect.objectContaining({
+              [`& .${componentName}-${slot}`]: expect.anything(),
+            }),
+          });
+        }
+      });
+    });
+  }
 };

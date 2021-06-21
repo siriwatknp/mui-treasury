@@ -17,10 +17,10 @@ declare module "@mui-treasury/component-info" {
 
 export const getInfoN01Styles = (
   arg: Theme | { theme: Theme }
-): CSSObject & InfoSlotStyles => {
+): CSSObject & Partial<InfoSlotStyles> => {
   const { palette } = "theme" in arg ? arg.theme : arg;
   return {
-    $eyebrow: {
+    eyebrow: {
       textTransform: "uppercase",
       color: palette.text.secondary,
       letterSpacing: "1px",
@@ -28,12 +28,12 @@ export const getInfoN01Styles = (
       marginBottom: "0.875em",
       display: "inline-block",
     },
-    $head: {
+    head: {
       fontSize: 20,
       fontWeight: "bold",
       marginBottom: "0.4em",
     },
-    $paragraph: {
+    paragraph: {
       fontSize: 16,
       color:
         palette.mode === "dark" ? "rgba(255,255,255,0.72)" : "rgba(0,0,0,0.72)",
@@ -42,26 +42,26 @@ export const getInfoN01Styles = (
 };
 
 export const getInfoN01Theme = (theme: Theme): Output => {
-  const { $eyebrow, $head, $paragraph } = getInfoN01Styles({ theme });
+  const { eyebrow, head, paragraph } = getInfoN01Styles({ theme });
   return {
     JunInfo: {
       styleOverrides: {
-        eyebrow: $eyebrow,
-        head: $head,
-        paragraph: $paragraph,
+        eyebrow: eyebrow,
+        head: head,
+        paragraph: paragraph,
       },
     },
   };
 };
 
 export const getInfoN01Variant = (theme: Theme): InfoThemeVariant => {
-  const { $eyebrow, $head, $paragraph } = getInfoN01Styles({ theme });
+  const { eyebrow, head, paragraph } = getInfoN01Styles({ theme });
   return {
     props: { variant: "n01" },
     style: {
-      [`& .${infoClasses.head}`]: $head,
-      [`& .${infoClasses.paragraph}`]: $paragraph,
-      [`& .${infoClasses.eyebrow}`]: $eyebrow,
+      [`& .${infoClasses.head}`]: head,
+      [`& .${infoClasses.paragraph}`]: paragraph,
+      [`& .${infoClasses.eyebrow}`]: eyebrow,
     },
   };
 };

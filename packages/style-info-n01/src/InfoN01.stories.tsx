@@ -31,7 +31,7 @@ export default {
 export const N01: Story<InfoProps> = (args) => {
   return (
     <Box sx={{ maxWidth: 288 }}>
-      <Info variant="n01" sx={getInfoN01Styles}>
+      <Info variant="n01" useStyles={getInfoN01Styles}>
         <InfoEyebrow>March 20, 2019</InfoEyebrow>
         <InfoHead>Nature Around Us</InfoHead>
         <InfoParagraph>
