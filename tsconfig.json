@@ -153,6 +153,7 @@
       ],
       "@mui-treasury/style-info-n01": ["packages/style-info-n01/src/"],
       "@mui-treasury/style-info-blog": ["packages/style-info-blog/src/"],
+      "@mui-treasury/style-info-n02": ["packages/style-info-n02/src/"],
       // hygen-style-target
 
       "@mui-treasury/use-number-input": ["packages/use-number-input/src/"],

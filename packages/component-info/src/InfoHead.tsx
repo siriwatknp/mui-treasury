@@ -31,7 +31,7 @@ const InfoHeadRoot = styled("h4", {
   fontSize: "1.25rem",
   fontWeight: "normal",
   margin: "0 0 0.5rem 0",
-  lineHeight: "1.5rem",
+  lineHeight: 1.5,
   ...styleProps.useStyles(theme).head,
 }));
 
