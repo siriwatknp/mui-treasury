@@ -13,7 +13,7 @@ import {
 
 type Output = Required<Pick<Components, "JunInfo">>;
 
-declare module "@mui-treasury/component-info" {
+declare module "@mui-treasury/component-info/Info" {
   interface InfoPropsVariantOverrides {
     <%=h.extractStyleName(name)%>: true;
   }
