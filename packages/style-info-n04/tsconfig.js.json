@@ -1,0 +1,7 @@
+{
+  "extends": "../../tsconfig.js.json",
+  "include": ["src"],
+  "compilerOptions": {
+    "outDir": "javascript"
+  }
+}

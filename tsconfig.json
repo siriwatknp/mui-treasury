@@ -155,6 +155,7 @@
       "@mui-treasury/style-info-blog": ["packages/style-info-blog/src/"],
       "@mui-treasury/style-info-n02": ["packages/style-info-n02/src/"],
       "@mui-treasury/style-info-n03": ["packages/style-info-n03/src/"],
+      "@mui-treasury/style-info-n04": ["packages/style-info-n04/src/"],
       // hygen-style-target
 
       "@mui-treasury/use-number-input": ["packages/use-number-input/src/"],
