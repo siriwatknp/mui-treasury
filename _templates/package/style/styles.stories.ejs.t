@@ -27,12 +27,12 @@ export default {
   },
 } as Meta;
 
-export const <%=h.extractStyleName(name)%>: Story<<%=h.extractComponentName(name)%>Props> = (args) => {
+export const <%=h.extractStyleNamePascal(name)%>: Story<<%=h.extractComponentName(name)%>Props> = (args) => {
   return (
     <<%=h.toName(name)%> {...args} />
   );
 };
-<%=h.extractStyleName(name)%>.decorators = [
+<%=h.extractStyleNamePascal(name)%>.decorators = [
   withMuiThemeProvider((theme) => {
     theme.components = {
       ...theme.components,
