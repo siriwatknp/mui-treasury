@@ -9,7 +9,7 @@ import {
 
 type Output = Required<Pick<Components, "JunInfo">>;
 
-declare module "@mui-treasury/component-info/Info" {
+declare module "@mui-treasury/component-info" {
   interface InfoPropsVariantOverrides {
     n04: true;
   }
