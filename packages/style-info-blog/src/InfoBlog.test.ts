@@ -11,7 +11,7 @@ describe("style-info-blog", () => {
     getTheme: getInfoBlogTheme,
     getVariant: getInfoBlogVariant,
     componentName: "JunInfo",
-    slots: ["eyebrow", "head", "paragraph"],
+    slots: ["eyebrow", "head", "body"],
     variantProps: { variant: "blog" },
   });
 });

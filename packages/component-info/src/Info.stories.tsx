@@ -5,7 +5,7 @@ import {
   Info,
   InfoProps,
   InfoHead,
-  InfoParagraph,
+  InfoBody,
   InfoEyebrow,
 } from "@mui-treasury/component-info";
 
@@ -24,7 +24,7 @@ export const Base: Story<InfoProps> = (args) => {
     <Info>
       <InfoEyebrow>Material Blog</InfoEyebrow>
       <InfoHead>Unveiling Material You</InfoHead>
-      <InfoParagraph>The next stage for Material Design</InfoParagraph>
+      <InfoBody>The next stage for Material Design</InfoBody>
     </Info>
   );
 };
@@ -67,12 +67,12 @@ export const ThemeOverrides: Story<InfoProps> = (args) => {
       <Info>
         <InfoEyebrow>Theme overrides</InfoEyebrow>
         <InfoHead>Unveiling Material You</InfoHead>
-        <InfoParagraph>The next stage for Material Design</InfoParagraph>
+        <InfoBody>The next stage for Material Design</InfoBody>
       </Info>
       <Info variant="awesome">
         <InfoEyebrow>Theme variants</InfoEyebrow>
         <InfoHead>Unveiling Material You</InfoHead>
-        <InfoParagraph>The next stage for Material Design</InfoParagraph>
+        <InfoBody>The next stage for Material Design</InfoBody>
       </Info>
     </ThemeProvider>
   );

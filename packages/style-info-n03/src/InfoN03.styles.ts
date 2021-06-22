@@ -34,7 +34,7 @@ export const getInfoN03Styles = (
       fontWeight: 900,
       marginBottom: "0.72em",
     },
-    paragraph: {
+    body: {
       fontSize: 16,
       color: palette.text.primary,
       lineHeight: 1.75,
@@ -43,25 +43,25 @@ export const getInfoN03Styles = (
 };
 
 export const getInfoN03Theme = (theme: Theme): Output => {
-  const { eyebrow, head, paragraph } = getInfoN03Styles({ theme });
+  const { eyebrow, head, body } = getInfoN03Styles({ theme });
   return {
     JunInfo: {
       styleOverrides: {
         eyebrow: eyebrow,
         head: head,
-        paragraph: paragraph,
+        body: body,
       },
     },
   };
 };
 
 export const getInfoN03Variant = (theme: Theme): InfoThemeVariant => {
-  const { eyebrow, head, paragraph } = getInfoN03Styles({ theme });
+  const { eyebrow, head, body } = getInfoN03Styles({ theme });
   return {
     props: { variant: "n03" },
     style: {
       [`& .${infoClasses.head}`]: head,
-      [`& .${infoClasses.paragraph}`]: paragraph,
+      [`& .${infoClasses.body}`]: body,
       [`& .${infoClasses.eyebrow}`]: eyebrow,
     },
   };

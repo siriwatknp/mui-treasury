@@ -8,8 +8,8 @@ export interface InfoClasses {
   root: string;
   /** Styles applied to the head element. */
   head: string;
-  /** Styles applied to the paragraph element. */
-  paragraph: string;
+  /** Styles applied to the body element. */
+  body: string;
   /** Styles applied to the eyebrow element. */
   eyebrow: string;
 }
@@ -23,6 +23,6 @@ export function getInfoUtilityClass(slot: string) {
 export const infoClasses: InfoClasses = generateUtilityClasses("JunInfo", [
   "root",
   "head",
-  "paragraph",
+  "body",
   "eyebrow",
 ]);

@@ -47,7 +47,7 @@ export const getInfoN04Styles = (
         borderRadius: 2,
       },
     },
-    paragraph: {
+    body: {
       textAlign: "center",
       fontSize: 14,
       color: palette.mode === "dark" ? "#999" : "#222",
@@ -59,25 +59,25 @@ export const getInfoN04Styles = (
 };
 
 export const getInfoN04Theme = (theme: Theme): Output => {
-  const { eyebrow, head, paragraph } = getInfoN04Styles({ theme });
+  const { eyebrow, head, body } = getInfoN04Styles({ theme });
   return {
     JunInfo: {
       styleOverrides: {
         eyebrow: eyebrow,
         head: head,
-        paragraph: paragraph,
+        body: body,
       },
     },
   };
 };
 
 export const getInfoN04Variant = (theme: Theme): InfoThemeVariant => {
-  const { eyebrow, head, paragraph } = getInfoN04Styles({ theme });
+  const { eyebrow, head, body } = getInfoN04Styles({ theme });
   return {
     props: { variant: "n04" },
     style: {
       [`& .${infoClasses.head}`]: head,
-      [`& .${infoClasses.paragraph}`]: paragraph,
+      [`& .${infoClasses.body}`]: body,
       [`& .${infoClasses.eyebrow}`]: eyebrow,
     },
   };

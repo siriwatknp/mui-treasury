@@ -24,38 +24,39 @@ export type InfoParagraphProps = {
 
 const InfoParagraphRoot = styled("p", {
   name: "JunInfo",
-  slot: "Paragraph",
-  overridesResolver: (props, styles) => styles.paragraph,
+  slot: "Body",
+  overridesResolver: (props, styles) => styles.body,
 })<{ styleProps: AppendUseStyles<InfoParagraphProps> }>(
   ({ theme, styleProps }) => ({
     color: theme.palette.text.secondary,
     lineHeight: 1.5,
     fontSize: "1rem",
     margin: 0,
-    ...styleProps.useStyles(theme).paragraph,
+    ...styleProps.useStyles(theme).body,
   })
 );
 
-export const InfoParagraph: OverridableComponent<InfoParagraphProps> =
-  React.forwardRef<HTMLParagraphElement, InfoParagraphProps>(
-    function InfoParagraph(props, ref) {
-      const { children, component, className, ...other } = props;
-      const useStyles = useStylesCtx();
-      return (
-        <InfoParagraphRoot
-          ref={ref}
-          {...other}
-          as={component}
-          className={cx(infoClasses.paragraph, className)}
-          styleProps={{ ...props, useStyles }}
-        >
-          {children}
-        </InfoParagraphRoot>
-      );
-    }
-  );
+export const InfoBody: OverridableComponent<InfoParagraphProps> =
+  React.forwardRef<HTMLParagraphElement, InfoParagraphProps>(function InfoBody(
+    props,
+    ref
+  ) {
+    const { children, component, className, ...other } = props;
+    const useStyles = useStylesCtx();
+    return (
+      <InfoParagraphRoot
+        ref={ref}
+        {...other}
+        as={component}
+        className={cx(infoClasses.body, className)}
+        styleProps={{ ...props, useStyles }}
+      >
+        {children}
+      </InfoParagraphRoot>
+    );
+  });
 
 /**
  * @deprecated use InfoSubtitle instead
  */
-export const InfoSubtitle = InfoParagraph;
+export const InfoSubtitle = InfoBody;

@@ -6,7 +6,7 @@ import {
   Info,
   InfoHead,
   InfoEyebrow,
-  InfoParagraph,
+  InfoBody,
   InfoProps,
 } from "@mui-treasury/component-info";
 
@@ -34,10 +34,10 @@ export const N04: Story<InfoProps> = (args) => {
       <Info variant="n04" useStyles={getInfoN04Styles}>
         <InfoEyebrow>March 20, 2019</InfoEyebrow>
         <InfoHead>Nature Around Us</InfoHead>
-        <InfoParagraph>
+        <InfoBody>
           We are going to learn different kinds of species in nature that live
           together to form amazing environment.
-        </InfoParagraph>
+        </InfoBody>
       </Info>
     </Box>
   );

@@ -13,7 +13,7 @@ export interface InfoPropsVariantOverrides {}
 export type InfoSlotStyles = {
   root: CSSObject;
   head: CSSObject;
-  paragraph: CSSObject;
+  body: CSSObject;
   eyebrow: CSSObject;
 };
 

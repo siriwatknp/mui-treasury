@@ -35,7 +35,7 @@ export const getInfoBlogStyles = (
       marginBottom: "0.35em",
       fontFamily: family,
     },
-    paragraph: {
+    body: {
       marginBottom: spacing(2),
       fontSize: "0.8rem",
       letterSpacing: "0.00938em",
@@ -45,25 +45,25 @@ export const getInfoBlogStyles = (
 };
 
 export const getInfoBlogTheme = (theme: Theme): Output => {
-  const { eyebrow, head, paragraph } = getInfoBlogStyles({ theme });
+  const { eyebrow, head, body } = getInfoBlogStyles({ theme });
   return {
     JunInfo: {
       styleOverrides: {
         eyebrow: eyebrow,
         head: head,
-        paragraph: paragraph,
+        body: body,
       },
     },
   };
 };
 
 export const getInfoBlogVariant = (theme: Theme): InfoThemeVariant => {
-  const { eyebrow, head, paragraph } = getInfoBlogStyles({ theme });
+  const { eyebrow, head, body } = getInfoBlogStyles({ theme });
   return {
     props: { variant: "blog" },
     style: {
       [`& .${infoClasses.head}`]: head,
-      [`& .${infoClasses.paragraph}`]: paragraph,
+      [`& .${infoClasses.body}`]: body,
       [`& .${infoClasses.eyebrow}`]: eyebrow,
     },
   };

@@ -33,7 +33,7 @@ export const getInfoN02Styles = (
       fontWeight: 900,
       marginBottom: "0.4em",
     },
-    paragraph: {
+    body: {
       fontSize: 18,
       color: palette.text.secondary,
     },
@@ -41,25 +41,25 @@ export const getInfoN02Styles = (
 };
 
 export const getInfoN02Theme = (theme: Theme): Output => {
-  const { eyebrow, head, paragraph } = getInfoN02Styles({ theme });
+  const { eyebrow, head, body } = getInfoN02Styles({ theme });
   return {
     JunInfo: {
       styleOverrides: {
         eyebrow: eyebrow,
         head: head,
-        paragraph: paragraph,
+        body: body,
       },
     },
   };
 };
 
 export const getInfoN02Variant = (theme: Theme): InfoThemeVariant => {
-  const { eyebrow, head, paragraph } = getInfoN02Styles({ theme });
+  const { eyebrow, head, body } = getInfoN02Styles({ theme });
   return {
     props: { variant: "n02" },
     style: {
       [`& .${infoClasses.head}`]: head,
-      [`& .${infoClasses.paragraph}`]: paragraph,
+      [`& .${infoClasses.body}`]: body,
       [`& .${infoClasses.eyebrow}`]: eyebrow,
     },
   };

@@ -10,7 +10,7 @@ import {
   Info,
   InfoHead,
   InfoEyebrow,
-  InfoParagraph,
+  InfoBody,
   InfoProps,
 } from "@mui-treasury/component-info";
 
@@ -38,10 +38,10 @@ export const <%=h.extractStyleNamePascal(name)%>: Story<InfoProps> = (args) => {
       <Info variant="<%= h.extractStyleName(name)%>" useStyles={get<%= h.toName(name) %>Styles}>
         <InfoEyebrow>March 20, 2019</InfoEyebrow>
         <InfoHead>Nature Around Us</InfoHead>
-        <InfoParagraph>
+        <InfoBody>
           We are going to learn different kinds of species in nature that live
           together to form amazing environment.
-        </InfoParagraph>
+        </InfoBody>
       </Info>
     </Box>
   );
