@@ -1,7 +1,3 @@
----
-to: packages/<%=h.toNamePath(name)%>/src/<%=h.toName(name)%>.stories.tsx
-unless_exists: true
----
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
@@ -15,10 +11,10 @@ import {
 } from "@mui-treasury/component-info";
 
 import {
-  get<%= h.toName(name) %>Styles,
-  // get<%= h.toName(name) %>Theme,
-  // get<%= h.toName(name) %>Variant,
-} from "@mui-treasury/style-info-<%= h.extractStyleName(name)%>";
+  getInfoBlogStyles,
+  // getInfoBlogTheme,
+  // getInfoBlogVariant,
+} from "@mui-treasury/style-info-blog";
 
 import { withMuiThemeProvider } from "stories/_internal/decorators";
 
@@ -32,10 +28,10 @@ export default {
   },
 } as Meta;
 
-export const <%=h.extractStyleNamePascal(name)%>: Story<InfoProps> = (args) => {
+export const Blog: Story<InfoProps> = (args) => {
   return (
     <Box sx={{ maxWidth: 288 }}>
-      <Info variant="<%= h.extractStyleName(name)%>" useStyles={get<%= h.toName(name) %>Styles}>
+      <Info variant="blog" useStyles={getInfoBlogStyles}>
         <InfoEyebrow>March 20, 2019</InfoEyebrow>
         <InfoHead>Nature Around Us</InfoHead>
         <InfoParagraph>
@@ -46,14 +42,14 @@ export const <%=h.extractStyleNamePascal(name)%>: Story<InfoProps> = (args) => {
     </Box>
   );
 };
-<%=h.extractStyleNamePascal(name)%>.decorators = [
+Blog.decorators = [
   withMuiThemeProvider((theme) => {
     theme.components = {
       ...theme.components,
       // JunInfo: {
-      //   variants: [get<%= h.toName(name) %>Variant(theme)],
+      //   variants: [getInfoBlogVariant(theme)],
       // },
-      // ...get<%= h.toName(name) %>Theme(theme),
+      // ...getInfoBlogTheme(theme),
     };
     return theme;
   }),
