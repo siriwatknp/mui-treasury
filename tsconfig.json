@@ -158,6 +158,7 @@
       "@mui-treasury/style-info-n04": ["packages/style-info-n04/src/"],
       "@mui-treasury/style-info-apex": ["packages/style-info-apex/src/"],
       "@mui-treasury/style-info-beats": ["packages/style-info-beats/src/"],
+      "@mui-treasury/style-info-chatz": ["packages/style-info-chatz/src/"],
       // hygen-style-target
 
       "@mui-treasury/use-number-input": ["packages/use-number-input/src/"],
