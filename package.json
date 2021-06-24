@@ -81,7 +81,7 @@
     "eslint-plugin-jsx-a11y": "6.x",
     "eslint-plugin-react": "7.x",
     "eslint-plugin-react-hooks": "2.x",
-    "firebase-tools": "^7.4.0",
+    "firebase-tools": "^9.14.0",
     "fs-extra": "^8.1.0",
     "glob": "^7.1.4",
     "husky": "^4.2.1",
