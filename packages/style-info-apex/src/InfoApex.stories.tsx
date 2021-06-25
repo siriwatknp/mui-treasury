@@ -39,6 +39,9 @@ export const Apex: Story<InfoProps> = (args) => {
     </Box>
   );
 };
+Apex.parameters = {
+  googleFont: "Ubuntu",
+};
 Apex.decorators = [
   withMuiThemeProvider((theme) => {
     theme.components = {

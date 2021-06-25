@@ -44,6 +44,9 @@ export const Chatz: Story<InfoProps> = (args) => {
     </Box>
   );
 };
+Chatz.parameters = {
+  googleFont: "Maven Pro",
+};
 Chatz.decorators = [
   withMuiThemeProvider((theme) => {
     theme.components = {

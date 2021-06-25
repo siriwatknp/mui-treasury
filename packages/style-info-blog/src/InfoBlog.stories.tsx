@@ -32,11 +32,11 @@ export const Blog: Story<InfoProps> = (args) => {
   return (
     <Box sx={{ maxWidth: 288 }}>
       <Info variant="blog" useStyles={getInfoBlogStyles}>
-        <InfoEyebrow>March 20, 2019</InfoEyebrow>
-        <InfoHead>Nature Around Us</InfoHead>
+        <InfoEyebrow>28 MAR 2019</InfoEyebrow>
+        <InfoHead>What is Git ?</InfoHead>
         <InfoBody>
-          We are going to learn different kinds of species in nature that live
-          together to form amazing environment.
+          Git is a distributed version control system. Every dev has a working
+          copy of the code and...
         </InfoBody>
       </Info>
     </Box>

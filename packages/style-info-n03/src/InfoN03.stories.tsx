@@ -32,11 +32,11 @@ export const N03: Story<InfoProps> = (args) => {
   return (
     <Box sx={{ maxWidth: 288 }}>
       <Info variant="n03" useStyles={getInfoN03Styles}>
-        <InfoEyebrow>March 20, 2019</InfoEyebrow>
-        <InfoHead>Nature Around Us</InfoHead>
+        <InfoEyebrow>GOOGLE INC.</InfoEyebrow>
+        <InfoHead>Project Polymer</InfoHead>
         <InfoBody>
-          We are going to learn different kinds of species in nature that live
-          together to form amazing environment.
+          Web components usher in a new era of web development based on
+          encapsulated and interoperable custom
         </InfoBody>
       </Info>
     </Box>

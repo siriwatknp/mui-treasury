@@ -32,11 +32,11 @@ export const N04: Story<InfoProps> = (args) => {
   return (
     <Box sx={{ maxWidth: 288 }}>
       <Info variant="n04" useStyles={getInfoN04Styles}>
-        <InfoEyebrow>March 20, 2019</InfoEyebrow>
-        <InfoHead>Nature Around Us</InfoHead>
+        <InfoEyebrow>Kesha</InfoEyebrow>
+        <InfoHead>Inner Varnika</InfoHead>
         <InfoBody>
-          We are going to learn different kinds of species in nature that live
-          together to form amazing environment.
+          That year, collection of songs, review melodies, memories full, this
+          is a long and warm journey
         </InfoBody>
       </Info>
     </Box>

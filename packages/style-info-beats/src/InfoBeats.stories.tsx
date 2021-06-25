@@ -39,6 +39,9 @@ export const Beats: Story<InfoProps> = (args) => {
     </Box>
   );
 };
+Beats.parameters = {
+  googleFont: "Spartan",
+};
 Beats.decorators = [
   withMuiThemeProvider((theme) => {
     theme.components = {
