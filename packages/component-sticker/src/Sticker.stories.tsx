@@ -15,6 +15,7 @@ import {
 } from "@mui-treasury/theme-treasury";
 
 import { Sticker, StickerProps } from "./Sticker";
+import { withMuiThemeProvider } from "stories/_internal/decorators";
 
 export default {
   title: "Component/Sticker",
@@ -45,6 +46,7 @@ export default {
   parameters: {
     layout: "centered",
   },
+  decorators: [withMuiThemeProvider(() => createTreasuryTheme())],
 } as Meta;
 
 export const Palette: Story<StickerProps> = (args) => {

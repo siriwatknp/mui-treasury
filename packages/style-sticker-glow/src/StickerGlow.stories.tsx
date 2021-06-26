@@ -1,11 +1,15 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 import { useTheme } from "@material-ui/core/styles";
-import { treasuryPalette } from "@mui-treasury/theme-treasury";
+import {
+  createTreasuryTheme,
+  treasuryPalette,
+} from "@mui-treasury/theme-treasury";
 import { Sticker, StickerProps } from "@mui-treasury/component-sticker";
 import { getStickerGlowStyles } from "@mui-treasury/style-sticker-glow";
 
 import Add from "@material-ui/icons/Add";
+import { withMuiThemeProvider } from "stories/_internal/decorators";
 
 export default {
   title: "Component/Sticker/Glow",
@@ -39,6 +43,7 @@ export default {
   parameters: {
     layout: "centered",
   },
+  decorators: [withMuiThemeProvider(() => createTreasuryTheme())],
 } as Meta;
 
 export const Solid: Story<StickerProps> = (args) => {

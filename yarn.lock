@@ -17105,10 +17105,10 @@ storybook-addon-mdx-embed@0.0.19:
   resolved "https://registry.yarnpkg.com/storybook-addon-mdx-embed/-/storybook-addon-mdx-embed-0.0.19.tgz#200307ffcf700b776ffb8146085f035ca3d883bd"
   integrity sha512-xYvLALtxPl21rony/ODBs4RFhjMBEHKCBxYyALbzcM8vUwoM0HsvjhMFFfh1pqH+tKfp+as5Ool3fBF+mggSdw==
 
-storybook-addon-mui-mode@0.0.9:
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/storybook-addon-mui-mode/-/storybook-addon-mui-mode-0.0.9.tgz#529124d1db7f37a806a7932a27f3fd14245988e0"
-  integrity sha512-DqIR94fGoLWEkQk37FXeiiNFST3ssNcbsHCy+aR9C3U9MtRGOlxj5mYCox+O6bfuCUfswBZ5csWZvTdaY7XPWw==
+storybook-addon-mui-mode@0.0.11:
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/storybook-addon-mui-mode/-/storybook-addon-mui-mode-0.0.11.tgz#c4fc453f0d59004387dacbb33870b76d94192438"
+  integrity sha512-BTNIDrA8Yw8ooNgUqFm7v4fVfpQRGwz0e2X0ERpPB7LQML2f9E62e6kxzvsjJY97PiiFFnrUnCEN9kqCkvu5mA==
   dependencies:
     react-select "4.3.1"
 
