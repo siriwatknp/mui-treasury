@@ -50,4 +50,5 @@ export const Analytics = createStory("Analytics");
 Analytics.parameters = {
   // disables Chromatic's snapshotting on a story level
   chromatic: { disableSnapshot: true },
+  disableGlobalThemeProvider: true,
 };

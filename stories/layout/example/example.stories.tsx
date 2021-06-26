@@ -20,6 +20,7 @@ export default {
     },
     layout: "fullscreen",
     controls: { hideNoControlsWarning: true },
+    disableGlobalThemeProvider: true,
   },
 } as Meta;
 
@@ -42,7 +43,6 @@ const createStory = (name: keyof typeof Pages) => {
     },
     backgrounds: {},
   };
-  StoryComponent.decorators = [withMuiThemeProvider()];
   return StoryComponent;
 };
 export const ControlEdgeSidebar = createStory("ControlEdgeSidebar");

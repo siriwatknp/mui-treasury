@@ -84,7 +84,7 @@ const ControlEdgeSidebar = () => {
               <ListSubheader>Trigger</ListSubheader>
               <ListItem button onClick={toggleLeftSidebarCollapsed}>
                 <ListItemText>
-                  {leftEdgeSidebar?.collapsed ? "Expand" : "Collape"}
+                  {leftEdgeSidebar?.collapsed ? "Expand" : "Collapse"}
                 </ListItemText>
               </ListItem>
             </List>

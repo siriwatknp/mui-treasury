@@ -1,7 +1,6 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
 import { Source } from "@storybook/addon-docs/blocks";
-import { withMuiThemeProvider } from "stories/_internal/decorators";
 
 const Pages = {
   Standard: React.lazy(() => import("./Standard")),
@@ -41,7 +40,6 @@ const createStory = (name: keyof typeof Pages) => {
     },
     backgrounds: {},
   };
-  StoryComponent.decorators = [withMuiThemeProvider()];
   return StoryComponent as Story;
 };
 export const ContentBased = createStory("ContentBased");

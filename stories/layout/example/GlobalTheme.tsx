@@ -19,7 +19,6 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import Paper from "@material-ui/core/Paper";
 import Skeleton from "@material-ui/core/Skeleton";
 import TextField from "@material-ui/core/TextField";
-import Divider from "@material-ui/core/Divider";
 
 import Home from "@material-ui/icons/Home";
 import Person from "@material-ui/icons/Person";

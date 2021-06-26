@@ -1,32 +1,18 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense } from "react";
 import { StoryContext } from "@storybook/react/types-6-0";
 
-import { ThemeProvider, StyledEngineProvider } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import {
+  StyledEngineProvider,
+  createTheme,
+  ThemeProvider,
+} from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { createTreasuryTheme } from "@mui-treasury/theme-treasury";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 import "./storybook-global.css";
 import "./prism-theme.css";
 
-const withThemeProvider = (Story: any, context: StoryContext) => {
-  const mode = context.globals?.muiMode ?? "light";
-  const [theme, setTheme] = useState(
-    createTreasuryTheme({
-      palette: {
-        mode,
-      },
-    })
-  );
-  useEffect(() => {
-    setTheme(
-      createTreasuryTheme({
-        palette: {
-          mode,
-        },
-      })
-    );
-  }, [mode]);
+const withStyledEngineProvider = (Story: any, context: StoryContext) => {
   return (
     <Suspense
       fallback={
@@ -41,20 +27,36 @@ const withThemeProvider = (Story: any, context: StoryContext) => {
       }
     >
       <StyledEngineProvider injectFirst>
-        {context.kind.startsWith("Layout") ? (
-          <Story {...context} setTheme={setTheme} />
-        ) : (
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <Story {...context} setTheme={setTheme} />
-          </ThemeProvider>
-        )}
+        <Story {...context} />
       </StyledEngineProvider>
     </Suspense>
   );
 };
 
-export const decorators = [withThemeProvider];
+export const withThemeProvider = (Story: any, context: StoryContext) => {
+  const { parameters } = context;
+  const mode = context.globals?.muiMode ?? "light";
+  const googleFont = context.globals?.googleFont;
+  const theme = React.useMemo(
+    () =>
+      createTheme({
+        palette: { mode },
+        typography: { fontFamily: googleFont },
+      }),
+    [mode, googleFont]
+  );
+  if (parameters.disableGlobalThemeProvider) {
+    return <Story {...context} />;
+  }
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Story {...context} />
+    </ThemeProvider>
+  );
+};
+
+export const decorators = [withStyledEngineProvider, withThemeProvider];
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
