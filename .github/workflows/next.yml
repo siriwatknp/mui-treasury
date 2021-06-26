@@ -58,10 +58,13 @@ jobs:
         if: "!contains(github.event.head_commit.message, '[skip release]')"
         run: git push origin HEAD --tags
 
+      - name: Create .env file # for building storybook
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_GOOGLE_FONT_API_KEY: ${{ secrets.GOOGLE_FONT_API_KEY }}
+
       - name: Build storybook
         run: yarn build:storybook
-        env:
-          GOOGLE_FONT_API_KEY: ${{ secrets.GOOGLE_FONT_API_KEY }}
       - name: Deploy Storybook 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
