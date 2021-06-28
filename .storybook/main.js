@@ -45,7 +45,7 @@ module.exports = {
     };
   },
   // disable typescript doc-gen for fast ui development
-  // typescript: {
-  //   reactDocgen: "none",
-  // },
+  typescript: {
+    reactDocgen: "none",
+  },
 };

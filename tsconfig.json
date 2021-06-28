@@ -79,6 +79,8 @@
       ],
       "@mui-treasury/component-info": ["packages/component-info/src/"],
       "@mui-treasury/component-info/*": ["packages/component-info/src/*"],
+      "@mui-treasury/component-flex": ["packages/component-flex/src/"],
+      "@mui-treasury/component-flex/*": ["packages/component-flex/src/*"],
       // hygen-component-target
 
       "@mui-treasury/style-sticker-glow": ["packages/style-sticker-glow/src/"],
