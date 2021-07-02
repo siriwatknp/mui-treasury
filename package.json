@@ -96,7 +96,7 @@
     "pretty-quick": "^2.0.1",
     "prop-types": "^15.7.2",
     "react-test-renderer": "^16.13.0",
-    "typescript": "^3.8.3"
+    "typescript": "^4.3.5"
   },
   "dependencies": {
     "@emotion/react": "11.4.0",
