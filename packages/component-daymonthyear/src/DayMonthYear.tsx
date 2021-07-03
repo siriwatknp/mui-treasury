@@ -1,10 +1,6 @@
 import React from "react";
 import cx from "clsx";
-import {
-  styled,
-  unstable_useThemeProps as useThemeProps,
-  Theme,
-} from "@material-ui/core/styles";
+import { styled, useThemeProps, Theme } from "@material-ui/core/styles";
 import { unstable_composeClasses as composeClasses } from "@material-ui/unstyled";
 import { OverridableComponent } from "@mui-treasury/types";
 import { SxProps } from "@material-ui/system";

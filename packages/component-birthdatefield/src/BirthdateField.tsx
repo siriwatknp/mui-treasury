@@ -1,10 +1,6 @@
 import React from "react";
 import cx from "clsx";
-import {
-  styled,
-  unstable_useThemeProps as useThemeProps,
-  Theme,
-} from "@material-ui/core/styles";
+import { styled, useThemeProps, Theme } from "@material-ui/core/styles";
 import { OverridableComponent } from "@mui-treasury/types";
 import TextField, { TextFieldProps } from "@material-ui/core/TextField";
 import {

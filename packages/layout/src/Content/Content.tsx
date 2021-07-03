@@ -1,10 +1,6 @@
 import React from "react";
 import cx from "clsx";
-import {
-  styled,
-  Theme,
-  unstable_useThemeProps as useThemeProps,
-} from "@material-ui/core/styles";
+import { styled, Theme, useThemeProps } from "@material-ui/core/styles";
 import { SxProps } from "@material-ui/system";
 import { useLayoutCtx, PropsWithFunctionChildren } from "../Root/Root";
 import { getContentSxProps } from "./getContentSxProps";

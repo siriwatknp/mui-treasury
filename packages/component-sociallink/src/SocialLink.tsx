@@ -1,10 +1,6 @@
 import React, { PropsWithChildren } from "react";
 import cx from "clsx";
-import {
-  styled,
-  unstable_useThemeProps as useThemeProps,
-  Theme,
-} from "@material-ui/core/styles";
+import { styled, useThemeProps, Theme } from "@material-ui/core/styles";
 import { SxProps } from "@material-ui/system";
 import { OverridableComponent } from "@mui-treasury/types";
 

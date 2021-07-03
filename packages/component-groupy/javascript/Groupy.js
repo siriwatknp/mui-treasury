@@ -1,9 +1,6 @@
 import React from "react";
 import cx from "clsx";
-import {
-  styled,
-  unstable_useThemeProps as useThemeProps,
-} from "@material-ui/core/styles";
+import { styled, useThemeProps } from "@material-ui/core/styles";
 import { unstable_composeClasses as composeClasses } from "@material-ui/unstyled";
 import { getGroupyUtilityClass } from "./groupyClasses";
 const useUtilityClasses = (styleProps) => {
