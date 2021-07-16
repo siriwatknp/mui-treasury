@@ -1,9 +1,6 @@
 import React from "react";
 import cx from "clsx";
-import {
-  styled,
-  unstable_useThemeProps as useThemeProps,
-} from "@material-ui/core/styles";
+import { styled, useThemeProps } from "@material-ui/core/styles";
 import { navigationClasses } from "./navigationClasses";
 const NavItemRoot = styled(
   "a",

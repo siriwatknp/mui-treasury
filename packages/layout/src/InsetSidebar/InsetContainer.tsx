@@ -1,11 +1,7 @@
 import React from "react";
 import cx from "clsx";
 import Container, { ContainerProps } from "@material-ui/core/Container";
-import {
-  styled,
-  Theme,
-  unstable_useThemeProps as useThemeProps,
-} from "@material-ui/core/styles";
+import { styled, Theme, useThemeProps } from "@material-ui/core/styles";
 
 const InsetContainerRoot = styled(Container, {
   name: "AppInsetContainer",
