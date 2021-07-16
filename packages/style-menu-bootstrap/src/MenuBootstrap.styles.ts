@@ -47,7 +47,6 @@ export const getMenuBootstrapTheme = (theme: Theme): Output => ({
   },
   MuiMenuItem: {
     defaultProps: {
-      // @ts-expect-error
       disableRipple: true,
     },
   },
