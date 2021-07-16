@@ -1,10 +1,6 @@
 import React, { useContext } from "react";
 import cx from "clsx";
-import {
-  styled,
-  unstable_useThemeProps as useThemeProps,
-  Theme,
-} from "@material-ui/core/styles";
+import { styled, useThemeProps, Theme } from "@material-ui/core/styles";
 import Drawer, { DrawerProps, drawerClasses } from "@material-ui/core/Drawer";
 import { ModalProps } from "@material-ui/core/Modal";
 import {

@@ -6,7 +6,7 @@ import React, { PropsWithChildren } from "react";
 import cx from "clsx";
 import {
   styled,
-  unstable_useThemeProps as useThemeProps,
+  useThemeProps,
   Theme,
 } from "@material-ui/core/styles";
 import { unstable_composeClasses as composeClasses } from "@material-ui/unstyled";
