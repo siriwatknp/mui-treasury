@@ -1,6 +1,5 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import { styled } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
@@ -9,13 +8,7 @@ import Divider from "@material-ui/core/Divider";
 import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
-import {
-  Flex,
-  FlexProps,
-  FlexRow,
-  FlexCol,
-  Item,
-} from "@mui-treasury/component-flex";
+import { FlexRow, FlexCol, Item, Flex } from "@mui-treasury/component-flex";
 
 import CallMade from "@material-ui/icons/CallMade";
 
@@ -29,9 +22,9 @@ export default {
   },
 } as Meta;
 
-export const ActionCard: Story<FlexProps> = () => {
+export const ActionCard: Story = () => {
   return (
-    <FlexCol
+    <Flex.Col
       gap={3}
       borderRadius={2}
       border="1px solid"
@@ -39,25 +32,25 @@ export const ActionCard: Story<FlexProps> = () => {
       maxWidth={500}
       style={{ resize: "horizontal", overflow: "auto" }}
     >
-      <Item>
+      <Flex.Item>
         <Typography variant="h6" px={2} pt={2}>
           <b>ระดับใกล้โปร • Turn-Pro</b>
         </Typography>
-      </Item>
-      <Item py={1} bgcolor="primary.main" color="#fff">
+      </Flex.Item>
+      <Flex.Item py={1} bgcolor="primary.main" color="#fff">
         <Typography align="center">เปิดรับสมัครแล้ว ถึง 30 พ.ค. 63</Typography>
-      </Item>
+      </Flex.Item>
       <Box px={2}>
         สําหรับกลุ่มที่ต้องการจริงจังกับการแก้ปัญหาในประเด็นที่ทําและต้องการการสนับสนุน
         เพื่อสร้างองค์กรของตนเองสําหรับทํางานต่อในระยะยาว
       </Box>
-      <FlexRow gap={1} px={2} pb={2}>
-        <Item flexGrow={1}>
+      <Flex.Row gap={1} px={2} pb={2}>
+        <Flex.Item flexGrow={1}>
           <Button variant={"outlined"} fullWidth disableElevation>
             อ่านรายละเอียด
           </Button>
-        </Item>
-        <Item flexGrow={1}>
+        </Flex.Item>
+        <Flex.Item flexGrow={1}>
           <Button
             variant={"contained"}
             color={"primary"}
@@ -66,16 +59,16 @@ export const ActionCard: Story<FlexProps> = () => {
           >
             โหลดใบสมัคร
           </Button>
-        </Item>
-      </FlexRow>
-    </FlexCol>
+        </Flex.Item>
+      </Flex.Row>
+    </Flex.Col>
   );
 };
 
-export const Albatross: Story<FlexProps> = () => {
+export const Albatross: Story = () => {
   return (
     <FlexRow
-      albatross="20rem"
+      stackPoint="20rem"
       gap={2}
       style={{ resize: "horizontal", overflow: "auto", width: 360 }}
     >
@@ -107,7 +100,7 @@ export const PersonItem = ({
       <Item noShrink>
         <Avatar />
       </Item>
-      <FlexRow gap={1} grow albatross={240} alignItems="center">
+      <FlexRow gap={1} grow stackPoint={240} alignItems="center">
         <Item grow>
           <Typography noWrap>
             <b>{name}</b>
@@ -230,7 +223,7 @@ export const ArticleCard = () => {
   return (
     <FlexRow
       gap={2}
-      albatross={343}
+      stackPoint={343}
       style={{ resize: "horizontal", overflow: "auto" }}
     >
       <Item
@@ -262,7 +255,7 @@ export const ShowcaseCard = () => {
   return (
     <FlexRow
       minWidth={235}
-      albatross={240 + 200 + 48}
+      stackPoint={240 + 200 + 16}
       p={2}
       gap={2}
       borderRadius={2}

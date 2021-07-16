@@ -4,6 +4,14 @@ import { Flex } from "./Flex";
 
 describe("Flex", () => {
   it("renders without clash", () => {
-    expect(() => render(<Flex />)).not.toThrow();
+    expect(() =>
+      render(
+        <Flex.Row>
+          <Flex.Col>
+            <Flex.Item>Foo</Flex.Item>
+          </Flex.Col>
+        </Flex.Row>
+      )
+    ).not.toThrow();
   });
 });
