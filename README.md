@@ -18,12 +18,16 @@ Imagine a place with millions of real-world, ready-to-use, and themable componen
 
 ### `@mui-treasury/layout`
 
-**BREAKING CHANGE** see [v5 documentation](https://next.mui-treasury.com/?path=/story/layout-migration-to-v5--page)
+- [Codesandbox demo](https://codesandbox.io/s/material-ui-layout-7mn9xq3nnj?file=/src/LayoutV5.js)
+- [v5 documentation](https://next.mui-treasury.com/?path=/story/layout-introduction--page)
+  - [Migration guide](https://next.mui-treasury.com/?path=/story/layout-migration-to-v5--page)
+  - [Tutorials](https://next.mui-treasury.com/?path=/story/layout-tutorials-dashboard--page)
+  - [Features](https://next.mui-treasury.com/?path=/story/layout-feature-auto-collapse--page)
 
 **Summary Highlight**
-- smaller bundle size (-30%)
-- faster
-- single sidebar (no duplicate for all variants)
+  - smaller bundle size (-30%)
+  - faster
+  - single sidebar (no duplicate for all variants)
 
 ### ~~`@mui-treasury/components, @mui-treasury/styles`~~
 These packages does not work with MUI v5 anymore due to package names change. I plan to split them into isolated packages ([in-progress](https://next.mui-treasury.com/?path=/story/component)).
