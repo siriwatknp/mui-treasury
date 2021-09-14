@@ -3,9 +3,7 @@ import cx from "clsx";
 import { styled, useThemeProps, Theme } from "@mui/material/styles";
 import { unstable_composeClasses as composeClasses } from "@mui/core";
 import SvgIcon from "@mui/material/SvgIcon";
-import OutlinedInput, {
-  OutlinedInputProps,
-} from "@mui/material/OutlinedInput";
+import OutlinedInput, { OutlinedInputProps } from "@mui/material/OutlinedInput";
 import InputAdornment, {
   InputAdornmentProps,
 } from "@mui/material/InputAdornment";
@@ -63,10 +61,7 @@ const NumberSpinnerButton = styled(ButtonBase, {
   slot: "Button",
   overridesResolver: (props, styles) => {
     const { styleProps } = props;
-    return {
-      ...styles.button,
-      ...styles[styleProps.type],
-    };
+    return [styles.button, styles[styleProps.type]];
   },
 })<{ styleProps: { type: "increment" | "decrement" } }>(
   ({ theme, styleProps }) => ({

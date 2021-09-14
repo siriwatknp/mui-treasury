@@ -48,10 +48,10 @@ const GroupyRoot = styled("div", {
   slot: "Root",
   overridesResolver: (props: { styleProps: GroupyProps }, styles) => {
     const { styleProps } = props;
-    return {
-      ...styles.root,
-      ...(styleProps.orientation && styles[styleProps.orientation]),
-    };
+    return [
+      styles.root,
+      styleProps.orientation && styles[styleProps.orientation],
+    ];
   },
 })<{ styleProps: GroupyProps }>(({ styleProps }) => ({
   display: "flex",

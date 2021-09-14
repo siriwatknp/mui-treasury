@@ -34,11 +34,11 @@ const NavItemRoot = styled("a", {
   slot: "Item",
   overridesResolver: (props, styles) => {
     const { styleProps } = props;
-    return {
-      ...styles.item,
-      ...(styleProps.active && styles.itemActive),
-      ...(styleProps.disabled && styles.itemDisabled),
-    };
+    return [
+      styles.item,
+      styleProps.active && styles.itemActive,
+      styleProps.disabled && styles.itemDisabled,
+    ];
   },
 })<{ styleProps: NavItemProps }>(
   ({ theme: { palette, shape, spacing, typography }, styleProps }) => ({

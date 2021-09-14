@@ -52,18 +52,6 @@ export type StickerProps = {
   sx?: SxProps<Theme>;
 };
 
-const overridesResolver = (props: any, styles: Record<string, object>) => {
-  const { styleProps } = props;
-
-  return {
-    ...styles.root,
-    ...styles[styleProps.variant],
-    ...styles[styleProps[`color${capitalize(styleProps.palette)}`]],
-    ...(styleProps.hasText && styles.hasText),
-    ...(styleProps.round && styles.round),
-  };
-};
-
 const useUtilityClasses = (styleProps: StickerProps) => {
   const { variant, round, palette, hasText, classes } = styleProps;
   const slots = {
@@ -85,7 +73,17 @@ const useUtilityClasses = (styleProps: StickerProps) => {
 const StickerRoot = styled("div", {
   name: "JunSticker",
   slot: "Root",
-  overridesResolver,
+  overridesResolver: (props, styles) => {
+    const { styleProps } = props;
+
+    return [
+      styles.root,
+      styles[styleProps.variant],
+      styles[styleProps[`color${capitalize(styleProps.palette)}`]],
+      styleProps.hasText && styles.hasText,
+      styleProps.round && styles.round,
+    ];
+  },
 })<{ styleProps: StickerProps }>(
   ({ theme: { treasury, ...theme }, styleProps }) => ({
     display: "inline-flex",

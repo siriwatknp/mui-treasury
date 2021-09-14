@@ -57,10 +57,7 @@ const InfoRoot = styled("div", {
   slot: "Root",
   overridesResolver: (props, styles) => {
     const { styleProps } = props;
-    return {
-      ...styles.root,
-      ...(styleProps.variant && styles[styleProps.variant]),
-    };
+    return [styles.root, styleProps.variant && styles[styleProps.variant]];
   },
 })<{ styleProps: InfoProps }>(({ theme, styleProps }) => ({
   display: "block",

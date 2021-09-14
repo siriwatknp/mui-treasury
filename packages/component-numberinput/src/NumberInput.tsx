@@ -3,9 +3,7 @@ import cx from "clsx";
 import { styled, useThemeProps, Theme } from "@mui/material/styles";
 import { unstable_composeClasses as composeClasses } from "@mui/core";
 import SvgIcon from "@mui/material/SvgIcon";
-import OutlinedInput, {
-  OutlinedInputProps,
-} from "@mui/material/OutlinedInput";
+import OutlinedInput, { OutlinedInputProps } from "@mui/material/OutlinedInput";
 import InputAdornment, {
   InputAdornmentProps,
 } from "@mui/material/InputAdornment";
@@ -62,10 +60,10 @@ const useUtilityClasses = (styleProps: NumberInputProps) => {
 const NumberInputStepper = styled("div", {
   name: "JunNumberInput",
   slot: "Stepper",
-  overridesResolver: (props, styles) => ({
-    ...styles.stepper,
-    ...(props.size && styles[`size${capitalize(props.size)}`]),
-  }),
+  overridesResolver: (props, styles) => [
+    styles.stepper,
+    props.size && styles[`size${capitalize(props.size)}`],
+  ],
 })({
   display: "flex",
   flexDirection: "column",
@@ -77,10 +75,7 @@ const NumberInputButton = styled(ButtonBase, {
   slot: "Button",
   overridesResolver: (props, styles) => {
     const { styleProps } = props;
-    return {
-      ...styles.button,
-      ...styles[styleProps.type],
-    };
+    return [styles.button, styles[styleProps.type]];
   },
 })<{
   styleProps: { size: "small" | "medium" };
