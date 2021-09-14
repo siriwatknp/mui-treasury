@@ -2,22 +2,22 @@ import React from "react";
 import cx from "clsx";
 import styled from "@emotion/styled";
 
-import withStyles from "@material-ui/styles/withStyles";
-import Box from "@material-ui/core/Box";
-import IconButton from "@material-ui/core/IconButton";
-import Tooltip from "@material-ui/core/Tooltip";
+import withStyles from "@mui/styles/withStyles";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
 
-import Checkbox from "@material-ui/icons/CheckBox";
-import CheckBoxOutlineBlank from "@material-ui/icons/CheckBoxOutlineBlank";
-import Star from "@material-ui/icons/Star";
-import StarBorder from "@material-ui/icons/StarBorder";
-import DragIndicator from "@material-ui/icons/DragIndicator";
-import LabelOutlined from "@material-ui/icons/LabelOutlined";
-import Drafts from "@material-ui/icons/Drafts";
-import Archive from "@material-ui/icons/Archive";
-import Delete from "@material-ui/icons/Delete";
-import WatchLater from "@material-ui/icons/WatchLater";
-import Label from "@material-ui/icons/Label";
+import Checkbox from "@mui/icons-material/CheckBox";
+import CheckBoxOutlineBlank from "@mui/icons-material/CheckBoxOutlineBlank";
+import Star from "@mui/icons-material/Star";
+import StarBorder from "@mui/icons-material/StarBorder";
+import DragIndicator from "@mui/icons-material/DragIndicator";
+import LabelOutlined from "@mui/icons-material/LabelOutlined";
+import Drafts from "@mui/icons-material/Drafts";
+import Archive from "@mui/icons-material/Archive";
+import Delete from "@mui/icons-material/Delete";
+import WatchLater from "@mui/icons-material/WatchLater";
+import Label from "@mui/icons-material/Label";
 
 import { useSizedIconButtonStyles } from "@mui-treasury/styles/iconButton/sized";
 import { useRowGutterStyles } from "@mui-treasury/styles/gutter/row";

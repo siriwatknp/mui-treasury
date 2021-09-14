@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "clsx";
-import makeStyles from "@material-ui/styles/makeStyles";
-import Grid from "@material-ui/core/Grid";
-import Avatar from "@material-ui/core/Avatar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import TagFaces from "@material-ui/icons/TagFaces";
-import Reply from "@material-ui/icons/Reply";
-import MoreHoriz from "@material-ui/icons/MoreHoriz";
+import makeStyles from "@mui/styles/makeStyles";
+import Grid from "@mui/material/Grid";
+import Avatar from "@mui/material/Avatar";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import TagFaces from "@mui/icons-material/TagFaces";
+import Reply from "@mui/icons-material/Reply";
+import MoreHoriz from "@mui/icons-material/MoreHoriz";
 
 const useStyles = makeStyles(({ palette, spacing }) => {
   const radius = spacing(2.5);

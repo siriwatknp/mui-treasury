@@ -1,16 +1,16 @@
 import React from "react";
 import cx from "clsx";
-import makeStyles from "@material-ui/styles/makeStyles";
-import Box from "@material-ui/core/Box";
-import Avatar from "@material-ui/core/Avatar";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
-import KeyboardArrowDown from "@material-ui/icons/KeyboardArrowDown";
-import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
-import Search from "@material-ui/icons/Search";
-import Edit from "@material-ui/icons/Edit";
-import ThumbUp from "@material-ui/icons/ThumbUp";
-import FormatPaint from "@material-ui/icons/FormatPaint";
+import makeStyles from "@mui/styles/makeStyles";
+import Box from "@mui/material/Box";
+import Avatar from "@mui/material/Avatar";
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
+import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import Search from "@mui/icons-material/Search";
+import Edit from "@mui/icons-material/Edit";
+import ThumbUp from "@mui/icons-material/ThumbUp";
+import FormatPaint from "@mui/icons-material/FormatPaint";
 
 const useStyles = makeStyles(() => ({
   avatar: {

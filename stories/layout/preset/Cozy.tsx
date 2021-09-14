@@ -1,8 +1,8 @@
 import React from "react";
-import ButtonBase from "@material-ui/core/ButtonBase";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Container from "@material-ui/core/Container";
-import IconButton from "@material-ui/core/IconButton";
+import ButtonBase from "@mui/material/ButtonBase";
+import CssBaseline from "@mui/material/CssBaseline";
+import Container from "@mui/material/Container";
+import IconButton from "@mui/material/IconButton";
 
 import {
   Root,
@@ -21,9 +21,9 @@ import {
   NavSidebarMockup,
 } from "@mui-treasury/mockup/layout";
 
-import Menu from "@material-ui/icons/Menu";
-import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
-import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+import Menu from "@mui/icons-material/Menu";
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 
 const scheme = getCozyScheme();
 

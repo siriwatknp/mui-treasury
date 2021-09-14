@@ -1,11 +1,11 @@
 import React from "react";
-import { ThemeProvider, createTheme } from "@material-ui/core/styles";
-import makeStyles from "@material-ui/styles/makeStyles";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import makeStyles from "@mui/styles/makeStyles";
+import CssBaseline from "@mui/material/CssBaseline";
 
-import IconButton from "@material-ui/core/IconButton";
+import IconButton from "@mui/material/IconButton";
 
-import Menu from "@material-ui/icons/Menu";
+import Menu from "@mui/icons-material/Menu";
 
 import AppHeader from "./gmail-mockup/AppHeader";
 import AppSidebar from "./gmail-mockup/AppSidebar";

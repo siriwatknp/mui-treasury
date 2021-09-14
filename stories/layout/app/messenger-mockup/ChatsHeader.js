@@ -1,11 +1,11 @@
 import React from "react";
-import makeStyles from "@material-ui/styles/makeStyles";
-import Box from "@material-ui/core/Box";
-import Avatar from "@material-ui/core/Avatar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import SettingsApplications from "@material-ui/icons/SettingsApplications";
-import Edit from "@material-ui/icons/Edit";
+import makeStyles from "@mui/styles/makeStyles";
+import Box from "@mui/material/Box";
+import Avatar from "@mui/material/Avatar";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import SettingsApplications from "@mui/icons-material/SettingsApplications";
+import Edit from "@mui/icons-material/Edit";
 
 const useStyles = makeStyles(() => ({
   middle: {

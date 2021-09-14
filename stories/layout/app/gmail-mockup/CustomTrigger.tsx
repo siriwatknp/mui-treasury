@@ -1,9 +1,9 @@
 import React from "react";
 import cx from "clsx";
 import styled from "@emotion/styled";
-import IconButton from "@material-ui/core/IconButton";
+import IconButton from "@mui/material/IconButton";
 
-import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 
 import { useLayoutCtx } from "@mui-treasury/layout";
 

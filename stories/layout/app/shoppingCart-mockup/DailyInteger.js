@@ -1,8 +1,8 @@
 import React from "react";
-import makeStyles from "@material-ui/styles/makeStyles";
-import IconButton from "@material-ui/core/IconButton";
-import Add from "@material-ui/icons/Add";
-import Remove from "@material-ui/icons/Remove";
+import makeStyles from "@mui/styles/makeStyles";
+import IconButton from "@mui/material/IconButton";
+import Add from "@mui/icons-material/Add";
+import Remove from "@mui/icons-material/Remove";
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {

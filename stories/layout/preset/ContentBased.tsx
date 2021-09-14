@@ -1,7 +1,7 @@
 import React from "react";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Container from "@material-ui/core/Container";
-import IconButton from "@material-ui/core/IconButton";
+import CssBaseline from "@mui/material/CssBaseline";
+import Container from "@mui/material/Container";
+import IconButton from "@mui/material/IconButton";
 
 import {
   Root,
@@ -20,8 +20,8 @@ import {
   NavSidebarMockup,
 } from "@mui-treasury/mockup/layout";
 
-import Menu from "@material-ui/icons/Menu";
-import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import Menu from "@mui/icons-material/Menu";
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 
 const scheme = getContentBasedScheme();
 

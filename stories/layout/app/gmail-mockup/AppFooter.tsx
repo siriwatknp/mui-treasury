@@ -1,9 +1,9 @@
 import React from "react";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
-import Box from "@material-ui/core/Box";
-import makeStyles from "@material-ui/styles/makeStyles";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import Link from "@mui/material/Link";
+import Box from "@mui/material/Box";
+import makeStyles from "@mui/styles/makeStyles";
 
 const useTextStyles = makeStyles({
   root: {

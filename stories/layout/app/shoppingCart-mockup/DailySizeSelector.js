@@ -1,7 +1,7 @@
 import React from "react";
-import makeStyles from "@material-ui/styles/makeStyles";
-import ButtonBase from "@material-ui/core/ButtonBase";
-import KeyboardArrowDown from "@material-ui/icons/KeyboardArrowDown";
+import makeStyles from "@mui/styles/makeStyles";
+import ButtonBase from "@mui/material/ButtonBase";
+import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 
 const useStyles = makeStyles(({ palette }) => ({
   btnBase: {

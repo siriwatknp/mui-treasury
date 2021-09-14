@@ -1,8 +1,8 @@
 import React from "react";
-import Container from "@material-ui/core/Container";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Link from "@mui/material/Link";
 
 const ReactNextArticle = () => (
   <Box bgcolor={"rgb(40, 44, 52)"}>

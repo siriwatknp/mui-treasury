@@ -1,18 +1,18 @@
 import React from "react";
 import { Story, Meta, StoryContext } from "@storybook/react/types-6-0";
 
-import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
-import Stack from "@material-ui/core/Stack";
-import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
-import Input from "@material-ui/core/Input";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
-import FilledInput from "@material-ui/core/FilledInput";
-import InputLabel from "@material-ui/core/InputLabel";
-import InputAdornment from "@material-ui/core/InputAdornment";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+import Input from "@mui/material/Input";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import FilledInput from "@mui/material/FilledInput";
+import InputLabel from "@mui/material/InputLabel";
+import InputAdornment from "@mui/material/InputAdornment";
 
-import MailOutlined from "@material-ui/icons/MailOutlined";
+import MailOutlined from "@mui/icons-material/MailOutlined";
 
 function withContainer(Story: any, context: StoryContext) {
   return (

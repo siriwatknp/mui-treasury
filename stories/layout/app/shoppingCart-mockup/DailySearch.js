@@ -1,9 +1,9 @@
 import React from "react";
-import makeStyles from "@material-ui/styles/makeStyles";
-import IconButton from "@material-ui/core/IconButton";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import InputBase from "@material-ui/core/InputBase";
-import Search from "@material-ui/icons/Search";
+import makeStyles from "@mui/styles/makeStyles";
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
+import InputBase from "@mui/material/InputBase";
+import Search from "@mui/icons-material/Search";
 
 const useStyles = makeStyles(({ spacing, breakpoints }) => ({
   root: {

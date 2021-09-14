@@ -1,7 +1,7 @@
 import React from "react";
-import makeStyles from "@material-ui/styles/makeStyles";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
+import makeStyles from "@mui/styles/makeStyles";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import ChatMsg from "./ChatMsg";
 
 const AVATAR = "https://i.pravatar.cc/300?img=13";

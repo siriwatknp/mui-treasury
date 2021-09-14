@@ -1,13 +1,13 @@
 import React from "react";
-import makeStyles from "@material-ui/styles/makeStyles";
-import InputBase from "@material-ui/core/InputBase";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import AddCircle from "@material-ui/icons/AddCircle";
-import Gif from "@material-ui/icons/Gif";
-import Image from "@material-ui/icons/Image";
-import Note from "@material-ui/icons/Note";
-import ThumbUp from "@material-ui/icons/ThumbUp";
-import TagFaces from "@material-ui/icons/TagFaces";
+import makeStyles from "@mui/styles/makeStyles";
+import InputBase from "@mui/material/InputBase";
+import InputAdornment from "@mui/material/InputAdornment";
+import AddCircle from "@mui/icons-material/AddCircle";
+import Gif from "@mui/icons-material/Gif";
+import Image from "@mui/icons-material/Image";
+import Note from "@mui/icons-material/Note";
+import ThumbUp from "@mui/icons-material/ThumbUp";
+import TagFaces from "@mui/icons-material/TagFaces";
 
 const useStyles = makeStyles(() => ({
   icon: {

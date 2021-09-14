@@ -1,7 +1,7 @@
 import React from "react";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
 
 const ReactContent = () => (
   <Box mr={{ sm: 3, md: 10 }} py={{ xs: 4, sm: 6, md: 8 }}>

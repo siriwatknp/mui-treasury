@@ -1,7 +1,7 @@
 import React from "react";
-import Box from "@material-ui/core/Box";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import IconButton from "@material-ui/core/IconButton";
+import Box from "@mui/material/Box";
+import CssBaseline from "@mui/material/CssBaseline";
+import IconButton from "@mui/material/IconButton";
 
 import {
   Root,
@@ -11,8 +11,8 @@ import {
   SidebarContent,
 } from "@mui-treasury/layout";
 
-import Menu from "@material-ui/icons/Menu";
-import ArrowRight from "@material-ui/icons/ArrowRight";
+import Menu from "@mui/icons-material/Menu";
+import ArrowRight from "@mui/icons-material/ArrowRight";
 
 const RightEdgeSidebar = () => {
   return (

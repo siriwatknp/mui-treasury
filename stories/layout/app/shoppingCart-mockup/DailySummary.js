@@ -1,10 +1,10 @@
 import React from "react";
-import makeStyles from "@material-ui/styles/makeStyles";
-import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import Divider from "@material-ui/core/Divider";
-import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import makeStyles from "@mui/styles/makeStyles";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import Divider from "@mui/material/Divider";
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   btn: {

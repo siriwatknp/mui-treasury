@@ -1,11 +1,11 @@
 import React from "react";
 
-import Box from "@material-ui/core/Box";
-import IconButton from "@material-ui/core/IconButton";
-import Grid from "@material-ui/core/Grid";
-import Avatar from "@material-ui/core/Avatar";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import Grid from "@mui/material/Grid";
+import Avatar from "@mui/material/Avatar";
 
-import Add from "@material-ui/icons/Add";
+import Add from "@mui/icons-material/Add";
 
 import { useSizedIconButtonStyles } from "@mui-treasury/styles/iconButton/sized";
 

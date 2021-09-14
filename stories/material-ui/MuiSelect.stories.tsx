@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
-import Grid from "@material-ui/core/Grid";
-import TextField from "@material-ui/core/TextField";
-import MenuItem from "@material-ui/core/MenuItem";
-import InputAdornment from "@material-ui/core/InputAdornment";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
+import MenuItem from "@mui/material/MenuItem";
+import InputAdornment from "@mui/material/InputAdornment";
 
-import MailOutlined from "@material-ui/icons/MailOutlined";
+import MailOutlined from "@mui/icons-material/MailOutlined";
 
 export default {
   title: "Material-UI/Select",

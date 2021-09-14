@@ -1,7 +1,7 @@
 import React from "react";
 import { StoryContext } from "@storybook/react/types-6-0";
-import { createTheme, ThemeProvider, Theme } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import { createTheme, ThemeProvider, Theme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 
 export const withMuiThemeProvider =
   (getTheme?: (t: Theme) => Theme) => (Story: any, context: StoryContext) => {

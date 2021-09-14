@@ -4,13 +4,13 @@ import rtlPlugin from "stylis-plugin-rtl";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 
-import Box from "@material-ui/core/Box";
-import Container from "@material-ui/core/Container";
-import ButtonBase from "@material-ui/core/ButtonBase";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import ButtonBase from "@mui/material/ButtonBase";
 
-import Menu from "@material-ui/icons/Menu";
-import ArrowLeft from "@material-ui/icons/ArrowLeft";
-import ArrowRight from "@material-ui/icons/ArrowRight";
+import Menu from "@mui/icons-material/Menu";
+import ArrowLeft from "@mui/icons-material/ArrowLeft";
+import ArrowRight from "@mui/icons-material/ArrowRight";
 
 import {
   Root,
@@ -26,7 +26,7 @@ import {
   InsetSidebar,
   InsetAvoidingView,
 } from "packages/layout/src";
-import { IconButton } from "@material-ui/core";
+import { IconButton } from "@mui/material";
 
 // export default {
 //   title: "Layout",

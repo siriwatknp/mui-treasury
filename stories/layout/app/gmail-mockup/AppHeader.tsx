@@ -1,16 +1,16 @@
 import React from "react";
 
-import makeStyles from "@material-ui/styles/makeStyles";
-import Box from "@material-ui/core/Box";
-import Toolbar from "@material-ui/core/Toolbar";
-import InputBase from "@material-ui/core/InputBase";
-import IconButton from "@material-ui/core/IconButton";
-import Avatar from "@material-ui/core/Avatar";
+import makeStyles from "@mui/styles/makeStyles";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import InputBase from "@mui/material/InputBase";
+import IconButton from "@mui/material/IconButton";
+import Avatar from "@mui/material/Avatar";
 
-import Search from "@material-ui/icons/Search";
-import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
-import HelpOutline from "@material-ui/icons/HelpOutline";
-import Apps from "@material-ui/icons/Apps";
+import Search from "@mui/icons-material/Search";
+import ArrowDropDown from "@mui/icons-material/ArrowDropDown";
+import HelpOutline from "@mui/icons-material/HelpOutline";
+import Apps from "@mui/icons-material/Apps";
 
 import { useSizedIconButtonStyles } from "@mui-treasury/styles/iconButton/sized";
 import { useRowGutterStyles } from "@mui-treasury/styles/gutter/row";

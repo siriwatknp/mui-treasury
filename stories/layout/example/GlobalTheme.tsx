@@ -1,31 +1,31 @@
 import React from "react";
-import { ThemeProvider, createTheme } from "@material-ui/core/styles";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
-import Avatar from "@material-ui/core/Avatar";
-import Box from "@material-ui/core/Box";
-import Badge from "@material-ui/core/Badge";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardContent from "@material-ui/core/CardContent";
-import Grid from "@material-ui/core/Grid";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Button from "@material-ui/core/Button";
-import { drawerClasses } from "@material-ui/core/Drawer";
-import Typography from "@material-ui/core/Typography";
-import FilledInput from "@material-ui/core/FilledInput";
-import { inputBaseClasses } from "@material-ui/core/InputBase";
-import IconButton from "@material-ui/core/IconButton";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import Paper from "@material-ui/core/Paper";
-import Skeleton from "@material-ui/core/Skeleton";
-import TextField from "@material-ui/core/TextField";
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
+import Badge from "@mui/material/Badge";
+import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
+import CardContent from "@mui/material/CardContent";
+import Grid from "@mui/material/Grid";
+import CssBaseline from "@mui/material/CssBaseline";
+import Button from "@mui/material/Button";
+import { drawerClasses } from "@mui/material/Drawer";
+import Typography from "@mui/material/Typography";
+import FilledInput from "@mui/material/FilledInput";
+import { inputBaseClasses } from "@mui/material/InputBase";
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
+import Paper from "@mui/material/Paper";
+import Skeleton from "@mui/material/Skeleton";
+import TextField from "@mui/material/TextField";
 
-import Home from "@material-ui/icons/Home";
-import Person from "@material-ui/icons/Person";
-import Comment from "@material-ui/icons/Comment";
-import Settings from "@material-ui/icons/Settings";
-import Search from "@material-ui/icons/Search";
-import Notifications from "@material-ui/icons/Notifications";
+import Home from "@mui/icons-material/Home";
+import Person from "@mui/icons-material/Person";
+import Comment from "@mui/icons-material/Comment";
+import Settings from "@mui/icons-material/Settings";
+import Search from "@mui/icons-material/Search";
+import Notifications from "@mui/icons-material/Notifications";
 
 import {
   Root,

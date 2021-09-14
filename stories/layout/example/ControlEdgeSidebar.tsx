@@ -1,11 +1,11 @@
 import React from "react";
-import Box from "@material-ui/core/Box";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListSubheader from "@material-ui/core/ListSubheader";
-import ListItemText from "@material-ui/core/ListItemText";
-import IconButton from "@material-ui/core/IconButton";
+import Box from "@mui/material/Box";
+import CssBaseline from "@mui/material/CssBaseline";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListSubheader from "@mui/material/ListSubheader";
+import ListItemText from "@mui/material/ListItemText";
+import IconButton from "@mui/material/IconButton";
 
 import {
   Root,
@@ -17,8 +17,8 @@ import {
   useLayoutCtx,
 } from "@mui-treasury/layout";
 
-import Menu from "@material-ui/icons/Menu";
-import ArrowLeft from "@material-ui/icons/ArrowLeft";
+import Menu from "@mui/icons-material/Menu";
+import ArrowLeft from "@mui/icons-material/ArrowLeft";
 
 const TriggerUsingHook = () => {
   const {

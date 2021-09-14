@@ -1,11 +1,11 @@
 import React from "react";
 import cx from "clsx";
-import makeStyles from "@material-ui/styles/makeStyles";
-import Box from "@material-ui/core/Box";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import Avatar from "@material-ui/core/Avatar";
-import MoreHoriz from "@material-ui/icons/MoreHoriz";
+import makeStyles from "@mui/styles/makeStyles";
+import Box from "@mui/material/Box";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import Avatar from "@mui/material/Avatar";
+import MoreHoriz from "@mui/icons-material/MoreHoriz";
 
 const useStyles = makeStyles(({ palette }) => ({
   root: ({ active }) => ({

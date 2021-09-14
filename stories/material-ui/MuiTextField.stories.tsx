@@ -1,12 +1,12 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
-import Grid from "@material-ui/core/Grid";
-import Stack from "@material-ui/core/Stack";
-import TextField from "@material-ui/core/TextField";
-import InputAdornment from "@material-ui/core/InputAdornment";
+import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
+import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
 
-import MailOutlined from "@material-ui/icons/MailOutlined";
+import MailOutlined from "@mui/icons-material/MailOutlined";
 
 export default {
   title: "Material-UI/TextField",

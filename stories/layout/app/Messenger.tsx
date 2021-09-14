@@ -3,15 +3,15 @@ import {
   createTheme,
   responsiveFontSizes,
   ThemeProvider,
-} from "@material-ui/core/styles";
-import makeStyles from "@material-ui/styles/makeStyles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Container from "@material-ui/core/Container";
-import Box from "@material-ui/core/Box";
-import IconButton from "@material-ui/core/IconButton";
-import Toolbar from "@material-ui/core/Toolbar";
+} from "@mui/material/styles";
+import makeStyles from "@mui/styles/makeStyles";
+import CssBaseline from "@mui/material/CssBaseline";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import Toolbar from "@mui/material/Toolbar";
 
-import Edit from "@material-ui/icons/Edit";
+import Edit from "@mui/icons-material/Edit";
 
 import {
   MessengerSearch,

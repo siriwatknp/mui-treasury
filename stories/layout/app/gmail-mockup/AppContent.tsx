@@ -1,24 +1,24 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-import makeStyles from "@material-ui/styles/makeStyles";
-import Box from "@material-ui/core/Box";
-import IconButton from "@material-ui/core/IconButton";
-import MenuItem from "@material-ui/core/MenuItem";
-import Checkbox from "@material-ui/core/Checkbox";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
+import makeStyles from "@mui/styles/makeStyles";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import MenuItem from "@mui/material/MenuItem";
+import Checkbox from "@mui/material/Checkbox";
+import ListItemIcon from "@mui/material/ListItemIcon";
 
-import MoreVert from "@material-ui/icons/MoreVert";
-import Refresh from "@material-ui/icons/Refresh";
-import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
-import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
-import Settings from "@material-ui/icons/Settings";
-import Keyboard from "@material-ui/icons/Keyboard";
-import Edit from "@material-ui/icons/Edit";
-import Inbox from "@material-ui/icons/Inbox";
-import LocalOffer from "@material-ui/icons/LocalOffer";
-import People from "@material-ui/icons/People";
-import Info from "@material-ui/icons/Info";
+import MoreVert from "@mui/icons-material/MoreVert";
+import Refresh from "@mui/icons-material/Refresh";
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import Settings from "@mui/icons-material/Settings";
+import Keyboard from "@mui/icons-material/Keyboard";
+import Edit from "@mui/icons-material/Edit";
+import Inbox from "@mui/icons-material/Inbox";
+import LocalOffer from "@mui/icons-material/LocalOffer";
+import People from "@mui/icons-material/People";
+import Info from "@mui/icons-material/Info";
 
 import ArrowMenu from "@mui-treasury/components/menu/arrow";
 import { GmailTabs, GmailTabItem } from "@mui-treasury/components/tabs/gmail";

@@ -1,10 +1,10 @@
 import React from "react";
-import makeStyles from "@material-ui/styles/makeStyles";
-import Box from "@material-ui/core/Box";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import ClearAll from "@material-ui/icons/ClearAll";
-import ShoppingBasket from "@material-ui/icons/ShoppingBasket";
+import makeStyles from "@mui/styles/makeStyles";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import ClearAll from "@mui/icons-material/ClearAll";
+import ShoppingBasket from "@mui/icons-material/ShoppingBasket";
 import DailyLogo from "./DailyLogo";
 import DailySearch from "./DailySearch";
 
