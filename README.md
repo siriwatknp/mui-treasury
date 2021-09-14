@@ -4,46 +4,29 @@
   </a>
 </p>
 
-# Material-UI Treasury [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/siriwatknp/mui-treasury-next/pulls) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+# MUI Treasury [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/siriwatknp/mui-treasury-next/pulls) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-19-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Imagine a place with millions of real-world, ready-to-use, and themable components that you can install to your project. I believe that it will boost many projects that want to prove their ideas or even improve complex monolith project to move faster.
 
-## Material-UI v5
+> Note: This project is my personal hobby and not maintained by [MUI](https://github.com/mui-org/material-ui).
+
+## ~~Material-UI v5~~ MUI v5
+
+~~Material-UI~~ has changed their branding to **MUI**. If you are curious about it, [checkout the details](https://github.com/mui-org/material-ui/discussions/27803) (It's gonna be huge in the near future).
 
 ### `@mui-treasury/layout`
 
-**BREAKING CHANGE** see [v5 documentation]()
+**BREAKING CHANGE** see [v5 documentation](https://next.mui-treasury.com/?path=/story/layout-migration-to-v5--page)
 
 **Summary Highlight**
 - smaller bundle size (-30%)
 - faster
 - single sidebar (no duplicate for all variants)
 
-### `@mui-treasury/components, @mui-treasury/styles`
-
-1. upgrade material-ui
-   
-  ```bash
-  yarn add @material-ui/core@next @material-ui/styles@next
-  // make sure that it is 5.0.0-alpha.37
-  ```
-
-  > Note: the above installation requires `@material-ui/styles` because mui-treasury depends on it.
-
-2. upgrade mui-treasury
-
-  ```bash
-  yarn add @mui-treasury/components@next @mui-treasury/styles@next
-  ```
-
-As a result, you will get `2.0.0-alpha` for both packages. However, these packages still use the old style-engine (JSS) while material-ui v5 have moved to either emotion or styled-components. This will increase the bundle size a bit because you will have 2 style-engine in the project (JSS + emotion or styled-components).
-
-In the future, you will be able to migrate to proper packages that I am working on, which uses material-ui v5 style-engine.
-
-Take a look at this [working CodeSandbox example](https://codesandbox.io/s/jovial-yonath-7rmmz?file=/src/Card.tsx). Also make sure to check `<StyledEngineProvider injectFirst>` in `App.tsx` (in the link).
-
+### ~~`@mui-treasury/components, @mui-treasury/styles`~~
+These packages does not work with MUI v5 anymore due to package names change. I plan to split them into isolated packages ([in-progress](https://next.mui-treasury.com/?path=/story/component)).
 
 ## Material-UI v4
 
