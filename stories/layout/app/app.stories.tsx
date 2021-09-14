@@ -7,7 +7,8 @@ const Pages = {
   ShoppingCart: React.lazy(() => import("./ShoppingCart")),
   ReactJS: React.lazy(() => import("./ReactJS")),
   Messenger: React.lazy(() => import("./Messenger")),
-  Gmail: React.lazy(() => import("./Gmail")),
+  // TODO: remove @mui-treasury/components & styles
+  // Gmail: React.lazy(() => import("./Gmail")),
 };
 
 export default {
@@ -42,7 +43,7 @@ const createStory = (name: keyof typeof Pages) => {
   };
   return StoryComponent as Story;
 };
-export const Gmail = createStory("Gmail");
+// export const Gmail = createStory("Gmail");
 export const Messenger = createStory("Messenger");
 export const ReactJS = createStory("ReactJS");
 export const ShoppingCart = createStory("ShoppingCart");
