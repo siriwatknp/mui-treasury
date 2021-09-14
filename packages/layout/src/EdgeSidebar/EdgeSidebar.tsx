@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import cx from "clsx";
-import { styled, useThemeProps, Theme } from "@material-ui/core/styles";
-import Drawer, { DrawerProps, drawerClasses } from "@material-ui/core/Drawer";
-import { ModalProps } from "@material-ui/core/Modal";
+import { styled, useThemeProps, Theme } from "@mui/material/styles";
+import Drawer, { DrawerProps, drawerClasses } from "@mui/material/Drawer";
+import { ModalProps } from "@mui/material/Modal";
 import {
   useLayoutCtx,
   PropsWithFunctionChildren,

@@ -1,4 +1,4 @@
-import { Breakpoint } from "@material-ui/system";
+import { Breakpoint } from "@mui/system";
 import { EdgeSidebarBuilder } from "../EdgeSidebar/EdgeSidebarBuilder";
 import { createWidthInterface } from "../Width/WidthModel";
 import { combineBreakpoints } from "../utils/combineBreakpoints";

@@ -1,4 +1,4 @@
-import { Breakpoint } from "@material-ui/core/styles";
+import { Breakpoint } from "@mui/material/styles";
 import { EdgeSidebarBuilder } from "./EdgeSidebarBuilder";
 import { Responsive } from "../utils/types";
 import { combineBreakpoints } from "../utils/combineBreakpoints";

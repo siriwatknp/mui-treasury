@@ -1,4 +1,4 @@
-import { Breakpoints, Breakpoint } from "@material-ui/system";
+import { Breakpoints, Breakpoint } from "@mui/system";
 import { BREAKPOINT_KEYS } from "./muiBreakpoints";
 
 export const mapWidthToScreen = (

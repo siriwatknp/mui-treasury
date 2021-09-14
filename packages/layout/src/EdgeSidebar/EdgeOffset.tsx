@@ -1,5 +1,5 @@
 import React, { CSSProperties } from "react";
-import { styled, useTheme } from "@material-ui/core/styles";
+import { styled, useTheme } from "@mui/material/styles";
 import { ClippableElement } from "../Header/HeaderBuilder";
 import { useLayoutCtx } from "../Root/Root";
 import { useScreen } from "../hooks/useScreen";

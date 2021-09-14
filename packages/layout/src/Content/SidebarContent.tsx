@@ -1,6 +1,6 @@
 import React from "react";
-import { styled, Theme } from "@material-ui/core/styles";
-import { SxProps } from "@material-ui/system";
+import { styled, Theme } from "@mui/material/styles";
+import { SxProps } from "@mui/system";
 
 const SidebarContentRoot = styled("div", {
   name: "AppSidebarContent",

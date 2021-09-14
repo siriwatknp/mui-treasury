@@ -1,5 +1,5 @@
 import React, { CSSProperties } from "react";
-import { styled } from "@material-ui/core/styles";
+import { styled } from "@mui/material/styles";
 import { useLayoutCtx } from "../Root/Root";
 import { InsetSidebarBuilder } from "./InsetSidebarBuilder";
 import { useScrollY } from "../hooks/useScrollY";

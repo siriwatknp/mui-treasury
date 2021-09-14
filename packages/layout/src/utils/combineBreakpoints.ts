@@ -1,4 +1,4 @@
-import { Breakpoint } from "@material-ui/system";
+import { Breakpoint } from "@mui/system";
 import { BREAKPOINT_KEYS } from "./muiBreakpoints";
 import { Responsive } from "./types";
 

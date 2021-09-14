@@ -1,4 +1,4 @@
-import { Breakpoint } from "@material-ui/system";
+import { Breakpoint } from "@mui/system";
 import {
   DEFAULT_THEME,
   LEFT_EDGE_SIDEBAR_ID,

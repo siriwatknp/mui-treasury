@@ -1,4 +1,4 @@
-import { createTheme } from "@material-ui/core/styles";
+import { createTheme } from "@mui/material/styles";
 import { mapWidthToScreen } from "./mapWidthToScreen";
 
 const theme = createTheme();

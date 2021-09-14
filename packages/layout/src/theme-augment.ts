@@ -1,5 +1,5 @@
-import { CSSInterpolation } from "@material-ui/system";
-import { ContainerClassKey, ContainerProps } from "@material-ui/core/Container";
+import { CSSInterpolation } from "@mui/system";
+import { ContainerClassKey, ContainerProps } from "@mui/material/Container";
 import {
   HeaderProps,
   HeaderClassKey,
@@ -28,7 +28,7 @@ type OverridesStyleRules<ClassKey extends string = string> = Record<
   CSSInterpolation
 >;
 
-declare module "@material-ui/core/styles/components" {
+declare module "@mui/material/styles/components" {
   interface Components {
     AppHeader?: {
       defaultProps?: Partial<HeaderProps>;

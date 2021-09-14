@@ -1,3 +1,3 @@
-import { Breakpoint } from "@material-ui/system";
+import { Breakpoint } from "@mui/system";
 
 export type Responsive<T = any> = Partial<Record<Breakpoint, T>>;

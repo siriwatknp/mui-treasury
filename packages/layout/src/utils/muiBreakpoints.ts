@@ -1,4 +1,4 @@
-import { createBreakpoints } from "@material-ui/system";
+import { createBreakpoints } from "@mui/system";
 
 const MuiBreakpoints = createBreakpoints({});
 

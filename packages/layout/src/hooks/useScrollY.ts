@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { debounce } from "@material-ui/core/utils";
+import { debounce } from "@mui/material/utils";
 import { useWindowCtx } from "../WindowContext";
 
 function getScrollY(obj: Window | undefined) {

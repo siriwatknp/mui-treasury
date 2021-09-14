@@ -1,7 +1,7 @@
 import React from "react";
-import AppBar, { AppBarProps } from "@material-ui/core/AppBar";
-import { styled, Theme, useThemeProps } from "@material-ui/core/styles";
-import { SxProps } from "@material-ui/system";
+import AppBar, { AppBarProps } from "@mui/material/AppBar";
+import { styled, Theme, useThemeProps } from "@mui/material/styles";
+import { SxProps } from "@mui/system";
 
 import { useLayoutCtx, PropsWithFunctionChildren } from "../Root/Root";
 import { CSS_TRANSITION } from "../utils/constant";

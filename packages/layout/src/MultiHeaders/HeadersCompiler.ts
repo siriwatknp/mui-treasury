@@ -1,4 +1,4 @@
-import { Breakpoint } from "@material-ui/system";
+import { Breakpoint } from "@mui/system";
 import {
   ClippableElement,
   HeaderBuilder,

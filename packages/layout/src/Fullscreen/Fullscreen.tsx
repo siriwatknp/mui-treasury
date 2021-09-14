@@ -1,6 +1,6 @@
 import React from "react";
 import cx from "clsx";
-import { styled } from "@material-ui/core/styles";
+import { styled } from "@mui/material/styles";
 import FullscreenContext from "./FullscreenContext";
 
 const FullscreenRoot = styled("div", { name: "Fullscreen", slot: "Root" })({

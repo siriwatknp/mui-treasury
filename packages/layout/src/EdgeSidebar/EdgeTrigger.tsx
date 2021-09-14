@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { styled } from "@material-ui/core/styles";
+import { styled } from "@mui/material/styles";
 import { DrawerAnchor } from "./EdgeSidebarBuilder";
 import { useEdgeSidebar } from "./useEdgeSidebar";
 

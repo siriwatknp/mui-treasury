@@ -1,5 +1,5 @@
 import { CSSProperties } from "react";
-import { Breakpoint } from "@material-ui/system";
+import { Breakpoint } from "@mui/system";
 import { HeaderBuilder } from "../Header/HeaderBuilder";
 import { ResponsiveBuilder } from "../shared/ResponsiveBuilder";
 import { combineBreakpoints } from "../utils/combineBreakpoints";

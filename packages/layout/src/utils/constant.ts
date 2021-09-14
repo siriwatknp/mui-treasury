@@ -1,4 +1,4 @@
-import { createTheme } from "@material-ui/core/styles";
+import { createTheme } from "@mui/material/styles";
 
 export const HEADER_ID = "header";
 export type HEADER_ID = typeof HEADER_ID;
