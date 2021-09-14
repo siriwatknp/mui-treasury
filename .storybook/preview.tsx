@@ -5,9 +5,9 @@ import {
   StyledEngineProvider,
   createTheme,
   ThemeProvider,
-} from "@material-ui/core/styles";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import CssBaseline from "@material-ui/core/CssBaseline";
+} from "@mui/material/styles";
+import CircularProgress from "@mui/material/CircularProgress";
+import CssBaseline from "@mui/material/CssBaseline";
 
 import "./storybook-global.css";
 import "./prism-theme.css";
