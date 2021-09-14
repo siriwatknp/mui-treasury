@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import { ThemeProvider, createTheme, Theme } from "@material-ui/core/styles";
+import { ThemeProvider, createTheme, Theme } from "@mui/material/styles";
 
 const theme = createTheme();
 

@@ -1,7 +1,6 @@
 import React, { PropsWithChildren } from "react";
 import cx from "clsx";
-import { styled, Theme } from "@mui/material/styles";
-import useThemeProps from "@mui/material/styles/useThemeProps";
+import { styled, Theme, useThemeProps } from "@mui/material/styles";
 import { Palette } from "@mui-treasury/theme-treasury";
 import { unstable_composeClasses as composeClasses } from "@mui/core";
 import { SxProps } from "@mui/system";

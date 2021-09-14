@@ -1,7 +1,6 @@
 import React from "react";
 import cx from "clsx";
-import { styled, Theme } from "@mui/material/styles";
-import useThemeProps from "@mui/material/styles/useThemeProps";
+import { styled, Theme, useThemeProps } from "@mui/material/styles";
 import { SxProps, CSSObject } from "@mui/system";
 import { OverridableComponent, GenerateStringUnion } from "@mui-treasury/types";
 import { infoClasses } from "./infoClasses";

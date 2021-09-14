@@ -1,6 +1,6 @@
 import React from "react";
 import { debounce } from "@mui/material/utils";
-import useTheme from "@mui/material/styles/useTheme";
+import { useTheme } from "@mui/material/styles";
 import { mapWidthToScreen } from "../utils/mapWidthToScreen";
 import { useWindowCtx } from "../WindowContext";
 
