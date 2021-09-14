@@ -1,6 +1,6 @@
-import { Theme } from "@material-ui/core/styles";
-import createStyles from "@material-ui/styles/createStyles";
-import makeStyles from "@material-ui/styles/makeStyles";
+import { Theme } from "@mui/material/styles";
+import createStyles from "@mui/styles/createStyles";
+import makeStyles from "@mui/styles/makeStyles";
 
 const SPACE = 24;
 

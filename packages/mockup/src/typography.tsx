@@ -1,6 +1,6 @@
 import React from "react";
 
-import Box, { BoxProps } from "@material-ui/core/Box";
+import Box, { BoxProps } from "@mui/material/Box";
 import { getBaseGrey, randomBetween } from "./utils";
 
 const createTypography = (generateSx: () => BoxProps["sx"]) => ({

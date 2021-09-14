@@ -1,7 +1,7 @@
 import {
   generateUtilityClass,
   generateUtilityClasses,
-} from "@material-ui/unstyled";
+} from "@mui/core";
 import { treasuryPalette } from "@mui-treasury/theme-treasury";
 export function getStickerUtilityClass(slot) {
   return generateUtilityClass("JunSticker", slot);

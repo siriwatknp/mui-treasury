@@ -1,9 +1,9 @@
 import React from "react";
 import cx from "clsx";
-import { styled, useThemeProps, Theme } from "@material-ui/core/styles";
-import { unstable_composeClasses as composeClasses } from "@material-ui/unstyled";
+import { styled, useThemeProps, Theme } from "@mui/material/styles";
+import { unstable_composeClasses as composeClasses } from "@mui/core";
 import { OverridableComponent } from "@mui-treasury/types";
-import { SxProps } from "@material-ui/system";
+import { SxProps } from "@mui/system";
 import {
   useDayMonthYearInput,
   UseDayMonthYearInputOptions,

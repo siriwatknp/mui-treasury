@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
+import OutlinedInput from "@mui/material/OutlinedInput";
 import { PinInput } from "./PinInput";
 
 describe("PinInput", () => {

@@ -1,5 +1,5 @@
 import React from "react";
-import TextField, { TextFieldProps } from "@material-ui/core/TextField";
+import TextField, { TextFieldProps } from "@mui/material/TextField";
 import { useCCContext, CCContextValue } from "./CCField";
 
 const resolveProps = (

@@ -1,7 +1,7 @@
 import {
   generateUtilityClass,
   generateUtilityClasses,
-} from "@material-ui/unstyled";
+} from "@mui/core";
 
 export function getFormAddonUtilityClass(slot: string) {
   return generateUtilityClass("JunFormAddon", slot);

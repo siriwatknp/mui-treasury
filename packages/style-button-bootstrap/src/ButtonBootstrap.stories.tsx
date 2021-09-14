@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta, StoryContext } from "@storybook/react/types-6-0";
-import { ThemeProvider, createTheme } from "@material-ui/core/styles";
-import Button, { ButtonProps } from "@material-ui/core/Button";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Button, { ButtonProps } from "@mui/material/Button";
 import { getButtonBootstrapTheme } from "./ButtonBootstrap.styles";
 
 const baseTheme = createTheme({

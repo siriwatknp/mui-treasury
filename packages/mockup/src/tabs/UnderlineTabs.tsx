@@ -1,6 +1,6 @@
 import React from "react";
-import { styled } from "@material-ui/core/styles";
-import Tabs from "@material-ui/core/Tabs";
+import { styled } from "@mui/material/styles";
+import Tabs from "@mui/material/Tabs";
 
 export const UnderlineTabs = styled(Tabs)(({ theme }) => ({
   "&:before": {

@@ -1,4 +1,4 @@
-import { alpha } from "@material-ui/core/styles";
+import { alpha } from "@mui/material/styles";
 const getPlaceholderVisible = (theme) => {
   const light = theme.palette.mode === "light";
   return {

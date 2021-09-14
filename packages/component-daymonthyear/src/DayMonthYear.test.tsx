@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import FilledInput from "@material-ui/core/FilledInput";
+import FilledInput from "@mui/material/FilledInput";
 import { DayMonthYear } from "./DayMonthYear";
 
 describe("DayMonthYear", () => {

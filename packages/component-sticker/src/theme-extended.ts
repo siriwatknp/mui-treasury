@@ -1,4 +1,4 @@
-import { CSSInterpolation } from "@material-ui/system";
+import { CSSInterpolation } from "@mui/system";
 import { ExtendedThemeOutput } from "@mui-treasury/theme-treasury";
 import { StickerClassKey, StickerProps } from "./Sticker";
 
@@ -7,11 +7,11 @@ type OverridesStyleRules<ClassKey extends string = string> = Record<
   CSSInterpolation
 >;
 
-declare module "@material-ui/core/styles/createTheme" {
+declare module "@mui/material/styles/createTheme" {
   interface Theme extends ExtendedThemeOutput {}
 }
 
-declare module "@material-ui/core/styles/components" {
+declare module "@mui/material/styles/components" {
   interface Components {
     JunSticker?: {
       defaultProps?: Partial<StickerProps>;

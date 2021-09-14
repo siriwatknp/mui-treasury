@@ -1,6 +1,6 @@
 import React from "react";
-import Avatar from "@material-ui/core/Avatar";
-import Box, { BoxProps } from "@material-ui/core/Box";
+import Avatar from "@mui/material/Avatar";
+import Box, { BoxProps } from "@mui/material/Box";
 import { Square, Pill } from "../shape";
 
 export const HeaderMockup = ({

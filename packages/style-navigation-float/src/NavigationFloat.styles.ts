@@ -1,8 +1,8 @@
 import "@mui-treasury/component-navigation";
-import { CSSObject } from "@material-ui/system";
+import { CSSObject } from "@mui/system";
 import { navigationClasses } from "@mui-treasury/component-navigation";
-import { Theme } from "@material-ui/core/styles";
-import { Components } from "@material-ui/core/styles/components";
+import { Theme } from "@mui/material/styles";
+import { Components } from "@mui/material/styles/components";
 
 type Output = Required<Pick<Components, "JunNavigation">>;
 

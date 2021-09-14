@@ -1,6 +1,6 @@
 import "@mui-treasury/component-emailsubscribe";
 import { emailSubscribeClasses } from "@mui-treasury/component-emailsubscribe";
-import { alpha } from "@material-ui/core/styles";
+import { alpha } from "@mui/material/styles";
 const fontFamily = [
   "-apple-system",
   "BlinkMacSystemFont",

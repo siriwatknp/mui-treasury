@@ -1,6 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import { useTheme } from "@material-ui/core/styles";
+import { useTheme } from "@mui/material/styles";
 import {
   createTreasuryTheme,
   treasuryPalette,
@@ -8,7 +8,7 @@ import {
 import { Sticker, StickerProps } from "@mui-treasury/component-sticker";
 import { getStickerGlowStyles } from "@mui-treasury/style-sticker-glow";
 
-import Add from "@material-ui/icons/Add";
+import Add from "@mui/icons-material/Add";
 import { withMuiThemeProvider } from "stories/_internal/decorators";
 
 export default {

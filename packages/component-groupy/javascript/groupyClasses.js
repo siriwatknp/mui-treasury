@@ -1,7 +1,7 @@
 import {
   generateUtilityClass,
   generateUtilityClasses,
-} from "@material-ui/unstyled";
+} from "@mui/core";
 export function getGroupyUtilityClass(slot) {
   return generateUtilityClass("JunGroupy", slot);
 }

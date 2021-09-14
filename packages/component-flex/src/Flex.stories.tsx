@@ -1,16 +1,16 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import Avatar from "@material-ui/core/Avatar";
-import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import Divider from "@material-ui/core/Divider";
-import Link from "@material-ui/core/Link";
-import Typography from "@material-ui/core/Typography";
-import Paper from "@material-ui/core/Paper";
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import Divider from "@mui/material/Divider";
+import Link from "@mui/material/Link";
+import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
 import { FlexRow, FlexCol, Item, Flex } from "@mui-treasury/component-flex";
 
-import CallMade from "@material-ui/icons/CallMade";
+import CallMade from "@mui/icons-material/CallMade";
 
 export default {
   title: "Component/Flex",

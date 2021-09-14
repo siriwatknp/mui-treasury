@@ -1,5 +1,5 @@
-import { Theme } from "@material-ui/core/styles";
-import { Components } from "@material-ui/core/styles/components";
+import { Theme } from "@mui/material/styles";
+import { Components } from "@mui/material/styles/components";
 
 type Output = Required<
   Pick<

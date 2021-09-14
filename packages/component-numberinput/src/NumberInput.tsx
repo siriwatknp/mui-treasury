@@ -1,15 +1,15 @@
 import React, { PropsWithChildren } from "react";
 import cx from "clsx";
-import { styled, useThemeProps, Theme } from "@material-ui/core/styles";
-import { unstable_composeClasses as composeClasses } from "@material-ui/unstyled";
-import SvgIcon from "@material-ui/core/SvgIcon";
+import { styled, useThemeProps, Theme } from "@mui/material/styles";
+import { unstable_composeClasses as composeClasses } from "@mui/core";
+import SvgIcon from "@mui/material/SvgIcon";
 import OutlinedInput, {
   OutlinedInputProps,
-} from "@material-ui/core/OutlinedInput";
+} from "@mui/material/OutlinedInput";
 import InputAdornment, {
   InputAdornmentProps,
-} from "@material-ui/core/InputAdornment";
-import ButtonBase, { ButtonBaseProps } from "@material-ui/core/ButtonBase";
+} from "@mui/material/InputAdornment";
+import ButtonBase, { ButtonBaseProps } from "@mui/material/ButtonBase";
 import {
   getNumberInputUtilityClass,
   numberInputClasses,
@@ -18,7 +18,7 @@ import {
   useNumberInput,
   UseNumberInputOptions,
 } from "@mui-treasury/use-number-input";
-import capitalize from "@material-ui/utils/capitalize";
+import capitalize from "@mui/utils/capitalize";
 
 export type NumberInputClassKey = keyof typeof numberInputClasses;
 export type NumberInputClasses = Partial<typeof numberInputClasses>;

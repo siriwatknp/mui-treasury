@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
-import FilledInput from "@material-ui/core/FilledInput";
+import FilledInput from "@mui/material/FilledInput";
 import {
   NumberSpinner,
   NumberSpinnerProps,

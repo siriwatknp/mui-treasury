@@ -1,4 +1,4 @@
-import makeStyles from "@material-ui/styles/makeStyles";
+import makeStyles from "@mui/styles/makeStyles";
 const getPlaceholderVisible = (theme) => {
   const light = theme.palette.mode === "light";
   return {

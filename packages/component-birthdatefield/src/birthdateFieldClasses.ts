@@ -1,7 +1,7 @@
 import {
   generateUtilityClass,
   generateUtilityClasses,
-} from "@material-ui/unstyled";
+} from "@mui/core";
 
 export interface BirthdateFieldClasses {
   /** Styles applied to the root element. */

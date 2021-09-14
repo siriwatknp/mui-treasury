@@ -1,6 +1,6 @@
 import "@mui-treasury/component-emailsubscribe";
 import { emailSubscribeClasses } from "@mui-treasury/component-emailsubscribe";
-import { blueGrey } from "@material-ui/core/colors";
+import { blueGrey } from "@mui/material/colors";
 const getFormStyles = ({ palette }) => {
   return {
     position: "relative",

@@ -2,9 +2,9 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
-import Select from "@material-ui/core/Select";
+import Select from "@mui/material/Select";
 
-import Search from "@material-ui/icons/Search";
+import Search from "@mui/icons-material/Search";
 
 import { FormAddon, FormAddonProps } from "./FormAddon";
 

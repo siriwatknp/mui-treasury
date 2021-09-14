@@ -1,7 +1,7 @@
 import "@mui-treasury/component-sociallink";
-import { Theme, alpha, lighten } from "@material-ui/core/styles";
-import { CSSObject } from "@material-ui/system";
-import { Components } from "@material-ui/core/styles/components";
+import { Theme, alpha, lighten } from "@mui/material/styles";
+import { CSSObject } from "@mui/system";
+import { Components } from "@mui/material/styles/components";
 
 type Output = Required<Pick<Components, "JunSocialLink">>;
 

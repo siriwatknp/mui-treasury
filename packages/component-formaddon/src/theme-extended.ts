@@ -1,4 +1,4 @@
-import { CSSInterpolation } from "@material-ui/system";
+import { CSSInterpolation } from "@mui/system";
 import { FormAddonClassKey, FormAddonProps } from "./FormAddon";
 
 type OverridesStyleRules<ClassKey extends string = string> = Record<
@@ -6,7 +6,7 @@ type OverridesStyleRules<ClassKey extends string = string> = Record<
   CSSInterpolation
 >;
 
-declare module "@material-ui/core/styles/components" {
+declare module "@mui/material/styles/components" {
   interface Components {
     JunFormAddon?: {
       defaultProps?: Partial<FormAddonProps>;

@@ -1,7 +1,7 @@
 import {
   generateUtilityClass,
   generateUtilityClasses,
-} from "@material-ui/unstyled";
+} from "@mui/core";
 
 export function getNumberSpinnerUtilityClass(slot: string) {
   return generateUtilityClass("JunNumberSpinner", slot);

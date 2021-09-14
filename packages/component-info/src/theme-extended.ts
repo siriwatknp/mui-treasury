@@ -1,4 +1,4 @@
-import { CSSObject } from "@material-ui/system";
+import { CSSObject } from "@mui/system";
 import { InfoProps } from "./Info";
 import { InfoClassKey } from "./infoClasses";
 
@@ -12,7 +12,7 @@ export type InfoThemeVariant = {
   style: CSSObject;
 };
 
-declare module "@material-ui/core/styles/components" {
+declare module "@mui/material/styles/components" {
   interface Components {
     JunInfo?: {
       defaultProps?: Partial<InfoProps>;

@@ -1,4 +1,4 @@
-import { CSSInterpolation } from "@material-ui/system";
+import { CSSInterpolation } from "@mui/system";
 import { BirthdateFieldClassKey } from "./birthdateFieldClasses";
 import { BirthdateFieldProps } from "./BirthdateField";
 
@@ -7,7 +7,7 @@ type OverridesStyleRules<ClassKey extends string = string> = Record<
   CSSInterpolation
 >;
 
-declare module "@material-ui/core/styles/components" {
+declare module "@mui/material/styles/components" {
   interface Components {
     JunBirthdateField?: {
       defaultProps?: Partial<BirthdateFieldProps>;

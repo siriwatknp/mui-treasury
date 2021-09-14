@@ -1,4 +1,4 @@
-import { ThemeOptions, Theme } from "@material-ui/core/styles";
+import { ThemeOptions, Theme } from "@mui/material/styles";
 
 import { treasuryPalette } from "./treasuryPalette";
 

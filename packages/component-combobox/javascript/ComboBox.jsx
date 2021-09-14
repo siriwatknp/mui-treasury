@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import makeStyles from "@material-ui/styles/makeStyles";
-import useAutocomplete from "@material-ui/core/useAutocomplete";
+import makeStyles from "@mui/styles/makeStyles";
+import useAutocomplete from "@mui/material/useAutocomplete";
 import { ComboBoxContext, AnchorContext } from "./ComboBoxContext";
 import {
   ComboAnchor,

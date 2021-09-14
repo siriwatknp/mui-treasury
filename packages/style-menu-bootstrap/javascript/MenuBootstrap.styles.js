@@ -1,4 +1,4 @@
-import makeStyles from "@material-ui/styles/makeStyles";
+import makeStyles from "@mui/styles/makeStyles";
 export const createMenuBootstrapStyles = (theme) => ({
   MuiMenu: {
     defaultProps: {

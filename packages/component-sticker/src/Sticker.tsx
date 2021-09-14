@@ -1,12 +1,12 @@
 import React, { PropsWithChildren } from "react";
 import cx from "clsx";
-import { styled, Theme } from "@material-ui/core/styles";
-import useThemeProps from "@material-ui/core/styles/useThemeProps";
+import { styled, Theme } from "@mui/material/styles";
+import useThemeProps from "@mui/material/styles/useThemeProps";
 import { Palette } from "@mui-treasury/theme-treasury";
-import { unstable_composeClasses as composeClasses } from "@material-ui/unstyled";
-import { SxProps } from "@material-ui/system";
+import { unstable_composeClasses as composeClasses } from "@mui/core";
+import { SxProps } from "@mui/system";
 import { OverridableComponent } from "@mui-treasury/types";
-import { capitalize } from "@material-ui/core/utils";
+import { capitalize } from "@mui/material/utils";
 import { getStickerUtilityClass, stickerClasses } from "./stickerClasses";
 
 export type StickerClassKey = keyof typeof stickerClasses;

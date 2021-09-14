@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import cx from "clsx";
-import { styled, useThemeProps, Theme } from "@material-ui/core/styles";
-import { SxProps } from "@material-ui/system";
+import { styled, useThemeProps, Theme } from "@mui/material/styles";
+import { SxProps } from "@mui/system";
 import { OverridableComponent } from "@mui-treasury/types";
 
 export type SocialLinkClassKey = "root";

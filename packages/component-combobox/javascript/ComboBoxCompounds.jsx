@@ -1,10 +1,10 @@
 import React, { forwardRef, useState } from "react";
 import cx from "clsx";
-import ListSubheader from "@material-ui/core/ListSubheader";
-import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
-import InputBase from "@material-ui/core/InputBase";
-import Popper from "@material-ui/core/Popper";
+import ListSubheader from "@mui/material/ListSubheader";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+import InputBase from "@mui/material/InputBase";
+import Popper from "@mui/material/Popper";
 import { AnchorContext, useComboBoxCtx } from "./ComboBoxContext";
 import { useComboBoxStyles } from "./ComboBox.styles";
 export const ComboFormControl = (props) => {

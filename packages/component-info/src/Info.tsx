@@ -1,8 +1,8 @@
 import React from "react";
 import cx from "clsx";
-import { styled, Theme } from "@material-ui/core/styles";
-import useThemeProps from "@material-ui/core/styles/useThemeProps";
-import { SxProps, CSSObject } from "@material-ui/system";
+import { styled, Theme } from "@mui/material/styles";
+import useThemeProps from "@mui/material/styles/useThemeProps";
+import { SxProps, CSSObject } from "@mui/system";
 import { OverridableComponent, GenerateStringUnion } from "@mui-treasury/types";
 import { infoClasses } from "./infoClasses";
 

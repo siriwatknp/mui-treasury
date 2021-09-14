@@ -1,15 +1,15 @@
 import React from "react";
 
-import { alpha } from "@material-ui/core/styles";
-import IconButton, { IconButtonProps } from "@material-ui/core/IconButton";
-import Box, { BoxProps } from "@material-ui/core/Box";
+import { alpha } from "@mui/material/styles";
+import IconButton, { IconButtonProps } from "@mui/material/IconButton";
+import Box, { BoxProps } from "@mui/material/Box";
 
-import SearchRounded from "@material-ui/icons/SearchRounded";
-import HomeRounded from "@material-ui/icons/HomeRounded";
-import ForumRounded from "@material-ui/icons/ForumRounded";
-import SettingsRounded from "@material-ui/icons/SettingsRounded";
-import AppRegistrationRounded from "@material-ui/icons/AppRegistrationRounded";
-import EventNoteRounded from "@material-ui/icons/EventNoteRounded";
+import SearchRounded from "@mui/icons-material/SearchRounded";
+import HomeRounded from "@mui/icons-material/HomeRounded";
+import ForumRounded from "@mui/icons-material/ForumRounded";
+import SettingsRounded from "@mui/icons-material/SettingsRounded";
+import AppRegistrationRounded from "@mui/icons-material/AppRegistrationRounded";
+import EventNoteRounded from "@mui/icons-material/EventNoteRounded";
 
 import { getLightestGrey } from "../utils";
 

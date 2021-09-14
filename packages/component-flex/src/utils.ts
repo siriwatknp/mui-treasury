@@ -1,4 +1,4 @@
-import { BoxProps } from "@material-ui/core/Box";
+import { BoxProps } from "@mui/material/Box";
 let isSupported: boolean | undefined;
 
 // https://ishadeed.com/article/flexbox-gap/

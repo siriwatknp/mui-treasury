@@ -2,7 +2,7 @@ import {
   createTheme,
   getContrastRatio,
   ThemeOptions,
-} from "@material-ui/core/styles";
+} from "@mui/material/styles";
 
 import {
   TreasuryPalette,

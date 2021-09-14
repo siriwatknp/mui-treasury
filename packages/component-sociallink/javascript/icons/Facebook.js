@@ -1,5 +1,5 @@
 import React from "react";
-import SvgIcon from "@material-ui/core/SvgIcon";
+import SvgIcon from "@mui/material/SvgIcon";
 function SvgFacebook(props) {
   return (
     <SvgIcon viewBox="0 0 320 512" {...props}>

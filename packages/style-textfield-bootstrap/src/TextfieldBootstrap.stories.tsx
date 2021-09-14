@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { Story, Meta, StoryContext } from "@storybook/react/types-6-0";
 
-import { ThemeProvider, createTheme } from "@material-ui/core/styles";
-import Box from "@material-ui/core/Box";
-import TextField, { TextFieldProps } from "@material-ui/core/TextField";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl, { FormControlProps } from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import FormHelperText from "@material-ui/core/FormHelperText";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import TextField, { TextFieldProps } from "@mui/material/TextField";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl, { FormControlProps } from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import Input from "@mui/material/Input";
+import InputLabel from "@mui/material/InputLabel";
+import InputAdornment from "@mui/material/InputAdornment";
+import FormHelperText from "@mui/material/FormHelperText";
 
-import MailOutlined from "@material-ui/icons/MailOutlined";
+import MailOutlined from "@mui/icons-material/MailOutlined";
 
 import { getTextFieldBootstrapTheme } from "./TextfieldBootstrap.styles";
 

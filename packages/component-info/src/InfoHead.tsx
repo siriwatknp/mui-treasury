@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import cx from "clsx";
-import { styled, Theme } from "@material-ui/core/styles";
-import { SxProps } from "@material-ui/system";
+import { styled, Theme } from "@mui/material/styles";
+import { SxProps } from "@mui/system";
 import { OverridableComponent } from "@mui-treasury/types";
 import { infoClasses } from "./infoClasses";
 import { useStylesCtx, AppendUseStyles } from "./Info";

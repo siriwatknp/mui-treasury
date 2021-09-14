@@ -1,5 +1,5 @@
-import createStyles from "@material-ui/styles/createStyles";
-import makeStyles from "@material-ui/styles/makeStyles";
+import createStyles from "@mui/styles/createStyles";
+import makeStyles from "@mui/styles/makeStyles";
 const SPACE = 24;
 const sharedStyles = ({ palette }) =>
   createStyles({

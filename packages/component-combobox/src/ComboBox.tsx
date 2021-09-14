@@ -1,9 +1,9 @@
 import React, { PropsWithChildren, ReactElement, useContext } from "react";
-import makeStyles from "@material-ui/styles/makeStyles";
+import makeStyles from "@mui/styles/makeStyles";
 import useAutocomplete, {
   AutocompleteGroupedOption,
   UseAutocompleteProps,
-} from "@material-ui/core/useAutocomplete";
+} from "@mui/material/useAutocomplete";
 import { ComboBoxContext, AnchorContext } from "./ComboBoxContext";
 import {
   ComboAnchor,

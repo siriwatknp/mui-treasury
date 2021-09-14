@@ -1,4 +1,4 @@
-import { CSSInterpolation } from "@material-ui/system";
+import { CSSInterpolation } from "@mui/system";
 import { DayMonthYearProps } from "./DayMonthYear";
 import { DayMonthYearClassKey } from "./dayMonthYearClasses";
 
@@ -7,7 +7,7 @@ type OverridesStyleRules<ClassKey extends string = string> = Record<
   CSSInterpolation
 >;
 
-declare module "@material-ui/core/styles/components" {
+declare module "@mui/material/styles/components" {
   interface Components {
     JunDayMonthYear?: {
       defaultProps?: Partial<DayMonthYearProps>;

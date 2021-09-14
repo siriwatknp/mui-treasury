@@ -1,7 +1,7 @@
 import React from "react";
-import Divider from "@material-ui/core/Divider";
-import { BoxProps } from "@material-ui/core/Box";
-import Stack from "@material-ui/core/Stack";
+import Divider from "@mui/material/Divider";
+import { BoxProps } from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
 
 import { Square } from "../shape";
 import { randomBetween } from "../utils";

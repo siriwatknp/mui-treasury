@@ -1,9 +1,9 @@
 import "@mui-treasury/component-sticker";
-import { CSSObject } from "@material-ui/system";
-import { alpha, Theme } from "@material-ui/core/styles";
+import { CSSObject } from "@mui/system";
+import { alpha, Theme } from "@mui/material/styles";
 import { StickerProps, stickerClasses } from "@mui-treasury/component-sticker";
-import { Components } from "@material-ui/core/styles/components";
-import { capitalize } from "@material-ui/core";
+import { Components } from "@mui/material/styles/components";
+import { capitalize } from "@mui/material";
 
 type Output = Required<Pick<Components, "JunSticker">>;
 

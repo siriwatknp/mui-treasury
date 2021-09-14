@@ -1,6 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import Box from "@material-ui/core/Box";
+import Box from "@mui/material/Box";
 import {
   BirthdateField,
   BirthdateFieldProps,

@@ -1,8 +1,8 @@
 import React from "react";
 
-import Box, { BoxProps } from "@material-ui/core/Box";
-import LinearProgress from "@material-ui/core/LinearProgress";
-import Typography from "@material-ui/core/Typography";
+import Box, { BoxProps } from "@mui/material/Box";
+import LinearProgress from "@mui/material/LinearProgress";
+import Typography from "@mui/material/Typography";
 import { Square, Circle } from "../shape";
 import { Word, H1 } from "../typography";
 import { getLightGrey } from "../utils";

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
-import Box from "@material-ui/core/Box";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import FilledInput from "@material-ui/core/FilledInput";
+import Box from "@mui/material/Box";
+import FormHelperText from "@mui/material/FormHelperText";
+import FilledInput from "@mui/material/FilledInput";
 import {
   NumberInput,
   NumberInputProps,

@@ -1,6 +1,6 @@
 import "@mui-treasury/component-navigation";
 import { navigationClasses } from "@mui-treasury/component-navigation";
-import { alpha, lighten } from "@material-ui/core/styles";
+import { alpha, lighten } from "@mui/material/styles";
 const getActiveColor = (palette) =>
   palette.mode === "dark"
     ? "rgba(255,255,255,0.2)"

@@ -1,8 +1,8 @@
 import React from "react";
 import cx from "clsx";
-import { styled } from "@material-ui/core/styles";
-import { unstable_composeClasses as composeClasses } from "@material-ui/unstyled";
-import useThemeProps from "@material-ui/core/styles/useThemeProps";
+import { styled } from "@mui/material/styles";
+import { unstable_composeClasses as composeClasses } from "@mui/core";
+import useThemeProps from "@mui/material/styles/useThemeProps";
 import { getStickerUtilityClass } from "./stickerClasses";
 const overridesResolver = (props, styles) => {
   const { styleProps } = props;

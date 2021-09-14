@@ -2,19 +2,19 @@ import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 import { Groupy, GroupyProps } from "./Groupy";
 
-import Button from "@material-ui/core/Button";
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import Stack from "@material-ui/core/Stack";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
+import Button from "@mui/material/Button";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import FormHelperText from "@mui/material/FormHelperText";
+import Stack from "@mui/material/Stack";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 
-import Search from "@material-ui/icons/Search";
+import Search from "@mui/icons-material/Search";
 
 import { FormAddon } from "@mui-treasury/component-formaddon";
-import { FormLabel } from "@material-ui/core";
+import { FormLabel } from "@mui/material";
 
 export default {
   title: "Component/Groupy",

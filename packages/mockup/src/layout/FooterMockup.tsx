@@ -1,8 +1,8 @@
 import React from "react";
-import Container from "@material-ui/core/Container";
-import Box, { BoxProps } from "@material-ui/core/Box";
-import Grid from "@material-ui/core/Grid";
-import Stack from "@material-ui/core/Stack";
+import Container from "@mui/material/Container";
+import Box, { BoxProps } from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
 import { Square, Pill, Circle } from "../shape";
 import { randomBetween } from "../utils";
 

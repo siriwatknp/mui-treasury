@@ -1,8 +1,8 @@
 import React from "react";
 
-import { alpha } from "@material-ui/core/styles";
-import List, { ListProps } from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
+import { alpha } from "@mui/material/styles";
+import List, { ListProps } from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
 
 import { Word } from "../typography";
 

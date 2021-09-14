@@ -1,7 +1,7 @@
 import {
   generateUtilityClass,
   generateUtilityClasses,
-} from "@material-ui/unstyled";
+} from "@mui/core";
 export function getNumberInputUtilityClass(slot) {
   return generateUtilityClass("JunNumberInput", slot);
 }

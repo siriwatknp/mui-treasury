@@ -1,13 +1,13 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
-import { ThemeProvider } from "@material-ui/core/styles";
-import Box from "@material-ui/core/Box";
-import Stack from "@material-ui/core/Stack";
-import ButtonBase from "@material-ui/core/ButtonBase";
+import { ThemeProvider } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import ButtonBase from "@mui/material/ButtonBase";
 
-import DeleteForever from "@material-ui/icons/DeleteForever";
-import Add from "@material-ui/icons/Add";
+import DeleteForever from "@mui/icons-material/DeleteForever";
+import Add from "@mui/icons-material/Add";
 
 import {
   treasuryPalette,

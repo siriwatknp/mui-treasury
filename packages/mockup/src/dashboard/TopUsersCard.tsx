@@ -1,11 +1,11 @@
 import React from "react";
 
-import Avatar from "@material-ui/core/Avatar";
-import Box, { BoxProps } from "@material-ui/core/Box";
-import Divider from "@material-ui/core/Divider";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import Avatar from "@mui/material/Avatar";
+import Box, { BoxProps } from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
 import { Circle } from "../shape";
 import { Word } from "../typography";
 import { getLightGrey } from "../utils";

@@ -1,5 +1,5 @@
 import React from "react";
-import SvgIcon from "@material-ui/core/SvgIcon";
+import SvgIcon from "@mui/material/SvgIcon";
 function SvgPinterestCircle(props) {
   return (
     <SvgIcon viewBox="0 0 496 512" {...props}>

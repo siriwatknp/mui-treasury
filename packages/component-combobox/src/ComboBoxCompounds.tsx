@@ -2,11 +2,11 @@ import React, { forwardRef, useState, PropsWithChildren } from "react";
 import cx from "clsx";
 import ListSubheader, {
   ListSubheaderProps,
-} from "@material-ui/core/ListSubheader";
-import FormControl, { FormControlProps } from "@material-ui/core/FormControl";
-import FormLabel, { FormLabelProps } from "@material-ui/core/FormLabel";
-import InputBase, { InputBaseProps } from "@material-ui/core/InputBase";
-import Popper from "@material-ui/core/Popper";
+} from "@mui/material/ListSubheader";
+import FormControl, { FormControlProps } from "@mui/material/FormControl";
+import FormLabel, { FormLabelProps } from "@mui/material/FormLabel";
+import InputBase, { InputBaseProps } from "@mui/material/InputBase";
+import Popper from "@mui/material/Popper";
 import { AnchorContext, useComboBoxCtx } from "./ComboBoxContext";
 import { useComboBoxStyles } from "./ComboBox.styles";
 

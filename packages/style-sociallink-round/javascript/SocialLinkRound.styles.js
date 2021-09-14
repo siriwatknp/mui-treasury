@@ -1,5 +1,5 @@
 import "@mui-treasury/component-sociallink";
-import { alpha, lighten } from "@material-ui/core/styles";
+import { alpha, lighten } from "@mui/material/styles";
 export const getSocialLinkRoundStyles = ({ theme: { palette } }) => {
   const extraLightPrimary = alpha(lighten(palette.primary.main, 0.4), 0.72);
   return {

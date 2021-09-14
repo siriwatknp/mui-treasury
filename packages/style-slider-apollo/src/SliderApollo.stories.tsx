@@ -1,9 +1,9 @@
 import React from "react";
 import { Story, Meta, StoryContext } from "@storybook/react/types-6-0";
 
-import { createTheme, ThemeProvider } from "@material-ui/core/styles";
-import Box from "@material-ui/core/Box";
-import Slider, { SliderProps } from "@material-ui/core/Slider";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Slider, { SliderProps } from "@mui/material/Slider";
 
 import { getSliderApolloTheme } from "./SliderApollo.styles";
 

@@ -1,8 +1,8 @@
 import React from "react";
 import cx from "clsx";
-import { styled, useThemeProps, Theme } from "@material-ui/core/styles";
-import { SxProps } from "@material-ui/system";
-import ButtonBase, { ButtonBaseProps } from "@material-ui/core/ButtonBase";
+import { styled, useThemeProps, Theme } from "@mui/material/styles";
+import { SxProps } from "@mui/system";
+import ButtonBase, { ButtonBaseProps } from "@mui/material/ButtonBase";
 import { emailSubscribeClasses } from "./emailSubscribeClasses";
 
 const FormRoot = styled("form", {

@@ -1,14 +1,14 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
-import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
 
-import { useTheme } from "@material-ui/core/styles";
+import { useTheme } from "@mui/material/styles";
 
 import * as EmailSubscribe from "@mui-treasury/component-emailsubscribe";
 
-import Send from "@material-ui/icons/Send";
+import Send from "@mui/icons-material/Send";
 
 import {
   getEmailSubscribeMinimalTheme,

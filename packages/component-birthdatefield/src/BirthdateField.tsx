@@ -1,8 +1,8 @@
 import React from "react";
 import cx from "clsx";
-import { styled, useThemeProps, Theme } from "@material-ui/core/styles";
+import { styled, useThemeProps, Theme } from "@mui/material/styles";
 import { OverridableComponent } from "@mui-treasury/types";
-import TextField, { TextFieldProps } from "@material-ui/core/TextField";
+import TextField, { TextFieldProps } from "@mui/material/TextField";
 import {
   useBirthdateInput,
   UseBirthdateInputOptions,

@@ -1,9 +1,9 @@
 import "@mui-treasury/component-emailsubscribe";
 import { emailSubscribeClasses } from "@mui-treasury/component-emailsubscribe";
-import { CSSObject } from "@material-ui/system";
-import { Theme } from "@material-ui/core/styles";
-import { Components } from "@material-ui/core/styles/components";
-import { blueGrey } from "@material-ui/core/colors";
+import { CSSObject } from "@mui/system";
+import { Theme } from "@mui/material/styles";
+import { Components } from "@mui/material/styles/components";
+import { blueGrey } from "@mui/material/colors";
 
 type Output = Required<Pick<Components, "JunEmailSubscribe">>;
 

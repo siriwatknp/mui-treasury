@@ -10,7 +10,7 @@ export interface OverridableComponent<Props> {
   ): JSX.Element | null;
 }
 
-// from @material-ui/styles
+// from @mui/styles
 export type GenerateStringUnion<T> = Extract<
   {
     [Key in keyof T]: true extends T[Key] ? Key : never;

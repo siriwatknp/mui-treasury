@@ -1,11 +1,11 @@
 import React from "react";
 import cx from "clsx";
-import { styled, useThemeProps } from "@material-ui/core/styles";
-import { unstable_composeClasses as composeClasses } from "@material-ui/unstyled";
-import SvgIcon from "@material-ui/core/SvgIcon";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import ButtonBase from "@material-ui/core/ButtonBase";
+import { styled, useThemeProps } from "@mui/material/styles";
+import { unstable_composeClasses as composeClasses } from "@mui/core";
+import SvgIcon from "@mui/material/SvgIcon";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputAdornment from "@mui/material/InputAdornment";
+import ButtonBase from "@mui/material/ButtonBase";
 import { useNumberInput } from "@mui-treasury/use-number-input";
 import { getNumberSpinnerUtilityClass } from "./numberSpinnerClasses";
 const useUtilityClasses = (styleProps) => {

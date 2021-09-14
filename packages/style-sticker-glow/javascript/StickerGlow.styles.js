@@ -1,5 +1,5 @@
-import { alpha } from "@material-ui/core/styles";
-import makeStyles from "@material-ui/styles/makeStyles";
+import { alpha } from "@mui/material/styles";
+import makeStyles from "@mui/styles/makeStyles";
 export const useStickerGlowStyles = makeStyles(
   ({ treasury, ...theme }) => ({
     root: (props) => ({

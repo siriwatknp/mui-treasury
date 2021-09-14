@@ -1,11 +1,11 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
-import { useTheme } from "@material-ui/core/styles";
+import { useTheme } from "@mui/material/styles";
 
 import * as EmailSubscribe from "@mui-treasury/component-emailsubscribe";
 
-import ArrowForward from "@material-ui/icons/ArrowForward";
+import ArrowForward from "@mui/icons-material/ArrowForward";
 
 import {
   getEmailSubscribeInfoStyles,
