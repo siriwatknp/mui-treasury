@@ -9,15 +9,15 @@ const NavItemRoot = styled(
     name: "JunNavigation",
     slot: "Item",
     overridesResolver: (props, styles) => {
-      const { styleProps } = props;
+      const { ownerState } = props;
       return {
         ...styles.item,
-        ...(styleProps.active && styles.itemActive),
-        ...(styleProps.disabled && styles.itemDisabled),
+        ...(ownerState.active && styles.itemActive),
+        ...(ownerState.disabled && styles.itemDisabled),
       };
     },
   }
-)(({ theme: { palette, shape, spacing, typography }, styleProps }) => ({
+)(({ theme: { palette, shape, spacing, typography }, ownerState }) => ({
   ...typography.body1,
   fontWeight: 500,
   flexShrink: 0,
@@ -52,7 +52,7 @@ export const NavItem = React.forwardRef(function Navigation(
     name: "JunNavigation",
   });
   const { active = false, disabled = false, ...other } = props;
-  const styleProps = {
+  const ownerState = {
     ...props,
     active,
     disabled,
@@ -61,7 +61,7 @@ export const NavItem = React.forwardRef(function Navigation(
     <NavItemRoot
       ref={ref}
       {...other}
-      styleProps={styleProps}
+      ownerState={ownerState}
       className={cx(
         navigationClasses.item,
         active && "Mui-active",

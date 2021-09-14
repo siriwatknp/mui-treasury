@@ -25,8 +25,8 @@ export type FormAddonProps = {
   sx?: SxProps<Theme>;
 };
 
-const useUtilityClasses = (styleProps: FormAddonProps) => {
-  const { classes } = styleProps;
+const useUtilityClasses = (ownerState: FormAddonProps) => {
+  const { classes } = ownerState;
   const slots = {
     root: ["root"],
   };
@@ -41,7 +41,7 @@ const FormAddonRoot = styled("div", {
   name: "JunFormAddon",
   slot: "Root",
   overridesResolver: (props, styles) => styles.root,
-})<{ styleProps: FormAddonProps }>(({ theme }) => ({
+})<{ ownerState: FormAddonProps }>(({ theme }) => ({
   display: "inline-flex",
   alignItems: "center",
   gap: 4,
@@ -68,18 +68,18 @@ export const FormAddon: FormAddonComponent = React.forwardRef<
   });
   const { ...other } = props;
 
-  const styleProps = {
+  const ownerState = {
     ...props,
   };
 
-  const classes = useUtilityClasses(styleProps);
+  const classes = useUtilityClasses(ownerState);
 
   return (
     <FormAddonRoot
       ref={ref}
       as={component}
       {...other}
-      styleProps={styleProps}
+      ownerState={ownerState}
       className={cx(classes.root, props.className)}
     >
       {children}

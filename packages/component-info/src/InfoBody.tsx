@@ -26,13 +26,13 @@ const InfoParagraphRoot = styled("p", {
   name: "JunInfo",
   slot: "Body",
   overridesResolver: (props, styles) => styles.body,
-})<{ styleProps: AppendUseStyles<InfoParagraphProps> }>(
-  ({ theme, styleProps }) => ({
+})<{ ownerState: AppendUseStyles<InfoParagraphProps> }>(
+  ({ theme, ownerState }) => ({
     color: theme.palette.text.secondary,
     lineHeight: 1.5,
     fontSize: "1rem",
     margin: 0,
-    ...styleProps.useStyles(theme).body,
+    ...ownerState.useStyles(theme).body,
   })
 );
 
@@ -49,7 +49,7 @@ export const InfoBody: OverridableComponent<InfoParagraphProps> =
         {...other}
         as={component}
         className={cx(infoClasses.body, className)}
-        styleProps={{ ...props, useStyles }}
+        ownerState={{ ...props, useStyles }}
       >
         {children}
       </InfoParagraphRoot>

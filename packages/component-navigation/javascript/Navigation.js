@@ -28,14 +28,14 @@ export const Navigation = React.forwardRef(function Navigation(
     name: "JunNavigation",
   });
   const { ...other } = props;
-  const styleProps = {
+  const ownerState = {
     ...props,
   };
   return (
     <NavigationRoot
       ref={ref}
       {...other}
-      styleProps={styleProps}
+      ownerState={ownerState}
       className={cx(navigationClasses.root, props.className)}
     >
       {children}

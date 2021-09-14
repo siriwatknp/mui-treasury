@@ -16,7 +16,7 @@ const SocialLinkRoot = styled("a", {
   name: "JunSocialLink",
   slot: "Root",
   overridesResolver: (props, styles) => styles.root,
-})<{ styleProps: SocialLinkProps }>(({ theme: { palette } }) => ({
+})<{ ownerState: SocialLinkProps }>(({ theme: { palette } }) => ({
   display: "inline-flex",
   alignItems: "center",
   cursor: "pointer",
@@ -42,7 +42,7 @@ export const SocialLink: OverridableComponent<
   });
   const { ...other } = props;
 
-  const styleProps = {
+  const ownerState = {
     ...props,
   };
 
@@ -53,7 +53,7 @@ export const SocialLink: OverridableComponent<
       target="_blank"
       rel="noopener noreferrer"
       {...other}
-      styleProps={styleProps}
+      ownerState={ownerState}
       className={cx("JunSocialLink-root", props.className)}
     >
       {children}

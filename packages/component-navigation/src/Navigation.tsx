@@ -23,7 +23,7 @@ const NavigationRoot = styled("nav", {
   name: "JunNavigation",
   slot: "Root",
   overridesResolver: (props, styles) => styles.root,
-})<{ styleProps: NavigationProps }>({
+})<{ ownerState: NavigationProps }>({
   display: "flex",
   overflow: "auto",
   // Hide dimensionless scrollbar on MacOS
@@ -43,7 +43,7 @@ export const Navigation: OverridableComponent<
     });
     const { ...other } = props;
 
-    const styleProps = {
+    const ownerState = {
       ...props,
     };
 
@@ -51,7 +51,7 @@ export const Navigation: OverridableComponent<
       <NavigationRoot
         ref={ref}
         {...other}
-        styleProps={styleProps}
+        ownerState={ownerState}
         className={cx(navigationClasses.root, props.className)}
       >
         {children}

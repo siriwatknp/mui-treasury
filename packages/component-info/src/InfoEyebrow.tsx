@@ -26,14 +26,14 @@ const InfoEyebrowRoot = styled("div", {
   name: "JunInfo",
   slot: "Eyebrow",
   overridesResolver: (props, styles) => styles.eyebrow,
-})<{ styleProps: AppendUseStyles<InfoEyebrowProps> }>(
-  ({ theme, styleProps }) => ({
+})<{ ownerState: AppendUseStyles<InfoEyebrowProps> }>(
+  ({ theme, ownerState }) => ({
     color: theme.palette.text.secondary,
     fontSize: "0.875rem",
     marginBottom: "0.25rem",
     lineHeight: "1.25rem",
     textTransform: "uppercase",
-    ...styleProps.useStyles(theme).eyebrow,
+    ...ownerState.useStyles(theme).eyebrow,
   })
 );
 
@@ -50,7 +50,7 @@ export const InfoEyebrow: OverridableComponent<InfoEyebrowProps> =
         {...other}
         as={component}
         className={cx(infoClasses.eyebrow, className)}
-        styleProps={{ ...props, useStyles }}
+        ownerState={{ ...props, useStyles }}
       >
         {children}
       </InfoEyebrowRoot>

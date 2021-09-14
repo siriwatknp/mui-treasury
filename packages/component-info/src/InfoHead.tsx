@@ -26,13 +26,13 @@ const InfoHeadRoot = styled("h4", {
   name: "JunInfo",
   slot: "Head",
   overridesResolver: (props, styles) => styles.head,
-})<{ styleProps: AppendUseStyles<InfoHeadProps> }>(({ theme, styleProps }) => ({
+})<{ ownerState: AppendUseStyles<InfoHeadProps> }>(({ theme, ownerState }) => ({
   letterSpacing: "0.0073529412em",
   fontSize: "1.25rem",
   fontWeight: "normal",
   margin: "0 0 0.5rem 0",
   lineHeight: 1.5,
-  ...styleProps.useStyles(theme).head,
+  ...ownerState.useStyles(theme).head,
 }));
 
 export const InfoHead: OverridableComponent<InfoHeadProps> = React.forwardRef<
@@ -47,7 +47,7 @@ export const InfoHead: OverridableComponent<InfoHeadProps> = React.forwardRef<
       {...other}
       as={component}
       className={cx(infoClasses.head, className)}
-      styleProps={{ ...props, useStyles }}
+      ownerState={{ ...props, useStyles }}
     >
       {children}
     </InfoHeadRoot>

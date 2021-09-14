@@ -27,8 +27,8 @@ export type PinInputProps = {
   sx?: SxProps<Theme>;
 } & Omit<UsePinInputOptions, "pinLength">;
 
-const useUtilityClasses = (styleProps: PinInputProps) => {
-  const { classes } = styleProps;
+const useUtilityClasses = (ownerState: PinInputProps) => {
+  const { classes } = ownerState;
   const slots = {
     root: ["root"],
   };
@@ -39,7 +39,7 @@ const PinInputRoot = styled("div", {
   name: "JunPinInput",
   slot: "Root",
   overridesResolver: (props, styles) => styles.root,
-})<{ styleProps: PinInputProps }>({
+})<{ ownerState: PinInputProps }>({
   display: "flex",
   gap: "8px",
   "& input": {
@@ -57,11 +57,11 @@ export const PinInput: OverridableComponent<PinInputProps> = React.forwardRef<
   });
   const { children, onChange, onBlur, ...other } = props;
 
-  const styleProps = {
+  const ownerState = {
     ...props,
   };
 
-  const classes = useUtilityClasses(styleProps);
+  const classes = useUtilityClasses(ownerState);
 
   const { pins } = usePinInput({ ...props, pinLength: children.length });
 
@@ -69,7 +69,7 @@ export const PinInput: OverridableComponent<PinInputProps> = React.forwardRef<
     <PinInputRoot
       ref={ref}
       {...other}
-      styleProps={styleProps}
+      ownerState={ownerState}
       className={cx(classes.root, props.className)}
     >
       {pins.map((getInputProps, index) => {

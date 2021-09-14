@@ -37,13 +37,13 @@ const DayMonthYearRoot = styled("div", {
   name: "JunDayMonthYear",
   slot: "Root",
   overridesResolver: (props, styles) => styles.root,
-})<{ styleProps: DayMonthYearProps }>({
+})<{ ownerState: DayMonthYearProps }>({
   display: "flex",
   gap: "8px",
 });
 
-const useUtilityClasses = (styleProps: DayMonthYearProps) => {
-  const { classes } = styleProps;
+const useUtilityClasses = (ownerState: DayMonthYearProps) => {
+  const { classes } = ownerState;
   const slots = {
     root: ["root"],
   };
@@ -85,13 +85,13 @@ export const DayMonthYear: OverridableComponent<DayMonthYearProps> =
       month: getMonthInputProps,
       year: getYearInputProps,
     };
-    const styleProps = { ...props };
-    const classes = useUtilityClasses(styleProps);
+    const ownerState = { ...props };
+    const classes = useUtilityClasses(ownerState);
     return (
       <DayMonthYearRoot
         ref={ref}
         className={cx(classes?.root, className)}
-        styleProps={styleProps}
+        ownerState={ownerState}
         {...other}
       >
         {children.map((child) => {

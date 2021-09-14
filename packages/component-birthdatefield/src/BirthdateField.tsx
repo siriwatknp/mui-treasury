@@ -13,7 +13,7 @@ export type BirthdateFieldProps = Omit<TextFieldProps, "select" | "onChange"> &
   UseBirthdateInputOptions;
 
 const shouldForwardProp = (prop: any) =>
-  prop !== "styleProps" && prop !== "theme" && prop !== "sx" && prop !== "as";
+  prop !== "ownerState" && prop !== "theme" && prop !== "sx" && prop !== "as";
 
 const BirthdateFieldRoot = styled(TextField, {
   name: "JunBirthdateField",

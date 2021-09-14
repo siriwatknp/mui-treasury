@@ -42,8 +42,8 @@ export type NumberInputProps = UseNumberInputOptions & {
   };
 } & Omit<OutlinedInputProps, "onChange">;
 
-const useUtilityClasses = (styleProps: NumberInputProps) => {
-  const { StepperProps, size } = styleProps;
+const useUtilityClasses = (ownerState: NumberInputProps) => {
+  const { StepperProps, size } = ownerState;
   const slots = {
     stepper: ["stepper", size && `stepper${capitalize(size)}`],
     button: ["button"],
@@ -74,12 +74,12 @@ const NumberInputButton = styled(ButtonBase, {
   name: "JunNumberInput",
   slot: "Button",
   overridesResolver: (props, styles) => {
-    const { styleProps } = props;
-    return [styles.button, styles[styleProps.type]];
+    const { ownerState } = props;
+    return [styles.button, styles[ownerState.type]];
   },
 })<{
-  styleProps: { size: "small" | "medium" };
-}>(({ theme, styleProps }) => ({
+  ownerState: { size: "small" | "medium" };
+}>(({ theme, ownerState }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -91,7 +91,7 @@ const NumberInputButton = styled(ButtonBase, {
     opacity: 0.5,
     cursor: "not-allowed",
   },
-  ...(styleProps.size === "small" && {
+  ...(ownerState.size === "small" && {
     "& svg": {
       fontSize: "1.25rem",
     },
@@ -139,11 +139,11 @@ export const NumberInput = React.forwardRef<
     ...other
   } = props;
 
-  const styleProps = {
+  const ownerState = {
     ...props,
   };
 
-  const classes = useUtilityClasses(styleProps);
+  const classes = useUtilityClasses(ownerState);
 
   const { inputRef, getInputProps, getIncrementProps, getDecrementProps } =
     useNumberInput(props);
@@ -170,7 +170,7 @@ export const NumberInput = React.forwardRef<
                 classes.increment,
                 IncrementProps?.className
               )}
-              styleProps={{ size }}
+              ownerState={{ size }}
             >
               {incrementIcon}
             </NumberInputButton>
@@ -182,7 +182,7 @@ export const NumberInput = React.forwardRef<
                 classes.decrement,
                 DecrementProps?.className
               )}
-              styleProps={{ size }}
+              ownerState={{ size }}
             >
               {decrementIcon}
             </NumberInputButton>

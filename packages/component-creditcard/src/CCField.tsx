@@ -50,8 +50,8 @@ export const useCCContext = () => {
   return context;
 };
 
-const useUtilityClasses = (styleProps: CCFieldProps) => {
-  const { classes } = styleProps;
+const useUtilityClasses = (ownerState: CCFieldProps) => {
+  const { classes } = ownerState;
   const slots = {
     root: ["root"],
   };
@@ -62,7 +62,7 @@ const CCFieldRoot = styled("div", {
   name: "JunCreditCard",
   slot: "Field",
   overridesResolver: (props, styles) => styles.root,
-})<{ styleProps: CCFieldProps }>({});
+})<{ ownerState: CCFieldProps }>({});
 
 export const CCField: OverridableComponent<CCFieldProps> = React.forwardRef<
   HTMLDivElement,
@@ -87,11 +87,11 @@ export const CCField: OverridableComponent<CCFieldProps> = React.forwardRef<
     ...other
   } = props;
 
-  const styleProps = {
+  const ownerState = {
     ...props,
   };
 
-  const classes = useUtilityClasses(styleProps);
+  const classes = useUtilityClasses(ownerState);
 
   const context = useCardInput({
     ...props,
@@ -108,7 +108,7 @@ export const CCField: OverridableComponent<CCFieldProps> = React.forwardRef<
     <CCFieldRoot
       ref={ref}
       {...other}
-      styleProps={styleProps}
+      ownerState={ownerState}
       className={cx(classes.root, props.className)}
     >
       <CCContext.Provider

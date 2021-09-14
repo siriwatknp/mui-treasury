@@ -9,8 +9,8 @@ import ButtonBase from "@mui/material/ButtonBase";
 import { getNumberInputUtilityClass } from "./numberInputClasses";
 import { useNumberInput } from "@mui-treasury/use-number-input";
 import capitalize from "@mui/utils/capitalize";
-const useUtilityClasses = (styleProps) => {
-  const { StepperProps, size } = styleProps;
+const useUtilityClasses = (ownerState) => {
+  const { StepperProps, size } = ownerState;
   const slots = {
     stepper: ["stepper", size && `stepper${capitalize(size)}`],
     button: ["button"],
@@ -46,14 +46,14 @@ const NumberInputButton = styled(
     name: "JunNumberInput",
     slot: "Button",
     overridesResolver: (props, styles) => {
-      const { styleProps } = props;
+      const { ownerState } = props;
       return {
         ...styles.button,
-        ...styles[styleProps.type],
+        ...styles[ownerState.type],
       };
     },
   }
-)(({ theme, styleProps }) => ({
+)(({ theme, ownerState }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -65,7 +65,7 @@ const NumberInputButton = styled(
     opacity: 0.5,
     cursor: "not-allowed",
   },
-  ...(styleProps.size === "small" && {
+  ...(ownerState.size === "small" && {
     "& svg": {
       fontSize: "1.25rem",
     },
@@ -107,10 +107,10 @@ export const NumberInput = React.forwardRef(function NumberInput(inProps, ref) {
     size = "medium",
     ...other
   } = props;
-  const styleProps = {
+  const ownerState = {
     ...props,
   };
-  const classes = useUtilityClasses(styleProps);
+  const classes = useUtilityClasses(ownerState);
   const { inputRef, getInputProps, getIncrementProps, getDecrementProps } =
     useNumberInput(props);
   return React.cloneElement(inputElement, {
@@ -135,7 +135,7 @@ export const NumberInput = React.forwardRef(function NumberInput(inProps, ref) {
                 classes.increment,
                 IncrementProps?.className
               )}
-              styleProps={{ size }}
+              ownerState={{ size }}
             >
               {incrementIcon}
             </NumberInputButton>
@@ -147,7 +147,7 @@ export const NumberInput = React.forwardRef(function NumberInput(inProps, ref) {
                 classes.decrement,
                 DecrementProps?.className
               )}
-              styleProps={{ size }}
+              ownerState={{ size }}
             >
               {decrementIcon}
             </NumberInputButton>

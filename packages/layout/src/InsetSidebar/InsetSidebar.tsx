@@ -18,14 +18,14 @@ const InsetSidebarBody = styled("div", {
   name: "AppInsetSidebar",
   slot: "Body",
   overridesResolver: (props, styles) => styles.body,
-})<{ styleProps: { anchor?: "left" | "right" } }>(({ theme, styleProps }) => ({
+})<{ ownerState: { anchor?: "left" | "right" } }>(({ theme, ownerState }) => ({
   display: "flex",
   flexDirection: "column",
   overflow: "auto",
-  ...(styleProps.anchor === "left" && {
+  ...(ownerState.anchor === "left" && {
     borderRight: "1px solid",
   }),
-  ...(styleProps.anchor === "right" && {
+  ...(ownerState.anchor === "right" && {
     borderLeft: "1px solid",
   }),
   borderColor: theme.palette.divider,
@@ -69,7 +69,7 @@ export const InsetSidebar = ({
       <InsetSidebarBody
         {...props}
         className={cx(props?.className, classes?.paper)}
-        styleProps={{ anchor }}
+        ownerState={{ anchor }}
         sx={{
           ...sidebar?.getSxBody(),
           ...props?.sx,

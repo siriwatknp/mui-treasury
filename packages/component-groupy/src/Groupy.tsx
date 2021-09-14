@@ -31,8 +31,8 @@ export type GroupyProps = {
   orientation?: "horizontal" | "vertical";
 };
 
-const useUtilityClasses = (styleProps: GroupyProps) => {
-  const { classes, orientation } = styleProps;
+const useUtilityClasses = (ownerState: GroupyProps) => {
+  const { classes, orientation } = ownerState;
   const slots = {
     root: ["root", orientation],
   };
@@ -46,16 +46,16 @@ const useUtilityClasses = (styleProps: GroupyProps) => {
 const GroupyRoot = styled("div", {
   name: "JunGroupy",
   slot: "Root",
-  overridesResolver: (props: { styleProps: GroupyProps }, styles) => {
-    const { styleProps } = props;
+  overridesResolver: (props: { ownerState: GroupyProps }, styles) => {
+    const { ownerState } = props;
     return [
       styles.root,
-      styleProps.orientation && styles[styleProps.orientation],
+      ownerState.orientation && styles[ownerState.orientation],
     ];
   },
-})<{ styleProps: GroupyProps }>(({ styleProps }) => ({
+})<{ ownerState: GroupyProps }>(({ ownerState }) => ({
   display: "flex",
-  ...(styleProps.orientation === "horizontal" && {
+  ...(ownerState.orientation === "horizontal" && {
     flexDirection: "row",
     // separate MuiInputBase into another scope
     "& > :not(:first-of-type):not(label + *):not(.MuiInputBase-root)": {
@@ -84,7 +84,7 @@ const GroupyRoot = styled("div", {
       },
     },
   }),
-  ...(styleProps.orientation === "vertical" && {
+  ...(ownerState.orientation === "vertical" && {
     flexDirection: "column",
     "& > :not(:first-of-type)": {
       marginTop: -1,
@@ -110,19 +110,19 @@ export const Groupy: GroupyComponent = React.forwardRef<
   });
   const { orientation = "horizontal", ...other } = props;
 
-  const styleProps = {
+  const ownerState = {
     ...props,
     orientation,
   };
 
-  const classes = useUtilityClasses(styleProps);
+  const classes = useUtilityClasses(ownerState);
 
   return (
     <GroupyRoot
       ref={ref}
       as={component}
       {...other}
-      styleProps={styleProps}
+      ownerState={ownerState}
       className={cx(classes.root, props.className)}
     >
       {children}

@@ -3,8 +3,8 @@ import cx from "clsx";
 import { styled, useThemeProps } from "@mui/material/styles";
 import { unstable_composeClasses as composeClasses } from "@mui/core";
 import { getFormAddonUtilityClass } from "./formAddonClasses";
-const useUtilityClasses = (styleProps) => {
-  const { classes } = styleProps;
+const useUtilityClasses = (ownerState) => {
+  const { classes } = ownerState;
   const slots = {
     root: ["root"],
   };
@@ -40,16 +40,16 @@ export const FormAddon = React.forwardRef(function FormAddon(
     name: "JunFormAddon",
   });
   const { ...other } = props;
-  const styleProps = {
+  const ownerState = {
     ...props,
   };
-  const classes = useUtilityClasses(styleProps);
+  const classes = useUtilityClasses(ownerState);
   return (
     <FormAddonRoot
       ref={ref}
       as={component}
       {...other}
-      styleProps={styleProps}
+      ownerState={ownerState}
       className={cx(classes.root, props.className)}
     >
       {children}

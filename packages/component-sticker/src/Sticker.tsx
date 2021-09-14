@@ -51,8 +51,8 @@ export type StickerProps = {
   sx?: SxProps<Theme>;
 };
 
-const useUtilityClasses = (styleProps: StickerProps) => {
-  const { variant, round, palette, hasText, classes } = styleProps;
+const useUtilityClasses = (ownerState: StickerProps) => {
+  const { variant, round, palette, hasText, classes } = ownerState;
   const slots = {
     root: [
       "root",
@@ -73,18 +73,18 @@ const StickerRoot = styled("div", {
   name: "JunSticker",
   slot: "Root",
   overridesResolver: (props, styles) => {
-    const { styleProps } = props;
+    const { ownerState } = props;
 
     return [
       styles.root,
-      styles[styleProps.variant],
-      styles[styleProps[`color${capitalize(styleProps.palette)}`]],
-      styleProps.hasText && styles.hasText,
-      styleProps.round && styles.round,
+      styles[ownerState.variant],
+      styles[ownerState[`color${capitalize(ownerState.palette)}`]],
+      ownerState.hasText && styles.hasText,
+      ownerState.round && styles.round,
     ];
   },
-})<{ styleProps: StickerProps }>(
-  ({ theme: { treasury, ...theme }, styleProps }) => ({
+})<{ ownerState: StickerProps }>(
+  ({ theme: { treasury, ...theme }, ownerState }) => ({
     display: "inline-flex",
     justifyContent: "center",
     alignItems: "center",
@@ -95,14 +95,14 @@ const StickerRoot = styled("div", {
     flexShrink: 0,
     position: "relative",
     borderRadius: theme.shape.borderRadius,
-    ...(styleProps.round && {
+    ...(ownerState.round && {
       borderRadius: 100,
     }),
-    ...(styleProps.hasText && {
+    ...(ownerState.hasText && {
       padding: "0 0.5rem",
     }),
-    color: treasury.getColor(styleProps.palette, "500"),
-    ...(styleProps.variant === "outlined" && {
+    color: treasury.getColor(ownerState.palette, "500"),
+    ...(ownerState.variant === "outlined" && {
       "&:before": {
         display: "block",
         content: "''",
@@ -113,18 +113,18 @@ const StickerRoot = styled("div", {
         bottom: 0,
         borderRadius: theme.shape.borderRadius,
         boxShadow: `inset 0 0 0 1px`,
-        ...(styleProps.round && {
+        ...(ownerState.round && {
           borderRadius: 100,
         }),
       },
     }),
-    ...(styleProps.variant === "solid" && {
+    ...(ownerState.variant === "solid" && {
       color: "#fff",
-      backgroundColor: treasury.getColor(styleProps.palette, "500"),
+      backgroundColor: treasury.getColor(ownerState.palette, "500"),
     }),
-    ...(styleProps.variant === "soft" && {
-      color: treasury.getColor(styleProps.palette, "500"),
-      backgroundColor: treasury.getColor(styleProps.palette ?? "grey", "100"),
+    ...(ownerState.variant === "soft" && {
+      color: treasury.getColor(ownerState.palette, "500"),
+      backgroundColor: treasury.getColor(ownerState.palette ?? "grey", "100"),
     }),
   })
 );
@@ -148,21 +148,21 @@ export const Sticker: StickerComponent = React.forwardRef<
     ...other
   } = props;
 
-  const styleProps = {
+  const ownerState = {
     variant,
     round,
     hasText,
     ...props,
   };
 
-  const classes = useUtilityClasses(styleProps);
+  const classes = useUtilityClasses(ownerState);
 
   return (
     <StickerRoot
       ref={ref}
       as={component}
       {...other}
-      styleProps={styleProps}
+      ownerState={ownerState}
       className={cx(classes.root, props.className)}
     >
       {children}

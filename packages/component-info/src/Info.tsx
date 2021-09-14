@@ -55,12 +55,12 @@ const InfoRoot = styled("div", {
   name: "JunInfo",
   slot: "Root",
   overridesResolver: (props, styles) => {
-    const { styleProps } = props;
-    return [styles.root, styleProps.variant && styles[styleProps.variant]];
+    const { ownerState } = props;
+    return [styles.root, ownerState.variant && styles[ownerState.variant]];
   },
-})<{ styleProps: InfoProps }>(({ theme, styleProps }) => ({
+})<{ ownerState: InfoProps }>(({ theme, ownerState }) => ({
   display: "block",
-  ...(styleProps.useStyles && styleProps.useStyles(theme).root),
+  ...(ownerState.useStyles && ownerState.useStyles(theme).root),
 }));
 
 export const Info: OverridableComponent<InfoProps> = React.forwardRef<
@@ -73,7 +73,7 @@ export const Info: OverridableComponent<InfoProps> = React.forwardRef<
   });
   const { children, component, variant, useStyles, ...other } = props;
 
-  const styleProps = {
+  const ownerState = {
     ...props,
     variant,
     useStyles,
@@ -85,7 +85,7 @@ export const Info: OverridableComponent<InfoProps> = React.forwardRef<
       {...other}
       as={component}
       className={cx(infoClasses.root, props.className)}
-      styleProps={styleProps}
+      ownerState={ownerState}
     >
       <StylesContext.Provider value={useStyles || defaultUseStyles}>
         {children}

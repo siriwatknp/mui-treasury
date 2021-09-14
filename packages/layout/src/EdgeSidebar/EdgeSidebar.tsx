@@ -71,11 +71,11 @@ const EdgeSidebarRoot = styled(Drawer, {
   slot: "Root",
   overridesResolver: (props, styles) => styles.root,
 })<{
-  styleProps: EdgeSidebarProps & { entered: boolean; variant: DrawerVariant };
-}>(({ styleProps }) => ({
-  ...((styleProps.entered ||
-    styleProps.variant === "permanent" ||
-    styleProps.variant === "persistent") && {
+  ownerState: EdgeSidebarProps & { entered: boolean; variant: DrawerVariant };
+}>(({ ownerState }) => ({
+  ...((ownerState.entered ||
+    ownerState.variant === "permanent" ||
+    ownerState.variant === "persistent") && {
     [`& .${drawerClasses.paper}`]: {
       transition: `${CSS_TRANSITION} !important`,
       transitionProperty: "all !important",
@@ -166,7 +166,7 @@ export const EdgeSidebar = ({
   const variant = pickNearestBreakpoint(responsiveVariant, screen);
   if (!variant) return null;
 
-  const styleProps = { ...props, entered, variant };
+  const ownerState = { ...props, entered, variant };
 
   return (
     <SidebarContext.Provider value={sidebarValue}>
@@ -175,7 +175,7 @@ export const EdgeSidebar = ({
         open={layoutState[sidebarId]?.open}
         anchor={anchor}
         variant={variant}
-        styleProps={styleProps}
+        ownerState={ownerState}
         onClose={(...args: Parameters<NonNullable<ModalProps["onClose"]>>) => {
           props.onClose?.(...args);
           setOpen(sidebarId, false);

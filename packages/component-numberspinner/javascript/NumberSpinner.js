@@ -8,8 +8,8 @@ import InputAdornment from "@mui/material/InputAdornment";
 import ButtonBase from "@mui/material/ButtonBase";
 import { useNumberInput } from "@mui-treasury/use-number-input";
 import { getNumberSpinnerUtilityClass } from "./numberSpinnerClasses";
-const useUtilityClasses = (styleProps) => {
-  const { StepperProps } = styleProps;
+const useUtilityClasses = (ownerState) => {
+  const { StepperProps } = ownerState;
   const slots = {
     stepper: ["stepper"],
     button: ["button"],
@@ -29,14 +29,14 @@ const NumberSpinnerButton = styled(
     name: "JunNumberSpinner",
     slot: "Button",
     overridesResolver: (props, styles) => {
-      const { styleProps } = props;
+      const { ownerState } = props;
       return {
         ...styles.button,
-        ...styles[styleProps.type],
+        ...styles[ownerState.type],
       };
     },
   }
-)(({ theme, styleProps }) => ({
+)(({ theme, ownerState }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -51,10 +51,10 @@ const NumberSpinnerButton = styled(
     opacity: 0.5,
     cursor: "not-allowed",
   },
-  ...(styleProps.type === "increment" && {
+  ...(ownerState.type === "increment" && {
     marginRight: -4,
   }),
-  ...(styleProps.type === "decrement" && {
+  ...(ownerState.type === "decrement" && {
     marginLeft: -4,
   }),
 }));
@@ -97,10 +97,10 @@ export const NumberSpinner = React.forwardRef(function NumberSpinner(
     min = 0,
     ...other
   } = props;
-  const styleProps = {
+  const ownerState = {
     ...props,
   };
-  const classes = useUtilityClasses(styleProps);
+  const classes = useUtilityClasses(ownerState);
   const { inputRef, getInputProps, getIncrementProps, getDecrementProps } =
     useNumberInput({ ...props, min });
   return React.cloneElement(inputElement, {
@@ -129,7 +129,7 @@ export const NumberSpinner = React.forwardRef(function NumberSpinner(
             classes.decrement,
             DecrementProps?.className
           )}
-          styleProps={{ type: "decrement" }}
+          ownerState={{ type: "decrement" }}
         >
           {decrementIcon}
         </NumberSpinnerButton>
@@ -145,7 +145,7 @@ export const NumberSpinner = React.forwardRef(function NumberSpinner(
             classes.increment,
             IncrementProps?.className
           )}
-          styleProps={{ type: "increment" }}
+          ownerState={{ type: "increment" }}
         >
           {incrementIcon}
         </NumberSpinnerButton>

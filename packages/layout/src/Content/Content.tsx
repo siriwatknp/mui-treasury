@@ -18,9 +18,9 @@ const ContentRoot = styled("main", {
   name: "AppContent",
   slot: "Root",
   overridesResolver: (props, styles) => styles.root,
-})<{ styleProps: { isFullscreen: boolean } }>(({ styleProps }) => ({
+})<{ ownerState: { isFullscreen: boolean } }>(({ ownerState }) => ({
   transition: CSS_TRANSITION,
-  ...(styleProps.isFullscreen && {
+  ...(ownerState.isFullscreen && {
     flexGrow: 1,
     minHeight: "0px",
     display: "flex",
@@ -48,7 +48,7 @@ export const Content = ({
         ...props.sx,
         ...sxProps,
       }}
-      styleProps={{ isFullscreen }}
+      ownerState={{ isFullscreen }}
     >
       {typeof children === "function" ? children(ctx) : children}
     </ContentRoot>

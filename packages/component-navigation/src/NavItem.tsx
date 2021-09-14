@@ -33,15 +33,15 @@ const NavItemRoot = styled("a", {
   name: "JunNavigation",
   slot: "Item",
   overridesResolver: (props, styles) => {
-    const { styleProps } = props;
+    const { ownerState } = props;
     return [
       styles.item,
-      styleProps.active && styles.itemActive,
-      styleProps.disabled && styles.itemDisabled,
+      ownerState.active && styles.itemActive,
+      ownerState.disabled && styles.itemDisabled,
     ];
   },
-})<{ styleProps: NavItemProps }>(
-  ({ theme: { palette, shape, spacing, typography }, styleProps }) => ({
+})<{ ownerState: NavItemProps }>(
+  ({ theme: { palette, shape, spacing, typography }, ownerState }) => ({
     ...typography.body1,
     fontWeight: 500,
     flexShrink: 0,
@@ -80,7 +80,7 @@ export const NavItem: OverridableComponent<PropsWithChildren<NavItemProps>> =
       });
       const { active = false, disabled = false, ...other } = props;
 
-      const styleProps = {
+      const ownerState = {
         ...props,
         active,
         disabled,
@@ -90,7 +90,7 @@ export const NavItem: OverridableComponent<PropsWithChildren<NavItemProps>> =
         <NavItemRoot
           ref={ref}
           {...other}
-          styleProps={styleProps}
+          ownerState={ownerState}
           className={cx(
             navigationClasses.item,
             active && "Mui-active",

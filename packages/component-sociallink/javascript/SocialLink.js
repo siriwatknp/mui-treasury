@@ -31,7 +31,7 @@ export const SocialLink = React.forwardRef(function SocialLink(
     name: "JunSocialLink",
   });
   const { ...other } = props;
-  const styleProps = {
+  const ownerState = {
     ...props,
   };
   return (
@@ -41,7 +41,7 @@ export const SocialLink = React.forwardRef(function SocialLink(
       target="_blank"
       rel="noopener noreferrer"
       {...other}
-      styleProps={styleProps}
+      ownerState={ownerState}
       className={cx("JunSocialLink-root", props.className)}
     >
       {children}

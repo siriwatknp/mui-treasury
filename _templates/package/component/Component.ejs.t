@@ -32,8 +32,8 @@ export type <%=Name%>Props = {
   sx?: SxProps<Theme>;
 };
 
-const useUtilityClasses = (styleProps: <%=Name%>Props) => {
-  const { classes } = styleProps;
+const useUtilityClasses = (ownerState: <%=Name%>Props) => {
+  const { classes } = ownerState;
   const slots = {
     root: ["root"],
   };
@@ -47,7 +47,7 @@ const <%=Name%>Root = styled(
     slot: "Root",
     overridesResolver: (props, styles) => styles.root,
   }
-)<{ styleProps: <%=Name%>Props }>({});
+)<{ ownerState: <%=Name%>Props }>({});
 
 export const <%=Name%>: OverridableComponent<<%=Name%>Props> = React.forwardRef<
   any,
@@ -59,17 +59,17 @@ export const <%=Name%>: OverridableComponent<<%=Name%>Props> = React.forwardRef<
   });
   const { ...other } = props;
 
-  const styleProps = {
+  const ownerState = {
     ...props,
   };
 
-  const classes = useUtilityClasses(styleProps);
+  const classes = useUtilityClasses(ownerState);
 
   return (
     <<%=Name%>Root
       ref={ref}
       {...other}
-      styleProps={styleProps}
+      ownerState={ownerState}
       className={cx(classes.root, props.className)}
     >
       {children}
