@@ -49,7 +49,7 @@
     "build-storybook": "NODE_ENV=production build-storybook -s public",
     "release": "npm whoami && lerna run --scope \"@mui-treasury/*\" build && lerna publish --contents build",
     "changelog": "source .env && lerna-changelog | pbcopy",
-    "list-versions": "lerna list -l" 
+    "list-versions": "lerna list -l"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
@@ -98,9 +98,9 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "@material-ui/core": "^4.10.0",
-    "@material-ui/icons": "^4.9.1",
-    "@material-ui/lab": "^4.0.0-alpha.54",
+    "@material-ui/core": "4.12.3",
+    "@material-ui/icons": "4.11.2",
+    "@material-ui/lab": "4.0.0-alpha.60",
     "csstype": "^2.6.10",
     "source-map-explorer": "^2.4.2"
   }
