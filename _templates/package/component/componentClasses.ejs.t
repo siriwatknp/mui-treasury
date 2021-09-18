@@ -5,7 +5,7 @@ unless_exists: true
 import {
   generateUtilityClass,
   generateUtilityClasses,
-} from "@material-ui/unstyled";
+} from "@mui/core";
 
 export interface <%=Name = h.toName(name)%>Classes {
   /** Styles applied to the root element. */

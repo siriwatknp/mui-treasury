@@ -7,7 +7,7 @@ appends some utilities and more color swatches to the theme object with type saf
 replace `createTheme` with `createTreasuryTheme` from the library
 
 ```tsx
-// import { createTheme } from "@material-ui/core/styles";
+// import { createTheme } from "@mui/material/styles";
 import { createTreasuryTheme } from "@mui-treasury/theme-treasury";
 
 const theme = createTreasuryTheme();

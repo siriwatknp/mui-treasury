@@ -6,8 +6,8 @@ import React from "react";
 import {
   createTheme,
   ThemeProvider,
-} from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
+} from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 
 import {
   Root,

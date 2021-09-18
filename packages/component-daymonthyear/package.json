@@ -35,6 +35,6 @@
     "@mui-treasury/use-daymonthyear-input": "^0.1.0-alpha.4"
   },
   "peerDependencies": {
-    "@material-ui/core": "^5.0.0-beta.1"
+    "@mui/material": "^5.0.0"
   }
 }

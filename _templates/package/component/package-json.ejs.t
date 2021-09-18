@@ -36,6 +36,6 @@ unless_exists: true
     "url": "https://github.com/siriwatknp/mui-treasury/issues"
   },
   "peerDependencies": {
-    "@material-ui/core": "^5.0.0-beta.1"
+    "@mui/material": "^5.0.0"
   }
 }

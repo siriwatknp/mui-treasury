@@ -7,7 +7,7 @@ module.exports = {
     "^.+\\.(ts|tsx|js)$": "ts-jest",
   },
   transformIgnorePatterns: [
-    "<rootDir>/node_modules/(?!(@material-ui/core|@babel/runtime)/)",
+    "<rootDir>/node_modules/(?!(@mui/material|@babel/runtime)/)",
   ],
   testMatch: [
     "**/__tests__/**/*.+(ts|tsx|js)",

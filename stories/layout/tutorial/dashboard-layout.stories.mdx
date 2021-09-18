@@ -27,7 +27,7 @@ cd my-layout
 and install necessary packages
 
 ```bash
-yarn add @material-ui/core@next @material-ui/icons@next @emotion/styled @emotion/react @mui-treasury/layout@next @mui-treasury/mockup@next
+yarn add @mui/material@next @mui/icons-material@next @emotion/styled @emotion/react @mui-treasury/layout@next @mui-treasury/mockup@next
 ```
 
 > note: this tutorial is based on @mui-treasury/layout v5 (alpha),
@@ -136,7 +136,7 @@ At this point, let's render these components on the page so that you don't get s
 ```jsx
 import React from "react";
 
-import CssBaseline from "@material-ui/core/CssBaseline";
+import CssBaseline from "@mui/material/CssBaseline";
 
 import { Root, Header, EdgeSidebar } from "@mui-treasury/layout";
 
@@ -188,17 +188,17 @@ let's update the code to be like this.
 
 ```jsx
 // ...other import
-import Box from "@material-ui/core/Box";
-import IconButton from "@material-ui/core/IconButton";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
 
 import {
   // ...previous import
   EdgeTrigger,
 } from "@mui-treasury/layout";
 
-import Menu from "@material-ui/icons/Menu";
-import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
-import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+import Menu from "@mui/icons-material/Menu";
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 
 const App = () => {
   return (
@@ -267,7 +267,7 @@ To achieve collapsible mode, we need to add `CollapseBtn` at the bottom of the s
 
 ```jsx
 // ...imports
-import ButtonBase from "@material-ui/core/ButtonBase";
+import ButtonBase from "@mui/material/ButtonBase";
 
 import {
   // ..imports
@@ -380,14 +380,14 @@ import {
   Content,
   Footer,
 } from "@mui-treasury/layout";
-import Box from "@material-ui/core/Box";
-import ButtonBase from "@material-ui/core/ButtonBase";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import IconButton from "@material-ui/core/IconButton";
+import Box from "@mui/material/Box";
+import ButtonBase from "@mui/material/ButtonBase";
+import CssBaseline from "@mui/material/CssBaseline";
+import IconButton from "@mui/material/IconButton";
 
-import Menu from "@material-ui/icons/Menu";
-import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
-import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+import Menu from "@mui/icons-material/Menu";
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 
 const App = () => {
   return (

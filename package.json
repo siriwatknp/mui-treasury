@@ -12,12 +12,12 @@
     "@emotion/jest": "11.3.0",
     "@emotion/react": "11.1.5",
     "@emotion/styled": "11.1.5",
-    "@mui/material": "5.0.0-rc.1",
-    "@mui/icons-material": "5.0.0-rc.1",
-    "@mui/lab": "5.0.0-alpha.46",
-    "@mui/styles": "5.0.0-rc.1",
     "@mui-treasury/components": "2.0.0-alpha.0",
     "@mui-treasury/styles": "2.0.0-alpha.0",
+    "@mui/icons-material": "5.0.0-rc.1",
+    "@mui/lab": "5.0.0-alpha.46",
+    "@mui/material": "5.0.0-rc.1",
+    "@mui/styles": "5.0.0-rc.1",
     "@storybook/addon-actions": "^6.1.18",
     "@storybook/addon-essentials": "^6.1.18",
     "@storybook/addon-links": "^6.1.18",
@@ -79,5 +79,6 @@
     "build:packages": "yarn && lerna run build --since",
     "build:storybook": "build-storybook",
     "publish-packages": "lerna publish prerelease --no-commit-hooks --no-push --yes --no-verify-access --contents dist"
-  }
+  },
+  "dependencies": {}
 }

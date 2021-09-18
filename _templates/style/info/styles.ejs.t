@@ -2,9 +2,9 @@
 to: packages/<%=h.toNamePath(name)%>/src/<%= h.toName(name) %>.styles.ts
 unless_exists: true
 ---
-import { CSSObject } from "@material-ui/system";
-import { Theme } from "@material-ui/core/styles";
-import { Components } from "@material-ui/core/styles/components";
+import { CSSObject } from "@mui/system";
+import { Theme } from "@mui/material/styles";
+import { Components } from "@mui/material/styles/components";
 import {
   infoClasses,
   InfoSlotStyles,

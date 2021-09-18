@@ -1,5 +1,5 @@
-import { Theme } from "@material-ui/core/styles";
+import { Theme } from "@mui/material/styles";
 
-declare module "@material-ui/private-theming/defaultTheme" {
+declare module "@mui/private-theming/defaultTheme" {
   interface DefaultTheme extends Theme {}
 }

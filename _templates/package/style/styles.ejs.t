@@ -3,9 +3,9 @@ to: packages/<%=h.toNamePath(name)%>/src/<%= h.toName(name) %>.styles.ts
 unless_exists: true
 ---
 import "@mui-treasury/component-<%=h.extractComponentPkg(name)%>";
-import { Theme } from "@material-ui/core/styles";
-import { CSSObject } from "@material-ui/system";
-import { Components } from "@material-ui/core/styles/components";
+import { Theme } from "@mui/material/styles";
+import { CSSObject } from "@mui/system";
+import { Components } from "@mui/material/styles/components";
 
 type Output = Required<Pick<Components, "Jun<%=h.extractComponentName(name)%>">>;
 
