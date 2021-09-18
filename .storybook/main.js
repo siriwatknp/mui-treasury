@@ -27,6 +27,10 @@ module.exports = {
     "@storybook/addon-links",
     "storybook-addon-mui-mode",
   ],
+  babel: async (options) => ({
+    ...options,
+    plugins: [["@babel/plugin-proposal-class-properties", { loose: true }]],
+  }),
   webpackFinal: async (config) => {
     return {
       ...config,
