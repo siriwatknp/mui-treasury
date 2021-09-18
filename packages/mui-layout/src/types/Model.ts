@@ -1,5 +1,5 @@
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
-import { Theme } from "@material-ui/core/styles/createMuiTheme"
+import { Theme } from "@material-ui/core/styles"
 import { WidthStyle, MarginStyle, ZIndexStyle } from "./InlineStyle"
 import { HeaderConfig, EdgeSidebarConfig } from "./Config"
 import { State } from "./Context"

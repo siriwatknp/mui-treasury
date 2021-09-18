@@ -1,5 +1,5 @@
 import each from 'jest-each';
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import { createTheme } from '@material-ui/core/styles';
 import pickNearestBreakpoint from './pickNearestBreakpoint';
 import createBreakpointStyles from './createBreakpointStyles';
 import combineBreakpoints from './combineBreakpoints';
@@ -17,7 +17,7 @@ import attachHiddenToMapById from './attachHiddenToMapById';
 import resolveDirection, { switchDirection } from './resolveDirection';
 import get from './get';
 
-const theme = createMuiTheme();
+const theme = createTheme();
 const { breakpoints } = theme;
 
 describe('Utils', () => {

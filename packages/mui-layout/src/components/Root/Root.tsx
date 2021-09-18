@@ -1,5 +1,5 @@
 import React from "react"
-import { ThemeProvider, createMuiTheme, Theme } from "@material-ui/core/styles"
+import { ThemeProvider, createTheme, Theme } from "@material-ui/core/styles"
 import {
   ContextValue,
   LayoutProvider,
@@ -7,7 +7,7 @@ import {
 } from "../../contexts"
 import { useLayoutCtx } from "../../contexts"
 
-const baseTheme = createMuiTheme()
+const baseTheme = createTheme()
 
 type RootProps = {
   theme?: Theme
