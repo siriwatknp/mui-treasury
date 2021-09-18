@@ -28,7 +28,7 @@ export default {
   },
 } as Meta;
 
-export const Base: Story<BirthdateFieldProps> = (args) => {
+export const Basic: Story<BirthdateFieldProps> = (args) => {
   return (
     <Box width={300}>
       <BirthdateField {...args} />

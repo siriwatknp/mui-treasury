@@ -19,7 +19,7 @@ export default {
   },
 } as Meta;
 
-export const Base: Story<InfoProps> = (args) => {
+export const Basic: Story<InfoProps> = (args) => {
   return (
     <Info>
       <InfoEyebrow>Material Blog</InfoEyebrow>
