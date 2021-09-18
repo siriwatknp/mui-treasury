@@ -39,11 +39,24 @@ async function run() {
   }
   try {
     await cpy("README.md", PUBLISH_DIR);
-  } catch (error) {
-    console.log("error", error);
-  }
+  } catch (error) {}
   try {
     await cpy("CHANGELOG.md", PUBLISH_DIR);
+  } catch (error) {}
+  try {
+    await cpy("readme.stories.mdx", PUBLISH_DIR, { rename: "README.md" });
+    const readme = await fsp.readFile(`${PUBLISH_DIR}/README.md`, "utf8");
+    const lines = readme.split("\n");
+    let lastLine: number | null = null;
+    lines.forEach((l, index) => {
+      if (l.match(/<Meta/)) {
+        lastLine = index;
+      }
+    });
+    const finalReadme = (
+      lastLine === null ? lines : lines.slice(lastLine + 1)
+    ).join("\n");
+    await fsp.writeFile(`${PUBLISH_DIR}/README.md`, finalReadme);
   } catch (error) {
     console.log("error", error);
   }
