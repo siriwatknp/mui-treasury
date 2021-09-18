@@ -10,15 +10,11 @@ const useUtilityClasses = (ownerState) => {
   };
   return composeClasses(slots, getFormAddonUtilityClass, classes);
 };
-const FormAddonRoot = styled(
-  "div",
-  {},
-  {
-    name: "JunFormAddon",
-    slot: "Root",
-    overridesResolver: (props, styles) => styles.root,
-  }
-)(({ theme }) => ({
+const FormAddonRoot = styled("div", {
+  name: "JunFormAddon",
+  slot: "Root",
+  overridesResolver: (props, styles) => styles.root,
+})(({ theme }) => ({
   display: "inline-flex",
   alignItems: "center",
   gap: 4,

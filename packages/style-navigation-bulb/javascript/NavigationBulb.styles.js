@@ -6,31 +6,31 @@ const getActiveColor = (palette) =>
     ? "rgba(255,255,255,0.2)"
     : alpha(lighten(palette.primary.main, 0.84), 0.87);
 const itemHorzPadding = 3;
-const getItemStyles = ({ spacing, palette }) => {
+export const getNavigationBulbStyles = (arg) => {
+  const { palette, spacing } = "theme" in arg ? arg.theme : arg;
   const activeColor = getActiveColor(palette);
   return {
-    padding: spacing(1, itemHorzPadding),
-    cursor: "pointer",
-    textDecoration: "none",
-    borderRadius: "8px / 50%",
-    color: palette.mode === "dark" ? palette.text.secondary : "#121212",
-    [`&.Mui-active`]: {
-      backgroundColor: activeColor,
-      color: palette.mode === "dark" ? "#fff" : palette.primary.main,
-    },
-    "&:hover": {
-      backgroundColor: activeColor,
+    [`& .${navigationClasses.item}`]: {
+      padding: spacing(1, itemHorzPadding),
+      cursor: "pointer",
+      textDecoration: "none",
+      borderRadius: "8px / 50%",
+      color: palette.mode === "dark" ? palette.text.secondary : "#121212",
+      [`&.Mui-active`]: {
+        backgroundColor: activeColor,
+        color: palette.mode === "dark" ? "#fff" : palette.primary.main,
+      },
+      "&:hover": {
+        backgroundColor: activeColor,
+      },
     },
   };
 };
-export const getNavigationBulbStyles = ({ theme }) => ({
-  [`& .${navigationClasses.item}`]: getItemStyles(theme),
-});
 export const getNavigationBulbTheme = (theme) => {
   return {
     JunNavigation: {
       styleOverrides: {
-        item: getItemStyles(theme),
+        root: getNavigationBulbStyles(theme),
       },
     },
   };

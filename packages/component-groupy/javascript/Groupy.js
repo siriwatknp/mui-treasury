@@ -10,21 +10,17 @@ const useUtilityClasses = (ownerState) => {
   };
   return composeClasses(slots, getGroupyUtilityClass, classes);
 };
-const GroupyRoot = styled(
-  "div",
-  {},
-  {
-    name: "JunGroupy",
-    slot: "Root",
-    overridesResolver: (props, styles) => {
-      const { ownerState } = props;
-      return {
-        ...styles.root,
-        ...(ownerState.orientation && styles[ownerState.orientation]),
-      };
-    },
-  }
-)(({ ownerState }) => ({
+const GroupyRoot = styled("div", {
+  name: "JunGroupy",
+  slot: "Root",
+  overridesResolver: (props, styles) => {
+    const { ownerState } = props;
+    return [
+      styles.root,
+      ownerState.orientation && styles[ownerState.orientation],
+    ];
+  },
+})(({ ownerState }) => ({
   display: "flex",
   ...(ownerState.orientation === "horizontal" && {
     flexDirection: "row",

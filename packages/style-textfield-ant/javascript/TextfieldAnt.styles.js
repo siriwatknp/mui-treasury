@@ -1,4 +1,3 @@
-import makeStyles from "@mui/styles/makeStyles";
 const getPlaceholderVisible = (theme) => {
   const light = theme.palette.mode === "light";
   return {
@@ -7,7 +6,7 @@ const getPlaceholderVisible = (theme) => {
     letterSpacing: 0,
   };
 };
-export const createTextfieldAntStyles = (theme) => {
+export const getTextFieldAntTheme = (theme) => {
   const placeholderVisible = getPlaceholderVisible(theme);
   return {
     MuiInputLabel: {
@@ -71,7 +70,7 @@ export const createTextfieldAntStyles = (theme) => {
             "&::-webkit-input-placeholder": placeholderVisible,
             "&::-moz-placeholder": placeholderVisible,
             "&:-ms-input-placeholder": placeholderVisible,
-            "&::-ms-input-placeholder": placeholderVisible,
+            "&::-ms-input-placeholder": placeholderVisible, // Edge
           },
           "&.Mui-disabled": {
             backgroundColor: "#f5f5f5",
@@ -155,34 +154,5 @@ export const createTextfieldAntStyles = (theme) => {
         },
       },
     },
-  };
-};
-const useInputLabelStyles = makeStyles(
-  // @ts-expect-error
-  (theme) => createTextfieldAntStyles(theme).MuiInputLabel.styleOverrides
-);
-const useInputStyles = makeStyles(
-  // @ts-expect-error
-  (theme) => createTextfieldAntStyles(theme).MuiInput.styleOverrides
-);
-const useInputAdornmentStyles = makeStyles(
-  // @ts-expect-error
-  (theme) => createTextfieldAntStyles(theme).MuiInputAdornment.styleOverrides
-);
-const useSelectStyles = makeStyles(
-  // @ts-expect-error
-  (theme) => createTextfieldAntStyles(theme).MuiSelect.styleOverrides
-);
-const useFormHelperTextStyles = makeStyles(
-  // @ts-expect-error
-  (theme) => createTextfieldAntStyles(theme).MuiFormHelperText.styleOverrides
-);
-export const useTextfieldAntStyles = () => {
-  return {
-    InputLabel: useInputLabelStyles(),
-    Input: useInputStyles(),
-    InputAdornment: useInputAdornmentStyles(),
-    Select: useSelectStyles(),
-    FormHelperText: useFormHelperTextStyles(),
   };
 };

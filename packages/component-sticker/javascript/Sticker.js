@@ -1,34 +1,36 @@
 import React from "react";
 import cx from "clsx";
-import { styled } from "@mui/material/styles";
+import { styled, useThemeProps } from "@mui/material/styles";
 import { unstable_composeClasses as composeClasses } from "@mui/core";
-import useThemeProps from "@mui/material/styles/useThemeProps";
+import { capitalize } from "@mui/material/utils";
 import { getStickerUtilityClass } from "./stickerClasses";
-const overridesResolver = (props, styles) => {
-  const { ownerState } = props;
-  return {
-    ...styles.root,
-    ...styles[ownerState.variant],
-    ...(ownerState.hasText && styles.hasText),
-    ...(ownerState.round && styles.round),
-  };
-};
 const useUtilityClasses = (ownerState) => {
   const { variant, round, palette, hasText, classes } = ownerState;
   const slots = {
-    root: ["root", round && "round", hasText && "hasText", variant, palette],
+    root: [
+      "root",
+      round && "round",
+      hasText && "hasText",
+      variant,
+      palette && `color${capitalize(palette)}`,
+    ],
   };
   return composeClasses(slots, getStickerUtilityClass, classes);
 };
-const StickerRoot = styled(
-  "div",
-  {},
-  {
-    name: "JunSticker",
-    slot: "Root",
-    overridesResolver,
-  }
-)(({ theme: { treasury, ...theme }, ownerState }) => ({
+const StickerRoot = styled("div", {
+  name: "JunSticker",
+  slot: "Root",
+  overridesResolver: (props, styles) => {
+    const { ownerState } = props;
+    return [
+      styles.root,
+      styles[ownerState.variant],
+      styles[ownerState[`color${capitalize(ownerState.palette)}`]],
+      ownerState.hasText && styles.hasText,
+      ownerState.round && styles.round,
+    ];
+  },
+})(({ theme: { treasury, ...theme }, ownerState }) => ({
   display: "inline-flex",
   justifyContent: "center",
   alignItems: "center",

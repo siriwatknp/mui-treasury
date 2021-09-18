@@ -3,15 +3,11 @@ import cx from "clsx";
 import { styled, useThemeProps } from "@mui/material/styles";
 import ButtonBase from "@mui/material/ButtonBase";
 import { emailSubscribeClasses } from "./emailSubscribeClasses";
-const FormRoot = styled(
-  "form",
-  {},
-  {
-    name: "JunEmailSubscribe",
-    slot: "Form",
-    overridesResolver: (props, styles) => styles.form,
-  }
-)({
+const FormRoot = styled("form", {
+  name: "JunEmailSubscribe",
+  slot: "Form",
+  overridesResolver: (props, styles) => styles.form,
+})({
   display: "flex",
   width: 296,
   maxWidth: "100%",
@@ -48,15 +44,11 @@ export const Form = React.forwardRef(function EmailSubscribeForm(
     </FormRoot>
   );
 });
-const InputRoot = styled(
-  "input",
-  {},
-  {
-    name: "JunEmailSubscribe",
-    slot: "Input",
-    overridesResolver: (props, styles) => styles.input,
-  }
-)(({ theme: { palette, typography } }) => ({
+const InputRoot = styled("input", {
+  name: "JunEmailSubscribe",
+  slot: "Input",
+  overridesResolver: (props, styles) => styles.input,
+})(({ theme: { palette, typography } }) => ({
   backgroundColor: palette.background.paper,
   minWidth: 0,
   flexGrow: 1,
@@ -115,15 +107,11 @@ export const Input = React.forwardRef(function EmailSubscribeInput(
     />
   );
 });
-const SubmitRoot = styled(
-  ButtonBase,
-  {},
-  {
-    name: "JunEmailSubscribe",
-    slot: "Submit",
-    overridesResolver: (props, styles) => styles.submit,
-  }
-)(({ theme: { palette, spacing, typography } }) => ({
+const SubmitRoot = styled(ButtonBase, {
+  name: "JunEmailSubscribe",
+  slot: "Submit",
+  overridesResolver: (props, styles) => styles.submit,
+})(({ theme: { palette, spacing, typography } }) => ({
   padding: spacing(1, 2),
   marginLeft: -1,
   borderRadius: "0 4px 4px 0",

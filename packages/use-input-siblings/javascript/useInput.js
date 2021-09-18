@@ -1,4 +1,11 @@
 import React, { useEffect } from "react";
+export const useIsFirstMount = () => {
+  const firstMount = React.useRef(true);
+  React.useEffect(() => {
+    firstMount.current = false;
+  }, []);
+  return firstMount.current;
+};
 export const useInput = (options) => {
   const { autoFocus = false, value } = options;
   const ref = React.useRef(null);
@@ -13,31 +20,33 @@ export const useInput = (options) => {
       }
     }
   }, [autoFocus]);
+  const isFirstMount = useIsFirstMount();
   useEffect(() => {
-    if (typeof value !== "undefined" && value !== internalValue) {
-      setInternalValue(value);
+    if (!isFirstMount) {
+      setInternalValue(value || "");
     }
   }, [value]);
   return {
     options,
     value: internalValue,
+    invalid:
+      typeof options.validator === "function" &&
+      !options.validator(internalValue),
     setValue: setInternalValue,
     getDOM: () => ref.current,
     getInputProps: (handlers) => ({
       ref,
       value: internalValue,
       onChange: (event) => {
-        const inputValue = event.target.value;
+        let inputValue = event.target.value;
         handlers?.onChange?.(event);
-        if (
-          (inputValue === "" ||
-            typeof options.validator !== "function" ||
-            options.validator(inputValue)) &&
-          inputValue.length <= options.maxLength
-        ) {
-          setInternalValue(inputValue);
-          options.onChange?.(inputValue);
-        }
+        inputValue = inputValue.substr(0, options.maxLength);
+        setInternalValue(inputValue);
+        options.onChange?.(inputValue, {
+          invalid:
+            typeof options.validator === "function" &&
+            !options.validator(inputValue),
+        });
       },
     }),
   };

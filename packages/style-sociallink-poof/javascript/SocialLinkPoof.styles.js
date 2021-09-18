@@ -1,13 +1,14 @@
 import "@mui-treasury/component-sociallink";
 import { alpha, lighten } from "@mui/material/styles";
-export const getSocialLinkPoofStyles = ({ theme: { palette } }) => {
+export const getSocialLinkPoofStyles = (arg) => {
+  const { palette } = "theme" in arg ? arg.theme : arg;
   const extraLightPrimary = alpha(lighten(palette.primary.main, 0.84), 0.84);
   return {
     display: "inline-flex",
     alignItems: "center",
     cursor: "pointer",
     fontSize: 24,
-    padding: 12,
+    padding: "12px",
     borderColor: palette.divider,
     color: palette.text.secondary,
     position: "relative",
@@ -22,7 +23,7 @@ export const getSocialLinkPoofStyles = ({ theme: { palette } }) => {
       zIndex: 0,
       backgroundColor:
         palette.mode === "dark" ? palette.action.focus : extraLightPrimary,
-      borderRadius: 40,
+      borderRadius: "40px",
       transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
       transform: "scale(0)",
     },
@@ -45,7 +46,7 @@ export const getSocialLinkPoofTheme = (theme) => {
   return {
     JunSocialLink: {
       styleOverrides: {
-        root: getSocialLinkPoofStyles({ theme }),
+        root: getSocialLinkPoofStyles(theme),
       },
     },
   };

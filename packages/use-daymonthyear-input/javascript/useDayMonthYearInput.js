@@ -3,45 +3,49 @@ import {
   useInput,
   useTwoNumbersInput,
   useInputSiblings,
+  useIsFirstMount,
 } from "@mui-treasury/use-input-siblings";
-const parseDayMonthYear = (value) => {
-  return {
-    day: value.day || "",
-    month: value.month || "",
-    year: value.year || "",
-  };
+const prependZero = (value) => {
+  if (!value) return undefined;
+  return value <= 9 ? `0${value}` : `${value}`;
+};
+const dayMonthYearValidator = (day, month, year) => {
+  return (
+    Number(day) >= 1 &&
+    Number(day) <= 31 &&
+    Number(month) >= 1 &&
+    Number(month) <= 12 &&
+    Number(year) >= 1500 &&
+    Number(year) <= 2999
+  );
 };
 export const useDayMonthYearInput = (options) => {
   const { defaultValue, value } = options || {};
-  const parsedValue = parseDayMonthYear(value || defaultValue || {});
   const day = useTwoNumbersInput({
-    defaultValue: defaultValue?.day,
-    value: parsedValue.day,
+    value: prependZero(value?.day || defaultValue?.day),
   });
   const month = useTwoNumbersInput({
-    defaultValue: defaultValue?.month,
-    value: parsedValue.month,
+    value: prependZero(value?.month || defaultValue?.month),
   });
   const year = useInput({
     maxLength: 4,
-    defaultValue: defaultValue?.year,
-    value: parsedValue.year,
-    validator: (value) =>
-      new RegExp(/^(^$|[1-2]|[1-2][0-9]{0,3})$/).test(value),
+    value: prependZero(value?.year || defaultValue?.year),
   });
   const [getDayInputProps, getMonthInputProps, getYearInputProps] =
     useInputSiblings({ siblings: [day, month, year], onBlur: options?.onBlur });
+  const isFirstMount = useIsFirstMount();
   React.useEffect(() => {
-    if (
-      parsedValue.day !== day.value ||
-      parsedValue.month !== month.value ||
-      parsedValue.year !== year.value
-    ) {
-      options?.onChange?.({
-        day: day.value,
-        month: month.value,
-        year: year.value,
-      });
+    if (!isFirstMount) {
+      options?.onChange?.(
+        {
+          day: Number(day.value) || undefined,
+          month: Number(month.value) || undefined,
+          year: Number(year.value) || undefined,
+        },
+        {
+          invalid: !dayMonthYearValidator(day.value, month.value, year.value),
+        }
+      );
     }
   }, [day.value, month.value, year.value]);
   return {

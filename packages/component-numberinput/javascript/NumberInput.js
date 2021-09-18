@@ -23,37 +23,26 @@ const useUtilityClasses = (ownerState) => {
     StepperProps?.classes
   );
 };
-const NumberInputStepper = styled(
-  "div",
-  {},
-  {
-    name: "JunNumberInput",
-    slot: "Stepper",
-    overridesResolver: (props, styles) => ({
-      ...styles.stepper,
-      ...(props.size && styles[`size${capitalize(props.size)}`]),
-    }),
-  }
-)({
+const NumberInputStepper = styled("div", {
+  name: "JunNumberInput",
+  slot: "Stepper",
+  overridesResolver: (props, styles) => [
+    styles.stepper,
+    props.size && styles[`size${capitalize(props.size)}`],
+  ],
+})({
   display: "flex",
   flexDirection: "column",
   marginRight: -8,
 });
-const NumberInputButton = styled(
-  ButtonBase,
-  {},
-  {
-    name: "JunNumberInput",
-    slot: "Button",
-    overridesResolver: (props, styles) => {
-      const { ownerState } = props;
-      return {
-        ...styles.button,
-        ...styles[ownerState.type],
-      };
-    },
-  }
-)(({ theme, ownerState }) => ({
+const NumberInputButton = styled(ButtonBase, {
+  name: "JunNumberInput",
+  slot: "Button",
+  overridesResolver: (props, styles) => {
+    const { ownerState } = props;
+    return [styles.button, styles[ownerState.type]];
+  },
+})(({ theme, ownerState }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",

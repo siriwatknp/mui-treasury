@@ -1,15 +1,11 @@
 import React from "react";
 import cx from "clsx";
 import { styled, useThemeProps } from "@mui/material/styles";
-const SocialLinkRoot = styled(
-  "a",
-  {},
-  {
-    name: "JunSocialLink",
-    slot: "Root",
-    overridesResolver: (props, styles) => styles.root,
-  }
-)(({ theme: { palette } }) => ({
+const SocialLinkRoot = styled("a", {
+  name: "JunSocialLink",
+  slot: "Root",
+  overridesResolver: (props, styles) => styles.root,
+})(({ theme: { palette } }) => ({
   display: "inline-flex",
   alignItems: "center",
   cursor: "pointer",

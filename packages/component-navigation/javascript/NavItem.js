@@ -2,22 +2,18 @@ import React from "react";
 import cx from "clsx";
 import { styled, useThemeProps } from "@mui/material/styles";
 import { navigationClasses } from "./navigationClasses";
-const NavItemRoot = styled(
-  "a",
-  {},
-  {
-    name: "JunNavigation",
-    slot: "Item",
-    overridesResolver: (props, styles) => {
-      const { ownerState } = props;
-      return {
-        ...styles.item,
-        ...(ownerState.active && styles.itemActive),
-        ...(ownerState.disabled && styles.itemDisabled),
-      };
-    },
-  }
-)(({ theme: { palette, shape, spacing, typography }, ownerState }) => ({
+const NavItemRoot = styled("a", {
+  name: "JunNavigation",
+  slot: "Item",
+  overridesResolver: (props, styles) => {
+    const { ownerState } = props;
+    return [
+      styles.item,
+      ownerState.active && styles.itemActive,
+      ownerState.disabled && styles.itemDisabled,
+    ];
+  },
+})(({ theme: { palette, shape, spacing, typography }, ownerState }) => ({
   ...typography.body1,
   fontWeight: 500,
   flexShrink: 0,

@@ -1,8 +1,4 @@
-import {
-  generateUtilityClass,
-  generateUtilityClasses,
-} from "@mui/core";
-import { treasuryPalette } from "@mui-treasury/theme-treasury";
+import { generateUtilityClass, generateUtilityClasses } from "@mui/core";
 export function getStickerUtilityClass(slot) {
   return generateUtilityClass("JunSticker", slot);
 }
@@ -14,5 +10,11 @@ export const stickerClasses = generateUtilityClasses("JunSticker", [
   "outlined",
   "round",
   "hasText",
-  ...Object.keys(treasuryPalette),
+  "colorPrimary",
+  "colorSecondary",
+  "colorError",
+  "colorInfo",
+  "colorSuccess",
+  "colorWarning",
+  "colorGrey",
 ]);

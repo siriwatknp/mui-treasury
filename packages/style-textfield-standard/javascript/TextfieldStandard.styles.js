@@ -1,11 +1,10 @@
-import makeStyles from "@mui/styles/makeStyles";
 const getPlaceholderVisible = (theme) => {
   const light = theme.palette.mode === "light";
   return {
     opacity: `${light ? 0.42 : 0.5} !important`,
   };
 };
-export const createTextfieldStandardStyles = (theme) => {
+export const getTextFieldStandardTheme = (theme) => {
   const placeholderVisible = getPlaceholderVisible(theme);
   return {
     MuiInputLabel: {
@@ -53,7 +52,7 @@ export const createTextfieldStandardStyles = (theme) => {
             "&::-webkit-input-placeholder": placeholderVisible,
             "&::-moz-placeholder": placeholderVisible,
             "&:-ms-input-placeholder": placeholderVisible,
-            "&::-ms-input-placeholder": placeholderVisible,
+            "&::-ms-input-placeholder": placeholderVisible, // Edge
           },
           "&.Mui-disabled": {
             backgroundColor: theme.palette.grey[50],
@@ -151,36 +150,5 @@ export const createTextfieldStandardStyles = (theme) => {
         },
       },
     },
-  };
-};
-const useInputLabelStyles = makeStyles(
-  // @ts-expect-error
-  (theme) => createTextfieldStandardStyles(theme).MuiInputLabel.styleOverrides
-);
-const useInputStyles = makeStyles(
-  // @ts-expect-error
-  (theme) => createTextfieldStandardStyles(theme).MuiInput.styleOverrides
-);
-const useInputAdornmentStyles = makeStyles(
-  // @ts-expect-error
-  (theme) =>
-    createTextfieldStandardStyles(theme).MuiInputAdornment.styleOverrides
-);
-const useSelectStyles = makeStyles(
-  // @ts-expect-error
-  (theme) => createTextfieldStandardStyles(theme).MuiSelect.styleOverrides
-);
-const useFormHelperTextStyles = makeStyles(
-  // @ts-expect-error
-  (theme) =>
-    createTextfieldStandardStyles(theme).MuiFormHelperText.styleOverrides
-);
-export const useTextfieldStandardStyles = () => {
-  return {
-    InputLabel: useInputLabelStyles(),
-    Input: useInputStyles(),
-    InputAdornment: useInputAdornmentStyles(),
-    Select: useSelectStyles(),
-    FormHelperText: useFormHelperTextStyles(),
   };
 };

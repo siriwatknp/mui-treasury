@@ -1,5 +1,9 @@
 import React from "react";
-import { useInput, useInputSiblings } from "@mui-treasury/use-input-siblings";
+import {
+  useInput,
+  useInputSiblings,
+  useIsFirstMount,
+} from "@mui-treasury/use-input-siblings";
 const numberValidator = (value) => new RegExp(/\d/).test(value);
 const alphanumericValidator = (value) => new RegExp(/[a-zA-Z0-9]/).test(value);
 export const usePinInput = (options = {}) => {
@@ -20,11 +24,13 @@ export const usePinInput = (options = {}) => {
       value: splittedValue[index],
     })
   );
+  const isFirstMount = useIsFirstMount();
   const pinArray = siblings.map(({ value }) => value);
   React.useEffect(() => {
-    const pinString = pinArray.join("");
-    if (pinString !== (value || defaultValue || "")) {
-      options.onChange?.(pinString);
+    if (!isFirstMount) {
+      options.onChange?.(pinArray.join(""), {
+        invalid: siblings.some((pinInput) => pinInput.invalid),
+      });
     }
   }, pinArray);
   const pins = useInputSiblings({
@@ -45,8 +51,13 @@ export const usePinInput = (options = {}) => {
           autoComplete: options.otp ? "one-time-code" : "off",
           ...inputProps,
           onChange: (event) => {
-            const inputValue = event.target.value;
-            if (inputValue.length > 1) {
+            let inputValue = event.target.value;
+            if (inputValue.length > 2) {
+              inputValue =
+                inputValue[0] === inputProps.value
+                  ? inputValue.slice(1)
+                  : inputValue.substring(-1);
+              handlers?.onChange?.(event);
               // copy & paste
               const valueArray = inputValue
                 .split("")

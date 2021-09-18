@@ -63,7 +63,7 @@ export const createTextfieldTailwindStyles = (theme) => {
             "&::-webkit-input-placeholder": placeholderVisible,
             "&::-moz-placeholder": placeholderVisible,
             "&:-ms-input-placeholder": placeholderVisible,
-            "&::-ms-input-placeholder": placeholderVisible,
+            "&::-ms-input-placeholder": placeholderVisible, // Edge
           },
           "&:before": {
             borderBottom: "2px solid",
@@ -90,7 +90,7 @@ export const createTextfieldTailwindStyles = (theme) => {
             "&::-webkit-input-placeholder": placeholderVisible,
             "&::-moz-placeholder": placeholderVisible,
             "&:-ms-input-placeholder": placeholderVisible,
-            "&::-ms-input-placeholder": placeholderVisible,
+            "&::-ms-input-placeholder": placeholderVisible, // Edge
           },
           "&:hover:not(.Mui-disabled)": {
             "& .MuiOutlinedInput-notchedOutline": {
@@ -144,7 +144,7 @@ export const createTextfieldTailwindStyles = (theme) => {
             "&::-webkit-input-placeholder": placeholderVisible,
             "&::-moz-placeholder": placeholderVisible,
             "&:-ms-input-placeholder": placeholderVisible,
-            "&::-ms-input-placeholder": placeholderVisible,
+            "&::-ms-input-placeholder": placeholderVisible, // Edge
           },
           "& .MuiInputAdornment-positionStart": {
             marginTop: "0 !important",

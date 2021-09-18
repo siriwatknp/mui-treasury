@@ -1,5 +1,26 @@
-import makeStyles from "@mui/styles/makeStyles";
-export const createMenuBootstrapStyles = (theme) => ({
+export const getMenuBootstrapStyles = (arg) => {
+  const theme = "theme" in arg ? arg.theme : arg;
+  return {
+    "& .MuiMenu-paper, .MuiPaper-root": {
+      boxShadow: "none",
+      border: "1px solid",
+      borderColor: "rgba(0,0,0,.15)",
+      marginTop: 2,
+    },
+    "& .MuiMenuItem-root": {
+      transition: "none",
+      "&:hover, &:focus": {
+        backgroundColor: "#e9ecef",
+      },
+      "&:active, &.Mui-selected, &.Mui-selected.Mui-focusVisible, &.Mui-selected:hover":
+        {
+          color: "#fff",
+          backgroundColor: "#0d6efd",
+        },
+    },
+  };
+};
+export const getMenuBootstrapTheme = (theme) => ({
   MuiMenu: {
     defaultProps: {
       anchorOrigin: {
@@ -12,47 +33,12 @@ export const createMenuBootstrapStyles = (theme) => ({
       },
     },
     styleOverrides: {
-      paper: {
-        "&.MuiPaper-root": {
-          boxShadow: "none",
-        },
-        border: "1px solid",
-        borderColor: "rgba(0,0,0,.15)",
-        marginTop: 2,
-      },
+      root: getMenuBootstrapStyles(theme),
     },
   },
   MuiMenuItem: {
     defaultProps: {
-      // @ts-expect-error
       disableRipple: true,
-    },
-    styleOverrides: {
-      root: {
-        transition: "none",
-        "&:hover, &:focus": {
-          backgroundColor: "#e9ecef",
-        },
-        "&:active, &.Mui-selected, &.Mui-selected.Mui-focusVisible, &.Mui-selected:hover":
-          {
-            color: "#fff",
-            backgroundColor: "#0d6efd",
-          },
-      },
     },
   },
 });
-const useMenuStyles = makeStyles(
-  // @ts-expect-error
-  (theme) => createMenuBootstrapStyles(theme).MuiMenu.styleOverrides
-);
-const useMenuItemStyles = makeStyles(
-  // @ts-expect-error
-  (theme) => createMenuBootstrapStyles(theme).MuiMenuItem.styleOverrides
-);
-export const useMenuBootstrapStyles = () => {
-  return {
-    Menu: useMenuStyles(),
-    MenuItem: useMenuItemStyles(),
-  };
-};

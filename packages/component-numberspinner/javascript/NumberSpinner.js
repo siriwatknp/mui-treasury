@@ -22,21 +22,14 @@ const useUtilityClasses = (ownerState) => {
     StepperProps?.classes
   );
 };
-const NumberSpinnerButton = styled(
-  ButtonBase,
-  {},
-  {
-    name: "JunNumberSpinner",
-    slot: "Button",
-    overridesResolver: (props, styles) => {
-      const { ownerState } = props;
-      return {
-        ...styles.button,
-        ...styles[ownerState.type],
-      };
-    },
-  }
-)(({ theme, ownerState }) => ({
+const NumberSpinnerButton = styled(ButtonBase, {
+  name: "JunNumberSpinner",
+  slot: "Button",
+  overridesResolver: (props, styles) => {
+    const { ownerState } = props;
+    return [styles.button, styles[ownerState.type]];
+  },
+})(({ theme, ownerState }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
