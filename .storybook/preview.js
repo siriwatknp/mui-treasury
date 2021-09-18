@@ -1,5 +1,4 @@
 import React, { Suspense } from "react";
-import { StoryContext } from "@storybook/react/types-6-0";
 
 import {
   StyledEngineProvider,
@@ -12,7 +11,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import "./storybook-global.css";
 import "./prism-theme.css";
 
-const withStyledEngineProvider = (Story: any, context: StoryContext) => {
+const withStyledEngineProvider = (Story, context) => {
   return (
     <Suspense
       fallback={
@@ -33,7 +32,7 @@ const withStyledEngineProvider = (Story: any, context: StoryContext) => {
   );
 };
 
-export const withThemeProvider = (Story: any, context: StoryContext) => {
+export const withThemeProvider = (Story, context) => {
   const { parameters } = context;
   const mode = context.globals?.muiMode ?? "light";
   const googleFont = context.globals?.googleFont;

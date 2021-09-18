@@ -1,0 +1,40 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Component/BirthdateField/README" />
+
+# Installation
+
+> Require `@mui/material` >= v5.0.0
+
+**npm**
+
+```bash
+npm install @mui-treasury/component-birthdatefield
+```
+
+**yarn**
+
+```bash
+yarn add @mui-treasury/component-birthdatefield
+```
+
+# Usage
+
+```jsx
+import { BirthdateField } from "@mui-treasury/component-birthdatefield";
+
+function App() {
+  return (
+    <BirthdateField
+      separator="/"
+      value="10/01/2001"
+      onChange={(newValue, meta) => {
+        // newValue: string
+        // meta: { invalid: boolean }
+      }}
+      // other props inherit @mui/material TextField
+      // https://mui.com/api/text-field/#main-content
+    />
+  );
+}
+```
