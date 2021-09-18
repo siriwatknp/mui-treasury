@@ -23,8 +23,8 @@ const MUI_TREASURY_CONFIG_FILE = "mui-treasury.config.js";
 const DEFAULT_CONFIG = {
   dir: "src/mui-treasury",
   template: "typescript",
-  storybook: true,
-  test: true,
+  storybook: false,
+  test: false,
 } as const;
 const CONFIG_FILE_TEMPLATE = `module.exports = {
   dir: "${DEFAULT_CONFIG.dir}",
@@ -125,14 +125,12 @@ async function notifyUpdate(): Promise<void> {
 
       console.log();
       console.log(
-        chalk.yellow.bold("A new version of `create-next-app` is available!")
+        chalk.yellow.bold("A new version of `mui-treasury` is available!")
       );
       console.log(
         "You can update by running: " +
           chalk.cyan(
-            isYarn
-              ? "yarn global add create-next-app"
-              : "npm i -g create-next-app"
+            isYarn ? "yarn global add mui-treasury" : "npm i -g mui-treasury"
           )
       );
       console.log();
