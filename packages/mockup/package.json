@@ -1,6 +1,6 @@
 {
   "name": "@mui-treasury/mockup",
-  "version": "5.0.0-alpha.14",
+  "version": "5.0.0-alpha.15",
   "description": "mui-treasury | mockup",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "homepage": "https://github.com/siriwatknp/mui-treasury#readme",
@@ -26,7 +26,7 @@
     "url": "https://github.com/siriwatknp/mui-treasury/issues"
   },
   "dependencies": {
-    "@mui/material": "^5.0.0",
-    "@mui/icons-material": "^5.0.0"
+    "@mui/icons-material": "^5.0.0",
+    "@mui/material": "^5.0.0"
   }
 }
