@@ -2,7 +2,7 @@ module.exports = {
   roots: ["<rootDir>"],
   preset: "ts-jest",
   setupFilesAfterEnv: ["<rootDir>/setupTests.ts", "jest-extended"],
-  modulePathIgnorePatterns: ["dist", "cli"],
+  modulePathIgnorePatterns: ["dist"],
   transform: {
     "^.+\\.(ts|tsx|js)$": "ts-jest",
   },

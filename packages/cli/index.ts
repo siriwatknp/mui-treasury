@@ -25,12 +25,15 @@ const DEFAULT_CONFIG = {
   template: "typescript",
   storybook: false,
   test: false,
+  // TODO: change to main once stable
+  branch: "next",
 } as const;
 const CONFIG_FILE_TEMPLATE = `module.exports = {
   dir: "${DEFAULT_CONFIG.dir}",
   template: "${DEFAULT_CONFIG.template}",
   storybook: ${DEFAULT_CONFIG.storybook},
   test: ${DEFAULT_CONFIG.test},
+  branch: ${DEFAULT_CONFIG.branch},
 };
 `;
 
@@ -89,15 +92,16 @@ function getConfigFile(overrides?: Partial<CloneOptions>) {
 
 function downloadAndExtractCode(
   root: string,
-  sources: string[]
+  sources: string[],
+  branch: string
 ): Promise<void> {
   return pipeline(
     got.stream(
-      "https://codeload.github.com/siriwatknp/mui-treasury/tar.gz/main"
+      `https://codeload.github.com/siriwatknp/mui-treasury/tar.gz/${branch}`
     ),
     tar.extract(
       { cwd: root, strip: 2 },
-      sources.map((src) => `mui-treasury-main/packages/${src}`)
+      sources.map((src) => `mui-treasury-${branch}/packages/${src}`)
     )
   );
 }
@@ -179,7 +183,7 @@ async function runCloneCommand() {
   logger.info(
     `start cloning ${chalk.bold(cloneParams.sources.length)} packages...`
   );
-  await downloadAndExtractCode(tempRoot, cloneParams.sources);
+  await downloadAndExtractCode(tempRoot, cloneParams.sources, config.branch);
   const excludedFiles = [
     ...(!config.storybook ? [`!${tempRoot}/**/*.stories.*`] : []),
     ...(!config.test ? [`!${tempRoot}/**/*.test.*`] : []),

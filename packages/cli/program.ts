@@ -6,6 +6,7 @@ export type CloneOptions = {
   template: "typescript" | "javascript";
   storybook: boolean;
   test: boolean;
+  branch: string;
 };
 export type Params = {
   commands: {
@@ -47,8 +48,9 @@ export const createProgram = ({ commands: { clone, init } }: Params) => {
       "template of the files, typescript (default) | javascript",
       parseTemplate
     )
-    .option("--no-storybook", "storybook files will not be included.")
-    .option("--no-test", "test files will not be included.")
+    .option("-b, --branch [branch]", "target branch on github")
+    .option("--storybook", "storybook file(s) will be included.")
+    .option("--test", "test file(s) will be included.")
     .action((sources, options, command) => {
       clone?.(sources, options, command);
     });

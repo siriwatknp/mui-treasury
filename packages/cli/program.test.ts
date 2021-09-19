@@ -80,31 +80,28 @@ describe("cli - program", function () {
       });
     });
 
-    it("has storybook & test by default", () => {
+    it("has no storybook & test by default", () => {
       program.parse(["clone", "component-shape"], {
+        from: "user",
+      });
+      expect(mockClone.mock.calls[0][1]).toMatchObject({});
+    });
+
+    it("can provide --storybook", () => {
+      program.parse(["clone", "component-shape", "--storybook"], {
         from: "user",
       });
       expect(mockClone.mock.calls[0][1]).toMatchObject({
         storybook: true,
+      });
+    });
+
+    it("can provide --test", () => {
+      program.parse(["clone", "component-shape", "--test"], {
+        from: "user",
+      });
+      expect(mockClone.mock.calls[0][1]).toMatchObject({
         test: true,
-      });
-    });
-
-    it("can provide --no-storybook", () => {
-      program.parse(["clone", "component-shape", "--no-storybook"], {
-        from: "user",
-      });
-      expect(mockClone.mock.calls[0][1]).toMatchObject({
-        storybook: false,
-      });
-    });
-
-    it("can provide --no-test", () => {
-      program.parse(["clone", "component-shape", "--no-test"], {
-        from: "user",
-      });
-      expect(mockClone.mock.calls[0][1]).toMatchObject({
-        test: false,
       });
     });
   });
