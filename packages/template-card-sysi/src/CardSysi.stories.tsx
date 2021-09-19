@@ -3,15 +3,15 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import { CardSysi } from "./index";
 
 export default {
-  title: "Template/Card/Sysi",
+  title: "Template/Card",
   parameters: {
     layout: "centered",
   },
 } as Meta;
 
-export const Demo: Story = () => {
+export const Sysi: Story = () => {
   return <CardSysi style={{ resize: "horizontal", overflow: "auto" }} />;
 };
-Demo.parameters = {
+Sysi.parameters = {
   googleFont: "Kanit",
 };
