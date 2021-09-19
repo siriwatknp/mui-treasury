@@ -105,6 +105,29 @@ function downloadAndExtractCode(
     )
   );
 }
+function downloadTemplates(
+  root: string,
+  sources: string[],
+  branch: string,
+  folder: "src" | "javascript"
+): Promise<void> {
+  return pipeline(
+    got.stream(
+      `https://codeload.github.com/siriwatknp/mui-treasury/tar.gz/${branch}`
+    ),
+    tar.extract(
+      { cwd: root, strip: 4 },
+      sources.map(
+        (
+          src // src is 'template-component-style' => 'component/style'
+        ) =>
+          `mui-treasury-${branch}/packages/templates/${folder}/${src
+            .replace("template-", "")
+            .replace("-", "/")}`
+      )
+    )
+  );
+}
 
 const update = checkForUpdate(packageJson).catch(() => null);
 
@@ -183,26 +206,48 @@ async function runCloneCommand() {
   logger.info(
     `start cloning ${chalk.bold(cloneParams.sources.length)} packages...`
   );
-  await downloadAndExtractCode(tempRoot, cloneParams.sources, config.branch);
+  const templateSources = cloneParams.sources.filter((s) =>
+    s.startsWith("template")
+  );
+  const nonTemplateSources = cloneParams.sources.filter(
+    (s) => !s.startsWith("template")
+  );
+  await downloadAndExtractCode(tempRoot, nonTemplateSources, config.branch);
+  await downloadTemplates(
+    tempRoot,
+    templateSources,
+    config.branch,
+    config.template === "typescript" ? "src" : "javascript"
+  );
   const excludedFiles = [
     ...(!config.storybook ? [`!${tempRoot}/**/*.stories.*`] : []),
     ...(!config.test ? [`!${tempRoot}/**/*.test.*`] : []),
   ];
   logger.info("finishing things up...");
   await Promise.all(
-    cloneParams.sources.map((module) =>
+    nonTemplateSources.map((mod) =>
       cpy(
         [
           // default template is typescript (ts codes live in "src" folder)
-          `${tempRoot}/${module}/${TEMPLATE_FOLDER_MAP[config.template]}/*`,
+          `${tempRoot}/${mod}/${TEMPLATE_FOLDER_MAP[config.template]}/*`,
           ...excludedFiles,
         ],
-        `${actualRoot}/${module}`,
+        `${actualRoot}/${mod}`,
         {
           overwrite: true,
         }
       )
     )
+  );
+  await Promise.all(
+    templateSources.map((mod) => {
+      const [_, component, style] = mod.split("-");
+      return cpy(
+        `${tempRoot}/${component}/${style}/*`,
+        `${actualRoot}/${mod}`,
+        { overwrite: true }
+      );
+    })
   );
 
   // clean up temp folder

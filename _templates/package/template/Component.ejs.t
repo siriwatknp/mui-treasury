@@ -1,5 +1,5 @@
 ---
-to: packages/<%=h.toNamePath(name)%>/src/<%= h.toName(name) %>.tsx
+to: packages/templates/src/<%= h.extractComponentPkg(name) %>/<%=h.extractStyleName(name)%>/<%= h.toName(name) %>.tsx
 unless_exists: true
 ---
 import React from "react";
