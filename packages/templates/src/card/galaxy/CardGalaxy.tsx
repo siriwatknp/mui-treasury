@@ -11,8 +11,6 @@ import {
   InfoSlotStyles,
 } from "@mui-treasury/component-info";
 
-const family = "'Montserrat', sans-serif";
-
 const useStyles = (): CSSObject & Partial<InfoSlotStyles> => {
   return {
     eyebrow: {
@@ -20,17 +18,14 @@ const useStyles = (): CSSObject & Partial<InfoSlotStyles> => {
       lineHeight: 1.4,
       letterSpacing: "1px",
       textTransform: "initial",
-      fontFamily: family,
     },
     head: {
-      fontFamily: family,
       color: "#fff",
       fontSize: "1.25rem",
       fontWeight: "bold" as const,
       lineHeight: 1.2,
     },
     body: {
-      fontFamily: family,
       color: "rgba(255, 255, 255, 0.72)",
       lineHeight: 1.5,
       "&:last-child": {
