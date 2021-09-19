@@ -5,9 +5,9 @@ const toPath = (_path) => path.join(process.cwd(), _path);
 
 module.exports = {
   stories: [
-    "../**/*.stories.mdx",
-    "../**/src/**/*.stories.@(js|jsx|ts|tsx)",
-    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
+    // specific folders to speed up reload (don't include node_modules)
+    "../packages/**/*.stories.@(tsx|mdx|md)",
+    "../stories/**/*.stories.@(tsx|mdx|md)",
   ],
   addons: [
     {
