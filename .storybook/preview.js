@@ -77,6 +77,8 @@ export const parameters = {
           "Example",
           "App",
         ],
+        "Template",
+        ["How to use"],
       ],
     },
   },

@@ -29,7 +29,7 @@ const PersonItem = ({ name = "Amber Matthews", count = 6 }) => {
     </FlexRow>
   );
 };
-export default function SocialCard(props) {
+export default function CardSocial(props) {
   return (
     <FlexCol boxShadow="0 8px 16px 0 #BDC9D7" borderRadius={2} {...props}>
       <FlexRow alignItems="baseline" p={2} pb={0}>

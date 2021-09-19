@@ -1,11 +1,10 @@
 {
-  "name": "@mui-treasury/template-card-sysi",
+  "name": "@mui-treasury/templates",
+  "version": "1.0.0",
   "private": true,
-  "description": "mui-treasury | template-card-sysi",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "homepage": "https://github.com/siriwatknp/mui-treasury#readme",
   "license": "MIT",
-  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/siriwatknp/mui-treasury.git"

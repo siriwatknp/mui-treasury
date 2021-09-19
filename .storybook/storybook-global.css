@@ -49,3 +49,8 @@
 .os-viewport {
   background-color: #2b2b2b;
 }
+
+/* MDX */
+.sbdocs.sbdocs-content {
+  max-width: 720px;
+}

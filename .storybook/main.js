@@ -6,8 +6,8 @@ const toPath = (_path) => path.join(process.cwd(), _path);
 module.exports = {
   stories: [
     // specific folders to speed up reload (don't include node_modules)
-    "../packages/**/*.stories.@(tsx|mdx|md)",
-    "../stories/**/*.stories.@(tsx|mdx|md)",
+    "../packages/**/*.stories.@(tsx|mdx)",
+    "../stories/**/*.stories.@(tsx|mdx)",
   ],
   addons: [
     {
@@ -25,6 +25,7 @@ module.exports = {
     "@storybook/addon-toolbars",
     "@storybook/addon-storysource",
     "@storybook/addon-links",
+    "@storybook/addon-notes",
     "storybook-addon-mui-mode",
   ],
   babel: async (options) => ({

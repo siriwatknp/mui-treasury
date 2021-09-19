@@ -1,0 +1,47 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta
+  title="Template/How to use"
+  parameters={{
+    controls: {
+      disabled: true,
+    },
+    actions: {
+      disabled: true,
+    },
+    storysource: {
+      disabled: true,
+    },
+  }}
+/>
+
+# Mui Treasury Templates
+
+All of the templates are not available via `npm` or `yarn` because they are inspiration UIs, instead you might want to extend or customize the code directly in your project. 🙌 Good news! you can download the source code via mui-tresury cli.
+
+## Prerequisite
+
+install mui-treasury cli
+
+**npm**
+
+```bash
+npm install -g mui-treasury
+```
+
+**yarn**
+
+```bash
+yarn global add mui-treasury
+```
+
+## Download a template
+
+1. Browse a template in [storybook](https://next.mui-treasury.com/?path=/story/template) that you like. Ex, I like `Template/Card/Social`
+
+   ![image](https://user-images.githubusercontent.com/18292247/133915412-576c7d41-d2b5-4b62-9f82-aba5735d3560.png)
+
+2. Open the terminal and go to your root project directory.
+3. Run `mui-treasury clone template-card-social`.
+
+> 💡 To download any template you see in mui-treasury storybook, just run `mui-treasury clone template-${component}-${style}`
