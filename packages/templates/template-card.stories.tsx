@@ -76,10 +76,13 @@ const createStory = (
   return StoryComponent as Story;
 };
 
-export const Social = createStory("social/CardSocial");
+export const Social = createStory("social/CardSocial", {
+  googleFont: "Barlow",
+});
 export const Sysi = createStory("sysi/CardSysi", {
   googleFont: "Kanit",
 });
 export const Galaxy = createStory("galaxy/CardGalaxy", {
   googleFont: "Montserrat",
+  googleFontSecondary: "Spartan",
 });

@@ -15,9 +15,12 @@ const useStyles = (): CSSObject & Partial<InfoSlotStyles> => {
   return {
     eyebrow: {
       color: "rgba(255, 255, 255, 0.92)",
+      fontFamily: '"Spartan", san-serif',
       lineHeight: 1.4,
+      fontSize: "1.0625rem",
       letterSpacing: "1px",
       textTransform: "initial",
+      marginBottom: 0,
     },
     head: {
       color: "#fff",
