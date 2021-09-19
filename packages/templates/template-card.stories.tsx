@@ -45,7 +45,6 @@ const context = require.context(
   /(?<!index)\.tsx/
 );
 context.keys().forEach((filename) => {
-  console.log("filename", filename);
   fileMapping[filename] = context(filename).default;
 });
 
