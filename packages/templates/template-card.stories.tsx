@@ -27,13 +27,13 @@ export default {
     //   },
     // },
     controls: {
-      disabled: true,
+      disable: true,
     },
     actions: {
-      disabled: true,
+      disable: true,
     },
     storysource: {
-      disabled: true,
+      disable: true,
     },
   },
 } as Meta;
@@ -54,16 +54,45 @@ const createStory = (
   parameters?: Story["parameters"]
 ) => {
   const style = name.split("/")[0];
+  const transformedNote = note
+    .replace("$template", `template-card-${style}`)
+    .replace("$docUrl", `/docs/template-card--${style}`)
+    .replace(
+      "$dependencies",
+      parameters?.dependencies
+        ? `${parameters.dependencies.map(
+            (dep: string) =>
+              `- ${
+                dep.startsWith("@mui-treasury")
+                  ? `[\`${dep}\`](/story/${dep.split("/")[1]})`
+                  : `\`${dep}\``
+              }\n`
+          )}
+### Installation
+
+**npm**
+
+${"```"}bash
+npm install ${parameters.dependencies.join(" ")}
+${"```"}
+
+**yarn**
+
+\`\`\`bash
+yarn add ${parameters.dependencies.join(" ")}
+\`\`\`
+`
+        : "No dependencies"
+    );
   const Component = Pages[name];
   function StoryComponent() {
     return <Component style={{ resize: "horizontal", overflow: "auto" }} />;
   }
+
   StoryComponent.parameters = {
     backgrounds: {},
     notes: {
-      markdown: note
-        .replace("$template", `template-card-${style}`)
-        .replace("$docUrl", `/docs/template-card--${style}`),
+      markdown: transformedNote,
     },
     ...parameters,
     docs: {
@@ -78,11 +107,14 @@ const createStory = (
 
 export const Social = createStory("social/CardSocial", {
   googleFont: "Barlow",
+  dependencies: ["@mui-treasury/component-flex"],
 });
 export const Sysi = createStory("sysi/CardSysi", {
   googleFont: "Kanit",
+  dependencies: ["@mui-treasury/component-flex"],
 });
 export const Galaxy = createStory("galaxy/CardGalaxy", {
   googleFont: "Montserrat",
   googleFontSecondary: "Spartan",
+  dependencies: ["@mui-treasury/component-flex"],
 });

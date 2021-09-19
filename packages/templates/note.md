@@ -11,3 +11,7 @@ mui-treasury clone $template
 ## 2. Storybook docs
 
 Checkout [source code]($docUrl) and click copy at the top right corner.
+
+# Dependencies
+
+$dependencies
