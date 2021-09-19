@@ -19,7 +19,11 @@ export default function CardSysi(props: { style?: React.CSSProperties }) {
           <b>ระดับใกล้โปร • Turn-Pro</b>
         </Typography>
       </Flex.Item>
-      <Flex.Item py={1} bgcolor="primary.main" color="#fff">
+      <Flex.Item
+        py={1}
+        bgcolor="primary.main"
+        color={(theme) => (theme.palette.mode === "dark" ? "#212121" : "#fff")}
+      >
         <Typography align="center">เปิดรับสมัครแล้ว ถึง 30 พ.ค. 63</Typography>
       </Flex.Item>
       <Box px={2}>
