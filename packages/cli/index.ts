@@ -129,6 +129,18 @@ function downloadTemplates(
   );
 }
 
+function removeDir(dir: string) {
+  return new Promise((resolve, reject) => {
+    rimraf(dir, (error) => {
+      if (!error) {
+        resolve(undefined);
+      } else {
+        reject(error);
+      }
+    });
+  });
+}
+
 const update = checkForUpdate(packageJson).catch(() => null);
 
 function shouldUseYarn(): boolean {
@@ -197,11 +209,14 @@ async function runCloneCommand() {
   for (let field of Object.entries(config)) {
     logger.config(`"${field[0]}: ${field[1]}"`);
   }
-  const TEMP = "/mui-treasury-tmp";
-  const tempRoot = process.cwd() + TEMP;
+  const tempRoot = process.cwd() + "/mui-treasury-tmp";
+  const tempTemplateRoot = process.cwd() + "/mui-treasury-template-tmp";
   const actualRoot = process.cwd() + config.dir;
   if (!fs.existsSync(tempRoot)) {
     fs.mkdirSync(tempRoot, { recursive: true });
+  }
+  if (!fs.existsSync(tempTemplateRoot)) {
+    fs.mkdirSync(tempTemplateRoot, { recursive: true });
   }
   logger.info(
     `start cloning ${chalk.bold(cloneParams.sources.length)} packages...`
@@ -212,13 +227,17 @@ async function runCloneCommand() {
   const nonTemplateSources = cloneParams.sources.filter(
     (s) => !s.startsWith("template")
   );
-  await downloadAndExtractCode(tempRoot, nonTemplateSources, config.branch);
-  await downloadTemplates(
-    tempRoot,
-    templateSources,
-    config.branch,
-    config.template === "typescript" ? "src" : "javascript"
-  );
+  if (nonTemplateSources.length) {
+    await downloadAndExtractCode(tempRoot, nonTemplateSources, config.branch);
+  }
+  if (templateSources.length) {
+    await downloadTemplates(
+      tempTemplateRoot,
+      templateSources,
+      config.branch,
+      config.template === "typescript" ? "src" : "javascript"
+    );
+  }
   const excludedFiles = [
     ...(!config.storybook ? [`!${tempRoot}/**/*.stories.*`] : []),
     ...(!config.test ? [`!${tempRoot}/**/*.test.*`] : []),
@@ -243,7 +262,7 @@ async function runCloneCommand() {
     templateSources.map((mod) => {
       const [_, component, style] = mod.split("-");
       return cpy(
-        `${tempRoot}/${component}/${style}/*`,
+        `${tempTemplateRoot}/${component}/${style}/*`,
         `${actualRoot}/${mod}`,
         { overwrite: true }
       );
@@ -251,12 +270,7 @@ async function runCloneCommand() {
   );
 
   // clean up temp folder
-  await new Promise((resolve) => {
-    rimraf(tempRoot, (error) => {
-      if (error) throw error;
-      else resolve(undefined);
-    });
-  });
+  await Promise.all([removeDir(tempRoot), removeDir(tempTemplateRoot)]);
   logger.log(chalk.bold(chalk.green("✅ cloned successfully!")));
 }
 
