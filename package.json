@@ -73,6 +73,7 @@
     "init:component": "hygen package component",
     "init:style": "hygen package style",
     "init:hook": "hygen package hook",
+    "init:template": "hygen package template",
     "init:style-info": "hygen style info",
     "dev:cli": "yarn workspace mui-treasury run dev",
     "create-layout-storybook": "npx hygen layout storybook",
