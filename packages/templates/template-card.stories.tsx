@@ -7,6 +7,8 @@ import note from "./note.md";
 const Pages = {
   "social/CardSocial": React.lazy(() => import("./src/card/social/CardSocial")),
   "sysi/CardSysi": React.lazy(() => import("./src/card/sysi/CardSysi")),
+  "galaxy/CardGalaxy": React.lazy(() => import("./src/card/galaxy/CardGalaxy")),
+  // hygen-inject-page
 };
 
 export default {
@@ -69,4 +71,7 @@ const createStory = (
 export const Social = createStory("social/CardSocial");
 export const Sysi = createStory("sysi/CardSysi", {
   googleFont: "Kanit",
+});
+export const Galaxy = createStory("galaxy/CardGalaxy", {
+  googleFont: "Montserrat",
 });
