@@ -83,16 +83,16 @@ export const parameters = {
     },
   },
   controls: { expanded: true },
-  backgrounds: {
-    grid: {
-      cellSize: 8,
-      opacity: 0.24,
-      cellAmount: 5,
-      offsetX: 16, // default is 0 if story has 'fullscreen' layout, 16 if layout is 'padded'
-      offsetY: 16, // default is 0 if story has 'fullscreen' layout, 16 if layout is 'padded'
-    },
-    disable: true,
-  },
+  // backgrounds: {
+  //   grid: {
+  //     cellSize: 8,
+  //     opacity: 0.24,
+  //     cellAmount: 5,
+  //     offsetX: 16, // default is 0 if story has 'fullscreen' layout, 16 if layout is 'padded'
+  //     offsetY: 16, // default is 0 if story has 'fullscreen' layout, 16 if layout is 'padded'
+  //   },
+  //   disable: true,
+  // },
   viewport: {
     viewports: {
       mobileM: {

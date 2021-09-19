@@ -19,7 +19,7 @@ module.exports = {
       },
     },
     "@storybook/addon-controls",
-    "@storybook/addon-backgrounds",
+    // "@storybook/addon-backgrounds",
     "@storybook/addon-actions",
     "@storybook/addon-viewport",
     "@storybook/addon-toolbars",

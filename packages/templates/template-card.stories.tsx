@@ -18,6 +18,14 @@ export default {
       page: () => <Source />,
     },
     layout: "centered",
+    viewport: {
+      disable: true,
+    },
+    // backgrounds: {
+    //   grid: {
+    //     disable: true,
+    //   },
+    // },
     controls: {
       disabled: true,
     },
