@@ -9,6 +9,7 @@ const Pages = {
   "sysi/CardSysi": React.lazy(() => import("./src/card/sysi/CardSysi")),
   "galaxy/CardGalaxy": React.lazy(() => import("./src/card/galaxy/CardGalaxy")),
   "tutor/CardTutor": React.lazy(() => import("./src/card/tutor/CardTutor")),
+  "news3/CardNews3": React.lazy(() => import("./src/card/news3/CardNews3")),
   // hygen-inject-page
 };
 
@@ -60,14 +61,17 @@ const createStory = (
     .replace(
       "$dependencies",
       parameters?.dependencies
-        ? `${parameters.dependencies.map(
-            (dep: string) =>
-              `- ${
-                dep.startsWith("@mui-treasury")
-                  ? `[\`${dep}\`](/story/${dep.split("/")[1]})`
-                  : `\`${dep}\``
-              }\n`
-          )}
+        ? `${parameters.dependencies
+            .map(
+              (dep: string) =>
+                `- ${
+                  dep.startsWith("@mui-treasury")
+                    ? `[\`${dep}\`](/story/${dep.split("/")[1]})`
+                    : `\`${dep}\``
+                }`
+            )
+            .join("\n")}
+
 ### Installation
 
 **npm**
@@ -120,6 +124,13 @@ export const Galaxy = createStory("galaxy/CardGalaxy", {
 });
 export const Tutor = createStory("tutor/CardTutor", {
   googleFont: "Open Sans",
+  dependencies: [
+    "@mui-treasury/component-flex",
+    "@mui-treasury/component-info",
+  ],
+});
+export const News3 = createStory("news3/CardNews3", {
+  googleFont: "Sen",
   dependencies: [
     "@mui-treasury/component-flex",
     "@mui-treasury/component-info",
