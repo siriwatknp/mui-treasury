@@ -8,6 +8,7 @@ const Pages = {
   "social/CardSocial": React.lazy(() => import("./src/card/social/CardSocial")),
   "sysi/CardSysi": React.lazy(() => import("./src/card/sysi/CardSysi")),
   "galaxy/CardGalaxy": React.lazy(() => import("./src/card/galaxy/CardGalaxy")),
+  "tutor/CardTutor": React.lazy(() => import("./src/card/tutor/CardTutor")),
   // hygen-inject-page
 };
 
@@ -116,4 +117,11 @@ export const Galaxy = createStory("galaxy/CardGalaxy", {
   googleFont: "Montserrat",
   googleFontSecondary: "Spartan",
   dependencies: ["@mui-treasury/component-flex"],
+});
+export const Tutor = createStory("tutor/CardTutor", {
+  googleFont: "Open Sans",
+  dependencies: [
+    "@mui-treasury/component-flex",
+    "@mui-treasury/component-info",
+  ],
 });
