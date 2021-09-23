@@ -11,6 +11,7 @@ const Pages = {
   "tutor/CardTutor": React.lazy(() => import("./src/card/tutor/CardTutor")),
   "news3/CardNews3": React.lazy(() => import("./src/card/news3/CardNews3")),
   "offer/CardOffer": React.lazy(() => import("./src/card/offer/CardOffer")),
+  "reward/CardReward": React.lazy(() => import("./src/card/reward/CardReward")),
   // hygen-inject-page
 };
 
@@ -144,3 +145,4 @@ export const Offer = createStory("offer/CardOffer", {
     "@mui-treasury/component-info",
   ],
 });
+export const Reward = createStory("reward/CardReward");
