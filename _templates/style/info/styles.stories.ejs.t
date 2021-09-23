@@ -8,9 +8,9 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import Box from "@mui/material/Box";
 import {
   Info,
-  InfoHead,
+  InfoTitle,
   InfoEyebrow,
-  InfoBody,
+  InfoSubtitle,
   InfoProps,
 } from "@mui-treasury/component-info";
 
@@ -37,11 +37,11 @@ export const <%=h.extractStyleNamePascal(name)%>: Story<InfoProps> = (args) => {
     <Box sx={{ maxWidth: 288 }}>
       <Info variant="<%= h.extractStyleName(name)%>" useStyles={get<%= h.toName(name) %>Styles}>
         <InfoEyebrow>March 20, 2019</InfoEyebrow>
-        <InfoHead>Nature Around Us</InfoHead>
-        <InfoBody>
+        <InfoTitle>Nature Around Us</InfoTitle>
+        <InfoSubtitle>
           We are going to learn different kinds of species in nature that live
           together to form amazing environment.
-        </InfoBody>
+        </InfoSubtitle>
       </Info>
     </Box>
   );

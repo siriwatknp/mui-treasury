@@ -4,9 +4,9 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import Box from "@mui/material/Box";
 import {
   Info,
-  InfoHead,
+  InfoTitle,
   InfoEyebrow,
-  InfoBody,
+  InfoSubtitle,
   InfoProps,
 } from "@mui-treasury/component-info";
 
@@ -33,11 +33,11 @@ export const N02: Story<InfoProps> = (args) => {
     <Box sx={{ maxWidth: 288 }}>
       <Info variant="n02" useStyles={getInfoN02Styles}>
         <InfoEyebrow>MARCH 8, 2016</InfoEyebrow>
-        <InfoHead>First Snow Storm</InfoHead>
-        <InfoBody>
+        <InfoTitle>First Snow Storm</InfoTitle>
+        <InfoSubtitle>
           Snow storm coming in Sommaroy island, Arctic Norway. This is something
           that you definitely wanna see in your life.
-        </InfoBody>
+        </InfoSubtitle>
       </Info>
     </Box>
   );

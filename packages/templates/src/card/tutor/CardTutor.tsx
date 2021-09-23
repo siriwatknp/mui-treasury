@@ -4,14 +4,14 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Add from "@mui/icons-material/Add";
 import { FlexRow, Item } from "@mui-treasury/component-flex";
-import { Info, InfoHead, InfoBody } from "@mui-treasury/component-info";
+import { Info, InfoTitle, InfoSubtitle } from "@mui-treasury/component-info";
 
 const titleFontSize = "1rem";
 const subtitleFontSize = "0.75rem";
 const family = "'Open Sans', sans-serif";
 
 const tutorInfoStyles = () => ({
-  head: {
+  title: {
     fontFamily: family,
     color: "#4d4b5f",
     fontSize: titleFontSize,
@@ -19,7 +19,7 @@ const tutorInfoStyles = () => ({
     fontWeight: 700,
     marginBottom: "0.125rem",
   },
-  body: {
+  subtitle: {
     fontFamily: family,
     color: "#696c6f",
     fontWeight: 500,
@@ -57,8 +57,8 @@ export default function CardTutor(props: { style?: React.CSSProperties }) {
         />
       </Item>
       <Info useStyles={tutorInfoStyles}>
-        <InfoHead>Kenny Foster</InfoHead>
-        <InfoBody>@fosterlive</InfoBody>
+        <InfoTitle>Kenny Foster</InfoTitle>
+        <InfoSubtitle>@fosterlive</InfoSubtitle>
       </Info>
       <Item ml={1}>
         <StyledIconButton size="small">

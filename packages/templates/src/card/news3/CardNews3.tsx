@@ -6,7 +6,7 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { FlexRow, Item } from "@mui-treasury/component-flex";
-import { Info, InfoHead, InfoBody } from "@mui-treasury/component-info";
+import { Info, InfoTitle, InfoSubtitle } from "@mui-treasury/component-info";
 
 const titleFontSize = "1rem";
 const subtitleFontSize = "0.875rem";
@@ -133,14 +133,14 @@ const Shadow = styled("div")(({ theme }) => ({
 }));
 
 const newsInfoStyles = ({ palette }: Theme) => ({
-  head: {
+  title: {
     fontFamily: family,
     fontSize: titleFontSize,
     lineHeight: 1.2,
     marginBottom: 0,
     fontWeight: 500,
   },
-  body: {
+  subtitle: {
     fontFamily: family,
     color: palette.grey["500"],
     fontSize: subtitleFontSize,
@@ -178,8 +178,8 @@ export default function CardNews3() {
           <StyledAvatar src={"https://i.pravatar.cc/300?img=13"} />
         </Item>
         <Info useStyles={newsInfoStyles} sx={{ alignSelf: "center" }}>
-          <InfoHead>Nadine Petrolli</InfoHead>
-          <InfoBody>Jul 20 | 2 Min Read</InfoBody>
+          <InfoTitle>Nadine Petrolli</InfoTitle>
+          <InfoSubtitle>Jul 20 | 2 Min Read</InfoSubtitle>
         </Info>
       </RowAuthor>
       <Shadow className="Shadow1" />

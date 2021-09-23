@@ -3,7 +3,7 @@ import cx from "clsx";
 import { styled } from "@mui/material/styles";
 import { infoClasses } from "./infoClasses";
 import { useStylesCtx } from "./Info";
-const InfoHeadRoot = styled("h4", {
+const InfoTitleRoot = styled("h4", {
   name: "JunInfo",
   slot: "Head",
   overridesResolver: (props, styles) => styles.head,
@@ -15,11 +15,11 @@ const InfoHeadRoot = styled("h4", {
   lineHeight: 1.5,
   ...ownerState.useStyles(theme).head,
 }));
-export const InfoHead = React.forwardRef(function InfoHead(props, ref) {
+export const InfoTitle = React.forwardRef(function InfoTitle(props, ref) {
   const { children, component, className, ...other } = props;
   const useStyles = useStylesCtx();
   return (
-    <InfoHeadRoot
+    <InfoTitleRoot
       ref={ref}
       {...other}
       as={component}
@@ -27,10 +27,10 @@ export const InfoHead = React.forwardRef(function InfoHead(props, ref) {
       ownerState={{ ...props, useStyles }}
     >
       {children}
-    </InfoHeadRoot>
+    </InfoTitleRoot>
   );
 });
 /**
- * @deprecated use InfoHead instead
+ * @deprecated use InfoTitle instead
  */
-export const InfoTitle = InfoHead;
+export const InfoTitle = InfoTitle;

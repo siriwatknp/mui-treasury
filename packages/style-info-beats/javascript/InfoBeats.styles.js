@@ -5,13 +5,13 @@ const captionFontSize = "1rem";
 export const getInfoBeatsStyles = (arg) => {
   const { palette } = "theme" in arg ? arg.theme : arg;
   return {
-    head: {
+    title: {
       fontSize: titleFontSize,
       fontWeight: 600,
       lineHeight: 1.4,
       marginBottom: "0px",
     },
-    body: {
+    subtitle: {
       fontSize: subtitleFontSize,
       lineHeight: 1.6,
       letterSpacing: "0.0075em",

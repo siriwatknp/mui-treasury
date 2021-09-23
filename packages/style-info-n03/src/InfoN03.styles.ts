@@ -29,12 +29,12 @@ export const getInfoN03Styles = (
       fontSize: 16,
       display: "inline-block",
     },
-    head: {
+    title: {
       fontSize: 24,
       fontWeight: 900,
       marginBottom: "0.72em",
     },
-    body: {
+    subtitle: {
       fontSize: 16,
       color: palette.text.primary,
       lineHeight: 1.75,
@@ -43,25 +43,25 @@ export const getInfoN03Styles = (
 };
 
 export const getInfoN03Theme = (theme: Theme): Output => {
-  const { eyebrow, head, body } = getInfoN03Styles({ theme });
+  const { eyebrow, title, subtitle } = getInfoN03Styles({ theme });
   return {
     JunInfo: {
       styleOverrides: {
         eyebrow: eyebrow,
-        head: head,
-        body: body,
+        title: title,
+        subtitle: subtitle,
       },
     },
   };
 };
 
 export const getInfoN03Variant = (theme: Theme): InfoThemeVariant => {
-  const { eyebrow, head, body } = getInfoN03Styles({ theme });
+  const { eyebrow, title, subtitle } = getInfoN03Styles({ theme });
   return {
     props: { variant: "n03" },
     style: {
-      [`& .${infoClasses.head}`]: head,
-      [`& .${infoClasses.body}`]: body,
+      [`& .${infoClasses.title}`]: title,
+      [`& .${infoClasses.subtitle}`]: subtitle,
       [`& .${infoClasses.eyebrow}`]: eyebrow,
     },
   };

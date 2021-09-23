@@ -29,13 +29,13 @@ export const getInfoChatzStyles = (
         marginTop: "1rem",
       },
     },
-    head: {
+    title: {
       fontSize: titleFontSize,
       fontWeight: 500,
       lineHeight: 1.2,
       marginBottom: "0px",
     },
-    body: {
+    subtitle: {
       color:
         palette.mode === "dark" ? palette.grey["500"] : palette.grey["700"],
       fontSize: subtitleFontSize,
@@ -51,25 +51,25 @@ export const getInfoChatzStyles = (
 };
 
 export const getInfoChatzTheme = (theme: Theme): Output => {
-  const { eyebrow, head, body } = getInfoChatzStyles({ theme });
+  const { eyebrow, title, subtitle } = getInfoChatzStyles({ theme });
   return {
     JunInfo: {
       styleOverrides: {
         eyebrow: eyebrow,
-        head: head,
-        body: body,
+        title: title,
+        subtitle: subtitle,
       },
     },
   };
 };
 
 export const getInfoChatzVariant = (theme: Theme): InfoThemeVariant => {
-  const { eyebrow, head, body } = getInfoChatzStyles({ theme });
+  const { eyebrow, title, subtitle } = getInfoChatzStyles({ theme });
   return {
     props: { variant: "chatz" },
     style: {
-      [`& .${infoClasses.head}`]: head,
-      [`& .${infoClasses.body}`]: body,
+      [`& .${infoClasses.title}`]: title,
+      [`& .${infoClasses.subtitle}`]: subtitle,
       [`& .${infoClasses.eyebrow}`]: eyebrow,
     },
   };

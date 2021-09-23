@@ -4,9 +4,9 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import Box from "@mui/material/Box";
 import {
   Info,
-  InfoHead,
+  InfoTitle,
   InfoEyebrow,
-  InfoBody,
+  InfoSubtitle,
   InfoProps,
 } from "@mui-treasury/component-info";
 
@@ -32,13 +32,13 @@ export const Chatz: Story<InfoProps> = (args) => {
   return (
     <Box sx={{ maxWidth: 288 }}>
       <Info variant="chatz" useStyles={getInfoChatzStyles}>
-        <InfoHead>Phawta Tuntayakul</InfoHead>
-        <InfoBody>Great, I'll join you tomorrow...</InfoBody>
+        <InfoTitle>Phawta Tuntayakul</InfoTitle>
+        <InfoSubtitle>Great, I'll join you tomorrow...</InfoSubtitle>
         <InfoEyebrow>10 m</InfoEyebrow>
       </Info>
       <Info variant="chatz" useStyles={getInfoChatzStyles}>
-        <InfoHead>Maria Illesaca</InfoHead>
-        <InfoBody>Can you please send me more detail...</InfoBody>
+        <InfoTitle>Maria Illesaca</InfoTitle>
+        <InfoSubtitle>Can you please send me more detail...</InfoSubtitle>
         <InfoEyebrow>10:45 AM</InfoEyebrow>
       </Info>
     </Box>

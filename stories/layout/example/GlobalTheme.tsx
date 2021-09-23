@@ -94,7 +94,7 @@ const GlobalTheme = () => {
                 padding: 16,
                 paddingLeft: 0,
               },
-              body: {
+              subtitle: {
                 backgroundColor: coolGray[200],
                 borderRadius: 16,
                 border: "none",

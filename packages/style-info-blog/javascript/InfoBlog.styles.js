@@ -11,13 +11,13 @@ export const getInfoBlogStyles = (arg) => {
       marginBottom: "0.875em",
       display: "inline-block",
     },
-    head: {
+    title: {
       fontSize: 20,
       fontWeight: "bold",
       marginBottom: "0.35em",
       fontFamily: family,
     },
-    body: {
+    subtitle: {
       marginBottom: spacing(2),
       fontSize: "0.8rem",
       letterSpacing: "0.00938em",

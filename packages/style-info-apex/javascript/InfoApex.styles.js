@@ -5,7 +5,7 @@ export const getInfoApexStyles = (arg) => {
   const { palette } = "theme" in arg ? arg.theme : arg;
   return {
     eyebrow: {},
-    head: {
+    title: {
       color: palette.mode === "dark" ? "#b5b1d8" : "#4d4b5f",
       fontSize: titleFontSize,
       lineHeight: 1.66,
@@ -13,7 +13,7 @@ export const getInfoApexStyles = (arg) => {
       letterSpacing: "0.5px",
       marginBottom: "0px",
     },
-    body: {
+    subtitle: {
       color: palette.mode === "dark" ? palette.grey[500] : palette.grey[600],
       fontSize: subtitleFontSize,
       lineHeight: 1.4,

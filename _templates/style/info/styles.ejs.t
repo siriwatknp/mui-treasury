@@ -27,35 +27,35 @@ export const get<%= h.toName(name) %>Styles = (
     eyebrow: {
       
     },
-    head: {
+    title: {
       
     },
-    body: {
+    subtitle: {
       
     },
   };
 };
 
 export const get<%= h.toName(name) %>Theme = (theme: Theme): Output => {
-  const { eyebrow, head, body } = get<%= h.toName(name) %>Styles({ theme });
+  const { eyebrow, title, subtitle } = get<%= h.toName(name) %>Styles({ theme });
   return {
     JunInfo: {
       styleOverrides: {
         eyebrow: eyebrow,
-        head: head,
-        body: body,
+        title: title,
+        subtitle: subtitle,
       },
     },
   };
 };
 
 export const get<%= h.toName(name) %>Variant = (theme: Theme): InfoThemeVariant => {
-  const { eyebrow, head, body } = get<%= h.toName(name) %>Styles({ theme });
+  const { eyebrow, title, subtitle } = get<%= h.toName(name) %>Styles({ theme });
   return {
     props: { variant: "<%=h.extractStyleName(name)%>" },
     style: {
-      [`& .${infoClasses.head}`]: head,
-      [`& .${infoClasses.body}`]: body,
+      [`& .${infoClasses.title}`]: title,
+      [`& .${infoClasses.subtitle}`]: subtitle,
       [`& .${infoClasses.eyebrow}`]: eyebrow,
     },
   };

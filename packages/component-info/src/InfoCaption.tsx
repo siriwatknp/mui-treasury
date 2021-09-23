@@ -6,7 +6,7 @@ import { OverridableComponent } from "@mui-treasury/types";
 import { infoClasses } from "./infoClasses";
 import { useStylesCtx, AppendUseStyles } from "./Info";
 
-export type InfoParagraphProps = {
+export type InfoCaptionProps = {
   /**
    * className append to the root element
    */
@@ -20,43 +20,38 @@ export type InfoParagraphProps = {
    * The system prop that allows defining system overrides as well as additional CSS styles.
    */
   sx?: SxProps<Theme>;
-} & Omit<JSX.IntrinsicElements["p"], "ref">;
+} & Omit<JSX.IntrinsicElements["div"], "ref">;
 
-const InfoParagraphRoot = styled("p", {
+const InfoCaptionRoot = styled("div", {
   name: "JunInfo",
-  slot: "Body",
-  overridesResolver: (props, styles) => styles.body,
-})<{ ownerState: AppendUseStyles<InfoParagraphProps> }>(
+  slot: "Caption",
+  overridesResolver: (props, styles) => styles.eyebrow,
+})<{ ownerState: AppendUseStyles<InfoCaptionProps> }>(
   ({ theme, ownerState }) => ({
     color: theme.palette.text.secondary,
-    lineHeight: 1.5,
-    fontSize: "1rem",
-    margin: 0,
-    ...ownerState.useStyles(theme).body,
+    fontSize: "0.75rem",
+    marginBlockStart: "0.5em",
+    marginBlockEnd: "0.75em",
+    ...ownerState.useStyles(theme).eyebrow,
   })
 );
 
-export const InfoBody: OverridableComponent<InfoParagraphProps> =
-  React.forwardRef<HTMLParagraphElement, InfoParagraphProps>(function InfoBody(
+export const InfoCaption: OverridableComponent<InfoCaptionProps> =
+  React.forwardRef<HTMLDivElement, InfoCaptionProps>(function InfoCaption(
     props,
     ref
   ) {
     const { children, component, className, ...other } = props;
     const useStyles = useStylesCtx();
     return (
-      <InfoParagraphRoot
+      <InfoCaptionRoot
         ref={ref}
         {...other}
         as={component}
-        className={cx(infoClasses.body, className)}
+        className={cx(infoClasses.eyebrow, className)}
         ownerState={{ ...props, useStyles }}
       >
         {children}
-      </InfoParagraphRoot>
+      </InfoCaptionRoot>
     );
   });
-
-/**
- * @deprecated use InfoSubtitle instead
- */
-export const InfoSubtitle = InfoBody;

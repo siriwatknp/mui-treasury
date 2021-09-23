@@ -28,7 +28,7 @@ const useStyles = makeStyles(() => ({
       backgroundColor: "rgba(0,0,0,0.08)",
     },
   },
-  settingHead: {
+  settingtitle: {
     textTransform: "uppercase",
     color: "rgba(0,0,0,0.34)",
     fontWeight: "bold",

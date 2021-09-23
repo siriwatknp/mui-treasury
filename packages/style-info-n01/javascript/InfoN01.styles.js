@@ -10,12 +10,12 @@ export const getInfoN01Styles = (arg) => {
       marginBottom: "0.875em",
       display: "inline-block",
     },
-    head: {
+    title: {
       fontSize: 20,
       fontWeight: "bold",
       marginBottom: "0.4em",
     },
-    body: {
+    subtitle: {
       fontSize: 16,
       color:
         palette.mode === "dark" ? "rgba(255,255,255,0.72)" : "rgba(0,0,0,0.72)",

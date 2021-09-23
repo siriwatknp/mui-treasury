@@ -28,12 +28,12 @@ export const getInfoN02Styles = (
       fontSize: 14,
       display: "inline-block",
     },
-    head: {
+    title: {
       fontSize: 24,
       fontWeight: 900,
       marginBottom: "0.4em",
     },
-    body: {
+    subtitle: {
       fontSize: 18,
       color: palette.text.secondary,
     },
@@ -41,25 +41,25 @@ export const getInfoN02Styles = (
 };
 
 export const getInfoN02Theme = (theme: Theme): Output => {
-  const { eyebrow, head, body } = getInfoN02Styles({ theme });
+  const { eyebrow, title, subtitle } = getInfoN02Styles({ theme });
   return {
     JunInfo: {
       styleOverrides: {
         eyebrow: eyebrow,
-        head: head,
-        body: body,
+        title: title,
+        subtitle: subtitle,
       },
     },
   };
 };
 
 export const getInfoN02Variant = (theme: Theme): InfoThemeVariant => {
-  const { eyebrow, head, body } = getInfoN02Styles({ theme });
+  const { eyebrow, title, subtitle } = getInfoN02Styles({ theme });
   return {
     props: { variant: "n02" },
     style: {
-      [`& .${infoClasses.head}`]: head,
-      [`& .${infoClasses.body}`]: body,
+      [`& .${infoClasses.title}`]: title,
+      [`& .${infoClasses.subtitle}`]: subtitle,
       [`& .${infoClasses.eyebrow}`]: eyebrow,
     },
   };

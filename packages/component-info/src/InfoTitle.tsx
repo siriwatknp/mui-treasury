@@ -6,7 +6,7 @@ import { OverridableComponent } from "@mui-treasury/types";
 import { infoClasses } from "./infoClasses";
 import { useStylesCtx, AppendUseStyles } from "./Info";
 
-export type InfoHeadProps = {
+export type InfoTitleProps = {
   /**
    * className append to the root element
    */
@@ -22,39 +22,36 @@ export type InfoHeadProps = {
   sx?: SxProps<Theme>;
 } & Omit<JSX.IntrinsicElements["h4"], "ref">;
 
-const InfoHeadRoot = styled("h4", {
+const InfoTitleRoot = styled("h4", {
   name: "JunInfo",
   slot: "Head",
-  overridesResolver: (props, styles) => styles.head,
-})<{ ownerState: AppendUseStyles<InfoHeadProps> }>(({ theme, ownerState }) => ({
-  letterSpacing: "0.0073529412em",
-  fontSize: "1.25rem",
-  fontWeight: "normal",
-  margin: "0 0 0.5rem 0",
-  lineHeight: 1.5,
-  ...ownerState.useStyles(theme).head,
-}));
+  overridesResolver: (props, styles) => styles.title,
+})<{ ownerState: AppendUseStyles<InfoTitleProps> }>(
+  ({ theme, ownerState }) => ({
+    letterSpacing: "0.0073529412em",
+    fontSize: "1.25rem",
+    fontWeight: "normal",
+    margin: "0 0 0.4em 0", // force other side to prevent user agent stylesheet
+    lineHeight: 1.5,
+    ...ownerState.useStyles(theme).title,
+  })
+);
 
-export const InfoHead: OverridableComponent<InfoHeadProps> = React.forwardRef<
+export const InfoTitle: OverridableComponent<InfoTitleProps> = React.forwardRef<
   HTMLHeadingElement,
-  InfoHeadProps
->(function InfoHead(props, ref) {
+  InfoTitleProps
+>(function InfoTitle(props, ref) {
   const { children, component, className, ...other } = props;
   const useStyles = useStylesCtx();
   return (
-    <InfoHeadRoot
+    <InfoTitleRoot
       ref={ref}
       {...other}
       as={component}
-      className={cx(infoClasses.head, className)}
+      className={cx(infoClasses.title, className)}
       ownerState={{ ...props, useStyles }}
     >
       {children}
-    </InfoHeadRoot>
+    </InfoTitleRoot>
   );
 });
-
-/**
- * @deprecated use InfoHead instead
- */
-export const InfoTitle = InfoHead;

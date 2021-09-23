@@ -32,13 +32,13 @@ const useStyles = makeStyles(({ breakpoints }) => ({
     backgroundColor: "#ffffff",
   },
   toolbar: {},
-  edgeSidebarBody: {
+  edgeSidebarsubtitle: {
     padding: "24px 0 40px 24px !important",
     background: "none",
     boxShadow: "none",
     right: 24,
   },
-  sidebarBody: {
+  sidebarsubtitle: {
     padding: "24px 0 40px 24px !important",
     background: "none",
     border: "none",

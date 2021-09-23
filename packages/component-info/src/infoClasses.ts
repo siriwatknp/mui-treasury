@@ -1,15 +1,14 @@
-import {
-  generateUtilityClass,
-  generateUtilityClasses,
-} from "@mui/core";
+import { generateUtilityClass, generateUtilityClasses } from "@mui/core";
 
 export interface InfoClasses {
   /** Styles applied to the root element. */
   root: string;
-  /** Styles applied to the head element. */
-  head: string;
-  /** Styles applied to the body element. */
-  body: string;
+  /** Styles applied to the title element. */
+  title: string;
+  /** Styles applied to the subtitle element. */
+  subtitle: string;
+  /** Styles applied to the caption element. */
+  caption: string;
   /** Styles applied to the eyebrow element. */
   eyebrow: string;
 }
@@ -22,7 +21,8 @@ export function getInfoUtilityClass(slot: string) {
 
 export const infoClasses: InfoClasses = generateUtilityClasses("JunInfo", [
   "root",
-  "head",
-  "body",
+  "title",
+  "subtitle",
+  "caption",
   "eyebrow",
 ]);

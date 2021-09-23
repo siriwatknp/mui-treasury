@@ -5,8 +5,8 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import {
   Info,
-  InfoHead,
-  InfoBody,
+  InfoTitle,
+  InfoSubtitle,
   InfoEyebrow,
   InfoSlotStyles,
 } from "@mui-treasury/component-info";
@@ -22,13 +22,13 @@ const useStyles = (): CSSObject & Partial<InfoSlotStyles> => {
       textTransform: "initial",
       marginBottom: 0,
     },
-    head: {
+    title: {
       color: "#fff",
       fontSize: "1.25rem",
       fontWeight: "bold" as const,
       lineHeight: 1.2,
     },
-    body: {
+    subtitle: {
       color: "rgba(255, 255, 255, 0.72)",
       lineHeight: 1.5,
       "&:last-child": {
@@ -85,8 +85,8 @@ export default function CardGalaxy(props: { style?: React.CSSProperties }) {
       <Content>
         <Info useStyles={useStyles}>
           <InfoEyebrow>Galaxy</InfoEyebrow>
-          <InfoHead>Buds 2019</InfoHead>
-          <InfoBody>Perfect for everyone</InfoBody>
+          <InfoTitle>Buds 2019</InfoTitle>
+          <InfoSubtitle>Perfect for everyone</InfoSubtitle>
         </Info>
       </Content>
     </StyledCard>

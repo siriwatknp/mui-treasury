@@ -4,9 +4,9 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import Box from "@mui/material/Box";
 import {
   Info,
-  InfoHead,
+  InfoTitle,
   InfoEyebrow,
-  InfoBody,
+  InfoSubtitle,
   InfoProps,
 } from "@mui-treasury/component-info";
 
@@ -33,11 +33,11 @@ export const Blog: Story<InfoProps> = (args) => {
     <Box sx={{ maxWidth: 288 }}>
       <Info variant="blog" useStyles={getInfoBlogStyles}>
         <InfoEyebrow>28 MAR 2019</InfoEyebrow>
-        <InfoHead>What is Git ?</InfoHead>
-        <InfoBody>
+        <InfoTitle>What is Git ?</InfoTitle>
+        <InfoSubtitle>
           Git is a distributed version control system. Every dev has a working
           copy of the code and...
-        </InfoBody>
+        </InfoSubtitle>
       </Info>
     </Box>
   );

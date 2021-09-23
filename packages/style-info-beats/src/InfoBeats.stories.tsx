@@ -4,9 +4,9 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import Box from "@mui/material/Box";
 import {
   Info,
-  InfoHead,
+  InfoTitle,
   InfoEyebrow,
-  InfoBody,
+  InfoSubtitle,
   InfoProps,
 } from "@mui-treasury/component-info";
 
@@ -32,8 +32,8 @@ export const Beats: Story<InfoProps> = (args) => {
   return (
     <Box sx={{ maxWidth: 288 }}>
       <Info variant="beats" useStyles={getInfoBeatsStyles}>
-        <InfoHead>Beats</InfoHead>
-        <InfoBody>Headphone X</InfoBody>
+        <InfoTitle>Beats</InfoTitle>
+        <InfoSubtitle>Headphone X</InfoSubtitle>
         <InfoEyebrow>Price starts from $345</InfoEyebrow>
       </Info>
     </Box>

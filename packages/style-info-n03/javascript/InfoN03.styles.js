@@ -11,12 +11,12 @@ export const getInfoN03Styles = (arg) => {
       fontSize: 16,
       display: "inline-block",
     },
-    head: {
+    title: {
       fontSize: 24,
       fontWeight: 900,
       marginBottom: "0.72em",
     },
-    body: {
+    subtitle: {
       fontSize: 16,
       color: palette.text.primary,
       lineHeight: 1.75,

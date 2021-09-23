@@ -4,8 +4,8 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import {
   Info,
-  InfoHead,
-  InfoBody,
+  InfoTitle,
+  InfoSubtitle,
   InfoEyebrow,
 } from "@mui-treasury/component-info";
 const family = "'Montserrat', sans-serif";
@@ -18,14 +18,14 @@ const useStyles = () => {
       textTransform: "initial",
       fontFamily: family,
     },
-    head: {
+    title: {
       fontFamily: family,
       color: "#fff",
       fontSize: "1.25rem",
       fontWeight: "bold",
       lineHeight: 1.2,
     },
-    body: {
+    subtitle: {
       fontFamily: family,
       color: "rgba(255, 255, 255, 0.72)",
       lineHeight: 1.5,
@@ -79,8 +79,8 @@ export default function CardGalaxy(props) {
       <Content>
         <Info useStyles={useStyles}>
           <InfoEyebrow>Galaxy</InfoEyebrow>
-          <InfoHead>Buds 2019</InfoHead>
-          <InfoBody>Perfect for everyone</InfoBody>
+          <InfoTitle>Buds 2019</InfoTitle>
+          <InfoSubtitle>Perfect for everyone</InfoSubtitle>
         </Info>
       </Content>
     </StyledCard>

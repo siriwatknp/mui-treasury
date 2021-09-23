@@ -39,7 +39,7 @@ const useStyles = makeStyles(() => ({
     boxShadow: "0 1px 2px 0 rgba(0, 0, 0, .10)",
     backgroundColor: "#ffffff",
   },
-  insetBody: {
+  insetsubtitle: {
     borderLeft: "1px solid rgba(0, 0, 0, 0.08)",
     overflowY: "auto",
     backgroundColor: "#fff",

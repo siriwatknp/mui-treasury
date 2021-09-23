@@ -56,8 +56,3 @@ export const InfoEyebrow: OverridableComponent<InfoEyebrowProps> =
       </InfoEyebrowRoot>
     );
   });
-
-/**
- * @deprecated use InfoEyebrow instead
- */
-export const InfoCaption = InfoEyebrow;

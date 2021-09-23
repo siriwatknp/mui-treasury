@@ -14,7 +14,7 @@ const InfoParagraphRoot = styled("p", {
   margin: 0,
   ...ownerState.useStyles(theme).body,
 }));
-export const InfoBody = React.forwardRef(function InfoBody(props, ref) {
+export const InfoSubtitle = React.forwardRef(function InfoSubtitle(props, ref) {
   const { children, component, className, ...other } = props;
   const useStyles = useStylesCtx();
   return (
@@ -32,4 +32,4 @@ export const InfoBody = React.forwardRef(function InfoBody(props, ref) {
 /**
  * @deprecated use InfoSubtitle instead
  */
-export const InfoSubtitle = InfoBody;
+export const InfoSubtitle = InfoSubtitle;

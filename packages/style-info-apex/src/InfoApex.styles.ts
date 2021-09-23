@@ -24,7 +24,7 @@ export const getInfoApexStyles = (
   const { palette } = "theme" in arg ? arg.theme : arg;
   return {
     eyebrow: {},
-    head: {
+    title: {
       color: palette.mode === "dark" ? "#b5b1d8" : "#4d4b5f",
       fontSize: titleFontSize,
       lineHeight: 1.66,
@@ -32,7 +32,7 @@ export const getInfoApexStyles = (
       letterSpacing: "0.5px",
       marginBottom: "0px",
     },
-    body: {
+    subtitle: {
       color: palette.mode === "dark" ? palette.grey[500] : palette.grey[600],
       fontSize: subtitleFontSize,
       lineHeight: 1.4,
@@ -42,25 +42,25 @@ export const getInfoApexStyles = (
 };
 
 export const getInfoApexTheme = (theme: Theme): Output => {
-  const { eyebrow, head, body } = getInfoApexStyles({ theme });
+  const { eyebrow, title, subtitle } = getInfoApexStyles({ theme });
   return {
     JunInfo: {
       styleOverrides: {
         eyebrow: eyebrow,
-        head: head,
-        body: body,
+        title: title,
+        subtitle: subtitle,
       },
     },
   };
 };
 
 export const getInfoApexVariant = (theme: Theme): InfoThemeVariant => {
-  const { eyebrow, head, body } = getInfoApexStyles({ theme });
+  const { eyebrow, title, subtitle } = getInfoApexStyles({ theme });
   return {
     props: { variant: "apex" },
     style: {
-      [`& .${infoClasses.head}`]: head,
-      [`& .${infoClasses.body}`]: body,
+      [`& .${infoClasses.title}`]: title,
+      [`& .${infoClasses.subtitle}`]: subtitle,
       [`& .${infoClasses.eyebrow}`]: eyebrow,
     },
   };

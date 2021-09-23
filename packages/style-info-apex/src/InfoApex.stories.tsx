@@ -4,9 +4,9 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import Box from "@mui/material/Box";
 import {
   Info,
-  InfoHead,
+  InfoTitle,
   InfoEyebrow,
-  InfoBody,
+  InfoSubtitle,
   InfoProps,
 } from "@mui-treasury/component-info";
 
@@ -33,8 +33,8 @@ export const Apex: Story<InfoProps> = (args) => {
     <Box sx={{ maxWidth: 288 }}>
       <Info variant="apex" useStyles={getInfoApexStyles}>
         {/* <InfoEyebrow>March 20, 2019</InfoEyebrow> */}
-        <InfoHead>APEX Legends: Assemble!</InfoHead>
-        <InfoBody>Created by siriwatknp</InfoBody>
+        <InfoTitle>APEX Legends: Assemble!</InfoTitle>
+        <InfoSubtitle>Created by siriwatknp</InfoSubtitle>
       </Info>
     </Box>
   );

@@ -10,13 +10,13 @@ export const getInfoChatzStyles = (arg) => {
         marginTop: "1rem",
       },
     },
-    head: {
+    title: {
       fontSize: titleFontSize,
       fontWeight: 500,
       lineHeight: 1.2,
       marginBottom: "0px",
     },
-    body: {
+    subtitle: {
       color:
         palette.mode === "dark" ? palette.grey["500"] : palette.grey["700"],
       fontSize: subtitleFontSize,

@@ -10,12 +10,12 @@ export const getInfoN02Styles = (arg) => {
       fontSize: 14,
       display: "inline-block",
     },
-    head: {
+    title: {
       fontSize: 24,
       fontWeight: 900,
       marginBottom: "0.4em",
     },
-    body: {
+    subtitle: {
       fontSize: 18,
       color: palette.text.secondary,
     },

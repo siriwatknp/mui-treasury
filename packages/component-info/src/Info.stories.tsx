@@ -4,8 +4,9 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import {
   Info,
   InfoProps,
-  InfoHead,
-  InfoBody,
+  InfoTitle,
+  InfoSubtitle,
+  InfoCaption,
   InfoEyebrow,
 } from "@mui-treasury/component-info";
 
@@ -23,8 +24,9 @@ export const Basic: Story<InfoProps> = (args) => {
   return (
     <Info>
       <InfoEyebrow>Material Blog</InfoEyebrow>
-      <InfoHead>Unveiling Material You</InfoHead>
-      <InfoBody>The next stage for Material Design</InfoBody>
+      <InfoTitle>Unveiling Material You</InfoTitle>
+      <InfoSubtitle>The next stage for Material Design</InfoSubtitle>
+      <InfoCaption>10 FEB 2021</InfoCaption>
     </Info>
   );
 };
@@ -58,7 +60,7 @@ export const ThemeOverrides: Story<InfoProps> = (args) => {
                   marginTop: "20px",
                 },
               },
-              head: { letterSpacing: "1px", color: "rgba(0,0,0,0.6)" },
+              title: { letterSpacing: "1px", color: "rgba(0,0,0,0.6)" },
             },
           },
         },
@@ -66,13 +68,13 @@ export const ThemeOverrides: Story<InfoProps> = (args) => {
     >
       <Info>
         <InfoEyebrow>Theme overrides</InfoEyebrow>
-        <InfoHead>Unveiling Material You</InfoHead>
-        <InfoBody>The next stage for Material Design</InfoBody>
+        <InfoTitle>Unveiling Material You</InfoTitle>
+        <InfoSubtitle>The next stage for Material Design</InfoSubtitle>
       </Info>
       <Info variant="awesome">
         <InfoEyebrow>Theme variants</InfoEyebrow>
-        <InfoHead>Unveiling Material You</InfoHead>
-        <InfoBody>The next stage for Material Design</InfoBody>
+        <InfoTitle>Unveiling Material You</InfoTitle>
+        <InfoSubtitle>The next stage for Material Design</InfoSubtitle>
       </Info>
     </ThemeProvider>
   );

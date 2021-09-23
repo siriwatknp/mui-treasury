@@ -10,7 +10,7 @@ export const getInfoN04Styles = (arg) => {
       fontSize: 14,
       marginTop: 12,
     },
-    head: {
+    title: {
       textAlign: "center",
       fontSize: 32,
       lineHeight: 2,
@@ -29,7 +29,7 @@ export const getInfoN04Styles = (arg) => {
         borderRadius: 2,
       },
     },
-    body: {
+    subtitle: {
       textAlign: "center",
       fontSize: 14,
       color: palette.mode === "dark" ? "#999" : "#222",

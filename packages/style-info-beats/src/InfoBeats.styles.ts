@@ -24,13 +24,13 @@ export const getInfoBeatsStyles = (
 ): CSSObject & Partial<InfoSlotStyles> => {
   const { palette } = "theme" in arg ? arg.theme : arg;
   return {
-    head: {
+    title: {
       fontSize: titleFontSize,
       fontWeight: 600,
       lineHeight: 1.4,
       marginBottom: "0px",
     },
-    body: {
+    subtitle: {
       fontSize: subtitleFontSize,
       lineHeight: 1.6,
       letterSpacing: "0.0075em",
@@ -42,7 +42,7 @@ export const getInfoBeatsStyles = (
       fontSize: captionFontSize,
       textTransform: "initial",
       lineHeight: 1.5,
-      ".JunInfo-body + &": {
+      ".JunInfo-subtitle + &": {
         marginTop: "0.5rem",
       },
     },
@@ -50,25 +50,25 @@ export const getInfoBeatsStyles = (
 };
 
 export const getInfoBeatsTheme = (theme: Theme): Output => {
-  const { eyebrow, head, body } = getInfoBeatsStyles({ theme });
+  const { eyebrow, title, subtitle } = getInfoBeatsStyles({ theme });
   return {
     JunInfo: {
       styleOverrides: {
         eyebrow: eyebrow,
-        head: head,
-        body: body,
+        title: title,
+        subtitle: subtitle,
       },
     },
   };
 };
 
 export const getInfoBeatsVariant = (theme: Theme): InfoThemeVariant => {
-  const { eyebrow, head, body } = getInfoBeatsStyles({ theme });
+  const { eyebrow, title, subtitle } = getInfoBeatsStyles({ theme });
   return {
     props: { variant: "beats" },
     style: {
-      [`& .${infoClasses.head}`]: head,
-      [`& .${infoClasses.body}`]: body,
+      [`& .${infoClasses.title}`]: title,
+      [`& .${infoClasses.subtitle}`]: subtitle,
       [`& .${infoClasses.eyebrow}`]: eyebrow,
     },
   };
