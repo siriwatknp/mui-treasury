@@ -10,6 +10,7 @@ const Pages = {
   "galaxy/CardGalaxy": React.lazy(() => import("./src/card/galaxy/CardGalaxy")),
   "tutor/CardTutor": React.lazy(() => import("./src/card/tutor/CardTutor")),
   "news3/CardNews3": React.lazy(() => import("./src/card/news3/CardNews3")),
+  "offer/CardOffer": React.lazy(() => import("./src/card/offer/CardOffer")),
   // hygen-inject-page
 };
 
@@ -131,6 +132,13 @@ export const Tutor = createStory("tutor/CardTutor", {
 });
 export const News3 = createStory("news3/CardNews3", {
   googleFont: "Sen",
+  dependencies: [
+    "@mui-treasury/component-flex",
+    "@mui-treasury/component-info",
+  ],
+});
+export const Offer = createStory("offer/CardOffer", {
+  googleFont: "Rubik",
   dependencies: [
     "@mui-treasury/component-flex",
     "@mui-treasury/component-info",
