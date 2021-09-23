@@ -20,9 +20,9 @@ export type InfoTitleProps = {
    * The system prop that allows defining system overrides as well as additional CSS styles.
    */
   sx?: SxProps<Theme>;
-} & Omit<JSX.IntrinsicElements["h4"], "ref">;
+} & Omit<JSX.IntrinsicElements["div"], "ref">;
 
-const InfoTitleRoot = styled("h4", {
+const InfoTitleRoot = styled("div", {
   name: "JunInfo",
   slot: "Head",
   overridesResolver: (props, styles) => styles.title,

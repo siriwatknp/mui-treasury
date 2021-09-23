@@ -11,7 +11,7 @@ describe("style-info-apex", () => {
     getTheme: getInfoApexTheme,
     getVariant: getInfoApexVariant,
     componentName: "JunInfo",
-    slots: ["eyebrow", "head", "body"],
+    slots: ["eyebrow", "title", "subtitle"],
     variantProps: { variant: "apex" },
   });
 });

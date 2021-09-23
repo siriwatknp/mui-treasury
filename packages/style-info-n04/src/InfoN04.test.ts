@@ -11,7 +11,7 @@ describe("style-info-n04", () => {
     getTheme: getInfoN04Theme,
     getVariant: getInfoN04Variant,
     componentName: "JunInfo",
-    slots: ["eyebrow", "head", "body"],
+    slots: ["eyebrow", "title", "subtitle"],
     variantProps: { variant: "n04" },
   });
 });

@@ -1,14 +1,23 @@
-export interface OverridableComponent<Props> {
+export interface OverridableComponent<
+  Props,
+  PropsWithoutAs = {},
+  BaseRef = any
+> {
   <P extends { component?: React.ElementType }>(
     props: P extends { component: infer As }
       ? As extends keyof JSX.IntrinsicElements
-        ? P & Props & JSX.IntrinsicElements[As]
+        ? { component: As } & Props & JSX.IntrinsicElements[As]
         : As extends React.ComponentType<infer AsProps>
-        ? P & Props & AsProps
-        : P & Props
-      : P & Props
+        ? { component: As } & Props & AsProps
+        : never
+      : P & Props & { ref?: React.Ref<BaseRef> } & PropsWithoutAs
   ): JSX.Element | null;
 }
+
+export type CompositeWithRef<T, P, C = {}> = React.ForwardRefExoticComponent<
+  React.PropsWithoutRef<P> & React.RefAttributes<T>
+> &
+  C;
 
 // from @mui/styles
 export type GenerateStringUnion<T> = Extract<

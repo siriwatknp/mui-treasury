@@ -25,14 +25,14 @@ export type InfoCaptionProps = {
 const InfoCaptionRoot = styled("div", {
   name: "JunInfo",
   slot: "Caption",
-  overridesResolver: (props, styles) => styles.eyebrow,
+  overridesResolver: (props, styles) => styles.caption,
 })<{ ownerState: AppendUseStyles<InfoCaptionProps> }>(
   ({ theme, ownerState }) => ({
     color: theme.palette.text.secondary,
     fontSize: "0.75rem",
     marginBlockStart: "0.5em",
     marginBlockEnd: "0.75em",
-    ...ownerState.useStyles(theme).eyebrow,
+    ...ownerState.useStyles(theme).caption,
   })
 );
 
@@ -48,7 +48,7 @@ export const InfoCaption: OverridableComponent<InfoCaptionProps> =
         ref={ref}
         {...other}
         as={component}
-        className={cx(infoClasses.eyebrow, className)}
+        className={cx(infoClasses.caption, className)}
         ownerState={{ ...props, useStyles }}
       >
         {children}

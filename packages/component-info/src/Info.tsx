@@ -2,8 +2,16 @@ import React from "react";
 import cx from "clsx";
 import { styled, Theme, useThemeProps } from "@mui/material/styles";
 import { SxProps, CSSObject } from "@mui/system";
-import { OverridableComponent, GenerateStringUnion } from "@mui-treasury/types";
+import {
+  OverridableComponent,
+  GenerateStringUnion,
+  CompositeWithRef,
+} from "@mui-treasury/types";
 import { infoClasses } from "./infoClasses";
+import { InfoTitle } from "./InfoTitle";
+import { InfoSubtitle } from "./InfoSubtitle";
+import { InfoEyebrow } from "./InfoEyebrow";
+import { InfoCaption } from "./InfoCaption";
 
 const defaultUseStyles = () => ({});
 
@@ -64,10 +72,14 @@ const InfoRoot = styled("div", {
   ...(ownerState.useStyles && ownerState.useStyles(theme).root),
 }));
 
-export const Info: OverridableComponent<InfoProps> = React.forwardRef<
-  HTMLDivElement,
-  InfoProps
->(function Info(inProps, ref) {
+interface Compound {
+  Title: typeof InfoTitle;
+  Subtitle: typeof InfoSubtitle;
+  Eyebrow: typeof InfoEyebrow;
+  Caption: typeof InfoCaption;
+}
+
+export const Info = React.forwardRef(function Info(inProps, ref) {
   const props = useThemeProps<Theme, InfoProps, "JunInfo">({
     props: inProps,
     name: "JunInfo",
@@ -93,4 +105,13 @@ export const Info: OverridableComponent<InfoProps> = React.forwardRef<
       </StylesContext.Provider>
     </InfoRoot>
   );
-});
+}) as CompositeWithRef<
+  HTMLDivElement,
+  InfoProps,
+  Compound
+> as OverridableComponent<InfoProps, {}, HTMLDivElement> & Compound;
+
+Info.Title = InfoTitle;
+Info.Subtitle = InfoSubtitle;
+Info.Eyebrow = InfoEyebrow;
+Info.Caption = InfoCaption;

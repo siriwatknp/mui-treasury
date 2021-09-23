@@ -11,7 +11,7 @@ describe("style-info-beats", () => {
     getTheme: getInfoBeatsTheme,
     getVariant: getInfoBeatsVariant,
     componentName: "JunInfo",
-    slots: ["eyebrow", "head", "body"],
+    slots: ["eyebrow", "title", "subtitle"],
     variantProps: { variant: "beats" },
   });
 });

@@ -11,7 +11,7 @@ describe("style-info-chatz", () => {
     getTheme: getInfoChatzTheme,
     getVariant: getInfoChatzVariant,
     componentName: "JunInfo",
-    slots: ["eyebrow", "head", "body"],
+    slots: ["eyebrow", "title", "subtitle"],
     variantProps: { variant: "chatz" },
   });
 });

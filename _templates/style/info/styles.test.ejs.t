@@ -15,7 +15,7 @@ describe("style-info-<%=h.extractStyleName(name)%>", () => {
     getTheme: get<%= h.toName(name) %>Theme,
     getVariant: get<%= h.toName(name) %>Variant,
     componentName: "JunInfo",
-    slots: ["eyebrow", "head", "body"],
+    slots: ["eyebrow", "title", "subtitle"],
     variantProps: { variant: "<%=h.extractStyleName(name)%>" },
   });
 });
