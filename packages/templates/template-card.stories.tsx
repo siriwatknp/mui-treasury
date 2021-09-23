@@ -12,6 +12,7 @@ const Pages = {
   "news3/CardNews3": React.lazy(() => import("./src/card/news3/CardNews3")),
   "offer/CardOffer": React.lazy(() => import("./src/card/offer/CardOffer")),
   "reward/CardReward": React.lazy(() => import("./src/card/reward/CardReward")),
+  "tag/CardTag": React.lazy(() => import("./src/card/tag/CardTag")),
   // hygen-inject-page
 };
 
@@ -146,3 +147,4 @@ export const Offer = createStory("offer/CardOffer", {
   ],
 });
 export const Reward = createStory("reward/CardReward");
+export const Tag = createStory("tag/CardTag");
