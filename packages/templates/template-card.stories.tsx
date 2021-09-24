@@ -13,6 +13,9 @@ const Pages = {
   "offer/CardOffer": React.lazy(() => import("./src/card/offer/CardOffer")),
   "reward/CardReward": React.lazy(() => import("./src/card/reward/CardReward")),
   "tag/CardTag": React.lazy(() => import("./src/card/tag/CardTag")),
+  "highlight/CardHighlight": React.lazy(
+    () => import("./src/card/highlight/CardHighlight")
+  ),
   // hygen-inject-page
 };
 
@@ -148,3 +151,8 @@ export const Offer = createStory("offer/CardOffer", {
 });
 export const Reward = createStory("reward/CardReward");
 export const Tag = createStory("tag/CardTag");
+export const Highlight = createStory("highlight/CardHighlight", {
+  googleFont: "Fjalla One",
+  googleFontSecondary: "Sen",
+  dependencies: ["@mui-treasury/component-flex"],
+});
