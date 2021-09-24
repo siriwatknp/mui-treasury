@@ -74,6 +74,9 @@ export const FlexRow = ({
   );
 };
 
+/** @deprecated use FlexRow instead */
+export const Row = FlexRow;
+
 export const FlexCol = ({ className, gap, ...props }: ItemProps) => (
   <Item
     className={cx(flexClasses.col, className)}
@@ -86,6 +89,9 @@ export const FlexCol = ({ className, gap, ...props }: ItemProps) => (
     }}
   />
 );
+
+/** @deprecated use FlexCol instead */
+export const Column = FlexCol;
 
 export const Flex = {
   Row: FlexRow,
