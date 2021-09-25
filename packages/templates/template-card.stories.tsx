@@ -19,6 +19,7 @@ const Pages = {
   "engagement/CardEngagement": React.lazy(
     () => import("./src/card/engagement/CardEngagement")
   ),
+  "team/CardTeam": React.lazy(() => import("./src/card/team/CardTeam")),
   // hygen-inject-page
 };
 
@@ -162,4 +163,12 @@ export const Highlight = createStory("highlight/CardHighlight", {
 export const Engagement = createStory("engagement/CardEngagement", {
   googleFont: "Nunito",
   dependencies: ["@mui-treasury/component-info"],
+});
+export const Team = createStory("team/CardTeam", {
+  googleFont: "Ubuntu",
+  dependencies: [
+    "@mui-treasury/component-flex",
+    "@mui-treasury/component-info",
+    "@mui-treasury/style-info-apex",
+  ],
 });
