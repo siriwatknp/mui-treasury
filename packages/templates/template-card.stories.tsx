@@ -23,6 +23,7 @@ const Pages = {
   "solidGame/CardSolidGame": React.lazy(
     () => import("./src/card/solidGame/CardSolidGame")
   ),
+  "music/CardMusic": React.lazy(() => import("./src/card/music/CardMusic")),
   // hygen-inject-page
 };
 
@@ -178,4 +179,11 @@ export const Team = createStory("team/CardTeam", {
 export const SolidGame = createStory("solidGame/CardSolidGame", {
   googleFont: "Montserrat",
   googleFontSecondary: "Keania One",
+});
+export const Music = createStory("music/CardMusic", {
+  googleFont: "Mulish",
+  dependencies: [
+    "@mui-treasury/component-info",
+    "@mui-treasury/style-info-n04",
+  ],
 });
