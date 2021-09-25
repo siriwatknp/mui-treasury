@@ -27,10 +27,10 @@ export const getInfoApexStyles = (
     title: {
       color: palette.mode === "dark" ? "#b5b1d8" : "#4d4b5f",
       fontSize: titleFontSize,
-      lineHeight: 1.66,
+      lineHeight: 1.43,
       fontWeight: 700,
       letterSpacing: "0.5px",
-      marginBottom: "0px",
+      marginBottom: "2px",
     },
     subtitle: {
       color: palette.mode === "dark" ? palette.grey[500] : palette.grey[600],
