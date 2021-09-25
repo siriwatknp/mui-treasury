@@ -20,6 +20,9 @@ const Pages = {
     () => import("./src/card/engagement/CardEngagement")
   ),
   "team/CardTeam": React.lazy(() => import("./src/card/team/CardTeam")),
+  "solidGame/CardSolidGame": React.lazy(
+    () => import("./src/card/solidGame/CardSolidGame")
+  ),
   // hygen-inject-page
 };
 
@@ -171,4 +174,8 @@ export const Team = createStory("team/CardTeam", {
     "@mui-treasury/component-info",
     "@mui-treasury/style-info-apex",
   ],
+});
+export const SolidGame = createStory("solidGame/CardSolidGame", {
+  googleFont: "Montserrat",
+  googleFontSecondary: "Keania One",
 });
