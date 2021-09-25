@@ -16,6 +16,9 @@ const Pages = {
   "highlight/CardHighlight": React.lazy(
     () => import("./src/card/highlight/CardHighlight")
   ),
+  "engagement/CardEngagement": React.lazy(
+    () => import("./src/card/engagement/CardEngagement")
+  ),
   // hygen-inject-page
 };
 
@@ -155,4 +158,8 @@ export const Highlight = createStory("highlight/CardHighlight", {
   googleFont: "Fjalla One",
   googleFontSecondary: "Sen",
   dependencies: ["@mui-treasury/component-flex"],
+});
+export const Engagement = createStory("engagement/CardEngagement", {
+  googleFont: "Nunito",
+  dependencies: ["@mui-treasury/component-info"],
 });
