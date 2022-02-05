@@ -30,7 +30,7 @@ export const Bulb: Story<NavigationProps> = (args) => {
   const theme = useTheme();
   const styles = getNavigationBulbStyles(theme);
   const [activeIndex, setActiveIndex] = React.useState(0);
-  const items = [...Array(5)].map((_, index) => (
+  const items = [...Array(5).fill(undefined)].map((_, index) => (
     <NavItem
       key={index}
       // href="#"

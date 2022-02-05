@@ -9,7 +9,7 @@ import { randomBetween } from "../utils";
 
 export const IconList = ({ count = 4 }: { count?: number }) => (
   <>
-    {[...Array(count)].map((_, index) => (
+    {[...Array(count).fill(undefined)].map((_, index) => (
       <ListItem key={index}>
         <ListItemIcon>
           <Circle sx={{ fontSize: 24 }} />
@@ -32,7 +32,7 @@ export const IconList = ({ count = 4 }: { count?: number }) => (
 
 export const InsetList = ({ count = 4 }: { count?: number }) => (
   <>
-    {[...Array(count)].map((_, index) => (
+    {[...Array(count).fill(undefined)].map((_, index) => (
       <ListItem key={index}>
         <ListItemText
           inset

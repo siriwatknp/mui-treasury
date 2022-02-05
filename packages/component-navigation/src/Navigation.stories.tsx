@@ -20,7 +20,7 @@ export const Demo: Story<NavigationProps> = (args) => {
   const [activeIndex, setActiveIndex] = React.useState(0);
   return (
     <Navigation {...args}>
-      {[...Array(5)].map((_, index) => (
+      {[...Array(5).fill(undefined)].map((_, index) => (
         <NavItem
           key={index}
           // href="#"

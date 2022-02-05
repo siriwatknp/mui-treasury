@@ -257,7 +257,7 @@ const GlobalTheme = () => {
                 mt: 3,
               }}
             >
-              {[...Array(6)].map((_, index) => (
+              {[...Array(6).fill(undefined)].map((_, index) => (
                 <IconButton key={index}>
                   <Avatar />
                 </IconButton>
@@ -291,7 +291,7 @@ const GlobalTheme = () => {
             >
               <Box p={2}>
                 <Grid container spacing={2}>
-                  {[...Array(9)].map((_, index) => (
+                  {[...Array(9).fill(undefined)].map((_, index) => (
                     <Grid item xs={12} sm={6} md={4} key={index}>
                       <Card variant="outlined">
                         <CardHeader

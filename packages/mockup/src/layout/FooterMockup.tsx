@@ -18,7 +18,7 @@ export const LinkGroup = ({
       <Pill sx={{ height: 12, width: 40 }} />
       <br />
       <Stack spacing={2}>
-        {[...Array(lineCount)].map((_, index) => (
+        {[...Array(lineCount).fill(undefined)].map((_, index) => (
           <Square
             key={index}
             sx={{ width: randomBetween(56, 120), height: 16 }}

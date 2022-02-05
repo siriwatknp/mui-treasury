@@ -59,7 +59,7 @@ export const usePinInput = (options: UsePinInputOptions = {}) => {
   } = options;
   const validator = type === "number" ? numberValidator : alphanumericValidator;
   const splittedValue = (value || defaultValue || "").split("");
-  const siblings = [...Array(pinLength)].map((_, index) =>
+  const siblings = [...Array(pinLength).fill(undefined)].map((_, index) =>
     useInput({
       autoFocus: options.autoFocus && index === 0,
       maxLength: 1,

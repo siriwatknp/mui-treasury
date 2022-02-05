@@ -26,7 +26,7 @@ export const LinkNavMockup = ({
         ...props.sx,
       }}
     >
-      {[...Array(lineCount)].map((_, index) => (
+      {[...Array(lineCount).fill(undefined)].map((_, index) => (
         <ListItem key={index} button>
           <Word sx={{ my: 1 }} />
         </ListItem>

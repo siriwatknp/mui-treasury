@@ -43,7 +43,7 @@ export const TopUsersCardMockup = ({
       </Box>
       <Divider />
       <List>
-        {[...Array(userCount)].map((_, index) => (
+        {[...Array(userCount).fill(undefined)].map((_, index) => (
           <ListItem key={index}>
             <ListItemAvatar>
               <Avatar />

@@ -15,7 +15,7 @@ export const Paragraph = ({
 }) => {
   return (
     <>
-      {[...Array(lineCount)].map((_, index) => (
+      {[...Array(lineCount).fill(undefined)].map((_, index) => (
         <Square
           key={index}
           sx={{
