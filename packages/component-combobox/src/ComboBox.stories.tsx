@@ -1,11 +1,10 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import { ComboBox, ComboBoxProps } from "./ComboBox";
-import { useComboBoxInputStyles } from "./ComboBox.styles";
+// import { ComboBox, ComboBoxProps } from "./ComboBox";
+// import { useComboBoxInputStyles } from "./ComboBox.styles";
 
 export default {
   title: "Component/ComboBox",
-  component: ComboBox,
   argTypes: {},
   args: {},
   parameters: {
@@ -13,95 +12,95 @@ export default {
   },
 } as Meta;
 
-export const Single: Story<ComboBoxProps> = (args) => {
-  return (
-    <ComboBox
-      id={"film-autocomplete"}
-      options={top100Films}
-      getOptionLabel={(option) => option.label}
-      renderOptions={(options) => (
-        <ComboBox.List>
-          {options.map((option, index) => (
-            <ComboBox.Option key={option.label} option={option} index={index}>
-              {option.label}
-            </ComboBox.Option>
-          ))}
-        </ComboBox.List>
-      )}
-    >
-      <ComboBox.FormControl>
-        <ComboBox.Input placeholder={"Type film information"} />
-      </ComboBox.FormControl>
-    </ComboBox>
-  );
-};
+// export const Single: Story<ComboBoxProps> = (args) => {
+//   return (
+//     <ComboBox
+//       id={"film-autocomplete"}
+//       options={top100Films}
+//       getOptionLabel={(option) => option.label}
+//       renderOptions={(options) => (
+//         <ComboBox.List>
+//           {options.map((option, index) => (
+//             <ComboBox.Option key={option.label} option={option} index={index}>
+//               {option.label}
+//             </ComboBox.Option>
+//           ))}
+//         </ComboBox.List>
+//       )}
+//     >
+//       <ComboBox.FormControl>
+//         <ComboBox.Input placeholder={"Type film information"} />
+//       </ComboBox.FormControl>
+//     </ComboBox>
+//   );
+// };
 
-export const Multiple = () => {
-  return (
-    <>
-      <ComboBox
-        id={"film-autocomplete1"}
-        options={top100Films}
-        getOptionLabel={(option) => option.label}
-        renderOptions={(options) => (
-          <ComboBox.List>
-            {options.map((option, index) => (
-              <ComboBox.Option key={option.label} option={option} index={index}>
-                {option.label}
-              </ComboBox.Option>
-            ))}
-          </ComboBox.List>
-        )}
-      >
-        <ComboBox.FormControl margin={"normal"}>
-          <ComboBox.Input placeholder={"Type film information"} />
-        </ComboBox.FormControl>
-      </ComboBox>
-      <ComboBox
-        id={"film-autocomplete2"}
-        options={top100Films}
-        getOptionLabel={(option) => option.label}
-        renderOptions={(options) => (
-          <ComboBox.List>
-            {options.map((option, index) => (
-              <ComboBox.Option key={option.label} option={option} index={index}>
-                {option.label}
-              </ComboBox.Option>
-            ))}
-          </ComboBox.List>
-        )}
-      >
-        <ComboBox.FormControl required color="secondary" margin={"normal"}>
-          <ComboBox.Input placeholder={"Type film information"} />
-        </ComboBox.FormControl>
-      </ComboBox>
-      <ComboBox
-        id={"film-autocomplete3"}
-        options={top100Films}
-        getOptionLabel={(option) => option.label}
-        renderOptions={(options) => (
-          <ComboBox.List>
-            {options.map((option, index) => (
-              <ComboBox.Option key={option.label} option={option} index={index}>
-                {option.label}
-              </ComboBox.Option>
-            ))}
-          </ComboBox.List>
-        )}
-      >
-        <ComboBox.FormControl required error margin={"normal"}>
-          <ComboBox.Input placeholder={"Type film information"} />
-        </ComboBox.FormControl>
-      </ComboBox>
-    </>
-  );
-};
+// export const Multiple = () => {
+//   return (
+//     <>
+//       <ComboBox
+//         id={"film-autocomplete1"}
+//         options={top100Films}
+//         getOptionLabel={(option) => option.label}
+//         renderOptions={(options) => (
+//           <ComboBox.List>
+//             {options.map((option, index) => (
+//               <ComboBox.Option key={option.label} option={option} index={index}>
+//                 {option.label}
+//               </ComboBox.Option>
+//             ))}
+//           </ComboBox.List>
+//         )}
+//       >
+//         <ComboBox.FormControl margin={"normal"}>
+//           <ComboBox.Input placeholder={"Type film information"} />
+//         </ComboBox.FormControl>
+//       </ComboBox>
+//       <ComboBox
+//         id={"film-autocomplete2"}
+//         options={top100Films}
+//         getOptionLabel={(option) => option.label}
+//         renderOptions={(options) => (
+//           <ComboBox.List>
+//             {options.map((option, index) => (
+//               <ComboBox.Option key={option.label} option={option} index={index}>
+//                 {option.label}
+//               </ComboBox.Option>
+//             ))}
+//           </ComboBox.List>
+//         )}
+//       >
+//         <ComboBox.FormControl required color="secondary" margin={"normal"}>
+//           <ComboBox.Input placeholder={"Type film information"} />
+//         </ComboBox.FormControl>
+//       </ComboBox>
+//       <ComboBox
+//         id={"film-autocomplete3"}
+//         options={top100Films}
+//         getOptionLabel={(option) => option.label}
+//         renderOptions={(options) => (
+//           <ComboBox.List>
+//             {options.map((option, index) => (
+//               <ComboBox.Option key={option.label} option={option} index={index}>
+//                 {option.label}
+//               </ComboBox.Option>
+//             ))}
+//           </ComboBox.List>
+//         )}
+//       >
+//         <ComboBox.FormControl required error margin={"normal"}>
+//           <ComboBox.Input placeholder={"Type film information"} />
+//         </ComboBox.FormControl>
+//       </ComboBox>
+//     </>
+//   );
+// };
 
-export const Group = () => (
-  <ComboBox.Anchor>
-    <Multiple />
-  </ComboBox.Anchor>
-);
+// export const Group = () => (
+//   <ComboBox.Anchor>
+//     <Multiple />
+//   </ComboBox.Anchor>
+// );
 
 const top100Films = [
   { label: "The Shawshank Redemption", year: 1994 },
