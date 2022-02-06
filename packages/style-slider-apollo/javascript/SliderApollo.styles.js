@@ -17,8 +17,6 @@ export const getSliderApolloStyles = (arg) => {
       height: 24,
       border: "3px solid",
       backgroundColor: theme.palette.common.white,
-      marginLeft: -12,
-      marginTop: -8,
     },
     "& .MuiSlider-thumbColorPrimary": {
       borderColor: theme.palette.primary.main,
