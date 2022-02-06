@@ -9,7 +9,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import MailOutlined from "@mui/icons-material/MailOutlined";
 
 export default {
-  title: "Material-UI/TextField",
+  title: "Material UI/TextField",
 } as Meta;
 
 export const AllVariants: Story = () => {

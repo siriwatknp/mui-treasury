@@ -53,7 +53,7 @@ export interface CollapsibleSidebarConfig {
 
 export interface PermanentSidebarConfig extends CollapsibleSidebarConfig {
   /**
-   * Material-UI Drawer : permanent
+   * Material UI Drawer : permanent
    * https://material-ui.com/components/drawers/#permanent-drawer
    */
   variant: "permanent";
@@ -67,7 +67,7 @@ export interface PersistentSidebarConfig extends CollapsibleSidebarConfig {
     | PersistentBehavior
     | Partial<Record<HEADER_ID | CONTENT_ID | FOOTER_ID, PersistentBehavior>>;
   /**
-   * Material-UI Drawer : persistent
+   * Material UI Drawer : persistent
    * https://material-ui.com/components/drawers/#persistent-drawer
    */
   variant: "persistent";
@@ -79,7 +79,7 @@ export interface TemporarySidebarConfig {
    */
   width: number | string;
   /**
-   * Material-UI Drawer : persistent
+   * Material UI Drawer : persistent
    * https://material-ui.com/components/drawers/#temporary-drawer
    */
   variant: "temporary";

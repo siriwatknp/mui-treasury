@@ -94,12 +94,6 @@ const GlobalTheme = () => {
                 padding: 16,
                 paddingLeft: 0,
               },
-              subtitle: {
-                backgroundColor: coolGray[200],
-                borderRadius: 16,
-                border: "none",
-                height: "100%",
-              },
             },
           },
           AppFooter: {

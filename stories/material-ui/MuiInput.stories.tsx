@@ -23,7 +23,7 @@ function withContainer(Story: any, context: StoryContext) {
 }
 
 export default {
-  title: "Material-UI/Input",
+  title: "Material UI/Input",
 } as Meta;
 
 export const AllVariants: Story<unknown> = () => {
