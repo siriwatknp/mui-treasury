@@ -1,23 +1,11 @@
 import React from "react";
-import makeStyles from "@mui/styles/makeStyles";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import ChatMsg from "./ChatMsg";
 
 const AVATAR = "https://i.pravatar.cc/300?img=13";
 
-const useStyles = makeStyles(() => ({
-  date: {
-    fontWeight: 500,
-    color: "rgba(0,0,0,0.4)",
-    margin: "12px 0",
-    fontSize: 12,
-    textAlign: "center",
-  },
-}));
-
 const ChatDialog = () => {
-  const styles = useStyles();
   return (
     <Box p={"16px 30px 12px 10px"}>
       <ChatMsg
@@ -28,7 +16,17 @@ const ChatDialog = () => {
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Volutpat lacus laoreet non curabitur gravida.",
         ]}
       />
-      <Typography className={styles.date}>FRI 1:46 PM</Typography>
+      <Typography
+        sx={{
+          fontWeight: 500,
+          color: "rgba(0,0,0,0.4)",
+          margin: "12px 0",
+          fontSize: 12,
+          textAlign: "center",
+        }}
+      >
+        FRI 1:46 PM
+      </Typography>
       <ChatMsg
         side={"right"}
         messages={[
@@ -42,7 +40,17 @@ const ChatDialog = () => {
           "Commodo ullamcorper a lacus vestibulum sed arcu. Sed faucibus turpis in eu mi bibendum neque egestas. Maecenas volutpat blandit aliquam etiam erat velit. Massa placerat duis ultricies lacus sed turpis tincidunt id aliquet. Suspendisse sed nisi lacus sed viverra.",
         ]}
       />
-      <Typography className={styles.date}>FRI 4:18 PM</Typography>
+      <Typography
+        sx={{
+          fontWeight: 500,
+          color: "rgba(0,0,0,0.4)",
+          margin: "12px 0",
+          fontSize: 12,
+          textAlign: "center",
+        }}
+      >
+        FRI 4:18 PM
+      </Typography>
       <ChatMsg
         avatar={AVATAR}
         messages={[

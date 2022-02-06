@@ -1,41 +1,45 @@
 import React from "react";
-import makeStyles from "@mui/styles/makeStyles";
+import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Add from "@mui/icons-material/Add";
 import Remove from "@mui/icons-material/Remove";
 
-const useStyles = makeStyles(({ palette }) => ({
-  root: {
-    display: "inline-flex",
-    alignItems: "center",
-    padding: 4,
-    borderRadius: 40,
-    border: "1px solid",
-    borderColor: palette.grey[300],
-  },
-  iconBtn: {
-    padding: 8,
-    "& svg": {
-      fontSize: 16,
-    },
-  },
-  value: {
-    padding: "0px 8px",
-  },
-}));
-
 const DailyInteger = ({ children }) => {
-  const styles = useStyles();
   return (
-    <div className={styles.root}>
-      <IconButton className={styles.iconBtn}>
+    <Box
+      sx={{
+        display: "inline-flex",
+        alignItems: "center",
+        padding: "4px",
+        borderRadius: "40px",
+        border: "1px solid",
+        borderColor: "grey.300",
+      }}
+    >
+      <IconButton
+        sx={{
+          padding: "8px",
+          "& svg": {
+            fontSize: 16,
+          },
+        }}
+      >
         <Remove />
       </IconButton>
-      <span className={styles.value}>{children}</span>
-      <IconButton className={styles.iconBtn}>
+      <Box component="span" sx={{ padding: "0px 8px" }}>
+        {children}
+      </Box>
+      <IconButton
+        sx={{
+          padding: "8px",
+          "& svg": {
+            fontSize: 16,
+          },
+        }}
+      >
         <Add />
       </IconButton>
-    </div>
+    </Box>
   );
 };
 

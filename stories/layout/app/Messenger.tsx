@@ -1,10 +1,10 @@
 import React from "react";
 import {
+  ThemeProvider,
   createTheme,
   responsiveFontSizes,
-  ThemeProvider,
+  styled,
 } from "@mui/material/styles";
-import makeStyles from "@mui/styles/makeStyles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -34,19 +34,13 @@ import {
   Footer,
 } from "@mui-treasury/layout";
 
-const useStyles = makeStyles(() => ({
-  header: {
-    boxShadow: "0 1px 2px 0 rgba(0, 0, 0, .10)",
-    backgroundColor: "#ffffff",
-  },
-  insetsubtitle: {
-    borderLeft: "1px solid rgba(0, 0, 0, 0.08)",
-    overflowY: "auto",
-    backgroundColor: "#fff",
-  },
-  edit: {
-    backgroundColor: "rgba(0,0,0,0.04)",
-  },
+const StyledHeader = styled(Header)(() => ({
+  boxShadow: "0 1px 2px 0 rgba(0, 0, 0, .10)",
+  backgroundColor: "#ffffff",
+}));
+
+const IconButtonEdit = styled(IconButton)(() => ({
+  backgroundColor: "rgba(0,0,0,0.04)",
 }));
 
 const theme = responsiveFontSizes(
@@ -79,7 +73,6 @@ const theme = responsiveFontSizes(
 );
 
 const Messenger = () => {
-  const styles = useStyles();
   return (
     <ThemeProvider theme={theme}>
       <Fullscreen>
@@ -117,17 +110,17 @@ const Messenger = () => {
           {({ state: { leftEdgeSidebar } }) => (
             <>
               <CssBaseline />
-              <Header className={styles.header}>
+              <StyledHeader>
                 <Toolbar disableGutters>
                   <ConversationHead />
                 </Toolbar>
-              </Header>
+              </StyledHeader>
               <EdgeSidebar anchor="left">
                 {leftEdgeSidebar?.collapsed ? (
                   <Box textAlign={"center"} my={1}>
-                    <IconButton className={styles.edit}>
+                    <IconButtonEdit>
                       <Edit />
-                    </IconButton>
+                    </IconButtonEdit>
                   </Box>
                 ) : (
                   <>
@@ -143,7 +136,7 @@ const Messenger = () => {
                 <InsetContainer
                   disableGutters
                   rightSidebar={
-                    <InsetSidebar classes={{ paper: styles.insetBody }}>
+                    <InsetSidebar>
                       <ChatSettings />
                     </InsetSidebar>
                   }

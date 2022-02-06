@@ -19,7 +19,6 @@ export type CompositeWithRef<T, P, C = {}> = React.ForwardRefExoticComponent<
 > &
   C;
 
-// from @mui/styles
 export type GenerateStringUnion<T> = Extract<
   {
     [Key in keyof T]: true extends T[Key] ? Key : never;

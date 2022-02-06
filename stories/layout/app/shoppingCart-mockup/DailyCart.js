@@ -1,5 +1,5 @@
 import React from "react";
-import makeStyles from "@mui/styles/makeStyles";
+import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Table from "@mui/material/Table";
@@ -13,37 +13,44 @@ import Close from "@mui/icons-material/Close";
 import DailySizeSelector from "./DailySizeSelector";
 import DailyInteger from "./DailyInteger";
 
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
-  heading: {
+const TypographyHeading = styled(Typography)(
+  ({ theme: { palette, breakpoints } }) => ({
     fontWeight: 900,
     fontSize: "1.75rem",
     textAlign: "center",
+
     [breakpoints.up("sm")]: {
       textAlign: "left",
     },
+
     [breakpoints.up("md")]: {
       fontSize: "2.25rem",
     },
-  },
-  table: {
-    minWidth: 650,
-  },
-  image: {
-    width: "100%",
-    height: "100%",
-    objectFit: "contain",
-  },
-  name: {
-    fontFamily:
-      "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif",
-    fontWeight: "bold",
-    fontSize: 16,
-    margin: "0 0 8px 0",
-  },
-  descr: {
-    fontSize: 14,
-    color: palette.text.secondary,
-  },
+  })
+);
+
+const StyledTable = styled(Table)(({ theme: { palette, breakpoints } }) => ({
+  minWidth: 650,
+}));
+
+const ImgImage = styled("img")(({ theme: { palette, breakpoints } }) => ({
+  width: "100%",
+  height: "100%",
+  objectFit: "contain",
+}));
+
+const PName = styled("p")(({ theme: { palette, breakpoints } }) => ({
+  fontFamily:
+    "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif",
+
+  fontWeight: "bold",
+  fontSize: 16,
+  margin: "0 0 8px 0",
+}));
+
+const SpanDescr = styled("span")(({ theme: { palette, breakpoints } }) => ({
+  fontSize: 14,
+  color: palette.text.secondary,
 }));
 
 function createData(image, name, descr, size, quantity, totalPrice) {
@@ -86,14 +93,13 @@ const rows = [
 ];
 
 const DailyCart = () => {
-  const styles = useStyles();
   return (
     <Box pt={{ xs: 2, sm: 4, md: 6 }}>
-      <Typography className={styles.heading} variant={"h1"} gutterBottom>
+      <TypographyHeading variant={"h1"} gutterBottom>
         Shopping Cart.
-      </Typography>
+      </TypographyHeading>
       <TableContainer>
-        <Table className={styles.table} aria-label="simple table">
+        <StyledTable aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>Product</TableCell>
@@ -109,15 +115,11 @@ const DailyCart = () => {
                 <TableCell component="th" scope="row">
                   <Box display={"flex"} alignItems={"center"}>
                     <Box width={80} height={80}>
-                      <img
-                        className={styles.image}
-                        alt={row.name}
-                        src={row.image}
-                      />
+                      <ImgImage alt={row.name} src={row.image} />
                     </Box>
                     <Box ml={2}>
-                      <p className={styles.name}>{row.name}</p>
-                      <span className={styles.descr}>{row.descr}</span>
+                      <PName>{row.name}</PName>
+                      <SpanDescr>{row.descr}</SpanDescr>
                     </Box>
                   </Box>
                 </TableCell>
@@ -136,7 +138,7 @@ const DailyCart = () => {
               </TableRow>
             ))}
           </TableBody>
-        </Table>
+        </StyledTable>
       </TableContainer>
     </Box>
   );

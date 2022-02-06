@@ -1,71 +1,73 @@
 import React from "react";
-import makeStyles from "@mui/styles/makeStyles";
+import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
-  btn: {
-    width: "100%",
-    paddingTop: 16,
-    paddingBottom: 16,
-    borderRadius: 40,
-    border: "1px solid",
-    borderColor: palette.grey[400],
-    "& > *": {
-      fontWeight: "bold",
-      textTransform: "none",
-    },
-    marginRight: 72,
-    [breakpoints.up("sm")]: {
-      marginRight: "unset",
-    },
+const ButtonBtn = styled(Button)(({ theme: { palette, breakpoints } }) => ({
+  width: "100%",
+  paddingTop: 16,
+  paddingBottom: 16,
+  borderRadius: 40,
+  border: "1px solid",
+  borderColor: palette.grey[400],
+
+  "& > *": {
+    fontWeight: "bold",
+    textTransform: "none",
   },
-  big: {
-    fontSize: 16,
+
+  marginRight: 72,
+
+  [breakpoints.up("sm")]: {
+    marginRight: "unset",
   },
-  large: {
-    fontSize: 24,
-  },
-  mainGrid: {
-    [breakpoints.up("sm")]: {
-      flexDirection: "row-reverse",
-    },
+}));
+
+const BBig = styled("b")(() => ({
+  fontSize: 16,
+}));
+
+const BoxBig = styled(Box)(() => ({
+  fontSize: 16,
+}));
+
+const BoxLarge = styled(Box)(() => ({
+  fontSize: 24,
+}));
+
+const GridMainGrid = styled(Grid)(({ theme: { breakpoints } }) => ({
+  [breakpoints.up("sm")]: {
+    flexDirection: "row-reverse",
   },
 }));
 
 const DailySummary = () => {
-  const styles = useStyles();
   return (
-    <Grid
-      container
-      justify={"space-between"}
-      className={styles.mainGrid}
-      spacing={2}
-    >
+    <GridMainGrid container justify={"space-between"} spacing={2}>
       <Grid item xs={12} sm={5} md={4}>
         <Grid container spacing={1}>
           <Grid item xs={5}>
             <Box align={"right"}>
-              <b className={styles.big}>Subtotal:</b>
+              <BBig>Subtotal:</BBig>
             </Box>
           </Grid>
           <Grid item xs={7}>
-            <Box px={2} align={"right"} className={styles.big}>
+            <BoxBig px={2} align={"right"}>
               <span>$149.96</span>
-            </Box>
+            </BoxBig>
           </Grid>
           <Grid item xs={5}>
             <Box align={"right"}>
-              <b className={styles.big}>Shipping:</b>
+              <BBig>Shipping:</BBig>
             </Box>
           </Grid>
           <Grid item xs={7}>
-            <Box px={2} align={"right"} className={styles.big}>
+            <BoxBig px={2} align={"right"}>
               <span>$0</span>
-            </Box>
+            </BoxBig>
           </Grid>
         </Grid>
         <br />
@@ -74,22 +76,22 @@ const DailySummary = () => {
         <Grid container spacing={1}>
           <Grid item xs={5}>
             <Box align={"right"}>
-              <b className={styles.big}>Total:</b>
+              <BBig>Total:</BBig>
             </Box>
           </Grid>
           <Grid item xs={7}>
-            <Box px={2} align={"right"} className={styles.large}>
+            <BoxLarge px={2} align={"right"}>
               <span>$149.96</span>
-            </Box>
+            </BoxLarge>
           </Grid>
         </Grid>
       </Grid>
       <Grid item xs={12} sm={5} md={4} container alignItems={"flex-end"}>
-        <Button className={styles.btn} startIcon={<KeyboardArrowLeft />}>
+        <ButtonBtn startIcon={<KeyboardArrowLeft />}>
           Continue Shopping
-        </Button>
+        </ButtonBtn>
       </Grid>
-    </Grid>
+    </GridMainGrid>
   );
 };
 

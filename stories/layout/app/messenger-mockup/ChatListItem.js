@@ -1,68 +1,9 @@
 import React from "react";
-import cx from "clsx";
-import makeStyles from "@mui/styles/makeStyles";
 import Box from "@mui/material/Box";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
 import MoreHoriz from "@mui/icons-material/MoreHoriz";
-
-const useStyles = makeStyles(({ palette }) => ({
-  root: ({ active }) => ({
-    paddingLeft: 8,
-    paddingRight: 8,
-    borderRadius: 10,
-    ...(active && {
-      backgroundColor: "rgba(0, 0, 0, .05)",
-    }),
-  }),
-  rootHover: {
-    "&:hover": {
-      "& $dot": {
-        display: "none",
-      },
-      "& $responded": {
-        display: "none",
-      },
-      "& $more": {
-        visibility: "visible",
-      },
-    },
-  },
-  avatar: {
-    width: 50,
-    height: 50,
-    marginRight: 12,
-  },
-  primary: ({ bold }) => ({
-    ...(bold && { fontWeight: "bold" }),
-  }),
-  secondary: ({ bold }) => ({
-    fontSize: 13,
-    color: "#999",
-    ...(bold && { fontWeight: "bold", color: palette.text.primary }),
-  }),
-  float: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-  },
-  dot: {
-    width: 12,
-    height: 12,
-    backgroundColor: "#09f",
-    borderRadius: "50%",
-  },
-  more: {
-    visibility: "hidden",
-    fontSize: 20,
-  },
-  responded: {
-    width: 16,
-    height: 16,
-  },
-}));
 
 const ChatListItem = ({
   bold,
@@ -73,27 +14,86 @@ const ChatListItem = ({
   responded,
   concise,
 }) => {
-  const styles = useStyles({ bold, active });
   return (
     <Box px={1}>
-      <ListItem className={cx(styles.root, styles.rootHover)}>
-        <Avatar src={avatar} className={styles.avatar} />
+      <ListItem
+        sx={{
+          paddingLeft: "8px",
+          paddingRight: "8px",
+          borderRadius: "10px",
+          ...(active && {
+            backgroundColor: "rgba(0, 0, 0, .05)",
+          }),
+          "&:hover": {
+            "& .ChatListItem-dot": {
+              display: "none",
+            },
+            "& .ChatListItem-responded": {
+              display: "none",
+            },
+            "& .ChatListItem-more": {
+              visibility: "visible",
+            },
+          },
+        }}
+      >
+        <Avatar
+          src={avatar}
+          sx={{ width: 50, height: 50, marginRight: "12px" }}
+        />
         {!concise && (
           <>
             <ListItemText
               primary={name}
               secondary={info}
-              primaryTypographyProps={{ noWrap: true }}
-              secondaryTypographyProps={{ noWrap: true }}
-              classes={{ primary: styles.primary, secondary: styles.secondary }}
+              primaryTypographyProps={{
+                noWrap: true,
+                sx: { ...(bold && { fontWeight: "bold" }) },
+              }}
+              secondaryTypographyProps={{
+                noWrap: true,
+                sx: {
+                  fontSize: 13,
+                  color: "#999",
+                  ...(bold && {
+                    fontWeight: "bold",
+                    color: "text.primary",
+                  }),
+                },
+              }}
             />
             <Box position={"relative"}>
-              <MoreHoriz className={styles.more} />
-              {bold && <div className={cx(styles.float, styles.dot)} />}
+              <MoreHoriz
+                className="ChatListItem-more"
+                sx={{ visibility: "hidden", fontSize: 20 }}
+              />
+              {bold && (
+                <Box
+                  className="ChatListItem-dot"
+                  sx={{
+                    width: 12,
+                    height: 12,
+                    backgroundColor: "#09f",
+                    borderRadius: "50%",
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                  }}
+                />
+              )}
               {responded && (
                 <Avatar
                   src={avatar}
-                  className={cx(styles.float, styles.responded)}
+                  className="ChatListItem-responded"
+                  sx={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    width: 16,
+                    height: 16,
+                  }}
                 />
               )}
             </Box>

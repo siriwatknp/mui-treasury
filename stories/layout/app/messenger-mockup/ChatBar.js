@@ -1,5 +1,4 @@
 import React from "react";
-import makeStyles from "@mui/styles/makeStyles";
 import InputBase from "@mui/material/InputBase";
 import InputAdornment from "@mui/material/InputAdornment";
 import AddCircle from "@mui/icons-material/AddCircle";
@@ -9,49 +8,47 @@ import Note from "@mui/icons-material/Note";
 import ThumbUp from "@mui/icons-material/ThumbUp";
 import TagFaces from "@mui/icons-material/TagFaces";
 
-const useStyles = makeStyles(() => ({
-  icon: {
-    color: "rgb(0, 153, 255)",
-    width: 44,
-    height: 44,
-    padding: 6,
-    "&:not(:first-child)": {
-      marginLeft: 4,
-    },
-  },
-  input: {
-    flex: "auto",
-    borderRadius: 40,
-    paddingLeft: 16,
-    backgroundColor: "rgba(0,0,0,0.04)",
-    margin: "0 8px",
-    height: 36,
-    fontSize: 13,
-  },
-}));
-
 const ChatBar = ({ concise }) => {
-  const styles = useStyles();
+  const styles = {
+    icon: {
+      color: "rgb(0, 153, 255)",
+      width: 44,
+      height: 44,
+      padding: "6px",
+      "&:not(:first-child)": {
+        marginLeft: "4px",
+      },
+    },
+    input: {
+      flex: "auto",
+      borderRadius: "40px",
+      paddingLeft: "16px",
+      backgroundColor: "rgba(0,0,0,0.04)",
+      margin: "0 8px",
+      height: 36,
+      fontSize: 13,
+    },
+  };
   return (
     <>
-      <AddCircle className={styles.icon} />
+      <AddCircle sx={styles.icon} />
       {!concise && (
         <>
-          <Gif className={styles.icon} />
-          <Note className={styles.icon} />
-          <Image className={styles.icon} />
+          <Gif sx={styles.icon} />
+          <Note sx={styles.icon} />
+          <Image sx={styles.icon} />
         </>
       )}
       <InputBase
-        className={styles.input}
         placeholder={"Type a message..."}
         endAdornment={
           <InputAdornment position={"end"}>
-            <TagFaces className={styles.icon} />
+            <TagFaces sx={styles.icon} />
           </InputAdornment>
         }
+        sx={styles.input}
       />
-      <ThumbUp className={styles.icon} />
+      <ThumbUp sx={styles.icon} />
     </>
   );
 };

@@ -1,7 +1,5 @@
 import React from "react";
-import cx from "clsx";
-import { ThemeProvider } from "@mui/material/styles";
-import makeStyles from "@mui/styles/makeStyles";
+import { ThemeProvider, styled } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -24,42 +22,19 @@ import {
   DailyHeader,
   DailyCart,
   DailyCheckout,
-  DailySummary,
 } from "./shoppingCart-mockup";
+import DailySummary from "./shoppingCart-mockup/DailySummary";
 
-const useStyles = makeStyles(({ breakpoints }) => ({
-  header: {
-    backgroundColor: "#ffffff",
-  },
-  toolbar: {},
-  edgeSidebarsubtitle: {
-    padding: "24px 0 40px 24px !important",
-    background: "none",
-    boxShadow: "none",
-    right: 24,
-  },
-  sidebarsubtitle: {
-    padding: "24px 0 40px 24px !important",
-    background: "none",
-    border: "none",
-  },
-  sidebarPaper: {
-    maxWidth: 400,
-    padding: 16,
-    background: "none",
-    boxShadow: "none",
-  },
-  container: {
-    minHeight: 0,
-    display: "flex",
-  },
-  content: {
-    overflow: "auto",
-  },
-  footer: {
+const StyledHeader = styled(Header)(() => ({
+  backgroundColor: "#ffffff",
+}));
+
+const InsetAvoidingViewFooter = styled(InsetAvoidingView)(
+  ({ theme: { breakpoints } }) => ({
     border: "unset",
     position: "relative",
     backgroundColor: "#fff",
+
     "&:before": {
       content: '" "',
       position: "absolute",
@@ -70,38 +45,16 @@ const useStyles = makeStyles(({ breakpoints }) => ({
       transform: "translateY(-100%)",
       background: "linear-gradient(to top, #ffffff, rgba(255,255,255,0))",
     },
+
     [breakpoints.only("sm")]: {
       paddingRight: 64,
     },
+
     [breakpoints.up("md")]: {
       paddingBottom: 40,
     },
-  },
-  fab: {
-    position: "fixed",
-    bottom: 16,
-    right: 16,
-    color: "#2E3B4D",
-    "& svg": {
-      fontSize: 32,
-      color: "#fff",
-    },
-    zIndex: 1500,
-    transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
-    [breakpoints.up("sm")]: {
-      bottom: 40,
-    },
-    [breakpoints.up("md")]: {
-      transform: "scale(0)",
-    },
-  },
-  fabClose: {
-    top: 8,
-    right: 8,
-    width: 48,
-    height: 48,
-  },
-}));
+  })
+);
 
 function withThemeProvider(Component: React.ElementType) {
   return function ThemeProviderHOC() {
@@ -114,7 +67,6 @@ function withThemeProvider(Component: React.ElementType) {
 }
 
 const ShoppingCart = () => {
-  const styles = useStyles();
   return (
     <Fullscreen>
       <Root
@@ -150,30 +102,49 @@ const ShoppingCart = () => {
             <>
               <CssBaseline />
               <Fab
-                className={cx(
-                  styles.fab,
-                  rightEdgeSidebar?.open && styles.fabClose
-                )}
                 color={"primary"}
                 onClick={toggleRightSidebarOpen}
+                sx={(theme) => ({
+                  position: "fixed",
+                  bottom: 16,
+                  right: 16,
+                  color: "#2E3B4D",
+                  "& svg": {
+                    fontSize: 32,
+                    color: "#fff",
+                  },
+                  zIndex: 1500,
+                  transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
+                  [theme.breakpoints.up("sm")]: {
+                    bottom: 40,
+                  },
+                  [theme.breakpoints.up("md")]: {
+                    transform: "scale(0)",
+                  },
+                  ...(rightEdgeSidebar?.open && {
+                    top: 8,
+                    right: 8,
+                    width: 48,
+                    height: 48,
+                  }),
+                })}
               >
                 {rightEdgeSidebar?.open ? <Close /> : <CreditCard />}
               </Fab>
-              <Header className={styles.header}>
+              <StyledHeader>
                 <Container>
                   <DailyHeader />
                 </Container>
-              </Header>
-              <EdgeSidebar
-                anchor="right"
-                PaperProps={{ className: styles.edgeSidebarBody }}
-              >
+              </StyledHeader>
+              <EdgeSidebar anchor="right">
                 <DailyCheckout />
               </EdgeSidebar>
               <Content>
                 <InsetContainer
                   rightSidebar={
-                    <InsetSidebar classes={{ paper: styles.sidebarBody }}>
+                    <InsetSidebar
+                      sx={{ border: "none", py: "1rem", pl: "1rem" }}
+                    >
                       <DailyCheckout />
                     </InsetSidebar>
                   }
@@ -183,11 +154,11 @@ const ShoppingCart = () => {
               </Content>
               <Footer>
                 <Container>
-                  <InsetAvoidingView className={styles.footer}>
+                  <InsetAvoidingViewFooter>
                     <Box pb={3}>
                       <DailySummary />
                     </Box>
-                  </InsetAvoidingView>
+                  </InsetAvoidingViewFooter>
                 </Container>
               </Footer>
             </>

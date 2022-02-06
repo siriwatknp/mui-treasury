@@ -1,11 +1,10 @@
 import React from "react";
-import cx from "clsx";
 import {
+  ThemeProvider,
   createTheme,
   responsiveFontSizes,
-  ThemeProvider,
+  styled,
 } from "@mui/material/styles";
-import makeStyles from "@mui/styles/makeStyles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -26,50 +25,6 @@ import {
   Footer,
 } from "@mui-treasury/layout";
 import { ReactHeader, ReactNextArticle, ReactContent } from "./reactjs-mockup";
-
-const useStyles = makeStyles(({ breakpoints }) => ({
-  toolbar: {
-    minHeight: 60,
-    [breakpoints.up("md")]: {
-      minHeight: 60,
-    },
-  },
-  insetSidebar: {
-    borderLeft: "1px solid #ececec",
-    backgroundColor: "rgb(247, 247, 247)",
-  },
-  footer: {
-    border: "none",
-  },
-  footerMenu: {
-    color: "#fff",
-    lineHeight: 2,
-  },
-  footerHeader: {
-    opacity: 0.6,
-    lineHeight: 3,
-    textTransform: "uppercase",
-    letterSpacing: "0.08em",
-    fontSize: 14,
-    fontWeight: "bold",
-  },
-  arrow: {
-    marginTop: -2,
-    verticalAlign: "middle",
-  },
-  activeMenu: {
-    opacity: 1,
-  },
-  fab: {
-    position: "fixed",
-    bottom: 32,
-    right: 16,
-    color: "#61dafb",
-    "& svg": {
-      fontSize: 32,
-    },
-  },
-}));
 
 const theme = responsiveFontSizes(
   createTheme({
@@ -100,6 +55,25 @@ const theme = responsiveFontSizes(
   })
 );
 
+const StyledToolbar = styled(Toolbar)(({ theme: { breakpoints } }) => ({
+  minHeight: 60,
+
+  [breakpoints.up("md")]: {
+    minHeight: 60,
+  },
+}));
+
+const StyledFab = styled(Fab)(() => ({
+  position: "fixed",
+  bottom: 32,
+  right: 16,
+  color: "#61dafb",
+
+  "& svg": {
+    fontSize: 32,
+  },
+}));
+
 function withThemeProvider(Component: React.ElementType) {
   return function ThemeProviderHOC() {
     return (
@@ -112,12 +86,22 @@ function withThemeProvider(Component: React.ElementType) {
 
 // @ts-ignore
 const FooterMenu = ({ isHeader, ...props }) => {
-  const styles = useStyles();
   return (
     <>
       {isHeader && <Box mt={5} />}
       <Typography
-        className={cx(styles.footerMenu, isHeader && styles.footerHeader)}
+        sx={{
+          color: "#fff",
+          lineHeight: 2,
+          ...(isHeader && {
+            opacity: 0.6,
+            lineHeight: 3,
+            textTransform: "uppercase",
+            letterSpacing: "0.08em",
+            fontSize: 14,
+            fontWeight: "bold",
+          }),
+        }}
         {...props}
       />
     </>
@@ -125,16 +109,27 @@ const FooterMenu = ({ isHeader, ...props }) => {
 };
 
 const ReactJs = () => {
-  const styles = useStyles();
   const sidebarContent = (
     <Box mt={7.5} ml={3}>
       {getData()[0].map((label, i) => (
         <Typography
           key={i}
-          className={cx(styles.footerHeader, i === 0 && styles.activeMenu)}
+          sx={{
+            lineHeight: 3,
+            textTransform: "uppercase",
+            letterSpacing: "0.08em",
+            fontSize: 14,
+            fontWeight: "bold",
+          }}
         >
           {label}{" "}
-          <KeyboardArrowDown color={"inherit"} className={styles.arrow} />
+          <KeyboardArrowDown
+            color={"inherit"}
+            sx={{
+              marginTop: "-2px",
+              verticalAlign: "middle",
+            }}
+          />
         </Typography>
       ))}
     </Box>
@@ -175,25 +170,29 @@ const ReactJs = () => {
       {({ setOpen }) => (
         <>
           <CssBaseline />
-          <Fab
-            className={styles.fab}
+          <StyledFab
             color={"primary"}
             onClick={() => setOpen("rightEdgeSidebar", true)}
           >
             <UnfoldMore />
-          </Fab>
+          </StyledFab>
           <Header color={"primary"}>
             <Container>
-              <Toolbar disableGutters className={styles.toolbar}>
+              <StyledToolbar disableGutters>
                 <ReactHeader concise />
-              </Toolbar>
+              </StyledToolbar>
             </Container>
           </Header>
           <EdgeSidebar anchor="right">{sidebarContent}</EdgeSidebar>
           <Content>
             <InsetContainer
               rightSidebar={
-                <InsetSidebar classes={{ paper: styles.insetSidebar }}>
+                <InsetSidebar
+                  sx={{
+                    borderLeft: "1px solid #ececec",
+                    backgroundColor: "rgb(247, 247, 247)",
+                  }}
+                >
                   {sidebarContent}
                 </InsetSidebar>
               }
@@ -215,7 +214,11 @@ const ReactJs = () => {
                   {/* @ts-ignore */}
                   <Box pr={{ xs: 0, md: 5 }} pb={5}>
                     <Grid container>
-                      <Grid item lg={4} />
+                      <Grid item lg={4}>
+                        <Typography sx={{ mt: "56px", color: "#888" }}>
+                          Copyright © 2022
+                        </Typography>
+                      </Grid>
                       <Grid item lg={8} container>
                         {getData().map((category, i) => (
                           <Grid key={i} item xs={6}>
