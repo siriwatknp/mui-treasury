@@ -1,7 +1,7 @@
 {
   "name": "@mui-treasury/component-birthdatefield",
   "private": true,
-  "version": "0.1.0-alpha.5",
+  "version": "0.1.0-alpha.6",
   "description": "mui-treasury | component-birthdatefield",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "homepage": "https://github.com/siriwatknp/mui-treasury#readme",
@@ -33,7 +33,7 @@
     "url": "https://github.com/siriwatknp/mui-treasury/issues"
   },
   "dependencies": {
-    "@mui-treasury/use-birthdate-input": "^0.1.0-alpha.5"
+    "@mui-treasury/use-birthdate-input": "^0.1.0-alpha.6"
   },
   "peerDependencies": {
     "@mui/material": "5.x"

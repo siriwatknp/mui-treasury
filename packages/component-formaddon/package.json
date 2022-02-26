@@ -1,7 +1,7 @@
 {
   "name": "@mui-treasury/component-formaddon",
   "private": true,
-  "version": "0.0.1-alpha.12",
+  "version": "0.0.1-alpha.13",
   "description": "mui-treasury | component-formaddon",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "homepage": "https://github.com/siriwatknp/mui-treasury#readme",
@@ -35,6 +35,6 @@
     "@mui/material": "5.x"
   },
   "dependencies": {
-    "@mui-treasury/types": "^0.1.0-alpha.4"
+    "@mui-treasury/types": "^0.1.0-alpha.5"
   }
 }

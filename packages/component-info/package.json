@@ -1,7 +1,7 @@
 {
   "name": "@mui-treasury/component-info",
   "private": true,
-  "version": "0.1.0-alpha.7",
+  "version": "0.1.0-alpha.8",
   "description": "mui-treasury | component-info",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
   "homepage": "https://github.com/siriwatknp/mui-treasury#readme",
@@ -33,7 +33,7 @@
     "url": "https://github.com/siriwatknp/mui-treasury/issues"
   },
   "dependencies": {
-    "@mui-treasury/types": "^0.1.0-alpha.4"
+    "@mui-treasury/types": "^0.1.0-alpha.5"
   },
   "peerDependencies": {
     "@mui/material": "5.x"
