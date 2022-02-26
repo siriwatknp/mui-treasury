@@ -30,6 +30,6 @@
     "url": "https://github.com/siriwatknp/mui-treasury/issues"
   },
   "peerDependencies": {
-    "@mui/material": "^5.0.0-rc.1"
+    "@mui/material": "^5.0.0"
   }
 }
