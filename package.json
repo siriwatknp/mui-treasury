@@ -84,7 +84,7 @@
     "print-package-stats": "ts-node scripts/print-package-stats",
     "build:packages": "yarn && lerna run build --since",
     "build:storybook": "build-storybook",
-    "publish-packages": "lerna publish prerelease --no-commit-hooks --no-push --yes --no-verify-access --contents dist"
+    "publish-packages": "lerna publish --force-publish --no-commit-hooks --no-push --yes --no-verify-access --contents dist"
   },
   "dependencies": {}
 }
