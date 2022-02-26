@@ -16,6 +16,11 @@ jobs:
 
       - uses: c-hive/gha-yarn-cache@v1
 
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "14"
+          registry-url: "https://registry.npmjs.org"
+
       - name: Install dependencies
         run: yarn
 
@@ -24,11 +29,6 @@ jobs:
 
       - name: Build Packages
         run: yarn build:packages
-
-      - uses: actions/setup-node@v1
-        with:
-          node-version: "14"
-          registry-url: "https://registry.npmjs.org"
 
       - name: Git Identity
         run: |
