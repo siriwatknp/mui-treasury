@@ -28,6 +28,6 @@
   },
   "dependencies": {
     "@mui/icons-material": "^5.0.0",
-    "@mui/material": "^5.0.0"
+    "@mui/material": "5.x"
   }
 }

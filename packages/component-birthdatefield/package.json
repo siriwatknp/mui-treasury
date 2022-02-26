@@ -36,6 +36,6 @@
     "@mui-treasury/use-birthdate-input": "^0.1.0-alpha.5"
   },
   "peerDependencies": {
-    "@mui/material": "^5.0.0"
+    "@mui/material": "5.x"
   }
 }

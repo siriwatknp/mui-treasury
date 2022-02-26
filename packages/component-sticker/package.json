@@ -34,6 +34,6 @@
   },
   "peerDependencies": {
     "@mui-treasury/theme-treasury": "^0.3.0-alpha.7",
-    "@mui/material": "^5.0.0"
+    "@mui/material": "5.x"
   }
 }
