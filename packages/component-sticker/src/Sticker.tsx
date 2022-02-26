@@ -2,7 +2,7 @@ import React, { PropsWithChildren } from "react";
 import cx from "clsx";
 import { styled, Theme, useThemeProps } from "@mui/material/styles";
 import { Palette } from "@mui-treasury/theme-treasury";
-import { unstable_composeClasses as composeClasses } from "@mui/core";
+import { unstable_composeClasses as composeClasses } from "@mui/base";
 import { SxProps } from "@mui/system";
 import { OverridableComponent } from "@mui-treasury/types";
 import { capitalize } from "@mui/material/utils";

@@ -1,7 +1,7 @@
 import React from "react";
 import cx from "clsx";
 import { styled, useThemeProps } from "@mui/material/styles";
-import { unstable_composeClasses as composeClasses } from "@mui/core";
+import { unstable_composeClasses as composeClasses } from "@mui/base";
 import { usePinInput } from "@mui-treasury/use-pin-input";
 import { getPinInputUtilityClass } from "./pinInputClasses";
 const useUtilityClasses = (ownerState) => {

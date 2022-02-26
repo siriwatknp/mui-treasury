@@ -5,7 +5,7 @@ unless_exists: true
 import {
   generateUtilityClass,
   generateUtilityClasses,
-} from "@mui/core";
+} from "@mui/base";
 
 export interface <%=Name = h.toName(name)%>Classes {
   /** Styles applied to the root element. */

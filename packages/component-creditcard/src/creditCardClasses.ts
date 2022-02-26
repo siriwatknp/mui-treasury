@@ -1,7 +1,4 @@
-import {
-  generateUtilityClass,
-  generateUtilityClasses,
-} from "@mui/core";
+import { generateUtilityClass, generateUtilityClasses } from "@mui/base";
 
 export interface CreditCardClasses {
   /** Styles applied to the field element. */

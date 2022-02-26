@@ -1,7 +1,4 @@
-import {
-  generateUtilityClass,
-  generateUtilityClasses,
-} from "@mui/core";
+import { generateUtilityClass, generateUtilityClasses } from "@mui/base";
 
 export interface DayMonthYearClasses {
   /** Styles applied to the root element. */

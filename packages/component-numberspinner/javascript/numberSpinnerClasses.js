@@ -1,4 +1,4 @@
-import { generateUtilityClass, generateUtilityClasses } from "@mui/core";
+import { generateUtilityClass, generateUtilityClasses } from "@mui/base";
 export function getNumberSpinnerUtilityClass(slot) {
   return generateUtilityClass("JunNumberSpinner", slot);
 }

@@ -1,7 +1,4 @@
-import {
-  generateUtilityClass,
-  generateUtilityClasses,
-} from "@mui/core";
+import { generateUtilityClass, generateUtilityClasses } from "@mui/base";
 
 export function getNumberInputUtilityClass(slot: string) {
   return generateUtilityClass("JunNumberInput", slot);

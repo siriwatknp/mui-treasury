@@ -1,7 +1,7 @@
 import React from "react";
 import cx from "clsx";
 import Box, { BoxProps } from "@mui/material/Box";
-import { generateUtilityClasses } from "@mui/core";
+import { generateUtilityClasses } from "@mui/base";
 import { checkFlexGap, halveGap } from "./utils";
 
 export const flexClasses = generateUtilityClasses("Flex", [

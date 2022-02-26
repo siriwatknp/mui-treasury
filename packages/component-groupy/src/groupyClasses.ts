@@ -1,7 +1,4 @@
-import {
-  generateUtilityClass,
-  generateUtilityClasses,
-} from "@mui/core";
+import { generateUtilityClass, generateUtilityClasses } from "@mui/base";
 
 export function getGroupyUtilityClass(slot: string) {
   return generateUtilityClass("JunGroupy", slot);

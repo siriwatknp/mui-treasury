@@ -1,7 +1,4 @@
-import {
-  generateUtilityClass,
-  generateUtilityClasses,
-} from "@mui/core";
+import { generateUtilityClass, generateUtilityClasses } from "@mui/base";
 
 export function getNavigationUtilityClass(slot: string) {
   return generateUtilityClass("JunNavigation", slot);

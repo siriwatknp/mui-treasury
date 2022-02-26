@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import cx from "clsx";
 import { styled, useThemeProps, Theme } from "@mui/material/styles";
-import { unstable_composeClasses as composeClasses } from "@mui/core";
+import { unstable_composeClasses as composeClasses } from "@mui/base";
 import { SxProps } from "@mui/system";
 import { OverridableComponent } from "@mui-treasury/types";
 import { getGroupyUtilityClass, groupyClasses } from "./groupyClasses";
