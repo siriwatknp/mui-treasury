@@ -1,26 +1,29 @@
 import React from "react";
-
+import { SxProps, Theme } from "@mui/material/styles";
 import Box, { BoxProps } from "@mui/material/Box";
 import { getBaseGrey, randomBetween } from "./utils";
 
-const createTypography = (generateSx: () => BoxProps["sx"]) => ({
-  cached,
-  ...props
-}: { cached?: boolean } & BoxProps) => {
-  const ref = React.useRef(generateSx());
-  return (
-    <Box
-      {...props}
-      sx={{
-        height: 16,
-        bgcolor: getBaseGrey,
-        borderRadius: 1,
-        ...(cached ? ref.current : generateSx()),
-        ...props.sx,
-      }}
-    />
-  );
-};
+const createTypography =
+  (generateSx: () => BoxProps["sx"]) =>
+  ({ cached, sx = [], ...props }: { cached?: boolean } & BoxProps) => {
+    const ref = React.useRef(generateSx());
+    const resolvedSx: SxProps<Theme> =
+      (cached ? ref.current : generateSx()) || [];
+    return (
+      <Box
+        {...props}
+        sx={[
+          {
+            height: 16,
+            borderRadius: 1,
+            bgcolor: getBaseGrey,
+          },
+          ...(Array.isArray(resolvedSx) ? resolvedSx : [resolvedSx]),
+          ...(Array.isArray(sx) ? sx : [sx]),
+        ]}
+      />
+    );
+  };
 
 export const H1 = createTypography(() => ({
   height: 40,

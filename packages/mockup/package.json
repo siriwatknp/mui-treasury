@@ -26,8 +26,8 @@
   "bugs": {
     "url": "https://github.com/siriwatknp/mui-treasury/issues"
   },
-  "dependencies": {
-    "@mui/icons-material": "^5.0.0",
+  "peerDependencies": {
+    "@mui/icons-material": "5.x",
     "@mui/material": "5.x"
   }
 }
