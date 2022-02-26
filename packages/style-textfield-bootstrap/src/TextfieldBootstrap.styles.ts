@@ -127,7 +127,7 @@ export const getTextFieldBootstrapTheme = (theme: Theme): Output => {
     },
     MuiSelect: {
       styleOverrides: {
-        root: {
+        select: {
           "&.MuiInput-input": {
             height: "100%",
             "&:focus": {

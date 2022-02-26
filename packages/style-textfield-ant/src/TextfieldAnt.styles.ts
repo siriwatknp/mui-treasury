@@ -132,7 +132,7 @@ export const getTextFieldAntTheme = (theme: Theme): Output => {
     },
     MuiSelect: {
       styleOverrides: {
-        root: {
+        select: {
           "&.MuiSelect-standard": {
             paddingRight: 32,
           },
