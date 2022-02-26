@@ -84,7 +84,7 @@
     "print-package-stats": "ts-node scripts/print-package-stats",
     "build:packages": "yarn && lerna run build --since",
     "build:storybook": "build-storybook",
-    "publish-packages": "lerna publish --force-publish=@mui-treasury/layout --no-commit-hooks --no-push --yes --no-verify-access --contents dist"
+    "publish-packages": "lerna publish from-git --no-private --no-commit-hooks --no-push --no-verify-access --contents dist"
   },
   "dependencies": {}
 }
