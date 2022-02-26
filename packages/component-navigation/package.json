@@ -1,5 +1,6 @@
 {
   "name": "@mui-treasury/component-navigation",
+  "private": true,
   "version": "0.1.0-alpha.6",
   "description": "mui-treasury | component-navigation",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",

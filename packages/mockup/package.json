@@ -1,5 +1,6 @@
 {
   "name": "@mui-treasury/mockup",
+  "private": true,
   "version": "5.0.0-alpha.15",
   "description": "mui-treasury | mockup",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",

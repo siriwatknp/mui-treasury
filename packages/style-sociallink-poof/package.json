@@ -1,5 +1,6 @@
 {
   "name": "@mui-treasury/style-sociallink-poof",
+  "private": true,
   "version": "0.1.0-alpha.5",
   "description": "mui-treasury | style-sociallink-poof",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",

@@ -1,5 +1,6 @@
 {
   "name": "@mui-treasury/style-navigation-point",
+  "private": true,
   "version": "0.1.0-alpha.5",
   "description": "mui-treasury | style-navigation-point",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",

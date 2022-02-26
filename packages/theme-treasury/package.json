@@ -1,5 +1,6 @@
 {
   "name": "@mui-treasury/theme-treasury",
+  "private": true,
   "version": "0.3.0-alpha.16",
   "description": "> TODO: description",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",

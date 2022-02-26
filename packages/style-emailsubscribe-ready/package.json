@@ -1,5 +1,6 @@
 {
   "name": "@mui-treasury/style-emailsubscribe-ready",
+  "private": true,
   "version": "0.1.0-alpha.5",
   "description": "mui-treasury | style-emailsubscribe-ready",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",

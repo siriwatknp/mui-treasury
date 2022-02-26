@@ -1,5 +1,6 @@
 {
   "name": "@mui-treasury/style-textfield-tailwind",
+  "private": true,
   "version": "0.1.0-alpha.10",
   "description": "mui-treasury | style-textfield-tailwind",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",

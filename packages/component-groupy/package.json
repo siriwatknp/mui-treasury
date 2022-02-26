@@ -1,5 +1,6 @@
 {
   "name": "@mui-treasury/component-groupy",
+  "private": true,
   "version": "0.0.1-alpha.13",
   "description": "mui-treasury | component-groupy",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",

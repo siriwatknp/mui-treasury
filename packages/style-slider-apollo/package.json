@@ -1,5 +1,6 @@
 {
   "name": "@mui-treasury/style-slider-apollo",
+  "private": true,
   "version": "0.1.0-alpha.10",
   "description": "mui-treasury | style-slider-apollo",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",

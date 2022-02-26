@@ -1,5 +1,6 @@
 {
   "name": "@mui-treasury/style-info-n03",
+  "private": true,
   "version": "0.1.0-alpha.3",
   "description": "mui-treasury | style-info-n03",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",

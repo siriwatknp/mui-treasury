@@ -1,5 +1,6 @@
 {
   "name": "@mui-treasury/component-formaddon",
+  "private": true,
   "version": "0.0.1-alpha.12",
   "description": "mui-treasury | component-formaddon",
   "author": "siriwatknp <siriwatkunaporn@gmail.com>",
