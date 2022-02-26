@@ -1,7 +1,6 @@
 import React, { PropsWithChildren } from "react";
 import cx from "clsx";
-import { styled, useThemeProps, Theme } from "@mui/material/styles";
-import { SxProps } from "@mui/system";
+import { styled, useThemeProps, Theme, SxProps } from "@mui/material/styles";
 import { navigationClasses } from "./navigationClasses";
 import { OverridableComponent } from "@mui-treasury/types";
 
@@ -41,8 +40,8 @@ const NavItemRoot = styled("a", {
     ];
   },
 })<{ ownerState: NavItemProps }>(
-  ({ theme: { palette, shape, spacing, typography }, ownerState }) => ({
-    ...typography.body1,
+  ({ theme: { palette, shape, spacing, typography } }) => ({
+    ...(typography.body1 as any),
     fontWeight: 500,
     flexShrink: 0,
     display: "flex",
