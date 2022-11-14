@@ -32,7 +32,7 @@ export default (styled: any) => {
     return (
       <Div
         className={cx('EdgeHeaderOffset', transition.smooth)}
-        styles={{ ...styles, flexShrink: 0 }}
+        styles={{ ...styles, flexShrink: 'inherit' }}
         style={inlineStyle}
       />
     );
