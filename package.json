@@ -45,7 +45,7 @@
     "react-dropzone": "^14.2.3",
     "react-ga4": "2.1.0",
     "rimraf": "3.0.2",
-    "tar": "6.1.0",
+    "tar": "6.1.9",
     "update-check": "1.5.4"
   },
   "devDependencies": {
