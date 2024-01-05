@@ -1,39 +1,33 @@
 {
+  // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": false,
-    "forceConsistentCasingInFileNames": true,
     "module": "esnext",
+    "lib": ["dom", "esnext"],
+    "importHelpers": true,
+    // output .d.ts declaration files for consumers
+    "declaration": true,
+    // output .js.map sourcemap files for consumers
+    "sourceMap": true,
+    // stricter type-checking for stronger correctness. Recommended by TS
+    "strict": true,
+    // linter checks for common issues
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    // noUnused* overlap with @typescript-eslint/no-unused-vars, can disable if duplicative
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    // use Node's module resolution algorithm, instead of the legacy TS one
     "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
+    // transpile JSX to React.createElement
+    "jsx": "react",
+    // interop between ESM and CJS modules. Recommended by TS
+    "esModuleInterop": true,
+    // significant perf increase by skipping checking .d.ts files, particularly those in node_modules. Recommended by TS
+    "skipLibCheck": true,
+    // error out if import and file system have a casing mismatch. Recommended by TS
+    "forceConsistentCasingInFileNames": true,
+    // `tsdx build` ignores this option, but it is commonly used when type-checking separately with `tsc`
     "noEmit": true,
-    "jsx": "react"
-  },
-  "baseUrl": "./",
-  "paths": {
-    "@mui-treasury/components/*": "packages/mui-components/src/*",
-    "@mui-treasury/styles/*": "packages/mui-styles/src/*",
-    "@mui-treasury/layout/*": "packages/mui-layout/src/*",
-    "@mui-treasury/mockup/*": "packages/mui-mockup/src/*",
-    "components/*": "website/src/components/*",
-    "containers/*": "website/src/containers/*",
-    "utils/*": "website/src/utils/*"
-  },
-  "include": [
-    "./website/src/**/*",
-    "./packages/mui-components/src/**/*",
-    "./packages/mui-styles/src/**/*",
-    "./packages/mui-layout/src/**/*",
-    "./packages/mui-mockup/src/**/*"
-  ]
+    "resolveJsonModule": true
+  }
 }

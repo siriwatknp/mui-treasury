@@ -1,3 +1,14 @@
-body {
-  background: none !important;
+#storybook-docs .prismjs {
+  max-height: 300px;
+}
+
+.docblock-source > div:has(button:only-child) {
+  bottom: initial;
+  top: 0;
+}
+
+.docblock-source > div > button:only-child {
+  border-radius: 0 0 0 4px;
+  border-top: unset;
+  border-bottom: 1px solid hsla(203, 50%, 30%, 0.15);
 }

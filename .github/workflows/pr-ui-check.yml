@@ -1,0 +1,51 @@
+name: Pull Request UI Check
+
+on: pull_request
+
+permissions:
+  contents: write
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # 👈 Chromatic: required to retrieve git history
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Build storybook
+        run: yarn build-storybook
+
+      - name: Publish to Chromatic
+        id: chromatic
+        uses: chromaui/action@v1
+        # Chromatic GitHub Action options
+        with:
+          projectToken: chpt_c1ef31edc57192e
+          storybookBuildDir: storybook-static
+          exitZeroOnChanges: true # 👈 Option to prevent the workflow from failing
+          skip: "@(renovate/**|dependabot/**)"
+
+      - name: Publish Summary
+        run: echo -e "| Results |  |\n| --- | --- |\n| Build Results | ${{steps.chromatic.outputs.buildUrl}} |\n| Storybook Preview | ${{steps.chromatic.outputs.storybookUrl}} |\n| Component Count | ${{steps.chromatic.outputs.componentCount}} |" >> $GITHUB_STEP_SUMMARY
+
+      - name: Add PR Comment
+        uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            | Results |  |
+            | --- | --- |
+            | Build Results | ${{steps.chromatic.outputs.buildUrl}} |
+            | Storybook Preview | ${{steps.chromatic.outputs.storybookUrl}} |
+            | Component Count | ${{steps.chromatic.outputs.componentCount}} |
+          proxy-url: https://add-pr-comment-proxy-js2jzvsqsq-uc.a.run.app

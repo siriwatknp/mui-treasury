@@ -1,67 +1,74 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://user-images.githubusercontent.com/18292247/65975821-6361e500-e499-11e9-94a4-02aef55c2c23.png" width="100" />
-  </a>
-</p>
+# 👋 Welcome! to Material Treasury
 
-# MUI Treasury [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/siriwatknp/mui-treasury-next/pulls) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-19-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
+[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-Imagine a place with millions of real-world, ready-to-use, and themable components that you can install to your project. I believe that it will boost many projects that want to prove their ideas or even improve complex monolith project to move faster.
+Material Treasury is a collection of blocks that are ready-to-use for [Material UI](https://mui.com/material-ui/getting-started/) projects.
 
-> Note: This project is my personal hobby and not maintained by [MUI](https://github.com/mui-org/material-ui).
+The blocks are made to live from design inspiration resources such as [Dribbble](https://dribbble.com/) and [Pinterest](https://www.pinterest.com/), etc.
 
-## ~~Material-UI v5~~ MUI v5
+There are 2 way to use the blocks in your project.
 
-~~Material-UI~~ has changed their branding to **MUI**. If you are curious about it, [checkout the details](https://github.com/mui-org/material-ui/discussions/27803) (It's gonna be huge in the near future).
+- Copy and paste: open the "Doc" of the block you want and copy the code. Then paste it to your project, it should work instantly (open [an issue](https://github.com/siriwatknp/mui-treasury/issues/new) if it does not).
+- Use [CLI](#cli) to clone the latest blocks to your project.
 
-### `@mui-treasury/layout`
+## CLI
 
-- [Codesandbox demo](https://codesandbox.io/s/material-ui-layout-7mn9xq3nnj?file=/src/LayoutV5.js)
-- [v5 documentation](https://next.mui-treasury.com/?path=/story/layout-introduction--page)
-  - [Migration guide](https://next.mui-treasury.com/?path=/story/layout-migration-to-v5--page)
-  - [Tutorials](https://next.mui-treasury.com/?path=/story/layout-tutorials-dashboard--page)
-  - [Features](https://next.mui-treasury.com/?path=/story/layout-feature-auto-collapse--page)
+1. go to [mui-treasury](https://siriwatknp.github.io/mui-treasury/)
+2. find a block you want to clone from the sidebar (let's say that I want the `Card/News/Maldives`)
+3. open your terminal and go to your root project directory
+4. run `npx mui-treasury@latest clone card-news-maldives`
+5. you will see that the code is downloaded to `src/mui-treasury` folder (in your local project)
 
-**Summary Highlight**
-  - smaller bundle size (-30%)
-  - faster
-  - single sidebar (no duplicate for all variants)
+> Note: to clone multiple blocks, just add more names to the command with a space in between, e.g. `npx mui-treasury clone [blocks...]`
 
-### ~~`@mui-treasury/components, @mui-treasury/styles`~~
-These packages does not work with MUI v5 anymore due to package names change. I plan to split them into isolated packages ([in-progress](https://next.mui-treasury.com/?path=/story/component)).
+```bash
+Usage: npx mui-treasury@latest [options] [command]
 
-## Material-UI v4
+Options:
+  -v, --version                 output the current version
+  -h, --help                    display help for command
 
-### Latest Version
-> - [@mui-treasury/components `1.5.2`](https://mui-treasury.com/components)
-> - [@mui-treasury/layout `4.5.0`](https://mui-treasury.com/layout)
-> - [@mui-treasury/styles `1.8.0`](https://mui-treasury.com/styles)
-> - @mui-treasury/mockup `1.2.4`
-> - @mui-treasury/utils `0.4.1`
->
->  [All changelog](/CHANGELOG.md)
+Commands:
+  init
+  clone [options] <sources...>  clone components/styles to your config directory
+  help [command]                display help for command
+```
 
-## Curious? checkout [Website](https://mui-treasury.com)
+### `init`
 
-I am very excited about this project because I know that there is a lot of developers who are struggling at building ui and waiting for something like this to come true. It will take a lot of time for me alone to reach thousand components. So if you want to do something great and fun, please read our [contribution section](#Contribution)
+create a `mui-treasury.config.js` file that will be used when running `clone`.
 
-## Roadmap
+```bash
+npx mui-treasury@latest init
+```
 
-#### Q3/2020
-- More components & styles for using with @mui-treasury/layout
-  - Header
-  - Sidebar
-  - Footer
+> Note that config file will be overridden by cli options (if specified)
 
-#### Q2/2020
-- [x] Reach 300 components + styles
-- [x] Introducing application demo (example of real-world app that combine existing components in mui-treasury)
-- [x] Release Layout v4
+### `clone`
 
-#### Q1/2020
-- [x] Reach 200 components
+```bash
+Usage: npx mui-treasury@latest clone [options] <sources...>
+
+clone components/styles to your config directory
+
+Options:
+  -d, --dir [directory]      destination directory
+  -t, --template [template]  template of the files, typescript (default) | javascript
+  -b, --branch [branch]      target branch on github
+  --storybook                storybook file(s) will be included.
+  --test                     test file(s) will be included.
+  -h, --help                 display help for command
+```
+
+**clone multiple blocks**
+
+```bash
+npx mui-treasury@latest clone card-galaxy info-basic
+```
 
 ## Donation
 
