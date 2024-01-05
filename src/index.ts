@@ -17,7 +17,7 @@ import { CloneOptions, createProgram } from "./program";
 const pipeline = promisify(Stream.pipeline);
 
 const TEMPLATE_FOLDER_MAP = {
-  typescript: "src",
+  typescript: "",
   javascript: "javascript",
 };
 const MUI_TREASURY_CONFIG_FILE = "mui-treasury.config.js";
@@ -31,7 +31,7 @@ const CONFIG_FILE_TEMPLATE = `export default {
   dir: "${DEFAULT_CONFIG.dir}",
   template: "${DEFAULT_CONFIG.template}",
   storybook: ${DEFAULT_CONFIG.storybook},
-  branch: ${DEFAULT_CONFIG.branch},
+  branch: "${DEFAULT_CONFIG.branch}",
 };
 `;
 
