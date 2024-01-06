@@ -114,8 +114,9 @@ const CustomCard = ({
         p={2}
         gap={2}
         sx={{
+          flexWrap: "wrap",
           justifyContent: "space-between",
-          "& > *": {
+          "&& > *": {
             minWidth: `clamp(0px, (248px + 1px - 100%) * 999, 100%)`,
           },
         }}
