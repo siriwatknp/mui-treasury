@@ -24,7 +24,7 @@ addons.setConfig({
 type GA4 = typeof ReactGA & { default: typeof ReactGA };
 
 addons.register("google-analytics", (api) => {
-  (ReactGA as GA4).default.initialize("G-B662RPJSSQ");
+  (ReactGA as GA4).default.initialize("G-1B739CVWP4");
 
   api.on(STORY_CHANGED, () => {
     const { path } = api.getUrlState();
