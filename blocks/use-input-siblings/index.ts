@@ -1,3 +1,4 @@
+"use client";
 export * from "./useInput";
 export * from "./useInputSiblings";
 export * from "./useSeparatorInput";
