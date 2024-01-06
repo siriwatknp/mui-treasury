@@ -13,6 +13,7 @@ import { useCopyToClipboard } from "usehooks-ts";
 
 export default function cliToolbar() {
   return function cliToolbarDecorator(Story, context) {
+    console.log("context", context);
     const [hidden, setHidden] = React.useState(
       () => localStorage.getItem("cli-hidden") === "true"
     );
@@ -104,11 +105,22 @@ export default function cliToolbar() {
                     if (prev.find((block) => block.id === context.id)) {
                       return prev;
                     }
-                    localStorage.setItem(
-                      "cli-blocks",
-                      JSON.stringify([...prev, { id: context.id }])
+                    const list = [
+                      ...prev,
+                      { id: context.id },
+                      ...(context.parameters.modules || []).map(
+                        (m: string) => ({
+                          id: m,
+                        })
+                      ),
+                    ];
+                    localStorage.setItem("cli-blocks", JSON.stringify(list));
+                    copy(
+                      `npx mui-treasury@latest clone ${list
+                        .map((block) => block.id.replace(/--.*/, ""))
+                        .join(" ")}`
                     );
-                    return [...prev, { id: context.id }];
+                    return list;
                   })
                 }
               >

@@ -15,6 +15,7 @@ const meta = {
   parameters: {
     layout: "centered",
     githubUsername: "siriwatknp", // (optional) Your github username. If provided, your avatar will be displayed in the story toolbar
+    modules: ["use-input-siblings"],
   },
   decorators: [storyDialog(Usage)],
 } satisfies Meta<UseDayMonthYearInputOptions>;

@@ -11,6 +11,7 @@ const meta = {
   parameters: {
     layout: "centered",
     githubUsername: "siriwatknp", // (optional) Your github username. If provided, your avatar will be displayed in the story toolbar
+    modules: ["info-basic", "info-apex"],
   },
   decorators: [storyDialog(Usage), googleFont(["Ubuntu:wght@400;700"])],
 } satisfies Meta<typeof CardTeam>;
