@@ -16,6 +16,7 @@ const PersonItem = ({ src = "", name = "", count = 0 }) => {
         sx={{
           display: "flex",
           flexWrap: "wrap",
+          minWidth: 0,
           gap: 1,
           alignItems: "center",
           flexGrow: 1,
