@@ -2,7 +2,7 @@
   "name": "mui-treasury",
   "description": "A CLI to clone Material UI blocks into your project.",
   "author": "siriwatknp",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "homepage": "https://siriwatknp.github.io/mui-treasury/",
   "license": "MIT",
   "publishConfig": {

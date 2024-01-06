@@ -25,9 +25,9 @@ const DEFAULT_CONFIG = {
   dir: "src/mui-treasury",
   template: "typescript",
   storybook: false,
-  branch: "main",
+  branch: "master",
 } as const;
-const CONFIG_FILE_TEMPLATE = `export default {
+const CONFIG_FILE_TEMPLATE = `module.exports = {
   dir: "${DEFAULT_CONFIG.dir}",
   template: "${DEFAULT_CONFIG.template}",
   storybook: ${DEFAULT_CONFIG.storybook},
@@ -205,6 +205,7 @@ async function runCloneCommand() {
     }
     const excludedFiles = [
       ...(!config.storybook ? [`!${tempRoot}/**/*.stories.*`] : []),
+      `!${tempRoot}/**/*.mdx`,
     ];
     logger.info("finishing things up...");
     await Promise.all(
