@@ -1,5 +1,6 @@
 {
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
+  "include": [".storybook/**/*"],
   "compilerOptions": {
     "module": "esnext",
     "lib": ["dom", "esnext"],

@@ -27,6 +27,7 @@ export default function cliToolbar() {
       <>
         <Story />
         <Box
+          data-chromatic="ignore"
           sx={{
             p: 0.5,
             position: "fixed",

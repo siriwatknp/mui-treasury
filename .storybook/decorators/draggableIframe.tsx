@@ -101,6 +101,7 @@ export default function draggableIframe() {
           sx={{ maxWidth: 80 }}
         >
           <IconButton
+            data-chromatic="ignore"
             size="small"
             {...getDragHandlers()}
             onDoubleClick={() => {
