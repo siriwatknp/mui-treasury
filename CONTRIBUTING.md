@@ -1,6 +1,6 @@
-# Welcome to Joy Treasury contributing guide
+# Welcome to MUI Treasury contributing guide
 
-Thank you for your time in contributing to Joy Treasury! Let's build a block ✨.
+Thank you for your time in contributing to MUI Treasury! Let's build a block ✨.
 
 ## Types of contributions
 
