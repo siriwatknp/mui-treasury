@@ -21,6 +21,7 @@ export const SwitchIos = styled(Switch)(({ theme }) => {
       top: pxToRem(spacing),
       left: pxToRem(spacing),
       [`&.${switchClasses.checked}`]: {
+        color: (theme.vars || theme).palette.common.white,
         transform: `translateX(calc(${width} - ${size} - ${
           borderWidth * 2
         }px - ${pxToRem(2 * spacing)}))`,
