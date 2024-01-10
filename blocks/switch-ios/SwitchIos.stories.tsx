@@ -20,15 +20,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Ios: Story = {
   render: () => (
-    <div
-      style={{
-        display: "flex",
-        gap: "1rem",
-        borderRadius: "4px",
-        padding: "2rem",
-        backgroundColor: "rgb(245, 245, 245)",
-      }}
-    >
+    <div className="flex gap-2 p-8 bg-gray-50 rounded-sm">
       <SwitchIos />
       <SwitchIos defaultChecked />
     </div>

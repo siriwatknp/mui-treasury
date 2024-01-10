@@ -14,6 +14,7 @@ import { useDarkMode } from "storybook-dark-mode";
 import "./global.css";
 import cliToolbar from "./decorators/cliToolbar";
 import draggableIframe from "./decorators/draggableIframe";
+import "./tailwind.css";
 
 const ModeObserver = () => {
   const isDark = useDarkMode();
