@@ -1,0 +1,66 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Layout/Core Concept" />
+
+<style>{`
+  .sbdocs.sbdocs-content {
+    max-width: 720px;
+  }
+`}</style>
+
+# Core Concept
+
+There are 3 parts that synchronize with each other. configuration, logic and components.
+
+### Data flow
+
+In order to build layout, you need to use layout api to setup configuration of your layout.
+Think of it as a set of commands to control the behavior and effect of the components. Technically, config is just
+a plain object of key-value pairs. let see some example.
+
+Pass the config to `Root` component to let it spread the commands. `Root` is react context provider behind the scene (no magic here)
+The config that `Root` receive will be encapsulated for communicating with other components.
+
+```jsx
+import { getStandardScheme, Root } from "@mui-treasury/layout";
+
+const standardScheme = getStandardScheme();
+
+const App = () => {
+  return <Root scheme={standardScheme}></Root>;
+};
+```
+
+Finally, place components inside `Root` to let them get the commands and display based on each responsibility of each component.
+ex. `EdgeSidebar` will stay on the edge of the browser, left or right depends on the configuration. On the other hand, `InsetSidebar` is designed to display inside the container.
+
+```jsx
+import {
+  Content,
+  EdgeSidebar,
+  Footer,
+  getStandardScheme,
+  Header,
+  Root,
+} from "@mui-treasury/layout";
+
+const standardScheme = getStandardScheme();
+
+const App = () => {
+  return (
+    <Root scheme={standardScheme}>
+      <Header />
+      <EdgeSidebar />
+      <Content />
+      <Footer />
+    </Root>
+  );
+};
+```
+
+> It is that easy 🚀
+
+## Get started tutorials
+
+- [Dashboard Layout](/?path=/docs/layout-tutorials-dashboard--page)
+- [Blog Layout](/?path=/docs/layout-tutorials-blog--page)

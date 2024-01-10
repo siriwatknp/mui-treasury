@@ -1,0 +1,137 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Layout/Feature/Multiple Headers" />
+
+<style>{`
+  .sbdocs-content {
+    max-width: 720px;
+  }
+`}</style>
+
+# Multiple Headers
+
+Some website might have header more than 1, take [Auth0](https://auth0.com/) as an example.
+
+![image](https://user-images.githubusercontent.com/18292247/85591842-d2a6e700-b66f-11ea-89ac-7b7fbb87c554.png)
+
+Now if you scroll down you will see only main header stick to top.
+
+![image](https://user-images.githubusercontent.com/18292247/85591986-f79b5a00-b66f-11ea-8448-306b136abd89.png)
+
+This is a perfect case to use multiple headers. You can provide 2 more headers as `TopHeader` and `Subheader`.
+
+Let's use Auth0 as an example. To set up TopHeader, the 1st thing is to add this scheme
+
+```jsx
+<Root
+  scheme={{
+    header: {
+      config: {
+        xs: {
+          position: "sticky",
+          height: 64,
+          clipped: true,
+        },
+      },
+    },
+    topHeader: {
+      config: {
+        xs: { position: "relative", height: 20, clipped: true },
+      },
+    },
+  }}
+></Root>
+```
+
+That's it for the configuration part, next is to render `TopHeader` component.
+
+```jsx
+import { Root, Header, TopHeader } from "@mui-treasury/layout";
+
+function App() {
+  return (
+    <Root
+      scheme={
+        {
+          // ...scheme
+        }
+      }
+    >
+      <TopHeader>...top header content</TopHeader>
+      <Header>...header content</Header>
+    </Root>
+  );
+}
+```
+
+Most of the time, user might want to hide topHeader if it is a marketing banner. Layout also provide an api to hide topHeader like this.
+
+- create a `state` that store hidden flag. when `hidden` state changed to true, this component will rerender
+  and topHeader will be hidden (topHeader's height will be 0, it will not unmount in this case).
+
+```jsx
+function App() {
+  const [hidden, setHidden] = React.useState(false);
+  return (
+    <Root
+      scheme={{
+        topHeader: {
+          config: {
+            xs: {
+              position: "relative",
+              height: 45,
+              clipped: true,
+            },
+          },
+          hidden,
+        },
+      }}
+    >
+      <TopHeader>
+        ...topHeader content
+        <button onClick={() => setHidden(true)}>Hide</button>
+      </TopHeader>
+      <Header>...header content</Header>
+    </Root>
+  );
+}
+```
+
+Now if you refresh the page, you will see that subheader appear again. To fix this, we need to store this flag in localstorage (this is out of layout scope, just to give you an idea of how real app works) so that when user refresh the page, react use it as initial value.
+
+```jsx
+// ... scheme configuration
+
+function App() {
+  const [hidden, setHidden] = React.useState(
+    localStorage.getItem("topHeaderHidden") === "true"
+  );
+
+  const onHideTopHeader = () => {
+    setHidden(true);
+    localStorage.setItem("topHeaderHidden", "true");
+  };
+  return (
+    <Root
+      scheme={{
+        topHeader: {
+          config: {
+            xs: {
+              position: "relative",
+              height: 45,
+              clipped: true,
+            },
+          },
+          hidden,
+        },
+      }}
+    >
+      <Header>...header content</Header>
+      <TopHeader>
+        ...topHeader content
+        <button onClick={() => setHidden(true)}>Hide</button>
+      </TopHeader>
+    </Root>
+  );
+}
+```

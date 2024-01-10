@@ -1,0 +1,74 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Layout/Configuration/InsetSidebar" />
+
+<style>{`
+  .sbdocs-content {
+    max-width: 720px;
+  }
+`}</style>
+
+# InsetSidebar Configuration
+
+```tsx
+<Root
+  scheme={{
+    leftInsetSidebar: {
+      config: Responsive<InsetSidebarConfig>
+    },
+    rightInsetSidebar: {
+      config: Responsive<InsetSidebarConfig>
+    },
+  }}
+></Root>
+```
+
+### API
+
+There are 3 possible config for InsetSidebar.
+
+- fixed
+- sticky
+- absolute
+
+### `Fixed`
+
+```ts
+{
+  /**
+   * css position of the root element
+   */
+  position: "fixed";
+  /**
+   * width of the sidebar (support all CSS units)
+   */
+  width: number | string;
+  /**
+   * css top of the body element
+   */
+  top?: number | string;
+  /**
+   * If header has `position: relative`, when scroll the page will cause this sidebar to stick with header
+   */
+  headerMagnetEnabled?: boolean;
+}
+```
+
+### `Absolute` & `Sticky`
+
+```ts
+{
+  /**
+   * css position of the root element
+   */
+  position: "absolute";
+  /**
+   * width of the sidebar (support all CSS units)
+   */
+  width: number | string;
+  /**
+   * css top of the body element
+   */
+  top?: number | string;
+}
+```

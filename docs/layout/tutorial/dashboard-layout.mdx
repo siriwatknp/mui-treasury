@@ -1,0 +1,482 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Layout/Tutorials/Dashboard" />
+
+<style>{`
+  .sbdocs-content {
+    max-width: 720px;
+  }
+`}</style>
+
+# Dashboard Layout Tutorial
+
+This tutorial will take you through basic installation and configuration of @mui-treasury/layout for creating standard dashboard application.
+
+Let’s use create-react-app to kickstart the project
+
+```bash
+npx create-react-app my-layout
+```
+
+when the process is done, open root directory
+
+```bash
+cd my-layout
+```
+
+and install necessary packages
+
+```bash
+yarn add @mui/material@next @mui/icons-material@next @emotion/styled @emotion/react @mui-treasury/layout@next @mui-treasury/mockup@next
+```
+
+> note: this tutorial is based on @mui-treasury/layout v5 (alpha),
+> please recheck package.json after installation
+
+Now, when you run `yarn start`, you will see react logo in the browser.
+
+![image](https://user-images.githubusercontent.com/18292247/72663709-0f6b1400-3a28-11ea-828e-85355b16524a.png)
+
+Let's think about Header for a sec. In this tutorial, we want to have Header that stick to
+the top of the page when user scroll. Open file `/src/App.(js|tsx)` and replace with the code below
+
+```jsx
+import React from "react";
+import { Root } from "@mui-treasury/layout";
+
+function App() {
+  return (
+    <Root
+      scheme={{
+        header: {
+          config: {
+            xs: {
+              position: "sticky",
+              height: 56,
+            },
+          },
+        },
+      }}
+    ></Root>
+  );
+}
+
+export default App;
+```
+
+Let me translate it to human language. By doing this, we can say that we want to create a `Header`
+that has `position: sticky` from breakpoint `xs` **up**.
+
+I want to pause here for a moment and emphasize the word **up**. This is quite important for you to
+know that this library follow mobile first responsive design which means the config you define
+at a breakpoint will affect at that breakpoint and **up**. You can override config by specifying new config at
+bigger breakpoint. Here is a list of breakpoint according to [Material UI](https://material-ui.com/customization/breakpoints/)
+
+```js
+value         |0px     600px    900px    1200px   1536px
+key           |xs      sm       md       lg       xl
+screen width  |--------|--------|--------|--------|-------->
+range         |   xs   |   sm   |   md   |   lg   |   xl
+```
+
+This is an example where you don't want Header to stick at the top when scroll the page on laptop screen
+
+```jsx
+import React from "react";
+import { Root } from "@mui-treasury/layout";
+
+function App() {
+  return (
+    <Root
+      scheme={{
+        header: {
+          config: {
+            xs: {
+              position: "sticky",
+              height: 56,
+            },
+            md: {
+              position: "relative",
+              height: 64,
+            },
+          },
+        },
+      }}
+    ></Root>
+  );
+}
+
+export default App;
+```
+
+Next, let's move on to EdgeSidebar configuration.
+
+```jsx
+<Root
+  scheme={{
+    header: {
+      // ...
+    },
+    leftEdgeSidebar: {
+      config: {
+        xs: {
+          variant: "temporary",
+          width: "auto",
+        },
+      },
+    },
+  }}
+></Root>
+```
+
+> see what each variant looks like real quick [here](https://material-ui.com/components/drawers/#drawer)
+
+At this point, let's render these components on the page so that you don't get surprise at the end. This tutorial use default style engine (emotion) of `material-ui@v5`. For styled-components, take a look at [material-ui docs - how to switch to styled-components](https://next.material-ui.com/guides/styled-engine/#heading-how-to-switch-to-styled-component)
+
+```jsx
+import React from "react";
+
+import CssBaseline from "@mui/material/CssBaseline";
+
+import { Root, Header, EdgeSidebar } from "@mui-treasury/layout";
+
+const App = () => {
+  return (
+    <Root
+      scheme={{
+        header: {
+          config: {
+            xs: {
+              position: "sticky",
+              height: 56,
+            },
+            md: {
+              position: "relative",
+              height: 64,
+            },
+          },
+        },
+        leftEdgeSidebar: {
+          config: {
+            xs: {
+              variant: "temporary",
+              width: "auto",
+            },
+          },
+        },
+      }}
+    >
+      <CssBaseline />
+      <Header>Header</Header>
+      <EdgeSidebar anchor="left">Sidebar content</EdgeSidebar>
+    </Root>
+  );
+};
+
+export default App;
+```
+
+> Note: `anchor="left"` is important to tell the component which config to pick up.
+
+Save, and run `yarn start`. You should see something like this on your screen.
+
+![image](https://user-images.githubusercontent.com/18292247/80723265-a026b500-8b2a-11ea-998c-2a442c445fd7.png)
+
+Where is our Sidebar? well, because variant temporary is hidden at initial state.
+Mui-layout store this state inside `Root` and provide a component to trigger `open` state.
+let's update the code to be like this.
+
+```jsx
+// ...other import
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+
+import {
+  // ...previous import
+  EdgeTrigger,
+} from "@mui-treasury/layout";
+
+import Menu from "@mui/icons-material/Menu";
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+
+const App = () => {
+  return (
+    <Root
+      scheme={
+        {
+          // ...the config
+        }
+      }
+    >
+      <CssBaseline />
+      <Header>
+        <Box
+          sx={{ flex: 1, display: "flex", alignItems: "center", px: 2, gap: 1 }}
+        >
+          <EdgeTrigger target={{ anchor: "left", field: "open" }}>
+            {(open, setOpen) => (
+              <IconButton onClick={() => setOpen(!open)}>
+                {open ? <KeyboardArrowLeft /> : <Menu />}
+              </IconButton>
+            )}
+          </EdgeTrigger>
+          Header
+        </Box>
+      </Header>
+      <EdgeSidebar anchor="left">Sidebar content</EdgeSidebar>
+    </Root>
+  );
+};
+```
+
+> EdgeSidebar: `anchor: "left"` means this trigger control the leftEdgeSidebar
+> There are 2 fields in EdgeSidebar state, `open` and `collapsed`. The `field: "open"` will provide the state (open, setOpen) as a function to the children to render dynamic UI. Moreover, it will take care of appear/hidden based on the scheme config of the layout, so you don't need to do all of that details yourself.
+
+![gif](https://media.giphy.com/media/LPg1nlDmhU4M2Pp6iU/giphy.gif)
+
+Next, let's permanently display our EdgeSidebar in laptop screen up by adding the following code
+
+```jsx
+<Root
+  scheme={{
+    // ...header
+    leftEdgeSidebar: {
+      config: {
+        xs: {
+          variant: "temporary",
+          width: "auto",
+        },
+        md: {
+          variant: "permanent",
+          width: 256,
+          collapsible: true,
+          collapsedWidth: 64,
+        },
+      },
+    },
+  }}
+>
+  ...components
+</Root>
+```
+
+> 💡 You might notice that the Menu in header disappears. This is an expected behavior, not a 🐞, because `permanent` EdgeSidebar will always open. Try changing from `variant: "permanent"` to `variant: "persistent"`.
+
+To achieve collapsible mode, we need to add `CollapseBtn` at the bottom of the sidebar.
+
+```jsx
+// ...imports
+import ButtonBase from "@mui/material/ButtonBase";
+
+import {
+  // ..imports
+  SidebarContent,
+} from "@mui-treasury/layout";
+
+const App = () => {
+  return (
+    <Root
+      scheme={
+        {
+          // ...the config
+        }
+      }
+    >
+      <CssBaseline />
+      <Header>...</Header>
+      <EdgeSidebar anchor="left">
+        <SidebarContent>Sidebar content</SidebarContent>
+        <EdgeTrigger target={{ anchor: "left", field: "collapsed" }}>
+          {(collapsed, setCollapsed) => (
+            <ButtonBase
+              onClick={() => setCollapsed(!collapsed)}
+              sx={{
+                minHeight: 40,
+                width: "100%",
+                bgcolor: "grey.100",
+                borderTop: "1px solid",
+                borderColor: "grey.200",
+              }}
+            >
+              {collapsed ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+            </ButtonBase>
+          )}
+        </EdgeTrigger>
+      </EdgeSidebar>
+    </Root>
+  );
+};
+```
+
+`SidebarContent` that added does not have any functionality accept styling. It stretch the content
+and push `ButtonBase` to the bottom (see it in devtool).
+
+![image](https://user-images.githubusercontent.com/18292247/80664273-851f5b00-8ac0-11ea-9a45-4d8739927116.png)
+
+Play around with collapse button.
+
+In some application, the header takes all the space at the top. We can achieve it by adding field `clipped: true` to header config
+
+```jsx
+<Root
+  scheme={{
+    header: {
+      config: {
+        xs: {
+          position: "sticky",
+          height: 56,
+        },
+        md: {
+          position: "relative",
+          height: 64,
+          clipped: true,
+        },
+      },
+    },
+  }}
+></Root>
+```
+
+> 💡 the cool thing is a block added automatically to make sure that sidebar content appear to user. (try changing Header's height, it's awesome 👍)
+
+Last step, let's add `Content` and `Footer` to the page. Both of the components does not have functionality,
+so you don't need to configure explicitly (actually it is already configured with default for you)
+
+```jsx
+// ...imports
+import {
+  // other import
+  Content,
+  Footer,
+} from "@mui-treasury/layout";
+
+const App = () => {
+  return (
+    <Root scheme={scheme}>
+      <CssBaseline />
+      <Header>...</Header>
+      <EdgeSidebar anchor="left">...</EdgeSidebar>
+      <Content>Content</Content>
+      <Footer>Footer</Footer>
+    </Root>
+  );
+};
+```
+
+### Congratulations! you have completed this tutorial.
+
+<details>
+<summary>See Full Code</summary>
+
+```jsx
+import React from "react";
+import {
+  Root,
+  Header,
+  EdgeSidebar,
+  EdgeTriggger,
+  SidebarContent,
+  Content,
+  Footer,
+} from "@mui-treasury/layout";
+import Box from "@mui/material/Box";
+import ButtonBase from "@mui/material/ButtonBase";
+import CssBaseline from "@mui/material/CssBaseline";
+import IconButton from "@mui/material/IconButton";
+
+import Menu from "@mui/icons-material/Menu";
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+
+const App = () => {
+  return (
+    <Root
+      scheme={{
+        header: {
+          config: {
+            xs: {
+              position: "sticky",
+              height: 56,
+            },
+            md: {
+              position: "relative",
+              height: 64,
+            },
+          },
+        },
+        leftEdgeSidebar: {
+          config: {
+            xs: {
+              variant: "temporary",
+              width: "auto",
+            },
+            md: {
+              variant: "permanent",
+              width: 256,
+              collapsible: true,
+              collapsedWidth: 64,
+            },
+          },
+        },
+      }}
+    >
+      <CssBaseline />
+      <Header>
+        <Box
+          sx={{ flex: 1, display: "flex", alignItems: "center", px: 2, gap: 1 }}
+        >
+          <EdgeTrigger target={{ anchor: "left", field: "open" }}>
+            {(open, setOpen) => (
+              <IconButton onClick={() => setOpen(!open)}>
+                {open ? <KeyboardArrowLeft /> : <Menu />}
+              </IconButton>
+            )}
+          </EdgeTrigger>
+          Header
+        </Box>
+      </Header>
+      <EdgeSidebar anchor="left">
+        <SidebarContent>Sidebar content</SidebarContent>
+        <EdgeTrigger target={{ anchor: "left", field: "collapsed" }}>
+          {(collapsed, setCollapsed) => (
+            <ButtonBase
+              onClick={() => setCollapsed(!collapsed)}
+              sx={{
+                minHeight: 40,
+                width: "100%",
+                bgcolor: "grey.100",
+                borderTop: "1px solid",
+                borderColor: "grey.200",
+              }}
+            >
+              {collapsed ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+            </ButtonBase>
+          )}
+        </EdgeTrigger>
+      </EdgeSidebar>
+      <Content>Content</Content>
+      <Footer>Footer</Footer>
+    </Root>
+  );
+};
+
+export default App;
+```
+
+</details>
+
+<br />
+
+You can look at clone examples to see advance layout like documentation site, e-commerce site or even chat site.
+
+### Other Tutorial
+
+- Blog layout
+
+### Application inspiration
+
+- Gmail
+- Facebook Messenger
+- ReactJS Docs
+- Shopping Cart

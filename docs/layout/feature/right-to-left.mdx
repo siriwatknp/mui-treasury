@@ -1,0 +1,88 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Layout/Feature/Right to Left" />
+
+<style>{`
+  .sbdocs-content {
+    max-width: 720px;
+  }
+`}</style>
+
+# RTL (Right to Left)
+
+you will need to setup everything as left-to-right first, and then follow `material-ui` [RTL documentation](https://next.material-ui.com/guides/right-to-left/#steps).
+
+```
+yarn add stylis-plugin-rtl
+```
+
+This RTL plugin works with both `emotion` and `styled-components`.
+
+**Code Example**
+
+```jsx
+import React from "react";
+import rtlPlugin from "stylis-plugin-rtl";
+import { CacheProvider } from "@emotion/react";
+import createCache from "@emotion/cache";
+import {
+  Root,
+  Header,
+  EdgeSidebar,
+  SidebarContent,
+} from "@mui-treasury/layout";
+
+// Create rtl cache
+const cacheRtl = createCache({
+  key: "muirtl",
+  // @ts-ignore
+  stylisPlugins: [rtlPlugin],
+});
+
+function App() {
+  return (
+    <CacheProvider value={cacheRtl}>
+      <div dir="rtl">
+        <Root
+          scheme={{
+            header: {
+              config: {
+                xs: {
+                  position: "sticky",
+                  height: 56,
+                  clipped: true,
+                },
+                md: {
+                  position: "sticky",
+                  height: 64,
+                  clipped: true,
+                },
+              },
+            },
+            leftEdgeSidebar: {
+              autoCollapse: "sm",
+              config: {
+                xs: {
+                  variant: "temporary",
+                  width: 256,
+                },
+                sm: {
+                  variant: "permanenet",
+                  width: 256,
+                  collapsible: true,
+                  collapsedWidth: 72,
+                },
+              },
+            },
+          }}
+        >
+          <Header>Header</Header>
+          <EdgeSidebar anchor="left">
+            <SidebarContent>EdgeSidebar</SidebarContent>
+          </EdgeSidebar>
+        </Root>
+      </div>
+    </CacheProvider>
+  );
+}
+```

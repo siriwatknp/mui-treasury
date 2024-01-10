@@ -1,0 +1,89 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Layout/Starter Templates" />
+
+# Starter Templates
+
+<br />
+
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+
+export const BrandCard = ({ title, imgBgColor, src, ...props }) => (
+  <Card
+    component={"a"}
+    {...props}
+    sx={{
+      ...props.sx,
+      display: "block",
+      p: 1.5,
+      borderRadius: "12px",
+      boxShadow: "rgb(0 0 0 / 30%) 0px 8px 40px -12px",
+      transition: "all 0.3s ease 0s",
+      "&:hover": {
+        boxShadow: "rgb(0 0 0 / 30%) 0px 16px 70px -12.125px",
+      },
+    }}
+  >
+    <CardMedia
+      image={src}
+      sx={{
+        backgroundColor: imgBgColor,
+        borderRadius: "6px",
+        width: "100%",
+        height: 0,
+        pb: "75%",
+      }}
+    />
+    <CardContent>
+      <Typography variant="h6" color="textPrimary" align="center">
+        <b>{title}</b>
+      </Typography>
+    </CardContent>
+  </Card>
+);
+
+<Box width="100%">
+  <Grid container spacing={4}>
+    <Grid item xs={12} sm={6} md={4}>
+      <BrandCard
+        title="Create React App"
+        src="https://create-react-app.dev/img/logo-og.png"
+        href="https://github.com/mui-treasury/cra-mui-layout-starter#get-started-"
+        target="_blank"
+        rel="noreferrer noopener"
+      />
+    </Grid>
+    <Grid item xs={12} sm={6} md={4}>
+      <BrandCard
+        title="Gatsby"
+        src="https://cdn.auth0.com/blog/illustrations/gatsbyjs.png"
+        href="https://github.com/mui-treasury/gatsby-mui-layout-starter#get-started-"
+        target="_blank"
+        rel="noreferrer noopener"
+      />
+    </Grid>
+    <Grid item xs={12} sm={6} md={4}>
+      <BrandCard
+        title="NextJS"
+        src="https://cdn.auth0.com/blog/illustrations/nextjs.png"
+        href="https://github.com/mui-treasury/nextjs-mui-layout-starter#get-started-"
+        target="_blank"
+        rel="noreferrer noopener"
+      />
+    </Grid>
+    <Grid item xs={12} sm={6} md={4}>
+      <BrandCard
+        title="CodeSandbox"
+        src="https://user-images.githubusercontent.com/18292247/119919458-b0f76380-bf94-11eb-83a3-7e636c955a07.jpg"
+        href="https://codesandbox.io/s/material-ui-layout-7mn9xq3nnj?file=/src/LayoutV5.js"
+        target="_blank"
+        rel="noreferrer noopener"
+      />
+    </Grid>
+  </Grid>
+</Box>
