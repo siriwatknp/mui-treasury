@@ -32,6 +32,25 @@ const ModeObserver = () => {
 const preview: Preview = {
   parameters: {
     // actions: { argTypesRegex: "^on[A-Z].*" },
+    options: {
+      storySort: {
+        order: [
+          "Layout",
+          [
+            "Introduction",
+            "Core Concept",
+            "Starter Templates",
+            "Migration to v5",
+            "Feature",
+            "Configuration",
+            "Tutorials",
+            "Preset",
+            "Example",
+            "App",
+          ],
+        ],
+      },
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
