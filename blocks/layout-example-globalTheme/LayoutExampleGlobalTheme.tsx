@@ -50,95 +50,97 @@ const coolGray = {
   900: "#111827",
 };
 
+const theme = createTheme({
+  palette: {
+    primary: { main: coolGray[800] },
+    text: {
+      primary: coolGray[900],
+      secondary: coolGray[600],
+      disabled: coolGray[300],
+    },
+    background: {
+      default: coolGray[100],
+      paper: "#fff",
+    },
+    grey: coolGray,
+  },
+  components: {
+    AppEdgeSidebar: {
+      styleOverrides: {
+        root: {
+          [`& .${drawerClasses.paper}`]: {
+            backgroundColor: "rgba(0,0,0,0)",
+            border: "none",
+          },
+        },
+      },
+    },
+    AppContent: {
+      styleOverrides: {
+        root: {
+          marginBottom: 16,
+        },
+      },
+    },
+    AppInsetSidebar: {
+      styleOverrides: {
+        root: {
+          padding: 16,
+          paddingLeft: 0,
+        },
+      },
+    },
+    AppFooter: {
+      styleOverrides: {
+        root: {
+          marginBottom: 20,
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: 40,
+        },
+      },
+    },
+    MuiFilledInput: {
+      styleOverrides: {
+        root: {
+          [`&.${inputBaseClasses.hiddenLabel}`]: {
+            borderRadius: 40,
+          },
+          backgroundColor: coolGray[100],
+          "&:hover": {
+            backgroundColor: coolGray[200],
+          },
+          "&.Mui-focused": {
+            boxShadow: `0 0 0 1px ${coolGray[500]}`,
+            backgroundColor: "#fff",
+          },
+        },
+      },
+    },
+    MuiPaper: {
+      defaultProps: {
+        elevation: 0,
+      },
+    },
+    MuiSkeleton: {
+      styleOverrides: {
+        root: {
+          backgroundColor: coolGray[200],
+        },
+      },
+    },
+  },
+});
+// @ts-ignore
+theme.vars = null;
+
 export const LayoutExampleGlobalTheme = () => {
   return (
-    <ThemeProvider
-      theme={createTheme({
-        palette: {
-          primary: { main: coolGray[800] },
-          text: {
-            primary: coolGray[900],
-            secondary: coolGray[600],
-            disabled: coolGray[300],
-          },
-          background: {
-            default: coolGray[100],
-            paper: "#fff",
-          },
-          grey: coolGray,
-        },
-        components: {
-          AppEdgeSidebar: {
-            styleOverrides: {
-              root: {
-                [`& .${drawerClasses.paper}`]: {
-                  backgroundColor: "rgba(0,0,0,0)",
-                  border: "none",
-                },
-              },
-            },
-          },
-          AppContent: {
-            styleOverrides: {
-              root: {
-                marginBottom: 16,
-              },
-            },
-          },
-          AppInsetSidebar: {
-            styleOverrides: {
-              root: {
-                padding: 16,
-                paddingLeft: 0,
-              },
-            },
-          },
-          AppFooter: {
-            styleOverrides: {
-              root: {
-                marginBottom: 20,
-              },
-            },
-          },
-          MuiButton: {
-            styleOverrides: {
-              root: {
-                borderRadius: 40,
-              },
-            },
-          },
-          MuiFilledInput: {
-            styleOverrides: {
-              root: {
-                [`&.${inputBaseClasses.hiddenLabel}`]: {
-                  borderRadius: 40,
-                },
-                backgroundColor: coolGray[100],
-                "&:hover": {
-                  backgroundColor: coolGray[200],
-                },
-                "&.Mui-focused": {
-                  boxShadow: `0 0 0 1px ${coolGray[500]}`,
-                  backgroundColor: "#fff",
-                },
-              },
-            },
-          },
-          MuiPaper: {
-            defaultProps: {
-              elevation: 0,
-            },
-          },
-          MuiSkeleton: {
-            styleOverrides: {
-              root: {
-                backgroundColor: coolGray[200],
-              },
-            },
-          },
-        },
-      })}
-    >
+    <ThemeProvider theme={theme}>
       <Fullscreen>
         <Root
           scheme={{
