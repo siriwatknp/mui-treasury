@@ -17,7 +17,7 @@ import { Meta } from "@storybook/blocks";
 **v4.5** (previous)
 
 ```jsx
-import { getContent, getHeader } from "@mui-treasury/layout";
+import { getContent, getHeader } from "path/to/layout-core";
 
 const Header = getHeader(styled);
 const Content = getContent(styled);
@@ -26,7 +26,7 @@ const Content = getContent(styled);
 **v5** (new)
 
 ```jsx
-import { Content, Header } from "@mui-treasury/layout";
+import { Content, Header } from "path/to/layout-core";
 ```
 
 ---
@@ -38,7 +38,7 @@ replace `SidebarTrigger` with `EdgeTrigger` and provider target prop.
 **v4.5** (previous)
 
 ```jsx
-import { getSidebarTriggger } from "@mui-treasury/layout";
+import { getSidebarTriggger } from "path/to/layout-core";
 
 const SidebarTrigger = getSidebarTriggger(styled);
 
@@ -55,7 +55,7 @@ first, provide `target` with `anchor: "left" | "right"` and `field: "open" | "co
 then the Trigger will get (state, setState) from children as a function.
 
 ```jsx
-import { EdgeTrigger } from "@mui-treasury/layout";
+import { EdgeTrigger } from "path/to/layout-core";
 
 // EdgeTrigger render as div
 <EdgeTrigger target={{ anchor: "left", field: "open" }}>
@@ -76,7 +76,7 @@ similar to `SidebarTrigger`, but use `field: collapsed` instead.
 **v5** (new)
 
 ```jsx
-import { EdgeTrigger } from "@mui-treasury/layout";
+import { EdgeTrigger } from "path/to/layout-core";
 
 // EdgeTrigger render as div
 <EdgeTrigger target={{ anchor: "left", field: "collapsed" }}>
@@ -97,7 +97,7 @@ There are no Builder exported anymore, just pass plain object to `Root`. Details
 **v4.5** (previous)
 
 ```jsx
-import Layout from '@mui-treasury/layout';
+import Layout from 'path/to/layout-core';
 
 const scheme = LayoutBuilder()
 
@@ -118,7 +118,7 @@ scheme.configureEdgeSidebar(builder => {
 **v5** (new)
 
 ```jsx
-import { Root } from '@mui-treasury/layout';
+import { Root } from 'path/to/layout-core';
 
 <Root
   scheme={{

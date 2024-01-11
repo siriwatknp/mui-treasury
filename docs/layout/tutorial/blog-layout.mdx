@@ -24,15 +24,15 @@ If you've already deleted the code, below is the final source code. Replace it i
 
 ```jsx
 import React from "react";
+import CssBaseline from "@mui/material/CssBaseline";
 import {
-  Header,
+  Content,
   EdgeSidebar,
   EdgeTriggger,
-  SidebarContent,
-  Content,
   Footer,
-} from "@mui-treasury/layout";
-import CssBaseline from "@mui/material/CssBaseline";
+  Header,
+  SidebarContent,
+} from "path/to/layout-core";
 
 const App = () => {
   return (
@@ -181,7 +181,7 @@ import {
   // ...other imports
   InsetContainer,
   InsetSidebar,
-} from "@mui-treasury/layout";
+} from "path/to/layout-core";
 
 const App = () => {
   return (
@@ -293,7 +293,7 @@ import Container from "@mui/material/Container";
 import {
   // ...
   InsetAvoidingView,
-} from "@mui-treasury/layout";
+} from "path/to/layout-core";
 
 const Blog = () => {
   return (
@@ -332,25 +332,24 @@ You can look at clone examples to see advance layout like documentation site, e-
 
 ```jsx
 import React from "react";
-import {
-  Root,
-  Header,
-  EdgeSidebar,
-  EdgeTriggger,
-  SidebarContent,
-  InsetContainer,
-  InsetSidebar,
-  InsetAvoidingView,
-  Content,
-  Footer,
-} from "@mui-treasury/layout";
-import CssBaseline from "@mui/material/CssBaseline";
-import Container from "@mui/material/Container";
-import IconButton from "@mui/material/IconButton";
-
-import Menu from "@mui/icons-material/Menu";
 import ArrowLeft from "@mui/icons-material/ArrowLeft";
 import ArrowRight from "@mui/icons-material/ArrowRight";
+import Menu from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import CssBaseline from "@mui/material/CssBaseline";
+import IconButton from "@mui/material/IconButton";
+import {
+  Content,
+  EdgeSidebar,
+  EdgeTriggger,
+  Footer,
+  Header,
+  InsetAvoidingView,
+  InsetContainer,
+  InsetSidebar,
+  Root,
+  SidebarContent,
+} from "path/to/layout-core";
 
 const App = () => {
   return (

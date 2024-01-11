@@ -10,7 +10,7 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 # Dashboard Layout Tutorial
 
-This tutorial will take you through basic installation and configuration of @mui-treasury/layout for creating standard dashboard application.
+This tutorial will take you through basic installation and configuration of path/to/layout-core for creating standard dashboard application.
 
 Let’s use create-react-app to kickstart the project
 
@@ -27,10 +27,10 @@ cd my-layout
 and install necessary packages
 
 ```bash
-yarn add @mui/material@next @mui/icons-material@next @emotion/styled @emotion/react @mui-treasury/layout@next @mui-treasury/mockup@next
+yarn add @mui/material@next @mui/icons-material@next @emotion/styled @emotion/react path/to/layout-core@next @mui-treasury/mockup@next
 ```
 
-> note: this tutorial is based on @mui-treasury/layout v5 (alpha),
+> note: this tutorial is based on path/to/layout-core v5 (alpha),
 > please recheck package.json after installation
 
 Now, when you run `yarn start`, you will see react logo in the browser.
@@ -42,7 +42,7 @@ the top of the page when user scroll. Open file `/src/App.(js|tsx)` and replace 
 
 ```jsx
 import React from "react";
-import { Root } from "@mui-treasury/layout";
+import { Root } from "path/to/layout-core";
 
 function App() {
   return (
@@ -83,7 +83,7 @@ This is an example where you don't want Header to stick at the top when scroll t
 
 ```jsx
 import React from "react";
-import { Root } from "@mui-treasury/layout";
+import { Root } from "path/to/layout-core";
 
 function App() {
   return (
@@ -135,10 +135,8 @@ At this point, let's render these components on the page so that you don't get s
 
 ```jsx
 import React from "react";
-
 import CssBaseline from "@mui/material/CssBaseline";
-
-import { Root, Header, EdgeSidebar } from "@mui-treasury/layout";
+import { EdgeSidebar, Header, Root } from "path/to/layout-core";
 
 const App = () => {
   return (
@@ -188,17 +186,15 @@ let's update the code to be like this.
 
 ```jsx
 // ...other import
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import Menu from "@mui/icons-material/Menu";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
-
 import {
   // ...previous import
   EdgeTrigger,
-} from "@mui-treasury/layout";
-
-import Menu from "@mui/icons-material/Menu";
-import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+} from "path/to/layout-core";
 
 const App = () => {
   return (
@@ -268,11 +264,10 @@ To achieve collapsible mode, we need to add `CollapseBtn` at the bottom of the s
 ```jsx
 // ...imports
 import ButtonBase from "@mui/material/ButtonBase";
-
 import {
   // ..imports
   SidebarContent,
-} from "@mui-treasury/layout";
+} from "path/to/layout-core";
 
 const App = () => {
   return (
@@ -349,7 +344,7 @@ import {
   // other import
   Content,
   Footer,
-} from "@mui-treasury/layout";
+} from "path/to/layout-core";
 
 const App = () => {
   return (
@@ -371,23 +366,22 @@ const App = () => {
 
 ```jsx
 import React from "react";
-import {
-  Root,
-  Header,
-  EdgeSidebar,
-  EdgeTriggger,
-  SidebarContent,
-  Content,
-  Footer,
-} from "@mui-treasury/layout";
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import Menu from "@mui/icons-material/Menu";
 import Box from "@mui/material/Box";
 import ButtonBase from "@mui/material/ButtonBase";
 import CssBaseline from "@mui/material/CssBaseline";
 import IconButton from "@mui/material/IconButton";
-
-import Menu from "@mui/icons-material/Menu";
-import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import {
+  Content,
+  EdgeSidebar,
+  EdgeTriggger,
+  Footer,
+  Header,
+  Root,
+  SidebarContent,
+} from "path/to/layout-core";
 
 const App = () => {
   return (

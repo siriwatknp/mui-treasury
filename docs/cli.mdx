@@ -21,7 +21,7 @@ export default {
   dir: "src/mui-treasury", // your project's directory to clone the blocks to.
   template: "typescript", // only `typescript` is supported at the moment.
   storybook: false, // if `true`, the storybook file for the block will be cloned as well.
-  branch: "main", // the branch to clone from. `main` branch is the stable channel.
+  branch: "master", // the branch to clone from. `main` branch is the stable channel.
 };
 ```
 
@@ -33,21 +33,19 @@ Clone a block and save to the target directory.
 npx mui-treasury@latest clone [blocks...]
 ```
 
-Pick a block from the sidebar. For example, if you want to clone `Card/News/Maldives`, the block id will be `card-news-maldives`.
+Pick a block from the sidebar. For example, if you want to clone [Card/Tutor](/story/card-tutor--tutor), the block id will be `card-tutor`.
 
 Then run the clone command with:
 
 ```bash
-npx mui-treasury@latest clone card-news-maldives
+npx mui-treasury@latest clone card-tutor
 ```
 
 To clone multiple blocks at the same time, try:
 
 ```bash
-npx mui-treasury@latest clone card-news-maldives card-travel-spa
+npx mui-treasury@latest clone card-tutor avatar-google
 ```
-
-> 💡 You can only clone 3-levels deep, for example, the `card-travel-spa` will clone the [CardTravelSpa](/story/card-travel-spa--spa) and [CardTravelSpaCover](/story/card-travel-spa--spa-cover) into the same folder.
 
 To override the default config or `mui-treasury.config.js`, pass any of the options below:
 
@@ -55,6 +53,6 @@ To override the default config or `mui-treasury.config.js`, pass any of the opti
 Options:
   -d, --dir          the project directory to clone the blocks to. (default: "src/mui-treasury")
   --storybook        included the block storybook. (default: false)
-  -b, --branch       the github branch of mui-treasury to use. (default: "main")
+  -b, --branch       the github branch of mui-treasury to use. (default: "master")
   -h, --help         display help for command
 ```

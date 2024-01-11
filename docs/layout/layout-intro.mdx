@@ -22,7 +22,7 @@ with these convoluted layout.
 > 💡 only compatible with `@mui/material@v5` NOT `v4`
 
 - leverage `@material-ui v5` built-in styling engine, emotion (default) or styled-components (the choice is your).
-- bundle size reduction by ~30%. [Bundle phobia](https://bundlephobia.com/result?p=@mui-treasury/layout)
+- bundle size reduction by ~30%. [Bundle phobia](https://bundlephobia.com/result?p=path/to/layout-core)
   ![mui-treasury:layout](https://user-images.githubusercontent.com/18292247/119865137-9053ed00-bf45-11eb-9543-94cac9458c0d.png)
 
   > Compare with v4 by using create-react-app production build. Bundle size reduce from `49.73KB in v5` to `32.91KB in v5`.
@@ -32,7 +32,7 @@ with these convoluted layout.
 - restructure the codebase which makes the setup simpler (no more builders, just plain object as scheme)
 
   ```jsx
-  import { Header, Root } from "@mui-treasury/layout";
+  import { Header, Root } from "path/to/layout-core";
 
   function App() {
     return (
@@ -60,7 +60,7 @@ with these convoluted layout.
     Header,
     Root,
     SidebarContent,
-  } from "@mui-treasurt/layout";
+  } from "path/to/layout-core";
 
   function App() {
     return (
