@@ -13,7 +13,7 @@ const meta = {
   title: "<%=h.getFirstPascal(name)%>/<%=h.getSecondPascal(name)%><%=h.getThirdPascal(name) ? `/${h.getThirdPascal(name)}` : ''%>",
   component: <%=h.toName(name)%>,
   parameters: {
-    layout: "centered",
+    layout: "<%=name.startsWith('layout') ? 'fullscreen' : 'centered'%>",
     githubUsername: "siriwatknp", // (optional) Your github username. If provided, your avatar will be displayed in the story toolbar
   },
   decorators: [storyDialog(Usage), googleFont([])],
@@ -23,19 +23,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const <%=h.getThirdPascal(name) || h.getSecondPascal(name)%>: Story = {
-  render: () => (
-    <div 
-      style={{
-        width: 340,
-        padding: 20,
-        maxWidth: "100%",
-        resize: "horizontal",
-        overflow: "auto",
-      }}
-    >
-      <<%=h.toName(name)%> />
-    </div>
-  ),
+  render: () => <<%=h.toName(name)%> />,
 };
 
 

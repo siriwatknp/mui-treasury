@@ -5,7 +5,10 @@ import { useEdgeSidebar } from "./useEdgeSidebar";
 
 const EdgeTriggerRoot = styled("div", { name: "EdgeTrigger" })({});
 
-export type EdgeTriggerProps = Parameters<typeof EdgeTriggerRoot>[0] & {
+export type EdgeTriggerProps = Omit<
+  Parameters<typeof EdgeTriggerRoot>[0],
+  "children"
+> & {
   target: {
     anchor?: DrawerAnchor;
     field: "open" | "collapsed";
