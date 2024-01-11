@@ -38,6 +38,7 @@ const preview: Preview = {
           "Layout",
           [
             "Introduction",
+            "Installation",
             "Core Concept",
             "Starter Templates",
             "Migration to v5",

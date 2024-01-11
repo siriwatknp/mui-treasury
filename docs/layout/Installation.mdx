@@ -1,0 +1,21 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Layout/Installation" />
+
+<style>{`
+  .sbdocs.sbdocs-content {
+    max-width: 720px;
+  }
+`}</style>
+
+## Installation
+
+MUI Treasury no longer provides npm packages. Instead, you can run the CLI to pull the source code to your project and adjust to your needs.
+
+```sh
+npx mui-treasury@latest clone layout-core
+```
+
+By default, the source code will be cloned to `src/mui-treasury/layout-core` unless you specify a `dir` in `<root-directory>/mui-treasury.config.js` file.
+
+## Basic Usage
