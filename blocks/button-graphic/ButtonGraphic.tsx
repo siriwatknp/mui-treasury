@@ -9,9 +9,6 @@ const GraphicButton = styled(Button)(({ theme }) => {
     borderRadius: 50,
     textTransform: "initial",
     marginTop: -2,
-    "&:hover": {
-      borderBottom: "none",
-    },
     variants: [
       {
         props: { variant: "contained", color: "primary" },
@@ -24,7 +21,7 @@ const GraphicButton = styled(Button)(({ theme }) => {
           boxShadow: initialShadow,
           textTransform: "uppercase",
           letterSpacing: "0.5px",
-          "&:focus": {
+          "&:hover, &:focus": {
             boxShadow: initialShadow,
           },
           "&:active": {
