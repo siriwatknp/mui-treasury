@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 import { execSync } from "child_process";
 import fs from "fs";
+import path from "path";
 import { Stream } from "stream";
 import { promisify } from "util";
 import chalk from "chalk";
 import { cosmiconfig } from "cosmiconfig";
 import cpy from "cpy";
 import got from "got";
+import prompts from "prompts";
 import rimraf from "rimraf";
 import * as tar from "tar";
 import checkForUpdate from "update-check";
@@ -34,14 +36,6 @@ const CONFIG_FILE_TEMPLATE = `module.exports = {
   branch: "${DEFAULT_CONFIG.branch}",
 };
 `;
-
-const cloneParams: {
-  sources: string[];
-  options: CloneOptions | undefined;
-} = {
-  sources: [],
-  options: undefined,
-};
 
 const logger = {
   log: (...text: string[]) => {
@@ -161,9 +155,61 @@ async function notifyUpdate(): Promise<void> {
 
 const program = createProgram({
   commands: {
-    clone: (sources, options) => {
-      cloneParams.sources = sources;
-      cloneParams.options = options;
+    clone: async (sources, options) => {
+      const config = await getConfigFile(options);
+      if (config.dir && !config.dir.startsWith("/")) {
+        config.dir = `/${config.dir}`;
+      }
+      for (let field of Object.entries(config)) {
+        logger.config(`"${field[0]}: ${field[1]}"`);
+      }
+      const tempRoot = process.cwd() + "/mui-treasury-tmp";
+      const tempTemplateRoot = process.cwd() + "/mui-treasury-template-tmp";
+      const actualRoot = process.cwd() + config.dir;
+      if (!fs.existsSync(tempRoot)) {
+        fs.mkdirSync(tempRoot, { recursive: true });
+      }
+      if (!fs.existsSync(tempTemplateRoot)) {
+        fs.mkdirSync(tempTemplateRoot, { recursive: true });
+      }
+      logger.info(`start cloning ${chalk.bold(sources.length)} packages...`);
+      try {
+        if (sources.length) {
+          await downloadAndExtractCode(tempRoot, sources, config.branch);
+        }
+        const excludedFiles = [
+          ...(!config.storybook ? [`!${tempRoot}/**/*.stories.*`] : []),
+          `!${tempRoot}/**/*.mdx`,
+        ];
+        logger.info("finishing things up...");
+        await Promise.all(
+          sources.map((mod) =>
+            cpy(
+              [
+                // default template is typescript (ts codes live in "src" folder)
+                `${tempRoot}/${mod}${
+                  TEMPLATE_FOLDER_MAP[config.template]
+                    ? `/${TEMPLATE_FOLDER_MAP[config.template]}`
+                    : ""
+                }/*`,
+                ...excludedFiles,
+              ],
+              `${actualRoot}/${mod}`,
+              {
+                overwrite: true,
+              }
+            )
+          )
+        );
+      } catch (error) {
+        logger.log(chalk.bold(chalk.red("❌ clone failed!")));
+        throw error;
+      } finally {
+        // clean up temp folder
+        await Promise.all([removeDir(tempRoot), removeDir(tempTemplateRoot)]);
+      }
+      logger.log(chalk.bold(chalk.green("✅ cloned successfully!")));
+      await notifyUpdate();
     },
     init: () => {
       fs.writeFile(
@@ -175,72 +221,126 @@ const program = createProgram({
         }
       );
     },
+    create: async (template, directory, options = {}) => {
+      const { branch = "master" } = options;
+      if (!template) {
+        const { template: selectedTemplate } = await prompts({
+          name: "template",
+          type: "autocomplete",
+          message: "Pick a template",
+          suggest: (input, choices) =>
+            Promise.resolve(
+              choices.filter(
+                (i) =>
+                  i.title.toLowerCase().includes(input.toLowerCase()) ||
+                  i.value.toLowerCase().includes(input.toLowerCase())
+              )
+            ),
+          choices: [
+            {
+              title: "[TS] Material UI - Next.js App Router",
+              value: "material-ui-nextjs-ts",
+            },
+            {
+              title: "[TS] Material UI - Next.js Pages Router",
+              value: "material-ui-nextjs-pages-router-ts",
+            },
+            {
+              title: "[TS] Material UI - Remix",
+              value: "material-ui-remix-ts",
+            },
+            {
+              title: "[TS] Material UI - Vite",
+              value: "material-ui-vite-ts",
+            },
+            {
+              title: "[TS] Base UI - Next.js Tailwind",
+              value: "base-ui-nextjs-tailwind-ts",
+            },
+            {
+              title: "[TS] Base UI - Vite Tailwind",
+              value: "base-ui-vite-tailwind-ts",
+            },
+            {
+              title: "[TS] Joy UI - Next.js",
+              value: "joy-ui-nextjs-ts",
+            },
+            { title: "[TS] Joy UI - Vite", value: "joy-ui-vite-ts" },
+            {
+              title: "[TS] Material UI - Next.js v4 to v5 Migration",
+              value: "material-ui-nextjs-ts-v4-v5-migration",
+            },
+            {
+              title: "[TS] Material UI - CRA",
+              value: "material-ui-cra-ts",
+            },
+            {
+              title: "[TS] Material UI - CRA, styled-components",
+              value: "material-ui-cra-styled-components-ts",
+            },
+            {
+              title: "[TS] Material UI - CRA, Tailwind",
+              value: "material-ui-cra-tailwind-ts",
+            },
+            { title: "[TS] Base UI - CRA", value: "base-ui-cra-ts" },
+            { title: "[TS] Joy UI - CRA", value: "joy-ui-cra-ts" },
+            {
+              title: "Material UI - CRA, styled-components",
+              value: "material-ui-cra-styled-components",
+            },
+            {
+              title: "Material UI - Express SSR",
+              value: "material-ui-express-ssr",
+            },
+            { title: "Material UI - Gatsby", value: "material-ui-gatsby" },
+            { title: "Material UI - Next.js", value: "material-ui-nextjs" },
+            {
+              title: "Material UI - Next.js Pages Router",
+              value: "material-ui-nextjs-pages-router",
+            },
+            { title: "Material UI - Preact", value: "material-ui-preact" },
+            { title: "Material UI - via CDN", value: "material-ui-via-cdn" },
+            { title: "Material UI - Vite", value: "material-ui-vite" },
+            { title: "Material UI - CRA", value: "material-ui-cra" },
+            { title: "Base UI - CRA", value: "base-ui-cra" },
+            {
+              title: "Base UI - Vite Tailwind",
+              value: "base-ui-vite-tailwind",
+            },
+          ],
+        });
+        template = selectedTemplate;
+      }
+      if (!directory) {
+        const { dir } = await prompts({
+          name: "dir",
+          type: "text",
+          message: "Type a folder name",
+          initial: template,
+        });
+        directory = dir;
+      }
+      logger.info(`⏳ pulling the template to ${chalk.bold(directory)}`);
+      const root = path.resolve(process.cwd(), directory);
+      fs.mkdirSync(root, { recursive: true });
+      try {
+        await pipeline(
+          got.stream(
+            `https://codeload.github.com/mui/material-ui/tar.gz/${branch}`
+          ),
+          tar.extract({ cwd: root, strip: 3 }, [
+            `material-ui-${branch}/examples/${template}`,
+          ])
+        );
+      } catch (error) {
+        logger.log(chalk.bold(chalk.red("❌ clone failed!")));
+        throw error;
+      }
+      logger.log(chalk.bold(chalk.green("✅ created successfully!")));
+      logger.log(`👉 "cd ${directory}" and install the dependencies`);
+      await notifyUpdate();
+    },
   },
 });
 
 program.parse(process.argv);
-
-async function runCloneCommand() {
-  const config = await getConfigFile(cloneParams.options);
-  if (config.dir && !config.dir.startsWith("/")) {
-    config.dir = `/${config.dir}`;
-  }
-  for (let field of Object.entries(config)) {
-    logger.config(`"${field[0]}: ${field[1]}"`);
-  }
-  const tempRoot = process.cwd() + "/mui-treasury-tmp";
-  const tempTemplateRoot = process.cwd() + "/mui-treasury-template-tmp";
-  const actualRoot = process.cwd() + config.dir;
-  if (!fs.existsSync(tempRoot)) {
-    fs.mkdirSync(tempRoot, { recursive: true });
-  }
-  if (!fs.existsSync(tempTemplateRoot)) {
-    fs.mkdirSync(tempTemplateRoot, { recursive: true });
-  }
-  const sources = cloneParams.sources;
-  logger.info(`start cloning ${chalk.bold(sources.length)} packages...`);
-  try {
-    if (sources.length) {
-      await downloadAndExtractCode(tempRoot, sources, config.branch);
-    }
-    const excludedFiles = [
-      ...(!config.storybook ? [`!${tempRoot}/**/*.stories.*`] : []),
-      `!${tempRoot}/**/*.mdx`,
-    ];
-    logger.info("finishing things up...");
-    await Promise.all(
-      sources.map((mod) =>
-        cpy(
-          [
-            // default template is typescript (ts codes live in "src" folder)
-            `${tempRoot}/${mod}${
-              TEMPLATE_FOLDER_MAP[config.template]
-                ? `/${TEMPLATE_FOLDER_MAP[config.template]}`
-                : ""
-            }/*`,
-            ...excludedFiles,
-          ],
-          `${actualRoot}/${mod}`,
-          {
-            overwrite: true,
-          }
-        )
-      )
-    );
-  } catch (error) {
-    logger.log(chalk.bold(chalk.red("❌ clone failed!")));
-    throw error;
-  } finally {
-    // clean up temp folder
-    await Promise.all([removeDir(tempRoot), removeDir(tempTemplateRoot)]);
-  }
-  logger.log(chalk.bold(chalk.green("✅ cloned successfully!")));
-}
-
-if (cloneParams.sources.length) {
-  runCloneCommand()
-    .then(notifyUpdate)
-    .catch((error) => {
-      throw error;
-    });
-}
