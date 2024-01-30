@@ -41,7 +41,7 @@
     "commander": "11.1.0",
     "cosmiconfig": "8.2.0",
     "cpy": "8.1.1",
-    "got": "11.8.2",
+    "got": "11.8.5",
     "prompts": "2.4.2",
     "react-dropzone": "^14.2.3",
     "react-ga4": "2.1.0",
