@@ -7,6 +7,7 @@ import {
   STORY_MISSING,
 } from "@storybook/core-events";
 import { Tool } from "./decorators/Author";
+import CarbonAds from './carbon-ads/CarbonAds';
 
 // https://storybook.js.org/docs/react/configure/features-and-behavior
 addons.setConfig({
@@ -49,5 +50,13 @@ addons.register("contributor", () => {
     title: "Author",
     type: types.TOOL,
     render: Tool as unknown as () => React.ReactElement,
+  });
+});
+
+addons.register("carbon-ads", () => {
+  addons.add("carbon-ads/toolbar", {
+    title: "Carbon Ads",
+    type: types.TOOL,
+    render: CarbonAds as unknown as () => React.ReactElement,
   });
 });
