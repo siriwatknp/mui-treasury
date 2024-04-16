@@ -53,10 +53,15 @@ addons.register("contributor", () => {
   });
 });
 
-addons.register("carbon-ads", () => {
+addons.register("carbon-ads", (api) => {
+  api.on(STORY_CHANGED, () => {
+    if (typeof (window as any)._carbonads !== 'undefined') {
+      (window as any)._carbonads.refresh();
+    }
+  });
   addons.add("carbon-ads/toolbar", {
     title: "Carbon Ads",
     type: types.TOOL,
-    render: CarbonAds as unknown as () => React.ReactElement,
+    render: () => <CarbonAds vertical />,
   });
 });

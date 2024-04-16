@@ -2,7 +2,7 @@ import React from 'react';
 import { createPortal } from 'react-dom';
 import cx from 'clsx';
 import Box, { BoxProps } from '@mui/material/Box';
-import Skeleton from '@mui/material/Skeleton';
+// import Skeleton from '@mui/material/Skeleton';
 import useCarbonAds from './useCarbonAds';
 import './CarbonAds.css';
 
@@ -16,7 +16,7 @@ const CarbonAds = ({ vertical, ...props }: BoxProps & { vertical?: boolean}) => 
       {...props}
     >
       <div id={id}>
-        <div id={'carbonads-placeholder'}>
+        {/* <div id={'carbonads-placeholder'}>
           <div className={'placeholder-wrap'}>
             <div className={'placeholder-img'}>
               <Skeleton
@@ -31,7 +31,7 @@ const CarbonAds = ({ vertical, ...props }: BoxProps & { vertical?: boolean}) => 
               <Skeleton animation={'pulse'} width={'72%'} />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </Box>,
     document.body
