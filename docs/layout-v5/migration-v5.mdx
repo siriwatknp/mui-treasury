@@ -1,6 +1,6 @@
 import { Meta } from "@storybook/blocks";
 
-<Meta title="Layout/Migration to v5" />
+<Meta title="Layout v5/Migration to v5" />
 
 <style>{`
   .sbdocs-content {
@@ -17,7 +17,7 @@ import { Meta } from "@storybook/blocks";
 **v4.5** (previous)
 
 ```jsx
-import { getContent, getHeader } from "path/to/layout-core";
+import { getContent, getHeader } from "path/to/layout-core-v5";
 
 const Header = getHeader(styled);
 const Content = getContent(styled);
@@ -26,7 +26,7 @@ const Content = getContent(styled);
 **v5** (new)
 
 ```jsx
-import { Content, Header } from "path/to/layout-core";
+import { Content, Header } from "path/to/layout-core-v5";
 ```
 
 ---
@@ -38,7 +38,7 @@ replace `SidebarTrigger` with `EdgeTrigger` and provider target prop.
 **v4.5** (previous)
 
 ```jsx
-import { getSidebarTriggger } from "path/to/layout-core";
+import { getSidebarTriggger } from "path/to/layout-core-v5";
 
 const SidebarTrigger = getSidebarTriggger(styled);
 
@@ -55,7 +55,7 @@ first, provide `target` with `anchor: "left" | "right"` and `field: "open" | "co
 then the Trigger will get (state, setState) from children as a function.
 
 ```jsx
-import { EdgeTrigger } from "path/to/layout-core";
+import { EdgeTrigger } from "path/to/layout-core-v5";
 
 // EdgeTrigger render as div
 <EdgeTrigger target={{ anchor: "left", field: "open" }}>
@@ -76,7 +76,7 @@ similar to `SidebarTrigger`, but use `field: collapsed` instead.
 **v5** (new)
 
 ```jsx
-import { EdgeTrigger } from "path/to/layout-core";
+import { EdgeTrigger } from "path/to/layout-core-v5";
 
 // EdgeTrigger render as div
 <EdgeTrigger target={{ anchor: "left", field: "collapsed" }}>
@@ -97,7 +97,7 @@ There are no Builder exported anymore, just pass plain object to `Root`. Details
 **v4.5** (previous)
 
 ```jsx
-import Layout from 'path/to/layout-core';
+import Layout from 'path/to/layout-core-v5';
 
 const scheme = LayoutBuilder()
 
@@ -118,7 +118,7 @@ scheme.configureEdgeSidebar(builder => {
 **v5** (new)
 
 ```jsx
-import { Root } from 'path/to/layout-core';
+import { Root } from 'path/to/layout-core-v5';
 
 <Root
   scheme={{

@@ -1,6 +1,6 @@
 import { Meta } from "@storybook/addon-docs/blocks";
 
-<Meta title="Layout/Feature/Right to Left" />
+<Meta title="Layout v5/Feature/Right to Left" />
 
 <style>{`
   .sbdocs-content {
@@ -24,7 +24,12 @@ This RTL plugin works with both `emotion` and `styled-components`.
 import { CacheProvider } from "@emotion/react";
 import React from "react";
 import createCache from "@emotion/cache";
-import { EdgeSidebar, Header, Root, SidebarContent } from "path/to/layout-core";
+import {
+  EdgeSidebar,
+  Header,
+  Root,
+  SidebarContent,
+} from "path/to/layout-core-v5";
 import rtlPlugin from "stylis-plugin-rtl";
 
 // Create rtl cache

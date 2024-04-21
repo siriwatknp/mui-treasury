@@ -34,7 +34,7 @@ import {
   InsetSidebar,
   Root,
   SidebarContent,
-} from "../layout-core";
+} from "../layout-core-v5";
 
 // https://github.com/tailwindlabs/tailwindcss/blob/master/colors.js#L244
 const coolGray = {

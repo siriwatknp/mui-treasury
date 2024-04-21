@@ -6,7 +6,7 @@ import { LayoutPresetFixed } from "./index";
 import Usage from "./usage.mdx";
 
 const meta = {
-  title: "Layout/Preset/Fixed",
+  title: "Layout v5/Preset/Fixed",
   component: LayoutPresetFixed,
   parameters: {
     layout: "fullscreen",

@@ -16,7 +16,7 @@ import {
   InsetContainer,
   InsetSidebar,
   Root,
-} from "../layout-core";
+} from "../layout-core-v5";
 import {
   DailyCart,
   DailyCheckout,

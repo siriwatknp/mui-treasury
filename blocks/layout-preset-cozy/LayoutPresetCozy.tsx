@@ -15,7 +15,7 @@ import {
   Header,
   Root,
   SidebarContent,
-} from "../layout-core";
+} from "../layout-core-v5";
 import {
   ContentMockup,
   FooterMockup,

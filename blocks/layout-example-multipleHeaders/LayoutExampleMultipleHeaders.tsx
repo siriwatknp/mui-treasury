@@ -21,7 +21,7 @@ import {
   SidebarContent,
   Subheader,
   TopHeader,
-} from "../layout-core";
+} from "../layout-core-v5";
 
 export const LayoutExampleMultipleHeaders = () => {
   const [topHidden, setTopHidden] = React.useState(false);

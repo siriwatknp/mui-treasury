@@ -1,6 +1,6 @@
 import { Meta } from "@storybook/addon-docs/blocks";
 
-<Meta title="Layout/Tutorials/Dashboard" />
+<Meta title="Layout v5/Tutorials/Dashboard" />
 
 <style>{`
   .sbdocs-content {
@@ -10,7 +10,7 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 # Dashboard Layout Tutorial
 
-This tutorial will take you through basic installation and configuration of path/to/layout-core for creating standard dashboard application.
+This tutorial will take you through basic installation and configuration of path/to/layout-core-v5 for creating standard dashboard application.
 
 Let’s use create-react-app to kickstart the project
 
@@ -27,10 +27,10 @@ cd my-layout
 and install necessary packages
 
 ```bash
-yarn add @mui/material@next @mui/icons-material@next @emotion/styled @emotion/react path/to/layout-core@next @mui-treasury/mockup@next
+yarn add @mui/material@next @mui/icons-material@next @emotion/styled @emotion/react path/to/layout-core-v5@next @mui-treasury/mockup@next
 ```
 
-> note: this tutorial is based on path/to/layout-core v5 (alpha),
+> note: this tutorial is based on path/to/layout-core-v5 v5 (alpha),
 > please recheck package.json after installation
 
 Now, when you run `yarn start`, you will see react logo in the browser.
@@ -42,7 +42,7 @@ the top of the page when user scroll. Open file `/src/App.(js|tsx)` and replace 
 
 ```jsx
 import React from "react";
-import { Root } from "path/to/layout-core";
+import { Root } from "path/to/layout-core-v5";
 
 function App() {
   return (
@@ -83,7 +83,7 @@ This is an example where you don't want Header to stick at the top when scroll t
 
 ```jsx
 import React from "react";
-import { Root } from "path/to/layout-core";
+import { Root } from "path/to/layout-core-v5";
 
 function App() {
   return (
@@ -136,7 +136,7 @@ At this point, let's render these components on the page so that you don't get s
 ```jsx
 import React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
-import { EdgeSidebar, Header, Root } from "path/to/layout-core";
+import { EdgeSidebar, Header, Root } from "path/to/layout-core-v5";
 
 const App = () => {
   return (
@@ -194,7 +194,7 @@ import IconButton from "@mui/material/IconButton";
 import {
   // ...previous import
   EdgeTrigger,
-} from "path/to/layout-core";
+} from "path/to/layout-core-v5";
 
 const App = () => {
   return (
@@ -267,7 +267,7 @@ import ButtonBase from "@mui/material/ButtonBase";
 import {
   // ..imports
   SidebarContent,
-} from "path/to/layout-core";
+} from "path/to/layout-core-v5";
 
 const App = () => {
   return (
@@ -344,7 +344,7 @@ import {
   // other import
   Content,
   Footer,
-} from "path/to/layout-core";
+} from "path/to/layout-core-v5";
 
 const App = () => {
   return (
@@ -381,7 +381,7 @@ import {
   Header,
   Root,
   SidebarContent,
-} from "path/to/layout-core";
+} from "path/to/layout-core-v5";
 
 const App = () => {
   return (

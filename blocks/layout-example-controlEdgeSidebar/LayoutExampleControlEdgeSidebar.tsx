@@ -17,7 +17,7 @@ import {
   Root,
   SidebarContent,
   useLayoutCtx,
-} from "../layout-core";
+} from "../layout-core-v5";
 
 const TriggerUsingHook = () => {
   const {

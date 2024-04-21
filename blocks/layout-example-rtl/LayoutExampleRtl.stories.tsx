@@ -6,7 +6,7 @@ import { LayoutExampleRtl } from "./index";
 import Usage from "./usage.mdx";
 
 const meta = {
-  title: "Layout/Example/Right-to-Left",
+  title: "Layout v5/Example/Right-to-Left",
   component: LayoutExampleRtl,
   parameters: {
     layout: "fullscreen",

@@ -23,7 +23,7 @@ import {
   InsetContainer,
   InsetSidebar,
   Root,
-} from "../layout-core";
+} from "../layout-core-v5";
 // @ts-ignore
 import { ReactContent, ReactHeader, ReactNextArticle } from "./components";
 

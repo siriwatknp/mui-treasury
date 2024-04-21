@@ -15,7 +15,7 @@ import {
   InsetSidebar,
   Root,
   SidebarContent,
-} from "../layout-core";
+} from "../layout-core-v5";
 
 // Create rtl cache
 const cacheRtl = createCache({

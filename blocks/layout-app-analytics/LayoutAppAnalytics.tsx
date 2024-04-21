@@ -19,7 +19,7 @@ import {
   Root,
   SidebarContent,
   Subheader,
-} from "../layout-core";
+} from "../layout-core-v5";
 import {
   IconNavMockup,
   LinkNavMockup,

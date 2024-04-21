@@ -6,7 +6,7 @@ import { LayoutExampleGlobalTheme } from "./index";
 import Usage from "./usage.mdx";
 
 const meta = {
-  title: "Layout/Example/GlobalTheme",
+  title: "Layout v5/Example/GlobalTheme",
   component: LayoutExampleGlobalTheme,
   parameters: {
     layout: "fullscreen",

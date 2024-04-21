@@ -2,11 +2,11 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import googleFont from "../../.storybook/decorators/googleFont";
 import storyDialog from "../../.storybook/decorators/storyDialog";
-import Usage from "./usage.mdx";
 import { LayoutAppMessenger } from "./index";
+import Usage from "./usage.mdx";
 
 const meta = {
-  title: "Layout/App/Messenger",
+  title: "Layout v5/App/Messenger",
   component: LayoutAppMessenger,
   parameters: {
     layout: "fullscreen",
@@ -21,5 +21,3 @@ type Story = StoryObj<typeof meta>;
 export const Messenger: Story = {
   render: () => <LayoutAppMessenger />,
 };
-
-

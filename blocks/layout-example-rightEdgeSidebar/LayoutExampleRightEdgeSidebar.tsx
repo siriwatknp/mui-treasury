@@ -10,7 +10,7 @@ import {
   Header,
   Root,
   SidebarContent,
-} from "../layout-core";
+} from "../layout-core-v5";
 
 export const LayoutExampleRightEdgeSidebar = () => {
   return (
