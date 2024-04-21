@@ -24,6 +24,12 @@ export const IconList = ({ count = 4 }: { count?: number }) => (
               }}
             />
           }
+          sx={{
+            "@container (max-width: 254px)": {
+              width: 0,
+              overflow: "hidden",
+            },
+          }}
         />
       </ListItem>
     ))}
@@ -45,6 +51,12 @@ export const InsetList = ({ count = 4 }: { count?: number }) => (
               }}
             />
           }
+          sx={{
+            "@container (max-width: 254px)": {
+              width: 0,
+              overflow: "hidden",
+            },
+          }}
         />
       </ListItem>
     ))}

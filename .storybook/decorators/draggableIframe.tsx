@@ -117,7 +117,7 @@ export default function draggableIframe() {
               right: 0,
               top: 0,
               bottom: 0,
-              background: "rgba(0,0,0,0.04)",
+              background: "transparent",
               transition: "0.2s",
               display: "flex",
               justifyContent: "center",
@@ -125,8 +125,8 @@ export default function draggableIframe() {
               borderRadius: 0,
               borderTopLeftRadius: "2rem 100vh",
               borderBottomLeftRadius: "2rem 100vh",
-              backdropFilter: "blur(4px)",
               "&:hover": {
+                backdropFilter: "blur(4px)",
                 background: "rgba(0,0,0,0.1)",
                 cursor: "col-resize",
               },
