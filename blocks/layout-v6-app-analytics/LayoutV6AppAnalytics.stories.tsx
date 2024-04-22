@@ -2,24 +2,22 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import googleFont from "../../.storybook/decorators/googleFont";
 import storyDialog from "../../.storybook/decorators/storyDialog";
+import { LayoutV6AppAnalytics } from "./index";
 import Usage from "./usage.mdx";
-import { DittoLayout } from "./index";
 
 const meta = {
-  title: "Ditto/Layout",
-  component: DittoLayout,
+  title: "Layout v6/App",
+  component: LayoutV6AppAnalytics,
   parameters: {
     layout: "fullscreen",
     githubUsername: "siriwatknp", // (optional) Your github username. If provided, your avatar will be displayed in the story toolbar
   },
   decorators: [storyDialog(Usage), googleFont([])],
-} satisfies Meta<typeof DittoLayout>;
+} satisfies Meta<typeof LayoutV6AppAnalytics>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Layout: Story = {
-  render: () => <DittoLayout />,
+export const App: Story = {
+  render: () => <LayoutV6AppAnalytics />,
 };
-
-
