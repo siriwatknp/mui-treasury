@@ -1,7 +1,6 @@
 import React from "react";
 import Box, { BoxProps } from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import { HeaderMockup, NavSidebarMockup } from "../mockup-layout";
+import { styled } from "@mui/material/styles";
 
 const BP = {
   xs: "0px", // phone
@@ -17,7 +16,7 @@ const PART = {
   MAIN: "JunMain",
 };
 
-function toggleSidebarHidden(options?: {
+export function toggleSidebarHidden(options?: {
   state?: boolean;
   document?: Document | null;
 }) {
@@ -35,7 +34,7 @@ function toggleSidebarHidden(options?: {
   }
 }
 
-function toggleMobileSidebar(options?: {
+export function toggleMobileSidebar(options?: {
   state?: boolean;
   document?: Document | null;
 }) {
@@ -60,7 +59,7 @@ function toggleMobileSidebar(options?: {
   }
 }
 
-function SidebarMobileCloser() {
+export function SidebarMobileCloser() {
   return (
     <Box
       component="button"
@@ -113,7 +112,7 @@ function SidebarMobileCloser() {
   );
 }
 
-function SidebarMobileMenu() {
+export function SidebarMobileMenu() {
   return (
     <Box
       component="button"
@@ -159,7 +158,7 @@ function SidebarMobileMenu() {
   );
 }
 
-function Page({ className, ...props }: BoxProps) {
+export function Page({ className, ...props }: BoxProps) {
   return (
     <Box
       {...props}
@@ -190,129 +189,117 @@ function Page({ className, ...props }: BoxProps) {
   );
 }
 
-function Header({ className, ...props }: BoxProps) {
+const HeaderRoot = styled("header")({
+  gridArea: PART.HEADER,
+  height: 48,
+  alignContent: "center",
+  display: "flex",
+  alignItems: "center",
+});
+
+export const Header = ({ className = "", ...props }: BoxProps<"header">) => {
+  // @ts-ignore
+  return <HeaderRoot className={`${PART.HEADER} ${className}`} {...props} />;
+};
+
+const ContentRoot = styled("main")({
+  gridArea: PART.MAIN,
+  bgcolor: "#fff",
+  borderTopLeftRadius: 20,
+  p: 2,
+});
+export function Content({ className, ...props }: BoxProps) {
+  // @ts-ignore
+  return <ContentRoot className={`${PART.MAIN} ${className}`} {...props} />;
+}
+
+const SidebarContentRoot = styled("div")({
+  containerType: "inline-size",
+  opacity: `var(--temporary, var(--JunSidebar-mobileOpen))
+            var(--permanent, 1)`,
+  visibility: `var(--temporary, hidden)
+               var(--permanent, visible)` as any,
+  backgroundColor: "background.paper",
+  flex: 1,
+  position: "relative",
+  zIndex: 2,
+  width: "var(--JunSidebar-width, 0px)",
+  transition: `var(--temporary, opacity 0.3s, transform 0.3s, width 0.3s)
+               var(--permanent, opacity 0.7s, width 0.3s)`,
+  transform: `var(--temporary, translateX(calc((1 - var(--JunSidebar-mobileOpen)) * -100%)))
+              var(--permanent, translateX(calc(var(--JunSidebar-hidden) * -100%)))`,
+  // [`@container page (min-width: ${BP.sm})`]: {
+  //   backgroundColor: "initial",
+  //   transform: "translateX(calc(var(--JunSidebar-hidden) * -100%))",
+  //   transition: "opacity 0.7s, width 0.3s",
+  //   width: "var(--JunSidebar-width)",
+  //   visibility: "visible",
+  //   opacity: 1,
+  // },
+  "[data-sidebar-hidden] &": {
+    visibility: "hidden",
+    opacity: 0,
+  },
+  "[data-mobile-open] &, [data-mobile-closing] &": {
+    visibility: "visible",
+  },
+  "[data-mobile-closing] &": {
+    transition: "transform 0.3s, visibility 0.3s, opacity 0.3s",
+  },
+});
+export function SidebarContent({ className = "", ...props }: BoxProps) {
   return (
-    <Box
-      {...props}
-      component="header"
-      className={PART.HEADER}
-      sx={{
-        gridArea: PART.HEADER,
-        height: 48,
-        alignContent: "center",
-        display: "flex",
-        alignItems: "center",
-      }}
-    />
+    // @ts-ignore
+    <SidebarContentRoot {...props} className={`SidebarContent ${className}`} />
   );
 }
 
-function Main({ className, ...props }: BoxProps) {
+const EdgeSidebarRoot = styled("div")({
+  "--JunSidebar-hidden": "1",
+  "--JunSidebar-variant": "var(--temporary)",
+  "--temporary": "var(--JunSidebar-variant,)",
+  "--permanent": "var(--JunSidebar-variant,)",
+  gridArea: PART.SIDEBAR,
+  width: "calc((1 - var(--JunSidebar-hidden)) * var(--JunSidebar-width, 0px))",
+  transition: "width 0.3s",
+  display: "flex",
+  flexDirection: "column",
+  "&::before": {
+    position: "fixed",
+    content: '""',
+    display: `var(--temporary, block)
+              var(--permanent, none)`,
+    inset: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.12)",
+    backdropFilter: "blur(4px)",
+    zIndex: 1,
+    transition: "opacity 0.4s, visibility 0.4s",
+    opacity: "var(--JunSidebar-mobileOpen, 0)",
+    visibility: "hidden",
+  },
+  "&[data-mobile-open]": {
+    "&::before": {
+      visibility: "visible",
+    },
+  },
+  // [`@container page (min-width: ${BP.sm})`]: {
+  //   "--JunSidebar-width": "80px",
+  //   "--JunSidebar-hidden": "0",
+  //   "&[data-sidebar-hidden]": {
+  //     "--JunSidebar-hidden": "1",
+  //   },
+  //   "&::before": {
+  //     display: "none",
+  //   },
+  // },
+  // "@container page (min-width: 768px)": {
+  //   "--JunSidebar-width": "256px",
+  // },
+});
+export function EdgeSidebar({ className = "", ...props }: BoxProps) {
   return (
-    <Box
-      {...props}
-      component="main"
-      className={PART.MAIN}
-      sx={{
-        gridArea: PART.MAIN,
-        bgcolor: "#fff",
-        borderTopLeftRadius: 20,
-        p: 2,
-      }}
-    />
-  );
-}
-
-function SidebarNav({ className, ...props }: BoxProps) {
-  return (
-    <Box
-      {...props}
-      className="SidebarNav"
-      component="nav"
-      sx={{
-        containerType: "inline-size",
-        opacity: "var(--JunSidebar-mobileOpen)",
-        visibility: "hidden",
-        backgroundColor: "background.paper",
-        flex: 1,
-        width: "256px",
-        position: "relative",
-        zIndex: 2,
-        transition: "opacity 0.3s, transform 0.3s, width 0.3s",
-        transform:
-          "translateX(calc((1 - var(--JunSidebar-mobileOpen)) * -100%))",
-        maxWidth: "100%",
-        [`@container page (min-width: ${BP.sm})`]: {
-          backgroundColor: "initial",
-          transform: "translateX(calc(var(--JunSidebar-hidden) * -100%))",
-          transition: "opacity 0.7s, width 0.3s",
-          width: "var(--JunSidebar-width)",
-          visibility: "visible",
-          opacity: 1,
-        },
-        "[data-sidebar-hidden] &": {
-          visibility: "hidden",
-          opacity: 0,
-        },
-        "[data-mobile-open] &, [data-mobile-closing] &": {
-          visibility: "visible",
-          maxWidth: "initial",
-        },
-      }}
-    />
-  );
-}
-
-function Sidebar({ className, ...props }: BoxProps) {
-  return (
-    <Box
-      {...props}
-      className={`${PART.SIDEBAR}`}
-      sx={{
-        "--JunSidebar-hidden": "1",
-        gridArea: PART.SIDEBAR,
-        width:
-          "calc((1 - var(--JunSidebar-hidden)) * var(--JunSidebar-width, 0px))",
-        transition: "width 0.3s",
-        display: "flex",
-        flexDirection: "column",
-        "&::before": {
-          position: "fixed",
-          content: '""',
-          display: "block",
-          inset: 0,
-          bgcolor: "rgba(0, 0, 0, 0.12)",
-          backdropFilter: "blur(4px)",
-          zIndex: 1,
-          transition: "opacity 0.4s, visibility 0.4s",
-          opacity: "var(--JunSidebar-mobileOpen, 0)",
-          visibility: "hidden",
-        },
-        "&[data-mobile-open]": {
-          "&::before": {
-            visibility: "visible",
-          },
-        },
-        "&[data-mobile-closing]": {
-          "& .SidebarNav": {
-            transition: "transform 0.3s, visibility 0.3s, opacity 0.3s",
-          },
-        },
-        [`@container page (min-width: ${BP.sm})`]: {
-          "--JunSidebar-width": "80px",
-          "--JunSidebar-hidden": "0",
-          "&[data-sidebar-hidden]": {
-            "--JunSidebar-hidden": "1",
-          },
-          "&::before": {
-            display: "none",
-          },
-        },
-        "@container page (min-width: 768px)": {
-          "--JunSidebar-width": "256px",
-        },
-      }}
-    />
+    // @ts-ignore
+    <EdgeSidebarRoot {...props} className={`${PART.SIDEBAR} ${className}`} />
   );
 }
 /**
@@ -320,40 +307,40 @@ function Sidebar({ className, ...props }: BoxProps) {
  *
  * However, to adjust width and height of components, control each component directly.
  */
-export function DittoLayout() {
-  function getDocument() {
-    return (
-      document.getElementById(
-        "storybook-preview-iframe"
-      ) as null | HTMLIFrameElement
-    )?.contentDocument;
-  }
-  return (
-    <Page>
-      <Header>
-        <SidebarMobileMenu />
-        <HeaderMockup />
-      </Header>
-      <Sidebar>
-        <SidebarMobileCloser />
-        <SidebarNav>
-          <NavSidebarMockup />
-        </SidebarNav>
-      </Sidebar>
-      <Main>
-        Main
-        <Button
-          onClick={() => toggleSidebarHidden({ document: getDocument() })}
-          sx={{
-            display: "none",
-            [`@container page (min-width: ${BP.sm})`]: {
-              display: "inline-flex",
-            },
-          }}
-        >
-          Hide/Show
-        </Button>
-      </Main>
-    </Page>
-  );
-}
+// export function DittoLayout() {
+//   function getDocument() {
+//     return (
+//       document.getElementById(
+//         "storybook-preview-iframe"
+//       ) as null | HTMLIFrameElement
+//     )?.contentDocument;
+//   }
+//   return (
+//     <Page>
+//       <Header>
+//         <SidebarMobileMenu />
+//         <HeaderMockup />
+//       </Header>
+//       <Sidebar>
+//         <SidebarMobileCloser />
+//         <SidebarContent>
+//           <NavSidebarMockup />
+//         </SidebarContent>
+//       </Sidebar>
+//       <Main>
+//         Main
+//         <Button
+//           onClick={() => toggleSidebarHidden({ document: getDocument() })}
+//           sx={{
+//             display: "none",
+//             [`@container page (min-width: ${BP.sm})`]: {
+//               display: "inline-flex",
+//             },
+//           }}
+//         >
+//           Hide/Show
+//         </Button>
+//       </Main>
+//     </Page>
+//   );
+// }

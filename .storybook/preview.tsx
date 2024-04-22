@@ -35,6 +35,8 @@ const preview: Preview = {
     options: {
       storySort: {
         order: [
+          "Layout v6",
+          ["App"],
           "Layout v5",
           [
             "Introduction",
