@@ -1,6 +1,6 @@
 import React from "react";
 import ReactGA from "react-ga4";
-import { addons, types } from "@storybook/addons";
+import { addons, types } from "@storybook/manager-api";
 import {
   STORY_CHANGED,
   STORY_ERRORED,
