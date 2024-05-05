@@ -1,16 +1,18 @@
 import React from "react";
+import MenuRounded from "@mui/icons-material/MenuRounded";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
+import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import {
   Content,
+  EdgeDrawerClose,
+  EdgePermanentCollapse,
   EdgeSidebar,
   Header,
   Page,
   SidebarContent,
-  SidebarDrawerMenu,
-  SidebarMobileCloser,
-  SidebarPermanentCollapse,
+  toggleEdgeSidebarDrawer,
 } from "../layout-v6-ditto";
 import {
   IconNavMockup,
@@ -38,14 +40,17 @@ export function LayoutV6AppAnalytics() {
             height: { xs: 52, sm: 64, md: 72 },
           }}
         >
-          <SidebarDrawerMenu />
-          {/* <EdgeTrigger target={{ anchor: "left", field: "open" }}>
-            {(open, setOpen) => (
-              <IconButton onClick={() => setOpen(!open)}>
-                <MenuRounded />
-              </IconButton>
-            )}
-          </EdgeTrigger> */}
+          <IconButton
+            onClick={() => toggleEdgeSidebarDrawer()}
+            sx={(theme) => ({
+              [`@container page (min-width: ${theme.breakpoints.values.md}px)`]:
+                {
+                  display: "none",
+                },
+            })}
+          >
+            <MenuRounded />
+          </IconButton>
           <Typography
             variant="h6"
             sx={{ fontSize: "clamp(18px, 1vw + 1rem, 24px)" }}
@@ -62,23 +67,29 @@ export function LayoutV6AppAnalytics() {
             },
           [`@container page (max-width: ${theme.breakpoints.values.lg - 1}px)`]:
             {
-              "--JunSidebar-permanentCollapsed": "1",
+              "--JunSidebar-collapsible": "var(--collapsed)",
             },
         })}
       >
-        <SidebarMobileCloser />
+        <EdgeDrawerClose />
+
         <SidebarContent
           sx={(theme) => ({
             backgroundColor: "#fff",
+            borderRight: "1px solid #eee",
+            // TODO: move snippet below to utils
             [`@container page (max-width: ${theme.breakpoints.values.lg - 1}px)`]:
               {
-                "&:hover, &:focus-within": {
+                "&:hover": {
                   "--SidebarContent-width": "256px",
+                  "--SidebarContent-transitionDelay": "0.3s",
+                  boxShadow:
+                    "var(--collapsed, 0 0 10px rgba(0,0,0,0.1)) var(--uncollapsed, none)",
                 },
               },
           })}
         >
-          <SidebarPermanentCollapse />
+          <EdgePermanentCollapse />
 
           <SideNavUserInfoMockup />
           <Box
