@@ -2,14 +2,6 @@ import React from "react";
 import Box, { BoxProps } from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 
-const BP = {
-  xs: "0px", // phone
-  sm: "600px", // tablet
-  md: "900px", // small laptop
-  lg: "1200px", // desktop
-  xl: "1536px", // large screen
-};
-
 const PART = {
   HEADER: "JunHeader",
   SIDEBAR: "JunSidebar",
@@ -34,6 +26,25 @@ export function toggleSidebarHidden(options?: {
   }
 }
 
+export function toggleSidebarCollapse(options?: {
+  state?: boolean;
+  document?: Document | null;
+}) {
+  const { state, document: d } = options || {};
+  const doc = d ?? document;
+  const sidebar = doc.querySelector(".JunSidebar");
+  if (sidebar) {
+    const currentHidden =
+      sidebar.getAttribute("data-permanent-uncollapse") !== null;
+    const nextHidden = state === undefined ? !currentHidden : state;
+    if (nextHidden) {
+      sidebar.setAttribute("data-permanent-uncollapse", "");
+    } else {
+      sidebar.removeAttribute("data-permanent-uncollapse");
+    }
+  }
+}
+
 export function toggleMobileSidebar(options?: {
   state?: boolean;
   document?: Document | null;
@@ -43,18 +54,18 @@ export function toggleMobileSidebar(options?: {
   const sidebar = doc.querySelector(".JunSidebar");
   const page = doc.querySelector(".JunPage") as HTMLDivElement | null;
   if (sidebar && page) {
-    const currentOpen = sidebar.getAttribute("data-mobile-open") !== null;
+    const currentOpen = sidebar.getAttribute("data-drawer-open") !== null;
     const nextOpen = state === undefined ? !currentOpen : state;
     if (nextOpen) {
-      sidebar.setAttribute("data-mobile-open", "");
-      page.style.setProperty("--JunSidebar-mobileOpen", "1");
+      sidebar.setAttribute("data-drawer-open", "");
+      page.style.setProperty("--JunSidebar-drawerOpen", "1");
     } else {
-      sidebar.removeAttribute("data-mobile-open");
+      sidebar.removeAttribute("data-drawer-open");
       sidebar.setAttribute("data-mobile-closing", "");
       setTimeout(() => {
         sidebar.removeAttribute("data-mobile-closing");
       }, 300);
-      page.style.setProperty("--JunSidebar-mobileOpen", "");
+      page.style.setProperty("--JunSidebar-drawerOpen", "");
     }
   }
 }
@@ -78,8 +89,8 @@ export function SidebarMobileCloser() {
           width: "1.5em",
           height: "1.5em",
         },
-        "[data-mobile-open] &": {
-          display: "flex",
+        "[data-drawer-open] &": {
+          display: "var(--drawer, flex) var(--permanent, none)",
           alignItems: "center",
           justifyContent: "center",
         },
@@ -89,7 +100,7 @@ export function SidebarMobileCloser() {
           state: false,
           document: (
             document.getElementById(
-              "storybook-preview-iframe"
+              "storybook-preview-iframe",
             ) as null | HTMLIFrameElement
           )?.contentDocument,
         })
@@ -112,22 +123,19 @@ export function SidebarMobileCloser() {
   );
 }
 
-export function SidebarMobileMenu() {
+export function SidebarDrawerMenu() {
   return (
     <Box
       component="button"
       sx={{
-        display: "none",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
         width: 40,
         height: 40,
         "& svg": {
           width: "1.5em",
           height: "1.5em",
-        },
-        [`@container page (max-width: calc(${BP.sm} - 1px))`]: {
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
         },
       }}
       onClick={() =>
@@ -135,7 +143,50 @@ export function SidebarMobileMenu() {
           state: true,
           document: (
             document.getElementById(
-              "storybook-preview-iframe"
+              "storybook-preview-iframe",
+            ) as null | HTMLIFrameElement
+          )?.contentDocument,
+        })
+      }
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+        />
+      </svg>
+    </Box>
+  );
+}
+
+export function SidebarPermanentCollapse() {
+  return (
+    <Box
+      component="button"
+      sx={{
+        display: "var(--drawer, none) var(--permanent, flex)",
+        alignItems: "center",
+        justifyContent: "center",
+        border: "1px solid",
+        width: 40,
+        height: 40,
+        "& svg": {
+          width: "1.5em",
+          height: "1.5em",
+        },
+      }}
+      onClick={() =>
+        toggleSidebarCollapse({
+          document: (
+            document.getElementById(
+              "storybook-preview-iframe",
             ) as null | HTMLIFrameElement
           )?.contentDocument,
         })
@@ -167,6 +218,7 @@ export function Page({ className, ...props }: BoxProps) {
         bgcolor: "grey.100",
         minHeight: "100lvh",
         display: "grid",
+        position: "relative",
         containerType: "size",
         containerName: "page",
         transition: "grid-template-columns 0.3s",
@@ -178,11 +230,11 @@ export function Page({ className, ...props }: BoxProps) {
 
         [`&:has(.${PART.SIDEBAR})`]: {
           gridTemplateAreas: `
-          "${PART.SIDEBAR} ${PART.HEADER}"
-          "${PART.SIDEBAR} ${PART.MAIN}"
-        `,
+            "${PART.SIDEBAR} ${PART.HEADER}"
+            "${PART.SIDEBAR} ${PART.MAIN}"
+          `,
           gridTemplateColumns: "max-content 1fr",
-          "--JunSidebar-mobileOpen": "0",
+          "--JunSidebar-drawerOpen": "0",
         },
       }}
     />
@@ -198,7 +250,6 @@ const HeaderRoot = styled("header")({
 });
 
 export const Header = ({ className = "", ...props }: BoxProps<"header">) => {
-  // @ts-ignore
   return <HeaderRoot className={`${PART.HEADER} ${className}`} {...props} />;
 };
 
@@ -209,39 +260,35 @@ const ContentRoot = styled("main")({
   p: 2,
 });
 export function Content({ className, ...props }: BoxProps) {
-  // @ts-ignore
   return <ContentRoot className={`${PART.MAIN} ${className}`} {...props} />;
 }
 
 const SidebarContentRoot = styled("div")({
-  containerType: "inline-size",
-  opacity: `var(--temporary, var(--JunSidebar-mobileOpen))
+  "--SidebarContent-width": "var(--_permanentWidth, 0px)",
+  display: "flex",
+  flexDirection: "column",
+  opacity: `var(--drawer, var(--JunSidebar-drawerOpen))
             var(--permanent, 1)`,
-  visibility: `var(--temporary, hidden)
+  visibility: `var(--drawer, hidden)
                var(--permanent, visible)` as any,
+  overflowX: "auto", // prevent horizontal content overflow
   backgroundColor: "background.paper",
   flex: 1,
   position: "relative",
   zIndex: 2,
-  width: "var(--JunSidebar-width, 0px)",
-  transition: `var(--temporary, opacity 0.3s, transform 0.3s, width 0.3s)
+  width: "var(--SidebarContent-width)",
+  transition: `var(--drawer, opacity 0.3s, transform 0.3s)
                var(--permanent, opacity 0.7s, width 0.3s)`,
-  transform: `var(--temporary, translateX(calc((1 - var(--JunSidebar-mobileOpen)) * -100%)))
-              var(--permanent, translateX(calc(var(--JunSidebar-hidden) * -100%)))`,
-  // [`@container page (min-width: ${BP.sm})`]: {
-  //   backgroundColor: "initial",
-  //   transform: "translateX(calc(var(--JunSidebar-hidden) * -100%))",
-  //   transition: "opacity 0.7s, width 0.3s",
-  //   width: "var(--JunSidebar-width)",
-  //   visibility: "visible",
-  //   opacity: 1,
-  // },
+  transform: `var(--drawer, translateX(calc((1 - var(--JunSidebar-drawerOpen)) * -100%)))
+              var(--permanent, translateX(calc(var(--JunSidebar-permanentHidden) * -100%)))`,
   "[data-sidebar-hidden] &": {
     visibility: "hidden",
     opacity: 0,
   },
-  "[data-mobile-open] &, [data-mobile-closing] &": {
+  "[data-drawer-open] &, [data-mobile-closing] &": {
     visibility: "visible",
+    width: `var(--drawer, var(--JunSidebar-drawerWidth, 300px))
+            var(--permanent, var(--SidebarContent-width))`,
   },
   "[data-mobile-closing] &": {
     transition: "transform 0.3s, visibility 0.3s, opacity 0.3s",
@@ -254,47 +301,52 @@ export function SidebarContent({ className = "", ...props }: BoxProps) {
   );
 }
 
+/**
+ * EdgeSidebar has 2 variants:
+ * - `permanent` (default) is a sidebar that is visible on the screen but can be set to hidden.
+ *    - The width (256px by default) is controlled by `--JunSidebar-permanentWidth` variable.
+ *    - It will be hidden by setting `--JunSidebar-permanentHidden: 1`.
+ * - `drawer` is a sidebar that is hidden by default and can be opened by `SidebarMobileMenu` component.
+ */
 const EdgeSidebarRoot = styled("div")({
-  "--JunSidebar-hidden": "1",
-  "--JunSidebar-variant": "var(--temporary)",
-  "--temporary": "var(--JunSidebar-variant,)",
+  /** default settings */
+  "--JunSidebar-variant": "var(--permanent)",
+  "--JunSidebar-permanentWidth": "256px",
+  "--JunSidebar-permanentCollapsedWidth": "72px",
+  "--JunSidebar-permanentCollapsed": "0",
+  /** DO NOT OVERRIDE, internal variables */
+  "--drawer": "var(--JunSidebar-variant,)",
   "--permanent": "var(--JunSidebar-variant,)",
+  "--_permanentWidth":
+    "calc((1 - var(--JunSidebar-permanentCollapsed)) * var(--JunSidebar-permanentWidth) + (var(--JunSidebar-permanentCollapsed) * var(--JunSidebar-permanentCollapsedWidth)))",
+  /** ------------------------------------ */
   gridArea: PART.SIDEBAR,
-  width: "calc((1 - var(--JunSidebar-hidden)) * var(--JunSidebar-width, 0px))",
+  width: `var(--drawer, 0)
+          var(--permanent, var(--_permanentWidth))`,
   transition: "width 0.3s",
   display: "flex",
   flexDirection: "column",
   "&::before": {
-    position: "fixed",
+    position: "absolute",
     content: '""',
-    display: `var(--temporary, block)
+    display: `var(--drawer, block)
               var(--permanent, none)`,
     inset: 0,
     backgroundColor: "rgba(0, 0, 0, 0.12)",
     backdropFilter: "blur(4px)",
     zIndex: 1,
     transition: "opacity 0.4s, visibility 0.4s",
-    opacity: "var(--JunSidebar-mobileOpen, 0)",
+    opacity: "var(--JunSidebar-drawerOpen, 0)",
     visibility: "hidden",
   },
-  "&[data-mobile-open]": {
+  "&[data-drawer-open]": {
     "&::before": {
       visibility: "visible",
     },
   },
-  // [`@container page (min-width: ${BP.sm})`]: {
-  //   "--JunSidebar-width": "80px",
-  //   "--JunSidebar-hidden": "0",
-  //   "&[data-sidebar-hidden]": {
-  //     "--JunSidebar-hidden": "1",
-  //   },
-  //   "&::before": {
-  //     display: "none",
-  //   },
-  // },
-  // "@container page (min-width: 768px)": {
-  //   "--JunSidebar-width": "256px",
-  // },
+  "&[data-permanent-uncollapse]": {
+    "--JunSidebar-permanentCollapsed": "0",
+  },
 });
 export function EdgeSidebar({ className = "", ...props }: BoxProps) {
   return (
@@ -302,45 +354,3 @@ export function EdgeSidebar({ className = "", ...props }: BoxProps) {
     <EdgeSidebarRoot {...props} className={`${PART.SIDEBAR} ${className}`} />
   );
 }
-/**
- * Page handles slots when components are inserted.
- *
- * However, to adjust width and height of components, control each component directly.
- */
-// export function DittoLayout() {
-//   function getDocument() {
-//     return (
-//       document.getElementById(
-//         "storybook-preview-iframe"
-//       ) as null | HTMLIFrameElement
-//     )?.contentDocument;
-//   }
-//   return (
-//     <Page>
-//       <Header>
-//         <SidebarMobileMenu />
-//         <HeaderMockup />
-//       </Header>
-//       <Sidebar>
-//         <SidebarMobileCloser />
-//         <SidebarContent>
-//           <NavSidebarMockup />
-//         </SidebarContent>
-//       </Sidebar>
-//       <Main>
-//         Main
-//         <Button
-//           onClick={() => toggleSidebarHidden({ document: getDocument() })}
-//           sx={{
-//             display: "none",
-//             [`@container page (min-width: ${BP.sm})`]: {
-//               display: "inline-flex",
-//             },
-//           }}
-//         >
-//           Hide/Show
-//         </Button>
-//       </Main>
-//     </Page>
-//   );
-// }

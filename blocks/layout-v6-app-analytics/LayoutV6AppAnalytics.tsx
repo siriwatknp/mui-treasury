@@ -8,8 +8,9 @@ import {
   Header,
   Page,
   SidebarContent,
+  SidebarDrawerMenu,
   SidebarMobileCloser,
-  SidebarMobileMenu,
+  SidebarPermanentCollapse,
 } from "../layout-v6-ditto";
 import {
   IconNavMockup,
@@ -37,7 +38,7 @@ export function LayoutV6AppAnalytics() {
             height: { xs: 52, sm: 64, md: 72 },
           }}
         >
-          <SidebarMobileMenu />
+          <SidebarDrawerMenu />
           {/* <EdgeTrigger target={{ anchor: "left", field: "open" }}>
             {(open, setOpen) => (
               <IconButton onClick={() => setOpen(!open)}>
@@ -55,28 +56,30 @@ export function LayoutV6AppAnalytics() {
       </Header>
       <EdgeSidebar
         sx={(theme) => ({
-          [`@container page (min-width: ${theme.breakpoints.values.md}px)`]: {
-            "--JunSidebar-variant": "var(--permanent)",
-            "--JunSidebar-width": "72px",
-            "--JunSidebar-hidden": "0",
-          },
-          [`@container page (min-width: ${theme.breakpoints.values.lg}px)`]: {
-            "--JunSidebar-width": "256px",
-          },
+          [`@container page (max-width: ${theme.breakpoints.values.md - 1}px)`]:
+            {
+              "--JunSidebar-variant": "var(--drawer)",
+            },
+          [`@container page (max-width: ${theme.breakpoints.values.lg - 1}px)`]:
+            {
+              "--JunSidebar-permanentCollapsed": "1",
+            },
         })}
       >
         <SidebarMobileCloser />
         <SidebarContent
           sx={(theme) => ({
             backgroundColor: "#fff",
-            [`@container page (min-width: ${theme.breakpoints.values.md}px)`]: {
-              overflow: "auto",
-              "&:hover": {
-                width: "256px",
+            [`@container page (max-width: ${theme.breakpoints.values.lg - 1}px)`]:
+              {
+                "&:hover, &:focus-within": {
+                  "--SidebarContent-width": "256px",
+                },
               },
-            },
           })}
         >
+          <SidebarPermanentCollapse />
+
           <SideNavUserInfoMockup />
           <Box
             sx={{
@@ -90,6 +93,7 @@ export function LayoutV6AppAnalytics() {
             <LinkNavMockup />
           </Box>
         </SidebarContent>
+        <Box sx={{ position: "absolute", top: 0, left: "100%" }}>Test</Box>
       </EdgeSidebar>
       <Content>
         <Box
