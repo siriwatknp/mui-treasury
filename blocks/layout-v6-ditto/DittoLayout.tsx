@@ -8,50 +8,44 @@ const PART = {
   MAIN: "JunMain",
 };
 
-export function toggleSidebarHidden(options?: {
-  state?: boolean;
+export function collapseEdgeSidebar(options?: {
+  sidebarId?: string;
   document?: Document | null;
 }) {
-  const { state, document: d } = options || {};
+  const { document: d, sidebarId } = options || {};
   const doc = d ?? document;
-  const sidebar = doc.querySelector(".JunSidebar");
+  const sidebar = doc.querySelector(
+    sidebarId ? `#${sidebarId}` : ".JunSidebar",
+  );
   if (sidebar) {
-    const currentHidden = sidebar.getAttribute("data-sidebar-hidden") !== null;
-    const nextHidden = state === undefined ? !currentHidden : state;
-    if (nextHidden) {
-      sidebar.setAttribute("data-sidebar-hidden", "");
-    } else {
-      sidebar.removeAttribute("data-sidebar-hidden");
-    }
+    sidebar.setAttribute("data-collapsible", "collapsed");
   }
 }
 
-export function toggleSidebarCollapse(options?: {
-  state?: boolean;
+export function uncollapseEdgeSidebar(options?: {
+  sidebarId?: string;
   document?: Document | null;
 }) {
-  const { state, document: d } = options || {};
+  const { document: d, sidebarId } = options || {};
   const doc = d ?? document;
-  const sidebar = doc.querySelector(".JunSidebar");
+  const sidebar = doc.querySelector(
+    sidebarId ? `#${sidebarId}` : ".JunSidebar",
+  );
   if (sidebar) {
-    const currentHidden =
-      sidebar.getAttribute("data-permanent-uncollapse") !== null;
-    const nextHidden = state === undefined ? !currentHidden : state;
-    if (nextHidden) {
-      sidebar.setAttribute("data-permanent-uncollapse", "");
-    } else {
-      sidebar.removeAttribute("data-permanent-uncollapse");
-    }
+    sidebar.setAttribute("data-collapsible", "uncollapsed");
   }
 }
 
-export function toggleMobileSidebar(options?: {
+export function toggleEdgeSidebarDrawer(options?: {
+  sidebarId?: string;
   state?: boolean;
   document?: Document | null;
 }) {
-  const { state, document: d } = options || {};
+  const { state, document: d, sidebarId } = options || {};
   const doc = d ?? document;
-  const sidebar = doc.querySelector(".JunSidebar");
+  const sidebar = doc.querySelector(
+    sidebarId ? `#${sidebarId}` : ".JunSidebar",
+  );
   const page = doc.querySelector(".JunPage") as HTMLDivElement | null;
   if (sidebar && page) {
     const currentOpen = sidebar.getAttribute("data-drawer-open") !== null;
@@ -70,7 +64,7 @@ export function toggleMobileSidebar(options?: {
   }
 }
 
-export function SidebarMobileCloser() {
+export function EdgeDrawerClose() {
   return (
     <Box
       component="button"
@@ -96,7 +90,7 @@ export function SidebarMobileCloser() {
         },
       }}
       onClick={() =>
-        toggleMobileSidebar({
+        toggleEdgeSidebarDrawer({
           state: false,
           document: (
             document.getElementById(
@@ -123,89 +117,95 @@ export function SidebarMobileCloser() {
   );
 }
 
-export function SidebarDrawerMenu() {
-  return (
-    <Box
-      component="button"
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        width: 40,
-        height: 40,
-        "& svg": {
-          width: "1.5em",
-          height: "1.5em",
-        },
-      }}
-      onClick={() =>
-        toggleMobileSidebar({
-          state: true,
-          document: (
-            document.getElementById(
-              "storybook-preview-iframe",
-            ) as null | HTMLIFrameElement
-          )?.contentDocument,
-        })
-      }
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-        />
-      </svg>
-    </Box>
-  );
-}
+const EdgeTriggerRoot = styled("div", { name: "EdgeTrigger" })({});
 
-export function SidebarPermanentCollapse() {
+export type EdgeTriggerProps = Omit<
+  Parameters<typeof EdgeTriggerRoot>[0],
+  "children"
+> & {
+  target: {
+    anchor?: "left" | "right";
+    field: "open" | "collapsed";
+  };
+  children?: (setState: (newState?: boolean) => void) => React.ReactNode;
+};
+
+export function EdgePermanentCollapse() {
   return (
-    <Box
-      component="button"
-      sx={{
-        display: "var(--drawer, none) var(--permanent, flex)",
-        alignItems: "center",
-        justifyContent: "center",
-        border: "1px solid",
-        width: 40,
-        height: 40,
-        "& svg": {
-          width: "1.5em",
-          height: "1.5em",
-        },
-      }}
-      onClick={() =>
-        toggleSidebarCollapse({
-          document: (
-            document.getElementById(
-              "storybook-preview-iframe",
-            ) as null | HTMLIFrameElement
-          )?.contentDocument,
-        })
-      }
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
+    <React.Fragment>
+      <Box
+        component="button"
+        sx={{
+          display:
+            "var(--drawer, none) var(--permanent, var(--collapsed, none) var(--uncollapsed, flex))",
+          alignItems: "center",
+          justifyContent: "center",
+          "& svg": {
+            width: "1.5em",
+            height: "1.5em",
+          },
+        }}
+        onClick={() =>
+          collapseEdgeSidebar({
+            document: (
+              document.getElementById(
+                "storybook-preview-iframe",
+              ) as null | HTMLIFrameElement
+            )?.contentDocument,
+          })
+        }
       >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-        />
-      </svg>
-    </Box>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M15.75 19.5 8.25 12l7.5-7.5"
+          />
+        </svg>
+      </Box>
+      <Box
+        component="button"
+        sx={{
+          display:
+            "var(--drawer, none) var(--permanent, var(--collapsed, flex) var(--uncollapsed, none))",
+          alignItems: "center",
+          justifyContent: "center",
+          "& svg": {
+            width: "1.5em",
+            height: "1.5em",
+          },
+        }}
+        onClick={() =>
+          uncollapseEdgeSidebar({
+            document: (
+              document.getElementById(
+                "storybook-preview-iframe",
+              ) as null | HTMLIFrameElement
+            )?.contentDocument,
+          })
+        }
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="m8.25 4.5 7.5 7.5-7.5 7.5"
+          />
+        </svg>
+      </Box>
+    </React.Fragment>
   );
 }
 
@@ -278,7 +278,7 @@ const SidebarContentRoot = styled("div")({
   zIndex: 2,
   width: "var(--SidebarContent-width)",
   transition: `var(--drawer, opacity 0.3s, transform 0.3s)
-               var(--permanent, opacity 0.7s, width 0.3s)`,
+               var(--permanent, opacity 0.7s, width 0.3s var(--SidebarContent-transitionDelay, 0s), box-shadow 0.3s var(--SidebarContent-transitionDelay, 0s))`,
   transform: `var(--drawer, translateX(calc((1 - var(--JunSidebar-drawerOpen)) * -100%)))
               var(--permanent, translateX(calc(var(--JunSidebar-permanentHidden) * -100%)))`,
   "[data-sidebar-hidden] &": {
@@ -312,13 +312,15 @@ const EdgeSidebarRoot = styled("div")({
   /** default settings */
   "--JunSidebar-variant": "var(--permanent)",
   "--JunSidebar-permanentWidth": "256px",
+  "--JunSidebar-collapsible": "var(--uncollapsed)",
   "--JunSidebar-permanentCollapsedWidth": "72px",
-  "--JunSidebar-permanentCollapsed": "0",
   /** DO NOT OVERRIDE, internal variables */
   "--drawer": "var(--JunSidebar-variant,)",
   "--permanent": "var(--JunSidebar-variant,)",
-  "--_permanentWidth":
-    "calc((1 - var(--JunSidebar-permanentCollapsed)) * var(--JunSidebar-permanentWidth) + (var(--JunSidebar-permanentCollapsed) * var(--JunSidebar-permanentCollapsedWidth)))",
+  "--_permanentWidth": `var(--uncollapsed, var(--JunSidebar-permanentWidth))
+                        var(--collapsed, var(--JunSidebar-permanentCollapsedWidth))`,
+  "--collapsed": "var(--JunSidebar-collapsible,)",
+  "--uncollapsed": "var(--JunSidebar-collapsible,)",
   /** ------------------------------------ */
   gridArea: PART.SIDEBAR,
   width: `var(--drawer, 0)
@@ -344,8 +346,11 @@ const EdgeSidebarRoot = styled("div")({
       visibility: "visible",
     },
   },
-  "&[data-permanent-uncollapse]": {
-    "--JunSidebar-permanentCollapsed": "0",
+  "&[data-collapsible='collapsed']": {
+    "--JunSidebar-collapsible": "var(--collapsed)",
+  },
+  "&[data-collapsible='uncollapsed']": {
+    "--JunSidebar-collapsible": "var(--uncollapsed)",
   },
 });
 export function EdgeSidebar({ className = "", ...props }: BoxProps) {
