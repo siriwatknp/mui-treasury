@@ -5,6 +5,7 @@ import { styled } from "@mui/material/styles";
 const PART = {
   HEADER: "JunHeader",
   SIDEBAR: "JunSidebar",
+  SIDEBAR_R: "JunSidebarRight",
   MAIN: "JunMain",
 };
 
@@ -236,6 +237,14 @@ export function Root({ className, ...props }: BoxProps) {
           gridTemplateColumns: "max-content 1fr",
           "--JunSidebar-drawerOpen": "0",
         },
+        [`&:has(.${PART.SIDEBAR_R})`]: {
+          gridTemplateAreas: `
+            "${PART.HEADER} ${PART.SIDEBAR_R}"
+            "${PART.MAIN} ${PART.SIDEBAR_R}"
+          `,
+          gridTemplateColumns: "1fr max-content",
+          "--JunSidebar-drawerOpen": "0",
+        },
       }}
     />
   );
@@ -279,8 +288,8 @@ const SidebarContentRoot = styled("div")(({ theme }) => ({
   width: "var(--SidebarContent-width)",
   transition: `var(--drawer, opacity 0.3s, transform 0.3s)
                var(--permanent, opacity 0.7s, width 0.3s var(--SidebarContent-transitionDelay, 0s), box-shadow 0.3s var(--SidebarContent-transitionDelay, 0s))`,
-  transform: `var(--drawer, translateX(calc((1 - var(--JunSidebar-drawerOpen)) * -100%)))
-              var(--permanent, translateX(calc(var(--JunSidebar-permanentHidden) * -100%)))`,
+  transform: `var(--drawer, var(--anchorLeft, translateX(calc((1 - var(--JunSidebar-drawerOpen)) * -100%))) var(--anchorRight, translateX(calc(var(--JunSidebar-drawerOpen) * -100%))))
+               var(--permanent, translateX(calc(var(--JunSidebar-permanentHidden) * -100%)))`,
   "[data-sidebar-hidden] &": {
     visibility: "hidden",
     opacity: 0,
@@ -314,6 +323,7 @@ const EdgeSidebarRoot = styled("div")({
   "--JunSidebar-permanentWidth": "256px",
   "--JunSidebar-collapsible": "var(--uncollapsed)",
   "--JunSidebar-permanentCollapsedWidth": "72px",
+  "--JunSidebar-anchor": "var(--anchorLeft)",
   /** DO NOT OVERRIDE, internal variables */
   "--drawer": "var(--JunSidebar-variant,)",
   "--permanent": "var(--JunSidebar-variant,)",
@@ -321,8 +331,10 @@ const EdgeSidebarRoot = styled("div")({
                         var(--collapsed, var(--JunSidebar-permanentCollapsedWidth))`,
   "--collapsed": "var(--JunSidebar-collapsible,)",
   "--uncollapsed": "var(--JunSidebar-collapsible,)",
+  "--anchorLeft": "var(--JunSidebar-anchor,)",
+  "--anchorRight": "var(--JunSidebar-anchor,)",
   /** ------------------------------------ */
-  gridArea: PART.SIDEBAR,
+  gridArea: `var(--anchorLeft, ${PART.SIDEBAR}) var(--anchorRight, ${PART.SIDEBAR_R})`,
   width: `var(--drawer, 0)
           var(--permanent, var(--_permanentWidth))`,
   transition: "width 0.3s",
@@ -353,9 +365,22 @@ const EdgeSidebarRoot = styled("div")({
     "--JunSidebar-collapsible": "var(--uncollapsed)",
   },
 });
-export function EdgeSidebar({ className = "", ...props }: BoxProps) {
+export function EdgeSidebar({
+  anchor = "left",
+  className = "",
+  ...props
+}: BoxProps & { anchor?: "left" | "right" }) {
   return (
     // @ts-ignore
-    <EdgeSidebarRoot {...props} className={`${PART.SIDEBAR} ${className}`} />
+    <EdgeSidebarRoot
+      {...props}
+      className={`${anchor === "right" ? PART.SIDEBAR_R : PART.SIDEBAR} ${className}`}
+      style={{
+        ...(anchor === "right" && {
+          "--JunSidebar-anchor": "var(--anchorRight)",
+        }),
+        ...props.style,
+      }}
+    />
   );
 }
