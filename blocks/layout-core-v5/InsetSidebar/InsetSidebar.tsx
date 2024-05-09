@@ -1,10 +1,10 @@
 import React from "react";
-import cx from "clsx";
 import { styled, Theme } from "@mui/material/styles";
 import { SxProps } from "@mui/system";
-import { useLayoutCtx, PropsWithFunctionChildren } from "../Root/Root";
-import { DrawerAnchor } from "./InsetSidebarBuilder";
+import cx from "clsx";
+import { PropsWithFunctionChildren, useLayoutCtx } from "../Root/Root";
 import { InsetOffset } from "./InsetOffset";
+import { DrawerAnchor } from "./InsetSidebarBuilder";
 
 const InsetSidebarRoot = styled("div", {
   name: "AppInsetSidebar",

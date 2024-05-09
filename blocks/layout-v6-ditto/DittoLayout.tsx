@@ -1,5 +1,6 @@
 import React from "react";
 import Box, { BoxProps } from "@mui/material/Box";
+import Container, { ContainerProps } from "@mui/material/Container";
 import { styled } from "@mui/material/styles";
 
 const PART = {
@@ -390,5 +391,68 @@ export function EdgeSidebar({
         ...props.style,
       }}
     />
+  );
+}
+
+const InsetContainerRoot = styled(Container)({
+  display: "flex",
+  flexFlow: "row nowrap",
+  flexGrow: 1,
+  '& > *:not([class*="AppInsetSidebar"])': {
+    flexGrow: 1,
+    overflow: "auto",
+  },
+});
+export function InsetContainer({
+  leftSidebar,
+  rightSidebar,
+  children,
+  ...props
+}: ContainerProps & {
+  leftSidebar?: React.ReactElement;
+  rightSidebar?: React.ReactElement;
+}) {
+  return (
+    <InsetContainerRoot {...props}>
+      {leftSidebar && React.cloneElement(leftSidebar, { anchor: "left" })}
+      {children}
+      {rightSidebar && React.cloneElement(rightSidebar, { anchor: "right" })}
+    </InsetContainerRoot>
+  );
+}
+
+const InsetSidebarRoot = styled("div")({
+  position: "relative",
+  flexShrink: 0,
+});
+const InsetSidebarBody = styled("div")<{
+  ownerState: { anchor?: "left" | "right" };
+}>(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  overflow: "auto",
+  borderColor: theme.palette.divider,
+  variants: [
+    {
+      props: { anchor: "left" },
+      style: {
+        borderRight: "1px solid",
+      },
+    },
+    {
+      props: { anchor: "right" },
+      style: {
+        borderLeft: "1px solid",
+      },
+    },
+  ],
+}));
+export function InsetSidebar(
+  props: React.PropsWithChildren<React.DetailsHTMLAttributes<HTMLDivElement>>,
+) {
+  return (
+    <InsetSidebarRoot>
+      <InsetSidebarBody {...props} ownerState={{ anchor: "left" }} />
+    </InsetSidebarRoot>
   );
 }
