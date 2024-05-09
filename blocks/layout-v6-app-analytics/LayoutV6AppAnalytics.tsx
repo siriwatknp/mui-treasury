@@ -10,7 +10,7 @@ import {
   EdgePermanentCollapse,
   EdgeSidebar,
   Header,
-  Page,
+  Root,
   SidebarContent,
   toggleEdgeSidebarDrawer,
 } from "../layout-v6-ditto";
@@ -25,7 +25,7 @@ import {
 
 export function LayoutV6AppAnalytics() {
   return (
-    <Page>
+    <Root>
       <Header
         sx={{
           height: { xs: 48, sm: 64, md: 72 },
@@ -75,8 +75,8 @@ export function LayoutV6AppAnalytics() {
 
         <SidebarContent
           sx={(theme) => ({
-            backgroundColor: "#fff",
-            borderRight: "1px solid #eee",
+            borderRight: "1px solid",
+            borderColor: "divider",
             // TODO: move snippet below to utils
             [`@container page (max-width: ${theme.breakpoints.values.lg - 1}px)`]:
               {
@@ -112,7 +112,7 @@ export function LayoutV6AppAnalytics() {
             height: "16vh",
             minHeight: 240,
             borderRadius: 2,
-            bgcolor: "#eaeff7",
+            bgcolor: "background.paper",
             m: 2,
           }}
         />
@@ -144,6 +144,6 @@ export function LayoutV6AppAnalytics() {
         <br />
         <br />
       </Content>
-    </Page>
+    </Root>
   );
 }

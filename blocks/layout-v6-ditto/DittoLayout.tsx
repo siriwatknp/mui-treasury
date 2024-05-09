@@ -46,7 +46,7 @@ export function toggleEdgeSidebarDrawer(options?: {
   const sidebar = doc.querySelector(
     sidebarId ? `#${sidebarId}` : ".JunSidebar",
   );
-  const page = doc.querySelector(".JunPage") as HTMLDivElement | null;
+  const page = doc.querySelector(".JunRoot") as HTMLDivElement | null;
   if (sidebar && page) {
     const currentOpen = sidebar.getAttribute("data-drawer-open") !== null;
     const nextOpen = state === undefined ? !currentOpen : state;
@@ -209,13 +209,13 @@ export function EdgePermanentCollapse() {
   );
 }
 
-export function Page({ className, ...props }: BoxProps) {
+export function Root({ className, ...props }: BoxProps) {
   return (
     <Box
       {...props}
-      className={`JunPage ${className}`}
+      className={`JunRoot ${className}`}
       sx={{
-        bgcolor: "grey.100",
+        bgcolor: "background.paper",
         minHeight: "100lvh",
         display: "grid",
         position: "relative",
@@ -263,8 +263,9 @@ export function Content({ className, ...props }: BoxProps) {
   return <ContentRoot className={`${PART.MAIN} ${className}`} {...props} />;
 }
 
-const SidebarContentRoot = styled("div")({
+const SidebarContentRoot = styled("div")(({ theme }) => ({
   "--SidebarContent-width": "var(--_permanentWidth, 0px)",
+  backgroundColor: (theme.vars || theme).palette.background.paper,
   display: "flex",
   flexDirection: "column",
   opacity: `var(--drawer, var(--JunSidebar-drawerOpen))
@@ -272,7 +273,6 @@ const SidebarContentRoot = styled("div")({
   visibility: `var(--drawer, hidden)
                var(--permanent, visible)` as any,
   overflowX: "auto", // prevent horizontal content overflow
-  backgroundColor: "background.paper",
   flex: 1,
   position: "relative",
   zIndex: 2,
@@ -293,7 +293,7 @@ const SidebarContentRoot = styled("div")({
   "[data-mobile-closing] &": {
     transition: "transform 0.3s, visibility 0.3s, opacity 0.3s",
   },
-});
+}));
 export function SidebarContent({ className = "", ...props }: BoxProps) {
   return (
     // @ts-ignore
