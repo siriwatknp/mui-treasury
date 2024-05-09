@@ -70,11 +70,12 @@ export function LayoutV6AppReactLegacy() {
     <Root>
       <StyledFab
         color={"primary"}
-        onClick={() =>
+        onClick={() => {
+          // toggleEdgeSidebarDrawer();
           toggleEdgeSidebarDrawer({
             sidebarId: "right-drawer",
-          })
-        }
+          });
+        }}
       >
         <UnfoldMore />
       </StyledFab>
@@ -85,6 +86,13 @@ export function LayoutV6AppReactLegacy() {
           </StyledToolbar>
         </Container>
       </Header>
+      {/* <EdgeSidebar
+        sx={{
+          "--JunSidebar-variant": "var(--drawer)",
+        }}
+      >
+        <SidebarContent>{sidebarContent}</SidebarContent>
+      </EdgeSidebar> */}
       <EdgeSidebar
         id="right-drawer"
         anchor="right"

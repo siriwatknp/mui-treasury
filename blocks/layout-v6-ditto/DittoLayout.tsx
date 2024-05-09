@@ -245,6 +245,14 @@ export function Root({ className, ...props }: BoxProps) {
           gridTemplateColumns: "1fr max-content",
           "--JunSidebar-drawerOpen": "0",
         },
+        // TODO: find a better way to support both L & R
+        [`&:has(.${PART.SIDEBAR}):has(.${PART.SIDEBAR_R})`]: {
+          gridTemplateAreas: `
+            "${PART.SIDEBAR} ${PART.HEADER} ${PART.SIDEBAR_R}"
+            "${PART.SIDEBAR} ${PART.MAIN} ${PART.SIDEBAR_R}"
+          `,
+          gridTemplateColumns: "max-content 1fr max-content",
+        },
       }}
     />
   );
