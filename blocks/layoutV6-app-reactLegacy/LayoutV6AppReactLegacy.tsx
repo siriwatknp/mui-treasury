@@ -15,8 +15,11 @@ import { styled } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import {
+  Content,
   EdgeSidebar,
   Header,
+  InsetContainer,
+  InsetSidebar,
   Root,
   SidebarContent,
   toggleEdgeSidebarDrawer,
@@ -102,6 +105,22 @@ export function LayoutV6AppReactLegacy() {
       >
         <SidebarContent>{sidebarContent}</SidebarContent>
       </EdgeSidebar>
+      <Content>
+        <InsetContainer
+          rightSidebar={
+            <InsetSidebar
+              sx={{
+                borderLeft: "1px solid #ececec",
+                backgroundColor: "rgb(247, 247, 247)",
+              }}
+            >
+              {sidebarContent}
+            </InsetSidebar>
+          }
+        >
+          <ReactContent />
+        </InsetContainer>
+      </Content>
     </Root>
   );
 }
