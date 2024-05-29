@@ -309,7 +309,6 @@ export function Content({ className, ...props }: BoxProps) {
 }
 
 const SidebarContentRoot = styled("div")(({ theme }) => ({
-  "--SidebarContent-width": "var(--_permanentWidth, 0px)",
   backgroundColor: (theme.vars || theme).palette.background.paper,
   display: "flex",
   flexDirection: "column",
@@ -367,6 +366,7 @@ const EdgeSidebarRoot = styled("div")({
   "--JunSidebar-collapsible": "var(--uncollapsed)",
   "--JunSidebar-permanentCollapsedWidth": "72px",
   "--JunSidebar-anchor": "var(--anchorLeft)",
+  "--SidebarContent-width": "var(--_permanentWidth, 0px)",
   /** DO NOT OVERRIDE, internal variables */
   "--drawer": "var(--JunSidebar-variant,)",
   "--permanent": "var(--JunSidebar-variant,)",
@@ -496,15 +496,15 @@ const InsetSidebarBody = styled("div")(({ theme }) => ({
   flexDirection: "column",
   backgroundColor: "inherit",
   overflow: "auto",
-  borderColor: theme.palette.divider,
   position:
     "var(--sticky, sticky) var(--fixed, fixed) var(--absolute, absolute)" as any,
   height:
     "var(--sticky, initial) var(--fixed, calc(100% - var(--Header-height, 0px))) var(--absolute, calc(100vh - var(--Header-height, 0px)))",
-  width: "inherit",
+  width: "var(--sticky, inherit) var(--fixed, inherit) var(--absolute, 100%)",
   top: 0,
-  borderRight: "var(--anchor-left, 1px solid transparent)",
-  borderLeft: "var(--anchor-right, 1px solid transparent)",
+  borderRight: "var(--anchor-left, 1px solid)",
+  borderLeft: "var(--anchor-right, 1px solid)",
+  borderColor: theme.palette.divider,
   marginLeft:
     "var(--fixed, var(--anchor-left, -9999px)) var(--absolute, initial) var(--sticky, initial)",
   paddingLeft:
