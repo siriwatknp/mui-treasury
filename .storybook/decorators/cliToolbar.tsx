@@ -13,12 +13,11 @@ import { useCopyToClipboard } from "usehooks-ts";
 
 export default function cliToolbar() {
   return function cliToolbarDecorator(Story, context) {
-    console.log("context", context);
     const [hidden, setHidden] = React.useState(
-      () => localStorage.getItem("cli-hidden") === "true"
+      () => localStorage.getItem("cli-hidden") === "true",
     );
     const [blocks, setBlocks] = React.useState<Array<{ id: string }>>(() =>
-      JSON.parse(localStorage.getItem("cli-blocks") || "[]")
+      JSON.parse(localStorage.getItem("cli-blocks") || "[]"),
     );
     const [, copy] = useCopyToClipboard();
     const [copied, setCopied] = React.useState(false);
@@ -111,14 +110,14 @@ export default function cliToolbar() {
                       ...(context.parameters.modules || []).map(
                         (m: string) => ({
                           id: m,
-                        })
+                        }),
                       ),
                     ];
                     localStorage.setItem("cli-blocks", JSON.stringify(list));
                     copy(
                       `npx mui-treasury@latest clone ${list
                         .map((block) => block.id.replace(/--.*/, ""))
-                        .join(" ")}`
+                        .join(" ")}`,
                     );
                     return list;
                   })
@@ -170,7 +169,7 @@ export default function cliToolbar() {
                         await copy(
                           `npx mui-treasury@latest clone ${blocks
                             .map((block) => block.id.replace(/--.*/, ""))
-                            .join(" ")}`
+                            .join(" ")}`,
                         );
                         setCopied(true);
                         if (timeoutRef.current) {
@@ -229,7 +228,7 @@ export default function cliToolbar() {
                     alignItems: "center",
                     gap: 0.5,
                     background: (
-                      theme
+                      theme,
                     ) => `linear-gradient(to right, ${theme.vars.palette.background.default} 30%, rgba(255, 255, 255, 0)),
                     linear-gradient(to right, rgba(255, 255, 255, 0), ${theme.vars.palette.background.default} 70%) 0 100%,
                     radial-gradient(
@@ -266,7 +265,7 @@ export default function cliToolbar() {
                       onDelete={() => {
                         setBlocks((prev) => {
                           const index = prev.findIndex(
-                            (item) => item.id === block.id
+                            (item) => item.id === block.id,
                           );
                           if (index === -1) {
                             return prev;
@@ -274,7 +273,7 @@ export default function cliToolbar() {
                           prev.splice(index, 1);
                           localStorage.setItem(
                             "cli-blocks",
-                            JSON.stringify([...prev])
+                            JSON.stringify([...prev]),
                           );
                           return [...prev];
                         });
