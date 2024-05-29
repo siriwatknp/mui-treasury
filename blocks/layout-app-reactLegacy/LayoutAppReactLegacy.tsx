@@ -53,7 +53,7 @@ const theme = responsiveFontSizes(
         },
       },
     },
-  })
+  }),
 );
 // @ts-ignore
 theme.vars = null;

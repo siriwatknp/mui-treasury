@@ -16,8 +16,11 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import {
   Content,
+  EdgeDrawerClose,
   EdgeSidebar,
+  Footer,
   Header,
+  InsetAvoidingView,
   InsetContainer,
   InsetSidebar,
   Root,
@@ -32,7 +35,7 @@ const StyledToolbar = styled(Toolbar)(({ theme: { breakpoints } }) => ({
     minHeight: 60,
   },
 }));
-const StyledFab = styled(Fab)(() => ({
+const StyledFab = styled(Fab)({
   position: "fixed",
   bottom: 32,
   right: 16,
@@ -41,7 +44,29 @@ const StyledFab = styled(Fab)(() => ({
   "& svg": {
     fontSize: 32,
   },
-}));
+});
+const FooterMenu = ({ isHeader, ...props }) => {
+  return (
+    <>
+      {isHeader && <Box mt={5} />}
+      <Typography
+        sx={{
+          color: "#fff",
+          lineHeight: 2,
+          ...(isHeader && {
+            opacity: 0.6,
+            lineHeight: 3,
+            textTransform: "uppercase",
+            letterSpacing: "0.08em",
+            fontSize: 14,
+            fontWeight: "bold",
+          }),
+        }}
+        {...props}
+      />
+    </>
+  );
+};
 
 export function LayoutV6AppReactLegacy() {
   const sidebarContent = (
@@ -72,6 +97,7 @@ export function LayoutV6AppReactLegacy() {
   return (
     <Root>
       <StyledFab
+        className="EdgeSidebarR-trigger"
         color={"primary"}
         onClick={() => {
           // toggleEdgeSidebarDrawer();
@@ -79,40 +105,64 @@ export function LayoutV6AppReactLegacy() {
             sidebarId: "right-drawer",
           });
         }}
+        sx={{ display: { sm: "none !important" } }}
       >
         <UnfoldMore />
       </StyledFab>
-      <Header sx={{ position: "fixed", height: 60 }}>
+      <Header
+        sx={{
+          position: "sticky",
+          top: 0,
+          height: 60,
+          bgcolor: "#232323",
+          zIndex: 1,
+          ".JunRoot:has(&)": {
+            "--Header-height": "60px",
+          },
+        }}
+      >
         <Container>
           <StyledToolbar disableGutters>
             <ReactHeader concise />
           </StyledToolbar>
         </Container>
       </Header>
-      {/* <EdgeSidebar
-        sx={{
-          "--JunSidebar-variant": "var(--drawer)",
-        }}
-      >
-        <SidebarContent>{sidebarContent}</SidebarContent>
-      </EdgeSidebar> */}
       <EdgeSidebar
         id="right-drawer"
         anchor="right"
         sx={{
           "--JunSidebar-variant": "var(--drawer)",
+          ".JunRoot:has(&) .EdgeSidebarR-trigger": {
+            display: "inline-flex",
+          },
         }}
       >
+        <EdgeDrawerClose sidebarId="right-drawer" />
         <SidebarContent>{sidebarContent}</SidebarContent>
       </EdgeSidebar>
       <Content>
         <InsetContainer
           rightSidebar={
             <InsetSidebar
-              sx={{
-                borderLeft: "1px solid #ececec",
-                backgroundColor: "rgb(247, 247, 247)",
-              }}
+              position="fixed"
+              sx={(theme) => ({
+                width: { sm: 200, md: 256 },
+                borderLeft: "1px solid",
+                borderColor: "divider",
+                backgroundColor: "background.paper",
+                display: {
+                  xs: "none",
+                  sm: "block",
+                },
+                ".JunRoot:has(&)": {
+                  [theme.breakpoints.up("sm")]: {
+                    "--InsetSidebarR-width": "200px",
+                  },
+                  [theme.breakpoints.up("md")]: {
+                    "--InsetSidebarR-width": "256px",
+                  },
+                },
+              })}
             >
               {sidebarContent}
             </InsetSidebar>
@@ -121,6 +171,42 @@ export function LayoutV6AppReactLegacy() {
           <ReactContent />
         </InsetContainer>
       </Content>
+      <Footer>
+        <Box bgcolor={"rgb(40, 44, 52)"}>
+          <Container>
+            <InsetAvoidingView>
+              <ReactNextArticle />
+            </InsetAvoidingView>
+          </Container>
+        </Box>
+        <Box bgcolor={"#20232a"}>
+          <Container>
+            <InsetAvoidingView>
+              {/* @ts-ignore */}
+              <Box pr={{ xs: 0, md: 5 }} pb={5}>
+                <Grid container>
+                  <Grid item lg={4}>
+                    <Typography sx={{ mt: "56px", color: "#888" }}>
+                      Copyright © 2022
+                    </Typography>
+                  </Grid>
+                  <Grid item lg={8} container>
+                    {getData().map((category, i) => (
+                      <Grid key={i} item xs={6}>
+                        {category.map((label, j) => (
+                          <FooterMenu key={j} isHeader={j === 0}>
+                            {label}
+                          </FooterMenu>
+                        ))}
+                      </Grid>
+                    ))}
+                  </Grid>
+                </Grid>
+              </Box>
+            </InsetAvoidingView>
+          </Container>
+        </Box>
+      </Footer>
     </Root>
   );
 }

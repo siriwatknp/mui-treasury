@@ -25,7 +25,7 @@ import {
 
 export function LayoutV6AppAnalytics() {
   return (
-    <Root>
+    <Root sx={{ containerType: "inline-size", containerName: "page" }}>
       <Header
         sx={{
           height: { xs: 48, sm: 64, md: 72 },
@@ -41,13 +41,8 @@ export function LayoutV6AppAnalytics() {
           }}
         >
           <IconButton
+            className="EdgeSidebar-trigger"
             onClick={() => toggleEdgeSidebarDrawer()}
-            sx={(theme) => ({
-              [`@container page (min-width: ${theme.breakpoints.values.md}px)`]:
-                {
-                  display: "none",
-                },
-            })}
           >
             <MenuRounded />
           </IconButton>
@@ -64,6 +59,9 @@ export function LayoutV6AppAnalytics() {
           [`@container page (max-width: ${theme.breakpoints.values.md - 1}px)`]:
             {
               "--JunSidebar-variant": "var(--drawer)",
+              ".JunRoot:has(&) .EdgeSidebar-trigger": {
+                display: "inline-flex",
+              },
             },
           [`@container page (max-width: ${theme.breakpoints.values.lg - 1}px)`]:
             {
