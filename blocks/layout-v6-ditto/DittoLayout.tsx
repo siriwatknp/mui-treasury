@@ -261,7 +261,7 @@ export function Root({ className, sx, ...props }: BoxProps) {
               "${PART.SIDEBAR} ${PART.MAIN}"
               "${PART.SIDEBAR} ${PART.FOOTER}"
             `,
-            gridTemplateColumns: "max-content 1fr",
+            gridTemplateColumns: "max-content minmax(0, 1fr)", // minmax(0, 1fr) is used over `1fr` to prevent root horizontal overflow
             "--JunSidebar-drawerOpen": "0",
           },
           [`&:has(.${PART.SIDEBAR_R})`]: {
@@ -270,7 +270,7 @@ export function Root({ className, sx, ...props }: BoxProps) {
               "${PART.MAIN} ${PART.SIDEBAR_R}"
               "${PART.FOOTER} ${PART.SIDEBAR_R}"
             `,
-            gridTemplateColumns: "1fr max-content",
+            gridTemplateColumns: "minmax(0, 1fr) max-content",
             "--JunSidebar-drawerOpen": "0",
           },
           // TODO: find a better way to support both L & R
@@ -280,7 +280,7 @@ export function Root({ className, sx, ...props }: BoxProps) {
               "${PART.SIDEBAR} ${PART.MAIN} ${PART.SIDEBAR_R}"
               "${PART.SIDEBAR} ${PART.FOOTER} ${PART.SIDEBAR_R}"
             `,
-            gridTemplateColumns: "max-content 1fr max-content",
+            gridTemplateColumns: "max-content minmax(0, 1fr) max-content",
           },
         },
         ...(Array.isArray(sx) ? sx : [sx]),
@@ -470,7 +470,6 @@ export function InsetAvoidingView(props: BoxProps) {
       className="InsetAvoidingView"
       {...props}
       sx={{
-        transition: "all 225ms",
         marginRight: "var(--InsetSidebarR-width)",
         marginLeft: "var(--InsetSidebarL-width)",
       }}
@@ -491,11 +490,12 @@ const InsetSidebarRoot = styled("aside")({
   flexShrink: 0,
 });
 const InsetSidebarBody = styled("div")(({ theme }) => ({
-  boxSizing: "content-box",
   display: "flex",
   flexDirection: "column",
   backgroundColor: "inherit",
   overflow: "auto",
+  boxSizing:
+    "var(--sticky, border-box) var(--fixed, content-box) var(--absolute, border-box)" as any,
   position:
     "var(--sticky, sticky) var(--fixed, fixed) var(--absolute, absolute)" as any,
   height:
