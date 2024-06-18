@@ -16,15 +16,20 @@ import {
 } from "../layout-app-shoppingCart/components";
 import Content from "../layout-v6-ditto/Content";
 import EdgeSidebar, {
+  applyDrawerStyles,
   toggleEdgeSidebarDrawer,
 } from "../layout-v6-ditto/EdgeSidebar";
 import Footer from "../layout-v6-ditto/Footer";
-import Header from "../layout-v6-ditto/Header";
+import Header, { applyHeaderStyles } from "../layout-v6-ditto/Header";
 import InsetAvoidingView from "../layout-v6-ditto/InsetAvoidingView";
 import InsetContainer from "../layout-v6-ditto/InsetContainer";
-import InsetSidebar from "../layout-v6-ditto/InsetSidebar";
+import InsetSidebar, {
+  applyInsetSidebarStyles,
+} from "../layout-v6-ditto/InsetSidebar";
 import Root from "../layout-v6-ditto/Root";
-import SidebarContent from "../layout-v6-ditto/SidebarContent";
+import SidebarContent, {
+  applySidebarContentStyles,
+} from "../layout-v6-ditto/SidebarContent";
 
 const StyledHeader = styled(Header)(() => ({
   backgroundColor: "#ffffff",
@@ -93,10 +98,9 @@ export function LayoutV6AppShoppingCart() {
         <StyledHeader
           sx={{
             position: "relative",
-            height: 64,
-            ".JunRoot:has(&)": {
-              "--Header-height": "64px",
-            },
+            ...applyHeaderStyles({
+              height: "64px",
+            }),
           }}
         >
           <Container maxWidth="xl">
@@ -106,15 +110,15 @@ export function LayoutV6AppShoppingCart() {
         <EdgeSidebar
           id="right-drawer"
           anchor="right"
-          sx={{
-            "--JunSidebar-variant": "var(--drawer)",
-          }}
+          sx={{ ...applyDrawerStyles() }}
         >
           <SidebarContent
             sx={{
               padding: "0.5rem",
               bgcolor: "initial",
-              "--JunSidebar-drawerWidth": "min(400px, 100vw)",
+              ...applySidebarContentStyles({
+                width: "min(400px, 100vw)",
+              }),
             }}
           >
             <DailyCheckout />
@@ -127,16 +131,12 @@ export function LayoutV6AppShoppingCart() {
                 <InsetSidebar
                   position="absolute"
                   sx={{
-                    display: {
-                      xs: "none",
-                      lg: "block",
-                    },
-                    width: "max(25cqw, 360px)",
-                    ".JunRoot:has(&)": {
-                      "--InsetSidebarR-width": {
+                    ...applyInsetSidebarStyles({
+                      anchor: "right",
+                      width: {
                         lg: "max(25cqw, 360px)",
                       },
-                    },
+                    }),
                     "& > div": {
                       border: "none",
                       py: "1rem",

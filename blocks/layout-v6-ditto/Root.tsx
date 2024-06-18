@@ -8,6 +8,8 @@ const StyledRoot = styled("div")(({ theme }) => ({
   display: "grid",
   position: "relative",
   transition: "grid-template-columns 0.3s",
+  containerType: "inline-size",
+  containerName: "page",
   gridTemplateAreas: `
     "Header"
     "Content"

@@ -2,6 +2,7 @@ import {
   ReactContent,
   ReactHeader,
   ReactNextArticle,
+  // @ts-ignore
 } from "../layout-app-reactLegacy/components";
 import React from "react";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
@@ -16,13 +17,16 @@ import Typography from "@mui/material/Typography";
 import Content from "../layout-v6-ditto/Content";
 import EdgeDrawerClose from "../layout-v6-ditto/EdgeDrawerClose";
 import EdgeSidebar, {
+  applyDrawerStyles,
   toggleEdgeSidebarDrawer,
 } from "../layout-v6-ditto/EdgeSidebar";
 import Footer from "../layout-v6-ditto/Footer";
-import Header from "../layout-v6-ditto/Header";
+import Header, { applyHeaderStyles } from "../layout-v6-ditto/Header";
 import InsetAvoidingView from "../layout-v6-ditto/InsetAvoidingView";
 import InsetContainer from "../layout-v6-ditto/InsetContainer";
-import InsetSidebar from "../layout-v6-ditto/InsetSidebar";
+import InsetSidebar, {
+  applyInsetSidebarStyles,
+} from "../layout-v6-ditto/InsetSidebar";
 import Root from "../layout-v6-ditto/Root";
 import SidebarContent from "../layout-v6-ditto/SidebarContent";
 
@@ -43,7 +47,7 @@ const StyledFab = styled(Fab)({
     fontSize: 32,
   },
 });
-const FooterMenu = ({ isHeader, ...props }) => {
+const FooterMenu = ({ isHeader, ...props }: any) => {
   return (
     <>
       {isHeader && <Box mt={5} />}
@@ -110,12 +114,11 @@ export function LayoutV6AppReactLegacy() {
         sx={{
           position: "sticky",
           top: 0,
-          height: 60,
           bgcolor: "#232323",
           zIndex: 1,
-          ".JunRoot:has(&)": {
-            "--Header-height": "60px",
-          },
+          ...applyHeaderStyles({
+            height: "60px",
+          }),
         }}
       >
         <Container>
@@ -127,47 +130,36 @@ export function LayoutV6AppReactLegacy() {
       <EdgeSidebar
         id="right-drawer"
         anchor="right"
-        sx={{
-          "--JunSidebar-variant": "var(--drawer)",
-          ".JunRoot:has(&) .EdgeSidebarR-trigger": {
-            display: { xs: "inline-flex", md: "none" },
-          },
-        }}
+        sx={{ ...applyDrawerStyles() }}
       >
         <EdgeDrawerClose sidebarId="right-drawer" />
         <SidebarContent>{sidebarContent}</SidebarContent>
       </EdgeSidebar>
       <Content>
-        <InsetContainer
-          as={Container}
-          rightSidebar={
-            <InsetSidebar
-              position="fixed"
-              sx={(theme) => ({
-                width: { sm: 200, md: 256 },
-                borderLeft: "1px solid",
-                borderColor: "divider",
-                backgroundColor: "background.paper",
-                display: {
-                  xs: "none",
-                  md: "block",
-                },
-                ".JunRoot:has(&)": {
-                  [theme.breakpoints.up("sm")]: {
-                    "--InsetSidebarR-width": "200px",
-                  },
-                  [theme.breakpoints.up("md")]: {
-                    "--InsetSidebarR-width": "256px",
-                  },
-                },
-              })}
-            >
-              {sidebarContent}
-            </InsetSidebar>
-          }
-        >
-          <ReactContent />
-        </InsetContainer>
+        <Container>
+          <InsetContainer
+            rightSidebar={
+              <InsetSidebar
+                position="fixed"
+                sx={{
+                  borderLeft: "1px solid",
+                  borderColor: "divider",
+                  backgroundColor: "background.paper",
+                  ...applyInsetSidebarStyles({
+                    anchor: "right",
+                    width: {
+                      md: "256px",
+                    },
+                  }),
+                }}
+              >
+                {sidebarContent}
+              </InsetSidebar>
+            }
+          >
+            <ReactContent />
+          </InsetContainer>
+        </Container>
       </Content>
       <Footer>
         <Box bgcolor={"rgb(40, 44, 52)"}>

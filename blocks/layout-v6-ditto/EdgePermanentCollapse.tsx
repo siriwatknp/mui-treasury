@@ -7,6 +7,7 @@ export default function EdgePermanentCollapse() {
     <React.Fragment>
       <Box
         component="button"
+        className="EdgeSidebar-collapser"
         sx={{
           display:
             "var(--drawer, none) var(--permanent, var(--collapsed, none) var(--uncollapsed, flex))",
@@ -43,6 +44,7 @@ export default function EdgePermanentCollapse() {
       </Box>
       <Box
         component="button"
+        className="EdgeSidebar-collapser"
         sx={{
           display:
             "var(--drawer, none) var(--permanent, var(--collapsed, flex) var(--uncollapsed, none))",

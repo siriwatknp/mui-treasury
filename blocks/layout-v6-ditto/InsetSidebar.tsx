@@ -1,6 +1,26 @@
 import React from "react";
 import { BoxProps } from "@mui/material/Box";
+import { Breakpoint } from "@mui/material/styles";
 import { styled } from "./zero-styled";
+
+export function applyInsetSidebarStyles(params: {
+  anchor: "left" | "right";
+  width: string | Partial<Record<Breakpoint, string>>;
+}) {
+  const { anchor, width } = params;
+  return {
+    width,
+    ".JunRoot:has(&)": {
+      [`--InsetSidebar${anchor === "right" ? "R" : "L"}-width`]: width,
+    },
+    ...(typeof width !== "string" && {
+      display: {
+        xs: "none",
+        [Object.keys(width)[0]]: "block",
+      },
+    }),
+  };
+}
 
 const InsetSidebarRoot = styled("aside")({
   "--InsetSidebar-position": "var(--sticky)",
@@ -61,6 +81,7 @@ const InsetSidebar = React.forwardRef<
 ) {
   return (
     <InsetSidebarRoot
+      // @ts-ignore
       ref={ref}
       className={`InsetSidebar ${className || ""}`}
       {...props}
