@@ -14,19 +14,17 @@ import {
   DailySummary,
   // @ts-ignore
 } from "../layout-app-shoppingCart/components";
-import {
-  Content,
-  EdgeDrawerClose,
-  EdgeSidebar,
-  Footer,
-  Header,
-  InsetAvoidingView,
-  InsetContainer,
-  InsetSidebar,
-  Root,
-  SidebarContent,
+import Content from "../layout-v6-ditto/Content";
+import EdgeSidebar, {
   toggleEdgeSidebarDrawer,
-} from "../layout-v6-ditto";
+} from "../layout-v6-ditto/EdgeSidebar";
+import Footer from "../layout-v6-ditto/Footer";
+import Header from "../layout-v6-ditto/Header";
+import InsetAvoidingView from "../layout-v6-ditto/InsetAvoidingView";
+import InsetContainer from "../layout-v6-ditto/InsetContainer";
+import InsetSidebar from "../layout-v6-ditto/InsetSidebar";
+import Root from "../layout-v6-ditto/Root";
+import SidebarContent from "../layout-v6-ditto/SidebarContent";
 
 const StyledHeader = styled(Header)(() => ({
   backgroundColor: "#ffffff",
@@ -85,7 +83,7 @@ export function LayoutV6AppShoppingCart() {
             [theme.breakpoints.up("sm")]: {
               bottom: 40,
             },
-            [theme.breakpoints.up("md")]: {
+            [theme.breakpoints.up("lg")]: {
               transform: "scale(0)",
             },
           })}
@@ -101,7 +99,7 @@ export function LayoutV6AppShoppingCart() {
             },
           }}
         >
-          <Container>
+          <Container maxWidth="xl">
             <DailyHeader />
           </Container>
         </StyledHeader>
@@ -123,34 +121,36 @@ export function LayoutV6AppShoppingCart() {
           </SidebarContent>
         </EdgeSidebar>
         <Content>
-          <InsetContainer
-            rightSidebar={
-              <InsetSidebar
-                position="absolute"
-                sx={{
-                  display: {
-                    xs: "none",
-                    md: "block",
-                  },
-                  width: "max(25cqw, 256px)",
-                  ".JunRoot:has(&)": {
-                    "--InsetSidebarR-width": {
-                      md: "max(25cqw, 256px)",
+          <Container maxWidth="xl">
+            <InsetContainer
+              rightSidebar={
+                <InsetSidebar
+                  position="absolute"
+                  sx={{
+                    display: {
+                      xs: "none",
+                      lg: "block",
                     },
-                  },
-                  "& > div": {
-                    border: "none",
-                    py: "1rem",
-                    pl: "1rem",
-                  },
-                }}
-              >
-                <DailyCheckout />
-              </InsetSidebar>
-            }
-          >
-            <DailyCart />
-          </InsetContainer>
+                    width: "max(25cqw, 360px)",
+                    ".JunRoot:has(&)": {
+                      "--InsetSidebarR-width": {
+                        lg: "max(25cqw, 360px)",
+                      },
+                    },
+                    "& > div": {
+                      border: "none",
+                      py: "1rem",
+                      pl: "1rem",
+                    },
+                  }}
+                >
+                  <DailyCheckout />
+                </InsetSidebar>
+              }
+            >
+              <DailyCart />
+            </InsetContainer>
+          </Container>
         </Content>
         <Footer>
           <Container>

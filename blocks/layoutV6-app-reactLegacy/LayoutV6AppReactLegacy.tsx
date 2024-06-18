@@ -8,25 +8,23 @@ import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import UnfoldMore from "@mui/icons-material/UnfoldMore";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import CssBaseline from "@mui/material/CssBaseline";
 import Fab from "@mui/material/Fab";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import {
-  Content,
-  EdgeDrawerClose,
-  EdgeSidebar,
-  Footer,
-  Header,
-  InsetAvoidingView,
-  InsetContainer,
-  InsetSidebar,
-  Root,
-  SidebarContent,
+import Content from "../layout-v6-ditto/Content";
+import EdgeDrawerClose from "../layout-v6-ditto/EdgeDrawerClose";
+import EdgeSidebar, {
   toggleEdgeSidebarDrawer,
-} from "../layout-v6-ditto";
+} from "../layout-v6-ditto/EdgeSidebar";
+import Footer from "../layout-v6-ditto/Footer";
+import Header from "../layout-v6-ditto/Header";
+import InsetAvoidingView from "../layout-v6-ditto/InsetAvoidingView";
+import InsetContainer from "../layout-v6-ditto/InsetContainer";
+import InsetSidebar from "../layout-v6-ditto/InsetSidebar";
+import Root from "../layout-v6-ditto/Root";
+import SidebarContent from "../layout-v6-ditto/SidebarContent";
 
 const StyledToolbar = styled(Toolbar)(({ theme: { breakpoints } }) => ({
   minHeight: 60,
@@ -105,7 +103,6 @@ export function LayoutV6AppReactLegacy() {
             sidebarId: "right-drawer",
           });
         }}
-        sx={{ display: { sm: "none !important" } }}
       >
         <UnfoldMore />
       </StyledFab>
@@ -133,7 +130,7 @@ export function LayoutV6AppReactLegacy() {
         sx={{
           "--JunSidebar-variant": "var(--drawer)",
           ".JunRoot:has(&) .EdgeSidebarR-trigger": {
-            display: "inline-flex",
+            display: { xs: "inline-flex", md: "none" },
           },
         }}
       >
@@ -142,6 +139,7 @@ export function LayoutV6AppReactLegacy() {
       </EdgeSidebar>
       <Content>
         <InsetContainer
+          as={Container}
           rightSidebar={
             <InsetSidebar
               position="fixed"
@@ -152,7 +150,7 @@ export function LayoutV6AppReactLegacy() {
                 backgroundColor: "background.paper",
                 display: {
                   xs: "none",
-                  sm: "block",
+                  md: "block",
                 },
                 ".JunRoot:has(&)": {
                   [theme.breakpoints.up("sm")]: {

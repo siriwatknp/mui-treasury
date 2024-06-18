@@ -242,18 +242,14 @@ export function Root({ className, sx, ...props }: BoxProps) {
       className={`JunRoot ${className}`}
       sx={[
         {
-          // overflow: "hidden auto",
           bgcolor: "background.paper",
           minHeight: "100lvh",
           display: "grid",
           position: "relative",
           transition: "grid-template-columns 0.3s",
-          gridTemplateAreas: `
-          "${PART.HEADER}"
-          "${PART.MAIN}"
-          "${PART.FOOTER}"
-          `,
           gridTemplateRows: "auto 1fr",
+          gridTemplateColumns:
+            "var(--left-column,) minmax(0, 1fr) var(--right-column,)", // minmax(0, 1fr) is used over `1fr` to prevent root horizontal overflow
 
           [`&:has(.${PART.SIDEBAR})`]: {
             gridTemplateAreas: `
@@ -261,7 +257,7 @@ export function Root({ className, sx, ...props }: BoxProps) {
               "${PART.SIDEBAR} ${PART.MAIN}"
               "${PART.SIDEBAR} ${PART.FOOTER}"
             `,
-            gridTemplateColumns: "max-content minmax(0, 1fr)", // minmax(0, 1fr) is used over `1fr` to prevent root horizontal overflow
+            "--left-column": "max-content",
             "--JunSidebar-drawerOpen": "0",
           },
           [`&:has(.${PART.SIDEBAR_R})`]: {
@@ -270,7 +266,7 @@ export function Root({ className, sx, ...props }: BoxProps) {
               "${PART.MAIN} ${PART.SIDEBAR_R}"
               "${PART.FOOTER} ${PART.SIDEBAR_R}"
             `,
-            gridTemplateColumns: "minmax(0, 1fr) max-content",
+            "--right-column": "max-content",
             "--JunSidebar-drawerOpen": "0",
           },
           // TODO: find a better way to support both L & R
@@ -280,7 +276,6 @@ export function Root({ className, sx, ...props }: BoxProps) {
               "${PART.SIDEBAR} ${PART.MAIN} ${PART.SIDEBAR_R}"
               "${PART.SIDEBAR} ${PART.FOOTER} ${PART.SIDEBAR_R}"
             `,
-            gridTemplateColumns: "max-content minmax(0, 1fr) max-content",
           },
         },
         ...(Array.isArray(sx) ? sx : [sx]),
@@ -304,7 +299,7 @@ export const Header = ({ className = "", ...props }: BoxProps<"header">) => {
 const ContentRoot = styled("main")({
   gridArea: PART.MAIN,
 });
-export function Content({ className, ...props }: BoxProps) {
+export function Content({ className = "", ...props }: BoxProps) {
   return <ContentRoot className={`${PART.MAIN} ${className}`} {...props} />;
 }
 

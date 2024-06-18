@@ -20,19 +20,15 @@ import {
   MessengerSearch,
   // @ts-ignore
 } from "../layout-app-messenger/components";
-import {
-  Content,
-  EdgeDrawerClose,
-  EdgeSidebar,
-  Footer,
-  Header,
-  InsetAvoidingView,
-  InsetContainer,
-  InsetSidebar,
-  Root,
-  SidebarContent,
-  toggleEdgeSidebarDrawer,
-} from "../layout-v6-ditto";
+import Content from "../layout-v6-ditto/Content";
+import EdgeSidebar from "../layout-v6-ditto/EdgeSidebar";
+import Footer from "../layout-v6-ditto/Footer";
+import Header from "../layout-v6-ditto/Header";
+import InsetAvoidingView from "../layout-v6-ditto/InsetAvoidingView";
+import InsetContainer from "../layout-v6-ditto/InsetContainer";
+import InsetSidebar from "../layout-v6-ditto/InsetSidebar";
+import Root from "../layout-v6-ditto/Root";
+import SidebarContent from "../layout-v6-ditto/SidebarContent";
 
 const StyledHeader = styled(Header)(() => ({
   boxShadow: "0 1px 2px 0 rgba(0, 0, 0, .10)",
@@ -111,7 +107,6 @@ export function LayoutV6AppMessenger() {
         </EdgeSidebar>
         <Content>
           <InsetContainer
-            disableGutters
             rightSidebar={
               <InsetSidebar
                 position="absolute"
