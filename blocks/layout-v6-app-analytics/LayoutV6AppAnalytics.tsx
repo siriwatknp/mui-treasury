@@ -4,16 +4,15 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import {
-  Content,
-  EdgeDrawerClose,
-  EdgePermanentCollapse,
-  EdgeSidebar,
-  Header,
-  Root,
-  SidebarContent,
+import Content from "../layout-v6-ditto/Content";
+import EdgeDrawerClose from "../layout-v6-ditto/EdgeDrawerClose";
+import EdgePermanentCollapse from "../layout-v6-ditto/EdgePermanentCollapse";
+import EdgeSidebar, {
   toggleEdgeSidebarDrawer,
-} from "../layout-v6-ditto";
+} from "../layout-v6-ditto/EdgeSidebar";
+import Header from "../layout-v6-ditto/Header";
+import Root from "../layout-v6-ditto/Root";
+import SidebarContent from "../layout-v6-ditto/SidebarContent";
 import {
   IconNavMockup,
   LinkNavMockup,
