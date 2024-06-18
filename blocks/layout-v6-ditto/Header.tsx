@@ -1,6 +1,19 @@
 import React from "react";
 import { BoxProps } from "@mui/material/Box";
+import { Breakpoint } from "@mui/material/styles";
 import { styled } from "./zero-styled";
+
+export function applyHeaderStyles(params?: {
+  height: string | Partial<Record<Breakpoint, string>>;
+}) {
+  const { height } = params || {};
+  return {
+    height,
+    ".JunRoot:has(&)": {
+      "--Header-height": height,
+    },
+  };
+}
 
 const StyledHeader = styled("header")({
   gridArea: "Header",

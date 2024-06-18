@@ -8,11 +8,15 @@ import Content from "../layout-v6-ditto/Content";
 import EdgeDrawerClose from "../layout-v6-ditto/EdgeDrawerClose";
 import EdgePermanentCollapse from "../layout-v6-ditto/EdgePermanentCollapse";
 import EdgeSidebar, {
+  applyDrawerStyles,
+  applyPermanentStyles,
   toggleEdgeSidebarDrawer,
 } from "../layout-v6-ditto/EdgeSidebar";
 import Header from "../layout-v6-ditto/Header";
 import Root from "../layout-v6-ditto/Root";
-import SidebarContent from "../layout-v6-ditto/SidebarContent";
+import SidebarContent, {
+  applySidebarContentStyles,
+} from "../layout-v6-ditto/SidebarContent";
 import {
   IconNavMockup,
   LinkNavMockup,
@@ -24,7 +28,7 @@ import {
 
 export function LayoutV6AppAnalytics() {
   return (
-    <Root sx={{ containerType: "inline-size", containerName: "page" }}>
+    <Root>
       <Header
         sx={{
           height: { xs: 48, sm: 64, md: 72 },
@@ -55,36 +59,22 @@ export function LayoutV6AppAnalytics() {
       </Header>
       <EdgeSidebar
         sx={(theme) => ({
-          [`@container page (max-width: ${theme.breakpoints.values.md - 1}px)`]:
-            {
-              "--JunSidebar-variant": "var(--drawer)",
-              ".JunRoot:has(&) .EdgeSidebar-trigger": {
-                display: "inline-flex",
-              },
-            },
-          [`@container page (max-width: ${theme.breakpoints.values.lg - 1}px)`]:
-            {
-              "--JunSidebar-collapsible": "var(--collapsed)",
-            },
+          ...applyPermanentStyles({
+            autoCollapse: "lg",
+          }),
+          [theme.breakpoints.down("md")]: applyDrawerStyles(),
         })}
       >
         <EdgeDrawerClose />
 
         <SidebarContent
-          sx={(theme) => ({
+          sx={{
             borderRight: "1px solid",
             borderColor: "divider",
-            // TODO: move snippet below to utils
-            [`@container page (max-width: ${theme.breakpoints.values.lg - 1}px)`]:
-              {
-                "&:hover": {
-                  "--SidebarContent-width": "256px",
-                  "--SidebarContent-transitionDelay": "0.3s",
-                  boxShadow:
-                    "var(--collapsed, 0 0 10px rgba(0,0,0,0.1)) var(--uncollapsed, none)",
-                },
-              },
-          })}
+            ...applySidebarContentStyles({
+              expandOnHover: true,
+            }),
+          }}
         >
           <EdgePermanentCollapse />
 

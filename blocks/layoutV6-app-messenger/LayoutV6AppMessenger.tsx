@@ -21,12 +21,16 @@ import {
   // @ts-ignore
 } from "../layout-app-messenger/components";
 import Content from "../layout-v6-ditto/Content";
-import EdgeSidebar from "../layout-v6-ditto/EdgeSidebar";
+import EdgeSidebar, {
+  applyPermanentStyles,
+} from "../layout-v6-ditto/EdgeSidebar";
 import Footer from "../layout-v6-ditto/Footer";
-import Header from "../layout-v6-ditto/Header";
+import Header, { applyHeaderStyles } from "../layout-v6-ditto/Header";
 import InsetAvoidingView from "../layout-v6-ditto/InsetAvoidingView";
 import InsetContainer from "../layout-v6-ditto/InsetContainer";
-import InsetSidebar from "../layout-v6-ditto/InsetSidebar";
+import InsetSidebar, {
+  applyInsetSidebarStyles,
+} from "../layout-v6-ditto/InsetSidebar";
 import Root from "../layout-v6-ditto/Root";
 import SidebarContent from "../layout-v6-ditto/SidebarContent";
 
@@ -77,12 +81,7 @@ export function LayoutV6AppMessenger() {
       <Root>
         <StyledHeader
           position="relative"
-          sx={{
-            height: 64,
-            ".JunRoot:has(&)": {
-              "--Header-height": "64px",
-            },
-          }}
+          sx={{ ...applyHeaderStyles({ height: "64px" }) }}
         >
           <Toolbar disableGutters sx={{ flex: "auto" }}>
             <ConversationHead />
@@ -90,11 +89,10 @@ export function LayoutV6AppMessenger() {
         </StyledHeader>
         <EdgeSidebar
           sx={{
-            "--JunSidebar-permanentWidth": "25cqw",
-            "--JunSidebar-collapsible": {
-              xs: "var(--collapsed)",
-              md: "var(--uncollapsed)",
-            },
+            ...applyPermanentStyles({
+              width: "25cqw",
+              autoCollapse: "md",
+            }),
           }}
         >
           <SidebarContent sx={{ borderRight: "1px solid rgba(0, 0, 0, 0.12)" }}>
@@ -111,11 +109,11 @@ export function LayoutV6AppMessenger() {
               <InsetSidebar
                 position="absolute"
                 sx={{
-                  width: "25cqw",
                   borderColor: "divider",
-                  ".JunRoot:has(&)": {
-                    "--InsetSidebarR-width": "25cqw",
-                  },
+                  ...applyInsetSidebarStyles({
+                    anchor: "right",
+                    width: "25cqw",
+                  }),
                 }}
               >
                 <ChatSettings />

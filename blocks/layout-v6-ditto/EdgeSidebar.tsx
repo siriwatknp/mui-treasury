@@ -1,6 +1,50 @@
 import React from "react";
 import { BoxProps } from "@mui/material/Box";
+import { Breakpoint } from "@mui/material/styles";
 import { styled } from "./zero-styled";
+
+export function applyDrawerStyles(params?: { width?: string }) {
+  const { width } = params || {};
+  return {
+    "--JunSidebar-variant": "var(--drawer)",
+    ...(width && {
+      "--SidebarContent-width": width,
+    }),
+    ".JunRoot:has(&) .EdgeSidebar-trigger": {
+      display: "inline-flex",
+    },
+  };
+}
+
+export function applyPermanentStyles(params?: {
+  width?: string;
+  autoCollapse?: Breakpoint;
+  collapsedWidth?: string;
+  smallestBreakpoint?: string;
+}) {
+  const { width, autoCollapse, smallestBreakpoint = "xs" } = params || {};
+  return {
+    ...(width && {
+      "--JunSidebar-permanentWidth": width,
+    }),
+    ...(autoCollapse && {
+      "--JunSidebar-collapsible": {
+        [smallestBreakpoint]: "var(--collapsed)",
+        [autoCollapse]: "var(--uncollapsed)",
+      },
+      '&[data-collapsible="collapsed"]': {
+        "--JunSidebar-collapsible": {
+          [autoCollapse]: "var(--uncollapsed)",
+        },
+      },
+      "& .EdgeSidebar-collapser": {
+        display: {
+          [autoCollapse]: "none",
+        },
+      },
+    }),
+  };
+}
 
 export function collapseEdgeSidebar(options?: {
   sidebarId?: string;

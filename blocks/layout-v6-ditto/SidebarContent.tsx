@@ -1,6 +1,39 @@
 import React from "react";
 import { BoxProps } from "@mui/material/Box";
+import { Breakpoint } from "@mui/material/styles";
 import { styled } from "./zero-styled";
+
+export function applySidebarContentStyles(params: {
+  width?: string | Partial<Record<Breakpoint, string>>;
+  expandOnHover?:
+    | true
+    | {
+        width?: string;
+        delay?: string;
+        shadow?: string;
+      };
+}) {
+  const { width, expandOnHover } = params;
+  const defaultExpandConfig = {
+    width: "256px",
+    delay: "0.3s",
+    shadow: "0 0 10px rgba(0,0,0,0.1)",
+  };
+  const expandConfig =
+    expandOnHover === true ? defaultExpandConfig : expandOnHover;
+  return {
+    "--JunSidebar-drawerWidth": width,
+    ...(expandOnHover && {
+      "&:hover": {
+        "--SidebarContent-width":
+          expandConfig?.width || defaultExpandConfig.width,
+        "--SidebarContent-transitionDelay":
+          expandConfig?.delay || defaultExpandConfig.delay,
+        boxShadow: `var(--collapsed, ${expandConfig?.shadow || defaultExpandConfig.shadow}) var(--uncollapsed, none)`,
+      },
+    }),
+  };
+}
 
 const StyledSidebarContent = styled("div")(({ theme }) => ({
   backgroundColor: (theme.vars || theme).palette.background.paper,
