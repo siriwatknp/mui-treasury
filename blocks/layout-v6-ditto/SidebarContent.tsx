@@ -8,14 +8,12 @@ export function applySidebarContentStyles(params: {
   expandOnHover?:
     | true
     | {
-        width?: string;
         delay?: string;
         shadow?: string;
       };
 }) {
   const { width, expandOnHover } = params;
   const defaultExpandConfig = {
-    width: "256px",
     delay: "0.3s",
     shadow: "0 0 10px rgba(0,0,0,0.1)",
   };
@@ -25,8 +23,7 @@ export function applySidebarContentStyles(params: {
     "--JunSidebar-drawerWidth": width,
     ...(expandOnHover && {
       "&:hover": {
-        "--SidebarContent-width":
-          expandConfig?.width || defaultExpandConfig.width,
+        "--SidebarContent-width": "var(--JunSidebar-permanentWidth)",
         "--SidebarContent-transitionDelay":
           expandConfig?.delay || defaultExpandConfig.delay,
         boxShadow: `var(--collapsed, ${expandConfig?.shadow || defaultExpandConfig.shadow}) var(--uncollapsed, none)`,

@@ -1,4 +1,5 @@
 import React from "react";
+import ChevronLeftRounded from "@mui/icons-material/ChevronLeftRounded";
 import MenuRounded from "@mui/icons-material/MenuRounded";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -7,9 +8,13 @@ import Typography from "@mui/material/Typography";
 import Content from "../layout-v6-ditto/Content";
 import EdgeDrawerClose from "../layout-v6-ditto/EdgeDrawerClose";
 import EdgePermanentCollapse from "../layout-v6-ditto/EdgePermanentCollapse";
-import EdgeSidebar, {
+import {
   applyDrawerStyles,
+  applyEdgeSidebarStyles,
   applyPermanentStyles,
+  applyPersistentStyles,
+  EdgeSidebarLeft,
+  toggleEdgeSidebarCollapse,
   toggleEdgeSidebarDrawer,
 } from "../layout-v6-ditto/EdgeSidebar";
 import Header from "../layout-v6-ditto/Header";
@@ -49,6 +54,15 @@ export function LayoutV6AppAnalytics() {
           >
             <MenuRounded />
           </IconButton>
+
+          <IconButton
+            className="EdgeSidebar-extUncollapser"
+            onClick={() => toggleEdgeSidebarCollapse()}
+          >
+            <MenuRounded />
+            <ChevronLeftRounded />
+          </IconButton>
+
           <Typography
             variant="h6"
             sx={{ fontSize: "clamp(18px, 1vw + 1rem, 24px)" }}
@@ -57,12 +71,24 @@ export function LayoutV6AppAnalytics() {
           </Typography>
         </Box>
       </Header>
-      <EdgeSidebar
+      <EdgeSidebarLeft
         sx={(theme) => ({
-          ...applyPermanentStyles({
-            autoCollapse: "lg",
+          ...applyEdgeSidebarStyles(theme, {
+            autoCollapse: "xl",
+            config: {
+              xs: {
+                variant: "drawer",
+              },
+              md: {
+                variant: "persistent",
+              },
+              lg: {
+                variant: "permanent",
+                width: "300px",
+                collapsedWidth: "80px",
+              },
+            },
           }),
-          [theme.breakpoints.down("md")]: applyDrawerStyles(),
         })}
       >
         <EdgeDrawerClose />
@@ -76,8 +102,6 @@ export function LayoutV6AppAnalytics() {
             }),
           }}
         >
-          <EdgePermanentCollapse />
-
           <SideNavUserInfoMockup />
           <Box
             sx={{
@@ -90,9 +114,10 @@ export function LayoutV6AppAnalytics() {
             <IconNavMockup size="small" />
             <LinkNavMockup />
           </Box>
+          <EdgePermanentCollapse />
         </SidebarContent>
         <Box sx={{ position: "absolute", top: 0, left: "100%" }}>Test</Box>
-      </EdgeSidebar>
+      </EdgeSidebarLeft>
       <Content>
         <Box
           sx={{
