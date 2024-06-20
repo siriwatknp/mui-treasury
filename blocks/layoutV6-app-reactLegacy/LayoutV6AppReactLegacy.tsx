@@ -17,8 +17,8 @@ import Typography from "@mui/material/Typography";
 import Content from "../layout-v6-ditto/Content";
 import EdgeDrawerClose from "../layout-v6-ditto/EdgeDrawerClose";
 import EdgeSidebar, {
-  applyDrawerStyles,
-  toggleEdgeSidebarDrawer,
+  applyTemporaryStyles,
+  toggleTemporaryEdgeSidebar,
 } from "../layout-v6-ditto/EdgeSidebar";
 import Footer from "../layout-v6-ditto/Footer";
 import Header, { applyHeaderStyles } from "../layout-v6-ditto/Header";
@@ -103,7 +103,7 @@ export function LayoutV6AppReactLegacy() {
         color={"primary"}
         onClick={() => {
           // toggleEdgeSidebarDrawer();
-          toggleEdgeSidebarDrawer({
+          toggleTemporaryEdgeSidebar({
             sidebarId: "right-drawer",
           });
         }}
@@ -130,7 +130,7 @@ export function LayoutV6AppReactLegacy() {
       <EdgeSidebar
         id="right-drawer"
         anchor="right"
-        sx={{ ...applyDrawerStyles() }}
+        sx={{ ...applyTemporaryStyles() }}
       >
         <EdgeDrawerClose sidebarId="right-drawer" />
         <SidebarContent>{sidebarContent}</SidebarContent>

@@ -16,8 +16,8 @@ import {
 } from "../layout-app-shoppingCart/components";
 import Content from "../layout-v6-ditto/Content";
 import EdgeSidebar, {
-  applyDrawerStyles,
-  toggleEdgeSidebarDrawer,
+  applyTemporaryStyles,
+  toggleTemporaryEdgeSidebar,
 } from "../layout-v6-ditto/EdgeSidebar";
 import Footer from "../layout-v6-ditto/Footer";
 import Header, { applyHeaderStyles } from "../layout-v6-ditto/Header";
@@ -70,7 +70,7 @@ export function LayoutV6AppShoppingCart() {
         <Fab
           color={"primary"}
           onClick={() =>
-            toggleEdgeSidebarDrawer({
+            toggleTemporaryEdgeSidebar({
               sidebarId: "right-drawer",
             })
           }
@@ -110,7 +110,7 @@ export function LayoutV6AppShoppingCart() {
         <EdgeSidebar
           id="right-drawer"
           anchor="right"
-          sx={{ ...applyDrawerStyles() }}
+          sx={{ ...applyTemporaryStyles() }}
         >
           <SidebarContent
             sx={{

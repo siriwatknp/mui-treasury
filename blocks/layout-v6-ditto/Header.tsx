@@ -9,7 +9,7 @@ export function applyHeaderStyles(params?: {
   const { height } = params || {};
   return {
     height,
-    ".JunRoot:has(&)": {
+    ".Root:has(&)": {
       "--Header-height": height,
     },
   };
