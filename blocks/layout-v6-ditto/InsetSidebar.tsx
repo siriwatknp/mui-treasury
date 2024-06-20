@@ -10,7 +10,7 @@ export function applyInsetSidebarStyles(params: {
   const { anchor, width } = params;
   return {
     width,
-    ".JunRoot:has(&)": {
+    ".Root:has(&)": {
       [`--InsetSidebar${anchor === "right" ? "R" : "L"}-width`]: width,
     },
     ...(typeof width !== "string" && {

@@ -18,14 +18,14 @@ const StyledRoot = styled("div")(({ theme }) => ({
   gridTemplateRows: "auto 1fr",
   gridTemplateColumns: "var(--_start-col,) minmax(0, 1fr) var(--_end-col,)", // minmax(0, 1fr) is used over `1fr` to prevent root horizontal overflow
 
-  [`&:has(.EdgeSidebar-L)`]: {
+  [`&:has(.EdgeSidebar)`]: {
     gridTemplateAreas: `
-      "EdgeSidebar-L Header"
-      "EdgeSidebar-L Content"
-      "EdgeSidebar-L Footer"
+      "EdgeSidebar Header"
+      "EdgeSidebar Content"
+      "EdgeSidebar Footer"
     `,
     "--_start-col": "max-content",
-    "--JunSidebar-drawerOpen": "0",
+    "--EdgeSidebar-temporaryOpen": "0",
   },
   [`&:has(.EdgeSidebar-R)`]: {
     gridTemplateAreas: `
@@ -34,13 +34,13 @@ const StyledRoot = styled("div")(({ theme }) => ({
       "Footer EdgeSidebar-R"
     `,
     "--_end-col": "max-content",
-    "--JunSidebar-drawerOpen": "0",
+    "--EdgeSidebar-temporaryOpen": "0",
   },
-  [`&:has(.EdgeSidebar-L):has(.EdgeSidebar-R)`]: {
+  [`&:has(.EdgeSidebar):has(.EdgeSidebar-R)`]: {
     gridTemplateAreas: `
-      "EdgeSidebar-L Header EdgeSidebar-R"
-      "EdgeSidebar-L Content EdgeSidebar-R"
-      "EdgeSidebar-L Footer EdgeSidebar-R"
+      "EdgeSidebar Header EdgeSidebar-R"
+      "EdgeSidebar Content EdgeSidebar-R"
+      "EdgeSidebar Footer EdgeSidebar-R"
     `,
   },
 }));
@@ -53,7 +53,7 @@ const Root = React.forwardRef<HTMLDivElement, BoxProps>(function Root(
     <StyledRoot
       // @ts-ignore
       ref={ref}
-      className={`JunRoot ${className || ""}`}
+      className={`Root ${className || ""}`}
       {...props}
     />
   );

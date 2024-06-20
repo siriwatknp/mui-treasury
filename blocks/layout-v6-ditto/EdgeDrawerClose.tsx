@@ -1,6 +1,6 @@
 import React from "react";
 import { SxProps } from "@mui/material/styles";
-import { toggleEdgeSidebarDrawer } from "./EdgeSidebar";
+import { toggleTemporaryEdgeSidebar } from "./EdgeSidebar";
 import { styled } from "./zero-styled";
 
 const StyledEdgeDrawerClose = styled("button")({
@@ -19,8 +19,8 @@ const StyledEdgeDrawerClose = styled("button")({
     width: "1.5em",
     height: "1.5em",
   },
-  "[data-drawer-open] &": {
-    display: "var(--_drawer, flex) var(--_permanent, none)",
+  "[data-temporary-open] &": {
+    display: "var(--_temporary, flex) var(--_permanent, none)",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -36,7 +36,7 @@ const EdgeDrawerClose = React.forwardRef<
       ref={ref}
       className={`EdgeDrawerClose ${className || ""}`}
       onClick={() =>
-        toggleEdgeSidebarDrawer({
+        toggleTemporaryEdgeSidebar({
           state: false,
           sidebarId,
           document: (
