@@ -20,47 +20,146 @@ type PermanentConfig = {
   collapsedWidth?: string;
 };
 
-export function applyDrawerStyles(params?: Omit<DrawerConfig, "variant">) {
-  const { width } = params || {};
+export function applyDrawerStyles(
+  params?: Omit<DrawerConfig, "variant"> & { anchorRight?: boolean },
+) {
+  const { width, anchorRight } = params || {};
   return {
     ".JunRoot:has(&)": {
-      "--JunSidebar-variant": "var(--drawer)",
-      ...(width && {
-        "--SidebarContent-width": width,
-      }),
+      ...(anchorRight
+        ? {
+            "--JunSidebar-R-variant": "var(--drawer-R)",
+            ".EdgeSidebar-R-collapser": {
+              display: "none",
+            },
+          }
+        : {
+            "--JunSidebar-variant": "var(--drawer)",
+            ".EdgeSidebar-collapser": {
+              display: "none",
+            },
+          }),
     },
+    ...(width && {
+      "& .SidebarContent": {
+        "--JunSidebar-drawerWidth": width,
+      },
+    }),
   };
 }
 
 export function applyPersistentStyles(
-  params?: Omit<PersistentConfig, "variant">,
+  params?: Omit<PersistentConfig, "variant"> & { anchorRight?: boolean },
 ) {
-  const { width } = params || {};
+  const { width, anchorRight } = params || {};
   return {
     ".JunRoot:has(&)": {
-      "--JunSidebar-variant": "var(--permanent)",
-      "--JunSidebar-permanentCollapsedWidth": "0px",
-      ...(width && {
-        "--JunSidebar-permanentWidth": width,
-      }),
-      "--JunSidebar-collapsible": "var(--collapsed)",
+      ...(anchorRight
+        ? {
+            "--JunSidebar-R-variant": "var(--permanent-R)",
+            "--JunSidebar-R-permanentCollapsedWidth": "0px",
+            ...(width && {
+              "--JunSidebar-R-permanentWidth": width,
+            }),
+            "--JunSidebar-R-collapsible": "var(--collapsed-R)",
+            ".EdgeSidebar-R-trigger": {
+              display: "none",
+            },
+            ".EdgeSidebar-R-collapser": {
+              display: "var(--display, inline-flex)",
+              "--_sidebarCollapsed": "var(--collapsed-R, 1)",
+              ".Icon-collapse": {
+                display:
+                  "var(--collapsed-R, none) var(--uncollapsed-R, inline-block)",
+              },
+              ".Icon-uncollapse": {
+                display:
+                  "var(--collapsed-R, inline-block) var(--uncollapsed-R, none)",
+              },
+            },
+          }
+        : {
+            "--JunSidebar-variant": "var(--permanent)",
+            "--JunSidebar-permanentCollapsedWidth": "0px",
+            ...(width && {
+              "--JunSidebar-permanentWidth": width,
+            }),
+            "--JunSidebar-collapsible": "var(--collapsed)",
+            ".EdgeSidebar-trigger": {
+              display: "none",
+            },
+            ".EdgeSidebar-collapser": {
+              display: "var(--display, inline-flex)",
+              "--_sidebarCollapsed": "var(--collapsed, 1)",
+              ".Icon-collapse": {
+                display:
+                  "var(--collapsed, none) var(--uncollapsed, inline-block)",
+              },
+              ".Icon-uncollapse": {
+                display:
+                  "var(--collapsed, inline-block) var(--uncollapsed, none)",
+              },
+            },
+          }),
     },
   };
 }
 
 export function applyPermanentStyles(
-  params?: Omit<PermanentConfig, "variant">,
+  params?: Omit<PermanentConfig, "variant"> & { anchorRight?: boolean },
 ) {
-  const { width, collapsedWidth } = params || {};
+  const { width, collapsedWidth, anchorRight } = params || {};
   return {
     ".JunRoot:has(&)": {
-      "--JunSidebar-variant": "var(--permanent)",
-      ...(width && {
-        "--JunSidebar-permanentWidth": width,
-      }),
-      ...(collapsedWidth && {
-        "--JunSidebar-permanentCollapsedWidth": collapsedWidth,
-      }),
+      ...(anchorRight
+        ? {
+            "--JunSidebar-R-variant": "var(--permanent-R)",
+            ...(width && {
+              "--JunSidebar-R-permanentWidth": width,
+            }),
+            ...(collapsedWidth && {
+              "--JunSidebar-R-permanentCollapsedWidth": collapsedWidth,
+            }),
+            ".EdgeSidebar-R-trigger": {
+              display: "none",
+            },
+            ".EdgeSidebar-R-collapser": {
+              display: "var(--display, inline-flex)",
+              "--_sidebarCollapsed": "var(--collapsed-R, 1)",
+              ".Icon-collapse": {
+                display:
+                  "var(--collapsed-R, none) var(--uncollapsed-R, inline-block)",
+              },
+              ".Icon-uncollapse": {
+                display:
+                  "var(--collapsed-R, inline-block) var(--uncollapsed-R, none)",
+              },
+            },
+          }
+        : {
+            "--JunSidebar-variant": "var(--permanent)",
+            ...(width && {
+              "--JunSidebar-permanentWidth": width,
+            }),
+            ...(collapsedWidth && {
+              "--JunSidebar-permanentCollapsedWidth": collapsedWidth,
+            }),
+            ".EdgeSidebar-trigger": {
+              display: "none",
+            },
+            ".EdgeSidebar-collapser": {
+              display: "var(--display, inline-flex)",
+              "--_sidebarCollapsed": "var(--collapsed, 1)",
+              ".Icon-collapse": {
+                display:
+                  "var(--collapsed, none) var(--uncollapsed, inline-block)",
+              },
+              ".Icon-uncollapse": {
+                display:
+                  "var(--collapsed, inline-block) var(--uncollapsed, none)",
+              },
+            },
+          }),
     },
   };
 }
@@ -68,6 +167,7 @@ export function applyPermanentStyles(
 export function applyEdgeSidebarStyles(
   theme: Theme,
   params: {
+    anchorRight?: boolean;
     /**
      * When the viewport shrink to the provided breakpoint, the EdgeSidebar will collapse automatically.
      * Must set `collapsedWidth` to specify the width of the collapsed sidebar
@@ -85,7 +185,12 @@ export function applyEdgeSidebarStyles(
     >;
   },
 ) {
-  const { autoCollapse, smallestBreakpoint = "xs", config } = params;
+  const {
+    autoCollapse,
+    smallestBreakpoint = "xs",
+    config,
+    anchorRight,
+  } = params;
   let responsive: any = {};
   (Object.keys(config) as Array<Breakpoint>)
     .sort((a, b) => theme.breakpoints.values[a] - theme.breakpoints.values[b])
@@ -97,7 +202,7 @@ export function applyEdgeSidebarStyles(
           drawer: applyDrawerStyles,
           persistent: applyPersistentStyles,
           permanent: applyPermanentStyles,
-        }[variant](params);
+        }[variant]({ ...params, anchorRight });
         responsive[theme.breakpoints.up(breakpoint)] = variantStyles;
       }
     });
@@ -105,25 +210,48 @@ export function applyEdgeSidebarStyles(
     ...responsive,
     ...(autoCollapse && {
       ".JunRoot:has(&)": {
-        "--JunSidebar-collapsible": {
-          [smallestBreakpoint]: "var(--collapsed)",
-          [autoCollapse]: "var(--uncollapsed)",
-        },
-        ".EdgeSidebar-collapser": {
-          display: {
-            [autoCollapse]: "none",
-          },
-        },
+        ...(anchorRight
+          ? {
+              "--JunSidebar-R-collapsible": {
+                [smallestBreakpoint]: "var(--collapsed-R)",
+                [autoCollapse]: "var(--uncollapsed-R)",
+              },
+              ".EdgeSidebar-R-collapser": {
+                display: {
+                  [autoCollapse]: "none",
+                },
+              },
+            }
+          : {
+              "--JunSidebar-collapsible": {
+                [smallestBreakpoint]: "var(--collapsed)",
+                [autoCollapse]: "var(--uncollapsed)",
+              },
+              ".EdgeSidebar-collapser": {
+                display: {
+                  [autoCollapse]: "none",
+                },
+              },
+            }),
       },
       '.JunRoot:has(&[data-collapsible="collapsed"])': {
-        "--JunSidebar-collapsible": {
-          [autoCollapse]: "var(--uncollapsed)",
-        },
+        ...(anchorRight
+          ? {
+              "--JunSidebar-R-collapsible": {
+                [autoCollapse]: "var(--uncollapsed-R)",
+              },
+            }
+          : {
+              "--JunSidebar-collapsible": {
+                [autoCollapse]: "var(--uncollapsed)",
+              },
+            }),
       },
     }),
   };
 }
 
+// TODO: remove
 export function collapseEdgeSidebar(options?: {
   sidebarId?: string;
   document?: Document | null;
@@ -138,6 +266,7 @@ export function collapseEdgeSidebar(options?: {
   }
 }
 
+// TODO: remove
 export function uncollapseEdgeSidebar(options?: {
   sidebarId?: string;
   document?: Document | null;
@@ -152,28 +281,25 @@ export function uncollapseEdgeSidebar(options?: {
   }
 }
 
-export function toggleEdgeSidebarCollapse(options?: {
-  anchor?: "left" | "right";
+export function toggleEdgeSidebarCollapse(options: {
+  event: React.MouseEvent;
+  anchorRight?: boolean;
   sidebarId?: string;
   state?: boolean;
   document?: Document | null;
 }) {
-  const { anchor, state, document: d, sidebarId } = options || {};
+  const { anchorRight, state, document: d, sidebarId, event } = options || {};
   const doc = d ?? document;
-  let selector = anchor === "right" ? ".EdgeSidebar-R" : ".EdgeSidebar-L";
+  let selector = anchorRight ? ".EdgeSidebar-R" : ".EdgeSidebar-L";
   if (sidebarId) {
     selector = `#${sidebarId}`;
   }
   const sidebar = doc.querySelector(selector) as HTMLElement;
-  const page = doc.querySelector(".JunRoot") as HTMLDivElement | null;
-  if (sidebar && page) {
-    const status = window
-      .getComputedStyle(page)
-      .getPropertyValue(
-        `--JunSidebar${anchor === "right" ? "-R" : ""}-collapsible`,
-      );
+  if (sidebar) {
     const currentCollapsed =
-      status === `var(--collapsed${anchor === "right" ? "-R" : ""})`;
+      window
+        .getComputedStyle(event.target as Element)
+        .getPropertyValue("--_sidebarCollapsed") === "1";
     const nextCollapsed = state === undefined ? !currentCollapsed : state;
     if (nextCollapsed) {
       sidebar.setAttribute("data-collapsible", "collapsed");
@@ -184,28 +310,24 @@ export function toggleEdgeSidebarCollapse(options?: {
 }
 
 export function toggleEdgeSidebarDrawer(options?: {
-  anchor?: "left" | "right";
+  anchorRight?: boolean;
   sidebarId?: string;
   state?: boolean;
   document?: Document | null;
 }) {
-  const { anchor, state, document: d, sidebarId } = options || {};
+  const { anchorRight, state, document: d, sidebarId } = options || {};
   const doc = d ?? document;
-  let selector = anchor === "right" ? ".EdgeSidebar-R" : ".EdgeSidebar-L";
+  let selector = anchorRight ? ".EdgeSidebar-R" : ".EdgeSidebar-L";
   if (sidebarId) {
     selector = `#${sidebarId}`;
   }
-  const sidebar = doc.querySelector(selector);
-  const page = doc.querySelector(".JunRoot") as HTMLDivElement | null;
-  if (sidebar && page) {
+  const sidebar = doc.querySelector(selector) as HTMLDivElement | null;
+  if (sidebar) {
     const currentOpen = sidebar.getAttribute("data-drawer-open") !== null;
     const nextOpen = state === undefined ? !currentOpen : state;
     if (nextOpen) {
       sidebar.setAttribute("data-drawer-open", "");
-      page.style.setProperty(
-        `--JunSidebar${anchor === "right" ? "-R" : ""}-drawerOpen`,
-        "1",
-      );
+      sidebar.style.setProperty("--JunSidebar-drawerOpen", "1");
       doc.body.style.overflowY = "hidden";
       // @ts-ignore
       function handleOutsideClick(event: MouseEvent) {
@@ -232,10 +354,7 @@ export function toggleEdgeSidebarDrawer(options?: {
         sidebar.removeAttribute("data-mobile-closing");
       }, 300);
       doc.body.style.overflowY = "";
-      page.style.setProperty(
-        `--JunSidebar${anchor === "right" ? "-R" : ""}-drawerOpen`,
-        "",
-      );
+      sidebar.style.setProperty("--JunSidebar-drawerOpen", "");
     }
   }
 }
@@ -247,6 +366,7 @@ export function toggleEdgeSidebarDrawer(options?: {
  *    - It will be hidden by setting `--JunSidebar-permanentHidden: 1`.
  * - `drawer` is a sidebar that is hidden by default and can be opened by `SidebarMobileMenu` component.
  */
+// TODO: remove
 const StyledEdgeSidebar = styled("div")({
   /** default settings */
   "--JunSidebar-variant": "var(--permanent)",
@@ -314,6 +434,7 @@ const EdgeSidebarRoot = styled("div")({
     zIndex: 1,
     transition: "opacity 0.4s, visibility 0.4s",
     visibility: "hidden",
+    opacity: "var(--JunSidebar-drawerOpen, 0)",
   },
   "&[data-drawer-open]": {
     "&::before": {
@@ -345,13 +466,14 @@ const StyledEdgeSidebarLeft = styled(EdgeSidebarRoot)({
   },
   "--JunSidebar-anchor": "var(--anchorLeft)",
   "--SidebarContent-width": "var(--_permanentWidth, 0px)",
+  "--_drawer": "var(--drawer)",
+  "--_permanent": "var(--permanent)",
   gridArea: "EdgeSidebar-L",
   width: `var(--drawer, 0)
           var(--permanent, var(--_permanentWidth))`,
   "&::before": {
     display: `var(--drawer, block)
               var(--permanent, none)`,
-    opacity: "var(--JunSidebar-drawerOpen, 0)",
   },
   "&:not([data-drawer-open], [data-mobile-closing])": {
     overflow: "var(--drawer, hidden)",
@@ -394,13 +516,14 @@ const StyledEdgeSidebarRight = styled(EdgeSidebarRoot)({
   },
   "--JunSidebar-anchor": "var(--anchorRight)",
   "--SidebarContent-width": "var(--_permanentWidth-R, 0px)",
+  "--_drawer": "var(--drawer-R)",
+  "--_permanent": "var(--permanent-R)",
   gridArea: "EdgeSidebar-R",
   width: `var(--drawer-R, 0)
           var(--permanent-R, var(--_permanentWidth-R))`,
   "&::before": {
     display: `var(--drawer-R, block)
               var(--permanent-R, none)`,
-    opacity: "var(--JunSidebar-R-drawerOpen, 0)",
   },
   "&:not([data-drawer-open], [data-mobile-closing])": {
     overflow: "var(--drawer-R, hidden)",
@@ -429,7 +552,7 @@ const EdgeSidebar = React.forwardRef<
       // @ts-ignore
       ref={ref}
       {...props}
-      className={`EdgeSidebar-${anchor === "right" ? "R" : "L"} ${className || ""}`}
+      className={`${anchor === "right" ? "EdgeSidebar-R" : "EdgeSidebar-L"} ${className || ""}`}
       style={{
         ...(anchor === "right" && {
           "--JunSidebar-anchor": "var(--anchorRight)",

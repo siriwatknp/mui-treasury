@@ -14,6 +14,7 @@ import {
   applyPermanentStyles,
   applyPersistentStyles,
   EdgeSidebarLeft,
+  EdgeSidebarRight,
   toggleEdgeSidebarCollapse,
   toggleEdgeSidebarDrawer,
 } from "../layout-v6-ditto/EdgeSidebar";
@@ -56,11 +57,11 @@ export function LayoutV6AppAnalytics() {
           </IconButton>
 
           <IconButton
-            className="EdgeSidebar-extUncollapser"
-            onClick={() => toggleEdgeSidebarCollapse()}
+            className="EdgeSidebar-collapser"
+            onClick={(event) => toggleEdgeSidebarCollapse({ event })}
           >
-            <MenuRounded />
-            <ChevronLeftRounded />
+            <MenuRounded className="Icon-uncollapse" />
+            <ChevronLeftRounded className="Icon-collapse" />
           </IconButton>
 
           <Typography

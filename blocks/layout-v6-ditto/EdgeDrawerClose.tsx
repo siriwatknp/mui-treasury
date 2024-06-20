@@ -20,7 +20,7 @@ const StyledEdgeDrawerClose = styled("button")({
     height: "1.5em",
   },
   "[data-drawer-open] &": {
-    display: "var(--drawer, flex) var(--permanent, none)",
+    display: "var(--_drawer, flex) var(--_permanent, none)",
     alignItems: "center",
     justifyContent: "center",
   },
