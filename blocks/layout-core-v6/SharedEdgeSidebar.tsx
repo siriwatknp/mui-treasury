@@ -15,19 +15,12 @@ export type PersistentConfig = {
 };
 export type PermanentConfig = {
   variant: "permanent";
+  width?: string;
   /**
    * When the viewport shrink to the provided breakpoint, the EdgeSidebar will collapse automatically.
    * Must set `collapsedWidth` to specify the width of the collapsed sidebar
    */
   autoCollapse?: Breakpoint;
-  /**
-   * The smallest breakpoint for collapsed state.
-   *
-   * For container queries, required Material UI v6:
-   * `smallestBreakpoint: '@'`
-   */
-  smallestBreakpoint?: string;
-  width?: string;
   /**
    * Required `autoCollapse`, the width of the sidebar after collapsed.
    */

@@ -1,5 +1,4 @@
 import React from "react";
-import Close from "@mui/icons-material/Close";
 import CreditCard from "@mui/icons-material/CreditCard";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -14,22 +13,21 @@ import {
   DailySummary,
   // @ts-ignore
 } from "../layout-app-shoppingCart/components";
-import Content from "../layout-v6-ditto/Content";
-import EdgeSidebar, {
-  applyTemporaryStyles,
-  toggleTemporaryEdgeSidebar,
-} from "../layout-v6-ditto/EdgeSidebar";
-import Footer from "../layout-v6-ditto/Footer";
-import Header, { applyHeaderStyles } from "../layout-v6-ditto/Header";
-import InsetAvoidingView from "../layout-v6-ditto/InsetAvoidingView";
-import InsetContainer from "../layout-v6-ditto/InsetContainer";
+import Content from "../layout-core-v6/Content";
+import SidebarContent from "../layout-core-v6/EdgeSidebarContent";
+import EdgeSidebarRight, {
+  applyEdgeSidebarRightStyles,
+  toggleTemporaryEdgeSidebarRight,
+} from "../layout-core-v6/EdgeSidebarRight";
+import Footer from "../layout-core-v6/Footer";
+import Header, { applyHeaderStyles } from "../layout-core-v6/Header";
+import InsetAvoidingView from "../layout-core-v6/InsetAvoidingView";
+import InsetContainer from "../layout-core-v6/InsetContainer";
 import InsetSidebar, {
   applyInsetSidebarStyles,
-} from "../layout-v6-ditto/InsetSidebar";
-import Root from "../layout-v6-ditto/Root";
-import SidebarContent, {
-  applySidebarContentStyles,
-} from "../layout-v6-ditto/SidebarContent";
+} from "../layout-core-v6/InsetSidebar";
+import InsetSidebarContent from "../layout-core-v6/InsetSidebarContent";
+import Root from "../layout-core-v6/Root";
 
 const StyledHeader = styled(Header)(() => ({
   backgroundColor: "#ffffff",
@@ -69,11 +67,7 @@ export function LayoutV6AppShoppingCart() {
         <CssBaseline />
         <Fab
           color={"primary"}
-          onClick={() =>
-            toggleTemporaryEdgeSidebar({
-              sidebarId: "right-drawer",
-            })
-          }
+          onClick={() => toggleTemporaryEdgeSidebarRight()}
           sx={(theme) => ({
             position: "fixed",
             bottom: 16,
@@ -107,23 +101,27 @@ export function LayoutV6AppShoppingCart() {
             <DailyHeader />
           </Container>
         </StyledHeader>
-        <EdgeSidebar
-          id="right-drawer"
-          anchor="right"
-          sx={{ ...applyTemporaryStyles() }}
+        <EdgeSidebarRight
+          sx={(theme) => ({
+            ...applyEdgeSidebarRightStyles(theme, {
+              config: {
+                xs: {
+                  variant: "temporary",
+                  width: "min(400px, 100vw)",
+                },
+              },
+            }),
+          })}
         >
           <SidebarContent
             sx={{
               padding: "0.5rem",
               bgcolor: "initial",
-              ...applySidebarContentStyles({
-                width: "min(400px, 100vw)",
-              }),
             }}
           >
             <DailyCheckout />
           </SidebarContent>
-        </EdgeSidebar>
+        </EdgeSidebarRight>
         <Content>
           <Container maxWidth="xl">
             <InsetContainer
@@ -144,7 +142,9 @@ export function LayoutV6AppShoppingCart() {
                     },
                   }}
                 >
-                  <DailyCheckout />
+                  <InsetSidebarContent>
+                    <DailyCheckout />
+                  </InsetSidebarContent>
                 </InsetSidebar>
               }
             >

@@ -14,21 +14,22 @@ import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Content from "../layout-v6-ditto/Content";
-import EdgeDrawerClose from "../layout-v6-ditto/EdgeDrawerClose";
-import EdgeSidebar, {
-  applyTemporaryStyles,
-  toggleTemporaryEdgeSidebar,
-} from "../layout-v6-ditto/EdgeSidebar";
-import Footer from "../layout-v6-ditto/Footer";
-import Header, { applyHeaderStyles } from "../layout-v6-ditto/Header";
-import InsetAvoidingView from "../layout-v6-ditto/InsetAvoidingView";
-import InsetContainer from "../layout-v6-ditto/InsetContainer";
+import Content from "../layout-core-v6/Content";
+import EdgeDrawerClose from "../layout-core-v6/EdgeDrawerClose";
+import SidebarContent from "../layout-core-v6/EdgeSidebarContent";
+import EdgeSidebarRight, {
+  applyEdgeSidebarRightStyles,
+  toggleTemporaryEdgeSidebarRight,
+} from "../layout-core-v6/EdgeSidebarRight";
+import Footer from "../layout-core-v6/Footer";
+import Header, { applyHeaderStyles } from "../layout-core-v6/Header";
+import InsetAvoidingView from "../layout-core-v6/InsetAvoidingView";
+import InsetContainer from "../layout-core-v6/InsetContainer";
 import InsetSidebar, {
   applyInsetSidebarStyles,
-} from "../layout-v6-ditto/InsetSidebar";
-import Root from "../layout-v6-ditto/Root";
-import SidebarContent from "../layout-v6-ditto/SidebarContent";
+} from "../layout-core-v6/InsetSidebar";
+import InsetSidebarContent from "../layout-core-v6/InsetSidebarContent";
+import Root from "../layout-core-v6/Root";
 
 const StyledToolbar = styled(Toolbar)(({ theme: { breakpoints } }) => ({
   minHeight: 60,
@@ -99,13 +100,10 @@ export function LayoutV6AppReactLegacy() {
   return (
     <Root>
       <StyledFab
-        className="EdgeSidebarR-trigger"
+        className="EdgeSidebar-R-trigger"
         color={"primary"}
         onClick={() => {
-          // toggleEdgeSidebarDrawer();
-          toggleTemporaryEdgeSidebar({
-            sidebarId: "right-drawer",
-          });
+          toggleTemporaryEdgeSidebarRight();
         }}
       >
         <UnfoldMore />
@@ -127,14 +125,24 @@ export function LayoutV6AppReactLegacy() {
           </StyledToolbar>
         </Container>
       </Header>
-      <EdgeSidebar
-        id="right-drawer"
-        anchor="right"
-        sx={{ ...applyTemporaryStyles() }}
+      <EdgeSidebarRight
+        sx={(theme) => ({
+          ...applyEdgeSidebarRightStyles(theme, {
+            config: {
+              xs: {
+                variant: "temporary",
+              },
+              md: {
+                variant: "persistent",
+                persistenBehavior: "none",
+              },
+            },
+          }),
+        })}
       >
-        <EdgeDrawerClose sidebarId="right-drawer" />
+        <EdgeDrawerClose />
         <SidebarContent>{sidebarContent}</SidebarContent>
-      </EdgeSidebar>
+      </EdgeSidebarRight>
       <Content>
         <Container>
           <InsetContainer
@@ -153,7 +161,7 @@ export function LayoutV6AppReactLegacy() {
                   }),
                 }}
               >
-                {sidebarContent}
+                <InsetSidebarContent>{sidebarContent}</InsetSidebarContent>
               </InsetSidebar>
             }
           >
