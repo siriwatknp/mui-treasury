@@ -12,3 +12,8 @@
   border-top: unset;
   border-bottom: 1px solid hsla(203, 50%, 30%, 0.15);
 }
+
+:root {
+  --highlight-bg-neutral: #f7fafc;
+  --highlight-border-neutral: #d9e8f2;
+}

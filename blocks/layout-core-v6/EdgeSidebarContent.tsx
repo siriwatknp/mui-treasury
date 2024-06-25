@@ -2,7 +2,7 @@ import React from "react";
 import { BoxProps } from "@mui/material/Box";
 import { styled } from "./zero-styled";
 
-const StyledSidebarContent = styled("div")(({ theme }) => ({
+const StyledEdgeSidebarContent = styled("div")(({ theme }) => ({
   backgroundColor: (theme.vars || theme).palette.background.paper,
   display: "flex",
   flexDirection: "column",
@@ -15,7 +15,7 @@ const StyledSidebarContent = styled("div")(({ theme }) => ({
   position: "var(--_temporary, fixed) var(--_permanent, relative)" as any,
   zIndex: 2,
   width: "var(--SidebarContent-width)",
-  height: "var(--_temporary, 100vh)",
+  height: "var(--_temporary, 100%)",
   overflowY: "var(--_temporary, auto)" as any,
   transition: `var(--_temporary, opacity 0.3s, transform 0.3s)
                var(--_permanent, opacity 0.7s, width 0.3s var(--SidebarContent-transitionDelay, 0s), transform 0.3s var(--SidebarContent-transitionDelay, 0s), box-shadow 0.3s var(--SidebarContent-transitionDelay, 0s))`,
@@ -35,10 +35,10 @@ const StyledSidebarContent = styled("div")(({ theme }) => ({
   },
 }));
 
-const SidebarContent = React.forwardRef<HTMLDivElement, BoxProps>(
-  function SidebarContent({ className, ...props }, ref) {
+const EdgeSidebarContent = React.forwardRef<HTMLDivElement, BoxProps>(
+  function EdgeSidebarContent({ className, ...props }, ref) {
     return (
-      <StyledSidebarContent
+      <StyledEdgeSidebarContent
         // @ts-ignore
         ref={ref}
         className={`SidebarContent ${className || ""}`}
@@ -48,4 +48,4 @@ const SidebarContent = React.forwardRef<HTMLDivElement, BoxProps>(
   },
 );
 
-export default SidebarContent;
+export default EdgeSidebarContent;

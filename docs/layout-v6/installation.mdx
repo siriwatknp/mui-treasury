@@ -1,0 +1,112 @@
+import { Meta } from "@storybook/blocks";
+import {
+  Content,
+  EdgeSidebar,
+  Footer,
+  Header,
+  Root,
+} from "../../blocks/layout-core-v6";
+
+<Meta title="Layout v6/Installation" />
+
+<style>{`
+  .sbdocs.sbdocs-content {
+    max-width: 720px;
+  }
+`}</style>
+
+# Installation
+
+MUI Treasury no longer provides npm packages.
+Instead, you can run the CLI to pull the source code to your project.
+
+```sh
+npx mui-treasury@latest clone layout-core-v6
+```
+
+The source code will be cloned to `src/mui-treasury/layout-core-v5`.
+If you want to specify a different directory, check out the [CLI options](/docs/cli--docs#clone).
+
+## Basic Usage
+
+`Root` is a required component to create a layout.
+
+A basic layout consists of `Header`, `Content`, and `Footer`:
+
+export function Demo() {
+  return (
+    <Root sx={{ minHeight: "30vh" }}>
+      <Header className="bg-neutral-50 border border-neutral-200">
+        Header
+      </Header>
+      <Content className="bg-neutral-50 border border-neutral-200">
+        Content
+      </Content>
+      <Footer className="bg-neutral-50 border border-neutral-200">
+        Footer
+      </Footer>
+    </Root>
+  );
+}
+
+<Demo />
+
+```jsx
+import { Content, Footer, Header, Root } from "path/to/layout-core-v6";
+
+function App() {
+  return (
+    <Root>
+      <Header>Header</Header>
+      <Content>Content</Content>
+      <Footer>Footer</Footer>
+    </Root>
+  );
+}
+```
+
+To render a sidebar, use `EdgeSidebar`:
+
+export function Demo2() {
+  return (
+    <Root sx={{ minHeight: "30vh" }}>
+      <Header className="bg-neutral-50 border border-neutral-200">
+        Header
+      </Header>
+      <EdgeSidebar className="bg-neutral-50 border border-neutral-200">
+        EdgeSidebar
+      </EdgeSidebar>
+      <Content className="bg-neutral-50 border border-neutral-200">
+        Content
+      </Content>
+      <Footer className="bg-neutral-50 border border-neutral-200">
+        Footer
+      </Footer>
+    </Root>
+  );
+}
+
+<Demo2 />
+
+```jsx
+import {
+  Content,
+  EdgeSidebar,
+  Footer,
+  Header,
+  Root,
+} from "path/to/layout-core-v6";
+
+function App() {
+  return (
+    <Root>
+      <Header>Header</Header>
+      <EdgeSidebar>EdgeSidebar</EdgeSidebar>
+      <Content>Content</Content>
+      <Footer>Footer</Footer>
+    </Root>
+  );
+}
+```
+
+⚠️ These 4 components must be a direct child of `Root` but can be in any order.

@@ -13,9 +13,7 @@ import {
 } from "./SharedEdgeSidebar";
 import { styled } from "./zero-styled";
 
-export function applyTemporaryStyles(
-  params?: Omit<TemporaryConfig, "variant">,
-) {
+function applyTemporaryStyles(params: Omit<TemporaryConfig, "variant">) {
   const { width } = params || {};
   return {
     ".Root:has(&)": {
@@ -32,9 +30,7 @@ export function applyTemporaryStyles(
   };
 }
 
-export function applyPersistentStyles(
-  params?: Omit<PersistentConfig, "variant">,
-) {
+function applyPersistentStyles(params: Omit<PersistentConfig, "variant">) {
   const { width, persistenBehavior = "fit" } = params || {};
   return {
     ...(persistenBehavior === "none" && {
@@ -72,16 +68,25 @@ export function applyPersistentStyles(
   };
 }
 
-export function applyPermanentStyles(
-  params?: Omit<PermanentConfig, "variant">,
-) {
-  const { width, collapsedWidth, expandOnHover } = params || {};
+function applyPermanentStyles(params: Omit<PermanentConfig, "variant">) {
+  if ("autoCollapse" in params && !!params.collapsedWidth) {
+    console.warn(
+      "MUI Treasury Layout: `collapsedWidth` is required when `autoCollapse` is enabled.",
+    );
+  }
+  const { width } = params || {};
   const defaultExpandConfig = {
     delay: "0.3s",
     shadow: "0 0 10px rgba(0,0,0,0.1)",
   };
-  const expandConfig =
-    expandOnHover === true ? defaultExpandConfig : expandOnHover;
+  let expandConfig: undefined | typeof defaultExpandConfig;
+  if ("expandOnHover" in params) {
+    if (params.expandOnHover === true) {
+      expandConfig = defaultExpandConfig;
+    } else {
+      expandConfig = params.expandOnHover as typeof defaultExpandConfig;
+    }
+  }
   return {
     "--SidebarContent-width": "var(--_permanentWidth, 0px)",
     ".Root:has(&)": {
@@ -89,9 +94,10 @@ export function applyPermanentStyles(
       ...(width && {
         "--EdgeSidebar-permanentWidth": width,
       }),
-      ...(collapsedWidth && {
-        "--EdgeSidebar-collapsedWidth": collapsedWidth,
-      }),
+      ...("collapsedWidth" in params &&
+        !!params.collapsedWidth && {
+          "--EdgeSidebar-collapsedWidth": params.collapsedWidth,
+        }),
       ".EdgeSidebar-trigger": {
         display: "none",
       },
@@ -106,12 +112,11 @@ export function applyPermanentStyles(
         },
       },
     },
-    ...(expandOnHover && {
+    ...(expandConfig && {
       "& .SidebarContent:hover": {
         "--SidebarContent-width": "var(--EdgeSidebar-permanentWidth)",
-        "--SidebarContent-transitionDelay":
-          expandConfig?.delay || defaultExpandConfig.delay,
-        boxShadow: `var(--collapsed, ${expandConfig?.shadow || defaultExpandConfig.shadow}) var(--uncollapsed, none)`,
+        "--SidebarContent-transitionDelay": expandConfig.delay,
+        boxShadow: `var(--collapsed, ${expandConfig.shadow}) var(--uncollapsed, none)`,
       },
     }),
   };
@@ -135,26 +140,35 @@ export function applyEdgeSidebarStyles(
       if (variantConfig) {
         const { variant, ...params } = variantConfig;
         if (variant === "permanent") {
-          const { smallestBreakpoint = "xs", autoCollapse } = variantConfig;
-          if (autoCollapse) {
-            autoCollapseStyles = {
-              ".Root:has(&)": {
-                "--EdgeSidebar-collapsible": {
-                  [smallestBreakpoint]: "var(--collapsed)",
-                  [autoCollapse]: "var(--uncollapsed)",
-                },
-                ".EdgeSidebar-collapser": {
-                  display: {
-                    [autoCollapse]: "none",
+          if ("autoCollapse" in variantConfig && variantConfig.autoCollapse) {
+            const nextBreakpoint =
+              theme.breakpoints.keys[
+                theme.breakpoints.keys.indexOf(variantConfig.autoCollapse) + 1
+              ];
+            if (!nextBreakpoint) {
+              console.warn(
+                "MUI Treasury Layout: `autoCollapse` cannot be the largest breakpoint.",
+              );
+            } else {
+              autoCollapseStyles = {
+                ".Root:has(&)": {
+                  "--EdgeSidebar-collapsible": {
+                    [theme.breakpoints.keys[0]]: "var(--collapsed)",
+                    [nextBreakpoint]: "var(--uncollapsed)",
+                  },
+                  ".EdgeSidebar-collapser": {
+                    display: {
+                      [nextBreakpoint]: "none",
+                    },
                   },
                 },
-              },
-              '.Root:has(&[data-collapsible="collapsed"])': {
-                "--EdgeSidebar-collapsible": {
-                  [autoCollapse]: "var(--uncollapsed)",
+                '.Root:has(&[data-collapsible="collapsed"])': {
+                  "--EdgeSidebar-collapsible": {
+                    [nextBreakpoint]: "var(--uncollapsed)",
+                  },
                 },
-              },
-            };
+              };
+            }
           }
         }
         const variantStyles = {

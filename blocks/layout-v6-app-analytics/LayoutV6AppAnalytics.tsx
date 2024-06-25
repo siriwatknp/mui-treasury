@@ -5,24 +5,21 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import Content from "../layout-v6-ditto/Content";
-import EdgeDrawerClose from "../layout-v6-ditto/EdgeDrawerClose";
-import EdgePermanentCollapse from "../layout-v6-ditto/EdgePermanentCollapse";
-import {
-  applyDrawerStyles,
+import Content from "../layout-core-v6/Content";
+import EdgeDrawerClose from "../layout-core-v6/EdgeDrawerClose";
+import EdgeSidebar, {
   applyEdgeSidebarStyles,
-  applyPermanentStyles,
-  applyPersistentStyles,
-  EdgeSidebarLeft,
-  EdgeSidebarRight,
   toggleEdgeSidebarCollapse,
-  toggleEdgeSidebarDrawer,
-} from "../layout-v6-ditto/EdgeSidebar";
-import Header from "../layout-v6-ditto/Header";
-import Root from "../layout-v6-ditto/Root";
-import SidebarContent, {
-  applySidebarContentStyles,
-} from "../layout-v6-ditto/SidebarContent";
+  toggleTemporaryEdgeSidebar,
+} from "../layout-core-v6/EdgeSidebar";
+import SidebarContent from "../layout-core-v6/EdgeSidebarContent";
+import EdgeSidebarRight, {
+  applyEdgeSidebarRightStyles,
+  toggleEdgeSidebarRightCollapse,
+  toggleTemporaryEdgeSidebarRight,
+} from "../layout-core-v6/EdgeSidebarRight";
+import Header from "../layout-core-v6/Header";
+import Root from "../layout-core-v6/Root";
 import {
   IconNavMockup,
   LinkNavMockup,
@@ -51,7 +48,7 @@ export function LayoutV6AppAnalytics() {
         >
           <IconButton
             className="EdgeSidebar-trigger"
-            onClick={() => toggleEdgeSidebarDrawer()}
+            onClick={() => toggleTemporaryEdgeSidebar()}
           >
             <MenuRounded />
           </IconButton>
@@ -70,23 +67,64 @@ export function LayoutV6AppAnalytics() {
           >
             <b>Analytics</b>
           </Typography>
+
+          <IconButton
+            className="EdgeSidebar-R-collapser"
+            onClick={(event) => toggleEdgeSidebarRightCollapse({ event })}
+          >
+            <MenuRounded className="Icon-uncollapse" />
+            <ChevronLeftRounded className="Icon-collapse" />
+          </IconButton>
+
+          <IconButton
+            className="EdgeSidebar-R-trigger"
+            onClick={() => toggleTemporaryEdgeSidebarRight()}
+          >
+            <MenuRounded />
+          </IconButton>
         </Box>
       </Header>
-      <EdgeSidebarLeft
+      <EdgeSidebarRight
         sx={(theme) => ({
-          ...applyEdgeSidebarStyles(theme, {
-            autoCollapse: "xl",
+          ...applyEdgeSidebarRightStyles(theme, {
             config: {
               xs: {
-                variant: "drawer",
+                variant: "temporary",
               },
               md: {
                 variant: "persistent",
+                persistenBehavior: "none",
               },
               lg: {
                 variant: "permanent",
                 width: "300px",
+                autoCollapse: "md",
                 collapsedWidth: "80px",
+                expandOnHover: true,
+              },
+            },
+          }),
+        })}
+      >
+        <SidebarContent>Hello</SidebarContent>
+      </EdgeSidebarRight>
+      <EdgeSidebar
+        sx={(theme) => ({
+          ...applyEdgeSidebarStyles(theme, {
+            config: {
+              xs: {
+                variant: "temporary",
+              },
+              md: {
+                variant: "persistent",
+                persistenBehavior: "none",
+              },
+              lg: {
+                autoCollapse: "xl",
+                variant: "permanent",
+                width: "300px",
+                collapsedWidth: "80px",
+                expandOnHover: true,
               },
             },
           }),
@@ -98,12 +136,22 @@ export function LayoutV6AppAnalytics() {
           sx={{
             borderRight: "1px solid",
             borderColor: "divider",
-            ...applySidebarContentStyles({
-              expandOnHover: true,
-            }),
           }}
         >
+          <IconButton
+            className="EdgeSidebar-collapser"
+            onClick={(event) => toggleEdgeSidebarCollapse({ event })}
+          >
+            <MenuRounded className="Icon-uncollapse" />
+            <ChevronLeftRounded className="Icon-collapse" />
+          </IconButton>
           <SideNavUserInfoMockup />
+          <button
+            className="CollapseTrigger"
+            onClick={(event) => toggleEdgeSidebarCollapse({ event })}
+          >
+            Close
+          </button>
           <Box
             sx={{
               borderTop: "1px solid",
@@ -115,10 +163,9 @@ export function LayoutV6AppAnalytics() {
             <IconNavMockup size="small" />
             <LinkNavMockup />
           </Box>
-          <EdgePermanentCollapse />
         </SidebarContent>
         <Box sx={{ position: "absolute", top: 0, left: "100%" }}>Test</Box>
-      </EdgeSidebarLeft>
+      </EdgeSidebar>
       <Content>
         <Box
           sx={{

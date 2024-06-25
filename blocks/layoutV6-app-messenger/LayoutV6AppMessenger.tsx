@@ -20,19 +20,20 @@ import {
   MessengerSearch,
   // @ts-ignore
 } from "../layout-app-messenger/components";
-import Content from "../layout-v6-ditto/Content";
+import Content from "../layout-core-v6/Content";
 import EdgeSidebar, {
-  applyPermanentStyles,
-} from "../layout-v6-ditto/EdgeSidebar";
-import Footer from "../layout-v6-ditto/Footer";
-import Header, { applyHeaderStyles } from "../layout-v6-ditto/Header";
-import InsetAvoidingView from "../layout-v6-ditto/InsetAvoidingView";
-import InsetContainer from "../layout-v6-ditto/InsetContainer";
+  applyEdgeSidebarStyles,
+} from "../layout-core-v6/EdgeSidebar";
+import SidebarContent from "../layout-core-v6/EdgeSidebarContent";
+import Footer from "../layout-core-v6/Footer";
+import Header, { applyHeaderStyles } from "../layout-core-v6/Header";
+import InsetAvoidingView from "../layout-core-v6/InsetAvoidingView";
+import InsetContainer from "../layout-core-v6/InsetContainer";
 import InsetSidebar, {
   applyInsetSidebarStyles,
-} from "../layout-v6-ditto/InsetSidebar";
-import Root from "../layout-v6-ditto/Root";
-import SidebarContent from "../layout-v6-ditto/SidebarContent";
+} from "../layout-core-v6/InsetSidebar";
+import InsetSidebarContent from "../layout-core-v6/InsetSidebarContent";
+import Root from "../layout-core-v6/Root";
 
 const StyledHeader = styled(Header)(() => ({
   boxShadow: "0 1px 2px 0 rgba(0, 0, 0, .10)",
@@ -88,12 +89,18 @@ export function LayoutV6AppMessenger() {
           </Toolbar>
         </StyledHeader>
         <EdgeSidebar
-          sx={{
-            ...applyPermanentStyles({
-              width: "25cqw",
-              autoCollapse: "md",
+          sx={(theme) => ({
+            ...applyEdgeSidebarStyles(theme, {
+              config: {
+                xs: {
+                  variant: "permanent",
+                  width: "25cqw",
+                  autoCollapse: "md",
+                  collapsedWidth: "80px",
+                },
+              },
             }),
-          }}
+          })}
         >
           <SidebarContent sx={{ borderRight: "1px solid rgba(0, 0, 0, 0.12)" }}>
             <ChatsHeader />
@@ -116,7 +123,9 @@ export function LayoutV6AppMessenger() {
                   }),
                 }}
               >
-                <ChatSettings />
+                <InsetSidebarContent>
+                  <ChatSettings />
+                </InsetSidebarContent>
               </InsetSidebar>
             }
           >
