@@ -1,5 +1,5 @@
 #storybook-docs .prismjs {
-  max-height: 300px;
+  max-height: 372px;
 }
 
 .docblock-source > div:has(button:only-child) {
@@ -13,7 +13,32 @@
   border-bottom: 1px solid hsla(203, 50%, 30%, 0.15);
 }
 
-:root {
-  --highlight-bg-neutral: #f7fafc;
-  --highlight-border-neutral: #d9e8f2;
+.sbdocs .sbdocs-content {
+  max-width: 720px;
+}
+
+.demo-container {
+  position: relative;
+  margin-inline: -32px;
+  padding: 32px;
+  padding-bottom: 48px;
+  border-radius: 4px;
+  background-color: #f1f5f9;
+  border: 1px solid hsla(203, 50%, 30%, 0.15);
+}
+.demo-container::before {
+  content: "Demo";
+  display: block;
+  position: absolute;
+  font-family: "Menlo", monospace;
+  letter-spacing: 0.05em;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+.demo-container:has(+ pre) {
+  margin-bottom: -48px;
 }

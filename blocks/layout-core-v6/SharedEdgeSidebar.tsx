@@ -10,7 +10,7 @@ export type PersistentConfig = {
   /**
    * @default "fit"
    */
-  persistenBehavior?: "fit" | "none";
+  persistentBehavior?: "fit" | "none";
   width?: string;
 };
 export type PermanentConfig = {
@@ -45,6 +45,7 @@ export function internalCollapseSidebar(options: {
   const { state, document: d, selector, event } = options || {};
   const doc = d ?? document;
   const sidebar = doc.querySelector(selector) as HTMLElement;
+  console.log("sidebar", sidebar);
   if (sidebar) {
     const currentCollapsed =
       window

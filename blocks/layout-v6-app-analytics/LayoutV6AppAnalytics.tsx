@@ -93,7 +93,7 @@ export function LayoutV6AppAnalytics() {
               },
               md: {
                 variant: "persistent",
-                persistenBehavior: "none",
+                persistentBehavior: "none",
               },
               lg: {
                 variant: "permanent",
@@ -117,7 +117,7 @@ export function LayoutV6AppAnalytics() {
               },
               md: {
                 variant: "persistent",
-                persistenBehavior: "none",
+                persistentBehavior: "none",
               },
               lg: {
                 autoCollapse: "xl",
