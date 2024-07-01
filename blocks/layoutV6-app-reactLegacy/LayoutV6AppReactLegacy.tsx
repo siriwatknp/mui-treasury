@@ -134,7 +134,7 @@ export function LayoutV6AppReactLegacy() {
               },
               md: {
                 variant: "persistent",
-                persistenBehavior: "none",
+                persistentBehavior: "none",
               },
             },
           }),

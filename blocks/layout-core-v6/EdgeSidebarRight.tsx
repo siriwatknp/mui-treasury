@@ -35,12 +35,12 @@ export function applyTemporaryRightStyles(
 export function applyPersistentRightStyles(
   params: Omit<PersistentConfig, "variant">,
 ) {
-  const { width, persistenBehavior = "fit" } = params || {};
+  const { width, persistentBehavior = "fit" } = params || {};
   return {
     ".Root:has(&)": {
       "--EdgeSidebar-R-variant": "var(--permanent-R)",
       "--EdgeSidebar-R-collapsedWidth": "0px",
-      ...(persistenBehavior === "none"
+      ...(persistentBehavior === "none"
         ? {
             "--EdgeSidebar-R-permanentWidth": "0px",
           }
@@ -66,7 +66,7 @@ export function applyPersistentRightStyles(
         },
       },
     },
-    ...(persistenBehavior === "none" && {
+    ...(persistentBehavior === "none" && {
       "--SidebarContent-width": `var(--collapsed-R, var(--_permanentWidth-R, 0px)) var(--uncollapsed-R, ${width || "256px"})`,
       "--EdgeSidebar-permanentSlide":
         "var(--uncollapsed-R, -100%) var(--collapsed-R, 0)",

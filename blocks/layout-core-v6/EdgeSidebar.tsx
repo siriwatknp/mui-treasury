@@ -31,15 +31,15 @@ function applyTemporaryStyles(params: Omit<TemporaryConfig, "variant">) {
 }
 
 function applyPersistentStyles(params: Omit<PersistentConfig, "variant">) {
-  const { width, persistenBehavior = "fit" } = params || {};
+  const { width, persistentBehavior = "fit" } = params || {};
   return {
-    ...(persistenBehavior === "none" && {
+    ...(persistentBehavior === "none" && {
       "--SidebarContent-width": `var(--collapsed, var(--_permanentWidth, 0px)) var(--uncollapsed, ${width || "256px"})`,
     }),
     ".Root:has(&)": {
       "--EdgeSidebar-variant": "var(--permanent)",
       "--EdgeSidebar-collapsedWidth": "0px",
-      ...(persistenBehavior === "none"
+      ...(persistentBehavior === "none"
         ? {
             "--EdgeSidebar-permanentWidth": "0px",
           }

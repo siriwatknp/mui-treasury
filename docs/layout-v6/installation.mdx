@@ -9,12 +9,6 @@ import {
 
 <Meta title="Layout v6/Installation" />
 
-<style>{`
-  .sbdocs.sbdocs-content {
-    max-width: 720px;
-  }
-`}</style>
-
 # Installation
 
 MUI Treasury no longer provides npm packages.
@@ -35,21 +29,17 @@ A basic layout consists of `Header`, `Content`, and `Footer`:
 
 export function Demo() {
   return (
-    <Root sx={{ minHeight: "30vh" }}>
-      <Header className="bg-neutral-50 border border-neutral-200">
-        Header
-      </Header>
-      <Content className="bg-neutral-50 border border-neutral-200">
-        Content
-      </Content>
-      <Footer className="bg-neutral-50 border border-neutral-200">
-        Footer
-      </Footer>
+    <Root sx={{ minHeight: "25vh" }}>
+      <Header className="border  px-2">Header</Header>
+      <Content className="border  p-2">Content</Content>
+      <Footer className="border  p-2">Footer</Footer>
     </Root>
   );
 }
 
-<Demo />
+<section className="demo-container">
+  <Demo />
+</section>
 
 ```jsx
 import { Content, Footer, Header, Root } from "path/to/layout-core-v6";
@@ -69,24 +59,18 @@ To render a sidebar, use `EdgeSidebar`:
 
 export function Demo2() {
   return (
-    <Root sx={{ minHeight: "30vh" }}>
-      <Header className="bg-neutral-50 border border-neutral-200">
-        Header
-      </Header>
-      <EdgeSidebar className="bg-neutral-50 border border-neutral-200">
-        EdgeSidebar
-      </EdgeSidebar>
-      <Content className="bg-neutral-50 border border-neutral-200">
-        Content
-      </Content>
-      <Footer className="bg-neutral-50 border border-neutral-200">
-        Footer
-      </Footer>
+    <Root sx={{ minHeight: "25vh" }}>
+      <Header className="border  p-2">Header</Header>
+      <EdgeSidebar className="border  p-2">EdgeSidebar</EdgeSidebar>
+      <Content className="border  p-2">Content</Content>
+      <Footer className="border  p-2">Footer</Footer>
     </Root>
   );
 }
 
-<Demo2 />
+<section className="demo-container">
+  <Demo2 />
+</section>
 
 ```jsx
 import {
@@ -110,3 +94,7 @@ function App() {
 ```
 
 ⚠️ These 4 components must be a direct child of `Root` but can be in any order.
+
+## Next step
+
+- [EdgeSidebar Configuration](/docs/layout-v6-configuration-edge-sidebar--docs)

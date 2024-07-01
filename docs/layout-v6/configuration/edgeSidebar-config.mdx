@@ -1,0 +1,143 @@
+import Button from "@mui/material/Button";
+import { Meta } from "@storybook/blocks";
+import {
+  applyEdgeSidebarStyles,
+  Content,
+  EdgeSidebar,
+  EdgeSidebarContent,
+  Footer,
+  Header,
+  Root,
+  toggleEdgeSidebarCollapse,
+  toggleTemporaryEdgeSidebar,
+} from "../../../blocks/layout-core-v6";
+
+<Meta title="Layout v6/Configuration/Edge Sidebar" />
+
+# Edge Sidebar
+
+The `EdgeSidebar` component is a sidebar that is placed on the left edge of the Root.
+There are 3 variants of `EdgeSidebar`:
+
+- Permanent: The sidebar is always visible.
+- Persistent: The sidebar is hidden and can be toggled by a button without blocking the content.
+- Temporary: The sidebar is hidden and when toggled, it will overlay the content.
+
+You can assign each variant to a specific breakpoint using the `applyEdgeSidebarStyles` utility.
+
+## Permanent variant (default)
+
+When `EdgeSidebar` is rendered without configuration, it will be a permanent sidebar with a minimum width of `256px` by default.
+
+export function DemoPermanent() {
+  return (
+    <Root sx={{ minHeight: "25vh" }}>
+      <EdgeSidebar className="border bg-green-50 p-2">EdgeSidebar</EdgeSidebar>
+    </Root>
+  );
+}
+
+<section className="demo-container">
+  <DemoPermanent />
+</section>
+
+```jsx
+import { Content, EdgeSidebar, Root } from "path/to/layout-core-v6";
+
+function App() {
+  return (
+    <Root>
+      <EdgeSidebar>EdgeSidebar</EdgeSidebar>
+    </Root>
+  );
+}
+```
+
+## Persistent variant
+
+export function DemoPersistent() {
+  return (
+    <Root sx={{ minHeight: "25vh" }}>
+      <EdgeSidebar
+        id="persistent-sidebar"
+        sx={(theme) => ({
+          ...applyEdgeSidebarStyles(theme, {
+            config: {
+              xs: { variant: "persistent", persistentBehavior: 'none', width: '256px' },
+            },
+          }),
+        })}
+      >
+        <EdgeSidebarContent>
+          <div className="p-2 bg-green-50 border h-full">EdgeSidebar</div>
+        </EdgeSidebarContent>
+      </EdgeSidebar>
+      <Content className="flex justify-center items-center">
+        <Button
+          className="CollapseTrigger"
+          onClick={event => toggleEdgeSidebarCollapse({ event, sidebarId: 'persistent-sidebar' })}>Toggle Sidebar</Button>
+      </Content>
+    </Root>
+
+);
+}
+
+<section className="demo-container">
+  <DemoPersistent />
+</section>
+
+```jsx
+import { EdgeSidebar, Root } from "path/to/layout-core-v6";
+
+function App() {
+  return (
+    <Root>
+      <EdgeSidebar>EdgeSidebar</EdgeSidebar>
+    </Root>
+  );
+}
+```
+
+## Temporary variant
+
+export function DemoTemporary() {
+  return (
+    <Root sx={{ minHeight: "25vh", '&:has([data-temporary-open],[data-mobile-closing])': { overflow: 'hidden'} }}>
+      <EdgeSidebar
+        id="temporary-sidebar"
+        sx={(theme) => ({
+          ...applyEdgeSidebarStyles(theme, {
+            config: {
+              xs: { variant: "temporary", width: '256px' },
+            },
+          }),
+        })}
+      >
+        <EdgeSidebarContent>
+          <div className="p-2 bg-green-50 border h-full">EdgeSidebar</div>
+        </EdgeSidebarContent>
+      </EdgeSidebar>
+      <Content className="flex justify-center items-center">
+        <Button
+          onClick={event => toggleTemporaryEdgeSidebar({ event, sidebarId: 'temporary-sidebar' })}>Toggle Sidebar</Button>
+      </Content>
+    </Root>
+
+);
+}
+
+<section className="demo-container">
+  <DemoTemporary />
+</section>
+
+```jsx
+import { EdgeSidebar, Root } from "path/to/layout-core-v6";
+
+function App() {
+  return (
+    <Root>
+      <EdgeSidebar>EdgeSidebar</EdgeSidebar>
+    </Root>
+  );
+}
+```
