@@ -1,7 +1,7 @@
 export { default as Content } from "./Content";
 export * from "./Content";
-export { default as EdgeDrawerClose } from "./EdgeDrawerClose";
-export * from "./EdgeDrawerClose";
+export { default as EdgeTemporaryClose } from "./EdgeTemporaryClose";
+export * from "./EdgeTemporaryClose";
 export { default as EdgeSidebar } from "./EdgeSidebar";
 export * from "./EdgeSidebar";
 export { default as EdgeSidebarContent } from "./EdgeSidebarContent";

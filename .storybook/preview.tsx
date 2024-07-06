@@ -36,7 +36,19 @@ const preview: Preview = {
       storySort: {
         order: [
           "Layout v6",
-          ["App"],
+          [
+            "Introduction",
+            "Installation",
+            "Core Concept",
+            "Starter Templates",
+            "Migration to v5",
+            "Feature",
+            "Configuration",
+            "Tutorials",
+            "Preset",
+            "Example",
+            "App",
+          ],
           "Layout v5",
           [
             "Introduction",

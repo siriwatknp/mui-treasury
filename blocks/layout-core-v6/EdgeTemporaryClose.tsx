@@ -3,8 +3,11 @@ import { SxProps } from "@mui/material/styles";
 import { toggleTemporaryEdgeSidebar } from "./EdgeSidebar";
 import { styled } from "./zero-styled";
 
-const StyledEdgeDrawerClose = styled("button")({
-  display: "none",
+const StyledEdgeTemporaryClose = styled("button")({
+  display: "var(--_temporary, flex) var(--_permanent, none)",
+  visibility: "hidden",
+  opacity: 0,
+  transition: "0.3s",
   position: "fixed",
   top: "0.875rem",
   right: "var(--anchorLeft, 0.875rem)",
@@ -15,26 +18,27 @@ const StyledEdgeDrawerClose = styled("button")({
   color: "white",
   backgroundColor: "#999",
   borderRadius: "50%",
+  alignItems: "center",
+  justifyContent: "center",
   "& svg": {
     width: "1.5em",
     height: "1.5em",
   },
   "[data-temporary-open] &": {
-    display: "var(--_temporary, flex) var(--_permanent, none)",
-    alignItems: "center",
-    justifyContent: "center",
+    visibility: "visible",
+    opacity: 1,
   },
 });
 
-const EdgeDrawerClose = React.forwardRef<
+const EdgeTemporaryClose = React.forwardRef<
   HTMLButtonElement,
   JSX.IntrinsicElements["button"] & { sx?: SxProps; sidebarId?: string }
->(function EdgeDrawerClose({ className, sidebarId, ...props }, ref) {
+>(function EdgeTemporaryClose({ className, sidebarId, ...props }, ref) {
   return (
-    <StyledEdgeDrawerClose
+    <StyledEdgeTemporaryClose
       // @ts-ignore
       ref={ref}
-      className={`EdgeDrawerClose ${className || ""}`}
+      className={`EdgeTemporaryClose ${className || ""}`}
       onClick={() =>
         toggleTemporaryEdgeSidebar({
           state: false,
@@ -61,8 +65,8 @@ const EdgeDrawerClose = React.forwardRef<
           d="M6 18 18 6M6 6l12 12"
         />
       </svg>
-    </StyledEdgeDrawerClose>
+    </StyledEdgeTemporaryClose>
   );
 });
 
-export default EdgeDrawerClose;
+export default EdgeTemporaryClose;

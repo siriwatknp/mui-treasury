@@ -97,7 +97,7 @@ export function applyPermanentRightStyles(
   }
   return {
     "--EdgeSidebar-permanentSlide": "0", // to override persistent styles
-    "--SidebarContent-width": "var(--_permanentWidth, 0px)",
+    "--SidebarContent-width": "var(--_permanentWidth-R, 0px)",
     ".Root:has(&)": {
       "--EdgeSidebar-R-variant": "var(--permanent-R)",
       ...(width && {
@@ -129,7 +129,7 @@ export function applyPermanentRightStyles(
         "--SidebarContent-transitionDelay": expandConfig.delay,
         boxShadow: `var(--collapsed-R, ${expandConfig.shadow}) var(--uncollapsed-R, none)`,
         "--EdgeSidebar-permanentSlide":
-          "calc(var(--EdgeSidebar-R-collapsedWidth) - var(--SidebarContent-width))",
+          "var(--collapsed-R, calc(var(--EdgeSidebar-R-collapsedWidth) - var(--SidebarContent-width))) var(--uncollapsed-R, 0)",
       },
     }),
   };
