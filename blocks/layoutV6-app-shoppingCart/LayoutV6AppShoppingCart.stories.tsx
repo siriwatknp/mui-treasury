@@ -6,7 +6,7 @@ import { LayoutV6AppShoppingCart } from "./index";
 import Usage from "./usage.mdx";
 
 const meta = {
-  title: "Layout v6/App",
+  title: "Layout v6/App/ShoppingCart",
   component: LayoutV6AppShoppingCart,
   parameters: {
     layout: "fullscreen",

@@ -4,6 +4,9 @@ import {
   EdgeSidebar,
   Footer,
   Header,
+  InsetContainer,
+  InsetSidebar,
+  InsetSidebarContent,
   Root,
 } from "../../blocks/layout-core-v6";
 
@@ -21,7 +24,7 @@ npx mui-treasury@latest clone layout-core-v6
 The source code will be cloned to `src/mui-treasury/layout-core-v5`.
 If you want to specify a different directory, check out the [CLI options](/docs/cli--docs#clone).
 
-## Basic Usage
+## Basic layout
 
 `Root` is a required component to create a layout.
 
@@ -55,7 +58,9 @@ function App() {
 }
 ```
 
-To render a sidebar, use `EdgeSidebar`:
+## Dashboard layout
+
+To render a sidebar for a dashboard layout, use `EdgeSidebar` component:
 
 export function Demo2() {
   return (
@@ -94,6 +99,66 @@ function App() {
 ```
 
 ⚠️ These 4 components must be a direct child of `Root` but can be in any order.
+
+To learn more about the dashboard layout, check out the [Tutorial — Dashboard layout]().
+
+## Blog layout
+
+To render a sidebar for a blog layout, use `InsetSidebar` component:
+
+export function Demo3() {
+  return (
+    <Root sx={{ minHeight: "25vh" }}>
+      <Header className="border  p-2">Header</Header>
+      <Content className="border  p-2">
+        <InsetContainer
+          rightSidebar={
+            <InsetSidebar className="border p-2 w-[200px]">
+              InsetSidebar
+            </InsetSidebar>
+          }
+        >
+          <div>Content</div>
+        </InsetContainer>
+      </Content>
+      <Footer className="border  p-2">Footer</Footer>
+    </Root>
+  );
+}
+
+<section className="demo-container">
+  <Demo3 />
+</section>
+
+```jsx
+import {
+  Content,
+  Footer,
+  Header,
+  InsetContainer,
+  InsetSidebar,
+  Root,
+} from "path/to/layout-core-v6";
+
+function App() {
+  return (
+    <Root>
+      <Header>Header</Header>
+      <EdgeSidebar>EdgeSidebar</EdgeSidebar>
+      <Content>
+        <InsetContainer
+          rightSidebar={<InsetSidebar>InsetSidebar</InsetSidebar>}
+        >
+          <div>Content</div>
+        </InsetContainer>
+      </Content>
+      <Footer>Footer</Footer>
+    </Root>
+  );
+}
+```
+
+To learn more about the blog layout, check out the [Tutorial — Blog layout]().
 
 ## Next step
 

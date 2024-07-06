@@ -6,7 +6,6 @@ import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Content from "../layout-core-v6/Content";
-import EdgeDrawerClose from "../layout-core-v6/EdgeDrawerClose";
 import EdgeSidebar, {
   applyEdgeSidebarStyles,
   toggleEdgeSidebarCollapse,
@@ -18,6 +17,7 @@ import EdgeSidebarRight, {
   toggleEdgeSidebarRightCollapse,
   toggleTemporaryEdgeSidebarRight,
 } from "../layout-core-v6/EdgeSidebarRight";
+import EdgeTemporaryClose from "../layout-core-v6/EdgeTemporaryClose";
 import Header from "../layout-core-v6/Header";
 import Root from "../layout-core-v6/Root";
 import {
@@ -130,7 +130,7 @@ export function LayoutV6AppAnalytics() {
           }),
         })}
       >
-        <EdgeDrawerClose />
+        <EdgeTemporaryClose />
 
         <SidebarContent
           sx={{

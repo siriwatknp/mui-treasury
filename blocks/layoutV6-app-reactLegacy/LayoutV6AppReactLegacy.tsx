@@ -15,12 +15,12 @@ import { styled } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Content from "../layout-core-v6/Content";
-import EdgeDrawerClose from "../layout-core-v6/EdgeDrawerClose";
 import SidebarContent from "../layout-core-v6/EdgeSidebarContent";
 import EdgeSidebarRight, {
   applyEdgeSidebarRightStyles,
   toggleTemporaryEdgeSidebarRight,
 } from "../layout-core-v6/EdgeSidebarRight";
+import EdgeTemporaryClose from "../layout-core-v6/EdgeTemporaryClose";
 import Footer from "../layout-core-v6/Footer";
 import Header, { applyHeaderStyles } from "../layout-core-v6/Header";
 import InsetAvoidingView from "../layout-core-v6/InsetAvoidingView";
@@ -140,7 +140,7 @@ export function LayoutV6AppReactLegacy() {
           }),
         })}
       >
-        <EdgeDrawerClose />
+        <EdgeTemporaryClose />
         <SidebarContent>{sidebarContent}</SidebarContent>
       </EdgeSidebarRight>
       <Content>

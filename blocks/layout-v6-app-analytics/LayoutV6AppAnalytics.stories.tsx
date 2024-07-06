@@ -6,7 +6,7 @@ import { LayoutV6AppAnalytics } from "./index";
 import Usage from "./usage.mdx";
 
 const meta = {
-  title: "Layout v6/App",
+  title: "Layout v6/App/Analytics",
   component: LayoutV6AppAnalytics,
   parameters: {
     layout: "fullscreen",
@@ -18,6 +18,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const App: Story = {
+export const Analytics: Story = {
   render: () => <LayoutV6AppAnalytics />,
 };
