@@ -1,0 +1,62 @@
+import Button from "@mui/material/Button";
+import { Meta } from "@storybook/blocks";
+import {
+  applyHeaderStyles,
+  Header,
+  Root,
+} from "../../../blocks/layout-core-v6";
+
+<Meta title="Layout v6/Configuration/Header" />
+
+# Header
+
+The Header component must be a direct child of the Root component. It is used to display the [header](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header) of the layout.
+
+## Height
+
+Use `applyHeaderStyles` to set the height of the Header.
+You can set the CSS [position](https://developer.mozilla.org/en-US/docs/Web/CSS/position) as preferred with the `sx` prop too.
+
+export function DemoHeight() {
+  return (
+    <Root sx={{ minHeight: "20vh" }}>
+      <Header
+        sx={{
+          ...applyHeaderStyles({
+            height: { xs: 48, sm: 64, md: 72 },
+          }),
+          p: 2,
+          position: "sticky",
+          top: 0,
+          borderBottom: 1,
+          borderColor: "divider",
+        }}
+      >
+        Header
+      </Header>
+    </Root>
+  );
+}
+
+<section className="demo-container">
+  <DemoHeight />
+</section>
+
+```jsx
+<Root>
+  <Header
+    sx={{
+      ...applyHeaderStyles({
+        height: { xs: 48, sm: 64, md: 72 },
+      }),
+      p: 2,
+      position: "sticky",
+      top: 0,
+      borderBottom: 1,
+      borderColor: "divider",
+    }}
+  >
+    Header
+  </Header>
+</Root>
+```

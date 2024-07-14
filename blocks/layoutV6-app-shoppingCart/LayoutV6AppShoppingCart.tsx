@@ -13,21 +13,23 @@ import {
   DailySummary,
   // @ts-ignore
 } from "../layout-app-shoppingCart/components";
-import Content from "../layout-core-v6/Content";
-import SidebarContent from "../layout-core-v6/EdgeSidebarContent";
-import EdgeSidebarRight, {
+import {
   applyEdgeSidebarRightStyles,
-  toggleTemporaryEdgeSidebarRight,
-} from "../layout-core-v6/EdgeSidebarRight";
-import Footer from "../layout-core-v6/Footer";
-import Header, { applyHeaderStyles } from "../layout-core-v6/Header";
-import InsetAvoidingView from "../layout-core-v6/InsetAvoidingView";
-import InsetContainer from "../layout-core-v6/InsetContainer";
-import InsetSidebar, {
+  applyHeaderStyles,
+  applyInsetContainerStyles,
   applyInsetSidebarStyles,
-} from "../layout-core-v6/InsetSidebar";
-import InsetSidebarContent from "../layout-core-v6/InsetSidebarContent";
-import Root from "../layout-core-v6/Root";
+  applyRootStyles,
+  Content,
+  EdgeSidebarContent,
+  EdgeSidebarRight,
+  Footer,
+  Header,
+  InsetAvoidingView,
+  InsetSidebar,
+  InsetSidebarContent,
+  Root,
+  toggleTemporaryEdgeSidebarRight,
+} from "../layout-core-v6";
 
 const StyledHeader = styled(Header)(() => ({
   backgroundColor: "#ffffff",
@@ -63,7 +65,7 @@ const InsetAvoidingViewFooter = styled(InsetAvoidingView)(
 export function LayoutV6AppShoppingCart() {
   return (
     <ThemeProvider theme={dailyShoppingTheme}>
-      <Root>
+      <Root sx={{ ...applyRootStyles({ fullscreen: true }) }}>
         <CssBaseline />
         <Fab
           color={"primary"}
@@ -113,47 +115,43 @@ export function LayoutV6AppShoppingCart() {
             }),
           })}
         >
-          <SidebarContent
+          <EdgeSidebarContent
             sx={{
               padding: "0.5rem",
               bgcolor: "initial",
             }}
           >
             <DailyCheckout />
-          </SidebarContent>
+          </EdgeSidebarContent>
         </EdgeSidebarRight>
         <Content>
-          <Container maxWidth="xl">
-            <InsetContainer
-              rightSidebar={
-                <InsetSidebar
-                  position="absolute"
-                  sx={{
-                    ...applyInsetSidebarStyles({
-                      anchor: "right",
-                      width: {
-                        lg: "max(25cqw, 360px)",
-                      },
-                    }),
-                    "& > div": {
-                      border: "none",
-                      py: "1rem",
-                      pl: "1rem",
-                    },
-                  }}
-                >
-                  <InsetSidebarContent>
-                    <DailyCheckout />
-                  </InsetSidebarContent>
-                </InsetSidebar>
-              }
+          <Container
+            maxWidth="xl"
+            sx={{ height: "100%", ...applyInsetContainerStyles() }}
+          >
+            <DailyCart />
+            <InsetSidebar
+              position="absolute"
+              sx={{
+                ...applyInsetSidebarStyles({
+                  width: {
+                    lg: "max(25cqw, 360px)",
+                  },
+                }),
+                "& > div": {
+                  border: "none",
+                  py: "1rem",
+                },
+              }}
             >
-              <DailyCart />
-            </InsetContainer>
+              <InsetSidebarContent>
+                <DailyCheckout />
+              </InsetSidebarContent>
+            </InsetSidebar>
           </Container>
         </Content>
         <Footer>
-          <Container>
+          <Container maxWidth="xl">
             <InsetAvoidingViewFooter>
               <Box pb={3}>
                 <DailySummary />

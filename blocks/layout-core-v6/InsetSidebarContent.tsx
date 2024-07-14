@@ -10,7 +10,7 @@ const InsetSidebarContent = styled("div")(({ theme }) => ({
   position:
     "var(--sticky, sticky) var(--fixed, fixed) var(--absolute, absolute)" as any,
   height:
-    "var(--sticky, initial) var(--fixed, calc(100% - var(--Header-height, 0px))) var(--absolute, calc(100vh - var(--Header-height, 0px)))",
+    "var(--sticky, initial) var(--fixed, calc(100% - var(--Header-height, 0px))) var(--absolute, calc(var(--Root-height, 100vh) - var(--Header-height, 0px)))",
   width: "var(--sticky, inherit) var(--fixed, inherit) var(--absolute, 100%)",
   top: 0,
   borderRight: "var(--anchor-left, 1px solid)",
@@ -24,7 +24,7 @@ const InsetSidebarContent = styled("div")(({ theme }) => ({
     "var(--fixed, var(--anchor-right, -9999px)) var(--absolute, initial) var(--sticky, initial)",
   paddingRight:
     "var(--fixed, var(--anchor-right, 9999px)) var(--absolute, initial) var(--sticky, initial)",
-  paddingTop: "var(--fixed, var(--Header-height))",
+  marginTop: "var(--fixed, var(--Header-height))",
 }));
 
 export default InsetSidebarContent;

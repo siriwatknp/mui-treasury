@@ -154,7 +154,6 @@ export function LayoutV6AppReactLegacy() {
                   borderColor: "divider",
                   backgroundColor: "background.paper",
                   ...applyInsetSidebarStyles({
-                    anchor: "right",
                     width: {
                       md: "256px",
                     },

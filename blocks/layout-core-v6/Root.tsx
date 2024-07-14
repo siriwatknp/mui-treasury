@@ -1,20 +1,35 @@
 import React from "react";
 import { BoxProps } from "@mui/material/Box";
+import { Breakpoint } from "@mui/material/styles";
 import { styled } from "./zero-styled";
 
-export function applyEdgeSidebarBelowHeader() {
+export function applyRootStyles(params?: {
+  headerOnEdgeSidebar?: boolean;
+  fullscreen?: boolean;
+  height?: string | Record<Breakpoint, string> | Record<string, string>;
+}) {
+  const { headerOnEdgeSidebar, height, fullscreen } = params || {};
   return {
-    gridTemplateAreas: `
-      "Header Header Header"
-      "EdgeSidebar Content EdgeSidebar-R"
-      "EdgeSidebar Footer EdgeSidebar-R"
-    `,
+    ...(height && {
+      "--Root-height": height,
+    }),
+    ...(fullscreen && {
+      maxHeight: "var(--Root-height)",
+    }),
+    ...(headerOnEdgeSidebar && {
+      gridTemplateAreas: `
+        "Header Header Header"
+        "EdgeSidebar Content EdgeSidebar-R"
+        "EdgeSidebar Footer EdgeSidebar-R"
+      `,
+    }),
   };
 }
 
 const StyledRoot = styled("div")(({ theme }) => ({
+  "--Root-height": "100lvh",
   backgroundColor: (theme.vars || theme).palette.background.paper,
-  minHeight: "100lvh",
+  minHeight: "var(--Root-height)",
   display: "grid",
   position: "relative",
   transition: "grid-template-columns 0.3s",

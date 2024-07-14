@@ -22,6 +22,8 @@ import {
 # Edge Sidebar
 
 The `EdgeSidebar` component is a sidebar that is placed on the left edge of the Root.
+To ensure the expected behavior, the `EdgeSidebarContent` component must be used as a direct child of the `EdgeSidebar`.
+
 There are 3 variants of `EdgeSidebar`:
 
 - `permanent`: The sidebar is always visible.
@@ -106,7 +108,7 @@ export function DemoPermanent() {
 
 ### Auto-collapsing
 
-**Required** `EdgeSidebarContent` component.
+**Required** `EdgeSidebarContent` component as a direct child of the `EdgeSidebar`.
 
 When the viewport shrink to the provided breakpoint, the EdgeSidebar will collapse automatically.
 

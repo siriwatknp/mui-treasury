@@ -2,6 +2,18 @@ import React from "react";
 import { BoxProps } from "@mui/material/Box";
 import { styled } from "./zero-styled";
 
+export function applyInsetContainerStyles() {
+  return {
+    display: "flex",
+    flexFlow: "row nowrap",
+    flexGrow: 1,
+    [`& > *:where(:not([class*="InsetSidebar"]))`]: {
+      flexGrow: 1,
+      overflow: "auto",
+    },
+  };
+}
+
 const StyledInsetContainer = styled("div")<{
   leftSidebar?: React.ReactElement;
   rightSidebar?: React.ReactElement;

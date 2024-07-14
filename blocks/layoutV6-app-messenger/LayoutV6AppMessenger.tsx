@@ -2,7 +2,6 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
-import IconButton from "@mui/material/IconButton";
 import {
   createTheme,
   responsiveFontSizes,
@@ -20,28 +19,26 @@ import {
   MessengerSearch,
   // @ts-ignore
 } from "../layout-app-messenger/components";
-import Content from "../layout-core-v6/Content";
-import EdgeSidebar, {
+import {
   applyEdgeSidebarStyles,
-} from "../layout-core-v6/EdgeSidebar";
-import SidebarContent from "../layout-core-v6/EdgeSidebarContent";
-import Footer from "../layout-core-v6/Footer";
-import Header, { applyHeaderStyles } from "../layout-core-v6/Header";
-import InsetAvoidingView from "../layout-core-v6/InsetAvoidingView";
-import InsetContainer from "../layout-core-v6/InsetContainer";
-import InsetSidebar, {
+  applyHeaderStyles,
+  applyInsetContainerStyles,
   applyInsetSidebarStyles,
-} from "../layout-core-v6/InsetSidebar";
-import InsetSidebarContent from "../layout-core-v6/InsetSidebarContent";
-import Root from "../layout-core-v6/Root";
+  applyRootStyles,
+  Content,
+  EdgeSidebar,
+  EdgeSidebarContent,
+  Footer,
+  Header,
+  InsetAvoidingView,
+  InsetSidebar,
+  InsetSidebarContent,
+  Root,
+} from "../layout-core-v6";
 
 const StyledHeader = styled(Header)(() => ({
   boxShadow: "0 1px 2px 0 rgba(0, 0, 0, .10)",
   backgroundColor: "#ffffff",
-}));
-
-const IconButtonEdit = styled(IconButton)(() => ({
-  backgroundColor: "rgba(0,0,0,0.04)",
 }));
 
 const theme = responsiveFontSizes(
@@ -79,7 +76,7 @@ export function LayoutV6AppMessenger() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Root>
+      <Root sx={{ ...applyRootStyles({ fullscreen: true }) }}>
         <StyledHeader
           position="relative"
           sx={{ ...applyHeaderStyles({ height: "64px" }) }}
@@ -102,35 +99,31 @@ export function LayoutV6AppMessenger() {
             }),
           })}
         >
-          <SidebarContent sx={{ borderRight: "1px solid rgba(0, 0, 0, 0.12)" }}>
+          <EdgeSidebarContent
+            sx={{ borderRight: "1px solid rgba(0, 0, 0, 0.12)" }}
+          >
             <ChatsHeader />
             <Box p={"4px 16px 12px"}>
               <MessengerSearch />
             </Box>
             <ChatList />
-          </SidebarContent>
+          </EdgeSidebarContent>
         </EdgeSidebar>
-        <Content>
-          <InsetContainer
-            rightSidebar={
-              <InsetSidebar
-                position="absolute"
-                sx={{
-                  borderColor: "divider",
-                  ...applyInsetSidebarStyles({
-                    anchor: "right",
-                    width: "25cqw",
-                  }),
-                }}
-              >
-                <InsetSidebarContent>
-                  <ChatSettings />
-                </InsetSidebarContent>
-              </InsetSidebar>
-            }
+        <Content sx={{ ...applyInsetContainerStyles() }}>
+          <ChatDialog />
+          <InsetSidebar
+            position="absolute"
+            sx={{
+              borderColor: "divider",
+              ...applyInsetSidebarStyles({
+                width: "25cqw",
+              }),
+            }}
           >
-            <ChatDialog />
-          </InsetContainer>
+            <InsetSidebarContent>
+              <ChatSettings />
+            </InsetSidebarContent>
+          </InsetSidebar>
         </Content>
         <Footer>
           <Container disableGutters>

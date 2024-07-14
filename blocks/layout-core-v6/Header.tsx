@@ -21,6 +21,7 @@ const StyledHeader = styled("header")({
   alignContent: "center",
   display: "flex",
   alignItems: "center",
+  zIndex: 1,
 });
 
 const Header = React.forwardRef<HTMLElement, BoxProps>(function Header(

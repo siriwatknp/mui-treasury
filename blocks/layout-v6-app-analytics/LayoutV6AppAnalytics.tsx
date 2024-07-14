@@ -68,23 +68,23 @@ export function LayoutV6AppAnalytics() {
             <b>Analytics</b>
           </Typography>
 
-          <IconButton
+          {/* <IconButton
             className="EdgeSidebar-R-collapser"
             onClick={(event) => toggleEdgeSidebarRightCollapse({ event })}
           >
             <MenuRounded className="Icon-uncollapse" />
             <ChevronLeftRounded className="Icon-collapse" />
-          </IconButton>
+          </IconButton> */}
 
-          <IconButton
+          {/* <IconButton
             className="EdgeSidebar-R-trigger"
             onClick={() => toggleTemporaryEdgeSidebarRight()}
           >
             <MenuRounded />
-          </IconButton>
+          </IconButton> */}
         </Box>
       </Header>
-      <EdgeSidebarRight
+      {/* <EdgeSidebarRight
         sx={(theme) => ({
           ...applyEdgeSidebarRightStyles(theme, {
             config: {
@@ -107,7 +107,7 @@ export function LayoutV6AppAnalytics() {
         })}
       >
         <SidebarContent>Hello</SidebarContent>
-      </EdgeSidebarRight>
+      </EdgeSidebarRight> */}
       <EdgeSidebar
         sx={(theme) => ({
           ...applyEdgeSidebarStyles(theme, {
@@ -138,20 +138,20 @@ export function LayoutV6AppAnalytics() {
             borderColor: "divider",
           }}
         >
-          <IconButton
+          {/* <IconButton
             className="EdgeSidebar-collapser"
             onClick={(event) => toggleEdgeSidebarCollapse({ event })}
           >
             <MenuRounded className="Icon-uncollapse" />
             <ChevronLeftRounded className="Icon-collapse" />
-          </IconButton>
+          </IconButton> */}
           <SideNavUserInfoMockup />
-          <button
+          {/* <button
             className="CollapseTrigger"
             onClick={(event) => toggleEdgeSidebarCollapse({ event })}
           >
             Close
-          </button>
+          </button> */}
           <Box
             sx={{
               borderTop: "1px solid",
@@ -164,7 +164,6 @@ export function LayoutV6AppAnalytics() {
             <LinkNavMockup />
           </Box>
         </SidebarContent>
-        <Box sx={{ position: "absolute", top: 0, left: "100%" }}>Test</Box>
       </EdgeSidebar>
       <Content>
         <Box
