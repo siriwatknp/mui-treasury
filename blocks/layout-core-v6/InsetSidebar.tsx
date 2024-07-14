@@ -4,14 +4,17 @@ import { Breakpoint } from "@mui/material/styles";
 import { styled } from "./zero-styled";
 
 export function applyInsetSidebarStyles(params: {
-  anchor: "left" | "right";
   width: string | Partial<Record<Breakpoint, string>>;
 }) {
-  const { anchor, width } = params;
+  const { width } = params;
   return {
     width,
-    ".Root:has(&)": {
-      [`--InsetSidebar${anchor === "right" ? "R" : "L"}-width`]: width,
+    // For `InsetAvoidingView`
+    ".Root:has(&:not(:last-child))": {
+      [`--InsetSidebarL-width`]: width,
+    },
+    ".Root:has(&:last-child)": {
+      [`--InsetSidebarR-width`]: width,
     },
     ...(typeof width !== "string" && {
       display: {
@@ -24,15 +27,21 @@ export function applyInsetSidebarStyles(params: {
 
 const InsetSidebarRoot = styled("aside")({
   "--InsetSidebar-position": "var(--sticky)",
-  "--InsetSidebar-anchor": "var(--anchor-right)",
   /** DO NOT OVERRIDE, internal variables */
   "--sticky": "var(--InsetSidebar-position,)",
   "--fixed": "var(--InsetSidebar-position,)",
   "--absolute": "var(--InsetSidebar-position,)",
   "--anchor-right": "var(--InsetSidebar-anchor,)",
   "--anchor-left": "var(--InsetSidebar-anchor,)",
+  width: "200px",
   position: "relative",
   flexShrink: 0,
+  "&:not(:last-child)": {
+    "--InsetSidebar-anchor": "var(--anchor-left)",
+  },
+  "&:last-child": {
+    "--InsetSidebar-anchor": "var(--anchor-right)",
+  },
 });
 
 const InsetSidebar = React.forwardRef<
@@ -60,9 +69,6 @@ const InsetSidebar = React.forwardRef<
       {...props}
       style={{
         ...style,
-        ...(anchor !== "right" && {
-          "--InsetSidebar-anchor": `var(--anchor-${anchor})`,
-        }),
         ...(position !== "sticky" && {
           "--InsetSidebar-position": `var(--${position})`,
         }),
