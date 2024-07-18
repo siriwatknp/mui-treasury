@@ -2,6 +2,10 @@ import Button from "@mui/material/Button";
 import { Meta } from "@storybook/blocks";
 import {
   applyHeaderStyles,
+  applyRootStyles,
+  Content,
+  EdgeSidebar,
+  Footer,
   Header,
   Root,
 } from "../../../blocks/layout-core-v6";
@@ -15,7 +19,7 @@ The Header component must be a direct child of the Root component. It is used to
 ## Height
 
 Use `applyHeaderStyles` to set the height of the Header.
-You can set the CSS [position](https://developer.mozilla.org/en-US/docs/Web/CSS/position) as preferred with the `sx` prop too.
+You can set the CSS [position](https://developer.mozilla.org/en-US/docs/Web/CSS/position) as `relative` or `sticky` with the `sx` prop too.
 
 export function DemoHeight() {
   return (
@@ -27,7 +31,6 @@ export function DemoHeight() {
           }),
           p: 2,
           position: "sticky",
-          top: 0,
           borderBottom: 1,
           borderColor: "divider",
         }}
@@ -59,4 +62,53 @@ export function DemoHeight() {
     Header
   </Header>
 </Root>
+```
+
+## Stay above EdgeSidebar
+
+By default, if an [EdgeSidebar](/docs/layout-v6-configuration-edge-sidebar--docs) is present, it will be placed beside the [Header](/docs/layout-v6-configuration-header--docs).
+If you want the Header to be above the EdgeSidebar, set `fullWidth: true` in the `applyHeaderStyles` function:
+
+export function DemoHeaderAboveEdgeSidebar() {
+  return (
+    <Root sx={{ ...applyRootStyles({ height: "30vh" }) }}>
+      <Header
+        sx={{
+          p: 2,
+          borderBottom: 1,
+          borderColor: "divider",
+          ...applyHeaderStyles({ fullWidth: true }),
+        }}
+      >
+        Header
+      </Header>
+      <EdgeSidebar sx={{ p: 2, borderRight: 1, borderColor: "divider" }}>
+        EdgeSidebar
+      </EdgeSidebar>
+      <Content sx={{ p: 2 }}>Content</Content>
+      <Footer sx={{ p: 2 }}>Footer</Footer>
+    </Root>
+  );
+}
+
+<section className="demo-container">
+  <DemoHeaderAboveEdgeSidebar />
+</section>
+
+```jsx
+import {
+  applyRootStyles,
+  Content,
+  EdgeSidebar,
+  Footer,
+  Header,
+  Root,
+} from "path/to/layout-core-v6";
+
+<Root>
+  <Header sx={{ ...applyHeaderStyles({ fullWidth: true }) }}>Header</Header>
+  <EdgeSidebar>EdgeSidebar</EdgeSidebar>
+  <Content>Content</Content>
+  <Footer>Footer</Footer>
+</Root>;
 ```

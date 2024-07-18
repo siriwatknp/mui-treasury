@@ -110,6 +110,13 @@ export const EdgeSidebarRoot = styled("div")({
   transition: "width 0.3s",
   display: "flex",
   flexDirection: "column",
+  // ==============================
+  // To keep the EdgeSidebar fixed when the Content is scrollable
+  position: "var(--_permanent, sticky)" as any,
+  top: "var(--_permanent, var(--Header-clipHeight, 0px))",
+  height:
+    "var(--_permanent, calc(var(--Root-height) - var(--Header-clipHeight, 0px)))",
+  // ==============================
   "&::before": {
     position: "absolute",
     content: '""',
