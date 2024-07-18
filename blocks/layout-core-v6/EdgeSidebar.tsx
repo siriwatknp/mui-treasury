@@ -53,6 +53,7 @@ function applyPersistentStyles(params: Omit<PersistentConfig, "variant">) {
         display: "none",
       },
       ".EdgeSidebar-collapser": {
+        "--_sidebarCollapsed": "var(--collapsed, 1)",
         display: "var(--display, inline-flex)",
         ".Icon-collapse": {
           display: "var(--collapsed, none) var(--uncollapsed, inline-block)",
@@ -60,9 +61,6 @@ function applyPersistentStyles(params: Omit<PersistentConfig, "variant">) {
         ".Icon-uncollapse": {
           display: "var(--collapsed, inline-block) var(--uncollapsed, none)",
         },
-      },
-      ".EdgeSidebar-collapser, .CollapseTrigger": {
-        "--_sidebarCollapsed": "var(--collapsed, 1)",
       },
     },
     ".Root:has(&[data-collapsible='collapsed'])": {
@@ -163,16 +161,9 @@ export function applyEdgeSidebarStyles(
                     [variantConfig.autoCollapse]: "var(--collapsed)",
                     [nextBreakpoint]: "var(--uncollapsed)",
                   },
-                  ".EdgeSidebar-collapser": {
-                    display: {
-                      [nextBreakpoint]: "none",
-                    },
-                  },
                 },
-                '.Root:has(&[data-collapsible="collapsed"])': {
-                  "--EdgeSidebar-collapsible": {
-                    [nextBreakpoint]: "var(--uncollapsed)",
-                  },
+                ".Root:has(&[data-auto-collapse-off])": {
+                  "--EdgeSidebar-collapsible": "var(--uncollapsed)",
                 },
               };
             }
@@ -233,9 +224,6 @@ const StyledEdgeSidebarLeft = styled(EdgeSidebarRoot)({
                         var(--collapsed, var(--EdgeSidebar-collapsedWidth, 0px))`,
     "--collapsed": "var(--EdgeSidebar-collapsible,)",
     "--uncollapsed": "var(--EdgeSidebar-collapsible,)",
-  },
-  ".Root:has(&[data-collapsible='uncollapsed'])": {
-    "--EdgeSidebar-collapsible": "var(--uncollapsed)",
   },
   "--EdgeSidebar-anchor": "var(--anchorLeft)",
   "--SidebarContent-width": "var(--_permanentWidth, 0px)",

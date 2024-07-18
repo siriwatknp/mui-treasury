@@ -147,7 +147,7 @@ export function LayoutV6AppAnalytics() {
           </IconButton> */}
           <SideNavUserInfoMockup />
           {/* <button
-            className="CollapseTrigger"
+            className="EdgeSidebar-collapser"
             onClick={(event) => toggleEdgeSidebarCollapse({ event })}
           >
             Close
