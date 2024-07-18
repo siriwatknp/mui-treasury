@@ -71,7 +71,7 @@ export function applyPersistentRightStyles(
       "--EdgeSidebar-permanentSlide":
         "var(--uncollapsed-R, -100%) var(--collapsed-R, 0)",
     }),
-    ".Root:has(&[data-collapsible='collapsed'])": {
+    ".Root:has(&[data-edge-collapsed])": {
       "--EdgeSidebar-R-collapsible": "var(--collapsed-R)",
     },
   };
@@ -126,7 +126,7 @@ export function applyPermanentRightStyles(
       },
     },
     ...(collapsedWidth && {
-      ".Root:has(&[data-collapsible='collapsed'])": {
+      ".Root:has(&[data-edge-collapsed])": {
         "--EdgeSidebar-R-collapsible": "var(--collapsed-R)",
       },
     }),
@@ -204,8 +204,16 @@ export function applyEdgeSidebarRightStyles(
                     [nextBreakpoint]: "var(--uncollapsed-R)",
                   },
                 },
-                ".Root:has(&[data-auto-collapse-off])": {
-                  "--EdgeSidebar-R-collapsible": "var(--uncollapsed-R)",
+                [theme.breakpoints.between(
+                  variantConfig.autoCollapse,
+                  nextBreakpoint,
+                )]: {
+                  ".Root:has(&[data-auto-collapse-off])": {
+                    "--EdgeSidebar-R-collapsible": "var(--uncollapsed-R)",
+                  },
+                  ".Root:has(&) .EdgeSidebar-R-collapser": {
+                    "--_autoCollapse": "1",
+                  },
                 },
               };
             }

@@ -51,12 +51,26 @@ export function internalCollapseSidebar(options: {
         .getComputedStyle(event.target as Element)
         .getPropertyValue("--_sidebarCollapsed") === "1";
     const nextCollapsed = state === undefined ? !currentCollapsed : state;
-    if (nextCollapsed) {
-      sidebar.setAttribute("data-collapsible", "collapsed");
-      sidebar.removeAttribute("data-auto-collapse-off");
+    const autoCollapse =
+      window
+        .getComputedStyle(event.target as Element)
+        .getPropertyValue("--_autoCollapse") === "1";
+
+    if (autoCollapse) {
+      // toggle within autoCollapse breakpoint
+      if (nextCollapsed) {
+        sidebar.removeAttribute("data-auto-collapse-off");
+      } else {
+        sidebar.setAttribute("data-auto-collapse-off", "");
+        sidebar.removeAttribute("data-edge-collapsed");
+      }
     } else {
-      sidebar.removeAttribute("data-collapsible");
-      sidebar.setAttribute("data-auto-collapse-off", "");
+      if (nextCollapsed) {
+        sidebar.setAttribute("data-edge-collapsed", "");
+        sidebar.removeAttribute("data-auto-collapse-off");
+      } else {
+        sidebar.removeAttribute("data-edge-collapsed");
+      }
     }
   }
 }

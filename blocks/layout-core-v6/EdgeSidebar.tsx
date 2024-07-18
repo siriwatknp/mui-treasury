@@ -63,7 +63,7 @@ function applyPersistentStyles(params: Omit<PersistentConfig, "variant">) {
         },
       },
     },
-    ".Root:has(&[data-collapsible='collapsed'])": {
+    ".Root:has(&[data-edge-collapsed])": {
       "--EdgeSidebar-collapsible": "var(--collapsed)",
     },
   };
@@ -113,7 +113,7 @@ function applyPermanentStyles(params: Omit<PermanentConfig, "variant">) {
       },
     },
     ...(collapsedWidth && {
-      ".Root:has(&[data-collapsible='collapsed'])": {
+      ".Root:has(&[data-edge-collapsed])": {
         "--EdgeSidebar-collapsible": "var(--collapsed)",
       },
     }),
@@ -162,8 +162,16 @@ export function applyEdgeSidebarStyles(
                     [nextBreakpoint]: "var(--uncollapsed)",
                   },
                 },
-                ".Root:has(&[data-auto-collapse-off])": {
-                  "--EdgeSidebar-collapsible": "var(--uncollapsed)",
+                [theme.breakpoints.between(
+                  variantConfig.autoCollapse,
+                  nextBreakpoint,
+                )]: {
+                  ".Root:has(&[data-auto-collapse-off])": {
+                    "--EdgeSidebar-collapsible": "var(--uncollapsed)",
+                  },
+                  ".Root:has(&) .EdgeSidebar-collapser": {
+                    "--_autoCollapse": "1",
+                  },
                 },
               };
             }
