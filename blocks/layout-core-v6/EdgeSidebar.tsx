@@ -5,7 +5,7 @@ import type {
   TemporaryConfig,
 } from "./SharedEdgeSidebar";
 import { BoxProps } from "@mui/material/Box";
-import { Breakpoint, Theme } from "@mui/material/styles";
+import { Breakpoint, SxProps, Theme } from "@mui/material/styles";
 import {
   EdgeSidebarRoot,
   internalCollapseSidebar,
@@ -14,27 +14,26 @@ import {
 import { styled } from "./zero-styled";
 
 function applyTemporaryStyles(params: Omit<TemporaryConfig, "variant">) {
-  const { width } = params || {};
+  const { width = "300px" } = params || {};
   return {
+    "--EdgeSidebar-temporaryWidth": "0px",
     ".Root:has(&)": {
       "--EdgeSidebar-variant": "var(--temporary)",
       ".EdgeSidebar-collapser": {
         display: "none",
       },
     },
-    ...(width && {
-      "& .SidebarContent": {
-        "--EdgeSidebar-temporaryWidth": width,
-      },
-    }),
+    "&[data-temporary-open], &[data-mobile-closing]": {
+      "--EdgeSidebar-temporaryWidth": width,
+    },
   };
 }
 
 function applyPersistentStyles(params: Omit<PersistentConfig, "variant">) {
-  const { width, persistentBehavior = "fit" } = params || {};
+  const { width = "256px", persistentBehavior = "fit" } = params || {};
   return {
     ...(persistentBehavior === "none" && {
-      "--SidebarContent-width": `var(--collapsed, var(--_permanentWidth, 0px)) var(--uncollapsed, ${width || "256px"})`,
+      "--SidebarContent-width": `var(--collapsed, var(--_permanentWidth, 0px)) var(--uncollapsed, ${width})`,
     }),
     ".Root:has(&)": {
       "--EdgeSidebar-variant": "var(--permanent)",
@@ -120,6 +119,13 @@ function applyPermanentStyles(params: Omit<PermanentConfig, "variant">) {
       },
     }),
   };
+}
+
+export function applyUncollapsedStyles(styles: SxProps<Theme>) {
+  return {
+    '&[data-collapsible="uncollapsed"], [data-collapsible="uncollapsed"] &':
+      styles,
+  } as any;
 }
 
 export function applyEdgeSidebarStyles(

@@ -16,26 +16,25 @@ import { styled } from "./zero-styled";
 export function applyTemporaryRightStyles(
   params: Omit<TemporaryConfig, "variant">,
 ) {
-  const { width } = params || {};
+  const { width = "300px" } = params || {};
   return {
+    "--EdgeSidebar-temporaryWidth": "0px",
     ".Root:has(&)": {
       "--EdgeSidebar-R-variant": "var(--temporary-R)",
       ".EdgeSidebar-R-collapser": {
         display: "none",
       },
     },
-    ...(width && {
-      "& .SidebarContent": {
-        "--EdgeSidebar-temporaryWidth": width,
-      },
-    }),
+    "&[data-temporary-open], &[data-mobile-closing]": {
+      "--EdgeSidebar-temporaryWidth": width,
+    },
   };
 }
 
 export function applyPersistentRightStyles(
   params: Omit<PersistentConfig, "variant">,
 ) {
-  const { width, persistentBehavior = "fit" } = params || {};
+  const { width = "256px", persistentBehavior = "fit" } = params || {};
   return {
     ".Root:has(&)": {
       "--EdgeSidebar-R-variant": "var(--permanent-R)",
@@ -67,7 +66,7 @@ export function applyPersistentRightStyles(
       },
     },
     ...(persistentBehavior === "none" && {
-      "--SidebarContent-width": `var(--collapsed-R, var(--_permanentWidth-R, 0px)) var(--uncollapsed-R, ${width || "256px"})`,
+      "--SidebarContent-width": `var(--collapsed-R, var(--_permanentWidth-R, 0px)) var(--uncollapsed-R, ${width})`,
       "--EdgeSidebar-permanentSlide":
         "var(--uncollapsed-R, -100%) var(--collapsed-R, 0)",
     }),
