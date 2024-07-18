@@ -14,7 +14,8 @@ const StyledEdgeSidebarContent = styled("div")(({ theme }) => ({
   flex: 1,
   position: "var(--_temporary, fixed) var(--_permanent, relative)" as any,
   zIndex: 2,
-  width: "var(--SidebarContent-width)",
+  width:
+    "var(--_temporary, var(--EdgeSidebar-temporaryWidth)) var(--_permanent, var(--SidebarContent-width))",
   height: "var(--_temporary, 100%)",
   overflowY: "var(--_temporary, auto)" as any,
   transition: `var(--_temporary, opacity 0.3s, transform 0.3s)
@@ -27,8 +28,6 @@ const StyledEdgeSidebarContent = styled("div")(({ theme }) => ({
   },
   "[data-temporary-open] &, [data-mobile-closing] &": {
     visibility: "visible",
-    width:
-      "var(--_temporary, var(--EdgeSidebar-temporaryWidth, 300px)) var(--_permanent, var(--SidebarContent-width))",
   },
   "[data-mobile-closing] &": {
     transition: "transform 0.3s, visibility 0.3s, opacity 0.3s",

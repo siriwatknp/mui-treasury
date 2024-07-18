@@ -26,9 +26,9 @@ To ensure the expected behavior, the `EdgeSidebarContent` component must be used
 
 There are 3 variants of `EdgeSidebar`:
 
-- `permanent`: The sidebar is always visible.
-- `persistent`: The sidebar is hidden and can be toggled by a button without blocking the content.
-- `temporary`: The sidebar is hidden and when toggled, it will overlay the content.
+- [permanent](#permanent-variant-default): The sidebar is always visible.
+- [persistent](#persistent-variant): The sidebar is hidden and can be toggled by a button without blocking the content.
+- [temporary](#temporary-variant): The sidebar is hidden and when toggled, it will overlay the content.
 
 You can assign each variant to a specific breakpoint using the `applyEdgeSidebarStyles` utility:
 
@@ -395,8 +395,9 @@ export function DemoPersistentNone() {
 
 A temporary sidebar is a sidebar that is hidden by default and will overlay the content when toggled.
 
-To toggle the sidebar, you should set the `width` to the config and use the `toggleTemporaryEdgeSidebar` function.
-The toggle button should have class `EdgeSidebar-trigger` to display properly.
+To toggle the sidebar, you should set the `width` to the config and render a toggle button with an onClick handler that calls `toggleTemporaryEdgeSidebar`.
+
+The toggle button should have class `EdgeSidebar-trigger` to display properly. If it has icons, use `Icon-collapse` and `Icon-uncollapse` classes.
 
 An optional `EdgeTemporaryClose` button can be used to close the sidebar when it is open.
 
@@ -430,7 +431,6 @@ export function DemoTemporary() {
           className="EdgeSidebar-trigger"
           onClick={(event) =>
             toggleTemporaryEdgeSidebar({
-              event,
               sidebarId: "temporary-sidebar",
             })
           }
@@ -448,7 +448,6 @@ export function DemoTemporary() {
 
 ```jsx
 <EdgeSidebar
-  id="temporary-sidebar"
   sx={(theme) => ({
     ...applyEdgeSidebarStyles(theme, {
       config: {
@@ -457,7 +456,7 @@ export function DemoTemporary() {
     }),
   })}
 >
-  <EdgeTemporaryClose sidebarId="temporary-sidebar" />
+  <EdgeTemporaryClose />
   <EdgeSidebarContent>EdgeSidebar</EdgeSidebarContent>
 </EdgeSidebar>
 <Content>
@@ -465,7 +464,6 @@ export function DemoTemporary() {
     className="EdgeSidebar-trigger"
     onClick={(event) =>
       toggleTemporaryEdgeSidebar({
-        event,
         // You don't need to pass the sidebarId if you only have one EdgeSidebar
         // This is for demonstration purpose because there are multiple EdgeSidebar in this page
         sidebarId: "temporary-sidebar",
