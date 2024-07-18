@@ -54,8 +54,8 @@ export function applyPersistentRightStyles(
         display: "none",
       },
       ".EdgeSidebar-R-collapser": {
-        display: "var(--display, inline-flex)",
         "--_sidebarCollapsed": "var(--collapsed-R, 1)",
+        display: "var(--display, inline-flex)",
         ".Icon-collapse": {
           display:
             "var(--collapsed-R, none) var(--uncollapsed-R, inline-block)",
@@ -200,19 +200,12 @@ export function applyEdgeSidebarRightStyles(
               autoCollapseStyles = {
                 ".Root:has(&)": {
                   "--EdgeSidebar-R-collapsible": {
-                    [theme.breakpoints.keys[0]]: "var(--collapsed-R)",
+                    [variantConfig.autoCollapse]: "var(--collapsed-R)",
                     [nextBreakpoint]: "var(--uncollapsed-R)",
-                  },
-                  ".EdgeSidebar-R-collapser": {
-                    display: {
-                      [nextBreakpoint]: "none",
-                    },
                   },
                 },
-                '.Root:has(&[data-collapsible="collapsed"])': {
-                  "--EdgeSidebar-R-collapsible": {
-                    [nextBreakpoint]: "var(--uncollapsed-R)",
-                  },
+                ".Root:has(&[data-auto-collapse-off])": {
+                  "--EdgeSidebar-R-collapsible": "var(--uncollapsed-R)",
                 },
               };
             }
@@ -246,9 +239,6 @@ const StyledEdgeSidebarRight = styled(EdgeSidebarRoot)({
                         var(--collapsed-R, var(--EdgeSidebar-R-collapsedWidth, 0px))`,
     "--collapsed-R": "var(--EdgeSidebar-R-collapsible,)",
     "--uncollapsed-R": "var(--EdgeSidebar-R-collapsible,)",
-  },
-  ".Root:has(&[data-collapsible='uncollapsed'])": {
-    "--EdgeSidebar-R-collapsible": "var(--uncollapsed-R)",
   },
   "--EdgeSidebar-anchor": "var(--anchorRight)",
   "--SidebarContent-width": "var(--_permanentWidth-R, 0px)",
