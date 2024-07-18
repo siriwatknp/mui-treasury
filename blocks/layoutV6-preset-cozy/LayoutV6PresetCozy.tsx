@@ -34,7 +34,6 @@ export const LayoutV6PresetCozy = () => {
             fullWidth: "md",
           }),
           position: "sticky",
-          top: 0,
           borderBottom: "1px solid",
           borderColor: "divider",
           backgroundColor: "background.paper",
@@ -62,6 +61,10 @@ export const LayoutV6PresetCozy = () => {
                 width: "256px",
               },
               sm: {
+                variant: "permanent",
+                width: "200px",
+              },
+              md: {
                 variant: "permanent",
                 width: "256px",
                 autoCollapse: "md",

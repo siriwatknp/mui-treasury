@@ -1,5 +1,6 @@
 import React from "react";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import Menu from "@mui/icons-material/Menu";
 import ButtonBase from "@mui/material/ButtonBase";
 import Container from "@mui/material/Container";
@@ -23,36 +24,30 @@ import {
   NavSidebarMockup,
 } from "../mockup-layout";
 
-export const LayoutV6PresetContentBased = () => {
+export const LayoutV6PresetFixed = () => {
   return (
     <Root>
       <Header
         sx={{
-          ...applyHeaderStyles({ height: { xs: "56px", md: "64px" } }),
-          position: "relative",
+          ...applyHeaderStyles({
+            height: { xs: "56px", md: "64px" },
+          }),
+          position: "sticky",
+          borderBottom: "1px solid",
+          borderColor: "divider",
+          backgroundColor: "background.paper",
         }}
       >
         <HeaderMockup
           trigger={
-            <>
-              <IconButton
-                className="EdgeSidebar-trigger"
-                onClick={() => {
-                  toggleTemporaryEdgeSidebar();
-                }}
-              >
-                <Menu />
-              </IconButton>
-              <IconButton
-                className="EdgeSidebar-collapser"
-                onClick={(event) => {
-                  toggleEdgeSidebarCollapse({ event });
-                }}
-              >
-                <Menu className="Icon-uncollapse" />
-                <KeyboardArrowLeft className="Icon-collapse" />
-              </IconButton>
-            </>
+            <IconButton
+              className="EdgeSidebar-trigger"
+              onClick={() => {
+                toggleTemporaryEdgeSidebar();
+              }}
+            >
+              <Menu />
+            </IconButton>
           }
         />
       </Header>
@@ -64,10 +59,11 @@ export const LayoutV6PresetContentBased = () => {
                 variant: "temporary",
                 width: "256px",
               },
-              sm: {
-                variant: "persistent",
+              md: {
+                variant: "permanent",
                 width: "256px",
-                persistentBehavior: "none",
+                autoCollapse: "md",
+                collapsedWidth: "64px",
               },
             },
           }),
@@ -79,15 +75,15 @@ export const LayoutV6PresetContentBased = () => {
             borderColor: "divider",
           }}
         >
-          <ButtonBase
-            onClick={(event) => {
-              toggleEdgeSidebarCollapse({ event });
-            }}
-            sx={{ height: 40, color: "text.secondary" }}
-          >
-            <KeyboardArrowLeft color="inherit" />
-          </ButtonBase>
           <NavSidebarMockup />
+          <ButtonBase
+            className="EdgeSidebar-collapser"
+            onClick={(event) => toggleEdgeSidebarCollapse({ event })}
+            sx={{ height: 48, mt: "auto" }}
+          >
+            <KeyboardArrowLeft className="Icon-collapse" />
+            <KeyboardArrowRight className="Icon-uncollapse" />
+          </ButtonBase>
         </EdgeSidebarContent>
       </EdgeSidebar>
       <Content>

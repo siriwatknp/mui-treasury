@@ -41,6 +41,7 @@ export function applyPersistentRightStyles(
       "--EdgeSidebar-R-collapsedWidth": "0px",
       ...(persistentBehavior === "none"
         ? {
+            zIndex: 2,
             "--EdgeSidebar-R-permanentWidth": "0px",
           }
         : {
@@ -70,18 +71,21 @@ export function applyPersistentRightStyles(
       "--EdgeSidebar-permanentSlide":
         "var(--uncollapsed-R, -100%) var(--collapsed-R, 0)",
     }),
+    ".Root:has(&[data-collapsible='collapsed'])": {
+      "--EdgeSidebar-R-collapsible": "var(--collapsed-R)",
+    },
   };
 }
 
 export function applyPermanentRightStyles(
   params: Omit<PermanentConfig, "variant">,
 ) {
-  if ("autoCollapse" in params && !!params.collapsedWidth) {
+  if ("autoCollapse" in params && !params.collapsedWidth) {
     console.warn(
       "MUI Treasury Layout: `collapsedWidth` is required when `autoCollapse` is enabled.",
     );
   }
-  const { width } = params;
+  const { width, collapsedWidth } = params;
   const defaultExpandConfig = {
     delay: "0.3s",
     shadow: "0 0 10px rgba(0,0,0,0.1)",
@@ -102,26 +106,30 @@ export function applyPermanentRightStyles(
       ...(width && {
         "--EdgeSidebar-R-permanentWidth": width,
       }),
-      ...("collapsedWidth" in params &&
-        !!params.collapsedWidth && {
-          "--EdgeSidebar-R-collapsedWidth": params.collapsedWidth,
-        }),
+      ...(collapsedWidth && {
+        "--EdgeSidebar-R-collapsedWidth": collapsedWidth,
+        ".EdgeSidebar-R-collapser": {
+          display: "var(--display, inline-flex)",
+          "--_sidebarCollapsed": "var(--collapsed-R, 1)",
+          ".Icon-collapse": {
+            display:
+              "var(--collapsed-R, none) var(--uncollapsed-R, inline-block)",
+          },
+          ".Icon-uncollapse": {
+            display:
+              "var(--collapsed-R, inline-block) var(--uncollapsed-R, none)",
+          },
+        },
+      }),
       ".EdgeSidebar-R-trigger": {
         display: "none",
       },
-      ".EdgeSidebar-R-collapser": {
-        display: "var(--display, inline-flex)",
-        "--_sidebarCollapsed": "var(--collapsed-R, 1)",
-        ".Icon-collapse": {
-          display:
-            "var(--collapsed-R, none) var(--uncollapsed-R, inline-block)",
-        },
-        ".Icon-uncollapse": {
-          display:
-            "var(--collapsed-R, inline-block) var(--uncollapsed-R, none)",
-        },
-      },
     },
+    ...(collapsedWidth && {
+      ".Root:has(&[data-collapsible='collapsed'])": {
+        "--EdgeSidebar-R-collapsible": "var(--collapsed-R)",
+      },
+    }),
     ...(expandConfig && {
       "& .SidebarContent:hover": {
         "--SidebarContent-width": "var(--EdgeSidebar-R-permanentWidth)",
@@ -238,9 +246,6 @@ const StyledEdgeSidebarRight = styled(EdgeSidebarRoot)({
                         var(--collapsed-R, var(--EdgeSidebar-R-collapsedWidth, 0px))`,
     "--collapsed-R": "var(--EdgeSidebar-R-collapsible,)",
     "--uncollapsed-R": "var(--EdgeSidebar-R-collapsible,)",
-  },
-  ".Root:has(&[data-collapsible='collapsed'])": {
-    "--EdgeSidebar-R-collapsible": "var(--collapsed-R)",
   },
   ".Root:has(&[data-collapsible='uncollapsed'])": {
     "--EdgeSidebar-R-collapsible": "var(--uncollapsed-R)",

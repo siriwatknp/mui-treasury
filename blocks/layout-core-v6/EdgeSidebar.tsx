@@ -5,7 +5,7 @@ import type {
   TemporaryConfig,
 } from "./SharedEdgeSidebar";
 import { BoxProps } from "@mui/material/Box";
-import { Breakpoint, SxProps, Theme } from "@mui/material/styles";
+import { Breakpoint, Theme } from "@mui/material/styles";
 import {
   EdgeSidebarRoot,
   internalCollapseSidebar,
@@ -33,6 +33,7 @@ function applyPersistentStyles(params: Omit<PersistentConfig, "variant">) {
   const { width = "256px", persistentBehavior = "fit" } = params || {};
   return {
     ...(persistentBehavior === "none" && {
+      zIndex: 2,
       "--SidebarContent-width": `var(--collapsed, var(--_permanentWidth, 0px)) var(--uncollapsed, ${width})`,
     }),
     ".Root:has(&)": {
@@ -64,16 +65,19 @@ function applyPersistentStyles(params: Omit<PersistentConfig, "variant">) {
         "--_sidebarCollapsed": "var(--collapsed, 1)",
       },
     },
+    ".Root:has(&[data-collapsible='collapsed'])": {
+      "--EdgeSidebar-collapsible": "var(--collapsed)",
+    },
   };
 }
 
 function applyPermanentStyles(params: Omit<PermanentConfig, "variant">) {
-  if ("autoCollapse" in params && !!params.collapsedWidth) {
+  if ("autoCollapse" in params && !params.collapsedWidth) {
     console.warn(
       "MUI Treasury Layout: `collapsedWidth` is required when `autoCollapse` is enabled.",
     );
   }
-  const { width } = params || {};
+  const { width, collapsedWidth } = params || {};
   const defaultExpandConfig = {
     delay: "0.3s",
     shadow: "0 0 10px rgba(0,0,0,0.1)",
@@ -93,24 +97,28 @@ function applyPermanentStyles(params: Omit<PermanentConfig, "variant">) {
       ...(width && {
         "--EdgeSidebar-permanentWidth": width,
       }),
-      ...("collapsedWidth" in params &&
-        !!params.collapsedWidth && {
-          "--EdgeSidebar-collapsedWidth": params.collapsedWidth,
-        }),
+      ...(collapsedWidth && {
+        "--EdgeSidebar-collapsedWidth": collapsedWidth,
+        ".EdgeSidebar-collapser": {
+          display: "var(--display, inline-flex)",
+          "--_sidebarCollapsed": "var(--collapsed, 1)",
+          ".Icon-collapse": {
+            display: "var(--collapsed, none) var(--uncollapsed, inline-block)",
+          },
+          ".Icon-uncollapse": {
+            display: "var(--collapsed, inline-block) var(--uncollapsed, none)",
+          },
+        },
+      }),
       ".EdgeSidebar-trigger": {
         display: "none",
       },
-      ".EdgeSidebar-collapser": {
-        display: "var(--display, inline-flex)",
-        "--_sidebarCollapsed": "var(--collapsed, 1)",
-        ".Icon-collapse": {
-          display: "var(--collapsed, none) var(--uncollapsed, inline-block)",
-        },
-        ".Icon-uncollapse": {
-          display: "var(--collapsed, inline-block) var(--uncollapsed, none)",
-        },
-      },
     },
+    ...(collapsedWidth && {
+      ".Root:has(&[data-collapsible='collapsed'])": {
+        "--EdgeSidebar-collapsible": "var(--collapsed)",
+      },
+    }),
     ...(expandConfig && {
       "& .SidebarContent:hover": {
         "--SidebarContent-width": "var(--EdgeSidebar-permanentWidth)",
@@ -119,13 +127,6 @@ function applyPermanentStyles(params: Omit<PermanentConfig, "variant">) {
       },
     }),
   };
-}
-
-export function applyUncollapsedStyles(styles: SxProps<Theme>) {
-  return {
-    '&[data-collapsible="uncollapsed"], [data-collapsible="uncollapsed"] &':
-      styles,
-  } as any;
 }
 
 export function applyEdgeSidebarStyles(
@@ -159,7 +160,7 @@ export function applyEdgeSidebarStyles(
               autoCollapseStyles = {
                 ".Root:has(&)": {
                   "--EdgeSidebar-collapsible": {
-                    [theme.breakpoints.keys[0]]: "var(--collapsed)",
+                    [variantConfig.autoCollapse]: "var(--collapsed)",
                     [nextBreakpoint]: "var(--uncollapsed)",
                   },
                   ".EdgeSidebar-collapser": {
@@ -232,9 +233,6 @@ const StyledEdgeSidebarLeft = styled(EdgeSidebarRoot)({
                         var(--collapsed, var(--EdgeSidebar-collapsedWidth, 0px))`,
     "--collapsed": "var(--EdgeSidebar-collapsible,)",
     "--uncollapsed": "var(--EdgeSidebar-collapsible,)",
-  },
-  ".Root:has(&[data-collapsible='collapsed'])": {
-    "--EdgeSidebar-collapsible": "var(--collapsed)",
   },
   ".Root:has(&[data-collapsible='uncollapsed'])": {
     "--EdgeSidebar-collapsible": "var(--uncollapsed)",
