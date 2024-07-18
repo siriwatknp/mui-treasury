@@ -50,6 +50,7 @@ export function internalCollapseSidebar(options: {
       window
         .getComputedStyle(event.target as Element)
         .getPropertyValue("--_sidebarCollapsed") === "1";
+    console.log("currentCollapsed", currentCollapsed);
     const nextCollapsed = state === undefined ? !currentCollapsed : state;
     if (nextCollapsed) {
       sidebar.setAttribute("data-collapsible", "collapsed");
