@@ -111,7 +111,12 @@ For example, displaying table of contents or advertisements.
 
 export function DemoInsetSidebarSticky() {
   return (
-    <Root sx={{ minHeight: "30vh", maxHeight: "30vh", overflow: "auto" }}>
+    <Root
+      sx={{
+        ...applyRootStyles({ height: "30vh", fixedHeight: true }),
+        overflow: "auto",
+      }}
+    >
       <Content sx={{ ...applyInsetContainerStyles() }}>
         <DummyContent />
         <InsetSidebar>
@@ -133,7 +138,7 @@ A good example is a [chat application](/story/layout-v6-app-messenger--messenger
 
 export function DemoInsetSidebarAbsolute() {
   return (
-    <Root sx={{ ...applyRootStyles({ fullscreen: true, height: "30vh" }) }}>
+    <Root sx={{ ...applyRootStyles({ fixedHeight: true, height: "30vh" }) }}>
       <Content
         sx={{
           minHeight: 0,
@@ -157,7 +162,7 @@ export function DemoInsetSidebarAbsolute() {
 </section>
 
 ```jsx
-<Root sx={{ ...applyRootStyles({ fullscreen: true, height: "30vh" }) }}>
+<Root sx={{ ...applyRootStyles({ fixedHeight: true, height: "30vh" }) }}>
   <Content sx={{ ...applyInsetContainerStyles() }}>
     <div>Content</div>
     <InsetSidebar position="absolute">...</InsetSidebar>

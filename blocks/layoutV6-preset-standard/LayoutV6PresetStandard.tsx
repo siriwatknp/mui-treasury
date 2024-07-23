@@ -34,9 +34,6 @@ export const LayoutV6PresetStandard = () => {
             fullWidth: "md",
           }),
           position: { xs: "sticky", md: "relative" },
-          borderBottom: "1px solid",
-          borderColor: "divider",
-          backgroundColor: "background.paper",
         }}
       >
         <HeaderMockup
@@ -70,12 +67,7 @@ export const LayoutV6PresetStandard = () => {
           }),
         })}
       >
-        <EdgeSidebarContent
-          sx={{
-            borderRight: "min(1px, 1 * var(--SidebarContent-width)) solid",
-            borderColor: "divider",
-          }}
-        >
+        <EdgeSidebarContent>
           <NavSidebarMockup />
           <ButtonBase
             className="EdgeSidebar-collapser"

@@ -4,15 +4,15 @@ import { Breakpoint } from "@mui/material/styles";
 import { styled } from "./zero-styled";
 
 export function applyRootStyles(params?: {
-  fullscreen?: boolean;
   height?: string | Record<Breakpoint, string> | Record<string, string>;
+  fixedHeight?: boolean;
 }) {
-  const { height, fullscreen } = params || {};
+  const { height, fixedHeight } = params || {};
   return {
     ...(height && {
       "--Root-height": height,
     }),
-    ...(fullscreen && {
+    ...(fixedHeight && {
       maxHeight: "var(--Root-height)",
     }),
   };
@@ -20,6 +20,17 @@ export function applyRootStyles(params?: {
 
 const StyledRoot = styled("div")(({ theme }) => ({
   "--Root-height": "100lvh",
+  "--shared-spacing": theme.spacing(2),
+  "--Header-underline": `1px solid ${(theme.vars || theme).palette.divider}`,
+  "--Header-background": (theme.vars || theme).palette.background.paper,
+  "--Footer-background": (theme.vars || theme).palette.background.paper,
+  "--Footer-overline": `1px solid ${(theme.vars || theme).palette.divider}`,
+  "--EdgeSidebar-background": (theme.vars || theme).palette.background.paper,
+  "--EdgeSidebar-overlay": "rgba(0, 0, 0, 0.48)",
+  "--EdgeSidebar-sidelineWidth": "1px",
+  "--EdgeSidebar-sidelineColor": (theme.vars || theme).palette.divider,
+  "--InsetSidebarContent-background": (theme.vars || theme).palette.background
+    .paper,
   backgroundColor: (theme.vars || theme).palette.background.paper,
   minHeight: "var(--Root-height)",
   display: "grid",

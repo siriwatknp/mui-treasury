@@ -1,5 +1,6 @@
 import { Meta } from "@storybook/blocks";
 import {
+  applyRootStyles,
   Content,
   EdgeSidebar,
   Footer,
@@ -32,7 +33,7 @@ A basic layout consists of `Header`, `Content`, and `Footer`:
 
 export function Demo() {
   return (
-    <Root sx={{ minHeight: "25vh" }}>
+    <Root sx={{ ...applyRootStyles({ height: "25vh" }) }}>
       <Header className="border  px-2">Header</Header>
       <Content className="border  p-2">Content</Content>
       <Footer className="border  p-2">Footer</Footer>
@@ -64,7 +65,7 @@ To render a sidebar for a dashboard layout, use `EdgeSidebar` component:
 
 export function Demo2() {
   return (
-    <Root sx={{ minHeight: "25vh" }}>
+    <Root sx={{ ...applyRootStyles({ height: "30vh" }) }}>
       <Header className="border  p-2">Header</Header>
       <EdgeSidebar className="border  p-2">EdgeSidebar</EdgeSidebar>
       <Content className="border  p-2">Content</Content>
@@ -108,7 +109,7 @@ To render a sidebar for a blog layout, use `InsetSidebar` component:
 
 export function Demo3() {
   return (
-    <Root sx={{ minHeight: "25vh" }}>
+    <Root sx={{ ...applyRootStyles({ height: "30vh" }) }}>
       <Header className="border  p-2">Header</Header>
       <Content className="border  p-2">
         <InsetContainer
@@ -162,4 +163,19 @@ To learn more about the blog layout, check out the [Tutorial — Blog layout]().
 
 ## Next step
 
-- [EdgeSidebar Configuration](/docs/layout-v6-configuration-edge-sidebar--docs)
+- Explore real-world examples:
+  - [Analytics dashboard](/story/layout-v6-app-analytics--analytics)
+  - [Facebook Messenger](/story/layout-v6-app-messenger--messenger)
+  - [Documentation site](/story/layout-v6-app-reactlegacy--react-legacy)
+  - [Shopping cart](/story/layout-v6-app-shoppingcart--shopping-cart)
+- Start with a predefined layout:
+  - [Content-based](/story/layout-v6-preset-contentbased--content-based)
+  - [Cozy](/story/layout-v6-preset-cozy--cozy)
+  - [Fixed](/story/layout-v6-preset-fixed--fixed)
+  - [Standard](/story/layout-v6-preset-standard--standard)
+- See each component's configuration:
+  - [Root](/docs/layout-v6-configuration-root--docs)
+  - [Header](/docs/layout-v6-configuration-header--docs)
+  - [EdgeSidebar](/docs/layout-v6-configuration-edge-sidebar--docs)
+  - [InsetSidebar](/docs/layout-v6-configuration-inset-sidebar--docs)
+  - [Footer](/docs/layout-v6-configuration-footer--docs)

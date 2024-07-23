@@ -76,7 +76,7 @@ export function LayoutV6AppMessenger() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Root sx={{ ...applyRootStyles({ fullscreen: true }) }}>
+      <Root sx={{ ...applyRootStyles({ fixedHeight: true }) }}>
         <StyledHeader
           position="relative"
           sx={{ ...applyHeaderStyles({ height: "64px" }) }}

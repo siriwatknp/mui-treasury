@@ -67,9 +67,11 @@ export function internalCollapseSidebar(options: {
     } else {
       if (nextCollapsed) {
         sidebar.setAttribute("data-edge-collapsed", "");
+        sidebar.removeAttribute("data-edge-uncollapsed");
         sidebar.removeAttribute("data-auto-collapse-off");
       } else {
         sidebar.removeAttribute("data-edge-collapsed");
+        sidebar.setAttribute("data-edge-uncollapsed", "");
       }
     }
   }
@@ -89,7 +91,6 @@ export function internalToggleSidebar(options: {
     if (nextOpen) {
       sidebar.setAttribute("data-temporary-open", "");
       sidebar.style.setProperty("--EdgeSidebar-temporaryOpen", "1");
-      doc.body.style.overflowY = "hidden";
       // @ts-ignore
       function handleOutsideClick(event: MouseEvent) {
         if (event.target === sidebar) {
@@ -114,7 +115,6 @@ export function internalToggleSidebar(options: {
       setTimeout(() => {
         sidebar.removeAttribute("data-mobile-closing");
       }, 300);
-      doc.body.style.overflowY = "";
       sidebar.style.setProperty("--EdgeSidebar-temporaryOpen", "");
     }
   }
@@ -126,6 +126,7 @@ export const EdgeSidebarRoot = styled("div")({
   transition: "width 0.3s",
   display: "flex",
   flexDirection: "column",
+  background: "var(--EdgeSidebar-background)",
   // ==============================
   // To keep the EdgeSidebar fixed when the Content is scrollable
   position: "var(--_permanent, sticky)" as any,
@@ -137,7 +138,7 @@ export const EdgeSidebarRoot = styled("div")({
     position: "absolute",
     content: '""',
     inset: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.12)",
+    backgroundColor: "var(--EdgeSidebar-overlay)",
     backdropFilter: "blur(4px)",
     zIndex: 1,
     transition: "opacity 0.4s, visibility 0.4s",
@@ -148,5 +149,13 @@ export const EdgeSidebarRoot = styled("div")({
     "&::before": {
       visibility: "visible",
     },
+  },
+  "&::after": {
+    position: "absolute",
+    content: '""',
+    display: "block",
+    width: "var(--_permanent, var(--SidebarContent-width))",
+    height: "var(--Header-clipHeight)",
+    top: "calc(-1 * var(--Header-clipHeight))",
   },
 });

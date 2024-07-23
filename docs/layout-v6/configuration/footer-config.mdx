@@ -3,6 +3,7 @@ import {
   applyHeaderStyles,
   applyInsetContainerStyles,
   applyInsetSidebarStyles,
+  applyRootStyles,
   Content,
   Footer,
   Header,
@@ -42,26 +43,24 @@ import { Footer, InsetAvoidingView, Root } from "path/to/layout-core-v6";
 </Root>;
 ```
 
+### Fixed InsetSidebar
+
 Below is an example of a Footer with an InsetSidebar with a `fixed` position:
 
 export function DemoInsetSidebarFixed() {
   return (
-    <Root sx={{ minHeight: "30vh" }}>
+    <Root sx={{ overflow: "hidden", ...applyRootStyles({ height: "30vh" }) }}>
       <Header
         sx={{
           ...applyHeaderStyles({
             height: "64px",
           }),
-          p: 2,
           position: "sticky",
-          top: 0,
-          borderBottom: 1,
-          borderColor: "divider",
         }}
       >
         Header
       </Header>
-      <Content sx={{ pl: 2, pt: 2, ...applyInsetContainerStyles() }}>
+      <Content sx={{ ...applyInsetContainerStyles() }}>
         <div>Content</div>
         <InsetSidebar
           position="fixed"
@@ -71,13 +70,13 @@ export function DemoInsetSidebarFixed() {
             }),
           }}
         >
-          <InsetSidebarContent sx={{ px: 2 }}>
-            Inset sidebar
+          <InsetSidebarContent>
+            <div className="p-4">Inset sidebar</div>
           </InsetSidebarContent>
         </InsetSidebar>
       </Content>
       <Footer>
-        <InsetAvoidingView sx={{ p: 2 }}>
+        <InsetAvoidingView>
           <h3>Footer</h3>
           <p>
             Quam lacus suspendisse faucibus interdum posuere lorem ipsum.
@@ -100,11 +99,13 @@ export function DemoInsetSidebarFixed() {
   <DemoInsetSidebarFixed />
 </section>
 
+### Absolute InsetSidebar
+
 Below is an example of a Footer with an InsetSidebar with an `absolute` position:
 
 export function DemoInsetSidebarAbsolute() {
   return (
-    <Root sx={{ '--Root-height': "30vh", maxHeight: '30vh' }}>
+    <Root sx={{ ...applyRootStyles({ height: "30vh", fixedHeight: true }) }}>
       <Header
         sx={{
           ...applyHeaderStyles({
@@ -121,7 +122,6 @@ export function DemoInsetSidebarAbsolute() {
       </Header>
       <Content sx={{ ...applyInsetContainerStyles(), minHeight: 0, }}>
         <InsetSidebar
-          anchor="left"
           position="absolute"
           sx={{
             ...applyInsetSidebarStyles({
@@ -129,14 +129,14 @@ export function DemoInsetSidebarAbsolute() {
             }),
           }}
         >
-          <InsetSidebarContent sx={{ px: 2 }}>
-            Inset sidebar
+          <InsetSidebarContent>
+            <div className="p-4">Inset sidebar</div>
           </InsetSidebarContent>
         </InsetSidebar>
         <div>Content</div>
       </Content>
       <Footer>
-        <InsetAvoidingView sx={{ p: 2, borderTop: 1, borderColor: 'divider' }}>
+        <InsetAvoidingView>
           <input placeholder="Type here..." />
         </InsetAvoidingView>
       </Footer>

@@ -71,8 +71,8 @@ export function applyPersistentRightStyles(
       "--EdgeSidebar-permanentSlide":
         "var(--uncollapsed-R, -100%) var(--collapsed-R, 0)",
     }),
-    ".Root:has(&[data-edge-collapsed])": {
-      "--EdgeSidebar-R-collapsible": "var(--collapsed-R)",
+    ".Root:has(&[data-edge-uncollapsed])": {
+      "--EdgeSidebar-R-collapsible": "var(--uncollapsed-R)",
     },
   };
 }
@@ -255,6 +255,12 @@ const StyledEdgeSidebarRight = styled(EdgeSidebarRoot)({
   gridArea: "EdgeSidebar-R",
   width: `var(--temporary-R, 0)
           var(--permanent-R, var(--_permanentWidth-R))`,
+  borderLeft:
+    "var(--permanent, min(var(--EdgeSidebar-sidelineWidth), 1 * var(--SidebarContent-width)) solid)",
+  borderColor: "var(--EdgeSidebar-sidelineColor)",
+  "&::after": {
+    border: "inherit",
+  },
   "&::before": {
     display: `var(--temporary-R, block)
               var(--permanent-R, none)`,
