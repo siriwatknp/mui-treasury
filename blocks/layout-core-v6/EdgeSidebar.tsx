@@ -118,7 +118,7 @@ function applyPermanentStyles(params: Omit<PermanentConfig, "variant">) {
       },
     }),
     ...(expandConfig && {
-      "& .SidebarContent:hover": {
+      "& .EdgeSidebarContent:hover": {
         "--SidebarContent-width": "var(--EdgeSidebar-permanentWidth)",
         "--SidebarContent-transitionDelay": expandConfig.delay,
         boxShadow: `var(--collapsed, ${expandConfig.shadow}) var(--uncollapsed, none)`,
@@ -243,12 +243,12 @@ const StyledEdgeSidebarLeft = styled(EdgeSidebarRoot)({
   borderRight:
     "var(--permanent, min(var(--EdgeSidebar-sidelineWidth), 1 * var(--SidebarContent-width)) solid)",
   borderColor: "var(--EdgeSidebar-sidelineColor)",
+  "&::after": {
+    border: "inherit",
+  },
   "&::before": {
     display: `var(--temporary, block)
               var(--permanent, none)`,
-  },
-  "&::after": {
-    border: "inherit",
   },
   "&:not([data-temporary-open], [data-mobile-closing])": {
     overflow: "var(--temporary, hidden)",

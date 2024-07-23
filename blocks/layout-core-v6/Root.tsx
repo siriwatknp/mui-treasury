@@ -20,17 +20,18 @@ export function applyRootStyles(params?: {
 
 const StyledRoot = styled("div")(({ theme }) => ({
   "--Root-height": "100lvh",
-  "--shared-spacing": theme.spacing(2),
   "--Header-underline": `1px solid ${(theme.vars || theme).palette.divider}`,
   "--Header-background": (theme.vars || theme).palette.background.paper,
   "--Footer-background": (theme.vars || theme).palette.background.paper,
   "--Footer-overline": `1px solid ${(theme.vars || theme).palette.divider}`,
-  "--EdgeSidebar-background": (theme.vars || theme).palette.background.paper,
   "--EdgeSidebar-overlay": "rgba(0, 0, 0, 0.48)",
   "--EdgeSidebar-sidelineWidth": "1px",
   "--EdgeSidebar-sidelineColor": (theme.vars || theme).palette.divider,
+  "--EdgeSidebarContent-background": (theme.vars || theme).palette.background
+    .paper,
   "--InsetSidebarContent-background": (theme.vars || theme).palette.background
     .paper,
+  "--InsetSidebarContent-sideline": `1px solid ${(theme.vars || theme).palette.divider}`,
   backgroundColor: (theme.vars || theme).palette.background.paper,
   minHeight: "var(--Root-height)",
   display: "grid",

@@ -1,6 +1,8 @@
+import React from "react";
+import { BoxProps } from "@mui/material/Box";
 import { styled } from "./zero-styled";
 
-const InsetSidebarContent = styled("div")(({ theme }) => ({
+const InsetSidebarContentRoot = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   backgroundColor: "inherit",
@@ -14,8 +16,8 @@ const InsetSidebarContent = styled("div")(({ theme }) => ({
     "var(--sticky, initial) var(--fixed, calc(100% - var(--Header-height, 0px))) var(--absolute, calc(var(--Root-height, 100vh) - var(--Header-height, 0px)))",
   width: "var(--sticky, inherit) var(--fixed, inherit) var(--absolute, 100%)",
   top: 0,
-  borderRight: "var(--anchor-left, 1px solid)",
-  borderLeft: "var(--anchor-right, 1px solid)",
+  borderRight: "var(--anchor-left, var(--InsetSidebarContent-sideline))",
+  borderLeft: "var(--anchor-right, var(--InsetSidebarContent-sideline))",
   borderColor: theme.palette.divider,
   marginLeft:
     "var(--fixed, var(--anchor-left, -9999px)) var(--absolute, initial) var(--sticky, initial)",
@@ -27,5 +29,20 @@ const InsetSidebarContent = styled("div")(({ theme }) => ({
     "var(--fixed, var(--anchor-right, 9999px)) var(--absolute, initial) var(--sticky, initial)",
   marginTop: "var(--fixed, var(--Header-height))",
 }));
+
+const InsetSidebarContent = React.forwardRef<HTMLDivElement, BoxProps>(
+  function InsetSidebarContent({ className, children, ...props }, ref) {
+    return (
+      <InsetSidebarContentRoot
+        // @ts-ignore
+        ref={ref}
+        className={`InsetSidebarContent ${className || ""}`}
+        {...props}
+      >
+        {children}
+      </InsetSidebarContentRoot>
+    );
+  },
+);
 
 export default InsetSidebarContent;

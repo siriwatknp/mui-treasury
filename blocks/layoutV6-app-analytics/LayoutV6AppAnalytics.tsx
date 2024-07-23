@@ -4,19 +4,16 @@ import MenuRounded from "@mui/icons-material/MenuRounded";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
+import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
+import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Content from "../layout-core-v6/Content";
 import EdgeSidebar, {
   applyEdgeSidebarStyles,
   toggleEdgeSidebarCollapse,
   toggleTemporaryEdgeSidebar,
 } from "../layout-core-v6/EdgeSidebar";
-import SidebarContent from "../layout-core-v6/EdgeSidebarContent";
-import EdgeSidebarRight, {
-  applyEdgeSidebarRightStyles,
-  toggleEdgeSidebarRightCollapse,
-  toggleTemporaryEdgeSidebarRight,
-} from "../layout-core-v6/EdgeSidebarRight";
+import EdgeSidebarContent from "../layout-core-v6/EdgeSidebarContent";
 import EdgeTemporaryClose from "../layout-core-v6/EdgeTemporaryClose";
 import Header from "../layout-core-v6/Header";
 import Root from "../layout-core-v6/Root";
@@ -28,13 +25,35 @@ import {
   TopUsersCardMockup,
   UserActiveCardMockup,
 } from "../mockup-dashboard";
+import { UnderlineTabs } from "../mockup-tabs";
+import { Word } from "../mockup-typography";
 
 export function LayoutV6AppAnalytics() {
+  const [tabIndex, setTabIndex] = React.useState(0);
+  const trigger = useScrollTrigger({
+    threshold: 0,
+    disableHysteresis: true,
+  });
   return (
     <Root>
       <Header
         sx={{
           height: { xs: 48, sm: 64, md: 72 },
+          bgcolor: "rgba(255,255,255,0.5)",
+          backdropFilter: "blur(12px)",
+          ...(trigger && {
+            transition: "0.2s",
+            boxShadow: "0 0 4px 0 #e2e8f0",
+            "&:before": {
+              content: '""',
+              position: "absolute",
+              display: "block",
+              width: "100%",
+              height: "1px",
+              bgcolor: "grey.200",
+              bottom: 0,
+            },
+          }),
         }}
       >
         <Box
@@ -67,47 +86,8 @@ export function LayoutV6AppAnalytics() {
           >
             <b>Analytics</b>
           </Typography>
-
-          {/* <IconButton
-            className="EdgeSidebar-R-collapser"
-            onClick={(event) => toggleEdgeSidebarRightCollapse({ event })}
-          >
-            <MenuRounded className="Icon-uncollapse" />
-            <ChevronLeftRounded className="Icon-collapse" />
-          </IconButton> */}
-
-          {/* <IconButton
-            className="EdgeSidebar-R-trigger"
-            onClick={() => toggleTemporaryEdgeSidebarRight()}
-          >
-            <MenuRounded />
-          </IconButton> */}
         </Box>
       </Header>
-      {/* <EdgeSidebarRight
-        sx={(theme) => ({
-          ...applyEdgeSidebarRightStyles(theme, {
-            config: {
-              xs: {
-                variant: "temporary",
-              },
-              md: {
-                variant: "persistent",
-                persistentBehavior: "none",
-              },
-              lg: {
-                variant: "permanent",
-                width: "300px",
-                autoCollapse: "md",
-                collapsedWidth: "80px",
-                expandOnHover: true,
-              },
-            },
-          }),
-        })}
-      >
-        <SidebarContent>Hello</SidebarContent>
-      </EdgeSidebarRight> */}
       <EdgeSidebar
         sx={(theme) => ({
           ...applyEdgeSidebarStyles(theme, {
@@ -132,26 +112,8 @@ export function LayoutV6AppAnalytics() {
       >
         <EdgeTemporaryClose />
 
-        <SidebarContent
-          sx={{
-            borderRight: "1px solid",
-            borderColor: "divider",
-          }}
-        >
-          {/* <IconButton
-            className="EdgeSidebar-collapser"
-            onClick={(event) => toggleEdgeSidebarCollapse({ event })}
-          >
-            <MenuRounded className="Icon-uncollapse" />
-            <ChevronLeftRounded className="Icon-collapse" />
-          </IconButton> */}
+        <EdgeSidebarContent>
           <SideNavUserInfoMockup />
-          {/* <button
-            className="EdgeSidebar-collapser"
-            onClick={(event) => toggleEdgeSidebarCollapse({ event })}
-          >
-            Close
-          </button> */}
           <Box
             sx={{
               borderTop: "1px solid",
@@ -163,15 +125,32 @@ export function LayoutV6AppAnalytics() {
             <IconNavMockup size="small" />
             <LinkNavMockup />
           </Box>
-        </SidebarContent>
+        </EdgeSidebarContent>
       </EdgeSidebar>
       <Content>
+        <UnderlineTabs
+          value={tabIndex}
+          onChange={(event, index) => setTabIndex(index)}
+          sx={{
+            minHeight: { xs: 44, md: 48 },
+            px: 2,
+            "& .MuiTab-root": {
+              minHeight: { xs: 44, md: 48 },
+              minWidth: 0,
+              fontSize: { md: 16 },
+            },
+          }}
+        >
+          <Tab label={<Word cached />} disableTouchRipple />
+          <Tab label={<Word cached />} disableTouchRipple />
+          <Tab label={<Word cached />} disableTouchRipple />
+        </UnderlineTabs>
         <Box
           sx={{
             height: "16vh",
             minHeight: 240,
             borderRadius: 2,
-            bgcolor: "background.paper",
+            bgcolor: "rgba(0 0 0 / 0.12)",
             m: 2,
           }}
         />

@@ -7,7 +7,6 @@ const StyledFooter = styled("footer")({
   transition: "all 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, color 0s",
   background: "var(--Footer-background)",
   borderTop: "var(--Footer-overline)",
-  padding: "var(--shared-spacing)",
 });
 
 const Footer = React.forwardRef<HTMLElement, BoxProps>(function Footer(

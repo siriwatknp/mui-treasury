@@ -4,6 +4,7 @@ import { styled } from "./zero-styled";
 
 const StyledEdgeSidebarContent = styled("div")({
   display: "flex",
+  background: "var(--EdgeSidebarContent-background)",
   flexDirection: "column",
   opacity: `var(--_temporary, var(--EdgeSidebar-temporaryOpen))
             var(--_permanent, 1)`,
@@ -14,7 +15,7 @@ const StyledEdgeSidebarContent = styled("div")({
   position: "var(--_temporary, fixed) var(--_permanent, relative)" as any,
   zIndex: 2,
   width:
-    "var(--_temporary, var(--EdgeSidebar-temporaryWidth)) var(--_permanent, var(--SidebarContent-width))",
+    "var(--_temporary, var(--EdgeSidebar-temporaryWidth)) var(--_permanent, calc(var(--SidebarContent-width) - var(--EdgeSidebar-sidelineWidth, 0px)))",
   height: "var(--_temporary, 100%)",
   overflowY: "var(--_temporary, auto)" as any,
   transition: `var(--_temporary, opacity 0.3s, transform 0.3s)
@@ -39,7 +40,7 @@ const EdgeSidebarContent = React.forwardRef<HTMLDivElement, BoxProps>(
       <StyledEdgeSidebarContent
         // @ts-ignore
         ref={ref}
-        className={`SidebarContent ${className || ""}`}
+        className={`EdgeSidebarContent ${className || ""}`}
         {...props}
       />
     );
