@@ -20,8 +20,6 @@ The Header component must be a direct child of the Root component. It is used to
 
 Use `applyHeaderStyles` to set the height of the Header. The value can be a string with valid CSS units or a responsive object with [Material UI breakpoint](https://mui.com/material-ui/customization/breakpoints/#default-breakpoints) as keys.
 
-You can set the CSS [position](https://developer.mozilla.org/en-US/docs/Web/CSS/position) as `relative` or `sticky` with the `sx` prop too.
-
 export function DemoHeight() {
   return (
     <Root sx={{ minHeight: "20vh" }}>
@@ -30,10 +28,6 @@ export function DemoHeight() {
           ...applyHeaderStyles({
             height: { xs: 48, sm: 64, md: 72 },
           }),
-          p: 2,
-          position: "sticky",
-          borderBottom: 1,
-          borderColor: "divider",
         }}
       >
         Header
@@ -53,11 +47,6 @@ export function DemoHeight() {
       ...applyHeaderStyles({
         height: { xs: 48, sm: 64, md: 72 },
       }),
-      p: 2,
-      position: "sticky",
-      top: 0,
-      borderBottom: 1,
-      borderColor: "divider",
     }}
   >
     Header
@@ -80,7 +69,7 @@ export function DemoHeaderAboveEdgeSidebar() {
       >
         Header
       </Header>
-      <EdgeSidebar sx={{ p: 2 }}>EdgeSidebar</EdgeSidebar>
+      <EdgeSidebar>EdgeSidebar</EdgeSidebar>
       <Content>Content</Content>
       <Footer>Footer</Footer>
     </Root>

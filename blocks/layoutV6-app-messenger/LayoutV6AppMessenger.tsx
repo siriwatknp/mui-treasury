@@ -99,9 +99,7 @@ export function LayoutV6AppMessenger() {
             }),
           })}
         >
-          <EdgeSidebarContent
-            sx={{ borderRight: "1px solid rgba(0, 0, 0, 0.12)" }}
-          >
+          <EdgeSidebarContent>
             <ChatsHeader />
             <Box p={"4px 16px 12px"}>
               <MessengerSearch />
@@ -114,7 +112,6 @@ export function LayoutV6AppMessenger() {
           <InsetSidebar
             position="absolute"
             sx={{
-              borderColor: "divider",
               ...applyInsetSidebarStyles({
                 width: "25cqw",
               }),

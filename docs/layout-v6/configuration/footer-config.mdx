@@ -55,7 +55,6 @@ export function DemoInsetSidebarFixed() {
           ...applyHeaderStyles({
             height: "64px",
           }),
-          position: "sticky",
         }}
       >
         Header
@@ -71,7 +70,7 @@ export function DemoInsetSidebarFixed() {
           }}
         >
           <InsetSidebarContent>
-            <div className="p-4">Inset sidebar</div>
+            <div>Inset sidebar</div>
           </InsetSidebarContent>
         </InsetSidebar>
       </Content>
@@ -111,11 +110,6 @@ export function DemoInsetSidebarAbsolute() {
           ...applyHeaderStyles({
             height: "64px",
           }),
-          p: 2,
-          position: "sticky",
-          top: 0,
-          borderBottom: 1,
-          borderColor: "divider",
         }}
       >
         Header
@@ -130,7 +124,7 @@ export function DemoInsetSidebarAbsolute() {
           }}
         >
           <InsetSidebarContent>
-            <div className="p-4">Inset sidebar</div>
+            <div >Inset sidebar</div>
           </InsetSidebarContent>
         </InsetSidebar>
         <div>Content</div>

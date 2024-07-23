@@ -126,7 +126,6 @@ export const EdgeSidebarRoot = styled("div")({
   transition: "width 0.3s",
   display: "flex",
   flexDirection: "column",
-  background: "var(--EdgeSidebar-background)",
   // ==============================
   // To keep the EdgeSidebar fixed when the Content is scrollable
   position: "var(--_permanent, sticky)" as any,
@@ -149,6 +148,9 @@ export const EdgeSidebarRoot = styled("div")({
     "&::before": {
       visibility: "visible",
     },
+  },
+  "html:has(&[data-temporary-open])": {
+    overflow: "hidden",
   },
   "&::after": {
     position: "absolute",

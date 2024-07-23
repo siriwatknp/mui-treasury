@@ -131,7 +131,7 @@ export function applyPermanentRightStyles(
       },
     }),
     ...(expandConfig && {
-      "& .SidebarContent:hover": {
+      "& .EdgeSidebarContent:hover": {
         "--SidebarContent-width": "var(--EdgeSidebar-R-permanentWidth)",
         "--SidebarContent-transitionDelay": expandConfig.delay,
         boxShadow: `var(--collapsed-R, ${expandConfig.shadow}) var(--uncollapsed-R, none)`,

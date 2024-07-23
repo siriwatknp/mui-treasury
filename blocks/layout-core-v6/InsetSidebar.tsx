@@ -36,9 +36,6 @@ const InsetSidebarRoot = styled("aside")({
   width: "200px",
   position: "relative",
   flexShrink: 0,
-  top: "calc(-1 * var(--shared-spacing))",
-  left: "var(--anchor-left, calc(-1 * var(--shared-spacing)))",
-  right: "var(--anchor-right, calc(-1 * var(--shared-spacing)))",
   "&:not(:last-child)": {
     "--InsetSidebar-anchor": "var(--anchor-left)",
   },

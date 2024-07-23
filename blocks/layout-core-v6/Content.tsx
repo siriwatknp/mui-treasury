@@ -9,7 +9,6 @@ import { styled } from "./zero-styled";
 const StyledContent = styled("main")({
   gridArea: "Content",
   minHeight: 0,
-  padding: "var(--shared-spacing)",
 });
 
 const Content = React.forwardRef<HTMLElement, BoxProps>(function Content(

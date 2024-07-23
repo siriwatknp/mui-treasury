@@ -150,9 +150,6 @@ export function LayoutV6AppReactLegacy() {
               <InsetSidebar
                 position="fixed"
                 sx={{
-                  borderLeft: "1px solid",
-                  borderColor: "divider",
-                  backgroundColor: "background.paper",
                   ...applyInsetSidebarStyles({
                     width: {
                       md: "256px",

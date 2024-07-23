@@ -43,9 +43,9 @@ const StyledHeader = styled("header")({
   alignItems: "center",
   zIndex: 1,
   top: 0, // for position sticky to work
+  position: "sticky",
   background: "var(--Header-background)",
   borderBottom: "var(--Header-underline)",
-  padding: "var(--shared-spacing)",
 });
 
 const Header = React.forwardRef<HTMLElement, BoxProps>(function Header(
