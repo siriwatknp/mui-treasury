@@ -44,25 +44,25 @@ const logger = {
   info: function (text: string | ((t: typeof chalk) => string)) {
     this.log(
       chalk.bold(chalk.green("info")),
-      typeof text === "function" ? text(chalk) : text
+      typeof text === "function" ? text(chalk) : text,
     );
   },
   config: function (text: string | ((t: typeof chalk) => string)) {
     this.log(
       chalk.bold(chalk.hex("0284C7")("config")),
-      typeof text === "function" ? text(chalk) : text
+      typeof text === "function" ? text(chalk) : text,
     );
   },
   success: function (text: string | ((t: typeof chalk) => string)) {
     this.log(
       chalk.bold(chalk.green("success")),
-      typeof text === "function" ? text(chalk) : text
+      typeof text === "function" ? text(chalk) : text,
     );
   },
   version: function () {
     this.log(
       chalk.bold(chalk.hex("F59E0B")("version")),
-      chalk.bold(chalk.yellow(`v${packageJson.version}`))
+      chalk.bold(chalk.yellow(`v${packageJson.version}`)),
     );
   },
 };
@@ -80,7 +80,7 @@ async function getConfigFile(overrides?: Partial<CloneOptions>) {
   } catch (error) {
     logger.info("config file not found, use default config");
     logger.info(
-      chalk.blue('{ dir: "src/mui-treasury", storybook: false, test: false }')
+      chalk.blue('{ dir: "src/mui-treasury", storybook: false, test: false }'),
     );
   }
   return { ...config, ...overrides };
@@ -89,16 +89,18 @@ async function getConfigFile(overrides?: Partial<CloneOptions>) {
 function downloadAndExtractCode(
   root: string,
   sources: string[],
-  branch: string
+  branch: string,
 ): Promise<void> {
   return pipeline(
     got.stream(
-      `https://codeload.github.com/siriwatknp/mui-treasury/tar.gz/${branch}`
+      `https://codeload.github.com/siriwatknp/mui-treasury/tar.gz/${branch}`,
     ),
     tar.extract(
       { cwd: root, strip: 2 },
-      sources.map((src) => `mui-treasury-${branch}/blocks/${src}`)
-    )
+      sources.map(
+        (src) => `mui-treasury-${branch.replace(/\//g, "-")}/blocks/${src}`,
+      ),
+    ),
   );
 }
 
@@ -137,13 +139,13 @@ async function notifyUpdate(): Promise<void> {
 
       console.log();
       console.log(
-        chalk.yellow.bold("A new version of `mui-treasury` is available!")
+        chalk.yellow.bold("A new version of `mui-treasury` is available!"),
       );
       console.log(
         "You can update by running: " +
           chalk.cyan(
-            isYarn ? "yarn global add mui-treasury" : "npm i -g mui-treasury"
-          )
+            isYarn ? "yarn global add mui-treasury" : "npm i -g mui-treasury",
+          ),
       );
       console.log();
     }
@@ -191,15 +193,15 @@ const program = createProgram({
                   TEMPLATE_FOLDER_MAP[config.template]
                     ? `/${TEMPLATE_FOLDER_MAP[config.template]}`
                     : ""
-                }/*`,
+                }/**`,
                 ...excludedFiles,
               ],
               `${actualRoot}/${mod}`,
               {
                 overwrite: true,
-              }
-            )
-          )
+              },
+            ),
+          ),
         );
       } catch (error) {
         logger.log(chalk.bold(chalk.red("❌ clone failed!")));
@@ -218,7 +220,7 @@ const program = createProgram({
         function (err) {
           if (err) throw err;
           logger.success(`${MUI_TREASURY_CONFIG_FILE} is created! 🎉`);
-        }
+        },
       );
     },
     create: async (template, directory, options = {}) => {
@@ -233,8 +235,8 @@ const program = createProgram({
               choices.filter(
                 (i) =>
                   i.title.toLowerCase().includes(input.toLowerCase()) ||
-                  i.value.toLowerCase().includes(input.toLowerCase())
-              )
+                  i.value.toLowerCase().includes(input.toLowerCase()),
+              ),
             ),
           choices: [
             {
@@ -326,11 +328,11 @@ const program = createProgram({
       try {
         await pipeline(
           got.stream(
-            `https://codeload.github.com/mui/material-ui/tar.gz/${branch}`
+            `https://codeload.github.com/mui/material-ui/tar.gz/${branch}`,
           ),
           tar.extract({ cwd: root, strip: 3 }, [
             `material-ui-${branch}/examples/${template}`,
-          ])
+          ]),
         );
       } catch (error) {
         logger.log(chalk.bold(chalk.red("❌ clone failed!")));
