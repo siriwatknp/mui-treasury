@@ -41,7 +41,7 @@ import {
 </Root>;
 ```
 
-## Height adjustment
+## Adjusting layout height
 
 Use `applyRootStyles` to set the height of the Root component.
 The value can be a string with valid CSS units or a responsive object with Material UI breakpoint as keys.
@@ -55,18 +55,17 @@ import { applyRootStyles, Root } from "path/to/layout-core-v6";
 </Root>;
 ```
 
-## Fullscreen layout
+## Fixed height layout
 
-To create a fullscreen layout, set the `fullscreen` to `true`.
+Add `fixedHeight: true` to the `applyRootStyles`.
 The layout will have a max-height equal to its height.
-
-Then set the CSS overflow to the component that you want to scroll. For example, the Content component.
+This is useful for layout patterns like fullscreen layout.
 
 export function DemoFullscreen() {
   return (
-    <Root sx={{ ...applyRootStyles({ height: "30vh", fullscreen: true }) }}>
-      <Header sx={{ p: 2, borderBottom: 1, borderColor: "divider" }}>Header</Header>
-      <Content sx={{ p: 2, overflow: "auto" }}>
+    <Root sx={{ ...applyRootStyles({ height: "400px", fixedHeight: true }) }}>
+      <Header>Header</Header>
+      <Content sx={{ overflow: "auto" }}>
         <h3>Title</h3>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
@@ -77,7 +76,8 @@ export function DemoFullscreen() {
         <p>
           Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
           dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          proident, sunt in culpa qui officia deserunt mollit anim id est
+          laborum.
         </p>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
@@ -88,7 +88,8 @@ export function DemoFullscreen() {
         <p>
           Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
           dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          proident, sunt in culpa qui officia deserunt mollit anim id est
+          laborum.
         </p>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
@@ -99,13 +100,13 @@ export function DemoFullscreen() {
         <p>
           Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
           dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          proident, sunt in culpa qui officia deserunt mollit anim id est
+          laborum.
         </p>
       </Content>
-      <Footer sx={{ p: 2, borderTop: 1, borderColor: "divider" }}>Footer</Footer>
+      <Footer>Footer</Footer>
     </Root>
-
-);
+  );
 }
 
 <section className="demo-container">
@@ -115,7 +116,7 @@ export function DemoFullscreen() {
 ```jsx
 import { applyRootStyles, Root } from "path/to/layout-core-v6";
 
-<Root sx={{ ...applyRootStyles({ height: "30vh", fullscreen: true }) }}>
+<Root sx={{ ...applyRootStyles({ height: "400px", fixedHeight: true }) }}>
   <Header>Header</Header>
   <Content sx={{ overflow: "auto" }}>...long text</Content>
   <Footer>Footer</Footer>

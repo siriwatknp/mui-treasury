@@ -65,7 +65,7 @@ const InsetAvoidingViewFooter = styled(InsetAvoidingView)(
 export function LayoutV6AppShoppingCart() {
   return (
     <ThemeProvider theme={dailyShoppingTheme}>
-      <Root sx={{ ...applyRootStyles({ fullscreen: true }) }}>
+      <Root sx={{ ...applyRootStyles({ fixedHeight: true }) }}>
         <CssBaseline />
         <Fab
           color={"primary"}

@@ -5,6 +5,7 @@ const InsetSidebarContent = styled("div")(({ theme }) => ({
   flexDirection: "column",
   backgroundColor: "inherit",
   overflow: "auto",
+  background: "var(--InsetSidebarContent-background)",
   boxSizing:
     "var(--sticky, border-box) var(--fixed, content-box) var(--absolute, border-box)" as any,
   position:

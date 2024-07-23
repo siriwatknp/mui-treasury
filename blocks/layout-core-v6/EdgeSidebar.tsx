@@ -63,8 +63,8 @@ function applyPersistentStyles(params: Omit<PersistentConfig, "variant">) {
         },
       },
     },
-    ".Root:has(&[data-edge-collapsed])": {
-      "--EdgeSidebar-collapsible": "var(--collapsed)",
+    ".Root:has(&[data-edge-uncollapsed])": {
+      "--EdgeSidebar-collapsible": "var(--uncollapsed)",
     },
   };
 }
@@ -240,9 +240,15 @@ const StyledEdgeSidebarLeft = styled(EdgeSidebarRoot)({
   gridArea: "EdgeSidebar",
   width: `var(--temporary, 0)
           var(--permanent, var(--_permanentWidth))`,
+  borderRight:
+    "var(--permanent, min(var(--EdgeSidebar-sidelineWidth), 1 * var(--SidebarContent-width)) solid)",
+  borderColor: "var(--EdgeSidebar-sidelineColor)",
   "&::before": {
     display: `var(--temporary, block)
               var(--permanent, none)`,
+  },
+  "&::after": {
+    border: "inherit",
   },
   "&:not([data-temporary-open], [data-mobile-closing])": {
     overflow: "var(--temporary, hidden)",

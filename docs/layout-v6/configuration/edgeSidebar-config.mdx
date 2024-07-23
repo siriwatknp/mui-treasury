@@ -3,6 +3,7 @@ import { Meta } from "@storybook/blocks";
 import {
   applyEdgeSidebarRightStyles,
   applyEdgeSidebarStyles,
+  applyRootStyles,
   Content,
   EdgeSidebar,
   EdgeSidebarContent,
@@ -78,9 +79,9 @@ To override this, you can pass the `width` property to the config:
 
 export function DemoPermanent() {
   return (
-    <Root sx={{ minHeight: "20vh" }}>
+    <Root sx={{ ...applyRootStyles({ height: "20vh" }) }}>
       <EdgeSidebar
-        className="border bg-green-50 p-2"
+        className="bg-green-50 p-2"
         sx={(theme) => ({
           ...applyEdgeSidebarStyles(theme, {
             config: {
@@ -119,8 +120,9 @@ To turn on this feature, you need to set `autoCollapse` to the collapse breakpoi
 
 export function DemoPermanentAutoCollapse() {
   return (
-    <Root sx={{ minHeight: "20vh" }}>
+    <Root sx={{ ...applyRootStyles({ height: "20vh" }) }}>
       <EdgeSidebar
+        className="bg-green-50"
         sx={(theme) => ({
           ...applyEdgeSidebarStyles(theme, {
             config: {
@@ -135,7 +137,7 @@ export function DemoPermanentAutoCollapse() {
           }),
         })}
       >
-        <EdgeSidebarContent className="border bg-green-50 p-2">
+        <EdgeSidebarContent className="p-2">
           Try to resize the window and hover to see the auto-collapse feature
         </EdgeSidebarContent>
       </EdgeSidebar>
@@ -181,9 +183,10 @@ The button and icons should have theses classes to display properly:
 
 export function DemoPermanentManualCollapse() {
   return (
-    <Root sx={{ minHeight: "20vh" }}>
+    <Root sx={{ ...applyRootStyles({ height: "20vh" }) }}>
       <EdgeSidebar
         id="demo-permanent-manual-collapse"
+        className="bg-green-50"
         sx={(theme) => ({
           ...applyEdgeSidebarStyles(theme, {
             config: {
@@ -196,7 +199,7 @@ export function DemoPermanentManualCollapse() {
           }),
         })}
       >
-        <EdgeSidebarContent className="border bg-green-50 p-2">
+        <EdgeSidebarContent className="p-2">
           <button
             className="EdgeSidebar-collapser px-2 py-1 bg-sky-600 text-white rounded w-fit"
             onClick={(event) =>
@@ -211,7 +214,7 @@ export function DemoPermanentManualCollapse() {
           </button>
         </EdgeSidebarContent>
       </EdgeSidebar>
-      <Content className="p-2">Content</Content>
+      <Content>Content</Content>
     </Root>
   );
 }
@@ -269,13 +272,13 @@ The Content will shrink based on the sidebar's width. This is the default behavi
 
 export function DemoPersistentFit() {
   return (
-    <Root sx={{ minHeight: "25vh" }}>
+    <Root sx={{ ...applyRootStyles({ height: "25vh" }) }}>
       <EdgeSidebar
         id="persistent-fit"
         sx={(theme) => ({
           ...applyEdgeSidebarStyles(theme, {
             config: {
-              xs: { variant: "persistent", width: '256px' },
+              xs: { variant: "persistent", width: "256px" },
             },
           }),
         })}
@@ -287,11 +290,15 @@ export function DemoPersistentFit() {
       <Content className="flex justify-center items-center">
         <Button
           className="EdgeSidebar-collapser"
-          onClick={event => toggleEdgeSidebarCollapse({ event, sidebarId: 'persistent-fit' })}>Toggle Sidebar</Button>
+          onClick={(event) =>
+            toggleEdgeSidebarCollapse({ event, sidebarId: "persistent-fit" })
+          }
+        >
+          Toggle Sidebar
+        </Button>
       </Content>
     </Root>
-
-);
+  );
 }
 
 <section className="demo-container">
@@ -333,13 +340,17 @@ The sidebar will overflow the Content.
 
 export function DemoPersistentNone() {
   return (
-    <Root sx={{ minHeight: "25vh" }}>
+    <Root sx={{ ...applyRootStyles({ height: "25vh" }) }}>
       <EdgeSidebar
         id="persistent-none"
         sx={(theme) => ({
           ...applyEdgeSidebarStyles(theme, {
             config: {
-              xs: { variant: "persistent", persistentBehavior: 'none', width: '256px' },
+              xs: {
+                variant: "persistent",
+                persistentBehavior: "none",
+                width: "256px",
+              },
             },
           }),
         })}
@@ -351,11 +362,15 @@ export function DemoPersistentNone() {
       <Content className="flex justify-center items-center">
         <Button
           className="EdgeSidebar-collapser"
-          onClick={event => toggleEdgeSidebarCollapse({ event, sidebarId: 'persistent-none' })}>Toggle Sidebar</Button>
+          onClick={(event) =>
+            toggleEdgeSidebarCollapse({ event, sidebarId: "persistent-none" })
+          }
+        >
+          Toggle Sidebar
+        </Button>
       </Content>
     </Root>
-
-);
+  );
 }
 
 <section className="demo-container">
@@ -405,7 +420,7 @@ export function DemoTemporary() {
   return (
     <Root
       sx={{
-        minHeight: "25vh",
+        ...applyRootStyles({ height: "25vh" }),
         "&:has([data-temporary-open],[data-mobile-closing])": {
           overflow: "hidden",
         },
@@ -423,7 +438,7 @@ export function DemoTemporary() {
       >
         <EdgeTemporaryClose sidebarId="temporary-sidebar" />
         <EdgeSidebarContent>
-          <div className="p-2 bg-green-50 border h-full">EdgeSidebar</div>
+          <div className="p-2 bg-green-50 h-full">EdgeSidebar</div>
         </EdgeSidebarContent>
       </EdgeSidebar>
       <Content className="flex justify-center items-center">
@@ -499,7 +514,7 @@ export function DemoRightEdgeSidebar() {
   return (
     <Root
       sx={{
-        minHeight: "25vh",
+        ...applyRootStyles({ height: "25vh" }),
         "&:has([data-temporary-open],[data-mobile-closing])": {
           overflow: "hidden",
         },
@@ -510,14 +525,19 @@ export function DemoRightEdgeSidebar() {
           ...applyEdgeSidebarRightStyles(theme, {
             config: {
               xs: { variant: "temporary", width: "256px" },
-              sm: { variant: "permanent", autoCollapse: 'sm', collapsedWidth: '80px', expandOnHover: true },
+              sm: {
+                variant: "permanent",
+                autoCollapse: "sm",
+                collapsedWidth: "80px",
+                expandOnHover: true,
+              },
             },
           }),
         })}
       >
         <EdgeTemporaryClose sidebarId="edge-sidebar-right" />
         <EdgeSidebarContent>
-          <div className="p-2 bg-green-50 border h-full">Right EdgeSidebar</div>
+          <div className="p-2 bg-green-50 h-full">Right EdgeSidebar</div>
         </EdgeSidebarContent>
       </EdgeSidebarRight>
       <Content className="flex justify-center items-center">
@@ -530,7 +550,6 @@ export function DemoRightEdgeSidebar() {
       </Content>
     </Root>
   );
-
 }
 
 <section className="demo-container">

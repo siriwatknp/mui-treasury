@@ -36,6 +36,9 @@ const InsetSidebarRoot = styled("aside")({
   width: "200px",
   position: "relative",
   flexShrink: 0,
+  top: "calc(-1 * var(--shared-spacing))",
+  left: "var(--anchor-left, calc(-1 * var(--shared-spacing)))",
+  right: "var(--anchor-right, calc(-1 * var(--shared-spacing)))",
   "&:not(:last-child)": {
     "--InsetSidebar-anchor": "var(--anchor-left)",
   },
@@ -47,18 +50,10 @@ const InsetSidebarRoot = styled("aside")({
 const InsetSidebar = React.forwardRef<
   HTMLDivElement,
   BoxProps & {
-    anchor?: "left" | "right";
     position?: "fixed" | "absolute" | "sticky";
   }
 >(function InsetSidebar(
-  {
-    className,
-    style,
-    position = "sticky",
-    anchor = "right",
-    children,
-    ...props
-  },
+  { className, style, position = "sticky", children, ...props },
   ref,
 ) {
   return (

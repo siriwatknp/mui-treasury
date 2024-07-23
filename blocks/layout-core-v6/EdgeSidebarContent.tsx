@@ -2,8 +2,7 @@ import React from "react";
 import { BoxProps } from "@mui/material/Box";
 import { styled } from "./zero-styled";
 
-const StyledEdgeSidebarContent = styled("div")(({ theme }) => ({
-  backgroundColor: (theme.vars || theme).palette.background.paper,
+const StyledEdgeSidebarContent = styled("div")({
   display: "flex",
   flexDirection: "column",
   opacity: `var(--_temporary, var(--EdgeSidebar-temporaryOpen))
@@ -32,7 +31,7 @@ const StyledEdgeSidebarContent = styled("div")(({ theme }) => ({
   "[data-mobile-closing] &": {
     transition: "transform 0.3s, visibility 0.3s, opacity 0.3s",
   },
-}));
+});
 
 const EdgeSidebarContent = React.forwardRef<HTMLDivElement, BoxProps>(
   function EdgeSidebarContent({ className, ...props }, ref) {
