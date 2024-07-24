@@ -90,7 +90,8 @@ export function LayoutV6AppAnalytics() {
       </Header>
       <EdgeSidebar
         sx={(theme) => ({
-          ...applyEdgeSidebarStyles(theme, {
+          ...applyEdgeSidebarStyles({
+            theme,
             config: {
               xs: {
                 variant: "temporary",

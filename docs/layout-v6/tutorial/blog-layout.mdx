@@ -2,20 +2,14 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta title="Layout v6/Tutorials/Blog" />
 
-<style>{`
-  .sbdocs-content {
-    max-width: 720px;
-  }
-`}</style>
-
 # Blog Layout Tutorial
 
-If you haven't go through [Dashboard Layout Tutorial](/?path=/story/layout-tutorials-dashboard--page), please check it out first.
+If you haven't go through [Dashboard Layout Tutorial](/docs/layout-v6-tutorials-dashboard--docs), please check it out first.
 
 ## Quick start
 
-We will not start from scratch in this tutorial instead reusing layout from [Dashboard Layout Tutorial](/?path=/story/layout-tutorials-dashboard--page).
-If you've already deleted the code, below is the final source code. Replace it in `App.js` and you are ready to go!.
+We will not start from scratch in this tutorial instead reusing layout from [Dashboard Layout Tutorial](/docs/layout-v6-tutorials-dashboard--docs).
+If you've already deleted the code, below is the final source code. Replace it in `App.(js|tsx)` and you are ready to go!.
 
 <details>
 <summary>Expand to see source code</summary>
@@ -23,78 +17,89 @@ If you've already deleted the code, below is the final source code. Replace it i
 <br />
 
 ```jsx
-import React from "react";
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import Menu from "@mui/icons-material/Menu";
+import Box from "@mui/material/Box";
+import ButtonBase from "@mui/material/ButtonBase";
 import CssBaseline from "@mui/material/CssBaseline";
+import IconButton from "@mui/material/IconButton";
 import {
+  applyEdgeSidebarStyles,
+  applyHeaderStyles,
   Content,
   EdgeSidebar,
-  EdgeTriggger,
+  EdgeSidebarContent,
   Footer,
   Header,
-  SidebarContent,
-} from "path/to/layout-core-v5";
+  Root,
+  toggleEdgeSidebarCollapse,
+  toggleTemporaryEdgeSidebar,
+} from "path/to/layout-core-v6";
 
-const App = () => {
+function App() {
   return (
-    <Root
-      scheme={{
-        header: {
-          config: {
-            xs: {
-              position: "sticky",
-              height: 56,
-            },
-            md: {
-              position: "relative",
-              height: 64,
-            },
-          },
-        },
-        leftEdgeSidebar: {
-          config: {
-            xs: {
-              variant: "temporary",
-              width: "auto",
-            },
-          },
-        },
-        md: {
-          variant: "permanent",
-          width: 256,
-          collapsible: true,
-          collapsedWidth: 64,
-        },
-      }}
-    >
+    <Root>
       <CssBaseline />
-      <Header>
-        <EdgeTrigger target={{ anchor: "left", field: "open" }}>
-          {(open, setOpen) => (
-            <IconButton onClick={() => setOpen(!open)}>
-              {open ? <ArrowLeft /> : <Menu />}
-            </IconButton>
-          )}
-        </EdgeTrigger>
-        Header
+      <Header
+        sx={{
+          ...applyHeaderStyles({
+            height: { xs: "56px", md: "64px" },
+            fullWidth: true,
+          }),
+          position: { md: "relative" },
+        }}
+      >
+        <Box
+          sx={{ flex: 1, display: "flex", alignItems: "center", px: 2, gap: 1 }}
+        >
+          <IconButton
+            className="EdgeSidebar-trigger"
+            onClick={() => toggleTemporaryEdgeSidebar()}
+          >
+            <Menu />
+          </IconButton>
+          Header
+        </Box>
       </Header>
-      <EdgeSidebar anchor="left">
-        <SidebarContent>Sidebar content</SidebarContent>
-        <EdgeTrigger target={{ anchor: "left", field: "collapsed" }}>
-          {(collapsed, setCollapsed) => (
-            <ButtonBase
-              onClick={() => setCollapsed(!collapsed)}
-              sx={{ minHeight: 40, width: "100%" }}
-            >
-              {collapsed ? <ArrowRight /> : <ArrowLeft />}
-            </ButtonBase>
-          )}
-        </EdgeTrigger>
+      <EdgeSidebar
+        sx={(theme) => ({
+          ...applyEdgeSidebarStyles({
+            theme,
+            config: {
+              xs: { variant: "temporary", width: "auto" },
+              md: {
+                variant: "permanent",
+                width: "256px",
+                collapsedWidth: "64px",
+              },
+            },
+          }),
+        })}
+      >
+        <EdgeSidebarContent>EdgeSidebarContent</EdgeSidebarContent>
+        <ButtonBase
+          className="EdgeSidebar-collapser"
+          // it's important to pass event to `toggleEdgeSidebarCollapse`
+          onClick={(event) => toggleEdgeSidebarCollapse({ event })}
+          sx={{
+            minHeight: 40,
+            width: "100%",
+            bgcolor: "grey.100",
+            borderTop: "1px solid",
+            borderColor: "grey.200",
+          }}
+        >
+          {/* The classnames are important to display between icons */}
+          <KeyboardArrowLeft className="Icon-collapse" />
+          <KeyboardArrowRight className="Icon-uncollapse" />
+        </ButtonBase>
       </EdgeSidebar>
       <Content>Content</Content>
       <Footer>Footer</Footer>
     </Root>
   );
-};
+}
 
 export default App;
 ```
@@ -103,32 +108,7 @@ export default App;
 
 <br />
 
-Before we begin, I want to point out something that I haven't explained in the previous tutorial.
-`Root`'s children can also be a function that receive context value (plain object) and you
-can use that to change, or control your component.
-
-![gif](https://media.giphy.com/media/KFsdkitrFSBLD3Dv9y/giphy.gif)
-
-Here is what context value looks like. (you can console.log in devtool)
-
-```ts
-{
-  state: {
-    leftEdgeSidebar: {
-      collapsed: boolean;
-      open: boolean;
-    },
-    rightEdgeSidebar: {
-      collapsed: boolean;
-      open: boolean;
-    },
-  }
-  setOpen: (sidebar: 'leftEdgeSidebar' | 'rightEdgeSidebar', open: boolean) => void
-  setCollapsed: (sidebar: 'leftEdgeSidebar' | 'rightEdgeSidebar', collapsed: boolean) => void
-}
-```
-
-### Blog Example
+### InsetSidebar
 
 Usually, blog post will have a design like the image below. Header is on top (fixed), Sidebar & Content stay inside a Container
 Footer can also be inside a Container as well.
@@ -138,116 +118,54 @@ Footer can also be inside a Container as well.
 The first step is to remove PermanentEdgeSidebar and configure inset sidebar by adding this code below.
 
 ```jsx
-<Root
-  scheme={{
-    header: {
-      config: {
-        xs: {
-          position: "sticky",
-          height: 56,
-        },
-        md: {
-          position: "relative",
-          height: 64,
-        },
-      },
-    },
-    leftEdgeSidebar: {
-      config: {
-        xs: {
-          variant: "temporary",
-          width: "auto",
-        },
-      },
-    },
-    rightInsetSidebar: {
-      variant: "sticky",
-      top: "4rem",
-      width: 256,
-      hidden: ["xs", "sm"],
-    },
-  }}
-></Root>
-```
-
-It means to create an inset sidebar on the right hand-side with sticky variant and width: 256px but hidden on `xs` and `sm`. Also when user scroll the page, this sidebar will stick from the top `4rem` ~ 64px
-
-The config part is done, let's add `InsetSidebar` component to the screen. You also need to use `InsetContainer`
-so everything works properly. (I encourage you to look at these DOM in devtool once it is rendered to see why we need container)
-
-```jsx
-// ...other imports
+import Container from "@mui/material/Container";
 import {
+  applyInsetSidebarStyles,
   // ...other imports
-  InsetContainer,
   InsetSidebar,
-} from "path/to/layout-core-v5";
+  InsetSidebarContent,
+} from "./mui-treasury/layout-core-v6";
 
-const App = () => {
-  return (
-    <Root
-      scheme={
-        {
-          // ...the scheme above
-        }
-      }
-    >
-      {({ state: { leftEdgeSidebar } }) => (
-        <>
-          <CssBaseline />
-          <Header>
-            <Toolbar>
-              <EdgeTrigger target={{ anchor: "left", field: "open" }}>
-                {(open, setOpen) => (
-                  <IconButton onClick={() => setOpen(!open)}>
-                    {open ? <ArrowLeft /> : <Menu />}
-                  </IconButton>
-                )}
-              </EdgeTrigger>
-              Header
-            </Toolbar>
-          </Header>
-          <EdgeSidebar anchor="left">
-            <SidebarContent>
-              <Avatar
-                sx={{
-                  ...(leftEdgeSidebar.collapsed && { width: 40, height: 40 }),
-                }}
-              >
-                A
-              </Avatar>
-            </SidebarContent>
-            <EdgeTrigger target={{ anchor: "left", field: "collapsed" }}>
-              {(collapsed, setCollapsed) => (
-                <ButtonBase
-                  onClick={() => setCollapsed(!collapsed)}
-                  sx={{ minHeight: 40, width: "100%" }}
-                >
-                  {collapsed ? <ArrowRight /> : <ArrowLeft />}
-                </ButtonBase>
-              )}
-            </EdgeTrigger>
-          </EdgeSidebar>
-          <Content>
-            <InsetContainer
-              rightSidebar={<InsetSidebar>Inset Sidebar</InsetSidebar>}
-            >
-              Content
-            </InsetContainer>
-          </Content>
-          <Footer>Footer</Footer>
-        </>
-      )}
-    </Root>
-  );
-};
+<Root>
+  <EdgeSidebar
+    sx={(theme) => ({
+      ...applyEdgeSidebarStyles({
+        theme,
+        config: {
+          xs: { variant: "temporary", width: "auto" },
+        },
+      }),
+    })}
+  >
+    ...
+  </EdgeSidebar>
+  <Content>
+    <Container>
+      <div>Content</div>
+      <InsetSidebar
+        sx={(theme) => ({
+          ...applyInsetSidebarStyles({ width: "225px" }),
+          [theme.breakpoints.down("sm")]: {
+            display: "none",
+          },
+        })}
+      >
+        <InsetSidebarContent sx={{ top: "6rem" }}>
+          InsetSidebarContent
+        </InsetSidebarContent>
+      </InsetSidebar>
+    </Container>
+  </Content>
+</Root>;
 ```
 
-Basically, `InsetContainer` is a flex container that extends [`Container`](https://material-ui.com/components/container/#container) from Material UI. So, you can send any props that Material-ui `Container` accepts.
+It means to create an inset sidebar on the right hand-side with width: 256px and hidden on `xs` and `sm`.
+Also when user scroll the page, this sidebar will stick from the top `4rem` ~ 64px
+(because the default position of the InsetSidebar is sticky).
 
 ![gif](https://media.giphy.com/media/eNRqgQtkD2JpArtsfm/giphy.gif)
 
-Try changing `top` value in the config to see what happen to sidebar. (number(px), rem, em, is supported)
+Try changing `top` value in the `sx` prop to see what happen to sidebar. (rem, em, is supported)
 
 ## Fixed variant
 
@@ -255,21 +173,20 @@ In some blog or documentation (like reactjs.org), the InsetSidebar is fixed to t
 
 ![image](https://user-images.githubusercontent.com/18292247/80732307-547a0880-8b36-11ea-93f0-716667bcd18e.png)
 
-We can achieve this layout by changing variant in `rightInsetSidebar` to `fixed` like this.
+We can achieve this layout by adding `position: fixed` in the `applyInsetSidebarStyles` like this:
 
 ```diff
-<Root
-  scheme={{
-    // other config
-    rightInsetSidebar: {
--     variant: "sticky",
-+     variant: "fixed",
-      top: "4rem",
-      width: 256,
-      hidden: ["xs", "sm"],
+<InsetSidebar
+  sx={(theme) => ({
+    ...applyInsetSidebarStyles({
+      width: "225px",
++     position: "fixed",
+    }),
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
     },
-  }}
-></Root>
+  })}
+>
 ```
 
 ![image](https://user-images.githubusercontent.com/18292247/80732115-0cf37c80-8b36-11ea-98d0-33c3b798d6c1.png)
@@ -281,42 +198,28 @@ But nothing is perfect, there is one problem with footer if you scroll down and 
 
 ![image](https://user-images.githubusercontent.com/18292247/80733392-d9b1ed00-8b37-11ea-8d08-b928adf01305.png)
 
-Our footer is not aware of FixedInsetSidebar, that's why it stays at the center of the page. If we want to make it similar to reactjs.org
+Our footer is not aware of fixed InsetSidebar, that's why it stays at the center of the page. If we want to make it similar to reactjs.org
 we need to add `InsetAvoidingView` (got this name from react-native) to make sure that no content is behind the sidebar.
 
 ```jsx
-import React from "react";
 // ...
-import Container from "@mui/material/Container";
-// ...
-
 import {
   // ...
   InsetAvoidingView,
-} from "path/to/layout-core-v5";
+} from "path/to/layout-core-v6";
 
-const Blog = () => {
+function App() {
   return (
-    <Root
-      scheme={
-        {
-          // ...the scheme
-        }
-      }
-    >
-      {({ state: { sidebar } }) => (
-        <>
-          {/* ...other */}
-          <Footer>
-            <Container>
-              <InsetAvoidingView>Footer</InsetAvoidingView>
-            </Container>
-          </Footer>
-        </>
-      )}
+    <Root>
+      ...
+      <Footer>
+        <Container>
+          <InsetAvoidingView>Footer</InsetAvoidingView>
+        </Container>
+      </Footer>
     </Root>
   );
-};
+}
 ```
 
 Done! we need to wrap with `Container` first because we want the same alignment as `Content` and then
@@ -331,113 +234,107 @@ You can look at clone examples to see advance layout like documentation site, e-
 <br />
 
 ```jsx
-import React from "react";
-import ArrowLeft from "@mui/icons-material/ArrowLeft";
-import ArrowRight from "@mui/icons-material/ArrowRight";
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import Menu from "@mui/icons-material/Menu";
+import Box from "@mui/material/Box";
+import ButtonBase from "@mui/material/ButtonBase";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import IconButton from "@mui/material/IconButton";
 import {
+  applyEdgeSidebarStyles,
+  applyHeaderStyles,
+  applyInsetSidebarStyles,
   Content,
   EdgeSidebar,
-  EdgeTriggger,
+  EdgeSidebarContent,
   Footer,
   Header,
   InsetAvoidingView,
-  InsetContainer,
   InsetSidebar,
+  InsetSidebarContent,
   Root,
-  SidebarContent,
-} from "path/to/layout-core-v5";
+  toggleEdgeSidebarCollapse,
+  toggleTemporaryEdgeSidebar,
+} from "./mui-treasury/layout-core-v6";
 
-const App = () => {
+function App() {
   return (
-    <Root
-      scheme={{
-        header: {
-          config: {
-            xs: {
-              position: "sticky",
-              height: 56,
+    <Root>
+      <CssBaseline />
+      <Header
+        sx={{
+          ...applyHeaderStyles({
+            height: { xs: "56px", md: "64px" },
+            fullWidth: true,
+          }),
+          position: { md: "relative" },
+        }}
+      >
+        <Box
+          sx={{ flex: 1, display: "flex", alignItems: "center", px: 2, gap: 1 }}
+        >
+          <IconButton
+            className="EdgeSidebar-trigger"
+            onClick={() => toggleTemporaryEdgeSidebar()}
+          >
+            <Menu />
+          </IconButton>
+          Header
+        </Box>
+      </Header>
+      <EdgeSidebar
+        sx={(theme) => ({
+          ...applyEdgeSidebarStyles({
+            theme,
+            config: {
+              xs: { variant: "temporary", width: "auto" },
             },
-            md: {
-              position: "relative",
-              height: 64,
-            },
-          },
-        },
-        leftEdgeSidebar: {
-          config: {
-            xs: {
-              variant: "temporary",
-              width: "auto",
-            },
-          },
-          hidden: ["md", "lg", "xl"],
-        },
-        rightInsetSidebar: {
-          rightInsetSidebar: {
-            variant: "sticky",
-            top: "4rem",
-            width: 256,
-            hidden: ["xs", "sm"],
-          },
-        },
-      }}
-    >
-      {({ state: { leftEdgeSidebar } }) => (
-        <>
-          <CssBaseline />
-          <Header>
-            <EdgeTrigger target={{ anchor: "left", field: "open" }}>
-              {(open, setOpen) => (
-                <IconButton onClick={() => setOpen(!open)}>
-                  {open ? <ArrowLeft /> : <Menu />}
-                </IconButton>
-              )}
-            </EdgeTrigger>
-            Header
-          </Header>
-          <EdgeSidebar anchor="left">
-            <SidebarContent>
-              <Avatar
-                sx={{
-                  ...(leftEdgeSidebar.collapsed && { width: 40, height: 40 }),
-                }}
-              >
-                A
-              </Avatar>
-              Sidebar content
-            </SidebarContent>
-            <EdgeTrigger target={{ anchor: "left", field: "collapsed" }}>
-              {(collapsed, setCollapsed) => (
-                <ButtonBase
-                  onClick={() => setCollapsed(!collapsed)}
-                  sx={{ minHeight: 40, width: "100%" }}
-                >
-                  {collapsed ? <ArrowRight /> : <ArrowLeft />}
-                </ButtonBase>
-              )}
-            </EdgeTrigger>
-          </EdgeSidebar>
-          <Content>
-            <InsetContainer
-              rightSidebar={<InsetSidebar>Inset Sidebar</InsetSidebar>}
-            >
-              Content
-            </InsetContainer>
-          </Content>
-          <Footer>
-            <Container>
-              <InsetAvoidingView>Footer</InsetAvoidingView>
-            </Container>
-          </Footer>
-        </>
-      )}
+          }),
+        })}
+      >
+        <EdgeSidebarContent>EdgeSidebarContent</EdgeSidebarContent>
+        <ButtonBase
+          className="EdgeSidebar-collapser"
+          // it's important to pass event to `toggleEdgeSidebarCollapse`
+          onClick={(event) => toggleEdgeSidebarCollapse({ event })}
+          sx={{
+            minHeight: 40,
+            width: "100%",
+            bgcolor: "grey.100",
+            borderTop: "1px solid",
+            borderColor: "grey.200",
+          }}
+        >
+          <KeyboardArrowLeft className="Icon-collapse" />
+          <KeyboardArrowRight className="Icon-uncollapse" />
+        </ButtonBase>
+      </EdgeSidebar>
+      <Content>
+        <Container>
+          <div>Content</div>
+          <InsetSidebar
+            position="fixed"
+            sx={(theme) => ({
+              ...applyInsetSidebarStyles({ width: "225px" }),
+              [theme.breakpoints.down("sm")]: {
+                display: "none",
+              },
+            })}
+          >
+            <InsetSidebarContent>InsetSidebarContent</InsetSidebarContent>
+          </InsetSidebar>
+        </Container>
+      </Content>
+      <Footer>
+        <Container>
+          <InsetAvoidingView>Footer</InsetAvoidingView>
+        </Container>
+      </Footer>
     </Root>
   );
-};
+}
 
 export default App;
 ```

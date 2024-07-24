@@ -5,8 +5,23 @@ import { styled } from "./zero-styled";
 
 export function applyInsetSidebarStyles(params: {
   width: string | Partial<Record<Breakpoint, string>>;
+  /**
+   * The CSS position property of the sidebar.
+   * @default "sticky"
+   */
+  position?:
+    | "fixed"
+    | "absolute"
+    | "sticky"
+    | Record<Breakpoint, "fixed" | "absolute" | "sticky">;
 }) {
-  const { width } = params;
+  const { width, position = "sticky" } = params;
+  let positionStyles: Record<string, string> = {};
+  if (position && typeof position !== "string") {
+    Object.entries(position).forEach(([key, value]) => {
+      positionStyles[key] = `var(--${value},)`;
+    });
+  }
   return {
     width,
     // For `InsetAvoidingView`
@@ -22,6 +37,8 @@ export function applyInsetSidebarStyles(params: {
         [Object.keys(width)[0]]: "block",
       },
     }),
+    "--InsetSidebar-position":
+      typeof position === "string" ? `var(--${position},)` : positionStyles,
   };
 }
 
@@ -42,33 +59,30 @@ const InsetSidebarRoot = styled("aside")({
   "&:last-child": {
     "--InsetSidebar-anchor": "var(--anchor-right)",
   },
+  "*:has(> &)": {
+    display: "flex",
+    flexFlow: "row nowrap",
+    flexGrow: 1,
+  },
+  '*:has(> &) > :where(:not([class*="InsetSidebar"]))': {
+    flexGrow: 1,
+    overflow: "auto",
+  },
 });
 
-const InsetSidebar = React.forwardRef<
-  HTMLDivElement,
-  BoxProps & {
-    position?: "fixed" | "absolute" | "sticky";
-  }
->(function InsetSidebar(
-  { className, style, position = "sticky", children, ...props },
-  ref,
-) {
-  return (
-    <InsetSidebarRoot
-      // @ts-ignore
-      ref={ref}
-      className={`InsetSidebar ${className || ""}`}
-      {...props}
-      style={{
-        ...style,
-        ...(position !== "sticky" && {
-          "--InsetSidebar-position": `var(--${position})`,
-        }),
-      }}
-    >
-      {children}
-    </InsetSidebarRoot>
-  );
-});
+const InsetSidebar = React.forwardRef<HTMLDivElement, BoxProps>(
+  function InsetSidebar({ className, children, ...props }, ref) {
+    return (
+      <InsetSidebarRoot
+        // @ts-ignore
+        ref={ref}
+        className={`InsetSidebar ${className || ""}`}
+        {...props}
+      >
+        {children}
+      </InsetSidebarRoot>
+    );
+  },
+);
 
 export default InsetSidebar;

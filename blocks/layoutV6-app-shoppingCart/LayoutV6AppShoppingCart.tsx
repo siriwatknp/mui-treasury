@@ -16,7 +16,6 @@ import {
 import {
   applyEdgeSidebarRightStyles,
   applyHeaderStyles,
-  applyInsetContainerStyles,
   applyInsetSidebarStyles,
   applyRootStyles,
   Content,
@@ -105,7 +104,8 @@ export function LayoutV6AppShoppingCart() {
         </StyledHeader>
         <EdgeSidebarRight
           sx={(theme) => ({
-            ...applyEdgeSidebarRightStyles(theme, {
+            ...applyEdgeSidebarRightStyles({
+              theme,
               config: {
                 xs: {
                   variant: "temporary",
@@ -125,15 +125,12 @@ export function LayoutV6AppShoppingCart() {
           </EdgeSidebarContent>
         </EdgeSidebarRight>
         <Content>
-          <Container
-            maxWidth="xl"
-            sx={{ height: "100%", ...applyInsetContainerStyles() }}
-          >
+          <Container maxWidth="xl" sx={{ height: "100%" }}>
             <DailyCart />
             <InsetSidebar
-              position="absolute"
               sx={{
                 ...applyInsetSidebarStyles({
+                  position: "absolute",
                   width: {
                     lg: "max(25cqw, 360px)",
                   },

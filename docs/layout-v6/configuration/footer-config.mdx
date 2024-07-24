@@ -1,7 +1,6 @@
 import { Meta } from "@storybook/blocks";
 import {
   applyHeaderStyles,
-  applyInsetContainerStyles,
   applyInsetSidebarStyles,
   applyRootStyles,
   Content,
@@ -59,12 +58,12 @@ export function DemoInsetSidebarFixed() {
       >
         Header
       </Header>
-      <Content sx={{ ...applyInsetContainerStyles() }}>
+      <Content>
         <div>Content</div>
         <InsetSidebar
-          position="fixed"
           sx={{
             ...applyInsetSidebarStyles({
+              position: "fixed",
               width: "256px",
             }),
           }}
@@ -114,11 +113,11 @@ export function DemoInsetSidebarAbsolute() {
       >
         Header
       </Header>
-      <Content sx={{ ...applyInsetContainerStyles(), minHeight: 0, }}>
+      <Content sx={{ minHeight: 0, }}>
         <InsetSidebar
-          position="absolute"
           sx={{
             ...applyInsetSidebarStyles({
+              position: 'absolute',
               width: "256px",
             }),
           }}

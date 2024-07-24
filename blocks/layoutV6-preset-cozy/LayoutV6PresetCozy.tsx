@@ -51,7 +51,8 @@ export const LayoutV6PresetCozy = () => {
       </Header>
       <EdgeSidebar
         sx={(theme) => ({
-          ...applyEdgeSidebarStyles(theme, {
+          ...applyEdgeSidebarStyles({
+            theme,
             config: {
               xs: {
                 variant: "temporary",

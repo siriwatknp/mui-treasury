@@ -1,7 +1,6 @@
 import Box from "@mui/material/Box";
 import { Meta } from "@storybook/blocks";
 import {
-  applyInsetContainerStyles,
   applyInsetSidebarStyles,
   applyRootStyles,
   Content,
@@ -76,14 +75,12 @@ export function DummyContent() {
 
 The Inset Sidebar is a complimentary sidebar to the main content, for example, a table of contents.
 
-To use `InsetSidebar`, first set `applyInsetContainerStyles` to the Content's sx prop.
-Then, render Inset Sidebar component as the last child to keep it to the right of the content.
+To use `InsetSidebar`, render Inset Sidebar component as the last child to keep it to the right of the content.
 
 The `InsetSidebarContent` is required as a direct child of `InsetSidebar` to meet all the [behaviors](#position-behavior).
 
 ```jsx
 import {
-  applyInsetContainerStyles,
   Content,
   InsetSidebar,
   InsetSidebarContent,
@@ -91,7 +88,7 @@ import {
 } from "path/to/layout-core-v6";
 
 <Root sx={{ minHeight: "20vh" }}>
-  <Content sx={{ ...applyInsetContainerStyles() }}>
+  <Content>
     <div>Content</div>
     <InsetSidebar>
       <InsetSidebarContent sx={{ px: 2 }}>Inset sidebar</InsetSidebarContent>
@@ -117,7 +114,7 @@ export function DemoInsetSidebarSticky() {
         overflow: "auto",
       }}
     >
-      <Content sx={{ ...applyInsetContainerStyles() }}>
+      <Content>
         <DummyContent />
         <InsetSidebar>
           <InsetSidebarContent>Inset sidebar</InsetSidebarContent>
@@ -142,7 +139,6 @@ export function DemoInsetSidebarAbsolute() {
       <Content
         sx={{
           minHeight: 0,
-          ...applyInsetContainerStyles(),
         }}
       >
         <DummyContent />
@@ -163,7 +159,7 @@ export function DemoInsetSidebarAbsolute() {
 
 ```jsx
 <Root sx={{ ...applyRootStyles({ fixedHeight: true, height: "30vh" }) }}>
-  <Content sx={{ ...applyInsetContainerStyles() }}>
+  <Content>
     <div>Content</div>
     <InsetSidebar position="absolute">...</InsetSidebar>
   </Content>
@@ -184,7 +180,6 @@ export function DemoInsetSidebarFixed() {
     >
       <Content
         sx={{
-          ...applyInsetContainerStyles(),
           minHeight: 0,
           maxWidth: 400,
           marginInline: "auto",
@@ -192,8 +187,9 @@ export function DemoInsetSidebarFixed() {
       >
         <DummyContent />
         <InsetSidebar
-          position="fixed"
-          sx={{ ...applyInsetSidebarStyles({ width: "120px" }) }}
+          sx={{
+            ...applyInsetSidebarStyles({ position: "fixed", width: "120px" }),
+          }}
         >
           <InsetSidebarContent sx={{ bgcolor: "divider" }}>
             Inset sidebar
@@ -224,7 +220,6 @@ export function DemoInsetSidebarWidth() {
       <Content
         sx={{
           p: 2,
-          ...applyInsetContainerStyles(),
         }}
       >
         <div>Content</div>
@@ -250,7 +245,6 @@ export function DemoInsetSidebarWidth() {
 
 ```jsx
 import {
-  applyInsetContainerStyles,
   applyInsetSidebarStyles,
   Content,
   InsetSidebar,
@@ -259,7 +253,7 @@ import {
 } from "path/to/layout-core-v6";
 
 <Root sx={{ minHeight: "20vh" }}>
-  <Content sx={{ p: 2, ...applyInsetContainerStyles() }}>
+  <Content sx={{ p: 2 }}>
     <div>Content</div>
     <InsetSidebar
       sx={{

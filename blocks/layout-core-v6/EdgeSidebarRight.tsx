@@ -169,15 +169,13 @@ export function toggleTemporaryEdgeSidebarRight(options?: {
   internalToggleSidebar({ ...options, selector });
 }
 
-export function applyEdgeSidebarRightStyles(
-  theme: Theme,
-  params: {
-    config: Partial<
-      Record<Breakpoint, TemporaryConfig | PersistentConfig | PermanentConfig>
-    >;
-  },
-) {
-  const { config } = params;
+export function applyEdgeSidebarRightStyles(params: {
+  theme: Theme;
+  config: Partial<
+    Record<Breakpoint, TemporaryConfig | PersistentConfig | PermanentConfig>
+  >;
+}) {
+  const { config, theme } = params;
   let autoCollapseStyles = {};
   let responsive: any = {};
   (Object.keys(config) as Array<Breakpoint>)

@@ -50,7 +50,8 @@ export const LayoutV6PresetFixed = () => {
       </Header>
       <EdgeSidebar
         sx={(theme) => ({
-          ...applyEdgeSidebarStyles(theme, {
+          ...applyEdgeSidebarStyles({
+            theme,
             config: {
               xs: {
                 variant: "temporary",

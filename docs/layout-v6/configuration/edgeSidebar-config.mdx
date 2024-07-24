@@ -42,7 +42,8 @@ import {
 
 <EdgeSidebar
   sx={(theme) => ({
-    ...applyEdgeSidebarStyles(theme, {
+    ...applyEdgeSidebarStyles({
+      theme,
       config: {
         xs: {
           variant: "temporary",
@@ -83,7 +84,8 @@ export function DemoPermanent() {
       <EdgeSidebar
         className="bg-green-50 p-2"
         sx={(theme) => ({
-          ...applyEdgeSidebarStyles(theme, {
+          ...applyEdgeSidebarStyles({
+            theme,
             config: {
               xs: { variant: "permanent", width: "300px" },
             },
@@ -124,7 +126,8 @@ export function DemoPermanentAutoCollapse() {
       <EdgeSidebar
         className="bg-green-50"
         sx={(theme) => ({
-          ...applyEdgeSidebarStyles(theme, {
+          ...applyEdgeSidebarStyles({
+            theme,
             config: {
               xs: {
                 variant: "permanent",
@@ -154,7 +157,8 @@ import { EdgeSidebar, EdgeSidebarContent } from "path/to/layout-core-v6";
 
 <EdgeSidebar
   sx={(theme) => ({
-    ...applyEdgeSidebarStyles(theme, {
+    ...applyEdgeSidebarStyles({
+      theme,
       config: {
         xs: {
           variant: "permanent",
@@ -188,7 +192,8 @@ export function DemoPermanentManualCollapse() {
         id="demo-permanent-manual-collapse"
         className="bg-green-50"
         sx={(theme) => ({
-          ...applyEdgeSidebarStyles(theme, {
+          ...applyEdgeSidebarStyles({
+            theme,
             config: {
               xs: {
                 variant: "permanent",
@@ -227,7 +232,8 @@ export function DemoPermanentManualCollapse() {
 <EdgeSidebar
   id="demo-permanent-manual-collapse"
   sx={(theme) => ({
-    ...applyEdgeSidebarStyles(theme, {
+    ...applyEdgeSidebarStyles({
+      theme,
       config: {
         xs: {
           variant: "permanent",
@@ -276,7 +282,8 @@ export function DemoPersistentFit() {
       <EdgeSidebar
         id="persistent-fit"
         sx={(theme) => ({
-          ...applyEdgeSidebarStyles(theme, {
+          ...applyEdgeSidebarStyles({
+            theme,
             config: {
               xs: { variant: "persistent", width: "256px" },
             },
@@ -309,7 +316,8 @@ export function DemoPersistentFit() {
 <EdgeSidebar
   id="persistent-fit"
   sx={(theme) => ({
-    ...applyEdgeSidebarStyles(theme, {
+    ...applyEdgeSidebarStyles({
+      theme,
       config: {
         xs: { variant: "persistent", width: "256px" },
       },
@@ -344,7 +352,8 @@ export function DemoPersistentNone() {
       <EdgeSidebar
         id="persistent-none"
         sx={(theme) => ({
-          ...applyEdgeSidebarStyles(theme, {
+          ...applyEdgeSidebarStyles({
+            theme,
             config: {
               xs: {
                 variant: "persistent",
@@ -381,7 +390,8 @@ export function DemoPersistentNone() {
 <EdgeSidebar
   id="persistent-none"
   sx={(theme) => ({
-    ...applyEdgeSidebarStyles(theme, {
+    ...applyEdgeSidebarStyles({
+      theme,
       config: {
         xs: { variant: "persistent", persistentBehavior: 'none', width: "256px" },
       },
@@ -429,7 +439,8 @@ export function DemoTemporary() {
       <EdgeSidebar
         id="temporary-sidebar"
         sx={(theme) => ({
-          ...applyEdgeSidebarStyles(theme, {
+          ...applyEdgeSidebarStyles({
+            theme,
             config: {
               xs: { variant: "temporary", width: "256px" },
             },
@@ -464,7 +475,8 @@ export function DemoTemporary() {
 ```jsx
 <EdgeSidebar
   sx={(theme) => ({
-    ...applyEdgeSidebarStyles(theme, {
+    ...applyEdgeSidebarStyles({
+      theme,
       config: {
         xs: { variant: "temporary", width: "256px" },
       },
@@ -522,7 +534,8 @@ export function DemoRightEdgeSidebar() {
     >
       <EdgeSidebarRight
         sx={(theme) => ({
-          ...applyEdgeSidebarRightStyles(theme, {
+          ...applyEdgeSidebarRightStyles({
+            theme,
             config: {
               xs: { variant: "temporary", width: "256px" },
               sm: {
@@ -559,7 +572,8 @@ export function DemoRightEdgeSidebar() {
 ```jsx
 <EdgeSidebarRight
   sx={(theme) => ({
-    ...applyEdgeSidebarRightStyles(theme, {
+    ...applyEdgeSidebarRightStyles({
+      theme,
       config: {
         xs: { variant: "temporary", width: "256px" },
         sm: {

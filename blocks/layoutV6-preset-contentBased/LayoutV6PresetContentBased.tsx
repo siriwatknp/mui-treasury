@@ -58,7 +58,8 @@ export const LayoutV6PresetContentBased = () => {
       </Header>
       <EdgeSidebar
         sx={(theme) => ({
-          ...applyEdgeSidebarStyles(theme, {
+          ...applyEdgeSidebarStyles({
+            theme,
             config: {
               xs: {
                 variant: "temporary",

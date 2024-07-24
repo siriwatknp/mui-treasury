@@ -37,8 +37,6 @@ const StyledRoot = styled("div")(({ theme }) => ({
   display: "grid",
   position: "relative",
   transition: "grid-template-columns 0.3s",
-  containerType: "inline-size",
-  containerName: "page",
   gridTemplateRows: "auto 1fr",
   gridTemplateColumns:
     "var(--_start-col, 0px) minmax(0, 1fr) var(--_end-col, 0px)", // minmax(0, 1fr) is used over `1fr` to prevent root horizontal overflow

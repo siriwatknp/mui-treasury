@@ -22,7 +22,6 @@ import {
 import {
   applyEdgeSidebarStyles,
   applyHeaderStyles,
-  applyInsetContainerStyles,
   applyInsetSidebarStyles,
   applyRootStyles,
   Content,
@@ -87,7 +86,8 @@ export function LayoutV6AppMessenger() {
         </StyledHeader>
         <EdgeSidebar
           sx={(theme) => ({
-            ...applyEdgeSidebarStyles(theme, {
+            ...applyEdgeSidebarStyles({
+              theme,
               config: {
                 xs: {
                   variant: "permanent",
@@ -107,12 +107,12 @@ export function LayoutV6AppMessenger() {
             <ChatList />
           </EdgeSidebarContent>
         </EdgeSidebar>
-        <Content sx={{ ...applyInsetContainerStyles() }}>
+        <Content>
           <ChatDialog />
           <InsetSidebar
-            position="absolute"
             sx={{
               ...applyInsetSidebarStyles({
+                position: "absolute",
                 width: "25cqw",
               }),
             }}

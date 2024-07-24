@@ -16,8 +16,6 @@ export { default as Root } from "./Root";
 export * from "./Root";
 export { default as InsetAvoidingView } from "./InsetAvoidingView";
 export * from "./InsetAvoidingView";
-export { default as InsetContainer } from "./InsetContainer";
-export * from "./InsetContainer";
 export { default as InsetSidebar } from "./InsetSidebar";
 export * from "./InsetSidebar";
 export { default as InsetSidebarContent } from "./InsetSidebarContent";
