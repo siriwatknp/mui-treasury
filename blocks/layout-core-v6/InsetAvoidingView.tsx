@@ -11,7 +11,7 @@ const InsetAvoidingView = React.forwardRef<HTMLDivElement, BoxProps>(
   function InsetAvoidingView({ className, ...props }, ref) {
     return (
       <StyledInsetAvoidingView
-        // @ts-ignore
+        // @ts-expect-error Material UI issue
         ref={ref}
         className={`InsetAvoidingView ${className || ""}`}
         {...props}

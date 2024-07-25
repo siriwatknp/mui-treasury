@@ -15,7 +15,7 @@ const Footer = React.forwardRef<HTMLElement, BoxProps>(function Footer(
 ) {
   return (
     <StyledFooter
-      // @ts-ignore
+      // @ts-expect-error Material UI issue
       ref={ref}
       className={`Footer ${className || ""}`}
       {...props}

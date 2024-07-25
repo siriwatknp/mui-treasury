@@ -17,7 +17,7 @@ const Content = React.forwardRef<HTMLElement, BoxProps>(function Content(
 ) {
   return (
     <StyledContent
-      // @ts-ignore
+      // @ts-expect-error Material UI issue
       ref={ref}
       className={`Content ${className || ""}`}
       {...props}

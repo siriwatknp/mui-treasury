@@ -62,7 +62,7 @@ const Root = React.forwardRef<HTMLDivElement, BoxProps>(function Root(
 ) {
   return (
     <StyledRoot
-      // @ts-ignore
+      // @ts-expect-error Material UI issue
       ref={ref}
       className={`Root ${className || ""}`}
       {...props}

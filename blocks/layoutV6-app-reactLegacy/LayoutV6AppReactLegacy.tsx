@@ -78,6 +78,7 @@ const StyledFab = styled(Fab)({
   bottom: 32,
   right: 16,
   color: "#61dafb",
+  zIndex: 0,
 
   "& svg": {
     fontSize: 32,

@@ -257,7 +257,7 @@ const EdgeSidebar = React.forwardRef<HTMLDivElement, BoxProps>(
   function EdgeSidebar({ className, ...props }, ref) {
     return (
       <StyledEdgeSidebarLeft
-        // @ts-ignore
+        // @ts-expect-error Material UI issue
         ref={ref}
         {...props}
         className={`EdgeSidebar ${className || ""}`}

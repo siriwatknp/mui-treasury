@@ -91,10 +91,17 @@ export function internalToggleSidebar(options: {
     if (nextOpen) {
       sidebar.setAttribute("data-temporary-open", "");
       sidebar.style.setProperty("--EdgeSidebar-temporaryOpen", "1");
-      // @ts-ignore
+      // @ts-expect-error Material UI issue
       function handleOutsideClick(event: MouseEvent) {
-        if (event.target === sidebar) {
+        const closer = doc.querySelector(
+          ".EdgeTemporaryClose",
+        ) as HTMLButtonElement;
+        if (
           // clicking on the backdrop (psuedo element of sidebar) will close the sidebar
+          event.target === sidebar ||
+          // clicking on the closer button will close the sidebar
+          (closer && closer.contains(event.target as Node))
+        ) {
           internalToggleSidebar({
             ...options,
             state: false,

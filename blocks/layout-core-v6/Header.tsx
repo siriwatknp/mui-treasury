@@ -54,7 +54,7 @@ const Header = React.forwardRef<HTMLElement, BoxProps>(function Header(
 ) {
   return (
     <StyledHeader
-      // @ts-ignore
+      // @ts-expect-error Material UI issue
       ref={ref}
       className={`Header ${className || ""}`}
       {...props}

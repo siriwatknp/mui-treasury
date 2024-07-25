@@ -17,7 +17,7 @@ const StyledEdgeTemporaryClose = styled("button")({
   height: 40,
   color: "white",
   backgroundColor: "#999",
-  borderRadius: "50%",
+  borderRadius: "40px",
   alignItems: "center",
   justifyContent: "center",
   "& svg": {
@@ -33,38 +33,31 @@ const StyledEdgeTemporaryClose = styled("button")({
 const EdgeTemporaryClose = React.forwardRef<
   HTMLButtonElement,
   JSX.IntrinsicElements["button"] & { sx?: SxProps; sidebarId?: string }
->(function EdgeTemporaryClose({ className, sidebarId, ...props }, ref) {
+>(function EdgeTemporaryClose(
+  { className, sidebarId, children, ...props },
+  ref,
+) {
   return (
     <StyledEdgeTemporaryClose
-      // @ts-ignore
       ref={ref}
       className={`EdgeTemporaryClose ${className || ""}`}
-      onClick={() =>
-        toggleTemporaryEdgeSidebar({
-          state: false,
-          sidebarId,
-          document: (
-            document.getElementById(
-              "storybook-preview-iframe",
-            ) as null | HTMLIFrameElement
-          )?.contentDocument,
-        })
-      }
       {...props}
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M6 18 18 6M6 6l12 12"
-        />
-      </svg>
+      {children || (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18 18 6M6 6l12 12"
+          />
+        </svg>
+      )}
     </StyledEdgeTemporaryClose>
   );
 });

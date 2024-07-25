@@ -34,7 +34,7 @@ const InsetSidebarContent = React.forwardRef<HTMLDivElement, BoxProps>(
   function InsetSidebarContent({ className, children, ...props }, ref) {
     return (
       <InsetSidebarContentRoot
-        // @ts-ignore
+        // @ts-expect-error Material UI issue
         ref={ref}
         className={`InsetSidebarContent ${className || ""}`}
         {...props}
