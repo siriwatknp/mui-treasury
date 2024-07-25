@@ -5,7 +5,6 @@ import {
   EdgeSidebar,
   Footer,
   Header,
-  InsetContainer,
   InsetSidebar,
   InsetSidebarContent,
   Root,
@@ -34,9 +33,9 @@ A basic layout consists of `Header`, `Content`, and `Footer`:
 export function Demo() {
   return (
     <Root sx={{ ...applyRootStyles({ height: "25vh" }) }}>
-      <Header className="border  px-2">Header</Header>
-      <Content className="border  p-2">Content</Content>
-      <Footer className="border  p-2">Footer</Footer>
+      <Header className="px-2">Header</Header>
+      <Content className="p-2">Content</Content>
+      <Footer className="p-2">Footer</Footer>
     </Root>
   );
 }
@@ -66,10 +65,10 @@ To render a sidebar for a dashboard layout, use `EdgeSidebar` component:
 export function Demo2() {
   return (
     <Root sx={{ ...applyRootStyles({ height: "30vh" }) }}>
-      <Header className="border  p-2">Header</Header>
-      <EdgeSidebar className="border  p-2">EdgeSidebar</EdgeSidebar>
-      <Content className="border  p-2">Content</Content>
-      <Footer className="border  p-2">Footer</Footer>
+      <Header className="p-2">Header</Header>
+      <EdgeSidebar className="p-2">EdgeSidebar</EdgeSidebar>
+      <Content className="p-2">Content</Content>
+      <Footer className="p-2">Footer</Footer>
     </Root>
   );
 }
@@ -110,19 +109,16 @@ To render a sidebar for a blog layout, use `InsetSidebar` component:
 export function Demo3() {
   return (
     <Root sx={{ ...applyRootStyles({ height: "30vh" }) }}>
-      <Header className="border  p-2">Header</Header>
-      <Content className="border  p-2">
-        <InsetContainer
-          rightSidebar={
-            <InsetSidebar className="border p-2 w-[200px]">
-              InsetSidebar
-            </InsetSidebar>
-          }
-        >
-          <div>Content</div>
-        </InsetContainer>
+      <Header className="p-2">Header</Header>
+      <Content className="p-2">
+        <div>Content</div>
+        <InsetSidebar>
+          <InsetSidebarContent>
+            <div className="p-2">InsetSidebar</div>
+          </InsetSidebarContent>
+        </InsetSidebar>
       </Content>
-      <Footer className="border  p-2">Footer</Footer>
+      <Footer className="p-2">Footer</Footer>
     </Root>
   );
 }
@@ -136,8 +132,8 @@ import {
   Content,
   Footer,
   Header,
-  InsetContainer,
   InsetSidebar,
+  InsetSidebarContent,
   Root,
 } from "path/to/layout-core-v6";
 
@@ -147,11 +143,10 @@ function App() {
       <Header>Header</Header>
       <EdgeSidebar>EdgeSidebar</EdgeSidebar>
       <Content>
-        <InsetContainer
-          rightSidebar={<InsetSidebar>InsetSidebar</InsetSidebar>}
-        >
-          <div>Content</div>
-        </InsetContainer>
+        <div>Content</div>
+        <InsetSidebar>
+          <InsetSidebarContent>InsetSidebar</InsetSidebarContent>
+        </InsetSidebar>
       </Content>
       <Footer>Footer</Footer>
     </Root>

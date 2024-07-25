@@ -38,6 +38,7 @@ const preview: Preview = {
           "Layout v6",
           [
             "Introduction",
+            "Design Principles",
             "Installation",
             "Configuration",
             [

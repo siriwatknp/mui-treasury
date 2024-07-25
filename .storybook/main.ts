@@ -39,7 +39,7 @@ const config: StorybookConfig = {
     },
     "@storybook/addon-mdx-gfm",
     "@storybook/addon-webpack5-compiler-babel",
-    "@chromatic-com/storybook"
+    "@chromatic-com/storybook",
   ],
   framework: {
     name: "@storybook/react-webpack5",
@@ -60,7 +60,8 @@ const config: StorybookConfig = {
           if (
             typeof rule === "object" &&
             rule &&
-            String(rule.test) === String(/\.(mjs|tsx?|jsx?)$/)
+            rule.type !== "asset/source" &&
+            !rule.resourceQuery
           ) {
             rule = {
               ...rule,
