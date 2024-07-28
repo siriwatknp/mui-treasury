@@ -1,0 +1,124 @@
+import { Meta } from "@storybook/blocks";
+import {
+  applyRootStyles,
+  Content,
+  EdgeSidebar,
+  Footer,
+  Header,
+  Root,
+} from "../../../blocks/layout-core-v6";
+
+<Meta title="Layout v6/Configuration/Root" />
+
+# Root
+
+The Root component is the top-level layout.
+It controls the layout using [CSS grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout), so it requires these children to be direct descendants:
+
+- [Header](/docs/layout-v6-configuration-header--docs)
+- Content
+- [Footer](/docs/layout-v6-configuration-footer--docs)
+- [EdgeSidebar](/docs/layout-v6-configuration-edge-sidebar--docs)
+
+## Basic Usage
+
+```jsx
+import {
+  Content,
+  EdgeSidebar,
+  Footer,
+  Header,
+  Root,
+} from "path/to/layout-core-v6";
+
+/* The configure of each component depends on the type of the layout you want */
+
+<Root>
+  {/* Header */}
+  {/* Content */}
+  {/* Footer */}
+  {/* EdgeSidebar */}
+</Root>;
+```
+
+## Adjusting layout height
+
+Use `applyRootStyles` to set the height of the Root component.
+The value can be a string with valid CSS units or a responsive object with Material UI breakpoint as keys.
+
+```jsx
+import { applyRootStyles, Root } from "path/to/layout-core-v6";
+
+<Root sx={{ ...applyRootStyles({ height: "100vh" }) }}>...</Root>;
+<Root sx={{ ...applyRootStyles({ height: { xs: "50vh", md: "100lvh" } }) }}>
+  ...
+</Root>;
+```
+
+## Fixed height layout
+
+Add `fixedHeight: true` to the `applyRootStyles`.
+The layout will have a max-height equal to its height.
+This is useful for layout patterns like fullscreen layout.
+
+export function DemoFullscreen() {
+  return (
+    <Root sx={{ ...applyRootStyles({ height: "400px", fixedHeight: true }) }}>
+      <Header>Header</Header>
+      <Content sx={{ overflow: "auto" }}>
+        <h3>Title</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </p>
+        <p>
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est
+          laborum.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </p>
+        <p>
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est
+          laborum.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </p>
+        <p>
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est
+          laborum.
+        </p>
+      </Content>
+      <Footer>Footer</Footer>
+    </Root>
+  );
+}
+
+<section className="demo-container">
+  <DemoFullscreen />
+</section>
+
+```jsx
+import { applyRootStyles, Root } from "path/to/layout-core-v6";
+
+<Root sx={{ ...applyRootStyles({ height: "400px", fixedHeight: true }) }}>
+  <Header>Header</Header>
+  <Content sx={{ overflow: "auto" }}>...long text</Content>
+  <Footer>Footer</Footer>
+</Root>;
+```

@@ -1,0 +1,306 @@
+import Box from "@mui/material/Box";
+import { Meta } from "@storybook/blocks";
+import {
+  applyInsetSidebarStyles,
+  applyRootStyles,
+  Content,
+  Footer,
+  Header,
+  InsetContainer,
+  InsetSidebar,
+  InsetSidebarContent,
+  Root,
+} from "../../../blocks/layout-core-v6";
+
+<Meta title="Layout v6/Configuration/Inset Sidebar" />
+
+export function DummyContent() {
+  return (
+    <Box sx={{ p: 2}}>
+    <h3>Title</h3>
+
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada. Ante metus dictum at tempor commodo. Non pulvinar neque laoreet suspendisse interdum consectetur libero id. Mauris a diam maecenas sed enim. Ultricies mi quis hendrerit dolor magna eget. Nunc vel risus commodo viverra maecenas accumsan. Pharetra pharetra massa massa ultricies mi quis. Amet mattis vulputate enim nulla aliquet porttitor lacus. Gravida in fermentum et sollicitudin. Et magnis dis parturient montes nascetur ridiculus mus mauris. Nibh sed pulvinar proin gravida hendrerit lectus. Consectetur adipiscing elit duis tristique sollicitudin nibh. Egestas integer eget aliquet nibh praesent tristique magna sit. Nisl suscipit adipiscing bibendum est ultricies integer quis. Nibh nisl condimentum id venenatis a. Ullamcorper malesuada proin libero nunc. Volutpat diam ut venenatis tellus in metus vulputate. Dui ut ornare lectus sit amet est. Aliquam ut porttitor leo a diam.</p>
+
+      <p>
+        Quam lacus suspendisse faucibus interdum posuere lorem ipsum. Elementum eu
+        facilisis sed odio morbi quis commodo. Id semper risus in hendrerit. Aenean
+        euismod elementum nisi quis eleifend quam adipiscing vitae. Quis enim lobortis
+        scelerisque fermentum dui. Arcu felis bibendum ut tristique et egestas quis
+        ipsum. Mattis pellentesque id nibh tortor id aliquet lectus proin nibh.
+        Blandit aliquam etiam erat velit scelerisque. Gravida arcu ac tortor dignissim
+        convallis. Lobortis scelerisque fermentum dui faucibus. Odio ut enim blandit
+        volutpat maecenas volutpat blandit aliquam.
+      </p>
+
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. Vulputate eu
+        scelerisque felis imperdiet proin. Turpis massa tincidunt dui ut ornare
+        lectus. Lacus sed turpis tincidunt id aliquet. Facilisi etiam dignissim diam
+        quis enim lobortis scelerisque fermentum. Aliquam malesuada bibendum arcu
+        vitae elementum curabitur. Mattis rhoncus urna neque viverra justo. Porttitor
+        leo a diam sollicitudin tempor id eu nisl nunc. Consectetur adipiscing elit ut
+        aliquam purus sit amet. Aliquam ut porttitor leo a diam sollicitudin.
+        Dignissim convallis aenean et tortor at.
+      </p>
+
+      <p>
+        Cursus sit amet dictum sit. Ultrices neque ornare aenean euismod elementum
+        nisi quis. Vel risus commodo viverra maecenas accumsan lacus vel facilisis
+        volutpat. Amet justo donec enim diam vulputate ut pharetra sit. Felis
+        imperdiet proin fermentum leo vel orci porta non. Morbi tristique senectus et
+        netus et malesuada. Feugiat pretium nibh ipsum consequat. Consectetur libero
+        id faucibus nisl tincidunt eget nullam. Nulla malesuada pellentesque elit eget
+        gravida cum sociis natoque. Commodo elit at imperdiet dui accumsan sit amet
+        nulla.
+      </p>
+
+      <p>
+        Vehicula ipsum a arcu cursus. Tortor condimentum lacinia quis vel eros donec.
+        Nibh sed pulvinar proin gravida hendrerit lectus a. Sem viverra aliquet eget
+        sit amet tellus cras adipiscing enim. Laoreet non curabitur gravida arcu ac
+        tortor dignissim convallis aenean. Fames ac turpis egestas integer. Nibh
+        tellus molestie nunc non blandit massa enim nec. Vel orci porta non pulvinar.
+        Massa sed elementum tempus egestas sed sed. Non pulvinar neque laoreet
+        suspendisse interdum consectetur. Nam at lectus urna duis convallis convallis
+        tellus id interdum. Ut enim blandit volutpat maecenas volutpat blandit
+        aliquam. Euismod nisi porta lorem mollis. Rutrum tellus pellentesque eu
+        tincidunt. Purus in massa tempor nec.
+      </p>
+    </Box>
+
+);
+}
+
+# Inset Sidebar
+
+The Inset Sidebar is a complimentary sidebar to the main content, for example, a table of contents.
+
+To use `InsetSidebar`, render Inset Sidebar component as the last child to keep it to the right of the content.
+
+The `InsetSidebarContent` is required as a direct child of `InsetSidebar` to meet all the [behaviors](#position-behavior).
+
+```jsx
+import {
+  Content,
+  InsetSidebar,
+  InsetSidebarContent,
+  Root,
+} from "path/to/layout-core-v6";
+
+<Root sx={{ minHeight: "20vh" }}>
+  <Content>
+    <div>Content</div>
+    <InsetSidebar>
+      <InsetSidebarContent sx={{ px: 2 }}>Inset sidebar</InsetSidebarContent>
+    </InsetSidebar>
+  </Content>
+</Root>;
+```
+
+## Position behavior
+
+The Inset Sidebar supports three behaviors via `position` prop:
+
+### Sticky (default)
+
+`fixed` is for displaying things that will have initial space at the top on intial load and once user scroll on the content, it stick at the top (the area of sidebar stay inside the container).
+For example, displaying table of contents or advertisements.
+
+export function DemoInsetSidebarSticky() {
+  return (
+    <Root
+      sx={{
+        ...applyRootStyles({ height: "30vh", fixedHeight: true }),
+        overflow: "auto",
+      }}
+    >
+      <Content>
+        <DummyContent />
+        <InsetSidebar>
+          <InsetSidebarContent>Inset sidebar</InsetSidebarContent>
+        </InsetSidebar>
+      </Content>
+    </Root>
+  );
+}
+
+<section className="demo-container">
+  <DemoInsetSidebarSticky />
+</section>
+
+### Absolute
+
+`absolute` is for a [fullscreen](/docs/layout-v6-configuration-root--docs#fullscreen-layout) app that want to display Footer at all times.
+A good example is a [chat application](/story/layout-v6-app-messenger--messenger) like Facebook Messenger.
+
+export function DemoInsetSidebarAbsolute() {
+  return (
+    <Root sx={{ ...applyRootStyles({ fixedHeight: true, height: "30vh" }) }}>
+      <Content
+        sx={{
+          minHeight: 0,
+        }}
+      >
+        <DummyContent />
+        <InsetSidebar position="absolute">
+          <InsetSidebarContent>Inset sidebar</InsetSidebarContent>
+        </InsetSidebar>
+      </Content>
+      <Footer sx={{ p: 2, borderTop: 1, borderColor: "divider" }}>
+        Footer <input placeholder="Type something..." />
+      </Footer>
+    </Root>
+  );
+}
+
+<section className="demo-container">
+  <DemoInsetSidebarAbsolute />
+</section>
+
+```jsx
+<Root sx={{ ...applyRootStyles({ fixedHeight: true, height: "30vh" }) }}>
+  <Content>
+    <div>Content</div>
+    <InsetSidebar position="absolute">...</InsetSidebar>
+  </Content>
+</Root>
+```
+
+To see the usage with Footer, check the [Footer](/docs/layout-v6-configuration-footer--docs) documentation.
+
+### Fixed
+
+`fixed` is a great fit for displaying topics of the page that has long content because the sidebar will not move if user scroll on the content.
+Also the area of `fixed` inset sidebar cover to the edge of the screen.
+
+export function DemoInsetSidebarFixed() {
+  return (
+    <Root
+      sx={{ "--Root-height": "30vh", maxHeight: "30vh", overflow: "hidden" }}
+    >
+      <Content
+        sx={{
+          minHeight: 0,
+          maxWidth: 400,
+          marginInline: "auto",
+        }}
+      >
+        <DummyContent />
+        <InsetSidebar
+          sx={{
+            ...applyInsetSidebarStyles({ position: "fixed", width: "120px" }),
+          }}
+        >
+          <InsetSidebarContent sx={{ bgcolor: "divider" }}>
+            Inset sidebar
+          </InsetSidebarContent>
+        </InsetSidebar>
+      </Content>
+    </Root>
+  );
+}
+
+<section className="demo-container">
+  <DemoInsetSidebarFixed />
+</section>
+
+```jsx
+<InsetSidebar position="fixed">...</InsetSidebar>
+```
+
+## Width
+
+Use `applyInsetSidebarStyles` to set the width of the Inset Sidebar. It requires an object with the following properties:
+
+- `width`: The width of the sidebar. Must be a string with a valid CSS unit or an object with valid breakpoint.
+
+export function DemoInsetSidebarWidth() {
+  return (
+    <Root sx={{ minHeight: "20vh" }}>
+      <Content
+        sx={{
+          p: 2,
+        }}
+      >
+        <div>Content</div>
+        <InsetSidebar
+          sx={{
+            ...applyInsetSidebarStyles({
+              width: "256px",
+            }),
+          }}
+        >
+          <InsetSidebarContent sx={{ px: 2 }}>
+            Inset sidebar
+          </InsetSidebarContent>
+        </InsetSidebar>
+      </Content>
+    </Root>
+  );
+}
+
+<section className="demo-container">
+  <DemoInsetSidebarWidth />
+</section>
+
+```jsx
+import {
+  applyInsetSidebarStyles,
+  Content,
+  InsetSidebar,
+  InsetSidebarContent,
+  Root,
+} from "path/to/layout-core-v6";
+
+<Root sx={{ minHeight: "20vh" }}>
+  <Content sx={{ p: 2 }}>
+    <div>Content</div>
+    <InsetSidebar
+      sx={{
+        ...applyInsetSidebarStyles({
+          anchor: "right",
+          width: "256px",
+        }),
+      }}
+    >
+      <InsetSidebarContent sx={{ px: 2 }}>Inset sidebar</InsetSidebarContent>
+    </InsetSidebar>
+  </Content>
+</Root>;
+```
+
+## Left sidebar
+
+To create a left sidebar to the main content, move the `InsetSidebar` to the first child of the `Content.
+
+```diff
+ <Content>
++  <InsetSidebar>
+   <div>...</div>
+ </Content>
+```
+
+## Styling guide
+
+### Border
+
+The `InsetSidebarContent` comes with a border based on the sidebar's position inside the Content.
+If you want to remove it or customize it, you can use the `sx` prop.
+
+```jsx
+<InsetSidebarContent sx={{ border: 'none' }}>
+```
+
+### Padding
+
+Do not add padding directly to the `InsetSidebar` and `InsetSidebarContent` components because it will break the layout.
+
+Instead, create another component to wrap the content and add padding to it. The example below uses the `Box` component from Material UI.
+
+```jsx
+<InsetSidebar>
+  <InsetSidebarContent>
+    <Box sx={{ p: 2 }}>Inset sidebar</Box>
+  </InsetSidebarContent>
+</InsetSidebar>
+```

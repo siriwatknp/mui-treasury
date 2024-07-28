@@ -35,6 +35,25 @@ const preview: Preview = {
     options: {
       storySort: {
         order: [
+          "Layout v6",
+          [
+            "Introduction",
+            "Design Principles",
+            "Installation",
+            "Configuration",
+            [
+              "Root",
+              "Header",
+              "Content",
+              "Footer",
+              "EdgeSidebar",
+              "InsetSidebar",
+            ],
+            "Tutorials",
+            ["Dashboard", "Blog"],
+            "Preset",
+            "App",
+          ],
           "Layout v5",
           [
             "Introduction",
@@ -45,6 +64,7 @@ const preview: Preview = {
             "Feature",
             "Configuration",
             "Tutorials",
+            ["Dashboard", "Blog"],
             "Preset",
             "Example",
             "App",

@@ -1,0 +1,176 @@
+import { Meta } from "@storybook/blocks";
+import {
+  applyRootStyles,
+  Content,
+  EdgeSidebar,
+  Footer,
+  Header,
+  InsetSidebar,
+  InsetSidebarContent,
+  Root,
+} from "../../blocks/layout-core-v6";
+
+<Meta title="Layout v6/Installation" />
+
+# Installation
+
+MUI Treasury no longer provides npm packages.
+Instead, you can run the CLI to pull the source code to your project.
+
+```sh
+npx mui-treasury@latest clone layout-core-v6
+```
+
+The source code will be cloned to `src/mui-treasury/layout-core-v6`.
+If you want to specify a different directory, check out the [CLI options](/docs/cli--docs#clone).
+
+## Basic layout
+
+`Root` is a required component to create a layout.
+
+A basic layout consists of `Header`, `Content`, and `Footer`:
+
+export function Demo() {
+  return (
+    <Root sx={{ ...applyRootStyles({ height: "25vh" }) }}>
+      <Header className="px-2">Header</Header>
+      <Content className="p-2">Content</Content>
+      <Footer className="p-2">Footer</Footer>
+    </Root>
+  );
+}
+
+<section className="demo-container">
+  <Demo />
+</section>
+
+```jsx
+import { Content, Footer, Header, Root } from "path/to/layout-core-v6";
+
+function App() {
+  return (
+    <Root>
+      <Header>Header</Header>
+      <Content>Content</Content>
+      <Footer>Footer</Footer>
+    </Root>
+  );
+}
+```
+
+## Dashboard layout
+
+To render a sidebar for a dashboard layout, use `EdgeSidebar` component:
+
+export function Demo2() {
+  return (
+    <Root sx={{ ...applyRootStyles({ height: "30vh" }) }}>
+      <Header className="p-2">Header</Header>
+      <EdgeSidebar className="p-2">EdgeSidebar</EdgeSidebar>
+      <Content className="p-2">Content</Content>
+      <Footer className="p-2">Footer</Footer>
+    </Root>
+  );
+}
+
+<section className="demo-container">
+  <Demo2 />
+</section>
+
+```jsx
+import {
+  Content,
+  EdgeSidebar,
+  Footer,
+  Header,
+  Root,
+} from "path/to/layout-core-v6";
+
+function App() {
+  return (
+    <Root>
+      <Header>Header</Header>
+      <EdgeSidebar>EdgeSidebar</EdgeSidebar>
+      <Content>Content</Content>
+      <Footer>Footer</Footer>
+    </Root>
+  );
+}
+```
+
+⚠️ These 4 components must be a direct child of `Root` but can be in any order.
+
+To learn more about the dashboard layout, check out the [Tutorial — Dashboard layout]().
+
+## Blog layout
+
+To render a sidebar for a blog layout, use `InsetSidebar` component:
+
+export function Demo3() {
+  return (
+    <Root sx={{ ...applyRootStyles({ height: "30vh" }) }}>
+      <Header className="p-2">Header</Header>
+      <Content className="p-2">
+        <div>Content</div>
+        <InsetSidebar>
+          <InsetSidebarContent>
+            <div className="p-2">InsetSidebar</div>
+          </InsetSidebarContent>
+        </InsetSidebar>
+      </Content>
+      <Footer className="p-2">Footer</Footer>
+    </Root>
+  );
+}
+
+<section className="demo-container">
+  <Demo3 />
+</section>
+
+```jsx
+import {
+  Content,
+  Footer,
+  Header,
+  InsetSidebar,
+  InsetSidebarContent,
+  Root,
+} from "path/to/layout-core-v6";
+
+function App() {
+  return (
+    <Root>
+      <Header>Header</Header>
+      <EdgeSidebar>EdgeSidebar</EdgeSidebar>
+      <Content>
+        <div>Content</div>
+        <InsetSidebar>
+          <InsetSidebarContent>InsetSidebar</InsetSidebarContent>
+        </InsetSidebar>
+      </Content>
+      <Footer>Footer</Footer>
+    </Root>
+  );
+}
+```
+
+To learn more about the blog layout, check out the [Tutorial — Blog layout]().
+
+## Next step
+
+- Explore real-world examples:
+  - [Analytics dashboard](/story/layout-v6-app-analytics--analytics)
+  - [Facebook Messenger](/story/layout-v6-app-messenger--messenger)
+  - [Documentation site](/story/layout-v6-app-reactlegacy--react-legacy)
+  - [Shopping cart](/story/layout-v6-app-shoppingcart--shopping-cart)
+- Start with a predefined layout:
+  - [Content-based](/story/layout-v6-preset-contentbased--content-based)
+  - [Cozy](/story/layout-v6-preset-cozy--cozy)
+  - [Fixed](/story/layout-v6-preset-fixed--fixed)
+  - [Standard](/story/layout-v6-preset-standard--standard)
+- See each component's configuration:
+  - [Root](/docs/layout-v6-configuration-root--docs)
+  - [Header](/docs/layout-v6-configuration-header--docs)
+  - [EdgeSidebar](/docs/layout-v6-configuration-edge-sidebar--docs)
+  - [InsetSidebar](/docs/layout-v6-configuration-inset-sidebar--docs)
+  - [Footer](/docs/layout-v6-configuration-footer--docs)

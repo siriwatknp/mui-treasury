@@ -1,0 +1,600 @@
+import Button from "@mui/material/Button";
+import { Meta } from "@storybook/blocks";
+import {
+  applyEdgeSidebarRightStyles,
+  applyEdgeSidebarStyles,
+  applyRootStyles,
+  Content,
+  EdgeSidebar,
+  EdgeSidebarContent,
+  EdgeSidebarRight,
+  EdgeTemporaryClose,
+  Footer,
+  Header,
+  Root,
+  toggleEdgeSidebarCollapse,
+  toggleEdgeSidebarRightCollapse,
+  toggleTemporaryEdgeSidebar,
+  toggleTemporaryEdgeSidebarRight,
+} from "../../../blocks/layout-core-v6";
+
+<Meta title="Layout v6/Configuration/Edge Sidebar" />
+
+# Edge Sidebar
+
+The `EdgeSidebar` component is a sidebar that is placed on the left edge of the Root.
+To ensure the expected behavior, the `EdgeSidebarContent` component must be used as a direct child of the `EdgeSidebar`.
+
+There are 3 variants of `EdgeSidebar`:
+
+- [permanent](#permanent-variant-default): The sidebar is always visible.
+- [persistent](#persistent-variant): The sidebar is hidden and can be toggled by a button without blocking the content.
+- [temporary](#temporary-variant): The sidebar is hidden and when toggled, it will overlay the content.
+
+You can assign each variant to a specific breakpoint using the `applyEdgeSidebarStyles` utility:
+
+```jsx
+import {
+  applyEdgeSidebarStyles,
+  EdgeSidebar,
+  EdgeSidebarContent,
+} from "path/to/layout-core-v6";
+
+<EdgeSidebar
+  sx={(theme) => ({
+    ...applyEdgeSidebarStyles({
+      theme,
+      config: {
+        xs: {
+          variant: "temporary",
+        },
+        md: {
+          variant: "persistent",
+        },
+        lg: {
+          variant: "permanent",
+        },
+      },
+    }),
+  })}
+>
+  <EdgeSidebarContent>EdgeSidebar</EdgeSidebarContent>
+</EdgeSidebar>;
+```
+
+From the example above, the sidebar will be:
+
+- `temporary` from 0 - 599px.
+- `persistent` from 600 - 960px.
+- `permanent` from 960px and above.
+
+The number is based on the default breakpoint from [Material-UI documentation](https://mui.com/material-ui/customization/breakpoints/#default-breakpoints).
+The value might be different if you have customized the breakpoints.
+
+Next, let's take a look at each variant configuration.
+
+## Permanent variant (default)
+
+A permanent sidebar has a default minimum width of `256px`.
+To override this, you can pass the `width` property to the config:
+
+export function DemoPermanent() {
+  return (
+    <Root sx={{ ...applyRootStyles({ height: "20vh" }) }}>
+      <EdgeSidebar
+        className="bg-green-50 p-2"
+        sx={(theme) => ({
+          ...applyEdgeSidebarStyles({
+            theme,
+            config: {
+              xs: { variant: "permanent", width: "300px" },
+            },
+          }),
+        })}
+      >
+        EdgeSidebar
+      </EdgeSidebar>
+    </Root>
+  );
+}
+
+<section className="demo-container">
+  <DemoPermanent />
+</section>
+
+```jsx
+{
+  variant: "permanent",
+  width: "300px", // ⚠️ Numeric value, e.g. 300 will NOT work because it's not a valid CSS unit.
+}
+```
+
+### Auto-collapsing
+
+**Required** `EdgeSidebarContent` component as a direct child of the `EdgeSidebar`.
+
+When the viewport shrink to the provided breakpoint, the EdgeSidebar will collapse automatically.
+
+To turn on this feature, you need to set `autoCollapse` to the collapse breakpoint with these **optional** properties:
+
+- `collapsedWidth = '80px'`: The width of the collapsed sidebar.
+- `expandOnHover = false`: In collapsed state, the sidebar will expand when hovered.
+
+export function DemoPermanentAutoCollapse() {
+  return (
+    <Root sx={{ ...applyRootStyles({ height: "20vh" }) }}>
+      <EdgeSidebar
+        className="bg-green-50"
+        sx={(theme) => ({
+          ...applyEdgeSidebarStyles({
+            theme,
+            config: {
+              xs: {
+                variant: "permanent",
+                width: "300px",
+                autoCollapse: "md",
+                collapsedWidth: "64px",
+                expandOnHover: true,
+              },
+            },
+          }),
+        })}
+      >
+        <EdgeSidebarContent className="p-2">
+          Try to resize the window and hover to see the auto-collapse feature
+        </EdgeSidebarContent>
+      </EdgeSidebar>
+    </Root>
+  );
+}
+
+<section className="demo-container">
+  <DemoPermanentAutoCollapse />
+</section>
+
+```jsx
+import { EdgeSidebar, EdgeSidebarContent } from "path/to/layout-core-v6";
+
+<EdgeSidebar
+  sx={(theme) => ({
+    ...applyEdgeSidebarStyles({
+      theme,
+      config: {
+        xs: {
+          variant: "permanent",
+          width: "300px",
+          autoCollapse: "md",
+          collapsedWidth: "64px",
+          expandOnHover: true,
+        },
+      },
+    }),
+  })}
+>
+  <EdgeSidebarContent>EdgeSidebar</EdgeSidebarContent>
+</EdgeSidebar>;
+```
+
+### Toggle collapse behavior manually
+
+If you want to control collapse behavior manually, create your own button and call the `toggleEdgeSidebarCollapse` function.
+
+The button and icons should have theses classes to display properly:
+
+- button: `EdgeSidebar-collapser`
+- icon in collapsed state: `Icon-collapse`
+- icon in uncollapse state: `Icon-uncollapse`
+
+export function DemoPermanentManualCollapse() {
+  return (
+    <Root sx={{ ...applyRootStyles({ height: "20vh" }) }}>
+      <EdgeSidebar
+        id="demo-permanent-manual-collapse"
+        className="bg-green-50"
+        sx={(theme) => ({
+          ...applyEdgeSidebarStyles({
+            theme,
+            config: {
+              xs: {
+                variant: "permanent",
+                collapsedWidth: "120px",
+                width: "300px",
+              },
+            },
+          }),
+        })}
+      >
+        <EdgeSidebarContent className="p-2">
+          <button
+            className="EdgeSidebar-collapser px-2 py-1 bg-sky-600 text-white rounded w-fit"
+            onClick={(event) =>
+              toggleEdgeSidebarCollapse({
+                event,
+                sidebarId: "demo-permanent-manual-collapse",
+              })
+            }
+          >
+            <span className="Icon-collapse">Collapse</span>
+            <span className="Icon-uncollapse">Uncollapse</span>
+          </button>
+        </EdgeSidebarContent>
+      </EdgeSidebar>
+      <Content>Content</Content>
+    </Root>
+  );
+}
+
+<section className="demo-container">
+  <DemoPermanentManualCollapse />
+</section>
+
+```jsx
+<EdgeSidebar
+  id="demo-permanent-manual-collapse"
+  sx={(theme) => ({
+    ...applyEdgeSidebarStyles({
+      theme,
+      config: {
+        xs: {
+          variant: "permanent",
+          collapsedWidth: "120px",
+          width: "300px",
+        },
+      },
+    }),
+  })}
+>
+  <EdgeSidebarContent className="border bg-green-50 p-2">
+    <button
+      className="EdgeSidebar-collapser px-2 py-1 bg-sky-600 text-white rounded w-fit"
+      onClick={(event) =>
+        toggleEdgeSidebarCollapse({
+          event,
+          // You don't need to pass the sidebarId if you only have one EdgeSidebar
+          // This is for demonstration purpose because there are multiple EdgeSidebar in this page
+          sidebarId: "demo-permanent-manual-collapse",
+        })
+      }
+    >
+      <span className="Icon-collapse">Collapse</span>
+      <span className="Icon-uncollapse">Uncollapse</span>
+    </button>
+  </EdgeSidebarContent>
+</EdgeSidebar>
+```
+
+## Persistent variant
+
+A persistent sidebar is basically a collapsed permanent sidebar with collapsed width of zero.
+
+It supports the following properties:
+
+- `width`: The width of the sidebar when it is uncollapsed.
+- `persistentBehavior = 'fit'`: The behavior of the sidebar when it is collapsed. The value can be `fit` or `none` as shown below.
+
+### `fit` behavior
+
+The Content will shrink based on the sidebar's width. This is the default behavior.
+
+export function DemoPersistentFit() {
+  return (
+    <Root sx={{ ...applyRootStyles({ height: "25vh" }) }}>
+      <EdgeSidebar
+        id="persistent-fit"
+        sx={(theme) => ({
+          ...applyEdgeSidebarStyles({
+            theme,
+            config: {
+              xs: { variant: "persistent", width: "256px" },
+            },
+          }),
+        })}
+      >
+        <EdgeSidebarContent>
+          <div className="p-2 bg-green-50 border h-full">EdgeSidebar</div>
+        </EdgeSidebarContent>
+      </EdgeSidebar>
+      <Content className="flex justify-center items-center">
+        <Button
+          className="EdgeSidebar-collapser"
+          onClick={(event) =>
+            toggleEdgeSidebarCollapse({ event, sidebarId: "persistent-fit" })
+          }
+        >
+          Toggle Sidebar
+        </Button>
+      </Content>
+    </Root>
+  );
+}
+
+<section className="demo-container">
+  <DemoPersistentFit />
+</section>
+
+```jsx
+<EdgeSidebar
+  id="persistent-fit"
+  sx={(theme) => ({
+    ...applyEdgeSidebarStyles({
+      theme,
+      config: {
+        xs: { variant: "persistent", width: "256px" },
+      },
+    }),
+  })}
+>
+  <EdgeSidebarContent>EdgeSidebar</EdgeSidebarContent>
+</EdgeSidebar>
+<Content>
+  <button
+    className="EdgeSidebar-collapser"
+    onClick={event =>
+      toggleEdgeSidebarCollapse({
+        event,
+        // You don't need to pass the sidebarId if you only have one EdgeSidebar
+        // This is for demonstration purpose because there are multiple EdgeSidebar in this page
+        sidebarId: 'persistent-fit'
+      })}
+  >
+    Toggle Sidebar
+  </button>
+</Content>
+```
+
+### `none` behavior
+
+The sidebar will overflow the Content.
+
+export function DemoPersistentNone() {
+  return (
+    <Root sx={{ ...applyRootStyles({ height: "25vh" }) }}>
+      <EdgeSidebar
+        id="persistent-none"
+        sx={(theme) => ({
+          ...applyEdgeSidebarStyles({
+            theme,
+            config: {
+              xs: {
+                variant: "persistent",
+                persistentBehavior: "none",
+                width: "256px",
+              },
+            },
+          }),
+        })}
+      >
+        <EdgeSidebarContent>
+          <div className="p-2 bg-green-50 border h-full">EdgeSidebar</div>
+        </EdgeSidebarContent>
+      </EdgeSidebar>
+      <Content className="flex justify-center items-center">
+        <Button
+          className="EdgeSidebar-collapser"
+          onClick={(event) =>
+            toggleEdgeSidebarCollapse({ event, sidebarId: "persistent-none" })
+          }
+        >
+          Toggle Sidebar
+        </Button>
+      </Content>
+    </Root>
+  );
+}
+
+<section className="demo-container">
+  <DemoPersistentNone />
+</section>
+
+```jsx
+<EdgeSidebar
+  id="persistent-none"
+  sx={(theme) => ({
+    ...applyEdgeSidebarStyles({
+      theme,
+      config: {
+        xs: { variant: "persistent", persistentBehavior: 'none', width: "256px" },
+      },
+    }),
+  })}
+>
+  <EdgeSidebarContent>EdgeSidebar</EdgeSidebarContent>
+</EdgeSidebar>
+<Content>
+  <button
+    className="EdgeSidebar-collapser"
+    onClick={event =>
+      toggleEdgeSidebarCollapse({
+        event,
+        // You don't need to pass the sidebarId if you only have one EdgeSidebar
+        // This is for demonstration purpose because there are multiple EdgeSidebar in this page
+        sidebarId: 'persistent-none'
+      })}
+  >
+    Toggle Sidebar
+  </button>
+</Content>
+```
+
+## Temporary variant
+
+A temporary sidebar is a sidebar that is hidden by default and will overlay the content when toggled.
+
+To toggle the sidebar, you should set the `width` to the config and render a toggle button with an onClick handler that calls `toggleTemporaryEdgeSidebar`.
+
+The toggle button should have class `EdgeSidebar-trigger` to display properly. If it has icons, use `Icon-collapse` and `Icon-uncollapse` classes.
+
+An optional `EdgeTemporaryClose` button can be used to close the sidebar when it is open.
+
+export function DemoTemporary() {
+  return (
+    <Root
+      sx={{
+        ...applyRootStyles({ height: "25vh" }),
+        "&:has([data-temporary-open],[data-mobile-closing])": {
+          overflow: "hidden",
+        },
+      }}
+    >
+      <EdgeSidebar
+        id="temporary-sidebar"
+        sx={(theme) => ({
+          ...applyEdgeSidebarStyles({
+            theme,
+            config: {
+              xs: { variant: "temporary", width: "256px" },
+            },
+          }),
+        })}
+      >
+        <EdgeTemporaryClose sidebarId="temporary-sidebar" />
+        <EdgeSidebarContent>
+          <div className="p-2 bg-green-50 h-full">EdgeSidebar</div>
+        </EdgeSidebarContent>
+      </EdgeSidebar>
+      <Content className="flex justify-center items-center">
+        <Button
+          className="EdgeSidebar-trigger"
+          onClick={(event) =>
+            toggleTemporaryEdgeSidebar({
+              sidebarId: "temporary-sidebar",
+            })
+          }
+        >
+          Toggle Sidebar
+        </Button>
+      </Content>
+    </Root>
+  );
+}
+
+<section className="demo-container">
+  <DemoTemporary />
+</section>
+
+```jsx
+<EdgeSidebar
+  sx={(theme) => ({
+    ...applyEdgeSidebarStyles({
+      theme,
+      config: {
+        xs: { variant: "temporary", width: "256px" },
+      },
+    }),
+  })}
+>
+  <EdgeTemporaryClose />
+  <EdgeSidebarContent>EdgeSidebar</EdgeSidebarContent>
+</EdgeSidebar>
+<Content>
+  <Button
+    className="EdgeSidebar-trigger"
+    onClick={(event) =>
+      toggleTemporaryEdgeSidebar({
+        // You don't need to pass the sidebarId if you only have one EdgeSidebar
+        // This is for demonstration purpose because there are multiple EdgeSidebar in this page
+        sidebarId: "temporary-sidebar",
+      })
+    }
+  >
+    Toggle Sidebar
+  </Button>
+</Content>
+```
+
+## Right Edge Sidebar
+
+To render an edge sidebar on the right side, you need to use `EdgeSidebarRight` component instead.
+All of the configurations are the same as `EdgeSidebar` but you will need to add a suffix to all of the APIs except `EdgeSidebarContent` and `EdgeTemporaryClose`.
+
+**Components**:
+
+- `EdgeSidebarRight`
+
+**Utilities**:
+
+- `applyEdgeSidebarRightStyles`
+- `toggleEdgeSidebarRightCollapse`
+- `toggleTemporaryEdgeSidebarRight`
+
+**CSS classes**:
+
+- `.EdgeSidebar-R-collapser`
+- `.EdgeSidebar-R-trigger`
+
+export function DemoRightEdgeSidebar() {
+  return (
+    <Root
+      sx={{
+        ...applyRootStyles({ height: "25vh" }),
+        "&:has([data-temporary-open],[data-mobile-closing])": {
+          overflow: "hidden",
+        },
+      }}
+    >
+      <EdgeSidebarRight
+        sx={(theme) => ({
+          ...applyEdgeSidebarRightStyles({
+            theme,
+            config: {
+              xs: { variant: "temporary", width: "256px" },
+              sm: {
+                variant: "permanent",
+                autoCollapse: "sm",
+                collapsedWidth: "80px",
+                expandOnHover: true,
+              },
+            },
+          }),
+        })}
+      >
+        <EdgeTemporaryClose sidebarId="edge-sidebar-right" />
+        <EdgeSidebarContent>
+          <div className="p-2 bg-green-50 h-full">Right EdgeSidebar</div>
+        </EdgeSidebarContent>
+      </EdgeSidebarRight>
+      <Content className="flex justify-center items-center">
+        <Button
+          className="EdgeSidebar-R-trigger"
+          onClick={(event) => toggleTemporaryEdgeSidebarRight({ event })}
+        >
+          Toggle Right Sidebar
+        </Button>
+      </Content>
+    </Root>
+  );
+}
+
+<section className="demo-container">
+  <DemoRightEdgeSidebar />
+</section>
+
+```jsx
+<EdgeSidebarRight
+  sx={(theme) => ({
+    ...applyEdgeSidebarRightStyles({
+      theme,
+      config: {
+        xs: { variant: "temporary", width: "256px" },
+        sm: {
+          variant: "permanent",
+          autoCollapse: 'sm',
+          collapsedWidth: '80px',
+          expandOnHover: true
+        },
+      },
+    }),
+  })}
+>
+  <EdgeTemporaryClose sidebarId="edge-sidebar-right" />
+  <EdgeSidebarContent>Right EdgeSidebar</EdgeSidebarContent>
+</EdgeSidebarRight>
+<Content>
+  <Button
+    className="EdgeSidebar-R-trigger"
+    onClick={(event) => toggleTemporaryEdgeSidebarRight({ event })}
+  >
+    Toggle Right Sidebar
+  </Button>
+</Content>
+```

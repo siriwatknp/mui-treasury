@@ -1,0 +1,437 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Layout v6/Tutorials/Dashboard" />
+
+# Dashboard Layout Tutorial
+
+This tutorial will take you through basic installation and configuration of path/to/layout-core-v6 for creating standard dashboard application.
+
+## Installation
+
+Let’s use [react-vite](https://vitejs.dev/guide/#scaffolding-your-first-vite-project) app to kickstart the project
+
+```bash
+yarn create vite my-layout --template react-ts
+```
+
+when the process is done, open root directory
+
+```bash
+cd my-layout
+```
+
+and install necessary packages
+
+```bash
+yarn add @mui/material@latest @mui/icons-material@latest @emotion/styled @emotion/react
+```
+
+> note: this tutorial is based on Material UI v5,
+> please recheck package.json after installation
+
+Now, when you run `yarn dev`, you will see react logo in the browser:
+
+![image](https://github.com/user-attachments/assets/4f263cb7-ceaa-449f-b455-b1a7828b2afb)
+
+Next, let's download layout core v6 code:
+
+```bash
+npx mui-treasury@latest clone layout-core-v6
+```
+
+Finally, remove `main.css` and `App.css` from the starter template to start fresh.
+
+## Header
+
+Let's think about Header for a sec. In this tutorial, we want to have Header that stick to
+the top of the page when user scroll. Open file `/src/App.(js|tsx)` and replace with the code below
+
+```jsx
+import { applyHeaderStyles, Header, Root } from "path/to/layout-core-v6";
+
+function App() {
+  return (
+    <Root>
+      <Header sx={{ ...applyHeaderStyles({ height: { xs: "56px" } }) }}>
+        Header
+      </Header>
+    </Root>
+  );
+}
+
+export default App;
+```
+
+Let me translate it to human language. By doing this, we can say that we want to create
+a `Header` that has a height of `56px` from breakpoint `xs` **up**. The default position of the `Header` is [sticky](https://developer.mozilla.org/en-US/docs/Web/CSS/position#sticky).
+
+I want to pause here for a moment and emphasize the word **up**. This is quite important for you to
+know that this library follow mobile first responsive design which means the config you define
+at a breakpoint will affect at that breakpoint and **up**. You can override config by specifying new config at
+bigger breakpoint. Here is a list of breakpoint according to [Material UI](https://material-ui.com/customization/breakpoints/)
+
+```js
+value         |0px     600px    900px    1200px   1536px
+key           |xs      sm       md       lg       xl
+screen width  |--------|--------|--------|--------|-------->
+range         |   xs   |   sm   |   md   |   lg   |   xl
+```
+
+This is an example where you don't want Header to stick at the top when scroll the page on laptop screen
+
+```jsx
+import { applyHeaderStyles, Header, Root } from "./mui-treasury/layout-core-v6";
+
+function App() {
+  return (
+    <Root>
+      <Header
+        sx={{
+          ...applyHeaderStyles({ height: { xs: "56px", md: "64px" } }),
+          position: { md: "relative" },
+        }}
+      >
+        Header
+      </Header>
+    </Root>
+  );
+}
+
+export default App;
+```
+
+## EdgeSidebar
+
+Next, let's move on to EdgeSidebar configuration.
+
+```jsx
+import { ...
+  EdgeSidebar,
+  EdgeSidebarContent,
+  applyEdgeSidebarStyles,
+} from "./mui-treasury/layout-core-v6";
+
+<Root>
+  <Header>...</Header>
+  <EdgeSidebar
+    sx={(theme) => ({
+      ...applyEdgeSidebarStyles({
+        theme,
+        config: { xs: { variant: "temporary", width: "auto" } },
+      }),
+    })}
+  >
+    <EdgeSidebarContent>EdgeSidebarContent</EdgeSidebarContent>
+  </EdgeSidebar>
+</Root>
+```
+
+> see what each variant looks like real quick [here](/docs/layout-v6-configuration-edge-sidebar--docs#edge-sidebar)
+
+At this point, let's render these components on the page so that you don't get surprise at the end. This tutorial use default style engine (emotion) of `material-ui@v5`. For styled-components, take a look at [material-ui docs - how to switch to styled-components](https://next.material-ui.com/guides/styled-engine/#heading-how-to-switch-to-styled-component)
+
+```jsx
+import CssBaseline from "@mui/material/CssBaseline";
+import {
+  applyEdgeSidebarStyles,
+  applyHeaderStyles,
+  EdgeSidebar,
+  EdgeSidebarContent,
+  Header,
+  Root,
+} from "./mui-treasury/layout-core-v6";
+
+function App() {
+  return (
+    <Root>
+      <Header
+        sx={{
+          ...applyHeaderStyles({ height: { xs: "56px", md: "64px" } }),
+          position: { md: "relative" },
+        }}
+      >
+        Header
+      </Header>
+      <EdgeSidebar
+        sx={(theme) => ({
+          ...applyEdgeSidebarStyles({
+            theme,
+            config: { xs: { variant: "temporary", width: "auto" } },
+          }),
+        })}
+      >
+        <EdgeSidebarContent>EdgeSidebarContent</EdgeSidebarContent>
+      </EdgeSidebar>
+    </Root>
+  );
+}
+
+export default App;
+```
+
+Save, and run `yarn dev`. You should see something like this on your screen.
+
+![image](https://github.com/user-attachments/assets/59135517-84b4-4b56-85cb-44510c93d5dd)
+
+Where is our Sidebar? well, because variant temporary is hidden by default.
+You can open it by calling `toggleTemporaryEdgeSidebar` function.
+let's update the code to be like this.
+
+```jsx
+// ...other import
+import Menu from "@mui/icons-material/Menu";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import {
+  // ...previous import
+  toggleTemporaryEdgeSidebar,
+} from "path/to/layout-core-v6";
+
+function App() {
+  return (
+    <Root>
+      <CssBaseline />
+      <Header sx={{ ... }}>
+        <Box
+          sx={{ flex: 1, display: "flex", alignItems: "center", px: 2, gap: 1 }}
+        >
+          <IconButton
+            className="EdgeSidebar-trigger"
+            onClick={() => toggleTemporaryEdgeSidebar()}>
+            <Menu />
+          </IconButton>
+          Header
+        </Box>
+      </Header>
+      <EdgeSidebar
+        sx={(theme) => ({
+          ...applyEdgeSidebarStyles({...}),
+        })}
+      >
+        <EdgeSidebarContent>EdgeSidebarContent</EdgeSidebarContent>
+      </EdgeSidebar>
+    </Root>
+  );
+}
+```
+
+![gif](https://media.giphy.com/media/LPg1nlDmhU4M2Pp6iU/giphy.gif)
+
+Next, let's permanently display our EdgeSidebar in laptop screen up by adding the following code
+
+```jsx
+<EdgeSidebar
+  sx={(theme) => ({
+    ...applyEdgeSidebarStyles({
+      theme,
+      config: {
+        xs: { variant: "temporary", width: "auto" },
+        md: {
+          variant: "permanent",
+          width: "256px",
+          collapsedWidth: "64px",
+        },
+      },
+    }),
+  })}
+></EdgeSidebar>
+```
+
+> 💡 You might notice that the Menu in header disappears. This is an expected behavior, not a 🐞, because `permanent` EdgeSidebar will always open.
+
+To achieve collapsible mode, we need to add a button that calls `toggleEdgeSidebarCollapse` function at the bottom of the sidebar.
+
+```jsx
+// ...imports
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import ButtonBase from "@mui/material/ButtonBase";
+import {
+  // ..imports
+  SidebarContent,
+} from "path/to/layout-core-v6";
+
+function App() {
+  return (
+    <Root>
+      <CssBaseline />
+      <Header>...</Header>
+      <EdgeSidebar>
+        <EdgeSidebarContent>Sidebar content</EdgeSidebarContent>
+        <ButtonBase
+          className="EdgeSidebar-collapser"
+          // it's important to pass event to `toggleEdgeSidebarCollapse`
+          onClick={(event) => toggleEdgeSidebarCollapse({ event })}
+          sx={{
+            minHeight: 40,
+            width: "100%",
+            bgcolor: "grey.100",
+            borderTop: "1px solid",
+            borderColor: "grey.200",
+          }}
+        >
+          <KeyboardArrowLeft className="Icon-collapse" />
+          <KeyboardArrowRight className="Icon-uncollapse" />
+        </ButtonBase>
+      </EdgeSidebar>
+    </Root>
+  );
+}
+```
+
+`SidebarContent` that added does not have any functionality accept styling. It stretch the content
+and push `ButtonBase` to the bottom (see it in devtool).
+
+![image](https://user-images.githubusercontent.com/18292247/80664273-851f5b00-8ac0-11ea-9a45-4d8739927116.png)
+
+Play around with collapse button.
+
+In some application, the header takes all the space at the top. We can achieve it by adding field `fullWidth: true` to `applyHeaderStyles` options:
+
+```jsx
+<Header
+  sx={{
+    ...applyHeaderStyles({
+      height: { xs: "56px", md: "64px" },
+      fullWidth: true,
+    }),
+    position: { md: "relative" },
+  }}
+></Header>
+```
+
+> 💡 the cool thing is a block added automatically to make sure that sidebar content appear to user. (try changing Header's height, it's awesome 👍)
+
+Last step, let's add `Content` and `Footer` to the page. Both of the components does not have functionality,
+so you don't need to configure explicitly (actually it is already configured with default for you)
+
+```jsx
+// ...imports
+import {
+  // other import
+  Content,
+  Footer,
+} from "path/to/layout-core-v6";
+
+function App() {
+  return (
+    <Root>
+      <CssBaseline />
+      <Header>...</Header>
+      <EdgeSidebar>...</EdgeSidebar>
+      <Content>Content</Content>
+      <Footer>Footer</Footer>
+    </Root>
+  );
+}
+```
+
+### Congratulations! you have completed this tutorial.
+
+<details>
+<summary>See Full Code</summary>
+
+```jsx
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import Menu from "@mui/icons-material/Menu";
+import Box from "@mui/material/Box";
+import ButtonBase from "@mui/material/ButtonBase";
+import CssBaseline from "@mui/material/CssBaseline";
+import IconButton from "@mui/material/IconButton";
+import {
+  applyEdgeSidebarStyles,
+  applyHeaderStyles,
+  Content,
+  EdgeSidebar,
+  EdgeSidebarContent,
+  Footer,
+  Header,
+  Root,
+  toggleEdgeSidebarCollapse,
+  toggleTemporaryEdgeSidebar,
+} from "path/to/layout-core-v6";
+
+function App() {
+  return (
+    <Root>
+      <CssBaseline />
+      <Header
+        sx={{
+          ...applyHeaderStyles({
+            height: { xs: "56px", md: "64px" },
+            fullWidth: true,
+          }),
+          position: { md: "relative" },
+        }}
+      >
+        <Box
+          sx={{ flex: 1, display: "flex", alignItems: "center", px: 2, gap: 1 }}
+        >
+          <IconButton
+            className="EdgeSidebar-trigger"
+            onClick={() => toggleTemporaryEdgeSidebar()}
+          >
+            <Menu />
+          </IconButton>
+          Header
+        </Box>
+      </Header>
+      <EdgeSidebar
+        sx={(theme) => ({
+          ...applyEdgeSidebarStyles({
+            theme,
+            config: {
+              xs: { variant: "temporary", width: "auto" },
+              md: {
+                variant: "permanent",
+                width: "256px",
+                collapsedWidth: "64px",
+              },
+            },
+          }),
+        })}
+      >
+        <EdgeSidebarContent>EdgeSidebarContent</EdgeSidebarContent>
+        <ButtonBase
+          className="EdgeSidebar-collapser"
+          // it's important to pass event to `toggleEdgeSidebarCollapse`
+          onClick={(event) => toggleEdgeSidebarCollapse({ event })}
+          sx={{
+            minHeight: 40,
+            width: "100%",
+            bgcolor: "grey.100",
+            borderTop: "1px solid",
+            borderColor: "grey.200",
+          }}
+        >
+          {/* The classnames are important to display between icons */}
+          <KeyboardArrowLeft className="Icon-collapse" />
+          <KeyboardArrowRight className="Icon-uncollapse" />
+        </ButtonBase>
+      </EdgeSidebar>
+      <Content>Content</Content>
+      <Footer>Footer</Footer>
+    </Root>
+  );
+}
+
+export default App;
+```
+
+</details>
+
+<br />
+
+You can look at clone examples to see advance layout like documentation site, e-commerce site or even chat site.
+
+### Other Tutorial
+
+- [Blog layout](/docs/layout-v6-tutorials-blog--docs)
+
+### Application inspiration
+
+- Gmail
+- [Facebook Messenger](/story/layout-v6-app-messenger--messenger)
+- [ReactJS Docs](/story/layout-v6-app-reactlegacy--react-legacy)
+- [Shopping Cart](/story/layout-v6-app-shoppingcart--shopping-cart)
