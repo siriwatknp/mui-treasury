@@ -3,7 +3,7 @@ import {
   ReactHeader,
   ReactNextArticle,
   // @ts-ignore
-} from "../layout-app-reactLegacy/components";
+} from "../layoutV5-app-reactLegacy/components";
 import React from "react";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import UnfoldMore from "@mui/icons-material/UnfoldMore";

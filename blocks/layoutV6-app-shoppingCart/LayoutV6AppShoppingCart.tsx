@@ -6,14 +6,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Fab from "@mui/material/Fab";
 import { styled, ThemeProvider } from "@mui/material/styles";
 import {
-  DailyCart,
-  DailyCheckout,
-  DailyHeader,
-  dailyShoppingTheme,
-  DailySummary,
-  // @ts-ignore
-} from "../layout-app-shoppingCart/components";
-import {
   applyEdgeSidebarRightStyles,
   applyHeaderStyles,
   applyInsetSidebarStyles,
@@ -29,6 +21,14 @@ import {
   Root,
   toggleTemporaryEdgeSidebarRight,
 } from "../layout-core-v6";
+import {
+  DailyCart,
+  DailyCheckout,
+  DailyHeader,
+  dailyShoppingTheme,
+  DailySummary,
+  // @ts-ignore
+} from "../layoutV5-app-shoppingCart/components";
 
 const StyledHeader = styled(Header)(() => ({
   backgroundColor: "#ffffff",

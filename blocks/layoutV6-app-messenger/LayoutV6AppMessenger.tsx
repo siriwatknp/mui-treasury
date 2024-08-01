@@ -10,16 +10,6 @@ import {
 } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import {
-  ChatBar,
-  ChatDialog,
-  ChatList,
-  ChatSettings,
-  ChatsHeader,
-  ConversationHead,
-  MessengerSearch,
-  // @ts-ignore
-} from "../layout-app-messenger/components";
-import {
   applyEdgeSidebarStyles,
   applyHeaderStyles,
   applyInsetSidebarStyles,
@@ -34,6 +24,16 @@ import {
   InsetSidebarContent,
   Root,
 } from "../layout-core-v6";
+import {
+  ChatBar,
+  ChatDialog,
+  ChatList,
+  ChatSettings,
+  ChatsHeader,
+  ConversationHead,
+  MessengerSearch,
+  // @ts-ignore
+} from "../layoutV5-app-messenger/components";
 
 const StyledHeader = styled(Header)(() => ({
   boxShadow: "0 1px 2px 0 rgba(0, 0, 0, .10)",
