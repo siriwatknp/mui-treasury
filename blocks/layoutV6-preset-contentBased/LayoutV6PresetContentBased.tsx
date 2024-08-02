@@ -81,6 +81,7 @@ export const LayoutV6PresetContentBased = () => {
           }}
         >
           <ButtonBase
+            className="EdgeSidebar-collapser"
             onClick={(event) => {
               toggleEdgeSidebarCollapse({ event });
             }}

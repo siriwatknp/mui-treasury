@@ -49,6 +49,9 @@ function applyPersistentStyles(params: Omit<PersistentConfig, "variant">) {
             }),
           }),
       "--EdgeSidebar-collapsible": "var(--collapsed)",
+      ".EdgeSidebar-collapser": {
+        display: "var(--display, inline-flex)",
+      },
       ".EdgeSidebar-trigger": {
         display: "none",
       },
@@ -85,6 +88,9 @@ function applyPermanentStyles(params: Omit<PermanentConfig, "variant">) {
       ...(collapsedWidth && {
         "--EdgeSidebar-collapsedWidth": collapsedWidth,
       }),
+      ".EdgeSidebar-collapser": {
+        display: "var(--display, inline-flex)",
+      },
       ".EdgeSidebar-trigger": {
         display: "none",
       },

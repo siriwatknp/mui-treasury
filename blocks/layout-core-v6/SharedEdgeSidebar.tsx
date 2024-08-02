@@ -51,16 +51,15 @@ export function internalCollapseSidebar(options: {
         .getComputedStyle(event.target as Element)
         .getPropertyValue("--_sidebarCollapsed") === "1";
     const nextCollapsed = state === undefined ? !currentCollapsed : state;
-    console.log("nextCollapsed", nextCollapsed);
     const autoCollapse =
       window
         .getComputedStyle(event.target as Element)
         .getPropertyValue("--_autoCollapse") === "1";
-    console.log("autoCollapse", autoCollapse);
     if (autoCollapse) {
       // toggle within autoCollapse breakpoint
       if (nextCollapsed) {
         sidebar.removeAttribute("data-auto-collapse-off");
+        sidebar.removeAttribute("data-edge-uncollapsed");
       } else {
         sidebar.setAttribute("data-auto-collapse-off", "");
         sidebar.removeAttribute("data-edge-collapsed");

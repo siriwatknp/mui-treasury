@@ -50,6 +50,9 @@ export function applyPersistentRightStyles(
             }),
           }),
       "--EdgeSidebar-R-collapsible": "var(--collapsed-R)",
+      ".EdgeSidebar-R-collapser": {
+        display: "var(--display, inline-flex)",
+      },
       ".EdgeSidebar-R-trigger": {
         display: "none",
       },
@@ -94,6 +97,9 @@ export function applyPermanentRightStyles(
       ...(collapsedWidth && {
         "--EdgeSidebar-R-collapsedWidth": collapsedWidth,
       }),
+      ".EdgeSidebar-R-collapser": {
+        display: "var(--display, inline-flex)",
+      },
       ".EdgeSidebar-R-trigger": {
         display: "none",
       },
