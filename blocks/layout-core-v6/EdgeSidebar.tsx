@@ -52,19 +52,6 @@ function applyPersistentStyles(params: Omit<PersistentConfig, "variant">) {
       ".EdgeSidebar-trigger": {
         display: "none",
       },
-      ".EdgeSidebar-collapser": {
-        "--_sidebarCollapsed": "var(--collapsed, 1)",
-        display: "var(--display, inline-flex)",
-        ".Icon-collapse": {
-          display: "var(--collapsed, none) var(--uncollapsed, inline-block)",
-        },
-        ".Icon-uncollapse": {
-          display: "var(--collapsed, inline-block) var(--uncollapsed, none)",
-        },
-      },
-    },
-    ".Root:has(&[data-edge-uncollapsed])": {
-      "--EdgeSidebar-collapsible": "var(--uncollapsed)",
     },
   };
 }
@@ -97,26 +84,11 @@ function applyPermanentStyles(params: Omit<PermanentConfig, "variant">) {
       }),
       ...(collapsedWidth && {
         "--EdgeSidebar-collapsedWidth": collapsedWidth,
-        ".EdgeSidebar-collapser": {
-          display: "var(--display, inline-flex)",
-          "--_sidebarCollapsed": "var(--collapsed, 1)",
-          ".Icon-collapse": {
-            display: "var(--collapsed, none) var(--uncollapsed, inline-block)",
-          },
-          ".Icon-uncollapse": {
-            display: "var(--collapsed, inline-block) var(--uncollapsed, none)",
-          },
-        },
       }),
       ".EdgeSidebar-trigger": {
         display: "none",
       },
     },
-    ...(collapsedWidth && {
-      ".Root:has(&[data-edge-collapsed])": {
-        "--EdgeSidebar-collapsible": "var(--collapsed)",
-      },
-    }),
     ...(expandConfig && {
       "& .EdgeSidebarContent:hover": {
         "--SidebarContent-width": "var(--EdgeSidebar-permanentWidth)",
@@ -144,10 +116,19 @@ export function applyEdgeSidebarStyles(params: {
         const { variant, ...params } = variantConfig;
         if (variant === "permanent") {
           if ("autoCollapse" in variantConfig && variantConfig.autoCollapse) {
-            const nextBreakpoint =
-              theme.breakpoints.keys[
-                theme.breakpoints.keys.indexOf(variantConfig.autoCollapse) + 1
-              ];
+            let nextBreakpoint;
+            if (typeof variantConfig.autoCollapse === "number") {
+              nextBreakpoint = variantConfig.autoCollapse + 0.01;
+            } else if (
+              theme.breakpoints.keys.includes(variantConfig.autoCollapse)
+            ) {
+              nextBreakpoint =
+                theme.breakpoints.keys[
+                  theme.breakpoints.keys.indexOf(
+                    variantConfig.autoCollapse as Breakpoint,
+                  ) + 1
+                ];
+            }
             if (!nextBreakpoint) {
               console.warn(
                 "MUI Treasury Layout: `autoCollapse` cannot be the largest breakpoint.",
@@ -155,9 +136,11 @@ export function applyEdgeSidebarStyles(params: {
             } else {
               autoCollapseStyles = {
                 ".Root:has(&)": {
-                  "--EdgeSidebar-collapsible": {
-                    [variantConfig.autoCollapse]: "var(--collapsed)",
-                    [nextBreakpoint]: "var(--uncollapsed)",
+                  [theme.breakpoints.between(breakpoint, nextBreakpoint)]: {
+                    "--EdgeSidebar-collapsible": "var(--collapsed)",
+                  },
+                  [theme.breakpoints.up(nextBreakpoint)]: {
+                    "--EdgeSidebar-collapsible": "var(--uncollapsed)",
                   },
                 },
                 [theme.breakpoints.between(
@@ -180,7 +163,11 @@ export function applyEdgeSidebarStyles(params: {
           persistent: applyPersistentStyles,
           permanent: applyPermanentStyles,
         }[variant](params);
-        responsive[theme.breakpoints.up(breakpoint)] = variantStyles;
+        if (theme.breakpoints.keys.includes(breakpoint)) {
+          responsive[theme.breakpoints.up(breakpoint)] = variantStyles;
+        } else {
+          responsive[breakpoint] = variantStyles;
+        }
       }
     });
   return {
@@ -218,10 +205,11 @@ export function toggleTemporaryEdgeSidebar(options?: {
 
 const StyledEdgeSidebarLeft = styled(EdgeSidebarRoot)({
   ".Root:has(&)": {
-    /** default settings */
+    /** Root default settings */
     "--EdgeSidebar-variant": "var(--permanent)",
     "--EdgeSidebar-permanentWidth": "256px",
     "--EdgeSidebar-collapsible": "var(--uncollapsed)",
+    "--EdgeSidebar-collapsedWidth": "80px",
 
     /** DO NOT OVERRIDE, internal variables */
     "--temporary": "var(--EdgeSidebar-variant,)",
@@ -230,7 +218,29 @@ const StyledEdgeSidebarLeft = styled(EdgeSidebarRoot)({
                         var(--collapsed, var(--EdgeSidebar-collapsedWidth, 0px))`,
     "--collapsed": "var(--EdgeSidebar-collapsible,)",
     "--uncollapsed": "var(--EdgeSidebar-collapsible,)",
+
+    /** Collapsible feature */
+    ".EdgeSidebar-collapser": {
+      display: "var(--display, inline-flex)",
+      "--_sidebarCollapsed": "var(--collapsed, 1)",
+      ".Icon-collapse": {
+        display: "var(--collapsed, none) var(--uncollapsed, inline-block)",
+      },
+      ".Icon-uncollapse": {
+        display: "var(--collapsed, inline-block) var(--uncollapsed, none)",
+      },
+    },
   },
+
+  /** Collapsible feature */
+  ".Root:has(&[data-edge-uncollapsed])": {
+    "--EdgeSidebar-collapsible": "var(--uncollapsed)",
+  },
+  ".Root:has(&[data-edge-collapsed])": {
+    "--EdgeSidebar-collapsible": "var(--collapsed)",
+  },
+
+  /** EdgeSidebar default settings */
   "--EdgeSidebar-anchor": "var(--anchorLeft)",
   "--SidebarContent-width": "var(--_permanentWidth, 0px)",
   "--_temporary": "var(--temporary)",
@@ -243,6 +253,7 @@ const StyledEdgeSidebarLeft = styled(EdgeSidebarRoot)({
   borderColor: "var(--EdgeSidebar-sidelineColor)",
   "&::after": {
     border: "inherit",
+    left: 0,
   },
   "&::before": {
     display: `var(--temporary, block)

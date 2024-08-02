@@ -20,7 +20,7 @@ export type PermanentConfig = {
    * When the viewport shrink to the provided breakpoint, the EdgeSidebar will collapse automatically.
    * Must set `collapsedWidth` to specify the width of the collapsed sidebar
    */
-  autoCollapse?: Breakpoint;
+  autoCollapse?: Breakpoint | number;
   /**
    * Required `autoCollapse`, the width of the sidebar after collapsed.
    */
@@ -51,11 +51,12 @@ export function internalCollapseSidebar(options: {
         .getComputedStyle(event.target as Element)
         .getPropertyValue("--_sidebarCollapsed") === "1";
     const nextCollapsed = state === undefined ? !currentCollapsed : state;
+    console.log("nextCollapsed", nextCollapsed);
     const autoCollapse =
       window
         .getComputedStyle(event.target as Element)
         .getPropertyValue("--_autoCollapse") === "1";
-
+    console.log("autoCollapse", autoCollapse);
     if (autoCollapse) {
       // toggle within autoCollapse breakpoint
       if (nextCollapsed) {

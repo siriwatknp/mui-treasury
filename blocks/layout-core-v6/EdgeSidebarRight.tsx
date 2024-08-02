@@ -53,27 +53,12 @@ export function applyPersistentRightStyles(
       ".EdgeSidebar-R-trigger": {
         display: "none",
       },
-      ".EdgeSidebar-R-collapser": {
-        "--_sidebarCollapsed": "var(--collapsed-R, 1)",
-        display: "var(--display, inline-flex)",
-        ".Icon-collapse": {
-          display:
-            "var(--collapsed-R, none) var(--uncollapsed-R, inline-block)",
-        },
-        ".Icon-uncollapse": {
-          display:
-            "var(--collapsed-R, inline-block) var(--uncollapsed-R, none)",
-        },
-      },
     },
     ...(persistentBehavior === "none" && {
       "--SidebarContent-width": `var(--collapsed-R, var(--_permanentWidth-R, 0px)) var(--uncollapsed-R, ${width})`,
       "--EdgeSidebar-permanentSlide":
         "var(--uncollapsed-R, -100%) var(--collapsed-R, 0)",
     }),
-    ".Root:has(&[data-edge-uncollapsed])": {
-      "--EdgeSidebar-R-collapsible": "var(--uncollapsed-R)",
-    },
   };
 }
 
@@ -108,28 +93,11 @@ export function applyPermanentRightStyles(
       }),
       ...(collapsedWidth && {
         "--EdgeSidebar-R-collapsedWidth": collapsedWidth,
-        ".EdgeSidebar-R-collapser": {
-          display: "var(--display, inline-flex)",
-          "--_sidebarCollapsed": "var(--collapsed-R, 1)",
-          ".Icon-collapse": {
-            display:
-              "var(--collapsed-R, none) var(--uncollapsed-R, inline-block)",
-          },
-          ".Icon-uncollapse": {
-            display:
-              "var(--collapsed-R, inline-block) var(--uncollapsed-R, none)",
-          },
-        },
       }),
       ".EdgeSidebar-R-trigger": {
         display: "none",
       },
     },
-    ...(collapsedWidth && {
-      ".Root:has(&[data-edge-collapsed])": {
-        "--EdgeSidebar-R-collapsible": "var(--collapsed-R)",
-      },
-    }),
     ...(expandConfig && {
       "& .EdgeSidebarContent:hover": {
         "--SidebarContent-width": "var(--EdgeSidebar-R-permanentWidth)",
@@ -186,10 +154,19 @@ export function applyEdgeSidebarRightStyles(params: {
         const { variant, ...params } = variantConfig;
         if (variant === "permanent") {
           if ("autoCollapse" in variantConfig && variantConfig.autoCollapse) {
-            const nextBreakpoint =
-              theme.breakpoints.keys[
-                theme.breakpoints.keys.indexOf(variantConfig.autoCollapse) + 1
-              ];
+            let nextBreakpoint;
+            if (typeof variantConfig.autoCollapse === "number") {
+              nextBreakpoint = variantConfig.autoCollapse + 0.01;
+            } else if (
+              theme.breakpoints.keys.includes(variantConfig.autoCollapse)
+            ) {
+              nextBreakpoint =
+                theme.breakpoints.keys[
+                  theme.breakpoints.keys.indexOf(
+                    variantConfig.autoCollapse as Breakpoint,
+                  ) + 1
+                ];
+            }
             if (!nextBreakpoint) {
               console.warn(
                 "MUI Treasury Layout: `autoCollapse` cannot be the largest breakpoint.",
@@ -197,9 +174,11 @@ export function applyEdgeSidebarRightStyles(params: {
             } else {
               autoCollapseStyles = {
                 ".Root:has(&)": {
-                  "--EdgeSidebar-R-collapsible": {
-                    [variantConfig.autoCollapse]: "var(--collapsed-R)",
-                    [nextBreakpoint]: "var(--uncollapsed-R)",
+                  [theme.breakpoints.between(breakpoint, nextBreakpoint)]: {
+                    "--EdgeSidebar-R-collapsible": "var(--collapsed-R)",
+                  },
+                  [theme.breakpoints.up(nextBreakpoint)]: {
+                    "--EdgeSidebar-R-collapsible": "var(--uncollapsed-R)",
                   },
                 },
                 [theme.breakpoints.between(
@@ -222,7 +201,11 @@ export function applyEdgeSidebarRightStyles(params: {
           persistent: applyPersistentRightStyles,
           permanent: applyPermanentRightStyles,
         }[variant](params);
-        responsive[theme.breakpoints.up(breakpoint)] = variantStyles;
+        if (theme.breakpoints.keys.includes(breakpoint)) {
+          responsive[theme.breakpoints.up(breakpoint)] = variantStyles;
+        } else {
+          responsive[breakpoint] = variantStyles;
+        }
       }
     });
   return {
@@ -233,7 +216,7 @@ export function applyEdgeSidebarRightStyles(params: {
 
 const StyledEdgeSidebarRight = styled(EdgeSidebarRoot)({
   ".Root:has(&)": {
-    /** default settings */
+    /** Root default settings */
     "--EdgeSidebar-R-variant": "var(--permanent-R)",
     "--EdgeSidebar-R-permanentWidth": "256px",
     "--EdgeSidebar-R-collapsible": "var(--uncollapsed-R)",
@@ -245,7 +228,29 @@ const StyledEdgeSidebarRight = styled(EdgeSidebarRoot)({
                         var(--collapsed-R, var(--EdgeSidebar-R-collapsedWidth, 0px))`,
     "--collapsed-R": "var(--EdgeSidebar-R-collapsible,)",
     "--uncollapsed-R": "var(--EdgeSidebar-R-collapsible,)",
+
+    /** Collapsible feature */
+    ".EdgeSidebar-R-collapser": {
+      display: "var(--display, inline-flex)",
+      "--_sidebarCollapsed": "var(--collapsed-R, 1)",
+      ".Icon-collapse": {
+        display: "var(--collapsed-R, none) var(--uncollapsed-R, inline-block)",
+      },
+      ".Icon-uncollapse": {
+        display: "var(--collapsed-R, inline-block) var(--uncollapsed-R, none)",
+      },
+    },
   },
+
+  /** Collapsible feature */
+  ".Root:has(&[data-edge-uncollapsed])": {
+    "--EdgeSidebar-R-collapsible": "var(--uncollapsed-R)",
+  },
+  ".Root:has(&[data-edge-collapsed])": {
+    "--EdgeSidebar-R-collapsible": "var(--collapsed-R)",
+  },
+
+  /** EdgeSidebar default settings */
   "--EdgeSidebar-anchor": "var(--anchorRight)",
   "--SidebarContent-width": "var(--_permanentWidth-R, 0px)",
   "--_temporary": "var(--temporary-R)",

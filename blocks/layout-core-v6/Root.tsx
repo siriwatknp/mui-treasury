@@ -22,6 +22,7 @@ const StyledRoot = styled("div")(({ theme }) => ({
   "--Root-height": "100lvh",
   "--Header-underline": `1px solid ${(theme.vars || theme).palette.divider}`,
   "--Header-background": (theme.vars || theme).palette.background.paper,
+  // '--Content-insetBottom': '0px', // this is a placeholder for documenting the variable, it already has a fallback value.
   "--Footer-background": (theme.vars || theme).palette.background.paper,
   "--Footer-overline": `1px solid ${(theme.vars || theme).palette.divider}`,
   "--EdgeSidebar-overlay": "rgba(0, 0, 0, 0.48)",
