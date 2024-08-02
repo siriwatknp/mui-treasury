@@ -9,6 +9,7 @@ import { styled } from "./zero-styled";
 const StyledContent = styled("main")({
   gridArea: "Content",
   minHeight: 0,
+  marginBottom: "var(--Content-insetBottom)",
 });
 
 const Content = React.forwardRef<HTMLElement, BoxProps>(function Content(
