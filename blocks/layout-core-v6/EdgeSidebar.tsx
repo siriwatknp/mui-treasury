@@ -56,6 +56,12 @@ function applyPersistentStyles(params: Omit<PersistentConfig, "variant">) {
         display: "none",
       },
     },
+    ...(persistentBehavior === "none" && {
+      "--SidebarContent-shadow": "0 0 10px rgba(0,0,0,0.1)",
+      "&:not([data-edge-uncollapsed])": {
+        "--SidebarContent-shadow": "none",
+      },
+    }),
   };
 }
 
@@ -79,6 +85,7 @@ function applyPermanentStyles(params: Omit<PermanentConfig, "variant">) {
     }
   }
   return {
+    "--SidebarContent-shadow": "none",
     "--SidebarContent-width": "var(--_permanentWidth, 0px)",
     ".Root:has(&)": {
       "--EdgeSidebar-variant": "var(--permanent)",
@@ -99,7 +106,7 @@ function applyPermanentStyles(params: Omit<PermanentConfig, "variant">) {
       "& .EdgeSidebarContent:hover": {
         "--SidebarContent-width": "var(--EdgeSidebar-permanentWidth)",
         "--SidebarContent-transitionDelay": expandConfig.delay,
-        boxShadow: `var(--collapsed, ${expandConfig.shadow}) var(--uncollapsed, none)`,
+        "--SidebarContent-shadow": `var(--collapsed, ${expandConfig.shadow}) var(--uncollapsed, none)`,
       },
     }),
   };

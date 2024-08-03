@@ -5,6 +5,7 @@ import { styled } from "./zero-styled";
 const StyledEdgeSidebarContent = styled("div")({
   display: "flex",
   background: "var(--EdgeSidebarContent-background)",
+  boxShadow: "var(--EdgeSidebarContent-shadow, var(--SidebarContent-shadow))", // --SidebarContent-shadow is internal.
   flexDirection: "column",
   opacity: `var(--_temporary, var(--EdgeSidebar-temporaryOpen))
             var(--_permanent, 1)`,
@@ -19,7 +20,7 @@ const StyledEdgeSidebarContent = styled("div")({
   height: "var(--_temporary, 100%)",
   overflowY: "var(--_temporary, auto)" as any,
   transition: `var(--_temporary, opacity 0.3s, transform 0.3s)
-               var(--_permanent, opacity 0.7s, width 0.3s var(--SidebarContent-transitionDelay, 0s), transform 0.3s var(--SidebarContent-transitionDelay, 0s), box-shadow 0.3s var(--SidebarContent-transitionDelay, 0s))`,
+               var(--_permanent, opacity 0.4s, width 0.3s var(--SidebarContent-transitionDelay, 0s), transform 0.3s var(--SidebarContent-transitionDelay, 0s), box-shadow 0.3s var(--SidebarContent-transitionDelay, 0s))`,
   transform: `var(--_temporary, var(--anchorLeft, translateX(calc((1 - var(--EdgeSidebar-temporaryOpen)) * -100%))) var(--anchorRight, translateX(calc(var(--EdgeSidebar-temporaryOpen) * -100%))))
                var(--_permanent, translateX(var(--EdgeSidebar-permanentSlide, 0)))`,
   "[data-sidebar-hidden] &": {

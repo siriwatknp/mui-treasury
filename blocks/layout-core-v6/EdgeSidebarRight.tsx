@@ -61,6 +61,10 @@ export function applyPersistentRightStyles(
       "--SidebarContent-width": `var(--collapsed-R, var(--_permanentWidth-R, 0px)) var(--uncollapsed-R, ${width})`,
       "--EdgeSidebar-permanentSlide":
         "var(--uncollapsed-R, -100%) var(--collapsed-R, 0)",
+      "--SidebarContent-shadow": "0 0 10px rgba(0,0,0,0.1)",
+      "&:not([data-edge-uncollapsed])": {
+        "--SidebarContent-shadow": "none",
+      },
     }),
   };
 }
@@ -88,6 +92,7 @@ export function applyPermanentRightStyles(
   }
   return {
     "--EdgeSidebar-permanentSlide": "0", // to override persistent styles
+    "--SidebarContent-shadow": "none",
     "--SidebarContent-width": "var(--_permanentWidth-R, 0px)",
     ".Root:has(&)": {
       "--EdgeSidebar-R-variant": "var(--permanent-R)",

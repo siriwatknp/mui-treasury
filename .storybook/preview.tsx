@@ -49,6 +49,7 @@ const preview: Preview = {
               "EdgeSidebar",
               "InsetSidebar",
             ],
+            "Styling",
             "Tutorials",
             ["Dashboard", "Blog"],
             "Preset",
