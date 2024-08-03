@@ -24,3 +24,10 @@ To request a block, open a new issue with the title `Request: [block name]` and 
 
 5. run `yarn storybook` to see the block and start working on it.
 6. create a [PR](https://github.com/siriwatknp/mui-treasury/pulls).
+
+## CLI development
+
+- Run `yarn dev` to start watching the changed files.
+- Make changes to the src folder.
+- Run `yarn link`
+- Run `mui-tresury ...` to test the CLI.

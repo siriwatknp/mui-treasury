@@ -175,10 +175,14 @@ const program = createProgram({
         fs.mkdirSync(tempTemplateRoot, { recursive: true });
       }
       logger.info(`start cloning ${chalk.bold(sources.length)} packages...`);
+      const extractedBlocks: string[] = [];
       try {
         if (sources.length) {
           await downloadAndExtractCode(tempRoot, sources, config.branch);
         }
+        fs.readdirSync(tempRoot).forEach((mod) => {
+          extractedBlocks.push(mod);
+        });
         const excludedFiles = [
           ...(!config.storybook ? [`!${tempRoot}/**/*.stories.*`] : []),
           `!${tempRoot}/**/*.mdx`,
@@ -203,6 +207,30 @@ const program = createProgram({
             ),
           ),
         );
+        const notFoundBlocks: string[] = [];
+        sources.forEach((mod) => {
+          if (!extractedBlocks.includes(mod)) {
+            notFoundBlocks.push(mod);
+          }
+        });
+        if (extractedBlocks.length) {
+          logger.log(
+            chalk.bold(
+              chalk.green(
+                `\u2705 [${extractedBlocks.map((item) => `"${item}"`).join(",")}] cloned successfully!`,
+              ),
+            ),
+          );
+        }
+        if (notFoundBlocks.length) {
+          logger.log(
+            chalk.bold(
+              chalk.red(
+                `\u274C [${notFoundBlocks.map((item) => `"${item}"`).join(", ")}] not found. Please check the block name.`,
+              ),
+            ),
+          );
+        }
       } catch (error) {
         logger.log(chalk.bold(chalk.red("❌ clone failed!")));
         throw error;
