@@ -75,6 +75,11 @@ export function LayoutV6AppAnalytics() {
           <IconButton
             className="EdgeSidebar-collapser"
             onClick={(event) => toggleEdgeSidebarCollapse({ event })}
+            sx={{
+              marginLeft:
+                "var(--uncollapsed, max(0px, (1px - var(--EdgeSidebar-permanentWidth)) * 240))",
+              transition: "margin-left 0.3s",
+            }}
           >
             <MenuRounded className="Icon-uncollapse" />
             <ChevronLeftRounded className="Icon-collapse" />

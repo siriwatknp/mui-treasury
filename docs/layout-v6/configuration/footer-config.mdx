@@ -48,7 +48,13 @@ Below is an example of a Footer with an InsetSidebar with a `fixed` position:
 
 export function DemoInsetSidebarFixed() {
   return (
-    <Root sx={{ overflow: "hidden", ...applyRootStyles({ height: "30vh" }) }}>
+    <Root
+      sx={{
+        overflow: "hidden",
+        containerType: "inline-size",
+        ...applyRootStyles({ height: "30vh" }),
+      }}
+    >
       <Header
         sx={{
           ...applyHeaderStyles({

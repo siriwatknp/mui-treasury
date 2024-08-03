@@ -176,7 +176,11 @@ Also the area of `fixed` inset sidebar cover to the edge of the screen.
 export function DemoInsetSidebarFixed() {
   return (
     <Root
-      sx={{ "--Root-height": "30vh", maxHeight: "30vh", overflow: "hidden" }}
+      sx={{
+        overflow: "hidden",
+        containerType: "inline-size",
+        ...applyRootStyles({ height: "30vh", fixedHeight: true }),
+      }}
     >
       <Content
         sx={{
@@ -208,6 +212,9 @@ export function DemoInsetSidebarFixed() {
 <InsetSidebar position="fixed">...</InsetSidebar>
 ```
 
+> Note: For nested layout with `fixed` inset sidebar,
+> you need to add CSS `container-type: inline-size` to the `Root` component to create boundary for fixed inset sidebar.
+
 ## Width
 
 Use `applyInsetSidebarStyles` to set the width of the Inset Sidebar. It requires an object with the following properties:
@@ -216,7 +223,7 @@ Use `applyInsetSidebarStyles` to set the width of the Inset Sidebar. It requires
 
 export function DemoInsetSidebarWidth() {
   return (
-    <Root sx={{ minHeight: "20vh" }}>
+    <Root sx={{ ...applyRootStyles({ height: "20vh" }) }}>
       <Content
         sx={{
           p: 2,
@@ -252,7 +259,7 @@ import {
   Root,
 } from "path/to/layout-core-v6";
 
-<Root sx={{ minHeight: "20vh" }}>
+<Root>
   <Content sx={{ p: 2 }}>
     <div>Content</div>
     <InsetSidebar

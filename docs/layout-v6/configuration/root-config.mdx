@@ -16,7 +16,7 @@ The Root component is the top-level layout.
 It controls the layout using [CSS grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout), so it requires these children to be direct descendants:
 
 - [Header](/docs/layout-v6-configuration-header--docs)
-- Content
+- [Content](/docs/layout-v6-configuration-content--docs)
 - [Footer](/docs/layout-v6-configuration-footer--docs)
 - [EdgeSidebar](/docs/layout-v6-configuration-edge-sidebar--docs)
 
@@ -59,7 +59,7 @@ import { applyRootStyles, Root } from "path/to/layout-core-v6";
 
 Add `fixedHeight: true` to the `applyRootStyles`.
 The layout will have a max-height equal to its height.
-This is useful for layout patterns like fullscreen layout.
+This is useful for layout patterns like fullscreen layout or nested layout.
 
 export function DemoFullscreen() {
   return (
