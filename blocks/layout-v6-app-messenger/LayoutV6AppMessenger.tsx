@@ -33,7 +33,7 @@ import {
   ConversationHead,
   MessengerSearch,
   // @ts-ignore
-} from "../layoutV5-app-messenger/components";
+} from "../layout-v5-app-messenger/components";
 
 const StyledHeader = styled(Header)(() => ({
   boxShadow: "0 1px 2px 0 rgba(0, 0, 0, .10)",

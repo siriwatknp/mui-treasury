@@ -28,7 +28,7 @@ import {
   dailyShoppingTheme,
   DailySummary,
   // @ts-ignore
-} from "../layoutV5-app-shoppingCart/components";
+} from "../layout-v5-app-shoppingCart/components";
 
 const StyledHeader = styled(Header)(() => ({
   backgroundColor: "#ffffff",
