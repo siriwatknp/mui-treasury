@@ -21,7 +21,7 @@ export const edgeSidebarClasses = {
 };
 
 function applyTemporaryStyles(params: Omit<TemporaryConfig, "variant">) {
-  const { width = "300px" } = params || {};
+  const { width = "300px", fullHeight } = params || {};
   return {
     "--EdgeSidebar-temporaryWidth": "0px",
     ".Root:has(&)": {
@@ -33,6 +33,12 @@ function applyTemporaryStyles(params: Omit<TemporaryConfig, "variant">) {
     "&[data-temporary-open], &[data-mobile-closing]": {
       "--EdgeSidebar-temporaryWidth": width,
     },
+    ...(fullHeight && {
+      zIndex: 5,
+      "& .EdgeSidebarContent": {
+        top: 0,
+      },
+    }),
   };
 }
 
@@ -129,7 +135,8 @@ export function applyEdgeSidebarStyles(params: {
 }) {
   const { config, theme } = params;
   let autoCollapseStyles = {};
-  let responsive: Record<string, any> = {};
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const responsive: any = {};
   (Object.keys(config) as Array<Breakpoint>)
     .sort((a, b) => theme.breakpoints.values[a] - theme.breakpoints.values[b])
     .forEach((breakpoint) => {

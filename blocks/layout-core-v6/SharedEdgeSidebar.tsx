@@ -4,6 +4,7 @@ import { styled } from "./zero-styled";
 export type TemporaryConfig = {
   variant: "temporary";
   width?: string;
+  fullHeight?: boolean;
 };
 export type PersistentConfig = {
   variant: "persistent";

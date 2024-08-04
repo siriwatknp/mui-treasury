@@ -502,6 +502,30 @@ export function DemoTemporary() {
 </Content>
 ```
 
+### Full height
+
+For full-width header, the temporary sidebar will stay below the header.
+To make the temporary sidebar cover the full height, you need to add the `fullHeight` property to the config.
+
+```jsx
+<Header sx={{ ...applyHeaderStyles({ fullWidth: true, height: '56px' })}}>
+  ...
+</Header>
+<EdgeSidebar
+  sx={(theme) => ({
+    ...applyEdgeSidebarStyles({
+      theme,
+      config: {
+        xs: { variant: "temporary", width: "256px", fullHeight: true },
+      },
+    }),
+  })}
+>
+  <EdgeTemporaryClose />
+  <EdgeSidebarContent>EdgeSidebar</EdgeSidebarContent>
+</EdgeSidebar>
+```
+
 ## Right Edge Sidebar
 
 To render an edge sidebar on the right side, you need to use `EdgeSidebarRight` component instead.
