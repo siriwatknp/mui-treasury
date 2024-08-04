@@ -13,6 +13,13 @@ import {
 } from "./SharedEdgeSidebar";
 import { styled } from "./zero-styled";
 
+export const edgeSidebarRightClasses = {
+  collapser: "EdgeSidebar-R-collapser",
+  trigger: "EdgeSidebar-R-trigger",
+  triggerIconCollapse: "Icon-collapse",
+  triggerIconUncollapse: "Icon-uncollapse",
+};
+
 export function applyTemporaryRightStyles(
   params: Omit<TemporaryConfig, "variant">,
 ) {
@@ -36,12 +43,22 @@ export function applyPersistentRightStyles(
 ) {
   const { width = "256px", persistentBehavior = "fit" } = params || {};
   return {
+    ...(persistentBehavior === "none" && {
+      zIndex: 2,
+      "--SidebarContent-width": `var(--collapsed-R, var(--_permanentWidth-R, 0px)) var(--uncollapsed-R, ${width})`,
+      "--EdgeSidebar-permanentSlide":
+        "var(--uncollapsed-R, -100%) var(--collapsed-R, 0)",
+      "--SidebarContent-shadow":
+        "0 0 10px rgba(0,0,0,0.1), calc(-1 * var(--EdgeSidebar-sidelineWidth)) 0 var(--EdgeSidebar-sidelineColor)",
+      "&:not([data-edge-uncollapsed])": {
+        "--SidebarContent-shadow": "none",
+      },
+    }),
     ".Root:has(&)": {
       "--EdgeSidebar-R-variant": "var(--permanent-R)",
       "--EdgeSidebar-R-collapsedWidth": "0px",
       ...(persistentBehavior === "none"
         ? {
-            zIndex: 2,
             "--EdgeSidebar-R-permanentWidth": "0px",
           }
         : {
@@ -57,15 +74,6 @@ export function applyPersistentRightStyles(
         display: "none",
       },
     },
-    ...(persistentBehavior === "none" && {
-      "--SidebarContent-width": `var(--collapsed-R, var(--_permanentWidth-R, 0px)) var(--uncollapsed-R, ${width})`,
-      "--EdgeSidebar-permanentSlide":
-        "var(--uncollapsed-R, -100%) var(--collapsed-R, 0)",
-      "--SidebarContent-shadow": "0 0 10px rgba(0,0,0,0.1)",
-      "&:not([data-edge-uncollapsed])": {
-        "--SidebarContent-shadow": "none",
-      },
-    }),
   };
 }
 
@@ -113,7 +121,7 @@ export function applyPermanentRightStyles(
       "& .EdgeSidebarContent:hover": {
         "--SidebarContent-width": "var(--EdgeSidebar-R-permanentWidth)",
         "--SidebarContent-transitionDelay": expandConfig.delay,
-        boxShadow: `var(--collapsed-R, ${expandConfig.shadow}) var(--uncollapsed-R, none)`,
+        "--SidebarContent-shadow": `var(--collapsed-R, ${expandConfig.shadow}, calc(-1 * var(--EdgeSidebar-sidelineWidth)) 0 var(--EdgeSidebar-sidelineColor))`,
         "--EdgeSidebar-permanentSlide":
           "var(--collapsed-R, calc(var(--EdgeSidebar-R-collapsedWidth) - var(--SidebarContent-width))) var(--uncollapsed-R, 0)",
       },
@@ -274,6 +282,7 @@ const StyledEdgeSidebarRight = styled(EdgeSidebarRoot)({
   borderColor: "var(--EdgeSidebar-sidelineColor)",
   "&::after": {
     border: "inherit",
+    right: 0, // prevent Root overflow
   },
   "&::before": {
     display: `var(--temporary-R, block)

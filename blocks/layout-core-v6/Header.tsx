@@ -15,6 +15,7 @@ export function applyHeaderStyles(params?: {
   `;
   return {
     height,
+    ...(fullWidth && { zIndex: 3 }),
     ".Root:has(&)": {
       "--Header-height": height,
       ...(fullWidth && {
@@ -41,7 +42,6 @@ const StyledHeader = styled("header")({
   alignContent: "center",
   display: "flex",
   alignItems: "center",
-  zIndex: 1,
   top: 0, // for position sticky to work
   position: "sticky",
   background: "var(--Header-background)",

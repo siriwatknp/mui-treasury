@@ -13,6 +13,13 @@ import {
 } from "./SharedEdgeSidebar";
 import { styled } from "./zero-styled";
 
+export const edgeSidebarClasses = {
+  collapser: "EdgeSidebar-collapser",
+  trigger: "EdgeSidebar-trigger",
+  triggerIconCollapse: "Icon-collapse",
+  triggerIconUncollapse: "Icon-uncollapse",
+};
+
 function applyTemporaryStyles(params: Omit<TemporaryConfig, "variant">) {
   const { width = "300px" } = params || {};
   return {
@@ -35,6 +42,11 @@ function applyPersistentStyles(params: Omit<PersistentConfig, "variant">) {
     ...(persistentBehavior === "none" && {
       zIndex: 2,
       "--SidebarContent-width": `var(--collapsed, var(--_permanentWidth, 0px)) var(--uncollapsed, ${width})`,
+      "--SidebarContent-shadow":
+        "0 0 10px rgba(0,0,0,0.1), var(--EdgeSidebar-sidelineWidth) 0 var(--EdgeSidebar-sidelineColor)",
+      "&:not([data-edge-uncollapsed])": {
+        "--SidebarContent-shadow": "none",
+      },
     }),
     ".Root:has(&)": {
       "--EdgeSidebar-variant": "var(--permanent)",
@@ -56,12 +68,6 @@ function applyPersistentStyles(params: Omit<PersistentConfig, "variant">) {
         display: "none",
       },
     },
-    ...(persistentBehavior === "none" && {
-      "--SidebarContent-shadow": "0 0 10px rgba(0,0,0,0.1)",
-      "&:not([data-edge-uncollapsed])": {
-        "--SidebarContent-shadow": "none",
-      },
-    }),
   };
 }
 
@@ -106,7 +112,7 @@ function applyPermanentStyles(params: Omit<PermanentConfig, "variant">) {
       "& .EdgeSidebarContent:hover": {
         "--SidebarContent-width": "var(--EdgeSidebar-permanentWidth)",
         "--SidebarContent-transitionDelay": expandConfig.delay,
-        "--SidebarContent-shadow": `var(--collapsed, ${expandConfig.shadow}) var(--uncollapsed, none)`,
+        "--SidebarContent-shadow": `var(--collapsed, ${expandConfig.shadow}, var(--EdgeSidebar-sidelineWidth) 0 var(--EdgeSidebar-sidelineColor))`,
       },
     }),
   };

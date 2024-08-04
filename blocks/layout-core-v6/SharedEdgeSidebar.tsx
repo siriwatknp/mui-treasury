@@ -137,6 +137,7 @@ export const EdgeSidebarRoot = styled("div")({
   // To keep the EdgeSidebar fixed when the Content is scrollable
   position: "var(--_permanent, sticky)" as any,
   top: "var(--_permanent, var(--Header-clipHeight, 0px))",
+  zIndex: "var(--_temporary, 2) var(--_permanent, 1)",
   height:
     "var(--_permanent, calc(var(--Root-height) - var(--Header-clipHeight, 0px)))",
   // ==============================
