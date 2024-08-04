@@ -68,6 +68,13 @@ function applyPersistentStyles(params: Omit<PersistentConfig, "variant">) {
         display: "none",
       },
     },
+    /** Collapsible feature */
+    ".Root:has(&[data-edge-collapsed])": {
+      "--EdgeSidebar-collapsible": "var(--collapsed)",
+    },
+    ".Root:has(&[data-edge-uncollapsed])": {
+      "--EdgeSidebar-collapsible": "var(--uncollapsed)",
+    },
   };
 }
 
@@ -107,6 +114,10 @@ function applyPermanentStyles(params: Omit<PermanentConfig, "variant">) {
       ".EdgeSidebar-trigger": {
         display: "none",
       },
+    },
+    /** Collapsible feature */
+    ".Root:has(&[data-edge-collapsed])": {
+      "--EdgeSidebar-collapsible": "var(--collapsed)",
     },
     ...(expandConfig && {
       "& .EdgeSidebarContent:hover": {
@@ -249,14 +260,6 @@ const StyledEdgeSidebarLeft = styled(EdgeSidebarRoot)({
         display: "var(--collapsed, inline-block) var(--uncollapsed, none)",
       },
     },
-  },
-
-  /** Collapsible feature */
-  ".Root:has(&[data-edge-uncollapsed])": {
-    "--EdgeSidebar-collapsible": "var(--uncollapsed)",
-  },
-  ".Root:has(&[data-edge-collapsed])": {
-    "--EdgeSidebar-collapsible": "var(--collapsed)",
   },
 
   /** EdgeSidebar default settings */

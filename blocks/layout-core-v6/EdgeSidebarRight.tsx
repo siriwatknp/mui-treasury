@@ -74,6 +74,13 @@ export function applyPersistentRightStyles(
         display: "none",
       },
     },
+    /** Collapsible feature */
+    ".Root:has(&[data-edge-uncollapsed])": {
+      "--EdgeSidebar-R-collapsible": "var(--uncollapsed-R)",
+    },
+    ".Root:has(&[data-edge-collapsed])": {
+      "--EdgeSidebar-R-collapsible": "var(--collapsed-R)",
+    },
   };
 }
 
@@ -116,6 +123,10 @@ export function applyPermanentRightStyles(
       ".EdgeSidebar-R-trigger": {
         display: "none",
       },
+    },
+    /** Collapsible feature */
+    ".Root:has(&[data-edge-collapsed])": {
+      "--EdgeSidebar-R-collapsible": "var(--collapsed-R)",
     },
     ...(expandConfig && {
       "& .EdgeSidebarContent:hover": {
@@ -259,14 +270,6 @@ const StyledEdgeSidebarRight = styled(EdgeSidebarRoot)({
         display: "var(--collapsed-R, inline-block) var(--uncollapsed-R, none)",
       },
     },
-  },
-
-  /** Collapsible feature */
-  ".Root:has(&[data-edge-uncollapsed])": {
-    "--EdgeSidebar-R-collapsible": "var(--uncollapsed-R)",
-  },
-  ".Root:has(&[data-edge-collapsed])": {
-    "--EdgeSidebar-R-collapsible": "var(--collapsed-R)",
   },
 
   /** EdgeSidebar default settings */
