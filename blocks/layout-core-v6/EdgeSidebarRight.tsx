@@ -16,8 +16,8 @@ import { styled } from "./zero-styled";
 export const edgeSidebarRightClasses = {
   collapser: "EdgeSidebar-R-collapser",
   trigger: "EdgeSidebar-R-trigger",
-  triggerIconCollapse: "Icon-collapse",
-  triggerIconUncollapse: "Icon-uncollapse",
+  iconCollapse: "Icon-collapse",
+  iconUncollapse: "Icon-uncollapse",
 };
 
 export function applyTemporaryRightStyles(
@@ -74,10 +74,6 @@ export function applyPersistentRightStyles(
         display: "none",
       },
     },
-    /** Collapsible feature */
-    ".Root:has(&[data-edge-uncollapsed])": {
-      "--EdgeSidebar-R-collapsible": "var(--uncollapsed-R)",
-    },
     ".Root:has(&[data-edge-collapsed])": {
       "--EdgeSidebar-R-collapsible": "var(--collapsed-R)",
     },
@@ -123,10 +119,6 @@ export function applyPermanentRightStyles(
       ".EdgeSidebar-R-trigger": {
         display: "none",
       },
-    },
-    /** Collapsible feature */
-    ".Root:has(&[data-edge-collapsed])": {
-      "--EdgeSidebar-R-collapsible": "var(--collapsed-R)",
     },
     ...(expandConfig && {
       "& .EdgeSidebarContent:hover": {
@@ -175,7 +167,7 @@ export function applyEdgeSidebarRightStyles(params: {
 }) {
   const { config, theme } = params;
   let autoCollapseStyles = {};
-  let responsive: any = {};
+  let responsive: Record<string, any> = {};
   (Object.keys(config) as Array<Breakpoint>)
     .sort((a, b) => theme.breakpoints.values[a] - theme.breakpoints.values[b])
     .forEach((breakpoint) => {
@@ -270,6 +262,11 @@ const StyledEdgeSidebarRight = styled(EdgeSidebarRoot)({
         display: "var(--collapsed-R, inline-block) var(--uncollapsed-R, none)",
       },
     },
+  },
+
+  /** Collapsible feature */
+  ".Root:has(&[data-edge-uncollapsed])": {
+    "--EdgeSidebar-R-collapsible": "var(--uncollapsed-R)",
   },
 
   /** EdgeSidebar default settings */

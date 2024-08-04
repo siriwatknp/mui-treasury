@@ -16,8 +16,8 @@ import { styled } from "./zero-styled";
 export const edgeSidebarClasses = {
   collapser: "EdgeSidebar-collapser",
   trigger: "EdgeSidebar-trigger",
-  triggerIconCollapse: "Icon-collapse",
-  triggerIconUncollapse: "Icon-uncollapse",
+  iconCollapse: "Icon-collapse",
+  iconUncollapse: "Icon-uncollapse",
 };
 
 function applyTemporaryStyles(params: Omit<TemporaryConfig, "variant">) {
@@ -68,10 +68,6 @@ function applyPersistentStyles(params: Omit<PersistentConfig, "variant">) {
         display: "none",
       },
     },
-    /** Collapsible feature */
-    ".Root:has(&[data-edge-collapsed])": {
-      "--EdgeSidebar-collapsible": "var(--collapsed)",
-    },
     ".Root:has(&[data-edge-uncollapsed])": {
       "--EdgeSidebar-collapsible": "var(--uncollapsed)",
     },
@@ -115,10 +111,6 @@ function applyPermanentStyles(params: Omit<PermanentConfig, "variant">) {
         display: "none",
       },
     },
-    /** Collapsible feature */
-    ".Root:has(&[data-edge-collapsed])": {
-      "--EdgeSidebar-collapsible": "var(--collapsed)",
-    },
     ...(expandConfig && {
       "& .EdgeSidebarContent:hover": {
         "--SidebarContent-width": "var(--EdgeSidebar-permanentWidth)",
@@ -137,7 +129,7 @@ export function applyEdgeSidebarStyles(params: {
 }) {
   const { config, theme } = params;
   let autoCollapseStyles = {};
-  let responsive: any = {};
+  let responsive: Record<string, any> = {};
   (Object.keys(config) as Array<Breakpoint>)
     .sort((a, b) => theme.breakpoints.values[a] - theme.breakpoints.values[b])
     .forEach((breakpoint) => {
@@ -260,6 +252,11 @@ const StyledEdgeSidebarLeft = styled(EdgeSidebarRoot)({
         display: "var(--collapsed, inline-block) var(--uncollapsed, none)",
       },
     },
+  },
+
+  /** Collapsible feature */
+  ".Root:has(&[data-edge-collapsed])": {
+    "--EdgeSidebar-collapsible": "var(--collapsed)",
   },
 
   /** EdgeSidebar default settings */
