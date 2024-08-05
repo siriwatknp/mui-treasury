@@ -7,7 +7,8 @@ import type { Preview } from "@storybook/react";
 import type {} from "@mui/material/themeCssVarsAugmentation";
 import CssBaseline from "@mui/material/CssBaseline";
 import {
-  Experimental_CssVarsProvider as CssVarsProvider,
+  CssVarsProvider,
+  extendTheme,
   useColorScheme,
 } from "@mui/material/styles";
 import { useDarkMode } from "storybook-dark-mode";
@@ -49,10 +50,10 @@ const preview: Preview = {
               "EdgeSidebar",
               "InsetSidebar",
             ],
-            "Styling",
             "Tutorials",
             ["Dashboard", "Blog"],
             "Preset",
+            "Theme",
             "App",
           ],
           "Layout v5",
@@ -87,7 +88,12 @@ const preview: Preview = {
     draggableIframe(),
     (Story) => {
       return (
-        <CssVarsProvider>
+        <CssVarsProvider
+          theme={extendTheme({
+            colorSchemes: { light: true, dark: true },
+            colorSchemeSelector: "class",
+          })}
+        >
           <ModeObserver />
           <CssBaseline />
           <Story />

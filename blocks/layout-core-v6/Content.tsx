@@ -9,6 +9,7 @@ import { styled } from "./zero-styled";
 const StyledContent = styled("main")({
   gridArea: "Content",
   minHeight: 0,
+  marginTop: "var(--Content-insetTop)",
   marginBottom: "var(--Content-insetBottom)",
 });
 

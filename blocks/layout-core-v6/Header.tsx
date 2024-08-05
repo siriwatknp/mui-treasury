@@ -38,7 +38,7 @@ export function applyHeaderStyles(params?: {
 
 const StyledHeader = styled("header")({
   gridArea: "Header",
-  minHeight: 56,
+  height: 56, // better than `min-height` because user can set height to 0
   alignContent: "center",
   display: "flex",
   alignItems: "center",
