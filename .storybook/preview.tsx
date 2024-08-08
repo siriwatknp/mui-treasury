@@ -84,7 +84,7 @@ const preview: Preview = {
     },
   },
   decorators: [
-    cliToolbar(),
+    // cliToolbar(),
     draggableIframe(),
     (Story) => {
       return (

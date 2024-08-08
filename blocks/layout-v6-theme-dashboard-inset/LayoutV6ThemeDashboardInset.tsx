@@ -38,11 +38,15 @@ export function LayoutV6ThemeDashboardInset() {
           bgcolor: "background.paper",
           [theme.breakpoints.up("md")]: {
             margin: 2,
+            marginLeft: 0,
             borderRadius: "24px",
             border: "1px solid",
             borderColor: "divider",
             boxShadow: theme.vars.shadows[2],
           },
+        },
+        "& .EdgeSidebarContent": {
+          pt: 4.5,
         },
       })}
     >
@@ -91,7 +95,7 @@ export function LayoutV6ThemeDashboardInset() {
           }),
         })}
       >
-        <EdgeSidebarContent sx={{ py: 3 }}>
+        <EdgeSidebarContent>
           <ButtonBase sx={{ height: 48 }}>
             <Home />
           </ButtonBase>
