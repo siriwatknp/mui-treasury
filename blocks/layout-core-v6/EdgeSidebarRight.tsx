@@ -71,13 +71,14 @@ export function applyPersistentRightStyles(
       [`.${layoutClasses.EdgeSidebarRightCollapser}`]: {
         display: "var(--display, inline-flex)",
       },
-      [`.${layoutClasses.TemporaryEdgeSidebarTrigger}`]: {
+      [`.${layoutClasses.TemporaryEdgeSidebarRightTrigger}`]: {
         display: "none",
       },
     },
-    [`.${layoutClasses.Root}:has(&[${layoutAttrs.isEdgeSidebarCollapsed}])`]: {
-      "--EdgeSidebar-R-collapsible": "var(--collapsed-R)",
-    },
+    [`.${layoutClasses.Root}:has(&[${layoutAttrs.isEdgeSidebarUncollapsed}])`]:
+      {
+        "--EdgeSidebar-R-collapsible": "var(--uncollapsed-R)",
+      },
   };
 }
 
@@ -114,12 +115,12 @@ export function applyPermanentRightStyles(
       ...(collapsedWidth && {
         "--EdgeSidebar-R-collapsedWidth": collapsedWidth,
       }),
-    },
-    [`.${layoutClasses.EdgeSidebarRightCollapser}`]: {
-      display: "var(--display, inline-flex)",
-    },
-    [`.${layoutClasses.TemporaryEdgeSidebarRightTrigger}`]: {
-      display: "none",
+      [`.${layoutClasses.EdgeSidebarRightCollapser}`]: {
+        display: "var(--display, inline-flex)",
+      },
+      [`.${layoutClasses.TemporaryEdgeSidebarRightTrigger}`]: {
+        display: "none",
+      },
     },
     ...(expandConfig && {
       [`& .${layoutClasses.EdgeSidebarContent}:hover`]: {
@@ -259,18 +260,18 @@ const StyledEdgeSidebarRight = styled(EdgeSidebarRoot)({
     [`.${layoutClasses.EdgeSidebarRightCollapser}`]: {
       display: "var(--display, inline-flex)",
       "--_sidebarCollapsed": "var(--collapsed-R, 1)",
-      ".Icon-collapse": {
+      [`.${layoutClasses.EdgeSidebarUncollapsedVisible}`]: {
         display: "var(--collapsed-R, none) var(--uncollapsed-R, inline-block)",
       },
-      ".Icon-uncollapse": {
+      [`.${layoutClasses.EdgeSidebarCollapsedVisible}`]: {
         display: "var(--collapsed-R, inline-block) var(--uncollapsed-R, none)",
       },
     },
   },
 
   /** Collapsible feature */
-  [`.${layoutClasses.Root}:has(&[${layoutAttrs.isEdgeSidebarUncollapsed}])`]: {
-    "--EdgeSidebar-R-collapsible": "var(--uncollapsed-R)",
+  [`.${layoutClasses.Root}:has(&[${layoutAttrs.isEdgeSidebarCollapsed}])`]: {
+    "--EdgeSidebar-R-collapsible": "var(--collapsed-R)",
   },
 
   /** EdgeSidebar default settings */

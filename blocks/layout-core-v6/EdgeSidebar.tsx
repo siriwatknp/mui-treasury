@@ -250,12 +250,12 @@ const StyledEdgeSidebarLeft = styled(EdgeSidebarRoot)({
     [`.${layoutClasses.EdgeSidebarCollapser}`]: {
       display: "var(--display, inline-flex)",
       "--_sidebarCollapsed": "var(--collapsed, 1)",
-    },
-    [`.${layoutClasses.EdgeSidebarUncollapsedVisible}`]: {
-      display: "var(--collapsed, none) var(--uncollapsed, inline-block)",
-    },
-    [`.${layoutClasses.EdgeSidebarCollapsedVisible}`]: {
-      display: "var(--collapsed, inline-block) var(--uncollapsed, none)",
+      [`.${layoutClasses.EdgeSidebarUncollapsedVisible}`]: {
+        display: "var(--collapsed, none) var(--uncollapsed, inline-block)",
+      },
+      [`.${layoutClasses.EdgeSidebarCollapsedVisible}`]: {
+        display: "var(--collapsed, inline-block) var(--uncollapsed, none)",
+      },
     },
   },
 
