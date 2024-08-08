@@ -1,5 +1,6 @@
 import React from "react";
 import { BoxProps } from "@mui/material/Box";
+import { layoutClasses } from "./layoutClasses";
 import { styled } from "./zero-styled";
 
 const InsetSidebarContentRoot = styled("div")(({ theme }) => ({
@@ -36,7 +37,7 @@ const InsetSidebarContent = React.forwardRef<HTMLDivElement, BoxProps>(
       <InsetSidebarContentRoot
         // @ts-expect-error Material UI issue
         ref={ref}
-        className={`InsetSidebarContent ${className || ""}`}
+        className={`${layoutClasses.InsetSidebarContent} ${className || ""}`}
         {...props}
       >
         {children}

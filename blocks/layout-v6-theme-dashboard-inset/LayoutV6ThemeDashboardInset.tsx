@@ -10,9 +10,9 @@ import {
   applyHeaderStyles,
   Content,
   EdgeSidebar,
-  edgeSidebarClasses,
   EdgeSidebarContent,
   Header,
+  layoutClasses,
   Root,
   toggleTemporaryEdgeSidebar,
 } from "../layout-core-v6";
@@ -61,7 +61,7 @@ export function LayoutV6ThemeDashboardInset() {
         }}
       >
         <IconButton
-          className={edgeSidebarClasses.trigger}
+          className={layoutClasses.TemporaryEdgeSidebarTrigger}
           onClick={() => toggleTemporaryEdgeSidebar()}
         >
           <Menu />

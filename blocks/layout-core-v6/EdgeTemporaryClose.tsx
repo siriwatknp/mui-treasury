@@ -1,6 +1,6 @@
 import React from "react";
 import { SxProps } from "@mui/material/styles";
-import { toggleTemporaryEdgeSidebar } from "./EdgeSidebar";
+import { layoutAttrs, layoutClasses } from "./layoutClasses";
 import { styled } from "./zero-styled";
 
 const StyledEdgeTemporaryClose = styled("button")({
@@ -24,7 +24,7 @@ const StyledEdgeTemporaryClose = styled("button")({
     width: "1.5em",
     height: "1.5em",
   },
-  "[data-temporary-open] &": {
+  [`[${layoutAttrs.isTemporaryEdgeSidebarOpen}] &`]: {
     visibility: "visible",
     opacity: 1,
   },
@@ -40,7 +40,7 @@ const EdgeTemporaryClose = React.forwardRef<
   return (
     <StyledEdgeTemporaryClose
       ref={ref}
-      className={`EdgeTemporaryClose ${className || ""}`}
+      className={`${layoutClasses.TemporaryEdgeSidebarClose} ${className || ""}`}
       {...props}
     >
       {children || (

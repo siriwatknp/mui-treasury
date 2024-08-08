@@ -1,4 +1,5 @@
 import { Breakpoint } from "@mui/material/styles";
+import { layoutAttrs, layoutClasses } from "./layoutClasses";
 import { styled } from "./zero-styled";
 
 export type TemporaryConfig = {
@@ -59,20 +60,20 @@ export function internalCollapseSidebar(options: {
     if (autoCollapse) {
       // toggle within autoCollapse breakpoint
       if (nextCollapsed) {
-        sidebar.removeAttribute("data-auto-collapse-off");
-        sidebar.removeAttribute("data-edge-uncollapsed");
+        sidebar.removeAttribute(layoutAttrs.isAutoCollapseOff);
+        sidebar.removeAttribute(layoutAttrs.isEdgeSidebarUncollapsed);
       } else {
-        sidebar.setAttribute("data-auto-collapse-off", "");
-        sidebar.removeAttribute("data-edge-collapsed");
+        sidebar.setAttribute(layoutAttrs.isAutoCollapseOff, "");
+        sidebar.removeAttribute(layoutAttrs.isEdgeSidebarCollapsed);
       }
     } else {
       if (nextCollapsed) {
-        sidebar.setAttribute("data-edge-collapsed", "");
-        sidebar.removeAttribute("data-edge-uncollapsed");
-        sidebar.removeAttribute("data-auto-collapse-off");
+        sidebar.setAttribute(layoutAttrs.isEdgeSidebarCollapsed, "");
+        sidebar.removeAttribute(layoutAttrs.isEdgeSidebarUncollapsed);
+        sidebar.removeAttribute(layoutAttrs.isAutoCollapseOff);
       } else {
-        sidebar.removeAttribute("data-edge-collapsed");
-        sidebar.setAttribute("data-edge-uncollapsed", "");
+        sidebar.removeAttribute(layoutAttrs.isEdgeSidebarCollapsed);
+        sidebar.setAttribute(layoutAttrs.isEdgeSidebarUncollapsed, "");
       }
     }
   }
@@ -87,15 +88,16 @@ export function internalToggleSidebar(options: {
   const doc = d ?? document;
   const sidebar = doc.querySelector(selector) as HTMLDivElement | null;
   if (sidebar) {
-    const currentOpen = sidebar.getAttribute("data-temporary-open") !== null;
+    const currentOpen =
+      sidebar.getAttribute(layoutAttrs.isTemporaryEdgeSidebarOpen) !== null;
     const nextOpen = state === undefined ? !currentOpen : state;
     if (nextOpen) {
-      sidebar.setAttribute("data-temporary-open", "");
+      sidebar.setAttribute(layoutAttrs.isTemporaryEdgeSidebarOpen, "");
       sidebar.style.setProperty("--EdgeSidebar-temporaryOpen", "1");
       // @ts-expect-error Material UI issue
       function handleOutsideClick(event: MouseEvent) {
         const closer = doc.querySelector(
-          ".EdgeTemporaryClose",
+          `.${layoutClasses.TemporaryEdgeSidebarClose}`,
         ) as HTMLButtonElement;
         if (
           // clicking on the backdrop (psuedo element of sidebar) will close the sidebar
@@ -118,10 +120,10 @@ export function internalToggleSidebar(options: {
       // TODO: add a way to close the sidebar by swiping
       // TODO: add a way to close the sidebar by pressing ESC
     } else {
-      sidebar.removeAttribute("data-temporary-open");
-      sidebar.setAttribute("data-mobile-closing", "");
+      sidebar.removeAttribute(layoutAttrs.isTemporaryEdgeSidebarOpen);
+      sidebar.setAttribute(layoutAttrs.isTemporaryEdgeSidebarClosing, "");
       setTimeout(() => {
-        sidebar.removeAttribute("data-mobile-closing");
+        sidebar.removeAttribute(layoutAttrs.isTemporaryEdgeSidebarClosing);
       }, 300);
       sidebar.style.setProperty("--EdgeSidebar-temporaryOpen", "");
     }
@@ -153,12 +155,12 @@ export const EdgeSidebarRoot = styled("div")({
     visibility: "hidden",
     opacity: "var(--EdgeSidebar-temporaryOpen, 0)",
   },
-  "&[data-temporary-open]": {
+  [`&[${layoutAttrs.isTemporaryEdgeSidebarOpen}]`]: {
     "&::before": {
       visibility: "visible",
     },
   },
-  "html:has(&[data-temporary-open])": {
+  [`html:has(&[${layoutAttrs.isTemporaryEdgeSidebarOpen}])`]: {
     overflow: "hidden",
   },
   "&::after": {

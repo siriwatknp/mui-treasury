@@ -1,5 +1,6 @@
 import React from "react";
 import { BoxProps } from "@mui/material/Box";
+import { layoutClasses } from "./layoutClasses";
 import { styled } from "./zero-styled";
 
 const StyledInsetAvoidingView = styled("div")({
@@ -13,7 +14,7 @@ const InsetAvoidingView = React.forwardRef<HTMLDivElement, BoxProps>(
       <StyledInsetAvoidingView
         // @ts-expect-error Material UI issue
         ref={ref}
-        className={`InsetAvoidingView ${className || ""}`}
+        className={`${layoutClasses.InsetAvoidingView} ${className || ""}`}
         {...props}
       />
     );

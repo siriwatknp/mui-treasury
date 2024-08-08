@@ -1,6 +1,7 @@
 import React from "react";
 import { BoxProps } from "@mui/material/Box";
 import { Breakpoint } from "@mui/material/styles";
+import { layoutClasses } from "./layoutClasses";
 import { styled } from "./zero-styled";
 
 export function applyInsetSidebarStyles(params: {
@@ -25,10 +26,10 @@ export function applyInsetSidebarStyles(params: {
   return {
     width,
     // For `InsetAvoidingView`
-    ".Root:has(&:not(:last-child))": {
+    [`.${layoutClasses.Root}:has(&:not(:last-child))`]: {
       [`--InsetSidebarL-width`]: width,
     },
-    ".Root:has(&:last-child)": {
+    [`.${layoutClasses.Root}:has(&:last-child)`]: {
       [`--InsetSidebarR-width`]: width,
     },
     ...(typeof width !== "string" && {
@@ -64,7 +65,7 @@ const InsetSidebarRoot = styled("aside")({
     flexFlow: "row nowrap",
     flexGrow: 1,
   },
-  '*:has(> &) > :where(:not([class*="InsetSidebar"]))': {
+  [`*:has(> &) > :where(:not([class*="${layoutClasses.InsetSidebar}"]))`]: {
     flexGrow: 1,
     overflow: "auto",
   },
@@ -76,7 +77,7 @@ const InsetSidebar = React.forwardRef<HTMLDivElement, BoxProps>(
       <InsetSidebarRoot
         // @ts-expect-error Material UI issue
         ref={ref}
-        className={`InsetSidebar ${className || ""}`}
+        className={`${layoutClasses.InsetSidebar} ${className || ""}`}
         {...props}
       >
         {children}

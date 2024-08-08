@@ -1,5 +1,6 @@
 import React from "react";
 import { BoxProps } from "@mui/material/Box";
+import { layoutAttrs, layoutClasses } from "./layoutClasses";
 import { styled } from "./zero-styled";
 
 const StyledEdgeSidebarContent = styled("div")({
@@ -23,14 +24,15 @@ const StyledEdgeSidebarContent = styled("div")({
                var(--_permanent, opacity 0.4s, width 0.3s var(--SidebarContent-transitionDelay, 0s), transform 0.3s var(--SidebarContent-transitionDelay, 0s), box-shadow 0.3s var(--SidebarContent-transitionDelay, 0s))`,
   transform: `var(--_temporary, var(--anchorLeft, translateX(calc((1 - var(--EdgeSidebar-temporaryOpen)) * -100%))) var(--anchorRight, translateX(calc(var(--EdgeSidebar-temporaryOpen) * -100%))))
                var(--_permanent, translateX(var(--EdgeSidebar-permanentSlide, 0)))`,
-  "[data-sidebar-hidden] &": {
+  [`[${layoutAttrs.isEdgeSidebarContentHidden}] &`]: {
     visibility: "hidden",
     opacity: 0,
   },
-  "[data-temporary-open] &, [data-mobile-closing] &": {
-    visibility: "visible",
-  },
-  "[data-mobile-closing] &": {
+  [`[${layoutAttrs.isTemporaryEdgeSidebarOpen}] &, [${layoutAttrs.isTemporaryEdgeSidebarClosing}] &`]:
+    {
+      visibility: "visible",
+    },
+  [`[${layoutAttrs.isTemporaryEdgeSidebarClosing}] &`]: {
     transition: "transform 0.3s, visibility 0.3s, opacity 0.3s",
   },
 });
@@ -41,7 +43,7 @@ const EdgeSidebarContent = React.forwardRef<HTMLDivElement, BoxProps>(
       <StyledEdgeSidebarContent
         // @ts-expect-error Material UI issue
         ref={ref}
-        className={`EdgeSidebarContent ${className || ""}`}
+        className={`${layoutClasses.EdgeSidebarContent} ${className || ""}`}
         {...props}
       />
     );

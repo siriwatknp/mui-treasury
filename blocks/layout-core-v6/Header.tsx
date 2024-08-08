@@ -1,6 +1,7 @@
 import React from "react";
 import { BoxProps } from "@mui/material/Box";
 import { Breakpoint } from "@mui/material/styles";
+import { layoutClasses } from "./layoutClasses";
 import { styled } from "./zero-styled";
 
 export function applyHeaderStyles(params?: {
@@ -9,14 +10,14 @@ export function applyHeaderStyles(params?: {
 }) {
   const { height, fullWidth } = params || {};
   const clip = `
-    "Header Header Header"
-    "EdgeSidebar Content EdgeSidebar-R"
-    "EdgeSidebar Footer EdgeSidebar-R"
+    "${layoutClasses.Header} ${layoutClasses.Header} ${layoutClasses.Header}"
+    "${layoutClasses.EdgeSidebar} ${layoutClasses.Content} ${layoutClasses.EdgeSidebarRight}"
+    "${layoutClasses.EdgeSidebar} ${layoutClasses.Footer} ${layoutClasses.EdgeSidebarRight}"
   `;
   return {
     height,
     ...(fullWidth && { zIndex: 3 }),
-    ".Root:has(&)": {
+    [`.${layoutClasses.Root}:has(&)`]: {
       "--Header-height": height,
       ...(fullWidth && {
         gridTemplateAreas:
@@ -37,7 +38,7 @@ export function applyHeaderStyles(params?: {
 }
 
 const StyledHeader = styled("header")({
-  gridArea: "Header",
+  gridArea: layoutClasses.Header,
   height: 56, // better than `min-height` because user can set height to 0
   alignContent: "center",
   display: "flex",
@@ -56,7 +57,7 @@ const Header = React.forwardRef<HTMLElement, BoxProps>(function Header(
     <StyledHeader
       // @ts-expect-error Material UI issue
       ref={ref}
-      className={`Header ${className || ""}`}
+      className={`${layoutClasses.Header} ${className || ""}`}
       {...props}
     />
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import { BoxProps } from "@mui/material/Box";
 import { Breakpoint } from "@mui/material/styles";
+import { layoutClasses } from "./layoutClasses";
 import { styled } from "./zero-styled";
 
 export function applyRootStyles(params?: {
@@ -43,16 +44,16 @@ const StyledRoot = styled("div")(({ theme }) => ({
   gridTemplateColumns:
     "var(--_start-col, 0px) minmax(0, 1fr) var(--_end-col, 0px)", // minmax(0, 1fr) is used over `1fr` to prevent root horizontal overflow
   gridTemplateAreas: `
-    "EdgeSidebar Header EdgeSidebar-R"
-    "EdgeSidebar Content EdgeSidebar-R"
-    "EdgeSidebar Footer EdgeSidebar-R"
+    "${layoutClasses.EdgeSidebar} ${layoutClasses.Header} ${layoutClasses.EdgeSidebarRight}"
+    "${layoutClasses.EdgeSidebar} ${layoutClasses.Content} ${layoutClasses.EdgeSidebarRight}"
+    "${layoutClasses.EdgeSidebar} ${layoutClasses.Footer} ${layoutClasses.EdgeSidebarRight}"
   `,
 
-  [`&:has(.EdgeSidebar)`]: {
+  [`&:has(.${layoutClasses.EdgeSidebar})`]: {
     "--_start-col": "max-content",
     "--EdgeSidebar-temporaryOpen": "0",
   },
-  [`&:has(.EdgeSidebar-R)`]: {
+  [`&:has(.${layoutClasses.EdgeSidebarRight})`]: {
     "--_end-col": "max-content",
     "--EdgeSidebar-temporaryOpen": "0",
   },
@@ -66,7 +67,7 @@ const Root = React.forwardRef<HTMLDivElement, BoxProps>(function Root(
     <StyledRoot
       // @ts-expect-error Material UI issue
       ref={ref}
-      className={`Root ${className || ""}`}
+      className={`${layoutClasses.Root} ${className || ""}`}
       {...props}
     />
   );
