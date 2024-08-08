@@ -1,22 +1,28 @@
 import React from "react";
 import Close from "@mui/icons-material/Close";
 import Menu from "@mui/icons-material/Menu";
+import TuneIcon from "@mui/icons-material/Tune";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
 import {
+  applyEdgeSidebarRightStyles,
   applyEdgeSidebarStyles,
   applyHeaderStyles,
   applyRootStyles,
   Content,
   EdgeSidebar,
   EdgeSidebarContent,
+  EdgeSidebarRight,
   Footer,
   Header,
+  layoutClasses,
   Root,
+  toggleEdgeSidebarRightCollapse,
   toggleTemporaryEdgeSidebar,
+  toggleTemporaryEdgeSidebarRight,
 } from "../layout-core-v6";
 
 export function LayoutV6AppClaude() {
@@ -44,6 +50,24 @@ export function LayoutV6AppClaude() {
           <Menu />
         </IconButton>
         Header
+        <IconButton
+          className={layoutClasses.TemporaryEdgeSidebarRightTrigger}
+          sx={{ ml: "auto" }}
+          onClick={() => {
+            toggleTemporaryEdgeSidebarRight();
+          }}
+        >
+          <TuneIcon />
+        </IconButton>
+        <IconButton
+          className={layoutClasses.EdgeSidebarRightCollapser}
+          sx={{ ml: "auto" }}
+          onClick={(event) => {
+            toggleEdgeSidebarRightCollapse({ event });
+          }}
+        >
+          <TuneIcon />
+        </IconButton>
       </Header>
       <Content sx={{ overflow: "auto" }}>
         <Box sx={{ maxWidth: 400, px: 2, pt: 0.5, mx: "auto" }}>
@@ -86,7 +110,6 @@ export function LayoutV6AppClaude() {
           sx={{
             background: "none",
             marginTop: "var(--permanent, calc(-1 * var(--Header-height)))",
-            // opacity: "var(--collapsed, 0)",
             containerType: "inline-size",
           }}
         >
@@ -120,6 +143,65 @@ export function LayoutV6AppClaude() {
           </Box>
         </EdgeSidebarContent>
       </EdgeSidebar>
+      <EdgeSidebarRight
+        sx={(theme) => ({
+          ...applyEdgeSidebarRightStyles({
+            theme,
+            config: {
+              xs: {
+                variant: "temporary",
+                // ถ้าจอเล็กกว่า 720px ให้ width = 100vw
+                // ถ้าจอใหญ่กว่า 720px ให้ width = 420px
+                width: "clamp(420px, (720px - 100vw) * 9999, 100vw)",
+              },
+              md: {
+                variant: "permanent",
+                width: "420px",
+                collapsedWidth: "0px",
+              },
+            },
+          }),
+          "&::before": {
+            display: "none",
+          },
+        })}
+      >
+        <EdgeSidebarContent sx={{ background: "none" }}>
+          <Box
+            sx={{
+              border: "1px solid",
+              borderColor: "divider",
+              backgroundColor: "rgba(0 0 0 / 0.12)",
+              m: 1,
+              height: {
+                xs: "calc(100% - var(--Header-height) - 16px)",
+                md: "100%",
+              },
+              borderRadius: "8px",
+              backdropFilter: "blur(4px)",
+            }}
+          >
+            <Box sx={{ textAlign: "right", p: 1 }}>
+              <IconButton
+                className={layoutClasses.TemporaryEdgeSidebarRightTrigger}
+                onClick={() => toggleTemporaryEdgeSidebarRight()}
+              >
+                <Close />
+              </IconButton>
+              <IconButton
+                className={layoutClasses.EdgeSidebarRightCollapser}
+                onClick={(event) =>
+                  toggleEdgeSidebarRightCollapse({
+                    event,
+                  })
+                }
+              >
+                <Close />
+              </IconButton>
+            </Box>
+          </Box>
+        </EdgeSidebarContent>
+      </EdgeSidebarRight>
       <Footer sx={{ background: "unset", border: "none" }}>
         <Box
           sx={{
