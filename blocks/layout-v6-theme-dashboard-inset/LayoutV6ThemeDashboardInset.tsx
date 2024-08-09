@@ -24,17 +24,17 @@ export function LayoutV6ThemeDashboardInset() {
         ...theme.applyStyles("light", {
           backgroundColor: "#f0f4f8",
         }),
-        "--Header-underline": {
-          md: "none",
+        [`& .${layoutClasses.Header}`]: {
+          borderBottom: {
+            md: "none",
+          },
         },
-        "--EdgeSidebarContent-background": {
-          md: "unset",
+        [`& .${layoutClasses.EdgeSidebarContent}`]: {
+          background: {
+            md: "unset",
+          },
         },
-        "--EdgeSidebar-sidelineWidth": "0px",
-        "--Content-insetTop": {
-          md: "12px",
-        },
-        "& .Content": {
+        [`& .${layoutClasses.Content}`]: {
           bgcolor: "background.paper",
           [theme.breakpoints.up("md")]: {
             margin: 2,
@@ -45,8 +45,9 @@ export function LayoutV6ThemeDashboardInset() {
             boxShadow: theme.vars.shadows[2],
           },
         },
-        "& .EdgeSidebarContent": {
+        [`& .${layoutClasses.EdgeSidebarContent}`]: {
           pt: 4.5,
+          borderRight: "0px",
         },
       })}
     >

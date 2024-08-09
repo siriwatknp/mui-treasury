@@ -130,7 +130,7 @@ You can use customize these variables through the `sx` prop of the `Root` compon
 
 ```jsx
 // Example
-<Root sx={{ '--Header-background': '#e5e5e5' }}>
+<Root sx={{ '--Content-insetBottom': '1rem' }}>
 ```
 
 <style>{`
@@ -139,18 +139,10 @@ You can use customize these variables through the `sx` prop of the `Root` compon
   }
 `}</style>
 
-| Variable                           | Description                                               | Default value                     |
-| ---------------------------------- | --------------------------------------------------------- | --------------------------------- |
-| `--Header-underline`               | The border bottom of the header                           | `1px solid theme.palette.divider` |
-| `--Header-background`              | The background color of the header                        | `theme.palette.background.paper`  |
-| `--Content-insetTop`               | The top spacing of the outer Content                      | `0px`                             |
-| `--Content-insetBottom`            | The bottom spacing of the outer Content                   | `0px`                             |
-| `--Footer-background`              | The background color of the footer                        | `theme.palette.background.paper`  |
-| `--Footer-overline`                | The border top of the footer                              | `1px solid theme.palette.divider` |
-| `--EdgeSidebar-overlay`            | The overlay background of the temporary edge sidebar      | `rgba(0, 0, 0, 0.48)`             |
-| `--EdgeSidebar-sidelineWidth`      | The width of the edge sidebar border for both sides       | `1px`                             |
-| `--EdgeSidebar-sidelineColor`      | The color of the edge sidebar sideline                    | `theme.palette.divider`           |
-| `--EdgeSidebarContent-background`  | The background of the edge sidebar content for both sides | `theme.palette.background.paper`  |
-| `--EdgeSidebarContent-shadow`      | The box-shadow of the edge sidebar content for both sides |                                   |
-| `--InsetSidebarContent-background` | The background of the inset sidebar content               | `theme.palette.background.paper`  |
-| `--InsetSidebarContent-sideline`   | The side border of the inset sidebar content              | `1px solid theme.palette.divider` |
+| Variable                      | Description                                               | Default value           |
+| ----------------------------- | --------------------------------------------------------- | ----------------------- |
+| `--Content-insetTop`          | The top spacing of the outer Content                      | `0px`                   |
+| `--Content-insetBottom`       | The bottom spacing of the outer Content                   | `0px`                   |
+| `--EdgeSidebar-sidelineWidth` | The width of the edge sidebar border for both sides       | `1px`                   |
+| `--EdgeSidebar-sidelineColor` | The color of the edge sidebar sideline                    | `theme.palette.divider` |
+| `--EdgeSidebarContent-shadow` | The box-shadow of the edge sidebar content for both sides |                         |

@@ -23,6 +23,7 @@ import {
   Header,
   InsetSidebar,
   InsetSidebarContent,
+  layoutClasses,
   Root,
   toggleEdgeSidebarCollapse,
 } from "../layout-core-v6";
@@ -40,13 +41,20 @@ export function LayoutV6AppGmail() {
         sx={{
           flex: "auto",
           bgcolor: "#F5F8FC",
-          "--Header-background": "unset",
-          "--Header-underline": "unset",
-          "--Content-insetBottom": "1rem",
-          "--EdgeSidebar-sidelineWidth": "0px",
-          "--InsetSidebarContent-background": "unset",
-          "--InsetSidebarContent-sideline": "unset",
           ...applyRootStyles({ height: "100lvh", fixedHeight: true }),
+          [`& .${layoutClasses.Content}`]: {
+            marginBottom: "1rem",
+          },
+          [`& .${layoutClasses.Header}`]: {
+            background: "unset",
+            borderBottom: "unset",
+          },
+          [`& .${layoutClasses.EdgeSidebarContent}`]: {
+            borderRight: "0px",
+          },
+          [`& .${layoutClasses.InsetSidebarContent}`]: {
+            background: "unset",
+          },
         }}
       >
         <Header
@@ -56,7 +64,7 @@ export function LayoutV6AppGmail() {
           }}
         >
           <IconButton
-            className="EdgeSidebar-collapser"
+            className={layoutClasses.EdgeSidebarCollapser}
             size="large"
             sx={{ mx: 0.5 }}
             onClick={(event) => {

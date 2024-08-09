@@ -21,20 +21,8 @@ export function applyRootStyles(params?: {
 
 const StyledRoot = styled("div")(({ theme }) => ({
   "--Root-height": "100lvh",
-  "--Header-underline": `1px solid ${(theme.vars || theme).palette.divider}`,
-  "--Header-background": (theme.vars || theme).palette.background.paper,
-  // '--Content-insetTop': '0px', // this is a placeholder for documenting the variable, it already has a fallback value.
-  // '--Content-insetBottom': '0px', // this is a placeholder for documenting the variable, it already has a fallback value.
-  "--Footer-background": (theme.vars || theme).palette.background.paper,
-  "--Footer-overline": `1px solid ${(theme.vars || theme).palette.divider}`,
-  "--EdgeSidebar-overlay": "rgba(0, 0, 0, 0.48)",
   "--EdgeSidebar-sidelineWidth": "1px",
   "--EdgeSidebar-sidelineColor": (theme.vars || theme).palette.divider,
-  "--EdgeSidebarContent-background": (theme.vars || theme).palette.background
-    .paper,
-  "--InsetSidebarContent-background": (theme.vars || theme).palette.background
-    .paper,
-  "--InsetSidebarContent-sideline": `1px solid ${(theme.vars || theme).palette.divider}`,
   backgroundColor: (theme.vars || theme).palette.background.paper,
   minHeight: "var(--Root-height)",
   display: "grid",

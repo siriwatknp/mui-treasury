@@ -11,6 +11,7 @@ import {
   EdgeTemporaryClose,
   Footer,
   Header,
+  layoutClasses,
   Root,
   toggleEdgeSidebarCollapse,
   toggleEdgeSidebarRightCollapse,
@@ -179,11 +180,11 @@ import { EdgeSidebar, EdgeSidebarContent } from "path/to/layout-core-v6";
 
 If you want to control collapse behavior manually, create your own button and call the `toggleEdgeSidebarCollapse` function.
 
-The button and icons should have theses classes to display properly:
+The button and icons should have theses classes from `layoutClasses` to display properly:
 
-- button: `EdgeSidebar-collapser`
-- icon in collapsed state: `Icon-collapse`
-- icon in uncollapse state: `Icon-uncollapse`
+- button: `layoutClasses.EdgeSidebarCollapser`
+  - button's child in collapsed state: `layoutClasses.EdgeSidebarCollapsedVisible`
+  - button's child in uncollapse state: `layoutClasses.EdgeSidebarUncollapsedVisible`
 
 export function DemoPermanentManualCollapse() {
   return (
@@ -206,7 +207,7 @@ export function DemoPermanentManualCollapse() {
       >
         <EdgeSidebarContent className="p-2">
           <button
-            className="EdgeSidebar-collapser px-2 py-1 bg-sky-600 text-white rounded w-fit"
+            className={`${layoutClasses.EdgeSidebarCollapser} px-2 py-1 bg-sky-600 text-white rounded w-fit`}
             onClick={(event) =>
               toggleEdgeSidebarCollapse({
                 event,
@@ -214,8 +215,12 @@ export function DemoPermanentManualCollapse() {
               })
             }
           >
-            <span className="Icon-collapse">Collapse</span>
-            <span className="Icon-uncollapse">Uncollapse</span>
+            <span className={layoutClasses.EdgeSidebarUncollapsedVisible}>
+              Collapse
+            </span>
+            <span className={layoutClasses.EdgeSidebarCollapsedVisible}>
+              Uncollapse
+            </span>
           </button>
         </EdgeSidebarContent>
       </EdgeSidebar>
@@ -246,7 +251,7 @@ export function DemoPermanentManualCollapse() {
 >
   <EdgeSidebarContent className="border bg-green-50 p-2">
     <button
-      className="EdgeSidebar-collapser px-2 py-1 bg-sky-600 text-white rounded w-fit"
+      className={`${layoutClasses.EdgeSidebarCollapser} px-2 py-1 bg-sky-600 text-white rounded w-fit`}
       onClick={(event) =>
         toggleEdgeSidebarCollapse({
           event,
@@ -256,8 +261,12 @@ export function DemoPermanentManualCollapse() {
         })
       }
     >
-      <span className="Icon-collapse">Collapse</span>
-      <span className="Icon-uncollapse">Uncollapse</span>
+      <span className={layoutClasses.EdgeSidebarUncollapsedVisible}>
+        Collapse
+      </span>
+      <span className={layoutClasses.EdgeSidebarCollapsedVisible}>
+        Uncollapse
+      </span>
     </button>
   </EdgeSidebarContent>
 </EdgeSidebar>
@@ -296,7 +305,7 @@ export function DemoPersistentFit() {
       </EdgeSidebar>
       <Content className="flex justify-center items-center">
         <Button
-          className="EdgeSidebar-collapser"
+          className={layoutClasses.EdgeSidebarCollapser}
           onClick={(event) =>
             toggleEdgeSidebarCollapse({ event, sidebarId: "persistent-fit" })
           }
@@ -328,7 +337,7 @@ export function DemoPersistentFit() {
 </EdgeSidebar>
 <Content>
   <button
-    className="EdgeSidebar-collapser"
+    className={layoutClasses.EdgeSidebarCollapser}
     onClick={event =>
       toggleEdgeSidebarCollapse({
         event,
@@ -370,7 +379,7 @@ export function DemoPersistentNone() {
       </EdgeSidebar>
       <Content className="flex justify-center items-center">
         <Button
-          className="EdgeSidebar-collapser"
+          className={layoutClasses.EdgeSidebarCollapser}
           onClick={(event) =>
             toggleEdgeSidebarCollapse({ event, sidebarId: "persistent-none" })
           }
@@ -402,7 +411,7 @@ export function DemoPersistentNone() {
 </EdgeSidebar>
 <Content>
   <button
-    className="EdgeSidebar-collapser"
+    className={layoutClasses.EdgeSidebarCollapser}
     onClick={event =>
       toggleEdgeSidebarCollapse({
         event,
@@ -422,9 +431,9 @@ A temporary sidebar is a sidebar that is hidden by default and will overlay the 
 
 To toggle the sidebar, you should set the `width` to the config and render a toggle button with an onClick handler that calls `toggleTemporaryEdgeSidebar`.
 
-The toggle button should have class `EdgeSidebar-trigger` to display properly. If it has icons, use `Icon-collapse` and `Icon-uncollapse` classes.
+The toggle button should have class `layoutClasses.TemporaryEdgeSidebarTrigger` to display properly. If it has icons, use `Icon-collapse` and `Icon-uncollapse` classes.
 
-An optional `EdgeTemporaryClose` button can be used to close the sidebar when it is open.
+An optional `EdgeTemporaryClose` component can be used to close the sidebar when it is open.
 
 export function DemoTemporary() {
   return (
@@ -454,7 +463,7 @@ export function DemoTemporary() {
       </EdgeSidebar>
       <Content className="flex justify-center items-center">
         <Button
-          className="EdgeSidebar-trigger"
+          className={layoutClasses.TemporaryEdgeSidebarTrigger}
           onClick={(event) =>
             toggleTemporaryEdgeSidebar({
               sidebarId: "temporary-sidebar",
@@ -488,7 +497,7 @@ export function DemoTemporary() {
 </EdgeSidebar>
 <Content>
   <Button
-    className="EdgeSidebar-trigger"
+    className={layoutClasses.TemporaryEdgeSidebarTrigger}
     onClick={(event) =>
       toggleTemporaryEdgeSidebar({
         // You don't need to pass the sidebarId if you only have one EdgeSidebar
@@ -543,8 +552,10 @@ All of the configurations are the same as `EdgeSidebar` but you will need to add
 
 **CSS classes**:
 
-- `.EdgeSidebar-R-collapser`
-- `.EdgeSidebar-R-trigger`
+- `layoutClasses.EdgeSidebarRightCollapser`
+  - `layoutClasses.EdgeSidebarCollapsedVisible` (same as left sidebar)
+  - `layoutClasses.EdgeSidebarUncollapsedVisible` (same as left sidebar)
+- `layoutClasses.TemporaryEdgeSidebarRightTrigger`
 
 export function DemoRightEdgeSidebar() {
   return (
@@ -579,7 +590,7 @@ export function DemoRightEdgeSidebar() {
       </EdgeSidebarRight>
       <Content className="flex justify-center items-center">
         <Button
-          className="EdgeSidebar-R-trigger"
+          className={layoutClasses.TemporaryEdgeSidebarRightTrigger}
           onClick={(event) => toggleTemporaryEdgeSidebarRight({ event })}
         >
           Toggle Right Sidebar
@@ -615,7 +626,7 @@ export function DemoRightEdgeSidebar() {
 </EdgeSidebarRight>
 <Content>
   <Button
-    className="EdgeSidebar-R-trigger"
+    className={layoutClasses.TemporaryEdgeSidebarRightTrigger}
     onClick={(event) => toggleTemporaryEdgeSidebarRight({ event })}
   >
     Toggle Right Sidebar

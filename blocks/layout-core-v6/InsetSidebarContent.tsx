@@ -8,7 +8,7 @@ const InsetSidebarContentRoot = styled("div")(({ theme }) => ({
   flexDirection: "column",
   backgroundColor: "inherit",
   overflow: "auto",
-  background: "var(--InsetSidebarContent-background)",
+  background: (theme.vars || theme).palette.background.paper,
   boxSizing:
     "var(--sticky, border-box) var(--fixed, content-box) var(--absolute, border-box)" as any,
   position:
@@ -17,9 +17,6 @@ const InsetSidebarContentRoot = styled("div")(({ theme }) => ({
     "var(--sticky, initial) var(--fixed, calc(100% - var(--Header-height, 0px))) var(--absolute, calc(var(--Root-height, 100vh) - var(--Content-insetBottom, 0px) - var(--Header-height, 0px)))",
   width: "var(--sticky, inherit) var(--fixed, inherit) var(--absolute, 100%)",
   top: 0,
-  borderRight: "var(--anchor-left, var(--InsetSidebarContent-sideline))",
-  borderLeft: "var(--anchor-right, var(--InsetSidebarContent-sideline))",
-  borderColor: theme.palette.divider,
   marginLeft:
     "var(--fixed, var(--anchor-left, -9999px)) var(--absolute, initial) var(--sticky, initial)",
   paddingLeft:

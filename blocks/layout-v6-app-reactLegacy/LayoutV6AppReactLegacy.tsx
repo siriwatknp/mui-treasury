@@ -19,6 +19,7 @@ import {
 } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import { layoutClasses } from "../layout-core-v6";
 import Content from "../layout-core-v6/Content";
 import SidebarContent from "../layout-core-v6/EdgeSidebarContent";
 import EdgeSidebarRight, {
@@ -137,7 +138,9 @@ export function LayoutV6AppReactLegacy() {
     <ThemeProvider theme={theme}>
       <Root
         sx={{
-          "--InsetSidebarContent-background": "rgb(247, 247, 247)",
+          [`& .${layoutClasses.InsetSidebarContent}`]: {
+            background: "rgb(247, 247, 247)",
+          },
         }}
       >
         <StyledFab

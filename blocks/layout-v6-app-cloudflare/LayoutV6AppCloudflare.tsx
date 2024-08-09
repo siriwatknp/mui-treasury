@@ -19,6 +19,7 @@ import {
   EdgeSidebarRight,
   Footer,
   Header,
+  layoutClasses,
   Root,
   toggleEdgeSidebarCollapse,
   toggleEdgeSidebarRightCollapse,
@@ -36,7 +37,7 @@ export function LayoutV6AppCloudflare() {
       >
         <Box sx={{ ml: 2, display: "flex", gap: 1 }}>
           <IconButton
-            className="EdgeSidebar-trigger"
+            className={layoutClasses.TemporaryEdgeSidebarTrigger}
             onClick={() => toggleTemporaryEdgeSidebar()}
           >
             <Menu />
@@ -110,12 +111,16 @@ export function LayoutV6AppCloudflare() {
           </Box>
           <Divider sx={{ mt: "auto" }} />
           <ButtonBase
-            className="EdgeSidebar-collapser"
+            className={layoutClasses.EdgeSidebarCollapser}
             sx={{ height: 48, flex: "none" }}
             onClick={(event) => toggleEdgeSidebarCollapse({ event })}
           >
-            <KeyboardArrowRight className="Icon-uncollapse" />
-            <span className="Icon-collapse">Collapse sidebar</span>
+            <KeyboardArrowRight
+              className={layoutClasses.EdgeSidebarCollapsedVisible}
+            />
+            <span className={layoutClasses.EdgeSidebarUncollapsedVisible}>
+              Collapse sidebar
+            </span>
           </ButtonBase>
         </EdgeSidebarContent>
       </EdgeSidebar>

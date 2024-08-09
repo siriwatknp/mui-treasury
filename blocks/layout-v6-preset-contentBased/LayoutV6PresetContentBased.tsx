@@ -12,6 +12,7 @@ import {
   EdgeSidebarContent,
   Footer,
   Header,
+  layoutClasses,
   Root,
   toggleEdgeSidebarCollapse,
   toggleTemporaryEdgeSidebar,
@@ -36,7 +37,7 @@ export const LayoutV6PresetContentBased = () => {
           trigger={
             <>
               <IconButton
-                className="EdgeSidebar-trigger"
+                className={layoutClasses.TemporaryEdgeSidebarTrigger}
                 onClick={() => {
                   toggleTemporaryEdgeSidebar();
                 }}
@@ -44,13 +45,15 @@ export const LayoutV6PresetContentBased = () => {
                 <Menu />
               </IconButton>
               <IconButton
-                className="EdgeSidebar-collapser"
+                className={layoutClasses.EdgeSidebarCollapser}
                 onClick={(event) => {
                   toggleEdgeSidebarCollapse({ event });
                 }}
               >
-                <Menu className="Icon-uncollapse" />
-                <KeyboardArrowLeft className="Icon-collapse" />
+                <Menu className={layoutClasses.EdgeSidebarCollapsedVisible} />
+                <KeyboardArrowLeft
+                  className={layoutClasses.EdgeSidebarUncollapsedVisible}
+                />
               </IconButton>
             </>
           }
@@ -81,7 +84,7 @@ export const LayoutV6PresetContentBased = () => {
           }}
         >
           <ButtonBase
-            className="EdgeSidebar-collapser"
+            className={layoutClasses.EdgeSidebarCollapser}
             onClick={(event) => {
               toggleEdgeSidebarCollapse({ event });
             }}

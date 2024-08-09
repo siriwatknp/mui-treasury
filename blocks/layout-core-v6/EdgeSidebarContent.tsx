@@ -3,9 +3,9 @@ import { BoxProps } from "@mui/material/Box";
 import { layoutAttrs, layoutClasses } from "./layoutClasses";
 import { styled } from "./zero-styled";
 
-const StyledEdgeSidebarContent = styled("div")({
+const StyledEdgeSidebarContent = styled("div")(({ theme }) => ({
   display: "flex",
-  background: "var(--EdgeSidebarContent-background)",
+  background: (theme.vars || theme).palette.background.paper,
   boxShadow: "var(--EdgeSidebarContent-shadow, var(--SidebarContent-shadow))", // --SidebarContent-shadow is internal.
   flexDirection: "column",
   opacity: `var(--_temporary, var(--EdgeSidebar-temporaryOpen))
@@ -35,7 +35,7 @@ const StyledEdgeSidebarContent = styled("div")({
   [`[${layoutAttrs.isTemporaryEdgeSidebarClosing}] &`]: {
     transition: "transform 0.3s, visibility 0.3s, opacity 0.3s",
   },
-});
+}));
 
 const EdgeSidebarContent = React.forwardRef<HTMLDivElement, BoxProps>(
   function EdgeSidebarContent({ className, ...props }, ref) {

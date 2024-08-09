@@ -6,7 +6,6 @@ import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import IconButton from "@mui/material/IconButton";
-import { styled } from "@mui/material/styles";
 import {
   applyEdgeSidebarRightStyles,
   applyEdgeSidebarStyles,
@@ -30,8 +29,9 @@ export function LayoutV6AppClaude() {
     <Root
       sx={{
         backgroundColor: "#f5f5f5",
-        "--EdgeSidebar-sidelineWidth": "0px",
-        "--EdgeSidebarContent-shadow": "none",
+        "--conversation-width": "720px",
+        "--EdgeSidebar-sidelineWidth": "0px", // remove border from left and right sidebars
+        "--EdgeSidebarContent-shadow": "none", // remove shadow on hover from left and right sidebars
         ...applyRootStyles({ height: "100vh", fixedHeight: true }),
       }}
     >
@@ -44,7 +44,7 @@ export function LayoutV6AppClaude() {
         }}
       >
         <IconButton
-          className="EdgeSidebar-trigger"
+          className={layoutClasses.TemporaryEdgeSidebarTrigger}
           onClick={() => toggleTemporaryEdgeSidebar()}
         >
           <Menu />
@@ -70,7 +70,14 @@ export function LayoutV6AppClaude() {
         </IconButton>
       </Header>
       <Content sx={{ overflow: "auto" }}>
-        <Box sx={{ maxWidth: 400, px: 2, pt: 0.5, mx: "auto" }}>
+        <Box
+          sx={{
+            maxWidth: "var(--conversation-width)",
+            px: 2,
+            pt: 0.5,
+            mx: "auto",
+          }}
+        >
           <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
             {[...Array(20)].map((_, index) => (
               <Card
@@ -131,7 +138,7 @@ export function LayoutV6AppClaude() {
           >
             <Box sx={{ textAlign: "right", p: 1 }}>
               <IconButton
-                className="EdgeSidebar-trigger"
+                className={layoutClasses.TemporaryEdgeSidebarTrigger}
                 onClick={() => toggleTemporaryEdgeSidebar()}
               >
                 <Close />
@@ -205,7 +212,7 @@ export function LayoutV6AppClaude() {
       <Footer sx={{ background: "unset", border: "none" }}>
         <Box
           sx={{
-            maxWidth: 400,
+            maxWidth: "var(--conversation-width)",
             p: "10px 10px 10px 16px",
             mx: "auto",
             display: "flex",

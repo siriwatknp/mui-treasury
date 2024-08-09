@@ -37,7 +37,7 @@ export function applyHeaderStyles(params?: {
   };
 }
 
-const StyledHeader = styled("header")({
+const StyledHeader = styled("header")(({ theme }) => ({
   gridArea: layoutClasses.Header,
   height: 56, // better than `min-height` because user can set height to 0
   alignContent: "center",
@@ -45,9 +45,9 @@ const StyledHeader = styled("header")({
   alignItems: "center",
   top: 0, // for position sticky to work
   position: "sticky",
-  background: "var(--Header-background)",
-  borderBottom: "var(--Header-underline)",
-});
+  background: (theme.vars || theme).palette.background.paper,
+  borderBottom: `1px solid ${(theme.vars || theme).palette.divider}`,
+}));
 
 const Header = React.forwardRef<HTMLElement, BoxProps>(function Header(
   { className, ...props },

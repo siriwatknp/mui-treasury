@@ -7,16 +7,18 @@ import IconButton from "@mui/material/IconButton";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
-import Content from "../layout-core-v6/Content";
-import EdgeSidebar, {
+import {
   applyEdgeSidebarStyles,
+  Content,
+  EdgeSidebar,
+  EdgeSidebarContent,
+  EdgeTemporaryClose,
+  Header,
+  layoutClasses,
+  Root,
   toggleEdgeSidebarCollapse,
   toggleTemporaryEdgeSidebar,
-} from "../layout-core-v6/EdgeSidebar";
-import EdgeSidebarContent from "../layout-core-v6/EdgeSidebarContent";
-import EdgeTemporaryClose from "../layout-core-v6/EdgeTemporaryClose";
-import Header from "../layout-core-v6/Header";
-import Root from "../layout-core-v6/Root";
+} from "../layout-core-v6";
 import {
   IconNavMockup,
   LinkNavMockup,
@@ -66,14 +68,14 @@ export function LayoutV6AppAnalytics() {
           }}
         >
           <IconButton
-            className="EdgeSidebar-trigger"
+            className={layoutClasses.TemporaryEdgeSidebarTrigger}
             onClick={() => toggleTemporaryEdgeSidebar()}
           >
             <MenuRounded />
           </IconButton>
 
           <IconButton
-            className="EdgeSidebar-collapser"
+            className={layoutClasses.EdgeSidebarCollapser}
             onClick={(event) => toggleEdgeSidebarCollapse({ event })}
             sx={{
               marginLeft:
@@ -81,8 +83,12 @@ export function LayoutV6AppAnalytics() {
               transition: "margin-left 0.3s",
             }}
           >
-            <MenuRounded className="Icon-uncollapse" />
-            <ChevronLeftRounded className="Icon-collapse" />
+            <MenuRounded
+              className={layoutClasses.EdgeSidebarCollapsedVisible}
+            />
+            <ChevronLeftRounded
+              className={layoutClasses.EdgeSidebarUncollapsedVisible}
+            />
           </IconButton>
 
           <Typography

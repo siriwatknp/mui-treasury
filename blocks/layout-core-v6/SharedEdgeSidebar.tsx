@@ -148,7 +148,7 @@ export const EdgeSidebarRoot = styled("div")({
     position: "absolute",
     content: '""',
     inset: 0,
-    backgroundColor: "var(--EdgeSidebar-overlay)",
+    backgroundColor: "rgba(0, 0, 0, 0.48)",
     backdropFilter: "blur(4px)",
     zIndex: 1,
     transition: "opacity 0.4s, visibility 0.4s",

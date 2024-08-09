@@ -22,16 +22,20 @@ export function LayoutV6ThemeDashboardCurve() {
     <Root
       sx={{
         bgcolor: "rgb(23 26 28)",
-        "--Header-underline": {
-          md: "none",
+        [`& .${layoutClasses.Header}`]: {
+          borderBottom: {
+            md: "none",
+          },
         },
-        "--EdgeSidebarContent-background": "rgb(23 26 28)",
-        "--Content-insetTop": {
-          md: "12px",
-        },
-        "& .Content": {
+        [`& .${layoutClasses.Content}`]: {
           bgcolor: "background.paper",
           borderTopLeftRadius: { md: "32px" },
+          marginTop: {
+            md: "12px",
+          },
+        },
+        [`& .${layoutClasses.EdgeSidebarContent}`]: {
+          background: "rgb(23 26 28)",
         },
       }}
     >
