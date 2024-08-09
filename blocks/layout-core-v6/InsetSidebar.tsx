@@ -65,7 +65,8 @@ const InsetSidebarRoot = styled("aside")({
     flexFlow: "row nowrap",
     flexGrow: 1,
   },
-  [`*:has(> &) > :where(:not([class*="${layoutClasses.InsetSidebar}"]))`]: {
+  // TODO: open an issue on Pigment CSS, :where(:not(...)) is not working
+  [`*:has(> &) > :not([class*="${layoutClasses.InsetSidebar}"])`]: {
     flexGrow: 1,
     overflow: "auto",
   },

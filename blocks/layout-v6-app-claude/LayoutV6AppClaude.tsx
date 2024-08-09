@@ -42,9 +42,6 @@ export function LayoutV6AppClaude() {
         "--EdgeSidebar-sidelineWidth": "0px", // remove border from left and right sidebars
         "--EdgeSidebarContent-shadow": "none", // remove shadow on hover from left and right sidebars
         ...applyRootStyles({ height: "100vh", fixedHeight: true }),
-        [`& .${layoutClasses.Content}`]: {
-          paddingBlock: "1rem",
-        },
         [`& .${layoutClasses.Header}`]: {
           background: "none",
           borderBottom: "unset",
@@ -129,6 +126,7 @@ export function LayoutV6AppClaude() {
             maxWidth: "var(--conversation-width)",
             px: 2,
             pt: 0.5,
+            pb: 2,
             mx: "auto",
           }}
         >
