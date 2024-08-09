@@ -99,7 +99,7 @@ export function LayoutV6AppClaude() {
                 variant: "temporary",
                 fullHeight: true,
               },
-              sm: {
+              [theme.breakpoints.up(768)]: {
                 variant: "permanent",
                 width: "288px",
                 autoCollapse: 9999,
@@ -162,9 +162,8 @@ export function LayoutV6AppClaude() {
                 width: "clamp(420px, (720px - 100vw) * 9999, 100vw)",
               },
               md: {
-                variant: "permanent",
+                variant: "persistent",
                 width: "420px",
-                collapsedWidth: "0px",
               },
             },
           }),

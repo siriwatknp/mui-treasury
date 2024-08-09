@@ -159,9 +159,12 @@ export function applyEdgeSidebarStyles(params: {
                 "MUI Treasury Layout: `autoCollapse` cannot be the largest breakpoint.",
               );
             } else {
+              const minBreakpoint = theme.breakpoints.values[breakpoint]
+                ? breakpoint
+                : ((breakpoint.match(/\d+/g)?.[0] || 0) as number);
               autoCollapseStyles = {
                 [`.${layoutClasses.Root}:has(&)`]: {
-                  [theme.breakpoints.between(breakpoint, nextBreakpoint)]: {
+                  [theme.breakpoints.between(minBreakpoint, nextBreakpoint)]: {
                     "--EdgeSidebar-collapsible": "var(--collapsed)",
                   },
                   [theme.breakpoints.up(nextBreakpoint)]: {
