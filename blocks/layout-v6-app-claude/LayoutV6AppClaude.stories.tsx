@@ -12,7 +12,7 @@ const meta = {
     layout: "fullscreen",
     githubUsername: "siriwatknp", // (optional) Your github username. If provided, your avatar will be displayed in the story toolbar
   },
-  decorators: [googleFont([])],
+  decorators: [storyDialog(Usage), googleFont([])],
 } satisfies Meta<typeof LayoutV6AppClaude>;
 
 export default meta;

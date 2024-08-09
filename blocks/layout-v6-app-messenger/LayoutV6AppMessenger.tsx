@@ -117,7 +117,12 @@ export function LayoutV6AppMessenger() {
               }),
             }}
           >
-            <InsetSidebarContent>
+            <InsetSidebarContent
+              sx={{
+                borderLeft: "1px solid",
+                borderColor: "divider",
+              }}
+            >
               <ChatSettings />
             </InsetSidebarContent>
           </InsetSidebar>

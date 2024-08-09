@@ -41,6 +41,7 @@ export function LayoutV6AppGmail() {
         sx={{
           flex: "auto",
           bgcolor: "#F5F8FC",
+          "--EdgeSidebar-sidelineWidth": "0px",
           ...applyRootStyles({ height: "100lvh", fixedHeight: true }),
           [`& .${layoutClasses.Content}`]: {
             marginBottom: "1rem",

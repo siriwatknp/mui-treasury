@@ -7,8 +7,8 @@ import type { Preview } from "@storybook/react";
 import type {} from "@mui/material/themeCssVarsAugmentation";
 import CssBaseline from "@mui/material/CssBaseline";
 import {
-  CssVarsProvider,
-  extendTheme,
+  createTheme,
+  ThemeProvider,
   useColorScheme,
 } from "@mui/material/styles";
 import { useDarkMode } from "storybook-dark-mode";
@@ -84,20 +84,20 @@ const preview: Preview = {
     },
   },
   decorators: [
-    // cliToolbar(),
+    cliToolbar(),
     draggableIframe(),
     (Story) => {
       return (
-        <CssVarsProvider
-          theme={extendTheme({
+        <ThemeProvider
+          theme={createTheme({
+            cssVariables: { colorSchemeSelector: "data" },
             colorSchemes: { light: true, dark: true },
-            colorSchemeSelector: "class",
           })}
         >
           <ModeObserver />
           <CssBaseline />
           <Story />
-        </CssVarsProvider>
+        </ThemeProvider>
       );
     },
   ],

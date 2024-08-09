@@ -24,14 +24,10 @@ export function LayoutV6ThemeDashboardInset() {
         ...theme.applyStyles("light", {
           backgroundColor: "#f0f4f8",
         }),
+        "--EdgeSidebar-sidelineWidth": "0px",
         [`& .${layoutClasses.Header}`]: {
           borderBottom: {
             md: "none",
-          },
-        },
-        [`& .${layoutClasses.EdgeSidebarContent}`]: {
-          background: {
-            md: "unset",
           },
         },
         [`& .${layoutClasses.Content}`]: {
@@ -47,7 +43,9 @@ export function LayoutV6ThemeDashboardInset() {
         },
         [`& .${layoutClasses.EdgeSidebarContent}`]: {
           pt: 4.5,
-          borderRight: "0px",
+          background: {
+            md: "unset",
+          },
         },
       })}
     >
