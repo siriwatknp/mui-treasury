@@ -25,22 +25,34 @@ export const BlockPicker = memo(function MyAddonSelector() {
   const [, copy] = useCopyToClipboard();
   const [copied, setCopied] = React.useState(false);
   const timeoutRef = React.useRef<number | undefined>();
-  const isAdded = blocks.some((block) => block.id === storybookState.storyId);
+  const isAdded = blocks.some(
+    (block) =>
+      block.id.replace(/--.*/, "") ===
+      storybookState.storyId.replace(/--.*/, ""),
+  );
   return (
     <React.Fragment key="cli-toolbar/toolbar">
       <Button
         disabled={!!isAdded}
         onClick={() =>
           setBlocks((prev) => {
-            if (prev.find((block) => block.id === storybookState.storyId)) {
+            if (
+              prev.find(
+                (block) =>
+                  block.id.replace(/--.*/, "") ===
+                  storybookState.storyId.replace(/--.*/, ""),
+              )
+            ) {
               return prev;
             }
             const list = [
               ...prev,
               { id: storybookState.storyId },
-              ...(modules || []).map((m: string) => ({
-                id: m,
-              })),
+              ...(modules || [])
+                .filter((m: string) => !prev.find((item) => item.id === m))
+                .map((m: string) => ({
+                  id: m,
+                })),
             ];
             localStorage.setItem("cli-blocks", JSON.stringify(list));
             copy(
@@ -75,7 +87,7 @@ export const BlockPicker = memo(function MyAddonSelector() {
           }}
         >
           {(<CopyIcon />) as any}
-          {copied ? "Copied" : "CLI 🪄✨"}
+          {copied ? "Copied🪄" : "Copy CLI"}
         </Button>
       )}
       {blocks.length > 0 && (
@@ -85,7 +97,7 @@ export const BlockPicker = memo(function MyAddonSelector() {
             setAnchorEl(event.currentTarget as HTMLElement);
           }}
         >
-          View Blocks
+          View Blocks ({blocks.length})
           {
             (
               <svg
@@ -113,6 +125,7 @@ export const BlockPicker = memo(function MyAddonSelector() {
             <List dense>
               {blocks.map((block) => (
                 <ListItem
+                  key={block.id}
                   disablePadding
                   secondaryAction={
                     <IconButton
@@ -142,6 +155,10 @@ export const BlockPicker = memo(function MyAddonSelector() {
                 >
                   <ListItemButton
                     key={block.id}
+                    selected={
+                      storybookState.storyId.replace(/--.*/, "") ===
+                      block.id.replace(/--.*/, "")
+                    }
                     onClick={() => {
                       storybookApi.selectStory(block.id);
                       setAnchorEl(null);

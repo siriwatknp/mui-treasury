@@ -51,6 +51,7 @@ addons.register("block-usage", () => {
   addons.add("block-usage/toolbar", {
     title: "Block Usage",
     type: types.TOOL,
+    match: ({ viewMode }) => viewMode === "story",
     render: BlockUsage as unknown as () => React.ReactElement,
   });
 });
@@ -59,6 +60,7 @@ addons.register("cli-toolbar", () => {
   addons.add("cli-toolbar/toolbar", {
     title: "CLI Toolbar",
     type: types.TOOL,
+    match: ({ viewMode }) => viewMode === "story",
     render: BlockPicker as unknown as () => React.ReactElement,
   });
 });
@@ -67,6 +69,7 @@ addons.register("contributor", () => {
   addons.add("contributor/toolbar", {
     title: "Author",
     type: types.TOOL,
+    match: ({ viewMode }) => viewMode === "story",
     render: Tool as unknown as () => React.ReactElement,
   });
 });
