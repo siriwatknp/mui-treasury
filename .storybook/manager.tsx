@@ -1,13 +1,15 @@
 import React from "react";
 import ReactGA from "react-ga4";
-import { addons, types } from "@storybook/manager-api";
 import {
   STORY_CHANGED,
   STORY_ERRORED,
   STORY_MISSING,
 } from "@storybook/core-events";
+import { addons, types } from "@storybook/manager-api";
+import CarbonAds from "./carbon-ads/CarbonAds";
 import { Tool } from "./decorators/Author";
-import CarbonAds from './carbon-ads/CarbonAds';
+import { BlockPicker } from "./decorators/BlockPicker";
+import { BlockUsage } from "./decorators/BlockUsage";
 
 // https://storybook.js.org/docs/react/configure/features-and-behavior
 addons.setConfig({
@@ -45,6 +47,22 @@ addons.register("google-analytics", (api) => {
   });
 });
 
+addons.register("block-usage", () => {
+  addons.add("block-usage/toolbar", {
+    title: "Block Usage",
+    type: types.TOOL,
+    render: BlockUsage as unknown as () => React.ReactElement,
+  });
+});
+
+addons.register("cli-toolbar", () => {
+  addons.add("cli-toolbar/toolbar", {
+    title: "CLI Toolbar",
+    type: types.TOOL,
+    render: BlockPicker as unknown as () => React.ReactElement,
+  });
+});
+
 addons.register("contributor", () => {
   addons.add("contributor/toolbar", {
     title: "Author",
@@ -55,7 +73,7 @@ addons.register("contributor", () => {
 
 addons.register("carbon-ads", (api) => {
   api.on(STORY_CHANGED, () => {
-    if (typeof (window as any)._carbonads !== 'undefined') {
+    if (typeof (window as any)._carbonads !== "undefined") {
       (window as any)._carbonads.refresh();
     }
   });

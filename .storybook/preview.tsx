@@ -13,7 +13,6 @@ import {
 } from "@mui/material/styles";
 import { useDarkMode } from "storybook-dark-mode";
 import "./global.css";
-import cliToolbar from "./decorators/cliToolbar";
 import draggableIframe from "./decorators/draggableIframe";
 import "./tailwind.css";
 
@@ -31,6 +30,9 @@ const ModeObserver = () => {
 };
 
 const preview: Preview = {
+  globals: {
+    blockUsage: false,
+  },
   parameters: {
     // actions: { argTypesRegex: "^on[A-Z].*" },
     options: {
@@ -56,7 +58,7 @@ const preview: Preview = {
             "Theme",
             "App",
           ],
-          "Layout v5",
+          "Layout v5 (LEGACY)",
           [
             "Introduction",
             "Installation",
@@ -84,7 +86,6 @@ const preview: Preview = {
     },
   },
   decorators: [
-    cliToolbar(),
     draggableIframe(),
     (Story) => {
       return (
