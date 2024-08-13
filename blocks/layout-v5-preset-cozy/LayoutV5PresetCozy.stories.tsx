@@ -6,7 +6,7 @@ import { LayoutPresetCozy } from "./index";
 import Usage from "./usage.mdx";
 
 const meta = {
-  title: "Layout v5/Preset/Cozy",
+  title: "Layout v5 (LEGACY)/Preset/Cozy",
   component: LayoutPresetCozy,
   parameters: {
     layout: "fullscreen",

@@ -6,7 +6,7 @@ import { LayoutPresetContentBased } from "./index";
 import Usage from "./usage.mdx";
 
 const meta = {
-  title: "Layout v5/Preset/ContentBased",
+  title: "Layout v5 (LEGACY)/Preset/ContentBased",
   component: LayoutPresetContentBased,
   parameters: {
     layout: "fullscreen",

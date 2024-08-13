@@ -1,6 +1,6 @@
 import { Meta } from "@storybook/addon-docs/blocks";
 
-<Meta title="Layout v5/Feature/Multiple Headers" />
+<Meta title="Layout v5 (LEGACY)/Feature/Multiple Headers" />
 
 <style>{`
   .sbdocs-content {
@@ -104,7 +104,7 @@ Now if you refresh the page, you will see that subheader appear again. To fix th
 
 function App() {
   const [hidden, setHidden] = React.useState(
-    localStorage.getItem("topHeaderHidden") === "true"
+    localStorage.getItem("topHeaderHidden") === "true",
   );
 
   const onHideTopHeader = () => {

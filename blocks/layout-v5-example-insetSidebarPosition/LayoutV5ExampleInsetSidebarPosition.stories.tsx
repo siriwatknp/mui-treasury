@@ -6,7 +6,7 @@ import { LayoutExampleInsetSidebarPosition } from "./index";
 import Usage from "./usage.mdx";
 
 const meta = {
-  title: "Layout v5/Example/InsetSidebarPosition",
+  title: "Layout v5 (LEGACY)/Example/InsetSidebarPosition",
   component: LayoutExampleInsetSidebarPosition,
   parameters: {
     layout: "fullscreen",

@@ -6,7 +6,7 @@ import { LayoutAppMessenger } from "./index";
 import Usage from "./usage.mdx";
 
 const meta = {
-  title: "Layout v5/App/Messenger",
+  title: "Layout v5 (LEGACY)/App/Messenger",
   component: LayoutAppMessenger,
   parameters: {
     layout: "fullscreen",

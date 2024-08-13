@@ -6,7 +6,7 @@ import { LayoutExampleMultipleHeaders } from "./index";
 import Usage from "./usage.mdx";
 
 const meta = {
-  title: "Layout v5/Example/MultipleHeaders",
+  title: "Layout v5 (LEGACY)/Example/MultipleHeaders",
   component: LayoutExampleMultipleHeaders,
   parameters: {
     layout: "fullscreen",

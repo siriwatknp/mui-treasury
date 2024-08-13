@@ -6,7 +6,7 @@ import { LayoutExampleRightEdgeSidebar } from "./index";
 import Usage from "./usage.mdx";
 
 const meta = {
-  title: "Layout v5/Example/RightEdgeSidebar",
+  title: "Layout v5 (LEGACY)/Example/RightEdgeSidebar",
   component: LayoutExampleRightEdgeSidebar,
   parameters: {
     layout: "fullscreen",

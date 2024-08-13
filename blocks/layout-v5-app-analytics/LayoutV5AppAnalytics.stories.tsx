@@ -6,7 +6,7 @@ import { LayoutAppAnalytics } from "./index";
 import Usage from "./usage.mdx";
 
 const meta = {
-  title: "Layout v5/App/Analytics",
+  title: "Layout v5 (LEGACY)/App/Analytics",
   component: LayoutAppAnalytics,
   parameters: {
     layout: "fullscreen",

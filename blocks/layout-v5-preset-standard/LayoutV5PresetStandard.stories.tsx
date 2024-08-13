@@ -6,7 +6,7 @@ import { LayoutPresetStandard } from "./index";
 import Usage from "./usage.mdx";
 
 const meta = {
-  title: "Layout v5/Preset/Standard",
+  title: "Layout v5 (LEGACY)/Preset/Standard",
   component: LayoutPresetStandard,
   parameters: {
     layout: "fullscreen",

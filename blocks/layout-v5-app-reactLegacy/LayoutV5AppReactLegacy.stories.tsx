@@ -6,7 +6,7 @@ import { LayoutAppReactLegacy } from "./index";
 import Usage from "./usage.mdx";
 
 const meta = {
-  title: "Layout v5/App/ReactLegacy",
+  title: "Layout v5 (LEGACY)/App/ReactLegacy",
   component: LayoutAppReactLegacy,
   parameters: {
     layout: "fullscreen",
