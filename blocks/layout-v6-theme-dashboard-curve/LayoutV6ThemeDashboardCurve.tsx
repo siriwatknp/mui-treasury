@@ -68,6 +68,7 @@ export function LayoutV6ThemeDashboardCurve() {
         </Box>
       </Content>
       <EdgeSidebar
+        data-dark
         sx={(theme) => ({
           ...applyEdgeSidebarStyles({
             theme,
@@ -85,7 +86,6 @@ export function LayoutV6ThemeDashboardCurve() {
         })}
       >
         <EdgeSidebarContent
-          className="dark"
           sx={{ bgcolor: "rgb(23 26 28)", color: "text.primary", py: 5 }}
         >
           <ButtonBase sx={{ height: 48 }}>

@@ -13,16 +13,24 @@ const meta = {
     githubUsername: "siriwatknp", // (optional) Your github username. If provided, your avatar will be displayed in the story toolbar
   },
   decorators: [storyDialog(Usage), googleFont([])],
+  argTypes: {
+    size: {
+      control: {
+        type: "range",
+        min: 20,
+        max: 100,
+        step: 1,
+      },
+    },
+  },
 } satisfies Meta<typeof AvatarGoogle>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Google: Story = {
-  render: () => (
-    <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-      <AvatarGoogle />
-      <AvatarGoogle size={76} />
-    </div>
-  ),
+  render: ({ ...args }) => <AvatarGoogle {...args} />,
+};
+Google.args = {
+  size: 40,
 };

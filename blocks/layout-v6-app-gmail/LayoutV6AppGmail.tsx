@@ -179,7 +179,7 @@ export function LayoutV6AppGmail() {
         >
           <IconButton
             onClick={() => {
-              setShowDrawer(true);
+              setShowDrawer(!showDrawer);
             }}
             sx={{
               height: 56,
