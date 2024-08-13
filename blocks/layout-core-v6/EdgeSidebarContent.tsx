@@ -18,7 +18,7 @@ const StyledEdgeSidebarContent = styled("div")(({ theme }) => ({
   zIndex: 2,
   width:
     "var(--_temporary, var(--EdgeSidebar-temporaryWidth)) var(--_permanent, calc(var(--SidebarContent-width) - var(--EdgeSidebar-sidelineWidth, 0px)))",
-  height: "var(--_temporary, 100%)",
+  height: "var(--_temporary, calc(100% - var(--SidebarContent-offset, 0px)))",
   overflowY: "var(--_temporary, auto)" as any,
   transition: `var(--_temporary, opacity 0.3s, transform 0.3s)
                var(--_permanent, opacity 0.4s, width 0.3s var(--SidebarContent-transitionDelay, 0s), transform 0.3s var(--SidebarContent-transitionDelay, 0s), box-shadow 0.3s var(--SidebarContent-transitionDelay, 0s))`,
