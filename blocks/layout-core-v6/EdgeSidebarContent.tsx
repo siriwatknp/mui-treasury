@@ -15,6 +15,7 @@ const StyledEdgeSidebarContent = styled("div")(({ theme }) => ({
   overflowX: "auto", // prevent horizontal content overflow
   flex: 1,
   position: "var(--_temporary, fixed) var(--_permanent, relative)" as any,
+  top: "var(--_temporary, var(--SidebarContent-offset, 0px))",
   zIndex: 2,
   width:
     "var(--_temporary, var(--EdgeSidebar-temporaryWidth)) var(--_permanent, calc(var(--SidebarContent-width) - var(--EdgeSidebar-sidelineWidth, 0px)))",

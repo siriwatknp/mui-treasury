@@ -9,17 +9,19 @@ const StyledEdgeTemporaryClose = styled("button")({
   opacity: 0,
   transition: "0.3s",
   position: "fixed",
-  top: "0.875rem",
+  top: "calc(0.875rem + var(--SidebarContent-offset, 0px))",
   right: "var(--anchorLeft, 0.875rem)",
   left: "var(--anchorRight, 0.875rem)",
   zIndex: 2,
   width: 40,
   height: 40,
   color: "white",
+  cursor: "pointer",
   backgroundColor: "#999",
   borderRadius: "40px",
   alignItems: "center",
   justifyContent: "center",
+  border: "none",
   "& svg": {
     width: "1.5em",
     height: "1.5em",
@@ -48,12 +50,12 @@ const EdgeTemporaryClose = React.forwardRef<
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="1.5"
+          strokeWidth="1.5"
           stroke="currentColor"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             d="M6 18 18 6M6 6l12 12"
           />
         </svg>

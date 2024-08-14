@@ -29,15 +29,8 @@ function applyTemporaryStyles(params: Omit<TemporaryConfig, "variant">) {
         "--EdgeSidebar-temporaryWidth": width,
       },
     ...(fullHeight
-      ? {
-          zIndex: 5,
-          [`& .${layoutClasses.EdgeSidebarContent}`]: {
-            top: 0,
-          },
-        }
-      : {
-          "--SidebarContent-offset": "var(--Header-height)",
-        }),
+      ? { zIndex: 5 }
+      : { "--SidebarContent-offset": "var(--Header-height)" }),
   };
 }
 
