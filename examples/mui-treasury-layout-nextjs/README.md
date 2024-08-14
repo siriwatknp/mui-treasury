@@ -1,6 +1,6 @@
 # MUI Treasury Layout - Next.js App Router example in TypeScript
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped using [`create-next-app`](https://github.com/vercel/next.js/tree/HEAD/packages/create-next-app) with MUI Treasury Layout ([standard preset](https://mui-treasury.com/?path=/story/layout-v6-preset-standard--standard)) installed.
+This is a [Next.js](https://nextjs.org/) project bootstrapped using [`create-next-app`](https://github.com/vercel/next.js/tree/HEAD/packages/create-next-app) with MUI Treasury Layout ([standard preset](https://mui-treasury.com/?path=/story/layout-v6-preset-standard--standard)) and [Material UI](https://mui.com/material-ui/getting-started/) installed.
 
 ## How to use
 
@@ -34,12 +34,6 @@ or:
 
 To learn more about this example:
 
-- [Next.js documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [MUI Treasury Layout](https://mui-treasury.com/?path=/docs/layout-v6-introduction--docs) - learn about layout configuration.
-
-## What's next?
-
-<!-- #default-branch-switch -->
-
-You now have a working example project.
-You can head back to the documentation and continue by browsing the [templates](https://next.mui.com/material-ui/getting-started/templates/) section.
+- [Material UI](https://mui.com/material-ui/getting-started/) - learn about Material UI components and API.
+- [Next.js documentation](https://nextjs.org/docs) - learn about Next.js features and API.
