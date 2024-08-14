@@ -42,6 +42,7 @@ const preview: Preview = {
           [
             "Introduction",
             "Design Principles",
+            "Quick Start",
             "Installation",
             "Configuration",
             [
