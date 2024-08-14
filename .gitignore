@@ -9,7 +9,8 @@ storybook-static
 
 # local test
 mui-treasury.config.js
-mui-treasury
+/mui-treasury
+/src/mui-treasury
 
 build-storybook.log
 chromatic.log
