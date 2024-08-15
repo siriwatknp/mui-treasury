@@ -1,5 +1,5 @@
 ---
-to: ../blocks/<%=name%>/<%= h.toName(name) %>.tsx
+to: ../blocks/<%= h.toFolder(name) %>/<%= h.toName(name) %>.tsx
 unless_exists: true
 ---
 import React from "react";

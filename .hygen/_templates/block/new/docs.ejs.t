@@ -1,5 +1,5 @@
 ---
-to: ../blocks/<%=name%>/usage.mdx
+to: ../blocks/<%= h.toFolder(name) %>/usage.mdx
 unless_exists: true
 ---
 import { Meta, Source } from "@storybook/blocks";
@@ -10,7 +10,7 @@ import raw from "./<%=h.toName(name)%>?raw";
 ## CLI
 
 ```sh
-npx mui-treasury@latest clone <%=name%>
+npx mui-treasury@latest clone <%= h.toFolder(name) %>
 ```
 
 ## <%=h.toName(name)%>

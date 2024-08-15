@@ -1,5 +1,5 @@
 ---
-to: ../blocks/<%=name%>/<%=h.toName(name)%>.stories.tsx
+to: ../blocks/<%= h.toFolder(name) %>/<%=h.toName(name)%>.stories.tsx
 unless_exists: true
 ---
 import React from "react";
@@ -10,7 +10,7 @@ import Usage from "./usage.mdx";
 import { <%=h.toName(name)%> } from "./index";
 
 const meta = {
-  title: "<%=h.getFirstPascal(name)%>/<%=h.getSecondPascal(name)%><%=h.getThirdPascal(name) ? `/${h.getThirdPascal(name)}` : ''%>",
+  title: "<%=h.getFirstTitle(name)%>/<%=h.getSecondTitle(name)%><%=h.getThirdTitle(name) ? `/${h.getThirdTitle(name)}` : ''%>",
   component: <%=h.toName(name)%>,
   parameters: {
     layout: "<%=name.startsWith('layout') ? 'fullscreen' : 'centered'%>",
