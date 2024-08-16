@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Grid from "@mui/material/Grid";
+import Grid from "@mui/material/Grid2";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import Color from "color"; // v3.2.1
@@ -81,7 +81,7 @@ const CustomCard = ({
 export function CardSolidGame() {
   return (
     <Grid container spacing={4}>
-      <Grid item>
+      <Grid>
         <CustomCard
           color={"#203f52"}
           title={"Dota 2"}
@@ -91,7 +91,7 @@ export function CardSolidGame() {
           }
         />
       </Grid>
-      <Grid item>
+      <Grid>
         <CustomCard
           color="#4d137f"
           title={"Fortnite"}
@@ -101,7 +101,7 @@ export function CardSolidGame() {
           }
         />
       </Grid>
-      <Grid item>
+      <Grid>
         <CustomCard
           color="#ff9900"
           title={"Overwatch"}
@@ -109,7 +109,7 @@ export function CardSolidGame() {
           image={"https://images5.alphacoders.com/690/thumb-1920-690653.png"}
         />
       </Grid>
-      <Grid item>
+      <Grid>
         <CustomCard
           color="#34241e"
           title={"PUBG"}

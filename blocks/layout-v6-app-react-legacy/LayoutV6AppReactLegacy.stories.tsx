@@ -2,22 +2,23 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import googleFont from "../../.storybook/decorators/googleFont";
 import storyDialog from "../../.storybook/decorators/storyDialog";
-import { CardSolidGame } from "./index";
+import { LayoutV6AppReactLegacy } from "./index";
 import Usage from "./usage.mdx";
 
 const meta = {
-  title: "Card/SolidGame",
-  component: CardSolidGame,
+  title: "Layout v6/App/React Legacy",
+  component: LayoutV6AppReactLegacy,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
     githubUsername: "siriwatknp", // (optional) Your github username. If provided, your avatar will be displayed in the story toolbar
+    modules: ["layout-code-v6"],
   },
-  decorators: [storyDialog(Usage), googleFont(["Montserrat", "Keania One"])],
-} satisfies Meta<typeof CardSolidGame>;
+  decorators: [storyDialog(Usage), googleFont([])],
+} satisfies Meta<typeof LayoutV6AppReactLegacy>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const SolidGame: Story = {
-  render: () => <CardSolidGame />,
+export const ReactLegacy: Story = {
+  render: () => <LayoutV6AppReactLegacy />,
 };

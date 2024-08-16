@@ -5,7 +5,7 @@ import { SxProps } from "@mui/system";
 import {
   useDayMonthYearInput,
   UseDayMonthYearInputOptions,
-} from "../use-dayMonthYear-input";
+} from "../use-day-month-year-input";
 
 export type DayMonthYearProps = {
   /**
@@ -65,7 +65,7 @@ export const DayMonthYear = React.forwardRef<HTMLDivElement, DayMonthYearProps>(
           if (!getInputProps) {
             if (process.env.NODE_ENV !== "production") {
               console.error(
-                'DayMonthYear: <Input data-slot="day | month | year" /> data-slot is missing or invalid'
+                'DayMonthYear: <Input data-slot="day | month | year" /> data-slot is missing or invalid',
               );
             }
             return null;
@@ -79,5 +79,5 @@ export const DayMonthYear = React.forwardRef<HTMLDivElement, DayMonthYearProps>(
         })}
       </Box>
     );
-  }
+  },
 );

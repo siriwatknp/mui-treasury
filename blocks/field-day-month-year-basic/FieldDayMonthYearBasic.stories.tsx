@@ -9,12 +9,12 @@ import { DayMonthYear, DayMonthYearProps } from "./FieldDayMonthYearBasic";
 import Usage from "./usage.mdx";
 
 const meta = {
-  title: "Field/DayMonthYear/Basic",
+  title: "Field/Day Month Year/Basic",
   component: DayMonthYear,
   parameters: {
     layout: "centered",
     githubUsername: "siriwatknp", // (optional) Your github username. If provided, your avatar will be displayed in the story toolbar
-    modules: ["use-dayMonthYear-input", "use-input-siblings"],
+    modules: ["use-day-month-year-input", "use-input-siblings"],
   },
   decorators: [storyDialog(Usage)],
 } satisfies Meta<typeof DayMonthYear>;

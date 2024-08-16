@@ -6,7 +6,7 @@ import { TabsInsideTriangle } from "./index";
 import Usage from "./usage.mdx";
 
 const meta = {
-  title: "Tabs/InsideTriangle",
+  title: "Tabs/Inside Triangle",
   component: TabsInsideTriangle,
   parameters: {
     layout: "centered",
