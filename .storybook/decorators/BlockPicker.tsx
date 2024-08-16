@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import Box from "@mui/material/Box";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -6,7 +7,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import { Button, IconButton } from "@storybook/components";
-import { AddIcon, CloseIcon, CopyIcon } from "@storybook/icons";
+import { AddIcon, CheckIcon, CloseIcon, CopyIcon } from "@storybook/icons";
 import {
   useParameter,
   useStorybookApi,
@@ -32,6 +33,7 @@ export const BlockPicker = memo(function MyAddonSelector() {
   );
   return (
     <React.Fragment key="cli-toolbar/toolbar">
+      <Box sx={{ width: 8 }} />
       <Button
         disabled={!!isAdded}
         onClick={() =>
@@ -46,13 +48,13 @@ export const BlockPicker = memo(function MyAddonSelector() {
               return prev;
             }
             const list = [
-              ...prev,
               { id: storybookState.storyId },
               ...(modules || [])
                 .filter((m: string) => !prev.find((item) => item.id === m))
                 .map((m: string) => ({
                   id: m,
                 })),
+              ...prev,
             ];
             localStorage.setItem("cli-blocks", JSON.stringify(list));
             copy(
@@ -67,51 +69,64 @@ export const BlockPicker = memo(function MyAddonSelector() {
         {(<AddIcon />) as any} {isAdded ? "Added" : "Add"}
       </Button>
       {blocks.length > 0 && (
-        <Button
-          title="Copy CLI command"
-          onClick={async () => {
-            try {
-              await copy(
-                `npx mui-treasury@latest clone ${blocks
-                  .map((block) => block.id.replace(/--.*/, ""))
-                  .join(" ")}`,
-              );
-              setCopied(true);
-              if (timeoutRef.current) {
-                window.clearTimeout(timeoutRef.current);
-              }
-              timeoutRef.current = window.setTimeout(() => {
-                setCopied(false);
-              }, 2000);
-            } catch (error) {}
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            "& > button:focus": { zIndex: 1 },
           }}
         >
-          {(<CopyIcon />) as any}
-          {copied ? "Copied🪄" : "Copy CLI"}
-        </Button>
-      )}
-      {blocks.length > 0 && (
-        <Button
-          id="view-blocks"
-          onClick={(event) => {
-            setAnchorEl(event.currentTarget as HTMLElement);
-          }}
-        >
-          View Blocks ({blocks.length})
-          {
-            (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                width="16"
-                height="16"
-                fill="currentColor"
-              >
-                <path d="M7 10l5 5 5-5z"></path>
-              </svg>
-            ) as any
-          }
-        </Button>
+          <Button
+            id="view-blocks"
+            onClick={(event) => {
+              setAnchorEl(event.currentTarget as HTMLElement);
+            }}
+            style={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
+          >
+            View Blocks ({blocks.length})
+            {
+              (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                >
+                  <path d="M7 10l5 5 5-5z"></path>
+                </svg>
+              ) as any
+            }
+          </Button>
+          <Button
+            title="Copy CLI command"
+            onClick={async () => {
+              try {
+                await copy(
+                  `npx mui-treasury@latest clone ${blocks
+                    .map((block) => block.id.replace(/--.*/, ""))
+                    .join(" ")}`,
+                );
+                setCopied(true);
+                if (timeoutRef.current) {
+                  window.clearTimeout(timeoutRef.current);
+                }
+                timeoutRef.current = window.setTimeout(() => {
+                  setCopied(false);
+                }, 2000);
+              } catch (error) {}
+            }}
+            style={{
+              borderTopLeftRadius: 0,
+              borderBottomLeftRadius: 0,
+              marginLeft: "-1px",
+              minWidth: 90,
+            }}
+          >
+            {copied ? ((<CheckIcon />) as any) : ((<CopyIcon />) as any)}
+            {copied ? "Copied" : "Copy CLI"}
+          </Button>
+        </Box>
       )}
       <Popper
         id={Boolean(anchorEl) ? "view-blocks" : undefined}
@@ -150,7 +165,7 @@ export const BlockPicker = memo(function MyAddonSelector() {
                     </IconButton>
                   }
                   sx={{
-                    "& .MuiListItemSecondaryAction-root": { right: "8px" },
+                    "& .MuiListItemSecondaryAction-root": { right: "unset" },
                   }}
                 >
                   <ListItemButton
@@ -163,7 +178,8 @@ export const BlockPicker = memo(function MyAddonSelector() {
                       storybookApi.selectStory(block.id);
                       setAnchorEl(null);
                     }}
-                    sx={{ fontSize: "0.875rem", pl: 1 }}
+                    sx={{ fontSize: "0.875rem" }}
+                    style={{ paddingInline: "32px 12px" }}
                   >
                     {block.id.replace(/--.*/, "")}
                   </ListItemButton>
