@@ -46,6 +46,7 @@ const config: StorybookConfig = {
     "@storybook/addon-webpack5-compiler-babel",
     "@chromatic-com/storybook",
   ],
+  staticDirs: ["../public"],
   framework: {
     name: "@storybook/react-webpack5",
     options: {},

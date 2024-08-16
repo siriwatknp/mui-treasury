@@ -6,10 +6,12 @@ import {
   STORY_MISSING,
 } from "@storybook/core-events";
 import { addons, types } from "@storybook/manager-api";
+import { create } from "@storybook/theming";
 import CarbonAds from "./carbon-ads/CarbonAds";
 import { Tool } from "./decorators/Author";
 import { BlockPicker } from "./decorators/BlockPicker";
 import { BlockUsage } from "./decorators/BlockUsage";
+import "./manager.css";
 
 // https://storybook.js.org/docs/react/configure/features-and-behavior
 addons.setConfig({
@@ -18,7 +20,13 @@ addons.setConfig({
   panelPosition: "bottom",
   enableShortcuts: true,
   showToolbar: true,
-  theme: undefined,
+  theme: create({
+    base: "light",
+    brandUrl: "https://github.com/siriwatknp/mui-treasury",
+    brandTitle: "MUI Treasury Github",
+    brandImage: "mui-treasury-logo.png",
+    brandTarget: "_blank",
+  }),
   selectedPanel: undefined,
   initialActive: "sidebar",
 });
@@ -44,6 +52,22 @@ addons.register("google-analytics", (api) => {
       description: `attempted to render ${id}, but it is missing`,
       fatal: false,
     });
+  });
+});
+
+addons.register("github-sponsor", () => {
+  addons.add("github-sponsor/toolbar", {
+    title: "Github Sponsor",
+    type: types.TOOLEXTRA,
+    render: () => (
+      <iframe
+        src="https://github.com/sponsors/siriwatknp/button"
+        title="Sponsor siriwatknp"
+        height="32"
+        width="108"
+        style={{ border: 0, borderRadius: 6 }}
+      ></iframe>
+    ),
   });
 });
 
