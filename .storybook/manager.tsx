@@ -55,8 +55,8 @@ addons.register("google-analytics", (api) => {
   });
 });
 
-addons.register("github-sponsor", () => {
-  addons.add("github-sponsor/toolbar", {
+addons.register("sponsors", () => {
+  addons.add("github", {
     title: "Github Sponsor",
     type: types.TOOLEXTRA,
     render: () => (
@@ -64,9 +64,27 @@ addons.register("github-sponsor", () => {
         src="https://github.com/sponsors/siriwatknp/button"
         title="Sponsor siriwatknp"
         height="32"
-        width="108"
+        width="112"
         style={{ border: 0, borderRadius: 6 }}
       ></iframe>
+    ),
+  });
+
+  addons.add("buymeacoffee", {
+    title: "Buy Me A Coffee",
+    type: types.TOOLEXTRA,
+    render: () => (
+      <a
+        href="https://www.buymeacoffee.com/jun.dev"
+        target="_blank"
+        style={{ display: "flex" }}
+      >
+        <img
+          src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+          alt="Buy Me A Coffee"
+          style={{ height: 32, width: 112 }}
+        />
+      </a>
     ),
   });
 });
