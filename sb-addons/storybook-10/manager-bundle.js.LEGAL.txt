@@ -34,7 +34,7 @@ react-is/cjs/react-is.production.min.js:
 
 @mui/styled-engine/index.js:
   /**
-   * @mui/styled-engine v6.0.0-beta.5
+   * @mui/styled-engine v6.0.2
    *
    * @license MIT
    * This source code is licensed under the MIT license found in the
@@ -43,7 +43,7 @@ react-is/cjs/react-is.production.min.js:
 
 @mui/private-theming/index.js:
   /**
-   * @mui/private-theming v6.0.0-beta.5
+   * @mui/private-theming v6.0.2
    *
    * @license MIT
    * This source code is licensed under the MIT license found in the
@@ -52,7 +52,7 @@ react-is/cjs/react-is.production.min.js:
 
 @mui/system/index.js:
   /**
-   * @mui/system v6.0.0-beta.5
+   * @mui/system v6.0.2
    *
    * @license MIT
    * This source code is licensed under the MIT license found in the
