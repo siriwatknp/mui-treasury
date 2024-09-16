@@ -8,6 +8,11 @@ export function TextFieldShadcn(props: TextFieldProps) {
       placeholder="shadcn"
       helperText="This is your public display name."
       {...props}
+      slotProps={{
+        inputLabel: {
+          shrink: true,
+        },
+      }}
       sx={{
         "--radius": "0.5rem",
         "--ring": "var(--mui-palette-text-primary)",
