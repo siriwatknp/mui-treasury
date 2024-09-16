@@ -7,23 +7,23 @@ import { DecoratorFunction } from "@storybook/types";
 
 const useResizeHandle = (
   target: React.MutableRefObject<HTMLElement | null>,
-  options?: { minWidth?: string; maxWidth?: string }
+  options?: { minWidth?: string; maxWidth?: string },
 ) => {
   const { minWidth = "0px", maxWidth = "100%" } = options || {};
   const [dragging, setDragging] = React.useState(false);
   const [dragOffset, setDragOffset] = React.useState(0);
   const isTouchEvent = (
-    event: MouseEvent | TouchEvent
+    event: MouseEvent | TouchEvent,
   ): event is TouchEvent => {
     return Boolean(
-      (event as TouchEvent).touches && (event as TouchEvent).touches.length
+      (event as TouchEvent).touches && (event as TouchEvent).touches.length,
     );
   };
   const isMouseEvent = (
-    event: MouseEvent | TouchEvent
+    event: MouseEvent | TouchEvent,
   ): event is MouseEvent => {
     return Boolean(
-      (event as MouseEvent).clientX || (event as MouseEvent).clientX === 0
+      (event as MouseEvent).clientX || (event as MouseEvent).clientX === 0,
     );
   };
   const getClientX = React.useCallback((event: MouseEvent | TouchEvent) => {
@@ -37,7 +37,6 @@ const useResizeHandle = (
     return clientX as number;
   }, []);
   const handleStart = (event: React.MouseEvent | React.TouchEvent) => {
-    console.log("start");
     const clientX = getClientX(event.nativeEvent);
     const rect = (event.target as HTMLElement).getBoundingClientRect();
     setDragging(true);
@@ -53,8 +52,9 @@ const useResizeHandle = (
       if (target.current && dragging && clientX) {
         const newWidth = clientX + dragOffset;
         target.current.style.width = `clamp(${minWidth}, ${Math.floor(
-          newWidth
+          newWidth,
         )}px, ${maxWidth})`;
+        target.current.style.marginLeft = "initial";
       }
     }
     function stopResize() {
@@ -87,7 +87,7 @@ const useResizeHandle = (
 export default function draggableIframe() {
   return function draggableIframeDecorator(Story, context) {
     const objectRef = React.useRef<HTMLElement | null>(
-      window.frameElement as HTMLIFrameElement
+      window.frameElement as HTMLIFrameElement,
     );
     const { dragging, getDragHandlers } = useResizeHandle(objectRef);
     return (
@@ -107,7 +107,10 @@ export default function draggableIframe() {
             onDoubleClick={() => {
               if (window.frameElement) {
                 (window.frameElement as HTMLIFrameElement).style.removeProperty(
-                  "width"
+                  "width",
+                );
+                (window.frameElement as HTMLIFrameElement).style.removeProperty(
+                  "margin-left",
                 );
               }
             }}
