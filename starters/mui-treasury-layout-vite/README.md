@@ -4,12 +4,8 @@ This is a [Vite](https://vitejs.dev/) project bootstrapped using [`create-vite`]
 
 ## How to use
 
-Download the example:
-
-<!-- #default-branch-switch -->
-
 ```bash
-curl https://codeload.github.com/siriwatknp/mui-treasury/tar.gz/next | tar -xz --strip=2 mui-treasury-master/examples/mui-treasury-layout-vite
+npx mui-treasury@latest new mui-treasury-layout-vite
 cd mui-treasury-layout-vite
 ```
 

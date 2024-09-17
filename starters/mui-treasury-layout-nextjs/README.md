@@ -4,12 +4,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped using [`create-nex
 
 ## How to use
 
-Download the example:
-
-<!-- #default-branch-switch -->
-
 ```bash
-curl https://codeload.github.com/siriwatknp/mui-treasury/tar.gz/next | tar -xz --strip=2  mui-treasury-master/examples/mui-treasury-layout-nextjs
+npx mui-treasury@latest new mui-treasury-layout-nextjs
 cd mui-treasury-layout-nextjs
 ```
 

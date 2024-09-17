@@ -6,10 +6,8 @@ This is a [Vite](https://vitejs.dev/) project bootstrapped using [`create-vite`]
 
 Download the example:
 
-<!-- #default-branch-switch -->
-
 ```bash
-curl https://codeload.github.com/siriwatknp/mui-treasury/tar.gz/next | tar -xz --strip=2 mui-treasury-master/examples/mui-treasury-playground
+npx mui-treasury@latest new mui-treasury-playground
 cd mui-treasury-playground
 ```
 

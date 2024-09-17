@@ -268,6 +268,14 @@ const program = createProgram({
             ),
           choices: [
             {
+              title: "MUI Treasury Layout - Next.js App Router",
+              value: "mui-treasury-layout-nextjs",
+            },
+            {
+              title: "MUI Treasury Layout - Vite",
+              value: "mui-treasury-layout-vite",
+            },
+            {
               title: "[TS] Material UI - Next.js App Router",
               value: "material-ui-nextjs-ts",
             },
@@ -276,66 +284,26 @@ const program = createProgram({
               value: "material-ui-nextjs-pages-router-ts",
             },
             {
-              title: "[TS] Material UI - Remix",
-              value: "material-ui-remix-ts",
-            },
-            {
               title: "[TS] Material UI - Vite",
               value: "material-ui-vite-ts",
             },
             {
-              title: "[TS] Base UI - Next.js Tailwind",
-              value: "base-ui-nextjs-tailwind-ts",
+              title: "[TS] Material UI Pigment CSS - Next.js App Router",
+              value: "material-ui-pigment-css-nextjs-ts",
             },
             {
-              title: "[TS] Base UI - Vite Tailwind",
-              value: "base-ui-vite-tailwind-ts",
+              title: "[TS] Material UI Pigment CSS - Vite",
+              value: "material-ui-pigment-css-vite-ts",
             },
-            {
-              title: "[TS] Joy UI - Next.js",
-              value: "joy-ui-nextjs-ts",
-            },
-            { title: "[TS] Joy UI - Vite", value: "joy-ui-vite-ts" },
-            {
-              title: "[TS] Material UI - Next.js v4 to v5 Migration",
-              value: "material-ui-nextjs-ts-v4-v5-migration",
-            },
-            {
-              title: "[TS] Material UI - CRA",
-              value: "material-ui-cra-ts",
-            },
-            {
-              title: "[TS] Material UI - CRA, styled-components",
-              value: "material-ui-cra-styled-components-ts",
-            },
-            {
-              title: "[TS] Material UI - CRA, Tailwind",
-              value: "material-ui-cra-tailwind-ts",
-            },
-            { title: "[TS] Base UI - CRA", value: "base-ui-cra-ts" },
-            { title: "[TS] Joy UI - CRA", value: "joy-ui-cra-ts" },
-            {
-              title: "Material UI - CRA, styled-components",
-              value: "material-ui-cra-styled-components",
-            },
-            {
-              title: "Material UI - Express SSR",
-              value: "material-ui-express-ssr",
-            },
-            { title: "Material UI - Gatsby", value: "material-ui-gatsby" },
             { title: "Material UI - Next.js", value: "material-ui-nextjs" },
             {
               title: "Material UI - Next.js Pages Router",
               value: "material-ui-nextjs-pages-router",
             },
-            { title: "Material UI - Preact", value: "material-ui-preact" },
-            { title: "Material UI - via CDN", value: "material-ui-via-cdn" },
             { title: "Material UI - Vite", value: "material-ui-vite" },
-            { title: "Material UI - CRA", value: "material-ui-cra" },
-            { title: "Base UI - CRA", value: "base-ui-cra" },
             {
-              title: "Base UI - Vite Tailwind",
-              value: "base-ui-vite-tailwind",
+              title: "MUI Treasury Playground",
+              value: "mui-treasury-playground",
             },
           ],
         });
@@ -356,10 +324,10 @@ const program = createProgram({
       try {
         await pipeline(
           got.stream(
-            `https://codeload.github.com/mui/material-ui/tar.gz/${branch}`,
+            `https://codeload.github.com/siriwatknp/mui-treasury/tar.gz/${branch}`,
           ),
           tar.extract({ cwd: root, strip: 3 }, [
-            `material-ui-${branch}/examples/${template}`,
+            `mui-treasury-${branch}/starters/${template}`,
           ]),
         );
       } catch (error) {
