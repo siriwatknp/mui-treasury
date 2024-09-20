@@ -9,5 +9,6 @@ export default {
   theme: {
     extend: {},
   },
+  presets: [require("./blocks/tailwind-preset/material-ui-tailwind-preset")],
   plugins: [],
 };

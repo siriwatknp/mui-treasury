@@ -11,10 +11,25 @@ import {
   ThemeProvider,
   useColorScheme,
 } from "@mui/material/styles";
+import { DocsContainer, DocsContainerProps } from "@storybook/blocks";
 import { useDarkMode } from "storybook-dark-mode";
 import "./global.css";
 import draggableIframe from "./decorators/draggableIframe";
 import "./tailwind.css";
+
+const theme = createTheme({
+  cssVariables: { colorSchemeSelector: "data" },
+  colorSchemes: { light: true, dark: true },
+});
+function CssVarsProvider({ children }: { children: React.ReactNode }) {
+  return (
+    <ThemeProvider theme={theme}>
+      <ModeObserver />
+      <CssBaseline />
+      {children}
+    </ThemeProvider>
+  );
+}
 
 const ModeObserver = () => {
   const isDark = useDarkMode();
@@ -88,21 +103,24 @@ const preview: Preview = {
       hideNoControlsWarning: true,
       expanded: false,
     },
+    docs: {
+      container: ({
+        children,
+        ...props
+      }: DocsContainerProps & { children: React.ReactNode }) => (
+        <CssVarsProvider>
+          <DocsContainer {...props}>{children}</DocsContainer>
+        </CssVarsProvider>
+      ),
+    },
   },
   decorators: [
     draggableIframe(),
     (Story) => {
       return (
-        <ThemeProvider
-          theme={createTheme({
-            cssVariables: { colorSchemeSelector: "data" },
-            colorSchemes: { light: true, dark: true },
-          })}
-        >
-          <ModeObserver />
-          <CssBaseline />
+        <CssVarsProvider>
           <Story />
-        </ThemeProvider>
+        </CssVarsProvider>
       );
     },
   ],
