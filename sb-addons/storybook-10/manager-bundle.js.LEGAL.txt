@@ -21,38 +21,38 @@ react/cjs/react-jsx-runtime.production.min.js:
    * LICENSE file in the root directory of this source tree.
    */
 
-react-is/cjs/react-is.production.min.js:
+react-is/cjs/react-is.production.js:
   /**
    * @license React
-   * react-is.production.min.js
+   * react-is.production.js
    *
-   * Copyright (c) Facebook, Inc. and its affiliates.
+   * Copyright (c) Meta Platforms, Inc. and affiliates.
    *
    * This source code is licensed under the MIT license found in the
    * LICENSE file in the root directory of this source tree.
    */
 
-@mui/styled-engine/index.js:
+@mui/styled-engine/esm/index.js:
   /**
-   * @mui/styled-engine v6.0.2
+   * @mui/styled-engine v7.1.0
    *
    * @license MIT
    * This source code is licensed under the MIT license found in the
    * LICENSE file in the root directory of this source tree.
    */
 
-@mui/private-theming/index.js:
+@mui/private-theming/esm/index.js:
   /**
-   * @mui/private-theming v6.0.2
+   * @mui/private-theming v7.1.0
    *
    * @license MIT
    * This source code is licensed under the MIT license found in the
    * LICENSE file in the root directory of this source tree.
    */
 
-@mui/system/index.js:
+@mui/system/esm/index.js:
   /**
-   * @mui/system v6.0.2
+   * @mui/system v7.1.0
    *
    * @license MIT
    * This source code is licensed under the MIT license found in the
