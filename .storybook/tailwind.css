@@ -106,32 +106,34 @@
   --color-Alert-info: var(--mui-palette-Alert-infoColor);
   --color-Alert-success: var(--mui-palette-Alert-successColor);
   --color-Alert-warning: var(--mui-palette-Alert-warningColor);
-  --color-Alert-errorFilled: var(--mui-palette-Alert-errorFilledBg);
-  --color-Alert-infoFilled: var(--mui-palette-Alert-infoFilledBg);
-  --color-Alert-successFilled: var(--mui-palette-Alert-successFilledBg);
-  --color-Alert-warningFilled: var(--mui-palette-Alert-warningFilledBg);
+  --color-Alert-errorFilledBg: var(--mui-palette-Alert-errorFilledBg);
+  --color-Alert-infoFilledBg: var(--mui-palette-Alert-infoFilledBg);
+  --color-Alert-successFilledBg: var(--mui-palette-Alert-successFilledBg);
+  --color-Alert-warningFilledBg: var(--mui-palette-Alert-warningFilledBg);
   --color-Alert-errorFilledColor: var(--mui-palette-Alert-errorFilledColor);
   --color-Alert-infoFilledColor: var(--mui-palette-Alert-infoFilledColor);
   --color-Alert-successFilledColor: var(--mui-palette-Alert-successFilledColor);
   --color-Alert-warningFilledColor: var(--mui-palette-Alert-warningFilledColor);
-  --color-Alert-errorStandard: var(--mui-palette-Alert-errorStandardBg);
-  --color-Alert-infoStandard: var(--mui-palette-Alert-infoStandardBg);
-  --color-Alert-successStandard: var(--mui-palette-Alert-successStandardBg);
-  --color-Alert-warningStandard: var(--mui-palette-Alert-warningStandardBg);
+  --color-Alert-errorStandardBg: var(--mui-palette-Alert-errorStandardBg);
+  --color-Alert-infoStandardBg: var(--mui-palette-Alert-infoStandardBg);
+  --color-Alert-successStandardBg: var(--mui-palette-Alert-successStandardBg);
+  --color-Alert-warningStandardBg: var(--mui-palette-Alert-warningStandardBg);
   --color-Alert-errorIcon: var(--mui-palette-Alert-errorIconColor);
   --color-Alert-infoIcon: var(--mui-palette-Alert-infoIconColor);
   --color-Alert-successIcon: var(--mui-palette-Alert-successIconColor);
   --color-Alert-warningIcon: var(--mui-palette-Alert-warningIconColor);
 
   /* AppBar */
-  --color-AppBar-default: var(--mui-palette-AppBar-defaultBg);
+  --color-AppBar-defaultBg: var(--mui-palette-AppBar-defaultBg);
 
   /* Avatar */
-  --color-Avatar-default: var(--mui-palette-Avatar-defaultBg);
+  --color-Avatar-defaultBg: var(--mui-palette-Avatar-defaultBg);
 
   /* Button */
-  --color-Button-inheritContained: var(--mui-palette-Button-inheritContainedBg);
-  --color-Button-inheritContainedHover: var(
+  --color-Button-inheritContainedBg: var(
+    --mui-palette-Button-inheritContainedBg
+  );
+  --color-Button-inheritContainedHoverBg: var(
     --mui-palette-Button-inheritContainedHoverBg
   );
 
@@ -142,36 +144,36 @@
 
   /* FilledInput */
   --color-FilledInput-bg: var(--mui-palette-FilledInput-bg);
-  --color-FilledInput-hover: var(--mui-palette-FilledInput-hoverBg);
-  --color-FilledInput-disabled: var(--mui-palette-FilledInput-disabledBg);
+  --color-FilledInput-hoverBg: var(--mui-palette-FilledInput-hoverBg);
+  --color-FilledInput-disabledBg: var(--mui-palette-FilledInput-disabledBg);
 
   /* LinearProgress */
-  --color-LinearProgress-primary: var(--mui-palette-LinearProgress-primaryBg);
-  --color-LinearProgress-secondary: var(
+  --color-LinearProgress-primaryBg: var(--mui-palette-LinearProgress-primaryBg);
+  --color-LinearProgress-secondaryBg: var(
     --mui-palette-LinearProgress-secondaryBg
   );
-  --color-LinearProgress-error: var(--mui-palette-LinearProgress-errorBg);
-  --color-LinearProgress-info: var(--mui-palette-LinearProgress-infoBg);
-  --color-LinearProgress-success: var(--mui-palette-LinearProgress-successBg);
-  --color-LinearProgress-warning: var(--mui-palette-LinearProgress-warningBg);
+  --color-LinearProgress-errorBg: var(--mui-palette-LinearProgress-errorBg);
+  --color-LinearProgress-infoBg: var(--mui-palette-LinearProgress-infoBg);
+  --color-LinearProgress-successBg: var(--mui-palette-LinearProgress-successBg);
+  --color-LinearProgress-warningBg: var(--mui-palette-LinearProgress-warningBg);
 
   /* Skeleton */
   --color-Skeleton-bg: var(--mui-palette-Skeleton-bg);
 
   /* Slider */
-  --color-Slider-primary: var(--mui-palette-Slider-primaryTrack);
-  --color-Slider-secondary: var(--mui-palette-Slider-secondaryTrack);
-  --color-Slider-error: var(--mui-palette-Slider-errorTrack);
-  --color-Slider-info: var(--mui-palette-Slider-infoTrack);
-  --color-Slider-success: var(--mui-palette-Slider-successTrack);
-  --color-Slider-warning: var(--mui-palette-Slider-warningTrack);
+  --color-Slider-primaryTrack: var(--mui-palette-Slider-primaryTrack);
+  --color-Slider-secondaryTrack: var(--mui-palette-Slider-secondaryTrack);
+  --color-Slider-errorTrack: var(--mui-palette-Slider-errorTrack);
+  --color-Slider-infoTrack: var(--mui-palette-Slider-infoTrack);
+  --color-Slider-successTrack: var(--mui-palette-Slider-successTrack);
+  --color-Slider-warningTrack: var(--mui-palette-Slider-warningTrack);
 
   /* SnackbarContent */
   --color-SnackbarContent-bg: var(--mui-palette-SnackbarContent-bg);
   --color-SnackbarContent-text: var(--mui-palette-SnackbarContent-color);
 
   /* SpeedDialAction */
-  --color-SpeedDialAction-fabHover: var(
+  --color-SpeedDialAction-fabHoverBg: var(
     --mui-palette-SpeedDialAction-fabHoverBg
   );
 
@@ -180,22 +182,24 @@
   --color-StepContent-border: var(--mui-palette-StepContent-border);
 
   /* Switch */
-  --color-Switch-default: var(--mui-palette-Switch-defaultColor);
-  --color-Switch-defaultDisabled: var(
+  --color-Switch-defaultColor: var(--mui-palette-Switch-defaultColor);
+  --color-Switch-defaultDisabledColor: var(
     --mui-palette-Switch-defaultDisabledColor
   );
-  --color-Switch-primaryDisabled: var(
+  --color-Switch-primaryDisabledColor: var(
     --mui-palette-Switch-primaryDisabledColor
   );
-  --color-Switch-secondaryDisabled: var(
+  --color-Switch-secondaryDisabledColor: var(
     --mui-palette-Switch-secondaryDisabledColor
   );
-  --color-Switch-errorDisabled: var(--mui-palette-Switch-errorDisabledColor);
-  --color-Switch-infoDisabled: var(--mui-palette-Switch-infoDisabledColor);
-  --color-Switch-successDisabled: var(
+  --color-Switch-errorDisabledColor: var(
+    --mui-palette-Switch-errorDisabledColor
+  );
+  --color-Switch-infoDisabledColor: var(--mui-palette-Switch-infoDisabledColor);
+  --color-Switch-successDisabledColor: var(
     --mui-palette-Switch-successDisabledColor
   );
-  --color-Switch-warningDisabled: var(
+  --color-Switch-warningDisabledColor: var(
     --mui-palette-Switch-warningDisabledColor
   );
 
