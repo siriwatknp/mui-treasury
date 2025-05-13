@@ -6,8 +6,10 @@ import React from "react";
 import type { Preview } from "@storybook/react";
 import type {} from "@mui/material/themeCssVarsAugmentation";
 import CssBaseline from "@mui/material/CssBaseline";
+import GlobalStyles from "@mui/material/GlobalStyles";
 import {
   createTheme,
+  StyledEngineProvider,
   ThemeProvider,
   useColorScheme,
 } from "@mui/material/styles";
@@ -108,9 +110,12 @@ const preview: Preview = {
         children,
         ...props
       }: DocsContainerProps & { children: React.ReactNode }) => (
-        <CssVarsProvider>
-          <DocsContainer {...props}>{children}</DocsContainer>
-        </CssVarsProvider>
+        <StyledEngineProvider enableCssLayer>
+          <GlobalStyles styles="@layer theme, base, mui, components, utilities;" />
+          <CssVarsProvider>
+            <DocsContainer {...props}>{children}</DocsContainer>
+          </CssVarsProvider>
+        </StyledEngineProvider>
       ),
     },
   },
@@ -118,9 +123,12 @@ const preview: Preview = {
     draggableIframe(),
     (Story) => {
       return (
-        <CssVarsProvider>
-          <Story />
-        </CssVarsProvider>
+        <StyledEngineProvider enableCssLayer>
+          <GlobalStyles styles="@layer theme, base, mui, components, utilities;" />
+          <CssVarsProvider>
+            <Story />
+          </CssVarsProvider>
+        </StyledEngineProvider>
       );
     },
   ],

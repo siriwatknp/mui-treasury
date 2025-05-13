@@ -2,41 +2,9 @@ import { Meta } from "@storybook/blocks";
 
 <Meta title="Tailwind Preset" />
 
-# Tailwind CSS Preset
+# Tailwind CSS v4
 
-This preset maps Material UI theme to Tailwind CSS configuration so you can use Material UI theme as utility classes.
-
-This page assumes that you have [installed Material UI](https://mui.com/material-ui/getting-started/installation/) and enable [CSS theme variables feature](https://mui.com/material-ui/customization/css-theme-variables/usage/).
-
-## Installation
-
-First, clone the preset to your project by open the root terminal and run:
-
-```bash
-npx mui-treasury@latest clone tailwind-preset
-```
-
-Then, open `tailwind.config.js` and add the preset to the `presets` array:
-
-```js
-// tailwind.config.js
-module.exports = {
-  // ...other configs
-  presets: [
-    require("./src/mui-treasury/tailwind-preset/material-ui-tailwind-preset"),
-  ],
-};
-```
-
-That's it! Now you can use Material UI theme variables in your Tailwind CSS utility classes.
-
-This also works if you have a custom theme because the mapping is done through CSS variables reference, so the values from your custom theme are still applied.
-
-However, if you have added new tokens, you will need to update the `material-ui-tailwind-preset.js` to include those tokens if you want to use theme in Tailwind classes.
-
-## Playground
-
-Try it out from the [Tailwind CSS playground](https://play.tailwindcss.com/2WRGl4zCn2)
+Check out the [official integration](https://mui.com/material-ui/integrations/tailwindcss/tailwindcss-v4/).
 
 ## Usage
 
