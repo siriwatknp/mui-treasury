@@ -170,10 +170,12 @@ export default function CardHighlight() {
         }
       />
       <CustomCard
-        color="#5357ce"
+        color="#08A4AE"
         brand={"League of Legends Official"}
         date={"02.04.2020"}
-        cover={"https://www.pcclean.io/wp-content/uploads/2019/04/559308.jpg"}
+        cover={
+          "https://png.pngtree.com/thumb_back/fh260/background/20230614/pngtree-how-to-the-paladin-in-league-of-legends-image_2879705.jpg"
+        }
         logo={
           "https://cm1.narvii.com/7153/05204b8d8dcbb652dd1a8ceaafde997bc1909468_00.jpg"
         }
