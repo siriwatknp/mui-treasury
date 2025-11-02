@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document outlines the comprehensive testing strategy for `create-registry-json.ts`, a CLI tool that generates registry JSON files for MUI Plus components. The plan includes refactoring for testability, unit tests, integration tests, and end-to-end tests.
+This document outlines the comprehensive testing strategy for `create-registry-json.ts`, a CLI tool that generates registry JSON files for MUI Treasury components. The plan includes refactoring for testability, unit tests, integration tests, and end-to-end tests.
 
 ## Architecture & Refactoring Plan
 

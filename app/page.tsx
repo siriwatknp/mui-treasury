@@ -30,9 +30,9 @@ export default function Home() {
           textAlign: "center",
         }}
       >
-        {/* MUI Plus Chip */}
+        {/* MUI Treasury Chip */}
         <Chip
-          label="MUI Plus"
+          label="MUI Treasury"
           variant="outlined"
           sx={{
             mb: 3,

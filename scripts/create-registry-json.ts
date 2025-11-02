@@ -10,7 +10,7 @@ const program = new Command();
 
 program
   .name("create-registry-json")
-  .description("Generate registry JSON files for MUI Plus components")
+  .description("Generate registry JSON files for MUI Treasury components")
   .version("1.0.0")
   .argument("[name]", "Component name (if not provided, generates all)")
   .option("-t, --title <title>", "Component title")
@@ -31,7 +31,7 @@ program
         options.title,
         options.description,
         options.category,
-        tags,
+        tags
       );
     }
   });

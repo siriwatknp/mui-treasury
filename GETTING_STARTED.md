@@ -1,6 +1,6 @@
 # Getting Started
 
-MUI Plus is a component registry for Material UI (MUI) that provides beautifully crafted components and blocks built on top of a hand-crafted theme.
+MUI Treasury is a component registry for Material UI (MUI) that provides beautifully crafted components and blocks built on top of a hand-crafted theme.
 
 It aims to be goto solution for building your next MUI project.
 
@@ -23,9 +23,9 @@ The starter includes:
 - **TypeScript** for type safety
 - **shadcn CLI** ready for component installation
 
-## MUI Plus Theme
+## MUI Treasury Theme
 
-The MUI Plus theme offers a refined, minimalist design system that moves beyond Material Design:
+The MUI Treasury theme offers a refined, minimalist design system that moves beyond Material Design:
 
 ### Key Features
 
@@ -37,7 +37,7 @@ The MUI Plus theme offers a refined, minimalist design system that moves beyond 
 
 ### Installation
 
-To add the MUI Plus theme to your project:
+To add the MUI Treasury theme to your project:
 
 ```bash
 npx shadcn@latest add https://mui-treasury.com/r/mui-plus.json
@@ -84,7 +84,7 @@ You can modify them as you want.
 
 ## Components and Blocks
 
-MUI Plus provides a growing collection of components and blocks that you can add to your project.
+MUI Treasury provides a growing collection of components and blocks that you can add to your project.
 
 - [Primitives](/primitive) - Extended building blocks on top of MUI components
 - [AI Elements](/ai) - Components that integrate with AI models and tools
