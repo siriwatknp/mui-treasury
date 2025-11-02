@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-galaxy",
+  "type": "registry:item",
+  "title": "Card Galaxy",
+  "description": "Card with full-height background image, bottom gradient overlay, and white text Info components positioned at bottom",
+  "meta": {
+    "category": "primitive"
+  }
+}

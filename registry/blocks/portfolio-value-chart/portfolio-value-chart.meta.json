@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Portfolio Value Chart",
+  "description": "A portfolio-value-chart block.",
+  "meta": {
+    "screenshot": "/screenshots/portfolio-value-chart.png",
+    "category": "dashboard"
+  }
+}

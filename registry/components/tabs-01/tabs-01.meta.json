@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Tabs 01",
+  "description": "A clean tabs component with AI and signup options, includes help link",
+  "meta": {
+    "screenshot": "/screenshots/tabs-01.png",
+    "category": "primitive"
+  }
+}

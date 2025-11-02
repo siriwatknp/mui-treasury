@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Tabs Apple",
+  "description": "Apple-style tabs with rounded container and sliding indicator",
+  "meta": {
+    "category": "primitive"
+  }
+}

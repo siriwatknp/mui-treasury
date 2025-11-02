@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Customer Metrics Card",
+  "description": "A dashboard card displaying customer metrics with growth percentage and trend chart",
+  "meta": {
+    "screenshot": "/screenshots/customer-metrics-card.png",
+    "category": "dashboard"
+  }
+}

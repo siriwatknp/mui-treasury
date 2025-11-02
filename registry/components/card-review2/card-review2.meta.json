@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-review2",
+  "type": "registry:item",
+  "title": "Card Review2",
+  "description": "Magazine-style review card with image, star rating, content excerpt, and comment/view/share metrics",
+  "meta": {
+    "category": "primitive"
+  }
+}

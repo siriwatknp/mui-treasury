@@ -1,0 +1,11 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-tag",
+  "type": "registry:item",
+  "title": "Card Tag",
+  "description": "Decorative tag-shaped card with hole punch cutout design for menu items or categories",
+  "meta": {
+    "category": "primitive",
+    "previewClassName": "bg-white dark:bg-neutral-950"
+  }
+}

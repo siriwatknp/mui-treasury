@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Tabs Inside Triangle",
+  "description": "Tabs with diagonal triangle shadow effect using CSS transform",
+  "meta": {
+    "category": "primitive"
+  }
+}

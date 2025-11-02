@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Tabs Twitter",
+  "description": "Twitter-style tabs with bold text, hover effects, and bottom border",
+  "meta": {
+    "category": "primitive"
+  }
+}

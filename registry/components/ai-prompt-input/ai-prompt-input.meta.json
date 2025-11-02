@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Ai Prompt Input",
+  "description": "A ai-prompt-input item.",
+  "meta": {
+    "category": "ai"
+  }
+}

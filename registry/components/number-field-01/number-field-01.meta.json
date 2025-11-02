@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Number Field 01",
+  "description": "Base UI Number Field for numeric values with increment/decrement buttons",
+  "meta": {
+    "category": "primitive"
+  }
+}

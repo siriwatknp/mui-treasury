@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "AI Elements",
+  "description": "All AI Elements from MUI Plus",
+  "registryDependencies": [
+    "ai-actions",
+    "ai-artifact",
+    "ai-branch",
+    "ai-chain-of-thought",
+    "ai-code-block",
+    "ai-context",
+    "ai-conversation",
+    "ai-image",
+    "ai-inline-citation",
+    "ai-loader",
+    "ai-message",
+    "ai-open-in-chat",
+    "ai-prompt-input",
+    "ai-reasoning",
+    "ai-response",
+    "ai-sources",
+    "ai-suggestion",
+    "ai-task",
+    "ai-tool",
+    "ai-web-preview"
+  ],
+  "meta": {
+    "category": "ai"
+  }
+}

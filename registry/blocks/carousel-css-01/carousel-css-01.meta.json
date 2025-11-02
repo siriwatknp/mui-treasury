@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Carousel CSS 01",
+  "description": "Horizontal scrollable carousel with CSS scroll snap",
+  "meta": {
+    "category": "primitive"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Preference Settings",
+  "description": "A clean settings panel with various preference options including selects and toggles",
+  "meta": {
+    "screenshot": "/screenshots/preference-settings.png",
+    "category": "dashboard"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-news2",
+  "type": "registry:item",
+  "title": "Card News2",
+  "description": "Full-bleed image card with centered white text heading and explore label, positioned absolutely over background",
+  "meta": {
+    "category": "primitive"
+  }
+}

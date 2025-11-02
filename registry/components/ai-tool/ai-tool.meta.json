@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Ai Tool",
+  "description": "A ai-tool item.",
+  "meta": {
+    "category": "ai"
+  }
+}

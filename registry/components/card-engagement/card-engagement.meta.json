@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-engagement",
+  "type": "registry:item",
+  "title": "Card Engagement",
+  "description": "Card with landscape image, Info title/subtitle, and AvatarGroup footer showing participant avatars",
+  "meta": {
+    "category": "primitive"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Radio Card",
+  "description": "Radio card component for selecting options with detailed information",
+  "meta": {
+    "category": "primitive"
+  }
+}

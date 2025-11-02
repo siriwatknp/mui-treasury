@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Tabs Chip",
+  "description": "Horizontal tab navigation styled as chip-like buttons",
+  "meta": {
+    "category": "primitive"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Tabs with Inverted Text Effect",
+  "description": "A modern tab component with mix-blend-mode for automatic text color inversion when the indicator slides beneath tabs",
+  "meta": {
+    "category": "primitive",
+    "previewClassName": "bg-white dark:bg-neutral-950"
+  }
+}

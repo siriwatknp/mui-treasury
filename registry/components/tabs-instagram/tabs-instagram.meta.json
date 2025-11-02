@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Tabs Instagram",
+  "description": "Instagram-style tabs with top indicator, icons, and uppercase labels",
+  "meta": {
+    "category": "primitive"
+  }
+}

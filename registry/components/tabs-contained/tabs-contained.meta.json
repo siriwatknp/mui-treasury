@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Tabs Contained",
+  "description": "Contained tabs with separator lines and secondary color for selected state",
+  "meta": {
+    "category": "primitive"
+  }
+}

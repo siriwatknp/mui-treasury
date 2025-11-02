@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Ticket Status Card",
+  "description": "A ticket-status-card block.",
+  "meta": {
+    "screenshot": "/screenshots/ticket-status-card.png",
+    "category": "dashboard"
+  }
+}

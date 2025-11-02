@@ -1,0 +1,16 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+When ask to build a block for the registry, do the following:
+
+- create a block at `registry/new-york/blocks/{block}/{block}.tsx`.
+  - all of the components used in the block must come from Material UI `@mui/material` unless third-party lib is specifically asked.
+  - always use `mui-docs-mcp` when building the block to get the most up-to-date documentation about Material UI and its ecosystem.
+  - use module export (don't use default export).
+  - always attach "use client" directive at the top of the block file.
+- render the block to @page.tsx as first item.
+- update [registry.json](mdc:registry.json) to include the new block.
+
+After created the block, check the localhost to see if the new block appear on the screen or not.

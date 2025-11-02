@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Tabs Firebase",
+  "description": "Firebase-style tabs with thick top indicator and hover backdrop",
+  "meta": {
+    "category": "primitive"
+  }
+}

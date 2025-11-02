@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Product Card",
+  "description": "Product card with gradient background header, centered image, and floating heart icon. Features product title, attribute chips, description text, and bottom row with price on left and 'Add to cart' button on right.",
+  "meta": {
+    "screenshot": "/screenshots/product-card.png",
+    "category": "ecommerce"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-sysi",
+  "type": "registry:item",
+  "title": "Card Sysi",
+  "description": "Program enrollment card with Thai content, Info components, and dual 'Learn more' / 'Apply now' buttons",
+  "meta": {
+    "category": "primitive"
+  }
+}

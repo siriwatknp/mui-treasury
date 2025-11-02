@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Product Card 2",
+  "description": "Mobile product card with centered image, floating heart icon, and product name with badge. Features circular color swatches with checkmarks, size selection buttons, and bottom row with price and 'Add to cart' button.",
+  "meta": {
+    "screenshot": "/screenshots/product-card2.png",
+    "category": "ecommerce"
+  }
+}

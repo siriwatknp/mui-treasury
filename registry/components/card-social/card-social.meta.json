@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-social",
+  "type": "registry:item",
+  "title": "Card Social",
+  "description": "Social connection card with avatar, user name, mutual friends count, and follow button",
+  "meta": {
+    "category": "primitive"
+  }
+}

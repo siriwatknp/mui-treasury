@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Meter",
+  "description": "A minimal meter component using Base UI Meter with Material UI styling",
+  "meta": {
+    "category": "primitive"
+  }
+}

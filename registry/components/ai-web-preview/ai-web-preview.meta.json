@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Ai Web Preview",
+  "description": "A ai-web-preview item.",
+  "meta": {
+    "category": "ai"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Segmented Radio Control",
+  "description": "A segmented control component for selecting between options with radio buttons",
+  "meta": {
+    "category": "primitive"
+  }
+}

@@ -1,0 +1,89 @@
+name: Clone UI Mockup
+description: Request to clone a UI mockup into a MUI Registry block or component
+title: "[Clone] "
+labels: ["clone-mockup", "needs-claude"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 📋 UI Mockup Clone Request
+
+        This template helps @claude read your UI screenshot and build a corresponding MUI Registry block or component.
+
+        **Instructions:**
+        1. Upload a clear screenshot of the UI you want to clone
+        2. Specify whether this should be a block or component
+        3. @claude will analyze the screenshot and create a PR with the implementation
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Registry Item Type
+      description: What type of registry item should this be?
+      options:
+        - Component (Simple reusable component)
+        - Block (Complex UI section with multiple files)
+      default: 0
+    validations:
+      required: true
+
+  - type: input
+    id: name
+    attributes:
+      label: Item Name
+      description: Proposed name for the block/component (kebab-case)
+      placeholder: e.g., pricing-card, login-form, dashboard-sidebar
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: UI Screenshot
+      description: |
+        Upload a screenshot of the UI you want to clone.
+        You can drag and drop images here or paste from clipboard.
+
+        **Important:** Make sure the screenshot is clear and shows the complete UI element.
+      placeholder: Drag and drop your screenshot here...
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Any additional context, description, or specific requirements
+      placeholder: |
+        - Description of the UI element and its purpose
+        - Links to similar components
+        - Special features or behaviors needed
+        - Color scheme or styling preferences
+    validations:
+      required: false
+
+  - type: textarea
+    id: claude-instructions
+    attributes:
+      label: "Instructions for Claude (DO NOT EDIT)"
+      description: "This section contains instructions for Claude. Please do not modify."
+      value: |
+        ---
+
+        ## 🤖 For Claude
+
+        @claude - Please read the screenshot above and:
+        1. Analyze the UI design and structure
+        2. Create a new registry item (block or component as specified)
+        3. Follow the MUI Registry guidelines in CLAUDE.md
+        4. Ensure Material UI components are used
+        5. Implement dark mode support, responsive design, and accessibility by default
+        6. Update registry.json with the new item metadata
+        7. Create a demo page in `app/{name}/page.tsx` if it's a block
+        8. Run `pnpm registry:build` to generate the JSON file
+        9. Create a PR with the implementation
+
+        The implementation should match the visual design as closely as possible while following MUI best practices and guidelines from CLAUDE.md.
+    validations:
+      required: true

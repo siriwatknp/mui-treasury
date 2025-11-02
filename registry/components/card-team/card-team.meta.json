@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-team",
+  "type": "registry:item",
+  "title": "Card Team",
+  "description": "Team group cards with cover images, avatar groups, member counts, and join/leave action buttons with gradient styling",
+  "meta": {
+    "category": "primitive",
+    "previewClassName": "h-[300px!important] overflow-auto",
+    "previewMode": "iframe"
+  }
+}

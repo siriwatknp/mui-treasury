@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Data Metrics",
+  "description": "A data-metrics block.",
+  "meta": {
+    "screenshot": "/screenshots/data-metrics.png",
+    "category": "dashboard"
+  }
+}

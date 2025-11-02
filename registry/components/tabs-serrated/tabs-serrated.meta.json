@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Tabs Serrated",
+  "description": "Serrated tabs with skewed transform and diagonal shadow gradient",
+  "meta": {
+    "category": "primitive"
+  }
+}

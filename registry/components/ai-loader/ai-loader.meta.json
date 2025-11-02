@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Ai Loader",
+  "description": "A ai-loader item.",
+  "meta": {
+    "category": "ai"
+  }
+}

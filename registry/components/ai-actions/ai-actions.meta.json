@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "AI Actions",
+  "description": "Interactive AI action components",
+  "meta": {
+    "category": "ai"
+  }
+}

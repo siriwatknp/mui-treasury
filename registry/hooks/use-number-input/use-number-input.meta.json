@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:hook",
+  "title": "useNumberInput",
+  "description": "A hook for managing state and behavior in number input components.",
+  "meta": {
+    "category": "react-hook"
+  }
+}

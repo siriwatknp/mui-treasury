@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-music",
+  "type": "registry:item",
+  "title": "Card Music",
+  "description": "Music card with rounded album artwork and Info components displaying artist/title/description using N04 styles",
+  "meta": {
+    "category": "primitive"
+  }
+}

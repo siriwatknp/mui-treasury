@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-solid-game",
+  "type": "registry:item",
+  "title": "Card Solid Game",
+  "description": "Game cards with solid color backgrounds, logo images, game titles, and hover shadow/scale animations",
+  "meta": {
+    "category": "primitive"
+  }
+}

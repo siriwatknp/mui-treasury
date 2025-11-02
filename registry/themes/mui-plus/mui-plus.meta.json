@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "MUI Plus Theme",
+  "description": "A minimal theme with monochromatic palette and system fonts",
+  "meta": {
+    "category": "themes"
+  }
+}

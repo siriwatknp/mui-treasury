@@ -1,0 +1,11 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-action-01",
+  "type": "registry:item",
+  "title": "Card Action 01",
+  "description": "Card with full-bleed background, heading text overlay, and floating circular add button in bottom-right corner with hover scale effect",
+  "meta": {
+    "category": "primitive",
+    "previewClassName": "bg-white dark:bg-neutral-950"
+  }
+}

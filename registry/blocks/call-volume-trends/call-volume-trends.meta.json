@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Call Volume Trends",
+  "description": "A call-volume-trends block.",
+  "meta": {
+    "screenshot": "/screenshots/call-volume-trends.png",
+    "category": "dashboard"
+  }
+}

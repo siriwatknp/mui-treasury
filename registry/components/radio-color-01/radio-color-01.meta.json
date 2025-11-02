@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Color Radio Selection",
+  "description": "A customizable radio group component with color swatches as selection options",
+  "meta": {
+    "category": "primitive"
+  }
+}

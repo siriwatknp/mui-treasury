@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-post",
+  "type": "registry:item",
+  "title": "Card Post",
+  "description": "Social post card with clipped polygon image, positioned avatar overlay, Info title/subtitle, and share/like action buttons",
+  "meta": {
+    "category": "primitive"
+  }
+}

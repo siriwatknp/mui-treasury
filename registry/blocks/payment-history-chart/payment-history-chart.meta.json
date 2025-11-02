@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Payment History Chart",
+  "description": "A payment-history-chart block.",
+  "meta": {
+    "screenshot": "/screenshots/payment-history-chart.png",
+    "category": "dashboard"
+  }
+}

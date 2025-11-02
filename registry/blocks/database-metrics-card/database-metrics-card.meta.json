@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Database Metrics Card",
+  "description": "A database-metrics-card block.",
+  "meta": {
+    "screenshot": "/screenshots/database-metrics-card.png",
+    "category": "dashboard"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Tabs Chrome",
+  "description": "Chrome browser-style tabs with separator lines and smooth hover effects",
+  "meta": {
+    "category": "primitive"
+  }
+}

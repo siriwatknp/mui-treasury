@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Tabs Pill",
+  "description": "Pill-shaped tabs with rounded corners, elevation shadow on selection",
+  "meta": {
+    "category": "primitive"
+  }
+}

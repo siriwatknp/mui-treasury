@@ -1,0 +1,11 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-tutor",
+  "type": "registry:item",
+  "title": "Card Tutor",
+  "description": "Compact profile card with avatar, name/title info, and action button using Open Sans typography",
+  "meta": {
+    "category": "primitive",
+    "previewClassName": "bg-white dark:bg-neutral-950"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-profile",
+  "type": "registry:item",
+  "title": "Card Profile",
+  "description": "Profile card with centered avatar, name/location info, and followers/following stats displayed in divided columns",
+  "meta": {
+    "category": "primitive"
+  }
+}

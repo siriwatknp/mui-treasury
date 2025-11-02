@@ -1,0 +1,11 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Project Invite Modal",
+  "description": "A project-invite-modal block.",
+  "meta": {
+    "screenshot": "/screenshots/project-invite-modal.png",
+    "category": "authentication",
+    "previewMode": "iframe"
+  }
+}

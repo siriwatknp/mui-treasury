@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Select with Inset Label",
+  "description": "A select dropdown with label displayed inside the container above the selected value",
+  "meta": {
+    "category": "primitive"
+  }
+}

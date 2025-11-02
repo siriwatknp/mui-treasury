@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "AI Artifact",
+  "description": "A container component for displaying artifacts with header, actions, and content areas",
+  "meta": {
+    "category": "ai"
+  }
+}

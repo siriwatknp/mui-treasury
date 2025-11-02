@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-highlight",
+  "type": "registry:item",
+  "title": "Card Highlight",
+  "description": "Card with game branding, cover image, gradient overlay, logo avatar with hover scale, and date badge",
+  "meta": {
+    "category": "primitive"
+  }
+}

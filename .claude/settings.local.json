@@ -1,0 +1,71 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm registry:build:*)",
+      "WebFetch(domain:mui.com)",
+      "Bash(pnpm lint:*)",
+      "Bash(pnpm dev:*)",
+      "Bash(npx tsc:*)",
+      "Bash(curl:*)",
+      "Bash(node:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(mkdir:*)",
+      "Bash(touch:*)",
+      "Bash(lsof:*)",
+      "Bash(git restore:*)",
+      "Bash(npx shadcn@latest add:*)",
+      "mcp__ide__getDiagnostics",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_close",
+      "mcp__playwright__browser_resize",
+      "mcp__playwright__browser_snapshot",
+      "mcp__playwright__browser_drag",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_wait_for",
+      "Bash(git add:*)",
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__get-library-docs",
+      "Bash(__NEW_LINE__ cp src/components/ai-elements/image.tsx registry/components/ai-image/ai-image.tsx)",
+      "Bash(__NEW_LINE__ cp src/components/ai-elements/inline-citation.tsx registry/components/ai-inline-citation/ai-inline-citation.tsx)",
+      "Bash(__NEW_LINE__ cp src/components/ai-elements/loader.tsx registry/components/ai-loader/ai-loader.tsx)",
+      "Bash(__NEW_LINE__ cp src/components/ai-elements/message.tsx registry/components/ai-message/ai-message.tsx)",
+      "Bash(__NEW_LINE__ cp src/components/ai-elements/reasoning.tsx registry/components/ai-reasoning/ai-reasoning.tsx)",
+      "Bash(__NEW_LINE__ cp src/components/ai-elements/response.tsx registry/components/ai-response/ai-response.tsx)",
+      "Bash(__NEW_LINE__ cp src/components/ai-elements/sources.tsx registry/components/ai-sources/ai-sources.tsx)",
+      "Bash(__NEW_LINE__ cp src/components/ai-elements/suggestion.tsx registry/components/ai-suggestion/ai-suggestion.tsx)",
+      "Bash(__NEW_LINE__ cp src/components/ai-elements/tool.tsx registry/components/ai-tool/ai-tool.tsx)",
+      "Bash(__NEW_LINE__ cp src/components/ai-elements/web-preview.tsx registry/components/ai-web-preview/ai-web-preview.tsx)",
+      "Bash(git commit:*)",
+      "Bash(find:*)",
+      "Bash(for:*)",
+      "Bash(do echo \"=== $file.json ===\")",
+      "Bash(head:*)",
+      "Bash(done)",
+      "Bash(do echo \"=== Checking $file ===\")",
+      "Bash(grep:*)",
+      "Bash(do echo \"=== Checking $file for ai imports ===\")",
+      "Bash(npx tsx:*)",
+      "Bash(cat:*)",
+      "Bash(pnpm test:*)",
+      "Bash(pnpm test:coverage:*)"
+    ],
+    "deny": []
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": ["playwright"],
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx pretty-quick"
+          }
+        ]
+      }
+    ]
+  }
+}

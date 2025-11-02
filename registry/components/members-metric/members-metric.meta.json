@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Members Metric Card",
+  "description": "A metric card displaying member count with trend indicator and sparkline chart",
+  "meta": {
+    "screenshot": "/screenshots/members-metric.png",
+    "category": "dashboard"
+  }
+}

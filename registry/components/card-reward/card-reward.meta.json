@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-reward",
+  "type": "registry:item",
+  "title": "Card Reward",
+  "description": "Purple gradient reward card with trophy image, contest title, date range, and 'Enter Now' button",
+  "meta": {
+    "category": "primitive"
+  }
+}

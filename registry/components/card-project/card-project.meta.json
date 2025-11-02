@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-project",
+  "type": "registry:item",
+  "title": "Card Project",
+  "description": "Project card with brand logo, time indicator, and Info components using Blog styles for title/subtitle",
+  "meta": {
+    "category": "primitive"
+  }
+}

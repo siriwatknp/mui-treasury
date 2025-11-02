@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Ai Code Block",
+  "description": "A ai-code-block item.",
+  "meta": {
+    "category": "ai"
+  }
+}

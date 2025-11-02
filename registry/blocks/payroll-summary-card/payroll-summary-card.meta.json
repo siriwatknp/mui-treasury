@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Payroll Summary Card",
+  "description": "A payroll-summary-card block.",
+  "meta": {
+    "screenshot": "/screenshots/payroll-summary-card.png",
+    "category": "dashboard"
+  }
+}

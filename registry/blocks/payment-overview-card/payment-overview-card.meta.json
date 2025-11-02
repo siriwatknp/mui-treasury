@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Payment Overview Card",
+  "description": "A payment-overview-card block.",
+  "meta": {
+    "screenshot": "/screenshots/payment-overview-card.png",
+    "category": "dashboard"
+  }
+}

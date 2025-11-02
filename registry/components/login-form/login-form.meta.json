@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Login Form",
+  "description": "Clean and accessible login form with email/password authentication and Google OAuth option",
+  "meta": {
+    "screenshot": "/screenshots/login-form.png",
+    "category": "authentication"
+  }
+}

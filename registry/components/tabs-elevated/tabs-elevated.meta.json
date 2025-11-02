@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Tabs Elevated",
+  "description": "Elevated tabs with gradient background and translucent indicator",
+  "meta": {
+    "category": "primitive"
+  }
+}

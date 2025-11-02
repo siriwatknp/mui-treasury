@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "AI Chain of Thought",
+  "description": "Component for displaying AI reasoning steps with collapsible content",
+  "meta": {
+    "category": "ai"
+  }
+}

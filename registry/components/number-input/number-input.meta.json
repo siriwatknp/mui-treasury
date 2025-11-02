@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Number Input",
+  "description": "A number input component with various features and customization options.",
+  "meta": {
+    "screenshot": "/screenshots/number-input.png",
+    "category": "primitive"
+  }
+}

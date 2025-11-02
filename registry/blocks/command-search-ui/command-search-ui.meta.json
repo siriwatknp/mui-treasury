@@ -1,0 +1,11 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Command Search Ui",
+  "description": "A command-search-ui block.",
+  "meta": {
+    "screenshot": "/screenshots/command-search-ui.png",
+    "category": "dashboard",
+    "previewMode": "iframe"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Transaction History List",
+  "description": "A transaction-history-list block.",
+  "meta": {
+    "screenshot": "/screenshots/transaction-history-list.png",
+    "category": "dashboard"
+  }
+}

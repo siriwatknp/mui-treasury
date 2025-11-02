@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Color Scheme Select Minimal",
+  "description": "Minimal select component for switching color schemes",
+  "meta": {
+    "category": "primitive"
+  }
+}

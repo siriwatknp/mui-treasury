@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Space Login",
+  "description": "Split-screen login form with space theme and social authentication options",
+  "meta": {
+    "screenshot": "/screenshots/space-login.png",
+    "category": "authentication"
+  }
+}

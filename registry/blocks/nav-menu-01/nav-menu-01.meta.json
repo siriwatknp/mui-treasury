@@ -1,0 +1,11 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Navigation Menu 01",
+  "description": "Horizontal navigation menu with dropdown menus for Products and Resources sections",
+  "meta": {
+    "screenshot": "/screenshots/nav-menu-01.png",
+    "category": "primitive",
+    "previewClassName": "items-start"
+  }
+}

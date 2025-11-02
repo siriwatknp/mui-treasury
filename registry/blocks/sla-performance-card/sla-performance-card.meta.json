@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Sla Performance Card",
+  "description": "A sla-performance-card block.",
+  "meta": {
+    "screenshot": "/screenshots/sla-performance-card.png",
+    "category": "dashboard"
+  }
+}

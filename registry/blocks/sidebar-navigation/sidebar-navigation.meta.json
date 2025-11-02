@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Sidebar Navigation",
+  "description": "Modern vertical navigation sidebar with expandable menu items, storage usage indicator, and user profile section",
+  "meta": {
+    "screenshot": "/screenshots/sidebar-navigation.png",
+    "category": "dashboard"
+  }
+}

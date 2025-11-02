@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Ai Branch",
+  "description": "A ai-branch item.",
+  "meta": {
+    "category": "ai"
+  }
+}

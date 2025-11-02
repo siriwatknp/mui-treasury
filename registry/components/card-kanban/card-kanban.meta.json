@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-kanban",
+  "type": "registry:item",
+  "title": "Card Kanban",
+  "description": "Compact horizontal card with avatar, user name, location info, and progress slider showing completion status",
+  "meta": {
+    "category": "primitive"
+  }
+}

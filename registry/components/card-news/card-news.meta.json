@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-news",
+  "type": "registry:item",
+  "title": "Card News",
+  "description": "News card with image, Info components using N01 styles, and 'Find Out More' button with hover scale effect",
+  "meta": {
+    "category": "primitive"
+  }
+}

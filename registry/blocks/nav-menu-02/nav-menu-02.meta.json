@@ -1,0 +1,11 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Navigation Menu 02",
+  "description": "Horizontal navigation menu with animated dropdown transitions and arrow indicators",
+  "meta": {
+    "screenshot": "/screenshots/nav-menu-02.png",
+    "category": "primitive",
+    "previewClassName": "items-start"
+  }
+}

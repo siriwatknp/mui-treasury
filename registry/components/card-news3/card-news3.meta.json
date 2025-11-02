@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-news3",
+  "type": "registry:item",
+  "title": "Card News3",
+  "description": "News card with image overlay, gradient backdrop, fashion tag badge, author info with avatar, and layered shadow effect on hover",
+  "meta": {
+    "category": "primitive"
+  }
+}

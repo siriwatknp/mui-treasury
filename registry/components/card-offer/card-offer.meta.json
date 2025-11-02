@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-offer",
+  "type": "registry:item",
+  "title": "Card Offer",
+  "description": "Promotional card with cyan background, decorative bow image, circular background elements, and 'Learn more' button",
+  "meta": {
+    "category": "primitive"
+  }
+}

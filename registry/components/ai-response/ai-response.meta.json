@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Ai Response",
+  "description": "A ai-response item.",
+  "meta": {
+    "category": "ai"
+  }
+}
