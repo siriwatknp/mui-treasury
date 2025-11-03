@@ -45,8 +45,8 @@ describe("CLI E2E Tests - Happy Paths", () => {
     // Verify files were created
     expect(
       vol.existsSync(
-        "/project/registry/components/test-button/test-button.meta.json",
-      ),
+        "/project/registry/components/test-button/test-button.meta.json"
+      )
     ).toBe(true);
     expect(vol.existsSync("/project/public/r/test-button.json")).toBe(true);
     expect(vol.existsSync("/project/public/r/test-button.v0.json")).toBe(true);
@@ -70,7 +70,7 @@ describe("CLI E2E Tests - Happy Paths", () => {
       "Awesome Card",
       "A really awesome card component",
       "display",
-      ["card", "container"],
+      ["card", "container"]
     );
 
     // Verify custom metadata
@@ -83,8 +83,8 @@ describe("CLI E2E Tests - Happy Paths", () => {
     const metaContent = JSON.parse(
       vol.readFileSync(
         "/project/registry/components/custom-card/custom-card.meta.json",
-        "utf-8",
-      ) as string,
+        "utf-8"
+      ) as string
     );
     expect(metaContent.title).toBe("Awesome Card");
     expect(metaContent.meta.category).toBe("display");
@@ -151,7 +151,7 @@ describe("CLI E2E Tests - Happy Paths", () => {
       expect.arrayContaining([
         expect.stringContaining("/r/button.json"),
         expect.stringContaining("/r/use-form.json"),
-      ]),
+      ])
     );
   });
 
@@ -173,17 +173,17 @@ describe("CLI E2E Tests - Happy Paths", () => {
 
     // Find the generated index.ts
     const indexFile = result.registryJson.files.find((f) =>
-      f.target.endsWith("index.ts"),
+      f.target.endsWith("index.ts")
     );
 
     expect(indexFile).toBeDefined();
     expect(indexFile!.content).toContain("export * from './dialog'");
     expect(indexFile!.content).toContain(
-      "export { default as Dialog } from './dialog'",
+      "export { default as Dialog } from './dialog'"
     );
     expect(indexFile!.content).toContain("export * from './dialog-header'");
     expect(indexFile!.content).toContain(
-      "export { default as DialogHeader } from './dialog-header'",
+      "export { default as DialogHeader } from './dialog-header'"
     );
   });
 
@@ -202,7 +202,9 @@ describe("CLI E2E Tests - Happy Paths", () => {
 
     // Verify theme path mapping
     const buttonFile = result.registryJson.files[0];
-    expect(buttonFile.target).toBe("src/mui-plus/theme/components/button.ts");
+    expect(buttonFile.target).toBe(
+      "src/mui-treasury/theme/components/button.ts"
+    );
   });
 
   it("should correctly merge dependencies from existing meta.json", () => {

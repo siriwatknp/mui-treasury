@@ -169,7 +169,7 @@ describe("findAllRelatedFiles", () => {
 
     const files = findAllRelatedFiles(
       "/project/registry/components/button/button.tsx",
-      "button",
+      "button"
     );
 
     expect(files).toHaveLength(3);
@@ -183,7 +183,7 @@ describe("findAllRelatedFiles", () => {
 
     const files = findAllRelatedFiles(
       "/project/registry/components/card/card.tsx",
-      "card",
+      "card"
     );
 
     expect(files).toHaveLength(1);
@@ -198,7 +198,7 @@ describe("findAllRelatedFiles", () => {
 
     const files = findAllRelatedFiles(
       "/project/registry/hooks/use-theme/index.ts",
-      "use-theme",
+      "use-theme"
     );
 
     expect(files).toHaveLength(1);
@@ -211,7 +211,7 @@ describe("findAllRelatedFiles", () => {
 
     const files = findAllRelatedFiles(
       "/project/registry/components/alert/alert.tsx",
-      "alert",
+      "alert"
     );
 
     expect(files[0].relativePath).toBe("components/alert/alert.tsx");
@@ -241,18 +241,18 @@ describe("getAllRegistryItems", () => {
 
     expect(items).toHaveLength(4);
     expect(items.map((i) => i.name)).toEqual(
-      expect.arrayContaining(["button", "card", "use-theme", "header"]),
+      expect.arrayContaining(["button", "card", "use-theme", "header"])
     );
   });
 
   it("should extract item name from path structure (second segment)", () => {
     vol.fromJSON({
-      "/project/registry/themes/mui-plus/index.ts": "",
+      "/project/registry/themes/mui-treasury/index.ts": "",
     });
 
     const items = getAllRegistryItems();
 
-    expect(items[0].name).toBe("mui-plus");
+    expect(items[0].name).toBe("mui-treasury");
   });
 
   it("should skip sub-files that do not match item name", () => {

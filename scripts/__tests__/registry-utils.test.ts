@@ -20,9 +20,9 @@ describe("getRegistryBaseUrl", () => {
 
   it("should return production URL when VERCEL_ENV=production and VERCEL_PROJECT_PRODUCTION_URL exists", () => {
     process.env.VERCEL_ENV = "production";
-    process.env.VERCEL_PROJECT_PRODUCTION_URL = "mui-plus.vercel.app";
+    process.env.VERCEL_PROJECT_PRODUCTION_URL = "mui-treasury.vercel.app";
 
-    expect(getRegistryBaseUrl()).toBe("https://mui-plus.vercel.app");
+    expect(getRegistryBaseUrl()).toBe("https://mui-treasury.vercel.app");
   });
 
   it("should fallback to mui-treasury.com when VERCEL_ENV=production but no VERCEL_PROJECT_PRODUCTION_URL", () => {

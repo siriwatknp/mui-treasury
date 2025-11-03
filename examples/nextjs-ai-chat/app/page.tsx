@@ -16,14 +16,14 @@ import {
   Conversation,
   ConversationContent,
   ConversationScrollButton,
-} from "../src/mui-plus/components/ai-conversation/ai-conversation";
+} from "../src/mui-treasury/components/ai-conversation/ai-conversation";
 import {
   Message,
   MessageContent,
   MessageAvatar,
-} from "../src/mui-plus/components/ai-message/ai-message";
-import { Response } from "../src/mui-plus/components/ai-response/ai-response";
-import { Loader } from "../src/mui-plus/components/ai-loader/ai-loader";
+} from "../src/mui-treasury/components/ai-message/ai-message";
+import { Response } from "../src/mui-treasury/components/ai-response/ai-response";
+import { Loader } from "../src/mui-treasury/components/ai-loader/ai-loader";
 import {
   PromptInput,
   PromptInputBody,
@@ -35,33 +35,33 @@ import {
   PromptInputButton,
   usePromptInputAttachments,
   type PromptInputMessage,
-} from "../src/mui-plus/components/ai-prompt-input/ai-prompt-input";
+} from "../src/mui-treasury/components/ai-prompt-input/ai-prompt-input";
 import {
   Suggestions,
   Suggestion,
-} from "../src/mui-plus/components/ai-suggestion/ai-suggestion";
+} from "../src/mui-treasury/components/ai-suggestion/ai-suggestion";
 import {
   Actions,
   Action,
-} from "../src/mui-plus/components/ai-actions/ai-actions";
+} from "../src/mui-treasury/components/ai-actions/ai-actions";
 import {
   Tool,
   ToolHeader,
   ToolContent,
   ToolInput,
   ToolOutput,
-} from "../src/mui-plus/components/ai-tool/ai-tool";
+} from "../src/mui-treasury/components/ai-tool/ai-tool";
 import {
   Sources,
   SourcesTrigger,
   SourcesContent,
   Source,
-} from "../src/mui-plus/components/ai-sources/ai-sources";
+} from "../src/mui-treasury/components/ai-sources/ai-sources";
 import {
   Reasoning,
   ReasoningTrigger,
   ReasoningContent,
-} from "../src/mui-plus/components/ai-reasoning/ai-reasoning";
+} from "../src/mui-treasury/components/ai-reasoning/ai-reasoning";
 
 const SUGGESTED_PROMPTS = [
   "What's the weather like in San Francisco?",
@@ -240,7 +240,7 @@ export default function ChatPage() {
 
   const handleSubmit = (
     message: PromptInputMessage,
-    event: React.FormEvent,
+    event: React.FormEvent
   ) => {
     event.preventDefault();
     if (message.text?.trim() || message.files?.length) {
@@ -318,7 +318,7 @@ export default function ChatPage() {
 
                   // Check if message has tool usage
                   const hasTool = message.parts?.some((part) =>
-                    part.type.startsWith("tool-"),
+                    part.type.startsWith("tool-")
                   );
 
                   // Get mock sources and reasoning based on message content

@@ -132,7 +132,7 @@ pnpm install
 ### Pull Theme and AI Elements
 
 ```bash
-npx shadcn-ui@latest add https://mui-treasury.com/r/mui-plus.json
+npx shadcn-ui@latest add https://mui-treasury.com/r/mui-treasury.json
 npx shadcn-ui@latest add https://mui-treasury.com/r/ai-elements.json
 ```
 
@@ -141,7 +141,7 @@ npx shadcn-ui@latest add https://mui-treasury.com/r/ai-elements.json
 Uncomment the `ThemeProvider` component wrapping `{children}` in `app/layout.tsx`.
 
 ```tsx
-import { ThemeProvider } from "@/mui-plus/theme";
+import { ThemeProvider } from "@/mui-treasury/theme";
 
 <ThemeProvider>{children}</ThemeProvider>;
 ```
@@ -163,7 +163,7 @@ examples/nextjs-ai-chat/
 │   ├── layout.tsx               # Root layout with MUI providers
 │   └── page.tsx                 # Main chat interface with all scenarios
 ├── src/
-│   └── mui-plus/
+│   └── mui-treasury/
 │       └── components/          # Reusable AI UI components
 │           ├── ai-conversation/ # Scrollable chat container
 │           ├── ai-message/      # Message display components

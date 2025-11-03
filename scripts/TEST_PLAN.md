@@ -151,9 +151,9 @@ export default defineConfig({
 describe("getRegistryBaseUrl", () => {
   it("should return production URL when VERCEL_ENV=production and VERCEL_PROJECT_PRODUCTION_URL exists", () => {
     process.env.VERCEL_ENV = "production";
-    process.env.VERCEL_PROJECT_PRODUCTION_URL = "mui-plus.vercel.app";
+    process.env.VERCEL_PROJECT_PRODUCTION_URL = "mui-treasury.vercel.app";
 
-    expect(getRegistryBaseUrl()).toBe("https://mui-plus.vercel.app");
+    expect(getRegistryBaseUrl()).toBe("https://mui-treasury.vercel.app");
   });
 });
 ```
@@ -734,12 +734,12 @@ it("should return unique registry items from all categories", () => {
 ```typescript
 it("should extract item name from path structure (second segment)", () => {
   vol.fromJSON({
-    "/registry/themes/mui-plus/index.ts": "",
+    "/registry/themes/mui-treasury/index.ts": "",
   });
 
   const items = getAllRegistryItems();
 
-  expect(items[0].name).toBe("mui-plus");
+  expect(items[0].name).toBe("mui-treasury");
 });
 ```
 
@@ -1088,27 +1088,27 @@ it("should not generate index.ts if it already exists", () => {
 #### TC7: Map theme paths correctly
 
 ```typescript
-it("should map themes/ to src/mui-plus/theme/ in target paths", () => {
+it("should map themes/ to src/mui-treasury/theme/ in target paths", () => {
   vol.fromJSON({
-    "/registry/themes/mui-plus/components/alert.ts": `export const alert = {}`,
+    "/registry/themes/mui-treasury/components/alert.ts": `export const alert = {}`,
   });
 
   const result = processRegistryFile({
-    path: "/registry/themes/mui-plus/components/alert.ts",
-    relativePath: "themes/mui-plus/components/alert.ts",
-    name: "mui-plus",
+    path: "/registry/themes/mui-treasury/components/alert.ts",
+    relativePath: "themes/mui-treasury/components/alert.ts",
+    name: "mui-treasury",
   });
 
   expect(result.registryJson.files[0].target).toBe(
-    "src/mui-plus/theme/components/alert.ts"
+    "src/mui-treasury/theme/components/alert.ts"
   );
 });
 ```
 
-#### TC8: Map non-theme paths to src/mui-plus/
+#### TC8: Map non-theme paths to src/mui-treasury/
 
 ```typescript
-it("should prepend src/mui-plus/ to non-theme paths", () => {
+it("should prepend src/mui-treasury/ to non-theme paths", () => {
   vol.fromJSON({
     "/registry/components/button/button.tsx": `export default function Button() {}`,
   });
@@ -1120,7 +1120,7 @@ it("should prepend src/mui-plus/ to non-theme paths", () => {
   });
 
   expect(result.registryJson.files[0].target).toBe(
-    "src/mui-plus/components/button/button.tsx"
+    "src/mui-treasury/components/button/button.tsx"
   );
 });
 ```

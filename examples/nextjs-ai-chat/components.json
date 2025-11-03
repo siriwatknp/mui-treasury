@@ -18,7 +18,7 @@
     "hooks": "@/hooks"
   },
   "registries": {
-    "@mui-plus": "https://mui-treasury.com/r/{name}.json"
+    "@mui-treasury": "https://mui-treasury.com/r/{name}.json"
   },
   "iconLibrary": "lucide"
 }

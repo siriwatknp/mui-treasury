@@ -280,23 +280,23 @@ describe("processRegistryFile", () => {
     expect(indexFiles).toHaveLength(1); // Only the original
   });
 
-  it("should map themes/ to src/mui-plus/theme/ in target paths", () => {
+  it("should map themes/ to src/mui-treasury/theme/ in target paths", () => {
     vol.fromJSON({
-      "/project/registry/themes/mui-plus/components/alert.ts": `export const alert = {}`,
+      "/project/registry/themes/mui-treasury/components/alert.ts": `export const alert = {}`,
     });
 
     const result = processRegistryFile({
-      path: "/project/registry/themes/mui-plus/components/alert.ts",
-      relativePath: "themes/mui-plus/components/alert.ts",
-      name: "mui-plus",
+      path: "/project/registry/themes/mui-treasury/components/alert.ts",
+      relativePath: "themes/mui-treasury/components/alert.ts",
+      name: "mui-treasury",
     });
 
     expect(result.registryJson.files[0].target).toBe(
-      "src/mui-plus/theme/components/alert.ts"
+      "src/mui-treasury/theme/components/alert.ts"
     );
   });
 
-  it("should prepend src/mui-plus/ to non-theme paths", () => {
+  it("should prepend src/mui-treasury/ to non-theme paths", () => {
     vol.fromJSON({
       "/project/registry/components/button/button.tsx": `export default function Button() {}`,
     });
@@ -308,7 +308,7 @@ describe("processRegistryFile", () => {
     });
 
     expect(result.registryJson.files[0].target).toBe(
-      "src/mui-plus/components/button/button.tsx"
+      "src/mui-treasury/components/button/button.tsx"
     );
   });
 

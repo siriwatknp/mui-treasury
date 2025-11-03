@@ -7,11 +7,11 @@ It aims to be goto solution for building your next MUI project.
 ## Quick Start
 
 ```bash
-npx create-next-app@latest mui-plus-starter \
-  -e https://github.com/siriwatknp/mui-plus/tree/main/examples/nextjs
+npx create-next-app@latest mui-treasury-starter \
+  -e https://github.com/siriwatknp/mui-treasury/tree/main/examples/nextjs
 ```
 
-> Replace `mui-plus-starter` with your project name.
+> Replace `mui-treasury-starter` with your project name.
 
 ### Stack Overview
 
@@ -40,7 +40,7 @@ The MUI Treasury theme offers a refined, minimalist design system that moves bey
 To add the MUI Treasury theme to your project:
 
 ```bash
-npx shadcn@latest add https://mui-treasury.com/r/mui-plus.json
+npx shadcn@latest add https://mui-treasury.com/r/mui-treasury.json
 ```
 
 ### Usage
@@ -51,7 +51,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import InitColorSchemeScript from "@mui/material/InitColorSchemeScript";
-+ import { ThemeProvider } from "@/mui-plus/theme";
++ import { ThemeProvider } from "@/mui-treasury/theme";
 import { AppTheme } from "./theme";
 import "./globals.css";
 
@@ -79,7 +79,7 @@ export default function RootLayout({
 }
 ```
 
-The theme is available in the `src/mui-plus/theme` directory.
+The theme is available in the `src/mui-treasury/theme` directory.
 You can modify them as you want.
 
 ## Components and Blocks
@@ -95,7 +95,7 @@ Add components directly to your project by clicking the "npx shadcn" button from
 npx shadcn@latest add https://mui-treasury.com/r/ai-elements.json
 ```
 
-Components will be installed to `src/mui-plus/` directory by default.
+Components will be installed to `src/mui-treasury/` directory by default.
 
 ## MCP Setup
 
@@ -104,7 +104,7 @@ Follow [Shadcn MCP Setup](https://ui.shadcn.com/docs/registry/mcp) with the foll
 ```json
 {
   "registries": {
-    "@mui-plus": "https://mui-treasury.com/r/{name}.json"
+    "@mui-treasury": "https://mui-treasury.com/r/{name}.json"
   }
 }
 ```
@@ -112,12 +112,12 @@ Follow [Shadcn MCP Setup](https://ui.shadcn.com/docs/registry/mcp) with the foll
 ## Next Steps
 
 1. **Explore components** at [mui-treasury.com](https://mui-treasury.com)
-2. **Customize the theme** by modifying `src/mui-plus/theme/`
+2. **Customize the theme** by modifying `src/mui-treasury/theme/`
 3. **Add your first component** using the shadcn CLI
-4. **Join the community** on [GitHub](https://github.com/siriwatknp/mui-plus)
+4. **Join the community** on [GitHub](https://github.com/siriwatknp/mui-treasury)
 
 ## Support
 
 - **Documentation**: [mui-treasury.com](https://mui-treasury.com)
-- **GitHub Issues**: [github.com/siriwatknp/mui-plus/issues](https://github.com/siriwatknp/mui-plus/issues)
+- **GitHub Issues**: [github.com/siriwatknp/mui-treasury/issues](https://github.com/siriwatknp/mui-treasury/issues)
 - **Author**: [@siriwatknp](https://github.com/siriwatknp)

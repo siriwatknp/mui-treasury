@@ -3,7 +3,7 @@
 import * as React from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import theme from "@/registry/themes/mui-plus";
+import theme from "@/registry/themes/mui-treasury";
 
 interface AppThemeProps {
   children: React.ReactNode;
