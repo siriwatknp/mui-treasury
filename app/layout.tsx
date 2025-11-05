@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import InitColorSchemeScript from "@mui/material/InitColorSchemeScript";
+import CarbonAds from "@/components/carbon-ads/CarbonAds";
 import { AppTheme } from "./theme";
 import "./globals.css";
 
@@ -35,6 +36,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <CarbonAds />
         <InitColorSchemeScript attribute="class" />
         <AppRouterCacheProvider
           options={{

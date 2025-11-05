@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import { getRegistryByCategory, getCategories, getTags } from "@/lib/registry";
 import CategoryClient from "@/components/category-client";
-import CarbonAds from "@/components/carbon-ads/CarbonAds";
 
 interface CategoryPageProps {
   params: Promise<{ category: string }>;
@@ -38,7 +37,7 @@ export default async function CategoryPage({
   const filteredItems =
     selectedTags.length > 0
       ? allItems.filter((item) =>
-          item.meta.tags?.some((tag) => selectedTags.includes(tag))
+          item.meta.tags?.some((tag) => selectedTags.includes(tag)),
         )
       : allItems;
 
@@ -50,16 +49,13 @@ export default async function CategoryPage({
   const availableTags = getTags(category);
 
   return (
-    <>
-      <CarbonAds vertical />
-      <CategoryClient
-        categoryInfo={categoryInfo}
-        allItems={allItems}
-        availableTags={availableTags}
-        selectedTags={selectedTags}
-        metaOnlyItems={metaOnlyItems}
-        regularItems={regularItems}
-      />
-    </>
+    <CategoryClient
+      categoryInfo={categoryInfo}
+      allItems={allItems}
+      availableTags={availableTags}
+      selectedTags={selectedTags}
+      metaOnlyItems={metaOnlyItems}
+      regularItems={regularItems}
+    />
   );
 }

@@ -67,7 +67,7 @@ const ComponentPreviewContent = React.memo(
               </div>
             ),
             ssr: false,
-          }
+          },
         );
       } catch {
         return function ErrorFallback() {
@@ -112,7 +112,7 @@ const ComponentPreviewContent = React.memo(
         <DynamicComponent />
       </div>
     );
-  }
+  },
 );
 
 ComponentPreviewContent.displayName = "ComponentPreviewContent";
@@ -145,7 +145,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
       setCopiedIndex(index);
       setTimeout(() => setCopiedIndex(-1), 2000);
     },
-    []
+    [],
   );
 
   const handleCopyCLI = async () => {
@@ -285,7 +285,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
       needsIframe,
       SyntaxHighlighter,
       systemMode,
-    ]
+    ],
   );
 
   return (
@@ -356,7 +356,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
                   onClick={() =>
                     handleCopy(
                       displayFiles[activeFileIndex].content,
-                      activeFileIndex
+                      activeFileIndex,
                     )
                   }
                   className="h-6 px-2"
@@ -372,7 +372,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
             {renderFileContent(
               displayFiles[activeFileIndex],
               activeFileIndex,
-              false
+              false,
             )}
           </>
         ) : (
@@ -433,7 +433,7 @@ function LazyComponentPreview({ item }: { item: RegistryItem }) {
       },
       {
         rootMargin: "200px",
-      }
+      },
     );
 
     if (ref.current) {
@@ -491,7 +491,9 @@ export default function CategoryClient({
           )}
         </p>
       </div>
-
+      <div className="min-h-[160px] flex justify-center">
+        <div id="root-carbon" />
+      </div>
       {/* Meta-only items (collection items without preview) */}
       {metaOnlyItems.length > 0 && (
         <div className="pb-10">
@@ -500,14 +502,12 @@ export default function CategoryClient({
           ))}
         </div>
       )}
-
       {/* Sticky Tag Filter */}
       <TagFilter
         availableTags={availableTags}
         selectedTags={selectedTags}
         category={categoryInfo.name}
       />
-
       {/* Registry Grid */}
       {regularItems.length > 0 ? (
         <div className="grid gap-8">

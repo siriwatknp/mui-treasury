@@ -53,6 +53,12 @@
   box-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.05);
 }
 
+.dark #carbonads > span,
+.dark #carbonads-placeholder {
+  background-color: rgb(18, 18, 18);
+  box-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.3);
+}
+
 .carbon-wrap {
   display: flex;
 }
@@ -71,6 +77,10 @@
   font-size: 12px;
 }
 
+.dark .carbon-text {
+  color: rgb(142, 142, 147);
+}
+
 .carbon-poweredby {
   position: absolute;
   bottom: 10px;
@@ -82,6 +92,10 @@
   font-weight: 500;
   font-size: 8px;
   line-height: 1;
+}
+
+.dark .carbon-poweredby {
+  color: rgb(99, 99, 102);
 }
 
 .placeholder-wrap {
