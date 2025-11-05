@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { Suspense, useRef, useState } from "react";
+import { Suspense, useRef, useState, useEffect } from "react";
 import { RegistryItem } from "@/lib/registry";
 import TagFilter from "@/components/tag-filter";
 import { OpenInV0Button } from "@/components/open-in-v0-button";
@@ -67,7 +67,7 @@ const ComponentPreviewContent = React.memo(
               </div>
             ),
             ssr: false,
-          },
+          }
         );
       } catch {
         return function ErrorFallback() {
@@ -112,7 +112,7 @@ const ComponentPreviewContent = React.memo(
         <DynamicComponent />
       </div>
     );
-  },
+  }
 );
 
 ComponentPreviewContent.displayName = "ComponentPreviewContent";
@@ -145,7 +145,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
       setCopiedIndex(index);
       setTimeout(() => setCopiedIndex(-1), 2000);
     },
-    [],
+    []
   );
 
   const handleCopyCLI = async () => {
@@ -285,7 +285,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
       needsIframe,
       SyntaxHighlighter,
       systemMode,
-    ],
+    ]
   );
 
   return (
@@ -356,7 +356,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
                   onClick={() =>
                     handleCopy(
                       displayFiles[activeFileIndex].content,
-                      activeFileIndex,
+                      activeFileIndex
                     )
                   }
                   className="h-6 px-2"
@@ -372,7 +372,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
             {renderFileContent(
               displayFiles[activeFileIndex],
               activeFileIndex,
-              false,
+              false
             )}
           </>
         ) : (
@@ -433,7 +433,7 @@ function LazyComponentPreview({ item }: { item: RegistryItem }) {
       },
       {
         rootMargin: "200px",
-      },
+      }
     );
 
     if (ref.current) {
@@ -469,6 +469,69 @@ function LazyComponentPreview({ item }: { item: RegistryItem }) {
   );
 }
 
+function Sidebar({ items }: { items: RegistryItem[] }) {
+  const [activeItem, setActiveItem] = useState<string>("");
+  const navRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observers = new Map<string, IntersectionObserver>();
+
+    items.forEach((item) => {
+      const element = document.getElementById(item.name);
+      if (element) {
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              setActiveItem(item.name);
+            }
+          },
+          {
+            rootMargin: "-50% 0px -50% 0px",
+          }
+        );
+        observer.observe(element);
+        observers.set(item.name, observer);
+      }
+    });
+
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+    };
+  }, [items]);
+
+  useEffect(() => {
+    if (!activeItem || !navRef.current) return;
+
+    const activeLink = navRef.current.querySelector(`a[href="#${activeItem}"]`);
+    if (activeLink) {
+      activeLink.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  }, [activeItem]);
+
+  return (
+    <nav ref={navRef} className="space-y-1 p-2 text-xs">
+      {items.map((item) => (
+        <a
+          key={item.name}
+          href={`#${item.name}`}
+          className={`flex items-center px-3 py-2 transition-colors truncate relative ${
+            activeItem === item.name
+              ? "text-foreground font-medium"
+              : "text-muted-foreground hover:text-foreground"
+          }`}
+        >
+          {item.title.replace(/^Ai\s/, "AI ")}
+          <div
+            className={`absolute right-0 w-0.5 h-5 transition-colors ${
+              activeItem === item.name ? "bg-primary" : "bg-transparent"
+            }`}
+          />
+        </a>
+      ))}
+    </nav>
+  );
+}
+
 export default function CategoryClient({
   categoryInfo,
   availableTags,
@@ -479,7 +542,9 @@ export default function CategoryClient({
   return (
     <>
       <div className="jun-edgeSidebar jun-edgeSidebar-permanent-hidden xl:jun-edgeSidebar-permanent-visible xl:jun-edgeSidebar-w-[200px] [--jun-ES-line-w:0px]">
-        <div className="jun-edgeContent bg-transparent">Hello</div>
+        <div className="jun-edgeContent bg-transparent overflow-y-auto hide-scrollbar pb-10">
+          <Sidebar items={regularItems} />
+        </div>
       </div>
       <div className="jun-content">
         <div className="max-w-7xl mx-auto px-6 pb-10">
@@ -520,6 +585,7 @@ export default function CategoryClient({
               {regularItems.map((item) => (
                 <div
                   key={item.name}
+                  id={item.name}
                   className="min-w-0 flex flex-col space-y-3"
                 >
                   {/* Title and Description */}
