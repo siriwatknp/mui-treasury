@@ -4,6 +4,7 @@
 @import "tw-animate-css";
 
 @plugin "@tailwindcss/typography";
+@plugin "tailwindcss-jun-layout";
 
 @custom-variant dark (&:is(.dark *));
 

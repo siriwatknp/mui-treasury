@@ -64,6 +64,7 @@
     "shadcn": "^2.4.1",
     "streamdown": "1.1.7",
     "tailwind-merge": "^3.2.0",
+    "tailwindcss-jun-layout": "0.8.1",
     "tokenlens": "1.2.1",
     "tw-animate-css": "^1.2.5",
     "use-stick-to-bottom": "1.1.1",

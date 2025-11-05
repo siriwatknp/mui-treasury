@@ -477,74 +477,83 @@ export default function CategoryClient({
   regularItems,
 }: CategoryClientProps) {
   return (
-    <div className="max-w-7xl mx-auto px-6 pb-10">
-      {/* Header */}
-      <div className="py-8 text-center">
-        <h1 className="text-3xl font-bold capitalize mb-2">
-          {categoryInfo.label === "Ai" ? "AI" : categoryInfo.label}
-        </h1>
-        <p className="text-muted-foreground">
-          {regularItems.length}{" "}
-          {regularItems.length === 1 ? "component" : "components"}
-          {selectedTags.length > 0 && (
-            <span> matching: {selectedTags.join(", ")}</span>
-          )}
-        </p>
+    <>
+      <div className="jun-edgeSidebar jun-edgeSidebar-permanent-hidden xl:jun-edgeSidebar-permanent-visible xl:jun-edgeSidebar-w-[200px] [--jun-ES-line-w:0px]">
+        <div className="jun-edgeContent bg-transparent">Hello</div>
       </div>
-      <div className="min-h-[160px] flex justify-center">
-        <div id="root-carbon" />
-      </div>
-      {/* Meta-only items (collection items without preview) */}
-      {metaOnlyItems.length > 0 && (
-        <div className="pb-10">
-          {metaOnlyItems.map((item) => (
-            <MetaOnlyItem key={item.name} item={item} />
-          ))}
-        </div>
-      )}
-      {/* Sticky Tag Filter */}
-      <TagFilter
-        availableTags={availableTags}
-        selectedTags={selectedTags}
-        category={categoryInfo.name}
-      />
-      {/* Registry Grid */}
-      {regularItems.length > 0 ? (
-        <div className="grid gap-8">
-          {/* Regular items with preview */}
-          {regularItems.map((item) => (
-            <div key={item.name} className="min-w-0 flex flex-col space-y-3">
-              {/* Title and Description */}
-              <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <h3 className="font-semibold text-lg">
-                    {item.title.replace(/^Ai\s/, "AI ")}
-                  </h3>
-                  <Link
-                    href={`/preview/${item.name}`}
-                    className="opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-primary"
-                    title="Open full preview"
-                  >
-                    <ExternalLinkIcon className="w-4 h-4" />
-                  </Link>
-                </div>
-                <p className="text-sm text-muted-foreground line-clamp-2">
-                  {item.description}
-                </p>
-              </div>
-
-              {/* Live Component Preview */}
-              <LazyComponentPreview item={item} />
+      <div className="jun-content">
+        <div className="max-w-7xl mx-auto px-6 pb-10">
+          {/* Header */}
+          <div className="py-8 text-center">
+            <h1 className="text-3xl font-bold capitalize mb-2">
+              {categoryInfo.label === "Ai" ? "AI" : categoryInfo.label}
+            </h1>
+            <p className="text-muted-foreground">
+              {regularItems.length}{" "}
+              {regularItems.length === 1 ? "component" : "components"}
+              {selectedTags.length > 0 && (
+                <span> matching: {selectedTags.join(", ")}</span>
+              )}
+            </p>
+          </div>
+          <div className="min-h-[160px] flex justify-center">
+            <div id="root-carbon" />
+          </div>
+          {/* Meta-only items (collection items without preview) */}
+          {metaOnlyItems.length > 0 && (
+            <div className="pb-10">
+              {metaOnlyItems.map((item) => (
+                <MetaOnlyItem key={item.name} item={item} />
+              ))}
             </div>
-          ))}
+          )}
+          {/* Sticky Tag Filter */}
+          <TagFilter
+            availableTags={availableTags}
+            selectedTags={selectedTags}
+            category={categoryInfo.name}
+          />
+          {/* Registry Grid */}
+          {regularItems.length > 0 ? (
+            <div className="grid gap-8">
+              {/* Regular items with preview */}
+              {regularItems.map((item) => (
+                <div
+                  key={item.name}
+                  className="min-w-0 flex flex-col space-y-3"
+                >
+                  {/* Title and Description */}
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <h3 className="font-semibold text-lg">
+                        {item.title.replace(/^Ai\s/, "AI ")}
+                      </h3>
+                      <Link
+                        href={`/preview/${item.name}`}
+                        className="opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-primary"
+                        title="Open full preview"
+                      >
+                        <ExternalLinkIcon className="w-4 h-4" />
+                      </Link>
+                    </div>
+                    <p className="text-sm text-muted-foreground line-clamp-2">
+                      {item.description}
+                    </p>
+                  </div>
+                  {/* Live Component Preview */}
+                  <LazyComponentPreview item={item} />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">
+                No components found matching the selected filters.
+              </p>
+            </div>
+          )}
         </div>
-      ) : (
-        <div className="text-center py-12">
-          <p className="text-muted-foreground">
-            No components found matching the selected filters.
-          </p>
-        </div>
-      )}
-    </div>
+      </div>
+    </>
   );
 }
