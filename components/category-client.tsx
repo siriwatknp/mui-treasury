@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { Suspense, useRef, useState, useEffect } from "react";
@@ -17,7 +18,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import type { ImperativePanelHandle } from "react-resizable-panels";
 import type { SyntaxHighlighterProps } from "react-syntax-highlighter";
-import React from "react";
+import CarbonAds from "./carbon-ads/CarbonAds";
 
 interface CategoryClientProps {
   categoryInfo: { name: string; label: string };
@@ -509,7 +510,10 @@ function Sidebar({ items }: { items: RegistryItem[] }) {
   }, [activeItem]);
 
   return (
-    <nav ref={navRef} className="space-y-1 p-2 text-xs">
+    <nav
+      ref={navRef}
+      className="space-y-1 p-2 text-xs hide-scrollbar min-h-0 overflow-auto"
+    >
       {items.map((item) => (
         <a
           key={item.name}
@@ -541,9 +545,12 @@ export default function CategoryClient({
 }: CategoryClientProps) {
   return (
     <>
-      <div className="jun-edgeSidebar jun-edgeSidebar-permanent-hidden xl:jun-edgeSidebar-permanent-visible xl:jun-edgeSidebar-w-[200px] [--jun-ES-line-w:0px]">
-        <div className="jun-edgeContent bg-transparent overflow-y-auto hide-scrollbar pb-10">
+      <div className="jun-edgeSidebar jun-edgeSidebar-permanent-hidden jun-edgeSidebar-permanent-autoCollapse-__CSS_VALUES__ xl:jun-edgeSidebar-permanent-visible xl:jun-edgeSidebar-w-[200px] [--jun-ES-line-w:0px]">
+        <div className="jun-edgeContent bg-transparent pb-4">
           <Sidebar items={regularItems} />
+          <div className="px-2 mt-2">
+            <CarbonAds vertical />
+          </div>
         </div>
       </div>
       <div className="jun-content">
@@ -560,9 +567,6 @@ export default function CategoryClient({
                 <span> matching: {selectedTags.join(", ")}</span>
               )}
             </p>
-          </div>
-          <div className="min-h-[160px] flex justify-center">
-            <div id="root-carbon" />
           </div>
           {/* Meta-only items (collection items without preview) */}
           {metaOnlyItems.length > 0 && (
