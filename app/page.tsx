@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { AppHeader } from "@/components/app-header";
 import { GettingStartedContent } from "@/components/getting-started-content";
-import Link from "next/link";
+import Link from "@/components/next-link";
 import CarbonAds from "@/components/carbon-ads/CarbonAds";
 
 export default function Home() {

@@ -1,106 +1,137 @@
 "use client";
-
 import * as React from "react";
-import { NumberField } from "@base-ui-components/react/number-field";
+import { NumberField as BaseNumberField } from "@base-ui-components/react/number-field";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-
-export interface NumberField01Props extends NumberField.Root.Props {
-  label?: string;
-}
+import OutlinedInput from "@mui/material/OutlinedInput";
 
 export default function NumberField01({
-  label = "Amount",
-  ...props
-}: NumberField01Props) {
-  const id = React.useId();
+  id: idProp,
+  label,
+  error,
+  size = "medium",
+  ...other
+}: BaseNumberField.Root.Props & {
+  label?: React.ReactNode;
+  size?: "small" | "medium";
+  error?: boolean;
+}) {
+  let id = React.useId();
+  if (idProp) {
+    id = idProp;
+  }
   return (
-    <NumberField.Root defaultValue={100} {...props} render={<FormControl />}>
-      {label && (
-        <FormLabel
-          htmlFor={id}
+    <BaseNumberField.Root
+      {...other}
+      render={(props, state) => (
+        <FormControl
+          size={size}
+          ref={props.ref}
+          disabled={state.disabled}
+          required={state.required}
+          error={error}
+          variant="outlined"
           sx={{
-            fontWeight: 500,
-            fontSize: "0.875rem",
-            lineHeight: 1.5,
-            mb: 0.5,
+            "& .MuiButton-root": {
+              borderColor: "divider",
+              minWidth: 0,
+              bgcolor: "action.hover",
+              "&:not(.Mui-disabled)": {
+                color: "text.primary",
+              },
+            },
           }}
         >
-          {label}
-        </FormLabel>
+          {props.children}
+        </FormControl>
       )}
-      <NumberField.Group
-        render={
-          <Box
-            sx={{
-              display: "flex",
-              borderRadius: 1,
-              minHeight: 43,
-            }}
-          />
-        }
+    >
+      <FormLabel
+        htmlFor={id}
+        sx={{
+          fontSize: "0.875rem",
+          color: "text.primary",
+          fontWeight: 500,
+          lineHeight: 1.5,
+          mb: 0.5,
+        }}
       >
-        <NumberField.Decrement
+        {label}
+      </FormLabel>
+      <Box sx={{ display: "flex" }}>
+        <BaseNumberField.Decrement
           render={
             <Button
               variant="outlined"
               aria-label="Decrease"
+              size={size}
               sx={{
                 borderTopRightRadius: 0,
                 borderBottomRightRadius: 0,
-                width: 44,
-                bgcolor: "action.hover",
+                borderRight: "0px",
+                "&.Mui-disabled": {
+                  borderRight: "0px",
+                },
               }}
             />
           }
         >
-          <RemoveIcon />
-        </NumberField.Decrement>
+          <RemoveIcon fontSize={size} />
+        </BaseNumberField.Decrement>
 
-        <NumberField.Input
-          render={
-            <Box
-              id={id}
-              component="input"
-              sx={(theme) => ({
-                borderBlock: "1px solid",
-                borderColor: "divider",
-                fontSize: "1rem",
-                px: 1,
-                minWidth: 0,
-                width: "6rem",
-                textAlign: "center",
-                "&:focus": {
-                  outline: "1px solid",
-                  outlineColor: (theme.vars || theme).palette.primary.main,
-                  outlineOffset: "-2px",
+        <BaseNumberField.Input
+          id={id}
+          render={(props, state) => (
+            <OutlinedInput
+              inputRef={props.ref}
+              value={state.inputValue}
+              onBlur={props.onBlur}
+              onChange={props.onChange}
+              onKeyUp={props.onKeyUp}
+              onKeyDown={props.onKeyDown}
+              onFocus={props.onFocus}
+              slotProps={{
+                input: {
+                  ...props,
+                  size:
+                    Math.max(
+                      (other.min?.toString() || "").length,
+                      state.inputValue.length || 1,
+                    ) + 1,
+                  sx: {
+                    textAlign: "center",
+                  },
                 },
-              })}
+              }}
+              sx={{ pr: 0, borderRadius: 0, flex: 1 }}
             />
-          }
+          )}
         />
 
-        <NumberField.Increment
+        <BaseNumberField.Increment
           render={
             <Button
               variant="outlined"
               aria-label="Increase"
+              size={size}
               sx={{
                 borderTopLeftRadius: 0,
                 borderBottomLeftRadius: 0,
-                width: 44,
-                bgcolor: "action.hover",
+                borderLeft: "0px",
+                "&.Mui-disabled": {
+                  borderLeft: "0px",
+                },
               }}
             />
           }
         >
-          <AddIcon />
-        </NumberField.Increment>
-      </NumberField.Group>
-    </NumberField.Root>
+          <AddIcon fontSize={size} />
+        </BaseNumberField.Increment>
+      </Box>
+    </BaseNumberField.Root>
   );
 }

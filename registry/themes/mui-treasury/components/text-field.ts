@@ -71,6 +71,7 @@ export const textFieldTheme: ThemeComponents = {
   MuiOutlinedInput: {
     styleOverrides: {
       root: ({ theme }) => ({
+        borderRadius: 8,
         "& .MuiOutlinedInput-notchedOutline": {
           transition: theme.transitions.create(["border-color"], {
             duration: theme.transitions.duration.shorter,
@@ -125,9 +126,6 @@ export const textFieldTheme: ThemeComponents = {
             },
           },
         ],
-      },
-      notchedOutline: {
-        borderRadius: 8,
       },
     },
   },
