@@ -2,7 +2,6 @@
 
 import React from "react";
 import clsx from "clsx";
-import "./CarbonAds.css";
 
 function loadScript(src: string, position: HTMLElement) {
   const script = document.createElement("script");
@@ -15,10 +14,12 @@ function loadScript(src: string, position: HTMLElement) {
 const CarbonAds = ({
   vertical,
   className,
+  format,
   ...props
 }: {
   vertical?: boolean | "fullWidth";
   fullWidth?: boolean;
+  format?: "cover" | "responsive"; // "responsive" is classic carbon ads, see https://sell.buysellads.com/zones/2990/ad-tags#z=js
 } & React.HTMLProps<HTMLDivElement>) => {
   const ref = React.useRef<HTMLDivElement | null>(null);
 
@@ -35,7 +36,9 @@ const CarbonAds = ({
       }
 
       const script = loadScript(
-        "https://cdn.carbonads.com/carbon.js?serve=CE7DL5QE&placement=mui-treasurycom",
+        `https://cdn.carbonads.com/carbon.js?serve=CE7DL5QE&placement=mui-treasurycom${
+          format === "cover" ? `&format=${format}` : ""
+        }`,
         ref.current
       );
       script.id = "_carbonads_js";
@@ -44,7 +47,7 @@ const CarbonAds = ({
     return () => {
       clearTimeout(load);
     };
-  }, []);
+  }, [format]);
 
   return (
     <div

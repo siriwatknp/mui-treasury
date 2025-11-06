@@ -11,6 +11,7 @@ import {
 import { AppHeader } from "@/components/app-header";
 import { GettingStartedContent } from "@/components/getting-started-content";
 import Link from "next/link";
+import CarbonAds from "@/components/carbon-ads/CarbonAds";
 
 export default function Home() {
   return (
@@ -117,6 +118,20 @@ export default function Home() {
             Blocks
           </Button>
         </Stack>
+      </Box>
+
+      <Box
+        sx={{
+          bgcolor: "background.paper",
+          display: "flex",
+          justifyContent: "center",
+          pt: {
+            xs: 8,
+            md: 12,
+          },
+        }}
+      >
+        <CarbonAds format="cover" />
       </Box>
 
       {/* Getting Started Section */}

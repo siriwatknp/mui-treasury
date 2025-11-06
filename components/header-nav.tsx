@@ -37,7 +37,7 @@ export function HeaderNav() {
           <Link
             key={item.href}
             href={item.href}
-            className={`px-3 py-1.5 rounded-md text-sm transition-colors ${
+            className={`px-3 py-1.5 rounded-md text-sm transition-colors text-nowrap ${
               isActive ? "bg-muted text-foreground" : "hover:bg-muted/50"
             }`}
           >

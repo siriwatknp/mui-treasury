@@ -12,11 +12,11 @@ export function AppHeader() {
   const { mode, setMode } = useColorScheme();
 
   return (
-    <header className="jun-header jun-header-clip justify-between border-b px-6 py-3 sticky top-0 bg-background z-[1299]">
+    <header className="jun-header jun-header-clip justify-between border-b px-6 py-3 sticky top-0 bg-background gap-4 z-[1299]">
       <Link href="/" className="text-xl font-semibold hover:opacity-80">
         MUI+
       </Link>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 min-w-0 overflow-auto">
         <HeaderNav />
         <Select
           value={mode || "system"}

@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import type { ImperativePanelHandle } from "react-resizable-panels";
 import type { SyntaxHighlighterProps } from "react-syntax-highlighter";
 import CarbonAds from "./carbon-ads/CarbonAds";
+import "./carbon-ads/CarbonAds.css";
 
 interface CategoryClientProps {
   categoryInfo: { name: string; label: string };
