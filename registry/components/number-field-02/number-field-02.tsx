@@ -80,6 +80,9 @@ export default function NumberField({
                     py: 0,
                     flex: 1,
                     borderRadius: 0.5,
+                    "&.MuiIconButton-sizeSmall": {
+                      lineHeight: "17px",
+                    },
                   },
                 }}
               >

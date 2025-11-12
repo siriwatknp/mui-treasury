@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Notification List Item",
+  "description": "LinkedIn-style notification list item with avatar, content preview, and engagement stats",
+  "meta": {
+    "category": "primitive"
+  }
+}

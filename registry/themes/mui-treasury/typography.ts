@@ -97,3 +97,13 @@ export const typography: ThemeOptions["typography"] = {
     textTransform: "capitalize",
   },
 };
+
+export const typographyTheme: ThemeOptions["components"] = {
+  MuiTypography: {
+    styleOverrides: {
+      root: {
+        "--va": "baseline",
+      },
+    },
+  },
+};

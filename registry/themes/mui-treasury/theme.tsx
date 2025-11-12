@@ -5,7 +5,7 @@ import {
 } from "@mui/material/styles";
 import type {} from "@mui/material/themeCssVarsAugmentation";
 import { colors } from "./colors";
-import { typography } from "./typography";
+import { typography, typographyTheme } from "./typography";
 import { buttonTheme } from "./components/button";
 import { textFieldTheme } from "./components/text-field";
 import { selectTheme } from "./components/select";
@@ -14,6 +14,7 @@ import { chipTheme } from "./components/chip";
 import { avatarTheme } from "./components/avatar";
 import { menuTheme } from "./components/menu";
 import { tableTheme } from "./components/table";
+import { listTheme } from "./components/list";
 import { cardTheme } from "./components/card";
 import { dialogTheme } from "./components/dialog";
 import { datePickerTheme } from "./components/date-picker";
@@ -54,6 +55,8 @@ const theme = createTheme({
     ...layoutTheme,
     ...linkTheme,
     ...controlsTheme,
+    ...listTheme,
+    ...typographyTheme,
   },
   typography,
   shadows,

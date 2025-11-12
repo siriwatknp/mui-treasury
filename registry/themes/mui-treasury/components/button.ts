@@ -21,7 +21,8 @@ export const buttonTheme: ThemeComponents = {
   MuiIconButton: {
     styleOverrides: {
       root: ({ theme }) => ({
-        lineHeight: "1.25em",
+        fontSize: "inherit",
+        lineHeight: "inherit",
         "&.Mui-focusVisible": {
           outline: "2px solid",
           outlineColor: (theme.vars || theme).palette.text.primary,
@@ -31,13 +32,6 @@ export const buttonTheme: ThemeComponents = {
           transform: "scale(0.98)",
         },
         variants: [
-          {
-            props: { size: "medium" },
-            style: {
-              fontSize: "inherit",
-              lineHeight: "inherit",
-            },
-          },
           {
             props: { color: "default" },
             style: {

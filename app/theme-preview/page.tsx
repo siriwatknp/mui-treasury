@@ -18,6 +18,7 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
@@ -1114,6 +1115,25 @@ export default function ThemePreviewPage() {
               <Button variant="text">
                 <DeleteIcon />
               </Button>
+              <IconButton>
+                <FavoriteIcon />
+              </IconButton>
+              <IconButton color="success">
+                <ShareIcon />
+              </IconButton>
+              <IconButton color="success" size="small">
+                <ShareIcon />
+              </IconButton>
+              <IconButton color="error">
+                <DeleteIcon />
+              </IconButton>
+              <IconButton
+                color="error"
+                size="small"
+                sx={{ fontSize: "0.875rem" }}
+              >
+                <DeleteIcon />
+              </IconButton>
             </div>
           </GridDemo>
 
