@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "App Footer 01",
+  "description": "A responsive footer component with logo, social media links, and multi-column navigation",
+  "meta": {
+    "category": "primitive"
+  }
+}

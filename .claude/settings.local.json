@@ -54,7 +54,6 @@
     "deny": []
   },
   "enableAllProjectMcpServers": true,
-  "enabledMcpjsonServers": ["playwright"],
   "hooks": {
     "Stop": [
       {
