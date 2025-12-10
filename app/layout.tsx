@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v16-appRouter";
 import InitColorSchemeScript from "@mui/material/InitColorSchemeScript";
 import { AppTheme } from "./theme";
@@ -44,6 +45,7 @@ export default function RootLayout({
           <AppTheme>{children}</AppTheme>
         </AppRouterCacheProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
