@@ -24,7 +24,7 @@
     "embla-carousel-react": "8.6.0",
     "lucide-react": "^0.542.0",
     "nanoid": "5.1.6",
-    "next": "15.5.7",
+    "next": "15.5.9",
     "ollama-ai-provider-v2": "1.5.0",
     "react": "^19.1.2",
     "react-dom": "^19.1.2",
