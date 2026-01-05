@@ -581,6 +581,36 @@ export default function ThemePreviewPage() {
                   },
                 }}
               />
+              <TextField
+                size="small"
+                label="Search"
+                variant="outlined"
+                placeholder="Search..."
+                slotProps={{
+                  input: {
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon />
+                      </InputAdornment>
+                    ),
+                  },
+                }}
+              />
+              <TextField
+                size="small"
+                label="Account"
+                variant="outlined"
+                placeholder="Username"
+                slotProps={{
+                  input: {
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <AccountCircleIcon />
+                      </InputAdornment>
+                    ),
+                  },
+                }}
+              />
             </div>
           </GridDemo>
 
