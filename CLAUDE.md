@@ -37,6 +37,8 @@ pnpm lint
   - `themes/`: MUI theme configurations
   - `ui/`: internal UI components
 
+IMPORTANT! DO NOT create or edit generated files in `public/r/*.json` directly, always use the build registry command.
+
 ### Key Technologies
 
 - **Next.js 15** with App Router
@@ -142,6 +144,7 @@ You follow the project's UI and styling rules with unwavering discipline:
 5. **Dark Mode Compliance**: Use `theme.applyStyles('dark', styles)` exclusively
 6. **No Unnecessary Comments**: Keep code clean unless documentation is explicitly requested
 7. **TypeScript**: Ensure there are no type errors after on changed files.
+8. **Lean Component API**: Avoid redundant props. If a behavior can be inferred from existing props, don't add a new one (e.g., no `onClear` when `onChange(null)` already signals clearing).
 
 ### Visual Accuracy Methodology
 

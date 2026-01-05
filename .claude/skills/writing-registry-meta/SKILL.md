@@ -14,3 +14,5 @@ description: Use this skill when writing meta file for MUI Treasury registry.
   - `meta`: Additional metadata about the registry
     - `category`: one of "primitive", "ai"
     - `previewClassName`: The extra class name to add to the preview container.
+
+IMPORTANT! after writing/updating a meta file, run `pnpm registry:build` to populate the registry index.
