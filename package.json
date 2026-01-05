@@ -59,6 +59,7 @@
     "next": "16.0.8",
     "next-mdx-remote": "5.0.0",
     "react": "19.2.1",
+    "react-colorful": "5.6.1",
     "react-dom": "19.2.1",
     "react-resizable-panels": "3.0.4",
     "react-syntax-highlighter": "15.6.3",

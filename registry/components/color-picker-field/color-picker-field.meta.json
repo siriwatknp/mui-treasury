@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Color Picker Field",
+  "description": "A TextField-based color picker built on react-colorful",
+  "meta": {
+    "category": "primitive"
+  }
+}
