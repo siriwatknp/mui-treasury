@@ -117,6 +117,12 @@ export const textFieldTheme: ThemeComponents = {
             style: {
               paddingBlock: "6.5px",
               paddingInline: "12px",
+              ".MuiInputAdornment-root + &": {
+                paddingLeft: 0,
+              },
+              ":has(+ .MuiInputAdornment-root)": {
+                paddingRight: 0,
+              },
             },
           },
           {
