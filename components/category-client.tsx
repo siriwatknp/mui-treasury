@@ -69,7 +69,7 @@ const ComponentPreviewContent = React.memo(
               </div>
             ),
             ssr: false,
-          }
+          },
         );
       } catch {
         return function ErrorFallback() {
@@ -114,7 +114,7 @@ const ComponentPreviewContent = React.memo(
         <DynamicComponent />
       </div>
     );
-  }
+  },
 );
 
 ComponentPreviewContent.displayName = "ComponentPreviewContent";
@@ -147,7 +147,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
       setCopiedIndex(index);
       setTimeout(() => setCopiedIndex(-1), 2000);
     },
-    []
+    [],
   );
 
   const handleCopyCLI = async () => {
@@ -287,7 +287,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
       needsIframe,
       SyntaxHighlighter,
       systemMode,
-    ]
+    ],
   );
 
   return (
@@ -358,7 +358,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
                   onClick={() =>
                     handleCopy(
                       displayFiles[activeFileIndex].content,
-                      activeFileIndex
+                      activeFileIndex,
                     )
                   }
                   className="h-6 px-2"
@@ -374,7 +374,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
             {renderFileContent(
               displayFiles[activeFileIndex],
               activeFileIndex,
-              false
+              false,
             )}
           </>
         ) : (
@@ -435,7 +435,7 @@ function LazyComponentPreview({ item }: { item: RegistryItem }) {
       },
       {
         rootMargin: "200px",
-      }
+      },
     );
 
     if (ref.current) {
@@ -488,8 +488,8 @@ function Sidebar({ items }: { items: RegistryItem[] }) {
             }
           },
           {
-            rootMargin: "-50% 0px -50% 0px",
-          }
+            rootMargin: "-80px 0px -70% 0px",
+          },
         );
         observer.observe(element);
         observers.set(item.name, observer);
@@ -591,7 +591,7 @@ export default function CategoryClient({
                 <div
                   key={item.name}
                   id={item.name}
-                  className="min-w-0 flex flex-col space-y-3"
+                  className="min-w-0 flex flex-col space-y-3 scroll-mt-16"
                 >
                   {/* Title and Description */}
                   <div>
