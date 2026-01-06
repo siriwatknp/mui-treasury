@@ -4,7 +4,10 @@ import path from "path";
 import { CopyButton } from "./copy-button";
 
 // Custom pre component with copy button
-function Pre({ children, ...props }: { children: React.ReactNode }) {
+function Pre({
+  children,
+  ...props
+}: React.ComponentProps<"pre"> & { children: React.ReactNode }) {
   // Extract text content from the pre element
   function extractTextFromChildren(node: React.ReactNode): string {
     if (typeof node === "string") return node;
@@ -26,7 +29,7 @@ function Pre({ children, ...props }: { children: React.ReactNode }) {
 
   return (
     <div className="relative group">
-      <pre {...props} className="overflow-x-auto">
+      <pre {...props} className={`overflow-x-auto ${props.className || ""}`}>
         {children}
       </pre>
       <CopyButton text={code} />
