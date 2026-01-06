@@ -1,13 +1,12 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import dynamic from "next/dynamic";
 import { Suspense, useRef, useState, useEffect } from "react";
 import { RegistryItem } from "@/lib/registry";
 import TagFilter from "@/components/tag-filter";
 import { OpenInV0Button } from "@/components/open-in-v0-button";
-import { ExternalLinkIcon, Copy, Check, Terminal } from "lucide-react";
+import { Copy, Check, Terminal } from "lucide-react";
 import { useColorScheme } from "@mui/material/styles";
 import {
   ResizablePanelGroup,
@@ -69,7 +68,7 @@ const ComponentPreviewContent = React.memo(
               </div>
             ),
             ssr: false,
-          },
+          }
         );
       } catch {
         return function ErrorFallback() {
@@ -114,7 +113,7 @@ const ComponentPreviewContent = React.memo(
         <DynamicComponent />
       </div>
     );
-  },
+  }
 );
 
 ComponentPreviewContent.displayName = "ComponentPreviewContent";
@@ -147,7 +146,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
       setCopiedIndex(index);
       setTimeout(() => setCopiedIndex(-1), 2000);
     },
-    [],
+    []
   );
 
   const handleCopyCLI = async () => {
@@ -287,7 +286,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
       needsIframe,
       SyntaxHighlighter,
       systemMode,
-    ],
+    ]
   );
 
   return (
@@ -358,7 +357,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
                   onClick={() =>
                     handleCopy(
                       displayFiles[activeFileIndex].content,
-                      activeFileIndex,
+                      activeFileIndex
                     )
                   }
                   className="h-6 px-2"
@@ -374,7 +373,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
             {renderFileContent(
               displayFiles[activeFileIndex],
               activeFileIndex,
-              false,
+              false
             )}
           </>
         ) : (
@@ -435,7 +434,7 @@ function LazyComponentPreview({ item }: { item: RegistryItem }) {
       },
       {
         rootMargin: "200px",
-      },
+      }
     );
 
     if (ref.current) {
@@ -489,7 +488,7 @@ function Sidebar({ items }: { items: RegistryItem[] }) {
           },
           {
             rootMargin: "-80px 0px -70% 0px",
-          },
+          }
         );
         observer.observe(element);
         observers.set(item.name, observer);
@@ -599,13 +598,14 @@ export default function CategoryClient({
                       <h3 className="font-semibold text-lg">
                         {item.title.replace(/^Ai\s/, "AI ")}
                       </h3>
-                      <Link
+                      {/* TODO: need to think more about the preview and other features to leverage the fullscreen */}
+                      {/* <Link
                         href={`/preview/${item.name}`}
                         className="opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-primary"
                         title="Open full preview"
                       >
                         <ExternalLinkIcon className="w-4 h-4" />
-                      </Link>
+                      </Link> */}
                     </div>
                     <p className="text-sm text-muted-foreground line-clamp-2">
                       {item.description}
