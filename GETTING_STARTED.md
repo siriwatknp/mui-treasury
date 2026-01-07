@@ -8,7 +8,7 @@ It aims to be goto solution for building your next MUI project.
 
 ```bash
 npx create-next-app@latest mui-treasury-starter \
-  -e https://github.com/siriwatknp/mui-treasury/tree/main/examples/nextjs
+  -e https://github.com/siriwatknp/mui-treasury/tree/master/examples/nextjs
 ```
 
 > Replace `mui-treasury-starter` with your project name.
