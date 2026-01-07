@@ -73,7 +73,7 @@ const ComponentPreviewContent = React.memo(
               </div>
             ),
             ssr: false,
-          },
+          }
         );
       } catch {
         return function ErrorFallback() {
@@ -118,7 +118,7 @@ const ComponentPreviewContent = React.memo(
         <DynamicComponent />
       </div>
     );
-  },
+  }
 );
 
 ComponentPreviewContent.displayName = "ComponentPreviewContent";
@@ -151,7 +151,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
       setCopiedIndex(index);
       setTimeout(() => setCopiedIndex(-1), 2000);
     },
-    [],
+    []
   );
 
   const handleCopyCLI = async () => {
@@ -291,7 +291,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
       needsIframe,
       SyntaxHighlighter,
       systemMode,
-    ],
+    ]
   );
 
   return (
@@ -362,7 +362,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
                   onClick={() =>
                     handleCopy(
                       displayFiles[activeFileIndex].content,
-                      activeFileIndex,
+                      activeFileIndex
                     )
                   }
                   className="h-6 px-2"
@@ -378,7 +378,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
             {renderFileContent(
               displayFiles[activeFileIndex],
               activeFileIndex,
-              false,
+              false
             )}
           </>
         ) : (
@@ -439,7 +439,7 @@ function LazyComponentPreview({ item }: { item: RegistryItem }) {
       },
       {
         rootMargin: "200px",
-      },
+      }
     );
 
     if (ref.current) {
@@ -507,7 +507,9 @@ export default function CategoryClient({
           <p className="text-muted-foreground">
             {subcategoryData && subcategoryData.length > 0
               ? `${subcategoryData.length} subcategories, ${regularItems.length} other components`
-              : `${regularItems.length} ${regularItems.length === 1 ? "component" : "components"}`}
+              : `${regularItems.length} ${
+                  regularItems.length === 1 ? "component" : "components"
+                }`}
             {selectedTags.length > 0 && (
               <span> matching: {selectedTags.join(", ")}</span>
             )}
@@ -516,26 +518,19 @@ export default function CategoryClient({
 
         {/* Subcategory Cards Grid */}
         {subcategoryData && subcategoryData.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+          <div className="flex flex-wrap justify-center gap-4 mb-10">
             {subcategoryData.map((subcat) => (
               <a
                 key={subcat.name}
                 href={`/${categoryInfo.name}/${subcat.name}`}
-                className="group block rounded-xl border bg-muted/30 overflow-hidden hover:border-foreground/20 transition-colors"
+                className="group flex flex-col justify-center items-center p-6 w-full sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-11px)] min-h-[120px] rounded-xl border border-border bg-card hover:border-foreground/30 hover:bg-accent/50 transition-all duration-200"
               >
-                <div className="aspect-[4/3] bg-muted/50 flex items-center justify-center">
-                  <span className="text-muted-foreground/40 text-sm">
-                    Preview
-                  </span>
-                </div>
-                <div className="p-4 text-center">
-                  <h3 className="font-semibold group-hover:text-primary transition-colors">
-                    {subcat.label}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {subcat.count} {subcat.count === 1 ? "block" : "blocks"}
-                  </p>
-                </div>
+                <h3 className="text-lg font-semibold tracking-tight text-foreground group-hover:text-primary transition-colors">
+                  {subcat.label}
+                </h3>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {subcat.count} {subcat.count === 1 ? "block" : "blocks"}
+                </p>
               </a>
             ))}
           </div>
