@@ -2,7 +2,7 @@
 
 import React from "react";
 import dynamic from "next/dynamic";
-import { Suspense, useRef, useState, useEffect } from "react";
+import { Suspense, useRef, useState } from "react";
 import { RegistryItem } from "@/lib/registry";
 import TagFilter from "@/components/tag-filter";
 import { OpenInV0Button } from "@/components/open-in-v0-button";
@@ -17,16 +17,21 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import type { ImperativePanelHandle } from "react-resizable-panels";
 import type { SyntaxHighlighterProps } from "react-syntax-highlighter";
-import CarbonAds from "./carbon-ads/CarbonAds";
-import "./carbon-ads/CarbonAds.css";
+
+interface SubcategoryData {
+  name: string;
+  label: string;
+  count: number;
+}
 
 interface CategoryClientProps {
   categoryInfo: { name: string; label: string };
-  allItems: RegistryItem[];
   availableTags: string[];
   selectedTags: string[];
   metaOnlyItems: RegistryItem[];
   regularItems: RegistryItem[];
+  breadcrumb?: Array<{ label: string; href: string }>;
+  subcategoryData?: SubcategoryData[];
 }
 
 interface ComponentPreviewContentProps {
@@ -68,7 +73,7 @@ const ComponentPreviewContent = React.memo(
               </div>
             ),
             ssr: false,
-          }
+          },
         );
       } catch {
         return function ErrorFallback() {
@@ -113,7 +118,7 @@ const ComponentPreviewContent = React.memo(
         <DynamicComponent />
       </div>
     );
-  }
+  },
 );
 
 ComponentPreviewContent.displayName = "ComponentPreviewContent";
@@ -146,7 +151,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
       setCopiedIndex(index);
       setTimeout(() => setCopiedIndex(-1), 2000);
     },
-    []
+    [],
   );
 
   const handleCopyCLI = async () => {
@@ -286,7 +291,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
       needsIframe,
       SyntaxHighlighter,
       systemMode,
-    ]
+    ],
   );
 
   return (
@@ -357,7 +362,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
                   onClick={() =>
                     handleCopy(
                       displayFiles[activeFileIndex].content,
-                      activeFileIndex
+                      activeFileIndex,
                     )
                   }
                   className="h-6 px-2"
@@ -373,7 +378,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
             {renderFileContent(
               displayFiles[activeFileIndex],
               activeFileIndex,
-              false
+              false,
             )}
           </>
         ) : (
@@ -434,7 +439,7 @@ function LazyComponentPreview({ item }: { item: RegistryItem }) {
       },
       {
         rootMargin: "200px",
-      }
+      },
     );
 
     if (ref.current) {
@@ -470,161 +475,131 @@ function LazyComponentPreview({ item }: { item: RegistryItem }) {
   );
 }
 
-function Sidebar({ items }: { items: RegistryItem[] }) {
-  const [activeItem, setActiveItem] = useState<string>("");
-  const navRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observers = new Map<string, IntersectionObserver>();
-
-    items.forEach((item) => {
-      const element = document.getElementById(item.name);
-      if (element) {
-        const observer = new IntersectionObserver(
-          ([entry]) => {
-            if (entry.isIntersecting) {
-              setActiveItem(item.name);
-            }
-          },
-          {
-            rootMargin: "-80px 0px -70% 0px",
-          }
-        );
-        observer.observe(element);
-        observers.set(item.name, observer);
-      }
-    });
-
-    return () => {
-      observers.forEach((observer) => observer.disconnect());
-    };
-  }, [items]);
-
-  useEffect(() => {
-    if (!activeItem || !navRef.current) return;
-
-    const activeLink = navRef.current.querySelector(`a[href="#${activeItem}"]`);
-    if (activeLink) {
-      activeLink.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    }
-  }, [activeItem]);
-
-  return (
-    <nav
-      ref={navRef}
-      className="space-y-1 p-2 text-xs hide-scrollbar min-h-0 overflow-auto"
-    >
-      {items.map((item) => (
-        <a
-          key={item.name}
-          href={`#${item.name}`}
-          className={`flex items-center px-3 py-2 transition-colors truncate relative ${
-            activeItem === item.name
-              ? "text-foreground font-medium"
-              : "text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          {item.title.replace(/^Ai\s/, "AI ")}
-          <div
-            className={`absolute right-0 w-0.5 h-5 transition-colors ${
-              activeItem === item.name ? "bg-primary" : "bg-transparent"
-            }`}
-          />
-        </a>
-      ))}
-    </nav>
-  );
-}
-
 export default function CategoryClient({
   categoryInfo,
   availableTags,
   selectedTags,
   metaOnlyItems,
   regularItems,
+  breadcrumb,
+  subcategoryData,
 }: CategoryClientProps) {
   return (
-    <>
-      <div className="jun-edgeSidebar jun-edgeSidebar-permanent-hidden jun-edgeSidebar-permanent-autoCollapse-__CSS_VALUES__ xl:jun-edgeSidebar-permanent-visible xl:jun-edgeSidebar-w-[200px] [--jun-ES-line-w:0px]">
-        <div className="jun-edgeContent bg-transparent pb-4">
-          <Sidebar items={regularItems} />
-          <div className="px-2 mt-2">
-            <CarbonAds vertical />
-          </div>
-        </div>
-      </div>
-      <div className="jun-content">
-        <div className="max-w-7xl mx-auto px-6 pb-10">
-          {/* Header */}
-          <div className="py-8 text-center">
-            <h1 className="text-3xl font-bold capitalize mb-2">
-              {categoryInfo.label === "Ai" ? "AI" : categoryInfo.label}
-            </h1>
-            <p className="text-muted-foreground">
-              {regularItems.length}{" "}
-              {regularItems.length === 1 ? "component" : "components"}
-              {selectedTags.length > 0 && (
-                <span> matching: {selectedTags.join(", ")}</span>
-              )}
-            </p>
-          </div>
-          {/* Meta-only items (collection items without preview) */}
-          {metaOnlyItems.length > 0 && (
-            <div className="pb-10">
-              {metaOnlyItems.map((item) => (
-                <MetaOnlyItem key={item.name} item={item} />
+    <div className="jun-content">
+      <div className="max-w-7xl mx-auto px-6 pb-10">
+        {/* Header */}
+        <div className="py-8 text-center">
+          {breadcrumb && breadcrumb.length > 0 && (
+            <nav className="text-sm text-muted-foreground mb-2">
+              {breadcrumb.map((item, index) => (
+                <span key={item.href}>
+                  <a href={item.href} className="hover:text-foreground">
+                    {item.label}
+                  </a>
+                  {index < breadcrumb.length - 1 && " / "}
+                </span>
               ))}
-            </div>
+            </nav>
           )}
-          {/* Sticky Tag Filter */}
-          <TagFilter
-            availableTags={availableTags}
-            selectedTags={selectedTags}
-            category={categoryInfo.name}
-          />
-          {/* Registry Grid */}
-          {regularItems.length > 0 ? (
-            <div className="grid gap-8">
-              {/* Regular items with preview */}
-              {regularItems.map((item) => (
-                <div
-                  key={item.name}
-                  id={item.name}
-                  className="min-w-0 flex flex-col space-y-3 scroll-mt-16"
-                >
-                  {/* Title and Description */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <h3 className="font-semibold text-lg">
-                        {item.title.replace(/^Ai\s/, "AI ")}
-                      </h3>
-                      {/* TODO: need to think more about the preview and other features to leverage the fullscreen */}
-                      {/* <Link
+          <h1 className="text-3xl font-bold capitalize mb-2">
+            {categoryInfo.label === "Ai" ? "AI" : categoryInfo.label}
+          </h1>
+          <p className="text-muted-foreground">
+            {subcategoryData && subcategoryData.length > 0
+              ? `${subcategoryData.length} subcategories, ${regularItems.length} other components`
+              : `${regularItems.length} ${regularItems.length === 1 ? "component" : "components"}`}
+            {selectedTags.length > 0 && (
+              <span> matching: {selectedTags.join(", ")}</span>
+            )}
+          </p>
+        </div>
+
+        {/* Subcategory Cards Grid */}
+        {subcategoryData && subcategoryData.length > 0 && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+            {subcategoryData.map((subcat) => (
+              <a
+                key={subcat.name}
+                href={`/${categoryInfo.name}/${subcat.name}`}
+                className="group block rounded-xl border bg-muted/30 overflow-hidden hover:border-foreground/20 transition-colors"
+              >
+                <div className="aspect-[4/3] bg-muted/50 flex items-center justify-center">
+                  <span className="text-muted-foreground/40 text-sm">
+                    Preview
+                  </span>
+                </div>
+                <div className="p-4 text-center">
+                  <h3 className="font-semibold group-hover:text-primary transition-colors">
+                    {subcat.label}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {subcat.count} {subcat.count === 1 ? "block" : "blocks"}
+                  </p>
+                </div>
+              </a>
+            ))}
+          </div>
+        )}
+
+        {/* Meta-only items (collection items without preview) */}
+        {metaOnlyItems.length > 0 && (
+          <div className="pb-10">
+            {metaOnlyItems.map((item) => (
+              <MetaOnlyItem key={item.name} item={item} />
+            ))}
+          </div>
+        )}
+        {/* Sticky Tag Filter */}
+        <TagFilter
+          availableTags={availableTags}
+          selectedTags={selectedTags}
+          category={categoryInfo.name}
+        />
+        {/* Registry Grid */}
+        {regularItems.length > 0 ? (
+          <div className="grid gap-8">
+            {/* Regular items with preview */}
+            {regularItems.map((item) => (
+              <div
+                key={item.name}
+                id={item.name}
+                className="min-w-0 flex flex-col space-y-3 scroll-mt-16"
+              >
+                {/* Title and Description */}
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <h3 className="font-semibold text-lg">
+                      {item.title.replace(/^Ai\s/, "AI ")}
+                    </h3>
+                    {/* TODO: need to think more about the preview and other features to leverage the fullscreen */}
+                    {/* <Link
                         href={`/preview/${item.name}`}
                         className="opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-primary"
                         title="Open full preview"
                       >
                         <ExternalLinkIcon className="w-4 h-4" />
                       </Link> */}
-                    </div>
-                    <p className="text-sm text-muted-foreground line-clamp-2">
-                      {item.description}
-                    </p>
                   </div>
-                  {/* Live Component Preview */}
-                  <LazyComponentPreview item={item} />
+                  <p className="text-sm text-muted-foreground line-clamp-2">
+                    {item.description}
+                  </p>
                 </div>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground">
-                No components found matching the selected filters.
-              </p>
-            </div>
-          )}
-        </div>
+                {/* Live Component Preview */}
+                <LazyComponentPreview item={item} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-12">
+            <p className="text-muted-foreground">
+              No components found matching the selected filters.
+            </p>
+          </div>
+        )}
+
+        {/* Bottom spacer for scroll tracking */}
+        <div className="min-h-[50vh]" />
       </div>
-    </>
+    </div>
   );
 }

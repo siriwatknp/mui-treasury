@@ -6,6 +6,7 @@
   "description": "Decorative tag-shaped card with hole punch cutout design for menu items or categories",
   "meta": {
     "category": "primitive",
-    "previewClassName": "bg-white dark:bg-neutral-950"
+    "previewClassName": "bg-white dark:bg-neutral-950",
+    "subcategory": "card"
   }
 }

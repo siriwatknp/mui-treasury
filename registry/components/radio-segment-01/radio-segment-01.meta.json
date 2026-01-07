@@ -4,6 +4,7 @@
   "title": "Segmented Radio Control",
   "description": "A segmented control component for selecting between options with radio buttons",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "radio"
   }
 }

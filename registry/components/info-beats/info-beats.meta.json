@@ -5,6 +5,7 @@
   "description": "Info variant with Spartan font family and coral accent color for eyebrow text",
   "meta": {
     "category": "primitive",
-    "previewClassName": "bg-white dark:bg-neutral-950"
+    "previewClassName": "bg-white dark:bg-neutral-950",
+    "subcategory": "info"
   }
 }

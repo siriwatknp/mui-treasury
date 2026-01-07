@@ -4,6 +4,7 @@
   "title": "Tabs Contained",
   "description": "Contained tabs with separator lines and secondary color for selected state",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "tabs"
   }
 }

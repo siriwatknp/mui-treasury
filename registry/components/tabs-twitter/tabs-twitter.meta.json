@@ -4,6 +4,7 @@
   "title": "Tabs Twitter",
   "description": "Twitter-style tabs with bold text, hover effects, and bottom border",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "tabs"
   }
 }

@@ -4,6 +4,7 @@
   "title": "Tabs Chip",
   "description": "Horizontal tab navigation styled as chip-like buttons",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "tabs"
   }
 }

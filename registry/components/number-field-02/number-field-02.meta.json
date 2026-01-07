@@ -4,6 +4,7 @@
   "title": "Number Field 02",
   "description": "Integrated Base UI Number Field with increment/decrement buttons, label, helper text, and error states. Full keyboard and screen reader accessibility.",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "text-field"
   }
 }

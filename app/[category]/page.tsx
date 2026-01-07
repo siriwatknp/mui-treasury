@@ -1,5 +1,11 @@
 import { notFound } from "next/navigation";
-import { getRegistryByCategory, getCategories, getTags } from "@/lib/registry";
+import {
+  getCategories,
+  getTags,
+  getSubcategories,
+  getUncategorizedItems,
+  getRegistryBySubcategory,
+} from "@/lib/registry";
 import CategoryClient from "@/components/category-client";
 
 interface CategoryPageProps {
@@ -29,17 +35,32 @@ export default async function CategoryPage({
     notFound();
   }
 
-  // Get all items for this category
-  const allItems = getRegistryByCategory(category);
+  // Get subcategories for this category
+  const subcategories = getSubcategories(category);
+
+  // Build subcategory data with counts
+  const subcategoryData = subcategories
+    .sort((a, b) => a.localeCompare(b))
+    .map((subcat) => ({
+      name: subcat,
+      label: subcat
+        .split("-")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" "),
+      count: getRegistryBySubcategory(category, subcat).length,
+    }));
+
+  // Get only uncategorized items (no subcategory) for this category page
+  const uncategorizedItems = getUncategorizedItems(category);
 
   // Filter by tags if provided
   const selectedTags = tags ? tags.split(",").filter(Boolean) : [];
   const filteredItems =
     selectedTags.length > 0
-      ? allItems.filter((item) =>
+      ? uncategorizedItems.filter((item) =>
           item.meta.tags?.some((tag) => selectedTags.includes(tag)),
         )
-      : allItems;
+      : uncategorizedItems;
 
   // Separate meta-only items (no implementation files) from regular items
   const metaOnlyItems = filteredItems.filter((item) => item.files.length === 0);
@@ -51,11 +72,11 @@ export default async function CategoryPage({
   return (
     <CategoryClient
       categoryInfo={categoryInfo}
-      allItems={allItems}
       availableTags={availableTags}
       selectedTags={selectedTags}
       metaOnlyItems={metaOnlyItems}
       regularItems={regularItems}
+      subcategoryData={subcategoryData}
     />
   );
 }

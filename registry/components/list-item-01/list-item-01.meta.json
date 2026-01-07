@@ -4,6 +4,7 @@
   "title": "List Item 01",
   "description": "A list-item-01 item.",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "list"
   }
 }

@@ -25,6 +25,7 @@ export interface RegistryItem {
   meta: {
     screenshot?: string;
     category?: string;
+    subcategory?: string;
     tags?: string[];
     previewMode?: "normal" | "iframe";
     previewClassName?: string;
@@ -265,4 +266,43 @@ export function getTags(category?: string): string[] {
   }
 
   return Array.from(tagsSet).sort();
+}
+
+/**
+ * Get all unique subcategories for a specific category
+ */
+export function getSubcategories(category: string): string[] {
+  const items = getRegistryByCategory(category);
+  const subcats = new Set<string>();
+
+  for (const item of items) {
+    if (item.meta?.subcategory) {
+      subcats.add(item.meta.subcategory);
+    }
+  }
+
+  return Array.from(subcats).sort();
+}
+
+/**
+ * Get all registry items for a specific category and subcategory
+ */
+export function getRegistryBySubcategory(
+  category: string,
+  subcategory: string,
+): RegistryItem[] {
+  return getRegistryItems().filter(
+    (item) =>
+      item.meta?.category === category &&
+      item.meta?.subcategory === subcategory,
+  );
+}
+
+/**
+ * Get all registry items in a category that don't have a subcategory
+ */
+export function getUncategorizedItems(category: string): RegistryItem[] {
+  return getRegistryItems().filter(
+    (item) => item.meta?.category === category && !item.meta?.subcategory,
+  );
 }

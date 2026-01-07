@@ -4,6 +4,7 @@
   "title": "Tabs Plain",
   "description": "Plain bordered tabs with subtle background and white selection",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "tabs"
   }
 }

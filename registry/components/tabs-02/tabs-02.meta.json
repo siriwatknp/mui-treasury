@@ -5,6 +5,7 @@
   "description": "A modern tab component with mix-blend-mode for automatic text color inversion when the indicator slides beneath tabs",
   "meta": {
     "category": "primitive",
-    "previewClassName": "bg-white dark:bg-neutral-950"
+    "previewClassName": "bg-white dark:bg-neutral-950",
+    "subcategory": "tabs"
   }
 }

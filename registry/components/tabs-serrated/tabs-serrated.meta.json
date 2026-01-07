@@ -4,6 +4,7 @@
   "title": "Tabs Serrated",
   "description": "Serrated tabs with skewed transform and diagonal shadow gradient",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "tabs"
   }
 }

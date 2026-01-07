@@ -5,6 +5,7 @@
   "title": "Card Action 02",
   "description": "Card with branded icon, large heading, description text, and floating circular add button with customizable props",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "card"
   }
 }

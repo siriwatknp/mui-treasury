@@ -4,6 +4,7 @@
   "title": "Select with Inset Label",
   "description": "A select dropdown with label displayed inside the container above the selected value",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "select"
   }
 }

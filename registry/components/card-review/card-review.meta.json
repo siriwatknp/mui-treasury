@@ -5,6 +5,7 @@
   "title": "Card Review",
   "description": "Review card with image, star rating, location info, and avatar group showing reviewers",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "card"
   }
 }

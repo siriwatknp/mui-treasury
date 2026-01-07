@@ -6,6 +6,7 @@
   "description": "Preview card using Base UI PreviewCard with hover popup displaying content preview and Material UI styling",
   "meta": {
     "category": "primitive",
-    "previewClassName": "bg-white dark:bg-neutral-950"
+    "previewClassName": "bg-white dark:bg-neutral-950",
+    "subcategory": "card"
   }
 }

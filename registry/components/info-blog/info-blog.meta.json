@@ -5,6 +5,7 @@
   "description": "Blog-style info component with date eyebrow and article preview layout",
   "meta": {
     "category": "primitive",
-    "previewClassName": "bg-white dark:bg-neutral-950"
+    "previewClassName": "bg-white dark:bg-neutral-950",
+    "subcategory": "info"
   }
 }

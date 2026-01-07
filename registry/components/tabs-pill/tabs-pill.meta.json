@@ -4,6 +4,7 @@
   "title": "Tabs Pill",
   "description": "Pill-shaped tabs with rounded corners, elevation shadow on selection",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "tabs"
   }
 }

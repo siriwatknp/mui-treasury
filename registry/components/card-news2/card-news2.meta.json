@@ -5,6 +5,7 @@
   "title": "Card News2",
   "description": "Full-bleed image card with centered white text heading and explore label, positioned absolutely over background",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "card"
   }
 }

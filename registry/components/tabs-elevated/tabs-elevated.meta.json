@@ -4,6 +4,7 @@
   "title": "Tabs Elevated",
   "description": "Elevated tabs with gradient background and translucent indicator",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "tabs"
   }
 }

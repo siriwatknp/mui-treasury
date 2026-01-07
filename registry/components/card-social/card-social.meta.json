@@ -5,6 +5,7 @@
   "title": "Card Social",
   "description": "Social connection card with avatar, user name, mutual friends count, and follow button",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "card"
   }
 }

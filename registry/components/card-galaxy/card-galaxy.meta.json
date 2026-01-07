@@ -5,6 +5,7 @@
   "title": "Card Galaxy",
   "description": "Card with full-height background image, bottom gradient overlay, and white text Info components positioned at bottom",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "card"
   }
 }

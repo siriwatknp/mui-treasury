@@ -5,6 +5,7 @@
   "description": "Info variant with bold Ubuntu typography and custom purple/gray color scheme",
   "meta": {
     "category": "primitive",
-    "previewClassName": "bg-white dark:bg-neutral-950"
+    "previewClassName": "bg-white dark:bg-neutral-950",
+    "subcategory": "info"
   }
 }

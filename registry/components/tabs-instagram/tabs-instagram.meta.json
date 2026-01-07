@@ -4,6 +4,7 @@
   "title": "Tabs Instagram",
   "description": "Instagram-style tabs with top indicator, icons, and uppercase labels",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "tabs"
   }
 }

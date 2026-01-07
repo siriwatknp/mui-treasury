@@ -5,6 +5,7 @@
   "title": "Card Offer",
   "description": "Promotional card with cyan background, decorative bow image, circular background elements, and 'Learn more' button",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "card"
   }
 }

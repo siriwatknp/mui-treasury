@@ -5,6 +5,7 @@
   "title": "Card Engagement",
   "description": "Card with landscape image, Info title/subtitle, and AvatarGroup footer showing participant avatars",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "card"
   }
 }

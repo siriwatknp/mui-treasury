@@ -4,6 +4,7 @@
   "title": "Color Radio Selection",
   "description": "A customizable radio group component with color swatches as selection options",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "radio"
   }
 }

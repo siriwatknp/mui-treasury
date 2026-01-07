@@ -6,6 +6,7 @@
   "description": "Compact profile card with avatar, name/title info, and action button using Open Sans typography",
   "meta": {
     "category": "primitive",
-    "previewClassName": "bg-white dark:bg-neutral-950"
+    "previewClassName": "bg-white dark:bg-neutral-950",
+    "subcategory": "card"
   }
 }

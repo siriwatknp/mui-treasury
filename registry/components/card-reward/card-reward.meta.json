@@ -5,6 +5,7 @@
   "title": "Card Reward",
   "description": "Purple gradient reward card with trophy image, contest title, date range, and 'Enter Now' button",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "card"
   }
 }

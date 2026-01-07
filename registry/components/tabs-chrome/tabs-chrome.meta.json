@@ -4,6 +4,7 @@
   "title": "Tabs Chrome",
   "description": "Chrome browser-style tabs with separator lines and smooth hover effects",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "tabs"
   }
 }

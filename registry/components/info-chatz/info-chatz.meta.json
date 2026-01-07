@@ -5,6 +5,7 @@
   "description": "Chat-themed info component with Inter font and modern messaging aesthetics",
   "meta": {
     "category": "primitive",
-    "previewClassName": "bg-white dark:bg-neutral-950"
+    "previewClassName": "bg-white dark:bg-neutral-950",
+    "subcategory": "info"
   }
 }

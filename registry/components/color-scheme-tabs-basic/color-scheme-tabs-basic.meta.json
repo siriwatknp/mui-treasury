@@ -4,6 +4,7 @@
   "title": "Color Scheme Tabs Basic",
   "description": "Tab-based component for switching color schemes",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "color-scheme"
   }
 }

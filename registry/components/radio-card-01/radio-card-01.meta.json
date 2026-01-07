@@ -4,6 +4,7 @@
   "title": "Radio Card",
   "description": "Radio card component for selecting options with detailed information",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "radio"
   }
 }

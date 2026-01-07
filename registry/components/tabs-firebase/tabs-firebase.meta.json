@@ -4,6 +4,7 @@
   "title": "Tabs Firebase",
   "description": "Firebase-style tabs with thick top indicator and hover backdrop",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "tabs"
   }
 }

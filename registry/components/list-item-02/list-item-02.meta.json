@@ -4,6 +4,7 @@
   "title": "Notification List Item",
   "description": "LinkedIn-style notification list item with avatar, content preview, and engagement stats",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "list"
   }
 }

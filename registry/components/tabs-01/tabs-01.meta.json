@@ -5,6 +5,7 @@
   "description": "A clean tabs component with AI and signup options, includes help link",
   "meta": {
     "screenshot": "/screenshots/tabs-01.png",
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "tabs"
   }
 }
