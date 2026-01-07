@@ -4,6 +4,7 @@
   "title": "File Upload Field",
   "description": "A file input component based on TextField with dynamic icons for different file types.",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "text-field"
   }
 }

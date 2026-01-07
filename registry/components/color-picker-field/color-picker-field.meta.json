@@ -4,6 +4,7 @@
   "title": "Color Picker Field",
   "description": "A TextField-based color picker built on react-colorful",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "text-field"
   }
 }
