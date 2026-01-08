@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { usePathname } from "next/navigation";
 import clsx from "clsx";
 
 function loadScript(src: string, position: HTMLElement) {
@@ -11,16 +12,18 @@ function loadScript(src: string, position: HTMLElement) {
   return script;
 }
 
-const CarbonAds = ({
+type CarbonAdsProps = {
+  vertical?: boolean | "fullWidth";
+  fullWidth?: boolean;
+  format?: "cover" | "responsive";
+} & React.HTMLProps<HTMLDivElement>;
+
+function CarbonAdsInner({
   vertical,
   className,
   format,
   ...props
-}: {
-  vertical?: boolean | "fullWidth";
-  fullWidth?: boolean;
-  format?: "cover" | "responsive"; // "responsive" is classic carbon ads, see https://sell.buysellads.com/zones/2990/ad-tags#z=js
-} & React.HTMLProps<HTMLDivElement>) => {
+}: CarbonAdsProps) {
   const ref = React.useRef<HTMLDivElement | null>(null);
 
   React.useEffect(() => {
@@ -39,7 +42,7 @@ const CarbonAds = ({
         `https://cdn.carbonads.com/carbon.js?serve=CE7DL5QE&placement=mui-treasurycom${
           format === "cover" ? `&format=${format}` : ""
         }`,
-        ref.current
+        ref.current,
       );
       script.id = "_carbonads_js";
     });
@@ -56,6 +59,11 @@ const CarbonAds = ({
       ref={ref}
     />
   );
+}
+
+const CarbonAds = (props: CarbonAdsProps) => {
+  const pathname = usePathname();
+  return <CarbonAdsInner key={pathname} {...props} />;
 };
 
 export default CarbonAds;
