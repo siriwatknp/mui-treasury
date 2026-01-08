@@ -60,8 +60,12 @@ function CarbonAdsInner({
       }
       // Reset global Carbon Ads state
       if (typeof window !== "undefined") {
-        // @ts-expect-error Carbon Ads global
-        delete window._carbonads;
+        try {
+          // @ts-expect-error Carbon Ads global
+          window._carbonads = undefined;
+        } catch {
+          // ignore
+        }
       }
     };
   }, [format]);
