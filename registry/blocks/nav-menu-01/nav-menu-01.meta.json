@@ -6,7 +6,6 @@
   "meta": {
     "screenshot": "/screenshots/nav-menu-01.png",
     "category": "block",
-    "subcategory": "navigation",
     "previewClassName": "items-start"
   }
 }
