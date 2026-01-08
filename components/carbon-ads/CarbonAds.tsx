@@ -8,7 +8,6 @@ declare global {
   interface Window {
     _carbonads?: {
       refresh?: () => void;
-      reload?: () => void;
     };
   }
 }
@@ -29,52 +28,20 @@ const CarbonAds = React.memo(function CarbonAds({
   const pathname = usePathname();
 
   React.useEffect(() => {
-    const carbonAdsEl = document.getElementById("carbonads");
-    const carbonScriptEl = document.getElementById("_carbonads_js");
+    const isCarbonExist = document.querySelector("#carbonads");
 
-    if (carbonScriptEl) {
-      // If ad element exists, refresh it
-      if (carbonAdsEl && window._carbonads?.refresh) {
-        window._carbonads.refresh();
-        return;
-      }
-
-      // If script exists but ad element doesn't (e.g., navigating between categories),
-      // reload only if the script is still in DOM
-      if (!carbonAdsEl && window._carbonads?.reload) {
-        try {
-          window._carbonads.reload();
-          return;
-        } catch {
-          // reload failed, fall through to re-inject script
-        }
-      }
+    if (isCarbonExist && window._carbonads?.refresh) {
+      window._carbonads.refresh();
+      return;
     }
 
-    // Otherwise, load the script fresh (debounced for StrictMode)
-    const load = setTimeout(() => {
-      if (!ref.current) {
-        return;
-      }
-
-      // Clean up any orphaned script
-      const oldScript = document.getElementById("_carbonads_js");
-      if (oldScript) {
-        oldScript.remove();
-      }
-
-      const script = document.createElement("script");
-      script.src = `https://cdn.carbonads.com/carbon.js?serve=CE7DL5QE&placement=mui-treasurycom${
-        format === "cover" ? `&format=${format}` : ""
-      }`;
-      script.id = "_carbonads_js";
-      script.async = true;
-      ref.current.appendChild(script);
-    });
-
-    return () => {
-      clearTimeout(load);
-    };
+    const script = document.createElement("script");
+    script.src = `https://cdn.carbonads.com/carbon.js?serve=CE7DL5QE&placement=mui-treasurycom${
+      format === "cover" ? `&format=${format}` : ""
+    }`;
+    script.id = "_carbonads_js";
+    script.async = true;
+    ref.current?.appendChild(script);
   }, [pathname, format]);
 
   return (
