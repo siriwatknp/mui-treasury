@@ -5,6 +5,7 @@
   "description": "Application menubar with nested submenu support using Base UI and Material UI styling",
   "meta": {
     "screenshot": "/screenshots/menubar-01.png",
-    "category": "primitive"
+    "category": "block",
+    "subcategory": "menubar"
   }
 }

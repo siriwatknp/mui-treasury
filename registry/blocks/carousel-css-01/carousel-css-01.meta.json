@@ -4,6 +4,7 @@
   "title": "Carousel CSS 01",
   "description": "Horizontal scrollable carousel with CSS scroll snap",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "carousel"
   }
 }

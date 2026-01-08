@@ -4,6 +4,7 @@
   "title": "Meter",
   "description": "A minimal meter component using Base UI Meter with Material UI styling",
   "meta": {
-    "category": "primitive"
+    "category": "primitive",
+    "subcategory": "meter"
   }
 }

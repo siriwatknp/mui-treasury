@@ -4,6 +4,7 @@
   "title": "App Footer 01",
   "description": "A responsive footer component with logo, social media links, and multi-column navigation",
   "meta": {
-    "category": "primitive"
+    "category": "block",
+    "subcategory": "footer"
   }
 }
