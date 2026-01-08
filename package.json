@@ -65,6 +65,7 @@
     "react-resizable-panels": "3.0.4",
     "react-syntax-highlighter": "15.6.3",
     "shiki": "3.20.0",
+    "sonner": "2.0.7",
     "streamdown": "1.1.7",
     "tailwind-merge": "^3.2.0",
     "tailwindcss-jun-layout": "0.8.1",

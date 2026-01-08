@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Sonner",
+  "description": "Toast notification component using Sonner with MUI theming",
+  "meta": {
+    "category": "primitive",
+    "subcategory": "toast"
+  }
+}
