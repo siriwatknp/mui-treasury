@@ -73,7 +73,7 @@ const ComponentPreviewContent = React.memo(
               </div>
             ),
             ssr: false,
-          }
+          },
         );
       } catch {
         return function ErrorFallback() {
@@ -118,7 +118,7 @@ const ComponentPreviewContent = React.memo(
         <DynamicComponent />
       </div>
     );
-  }
+  },
 );
 
 ComponentPreviewContent.displayName = "ComponentPreviewContent";
@@ -151,7 +151,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
       setCopiedIndex(index);
       setTimeout(() => setCopiedIndex(-1), 2000);
     },
-    []
+    [],
   );
 
   const handleCopyCLI = async () => {
@@ -291,7 +291,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
       needsIframe,
       SyntaxHighlighter,
       systemMode,
-    ]
+    ],
   );
 
   return (
@@ -362,7 +362,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
                   onClick={() =>
                     handleCopy(
                       displayFiles[activeFileIndex].content,
-                      activeFileIndex
+                      activeFileIndex,
                     )
                   }
                   className="h-6 px-2"
@@ -378,7 +378,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
             {renderFileContent(
               displayFiles[activeFileIndex],
               activeFileIndex,
-              false
+              false,
             )}
           </>
         ) : (
@@ -439,7 +439,7 @@ function LazyComponentPreview({ item }: { item: RegistryItem }) {
       },
       {
         rootMargin: "200px",
-      }
+      },
     );
 
     if (ref.current) {
@@ -585,11 +585,7 @@ export default function CategoryClient({
             ))}
           </div>
         ) : (
-          <div className="text-center py-12">
-            <p className="text-muted-foreground">
-              No components found matching the selected filters.
-            </p>
-          </div>
+          <div />
         )}
 
         {/* Bottom spacer for scroll tracking */}

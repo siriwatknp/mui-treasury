@@ -49,6 +49,20 @@ function CarbonAdsInner({
 
     return () => {
       clearTimeout(load);
+      // Clean up Carbon Ads global state
+      const carbonScript = document.getElementById("_carbonads_js");
+      if (carbonScript) {
+        carbonScript.remove();
+      }
+      const carbonAds = document.getElementById("carbonads");
+      if (carbonAds) {
+        carbonAds.remove();
+      }
+      // Reset global Carbon Ads state
+      if (typeof window !== "undefined") {
+        // @ts-expect-error Carbon Ads global
+        delete window._carbonads;
+      }
     };
   }, [format]);
 
@@ -63,6 +77,16 @@ function CarbonAdsInner({
 
 const CarbonAds = (props: CarbonAdsProps) => {
   const pathname = usePathname();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
   return <CarbonAdsInner key={pathname} {...props} />;
 };
 
