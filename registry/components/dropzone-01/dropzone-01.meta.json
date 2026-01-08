@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Dropzone",
+  "description": "Drag and drop file upload zone using react-dropzone",
+  "meta": {
+    "category": "primitive",
+    "subcategory": "dropzone"
+  }
+}
