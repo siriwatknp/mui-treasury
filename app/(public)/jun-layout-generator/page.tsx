@@ -55,7 +55,9 @@ import {
   ToolOutput,
 } from "@/mui-treasury/components/ai-tool/ai-tool";
 import { UIMessage, useChat } from "@ai-sdk/react";
+import { tool } from "ai";
 import Box from "@mui/material/Box";
+import { z } from "zod";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
@@ -89,8 +91,30 @@ Do not try to make up an answer.
             },
           },
         },
+        tools: {
+          getWeather: tool({
+            description: "Get the current weather for a location",
+            inputSchema: z.object({
+              city: z.string().describe("The city name"),
+              country: z.string().optional().describe("The country code"),
+            }),
+            execute: async ({ city, country }) => {
+              // Simulate API delay
+              await new Promise((resolve) => setTimeout(resolve, 1000));
+              return {
+                city,
+                country: country || "US",
+                temperature: Math.round(15 + Math.random() * 20),
+                conditions: ["sunny", "cloudy", "rainy", "windy"][
+                  Math.floor(Math.random() * 4)
+                ],
+                humidity: Math.round(40 + Math.random() * 40),
+              };
+            },
+          }),
+        },
       }),
-    []
+    [],
   );
 
   const { messages, status, error, sendMessage, stop, regenerate } = useChat<
@@ -102,7 +126,7 @@ Do not try to make up an answer.
 
   const handleSubmit = (
     message: PromptInputMessage,
-    event: React.FormEvent
+    event: React.FormEvent,
   ) => {
     event.preventDefault();
     const hasText = message.text?.trim();
@@ -129,7 +153,7 @@ Do not try to make up an answer.
       toast.error(
         `Failed to copy to clipboard (${
           error instanceof Error ? error.message : "Unknown error"
-        })`
+        })`,
       );
     }
   };
