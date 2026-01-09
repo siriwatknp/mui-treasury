@@ -19,7 +19,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@/mui-treasury/theme": ["./registry/themes/mui-treasury/index.ts"],
+      "@/mui-treasury/components/*": ["./registry/components/*"]
     }
   },
   "include": [

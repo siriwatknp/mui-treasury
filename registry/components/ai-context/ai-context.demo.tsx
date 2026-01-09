@@ -39,6 +39,15 @@ export default function ContextDemo() {
         totalTokens: 70000,
         reasoningTokens: 10000,
         cachedInputTokens: 5000,
+        inputTokenDetails: {
+          noCacheTokens: 40000,
+          cacheReadTokens: 3000,
+          cacheWriteTokens: 2000,
+        },
+        outputTokenDetails: {
+          reasoningTokens: 10000,
+          textTokens: 15000,
+        },
       }}
       modelId="vercel:anthropic/claude-3.5-sonnet"
     >

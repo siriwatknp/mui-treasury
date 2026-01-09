@@ -39,11 +39,11 @@ export const Tool = memo(({ children, sx, defaultOpen = false }: ToolProps) => {
     >
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
-          ? React.cloneElement(child as React.ReactElement<any>, {
+          ? React.cloneElement(child as React.ReactElement<ToolHeaderProps>, {
               isOpen,
               onToggle: () => setIsOpen(!isOpen),
             })
-          : child,
+          : child
       )}
     </Box>
   );
@@ -60,12 +60,15 @@ export type ToolHeaderProps = {
 };
 
 const getStatusBadge = (status: ToolUIPart["state"]) => {
-  const labels = {
+  const labels: Record<ToolUIPart["state"], string> = {
     "input-streaming": "Pending",
     "input-available": "Running",
     "output-available": "Completed",
     "output-error": "Error",
-  } as const;
+    "approval-requested": "Approval Requested",
+    "approval-responded": "Approved",
+    "output-denied": "Denied",
+  };
 
   const getIcon = () => {
     switch (status) {
@@ -176,7 +179,7 @@ export const ToolContent = memo(
     <Collapse in={isOpen}>
       <Box sx={sx}>{children}</Box>
     </Collapse>
-  ),
+  )
 );
 
 ToolContent.displayName = "ToolContent";
