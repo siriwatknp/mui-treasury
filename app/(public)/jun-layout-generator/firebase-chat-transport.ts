@@ -74,12 +74,14 @@ export interface FirebaseChatTransportOptions {
  *
  * Features:
  * - Multi-turn text streaming
- * - Thinking/reasoning support (via thoughtSummary)
+ * - Multimodal input/output (images via inlineData)
+ * - Interleaved text and image generation (requires gemini-2.5-flash-image model)
+ * - Thinking/reasoning support (via thoughtSummary, streamed incrementally)
  * - Client-side tool/function calling with automatic execution
  * - Tool call loop (model can call multiple tools until final response)
  *
  * Limitations:
- * - Text-only messages (no files/images/audio in messages)
+ * - Only Data URL supported for files (no hosted URLs yet)
  * - Single active chat at a time
  * - No stream reconnection (client-side)
  * - Client-side tool execution only (no server-side tool execution)
@@ -113,6 +115,23 @@ export interface FirebaseChatTransportOptions {
  *   }
  * });
  * // Reasoning parts will be streamed as 'reasoning' type in message.parts
+ * ```
+ *
+ * @example With interleaved text and image generation
+ * ```ts
+ * import { ResponseModality } from 'firebase/ai';
+ *
+ * const transport = new FirebaseChatTransport({
+ *   firebaseApp: app,
+ *   aiOptions: { backend: new GoogleAIBackend() },
+ *   modelParams: {
+ *     model: 'gemini-2.5-flash-image',
+ *     generationConfig: {
+ *       responseModalities: [ResponseModality.TEXT, ResponseModality.IMAGE]
+ *     }
+ *   }
+ * });
+ * // Images will be emitted as 'file' chunks with data URLs
  * ```
  *
  * @example With tools
@@ -156,7 +175,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
     this.generateId = options.generateId ?? generateIdFunc;
 
     const functionDeclarations = Object.entries(this.tools).map(
-      ([name, tool]) => this.convertToolToFunctionDeclaration(name, tool)
+      ([name, tool]) => this.convertToolToFunctionDeclaration(name, tool),
     );
 
     const modelParamsWithTools =
@@ -171,7 +190,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
   }
 
   async sendMessages(
-    options: Parameters<ChatTransport<UI_MESSAGE>["sendMessages"]>[0]
+    options: Parameters<ChatTransport<UI_MESSAGE>["sendMessages"]>[0],
   ): Promise<ReadableStream<UIMessageChunk>> {
     const { chatId, messages, abortSignal } = options;
 
@@ -195,6 +214,9 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
         }
 
         try {
+          // Pre-process messages to convert blob URLs to data URLs
+          await this.preprocessMessages(messages);
+
           // Convert messages to Firebase format
           const firebaseMessages =
             this.convertMessagesToFirebaseContent(messages);
@@ -230,14 +252,13 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
             if (pendingFunctionResponses) {
               // Send function responses from previous iteration
               result = await this.chatSession.sendMessageStream(
-                pendingFunctionResponses
+                pendingFunctionResponses,
               );
               pendingFunctionResponses = null;
             } else {
               // Send initial user message
-              result = await this.chatSession.sendMessageStream(
-                lastUserMessage
-              );
+              result =
+                await this.chatSession.sendMessageStream(lastUserMessage);
             }
 
             // Emit start chunk after connection established (once)
@@ -249,13 +270,15 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
               startEmitted = true;
             }
 
-            // Stream reasoning and text chunks
+            // Stream text and handle interleaved images
             let hasReasoning = false;
             let reasoningId: string | null = null;
-            let hasText = false;
-            let textId: string | null = null;
             let lastProviderMetadata: SharedV3ProviderMetadata | undefined =
               undefined;
+
+            // Simple state: track current text part and emitted images
+            let currentTextId: string | null = null;
+            const emittedImageHashes = new Set<string>();
 
             for await (const chunk of result.stream) {
               if (isAborted) break;
@@ -264,7 +287,14 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
               const providerMetadata = this.extractProviderMetadata(chunk);
               lastProviderMetadata = providerMetadata;
 
-              // Handle thinking/reasoning content
+              // Access parts structure for interleaved streaming
+              const chunkParts = (
+                chunk as {
+                  candidates?: Array<{ content?: { parts?: Part[] } }>;
+                }
+              ).candidates?.[0]?.content?.parts;
+
+              // Handle thinking/reasoning content (streamed)
               const thought = chunk.thoughtSummary?.();
               if (thought) {
                 if (!hasReasoning) {
@@ -285,36 +315,95 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
                 });
               }
 
-              // Handle regular text content
-              const text = chunk.text();
-              if (text) {
-                // Close reasoning part when text starts
-                if (hasReasoning && reasoningId) {
+              if (chunkParts && chunkParts.length > 0) {
+                for (const part of chunkParts) {
+                  if ("text" in part && part.text) {
+                    // Close reasoning when text starts
+                    if (hasReasoning && reasoningId) {
+                      controller.enqueue({
+                        type: "reasoning-end",
+                        id: reasoningId,
+                        providerMetadata,
+                      });
+                      hasReasoning = false;
+                      reasoningId = null;
+                    }
+
+                    // Start text part if not already open
+                    if (!currentTextId) {
+                      currentTextId = this.generateId();
+                      controller.enqueue({
+                        type: "text-start",
+                        id: currentTextId,
+                        providerMetadata,
+                      });
+                    }
+
+                    // Emit delta directly - Firebase sends incremental text per chunk
+                    controller.enqueue({
+                      type: "text-delta",
+                      id: currentTextId,
+                      delta: part.text,
+                      providerMetadata,
+                    });
+                  }
+
+                  if ("inlineData" in part && part.inlineData) {
+                    // Use hash to dedupe images
+                    const imageHash = part.inlineData.data.substring(0, 100);
+                    if (!emittedImageHashes.has(imageHash)) {
+                      // Close current text part before emitting image
+                      if (currentTextId) {
+                        controller.enqueue({
+                          type: "text-end",
+                          id: currentTextId,
+                          providerMetadata,
+                        });
+                        currentTextId = null;
+                      }
+
+                      controller.enqueue({
+                        type: "file",
+                        url: `data:${part.inlineData.mimeType};base64,${part.inlineData.data}`,
+                        mediaType: part.inlineData.mimeType,
+                      });
+                      emittedImageHashes.add(imageHash);
+                    }
+                  }
+                }
+              } else {
+                // Fallback: parts not available, use chunk.text()
+                const text = chunk.text();
+                if (text) {
+                  // Close reasoning when text starts
+                  if (hasReasoning && reasoningId) {
+                    controller.enqueue({
+                      type: "reasoning-end",
+                      id: reasoningId,
+                      providerMetadata,
+                    });
+                    hasReasoning = false;
+                    reasoningId = null;
+                  }
+
+                  // Start text part if not already open
+                  if (!currentTextId) {
+                    currentTextId = this.generateId();
+                    controller.enqueue({
+                      type: "text-start",
+                      id: currentTextId,
+                      providerMetadata,
+                    });
+                  }
+
+                  // Emit delta directly
                   controller.enqueue({
-                    type: "reasoning-end",
-                    id: reasoningId,
+                    type: "text-delta",
+                    id: currentTextId,
+                    delta: text,
                     providerMetadata,
                   });
-                  hasReasoning = false;
-                  reasoningId = null;
                 }
-
-                if (!hasText) {
-                  textId = this.generateId();
-                  controller.enqueue({
-                    type: "text-start",
-                    id: textId,
-                    providerMetadata,
-                  });
-                  hasText = true;
-                }
-
-                controller.enqueue({
-                  type: "text-delta",
-                  id: textId!,
-                  delta: text,
-                  providerMetadata,
-                });
               }
             }
 
@@ -329,10 +418,11 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
               });
             }
 
-            if (hasText && textId) {
+            // Close any open text part
+            if (currentTextId) {
               controller.enqueue({
                 type: "text-end",
-                id: textId,
+                id: currentTextId,
                 providerMetadata: lastProviderMetadata,
               });
             }
@@ -342,6 +432,24 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
             const functionCalls = response.functionCalls?.();
 
             if (!functionCalls || functionCalls.length === 0) {
+              // Emit any remaining images not emitted during streaming
+              const parts = response.candidates?.[0]?.content?.parts;
+              if (parts) {
+                for (const part of parts) {
+                  if ("inlineData" in part && part.inlineData) {
+                    const imageHash = part.inlineData.data.substring(0, 100);
+                    if (!emittedImageHashes.has(imageHash)) {
+                      controller.enqueue({
+                        type: "file",
+                        url: `data:${part.inlineData.mimeType};base64,${part.inlineData.data}`,
+                        mediaType: part.inlineData.mimeType,
+                      });
+                      emittedImageHashes.add(imageHash);
+                    }
+                  }
+                }
+              }
+
               // No tool calls - emit finish and exit loop
               const finishReason = response.candidates?.[0]?.finishReason;
               controller.enqueue({
@@ -353,7 +461,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
               // Execute tools and prepare responses for next iteration
               pendingFunctionResponses = await this.executeTools(
                 functionCalls,
-                controller
+                controller,
               );
             }
           }
@@ -379,7 +487,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
   }
 
   async reconnectToStream(
-    _: Parameters<ChatTransport<UI_MESSAGE>["reconnectToStream"]>[0]
+    _: Parameters<ChatTransport<UI_MESSAGE>["reconnectToStream"]>[0],
   ): Promise<ReadableStream<UIMessageChunk> | null> {
     // Client-side cannot reconnect to streams
     // Would need server-side persistence
@@ -395,29 +503,39 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
 
   /**
    * Convert UI messages to Firebase Content format.
-   * Filters to text-only parts, skips non-text content.
+   * Handles text and file parts (images via inlineData).
    */
   private convertMessagesToFirebaseContent(
-    messages: UI_MESSAGE[]
-  ): Array<{ role: "user" | "model"; parts: Array<{ text: string }> }> {
+    messages: UI_MESSAGE[],
+  ): Array<{ role: "user" | "model"; parts: Part[] }> {
     return messages
       .map((message) => ({
         role: this.convertRole(message.role),
         parts: message.parts
-          .filter(
-            (part): part is { type: "text"; text: string } =>
-              part.type === "text"
-          )
-          .map((part) => ({ text: part.text })),
+          .map((part: UI_MESSAGE["parts"][number]) => {
+            if (part.type === "text") {
+              return { text: part.text };
+            }
+            if (part.type === "file") {
+              return {
+                inlineData: {
+                  mimeType: part.mediaType,
+                  data: this.extractBase64FromDataUrl(part.url),
+                },
+              };
+            }
+            return null;
+          })
+          .filter((p) => p !== null),
       }))
-      .filter((content) => content.parts.length > 0); // Skip empty messages
+      .filter((content) => content.parts.length > 0);
   }
 
   /**
    * Extract last user message from messages array.
    * Throws if last message is not from user.
    */
-  private extractLastUserMessage(messages: UI_MESSAGE[]): string | Part[] {
+  private extractLastUserMessage(messages: UI_MESSAGE[]): Part[] {
     if (messages.length === 0) {
       throw new Error("Cannot send empty message history");
     }
@@ -426,31 +544,39 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
 
     if (lastMessage.role !== "user") {
       throw new Error(
-        "Last message must be from user. Firebase requires user message to generate response."
+        "Last message must be from user. Firebase requires user message to generate response.",
       );
     }
 
-    const textParts: Part[] = lastMessage.parts
-      .filter(
-        (part): part is { type: "text"; text: string } => part.type === "text"
-      )
-      .map((part) => ({ text: part.text }));
+    const parts: Part[] = lastMessage.parts
+      .map((part: UI_MESSAGE["parts"][number]) => {
+        if (part.type === "text") {
+          return { text: part.text };
+        }
+        if (part.type === "file") {
+          return {
+            inlineData: {
+              mimeType: part.mediaType,
+              data: this.extractBase64FromDataUrl(part.url),
+            },
+          };
+        }
+        return null;
+      })
+      .filter((p) => p !== null);
 
-    if (textParts.length === 0) {
-      throw new Error("Last message has no text content");
+    if (parts.length === 0) {
+      throw new Error("Last message has no text or file content");
     }
 
-    // Firebase accepts single string or array of parts
-    return textParts.length === 1
-      ? (textParts[0] as { text: string }).text
-      : textParts;
+    return parts;
   }
 
   /**
    * Map Firebase finish reason to AI SDK format.
    */
   private mapFinishReason(
-    finishReason?: string
+    finishReason?: string,
   ): "stop" | "length" | "content-filter" | "other" {
     switch (finishReason) {
       case "STOP":
@@ -470,7 +596,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
    */
   private async executeTools(
     functionCalls: FunctionCall[],
-    controller: ReadableStreamDefaultController<UIMessageChunk>
+    controller: ReadableStreamDefaultController<UIMessageChunk>,
   ): Promise<FunctionResponsePart[]> {
     const results: FunctionResponsePart[] = [];
 
@@ -552,7 +678,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
    */
   private convertToolToFunctionDeclaration(
     toolName: string,
-    tool: Tool
+    tool: Tool,
   ): FunctionDeclaration {
     return {
       name: toolName,
@@ -567,7 +693,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
    * Strips fields not supported by Gemini's OpenAPI Schema subset.
    */
   private convertSchemaToFirebase(
-    schema: Tool["inputSchema"]
+    schema: Tool["inputSchema"],
   ): FunctionDeclaration["parameters"] {
     let jsonSchema: Record<string, unknown>;
     if (schema !== null && typeof schema === "object" && "_zod" in schema) {
@@ -580,7 +706,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
       jsonSchema = schema as Record<string, unknown>;
     }
     return this.stripUnsupportedSchemaFields(
-      jsonSchema
+      jsonSchema,
     ) as FunctionDeclaration["parameters"];
   }
 
@@ -610,23 +736,62 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
   }
 
   /**
+   * Extract base64 data from Data URL.
+   * Data URL format: data:[<mediatype>][;base64],<data>
+   *
+   * TODO: Add support for hosted URLs (http/https) using Firebase's fileData format.
+   * @see https://firebase.google.com/docs/ai-logic/image-prompts
+   */
+  private extractBase64FromDataUrl(dataUrl: string): string {
+    const base64Match = dataUrl.match(/^data:[^;]+;base64,(.+)$/);
+    if (base64Match) {
+      return base64Match[1];
+    }
+    throw new Error(
+      "Invalid data URL format. Expected base64 encoded data URL.",
+    );
+  }
+
+  /**
+   * Convert blob URL to base64 data URL.
+   */
+  private async blobUrlToDataUrl(blobUrl: string): Promise<string> {
+    const response = await fetch(blobUrl);
+    const blob = await response.blob();
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result as string);
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  }
+
+  /**
+   * Pre-process messages to convert blob URLs to data URLs.
+   */
+  private async preprocessMessages(messages: UI_MESSAGE[]): Promise<void> {
+    for (const message of messages) {
+      for (const part of message.parts) {
+        if (part.type === "file" && part.url && part.url.startsWith("blob:")) {
+          // Convert blob URL to data URL in place
+          (part as { url: string }).url = await this.blobUrlToDataUrl(part.url);
+        }
+      }
+    }
+  }
+
+  /**
    * Extract provider metadata from Firebase chunk.
    * Includes usageMetadata, modelVersion, and responseId when available.
    */
   private extractProviderMetadata(
-    chunk: unknown
+    chunk: unknown,
   ): SharedV3ProviderMetadata | undefined {
     const metadata: SharedV3ProviderMetadata = {};
     const chunkObj = chunk as SharedV3ProviderMetadata;
 
     if (chunkObj.usageMetadata !== undefined) {
       metadata.usageMetadata = chunkObj.usageMetadata;
-    }
-    if (chunkObj.modelVersion !== undefined) {
-      metadata.modelVersion = chunkObj.modelVersion;
-    }
-    if (chunkObj.responseId !== undefined) {
-      metadata.responseId = chunkObj.responseId;
     }
 
     return Object.keys(metadata).length > 0

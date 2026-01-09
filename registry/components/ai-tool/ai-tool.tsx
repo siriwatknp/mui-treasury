@@ -43,7 +43,7 @@ export const Tool = memo(({ children, sx, defaultOpen = false }: ToolProps) => {
               isOpen,
               onToggle: () => setIsOpen(!isOpen),
             })
-          : child
+          : child,
       )}
     </Box>
   );
@@ -179,7 +179,7 @@ export const ToolContent = memo(
     <Collapse in={isOpen}>
       <Box sx={sx}>{children}</Box>
     </Collapse>
-  )
+  ),
 );
 
 ToolContent.displayName = "ToolContent";

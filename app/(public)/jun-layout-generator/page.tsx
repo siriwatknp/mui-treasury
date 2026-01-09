@@ -18,12 +18,20 @@ import {
   MessageAvatar,
   MessageContent,
 } from "@/mui-treasury/components/ai-message/ai-message";
+import { Loader } from "@/mui-treasury/components/ai-loader/ai-loader";
 import {
   PromptInput,
+  PromptInputActionAddAttachments,
+  PromptInputActionMenu,
+  PromptInputActionMenuContent,
+  PromptInputActionMenuTrigger,
+  PromptInputAttachment,
+  PromptInputAttachments,
   PromptInputBody,
   PromptInputSubmit,
   PromptInputTextarea,
   PromptInputToolbar,
+  PromptInputTools,
   type PromptInputMessage,
 } from "@/mui-treasury/components/ai-prompt-input/ai-prompt-input";
 import {
@@ -50,6 +58,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import { Bot, CopyIcon, RefreshCwIcon, SquareIcon } from "lucide-react";
 import { toast } from "sonner";
+import { ResponseModality } from "firebase/ai";
 
 const SUGGESTED_PROMPTS = [
   "List all of the reports available in Scrapee separated by platform, respond in Thai.",
@@ -64,17 +73,18 @@ export default function AIAssistantPage() {
       new FirebaseChatTransport({
         firebaseApp: app,
         modelParams: {
-          model: "gemini-2.5-flash",
+          model: "gemini-2.5-flash-image",
           // systemInstruction: '',
           // tools: [{ googleSearch: {} }],
           generationConfig: {
-            thinkingConfig: {
-              includeThoughts: true,
-            },
+            responseModalities: [ResponseModality.TEXT, ResponseModality.IMAGE],
+            // thinkingConfig: {
+            //   includeThoughts: true,
+            // },
           },
         },
       }),
-    []
+    [],
   );
 
   const { messages, status, error, sendMessage, stop, regenerate } = useChat({
@@ -84,13 +94,20 @@ export default function AIAssistantPage() {
 
   const handleSubmit = (
     message: PromptInputMessage,
-    event: React.FormEvent
+    event: React.FormEvent,
   ) => {
     event.preventDefault();
-    if (message.text?.trim()) {
-      sendMessage({ text: message.text });
-      setInputValue("");
+    const hasText = message.text?.trim();
+    const hasFiles = message.files && message.files.length > 0;
+
+    if (hasText && hasFiles) {
+      sendMessage({ text: message.text!, files: message.files });
+    } else if (hasText) {
+      sendMessage({ text: message.text! });
+    } else if (hasFiles) {
+      sendMessage({ files: message.files! });
     }
+    setInputValue("");
   };
 
   const handleSuggestionClick = (suggestion: string) => {
@@ -104,7 +121,7 @@ export default function AIAssistantPage() {
       toast.error(
         `Failed to copy to clipboard (${
           error instanceof Error ? error.message : "Unknown error"
-        })`
+        })`,
       );
     }
   };
@@ -305,6 +322,21 @@ export default function AIAssistantPage() {
                 )}
               </Box>
             )}
+            {status === "streaming" && (
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1,
+                  mt: 1,
+                }}
+              >
+                <Loader />
+                <Typography sx={{ color: "text.secondary" }}>
+                  Streaming response...
+                </Typography>
+              </Box>
+            )}
           </ConversationContent>
 
           <ConversationScrollButton />
@@ -328,7 +360,10 @@ export default function AIAssistantPage() {
       </Box>
 
       {/* Input Area */}
-      <PromptInput onSubmit={handleSubmit}>
+      <PromptInput onSubmit={handleSubmit} accept="image/*" multiple>
+        <PromptInputAttachments>
+          {(attachment) => <PromptInputAttachment data={attachment} />}
+        </PromptInputAttachments>
         <PromptInputBody>
           <PromptInputTextarea
             placeholder="Ask me about Scrapee"
@@ -338,6 +373,14 @@ export default function AIAssistantPage() {
           />
         </PromptInputBody>
         <PromptInputToolbar>
+          <PromptInputTools>
+            <PromptInputActionMenu>
+              <PromptInputActionMenuTrigger />
+              <PromptInputActionMenuContent>
+                <PromptInputActionAddAttachments />
+              </PromptInputActionMenuContent>
+            </PromptInputActionMenu>
+          </PromptInputTools>
           {status === "streaming" ? (
             <Button
               variant="outlined"
@@ -356,9 +399,7 @@ export default function AIAssistantPage() {
           ) : (
             <PromptInputSubmit
               status={status as "ready" | "submitted" | "streaming" | "error"}
-              disabled={
-                status === "submitted" || error != null || !inputValue.trim()
-              }
+              disabled={status === "submitted" || error != null}
             />
           )}
         </PromptInputToolbar>
