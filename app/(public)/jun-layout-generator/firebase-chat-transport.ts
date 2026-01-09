@@ -26,6 +26,49 @@ import { z } from "zod";
 type SharedV3ProviderMetadata = Record<string, any>;
 
 /**
+ * A grounding chunk from Google Search.
+ * @see https://firebase.google.com/docs/ai-logic/grounding-google-search
+ */
+export interface GroundingChunk {
+  web?: {
+    uri?: string;
+    title?: string;
+  };
+}
+
+/**
+ * Maps a response text segment to grounding sources.
+ * @see https://firebase.google.com/docs/ai-logic/grounding-google-search
+ */
+export interface GroundingSupport {
+  segment?: {
+    startIndex?: number;
+    endIndex?: number;
+  };
+  groundingChunkIndices?: number[];
+  confidenceScores?: number[];
+}
+
+/**
+ * Google Search entry point for rendering required attribution.
+ * @see https://firebase.google.com/docs/ai-logic/grounding-google-search
+ */
+export interface SearchEntryPoint {
+  renderedContent?: string;
+}
+
+/**
+ * Grounding metadata returned when Google Search grounding is enabled.
+ * @see https://firebase.google.com/docs/ai-logic/grounding-google-search
+ */
+export interface GroundingMetadata {
+  webSearchQueries?: string[];
+  searchEntryPoint?: SearchEntryPoint;
+  groundingChunks?: GroundingChunk[];
+  groundingSupports?: GroundingSupport[];
+}
+
+/**
  * Options for initializing FirebaseChatTransport.
  *
  * Note: Firebase SDK types are not imported to avoid hard dependency.
@@ -64,6 +107,13 @@ export interface FirebaseChatTransportOptions {
    * @see https://firebase.google.com/docs/ai-logic/function-calling
    */
   tools?: Record<string, Tool>;
+
+  /**
+   * Enable grounding with Google Search.
+   * When enabled, responses may include grounding metadata in message.metadata.grounding.
+   * @see https://firebase.google.com/docs/ai-logic/grounding-google-search
+   */
+  enableGoogleSearch?: boolean;
 }
 
 /**
@@ -79,6 +129,7 @@ export interface FirebaseChatTransportOptions {
  * - Thinking/reasoning support (via thoughtSummary, streamed incrementally)
  * - Client-side tool/function calling with automatic execution
  * - Tool call loop (model can call multiple tools until final response)
+ * - Google Search grounding (via enableGoogleSearch option)
  *
  * Limitations:
  * - Only Data URL supported for files (no hosted URLs yet)
@@ -157,6 +208,21 @@ export interface FirebaseChatTransportOptions {
  *   },
  * });
  * ```
+ *
+ * @example With Google Search grounding
+ * ```ts
+ * const transport = new FirebaseChatTransport({
+ *   firebaseApp: app,
+ *   aiOptions: { backend: new GoogleAIBackend() },
+ *   modelParams: { model: 'gemini-2.5-flash' },
+ *   enableGoogleSearch: true,
+ * });
+ * // Grounding metadata available in message.metadata.grounding:
+ * // - webSearchQueries: string[]
+ * // - searchEntryPoint: { renderedContent: string } (required HTML to render)
+ * // - groundingChunks: Array<{ web: { uri, title } }>
+ * // - groundingSupports: Array<{ segment, groundingChunkIndices, confidenceScores }>
+ * ```
  */
 export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
   implements ChatTransport<UI_MESSAGE>
@@ -178,11 +244,22 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
       ([name, tool]) => this.convertToolToFunctionDeclaration(name, tool),
     );
 
+    // Build tools array with function declarations and/or Google Search
+    const toolsArray: Array<
+      { functionDeclarations: FunctionDeclaration[] } | { googleSearch: object }
+    > = [];
+    if (functionDeclarations.length > 0) {
+      toolsArray.push({ functionDeclarations });
+    }
+    if (options.enableGoogleSearch) {
+      toolsArray.push({ googleSearch: {} });
+    }
+
     const modelParamsWithTools =
-      functionDeclarations.length > 0
+      toolsArray.length > 0
         ? {
             ...(options.modelParams || { model: "gemini-2.5-flash" }),
-            tools: [{ functionDeclarations }],
+            tools: toolsArray,
           }
         : options.modelParams || { model: "gemini-2.5-flash" };
 
@@ -295,6 +372,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
               ).candidates?.[0]?.content?.parts;
 
               // Handle thinking/reasoning content (streamed)
+              // If thought exists, process ONLY reasoning and skip text
               const thought = chunk.thoughtSummary?.();
               if (thought) {
                 if (!hasReasoning) {
@@ -313,22 +391,23 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
                   delta: thought,
                   providerMetadata,
                 });
+                continue; // Skip text processing while thinking
+              }
+
+              // Close reasoning when thought stops growing and we move to text
+              if (hasReasoning && reasoningId) {
+                controller.enqueue({
+                  type: "reasoning-end",
+                  id: reasoningId,
+                  providerMetadata,
+                });
+                hasReasoning = false;
+                reasoningId = null;
               }
 
               if (chunkParts && chunkParts.length > 0) {
                 for (const part of chunkParts) {
                   if ("text" in part && part.text) {
-                    // Close reasoning when text starts
-                    if (hasReasoning && reasoningId) {
-                      controller.enqueue({
-                        type: "reasoning-end",
-                        id: reasoningId,
-                        providerMetadata,
-                      });
-                      hasReasoning = false;
-                      reasoningId = null;
-                    }
-
                     // Start text part if not already open
                     if (!currentTextId) {
                       currentTextId = this.generateId();
@@ -452,9 +531,15 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
 
               // No tool calls - emit finish and exit loop
               const finishReason = response.candidates?.[0]?.finishReason;
+
+              // Extract grounding metadata if available
+              const groundingMetadata =
+                response.candidates?.[0]?.groundingMetadata;
+
               controller.enqueue({
                 type: "finish",
                 finishReason: this.mapFinishReason(finishReason),
+                messageMetadata: groundingMetadata,
               });
               continueLoop = false;
             } else {

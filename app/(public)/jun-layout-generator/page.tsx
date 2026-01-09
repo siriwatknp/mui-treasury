@@ -2,7 +2,10 @@
 
 import React, { useState } from "react";
 
-import { FirebaseChatTransport } from "./firebase-chat-transport";
+import {
+  FirebaseChatTransport,
+  GroundingMetadata,
+} from "./firebase-chat-transport";
 import { app } from "./firebase-setup";
 import {
   Action,
@@ -51,19 +54,16 @@ import {
   ToolInput,
   ToolOutput,
 } from "@/mui-treasury/components/ai-tool/ai-tool";
-import { useChat } from "@ai-sdk/react";
+import { UIMessage, useChat } from "@ai-sdk/react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import { Bot, CopyIcon, RefreshCwIcon, SquareIcon } from "lucide-react";
 import { toast } from "sonner";
-import { ResponseModality } from "firebase/ai";
+// import { ResponseModality } from "firebase/ai";
 
-const SUGGESTED_PROMPTS = [
-  "List all of the reports available in Scrapee separated by platform, respond in Thai.",
-  "Explain the Line notification feature in Scrapee and how to set it up.",
-];
+const SUGGESTED_PROMPTS: string[] = [];
 
 export default function AIAssistantPage() {
   const [inputValue, setInputValue] = useState("");
@@ -72,29 +72,37 @@ export default function AIAssistantPage() {
     () =>
       new FirebaseChatTransport({
         firebaseApp: app,
+        // enableGoogleSearch: true,
         modelParams: {
-          model: "gemini-2.5-flash-image",
-          // systemInstruction: '',
-          // tools: [{ googleSearch: {} }],
+          model: "gemini-2.5-flash-lite",
+          systemInstruction: `You are a useful AI assistant that answers user general questions.
+Always respond in a concise and clear manner.
+The format of the respose MUST be in Markdown unless the user specifically asks for another format.
+If you do not know the answer, just say you do not know.
+Do not try to make up an answer.
+          `,
           generationConfig: {
-            responseModalities: [ResponseModality.TEXT, ResponseModality.IMAGE],
-            // thinkingConfig: {
-            //   includeThoughts: true,
-            // },
+            // responseModalities: [ResponseModality.TEXT, ResponseModality.IMAGE],
+            thinkingConfig: {
+              includeThoughts: true,
+              thinkingBudget: 1024,
+            },
           },
         },
       }),
-    [],
+    []
   );
 
-  const { messages, status, error, sendMessage, stop, regenerate } = useChat({
+  const { messages, status, error, sendMessage, stop, regenerate } = useChat<
+    UIMessage<GroundingMetadata>
+  >({
     id: "super-admin-chat",
     transport,
   });
 
   const handleSubmit = (
     message: PromptInputMessage,
-    event: React.FormEvent,
+    event: React.FormEvent
   ) => {
     event.preventDefault();
     const hasText = message.text?.trim();
@@ -121,7 +129,7 @@ export default function AIAssistantPage() {
       toast.error(
         `Failed to copy to clipboard (${
           error instanceof Error ? error.message : "Unknown error"
-        })`,
+        })`
       );
     }
   };
@@ -174,6 +182,8 @@ export default function AIAssistantPage() {
                     .map((part) => part.text)
                     .join("\n");
 
+                  const renderedContent =
+                    message.metadata?.searchEntryPoint?.renderedContent;
                   return (
                     <Message key={message.id} from={message.role}>
                       <MessageAvatar
@@ -262,6 +272,13 @@ export default function AIAssistantPage() {
                           }
                           return null;
                         })}
+                        {renderedContent && (
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html: renderedContent,
+                            }}
+                          />
+                        )}
                         {message.role === "assistant" && messageText && (
                           <Actions>
                             <Action
