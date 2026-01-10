@@ -12,11 +12,13 @@ import {
   GoogleAIBackend,
   type ChatSession,
   type EnhancedGenerateContentResponse,
+  type FileDataPart,
   type FunctionCall,
   type FunctionDeclaration,
   type FunctionResponsePart,
   type GenerativeModel,
   type HybridParams,
+  type InlineDataPart,
   type ModelParams,
   type Part,
   type Tool as FirebaseAiTool,
@@ -76,7 +78,10 @@ export interface FirebaseChatTransportOptions {
  *
  * Features:
  * - Multi-turn text streaming
- * - Multimodal input/output (images via inlineData)
+ * - Multimodal input/output (images, videos, audio)
+ *   - Data URLs (base64): converted to inlineData
+ *   - Hosted URLs (http/https): converted to fileData with fileUri
+ *   - YouTube URLs supported for video analysis
  * - Interleaved text and image generation (requires gemini-2.5-flash-image model)
  * - Thinking/reasoning support (via thoughtSummary, streamed incrementally)
  * - Client-side tool/function calling with automatic execution
@@ -84,7 +89,6 @@ export interface FirebaseChatTransportOptions {
  * - Google Search grounding (via enableGoogleSearch option)
  *
  * Limitations:
- * - Only Data URL supported for files (no hosted URLs yet)
  * - Single active chat at a time
  * - No stream reconnection (client-side)
  * - Client-side tool execution only (no server-side tool execution)
@@ -169,6 +173,19 @@ export interface FirebaseChatTransportOptions {
  * // - groundingChunks: Array<{ web: { uri, title } }>
  * // - groundingSupports: Array<{ segment, groundingChunkIndices, confidenceScores }>
  * ```
+ *
+ * @example With YouTube URLs in text
+ * ```ts
+ * // YouTube URLs in text are automatically extracted as fileData parts!
+ * // User input: "Summarize this video https://youtube.com/watch?v=xxx"
+ * // Converted to: [{ text: "Summarize this video" }, { fileData: { fileUri: "...", mimeType: "video/*" } }]
+ *
+ * // Supported YouTube URL formats:
+ * // - https://www.youtube.com/watch?v=VIDEO_ID
+ * // - https://youtube.com/watch?v=VIDEO_ID
+ * // - https://youtu.be/VIDEO_ID
+ * // - https://www.youtube.com/embed/VIDEO_ID
+ * ```
  */
 export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
   implements ChatTransport<UI_MESSAGE>
@@ -232,18 +249,16 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
         }
 
         try {
-          // Pre-process messages to convert blob URLs to data URLs
-          await this.preprocessMessages(messages);
-
-          // Convert messages to Firebase format
-          const firebaseMessages =
-            this.convertMessagesToFirebaseContent(messages);
-          const lastUserMessage = this.extractLastUserMessage(messages);
+          // Extract and preprocess only the last user message
+          const lastUserMessage = await this.extractLastUserMessage(messages);
 
           // Create or reuse chat session
           if (!this.chatSession) {
-            // New session: startChat with history (exclude last message)
-            const history = firebaseMessages.slice(0, -1);
+            // New session: convert all prior messages as history
+            const priorMessages = messages.slice(0, -1);
+            await this.preprocessMessages(priorMessages);
+            const history =
+              this.convertMessagesToFirebaseContent(priorMessages);
             this.chatSession = this.firebaseModel.startChat({
               history: history.length > 0 ? history : undefined,
             });
@@ -524,7 +539,8 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
 
   /**
    * Convert UI messages to Firebase Content format.
-   * Handles text and file parts (images via inlineData).
+   * - Text parts: YouTube URLs extracted as fileData parts
+   * - File parts: converted to inlineData (data URLs) or fileData (hosted URLs)
    */
   private convertMessagesToFirebaseContent(
     messages: UI_MESSAGE[],
@@ -532,31 +548,30 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
     return messages
       .map((message) => ({
         role: this.convertRole(message.role),
-        parts: message.parts
-          .map((part: UI_MESSAGE["parts"][number]): Part | null => {
+        parts: message.parts.flatMap(
+          (part: UI_MESSAGE["parts"][number]): Part[] => {
             if (part.type === "text") {
-              return { text: part.text };
+              return this.convertTextToPartsWithYouTube(part.text);
             }
             if (part.type === "file") {
-              return {
-                inlineData: {
-                  mimeType: part.mediaType,
-                  data: this.extractBase64FromDataUrl(part.url),
-                },
-              };
+              return [this.convertFileToFirebasePart(part.url, part.mediaType)];
             }
-            return null;
-          })
-          .filter((p): p is Part => p !== null),
+            return [];
+          },
+        ),
       }))
       .filter((content) => content.parts.length > 0);
   }
 
   /**
-   * Extract last user message from messages array.
+   * Extract and preprocess last user message from messages array.
+   * - Converts blob URLs to data URLs
+   * - Extracts YouTube URLs from text as fileData parts
    * Throws if last message is not from user.
    */
-  private extractLastUserMessage(messages: UI_MESSAGE[]): Part[] {
+  private async extractLastUserMessage(
+    messages: UI_MESSAGE[],
+  ): Promise<Part[]> {
     if (messages.length === 0) {
       throw new Error("Cannot send empty message history");
     }
@@ -569,22 +584,20 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
       );
     }
 
-    const parts = lastMessage.parts
-      .map((part: UI_MESSAGE["parts"][number]): Part | null => {
+    // Preprocess only the last message (convert blob URLs)
+    await this.preprocessMessages([lastMessage]);
+
+    const parts = lastMessage.parts.flatMap(
+      (part: UI_MESSAGE["parts"][number]): Part[] => {
         if (part.type === "text") {
-          return { text: part.text };
+          return this.convertTextToPartsWithYouTube(part.text);
         }
         if (part.type === "file") {
-          return {
-            inlineData: {
-              mimeType: part.mediaType,
-              data: this.extractBase64FromDataUrl(part.url),
-            },
-          };
+          return [this.convertFileToFirebasePart(part.url, part.mediaType)];
         }
-        return null;
-      })
-      .filter((p): p is Part => p !== null);
+        return [];
+      },
+    );
 
     if (parts.length === 0) {
       throw new Error("Last message has no text or file content");
@@ -757,19 +770,127 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
   }
 
   /**
-   * Extract base64 data from Data URL.
-   * Data URL format: data:[<mediatype>][;base64],<data>
-   *
-   * TODO: Add support for hosted URLs (http/https) using Firebase's fileData format.
-   * @see https://firebase.google.com/docs/ai-logic/image-prompts
+   * YouTube URL pattern to match various formats:
+   * - https://www.youtube.com/watch?v=VIDEO_ID
+   * - https://youtube.com/watch?v=VIDEO_ID
+   * - https://youtu.be/VIDEO_ID
+   * - https://www.youtube.com/embed/VIDEO_ID
    */
-  private extractBase64FromDataUrl(dataUrl: string): string {
-    const base64Match = dataUrl.match(/^data:[^;]+;base64,(.+)$/);
-    if (base64Match) {
-      return base64Match[1];
+  private static readonly YOUTUBE_URL_REGEX =
+    /https?:\/\/(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)[\w-]+(?:[?&][\w=-]*)*(?:#[\w-]*)?/g;
+
+  /**
+   * Check if URL is a YouTube URL.
+   */
+  private isYouTubeUrl(url: string): boolean {
+    return (
+      url.includes("youtube.com/") ||
+      url.includes("youtu.be/") ||
+      url.includes("youtube.googleapis.com/")
+    );
+  }
+
+  /**
+   * Convert a text part to Firebase Parts, extracting YouTube URLs as fileData.
+   * Example: "Summarize https://youtube.com/watch?v=xxx please"
+   * Becomes: [{ text: "Summarize " }, { fileData: {...} }, { text: " please" }]
+   */
+  private convertTextToPartsWithYouTube(text: string): Part[] {
+    const parts: Part[] = [];
+    let lastIndex = 0;
+
+    // Reset regex state
+    FirebaseChatTransport.YOUTUBE_URL_REGEX.lastIndex = 0;
+
+    let match;
+    while (
+      (match = FirebaseChatTransport.YOUTUBE_URL_REGEX.exec(text)) !== null
+    ) {
+      // Add text before the URL
+      if (match.index > lastIndex) {
+        const textBefore = text.slice(lastIndex, match.index).trim();
+        if (textBefore) {
+          parts.push({ text: textBefore });
+        }
+      }
+
+      // Add YouTube URL as fileData
+      parts.push({
+        fileData: {
+          mimeType: "video/*",
+          fileUri: match[0],
+        },
+      });
+
+      lastIndex = match.index + match[0].length;
     }
+
+    // Add remaining text after last URL
+    if (lastIndex < text.length) {
+      const textAfter = text.slice(lastIndex).trim();
+      if (textAfter) {
+        parts.push({ text: textAfter });
+      }
+    }
+
+    // No YouTube URLs found, return original text
+    if (parts.length === 0) {
+      return [{ text }];
+    }
+
+    return parts;
+  }
+
+  /**
+   * Convert a file part URL to Firebase Part format.
+   * Supports:
+   * - Data URLs (data:...): converted to inlineData
+   * - Hosted URLs (http/https): converted to fileData with fileUri
+   *
+   * @see https://firebase.google.com/docs/ai-logic/input-file-requirements
+   */
+  private convertFileToFirebasePart(
+    url: string,
+    mimeType: string,
+  ): InlineDataPart | FileDataPart {
+    // YouTube URL: use fileData with video/*
+    if (this.isYouTubeUrl(url)) {
+      return {
+        fileData: {
+          mimeType: "video/*",
+          fileUri: url,
+        },
+      };
+    }
+
+    // Data URL: use inlineData
+    if (url.startsWith("data:")) {
+      const base64Match = url.match(/^data:[^;]+;base64,(.+)$/);
+      if (!base64Match) {
+        throw new Error(
+          "Invalid data URL format. Expected base64 encoded data URL.",
+        );
+      }
+      return {
+        inlineData: {
+          mimeType,
+          data: base64Match[1],
+        },
+      };
+    }
+
+    // Hosted URL (http/https): use fileData
+    if (url.startsWith("http://") || url.startsWith("https://")) {
+      return {
+        fileData: {
+          mimeType,
+          fileUri: url,
+        },
+      };
+    }
+
     throw new Error(
-      "Invalid data URL format. Expected base64 encoded data URL.",
+      `Unsupported URL format: ${url.substring(0, 50)}. Expected data: or http(s): URL.`,
     );
   }
 
