@@ -2,10 +2,8 @@
 
 import React, { useState } from "react";
 
-import {
-  FirebaseChatTransport,
-  GroundingMetadata,
-} from "./firebase-chat-transport";
+import { FirebaseChatTransport } from "./firebase-chat-transport";
+import type { GroundingMetadata } from "firebase/ai";
 import { app } from "./firebase-setup";
 import {
   Action,
@@ -199,7 +197,7 @@ Do not try to make up an answer.
                 </Typography>
               </Box>
             ) : (
-              <Box sx={{ display: "flex", flexDirection: "column", gap: 0 }}>
+              <Box sx={{ display: "flex", flexDirection: "column" }}>
                 {messages.map((message) => {
                   const messageText = message.parts
                     ?.filter((part) => part.type === "text")
@@ -263,7 +261,6 @@ Do not try to make up an answer.
                                   maxWidth: "100%",
                                   height: "auto",
                                   borderRadius: 1,
-                                  mt: index > 0 ? 1 : 0,
                                 }}
                               />
                             );
@@ -274,7 +271,7 @@ Do not try to make up an answer.
                             "input" in part
                           ) {
                             return (
-                              <Box key={index} sx={{ mt: index > 0 ? 1 : 0 }}>
+                              <Box key={index}>
                                 <Tool>
                                   <ToolHeader
                                     type={part.type as `tool-${string}`}

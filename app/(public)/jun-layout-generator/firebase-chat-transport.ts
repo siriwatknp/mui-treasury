@@ -9,8 +9,9 @@ import {
 import {
   getAI,
   getGenerativeModel,
-  type AIOptions,
+  GoogleAIBackend,
   type ChatSession,
+  type EnhancedGenerateContentResponse,
   type FunctionCall,
   type FunctionDeclaration,
   type FunctionResponsePart,
@@ -18,55 +19,13 @@ import {
   type HybridParams,
   type ModelParams,
   type Part,
+  type Tool as FirebaseAiTool,
 } from "firebase/ai";
 import type { FirebaseApp } from "firebase/app";
 import { z } from "zod";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type SharedV3ProviderMetadata = Record<string, any>;
-
-/**
- * A grounding chunk from Google Search.
- * @see https://firebase.google.com/docs/ai-logic/grounding-google-search
- */
-export interface GroundingChunk {
-  web?: {
-    uri?: string;
-    title?: string;
-  };
-}
-
-/**
- * Maps a response text segment to grounding sources.
- * @see https://firebase.google.com/docs/ai-logic/grounding-google-search
- */
-export interface GroundingSupport {
-  segment?: {
-    startIndex?: number;
-    endIndex?: number;
-  };
-  groundingChunkIndices?: number[];
-  confidenceScores?: number[];
-}
-
-/**
- * Google Search entry point for rendering required attribution.
- * @see https://firebase.google.com/docs/ai-logic/grounding-google-search
- */
-export interface SearchEntryPoint {
-  renderedContent?: string;
-}
-
-/**
- * Grounding metadata returned when Google Search grounding is enabled.
- * @see https://firebase.google.com/docs/ai-logic/grounding-google-search
- */
-export interface GroundingMetadata {
-  webSearchQueries?: string[];
-  searchEntryPoint?: SearchEntryPoint;
-  groundingChunks?: GroundingChunk[];
-  groundingSupports?: GroundingSupport[];
-}
+type ProviderMetadata = Record<string, any>;
 
 /**
  * Options for initializing FirebaseChatTransport.
@@ -88,18 +47,11 @@ export interface FirebaseChatTransportOptions {
   generateId?: IdGenerator;
 
   /**
-   * Options for initializing the AI instance.
-   * Includes backend configuration and other AI-specific settings.
-   * @see https://firebase.google.com/docs/ai/get-started
-   */
-  aiOptions?: AIOptions;
-
-  /**
    * Parameters for configuring the generative model.
    * Includes model name, system instructions, generation config, safety settings, and tools.
    * @see https://firebase.google.com/docs/reference/js/ai.modelparams
    */
-  modelParams?: ModelParams | HybridParams;
+  modelParams: ModelParams | HybridParams;
 
   /**
    * AI SDK tools for client-side function calling.
@@ -142,13 +94,11 @@ export interface FirebaseChatTransportOptions {
  * @example Basic usage
  * ```ts
  * import { initializeApp } from 'firebase/app';
- * import { GoogleAIBackend } from 'firebase/ai';
  * import { FirebaseChatTransport } from '@ai-sdk/ui-utils';
  *
  * const app = initializeApp({ ... });
  * const transport = new FirebaseChatTransport({
  *   firebaseApp: app,
- *   aiOptions: { backend: new GoogleAIBackend() },
  *   modelParams: { model: 'gemini-2.5-flash' }
  * });
  * ```
@@ -157,7 +107,6 @@ export interface FirebaseChatTransportOptions {
  * ```ts
  * const transport = new FirebaseChatTransport({
  *   firebaseApp: app,
- *   aiOptions: { backend: new GoogleAIBackend() },
  *   modelParams: {
  *     model: 'gemini-2.5-flash',
  *     generationConfig: {
@@ -174,7 +123,6 @@ export interface FirebaseChatTransportOptions {
  *
  * const transport = new FirebaseChatTransport({
  *   firebaseApp: app,
- *   aiOptions: { backend: new GoogleAIBackend() },
  *   modelParams: {
  *     model: 'gemini-2.5-flash-image',
  *     generationConfig: {
@@ -192,7 +140,6 @@ export interface FirebaseChatTransportOptions {
  *
  * const transport = new FirebaseChatTransport({
  *   firebaseApp: app,
- *   aiOptions: { backend: new GoogleAIBackend() },
  *   modelParams: { model: 'gemini-2.5-flash' },
  *   tools: {
  *     getWeather: tool({
@@ -213,7 +160,6 @@ export interface FirebaseChatTransportOptions {
  * ```ts
  * const transport = new FirebaseChatTransport({
  *   firebaseApp: app,
- *   aiOptions: { backend: new GoogleAIBackend() },
  *   modelParams: { model: 'gemini-2.5-flash' },
  *   enableGoogleSearch: true,
  * });
@@ -232,10 +178,10 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
   private chatSession: ChatSession | null = null;
   private generateId: IdGenerator;
   private tools: Record<string, Tool>;
-  private readonly MAX_TOOL_ITERATIONS = 10;
+  private static readonly MAX_TOOL_ITERATIONS = 10;
 
   constructor(options: FirebaseChatTransportOptions) {
-    const ai = getAI(options.firebaseApp, options.aiOptions);
+    const ai = getAI(options.firebaseApp, { backend: new GoogleAIBackend() });
 
     this.tools = options.tools || {};
     this.generateId = options.generateId ?? generateIdFunc;
@@ -245,9 +191,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
     );
 
     // Build tools array with function declarations and/or Google Search
-    const toolsArray: Array<
-      { functionDeclarations: FunctionDeclaration[] } | { googleSearch: object }
-    > = [];
+    const toolsArray: Array<FirebaseAiTool> = [];
     if (functionDeclarations.length > 0) {
       toolsArray.push({ functionDeclarations });
     }
@@ -255,15 +199,12 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
       toolsArray.push({ googleSearch: {} });
     }
 
-    const modelParamsWithTools =
-      toolsArray.length > 0
-        ? {
-            ...(options.modelParams || { model: "gemini-2.5-flash" }),
-            tools: toolsArray,
-          }
-        : options.modelParams || { model: "gemini-2.5-flash" };
+    const modelParams = { ...options.modelParams } as ModelParams;
+    if (toolsArray.length > 0) {
+      modelParams.tools = toolsArray;
+    }
 
-    this.firebaseModel = getGenerativeModel(ai, modelParamsWithTools);
+    this.firebaseModel = getGenerativeModel(ai, modelParams);
   }
 
   async sendMessages(
@@ -320,7 +261,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
           while (
             continueLoop &&
             !isAborted &&
-            iteration < this.MAX_TOOL_ITERATIONS
+            iteration < FirebaseChatTransport.MAX_TOOL_ITERATIONS
           ) {
             iteration++;
 
@@ -350,8 +291,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
             // Stream text and handle interleaved images
             let hasReasoning = false;
             let reasoningId: string | null = null;
-            let lastProviderMetadata: SharedV3ProviderMetadata | undefined =
-              undefined;
+            let lastProviderMetadata: ProviderMetadata | undefined = undefined;
 
             // Simple state: track current text part and emitted images
             let currentTextId: string | null = null;
@@ -365,11 +305,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
               lastProviderMetadata = providerMetadata;
 
               // Access parts structure for interleaved streaming
-              const chunkParts = (
-                chunk as {
-                  candidates?: Array<{ content?: { parts?: Part[] } }>;
-                }
-              ).candidates?.[0]?.content?.parts;
+              const chunkParts = chunk.candidates?.[0]?.content?.parts;
 
               // Handle thinking/reasoning content (streamed)
               // If thought exists, process ONLY reasoning and skip text
@@ -551,10 +487,10 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
             }
           }
 
-          if (iteration >= this.MAX_TOOL_ITERATIONS) {
+          if (iteration >= FirebaseChatTransport.MAX_TOOL_ITERATIONS) {
             controller.enqueue({
               type: "error",
-              errorText: `Maximum tool iteration limit (${this.MAX_TOOL_ITERATIONS}) reached`,
+              errorText: `Maximum tool iteration limit (${FirebaseChatTransport.MAX_TOOL_ITERATIONS}) reached`,
             });
           }
 
@@ -597,7 +533,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
       .map((message) => ({
         role: this.convertRole(message.role),
         parts: message.parts
-          .map((part: UI_MESSAGE["parts"][number]) => {
+          .map((part: UI_MESSAGE["parts"][number]): Part | null => {
             if (part.type === "text") {
               return { text: part.text };
             }
@@ -611,7 +547,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
             }
             return null;
           })
-          .filter((p) => p !== null),
+          .filter((p): p is Part => p !== null),
       }))
       .filter((content) => content.parts.length > 0);
   }
@@ -633,8 +569,8 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
       );
     }
 
-    const parts: Part[] = lastMessage.parts
-      .map((part: UI_MESSAGE["parts"][number]) => {
+    const parts = lastMessage.parts
+      .map((part: UI_MESSAGE["parts"][number]): Part | null => {
         if (part.type === "text") {
           return { text: part.text };
         }
@@ -648,7 +584,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
         }
         return null;
       })
-      .filter((p) => p !== null);
+      .filter((p): p is Part => p !== null);
 
     if (parts.length === 0) {
       throw new Error("Last message has no text or file content");
@@ -867,20 +803,14 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
 
   /**
    * Extract provider metadata from Firebase chunk.
-   * Includes usageMetadata, modelVersion, and responseId when available.
+   * Includes usageMetadata when available.
    */
   private extractProviderMetadata(
-    chunk: unknown,
-  ): SharedV3ProviderMetadata | undefined {
-    const metadata: SharedV3ProviderMetadata = {};
-    const chunkObj = chunk as SharedV3ProviderMetadata;
-
-    if (chunkObj.usageMetadata !== undefined) {
-      metadata.usageMetadata = chunkObj.usageMetadata;
+    chunk: EnhancedGenerateContentResponse,
+  ): ProviderMetadata | undefined {
+    if (chunk.usageMetadata) {
+      return { firebase: { usageMetadata: chunk.usageMetadata } };
     }
-
-    return Object.keys(metadata).length > 0
-      ? { firebase: metadata }
-      : undefined;
+    return undefined;
   }
 }
