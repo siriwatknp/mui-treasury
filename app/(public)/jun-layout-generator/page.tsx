@@ -53,7 +53,7 @@ import {
   ToolOutput,
 } from "@/mui-treasury/components/ai-tool/ai-tool";
 import { UIMessage, useChat } from "@ai-sdk/react";
-import { tool } from "ai";
+import { stepCountIs, tool } from "ai";
 import Box from "@mui/material/Box";
 import { z } from "zod";
 import Button from "@mui/material/Button";
@@ -110,9 +110,18 @@ Do not try to make up an answer.
               };
             },
           }),
+          generateNumber: tool({
+            description: "Generate a random number between 1 and 9",
+            inputSchema: z.object({}),
+            execute: async () => {
+              await new Promise((resolve) => setTimeout(resolve, 500));
+              return { number: Math.floor(Math.random() * 9) + 1 };
+            },
+          }),
         },
+        stopWhen: stepCountIs(3),
       }),
-    [],
+    []
   );
 
   const { messages, status, error, sendMessage, stop, regenerate } = useChat<
@@ -124,7 +133,7 @@ Do not try to make up an answer.
 
   const handleSubmit = (
     message: PromptInputMessage,
-    event: React.FormEvent,
+    event: React.FormEvent
   ) => {
     event.preventDefault();
     const hasText = message.text?.trim();
@@ -151,7 +160,7 @@ Do not try to make up an answer.
       toast.error(
         `Failed to copy to clipboard (${
           error instanceof Error ? error.message : "Unknown error"
-        })`,
+        })`
       );
     }
   };

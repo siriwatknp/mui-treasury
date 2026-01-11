@@ -1,11 +1,16 @@
-import { UIMessage } from "@ai-sdk/react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
-  ChatTransport,
   generateId as generateIdFunc,
   IdGenerator,
-  UIMessageChunk,
+  stepCountIs,
+  type ChatTransport,
+  type UIMessageChunk,
+  type StopCondition,
   type Tool,
+  type ToolSet,
+  type StepResult,
 } from "ai";
+import { UIMessage } from "@ai-sdk/react";
 import {
   getAI,
   getGenerativeModel,
@@ -26,7 +31,6 @@ import {
 import type { FirebaseApp } from "firebase/app";
 import { z } from "zod";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type ProviderMetadata = Record<string, any>;
 
 /**
@@ -68,6 +72,38 @@ export interface FirebaseChatTransportOptions {
    * @see https://firebase.google.com/docs/ai-logic/grounding-google-search
    */
   enableGoogleSearch?: boolean;
+
+  /**
+   * Stop condition(s) for tool execution loop.
+   * Controls when to stop executing tools and return final response.
+   * Uses the same API as generateText/streamText stopWhen.
+   *
+   * @default stepCountIs(20)
+   * @example
+   * // Stop after 5 iterations
+   * stopWhen: stepCountIs(5)
+   *
+   * @example
+   * // Stop when specific tool is called
+   * stopWhen: hasToolCall('final_answer')
+   *
+   * @example
+   * // Multiple conditions (OR logic - stops if ANY condition is met)
+   * stopWhen: [stepCountIs(10), hasToolCall('done')]
+   */
+  stopWhen?: StopCondition<any> | Array<StopCondition<any>>;
+}
+
+async function isStopConditionMet<TOOLS extends ToolSet>({
+  stopConditions,
+  steps,
+}: {
+  stopConditions: Array<StopCondition<TOOLS>>;
+  steps: Array<StepResult<TOOLS>>;
+}): Promise<boolean> {
+  return (
+    await Promise.all(stopConditions.map((condition) => condition({ steps })))
+  ).some((result) => result);
 }
 
 /**
@@ -86,6 +122,7 @@ export interface FirebaseChatTransportOptions {
  * - Thinking/reasoning support (via thoughtSummary, streamed incrementally)
  * - Client-side tool/function calling with automatic execution
  * - Tool call loop (model can call multiple tools until final response)
+ * - Configurable stop conditions (via stopWhen option, same API as generateText)
  * - Google Search grounding (via enableGoogleSearch option)
  *
  * Limitations:
@@ -93,7 +130,6 @@ export interface FirebaseChatTransportOptions {
  * - No stream reconnection (client-side)
  * - Client-side tool execution only (no server-side tool execution)
  * - No tool approval workflow (tools execute immediately)
- * - Maximum 10 tool execution iterations per request (prevents infinite loops)
  *
  * @example Basic usage
  * ```ts
@@ -186,6 +222,19 @@ export interface FirebaseChatTransportOptions {
  * // - https://youtu.be/VIDEO_ID
  * // - https://www.youtube.com/embed/VIDEO_ID
  * ```
+ *
+ * @example With custom stop conditions
+ * ```ts
+ * import { stepCountIs, hasToolCall } from 'ai';
+ *
+ * const transport = new FirebaseChatTransport({
+ *   firebaseApp: app,
+ *   modelParams: { model: 'gemini-2.5-flash' },
+ *   tools: { /* ... *\/ },
+ *   // Stop after 5 tool iterations OR when 'done' tool is called
+ *   stopWhen: [stepCountIs(5), hasToolCall('done')],
+ * });
+ * ```
  */
 export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
   implements ChatTransport<UI_MESSAGE>
@@ -195,7 +244,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
   private chatSession: ChatSession | null = null;
   private generateId: IdGenerator;
   private tools: Record<string, Tool>;
-  private static readonly MAX_TOOL_ITERATIONS = 10;
+  private stopConditions: Array<StopCondition<any>>;
 
   constructor(options: FirebaseChatTransportOptions) {
     const ai = getAI(options.firebaseApp, { backend: new GoogleAIBackend() });
@@ -203,8 +252,12 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
     this.tools = options.tools || {};
     this.generateId = options.generateId ?? generateIdFunc;
 
+    // Initialize stop conditions (default: stepCountIs(20) to match server-side)
+    const stopWhen = options.stopWhen ?? stepCountIs(20);
+    this.stopConditions = Array.isArray(stopWhen) ? stopWhen : [stopWhen];
+
     const functionDeclarations = Object.entries(this.tools).map(
-      ([name, tool]) => this.convertToolToFunctionDeclaration(name, tool),
+      ([name, tool]) => this.convertToolToFunctionDeclaration(name, tool)
     );
 
     // Build tools array with function declarations and/or Google Search
@@ -225,7 +278,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
   }
 
   async sendMessages(
-    options: Parameters<ChatTransport<UI_MESSAGE>["sendMessages"]>[0],
+    options: Parameters<ChatTransport<UI_MESSAGE>["sendMessages"]>[0]
   ): Promise<ReadableStream<UIMessageChunk>> {
     const { chatId, messages, abortSignal } = options;
 
@@ -271,27 +324,23 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
           let continueLoop = true;
           let startEmitted = false;
           let pendingFunctionResponses: FunctionResponsePart[] | null = null;
-          let iteration = 0;
+          // Track steps for stop condition evaluation
+          const steps: StepResult<any>[] = [];
 
-          while (
-            continueLoop &&
-            !isAborted &&
-            iteration < FirebaseChatTransport.MAX_TOOL_ITERATIONS
-          ) {
-            iteration++;
-
+          while (continueLoop && !isAborted) {
             let result;
 
             if (pendingFunctionResponses) {
               // Send function responses from previous iteration
               result = await this.chatSession.sendMessageStream(
-                pendingFunctionResponses,
+                pendingFunctionResponses
               );
               pendingFunctionResponses = null;
             } else {
               // Send initial user message
-              result =
-                await this.chatSession.sendMessageStream(lastUserMessage);
+              result = await this.chatSession.sendMessageStream(
+                lastUserMessage
+              );
             }
 
             // Emit start chunk after connection established (once)
@@ -480,6 +529,10 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
                 }
               }
 
+              // Track this step for stop condition evaluation (matches server-side behavior)
+              // Every LLM response creates a step, regardless of tool calls
+              steps.push({ toolCalls: [] } as unknown as StepResult<any>);
+
               // No tool calls - emit finish and exit loop
               const finishReason = response.candidates?.[0]?.finishReason;
 
@@ -494,19 +547,39 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
               });
               continueLoop = false;
             } else {
-              // Execute tools and prepare responses for next iteration
-              pendingFunctionResponses = await this.executeTools(
-                functionCalls,
-                controller,
-              );
-            }
-          }
+              // Track step for stop condition evaluation
+              steps.push({
+                toolCalls: functionCalls.map((fc: FunctionCall) => ({
+                  type: "tool-call" as const,
+                  toolCallId: this.generateId(),
+                  toolName: fc.name,
+                  input: fc.args,
+                })),
+              } as StepResult<any>);
 
-          if (iteration >= FirebaseChatTransport.MAX_TOOL_ITERATIONS) {
-            controller.enqueue({
-              type: "error",
-              errorText: `Maximum tool iteration limit (${FirebaseChatTransport.MAX_TOOL_ITERATIONS}) reached`,
-            });
+              // Check stop conditions (OR logic - stops if ANY condition is met)
+              // Cast needed: StopCondition expects full StepResult but built-in
+              // helpers (stepCountIs, hasToolCall) only access steps.length and toolCalls
+              const shouldStop = await isStopConditionMet({
+                stopConditions: this.stopConditions,
+                steps,
+              });
+
+              if (shouldStop) {
+                // Stop condition met - finish with tool-calls reason
+                controller.enqueue({
+                  type: "finish",
+                  finishReason: "tool-calls",
+                });
+                continueLoop = false;
+              } else {
+                // Execute tools and prepare responses for next iteration
+                pendingFunctionResponses = await this.executeTools(
+                  functionCalls,
+                  controller
+                );
+              }
+            }
           }
 
           controller.close();
@@ -523,7 +596,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
   }
 
   async reconnectToStream(
-    _: Parameters<ChatTransport<UI_MESSAGE>["reconnectToStream"]>[0],
+    _: Parameters<ChatTransport<UI_MESSAGE>["reconnectToStream"]>[0]
   ): Promise<ReadableStream<UIMessageChunk> | null> {
     // Client-side cannot reconnect to streams
     // Would need server-side persistence
@@ -543,7 +616,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
    * - File parts: converted to inlineData (data URLs) or fileData (hosted URLs)
    */
   private convertMessagesToFirebaseContent(
-    messages: UI_MESSAGE[],
+    messages: UI_MESSAGE[]
   ): Array<{ role: "user" | "model"; parts: Part[] }> {
     return messages
       .map((message) => ({
@@ -557,7 +630,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
               return [this.convertFileToFirebasePart(part.url, part.mediaType)];
             }
             return [];
-          },
+          }
         ),
       }))
       .filter((content) => content.parts.length > 0);
@@ -570,7 +643,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
    * Throws if last message is not from user.
    */
   private async extractLastUserMessage(
-    messages: UI_MESSAGE[],
+    messages: UI_MESSAGE[]
   ): Promise<Part[]> {
     if (messages.length === 0) {
       throw new Error("Cannot send empty message history");
@@ -580,7 +653,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
 
     if (lastMessage.role !== "user") {
       throw new Error(
-        "Last message must be from user. Firebase requires user message to generate response.",
+        "Last message must be from user. Firebase requires user message to generate response."
       );
     }
 
@@ -596,7 +669,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
           return [this.convertFileToFirebasePart(part.url, part.mediaType)];
         }
         return [];
-      },
+      }
     );
 
     if (parts.length === 0) {
@@ -610,7 +683,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
    * Map Firebase finish reason to AI SDK format.
    */
   private mapFinishReason(
-    finishReason?: string,
+    finishReason?: string
   ): "stop" | "length" | "content-filter" | "other" {
     switch (finishReason) {
       case "STOP":
@@ -630,7 +703,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
    */
   private async executeTools(
     functionCalls: FunctionCall[],
-    controller: ReadableStreamDefaultController<UIMessageChunk>,
+    controller: ReadableStreamDefaultController<UIMessageChunk>
   ): Promise<FunctionResponsePart[]> {
     const results: FunctionResponsePart[] = [];
 
@@ -712,7 +785,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
    */
   private convertToolToFunctionDeclaration(
     toolName: string,
-    tool: Tool,
+    tool: Tool
   ): FunctionDeclaration {
     return {
       name: toolName,
@@ -727,7 +800,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
    * Strips fields not supported by Gemini's OpenAPI Schema subset.
    */
   private convertSchemaToFirebase(
-    schema: Tool["inputSchema"],
+    schema: Tool["inputSchema"]
   ): FunctionDeclaration["parameters"] {
     let jsonSchema: Record<string, unknown>;
     if (schema !== null && typeof schema === "object" && "_zod" in schema) {
@@ -740,7 +813,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
       jsonSchema = schema as Record<string, unknown>;
     }
     return this.stripUnsupportedSchemaFields(
-      jsonSchema,
+      jsonSchema
     ) as FunctionDeclaration["parameters"];
   }
 
@@ -851,7 +924,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
    */
   private convertFileToFirebasePart(
     url: string,
-    mimeType: string,
+    mimeType: string
   ): InlineDataPart | FileDataPart {
     // YouTube URL: use fileData with video/*
     if (this.isYouTubeUrl(url)) {
@@ -868,7 +941,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
       const base64Match = url.match(/^data:[^;]+;base64,(.+)$/);
       if (!base64Match) {
         throw new Error(
-          "Invalid data URL format. Expected base64 encoded data URL.",
+          "Invalid data URL format. Expected base64 encoded data URL."
         );
       }
       return {
@@ -890,7 +963,10 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
     }
 
     throw new Error(
-      `Unsupported URL format: ${url.substring(0, 50)}. Expected data: or http(s): URL.`,
+      `Unsupported URL format: ${url.substring(
+        0,
+        50
+      )}. Expected data: or http(s): URL.`
     );
   }
 
@@ -927,7 +1003,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
    * Includes usageMetadata when available.
    */
   private extractProviderMetadata(
-    chunk: EnhancedGenerateContentResponse,
+    chunk: EnhancedGenerateContentResponse
   ): ProviderMetadata | undefined {
     if (chunk.usageMetadata) {
       return { firebase: { usageMetadata: chunk.usageMetadata } };
