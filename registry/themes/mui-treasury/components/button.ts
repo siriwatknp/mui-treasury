@@ -75,24 +75,24 @@ export const buttonTheme: ThemeComponents = {
         "&:has(> svg:only-child, > svg + .MuiTouchRipple-root)": {
           "--Icon-color": "currentColor",
           "&.MuiButton-sizeSmall": {
-            padding: "4px",
+            padding: "7px", // total height 34px, same as "small" outlined input
             minWidth: "28px",
           },
           "&.MuiButton-sizeMedium": {
-            padding: "8px",
+            padding: "10px", // total height 40px, same as "medium" outlined input
             minWidth: "36px",
           },
           "&.MuiButton-sizeLarge": {
-            padding: "12px",
+            padding: "12px", // total height 48px
             minWidth: "48px",
           },
           // Outlined variant needs to compensate for border
           "&.MuiButton-outlined": {
             "&.MuiButton-sizeSmall": {
-              padding: "3px",
+              padding: "6px",
             },
             "&.MuiButton-sizeMedium": {
-              padding: "7px",
+              padding: "9px",
             },
             "&.MuiButton-sizeLarge": {
               padding: "11px",
@@ -104,14 +104,14 @@ export const buttonTheme: ThemeComponents = {
           {
             props: { size: "small" },
             style: {
-              padding: "4px 12px",
+              padding: "7px 12px",
               lineHeight: "20px",
             },
           },
           {
             props: { size: "medium" },
             style: {
-              padding: "8px 16px",
+              padding: "10px 16px",
               lineHeight: "20px",
             },
           },
@@ -128,10 +128,10 @@ export const buttonTheme: ThemeComponents = {
             props: { variant: "outlined" },
             style: {
               "&.MuiButton-sizeSmall": {
-                padding: "3px 12px",
+                padding: "6px 12px",
               },
               "&.MuiButton-sizeMedium": {
-                padding: "7px 16px",
+                padding: "9px 16px",
               },
               "&.MuiButton-sizeLarge": {
                 padding: "11px 24px",
@@ -214,7 +214,18 @@ export const buttonTheme: ThemeComponents = {
               borderColor: "var(--variant-outlinedBorder)",
             },
           },
-          // Contained variant for success, error, warning, info
+          // Contained variant for secondary, success, error, warning, info
+          {
+            props: { variant: "contained", color: "secondary" },
+            style: {
+              color: `color-mix(in oklch, ${
+                (theme.vars || theme).palette.secondary.text
+              }, ${(theme.vars || theme).palette.common.onBackground} 30%)`,
+              backgroundColor: `color-mix(in oklch, ${
+                (theme.vars || theme).palette.secondary.main
+              }, ${(theme.vars || theme).palette.common.background} 50%)`,
+            },
+          },
           {
             props: { variant: "contained", color: "success" },
             style: {
@@ -275,6 +286,32 @@ export const buttonTheme: ThemeComponents = {
           transform: "scale(0.98)",
         },
       }),
+    },
+  },
+  MuiToggleButton: {
+    styleOverrides: {
+      root: {
+        variants: [
+          {
+            props: { size: "small" },
+            style: {
+              padding: "6px", // total height 34px, same as "small" button
+            },
+          },
+          {
+            props: { size: "medium" },
+            style: {
+              padding: "9px", // total height 40px, same as "medium" button
+            },
+          },
+          {
+            props: { size: "large" },
+            style: {
+              padding: "13px", // total height 48px, same as "large" button
+            },
+          },
+        ],
+      },
     },
   },
 };

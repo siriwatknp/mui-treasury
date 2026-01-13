@@ -11,6 +11,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Alert from "@mui/material/Alert";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
+import InputBase from "@mui/material/InputBase";
 import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -393,6 +394,18 @@ export default function ThemePreviewPage() {
             </div>
           </GridDemo>
 
+          <GridCell>
+            <h3 className="text-xl font-bold">Input Base</h3>
+            <p className="self-baseline">Enter and edit text</p>
+          </GridCell>
+          <GridDemo>
+            <div className="space-y-4 space-x-4 max-w-md">
+              <InputBase size="small" placeholder="Enter text" />
+              <InputBase placeholder="Enter text" />
+              <InputBase size="large" placeholder="Enter text" />
+            </div>
+          </GridDemo>
+
           {/* TextField Section */}
           <GridCell>
             <h3 className="text-xl font-bold">TextField</h3>
@@ -464,6 +477,20 @@ export default function ThemePreviewPage() {
           </GridDemo>
 
           <GridCell>
+            <CodeChip>size=&quot;large&quot;</CodeChip>
+          </GridCell>
+          <GridDemo>
+            <div className="space-y-4 space-x-4 max-w-md">
+              <TextField
+                label="Large TextField"
+                variant="outlined"
+                size="large"
+                placeholder="Large size"
+              />
+            </div>
+          </GridDemo>
+
+          <GridCell>
             <CodeChip>error</CodeChip> state
           </GridCell>
           <GridDemo>
@@ -522,6 +549,23 @@ export default function ThemePreviewPage() {
               <TextField
                 label="Auto-resize"
                 variant="outlined"
+                multiline
+                minRows={2}
+                maxRows={4}
+                placeholder="This will auto-resize as you type..."
+              />
+              <TextField
+                label="Multiline"
+                variant="outlined"
+                size="small"
+                multiline
+                rows={3}
+                placeholder="Enter multiple lines of text..."
+              />
+              <TextField
+                label="Auto-resize"
+                variant="outlined"
+                size="large"
                 multiline
                 minRows={2}
                 maxRows={4}
@@ -598,6 +642,21 @@ export default function ThemePreviewPage() {
               />
               <TextField
                 size="small"
+                label="Account"
+                variant="outlined"
+                placeholder="Username"
+                slotProps={{
+                  input: {
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <AccountCircleIcon />
+                      </InputAdornment>
+                    ),
+                  },
+                }}
+              />
+              <TextField
+                size="large"
                 label="Account"
                 variant="outlined"
                 placeholder="Username"
@@ -1145,6 +1204,9 @@ export default function ThemePreviewPage() {
               <Button variant="text">
                 <DeleteIcon />
               </Button>
+              <IconButton color="success" size="large">
+                <FavoriteIcon />
+              </IconButton>
               <IconButton>
                 <FavoriteIcon />
               </IconButton>
@@ -2680,8 +2742,9 @@ export default function ThemePreviewPage() {
             <p className="self-baseline">Group related options</p>
           </GridCell>
           <GridDemo>
-            <div className="space-y-4">
+            <div className="space-x-4">
               <ToggleButtonGroup
+                size="small"
                 value={toggleAlignment}
                 exclusive
                 onChange={(_, value) => value && setToggleAlignment(value)}
@@ -2698,6 +2761,22 @@ export default function ThemePreviewPage() {
               </ToggleButtonGroup>
 
               <ToggleButtonGroup
+                value={toggleValue}
+                onChange={(_, value) => setToggleValue(value)}
+              >
+                <ToggleButton value="bold">
+                  <FormatBoldIcon />
+                </ToggleButton>
+                <ToggleButton value="italic">
+                  <FormatItalicIcon />
+                </ToggleButton>
+                <ToggleButton value="underlined">
+                  <FormatUnderlinedIcon />
+                </ToggleButton>
+              </ToggleButtonGroup>
+
+              <ToggleButtonGroup
+                size="large"
                 value={toggleValue}
                 onChange={(_, value) => setToggleValue(value)}
               >
