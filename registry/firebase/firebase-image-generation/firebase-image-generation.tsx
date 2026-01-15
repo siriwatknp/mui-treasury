@@ -116,8 +116,9 @@ export default function FirebaseImageGeneration() {
           p: 2,
         }}
       >
-        <Typography color="error">
-          Firebase not configured. Please set up Firebase credentials.
+        <Typography color="text.secondary">
+          Firebase not configured. Please set up Firebase config at the top of
+          the page.
         </Typography>
       </Box>
     );

@@ -169,7 +169,8 @@ Always respond in a concise and clear manner using Markdown format.`,
         }}
       >
         <Typography color="text.secondary">
-          Firebase not configured. Please set up Firebase credentials.
+          Firebase not configured. Please set up Firebase config at the top of
+          the page.
         </Typography>
       </Box>
     );

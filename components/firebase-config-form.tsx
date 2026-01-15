@@ -13,13 +13,42 @@ import { Pencil, Trash2 } from "lucide-react";
 const STORAGE_KEY = "firebase-config";
 
 const PLACEHOLDER = `{
-  "apiKey": "...",
-  "authDomain": "...",
-  "projectId": "...",
-  "storageBucket": "...",
-  "messagingSenderId": "...",
-  "appId": "..."
+  apiKey: "...",
+  authDomain: "...",
+  projectId: "...",
+  storageBucket: "...",
+  messagingSenderId: "...",
+  appId: "..."
 }`;
+
+export function parseFirebaseConfig(
+  input: string,
+): Record<string, string> | null {
+  let configStr = input.trim();
+
+  // Extract config from Firebase SDK snippet (const firebaseConfig = {...})
+  const snippetMatch = configStr.match(
+    /(?:const|let|var)\s+\w+\s*=\s*(\{[\s\S]*?\});/,
+  );
+  if (snippetMatch) {
+    configStr = snippetMatch[1];
+  }
+
+  // Find the object if input contains extra text
+  const objectMatch = configStr.match(/\{[\s\S]*\}/);
+  if (objectMatch) {
+    configStr = objectMatch[0];
+  }
+
+  // Convert JS object notation to JSON (add quotes to unquoted keys)
+  const jsonStr = configStr.replace(/([{,]\s*)(\w+)(\s*:)/g, '$1"$2"$3');
+
+  try {
+    return JSON.parse(jsonStr);
+  } catch {
+    return null;
+  }
+}
 
 function ConfigSnippet({
   config,
@@ -115,17 +144,17 @@ export function FirebaseConfigForm() {
       return;
     }
 
-    try {
-      const parsed = JSON.parse(trimmed);
-      if (!parsed.apiKey || !parsed.projectId) {
-        setError("Missing required fields: apiKey, projectId");
-        return;
-      }
-      localStorage.setItem(STORAGE_KEY, trimmed);
-      window.location.reload();
-    } catch {
-      setError("Invalid JSON format");
+    const parsed = parseFirebaseConfig(trimmed);
+    if (!parsed) {
+      setError("Invalid config format");
+      return;
     }
+    if (!parsed.apiKey || !parsed.projectId) {
+      setError("Missing required fields: apiKey, projectId");
+      return;
+    }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
+    window.location.reload();
   };
 
   const handleCancel = () => {
@@ -197,7 +226,7 @@ export function FirebaseConfigForm() {
           setError("");
         }}
         error={!!error}
-        helperText="Open Firebase console, find ⚙️ → Project settings → General → Your apps → SDK snippet"
+        helperText="Paste the SDK snippet from Firebase console (⚙️ → Project settings → Your apps)"
         slotProps={{
           input: {
             sx: { fontFamily: "monospace", fontSize: 13 },

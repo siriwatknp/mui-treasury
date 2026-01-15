@@ -113,11 +113,12 @@ If you don't know the answer, say so honestly.`,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          p: 3,
+          p: 2,
         }}
       >
-        <Typography color="error">
-          Firebase not configured. Please set up Firebase credentials.
+        <Typography color="text.secondary">
+          Firebase not configured. Please set up Firebase config at the top of
+          the page.
         </Typography>
       </Box>
     );

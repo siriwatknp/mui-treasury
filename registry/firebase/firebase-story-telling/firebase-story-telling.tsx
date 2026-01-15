@@ -126,8 +126,9 @@ Always aim to create an immersive, illustrated experience.`,
           p: 2,
         }}
       >
-        <Typography color="error">
-          Firebase not configured. Please set up Firebase credentials.
+        <Typography color="text.secondary">
+          Firebase not configured. Please set up Firebase config at the top of
+          the page.
         </Typography>
       </Box>
     );

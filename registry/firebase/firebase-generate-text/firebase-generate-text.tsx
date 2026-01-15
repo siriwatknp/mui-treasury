@@ -51,6 +51,25 @@ export default function FirebaseGenerateText() {
     transport: transport!,
   });
 
+  if (!app) {
+    return (
+      <Box
+        sx={{
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          p: 2,
+        }}
+      >
+        <Typography color="text.secondary">
+          Firebase not configured. Please set up Firebase config at the top of
+          the page.
+        </Typography>
+      </Box>
+    );
+  }
+
   const handleSubmit = (
     message: PromptInputMessage,
     event: React.FormEvent,
