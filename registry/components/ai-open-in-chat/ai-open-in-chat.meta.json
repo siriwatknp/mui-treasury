@@ -4,6 +4,7 @@
   "title": "Ai Open In Chat",
   "description": "A ai-open-in-chat item.",
   "meta": {
-    "category": "ai"
+    "category": "ai",
+    "subcategory": "elements"
   }
 }

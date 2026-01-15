@@ -4,6 +4,7 @@
   "title": "Ai Tool",
   "description": "A ai-tool item.",
   "meta": {
-    "category": "ai"
+    "category": "ai",
+    "subcategory": "elements"
   }
 }

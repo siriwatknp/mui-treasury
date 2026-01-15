@@ -1,0 +1,11 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Firebase Chat Transport",
+  "description": "Client-side ChatTransport implementation for Firebase AI Logic (Gemini) with multi-turn streaming, tool calling, and Google Search grounding",
+  "meta": {
+    "category": "ai",
+    "subcategory": "firebase",
+    "previewClassName": "h-[624px!important]"
+  }
+}

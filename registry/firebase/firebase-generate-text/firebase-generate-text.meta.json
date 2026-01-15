@@ -1,0 +1,11 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Firebase Generate Text",
+  "description": "Simple text generation component using Firebase AI (Gemini) with streaming support",
+  "meta": {
+    "category": "ai",
+    "subcategory": "firebase",
+    "previewClassName": "h-[480px!important]"
+  }
+}

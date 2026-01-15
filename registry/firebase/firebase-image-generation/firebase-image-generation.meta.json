@@ -1,0 +1,11 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:block",
+  "title": "Firebase Image Generation",
+  "description": "A chat interface for generating images using Firebase Gemini with interleaved text and image output",
+  "meta": {
+    "category": "ai",
+    "subcategory": "firebase",
+    "previewClassName": "h-[480px!important]"
+  }
+}

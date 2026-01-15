@@ -4,6 +4,7 @@
   "title": "Ai Context",
   "description": "A ai-context item.",
   "meta": {
-    "category": "ai"
+    "category": "ai",
+    "subcategory": "elements"
   }
 }

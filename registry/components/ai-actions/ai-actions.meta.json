@@ -4,6 +4,7 @@
   "title": "AI Actions",
   "description": "Interactive AI action components",
   "meta": {
-    "category": "ai"
+    "category": "ai",
+    "subcategory": "elements"
   }
 }

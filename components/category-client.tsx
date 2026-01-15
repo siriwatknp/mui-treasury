@@ -6,7 +6,7 @@ import { Suspense, useRef, useState } from "react";
 import { RegistryItem } from "@/lib/registry";
 import TagFilter from "@/components/tag-filter";
 import { OpenInV0Button } from "@/components/open-in-v0-button";
-import { Copy, Check, Terminal } from "lucide-react";
+import { Copy, Check, Terminal, RotateCcw } from "lucide-react";
 import { useColorScheme } from "@mui/material/styles";
 import {
   ResizablePanelGroup,
@@ -32,6 +32,7 @@ interface CategoryClientProps {
   regularItems: RegistryItem[];
   breadcrumb?: Array<{ label: string; href: string }>;
   subcategoryData?: SubcategoryData[];
+  headerContent?: React.ReactNode;
 }
 
 interface ComponentPreviewContentProps {
@@ -126,6 +127,7 @@ ComponentPreviewContent.displayName = "ComponentPreviewContent";
 function ComponentPreview({ item }: { item: RegistryItem }) {
   // Use explicit previewMode from registry metadata
   const needsIframe = item.meta.previewMode === "iframe";
+  const [previewKey, setPreviewKey] = useState(0);
   const [copiedIndex, setCopiedIndex] = useState<number>(-1);
   const [activeTab, setActiveTab] = useState<string>("preview");
   const [activeFileIndex, setActiveFileIndex] = useState<number>(0);
@@ -193,7 +195,11 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
     return (
       <ResizablePanelGroup direction="horizontal" className="w-full h-full">
         <ResizablePanel ref={panelRef} defaultSize={100} minSize={30}>
-          <ComponentPreviewContent item={item} needsIframe={needsIframe} />
+          <ComponentPreviewContent
+            key={previewKey}
+            item={item}
+            needsIframe={needsIframe}
+          />
         </ResizablePanel>
         <ResizableHandle
           withHandle
@@ -206,7 +212,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
         <ResizablePanel defaultSize={0} minSize={0} maxSize={70} />
       </ResizablePanelGroup>
     );
-  }, [item, needsIframe, panelRef]);
+  }, [item, needsIframe, panelRef, previewKey]);
 
   const renderFileContent = React.useCallback(
     (file: RegistryItem["files"][0], index: number, showHeader: boolean) => {
@@ -306,6 +312,15 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
           <TabsTrigger value="code">Code</TabsTrigger>
         </TabsList>
         <div className="flex gap-2">
+          <Button
+            variant="outline"
+            size="icon"
+            className="h-8 w-8"
+            onClick={() => setPreviewKey((k) => k + 1)}
+            title="Reset preview"
+          >
+            <RotateCcw className="h-3.5 w-3.5" />
+          </Button>
           <Button
             variant="outline"
             size="sm"
@@ -425,9 +440,16 @@ function MetaOnlyItem({ item }: { item: RegistryItem }) {
   );
 }
 
+function extractHeight(previewClassName?: string): string | undefined {
+  if (!previewClassName) return undefined;
+  const match = previewClassName.match(/(?:min-)?h-\[([^\]]+)\]/);
+  return match ? match[1].replace("!important", "") : undefined;
+}
+
 function LazyComponentPreview({ item }: { item: RegistryItem }) {
   const [isVisible, setIsVisible] = React.useState(false);
   const ref = React.useRef<HTMLDivElement>(null);
+  const previewHeight = extractHeight(item.meta.previewClassName);
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -449,6 +471,11 @@ function LazyComponentPreview({ item }: { item: RegistryItem }) {
     return () => observer.disconnect();
   }, []);
 
+  const skeletonHeight = previewHeight || "306px";
+  const containerMinHeight = previewHeight
+    ? `calc(${previewHeight} + 54px)`
+    : "360px";
+
   const loadingSkeleton = (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
@@ -458,12 +485,15 @@ function LazyComponentPreview({ item }: { item: RegistryItem }) {
           <div className="animate-pulse bg-muted rounded h-[32px] w-[92px]"></div>
         </div>
       </div>
-      <div className="animate-pulse bg-muted rounded-lg h-[306px] w-full"></div>
+      <div
+        className="animate-pulse bg-muted rounded-lg w-full"
+        style={{ height: skeletonHeight }}
+      ></div>
     </div>
   );
 
   return (
-    <div ref={ref} className="min-h-[360px]">
+    <div ref={ref} style={{ minHeight: containerMinHeight }}>
       {isVisible ? (
         <Suspense fallback={loadingSkeleton}>
           <ComponentPreview item={item} />
@@ -483,6 +513,7 @@ export default function CategoryClient({
   regularItems,
   breadcrumb,
   subcategoryData,
+  headerContent,
 }: CategoryClientProps) {
   return (
     <div className="jun-content">
@@ -515,6 +546,9 @@ export default function CategoryClient({
             )}
           </p>
         </div>
+
+        {/* Custom Header Content */}
+        {headerContent}
 
         {/* Subcategory Cards Grid */}
         {subcategoryData && subcategoryData.length > 0 && (

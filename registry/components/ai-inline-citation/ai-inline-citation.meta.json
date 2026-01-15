@@ -4,6 +4,7 @@
   "title": "Ai Inline Citation",
   "description": "A ai-inline-citation item.",
   "meta": {
-    "category": "ai"
+    "category": "ai",
+    "subcategory": "elements"
   }
 }

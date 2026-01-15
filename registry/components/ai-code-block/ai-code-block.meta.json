@@ -4,6 +4,7 @@
   "title": "Ai Code Block",
   "description": "A ai-code-block item.",
   "meta": {
-    "category": "ai"
+    "category": "ai",
+    "subcategory": "elements"
   }
 }

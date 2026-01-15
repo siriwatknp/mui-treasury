@@ -4,6 +4,7 @@
   "title": "AI Artifact",
   "description": "A container component for displaying artifacts with header, actions, and content areas",
   "meta": {
-    "category": "ai"
+    "category": "ai",
+    "subcategory": "elements"
   }
 }

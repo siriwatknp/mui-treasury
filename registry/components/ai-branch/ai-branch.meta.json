@@ -4,6 +4,7 @@
   "title": "Ai Branch",
   "description": "A ai-branch item.",
   "meta": {
-    "category": "ai"
+    "category": "ai",
+    "subcategory": "elements"
   }
 }

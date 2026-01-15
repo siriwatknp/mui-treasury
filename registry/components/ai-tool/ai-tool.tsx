@@ -29,7 +29,6 @@ export const Tool = memo(({ children, sx, defaultOpen = false }: ToolProps) => {
   return (
     <Box
       sx={{
-        mb: 2,
         width: "100%",
         borderRadius: 1,
         border: 1,

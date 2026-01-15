@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 
-import { FirebaseChatTransport } from "./firebase-chat-transport";
+import { FirebaseChatTransport } from "@/registry/firebase/firebase-chat-transport";
 import type { GroundingMetadata } from "firebase/ai";
-import { app } from "./firebase-setup";
+import { app } from "@/lib/firebase-setup";
 import {
   Action,
   Actions,
@@ -71,8 +71,7 @@ export default function AIAssistantPage() {
   const transport = React.useMemo(
     () =>
       new FirebaseChatTransport({
-        firebaseApp: app,
-        // enableGoogleSearch: true,
+        firebaseApp: app!,
         modelParams: {
           model: "gemini-2.5-flash-lite",
           systemInstruction: `You are a useful AI assistant that answers user general questions.
@@ -82,7 +81,6 @@ If you do not know the answer, just say you do not know.
 Do not try to make up an answer.
           `,
           generationConfig: {
-            // responseModalities: [ResponseModality.TEXT, ResponseModality.IMAGE],
             thinkingConfig: {
               includeThoughts: true,
               thinkingBudget: 1024,
@@ -121,7 +119,7 @@ Do not try to make up an answer.
         },
         stopWhen: stepCountIs(3),
       }),
-    []
+    [],
   );
 
   const { messages, status, error, sendMessage, stop, regenerate } = useChat<
@@ -133,7 +131,7 @@ Do not try to make up an answer.
 
   const handleSubmit = (
     message: PromptInputMessage,
-    event: React.FormEvent
+    event: React.FormEvent,
   ) => {
     event.preventDefault();
     const hasText = message.text?.trim();
@@ -160,7 +158,7 @@ Do not try to make up an answer.
       toast.error(
         `Failed to copy to clipboard (${
           error instanceof Error ? error.message : "Unknown error"
-        })`
+        })`,
       );
     }
   };

@@ -257,7 +257,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
     this.stopConditions = Array.isArray(stopWhen) ? stopWhen : [stopWhen];
 
     const functionDeclarations = Object.entries(this.tools).map(
-      ([name, tool]) => this.convertToolToFunctionDeclaration(name, tool)
+      ([name, tool]) => this.convertToolToFunctionDeclaration(name, tool),
     );
 
     // Build tools array with function declarations and/or Google Search
@@ -278,7 +278,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
   }
 
   async sendMessages(
-    options: Parameters<ChatTransport<UI_MESSAGE>["sendMessages"]>[0]
+    options: Parameters<ChatTransport<UI_MESSAGE>["sendMessages"]>[0],
   ): Promise<ReadableStream<UIMessageChunk>> {
     const { chatId, messages, abortSignal } = options;
 
@@ -333,14 +333,13 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
             if (pendingFunctionResponses) {
               // Send function responses from previous iteration
               result = await this.chatSession.sendMessageStream(
-                pendingFunctionResponses
+                pendingFunctionResponses,
               );
               pendingFunctionResponses = null;
             } else {
               // Send initial user message
-              result = await this.chatSession.sendMessageStream(
-                lastUserMessage
-              );
+              result =
+                await this.chatSession.sendMessageStream(lastUserMessage);
             }
 
             // Emit start chunk after connection established (once)
@@ -576,7 +575,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
                 // Execute tools and prepare responses for next iteration
                 pendingFunctionResponses = await this.executeTools(
                   functionCalls,
-                  controller
+                  controller,
                 );
               }
             }
@@ -596,7 +595,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
   }
 
   async reconnectToStream(
-    _: Parameters<ChatTransport<UI_MESSAGE>["reconnectToStream"]>[0]
+    _: Parameters<ChatTransport<UI_MESSAGE>["reconnectToStream"]>[0],
   ): Promise<ReadableStream<UIMessageChunk> | null> {
     // Client-side cannot reconnect to streams
     // Would need server-side persistence
@@ -616,7 +615,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
    * - File parts: converted to inlineData (data URLs) or fileData (hosted URLs)
    */
   private convertMessagesToFirebaseContent(
-    messages: UI_MESSAGE[]
+    messages: UI_MESSAGE[],
   ): Array<{ role: "user" | "model"; parts: Part[] }> {
     return messages
       .map((message) => ({
@@ -630,7 +629,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
               return [this.convertFileToFirebasePart(part.url, part.mediaType)];
             }
             return [];
-          }
+          },
         ),
       }))
       .filter((content) => content.parts.length > 0);
@@ -643,7 +642,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
    * Throws if last message is not from user.
    */
   private async extractLastUserMessage(
-    messages: UI_MESSAGE[]
+    messages: UI_MESSAGE[],
   ): Promise<Part[]> {
     if (messages.length === 0) {
       throw new Error("Cannot send empty message history");
@@ -653,7 +652,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
 
     if (lastMessage.role !== "user") {
       throw new Error(
-        "Last message must be from user. Firebase requires user message to generate response."
+        "Last message must be from user. Firebase requires user message to generate response.",
       );
     }
 
@@ -669,7 +668,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
           return [this.convertFileToFirebasePart(part.url, part.mediaType)];
         }
         return [];
-      }
+      },
     );
 
     if (parts.length === 0) {
@@ -683,7 +682,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
    * Map Firebase finish reason to AI SDK format.
    */
   private mapFinishReason(
-    finishReason?: string
+    finishReason?: string,
   ): "stop" | "length" | "content-filter" | "other" {
     switch (finishReason) {
       case "STOP":
@@ -703,7 +702,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
    */
   private async executeTools(
     functionCalls: FunctionCall[],
-    controller: ReadableStreamDefaultController<UIMessageChunk>
+    controller: ReadableStreamDefaultController<UIMessageChunk>,
   ): Promise<FunctionResponsePart[]> {
     const results: FunctionResponsePart[] = [];
 
@@ -785,7 +784,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
    */
   private convertToolToFunctionDeclaration(
     toolName: string,
-    tool: Tool
+    tool: Tool,
   ): FunctionDeclaration {
     return {
       name: toolName,
@@ -800,7 +799,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
    * Strips fields not supported by Gemini's OpenAPI Schema subset.
    */
   private convertSchemaToFirebase(
-    schema: Tool["inputSchema"]
+    schema: Tool["inputSchema"],
   ): FunctionDeclaration["parameters"] {
     let jsonSchema: Record<string, unknown>;
     if (schema !== null && typeof schema === "object" && "_zod" in schema) {
@@ -813,7 +812,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
       jsonSchema = schema as Record<string, unknown>;
     }
     return this.stripUnsupportedSchemaFields(
-      jsonSchema
+      jsonSchema,
     ) as FunctionDeclaration["parameters"];
   }
 
@@ -924,7 +923,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
    */
   private convertFileToFirebasePart(
     url: string,
-    mimeType: string
+    mimeType: string,
   ): InlineDataPart | FileDataPart {
     // YouTube URL: use fileData with video/*
     if (this.isYouTubeUrl(url)) {
@@ -941,7 +940,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
       const base64Match = url.match(/^data:[^;]+;base64,(.+)$/);
       if (!base64Match) {
         throw new Error(
-          "Invalid data URL format. Expected base64 encoded data URL."
+          "Invalid data URL format. Expected base64 encoded data URL.",
         );
       }
       return {
@@ -965,8 +964,8 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
     throw new Error(
       `Unsupported URL format: ${url.substring(
         0,
-        50
-      )}. Expected data: or http(s): URL.`
+        50,
+      )}. Expected data: or http(s): URL.`,
     );
   }
 
@@ -1003,7 +1002,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
    * Includes usageMetadata when available.
    */
   private extractProviderMetadata(
-    chunk: EnhancedGenerateContentResponse
+    chunk: EnhancedGenerateContentResponse,
   ): ProviderMetadata | undefined {
     if (chunk.usageMetadata) {
       return { firebase: { usageMetadata: chunk.usageMetadata } };

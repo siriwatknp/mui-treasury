@@ -20,7 +20,7 @@ import {
 export function extractRegistryDependencies(
   content: string,
   currentFilePath: string,
-  itemDir: string
+  itemDir: string,
 ): string[] {
   const registryDeps = new Set<string>();
   const baseUrl = getRegistryBaseUrl();
@@ -79,7 +79,7 @@ export function extractRegistryDependencies(
 
       // Extract the item name
       const firstDir = parts[0];
-      const typeRegex = /^(hooks|ui|components|blocks|themes)$/;
+      const typeRegex = /^(hooks|ui|components|blocks|themes|firebase)$/;
 
       if (typeRegex.test(firstDir) && parts.length >= 2) {
         const itemName = parts[1];
@@ -97,7 +97,7 @@ export function extractRegistryDependencies(
       // Resolve the full path
       let fullPath = path.join(
         registryPath,
-        registryPathStr.replace(/\//g, path.sep)
+        registryPathStr.replace(/\//g, path.sep),
       );
 
       // Handle .ts/.tsx extensions
@@ -121,7 +121,7 @@ export function extractRegistryDependencies(
 
       // Extract the item name from the registry path
       const registryMatch = registryPathStr.match(
-        /^(hooks|ui|components|blocks|themes)\/([^/]+)/
+        /^(hooks|ui|components|blocks|themes|firebase)\/([^/]+)/,
       );
       if (registryMatch) {
         const itemName = registryMatch[2];
@@ -138,7 +138,7 @@ export function processRegistryFile(
   title?: string,
   description?: string,
   category?: string,
-  tags?: string[]
+  tags?: string[],
 ): { metadata: RegistryMeta; registryJson: RegistryJson } {
   const { path: filePath, name } = fileInfo;
   const OUTPUT_PATH = path.join(process.cwd(), "public", "r", `${name}.json`);
@@ -165,7 +165,7 @@ export function processRegistryFile(
       const registryDependencies = extractRegistryDependencies(
         content,
         fileData.path,
-        itemDir
+        itemDir,
       );
 
       // Add to overall dependencies
@@ -181,7 +181,7 @@ export function processRegistryFile(
         // e.g., "themes/mui-treasury/components/alert.ts" -> "src/mui-treasury/theme/components/alert.ts"
         targetPath = targetPath.replace(
           /^themes\/[^\/]+\//,
-          "src/mui-treasury/theme/"
+          "src/mui-treasury/theme/",
         );
       } else {
         // For non-theme files, just prepend src/mui-treasury/
@@ -198,7 +198,7 @@ export function processRegistryFile(
       console.warn(
         `Warning: Could not read file ${fileData.path}: ${
           (error as Error).message
-        }`
+        }`,
       );
     }
   }
@@ -231,7 +231,7 @@ export function processRegistryFile(
         if (defaultExportName) {
           // Add named default export
           exportStatements.push(
-            `export { default as ${defaultExportName} } from './${fileName}';`
+            `export { default as ${defaultExportName} } from './${fileName}';`,
           );
         }
       });
@@ -257,7 +257,7 @@ export function processRegistryFile(
       console.warn(
         `Warning: Could not parse existing meta.json file: ${
           (error as Error).message
-        }`
+        }`,
       );
       metaExists = false; // Treat corrupt file as non-existent
     }
@@ -344,7 +344,7 @@ export function processRegistryFile(
       process.cwd(),
       "public",
       "screenshots",
-      `${name}.png`
+      `${name}.png`,
     );
     const hasScreenshot = fs.existsSync(screenshotPath);
 
@@ -403,7 +403,7 @@ export function processRegistryFile(
     process.cwd(),
     "public",
     "r",
-    `${name}.v0.json`
+    `${name}.v0.json`,
   );
   const v0Json = JSON.parse(JSON.stringify(registryJson)); // Deep clone
 
@@ -416,7 +416,7 @@ export function processRegistryFile(
       (dep: string) => {
         // Check if the dependency matches any registry URL pattern
         const registryMatch = dep.match(
-          /^(https?:\/\/[^\/]+)\/r\/([^\/]+)\.json$/
+          /^(https?:\/\/[^\/]+)\/r\/([^\/]+)\.json$/,
         );
         if (registryMatch) {
           const baseUrl = registryMatch[1];
@@ -425,7 +425,7 @@ export function processRegistryFile(
           return `${baseUrl}/r/${itemName}.v0.json`;
         }
         return dep;
-      }
+      },
     );
   }
 
@@ -464,7 +464,7 @@ export function generateRegistryForItem(
   title?: string,
   description?: string,
   category?: string,
-  tags?: string[]
+  tags?: string[],
 ): void {
   const matches = findMatchingFiles(name);
 
@@ -483,7 +483,7 @@ export function generateRegistryForItem(
 
   matches.forEach((match, index) => {
     console.log(
-      `\n[${index + 1}/${matches.length}] Processing: ${match.relativePath}`
+      `\n[${index + 1}/${matches.length}] Processing: ${match.relativePath}`,
     );
     processRegistryFile(match, title, description, category, tags);
   });
@@ -495,7 +495,7 @@ export function processAllRegistries(): void {
 
   allItems.forEach((itemInfo, index) => {
     console.log(
-      `\n[${index + 1}/${allItems.length}] Processing: ${itemInfo.name}`
+      `\n[${index + 1}/${allItems.length}] Processing: ${itemInfo.name}`,
     );
     processRegistryFile(itemInfo);
   });

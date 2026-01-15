@@ -4,6 +4,7 @@
   "title": "Ai Response",
   "description": "A ai-response item.",
   "meta": {
-    "category": "ai"
+    "category": "ai",
+    "subcategory": "elements"
   }
 }
