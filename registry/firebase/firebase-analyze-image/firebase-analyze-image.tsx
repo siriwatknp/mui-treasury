@@ -164,7 +164,12 @@ Always respond in a clear and organized manner using Markdown formatting.`,
                 }}
               >
                 <ImageIcon size={48} />
-                <Typography>Upload an image to analyze</Typography>
+                <Typography variant="h4" sx={{ fontWeight: 500 }}>
+                  Analyze Image
+                </Typography>
+                <Typography color="text.secondary">
+                  Upload an image to analyze
+                </Typography>
               </Box>
             ) : (
               <Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -177,7 +182,7 @@ Always respond in a clear and organized manner using Markdown formatting.`,
                   return (
                     <Message key={message.id} from={message.role}>
                       <MessageAvatar
-                        name={message.role === "user" ? "User" : "AI"}
+                        name={message.role === "user" ? "You" : "AI"}
                       />
                       <MessageContent variant="flat">
                         {message.parts?.map((part, index: number) => {
@@ -244,7 +249,7 @@ Always respond in a clear and organized manner using Markdown formatting.`,
                       <Box
                         sx={{ display: "flex", alignItems: "center", gap: 1 }}
                       >
-                        <CircularProgress size="sm" />
+                        <CircularProgress size={20} />
                         <Typography sx={{ color: "text.secondary" }}>
                           Analyzing image...
                         </Typography>
@@ -287,21 +292,19 @@ Always respond in a clear and organized manner using Markdown formatting.`,
         </Conversation>
       </Box>
 
-      <Box>
-        {showSuggestions && (
-          <Box sx={{ mb: 2 }}>
-            <Suggestions>
-              {SUGGESTED_PROMPTS.map((prompt, index) => (
-                <Suggestion
-                  key={index}
-                  suggestion={prompt}
-                  onClick={handleSuggestionClick}
-                />
-              ))}
-            </Suggestions>
-          </Box>
-        )}
-      </Box>
+      {showSuggestions && (
+        <Box sx={{ mb: 2 }}>
+          <Suggestions>
+            {SUGGESTED_PROMPTS.map((prompt, index) => (
+              <Suggestion
+                key={index}
+                suggestion={prompt}
+                onClick={handleSuggestionClick}
+              />
+            ))}
+          </Suggestions>
+        </Box>
+      )}
 
       <PromptInput onSubmit={handleSubmit} accept="image/*" multiple>
         <PromptInputAttachments>

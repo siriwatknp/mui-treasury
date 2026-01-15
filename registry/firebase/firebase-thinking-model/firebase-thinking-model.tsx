@@ -131,6 +131,7 @@ If you don't know the answer, say so honestly.`,
         display: "flex",
         flexDirection: "column",
         maxWidth: 768,
+        mx: "auto",
       }}
     >
       <Box
@@ -152,7 +153,7 @@ If you don't know the answer, say so honestly.`,
                   justifyContent: "center",
                   flexDirection: "column",
                   gap: 2,
-                  color: "text.secondary",
+                  color: "text.tertiary",
                 }}
               >
                 <Bot size={48} />
@@ -242,7 +243,7 @@ If you don't know the answer, say so honestly.`,
                       <Box
                         sx={{ display: "flex", alignItems: "center", gap: 1 }}
                       >
-                        <CircularProgress size={16} />
+                        <CircularProgress size={20} />
                         <Typography color="text.secondary">
                           Thinking...
                         </Typography>
@@ -255,7 +256,7 @@ If you don't know the answer, say so honestly.`,
                   <Message from="assistant">
                     <MessageAvatar name="AI" />
                     <MessageContent variant="flat">
-                      <Typography color="error.main">
+                      <Typography sx={{ color: "error.text" }}>
                         {error.message ||
                           "An error occurred. Please try again."}
                       </Typography>

@@ -69,6 +69,7 @@ export default function FirebaseGenerateText() {
         display: "flex",
         flexDirection: "column",
         maxWidth: 768,
+        mx: "auto",
         width: "100%",
         height: "100%",
       }}
@@ -96,14 +97,19 @@ export default function FirebaseGenerateText() {
                 }}
               >
                 <Bot size={48} />
-                <Typography>Enter a prompt to generate text</Typography>
+                <Typography variant="h4" sx={{ fontWeight: 500 }}>
+                  Generate Text
+                </Typography>
+                <Typography color="text.secondary">
+                  Enter a prompt to generate text
+                </Typography>
               </Box>
             ) : (
               <Box sx={{ display: "flex", flexDirection: "column" }}>
                 {messages.map((message) => (
                   <Message key={message.id} from={message.role}>
                     <MessageAvatar
-                      name={message.role === "user" ? "User" : "AI Assistant"}
+                      name={message.role === "user" ? "You" : "AI"}
                     />
                     <MessageContent variant="flat">
                       {message.parts?.map((part, index) => {
@@ -135,7 +141,7 @@ export default function FirebaseGenerateText() {
                       <Box
                         sx={{ display: "flex", alignItems: "center", gap: 1 }}
                       >
-                        <CircularProgress size={16} />
+                        <CircularProgress size={20} />
                         <Typography sx={{ color: "text.secondary" }}>
                           Thinking...
                         </Typography>
@@ -190,7 +196,6 @@ export default function FirebaseGenerateText() {
           />
         </PromptInputBody>
         <PromptInputToolbar>
-          <Box />
           {status === "streaming" ? (
             <Button
               variant="outlined"

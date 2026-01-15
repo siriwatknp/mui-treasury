@@ -183,6 +183,7 @@ Always respond in a concise and clear manner using Markdown format.`,
         display: "flex",
         flexDirection: "column",
         maxWidth: 768,
+        mx: "auto",
       }}
     >
       <Box
@@ -208,7 +209,12 @@ Always respond in a concise and clear manner using Markdown format.`,
                 }}
               >
                 <Bot size={48} />
-                <Typography>Ask me about weather or time</Typography>
+                <Typography variant="h4" sx={{ fontWeight: 500 }}>
+                  Tool Calling
+                </Typography>
+                <Typography color="text.secondary">
+                  Ask me about weather or time
+                </Typography>
               </Box>
             ) : (
               <Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -221,7 +227,7 @@ Always respond in a concise and clear manner using Markdown format.`,
                   return (
                     <Message key={message.id} from={message.role}>
                       <MessageAvatar
-                        name={message.role === "user" ? "User" : "AI Assistant"}
+                        name={message.role === "user" ? "You" : "AI"}
                       />
                       <MessageContent variant="flat">
                         {message.parts?.map((part, index: number) => {
@@ -295,7 +301,7 @@ Always respond in a concise and clear manner using Markdown format.`,
                       <Box
                         sx={{ display: "flex", alignItems: "center", gap: 1 }}
                       >
-                        <CircularProgress size="sm" />
+                        <CircularProgress size={20} />
                         <Typography sx={{ color: "text.secondary" }}>
                           Thinking...
                         </Typography>
@@ -338,21 +344,19 @@ Always respond in a concise and clear manner using Markdown format.`,
         </Conversation>
       </Box>
 
-      <Box>
-        {showSuggestions && (
-          <Box sx={{ mb: 2 }}>
-            <Suggestions>
-              {SUGGESTED_PROMPTS.map((prompt, index) => (
-                <Suggestion
-                  key={index}
-                  suggestion={prompt}
-                  onClick={handleSuggestionClick}
-                />
-              ))}
-            </Suggestions>
-          </Box>
-        )}
-      </Box>
+      {showSuggestions && (
+        <Box sx={{ mb: 2 }}>
+          <Suggestions>
+            {SUGGESTED_PROMPTS.map((prompt, index) => (
+              <Suggestion
+                key={index}
+                suggestion={prompt}
+                onClick={handleSuggestionClick}
+              />
+            ))}
+          </Suggestions>
+        </Box>
+      )}
 
       <PromptInput onSubmit={handleSubmit}>
         <PromptInputBody>
@@ -364,7 +368,6 @@ Always respond in a concise and clear manner using Markdown format.`,
           />
         </PromptInputBody>
         <PromptInputToolbar>
-          <Box sx={{ flex: 1 }} />
           {status === "streaming" ? (
             <Button
               variant="outlined"

@@ -129,6 +129,7 @@ Format responses in Markdown unless asked otherwise.`,
         display: "flex",
         flexDirection: "column",
         maxWidth: 768,
+        mx: "auto",
       }}
     >
       <Box
@@ -150,7 +151,7 @@ Format responses in Markdown unless asked otherwise.`,
                   justifyContent: "center",
                   flexDirection: "column",
                   gap: 2,
-                  color: "text.secondary",
+                  color: "text.tertiary",
                 }}
               >
                 <Box sx={{ position: "relative" }}>
@@ -245,7 +246,7 @@ Format responses in Markdown unless asked otherwise.`,
                       <Box
                         sx={{ display: "flex", alignItems: "center", gap: 1 }}
                       >
-                        <CircularProgress size={16} />
+                        <CircularProgress size={20} />
                         <Typography color="text.secondary">
                           Searching...
                         </Typography>
@@ -258,7 +259,7 @@ Format responses in Markdown unless asked otherwise.`,
                   <Message from="assistant">
                     <MessageAvatar name="AI" />
                     <MessageContent variant="flat">
-                      <Typography color="error.main">
+                      <Typography sx={{ color: "error.text" }}>
                         {error.message ||
                           "An error occurred. Please try again."}
                       </Typography>
