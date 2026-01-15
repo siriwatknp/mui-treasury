@@ -127,6 +127,7 @@ ComponentPreviewContent.displayName = "ComponentPreviewContent";
 function ComponentPreview({ item }: { item: RegistryItem }) {
   // Use explicit previewMode from registry metadata
   const needsIframe = item.meta.previewMode === "iframe";
+  const previewHeight = extractHeight(item.meta.previewClassName);
   const [previewKey, setPreviewKey] = useState(0);
   const [copiedIndex, setCopiedIndex] = useState<number>(-1);
   const [activeTab, setActiveTab] = useState<string>("preview");
@@ -216,12 +217,16 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
 
   const renderFileContent = React.useCallback(
     (file: RegistryItem["files"][0], index: number, showHeader: boolean) => {
+      const codeHeight = needsIframe
+        ? undefined
+        : previewHeight
+          ? previewHeight
+          : "400px";
       return (
         <div
           key={file.path}
-          className={
-            needsIframe ? "aspect-video max-w-full min-h-[80vh]" : "h-[400px]"
-          }
+          className={needsIframe ? "aspect-video max-w-full min-h-[80vh]" : ""}
+          style={codeHeight ? { height: codeHeight } : undefined}
         >
           {showHeader && (
             <div className="flex items-center justify-between bg-muted px-3 py-2 text-sm">
@@ -295,6 +300,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
       handleCopy,
       mode,
       needsIframe,
+      previewHeight,
       SyntaxHighlighter,
       systemMode,
     ],
