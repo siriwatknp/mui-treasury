@@ -10,6 +10,7 @@ import {
   CollapsibleContent,
 } from "@/components/ui/collapsible";
 import { RegistryItem } from "@/lib/registry";
+import { orderItems, orderSubcategories } from "@/lib/registry-order";
 
 interface CategorySidebarProps {
   allCategoryItems: RegistryItem[];
@@ -205,9 +206,13 @@ export function CategorySidebar({
       {/* Collapsible subcategory groups */}
       {groups.size > 0 && (
         <div className="mb-2 pb-2 border-b">
-          {Array.from(groups)
-            .sort(([a], [b]) => a.localeCompare(b))
-            .map(([subcategory, groupItems]) => {
+          {orderSubcategories(Array.from(groups.keys()), categoryName).map(
+            (subcategory) => {
+              const items = groups.get(subcategory)!;
+              const groupItems = orderItems(
+                items,
+                `${categoryName}/${subcategory}`,
+              );
               const isOpen = openGroups.has(subcategory);
               const label = subcategory
                 .split("-")
@@ -269,7 +274,8 @@ export function CategorySidebar({
                   </CollapsibleContent>
                 </Collapsible>
               );
-            })}
+            },
+          )}
         </div>
       )}
 

@@ -11,6 +11,7 @@ import { PreviewComponent } from "@/components/preview-page";
 import { DynamicComponentLoader } from "@/components/dynamic-component-loader";
 import CategoryClient from "@/components/category-client";
 import { FirebaseConfigForm } from "@/components/firebase-config-form";
+import { orderItems } from "@/lib/registry-order";
 
 interface SlugPageProps {
   params: Promise<{ category: string; slug: string[] }>;
@@ -87,8 +88,9 @@ export default async function SlugPage({
       const metaOnlyItems = filteredItems.filter(
         (item) => item.files.length === 0,
       );
-      const regularItems = filteredItems.filter(
-        (item) => item.files.length > 0,
+      const regularItems = orderItems(
+        filteredItems.filter((item) => item.files.length > 0),
+        `${category}/${param}`,
       );
       const availableTags = getTags(category);
 
