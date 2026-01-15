@@ -132,4 +132,13 @@ export const datePickerTheme: ThemeComponents = {
       }),
     },
   },
+  MuiPickersSectionList: {
+    styleOverrides: {
+      root: {
+        "&.MuiPickersInputBase-sectionsContainer": {
+          opacity: 1,
+        },
+      },
+    },
+  },
 };

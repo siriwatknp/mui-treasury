@@ -4,6 +4,7 @@
   "title": "Ai Image",
   "description": "A ai-image item.",
   "meta": {
-    "category": "ai"
+    "category": "ai",
+    "subcategory": "elements"
   }
 }

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:block",
+  "title": "Firebase Tool Calling",
+  "description": "A chat interface demonstrating Firebase AI tool calling with weather and time tools",
+  "meta": {
+    "category": "ai",
+    "subcategory": "firebase",
+    "previewClassName": "h-[480px!important]"
+  }
+}

@@ -115,7 +115,7 @@ export const Reasoning = memo(
       <ReasoningContext.Provider
         value={{ isStreaming, isOpen, setIsOpen, duration, handleToggle }}
       >
-        <Box sx={{ mb: 2, ...sx }}>{children}</Box>
+        <Box sx={sx}>{children}</Box>
       </ReasoningContext.Provider>
     );
   },

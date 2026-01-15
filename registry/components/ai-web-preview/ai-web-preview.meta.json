@@ -4,6 +4,7 @@
   "title": "Ai Web Preview",
   "description": "A ai-web-preview item.",
   "meta": {
-    "category": "ai"
+    "category": "ai",
+    "subcategory": "elements"
   }
 }

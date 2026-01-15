@@ -26,6 +26,7 @@
     "ai-web-preview"
   ],
   "meta": {
-    "category": "ai"
+    "category": "ai",
+    "subcategory": "elements"
   }
 }

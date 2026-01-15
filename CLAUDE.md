@@ -150,14 +150,12 @@ You follow the project's UI and styling rules with unwavering discipline:
 ### Visual Accuracy Methodology
 
 1. **Spacing Precision**:
-
    - Use 0.5 step increments (0.5, 1, 1.5, 2, etc.)
    - Text/icon spacing: 0.5-1.5 based on font size
    - Component spacing: 1-2 based on component size
    - Never use arbitrary decimals like 1.2
 
 2. **Image & Media Handling**:
-
    - Use `<Box component="img" />` with proper aspectRatio
    - Implement placeholders with correct dimensions (e.g., https://placehold.co/600x400) WITHOUT using any query params
    - Never use fake divs to simulate images
@@ -270,26 +268,22 @@ Then, you can adjust the spacing/padding of the chart to match the design analys
 ### TextField and Form Best Practices
 
 1. **Label Integration**:
-
    - **ALWAYS use built-in `label` prop** instead of separate Typography components
    - Ensures proper accessibility and screen reader support
    - Maintains semantic HTML structure
 
 2. **Modern API Usage**:
-
    - Use `slotProps` instead of deprecated `InputProps`, `InputLabelProps`
    - Proper slot configuration: `slotProps.input`, `slotProps.inputLabel`, `slotProps.htmlInput`
    - Never use deprecated props that trigger TypeScript warnings
 
 3. **Form State Management**:
-
    - Implement controlled components with proper state handling
    - Add real-time validation with error states
    - Clear errors on user interaction
    - Use proper TypeScript types for form data
 
 4. **Accessibility Requirements**:
-
    - Include `required` prop for mandatory fields
    - Provide `error` and `helperText` for validation feedback
    - Ensure proper ARIA attributes
@@ -338,26 +332,22 @@ Common use cases:
 ### TextField and Form Best Practices
 
 1. **Label Integration**:
-
    - **ALWAYS use built-in `label` prop** instead of separate Typography components
    - Ensures proper accessibility and screen reader support
    - Maintains semantic HTML structure
 
 2. **Modern API Usage**:
-
    - Use `slotProps` instead of deprecated `InputProps`, `InputLabelProps`
    - Proper slot configuration: `slotProps.input`, `slotProps.inputLabel`, `slotProps.htmlInput`
    - Never use deprecated props that trigger TypeScript warnings
 
 3. **Form State Management**:
-
    - Implement controlled components with proper state handling
    - Add real-time validation with error states
    - Clear errors on user interaction
    - Use proper TypeScript types for form data
 
 4. **Accessibility Requirements**:
-
    - Include `required` prop for mandatory fields
    - Provide `error` and `helperText` for validation feedback
    - Ensure proper ARIA attributes
@@ -614,20 +604,17 @@ You are a Web Accessibility Expert with experience auditing industry-leading web
 ### Core Assessment Areas
 
 1. **MUI Accessibility Baseline**:
-
    - MUI components include built-in keyboard navigation, focus management, and ARIA attributes
    - Identify when additional ARIA is needed (aria-describedby for forms, aria-live for dynamic content)
    - Use MUI's accessibility props (Button's aria-label, TextField's helperText)
    - Recognize when composing MUI components needs extra accessibility considerations
 
 2. **Semantic Structure**:
-
    - Card selections: use RadioGroup/Radio for single choice, Checkbox/FormGroup for multi-select
    - Clickable cards: primary action on title with CSS ::after for click area extension
    - Navigation: use appropriate landmarks (AppBar, Drawer components)
 
 3. **Keyboard & Screen Reader**:
-
    - Logical tab order and focus indicators
    - Focus trapping for modals/overlays
    - Meaningful labels and heading hierarchy
@@ -848,3 +835,102 @@ The theme uses MUI's default spacing with a base unit of 8px, allowing consisten
 - **24 elevation levels**: Subtle, layered shadows with low opacity (0.05 to 0.26) creating depth without heaviness
 - **Progressive scaling**: Shadows increase gradually in blur, spread, and offset as elevation increases
 - **Dual-layer approach**: Most shadows combine two layers for more realistic depth perception
+
+## Firebase Chat Demo Guide
+
+When building a Firebase chat demo, use `FirebaseChatTransport` with Vercel AI SDK's `useChat` hook.
+
+### Folder Structure
+
+```
+registry/blocks/<demo-name>/
+├── <demo-name>.tsx           # Main component
+└── <demo-name>.meta.json     # Registry metadata
+```
+
+### Files to Create
+
+1. **Main component** (`<demo-name>.tsx`): The chat UI implementation
+2. **Meta file** (`<demo-name>.meta.json`): Registry configuration
+
+### meta.json Format
+
+```json
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:block",
+  "title": "Firebase Chat Demo",
+  "description": "A chat interface powered by Firebase AI",
+  "meta": {
+    "category": "ai",
+    "subcategory": "firebase"
+  }
+}
+```
+
+### Default Model
+
+Use `gemini-2.5-flash` as the default model for Firebase chat demos.
+
+### Container Styles
+
+```tsx
+<Box
+  sx={{
+    height: "100%",
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    maxWidth: 768,
+  }}
+>
+  {/* Chat content */}
+</Box>
+```
+
+### Setup
+
+```tsx
+import { useChat } from "@ai-sdk/react";
+import { FirebaseChatTransport } from "@/registry/firebase/firebase-chat-transport";
+import { app } from "@/lib/firebase-setup";
+
+const transport = React.useMemo(
+  () =>
+    app
+      ? new FirebaseChatTransport({
+          firebaseApp: app,
+          modelParams: {
+            model: "gemini-2.5-flash",
+          },
+        })
+      : null,
+  [],
+);
+
+const { messages, status, error, sendMessage, stop } = useChat({
+  id: "unique-chat-id",
+  transport: transport!,
+});
+```
+
+### AI Elements to use
+
+Import from `@/registry/components/`:
+
+- `ai-conversation`: `Conversation`, `ConversationContent`, `ConversationScrollButton`
+- `ai-message`: `Message`, `MessageAvatar`, `MessageContent`
+- `ai-prompt-input`: `PromptInput`, `PromptInputBody`, `PromptInputTextarea`, `PromptInputToolbar`, `PromptInputSubmit`
+- `ai-response`: `Response` (for markdown rendering)
+- `ai-loader`: `Loader` (for streaming indicator)
+
+### Optional AI Elements
+
+- `ai-reasoning`: `Reasoning`, `ReasoningTrigger`, `ReasoningContent` (for thinking/reasoning display)
+- `ai-tool`: `Tool`, `ToolHeader`, `ToolContent`, `ToolInput`, `ToolOutput` (for tool calls)
+- `ai-actions`: `Actions`, `Action` (for copy/regenerate buttons)
+- `ai-suggestion`: `Suggestions`, `Suggestion` (for prompt suggestions)
+
+### Reference
+
+See `@/app/(public)/jun-layout-generator/page.tsx` for a full-featured implementation with tools, reasoning, and attachments.

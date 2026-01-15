@@ -47,7 +47,7 @@ export const MessageContent = memo(
       sx={{
         display: "flex",
         flexDirection: "column",
-        gap: 1,
+        gap: 2,
         overflow: "hidden",
         borderRadius: 2,
         fontSize: "0.875rem",

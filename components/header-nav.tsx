@@ -10,7 +10,7 @@ export function HeaderNav() {
     { href: "/theme-preview", label: "Theme" },
     { href: "/primitive", label: "Primitive" },
     { href: "/block", label: "Block" },
-    { href: "/ai", label: "AI Elements" },
+    { href: "/ai", label: "AI" },
     ...(process.env.NODE_ENV === "development"
       ? [{ href: "/authentication", label: "Authentication" }]
       : []),

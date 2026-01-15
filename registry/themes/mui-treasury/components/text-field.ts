@@ -1,5 +1,17 @@
 import { ThemeComponents } from "../types";
 
+declare module "@mui/material/InputBase" {
+  interface InputBasePropsSizeOverrides {
+    large: true;
+  }
+}
+
+declare module "@mui/material/TextField" {
+  interface TextFieldPropsSizeOverrides {
+    large: true;
+  }
+}
+
 export const textFieldTheme: ThemeComponents = {
   MuiFormControl: {
     defaultProps: {
@@ -47,15 +59,55 @@ export const textFieldTheme: ThemeComponents = {
           fontSize: theme.typography.body2.fontSize,
           lineHeight: "1.42857em", // 20px
         },
+        variants: [
+          {
+            props: { size: "small" },
+            style: {
+              "&:has(.MuiInputAdornment-positionStart)": {
+                paddingLeft: "10px",
+              },
+              "&:has(.MuiInputAdornment-positionEnd)": {
+                paddingRight: "10px",
+              },
+            },
+          },
+          {
+            props: { size: "medium" },
+            style: {
+              "&:has(.MuiInputAdornment-positionStart)": {
+                paddingLeft: "12px",
+              },
+              "&:has(.MuiInputAdornment-positionEnd)": {
+                paddingRight: "12px",
+              },
+            },
+          },
+          {
+            props: { size: "large" },
+            style: {
+              fontSize: theme.typography.body1.fontSize,
+              [theme.breakpoints.up(768)]: {
+                fontSize: theme.typography.body1.fontSize,
+                lineHeight: theme.typography.body1.lineHeight,
+              },
+            },
+          },
+        ],
       }),
       input: () => ({
-        padding: "8px 12px",
+        padding: "9.5px 12px",
         minHeight: "1.5em",
         variants: [
           {
             props: { size: "small" },
             style: {
-              padding: "4px 10px",
+              padding: "6.5px 10px", // total height 34px, same as "small" outlined input
+            },
+          },
+          {
+            props: { size: "large" },
+            style: {
+              padding: "13.5px 16px", // total height 48px, same as "small" outlined input
             },
           },
           {
@@ -96,15 +148,21 @@ export const textFieldTheme: ThemeComponents = {
         },
         variants: [
           {
-            props: { multiline: true },
+            props: { size: "small", multiline: true },
             style: {
-              padding: "8px 12px",
+              padding: "6.5px 12px",
             },
           },
           {
-            props: { size: "small", multiline: true },
+            props: { size: "medium", multiline: true },
             style: {
-              padding: "4px 10px",
+              padding: "9.5px 14px",
+            },
+          },
+          {
+            props: { size: "large", multiline: true },
+            style: {
+              padding: "12px 14px",
             },
           },
         ],
@@ -117,6 +175,19 @@ export const textFieldTheme: ThemeComponents = {
             style: {
               paddingBlock: "6.5px",
               paddingInline: "12px",
+              ".MuiInputAdornment-root + &": {
+                paddingLeft: 0,
+              },
+              ":has(+ .MuiInputAdornment-root)": {
+                paddingRight: 0,
+              },
+            },
+          },
+          {
+            props: { size: "large" },
+            style: {
+              paddingBlock: "12px",
+              paddingInline: "14px",
               ".MuiInputAdornment-root + &": {
                 paddingLeft: 0,
               },

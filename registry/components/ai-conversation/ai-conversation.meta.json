@@ -4,6 +4,7 @@
   "title": "Ai Conversation",
   "description": "A ai-conversation item.",
   "meta": {
-    "category": "ai"
+    "category": "ai",
+    "subcategory": "elements"
   }
 }

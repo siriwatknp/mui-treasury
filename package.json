@@ -15,6 +15,9 @@
     "test:ui": "vitest --ui"
   },
   "dependencies": {
+    "@ai-sdk/anthropic": "3.0.9",
+    "@ai-sdk/openai": "3.0.7",
+    "@ai-sdk/react": "3.0.23",
     "@base-ui-components/react": "1.0.0-beta.4",
     "@emotion/cache": "11.14.0",
     "@emotion/react": "11.14.0",
@@ -47,12 +50,13 @@
     "@tailwindcss/typography": "0.5.16",
     "@vercel/analytics": "1.5.0",
     "@vercel/speed-insights": "^1.3.1",
-    "ai": "5.0.29",
+    "ai": "6.0.23",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "color": "5.0.2",
     "dayjs": "1.11.13",
     "embla-carousel-react": "8.6.0",
+    "firebase": "12.7.0",
     "gray-matter": "4.0.3",
     "lucide-react": "^0.487.0",
     "nanoid": "5.1.5",
@@ -72,7 +76,7 @@
     "tokenlens": "1.2.1",
     "tw-animate-css": "^1.2.5",
     "use-stick-to-bottom": "1.1.1",
-    "zod": "^3.24.3"
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -91,7 +95,6 @@
     "eslint-config-next": "15.3.1",
     "eslint-plugin-react-hooks": "5.2.0",
     "memfs": "4.49.0",
-    "shadcn": "^3.5.0",
     "tailwindcss": "^4",
     "tsx": "4.19.4",
     "typescript": "^5",

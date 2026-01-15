@@ -4,6 +4,7 @@
   "title": "Ai Prompt Input",
   "description": "A ai-prompt-input item.",
   "meta": {
-    "category": "ai"
+    "category": "ai",
+    "subcategory": "elements"
   }
 }

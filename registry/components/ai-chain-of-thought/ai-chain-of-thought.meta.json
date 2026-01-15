@@ -4,6 +4,7 @@
   "title": "AI Chain of Thought",
   "description": "Component for displaying AI reasoning steps with collapsible content",
   "meta": {
-    "category": "ai"
+    "category": "ai",
+    "subcategory": "elements"
   }
 }

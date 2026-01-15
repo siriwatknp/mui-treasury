@@ -1,0 +1,11 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:block",
+  "title": "Firebase Google Search Grounding",
+  "description": "A Firebase chat demo with Google Search grounding for real-time information",
+  "meta": {
+    "category": "ai",
+    "subcategory": "firebase",
+    "previewClassName": "h-[480px!important]"
+  }
+}

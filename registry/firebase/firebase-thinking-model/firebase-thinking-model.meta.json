@@ -1,0 +1,11 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:block",
+  "title": "Firebase Thinking Model",
+  "description": "A chat interface showcasing AI reasoning with Firebase Gemini thinking model",
+  "meta": {
+    "category": "ai",
+    "subcategory": "firebase",
+    "previewClassName": "h-[480px!important]"
+  }
+}
