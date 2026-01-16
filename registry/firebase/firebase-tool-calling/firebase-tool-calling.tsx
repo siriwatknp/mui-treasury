@@ -369,7 +369,7 @@ Always respond in a concise and clear manner using Markdown format.`,
           />
         </PromptInputBody>
         <PromptInputToolbar>
-          {status === "streaming" ? (
+          {status === "streaming" || status === "submitted" ? (
             <Button
               variant="outlined"
               onClick={(e) => {
@@ -387,7 +387,7 @@ Always respond in a concise and clear manner using Markdown format.`,
           ) : (
             <PromptInputSubmit
               status={status as "ready" | "submitted" | "streaming" | "error"}
-              disabled={status === "submitted" || error != null}
+              disabled={error != null}
             />
           )}
         </PromptInputToolbar>

@@ -310,7 +310,7 @@ If you don't know the answer, say so honestly.`,
           />
         </PromptInputBody>
         <PromptInputToolbar>
-          {status === "streaming" ? (
+          {status === "streaming" || status === "submitted" ? (
             <Button
               variant="outlined"
               onClick={(e) => {
@@ -324,7 +324,7 @@ If you don't know the answer, say so honestly.`,
           ) : (
             <PromptInputSubmit
               status={status as "ready" | "submitted" | "streaming" | "error"}
-              disabled={status === "submitted" || error != null}
+              disabled={error != null}
             />
           )}
         </PromptInputToolbar>

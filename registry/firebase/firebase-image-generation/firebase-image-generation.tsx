@@ -310,7 +310,7 @@ export default function FirebaseImageGeneration() {
           />
         </PromptInputBody>
         <PromptInputToolbar>
-          {status === "streaming" ? (
+          {status === "streaming" || status === "submitted" ? (
             <Button
               variant="outlined"
               onClick={(e) => {
@@ -328,7 +328,7 @@ export default function FirebaseImageGeneration() {
           ) : (
             <PromptInputSubmit
               status={status as "ready" | "submitted" | "streaming" | "error"}
-              disabled={status === "submitted" || error != null}
+              disabled={error != null}
             />
           )}
         </PromptInputToolbar>

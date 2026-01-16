@@ -320,7 +320,7 @@ Always aim to create an immersive, illustrated experience.`,
           />
         </PromptInputBody>
         <PromptInputToolbar>
-          {status === "streaming" ? (
+          {status === "streaming" || status === "submitted" ? (
             <Button
               variant="outlined"
               onClick={(e) => {
@@ -338,7 +338,7 @@ Always aim to create an immersive, illustrated experience.`,
           ) : (
             <PromptInputSubmit
               status={status as "ready" | "submitted" | "streaming" | "error"}
-              disabled={status === "submitted" || error != null}
+              disabled={error != null}
             />
           )}
         </PromptInputToolbar>
