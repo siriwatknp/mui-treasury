@@ -1,3 +1,8 @@
+import {
+  CONTROL_HEIGHTS,
+  CONTROL_TOUCH_HEIGHTS,
+  TOUCH_MEDIA_QUERY,
+} from "../scales";
 import { ThemeComponents } from "../types";
 
 declare module "@mui/material/InputBase" {
@@ -95,19 +100,37 @@ export const textFieldTheme: ThemeComponents = {
         ],
       }),
       input: () => ({
-        padding: "9.5px 12px",
+        paddingBlock: CONTROL_HEIGHTS.md / 2 - 10.5,
+        paddingInline: 12,
         minHeight: "1.5em",
+        ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
+          [TOUCH_MEDIA_QUERY]: {
+            paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 10.5,
+          },
+        }),
         variants: [
           {
             props: { size: "small" },
             style: {
-              padding: "6.5px 10px", // total height 34px, same as "small" outlined input
+              paddingBlock: CONTROL_HEIGHTS.sm / 2 - 10.5,
+              paddingInline: 10,
+              ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
+                [TOUCH_MEDIA_QUERY]: {
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 10.5,
+                },
+              }),
             },
           },
           {
             props: { size: "large" },
             style: {
-              padding: "13.5px 16px", // total height 48px, same as "small" outlined input
+              paddingBlock: CONTROL_HEIGHTS.lg / 2 - 10.5,
+              paddingInline: 16,
+              ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
+                [TOUCH_MEDIA_QUERY]: {
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.lg / 2 - 10.5,
+                },
+              }),
             },
           },
           {
@@ -150,31 +173,59 @@ export const textFieldTheme: ThemeComponents = {
           {
             props: { size: "small", multiline: true },
             style: {
-              padding: "6.5px 12px",
+              paddingBlock: CONTROL_HEIGHTS.sm / 2 - 10.5,
+              paddingInline: 12,
+              ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
+                [TOUCH_MEDIA_QUERY]: {
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 10.5,
+                },
+              }),
             },
           },
           {
             props: { size: "medium", multiline: true },
             style: {
-              padding: "9.5px 14px",
+              paddingBlock: CONTROL_HEIGHTS.md / 2 - 10.5,
+              paddingInline: 14,
+              ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
+                [TOUCH_MEDIA_QUERY]: {
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 10.5,
+                },
+              }),
             },
           },
           {
             props: { size: "large", multiline: true },
             style: {
-              padding: "12px 14px",
+              paddingBlock: CONTROL_HEIGHTS.lg / 2 - 12,
+              paddingInline: 14,
+              ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
+                [TOUCH_MEDIA_QUERY]: {
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.lg / 2 - 12,
+                },
+              }),
             },
           },
         ],
       }),
       input: {
-        paddingBlock: "9.5px",
+        paddingBlock: CONTROL_HEIGHTS.md / 2 - 10.5,
+        ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
+          [TOUCH_MEDIA_QUERY]: {
+            paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 10.5,
+          },
+        }),
         variants: [
           {
             props: { size: "small" },
             style: {
-              paddingBlock: "6.5px",
-              paddingInline: "12px",
+              paddingBlock: CONTROL_HEIGHTS.sm / 2 - 10.5,
+              paddingInline: 12,
+              ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
+                [TOUCH_MEDIA_QUERY]: {
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 10.5,
+                },
+              }),
               ".MuiInputAdornment-root + &": {
                 paddingLeft: 0,
               },
@@ -186,8 +237,13 @@ export const textFieldTheme: ThemeComponents = {
           {
             props: { size: "large" },
             style: {
-              paddingBlock: "12px",
-              paddingInline: "14px",
+              paddingBlock: CONTROL_HEIGHTS.lg / 2 - 12,
+              paddingInline: 14,
+              ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
+                [TOUCH_MEDIA_QUERY]: {
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.lg / 2 - 12,
+                },
+              }),
               ".MuiInputAdornment-root + &": {
                 paddingLeft: 0,
               },
@@ -242,14 +298,30 @@ export const textFieldTheme: ThemeComponents = {
       }),
       input: () => ({
         "&:where(input)": {
-          padding: "25px 12px 8px",
+          paddingTop: CONTROL_HEIGHTS.md / 2 + 5,
+          paddingInline: 12,
+          paddingBottom: CONTROL_HEIGHTS.md / 2 - 12,
+          ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
+            [TOUCH_MEDIA_QUERY]: {
+              paddingTop: CONTROL_TOUCH_HEIGHTS.md / 2 + 5,
+              paddingBottom: CONTROL_TOUCH_HEIGHTS.md / 2 - 12,
+            },
+          }),
         },
         variants: [
           {
             props: { size: "small" },
             style: {
               "&:where(input)": {
-                padding: "21px 10px 4px",
+                paddingTop: CONTROL_HEIGHTS.sm / 2 + 4,
+                paddingInline: 10,
+                paddingBottom: CONTROL_HEIGHTS.sm / 2 - 13,
+                ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
+                  [TOUCH_MEDIA_QUERY]: {
+                    paddingTop: CONTROL_TOUCH_HEIGHTS.sm / 2 + 4,
+                    paddingBottom: CONTROL_TOUCH_HEIGHTS.sm / 2 - 13,
+                  },
+                }),
               },
             },
           },

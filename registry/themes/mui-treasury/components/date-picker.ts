@@ -1,5 +1,10 @@
 import type {} from "@mui/x-date-pickers/themeAugmentation";
 import type {} from "@mui/x-date-pickers-pro/themeAugmentation";
+import {
+  CONTROL_HEIGHTS,
+  CONTROL_TOUCH_HEIGHTS,
+  TOUCH_MEDIA_QUERY,
+} from "../scales";
 import { ThemeComponents } from "../types";
 
 export const datePickerTheme: ThemeComponents = {
@@ -25,7 +30,12 @@ export const datePickerTheme: ThemeComponents = {
                   color: (theme.vars || theme).palette.text.primary,
                 },
               "& .MuiPickersSectionList-root": {
-                paddingBlock: "9.5px",
+                paddingBlock: CONTROL_HEIGHTS.md / 2 - 10.5,
+                ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
+                  [TOUCH_MEDIA_QUERY]: {
+                    paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 10.5,
+                  },
+                }),
               },
               "& .MuiPickersSectionList-section": {
                 lineHeight: 1.5,
@@ -39,7 +49,12 @@ export const datePickerTheme: ThemeComponents = {
               // size small
               "& .MuiPickersInputBase-inputSizeSmall": {
                 "& .MuiPickersSectionList-root": {
-                  paddingBlock: "6.5px",
+                  paddingBlock: CONTROL_HEIGHTS.sm / 2 - 10.5,
+                  ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
+                    [TOUCH_MEDIA_QUERY]: {
+                      paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 10.5,
+                    },
+                  }),
                 },
                 "& .MuiIconButton-root": {
                   padding: "4px",
@@ -68,8 +83,13 @@ export const datePickerTheme: ThemeComponents = {
             props: { variant: "outlined", size: "small" },
             style: {
               "& .MuiPickersInputBase-input:where(input)": {
-                paddingBlock: "6.5px",
-                paddingInline: "12px",
+                paddingBlock: CONTROL_HEIGHTS.sm / 2 - 10.5,
+                paddingInline: 12,
+                ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
+                  [TOUCH_MEDIA_QUERY]: {
+                    paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 10.5,
+                  },
+                }),
               },
             },
           },

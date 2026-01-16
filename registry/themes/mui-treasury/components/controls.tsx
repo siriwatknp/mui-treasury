@@ -2,6 +2,7 @@ import React from "react";
 
 import { switchClasses } from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
+import { SWITCH_SIZES, SWITCH_TOUCH_SIZES, TOUCH_MEDIA_QUERY } from "../scales";
 import { ThemeComponents } from "../types";
 
 const borderWidth = 1;
@@ -64,9 +65,9 @@ export const controlsTheme: ThemeComponents = {
   MuiSwitch: {
     styleOverrides: {
       root: ({ theme }) => ({
-        "--_h": "34px",
-        "--_w": "56px",
-        "--_inset": "3px",
+        "--_h": `${SWITCH_SIZES.md.height}px`,
+        "--_w": `${SWITCH_SIZES.md.width}px`,
+        "--_inset": `${SWITCH_SIZES.md.inset}px`,
         "--_b": "1px",
         "--_thumb-size": "calc(var(--_h) - var(--_b) * 2 - var(--_inset) * 2)",
         "--_thumb-w": "var(--_thumb-size)",
@@ -81,21 +82,34 @@ export const controlsTheme: ThemeComponents = {
           outlineOffset: "4px",
           outlineColor: (theme.vars || theme).palette.text.primary,
         },
-        [theme.breakpoints.up("md")]: {
-          "--_h": "28px",
-          "--_w": "44px",
-          "--_inset": "2px",
+        [TOUCH_MEDIA_QUERY]: {
+          ...(SWITCH_SIZES.md.height !== SWITCH_TOUCH_SIZES.md.height && {
+            "--_h": `${SWITCH_TOUCH_SIZES.md.height}px`,
+          }),
+          ...(SWITCH_SIZES.md.width !== SWITCH_TOUCH_SIZES.md.width && {
+            "--_w": `${SWITCH_TOUCH_SIZES.md.width}px`,
+          }),
+          ...(SWITCH_SIZES.md.inset !== SWITCH_TOUCH_SIZES.md.inset && {
+            "--_inset": `${SWITCH_TOUCH_SIZES.md.inset}px`,
+          }),
         },
         variants: [
           {
             props: { size: "small" },
             style: {
-              "--_h": "28px",
-              "--_w": "44px",
-              "--_inset": "2px",
-              [theme.breakpoints.up("md")]: {
-                "--_h": "22px",
-                "--_w": "36px",
+              "--_h": `${SWITCH_SIZES.sm.height}px`,
+              "--_w": `${SWITCH_SIZES.sm.width}px`,
+              "--_inset": `${SWITCH_SIZES.sm.inset}px`,
+              [TOUCH_MEDIA_QUERY]: {
+                ...(SWITCH_SIZES.sm.height !== SWITCH_TOUCH_SIZES.sm.height && {
+                  "--_h": `${SWITCH_TOUCH_SIZES.sm.height}px`,
+                }),
+                ...(SWITCH_SIZES.sm.width !== SWITCH_TOUCH_SIZES.sm.width && {
+                  "--_w": `${SWITCH_TOUCH_SIZES.sm.width}px`,
+                }),
+                ...(SWITCH_SIZES.sm.inset !== SWITCH_TOUCH_SIZES.sm.inset && {
+                  "--_inset": `${SWITCH_TOUCH_SIZES.sm.inset}px`,
+                }),
               },
             },
           },

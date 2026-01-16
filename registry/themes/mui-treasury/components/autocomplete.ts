@@ -1,3 +1,8 @@
+import {
+  CONTROL_HEIGHTS,
+  CONTROL_TOUCH_HEIGHTS,
+  TOUCH_MEDIA_QUERY,
+} from "../scales";
 import { ThemeComponents } from "../types";
 
 export const autocompleteTheme: ThemeComponents = {
@@ -19,7 +24,12 @@ export const autocompleteTheme: ThemeComponents = {
             paddingLeft: "2px",
           },
           "& .MuiAutocomplete-input": {
-            paddingBlock: 7.5,
+            paddingBlock: CONTROL_HEIGHTS.md / 2 - 12.5,
+            ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
+              [TOUCH_MEDIA_QUERY]: {
+                paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 12.5,
+              },
+            }),
           },
         },
         "& .MuiAutocomplete-inputRoot.MuiInputBase-sizeSmall": {
@@ -27,7 +37,12 @@ export const autocompleteTheme: ThemeComponents = {
           paddingBottom: 2,
           paddingLeft: 4,
           "& .MuiAutocomplete-input": {
-            paddingBlock: 4.5,
+            paddingBlock: CONTROL_HEIGHTS.sm / 2 - 12.5,
+            ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
+              [TOUCH_MEDIA_QUERY]: {
+                paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 12.5,
+              },
+            }),
           },
         },
       },

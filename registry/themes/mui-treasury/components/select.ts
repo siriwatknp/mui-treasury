@@ -1,3 +1,8 @@
+import {
+  CONTROL_HEIGHTS,
+  CONTROL_TOUCH_HEIGHTS,
+  TOUCH_MEDIA_QUERY,
+} from "../scales";
 import { ThemeComponents } from "../types";
 
 export const selectTheme: ThemeComponents = {
@@ -8,16 +13,44 @@ export const selectTheme: ThemeComponents = {
     styleOverrides: {
       select: {
         "&.MuiOutlinedInput-input": {
-          padding: "10px 14px",
+          paddingBlock: CONTROL_HEIGHTS.md / 2 - 10,
+          paddingInline: 14,
           minHeight: "1.42857em", // 20px
+          ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
+            [TOUCH_MEDIA_QUERY]: {
+              paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 10,
+            },
+          }),
           "&.MuiInputBase-inputSizeSmall": {
-            padding: "7px 12px",
+            paddingBlock: CONTROL_HEIGHTS.sm / 2 - 10,
+            paddingInline: 12,
+            ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
+              [TOUCH_MEDIA_QUERY]: {
+                paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 10,
+              },
+            }),
           },
         },
         "&.MuiFilledInput-input": {
-          padding: "25px 12px 8px",
+          paddingTop: CONTROL_HEIGHTS.md / 2 + 5,
+          paddingInline: 12,
+          paddingBottom: CONTROL_HEIGHTS.md / 2 - 12,
+          ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
+            [TOUCH_MEDIA_QUERY]: {
+              paddingTop: CONTROL_TOUCH_HEIGHTS.md / 2 + 5,
+              paddingBottom: CONTROL_TOUCH_HEIGHTS.md / 2 - 12,
+            },
+          }),
           "&.MuiInputBase-inputSizeSmall": {
-            padding: "21px 10px 4px",
+            paddingTop: CONTROL_HEIGHTS.sm / 2 + 4,
+            paddingInline: 10,
+            paddingBottom: CONTROL_HEIGHTS.sm / 2 - 13,
+            ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
+              [TOUCH_MEDIA_QUERY]: {
+                paddingTop: CONTROL_TOUCH_HEIGHTS.sm / 2 + 4,
+                paddingBottom: CONTROL_TOUCH_HEIGHTS.sm / 2 - 13,
+              },
+            }),
           },
         },
         "&.MuiInputBase-input.MuiInputBase-input": {

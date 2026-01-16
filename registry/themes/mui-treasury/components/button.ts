@@ -1,3 +1,8 @@
+import {
+  CONTROL_HEIGHTS,
+  CONTROL_TOUCH_HEIGHTS,
+  TOUCH_MEDIA_QUERY,
+} from "../scales";
 import { ThemeComponents } from "../types";
 
 export const buttonTheme: ThemeComponents = {
@@ -75,27 +80,57 @@ export const buttonTheme: ThemeComponents = {
         "&:has(> svg:only-child, > svg + .MuiTouchRipple-root)": {
           "--Icon-color": "currentColor",
           "&.MuiButton-sizeSmall": {
-            padding: "7px", // total height 34px, same as "small" outlined input
+            padding: CONTROL_HEIGHTS.sm / 2 - 10,
             minWidth: "28px",
+            ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
+              [TOUCH_MEDIA_QUERY]: {
+                padding: CONTROL_TOUCH_HEIGHTS.sm / 2 - 10,
+              },
+            }),
           },
           "&.MuiButton-sizeMedium": {
-            padding: "10px", // total height 40px, same as "medium" outlined input
+            padding: CONTROL_HEIGHTS.md / 2 - 10,
             minWidth: "36px",
+            ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
+              [TOUCH_MEDIA_QUERY]: {
+                padding: CONTROL_TOUCH_HEIGHTS.md / 2 - 10,
+              },
+            }),
           },
           "&.MuiButton-sizeLarge": {
-            padding: "12px", // total height 48px
+            padding: CONTROL_HEIGHTS.lg / 2 - 12,
             minWidth: "48px",
+            ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
+              [TOUCH_MEDIA_QUERY]: {
+                padding: CONTROL_TOUCH_HEIGHTS.lg / 2 - 12,
+              },
+            }),
           },
           // Outlined variant needs to compensate for border
           "&.MuiButton-outlined": {
             "&.MuiButton-sizeSmall": {
-              padding: "6px",
+              padding: CONTROL_HEIGHTS.sm / 2 - 11,
+              ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
+                [TOUCH_MEDIA_QUERY]: {
+                  padding: CONTROL_TOUCH_HEIGHTS.sm / 2 - 11,
+                },
+              }),
             },
             "&.MuiButton-sizeMedium": {
-              padding: "9px",
+              padding: CONTROL_HEIGHTS.md / 2 - 11,
+              ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
+                [TOUCH_MEDIA_QUERY]: {
+                  padding: CONTROL_TOUCH_HEIGHTS.md / 2 - 11,
+                },
+              }),
             },
             "&.MuiButton-sizeLarge": {
-              padding: "11px",
+              padding: CONTROL_HEIGHTS.lg / 2 - 13,
+              ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
+                [TOUCH_MEDIA_QUERY]: {
+                  padding: CONTROL_TOUCH_HEIGHTS.lg / 2 - 13,
+                },
+              }),
             },
           },
         },
@@ -104,23 +139,41 @@ export const buttonTheme: ThemeComponents = {
           {
             props: { size: "small" },
             style: {
-              padding: "7px 12px",
+              paddingBlock: CONTROL_HEIGHTS.sm / 2 - 10,
+              paddingInline: 12,
               lineHeight: "20px",
+              ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
+                [TOUCH_MEDIA_QUERY]: {
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 10,
+                },
+              }),
             },
           },
           {
             props: { size: "medium" },
             style: {
-              padding: "10px 16px",
+              paddingBlock: CONTROL_HEIGHTS.md / 2 - 10,
+              paddingInline: 16,
               lineHeight: "20px",
+              ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
+                [TOUCH_MEDIA_QUERY]: {
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 10,
+                },
+              }),
             },
           },
           {
             props: { size: "large" },
             style: {
-              padding: "12px 24px",
+              paddingBlock: CONTROL_HEIGHTS.lg / 2 - 12,
+              paddingInline: 24,
               lineHeight: "24px",
               fontSize: "1rem",
+              ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
+                [TOUCH_MEDIA_QUERY]: {
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.lg / 2 - 12,
+                },
+              }),
             },
           },
           // Outlined border compensation for all sizes
@@ -128,13 +181,31 @@ export const buttonTheme: ThemeComponents = {
             props: { variant: "outlined" },
             style: {
               "&.MuiButton-sizeSmall": {
-                padding: "6px 12px",
+                paddingBlock: CONTROL_HEIGHTS.sm / 2 - 11,
+                paddingInline: 12,
+                ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
+                  [TOUCH_MEDIA_QUERY]: {
+                    paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 11,
+                  },
+                }),
               },
               "&.MuiButton-sizeMedium": {
-                padding: "9px 16px",
+                paddingBlock: CONTROL_HEIGHTS.md / 2 - 11,
+                paddingInline: 16,
+                ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
+                  [TOUCH_MEDIA_QUERY]: {
+                    paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 11,
+                  },
+                }),
               },
               "&.MuiButton-sizeLarge": {
-                padding: "11px 24px",
+                paddingBlock: CONTROL_HEIGHTS.lg / 2 - 13,
+                paddingInline: 24,
+                ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
+                  [TOUCH_MEDIA_QUERY]: {
+                    paddingBlock: CONTROL_TOUCH_HEIGHTS.lg / 2 - 13,
+                  },
+                }),
               },
               "& .MuiTouchRipple-root": {
                 inset: "-1px",
@@ -295,19 +366,34 @@ export const buttonTheme: ThemeComponents = {
           {
             props: { size: "small" },
             style: {
-              padding: "6px", // total height 34px, same as "small" button
+              padding: CONTROL_HEIGHTS.sm / 2 - 11,
+              ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
+                [TOUCH_MEDIA_QUERY]: {
+                  padding: CONTROL_TOUCH_HEIGHTS.sm / 2 - 11,
+                },
+              }),
             },
           },
           {
             props: { size: "medium" },
             style: {
-              padding: "9px", // total height 40px, same as "medium" button
+              padding: CONTROL_HEIGHTS.md / 2 - 11,
+              ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
+                [TOUCH_MEDIA_QUERY]: {
+                  padding: CONTROL_TOUCH_HEIGHTS.md / 2 - 11,
+                },
+              }),
             },
           },
           {
             props: { size: "large" },
             style: {
-              padding: "13px", // total height 48px, same as "large" button
+              padding: CONTROL_HEIGHTS.lg / 2 - 11,
+              ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
+                [TOUCH_MEDIA_QUERY]: {
+                  padding: CONTROL_TOUCH_HEIGHTS.lg / 2 - 11,
+                },
+              }),
             },
           },
         ],
