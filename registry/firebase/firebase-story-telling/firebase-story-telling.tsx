@@ -108,7 +108,9 @@ Always aim to create an immersive, illustrated experience.`,
       toast.success("Copied to clipboard");
     } catch (err) {
       toast.error(
-        `Failed to copy (${err instanceof Error ? err.message : "Unknown error"})`,
+        `Failed to copy (${
+          err instanceof Error ? err.message : "Unknown error"
+        })`,
       );
     }
   };

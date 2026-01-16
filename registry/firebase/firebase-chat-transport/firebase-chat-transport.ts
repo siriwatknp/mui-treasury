@@ -427,8 +427,11 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
                   }
 
                   if ("inlineData" in part && part.inlineData) {
-                    // Use hash to dedupe images
-                    const imageHash = part.inlineData.data.substring(0, 100);
+                    // Dedupe images using hash of length + samples from start/middle/end.
+                    // Using only the first N chars causes collision because images
+                    // often share similar base64 headers (e.g., PNG/JPEG magic bytes).
+                    const data = part.inlineData.data;
+                    const imageHash = `${data.length}:${data.substring(0, 50)}:${data.substring(Math.floor(data.length / 2), Math.floor(data.length / 2) + 50)}:${data.substring(data.length - 50)}`;
                     if (!emittedImageHashes.has(imageHash)) {
                       // Close current text part before emitting image
                       if (currentTextId) {
@@ -515,7 +518,9 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
               if (parts) {
                 for (const part of parts) {
                   if ("inlineData" in part && part.inlineData) {
-                    const imageHash = part.inlineData.data.substring(0, 100);
+                    // Same hash logic as streaming section (length + start/middle/end samples)
+                    const data = part.inlineData.data;
+                    const imageHash = `${data.length}:${data.substring(0, 50)}:${data.substring(Math.floor(data.length / 2), Math.floor(data.length / 2) + 50)}:${data.substring(data.length - 50)}`;
                     if (!emittedImageHashes.has(imageHash)) {
                       controller.enqueue({
                         type: "file",
