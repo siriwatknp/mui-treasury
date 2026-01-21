@@ -946,6 +946,40 @@ export default function ThemePreviewPage() {
           </GridDemo>
 
           <GridCell>
+            <CodeChip>multiple</CodeChip> selection (small)
+          </GridCell>
+          <GridDemo>
+            <div className="space-y-4">
+              <Autocomplete
+                multiple
+                size="small"
+                options={autocompleteOptions}
+                renderInput={(params) => (
+                  <TextField {...params} label="Choose fruits" />
+                )}
+                sx={{ width: 300 }}
+              />
+            </div>
+          </GridDemo>
+
+          <GridCell>
+            <CodeChip>multiple</CodeChip> selection (large)
+          </GridCell>
+          <GridDemo>
+            <div className="space-y-4">
+              <Autocomplete
+                multiple
+                size="large"
+                options={autocompleteOptions}
+                renderInput={(params) => (
+                  <TextField {...params} label="Choose fruits" />
+                )}
+                sx={{ width: 300 }}
+              />
+            </div>
+          </GridDemo>
+
+          <GridCell>
             <CodeChip>freeSolo</CodeChip> custom input
           </GridCell>
           <GridDemo>
@@ -1589,6 +1623,17 @@ export default function ThemePreviewPage() {
               <Chip label="Small" size="small" />
               <Chip label="Small Outlined" size="small" variant="outlined" />
               <Chip label="Small Deletable" size="small" onDelete={() => {}} />
+            </div>
+          </GridDemo>
+
+          <GridCell>
+            <CodeChip>size=&quot;large&quot;</CodeChip>
+          </GridCell>
+          <GridDemo>
+            <div className="flex items-center gap-3 flex-wrap">
+              <Chip label="Large" size="large" />
+              <Chip label="Large Outlined" size="large" variant="outlined" />
+              <Chip label="Large Deletable" size="large" onDelete={() => {}} />
             </div>
           </GridDemo>
 

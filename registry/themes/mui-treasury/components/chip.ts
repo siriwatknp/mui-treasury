@@ -1,9 +1,21 @@
+import {
+  CONTROL_HEIGHTS,
+  CONTROL_TOUCH_HEIGHTS,
+  TOUCH_MEDIA_QUERY,
+} from "../scales";
 import { ThemeComponents } from "../types";
+
+declare module "@mui/material/Chip" {
+  interface ChipPropsSizeOverrides {
+    large: true;
+  }
+}
 
 export const chipTheme: ThemeComponents = {
   MuiChip: {
     styleOverrides: {
       root: ({ theme }) => ({
+        height: "initial",
         borderRadius: 6,
         fontWeight: 400,
         fontSize: theme.typography.body2.fontSize,
@@ -13,6 +25,40 @@ export const chipTheme: ThemeComponents = {
           outlineOffset: "2px",
         },
         variants: [
+          {
+            props: { size: "small" },
+            style: {
+              lineHeight: 1.4285714286,
+              paddingBlock: CONTROL_HEIGHTS.sm / 2 - 14.5,
+              ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
+                [TOUCH_MEDIA_QUERY]: {
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 14,
+                },
+              }),
+            },
+          },
+          {
+            props: { size: "medium" },
+            style: {
+              paddingBlock: CONTROL_HEIGHTS.md / 2 - 16,
+              ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
+                [TOUCH_MEDIA_QUERY]: {
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 14.5,
+                },
+              }),
+            },
+          },
+          {
+            props: { size: "large" },
+            style: {
+              paddingBlock: CONTROL_HEIGHTS.lg / 2 - 17,
+              ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
+                [TOUCH_MEDIA_QUERY]: {
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.lg / 2 - 17,
+                },
+              }),
+            },
+          },
           {
             props: { variant: "outlined", color: "primary" },
             style: {
@@ -120,6 +166,16 @@ export const chipTheme: ThemeComponents = {
           },
         ],
       }),
+      label: {
+        variants: [
+          {
+            props: { size: "medium" },
+            style: {
+              paddingInline: CONTROL_HEIGHTS.md / 2 - 8,
+            },
+          },
+        ],
+      },
       icon: {
         fontSize: "1.125rem",
         variants: [
@@ -132,6 +188,7 @@ export const chipTheme: ThemeComponents = {
         ],
       },
       deleteIcon: ({ theme }) => ({
+        fontSize: "1lh",
         "&:active": {
           transform: "scale(0.97)",
         },
