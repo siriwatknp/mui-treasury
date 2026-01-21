@@ -1444,6 +1444,17 @@ export default function ThemePreviewPage() {
           </GridDemo>
 
           <GridCell>
+            <CodeChip>size=&quot;large&quot;</CodeChip>
+          </GridCell>
+          <GridDemo>
+            <div className="flex items-center gap-4">
+              <Checkbox size="large" checked={true} />
+              <Checkbox size="large" checked={false} />
+              <Checkbox size="large" indeterminate={true} />
+            </div>
+          </GridDemo>
+
+          <GridCell>
             <CodeChip>disabled</CodeChip>
           </GridCell>
           <GridDemo>
@@ -1944,6 +1955,16 @@ export default function ThemePreviewPage() {
             <div className="flex items-center gap-4">
               <Radio size="small" checked={true} />
               <Radio size="small" checked={false} />
+            </div>
+          </GridDemo>
+
+          <GridCell>
+            <CodeChip>size=&quot;large&quot;</CodeChip>
+          </GridCell>
+          <GridDemo>
+            <div className="flex items-center gap-4">
+              <Radio size="large" checked={true} />
+              <Radio size="large" checked={false} />
             </div>
           </GridDemo>
 

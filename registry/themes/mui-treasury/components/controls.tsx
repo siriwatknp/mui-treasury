@@ -2,8 +2,21 @@ import React from "react";
 
 import { switchClasses } from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
-import { SWITCH_SIZES, SWITCH_TOUCH_SIZES, TOUCH_MEDIA_QUERY } from "../scales";
+
+import {
+  CONTROL_HEIGHTS,
+  CONTROL_TOUCH_HEIGHTS,
+  SWITCH_SIZES,
+  SWITCH_TOUCH_SIZES,
+  TOUCH_MEDIA_QUERY,
+} from "../scales";
 import { ThemeComponents } from "../types";
+
+declare module "@mui/material/Radio" {
+  interface RadioPropsSizeOverrides {
+    large: true;
+  }
+}
 
 const borderWidth = 1;
 
@@ -25,6 +38,10 @@ const Uncheckbox = styled("span")(({ theme }) => ({
     border: "1px solid",
     borderColor: "currentColor",
     borderRadius: "inherit",
+  },
+  '&[font-size="large"]': {
+    width: "1.75rem",
+    height: "1.75rem",
   },
 }));
 
@@ -49,17 +66,103 @@ const Unradio = styled("span")(({ theme }) => ({
     borderColor: "currentColor",
     borderRadius: "inherit",
   },
+  '&[font-size="large"]': {
+    width: "1.75rem",
+    height: "1.75rem",
+  },
 }));
+
+const iconSize = 24; // 1.5rem icon size
 
 export const controlsTheme: ThemeComponents = {
   MuiCheckbox: {
     defaultProps: {
       icon: <Uncheckbox />,
     },
+    styleOverrides: {
+      root: {
+        variants: [
+          {
+            props: { size: "small" },
+            style: {
+              padding: (CONTROL_HEIGHTS.sm - iconSize) / 2,
+              [TOUCH_MEDIA_QUERY]: {
+                ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
+                  padding: (CONTROL_TOUCH_HEIGHTS.sm - iconSize) / 2,
+                }),
+              },
+            },
+          },
+          {
+            props: { size: "medium" },
+            style: {
+              padding: (CONTROL_HEIGHTS.md - iconSize) / 2,
+              [TOUCH_MEDIA_QUERY]: {
+                ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
+                  padding: (CONTROL_TOUCH_HEIGHTS.md - iconSize) / 2,
+                }),
+              },
+            },
+          },
+          {
+            props: { size: "large" },
+            style: {
+              "--Icon-size": "1.75rem",
+              padding: (CONTROL_HEIGHTS.lg - iconSize) / 2 - 2,
+              [TOUCH_MEDIA_QUERY]: {
+                ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
+                  padding: (CONTROL_TOUCH_HEIGHTS.lg - iconSize) / 2 - 2,
+                }),
+              },
+            },
+          },
+        ],
+      },
+    },
   },
   MuiRadio: {
     defaultProps: {
       icon: <Unradio />,
+    },
+    styleOverrides: {
+      root: {
+        variants: [
+          {
+            props: { size: "small" },
+            style: {
+              padding: (CONTROL_HEIGHTS.sm - iconSize) / 2,
+              [TOUCH_MEDIA_QUERY]: {
+                ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
+                  padding: (CONTROL_TOUCH_HEIGHTS.sm - iconSize) / 2,
+                }),
+              },
+            },
+          },
+          {
+            props: { size: "medium" },
+            style: {
+              padding: (CONTROL_HEIGHTS.md - iconSize) / 2,
+              [TOUCH_MEDIA_QUERY]: {
+                ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
+                  padding: (CONTROL_TOUCH_HEIGHTS.md - iconSize) / 2,
+                }),
+              },
+            },
+          },
+          {
+            props: { size: "large" },
+            style: {
+              "--Icon-size": "1.75rem",
+              padding: (CONTROL_HEIGHTS.lg - iconSize) / 2 - 2,
+              [TOUCH_MEDIA_QUERY]: {
+                ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
+                  padding: (CONTROL_TOUCH_HEIGHTS.lg - iconSize) / 2 - 2,
+                }),
+              },
+            },
+          },
+        ],
+      },
     },
   },
   MuiSwitch: {
@@ -169,6 +272,7 @@ export const controlsTheme: ThemeComponents = {
     styleOverrides: {
       root: ({ theme }) => ({
         gap: "var(--_gap)",
+        marginLeft: -4,
         [`&:has(.${switchClasses.root})`]: {
           "--_gap": theme.spacing(1),
           margin: 0,
