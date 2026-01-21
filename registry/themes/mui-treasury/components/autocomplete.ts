@@ -68,7 +68,10 @@ export const autocompleteTheme: ThemeComponents = {
               "& .MuiAutocomplete-inputRoot": {
                 paddingTop: 4,
                 paddingBottom: 4,
-                paddingLeft: 4,
+                paddingLeft: 12,
+                "&:has(.MuiChip-root)": {
+                  paddingLeft: 4,
+                },
                 "& .MuiAutocomplete-input": {
                   paddingBlock: CONTROL_HEIGHTS.lg / 2 - 14.5,
                   ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {

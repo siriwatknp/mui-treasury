@@ -11,6 +11,18 @@ export const selectTheme: ThemeComponents = {
       variant: "outlined",
     },
     styleOverrides: {
+      root: {
+        "&.MuiOutlinedInput-root.MuiInputBase-sizeLarge": {
+          "& .MuiSelect-select": {
+            paddingBlock: CONTROL_HEIGHTS.lg / 2 - 12,
+            ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
+              [TOUCH_MEDIA_QUERY]: {
+                paddingBlock: CONTROL_TOUCH_HEIGHTS.lg / 2 - 11.5,
+              },
+            }),
+          },
+        },
+      },
       select: {
         "&.MuiOutlinedInput-input": {
           paddingBlock: CONTROL_HEIGHTS.md / 2 - 10,
@@ -18,7 +30,7 @@ export const selectTheme: ThemeComponents = {
           minHeight: "1.42857em", // 20px
           ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
             [TOUCH_MEDIA_QUERY]: {
-              paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 10,
+              paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 11.5,
             },
           }),
           "&.MuiInputBase-inputSizeSmall": {
@@ -26,7 +38,7 @@ export const selectTheme: ThemeComponents = {
             paddingInline: 12,
             ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
               [TOUCH_MEDIA_QUERY]: {
-                paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 10,
+                paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 11.5,
               },
             }),
           },
