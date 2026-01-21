@@ -38,6 +38,18 @@ export const chipTheme: ThemeComponents = {
             },
           },
           {
+            props: { size: "small", variant: "outlined" },
+            style: {
+              lineHeight: 1.4285714286,
+              paddingBlock: CONTROL_HEIGHTS.sm / 2 - 15.5,
+              ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
+                [TOUCH_MEDIA_QUERY]: {
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 15,
+                },
+              }),
+            },
+          },
+          {
             props: { size: "medium" },
             style: {
               paddingBlock: CONTROL_HEIGHTS.md / 2 - 16,
@@ -49,12 +61,34 @@ export const chipTheme: ThemeComponents = {
             },
           },
           {
+            props: { size: "medium", variant: "outlined" },
+            style: {
+              paddingBlock: CONTROL_HEIGHTS.md / 2 - 17,
+              ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
+                [TOUCH_MEDIA_QUERY]: {
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 15.5,
+                },
+              }),
+            },
+          },
+          {
             props: { size: "large" },
             style: {
               paddingBlock: CONTROL_HEIGHTS.lg / 2 - 17,
               ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
                 [TOUCH_MEDIA_QUERY]: {
-                  paddingBlock: CONTROL_TOUCH_HEIGHTS.lg / 2 - 17,
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.lg / 2 - 17.5,
+                },
+              }),
+            },
+          },
+          {
+            props: { size: "large", variant: "outlined" },
+            style: {
+              paddingBlock: CONTROL_HEIGHTS.lg / 2 - 18,
+              ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
+                [TOUCH_MEDIA_QUERY]: {
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.lg / 2 - 18.5,
                 },
               }),
             },

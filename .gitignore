@@ -45,3 +45,6 @@ public/r/
 .playwright-mcp
 
 examples/**/pnpm-lock.yaml
+
+test-results
+playwright-report

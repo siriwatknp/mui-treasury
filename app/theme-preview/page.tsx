@@ -2154,6 +2154,20 @@ export default function ThemePreviewPage() {
           </GridDemo>
 
           <GridCell>
+            <CodeChip>size=&quot;large&quot;</CodeChip>
+          </GridCell>
+          <GridDemo>
+            <FormControl size="large" sx={{ minWidth: 120 }}>
+              <InputLabel>Size</InputLabel>
+              <Select defaultValue="medium" label="Size">
+                <MenuItem value="small">Small</MenuItem>
+                <MenuItem value="medium">Medium</MenuItem>
+                <MenuItem value="large">Large</MenuItem>
+              </Select>
+            </FormControl>
+          </GridDemo>
+
+          <GridCell>
             <CodeChip>disabled</CodeChip>
           </GridCell>
           <GridDemo>

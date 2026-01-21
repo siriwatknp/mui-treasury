@@ -18,6 +18,12 @@ declare module "@mui/material/Radio" {
   }
 }
 
+declare module "@mui/material/Switch" {
+  interface SwitchPropsSizeOverrides {
+    large: true;
+  }
+}
+
 const borderWidth = 1;
 
 const Uncheckbox = styled("span")(({ theme }) => ({
@@ -212,6 +218,25 @@ export const controlsTheme: ThemeComponents = {
                 }),
                 ...(SWITCH_SIZES.sm.inset !== SWITCH_TOUCH_SIZES.sm.inset && {
                   "--_inset": `${SWITCH_TOUCH_SIZES.sm.inset}px`,
+                }),
+              },
+            },
+          },
+          {
+            props: { size: "large" },
+            style: {
+              "--_h": `${SWITCH_SIZES.lg.height}px`,
+              "--_w": `${SWITCH_SIZES.lg.width}px`,
+              "--_inset": `${SWITCH_SIZES.lg.inset}px`,
+              [TOUCH_MEDIA_QUERY]: {
+                ...(SWITCH_SIZES.lg.height !== SWITCH_TOUCH_SIZES.lg.height && {
+                  "--_h": `${SWITCH_TOUCH_SIZES.lg.height}px`,
+                }),
+                ...(SWITCH_SIZES.lg.width !== SWITCH_TOUCH_SIZES.lg.width && {
+                  "--_w": `${SWITCH_TOUCH_SIZES.lg.width}px`,
+                }),
+                ...(SWITCH_SIZES.lg.inset !== SWITCH_TOUCH_SIZES.lg.inset && {
+                  "--_inset": `${SWITCH_TOUCH_SIZES.lg.inset}px`,
                 }),
               },
             },

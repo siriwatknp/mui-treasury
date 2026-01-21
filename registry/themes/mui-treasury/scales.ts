@@ -32,9 +32,11 @@ export const TOUCH_MEDIA_QUERY = "@media (max-width: 768px)";
 export const SWITCH_SIZES = {
   sm: { height: 22, width: 36, inset: 2 },
   md: { height: 28, width: 44, inset: 2 },
+  lg: { height: 32, width: 52, inset: 3 },
 };
 
 export const SWITCH_TOUCH_SIZES = {
   sm: { height: 28, width: 44, inset: 2 },
   md: { height: 34, width: 56, inset: 3 },
+  lg: { height: 40, width: 64, inset: 4 },
 };

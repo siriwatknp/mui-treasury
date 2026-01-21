@@ -60,7 +60,11 @@ export default function ControlHeightsTestPage() {
       </Section>
 
       <Section title="Button - Outlined">
-        <Button variant="outlined" size="small" data-testid="button-outlined-sm">
+        <Button
+          variant="outlined"
+          size="small"
+          data-testid="button-outlined-sm"
+        >
           Small
         </Button>
         <Button
@@ -70,7 +74,11 @@ export default function ControlHeightsTestPage() {
         >
           Medium
         </Button>
-        <Button variant="outlined" size="large" data-testid="button-outlined-lg">
+        <Button
+          variant="outlined"
+          size="large"
+          data-testid="button-outlined-lg"
+        >
           Large
         </Button>
       </Section>
@@ -211,11 +219,33 @@ export default function ControlHeightsTestPage() {
         />
       </Section>
 
-      {/* Chip - all sizes */}
-      <Section title="Chip">
+      {/* Chip - Filled */}
+      <Section title="Chip - Filled">
         <Chip label="Small" size="small" data-testid="chip-sm" />
         <Chip label="Medium" size="medium" data-testid="chip-md" />
         <Chip label="Large" size="large" data-testid="chip-lg" />
+      </Section>
+
+      {/* Chip - Outlined */}
+      <Section title="Chip - Outlined">
+        <Chip
+          label="Small"
+          variant="outlined"
+          size="small"
+          data-testid="chip-outlined-sm"
+        />
+        <Chip
+          label="Medium"
+          variant="outlined"
+          size="medium"
+          data-testid="chip-outlined-md"
+        />
+        <Chip
+          label="Large"
+          variant="outlined"
+          size="large"
+          data-testid="chip-outlined-lg"
+        />
       </Section>
 
       {/* Checkbox */}
@@ -234,8 +264,30 @@ export default function ControlHeightsTestPage() {
 
       {/* Switch */}
       <Section title="Switch">
-        <Switch size="small" data-testid="switch-sm" />
-        <Switch size="medium" data-testid="switch-md" />
+        <Switch
+          size="small"
+          slotProps={{
+            root: {
+              "data-testid": "switch-sm",
+            } as React.HTMLProps<HTMLSpanElement>,
+          }}
+        />
+        <Switch
+          size="medium"
+          slotProps={{
+            root: {
+              "data-testid": "switch-md",
+            } as React.HTMLProps<HTMLSpanElement>,
+          }}
+        />
+        <Switch
+          size="large"
+          slotProps={{
+            root: {
+              "data-testid": "switch-lg",
+            } as React.HTMLProps<HTMLSpanElement>,
+          }}
+        />
       </Section>
     </Box>
   );

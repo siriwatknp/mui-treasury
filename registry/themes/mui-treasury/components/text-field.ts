@@ -17,6 +17,12 @@ declare module "@mui/material/TextField" {
   }
 }
 
+declare module "@mui/material/FormControl" {
+  interface FormControlPropsSizeOverrides {
+    large: true;
+  }
+}
+
 export const textFieldTheme: ThemeComponents = {
   MuiFormControl: {
     defaultProps: {
@@ -177,7 +183,7 @@ export const textFieldTheme: ThemeComponents = {
               paddingInline: 12,
               ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
                 [TOUCH_MEDIA_QUERY]: {
-                  paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 10.5,
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 12,
                 },
               }),
             },
@@ -189,7 +195,7 @@ export const textFieldTheme: ThemeComponents = {
               paddingInline: 14,
               ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
                 [TOUCH_MEDIA_QUERY]: {
-                  paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 10.5,
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 12,
                 },
               }),
             },
@@ -209,12 +215,6 @@ export const textFieldTheme: ThemeComponents = {
         ],
       }),
       input: {
-        paddingBlock: CONTROL_HEIGHTS.md / 2 - 10.5,
-        ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
-          [TOUCH_MEDIA_QUERY]: {
-            paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 10.5,
-          },
-        }),
         variants: [
           {
             props: { size: "small" },
@@ -223,7 +223,7 @@ export const textFieldTheme: ThemeComponents = {
               paddingInline: 12,
               ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
                 [TOUCH_MEDIA_QUERY]: {
-                  paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 10.5,
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 12,
                 },
               }),
               ".MuiInputAdornment-root + &": {
@@ -232,6 +232,17 @@ export const textFieldTheme: ThemeComponents = {
               ":has(+ .MuiInputAdornment-root)": {
                 paddingRight: 0,
               },
+            },
+          },
+          {
+            props: { size: "medium" },
+            style: {
+              paddingBlock: CONTROL_HEIGHTS.md / 2 - 10.5,
+              ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
+                [TOUCH_MEDIA_QUERY]: {
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 12,
+                },
+              }),
             },
           },
           {
@@ -360,6 +371,14 @@ export const textFieldTheme: ThemeComponents = {
     styleOverrides: {
       root: ({ theme }) => ({
         fontSize: theme.typography.body2.fontSize,
+        variants: [
+          {
+            props: { size: "large" },
+            style: {
+              fontSize: theme.typography.body1.fontSize,
+            },
+          },
+        ],
       }),
       outlined: ({ theme }) => ({
         color: (theme.vars || theme).palette.text.primary,
