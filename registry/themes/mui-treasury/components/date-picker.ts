@@ -46,20 +46,6 @@ export const datePickerTheme: ThemeComponents = {
                   backgroundColor: "transparent",
                 },
               },
-              // size small
-              "& .MuiPickersInputBase-inputSizeSmall": {
-                "& .MuiPickersSectionList-root": {
-                  paddingBlock: CONTROL_HEIGHTS.sm / 2 - 10.5,
-                  ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
-                    [TOUCH_MEDIA_QUERY]: {
-                      paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 10.5,
-                    },
-                  }),
-                },
-                "& .MuiIconButton-root": {
-                  padding: "4px",
-                },
-              },
               "&&& .MuiPickersInputBase-input": {
                 "&::-webkit-input-placeholder": {
                   opacity: "0.42 !important",
@@ -82,12 +68,33 @@ export const datePickerTheme: ThemeComponents = {
           {
             props: { variant: "outlined", size: "small" },
             style: {
-              "& .MuiPickersInputBase-input:where(input)": {
+              "& .MuiPickersOutlinedInput-root": {
+                paddingLeft: 12,
+              },
+              "& .MuiPickersSectionList-root": {
                 paddingBlock: CONTROL_HEIGHTS.sm / 2 - 10.5,
-                paddingInline: 12,
                 ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
                   [TOUCH_MEDIA_QUERY]: {
                     paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 10.5,
+                  },
+                }),
+              },
+              "& .MuiIconButton-root": {
+                padding: "4px",
+              },
+            },
+          },
+          {
+            props: { variant: "outlined", size: "large" },
+            style: {
+              "& .MuiPickersOutlinedInput-root": {
+                fontSize: "1rem",
+              },
+              "& .MuiPickersSectionList-root": {
+                paddingBlock: CONTROL_HEIGHTS.lg / 2 - 10.5,
+                ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
+                  [TOUCH_MEDIA_QUERY]: {
+                    paddingBlock: CONTROL_TOUCH_HEIGHTS.lg / 2 - 10.5,
                   },
                 }),
               },
