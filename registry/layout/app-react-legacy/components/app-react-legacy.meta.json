@@ -1,0 +1,7 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "App React Legacy",
+  "description": "A app-react-legacy item.",
+  "meta": {}
+}
