@@ -79,7 +79,7 @@ export function extractRegistryDependencies(
 
       // Extract the item name
       const firstDir = parts[0];
-      const typeRegex = /^(hooks|ui|components|blocks|themes|firebase)$/;
+      const typeRegex = /^(hooks|ui|components|blocks|themes|firebase|layout)$/;
 
       if (typeRegex.test(firstDir) && parts.length >= 2) {
         const itemName = parts[1];
@@ -121,7 +121,7 @@ export function extractRegistryDependencies(
 
       // Extract the item name from the registry path
       const registryMatch = registryPathStr.match(
-        /^(hooks|ui|components|blocks|themes|firebase)\/([^/]+)/,
+        /^(hooks|ui|components|blocks|themes|firebase|layout)\/([^/]+)/,
       );
       if (registryMatch) {
         const itemName = registryMatch[2];

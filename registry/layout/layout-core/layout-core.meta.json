@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Layout Components",
+  "description": "Core layout primitives (Root, Header, Content, Footer, EdgeSidebar, InsetSidebar) for building app shells with CSS Grid.",
+  "meta": {
+    "category": "layout"
+  }
+}

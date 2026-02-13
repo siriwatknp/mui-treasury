@@ -11,6 +11,7 @@ export function HeaderNav() {
     { href: "/primitive", label: "Primitive" },
     { href: "/block", label: "Block" },
     { href: "/ai", label: "AI" },
+    { href: "/layout", label: "Layout" },
     ...(process.env.NODE_ENV === "development"
       ? [{ href: "/authentication", label: "Authentication" }]
       : []),
