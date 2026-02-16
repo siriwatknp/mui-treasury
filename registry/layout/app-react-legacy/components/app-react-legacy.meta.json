@@ -3,5 +3,9 @@
   "type": "registry:item",
   "title": "App React Legacy",
   "description": "A app-react-legacy item.",
-  "meta": {}
+  "meta": {
+    "category": "layout",
+    "screenshot": "/public/screenshots/app-react-legacy.png",
+    "previewPath": "/app-layout/app-react-legacy"
+  }
 }

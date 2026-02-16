@@ -3,5 +3,9 @@
   "type": "registry:item",
   "title": "App Shopping Cart",
   "description": "A app-shopping-cart item.",
-  "meta": {}
+  "meta": {
+    "category": "layout",
+    "screenshot": "/public/screenshots/app-shopping-cart.png",
+    "previewPath": "/app-layout/app-shopping-cart"
+  }
 }

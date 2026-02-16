@@ -2,7 +2,7 @@
 import React from "react";
 import Box, { BoxProps } from "@mui/material/Box";
 import { SxProps, Theme } from "@mui/material/styles";
-import { getBaseGrey, randomBetween } from "./utils";
+import { getBaseGrey } from "./utils";
 
 const createTypography = (generateSx: () => BoxProps["sx"]) => {
   const Component = ({
@@ -33,7 +33,7 @@ const createTypography = (generateSx: () => BoxProps["sx"]) => {
 
 export const H1 = createTypography(() => ({
   height: 40,
-  width: randomBetween(12, 20, "ch"),
+  width: "16ch",
   maxWidth: "100%",
   mt: 3,
   mb: 1,
@@ -49,6 +49,6 @@ export const Text = createTypography(() => ({
 
 export const Word = createTypography(() => ({
   height: 16,
-  width: randomBetween(8, 14, "ch"),
+  width: "10ch",
   maxWidth: "100%",
 }));

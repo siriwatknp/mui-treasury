@@ -42,8 +42,10 @@ interface ComponentPreviewContentProps {
 
 const ComponentPreviewContent = React.memo(
   ({ item, needsIframe }: ComponentPreviewContentProps) => {
+    const hasScreenshotPreview = item.meta.screenshot && item.meta.previewPath;
+
     const DynamicComponent = React.useMemo(() => {
-      if (needsIframe) return null;
+      if (needsIframe || hasScreenshotPreview) return null;
 
       try {
         const componentPath = item.path.replace(".tsx", "");
@@ -85,7 +87,24 @@ const ComponentPreviewContent = React.memo(
           );
         };
       }
-    }, [item.path, needsIframe]);
+    }, [item.path, needsIframe, hasScreenshotPreview]);
+
+    if (hasScreenshotPreview) {
+      return (
+        <a
+          href={item.meta.previewPath}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block w-full h-full"
+        >
+          <img
+            src={item.meta.screenshot!.replace(/^\/public/, "")}
+            alt={item.title}
+            className="w-full h-full object-cover object-top"
+          />
+        </a>
+      );
+    }
 
     if (needsIframe) {
       return (
