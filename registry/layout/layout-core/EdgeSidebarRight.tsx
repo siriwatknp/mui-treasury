@@ -216,36 +216,24 @@ const StyledEdgeSidebarRight = styled(EdgeSidebarRoot, {
           !!permanentAutoCollapse,
         style: ({
           permanentAutoCollapse,
-        }: Required<EdgeSidebarRightOwnerState>) => {
-          const nextBreakpoint =
-            theme.breakpoints.keys[
-              theme.breakpoints.keys.indexOf(permanentAutoCollapse) + 1
-            ];
-          if (!nextBreakpoint) {
-            console.warn(
-              "MUI Treasury Layout: `permanentAutoCollapse` cannot be the largest breakpoint.",
-            );
-            return {};
-          }
-          return {
+        }: Required<EdgeSidebarRightOwnerState>) => ({
+          ".Root:has(&) .EdgeSidebar-R-collapser": {
+            "--_autoCollapse": "1",
+          },
+          [theme.breakpoints.down(permanentAutoCollapse)]: {
+            ".Root:has(&)": {
+              "--jun-ESR-collapsible": "var(--collapsed-R)",
+            },
+          },
+          [theme.breakpoints.up(permanentAutoCollapse)]: {
+            ".Root:has(&)": {
+              "--jun-ESR-collapsible": "var(--uncollapsed-R)",
+            },
             ".Root:has(&) .EdgeSidebar-R-collapser": {
-              "--_autoCollapse": "1",
+              "--_in-autoCollapse": "1",
             },
-            [theme.breakpoints.up(permanentAutoCollapse)]: {
-              ".Root:has(&)": {
-                "--jun-ESR-collapsible": "var(--collapsed-R)",
-              },
-            },
-            [theme.breakpoints.up(nextBreakpoint)]: {
-              ".Root:has(&)": {
-                "--jun-ESR-collapsible": "var(--uncollapsed-R)",
-              },
-              ".Root:has(&) .EdgeSidebar-R-collapser": {
-                "--_in-autoCollapse": "1",
-              },
-            },
-          };
-        },
+          },
+        }),
       },
     ],
   })),

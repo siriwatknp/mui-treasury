@@ -211,36 +211,24 @@ const StyledEdgeSidebar = styled(EdgeSidebarRoot, {
           !!permanentAutoCollapse,
         style: ({
           permanentAutoCollapse,
-        }: Required<EdgeSidebarOwnerState>) => {
-          const nextBreakpoint =
-            theme.breakpoints.keys[
-              theme.breakpoints.keys.indexOf(permanentAutoCollapse) + 1
-            ];
-          if (!nextBreakpoint) {
-            console.warn(
-              "MUI Treasury Layout: `permanentAutoCollapse` cannot be the largest breakpoint.",
-            );
-            return {};
-          }
-          return {
+        }: Required<EdgeSidebarOwnerState>) => ({
+          ".Root:has(&) .EdgeSidebar-collapser": {
+            "--_autoCollapse": "1",
+          },
+          [theme.breakpoints.down(permanentAutoCollapse)]: {
+            ".Root:has(&)": {
+              "--jun-ES-collapsible": "var(--collapsed)",
+            },
+          },
+          [theme.breakpoints.up(permanentAutoCollapse)]: {
+            ".Root:has(&)": {
+              "--jun-ES-collapsible": "var(--uncollapsed)",
+            },
             ".Root:has(&) .EdgeSidebar-collapser": {
-              "--_autoCollapse": "1",
+              "--_in-autoCollapse": "1",
             },
-            [theme.breakpoints.up(permanentAutoCollapse)]: {
-              ".Root:has(&)": {
-                "--jun-ES-collapsible": "var(--collapsed)",
-              },
-            },
-            [theme.breakpoints.up(nextBreakpoint)]: {
-              ".Root:has(&)": {
-                "--jun-ES-collapsible": "var(--uncollapsed)",
-              },
-              ".Root:has(&) .EdgeSidebar-collapser": {
-                "--_in-autoCollapse": "1",
-              },
-            },
-          };
-        },
+          },
+        }),
       },
     ],
   })),
