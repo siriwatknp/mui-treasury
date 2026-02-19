@@ -54,11 +54,6 @@ function applyDrawerStyles(params: DrawerConfig) {
 }
 
 function applyPermanentStyles(params: PermanentConfig) {
-  if ("autoCollapse" in params && !params.collapsedWidth) {
-    console.warn(
-      "MUI Treasury Layout: `collapsedWidth` is required when `autoCollapse` is enabled.",
-    );
-  }
   const { width, collapsedWidth } = params || {};
   const defaultExpandConfig = {
     delay: "0.3s",
@@ -140,10 +135,12 @@ export function triggerEdgeDrawer(options?: {
 
 interface EdgeSidebarOwnerState {
   variant?: Partial<Record<Breakpoint, EdgeSidebarVariant>>;
+  permanentAutoCollapse?: Breakpoint;
 }
 
 interface EdgeSidebarProps {
   variant?: EdgeSidebarVariantInput;
+  permanentAutoCollapse?: Breakpoint;
 }
 
 const StyledEdgeSidebar = styled(EdgeSidebarRoot, {
@@ -189,7 +186,6 @@ const StyledEdgeSidebar = styled(EdgeSidebarRoot, {
       {
         props: ({ variant }: EdgeSidebarOwnerState) => !!variant,
         style: ({ variant }: Required<EdgeSidebarOwnerState>) => {
-          let autoCollapseStyles = {};
           const responsive: Record<string, unknown> = {};
           (Object.keys(variant) as Array<Breakpoint>)
             .sort(
@@ -200,41 +196,6 @@ const StyledEdgeSidebar = styled(EdgeSidebarRoot, {
               const variantTuple = variant[breakpoint];
               if (variantTuple) {
                 const [variantName, params = {}] = variantTuple;
-                if (variantName === "permanent") {
-                  const permanentParams = params as PermanentConfig;
-                  if (permanentParams.autoCollapse) {
-                    const nextBreakpoint =
-                      theme.breakpoints.keys[
-                        theme.breakpoints.keys.indexOf(
-                          permanentParams.autoCollapse,
-                        ) + 1
-                      ];
-                    if (!nextBreakpoint) {
-                      console.warn(
-                        "MUI Treasury Layout: `autoCollapse` cannot be the largest breakpoint.",
-                      );
-                    } else {
-                      autoCollapseStyles = {
-                        ".Root:has(&) .EdgeSidebar-collapser": {
-                          "--_autoCollapse": "1",
-                        },
-                        [theme.breakpoints.up(permanentParams.autoCollapse)]: {
-                          ".Root:has(&)": {
-                            "--jun-ES-collapsible": "var(--collapsed)",
-                          },
-                        },
-                        [theme.breakpoints.up(nextBreakpoint)]: {
-                          ".Root:has(&)": {
-                            "--jun-ES-collapsible": "var(--uncollapsed)",
-                          },
-                          ".Root:has(&) .EdgeSidebar-collapser": {
-                            "--_in-autoCollapse": "1",
-                          },
-                        },
-                      };
-                    }
-                  }
-                }
                 const variantStyles = {
                   drawer: applyDrawerStyles,
                   permanent: applyPermanentStyles,
@@ -242,9 +203,42 @@ const StyledEdgeSidebar = styled(EdgeSidebarRoot, {
                 responsive[theme.breakpoints.up(breakpoint)] = variantStyles;
               }
             });
+          return responsive;
+        },
+      },
+      {
+        props: ({ permanentAutoCollapse }: EdgeSidebarOwnerState) =>
+          !!permanentAutoCollapse,
+        style: ({
+          permanentAutoCollapse,
+        }: Required<EdgeSidebarOwnerState>) => {
+          const nextBreakpoint =
+            theme.breakpoints.keys[
+              theme.breakpoints.keys.indexOf(permanentAutoCollapse) + 1
+            ];
+          if (!nextBreakpoint) {
+            console.warn(
+              "MUI Treasury Layout: `permanentAutoCollapse` cannot be the largest breakpoint.",
+            );
+            return {};
+          }
           return {
-            ...responsive,
-            ...autoCollapseStyles,
+            ".Root:has(&) .EdgeSidebar-collapser": {
+              "--_autoCollapse": "1",
+            },
+            [theme.breakpoints.up(permanentAutoCollapse)]: {
+              ".Root:has(&)": {
+                "--jun-ES-collapsible": "var(--collapsed)",
+              },
+            },
+            [theme.breakpoints.up(nextBreakpoint)]: {
+              ".Root:has(&)": {
+                "--jun-ES-collapsible": "var(--uncollapsed)",
+              },
+              ".Root:has(&) .EdgeSidebar-collapser": {
+                "--_in-autoCollapse": "1",
+              },
+            },
           };
         },
       },
@@ -258,7 +252,10 @@ const EdgeSidebar = React.forwardRef<
   HTMLDivElement,
   Omit<React.ComponentPropsWithoutRef<typeof StyledEdgeSidebar>, "ownerState"> &
     EdgeSidebarProps
->(function EdgeSidebar({ className, variant = defaultVariant, ...props }, ref) {
+>(function EdgeSidebar(
+  { className, variant = defaultVariant, permanentAutoCollapse, ...props },
+  ref,
+) {
   const normalizedVariant = useMemo(
     () => (Array.isArray(variant) ? { xs: variant } : variant),
     [variant],
@@ -266,8 +263,9 @@ const EdgeSidebar = React.forwardRef<
   const ownerState = useMemo(
     () => ({
       variant: normalizedVariant,
+      permanentAutoCollapse,
     }),
-    [normalizedVariant],
+    [normalizedVariant, permanentAutoCollapse],
   );
   const hasWithoutOverlay = Object.values(normalizedVariant).some(
     (v) => v?.[0] === "drawer" && (v[1] as DrawerConfig)?.withoutOverlay,

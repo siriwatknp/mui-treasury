@@ -9,7 +9,6 @@ export type DrawerConfig = {
 };
 export type PermanentConfig = {
   width?: string;
-  autoCollapse?: Breakpoint;
   collapsedWidth?: string;
   expandOnHover?:
     | true

@@ -72,6 +72,7 @@ export default function AppDashboardPage() {
 
       <EdgeSidebar
         id={SIDEBAR_ID}
+        permanentAutoCollapse="lg"
         variant={{
           xs: ["drawer", { width: "260px" }],
           md: [

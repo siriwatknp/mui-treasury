@@ -89,12 +89,12 @@ export function LayoutV6AppAnalytics() {
         </Box>
       </Header>
       <EdgeSidebar
+        permanentAutoCollapse="xl"
         variant={{
           xs: ["drawer"],
           lg: [
             "permanent",
             {
-              autoCollapse: "xl",
               width: "300px",
               collapsedWidth: "80px",
               expandOnHover: true,
