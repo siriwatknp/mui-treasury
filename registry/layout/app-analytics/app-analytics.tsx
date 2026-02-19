@@ -17,6 +17,7 @@ import EdgeSidebarContent from "../layout-core/EdgeSidebarContent";
 import EdgeDrawerClose from "../layout-core/EdgeDrawerClose";
 import Header from "../layout-core/Header";
 import Root from "../layout-core/Root";
+import { layoutClasses } from "../layout-core/layoutClasses";
 import {
   IconNavMockup,
   LinkNavMockup,
@@ -66,18 +67,20 @@ export function LayoutV6AppAnalytics() {
           }}
         >
           <IconButton
-            className="EdgeDrawerTrigger"
+            className={layoutClasses.EdgeDrawerTrigger}
             onClick={() => triggerEdgeDrawer()}
           >
             <MenuRounded />
           </IconButton>
 
           <IconButton
-            className="EdgeSidebar-collapser"
+            className={layoutClasses.EdgeSidebarCollapser}
             onClick={(event) => triggerEdgeCollapse({ event })}
           >
-            <MenuRounded className="EdgeUncollapsedVisible" />
-            <ChevronLeftRounded className="EdgeCollapsedVisible" />
+            <MenuRounded className={layoutClasses.EdgeUncollapsedVisible} />
+            <ChevronLeftRounded
+              className={layoutClasses.EdgeCollapsedVisible}
+            />
           </IconButton>
 
           <Typography

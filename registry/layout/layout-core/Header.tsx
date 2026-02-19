@@ -3,6 +3,7 @@ import React, { useMemo } from "react";
 import { Breakpoint } from "@mui/material/styles";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 import { styled } from "@mui/material/styles";
+import { layoutClasses } from "./layoutClasses";
 
 type ClipSide = "left" | "right" | "both";
 
@@ -12,28 +13,28 @@ interface HeaderProps {
 }
 
 const CLIP_BOTH = `
-    "Header Header Header"
-    "EdgeSidebar Content EdgeSidebar-R"
-    "EdgeSidebar Footer EdgeSidebar-R"
+    "${layoutClasses.Header} ${layoutClasses.Header} ${layoutClasses.Header}"
+    "${layoutClasses.EdgeSidebar} ${layoutClasses.Content} ${layoutClasses.EdgeSidebarRight}"
+    "${layoutClasses.EdgeSidebar} ${layoutClasses.Footer} ${layoutClasses.EdgeSidebarRight}"
   `;
 
 const CLIP_LEFT = `
-    "Header Header EdgeSidebar-R"
-    "EdgeSidebar Content EdgeSidebar-R"
-    "EdgeSidebar Footer EdgeSidebar-R"
+    "${layoutClasses.Header} ${layoutClasses.Header} ${layoutClasses.EdgeSidebarRight}"
+    "${layoutClasses.EdgeSidebar} ${layoutClasses.Content} ${layoutClasses.EdgeSidebarRight}"
+    "${layoutClasses.EdgeSidebar} ${layoutClasses.Footer} ${layoutClasses.EdgeSidebarRight}"
   `;
 
 const CLIP_RIGHT = `
-    "EdgeSidebar Header Header"
-    "EdgeSidebar Content EdgeSidebar-R"
-    "EdgeSidebar Footer EdgeSidebar-R"
+    "${layoutClasses.EdgeSidebar} ${layoutClasses.Header} ${layoutClasses.Header}"
+    "${layoutClasses.EdgeSidebar} ${layoutClasses.Content} ${layoutClasses.EdgeSidebarRight}"
+    "${layoutClasses.EdgeSidebar} ${layoutClasses.Footer} ${layoutClasses.EdgeSidebarRight}"
   `;
 
 function getClipStyles(side: ClipSide) {
   if (side === "left") {
     return {
       gridTemplateAreas: CLIP_LEFT,
-      "& .EdgeSidebar": {
+      [`& .${layoutClasses.EdgeSidebar}`]: {
         "--jun-H-clip-h": "var(--jun-H-h)",
       },
     };
@@ -41,7 +42,7 @@ function getClipStyles(side: ClipSide) {
   if (side === "right") {
     return {
       gridTemplateAreas: CLIP_RIGHT,
-      "& .EdgeSidebar-R": {
+      [`& .${layoutClasses.EdgeSidebarRight}`]: {
         "--jun-H-clip-h": "var(--jun-H-h)",
       },
     };
@@ -59,7 +60,7 @@ const StyledHeader = styled("header", {
   ownerState: HeaderProps;
 }>(
   memoTheme(({ theme }) => ({
-    gridArea: "Header",
+    gridArea: layoutClasses.Header,
     minHeight: 56,
     alignContent: "center",
     display: "flex",
@@ -75,7 +76,7 @@ const StyledHeader = styled("header", {
         props: ({ height }: HeaderProps) => !!height,
         style: ({ height }: Required<HeaderProps>) =>
           theme.unstable_sx({
-            ".Root:has(&)": {
+            [`.${layoutClasses.Root}:has(&)`]: {
               "--jun-H-h": height,
             },
           }),
@@ -104,7 +105,7 @@ const StyledHeader = styled("header", {
 
           return {
             zIndex: 3,
-            ".Root:has(&)": rootStyles,
+            [`.${layoutClasses.Root}:has(&)`]: rootStyles,
           };
         },
       },
@@ -127,7 +128,7 @@ const Header = React.forwardRef<
   return (
     <StyledHeader
       ref={ref}
-      className={`Header ${className || ""}`}
+      className={`${layoutClasses.Header} ${className || ""}`}
       ownerState={ownerState}
       {...props}
     />

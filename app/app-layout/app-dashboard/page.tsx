@@ -29,6 +29,7 @@ import EdgeSidebar, {
   triggerEdgeDrawer,
 } from "@/registry/layout/layout-core/EdgeSidebar";
 import EdgeSidebarContent from "@/registry/layout/layout-core/EdgeSidebarContent";
+import { layoutClasses } from "@/registry/layout/layout-core/layoutClasses";
 
 const SIDEBAR_ID = "app-dashboard-sidebar";
 
@@ -49,15 +50,15 @@ export default function AppDashboardPage() {
     <Root>
       <Header height="64px" clip="left">
         <IconButton
-          className="EdgeDrawerTrigger"
+          className={layoutClasses.EdgeDrawerTrigger}
           onClick={() => triggerEdgeDrawer({ sidebarId: SIDEBAR_ID })}
           sx={{ ml: 1 }}
         >
-          <MenuRounded className="EdgeDrawerClosed-visible" />
-          <CloseRounded className="EdgeDrawerOpen-visible" />
+          <MenuRounded className={layoutClasses.EdgeDrawerClosedVisible} />
+          <CloseRounded className={layoutClasses.EdgeDrawerOpenVisible} />
         </IconButton>
         <IconButton
-          className="EdgeSidebar-collapser"
+          className={layoutClasses.EdgeSidebarCollapser}
           onClick={(event) =>
             triggerEdgeCollapse({ event, sidebarId: SIDEBAR_ID })
           }
@@ -124,20 +125,20 @@ export default function AppDashboardPage() {
 
           <Box sx={{ borderTop: 1, borderColor: "divider" }}>
             <ListItemButton
-              className="EdgeSidebar-collapser"
+              className={layoutClasses.EdgeSidebarCollapser}
               onClick={(event) =>
                 triggerEdgeCollapse({ event, sidebarId: SIDEBAR_ID })
               }
-              sx={{ minHeight: 60, px: 1.5 }}
+              sx={{ minHeight: 60, px: 1.5, width: "100%" }}
             >
               <ListItemIcon sx={{ minWidth: 40 }}>
                 <ChevronLeftRounded
                   fontSize="small"
-                  className="EdgeUncollapsedVisible"
+                  className={layoutClasses.EdgeUncollapsedVisible}
                 />
                 <ChevronRightRounded
                   fontSize="small"
-                  className="EdgeCollapsedVisible"
+                  className={layoutClasses.EdgeCollapsedVisible}
                 />
               </ListItemIcon>
               <ListItemText

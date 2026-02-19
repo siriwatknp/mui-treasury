@@ -23,6 +23,7 @@ import InsetContainer from "../layout-core/InsetContainer";
 import InsetSidebar from "../layout-core/InsetSidebar";
 import InsetSidebarContent from "../layout-core/InsetSidebarContent";
 import Root from "../layout-core/Root";
+import { layoutClasses } from "../layout-core/layoutClasses";
 
 const StyledToolbar = styled(Toolbar)(({ theme: { breakpoints } }) => ({
   minHeight: 60,
@@ -98,7 +99,7 @@ export function LayoutV6AppReactLegacy() {
   return (
     <Root>
       <StyledFab
-        className="EdgeDrawerTrigger-R"
+        className={layoutClasses.EdgeDrawerTriggerRight}
         color={"primary"}
         onClick={() => {
           triggerEdgeDrawerRight();

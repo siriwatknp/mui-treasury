@@ -2,6 +2,7 @@
 import React from "react";
 import { BoxProps } from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
+import { layoutClasses } from "./layoutClasses";
 
 const InsetSidebarContentRoot = styled("div")(({ theme }) => ({
   display: "flex",
@@ -37,7 +38,7 @@ const InsetSidebarContent = React.forwardRef<HTMLDivElement, BoxProps>(
       // @ts-expect-error BoxProps on styled native element
       <InsetSidebarContentRoot
         ref={ref}
-        className={`InsetSidebarContent ${className || ""}`}
+        className={`${layoutClasses.InsetSidebarContent} ${className || ""}`}
         {...props}
       >
         {children}

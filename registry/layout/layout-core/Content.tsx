@@ -2,6 +2,7 @@
 import React from "react";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 import { styled } from "@mui/material/styles";
+import { layoutClasses } from "./layoutClasses";
 
 const StyledContent = styled("main", {
   name: "LayoutContent",
@@ -10,13 +11,13 @@ const StyledContent = styled("main", {
   memoTheme(() => ({
     "--_overflow": "var(--content-overflow)",
     overflow: "var(--_overflow)" as never,
-    gridArea: "Content",
+    gridArea: layoutClasses.Content,
     minHeight: 0,
-    "&:has(> .InsetSidebar)": {
+    [`&:has(> .${layoutClasses.InsetSidebar})`]: {
       display: "flex",
       flexFlow: "row nowrap",
       flexGrow: 1,
-      [`& > *:where(:not([class*="InsetSidebar"]))`]: {
+      [`& > *:where(:not([class*="${layoutClasses.InsetSidebar}"]))`]: {
         flexGrow: 1,
         overflow: "auto",
       },
@@ -31,7 +32,7 @@ const Content = React.forwardRef<
   return (
     <StyledContent
       ref={ref}
-      className={`Content ${className || ""}`}
+      className={`${layoutClasses.Content} ${className || ""}`}
       {...props}
     />
   );

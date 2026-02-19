@@ -3,6 +3,7 @@ import React, { useMemo } from "react";
 import { Breakpoint } from "@mui/material/styles";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 import { styled } from "@mui/material/styles";
+import { layoutClasses } from "./layoutClasses";
 
 interface RootProps {
   height?: string | Record<Breakpoint, string> | Record<string, string>;
@@ -41,16 +42,16 @@ const StyledRoot = styled("div", {
     gridTemplateColumns:
       "var(--_start-col, 0px) minmax(0, 1fr) var(--_end-col, 0px)",
     gridTemplateAreas: `
-    "EdgeSidebar Header EdgeSidebar-R"
-    "EdgeSidebar Content EdgeSidebar-R"
-    "EdgeSidebar Footer EdgeSidebar-R"
+    "${layoutClasses.EdgeSidebar} ${layoutClasses.Header} ${layoutClasses.EdgeSidebarRight}"
+    "${layoutClasses.EdgeSidebar} ${layoutClasses.Content} ${layoutClasses.EdgeSidebarRight}"
+    "${layoutClasses.EdgeSidebar} ${layoutClasses.Footer} ${layoutClasses.EdgeSidebarRight}"
   `,
 
-    [`&:has(.EdgeSidebar)`]: {
+    [`&:has(.${layoutClasses.EdgeSidebar})`]: {
       "--_start-col": "max-content",
       "--jun-ES-drawerOpen": "0",
     },
-    [`&:has(.EdgeSidebar-R)`]: {
+    [`&:has(.${layoutClasses.EdgeSidebarRight})`]: {
       "--_end-col": "max-content",
       "--jun-ES-drawerOpen": "0",
     },
@@ -90,7 +91,7 @@ const Root = React.forwardRef<
   return (
     <StyledRoot
       ref={ref}
-      className={`Root ${className || ""}`}
+      className={`${layoutClasses.Root} ${className || ""}`}
       ownerState={ownerState}
       {...props}
     />

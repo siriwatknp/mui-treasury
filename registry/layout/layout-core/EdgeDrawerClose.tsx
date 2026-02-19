@@ -3,6 +3,7 @@ import React from "react";
 import { SxProps } from "@mui/material/styles";
 import { styled } from "@mui/material/styles";
 import { triggerEdgeDrawer } from "./EdgeSidebar";
+import { layoutClasses } from "./layoutClasses";
 
 const StyledEdgeDrawerClose = styled("button")({
   display: "var(--_drawer, flex) var(--_permanent, none)",
@@ -41,7 +42,7 @@ const EdgeDrawerClose = React.forwardRef<
   return (
     <StyledEdgeDrawerClose
       ref={ref}
-      className={`EdgeDrawerClose ${className || ""}`}
+      className={`${layoutClasses.EdgeDrawerClose} ${className || ""}`}
       onClick={() =>
         triggerEdgeDrawer({
           state: false,

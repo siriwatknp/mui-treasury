@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { styled } from "@mui/material/styles";
+import { layoutClasses } from "./layoutClasses";
 
 const StyledEdgeSidebarContent = styled("div", {
   name: "LayoutEdgeSidebarContent",
@@ -46,7 +47,7 @@ const EdgeSidebarContent = React.forwardRef<
   return (
     <StyledEdgeSidebarContent
       ref={ref}
-      className={`EdgeSidebarContent ${className || ""}`}
+      className={`${layoutClasses.EdgeSidebarContent} ${className || ""}`}
       {...props}
     />
   );

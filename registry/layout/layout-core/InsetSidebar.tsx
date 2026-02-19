@@ -3,6 +3,7 @@ import React, { useMemo } from "react";
 import { Breakpoint } from "@mui/material/styles";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 import { styled } from "@mui/material/styles";
+import { layoutClasses } from "./layoutClasses";
 
 interface InsetSidebarProps {
   position?: "fixed" | "absolute" | "sticky";
@@ -37,10 +38,10 @@ const StyledInsetSidebar = styled("aside", {
         style: ({ width }: Required<InsetSidebarProps>) =>
           theme.unstable_sx({
             width,
-            ".Root:has(&:not(:last-child))": {
+            [`.${layoutClasses.Root}:has(&:not(:last-child))`]: {
               "--jun-ISL-w": width,
             },
-            ".Root:has(&:last-child)": {
+            [`.${layoutClasses.Root}:has(&:last-child)`]: {
               "--jun-ISR-w": width,
             },
             // TODO: this should be removed. Better to let user handle the display of the sidebar
@@ -83,7 +84,7 @@ const InsetSidebar = React.forwardRef<
   return (
     <StyledInsetSidebar
       ref={ref}
-      className={`InsetSidebar ${className || ""}`}
+      className={`${layoutClasses.InsetSidebar} ${className || ""}`}
       ownerState={ownerState}
       {...props}
     />
