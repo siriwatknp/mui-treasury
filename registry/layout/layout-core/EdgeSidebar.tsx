@@ -96,9 +96,14 @@ function applyPermanentStyles(params: PermanentConfig) {
       },
     },
     ...(collapsedWidth && {
+      /** Collapsible feature */
       [`.${layoutClasses.Root}:has(&[${layoutAttrs.isEdgeSidebarCollapsed}])`]:
         {
           "--jun-ES-collapsible": "var(--collapsed)",
+        },
+      [`.${layoutClasses.Root}:has(&[${layoutAttrs.isEdgeSidebarUncollapsed}])`]:
+        {
+          "--jun-ES-collapsible": "var(--uncollapsed)",
         },
     }),
     ...(expandConfig && {

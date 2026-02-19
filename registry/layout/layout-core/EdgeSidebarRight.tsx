@@ -99,9 +99,14 @@ function applyPermanentRightStyles(params: PermanentConfig) {
       },
     },
     ...(collapsedWidth && {
+      /** Collapsible feature */
       [`.${layoutClasses.Root}:has(&[${layoutAttrs.isEdgeSidebarCollapsed}])`]:
         {
           "--jun-ESR-collapsible": "var(--collapsed-R)",
+        },
+      [`.${layoutClasses.Root}:has(&[${layoutAttrs.isEdgeSidebarUncollapsed}])`]:
+        {
+          "--jun-ESR-collapsible": "var(--uncollapsed-R)",
         },
     }),
     ...(expandConfig && {
