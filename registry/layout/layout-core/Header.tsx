@@ -1,14 +1,12 @@
 "use client";
 import React, { useMemo } from "react";
-import { Breakpoint, SxProps, Theme } from "@mui/material/styles";
+import { Breakpoint } from "@mui/material/styles";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 import { styled } from "@mui/material/styles";
 
 interface HeaderProps {
   height?: string | Partial<Record<Breakpoint, string>>;
   fullWidth?: boolean | Breakpoint;
-  sx?: SxProps<Theme>;
-  className?: string;
 }
 
 const FULL_WIDTH_CLIP = `
@@ -67,8 +65,9 @@ const StyledHeader = styled("header", {
 
 const Header = React.forwardRef<
   HTMLElement,
-  React.PropsWithChildren<HeaderProps>
->(function Header({ className, height, fullWidth, sx, ...props }, ref) {
+  Omit<React.ComponentPropsWithoutRef<typeof StyledHeader>, "ownerState"> &
+    HeaderProps
+>(function Header({ className, height, fullWidth, ...props }, ref) {
   const ownerState = useMemo(
     () => ({
       height,
@@ -81,7 +80,6 @@ const Header = React.forwardRef<
       ref={ref}
       className={`Header ${className || ""}`}
       ownerState={ownerState}
-      sx={sx}
       {...props}
     />
   );

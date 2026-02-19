@@ -1,24 +1,11 @@
 "use client";
-import React from "react";
-import { BoxProps } from "@mui/material/Box";
+import Container from "@mui/material/Container";
 import { styled } from "@mui/material/styles";
 
-export function applyInsetContainerStyles() {
-  return {
-    display: "flex",
-    flexFlow: "row nowrap",
-    flexGrow: 1,
-    [`& > *:where(:not([class*="InsetSidebar"]))`]: {
-      flexGrow: 1,
-      overflow: "auto",
-    },
-  };
-}
-
-const StyledInsetContainer = styled("div")<{
-  leftSidebar?: React.ReactElement;
-  rightSidebar?: React.ReactElement;
-}>({
+const InsetContainer = styled(Container, {
+  name: "LayoutInsetContainer",
+  slot: "root",
+})({
   display: "flex",
   flexFlow: "row nowrap",
   flexGrow: 1,
@@ -27,37 +14,5 @@ const StyledInsetContainer = styled("div")<{
     overflow: "auto",
   },
 });
-
-const InsetContainer = React.forwardRef<
-  HTMLDivElement,
-  BoxProps & {
-    leftSidebar?: React.ReactElement;
-    rightSidebar?: React.ReactElement;
-  }
->(function InsetContainer(
-  { className, children, leftSidebar, rightSidebar, ...props },
-  ref,
-) {
-  return (
-    // @ts-expect-error BoxProps on styled native element
-    <StyledInsetContainer
-      ref={ref}
-      className={`InsetContainer ${className || ""}`}
-      {...props}
-    >
-      {leftSidebar &&
-        React.cloneElement(leftSidebar, { anchor: "left" } as Record<
-          string,
-          unknown
-        >)}
-      {children}
-      {rightSidebar &&
-        React.cloneElement(rightSidebar, { anchor: "right" } as Record<
-          string,
-          unknown
-        >)}
-    </StyledInsetContainer>
-  );
-}) as unknown as typeof StyledInsetContainer;
 
 export default InsetContainer;

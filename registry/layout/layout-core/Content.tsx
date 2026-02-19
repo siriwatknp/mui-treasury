@@ -1,19 +1,32 @@
 "use client";
 import React from "react";
-import { BoxProps } from "@mui/material/Box";
+import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 import { styled } from "@mui/material/styles";
 
-const StyledContent = styled("main")({
-  gridArea: "Content",
-  minHeight: 0,
-});
+const StyledContent = styled("main", {
+  name: "LayoutContent",
+  slot: "root",
+})(
+  memoTheme(() => ({
+    gridArea: "Content",
+    minHeight: 0,
+    "&:has(> .InsetSidebar)": {
+      display: "flex",
+      flexFlow: "row nowrap",
+      flexGrow: 1,
+      [`& > *:where(:not([class*="InsetSidebar"]))`]: {
+        flexGrow: 1,
+        overflow: "auto",
+      },
+    },
+  })),
+);
 
-const Content = React.forwardRef<HTMLElement, BoxProps>(function Content(
-  { className, ...props },
-  ref,
-) {
+const Content = React.forwardRef<
+  HTMLElement,
+  React.ComponentProps<typeof StyledContent>
+>(function Content({ className, ...props }, ref) {
   return (
-    // @ts-expect-error BoxProps on styled native element
     <StyledContent
       ref={ref}
       className={`Content ${className || ""}`}

@@ -1,72 +1,92 @@
 "use client";
-import React from "react";
-import { BoxProps } from "@mui/material/Box";
+import React, { useMemo } from "react";
 import { Breakpoint } from "@mui/material/styles";
+import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 import { styled } from "@mui/material/styles";
 
-export function applyInsetSidebarStyles(params: {
-  width: string | Partial<Record<Breakpoint, string>>;
-}) {
-  const { width } = params;
-  return {
-    width,
-    ".Root:has(&:not(:last-child))": {
-      [`--InsetSidebarL-width`]: width,
-    },
-    ".Root:has(&:last-child)": {
-      [`--InsetSidebarR-width`]: width,
-    },
-    ...(typeof width !== "string" && {
-      display: {
-        xs: "none",
-        [Object.keys(width)[0]]: "block",
-      },
-    }),
-  };
+interface InsetSidebarProps {
+  position?: "fixed" | "absolute" | "sticky";
+  width?: string | Partial<Record<Breakpoint, string>>;
 }
 
-const InsetSidebarRoot = styled("aside")({
-  "--InsetSidebar-position": "var(--sticky)",
-  "--sticky": "var(--InsetSidebar-position,)",
-  "--fixed": "var(--InsetSidebar-position,)",
-  "--absolute": "var(--InsetSidebar-position,)",
-  "--anchor-right": "var(--InsetSidebar-anchor,)",
-  "--anchor-left": "var(--InsetSidebar-anchor,)",
-  width: "200px",
-  position: "relative",
-  flexShrink: 0,
-  "&:not(:last-child)": {
-    "--InsetSidebar-anchor": "var(--anchor-left)",
-  },
-  "&:last-child": {
-    "--InsetSidebar-anchor": "var(--anchor-right)",
-  },
-});
+const StyledInsetSidebar = styled("aside", {
+  name: "LayoutInsetSidebar",
+  slot: "root",
+})<{
+  ownerState: InsetSidebarProps;
+}>(
+  memoTheme(({ theme }) => ({
+    "--InsetSidebar-position": "var(--sticky)",
+    "--sticky": "var(--InsetSidebar-position,)",
+    "--fixed": "var(--InsetSidebar-position,)",
+    "--absolute": "var(--InsetSidebar-position,)",
+    "--anchor-right": "var(--InsetSidebar-anchor,)",
+    "--anchor-left": "var(--InsetSidebar-anchor,)",
+    width: "200px",
+    position: "relative",
+    flexShrink: 0,
+    "&:not(:last-child)": {
+      "--InsetSidebar-anchor": "var(--anchor-left)",
+    },
+    "&:last-child": {
+      "--InsetSidebar-anchor": "var(--anchor-right)",
+    },
+    variants: [
+      {
+        props: ({ width }: InsetSidebarProps) => !!width,
+        style: ({ width }: Required<InsetSidebarProps>) =>
+          theme.unstable_sx({
+            width,
+            ".Root:has(&:not(:last-child))": {
+              "--InsetSidebarL-width": width,
+            },
+            ".Root:has(&:last-child)": {
+              "--InsetSidebarR-width": width,
+            },
+            // TODO: this should be removed. Better to let user handle the display of the sidebar
+            ...(typeof width !== "string" && {
+              display: {
+                xs: "none",
+                [Object.keys(width)[0]]: "block",
+              },
+            }),
+          }),
+      },
+      {
+        props: { position: "fixed" },
+        style: {
+          "--InsetSidebar-position": "var(--fixed)",
+        },
+      },
+      {
+        props: { position: "absolute" },
+        style: {
+          "--InsetSidebar-position": "var(--absolute)",
+        },
+      },
+    ],
+  })),
+);
 
 const InsetSidebar = React.forwardRef<
   HTMLDivElement,
-  BoxProps & {
-    position?: "fixed" | "absolute" | "sticky";
-  }
->(function InsetSidebar(
-  { className, style, position = "sticky", children, ...props },
-  ref,
-) {
+  Omit<React.ComponentProps<typeof StyledInsetSidebar>, "ownerState"> &
+    InsetSidebarProps
+>(function InsetSidebar({ className, position, width, ...props }, ref) {
+  const ownerState = useMemo(
+    () => ({
+      position,
+      width,
+    }),
+    [position, width],
+  );
   return (
-    // @ts-expect-error BoxProps on styled native element
-    <InsetSidebarRoot
+    <StyledInsetSidebar
       ref={ref}
       className={`InsetSidebar ${className || ""}`}
+      ownerState={ownerState}
       {...props}
-      style={{
-        ...style,
-        ...(position !== "sticky" && {
-          "--InsetSidebar-position": `var(--${position})`,
-        }),
-      }}
-    >
-      {children}
-    </InsetSidebarRoot>
+    />
   );
 });
 

@@ -8,15 +8,14 @@ import type {
 import { BoxProps } from "@mui/material/Box";
 import { Breakpoint, Theme } from "@mui/material/styles";
 import { styled } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 import {
   EdgeSidebarRoot,
   internalCollapseSidebar,
   internalToggleSidebar,
 } from "./SharedEdgeSidebar";
 
-export function applyTemporaryRightStyles(
-  params: Omit<TemporaryConfig, "variant">,
-) {
+function applyTemporaryRightStyles(params: Omit<TemporaryConfig, "variant">) {
   const { width = "300px" } = params || {};
   return {
     "--EdgeSidebar-temporaryWidth": "0px",
@@ -32,9 +31,7 @@ export function applyTemporaryRightStyles(
   };
 }
 
-export function applyPersistentRightStyles(
-  params: Omit<PersistentConfig, "variant">,
-) {
+function applyPersistentRightStyles(params: Omit<PersistentConfig, "variant">) {
   const { width = "256px", persistentBehavior = "fit" } = params || {};
   return {
     ".Root:has(&)": {
@@ -78,9 +75,7 @@ export function applyPersistentRightStyles(
   };
 }
 
-export function applyPermanentRightStyles(
-  params: Omit<PermanentConfig, "variant">,
-) {
+function applyPermanentRightStyles(params: Omit<PermanentConfig, "variant">) {
   if ("autoCollapse" in params && !params.collapsedWidth) {
     console.warn(
       "MUI Treasury Layout: `collapsedWidth` is required when `autoCollapse` is enabled.",
@@ -170,7 +165,7 @@ export function toggleTemporaryEdgeSidebarRight(options?: {
   internalToggleSidebar({ ...options, selector });
 }
 
-export function applyEdgeSidebarRightStyles(
+function applyEdgeSidebarRightStyles(
   theme: Theme,
   params: {
     config: Partial<
@@ -269,17 +264,27 @@ const StyledEdgeSidebarRight = styled(EdgeSidebarRoot)({
   },
 });
 
-const EdgeSidebarRight = React.forwardRef<HTMLDivElement, BoxProps>(
-  function EdgeSidebar({ className, ...props }, ref) {
-    return (
-      // @ts-expect-error BoxProps on styled native element
-      <StyledEdgeSidebarRight
-        ref={ref}
-        {...props}
-        className={`EdgeSidebar-R ${className || ""}`}
-      />
-    );
-  },
-);
+type EdgeSidebarRightConfig = Partial<
+  Record<Breakpoint, TemporaryConfig | PersistentConfig | PermanentConfig>
+>;
+
+const EdgeSidebarRight = React.forwardRef<
+  HTMLDivElement,
+  BoxProps & { config?: EdgeSidebarRightConfig }
+>(function EdgeSidebar({ className, config, sx, ...props }, ref) {
+  const theme = useTheme();
+  const configStyles = config
+    ? applyEdgeSidebarRightStyles(theme, { config })
+    : {};
+  return (
+    // @ts-expect-error BoxProps on styled native element
+    <StyledEdgeSidebarRight
+      ref={ref}
+      sx={[configStyles, ...(Array.isArray(sx) ? sx : [sx])]}
+      {...props}
+      className={`EdgeSidebar-R ${className || ""}`}
+    />
+  );
+});
 
 export default EdgeSidebarRight;

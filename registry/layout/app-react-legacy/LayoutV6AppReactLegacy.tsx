@@ -13,17 +13,14 @@ import Typography from "@mui/material/Typography";
 import Content from "../layout-core/Content";
 import SidebarContent from "../layout-core/EdgeSidebarContent";
 import EdgeSidebarRight, {
-  applyEdgeSidebarRightStyles,
   toggleTemporaryEdgeSidebarRight,
 } from "../layout-core/EdgeSidebarRight";
 import EdgeTemporaryClose from "../layout-core/EdgeTemporaryClose";
 import Footer from "../layout-core/Footer";
-import Header, { applyHeaderStyles } from "../layout-core/Header";
+import Header from "../layout-core/Header";
 import InsetAvoidingView from "../layout-core/InsetAvoidingView";
 import InsetContainer from "../layout-core/InsetContainer";
-import InsetSidebar, {
-  applyInsetSidebarStyles,
-} from "../layout-core/InsetSidebar";
+import InsetSidebar from "../layout-core/InsetSidebar";
 import InsetSidebarContent from "../layout-core/InsetSidebarContent";
 import Root from "../layout-core/Root";
 
@@ -110,14 +107,12 @@ export function LayoutV6AppReactLegacy() {
         <UnfoldMore />
       </StyledFab>
       <Header
+        height="60px"
         sx={{
           position: "sticky",
           top: 0,
           bgcolor: "#232323",
           zIndex: 1,
-          ...applyHeaderStyles({
-            height: "60px",
-          }),
         }}
       >
         <Container>
@@ -127,44 +122,26 @@ export function LayoutV6AppReactLegacy() {
         </Container>
       </Header>
       <EdgeSidebarRight
-        sx={(theme) => ({
-          ...applyEdgeSidebarRightStyles(theme, {
-            config: {
-              xs: {
-                variant: "temporary",
-              },
-              md: {
-                variant: "persistent",
-                persistentBehavior: "none",
-              },
-            },
-          }),
-        })}
+        config={{
+          xs: {
+            variant: "temporary",
+          },
+          md: {
+            variant: "persistent",
+            persistentBehavior: "none",
+          },
+        }}
       >
         <EdgeTemporaryClose />
         <SidebarContent>{sidebarContent}</SidebarContent>
       </EdgeSidebarRight>
       <Content>
-        <Container>
-          <InsetContainer
-            rightSidebar={
-              <InsetSidebar
-                position="fixed"
-                sx={{
-                  ...applyInsetSidebarStyles({
-                    width: {
-                      md: "256px",
-                    },
-                  }),
-                }}
-              >
-                <InsetSidebarContent>{sidebarContent}</InsetSidebarContent>
-              </InsetSidebar>
-            }
-          >
-            <ReactContent />
-          </InsetContainer>
-        </Container>
+        <InsetContainer>
+          <ReactContent />
+          <InsetSidebar position="fixed" width={{ md: "256px" }}>
+            <InsetSidebarContent>{sidebarContent}</InsetSidebarContent>
+          </InsetSidebar>
+        </InsetContainer>
       </Content>
       <Footer>
         <Box bgcolor={"rgb(40, 44, 52)"}>

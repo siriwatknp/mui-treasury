@@ -8,6 +8,7 @@ import type {
 import { BoxProps } from "@mui/material/Box";
 import { Breakpoint, Theme } from "@mui/material/styles";
 import { styled } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 import {
   EdgeSidebarRoot,
   internalCollapseSidebar,
@@ -128,7 +129,7 @@ function applyPermanentStyles(params: Omit<PermanentConfig, "variant">) {
   };
 }
 
-export function applyEdgeSidebarStyles(
+function applyEdgeSidebarStyles(
   theme: Theme,
   params: {
     config: Partial<
@@ -254,17 +255,25 @@ const StyledEdgeSidebarLeft = styled(EdgeSidebarRoot)({
   },
 });
 
-const EdgeSidebar = React.forwardRef<HTMLDivElement, BoxProps>(
-  function EdgeSidebar({ className, ...props }, ref) {
-    return (
-      // @ts-expect-error BoxProps on styled native element
-      <StyledEdgeSidebarLeft
-        ref={ref}
-        {...props}
-        className={`EdgeSidebar ${className || ""}`}
-      />
-    );
-  },
-);
+type EdgeSidebarConfig = Partial<
+  Record<Breakpoint, TemporaryConfig | PersistentConfig | PermanentConfig>
+>;
+
+const EdgeSidebar = React.forwardRef<
+  HTMLDivElement,
+  BoxProps & { config?: EdgeSidebarConfig }
+>(function EdgeSidebar({ className, config, sx, ...props }, ref) {
+  const theme = useTheme();
+  const configStyles = config ? applyEdgeSidebarStyles(theme, { config }) : {};
+  return (
+    // @ts-expect-error BoxProps on styled native element
+    <StyledEdgeSidebarLeft
+      ref={ref}
+      sx={[configStyles, ...(Array.isArray(sx) ? sx : [sx])]}
+      {...props}
+      className={`EdgeSidebar ${className || ""}`}
+    />
+  );
+});
 
 export default EdgeSidebar;

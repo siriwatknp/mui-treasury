@@ -20,11 +20,6 @@ import {
   MessengerSearch,
 } from "./components";
 import {
-  applyEdgeSidebarStyles,
-  applyHeaderStyles,
-  applyInsetContainerStyles,
-  applyInsetSidebarStyles,
-  applyRootStyles,
   Content,
   EdgeSidebar,
   EdgeSidebarContent,
@@ -76,28 +71,21 @@ export function LayoutV6AppMessenger() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Root sx={{ ...applyRootStyles({ fixedHeight: true }) }}>
-        <StyledHeader
-          position="relative"
-          sx={{ ...applyHeaderStyles({ height: "64px" }) }}
-        >
+      <Root fixedHeight>
+        <StyledHeader height="64px" sx={{ position: "relative" }}>
           <Toolbar disableGutters sx={{ flex: "auto" }}>
             <ConversationHead />
           </Toolbar>
         </StyledHeader>
         <EdgeSidebar
-          sx={(theme) => ({
-            ...applyEdgeSidebarStyles(theme, {
-              config: {
-                xs: {
-                  variant: "permanent",
-                  width: "25cqw",
-                  autoCollapse: "md",
-                  collapsedWidth: "80px",
-                },
-              },
-            }),
-          })}
+          config={{
+            xs: {
+              variant: "permanent",
+              width: "25cqw",
+              autoCollapse: "md",
+              collapsedWidth: "80px",
+            },
+          }}
         >
           <EdgeSidebarContent>
             <ChatsHeader />
@@ -107,16 +95,9 @@ export function LayoutV6AppMessenger() {
             <ChatList />
           </EdgeSidebarContent>
         </EdgeSidebar>
-        <Content sx={{ ...applyInsetContainerStyles() }}>
+        <Content>
           <ChatDialog />
-          <InsetSidebar
-            position="absolute"
-            sx={{
-              ...applyInsetSidebarStyles({
-                width: "25cqw",
-              }),
-            }}
-          >
+          <InsetSidebar position="absolute" width="25cqw">
             <InsetSidebarContent>
               <ChatSettings />
             </InsetSidebarContent>

@@ -10,7 +10,6 @@ import Typography from "@mui/material/Typography";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Content from "../layout-core/Content";
 import EdgeSidebar, {
-  applyEdgeSidebarStyles,
   toggleEdgeSidebarCollapse,
   toggleTemporaryEdgeSidebar,
 } from "../layout-core/EdgeSidebar";
@@ -90,26 +89,22 @@ export function LayoutV6AppAnalytics() {
         </Box>
       </Header>
       <EdgeSidebar
-        sx={(theme) => ({
-          ...applyEdgeSidebarStyles(theme, {
-            config: {
-              xs: {
-                variant: "temporary",
-              },
-              md: {
-                variant: "persistent",
-                persistentBehavior: "none",
-              },
-              lg: {
-                autoCollapse: "xl",
-                variant: "permanent",
-                width: "300px",
-                collapsedWidth: "80px",
-                expandOnHover: true,
-              },
-            },
-          }),
-        })}
+        config={{
+          xs: {
+            variant: "temporary",
+          },
+          md: {
+            variant: "persistent",
+            persistentBehavior: "none",
+          },
+          lg: {
+            autoCollapse: "xl",
+            variant: "permanent",
+            width: "300px",
+            collapsedWidth: "80px",
+            expandOnHover: true,
+          },
+        }}
       >
         <EdgeTemporaryClose />
 
