@@ -82,11 +82,11 @@ function applyPermanentRightStyles(params: PermanentConfig) {
           "--_sidebarCollapsed": "var(--collapsed-R, 1)",
           ".EdgeCollapsedVisible": {
             display:
-              "var(--collapsed-R, none) var(--uncollapsed-R, inline-block)",
+              "var(--collapsed-R, inline-flex) var(--uncollapsed-R, none)",
           },
           ".EdgeUncollapsedVisible": {
             display:
-              "var(--collapsed-R, inline-block) var(--uncollapsed-R, none)",
+              "var(--collapsed-R, none) var(--uncollapsed-R, inline-flex)",
           },
         },
       }),

@@ -80,10 +80,10 @@ function applyPermanentStyles(params: PermanentConfig) {
           display: "var(--display, inline-flex)",
           "--_sidebarCollapsed": "var(--collapsed, 1)",
           ".EdgeCollapsedVisible": {
-            display: "var(--collapsed, none) var(--uncollapsed, inline-block)",
+            display: "var(--collapsed, inline-flex) var(--uncollapsed, none)",
           },
           ".EdgeUncollapsedVisible": {
-            display: "var(--collapsed, inline-block) var(--uncollapsed, none)",
+            display: "var(--collapsed, none) var(--uncollapsed, inline-flex)",
           },
         },
       }),
