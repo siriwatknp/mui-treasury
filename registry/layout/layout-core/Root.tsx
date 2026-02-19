@@ -16,21 +16,20 @@ const StyledRoot = styled("div", {
   ownerState: RootProps;
 }>(
   memoTheme(({ theme }) => ({
-    "--Root-height": "100lvh",
+    "--jun-h": "100lvh",
     "--Header-underline": `1px solid ${(theme.vars || theme).palette.divider}`,
     "--Header-background": (theme.vars || theme).palette.background.paper,
     "--Footer-background": (theme.vars || theme).palette.background.paper,
     "--Footer-overline": `1px solid ${(theme.vars || theme).palette.divider}`,
-    "--EdgeSidebar-overlay": "rgba(0, 0, 0, 0.48)",
-    "--EdgeSidebar-sidelineWidth": "1px",
-    "--EdgeSidebar-sidelineColor": (theme.vars || theme).palette.divider,
+    "--jun-ES-line-w": "1px",
+    "--jun-ES-line-color": (theme.vars || theme).palette.divider,
     "--EdgeSidebarContent-background": (theme.vars || theme).palette.background
       .paper,
     "--InsetSidebarContent-background": (theme.vars || theme).palette.background
       .paper,
     "--InsetSidebarContent-sideline": `1px solid ${(theme.vars || theme).palette.divider}`,
     backgroundColor: (theme.vars || theme).palette.background.paper,
-    minHeight: "var(--Root-height)",
+    minHeight: "var(--jun-h)",
     display: "grid",
     position: "relative",
     transition: "grid-template-columns 0.3s",
@@ -47,24 +46,24 @@ const StyledRoot = styled("div", {
 
     [`&:has(.EdgeSidebar)`]: {
       "--_start-col": "max-content",
-      "--EdgeSidebar-temporaryOpen": "0",
+      "--jun-ES-drawerOpen": "0",
     },
     [`&:has(.EdgeSidebar-R)`]: {
       "--_end-col": "max-content",
-      "--EdgeSidebar-temporaryOpen": "0",
+      "--jun-ES-drawerOpen": "0",
     },
     variants: [
       {
         props: ({ height }: RootProps) => !!height,
         style: ({ height }: Required<RootProps>) =>
           theme.unstable_sx({
-            "--Root-height": height,
+            "--jun-h": height,
           }),
       },
       {
         props: ({ fixedHeight }: RootProps) => !!fixedHeight,
         style: {
-          maxHeight: "var(--Root-height)",
+          maxHeight: "var(--jun-h)",
         },
       },
     ],

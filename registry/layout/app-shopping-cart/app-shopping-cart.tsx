@@ -24,7 +24,7 @@ import {
   InsetSidebar,
   InsetSidebarContent,
   Root,
-  toggleTemporaryEdgeSidebarRight,
+  triggerEdgeDrawerRight,
 } from "../layout-core";
 
 const StyledHeader = styled(Header)(() => ({
@@ -65,7 +65,7 @@ export function LayoutV6AppShoppingCart() {
         <CssBaseline />
         <Fab
           color={"primary"}
-          onClick={() => toggleTemporaryEdgeSidebarRight()}
+          onClick={() => triggerEdgeDrawerRight()}
           sx={(theme) => ({
             position: "fixed",
             bottom: 16,

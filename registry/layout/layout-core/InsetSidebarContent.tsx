@@ -14,7 +14,7 @@ const InsetSidebarContentRoot = styled("div")(({ theme }) => ({
   position:
     "var(--sticky, sticky) var(--fixed, fixed) var(--absolute, absolute)" as never,
   height:
-    "var(--sticky, initial) var(--fixed, calc(100% - var(--Header-height, 0px))) var(--absolute, calc(var(--Root-height, 100vh) - var(--Header-height, 0px)))",
+    "var(--sticky, initial) var(--fixed, calc(100% - var(--jun-H-h, 0px))) var(--absolute, calc(var(--jun-h, 100vh) - var(--jun-H-h, 0px)))",
   width: "var(--sticky, inherit) var(--fixed, inherit) var(--absolute, 100%)",
   top: 0,
   borderRight: "var(--anchor-left, var(--InsetSidebarContent-sideline))",
@@ -28,7 +28,7 @@ const InsetSidebarContentRoot = styled("div")(({ theme }) => ({
     "var(--fixed, var(--anchor-right, -9999px)) var(--absolute, initial) var(--sticky, initial)",
   paddingRight:
     "var(--fixed, var(--anchor-right, 9999px)) var(--absolute, initial) var(--sticky, initial)",
-  marginTop: "var(--fixed, var(--Header-height))",
+  marginTop: "var(--fixed, var(--jun-H-h))",
 }));
 
 const InsetSidebarContent = React.forwardRef<HTMLDivElement, BoxProps>(

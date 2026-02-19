@@ -2,10 +2,10 @@
 import React from "react";
 import { SxProps } from "@mui/material/styles";
 import { styled } from "@mui/material/styles";
-import { toggleTemporaryEdgeSidebar } from "./EdgeSidebar";
+import { triggerEdgeDrawer } from "./EdgeSidebar";
 
-const StyledEdgeTemporaryClose = styled("button")({
-  display: "var(--_temporary, flex) var(--_permanent, none)",
+const StyledEdgeDrawerClose = styled("button")({
+  display: "var(--_drawer, flex) var(--_permanent, none)",
   visibility: "hidden",
   opacity: 0,
   transition: "0.3s",
@@ -25,25 +25,25 @@ const StyledEdgeTemporaryClose = styled("button")({
     width: "1.5em",
     height: "1.5em",
   },
-  "[data-temporary-open] &": {
+  "[data-drawer-open] &": {
     visibility: "visible",
     opacity: 1,
   },
 });
 
-const EdgeTemporaryClose = React.forwardRef<
+const EdgeDrawerClose = React.forwardRef<
   HTMLButtonElement,
   React.ComponentPropsWithoutRef<"button"> & {
     sx?: SxProps;
     sidebarId?: string;
   }
->(function EdgeTemporaryClose({ className, sidebarId, ...props }, ref) {
+>(function EdgeDrawerClose({ className, sidebarId, ...props }, ref) {
   return (
-    <StyledEdgeTemporaryClose
+    <StyledEdgeDrawerClose
       ref={ref}
-      className={`EdgeTemporaryClose ${className || ""}`}
+      className={`EdgeDrawerClose ${className || ""}`}
       onClick={() =>
-        toggleTemporaryEdgeSidebar({
+        triggerEdgeDrawer({
           state: false,
           sidebarId,
         })
@@ -63,8 +63,8 @@ const EdgeTemporaryClose = React.forwardRef<
           d="M6 18 18 6M6 6l12 12"
         />
       </svg>
-    </StyledEdgeTemporaryClose>
+    </StyledEdgeDrawerClose>
   );
 });
 
-export default EdgeTemporaryClose;
+export default EdgeDrawerClose;

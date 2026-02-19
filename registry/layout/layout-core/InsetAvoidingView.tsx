@@ -4,8 +4,8 @@ import { BoxProps } from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 
 const StyledInsetAvoidingView = styled("div")({
-  marginRight: "var(--InsetSidebarR-width)",
-  marginLeft: "var(--InsetSidebarL-width)",
+  marginRight: "var(--jun-ISR-w)",
+  marginLeft: "var(--jun-ISL-w)",
 });
 
 const InsetAvoidingView = React.forwardRef<HTMLDivElement, BoxProps>(

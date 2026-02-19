@@ -38,10 +38,10 @@ const StyledInsetSidebar = styled("aside", {
           theme.unstable_sx({
             width,
             ".Root:has(&:not(:last-child))": {
-              "--InsetSidebarL-width": width,
+              "--jun-ISL-w": width,
             },
             ".Root:has(&:last-child)": {
-              "--InsetSidebarR-width": width,
+              "--jun-ISR-w": width,
             },
             // TODO: this should be removed. Better to let user handle the display of the sidebar
             ...(typeof width !== "string" && {

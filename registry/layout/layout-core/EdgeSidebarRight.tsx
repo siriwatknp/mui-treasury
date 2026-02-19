@@ -19,15 +19,15 @@ import {
 function applyTemporaryRightStyles(params: TemporaryConfig) {
   const { width = "300px" } = params || {};
   return {
-    "--EdgeSidebar-temporaryWidth": "0px",
+    "--jun-ES-drawerWidth": "0px",
     ".Root:has(&)": {
-      "--EdgeSidebar-R-variant": "var(--temporary-R)",
+      "--jun-ESR-variant": "var(--drawer-R)",
       ".EdgeSidebar-R-collapser": {
         display: "none",
       },
     },
-    "&[data-temporary-open], &[data-mobile-closing]": {
-      "--EdgeSidebar-temporaryWidth": width,
+    "&[data-drawer-open], &[data-mobile-closing]": {
+      "--jun-ES-drawerWidth": width,
     },
   };
 }
@@ -36,42 +36,42 @@ function applyPersistentRightStyles(params: PersistentConfig) {
   const { width = "256px", persistentBehavior = "fit" } = params || {};
   return {
     ".Root:has(&)": {
-      "--EdgeSidebar-R-variant": "var(--permanent-R)",
-      "--EdgeSidebar-R-collapsedWidth": "0px",
+      "--jun-ESR-variant": "var(--permanent-R)",
+      "--jun-ESR-collapsedWidth": "0px",
       ...(persistentBehavior === "none"
         ? {
             zIndex: 2,
-            "--EdgeSidebar-R-permanentWidth": "0px",
+            "--jun-ESR-permanentWidth": "0px",
           }
         : {
             ...(width && {
-              "--EdgeSidebar-R-permanentWidth": width,
+              "--jun-ESR-permanentWidth": width,
             }),
           }),
-      "--EdgeSidebar-R-collapsible": "var(--collapsed-R)",
-      ".EdgeSidebar-R-trigger": {
+      "--jun-ESR-collapsible": "var(--collapsed-R)",
+      ".EdgeDrawerTrigger-R": {
         display: "none",
       },
       ".EdgeSidebar-R-collapser": {
         "--_sidebarCollapsed": "var(--collapsed-R, 1)",
         display: "var(--display, inline-flex)",
-        ".Icon-collapse": {
+        ".EdgeCollapsedVisible": {
           display:
             "var(--collapsed-R, none) var(--uncollapsed-R, inline-block)",
         },
-        ".Icon-uncollapse": {
+        ".EdgeUncollapsedVisible": {
           display:
             "var(--collapsed-R, inline-block) var(--uncollapsed-R, none)",
         },
       },
     },
     ...(persistentBehavior === "none" && {
-      "--SidebarContent-width": `var(--collapsed-R, var(--_permanentWidth-R, 0px)) var(--uncollapsed-R, ${width})`,
-      "--EdgeSidebar-permanentSlide":
+      "--jun-EC-width": `var(--collapsed-R, var(--_permanentWidth-R, 0px)) var(--uncollapsed-R, ${width})`,
+      "--jun-ES-permanentSlide":
         "var(--uncollapsed-R, -100%) var(--collapsed-R, 0)",
     }),
     ".Root:has(&[data-edge-uncollapsed])": {
-      "--EdgeSidebar-R-collapsible": "var(--uncollapsed-R)",
+      "--jun-ESR-collapsible": "var(--uncollapsed-R)",
     },
   };
 }
@@ -96,50 +96,50 @@ function applyPermanentRightStyles(params: PermanentConfig) {
     }
   }
   return {
-    "--EdgeSidebar-permanentSlide": "0",
-    "--SidebarContent-width": "var(--_permanentWidth-R, 0px)",
+    "--jun-ES-permanentSlide": "0",
+    "--jun-EC-width": "var(--_permanentWidth-R, 0px)",
     ".Root:has(&)": {
-      "--EdgeSidebar-R-variant": "var(--permanent-R)",
+      "--jun-ESR-variant": "var(--permanent-R)",
       ...(width && {
-        "--EdgeSidebar-R-permanentWidth": width,
+        "--jun-ESR-permanentWidth": width,
       }),
       ...(collapsedWidth && {
-        "--EdgeSidebar-R-collapsedWidth": collapsedWidth,
+        "--jun-ESR-collapsedWidth": collapsedWidth,
         ".EdgeSidebar-R-collapser": {
           display: "var(--display, inline-flex)",
           "--_sidebarCollapsed": "var(--collapsed-R, 1)",
-          ".Icon-collapse": {
+          ".EdgeCollapsedVisible": {
             display:
               "var(--collapsed-R, none) var(--uncollapsed-R, inline-block)",
           },
-          ".Icon-uncollapse": {
+          ".EdgeUncollapsedVisible": {
             display:
               "var(--collapsed-R, inline-block) var(--uncollapsed-R, none)",
           },
         },
       }),
-      ".EdgeSidebar-R-trigger": {
+      ".EdgeDrawerTrigger-R": {
         display: "none",
       },
     },
     ...(collapsedWidth && {
       ".Root:has(&[data-edge-collapsed])": {
-        "--EdgeSidebar-R-collapsible": "var(--collapsed-R)",
+        "--jun-ESR-collapsible": "var(--collapsed-R)",
       },
     }),
     ...(expandConfig && {
       "& .EdgeSidebarContent:hover": {
-        "--SidebarContent-width": "var(--EdgeSidebar-R-permanentWidth)",
-        "--SidebarContent-transitionDelay": expandConfig.delay,
+        "--jun-EC-width": "var(--jun-ESR-permanentWidth)",
+        "--jun-EC-delay": expandConfig.delay,
         boxShadow: `var(--collapsed-R, ${expandConfig.shadow}) var(--uncollapsed-R, none)`,
-        "--EdgeSidebar-permanentSlide":
-          "var(--collapsed-R, calc(var(--EdgeSidebar-R-collapsedWidth) - var(--SidebarContent-width))) var(--uncollapsed-R, 0)",
+        "--jun-ES-permanentSlide":
+          "var(--collapsed-R, calc(var(--jun-ESR-collapsedWidth) - var(--jun-EC-width))) var(--uncollapsed-R, 0)",
       },
     }),
   };
 }
 
-export function toggleEdgeSidebarRightCollapse(options: {
+export function triggerEdgeCollapseRight(options: {
   event: React.MouseEvent;
   sidebarId?: string;
   state?: boolean;
@@ -153,7 +153,7 @@ export function toggleEdgeSidebarRightCollapse(options: {
   internalCollapseSidebar({ ...options, selector });
 }
 
-export function toggleTemporaryEdgeSidebarRight(options?: {
+export function triggerEdgeDrawerRight(options?: {
   sidebarId?: string;
   state?: boolean;
   document?: Document | null;
@@ -182,36 +182,36 @@ const StyledEdgeSidebarRight = styled(EdgeSidebarRoot, {
 }>(
   memoTheme(({ theme }) => ({
     ".Root:has(&)": {
-      "--EdgeSidebar-R-variant": "var(--permanent-R)",
-      "--EdgeSidebar-R-permanentWidth": "256px",
-      "--EdgeSidebar-R-collapsible": "var(--uncollapsed-R)",
+      "--jun-ESR-variant": "var(--permanent-R)",
+      "--jun-ESR-permanentWidth": "256px",
+      "--jun-ESR-collapsible": "var(--uncollapsed-R)",
 
-      "--temporary-R": "var(--EdgeSidebar-R-variant,)",
-      "--permanent-R": "var(--EdgeSidebar-R-variant,)",
-      "--_permanentWidth-R": `var(--uncollapsed-R, var(--EdgeSidebar-R-permanentWidth))
-                        var(--collapsed-R, var(--EdgeSidebar-R-collapsedWidth, 0px))`,
-      "--collapsed-R": "var(--EdgeSidebar-R-collapsible,)",
-      "--uncollapsed-R": "var(--EdgeSidebar-R-collapsible,)",
+      "--drawer-R": "var(--jun-ESR-variant,)",
+      "--permanent-R": "var(--jun-ESR-variant,)",
+      "--_permanentWidth-R": `var(--uncollapsed-R, var(--jun-ESR-permanentWidth))
+                        var(--collapsed-R, var(--jun-ESR-collapsedWidth, 0px))`,
+      "--collapsed-R": "var(--jun-ESR-collapsible,)",
+      "--uncollapsed-R": "var(--jun-ESR-collapsible,)",
     },
-    "--EdgeSidebar-anchor": "var(--anchorRight)",
-    "--SidebarContent-width": "var(--_permanentWidth-R, 0px)",
-    "--_temporary": "var(--temporary-R)",
+    "--jun-ES-anchor": "var(--anchorRight)",
+    "--jun-EC-width": "var(--_permanentWidth-R, 0px)",
+    "--_drawer": "var(--drawer-R)",
     "--_permanent": "var(--permanent-R)",
     gridArea: "EdgeSidebar-R",
-    width: `var(--temporary-R, 0)
+    width: `var(--drawer-R, 0)
           var(--permanent-R, var(--_permanentWidth-R))`,
     borderLeft:
-      "var(--permanent, min(var(--EdgeSidebar-sidelineWidth), 1 * var(--SidebarContent-width)) solid)",
-    borderColor: "var(--EdgeSidebar-sidelineColor)",
+      "var(--permanent, min(var(--jun-ES-line-w), 1 * var(--jun-EC-width)) solid)",
+    borderColor: "var(--jun-ES-line-color)",
     "&::after": {
       border: "inherit",
     },
     "&::before": {
-      display: `var(--temporary-R, block)
+      display: `var(--drawer-R, block)
               var(--permanent-R, none)`,
     },
-    "&:not([data-temporary-open], [data-mobile-closing])": {
-      overflow: "var(--temporary-R, hidden)",
+    "&:not([data-drawer-open], [data-mobile-closing])": {
+      overflow: "var(--drawer-R, hidden)",
     },
     variants: [
       {
@@ -244,7 +244,7 @@ const StyledEdgeSidebarRight = styled(EdgeSidebarRoot, {
                     } else {
                       autoCollapseStyles = {
                         ".Root:has(&)": {
-                          "--EdgeSidebar-R-collapsible": {
+                          "--jun-ESR-collapsible": {
                             [permanentParams.autoCollapse]:
                               "var(--collapsed-R)",
                             [nextBreakpoint]: "var(--uncollapsed-R)",
@@ -255,8 +255,7 @@ const StyledEdgeSidebarRight = styled(EdgeSidebarRoot, {
                           nextBreakpoint,
                         )]: {
                           ".Root:has(&[data-auto-collapse-off])": {
-                            "--EdgeSidebar-R-collapsible":
-                              "var(--uncollapsed-R)",
+                            "--jun-ESR-collapsible": "var(--uncollapsed-R)",
                           },
                           ".Root:has(&) .EdgeSidebar-R-collapser": {
                             "--_autoCollapse": "1",

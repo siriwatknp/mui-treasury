@@ -32,14 +32,14 @@ const StyledHeader = styled("header", {
     position: "sticky",
     background: "var(--Header-background)",
     borderBottom: "var(--Header-underline)",
-    height: "var(--Header-height)",
+    height: "var(--jun-H-h)",
     variants: [
       {
         props: ({ height }: HeaderProps) => !!height,
         style: ({ height }: Required<HeaderProps>) =>
           theme.unstable_sx({
             ".Root:has(&)": {
-              "--Header-height": height,
+              "--jun-H-h": height,
             },
           }),
       },
@@ -52,10 +52,10 @@ const StyledHeader = styled("header", {
                 typeof fullWidth === "string"
                   ? { [fullWidth]: FULL_WIDTH_CLIP }
                   : FULL_WIDTH_CLIP,
-              "--Header-clipHeight":
+              "--jun-H-clip-h":
                 typeof fullWidth === "string"
-                  ? { [fullWidth]: "var(--Header-height)" }
-                  : "var(--Header-height)",
+                  ? { [fullWidth]: "var(--jun-H-h)" }
+                  : "var(--jun-H-h)",
             },
           }),
       },

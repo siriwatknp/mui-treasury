@@ -82,11 +82,11 @@ export function internalToggleSidebar(options: {
   const doc = d ?? document;
   const sidebar = doc.querySelector(selector) as HTMLDivElement | null;
   if (sidebar) {
-    const currentOpen = sidebar.getAttribute("data-temporary-open") !== null;
+    const currentOpen = sidebar.getAttribute("data-drawer-open") !== null;
     const nextOpen = state === undefined ? !currentOpen : state;
     if (nextOpen) {
-      sidebar.setAttribute("data-temporary-open", "");
-      sidebar.style.setProperty("--EdgeSidebar-temporaryOpen", "1");
+      sidebar.setAttribute("data-drawer-open", "");
+      sidebar.style.setProperty("--jun-ES-drawerOpen", "1");
       function handleOutsideClick(event: MouseEvent) {
         if (event.target === sidebar) {
           internalToggleSidebar({
@@ -100,51 +100,50 @@ export function internalToggleSidebar(options: {
         doc.addEventListener?.("click", handleOutsideClick);
       }, 0);
     } else {
-      sidebar.removeAttribute("data-temporary-open");
+      sidebar.removeAttribute("data-drawer-open");
       sidebar.setAttribute("data-mobile-closing", "");
       setTimeout(() => {
         sidebar.removeAttribute("data-mobile-closing");
       }, 300);
-      sidebar.style.setProperty("--EdgeSidebar-temporaryOpen", "");
+      sidebar.style.setProperty("--jun-ES-drawerOpen", "");
     }
   }
 }
 
 export const EdgeSidebarRoot = styled("div")({
-  "--anchorLeft": "var(--EdgeSidebar-anchor,)",
-  "--anchorRight": "var(--EdgeSidebar-anchor,)",
+  "--anchorLeft": "var(--jun-ES-anchor,)",
+  "--anchorRight": "var(--jun-ES-anchor,)",
   transition: "width 0.3s",
   display: "flex",
   flexDirection: "column",
   position: "var(--_permanent, sticky)" as never,
-  top: "var(--_permanent, var(--Header-clipHeight, 0px))",
-  height:
-    "var(--_permanent, calc(var(--Root-height) - var(--Header-clipHeight, 0px)))",
+  top: "var(--_permanent, var(--jun-H-clip-h, 0px))",
+  height: "var(--_permanent, calc(var(--jun-h) - var(--jun-H-clip-h, 0px)))",
   "&::before": {
     position: "absolute",
     content: '""',
     inset: 0,
-    backgroundColor: "var(--EdgeSidebar-overlay)",
+    backgroundColor: "rgba(0, 0, 0, 0.48)",
     backdropFilter: "blur(4px)",
     zIndex: 1,
     transition: "opacity 0.4s, visibility 0.4s",
     visibility: "hidden",
-    opacity: "var(--EdgeSidebar-temporaryOpen, 0)",
+    opacity: "var(--jun-ES-drawerOpen, 0)",
   },
-  "&[data-temporary-open]": {
+  "&[data-drawer-open]": {
     "&::before": {
       visibility: "visible",
     },
   },
-  "html:has(&[data-temporary-open])": {
+  "html:has(&[data-drawer-open])": {
     overflow: "hidden",
   },
   "&::after": {
     position: "absolute",
     content: '""',
     display: "block",
-    width: "var(--_permanent, var(--SidebarContent-width))",
-    height: "var(--Header-clipHeight)",
-    top: "calc(-1 * var(--Header-clipHeight))",
+    width: "var(--_permanent, var(--jun-EC-width))",
+    height: "var(--jun-H-clip-h)",
+    top: "calc(-1 * var(--jun-H-clip-h))",
   },
 });

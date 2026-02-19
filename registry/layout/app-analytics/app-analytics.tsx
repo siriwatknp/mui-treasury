@@ -10,11 +10,11 @@ import Typography from "@mui/material/Typography";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Content from "../layout-core/Content";
 import EdgeSidebar, {
-  toggleEdgeSidebarCollapse,
-  toggleTemporaryEdgeSidebar,
+  triggerEdgeCollapse,
+  triggerEdgeDrawer,
 } from "../layout-core/EdgeSidebar";
 import EdgeSidebarContent from "../layout-core/EdgeSidebarContent";
-import EdgeTemporaryClose from "../layout-core/EdgeTemporaryClose";
+import EdgeDrawerClose from "../layout-core/EdgeDrawerClose";
 import Header from "../layout-core/Header";
 import Root from "../layout-core/Root";
 import {
@@ -66,18 +66,18 @@ export function LayoutV6AppAnalytics() {
           }}
         >
           <IconButton
-            className="EdgeSidebar-trigger"
-            onClick={() => toggleTemporaryEdgeSidebar()}
+            className="EdgeDrawerTrigger"
+            onClick={() => triggerEdgeDrawer()}
           >
             <MenuRounded />
           </IconButton>
 
           <IconButton
             className="EdgeSidebar-collapser"
-            onClick={(event) => toggleEdgeSidebarCollapse({ event })}
+            onClick={(event) => triggerEdgeCollapse({ event })}
           >
-            <MenuRounded className="Icon-uncollapse" />
-            <ChevronLeftRounded className="Icon-collapse" />
+            <MenuRounded className="EdgeUncollapsedVisible" />
+            <ChevronLeftRounded className="EdgeCollapsedVisible" />
           </IconButton>
 
           <Typography
@@ -103,7 +103,7 @@ export function LayoutV6AppAnalytics() {
           ],
         }}
       >
-        <EdgeTemporaryClose />
+        <EdgeDrawerClose />
 
         <EdgeSidebarContent>
           <SideNavUserInfoMockup />

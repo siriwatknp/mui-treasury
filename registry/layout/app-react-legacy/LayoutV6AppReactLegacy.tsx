@@ -13,9 +13,9 @@ import Typography from "@mui/material/Typography";
 import Content from "../layout-core/Content";
 import SidebarContent from "../layout-core/EdgeSidebarContent";
 import EdgeSidebarRight, {
-  toggleTemporaryEdgeSidebarRight,
+  triggerEdgeDrawerRight,
 } from "../layout-core/EdgeSidebarRight";
-import EdgeTemporaryClose from "../layout-core/EdgeTemporaryClose";
+import EdgeDrawerClose from "../layout-core/EdgeDrawerClose";
 import Footer from "../layout-core/Footer";
 import Header from "../layout-core/Header";
 import InsetAvoidingView from "../layout-core/InsetAvoidingView";
@@ -98,10 +98,10 @@ export function LayoutV6AppReactLegacy() {
   return (
     <Root>
       <StyledFab
-        className="EdgeSidebar-R-trigger"
+        className="EdgeDrawerTrigger-R"
         color={"primary"}
         onClick={() => {
-          toggleTemporaryEdgeSidebarRight();
+          triggerEdgeDrawerRight();
         }}
       >
         <UnfoldMore />
@@ -127,7 +127,7 @@ export function LayoutV6AppReactLegacy() {
           md: ["persistent", { persistentBehavior: "none" }],
         }}
       >
-        <EdgeTemporaryClose />
+        <EdgeDrawerClose />
         <SidebarContent>{sidebarContent}</SidebarContent>
       </EdgeSidebarRight>
       <Content>
