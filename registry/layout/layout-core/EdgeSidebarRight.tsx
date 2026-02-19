@@ -166,34 +166,30 @@ const StyledEdgeSidebarRight = styled(EdgeSidebarRoot, {
 }>(
   memoTheme(({ theme }) => ({
     [`.${layoutClasses.Root}:has(&)`]: {
+      /** Root default settings */
       "--jun-ESR-variant": "var(--permanent-R)",
       "--jun-ESR-permanentWidth": "256px",
       "--jun-ESR-collapsible": "var(--uncollapsed-R)",
+      "--jun-ESR-collapsedWidth": "0px",
 
+      /** DO NOT OVERRIDE, internal variables */
       "--drawer-R": "var(--jun-ESR-variant,)",
       "--permanent-R": "var(--jun-ESR-variant,)",
       "--_permanentWidth-R": `var(--uncollapsed-R, var(--jun-ESR-permanentWidth))
-                        var(--collapsed-R, var(--jun-ESR-collapsedWidth, 0px))`,
+                            var(--collapsed-R, var(--jun-ESR-collapsedWidth, 0px))`,
       "--collapsed-R": "var(--jun-ESR-collapsible,)",
       "--uncollapsed-R": "var(--jun-ESR-collapsible,)",
     },
+    /** EdgeSidebar default settings */
     "--jun-ES-anchor": "var(--anchorRight)",
     "--jun-EC-width": "var(--_permanentWidth-R, 0px)",
     "--_drawer": "var(--drawer-R)",
     "--_permanent": "var(--permanent-R)",
+    "--_collapsed": "var(--collapsed-R)",
+    "--_uncollapsed": "var(--uncollapsed-R)",
     gridArea: layoutClasses.EdgeSidebarRight,
     width: `var(--drawer-R, 0)
-          var(--permanent-R, var(--_permanentWidth-R))`,
-    borderLeft:
-      "var(--permanent, min(var(--jun-ES-line-w), 1 * var(--jun-EC-width)) solid)",
-    borderColor: "var(--jun-ES-line-color)",
-    "&::after": {
-      border: "inherit",
-    },
-    "&::before": {
-      display: `var(--drawer-R, block)
-              var(--permanent-R, none)`,
-    },
+              var(--permanent-R, var(--_permanentWidth-R))`,
     [`&:not([${layoutAttrs.isDrawerOpen}], [${layoutAttrs.isDrawerClosing}])`]:
       {
         overflow: "var(--drawer-R, hidden)",

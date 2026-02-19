@@ -161,34 +161,33 @@ const StyledEdgeSidebar = styled(EdgeSidebarRoot, {
 }>(
   memoTheme(({ theme }) => ({
     [`.${layoutClasses.Root}:has(&)`]: {
+      /** Root default settings */
       "--jun-ES-variant": "var(--permanent)",
       "--jun-ES-permanentWidth": "256px",
       "--jun-ES-collapsible": "var(--uncollapsed)",
+      "--jun-ES-collapsedWidth": "0px",
 
+      /** DO NOT OVERRIDE, internal variables */
       "--drawer": "var(--jun-ES-variant,)",
       "--permanent": "var(--jun-ES-variant,)",
       "--_permanentWidth": `var(--uncollapsed, var(--jun-ES-permanentWidth))
-                        var(--collapsed, var(--jun-ES-collapsedWidth, 0px))`,
+                            var(--collapsed, var(--jun-ES-collapsedWidth, 0px))`,
       "--collapsed": "var(--jun-ES-collapsible,)",
       "--uncollapsed": "var(--jun-ES-collapsible,)",
     },
+    /** EdgeSidebar default settings */
     "--jun-ES-anchor": "var(--anchorLeft)",
     "--jun-EC-width": "var(--_permanentWidth, 0px)",
     "--_drawer": "var(--drawer)",
     "--_permanent": "var(--permanent)",
+    "--_collapsed": "var(--collapsed)",
+    "--_uncollapsed": "var(--uncollapsed)",
     gridArea: layoutClasses.EdgeSidebar,
     width: `var(--drawer, 0)
-          var(--permanent, var(--_permanentWidth))`,
+              var(--permanent, var(--_permanentWidth))`,
     borderRight:
       "var(--permanent, min(var(--jun-ES-line-w), 1 * var(--jun-EC-width)) solid)",
     borderColor: "var(--jun-ES-line-color)",
-    "&::after": {
-      border: "inherit",
-    },
-    "&::before": {
-      display: `var(--drawer, block)
-              var(--permanent, none)`,
-    },
     [`&:not([${layoutAttrs.isDrawerOpen}], [${layoutAttrs.isDrawerClosing}])`]:
       {
         overflow: "var(--drawer, hidden)",
