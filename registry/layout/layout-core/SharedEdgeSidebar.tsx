@@ -52,21 +52,19 @@ export function internalCollapseSidebar(options: {
       window
         .getComputedStyle(event.target as Element)
         .getPropertyValue("--_autoCollapse") === "1";
+    const inAutoCollapse =
+      window
+        .getComputedStyle(event.target as Element)
+        .getPropertyValue("--_in-autoCollapse") === "1";
 
-    if (autoCollapse) {
-      if (nextCollapsed) {
-        sidebar.removeAttribute("data-auto-collapse-off");
-      } else {
-        sidebar.setAttribute("data-auto-collapse-off", "");
-        sidebar.removeAttribute("data-edge-collapsed");
+    if (nextCollapsed) {
+      sidebar.removeAttribute("data-edge-uncollapsed");
+      if (!autoCollapse || inAutoCollapse) {
+        sidebar.setAttribute("data-edge-collapsed", "");
       }
     } else {
-      if (nextCollapsed) {
-        sidebar.setAttribute("data-edge-collapsed", "");
-        sidebar.removeAttribute("data-edge-uncollapsed");
-        sidebar.removeAttribute("data-auto-collapse-off");
-      } else {
-        sidebar.removeAttribute("data-edge-collapsed");
+      sidebar.removeAttribute("data-edge-collapsed");
+      if (!inAutoCollapse) {
         sidebar.setAttribute("data-edge-uncollapsed", "");
       }
     }

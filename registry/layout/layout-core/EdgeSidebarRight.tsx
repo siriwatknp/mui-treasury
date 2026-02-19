@@ -243,6 +243,9 @@ const StyledEdgeSidebarRight = styled(EdgeSidebarRoot, {
                       );
                     } else {
                       autoCollapseStyles = {
+                        ".Root:has(&) .EdgeSidebar-R-collapser": {
+                          "--_autoCollapse": "1",
+                        },
                         ".Root:has(&)": {
                           "--jun-ESR-collapsible": {
                             [permanentParams.autoCollapse]:
@@ -250,15 +253,9 @@ const StyledEdgeSidebarRight = styled(EdgeSidebarRoot, {
                             [nextBreakpoint]: "var(--uncollapsed-R)",
                           },
                         },
-                        [theme.breakpoints.between(
-                          permanentParams.autoCollapse,
-                          nextBreakpoint,
-                        )]: {
-                          ".Root:has(&[data-auto-collapse-off])": {
-                            "--jun-ESR-collapsible": "var(--uncollapsed-R)",
-                          },
+                        [theme.breakpoints.up(nextBreakpoint)]: {
                           ".Root:has(&) .EdgeSidebar-R-collapser": {
-                            "--_autoCollapse": "1",
+                            "--_in-autoCollapse": "1",
                           },
                         },
                       };

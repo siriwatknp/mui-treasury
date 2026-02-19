@@ -234,21 +234,18 @@ const StyledEdgeSidebar = styled(EdgeSidebarRoot, {
                       );
                     } else {
                       autoCollapseStyles = {
+                        ".Root:has(&) .EdgeSidebar-collapser": {
+                          "--_autoCollapse": "1",
+                        },
                         ".Root:has(&)": {
                           "--jun-ES-collapsible": {
                             [permanentParams.autoCollapse]: "var(--collapsed)",
                             [nextBreakpoint]: "var(--uncollapsed)",
                           },
                         },
-                        [theme.breakpoints.between(
-                          permanentParams.autoCollapse,
-                          nextBreakpoint,
-                        )]: {
-                          ".Root:has(&[data-auto-collapse-off])": {
-                            "--jun-ES-collapsible": "var(--uncollapsed)",
-                          },
+                        [theme.breakpoints.up(nextBreakpoint)]: {
                           ".Root:has(&) .EdgeSidebar-collapser": {
-                            "--_autoCollapse": "1",
+                            "--_in-autoCollapse": "1",
                           },
                         },
                       };
