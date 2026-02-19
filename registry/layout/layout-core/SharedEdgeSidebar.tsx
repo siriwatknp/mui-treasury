@@ -2,7 +2,7 @@
 import { Breakpoint } from "@mui/material/styles";
 import { styled } from "@mui/material/styles";
 
-export type TemporaryConfig = {
+export type DrawerConfig = {
   width?: string;
 };
 export type PersistentConfig = {
@@ -25,7 +25,7 @@ export type PermanentConfig = {
 };
 
 export type EdgeSidebarVariant =
-  | ["temporary", TemporaryConfig?]
+  | ["drawer", DrawerConfig?]
   | ["persistent", PersistentConfig?]
   | ["permanent", PermanentConfig?];
 

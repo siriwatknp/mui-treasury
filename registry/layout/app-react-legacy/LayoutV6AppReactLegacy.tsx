@@ -123,7 +123,7 @@ export function LayoutV6AppReactLegacy() {
       </Header>
       <EdgeSidebarRight
         variant={{
-          xs: ["temporary"],
+          xs: ["drawer"],
           md: ["persistent", { persistentBehavior: "none" }],
         }}
       >

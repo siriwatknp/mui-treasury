@@ -3,7 +3,7 @@ import React, { useMemo } from "react";
 import type {
   EdgeSidebarVariant,
   EdgeSidebarVariantInput,
-  TemporaryConfig,
+  DrawerConfig,
   PersistentConfig,
   PermanentConfig,
 } from "./SharedEdgeSidebar";
@@ -16,7 +16,7 @@ import {
   internalToggleSidebar,
 } from "./SharedEdgeSidebar";
 
-function applyTemporaryStyles(params: TemporaryConfig) {
+function applyDrawerStyles(params: DrawerConfig) {
   const { width = "300px" } = params || {};
   return {
     "--jun-ES-drawerWidth": "0px",
@@ -263,7 +263,7 @@ const StyledEdgeSidebar = styled(EdgeSidebarRoot, {
                   }
                 }
                 const variantStyles = {
-                  temporary: applyTemporaryStyles,
+                  drawer: applyDrawerStyles,
                   persistent: applyPersistentStyles,
                   permanent: applyPermanentStyles,
                 }[variantName](params as never);

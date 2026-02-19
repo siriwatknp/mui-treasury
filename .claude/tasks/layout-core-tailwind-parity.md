@@ -354,6 +354,7 @@ These should be separate registry items, not part of layout-core migration.
 - [x] Phase 1.2 — `--jun-EC-delay` default ✅ Done
 - [x] Phase 1.3 — `--jun-EC-shadow` variable ✅ Done
 - [x] Phase 1.4 — `box-shadow` sideline ✅ Done
+- [x] Rename `TemporaryConfig` → `DrawerConfig`, `"temporary"` → `"drawer"` variant ✅ Done
 
 ### Dashboard-critical (blocks `app-dashboard` parity)
 
