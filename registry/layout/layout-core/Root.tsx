@@ -7,6 +7,7 @@ import { styled } from "@mui/material/styles";
 interface RootProps {
   height?: string | Record<Breakpoint, string> | Record<string, string>;
   fixedHeight?: boolean;
+  standalone?: boolean;
 }
 
 const StyledRoot = styled("div", {
@@ -68,6 +69,15 @@ const StyledRoot = styled("div", {
           maxHeight: "var(--jun-h)",
         },
       },
+      {
+        props: ({ standalone }: RootProps) => !!standalone,
+        style: {
+          "--drawer-pos": "absolute",
+          "--drawer-z": "5",
+          "--content-overflow": "auto",
+          maxHeight: "var(--jun-h)",
+        },
+      },
     ],
   })),
 );
@@ -76,13 +86,17 @@ const Root = React.forwardRef<
   HTMLDivElement,
   Omit<React.ComponentPropsWithoutRef<typeof StyledRoot>, "ownerState"> &
     RootProps
->(function Root({ className, height, fixedHeight, ...props }, ref) {
+>(function Root(
+  { className, height, fixedHeight, standalone, ...props },
+  ref,
+) {
   const ownerState = useMemo(
     () => ({
       height,
       fixedHeight,
+      standalone,
     }),
-    [height, fixedHeight],
+    [height, fixedHeight, standalone],
   );
   return (
     <StyledRoot
