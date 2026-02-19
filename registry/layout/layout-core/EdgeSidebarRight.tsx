@@ -14,6 +14,7 @@ import {
   internalCollapseSidebar,
   internalToggleSidebar,
 } from "./SharedEdgeSidebar";
+import { layoutAttrs } from "./layoutAttrs";
 import { layoutClasses } from "./layoutClasses";
 
 function applyDrawerRightStyles(params: DrawerConfig) {
@@ -38,19 +39,19 @@ function applyDrawerRightStyles(params: DrawerConfig) {
         display: "none",
       },
     },
-    [`.${layoutClasses.Root}:has(&[data-drawer-open])`]: {
+    [`.${layoutClasses.Root}:has(&[${layoutAttrs.isDrawerOpen}])`]: {
       [`.${layoutClasses.EdgeDrawerTriggerRight} .${layoutClasses.EdgeDrawerClosedVisible}`]:
         {
           display: "none",
         },
     },
-    [`.${layoutClasses.Root}:has(&:not([data-drawer-open]))`]: {
+    [`.${layoutClasses.Root}:has(&:not([${layoutAttrs.isDrawerOpen}]))`]: {
       [`.${layoutClasses.EdgeDrawerTriggerRight} .${layoutClasses.EdgeDrawerOpenVisible}`]:
         {
           display: "none",
         },
     },
-    "&[data-drawer-open], &[data-mobile-closing]": {
+    [`&[${layoutAttrs.isDrawerOpen}], &[${layoutAttrs.isDrawerClosing}]`]: {
       "--jun-ES-drawerWidth": width,
     },
   };
@@ -98,9 +99,10 @@ function applyPermanentRightStyles(params: PermanentConfig) {
       },
     },
     ...(collapsedWidth && {
-      [`.${layoutClasses.Root}:has(&[data-edge-collapsed])`]: {
-        "--jun-ESR-collapsible": "var(--collapsed-R)",
-      },
+      [`.${layoutClasses.Root}:has(&[${layoutAttrs.isEdgeSidebarCollapsed}])`]:
+        {
+          "--jun-ESR-collapsible": "var(--collapsed-R)",
+        },
     }),
     ...(expandConfig && {
       [`& .${layoutClasses.EdgeSidebarContent}:hover`]: {
@@ -191,9 +193,10 @@ const StyledEdgeSidebarRight = styled(EdgeSidebarRoot, {
       display: `var(--drawer-R, block)
               var(--permanent-R, none)`,
     },
-    "&:not([data-drawer-open], [data-mobile-closing])": {
-      overflow: "var(--drawer-R, hidden)",
-    },
+    [`&:not([${layoutAttrs.isDrawerOpen}], [${layoutAttrs.isDrawerClosing}])`]:
+      {
+        overflow: "var(--drawer-R, hidden)",
+      },
     variants: [
       {
         props: ({ variant }: EdgeSidebarRightOwnerState) => !!variant,

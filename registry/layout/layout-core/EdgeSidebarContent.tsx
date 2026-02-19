@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { styled } from "@mui/material/styles";
+import { layoutAttrs } from "./layoutAttrs";
 import { layoutClasses } from "./layoutClasses";
 
 const StyledEdgeSidebarContent = styled("div", {
@@ -28,14 +29,14 @@ const StyledEdgeSidebarContent = styled("div", {
                var(--_permanent, opacity 0.4s, width 0.3s var(--jun-EC-delay, 0s), transform 0.3s var(--jun-EC-delay, 0s), box-shadow 0.3s var(--jun-EC-delay, 0s)))`,
   transform: `var(--_drawer, var(--anchorLeft, translateX(calc((1 - var(--jun-ES-drawerOpen)) * -100%))) var(--anchorRight, translateX(calc(var(--jun-ES-drawerOpen) * -100%))))
                var(--_permanent, translateX(var(--jun-ES-permanentSlide, 0)))`,
-  "[data-sidebar-hidden] &": {
+  [`[${layoutAttrs.isEdgeSidebarContentHidden}] &`]: {
     visibility: "hidden",
     opacity: 0,
   },
-  "[data-drawer-open] &, [data-mobile-closing] &": {
+  [`[${layoutAttrs.isDrawerOpen}] &, [${layoutAttrs.isDrawerClosing}] &`]: {
     visibility: "visible",
   },
-  "[data-mobile-closing] &": {
+  [`[${layoutAttrs.isDrawerClosing}] &`]: {
     transition: "transform 0.3s, visibility 0.3s, opacity 0.3s",
   },
 });

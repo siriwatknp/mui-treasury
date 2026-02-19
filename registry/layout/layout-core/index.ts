@@ -22,4 +22,5 @@ export { default as InsetSidebar } from "./InsetSidebar";
 export * from "./InsetSidebar";
 export { default as InsetSidebarContent } from "./InsetSidebarContent";
 export * from "./InsetSidebarContent";
+export { layoutAttrs } from "./layoutAttrs";
 export { layoutClasses } from "./layoutClasses";

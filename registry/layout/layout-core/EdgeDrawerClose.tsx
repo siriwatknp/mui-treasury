@@ -3,6 +3,7 @@ import React from "react";
 import { SxProps } from "@mui/material/styles";
 import { styled } from "@mui/material/styles";
 import { triggerEdgeDrawer } from "./EdgeSidebar";
+import { layoutAttrs } from "./layoutAttrs";
 import { layoutClasses } from "./layoutClasses";
 
 const StyledEdgeDrawerClose = styled("button")({
@@ -26,7 +27,7 @@ const StyledEdgeDrawerClose = styled("button")({
     width: "1.5em",
     height: "1.5em",
   },
-  "[data-drawer-open] &": {
+  [`[${layoutAttrs.isDrawerOpen}] &`]: {
     visibility: "visible",
     opacity: 1,
   },

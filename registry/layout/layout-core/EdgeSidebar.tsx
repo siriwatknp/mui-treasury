@@ -14,6 +14,7 @@ import {
   internalCollapseSidebar,
   internalToggleSidebar,
 } from "./SharedEdgeSidebar";
+import { layoutAttrs } from "./layoutAttrs";
 import { layoutClasses } from "./layoutClasses";
 
 function applyDrawerStyles(params: DrawerConfig) {
@@ -38,19 +39,19 @@ function applyDrawerStyles(params: DrawerConfig) {
         display: "none",
       },
     },
-    [`.${layoutClasses.Root}:has(&[data-drawer-open])`]: {
+    [`.${layoutClasses.Root}:has(&[${layoutAttrs.isDrawerOpen}])`]: {
       [`.${layoutClasses.EdgeDrawerTrigger} .${layoutClasses.EdgeDrawerClosedVisible}`]:
         {
           display: "none",
         },
     },
-    [`.${layoutClasses.Root}:has(&:not([data-drawer-open]))`]: {
+    [`.${layoutClasses.Root}:has(&:not([${layoutAttrs.isDrawerOpen}]))`]: {
       [`.${layoutClasses.EdgeDrawerTrigger} .${layoutClasses.EdgeDrawerOpenVisible}`]:
         {
           display: "none",
         },
     },
-    "&[data-drawer-open], &[data-mobile-closing]": {
+    [`&[${layoutAttrs.isDrawerOpen}], &[${layoutAttrs.isDrawerClosing}]`]: {
       "--jun-ES-drawerWidth": width,
     },
   };
@@ -95,9 +96,10 @@ function applyPermanentStyles(params: PermanentConfig) {
       },
     },
     ...(collapsedWidth && {
-      [`.${layoutClasses.Root}:has(&[data-edge-collapsed])`]: {
-        "--jun-ES-collapsible": "var(--collapsed)",
-      },
+      [`.${layoutClasses.Root}:has(&[${layoutAttrs.isEdgeSidebarCollapsed}])`]:
+        {
+          "--jun-ES-collapsible": "var(--collapsed)",
+        },
     }),
     ...(expandConfig && {
       [`& .${layoutClasses.EdgeSidebarContent}:hover`]: {
@@ -186,9 +188,10 @@ const StyledEdgeSidebar = styled(EdgeSidebarRoot, {
       display: `var(--drawer, block)
               var(--permanent, none)`,
     },
-    "&:not([data-drawer-open], [data-mobile-closing])": {
-      overflow: "var(--drawer, hidden)",
-    },
+    [`&:not([${layoutAttrs.isDrawerOpen}], [${layoutAttrs.isDrawerClosing}])`]:
+      {
+        overflow: "var(--drawer, hidden)",
+      },
     variants: [
       {
         props: ({ variant }: EdgeSidebarOwnerState) => !!variant,

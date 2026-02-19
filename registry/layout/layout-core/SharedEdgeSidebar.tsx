@@ -1,6 +1,7 @@
 "use client";
 import { Breakpoint } from "@mui/material/styles";
 import { styled } from "@mui/material/styles";
+import { layoutAttrs } from "./layoutAttrs";
 
 export type DrawerConfig = {
   width?: string;
@@ -51,14 +52,14 @@ export function internalCollapseSidebar(options: {
         .getPropertyValue("--_in-autoCollapse") === "1";
 
     if (nextCollapsed) {
-      sidebar.removeAttribute("data-edge-uncollapsed");
+      sidebar.removeAttribute(layoutAttrs.isEdgeSidebarUncollapsed);
       if (!autoCollapse || inAutoCollapse) {
-        sidebar.setAttribute("data-edge-collapsed", "");
+        sidebar.setAttribute(layoutAttrs.isEdgeSidebarCollapsed, "");
       }
     } else {
-      sidebar.removeAttribute("data-edge-collapsed");
+      sidebar.removeAttribute(layoutAttrs.isEdgeSidebarCollapsed);
       if (!inAutoCollapse) {
-        sidebar.setAttribute("data-edge-uncollapsed", "");
+        sidebar.setAttribute(layoutAttrs.isEdgeSidebarUncollapsed, "");
       }
     }
   }
@@ -73,10 +74,10 @@ export function internalToggleSidebar(options: {
   const doc = d ?? document;
   const sidebar = doc.querySelector(selector) as HTMLDivElement | null;
   if (sidebar) {
-    const currentOpen = sidebar.getAttribute("data-drawer-open") !== null;
+    const currentOpen = sidebar.getAttribute(layoutAttrs.isDrawerOpen) !== null;
     const nextOpen = state === undefined ? !currentOpen : state;
     if (nextOpen) {
-      sidebar.setAttribute("data-drawer-open", "");
+      sidebar.setAttribute(layoutAttrs.isDrawerOpen, "");
       sidebar.style.setProperty("--jun-ES-drawerOpen", "1");
       function handleOutsideClick(event: MouseEvent) {
         if (event.target === sidebar) {
@@ -91,10 +92,10 @@ export function internalToggleSidebar(options: {
         doc.addEventListener?.("click", handleOutsideClick);
       }, 0);
     } else {
-      sidebar.removeAttribute("data-drawer-open");
-      sidebar.setAttribute("data-mobile-closing", "");
+      sidebar.removeAttribute(layoutAttrs.isDrawerOpen);
+      sidebar.setAttribute(layoutAttrs.isDrawerClosing, "");
       setTimeout(() => {
-        sidebar.removeAttribute("data-mobile-closing");
+        sidebar.removeAttribute(layoutAttrs.isDrawerClosing);
       }, 300);
       sidebar.style.setProperty("--jun-ES-drawerOpen", "");
     }
@@ -123,12 +124,12 @@ export const EdgeSidebarRoot = styled("div")({
     visibility: "hidden",
     opacity: "var(--jun-ES-drawerOpen, 0)",
   },
-  "&[data-drawer-open]": {
+  [`&[${layoutAttrs.isDrawerOpen}]`]: {
     "&::before": {
       visibility: "visible",
     },
   },
-  "html:has(&[data-drawer-open]:not([data-without-overlay]))": {
+  [`html:has(&[${layoutAttrs.isDrawerOpen}]:not([data-without-overlay]))`]: {
     overflow: "hidden",
   },
   "&::after": {
