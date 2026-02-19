@@ -91,7 +91,6 @@ export function LayoutV6AppAnalytics() {
       <EdgeSidebar
         variant={{
           xs: ["drawer"],
-          md: ["persistent", { persistentBehavior: "none" }],
           lg: [
             "permanent",
             {

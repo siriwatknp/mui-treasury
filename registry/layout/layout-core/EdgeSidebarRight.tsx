@@ -4,7 +4,6 @@ import type {
   EdgeSidebarVariant,
   EdgeSidebarVariantInput,
   DrawerConfig,
-  PersistentConfig,
   PermanentConfig,
 } from "./SharedEdgeSidebar";
 import { Breakpoint } from "@mui/material/styles";
@@ -50,50 +49,6 @@ function applyDrawerRightStyles(params: DrawerConfig) {
     },
     "&[data-drawer-open], &[data-mobile-closing]": {
       "--jun-ES-drawerWidth": width,
-    },
-  };
-}
-
-function applyPersistentRightStyles(params: PersistentConfig) {
-  const { width = "256px", persistentBehavior = "fit" } = params || {};
-  return {
-    ".Root:has(&)": {
-      "--jun-ESR-variant": "var(--permanent-R)",
-      "--jun-ESR-collapsedWidth": "0px",
-      ...(persistentBehavior === "none"
-        ? {
-            zIndex: 2,
-            "--jun-ESR-permanentWidth": "0px",
-          }
-        : {
-            ...(width && {
-              "--jun-ESR-permanentWidth": width,
-            }),
-          }),
-      "--jun-ESR-collapsible": "var(--collapsed-R)",
-      ".EdgeDrawerTrigger-R": {
-        display: "none",
-      },
-      ".EdgeSidebar-R-collapser": {
-        "--_sidebarCollapsed": "var(--collapsed-R, 1)",
-        display: "var(--display, inline-flex)",
-        ".EdgeCollapsedVisible": {
-          display:
-            "var(--collapsed-R, none) var(--uncollapsed-R, inline-block)",
-        },
-        ".EdgeUncollapsedVisible": {
-          display:
-            "var(--collapsed-R, inline-block) var(--uncollapsed-R, none)",
-        },
-      },
-    },
-    ...(persistentBehavior === "none" && {
-      "--jun-EC-width": `var(--collapsed-R, var(--_permanentWidth-R, 0px)) var(--uncollapsed-R, ${width})`,
-      "--jun-ES-permanentSlide":
-        "var(--uncollapsed-R, -100%) var(--collapsed-R, 0)",
-    }),
-    ".Root:has(&[data-edge-uncollapsed])": {
-      "--jun-ESR-collapsible": "var(--uncollapsed-R)",
     },
   };
 }
@@ -286,7 +241,6 @@ const StyledEdgeSidebarRight = styled(EdgeSidebarRoot, {
                 }
                 const variantStyles = {
                   drawer: applyDrawerRightStyles,
-                  persistent: applyPersistentRightStyles,
                   permanent: applyPermanentRightStyles,
                 }[variantName](params as never);
                 responsive[theme.breakpoints.up(breakpoint)] = variantStyles;

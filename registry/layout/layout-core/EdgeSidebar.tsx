@@ -4,7 +4,6 @@ import type {
   EdgeSidebarVariant,
   EdgeSidebarVariantInput,
   DrawerConfig,
-  PersistentConfig,
   PermanentConfig,
 } from "./SharedEdgeSidebar";
 import { Breakpoint } from "@mui/material/styles";
@@ -50,46 +49,6 @@ function applyDrawerStyles(params: DrawerConfig) {
     },
     "&[data-drawer-open], &[data-mobile-closing]": {
       "--jun-ES-drawerWidth": width,
-    },
-  };
-}
-
-function applyPersistentStyles(params: PersistentConfig) {
-  const { width = "256px", persistentBehavior = "fit" } = params || {};
-  return {
-    ...(persistentBehavior === "none" && {
-      zIndex: 2,
-      "--jun-EC-width": `var(--collapsed, var(--_permanentWidth, 0px)) var(--uncollapsed, ${width})`,
-    }),
-    ".Root:has(&)": {
-      "--jun-ES-variant": "var(--permanent)",
-      "--jun-ES-collapsedWidth": "0px",
-      ...(persistentBehavior === "none"
-        ? {
-            "--jun-ES-permanentWidth": "0px",
-          }
-        : {
-            ...(width && {
-              "--jun-ES-permanentWidth": width,
-            }),
-          }),
-      "--jun-ES-collapsible": "var(--collapsed)",
-      ".EdgeDrawerTrigger": {
-        display: "none",
-      },
-      ".EdgeSidebar-collapser": {
-        "--_sidebarCollapsed": "var(--collapsed, 1)",
-        display: "var(--display, inline-flex)",
-        ".EdgeCollapsedVisible": {
-          display: "var(--collapsed, none) var(--uncollapsed, inline-block)",
-        },
-        ".EdgeUncollapsedVisible": {
-          display: "var(--collapsed, inline-block) var(--uncollapsed, none)",
-        },
-      },
-    },
-    ".Root:has(&[data-edge-uncollapsed])": {
-      "--jun-ES-collapsible": "var(--uncollapsed)",
     },
   };
 }
@@ -276,7 +235,6 @@ const StyledEdgeSidebar = styled(EdgeSidebarRoot, {
                 }
                 const variantStyles = {
                   drawer: applyDrawerStyles,
-                  persistent: applyPersistentStyles,
                   permanent: applyPermanentStyles,
                 }[variantName](params as never);
                 responsive[theme.breakpoints.up(breakpoint)] = variantStyles;

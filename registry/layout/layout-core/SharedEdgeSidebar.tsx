@@ -7,13 +7,6 @@ export type DrawerConfig = {
   showHeader?: boolean;
   withoutOverlay?: boolean;
 };
-export type PersistentConfig = {
-  /**
-   * @default "fit"
-   */
-  persistentBehavior?: "fit" | "none";
-  width?: string;
-};
 export type PermanentConfig = {
   width?: string;
   autoCollapse?: Breakpoint;
@@ -28,7 +21,6 @@ export type PermanentConfig = {
 
 export type EdgeSidebarVariant =
   | ["drawer", DrawerConfig?]
-  | ["persistent", PersistentConfig?]
   | ["permanent", PermanentConfig?];
 
 export type EdgeSidebarVariantInput =

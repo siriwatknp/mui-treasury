@@ -124,7 +124,6 @@ export function LayoutV6AppReactLegacy() {
       <EdgeSidebarRight
         variant={{
           xs: ["drawer"],
-          md: ["persistent", { persistentBehavior: "none" }],
         }}
       >
         <EdgeDrawerClose />
