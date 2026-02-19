@@ -362,8 +362,8 @@ These should be separate registry items, not part of layout-core migration.
 - [x] Phase 3.1 — `--drawer-pos/z/h` (prerequisite for 3.4) ✅ Done
 - [x] Phase 3.4 — Drawer show-header (dashboard uses `drawer-showHeader`) ✅ Done
 - [x] Phase 2.3 — EdgeSidebar z-index ✅ Done
-- [ ] Phase 2.4 — EdgeSidebarContent top
-- [ ] Phase 2.5 — `--tsn` transition variable
+- [x] Phase 2.4 — EdgeSidebarContent top (done in Phase 3.1) ✅ Done
+- [x] Phase 2.5 — `--tsn` transition variable ✅ Done
 - [x] Phase 2.7 — Drawer open/closed visibility (`data-edge-drawer-open-visible`, `data-edge-drawer-closed-visible`) ✅ Done
 
 ### Dashboard-supportive (general parity, not blocking)

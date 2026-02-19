@@ -34,7 +34,7 @@ const StyledRoot = styled("div", {
     minHeight: "var(--jun-h)",
     display: "grid",
     position: "relative",
-    transition: "grid-template-columns 0.3s",
+    transition: "var(--tsn, grid-template-columns 0.3s)",
     containerType: "inline-size",
     containerName: "page",
     gridTemplateRows: "auto 1fr",

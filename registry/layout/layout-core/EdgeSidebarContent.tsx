@@ -23,8 +23,8 @@ const StyledEdgeSidebarContent = styled("div", {
   height: "var(--_drawer, var(--drawer-h))",
   top: "var(--_drawer, calc(var(--jun-h) - var(--drawer-h)))",
   overflowY: "var(--_drawer, auto)" as never,
-  transition: `var(--_drawer, opacity 0.3s, transform 0.3s)
-               var(--_permanent, opacity 0.7s, width 0.3s var(--jun-EC-delay, 0s), transform 0.3s var(--jun-EC-delay, 0s), box-shadow 0.3s var(--jun-EC-delay, 0s))`,
+  transition: `var(--tsn, var(--_drawer, opacity 0.3s, transform 0.3s)
+               var(--_permanent, opacity 0.4s, width 0.3s var(--jun-EC-delay, 0s), transform 0.3s var(--jun-EC-delay, 0s), box-shadow 0.3s var(--jun-EC-delay, 0s)))`,
   transform: `var(--_drawer, var(--anchorLeft, translateX(calc((1 - var(--jun-ES-drawerOpen)) * -100%))) var(--anchorRight, translateX(calc(var(--jun-ES-drawerOpen) * -100%))))
                var(--_permanent, translateX(var(--jun-ES-permanentSlide, 0)))`,
   "[data-sidebar-hidden] &": {

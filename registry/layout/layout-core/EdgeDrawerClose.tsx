@@ -8,7 +8,7 @@ const StyledEdgeDrawerClose = styled("button")({
   display: "var(--_drawer, flex) var(--_permanent, none)",
   visibility: "hidden",
   opacity: 0,
-  transition: "0.3s",
+  transition: "var(--tsn, 0.3s)",
   position: "fixed",
   top: "0.875rem",
   right: "var(--anchorLeft, 0.875rem)",
