@@ -38,12 +38,12 @@ function applyDrawerStyles(params: DrawerConfig) {
       },
     },
     ".Root:has(&[data-drawer-open])": {
-      ".EdgeDrawerTrigger [data-edge-drawer-closed-visible]": {
+      ".EdgeDrawerTrigger .EdgeDrawerClosed-visible": {
         display: "none",
       },
     },
     ".Root:has(&:not([data-drawer-open]))": {
-      ".EdgeDrawerTrigger [data-edge-drawer-open-visible]": {
+      ".EdgeDrawerTrigger .EdgeDrawerOpen-visible": {
         display: "none",
       },
     },

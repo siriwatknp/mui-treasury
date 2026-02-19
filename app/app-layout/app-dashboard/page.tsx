@@ -53,8 +53,8 @@ export default function AppDashboardPage() {
           onClick={() => triggerEdgeDrawer({ sidebarId: SIDEBAR_ID })}
           sx={{ ml: 1 }}
         >
-          <MenuRounded data-edge-drawer-closed-visible="" />
-          <CloseRounded data-edge-drawer-open-visible="" />
+          <MenuRounded className="EdgeDrawerClosed-visible" />
+          <CloseRounded className="EdgeDrawerOpen-visible" />
         </IconButton>
         <IconButton
           className="EdgeSidebar-collapser"
