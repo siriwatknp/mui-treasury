@@ -218,13 +218,15 @@ const StyledEdgeSidebar = styled(EdgeSidebarRoot, {
                         ".Root:has(&) .EdgeSidebar-collapser": {
                           "--_autoCollapse": "1",
                         },
-                        ".Root:has(&)": {
-                          "--jun-ES-collapsible": {
-                            [permanentParams.autoCollapse]: "var(--collapsed)",
-                            [nextBreakpoint]: "var(--uncollapsed)",
+                        [theme.breakpoints.up(permanentParams.autoCollapse)]: {
+                          ".Root:has(&)": {
+                            "--jun-ES-collapsible": "var(--collapsed)",
                           },
                         },
                         [theme.breakpoints.up(nextBreakpoint)]: {
+                          ".Root:has(&)": {
+                            "--jun-ES-collapsible": "var(--uncollapsed)",
+                          },
                           ".Root:has(&) .EdgeSidebar-collapser": {
                             "--_in-autoCollapse": "1",
                           },

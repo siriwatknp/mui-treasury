@@ -223,14 +223,15 @@ const StyledEdgeSidebarRight = styled(EdgeSidebarRoot, {
                         ".Root:has(&) .EdgeSidebar-R-collapser": {
                           "--_autoCollapse": "1",
                         },
-                        ".Root:has(&)": {
-                          "--jun-ESR-collapsible": {
-                            [permanentParams.autoCollapse]:
-                              "var(--collapsed-R)",
-                            [nextBreakpoint]: "var(--uncollapsed-R)",
+                        [theme.breakpoints.up(permanentParams.autoCollapse)]: {
+                          ".Root:has(&)": {
+                            "--jun-ESR-collapsible": "var(--collapsed-R)",
                           },
                         },
                         [theme.breakpoints.up(nextBreakpoint)]: {
+                          ".Root:has(&)": {
+                            "--jun-ESR-collapsible": "var(--uncollapsed-R)",
+                          },
                           ".Root:has(&) .EdgeSidebar-R-collapser": {
                             "--_in-autoCollapse": "1",
                           },
