@@ -375,7 +375,7 @@ These should be separate registry items, not part of layout-core migration.
 ### Non-dashboard (other features)
 
 - [ ] Phase 2.2 — Nested Root
-- [ ] Phase 3.3 — Drawer without overlay
+- [x] Phase 3.3 — Drawer without overlay ✅ Done
 - [ ] Phase 3.5 — Standalone Root
 - [ ] Phase 4.1 — Close button handler
 - [ ] Phase 4.2 — Persistent slide verify

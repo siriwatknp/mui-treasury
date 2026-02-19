@@ -5,6 +5,7 @@ import { styled } from "@mui/material/styles";
 export type DrawerConfig = {
   width?: string;
   showHeader?: boolean;
+  withoutOverlay?: boolean;
 };
 export type PersistentConfig = {
   /**
@@ -135,7 +136,7 @@ export const EdgeSidebarRoot = styled("div")({
       visibility: "visible",
     },
   },
-  "html:has(&[data-drawer-open])": {
+  "html:has(&[data-drawer-open]:not([data-without-overlay]))": {
     overflow: "hidden",
   },
   "&::after": {

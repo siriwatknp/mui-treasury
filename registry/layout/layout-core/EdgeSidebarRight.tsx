@@ -17,13 +17,19 @@ import {
 } from "./SharedEdgeSidebar";
 
 function applyDrawerRightStyles(params: DrawerConfig) {
-  const { width = "300px", showHeader } = params || {};
+  const { width = "300px", showHeader, withoutOverlay } = params || {};
   return {
     "--jun-ES-drawerWidth": "0px",
     ...(showHeader && {
       "--drawer-h": "calc(var(--jun-h) - var(--jun-H-h))",
       "&::before": {
         top: "var(--jun-H-h)",
+      },
+    }),
+    ...(withoutOverlay && {
+      "--drawer-h": "calc(var(--jun-h) - var(--jun-H-clip-h))",
+      "&::before": {
+        display: "none",
       },
     }),
     ".Root:has(&)": {
@@ -304,17 +310,27 @@ const EdgeSidebarRight = React.forwardRef<
   > &
     EdgeSidebarRightProps
 >(function EdgeSidebarRight({ className, variant, ...props }, ref) {
-  const ownerState = useMemo(
-    () => ({
-      variant: Array.isArray(variant) ? { xs: variant } : variant,
-    }),
+  const normalizedVariant = useMemo(
+    () => (Array.isArray(variant) ? { xs: variant } : variant),
     [variant],
   );
+  const ownerState = useMemo(
+    () => ({
+      variant: normalizedVariant,
+    }),
+    [normalizedVariant],
+  );
+  const hasWithoutOverlay =
+    normalizedVariant &&
+    Object.values(normalizedVariant).some(
+      (v) => v?.[0] === "drawer" && (v[1] as DrawerConfig)?.withoutOverlay,
+    );
   return (
     <StyledEdgeSidebarRight
       ref={ref}
       className={`EdgeSidebar-R ${className || ""}`}
       ownerState={ownerState}
+      {...(hasWithoutOverlay && { "data-without-overlay": "" })}
       {...props}
     />
   );
