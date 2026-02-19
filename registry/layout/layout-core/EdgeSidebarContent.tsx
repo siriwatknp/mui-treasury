@@ -1,9 +1,11 @@
 "use client";
 import React from "react";
-import { BoxProps } from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 
-const StyledEdgeSidebarContent = styled("div")({
+const StyledEdgeSidebarContent = styled("div", {
+  name: "LayoutEdgeSidebarContent",
+  slot: "root",
+})({
   display: "flex",
   background: "var(--EdgeSidebarContent-background)",
   flexDirection: "column",
@@ -35,17 +37,17 @@ const StyledEdgeSidebarContent = styled("div")({
   },
 });
 
-const EdgeSidebarContent = React.forwardRef<HTMLDivElement, BoxProps>(
-  function EdgeSidebarContent({ className, ...props }, ref) {
-    return (
-      // @ts-expect-error BoxProps on styled native element
-      <StyledEdgeSidebarContent
-        ref={ref}
-        className={`EdgeSidebarContent ${className || ""}`}
-        {...props}
-      />
-    );
-  },
-);
+const EdgeSidebarContent = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<typeof StyledEdgeSidebarContent>
+>(function EdgeSidebarContent({ className, ...props }, ref) {
+  return (
+    <StyledEdgeSidebarContent
+      ref={ref}
+      className={`EdgeSidebarContent ${className || ""}`}
+      {...props}
+    />
+  );
+});
 
 export default EdgeSidebarContent;
