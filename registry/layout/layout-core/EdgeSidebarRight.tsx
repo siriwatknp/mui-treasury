@@ -212,7 +212,11 @@ const StyledEdgeSidebarRight = styled(EdgeSidebarRoot, {
                   drawer: applyDrawerRightStyles,
                   permanent: applyPermanentRightStyles,
                 }[variantName](params as never);
-                responsive[theme.breakpoints.up(breakpoint)] = variantStyles;
+                if (breakpoint === "xs") {
+                  Object.assign(responsive, variantStyles);
+                } else {
+                  responsive[theme.breakpoints.up(breakpoint)] = variantStyles;
+                }
               }
             });
           return responsive;
