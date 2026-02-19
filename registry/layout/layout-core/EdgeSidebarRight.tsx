@@ -177,10 +177,6 @@ const StyledEdgeSidebarRight = styled(EdgeSidebarRoot, {
       "--collapsed-R": "var(--jun-ESR-collapsible,)",
       "--uncollapsed-R": "var(--jun-ESR-collapsible,)",
     },
-    [`.${layoutClasses.Root}:has(&:empty), .${layoutClasses.Root}:has(& .${layoutClasses.EdgeSidebarContent}:empty)`]:
-      {
-        "--jun-ESR-permanentWidth": "0px",
-      },
     "--jun-ES-anchor": "var(--anchorRight)",
     "--jun-EC-width": "var(--_permanentWidth-R, 0px)",
     "--_drawer": "var(--drawer-R)",
