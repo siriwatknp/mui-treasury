@@ -3,11 +3,9 @@ import { Breakpoint } from "@mui/material/styles";
 import { styled } from "@mui/material/styles";
 
 export type TemporaryConfig = {
-  variant: "temporary";
   width?: string;
 };
 export type PersistentConfig = {
-  variant: "persistent";
   /**
    * @default "fit"
    */
@@ -15,7 +13,6 @@ export type PersistentConfig = {
   width?: string;
 };
 export type PermanentConfig = {
-  variant: "permanent";
   width?: string;
   autoCollapse?: Breakpoint;
   collapsedWidth?: string;
@@ -26,6 +23,15 @@ export type PermanentConfig = {
         shadow?: string;
       };
 };
+
+export type EdgeSidebarVariant =
+  | ["temporary", TemporaryConfig?]
+  | ["persistent", PersistentConfig?]
+  | ["permanent", PermanentConfig?];
+
+export type EdgeSidebarVariantInput =
+  | EdgeSidebarVariant
+  | Partial<Record<Breakpoint, EdgeSidebarVariant>>;
 
 export function internalCollapseSidebar(options: {
   event: React.MouseEvent;

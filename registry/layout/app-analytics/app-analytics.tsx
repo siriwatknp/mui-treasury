@@ -89,21 +89,18 @@ export function LayoutV6AppAnalytics() {
         </Box>
       </Header>
       <EdgeSidebar
-        config={{
-          xs: {
-            variant: "temporary",
-          },
-          md: {
-            variant: "persistent",
-            persistentBehavior: "none",
-          },
-          lg: {
-            autoCollapse: "xl",
-            variant: "permanent",
-            width: "300px",
-            collapsedWidth: "80px",
-            expandOnHover: true,
-          },
+        variant={{
+          xs: ["temporary"],
+          md: ["persistent", { persistentBehavior: "none" }],
+          lg: [
+            "permanent",
+            {
+              autoCollapse: "xl",
+              width: "300px",
+              collapsedWidth: "80px",
+              expandOnHover: true,
+            },
+          ],
         }}
       >
         <EdgeTemporaryClose />

@@ -122,14 +122,9 @@ export function LayoutV6AppReactLegacy() {
         </Container>
       </Header>
       <EdgeSidebarRight
-        config={{
-          xs: {
-            variant: "temporary",
-          },
-          md: {
-            variant: "persistent",
-            persistentBehavior: "none",
-          },
+        variant={{
+          xs: ["temporary"],
+          md: ["persistent", { persistentBehavior: "none" }],
         }}
       >
         <EdgeTemporaryClose />

@@ -93,11 +93,8 @@ export function LayoutV6AppShoppingCart() {
           </Container>
         </StyledHeader>
         <EdgeSidebarRight
-          config={{
-            xs: {
-              variant: "temporary",
-              width: "min(400px, 100vw)",
-            },
+          variant={{
+            xs: ["temporary", { width: "min(400px, 100vw)" }],
           }}
         >
           <EdgeSidebarContent

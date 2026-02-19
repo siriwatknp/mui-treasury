@@ -78,13 +78,15 @@ export function LayoutV6AppMessenger() {
           </Toolbar>
         </StyledHeader>
         <EdgeSidebar
-          config={{
-            xs: {
-              variant: "permanent",
-              width: "25cqw",
-              autoCollapse: "md",
-              collapsedWidth: "80px",
-            },
+          variant={{
+            xs: [
+              "permanent",
+              {
+                width: "25cqw",
+                autoCollapse: "md",
+                collapsedWidth: "80px",
+              },
+            ],
           }}
         >
           <EdgeSidebarContent>
