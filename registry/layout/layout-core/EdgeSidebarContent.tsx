@@ -15,11 +15,13 @@ const StyledEdgeSidebarContent = styled("div", {
                var(--_permanent, visible)` as never,
   overflowX: "auto",
   flex: 1,
-  position: "var(--_drawer, fixed) var(--_permanent, relative)" as never,
+  position:
+    "var(--_drawer, var(--drawer-pos)) var(--_permanent, relative)" as never,
   zIndex: 2,
   width:
     "var(--_drawer, var(--jun-ES-drawerWidth)) var(--_permanent, calc(var(--jun-EC-width) - var(--jun-ES-line-w, 0px)))",
-  height: "var(--_drawer, 100%)",
+  height: "var(--_drawer, var(--drawer-h))",
+  top: "var(--_drawer, calc(var(--jun-h) - var(--drawer-h)))",
   overflowY: "var(--_drawer, auto)" as never,
   transition: `var(--_drawer, opacity 0.3s, transform 0.3s)
                var(--_permanent, opacity 0.7s, width 0.3s var(--jun-EC-delay, 0s), transform 0.3s var(--jun-EC-delay, 0s), box-shadow 0.3s var(--jun-EC-delay, 0s))`,

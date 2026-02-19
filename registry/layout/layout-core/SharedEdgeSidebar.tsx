@@ -111,6 +111,7 @@ export function internalToggleSidebar(options: {
 export const EdgeSidebarRoot = styled("div")({
   "--anchorLeft": "var(--jun-ES-anchor,)",
   "--anchorRight": "var(--jun-ES-anchor,)",
+  "--drawer-h": "var(--jun-h)",
   transition: "width 0.3s",
   display: "flex",
   flexDirection: "column",

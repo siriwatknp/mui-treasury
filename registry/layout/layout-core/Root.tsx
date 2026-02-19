@@ -21,6 +21,8 @@ const StyledRoot = styled("div", {
     "--Header-background": (theme.vars || theme).palette.background.paper,
     "--Footer-background": (theme.vars || theme).palette.background.paper,
     "--Footer-overline": `1px solid ${(theme.vars || theme).palette.divider}`,
+    "--drawer-pos": "fixed",
+    "--drawer-z": "999",
     "--jun-ES-line-w": "1px",
     "--jun-ES-line-color": (theme.vars || theme).palette.divider,
     "--EdgeSidebarContent-background": (theme.vars || theme).palette.background
