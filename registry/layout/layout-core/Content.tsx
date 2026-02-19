@@ -8,6 +8,8 @@ const StyledContent = styled("main", {
   slot: "root",
 })(
   memoTheme(() => ({
+    "--_overflow": "var(--content-overflow)",
+    overflow: "var(--_overflow)" as never,
     gridArea: "Content",
     minHeight: 0,
     "&:has(> .InsetSidebar)": {

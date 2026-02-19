@@ -370,7 +370,7 @@ These should be separate registry items, not part of layout-core migration.
 
 - [ ] Phase 2.1 — Root height safe-area
 - [ ] Phase 2.6 — Empty sidebar auto-hide
-- [ ] Phase 3.6 — Content overflow
+- [x] Phase 3.6 — Content overflow ✅ Done
 
 ### Non-dashboard (other features)
 
