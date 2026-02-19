@@ -16,7 +16,7 @@ const StyledRoot = styled("div", {
   ownerState: RootProps;
 }>(
   memoTheme(({ theme }) => ({
-    "--jun-h": "100lvh",
+    "--jun-h": "calc(100svh - env(safe-area-inset-bottom))",
     "--Header-underline": `1px solid ${(theme.vars || theme).palette.divider}`,
     "--Header-background": (theme.vars || theme).palette.background.paper,
     "--Footer-background": (theme.vars || theme).palette.background.paper,
