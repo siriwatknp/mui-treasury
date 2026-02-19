@@ -114,6 +114,7 @@ export const EdgeSidebarRoot = styled("div")({
   "--anchorLeft": "var(--jun-ES-anchor,)",
   "--anchorRight": "var(--jun-ES-anchor,)",
   "--drawer-h": "var(--jun-h)",
+  zIndex: "var(--_drawer, 2) var(--_permanent, 1)" as never,
   transition: "width 0.3s",
   display: "flex",
   flexDirection: "column",
