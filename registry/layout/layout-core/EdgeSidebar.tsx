@@ -17,9 +17,15 @@ import {
 } from "./SharedEdgeSidebar";
 
 function applyDrawerStyles(params: DrawerConfig) {
-  const { width = "300px" } = params || {};
+  const { width = "300px", showHeader } = params || {};
   return {
     "--jun-ES-drawerWidth": "0px",
+    ...(showHeader && {
+      "--drawer-h": "calc(var(--jun-h) - var(--jun-H-h))",
+      "&::before": {
+        top: "var(--jun-H-h)",
+      },
+    }),
     ".Root:has(&)": {
       "--jun-ES-variant": "var(--drawer)",
       ".EdgeSidebar-collapser": {

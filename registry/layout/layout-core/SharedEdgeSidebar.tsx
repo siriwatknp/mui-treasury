@@ -4,6 +4,7 @@ import { styled } from "@mui/material/styles";
 
 export type DrawerConfig = {
   width?: string;
+  showHeader?: boolean;
 };
 export type PersistentConfig = {
   /**

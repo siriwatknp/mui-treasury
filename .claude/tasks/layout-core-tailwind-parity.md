@@ -360,7 +360,7 @@ These should be separate registry items, not part of layout-core migration.
 
 - [x] Phase 3.2 — Header-clip left/right/both modes (dashboard uses `clip-left`) ✅ Done
 - [x] Phase 3.1 — `--drawer-pos/z/h` (prerequisite for 3.4) ✅ Done
-- [ ] Phase 3.4 — Drawer show-header (dashboard uses `drawer-showHeader`)
+- [x] Phase 3.4 — Drawer show-header (dashboard uses `drawer-showHeader`) ✅ Done
 - [ ] Phase 2.3 — EdgeSidebar z-index
 - [ ] Phase 2.4 — EdgeSidebarContent top
 - [ ] Phase 2.5 — `--tsn` transition variable
