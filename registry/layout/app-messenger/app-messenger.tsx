@@ -71,7 +71,7 @@ export function LayoutV6AppMessenger() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Root fixedHeight>
+      <Root standalone>
         <StyledHeader height="64px" sx={{ position: "relative" }}>
           <Toolbar disableGutters sx={{ flex: "auto" }}>
             <ConversationHead />

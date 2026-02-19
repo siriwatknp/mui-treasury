@@ -376,7 +376,7 @@ These should be separate registry items, not part of layout-core migration.
 
 - [ ] Phase 2.2 — Nested Root
 - [x] Phase 3.3 — Drawer without overlay ✅ Done
-- [x] Phase 3.5 — Standalone Root ✅ Done
+- [x] Phase 3.5 — Standalone Root (removed `fixedHeight`, migrated consumers) ✅ Done
 - [ ] Phase 4.1 — Close button handler
 - [ ] Phase 4.2 — Persistent slide verify
 - [ ] Phase 4.3 — data-state/data-collapsible
