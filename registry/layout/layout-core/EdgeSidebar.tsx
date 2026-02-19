@@ -162,6 +162,9 @@ const StyledEdgeSidebar = styled(EdgeSidebarRoot, {
       "--collapsed": "var(--jun-ES-collapsible,)",
       "--uncollapsed": "var(--jun-ES-collapsible,)",
     },
+    ".Root:has(&:empty), .Root:has(& .EdgeSidebarContent:empty)": {
+      "--jun-ES-permanentWidth": "0px",
+    },
     "--jun-ES-anchor": "var(--anchorLeft)",
     "--jun-EC-width": "var(--_permanentWidth, 0px)",
     "--_drawer": "var(--drawer)",
