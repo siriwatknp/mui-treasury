@@ -26,6 +26,16 @@ function applyTemporaryStyles(params: TemporaryConfig) {
         display: "none",
       },
     },
+    ".Root:has(&[data-drawer-open])": {
+      ".EdgeDrawerTrigger [data-edge-drawer-closed-visible]": {
+        display: "none",
+      },
+    },
+    ".Root:has(&:not([data-drawer-open]))": {
+      ".EdgeDrawerTrigger [data-edge-drawer-open-visible]": {
+        display: "none",
+      },
+    },
     "&[data-drawer-open], &[data-mobile-closing]": {
       "--jun-ES-drawerWidth": width,
     },
