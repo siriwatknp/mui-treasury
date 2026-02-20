@@ -131,7 +131,7 @@ function applyPermanentRightStyles(params: PermanentConfig) {
     }),
     ...(expandConfig && {
       [`&:has(.${layoutClasses.EdgeSidebarContent}:hover)`]: {
-        "--_collapsed": "",
+        "--_collapsed": "var(--__,)", // workaround to use fallback, Emotion strips out spaces if the value is " ".
         "--_uncollapsed": "var(--_)",
       },
       [`& .${layoutClasses.EdgeSidebarContent}:hover`]: {
