@@ -364,19 +364,19 @@ These should be separate registry items, not part of layout-core migration.
 - [x] Phase 2.3 — EdgeSidebar z-index ✅ Done
 - [x] Phase 2.4 — EdgeSidebarContent top (done in Phase 3.1) ✅ Done
 - [x] Phase 2.5 — `--tsn` transition variable ✅ Done
-- [x] Phase 2.7 — Drawer open/closed visibility (`data-edge-drawer-open-visible`, `data-edge-drawer-closed-visible`) ✅ Done
+- [x] Phase 2.7 — Drawer open/closed visibility (`.EdgeDrawerOpen-visible`, `.EdgeDrawerClosed-visible`) ✅ Done
 
 ### Dashboard-supportive (general parity, not blocking)
 
-- [ ] Phase 2.1 — Root height safe-area
-- [ ] Phase 2.6 — Empty sidebar auto-hide
+- [x] Phase 2.1 — Root height safe-area ✅ Done
+- [x] Phase 2.6 — Empty sidebar auto-hide ✅ Done
 - [x] Phase 3.6 — Content overflow ✅ Done
 
 ### Non-dashboard (other features)
 
-- [ ] Phase 2.2 — Nested Root
+- ~~[ ] Phase 2.2 — Nested Root~~
 - [x] Phase 3.3 — Drawer without overlay ✅ Done
 - [x] Phase 3.5 — Standalone Root (removed `fixedHeight`, migrated consumers) ✅ Done
-- [ ] Phase 4.1 — Close button handler
+- [x] Phase 4.1 — Close button handler ✅ Done
 - [x] Phase 4.2 — Removed persistent variant entirely, migrated consumers ✅ Done
-- [ ] Phase 4.3 — data-state/data-collapsible
+- ~~[x] Phase 4.3 — data-state/data-collapsible ~~

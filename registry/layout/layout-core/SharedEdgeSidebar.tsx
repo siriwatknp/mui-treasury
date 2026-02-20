@@ -81,7 +81,15 @@ export function internalToggleSidebar(options: {
       sidebar.setAttribute(layoutAttrs.isDrawerOpen, "");
       sidebar.style.setProperty("--jun-ES-drawerOpen", "1");
       function handleOutsideClick(event: MouseEvent) {
-        if (event.target === sidebar) {
+        const closer = doc.querySelector(
+          `.${layoutClasses.DrawerEdgeSidebarClose}`,
+        ) as HTMLButtonElement;
+        if (
+          // clicking on the backdrop (psuedo element of sidebar) will close the sidebar
+          event.target === sidebar ||
+          // clicking on the closer button will close the sidebar
+          (closer && closer.contains(event.target as Node))
+        ) {
           internalToggleSidebar({
             ...options,
             state: false,
@@ -90,8 +98,12 @@ export function internalToggleSidebar(options: {
         }
       }
       setTimeout(() => {
+        // prevent the `handleOutsideClick` to be called immediately
         doc.addEventListener?.("click", handleOutsideClick);
       }, 0);
+
+      // TODO: add a way to close the sidebar by swiping
+      // TODO: add a way to close the sidebar by pressing ESC
     } else {
       sidebar.removeAttribute(layoutAttrs.isDrawerOpen);
       sidebar.setAttribute(layoutAttrs.isDrawerClosing, "");
