@@ -13,6 +13,7 @@ import CloseRounded from "@mui/icons-material/CloseRounded";
 import ChevronRightRounded from "@mui/icons-material/ChevronRightRounded";
 import HomeRounded from "@mui/icons-material/HomeRounded";
 import MenuRounded from "@mui/icons-material/MenuRounded";
+import Search from "@mui/icons-material/Search";
 import BarChartRounded from "@mui/icons-material/BarChartRounded";
 import SecurityRounded from "@mui/icons-material/SecurityRounded";
 import LanguageRounded from "@mui/icons-material/LanguageRounded";
@@ -30,12 +31,13 @@ import EdgeSidebar, {
 } from "@/registry/layout/layout-core/EdgeSidebar";
 import EdgeSidebarContent from "@/registry/layout/layout-core/EdgeSidebarContent";
 import { layoutClasses } from "@/registry/layout/layout-core/layoutClasses";
+import { EdgeDrawerClose } from "@/registry/layout/layout-core";
 
 const SIDEBAR_ID = "app-dashboard-sidebar";
 
 const menus = [
   { title: "Account Home", icon: HomeRounded },
-  { title: "Discover", icon: HomeRounded },
+  { title: "Discover", icon: Search },
   { title: "Domain Registration", icon: LanguageRounded },
   { title: "Analytics & Logs", icon: BarChartRounded },
   { title: "Security Center", icon: SecurityRounded },
@@ -48,7 +50,7 @@ const menus = [
 export default function AppDashboardPage() {
   return (
     <Root>
-      <Header height="64px" clip="left">
+      <Header height={{ xs: "48px", md: "64px" }} clip>
         <IconButton
           className={layoutClasses.EdgeDrawerTrigger}
           onClick={() => triggerEdgeDrawer({ sidebarId: SIDEBAR_ID })}
@@ -75,7 +77,7 @@ export default function AppDashboardPage() {
         id={SIDEBAR_ID}
         permanentAutoCollapse="lg"
         variant={{
-          xs: ["drawer", { width: "260px" }],
+          xs: ["drawer", { width: "260px", showHeader: true }],
           md: [
             "permanent",
             {
@@ -86,22 +88,8 @@ export default function AppDashboardPage() {
           ],
         }}
       >
+        <EdgeDrawerClose />
         <EdgeSidebarContent>
-          <Box
-            sx={{
-              height: 60,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              borderBottom: 1,
-              borderColor: "divider",
-            }}
-          >
-            <Typography variant="subtitle2" fontWeight="bold">
-              App
-            </Typography>
-          </Box>
-
           <List sx={{ flex: 1, overflow: "auto" }}>
             {menus.map((item) => {
               const Icon = item.icon;
