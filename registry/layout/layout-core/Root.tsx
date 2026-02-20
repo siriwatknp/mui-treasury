@@ -8,6 +8,7 @@ import { layoutClasses } from "./layoutClasses";
 interface RootProps {
   height?: string | Record<Breakpoint, string> | Record<string, string>;
   standalone?: boolean;
+  disableTransition?: boolean;
 }
 
 const StyledRoot = styled("div", {
@@ -71,6 +72,12 @@ const StyledRoot = styled("div", {
           maxHeight: "var(--jun-h)",
         },
       },
+      {
+        props: { disableTransition: true },
+        style: {
+          "--tsn": "none",
+        },
+      },
     ],
   })),
 );
@@ -79,13 +86,17 @@ const Root = React.forwardRef<
   HTMLDivElement,
   Omit<React.ComponentPropsWithoutRef<typeof StyledRoot>, "ownerState"> &
     RootProps
->(function Root({ className, height, standalone, ...props }, ref) {
+>(function Root(
+  { className, height, standalone, disableTransition, ...props },
+  ref,
+) {
   const ownerState = useMemo(
     () => ({
       height,
       standalone,
+      disableTransition,
     }),
-    [height, standalone],
+    [height, standalone, disableTransition],
   );
   return (
     <StyledRoot
