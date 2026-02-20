@@ -52,12 +52,22 @@ const StyledInsetSidebar = styled("aside", {
         style: ({ width }: Required<InsetSidebarProps>) =>
           theme.unstable_sx({
             width,
-            [`.${layoutClasses.Root}:has(&:not(:last-child))`]: {
-              "--jun-ISL-w": width,
-            },
-            [`.${layoutClasses.Root}:has(&:last-child)`]: {
-              "--jun-ISR-w": width,
-            },
+            [`.${layoutClasses.Root}:has(> .${layoutClasses.Content} > &:first-child) > .${layoutClasses.Footer}`]:
+              {
+                "--jun-ISL-w": width,
+              },
+            [`.${layoutClasses.Root}:has(> .${layoutClasses.Content} > * > &:first-child) > .${layoutClasses.Footer}`]:
+              {
+                "--jun-ISL-w": width,
+              },
+            [`.${layoutClasses.Root}:has(> .${layoutClasses.Content} > &:last-child) > .${layoutClasses.Footer}`]:
+              {
+                "--jun-ISR-w": width,
+              },
+            [`.${layoutClasses.Root}:has(> .${layoutClasses.Content} > * > &:last-child) > .${layoutClasses.Footer}`]:
+              {
+                "--jun-ISR-w": width,
+              },
             ...(typeof width !== "string" && {
               display: {
                 xs: "none",
