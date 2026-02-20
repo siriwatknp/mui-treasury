@@ -20,7 +20,7 @@ import Footer from "../layout-core/Footer";
 import Header from "../layout-core/Header";
 import InsetAvoidingView from "../layout-core/InsetAvoidingView";
 import InsetSidebar from "../layout-core/InsetSidebar";
-import InsetSidebarContent from "../layout-core/InsetSidebarContent";
+import InsetContent from "../layout-core/InsetContent";
 import Root from "../layout-core/Root";
 import { layoutClasses } from "../layout-core/layoutClasses";
 
@@ -132,7 +132,7 @@ export function LayoutV6AppReactLegacy() {
       <Content>
         <ReactContent />
         <InsetSidebar position="fixed" width={{ md: "256px" }}>
-          <InsetSidebarContent>{sidebarContent}</InsetSidebarContent>
+          <InsetContent>{sidebarContent}</InsetContent>
         </InsetSidebar>
       </Content>
       <Footer>

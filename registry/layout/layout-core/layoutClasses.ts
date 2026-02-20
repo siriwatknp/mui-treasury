@@ -17,6 +17,6 @@ export const layoutClasses = {
   EdgeDrawerTriggerRight: "EdgeDrawerTrigger-R",
   DrawerWithoutOverlay: "EdgeDrawer-withoutOverlay",
   InsetSidebar: "InsetSidebar",
-  InsetSidebarContent: "InsetSidebarContent",
+  InsetContent: "InsetContent",
   InsetAvoidingView: "InsetAvoidingView",
 };

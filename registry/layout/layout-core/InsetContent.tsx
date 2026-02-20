@@ -4,12 +4,12 @@ import { BoxProps } from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import { layoutClasses } from "./layoutClasses";
 
-const InsetSidebarContentRoot = styled("div")(({ theme }) => ({
+const InsetContentRoot = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   backgroundColor: "inherit",
   overflow: "auto",
-  background: "var(--InsetSidebarContent-background)",
+  background: "var(--InsetContent-background)",
   boxSizing:
     "var(--fixed, content-box) var(--absolute, border-box)" as never,
   position:
@@ -18,8 +18,8 @@ const InsetSidebarContentRoot = styled("div")(({ theme }) => ({
     "var(--fixed, calc(100% - var(--jun-H-h, 0px))) var(--absolute, var(--jun-IC-absolute-h, 100%))",
   width: "var(--fixed, inherit) var(--absolute, 100%)",
   top: 0,
-  borderRight: "var(--anchor-left, var(--InsetSidebarContent-sideline))",
-  borderLeft: "var(--anchor-right, var(--InsetSidebarContent-sideline))",
+  borderRight: "var(--anchor-left, var(--InsetContent-sideline))",
+  borderLeft: "var(--anchor-right, var(--InsetContent-sideline))",
   borderColor: theme.palette.divider,
   marginLeft:
     "var(--fixed, var(--anchor-left, -9999px)) var(--absolute, initial)",
@@ -32,19 +32,19 @@ const InsetSidebarContentRoot = styled("div")(({ theme }) => ({
   marginTop: "var(--fixed, var(--jun-H-h))",
 }));
 
-const InsetSidebarContent = React.forwardRef<HTMLDivElement, BoxProps>(
-  function InsetSidebarContent({ className, children, ...props }, ref) {
+const InsetContent = React.forwardRef<HTMLDivElement, BoxProps>(
+  function InsetContent({ className, children, ...props }, ref) {
     return (
       // @ts-expect-error BoxProps on styled native element
-      <InsetSidebarContentRoot
+      <InsetContentRoot
         ref={ref}
-        className={`${layoutClasses.InsetSidebarContent} ${className || ""}`}
+        className={`${layoutClasses.InsetContent} ${className || ""}`}
         {...props}
       >
         {children}
-      </InsetSidebarContentRoot>
+      </InsetContentRoot>
     );
   },
 );
 
-export default InsetSidebarContent;
+export default InsetContent;

@@ -21,7 +21,7 @@ import {
   Header,
   InsetAvoidingView,
   InsetSidebar,
-  InsetSidebarContent,
+  InsetContent,
   Root,
   triggerEdgeDrawerRight,
 } from "../layout-core";
@@ -120,9 +120,9 @@ export function LayoutV6AppShoppingCart() {
                 },
               }}
             >
-              <InsetSidebarContent>
+              <InsetContent>
                 <DailyCheckout />
-              </InsetSidebarContent>
+              </InsetContent>
             </InsetSidebar>
           </Container>
         </Content>

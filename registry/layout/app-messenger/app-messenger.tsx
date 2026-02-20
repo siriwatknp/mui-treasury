@@ -27,7 +27,7 @@ import {
   Header,
   InsetAvoidingView,
   InsetSidebar,
-  InsetSidebarContent,
+  InsetContent,
   Root,
 } from "../layout-core";
 
@@ -100,9 +100,9 @@ export function LayoutV6AppMessenger() {
         <Content>
           <ChatDialog />
           <InsetSidebar position="absolute" width="25cqw">
-            <InsetSidebarContent>
+            <InsetContent>
               <ChatSettings />
-            </InsetSidebarContent>
+            </InsetContent>
           </InsetSidebar>
         </Content>
         <Footer>
