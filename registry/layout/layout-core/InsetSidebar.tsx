@@ -17,16 +17,18 @@ const StyledInsetSidebar = styled("aside", {
   ownerState: InsetSidebarProps;
 }>(
   memoTheme(({ theme }) => ({
-    "--InsetSidebar-position": "var(--sticky)",
-    "--sticky": "var(--InsetSidebar-position,)",
+    "--InsetSidebar-position": "var(--sticky,)",
     "--fixed": "var(--InsetSidebar-position,)",
     "--absolute": "var(--InsetSidebar-position,)",
     "--anchor-right": "var(--InsetSidebar-anchor,)",
     "--anchor-left": "var(--InsetSidebar-anchor,)",
     width: "200px",
-    position: "relative",
-    flexShrink: 0,
-    "&:not(:last-child)": {
+    flex: "none",
+    position: "sticky" as const,
+    height: "calc(var(--jun-h) - var(--jun-H-h, 0px))",
+    overflow: "auto",
+    top: "var(--jun-H-h, 0px)",
+    "&:first-child": {
       "--InsetSidebar-anchor": "var(--anchor-left)",
     },
     "&:last-child": {
@@ -44,7 +46,6 @@ const StyledInsetSidebar = styled("aside", {
             [`.${layoutClasses.Root}:has(&:last-child)`]: {
               "--jun-ISR-w": width,
             },
-            // TODO: this should be removed. Better to let user handle the display of the sidebar
             ...(typeof width !== "string" && {
               display: {
                 xs: "none",
@@ -56,13 +57,25 @@ const StyledInsetSidebar = styled("aside", {
       {
         props: { position: "fixed" },
         style: {
-          "--InsetSidebar-position": "var(--fixed)",
+          "--InsetSidebar-position": "var(--fixed,)",
+          position: "relative" as const,
+          height: "auto",
+          overflow: "visible",
+          top: "auto",
+          flexShrink: 0,
+          zIndex: 1,
         },
       },
       {
         props: { position: "absolute" },
         style: {
-          "--InsetSidebar-position": "var(--absolute)",
+          "--InsetSidebar-position": "var(--absolute,)",
+          position: "relative" as const,
+          height: "auto",
+          overflow: "visible",
+          top: "auto",
+          flexShrink: 0,
+          zIndex: 1,
         },
       },
     ],
