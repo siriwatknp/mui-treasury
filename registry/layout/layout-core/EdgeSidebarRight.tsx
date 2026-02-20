@@ -58,7 +58,7 @@ function applyDrawerRightStyles(params: DrawerConfig) {
 }
 
 function applyPermanentRightStyles(params: PermanentConfig) {
-  const { width, collapsedWidth } = params;
+  const { width, collapsedWidth, hidden } = params;
   const defaultExpandConfig = {
     delay: "0.3s",
     shadow: "0 0 10px rgba(0,0,0,0.1)",
@@ -110,6 +110,14 @@ function applyPermanentRightStyles(params: PermanentConfig) {
         {
           "--jun-ESR-collapsible": "var(--uncollapsed-R)",
         },
+    }),
+    ...(hidden && {
+      [`.${layoutClasses.Root}:has(>&)`]: {
+        "--_permanentWidth-R": "0px",
+      },
+      [`& .${layoutClasses.EdgeSidebarContent}`]: {
+        visibility: "hidden",
+      },
     }),
     ...(expandConfig && {
       [`&:has(.${layoutClasses.EdgeSidebarContent}:hover)`]: {

@@ -12,6 +12,7 @@ export type DrawerConfig = {
 export type PermanentConfig = {
   width?: string;
   collapsedWidth?: string;
+  hidden?: boolean;
   hoverUncollapse?:
     | true
     | {
