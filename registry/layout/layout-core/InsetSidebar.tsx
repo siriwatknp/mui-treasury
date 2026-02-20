@@ -22,6 +22,18 @@ const StyledInsetSidebar = styled("aside", {
     "--absolute": "var(--InsetSidebar-position,)",
     "--anchor-right": "var(--InsetSidebar-anchor,)",
     "--anchor-left": "var(--InsetSidebar-anchor,)",
+    "*:has(>&)": {
+      display: "flex",
+      flexFlow: "row nowrap !important",
+      flexGrow: "1 !important" as never,
+      [`&:not(.${layoutClasses.Content})`]: {
+        height: "100%",
+      },
+    },
+    [`*:has(>&) > :where(:not([class*="${layoutClasses.InsetSidebar}"]))`]: {
+      flexGrow: "1 !important" as never,
+      overflow: "auto",
+    },
     width: "200px",
     flex: "none",
     position: "sticky" as const,

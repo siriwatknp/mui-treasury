@@ -19,7 +19,6 @@ import EdgeDrawerClose from "../layout-core/EdgeDrawerClose";
 import Footer from "../layout-core/Footer";
 import Header from "../layout-core/Header";
 import InsetAvoidingView from "../layout-core/InsetAvoidingView";
-import InsetContainer from "../layout-core/InsetContainer";
 import InsetSidebar from "../layout-core/InsetSidebar";
 import InsetSidebarContent from "../layout-core/InsetSidebarContent";
 import Root from "../layout-core/Root";
@@ -131,12 +130,10 @@ export function LayoutV6AppReactLegacy() {
         <SidebarContent>{sidebarContent}</SidebarContent>
       </EdgeSidebarRight>
       <Content>
-        <InsetContainer>
-          <ReactContent />
-          <InsetSidebar position="fixed" width={{ md: "256px" }}>
-            <InsetSidebarContent>{sidebarContent}</InsetSidebarContent>
-          </InsetSidebar>
-        </InsetContainer>
+        <ReactContent />
+        <InsetSidebar position="fixed" width={{ md: "256px" }}>
+          <InsetSidebarContent>{sidebarContent}</InsetSidebarContent>
+        </InsetSidebar>
       </Content>
       <Footer>
         <Box bgcolor={"rgb(40, 44, 52)"}>

@@ -13,15 +13,6 @@ const StyledContent = styled("main", {
     overflow: "var(--_overflow)" as never,
     gridArea: layoutClasses.Content,
     minHeight: 0,
-    [`&:has(> .${layoutClasses.InsetSidebar})`]: {
-      display: "flex",
-      flexFlow: "row nowrap",
-      flexGrow: 1,
-      [`& > *:where(:not([class*="${layoutClasses.InsetSidebar}"]))`]: {
-        flexGrow: 1,
-        overflow: "auto",
-      },
-    },
   })),
 );
 

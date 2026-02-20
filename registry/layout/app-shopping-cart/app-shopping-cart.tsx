@@ -20,7 +20,6 @@ import {
   Footer,
   Header,
   InsetAvoidingView,
-  InsetContainer,
   InsetSidebar,
   InsetSidebarContent,
   Root,
@@ -109,7 +108,7 @@ export function LayoutV6AppShoppingCart() {
         <Content
         // sx={{ maxWidth: "xl", mx: "auto", height: "100%", width: "100%" }}
         >
-          <InsetContainer maxWidth="xl">
+          <Container maxWidth="xl">
             <DailyCart />
             <InsetSidebar
               position="absolute"
@@ -125,7 +124,7 @@ export function LayoutV6AppShoppingCart() {
                 <DailyCheckout />
               </InsetSidebarContent>
             </InsetSidebar>
-          </InsetContainer>
+          </Container>
         </Content>
         <Footer>
           <Container maxWidth="xl">
