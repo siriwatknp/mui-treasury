@@ -100,7 +100,7 @@ export function LayoutV6AppAnalytics() {
             {
               width: "300px",
               collapsedWidth: "80px",
-              expandOnHover: true,
+              hoverUncollapse: true,
             },
           ],
         }}

@@ -8,36 +8,40 @@ const StyledEdgeSidebarContent = styled("div", {
   name: "LayoutEdgeSidebarContent",
   slot: "root",
 })({
-  display: "flex",
+  /* configurable */
   background: "var(--EdgeSidebarContent-background)",
+  boxShadow: "var(--jun-EC-shadow)",
+  display: "flex",
   flexDirection: "column",
+  flex: "1",
+  padding: "0px",
+  overflowX: "auto", // prevent horizontal content overflow
+  "--jun-EC-delay": "0s",
   opacity: `var(--_drawer, var(--jun-ES-drawerOpen))
-            var(--_permanent, 1)`,
-  visibility: `var(--_drawer, hidden)
-               var(--_permanent, visible)` as never,
-  overflowX: "auto",
-  flex: 1,
+        var(--_permanent, 1)`,
+  visibility: `var(--_drawer, hidden) var(--_permanent, visible)` as never,
+  margin: "0px", // prevent user from customizing it
   position:
     "var(--_drawer, var(--drawer-pos)) var(--_permanent, relative)" as never,
-  zIndex: 2,
+  zIndex: "2",
   width:
-    "var(--_drawer, var(--jun-ES-drawerWidth)) var(--_permanent, calc(var(--jun-EC-width) - var(--jun-ES-line-w, 0px)))",
+    "var(--_drawer, var(--jun-ES-drawerWidth)) var(--_permanent, var(--jun-EC-width))",
   height: "var(--_drawer, var(--drawer-h))",
   top: "var(--_drawer, calc(var(--jun-h) - var(--drawer-h)))",
   overflowY: "var(--_drawer, auto)" as never,
   transition: `var(--tsn, var(--_drawer, opacity 0.3s, transform 0.3s)
                var(--_permanent, opacity 0.4s, width 0.3s var(--jun-EC-delay, 0s), transform 0.3s var(--jun-EC-delay, 0s), box-shadow 0.3s var(--jun-EC-delay, 0s)))`,
   transform: `var(--_drawer, var(--anchorLeft, translateX(calc((1 - var(--jun-ES-drawerOpen)) * -100%))) var(--anchorRight, translateX(calc(var(--jun-ES-drawerOpen) * -100%))))
-               var(--_permanent, translateX(var(--jun-ES-permanentSlide, 0)))`,
+              var(--_permanent, translateX(var(--jun-ES-permanentSlide, 0)))`,
   [`[${layoutAttrs.isEdgeSidebarContentHidden}] &`]: {
     visibility: "hidden",
-    opacity: 0,
+    opacity: "0",
   },
   [`[${layoutAttrs.isDrawerOpen}] &, [${layoutAttrs.isDrawerClosing}] &`]: {
     visibility: "visible",
   },
   [`[${layoutAttrs.isDrawerClosing}] &`]: {
-    transition: "transform 0.3s, visibility 0.3s, opacity 0.3s",
+    transition: "var(--tsn, transform 0.3s, visibility 0.3s, opacity 0.3s)",
   },
 });
 

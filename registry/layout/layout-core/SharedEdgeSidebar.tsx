@@ -12,7 +12,7 @@ export type DrawerConfig = {
 export type PermanentConfig = {
   width?: string;
   collapsedWidth?: string;
-  expandOnHover?:
+  hoverUncollapse?:
     | true
     | {
         delay?: string;

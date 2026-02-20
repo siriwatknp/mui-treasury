@@ -60,19 +60,22 @@ function applyDrawerStyles(params: DrawerConfig) {
 function applyPermanentStyles(params: PermanentConfig) {
   const { width, collapsedWidth } = params || {};
   const defaultExpandConfig = {
-    delay: "0.3s",
+    delay: "0s",
     shadow: "0 0 10px rgba(0,0,0,0.1)",
   };
   let expandConfig: undefined | typeof defaultExpandConfig;
-  if ("expandOnHover" in params) {
-    if (params.expandOnHover === true) {
+  if ("hoverUncollapse" in params) {
+    if (params.hoverUncollapse === true) {
       expandConfig = defaultExpandConfig;
     } else {
-      expandConfig = params.expandOnHover as typeof defaultExpandConfig;
+      expandConfig = params.hoverUncollapse as typeof defaultExpandConfig;
     }
   }
   return {
+    "--jun-EC-shadow": "none",
     "--jun-EC-width": "var(--_permanentWidth, 0px)",
+    "--_collapsed": "var(--collapsed)",
+    "--_uncollapsed": "var(--uncollapsed)",
     [`.${layoutClasses.Root}:has(&)`]: {
       "--jun-ES-variant": "var(--permanent)",
       ...(width && {
@@ -107,10 +110,14 @@ function applyPermanentStyles(params: PermanentConfig) {
         },
     }),
     ...(expandConfig && {
+      [`&:has(.${layoutClasses.EdgeSidebarContent}:hover)`]: {
+        "--_collapsed": "",
+        "--_uncollapsed": "var(--_)",
+      },
       [`& .${layoutClasses.EdgeSidebarContent}:hover`]: {
         "--jun-EC-width": "var(--jun-ES-permanentWidth)",
         "--jun-EC-delay": expandConfig.delay,
-        boxShadow: `var(--collapsed, ${expandConfig.shadow}) var(--uncollapsed, none)`,
+        "--jun-EC-shadow": `var(--_permanent, var(--collapsed, ${expandConfig.shadow}, var(--jun-ES-line-w) 0 var(--jun-ES-line-color)))`,
       },
     }),
   };
@@ -185,9 +192,8 @@ const StyledEdgeSidebar = styled(EdgeSidebarRoot, {
     gridArea: layoutClasses.EdgeSidebar,
     width: `var(--drawer, 0)
               var(--permanent, var(--_permanentWidth))`,
-    borderRight:
-      "var(--permanent, min(var(--jun-ES-line-w), 1 * var(--jun-EC-width)) solid)",
     borderColor: "var(--jun-ES-line-color)",
+    boxShadow: "var(--jun-ES-line-w) 0px var(--jun-ES-line-color)",
     [`&:not([${layoutAttrs.isDrawerOpen}], [${layoutAttrs.isDrawerClosing}])`]:
       {
         overflow: "var(--drawer, hidden)",

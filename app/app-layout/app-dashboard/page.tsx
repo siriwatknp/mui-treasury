@@ -83,7 +83,7 @@ export default function AppDashboardPage() {
             {
               width: "260px",
               collapsedWidth: "55px",
-              expandOnHover: true,
+              hoverUncollapse: true,
             },
           ],
         }}

@@ -64,16 +64,18 @@ function applyPermanentRightStyles(params: PermanentConfig) {
     shadow: "0 0 10px rgba(0,0,0,0.1)",
   };
   let expandConfig: undefined | typeof defaultExpandConfig;
-  if ("expandOnHover" in params) {
-    if (params.expandOnHover === true) {
+  if ("hoverUncollapse" in params) {
+    if (params.hoverUncollapse === true) {
       expandConfig = defaultExpandConfig;
     } else {
-      expandConfig = params.expandOnHover as typeof defaultExpandConfig;
+      expandConfig = params.hoverUncollapse as typeof defaultExpandConfig;
     }
   }
   return {
-    "--jun-ES-permanentSlide": "0",
+    "--jun-EC-shadow": "none",
     "--jun-EC-width": "var(--_permanentWidth-R, 0px)",
+    "--_collapsed": "var(--collapsed-R)",
+    "--_uncollapsed": "var(--uncollapsed-R)",
     [`.${layoutClasses.Root}:has(&)`]: {
       "--jun-ESR-variant": "var(--permanent-R)",
       ...(width && {
@@ -110,6 +112,10 @@ function applyPermanentRightStyles(params: PermanentConfig) {
         },
     }),
     ...(expandConfig && {
+      [`&:has(.${layoutClasses.EdgeSidebarContent}:hover)`]: {
+        "--_collapsed": "",
+        "--_uncollapsed": "var(--_)",
+      },
       [`& .${layoutClasses.EdgeSidebarContent}:hover`]: {
         "--jun-EC-width": "var(--jun-ESR-permanentWidth)",
         "--jun-EC-delay": expandConfig.delay,
@@ -190,6 +196,7 @@ const StyledEdgeSidebarRight = styled(EdgeSidebarRoot, {
     gridArea: layoutClasses.EdgeSidebarRight,
     width: `var(--drawer-R, 0)
               var(--permanent-R, var(--_permanentWidth-R))`,
+    boxShadow: "calc(-1 * var(--jun-ES-line-w)) 0px var(--jun-ES-line-color)",
     [`&:not([${layoutAttrs.isDrawerOpen}], [${layoutAttrs.isDrawerClosing}])`]:
       {
         overflow: "var(--drawer-R, hidden)",
