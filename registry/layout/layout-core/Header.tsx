@@ -5,7 +5,7 @@ import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 import { styled } from "@mui/material/styles";
 import { layoutClasses } from "./layoutClasses";
 
-type ClipSide = "left" | "right" | "both";
+type ClipSide = "left" | "right" | boolean;
 
 interface HeaderProps {
   height?: string | Partial<Record<Breakpoint, string>>;
@@ -30,28 +30,24 @@ const CLIP_RIGHT = `
     "${layoutClasses.EdgeSidebar} ${layoutClasses.Footer} ${layoutClasses.EdgeSidebarRight}"
   `;
 
-function getClipStyles(side: ClipSide) {
-  if (side === "left") {
-    return {
-      gridTemplateAreas: CLIP_LEFT,
-      [`& .${layoutClasses.EdgeSidebar}`]: {
-        "--jun-H-clip-h": "var(--jun-H-h)",
-      },
-    };
-  }
-  if (side === "right") {
-    return {
-      gridTemplateAreas: CLIP_RIGHT,
-      [`& .${layoutClasses.EdgeSidebarRight}`]: {
-        "--jun-H-clip-h": "var(--jun-H-h)",
-      },
-    };
-  }
-  return {
+const CLIP_STYLES = {
+  left: {
+    gridTemplateAreas: CLIP_LEFT,
+    [`& .${layoutClasses.EdgeSidebar}`]: {
+      "--jun-H-clip-h": "var(--jun-H-h)",
+    },
+  },
+  right: {
+    gridTemplateAreas: CLIP_RIGHT,
+    [`& .${layoutClasses.EdgeSidebarRight}`]: {
+      "--jun-H-clip-h": "var(--jun-H-h)",
+    },
+  },
+  both: {
     gridTemplateAreas: CLIP_BOTH,
     "--jun-H-clip-h": "var(--jun-H-h)",
-  };
-}
+  },
+} as const;
 
 const StyledHeader = styled("header", {
   name: "LayoutHeader",
@@ -61,12 +57,11 @@ const StyledHeader = styled("header", {
 }>(
   memoTheme(({ theme }) => ({
     gridArea: layoutClasses.Header,
-    minHeight: 56,
     alignContent: "center",
     display: "flex",
     alignItems: "center",
-    zIndex: 1,
-    top: 0,
+    zIndex: "1", // to stay on top of the Content, e.g. InsetSidebar
+    top: "0", // for position sticky to work
     position: "sticky",
     background: "var(--Header-background)",
     borderBottom: "var(--Header-underline)",
@@ -84,7 +79,10 @@ const StyledHeader = styled("header", {
       {
         props: ({ clip }: HeaderProps) => !!clip,
         style: ({ clip }: Required<HeaderProps>) => {
-          const normalized = typeof clip === "string" ? { xs: clip } : clip;
+          const normalized =
+            typeof clip === "string" || typeof clip === "boolean"
+              ? { xs: clip }
+              : clip;
           const rootStyles: Record<string, unknown> = {};
 
           (Object.keys(normalized) as Breakpoint[])
@@ -96,9 +94,13 @@ const StyledHeader = styled("header", {
               const side = normalized[bp];
               if (side) {
                 if (bp === "xs") {
-                  Object.assign(rootStyles, getClipStyles(side));
+                  Object.assign(
+                    rootStyles,
+                    CLIP_STYLES[side === true ? "both" : side],
+                  );
                 } else {
-                  rootStyles[theme.breakpoints.up(bp)] = getClipStyles(side);
+                  rootStyles[theme.breakpoints.up(bp)] =
+                    CLIP_STYLES[side === true ? "both" : side];
                 }
               }
             });
