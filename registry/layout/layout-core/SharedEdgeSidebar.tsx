@@ -82,7 +82,7 @@ export function internalToggleSidebar(options: {
       sidebar.style.setProperty("--jun-ES-drawerOpen", "1");
       function handleOutsideClick(event: MouseEvent) {
         const closer = doc.querySelector(
-          `.${layoutClasses.DrawerEdgeSidebarClose}`,
+          `.${layoutClasses.EdgeDrawerClose}`,
         ) as HTMLButtonElement;
         if (
           // clicking on the backdrop (psuedo element of sidebar) will close the sidebar
