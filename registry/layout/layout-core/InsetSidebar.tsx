@@ -17,11 +17,11 @@ const StyledInsetSidebar = styled("aside", {
   ownerState: InsetSidebarProps;
 }>(
   memoTheme(({ theme }) => ({
-    "--InsetSidebar-position": "var(--sticky,)",
-    "--fixed": "var(--InsetSidebar-position,)",
-    "--absolute": "var(--InsetSidebar-position,)",
-    "--anchor-right": "var(--InsetSidebar-anchor,)",
-    "--anchor-left": "var(--InsetSidebar-anchor,)",
+    "--jun-IS-position": "var(--sticky,)",
+    "--fixed": "var(--jun-IS-position,)",
+    "--absolute": "var(--jun-IS-position,)",
+    "--anchor-right": "var(--jun-IS-anchor,)",
+    "--anchor-left": "var(--jun-IS-anchor,)",
     "*:has(>&)": {
       display: "flex",
       flexFlow: "row nowrap !important",
@@ -41,10 +41,10 @@ const StyledInsetSidebar = styled("aside", {
     overflow: "auto",
     top: "var(--jun-H-h, 0px)",
     "&:first-child": {
-      "--InsetSidebar-anchor": "var(--anchor-left)",
+      "--jun-IS-anchor": "var(--anchor-left)",
     },
     "&:last-child": {
-      "--InsetSidebar-anchor": "var(--anchor-right)",
+      "--jun-IS-anchor": "var(--anchor-right)",
     },
     variants: [
       {
@@ -79,7 +79,7 @@ const StyledInsetSidebar = styled("aside", {
       {
         props: { position: "fixed" },
         style: {
-          "--InsetSidebar-position": "var(--fixed,)",
+          "--jun-IS-position": "var(--fixed,)",
           position: "relative" as const,
           height: "auto",
           overflow: "visible",
@@ -91,7 +91,7 @@ const StyledInsetSidebar = styled("aside", {
       {
         props: { position: "absolute" },
         style: {
-          "--InsetSidebar-position": "var(--absolute,)",
+          "--jun-IS-position": "var(--absolute,)",
           position: "relative" as const,
           height: "auto",
           overflow: "visible",

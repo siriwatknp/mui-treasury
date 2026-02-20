@@ -28,9 +28,8 @@ const StyledRoot = styled("div", {
     "--jun-ES-line-color": (theme.vars || theme).palette.divider,
     "--EdgeSidebarContent-background": (theme.vars || theme).palette.background
       .paper,
-    "--InsetContent-background": (theme.vars || theme).palette.background
-      .paper,
-    "--InsetContent-sideline": `1px solid ${(theme.vars || theme).palette.divider}`,
+    "--jun-IC-bg": (theme.vars || theme).palette.background.paper,
+    "--jun-IC-sideline": `1px solid ${(theme.vars || theme).palette.divider}`,
     backgroundColor: (theme.vars || theme).palette.background.paper,
     minHeight: "var(--jun-h)",
     display: "grid",

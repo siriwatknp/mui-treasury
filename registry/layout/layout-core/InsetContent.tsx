@@ -9,17 +9,15 @@ const InsetContentRoot = styled("div")(({ theme }) => ({
   flexDirection: "column",
   backgroundColor: "inherit",
   overflow: "auto",
-  background: "var(--InsetContent-background)",
-  boxSizing:
-    "var(--fixed, content-box) var(--absolute, border-box)" as never,
-  position:
-    "var(--fixed, fixed) var(--absolute, absolute)" as never,
+  background: "var(--jun-IC-bg)",
+  boxSizing: "var(--fixed, content-box) var(--absolute, border-box)" as never,
+  position: "var(--fixed, fixed) var(--absolute, absolute)" as never,
   height:
     "var(--fixed, calc(100% - var(--jun-H-h, 0px))) var(--absolute, var(--jun-IC-absolute-h, 100%))",
   width: "var(--fixed, inherit) var(--absolute, 100%)",
   top: 0,
-  borderRight: "var(--anchor-left, var(--InsetContent-sideline))",
-  borderLeft: "var(--anchor-right, var(--InsetContent-sideline))",
+  borderRight: "var(--anchor-left, var(--jun-IC-sideline))",
+  borderLeft: "var(--anchor-right, var(--jun-IC-sideline))",
   borderColor: theme.palette.divider,
   marginLeft:
     "var(--fixed, var(--anchor-left, -9999px)) var(--absolute, initial)",
