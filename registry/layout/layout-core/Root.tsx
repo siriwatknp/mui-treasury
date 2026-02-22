@@ -66,10 +66,15 @@ const StyledRoot = styled("div", {
       {
         props: { standalone: true },
         style: {
-          "--drawer-pos": "absolute",
+          "--drawer-pos": "absolute", // make edge sidebar (drawer) stay within the layout
           "--drawer-z": "5",
           "--content-overflow": "auto",
+          "--jun-IC-absolute-h": "calc(var(--jun-h) - var(--jun-H-h))",
           maxHeight: "var(--jun-h)",
+          [`:has(.${layoutClasses.Content} .${layoutClasses.InsetSidebar}-absolute)`]:
+            {
+              "--content-overflow": "initial",
+            },
         },
       },
       {

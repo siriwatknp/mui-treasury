@@ -119,7 +119,7 @@ const InsetSidebar = React.forwardRef<
   return (
     <StyledInsetSidebar
       ref={ref}
-      className={`${layoutClasses.InsetSidebar} ${className || ""}`}
+      className={`${layoutClasses.InsetSidebar} ${layoutClasses.InsetSidebar}-${position} ${className || ""}`}
       ownerState={ownerState}
       {...props}
     />

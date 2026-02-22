@@ -35,13 +35,14 @@ const InsetAvoidingViewFooter = styled(InsetAvoidingView)(
     border: "unset",
     position: "relative",
     backgroundColor: "#fff",
+    paddingTop: "1rem",
 
     "&:before": {
       content: '" "',
       position: "absolute",
       width: "100%",
       height: 24,
-      top: 0,
+      top: -1,
       left: 0,
       transform: "translateY(-100%)",
       background: "linear-gradient(to top, #ffffff, rgba(255,255,255,0))",
@@ -98,16 +99,14 @@ export function LayoutV6AppShoppingCart() {
         >
           <EdgeSidebarContent
             sx={{
-              padding: "0.5rem",
+              padding: "calc(var(--jun-ES-drawerOpen) * 0.5rem)",
               bgcolor: "initial",
             }}
           >
             <DailyCheckout />
           </EdgeSidebarContent>
         </EdgeSidebarRight>
-        <Content
-        // sx={{ maxWidth: "xl", mx: "auto", height: "100%", width: "100%" }}
-        >
+        <Content>
           <Container maxWidth="xl">
             <DailyCart />
             <InsetSidebar
