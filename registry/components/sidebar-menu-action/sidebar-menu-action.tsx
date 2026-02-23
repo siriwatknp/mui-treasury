@@ -3,9 +3,9 @@ import React, { useMemo } from "react";
 import ButtonBase from "@mui/material/ButtonBase";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 import { styled } from "@mui/material/styles";
-import { sidebarMenuActionClasses } from "./sidebarMenuActionClasses";
-import { sidebarMenuButtonClasses } from "../sidebar-menu-button/sidebarMenuButtonClasses";
-import { sidebarGroupLabelClasses } from "../sidebar-group-label/sidebarGroupLabelClasses";
+import { sidebarMenuActionClasses } from "./sidebar-menu-action-classes";
+import { sidebarMenuButtonClasses } from "../sidebar-menu-button/sidebar-menu-button-classes";
+import { sidebarGroupLabelClasses } from "../sidebar-group-label/sidebar-group-label-classes";
 
 interface SidebarMenuActionProps {
   hoverAppear?: boolean;

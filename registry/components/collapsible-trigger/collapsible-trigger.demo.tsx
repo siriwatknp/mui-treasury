@@ -1,15 +1,15 @@
 "use client";
 
-import SidebarContainer from "../sidebar-container/SidebarContainer";
-import SidebarGroup from "../sidebar-group/SidebarGroup";
-import SidebarMenu from "../sidebar-menu/SidebarMenu";
-import SidebarMenuItem from "../sidebar-menu-item/SidebarMenuItem";
-import SidebarMenuButton from "../sidebar-menu-button/SidebarMenuButton";
-import SidebarIcon from "../sidebar-icon/SidebarIcon";
-import SidebarText from "../sidebar-text/SidebarText";
-import CollapsibleTrigger from "./CollapsibleTrigger";
-import CollapsibleContent from "../collapsible-content/CollapsibleContent";
-import CollapsibleIcon from "../collapsible-icon/CollapsibleIcon";
+import SidebarContainer from "../sidebar-container/sidebar-container";
+import SidebarGroup from "../sidebar-group/sidebar-group";
+import SidebarMenu from "../sidebar-menu/sidebar-menu";
+import SidebarMenuItem from "../sidebar-menu-item/sidebar-menu-item";
+import SidebarMenuButton from "../sidebar-menu-button/sidebar-menu-button";
+import SidebarIcon from "../sidebar-icon/sidebar-icon";
+import SidebarText from "../sidebar-text/sidebar-text";
+import CollapsibleTrigger from "./collapsible-trigger";
+import CollapsibleContent from "../collapsible-content/collapsible-content";
+import CollapsibleIcon from "../collapsible-icon/collapsible-icon";
 import FolderRounded from "@mui/icons-material/FolderRounded";
 import DescriptionRounded from "@mui/icons-material/DescriptionRounded";
 import ExpandMoreRounded from "@mui/icons-material/ExpandMoreRounded";

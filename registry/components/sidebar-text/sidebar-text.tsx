@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { sidebarTextClasses } from "./sidebarTextClasses";
+import { sidebarTextClasses } from "./sidebar-text-classes";
 
 const StyledSidebarText = styled("span", {
   name: "SidebarText",

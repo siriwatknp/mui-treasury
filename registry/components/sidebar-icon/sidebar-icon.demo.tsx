@@ -1,12 +1,12 @@
 "use client";
 
-import SidebarContainer from "../sidebar-container/SidebarContainer";
-import SidebarGroup from "../sidebar-group/SidebarGroup";
-import SidebarMenu from "../sidebar-menu/SidebarMenu";
-import SidebarMenuItem from "../sidebar-menu-item/SidebarMenuItem";
-import SidebarMenuButton from "../sidebar-menu-button/SidebarMenuButton";
-import SidebarIcon from "./SidebarIcon";
-import SidebarText from "../sidebar-text/SidebarText";
+import SidebarContainer from "../sidebar-container/sidebar-container";
+import SidebarGroup from "../sidebar-group/sidebar-group";
+import SidebarMenu from "../sidebar-menu/sidebar-menu";
+import SidebarMenuItem from "../sidebar-menu-item/sidebar-menu-item";
+import SidebarMenuButton from "../sidebar-menu-button/sidebar-menu-button";
+import SidebarIcon from "./sidebar-icon";
+import SidebarText from "../sidebar-text/sidebar-text";
 import HomeRounded from "@mui/icons-material/HomeRounded";
 import BarChartRounded from "@mui/icons-material/BarChartRounded";
 import SettingsRounded from "@mui/icons-material/SettingsRounded";

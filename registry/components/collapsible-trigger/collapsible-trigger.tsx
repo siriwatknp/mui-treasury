@@ -2,7 +2,7 @@
 import React from "react";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 import { styled } from "@mui/material/styles";
-import { collapsibleTriggerClasses } from "./collapsibleTriggerClasses";
+import { collapsibleTriggerClasses } from "./collapsible-trigger-classes";
 
 interface CollapsibleTriggerProps {
   defaultChecked?: boolean;

@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { collapsibleIconClasses } from "./collapsibleIconClasses";
-import { sidebarMenuActionClasses } from "../sidebar-menu-action/sidebarMenuActionClasses";
+import { collapsibleIconClasses } from "./collapsible-icon-classes";
+import { sidebarMenuActionClasses } from "../sidebar-menu-action/sidebar-menu-action-classes";
 
 interface CollapsibleIconProps {
   rotate?: string;

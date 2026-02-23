@@ -2,7 +2,7 @@
 import React from "react";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 import { styled } from "@mui/material/styles";
-import { sidebarGroupLabelClasses } from "./sidebarGroupLabelClasses";
+import { sidebarGroupLabelClasses } from "./sidebar-group-label-classes";
 
 const StyledSidebarGroupLabel = styled("div", {
   name: "SidebarGroupLabel",

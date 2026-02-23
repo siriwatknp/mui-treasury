@@ -2,7 +2,7 @@
 import React, { useMemo } from "react";
 import { styled } from "@mui/material/styles";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
-import { sidebarContainerClasses } from "./sidebarContainerClasses";
+import { sidebarContainerClasses } from "./sidebar-container-classes";
 
 interface SidebarContainerProps {
   shrink?: string;

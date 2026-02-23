@@ -3,7 +3,7 @@ import React, { useMemo } from "react";
 import ButtonBase from "@mui/material/ButtonBase";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 import { styled } from "@mui/material/styles";
-import { sidebarMenuButtonClasses } from "./sidebarMenuButtonClasses";
+import { sidebarMenuButtonClasses } from "./sidebar-menu-button-classes";
 
 interface SidebarMenuButtonProps {
   active?: boolean;

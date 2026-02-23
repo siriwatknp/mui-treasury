@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { sidebarTooltipClasses } from "./sidebarTooltipClasses";
+import { sidebarTooltipClasses } from "./sidebar-tooltip-classes";
 
 const StyledSidebarTooltip = styled("span", {
   name: "SidebarTooltip",

@@ -27,16 +27,16 @@ import EdgeSidebar, {
 import EdgeSidebarContent from "@/registry/layout/layout-core/EdgeSidebarContent";
 import { layoutClasses } from "@/registry/layout/layout-core/layoutClasses";
 import { EdgeDrawerClose } from "@/registry/layout/layout-core";
-import SidebarContainer from "@/registry/components/sidebar-container/SidebarContainer";
-import SidebarGroup from "@/registry/components/sidebar-group/SidebarGroup";
-import SidebarGroupLabel from "@/registry/components/sidebar-group-label/SidebarGroupLabel";
-import SidebarMenu from "@/registry/components/sidebar-menu/SidebarMenu";
-import SidebarMenuItem from "@/registry/components/sidebar-menu-item/SidebarMenuItem";
-import SidebarMenuButton from "@/registry/components/sidebar-menu-button/SidebarMenuButton";
-import SidebarIcon from "@/registry/components/sidebar-icon/SidebarIcon";
-import SidebarText from "@/registry/components/sidebar-text/SidebarText";
-import SidebarTooltip from "@/registry/components/sidebar-tooltip/SidebarTooltip";
-import SidebarRail from "@/registry/components/sidebar-rail/SidebarRail";
+import SidebarContainer from "@/registry/components/sidebar-container/sidebar-container";
+import SidebarGroup from "@/registry/components/sidebar-group/sidebar-group";
+import SidebarGroupLabel from "@/registry/components/sidebar-group-label/sidebar-group-label";
+import SidebarMenu from "@/registry/components/sidebar-menu/sidebar-menu";
+import SidebarMenuItem from "@/registry/components/sidebar-menu-item/sidebar-menu-item";
+import SidebarMenuButton from "@/registry/components/sidebar-menu-button/sidebar-menu-button";
+import SidebarIcon from "@/registry/components/sidebar-icon/sidebar-icon";
+import SidebarText from "@/registry/components/sidebar-text/sidebar-text";
+import SidebarTooltip from "@/registry/components/sidebar-tooltip/sidebar-tooltip";
+import SidebarRail from "@/registry/components/sidebar-rail/sidebar-rail";
 import Tooltip from "@mui/material/Tooltip";
 
 const SIDEBAR_ID = "app-dashboard-sidebar";

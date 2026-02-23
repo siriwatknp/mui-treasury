@@ -2,7 +2,7 @@
 import React from "react";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 import { styled } from "@mui/material/styles";
-import { sidebarRailClasses } from "./sidebarRailClasses";
+import { sidebarRailClasses } from "./sidebar-rail-classes";
 
 const StyledSidebarRail = styled("button", {
   name: "SidebarRail",

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { sidebarMenuItemClasses } from "./sidebarMenuItemClasses";
+import { sidebarMenuItemClasses } from "./sidebar-menu-item-classes";
 
 const StyledSidebarMenuItem = styled("div", {
   name: "SidebarMenuItem",

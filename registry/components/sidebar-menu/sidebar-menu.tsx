@@ -2,7 +2,7 @@
 import React, { useMemo } from "react";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 import { styled } from "@mui/material/styles";
-import { sidebarMenuClasses } from "./sidebarMenuClasses";
+import { sidebarMenuClasses } from "./sidebar-menu-classes";
 
 interface SidebarMenuProps {
   relaxed?: boolean;
