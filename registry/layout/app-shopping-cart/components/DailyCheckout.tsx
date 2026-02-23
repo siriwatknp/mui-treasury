@@ -8,6 +8,7 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import CreditCard from "@mui/icons-material/CreditCard";
 import TextField from "@mui/material/TextField";
+import MenuItem from "@mui/material/MenuItem";
 
 const BoxRoot = styled(Box)(() => ({
   display: "flex",
@@ -155,18 +156,42 @@ const DailyCheckout = () => {
       <Grid container spacing={3}>
         <Grid size={8}>
           <TypographyLabel>Expiration Date:</TypographyLabel>
-          <Box mt={"-23px"}>
+          <Box>
             <Grid container spacing={2}>
               <Grid size={6}>
-                <TextFieldSelect select fullWidth label={"MM"} />
+                <TextFieldSelect select fullWidth label={"MM"} defaultValue="">
+                  {Array.from({ length: 12 }, (_, i) => {
+                    const val = String(i + 1).padStart(2, "0");
+                    return (
+                      <MenuItem key={val} value={val}>
+                        {val}
+                      </MenuItem>
+                    );
+                  })}
+                </TextFieldSelect>
               </Grid>
               <Grid size={6}>
-                <TextFieldSelect select fullWidth label={"YYYY"} />
+                <TextFieldSelect
+                  select
+                  fullWidth
+                  label={"YYYY"}
+                  defaultValue=""
+                >
+                  {Array.from({ length: 10 }, (_, i) => {
+                    const val = String(2025 + i);
+                    return (
+                      <MenuItem key={val} value={val}>
+                        {val}
+                      </MenuItem>
+                    );
+                  })}
+                </TextFieldSelect>
               </Grid>
             </Grid>
           </Box>
         </Grid>
         <Grid size={4}>
+          <TypographyLabel>CCV:</TypographyLabel>
           <StyledTextField
             fullWidth
             slotProps={{
@@ -174,9 +199,8 @@ const DailyCheckout = () => {
                 shrink: true,
               },
             }}
-            label={"CCV:"}
+            aria-label="CCV"
             placeholder={"XXX"}
-            sx={{ mt: "27px" }}
           />
         </Grid>
       </Grid>

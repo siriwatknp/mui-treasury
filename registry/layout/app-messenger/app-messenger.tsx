@@ -20,11 +20,6 @@ import {
   MessengerSearch,
 } from "./components";
 import {
-  applyEdgeSidebarStyles,
-  applyHeaderStyles,
-  applyInsetContainerStyles,
-  applyInsetSidebarStyles,
-  applyRootStyles,
   Content,
   EdgeSidebar,
   EdgeSidebarContent,
@@ -32,7 +27,7 @@ import {
   Header,
   InsetAvoidingView,
   InsetSidebar,
-  InsetSidebarContent,
+  InsetContent,
   Root,
 } from "../layout-core";
 
@@ -76,28 +71,23 @@ export function LayoutV6AppMessenger() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Root sx={{ ...applyRootStyles({ fixedHeight: true }) }}>
-        <StyledHeader
-          position="relative"
-          sx={{ ...applyHeaderStyles({ height: "64px" }) }}
-        >
+      <Root standalone>
+        <StyledHeader height="64px" sx={{ position: "relative" }}>
           <Toolbar disableGutters sx={{ flex: "auto" }}>
             <ConversationHead />
           </Toolbar>
         </StyledHeader>
         <EdgeSidebar
-          sx={(theme) => ({
-            ...applyEdgeSidebarStyles(theme, {
-              config: {
-                xs: {
-                  variant: "permanent",
-                  width: "25cqw",
-                  autoCollapse: "md",
-                  collapsedWidth: "80px",
-                },
+          permanentAutoCollapse="md"
+          variant={{
+            xs: [
+              "permanent",
+              {
+                width: "25cqw",
+                collapsedWidth: "80px",
               },
-            }),
-          })}
+            ],
+          }}
         >
           <EdgeSidebarContent>
             <ChatsHeader />
@@ -107,19 +97,12 @@ export function LayoutV6AppMessenger() {
             <ChatList />
           </EdgeSidebarContent>
         </EdgeSidebar>
-        <Content sx={{ ...applyInsetContainerStyles() }}>
+        <Content>
           <ChatDialog />
-          <InsetSidebar
-            position="absolute"
-            sx={{
-              ...applyInsetSidebarStyles({
-                width: "25cqw",
-              }),
-            }}
-          >
-            <InsetSidebarContent>
+          <InsetSidebar position="absolute" width="25cqw">
+            <InsetContent>
               <ChatSettings />
-            </InsetSidebarContent>
+            </InsetContent>
           </InsetSidebar>
         </Content>
         <Footer>

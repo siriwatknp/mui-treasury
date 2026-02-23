@@ -1,270 +1,312 @@
 "use client";
-import React from "react";
+import React, { useMemo } from "react";
 import type {
+  EdgeSidebarVariant,
+  EdgeSidebarVariantInput,
+  DrawerConfig,
   PermanentConfig,
-  PersistentConfig,
-  TemporaryConfig,
 } from "./SharedEdgeSidebar";
-import { BoxProps } from "@mui/material/Box";
-import { Breakpoint, Theme } from "@mui/material/styles";
+import { Breakpoint } from "@mui/material/styles";
+import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 import { styled } from "@mui/material/styles";
 import {
   EdgeSidebarRoot,
   internalCollapseSidebar,
   internalToggleSidebar,
 } from "./SharedEdgeSidebar";
+import { layoutAttrs } from "./layoutAttrs";
+import { layoutClasses } from "./layoutClasses";
 
-function applyTemporaryStyles(params: Omit<TemporaryConfig, "variant">) {
-  const { width = "300px" } = params || {};
+function applyDrawerStyles(params: DrawerConfig) {
+  const { width = "300px", showHeader, withoutOverlay } = params || {};
   return {
-    "--EdgeSidebar-temporaryWidth": "0px",
-    ".Root:has(&)": {
-      "--EdgeSidebar-variant": "var(--temporary)",
-      ".EdgeSidebar-collapser": {
-        display: "none",
+    "--jun-ES-drawerWidth": "0px",
+    ...(showHeader && {
+      "--drawer-h": "calc(var(--jun-h) - var(--jun-H-h))",
+      "&::before": {
+        top: "var(--jun-H-h)",
       },
-    },
-    "&[data-temporary-open], &[data-mobile-closing]": {
-      "--EdgeSidebar-temporaryWidth": width,
-    },
-  };
-}
-
-function applyPersistentStyles(params: Omit<PersistentConfig, "variant">) {
-  const { width = "256px", persistentBehavior = "fit" } = params || {};
-  return {
-    ...(persistentBehavior === "none" && {
-      zIndex: 2,
-      "--SidebarContent-width": `var(--collapsed, var(--_permanentWidth, 0px)) var(--uncollapsed, ${width})`,
     }),
-    ".Root:has(&)": {
-      "--EdgeSidebar-variant": "var(--permanent)",
-      "--EdgeSidebar-collapsedWidth": "0px",
-      ...(persistentBehavior === "none"
-        ? {
-            "--EdgeSidebar-permanentWidth": "0px",
-          }
-        : {
-            ...(width && {
-              "--EdgeSidebar-permanentWidth": width,
-            }),
-          }),
-      "--EdgeSidebar-collapsible": "var(--collapsed)",
-      ".EdgeSidebar-trigger": {
+    ...(withoutOverlay && {
+      "--drawer-h": "calc(var(--jun-h) - var(--jun-H-clip-h))",
+      "&::before": {
         display: "none",
       },
-      ".EdgeSidebar-collapser": {
-        "--_sidebarCollapsed": "var(--collapsed, 1)",
-        display: "var(--display, inline-flex)",
-        ".Icon-collapse": {
-          display: "var(--collapsed, none) var(--uncollapsed, inline-block)",
-        },
-        ".Icon-uncollapse": {
-          display: "var(--collapsed, inline-block) var(--uncollapsed, none)",
-        },
+    }),
+    [`.${layoutClasses.Root}:has(&)`]: {
+      "--jun-ES-variant": "var(--drawer)",
+      [`.${layoutClasses.EdgeSidebarCollapser}`]: {
+        display: "none",
       },
     },
-    ".Root:has(&[data-edge-uncollapsed])": {
-      "--EdgeSidebar-collapsible": "var(--uncollapsed)",
+    [`.${layoutClasses.Root}:has(&[${layoutAttrs.isDrawerOpen}])`]: {
+      [`.${layoutClasses.EdgeDrawerTrigger} .${layoutClasses.EdgeDrawerClosedVisible}`]:
+        {
+          display: "none",
+        },
+    },
+    [`.${layoutClasses.Root}:has(&:not([${layoutAttrs.isDrawerOpen}]))`]: {
+      [`.${layoutClasses.EdgeDrawerTrigger} .${layoutClasses.EdgeDrawerOpenVisible}`]:
+        {
+          display: "none",
+        },
+    },
+    [`&[${layoutAttrs.isDrawerOpen}], &[${layoutAttrs.isDrawerClosing}]`]: {
+      "--jun-ES-drawerWidth": width,
     },
   };
 }
 
-function applyPermanentStyles(params: Omit<PermanentConfig, "variant">) {
-  if ("autoCollapse" in params && !params.collapsedWidth) {
-    console.warn(
-      "MUI Treasury Layout: `collapsedWidth` is required when `autoCollapse` is enabled.",
-    );
-  }
-  const { width, collapsedWidth } = params || {};
+function applyPermanentStyles(params: PermanentConfig) {
+  const { width, collapsedWidth, visibility } = params || {};
   const defaultExpandConfig = {
-    delay: "0.3s",
+    delay: "0s",
     shadow: "0 0 10px rgba(0,0,0,0.1)",
   };
   let expandConfig: undefined | typeof defaultExpandConfig;
-  if ("expandOnHover" in params) {
-    if (params.expandOnHover === true) {
+  if ("hoverUncollapse" in params) {
+    if (params.hoverUncollapse === true) {
       expandConfig = defaultExpandConfig;
     } else {
-      expandConfig = params.expandOnHover as typeof defaultExpandConfig;
+      expandConfig = params.hoverUncollapse as typeof defaultExpandConfig;
     }
   }
   return {
-    "--SidebarContent-width": "var(--_permanentWidth, 0px)",
-    ".Root:has(&)": {
-      "--EdgeSidebar-variant": "var(--permanent)",
+    "--jun-EC-shadow": "none",
+    "--jun-EC-width": "var(--_permanentWidth, 0px)",
+    "--_collapsed": "var(--collapsed)",
+    "--_uncollapsed": "var(--uncollapsed)",
+    [`.${layoutClasses.Root}:has(&)`]: {
+      "--jun-ES-variant": "var(--permanent)",
       ...(width && {
-        "--EdgeSidebar-permanentWidth": width,
+        "--jun-ES-permanentWidth": width,
       }),
       ...(collapsedWidth && {
-        "--EdgeSidebar-collapsedWidth": collapsedWidth,
-        ".EdgeSidebar-collapser": {
+        "--jun-ES-collapsedWidth": collapsedWidth,
+        [`.${layoutClasses.EdgeSidebarCollapser}`]: {
           display: "var(--display, inline-flex)",
           "--_sidebarCollapsed": "var(--collapsed, 1)",
-          ".Icon-collapse": {
-            display: "var(--collapsed, none) var(--uncollapsed, inline-block)",
+          [`.${layoutClasses.EdgeCollapsedVisible}`]: {
+            display: "var(--collapsed, inline-flex) var(--uncollapsed, none)",
           },
-          ".Icon-uncollapse": {
-            display: "var(--collapsed, inline-block) var(--uncollapsed, none)",
+          [`.${layoutClasses.EdgeUncollapsedVisible}`]: {
+            display: "var(--collapsed, none) var(--uncollapsed, inline-flex)",
           },
         },
       }),
-      ".EdgeSidebar-trigger": {
+      [`.${layoutClasses.EdgeDrawerTrigger}`]: {
         display: "none",
       },
     },
     ...(collapsedWidth && {
-      ".Root:has(&[data-edge-collapsed])": {
-        "--EdgeSidebar-collapsible": "var(--collapsed)",
+      /** Collapsible feature */
+      [`.${layoutClasses.Root}:has(&[${layoutAttrs.isEdgeSidebarCollapsed}])`]:
+        {
+          "--jun-ES-collapsible": "var(--collapsed)",
+        },
+      [`.${layoutClasses.Root}:has(&[${layoutAttrs.isEdgeSidebarUncollapsed}])`]:
+        {
+          "--jun-ES-collapsible": "var(--uncollapsed)",
+        },
+    }),
+    ...(visibility === "hidden" && {
+      [`.${layoutClasses.Root}:has(>&)`]: {
+        "--_permanentWidth": "0px",
+      },
+      [`& .${layoutClasses.EdgeSidebarContent}`]: {
+        visibility: "hidden",
+      },
+    }),
+    ...(visibility === "visible" && {
+      [`.${layoutClasses.Root}:has(>&)`]: {
+        "--_permanentWidth": `var(--uncollapsed, var(--jun-ES-permanentWidth))
+                              var(--collapsed, var(--jun-ES-collapsedWidth, 0px))`,
+      },
+      [`& .${layoutClasses.EdgeSidebarContent}`]: {
+        visibility:
+          "var(--_drawer, hidden) var(--_permanent, visible)" as never,
       },
     }),
     ...(expandConfig && {
-      "& .EdgeSidebarContent:hover": {
-        "--SidebarContent-width": "var(--EdgeSidebar-permanentWidth)",
-        "--SidebarContent-transitionDelay": expandConfig.delay,
-        boxShadow: `var(--collapsed, ${expandConfig.shadow}) var(--uncollapsed, none)`,
+      [`&:has(.${layoutClasses.EdgeSidebarContent}:hover)`]: {
+        "--_collapsed": "var(--__,)", // workaround to use fallback, Emotion strips out spaces if the value is " ".
+        "--_uncollapsed": "var(--_)",
+      },
+      [`& .${layoutClasses.EdgeSidebarContent}:hover`]: {
+        "--jun-EC-width": "var(--jun-ES-permanentWidth)",
+        "--jun-EC-delay": expandConfig.delay,
+        "--jun-EC-shadow": `var(--_permanent, var(--collapsed, ${expandConfig.shadow}, var(--jun-ES-line-w) 0 var(--jun-ES-line-color)))`,
       },
     }),
   };
 }
 
-export function applyEdgeSidebarStyles(
-  theme: Theme,
-  params: {
-    config: Partial<
-      Record<Breakpoint, TemporaryConfig | PersistentConfig | PermanentConfig>
-    >;
-  },
-) {
-  const { config } = params;
-  let autoCollapseStyles = {};
-  const responsive: Record<string, unknown> = {};
-  (Object.keys(config) as Array<Breakpoint>)
-    .sort((a, b) => theme.breakpoints.values[a] - theme.breakpoints.values[b])
-    .forEach((breakpoint) => {
-      const variantConfig = config[breakpoint];
-      if (variantConfig) {
-        const { variant, ...params } = variantConfig;
-        if (variant === "permanent") {
-          if ("autoCollapse" in variantConfig && variantConfig.autoCollapse) {
-            const nextBreakpoint =
-              theme.breakpoints.keys[
-                theme.breakpoints.keys.indexOf(variantConfig.autoCollapse) + 1
-              ];
-            if (!nextBreakpoint) {
-              console.warn(
-                "MUI Treasury Layout: `autoCollapse` cannot be the largest breakpoint.",
-              );
-            } else {
-              autoCollapseStyles = {
-                ".Root:has(&)": {
-                  "--EdgeSidebar-collapsible": {
-                    [variantConfig.autoCollapse]: "var(--collapsed)",
-                    [nextBreakpoint]: "var(--uncollapsed)",
-                  },
-                },
-                [theme.breakpoints.between(
-                  variantConfig.autoCollapse,
-                  nextBreakpoint,
-                )]: {
-                  ".Root:has(&[data-auto-collapse-off])": {
-                    "--EdgeSidebar-collapsible": "var(--uncollapsed)",
-                  },
-                  ".Root:has(&) .EdgeSidebar-collapser": {
-                    "--_autoCollapse": "1",
-                  },
-                },
-              };
-            }
-          }
-        }
-        const variantStyles = {
-          temporary: applyTemporaryStyles,
-          persistent: applyPersistentStyles,
-          permanent: applyPermanentStyles,
-        }[variant](params);
-        responsive[theme.breakpoints.up(breakpoint)] = variantStyles;
-      }
-    });
-  return {
-    ...responsive,
-    ...autoCollapseStyles,
-  };
-}
-
-export function toggleEdgeSidebarCollapse(options: {
+export function triggerEdgeCollapse(options: {
   event: React.MouseEvent;
   sidebarId?: string;
   state?: boolean;
   document?: Document | null;
 }) {
   const { sidebarId } = options || {};
-  let selector = ".EdgeSidebar";
+  let selector = `.${layoutClasses.EdgeSidebar}`;
   if (sidebarId) {
     selector = `#${sidebarId}`;
   }
   internalCollapseSidebar({ ...options, selector });
 }
 
-export function toggleTemporaryEdgeSidebar(options?: {
+export function triggerEdgeDrawer(options?: {
   sidebarId?: string;
   state?: boolean;
   document?: Document | null;
 }) {
   const { sidebarId } = options || {};
-  let selector = ".EdgeSidebar";
+  let selector = `.${layoutClasses.EdgeSidebar}`;
   if (sidebarId) {
     selector = `#${sidebarId}`;
   }
   internalToggleSidebar({ ...options, selector });
 }
 
-const StyledEdgeSidebarLeft = styled(EdgeSidebarRoot)({
-  ".Root:has(&)": {
-    "--EdgeSidebar-variant": "var(--permanent)",
-    "--EdgeSidebar-permanentWidth": "256px",
-    "--EdgeSidebar-collapsible": "var(--uncollapsed)",
+interface EdgeSidebarOwnerState {
+  variant?: Partial<Record<Breakpoint, EdgeSidebarVariant>>;
+  permanentAutoCollapse?: Breakpoint;
+}
 
-    "--temporary": "var(--EdgeSidebar-variant,)",
-    "--permanent": "var(--EdgeSidebar-variant,)",
-    "--_permanentWidth": `var(--uncollapsed, var(--EdgeSidebar-permanentWidth))
-                        var(--collapsed, var(--EdgeSidebar-collapsedWidth, 0px))`,
-    "--collapsed": "var(--EdgeSidebar-collapsible,)",
-    "--uncollapsed": "var(--EdgeSidebar-collapsible,)",
-  },
-  "--EdgeSidebar-anchor": "var(--anchorLeft)",
-  "--SidebarContent-width": "var(--_permanentWidth, 0px)",
-  "--_temporary": "var(--temporary)",
-  "--_permanent": "var(--permanent)",
-  gridArea: "EdgeSidebar",
-  width: `var(--temporary, 0)
-          var(--permanent, var(--_permanentWidth))`,
-  borderRight:
-    "var(--permanent, min(var(--EdgeSidebar-sidelineWidth), 1 * var(--SidebarContent-width)) solid)",
-  borderColor: "var(--EdgeSidebar-sidelineColor)",
-  "&::after": {
-    border: "inherit",
-  },
-  "&::before": {
-    display: `var(--temporary, block)
-              var(--permanent, none)`,
-  },
-  "&:not([data-temporary-open], [data-mobile-closing])": {
-    overflow: "var(--temporary, hidden)",
-  },
-});
+interface EdgeSidebarProps {
+  variant?: EdgeSidebarVariantInput;
+  permanentAutoCollapse?: Breakpoint;
+}
 
-const EdgeSidebar = React.forwardRef<HTMLDivElement, BoxProps>(
-  function EdgeSidebar({ className, ...props }, ref) {
-    return (
-      // @ts-expect-error BoxProps on styled native element
-      <StyledEdgeSidebarLeft
-        ref={ref}
-        {...props}
-        className={`EdgeSidebar ${className || ""}`}
-      />
-    );
-  },
+const StyledEdgeSidebar = styled(EdgeSidebarRoot, {
+  name: "LayoutEdgeSidebar",
+  slot: "root",
+})<{
+  ownerState: EdgeSidebarOwnerState;
+}>(
+  memoTheme(({ theme }) => ({
+    [`.${layoutClasses.Root}:has(&)`]: {
+      /** Root default settings */
+      "--jun-ES-variant": "var(--permanent)",
+      "--jun-ES-permanentWidth": "256px",
+      "--jun-ES-collapsible": "var(--uncollapsed)",
+      "--jun-ES-collapsedWidth": "0px",
+
+      /** DO NOT OVERRIDE, internal variables */
+      "--drawer": "var(--jun-ES-variant,)",
+      "--permanent": "var(--jun-ES-variant,)",
+      "--_permanentWidth": `var(--uncollapsed, var(--jun-ES-permanentWidth))
+                            var(--collapsed, var(--jun-ES-collapsedWidth, 0px))`,
+      "--collapsed": "var(--jun-ES-collapsible,)",
+      "--uncollapsed": "var(--jun-ES-collapsible,)",
+    },
+    /** EdgeSidebar default settings */
+    "--jun-ES-anchor": "var(--anchorLeft)",
+    "--jun-EC-width": "var(--_permanentWidth, 0px)",
+    "--_drawer": "var(--drawer)",
+    "--_permanent": "var(--permanent)",
+    "--_collapsed": "var(--collapsed)",
+    "--_uncollapsed": "var(--uncollapsed)",
+    gridArea: layoutClasses.EdgeSidebar,
+    width: `var(--drawer, 0)
+              var(--permanent, var(--_permanentWidth))`,
+    borderColor: "var(--jun-ES-line-color)",
+    boxShadow: "var(--jun-ES-line-w) 0px var(--jun-ES-line-color)",
+    [`&:not([${layoutAttrs.isDrawerOpen}], [${layoutAttrs.isDrawerClosing}])`]:
+      {
+        overflow: "var(--drawer, hidden)",
+      },
+    variants: [
+      {
+        props: ({ variant }: EdgeSidebarOwnerState) => !!variant,
+        style: ({ variant }: Required<EdgeSidebarOwnerState>) => {
+          const responsive: Record<string, unknown> = {};
+          (Object.keys(variant) as Array<Breakpoint>)
+            .sort(
+              (a, b) =>
+                theme.breakpoints.values[a] - theme.breakpoints.values[b],
+            )
+            .forEach((breakpoint) => {
+              const variantTuple = variant[breakpoint];
+              if (variantTuple) {
+                const [variantName, params = {}] = variantTuple;
+                const variantStyles = {
+                  drawer: applyDrawerStyles,
+                  permanent: applyPermanentStyles,
+                }[variantName](params as never);
+                if (breakpoint === "xs") {
+                  Object.assign(responsive, variantStyles);
+                } else {
+                  responsive[theme.breakpoints.up(breakpoint)] = variantStyles;
+                }
+              }
+            });
+          return responsive;
+        },
+      },
+      {
+        props: ({ permanentAutoCollapse }: EdgeSidebarOwnerState) =>
+          !!permanentAutoCollapse,
+        style: ({
+          permanentAutoCollapse,
+        }: Required<EdgeSidebarOwnerState>) => ({
+          [`.${layoutClasses.Root}:has(&) .${layoutClasses.EdgeSidebarCollapser}`]:
+            {
+              "--_autoCollapse": "1",
+            },
+          [theme.breakpoints.down(permanentAutoCollapse)]: {
+            [`.${layoutClasses.Root}:has(&)`]: {
+              "--jun-ES-collapsible": "var(--collapsed)",
+            },
+          },
+          [theme.breakpoints.up(permanentAutoCollapse)]: {
+            [`.${layoutClasses.Root}:has(&)`]: {
+              "--jun-ES-collapsible": "var(--uncollapsed)",
+            },
+            [`.${layoutClasses.Root}:has(&) .${layoutClasses.EdgeSidebarCollapser}`]:
+              {
+                "--_in-autoCollapse": "1",
+              },
+          },
+        }),
+      },
+    ],
+  })),
 );
+
+const defaultVariant: EdgeSidebarVariant = ["permanent", { width: "256px" }];
+
+const EdgeSidebar = React.forwardRef<
+  HTMLDivElement,
+  Omit<React.ComponentPropsWithoutRef<typeof StyledEdgeSidebar>, "ownerState"> &
+    EdgeSidebarProps
+>(function EdgeSidebar(
+  { className, variant = defaultVariant, permanentAutoCollapse, ...props },
+  ref,
+) {
+  const normalizedVariant = useMemo(
+    () => (Array.isArray(variant) ? { xs: variant } : variant),
+    [variant],
+  );
+  const ownerState = useMemo(
+    () => ({
+      variant: normalizedVariant,
+      permanentAutoCollapse,
+    }),
+    [normalizedVariant, permanentAutoCollapse],
+  );
+  const hasWithoutOverlay = Object.values(normalizedVariant).some(
+    (v) => v?.[0] === "drawer" && (v[1] as DrawerConfig)?.withoutOverlay,
+  );
+  return (
+    <StyledEdgeSidebar
+      ref={ref}
+      className={`${layoutClasses.EdgeSidebar} ${className || ""}`}
+      ownerState={ownerState}
+      {...(hasWithoutOverlay && { "data-without-overlay": "" })}
+      {...props}
+    />
+  );
+});
 
 export default EdgeSidebar;

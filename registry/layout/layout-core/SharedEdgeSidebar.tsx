@@ -1,31 +1,33 @@
 "use client";
 import { Breakpoint } from "@mui/material/styles";
 import { styled } from "@mui/material/styles";
+import { layoutAttrs } from "./layoutAttrs";
+import { layoutClasses } from "./layoutClasses";
 
-export type TemporaryConfig = {
-  variant: "temporary";
+export type DrawerConfig = {
   width?: string;
-};
-export type PersistentConfig = {
-  variant: "persistent";
-  /**
-   * @default "fit"
-   */
-  persistentBehavior?: "fit" | "none";
-  width?: string;
+  showHeader?: boolean;
+  withoutOverlay?: boolean;
 };
 export type PermanentConfig = {
-  variant: "permanent";
   width?: string;
-  autoCollapse?: Breakpoint;
   collapsedWidth?: string;
-  expandOnHover?:
+  visibility?: "hidden" | "visible";
+  hoverUncollapse?:
     | true
     | {
         delay?: string;
         shadow?: string;
       };
 };
+
+export type EdgeSidebarVariant =
+  | ["drawer", DrawerConfig?]
+  | ["permanent", PermanentConfig?];
+
+export type EdgeSidebarVariantInput =
+  | EdgeSidebarVariant
+  | Partial<Record<Breakpoint, EdgeSidebarVariant>>;
 
 export function internalCollapseSidebar(options: {
   event: React.MouseEvent;
@@ -46,22 +48,20 @@ export function internalCollapseSidebar(options: {
       window
         .getComputedStyle(event.target as Element)
         .getPropertyValue("--_autoCollapse") === "1";
+    const inAutoCollapse =
+      window
+        .getComputedStyle(event.target as Element)
+        .getPropertyValue("--_in-autoCollapse") === "1";
 
-    if (autoCollapse) {
-      if (nextCollapsed) {
-        sidebar.removeAttribute("data-auto-collapse-off");
-      } else {
-        sidebar.setAttribute("data-auto-collapse-off", "");
-        sidebar.removeAttribute("data-edge-collapsed");
+    if (nextCollapsed) {
+      sidebar.removeAttribute(layoutAttrs.isEdgeSidebarUncollapsed);
+      if (!autoCollapse || inAutoCollapse) {
+        sidebar.setAttribute(layoutAttrs.isEdgeSidebarCollapsed, "");
       }
     } else {
-      if (nextCollapsed) {
-        sidebar.setAttribute("data-edge-collapsed", "");
-        sidebar.removeAttribute("data-edge-uncollapsed");
-        sidebar.removeAttribute("data-auto-collapse-off");
-      } else {
-        sidebar.removeAttribute("data-edge-collapsed");
-        sidebar.setAttribute("data-edge-uncollapsed", "");
+      sidebar.removeAttribute(layoutAttrs.isEdgeSidebarCollapsed);
+      if (!inAutoCollapse) {
+        sidebar.setAttribute(layoutAttrs.isEdgeSidebarUncollapsed, "");
       }
     }
   }
@@ -76,13 +76,21 @@ export function internalToggleSidebar(options: {
   const doc = d ?? document;
   const sidebar = doc.querySelector(selector) as HTMLDivElement | null;
   if (sidebar) {
-    const currentOpen = sidebar.getAttribute("data-temporary-open") !== null;
+    const currentOpen = sidebar.getAttribute(layoutAttrs.isDrawerOpen) !== null;
     const nextOpen = state === undefined ? !currentOpen : state;
     if (nextOpen) {
-      sidebar.setAttribute("data-temporary-open", "");
-      sidebar.style.setProperty("--EdgeSidebar-temporaryOpen", "1");
+      sidebar.setAttribute(layoutAttrs.isDrawerOpen, "");
+      sidebar.style.setProperty("--jun-ES-drawerOpen", "1");
       function handleOutsideClick(event: MouseEvent) {
-        if (event.target === sidebar) {
+        const closer = doc.querySelector(
+          `.${layoutClasses.EdgeDrawerClose}`,
+        ) as HTMLButtonElement;
+        if (
+          // clicking on the backdrop (psuedo element of sidebar) will close the sidebar
+          event.target === sidebar ||
+          // clicking on the closer button will close the sidebar
+          (closer && closer.contains(event.target as Node))
+        ) {
           internalToggleSidebar({
             ...options,
             state: false,
@@ -91,54 +99,70 @@ export function internalToggleSidebar(options: {
         }
       }
       setTimeout(() => {
+        // prevent the `handleOutsideClick` to be called immediately
         doc.addEventListener?.("click", handleOutsideClick);
       }, 0);
+
+      // TODO: add a way to close the sidebar by swiping
+      // TODO: add a way to close the sidebar by pressing ESC
     } else {
-      sidebar.removeAttribute("data-temporary-open");
-      sidebar.setAttribute("data-mobile-closing", "");
+      sidebar.removeAttribute(layoutAttrs.isDrawerOpen);
+      sidebar.setAttribute(layoutAttrs.isDrawerClosing, "");
       setTimeout(() => {
-        sidebar.removeAttribute("data-mobile-closing");
+        sidebar.removeAttribute(layoutAttrs.isDrawerClosing);
       }, 300);
-      sidebar.style.setProperty("--EdgeSidebar-temporaryOpen", "");
+      sidebar.style.setProperty("--jun-ES-drawerOpen", "");
     }
   }
 }
 
 export const EdgeSidebarRoot = styled("div")({
-  "--anchorLeft": "var(--EdgeSidebar-anchor,)",
-  "--anchorRight": "var(--EdgeSidebar-anchor,)",
-  transition: "width 0.3s",
+  "--anchorLeft": "var(--jun-ES-anchor,)",
+  "--anchorRight": "var(--jun-ES-anchor,)",
+  "--drawer-h": "var(--jun-h)",
+  transition: "var(--tsn, width 0.3s)",
   display: "flex",
   flexDirection: "column",
+  padding: "0px", // prevent user from customizing it
+  margin: "0px", // prevent user from customizing it
+  // ==============================
+  // To keep the EdgeSidebar fixed when the Content is scrollable
   position: "var(--_permanent, sticky)" as never,
-  top: "var(--_permanent, var(--Header-clipHeight, 0px))",
-  height:
-    "var(--_permanent, calc(var(--Root-height) - var(--Header-clipHeight, 0px)))",
+  top: "var(--_permanent, var(--jun-H-clip-h))",
+  zIndex: "var(--_drawer, 2) var(--_permanent, 1)" as never,
+  height: "var(--_permanent, calc(var(--jun-h) - var(--jun-H-clip-h)))",
+  // ==============================
   "&::before": {
+    display: `var(--_drawer, block)
+                var(--_permanent, none)`,
     position: "absolute",
     content: '""',
-    inset: 0,
-    backgroundColor: "var(--EdgeSidebar-overlay)",
+    inset: "0",
+    backgroundColor: "rgba(0, 0, 0, 0.48)",
     backdropFilter: "blur(4px)",
-    zIndex: 1,
-    transition: "opacity 0.4s, visibility 0.4s",
+    zIndex: "1",
+    transition: "var(--tsn, opacity 0.4s, visibility 0.4s)",
     visibility: "hidden",
-    opacity: "var(--EdgeSidebar-temporaryOpen, 0)",
+    opacity: "var(--jun-ES-drawerOpen, 0)",
   },
-  "&[data-temporary-open]": {
+  [`&[${layoutAttrs.isDrawerOpen}]`]: {
     "&::before": {
       visibility: "visible",
     },
   },
-  "html:has(&[data-temporary-open])": {
-    overflow: "hidden",
-  },
+  [`html:has([${layoutAttrs.isDrawerOpen}]:not(.${layoutClasses.DrawerWithoutOverlay}):not(.${layoutClasses.Content} &))`]:
+    {
+      overflow: "hidden",
+    },
   "&::after": {
     position: "absolute",
     content: '""',
     display: "block",
-    width: "var(--_permanent, var(--SidebarContent-width))",
-    height: "var(--Header-clipHeight)",
-    top: "calc(-1 * var(--Header-clipHeight))",
+    width: "var(--_permanent, var(--jun-EC-width))",
+    height: "var(--jun-H-clip-h)",
+    top: "calc(-1 * var(--jun-H-clip-h))",
+    left: "var(--anchorLeft, 0px) var(--anchorRight, unset)",
+    right: "var(--anchorLeft, unset) var(--anchorRight, 0px)",
+    border: "inherit",
   },
 });

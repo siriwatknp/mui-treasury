@@ -9,13 +9,13 @@ MUI Registry is a custom component registry built with Next.js 15, Material UI (
 ## Development Commands
 
 ```bash
-# Start development server with Turbopack
+# Start development server with Turbopack at port 4418
 pnpm dev
 
 # Build the registry files and copy to public/r/
 pnpm registry:build
 
-# Take screenshots of components (requires dev server on port 3001)
+# Take screenshots of components (requires dev server on port 4418)
 pnpm dev:screenshot
 
 # Build for production

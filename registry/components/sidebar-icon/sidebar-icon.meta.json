@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Sidebar Icon",
+  "description": "A fixed-size icon wrapper for sidebar menu buttons with configurable icon dimensions",
+  "meta": {
+    "category": "primitive",
+    "subcategory": "sidebar"
+  }
+}

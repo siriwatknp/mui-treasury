@@ -3,5 +3,9 @@
   "type": "registry:item",
   "title": "App Messenger",
   "description": "A app-messenger item.",
-  "meta": {}
+  "meta": {
+    "category": "layout",
+    "screenshot": "/public/screenshots/app-messenger.png",
+    "previewPath": "/app-layout/app-messenger"
+  }
 }

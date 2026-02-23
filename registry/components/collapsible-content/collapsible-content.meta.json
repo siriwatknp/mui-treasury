@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Collapsible Content",
+  "description": "A grid-based container that expands or collapses based on sibling checkbox state",
+  "meta": {
+    "category": "primitive",
+    "subcategory": "sidebar"
+  }
+}

@@ -1,22 +1,29 @@
 "use client";
 import React from "react";
-import { BoxProps } from "@mui/material/Box";
+import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 import { styled } from "@mui/material/styles";
+import { layoutClasses } from "./layoutClasses";
 
-const StyledContent = styled("main")({
-  gridArea: "Content",
-  minHeight: 0,
-});
+const StyledContent = styled("main", {
+  name: "LayoutContent",
+  slot: "root",
+})(
+  memoTheme(() => ({
+    "--_overflow": "var(--content-overflow)",
+    overflow: "var(--_overflow)" as never,
+    gridArea: layoutClasses.Content,
+    minHeight: 0,
+  })),
+);
 
-const Content = React.forwardRef<HTMLElement, BoxProps>(function Content(
-  { className, ...props },
-  ref,
-) {
+const Content = React.forwardRef<
+  HTMLElement,
+  React.ComponentProps<typeof StyledContent>
+>(function Content({ className, ...props }, ref) {
   return (
-    // @ts-expect-error BoxProps on styled native element
     <StyledContent
       ref={ref}
-      className={`Content ${className || ""}`}
+      className={`${layoutClasses.Content} ${className || ""}`}
       {...props}
     />
   );

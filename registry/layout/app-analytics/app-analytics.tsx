@@ -10,14 +10,14 @@ import Typography from "@mui/material/Typography";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Content from "../layout-core/Content";
 import EdgeSidebar, {
-  applyEdgeSidebarStyles,
-  toggleEdgeSidebarCollapse,
-  toggleTemporaryEdgeSidebar,
+  triggerEdgeCollapse,
+  triggerEdgeDrawer,
 } from "../layout-core/EdgeSidebar";
 import EdgeSidebarContent from "../layout-core/EdgeSidebarContent";
-import EdgeTemporaryClose from "../layout-core/EdgeTemporaryClose";
+import EdgeDrawerClose from "../layout-core/EdgeDrawerClose";
 import Header from "../layout-core/Header";
 import Root from "../layout-core/Root";
+import { layoutClasses } from "../layout-core/layoutClasses";
 import {
   IconNavMockup,
   LinkNavMockup,
@@ -67,18 +67,20 @@ export function LayoutV6AppAnalytics() {
           }}
         >
           <IconButton
-            className="EdgeSidebar-trigger"
-            onClick={() => toggleTemporaryEdgeSidebar()}
+            className={layoutClasses.EdgeDrawerTrigger}
+            onClick={() => triggerEdgeDrawer()}
           >
             <MenuRounded />
           </IconButton>
 
           <IconButton
-            className="EdgeSidebar-collapser"
-            onClick={(event) => toggleEdgeSidebarCollapse({ event })}
+            className={layoutClasses.EdgeSidebarCollapser}
+            onClick={(event) => triggerEdgeCollapse({ event })}
           >
-            <MenuRounded className="Icon-uncollapse" />
-            <ChevronLeftRounded className="Icon-collapse" />
+            <MenuRounded className={layoutClasses.EdgeUncollapsedVisible} />
+            <ChevronLeftRounded
+              className={layoutClasses.EdgeCollapsedVisible}
+            />
           </IconButton>
 
           <Typography
@@ -90,28 +92,20 @@ export function LayoutV6AppAnalytics() {
         </Box>
       </Header>
       <EdgeSidebar
-        sx={(theme) => ({
-          ...applyEdgeSidebarStyles(theme, {
-            config: {
-              xs: {
-                variant: "temporary",
-              },
-              md: {
-                variant: "persistent",
-                persistentBehavior: "none",
-              },
-              lg: {
-                autoCollapse: "xl",
-                variant: "permanent",
-                width: "300px",
-                collapsedWidth: "80px",
-                expandOnHover: true,
-              },
+        permanentAutoCollapse="xl"
+        variant={{
+          xs: ["drawer"],
+          lg: [
+            "permanent",
+            {
+              width: "300px",
+              collapsedWidth: "80px",
+              hoverUncollapse: true,
             },
-          }),
-        })}
+          ],
+        }}
       >
-        <EdgeTemporaryClose />
+        <EdgeDrawerClose />
 
         <EdgeSidebarContent>
           <SideNavUserInfoMockup />

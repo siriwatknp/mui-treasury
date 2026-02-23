@@ -1,51 +1,61 @@
 "use client";
 import React from "react";
-import { BoxProps } from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
+import { layoutAttrs } from "./layoutAttrs";
+import { layoutClasses } from "./layoutClasses";
 
-const StyledEdgeSidebarContent = styled("div")({
-  display: "flex",
+const StyledEdgeSidebarContent = styled("div", {
+  name: "LayoutEdgeSidebarContent",
+  slot: "root",
+})({
+  /* configurable */
   background: "var(--EdgeSidebarContent-background)",
+  boxShadow: "var(--jun-EC-shadow)",
+  display: "flex",
   flexDirection: "column",
-  opacity: `var(--_temporary, var(--EdgeSidebar-temporaryOpen))
-            var(--_permanent, 1)`,
-  visibility: `var(--_temporary, hidden)
-               var(--_permanent, visible)` as never,
-  overflowX: "auto",
-  flex: 1,
-  position: "var(--_temporary, fixed) var(--_permanent, relative)" as never,
-  zIndex: 2,
+  flex: "1",
+  padding: "0px",
+  overflowX: "auto", // prevent horizontal content overflow
+  "--jun-EC-delay": "0s",
+  opacity: `var(--_drawer, var(--jun-ES-drawerOpen))
+        var(--_permanent, 1)`,
+  visibility: `var(--_drawer, hidden) var(--_permanent, visible)` as never,
+  margin: "0px", // prevent user from customizing it
+  position:
+    "var(--_drawer, var(--drawer-pos)) var(--_permanent, relative)" as never,
+  zIndex: "2",
   width:
-    "var(--_temporary, var(--EdgeSidebar-temporaryWidth)) var(--_permanent, calc(var(--SidebarContent-width) - var(--EdgeSidebar-sidelineWidth, 0px)))",
-  height: "var(--_temporary, 100%)",
-  overflowY: "var(--_temporary, auto)" as never,
-  transition: `var(--_temporary, opacity 0.3s, transform 0.3s)
-               var(--_permanent, opacity 0.7s, width 0.3s var(--SidebarContent-transitionDelay, 0s), transform 0.3s var(--SidebarContent-transitionDelay, 0s), box-shadow 0.3s var(--SidebarContent-transitionDelay, 0s))`,
-  transform: `var(--_temporary, var(--anchorLeft, translateX(calc((1 - var(--EdgeSidebar-temporaryOpen)) * -100%))) var(--anchorRight, translateX(calc(var(--EdgeSidebar-temporaryOpen) * -100%))))
-               var(--_permanent, translateX(var(--EdgeSidebar-permanentSlide, 0)))`,
-  "[data-sidebar-hidden] &": {
+    "var(--_drawer, var(--jun-ES-drawerWidth)) var(--_permanent, var(--jun-EC-width))",
+  height: "var(--_drawer, var(--drawer-h))",
+  top: "var(--_drawer, calc(var(--jun-h) - var(--drawer-h)))",
+  overflowY: "var(--_drawer, auto)" as never,
+  transition: `var(--tsn, var(--_drawer, opacity 0.3s, transform 0.3s)
+               var(--_permanent, opacity 0.4s, width 0.3s var(--jun-EC-delay, 0s), transform 0.3s var(--jun-EC-delay, 0s), box-shadow 0.3s var(--jun-EC-delay, 0s)))`,
+  transform: `var(--_drawer, var(--anchorLeft, translateX(calc((1 - var(--jun-ES-drawerOpen)) * -100%))) var(--anchorRight, translateX(calc(var(--jun-ES-drawerOpen) * -100%))))
+              var(--_permanent, translateX(var(--jun-ES-permanentSlide, 0)))`,
+  [`[${layoutAttrs.isEdgeSidebarContentHidden}] &`]: {
     visibility: "hidden",
-    opacity: 0,
+    opacity: "0",
   },
-  "[data-temporary-open] &, [data-mobile-closing] &": {
+  [`[${layoutAttrs.isDrawerOpen}] &, [${layoutAttrs.isDrawerClosing}] &`]: {
     visibility: "visible",
   },
-  "[data-mobile-closing] &": {
-    transition: "transform 0.3s, visibility 0.3s, opacity 0.3s",
+  [`[${layoutAttrs.isDrawerClosing}] &`]: {
+    transition: "var(--tsn, transform 0.3s, visibility 0.3s, opacity 0.3s)",
   },
 });
 
-const EdgeSidebarContent = React.forwardRef<HTMLDivElement, BoxProps>(
-  function EdgeSidebarContent({ className, ...props }, ref) {
-    return (
-      // @ts-expect-error BoxProps on styled native element
-      <StyledEdgeSidebarContent
-        ref={ref}
-        className={`EdgeSidebarContent ${className || ""}`}
-        {...props}
-      />
-    );
-  },
-);
+const EdgeSidebarContent = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<typeof StyledEdgeSidebarContent>
+>(function EdgeSidebarContent({ className, ...props }, ref) {
+  return (
+    <StyledEdgeSidebarContent
+      ref={ref}
+      className={`${layoutClasses.EdgeSidebarContent} ${className || ""}`}
+      {...props}
+    />
+  );
+});
 
 export default EdgeSidebarContent;

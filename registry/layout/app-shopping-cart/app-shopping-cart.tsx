@@ -14,11 +14,6 @@ import {
   DailySummary,
 } from "./components";
 import {
-  applyEdgeSidebarRightStyles,
-  applyHeaderStyles,
-  applyInsetContainerStyles,
-  applyInsetSidebarStyles,
-  applyRootStyles,
   Content,
   EdgeSidebarContent,
   EdgeSidebarRight,
@@ -26,9 +21,9 @@ import {
   Header,
   InsetAvoidingView,
   InsetSidebar,
-  InsetSidebarContent,
+  InsetContent,
   Root,
-  toggleTemporaryEdgeSidebarRight,
+  triggerEdgeDrawerRight,
 } from "../layout-core";
 
 const StyledHeader = styled(Header)(() => ({
@@ -40,13 +35,14 @@ const InsetAvoidingViewFooter = styled(InsetAvoidingView)(
     border: "unset",
     position: "relative",
     backgroundColor: "#fff",
+    paddingTop: "1rem",
 
     "&:before": {
       content: '" "',
       position: "absolute",
       width: "100%",
       height: 24,
-      top: 0,
+      top: -1,
       left: 0,
       transform: "translateY(-100%)",
       background: "linear-gradient(to top, #ffffff, rgba(255,255,255,0))",
@@ -65,11 +61,11 @@ const InsetAvoidingViewFooter = styled(InsetAvoidingView)(
 export function LayoutV6AppShoppingCart() {
   return (
     <ThemeProvider theme={dailyShoppingTheme}>
-      <Root sx={{ ...applyRootStyles({ fixedHeight: true }) }}>
+      <Root standalone>
         <CssBaseline />
         <Fab
           color={"primary"}
-          onClick={() => toggleTemporaryEdgeSidebarRight()}
+          onClick={() => triggerEdgeDrawerRight()}
           sx={(theme) => ({
             position: "fixed",
             bottom: 16,
@@ -91,33 +87,19 @@ export function LayoutV6AppShoppingCart() {
         >
           <CreditCard />
         </Fab>
-        <StyledHeader
-          sx={{
-            position: "relative",
-            ...applyHeaderStyles({
-              height: "64px",
-            }),
-          }}
-        >
+        <StyledHeader height="64px" sx={{ position: "relative" }}>
           <Container maxWidth="xl">
             <DailyHeader />
           </Container>
         </StyledHeader>
         <EdgeSidebarRight
-          sx={(theme) => ({
-            ...applyEdgeSidebarRightStyles(theme, {
-              config: {
-                xs: {
-                  variant: "temporary",
-                  width: "min(400px, 100vw)",
-                },
-              },
-            }),
-          })}
+          variant={{
+            xs: ["drawer", { width: "min(400px, 100vw)" }],
+          }}
         >
           <EdgeSidebarContent
             sx={{
-              padding: "0.5rem",
+              padding: "calc(var(--jun-ES-drawerOpen) * 0.5rem)",
               bgcolor: "initial",
             }}
           >
@@ -125,28 +107,21 @@ export function LayoutV6AppShoppingCart() {
           </EdgeSidebarContent>
         </EdgeSidebarRight>
         <Content>
-          <Container
-            maxWidth="xl"
-            sx={{ height: "100%", ...applyInsetContainerStyles() }}
-          >
+          <Container maxWidth="xl">
             <DailyCart />
             <InsetSidebar
               position="absolute"
+              width={{ lg: "max(25cqw, 360px)" }}
               sx={{
-                ...applyInsetSidebarStyles({
-                  width: {
-                    lg: "max(25cqw, 360px)",
-                  },
-                }),
                 "& > div": {
                   border: "none",
                   py: "1rem",
                 },
               }}
             >
-              <InsetSidebarContent>
+              <InsetContent>
                 <DailyCheckout />
-              </InsetSidebarContent>
+              </InsetContent>
             </InsetSidebar>
           </Container>
         </Content>

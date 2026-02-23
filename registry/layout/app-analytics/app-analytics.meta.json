@@ -3,5 +3,9 @@
   "type": "registry:item",
   "title": "App Analytics",
   "description": "A app-analytics item.",
-  "meta": {}
+  "meta": {
+    "category": "layout",
+    "screenshot": "/public/screenshots/app-analytics.png",
+    "previewPath": "/app-layout/app-analytics"
+  }
 }

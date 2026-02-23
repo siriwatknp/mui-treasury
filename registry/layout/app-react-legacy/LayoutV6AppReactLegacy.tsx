@@ -13,19 +13,16 @@ import Typography from "@mui/material/Typography";
 import Content from "../layout-core/Content";
 import SidebarContent from "../layout-core/EdgeSidebarContent";
 import EdgeSidebarRight, {
-  applyEdgeSidebarRightStyles,
-  toggleTemporaryEdgeSidebarRight,
+  triggerEdgeDrawerRight,
 } from "../layout-core/EdgeSidebarRight";
-import EdgeTemporaryClose from "../layout-core/EdgeTemporaryClose";
+import EdgeDrawerClose from "../layout-core/EdgeDrawerClose";
 import Footer from "../layout-core/Footer";
-import Header, { applyHeaderStyles } from "../layout-core/Header";
+import Header from "../layout-core/Header";
 import InsetAvoidingView from "../layout-core/InsetAvoidingView";
-import InsetContainer from "../layout-core/InsetContainer";
-import InsetSidebar, {
-  applyInsetSidebarStyles,
-} from "../layout-core/InsetSidebar";
-import InsetSidebarContent from "../layout-core/InsetSidebarContent";
+import InsetSidebar from "../layout-core/InsetSidebar";
+import InsetContent from "../layout-core/InsetContent";
 import Root from "../layout-core/Root";
+import { layoutClasses } from "../layout-core/layoutClasses";
 
 const StyledToolbar = styled(Toolbar)(({ theme: { breakpoints } }) => ({
   minHeight: 60,
@@ -101,23 +98,21 @@ export function LayoutV6AppReactLegacy() {
   return (
     <Root>
       <StyledFab
-        className="EdgeSidebar-R-trigger"
+        className={layoutClasses.EdgeDrawerTriggerRight}
         color={"primary"}
         onClick={() => {
-          toggleTemporaryEdgeSidebarRight();
+          triggerEdgeDrawerRight();
         }}
       >
         <UnfoldMore />
       </StyledFab>
       <Header
+        height="60px"
         sx={{
           position: "sticky",
           top: 0,
           bgcolor: "#232323",
           zIndex: 1,
-          ...applyHeaderStyles({
-            height: "60px",
-          }),
         }}
       >
         <Container>
@@ -127,44 +122,18 @@ export function LayoutV6AppReactLegacy() {
         </Container>
       </Header>
       <EdgeSidebarRight
-        sx={(theme) => ({
-          ...applyEdgeSidebarRightStyles(theme, {
-            config: {
-              xs: {
-                variant: "temporary",
-              },
-              md: {
-                variant: "persistent",
-                persistentBehavior: "none",
-              },
-            },
-          }),
-        })}
+        variant={{
+          xs: ["drawer"],
+        }}
       >
-        <EdgeTemporaryClose />
+        <EdgeDrawerClose />
         <SidebarContent>{sidebarContent}</SidebarContent>
       </EdgeSidebarRight>
       <Content>
-        <Container>
-          <InsetContainer
-            rightSidebar={
-              <InsetSidebar
-                position="fixed"
-                sx={{
-                  ...applyInsetSidebarStyles({
-                    width: {
-                      md: "256px",
-                    },
-                  }),
-                }}
-              >
-                <InsetSidebarContent>{sidebarContent}</InsetSidebarContent>
-              </InsetSidebar>
-            }
-          >
-            <ReactContent />
-          </InsetContainer>
-        </Container>
+        <ReactContent />
+        <InsetSidebar position="fixed" width={{ md: "256px" }}>
+          <InsetContent>{sidebarContent}</InsetContent>
+        </InsetSidebar>
       </Content>
       <Footer>
         <Box bgcolor={"rgb(40, 44, 52)"}>
