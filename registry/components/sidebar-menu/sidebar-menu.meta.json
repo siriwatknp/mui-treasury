@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Sidebar Menu",
+  "description": "A flex column list for sidebar menu items with support for relaxed spacing and nested submenus",
+  "meta": {
+    "category": "primitive",
+    "subcategory": "sidebar"
+  }
+}

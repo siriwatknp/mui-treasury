@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Sidebar Group Label",
+  "description": "A label for sidebar groups that fades out when the sidebar is collapsed",
+  "meta": {
+    "category": "primitive",
+    "subcategory": "sidebar"
+  }
+}

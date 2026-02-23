@@ -2,11 +2,6 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
 import ChevronLeftRounded from "@mui/icons-material/ChevronLeftRounded";
 import CloseRounded from "@mui/icons-material/CloseRounded";
@@ -32,6 +27,17 @@ import EdgeSidebar, {
 import EdgeSidebarContent from "@/registry/layout/layout-core/EdgeSidebarContent";
 import { layoutClasses } from "@/registry/layout/layout-core/layoutClasses";
 import { EdgeDrawerClose } from "@/registry/layout/layout-core";
+import SidebarContainer from "@/registry/components/sidebar-container/SidebarContainer";
+import SidebarGroup from "@/registry/components/sidebar-group/SidebarGroup";
+import SidebarGroupLabel from "@/registry/components/sidebar-group-label/SidebarGroupLabel";
+import SidebarMenu from "@/registry/components/sidebar-menu/SidebarMenu";
+import SidebarMenuItem from "@/registry/components/sidebar-menu-item/SidebarMenuItem";
+import SidebarMenuButton from "@/registry/components/sidebar-menu-button/SidebarMenuButton";
+import SidebarIcon from "@/registry/components/sidebar-icon/SidebarIcon";
+import SidebarText from "@/registry/components/sidebar-text/SidebarText";
+import SidebarTooltip from "@/registry/components/sidebar-tooltip/SidebarTooltip";
+import SidebarRail from "@/registry/components/sidebar-rail/SidebarRail";
+import Tooltip from "@mui/material/Tooltip";
 
 const SIDEBAR_ID = "app-dashboard-sidebar";
 
@@ -82,60 +88,76 @@ export default function AppDashboardPage() {
             "permanent",
             {
               width: "260px",
-              collapsedWidth: "55px",
-              hoverUncollapse: true,
+              collapsedWidth: "52px",
+              // hoverUncollapse: true,
             },
           ],
         }}
       >
         <EdgeDrawerClose />
         <EdgeSidebarContent>
-          <List sx={{ flex: 1, overflow: "auto" }}>
-            {menus.map((item) => {
-              const Icon = item.icon;
-              return (
-                <ListItem key={item.title} disablePadding>
-                  <ListItemButton sx={{ minHeight: 40, px: 1.5 }}>
-                    <ListItemIcon sx={{ minWidth: 40 }}>
-                      <Icon fontSize="small" />
-                    </ListItemIcon>
-                    <ListItemText
-                      primary={item.title}
-                      slotProps={{
-                        primary: { variant: "body2", noWrap: true },
-                      }}
-                    />
-                  </ListItemButton>
-                </ListItem>
-              );
-            })}
-          </List>
+          <SidebarContainer sx={{ flex: 1, overflow: "auto" }}>
+            <SidebarGroup>
+              <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+              <SidebarMenu>
+                {menus.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <SidebarMenuItem key={item.title}>
+                      <Tooltip
+                        title={<SidebarTooltip>{item.title}</SidebarTooltip>}
+                        placement="right"
+                      >
+                        <SidebarMenuButton
+                          active={item.title === "Account Home"}
+                        >
+                          <SidebarIcon shrinkSize="1.25rem">
+                            <Icon />
+                          </SidebarIcon>
+                          <SidebarText>{item.title}</SidebarText>
+                        </SidebarMenuButton>
+                      </Tooltip>
+                    </SidebarMenuItem>
+                  );
+                })}
+              </SidebarMenu>
+            </SidebarGroup>
 
-          <Box sx={{ borderTop: 1, borderColor: "divider" }}>
-            <ListItemButton
-              className={layoutClasses.EdgeSidebarCollapser}
-              onClick={(event) =>
-                triggerEdgeCollapse({ event, sidebarId: SIDEBAR_ID })
-              }
-              sx={{ minHeight: 60, px: 1.5, width: "100%" }}
-            >
-              <ListItemIcon sx={{ minWidth: 40 }}>
-                <ChevronLeftRounded
-                  fontSize="small"
-                  className={layoutClasses.EdgeUncollapsedVisible}
-                />
-                <ChevronRightRounded
-                  fontSize="small"
-                  className={layoutClasses.EdgeCollapsedVisible}
-                />
-              </ListItemIcon>
-              <ListItemText
-                primary="Collapse"
-                slotProps={{ primary: { variant: "body2", noWrap: true } }}
-              />
-            </ListItemButton>
-          </Box>
+            <Box sx={{ mt: "auto", borderTop: 1, borderColor: "divider" }}>
+              <SidebarGroup>
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton
+                      className={layoutClasses.EdgeSidebarCollapser}
+                      onClick={(event) =>
+                        triggerEdgeCollapse({ event, sidebarId: SIDEBAR_ID })
+                      }
+                    >
+                      <SidebarIcon>
+                        <ChevronLeftRounded
+                          className={layoutClasses.EdgeUncollapsedVisible}
+                        />
+                        <ChevronRightRounded
+                          className={layoutClasses.EdgeCollapsedVisible}
+                        />
+                      </SidebarIcon>
+                      <SidebarText>Collapse</SidebarText>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </SidebarMenu>
+              </SidebarGroup>
+            </Box>
+          </SidebarContainer>
         </EdgeSidebarContent>
+        <SidebarRail
+          className={layoutClasses.EdgeSidebarCollapser}
+          onClick={(event) =>
+            triggerEdgeCollapse({
+              event: event as unknown as React.MouseEvent,
+              sidebarId: SIDEBAR_ID,
+            })
+          }
+        />
       </EdgeSidebar>
 
       <Content sx={{ p: { xs: 2, md: 4 } }}>

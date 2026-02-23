@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Collapsible Icon",
+  "description": "An icon wrapper that rotates when the collapsible trigger is checked, hidden when sidebar is collapsed",
+  "meta": {
+    "category": "primitive",
+    "subcategory": "sidebar"
+  }
+}
