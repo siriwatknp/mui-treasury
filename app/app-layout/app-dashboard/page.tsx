@@ -16,6 +16,10 @@ import CodeRounded from "@mui/icons-material/CodeRounded";
 import StorageRounded from "@mui/icons-material/StorageRounded";
 import SettingsRounded from "@mui/icons-material/SettingsRounded";
 import NotificationsRounded from "@mui/icons-material/NotificationsRounded";
+import FolderRounded from "@mui/icons-material/FolderRounded";
+import ArticleRounded from "@mui/icons-material/ArticleRounded";
+import PeopleRounded from "@mui/icons-material/PeopleRounded";
+import ExpandMoreRounded from "@mui/icons-material/ExpandMoreRounded";
 import Root from "@/registry/layout/layout-core/Root";
 import Header from "@/registry/layout/layout-core/Header";
 import Content from "@/registry/layout/layout-core/Content";
@@ -37,9 +41,37 @@ import SidebarIcon from "@/registry/components/sidebar-icon/sidebar-icon";
 import SidebarText from "@/registry/components/sidebar-text/sidebar-text";
 import SidebarTooltip from "@/registry/components/sidebar-tooltip/sidebar-tooltip";
 import SidebarRail from "@/registry/components/sidebar-rail/sidebar-rail";
-import Tooltip from "@mui/material/Tooltip";
+import CollapsibleTrigger from "@/registry/components/collapsible-trigger/collapsible-trigger";
+import CollapsibleContent from "@/registry/components/collapsible-content/collapsible-content";
+import CollapsibleIcon from "@/registry/components/collapsible-icon/collapsible-icon";
 
 const SIDEBAR_ID = "app-dashboard-sidebar";
+
+const nestedMenus = [
+  {
+    title: "Projects",
+    icon: FolderRounded,
+    children: [
+      { title: "Design System" },
+      { title: "Landing Page" },
+      { title: "API Gateway" },
+    ],
+  },
+  {
+    title: "Documentation",
+    icon: ArticleRounded,
+    children: [
+      { title: "Getting Started" },
+      { title: "Components" },
+      { title: "API Reference" },
+    ],
+  },
+  {
+    title: "Team",
+    icon: PeopleRounded,
+    children: [{ title: "Members" }, { title: "Permissions" }],
+  },
+];
 
 const menus = [
   { title: "Account Home", icon: HomeRounded },
@@ -104,10 +136,7 @@ export default function AppDashboardPage() {
                   const Icon = item.icon;
                   return (
                     <SidebarMenuItem key={item.title}>
-                      <Tooltip
-                        title={<SidebarTooltip>{item.title}</SidebarTooltip>}
-                        placement="right"
-                      >
+                      <SidebarTooltip title={item.title}>
                         <SidebarMenuButton
                           active={item.title === "Account Home"}
                         >
@@ -116,7 +145,45 @@ export default function AppDashboardPage() {
                           </SidebarIcon>
                           <SidebarText>{item.title}</SidebarText>
                         </SidebarMenuButton>
-                      </Tooltip>
+                      </SidebarTooltip>
+                    </SidebarMenuItem>
+                  );
+                })}
+              </SidebarMenu>
+            </SidebarGroup>
+
+            <SidebarGroup>
+              <SidebarGroupLabel>Workspace</SidebarGroupLabel>
+              <SidebarMenu>
+                {nestedMenus.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <SidebarMenuItem key={item.title}>
+                      <CollapsibleTrigger
+                        component={SidebarMenuButton}
+                        defaultChecked={item.title === "Projects"}
+                      >
+                        <SidebarIcon shrinkSize="1.25rem">
+                          <Icon />
+                        </SidebarIcon>
+                        <SidebarText>{item.title}</SidebarText>
+                        <CollapsibleIcon>
+                          <ExpandMoreRounded />
+                        </CollapsibleIcon>
+                      </CollapsibleTrigger>
+                      <CollapsibleContent>
+                        <div>
+                          <SidebarMenu nested>
+                            {item.children.map((child) => (
+                              <SidebarMenuItem key={child.title}>
+                                <SidebarMenuButton>
+                                  <SidebarText>{child.title}</SidebarText>
+                                </SidebarMenuButton>
+                              </SidebarMenuItem>
+                            ))}
+                          </SidebarMenu>
+                        </div>
+                      </CollapsibleContent>
                     </SidebarMenuItem>
                   );
                 })}

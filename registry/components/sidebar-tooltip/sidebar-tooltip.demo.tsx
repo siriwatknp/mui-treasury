@@ -1,6 +1,5 @@
 "use client";
 
-import Tooltip from "@mui/material/Tooltip";
 import SidebarContainer from "../sidebar-container/sidebar-container";
 import SidebarGroup from "../sidebar-group/sidebar-group";
 import SidebarMenu from "../sidebar-menu/sidebar-menu";
@@ -20,43 +19,34 @@ export default function SidebarTooltipDemo() {
         <SidebarGroup>
           <SidebarMenu>
             <SidebarMenuItem>
-              <Tooltip
-                title={<SidebarTooltip>Home</SidebarTooltip>}
-                placement="right"
-              >
+              <SidebarTooltip title="Home">
                 <SidebarMenuButton>
                   <SidebarIcon>
                     <HomeRounded />
                   </SidebarIcon>
                   <SidebarText>Home</SidebarText>
                 </SidebarMenuButton>
-              </Tooltip>
+              </SidebarTooltip>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <Tooltip
-                title={<SidebarTooltip>Search</SidebarTooltip>}
-                placement="right"
-              >
+              <SidebarTooltip title="Search">
                 <SidebarMenuButton>
                   <SidebarIcon>
                     <SearchRounded />
                   </SidebarIcon>
                   <SidebarText>Search</SidebarText>
                 </SidebarMenuButton>
-              </Tooltip>
+              </SidebarTooltip>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <Tooltip
-                title={<SidebarTooltip>Settings</SidebarTooltip>}
-                placement="right"
-              >
+              <SidebarTooltip title="Settings">
                 <SidebarMenuButton>
                   <SidebarIcon>
                     <SettingsRounded />
                   </SidebarIcon>
                   <SidebarText>Settings</SidebarText>
                 </SidebarMenuButton>
-              </Tooltip>
+              </SidebarTooltip>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroup>
