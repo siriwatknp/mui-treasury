@@ -43,6 +43,10 @@ import SidebarTooltip from "@/registry/components/sidebar-tooltip/sidebar-toolti
 import SidebarRail from "@/registry/components/sidebar-rail/sidebar-rail";
 import CollapsibleTrigger from "@/registry/components/collapsible-trigger/collapsible-trigger";
 import CollapsibleContent from "@/registry/components/collapsible-content/collapsible-content";
+import CollapsedSidebarMenu, {
+  CollapsedSidebarMenuItem,
+  CollapsedSidebarMenuPopup,
+} from "@/registry/components/collapsed-sidebar-menu/collapsed-sidebar-menu";
 import CollapsibleIcon from "@/registry/components/collapsible-icon/collapsible-icon";
 
 const SIDEBAR_ID = "app-dashboard-sidebar";
@@ -159,18 +163,37 @@ export default function AppDashboardPage() {
                   const Icon = item.icon;
                   return (
                     <SidebarMenuItem key={item.title}>
-                      <CollapsibleTrigger
-                        component={SidebarMenuButton}
-                        defaultChecked={item.title === "Projects"}
+                      <CollapsedSidebarMenu
+                        render={
+                          <SidebarMenuButton hideWhen="uncollapsed">
+                            <SidebarIcon shrinkSize="1.25rem">
+                              <Icon />
+                            </SidebarIcon>
+                          </SidebarMenuButton>
+                        }
                       >
-                        <SidebarIcon shrinkSize="1.25rem">
-                          <Icon />
-                        </SidebarIcon>
-                        <SidebarText>{item.title}</SidebarText>
-                        <CollapsibleIcon>
-                          <ExpandMoreRounded />
-                        </CollapsibleIcon>
-                      </CollapsibleTrigger>
+                        <CollapsedSidebarMenuPopup>
+                          {item.children.map((child) => (
+                            <CollapsedSidebarMenuItem key={child.title}>
+                              {child.title}
+                            </CollapsedSidebarMenuItem>
+                          ))}
+                        </CollapsedSidebarMenuPopup>
+                      </CollapsedSidebarMenu>
+                      <CollapsibleTrigger
+                        defaultChecked={item.title === "Projects"}
+                        render={
+                          <SidebarMenuButton hideWhen="collapsed">
+                            <SidebarIcon shrinkSize="1.25rem">
+                              <Icon />
+                            </SidebarIcon>
+                            <SidebarText>{item.title}</SidebarText>
+                            <CollapsibleIcon>
+                              <ExpandMoreRounded />
+                            </CollapsibleIcon>
+                          </SidebarMenuButton>
+                        }
+                      />
                       <CollapsibleContent>
                         <div>
                           <SidebarMenu nested>

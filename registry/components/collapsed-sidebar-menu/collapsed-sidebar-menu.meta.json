@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Collapsed Sidebar Menu",
+  "description": "A popup menu that appears when the sidebar is collapsed, providing access to nested items",
+  "meta": {
+    "category": "primitive",
+    "subcategory": "sidebar"
+  }
+}

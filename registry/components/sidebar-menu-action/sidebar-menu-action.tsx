@@ -9,6 +9,7 @@ import { sidebarGroupLabelClasses } from "../sidebar-group-label/sidebar-group-l
 
 interface SidebarMenuActionProps {
   hoverAppear?: boolean;
+  _before?: React.ReactNode;
 }
 
 const StyledSidebarMenuAction = styled(ButtonBase, {
@@ -72,7 +73,10 @@ const SidebarMenuAction = React.forwardRef<
     "ownerState"
   > &
     SidebarMenuActionProps
->(function SidebarMenuAction({ className, hoverAppear, ...props }, ref) {
+>(function SidebarMenuAction(
+  { className, hoverAppear, _before, children, ...props },
+  ref,
+) {
   const ownerState = useMemo(() => ({ hoverAppear }), [hoverAppear]);
   return (
     <StyledSidebarMenuAction
@@ -81,7 +85,10 @@ const SidebarMenuAction = React.forwardRef<
       ownerState={ownerState}
       as={className?.includes("CollapsibleTrigger") ? "label" : undefined}
       {...props}
-    />
+    >
+      {_before}
+      {children}
+    </StyledSidebarMenuAction>
   );
 });
 

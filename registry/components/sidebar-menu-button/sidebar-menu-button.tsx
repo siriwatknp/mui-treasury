@@ -7,6 +7,8 @@ import { sidebarMenuButtonClasses } from "./sidebar-menu-button-classes";
 
 interface SidebarMenuButtonProps {
   active?: boolean;
+  hideWhen?: "collapsed" | "uncollapsed";
+  _before?: React.ReactNode;
 }
 
 const StyledSidebarMenuButton = styled(ButtonBase, {
@@ -39,6 +41,12 @@ const StyledSidebarMenuButton = styled(ButtonBase, {
       outline: "2px solid",
       outlineColor: (theme.vars || theme).palette.text.primary,
     },
+    "&:is(label)": {
+      userSelect: "none",
+      "&:has(input:focus-visible)": {
+        outline: `2px solid ${(theme.vars || theme).palette.primary.main}`,
+      },
+    },
     "@media (hover: hover)": {
       "&:hover": {
         color: (theme.vars || theme).palette.text.primary,
@@ -56,6 +64,18 @@ const StyledSidebarMenuButton = styled(ButtonBase, {
           backgroundColor: (theme.vars || theme).palette.action.hover,
         },
       },
+      {
+        props: { hideWhen: "collapsed" },
+        style: {
+          display: "var(--_collapsed, none) var(--_uncollapsed, flex)",
+        },
+      },
+      {
+        props: { hideWhen: "uncollapsed" },
+        style: {
+          display: "var(--_collapsed, flex) var(--_uncollapsed, none)",
+        },
+      },
     ],
   })),
 );
@@ -67,8 +87,11 @@ const SidebarMenuButton = React.forwardRef<
     "ownerState"
   > &
     SidebarMenuButtonProps
->(function SidebarMenuButton({ className, active, ...props }, ref) {
-  const ownerState = useMemo(() => ({ active }), [active]);
+>(function SidebarMenuButton(
+  { className, active, hideWhen, _before, children, ...props },
+  ref,
+) {
+  const ownerState = useMemo(() => ({ active, hideWhen }), [active, hideWhen]);
   return (
     <StyledSidebarMenuButton
       ref={ref}
@@ -76,7 +99,10 @@ const SidebarMenuButton = React.forwardRef<
       ownerState={ownerState}
       as={className?.includes("CollapsibleTrigger") ? "label" : undefined}
       {...props}
-    />
+    >
+      {_before}
+      {children}
+    </StyledSidebarMenuButton>
   );
 });
 

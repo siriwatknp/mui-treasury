@@ -1,25 +1,11 @@
 "use client";
 import React from "react";
-import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 import { styled } from "@mui/material/styles";
-import { collapsibleTriggerClasses } from "./collapsible-trigger-classes";
 
 interface CollapsibleTriggerProps {
   defaultChecked?: boolean;
-  component?: React.ElementType;
+  render: React.ReactNode;
 }
-
-const StyledCollapsibleTrigger = styled("label", {
-  name: "CollapsibleTrigger",
-  slot: "root",
-})(
-  memoTheme(({ theme }) => ({
-    userSelect: "none",
-    "&:has(input:focus-visible)": {
-      outline: `2px solid ${(theme.vars || theme).palette.primary.main}`,
-    },
-  })),
-);
 
 const ScreenReaderInput = styled("input")({
   position: "absolute",
@@ -33,25 +19,22 @@ const ScreenReaderInput = styled("input")({
   borderWidth: 0,
 });
 
-const CollapsibleTrigger = React.forwardRef<
-  HTMLLabelElement,
-  Omit<React.ComponentPropsWithoutRef<"label">, "defaultChecked"> &
-    CollapsibleTriggerProps
->(function CollapsibleTrigger(
-  { className, defaultChecked, children, component, ...props },
-  ref,
-) {
-  return (
-    <StyledCollapsibleTrigger
-      ref={ref}
-      className={`${collapsibleTriggerClasses.root} ${className || ""}`}
-      as={component}
-      {...props}
-    >
+const CollapsibleTrigger = function CollapsibleTrigger({
+  className,
+  defaultChecked,
+  render,
+  ...props
+}: Omit<React.ComponentPropsWithoutRef<"label">, "defaultChecked"> &
+  CollapsibleTriggerProps) {
+  return React.cloneElement(render as React.ReactElement, {
+    // @ts-expect-error to allow passing props to non-HTML element for flexibility, e.g. SidebarMenuButton
+    as: "label",
+    defaultChecked,
+    _before: (
       <ScreenReaderInput type="checkbox" defaultChecked={defaultChecked} />
-      {children}
-    </StyledCollapsibleTrigger>
-  );
-});
+    ),
+    ...props,
+  });
+};
 
 export default CollapsibleTrigger;
