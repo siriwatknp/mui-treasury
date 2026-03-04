@@ -27,7 +27,7 @@ const CollapsedSidebarMenu = function CollapsedSidebarMenu({
     }
   }, []);
   return (
-    <Menu.Root {...props}>
+    <Menu.Root loopFocus={false} {...props}>
       <Menu.Trigger
         ref={triggerCallbackRef as React.Ref<HTMLButtonElement>}
         openOnHover
@@ -43,12 +43,48 @@ const CollapsedSidebarMenu = function CollapsedSidebarMenu({
   );
 };
 
+interface CollapsedSidebarSubmenuProps extends Menu.SubmenuRoot.Props {
+  children: React.ReactNode;
+  render: Menu.Trigger.Props["render"];
+}
+
+export const CollapsedSidebarSubmenu = function CollapsedSidebarSubmenu({
+  render,
+  children,
+  ...props
+}: CollapsedSidebarSubmenuProps) {
+  const [container, setContainer] = React.useState<HTMLElement | null>(null);
+  const triggerCallbackRef = React.useCallback((node: HTMLElement | null) => {
+    if (node) {
+      setContainer(node.closest(".EdgeSidebar") as HTMLElement);
+    }
+  }, []);
+  return (
+    <Menu.SubmenuRoot loopFocus={false} {...props}>
+      <Menu.SubmenuTrigger
+        ref={triggerCallbackRef as React.Ref<HTMLButtonElement>}
+        openOnHover
+        delay={150}
+        render={render}
+        nativeButton
+      />
+      <StyledPortal container={container}>
+        <Menu.Positioner side="right" align="start">
+          {children}
+        </Menu.Positioner>
+      </StyledPortal>
+    </Menu.SubmenuRoot>
+  );
+};
+
 const MenuList = styled(SidebarMenu)(({ theme }) => ({
+  "--_collapsed": "var(--__,)",
+  "--_uncollapsed": "var(--__)",
   minWidth: 160,
   padding: theme.spacing(0.5),
   border: "1px solid",
   borderColor: (theme.vars || theme).palette.divider,
-  borderRadius: (theme.vars || theme).shape.borderRadius,
+  borderRadius: `calc(4px + ${(theme.vars || theme).shape.borderRadius})`,
   backgroundColor: (theme.vars || theme).palette.background.paper,
   boxShadow: (theme.vars || theme).shadows[1],
 }));
@@ -56,7 +92,7 @@ const MenuList = styled(SidebarMenu)(({ theme }) => ({
 export function CollapsedSidebarMenuPopup({
   children,
   ...props
-}: React.ComponentProps<typeof Menu.Root> & { children: React.ReactNode }) {
+}: React.ComponentProps<typeof Menu.Popup> & { children: React.ReactNode }) {
   return (
     <Menu.Popup render={<MenuList />} {...props}>
       {children}
@@ -67,11 +103,22 @@ export function CollapsedSidebarMenuPopup({
 export function CollapsedSidebarMenuItem({
   children,
   ...props
-}: React.ComponentProps<typeof Menu.Root> & { children: React.ReactNode }) {
+}: React.ComponentProps<typeof Menu.Item> & { children: React.ReactNode }) {
   return (
     <Menu.Item render={<SidebarMenuButton as="div" />} {...props}>
       {children}
     </Menu.Item>
+  );
+}
+
+export function CollapsedSidebarMenuLink({
+  children,
+  ...props
+}: React.ComponentProps<typeof Menu.LinkItem> & { children: React.ReactNode }) {
+  return (
+    <Menu.LinkItem render={<SidebarMenuButton />} {...props}>
+      {children}
+    </Menu.LinkItem>
   );
 }
 

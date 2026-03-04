@@ -44,8 +44,9 @@ import SidebarRail from "@/registry/components/sidebar-rail/sidebar-rail";
 import CollapsibleTrigger from "@/registry/components/collapsible-trigger/collapsible-trigger";
 import CollapsibleContent from "@/registry/components/collapsible-content/collapsible-content";
 import CollapsedSidebarMenu, {
-  CollapsedSidebarMenuItem,
+  CollapsedSidebarMenuLink,
   CollapsedSidebarMenuPopup,
+  CollapsedSidebarSubmenu,
 } from "@/registry/components/collapsed-sidebar-menu/collapsed-sidebar-menu";
 import CollapsibleIcon from "@/registry/components/collapsible-icon/collapsible-icon";
 
@@ -173,10 +174,30 @@ export default function AppDashboardPage() {
                         }
                       >
                         <CollapsedSidebarMenuPopup>
+                          <CollapsedSidebarSubmenu
+                            render={
+                              <SidebarMenuButton>
+                                <SidebarText>Nested Menu</SidebarText>
+                                <SidebarIcon>
+                                  <ChevronRightRounded />
+                                </SidebarIcon>
+                              </SidebarMenuButton>
+                            }
+                          >
+                            <CollapsedSidebarMenuPopup>
+                              <CollapsedSidebarMenuLink href="#" closeOnClick>
+                                Nested Menu
+                              </CollapsedSidebarMenuLink>
+                            </CollapsedSidebarMenuPopup>
+                          </CollapsedSidebarSubmenu>
                           {item.children.map((child) => (
-                            <CollapsedSidebarMenuItem key={child.title}>
+                            <CollapsedSidebarMenuLink
+                              href="#"
+                              key={child.title}
+                              closeOnClick
+                            >
                               {child.title}
-                            </CollapsedSidebarMenuItem>
+                            </CollapsedSidebarMenuLink>
                           ))}
                         </CollapsedSidebarMenuPopup>
                       </CollapsedSidebarMenu>
@@ -197,6 +218,37 @@ export default function AppDashboardPage() {
                       <CollapsibleContent>
                         <div>
                           <SidebarMenu nested>
+                            <SidebarMenuItem>
+                              <CollapsibleTrigger
+                                render={
+                                  <SidebarMenuButton>
+                                    <SidebarIcon>
+                                      <Icon />
+                                    </SidebarIcon>
+                                    <SidebarText>Nested Menu</SidebarText>
+                                    <CollapsibleIcon>
+                                      <ExpandMoreRounded />
+                                    </CollapsibleIcon>
+                                  </SidebarMenuButton>
+                                }
+                              />
+                              <CollapsibleContent>
+                                <div>
+                                  <SidebarMenu nested>
+                                    <SidebarMenuItem>
+                                      <SidebarMenuButton>
+                                        <SidebarText>Nested Menu</SidebarText>
+                                      </SidebarMenuButton>
+                                    </SidebarMenuItem>
+                                    <SidebarMenuItem>
+                                      <SidebarMenuButton>
+                                        <SidebarText>Nested Menu</SidebarText>
+                                      </SidebarMenuButton>
+                                    </SidebarMenuItem>
+                                  </SidebarMenu>
+                                </div>
+                              </CollapsibleContent>
+                            </SidebarMenuItem>
                             {item.children.map((child) => (
                               <SidebarMenuItem key={child.title}>
                                 <SidebarMenuButton>
@@ -212,32 +264,31 @@ export default function AppDashboardPage() {
                 })}
               </SidebarMenu>
             </SidebarGroup>
-
-            <Box sx={{ mt: "auto", borderTop: 1, borderColor: "divider" }}>
-              <SidebarGroup>
-                <SidebarMenu>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton
-                      className={layoutClasses.EdgeSidebarCollapser}
-                      onClick={(event) =>
-                        triggerEdgeCollapse({ event, sidebarId: SIDEBAR_ID })
-                      }
-                    >
-                      <SidebarIcon>
-                        <ChevronLeftRounded
-                          className={layoutClasses.EdgeUncollapsedVisible}
-                        />
-                        <ChevronRightRounded
-                          className={layoutClasses.EdgeCollapsedVisible}
-                        />
-                      </SidebarIcon>
-                      <SidebarText>Collapse</SidebarText>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                </SidebarMenu>
-              </SidebarGroup>
-            </Box>
           </SidebarContainer>
+          <Box sx={{ mt: "auto", borderTop: 1, borderColor: "divider" }}>
+            <SidebarGroup>
+              <SidebarMenu>
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    className={layoutClasses.EdgeSidebarCollapser}
+                    onClick={(event) =>
+                      triggerEdgeCollapse({ event, sidebarId: SIDEBAR_ID })
+                    }
+                  >
+                    <SidebarIcon>
+                      <ChevronLeftRounded
+                        className={layoutClasses.EdgeUncollapsedVisible}
+                      />
+                      <ChevronRightRounded
+                        className={layoutClasses.EdgeCollapsedVisible}
+                      />
+                    </SidebarIcon>
+                    <SidebarText>Collapse</SidebarText>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarGroup>
+          </Box>
         </EdgeSidebarContent>
         <SidebarRail
           className={layoutClasses.EdgeSidebarCollapser}
