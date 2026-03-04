@@ -1,24 +1,65 @@
 "use client";
 import React from "react";
-import { Menu } from "@base-ui/react/menu";
+import { NavigationMenu } from "@base-ui/react/navigation-menu";
 import SidebarMenuButton from "../sidebar-menu-button/sidebar-menu-button";
 import SidebarMenu from "../sidebar-menu/sidebar-menu";
 import { styled } from "@mui/material/styles";
+import SidebarMenuItem from "../sidebar-menu-item/sidebar-menu-item";
+import Tooltip from "@mui/material/Tooltip";
 
-interface CollapsedSidebarMenuProps extends Menu.Root.Props {
+interface CollapsedSidebarMenuProps extends Omit<
+  NavigationMenu.Root.Props,
+  "children"
+> {
   children: React.ReactNode;
-  render: Menu.Trigger.Props["render"];
+  render: NavigationMenu.Trigger.Props["render"];
+  tooltip?: React.ReactNode;
 }
 
-const StyledPortal = styled(Menu.Portal)({
+const StyledPortal = styled(NavigationMenu.Portal)({
   display: "var(--_collapsed, block) var(--_uncollapsed, none)",
   zIndex: 1300,
 });
 
+export function CollapsedSidebarMenuRoot({
+  children,
+  ...props
+}: React.ComponentProps<typeof NavigationMenu.Root>) {
+  const [container, setContainer] = React.useState<HTMLElement | null>(null);
+  const triggerCallbackRef = React.useCallback((node: HTMLElement | null) => {
+    if (node) {
+      setContainer(node.closest(".EdgeSidebar") as HTMLElement);
+    }
+  }, []);
+  return (
+    <NavigationMenu.Root
+      orientation="vertical"
+      delay={150}
+      closeDelay={150}
+      {...props}
+    >
+      <NavigationMenu.List
+        ref={triggerCallbackRef as React.Ref<HTMLUListElement>}
+        render={<SidebarMenu />}
+      >
+        {children}
+      </NavigationMenu.List>
+
+      <StyledPortal container={container}>
+        <NavigationMenu.Positioner side="right" align="start" sideOffset={4}>
+          <NavigationMenu.Popup render={<MenuPopup />}>
+            <NavigationMenu.Viewport />
+          </NavigationMenu.Popup>
+        </NavigationMenu.Positioner>
+      </StyledPortal>
+    </NavigationMenu.Root>
+  );
+}
+
 const CollapsedSidebarMenu = function CollapsedSidebarMenu({
   render,
   children,
-  ...props
+  tooltip,
 }: CollapsedSidebarMenuProps) {
   const [container, setContainer] = React.useState<HTMLElement | null>(null);
   const triggerCallbackRef = React.useCallback((node: HTMLElement | null) => {
@@ -27,57 +68,35 @@ const CollapsedSidebarMenu = function CollapsedSidebarMenu({
     }
   }, []);
   return (
-    <Menu.Root loopFocus={false} {...props}>
-      <Menu.Trigger
-        ref={triggerCallbackRef as React.Ref<HTMLButtonElement>}
-        openOnHover
-        delay={150}
-        render={render}
-      />
-      <StyledPortal container={container}>
-        <Menu.Positioner side="right" align="start" sideOffset={4}>
-          {children}
-        </Menu.Positioner>
-      </StyledPortal>
-    </Menu.Root>
+    <NavigationMenu.Item render={<SidebarMenuItem />}>
+      {tooltip ? (
+        <Tooltip
+          title={tooltip}
+          placement="right"
+          disableHoverListener
+          disableTouchListener
+          slotProps={{
+            popper: {
+              container,
+              sx: {
+                "[data-base-ui-portal] ~ &, &:has(~ [data-base-ui-portal])": {
+                  display: "none",
+                },
+              },
+            },
+          }}
+        >
+          <NavigationMenu.Trigger ref={triggerCallbackRef} render={render} />
+        </Tooltip>
+      ) : (
+        <NavigationMenu.Trigger render={render} />
+      )}
+      <NavigationMenu.Content>{children}</NavigationMenu.Content>
+    </NavigationMenu.Item>
   );
 };
 
-interface CollapsedSidebarSubmenuProps extends Menu.SubmenuRoot.Props {
-  children: React.ReactNode;
-  render: Menu.Trigger.Props["render"];
-}
-
-export const CollapsedSidebarSubmenu = function CollapsedSidebarSubmenu({
-  render,
-  children,
-  ...props
-}: CollapsedSidebarSubmenuProps) {
-  const [container, setContainer] = React.useState<HTMLElement | null>(null);
-  const triggerCallbackRef = React.useCallback((node: HTMLElement | null) => {
-    if (node) {
-      setContainer(node.closest(".EdgeSidebar") as HTMLElement);
-    }
-  }, []);
-  return (
-    <Menu.SubmenuRoot loopFocus={false} {...props}>
-      <Menu.SubmenuTrigger
-        ref={triggerCallbackRef as React.Ref<HTMLButtonElement>}
-        openOnHover
-        delay={150}
-        render={render}
-        nativeButton
-      />
-      <StyledPortal container={container}>
-        <Menu.Positioner side="right" align="start">
-          {children}
-        </Menu.Positioner>
-      </StyledPortal>
-    </Menu.SubmenuRoot>
-  );
-};
-
-const MenuList = styled(SidebarMenu)(({ theme }) => ({
+const MenuPopup = styled(SidebarMenu)(({ theme }) => ({
   "--_collapsed": "var(--__,)",
   "--_uncollapsed": "var(--__)",
   minWidth: 160,
@@ -89,36 +108,32 @@ const MenuList = styled(SidebarMenu)(({ theme }) => ({
   boxShadow: (theme.vars || theme).shadows[1],
 }));
 
-export function CollapsedSidebarMenuPopup({
-  children,
-  ...props
-}: React.ComponentProps<typeof Menu.Popup> & { children: React.ReactNode }) {
-  return (
-    <Menu.Popup render={<MenuList />} {...props}>
-      {children}
-    </Menu.Popup>
-  );
-}
-
 export function CollapsedSidebarMenuItem({
   children,
   ...props
-}: React.ComponentProps<typeof Menu.Item> & { children: React.ReactNode }) {
+}: React.ComponentProps<typeof SidebarMenuButton>) {
   return (
-    <Menu.Item render={<SidebarMenuButton as="div" />} {...props}>
+    <SidebarMenuButton as="div" {...props}>
       {children}
-    </Menu.Item>
+    </SidebarMenuButton>
   );
 }
 
 export function CollapsedSidebarMenuLink({
   children,
+  component,
   ...props
-}: React.ComponentProps<typeof Menu.LinkItem> & { children: React.ReactNode }) {
+}: NavigationMenu.Link.Props & {
+  children: React.ReactNode;
+  component?: React.ElementType;
+}) {
   return (
-    <Menu.LinkItem render={<SidebarMenuButton />} {...props}>
+    <NavigationMenu.Link
+      render={<SidebarMenuButton as={component} />}
+      {...props}
+    >
       {children}
-    </Menu.LinkItem>
+    </NavigationMenu.Link>
   );
 }
 
