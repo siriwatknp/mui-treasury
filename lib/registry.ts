@@ -82,13 +82,12 @@ function loadPublicRegistryData(name: string): Partial<RegistryItem> | null {
     if (fs.existsSync(publicJsonPath)) {
       const content = JSON.parse(fs.readFileSync(publicJsonPath, "utf-8"));
 
-      // Check for .demo.tsx file (handles both .ts and .tsx main files)
       let demoFile:
         | { path: string; content: string; type: string; target?: string }
         | undefined;
       if (content.files && content.files.length > 0) {
-        const mainFilePath = content.files[0].path;
-        const demoFilePath = mainFilePath.replace(/\.tsx?$/, ".demo.tsx");
+        const dir = path.dirname(content.files[0].path);
+        const demoFilePath = path.join(dir, `${name}.demo.tsx`);
         const demoPath = path.join(REGISTRY_DIR, demoFilePath);
         if (fs.existsSync(demoPath)) {
           demoFile = {
