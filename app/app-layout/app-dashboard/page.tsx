@@ -136,7 +136,7 @@ export default function AppDashboardPage() {
       >
         <EdgeDrawerClose />
         <EdgeSidebarContent>
-          <SidebarContainer sx={{ flex: 1, overflow: "auto" }}>
+          <SidebarContainer>
             <CollapsedSidebarMenuRoot>
               <SidebarGroup>
                 <SidebarGroupLabel>Navigation</SidebarGroupLabel>
@@ -183,48 +183,46 @@ export default function AppDashboardPage() {
                             }
                           >
                             <CollapsedSidebarPopupContent>
-                              <SidebarMenu>
-                                <CollapsedSidebarMenuRoot>
-                                  <CollapsedSidebarMenuItem
-                                    render={
-                                      <SidebarMenuButton>
-                                        <SidebarText>Nested Menu</SidebarText>
-                                        <SidebarIcon>
-                                          <ChevronRightRounded />
-                                        </SidebarIcon>
-                                      </SidebarMenuButton>
-                                    }
-                                  >
-                                    <CollapsedSidebarPopupContent>
-                                      <SidebarMenu>
-                                        <SidebarMenuItem>
-                                          <CollapsedSidebarMenuLink
-                                            href="/app-layout/app-analytics"
-                                            component={NextLink}
-                                          >
-                                            Overview
-                                          </CollapsedSidebarMenuLink>
-                                        </SidebarMenuItem>
-                                        <SidebarMenuItem>
-                                          <CollapsedSidebarMenuLink
-                                            href="/app-layout/app-shopping-cart"
-                                            component={NextLink}
-                                          >
-                                            Settings
-                                          </CollapsedSidebarMenuLink>
-                                        </SidebarMenuItem>
-                                      </SidebarMenu>
-                                    </CollapsedSidebarPopupContent>
-                                  </CollapsedSidebarMenuItem>
-                                </CollapsedSidebarMenuRoot>
-                                {item.children.map((child) => (
-                                  <SidebarMenuItem key={child.title}>
-                                    <CollapsedSidebarMenuLink href="#">
-                                      {child.title}
-                                    </CollapsedSidebarMenuLink>
-                                  </SidebarMenuItem>
-                                ))}
-                              </SidebarMenu>
+                              <CollapsedSidebarMenuRoot>
+                                <CollapsedSidebarMenuItem
+                                  render={
+                                    <SidebarMenuButton>
+                                      <SidebarText>Nested Menu</SidebarText>
+                                      <SidebarIcon>
+                                        <ChevronRightRounded />
+                                      </SidebarIcon>
+                                    </SidebarMenuButton>
+                                  }
+                                >
+                                  <CollapsedSidebarPopupContent>
+                                    <SidebarMenu>
+                                      <SidebarMenuItem>
+                                        <CollapsedSidebarMenuLink
+                                          href="/app-layout/app-analytics"
+                                          component={NextLink}
+                                        >
+                                          Overview
+                                        </CollapsedSidebarMenuLink>
+                                      </SidebarMenuItem>
+                                      <SidebarMenuItem>
+                                        <CollapsedSidebarMenuLink
+                                          href="/app-layout/app-shopping-cart"
+                                          component={NextLink}
+                                        >
+                                          Settings
+                                        </CollapsedSidebarMenuLink>
+                                      </SidebarMenuItem>
+                                    </SidebarMenu>
+                                  </CollapsedSidebarPopupContent>
+                                </CollapsedSidebarMenuItem>
+                              </CollapsedSidebarMenuRoot>
+                              {item.children.map((child) => (
+                                <SidebarMenuItem key={child.title}>
+                                  <CollapsedSidebarMenuLink href="#">
+                                    {child.title}
+                                  </CollapsedSidebarMenuLink>
+                                </SidebarMenuItem>
+                              ))}
                             </CollapsedSidebarPopupContent>
                           </CollapsedSidebarMenuItem>
                         )}
