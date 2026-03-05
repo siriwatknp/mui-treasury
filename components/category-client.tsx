@@ -51,14 +51,23 @@ const ComponentPreviewContent = React.memo(
         const componentPath = item.path.replace(".tsx", "");
         return dynamic(
           () =>
-            // First try to import .demo version
             import(`@/registry/${componentPath}.demo`)
               .catch(() => {
-                // If .demo doesn't exist, try the original path
                 return import(`@/registry/${componentPath}`);
               })
+              .then((mod) => {
+                if (mod && mod.default) return mod;
+                return {
+                  default: function NoDefaultExport() {
+                    return (
+                      <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+                        <span className="text-sm">Preview unavailable</span>
+                      </div>
+                    );
+                  },
+                };
+              })
               .catch(() => {
-                // Return a fallback component for failed imports
                 return {
                   default: function FallbackComponent() {
                     return (

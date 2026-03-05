@@ -33,16 +33,18 @@ export default function CollapsibleContentDemo() {
               <SidebarMenuItem>
                 <CollapsibleTrigger
                   defaultChecked
-                  component={SidebarMenuButton}
-                >
-                  <SidebarIcon>
-                    <HomeRounded />
-                  </SidebarIcon>
-                  <SidebarText>Home</SidebarText>
-                  <CollapsibleIcon>
-                    <ExpandMoreRounded />
-                  </CollapsibleIcon>
-                </CollapsibleTrigger>
+                  render={
+                    <SidebarMenuButton>
+                      <SidebarIcon>
+                        <HomeRounded />
+                      </SidebarIcon>
+                      <SidebarText>Home</SidebarText>
+                      <CollapsibleIcon>
+                        <ExpandMoreRounded />
+                      </CollapsibleIcon>
+                    </SidebarMenuButton>
+                  }
+                />
                 <CollapsibleContent>
                   <div>
                     <SidebarMenu nested>
@@ -94,12 +96,14 @@ export default function CollapsibleContentDemo() {
                 </SidebarMenuButton>
                 <CollapsibleTrigger
                   defaultChecked
-                  component={SidebarMenuAction}
-                >
-                  <CollapsibleIcon>
-                    <ExpandMoreRounded />
-                  </CollapsibleIcon>
-                </CollapsibleTrigger>
+                  render={
+                    <SidebarMenuAction>
+                      <CollapsibleIcon>
+                        <ExpandMoreRounded />
+                      </CollapsibleIcon>
+                    </SidebarMenuAction>
+                  }
+                />
                 <CollapsibleContent>
                   <div>
                     <SidebarMenu nested>

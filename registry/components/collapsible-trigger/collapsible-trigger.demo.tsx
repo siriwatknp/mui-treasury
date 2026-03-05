@@ -21,15 +21,20 @@ export default function CollapsibleTriggerDemo() {
         <SidebarGroup>
           <SidebarMenu>
             <SidebarMenuItem>
-              <CollapsibleTrigger defaultChecked component={SidebarMenuButton}>
-                <SidebarIcon>
-                  <FolderRounded />
-                </SidebarIcon>
-                <SidebarText>Projects</SidebarText>
-                <CollapsibleIcon>
-                  <ExpandMoreRounded />
-                </CollapsibleIcon>
-              </CollapsibleTrigger>
+              <CollapsibleTrigger
+                defaultChecked
+                render={
+                  <SidebarMenuButton>
+                    <SidebarIcon>
+                      <FolderRounded />
+                    </SidebarIcon>
+                    <SidebarText>Projects</SidebarText>
+                    <CollapsibleIcon>
+                      <ExpandMoreRounded />
+                    </CollapsibleIcon>
+                  </SidebarMenuButton>
+                }
+              />
               <CollapsibleContent>
                 <div>
                   <SidebarMenu nested>
@@ -54,15 +59,19 @@ export default function CollapsibleTriggerDemo() {
               </CollapsibleContent>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <CollapsibleTrigger component={SidebarMenuButton}>
-                <SidebarIcon>
-                  <FolderRounded />
-                </SidebarIcon>
-                <SidebarText>Archive</SidebarText>
-                <CollapsibleIcon>
-                  <ExpandMoreRounded />
-                </CollapsibleIcon>
-              </CollapsibleTrigger>
+              <CollapsibleTrigger
+                render={
+                  <SidebarMenuButton>
+                    <SidebarIcon>
+                      <FolderRounded />
+                    </SidebarIcon>
+                    <SidebarText>Archive</SidebarText>
+                    <CollapsibleIcon>
+                      <ExpandMoreRounded />
+                    </CollapsibleIcon>
+                  </SidebarMenuButton>
+                }
+              />
               <CollapsibleContent>
                 <div>
                   <SidebarMenu nested>
