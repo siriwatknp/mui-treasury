@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import SidebarContainer from "../sidebar-container/sidebar-container";
 import SidebarGroup from "../sidebar-group/sidebar-group";
-import SidebarMenu from "../sidebar-menu/sidebar-menu";
+import SidebarMenuList from "../sidebar-menu/sidebar-menu-list";
 import SidebarMenuItem from "../sidebar-menu-item/sidebar-menu-item";
 import SidebarMenuButton from "../sidebar-menu-button/sidebar-menu-button";
 import SidebarIcon from "../sidebar-icon/sidebar-icon";
@@ -25,7 +25,7 @@ export default function CollapsibleIconDemo() {
         </Typography>
         <SidebarContainer>
           <SidebarGroup>
-            <SidebarMenu>
+            <SidebarMenuList>
               <SidebarMenuItem>
                 <CollapsibleTrigger
                   defaultChecked
@@ -43,7 +43,7 @@ export default function CollapsibleIconDemo() {
                 />
                 <CollapsibleContent>
                   <div>
-                    <SidebarMenu nested>
+                    <SidebarMenuList nested>
                       <SidebarMenuItem>
                         <SidebarMenuButton>
                           <SidebarText>File A</SidebarText>
@@ -54,11 +54,11 @@ export default function CollapsibleIconDemo() {
                           <SidebarText>File B</SidebarText>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
-                    </SidebarMenu>
+                    </SidebarMenuList>
                   </div>
                 </CollapsibleContent>
               </SidebarMenuItem>
-            </SidebarMenu>
+            </SidebarMenuList>
           </SidebarGroup>
         </SidebarContainer>
       </div>
@@ -68,7 +68,7 @@ export default function CollapsibleIconDemo() {
         </Typography>
         <SidebarContainer>
           <SidebarGroup>
-            <SidebarMenu>
+            <SidebarMenuList>
               <SidebarMenuItem>
                 <CollapsibleTrigger
                   defaultChecked
@@ -86,7 +86,7 @@ export default function CollapsibleIconDemo() {
                 />
                 <CollapsibleContent>
                   <div>
-                    <SidebarMenu nested>
+                    <SidebarMenuList nested>
                       <SidebarMenuItem>
                         <SidebarMenuButton>
                           <SidebarText>Project X</SidebarText>
@@ -97,11 +97,11 @@ export default function CollapsibleIconDemo() {
                           <SidebarText>Project Y</SidebarText>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
-                    </SidebarMenu>
+                    </SidebarMenuList>
                   </div>
                 </CollapsibleContent>
               </SidebarMenuItem>
-            </SidebarMenu>
+            </SidebarMenuList>
           </SidebarGroup>
         </SidebarContainer>
       </div>

@@ -16,6 +16,9 @@ const StyledSidebarContainer = styled("div", {
     containerType: "inline-size",
     display: "flex",
     flexDirection: "column",
+    flex: 1,
+    minHeight: 0,
+    overflowY: "auto",
     "--_collapsed": "var(--_)",
     "--_uncollapsed": "var(--__,)", // workaround to use fallback, Emotion strips out spaces if the value is " ".
     variants: [

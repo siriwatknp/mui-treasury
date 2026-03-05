@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import SidebarContainer from "./sidebar-container";
 import SidebarGroup from "../sidebar-group/sidebar-group";
 import SidebarGroupLabel from "../sidebar-group-label/sidebar-group-label";
-import SidebarMenu from "../sidebar-menu/sidebar-menu";
+import SidebarMenuList from "../sidebar-menu/sidebar-menu-list";
 import SidebarMenuItem from "../sidebar-menu-item/sidebar-menu-item";
 import SidebarMenuButton from "../sidebar-menu-button/sidebar-menu-button";
 import SidebarIcon from "../sidebar-icon/sidebar-icon";
@@ -27,7 +27,7 @@ export default function SidebarContainerDemo() {
         <SidebarContainer>
           <SidebarGroup>
             <SidebarGroupLabel>Expanded</SidebarGroupLabel>
-            <SidebarMenu>
+            <SidebarMenuList>
               <SidebarMenuItem>
                 <SidebarMenuButton active>
                   <SidebarIcon>
@@ -52,7 +52,7 @@ export default function SidebarContainerDemo() {
                   <SidebarText>Settings</SidebarText>
                 </SidebarMenuButton>
               </SidebarMenuItem>
-            </SidebarMenu>
+            </SidebarMenuList>
           </SidebarGroup>
         </SidebarContainer>
       </Box>
@@ -62,7 +62,7 @@ export default function SidebarContainerDemo() {
         <SidebarContainer>
           <SidebarGroup>
             <SidebarGroupLabel>Collapsed</SidebarGroupLabel>
-            <SidebarMenu>
+            <SidebarMenuList>
               <SidebarMenuItem>
                 <SidebarMenuButton active>
                   <SidebarIcon>
@@ -87,7 +87,7 @@ export default function SidebarContainerDemo() {
                   <SidebarText>Settings</SidebarText>
                 </SidebarMenuButton>
               </SidebarMenuItem>
-            </SidebarMenu>
+            </SidebarMenuList>
           </SidebarGroup>
         </SidebarContainer>
       </Box>

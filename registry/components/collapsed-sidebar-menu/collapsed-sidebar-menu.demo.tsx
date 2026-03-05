@@ -3,13 +3,13 @@ import ChevronRightRounded from "@mui/icons-material/ChevronRightRounded";
 import FolderRounded from "@mui/icons-material/FolderRounded";
 import BarChartRounded from "@mui/icons-material/BarChartRounded";
 import SidebarContainer from "../sidebar-container/sidebar-container";
-import SidebarMenu from "../sidebar-menu/sidebar-menu";
+import SidebarMenuList from "../sidebar-menu/sidebar-menu-list";
 import SidebarMenuItem from "../sidebar-menu-item/sidebar-menu-item";
 import SidebarMenuButton from "../sidebar-menu-button/sidebar-menu-button";
 import SidebarIcon from "../sidebar-icon/sidebar-icon";
 import SidebarText from "../sidebar-text/sidebar-text";
 import {
-  CollapsedSidebarMenuRoot,
+  CollapsedSidebarMenuList,
   CollapsedSidebarMenuItem,
   CollapsedSidebarMenuLink,
   CollapsedSidebarPopupContent,
@@ -19,7 +19,7 @@ export default function CollapsedSidebarMenuDemo() {
   return (
     <div style={{ width: 36 }}>
       <SidebarContainer>
-        <CollapsedSidebarMenuRoot>
+        <CollapsedSidebarMenuList>
           {/* 1 nested level */}
           <CollapsedSidebarMenuItem
             tooltip="Projects"
@@ -33,7 +33,7 @@ export default function CollapsedSidebarMenuDemo() {
             }
           >
             <CollapsedSidebarPopupContent>
-              <SidebarMenu>
+              <SidebarMenuList>
                 <SidebarMenuItem>
                   <CollapsedSidebarMenuLink href="#">
                     Design System
@@ -44,7 +44,7 @@ export default function CollapsedSidebarMenuDemo() {
                     Landing Page
                   </CollapsedSidebarMenuLink>
                 </SidebarMenuItem>
-              </SidebarMenu>
+              </SidebarMenuList>
             </CollapsedSidebarPopupContent>
           </CollapsedSidebarMenuItem>
 
@@ -61,8 +61,8 @@ export default function CollapsedSidebarMenuDemo() {
             }
           >
             <CollapsedSidebarPopupContent>
-              <SidebarMenu>
-                <CollapsedSidebarMenuRoot>
+              <SidebarMenuList>
+                <CollapsedSidebarMenuList>
                   <CollapsedSidebarMenuItem
                     render={
                       <SidebarMenuButton>
@@ -74,7 +74,7 @@ export default function CollapsedSidebarMenuDemo() {
                     }
                   >
                     <CollapsedSidebarPopupContent>
-                      <SidebarMenu>
+                      <SidebarMenuList>
                         <SidebarMenuItem>
                           <CollapsedSidebarMenuLink href="#">
                             Overview
@@ -85,19 +85,19 @@ export default function CollapsedSidebarMenuDemo() {
                             Details
                           </CollapsedSidebarMenuLink>
                         </SidebarMenuItem>
-                      </SidebarMenu>
+                      </SidebarMenuList>
                     </CollapsedSidebarPopupContent>
                   </CollapsedSidebarMenuItem>
-                </CollapsedSidebarMenuRoot>
+                </CollapsedSidebarMenuList>
                 <SidebarMenuItem>
                   <CollapsedSidebarMenuLink href="#">
                     Dashboard
                   </CollapsedSidebarMenuLink>
                 </SidebarMenuItem>
-              </SidebarMenu>
+              </SidebarMenuList>
             </CollapsedSidebarPopupContent>
           </CollapsedSidebarMenuItem>
-        </CollapsedSidebarMenuRoot>
+        </CollapsedSidebarMenuList>
       </SidebarContainer>
     </div>
   );

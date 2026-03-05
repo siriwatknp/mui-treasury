@@ -1,3 +1,3 @@
 export const sidebarMenuClasses = {
-  root: "SidebarMenu",
+  root: "SidebarMenuList",
 };

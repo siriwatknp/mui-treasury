@@ -2,7 +2,7 @@
 
 import SidebarContainer from "../sidebar-container/sidebar-container";
 import SidebarGroup from "../sidebar-group/sidebar-group";
-import SidebarMenu from "../sidebar-menu/sidebar-menu";
+import SidebarMenuList from "../sidebar-menu/sidebar-menu-list";
 import SidebarMenuItem from "../sidebar-menu-item/sidebar-menu-item";
 import SidebarMenuButton from "../sidebar-menu-button/sidebar-menu-button";
 import SidebarIcon from "./sidebar-icon";
@@ -16,7 +16,7 @@ export default function SidebarIconDemo() {
     <div style={{ width: 240 }}>
       <SidebarContainer>
         <SidebarGroup>
-          <SidebarMenu>
+          <SidebarMenuList>
             <SidebarMenuItem>
               <SidebarMenuButton active>
                 <SidebarIcon>
@@ -41,7 +41,7 @@ export default function SidebarIconDemo() {
                 <SidebarText>Settings</SidebarText>
               </SidebarMenuButton>
             </SidebarMenuItem>
-          </SidebarMenu>
+          </SidebarMenuList>
         </SidebarGroup>
       </SidebarContainer>
     </div>

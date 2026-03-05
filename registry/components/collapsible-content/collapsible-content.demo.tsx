@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import SidebarContainer from "../sidebar-container/sidebar-container";
 import SidebarGroup from "../sidebar-group/sidebar-group";
-import SidebarMenu from "../sidebar-menu/sidebar-menu";
+import SidebarMenuList from "../sidebar-menu/sidebar-menu-list";
 import SidebarMenuItem from "../sidebar-menu-item/sidebar-menu-item";
 import SidebarMenuButton from "../sidebar-menu-button/sidebar-menu-button";
 import SidebarMenuAction from "../sidebar-menu-action/sidebar-menu-action";
@@ -29,7 +29,7 @@ export default function CollapsibleContentDemo() {
         </Typography>
         <SidebarContainer>
           <SidebarGroup>
-            <SidebarMenu>
+            <SidebarMenuList>
               <SidebarMenuItem>
                 <CollapsibleTrigger
                   defaultChecked
@@ -47,7 +47,7 @@ export default function CollapsibleContentDemo() {
                 />
                 <CollapsibleContent>
                   <div>
-                    <SidebarMenu nested>
+                    <SidebarMenuList nested>
                       <SidebarMenuItem>
                         <SidebarMenuButton>
                           <SidebarIcon>
@@ -72,11 +72,11 @@ export default function CollapsibleContentDemo() {
                           <SidebarText>Settings</SidebarText>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
-                    </SidebarMenu>
+                    </SidebarMenuList>
                   </div>
                 </CollapsibleContent>
               </SidebarMenuItem>
-            </SidebarMenu>
+            </SidebarMenuList>
           </SidebarGroup>
         </SidebarContainer>
       </div>
@@ -86,7 +86,7 @@ export default function CollapsibleContentDemo() {
         </Typography>
         <SidebarContainer>
           <SidebarGroup>
-            <SidebarMenu>
+            <SidebarMenuList>
               <SidebarMenuItem>
                 <SidebarMenuButton>
                   <SidebarIcon>
@@ -106,7 +106,7 @@ export default function CollapsibleContentDemo() {
                 />
                 <CollapsibleContent>
                   <div>
-                    <SidebarMenu nested>
+                    <SidebarMenuList nested>
                       <SidebarMenuItem>
                         <SidebarMenuButton>
                           <SidebarIcon>
@@ -129,11 +129,11 @@ export default function CollapsibleContentDemo() {
                           <MoreVertRounded />
                         </SidebarMenuAction>
                       </SidebarMenuItem>
-                    </SidebarMenu>
+                    </SidebarMenuList>
                   </div>
                 </CollapsibleContent>
               </SidebarMenuItem>
-            </SidebarMenu>
+            </SidebarMenuList>
           </SidebarGroup>
         </SidebarContainer>
       </div>

@@ -14,8 +14,8 @@ interface SidebarMenuProps {
   noLine?: boolean;
 }
 
-const StyledSidebarMenu = styled("div", {
-  name: "SidebarMenu",
+const StyledSidebarMenuList = styled("div", {
+  name: "SidebarMenuList",
   slot: "root",
 })<{ ownerState: SidebarMenuProps }>(
   {
@@ -73,17 +73,23 @@ const StyledSidebarMenu = styled("div", {
   })),
 );
 
-const SidebarMenu = React.forwardRef<
+const SidebarMenuList = React.forwardRef<
   HTMLDivElement,
-  Omit<React.ComponentPropsWithoutRef<typeof StyledSidebarMenu>, "ownerState"> &
+  Omit<
+    React.ComponentPropsWithoutRef<typeof StyledSidebarMenuList>,
+    "ownerState"
+  > &
     SidebarMenuProps
->(function SidebarMenu({ className, relaxed, nested, noLine, ...props }, ref) {
+>(function SidebarMenuList(
+  { className, relaxed, nested, noLine, ...props },
+  ref,
+) {
   const ownerState = useMemo(
     () => ({ relaxed, nested, noLine }),
     [relaxed, nested, noLine],
   );
   return (
-    <StyledSidebarMenu
+    <StyledSidebarMenuList
       ref={ref}
       className={`${sidebarMenuClasses.root} ${className || ""}`}
       ownerState={ownerState}
@@ -92,4 +98,4 @@ const SidebarMenu = React.forwardRef<
   );
 });
 
-export default SidebarMenu;
+export default SidebarMenuList;

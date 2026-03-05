@@ -3,7 +3,7 @@
 import Box from "@mui/material/Box";
 import SidebarContainer from "../sidebar-container/sidebar-container";
 import SidebarGroup from "../sidebar-group/sidebar-group";
-import SidebarMenu from "../sidebar-menu/sidebar-menu";
+import SidebarMenuList from "../sidebar-menu/sidebar-menu-list";
 import SidebarMenuItem from "../sidebar-menu-item/sidebar-menu-item";
 import SidebarMenuButton from "../sidebar-menu-button/sidebar-menu-button";
 import SidebarIcon from "../sidebar-icon/sidebar-icon";
@@ -25,7 +25,7 @@ export default function SidebarRailDemo() {
     >
       <SidebarContainer>
         <SidebarGroup>
-          <SidebarMenu>
+          <SidebarMenuList>
             <SidebarMenuItem>
               <SidebarMenuButton>
                 <SidebarIcon>
@@ -42,7 +42,7 @@ export default function SidebarRailDemo() {
                 <SidebarText>Search</SidebarText>
               </SidebarMenuButton>
             </SidebarMenuItem>
-          </SidebarMenu>
+          </SidebarMenuList>
         </SidebarGroup>
       </SidebarContainer>
       <SidebarRail />

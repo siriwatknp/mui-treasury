@@ -35,7 +35,7 @@ import { EdgeDrawerClose } from "@/registry/layout/layout-core";
 import SidebarContainer from "@/registry/components/sidebar-container/sidebar-container";
 import SidebarGroup from "@/registry/components/sidebar-group/sidebar-group";
 import SidebarGroupLabel from "@/registry/components/sidebar-group-label/sidebar-group-label";
-import SidebarMenu from "@/registry/components/sidebar-menu/sidebar-menu";
+import SidebarMenuList from "@/registry/components/sidebar-menu/sidebar-menu-list";
 import SidebarMenuItem from "@/registry/components/sidebar-menu-item/sidebar-menu-item";
 import SidebarMenuButton from "@/registry/components/sidebar-menu-button/sidebar-menu-button";
 import SidebarIcon from "@/registry/components/sidebar-icon/sidebar-icon";
@@ -44,7 +44,7 @@ import SidebarRail from "@/registry/components/sidebar-rail/sidebar-rail";
 import CollapsibleTrigger from "@/registry/components/collapsible-trigger/collapsible-trigger";
 import CollapsibleContent from "@/registry/components/collapsible-content/collapsible-content";
 import {
-  CollapsedSidebarMenuRoot,
+  CollapsedSidebarMenuList,
   CollapsedSidebarMenuItem,
   CollapsedSidebarMenuLink,
   CollapsedSidebarPopupContent,
@@ -137,10 +137,10 @@ export default function AppDashboardPage() {
         <EdgeDrawerClose />
         <EdgeSidebarContent>
           <SidebarContainer>
-            <CollapsedSidebarMenuRoot>
+            <CollapsedSidebarMenuList>
               <SidebarGroup>
                 <SidebarGroupLabel>Navigation</SidebarGroupLabel>
-                <SidebarMenu>
+                <SidebarMenuList>
                   {menus.map((item) => {
                     const Icon = item.icon;
                     return (
@@ -160,12 +160,12 @@ export default function AppDashboardPage() {
                       />
                     );
                   })}
-                </SidebarMenu>
+                </SidebarMenuList>
               </SidebarGroup>
 
               <SidebarGroup>
                 <SidebarGroupLabel>Workspace</SidebarGroupLabel>
-                <SidebarMenu>
+                <SidebarMenuList>
                   {nestedMenus.map((item) => {
                     const Icon = item.icon;
                     return (
@@ -183,7 +183,7 @@ export default function AppDashboardPage() {
                             }
                           >
                             <CollapsedSidebarPopupContent>
-                              <CollapsedSidebarMenuRoot>
+                              <CollapsedSidebarMenuList>
                                 <CollapsedSidebarMenuItem
                                   render={
                                     <SidebarMenuButton>
@@ -195,7 +195,7 @@ export default function AppDashboardPage() {
                                   }
                                 >
                                   <CollapsedSidebarPopupContent>
-                                    <SidebarMenu>
+                                    <SidebarMenuList>
                                       <SidebarMenuItem>
                                         <CollapsedSidebarMenuLink
                                           href="/app-layout/app-analytics"
@@ -212,10 +212,10 @@ export default function AppDashboardPage() {
                                           Settings
                                         </CollapsedSidebarMenuLink>
                                       </SidebarMenuItem>
-                                    </SidebarMenu>
+                                    </SidebarMenuList>
                                   </CollapsedSidebarPopupContent>
                                 </CollapsedSidebarMenuItem>
-                              </CollapsedSidebarMenuRoot>
+                              </CollapsedSidebarMenuList>
                               {item.children.map((child) => (
                                 <SidebarMenuItem key={child.title}>
                                   <CollapsedSidebarMenuLink href="#">
@@ -247,7 +247,7 @@ export default function AppDashboardPage() {
                             />
                             <CollapsibleContent>
                               <div>
-                                <SidebarMenu nested>
+                                <SidebarMenuList nested>
                                   <SidebarMenuItem>
                                     <CollapsibleTrigger
                                       render={
@@ -264,7 +264,7 @@ export default function AppDashboardPage() {
                                     />
                                     <CollapsibleContent>
                                       <div>
-                                        <SidebarMenu nested>
+                                        <SidebarMenuList nested>
                                           <SidebarMenuItem>
                                             <SidebarMenuButton>
                                               <SidebarText>
@@ -279,7 +279,7 @@ export default function AppDashboardPage() {
                                               </SidebarText>
                                             </SidebarMenuButton>
                                           </SidebarMenuItem>
-                                        </SidebarMenu>
+                                        </SidebarMenuList>
                                       </div>
                                     </CollapsibleContent>
                                   </SidebarMenuItem>
@@ -290,7 +290,7 @@ export default function AppDashboardPage() {
                                       </SidebarMenuButton>
                                     </SidebarMenuItem>
                                   ))}
-                                </SidebarMenu>
+                                </SidebarMenuList>
                               </div>
                             </CollapsibleContent>
                           </SidebarMenuItem>
@@ -298,13 +298,13 @@ export default function AppDashboardPage() {
                       </React.Fragment>
                     );
                   })}
-                </SidebarMenu>
+                </SidebarMenuList>
               </SidebarGroup>
-            </CollapsedSidebarMenuRoot>
+            </CollapsedSidebarMenuList>
           </SidebarContainer>
           <Box sx={{ mt: "auto", borderTop: 1, borderColor: "divider" }}>
             <SidebarGroup>
-              <SidebarMenu>
+              <SidebarMenuList>
                 <SidebarMenuItem>
                   <SidebarMenuButton
                     className={layoutClasses.EdgeSidebarCollapser}
@@ -323,7 +323,7 @@ export default function AppDashboardPage() {
                     <SidebarText>Collapse</SidebarText>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
-              </SidebarMenu>
+              </SidebarMenuList>
             </SidebarGroup>
           </Box>
         </EdgeSidebarContent>

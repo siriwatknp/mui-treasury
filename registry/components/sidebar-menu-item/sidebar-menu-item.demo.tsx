@@ -2,7 +2,7 @@
 
 import SidebarContainer from "../sidebar-container/sidebar-container";
 import SidebarGroup from "../sidebar-group/sidebar-group";
-import SidebarMenu from "../sidebar-menu/sidebar-menu";
+import SidebarMenuList from "../sidebar-menu/sidebar-menu-list";
 import SidebarMenuItem from "./sidebar-menu-item";
 import SidebarMenuButton from "../sidebar-menu-button/sidebar-menu-button";
 import SidebarMenuAction from "../sidebar-menu-action/sidebar-menu-action";
@@ -17,7 +17,7 @@ export default function SidebarMenuItemDemo() {
     <div style={{ width: 240 }}>
       <SidebarContainer>
         <SidebarGroup>
-          <SidebarMenu>
+          <SidebarMenuList>
             <SidebarMenuItem>
               <SidebarMenuButton active>
                 <SidebarIcon>
@@ -40,7 +40,7 @@ export default function SidebarMenuItemDemo() {
                 <MoreHorizRounded />
               </SidebarMenuAction>
             </SidebarMenuItem>
-          </SidebarMenu>
+          </SidebarMenuList>
         </SidebarGroup>
       </SidebarContainer>
     </div>

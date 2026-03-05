@@ -2,7 +2,7 @@
 
 import SidebarContainer from "../sidebar-container/sidebar-container";
 import SidebarGroup from "../sidebar-group/sidebar-group";
-import SidebarMenu from "../sidebar-menu/sidebar-menu";
+import SidebarMenuList from "../sidebar-menu/sidebar-menu-list";
 import SidebarMenuItem from "../sidebar-menu-item/sidebar-menu-item";
 import SidebarMenuButton from "../sidebar-menu-button/sidebar-menu-button";
 import SidebarIcon from "../sidebar-icon/sidebar-icon";
@@ -19,7 +19,7 @@ export default function CollapsibleTriggerDemo() {
     <div style={{ width: 240 }}>
       <SidebarContainer>
         <SidebarGroup>
-          <SidebarMenu>
+          <SidebarMenuList>
             <SidebarMenuItem>
               <CollapsibleTrigger
                 defaultChecked
@@ -37,7 +37,7 @@ export default function CollapsibleTriggerDemo() {
               />
               <CollapsibleContent>
                 <div>
-                  <SidebarMenu nested>
+                  <SidebarMenuList nested>
                     <SidebarMenuItem>
                       <SidebarMenuButton>
                         <SidebarIcon>
@@ -54,7 +54,7 @@ export default function CollapsibleTriggerDemo() {
                         <SidebarText>Mobile App</SidebarText>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
-                  </SidebarMenu>
+                  </SidebarMenuList>
                 </div>
               </CollapsibleContent>
             </SidebarMenuItem>
@@ -74,17 +74,17 @@ export default function CollapsibleTriggerDemo() {
               />
               <CollapsibleContent>
                 <div>
-                  <SidebarMenu nested>
+                  <SidebarMenuList nested>
                     <SidebarMenuItem>
                       <SidebarMenuButton>
                         <SidebarText>Old Projects</SidebarText>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
-                  </SidebarMenu>
+                  </SidebarMenuList>
                 </div>
               </CollapsibleContent>
             </SidebarMenuItem>
-          </SidebarMenu>
+          </SidebarMenuList>
         </SidebarGroup>
       </SidebarContainer>
     </div>

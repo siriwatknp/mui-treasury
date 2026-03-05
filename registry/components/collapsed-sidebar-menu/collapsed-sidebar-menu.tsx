@@ -2,7 +2,7 @@
 import React from "react";
 import { NavigationMenu } from "@base-ui/react/navigation-menu";
 import SidebarMenuButton from "../sidebar-menu-button/sidebar-menu-button";
-import SidebarMenu from "../sidebar-menu/sidebar-menu";
+import SidebarMenuList from "../sidebar-menu/sidebar-menu-list";
 import { styled } from "@mui/material/styles";
 import SidebarMenuItem from "../sidebar-menu-item/sidebar-menu-item";
 import SidebarTooltip from "../sidebar-tooltip/sidebar-tooltip";
@@ -18,7 +18,7 @@ const StyledPortal = styled(NavigationMenu.Portal)({
   zIndex: 1300,
 });
 
-export function CollapsedSidebarMenuRoot({
+export function CollapsedSidebarMenuList({
   children,
   sidebarSide = "left",
   ...props
@@ -38,7 +38,7 @@ export function CollapsedSidebarMenuRoot({
     <NavigationMenu.Root orientation="vertical" {...props}>
       <NavigationMenu.List
         ref={triggerCallbackRef as React.Ref<HTMLUListElement>}
-        render={<SidebarMenu />}
+        render={<SidebarMenuList />}
       >
         {children}
       </NavigationMenu.List>
@@ -101,7 +101,7 @@ export function CollapsedSidebarPopupContent({
   );
 }
 
-const MenuPopup = styled(SidebarMenu)(({ theme }) => ({
+const MenuPopup = styled(SidebarMenuList)(({ theme }) => ({
   "--_collapsed": "var(--__,)",
   "--_uncollapsed": "var(--__)",
   minWidth: 160,
