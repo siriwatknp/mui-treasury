@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { Breakpoint } from "@mui/material/styles";
 import { styled } from "@mui/material/styles";
 import { layoutAttrs } from "./layoutAttrs";
@@ -114,6 +115,61 @@ export function internalToggleSidebar(options: {
       sidebar.style.setProperty("--jun-ES-drawerOpen", "");
     }
   }
+}
+
+/**
+ * Observes the EdgeSidebar width and returns whether it is collapsed.
+ *
+ * @param edgeSidebarId - The `id` of the EdgeSidebar element to observe.
+ * @param options.collapsedDelay - Delay in ms before setting collapsed to `true`. Defaults to 200.
+ * @param options.uncollapsedDelay - Delay in ms before setting collapsed to `false`. Defaults to 200.
+ * @returns `undefined` before the first measurement, then `true` if collapsed or `false` if expanded.
+ */
+export function useCollapsedSidebar(
+  edgeSidebarId: string,
+  options?: { collapsedDelay?: number; uncollapsedDelay?: number },
+) {
+  const { collapsedDelay = 300, uncollapsedDelay = 0 } = options || {};
+  const [collapsed, setCollapsed] = React.useState<boolean | undefined>(
+    undefined,
+  );
+
+  React.useEffect(() => {
+    const edgeSidebar = document.getElementById(edgeSidebarId);
+    if (!edgeSidebar) return;
+
+    const cssVar = edgeSidebar.classList.contains(
+      layoutClasses.EdgeSidebarRight,
+    )
+      ? "--jun-ESR-collapsedWidth"
+      : "--jun-ES-collapsedWidth";
+
+    const content = edgeSidebar.querySelector(
+      `.${layoutClasses.EdgeSidebarContent}`,
+    );
+    if (!content) return;
+
+    let timeoutId: ReturnType<typeof setTimeout>;
+    const ro = new ResizeObserver(() => {
+      const width = content.getBoundingClientRect().width;
+      const collapsedWidth =
+        parseFloat(getComputedStyle(edgeSidebar).getPropertyValue(cssVar)) || 0;
+      const next = width <= collapsedWidth;
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(
+        () => setCollapsed(next),
+        next ? collapsedDelay : uncollapsedDelay,
+      );
+    });
+    ro.observe(content);
+
+    return () => {
+      clearTimeout(timeoutId);
+      ro.disconnect();
+    };
+  }, [edgeSidebarId, collapsedDelay, uncollapsedDelay]);
+
+  return collapsed;
 }
 
 export const EdgeSidebarRoot = styled("div")({

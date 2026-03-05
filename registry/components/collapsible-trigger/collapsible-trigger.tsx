@@ -28,7 +28,9 @@ const CollapsibleTrigger = function CollapsibleTrigger({
   CollapsibleTriggerProps) {
   return React.cloneElement(render as React.ReactElement, {
     // @ts-expect-error to allow passing props to non-HTML element for flexibility, e.g. SidebarMenuButton
-    as: "label",
+    component: "label",
+    role: undefined, // to prevent the custom role on rendered element.
+    tabIndex: -1, // to prevent focus on the label element, focus should be on the input element for accessibility
     defaultChecked,
     _before: (
       <ScreenReaderInput type="checkbox" defaultChecked={defaultChecked} />

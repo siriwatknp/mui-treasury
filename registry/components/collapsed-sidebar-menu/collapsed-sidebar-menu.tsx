@@ -5,13 +5,11 @@ import SidebarMenuButton from "../sidebar-menu-button/sidebar-menu-button";
 import SidebarMenu from "../sidebar-menu/sidebar-menu";
 import { styled } from "@mui/material/styles";
 import SidebarMenuItem from "../sidebar-menu-item/sidebar-menu-item";
-import Tooltip from "@mui/material/Tooltip";
+import SidebarTooltip from "../sidebar-tooltip/sidebar-tooltip";
 
-interface CollapsedSidebarMenuProps extends Omit<
-  NavigationMenu.Root.Props,
-  "children"
-> {
-  children: React.ReactNode;
+interface CollapsedSidebarMenuProps
+  extends Omit<NavigationMenu.Root.Props, "children"> {
+  children?: React.ReactNode;
   render: NavigationMenu.Trigger.Props["render"];
   tooltip?: React.ReactNode;
 }
@@ -32,12 +30,7 @@ export function CollapsedSidebarMenuRoot({
     }
   }, []);
   return (
-    <NavigationMenu.Root
-      orientation="vertical"
-      delay={150}
-      closeDelay={150}
-      {...props}
-    >
+    <NavigationMenu.Root orientation="vertical" {...props}>
       <NavigationMenu.List
         ref={triggerCallbackRef as React.Ref<HTMLUListElement>}
         render={<SidebarMenu />}
@@ -56,28 +49,21 @@ export function CollapsedSidebarMenuRoot({
   );
 }
 
-const CollapsedSidebarMenu = function CollapsedSidebarMenu({
+export const CollapsedSidebarMenuItem = function CollapsedSidebarMenu({
   render,
   children,
   tooltip,
 }: CollapsedSidebarMenuProps) {
-  const [container, setContainer] = React.useState<HTMLElement | null>(null);
-  const triggerCallbackRef = React.useCallback((node: HTMLElement | null) => {
-    if (node) {
-      setContainer(node.closest(".EdgeSidebar") as HTMLElement);
-    }
-  }, []);
   return (
     <NavigationMenu.Item render={<SidebarMenuItem />}>
       {tooltip ? (
-        <Tooltip
+        <SidebarTooltip
           title={tooltip}
           placement="right"
-          disableHoverListener
           disableTouchListener
+          disableHoverListener={!!children}
           slotProps={{
             popper: {
-              container,
               sx: {
                 "[data-base-ui-portal] ~ &, &:has(~ [data-base-ui-portal])": {
                   display: "none",
@@ -86,12 +72,14 @@ const CollapsedSidebarMenu = function CollapsedSidebarMenu({
             },
           }}
         >
-          <NavigationMenu.Trigger ref={triggerCallbackRef} render={render} />
-        </Tooltip>
+          <NavigationMenu.Trigger render={render} />
+        </SidebarTooltip>
       ) : (
         <NavigationMenu.Trigger render={render} />
       )}
-      <NavigationMenu.Content>{children}</NavigationMenu.Content>
+      <NavigationMenu.Content className="CollapsedSidebarMenuContent">
+        {children}
+      </NavigationMenu.Content>
     </NavigationMenu.Item>
   );
 };
@@ -106,18 +94,10 @@ const MenuPopup = styled(SidebarMenu)(({ theme }) => ({
   borderRadius: `calc(4px + ${(theme.vars || theme).shape.borderRadius})`,
   backgroundColor: (theme.vars || theme).palette.background.paper,
   boxShadow: (theme.vars || theme).shadows[1],
+  "&:has(.CollapsedSidebarMenuContent:empty)": {
+    display: "none",
+  },
 }));
-
-export function CollapsedSidebarMenuItem({
-  children,
-  ...props
-}: React.ComponentProps<typeof SidebarMenuButton>) {
-  return (
-    <SidebarMenuButton as="div" {...props}>
-      {children}
-    </SidebarMenuButton>
-  );
-}
 
 export function CollapsedSidebarMenuLink({
   children,
@@ -136,5 +116,3 @@ export function CollapsedSidebarMenuLink({
     </NavigationMenu.Link>
   );
 }
-
-export default CollapsedSidebarMenu;
