@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Sidebar Container",
+  "description": "A container with inline-size container queries that toggles collapsed/uncollapsed CSS variables",
+  "meta": {
+    "category": "primitive",
+    "subcategory": "sidebar"
+  }
+}

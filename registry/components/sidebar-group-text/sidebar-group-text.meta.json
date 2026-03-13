@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Sidebar Group Text",
+  "description": "A grid-based text container that animates between collapsed and expanded states",
+  "meta": {
+    "category": "primitive",
+    "subcategory": "sidebar"
+  }
+}
