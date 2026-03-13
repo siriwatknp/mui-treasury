@@ -41,8 +41,8 @@ import { SidebarMenuButton } from "@/registry/components/sidebar-menu-button/sid
 import { SidebarIcon } from "@/registry/components/sidebar-icon/sidebar-icon";
 import { SidebarText } from "@/registry/components/sidebar-text/sidebar-text";
 import { SidebarRail } from "@/registry/components/sidebar-rail/sidebar-rail";
-import { CollapsibleTrigger } from "@/registry/components/collapsible-trigger/collapsible-trigger";
-import { CollapsibleContent } from "@/registry/components/collapsible-content/collapsible-content";
+import { CollapsibleTrigger } from "@/registry/components/collapsible/collapsible-trigger";
+import { CollapsibleContent } from "@/registry/components/collapsible/collapsible-content";
 import {
   PopupMenuList,
   PopupMenuItem,
@@ -50,7 +50,7 @@ import {
   PopupMenuContent,
 } from "@/registry/components/popup-menu/popup-menu";
 import { useCollapsedSidebar } from "@/registry/layout/layout-core/SharedEdgeSidebar";
-import { CollapsibleIcon } from "@/registry/components/collapsible-icon/collapsible-icon";
+import { CollapsibleIcon } from "@/registry/components/collapsible/collapsible-icon";
 import { SidebarTooltip } from "@/registry/components/sidebar-tooltip/sidebar-tooltip";
 
 const SIDEBAR_ID = "app-dashboard-sidebar";

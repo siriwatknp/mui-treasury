@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { collapsibleContentClasses } from "./collapsible-content-classes";
+import { collapsibleContentClasses } from "./collapsible-classes";
 import { sidebarMenuButtonClasses } from "../sidebar-menu-button/sidebar-menu-button-classes";
 import { sidebarMenuActionClasses } from "../sidebar-menu-action/sidebar-menu-action-classes";
 

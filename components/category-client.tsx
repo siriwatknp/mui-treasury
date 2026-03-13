@@ -38,10 +38,11 @@ interface CategoryClientProps {
 interface ComponentPreviewContentProps {
   item: RegistryItem;
   needsIframe: boolean;
+  demoPath?: string;
 }
 
 const ComponentPreviewContent = React.memo(
-  ({ item, needsIframe }: ComponentPreviewContentProps) => {
+  ({ item, needsIframe, demoPath }: ComponentPreviewContentProps) => {
     const hasScreenshotPreview = item.meta.screenshot && item.meta.previewPath;
 
     const DynamicComponent = React.useMemo(() => {
@@ -49,9 +50,14 @@ const ComponentPreviewContent = React.memo(
 
       try {
         const componentPath = item.path.replace(".tsx", "");
+        const resolvedDemoPath =
+          demoPath ?? item.demoFiles?.[0]?.path.replace(".tsx", "");
         return dynamic(
           () =>
-            import(`@/registry/${componentPath}.demo`)
+            (resolvedDemoPath
+              ? import(`@/registry/${resolvedDemoPath}`)
+              : Promise.resolve(null)
+            )
               .then((mod) => {
                 if (mod && mod.Demo) return { default: mod.Demo };
                 return null;
@@ -103,7 +109,14 @@ const ComponentPreviewContent = React.memo(
           );
         };
       }
-    }, [item.path, item.meta.exportName, needsIframe, hasScreenshotPreview]);
+    }, [
+      item.path,
+      item.demoFiles,
+      demoPath,
+      item.meta.exportName,
+      needsIframe,
+      hasScreenshotPreview,
+    ]);
 
     if (hasScreenshotPreview) {
       return (
@@ -159,7 +172,15 @@ const ComponentPreviewContent = React.memo(
 
 ComponentPreviewContent.displayName = "ComponentPreviewContent";
 
-function ComponentPreview({ item }: { item: RegistryItem }) {
+function ComponentPreview({
+  item,
+  demoFile,
+}: {
+  item: RegistryItem;
+  demoFile?: RegistryItem["demoFiles"] extends Array<infer T> | undefined
+    ? T
+    : never;
+}) {
   // Use explicit previewMode from registry metadata
   const needsIframe = item.meta.previewMode === "iframe";
   const previewHeight = extractHeight(item.meta.previewClassName);
@@ -175,13 +196,14 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
   const panelRef = useRef<ImperativePanelHandle | null>(null);
   const { mode, systemMode } = useColorScheme();
 
-  // Memoize display files: prepend demo file and filter out index.ts
+  const demoPath = demoFile?.path.replace(".tsx", "");
+
+  // Memoize display files: prepend demo file(s) and filter out index.ts
   const displayFiles = React.useMemo(() => {
-    const allFiles = item.demoFile
-      ? [item.demoFile, ...item.files]
-      : item.files;
+    const demoFiles = demoFile ? [demoFile] : (item.demoFiles ?? []);
+    const allFiles = [...demoFiles, ...item.files];
     return allFiles.filter((file) => !file.path.endsWith("index.ts"));
-  }, [item.demoFile, item.files]);
+  }, [demoFile, item.demoFiles, item.files]);
 
   const handleCopy = React.useCallback(
     async (content: string, index: number) => {
@@ -235,6 +257,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
             key={previewKey}
             item={item}
             needsIframe={needsIframe}
+            demoPath={demoPath}
           />
         </ResizablePanel>
         <ResizableHandle
@@ -487,7 +510,15 @@ function extractHeight(previewClassName?: string): string | undefined {
   return match ? match[1].replace("!important", "") : undefined;
 }
 
-function LazyComponentPreview({ item }: { item: RegistryItem }) {
+function LazyComponentPreview({
+  item,
+  demoFile,
+}: {
+  item: RegistryItem;
+  demoFile?: RegistryItem["demoFiles"] extends Array<infer T> | undefined
+    ? T
+    : never;
+}) {
   const [isVisible, setIsVisible] = React.useState(false);
   const ref = React.useRef<HTMLDivElement>(null);
   const previewHeight = extractHeight(item.meta.previewClassName);
@@ -537,7 +568,7 @@ function LazyComponentPreview({ item }: { item: RegistryItem }) {
     <div ref={ref} style={{ minHeight: containerMinHeight }}>
       {isVisible ? (
         <Suspense fallback={loadingSkeleton}>
-          <ComponentPreview item={item} />
+          <ComponentPreview item={item} demoFile={demoFile} />
         </Suspense>
       ) : (
         loadingSkeleton
@@ -655,7 +686,27 @@ export default function CategoryClient({
                   </p>
                 </div>
                 {/* Live Component Preview */}
-                <LazyComponentPreview item={item} />
+                {item.demoFiles && item.demoFiles.length > 1 ? (
+                  item.demoFiles.map((demoFile) => {
+                    const label = demoFile.path
+                      .split("/")
+                      .pop()!
+                      .replace(".demo.tsx", "")
+                      .split("-")
+                      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+                      .join(" ");
+                    return (
+                      <div key={demoFile.path} className="space-y-2">
+                        <h4 className="text-sm font-medium text-muted-foreground">
+                          {label}
+                        </h4>
+                        <LazyComponentPreview item={item} demoFile={demoFile} />
+                      </div>
+                    );
+                  })
+                ) : (
+                  <LazyComponentPreview item={item} />
+                )}
               </div>
             ))}
           </div>

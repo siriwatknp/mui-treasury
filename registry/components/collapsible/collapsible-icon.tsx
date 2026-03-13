@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { collapsibleIconClasses } from "./collapsible-icon-classes";
+import { collapsibleIconClasses } from "./collapsible-classes";
 import { sidebarMenuActionClasses } from "../sidebar-menu-action/sidebar-menu-action-classes";
 
 interface CollapsibleIconProps {

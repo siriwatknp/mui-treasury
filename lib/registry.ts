@@ -16,12 +16,12 @@ export interface RegistryItem {
     type: string;
     target?: string;
   }>;
-  demoFile?: {
+  demoFiles?: Array<{
     path: string;
     content: string;
     type: string;
     target?: string;
-  };
+  }>;
   meta: {
     screenshot?: string;
     category?: string;
@@ -83,19 +83,29 @@ function loadPublicRegistryData(name: string): Partial<RegistryItem> | null {
     if (fs.existsSync(publicJsonPath)) {
       const content = JSON.parse(fs.readFileSync(publicJsonPath, "utf-8"));
 
-      let demoFile:
-        | { path: string; content: string; type: string; target?: string }
+      let demoFiles:
+        | Array<{
+            path: string;
+            content: string;
+            type: string;
+            target?: string;
+          }>
         | undefined;
       if (content.files && content.files.length > 0) {
         const dir = path.dirname(content.files[0].path);
-        const demoFilePath = path.join(dir, `${name}.demo.tsx`);
-        const demoPath = path.join(REGISTRY_DIR, demoFilePath);
-        if (fs.existsSync(demoPath)) {
-          demoFile = {
-            path: demoFilePath,
-            content: fs.readFileSync(demoPath, "utf-8"),
-            type: "registry:demo",
-          };
+        const absDir = path.join(REGISTRY_DIR, dir);
+        if (fs.existsSync(absDir)) {
+          const entries = fs.readdirSync(absDir);
+          const demos = entries
+            .filter((f: string) => f.endsWith(".demo.tsx"))
+            .sort();
+          if (demos.length > 0) {
+            demoFiles = demos.map((f: string) => ({
+              path: path.join(dir, f),
+              content: fs.readFileSync(path.join(absDir, f), "utf-8"),
+              type: "registry:demo",
+            }));
+          }
         }
       }
 
@@ -103,7 +113,7 @@ function loadPublicRegistryData(name: string): Partial<RegistryItem> | null {
         dependencies: content.dependencies || [],
         registryDependencies: content.registryDependencies || [],
         files: content.files || [],
-        demoFile,
+        demoFiles,
       };
     }
   } catch (error) {
@@ -149,7 +159,7 @@ export function getRegistryItems(): RegistryItem[] {
           dependencies: publicData?.dependencies || [],
           registryDependencies: publicData?.registryDependencies || [],
           files: publicData?.files || [],
-          demoFile: publicData?.demoFile,
+          demoFiles: publicData?.demoFiles,
           meta: metaContent.meta || {},
         };
 
@@ -204,7 +214,7 @@ export function getRegistryByName(name: string): RegistryItem | null {
       dependencies: publicData?.dependencies || [],
       registryDependencies: publicData?.registryDependencies || [],
       files: publicData?.files || [],
-      demoFile: publicData?.demoFile,
+      demoFiles: publicData?.demoFiles,
       meta: metaContent.meta || {},
     };
   } catch (error) {
