@@ -21,6 +21,11 @@ import DescriptionRounded from "@mui/icons-material/DescriptionRounded";
 import MoreHorizRounded from "@mui/icons-material/MoreHorizRounded";
 import AddRounded from "@mui/icons-material/AddRounded";
 
+export const meta = {
+  title: "Menus",
+  description: "Flat, nested, and action menu patterns with active states.",
+};
+
 export function Demo() {
   return (
     <Box sx={{ display: "flex", flexWrap: "wrap", gap: 4 }}>

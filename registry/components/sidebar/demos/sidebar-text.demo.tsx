@@ -15,6 +15,12 @@ import FolderRounded from "@mui/icons-material/FolderRounded";
 import InboxRounded from "@mui/icons-material/InboxRounded";
 import PersonRounded from "@mui/icons-material/PersonRounded";
 
+export const meta = {
+  title: "Text",
+  description:
+    "Primary and secondary text styles for menu items with truncation support.",
+};
+
 export function Demo() {
   return (
     <Box sx={{ display: "flex", gap: 4, flexWrap: "wrap" }}>

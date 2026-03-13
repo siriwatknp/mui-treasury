@@ -21,6 +21,8 @@ export interface RegistryItem {
     content: string;
     type: string;
     target?: string;
+    title?: string;
+    description?: string;
   }>;
   meta: {
     screenshot?: string;
@@ -38,6 +40,28 @@ export interface RegistryCategory {
   name: string;
   label: string;
   count: number;
+}
+
+/**
+ * Extract `export const meta = { ... }` from demo file content.
+ */
+function parseDemoMeta(
+  content: string,
+): { title?: string; description?: string } | null {
+  const match = content.match(
+    /export\s+const\s+meta\s*=\s*(\{[\s\S]*?\n\}|\{[^\n]*\})/,
+  );
+  if (!match) return null;
+  try {
+    const obj = new Function(`return ${match[1]}`)();
+    return {
+      title: typeof obj.title === "string" ? obj.title : undefined,
+      description:
+        typeof obj.description === "string" ? obj.description : undefined,
+    };
+  } catch {
+    return null;
+  }
 }
 
 // Registry source directory
@@ -98,6 +122,8 @@ function loadPublicRegistryData(name: string): Partial<RegistryItem> | null {
           path: string;
           content: string;
           type: string;
+          title?: string;
+          description?: string;
         }> = [];
 
         // Scan root directory for *.demo.tsx
@@ -106,10 +132,13 @@ function loadPublicRegistryData(name: string): Partial<RegistryItem> | null {
           for (const f of entries.filter((f: string) =>
             f.endsWith(".demo.tsx"),
           )) {
+            const fileContent = fs.readFileSync(path.join(absDir, f), "utf-8");
+            const demoMeta = parseDemoMeta(fileContent);
             collected.push({
               path: path.join(dir, f),
-              content: fs.readFileSync(path.join(absDir, f), "utf-8"),
+              content: fileContent,
               type: "registry:demo",
+              ...demoMeta,
             });
           }
         }
@@ -121,10 +150,16 @@ function loadPublicRegistryData(name: string): Partial<RegistryItem> | null {
           for (const f of entries.filter((f: string) =>
             f.endsWith(".demo.tsx"),
           )) {
+            const fileContent = fs.readFileSync(
+              path.join(demosDir, f),
+              "utf-8",
+            );
+            const demoMeta = parseDemoMeta(fileContent);
             collected.push({
               path: path.join(dir, "demos", f),
-              content: fs.readFileSync(path.join(demosDir, f), "utf-8"),
+              content: fileContent,
               type: "registry:demo",
+              ...demoMeta,
             });
           }
         }
@@ -205,17 +240,20 @@ export function getRegistryItems(): RegistryItem[] {
             const demoTsxPath = path.join(demosDir, demoFile);
             const content = fs.readFileSync(demoTsxPath, "utf-8");
             const relativePath = path.relative(REGISTRY_DIR, demoTsxPath);
-            const title = demoName
-              .split("-")
-              .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-              .join(" ");
+            const demoMeta = parseDemoMeta(content);
+            const title =
+              demoMeta?.title ||
+              demoName
+                .split("-")
+                .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+                .join(" ");
 
             items.push({
               path: relativePath,
               name: demoName,
               type: "registry:item",
               title,
-              description: "",
+              description: demoMeta?.description || "",
               dependencies: [],
               registryDependencies: [],
               files: [],

@@ -12,6 +12,11 @@ import HomeRounded from "@mui/icons-material/HomeRounded";
 import SearchRounded from "@mui/icons-material/SearchRounded";
 import SettingsRounded from "@mui/icons-material/SettingsRounded";
 
+export const meta = {
+  title: "Tooltip",
+  description: "Tooltips for icon-only collapsed sidebar items.",
+};
+
 export function Demo() {
   return (
     <div style={{ width: 48 }}>

@@ -702,21 +702,32 @@ export default function CategoryClient({
                       />
                       {hasExtras &&
                         extraDemos.map((demoFile) => {
-                          const label = demoFile.path
-                            .split("/")
-                            .pop()!
-                            .replace(".demo.tsx", "")
-                            .split("-")
-                            .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-                            .join(" ");
+                          const label =
+                            demoFile.title ||
+                            demoFile.path
+                              .split("/")
+                              .pop()!
+                              .replace(".demo.tsx", "")
+                              .split("-")
+                              .map(
+                                (w) => w.charAt(0).toUpperCase() + w.slice(1),
+                              )
+                              .join(" ");
                           return (
                             <div
                               key={demoFile.path}
                               className="space-y-2 min-w-0 flex flex-col"
                             >
-                              <h4 className="text-sm font-medium text-muted-foreground">
-                                {label}
-                              </h4>
+                              <div>
+                                <h4 className="text-sm font-medium text-muted-foreground">
+                                  {label}
+                                </h4>
+                                {demoFile.description && (
+                                  <p className="text-sm text-muted-foreground/70">
+                                    {demoFile.description}
+                                  </p>
+                                )}
+                              </div>
                               <LazyComponentPreview
                                 item={item}
                                 demoFile={demoFile}

@@ -15,6 +15,12 @@ import PeopleRounded from "@mui/icons-material/PeopleRounded";
 import BarChartRounded from "@mui/icons-material/BarChartRounded";
 import SettingsRounded from "@mui/icons-material/SettingsRounded";
 
+export const meta = {
+  title: "Group",
+  description:
+    "Organize menu items into labeled sections with optional actions.",
+};
+
 export function Demo() {
   return (
     <div style={{ width: 240 }}>

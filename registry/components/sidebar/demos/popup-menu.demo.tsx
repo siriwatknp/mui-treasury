@@ -17,6 +17,11 @@ import {
   PopupMenuContent,
 } from "../popup-menu";
 
+export const meta = {
+  title: "Popup Menu",
+  description: "Menu items that open a popup submenu on hover or click.",
+};
+
 export function Demo() {
   return (
     <div style={{ width: 36 }}>
