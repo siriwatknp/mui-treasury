@@ -4,11 +4,12 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import Link from "@mui/material/Link";
-import { CollapsibleButton } from "../collapsible-button";
-import { CollapsibleContent } from "../collapsible-content";
-import { CollapsibleIcon } from "../collapsible-icon";
 import ExpandMoreRounded from "@mui/icons-material/ExpandMoreRounded";
 import AddRounded from "@mui/icons-material/AddRounded";
+
+import { CollapsibleButton } from "@/registry/components/collapsible/collapsible-button";
+import { CollapsibleContent } from "@/registry/components/collapsible/collapsible-content";
+import { CollapsibleIcon } from "@/registry/components/collapsible/collapsible-icon";
 
 export function Demo() {
   return (

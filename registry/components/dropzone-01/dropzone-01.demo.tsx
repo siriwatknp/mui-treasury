@@ -1,7 +1,10 @@
 "use client";
 
 import * as React from "react";
-import { Dropzone01, DropzoneFile } from "./dropzone-01";
+import {
+  Dropzone01,
+  DropzoneFile,
+} from "@/registry/components/dropzone-01/dropzone-01";
 
 export function Demo() {
   const [files, setFiles] = React.useState<DropzoneFile[]>([]);

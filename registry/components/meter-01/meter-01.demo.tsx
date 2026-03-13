@@ -1,6 +1,6 @@
 import * as React from "react";
 import Stack from "@mui/material/Stack";
-import { Meter01 } from "./meter-01";
+import { Meter01 } from "@/registry/components/meter-01/meter-01";
 
 export function Demo() {
   return (

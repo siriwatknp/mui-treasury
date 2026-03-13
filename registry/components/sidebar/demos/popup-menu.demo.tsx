@@ -2,20 +2,19 @@
 import ChevronRightRounded from "@mui/icons-material/ChevronRightRounded";
 import FolderRounded from "@mui/icons-material/FolderRounded";
 import BarChartRounded from "@mui/icons-material/BarChartRounded";
-import {
-  SidebarContainer,
-  SidebarMenuList,
-  SidebarMenuItem,
-  SidebarMenuButton,
-  SidebarIcon,
-  SidebarText,
-} from "..";
+
+import { SidebarContainer } from "@/registry/components/sidebar/sidebar-container";
+import { SidebarMenuList } from "@/registry/components/sidebar/sidebar-menu-list";
+import { SidebarMenuItem } from "@/registry/components/sidebar/sidebar-menu-item";
+import { SidebarMenuButton } from "@/registry/components/sidebar/sidebar-menu-button";
+import { SidebarIcon } from "@/registry/components/sidebar/sidebar-icon";
+import { SidebarText } from "@/registry/components/sidebar/sidebar-text";
 import {
   PopupMenuList,
   PopupMenuItem,
   PopupMenuLink,
   PopupMenuContent,
-} from "../popup-menu";
+} from "@/registry/components/sidebar/popup-menu";
 
 export const meta = {
   title: "Popup Menu",

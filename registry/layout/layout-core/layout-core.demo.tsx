@@ -1,10 +1,11 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Root from "./Root";
-import Header from "./Header";
-import Content from "./Content";
-import Footer from "./Footer";
+
+import Root from "@/registry/layout/layout-core/Root";
+import Header from "@/registry/layout/layout-core/Header";
+import Content from "@/registry/layout/layout-core/Content";
+import Footer from "@/registry/layout/layout-core/Footer";
 
 export function Demo() {
   return (

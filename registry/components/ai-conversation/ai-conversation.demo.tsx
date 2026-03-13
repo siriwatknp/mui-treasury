@@ -7,7 +7,7 @@ import {
   Conversation,
   ConversationContent,
   ConversationScrollButton,
-} from "./ai-conversation";
+} from "@/registry/components/ai-conversation/ai-conversation";
 
 export function Demo() {
   return (

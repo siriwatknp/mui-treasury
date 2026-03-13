@@ -1,6 +1,9 @@
 "use client";
 
-import { Suggestions, Suggestion } from "./ai-suggestion";
+import {
+  Suggestions,
+  Suggestion,
+} from "@/registry/components/ai-suggestion/ai-suggestion";
 
 export function Demo() {
   const handleSuggestionClick = (suggestion: string) => {

@@ -6,7 +6,7 @@ import {
   ToolContent,
   ToolInput,
   ToolOutput,
-} from "./ai-tool";
+} from "@/registry/components/ai-tool/ai-tool";
 
 export function Demo() {
   const tools = [

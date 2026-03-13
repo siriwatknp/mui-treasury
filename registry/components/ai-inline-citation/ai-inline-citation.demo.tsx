@@ -14,7 +14,7 @@ import {
   InlineCitationCarouselNext,
   InlineCitationSource,
   InlineCitationQuote,
-} from "./ai-inline-citation";
+} from "@/registry/components/ai-inline-citation/ai-inline-citation";
 
 export function Demo() {
   const sources = [

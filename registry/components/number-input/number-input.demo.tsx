@@ -1,8 +1,12 @@
 "use client";
 
 import React from "react";
-import { NumberInputField, type NumberInputError } from "./number-input";
 import { InputAdornment } from "@mui/material";
+
+import {
+  NumberInputField,
+  type NumberInputError,
+} from "@/registry/components/number-input/number-input";
 
 export function Demo() {
   const [error, setError] = React.useState<NumberInputError | null>(null);

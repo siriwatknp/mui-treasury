@@ -9,7 +9,7 @@ import {
   ArtifactAction,
   ArtifactClose,
   ArtifactContent,
-} from "./ai-artifact";
+} from "@/registry/components/ai-artifact/ai-artifact";
 import { CopyIcon, ShareIcon, DownloadIcon, ExpandIcon } from "lucide-react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";

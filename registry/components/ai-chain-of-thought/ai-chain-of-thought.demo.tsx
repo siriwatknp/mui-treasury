@@ -8,7 +8,7 @@ import {
   ChainOfThoughtSearchResults,
   ChainOfThoughtSearchResult,
   ChainOfThoughtImage,
-} from "./ai-chain-of-thought";
+} from "@/registry/components/ai-chain-of-thought/ai-chain-of-thought";
 import {
   SearchIcon,
   FileTextIcon,

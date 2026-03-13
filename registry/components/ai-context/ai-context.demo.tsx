@@ -14,7 +14,7 @@ import {
   ContextOutputUsage,
   ContextReasoningUsage,
   ContextTrigger,
-} from "./ai-context";
+} from "@/registry/components/ai-context/ai-context";
 
 export function Demo() {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);

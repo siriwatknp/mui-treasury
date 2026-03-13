@@ -1,6 +1,6 @@
 "use client";
 
-import { Actions, Action } from "./ai-actions";
+import { Actions, Action } from "@/registry/components/ai-actions/ai-actions";
 import { CopyIcon, ShareIcon, MoreVerticalIcon } from "lucide-react";
 
 export function Demo() {

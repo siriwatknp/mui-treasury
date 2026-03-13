@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Stack from "@mui/material/Stack";
-import { ColorPickerField } from "./color-picker-field";
+import { ColorPickerField } from "@/registry/components/color-picker-field/color-picker-field";
 
 export function Demo() {
   const [color, setColor] = React.useState("#ffffff");

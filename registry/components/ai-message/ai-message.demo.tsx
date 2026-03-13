@@ -3,7 +3,11 @@
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import { Message, MessageContent, MessageAvatar } from "./ai-message";
+import {
+  Message,
+  MessageContent,
+  MessageAvatar,
+} from "@/registry/components/ai-message/ai-message";
 
 export function Demo() {
   return (
@@ -43,7 +47,7 @@ export function Demo() {
                   }}
                 >
                   <Typography component="li" variant="body2">
-                    Start the function name with "use"
+                    Start the function name with &quot;use&quot;
                   </Typography>
                   <Typography component="li" variant="body2">
                     Call other hooks inside if needed
@@ -71,7 +75,7 @@ export function Demo() {
               <MessageAvatar name="AI" />
               <MessageContent>
                 <Typography variant="body2">
-                  Here's a simple example of a custom hook:
+                  Here&apos;s a simple example of a custom hook:
                 </Typography>
                 <Paper
                   variant="outlined"

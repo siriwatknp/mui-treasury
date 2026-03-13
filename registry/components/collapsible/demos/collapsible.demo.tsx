@@ -1,11 +1,12 @@
 "use client";
 
-import { CollapsibleContent } from "../collapsible-content";
-import { CollapsibleButton } from "../collapsible-button";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
+
+import { CollapsibleContent } from "@/registry/components/collapsible/collapsible-content";
+import { CollapsibleButton } from "@/registry/components/collapsible/collapsible-button";
 
 export function Demo() {
   return (

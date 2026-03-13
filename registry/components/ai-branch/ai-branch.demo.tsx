@@ -7,7 +7,7 @@ import {
   BranchPrevious,
   BranchNext,
   BranchPage,
-} from "./ai-branch";
+} from "@/registry/components/ai-branch/ai-branch";
 
 export function Demo() {
   return (
@@ -21,7 +21,7 @@ export function Demo() {
             <p>Branch 1: This is the first version of the response.</p>
           </div>
           <div key="2" className="p-4 bg-secondary rounded-lg">
-            <p>Branch 2: Here's an alternative response.</p>
+            <p>Branch 2: Here&apos;s an alternative response.</p>
           </div>
           <div key="3" className="p-4 bg-secondary rounded-lg">
             <p>Branch 3: And yet another variation.</p>

@@ -2,7 +2,7 @@
 
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
-import { Sonner, toast } from "./sonner";
+import { Sonner, toast } from "@/registry/components/sonner/sonner";
 
 export function Demo() {
   return (

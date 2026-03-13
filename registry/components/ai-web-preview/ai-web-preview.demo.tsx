@@ -9,7 +9,7 @@ import {
   WebPreviewUrl,
   WebPreviewBody,
   WebPreviewConsole,
-} from "./ai-web-preview";
+} from "@/registry/components/ai-web-preview/ai-web-preview";
 import { RefreshCwIcon, ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 
 export function Demo() {

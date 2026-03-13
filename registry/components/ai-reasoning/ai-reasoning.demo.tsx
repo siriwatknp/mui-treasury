@@ -1,7 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Reasoning, ReasoningTrigger, ReasoningContent } from "./ai-reasoning";
+import {
+  Reasoning,
+  ReasoningTrigger,
+  ReasoningContent,
+} from "@/registry/components/ai-reasoning/ai-reasoning";
 
 export function Demo() {
   const [isStreaming, setIsStreaming] = useState(false);

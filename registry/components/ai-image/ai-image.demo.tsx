@@ -2,7 +2,7 @@
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { Image } from "./ai-image";
+import { Image } from "@/registry/components/ai-image/ai-image";
 
 export function Demo() {
   // Example base64 placeholder image (400x300 gray rectangle with "AI Image" text)

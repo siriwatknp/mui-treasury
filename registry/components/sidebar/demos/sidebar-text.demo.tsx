@@ -2,18 +2,19 @@
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { SidebarContainer } from "../sidebar-container";
-import { SidebarGroup } from "../sidebar-group";
-import { SidebarMenuList } from "../sidebar-menu-list";
-import { SidebarMenuItem } from "../sidebar-menu-item";
-import { SidebarMenuButton } from "../sidebar-menu-button";
-import { SidebarIcon } from "../sidebar-icon";
-import { SidebarText } from "../sidebar-text";
-import { SidebarGroupText } from "../sidebar-group-text";
 import StarRounded from "@mui/icons-material/StarRounded";
 import FolderRounded from "@mui/icons-material/FolderRounded";
 import InboxRounded from "@mui/icons-material/InboxRounded";
 import PersonRounded from "@mui/icons-material/PersonRounded";
+
+import { SidebarContainer } from "@/registry/components/sidebar/sidebar-container";
+import { SidebarGroup } from "@/registry/components/sidebar/sidebar-group";
+import { SidebarMenuList } from "@/registry/components/sidebar/sidebar-menu-list";
+import { SidebarMenuItem } from "@/registry/components/sidebar/sidebar-menu-item";
+import { SidebarMenuButton } from "@/registry/components/sidebar/sidebar-menu-button";
+import { SidebarIcon } from "@/registry/components/sidebar/sidebar-icon";
+import { SidebarText } from "@/registry/components/sidebar/sidebar-text";
+import { SidebarGroupText } from "@/registry/components/sidebar/sidebar-group-text";
 
 export const meta = {
   title: "Text",

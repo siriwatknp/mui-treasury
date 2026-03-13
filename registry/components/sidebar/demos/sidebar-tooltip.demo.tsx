@@ -1,16 +1,17 @@
 "use client";
 
-import { SidebarContainer } from "../sidebar-container";
-import { SidebarGroup } from "../sidebar-group";
-import { SidebarMenuList } from "../sidebar-menu-list";
-import { SidebarMenuItem } from "../sidebar-menu-item";
-import { SidebarMenuButton } from "../sidebar-menu-button";
-import { SidebarIcon } from "../sidebar-icon";
-import { SidebarText } from "../sidebar-text";
-import { SidebarTooltip } from "../sidebar-tooltip";
 import HomeRounded from "@mui/icons-material/HomeRounded";
 import SearchRounded from "@mui/icons-material/SearchRounded";
 import SettingsRounded from "@mui/icons-material/SettingsRounded";
+
+import { SidebarContainer } from "@/registry/components/sidebar/sidebar-container";
+import { SidebarGroup } from "@/registry/components/sidebar/sidebar-group";
+import { SidebarMenuList } from "@/registry/components/sidebar/sidebar-menu-list";
+import { SidebarMenuItem } from "@/registry/components/sidebar/sidebar-menu-item";
+import { SidebarMenuButton } from "@/registry/components/sidebar/sidebar-menu-button";
+import { SidebarIcon } from "@/registry/components/sidebar/sidebar-icon";
+import { SidebarText } from "@/registry/components/sidebar/sidebar-text";
+import { SidebarTooltip } from "@/registry/components/sidebar/sidebar-tooltip";
 
 export const meta = {
   title: "Tooltip",

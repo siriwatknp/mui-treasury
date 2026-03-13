@@ -6,7 +6,7 @@ import {
   TaskContent,
   TaskItem,
   TaskItemFile,
-} from "./ai-task";
+} from "@/registry/components/ai-task/ai-task";
 
 export function Demo() {
   return (

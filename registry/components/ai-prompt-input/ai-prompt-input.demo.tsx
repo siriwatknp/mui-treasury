@@ -11,7 +11,7 @@ import {
   PromptInputButton,
   PromptInputSubmit,
   type PromptInputMessage,
-} from "./ai-prompt-input";
+} from "@/registry/components/ai-prompt-input/ai-prompt-input";
 import { PaperclipIcon, ImageIcon, MicIcon } from "lucide-react";
 
 export function Demo() {
