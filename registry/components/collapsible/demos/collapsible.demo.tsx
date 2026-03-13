@@ -1,15 +1,15 @@
 "use client";
 
-import { SidebarContainer } from "../sidebar-container/sidebar-container";
-import { SidebarGroup } from "../sidebar-group/sidebar-group";
-import { SidebarMenuList } from "../sidebar-menu/sidebar-menu-list";
-import { SidebarMenuItem } from "../sidebar-menu-item/sidebar-menu-item";
-import { SidebarMenuButton } from "../sidebar-menu-button/sidebar-menu-button";
-import { SidebarIcon } from "../sidebar-icon/sidebar-icon";
-import { SidebarText } from "../sidebar-text/sidebar-text";
-import { CollapsibleTrigger } from "./collapsible-trigger";
-import { CollapsibleContent } from "./collapsible-content";
-import { CollapsibleIcon } from "./collapsible-icon";
+import { SidebarContainer } from "../../sidebar-container/sidebar-container";
+import { SidebarGroup } from "../../sidebar-group/sidebar-group";
+import { SidebarMenuList } from "../../sidebar-menu/sidebar-menu-list";
+import { SidebarMenuItem } from "../../sidebar-menu-item/sidebar-menu-item";
+import { SidebarMenuButton } from "../../sidebar-menu-button/sidebar-menu-button";
+import { SidebarIcon } from "../../sidebar-icon/sidebar-icon";
+import { SidebarText } from "../../sidebar-text/sidebar-text";
+import { CollapsibleTrigger } from "../collapsible-trigger";
+import { CollapsibleContent } from "../collapsible-content";
+import { CollapsibleIcon } from "../collapsible-icon";
 import FolderRounded from "@mui/icons-material/FolderRounded";
 import DescriptionRounded from "@mui/icons-material/DescriptionRounded";
 import ExpandMoreRounded from "@mui/icons-material/ExpandMoreRounded";

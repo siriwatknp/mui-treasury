@@ -94,18 +94,43 @@ function loadPublicRegistryData(name: string): Partial<RegistryItem> | null {
       if (content.files && content.files.length > 0) {
         const dir = path.dirname(content.files[0].path);
         const absDir = path.join(REGISTRY_DIR, dir);
+        const collected: Array<{
+          path: string;
+          content: string;
+          type: string;
+        }> = [];
+
+        // Scan root directory for *.demo.tsx
         if (fs.existsSync(absDir)) {
           const entries = fs.readdirSync(absDir);
-          const demos = entries
-            .filter((f: string) => f.endsWith(".demo.tsx"))
-            .sort();
-          if (demos.length > 0) {
-            demoFiles = demos.map((f: string) => ({
+          for (const f of entries.filter((f: string) =>
+            f.endsWith(".demo.tsx"),
+          )) {
+            collected.push({
               path: path.join(dir, f),
               content: fs.readFileSync(path.join(absDir, f), "utf-8"),
               type: "registry:demo",
-            }));
+            });
           }
+        }
+
+        // Scan demos/ subfolder for *.demo.tsx
+        const demosDir = path.join(absDir, "demos");
+        if (fs.existsSync(demosDir)) {
+          const entries = fs.readdirSync(demosDir);
+          for (const f of entries.filter((f: string) =>
+            f.endsWith(".demo.tsx"),
+          )) {
+            collected.push({
+              path: path.join(dir, "demos", f),
+              content: fs.readFileSync(path.join(demosDir, f), "utf-8"),
+              type: "registry:demo",
+            });
+          }
+        }
+
+        if (collected.length > 0) {
+          demoFiles = collected.sort((a, b) => a.path.localeCompare(b.path));
         }
       }
 
