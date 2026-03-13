@@ -686,30 +686,47 @@ export default function CategoryClient({
                   </p>
                 </div>
                 {/* Live Component Preview */}
-                {item.demoFiles && item.demoFiles.length > 1 ? (
-                  item.demoFiles.map((demoFile) => {
-                    const label = demoFile.path
-                      .split("/")
-                      .pop()!
-                      .replace(".demo.tsx", "")
-                      .split("-")
-                      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-                      .join(" ");
-                    return (
-                      <div
-                        key={demoFile.path}
-                        className="space-y-2 min-w-0 flex flex-col"
-                      >
-                        <h4 className="text-sm font-medium text-muted-foreground">
-                          {label}
-                        </h4>
-                        <LazyComponentPreview item={item} demoFile={demoFile} />
-                      </div>
-                    );
-                  })
-                ) : (
-                  <LazyComponentPreview item={item} />
-                )}
+                {(() => {
+                  const primaryDemo = item.demoFiles?.find((f) =>
+                    f.path.endsWith(`${item.name}.demo.tsx`),
+                  );
+                  const extraDemos = item.demoFiles?.filter(
+                    (f) => f !== primaryDemo,
+                  );
+                  const hasExtras = extraDemos && extraDemos.length > 0;
+                  return (
+                    <>
+                      <LazyComponentPreview
+                        item={item}
+                        demoFile={primaryDemo}
+                      />
+                      {hasExtras &&
+                        extraDemos.map((demoFile) => {
+                          const label = demoFile.path
+                            .split("/")
+                            .pop()!
+                            .replace(".demo.tsx", "")
+                            .split("-")
+                            .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+                            .join(" ");
+                          return (
+                            <div
+                              key={demoFile.path}
+                              className="space-y-2 min-w-0 flex flex-col"
+                            >
+                              <h4 className="text-sm font-medium text-muted-foreground">
+                                {label}
+                              </h4>
+                              <LazyComponentPreview
+                                item={item}
+                                demoFile={demoFile}
+                              />
+                            </div>
+                          );
+                        })}
+                    </>
+                  );
+                })()}
               </div>
             ))}
           </div>
