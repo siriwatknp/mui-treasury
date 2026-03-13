@@ -7,7 +7,7 @@ interface CollapsibleTriggerProps {
   render: React.ReactNode;
 }
 
-const ScreenReaderInput = styled("input")({
+export const ScreenReaderInput = styled("input")({
   position: "absolute",
   width: 1,
   height: 1,

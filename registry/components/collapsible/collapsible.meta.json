@@ -5,6 +5,6 @@
   "description": "CSS-only collapsible components using a hidden checkbox to toggle content visibility",
   "meta": {
     "category": "primitive",
-    "subcategory": "sidebar"
+    "subcategory": "collapsible"
   }
 }
