@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
 import { NavigationMenu } from "@base-ui/react/navigation-menu";
-import SidebarMenuButton from "../sidebar-menu-button/sidebar-menu-button";
-import SidebarMenuList from "../sidebar-menu/sidebar-menu-list";
+import { SidebarMenuButton } from "../sidebar-menu-button/sidebar-menu-button";
+import { SidebarMenuList } from "../sidebar-menu/sidebar-menu-list";
 import { styled } from "@mui/material/styles";
-import SidebarMenuItem from "../sidebar-menu-item/sidebar-menu-item";
-import SidebarTooltip from "../sidebar-tooltip/sidebar-tooltip";
+import { SidebarMenuItem } from "../sidebar-menu-item/sidebar-menu-item";
+import { SidebarTooltip } from "../sidebar-tooltip/sidebar-tooltip";
 
 interface PopupMenuItemProps {
   children?: React.ReactNode;

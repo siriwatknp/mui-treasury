@@ -5,6 +5,7 @@
   "description": "Chrome browser-style tabs with separator lines and smooth hover effects",
   "meta": {
     "category": "primitive",
-    "subcategory": "tabs"
+    "subcategory": "tabs",
+    "exportName": "TabsChrome"
   }
 }

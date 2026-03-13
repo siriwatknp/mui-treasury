@@ -7,7 +7,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Divider from "@mui/material/Divider";
 
-export default function CardProfile() {
+export function CardProfile() {
   return (
     <Card
       sx={(theme) => ({

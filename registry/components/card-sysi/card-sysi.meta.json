@@ -6,6 +6,7 @@
   "description": "Program enrollment card with Thai content, Info components, and dual 'Learn more' / 'Apply now' buttons",
   "meta": {
     "category": "primitive",
-    "subcategory": "card"
+    "subcategory": "card",
+    "exportName": "CardSysi"
   }
 }

@@ -30,6 +30,7 @@ export interface RegistryItem {
     previewMode?: "normal" | "iframe";
     previewPath?: string;
     previewClassName?: string;
+    exportName?: string;
   };
 }
 

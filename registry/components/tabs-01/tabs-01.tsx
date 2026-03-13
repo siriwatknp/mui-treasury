@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
-export default function Tabs01() {
+export function Tabs01() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {

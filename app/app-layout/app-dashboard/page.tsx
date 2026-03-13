@@ -32,17 +32,17 @@ import EdgeSidebar, {
 import EdgeSidebarContent from "@/registry/layout/layout-core/EdgeSidebarContent";
 import { layoutClasses } from "@/registry/layout/layout-core/layoutClasses";
 import { EdgeDrawerClose } from "@/registry/layout/layout-core";
-import SidebarContainer from "@/registry/components/sidebar-container/sidebar-container";
-import SidebarGroup from "@/registry/components/sidebar-group/sidebar-group";
-import SidebarGroupLabel from "@/registry/components/sidebar-group-label/sidebar-group-label";
-import SidebarMenuList from "@/registry/components/sidebar-menu/sidebar-menu-list";
-import SidebarMenuItem from "@/registry/components/sidebar-menu-item/sidebar-menu-item";
-import SidebarMenuButton from "@/registry/components/sidebar-menu-button/sidebar-menu-button";
-import SidebarIcon from "@/registry/components/sidebar-icon/sidebar-icon";
-import SidebarText from "@/registry/components/sidebar-text/sidebar-text";
-import SidebarRail from "@/registry/components/sidebar-rail/sidebar-rail";
-import CollapsibleTrigger from "@/registry/components/collapsible-trigger/collapsible-trigger";
-import CollapsibleContent from "@/registry/components/collapsible-content/collapsible-content";
+import { SidebarContainer } from "@/registry/components/sidebar-container/sidebar-container";
+import { SidebarGroup } from "@/registry/components/sidebar-group/sidebar-group";
+import { SidebarGroupLabel } from "@/registry/components/sidebar-group-label/sidebar-group-label";
+import { SidebarMenuList } from "@/registry/components/sidebar-menu/sidebar-menu-list";
+import { SidebarMenuItem } from "@/registry/components/sidebar-menu-item/sidebar-menu-item";
+import { SidebarMenuButton } from "@/registry/components/sidebar-menu-button/sidebar-menu-button";
+import { SidebarIcon } from "@/registry/components/sidebar-icon/sidebar-icon";
+import { SidebarText } from "@/registry/components/sidebar-text/sidebar-text";
+import { SidebarRail } from "@/registry/components/sidebar-rail/sidebar-rail";
+import { CollapsibleTrigger } from "@/registry/components/collapsible-trigger/collapsible-trigger";
+import { CollapsibleContent } from "@/registry/components/collapsible-content/collapsible-content";
 import {
   PopupMenuList,
   PopupMenuItem,
@@ -50,8 +50,8 @@ import {
   PopupMenuContent,
 } from "@/registry/components/popup-menu/popup-menu";
 import { useCollapsedSidebar } from "@/registry/layout/layout-core/SharedEdgeSidebar";
-import CollapsibleIcon from "@/registry/components/collapsible-icon/collapsible-icon";
-import SidebarTooltip from "@/registry/components/sidebar-tooltip/sidebar-tooltip";
+import { CollapsibleIcon } from "@/registry/components/collapsible-icon/collapsible-icon";
+import { SidebarTooltip } from "@/registry/components/sidebar-tooltip/sidebar-tooltip";
 
 const SIDEBAR_ID = "app-dashboard-sidebar";
 

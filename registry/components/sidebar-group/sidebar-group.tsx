@@ -28,4 +28,4 @@ const SidebarGroup = React.forwardRef<
   );
 });
 
-export default SidebarGroup;
+export { SidebarGroup };

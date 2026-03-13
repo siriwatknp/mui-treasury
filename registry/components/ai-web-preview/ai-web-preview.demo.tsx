@@ -12,7 +12,7 @@ import {
 } from "./ai-web-preview";
 import { RefreshCwIcon, ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 
-export default function AIWebPreviewDemo() {
+export function Demo() {
   const consoleLogs = [
     {
       level: "log" as const,

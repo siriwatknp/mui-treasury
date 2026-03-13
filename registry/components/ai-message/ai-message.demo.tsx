@@ -5,7 +5,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import { Message, MessageContent, MessageAvatar } from "./ai-message";
 
-export default function AIMessageDemo() {
+export function Demo() {
   return (
     <Box sx={{ width: "100%", maxWidth: 896, mx: "auto", p: 4 }}>
       <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>

@@ -54,4 +54,4 @@ const SidebarRail = React.forwardRef<
   );
 });
 
-export default SidebarRail;
+export { SidebarRail };

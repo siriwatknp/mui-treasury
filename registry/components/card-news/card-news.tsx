@@ -12,7 +12,7 @@ import { InfoSubtitle } from "../info-basic/info-subtitle";
 import { InfoTitle } from "../info-basic/info-title";
 import { getInfoN01Styles } from "../info-n01/info-n01.styles";
 
-export default function CardNews() {
+export function CardNews() {
   return (
     <Card
       sx={(theme) => ({

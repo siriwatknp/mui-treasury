@@ -29,4 +29,4 @@ const SidebarText = React.forwardRef<
   );
 });
 
-export default SidebarText;
+export { SidebarText };

@@ -6,6 +6,7 @@
   "meta": {
     "category": "primitive",
     "previewClassName": "bg-white dark:bg-neutral-950",
-    "subcategory": "info"
+    "subcategory": "info",
+    "exportName": "InfoN04"
   }
 }

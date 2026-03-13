@@ -105,4 +105,4 @@ const SidebarIcon = React.forwardRef<
   );
 });
 
-export default SidebarIcon;
+export { SidebarIcon };

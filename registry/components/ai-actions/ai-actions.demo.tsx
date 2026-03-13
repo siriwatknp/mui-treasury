@@ -3,7 +3,7 @@
 import { Actions, Action } from "./ai-actions";
 import { CopyIcon, ShareIcon, MoreVerticalIcon } from "lucide-react";
 
-export default function AIActionsDemo() {
+export function Demo() {
   return (
     <div className="flex flex-col gap-8 p-8">
       <div className="space-y-2">

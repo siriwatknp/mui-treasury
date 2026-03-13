@@ -216,6 +216,7 @@ function ItemDetailPage({
           <PreviewComponent>
             <DynamicComponentLoader
               componentPath={item.path.replace(".tsx", "")}
+              exportName={item.meta.exportName}
             />
           </PreviewComponent>
         </div>

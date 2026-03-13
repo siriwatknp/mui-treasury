@@ -5,6 +5,7 @@
   "description": "A database-metrics-card block.",
   "meta": {
     "screenshot": "/screenshots/database-metrics-card.png",
-    "category": "dashboard"
+    "category": "dashboard",
+    "exportName": "DatabaseMetricsCard"
   }
 }

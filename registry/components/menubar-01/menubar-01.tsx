@@ -32,7 +32,7 @@ function MenuItem({
   );
 }
 
-export default function Menubar01() {
+export function Menubar01() {
   return (
     <Menubar
       render={

@@ -9,7 +9,7 @@ import {
   ConversationScrollButton,
 } from "./ai-conversation";
 
-export default function AIConversationDemo() {
+export function Demo() {
   return (
     <Paper
       variant="outlined"

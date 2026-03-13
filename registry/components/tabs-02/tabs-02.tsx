@@ -4,7 +4,7 @@ import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
-export default function Tabs02() {
+export function Tabs02() {
   const [value, setValue] = React.useState(2);
 
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {

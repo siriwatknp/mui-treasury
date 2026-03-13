@@ -2,7 +2,7 @@
 
 import { CodeBlock, CodeBlockCopyButton } from "./ai-code-block";
 
-export default function AICodeBlockDemo() {
+export function Demo() {
   const sampleCode = `function fibonacci(n) {
   if (n <= 1) return n;
   return fibonacci(n - 1) + fibonacci(n - 2);

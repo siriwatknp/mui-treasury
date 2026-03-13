@@ -1,19 +1,19 @@
 "use client";
 
 import Box from "@mui/material/Box";
-import SidebarContainer from "./sidebar-container";
-import SidebarGroup from "../sidebar-group/sidebar-group";
-import SidebarGroupLabel from "../sidebar-group-label/sidebar-group-label";
-import SidebarMenuList from "../sidebar-menu/sidebar-menu-list";
-import SidebarMenuItem from "../sidebar-menu-item/sidebar-menu-item";
-import SidebarMenuButton from "../sidebar-menu-button/sidebar-menu-button";
-import SidebarIcon from "../sidebar-icon/sidebar-icon";
-import SidebarText from "../sidebar-text/sidebar-text";
+import { SidebarContainer } from "./sidebar-container";
+import { SidebarGroup } from "../sidebar-group/sidebar-group";
+import { SidebarGroupLabel } from "../sidebar-group-label/sidebar-group-label";
+import { SidebarMenuList } from "../sidebar-menu/sidebar-menu-list";
+import { SidebarMenuItem } from "../sidebar-menu-item/sidebar-menu-item";
+import { SidebarMenuButton } from "../sidebar-menu-button/sidebar-menu-button";
+import { SidebarIcon } from "../sidebar-icon/sidebar-icon";
+import { SidebarText } from "../sidebar-text/sidebar-text";
 import HomeRounded from "@mui/icons-material/HomeRounded";
 import SearchRounded from "@mui/icons-material/SearchRounded";
 import SettingsRounded from "@mui/icons-material/SettingsRounded";
 
-export default function SidebarContainerDemo() {
+export function Demo() {
   return (
     <Box sx={{ display: "flex", gap: 4 }}>
       <Box

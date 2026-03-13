@@ -5,6 +5,7 @@
   "description": "Radio card component for selecting options with detailed information",
   "meta": {
     "category": "primitive",
-    "subcategory": "radio"
+    "subcategory": "radio",
+    "exportName": "RadioCard01"
   }
 }

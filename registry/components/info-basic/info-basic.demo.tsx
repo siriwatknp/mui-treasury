@@ -6,7 +6,7 @@ import { InfoEyebrow } from "./info-eyebrow";
 import { InfoSubtitle } from "./info-subtitle";
 import { InfoTitle } from "./info-title";
 
-export default function InfoBasicDemo() {
+export function Demo() {
   return (
     <Info>
       <InfoEyebrow>Material Blog</InfoEyebrow>

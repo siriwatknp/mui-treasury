@@ -53,4 +53,4 @@ const CollapsibleIcon = React.forwardRef<
   );
 });
 
-export default CollapsibleIcon;
+export { CollapsibleIcon };

@@ -24,7 +24,10 @@ export default async function PreviewPage({ params }: PreviewPageProps) {
     return (
       <div className="min-h-screen bg-background">
         <PreviewComponent>
-          <DynamicComponentLoader componentPath={componentPath} />
+          <DynamicComponentLoader
+            componentPath={componentPath}
+            exportName={item.meta.exportName}
+          />
         </PreviewComponent>
       </div>
     );

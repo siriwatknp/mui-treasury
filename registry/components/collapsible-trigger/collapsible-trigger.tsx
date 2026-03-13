@@ -39,4 +39,4 @@ const CollapsibleTrigger = function CollapsibleTrigger({
   });
 };
 
-export default CollapsibleTrigger;
+export { CollapsibleTrigger };

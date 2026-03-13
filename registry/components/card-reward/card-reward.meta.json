@@ -6,6 +6,7 @@
   "description": "Purple gradient reward card with trophy image, contest title, date range, and 'Enter Now' button",
   "meta": {
     "category": "primitive",
-    "subcategory": "card"
+    "subcategory": "card",
+    "exportName": "CardReward"
   }
 }

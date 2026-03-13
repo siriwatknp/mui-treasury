@@ -5,6 +5,7 @@
   "description": "A metric card displaying member count with trend indicator and sparkline chart",
   "meta": {
     "screenshot": "/screenshots/members-metric.png",
-    "category": "dashboard"
+    "category": "dashboard",
+    "exportName": "MembersMetric"
   }
 }

@@ -5,7 +5,7 @@ import { InfoSubtitle } from "../info-basic/info-subtitle";
 import { InfoTitle } from "../info-basic/info-title";
 import { getInfoN01Styles } from "./info-n01.styles";
 
-export default function InfoN01() {
+export function InfoN01() {
   return (
     <Info variant="n01" useStyles={getInfoN01Styles}>
       <InfoEyebrow>March 20, 2019</InfoEyebrow>

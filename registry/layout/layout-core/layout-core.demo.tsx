@@ -6,7 +6,7 @@ import Header from "./Header";
 import Content from "./Content";
 import Footer from "./Footer";
 
-export default function LayoutDemo() {
+export function Demo() {
   return (
     <Root sx={{ minHeight: 400, width: "100%" }}>
       <Header sx={{ px: 2 }}>

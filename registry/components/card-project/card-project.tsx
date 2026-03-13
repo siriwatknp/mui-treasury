@@ -12,7 +12,7 @@ import { InfoSubtitle } from "../info-basic/info-subtitle";
 import { InfoTitle } from "../info-basic/info-title";
 import { getInfoN03Styles } from "../info-n03/info-n03.styles";
 
-export default function CardProject() {
+export function CardProject() {
   return (
     <Card
       sx={(theme) => ({

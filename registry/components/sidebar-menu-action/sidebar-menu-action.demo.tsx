@@ -2,20 +2,20 @@
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import SidebarContainer from "../sidebar-container/sidebar-container";
-import SidebarGroup from "../sidebar-group/sidebar-group";
-import SidebarMenuList from "../sidebar-menu/sidebar-menu-list";
-import SidebarMenuItem from "../sidebar-menu-item/sidebar-menu-item";
-import SidebarMenuButton from "../sidebar-menu-button/sidebar-menu-button";
-import SidebarMenuAction from "./sidebar-menu-action";
-import SidebarIcon from "../sidebar-icon/sidebar-icon";
-import SidebarText from "../sidebar-text/sidebar-text";
+import { SidebarContainer } from "../sidebar-container/sidebar-container";
+import { SidebarGroup } from "../sidebar-group/sidebar-group";
+import { SidebarMenuList } from "../sidebar-menu/sidebar-menu-list";
+import { SidebarMenuItem } from "../sidebar-menu-item/sidebar-menu-item";
+import { SidebarMenuButton } from "../sidebar-menu-button/sidebar-menu-button";
+import { SidebarMenuAction } from "./sidebar-menu-action";
+import { SidebarIcon } from "../sidebar-icon/sidebar-icon";
+import { SidebarText } from "../sidebar-text/sidebar-text";
 import FolderRounded from "@mui/icons-material/FolderRounded";
 import DescriptionRounded from "@mui/icons-material/DescriptionRounded";
 import MoreHorizRounded from "@mui/icons-material/MoreHorizRounded";
 import AddRounded from "@mui/icons-material/AddRounded";
 
-export default function SidebarMenuActionDemo() {
+export function Demo() {
   return (
     <Box sx={{ display: "flex", gap: 4 }}>
       <div style={{ width: 240 }}>

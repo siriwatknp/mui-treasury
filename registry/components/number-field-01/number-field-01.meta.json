@@ -5,6 +5,7 @@
   "description": "Base UI Number Field for numeric values with increment/decrement buttons",
   "meta": {
     "category": "primitive",
-    "subcategory": "text-field"
+    "subcategory": "text-field",
+    "exportName": "NumberField01"
   }
 }

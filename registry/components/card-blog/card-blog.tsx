@@ -8,7 +8,7 @@ import { InfoEyebrow } from "../info-basic/info-eyebrow";
 import { InfoSubtitle } from "../info-basic/info-subtitle";
 import { InfoTitle } from "../info-basic/info-title";
 
-export default function CardBlog() {
+export function CardBlog() {
   return (
     <Card
       sx={(theme) => ({

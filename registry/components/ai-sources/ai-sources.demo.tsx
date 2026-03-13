@@ -3,7 +3,7 @@
 import { Sources, SourcesTrigger, SourcesContent, Source } from "./ai-sources";
 import { BookIcon } from "lucide-react";
 
-export default function AISourcesDemo() {
+export function Demo() {
   const sources = [
     {
       title: "React Documentation",

@@ -37,7 +37,7 @@ const StyledRoot = styled("div")<{ color?: string }>(
         boxShadow: "0 6px 20px 0 rgba(0,0,0,0.38)",
       },
     },
-  })
+  }),
 );
 
 const CardMediaCover = styled(CardMedia)(() => ({
@@ -82,7 +82,7 @@ const StyledContent = styled("div")<{ color?: string }>(
         .rotate(24)
         .lighten(0.12)})`,
     },
-  })
+  }),
 );
 
 const AvatarLogo = styled(Avatar)(() => ({
@@ -151,7 +151,7 @@ const CustomCard = ({
   );
 };
 
-export default function CardHighlight() {
+export function CardHighlight() {
   return (
     <Stack direction="row" spacing={4} sx={{ flexWrap: "nowrap" }}>
       <CustomCard

@@ -5,6 +5,7 @@
   "description": "Icon-based select component for switching color schemes",
   "meta": {
     "category": "primitive",
-    "subcategory": "color-scheme"
+    "subcategory": "color-scheme",
+    "exportName": "ColorSchemeSelectIcon"
   }
 }

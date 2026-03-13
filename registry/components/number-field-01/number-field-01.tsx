@@ -9,7 +9,7 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import OutlinedInput from "@mui/material/OutlinedInput";
 
-export default function NumberField01({
+export function NumberField01({
   id: idProp,
   label,
   error,

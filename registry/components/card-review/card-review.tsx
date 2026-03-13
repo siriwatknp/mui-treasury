@@ -13,7 +13,7 @@ import IconButton from "@mui/material/IconButton";
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 
-export default function CardReview() {
+export function CardReview() {
   return (
     <Card
       variant="elevation"

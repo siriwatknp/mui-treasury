@@ -9,7 +9,7 @@ import {
   BranchPage,
 } from "./ai-branch";
 
-export default function AIBranchDemo() {
+export function Demo() {
   return (
     <div className="w-full max-w-2xl mx-auto p-8">
       <h3 className="text-sm font-medium text-muted-foreground mb-4">

@@ -2,7 +2,7 @@
 
 import { Response } from "./ai-response";
 
-export default function AIResponseDemo() {
+export function Demo() {
   const markdownContent = `
 ## Welcome to AI Response
 

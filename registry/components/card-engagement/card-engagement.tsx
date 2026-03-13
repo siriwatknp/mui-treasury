@@ -10,7 +10,7 @@ import { Info } from "../info-basic/info";
 import { InfoSubtitle } from "../info-basic/info-subtitle";
 import { InfoTitle } from "../info-basic/info-title";
 
-export default function CardEngagement() {
+export function CardEngagement() {
   return (
     <Card
       sx={{

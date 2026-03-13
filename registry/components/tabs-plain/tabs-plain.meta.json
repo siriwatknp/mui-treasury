@@ -5,6 +5,7 @@
   "description": "Plain bordered tabs with subtle background and white selection",
   "meta": {
     "category": "primitive",
-    "subcategory": "tabs"
+    "subcategory": "tabs",
+    "exportName": "TabsPlain"
   }
 }

@@ -106,4 +106,4 @@ const SidebarMenuButton = React.forwardRef<
   );
 });
 
-export default SidebarMenuButton;
+export { SidebarMenuButton };

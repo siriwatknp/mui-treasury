@@ -15,7 +15,7 @@ export interface CardAction02Props {
   href?: string;
 }
 
-export default function CardAction02({
+export function CardAction02({
   icon = (
     <Box
       component="svg"

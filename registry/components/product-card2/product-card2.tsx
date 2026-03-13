@@ -24,7 +24,7 @@ interface ProductCard2Props {
   onAddToCart?: (selectedSize: string, selectedColor: string) => void;
 }
 
-export default function ProductCard2({
+export function ProductCard2({
   productName = "React Running",
   productModel = "Shoe 2",
   price = 120,
@@ -41,14 +41,14 @@ export default function ProductCard2({
 }: ProductCard2Props) {
   const [selectedSize, setSelectedSize] = useState<string>("");
   const [selectedColor, setSelectedColor] = useState<string>(
-    colors[0]?.value || ""
+    colors[0]?.value || "",
   );
   const [isFavorited, setIsFavorited] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSizeChange = (
     _event: React.MouseEvent<HTMLElement>,
-    newSize: string
+    newSize: string,
   ) => {
     if (newSize !== null) {
       setSelectedSize(newSize);

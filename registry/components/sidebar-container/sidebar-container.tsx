@@ -56,4 +56,4 @@ const SidebarContainer = React.forwardRef<
   );
 });
 
-export default SidebarContainer;
+export { SidebarContainer };

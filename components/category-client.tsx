@@ -52,20 +52,27 @@ const ComponentPreviewContent = React.memo(
         return dynamic(
           () =>
             import(`@/registry/${componentPath}.demo`)
-              .catch(() => {
-                return import(`@/registry/${componentPath}`);
-              })
               .then((mod) => {
-                if (mod && mod.default) return mod;
-                return {
-                  default: function NoDefaultExport() {
-                    return (
-                      <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                        <span className="text-sm">Preview unavailable</span>
-                      </div>
-                    );
-                  },
-                };
+                if (mod && mod.Demo) return { default: mod.Demo };
+                return null;
+              })
+              .catch(() => null)
+              .then((result) => {
+                if (result) return result;
+                return import(`@/registry/${componentPath}`).then((mod) => {
+                  const exportName = item.meta.exportName;
+                  if (exportName && mod[exportName])
+                    return { default: mod[exportName] };
+                  return {
+                    default: function NoExport() {
+                      return (
+                        <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+                          <span className="text-sm">Preview unavailable</span>
+                        </div>
+                      );
+                    },
+                  };
+                });
               })
               .catch(() => {
                 return {
@@ -96,7 +103,7 @@ const ComponentPreviewContent = React.memo(
           );
         };
       }
-    }, [item.path, needsIframe, hasScreenshotPreview]);
+    }, [item.path, item.meta.exportName, needsIframe, hasScreenshotPreview]);
 
     if (hasScreenshotPreview) {
       return (

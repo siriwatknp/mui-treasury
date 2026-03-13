@@ -25,4 +25,4 @@ const SidebarMenuItem = React.forwardRef<
   );
 });
 
-export default SidebarMenuItem;
+export { SidebarMenuItem };

@@ -22,7 +22,7 @@ interface FormErrors {
   password?: string;
 }
 
-export default function LoginFormSplit() {
+export function LoginFormSplit() {
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",

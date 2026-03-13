@@ -5,6 +5,7 @@
   "description": "A portfolio-value-chart block.",
   "meta": {
     "screenshot": "/screenshots/portfolio-value-chart.png",
-    "category": "dashboard"
+    "category": "dashboard",
+    "exportName": "PortfolioValueChart"
   }
 }

@@ -39,4 +39,4 @@ const SidebarGroupLabel = React.forwardRef<
   );
 });
 
-export default SidebarGroupLabel;
+export { SidebarGroupLabel };

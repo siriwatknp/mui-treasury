@@ -6,6 +6,7 @@
   "description": "Music card with rounded album artwork and Info components displaying artist/title/description using N04 styles",
   "meta": {
     "category": "primitive",
-    "subcategory": "card"
+    "subcategory": "card",
+    "exportName": "CardMusic"
   }
 }

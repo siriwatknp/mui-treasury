@@ -37,7 +37,7 @@ const { messages, status, error, sendMessage, stop, regenerate } = useChat({
   transport,
 });`;
 
-export default function FirebaseChatTransportDemo() {
+export function Demo() {
   return (
     <div className="w-full max-w-3xl mx-auto">
       <CodeBlock code={usageCode} language="tsx" showLineNumbers>

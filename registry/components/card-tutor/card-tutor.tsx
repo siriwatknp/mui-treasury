@@ -64,7 +64,7 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
   }),
 }));
 
-export default function CardTutor() {
+export function CardTutor() {
   return (
     <Box
       display="flex"

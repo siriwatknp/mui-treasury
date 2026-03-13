@@ -44,7 +44,7 @@ function ColorSwatchIcon({ color, checked = false }: ColorSwatchIconProps) {
   );
 }
 
-export default function RadioColor01() {
+export function RadioColor01() {
   const [selectedColor, setSelectedColor] = React.useState("silver");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -2,19 +2,19 @@
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import SidebarContainer from "../sidebar-container/sidebar-container";
-import SidebarGroup from "../sidebar-group/sidebar-group";
-import SidebarMenuList from "./sidebar-menu-list";
-import SidebarMenuItem from "../sidebar-menu-item/sidebar-menu-item";
-import SidebarMenuButton from "../sidebar-menu-button/sidebar-menu-button";
-import SidebarIcon from "../sidebar-icon/sidebar-icon";
-import SidebarText from "../sidebar-text/sidebar-text";
-import SidebarGroupText from "../sidebar-group-text/sidebar-group-text";
+import { SidebarContainer } from "../sidebar-container/sidebar-container";
+import { SidebarGroup } from "../sidebar-group/sidebar-group";
+import { SidebarMenuList } from "./sidebar-menu-list";
+import { SidebarMenuItem } from "../sidebar-menu-item/sidebar-menu-item";
+import { SidebarMenuButton } from "../sidebar-menu-button/sidebar-menu-button";
+import { SidebarIcon } from "../sidebar-icon/sidebar-icon";
+import { SidebarText } from "../sidebar-text/sidebar-text";
+import { SidebarGroupText } from "../sidebar-group-text/sidebar-group-text";
 import HomeRounded from "@mui/icons-material/HomeRounded";
 import FolderRounded from "@mui/icons-material/FolderRounded";
 import DescriptionRounded from "@mui/icons-material/DescriptionRounded";
 
-export default function SidebarMenuDemo() {
+export function Demo() {
   return (
     <Box sx={{ display: "flex", gap: 4 }}>
       <div style={{ width: 240 }}>

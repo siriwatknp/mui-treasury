@@ -2,12 +2,12 @@
 import ChevronRightRounded from "@mui/icons-material/ChevronRightRounded";
 import FolderRounded from "@mui/icons-material/FolderRounded";
 import BarChartRounded from "@mui/icons-material/BarChartRounded";
-import SidebarContainer from "../sidebar-container/sidebar-container";
-import SidebarMenuList from "../sidebar-menu/sidebar-menu-list";
-import SidebarMenuItem from "../sidebar-menu-item/sidebar-menu-item";
-import SidebarMenuButton from "../sidebar-menu-button/sidebar-menu-button";
-import SidebarIcon from "../sidebar-icon/sidebar-icon";
-import SidebarText from "../sidebar-text/sidebar-text";
+import { SidebarContainer } from "../sidebar-container/sidebar-container";
+import { SidebarMenuList } from "../sidebar-menu/sidebar-menu-list";
+import { SidebarMenuItem } from "../sidebar-menu-item/sidebar-menu-item";
+import { SidebarMenuButton } from "../sidebar-menu-button/sidebar-menu-button";
+import { SidebarIcon } from "../sidebar-icon/sidebar-icon";
+import { SidebarText } from "../sidebar-text/sidebar-text";
 import {
   PopupMenuList,
   PopupMenuItem,
@@ -15,7 +15,7 @@ import {
   PopupMenuContent,
 } from "./popup-menu";
 
-export default function PopupMenuDemo() {
+export function Demo() {
   return (
     <div style={{ width: 36 }}>
       <SidebarContainer>

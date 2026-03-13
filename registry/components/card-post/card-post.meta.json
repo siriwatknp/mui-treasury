@@ -6,6 +6,7 @@
   "description": "Social post card with clipped polygon image, positioned avatar overlay, Info title/subtitle, and share/like action buttons",
   "meta": {
     "category": "primitive",
-    "subcategory": "card"
+    "subcategory": "card",
+    "exportName": "CardPost"
   }
 }

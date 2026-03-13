@@ -9,7 +9,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 
-export default function CardPreview01() {
+export function CardPreview01() {
   return (
     <Box sx={{ maxWidth: 600, mx: "auto", p: 4 }}>
       <Typography variant="body1" sx={{ lineHeight: 1.8 }}>

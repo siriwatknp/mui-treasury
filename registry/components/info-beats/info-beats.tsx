@@ -5,7 +5,7 @@ import { InfoSubtitle } from "../info-basic/info-subtitle";
 import { InfoTitle } from "../info-basic/info-title";
 import { getInfoBeatsStyles } from "./info-beats.styles";
 
-export default function InfoBeats() {
+export function InfoBeats() {
   return (
     <Info variant="beats" useStyles={getInfoBeatsStyles}>
       <InfoTitle>Beats</InfoTitle>

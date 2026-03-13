@@ -26,7 +26,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
-export default function DashboardSidebar() {
+export function DashboardSidebar() {
   const [customersExpanded, setCustomersExpanded] = React.useState(false);
   const [selectedItem, setSelectedItem] = React.useState("dashboard");
 

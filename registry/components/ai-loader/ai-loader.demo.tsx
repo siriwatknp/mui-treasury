@@ -6,7 +6,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import { Loader } from "./ai-loader";
 
-export default function AILoaderDemo() {
+export function Demo() {
   return (
     <Box sx={{ width: "100%", maxWidth: 768, mx: "auto", p: 4 }}>
       <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>

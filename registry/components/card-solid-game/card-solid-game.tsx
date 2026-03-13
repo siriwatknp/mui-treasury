@@ -48,7 +48,7 @@ const CardContentStyled = styled(CardContent)<{ color: string }>(
   ({ color }) => ({
     backgroundColor: color,
     padding: "1rem 1.5rem 1.5rem",
-  })
+  }),
 );
 
 const TypographyTitle = styled(Typography)(() => ({
@@ -97,7 +97,7 @@ const CustomCard = ({
   </CardActionAreaStyled>
 );
 
-export default function CardSolidGame() {
+export function CardSolidGame() {
   return (
     <Grid container spacing={4}>
       <Grid>

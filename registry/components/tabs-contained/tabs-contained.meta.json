@@ -5,6 +5,7 @@
   "description": "Contained tabs with separator lines and secondary color for selected state",
   "meta": {
     "category": "primitive",
-    "subcategory": "tabs"
+    "subcategory": "tabs",
+    "exportName": "TabsContained"
   }
 }

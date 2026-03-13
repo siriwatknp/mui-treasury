@@ -6,6 +6,7 @@
   "description": "Review card with image, star rating, location info, and avatar group showing reviewers",
   "meta": {
     "category": "primitive",
-    "subcategory": "card"
+    "subcategory": "card",
+    "exportName": "CardReview"
   }
 }

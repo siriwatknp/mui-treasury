@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Reasoning, ReasoningTrigger, ReasoningContent } from "./ai-reasoning";
 
-export default function AIReasoningDemo() {
+export function Demo() {
   const [isStreaming, setIsStreaming] = useState(false);
 
   const simulateStreaming = () => {

@@ -62,4 +62,4 @@ const SidebarTooltip = React.forwardRef<HTMLDivElement, SidebarTooltipProps>(
   },
 );
 
-export default SidebarTooltip;
+export { SidebarTooltip };

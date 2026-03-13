@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Dropzone01, DropzoneFile } from "./dropzone-01";
 
-export default function Dropzone01Demo() {
+export function Demo() {
   const [files, setFiles] = React.useState<DropzoneFile[]>([]);
 
   return (

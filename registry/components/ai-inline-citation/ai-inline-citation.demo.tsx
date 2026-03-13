@@ -16,7 +16,7 @@ import {
   InlineCitationQuote,
 } from "./ai-inline-citation";
 
-export default function AIInlineCitationDemo() {
+export function Demo() {
   const sources = [
     "https://react.dev/learn/thinking-in-react",
     "https://react.dev/learn/state-a-components-memory",

@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { useTheme } from "@mui/material/styles";
 
-export default function SlaPerformanceCard() {
+export function SlaPerformanceCard() {
   const theme = useTheme();
   const withinSLA = 83.3;
   const breached = 16.7;

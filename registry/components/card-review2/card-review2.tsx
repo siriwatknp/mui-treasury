@@ -12,7 +12,7 @@ import Divider from "@mui/material/Divider";
 import Link from "@mui/material/Link";
 import Rating from "@mui/material/Rating";
 
-export default function CardReview2() {
+export function CardReview2() {
   return (
     <Card
       elevation={0}

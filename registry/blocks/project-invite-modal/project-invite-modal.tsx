@@ -34,7 +34,7 @@ interface ProjectMember {
   permission: "Owner" | "Can View" | "Can Edit";
 }
 
-export default function ProjectInviteModal() {
+export function ProjectInviteModal() {
   const [open, setOpen] = React.useState(true);
   const [email, setEmail] = React.useState("Johndoe@gmail.com");
   const [linkAccess, setLinkAccess] = React.useState("Anyone with link");

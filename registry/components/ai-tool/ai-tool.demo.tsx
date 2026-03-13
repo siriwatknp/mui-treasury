@@ -8,7 +8,7 @@ import {
   ToolOutput,
 } from "./ai-tool";
 
-export default function AIToolDemo() {
+export function Demo() {
   const tools = [
     {
       type: "tool-search_web" as const,

@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import PortfolioValueChart from "@/registry/blocks/portfolio-value-chart/portfolio-value-chart";
+import { PortfolioValueChart } from "@/registry/blocks/portfolio-value-chart/portfolio-value-chart";
 
 export default function PortfolioValueChartPage() {
   return (

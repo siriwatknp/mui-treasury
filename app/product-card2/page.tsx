@@ -1,7 +1,7 @@
 "use client";
 
 import { PreviewComponent } from "@/components/preview-page";
-import ProductCard2 from "@/registry/components/product-card2/product-card2";
+import { ProductCard2 } from "@/registry/components/product-card2/product-card2";
 
 export default function Page() {
   return (

@@ -18,7 +18,7 @@ import {
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
-export default function AIChainOfThoughtDemo() {
+export function Demo() {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 4, p: 4 }}>
       {/* Basic Chain of Thought */}

@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 
-export default function RadioCard01() {
+export function RadioCard01() {
   const [value, setValue] = React.useState("pro-max");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

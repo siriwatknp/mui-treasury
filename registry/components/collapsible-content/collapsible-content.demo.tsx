@@ -2,17 +2,17 @@
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import SidebarContainer from "../sidebar-container/sidebar-container";
-import SidebarGroup from "../sidebar-group/sidebar-group";
-import SidebarMenuList from "../sidebar-menu/sidebar-menu-list";
-import SidebarMenuItem from "../sidebar-menu-item/sidebar-menu-item";
-import SidebarMenuButton from "../sidebar-menu-button/sidebar-menu-button";
-import SidebarMenuAction from "../sidebar-menu-action/sidebar-menu-action";
-import SidebarIcon from "../sidebar-icon/sidebar-icon";
-import SidebarText from "../sidebar-text/sidebar-text";
-import CollapsibleTrigger from "../collapsible-trigger/collapsible-trigger";
-import CollapsibleContent from "./collapsible-content";
-import CollapsibleIcon from "../collapsible-icon/collapsible-icon";
+import { SidebarContainer } from "../sidebar-container/sidebar-container";
+import { SidebarGroup } from "../sidebar-group/sidebar-group";
+import { SidebarMenuList } from "../sidebar-menu/sidebar-menu-list";
+import { SidebarMenuItem } from "../sidebar-menu-item/sidebar-menu-item";
+import { SidebarMenuButton } from "../sidebar-menu-button/sidebar-menu-button";
+import { SidebarMenuAction } from "../sidebar-menu-action/sidebar-menu-action";
+import { SidebarIcon } from "../sidebar-icon/sidebar-icon";
+import { SidebarText } from "../sidebar-text/sidebar-text";
+import { CollapsibleTrigger } from "../collapsible-trigger/collapsible-trigger";
+import { CollapsibleContent } from "./collapsible-content";
+import { CollapsibleIcon } from "../collapsible-icon/collapsible-icon";
 import HomeRounded from "@mui/icons-material/HomeRounded";
 import PeopleRounded from "@mui/icons-material/PeopleRounded";
 import DescriptionRounded from "@mui/icons-material/DescriptionRounded";
@@ -20,7 +20,7 @@ import SettingsRounded from "@mui/icons-material/SettingsRounded";
 import ExpandMoreRounded from "@mui/icons-material/ExpandMoreRounded";
 import MoreVertRounded from "@mui/icons-material/MoreVertRounded";
 
-export default function CollapsibleContentDemo() {
+export function Demo() {
   return (
     <Box sx={{ display: "flex", gap: 4 }}>
       <div style={{ width: 240 }}>

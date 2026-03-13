@@ -1,17 +1,17 @@
 "use client";
 
-import SidebarContainer from "../sidebar-container/sidebar-container";
-import SidebarGroup from "../sidebar-group/sidebar-group";
-import SidebarMenuList from "../sidebar-menu/sidebar-menu-list";
-import SidebarMenuItem from "../sidebar-menu-item/sidebar-menu-item";
-import SidebarMenuButton from "../sidebar-menu-button/sidebar-menu-button";
-import SidebarIcon from "../sidebar-icon/sidebar-icon";
-import SidebarText from "../sidebar-text/sidebar-text";
-import SidebarGroupText from "./sidebar-group-text";
+import { SidebarContainer } from "../sidebar-container/sidebar-container";
+import { SidebarGroup } from "../sidebar-group/sidebar-group";
+import { SidebarMenuList } from "../sidebar-menu/sidebar-menu-list";
+import { SidebarMenuItem } from "../sidebar-menu-item/sidebar-menu-item";
+import { SidebarMenuButton } from "../sidebar-menu-button/sidebar-menu-button";
+import { SidebarIcon } from "../sidebar-icon/sidebar-icon";
+import { SidebarText } from "../sidebar-text/sidebar-text";
+import { SidebarGroupText } from "./sidebar-group-text";
 import InboxRounded from "@mui/icons-material/InboxRounded";
 import PersonRounded from "@mui/icons-material/PersonRounded";
 
-export default function SidebarGroupTextDemo() {
+export function Demo() {
   return (
     <div style={{ width: 240 }}>
       <SidebarContainer>

@@ -6,6 +6,7 @@
   "description": "Full-bleed image card with centered white text heading and explore label, positioned absolutely over background",
   "meta": {
     "category": "primitive",
-    "subcategory": "card"
+    "subcategory": "card",
+    "exportName": "CardNews2"
   }
 }

@@ -31,4 +31,4 @@ const SidebarGroupText = React.forwardRef<
   );
 });
 
-export default SidebarGroupText;
+export { SidebarGroupText };

@@ -92,4 +92,4 @@ const SidebarMenuAction = React.forwardRef<
   );
 });
 
-export default SidebarMenuAction;
+export { SidebarMenuAction };

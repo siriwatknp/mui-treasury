@@ -13,7 +13,7 @@ import {
   OpenInv0,
 } from "./ai-open-in-chat";
 
-export default function AIOpenInChatDemo() {
+export function Demo() {
   const query = "How to implement authentication in Next.js with TypeScript?";
 
   return (

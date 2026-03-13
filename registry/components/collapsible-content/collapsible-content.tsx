@@ -46,4 +46,4 @@ const CollapsibleContent = React.forwardRef<
   );
 });
 
-export default CollapsibleContent;
+export { CollapsibleContent };

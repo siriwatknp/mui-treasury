@@ -7,7 +7,7 @@ import LiveTv from "@mui/icons-material/LiveTv";
 import Tab, { tabClasses } from "@mui/material/Tab";
 import Tabs, { tabsClasses } from "@mui/material/Tabs";
 
-export default function TabsInstagram() {
+export function TabsInstagram() {
   const [tabIndex, setTabIndex] = React.useState(0);
   return (
     <Tabs

@@ -5,7 +5,7 @@ import { InfoSubtitle } from "../info-basic/info-subtitle";
 import { InfoTitle } from "../info-basic/info-title";
 import { getInfoN04Styles } from "./info-n04.styles";
 
-export default function InfoN04() {
+export function InfoN04() {
   return (
     <Info variant="n04" useStyles={getInfoN04Styles}>
       <InfoEyebrow>Kesha</InfoEyebrow>

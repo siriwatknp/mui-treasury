@@ -5,6 +5,7 @@
   "description": "Tabs with diagonal triangle shadow effect using CSS transform",
   "meta": {
     "category": "primitive",
-    "subcategory": "tabs"
+    "subcategory": "tabs",
+    "exportName": "TabsInsideTriangle"
   }
 }

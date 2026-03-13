@@ -4,7 +4,7 @@ import React from "react";
 import { NumberInputField, type NumberInputError } from "./number-input";
 import { InputAdornment } from "@mui/material";
 
-export default function NumberInputDemo() {
+export function Demo() {
   const [error, setError] = React.useState<NumberInputError | null>(null);
 
   return (
@@ -97,8 +97,8 @@ export default function NumberInputDemo() {
                 error === "exceed-max"
                   ? "Value exceeds maximum limit"
                   : error === "below-min"
-                  ? "Value is below minimum limit"
-                  : "Enter value between 10 and 40"
+                    ? "Value is below minimum limit"
+                    : "Enter value between 10 and 40"
               }
               defaultValue={20}
               min={10}

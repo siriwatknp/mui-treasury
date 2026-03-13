@@ -5,7 +5,7 @@ import { InfoSubtitle } from "../info-basic/info-subtitle";
 import { InfoTitle } from "../info-basic/info-title";
 import { getInfoN03Styles } from "./info-n03.styles";
 
-export default function InfoN03() {
+export function InfoN03() {
   return (
     <Info variant="n03" useStyles={getInfoN03Styles}>
       <InfoEyebrow>GOOGLE INC.</InfoEyebrow>

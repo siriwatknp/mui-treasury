@@ -12,7 +12,7 @@ export interface SelectInset01Props extends Omit<SelectProps, "label"> {
   options: Array<{ value: string; label: string }>;
 }
 
-export default function SelectInset01({
+export function SelectInset01({
   label = "Select an option",
   options = [],
   value,
