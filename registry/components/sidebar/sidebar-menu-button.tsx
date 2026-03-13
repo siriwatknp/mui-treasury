@@ -3,7 +3,7 @@ import React, { useMemo } from "react";
 import ButtonBase from "@mui/material/ButtonBase";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 import { styled } from "@mui/material/styles";
-import { sidebarMenuButtonClasses } from "./sidebar-classes";
+import { sidebarClasses } from "./sidebar-classes";
 
 interface SidebarMenuButtonProps {
   active?: boolean;
@@ -95,7 +95,7 @@ const SidebarMenuButton = React.forwardRef<
   return (
     <StyledSidebarMenuButton
       ref={ref}
-      className={`${sidebarMenuButtonClasses.root} ${className || ""}`}
+      className={`${sidebarClasses.menuButton} ${className || ""}`}
       ownerState={ownerState}
       as={className?.includes("CollapsibleTrigger") ? "label" : undefined}
       {...props}

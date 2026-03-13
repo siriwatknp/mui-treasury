@@ -2,7 +2,7 @@
 import React from "react";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 import { styled } from "@mui/material/styles";
-import { sidebarRailClasses } from "./sidebar-classes";
+import { sidebarClasses } from "./sidebar-classes";
 
 const StyledSidebarRail = styled("button", {
   name: "SidebarRail",
@@ -48,7 +48,7 @@ const SidebarRail = React.forwardRef<
   return (
     <StyledSidebarRail
       ref={ref}
-      className={`${sidebarRailClasses.root} ${className || ""}`}
+      className={`${sidebarClasses.rail} ${className || ""}`}
       {...props}
     />
   );

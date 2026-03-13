@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { sidebarMenuItemClasses } from "./sidebar-classes";
+import { sidebarClasses } from "./sidebar-classes";
 
 const StyledSidebarMenuItem = styled("div", {
   name: "SidebarMenuItem",
@@ -19,7 +19,7 @@ const SidebarMenuItem = React.forwardRef<
   return (
     <StyledSidebarMenuItem
       ref={ref}
-      className={`${sidebarMenuItemClasses.root} ${className || ""}`}
+      className={`${sidebarClasses.menuItem} ${className || ""}`}
       {...props}
     />
   );

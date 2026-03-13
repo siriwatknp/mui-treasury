@@ -2,7 +2,7 @@
 import React from "react";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 import { styled } from "@mui/material/styles";
-import { sidebarGroupLabelClasses } from "./sidebar-classes";
+import { sidebarClasses } from "./sidebar-classes";
 
 const StyledSidebarGroupLabel = styled("div", {
   name: "SidebarGroupLabel",
@@ -33,7 +33,7 @@ const SidebarGroupLabel = React.forwardRef<
   return (
     <StyledSidebarGroupLabel
       ref={ref}
-      className={`${sidebarGroupLabelClasses.root} ${className || ""}`}
+      className={`${sidebarClasses.groupLabel} ${className || ""}`}
       {...props}
     />
   );

@@ -2,13 +2,10 @@
 import React, { useMemo } from "react";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 import { styled } from "@mui/material/styles";
-import {
-  sidebarMenuClasses,
-  sidebarMenuButtonClasses,
-} from "./sidebar-classes";
+import { sidebarClasses } from "./sidebar-classes";
 import { SidebarMenuButton } from "./sidebar-menu-button";
 
-export { SidebarMenuButton, sidebarMenuButtonClasses };
+export { SidebarMenuButton };
 
 interface SidebarMenuProps {
   relaxed?: boolean;
@@ -93,7 +90,7 @@ const SidebarMenuList = React.forwardRef<
   return (
     <StyledSidebarMenuList
       ref={ref}
-      className={`${sidebarMenuClasses.root} ${className || ""}`}
+      className={`${sidebarClasses.menu} ${className || ""}`}
       ownerState={ownerState}
       {...props}
     />

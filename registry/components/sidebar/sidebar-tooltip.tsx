@@ -2,7 +2,7 @@
 import React from "react";
 import Tooltip, { type TooltipProps } from "@mui/material/Tooltip";
 import { styled } from "@mui/material/styles";
-import { sidebarTooltipClasses } from "./sidebar-classes";
+import { sidebarClasses } from "./sidebar-classes";
 
 const StyledTitle = styled("span", {
   name: "SidebarTooltip",
@@ -42,9 +42,7 @@ const SidebarTooltip = React.forwardRef<HTMLDivElement, SidebarTooltipProps>(
           }
         }}
         title={
-          <StyledTitle className={sidebarTooltipClasses.root}>
-            {title}
-          </StyledTitle>
+          <StyledTitle className={sidebarClasses.tooltip}>{title}</StyledTitle>
         }
         placement={placement}
         slotProps={{

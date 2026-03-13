@@ -1,51 +1,15 @@
-export const sidebarContainerClasses = {
-  root: "SidebarContainer",
-};
-
-export const sidebarGroupClasses = {
-  root: "SidebarGroup",
-};
-
-export const sidebarGroupLabelClasses = {
-  root: "SidebarGroupLabel",
-};
-
-export const sidebarGroupTextClasses = {
-  root: "SidebarGroupText",
-};
-
-export const sidebarMenuClasses = {
-  root: "SidebarMenuList",
-};
-
-export const sidebarMenuItemClasses = {
-  root: "SidebarMenuItem",
-};
-
-export const sidebarMenuButtonClasses = {
-  root: "SidebarMenuButton",
-};
-
-export const sidebarMenuActionClasses = {
-  root: "SidebarMenuAction",
-};
-
-export const sidebarTextClasses = {
-  root: "SidebarText",
-};
-
-export const sidebarIconClasses = {
-  root: "SidebarIcon",
-};
-
-export const sidebarTooltipClasses = {
-  root: "SidebarTooltip",
-};
-
-export const sidebarRailClasses = {
-  root: "SidebarRail",
-};
-
-export const popupMenuClasses = {
-  root: "PopupMenu",
+export const sidebarClasses = {
+  container: "SidebarContainer",
+  group: "SidebarGroup",
+  groupLabel: "SidebarGroupLabel",
+  groupText: "SidebarGroupText",
+  menu: "SidebarMenuList",
+  menuItem: "SidebarMenuItem",
+  menuButton: "SidebarMenuButton",
+  menuAction: "SidebarMenuAction",
+  text: "SidebarText",
+  icon: "SidebarIcon",
+  tooltip: "SidebarTooltip",
+  rail: "SidebarRail",
+  popupMenu: "PopupMenu",
 };

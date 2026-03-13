@@ -2,7 +2,7 @@
 import React, { useMemo } from "react";
 import { styled } from "@mui/material/styles";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
-import { sidebarContainerClasses } from "./sidebar-classes";
+import { sidebarClasses } from "./sidebar-classes";
 
 interface SidebarContainerProps {
   shrink?: string;
@@ -49,7 +49,7 @@ const SidebarContainer = React.forwardRef<
   return (
     <StyledSidebarContainer
       ref={ref}
-      className={`${sidebarContainerClasses.root} ${className || ""}`}
+      className={`${sidebarClasses.container} ${className || ""}`}
       ownerState={ownerState}
       {...props}
     />

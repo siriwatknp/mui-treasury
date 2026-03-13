@@ -3,7 +3,7 @@ import React, { useMemo } from "react";
 import { Breakpoint } from "@mui/material/styles";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 import { styled } from "@mui/material/styles";
-import { sidebarIconClasses, sidebarMenuItemClasses } from "./sidebar-classes";
+import { sidebarClasses } from "./sidebar-classes";
 
 interface SidebarIconProps {
   size?: string | Partial<Record<Breakpoint, string>>;
@@ -41,7 +41,7 @@ const StyledSidebarIcon = styled("span", {
             "--icon-size": v,
             height: v,
             width: v,
-            [`.${sidebarMenuItemClasses.root}:has(&)`]: {
+            [`.${sidebarClasses.menuItem}:has(&)`]: {
               "--icon-w": v,
             },
           });
@@ -97,7 +97,7 @@ const SidebarIcon = React.forwardRef<
   return (
     <StyledSidebarIcon
       ref={ref}
-      className={`${sidebarIconClasses.root} ${className || ""}`}
+      className={`${sidebarClasses.icon} ${className || ""}`}
       ownerState={ownerState}
       {...props}
     />

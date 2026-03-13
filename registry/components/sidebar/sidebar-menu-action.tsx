@@ -3,11 +3,7 @@ import React, { useMemo } from "react";
 import ButtonBase from "@mui/material/ButtonBase";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 import { styled } from "@mui/material/styles";
-import {
-  sidebarMenuActionClasses,
-  sidebarMenuButtonClasses,
-  sidebarGroupLabelClasses,
-} from "./sidebar-classes";
+import { sidebarClasses } from "./sidebar-classes";
 
 interface SidebarMenuActionProps {
   hoverAppear?: boolean;
@@ -58,7 +54,7 @@ const StyledSidebarMenuAction = styled(ButtonBase, {
           "&:hover, &:focus-visible": {
             opacity: 1,
           },
-          [`.${sidebarMenuButtonClasses.root}:hover ~ &, .${sidebarGroupLabelClasses.root} > &`]:
+          [`.${sidebarClasses.menuButton}:hover ~ &, .${sidebarClasses.groupLabel} > &`]:
             {
               opacity: 1,
             },
@@ -83,7 +79,7 @@ const SidebarMenuAction = React.forwardRef<
   return (
     <StyledSidebarMenuAction
       ref={ref}
-      className={`${sidebarMenuActionClasses.root} ${className || ""}`}
+      className={`${sidebarClasses.menuAction} ${className || ""}`}
       ownerState={ownerState}
       as={className?.includes("CollapsibleTrigger") ? "label" : undefined}
       {...props}

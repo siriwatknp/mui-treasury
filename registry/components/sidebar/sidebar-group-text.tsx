@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { sidebarGroupTextClasses } from "./sidebar-classes";
+import { sidebarClasses } from "./sidebar-classes";
 
 const StyledSidebarGroupText = styled("div", {
   name: "SidebarGroupText",
@@ -25,7 +25,7 @@ const SidebarGroupText = React.forwardRef<
   return (
     <StyledSidebarGroupText
       ref={ref}
-      className={`${sidebarGroupTextClasses.root} ${className || ""}`}
+      className={`${sidebarClasses.groupText} ${className || ""}`}
       {...props}
     />
   );

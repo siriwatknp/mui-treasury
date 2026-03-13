@@ -1,11 +1,5 @@
-export const collapsibleTriggerClasses = {
-  root: "CollapsibleTrigger",
-};
-
-export const collapsibleContentClasses = {
-  root: "CollapsibleContent",
-};
-
-export const collapsibleIconClasses = {
-  root: "CollapsibleIcon",
+export const collapsibleClasses = {
+  trigger: "CollapsibleTrigger",
+  content: "CollapsibleContent",
+  icon: "CollapsibleIcon",
 };

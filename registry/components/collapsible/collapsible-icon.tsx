@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { collapsibleIconClasses } from "./collapsible-classes";
+import { collapsibleClasses } from "./collapsible-classes";
 
 interface CollapsibleIconProps {
   rotate?: string;
@@ -44,7 +44,7 @@ const CollapsibleIcon = React.forwardRef<
   return (
     <StyledCollapsibleIcon
       ref={ref}
-      className={`${collapsibleIconClasses.root} ${className || ""}`}
+      className={`${collapsibleClasses.icon} ${className || ""}`}
       style={
         {
           ...style,

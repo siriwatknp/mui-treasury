@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { collapsibleContentClasses } from "./collapsible-classes";
+import { collapsibleClasses } from "./collapsible-classes";
 
 const StyledCollapsibleContent = styled("div", {
   name: "CollapsibleContent",
@@ -44,7 +44,7 @@ const CollapsibleContent = React.forwardRef<
   return (
     <StyledCollapsibleContent
       ref={ref}
-      className={`${collapsibleContentClasses.root} ${className || ""}`}
+      className={`${collapsibleClasses.content} ${className || ""}`}
       {...props}
     />
   );

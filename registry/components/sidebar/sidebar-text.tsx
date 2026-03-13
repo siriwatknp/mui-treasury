@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { sidebarTextClasses } from "./sidebar-classes";
+import { sidebarClasses } from "./sidebar-classes";
 
 const StyledSidebarText = styled("span", {
   name: "SidebarText",
@@ -14,7 +14,7 @@ const StyledSidebarText = styled("span", {
   opacity: "var(--_uncollapsed, 1) var(--_collapsed, 0)",
   whiteSpace: "nowrap",
   overflow: "hidden",
-  [`*:where(.${sidebarTextClasses.root} + &)`]: {
+  [`*:where(.${sidebarClasses.text} + &)`]: {
     fontSize: "calc(var(--item-fs, 0.875rem) - 0.125rem)",
   },
 });
@@ -26,7 +26,7 @@ const SidebarText = React.forwardRef<
   return (
     <StyledSidebarText
       ref={ref}
-      className={`${sidebarTextClasses.root} ${className || ""}`}
+      className={`${sidebarClasses.text} ${className || ""}`}
       {...props}
     />
   );
