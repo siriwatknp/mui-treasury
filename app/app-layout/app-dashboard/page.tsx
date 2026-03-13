@@ -44,13 +44,14 @@ import SidebarRail from "@/registry/components/sidebar-rail/sidebar-rail";
 import CollapsibleTrigger from "@/registry/components/collapsible-trigger/collapsible-trigger";
 import CollapsibleContent from "@/registry/components/collapsible-content/collapsible-content";
 import {
-  CollapsedSidebarMenuList,
-  CollapsedSidebarMenuItem,
-  CollapsedSidebarMenuLink,
-  CollapsedSidebarPopupContent,
-} from "@/registry/components/collapsed-sidebar-menu/collapsed-sidebar-menu";
+  PopupMenuList,
+  PopupMenuItem,
+  PopupMenuLink,
+  PopupMenuContent,
+} from "@/registry/components/popup-menu/popup-menu";
 import { useCollapsedSidebar } from "@/registry/layout/layout-core/SharedEdgeSidebar";
 import CollapsibleIcon from "@/registry/components/collapsible-icon/collapsible-icon";
+import SidebarTooltip from "@/registry/components/sidebar-tooltip/sidebar-tooltip";
 
 const SIDEBAR_ID = "app-dashboard-sidebar";
 
@@ -129,7 +130,7 @@ export default function AppDashboardPage() {
             {
               width: "260px",
               collapsedWidth: "52px",
-              hoverUncollapse: true,
+              // hoverUncollapse: true,
             },
           ],
         }}
@@ -137,170 +138,162 @@ export default function AppDashboardPage() {
         <EdgeDrawerClose />
         <EdgeSidebarContent>
           <SidebarContainer>
-            <CollapsedSidebarMenuList>
-              <SidebarGroup>
-                <SidebarGroupLabel>Navigation</SidebarGroupLabel>
-                <SidebarMenuList>
-                  {menus.map((item) => {
-                    const Icon = item.icon;
-                    return (
-                      <CollapsedSidebarMenuItem
-                        key={item.title}
-                        tooltip={item.title}
-                        render={
-                          <SidebarMenuButton
-                            active={item.title === "Account Home"}
-                          >
-                            <SidebarIcon shrinkSize="1.25rem">
-                              <Icon />
-                            </SidebarIcon>
-                            <SidebarText>{item.title}</SidebarText>
-                          </SidebarMenuButton>
-                        }
-                      />
-                    );
-                  })}
-                </SidebarMenuList>
-              </SidebarGroup>
+            <SidebarGroup>
+              <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+              <SidebarMenuList>
+                {menus.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <SidebarTooltip title={item.title} key={item.title}>
+                      <SidebarMenuButton active={item.title === "Account Home"}>
+                        <SidebarIcon shrinkSize="1.25rem">
+                          <Icon />
+                        </SidebarIcon>
+                        <SidebarText>{item.title}</SidebarText>
+                      </SidebarMenuButton>
+                    </SidebarTooltip>
+                  );
+                })}
+              </SidebarMenuList>
+            </SidebarGroup>
 
-              <SidebarGroup>
-                <SidebarGroupLabel>Workspace</SidebarGroupLabel>
-                <SidebarMenuList>
-                  {nestedMenus.map((item) => {
-                    const Icon = item.icon;
-                    return (
-                      <React.Fragment key={item.title}>
-                        {/* collapsed sidebar */}
-                        {collapsed && (
-                          <CollapsedSidebarMenuItem
-                            tooltip={item.title}
+            <SidebarGroup>
+              <SidebarGroupLabel>Workspace</SidebarGroupLabel>
+              <PopupMenuList>
+                {nestedMenus.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <React.Fragment key={item.title}>
+                      {/* collapsed sidebar */}
+                      {collapsed && (
+                        <PopupMenuItem
+                          tooltip={item.title}
+                          render={
+                            <SidebarMenuButton hideWhen="uncollapsed">
+                              <SidebarIcon shrinkSize="1.25rem">
+                                <Icon />
+                              </SidebarIcon>
+                            </SidebarMenuButton>
+                          }
+                        >
+                          <PopupMenuContent>
+                            <PopupMenuList>
+                              <PopupMenuItem
+                                render={
+                                  <SidebarMenuButton>
+                                    <SidebarText>Nested Menu</SidebarText>
+                                    <SidebarIcon>
+                                      <ChevronRightRounded />
+                                    </SidebarIcon>
+                                  </SidebarMenuButton>
+                                }
+                              >
+                                <PopupMenuContent>
+                                  <SidebarMenuList>
+                                    <SidebarMenuItem>
+                                      <PopupMenuLink
+                                        href="/app-layout/app-analytics"
+                                        component={NextLink}
+                                      >
+                                        Overview
+                                      </PopupMenuLink>
+                                    </SidebarMenuItem>
+                                    <SidebarMenuItem>
+                                      <PopupMenuLink
+                                        href="/app-layout/app-shopping-cart"
+                                        component={NextLink}
+                                      >
+                                        Settings
+                                      </PopupMenuLink>
+                                    </SidebarMenuItem>
+                                  </SidebarMenuList>
+                                </PopupMenuContent>
+                              </PopupMenuItem>
+                            </PopupMenuList>
+                            {item.children.map((child) => (
+                              <SidebarMenuItem key={child.title}>
+                                <PopupMenuLink href="#">
+                                  {child.title}
+                                </PopupMenuLink>
+                              </SidebarMenuItem>
+                            ))}
+                          </PopupMenuContent>
+                        </PopupMenuItem>
+                      )}
+
+                      {/* uncollapsed sidebar */}
+
+                      {!collapsed && (
+                        <SidebarMenuItem>
+                          <CollapsibleTrigger
+                            defaultChecked={item.title === "Projects"}
                             render={
-                              <SidebarMenuButton hideWhen="uncollapsed">
+                              <SidebarMenuButton>
                                 <SidebarIcon shrinkSize="1.25rem">
                                   <Icon />
                                 </SidebarIcon>
+                                <SidebarText>{item.title}</SidebarText>
+                                <CollapsibleIcon>
+                                  <ExpandMoreRounded />
+                                </CollapsibleIcon>
                               </SidebarMenuButton>
                             }
-                          >
-                            <CollapsedSidebarPopupContent>
-                              <CollapsedSidebarMenuList>
-                                <CollapsedSidebarMenuItem
-                                  render={
-                                    <SidebarMenuButton>
-                                      <SidebarText>Nested Menu</SidebarText>
-                                      <SidebarIcon>
-                                        <ChevronRightRounded />
-                                      </SidebarIcon>
-                                    </SidebarMenuButton>
-                                  }
-                                >
-                                  <CollapsedSidebarPopupContent>
-                                    <SidebarMenuList>
-                                      <SidebarMenuItem>
-                                        <CollapsedSidebarMenuLink
-                                          href="/app-layout/app-analytics"
-                                          component={NextLink}
-                                        >
-                                          Overview
-                                        </CollapsedSidebarMenuLink>
-                                      </SidebarMenuItem>
-                                      <SidebarMenuItem>
-                                        <CollapsedSidebarMenuLink
-                                          href="/app-layout/app-shopping-cart"
-                                          component={NextLink}
-                                        >
-                                          Settings
-                                        </CollapsedSidebarMenuLink>
-                                      </SidebarMenuItem>
-                                    </SidebarMenuList>
-                                  </CollapsedSidebarPopupContent>
-                                </CollapsedSidebarMenuItem>
-                              </CollapsedSidebarMenuList>
-                              {item.children.map((child) => (
-                                <SidebarMenuItem key={child.title}>
-                                  <CollapsedSidebarMenuLink href="#">
-                                    {child.title}
-                                  </CollapsedSidebarMenuLink>
-                                </SidebarMenuItem>
-                              ))}
-                            </CollapsedSidebarPopupContent>
-                          </CollapsedSidebarMenuItem>
-                        )}
-
-                        {/* uncollapsed sidebar */}
-
-                        {!collapsed && (
-                          <SidebarMenuItem>
-                            <CollapsibleTrigger
-                              defaultChecked={item.title === "Projects"}
-                              render={
-                                <SidebarMenuButton>
-                                  <SidebarIcon shrinkSize="1.25rem">
-                                    <Icon />
-                                  </SidebarIcon>
-                                  <SidebarText>{item.title}</SidebarText>
-                                  <CollapsibleIcon>
-                                    <ExpandMoreRounded />
-                                  </CollapsibleIcon>
-                                </SidebarMenuButton>
-                              }
-                            />
-                            <CollapsibleContent>
-                              <div>
-                                <SidebarMenuList nested>
-                                  <SidebarMenuItem>
-                                    <CollapsibleTrigger
-                                      render={
-                                        <SidebarMenuButton>
-                                          <SidebarIcon>
-                                            <Icon />
-                                          </SidebarIcon>
-                                          <SidebarText>Nested Menu</SidebarText>
-                                          <CollapsibleIcon>
-                                            <ExpandMoreRounded />
-                                          </CollapsibleIcon>
-                                        </SidebarMenuButton>
-                                      }
-                                    />
-                                    <CollapsibleContent>
-                                      <div>
-                                        <SidebarMenuList nested>
-                                          <SidebarMenuItem>
-                                            <SidebarMenuButton>
-                                              <SidebarText>
-                                                Nested Menu
-                                              </SidebarText>
-                                            </SidebarMenuButton>
-                                          </SidebarMenuItem>
-                                          <SidebarMenuItem>
-                                            <SidebarMenuButton>
-                                              <SidebarText>
-                                                Nested Menu
-                                              </SidebarText>
-                                            </SidebarMenuButton>
-                                          </SidebarMenuItem>
-                                        </SidebarMenuList>
-                                      </div>
-                                    </CollapsibleContent>
-                                  </SidebarMenuItem>
-                                  {item.children.map((child) => (
-                                    <SidebarMenuItem key={child.title}>
+                          />
+                          <CollapsibleContent>
+                            <div>
+                              <SidebarMenuList nested>
+                                <SidebarMenuItem>
+                                  <CollapsibleTrigger
+                                    render={
                                       <SidebarMenuButton>
-                                        <SidebarText>{child.title}</SidebarText>
+                                        <SidebarIcon>
+                                          <Icon />
+                                        </SidebarIcon>
+                                        <SidebarText>Nested Menu</SidebarText>
+                                        <CollapsibleIcon>
+                                          <ExpandMoreRounded />
+                                        </CollapsibleIcon>
                                       </SidebarMenuButton>
-                                    </SidebarMenuItem>
-                                  ))}
-                                </SidebarMenuList>
-                              </div>
-                            </CollapsibleContent>
-                          </SidebarMenuItem>
-                        )}
-                      </React.Fragment>
-                    );
-                  })}
-                </SidebarMenuList>
-              </SidebarGroup>
-            </CollapsedSidebarMenuList>
+                                    }
+                                  />
+                                  <CollapsibleContent>
+                                    <div>
+                                      <SidebarMenuList nested>
+                                        <SidebarMenuItem>
+                                          <SidebarMenuButton>
+                                            <SidebarText>
+                                              Nested Menu
+                                            </SidebarText>
+                                          </SidebarMenuButton>
+                                        </SidebarMenuItem>
+                                        <SidebarMenuItem>
+                                          <SidebarMenuButton>
+                                            <SidebarText>
+                                              Nested Menu
+                                            </SidebarText>
+                                          </SidebarMenuButton>
+                                        </SidebarMenuItem>
+                                      </SidebarMenuList>
+                                    </div>
+                                  </CollapsibleContent>
+                                </SidebarMenuItem>
+                                {item.children.map((child) => (
+                                  <SidebarMenuItem key={child.title}>
+                                    <SidebarMenuButton>
+                                      <SidebarText>{child.title}</SidebarText>
+                                    </SidebarMenuButton>
+                                  </SidebarMenuItem>
+                                ))}
+                              </SidebarMenuList>
+                            </div>
+                          </CollapsibleContent>
+                        </SidebarMenuItem>
+                      )}
+                    </React.Fragment>
+                  );
+                })}
+              </PopupMenuList>
+            </SidebarGroup>
           </SidebarContainer>
           <Box sx={{ mt: "auto", borderTop: 1, borderColor: "divider" }}>
             <SidebarGroup>

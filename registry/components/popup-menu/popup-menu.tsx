@@ -7,7 +7,7 @@ import { styled } from "@mui/material/styles";
 import SidebarMenuItem from "../sidebar-menu-item/sidebar-menu-item";
 import SidebarTooltip from "../sidebar-tooltip/sidebar-tooltip";
 
-interface CollapsedSidebarMenuItemProps {
+interface PopupMenuItemProps {
   children?: React.ReactNode;
   render: NavigationMenu.Trigger.Props["render"];
   tooltip?: React.ReactNode;
@@ -18,7 +18,7 @@ const StyledPortal = styled(NavigationMenu.Portal)({
   zIndex: 1300,
 });
 
-export function CollapsedSidebarMenuList({
+export function PopupMenuList({
   children,
   sidebarSide = "left",
   ...props
@@ -57,11 +57,11 @@ export function CollapsedSidebarMenuList({
   );
 }
 
-export const CollapsedSidebarMenuItem = function CollapsedSidebarMenuItem({
+export const PopupMenuItem = function PopupMenuItem({
   render,
   children,
   tooltip,
-}: CollapsedSidebarMenuItemProps) {
+}: PopupMenuItemProps) {
   return (
     <NavigationMenu.Item render={<SidebarMenuItem />}>
       {tooltip ? (
@@ -90,12 +90,12 @@ export const CollapsedSidebarMenuItem = function CollapsedSidebarMenuItem({
   );
 };
 
-export function CollapsedSidebarPopupContent({
+export function PopupMenuContent({
   children,
   ...props
 }: NavigationMenu.Content.Props) {
   return (
-    <NavigationMenu.Content className="CollapsedSidebarPopupContent" {...props}>
+    <NavigationMenu.Content className="PopupMenuContent" {...props}>
       {children}
     </NavigationMenu.Content>
   );
@@ -111,12 +111,12 @@ const MenuPopup = styled(SidebarMenuList)(({ theme }) => ({
   borderRadius: `calc(4px + ${(theme.vars || theme).shape.borderRadius})`,
   backgroundColor: (theme.vars || theme).palette.background.paper,
   boxShadow: (theme.vars || theme).shadows[1],
-  "&:has(.CollapsedSidebarPopupContent:empty)": {
+  "&:has(.PopupMenuContent:empty)": {
     display: "none",
   },
 }));
 
-export function CollapsedSidebarMenuLink({
+export function PopupMenuLink({
   children,
   component,
   ...props

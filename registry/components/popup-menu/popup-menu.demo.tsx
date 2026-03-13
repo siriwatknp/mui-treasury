@@ -9,19 +9,19 @@ import SidebarMenuButton from "../sidebar-menu-button/sidebar-menu-button";
 import SidebarIcon from "../sidebar-icon/sidebar-icon";
 import SidebarText from "../sidebar-text/sidebar-text";
 import {
-  CollapsedSidebarMenuList,
-  CollapsedSidebarMenuItem,
-  CollapsedSidebarMenuLink,
-  CollapsedSidebarPopupContent,
-} from "./collapsed-sidebar-menu";
+  PopupMenuList,
+  PopupMenuItem,
+  PopupMenuLink,
+  PopupMenuContent,
+} from "./popup-menu";
 
-export default function CollapsedSidebarMenuDemo() {
+export default function PopupMenuDemo() {
   return (
     <div style={{ width: 36 }}>
       <SidebarContainer>
-        <CollapsedSidebarMenuList>
+        <PopupMenuList>
           {/* 1 nested level */}
-          <CollapsedSidebarMenuItem
+          <PopupMenuItem
             tooltip="Projects"
             render={
               <SidebarMenuButton>
@@ -32,24 +32,20 @@ export default function CollapsedSidebarMenuDemo() {
               </SidebarMenuButton>
             }
           >
-            <CollapsedSidebarPopupContent>
+            <PopupMenuContent>
               <SidebarMenuList>
                 <SidebarMenuItem>
-                  <CollapsedSidebarMenuLink href="#">
-                    Design System
-                  </CollapsedSidebarMenuLink>
+                  <PopupMenuLink href="#">Design System</PopupMenuLink>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
-                  <CollapsedSidebarMenuLink href="#">
-                    Landing Page
-                  </CollapsedSidebarMenuLink>
+                  <PopupMenuLink href="#">Landing Page</PopupMenuLink>
                 </SidebarMenuItem>
               </SidebarMenuList>
-            </CollapsedSidebarPopupContent>
-          </CollapsedSidebarMenuItem>
+            </PopupMenuContent>
+          </PopupMenuItem>
 
           {/* 2 nested levels */}
-          <CollapsedSidebarMenuItem
+          <PopupMenuItem
             tooltip="Analytics"
             render={
               <SidebarMenuButton>
@@ -60,10 +56,10 @@ export default function CollapsedSidebarMenuDemo() {
               </SidebarMenuButton>
             }
           >
-            <CollapsedSidebarPopupContent>
+            <PopupMenuContent>
               <SidebarMenuList>
-                <CollapsedSidebarMenuList>
-                  <CollapsedSidebarMenuItem
+                <PopupMenuList>
+                  <PopupMenuItem
                     render={
                       <SidebarMenuButton>
                         <SidebarText>Reports</SidebarText>
@@ -73,31 +69,25 @@ export default function CollapsedSidebarMenuDemo() {
                       </SidebarMenuButton>
                     }
                   >
-                    <CollapsedSidebarPopupContent>
+                    <PopupMenuContent>
                       <SidebarMenuList>
                         <SidebarMenuItem>
-                          <CollapsedSidebarMenuLink href="#">
-                            Overview
-                          </CollapsedSidebarMenuLink>
+                          <PopupMenuLink href="#">Overview</PopupMenuLink>
                         </SidebarMenuItem>
                         <SidebarMenuItem>
-                          <CollapsedSidebarMenuLink href="#">
-                            Details
-                          </CollapsedSidebarMenuLink>
+                          <PopupMenuLink href="#">Details</PopupMenuLink>
                         </SidebarMenuItem>
                       </SidebarMenuList>
-                    </CollapsedSidebarPopupContent>
-                  </CollapsedSidebarMenuItem>
-                </CollapsedSidebarMenuList>
+                    </PopupMenuContent>
+                  </PopupMenuItem>
+                </PopupMenuList>
                 <SidebarMenuItem>
-                  <CollapsedSidebarMenuLink href="#">
-                    Dashboard
-                  </CollapsedSidebarMenuLink>
+                  <PopupMenuLink href="#">Dashboard</PopupMenuLink>
                 </SidebarMenuItem>
               </SidebarMenuList>
-            </CollapsedSidebarPopupContent>
-          </CollapsedSidebarMenuItem>
-        </CollapsedSidebarMenuList>
+            </PopupMenuContent>
+          </PopupMenuItem>
+        </PopupMenuList>
       </SidebarContainer>
     </div>
   );
