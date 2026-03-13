@@ -85,11 +85,11 @@ export default async function SlugPage({
             )
           : allItems;
 
-      const metaOnlyItems = filteredItems.filter(
-        (item) => item.files.length === 0,
-      );
+      const hasContent = (item: (typeof filteredItems)[0]) =>
+        item.files.length > 0 || (item.demoFiles && item.demoFiles.length > 0);
+      const metaOnlyItems = filteredItems.filter((item) => !hasContent(item));
       const regularItems = orderItems(
-        filteredItems.filter((item) => item.files.length > 0),
+        filteredItems.filter(hasContent),
         `${category}/${param}`,
       );
       const availableTags = getTags(category);

@@ -8,6 +8,8 @@ import { SidebarMenuItem } from "../sidebar-menu-item";
 import { SidebarMenuButton } from "../sidebar-menu-button";
 import { SidebarIcon } from "../sidebar-icon";
 import { SidebarText } from "../sidebar-text";
+import { SidebarMenuAction } from "../sidebar-menu-action";
+import AddRounded from "@mui/icons-material/AddRounded";
 import HomeRounded from "@mui/icons-material/HomeRounded";
 import PeopleRounded from "@mui/icons-material/PeopleRounded";
 import BarChartRounded from "@mui/icons-material/BarChartRounded";
@@ -18,7 +20,12 @@ export function Demo() {
     <div style={{ width: 240 }}>
       <SidebarContainer>
         <SidebarGroup>
-          <SidebarGroupLabel>Main</SidebarGroupLabel>
+          <SidebarGroupLabel>
+            Main
+            <SidebarMenuAction>
+              <AddRounded />
+            </SidebarMenuAction>
+          </SidebarGroupLabel>
           <SidebarMenuList>
             <SidebarMenuItem>
               <SidebarMenuButton>
@@ -39,7 +46,12 @@ export function Demo() {
           </SidebarMenuList>
         </SidebarGroup>
         <SidebarGroup>
-          <SidebarGroupLabel>Analytics</SidebarGroupLabel>
+          <SidebarGroupLabel>
+            Analytics{" "}
+            <SidebarMenuAction>
+              <AddRounded />
+            </SidebarMenuAction>
+          </SidebarGroupLabel>
           <SidebarMenuList>
             <SidebarMenuItem>
               <SidebarMenuButton>

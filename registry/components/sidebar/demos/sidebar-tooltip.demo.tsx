@@ -14,7 +14,7 @@ import SettingsRounded from "@mui/icons-material/SettingsRounded";
 
 export function Demo() {
   return (
-    <div style={{ width: 60, border: "1px solid" }}>
+    <div style={{ width: 48 }}>
       <SidebarContainer>
         <SidebarGroup>
           <SidebarMenuList>

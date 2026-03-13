@@ -157,25 +157,23 @@ export function getRegistryItems(): RegistryItem[] {
     const items: RegistryItem[] = [];
     const metaFiles = findMetaJsonFiles(REGISTRY_DIR);
 
+    // Collect all meta.json-based names to avoid conflicts with virtual demo items
+    const metaNames = new Set<string>();
+    for (const metaPath of metaFiles) {
+      metaNames.add(path.basename(metaPath).replace(".meta.json", ""));
+    }
+
     for (const metaPath of metaFiles) {
       try {
-        // Extract the item name from the meta.json filename
         const metaFileName = path.basename(metaPath);
         const itemName = metaFileName.replace(".meta.json", "");
-
-        // Look for corresponding .tsx file in the same directory
         const metaDir = path.dirname(metaPath);
         const tsxPath = path.join(metaDir, `${itemName}.tsx`);
-
         const metaContent = JSON.parse(fs.readFileSync(metaPath, "utf-8"));
-
-        // Load additional data from public/r/ if available
         const publicData = loadPublicRegistryData(itemName);
 
-        // Build the registry item with derived path and merged data
         const item: RegistryItem = {
           $schema: metaContent.$schema,
-          // Path to the component file (relative to registry/)
           path: path.relative(REGISTRY_DIR, tsxPath),
           name: itemName,
           type: metaContent.type || "registry:item",
@@ -187,6 +185,59 @@ export function getRegistryItems(): RegistryItem[] {
           demoFiles: publicData?.demoFiles,
           meta: metaContent.meta || {},
         };
+
+        // Discover independent demos from demos/ folder
+        const demosDir = path.join(metaDir, "demos");
+        const independentDemoNames = new Set<string>();
+
+        if (fs.existsSync(demosDir)) {
+          const demoEntries = fs
+            .readdirSync(demosDir)
+            .filter((f: string) => f.endsWith(".demo.tsx"));
+
+          for (const demoFile of demoEntries) {
+            const demoName = demoFile.replace(".demo.tsx", "");
+            if (demoName === itemName) continue;
+            if (metaNames.has(demoName)) continue;
+
+            independentDemoNames.add(demoName);
+
+            const demoTsxPath = path.join(demosDir, demoFile);
+            const content = fs.readFileSync(demoTsxPath, "utf-8");
+            const relativePath = path.relative(REGISTRY_DIR, demoTsxPath);
+            const title = demoName
+              .split("-")
+              .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+              .join(" ");
+
+            items.push({
+              path: relativePath,
+              name: demoName,
+              type: "registry:item",
+              title,
+              description: "",
+              dependencies: [],
+              registryDependencies: [],
+              files: [],
+              demoFiles: [
+                { path: relativePath, content, type: "registry:demo" },
+              ],
+              meta: {
+                category: (metaContent.meta || {}).category,
+                subcategory: (metaContent.meta || {}).subcategory,
+              },
+            });
+          }
+        }
+
+        // Remove independent demos from parent's demoFiles
+        if (item.demoFiles && independentDemoNames.size > 0) {
+          item.demoFiles = item.demoFiles.filter((df) => {
+            const dfName = path.basename(df.path).replace(".demo.tsx", "");
+            return !independentDemoNames.has(dfName);
+          });
+          if (item.demoFiles.length === 0) item.demoFiles = undefined;
+        }
 
         items.push(item);
       } catch (error) {
@@ -207,45 +258,7 @@ export function getRegistryItems(): RegistryItem[] {
  * and merges with data from public/r/{name}.json if available
  */
 export function getRegistryByName(name: string): RegistryItem | null {
-  try {
-    const metaFiles = findMetaJsonFiles(REGISTRY_DIR);
-
-    // Find the meta.json file that matches the name
-    const targetMetaFile = metaFiles.find((metaPath) => {
-      const metaFileName = path.basename(metaPath);
-      return metaFileName === `${name}.meta.json`;
-    });
-
-    if (!targetMetaFile) {
-      return null;
-    }
-
-    // Look for corresponding .tsx file in the same directory
-    const metaDir = path.dirname(targetMetaFile);
-    const tsxPath = path.join(metaDir, `${name}.tsx`);
-
-    const metaContent = JSON.parse(fs.readFileSync(targetMetaFile, "utf-8"));
-
-    // Load additional data from public/r/ if available
-    const publicData = loadPublicRegistryData(name);
-
-    return {
-      $schema: metaContent.$schema,
-      path: path.relative(REGISTRY_DIR, tsxPath),
-      name: name,
-      type: metaContent.type || "registry:item",
-      title: metaContent.title || name,
-      description: metaContent.description || "",
-      dependencies: publicData?.dependencies || [],
-      registryDependencies: publicData?.registryDependencies || [],
-      files: publicData?.files || [],
-      demoFiles: publicData?.demoFiles,
-      meta: metaContent.meta || {},
-    };
-  } catch (error) {
-    console.error(`Error reading registry item ${name}:`, error);
-    return null;
-  }
+  return getRegistryItems().find((item) => item.name === name) || null;
 }
 
 /**

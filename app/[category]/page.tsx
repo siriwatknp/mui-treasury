@@ -62,9 +62,10 @@ export default async function CategoryPage({
         )
       : uncategorizedItems;
 
-  // Separate meta-only items (no implementation files) from regular items
-  const metaOnlyItems = filteredItems.filter((item) => item.files.length === 0);
-  const regularItems = filteredItems.filter((item) => item.files.length > 0);
+  const hasContent = (item: (typeof filteredItems)[0]) =>
+    item.files.length > 0 || (item.demoFiles && item.demoFiles.length > 0);
+  const metaOnlyItems = filteredItems.filter((item) => !hasContent(item));
+  const regularItems = filteredItems.filter(hasContent);
 
   // Get all available tags for this category
   const availableTags = getTags(category);

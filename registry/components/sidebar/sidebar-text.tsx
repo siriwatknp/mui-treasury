@@ -14,11 +14,14 @@ const StyledSidebarText = styled("span", {
   opacity: "var(--_uncollapsed, 1) var(--_collapsed, 0)",
   whiteSpace: "nowrap",
   overflow: "hidden",
+  [`*:where(.${sidebarTextClasses.root} + &)`]: {
+    fontSize: "calc(var(--item-fs, 0.875rem) - 0.125rem)",
+  },
 });
 
 const SidebarText = React.forwardRef<
   HTMLSpanElement,
-  React.ComponentPropsWithoutRef<"span">
+  Omit<React.ComponentPropsWithoutRef<typeof StyledSidebarText>, "ownerState">
 >(function SidebarText({ className, ...props }, ref) {
   return (
     <StyledSidebarText

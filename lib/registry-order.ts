@@ -38,25 +38,31 @@ export function orderItems<T extends { name: string }>(
   pathname: string,
 ): T[] {
   const order = registryOrder[pathname];
-  if (!order || order.length === 0) {
-    return items;
-  }
+  const orderMap = order
+    ? new Map(order.map((name, index) => [name, index]))
+    : null;
 
-  const orderMap = new Map(order.map((name, index) => [name, index]));
+  // Extract subcategory name from pathname (e.g., "primitive/sidebar" → "sidebar")
+  const subcategory = pathname.split("/").pop();
 
   return [...items].sort((a, b) => {
-    const aIndex = orderMap.get(a.name);
-    const bIndex = orderMap.get(b.name);
+    if (orderMap) {
+      const aIndex = orderMap.get(a.name);
+      const bIndex = orderMap.get(b.name);
 
-    // Both have custom order
-    if (aIndex !== undefined && bIndex !== undefined) {
-      return aIndex - bIndex;
+      if (aIndex !== undefined && bIndex !== undefined) {
+        return aIndex - bIndex;
+      }
+      if (aIndex !== undefined) return -1;
+      if (bIndex !== undefined) return 1;
     }
-    // Only a has custom order (comes first)
-    if (aIndex !== undefined) return -1;
-    // Only b has custom order (comes first)
-    if (bIndex !== undefined) return 1;
-    // Neither has custom order - alphabetical
+
+    // Parent item (name matches subcategory) always comes first
+    if (subcategory) {
+      if (a.name === subcategory) return -1;
+      if (b.name === subcategory) return 1;
+    }
+
     return a.name.localeCompare(b.name);
   });
 }
