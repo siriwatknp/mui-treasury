@@ -271,7 +271,7 @@ function ComponentPreview({
         <ResizablePanel defaultSize={0} minSize={0} maxSize={70} />
       </ResizablePanelGroup>
     );
-  }, [item, needsIframe, panelRef, previewKey]);
+  }, [item, needsIframe, demoPath, panelRef, previewKey]);
 
   const renderFileContent = React.useCallback(
     (file: RegistryItem["files"][0], index: number, showHeader: boolean) => {
@@ -696,7 +696,10 @@ export default function CategoryClient({
                       .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
                       .join(" ");
                     return (
-                      <div key={demoFile.path} className="space-y-2">
+                      <div
+                        key={demoFile.path}
+                        className="space-y-2 min-w-0 flex flex-col"
+                      >
                         <h4 className="text-sm font-medium text-muted-foreground">
                           {label}
                         </h4>
