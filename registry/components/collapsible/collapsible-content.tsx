@@ -2,13 +2,13 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
 import { collapsibleContentClasses } from "./collapsible-classes";
-import { sidebarMenuButtonClasses } from "../sidebar-menu-button/sidebar-menu-button-classes";
-import { sidebarMenuActionClasses } from "../sidebar-menu-action/sidebar-menu-action-classes";
 
 const StyledCollapsibleContent = styled("div", {
   name: "CollapsibleContent",
   slot: "root",
 })({
+  "--_i-uncollapsed": "var(--__)", // default when not within EdgeSidebarContent
+  "--_i-collapsed": "var(--__,)", // value is ignored by default.
   display: "grid",
   "& > *": {
     overflow: "hidden",
@@ -16,9 +16,9 @@ const StyledCollapsibleContent = styled("div", {
   "label:has(:checked) ~ &": {
     transition:
       "var(--tsn, grid-template-rows 0.4s, visibility 0.4s, opacity 0.4s 0.2s)",
-    gridTemplateRows: "var(--_collapsed, 0fr) var(--_uncollapsed, 1fr)",
-    [`& .${sidebarMenuButtonClasses.root}`]: {
-      visibility: "var(--_collapsed, hidden)" as never,
+    gridTemplateRows: "var(--_i-collapsed, 0fr) var(--_i-uncollapsed, 1fr)",
+    [`& .SidebarMenuButton`]: {
+      visibility: "var(--_i-collapsed, hidden)" as never,
     },
   },
   "label:not(:has(:checked)) ~ &": {
@@ -27,9 +27,13 @@ const StyledCollapsibleContent = styled("div", {
     opacity: 0,
     transition:
       "var(--tsn, grid-template-rows 0.4s, visibility 0.4s, opacity 0.2s)",
-    [`& .${sidebarMenuActionClasses.root}`]: {
+    [`& .SidebarMenuAction`]: {
       visibility: "hidden",
     },
+  },
+  ".EdgeSidebarContent &": {
+    "--_i-collapsed": "var(--_collapsed)",
+    "--_i-uncollapsed": "var(--_uncollapsed)",
   },
 });
 

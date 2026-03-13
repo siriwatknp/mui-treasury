@@ -1,0 +1,96 @@
+"use client";
+
+import Box from "@mui/material/Box";
+import { SidebarContainer } from "../sidebar-container";
+import { SidebarGroup } from "../sidebar-group";
+import { SidebarGroupLabel } from "../sidebar-group-label";
+import { SidebarMenuList } from "../sidebar-menu-list";
+import { SidebarMenuItem } from "../sidebar-menu-item";
+import { SidebarMenuButton } from "../sidebar-menu-button";
+import { SidebarIcon } from "../sidebar-icon";
+import { SidebarText } from "../sidebar-text";
+import HomeRounded from "@mui/icons-material/HomeRounded";
+import SearchRounded from "@mui/icons-material/SearchRounded";
+import SettingsRounded from "@mui/icons-material/SettingsRounded";
+
+export function Demo() {
+  return (
+    <Box sx={{ display: "flex", gap: 4 }}>
+      <Box
+        sx={{
+          width: 240,
+          outline: 1,
+          outlineColor: "divider",
+          borderRadius: 1,
+        }}
+      >
+        <SidebarContainer>
+          <SidebarGroup>
+            <SidebarGroupLabel>Expanded</SidebarGroupLabel>
+            <SidebarMenuList>
+              <SidebarMenuItem>
+                <SidebarMenuButton active>
+                  <SidebarIcon>
+                    <HomeRounded />
+                  </SidebarIcon>
+                  <SidebarText>Home</SidebarText>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton>
+                  <SidebarIcon>
+                    <SearchRounded />
+                  </SidebarIcon>
+                  <SidebarText>Search</SidebarText>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton>
+                  <SidebarIcon>
+                    <SettingsRounded />
+                  </SidebarIcon>
+                  <SidebarText>Settings</SidebarText>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenuList>
+          </SidebarGroup>
+        </SidebarContainer>
+      </Box>
+      <Box
+        sx={{ width: 48, outline: 1, outlineColor: "divider", borderRadius: 1 }}
+      >
+        <SidebarContainer>
+          <SidebarGroup>
+            <SidebarGroupLabel>Collapsed</SidebarGroupLabel>
+            <SidebarMenuList>
+              <SidebarMenuItem>
+                <SidebarMenuButton active>
+                  <SidebarIcon>
+                    <HomeRounded />
+                  </SidebarIcon>
+                  <SidebarText>Home</SidebarText>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton>
+                  <SidebarIcon>
+                    <SearchRounded />
+                  </SidebarIcon>
+                  <SidebarText>Search</SidebarText>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton>
+                  <SidebarIcon>
+                    <SettingsRounded />
+                  </SidebarIcon>
+                  <SidebarText>Settings</SidebarText>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenuList>
+          </SidebarGroup>
+        </SidebarContainer>
+      </Box>
+    </Box>
+  );
+}

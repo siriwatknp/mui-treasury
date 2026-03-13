@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Sidebar",
+  "description": "A complete sidebar component system with collapsible container, menu items, groups, icons, text, tooltips, and rail",
+  "meta": {
+    "category": "primitive",
+    "subcategory": "sidebar"
+  }
+}
