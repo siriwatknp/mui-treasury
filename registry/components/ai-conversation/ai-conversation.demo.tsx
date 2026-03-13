@@ -7,9 +7,9 @@ import {
   Conversation,
   ConversationContent,
   ConversationScrollButton,
-} from "./ai-conversation";
+} from "@/registry/components/ai-conversation/ai-conversation";
 
-export default function AIConversationDemo() {
+export function Demo() {
   return (
     <Paper
       variant="outlined"

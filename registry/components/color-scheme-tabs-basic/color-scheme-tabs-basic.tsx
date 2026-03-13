@@ -70,7 +70,7 @@ function LightMode() {
 const size = "44px";
 const gap = "4px";
 
-export default function ColorSchemeTabsBasic() {
+export function ColorSchemeTabsBasic() {
   const { mode, setMode } = useColorScheme();
   if (!mode) {
     return (

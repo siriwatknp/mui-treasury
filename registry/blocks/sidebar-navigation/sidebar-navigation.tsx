@@ -32,7 +32,7 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import LogoutIcon from "@mui/icons-material/Logout";
 
-export default function SidebarNavigation() {
+export function SidebarNavigation() {
   const [expandedItems, setExpandedItems] = React.useState<string[]>([
     "dashboard",
   ]);

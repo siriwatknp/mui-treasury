@@ -9,12 +9,12 @@ import {
   ArtifactAction,
   ArtifactClose,
   ArtifactContent,
-} from "./ai-artifact";
+} from "@/registry/components/ai-artifact/ai-artifact";
 import { CopyIcon, ShareIcon, DownloadIcon, ExpandIcon } from "lucide-react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-export default function AIArtifactDemo() {
+export function Demo() {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 4, p: 4 }}>
       {/* Basic Artifact */}

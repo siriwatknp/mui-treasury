@@ -73,7 +73,7 @@ const Content = styled("div")(({ theme }) => ({
   width: "100%",
 }));
 
-export default function CardGalaxy() {
+export function CardGalaxy() {
   return (
     <StyledCard>
       <StyledCardMedia

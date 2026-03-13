@@ -3,7 +3,7 @@
 import { Box, Card, Stack, Typography } from "@mui/material";
 import { LineChart } from "@mui/x-charts/LineChart";
 
-export default function CallVolumeTrends() {
+export function CallVolumeTrends() {
   const timePoints = [
     "00:00",
     "02:00",

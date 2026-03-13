@@ -1,8 +1,11 @@
 "use client";
 
-import { Suggestions, Suggestion } from "./ai-suggestion";
+import {
+  Suggestions,
+  Suggestion,
+} from "@/registry/components/ai-suggestion/ai-suggestion";
 
-export default function AISuggestionDemo() {
+export function Demo() {
   const handleSuggestionClick = (suggestion: string) => {
     console.log("Selected suggestion:", suggestion);
   };

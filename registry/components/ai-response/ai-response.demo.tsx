@@ -1,8 +1,8 @@
 "use client";
 
-import { Response } from "./ai-response";
+import { Response } from "@/registry/components/ai-response/ai-response";
 
-export default function AIResponseDemo() {
+export function Demo() {
   const markdownContent = `
 ## Welcome to AI Response
 

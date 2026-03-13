@@ -42,7 +42,7 @@ function SettingRow({ title, description, children }: SettingRowProps) {
   );
 }
 
-export default function PreferenceSettings() {
+export function PreferenceSettings() {
   const [startupView, setStartupView] = React.useState("dashboard");
   const [autoFormat, setAutoFormat] = React.useState(true);
   const [weekStart, setWeekStart] = React.useState("monday");

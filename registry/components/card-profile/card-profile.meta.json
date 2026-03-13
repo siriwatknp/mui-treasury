@@ -6,6 +6,7 @@
   "description": "Profile card with centered avatar, name/location info, and followers/following stats displayed in divided columns",
   "meta": {
     "category": "primitive",
-    "subcategory": "card"
+    "subcategory": "card",
+    "exportName": "CardProfile"
   }
 }

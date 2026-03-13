@@ -10,7 +10,7 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import { SparkLineChart } from "@mui/x-charts/SparkLineChart";
 
-export default function DataMetrics() {
+export function DataMetrics() {
   const storageUsed = 1.85;
   const storageTotal = 10;
   const storagePercentage = (storageUsed / storageTotal) * 100;

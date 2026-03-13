@@ -6,6 +6,7 @@
   "description": "News card with image overlay, gradient backdrop, fashion tag badge, author info with avatar, and layered shadow effect on hover",
   "meta": {
     "category": "primitive",
-    "subcategory": "card"
+    "subcategory": "card",
+    "exportName": "CardNews3"
   }
 }

@@ -6,6 +6,7 @@
   "meta": {
     "screenshot": "/screenshots/project-invite-modal.png",
     "category": "authentication",
-    "previewMode": "iframe"
+    "previewMode": "iframe",
+    "exportName": "ProjectInviteModal"
   }
 }

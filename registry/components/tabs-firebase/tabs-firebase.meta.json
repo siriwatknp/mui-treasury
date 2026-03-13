@@ -5,6 +5,7 @@
   "description": "Firebase-style tabs with thick top indicator and hover backdrop",
   "meta": {
     "category": "primitive",
-    "subcategory": "tabs"
+    "subcategory": "tabs",
+    "exportName": "TabsFirebase"
   }
 }

@@ -31,7 +31,7 @@ interface FormErrors {
   password?: string;
 }
 
-export default function SpaceLogin() {
+export function SpaceLogin() {
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",

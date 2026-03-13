@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import NextLink from "next/link";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
@@ -16,6 +17,10 @@ import CodeRounded from "@mui/icons-material/CodeRounded";
 import StorageRounded from "@mui/icons-material/StorageRounded";
 import SettingsRounded from "@mui/icons-material/SettingsRounded";
 import NotificationsRounded from "@mui/icons-material/NotificationsRounded";
+import FolderRounded from "@mui/icons-material/FolderRounded";
+import ArticleRounded from "@mui/icons-material/ArticleRounded";
+import PeopleRounded from "@mui/icons-material/PeopleRounded";
+import ExpandMoreRounded from "@mui/icons-material/ExpandMoreRounded";
 import Root from "@/registry/layout/layout-core/Root";
 import Header from "@/registry/layout/layout-core/Header";
 import Content from "@/registry/layout/layout-core/Content";
@@ -27,19 +32,56 @@ import EdgeSidebar, {
 import EdgeSidebarContent from "@/registry/layout/layout-core/EdgeSidebarContent";
 import { layoutClasses } from "@/registry/layout/layout-core/layoutClasses";
 import { EdgeDrawerClose } from "@/registry/layout/layout-core";
-import SidebarContainer from "@/registry/components/sidebar-container/sidebar-container";
-import SidebarGroup from "@/registry/components/sidebar-group/sidebar-group";
-import SidebarGroupLabel from "@/registry/components/sidebar-group-label/sidebar-group-label";
-import SidebarMenu from "@/registry/components/sidebar-menu/sidebar-menu";
-import SidebarMenuItem from "@/registry/components/sidebar-menu-item/sidebar-menu-item";
-import SidebarMenuButton from "@/registry/components/sidebar-menu-button/sidebar-menu-button";
-import SidebarIcon from "@/registry/components/sidebar-icon/sidebar-icon";
-import SidebarText from "@/registry/components/sidebar-text/sidebar-text";
-import SidebarTooltip from "@/registry/components/sidebar-tooltip/sidebar-tooltip";
-import SidebarRail from "@/registry/components/sidebar-rail/sidebar-rail";
-import Tooltip from "@mui/material/Tooltip";
+import {
+  SidebarContainer,
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarMenuList,
+  SidebarMenuItem,
+  SidebarMenuButton,
+  SidebarIcon,
+  SidebarText,
+  SidebarRail,
+} from "@/registry/components/sidebar";
+import { CollapsibleTrigger } from "@/registry/components/collapsible/collapsible-trigger";
+import { CollapsibleContent } from "@/registry/components/collapsible/collapsible-content";
+import {
+  PopupMenuList,
+  PopupMenuItem,
+  PopupMenuLink,
+  PopupMenuContent,
+} from "@/registry/components/sidebar";
+import { useCollapsedSidebar } from "@/registry/layout/layout-core/SharedEdgeSidebar";
+import { CollapsibleIcon } from "@/registry/components/collapsible/collapsible-icon";
+import { SidebarTooltip } from "@/registry/components/sidebar";
 
 const SIDEBAR_ID = "app-dashboard-sidebar";
+
+const nestedMenus = [
+  {
+    title: "Projects",
+    icon: FolderRounded,
+    children: [
+      { title: "Design System" },
+      { title: "Landing Page" },
+      { title: "API Gateway" },
+    ],
+  },
+  {
+    title: "Documentation",
+    icon: ArticleRounded,
+    children: [
+      { title: "Getting Started" },
+      { title: "Components" },
+      { title: "API Reference" },
+    ],
+  },
+  {
+    title: "Team",
+    icon: PeopleRounded,
+    children: [{ title: "Members" }, { title: "Permissions" }],
+  },
+];
 
 const menus = [
   { title: "Account Home", icon: HomeRounded },
@@ -54,6 +96,7 @@ const menus = [
 ];
 
 export default function AppDashboardPage() {
+  const collapsed = useCollapsedSidebar(SIDEBAR_ID);
   return (
     <Root>
       <Header height={{ xs: "48px", md: "64px" }} clip>
@@ -96,58 +139,188 @@ export default function AppDashboardPage() {
       >
         <EdgeDrawerClose />
         <EdgeSidebarContent>
-          <SidebarContainer sx={{ flex: 1, overflow: "auto" }}>
+          <SidebarContainer>
             <SidebarGroup>
               <SidebarGroupLabel>Navigation</SidebarGroupLabel>
-              <SidebarMenu>
+              <SidebarMenuList>
                 {menus.map((item) => {
                   const Icon = item.icon;
                   return (
-                    <SidebarMenuItem key={item.title}>
-                      <Tooltip
-                        title={<SidebarTooltip>{item.title}</SidebarTooltip>}
-                        placement="right"
-                      >
-                        <SidebarMenuButton
-                          active={item.title === "Account Home"}
-                        >
-                          <SidebarIcon shrinkSize="1.25rem">
-                            <Icon />
-                          </SidebarIcon>
-                          <SidebarText>{item.title}</SidebarText>
-                        </SidebarMenuButton>
-                      </Tooltip>
-                    </SidebarMenuItem>
+                    <SidebarTooltip title={item.title} key={item.title}>
+                      <SidebarMenuButton active={item.title === "Account Home"}>
+                        <SidebarIcon shrinkSize="1.25rem">
+                          <Icon />
+                        </SidebarIcon>
+                        <SidebarText>{item.title}</SidebarText>
+                      </SidebarMenuButton>
+                    </SidebarTooltip>
                   );
                 })}
-              </SidebarMenu>
+              </SidebarMenuList>
             </SidebarGroup>
 
-            <Box sx={{ mt: "auto", borderTop: 1, borderColor: "divider" }}>
-              <SidebarGroup>
-                <SidebarMenu>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton
-                      className={layoutClasses.EdgeSidebarCollapser}
-                      onClick={(event) =>
-                        triggerEdgeCollapse({ event, sidebarId: SIDEBAR_ID })
-                      }
-                    >
-                      <SidebarIcon>
-                        <ChevronLeftRounded
-                          className={layoutClasses.EdgeUncollapsedVisible}
-                        />
-                        <ChevronRightRounded
-                          className={layoutClasses.EdgeCollapsedVisible}
-                        />
-                      </SidebarIcon>
-                      <SidebarText>Collapse</SidebarText>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                </SidebarMenu>
-              </SidebarGroup>
-            </Box>
+            <SidebarGroup>
+              <SidebarGroupLabel>Workspace</SidebarGroupLabel>
+              <PopupMenuList>
+                {nestedMenus.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <React.Fragment key={item.title}>
+                      {/* collapsed sidebar */}
+                      {collapsed && (
+                        <PopupMenuItem
+                          tooltip={item.title}
+                          render={
+                            <SidebarMenuButton hideWhen="uncollapsed">
+                              <SidebarIcon shrinkSize="1.25rem">
+                                <Icon />
+                              </SidebarIcon>
+                            </SidebarMenuButton>
+                          }
+                        >
+                          <PopupMenuContent>
+                            <PopupMenuList>
+                              <PopupMenuItem
+                                render={
+                                  <SidebarMenuButton>
+                                    <SidebarText>Nested Menu</SidebarText>
+                                    <SidebarIcon>
+                                      <ChevronRightRounded />
+                                    </SidebarIcon>
+                                  </SidebarMenuButton>
+                                }
+                              >
+                                <PopupMenuContent>
+                                  <SidebarMenuList>
+                                    <SidebarMenuItem>
+                                      <PopupMenuLink
+                                        href="/app-layout/app-analytics"
+                                        component={NextLink}
+                                      >
+                                        Overview
+                                      </PopupMenuLink>
+                                    </SidebarMenuItem>
+                                    <SidebarMenuItem>
+                                      <PopupMenuLink
+                                        href="/app-layout/app-shopping-cart"
+                                        component={NextLink}
+                                      >
+                                        Settings
+                                      </PopupMenuLink>
+                                    </SidebarMenuItem>
+                                  </SidebarMenuList>
+                                </PopupMenuContent>
+                              </PopupMenuItem>
+                            </PopupMenuList>
+                            {item.children.map((child) => (
+                              <SidebarMenuItem key={child.title}>
+                                <PopupMenuLink href="#">
+                                  {child.title}
+                                </PopupMenuLink>
+                              </SidebarMenuItem>
+                            ))}
+                          </PopupMenuContent>
+                        </PopupMenuItem>
+                      )}
+
+                      {/* uncollapsed sidebar */}
+
+                      {!collapsed && (
+                        <SidebarMenuItem>
+                          <CollapsibleTrigger
+                            defaultChecked={item.title === "Projects"}
+                            render={
+                              <SidebarMenuButton>
+                                <SidebarIcon shrinkSize="1.25rem">
+                                  <Icon />
+                                </SidebarIcon>
+                                <SidebarText>{item.title}</SidebarText>
+                                <CollapsibleIcon>
+                                  <ExpandMoreRounded />
+                                </CollapsibleIcon>
+                              </SidebarMenuButton>
+                            }
+                          />
+                          <CollapsibleContent>
+                            <div>
+                              <SidebarMenuList nested>
+                                <SidebarMenuItem>
+                                  <CollapsibleTrigger
+                                    render={
+                                      <SidebarMenuButton>
+                                        <SidebarIcon>
+                                          <Icon />
+                                        </SidebarIcon>
+                                        <SidebarText>Nested Menu</SidebarText>
+                                        <CollapsibleIcon>
+                                          <ExpandMoreRounded />
+                                        </CollapsibleIcon>
+                                      </SidebarMenuButton>
+                                    }
+                                  />
+                                  <CollapsibleContent>
+                                    <div>
+                                      <SidebarMenuList nested>
+                                        <SidebarMenuItem>
+                                          <SidebarMenuButton>
+                                            <SidebarText>
+                                              Nested Menu
+                                            </SidebarText>
+                                          </SidebarMenuButton>
+                                        </SidebarMenuItem>
+                                        <SidebarMenuItem>
+                                          <SidebarMenuButton>
+                                            <SidebarText>
+                                              Nested Menu
+                                            </SidebarText>
+                                          </SidebarMenuButton>
+                                        </SidebarMenuItem>
+                                      </SidebarMenuList>
+                                    </div>
+                                  </CollapsibleContent>
+                                </SidebarMenuItem>
+                                {item.children.map((child) => (
+                                  <SidebarMenuItem key={child.title}>
+                                    <SidebarMenuButton>
+                                      <SidebarText>{child.title}</SidebarText>
+                                    </SidebarMenuButton>
+                                  </SidebarMenuItem>
+                                ))}
+                              </SidebarMenuList>
+                            </div>
+                          </CollapsibleContent>
+                        </SidebarMenuItem>
+                      )}
+                    </React.Fragment>
+                  );
+                })}
+              </PopupMenuList>
+            </SidebarGroup>
           </SidebarContainer>
+          <Box sx={{ mt: "auto", borderTop: 1, borderColor: "divider" }}>
+            <SidebarGroup>
+              <SidebarMenuList>
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    className={layoutClasses.EdgeSidebarCollapser}
+                    onClick={(event) =>
+                      triggerEdgeCollapse({ event, sidebarId: SIDEBAR_ID })
+                    }
+                  >
+                    <SidebarIcon>
+                      <ChevronLeftRounded
+                        className={layoutClasses.EdgeUncollapsedVisible}
+                      />
+                      <ChevronRightRounded
+                        className={layoutClasses.EdgeCollapsedVisible}
+                      />
+                    </SidebarIcon>
+                    <SidebarText>Collapse</SidebarText>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </SidebarMenuList>
+            </SidebarGroup>
+          </Box>
         </EdgeSidebarContent>
         <SidebarRail
           className={layoutClasses.EdgeSidebarCollapser}

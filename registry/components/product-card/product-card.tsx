@@ -26,7 +26,7 @@ interface ProductCardProps {
   className?: string;
 }
 
-export default function ProductCard({
+export function ProductCard({
   title = "Acme Running Shoe",
   price = "$69.99",
   description = "Crossing hardwood comfort with off-court flair. '80s-inspired construction, bold details and nothin'-but-net style.",

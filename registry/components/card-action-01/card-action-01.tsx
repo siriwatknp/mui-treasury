@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
 import Link from "@mui/material/Link";
 
-export default function CardAction01() {
+export function CardAction01() {
   return (
     <Card
       sx={(theme) => ({

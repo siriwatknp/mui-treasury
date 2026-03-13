@@ -1,9 +1,14 @@
 "use client";
 
-import { Sources, SourcesTrigger, SourcesContent, Source } from "./ai-sources";
+import {
+  Sources,
+  SourcesTrigger,
+  SourcesContent,
+  Source,
+} from "@/registry/components/ai-sources/ai-sources";
 import { BookIcon } from "lucide-react";
 
-export default function AISourcesDemo() {
+export function Demo() {
   const sources = [
     {
       title: "React Documentation",

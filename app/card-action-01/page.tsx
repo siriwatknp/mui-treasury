@@ -1,5 +1,5 @@
 import { PreviewComponent } from "@/components/preview-page";
-import CardAction01 from "@/registry/components/card-action-01/card-action-01";
+import { CardAction01 } from "@/registry/components/card-action-01/card-action-01";
 import Box from "@mui/material/Box";
 
 export default function Page() {

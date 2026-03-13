@@ -7,6 +7,7 @@
   "meta": {
     "category": "primitive",
     "previewClassName": "bg-white dark:bg-neutral-950",
-    "subcategory": "card"
+    "subcategory": "card",
+    "exportName": "CardAction01"
   }
 }

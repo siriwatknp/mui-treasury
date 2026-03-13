@@ -24,10 +24,10 @@ const paymentData = [
 
 const totalAmount = paymentData.reduce((sum, item) => sum + item.value, 0);
 const largestPercentage = Math.round(
-  (paymentData[0].value / totalAmount) * 100
+  (paymentData[0].value / totalAmount) * 100,
 );
 
-export default function PayrollSummaryCard() {
+export function PayrollSummaryCard() {
   const [timeRange, setTimeRange] = React.useState("last30");
 
   return (

@@ -1,0 +1,15 @@
+export const sidebarClasses = {
+  container: "SidebarContainer",
+  group: "SidebarGroup",
+  groupLabel: "SidebarGroupLabel",
+  groupText: "SidebarGroupText",
+  menu: "SidebarMenuList",
+  menuItem: "SidebarMenuItem",
+  menuButton: "SidebarMenuButton",
+  menuAction: "SidebarMenuAction",
+  text: "SidebarText",
+  icon: "SidebarIcon",
+  tooltip: "SidebarTooltip",
+  rail: "SidebarRail",
+  popupMenu: "PopupMenu",
+};

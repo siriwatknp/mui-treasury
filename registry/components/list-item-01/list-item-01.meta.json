@@ -5,6 +5,7 @@
   "description": "A list-item-01 item.",
   "meta": {
     "category": "primitive",
-    "subcategory": "list"
+    "subcategory": "list",
+    "exportName": "ListItem01"
   }
 }

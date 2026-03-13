@@ -5,6 +5,7 @@
   "description": "Twitter-style tabs with bold text, hover effects, and bottom border",
   "meta": {
     "category": "primitive",
-    "subcategory": "tabs"
+    "subcategory": "tabs",
+    "exportName": "TabsTwitter"
   }
 }

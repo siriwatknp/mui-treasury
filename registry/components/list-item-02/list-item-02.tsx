@@ -12,7 +12,7 @@ import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
-export default function ListItem02() {
+export function ListItem02() {
   return (
     <List sx={{ bgcolor: "background.paper", maxWidth: 680 }}>
       <ListItem

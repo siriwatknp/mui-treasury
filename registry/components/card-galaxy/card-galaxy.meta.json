@@ -6,6 +6,7 @@
   "description": "Card with full-height background image, bottom gradient overlay, and white text Info components positioned at bottom",
   "meta": {
     "category": "primitive",
-    "subcategory": "card"
+    "subcategory": "card",
+    "exportName": "CardGalaxy"
   }
 }

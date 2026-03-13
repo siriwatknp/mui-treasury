@@ -5,6 +5,7 @@
   "description": "A customizable radio group component with color swatches as selection options",
   "meta": {
     "category": "primitive",
-    "subcategory": "radio"
+    "subcategory": "radio",
+    "exportName": "RadioColor01"
   }
 }

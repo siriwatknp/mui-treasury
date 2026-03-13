@@ -160,7 +160,7 @@ const CustomCard = ({
               <Avatar
                 key={index}
                 src={`https://i.pravatar.cc/300?img=${Math.floor(
-                  Math.random() * 30
+                  Math.random() * 30,
                 )}`}
               />
             ))}
@@ -174,7 +174,7 @@ const CustomCard = ({
   </DivRoot>
 );
 
-export default function CardTeam() {
+export function CardTeam() {
   return (
     <Grid container spacing={4}>
       <Grid size={{ xs: 12, sm: 6, lg: 4 }}>

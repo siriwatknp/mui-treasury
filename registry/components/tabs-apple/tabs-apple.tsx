@@ -4,7 +4,7 @@ import React from "react";
 import Tab, { tabClasses } from "@mui/material/Tab";
 import Tabs, { tabsClasses } from "@mui/material/Tabs";
 
-export default function TabsApple() {
+export function TabsApple() {
   const [tabIndex, setTabIndex] = React.useState(0);
   return (
     <Tabs

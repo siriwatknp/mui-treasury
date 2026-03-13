@@ -41,7 +41,7 @@ const transactions = [
   },
 ];
 
-export default function TransactionHistoryList() {
+export function TransactionHistoryList() {
   return (
     <Card
       sx={{

@@ -5,6 +5,7 @@
   "description": "Tab-based component for switching color schemes",
   "meta": {
     "category": "primitive",
-    "subcategory": "color-scheme"
+    "subcategory": "color-scheme",
+    "exportName": "ColorSchemeTabsBasic"
   }
 }

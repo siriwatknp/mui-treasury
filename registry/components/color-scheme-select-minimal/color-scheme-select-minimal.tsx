@@ -5,7 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select, { selectClasses } from "@mui/material/Select";
 import { useColorScheme } from "@mui/material/styles";
 
-export default function ColorSchemeSelectMinimal() {
+export function ColorSchemeSelectMinimal() {
   const { mode, setMode } = useColorScheme();
   if (!mode) {
     return (

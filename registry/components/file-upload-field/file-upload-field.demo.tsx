@@ -2,9 +2,9 @@
 
 import * as React from "react";
 import Stack from "@mui/material/Stack";
-import { FileUploadField } from "./file-upload-field";
+import { FileUploadField } from "@/registry/components/file-upload-field/file-upload-field";
 
-export default function FileUploadFieldDemo() {
+export function Demo() {
   const [file, setFile] = React.useState<File | null>(null);
   const [imageFile, setImageFile] = React.useState<File | null>(null);
 

@@ -5,6 +5,7 @@
   "description": "Instagram-style tabs with top indicator, icons, and uppercase labels",
   "meta": {
     "category": "primitive",
-    "subcategory": "tabs"
+    "subcategory": "tabs",
+    "exportName": "TabsInstagram"
   }
 }

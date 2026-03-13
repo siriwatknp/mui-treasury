@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import SelectInset01 from "@/registry/components/select-inset-01/select-inset-01";
+import { SelectInset01 } from "@/registry/components/select-inset-01/select-inset-01";
 import Box from "@mui/material/Box";
 
 const deviceOptions = [
@@ -13,7 +13,7 @@ const deviceOptions = [
   { value: "pixel-8", label: "Google Pixel 8" },
 ];
 
-export default function Page() {
+export function Demo() {
   const [device, setDevice] = React.useState("iphone-16");
 
   return (

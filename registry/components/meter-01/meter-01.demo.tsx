@@ -1,8 +1,8 @@
 import * as React from "react";
 import Stack from "@mui/material/Stack";
-import { Meter01 } from "./meter-01";
+import { Meter01 } from "@/registry/components/meter-01/meter-01";
 
-export default function Meter01Demo() {
+export function Demo() {
   return (
     <Stack spacing={4} sx={{ width: 240, maxWidth: "100%" }}>
       <Meter01 label="Memory" value={92} />

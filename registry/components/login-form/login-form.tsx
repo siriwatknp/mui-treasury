@@ -21,7 +21,7 @@ interface FormErrors {
   password?: string;
 }
 
-export default function LoginForm() {
+export function LoginForm() {
   const [formData, setFormData] = useState<FormData>({
     email: "m@example.com",
     password: "",

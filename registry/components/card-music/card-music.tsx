@@ -8,7 +8,7 @@ import { InfoSubtitle } from "../info-basic/info-subtitle";
 import { InfoTitle } from "../info-basic/info-title";
 import { getInfoN04Styles } from "../info-n04/info-n04.styles";
 
-export default function CardMusic() {
+export function CardMusic() {
   return (
     <Card
       sx={(theme) => ({

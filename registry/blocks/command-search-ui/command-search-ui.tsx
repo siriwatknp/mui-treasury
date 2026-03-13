@@ -83,7 +83,7 @@ const quickActions = [
   { icon: <CalendarMonthIcon />, label: "Schedule meeting" },
 ];
 
-export default function CommandSearchUI() {
+export function CommandSearchUI() {
   const [open, setOpen] = React.useState(true);
   const [selectedFilter, setSelectedFilter] = React.useState("All");
   const [searchValue, setSearchValue] = React.useState("");

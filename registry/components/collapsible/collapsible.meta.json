@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Collapsible",
+  "description": "CSS-only collapsible components using a hidden checkbox to toggle content visibility",
+  "meta": {
+    "category": "primitive",
+    "subcategory": "collapsible"
+  }
+}

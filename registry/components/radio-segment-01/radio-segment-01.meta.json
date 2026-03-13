@@ -5,6 +5,7 @@
   "description": "A segmented control component for selecting between options with radio buttons",
   "meta": {
     "category": "primitive",
-    "subcategory": "radio"
+    "subcategory": "radio",
+    "exportName": "RadioSegment01"
   }
 }

@@ -6,6 +6,7 @@
   "description": "Game cards with solid color backgrounds, logo images, game titles, and hover shadow/scale animations",
   "meta": {
     "category": "primitive",
-    "subcategory": "card"
+    "subcategory": "card",
+    "exportName": "CardSolidGame"
   }
 }

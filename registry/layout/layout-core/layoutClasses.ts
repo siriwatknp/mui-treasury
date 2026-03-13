@@ -19,4 +19,5 @@ export const layoutClasses = {
   InsetSidebar: "InsetSidebar",
   InsetContent: "InsetContent",
   InsetAvoidingView: "InsetAvoidingView",
+  SidebarRail: "SidebarRail",
 };

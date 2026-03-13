@@ -1,12 +1,12 @@
 "use client";
 
-import { Info } from "./info";
-import { InfoCaption } from "./info-caption";
-import { InfoEyebrow } from "./info-eyebrow";
-import { InfoSubtitle } from "./info-subtitle";
-import { InfoTitle } from "./info-title";
+import { Info } from "@/registry/components/info-basic/info";
+import { InfoCaption } from "@/registry/components/info-basic/info-caption";
+import { InfoEyebrow } from "@/registry/components/info-basic/info-eyebrow";
+import { InfoSubtitle } from "@/registry/components/info-basic/info-subtitle";
+import { InfoTitle } from "@/registry/components/info-basic/info-title";
 
-export default function InfoBasicDemo() {
+export function Demo() {
   return (
     <Info>
       <InfoEyebrow>Material Blog</InfoEyebrow>

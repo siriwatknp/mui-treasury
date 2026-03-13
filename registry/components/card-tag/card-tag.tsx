@@ -44,7 +44,7 @@ const TripOriginHole = styled(TripOrigin)(() => ({
   left: 0,
 }));
 
-export default function CardTag() {
+export function CardTag() {
   return (
     <StyledCard elevation={0}>
       <CardContent>

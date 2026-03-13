@@ -6,9 +6,9 @@ import {
   ToolContent,
   ToolInput,
   ToolOutput,
-} from "./ai-tool";
+} from "@/registry/components/ai-tool/ai-tool";
 
-export default function AIToolDemo() {
+export function Demo() {
   const tools = [
     {
       type: "tool-search_web" as const,

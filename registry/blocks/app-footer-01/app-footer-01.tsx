@@ -46,7 +46,7 @@ const navigationData = [
   },
 ];
 
-export default function AppFooter01() {
+export function AppFooter01() {
   return (
     <Box
       component="footer"

@@ -61,7 +61,7 @@ const xAxisData = xData.map((_: number, index: number) => {
   return "";
 });
 
-export default function PortfolioValueChart() {
+export function PortfolioValueChart() {
   return (
     <Card
       sx={(theme) => ({

@@ -4,7 +4,7 @@ import { InfoSubtitle } from "../info-basic/info-subtitle";
 import { InfoTitle } from "../info-basic/info-title";
 import { getInfoApexStyles } from "./info-apex.styles";
 
-export default function InfoApex() {
+export function InfoApex() {
   return (
     <Info variant="apex" useStyles={getInfoApexStyles}>
       <InfoTitle>APEX Legends: Assemble!</InfoTitle>

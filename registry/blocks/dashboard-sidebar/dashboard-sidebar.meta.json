@@ -5,6 +5,7 @@
   "description": "A vertical navigation sidebar for dashboard applications with user profile, search, and expandable menu items",
   "meta": {
     "screenshot": "/screenshots/dashboard-sidebar.png",
-    "category": "dashboard"
+    "category": "dashboard",
+    "exportName": "DashboardSidebar"
   }
 }

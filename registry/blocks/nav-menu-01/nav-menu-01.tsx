@@ -85,7 +85,7 @@ function MenuLink({
   );
 }
 
-export default function NavMenu01() {
+export function NavMenu01() {
   return (
     <NavigationMenu.Root>
       <NavigationMenu.List

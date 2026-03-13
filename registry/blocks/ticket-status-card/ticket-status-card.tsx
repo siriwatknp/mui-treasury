@@ -5,7 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
-export default function TicketStatusCard() {
+export function TicketStatusCard() {
   const totalTickets = 247;
   const resolved = 82;
   const inProgress = 13;

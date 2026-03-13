@@ -11,7 +11,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import { LineChart } from "@mui/x-charts/LineChart";
 
-export default function CustomerMetricsCard() {
+export function CustomerMetricsCard() {
   return (
     <Card variant="outlined" sx={{ maxWidth: 400 }}>
       <CardContent>

@@ -5,6 +5,7 @@
   "description": "Apple-style tabs with rounded container and sliding indicator",
   "meta": {
     "category": "primitive",
-    "subcategory": "tabs"
+    "subcategory": "tabs",
+    "exportName": "TabsApple"
   }
 }

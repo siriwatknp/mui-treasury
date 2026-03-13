@@ -6,6 +6,7 @@
   "meta": {
     "screenshot": "/screenshots/login-form-split.png",
     "category": "authentication",
-    "previewMode": "iframe"
+    "previewMode": "iframe",
+    "exportName": "LoginFormSplit"
   }
 }

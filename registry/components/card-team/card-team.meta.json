@@ -8,6 +8,7 @@
     "category": "primitive",
     "previewClassName": "h-[300px!important] overflow-auto",
     "previewMode": "iframe",
-    "subcategory": "card"
+    "subcategory": "card",
+    "exportName": "CardTeam"
   }
 }

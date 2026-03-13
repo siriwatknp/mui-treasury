@@ -100,7 +100,7 @@ const useOfferInfoStyles = () => {
   };
 };
 
-export default function CardOffer() {
+export function CardOffer() {
   return (
     <StyledCard>
       <Box sx={{ display: "flex", flexDirection: "column", gap: 2, mr: 2 }}>

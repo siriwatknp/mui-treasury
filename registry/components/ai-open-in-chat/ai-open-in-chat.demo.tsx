@@ -11,9 +11,9 @@ import {
   OpenInChatGPT,
   OpenInClaude,
   OpenInv0,
-} from "./ai-open-in-chat";
+} from "@/registry/components/ai-open-in-chat/ai-open-in-chat";
 
-export default function AIOpenInChatDemo() {
+export function Demo() {
   const query = "How to implement authentication in Next.js with TypeScript?";
 
   return (

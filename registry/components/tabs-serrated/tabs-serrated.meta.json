@@ -5,6 +5,7 @@
   "description": "Serrated tabs with skewed transform and diagonal shadow gradient",
   "meta": {
     "category": "primitive",
-    "subcategory": "tabs"
+    "subcategory": "tabs",
+    "exportName": "TabsSerrated"
   }
 }

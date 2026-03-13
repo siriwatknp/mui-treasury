@@ -5,6 +5,7 @@
   "description": "A ticket-status-card block.",
   "meta": {
     "screenshot": "/screenshots/ticket-status-card.png",
-    "category": "dashboard"
+    "category": "dashboard",
+    "exportName": "TicketStatusCard"
   }
 }

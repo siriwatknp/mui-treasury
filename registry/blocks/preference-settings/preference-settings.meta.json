@@ -5,6 +5,7 @@
   "description": "A clean settings panel with various preference options including selects and toggles",
   "meta": {
     "screenshot": "/screenshots/preference-settings.png",
-    "category": "dashboard"
+    "category": "dashboard",
+    "exportName": "PreferenceSettings"
   }
 }

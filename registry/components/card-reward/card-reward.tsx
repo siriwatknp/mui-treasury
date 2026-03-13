@@ -75,7 +75,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-export default function CardReward() {
+export function CardReward() {
   return (
     <StyledCard>
       <CardMediaMedia

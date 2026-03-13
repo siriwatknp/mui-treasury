@@ -23,12 +23,12 @@ const chartData = [
   { date: "Feb 28", value: 5200 },
 ];
 
-export default function PaymentHistoryChart() {
+export function PaymentHistoryChart() {
   const [period, setPeriod] = React.useState("1M");
 
   const handlePeriodChange = (
     event: React.MouseEvent<HTMLElement>,
-    newPeriod: string | null
+    newPeriod: string | null,
   ) => {
     if (newPeriod !== null) {
       setPeriod(newPeriod);
@@ -107,7 +107,7 @@ export default function PaymentHistoryChart() {
                     "Feb 28",
                   ];
                   const step = Math.floor(
-                    (value * labels.length) / chartData.length
+                    (value * labels.length) / chartData.length,
                   );
                   return labels[Math.min(step, labels.length - 1)] || "";
                 },

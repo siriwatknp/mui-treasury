@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-export default function CardSysi(props: { style?: React.CSSProperties }) {
+export function CardSysi(props: { style?: React.CSSProperties }) {
   return (
     <Box
       display="flex"

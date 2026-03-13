@@ -5,7 +5,7 @@ import { InfoSubtitle } from "../info-basic/info-subtitle";
 import { InfoTitle } from "../info-basic/info-title";
 import { getInfoChatzStyles } from "./info-chatz.styles";
 
-export default function InfoChatz() {
+export function InfoChatz() {
   return (
     <Info variant="chatz" useStyles={getInfoChatzStyles}>
       <InfoTitle>Phawta Tuntayakul</InfoTitle>

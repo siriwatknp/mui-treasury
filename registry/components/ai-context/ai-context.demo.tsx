@@ -14,9 +14,9 @@ import {
   ContextOutputUsage,
   ContextReasoningUsage,
   ContextTrigger,
-} from "./ai-context";
+} from "@/registry/components/ai-context/ai-context";
 
-export default function ContextDemo() {
+export function Demo() {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const handleOpen = (event: React.MouseEvent<HTMLElement>) => {

@@ -5,6 +5,7 @@
   "description": "Elevated tabs with gradient background and translucent indicator",
   "meta": {
     "category": "primitive",
-    "subcategory": "tabs"
+    "subcategory": "tabs",
+    "exportName": "TabsElevated"
   }
 }

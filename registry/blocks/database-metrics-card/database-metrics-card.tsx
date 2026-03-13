@@ -167,7 +167,7 @@ function MetricCard({
               valueFormatter: (value) => {
                 const date = new Date(value);
                 return `${String(date.getDate()).padStart(2, "0")}/${String(
-                  date.getMonth() + 1
+                  date.getMonth() + 1,
                 ).padStart(2, "0")}/${date.getFullYear()}`;
               },
             },
@@ -210,7 +210,7 @@ function MetricCard({
   );
 }
 
-export default function DatabaseMetricsCard() {
+export function DatabaseMetricsCard() {
   return (
     <Card
       sx={(theme) => ({

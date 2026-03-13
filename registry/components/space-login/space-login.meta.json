@@ -5,6 +5,7 @@
   "description": "Split-screen login form with space theme and social authentication options",
   "meta": {
     "screenshot": "/screenshots/space-login.png",
-    "category": "authentication"
+    "category": "authentication",
+    "exportName": "SpaceLogin"
   }
 }

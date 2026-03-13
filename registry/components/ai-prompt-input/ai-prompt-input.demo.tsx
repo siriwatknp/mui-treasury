@@ -11,10 +11,10 @@ import {
   PromptInputButton,
   PromptInputSubmit,
   type PromptInputMessage,
-} from "./ai-prompt-input";
+} from "@/registry/components/ai-prompt-input/ai-prompt-input";
 import { PaperclipIcon, ImageIcon, MicIcon } from "lucide-react";
 
-export default function AIPromptInputDemo() {
+export function Demo() {
   const handleSubmit = (message: PromptInputMessage) => {
     console.log("Message:", message.text);
     console.log("Files:", message.files);

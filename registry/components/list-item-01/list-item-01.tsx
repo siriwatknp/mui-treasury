@@ -19,7 +19,7 @@ import {
   Add as AddIcon,
 } from "@mui/icons-material";
 
-export default function ListItem01() {
+export function ListItem01() {
   return (
     <List disablePadding sx={{ bgcolor: "background.paper" }}>
       {/* Variation 1: Promoted/Company */}

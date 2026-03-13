@@ -6,6 +6,7 @@
   "description": "Magazine-style review card with image, star rating, content excerpt, and comment/view/share metrics",
   "meta": {
     "category": "primitive",
-    "subcategory": "card"
+    "subcategory": "card",
+    "exportName": "CardReview2"
   }
 }

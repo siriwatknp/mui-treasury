@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { PreviewComponent } from "@/components/preview-page";
-import SelectInset01 from "@/registry/components/select-inset-01/select-inset-01";
+import { SelectInset01 } from "@/registry/components/select-inset-01/select-inset-01";
 import Box from "@mui/material/Box";
 
 const deviceOptions = [

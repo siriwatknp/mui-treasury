@@ -6,6 +6,7 @@
   "description": "Compact horizontal card with avatar, user name, location info, and progress slider showing completion status",
   "meta": {
     "category": "primitive",
-    "subcategory": "card"
+    "subcategory": "card",
+    "exportName": "CardKanban"
   }
 }

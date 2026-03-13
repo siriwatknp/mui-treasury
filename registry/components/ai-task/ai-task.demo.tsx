@@ -6,9 +6,9 @@ import {
   TaskContent,
   TaskItem,
   TaskItemFile,
-} from "./ai-task";
+} from "@/registry/components/ai-task/ai-task";
 
-export default function AITaskDemo() {
+export function Demo() {
   return (
     <div className="w-full max-w-2xl mx-auto space-y-8 p-8">
       <div className="space-y-2">

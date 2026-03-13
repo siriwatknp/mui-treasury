@@ -2,7 +2,8 @@
 
 import * as React from "react";
 import Box from "@mui/material/Box";
-import CardAction02, {
+import {
+  CardAction02,
   type CardAction02Props,
 } from "@/registry/components/card-action-02/card-action-02";
 import { CreditCard, GraduationCap, Users, Monitor, Truck } from "lucide-react";
@@ -62,7 +63,7 @@ const cardsData: CardAction02Props[] = [
   },
 ];
 
-export default function CarouselCss01() {
+export function CarouselCss01() {
   return (
     <Box
       role="region"

@@ -38,10 +38,11 @@ interface CategoryClientProps {
 interface ComponentPreviewContentProps {
   item: RegistryItem;
   needsIframe: boolean;
+  demoPath?: string;
 }
 
 const ComponentPreviewContent = React.memo(
-  ({ item, needsIframe }: ComponentPreviewContentProps) => {
+  ({ item, needsIframe, demoPath }: ComponentPreviewContentProps) => {
     const hasScreenshotPreview = item.meta.screenshot && item.meta.previewPath;
 
     const DynamicComponent = React.useMemo(() => {
@@ -49,16 +50,37 @@ const ComponentPreviewContent = React.memo(
 
       try {
         const componentPath = item.path.replace(".tsx", "");
+        const resolvedDemoPath =
+          demoPath ?? item.demoFiles?.[0]?.path.replace(".tsx", "");
         return dynamic(
           () =>
-            // First try to import .demo version
-            import(`@/registry/${componentPath}.demo`)
-              .catch(() => {
-                // If .demo doesn't exist, try the original path
-                return import(`@/registry/${componentPath}`);
+            (resolvedDemoPath
+              ? import(`@/registry/${resolvedDemoPath}`)
+              : Promise.resolve(null)
+            )
+              .then((mod) => {
+                if (mod && mod.Demo) return { default: mod.Demo };
+                return null;
+              })
+              .catch(() => null)
+              .then((result) => {
+                if (result) return result;
+                return import(`@/registry/${componentPath}`).then((mod) => {
+                  const exportName = item.meta.exportName;
+                  if (exportName && mod[exportName])
+                    return { default: mod[exportName] };
+                  return {
+                    default: function NoExport() {
+                      return (
+                        <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+                          <span className="text-sm">Preview unavailable</span>
+                        </div>
+                      );
+                    },
+                  };
+                });
               })
               .catch(() => {
-                // Return a fallback component for failed imports
                 return {
                   default: function FallbackComponent() {
                     return (
@@ -87,7 +109,14 @@ const ComponentPreviewContent = React.memo(
           );
         };
       }
-    }, [item.path, needsIframe, hasScreenshotPreview]);
+    }, [
+      item.path,
+      item.demoFiles,
+      demoPath,
+      item.meta.exportName,
+      needsIframe,
+      hasScreenshotPreview,
+    ]);
 
     if (hasScreenshotPreview) {
       return (
@@ -143,7 +172,15 @@ const ComponentPreviewContent = React.memo(
 
 ComponentPreviewContent.displayName = "ComponentPreviewContent";
 
-function ComponentPreview({ item }: { item: RegistryItem }) {
+function ComponentPreview({
+  item,
+  demoFile,
+}: {
+  item: RegistryItem;
+  demoFile?: RegistryItem["demoFiles"] extends Array<infer T> | undefined
+    ? T
+    : never;
+}) {
   // Use explicit previewMode from registry metadata
   const needsIframe = item.meta.previewMode === "iframe";
   const previewHeight = extractHeight(item.meta.previewClassName);
@@ -159,13 +196,14 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
   const panelRef = useRef<ImperativePanelHandle | null>(null);
   const { mode, systemMode } = useColorScheme();
 
-  // Memoize display files: prepend demo file and filter out index.ts
+  const demoPath = demoFile?.path.replace(".tsx", "");
+
+  // Memoize display files: prepend demo file(s) and filter out index.ts
   const displayFiles = React.useMemo(() => {
-    const allFiles = item.demoFile
-      ? [item.demoFile, ...item.files]
-      : item.files;
+    const demoFiles = demoFile ? [demoFile] : (item.demoFiles ?? []);
+    const allFiles = [...demoFiles, ...item.files];
     return allFiles.filter((file) => !file.path.endsWith("index.ts"));
-  }, [item.demoFile, item.files]);
+  }, [demoFile, item.demoFiles, item.files]);
 
   const handleCopy = React.useCallback(
     async (content: string, index: number) => {
@@ -219,6 +257,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
             key={previewKey}
             item={item}
             needsIframe={needsIframe}
+            demoPath={demoPath}
           />
         </ResizablePanel>
         <ResizableHandle
@@ -232,7 +271,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
         <ResizablePanel defaultSize={0} minSize={0} maxSize={70} />
       </ResizablePanelGroup>
     );
-  }, [item, needsIframe, panelRef, previewKey]);
+  }, [item, needsIframe, demoPath, panelRef, previewKey]);
 
   const renderFileContent = React.useCallback(
     (file: RegistryItem["files"][0], index: number, showHeader: boolean) => {
@@ -471,7 +510,15 @@ function extractHeight(previewClassName?: string): string | undefined {
   return match ? match[1].replace("!important", "") : undefined;
 }
 
-function LazyComponentPreview({ item }: { item: RegistryItem }) {
+function LazyComponentPreview({
+  item,
+  demoFile,
+}: {
+  item: RegistryItem;
+  demoFile?: RegistryItem["demoFiles"] extends Array<infer T> | undefined
+    ? T
+    : never;
+}) {
   const [isVisible, setIsVisible] = React.useState(false);
   const ref = React.useRef<HTMLDivElement>(null);
   const previewHeight = extractHeight(item.meta.previewClassName);
@@ -521,7 +568,7 @@ function LazyComponentPreview({ item }: { item: RegistryItem }) {
     <div ref={ref} style={{ minHeight: containerMinHeight }}>
       {isVisible ? (
         <Suspense fallback={loadingSkeleton}>
-          <ComponentPreview item={item} />
+          <ComponentPreview item={item} demoFile={demoFile} />
         </Suspense>
       ) : (
         loadingSkeleton
@@ -639,7 +686,58 @@ export default function CategoryClient({
                   </p>
                 </div>
                 {/* Live Component Preview */}
-                <LazyComponentPreview item={item} />
+                {(() => {
+                  const primaryDemo = item.demoFiles?.find((f) =>
+                    f.path.endsWith(`${item.name}.demo.tsx`),
+                  );
+                  const extraDemos = item.demoFiles?.filter(
+                    (f) => f !== primaryDemo,
+                  );
+                  const hasExtras = extraDemos && extraDemos.length > 0;
+                  return (
+                    <>
+                      <LazyComponentPreview
+                        item={item}
+                        demoFile={primaryDemo}
+                      />
+                      {hasExtras &&
+                        extraDemos.map((demoFile) => {
+                          const label =
+                            demoFile.title ||
+                            demoFile.path
+                              .split("/")
+                              .pop()!
+                              .replace(".demo.tsx", "")
+                              .split("-")
+                              .map(
+                                (w) => w.charAt(0).toUpperCase() + w.slice(1),
+                              )
+                              .join(" ");
+                          return (
+                            <div
+                              key={demoFile.path}
+                              className="space-y-2 min-w-0 flex flex-col"
+                            >
+                              <div>
+                                <h4 className="text-sm font-medium text-muted-foreground">
+                                  {label}
+                                </h4>
+                                {demoFile.description && (
+                                  <p className="text-sm text-muted-foreground/70">
+                                    {demoFile.description}
+                                  </p>
+                                )}
+                              </div>
+                              <LazyComponentPreview
+                                item={item}
+                                demoFile={demoFile}
+                              />
+                            </div>
+                          );
+                        })}
+                    </>
+                  );
+                })()}
               </div>
             ))}
           </div>

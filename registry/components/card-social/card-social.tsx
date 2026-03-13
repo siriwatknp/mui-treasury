@@ -70,7 +70,7 @@ const PersonItem = ({ src = "", name = "", count = 0 }) => {
   );
 };
 
-export default function CardSocial() {
+export function CardSocial() {
   return (
     <Box
       sx={(theme) => ({

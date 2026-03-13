@@ -165,7 +165,7 @@ const newsInfoStyles = (arg: Theme | { theme: Theme }) => {
   };
 };
 
-export default function CardNews3() {
+export function CardNews3() {
   return (
     <StyledCard>
       <BoxMain minHeight={300} position={"relative"}>

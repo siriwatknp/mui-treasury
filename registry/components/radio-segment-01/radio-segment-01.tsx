@@ -15,7 +15,7 @@ export interface RadioSegment01Props {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function RadioSegment01({
+export function RadioSegment01({
   defaultValue = "16-inch",
   value,
   onChange,
