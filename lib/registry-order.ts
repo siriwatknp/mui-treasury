@@ -5,6 +5,7 @@
  */
 export const subcategoryOrder: Record<string, string[]> = {
   ai: ["elements", "firebase"],
+  layout: ["root", "header", "edge-sidebar", "inset-sidebar", "footer"],
 };
 
 /**
