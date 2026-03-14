@@ -23,6 +23,7 @@ export interface RegistryItem {
     target?: string;
     title?: string;
     description?: string;
+    previewMode?: "normal" | "iframe";
   }>;
   meta: {
     screenshot?: string;
@@ -45,19 +46,26 @@ export interface RegistryCategory {
 /**
  * Extract `export const meta = { ... }` from demo file content.
  */
-function parseDemoMeta(
-  content: string,
-): { title?: string; description?: string } | null {
+function parseDemoMeta(content: string): {
+  title?: string;
+  description?: string;
+  previewMode?: "normal" | "iframe";
+} | null {
   const match = content.match(
     /export\s+const\s+meta\s*=\s*(\{[\s\S]*?\n\}|\{[^\n]*\})/,
   );
   if (!match) return null;
   try {
-    const obj = new Function(`return ${match[1]}`)();
+    const raw = match[1].replace(/\s+as\s+const\b/g, "");
+    const obj = new Function(`return ${raw}`)();
     return {
       title: typeof obj.title === "string" ? obj.title : undefined,
       description:
         typeof obj.description === "string" ? obj.description : undefined,
+      previewMode:
+        obj.previewMode === "iframe" || obj.previewMode === "normal"
+          ? obj.previewMode
+          : undefined,
     };
   } catch {
     return null;
@@ -124,6 +132,7 @@ function loadPublicRegistryData(name: string): Partial<RegistryItem> | null {
           type: string;
           title?: string;
           description?: string;
+          previewMode?: "normal" | "iframe";
         }> = [];
 
         // Scan root directory for *.demo.tsx
@@ -261,7 +270,12 @@ export function getRegistryItems(): RegistryItem[] {
               registryDependencies: [],
               files: [],
               demoFiles: [
-                { path: relativePath, content, type: "registry:demo" },
+                {
+                  path: relativePath,
+                  content,
+                  type: "registry:demo",
+                  ...demoMeta,
+                },
               ],
               meta: {
                 category: (metaContent.meta || {}).category,
