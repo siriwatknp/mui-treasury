@@ -92,9 +92,7 @@ export const meta = {
 };
 
 export function Demo() {
-  return (
-    <Root height="90vh">…</Root>
-  );
+  return <Root height="90vh">…</Root>;
 }
 ```
 
@@ -109,6 +107,27 @@ export function Demo() {
     <Content>…</Content>
   </Root>
   ```
+
+### InsetSidebar Props
+
+`InsetSidebar` is a secondary sidebar placed inside `Content` as first or last child.
+
+- `width`: fixed (`"220px"`) or responsive (`{ md: "200px", lg: "260px" }`).
+- `position`: `"sticky"` (default), `"fixed"`, or `"absolute"`.
+  - **sticky**: sticks under header on scroll until content ends.
+  - **absolute**: spans from header to bottom, use with `standalone` Root and `InsetAvoidingView` in Footer.
+
+```tsx
+import InsetContent from "@/registry/layout/layout-core/InsetContent";
+import InsetSidebar from "@/registry/layout/layout-core/InsetSidebar";
+
+<Content>
+  <Box>…main content…</Box>
+  <InsetSidebar width="200px">
+    <InsetContent>…</InsetContent>
+  </InsetSidebar>
+</Content>;
+```
 
 ### Footer & InsetAvoidingView
 

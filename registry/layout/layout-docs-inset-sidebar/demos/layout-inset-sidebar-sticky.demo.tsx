@@ -13,11 +13,12 @@ export const meta = {
   title: "Inset Sidebar Sticky",
   description:
     "Default sticky behavior — sidebar sticks under the header on scroll.",
+  previewMode: "iframe",
 };
 
 export function Demo() {
   return (
-    <Root height="300px">
+    <Root height="300px" sx={{ maxHeight: "400px" }}>
       <Header>
         <Box sx={{ px: 2 }}>
           <Typography variant="caption" fontWeight="bold">
@@ -27,7 +28,7 @@ export function Demo() {
       </Header>
       <Content>
         <Box sx={{ p: 2, flex: 1 }}>
-          {Array.from({ length: 30 }, (_, i) => (
+          {Array.from({ length: 100 }, (_, i) => (
             <Typography key={i} variant="body2" color="text.secondary">
               Line {i + 1}
             </Typography>

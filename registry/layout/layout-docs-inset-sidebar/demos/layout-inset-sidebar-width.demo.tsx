@@ -11,7 +11,8 @@ import Root from "@/registry/layout/layout-core/Root";
 
 export const meta = {
   title: "Inset Sidebar Width",
-  description: "Customize the width of the inset sidebar with fixed or responsive values.",
+  description:
+    "Customize the width of the inset sidebar with fixed or responsive values.",
 };
 
 export function Demo() {
