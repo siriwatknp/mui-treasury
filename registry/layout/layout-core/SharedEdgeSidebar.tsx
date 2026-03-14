@@ -210,15 +210,16 @@ export const EdgeSidebarRoot = styled("div")({
     {
       overflow: "hidden",
     },
-  "&::after": {
-    position: "absolute",
-    content: '""',
-    display: "block",
-    width: "var(--_permanent, var(--jun-EC-width))",
-    height: "var(--jun-H-clip-h)",
-    top: "calc(-1 * var(--jun-H-clip-h))",
-    left: "var(--anchorLeft, 0px) var(--anchorRight, unset)",
-    right: "var(--anchorLeft, unset) var(--anchorRight, 0px)",
-    border: "inherit",
-  },
+  // TODO: recheck why it is needed
+  // "&::after": {
+  //   position: "absolute",
+  //   content: '""',
+  //   display: "block",
+  //   width: "var(--_permanent, var(--jun-EC-width))",
+  //   height: "var(--jun-H-clip-h)",
+  //   top: "calc(-1 * var(--jun-H-clip-h))",
+  //   left: "var(--anchorLeft, 0px) var(--anchorRight, unset)",
+  //   right: "var(--anchorLeft, unset) var(--anchorRight, 0px)",
+  //   border: "inherit",
+  // },
 });

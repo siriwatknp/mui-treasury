@@ -72,7 +72,8 @@ function applyPermanentStyles(params: PermanentConfig) {
     }
   }
   return {
-    "--jun-EC-shadow": "none",
+    "--jun-EC-shadow":
+      "inset calc(-1 * var(--jun-ES-line-w)) 0px var(--jun-ES-line-color)",
     "--jun-EC-width": "var(--_permanentWidth, 0px)",
     "--_collapsed": "var(--collapsed)",
     "--_uncollapsed": "var(--uncollapsed)",
@@ -214,7 +215,6 @@ const StyledEdgeSidebar = styled(EdgeSidebarRoot, {
     width: `var(--drawer, 0)
               var(--permanent, var(--_permanentWidth))`,
     borderColor: "var(--jun-ES-line-color)",
-    boxShadow: "var(--jun-ES-line-w) 0px var(--jun-ES-line-color)",
     [`&:not([${layoutAttrs.isDrawerOpen}], [${layoutAttrs.isDrawerClosing}])`]:
       {
         overflow: "var(--drawer, hidden)",

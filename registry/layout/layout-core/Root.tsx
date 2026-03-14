@@ -19,9 +19,10 @@ const StyledRoot = styled("div", {
 }>(
   memoTheme(({ theme }) => ({
     "--jun-h": "calc(100svh - env(safe-area-inset-bottom))",
+    "--jun-H-clip-h": "0px", // prevent upper layout
     "--Header-underline": `1px solid ${(theme.vars || theme).palette.divider}`,
     "--Header-background": (theme.vars || theme).palette.background.paper,
-    "--Footer-background": (theme.vars || theme).palette.background.paper,
+    "--Footer-background": (theme.vars || theme).palette.background.default,
     "--Footer-overline": `1px solid ${(theme.vars || theme).palette.divider}`,
     "--drawer-pos": "fixed",
     "--drawer-z": "999",

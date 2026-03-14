@@ -72,7 +72,8 @@ function applyPermanentRightStyles(params: PermanentConfig) {
     }
   }
   return {
-    "--jun-EC-shadow": "none",
+    "--jun-EC-shadow":
+      "inset var(--jun-ES-line-w) 0px var(--jun-ES-line-color)",
     "--jun-EC-width": "var(--_permanentWidth-R, 0px)",
     "--_collapsed": "var(--collapsed-R)",
     "--_uncollapsed": "var(--uncollapsed-R)",
@@ -217,7 +218,6 @@ const StyledEdgeSidebarRight = styled(EdgeSidebarRoot, {
     gridArea: layoutClasses.EdgeSidebarRight,
     width: `var(--drawer-R, 0)
               var(--permanent-R, var(--_permanentWidth-R))`,
-    boxShadow: "calc(-1 * var(--jun-ES-line-w)) 0px var(--jun-ES-line-color)",
     [`&:not([${layoutAttrs.isDrawerOpen}], [${layoutAttrs.isDrawerClosing}])`]:
       {
         overflow: "var(--drawer-R, hidden)",

@@ -2,10 +2,10 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
-import Root from "@/registry/layout/layout-core/Root";
-import Header from "@/registry/layout/layout-core/Header";
 import Content from "@/registry/layout/layout-core/Content";
 import Footer from "@/registry/layout/layout-core/Footer";
+import Header from "@/registry/layout/layout-core/Header";
+import Root from "@/registry/layout/layout-core/Root";
 
 export function Demo() {
   return (
