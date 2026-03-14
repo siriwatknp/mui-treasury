@@ -215,7 +215,10 @@ export function getRegistryItems(): RegistryItem[] {
           title: metaContent.title || itemName,
           description: metaContent.description || "",
           dependencies: publicData?.dependencies || [],
-          registryDependencies: publicData?.registryDependencies || [],
+          registryDependencies:
+            publicData?.registryDependencies ||
+            metaContent.registryDependencies ||
+            [],
           files: publicData?.files || [],
           demoFiles: publicData?.demoFiles,
           meta: metaContent.meta || {},
@@ -390,4 +393,15 @@ export function getUncategorizedItems(category: string): RegistryItem[] {
   return getRegistryItems().filter(
     (item) => item.meta?.category === category && !item.meta?.subcategory,
   );
+}
+
+/**
+ * Check if an item should be visible in sidebar and content.
+ * Items without demo files AND without registryDependencies are hidden.
+ */
+export function isVisibleItem(item: RegistryItem): boolean {
+  const hasDemos = item.demoFiles && item.demoFiles.length > 0;
+  const hasRegistryDeps = item.registryDependencies.length > 0;
+  const hasFiles = item.files.length > 0;
+  return !!(hasDemos || hasRegistryDeps || hasFiles);
 }
