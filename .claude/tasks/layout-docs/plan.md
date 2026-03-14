@@ -94,7 +94,7 @@ Source: `footer.mdx` | Component: `Footer`
 Source: `edge-sidebar.mdx` | Components: `EdgeSidebar`, `EdgeSidebarRight`, `EdgeSidebarContent`
 **meta.json**: category `layout`, subcategory `edge-sidebar`
 
-- [ ] `layout-edge-sidebar-width.demo.tsx` — custom width via variant config
+- [x] `layout-edge-sidebar-width.demo.tsx` — custom width via variant config ✅ Done
   ```tsx
   <Root>
     <EdgeSidebar variant={["permanent", { width: "200px" }]}>
@@ -103,7 +103,7 @@ Source: `edge-sidebar.mdx` | Components: `EdgeSidebar`, `EdgeSidebarRight`, `Edg
     <Content>...</Content>
   </Root>
   ```
-- [ ] `layout-edge-sidebar-visibility.demo.tsx` — permanent hidden/visible per breakpoint
+- [x] `layout-edge-sidebar-visibility.demo.tsx` — permanent hidden/visible per breakpoint ✅ Done
   ```tsx
   <Root>
     <EdgeSidebar
@@ -117,7 +117,7 @@ Source: `edge-sidebar.mdx` | Components: `EdgeSidebar`, `EdgeSidebarRight`, `Edg
     <Content>...</Content>
   </Root>
   ```
-- [ ] `layout-edge-sidebar-collapse.demo.tsx` — collapsible with `collapsedWidth` + `triggerEdgeCollapse`
+- [x] `layout-edge-sidebar-collapse.demo.tsx` — collapsible with `collapsedWidth` + `triggerEdgeCollapse` ✅ Done
   ```tsx
   <Root>
     <EdgeSidebar
@@ -130,7 +130,7 @@ Source: `edge-sidebar.mdx` | Components: `EdgeSidebar`, `EdgeSidebarRight`, `Edg
     <Content>...</Content>
   </Root>
   ```
-- [ ] `layout-edge-sidebar-hover-uncollapse.demo.tsx` — collapsed sidebar expands on hover
+- [x] `layout-edge-sidebar-hover-uncollapse.demo.tsx` — collapsed sidebar expands on hover ✅ Done
   ```tsx
   <Root>
     <EdgeSidebar
@@ -144,7 +144,7 @@ Source: `edge-sidebar.mdx` | Components: `EdgeSidebar`, `EdgeSidebarRight`, `Edg
     <Content>...</Content>
   </Root>
   ```
-- [ ] `layout-edge-sidebar-auto-collapse.demo.tsx` — auto collapse below breakpoint
+- [x] `layout-edge-sidebar-auto-collapse.demo.tsx` — auto collapse below breakpoint ✅ Done
   ```tsx
   <Root>
     <EdgeSidebar
@@ -156,7 +156,7 @@ Source: `edge-sidebar.mdx` | Components: `EdgeSidebar`, `EdgeSidebarRight`, `Edg
     <Content>...</Content>
   </Root>
   ```
-- [ ] `layout-edge-sidebar-drawer.demo.tsx` — drawer mode + `triggerEdgeDrawer`
+- [x] `layout-edge-sidebar-drawer.demo.tsx` — drawer mode + `triggerEdgeDrawer` ✅ Done
   ```tsx
   <Root>
     <Header>
@@ -168,7 +168,7 @@ Source: `edge-sidebar.mdx` | Components: `EdgeSidebar`, `EdgeSidebarRight`, `Edg
     <Content>...</Content>
   </Root>
   ```
-- [ ] `layout-edge-sidebar-drawer-without-overlay.demo.tsx` — drawer without overlay
+- [x] `layout-edge-sidebar-drawer-without-overlay.demo.tsx` — drawer without overlay ✅ Done
   ```tsx
   <Root>
     <Header>
@@ -180,7 +180,7 @@ Source: `edge-sidebar.mdx` | Components: `EdgeSidebar`, `EdgeSidebarRight`, `Edg
     <Content>...</Content>
   </Root>
   ```
-- [ ] `layout-edge-sidebar-responsive.demo.tsx` — drawer on mobile, permanent on desktop
+- [x] `layout-edge-sidebar-responsive.demo.tsx` — drawer on mobile, permanent on desktop ✅ Done
   ```tsx
   <Root>
     <Header>
@@ -197,7 +197,7 @@ Source: `edge-sidebar.mdx` | Components: `EdgeSidebar`, `EdgeSidebarRight`, `Edg
     <Content>...</Content>
   </Root>
   ```
-- [ ] `layout-edge-sidebar-right.demo.tsx` — `EdgeSidebarRight` component usage
+- [x] `layout-edge-sidebar-right.demo.tsx` — `EdgeSidebarRight` component usage ✅ Done
   ```tsx
   <Root>
     <Content>...</Content>

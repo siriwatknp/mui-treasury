@@ -19,6 +19,7 @@ const StyledRoot = styled("div", {
 }>(
   memoTheme(({ theme }) => ({
     "--jun-h": "calc(100svh - env(safe-area-inset-bottom))",
+    "--jun-H-h": "3rem", // default header height
     "--jun-H-clip-h": "0px", // prevent upper layout
     "--Header-underline": `1px solid ${(theme.vars || theme).palette.divider}`,
     "--Header-background": (theme.vars || theme).palette.background.paper,

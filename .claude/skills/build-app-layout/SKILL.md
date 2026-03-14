@@ -57,7 +57,7 @@ import Root from "@/registry/layout/layout-core/Root";
   <Root height="500px">…</Root>
   <Root height={{ xs: "300px", md: "400px" }}>…</Root>
   ```
-- `standalone`: fits the layout to its height with scrollable Content area (useful for POS, chat apps)
+- `standalone`: fits the layout to its height with scrollable Content area (useful for POS, chat apps). Also makes drawer EdgeSidebar absolute-positioned within the Root instead of fixed to the viewport.
   ```tsx
   <Root standalone height="350px">
     <Header>…</Header>
@@ -65,10 +65,38 @@ import Root from "@/registry/layout/layout-core/Root";
     <Footer>…</Footer>
   </Root>
   ```
+  When using a drawer EdgeSidebar in a non-full-frame layout (e.g. constrained height demo), use `standalone` with `overflow: "hidden"` to keep the drawer within the Root:
+  ```tsx
+  <Root standalone sx={{ overflow: "hidden" }} height="300px">
+    <Header>…</Header>
+    <EdgeSidebar id="sidebar" variant={["drawer", { width: "300px" }]}>
+      …
+    </EdgeSidebar>
+    <Content>…</Content>
+  </Root>
+  ```
 - `disableTransition`: disables grid column transitions (sidebar collapse is instant)
   ```tsx
   <Root disableTransition>…</Root>
   ```
+
+### Iframe Preview for Responsive Demos
+
+When a demo showcases responsive behavior (breakpoint-based visibility, auto-collapse, drawer↔permanent), add `previewMode: "iframe"` to the demo meta and use `height="90vh"` on Root so the iframe is resizable:
+
+```tsx
+export const meta = {
+  title: "…",
+  description: "…",
+  previewMode: "iframe" as const,
+};
+
+export function Demo() {
+  return (
+    <Root height="90vh">…</Root>
+  );
+}
+```
 
 ### Header Props
 
@@ -81,6 +109,38 @@ import Root from "@/registry/layout/layout-core/Root";
     <Content>…</Content>
   </Root>
   ```
+
+### Footer & InsetAvoidingView
+
+When using an absolute `InsetSidebar` in a standalone layout, the sidebar overlaps the footer. Wrap footer content in `InsetAvoidingView` to avoid the overlap.
+
+```tsx
+import InsetAvoidingView from "@/registry/layout/layout-core/InsetAvoidingView";
+import InsetContent from "@/registry/layout/layout-core/InsetContent";
+import InsetSidebar from "@/registry/layout/layout-core/InsetSidebar";
+
+<Root standalone>
+  <Header>…</Header>
+  <Content>
+    <Box>…</Box>
+    <InsetSidebar position="absolute" width="200px">
+      <InsetContent>…</InsetContent>
+    </InsetSidebar>
+  </Content>
+  <Footer>
+    <InsetAvoidingView sx={{ p: 2 }}>…</InsetAvoidingView>
+  </Footer>
+</Root>;
+```
+
+### EdgeSidebar ID Rule
+
+**Always add a unique `id` to `EdgeSidebar` and `EdgeSidebarRight`.** This ensures trigger functions (`triggerEdgeCollapse`, `triggerEdgeDrawer`) and `EdgeSidebarCollapser` target the correct sidebar when multiple sidebars exist.
+
+```tsx
+<EdgeSidebar id="main-sidebar" variant={…}>…</EdgeSidebar>
+<EdgeSidebarRight id="right-sidebar" variant={…}>…</EdgeSidebarRight>
+```
 
 ### EdgeSidebar Collapse Components
 

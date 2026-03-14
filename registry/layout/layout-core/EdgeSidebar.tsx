@@ -139,7 +139,7 @@ function applyPermanentStyles(params: PermanentConfig) {
       [`& .${layoutClasses.EdgeSidebarContent}:hover`]: {
         "--jun-EC-width": "var(--jun-ES-permanentWidth)",
         "--jun-EC-delay": expandConfig.delay,
-        "--jun-EC-shadow": `var(--_permanent, var(--collapsed, ${expandConfig.shadow}, var(--jun-ES-line-w) 0 var(--jun-ES-line-color)))`,
+        "--jun-EC-shadow": `var(--_permanent, var(--uncollapsed, inset calc(-1 * var(--jun-ES-line-w)) 0 var(--jun-ES-line-color)) var(--collapsed, ${expandConfig.shadow}, inset calc(-1 * var(--jun-ES-line-w)) 0 var(--jun-ES-line-color)))`,
       },
     }),
   };

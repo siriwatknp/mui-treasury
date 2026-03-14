@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Docs Edge Sidebar",
+  "description": "Documentation for EdgeSidebar covering width, visibility, collapse, drawer, responsive modes, and right sidebar.",
+  "meta": {
+    "category": "layout",
+    "subcategory": "edge-sidebar"
+  }
+}
