@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Docs Inset Sidebar",
+  "description": "Documentation for InsetSidebar covering width, sticky behavior, and absolute positioning.",
+  "meta": {
+    "category": "layout",
+    "subcategory": "inset-sidebar"
+  }
+}

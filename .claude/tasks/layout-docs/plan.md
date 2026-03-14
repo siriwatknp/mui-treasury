@@ -214,7 +214,7 @@ Source: `edge-sidebar.mdx` | Components: `EdgeSidebar`, `EdgeSidebarRight`, `Edg
 Source: `inset-sidebar.mdx` | Components: `InsetSidebar`, `InsetContent`, `InsetAvoidingView`
 **meta.json**: category `layout`, subcategory `inset-sidebar`
 
-- [ ] `layout-inset-sidebar-width.demo.tsx` — custom width via `width` prop (fixed + responsive)
+- [x] `layout-inset-sidebar-width.demo.tsx` — custom width via `width` prop (fixed + responsive) ✅ Done
   ```tsx
   <Root>
     <Header>...</Header>
@@ -227,7 +227,7 @@ Source: `inset-sidebar.mdx` | Components: `InsetSidebar`, `InsetContent`, `Inset
     <Footer>...</Footer>
   </Root>
   ```
-- [ ] `layout-inset-sidebar-sticky.demo.tsx` — default sticky behavior, sticks under header on scroll
+- [x] `layout-inset-sidebar-sticky.demo.tsx` — default sticky behavior, sticks under header on scroll ✅ Done
   ```tsx
   <Root>
     <Header>...</Header>
@@ -240,7 +240,7 @@ Source: `inset-sidebar.mdx` | Components: `InsetSidebar`, `InsetContent`, `Inset
     <Footer>...</Footer>
   </Root>
   ```
-- [ ] `layout-inset-sidebar-absolute.demo.tsx` — `position="absolute"` for standalone apps
+- [x] `layout-inset-sidebar-absolute.demo.tsx` — `position="absolute"` for standalone apps ✅ Done
   ```tsx
   <Root standalone>
     <Header>...</Header>
