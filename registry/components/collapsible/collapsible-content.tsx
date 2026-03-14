@@ -39,7 +39,7 @@ const StyledCollapsibleContent = styled("div", {
 
 const CollapsibleContent = React.forwardRef<
   HTMLDivElement,
-  React.ComponentPropsWithoutRef<"div">
+  React.ComponentPropsWithoutRef<typeof StyledCollapsibleContent>
 >(function CollapsibleContent({ className, ...props }, ref) {
   return (
     <StyledCollapsibleContent
