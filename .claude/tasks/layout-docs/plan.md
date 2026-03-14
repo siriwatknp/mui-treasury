@@ -34,7 +34,7 @@ Source: `layout.mdx` | Props: `height`, `standalone`, `disableTransition`
 Source: `content.mdx` | Component: `Content`
 **meta.json**: category `layout`, subcategory `content`
 
-- [ ] `layout-content-basic.demo.tsx` — basic content area with max-width container
+- ~~`layout-content-basic.demo.tsx` — basic content area with max-width container~~ (skipped)
   ```tsx
   <Root>
     <Header>...</Header>
@@ -42,7 +42,7 @@ Source: `content.mdx` | Component: `Content`
     <Footer>...</Footer>
   </Root>
   ```
-- [ ] `layout-content-inset-sidebar.demo.tsx` — content with `InsetSidebar` as first/last child
+- ~~`layout-content-inset-sidebar.demo.tsx` — content with `InsetSidebar` as first/last child~~ (skipped)
   ```tsx
   <Root>
     <Header>...</Header>
@@ -63,7 +63,7 @@ Source: `content.mdx` | Component: `Content`
 Source: `footer.mdx` | Component: `Footer`
 **meta.json**: category `layout`, subcategory `footer`
 
-- [ ] `layout-footer-basic.demo.tsx` — basic footer with container content
+- [x] `layout-footer-basic.demo.tsx` — basic footer with container content ✅ Done
   ```tsx
   <Root>
     <Header>...</Header>
@@ -71,7 +71,7 @@ Source: `footer.mdx` | Component: `Footer`
     <Footer>...</Footer>
   </Root>
   ```
-- [ ] `layout-footer-inset-avoiding.demo.tsx` — footer with `InsetAvoidingView` to avoid overlap from absolute inset sidebar
+- [x] `layout-footer-inset-avoiding.demo.tsx` — footer with `InsetAvoidingView` to avoid overlap from absolute inset sidebar ✅ Done
   ```tsx
   <Root standalone>
     <Header>...</Header>

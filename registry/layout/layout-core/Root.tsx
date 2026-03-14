@@ -34,6 +34,8 @@ const StyledRoot = styled("div", {
     "--jun-IC-sideline": `1px solid ${(theme.vars || theme).palette.divider}`,
     backgroundColor: (theme.vars || theme).palette.background.paper,
     minHeight: "var(--jun-h)",
+    minWidth: 0,
+    flex: 1,
     display: "grid",
     position: "relative",
     transition: "var(--tsn, grid-template-columns 0.3s)",

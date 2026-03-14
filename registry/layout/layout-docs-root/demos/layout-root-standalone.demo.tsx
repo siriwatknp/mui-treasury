@@ -1,3 +1,4 @@
+import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
 import Content from "@/registry/layout/layout-core/Content";
@@ -14,22 +15,28 @@ export const meta = {
 export function Demo() {
   return (
     <Root standalone height="350px" sx={{ minWidth: 200 }}>
-      <Header sx={{ px: 2 }}>
-        <Typography variant="caption" fontWeight="bold">
-          Standalone
-        </Typography>
-      </Header>
-      <Content sx={{ p: 2 }}>
-        {Array.from({ length: 20 }, (_, i) => (
-          <Typography key={i} variant="body2" color="text.secondary">
-            Line {i + 1}
+      <Header>
+        <Box sx={{ px: 2 }}>
+          <Typography variant="caption" fontWeight="bold">
+            Standalone
           </Typography>
-        ))}
+        </Box>
+      </Header>
+      <Content>
+        <Box sx={{ p: 2 }}>
+          {Array.from({ length: 20 }, (_, i) => (
+            <Typography key={i} variant="body2" color="text.secondary">
+              Line {i + 1}
+            </Typography>
+          ))}
+        </Box>
       </Content>
-      <Footer sx={{ p: 2 }}>
-        <Typography variant="caption" color="text.secondary">
-          Footer
-        </Typography>
+      <Footer>
+        <Box sx={{ p: 2 }}>
+          <Typography variant="caption" color="text.secondary">
+            Footer
+          </Typography>
+        </Box>
       </Footer>
     </Root>
   );

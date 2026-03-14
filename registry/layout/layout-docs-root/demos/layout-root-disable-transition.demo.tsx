@@ -41,10 +41,12 @@ export function Demo() {
         label="Disable transition"
       />
       <Root disableTransition={disabled} height="300px" sx={{ width: "100%" }}>
-        <Header sx={{ px: 2 }}>
-          <Typography variant="caption" fontWeight="bold">
-            {disabled ? "No transition" : "With transition"}
-          </Typography>
+        <Header>
+          <Box sx={{ px: 2 }}>
+            <Typography variant="caption" fontWeight="bold">
+              {disabled ? "No transition" : "With transition"}
+            </Typography>
+          </Box>
         </Header>
         <EdgeSidebar
           id="edge-sidebar-demo-disable-transition"
@@ -67,15 +69,19 @@ export function Demo() {
             />
           </EdgeSidebarContent>
         </EdgeSidebar>
-        <Content sx={{ p: 2 }}>
-          <Typography variant="body2" color="text.secondary">
-            Click toggle — sidebar collapses instantly
-          </Typography>
+        <Content>
+          <Box sx={{ p: 2 }}>
+            <Typography variant="body2" color="text.secondary">
+              Click toggle — sidebar collapses instantly
+            </Typography>
+          </Box>
         </Content>
-        <Footer sx={{ p: 2 }}>
-          <Typography variant="caption" color="text.secondary">
-            Footer
-          </Typography>
+        <Footer>
+          <Box sx={{ p: 2 }}>
+            <Typography variant="caption" color="text.secondary">
+              Footer
+            </Typography>
+          </Box>
         </Footer>
       </Root>
     </Box>

@@ -45,10 +45,12 @@ export function Demo() {
       </ToggleButtonGroup>
 
       <Root height="300px" sx={{ width: "100%" }}>
-        <Header clip={headerClip} sx={{ px: 2 }}>
-          <Typography variant="subtitle2" fontWeight="bold">
-            Header
-          </Typography>
+        <Header clip={headerClip}>
+          <Box sx={{ px: 2 }}>
+            <Typography variant="subtitle2" fontWeight="bold">
+              Header
+            </Typography>
+          </Box>
         </Header>
         <EdgeSidebar variant={["permanent", { width: "200px" }]}>
           <EdgeSidebarContent>
@@ -59,10 +61,12 @@ export function Demo() {
             </Box>
           </EdgeSidebarContent>
         </EdgeSidebar>
-        <Content sx={{ p: 2 }}>
-          <Typography variant="body2" color="text.secondary">
-            Content area
-          </Typography>
+        <Content>
+          <Box sx={{ p: 2 }}>
+            <Typography variant="body2" color="text.secondary">
+              Content area
+            </Typography>
+          </Box>
         </Content>
         <EdgeSidebarRight variant={["permanent", { width: "200px" }]}>
           <EdgeSidebarContent>
@@ -73,10 +77,12 @@ export function Demo() {
             </Box>
           </EdgeSidebarContent>
         </EdgeSidebarRight>
-        <Footer sx={{ p: 2 }}>
-          <Typography variant="caption" color="text.secondary">
-            Footer
-          </Typography>
+        <Footer>
+          <Box sx={{ p: 2 }}>
+            <Typography variant="caption" color="text.secondary">
+              Footer
+            </Typography>
+          </Box>
         </Footer>
       </Root>
     </Box>

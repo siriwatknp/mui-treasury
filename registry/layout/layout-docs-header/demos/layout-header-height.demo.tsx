@@ -17,56 +17,74 @@ export function Demo() {
   return (
     <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
       <Root sx={{ minHeight: 300, flex: 1, minWidth: 200 }}>
-        <Header height="48px" sx={{ px: 2 }}>
-          <Typography variant="caption" fontWeight="bold">
-            48px
-          </Typography>
+        <Header height="48px">
+          <Box sx={{ px: 2 }}>
+            <Typography variant="caption" fontWeight="bold">
+              48px
+            </Typography>
+          </Box>
         </Header>
-        <Content sx={{ p: 2 }}>
-          <Typography variant="body2" color="text.secondary">
-            Compact header
-          </Typography>
+        <Content>
+          <Box sx={{ p: 2 }}>
+            <Typography variant="body2" color="text.secondary">
+              Compact header
+            </Typography>
+          </Box>
         </Content>
-        <Footer sx={{ p: 2 }}>
-          <Typography variant="caption" color="text.secondary">
-            Footer
-          </Typography>
+        <Footer>
+          <Box sx={{ p: 2 }}>
+            <Typography variant="caption" color="text.secondary">
+              Footer
+            </Typography>
+          </Box>
         </Footer>
       </Root>
 
       <Root sx={{ minHeight: 300, flex: 1, minWidth: 200 }}>
-        <Header height="64px" sx={{ px: 2 }}>
-          <Typography variant="caption" fontWeight="bold">
-            64px (default)
-          </Typography>
+        <Header height="64px">
+          <Box sx={{ px: 2 }}>
+            <Typography variant="caption" fontWeight="bold">
+              64px (default)
+            </Typography>
+          </Box>
         </Header>
-        <Content sx={{ p: 2 }}>
-          <Typography variant="body2" color="text.secondary">
-            Standard header
-          </Typography>
+        <Content>
+          <Box sx={{ p: 2 }}>
+            <Typography variant="body2" color="text.secondary">
+              Standard header
+            </Typography>
+          </Box>
         </Content>
-        <Footer sx={{ p: 2 }}>
-          <Typography variant="caption" color="text.secondary">
-            Footer
-          </Typography>
+        <Footer>
+          <Box sx={{ p: 2 }}>
+            <Typography variant="caption" color="text.secondary">
+              Footer
+            </Typography>
+          </Box>
         </Footer>
       </Root>
 
       <Root sx={{ minHeight: 300, flex: 1, minWidth: 200 }}>
-        <Header height={{ xs: "48px", md: "64px" }} sx={{ px: 2 }}>
-          <Typography variant="caption" fontWeight="bold">
-            48px → 64px
-          </Typography>
+        <Header height={{ xs: "48px", md: "64px" }}>
+          <Box sx={{ px: 2 }}>
+            <Typography variant="caption" fontWeight="bold">
+              48px → 64px
+            </Typography>
+          </Box>
         </Header>
-        <Content sx={{ p: 2 }}>
-          <Typography variant="body2" color="text.secondary">
-            Responsive header
-          </Typography>
+        <Content>
+          <Box sx={{ p: 2 }}>
+            <Typography variant="body2" color="text.secondary">
+              Responsive header
+            </Typography>
+          </Box>
         </Content>
-        <Footer sx={{ p: 2 }}>
-          <Typography variant="caption" color="text.secondary">
-            Footer
-          </Typography>
+        <Footer>
+          <Box sx={{ p: 2 }}>
+            <Typography variant="caption" color="text.secondary">
+              Footer
+            </Typography>
+          </Box>
         </Footer>
       </Root>
     </Box>

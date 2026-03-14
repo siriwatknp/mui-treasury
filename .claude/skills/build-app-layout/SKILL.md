@@ -32,6 +32,24 @@ import Root from "@/registry/layout/layout-core/Root";
 - `Footer` has a top border line by default.
 - `Content` is rendered as `<main>`.
 
+### Padding Rule
+
+**Apply padding to the children of layout components, not the layout components themselves.** Layout components (`Header`, `Content`, `Footer`, `InsetAvoidingView`) manage internal structure (grid areas, sticky positioning, flex layout). Adding padding directly can break their behavior.
+
+```tsx
+// ✅ Correct — padding on children
+<Header>
+  <Box sx={{ px: 2 }}>…</Box>
+</Header>
+<Footer>
+  <InsetAvoidingView sx={{ p: 2 }}>…</InsetAvoidingView>
+</Footer>
+
+// ❌ Incorrect — padding on layout component
+<Header sx={{ px: 2 }}>…</Header>
+<Footer sx={{ p: 2 }}>…</Footer>
+```
+
 ### Root Props
 
 - `height`: override the layout height, accepts string or responsive object
