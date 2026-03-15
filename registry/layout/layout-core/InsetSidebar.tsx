@@ -108,7 +108,10 @@ const InsetSidebar = React.forwardRef<
   HTMLDivElement,
   Omit<React.ComponentProps<typeof StyledInsetSidebar>, "ownerState"> &
     InsetSidebarProps
->(function InsetSidebar({ className, position, width, ...props }, ref) {
+>(function InsetSidebar(
+  { className, position = "sticky", width, ...props },
+  ref,
+) {
   const ownerState = useMemo(
     () => ({
       position,

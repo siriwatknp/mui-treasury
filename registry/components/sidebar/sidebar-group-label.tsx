@@ -28,7 +28,7 @@ const StyledSidebarGroupLabel = styled("div", {
 
 const SidebarGroupLabel = React.forwardRef<
   HTMLDivElement,
-  React.ComponentPropsWithoutRef<"div">
+  React.ComponentPropsWithoutRef<typeof StyledSidebarGroupLabel>
 >(function SidebarGroupLabel({ className, ...props }, ref) {
   return (
     <StyledSidebarGroupLabel

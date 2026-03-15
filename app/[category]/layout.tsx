@@ -1,7 +1,11 @@
 import { notFound } from "next/navigation";
 import { AppHeader } from "@/components/app-header";
 import { CategorySidebar } from "@/components/category-sidebar";
-import { getCategories, getRegistryByCategory } from "@/lib/registry";
+import {
+  getCategories,
+  getRegistryByCategory,
+  isVisibleItem,
+} from "@/lib/registry";
 import CarbonAds from "@/components/carbon-ads/CarbonAds";
 import "@/components/carbon-ads/CarbonAds.css";
 
@@ -24,7 +28,8 @@ export default async function CategoryLayout({
   }
 
   // Get all items for sidebar
-  const allCategoryItems = getRegistryByCategory(category);
+  const allCategoryItems =
+    getRegistryByCategory(category).filter(isVisibleItem);
 
   return (
     <div className="jun-layout bg-background">

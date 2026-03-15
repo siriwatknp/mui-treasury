@@ -43,7 +43,7 @@ const StyledSidebarRail = styled("button", {
 
 const SidebarRail = React.forwardRef<
   HTMLButtonElement,
-  React.ComponentPropsWithoutRef<"button">
+  React.ComponentPropsWithoutRef<typeof StyledSidebarRail>
 >(function SidebarRail({ className, ...props }, ref) {
   return (
     <StyledSidebarRail

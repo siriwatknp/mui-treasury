@@ -20,7 +20,7 @@ const StyledSidebarGroupText = styled("div", {
 
 const SidebarGroupText = React.forwardRef<
   HTMLDivElement,
-  React.ComponentPropsWithoutRef<"div">
+  React.ComponentPropsWithoutRef<typeof StyledSidebarGroupText>
 >(function SidebarGroupText({ className, ...props }, ref) {
   return (
     <StyledSidebarGroupText

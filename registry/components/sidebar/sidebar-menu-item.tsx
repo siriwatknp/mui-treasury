@@ -14,7 +14,7 @@ const StyledSidebarMenuItem = styled("div", {
 
 const SidebarMenuItem = React.forwardRef<
   HTMLDivElement,
-  React.ComponentPropsWithoutRef<"div">
+  React.ComponentPropsWithoutRef<typeof StyledSidebarMenuItem>
 >(function SidebarMenuItem({ className, ...props }, ref) {
   return (
     <StyledSidebarMenuItem
