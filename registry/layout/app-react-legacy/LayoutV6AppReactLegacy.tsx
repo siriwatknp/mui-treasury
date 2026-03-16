@@ -130,10 +130,12 @@ export function LayoutV6AppReactLegacy() {
         <SidebarContent>{sidebarContent}</SidebarContent>
       </EdgeSidebarRight>
       <Content>
-        <ReactContent />
-        <InsetSidebar position="fixed" width={{ md: "256px" }}>
-          <InsetContent>{sidebarContent}</InsetContent>
-        </InsetSidebar>
+        <Container>
+          <ReactContent />
+          <InsetSidebar position="fixed" width={{ md: "256px" }}>
+            <InsetContent>{sidebarContent}</InsetContent>
+          </InsetSidebar>
+        </Container>
       </Content>
       <Footer>
         <Box bgcolor={"rgb(40, 44, 52)"}>
