@@ -15,6 +15,7 @@ import {
 } from "./components";
 import {
   Content,
+  EdgeDrawerTriggerRight,
   EdgeSidebarContent,
   EdgeSidebarRight,
   Footer,
@@ -23,7 +24,6 @@ import {
   InsetSidebar,
   InsetContent,
   Root,
-  triggerEdgeDrawerRight,
 } from "../layout-core";
 
 const StyledHeader = styled(Header)(() => ({
@@ -63,30 +63,33 @@ export function LayoutV6AppShoppingCart() {
     <ThemeProvider theme={dailyShoppingTheme}>
       <Root standalone>
         <CssBaseline />
-        <Fab
-          color={"primary"}
-          onClick={() => triggerEdgeDrawerRight()}
-          sx={(theme) => ({
-            position: "fixed",
-            bottom: 16,
-            right: 16,
-            color: "#2E3B4D",
-            "& svg": {
-              fontSize: 32,
-              color: "#fff",
-            },
-            zIndex: 1500,
-            transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
-            [theme.breakpoints.up("sm")]: {
-              bottom: 40,
-            },
-            [theme.breakpoints.up("lg")]: {
-              transform: "scale(0)",
-            },
-          })}
-        >
-          <CreditCard />
-        </Fab>
+        <EdgeDrawerTriggerRight
+          render={
+            <Fab
+              color={"primary"}
+              sx={(theme) => ({
+                position: "fixed",
+                bottom: 16,
+                right: 16,
+                color: "#2E3B4D",
+                "& svg": {
+                  fontSize: 32,
+                  color: "#fff",
+                },
+                zIndex: 1500,
+                transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
+                [theme.breakpoints.up("sm")]: {
+                  bottom: 40,
+                },
+                [theme.breakpoints.up("lg")]: {
+                  transform: "scale(0)",
+                },
+              })}
+            >
+              <CreditCard />
+            </Fab>
+          }
+        />
         <StyledHeader height="64px" sx={{ position: "relative" }}>
           <Container maxWidth="xl">
             <DailyHeader />

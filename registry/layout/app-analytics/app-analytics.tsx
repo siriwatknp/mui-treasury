@@ -8,16 +8,18 @@ import IconButton from "@mui/material/IconButton";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
-import Content from "../layout-core/Content";
-import EdgeSidebar, {
-  triggerEdgeCollapse,
-  triggerEdgeDrawer,
-} from "../layout-core/EdgeSidebar";
-import EdgeSidebarContent from "../layout-core/EdgeSidebarContent";
-import EdgeDrawerClose from "../layout-core/EdgeDrawerClose";
-import Header from "../layout-core/Header";
-import Root from "../layout-core/Root";
-import { layoutClasses } from "../layout-core/layoutClasses";
+import {
+  Content,
+  EdgeCollapsedVisible,
+  EdgeDrawerClose,
+  EdgeDrawerTrigger,
+  EdgeSidebar,
+  EdgeSidebarCollapser,
+  EdgeSidebarContent,
+  EdgeUncollapsedVisible,
+  Header,
+  Root,
+} from "../layout-core";
 import {
   IconNavMockup,
   LinkNavMockup,
@@ -38,8 +40,8 @@ export function LayoutV6AppAnalytics() {
   return (
     <Root>
       <Header
+        height={{ xs: "48px", sm: "64px", md: "72px" }}
         sx={{
-          height: { xs: 48, sm: 64, md: 72 },
           bgcolor: "rgba(255,255,255,0.5)",
           backdropFilter: "blur(12px)",
           ...(trigger && {
@@ -63,25 +65,24 @@ export function LayoutV6AppAnalytics() {
             display: "flex",
             alignItems: "center",
             gap: 1,
-            height: { xs: 52, sm: 64, md: 72 },
           }}
         >
-          <IconButton
-            className={layoutClasses.EdgeDrawerTrigger}
-            onClick={() => triggerEdgeDrawer()}
-          >
-            <MenuRounded />
-          </IconButton>
+          <EdgeDrawerTrigger
+            render={
+              <IconButton>
+                <MenuRounded />
+              </IconButton>
+            }
+          />
 
-          <IconButton
-            className={layoutClasses.EdgeSidebarCollapser}
-            onClick={(event) => triggerEdgeCollapse({ event })}
-          >
-            <MenuRounded className={layoutClasses.EdgeUncollapsedVisible} />
-            <ChevronLeftRounded
-              className={layoutClasses.EdgeCollapsedVisible}
-            />
-          </IconButton>
+          <EdgeSidebarCollapser
+            render={
+              <IconButton>
+                <EdgeUncollapsedVisible render={<ChevronLeftRounded />} />
+                <EdgeCollapsedVisible render={<MenuRounded />} />
+              </IconButton>
+            }
+          />
 
           <Typography
             variant="h6"

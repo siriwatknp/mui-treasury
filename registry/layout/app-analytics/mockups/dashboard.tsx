@@ -122,8 +122,8 @@ export const SideNavUserInfoMockup = ({
     <Box
       {...props}
       sx={{
-        borderRadius: 1,
         bgcolor: getLightestGrey,
+        mr: "1px",
         p: 1.5,
         display: "flex",
         alignItems: "center",
