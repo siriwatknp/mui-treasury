@@ -1,11 +1,12 @@
 import React from "react";
+
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import Typography from "@mui/material/Typography";
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
-import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 
 import Content from "@/registry/layout/layout-core/Content";
 import EdgeSidebar from "@/registry/layout/layout-core/EdgeSidebar";
@@ -13,8 +14,9 @@ import EdgeSidebarContent from "@/registry/layout/layout-core/EdgeSidebarContent
 import Footer from "@/registry/layout/layout-core/Footer";
 import Header from "@/registry/layout/layout-core/Header";
 import Root from "@/registry/layout/layout-core/Root";
-import EdgeSidebarCollapser from "../../layout-core/EdgeSidebarCollapser";
+
 import EdgeCollapsedVisible from "../../layout-core/EdgeCollapsedVisible";
+import EdgeSidebarCollapser from "../../layout-core/EdgeSidebarCollapser";
 import EdgeUncollapsedVisible from "../../layout-core/EdgeUncollapsedVisible";
 
 export const meta = {

@@ -1,14 +1,16 @@
 "use client";
 import React, { useMemo } from "react";
+
+import { Breakpoint } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
+import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
+
 import type {
+  DrawerConfig,
   EdgeSidebarVariant,
   EdgeSidebarVariantInput,
-  DrawerConfig,
   PermanentConfig,
 } from "./SharedEdgeSidebar";
-import { Breakpoint } from "@mui/material/styles";
-import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
-import { styled } from "@mui/material/styles";
 import {
   EdgeSidebarRoot,
   internalCollapseSidebar,

@@ -1,8 +1,10 @@
 "use client";
 import React, { useMemo } from "react";
+
 import { Breakpoint } from "@mui/material/styles";
-import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 import { styled } from "@mui/material/styles";
+import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
+
 import { layoutClasses } from "./layoutClasses";
 
 interface RootProps {

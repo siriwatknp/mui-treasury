@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
-import { layoutClasses } from "./layoutClasses";
+
 import { triggerEdgeDrawer } from "./EdgeSidebar";
+import { layoutClasses } from "./layoutClasses";
 
 interface EdgeDrawerTriggerProps {
   render: React.ReactElement<{

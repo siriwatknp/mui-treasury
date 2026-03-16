@@ -1,7 +1,9 @@
 "use client";
 import React from "react";
+
 import { Breakpoint } from "@mui/material/styles";
 import { styled } from "@mui/material/styles";
+
 import { layoutAttrs } from "./layoutAttrs";
 import { layoutClasses } from "./layoutClasses";
 

@@ -1,13 +1,14 @@
 import { notFound } from "next/navigation";
+
 import { AppHeader } from "@/components/app-header";
+import CarbonAds from "@/components/carbon-ads/CarbonAds";
+import "@/components/carbon-ads/CarbonAds.css";
 import { CategorySidebar } from "@/components/category-sidebar";
 import {
   getCategories,
   getRegistryByCategory,
   isVisibleItem,
 } from "@/lib/registry";
-import CarbonAds from "@/components/carbon-ads/CarbonAds";
-import "@/components/carbon-ads/CarbonAds.css";
 
 interface CategoryLayoutProps {
   children: React.ReactNode;
