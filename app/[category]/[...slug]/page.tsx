@@ -1,17 +1,18 @@
 import { notFound } from "next/navigation";
+
+import CategoryClient from "@/components/category-client";
+import { DynamicComponentLoader } from "@/components/dynamic-component-loader";
+import { FirebaseConfigForm } from "@/components/firebase-config-form";
+import { PreviewComponent } from "@/components/preview-page";
 import {
-  getRegistryByName,
-  getSubcategories,
-  getRegistryBySubcategory,
   getCategories,
+  getRegistryByName,
+  getRegistryBySubcategory,
   getRegistryItems,
+  getSubcategories,
   getTags,
   isVisibleItem,
 } from "@/lib/registry";
-import { PreviewComponent } from "@/components/preview-page";
-import { DynamicComponentLoader } from "@/components/dynamic-component-loader";
-import CategoryClient from "@/components/category-client";
-import { FirebaseConfigForm } from "@/components/firebase-config-form";
 import { orderItems } from "@/lib/registry-order";
 
 interface SlugPageProps {

@@ -1,22 +1,24 @@
 "use client";
 
 import React from "react";
-import dynamic from "next/dynamic";
 import { Suspense, useRef, useState } from "react";
-import { RegistryItem } from "@/lib/registry";
-import TagFilter from "@/components/tag-filter";
-import { OpenInV0Button } from "@/components/open-in-v0-button";
-import { Copy, Check, Terminal, RotateCcw } from "lucide-react";
-import { useColorScheme } from "@mui/material/styles";
-import {
-  ResizablePanelGroup,
-  ResizablePanel,
-  ResizableHandle,
-} from "@/components/ui/resizable";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Button } from "@/components/ui/button";
 import type { ImperativePanelHandle } from "react-resizable-panels";
 import type { SyntaxHighlighterProps } from "react-syntax-highlighter";
+
+import { useColorScheme } from "@mui/material/styles";
+import { Check, Copy, RotateCcw, Terminal } from "lucide-react";
+import dynamic from "next/dynamic";
+
+import { OpenInV0Button } from "@/components/open-in-v0-button";
+import TagFilter from "@/components/tag-filter";
+import { Button } from "@/components/ui/button";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { RegistryItem } from "@/lib/registry";
 
 interface SubcategoryData {
   name: string;

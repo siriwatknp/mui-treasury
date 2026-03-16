@@ -1,18 +1,13 @@
 "use client";
 import React from "react";
+
 import CreditCard from "@mui/icons-material/CreditCard";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import Fab from "@mui/material/Fab";
-import { styled, ThemeProvider } from "@mui/material/styles";
-import {
-  DailyCart,
-  DailyCheckout,
-  DailyHeader,
-  dailyShoppingTheme,
-  DailySummary,
-} from "./components";
+import { ThemeProvider, styled } from "@mui/material/styles";
+
 import {
   Content,
   EdgeDrawerTriggerRight,
@@ -21,10 +16,17 @@ import {
   Footer,
   Header,
   InsetAvoidingView,
-  InsetSidebar,
   InsetContent,
+  InsetSidebar,
   Root,
 } from "../layout-core";
+import {
+  DailyCart,
+  DailyCheckout,
+  DailyHeader,
+  DailySummary,
+  dailyShoppingTheme,
+} from "./components";
 
 const StyledHeader = styled(Header)(() => ({
   backgroundColor: "#ffffff",

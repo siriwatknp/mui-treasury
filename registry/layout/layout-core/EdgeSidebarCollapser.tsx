@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
-import { layoutClasses } from "./layoutClasses";
+
 import { triggerEdgeCollapse } from "./EdgeSidebar";
 import { triggerEdgeCollapseRight } from "./EdgeSidebarRight";
+import { layoutClasses } from "./layoutClasses";
 
 interface EdgeSidebarCollapserProps {
   render: React.ReactElement<{

@@ -1,13 +1,14 @@
 import { notFound } from "next/navigation";
+
+import CategoryClient from "@/components/category-client";
 import {
   getCategories,
-  getTags,
-  getSubcategories,
-  getUncategorizedItems,
   getRegistryBySubcategory,
+  getSubcategories,
+  getTags,
+  getUncategorizedItems,
   isVisibleItem,
 } from "@/lib/registry";
-import CategoryClient from "@/components/category-client";
 
 interface CategoryPageProps {
   params: Promise<{ category: string }>;

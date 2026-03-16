@@ -25,7 +25,7 @@ import { Foo } from "@/registry/components/foo/foo";
 ### Exports
 
 - Export a named `Demo` function (not default export).
-- Optionally export `meta` with `title` and `description` for demo discovery in the sidebar.
+- Export `meta` with `title` and `description` for demo discovery in the sidebar.
 
 ```tsx
 // optional

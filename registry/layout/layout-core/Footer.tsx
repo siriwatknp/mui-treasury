@@ -1,7 +1,9 @@
 "use client";
 import React from "react";
+
 import { BoxProps } from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
+
 import { layoutClasses } from "./layoutClasses";
 
 const StyledFooter = styled("footer")(({ theme }) => ({
