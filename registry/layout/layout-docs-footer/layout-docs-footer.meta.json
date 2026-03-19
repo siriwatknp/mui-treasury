@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Docs Footer",
+  "description": "Documentation for the Footer layout component covering basic usage and inset avoiding view.",
+  "meta": {
+    "category": "layout",
+    "subcategory": "footer"
+  }
+}

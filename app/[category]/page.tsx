@@ -5,6 +5,7 @@ import {
   getSubcategories,
   getUncategorizedItems,
   getRegistryBySubcategory,
+  isVisibleItem,
 } from "@/lib/registry";
 import CategoryClient from "@/components/category-client";
 
@@ -47,11 +48,13 @@ export default async function CategoryPage({
         .split("-")
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" "),
-      count: getRegistryBySubcategory(category, subcat).length,
+      count: getRegistryBySubcategory(category, subcat).filter(isVisibleItem)
+        .length,
     }));
 
   // Get only uncategorized items (no subcategory) for this category page
-  const uncategorizedItems = getUncategorizedItems(category);
+  const uncategorizedItems =
+    getUncategorizedItems(category).filter(isVisibleItem);
 
   // Filter by tags if provided
   const selectedTags = tags ? tags.split(",").filter(Boolean) : [];

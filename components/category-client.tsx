@@ -136,6 +136,9 @@ const ComponentPreviewContent = React.memo(
     }
 
     if (needsIframe) {
+      const iframeSrc = demoPath
+        ? `/preview/demo/${demoPath}`
+        : `/preview/${item.name}`;
       return (
         <div
           className={`w-full h-full relative ${
@@ -143,7 +146,7 @@ const ComponentPreviewContent = React.memo(
           }`}
         >
           <iframe
-            src={`/preview/${item.name}`}
+            src={iframeSrc}
             className="aspect-video border-none min-h-[80vh] max-w-full [color-scheme:auto]"
           />
         </div>
@@ -181,8 +184,8 @@ function ComponentPreview({
     ? T
     : never;
 }) {
-  // Use explicit previewMode from registry metadata
-  const needsIframe = item.meta.previewMode === "iframe";
+  const needsIframe =
+    demoFile?.previewMode === "iframe" || item.meta.previewMode === "iframe";
   const previewHeight = extractHeight(item.meta.previewClassName);
   const [previewKey, setPreviewKey] = useState(0);
   const [copiedIndex, setCopiedIndex] = useState<number>(-1);

@@ -6,6 +6,7 @@ import {
   getCategories,
   getRegistryItems,
   getTags,
+  isVisibleItem,
 } from "@/lib/registry";
 import { PreviewComponent } from "@/components/preview-page";
 import { DynamicComponentLoader } from "@/components/dynamic-component-loader";
@@ -74,7 +75,9 @@ export default async function SlugPage({
     const subcategories = getSubcategories(category);
     if (subcategories.includes(param)) {
       // Render subcategory listing page
-      const allItems = getRegistryBySubcategory(category, param);
+      const allItems = getRegistryBySubcategory(category, param).filter(
+        isVisibleItem,
+      );
 
       // Filter by tags if provided
       const selectedTags = tags ? tags.split(",").filter(Boolean) : [];
