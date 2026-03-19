@@ -1,21 +1,22 @@
 import * as fs from "fs";
 import * as path from "path";
-import type {
-  FileInfo,
-  RegistryFile,
-  RegistryMeta,
-  RegistryJson,
-} from "./types";
-import {
-  getRegistryBaseUrl,
-  extractDependencies,
-  extractDefaultExportName,
-} from "./registry-utils";
+
 import {
   findAllRelatedFiles,
   findMatchingFiles,
   getAllRegistryItems,
 } from "./registry-file-ops";
+import {
+  extractDefaultExportName,
+  extractDependencies,
+  getRegistryBaseUrl,
+} from "./registry-utils";
+import type {
+  FileInfo,
+  RegistryFile,
+  RegistryJson,
+  RegistryMeta,
+} from "./types";
 
 export function extractRegistryDependencies(
   content: string,
@@ -133,6 +134,57 @@ export function extractRegistryDependencies(
   return Array.from(registryDeps);
 }
 
+/**
+ * Extract `export const meta = { ... }` from demo file content.
+ */
+function parseDemoMeta(content: string): {
+  title?: string;
+  description?: string;
+  previewMode?: string;
+} | null {
+  const match = content.match(
+    /export\s+const\s+meta\s*=\s*(\{[\s\S]*?\n\}|\{[^\n]*\})/,
+  );
+  if (!match) return null;
+  try {
+    const raw = match[1].replace(/\s+as\s+const\b/g, "");
+    const obj = new Function(`return ${raw}`)();
+    return {
+      title: typeof obj.title === "string" ? obj.title : undefined,
+      description:
+        typeof obj.description === "string" ? obj.description : undefined,
+      previewMode:
+        typeof obj.previewMode === "string" ? obj.previewMode : undefined,
+    };
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Find the parent meta.json for a demo file in a demos/ folder.
+ * Returns the parsed meta content or null.
+ */
+function findParentMeta(
+  demoFilePath: string,
+): { category?: string; subcategory?: string } | null {
+  const demosDir = path.dirname(demoFilePath);
+  if (path.basename(demosDir) !== "demos") return null;
+  const parentDir = path.dirname(demosDir);
+  const parentName = path.basename(parentDir);
+  const metaPath = path.join(parentDir, `${parentName}.meta.json`);
+  if (!fs.existsSync(metaPath)) return null;
+  try {
+    const meta = JSON.parse(fs.readFileSync(metaPath, "utf-8"));
+    return {
+      category: meta?.meta?.category,
+      subcategory: meta?.meta?.subcategory,
+    };
+  } catch {
+    return null;
+  }
+}
+
 export function processRegistryFile(
   fileInfo: FileInfo,
   title?: string,
@@ -142,6 +194,8 @@ export function processRegistryFile(
 ): { metadata: RegistryMeta; registryJson: RegistryJson } {
   const { path: filePath, name } = fileInfo;
   const OUTPUT_PATH = path.join(process.cwd(), "public", "r", `${name}.json`);
+
+  const isDemoFile = path.basename(filePath).endsWith(".demo.tsx");
 
   // Determine the component/block directory
   // If the file is a meta.json, use its directory. Otherwise use the parent directory.
@@ -204,7 +258,8 @@ export function processRegistryFile(
   }
 
   // Add index.ts file that exports all files (if not already exists)
-  if (files.length > 0) {
+  // Skip for demo files - they are standalone
+  if (files.length > 0 && !isDemoFile) {
     // Get the directory paths from the first file
     const firstFilePath = files[0].path;
     const firstFileTarget = files[0].target;
@@ -246,134 +301,158 @@ export function processRegistryFile(
     }
   }
 
-  // Check if meta.json exists and load it
-  let existingMeta: Partial<RegistryMeta> | null = null;
-  let metaExists = false;
-  if (fs.existsSync(META_PATH)) {
-    metaExists = true;
-    try {
-      existingMeta = JSON.parse(fs.readFileSync(META_PATH, "utf-8"));
-    } catch (error) {
-      console.warn(
-        `Warning: Could not parse existing meta.json file: ${
-          (error as Error).message
-        }`,
-      );
-      metaExists = false; // Treat corrupt file as non-existent
-    }
-  }
-
-  // Merge dependencies from meta file (if exists) with extracted ones
-  if (existingMeta?.dependencies) {
-    for (const dep of existingMeta.dependencies) {
-      allDependencies.add(dep);
-    }
-  }
-
-  // Merge registryDependencies from meta file (if exists) with extracted ones
-  if (existingMeta?.registryDependencies) {
-    const baseUrl = getRegistryBaseUrl();
-    for (const dep of existingMeta.registryDependencies) {
-      // Convert simple dependency names to full URLs
-      if (!dep.startsWith("http")) {
-        allRegistryDependencies.add(`${baseUrl}/r/${dep}.json`);
-      } else {
-        allRegistryDependencies.add(dep);
-      }
-    }
-  }
-
-  const dependencies = Array.from(allDependencies);
-  const registryDependencies = Array.from(allRegistryDependencies);
-
-  // If meta.json exists and we're not forcing an update with CLI args, use existing metadata
   let metadata: RegistryMeta;
 
-  if (metaExists && !title && !description && !category && !tags) {
-    // Meta exists and no CLI overrides provided - use existing metadata as-is
-    metadata = existingMeta as RegistryMeta;
-    console.log(`✓ Using existing meta.json for ${name}`);
-  } else if (metaExists && (title || description || category || tags)) {
-    // Meta exists but CLI overrides provided - update only specified fields
-    metadata = existingMeta as RegistryMeta;
+  if (isDemoFile) {
+    // For demo files, extract metadata from the file content
+    const demoContent = fs.readFileSync(filePath, "utf-8");
+    const demoMeta = parseDemoMeta(demoContent);
+    const parentMeta = findParentMeta(filePath);
 
-    if (title) {
-      metadata.title = title;
-    }
-    if (description) {
-      metadata.description = description;
-    }
-    if (category) {
-      metadata.meta = metadata.meta || {};
-      metadata.meta.category = category;
-    }
-    if (tags) {
-      metadata.meta = metadata.meta || {};
-      metadata.meta.tags = tags;
-    }
-
-    // Write the updated meta.json file
-    fs.writeFileSync(META_PATH, JSON.stringify(metadata, null, 2));
-    console.log(`✓ Updated meta.json for ${name} with CLI overrides`);
-  } else {
-    // Meta doesn't exist - create new metadata
-
-    // Determine metadata fields
-    let finalTitle: string;
-    let finalDescription: string;
-
-    if (title) {
-      finalTitle = title;
-    } else {
-      finalTitle = name
+    const finalTitle =
+      title ||
+      demoMeta?.title ||
+      name
         .split("-")
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ");
-    }
+    const finalDescription =
+      description || demoMeta?.description || `A ${name} demo.`;
 
-    if (description) {
-      finalDescription = description;
-    } else {
-      finalDescription = `A ${name} item.`;
-    }
-
-    const finalType = "registry:item";
-
-    // Check if screenshot file exists
-    const screenshotPath = path.join(
-      process.cwd(),
-      "public",
-      "screenshots",
-      `${name}.png`,
-    );
-    const hasScreenshot = fs.existsSync(screenshotPath);
-
-    // Create the metadata structure (without name field)
     metadata = {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
-      type: finalType,
+      type: "registry:item",
       title: finalTitle,
       description: finalDescription,
       meta: {},
     };
 
-    // Add screenshot to meta only if the file exists
-    if (hasScreenshot) {
-      metadata.meta.screenshot = `/screenshots/${name}.png`;
-    }
-
-    // Add category and tags if provided
-    if (category) {
-      metadata.meta.category = category;
+    if (category || parentMeta?.category) {
+      metadata.meta.category = category || parentMeta?.category;
     }
     if (tags && tags.length > 0) {
       metadata.meta.tags = tags;
     }
+    if (demoMeta?.previewMode) {
+      metadata.meta.previewMode = demoMeta.previewMode;
+    }
 
-    // Write the new meta.json file
-    fs.writeFileSync(META_PATH, JSON.stringify(metadata, null, 2));
-    console.log(`✓ Created new meta.json for ${name}`);
+    console.log(`✓ Extracted meta from demo file for ${name}`);
+  } else {
+    // Check if meta.json exists and load it
+    let existingMeta: Partial<RegistryMeta> | null = null;
+    let metaExists = false;
+    if (fs.existsSync(META_PATH)) {
+      metaExists = true;
+      try {
+        existingMeta = JSON.parse(fs.readFileSync(META_PATH, "utf-8"));
+      } catch (error) {
+        console.warn(
+          `Warning: Could not parse existing meta.json file: ${
+            (error as Error).message
+          }`,
+        );
+        metaExists = false;
+      }
+    }
+
+    // Merge dependencies from meta file (if exists) with extracted ones
+    if (existingMeta?.dependencies) {
+      for (const dep of existingMeta.dependencies) {
+        allDependencies.add(dep);
+      }
+    }
+
+    // Merge registryDependencies from meta file (if exists) with extracted ones
+    if (existingMeta?.registryDependencies) {
+      const baseUrl = getRegistryBaseUrl();
+      for (const dep of existingMeta.registryDependencies) {
+        if (!dep.startsWith("http")) {
+          allRegistryDependencies.add(`${baseUrl}/r/${dep}.json`);
+        } else {
+          allRegistryDependencies.add(dep);
+        }
+      }
+    }
+
+    if (metaExists && !title && !description && !category && !tags) {
+      metadata = existingMeta as RegistryMeta;
+      console.log(`✓ Using existing meta.json for ${name}`);
+    } else if (metaExists && (title || description || category || tags)) {
+      metadata = existingMeta as RegistryMeta;
+
+      if (title) {
+        metadata.title = title;
+      }
+      if (description) {
+        metadata.description = description;
+      }
+      if (category) {
+        metadata.meta = metadata.meta || {};
+        metadata.meta.category = category;
+      }
+      if (tags) {
+        metadata.meta = metadata.meta || {};
+        metadata.meta.tags = tags;
+      }
+
+      fs.writeFileSync(META_PATH, JSON.stringify(metadata, null, 2));
+      console.log(`✓ Updated meta.json for ${name} with CLI overrides`);
+    } else {
+      let finalTitle: string;
+      let finalDescription: string;
+
+      if (title) {
+        finalTitle = title;
+      } else {
+        finalTitle = name
+          .split("-")
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(" ");
+      }
+
+      if (description) {
+        finalDescription = description;
+      } else {
+        finalDescription = `A ${name} item.`;
+      }
+
+      const finalType = "registry:item";
+
+      const screenshotPath = path.join(
+        process.cwd(),
+        "public",
+        "screenshots",
+        `${name}.png`,
+      );
+      const hasScreenshot = fs.existsSync(screenshotPath);
+
+      metadata = {
+        $schema: "https://ui.shadcn.com/schema/registry-item.json",
+        type: finalType,
+        title: finalTitle,
+        description: finalDescription,
+        meta: {},
+      };
+
+      if (hasScreenshot) {
+        metadata.meta.screenshot = `/screenshots/${name}.png`;
+      }
+
+      if (category) {
+        metadata.meta.category = category;
+      }
+      if (tags && tags.length > 0) {
+        metadata.meta.tags = tags;
+      }
+
+      fs.writeFileSync(META_PATH, JSON.stringify(metadata, null, 2));
+      console.log(`✓ Created new meta.json for ${name}`);
+    }
   }
+
+  const dependencies = Array.from(allDependencies);
+  const registryDependencies = Array.from(allRegistryDependencies);
 
   // Create the public registry JSON structure (with metadata)
   // For the public JSON, always use detected registry dependencies, not from meta.json
@@ -449,7 +528,9 @@ export function processRegistryFile(
   fs.writeFileSync(V0_OUTPUT_PATH, JSON.stringify(v0Json, null, 2));
 
   console.log(`✓ Generated registry files:`);
-  console.log(`  Meta: ${path.relative(process.cwd(), META_PATH)}`);
+  if (!isDemoFile) {
+    console.log(`  Meta: ${path.relative(process.cwd(), META_PATH)}`);
+  }
   console.log(`  Public: ${path.relative(process.cwd(), OUTPUT_PATH)}`);
   console.log(`  v0: ${path.relative(process.cwd(), V0_OUTPUT_PATH)}`);
   console.log(`  Item: ${metadata.title}`);

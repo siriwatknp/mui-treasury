@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
+
 import type { FileInfo } from "./types";
 
 export function scanRegistryFiles(dir: string | null = null): string[] {
@@ -26,7 +27,7 @@ export function scanRegistryFiles(dir: string | null = null): string[] {
       console.warn(
         `Warning: Could not read directory ${currentPath}: ${
           (error as Error).message
-        }`
+        }`,
       );
     }
   }
@@ -40,10 +41,17 @@ export function scanRegistryFiles(dir: string | null = null): string[] {
 
 export function findAllRelatedFiles(
   itemPath: string,
-  itemName: string
+  itemName: string,
 ): FileInfo[] {
-  const itemDir = path.dirname(itemPath);
   const registryPath = path.join(process.cwd(), "registry");
+
+  // For .demo.tsx files, return only the single file
+  if (path.basename(itemPath).endsWith(".demo.tsx")) {
+    const relativePath = path.relative(registryPath, itemPath);
+    return [{ path: itemPath, relativePath, name: itemName }];
+  }
+
+  const itemDir = path.dirname(itemPath);
   const allFiles: FileInfo[] = [];
 
   function scanDirectory(dirPath: string): void {
@@ -72,7 +80,7 @@ export function findAllRelatedFiles(
       console.warn(
         `Warning: Could not read directory ${dirPath}: ${
           (error as Error).message
-        }`
+        }`,
       );
     }
   }
@@ -114,7 +122,7 @@ export function findMatchingFiles(name: string): FileInfo[] {
       console.warn(
         `Warning: Could not read directory ${currentPath}: ${
           (error as Error).message
-        }`
+        }`,
       );
     }
   }
@@ -218,12 +226,53 @@ export function getAllRegistryItems(): FileInfo[] {
       console.warn(
         `Warning: Could not read directory ${currentPath}: ${
           (error as Error).message
-        }`
+        }`,
       );
     }
   }
 
   scanForMetaOnlyItems(registryPath);
+
+  // Scan for demo files in demos/ subdirectories
+  function scanForDemoItems(currentPath: string): void {
+    try {
+      const items = fs.readdirSync(currentPath, { withFileTypes: true });
+
+      for (const item of items) {
+        const fullPath = path.join(currentPath, item.name);
+
+        if (item.isDirectory()) {
+          if (item.name === "demos") {
+            const demoEntries = fs.readdirSync(fullPath, {
+              withFileTypes: true,
+            });
+            for (const demo of demoEntries) {
+              if (demo.isFile() && demo.name.endsWith(".demo.tsx")) {
+                const demoName = demo.name.replace(".demo.tsx", "");
+                if (!registryItems.has(demoName)) {
+                  const demoFullPath = path.join(fullPath, demo.name);
+                  registryItems.set(demoName, {
+                    path: demoFullPath,
+                    relativePath: path.relative(registryPath, demoFullPath),
+                    name: demoName,
+                  });
+                }
+              }
+            }
+          }
+          scanForDemoItems(fullPath);
+        }
+      }
+    } catch (error) {
+      console.warn(
+        `Warning: Could not read directory ${currentPath}: ${
+          (error as Error).message
+        }`,
+      );
+    }
+  }
+
+  scanForDemoItems(registryPath);
 
   return Array.from(registryItems.values());
 }
