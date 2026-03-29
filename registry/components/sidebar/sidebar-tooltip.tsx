@@ -1,20 +1,28 @@
 "use client";
+
 import React from "react";
+
 import Tooltip, { type TooltipProps } from "@mui/material/Tooltip";
 import { styled } from "@mui/material/styles";
+
 import { sidebarClasses } from "./sidebar-classes";
 
 const StyledTitle = styled("span", {
   name: "SidebarTooltip",
   slot: "root",
 })({
+  maxWidth: 80,
+  width: "max-content",
+  display: "flex",
   '[role="tooltip"]:has(&)': {
     display: "var(--_collapsed, block) var(--_uncollapsed, none)",
   },
 });
 
-interface SidebarTooltipProps
-  extends Omit<TooltipProps, "title" | "placement"> {
+interface SidebarTooltipProps extends Omit<
+  TooltipProps,
+  "title" | "placement"
+> {
   title: React.ReactNode;
   placement?: TooltipProps["placement"];
 }

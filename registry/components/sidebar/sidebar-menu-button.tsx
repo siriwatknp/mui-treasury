@@ -1,20 +1,25 @@
 "use client";
+
 import React, { useMemo } from "react";
-import ButtonBase from "@mui/material/ButtonBase";
-import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
+
+import ButtonBase, { ButtonBaseProps } from "@mui/material/ButtonBase";
 import { styled } from "@mui/material/styles";
+import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
+
+import type { OverridableComponent } from "../../types/shared/component";
 import { sidebarClasses } from "./sidebar-classes";
 
-interface SidebarMenuButtonProps {
+export interface SidebarMenuButtonProps {
   active?: boolean;
   hideWhen?: "collapsed" | "uncollapsed";
   _before?: React.ReactNode;
+  component?: React.ElementType;
 }
 
 const StyledSidebarMenuButton = styled(ButtonBase, {
   name: "SidebarMenuButton",
   slot: "root",
-})<{ ownerState: SidebarMenuButtonProps }>(
+})<{ ownerState: Pick<SidebarMenuButtonProps, "active" | "hideWhen"> }>(
   memoTheme(({ theme }) => ({
     "--_items": "center",
     minWidth: 0,
@@ -80,15 +85,11 @@ const StyledSidebarMenuButton = styled(ButtonBase, {
   })),
 );
 
-const SidebarMenuButton = React.forwardRef<
+export const SidebarMenuButton = React.forwardRef<
   HTMLButtonElement,
-  Omit<
-    React.ComponentPropsWithoutRef<typeof StyledSidebarMenuButton>,
-    "ownerState"
-  > &
-    SidebarMenuButtonProps
+  SidebarMenuButtonProps & ButtonBaseProps
 >(function SidebarMenuButton(
-  { className, active, hideWhen, _before, children, ...props },
+  { className, active, hideWhen, _before, component, children, ...props },
   ref,
 ) {
   const ownerState = useMemo(() => ({ active, hideWhen }), [active, hideWhen]);
@@ -97,13 +98,14 @@ const SidebarMenuButton = React.forwardRef<
       ref={ref}
       className={`${sidebarClasses.menuButton} ${className || ""}`}
       ownerState={ownerState}
-      as={className?.includes("CollapsibleTrigger") ? "label" : undefined}
+      as={
+        component ??
+        (className?.includes("CollapsibleTrigger") ? "label" : undefined)
+      }
       {...props}
     >
       {_before}
       {children}
     </StyledSidebarMenuButton>
   );
-});
-
-export { SidebarMenuButton };
+}) as OverridableComponent<SidebarMenuButtonProps, typeof ButtonBase>;

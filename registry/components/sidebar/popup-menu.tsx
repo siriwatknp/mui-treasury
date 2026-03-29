@@ -1,13 +1,15 @@
 "use client";
 import React from "react";
+
 import { NavigationMenu } from "@base-ui/react/navigation-menu";
+import { styled } from "@mui/material/styles";
+
 import {
   SidebarMenuButton,
-  SidebarMenuList,
   SidebarMenuItem,
+  SidebarMenuList,
   SidebarTooltip,
 } from "./index";
-import { styled } from "@mui/material/styles";
 
 interface PopupMenuItemProps {
   children?: React.ReactNode;
@@ -128,7 +130,7 @@ export function PopupMenuLink({
 }) {
   return (
     <NavigationMenu.Link
-      render={<SidebarMenuButton as={component} />}
+      render={<SidebarMenuButton component={component} />}
       {...props}
     >
       {children}
