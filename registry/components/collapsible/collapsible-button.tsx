@@ -1,19 +1,24 @@
 "use client";
+
 import React from "react";
+
 import Button, { ButtonProps } from "@mui/material/Button";
+
+import type { OverridableComponent } from "../../types/shared/component";
 import { ScreenReaderInput } from "./collapsible-trigger";
 
-interface CollapsibleButtonProps extends ButtonProps {
+export interface CollapsibleButtonProps {
   defaultChecked?: boolean;
+  component?: React.ElementType;
 }
 
-const CollapsibleButton = function CollapsibleButton({
-  defaultChecked,
-  ...props
-}: Omit<React.ComponentPropsWithoutRef<"label">, "defaultChecked"> &
-  CollapsibleButtonProps) {
+export const CollapsibleButton = React.forwardRef<
+  HTMLLabelElement,
+  CollapsibleButtonProps & ButtonProps
+>(function CollapsibleButton({ defaultChecked, children, ...props }, ref) {
   return (
     <Button
+      ref={ref}
       variant="contained"
       component="label"
       tabIndex={-1}
@@ -21,9 +26,7 @@ const CollapsibleButton = function CollapsibleButton({
       {...props}
     >
       <ScreenReaderInput type="checkbox" defaultChecked={defaultChecked} />
-      {props.children}
+      {children}
     </Button>
   );
-};
-
-export { CollapsibleButton };
+}) as OverridableComponent<CollapsibleButtonProps, typeof Button>;

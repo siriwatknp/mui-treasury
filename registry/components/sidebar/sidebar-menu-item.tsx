@@ -1,7 +1,15 @@
 "use client";
+
 import React from "react";
+
 import { styled } from "@mui/material/styles";
+
+import type { OverridableComponent } from "../../types/shared/component";
 import { sidebarClasses } from "./sidebar-classes";
+
+export interface SidebarMenuItemProps {
+  component?: React.ElementType;
+}
 
 const StyledSidebarMenuItem = styled("div", {
   name: "SidebarMenuItem",
@@ -12,17 +20,16 @@ const StyledSidebarMenuItem = styled("div", {
   position: "relative",
 });
 
-const SidebarMenuItem = React.forwardRef<
+export const SidebarMenuItem = React.forwardRef<
   HTMLDivElement,
-  React.ComponentPropsWithoutRef<typeof StyledSidebarMenuItem>
->(function SidebarMenuItem({ className, ...props }, ref) {
+  SidebarMenuItemProps & React.ComponentPropsWithoutRef<"div">
+>(function SidebarMenuItem({ className, component, ...props }, ref) {
   return (
     <StyledSidebarMenuItem
       ref={ref}
       className={`${sidebarClasses.menuItem} ${className || ""}`}
+      as={component}
       {...props}
     />
   );
-});
-
-export { SidebarMenuItem };
+}) as OverridableComponent<SidebarMenuItemProps, "div">;

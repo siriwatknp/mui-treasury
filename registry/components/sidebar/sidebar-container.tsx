@@ -1,17 +1,22 @@
 "use client";
+
 import React, { useMemo } from "react";
+
 import { styled } from "@mui/material/styles";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
+
+import type { OverridableComponent } from "../../types/shared/component";
 import { sidebarClasses } from "./sidebar-classes";
 
-interface SidebarContainerProps {
+export interface SidebarContainerProps {
   shrink?: string;
+  component?: React.ElementType;
 }
 
 const StyledSidebarContainer = styled("div", {
   name: "SidebarContainer",
   slot: "root",
-})<{ ownerState: Required<SidebarContainerProps> }>(
+})<{ ownerState: Required<Pick<SidebarContainerProps, "shrink">> }>(
   memoTheme(() => ({
     containerType: "inline-size",
     display: "flex",
@@ -24,7 +29,9 @@ const StyledSidebarContainer = styled("div", {
     variants: [
       {
         props: () => true,
-        style: ({ shrink }: Required<SidebarContainerProps>) => ({
+        style: ({
+          shrink,
+        }: Required<Pick<SidebarContainerProps, "shrink">>) => ({
           "& > *": {
             [`@container (min-width: ${shrink})`]: {
               "--_collapsed": "var(--__,)",
@@ -37,23 +44,21 @@ const StyledSidebarContainer = styled("div", {
   })),
 );
 
-const SidebarContainer = React.forwardRef<
+export const SidebarContainer = React.forwardRef<
   HTMLDivElement,
-  Omit<
-    React.ComponentPropsWithoutRef<typeof StyledSidebarContainer>,
-    "ownerState"
-  > &
-    SidebarContainerProps
->(function SidebarContainer({ className, shrink = "100px", ...props }, ref) {
+  SidebarContainerProps & React.ComponentPropsWithoutRef<"div">
+>(function SidebarContainer(
+  { className, shrink = "100px", component, ...props },
+  ref,
+) {
   const ownerState = useMemo(() => ({ shrink }), [shrink]);
   return (
     <StyledSidebarContainer
       ref={ref}
       className={`${sidebarClasses.container} ${className || ""}`}
       ownerState={ownerState}
+      as={component}
       {...props}
     />
   );
-});
-
-export { SidebarContainer };
+}) as OverridableComponent<SidebarContainerProps, "div">;

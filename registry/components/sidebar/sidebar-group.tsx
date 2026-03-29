@@ -1,8 +1,16 @@
 "use client";
+
 import React from "react";
-import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
+
 import { styled } from "@mui/material/styles";
+import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
+
+import type { OverridableComponent } from "../../types/shared/component";
 import { sidebarClasses } from "./sidebar-classes";
+
+export interface SidebarGroupProps {
+  component?: React.ElementType;
+}
 
 const StyledSidebarGroup = styled("div", {
   name: "SidebarGroup",
@@ -15,17 +23,16 @@ const StyledSidebarGroup = styled("div", {
   })),
 );
 
-const SidebarGroup = React.forwardRef<
+export const SidebarGroup = React.forwardRef<
   HTMLDivElement,
-  React.ComponentPropsWithoutRef<typeof StyledSidebarGroup>
->(function SidebarGroup({ className, ...props }, ref) {
+  SidebarGroupProps & React.ComponentPropsWithoutRef<"div">
+>(function SidebarGroup({ className, component, ...props }, ref) {
   return (
     <StyledSidebarGroup
       ref={ref}
       className={`${sidebarClasses.group} ${className || ""}`}
+      as={component}
       {...props}
     />
   );
-});
-
-export { SidebarGroup };
+}) as OverridableComponent<SidebarGroupProps, "div">;

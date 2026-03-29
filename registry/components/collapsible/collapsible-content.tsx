@@ -1,7 +1,15 @@
 "use client";
+
 import React from "react";
+
 import { styled } from "@mui/material/styles";
+
+import type { OverridableComponent } from "../../types/shared/component";
 import { collapsibleClasses } from "./collapsible-classes";
+
+export interface CollapsibleContentProps {
+  component?: React.ElementType;
+}
 
 const StyledCollapsibleContent = styled("div", {
   name: "CollapsibleContent",
@@ -37,17 +45,16 @@ const StyledCollapsibleContent = styled("div", {
   },
 });
 
-const CollapsibleContent = React.forwardRef<
+export const CollapsibleContent = React.forwardRef<
   HTMLDivElement,
-  React.ComponentPropsWithoutRef<typeof StyledCollapsibleContent>
->(function CollapsibleContent({ className, ...props }, ref) {
+  CollapsibleContentProps & React.ComponentPropsWithoutRef<"div">
+>(function CollapsibleContent({ className, component, ...props }, ref) {
   return (
     <StyledCollapsibleContent
       ref={ref}
       className={`${collapsibleClasses.content} ${className || ""}`}
+      as={component}
       {...props}
     />
   );
-});
-
-export { CollapsibleContent };
+}) as OverridableComponent<CollapsibleContentProps, "div">;

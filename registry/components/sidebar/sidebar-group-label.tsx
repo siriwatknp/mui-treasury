@@ -1,8 +1,16 @@
 "use client";
+
 import React from "react";
-import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
+
 import { styled } from "@mui/material/styles";
+import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
+
+import type { OverridableComponent } from "../../types/shared/component";
 import { sidebarClasses } from "./sidebar-classes";
+
+export interface SidebarGroupLabelProps {
+  component?: React.ElementType;
+}
 
 const StyledSidebarGroupLabel = styled("div", {
   name: "SidebarGroupLabel",
@@ -26,17 +34,16 @@ const StyledSidebarGroupLabel = styled("div", {
   })),
 );
 
-const SidebarGroupLabel = React.forwardRef<
+export const SidebarGroupLabel = React.forwardRef<
   HTMLDivElement,
-  React.ComponentPropsWithoutRef<typeof StyledSidebarGroupLabel>
->(function SidebarGroupLabel({ className, ...props }, ref) {
+  SidebarGroupLabelProps & React.ComponentPropsWithoutRef<"div">
+>(function SidebarGroupLabel({ className, component, ...props }, ref) {
   return (
     <StyledSidebarGroupLabel
       ref={ref}
       className={`${sidebarClasses.groupLabel} ${className || ""}`}
+      as={component}
       {...props}
     />
   );
-});
-
-export { SidebarGroupLabel };
+}) as OverridableComponent<SidebarGroupLabelProps, "div">;

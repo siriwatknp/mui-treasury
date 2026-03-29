@@ -1,8 +1,16 @@
 "use client";
+
 import React from "react";
-import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
+
 import { styled } from "@mui/material/styles";
+import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
+
+import type { OverridableComponent } from "../../types/shared/component";
 import { sidebarClasses } from "./sidebar-classes";
+
+export interface SidebarRailProps {
+  component?: React.ElementType;
+}
 
 const StyledSidebarRail = styled("button", {
   name: "SidebarRail",
@@ -41,17 +49,16 @@ const StyledSidebarRail = styled("button", {
   })),
 );
 
-const SidebarRail = React.forwardRef<
+export const SidebarRail = React.forwardRef<
   HTMLButtonElement,
-  React.ComponentPropsWithoutRef<typeof StyledSidebarRail>
->(function SidebarRail({ className, ...props }, ref) {
+  SidebarRailProps & React.ComponentPropsWithoutRef<"button">
+>(function SidebarRail({ className, component, ...props }, ref) {
   return (
     <StyledSidebarRail
       ref={ref}
       className={`${sidebarClasses.rail} ${className || ""}`}
+      as={component}
       {...props}
     />
   );
-});
-
-export { SidebarRail };
+}) as OverridableComponent<SidebarRailProps, "button">;

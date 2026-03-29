@@ -1,13 +1,18 @@
 "use client";
+
 import React, { useMemo } from "react";
-import ButtonBase from "@mui/material/ButtonBase";
-import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
+
+import ButtonBase, { ButtonBaseProps } from "@mui/material/ButtonBase";
 import { styled } from "@mui/material/styles";
+import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
+
+import type { OverridableComponent } from "../../types/shared/component";
 import { sidebarClasses } from "./sidebar-classes";
 
-interface SidebarMenuActionProps {
+export interface SidebarMenuActionProps {
   hoverAppear?: boolean;
   _before?: React.ReactNode;
+  component?: React.ElementType;
 }
 
 const StyledSidebarMenuAction = styled(ButtonBase, {
@@ -64,15 +69,11 @@ const StyledSidebarMenuAction = styled(ButtonBase, {
   })),
 );
 
-const SidebarMenuAction = React.forwardRef<
+export const SidebarMenuAction = React.forwardRef<
   HTMLButtonElement,
-  Omit<
-    React.ComponentPropsWithoutRef<typeof StyledSidebarMenuAction>,
-    "ownerState"
-  > &
-    SidebarMenuActionProps
+  SidebarMenuActionProps & ButtonBaseProps
 >(function SidebarMenuAction(
-  { className, hoverAppear, _before, children, ...props },
+  { className, hoverAppear, _before, component, children, ...props },
   ref,
 ) {
   const ownerState = useMemo(() => ({ hoverAppear }), [hoverAppear]);
@@ -81,13 +82,14 @@ const SidebarMenuAction = React.forwardRef<
       ref={ref}
       className={`${sidebarClasses.menuAction} ${className || ""}`}
       ownerState={ownerState}
-      as={className?.includes("CollapsibleTrigger") ? "label" : undefined}
+      as={
+        component ??
+        (className?.includes("CollapsibleTrigger") ? "label" : undefined)
+      }
       {...props}
     >
       {_before}
       {children}
     </StyledSidebarMenuAction>
   );
-});
-
-export { SidebarMenuAction };
+}) as OverridableComponent<SidebarMenuActionProps, typeof ButtonBase>;

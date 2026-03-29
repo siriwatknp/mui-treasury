@@ -1,16 +1,21 @@
 "use client";
+
 import React, { useMemo } from "react";
-import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
+
 import { styled } from "@mui/material/styles";
+import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
+
+import type { OverridableComponent } from "../../types/shared/component";
 import { sidebarClasses } from "./sidebar-classes";
 import { SidebarMenuButton } from "./sidebar-menu-button";
 
 export { SidebarMenuButton };
 
-interface SidebarMenuProps {
+export interface SidebarMenuProps {
   relaxed?: boolean;
   nested?: boolean;
   noLine?: boolean;
+  component?: React.ElementType;
 }
 
 const StyledSidebarMenuList = styled("div", {
@@ -72,15 +77,11 @@ const StyledSidebarMenuList = styled("div", {
   })),
 );
 
-const SidebarMenuList = React.forwardRef<
+export const SidebarMenuList = React.forwardRef<
   HTMLDivElement,
-  Omit<
-    React.ComponentPropsWithoutRef<typeof StyledSidebarMenuList>,
-    "ownerState"
-  > &
-    SidebarMenuProps
+  SidebarMenuProps & React.ComponentPropsWithoutRef<"div">
 >(function SidebarMenuList(
-  { className, relaxed, nested, noLine, ...props },
+  { className, relaxed, nested, noLine, component, ...props },
   ref,
 ) {
   const ownerState = useMemo(
@@ -92,9 +93,8 @@ const SidebarMenuList = React.forwardRef<
       ref={ref}
       className={`${sidebarClasses.menu} ${className || ""}`}
       ownerState={ownerState}
+      as={component}
       {...props}
     />
   );
-});
-
-export { SidebarMenuList };
+}) as OverridableComponent<SidebarMenuProps, "div">;
