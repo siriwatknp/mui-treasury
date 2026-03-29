@@ -1,0 +1,6 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Shared Types",
+  "description": "Shared TypeScript types for overridable component patterns."
+}
