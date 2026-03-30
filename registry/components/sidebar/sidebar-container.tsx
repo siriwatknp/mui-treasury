@@ -5,13 +5,16 @@ import React, { useMemo } from "react";
 import { styled } from "@mui/material/styles";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 
-import type { OverridableComponent } from "../../types/shared/component";
+import type {
+  ForwardStyledProps,
+  OverridableComponent,
+} from "../../types/shared/component";
 import { sidebarClasses } from "./sidebar-classes";
 
-export interface SidebarContainerProps {
+export type SidebarContainerProps = ForwardStyledProps<{
   shrink?: string;
   component?: React.ElementType;
-}
+}>;
 
 const StyledSidebarContainer = styled("div", {
   name: "SidebarContainer",

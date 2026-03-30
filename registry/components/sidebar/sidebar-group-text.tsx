@@ -1,7 +1,13 @@
 "use client";
+
 import React from "react";
+
 import { styled } from "@mui/material/styles";
+
+import type { ForwardStyledProps } from "../../types/shared/component";
 import { sidebarClasses } from "./sidebar-classes";
+
+export type SidebarGroupTextProps = ForwardStyledProps;
 
 const StyledSidebarGroupText = styled("div", {
   name: "SidebarGroupText",
@@ -18,9 +24,9 @@ const StyledSidebarGroupText = styled("div", {
   },
 });
 
-const SidebarGroupText = React.forwardRef<
+export const SidebarGroupText = React.forwardRef<
   HTMLDivElement,
-  React.ComponentPropsWithoutRef<typeof StyledSidebarGroupText>
+  SidebarGroupTextProps & React.ComponentPropsWithoutRef<"div">
 >(function SidebarGroupText({ className, ...props }, ref) {
   return (
     <StyledSidebarGroupText
@@ -30,5 +36,3 @@ const SidebarGroupText = React.forwardRef<
     />
   );
 });
-
-export { SidebarGroupText };

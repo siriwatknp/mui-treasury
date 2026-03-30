@@ -1,11 +1,15 @@
 "use client";
+
 import React from "react";
+
 import { styled } from "@mui/material/styles";
+
+import type { ForwardStyledProps } from "../../types/shared/component";
 import { collapsibleClasses } from "./collapsible-classes";
 
-interface CollapsibleIconProps {
+export type CollapsibleIconProps = ForwardStyledProps<{
   rotate?: string;
-}
+}>;
 
 const StyledCollapsibleIcon = styled("span", {
   name: "CollapsibleIcon",
@@ -33,10 +37,9 @@ const StyledCollapsibleIcon = styled("span", {
   },
 });
 
-const CollapsibleIcon = React.forwardRef<
+export const CollapsibleIcon = React.forwardRef<
   HTMLSpanElement,
-  React.ComponentPropsWithoutRef<typeof StyledCollapsibleIcon> &
-    CollapsibleIconProps
+  CollapsibleIconProps & React.ComponentPropsWithoutRef<"span">
 >(function CollapsibleIcon(
   { className, rotate = "180deg", style, ...props },
   ref,
@@ -55,5 +58,3 @@ const CollapsibleIcon = React.forwardRef<
     />
   );
 });
-
-export { CollapsibleIcon };

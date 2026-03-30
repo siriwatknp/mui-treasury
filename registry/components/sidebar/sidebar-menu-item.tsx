@@ -4,12 +4,15 @@ import React from "react";
 
 import { styled } from "@mui/material/styles";
 
-import type { OverridableComponent } from "../../types/shared/component";
+import type {
+  ForwardStyledProps,
+  OverridableComponent,
+} from "../../types/shared/component";
 import { sidebarClasses } from "./sidebar-classes";
 
-export interface SidebarMenuItemProps {
+export type SidebarMenuItemProps = ForwardStyledProps<{
   component?: React.ElementType;
-}
+}>;
 
 const StyledSidebarMenuItem = styled("div", {
   name: "SidebarMenuItem",

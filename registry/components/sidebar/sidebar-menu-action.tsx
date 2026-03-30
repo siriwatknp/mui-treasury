@@ -6,14 +6,17 @@ import ButtonBase, { ButtonBaseProps } from "@mui/material/ButtonBase";
 import { styled } from "@mui/material/styles";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 
-import type { OverridableComponent } from "../../types/shared/component";
+import type {
+  ForwardStyledProps,
+  OverridableComponent,
+} from "../../types/shared/component";
 import { sidebarClasses } from "./sidebar-classes";
 
-export interface SidebarMenuActionProps {
+export type SidebarMenuActionProps = ForwardStyledProps<{
   hoverAppear?: boolean;
   _before?: React.ReactNode;
   component?: React.ElementType;
-}
+}>;
 
 const StyledSidebarMenuAction = styled(ButtonBase, {
   name: "SidebarMenuAction",

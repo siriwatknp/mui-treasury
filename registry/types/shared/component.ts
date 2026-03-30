@@ -1,5 +1,7 @@
 import type React from "react";
 
+import { SxProps, Theme } from "@mui/material/styles";
+
 interface OverridableComponentMeta<
   Props,
   DefaultComponent extends React.ElementType,
@@ -24,3 +26,8 @@ export type OverridableComponent<
       } & React.RefAttributes<React.ComponentRef<C>>,
   ): React.JSX.Element;
 } & OverridableComponentMeta<Props, DefaultComponent>;
+
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+export type ForwardStyledProps<P extends {} = {}> = P & {
+  sx?: SxProps<Theme>;
+};

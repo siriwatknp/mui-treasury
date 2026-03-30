@@ -6,15 +6,18 @@ import ButtonBase, { ButtonBaseProps } from "@mui/material/ButtonBase";
 import { styled } from "@mui/material/styles";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 
-import type { OverridableComponent } from "../../types/shared/component";
+import type {
+  ForwardStyledProps,
+  OverridableComponent,
+} from "../../types/shared/component";
 import { sidebarClasses } from "./sidebar-classes";
 
-export interface SidebarMenuButtonProps {
+export type SidebarMenuButtonProps = ForwardStyledProps<{
   active?: boolean;
   hideWhen?: "collapsed" | "uncollapsed";
   _before?: React.ReactNode;
   component?: React.ElementType;
-}
+}>;
 
 const StyledSidebarMenuButton = styled(ButtonBase, {
   name: "SidebarMenuButton",

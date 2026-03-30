@@ -5,18 +5,21 @@ import React, { useMemo } from "react";
 import { styled } from "@mui/material/styles";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 
-import type { OverridableComponent } from "../../types/shared/component";
+import type {
+  ForwardStyledProps,
+  OverridableComponent,
+} from "../../types/shared/component";
 import { sidebarClasses } from "./sidebar-classes";
 import { SidebarMenuButton } from "./sidebar-menu-button";
 
 export { SidebarMenuButton };
 
-export interface SidebarMenuProps {
+export type SidebarMenuProps = ForwardStyledProps<{
   relaxed?: boolean;
   nested?: boolean;
   noLine?: boolean;
   component?: React.ElementType;
-}
+}>;
 
 const StyledSidebarMenuList = styled("div", {
   name: "SidebarMenuList",

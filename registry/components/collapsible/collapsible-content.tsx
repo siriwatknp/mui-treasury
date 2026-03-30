@@ -4,12 +4,15 @@ import React from "react";
 
 import { styled } from "@mui/material/styles";
 
-import type { OverridableComponent } from "../../types/shared/component";
+import type {
+  ForwardStyledProps,
+  OverridableComponent,
+} from "../../types/shared/component";
 import { collapsibleClasses } from "./collapsible-classes";
 
-export interface CollapsibleContentProps {
+export type CollapsibleContentProps = ForwardStyledProps<{
   component?: React.ElementType;
-}
+}>;
 
 const StyledCollapsibleContent = styled("div", {
   name: "CollapsibleContent",

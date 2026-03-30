@@ -4,13 +4,16 @@ import React from "react";
 
 import Button, { ButtonProps } from "@mui/material/Button";
 
-import type { OverridableComponent } from "../../types/shared/component";
+import type {
+  ForwardStyledProps,
+  OverridableComponent,
+} from "../../types/shared/component";
 import { ScreenReaderInput } from "./collapsible-trigger";
 
-export interface CollapsibleButtonProps {
+export type CollapsibleButtonProps = ForwardStyledProps<{
   defaultChecked?: boolean;
   component?: React.ElementType;
-}
+}>;
 
 export const CollapsibleButton = React.forwardRef<
   HTMLLabelElement,

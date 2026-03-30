@@ -5,12 +5,15 @@ import React from "react";
 import { styled } from "@mui/material/styles";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
 
-import type { OverridableComponent } from "../../types/shared/component";
+import type {
+  ForwardStyledProps,
+  OverridableComponent,
+} from "../../types/shared/component";
 import { sidebarClasses } from "./sidebar-classes";
 
-export interface SidebarGroupLabelProps {
+export type SidebarGroupLabelProps = ForwardStyledProps<{
   component?: React.ElementType;
-}
+}>;
 
 const StyledSidebarGroupLabel = styled("div", {
   name: "SidebarGroupLabel",

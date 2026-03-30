@@ -1,14 +1,17 @@
 "use client";
+
 import React, { useMemo } from "react";
-import { Breakpoint } from "@mui/material/styles";
+
+import { Breakpoint, styled } from "@mui/material/styles";
 import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
-import { styled } from "@mui/material/styles";
+
+import type { ForwardStyledProps } from "../../types/shared/component";
 import { sidebarClasses } from "./sidebar-classes";
 
-interface SidebarIconProps {
+export type SidebarIconProps = ForwardStyledProps<{
   size?: string | Partial<Record<Breakpoint, string>>;
   shrinkSize?: string | Partial<Record<Breakpoint, string>>;
-}
+}>;
 
 const StyledSidebarIcon = styled("span", {
   name: "SidebarIcon",
@@ -88,10 +91,9 @@ const StyledSidebarIcon = styled("span", {
   })),
 );
 
-const SidebarIcon = React.forwardRef<
+export const SidebarIcon = React.forwardRef<
   HTMLSpanElement,
-  Omit<React.ComponentPropsWithoutRef<typeof StyledSidebarIcon>, "ownerState"> &
-    SidebarIconProps
+  SidebarIconProps & React.ComponentPropsWithoutRef<"span">
 >(function SidebarIcon({ className, size, shrinkSize, ...props }, ref) {
   const ownerState = useMemo(() => ({ size, shrinkSize }), [size, shrinkSize]);
   return (
@@ -103,5 +105,3 @@ const SidebarIcon = React.forwardRef<
     />
   );
 });
-
-export { SidebarIcon };

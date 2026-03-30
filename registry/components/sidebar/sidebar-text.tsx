@@ -1,7 +1,13 @@
 "use client";
+
 import React from "react";
+
 import { styled } from "@mui/material/styles";
+
+import type { ForwardStyledProps } from "../../types/shared/component";
 import { sidebarClasses } from "./sidebar-classes";
+
+export type SidebarTextProps = ForwardStyledProps;
 
 const StyledSidebarText = styled("span", {
   name: "SidebarText",
@@ -19,9 +25,9 @@ const StyledSidebarText = styled("span", {
   },
 });
 
-const SidebarText = React.forwardRef<
+export const SidebarText = React.forwardRef<
   HTMLSpanElement,
-  Omit<React.ComponentPropsWithoutRef<typeof StyledSidebarText>, "ownerState">
+  SidebarTextProps & React.ComponentPropsWithoutRef<"span">
 >(function SidebarText({ className, ...props }, ref) {
   return (
     <StyledSidebarText
@@ -31,5 +37,3 @@ const SidebarText = React.forwardRef<
     />
   );
 });
-
-export { SidebarText };
