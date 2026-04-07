@@ -8,8 +8,7 @@
     "lint": "turbo lint",
     "typecheck": "turbo typecheck",
     "changeset": "changeset",
-    "version-packages": "changeset version",
-    "release": "turbo build --filter=mui-treasury && changeset publish"
+    "release": "node scripts/release.mjs"
   },
   "devDependencies": {
     "@changesets/changelog-github": "0.6.0",
