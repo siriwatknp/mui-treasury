@@ -1,16 +1,17 @@
 "use client";
 import * as React from "react";
+import { DropzoneOptions, FileRejection, useDropzone } from "react-dropzone";
+
+import CloseIcon from "@mui/icons-material/Close";
+import CloudUploadOutlinedIcon from "@mui/icons-material/CloudUploadOutlined";
+import InsertDriveFileOutlinedIcon from "@mui/icons-material/InsertDriveFileOutlined";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import CloudUploadOutlinedIcon from "@mui/icons-material/CloudUploadOutlined";
-import InsertDriveFileOutlinedIcon from "@mui/icons-material/InsertDriveFileOutlined";
-import CloseIcon from "@mui/icons-material/Close";
-import { useDropzone, FileRejection, DropzoneOptions } from "react-dropzone";
+import Typography from "@mui/material/Typography";
 
 function formatFileSize(bytes: number): string {
   if (bytes === 0) return "0 B";
@@ -139,7 +140,11 @@ export function Dropzone01({
                 : "text.icon",
           }}
         />
-        <Typography variant="body1" color="text.secondary" textAlign="center">
+        <Typography
+          variant="body1"
+          color="text.secondary"
+          sx={{ textAlign: "center" }}
+        >
           {isDragActive
             ? isDragReject
               ? "Some files will be rejected"

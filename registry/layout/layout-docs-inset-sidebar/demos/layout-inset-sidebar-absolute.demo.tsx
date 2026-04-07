@@ -22,7 +22,7 @@ export function Demo() {
     <Root standalone height="350px">
       <Header>
         <Box sx={{ px: 2 }}>
-          <Typography variant="caption" fontWeight="bold">
+          <Typography variant="caption" sx={{ fontWeight: "bold" }}>
             Header
           </Typography>
         </Box>

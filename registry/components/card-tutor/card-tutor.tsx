@@ -1,15 +1,17 @@
 "use client";
 import React from "react";
+
 import Add from "@mui/icons-material/Add";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
 import type { Theme } from "@mui/material/styles";
+
 import { Info } from "../info-basic/info";
+import type { InfoSlotStyles } from "../info-basic/info";
 import { InfoSubtitle } from "../info-basic/info-subtitle";
 import { InfoTitle } from "../info-basic/info-title";
-import type { InfoSlotStyles } from "../info-basic/info";
 
 const titleFontSize = "1rem";
 const subtitleFontSize = "0.75rem";
@@ -67,10 +69,10 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
 export function CardTutor() {
   return (
     <Box
-      display="flex"
-      p={1.5}
-      gap={2}
       sx={(theme) => ({
+        display: "flex",
+        p: 1.5,
+        gap: 2,
         bgcolor: "#f5f5f5",
         borderRadius: 4,
         alignItems: "center",
@@ -91,7 +93,7 @@ export function CardTutor() {
         <InfoTitle>Kenny Foster</InfoTitle>
         <InfoSubtitle>@fosterlive</InfoSubtitle>
       </Info>
-      <Box ml={1}>
+      <Box sx={{ ml: 1 }}>
         <StyledIconButton size="small">
           <Add />
         </StyledIconButton>

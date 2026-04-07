@@ -17,7 +17,7 @@ export function Demo() {
     <Root standalone height="350px" sx={{ minWidth: 200 }}>
       <Header>
         <Box sx={{ px: 2 }}>
-          <Typography variant="caption" fontWeight="bold">
+          <Typography variant="caption" sx={{ fontWeight: "bold" }}>
             Standalone
           </Typography>
         </Box>

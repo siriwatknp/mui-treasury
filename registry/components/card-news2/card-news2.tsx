@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
@@ -41,14 +42,14 @@ export function CardNews2() {
       <CardActionArea>
         <CardContent sx={{ p: 3 }}>
           <Box
-            display={"flex"}
-            flexDirection={"column"}
-            alignItems={"center"}
-            justifyContent={"center"}
-            minHeight={360}
-            color={"common.white"}
-            textAlign={"center"}
             sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              minHeight: 360,
+              color: "common.white",
+              textAlign: "center",
               "& h2": {
                 color: "#fff",
                 letterSpacing: "2px",

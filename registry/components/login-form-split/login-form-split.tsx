@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+
+import { GitHub } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -10,7 +12,6 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { GitHub } from "@mui/icons-material";
 
 interface FormData {
   email: string;
@@ -130,9 +131,9 @@ export function LoginFormSplit() {
           {/* Logo */}
           <Stack
             direction="row"
-            alignItems="center"
             spacing={1}
             sx={{
+              alignItems: "center",
               position: { xs: "static", md: "fixed" },
               top: "2rem",
               left: "2rem",

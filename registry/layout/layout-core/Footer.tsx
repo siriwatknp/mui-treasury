@@ -18,7 +18,6 @@ const Footer = React.forwardRef<HTMLElement, BoxProps>(function Footer(
   ref,
 ) {
   return (
-    // @ts-expect-error BoxProps on styled native element
     <StyledFooter
       ref={ref}
       className={`${layoutClasses.Footer} ${className || ""}`}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import {
   Box,
   Button,
@@ -96,7 +97,7 @@ export function LoginForm() {
       })}
     >
       <Stack spacing={3}>
-        <Stack spacing={1} textAlign="center">
+        <Stack spacing={1} sx={{ textAlign: "center" }}>
           <Typography variant="h3" component="h1">
             Login to your account
           </Typography>
@@ -123,9 +124,11 @@ export function LoginForm() {
             <Box>
               <Stack
                 direction="row"
-                justifyContent="space-between"
-                alignItems="center"
-                mb={1}
+                sx={{
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  mb: 1,
+                }}
               >
                 <Typography
                   variant="body2"
@@ -183,7 +186,11 @@ export function LoginForm() {
           </Stack>
         </Box>
 
-        <Typography variant="body2" textAlign="center" color="text.secondary">
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{ textAlign: "center" }}
+        >
           Don&apos;t have an account?{" "}
           <Link
             href="#"

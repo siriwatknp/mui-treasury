@@ -1,11 +1,13 @@
 import React from "react";
+
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import type { Theme } from "@mui/material/styles";
-import Typography from "@mui/material/Typography";
+
 import { Info } from "../info-basic/info";
 import { InfoSubtitle } from "../info-basic/info-subtitle";
 import { InfoTitle } from "../info-basic/info-title";
@@ -168,7 +170,7 @@ const newsInfoStyles = (arg: Theme | { theme: Theme }) => {
 export function CardNews3() {
   return (
     <StyledCard>
-      <BoxMain minHeight={300} position={"relative"}>
+      <BoxMain sx={{ minHeight: 300, position: "relative" }}>
         <StyledCardMedia
           image={
             "https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"

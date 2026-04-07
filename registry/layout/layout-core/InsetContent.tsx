@@ -1,7 +1,9 @@
 "use client";
 import React from "react";
+
 import { BoxProps } from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
+
 import { layoutClasses } from "./layoutClasses";
 
 const InsetContentRoot = styled("div")(({ theme }) => ({
@@ -33,7 +35,6 @@ const InsetContentRoot = styled("div")(({ theme }) => ({
 const InsetContent = React.forwardRef<HTMLDivElement, BoxProps>(
   function InsetContent({ className, children, ...props }, ref) {
     return (
-      // @ts-expect-error BoxProps on styled native element
       <InsetContentRoot
         ref={ref}
         className={`${layoutClasses.InsetContent} ${className || ""}`}

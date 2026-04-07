@@ -1,14 +1,15 @@
 "use client";
 import React from "react";
-import { styled } from "@mui/material/styles";
+
+import CreditCard from "@mui/icons-material/CreditCard";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
-import CreditCard from "@mui/icons-material/CreditCard";
-import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import { styled } from "@mui/material/styles";
 
 const BoxRoot = styled(Box)(() => ({
   display: "flex",
@@ -104,7 +105,7 @@ const DailyCheckout = () => {
     },
   } as const;
   return (
-    <BoxRoot py={3} px={3.5}>
+    <BoxRoot sx={{ py: 3, px: 3.5 }}>
       <TypographyHeading variant={"h1"}>Payment Info.</TypographyHeading>
       <StyledDivider />
       <TypographyLabel>Payment Method:</TypographyLabel>

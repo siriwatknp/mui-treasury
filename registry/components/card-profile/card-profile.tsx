@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -49,12 +50,16 @@ export function CardProfile() {
           Poland
         </Box>
       </CardContent>
-      <Divider light />
-      <Box display="flex">
+      <Divider
+        sx={{
+          opacity: "0.6",
+        }}
+      />
+      <Box sx={{ display: "flex" }}>
         <Box
-          p={2}
-          flex="auto"
           sx={(theme) => ({
+            p: 2,
+            flex: "auto",
             position: "relative",
             "&:not(:last-of-type)": {
               "&:after": {
@@ -95,9 +100,9 @@ export function CardProfile() {
           </Box>
         </Box>
         <Box
-          p={2}
-          flex="auto"
           sx={(theme) => ({
+            p: 2,
+            flex: "auto",
             position: "relative",
             "&:not(:last-of-type)": {
               "&:after": {

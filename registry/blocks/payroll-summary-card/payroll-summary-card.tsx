@@ -1,6 +1,9 @@
 "use client";
 
 import * as React from "react";
+
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import {
   Box,
   Button,
@@ -12,8 +15,6 @@ import {
   Typography,
 } from "@mui/material";
 import { PieChart } from "@mui/x-charts/PieChart";
-import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 const paymentData = [
   { id: 0, value: 234.2, label: "Payment", color: "#4A90E2" },
@@ -44,7 +45,7 @@ export function PayrollSummaryCard() {
             }}
           >
             <div>
-              <Typography component="h2" variant="h5" fontWeight={600}>
+              <Typography component="h2" variant="h5" sx={{ fontWeight: 600 }}>
                 Payroll Summary
               </Typography>
               {/* Date Range */}
@@ -116,9 +117,13 @@ export function PayrollSummaryCard() {
                   textAlign: "center",
                 }}
               >
-                <Typography variant="h4" fontWeight={600}>
+                <Typography variant="h4" sx={{ fontWeight: 600 }}>
                   {largestPercentage}
-                  <Typography component="span" variant="h5" fontWeight={400}>
+                  <Typography
+                    component="span"
+                    variant="h5"
+                    sx={{ fontWeight: 400 }}
+                  >
                     %
                   </Typography>
                 </Typography>
@@ -160,7 +165,7 @@ export function PayrollSummaryCard() {
                     <Typography variant="caption" color="text.secondary">
                       {payment.label}
                     </Typography>
-                    <Typography variant="h6" fontWeight={600}>
+                    <Typography variant="h6" sx={{ fontWeight: 600 }}>
                       ${payment.value.toFixed(2)}
                     </Typography>
                   </Box>
