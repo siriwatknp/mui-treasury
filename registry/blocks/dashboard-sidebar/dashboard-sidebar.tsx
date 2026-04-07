@@ -1,30 +1,31 @@
 "use client";
 
 import * as React from "react";
+
+import AssessmentIcon from "@mui/icons-material/Assessment";
+import ChatIcon from "@mui/icons-material/Chat";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import FileUploadIcon from "@mui/icons-material/FileUpload";
+import HandshakeIcon from "@mui/icons-material/Handshake";
+import LogoutIcon from "@mui/icons-material/Logout";
+import PeopleIcon from "@mui/icons-material/People";
+import PublicIcon from "@mui/icons-material/Public";
+import SearchIcon from "@mui/icons-material/Search";
+import SettingsIcon from "@mui/icons-material/Settings";
+import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
+import Chip from "@mui/material/Chip";
+import Collapse from "@mui/material/Collapse";
 import InputAdornment from "@mui/material/InputAdornment";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import Avatar from "@mui/material/Avatar";
-import Chip from "@mui/material/Chip";
-import Collapse from "@mui/material/Collapse";
-import SearchIcon from "@mui/icons-material/Search";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import PeopleIcon from "@mui/icons-material/People";
-import AssessmentIcon from "@mui/icons-material/Assessment";
-import PublicIcon from "@mui/icons-material/Public";
-import ChatIcon from "@mui/icons-material/Chat";
-import HandshakeIcon from "@mui/icons-material/Handshake";
-import FileUploadIcon from "@mui/icons-material/FileUpload";
-import SettingsIcon from "@mui/icons-material/Settings";
-import LogoutIcon from "@mui/icons-material/Logout";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 
 export function DashboardSidebar() {
   const [customersExpanded, setCustomersExpanded] = React.useState(false);
@@ -77,7 +78,7 @@ export function DashboardSidebar() {
         >
           I
         </Box>
-        <Typography variant="h6" fontWeight={600}>
+        <Typography variant="h6" sx={{ fontWeight: 600 }}>
           Ipsum
         </Typography>
       </Box>
@@ -293,7 +294,7 @@ export function DashboardSidebar() {
             sx={{ width: 40, height: 40 }}
           />
           <Box sx={{ flex: 1, minWidth: 0 }}>
-            <Typography variant="body2" fontWeight={500} noWrap>
+            <Typography variant="body2" noWrap sx={{ fontWeight: 500 }}>
               John Doe
             </Typography>
             <Chip

@@ -1,11 +1,13 @@
 "use client";
 import React from "react";
+
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
+
 import { getInfoApexStyles } from "../info-apex/info-apex.styles";
 import { Info } from "../info-basic/info";
 import { InfoSubtitle } from "../info-basic/info-subtitle";
@@ -111,7 +113,7 @@ const CustomCard = ({
 }) => (
   <DivRoot>
     <ColumnCard className="MuiCard-root">
-      <Box display="flex" p={2} gap={2} flexWrap="nowrap">
+      <Box sx={{ display: "flex", p: 2, gap: 2, flexWrap: "nowrap" }}>
         <AvatarLogo variant={"rounded"} src={thumbnail} />
         <Info useStyles={getInfoApexStyles} sx={{ alignSelf: "center" }}>
           <InfoTitle>{title}</InfoTitle>
@@ -119,20 +121,22 @@ const CustomCard = ({
         </Info>
       </Box>
       <Box
-        pb={1}
-        px={2}
-        color={"grey.600"}
-        fontSize={"0.875rem"}
-        fontFamily={"Ubuntu"}
-        flexGrow={1}
+        sx={{
+          pb: 1,
+          px: 2,
+          color: "grey.600",
+          fontSize: "0.875rem",
+          fontFamily: "Ubuntu",
+          flexGrow: 1,
+        }}
       >
         {description}
       </Box>
       <Box
-        display="flex"
-        p={2}
-        gap={2}
         sx={{
+          display: "flex",
+          p: 2,
+          gap: 2,
           flexWrap: "wrap",
           justifyContent: "space-between",
           "&& > *": {

@@ -1,12 +1,13 @@
 "use client";
 import React from "react";
+
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 
 const ReactContent = () => (
-  <Box mr={{ sm: 3, md: 10 }} py={{ xs: 4, sm: 6, md: 8 }}>
-    <Box pb={5}>
+  <Box sx={{ mr: { sm: 3, md: 10 }, py: { xs: 4, sm: 6, md: 8 } }}>
+    <Box sx={{ pb: 5 }}>
       <Typography variant={"h2"}>
         <b>Getting Started</b>
       </Typography>

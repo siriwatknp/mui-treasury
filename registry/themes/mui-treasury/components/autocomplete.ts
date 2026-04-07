@@ -92,6 +92,7 @@ export const autocompleteTheme: ThemeComponents = {
         fontSize: theme.typography.body2.fontSize,
         padding: "6px",
         borderRadius: 4,
+        flexShrink: 0,
       }),
       paper: ({ theme }) => ({
         marginTop: 4,

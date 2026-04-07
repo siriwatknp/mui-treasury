@@ -1,10 +1,11 @@
 "use client";
 import React from "react";
+
+import MoreHoriz from "@mui/icons-material/MoreHoriz";
+import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import Avatar from "@mui/material/Avatar";
-import MoreHoriz from "@mui/icons-material/MoreHoriz";
 
 interface ChatListItemProps {
   bold?: boolean;
@@ -26,7 +27,7 @@ const ChatListItem = ({
   concise,
 }: ChatListItemProps) => {
   return (
-    <Box px={1}>
+    <Box sx={{ px: 1 }}>
       <ListItemButton
         sx={{
           paddingLeft: "8px",
@@ -57,23 +58,26 @@ const ChatListItem = ({
             <ListItemText
               primary={name}
               secondary={info}
-              primaryTypographyProps={{
-                noWrap: true,
-                sx: { ...(bold && { fontWeight: "bold" }) },
-              }}
-              secondaryTypographyProps={{
-                noWrap: true,
-                sx: {
-                  fontSize: 13,
-                  color: "#999",
-                  ...(bold && {
-                    fontWeight: "bold",
-                    color: "text.primary",
-                  }),
+              slotProps={{
+                primary: {
+                  noWrap: true,
+                  sx: { ...(bold && { fontWeight: "bold" }) },
+                },
+
+                secondary: {
+                  noWrap: true,
+                  sx: {
+                    fontSize: 13,
+                    color: "#999",
+                    ...(bold && {
+                      fontWeight: "bold",
+                      color: "text.primary",
+                    }),
+                  },
                 },
               }}
             />
-            <Box position={"relative"}>
+            <Box sx={{ position: "relative" }}>
               <MoreHoriz
                 className="ChatListItem-more"
                 sx={{ visibility: "hidden", fontSize: 20 }}

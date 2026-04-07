@@ -48,7 +48,7 @@ export function Demo() {
       <Root height="300px" sx={{ width: "100%" }}>
         <Header clip={headerClip}>
           <Box sx={{ px: 2 }}>
-            <Typography variant="subtitle2" fontWeight="bold">
+            <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}>
               Header
             </Typography>
           </Box>

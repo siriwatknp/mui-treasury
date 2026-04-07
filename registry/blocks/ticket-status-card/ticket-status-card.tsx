@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -19,7 +20,7 @@ export function TicketStatusCard() {
             Current Tickets
           </Typography>
 
-          <Typography variant="h2" component="div" fontWeight="bold">
+          <Typography variant="h2" component="div" sx={{ fontWeight: "bold" }}>
             {totalTickets}
           </Typography>
 
@@ -71,8 +72,12 @@ export function TicketStatusCard() {
               <Typography
                 component="dt"
                 variant="body1"
-                fontWeight="bold"
-                sx={{ display: "flex", alignItems: "center", gap: 0.5 }}
+                sx={{
+                  fontWeight: "bold",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 0.5,
+                }}
               >
                 <Box
                   component="span"
@@ -101,8 +106,12 @@ export function TicketStatusCard() {
               <Typography
                 component="dt"
                 variant="body1"
-                fontWeight="bold"
-                sx={{ display: "flex", alignItems: "center", gap: 0.5 }}
+                sx={{
+                  fontWeight: "bold",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 0.5,
+                }}
               >
                 <Box
                   component="span"
@@ -131,8 +140,12 @@ export function TicketStatusCard() {
               <Typography
                 component="dt"
                 variant="body1"
-                fontWeight="bold"
-                sx={{ display: "flex", alignItems: "center", gap: 0.5 }}
+                sx={{
+                  fontWeight: "bold",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 0.5,
+                }}
               >
                 <Box
                   component="span"

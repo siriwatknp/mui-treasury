@@ -1,0 +1,11 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "All components",
+  "description": "layout components registry",
+  "registryDependencies": ["layout-core"],
+  "meta": {
+    "category": "layout",
+    "subcategory": "documentation"
+  }
+}

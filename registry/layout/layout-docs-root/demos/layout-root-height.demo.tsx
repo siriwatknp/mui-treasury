@@ -27,7 +27,7 @@ export function Demo() {
       <Root height="300px" sx={{ flex: 1, minWidth: 200 }}>
         <Header>
           <Box sx={{ px: 2 }}>
-            <Typography variant="caption" fontWeight="bold">
+            <Typography variant="caption" sx={{ fontWeight: "bold" }}>
               height=&quot;300px&quot;
             </Typography>
           </Box>
@@ -51,7 +51,7 @@ export function Demo() {
       <Root height="400px" sx={{ flex: 1, minWidth: 200 }}>
         <Header>
           <Box sx={{ px: 2 }}>
-            <Typography variant="caption" fontWeight="bold">
+            <Typography variant="caption" sx={{ fontWeight: "bold" }}>
               height=&quot;400px&quot;
             </Typography>
           </Box>
@@ -78,7 +78,7 @@ export function Demo() {
       >
         <Header>
           <Box sx={{ px: 2 }}>
-            <Typography variant="caption" fontWeight="bold">
+            <Typography variant="caption" sx={{ fontWeight: "bold" }}>
               300px → 400px
             </Typography>
           </Box>

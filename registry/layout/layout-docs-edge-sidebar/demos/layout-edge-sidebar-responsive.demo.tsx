@@ -36,7 +36,7 @@ export function Demo() {
           >
             Menu
           </Button>
-          <Typography variant="caption" fontWeight="bold">
+          <Typography variant="caption" sx={{ fontWeight: "bold" }}>
             Header
           </Typography>
         </Box>

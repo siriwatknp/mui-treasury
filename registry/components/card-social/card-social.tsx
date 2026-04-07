@@ -1,4 +1,5 @@
 import React from "react";
+
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -86,9 +87,9 @@ export function CardSocial() {
       })}
     >
       <Box
-        alignItems="baseline"
-        p={2}
         sx={(theme) => ({
+          alignItems: "baseline",
+          p: 2,
           display: "flex",
           flexWrap: "wrap",
           borderTopLeftRadius: "inherit",

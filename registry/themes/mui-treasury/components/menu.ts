@@ -3,9 +3,11 @@ import { ThemeComponents } from "../types";
 export const menuTheme: ThemeComponents = {
   MuiMenu: {
     defaultProps: {
-      PaperProps: {
-        elevation: 0,
-        variant: "outlined",
+      slotProps: {
+        paper: {
+          elevation: 0,
+          variant: "outlined",
+        },
       },
     },
     styleOverrides: {

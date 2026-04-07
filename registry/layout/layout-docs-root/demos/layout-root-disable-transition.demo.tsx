@@ -45,7 +45,7 @@ export function Demo() {
       <Root disableTransition={disabled} height="300px" sx={{ width: "100%" }}>
         <Header>
           <Box sx={{ px: 2 }}>
-            <Typography variant="caption" fontWeight="bold">
+            <Typography variant="caption" sx={{ fontWeight: "bold" }}>
               {disabled ? "No transition" : "With transition"}
             </Typography>
           </Box>

@@ -1,13 +1,14 @@
 "use client";
 
 import * as React from "react";
+
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import LinearProgress from "@mui/material/LinearProgress";
 import CircularProgress from "@mui/material/CircularProgress";
-import Typography from "@mui/material/Typography";
+import LinearProgress from "@mui/material/LinearProgress";
 import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 import { SparkLineChart } from "@mui/x-charts/SparkLineChart";
 
 export function DataMetrics() {
@@ -63,8 +64,7 @@ export function DataMetrics() {
             </Box>
             <Stack
               direction="row"
-              justifyContent="space-between"
-              sx={{ mt: 1 }}
+              sx={{ justifyContent: "space-between", mt: 1 }}
             >
               <Typography variant="caption" sx={{ color: "text.secondary" }}>
                 {storagePercentage.toFixed(1)}%
@@ -91,9 +91,8 @@ export function DataMetrics() {
             </Typography>
             <Stack
               direction="row"
-              alignItems="baseline"
               spacing={2}
-              sx={{ mb: 2, whiteSpace: "nowrap" }}
+              sx={{ alignItems: "baseline", mb: 2, whiteSpace: "nowrap" }}
             >
               <Typography
                 variant="h3"
@@ -134,10 +133,12 @@ export function DataMetrics() {
           <CardContent sx={{ p: 2.5 }}>
             <Stack
               direction="row"
-              flexWrap="wrap"
-              justifyContent="space-between"
-              alignItems="flex-start"
               spacing={2}
+              sx={{
+                flexWrap: "wrap",
+                justifyContent: "space-between",
+                alignItems: "flex-start",
+              }}
             >
               <Stack spacing={0.25}>
                 <Typography variant="body2" sx={{ color: "text.secondary" }}>

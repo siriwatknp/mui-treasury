@@ -1,34 +1,35 @@
 "use client";
 
 import * as React from "react";
+
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import AddCircleOutlinedIcon from "@mui/icons-material/AddCircleOutlined";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import GroupIcon from "@mui/icons-material/Group";
+import HomeIcon from "@mui/icons-material/Home";
+import ReceiptIcon from "@mui/icons-material/Receipt";
+import SearchIcon from "@mui/icons-material/Search";
 import {
+  Avatar,
   Box,
-  TextField,
-  Chip,
-  Typography,
+  Button,
   Card,
   CardContent,
-  Avatar,
-  Button,
+  Chip,
+  Dialog,
+  DialogContent,
+  IconButton,
+  InputAdornment,
   List,
   ListItemButton,
   ListItemIcon,
   ListItemText,
   Stack,
-  IconButton,
-  Dialog,
-  DialogContent,
-  InputAdornment,
+  TextField,
+  Typography,
 } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import HomeIcon from "@mui/icons-material/Home";
-import GroupIcon from "@mui/icons-material/Group";
-import ReceiptIcon from "@mui/icons-material/Receipt";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 const filterOptions = [
   "All",
@@ -78,7 +79,7 @@ const quickActions = [
   { icon: <HomeIcon />, label: "Dashboard page" },
   { icon: <GroupIcon />, label: "Team page" },
   { icon: <ReceiptIcon />, label: "Payroll page" },
-  { icon: <AddCircleOutlineIcon />, label: "Create new position" },
+  { icon: <AddCircleOutlinedIcon />, label: "Create new position" },
   { icon: <AccessTimeIcon />, label: "View attendance report" },
   { icon: <CalendarMonthIcon />, label: "Schedule meeting" },
 ];
@@ -263,7 +264,7 @@ export function CommandSearchUI() {
                       }}
                     />
                   </Box>
-                  <Typography variant="body2" fontWeight={600}>
+                  <Typography variant="body2" sx={{ fontWeight: 600 }}>
                     {meeting.name}
                   </Typography>
                   <Typography variant="caption" color="text.secondary">

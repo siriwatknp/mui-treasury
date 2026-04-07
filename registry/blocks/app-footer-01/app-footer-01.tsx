@@ -1,11 +1,11 @@
 "use client";
 
 import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
-import Link from "@mui/material/Link";
-import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
+import Link from "@mui/material/Link";
+import Stack from "@mui/material/Stack";
 import SvgIcon from "@mui/material/SvgIcon";
+import Typography from "@mui/material/Typography";
 
 const navigationData = [
   {
@@ -218,8 +218,7 @@ export function AppFooter01() {
             <Typography
               id={`footer-nav-${index}`}
               variant="body1"
-              fontWeight={600}
-              sx={{ pb: 1 }}
+              sx={{ fontWeight: 600, pb: 1 }}
             >
               {section.title}
             </Typography>

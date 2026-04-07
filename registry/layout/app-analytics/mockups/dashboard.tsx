@@ -302,7 +302,7 @@ export const UserActiveCardMockup = (props: BoxProps) => {
           },
         }}
       />
-      <Box height={16} />
+      <Box sx={{ height: 16 }} />
       <LinearProgress
         variant="determinate"
         value={8}
