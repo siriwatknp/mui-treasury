@@ -36,7 +36,7 @@ export class RegistryFetchError extends RegistryError {
 export class RegistryParseError extends RegistryError {
   constructor(
     public readonly url: string,
-    cause?: unknown,
+    _cause?: unknown,
   ) {
     super(`Failed to parse registry item: ${url}`, {
       suggestion: "The registry item may have an invalid format.",
