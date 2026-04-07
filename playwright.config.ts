@@ -33,7 +33,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "pnpm dev",
+    command: "pnpm registry:build && next dev -p 4418",
     url: "http://localhost:4418",
     reuseExistingServer: !process.env.CI,
   },
