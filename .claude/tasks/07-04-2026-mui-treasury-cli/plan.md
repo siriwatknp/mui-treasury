@@ -6,7 +6,7 @@ reference: .claude/tasks/07-04-2026-mui-treasury-cli/tech-analysis.md
 
 # Implementation Plan: `mui-treasury` CLI v0.4.0
 
-## Phase 0: Monorepo Setup [ ]
+## ~~Phase 0: Monorepo Setup~~ ✅ Done
 
 Convert the project to a Turborepo monorepo with `apps/website` and `packages/cli`.
 
@@ -85,7 +85,7 @@ npx tsc --noEmit
 
 ---
 
-## Phase 1: CLI Package Scaffold [ ]
+## ~~Phase 1: CLI Package Scaffold~~ ✅ Done
 
 Create the `packages/cli/` package with build tooling.
 
@@ -231,7 +231,7 @@ cd packages/cli && pnpm install && pnpm build
 
 ---
 
-## Phase 2: Utility Layer [ ]
+## ~~Phase 2: Utility Layer~~ ✅ Done
 
 Create shared utilities copied from shadcn patterns.
 
@@ -377,7 +377,7 @@ export function getPackageManager(
 
 ---
 
-## Phase 3: Registry Schema & Errors [ ]
+## ~~Phase 3: Registry Schema & Errors~~ ✅ Done
 
 Define the types and error classes for registry operations.
 
@@ -469,7 +469,7 @@ export class RegistryParseError extends RegistryError {
 
 ---
 
-## Phase 4: Registry Fetcher [ ]
+## ~~Phase 4: Registry Fetcher~~ ✅ Done
 
 Implement HTTP fetching with caching, adapted from shadcn's fetcher.
 
@@ -565,7 +565,7 @@ export async function fetchRegistryItemByUrl(
 
 ---
 
-## Phase 5: Dependency Resolver [ ]
+## ~~Phase 5: Dependency Resolver~~ ✅ Done
 
 Implement recursive dependency resolution, adapted from shadcn's resolver.
 
@@ -668,7 +668,7 @@ export async function resolveRegistryTree(
 
 ---
 
-## Phase 6: Add Command [ ]
+## ~~Phase 6: Add Command~~ ✅ Done
 
 Implement the `add` command that ties everything together.
 
@@ -838,7 +838,7 @@ node dist/index.js add ai-actions --cwd /tmp/test-project --registry https://mui
 
 ---
 
-## Phase 7: Integration Testing [ ]
+## ~~Phase 7: Integration Testing~~ ✅ Done
 
 Test the full flow end-to-end.
 
@@ -879,7 +879,7 @@ Verify files written under `/tmp/test-monorepo/packages/app/src/mui-treasury/...
 
 ---
 
-## Phase 8: Polish & Publish Prep [ ]
+## ~~Phase 8: Polish & Publish Prep~~ ✅ Done
 
 ### 8.1 Add README for the CLI package
 
