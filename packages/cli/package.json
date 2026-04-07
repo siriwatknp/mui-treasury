@@ -13,6 +13,7 @@
   },
   "scripts": {
     "dev": "tsup --watch",
+    "dev:cli": "tsup && node dist/index.js",
     "build": "tsup",
     "typecheck": "tsc --noEmit"
   },
