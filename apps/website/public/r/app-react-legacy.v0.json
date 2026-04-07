@@ -1,0 +1,44 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "app-react-legacy",
+  "type": "registry:block",
+  "title": "App React Legacy",
+  "description": "A app-react-legacy item.",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "layout/app-react-legacy/components/ReactContent.tsx",
+      "target": "src/mui-treasury/layout/app-react-legacy/components/ReactContent.tsx",
+      "content": "\"use client\";\nimport React from \"react\";\nimport Box from \"@mui/material/Box\";\nimport Divider from \"@mui/material/Divider\";\nimport Typography from \"@mui/material/Typography\";\n\nconst ReactContent = () => (\n  <Box mr={{ sm: 3, md: 10 }} py={{ xs: 4, sm: 6, md: 8 }}>\n    <Box pb={5}>\n      <Typography variant={\"h2\"}>\n        <b>Getting Started</b>\n      </Typography>\n    </Box>\n    <Typography color={\"textSecondary\"} variant={\"h5\"}>\n      This page is an overview of the React documentation and related resources.\n    </Typography>\n    <br />\n    <Typography>\n      <b>React</b> is a JavaScript library for building user interfaces. Learn\n      what React is all about on our homepage or in the tutorial.\n    </Typography>\n    <br />\n    <br />\n    <Divider />\n    <br />\n    <Typography component={\"div\"}>\n      <ul>\n        <li>Try React</li>\n        <li>Learn React</li>\n        <li>Staying Informed</li>\n        <li>Versioned Documentation</li>\n        <li>Something Missing?</li>\n      </ul>\n    </Typography>\n    <br />\n    <Divider />\n    <br />\n    <br />\n    <Typography variant={\"h4\"}>\n      <b>Try React</b>\n    </Typography>\n    <br />\n    <Typography>\n      React has been designed from the start for gradual adoption, and{\" \"}\n      <b>you can use as little or as much React as you need</b>. Whether you\n      want to get a taste of React, add some interactivity to a simple HTML\n      page, or start a complex React-powered app, the links in this section will\n      help you get started.\n    </Typography>\n    <br />\n    <br />\n    <Typography variant={\"h5\"}>\n      <b>Online Playgrounds</b>\n    </Typography>\n    <br />\n    <Typography>\n      If you&apos;re interested in playing around with React, you can use an\n      online code playground. Try a Hello World template on CodePen,\n      CodeSandbox, or Glitch.\n    </Typography>\n    <br />\n    <br />\n    <Typography variant={\"h5\"}>\n      <b>Add React to a Website</b>\n    </Typography>\n    <br />\n    <Typography>\n      You can add React to an HTML page in one minute. You can then either\n      gradually expand its presence, or keep it contained to a few dynamic\n      widgets.\n    </Typography>\n    <br />\n    <br />\n    <Typography variant={\"h5\"}>\n      <b>Create a New React App</b>\n    </Typography>\n    <br />\n    <Typography>\n      When starting a React project, a simple HTML page with script tags might\n      still be the best option. It only takes a minute to set up!\n    </Typography>\n    <br />\n    <Typography>\n      As your application grows, you might want to consider a more integrated\n      setup. There are several JavaScript toolchains we recommend for larger\n      applications. Each of them can work with little to no configuration and\n      lets you take full advantage of the rich React ecosystem.\n    </Typography>\n  </Box>\n);\n\nexport default ReactContent;\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "layout/app-react-legacy/components/ReactHeader.tsx",
+      "target": "src/mui-treasury/layout/app-react-legacy/components/ReactHeader.tsx",
+      "content": "\"use client\";\nimport React from \"react\";\nimport Box, { BoxProps } from \"@mui/material/Box\";\nimport Typography from \"@mui/material/Typography\";\n\nconst Menu = ({\n  active,\n  children,\n  ...props\n}: { active?: boolean } & BoxProps) => (\n  <Box\n    display={\"inline-flex\"}\n    alignItems={\"center\"}\n    alignSelf={\"stretch\"}\n    position={\"relative\"}\n    px={2}\n    color={active ? \"secondary.main\" : \"common.white\"}\n    fontSize={18}\n    {...props}\n  >\n    {children}\n    {active && (\n      <Box\n        position={\"absolute\"}\n        bottom={0}\n        left={0}\n        width={\"100%\"}\n        bgcolor={\"secondary.main\"}\n        height={4}\n      />\n    )}\n  </Box>\n);\n\nconst ReactHeader = ({ concise }: { concise?: boolean }) => (\n  <>\n    <Box\n      display={\"flex\"}\n      alignItems={\"center\"}\n      mr={2}\n      sx={{ flexShrink: 0, flexBasis: \"calc(100% / 6)\" }}\n    >\n      <img\n        src={\n          \"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K\"\n        }\n        alt={\"react logo\"}\n        style={{ height: 20 }}\n      />\n      <Typography color={\"secondary\"} variant={\"h6\"} style={{ marginLeft: 8 }}>\n        <b>React</b>\n      </Typography>\n    </Box>\n    <Box\n      component={\"nav\"}\n      display={\"flex\"}\n      alignItems={\"center\"}\n      alignSelf={\"stretch\"}\n      overflow={\"auto\"}\n    >\n      <Menu active>Docs</Menu>\n      <Menu>Tutorial</Menu>\n      <Menu>Blog</Menu>\n      <Menu>Community</Menu>\n    </Box>\n    {!concise && (\n      <Box ml={\"auto\"}>\n        <Menu fontSize={16}>v16.12.0</Menu>\n        <Menu fontSize={16}>Languages</Menu>\n        <Menu fontSize={16}>Github</Menu>\n      </Box>\n    )}\n  </>\n);\n\nexport default ReactHeader;\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "layout/app-react-legacy/components/ReactNextArticle.tsx",
+      "target": "src/mui-treasury/layout/app-react-legacy/components/ReactNextArticle.tsx",
+      "content": "\"use client\";\nimport React from \"react\";\nimport Box from \"@mui/material/Box\";\nimport Container from \"@mui/material/Container\";\nimport Link from \"@mui/material/Link\";\nimport Typography from \"@mui/material/Typography\";\n\nconst ReactNextArticle = () => (\n  <Box bgcolor={\"rgb(40, 44, 52)\"}>\n    <Container disableGutters>\n      <Box\n        mr={{ xs: 0, md: 10 }}\n        py={5}\n        px={{ xs: 2, sm: 3, md: 0 }}\n        textAlign={\"right\"}\n        color={\"common.white\"}\n      >\n        <Typography color={\"secondary\"} variant={\"subtitle2\"}>\n          Next article\n        </Typography>\n        <Link\n          href={\"https://reactjs.org/docs/add-react-to-a-website.html\"}\n          target={\"_blank\"}\n          rel={\"noopener\"}\n          color={\"inherit\"}\n          style={{ fontSize: 30 }}\n        >\n          Add React to a Website\n        </Link>\n      </Box>\n    </Container>\n  </Box>\n);\n\nexport default ReactNextArticle;\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "layout/app-react-legacy/components/index.ts",
+      "target": "src/mui-treasury/layout/app-react-legacy/components/index.ts",
+      "content": "export { default as ReactHeader } from \"./ReactHeader\";\nexport { default as ReactNextArticle } from \"./ReactNextArticle\";\nexport { default as ReactContent } from \"./ReactContent\";\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "layout",
+    "screenshot": "/public/screenshots/app-react-legacy.png",
+    "previewPath": "/app-layout/app-react-legacy"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-post",
+  "type": "registry:item",
+  "title": "Card Post",
+  "description": "Social post card with clipped polygon image, positioned avatar overlay, Info title/subtitle, and share/like action buttons",
+  "dependencies": [
+    "@mui/icons-material",
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/info-basic.json",
+    "http://localhost:3000/r/info-n01.json"
+  ],
+  "files": [
+    {
+      "path": "components/card-post/card-post.tsx",
+      "target": "src/mui-treasury/components/card-post/card-post.tsx",
+      "content": "import React from \"react\";\nimport FavoriteBorderRounded from \"@mui/icons-material/FavoriteBorderRounded\";\nimport Share from \"@mui/icons-material/Share\";\nimport Avatar from \"@mui/material/Avatar\";\nimport Box from \"@mui/material/Box\";\nimport Card from \"@mui/material/Card\";\nimport CardContent from \"@mui/material/CardContent\";\nimport CardMedia from \"@mui/material/CardMedia\";\nimport IconButton from \"@mui/material/IconButton\";\nimport { Info } from \"../info-basic/info\";\nimport { InfoSubtitle } from \"../info-basic/info-subtitle\";\nimport { InfoTitle } from \"../info-basic/info-title\";\nimport { getInfoN01Styles } from \"../info-n01/info-n01.styles\";\n\nexport function CardPost() {\n  return (\n    <Card\n      sx={{\n        maxWidth: 304,\n        margin: \"auto\",\n        boxShadow: \"0 0 20px 0 rgba(0,0,0,0.12)\",\n        transition: \"0.3s\",\n      }}\n    >\n      <CardMedia\n        image={\n          \"https://images.unsplash.com/photo-1517147177326-b37599372b73?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2229&q=80\"\n        }\n        sx={{\n          width: \"100%\",\n          paddingBottom: \"56.25%\",\n          clipPath: \"polygon(0 0, 100% 0%, 100% 84%, 0% 100%)\",\n          backgroundColor: \"rgba(0, 0, 0, 0.08)\",\n        }}\n      />\n      <Avatar\n        src={\"https://i.pravatar.cc/300\"}\n        sx={{\n          width: 50,\n          height: 50,\n          border: \"2px solid #fff\",\n          margin: \"-48px 32px 0 auto\",\n          \"& > img\": {\n            margin: 0,\n          },\n        }}\n      />\n      <CardContent sx={{ p: 3 }}>\n        <Info useStyles={getInfoN01Styles}>\n          <InfoTitle>First Snow Storm</InfoTitle>\n          <InfoSubtitle>\n            Snow storm coming in Sommaroy island, Arctic Norway. This is\n            something that you definitely wanna see in your life.\n          </InfoSubtitle>\n        </Info>\n      </CardContent>\n      <Box px={2} pb={2} mt={-1}>\n        <IconButton>\n          <Share />\n        </IconButton>\n        <IconButton>\n          <FavoriteBorderRounded />\n        </IconButton>\n      </Box>\n    </Card>\n  );\n}\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/card-post/index.ts",
+      "target": "src/mui-treasury/components/card-post/index.ts",
+      "content": "export * from './card-post';\n",
+      "type": "registry:item"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "card",
+    "exportName": "CardPost"
+  }
+}

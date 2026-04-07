@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "layout-edge-sidebar-collapse",
+  "type": "registry:item",
+  "title": "Edge Sidebar Collapse",
+  "description": "Collapsible sidebar with a toggle button using EdgeSidebarCollapser.",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/layout-core.json"
+  ],
+  "files": [
+    {
+      "path": "layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-collapse.demo.tsx",
+      "target": "src/mui-treasury/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-collapse.demo.tsx",
+      "content": "import React from \"react\";\n\nimport Box from \"@mui/material/Box\";\nimport Button from \"@mui/material/Button\";\nimport Typography from \"@mui/material/Typography\";\n\nimport Content from \"@/registry/layout/layout-core/Content\";\nimport EdgeCollapsedVisible from \"@/registry/layout/layout-core/EdgeCollapsedVisible\";\nimport EdgeSidebar from \"@/registry/layout/layout-core/EdgeSidebar\";\nimport EdgeSidebarCollapser from \"@/registry/layout/layout-core/EdgeSidebarCollapser\";\nimport EdgeSidebarContent from \"@/registry/layout/layout-core/EdgeSidebarContent\";\nimport EdgeUncollapsedVisible from \"@/registry/layout/layout-core/EdgeUncollapsedVisible\";\nimport Footer from \"@/registry/layout/layout-core/Footer\";\nimport Header from \"@/registry/layout/layout-core/Header\";\nimport Root from \"@/registry/layout/layout-core/Root\";\n\nexport const meta = {\n  title: \"Edge Sidebar Collapse\",\n  description:\n    \"Collapsible sidebar with a toggle button using EdgeSidebarCollapser.\",\n};\n\nexport function Demo() {\n  return (\n    <Root height=\"300px\">\n      <Header>\n        <Box sx={{ px: 2 }}>\n          <Typography variant=\"caption\" fontWeight=\"bold\">\n            Header\n          </Typography>\n        </Box>\n      </Header>\n      <EdgeSidebar\n        id=\"sidebar-collapse\"\n        variant={[\"permanent\", { width: \"256px\", collapsedWidth: \"64px\" }]}\n      >\n        <EdgeSidebarContent>\n          <Box sx={{ p: 1 }}>\n            <EdgeSidebarCollapser\n              render={\n                <Button size=\"small\" fullWidth>\n                  <EdgeCollapsedVisible render={<span>→</span>} />\n                  <EdgeUncollapsedVisible render={<span>← Collapse</span>} />\n                </Button>\n              }\n            />\n          </Box>\n        </EdgeSidebarContent>\n      </EdgeSidebar>\n      <Content>\n        <Box sx={{ p: 2 }}>\n          <Typography variant=\"body2\" color=\"text.secondary\">\n            Content\n          </Typography>\n        </Box>\n      </Content>\n      <Footer>\n        <Box sx={{ p: 2 }}>\n          <Typography variant=\"caption\" color=\"text.secondary\">\n            Footer\n          </Typography>\n        </Box>\n      </Footer>\n    </Root>\n  );\n}\n",
+      "type": "registry:item"
+    }
+  ],
+  "meta": {
+    "category": "layout"
+  }
+}

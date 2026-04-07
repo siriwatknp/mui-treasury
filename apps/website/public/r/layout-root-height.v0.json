@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "layout-root-height",
+  "type": "registry:block",
+  "title": "Root Height",
+  "description": "Customize root layout height with a fixed value or responsive breakpoints.",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/layout-core.v0.json"
+  ],
+  "files": [
+    {
+      "path": "layout/layout-docs-root/demos/layout-root-height.demo.tsx",
+      "target": "src/mui-treasury/layout/layout-docs-root/demos/layout-root-height.demo.tsx",
+      "content": "import React from \"react\";\n\nimport Box from \"@mui/material/Box\";\nimport Typography from \"@mui/material/Typography\";\n\nimport Content from \"@/registry/layout/layout-core/Content\";\nimport Footer from \"@/registry/layout/layout-core/Footer\";\nimport Header from \"@/registry/layout/layout-core/Header\";\nimport Root from \"@/registry/layout/layout-core/Root\";\n\nexport const meta = {\n  title: \"Root Height\",\n  description:\n    \"Customize root layout height with a fixed value or responsive breakpoints.\",\n};\n\nexport function Demo() {\n  return (\n    <Box\n      sx={{\n        display: \"flex\",\n        gap: 2,\n        flexWrap: \"wrap\",\n        alignItems: \"flex-start\",\n      }}\n    >\n      <Root height=\"300px\" sx={{ flex: 1, minWidth: 200 }}>\n        <Header>\n          <Box sx={{ px: 2 }}>\n            <Typography variant=\"caption\" fontWeight=\"bold\">\n              height=&quot;300px&quot;\n            </Typography>\n          </Box>\n        </Header>\n        <Content>\n          <Box sx={{ p: 2 }}>\n            <Typography variant=\"body2\" color=\"text.secondary\">\n              Fixed height\n            </Typography>\n          </Box>\n        </Content>\n        <Footer>\n          <Box sx={{ p: 2 }}>\n            <Typography variant=\"caption\" color=\"text.secondary\">\n              Footer\n            </Typography>\n          </Box>\n        </Footer>\n      </Root>\n\n      <Root height=\"400px\" sx={{ flex: 1, minWidth: 200 }}>\n        <Header>\n          <Box sx={{ px: 2 }}>\n            <Typography variant=\"caption\" fontWeight=\"bold\">\n              height=&quot;400px&quot;\n            </Typography>\n          </Box>\n        </Header>\n        <Content>\n          <Box sx={{ p: 2 }}>\n            <Typography variant=\"body2\" color=\"text.secondary\">\n              Taller layout\n            </Typography>\n          </Box>\n        </Content>\n        <Footer>\n          <Box sx={{ p: 2 }}>\n            <Typography variant=\"caption\" color=\"text.secondary\">\n              Footer\n            </Typography>\n          </Box>\n        </Footer>\n      </Root>\n\n      <Root\n        height={{ xs: \"300px\", md: \"400px\" }}\n        sx={{ flex: 1, minWidth: 200 }}\n      >\n        <Header>\n          <Box sx={{ px: 2 }}>\n            <Typography variant=\"caption\" fontWeight=\"bold\">\n              300px → 400px\n            </Typography>\n          </Box>\n        </Header>\n        <Content>\n          <Box sx={{ p: 2 }}>\n            <Typography variant=\"body2\" color=\"text.secondary\">\n              Responsive height\n            </Typography>\n          </Box>\n        </Content>\n        <Footer>\n          <Box sx={{ p: 2 }}>\n            <Typography variant=\"caption\" color=\"text.secondary\">\n              Footer\n            </Typography>\n          </Box>\n        </Footer>\n      </Root>\n    </Box>\n  );\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "layout"
+  }
+}

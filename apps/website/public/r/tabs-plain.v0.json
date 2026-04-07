@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs-plain",
+  "type": "registry:block",
+  "title": "Tabs Plain",
+  "description": "Plain bordered tabs with subtle background and white selection",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/tabs-plain/tabs-plain.tsx",
+      "target": "src/mui-treasury/components/tabs-plain/tabs-plain.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport Tab, { tabClasses } from \"@mui/material/Tab\";\nimport Tabs, { tabsClasses } from \"@mui/material/Tabs\";\n\nexport function TabsPlain() {\n  const [tabIndex, setTabIndex] = React.useState(0);\n  return (\n    <Tabs\n      textColor=\"inherit\"\n      value={tabIndex}\n      onChange={(e, index) => setTabIndex(index)}\n      sx={(theme) => ({\n        [`& .${tabsClasses.indicator}`]: {\n          display: \"none\",\n        },\n        [`& .${tabClasses.root}`]: {\n          border: \"1px solid\",\n          borderColor: (theme.vars || theme).palette.divider,\n          bgcolor: (theme.vars || theme).palette.grey[100],\n          ...theme.applyStyles(\"dark\", {\n            bgcolor: (theme.vars || theme).palette.grey[900],\n          }),\n          \"&:not(:first-of-type)\": {\n            ml: -0.125,\n          },\n          [`&.${tabClasses.selected}`]: {\n            borderBottomWidth: 0,\n            bgcolor: (theme.vars || theme).palette.background.paper,\n          },\n          \"&.Mui-focusVisible\": {\n            outline: \"2px solid currentColor\",\n            outlineOffset: \"-2px\",\n          },\n        },\n      })}\n    >\n      <Tab disableRipple label={\"Data\"} />\n      <Tab disableRipple label={\"Rule\"} />\n      <Tab disableRipple label={\"Indexes\"} />\n      <Tab disableRipple label={\"Usage\"} />\n    </Tabs>\n  );\n}\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "components/tabs-plain/index.ts",
+      "target": "src/mui-treasury/components/tabs-plain/index.ts",
+      "content": "export * from './tabs-plain';\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "tabs",
+    "exportName": "TabsPlain"
+  }
+}

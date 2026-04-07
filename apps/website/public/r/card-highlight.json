@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-highlight",
+  "type": "registry:item",
+  "title": "Card Highlight",
+  "description": "Card with game branding, cover image, gradient overlay, logo avatar with hover scale, and date badge",
+  "dependencies": [
+    "@mui/material",
+    "color",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/card-highlight/card-highlight.tsx",
+      "target": "src/mui-treasury/components/card-highlight/card-highlight.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport Avatar from \"@mui/material/Avatar\";\nimport Box from \"@mui/material/Box\";\nimport CardMedia from \"@mui/material/CardMedia\";\nimport Stack from \"@mui/material/Stack\";\nimport { styled } from \"@mui/material/styles\";\nimport Color from \"color\"; // v3.2.1\n\nconst defaultColor = \"#747f84\";\n\nconst StyledRoot = styled(\"div\")<{ color?: string }>(\n  ({ color = defaultColor }) => ({\n    position: \"relative\",\n    borderRadius: \"1rem\",\n    minWidth: 320,\n    paddingTop: 160,\n    \"&:before\": {\n      transition: \"0.2s\",\n      position: \"absolute\",\n      width: \"100%\",\n      height: \"100%\",\n      content: '\"\"',\n      display: \"block\",\n      borderRadius: \"1rem\",\n      zIndex: 0,\n      bottom: 0,\n      backgroundColor: Color(color).darken(0.3).desaturate(0.2).string(),\n    },\n    \"&:hover\": {\n      \"&:before\": {\n        bottom: -6,\n      },\n      \"& .MuiAvatar-root\": {\n        transform: \"scale(1.1)\",\n        boxShadow: \"0 6px 20px 0 rgba(0,0,0,0.38)\",\n      },\n    },\n  }),\n);\n\nconst CardMediaCover = styled(CardMedia)(() => ({\n  borderRadius: \"1rem\",\n  position: \"absolute\",\n  width: \"100%\",\n  height: \"100%\",\n  top: 0,\n  left: 0,\n  zIndex: 0,\n  backgroundColor: \"rgba(0, 0, 0, 0.08)\",\n  backgroundPosition: \"center\",\n}));\n\nconst StyledH2 = styled(\"h2\")(() => ({\n  fontFamily: \"Fjalla One\",\n  fontSize: \"1.25rem\",\n  color: \"#fff\",\n  margin: 0,\n}));\n\nconst StyledContent = styled(\"div\")<{ color?: string }>(\n  ({ color = defaultColor }) => ({\n    position: \"relative\",\n    zIndex: 1,\n    padding: \"1rem\",\n    borderRadius: \"1rem\",\n    boxShadow: `0 6px 16px 0 ${Color(color).fade(0.5)}`,\n    \"&:before\": {\n      content: '\"\"',\n      display: \"block\",\n      position: \"absolute\",\n      left: 0,\n      top: 1,\n      zIndex: 0,\n      width: \"100%\",\n      height: \"100%\",\n      clipPath:\n        \"polygon(0% 100%, 0% 35%, 0.3% 33%, 1% 31%, 1.5% 30%, 2% 29%, 2.5% 28.4%, 3% 27.9%, 3.3% 27.6%, 5% 27%,95% 0%,100% 0%, 100% 100%)\",\n      borderRadius: \"1rem\",\n      background: `linear-gradient(to top, ${color}, ${Color(color)\n        .rotate(24)\n        .lighten(0.12)})`,\n    },\n  }),\n);\n\nconst AvatarLogo = styled(Avatar)(() => ({\n  transition: \"0.3s\",\n  width: 100,\n  height: 100,\n  boxShadow: \"0 4px 12px 0 rgba(0,0,0,0.24)\",\n  borderRadius: \"1rem\",\n}));\n\nconst StyledDivTeam = styled(\"div\")(() => ({\n  fontFamily: \"Sen\",\n  fontSize: \"0.75rem\",\n  color: \"rgba(255 255 255 / 80%)\",\n}));\n\nconst StyledDivDate = styled(\"div\")(({ theme }) => ({\n  fontFamily: \"Sen\",\n  color: \"#fff\",\n  backgroundColor: theme.palette.text.disabled,\n  opacity: 0.72,\n  fontSize: \"0.75rem\",\n  padding: \"0 0.5rem\",\n  borderRadius: 12,\n}));\n\nconst CustomCard = ({\n  color,\n  cover,\n  logo,\n  title,\n  brand,\n  date,\n}: {\n  color?: string;\n  cover: string;\n  logo: string;\n  title: React.ReactNode;\n  brand: string;\n  date: string;\n}) => {\n  return (\n    <StyledRoot color={color}>\n      <CardMediaCover image={cover} />\n      <StyledContent color={color}>\n        <Box position={\"relative\"} zIndex={1}>\n          <Box display=\"flex\" p={0} gap={2} sx={{ flexWrap: \"nowrap\" }}>\n            <Box>\n              <AvatarLogo src={logo} />\n            </Box>\n            <Box alignSelf=\"flex-end\">\n              <StyledH2>{title}</StyledH2>\n            </Box>\n          </Box>\n          <Box display=\"flex\" mt={4} alignItems={\"center\"}>\n            <Box>\n              <StyledDivTeam>{brand}</StyledDivTeam>\n            </Box>\n            <Box ml=\"auto\">\n              <StyledDivDate>{date}</StyledDivDate>\n            </Box>\n          </Box>\n        </Box>\n      </StyledContent>\n    </StyledRoot>\n  );\n};\n\nexport function CardHighlight() {\n  return (\n    <Stack direction=\"row\" spacing={4} sx={{ flexWrap: \"nowrap\" }}>\n      <CustomCard\n        color=\"#fc7944\"\n        brand={\"Overwatch Official\"}\n        date={\"02.04.2020\"}\n        cover={\n          \"https://cdn.vox-cdn.com/thumbor/C6_-SDnnoFdS19XRH4XvAYN1BT8=/148x0:1768x1080/1400x1400/filters:focal(148x0:1768x1080):format(jpeg)/cdn.vox-cdn.com/uploads/chorus_image/image/49641465/tracer_overwatch.0.0.jpg\"\n        }\n        logo={\"https://d3fa68hw0m2vcc.cloudfront.net/bf4/156511609.jpeg\"}\n        title={\n          <>\n            Astronomy Binoculars\n            <br />A Great Alternative\n          </>\n        }\n      />\n      <CustomCard\n        color=\"#08A4AE\"\n        brand={\"League of Legends Official\"}\n        date={\"02.04.2020\"}\n        cover={\n          \"https://png.pngtree.com/thumb_back/fh260/background/20230614/pngtree-how-to-the-paladin-in-league-of-legends-image_2879705.jpg\"\n        }\n        logo={\n          \"https://cm1.narvii.com/7153/05204b8d8dcbb652dd1a8ceaafde997bc1909468_00.jpg\"\n        }\n        title={\n          <>\n            Astronomy Binoculars\n            <br />A Great Alternative\n          </>\n        }\n      />\n    </Stack>\n  );\n}\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/card-highlight/index.ts",
+      "target": "src/mui-treasury/components/card-highlight/index.ts",
+      "content": "export * from './card-highlight';\n",
+      "type": "registry:item"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "card",
+    "exportName": "CardHighlight"
+  }
+}

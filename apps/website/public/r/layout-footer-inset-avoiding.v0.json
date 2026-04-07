@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "layout-footer-inset-avoiding",
+  "type": "registry:block",
+  "title": "Footer Inset Avoiding View",
+  "description": "Use InsetAvoidingView inside Footer to prevent overlap from an absolute InsetSidebar.",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/layout-core.v0.json"
+  ],
+  "files": [
+    {
+      "path": "layout/layout-docs-footer/demos/layout-footer-inset-avoiding.demo.tsx",
+      "target": "src/mui-treasury/layout/layout-docs-footer/demos/layout-footer-inset-avoiding.demo.tsx",
+      "content": "import React from \"react\";\n\nimport Box from \"@mui/material/Box\";\nimport Typography from \"@mui/material/Typography\";\n\nimport Content from \"@/registry/layout/layout-core/Content\";\nimport Footer from \"@/registry/layout/layout-core/Footer\";\nimport Header from \"@/registry/layout/layout-core/Header\";\nimport InsetAvoidingView from \"@/registry/layout/layout-core/InsetAvoidingView\";\nimport InsetContent from \"@/registry/layout/layout-core/InsetContent\";\nimport InsetSidebar from \"@/registry/layout/layout-core/InsetSidebar\";\nimport Root from \"@/registry/layout/layout-core/Root\";\n\nexport const meta = {\n  title: \"Footer Inset Avoiding View\",\n  description:\n    \"Use InsetAvoidingView inside Footer to prevent overlap from an absolute InsetSidebar.\",\n};\n\nexport function Demo() {\n  return (\n    <Root standalone height=\"350px\">\n      <Header sx={{ px: 2 }}>\n        <Typography variant=\"caption\" fontWeight=\"bold\">\n          Header\n        </Typography>\n      </Header>\n      <Content>\n        <Box sx={{ p: 2, flex: 1 }}>\n          <Typography variant=\"body2\" color=\"text.secondary\">\n            Main content\n          </Typography>\n        </Box>\n        <InsetSidebar position=\"absolute\" width=\"200px\">\n          <InsetContent>\n            <Box sx={{ p: 2 }}>\n              <Typography variant=\"caption\" color=\"text.secondary\">\n                Absolute Inset Sidebar\n              </Typography>\n            </Box>\n          </InsetContent>\n        </InsetSidebar>\n      </Content>\n      <Footer>\n        <InsetAvoidingView sx={{ p: 2 }}>\n          <Typography variant=\"caption\" color=\"text.secondary\">\n            Footer content avoids inset sidebar\n          </Typography>\n        </InsetAvoidingView>\n      </Footer>\n    </Root>\n  );\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "layout"
+  }
+}

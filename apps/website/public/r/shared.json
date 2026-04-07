@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shared",
+  "type": "registry:item",
+  "title": "Shared Types",
+  "description": "Shared TypeScript types for overridable component patterns.",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "types/shared/component.ts",
+      "target": "src/mui-treasury/types/shared/component.ts",
+      "content": "import type React from \"react\";\n\nimport { SxProps, Theme } from \"@mui/material/styles\";\n\ninterface OverridableComponentMeta<\n  Props,\n  DefaultComponent extends React.ElementType,\n> {\n  readonly $$ownProps?: Props;\n  readonly $$defaultComponent?: DefaultComponent;\n}\n\ntype InferProps<C extends React.ElementType> =\n  C extends OverridableComponentMeta<infer P, infer D extends React.ElementType>\n    ? (P & {}) & React.ComponentPropsWithoutRef<D>\n    : React.ComponentPropsWithoutRef<C>;\n\nexport type OverridableComponent<\n  Props extends { component?: React.ElementType },\n  DefaultComponent extends React.ElementType = \"button\",\n> = {\n  <C extends React.ElementType = DefaultComponent>(\n    props: Omit<Props, \"component\"> &\n      Omit<InferProps<C>, keyof Props> & {\n        component?: C;\n      } & React.RefAttributes<React.ComponentRef<C>>,\n  ): React.JSX.Element;\n} & OverridableComponentMeta<Props, DefaultComponent>;\n\n// eslint-disable-next-line @typescript-eslint/no-empty-object-type\nexport type ForwardStyledProps<P extends {} = {}> = P & {\n  sx?: SxProps<Theme>;\n};\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "types/shared/index.ts",
+      "target": "src/mui-treasury/types/shared/index.ts",
+      "content": "export * from \"./component\";\n",
+      "type": "registry:item"
+    }
+  ]
+}

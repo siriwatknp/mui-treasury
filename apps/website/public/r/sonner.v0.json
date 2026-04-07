@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sonner",
+  "type": "registry:block",
+  "title": "Sonner",
+  "description": "Toast notification component using Sonner with MUI theming",
+  "dependencies": [
+    "@mui/material",
+    "sonner",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/sonner/sonner.tsx",
+      "target": "src/mui-treasury/components/sonner/sonner.tsx",
+      "content": "\"use client\";\n\nimport GlobalStyles from \"@mui/material/GlobalStyles\";\nimport { Toaster, toast } from \"sonner\";\n\nexport { toast };\n\nexport interface SonnerProps {\n  position?:\n    | \"top-left\"\n    | \"top-center\"\n    | \"top-right\"\n    | \"bottom-left\"\n    | \"bottom-center\"\n    | \"bottom-right\";\n  duration?: number;\n  closeButton?: boolean;\n}\n\nexport function Sonner({\n  position = \"bottom-right\",\n  duration = 4000,\n  closeButton = false,\n}: SonnerProps) {\n  return (\n    <>\n      <GlobalStyles\n        styles={(theme) => ({\n          \"[data-sonner-toaster]\": {\n            \"--normal-bg\": `${\n              (theme.vars || theme).palette.background.paper\n            } !important`,\n            \"--normal-border\": `${\n              (theme.vars || theme).palette.divider\n            } !important`,\n            \"--normal-text\": `${\n              (theme.vars || theme).palette.text.primary\n            } !important`,\n            \"--success-bg\": `${\n              (theme.vars || theme).palette.success.main\n            } !important`,\n            \"--success-border\": `${\n              (theme.vars || theme).palette.success.dark\n            } !important`,\n            \"--success-text\": `${\n              (theme.vars || theme).palette.success.contrastText\n            } !important`,\n            \"--error-bg\": `${\n              (theme.vars || theme).palette.error.main\n            } !important`,\n            \"--error-border\": `${\n              (theme.vars || theme).palette.error.dark\n            } !important`,\n            \"--error-text\": `${\n              (theme.vars || theme).palette.error.contrastText\n            } !important`,\n            \"--warning-bg\": `${\n              (theme.vars || theme).palette.warning.main\n            } !important`,\n            \"--warning-border\": `${\n              (theme.vars || theme).palette.warning.dark\n            } !important`,\n            \"--warning-text\": `${\n              (theme.vars || theme).palette.warning.contrastText\n            } !important`,\n            \"--info-bg\": `${\n              (theme.vars || theme).palette.info.main\n            } !important`,\n            \"--info-border\": `${\n              (theme.vars || theme).palette.info.dark\n            } !important`,\n            \"--info-text\": `${\n              (theme.vars || theme).palette.info.contrastText\n            } !important`,\n            \"--border-radius\": `${\n              (theme.vars || theme).shape.borderRadius\n            } !important`,\n            fontFamily: `${theme.typography.fontFamily} !important`,\n          },\n          \"[data-sonner-toast]\": {\n            boxShadow: `${(theme.vars || theme).shadows[4]} !important`,\n            \"&:not([data-type])\": {\n              backgroundImage: \"var(--Paper-overlay) !important\",\n              ...theme.applyStyles(\"dark\", {\n                \"--Paper-overlay\": theme.vars.overlays[8],\n              }),\n            },\n          },\n          \"[data-sonner-toast] [data-title]\": {\n            fontWeight: `${theme.typography.fontWeightMedium} !important`,\n          },\n          \"[data-sonner-toast] [data-description]\": {\n            color: `${(theme.vars || theme).palette.text.secondary} !important`,\n          },\n          \"[data-sonner-toast][data-type='success'] [data-description], [data-sonner-toast][data-type='error'] [data-description], [data-sonner-toast][data-type='warning'] [data-description], [data-sonner-toast][data-type='info'] [data-description]\":\n            {\n              opacity: \"0.9 !important\",\n              color: \"inherit !important\",\n            },\n        })}\n      />\n      <Toaster\n        richColors\n        position={position}\n        duration={duration}\n        closeButton={closeButton}\n      />\n    </>\n  );\n}\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "components/sonner/index.ts",
+      "target": "src/mui-treasury/components/sonner/index.ts",
+      "content": "export * from './sonner';\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "toast"
+  }
+}

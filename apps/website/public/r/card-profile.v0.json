@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-profile",
+  "type": "registry:block",
+  "title": "Card Profile",
+  "description": "Profile card with centered avatar, name/location info, and followers/following stats displayed in divided columns",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/card-profile/card-profile.tsx",
+      "target": "src/mui-treasury/components/card-profile/card-profile.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport Avatar from \"@mui/material/Avatar\";\nimport Box from \"@mui/material/Box\";\nimport Card from \"@mui/material/Card\";\nimport CardContent from \"@mui/material/CardContent\";\nimport Divider from \"@mui/material/Divider\";\n\nexport function CardProfile() {\n  return (\n    <Card\n      sx={(theme) => ({\n        borderRadius: 1.5,\n        minWidth: 256,\n        textAlign: \"center\",\n        boxShadow: (theme.vars || theme).shadows[8],\n      })}\n    >\n      <CardContent>\n        <Avatar\n          src={\"https://i.pravatar.cc/300\"}\n          sx={{\n            width: 60,\n            height: 60,\n            margin: \"auto\",\n          }}\n        />\n        <Box\n          component=\"h3\"\n          sx={{\n            fontSize: 18,\n            fontWeight: \"bold\",\n            letterSpacing: \"0.5px\",\n            mt: 1,\n            mb: 0,\n          }}\n        >\n          Alan Podemski\n        </Box>\n        <Box\n          component=\"span\"\n          sx={{\n            fontSize: 14,\n            color: \"grey.500\",\n            mb: \"0.875em\",\n          }}\n        >\n          Poland\n        </Box>\n      </CardContent>\n      <Divider light />\n      <Box display=\"flex\">\n        <Box\n          p={2}\n          flex=\"auto\"\n          sx={(theme) => ({\n            position: \"relative\",\n            \"&:not(:last-of-type)\": {\n              \"&:after\": {\n                content: '\" \"',\n                display: \"block\",\n                position: \"absolute\",\n                height: \"50%\",\n                width: \"1px\",\n                backgroundColor: (theme.vars || theme).palette.divider,\n                top: \"50%\",\n                right: 0,\n                transform: \"translateY(-50%)\",\n              },\n            },\n          })}\n        >\n          <Box\n            sx={(theme) => ({\n              fontSize: 12,\n              color: (theme.vars || theme).palette.grey[500],\n              fontWeight: 500,\n              fontFamily: theme.typography.fontFamily,\n              margin: 0,\n            })}\n          >\n            Followers\n          </Box>\n          <Box\n            component=\"p\"\n            sx={{\n              fontSize: 20,\n              fontWeight: \"bold\",\n              mb: 0.5,\n              letterSpacing: \"1px\",\n            }}\n          >\n            6941\n          </Box>\n        </Box>\n        <Box\n          p={2}\n          flex=\"auto\"\n          sx={(theme) => ({\n            position: \"relative\",\n            \"&:not(:last-of-type)\": {\n              \"&:after\": {\n                content: '\" \"',\n                display: \"block\",\n                position: \"absolute\",\n                height: \"50%\",\n                width: \"1px\",\n                backgroundColor: (theme.vars || theme).palette.divider,\n                top: \"50%\",\n                right: 0,\n                transform: \"translateY(-50%)\",\n              },\n            },\n          })}\n        >\n          <Box\n            sx={(theme) => ({\n              fontSize: 12,\n              color: (theme.vars || theme).palette.grey[500],\n              fontWeight: 500,\n              fontFamily: theme.typography.fontFamily,\n              margin: 0,\n            })}\n          >\n            Following\n          </Box>\n          <Box\n            component=\"p\"\n            sx={{\n              fontSize: 20,\n              fontWeight: \"bold\",\n              mb: 0.5,\n              letterSpacing: \"1px\",\n            }}\n          >\n            12\n          </Box>\n        </Box>\n      </Box>\n    </Card>\n  );\n}\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "components/card-profile/index.ts",
+      "target": "src/mui-treasury/components/card-profile/index.ts",
+      "content": "export * from './card-profile';\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "card",
+    "exportName": "CardProfile"
+  }
+}

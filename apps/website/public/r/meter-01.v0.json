@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "meter-01",
+  "type": "registry:block",
+  "title": "Meter",
+  "description": "A minimal meter component using Base UI Meter with Material UI styling",
+  "dependencies": [
+    "@base-ui-components/react",
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/meter-01/meter-01.tsx",
+      "target": "src/mui-treasury/components/meter-01/meter-01.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Meter } from \"@base-ui-components/react/meter\";\nimport Box from \"@mui/material/Box\";\nimport Stack from \"@mui/material/Stack\";\nimport Typography from \"@mui/material/Typography\";\n\nexport interface Meter01Props {\n  label: string;\n  value: number;\n  min?: number;\n  max?: number;\n  showValue?: boolean;\n}\n\nexport function Meter01({\n  label,\n  value,\n  min = 0,\n  max = 100,\n  showValue = true,\n}: Meter01Props) {\n  return (\n    <Meter.Root value={value} min={min} max={max}>\n      <Stack\n        direction=\"row\"\n        sx={{\n          justifyContent: \"space-between\",\n          alignItems: \"baseline\",\n          mb: 1,\n        }}\n      >\n        <Meter.Label>\n          <Typography\n            variant=\"body1\"\n            component=\"span\"\n            sx={{\n              textTransform: \"uppercase\",\n              fontWeight: 500,\n              fontSize: \"0.75rem\",\n              letterSpacing: \"0.1em\",\n            }}\n          >\n            {label}\n          </Typography>\n        </Meter.Label>\n        {showValue && (\n          <Meter.Value>\n            {(formattedValue, numValue) => (\n              <Typography\n                variant=\"h4\"\n                component=\"span\"\n                sx={{ fontSize: \"0.875rem\" }}\n              >\n                {numValue}%\n              </Typography>\n            )}\n          </Meter.Value>\n        )}\n      </Stack>\n      <Meter.Track\n        render={\n          <Box\n            sx={(theme) => ({\n              height: 6,\n              width: \"100%\",\n              bgcolor: (theme.vars || theme).palette.action.disabledBackground,\n              borderRadius: 1,\n              overflow: \"hidden\",\n              position: \"relative\",\n            })}\n          />\n        }\n      >\n        <Meter.Indicator\n          render={\n            <Box\n              sx={(theme) => ({\n                height: \"100%\",\n                bgcolor: (theme.vars || theme).palette.text.primary,\n                transition: \"width 0.3s ease\",\n              })}\n            />\n          }\n        />\n      </Meter.Track>\n    </Meter.Root>\n  );\n}\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "components/meter-01/index.ts",
+      "target": "src/mui-treasury/components/meter-01/index.ts",
+      "content": "export * from './meter-01';\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "meter"
+  }
+}

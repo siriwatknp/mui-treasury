@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs-chip-01",
+  "type": "registry:item",
+  "title": "Tabs Chip",
+  "description": "Horizontal tab navigation styled as chip-like buttons",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/tabs-chip-01/tabs-chip-01.tsx",
+      "target": "src/mui-treasury/components/tabs-chip-01/tabs-chip-01.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport Tabs from \"@mui/material/Tabs\";\nimport Tab from \"@mui/material/Tab\";\n\nexport function TabsChip01() {\n  const [value, setValue] = React.useState(0);\n\n  const handleChange = (_event: React.SyntheticEvent, newValue: number) => {\n    setValue(newValue);\n  };\n\n  return (\n    <Tabs\n      value={value}\n      onChange={handleChange}\n      sx={(theme) => ({\n        minHeight: \"auto\",\n        gap: 0.5,\n        \"& .MuiTabs-indicator\": {\n          display: \"none\",\n        },\n        \"& .MuiTabs-flexContainer\": {\n          gap: 0.5,\n        },\n        \"& .MuiTab-root\": {\n          minHeight: \"auto\",\n          minWidth: \"auto\",\n          px: 3,\n          py: 1,\n          borderRadius: 99,\n          fontWeight: 500,\n          textTransform: \"none\",\n          color: \"text.secondary\",\n          bgcolor: (theme.vars || theme).palette.grey[100],\n          \"@media (hover: hover)\": {\n            \"&:hover\": {\n              bgcolor: (theme.vars || theme).palette.grey[200],\n            },\n          },\n          \"&.Mui-selected\": {\n            color: \"primary.contrastText\",\n            bgcolor: \"primary.main\",\n            \"@media (hover: hover)\": {\n              \"&:hover\": {\n                bgcolor: \"primary.dark\",\n              },\n            },\n          },\n          ...theme.applyStyles(\"dark\", {\n            bgcolor: (theme.vars || theme).palette.grey[800],\n            \"@media (hover: hover)\": {\n              \"&:hover\": {\n                bgcolor: (theme.vars || theme).palette.grey[700],\n              },\n            },\n            \"&.Mui-selected\": {\n              color: \"primary.contrastText\",\n              bgcolor: \"primary.main\",\n              \"@media (hover: hover)\": {\n                \"&:hover\": {\n                  bgcolor: \"primary.dark\",\n                },\n              },\n            },\n          }),\n        },\n      })}\n    >\n      <Tab label=\"All chips\" />\n      <Tab label=\"M4 Pro\" />\n      <Tab label=\"M4 Max\" />\n    </Tabs>\n  );\n}\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/tabs-chip-01/index.ts",
+      "target": "src/mui-treasury/components/tabs-chip-01/index.ts",
+      "content": "export * from './tabs-chip-01';\n",
+      "type": "registry:item"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "tabs",
+    "exportName": "TabsChip01"
+  }
+}

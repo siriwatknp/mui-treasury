@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ai-task",
+  "type": "registry:item",
+  "title": "Ai Task",
+  "description": "A ai-task item.",
+  "dependencies": [
+    "@mui/material",
+    "lucide-react",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ai-task/ai-task.tsx",
+      "target": "src/mui-treasury/components/ai-task/ai-task.tsx",
+      "content": "\"use client\";\n\nimport Box from \"@mui/material/Box\";\nimport Collapse from \"@mui/material/Collapse\";\nimport Typography from \"@mui/material/Typography\";\nimport type { SxProps, Theme } from \"@mui/material/styles\";\nimport { ChevronDownIcon, SearchIcon } from \"lucide-react\";\nimport React, { memo, useState, type ReactNode } from \"react\";\n\nexport type TaskItemFileProps = {\n  children?: ReactNode;\n  sx?: SxProps<Theme>;\n};\n\nexport const TaskItemFile = ({ children, sx }: TaskItemFileProps) => (\n  <Box\n    sx={{\n      display: \"inline-flex\",\n      alignItems: \"center\",\n      gap: 0.5,\n      borderRadius: 1,\n      border: 1,\n      borderColor: \"divider\",\n      bgcolor: \"action.hover\",\n      px: 0.75,\n      py: 0,\n      color: \"text.primary\",\n      fontSize: \"0.75rem\",\n      ...sx,\n    }}\n  >\n    {children}\n  </Box>\n);\n\nexport type TaskItemProps = {\n  children?: ReactNode;\n  sx?: SxProps<Theme>;\n};\n\nexport const TaskItem = ({ children, sx }: TaskItemProps) => (\n  <Box\n    sx={{\n      color: \"text.secondary\",\n      fontSize: \"0.875rem\",\n      ...sx,\n    }}\n  >\n    {children}\n  </Box>\n);\n\nexport type TaskProps = {\n  defaultOpen?: boolean;\n  children?: ReactNode;\n  sx?: SxProps<Theme>;\n};\n\nexport const Task = memo(({ defaultOpen = true, children, sx }: TaskProps) => {\n  const [isOpen, setIsOpen] = useState(defaultOpen);\n\n  return (\n    <Box sx={sx}>\n      {React.Children.map(children, (child) =>\n        React.isValidElement(child)\n          ? React.cloneElement(child as React.ReactElement<any>, {\n              isOpen,\n              onToggle: () => setIsOpen(!isOpen),\n            })\n          : child,\n      )}\n    </Box>\n  );\n});\n\nTask.displayName = \"Task\";\n\nexport type TaskTriggerProps = {\n  title: string;\n  children?: ReactNode;\n  sx?: SxProps<Theme>;\n  isOpen?: boolean;\n  onToggle?: () => void;\n};\n\nexport const TaskTrigger = ({\n  children,\n  title,\n  sx,\n  isOpen = false,\n  onToggle,\n}: TaskTriggerProps) => (\n  <Box\n    component=\"button\"\n    onClick={onToggle}\n    sx={{\n      display: \"flex\",\n      width: \"100%\",\n      alignItems: \"center\",\n      gap: 1,\n      color: \"text.secondary\",\n      fontSize: \"0.875rem\",\n      transition: \"color 0.2s\",\n      border: \"none\",\n      background: \"transparent\",\n      cursor: \"pointer\",\n      p: 0,\n      \"&:hover\": {\n        color: \"text.primary\",\n      },\n      ...sx,\n    }}\n  >\n    {children ?? (\n      <>\n        <SearchIcon size={16} />\n        <Typography component=\"span\" sx={{ fontSize: \"0.875rem\" }}>\n          {title}\n        </Typography>\n        <Box\n          component={ChevronDownIcon}\n          size={16}\n          sx={{\n            transition: \"transform 0.2s\",\n            transform: isOpen ? \"rotate(180deg)\" : \"rotate(0deg)\",\n          }}\n        />\n      </>\n    )}\n  </Box>\n);\n\nexport type TaskContentProps = {\n  children?: ReactNode;\n  sx?: SxProps<Theme>;\n  isOpen?: boolean;\n};\n\nexport const TaskContent = memo(\n  ({ children, sx, isOpen = false }: TaskContentProps) => (\n    <Collapse in={isOpen}>\n      <Box\n        sx={{\n          mt: 2,\n          pl: 2,\n          borderLeft: 2,\n          borderColor: \"divider\",\n          \"& > *:not(:last-child)\": {\n            mb: 1,\n          },\n          ...sx,\n        }}\n      >\n        {children}\n      </Box>\n    </Collapse>\n  ),\n);\n\nTaskContent.displayName = \"TaskContent\";\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/ai-task/index.ts",
+      "target": "src/mui-treasury/components/ai-task/index.ts",
+      "content": "export * from './ai-task';\n",
+      "type": "registry:item"
+    }
+  ],
+  "meta": {
+    "category": "ai",
+    "subcategory": "elements"
+  }
+}

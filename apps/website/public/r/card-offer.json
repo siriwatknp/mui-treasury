@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-offer",
+  "type": "registry:item",
+  "title": "Card Offer",
+  "description": "Promotional card with cyan background, decorative bow image, circular background elements, and 'Learn more' button",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/info-basic.json"
+  ],
+  "files": [
+    {
+      "path": "components/card-offer/card-offer.tsx",
+      "target": "src/mui-treasury/components/card-offer/card-offer.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport Box from \"@mui/material/Box\";\nimport Button from \"@mui/material/Button\";\nimport Card from \"@mui/material/Card\";\nimport { styled } from \"@mui/material/styles\";\nimport { Info } from \"../info-basic/info\";\nimport { InfoSubtitle } from \"../info-basic/info-subtitle\";\nimport { InfoTitle } from \"../info-basic/info-title\";\n\nconst StyledCard = styled(Card)(({ theme }) => ({\n  position: \"relative\",\n  borderRadius: 16,\n  padding: 12,\n  backgroundColor: \"#e5fcfb\",\n  minWidth: 300,\n  boxShadow: \"0 0 20px 0 rgba(0,0,0,0.12)\",\n  transition: \"0.3s\",\n  \"@media (hover: hover)\": {\n    \"&:hover\": {\n      transform: \"translateY(-3px)\",\n      boxShadow: \"0 4px 20px 0 rgba(0,0,0,0.12)\",\n    },\n  },\n  ...theme.applyStyles(\"dark\", {\n    backgroundColor: (theme.vars || theme).palette.grey[900],\n    boxShadow: \"0 0 20px 0 rgba(0,0,0,0.5)\",\n  }),\n}));\n\nconst ButtonLearnMore = styled(Button)(({ theme }) => ({\n  backgroundColor: \"#fff !important\",\n  color: \"#fb703c\",\n  boxShadow: \"0 2px 6px #d0efef\",\n  borderRadius: 12,\n  minWidth: 120,\n  minHeight: 4,\n  fontSize: \"0.875rem\",\n  fontWeight: 700,\n  letterSpacing: 0,\n  ...theme.applyStyles(\"dark\", {\n    backgroundColor: `${(theme.vars || theme).palette.grey[800]} !important`,\n    boxShadow: \"0 2px 6px rgba(0,0,0,0.3)\",\n  }),\n}));\n\nconst StyledImg = styled(\"img\")(() => ({\n  position: \"absolute\",\n  width: \"40%\",\n  bottom: 0,\n  right: 0,\n  display: \"block\",\n}));\n\nconst StyledDiv = styled(\"div\")(({ theme }) => ({\n  position: \"absolute\",\n  bottom: 0,\n  right: 0,\n  transform: \"translate(70%, 50%)\",\n  borderRadius: \"50%\",\n  backgroundColor: \"rgba(71, 167, 162, 0.12)\",\n  padding: \"40%\",\n\n  \"&:before\": {\n    position: \"absolute\",\n    borderRadius: \"50%\",\n    content: '\"\"',\n    display: \"block\",\n    top: 0,\n    left: 0,\n    right: 0,\n    bottom: 0,\n    margin: \"-16%\",\n    backgroundColor: \"rgba(71, 167, 162, 0.08)\",\n  },\n  ...theme.applyStyles(\"dark\", {\n    backgroundColor: \"rgba(71, 167, 162, 0.2)\",\n    \"&:before\": {\n      backgroundColor: \"rgba(71, 167, 162, 0.15)\",\n    },\n  }),\n}));\n\nconst useOfferInfoStyles = () => {\n  return {\n    title: {\n      color: \"#fb703c\",\n      fontSize: \"1.125rem\",\n      fontWeight: 700,\n      lineHeight: 1.6,\n      letterSpacing: \"0.0075em\",\n      marginBottom: 0,\n    },\n    subtitle: {\n      color: \"#48bbb5\",\n      fontSize: \"0.875rem\",\n      fontWeight: 500,\n    },\n  };\n};\n\nexport function CardOffer() {\n  return (\n    <StyledCard>\n      <Box sx={{ display: \"flex\", flexDirection: \"column\", gap: 2, mr: 2 }}>\n        <Info useStyles={useOfferInfoStyles}>\n          <InfoTitle>50 Days of Premium!</InfoTitle>\n          <InfoSubtitle>Get it before 01.01.2020</InfoSubtitle>\n        </Info>\n        <Box sx={{ mt: 2 }}>\n          <ButtonLearnMore>Learn more</ButtonLearnMore>\n        </Box>\n      </Box>\n      <StyledImg\n        alt={\"\"}\n        src={\n          \"https://pathwaychurch.life/wp-content/uploads/2018/09/bow-transparent-background-1.png\"\n        }\n      />\n      <StyledDiv />\n    </StyledCard>\n  );\n}\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/card-offer/index.ts",
+      "target": "src/mui-treasury/components/card-offer/index.ts",
+      "content": "export * from './card-offer';\n",
+      "type": "registry:item"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "card",
+    "exportName": "CardOffer"
+  }
+}

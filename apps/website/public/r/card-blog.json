@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-blog",
+  "type": "registry:item",
+  "title": "Card Blog",
+  "description": "Blog card with image featuring gradient overlay, Info components for eyebrow/title/subtitle, and gradient CTA button",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/info-basic.json"
+  ],
+  "files": [
+    {
+      "path": "components/card-blog/card-blog.tsx",
+      "target": "src/mui-treasury/components/card-blog/card-blog.tsx",
+      "content": "import React from \"react\";\nimport Button from \"@mui/material/Button\";\nimport Card from \"@mui/material/Card\";\nimport CardContent from \"@mui/material/CardContent\";\nimport CardMedia from \"@mui/material/CardMedia\";\nimport { Info } from \"../info-basic/info\";\nimport { InfoEyebrow } from \"../info-basic/info-eyebrow\";\nimport { InfoSubtitle } from \"../info-basic/info-subtitle\";\nimport { InfoTitle } from \"../info-basic/info-title\";\n\nexport function CardBlog() {\n  return (\n    <Card\n      sx={(theme) => ({\n        margin: \"auto\",\n        borderRadius: theme.spacing(2),\n        transition: \"0.3s\",\n        boxShadow: \"0px 14px 80px rgba(34, 35, 58, 0.2)\",\n        position: \"relative\",\n        maxWidth: 500,\n        marginLeft: \"auto\",\n        overflow: \"initial\",\n        background: (theme.vars || theme).palette.background.paper,\n        display: \"flex\",\n        flexDirection: \"column\",\n        alignItems: \"center\",\n        paddingBottom: theme.spacing(2),\n        [theme.breakpoints.up(\"md\")]: {\n          flexDirection: \"row\",\n          paddingTop: theme.spacing(2),\n        },\n        ...theme.applyStyles(\"dark\", {\n          boxShadow: \"0px 14px 80px rgba(0, 0, 0, 0.5)\",\n        }),\n      })}\n    >\n      <CardMedia\n        image={\n          \"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Git_icon.svg/2000px-Git_icon.svg.png\"\n        }\n        sx={(theme) => ({\n          width: \"88%\",\n          marginLeft: \"auto\",\n          marginRight: \"auto\",\n          marginTop: theme.spacing(-3),\n          height: 0,\n          paddingBottom: \"48%\",\n          borderRadius: theme.spacing(2),\n          backgroundColor: (theme.vars || theme).palette.common.white,\n          position: \"relative\",\n          [theme.breakpoints.up(\"md\")]: {\n            width: \"100%\",\n            marginLeft: theme.spacing(-3),\n            marginTop: 0,\n            transform: \"translateX(-8px)\",\n          },\n          \"&:after\": {\n            content: '\" \"',\n            position: \"absolute\",\n            top: 0,\n            left: 0,\n            width: \"100%\",\n            height: \"100%\",\n            backgroundImage: \"linear-gradient(147deg, #fe8a39 0%, #fd3838 74%)\",\n            borderRadius: theme.spacing(2),\n            opacity: 0.5,\n          },\n          ...theme.applyStyles(\"dark\", {\n            backgroundColor: (theme.vars || theme).palette.grey[900],\n            \"&:after\": {\n              opacity: 0.7,\n            },\n          }),\n        })}\n      />\n      <CardContent>\n        <Info\n          useStyles={(theme) => {\n            const family =\n              \"-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif\";\n            return {\n              eyebrow: {\n                textTransform: \"uppercase\",\n                letterSpacing: \"1px\",\n                fontSize: 12,\n                marginBottom: \"0.875em\",\n                display: \"inline-block\",\n              },\n              title: {\n                fontSize: 20,\n                fontWeight: \"bold\",\n                marginBottom: \"0.35em\",\n                fontFamily: family,\n              },\n              subtitle: {\n                marginBottom: theme.spacing(2),\n                fontSize: \"0.8rem\",\n                letterSpacing: \"0.00938em\",\n                fontFamily: family,\n              },\n            };\n          }}\n        >\n          <InfoEyebrow>28 MAR 2019</InfoEyebrow>\n          <InfoTitle>What is Git ?</InfoTitle>\n          <InfoSubtitle>\n            Git is a distributed version control system. Every dev has a working\n            copy of the code and...\n          </InfoSubtitle>\n        </Info>\n        <Button\n          sx={{\n            backgroundImage: \"linear-gradient(147deg, #fe8a39 0%, #fd3838 74%)\",\n            boxShadow: \"0px 4px 32px rgba(252, 56, 56, 0.4)\",\n            borderRadius: 100,\n            paddingLeft: 3,\n            paddingRight: 3,\n            color: \"#ffffff\",\n          }}\n        >\n          Read more\n        </Button>\n      </CardContent>\n    </Card>\n  );\n}\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/card-blog/index.ts",
+      "target": "src/mui-treasury/components/card-blog/index.ts",
+      "content": "export * from './card-blog';\n",
+      "type": "registry:item"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "card",
+    "exportName": "CardBlog"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar-rail",
+  "type": "registry:item",
+  "title": "Sidebar Rail",
+  "description": "A thin edge indicator for toggling sidebar collapse with hover highlight and directional cursor",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/sidebar-rail/sidebar-rail-classes.ts",
+      "target": "src/mui-treasury/components/sidebar-rail/sidebar-rail-classes.ts",
+      "content": "export const sidebarRailClasses = {\n  root: \"SidebarRail\",\n};\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/sidebar-rail/sidebar-rail.tsx",
+      "target": "src/mui-treasury/components/sidebar-rail/sidebar-rail.tsx",
+      "content": "\"use client\";\nimport React from \"react\";\nimport { unstable_memoTheme as memoTheme } from \"@mui/material/utils\";\nimport { styled } from \"@mui/material/styles\";\nimport { sidebarRailClasses } from \"./sidebar-rail-classes\";\n\nconst StyledSidebarRail = styled(\"button\", {\n  name: \"SidebarRail\",\n  slot: \"root\",\n})(\n  memoTheme(({ theme }) => ({\n    \"--indicator-w\": \"2px\",\n    \"--touch-size\": \"20px\",\n    \"--offset\": \"calc(-1 * (var(--indicator-w)/2 + var(--touch-size)/2))\",\n    position: \"absolute\",\n    top: 0,\n    bottom: 0,\n    right: \"var(--anchorLeft, var(--offset)) var(--anchorRight, unset)\",\n    left: \"var(--anchorLeft, unset) var(--anchorRight, var(--offset))\",\n    zIndex: 20,\n    width: \"var(--touch-size)\",\n    textAlign: \"center\",\n    cursor:\n      \"var(--_collapsed, e-resize) var(--_uncollapsed, w-resize)\" as never,\n    display: \"inline-flex\",\n    justifyContent: \"center\",\n    border: \"none\",\n    padding: 0,\n    background: \"transparent\",\n    \"&::after\": {\n      content: '\"\"',\n      width: \"var(--indicator-w)\",\n      height: \"100%\",\n      display: \"block\",\n    },\n    \"@media (hover: hover)\": {\n      \"&:hover::after\": {\n        background: (theme.vars || theme).palette.divider,\n      },\n    },\n  })),\n);\n\nconst SidebarRail = React.forwardRef<\n  HTMLButtonElement,\n  React.ComponentPropsWithoutRef<\"button\">\n>(function SidebarRail({ className, ...props }, ref) {\n  return (\n    <StyledSidebarRail\n      ref={ref}\n      className={`${sidebarRailClasses.root} ${className || \"\"}`}\n      {...props}\n    />\n  );\n});\n\nexport default SidebarRail;\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/sidebar-rail/index.ts",
+      "target": "src/mui-treasury/components/sidebar-rail/index.ts",
+      "content": "export * from './sidebar-rail-classes';\nexport * from './sidebar-rail';\nexport { default as SidebarRail } from './sidebar-rail';\n",
+      "type": "registry:item"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "sidebar"
+  }
+}

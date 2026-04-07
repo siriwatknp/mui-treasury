@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "color-scheme-select-basic",
+  "type": "registry:block",
+  "title": "Color Scheme Select Basic",
+  "description": "Basic select component for switching color schemes",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/color-scheme-select-basic/color-scheme-select-basic.tsx",
+      "target": "src/mui-treasury/components/color-scheme-select-basic/color-scheme-select-basic.tsx",
+      "content": "import React from \"react\";\nimport Box from \"@mui/material/Box\";\nimport MenuItem from \"@mui/material/MenuItem\";\nimport Select from \"@mui/material/Select\";\nimport { useColorScheme } from \"@mui/material/styles\";\n\nexport function ColorSchemeSelectBasic() {\n  const { mode, setMode } = useColorScheme();\n  if (!mode) {\n    return (\n      <Box\n        sx={(theme) => {\n          // copy from OutlinedInput\n          const borderColor =\n            theme.palette.mode === \"light\"\n              ? \"rgba(0, 0, 0, 0.23)\"\n              : \"rgba(255, 255, 255, 0.23)\";\n          return {\n            verticalAlign: \"bottom\",\n            display: \"inline-flex\",\n            minWidth: 112,\n            height: 56,\n            borderRadius: (theme.vars || theme).shape.borderRadius,\n            border: \"1px solid\",\n            borderColor: theme.vars\n              ? `rgba(${theme.vars.palette.common.onBackgroundChannel} / 0.23)`\n              : borderColor,\n          };\n        }}\n      />\n    );\n  }\n  return (\n    <Select\n      value={mode}\n      onChange={(event) => {\n        setMode(event.target.value as \"system\" | \"light\" | \"dark\");\n      }}\n      sx={{ minWidth: 112 }}\n    >\n      <MenuItem value=\"system\">System</MenuItem>\n      <MenuItem value=\"light\">Light</MenuItem>\n      <MenuItem value=\"dark\">Dark</MenuItem>\n    </Select>\n  );\n}\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "components/color-scheme-select-basic/index.ts",
+      "target": "src/mui-treasury/components/color-scheme-select-basic/index.ts",
+      "content": "export * from './color-scheme-select-basic';\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "color-scheme",
+    "exportName": "ColorSchemeSelectBasic"
+  }
+}

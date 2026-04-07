@@ -1,0 +1,41 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "info-n02",
+  "type": "registry:item",
+  "title": "Info N02",
+  "description": "Info variant with custom typography and styling option 2",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/info-basic.json"
+  ],
+  "files": [
+    {
+      "path": "components/info-n02/info-n02.styles.ts",
+      "target": "src/mui-treasury/components/info-n02/info-n02.styles.ts",
+      "content": "import type { CSSObject, Theme } from \"@mui/material/styles\";\nimport { InfoSlotStyles } from \"../info-basic/info\";\n\nexport const getInfoN02Styles = (\n  arg: Theme | { theme: Theme },\n): CSSObject & Partial<InfoSlotStyles> => {\n  const theme = \"theme\" in arg ? arg.theme : arg;\n  return {\n    eyebrow: {\n      textTransform: \"uppercase\",\n      color: (theme.vars || theme).palette.text.secondary,\n      fontWeight: \"bold\",\n      letterSpacing: \"1px\",\n      fontSize: 14,\n      display: \"inline-block\",\n    },\n    title: {\n      fontSize: 24,\n      fontWeight: 900,\n      marginBottom: \"0.4em\",\n    },\n    subtitle: {\n      fontSize: 18,\n      color: (theme.vars || theme).palette.text.secondary,\n    },\n  };\n};\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/info-n02/info-n02.tsx",
+      "target": "src/mui-treasury/components/info-n02/info-n02.tsx",
+      "content": "import React from \"react\";\nimport { Info } from \"../info-basic/info\";\nimport { InfoEyebrow } from \"../info-basic/info-eyebrow\";\nimport { InfoSubtitle } from \"../info-basic/info-subtitle\";\nimport { InfoTitle } from \"../info-basic/info-title\";\nimport { getInfoN02Styles } from \"./info-n02.styles\";\n\nexport function InfoN02() {\n  return (\n    <Info variant=\"n02\" useStyles={getInfoN02Styles}>\n      <InfoEyebrow>MARCH 8, 2016</InfoEyebrow>\n      <InfoTitle>First Snow Storm</InfoTitle>\n      <InfoSubtitle>\n        Snow storm coming in Sommaroy island, Arctic Norway. This is something\n        that you definitely wanna see in your life.\n      </InfoSubtitle>\n    </Info>\n  );\n}\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/info-n02/index.ts",
+      "target": "src/mui-treasury/components/info-n02/index.ts",
+      "content": "export * from './info-n02.styles';\nexport * from './info-n02';\n",
+      "type": "registry:item"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "previewClassName": "bg-white dark:bg-neutral-950",
+    "subcategory": "info",
+    "exportName": "InfoN02"
+  }
+}

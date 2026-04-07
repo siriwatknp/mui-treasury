@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ai-elements",
+  "type": "registry:item",
+  "title": "AI Elements",
+  "description": "All AI Elements from MUI Treasury",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/ai-actions.json",
+    "http://localhost:3000/r/ai-artifact.json",
+    "http://localhost:3000/r/ai-branch.json",
+    "http://localhost:3000/r/ai-chain-of-thought.json",
+    "http://localhost:3000/r/ai-code-block.json",
+    "http://localhost:3000/r/ai-context.json",
+    "http://localhost:3000/r/ai-conversation.json",
+    "http://localhost:3000/r/ai-image.json",
+    "http://localhost:3000/r/ai-inline-citation.json",
+    "http://localhost:3000/r/ai-loader.json",
+    "http://localhost:3000/r/ai-message.json",
+    "http://localhost:3000/r/ai-open-in-chat.json",
+    "http://localhost:3000/r/ai-prompt-input.json",
+    "http://localhost:3000/r/ai-reasoning.json",
+    "http://localhost:3000/r/ai-response.json",
+    "http://localhost:3000/r/ai-sources.json",
+    "http://localhost:3000/r/ai-suggestion.json",
+    "http://localhost:3000/r/ai-task.json",
+    "http://localhost:3000/r/ai-tool.json",
+    "http://localhost:3000/r/ai-web-preview.json"
+  ],
+  "files": [],
+  "meta": {
+    "category": "ai",
+    "subcategory": "elements"
+  }
+}

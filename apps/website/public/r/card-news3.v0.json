@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-news3",
+  "type": "registry:block",
+  "title": "Card News3",
+  "description": "News card with image overlay, gradient backdrop, fashion tag badge, author info with avatar, and layered shadow effect on hover",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/info-basic.v0.json"
+  ],
+  "files": [
+    {
+      "path": "components/card-news3/card-news3.tsx",
+      "target": "src/mui-treasury/components/card-news3/card-news3.tsx",
+      "content": "import React from \"react\";\nimport Avatar from \"@mui/material/Avatar\";\nimport Box from \"@mui/material/Box\";\nimport Card from \"@mui/material/Card\";\nimport CardMedia from \"@mui/material/CardMedia\";\nimport { styled } from \"@mui/material/styles\";\nimport type { Theme } from \"@mui/material/styles\";\nimport Typography from \"@mui/material/Typography\";\nimport { Info } from \"../info-basic/info\";\nimport { InfoSubtitle } from \"../info-basic/info-subtitle\";\nimport { InfoTitle } from \"../info-basic/info-title\";\n\nconst titleFontSize = \"1rem\";\nconst subtitleFontSize = \"0.875rem\";\nconst family = \"'Sen', sans-serif\";\n\nconst StyledCard = styled(Card)(({ theme }) => ({\n  minWidth: 320,\n  position: \"relative\",\n  boxShadow: \"0 8px 24px 0 rgba(0,0,0,0.12)\",\n  overflow: \"visible\",\n  borderRadius: \"1.5rem\",\n  transition: \"0.4s\",\n\n  \"&:hover\": {\n    transform: \"translateY(-2px)\",\n    \"& .Shadow1\": {\n      bottom: \"-1.5rem\",\n    },\n    \"& .Shadow2\": {\n      bottom: \"-2.5rem\",\n    },\n  },\n\n  \"&:before\": {\n    content: '\"\"',\n    position: \"absolute\",\n    zIndex: 0,\n    display: \"block\",\n    width: \"100%\",\n    bottom: -1,\n    height: \"100%\",\n    borderRadius: \"1.5rem\",\n    backgroundColor: \"rgba(0,0,0,0.08)\",\n    ...theme.applyStyles(\"dark\", {\n      backgroundColor: \"rgba(255,255,255,0.08)\",\n    }),\n  },\n}));\n\nconst StyledCardMedia = styled(CardMedia)({\n  position: \"absolute\",\n  width: \"100%\",\n  height: \"100%\",\n  top: 0,\n  left: 0,\n  zIndex: 0,\n  backgroundColor: \"rgba(0, 0, 0, 0.08)\",\n  backgroundPosition: \"center\",\n});\n\nconst BoxMain = styled(Box)(() => ({\n  overflow: \"hidden\",\n  borderTopLeftRadius: \"1.5rem\",\n  borderTopRightRadius: \"1.5rem\",\n  zIndex: 1,\n\n  \"&:after\": {\n    content: '\"\"',\n    position: \"absolute\",\n    bottom: 0,\n    display: \"block\",\n    width: \"100%\",\n    height: \"100%\",\n    background: \"linear-gradient(to top, #014a7d, rgba(0,0,0,0))\",\n  },\n}));\n\nconst StyledDivContent = styled(\"div\")(() => ({\n  position: \"absolute\",\n  bottom: 0,\n  width: \"100%\",\n  zIndex: 1,\n  padding: \"1.5rem 1.5rem 1rem\",\n}));\n\nconst StyledAvatar = styled(Avatar)(() => ({\n  width: 48,\n  height: 48,\n}));\n\nconst StyledDivTag = styled(\"div\")(() => ({\n  display: \"inline-block\",\n  fontFamily: \"'Sen', sans-serif\",\n  backgroundColor: \"#ff5dac\",\n  borderRadius: \"0.5rem\",\n  padding: \"2px 0.5rem\",\n  color: \"#fff\",\n  marginBottom: \"0.5rem\",\n}));\n\nconst TypographyTitle = styled(Typography)(() => ({\n  fontFamily: \"'Sen', sans-serif\",\n  fontSize: \"2rem\",\n  fontWeight: 800,\n  color: \"#fff\",\n}));\n\nconst RowAuthor = styled(\"div\")(({ theme }) => ({\n  display: \"flex\",\n  gap: theme.spacing(2),\n  minWidth: 0,\n  padding: `${theme.spacing(2)} ${theme.spacing(3)} ${theme.spacing(3)}`,\n  margin: 0,\n  backgroundColor: \"#fff\",\n  zIndex: 1,\n  position: \"relative\",\n  borderBottomLeftRadius: \"1.5rem\",\n  borderBottomRightRadius: \"1.5rem\",\n  ...theme.applyStyles(\"dark\", {\n    backgroundColor: (theme.vars || theme).palette.grey[900],\n  }),\n}));\n\nconst Shadow = styled(\"div\")(({ theme }) => ({\n  transition: \"0.2s\",\n  position: \"absolute\",\n  zIndex: 0,\n  width: \"88%\",\n  height: \"100%\",\n  bottom: 0,\n  borderRadius: \"1.5rem\",\n  backgroundColor: \"rgba(0,0,0,0.06)\",\n  left: \"50%\",\n  transform: \"translateX(-50%)\",\n  ...theme.applyStyles(\"dark\", {\n    backgroundColor: \"rgba(255,255,255,0.08)\",\n  }),\n  \"& + &\": {\n    bottom: 0,\n    width: \"72%\",\n    backgroundColor: \"rgba(0,0,0,0.04)\",\n    ...theme.applyStyles(\"dark\", {\n      backgroundColor: \"rgba(255,255,255,0.03)\",\n    }),\n  },\n}));\n\nconst newsInfoStyles = (arg: Theme | { theme: Theme }) => {\n  const theme = \"theme\" in arg ? arg.theme : arg;\n  return {\n    title: {\n      fontFamily: family,\n      fontSize: titleFontSize,\n      lineHeight: 1.2,\n      marginBottom: 0,\n      fontWeight: 500,\n    },\n    subtitle: {\n      fontFamily: family,\n      color: (theme.vars || theme).palette.grey[500],\n      fontSize: subtitleFontSize,\n      lineHeight: 1.75,\n    },\n  };\n};\n\nexport function CardNews3() {\n  return (\n    <StyledCard>\n      <BoxMain minHeight={300} position={\"relative\"}>\n        <StyledCardMedia\n          image={\n            \"https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80\"\n          }\n        />\n        <StyledDivContent>\n          <StyledDivTag>Fashion</StyledDivTag>\n          <TypographyTitle variant={\"h2\"}>\n            Diana Marvel Has a City Take on the Cowboy Boot\n          </TypographyTitle>\n        </StyledDivContent>\n      </BoxMain>\n      <RowAuthor>\n        <Box>\n          <StyledAvatar src={\"https://i.pravatar.cc/300?img=13\"} />\n        </Box>\n        <Info useStyles={newsInfoStyles} sx={{ alignSelf: \"center\" }}>\n          <InfoTitle>Nadine Petrolli</InfoTitle>\n          <InfoSubtitle>Jul 20 | 2 Min Read</InfoSubtitle>\n        </Info>\n      </RowAuthor>\n      <Shadow className=\"Shadow1\" />\n      <Shadow className=\"Shadow2\" />\n    </StyledCard>\n  );\n}\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "components/card-news3/index.ts",
+      "target": "src/mui-treasury/components/card-news3/index.ts",
+      "content": "export * from './card-news3';\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "card",
+    "exportName": "CardNews3"
+  }
+}

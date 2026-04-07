@@ -1,0 +1,40 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible-content",
+  "type": "registry:block",
+  "title": "Collapsible Content",
+  "description": "A grid-based container that expands or collapses based on sibling checkbox state",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/sidebar-menu-button.v0.json",
+    "http://localhost:3000/r/sidebar-menu-action.v0.json"
+  ],
+  "files": [
+    {
+      "path": "components/collapsible-content/collapsible-content-classes.ts",
+      "target": "src/mui-treasury/components/collapsible-content/collapsible-content-classes.ts",
+      "content": "export const collapsibleContentClasses = {\n  root: \"CollapsibleContent\",\n};\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "components/collapsible-content/collapsible-content.tsx",
+      "target": "src/mui-treasury/components/collapsible-content/collapsible-content.tsx",
+      "content": "\"use client\";\nimport React from \"react\";\nimport { styled } from \"@mui/material/styles\";\nimport { collapsibleContentClasses } from \"./collapsible-content-classes\";\nimport { sidebarMenuButtonClasses } from \"../sidebar-menu-button/sidebar-menu-button-classes\";\nimport { sidebarMenuActionClasses } from \"../sidebar-menu-action/sidebar-menu-action-classes\";\n\nconst StyledCollapsibleContent = styled(\"div\", {\n  name: \"CollapsibleContent\",\n  slot: \"root\",\n})({\n  display: \"grid\",\n  \"& > *\": {\n    overflow: \"hidden\",\n  },\n  \"label:has(:checked) ~ &\": {\n    transition:\n      \"var(--tsn, grid-template-rows 0.4s, visibility 0.4s, opacity 0.4s 0.2s)\",\n    gridTemplateRows: \"var(--_collapsed, 0fr) var(--_uncollapsed, 1fr)\",\n    [`& .${sidebarMenuButtonClasses.root}`]: {\n      visibility: \"var(--_collapsed, hidden)\" as never,\n    },\n  },\n  \"label:not(:has(:checked)) ~ &\": {\n    gridTemplateRows: \"0fr\",\n    visibility: \"hidden\",\n    opacity: 0,\n    transition:\n      \"var(--tsn, grid-template-rows 0.4s, visibility 0.4s, opacity 0.2s)\",\n    [`& .${sidebarMenuActionClasses.root}`]: {\n      visibility: \"hidden\",\n    },\n  },\n});\n\nconst CollapsibleContent = React.forwardRef<\n  HTMLDivElement,\n  React.ComponentPropsWithoutRef<\"div\">\n>(function CollapsibleContent({ className, ...props }, ref) {\n  return (\n    <StyledCollapsibleContent\n      ref={ref}\n      className={`${collapsibleContentClasses.root} ${className || \"\"}`}\n      {...props}\n    />\n  );\n});\n\nexport default CollapsibleContent;\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "components/collapsible-content/index.ts",
+      "target": "src/mui-treasury/components/collapsible-content/index.ts",
+      "content": "export * from './collapsible-content-classes';\nexport * from './collapsible-content';\nexport { default as CollapsibleContent } from './collapsible-content';\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "sidebar"
+  }
+}

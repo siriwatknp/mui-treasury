@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs-chrome",
+  "type": "registry:item",
+  "title": "Tabs Chrome",
+  "description": "Chrome browser-style tabs with separator lines and smooth hover effects",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/tabs-chrome/tabs-chrome.tsx",
+      "target": "src/mui-treasury/components/tabs-chrome/tabs-chrome.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport Tab, { tabClasses } from \"@mui/material/Tab\";\nimport Tabs, { tabsClasses } from \"@mui/material/Tabs\";\n\nexport function TabsChrome() {\n  const [tabIndex, setTabIndex] = React.useState(0);\n  return (\n    <Tabs\n      value={tabIndex}\n      onChange={(e, index) => setTabIndex(index)}\n      sx={(theme) => ({\n        [`& .${tabsClasses.indicator}`]: {\n          display: \"none\",\n        },\n        [`& .${tabClasses.root}`]: {\n          opacity: 1,\n          overflow: \"initial\",\n          px: 2,\n          borderTopLeftRadius: \"12px\",\n          borderTopRightRadius: \"12px\",\n          color: (theme.vars || theme).palette.text.primary,\n          bgcolor: (theme.vars || theme).palette.grey[300],\n          transition: \"0.2s\",\n          zIndex: 2,\n          mt: 0.5,\n          ...theme.applyStyles(\"dark\", {\n            bgcolor: (theme.vars || theme).palette.grey[700],\n          }),\n          [theme.breakpoints.up(\"md\")]: {\n            minWidth: 160,\n          },\n          \"&:before\": {\n            transition: \"0.2s\",\n          },\n          \"&:not(:first-of-type)\": {\n            \"&:before\": {\n              content: '\" \"',\n              position: \"absolute\",\n              left: 0,\n              display: \"block\",\n              height: 16,\n              width: \"1px\",\n              zIndex: 1,\n              mt: 1,\n              bgcolor: (theme.vars || theme).palette.grey[500],\n            },\n          },\n          [`& + .${tabClasses.selected}::before`]: {\n            opacity: 0,\n          },\n          \"@media (hover: hover)\": {\n            \"&:hover\": {\n              [`&:not(.${tabClasses.selected})`]: {\n                bgcolor: \"action.hover\",\n              },\n              \"&::before\": {\n                opacity: 0,\n              },\n              [`& + .${tabClasses.root}::before`]: {\n                opacity: 0,\n              },\n            },\n          },\n          [`&.${tabClasses.selected}`]: {\n            bgcolor: (theme.vars || theme).palette.grey[900],\n            color: (theme.vars || theme).palette.background.paper,\n            ...theme.applyStyles(\"dark\", {\n              bgcolor: (theme.vars || theme).palette.grey[100],\n            }),\n          },\n          [`&.${tabClasses.selected} + .${tabClasses.root}`]: {\n            zIndex: 1,\n          },\n          [`&.${tabClasses.selected} + .${tabClasses.root}::before`]: {\n            opacity: 0,\n          },\n        },\n      })}\n    >\n      <Tab label={\"Label 1\"} />\n      <Tab label={\"Label 2\"} />\n      <Tab label={\"Label 3\"} />\n      <Tab label={\"Label 4\"} />\n    </Tabs>\n  );\n}\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/tabs-chrome/index.ts",
+      "target": "src/mui-treasury/components/tabs-chrome/index.ts",
+      "content": "export * from './tabs-chrome';\n",
+      "type": "registry:item"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "tabs",
+    "exportName": "TabsChrome"
+  }
+}

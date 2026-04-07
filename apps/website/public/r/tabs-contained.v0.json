@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs-contained",
+  "type": "registry:block",
+  "title": "Tabs Contained",
+  "description": "Contained tabs with separator lines and secondary color for selected state",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/tabs-contained/tabs-contained.tsx",
+      "target": "src/mui-treasury/components/tabs-contained/tabs-contained.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport Tab, { tabClasses } from \"@mui/material/Tab\";\nimport Tabs, { tabsClasses } from \"@mui/material/Tabs\";\n\nexport function TabsContained() {\n  const [tabIndex, setTabIndex] = React.useState(0);\n  return (\n    <Tabs\n      value={tabIndex}\n      onChange={(e, index) => setTabIndex(index)}\n      sx={(theme) => ({\n        [`& .${tabsClasses.indicator}`]: {\n          display: \"none\",\n        },\n        [`& .${tabClasses.root}`]: {\n          opacity: 1,\n          overflow: \"initial\",\n          zIndex: 2,\n          color: (theme.vars || theme).palette.text.primary,\n          bgcolor: (theme.vars || theme).palette.background.paper,\n          transition: \"0.2s\",\n          [theme.breakpoints.up(\"sm\")]: {\n            minWidth: 120,\n          },\n          \"&:before\": {\n            transition: \"0.2s\",\n          },\n          \"&:not(:first-of-type)\": {\n            \"&:before\": {\n              content: '\" \"',\n              position: \"absolute\",\n              left: 0,\n              display: \"block\",\n              height: 20,\n              width: \"1px\",\n              zIndex: 1,\n              bgcolor: (theme.vars || theme).palette.grey[300],\n              ...theme.applyStyles(\"dark\", {\n                bgcolor: (theme.vars || theme).palette.grey[700],\n              }),\n            },\n          },\n          [`& + .${tabClasses.selected}::before`]: {\n            opacity: 0,\n          },\n          \"@media (hover: hover)\": {\n            \"&:hover\": {\n              [`&:not(.${tabClasses.selected})`]: {\n                bgcolor: \"action.hover\",\n              },\n              \"&::before\": {\n                opacity: 0,\n              },\n              [`& + .${tabClasses.root}::before`]: {\n                opacity: 0,\n              },\n            },\n          },\n          [`&.${tabClasses.selected}`]: {\n            bgcolor: (theme.vars || theme).palette.primary.main,\n            color: (theme.vars || theme).palette.background.paper,\n          },\n          [`&.${tabClasses.selected} + .${tabClasses.root}`]: {\n            zIndex: 1,\n          },\n          [`&.${tabClasses.selected} + .${tabClasses.root}::before`]: {\n            opacity: 0,\n          },\n        },\n      })}\n    >\n      <Tab label={\"Specs\"} />\n      <Tab label={\"Comparison\"} />\n      <Tab label={\"Reviews\"} />\n      <Tab label={\"Return Policy\"} />\n    </Tabs>\n  );\n}\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "components/tabs-contained/index.ts",
+      "target": "src/mui-treasury/components/tabs-contained/index.ts",
+      "content": "export * from './tabs-contained';\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "tabs",
+    "exportName": "TabsContained"
+  }
+}

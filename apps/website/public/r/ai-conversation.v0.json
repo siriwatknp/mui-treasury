@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ai-conversation",
+  "type": "registry:block",
+  "title": "Ai Conversation",
+  "description": "A ai-conversation item.",
+  "dependencies": [
+    "@mui/material",
+    "lucide-react",
+    "use-stick-to-bottom",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ai-conversation/ai-conversation.tsx",
+      "target": "src/mui-treasury/components/ai-conversation/ai-conversation.tsx",
+      "content": "\"use client\";\n\nimport Box from \"@mui/material/Box\";\nimport IconButton from \"@mui/material/IconButton\";\nimport Typography from \"@mui/material/Typography\";\nimport { ArrowDownIcon } from \"lucide-react\";\nimport { memo, type ComponentProps } from \"react\";\nimport { useCallback } from \"react\";\nimport { StickToBottom, useStickToBottomContext } from \"use-stick-to-bottom\";\n\nexport type ConversationProps = ComponentProps<typeof StickToBottom>;\n\nexport const Conversation = memo(({ ...props }: ConversationProps) => (\n  <StickToBottom\n    style={{\n      position: \"relative\",\n      flex: 1,\n      overflowY: \"auto\",\n    }}\n    initial=\"smooth\"\n    resize=\"smooth\"\n    role=\"log\"\n    {...props}\n  />\n));\n\nConversation.displayName = \"Conversation\";\n\nexport type ConversationContentProps = ComponentProps<\n  typeof StickToBottom.Content\n>;\n\nexport const ConversationContent = ({ ...props }: ConversationContentProps) => (\n  <StickToBottom.Content\n    style={{\n      padding: \"16px\",\n    }}\n    {...props}\n  />\n);\n\nexport type ConversationEmptyStateProps = ComponentProps<typeof Box> & {\n  title?: string;\n  description?: string;\n  icon?: React.ReactNode;\n};\n\nexport const ConversationEmptyState = ({\n  title = \"No messages yet\",\n  description = \"Start a conversation to see messages here\",\n  icon,\n  children,\n  sx,\n  ...props\n}: ConversationEmptyStateProps) => (\n  <Box\n    sx={{\n      display: \"flex\",\n      width: \"100%\",\n      height: \"100%\",\n      flexDirection: \"column\",\n      alignItems: \"center\",\n      justifyContent: \"center\",\n      gap: 3,\n      p: 8,\n      textAlign: \"center\",\n      ...sx,\n    }}\n    {...props}\n  >\n    {children ?? (\n      <>\n        {icon && <Box sx={{ color: \"text.secondary\" }}>{icon}</Box>}\n        <Box sx={{ display: \"flex\", flexDirection: \"column\", gap: 0.5 }}>\n          <Typography variant=\"body2\" sx={{ fontWeight: 500 }}>\n            {title}\n          </Typography>\n          {description && (\n            <Typography variant=\"body2\" sx={{ color: \"text.secondary\" }}>\n              {description}\n            </Typography>\n          )}\n        </Box>\n      </>\n    )}\n  </Box>\n);\n\nexport type ConversationScrollButtonProps = ComponentProps<typeof IconButton>;\n\nexport const ConversationScrollButton = ({\n  sx,\n  ...props\n}: ConversationScrollButtonProps) => {\n  const { isAtBottom, scrollToBottom } = useStickToBottomContext();\n\n  const handleScrollToBottom = useCallback(() => {\n    scrollToBottom();\n  }, [scrollToBottom]);\n\n  return (\n    !isAtBottom && (\n      <IconButton\n        onClick={handleScrollToBottom}\n        sx={{\n          position: \"absolute\",\n          bottom: 16,\n          left: \"50%\",\n          transform: \"translateX(-50%)\",\n          bgcolor: \"background.paper\",\n          color: \"text.primary\",\n          border: 1,\n          borderColor: \"divider\",\n          \"&:hover\": {\n            bgcolor: \"action.hover\",\n          },\n          \"&:active\": {\n            transform: \"translateX(-50%) scale(0.95)\",\n          },\n          ...sx,\n        }}\n        {...props}\n      >\n        <ArrowDownIcon className=\"size-4\" />\n      </IconButton>\n    )\n  );\n};\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "components/ai-conversation/index.ts",
+      "target": "src/mui-treasury/components/ai-conversation/index.ts",
+      "content": "export * from './ai-conversation';\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "ai",
+    "subcategory": "elements"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "layout-edge-sidebar-width",
+  "type": "registry:block",
+  "title": "Edge Sidebar Width",
+  "description": "Customize the width of the edge sidebar via variant config.",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/layout-core.v0.json"
+  ],
+  "files": [
+    {
+      "path": "layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-width.demo.tsx",
+      "target": "src/mui-treasury/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-width.demo.tsx",
+      "content": "import React from \"react\";\n\nimport Box from \"@mui/material/Box\";\nimport Typography from \"@mui/material/Typography\";\n\nimport Content from \"@/registry/layout/layout-core/Content\";\nimport EdgeSidebar from \"@/registry/layout/layout-core/EdgeSidebar\";\nimport EdgeSidebarContent from \"@/registry/layout/layout-core/EdgeSidebarContent\";\nimport Footer from \"@/registry/layout/layout-core/Footer\";\nimport Header from \"@/registry/layout/layout-core/Header\";\nimport Root from \"@/registry/layout/layout-core/Root\";\n\nexport const meta = {\n  title: \"Edge Sidebar Width\",\n  description: \"Customize the width of the edge sidebar via variant config.\",\n};\n\nexport function Demo() {\n  return (\n    <Root height=\"300px\">\n      <Header>\n        <Box sx={{ px: 2 }}>\n          <Typography variant=\"caption\" fontWeight=\"bold\">\n            Header\n          </Typography>\n        </Box>\n      </Header>\n      <EdgeSidebar\n        id=\"sidebar-width\"\n        variant={[\"permanent\", { width: \"200px\" }]}\n      >\n        <EdgeSidebarContent>\n          <Box sx={{ p: 2 }}>\n            <Typography variant=\"caption\" color=\"text.secondary\">\n              200px sidebar\n            </Typography>\n          </Box>\n        </EdgeSidebarContent>\n      </EdgeSidebar>\n      <Content>\n        <Box sx={{ p: 2 }}>\n          <Typography variant=\"body2\" color=\"text.secondary\">\n            Content\n          </Typography>\n        </Box>\n      </Content>\n      <Footer>\n        <Box sx={{ p: 2 }}>\n          <Typography variant=\"caption\" color=\"text.secondary\">\n            Footer\n          </Typography>\n        </Box>\n      </Footer>\n    </Root>\n  );\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "layout"
+  }
+}

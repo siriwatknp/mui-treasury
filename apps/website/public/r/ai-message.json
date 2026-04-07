@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ai-message",
+  "type": "registry:item",
+  "title": "Ai Message",
+  "description": "A ai-message item.",
+  "dependencies": [
+    "@mui/material",
+    "ai",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ai-message/ai-message.tsx",
+      "target": "src/mui-treasury/components/ai-message/ai-message.tsx",
+      "content": "\"use client\";\n\nimport Avatar from \"@mui/material/Avatar\";\nimport Box from \"@mui/material/Box\";\nimport type { UIMessage } from \"ai\";\nimport { memo, type ComponentProps } from \"react\";\n\nexport type MessageProps = ComponentProps<typeof Box> & {\n  from: UIMessage[\"role\"];\n};\n\nexport const Message = memo(({ from, sx, ...props }: MessageProps) => (\n  <Box\n    data-from={from}\n    sx={{\n      display: \"flex\",\n      width: \"100%\",\n      alignItems: \"flex-end\",\n      gap: 1,\n      py: 2,\n      '&[data-from=\"user\"]': {\n        flexDirection: \"row-reverse\",\n        \"&:has(.MuiAvatar-root:last-child)\": {\n          flexDirection: \"row\",\n          justifyContent: \"flex-end\",\n        },\n      },\n      '&:not([data-from=\"user\"]):has(.MuiAvatar-root:last-child)': {\n        flexDirection: \"row-reverse\",\n        justifyContent: \"flex-end\",\n      },\n      ...sx,\n    }}\n    {...props}\n  />\n));\n\nMessage.displayName = \"Message\";\n\nexport type MessageContentProps = ComponentProps<typeof Box> & {\n  variant?: \"contained\" | \"flat\";\n};\n\nexport const MessageContent = memo(\n  ({ children, variant = \"contained\", sx, ...props }: MessageContentProps) => (\n    <Box\n      sx={{\n        display: \"flex\",\n        flexDirection: \"column\",\n        gap: 2,\n        overflow: \"hidden\",\n        borderRadius: 2,\n        fontSize: \"0.875rem\",\n        lineHeight: 1.6,\n\n        ...(variant === \"contained\" && {\n          maxWidth: \"80%\",\n          px: 2,\n          py: 1.5,\n          // User message styles\n          \"[data-from='user'] > &\": {\n            bgcolor: \"primary.main\",\n            color: \"primary.contrastText\",\n          },\n          // Assistant message styles\n          \"[data-from='assistant'] > &, [data-from='system'] > &\": {\n            bgcolor: \"action.hover\",\n            color: \"text.primary\",\n          },\n        }),\n\n        ...(variant === \"flat\" && {\n          // User message with flat variant\n          \"[data-from='user'] > &\": {\n            maxWidth: \"80%\",\n            bgcolor: \"action.hover\",\n            px: 2,\n            py: 1.5,\n            color: \"text.primary\",\n          },\n          // Assistant message with flat variant\n          \"[data-from='assistant'] > &, [data-from='system'] > &\": {\n            borderRadius: 0,\n            color: \"text.primary\",\n          },\n        }),\n\n        ...sx,\n      }}\n      {...props}\n    >\n      {children}\n    </Box>\n  ),\n);\n\nMessageContent.displayName = \"MessageContent\";\n\nexport type MessageAvatarProps = ComponentProps<typeof Avatar> & {\n  src?: string;\n  name?: string;\n};\n\nexport const MessageAvatar = memo(\n  ({ src, name, sx, ...props }: MessageAvatarProps) => (\n    <Avatar\n      src={src}\n      sx={{\n        width: 32,\n        height: 32,\n        border: 1,\n        borderColor: \"divider\",\n        fontSize: \"0.75rem\",\n        ...sx,\n      }}\n      {...props}\n    >\n      {!src && (name?.slice(0, 2).toUpperCase() || \"ME\")}\n    </Avatar>\n  ),\n);\n\nMessageAvatar.displayName = \"MessageAvatar\";\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/ai-message/index.ts",
+      "target": "src/mui-treasury/components/ai-message/index.ts",
+      "content": "export * from './ai-message';\n",
+      "type": "registry:item"
+    }
+  ],
+  "meta": {
+    "category": "ai",
+    "subcategory": "elements"
+  }
+}

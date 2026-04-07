@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "layout-root-standalone",
+  "type": "registry:block",
+  "title": "Root Standalone",
+  "description": "Standalone mode fits the layout to its height, useful for POS or chat apps.",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/layout-core.v0.json"
+  ],
+  "files": [
+    {
+      "path": "layout/layout-docs-root/demos/layout-root-standalone.demo.tsx",
+      "target": "src/mui-treasury/layout/layout-docs-root/demos/layout-root-standalone.demo.tsx",
+      "content": "import Box from \"@mui/material/Box\";\nimport Typography from \"@mui/material/Typography\";\n\nimport Content from \"@/registry/layout/layout-core/Content\";\nimport Footer from \"@/registry/layout/layout-core/Footer\";\nimport Header from \"@/registry/layout/layout-core/Header\";\nimport Root from \"@/registry/layout/layout-core/Root\";\n\nexport const meta = {\n  title: \"Root Standalone\",\n  description:\n    \"Standalone mode fits the layout to its height, useful for POS or chat apps.\",\n};\n\nexport function Demo() {\n  return (\n    <Root standalone height=\"350px\" sx={{ minWidth: 200 }}>\n      <Header>\n        <Box sx={{ px: 2 }}>\n          <Typography variant=\"caption\" fontWeight=\"bold\">\n            Standalone\n          </Typography>\n        </Box>\n      </Header>\n      <Content>\n        <Box sx={{ p: 2 }}>\n          {Array.from({ length: 20 }, (_, i) => (\n            <Typography key={i} variant=\"body2\" color=\"text.secondary\">\n              Line {i + 1}\n            </Typography>\n          ))}\n        </Box>\n      </Content>\n      <Footer>\n        <Box sx={{ p: 2 }}>\n          <Typography variant=\"caption\" color=\"text.secondary\">\n            Footer\n          </Typography>\n        </Box>\n      </Footer>\n    </Root>\n  );\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "layout"
+  }
+}

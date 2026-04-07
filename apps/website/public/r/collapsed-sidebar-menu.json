@@ -1,0 +1,43 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsed-sidebar-menu",
+  "type": "registry:item",
+  "title": "Collapsed Sidebar Menu",
+  "description": "A popup menu that appears when the sidebar is collapsed, providing access to nested items",
+  "dependencies": [
+    "@base-ui/react",
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/sidebar-menu-button.json",
+    "http://localhost:3000/r/sidebar-menu.json",
+    "http://localhost:3000/r/sidebar-menu-item.json",
+    "http://localhost:3000/r/sidebar-tooltip.json"
+  ],
+  "files": [
+    {
+      "path": "components/collapsed-sidebar-menu/collapsed-sidebar-menu-classes.ts",
+      "target": "src/mui-treasury/components/collapsed-sidebar-menu/collapsed-sidebar-menu-classes.ts",
+      "content": "export const collapsedSidebarMenuClasses = {\n  root: \"CollapsedSidebarMenu\",\n};\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/collapsed-sidebar-menu/collapsed-sidebar-menu.tsx",
+      "target": "src/mui-treasury/components/collapsed-sidebar-menu/collapsed-sidebar-menu.tsx",
+      "content": "\"use client\";\nimport React from \"react\";\nimport { NavigationMenu } from \"@base-ui/react/navigation-menu\";\nimport SidebarMenuButton from \"../sidebar-menu-button/sidebar-menu-button\";\nimport SidebarMenu from \"../sidebar-menu/sidebar-menu\";\nimport { styled } from \"@mui/material/styles\";\nimport SidebarMenuItem from \"../sidebar-menu-item/sidebar-menu-item\";\nimport SidebarTooltip from \"../sidebar-tooltip/sidebar-tooltip\";\n\ninterface CollapsedSidebarMenuProps\n  extends Omit<NavigationMenu.Root.Props, \"children\"> {\n  children?: React.ReactNode;\n  render: NavigationMenu.Trigger.Props[\"render\"];\n  tooltip?: React.ReactNode;\n}\n\nconst StyledPortal = styled(NavigationMenu.Portal)({\n  display: \"var(--_collapsed, block) var(--_uncollapsed, none)\",\n  zIndex: 1300,\n});\n\nexport function CollapsedSidebarMenuRoot({\n  children,\n  ...props\n}: React.ComponentProps<typeof NavigationMenu.Root>) {\n  const [container, setContainer] = React.useState<HTMLElement | null>(null);\n  const triggerCallbackRef = React.useCallback((node: HTMLElement | null) => {\n    if (node) {\n      setContainer(node.closest(\".EdgeSidebar\") as HTMLElement);\n    }\n  }, []);\n  return (\n    <NavigationMenu.Root orientation=\"vertical\" {...props}>\n      <NavigationMenu.List\n        ref={triggerCallbackRef as React.Ref<HTMLUListElement>}\n        render={<SidebarMenu />}\n      >\n        {children}\n      </NavigationMenu.List>\n\n      <StyledPortal container={container}>\n        <NavigationMenu.Positioner side=\"right\" align=\"start\" sideOffset={4}>\n          <NavigationMenu.Popup render={<MenuPopup />}>\n            <NavigationMenu.Viewport />\n          </NavigationMenu.Popup>\n        </NavigationMenu.Positioner>\n      </StyledPortal>\n    </NavigationMenu.Root>\n  );\n}\n\nexport const CollapsedSidebarMenuItem = function CollapsedSidebarMenu({\n  render,\n  children,\n  tooltip,\n}: CollapsedSidebarMenuProps) {\n  return (\n    <NavigationMenu.Item render={<SidebarMenuItem />}>\n      {tooltip ? (\n        <SidebarTooltip\n          title={tooltip}\n          placement=\"right\"\n          disableTouchListener\n          disableHoverListener={!!children}\n          slotProps={{\n            popper: {\n              sx: {\n                \"[data-base-ui-portal] ~ &, &:has(~ [data-base-ui-portal])\": {\n                  display: \"none\",\n                },\n              },\n            },\n          }}\n        >\n          <NavigationMenu.Trigger render={render} />\n        </SidebarTooltip>\n      ) : (\n        <NavigationMenu.Trigger render={render} />\n      )}\n      <NavigationMenu.Content className=\"CollapsedSidebarMenuContent\">\n        {children}\n      </NavigationMenu.Content>\n    </NavigationMenu.Item>\n  );\n};\n\nconst MenuPopup = styled(SidebarMenu)(({ theme }) => ({\n  \"--_collapsed\": \"var(--__,)\",\n  \"--_uncollapsed\": \"var(--__)\",\n  minWidth: 160,\n  padding: theme.spacing(0.5),\n  border: \"1px solid\",\n  borderColor: (theme.vars || theme).palette.divider,\n  borderRadius: `calc(4px + ${(theme.vars || theme).shape.borderRadius})`,\n  backgroundColor: (theme.vars || theme).palette.background.paper,\n  boxShadow: (theme.vars || theme).shadows[1],\n  \"&:has(.CollapsedSidebarMenuContent:empty)\": {\n    display: \"none\",\n  },\n}));\n\nexport function CollapsedSidebarMenuLink({\n  children,\n  component,\n  ...props\n}: NavigationMenu.Link.Props & {\n  children: React.ReactNode;\n  component?: React.ElementType;\n}) {\n  return (\n    <NavigationMenu.Link\n      render={<SidebarMenuButton as={component} />}\n      {...props}\n    >\n      {children}\n    </NavigationMenu.Link>\n  );\n}\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/collapsed-sidebar-menu/index.ts",
+      "target": "src/mui-treasury/components/collapsed-sidebar-menu/index.ts",
+      "content": "export * from './collapsed-sidebar-menu-classes';\nexport * from './collapsed-sidebar-menu';\n",
+      "type": "registry:item"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "sidebar"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "layout-edge-sidebar-drawer-without-overlay",
+  "type": "registry:block",
+  "title": "Edge Sidebar Drawer Without Overlay",
+  "description": "Drawer mode without the overlay backdrop.",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/layout-core.v0.json"
+  ],
+  "files": [
+    {
+      "path": "layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-drawer-without-overlay.demo.tsx",
+      "target": "src/mui-treasury/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-drawer-without-overlay.demo.tsx",
+      "content": "import React from \"react\";\n\nimport Box from \"@mui/material/Box\";\nimport Button from \"@mui/material/Button\";\nimport Typography from \"@mui/material/Typography\";\n\nimport Content from \"@/registry/layout/layout-core/Content\";\nimport EdgeSidebar, {\n  triggerEdgeDrawer,\n} from \"@/registry/layout/layout-core/EdgeSidebar\";\nimport EdgeSidebarContent from \"@/registry/layout/layout-core/EdgeSidebarContent\";\nimport Footer from \"@/registry/layout/layout-core/Footer\";\nimport Header from \"@/registry/layout/layout-core/Header\";\nimport Root from \"@/registry/layout/layout-core/Root\";\nimport { layoutClasses } from \"@/registry/layout/layout-core/layoutClasses\";\n\nexport const meta = {\n  title: \"Edge Sidebar Drawer Without Overlay\",\n  description: \"Drawer mode without the overlay backdrop.\",\n};\n\nexport function Demo() {\n  return (\n    <Root height=\"300px\">\n      <Header>\n        <Box sx={{ px: 2 }}>\n          <Button\n            className={layoutClasses.EdgeDrawerTrigger}\n            size=\"small\"\n            onClick={() =>\n              triggerEdgeDrawer({ sidebarId: \"sidebar-drawer-no-overlay\" })\n            }\n          >\n            Toggle drawer\n          </Button>\n        </Box>\n      </Header>\n      <EdgeSidebar\n        id=\"sidebar-drawer-no-overlay\"\n        variant={[\"drawer\", { width: \"300px\", withoutOverlay: true }]}\n      >\n        <EdgeSidebarContent>\n          <Box sx={{ p: 2 }}>\n            <Typography variant=\"caption\" color=\"text.secondary\">\n              Drawer without overlay\n            </Typography>\n          </Box>\n        </EdgeSidebarContent>\n      </EdgeSidebar>\n      <Content>\n        <Box sx={{ p: 2 }}>\n          <Typography variant=\"body2\" color=\"text.secondary\">\n            Content — no overlay when drawer is open\n          </Typography>\n        </Box>\n      </Content>\n      <Footer>\n        <Box sx={{ p: 2 }}>\n          <Typography variant=\"caption\" color=\"text.secondary\">\n            Footer\n          </Typography>\n        </Box>\n      </Footer>\n    </Root>\n  );\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "layout"
+  }
+}

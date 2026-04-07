@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ai-reasoning",
+  "type": "registry:item",
+  "title": "Ai Reasoning",
+  "description": "A ai-reasoning item.",
+  "dependencies": [
+    "@mui/material",
+    "lucide-react",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/ai-response.json"
+  ],
+  "files": [
+    {
+      "path": "components/ai-reasoning/ai-reasoning.tsx",
+      "target": "src/mui-treasury/components/ai-reasoning/ai-reasoning.tsx",
+      "content": "\"use client\";\n\nimport Box from \"@mui/material/Box\";\nimport Collapse from \"@mui/material/Collapse\";\nimport type { SxProps, Theme } from \"@mui/material/styles\";\nimport { BrainIcon, ChevronDownIcon } from \"lucide-react\";\nimport React, {\n  createContext,\n  memo,\n  useContext,\n  useEffect,\n  useState,\n  useCallback,\n} from \"react\";\nimport { Response } from \"../ai-response/ai-response\";\n\ntype ReasoningContextValue = {\n  isStreaming: boolean;\n  isOpen: boolean;\n  setIsOpen: (open: boolean) => void;\n  duration: number;\n  handleToggle: () => void;\n};\n\nconst ReasoningContext = createContext<ReasoningContextValue | null>(null);\n\nconst useReasoning = () => {\n  const context = useContext(ReasoningContext);\n  if (!context) {\n    throw new Error(\"Reasoning components must be used within Reasoning\");\n  }\n  return context;\n};\n\nexport type ReasoningProps = {\n  isStreaming?: boolean;\n  open?: boolean;\n  defaultOpen?: boolean;\n  onOpenChange?: (open: boolean) => void;\n  duration?: number;\n  sx?: SxProps<Theme>;\n  children?: React.ReactNode;\n};\n\nconst AUTO_CLOSE_DELAY = 1000;\nconst MS_IN_S = 1000;\n\nexport const Reasoning = memo(\n  ({\n    sx,\n    isStreaming = false,\n    open,\n    defaultOpen = true,\n    onOpenChange,\n    duration: durationProp,\n    children,\n  }: ReasoningProps) => {\n    const [isOpen, setIsOpenState] = useState(open ?? defaultOpen);\n    const [duration, setDuration] = useState(durationProp ?? 0);\n    const [hasAutoClosed, setHasAutoClosed] = useState(false);\n    const [startTime, setStartTime] = useState<number | null>(null);\n\n    const setIsOpen = useCallback(\n      (value: boolean) => {\n        setIsOpenState(value);\n        onOpenChange?.(value);\n      },\n      [onOpenChange],\n    );\n\n    useEffect(() => {\n      if (open !== undefined) {\n        setIsOpenState(open);\n      }\n    }, [open]);\n\n    useEffect(() => {\n      if (durationProp !== undefined) {\n        setDuration(durationProp);\n      }\n    }, [durationProp]);\n\n    // Track duration when streaming starts and ends\n    useEffect(() => {\n      if (isStreaming) {\n        if (startTime === null) {\n          setStartTime(Date.now());\n        }\n      } else if (startTime !== null) {\n        const newDuration = Math.ceil((Date.now() - startTime) / MS_IN_S);\n        setDuration(newDuration);\n        setStartTime(null);\n        onOpenChange?.(isOpen);\n      }\n    }, [isStreaming, startTime, isOpen, onOpenChange]);\n\n    // Auto-open when streaming starts, auto-close when streaming ends (once only)\n    useEffect(() => {\n      if (defaultOpen && !isStreaming && isOpen && !hasAutoClosed) {\n        // Add a small delay before closing to allow user to see the content\n        const timer = setTimeout(() => {\n          setIsOpen(false);\n          setHasAutoClosed(true);\n        }, AUTO_CLOSE_DELAY);\n\n        return () => clearTimeout(timer);\n      }\n    }, [isStreaming, isOpen, defaultOpen, setIsOpen, hasAutoClosed]);\n\n    const handleToggle = useCallback(() => {\n      setIsOpen(!isOpen);\n    }, [isOpen, setIsOpen]);\n\n    return (\n      <ReasoningContext.Provider\n        value={{ isStreaming, isOpen, setIsOpen, duration, handleToggle }}\n      >\n        <Box sx={sx}>{children}</Box>\n      </ReasoningContext.Provider>\n    );\n  },\n);\n\nexport type ReasoningTriggerProps = {\n  children?: React.ReactNode;\n  sx?: SxProps<Theme>;\n};\n\nconst getThinkingMessage = (isStreaming: boolean, duration?: number) => {\n  if (isStreaming || duration === 0) {\n    return <p>Thinking...</p>;\n  }\n  if (duration === undefined) {\n    return <p>Thought for a few seconds</p>;\n  }\n  return <p>Thought for {duration} seconds</p>;\n};\n\nexport const ReasoningTrigger = memo(\n  ({ sx, children }: ReasoningTriggerProps) => {\n    const { isStreaming, isOpen, duration, handleToggle } = useReasoning();\n\n    return (\n      <Box\n        component=\"button\"\n        onClick={handleToggle}\n        sx={{\n          display: \"flex\",\n          width: \"100%\",\n          alignItems: \"center\",\n          gap: 1,\n          color: \"text.secondary\",\n          fontSize: \"0.875rem\",\n          transition: \"color 0.2s\",\n          border: \"none\",\n          background: \"transparent\",\n          cursor: \"pointer\",\n          p: 0,\n          \"&:hover\": {\n            color: \"text.primary\",\n          },\n          ...sx,\n        }}\n      >\n        {children ?? (\n          <>\n            <BrainIcon size={16} />\n            {getThinkingMessage(isStreaming, duration)}\n            <Box\n              component={ChevronDownIcon}\n              size={16}\n              sx={{\n                transition: \"transform 0.2s\",\n                transform: isOpen ? \"rotate(180deg)\" : \"rotate(0deg)\",\n              }}\n            />\n          </>\n        )}\n      </Box>\n    );\n  },\n);\n\nexport type ReasoningContentProps = {\n  children: string;\n  sx?: SxProps<Theme>;\n};\n\nexport const ReasoningContent = memo(\n  ({ sx, children }: ReasoningContentProps) => {\n    const { isOpen } = useReasoning();\n\n    return (\n      <Collapse in={isOpen}>\n        <Box\n          sx={{\n            mt: 2,\n            fontSize: \"0.875rem\",\n            color: \"text.secondary\",\n            ...sx,\n          }}\n        >\n          <Response sx={{ display: \"grid\", gap: 1 }}>{children}</Response>\n        </Box>\n      </Collapse>\n    );\n  },\n);\n\nReasoning.displayName = \"Reasoning\";\nReasoningTrigger.displayName = \"ReasoningTrigger\";\nReasoningContent.displayName = \"ReasoningContent\";\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/ai-reasoning/index.ts",
+      "target": "src/mui-treasury/components/ai-reasoning/index.ts",
+      "content": "export * from './ai-reasoning';\n",
+      "type": "registry:item"
+    }
+  ],
+  "meta": {
+    "category": "ai",
+    "subcategory": "elements"
+  }
+}

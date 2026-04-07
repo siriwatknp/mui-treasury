@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-news",
+  "type": "registry:block",
+  "title": "Card News",
+  "description": "News card with image, Info components using N01 styles, and 'Find Out More' button with hover scale effect",
+  "dependencies": [
+    "@mui/icons-material",
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/info-basic.v0.json",
+    "http://localhost:3000/r/info-n01.v0.json"
+  ],
+  "files": [
+    {
+      "path": "components/card-news/card-news.tsx",
+      "target": "src/mui-treasury/components/card-news/card-news.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport ChevronRightRounded from \"@mui/icons-material/ChevronRightRounded\";\nimport Button from \"@mui/material/Button\";\nimport Card from \"@mui/material/Card\";\nimport CardContent from \"@mui/material/CardContent\";\nimport CardMedia from \"@mui/material/CardMedia\";\nimport { Info } from \"../info-basic/info\";\nimport { InfoEyebrow } from \"../info-basic/info-eyebrow\";\nimport { InfoSubtitle } from \"../info-basic/info-subtitle\";\nimport { InfoTitle } from \"../info-basic/info-title\";\nimport { getInfoN01Styles } from \"../info-n01/info-n01.styles\";\n\nexport function CardNews() {\n  return (\n    <Card\n      sx={(theme) => ({\n        maxWidth: 304,\n        margin: \"auto\",\n        boxShadow: \"none\",\n        borderRadius: 0,\n        transition: \"0.3s cubic-bezier(.47,1.64,.41,.8)\",\n        \"@media (hover: hover)\": {\n          \"&:hover\": {\n            boxShadow: \"0 4px 20px 0 rgba(0,0,0,0.12)\",\n            transform: \"scale(1.04)\",\n          },\n        },\n        ...theme.applyStyles(\"dark\", {\n          \"@media (hover: hover)\": {\n            \"&:hover\": {\n              boxShadow: \"0 4px 20px 0 rgba(0,0,0,0.5)\",\n            },\n          },\n        }),\n      })}\n    >\n      <CardMedia\n        image={\n          \"https://images.unsplash.com/photo-1468774871041-fc64dd5522f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2689&q=80\"\n        }\n        sx={{\n          width: \"100%\",\n          height: 0,\n          paddingBottom: \"56.25%\",\n          backgroundColor: \"rgba(0, 0, 0, 0.08)\",\n        }}\n      />\n      <CardContent sx={{ p: 3 }}>\n        <Info useStyles={getInfoN01Styles}>\n          <InfoEyebrow>March 20, 2019</InfoEyebrow>\n          <InfoTitle>What happened in Thailand?</InfoTitle>\n          <InfoSubtitle>\n            Kayaks crowd Three Sisters Springs, where people and manatees\n            maintain controversial coexistence.\n          </InfoSubtitle>\n        </Info>\n        <Button color={\"primary\"} fullWidth sx={{ mt: 3 }}>\n          Find Out More <ChevronRightRounded />\n        </Button>\n      </CardContent>\n    </Card>\n  );\n}\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "components/card-news/index.ts",
+      "target": "src/mui-treasury/components/card-news/index.ts",
+      "content": "export * from './card-news';\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "card",
+    "exportName": "CardNews"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "why",
+  "type": "registry:block",
+  "title": "Why",
+  "description": "A why demo.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "layout/documentation/demos/why.demo.tsx",
+      "target": "src/mui-treasury/layout/documentation/demos/why.demo.tsx",
+      "content": "export function Demo() {\n  return <div>Hello</div>;\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "layout"
+  }
+}

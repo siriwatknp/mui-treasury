@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-color-01",
+  "type": "registry:block",
+  "title": "Color Radio Selection",
+  "description": "A customizable radio group component with color swatches as selection options",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/radio-color-01/radio-color-01.tsx",
+      "target": "src/mui-treasury/components/radio-color-01/radio-color-01.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport {\n  Box,\n  FormControlLabel,\n  Radio,\n  RadioGroup,\n  Typography,\n} from \"@mui/material\";\n\nconst colors = [\n  { value: \"silver\", color: \"#c0c0c0\", label: \"Silver\" },\n  { value: \"orange\", color: \"#ff8c42\", label: \"Orange\" },\n  { value: \"navy\", color: \"#3d4d6a\", label: \"Navy\" },\n] as const;\n\ninterface ColorSwatchIconProps {\n  color: string;\n  checked?: boolean;\n}\n\nfunction ColorSwatchIcon({ color, checked = false }: ColorSwatchIconProps) {\n  return (\n    <Box\n      sx={(theme) => ({\n        width: 44,\n        height: 44,\n        borderRadius: \"50%\",\n        backgroundColor: color,\n        display: \"flex\",\n        alignItems: \"center\",\n        justifyContent: \"center\",\n        transition: theme.transitions.create([\"box-shadow\"], {\n          duration: theme.transitions.duration.shortest,\n        }),\n        ...(checked && {\n          boxShadow: `0 0 0 2px ${\n            (theme.vars || theme).palette.background.paper\n          }, 0 0 0 4px ${(theme.vars || theme).palette.primary.main}`,\n        }),\n      })}\n    />\n  );\n}\n\nexport function RadioColor01() {\n  const [selectedColor, setSelectedColor] = React.useState(\"silver\");\n\n  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {\n    setSelectedColor(event.target.value);\n  };\n\n  return (\n    <Box sx={{ display: \"flex\", flexDirection: \"column\", gap: 2 }}>\n      <Typography variant=\"h6\">\n        Color - {colors.find((c) => c.value === selectedColor)?.label}\n      </Typography>\n      <RadioGroup\n        aria-label=\"Color selection\"\n        value={selectedColor}\n        onChange={handleChange}\n        sx={{ display: \"flex\", flexDirection: \"row\", gap: 1.5 }}\n      >\n        {colors.map(({ value, color, label }) => (\n          <FormControlLabel\n            key={value}\n            value={value}\n            control={\n              <Radio\n                disableTouchRipple\n                disableFocusRipple\n                icon={<ColorSwatchIcon color={color} />}\n                checkedIcon={<ColorSwatchIcon color={color} checked />}\n                sx={{ p: 0 }}\n              />\n            }\n            label=\"\"\n            aria-label={label}\n            sx={{ m: 0 }}\n          />\n        ))}\n      </RadioGroup>\n    </Box>\n  );\n}\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "components/radio-color-01/index.ts",
+      "target": "src/mui-treasury/components/radio-color-01/index.ts",
+      "content": "export * from './radio-color-01';\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "radio",
+    "exportName": "RadioColor01"
+  }
+}

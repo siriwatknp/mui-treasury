@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-solid-game",
+  "type": "registry:block",
+  "title": "Card Solid Game",
+  "description": "Game cards with solid color backgrounds, logo images, game titles, and hover shadow/scale animations",
+  "dependencies": [
+    "@mui/material",
+    "color",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/card-solid-game/card-solid-game.tsx",
+      "target": "src/mui-treasury/components/card-solid-game/card-solid-game.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport Card from \"@mui/material/Card\";\nimport CardActionArea from \"@mui/material/CardActionArea\";\nimport CardContent from \"@mui/material/CardContent\";\nimport CardMedia from \"@mui/material/CardMedia\";\nimport Grid from \"@mui/material/Grid\";\nimport { styled } from \"@mui/material/styles\";\nimport Typography from \"@mui/material/Typography\";\nimport Color from \"color\";\n\nconst CardActionAreaStyled = styled(CardActionArea)({\n  borderRadius: 16,\n  transition: \"0.2s\",\n  \"@media (hover: hover)\": {\n    \"&:hover\": {\n      transform: \"scale(1.1)\",\n    },\n  },\n});\n\nconst StyledCard = styled(Card)<{ color: string }>(({ theme, color }) => ({\n  minWidth: 256,\n  borderRadius: 16,\n  boxShadow: \"none\",\n  \"@media (hover: hover)\": {\n    \"&:hover\": {\n      boxShadow: `0 6px 12px 0 ${Color(color)\n        .rotate(-12)\n        .darken(0.2)\n        .fade(0.5)}`,\n    },\n  },\n  ...theme.applyStyles(\"dark\", {\n    \"@media (hover: hover)\": {\n      \"&:hover\": {\n        boxShadow: `0 6px 12px 0 ${Color(color)\n          .rotate(-12)\n          .lighten(0.1)\n          .fade(0.3)}`,\n      },\n    },\n  }),\n}));\n\nconst CardContentStyled = styled(CardContent)<{ color: string }>(\n  ({ color }) => ({\n    backgroundColor: color,\n    padding: \"1rem 1.5rem 1.5rem\",\n  }),\n);\n\nconst TypographyTitle = styled(Typography)(() => ({\n  fontFamily: \"Keania One\",\n  fontSize: \"2rem\",\n  color: \"#fff\",\n  textTransform: \"uppercase\",\n}));\n\nconst TypographySubtitle = styled(Typography)(() => ({\n  fontFamily: \"Montserrat\",\n  color: \"#fff\",\n  opacity: 0.87,\n  marginTop: \"2rem\",\n  fontWeight: 500,\n  fontSize: 14,\n}));\n\nconst CustomCard = ({\n  color,\n  image,\n  title,\n  subtitle,\n}: {\n  color: string;\n  image: string;\n  title: string;\n  subtitle: string;\n}) => (\n  <CardActionAreaStyled>\n    <StyledCard color={color}>\n      <CardMedia\n        image={image}\n        sx={{\n          width: \"100%\",\n          height: 0,\n          paddingBottom: \"75%\",\n          backgroundColor: \"rgba(0,0,0,0.08)\",\n        }}\n      />\n      <CardContentStyled color={color}>\n        <TypographyTitle variant={\"h2\"}>{title}</TypographyTitle>\n        <TypographySubtitle>{subtitle}</TypographySubtitle>\n      </CardContentStyled>\n    </StyledCard>\n  </CardActionAreaStyled>\n);\n\nexport function CardSolidGame() {\n  return (\n    <Grid container spacing={4}>\n      <Grid>\n        <CustomCard\n          color={\"#203f52\"}\n          title={\"Dota 2\"}\n          subtitle={\"Be a Legend!\"}\n          image={\n            \"https://steamcdn-a.akamaihd.net/apps/dota2/images/blog/play/dota_heroes.png\"\n          }\n        />\n      </Grid>\n      <Grid>\n        <CustomCard\n          color=\"#4d137f\"\n          title={\"Fortnite\"}\n          subtitle={\"Time to choose side!\"}\n          image={\n            \"https://static1.millenium.org/articles/0/31/21/20/@/713589-calamity-article_list_m-1.jpg\"\n          }\n        />\n      </Grid>\n      <Grid>\n        <CustomCard\n          color=\"#ff9900\"\n          title={\"Overwatch\"}\n          subtitle={\"What are you waiting?\"}\n          image={\"https://images5.alphacoders.com/690/thumb-1920-690653.png\"}\n        />\n      </Grid>\n      <Grid>\n        <CustomCard\n          color=\"#34241e\"\n          title={\"PUBG\"}\n          subtitle={\"Are you ready?\"}\n          image={\n            \"https://www.itp.net/public/styles/full_img_sml/public/images/2019/05/27/44485-pubg_base1.jpg?itok=EF911Xan\"\n          }\n        />\n      </Grid>\n    </Grid>\n  );\n}\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "components/card-solid-game/index.ts",
+      "target": "src/mui-treasury/components/card-solid-game/index.ts",
+      "content": "export * from './card-solid-game';\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "card",
+    "exportName": "CardSolidGame"
+  }
+}
