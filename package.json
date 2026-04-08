@@ -7,6 +7,7 @@
     "build": "turbo build",
     "lint": "turbo lint",
     "typecheck": "turbo typecheck",
+    "dev:cli": "pnpm --filter mui-treasury dev:cli --",
     "changeset": "changeset",
     "release": "node scripts/release.mjs"
   },

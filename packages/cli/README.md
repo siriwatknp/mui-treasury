@@ -20,12 +20,12 @@ mui-treasury add <component...> [options]
 
 Fetches components from the registry and writes them to your project.
 
-| Option | Description | Default |
-|---|---|---|
-| `-c, --cwd <path>` | Target directory | `.` |
-| `-r, --registry <url>` | Registry base URL | `https://mui-treasury.com/r` |
-| `-o, --overwrite` | Overwrite existing files | `false` |
-| `-y, --yes` | Skip confirmation prompts | `false` |
+| Option                 | Description               | Default                      |
+| ---------------------- | ------------------------- | ---------------------------- |
+| `-c, --cwd <path>`     | Target directory          | `.`                          |
+| `-r, --registry <url>` | Registry base URL         | `https://mui-treasury.com/r` |
+| `-o, --overwrite`      | Overwrite existing files  | `false`                      |
+| `-y, --yes`            | Skip confirmation prompts | `false`                      |
 
 **Examples:**
 
@@ -75,11 +75,10 @@ pnpm build
 
 ```bash
 # Start the website dev server (serves the registry at localhost:4418)
-cd apps/website && pnpm dev
+pnpm dev --filter registry
 
-# In another terminal — build and run the CLI
-cd packages/cli
-pnpm dev:cli -- add ai-actions --cwd /tmp/test-project --registry http://localhost:4418/r
+# In another terminal — build and run the CLI from the root
+pnpm dev:cli add ai-actions --cwd /tmp/test-project --registry http://localhost:4418/r
 ```
 
 ### Watch mode
