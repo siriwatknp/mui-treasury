@@ -1,6 +1,6 @@
 # mui-treasury
 
-CLI for adding [MUI Treasury](https://mui-treasury.com) components to your project.
+CLI for adding [MUI Treasury](https://mui-treasury.com) components to your project. Inspired by [shadcn/ui](https://ui.shadcn.com).
 
 ## Usage
 
