@@ -7,7 +7,9 @@
     "mui-treasury": "./dist/index.js"
   },
   "main": "./dist/index.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "engines": {
     "node": ">=18"
   },
@@ -15,19 +17,25 @@
     "dev": "tsup --watch",
     "dev:cli": "tsup && node dist/index.js",
     "build": "tsup",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "commander": "^14.0.0",
-    "zod": "^3.24.0",
-    "prompts": "^2.4.2",
     "kleur": "^4.1.5",
-    "ora": "^8.2.0"
+    "ora": "^8.2.0",
+    "prompts": "^2.4.2",
+    "zod": "^3.24.0"
   },
   "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/prompts": "^2.4.9",
+    "memfs": "4.49.0",
+    "msw": "2.13.1",
     "tsup": "^8.5.0",
     "typescript": "^5.9.0",
-    "@types/prompts": "^2.4.9",
-    "@types/node": "^22.0.0"
+    "vite-tsconfig-paths": "6.1.1",
+    "vitest": "3.2.4"
   }
 }
