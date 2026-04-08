@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sla-performance-card",
+  "type": "registry:item",
+  "title": "Sla Performance Card",
+  "description": "A sla-performance-card block.",
+  "dependencies": [
+    "@mui/material",
+    "@mui/x-charts",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "blocks/sla-performance-card/sla-performance-card.tsx",
+      "target": "src/mui-treasury/blocks/sla-performance-card/sla-performance-card.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport Box from \"@mui/material/Box\";\nimport Card from \"@mui/material/Card\";\nimport CardContent from \"@mui/material/CardContent\";\nimport Stack from \"@mui/material/Stack\";\nimport Typography from \"@mui/material/Typography\";\nimport { PieChart } from \"@mui/x-charts/PieChart\";\nimport { useTheme } from \"@mui/material/styles\";\n\nexport function SlaPerformanceCard() {\n  const theme = useTheme();\n  const withinSLA = 83.3;\n  const breached = 16.7;\n\n  const data = [\n    {\n      id: 0,\n      value: withinSLA,\n      label: \"Within SLA\",\n    },\n    {\n      id: 1,\n      value: breached,\n      label: \"SLA Breached\",\n    },\n  ];\n\n  return (\n    <Card\n      sx={(theme) => ({\n        borderRadius: 2,\n        boxShadow: theme.shadows[1],\n      })}\n    >\n      <CardContent sx={{ p: 2.5 }}>\n        <Typography\n          variant=\"subtitle1\"\n          sx={{\n            fontWeight: 500,\n            mb: 2,\n          }}\n        >\n          SLA Performance\n        </Typography>\n        <Box\n          sx={{\n            display: \"flex\",\n            alignItems: \"center\",\n            justifyContent: \"space-between\",\n            gap: 3,\n          }}\n        >\n          <Box sx={{ flex: 1 }}>\n            <Stack spacing={2}>\n              <Box sx={{ display: \"flex\", alignItems: \"center\", gap: 1.5 }}>\n                <Box\n                  sx={{\n                    width: 12,\n                    height: 12,\n                    borderRadius: 0.5,\n                    bgcolor: \"primary.main\",\n                  }}\n                  aria-hidden=\"true\"\n                />\n                <Box sx={{ flex: 1 }}>\n                  <Typography variant=\"body2\" sx={{ color: \"text.secondary\" }}>\n                    Within SLA\n                  </Typography>\n                  <Typography\n                    variant=\"h5\"\n                    sx={{\n                      fontWeight: 600,\n                      mt: 0.5,\n                    }}\n                  >\n                    {withinSLA}%\n                  </Typography>\n                </Box>\n              </Box>\n\n              <Box sx={{ display: \"flex\", alignItems: \"center\", gap: 1.5 }}>\n                <Box\n                  sx={{\n                    width: 12,\n                    height: 12,\n                    borderRadius: 0.5,\n                    bgcolor: \"error.main\",\n                  }}\n                  aria-hidden=\"true\"\n                />\n                <Box sx={{ flex: 1 }}>\n                  <Typography variant=\"body2\" sx={{ color: \"text.secondary\" }}>\n                    SLA Breached\n                  </Typography>\n                  <Typography\n                    variant=\"h5\"\n                    sx={{\n                      fontWeight: 600,\n                      mt: 0.5,\n                    }}\n                  >\n                    {breached}%\n                  </Typography>\n                </Box>\n              </Box>\n            </Stack>\n          </Box>\n\n          <Box\n            sx={{\n              width: 140,\n              height: 140,\n              position: \"relative\",\n            }}\n            role=\"img\"\n            aria-label={`SLA Performance chart: ${withinSLA}% within SLA, ${breached}% breached`}\n          >\n            <PieChart\n              series={[\n                {\n                  data,\n                  innerRadius: 40,\n                  outerRadius: 60,\n                  paddingAngle: 2,\n                  cornerRadius: 4,\n                  highlightScope: { fade: \"global\", highlight: \"item\" },\n                  highlighted: { additionalRadius: 2 },\n                  valueFormatter: (params) => `${params.value}%`,\n                },\n              ]}\n              colors={[\n                (theme.vars || theme).palette.primary.main,\n                (theme.vars || theme).palette.error.main,\n              ]}\n              width={140}\n              height={140}\n              margin={{\n                left: 0,\n                right: 0,\n                top: 0,\n                bottom: 0,\n              }}\n              slotProps={{\n                legend: {\n                  sx: {\n                    display: \"none\",\n                  },\n                },\n              }}\n            />\n          </Box>\n        </Box>\n      </CardContent>\n    </Card>\n  );\n}\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "blocks/sla-performance-card/index.ts",
+      "target": "src/mui-treasury/blocks/sla-performance-card/index.ts",
+      "content": "export * from './sla-performance-card';\n",
+      "type": "registry:item"
+    }
+  ],
+  "meta": {
+    "screenshot": "/screenshots/sla-performance-card.png",
+    "category": "dashboard",
+    "exportName": "SlaPerformanceCard"
+  }
+}

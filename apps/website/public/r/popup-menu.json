@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "popup-menu",
+  "type": "registry:item",
+  "title": "Popup Menu",
+  "description": "Menu items that open a popup submenu on hover or click.",
+  "dependencies": [
+    "@mui/icons-material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/sidebar.json"
+  ],
+  "files": [
+    {
+      "path": "components/sidebar/demos/popup-menu.demo.tsx",
+      "target": "src/mui-treasury/components/sidebar/demos/popup-menu.demo.tsx",
+      "content": "\"use client\";\nimport ChevronRightRounded from \"@mui/icons-material/ChevronRightRounded\";\nimport FolderRounded from \"@mui/icons-material/FolderRounded\";\nimport BarChartRounded from \"@mui/icons-material/BarChartRounded\";\n\nimport { SidebarContainer } from \"@/registry/components/sidebar/sidebar-container\";\nimport { SidebarMenuList } from \"@/registry/components/sidebar/sidebar-menu-list\";\nimport { SidebarMenuItem } from \"@/registry/components/sidebar/sidebar-menu-item\";\nimport { SidebarMenuButton } from \"@/registry/components/sidebar/sidebar-menu-button\";\nimport { SidebarIcon } from \"@/registry/components/sidebar/sidebar-icon\";\nimport { SidebarText } from \"@/registry/components/sidebar/sidebar-text\";\nimport {\n  PopupMenuList,\n  PopupMenuItem,\n  PopupMenuLink,\n  PopupMenuContent,\n} from \"@/registry/components/sidebar/popup-menu\";\n\nexport const meta = {\n  title: \"Popup Menu\",\n  description: \"Menu items that open a popup submenu on hover or click.\",\n};\n\nexport function Demo() {\n  return (\n    <div style={{ width: 36 }}>\n      <SidebarContainer>\n        <PopupMenuList>\n          {/* 1 nested level */}\n          <PopupMenuItem\n            tooltip=\"Projects\"\n            render={\n              <SidebarMenuButton>\n                <SidebarIcon shrinkSize=\"1.25rem\">\n                  <FolderRounded />\n                </SidebarIcon>\n                <SidebarText>Projects</SidebarText>\n              </SidebarMenuButton>\n            }\n          >\n            <PopupMenuContent>\n              <SidebarMenuList>\n                <SidebarMenuItem>\n                  <PopupMenuLink href=\"#\">Design System</PopupMenuLink>\n                </SidebarMenuItem>\n                <SidebarMenuItem>\n                  <PopupMenuLink href=\"#\">Landing Page</PopupMenuLink>\n                </SidebarMenuItem>\n              </SidebarMenuList>\n            </PopupMenuContent>\n          </PopupMenuItem>\n\n          {/* 2 nested levels */}\n          <PopupMenuItem\n            tooltip=\"Analytics\"\n            render={\n              <SidebarMenuButton>\n                <SidebarIcon shrinkSize=\"1.25rem\">\n                  <BarChartRounded />\n                </SidebarIcon>\n                <SidebarText>Analytics</SidebarText>\n              </SidebarMenuButton>\n            }\n          >\n            <PopupMenuContent>\n              <SidebarMenuList>\n                <PopupMenuList>\n                  <PopupMenuItem\n                    render={\n                      <SidebarMenuButton>\n                        <SidebarText>Reports</SidebarText>\n                        <SidebarIcon>\n                          <ChevronRightRounded />\n                        </SidebarIcon>\n                      </SidebarMenuButton>\n                    }\n                  >\n                    <PopupMenuContent>\n                      <SidebarMenuList>\n                        <SidebarMenuItem>\n                          <PopupMenuLink href=\"#\">Overview</PopupMenuLink>\n                        </SidebarMenuItem>\n                        <SidebarMenuItem>\n                          <PopupMenuLink href=\"#\">Details</PopupMenuLink>\n                        </SidebarMenuItem>\n                      </SidebarMenuList>\n                    </PopupMenuContent>\n                  </PopupMenuItem>\n                </PopupMenuList>\n                <SidebarMenuItem>\n                  <PopupMenuLink href=\"#\">Dashboard</PopupMenuLink>\n                </SidebarMenuItem>\n              </SidebarMenuList>\n            </PopupMenuContent>\n          </PopupMenuItem>\n        </PopupMenuList>\n      </SidebarContainer>\n    </div>\n  );\n}\n",
+      "type": "registry:item"
+    }
+  ],
+  "meta": {
+    "category": "primitive"
+  }
+}

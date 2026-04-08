@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar-menu-item",
+  "type": "registry:block",
+  "title": "Sidebar Menu Item",
+  "description": "A wrapper for a single sidebar menu entry, providing relative positioning for action overlays",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/sidebar-menu-item/sidebar-menu-item-classes.ts",
+      "target": "src/mui-treasury/components/sidebar-menu-item/sidebar-menu-item-classes.ts",
+      "content": "export const sidebarMenuItemClasses = {\n  root: \"SidebarMenuItem\",\n};\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "components/sidebar-menu-item/sidebar-menu-item.tsx",
+      "target": "src/mui-treasury/components/sidebar-menu-item/sidebar-menu-item.tsx",
+      "content": "\"use client\";\nimport React from \"react\";\nimport { styled } from \"@mui/material/styles\";\nimport { sidebarMenuItemClasses } from \"./sidebar-menu-item-classes\";\n\nconst StyledSidebarMenuItem = styled(\"div\", {\n  name: \"SidebarMenuItem\",\n  slot: \"root\",\n})({\n  display: \"flex\",\n  flexDirection: \"column\",\n  position: \"relative\",\n});\n\nconst SidebarMenuItem = React.forwardRef<\n  HTMLDivElement,\n  React.ComponentPropsWithoutRef<\"div\">\n>(function SidebarMenuItem({ className, ...props }, ref) {\n  return (\n    <StyledSidebarMenuItem\n      ref={ref}\n      className={`${sidebarMenuItemClasses.root} ${className || \"\"}`}\n      {...props}\n    />\n  );\n});\n\nexport default SidebarMenuItem;\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "components/sidebar-menu-item/index.ts",
+      "target": "src/mui-treasury/components/sidebar-menu-item/index.ts",
+      "content": "export * from './sidebar-menu-item-classes';\nexport * from './sidebar-menu-item';\nexport { default as SidebarMenuItem } from './sidebar-menu-item';\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "sidebar"
+  }
+}

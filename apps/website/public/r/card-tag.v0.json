@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-tag",
+  "type": "registry:block",
+  "title": "Card Tag",
+  "description": "Decorative tag-shaped card with hole punch cutout design for menu items or categories",
+  "dependencies": [
+    "@mui/icons-material",
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/card-tag/card-tag.tsx",
+      "target": "src/mui-treasury/components/card-tag/card-tag.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport RestaurantMenuRounded from \"@mui/icons-material/RestaurantMenuRounded\";\nimport TripOrigin from \"@mui/icons-material/TripOrigin\";\nimport Card from \"@mui/material/Card\";\nimport CardContent from \"@mui/material/CardContent\";\nimport { styled } from \"@mui/material/styles\";\nimport Typography from \"@mui/material/Typography\";\n\nconst StyledCard = styled(Card)(({ theme }) => ({\n  width: \"180px\",\n  height: \"230px\",\n  margin: \"20px 0 0 0\",\n  border: \"none\",\n  borderTopLeftRadius: \"0px\",\n  borderTopRightRadius: \"0px\",\n  background: (theme.vars || theme).palette.grey[100],\n  position: \"relative\",\n  overflow: \"visible\",\n  ...theme.applyStyles(\"dark\", {\n    background: (theme.vars || theme).palette.grey[800],\n  }),\n\n  \"&:before\": {\n    content: \"' '\",\n    width: \"100%\",\n    borderBottom: `30px solid ${(theme.vars || theme).palette.grey[100]}`,\n    borderLeft: \"20px solid transparent\",\n    borderRight: \"20px solid transparent\",\n    position: \"absolute\",\n    top: \"-30px\",\n    ...theme.applyStyles(\"dark\", {\n      borderBottom: `30px solid ${(theme.vars || theme).palette.grey[800]}`,\n    }),\n  },\n}));\n\nconst TripOriginHole = styled(TripOrigin)(() => ({\n  position: \"absolute\",\n  top: \"-20px\",\n  margin: \"auto\",\n  width: \"100%\",\n  left: 0,\n}));\n\nexport function CardTag() {\n  return (\n    <StyledCard elevation={0}>\n      <CardContent>\n        <TripOriginHole />\n        <RestaurantMenuRounded sx={{ fontSize: 83, width: \"100%\" }} />\n        <Typography align=\"center\" gutterBottom>\n          BreakFast\n        </Typography>\n        <Typography\n          color=\"textSecondary\"\n          variant=\"body2\"\n          align=\"center\"\n          component=\"p\"\n        >\n          eggs benedict <br />\n          BLT sandwich <br />\n          french omelette\n        </Typography>\n      </CardContent>\n    </StyledCard>\n  );\n}\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "components/card-tag/index.ts",
+      "target": "src/mui-treasury/components/card-tag/index.ts",
+      "content": "export * from './card-tag';\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "previewClassName": "bg-white dark:bg-neutral-950",
+    "subcategory": "card",
+    "exportName": "CardTag"
+  }
+}

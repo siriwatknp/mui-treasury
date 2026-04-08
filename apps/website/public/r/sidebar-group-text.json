@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar-group-text",
+  "type": "registry:item",
+  "title": "Sidebar Group Text",
+  "description": "A grid-based text container that animates between collapsed and expanded states",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/sidebar-group-text/sidebar-group-text-classes.ts",
+      "target": "src/mui-treasury/components/sidebar-group-text/sidebar-group-text-classes.ts",
+      "content": "export const sidebarGroupTextClasses = {\n  root: \"SidebarGroupText\",\n};\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/sidebar-group-text/sidebar-group-text.tsx",
+      "target": "src/mui-treasury/components/sidebar-group-text/sidebar-group-text.tsx",
+      "content": "\"use client\";\nimport React from \"react\";\nimport { styled } from \"@mui/material/styles\";\nimport { sidebarGroupTextClasses } from \"./sidebar-group-text-classes\";\n\nconst StyledSidebarGroupText = styled(\"div\", {\n  name: \"SidebarGroupText\",\n  slot: \"root\",\n})({\n  transition:\n    \"var(--tsn, grid-template-rows 0.4s, opacity 0.4s var(--_uncollapsed, 0.2s))\",\n  opacity: \"var(--_collapsed, 0) var(--_uncollapsed, 1)\",\n  display: \"grid\",\n  whiteSpace: \"nowrap\",\n  gridTemplateRows: \"var(--_collapsed, 0fr) var(--_uncollapsed, 1fr)\",\n  \"& > *\": {\n    overflow: \"hidden\",\n  },\n});\n\nconst SidebarGroupText = React.forwardRef<\n  HTMLDivElement,\n  React.ComponentPropsWithoutRef<\"div\">\n>(function SidebarGroupText({ className, ...props }, ref) {\n  return (\n    <StyledSidebarGroupText\n      ref={ref}\n      className={`${sidebarGroupTextClasses.root} ${className || \"\"}`}\n      {...props}\n    />\n  );\n});\n\nexport default SidebarGroupText;\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/sidebar-group-text/index.ts",
+      "target": "src/mui-treasury/components/sidebar-group-text/index.ts",
+      "content": "export * from './sidebar-group-text-classes';\nexport * from './sidebar-group-text';\nexport { default as SidebarGroupText } from './sidebar-group-text';\n",
+      "type": "registry:item"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "sidebar"
+  }
+}

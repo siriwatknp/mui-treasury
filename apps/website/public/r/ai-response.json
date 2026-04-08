@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ai-response",
+  "type": "registry:item",
+  "title": "Ai Response",
+  "description": "A ai-response item.",
+  "dependencies": [
+    "@mui/material",
+    "streamdown",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ai-response/ai-response.tsx",
+      "target": "src/mui-treasury/components/ai-response/ai-response.tsx",
+      "content": "\"use client\";\n\nimport Box from \"@mui/material/Box\";\nimport type { SxProps, Theme } from \"@mui/material/styles\";\nimport { type ComponentProps, memo } from \"react\";\nimport { Streamdown } from \"streamdown\";\n\ntype ResponseProps = ComponentProps<typeof Streamdown> & {\n  sx?: SxProps<Theme>;\n};\n\nexport const Response = memo(\n  ({ sx, ...props }: ResponseProps) => (\n    <Box\n      sx={{\n        width: \"100%\",\n        height: \"100%\",\n        \"& > *:first-child\": {\n          mt: 0,\n        },\n        \"& > *:last-child\": {\n          mb: 0,\n        },\n        '& [data-streamdown=\"ordered-list\"], & [data-streamdown=\"unordered-list\"]':\n          {\n            pl: 2,\n          },\n        ...sx,\n      }}\n    >\n      <Streamdown {...props} />\n    </Box>\n  ),\n  (prevProps, nextProps) => prevProps.children === nextProps.children,\n);\n\nResponse.displayName = \"Response\";\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/ai-response/index.ts",
+      "target": "src/mui-treasury/components/ai-response/index.ts",
+      "content": "export * from './ai-response';\n",
+      "type": "registry:item"
+    }
+  ],
+  "meta": {
+    "category": "ai",
+    "subcategory": "elements"
+  }
+}

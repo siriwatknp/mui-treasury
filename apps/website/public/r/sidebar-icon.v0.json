@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar-icon",
+  "type": "registry:block",
+  "title": "Sidebar Icon",
+  "description": "A fixed-size icon wrapper for sidebar menu buttons with configurable icon dimensions",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/sidebar-menu-item.v0.json"
+  ],
+  "files": [
+    {
+      "path": "components/sidebar-icon/sidebar-icon-classes.ts",
+      "target": "src/mui-treasury/components/sidebar-icon/sidebar-icon-classes.ts",
+      "content": "export const sidebarIconClasses = {\n  root: \"SidebarIcon\",\n};\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "components/sidebar-icon/sidebar-icon.tsx",
+      "target": "src/mui-treasury/components/sidebar-icon/sidebar-icon.tsx",
+      "content": "\"use client\";\nimport React, { useMemo } from \"react\";\nimport { Breakpoint } from \"@mui/material/styles\";\nimport { unstable_memoTheme as memoTheme } from \"@mui/material/utils\";\nimport { styled } from \"@mui/material/styles\";\nimport { sidebarIconClasses } from \"./sidebar-icon-classes\";\nimport { sidebarMenuItemClasses } from \"../sidebar-menu-item/sidebar-menu-item-classes\";\n\ninterface SidebarIconProps {\n  size?: string | Partial<Record<Breakpoint, string>>;\n  shrinkSize?: string | Partial<Record<Breakpoint, string>>;\n}\n\nconst StyledSidebarIcon = styled(\"span\", {\n  name: \"SidebarIcon\",\n  slot: \"root\",\n})<{ ownerState: SidebarIconProps }>(\n  {\n    \"--_mt\": \"0px\",\n    height: \"var(--icon-size, 1rem)\",\n    width: \"var(--icon-size, 1rem)\",\n    transition: \"var(--tsn, cubic-bezier(0.4, 0, 0.2, 1) 0.15s)\",\n    flex: \"none\",\n    display: \"inline-flex\",\n    alignItems: \"center\",\n    justifyContent: \"center\",\n    marginTop: \"var(--_mt)\",\n    \"& svg\": {\n      width: \"100%\",\n      height: \"100%\",\n    },\n    \"&:has(+ .SidebarGroupText)\": {\n      \"--_mt\": \"max(18px - var(--icon-size, 1rem), 0px)\",\n    },\n  },\n  memoTheme(({ theme }) => ({\n    variants: [\n      {\n        props: ({ size }: SidebarIconProps) => !!size,\n        style: ({ size }: Required<SidebarIconProps>) => {\n          const toSize = (v: string) => ({\n            \"--icon-size\": v,\n            height: v,\n            width: v,\n            [`.${sidebarMenuItemClasses.root}:has(&)`]: {\n              \"--icon-w\": v,\n            },\n          });\n          if (typeof size === \"string\") {\n            return toSize(size);\n          }\n          const result: Record<string, unknown> = {};\n          for (const bp of Object.keys(size) as Breakpoint[]) {\n            const val = size[bp];\n            if (!val) continue;\n            if (bp === \"xs\") {\n              Object.assign(result, toSize(val));\n            } else {\n              result[theme.breakpoints.up(bp)] = toSize(val);\n            }\n          }\n          return result;\n        },\n      },\n      {\n        props: ({ shrinkSize }: SidebarIconProps) => !!shrinkSize,\n        style: ({ shrinkSize }: Required<SidebarIconProps>) => {\n          const toCollapsible = (v: string) => ({\n            width: `var(--_collapsed, ${v}) var(--_uncollapsed, var(--icon-size, 1rem))`,\n            height: `var(--_collapsed, ${v}) var(--_uncollapsed, var(--icon-size, 1rem))`,\n          });\n          if (typeof shrinkSize === \"string\") {\n            return toCollapsible(shrinkSize);\n          }\n          const result: Record<string, unknown> = {};\n          for (const bp of Object.keys(shrinkSize) as Breakpoint[]) {\n            const val = shrinkSize[bp];\n            if (!val) continue;\n            if (bp === \"xs\") {\n              Object.assign(result, toCollapsible(val));\n            } else {\n              result[theme.breakpoints.up(bp)] = toCollapsible(val);\n            }\n          }\n          return result;\n        },\n      },\n    ],\n  })),\n);\n\nconst SidebarIcon = React.forwardRef<\n  HTMLSpanElement,\n  Omit<React.ComponentPropsWithoutRef<typeof StyledSidebarIcon>, \"ownerState\"> &\n    SidebarIconProps\n>(function SidebarIcon({ className, size, shrinkSize, ...props }, ref) {\n  const ownerState = useMemo(() => ({ size, shrinkSize }), [size, shrinkSize]);\n  return (\n    <StyledSidebarIcon\n      ref={ref}\n      className={`${sidebarIconClasses.root} ${className || \"\"}`}\n      ownerState={ownerState}\n      {...props}\n    />\n  );\n});\n\nexport default SidebarIcon;\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "components/sidebar-icon/index.ts",
+      "target": "src/mui-treasury/components/sidebar-icon/index.ts",
+      "content": "export * from './sidebar-icon-classes';\nexport * from './sidebar-icon';\nexport { default as SidebarIcon } from './sidebar-icon';\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "sidebar"
+  }
+}

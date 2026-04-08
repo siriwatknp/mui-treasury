@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-engagement",
+  "type": "registry:item",
+  "title": "Card Engagement",
+  "description": "Card with landscape image, Info title/subtitle, and AvatarGroup footer showing participant avatars",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/info-basic.json"
+  ],
+  "files": [
+    {
+      "path": "components/card-engagement/card-engagement.tsx",
+      "target": "src/mui-treasury/components/card-engagement/card-engagement.tsx",
+      "content": "\"use client\";\nimport React from \"react\";\nimport Avatar from \"@mui/material/Avatar\";\nimport AvatarGroup from \"@mui/material/AvatarGroup\";\nimport Box from \"@mui/material/Box\";\nimport Card from \"@mui/material/Card\";\nimport CardContent from \"@mui/material/CardContent\";\nimport CardMedia from \"@mui/material/CardMedia\";\nimport { Info } from \"../info-basic/info\";\nimport { InfoSubtitle } from \"../info-basic/info-subtitle\";\nimport { InfoTitle } from \"../info-basic/info-title\";\n\nexport function CardEngagement() {\n  return (\n    <Card\n      sx={{\n        width: 320,\n        maxWidth: \"100%\",\n        boxShadow:\n          \"0 2px 4px -2px rgba(0,0,0,0.24), 0 4px 24px -2px rgba(0, 0, 0, 0.2)\",\n      }}\n    >\n      <CardMedia\n        image={\n          \"https://image.freepik.com/free-photo/river-foggy-mountains-landscape_1204-511.jpg\"\n        }\n        sx={{\n          width: \"100%\",\n          height: 0,\n          paddingBottom: \"min(56.25%, 200px)\",\n          bgcolor: \"rgba(0, 0, 0, 0.08)\",\n        }}\n      />\n      <CardContent sx={{ p: 3 }}>\n        <Info>\n          <InfoTitle sx={{ fontWeight: \"bold\" }}>Nature Around Us</InfoTitle>\n          <InfoSubtitle>\n            We are going to learn different kinds of species in nature that live\n            together to form amazing environment.\n          </InfoSubtitle>\n        </Info>\n      </CardContent>\n      <Box px={3} pb={3}>\n        <AvatarGroup>\n          <Avatar alt=\"Remy Sharp\" src=\"https://i.pravatar.cc/300?img=1\" />\n          <Avatar alt=\"Travis Howard\" src=\"https://i.pravatar.cc/300?img=2\" />\n          <Avatar alt=\"Cindy Baker\" src=\"https://i.pravatar.cc/300?img=3\" />\n          <Avatar alt=\"Agnes Walker\" src=\"https://i.pravatar.cc/300?img=4\" />\n          <Avatar\n            alt=\"Trevor Henderson\"\n            src=\"https://i.pravatar.cc/300?img=5\"\n            sx={{ mr: \"auto\" }}\n          />\n        </AvatarGroup>\n      </Box>\n    </Card>\n  );\n}\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/card-engagement/index.ts",
+      "target": "src/mui-treasury/components/card-engagement/index.ts",
+      "content": "export * from './card-engagement';\n",
+      "type": "registry:item"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "card",
+    "exportName": "CardEngagement"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar-menu-action",
+  "type": "registry:item",
+  "title": "Sidebar Menu Action",
+  "description": "An absolutely positioned action button within a menu item, hidden when collapsed with optional hover-appear",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/sidebar-menu-button.json",
+    "http://localhost:3000/r/sidebar-group-label.json"
+  ],
+  "files": [
+    {
+      "path": "components/sidebar-menu-action/sidebar-menu-action-classes.ts",
+      "target": "src/mui-treasury/components/sidebar-menu-action/sidebar-menu-action-classes.ts",
+      "content": "export const sidebarMenuActionClasses = {\n  root: \"SidebarMenuAction\",\n};\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/sidebar-menu-action/sidebar-menu-action.tsx",
+      "target": "src/mui-treasury/components/sidebar-menu-action/sidebar-menu-action.tsx",
+      "content": "\"use client\";\nimport React, { useMemo } from \"react\";\nimport ButtonBase from \"@mui/material/ButtonBase\";\nimport { unstable_memoTheme as memoTheme } from \"@mui/material/utils\";\nimport { styled } from \"@mui/material/styles\";\nimport { sidebarMenuActionClasses } from \"./sidebar-menu-action-classes\";\nimport { sidebarMenuButtonClasses } from \"../sidebar-menu-button/sidebar-menu-button-classes\";\nimport { sidebarGroupLabelClasses } from \"../sidebar-group-label/sidebar-group-label-classes\";\n\ninterface SidebarMenuActionProps {\n  hoverAppear?: boolean;\n}\n\nconst StyledSidebarMenuAction = styled(ButtonBase, {\n  name: \"SidebarMenuAction\",\n  slot: \"root\",\n})<{ ownerState: SidebarMenuActionProps }>(\n  memoTheme(({ theme }) => ({\n    position: \"absolute\",\n    right: \"var(--_collapsed, -100%) var(--_uncollapsed, 0.25rem)\",\n    width: \"var(--action-size, 1.5rem)\",\n    height: \"var(--action-size, 1.5rem)\",\n    display: \"inline-flex\",\n    visibility:\n      \"var(--_collapsed, hidden) var(--_uncollapsed, visible)\" as never,\n    justifyContent: \"center\",\n    alignItems: \"center\",\n    top: \"calc(var(--item-h, 2rem)/2 - var(--action-size, 1.5rem)/2)\",\n    color: (theme.vars || theme).palette.text.secondary,\n    transition: \"var(--tsn, right 0.4s)\",\n    borderRadius: (theme.vars || theme).shape.borderRadius,\n    \"&:focus-visible\": {\n      outline: \"2px solid\",\n      outlineColor: (theme.vars || theme).palette.text.primary,\n      outlineOffset: \"2px\",\n    },\n    \"@media (hover: hover)\": {\n      \"&:hover\": {\n        backgroundColor: (theme.vars || theme).palette.action.hover,\n      },\n    },\n    \"& svg\": {\n      width: \"var(--icon-size, 1rem)\",\n      height: \"var(--icon-size, 1rem)\",\n    },\n    \"&:has(+ &)\": {\n      right:\n        \"var(--_collapsed, -100%) var(--_uncollapsed, calc(var(--action-size, 1.5rem) + 0.25rem))\",\n    },\n    variants: [\n      {\n        props: { hoverAppear: true },\n        style: {\n          opacity: 0,\n          \"&:hover, &:focus-visible\": {\n            opacity: 1,\n          },\n          [`.${sidebarMenuButtonClasses.root}:hover ~ &, .${sidebarGroupLabelClasses.root} > &`]:\n            {\n              opacity: 1,\n            },\n        },\n      },\n    ],\n  })),\n);\n\nconst SidebarMenuAction = React.forwardRef<\n  HTMLButtonElement,\n  Omit<\n    React.ComponentPropsWithoutRef<typeof StyledSidebarMenuAction>,\n    \"ownerState\"\n  > &\n    SidebarMenuActionProps\n>(function SidebarMenuAction({ className, hoverAppear, ...props }, ref) {\n  const ownerState = useMemo(() => ({ hoverAppear }), [hoverAppear]);\n  return (\n    <StyledSidebarMenuAction\n      ref={ref}\n      className={`${sidebarMenuActionClasses.root} ${className || \"\"}`}\n      ownerState={ownerState}\n      as={className?.includes(\"CollapsibleTrigger\") ? \"label\" : undefined}\n      {...props}\n    />\n  );\n});\n\nexport default SidebarMenuAction;\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/sidebar-menu-action/index.ts",
+      "target": "src/mui-treasury/components/sidebar-menu-action/index.ts",
+      "content": "export * from './sidebar-menu-action-classes';\nexport * from './sidebar-menu-action';\nexport { default as SidebarMenuAction } from './sidebar-menu-action';\n",
+      "type": "registry:item"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "sidebar"
+  }
+}

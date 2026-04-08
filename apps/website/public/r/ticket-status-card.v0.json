@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ticket-status-card",
+  "type": "registry:block",
+  "title": "Ticket Status Card",
+  "description": "A ticket-status-card block.",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "blocks/ticket-status-card/ticket-status-card.tsx",
+      "target": "src/mui-treasury/blocks/ticket-status-card/ticket-status-card.tsx",
+      "content": "import * as React from \"react\";\nimport Box from \"@mui/material/Box\";\nimport Card from \"@mui/material/Card\";\nimport CardContent from \"@mui/material/CardContent\";\nimport Stack from \"@mui/material/Stack\";\nimport Typography from \"@mui/material/Typography\";\n\nexport function TicketStatusCard() {\n  const totalTickets = 247;\n  const resolved = 82;\n  const inProgress = 13;\n  const escalated = 5;\n\n  return (\n    <Card sx={{ borderRadius: 2 }}>\n      <CardContent sx={{ p: 3 }}>\n        <Stack spacing={2.5}>\n          <Typography variant=\"body2\" color=\"text.secondary\">\n            Current Tickets\n          </Typography>\n\n          <Typography variant=\"h2\" component=\"div\" fontWeight=\"bold\">\n            {totalTickets}\n          </Typography>\n\n          <Box\n            role=\"progressbar\"\n            aria-label={`Ticket distribution: ${resolved}% resolved, ${inProgress}% in progress, ${escalated}% escalated`}\n            aria-valuenow={totalTickets}\n            sx={{\n              display: \"flex\",\n              height: 6,\n              borderRadius: 1,\n              overflow: \"hidden\",\n              bgcolor: \"grey.100\",\n            }}\n          >\n            <Box\n              sx={{\n                width: `${resolved}%`,\n                bgcolor: \"primary.main\",\n              }}\n              aria-hidden=\"true\"\n            />\n            <Box\n              sx={{\n                width: `${inProgress}%`,\n                bgcolor: \"grey.500\",\n              }}\n              aria-hidden=\"true\"\n            />\n            <Box\n              sx={{\n                width: `${escalated}%`,\n                bgcolor: \"error.main\",\n              }}\n              aria-hidden=\"true\"\n            />\n          </Box>\n\n          <Box\n            component=\"dl\"\n            sx={{\n              display: \"grid\",\n              gridTemplateColumns: \"repeat(3, 1fr)\",\n              gap: 2,\n              m: 0,\n            }}\n          >\n            <Box sx={{ textAlign: \"left\" }}>\n              <Typography\n                component=\"dt\"\n                variant=\"body1\"\n                fontWeight=\"bold\"\n                sx={{ display: \"flex\", alignItems: \"center\", gap: 0.5 }}\n              >\n                <Box\n                  component=\"span\"\n                  sx={{\n                    width: 12,\n                    height: 12,\n                    borderRadius: 0.5,\n                    bgcolor: \"primary.main\",\n                    display: \"inline-block\",\n                  }}\n                  aria-hidden=\"true\"\n                />\n                {resolved}%\n              </Typography>\n              <Typography\n                component=\"dd\"\n                variant=\"body2\"\n                color=\"text.secondary\"\n                sx={{ m: 0, mt: 0.5 }}\n              >\n                Resolved\n              </Typography>\n            </Box>\n\n            <Box sx={{ textAlign: \"left\" }}>\n              <Typography\n                component=\"dt\"\n                variant=\"body1\"\n                fontWeight=\"bold\"\n                sx={{ display: \"flex\", alignItems: \"center\", gap: 0.5 }}\n              >\n                <Box\n                  component=\"span\"\n                  sx={{\n                    width: 12,\n                    height: 12,\n                    borderRadius: 0.5,\n                    bgcolor: \"grey.500\",\n                    display: \"inline-block\",\n                  }}\n                  aria-hidden=\"true\"\n                />\n                {inProgress}%\n              </Typography>\n              <Typography\n                component=\"dd\"\n                variant=\"body2\"\n                color=\"text.secondary\"\n                sx={{ m: 0, mt: 0.5 }}\n              >\n                In Progress\n              </Typography>\n            </Box>\n\n            <Box sx={{ textAlign: \"left\" }}>\n              <Typography\n                component=\"dt\"\n                variant=\"body1\"\n                fontWeight=\"bold\"\n                sx={{ display: \"flex\", alignItems: \"center\", gap: 0.5 }}\n              >\n                <Box\n                  component=\"span\"\n                  sx={{\n                    width: 12,\n                    height: 12,\n                    borderRadius: 0.5,\n                    bgcolor: \"error.main\",\n                    display: \"inline-block\",\n                  }}\n                  aria-hidden=\"true\"\n                />\n                {escalated}%\n              </Typography>\n              <Typography\n                component=\"dd\"\n                variant=\"body2\"\n                color=\"text.secondary\"\n                sx={{ m: 0, mt: 0.5 }}\n              >\n                Escalated\n              </Typography>\n            </Box>\n          </Box>\n        </Stack>\n      </CardContent>\n    </Card>\n  );\n}\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "blocks/ticket-status-card/index.ts",
+      "target": "src/mui-treasury/blocks/ticket-status-card/index.ts",
+      "content": "export * from './ticket-status-card';\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "screenshot": "/screenshots/ticket-status-card.png",
+    "category": "dashboard",
+    "exportName": "TicketStatusCard"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-galaxy",
+  "type": "registry:block",
+  "title": "Card Galaxy",
+  "description": "Card with full-height background image, bottom gradient overlay, and white text Info components positioned at bottom",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/info-basic.v0.json"
+  ],
+  "files": [
+    {
+      "path": "components/card-galaxy/card-galaxy.tsx",
+      "target": "src/mui-treasury/components/card-galaxy/card-galaxy.tsx",
+      "content": "\"use client\";\nimport React from \"react\";\nimport Card from \"@mui/material/Card\";\nimport CardMedia from \"@mui/material/CardMedia\";\nimport { styled } from \"@mui/material/styles\";\nimport type { CSSObject } from \"@mui/material/styles\";\nimport { Info } from \"../info-basic/info\";\nimport { InfoEyebrow } from \"../info-basic/info-eyebrow\";\nimport type { InfoSlotStyles } from \"../info-basic/info\";\nimport { InfoSubtitle } from \"../info-basic/info-subtitle\";\nimport { InfoTitle } from \"../info-basic/info-title\";\n\nconst useStyles = (): CSSObject & Partial<InfoSlotStyles> => {\n  return {\n    eyebrow: {\n      color: \"rgba(255, 255, 255, 0.92)\",\n      fontFamily: '\"Spartan\", san-serif',\n      lineHeight: 1.4,\n      fontSize: \"1.0625rem\",\n      letterSpacing: \"1px\",\n      textTransform: \"initial\",\n      marginBottom: 0,\n    },\n    title: {\n      color: \"#fff\",\n      fontSize: \"1.25rem\",\n      fontWeight: \"bold\" as const,\n      lineHeight: 1.2,\n    },\n    subtitle: {\n      color: \"rgba(255, 255, 255, 0.72)\",\n      lineHeight: 1.5,\n      \"&:last-child\": {\n        marginTop: \"1rem\",\n      },\n    },\n  };\n};\n\nconst StyledCard = styled(Card)({\n  borderRadius: \"1rem\",\n  boxShadow: \"none\",\n  position: \"relative\",\n  minWidth: 200,\n  minHeight: 360,\n  \"&:after\": {\n    content: '\"\"',\n    display: \"block\",\n    position: \"absolute\",\n    width: \"100%\",\n    height: \"64%\",\n    bottom: 0,\n    zIndex: 1,\n    background: \"linear-gradient(to top, #000, rgba(0,0,0,0))\",\n  },\n});\n\nconst StyledCardMedia = styled(CardMedia)({\n  position: \"absolute\",\n  width: \"100%\",\n  height: \"100%\",\n  top: 0,\n  left: 0,\n  zIndex: 0,\n  backgroundPosition: \"top\",\n});\n\nconst Content = styled(\"div\")(({ theme }) => ({\n  padding: theme.spacing(3, 2),\n  position: \"absolute\",\n  zIndex: 2,\n  bottom: 0,\n  width: \"100%\",\n}));\n\nexport function CardGalaxy() {\n  return (\n    <StyledCard>\n      <StyledCardMedia\n        image={\n          \"https://image-us.samsung.com/SamsungUS/home/audio/galaxy-buds/MB-04-JustWhatYouWantV4.jpg?$cm-g-fb-full-bleed-img-mobile-jpg$\"\n        }\n      />\n      <Content>\n        <Info useStyles={useStyles}>\n          <InfoEyebrow>Galaxy</InfoEyebrow>\n          <InfoTitle>Buds 2019</InfoTitle>\n          <InfoSubtitle>Perfect for everyone</InfoSubtitle>\n        </Info>\n      </Content>\n    </StyledCard>\n  );\n}\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "components/card-galaxy/index.ts",
+      "target": "src/mui-treasury/components/card-galaxy/index.ts",
+      "content": "export * from './card-galaxy';\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "card",
+    "exportName": "CardGalaxy"
+  }
+}

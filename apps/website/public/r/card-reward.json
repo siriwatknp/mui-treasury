@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-reward",
+  "type": "registry:item",
+  "title": "Card Reward",
+  "description": "Purple gradient reward card with trophy image, contest title, date range, and 'Enter Now' button",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/card-reward/card-reward.tsx",
+      "target": "src/mui-treasury/components/card-reward/card-reward.tsx",
+      "content": "\"use client\";\nimport React from \"react\";\nimport Button from \"@mui/material/Button\";\nimport Card from \"@mui/material/Card\";\nimport CardContent from \"@mui/material/CardContent\";\nimport CardMedia from \"@mui/material/CardMedia\";\nimport { styled } from \"@mui/material/styles\";\nimport Typography from \"@mui/material/Typography\";\n\nconst StyledCard = styled(Card)(({ theme }) => ({\n  width: 360,\n  maxWidth: \"100%\",\n  borderRadius: theme.spacing(2),\n  transition: \"0.3s\",\n  boxShadow: \"0px 14px 80px rgba(34, 35, 58, 0.2)\",\n  position: \"relative\",\n  overflow: \"initial\",\n  display: \"flex\",\n  flexDirection: \"column\",\n  alignItems: \"center\",\n  textAlign: \"center\",\n  paddingLeft: 8,\n  paddingRight: 8,\n  background:\n    \"linear-gradient(34deg, rgba(55,16,83,1) 0%, rgba(162,73,190,1) 29%, rgba(33,16,83,1) 92%)\",\n  [theme.breakpoints.up(\"sm\")]: {\n    textAlign: \"left\",\n    flexDirection: \"row-reverse\",\n  },\n  ...theme.applyStyles(\"dark\", {\n    boxShadow: \"0px 14px 80px rgba(0, 0, 0, 0.5)\",\n  }),\n}));\n\nconst CardMediaMedia = styled(CardMedia)(({ theme }) => ({\n  flexShrink: 0,\n  width: \"30%\",\n  paddingTop: \"30%\",\n  marginLeft: \"auto\",\n  marginRight: \"auto\",\n  [theme.breakpoints.up(\"sm\")]: {\n    marginRight: \"initial\",\n  },\n}));\n\nconst TypographyOverline = styled(Typography)(() => ({\n  lineHeight: 2,\n  color: \"#ffffff\",\n  fontWeight: \"bold\",\n  fontSize: \"0.625rem\",\n  opacity: 0.7,\n}));\n\nconst TypographyHeading = styled(Typography)(() => ({\n  fontWeight: 900,\n  color: \"#ffffff\",\n  letterSpacing: 0.5,\n}));\n\nconst StyledButton = styled(Button)(({ theme }) => ({\n  backgroundColor: \"rgba(255, 255, 255, 0.15)\",\n  borderRadius: 100,\n  paddingLeft: 32,\n  paddingRight: 32,\n  color: \"#ffffff\",\n  textTransform: \"none\",\n  width: \"100%\",\n  \"@media (hover: hover)\": {\n    \"&:hover\": {\n      backgroundColor: \"rgba(255, 255, 255, 0.32)\",\n    },\n  },\n  [theme.breakpoints.up(\"sm\")]: {\n    width: \"auto\",\n  },\n}));\n\nexport function CardReward() {\n  return (\n    <StyledCard>\n      <CardMediaMedia\n        image={\"https://jkkm.info/ui/images/awards/victory.png\"}\n      />\n      <CardContent>\n        <TypographyOverline variant={\"overline\"}>\n          Songkran Festival Contest\n        </TypographyOverline>\n        <TypographyHeading variant={\"h6\"} gutterBottom>\n          Result Announced\n        </TypographyHeading>\n        <StyledButton>View Winners</StyledButton>\n      </CardContent>\n    </StyledCard>\n  );\n}\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/card-reward/index.ts",
+      "target": "src/mui-treasury/components/card-reward/index.ts",
+      "content": "export * from './card-reward';\n",
+      "type": "registry:item"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "card",
+    "exportName": "CardReward"
+  }
+}

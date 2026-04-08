@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs-twitter",
+  "type": "registry:item",
+  "title": "Tabs Twitter",
+  "description": "Twitter-style tabs with bold text, hover effects, and bottom border",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/tabs-twitter/tabs-twitter.tsx",
+      "target": "src/mui-treasury/components/tabs-twitter/tabs-twitter.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport Tab, { tabClasses } from \"@mui/material/Tab\";\nimport Tabs, { tabsClasses } from \"@mui/material/Tabs\";\n\nexport function TabsTwitter() {\n  const [tabIndex, setTabIndex] = React.useState(0);\n  return (\n    <Tabs\n      textColor=\"inherit\"\n      value={tabIndex}\n      onChange={(e, index) => setTabIndex(index)}\n      sx={(theme) => ({\n        width: \"100%\",\n        boxShadow: `inset 0 -1px 0 0 ${(theme.vars || theme).palette.divider}`,\n        [`& .${tabsClasses.indicator}`]: {\n          bgcolor: (theme.vars || theme).palette.info.main,\n        },\n        [`& .${tabClasses.root}`]: {\n          minHeight: 53,\n          minWidth: 80,\n          fontSize: 15,\n          fontWeight: 700,\n          color: (theme.vars || theme).palette.text.secondary,\n          opacity: 1,\n          \"@media (hover: hover)\": {\n            \"&:hover\": {\n              bgcolor: \"action.hover\",\n              color: (theme.vars || theme).palette.info.main,\n            },\n          },\n          [theme.breakpoints.up(\"md\")]: {\n            minWidth: 120,\n          },\n          [`&.${tabClasses.selected}`]: {\n            color: (theme.vars || theme).palette.info.main,\n          },\n          \"&.Mui-focusVisible\": {\n            bgcolor: \"action.hover\",\n          },\n        },\n      })}\n    >\n      <Tab disableRipple label={\"Data\"} />\n      <Tab disableRipple label={\"Rule\"} />\n      <Tab disableRipple label={\"Indexes\"} />\n      <Tab disableRipple label={\"Usage\"} />\n    </Tabs>\n  );\n}\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/tabs-twitter/index.ts",
+      "target": "src/mui-treasury/components/tabs-twitter/index.ts",
+      "content": "export * from './tabs-twitter';\n",
+      "type": "registry:item"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "tabs",
+    "exportName": "TabsTwitter"
+  }
+}

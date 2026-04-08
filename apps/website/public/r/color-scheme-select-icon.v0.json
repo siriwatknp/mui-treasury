@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "color-scheme-select-icon",
+  "type": "registry:block",
+  "title": "Color Scheme Select Icon",
+  "description": "Icon-based select component for switching color schemes",
+  "dependencies": [
+    "@mui/icons-material",
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/color-scheme-select-icon/color-scheme-select-icon.tsx",
+      "target": "src/mui-treasury/components/color-scheme-select-icon/color-scheme-select-icon.tsx",
+      "content": "import React from \"react\";\nimport DarkModeIcon from \"@mui/icons-material/DarkModeOutlined\";\nimport LightModeIcon from \"@mui/icons-material/LightModeOutlined\";\nimport Box from \"@mui/material/Box\";\nimport IconButton from \"@mui/material/IconButton\";\nimport Menu from \"@mui/material/Menu\";\nimport MenuItem from \"@mui/material/MenuItem\";\nimport { useColorScheme } from \"@mui/material/styles\";\n\nexport function ColorSchemeSelectIcon() {\n  const { mode, systemMode, setMode } = useColorScheme();\n  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);\n  const open = Boolean(anchorEl);\n  const handleClick = (event: React.MouseEvent<HTMLElement>) => {\n    setAnchorEl(event.currentTarget);\n  };\n  const handleClose = () => {\n    setAnchorEl(null);\n  };\n  const handleMode = (mode: \"system\" | \"light\" | \"dark\") => () => {\n    setMode(mode);\n    handleClose();\n  };\n  if (!mode) {\n    return (\n      <Box\n        sx={(theme) => {\n          // copy from OutlinedInput\n          const borderColor =\n            theme.palette.mode === \"light\"\n              ? \"rgba(0, 0, 0, 0.23)\"\n              : \"rgba(255, 255, 255, 0.23)\";\n          return {\n            verticalAlign: \"bottom\",\n            display: \"inline-flex\",\n            width: 40,\n            height: 40,\n            borderRadius: (theme.vars || theme).shape.borderRadius,\n            border: \"1px solid\",\n            borderColor: theme.vars\n              ? `rgba(${theme.vars.palette.common.onBackgroundChannel} / 0.23)`\n              : borderColor,\n          };\n        }}\n      />\n    );\n  }\n  const resolvedMode = (systemMode || mode) as \"light\" | \"dark\";\n  const icon = {\n    light: <LightModeIcon />,\n    dark: <DarkModeIcon />,\n  }[resolvedMode];\n  return (\n    <>\n      <IconButton\n        onClick={handleClick}\n        disableRipple\n        size=\"small\"\n        sx={{\n          borderRadius: \"4px\",\n          \"&:hover, &:focus\": {\n            backgroundColor: \"action.hover\",\n          },\n        }}\n        aria-controls={open ? \"color-scheme-menu\" : undefined}\n        aria-haspopup=\"true\"\n        aria-expanded={open ? \"true\" : undefined}\n      >\n        {icon}\n      </IconButton>\n      <Menu\n        anchorEl={anchorEl}\n        id=\"account-menu\"\n        open={open}\n        onClose={handleClose}\n        onClick={handleClose}\n        slotProps={{\n          paper: {\n            variant: \"outlined\",\n            sx: {\n              my: \"4px\",\n            },\n          },\n        }}\n        transformOrigin={{ horizontal: \"right\", vertical: \"top\" }}\n        anchorOrigin={{ horizontal: \"right\", vertical: \"bottom\" }}\n      >\n        <MenuItem selected={mode === \"system\"} onClick={handleMode(\"system\")}>\n          System\n        </MenuItem>\n        <MenuItem selected={mode === \"light\"} onClick={handleMode(\"light\")}>\n          Light\n        </MenuItem>\n        <MenuItem selected={mode === \"dark\"} onClick={handleMode(\"dark\")}>\n          Dark\n        </MenuItem>\n      </Menu>\n    </>\n  );\n}\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "components/color-scheme-select-icon/index.ts",
+      "target": "src/mui-treasury/components/color-scheme-select-icon/index.ts",
+      "content": "export * from './color-scheme-select-icon';\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "color-scheme",
+    "exportName": "ColorSchemeSelectIcon"
+  }
+}

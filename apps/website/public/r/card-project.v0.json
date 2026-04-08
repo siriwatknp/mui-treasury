@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-project",
+  "type": "registry:block",
+  "title": "Card Project",
+  "description": "Project card with brand logo, time indicator, and Info components using Blog styles for title/subtitle",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/info-basic.v0.json",
+    "http://localhost:3000/r/info-n03.v0.json"
+  ],
+  "files": [
+    {
+      "path": "components/card-project/card-project.tsx",
+      "target": "src/mui-treasury/components/card-project/card-project.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport Avatar from \"@mui/material/Avatar\";\nimport Box from \"@mui/material/Box\";\nimport Card from \"@mui/material/Card\";\nimport CardContent from \"@mui/material/CardContent\";\nimport Typography from \"@mui/material/Typography\";\nimport { Info } from \"../info-basic/info\";\nimport { InfoEyebrow } from \"../info-basic/info-eyebrow\";\nimport { InfoSubtitle } from \"../info-basic/info-subtitle\";\nimport { InfoTitle } from \"../info-basic/info-title\";\nimport { getInfoN03Styles } from \"../info-n03/info-n03.styles\";\n\nexport function CardProject() {\n  return (\n    <Card\n      sx={(theme) => ({\n        maxWidth: 343,\n        borderRadius: \"20px\",\n        boxShadow: \"0 8px 40px -12px rgba(0,0,0,0.3)\",\n        transition: \"0.3s\",\n        ...theme.applyStyles(\"dark\", {\n          boxShadow: \"0 8px 40px -12px rgba(0,0,0,0.6)\",\n        }),\n      })}\n    >\n      <Box sx={{ minWidth: 256 }}>\n        <Box\n          sx={{\n            padding: `4px 24px 0`,\n            display: \"flex\",\n            alignItems: \"center\",\n            justifyContent: \"space-between\",\n          }}\n        >\n          <Avatar\n            alt={\"brand logo\"}\n            src=\"https://pngimage.net/wp-content/uploads/2018/06/react-icon-png-7.png\"\n            sx={(theme) => ({\n              width: 48,\n              height: 48,\n              transform: \"translateY(50%)\",\n              \"& > img\": {\n                margin: 0,\n                backgroundColor: \"common.white\",\n              },\n              [theme.breakpoints.up(\"sm\")]: {\n                width: 60,\n                height: 60,\n              },\n            })}\n          />\n          <Typography\n            sx={{\n              textTransform: \"uppercase\",\n              fontSize: 14,\n              color: \"grey.500\",\n              letterSpacing: \"1px\",\n            }}\n          >\n            7 minutes\n          </Typography>\n        </Box>\n        <Box\n          component=\"hr\"\n          sx={(theme) => ({\n            backgroundColor: (theme.vars || theme).palette.grey[200],\n            marginBottom: `${24 - 1}px`,\n            ...theme.applyStyles(\"dark\", {\n              backgroundColor: (theme.vars || theme).palette.grey[800],\n            }),\n            [theme.breakpoints.up(\"sm\")]: {\n              marginBottom: `${30 - 1}px`,\n            },\n          })}\n        />\n      </Box>\n      <CardContent sx={{ p: 3 }}>\n        <Info useStyles={getInfoN03Styles}>\n          <InfoEyebrow>FACEBOOK INC.</InfoEyebrow>\n          <InfoTitle>React</InfoTitle>\n          <InfoSubtitle>\n            A JavaScript library for building user interfaces. Build\n            encapsulated components that manage their own state, then compose\n            them to make complex UIs.\n          </InfoSubtitle>\n        </Info>\n      </CardContent>\n    </Card>\n  );\n}\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "components/card-project/index.ts",
+      "target": "src/mui-treasury/components/card-project/index.ts",
+      "content": "export * from './card-project';\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "card",
+    "exportName": "CardProject"
+  }
+}

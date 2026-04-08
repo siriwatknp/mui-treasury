@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-social",
+  "type": "registry:block",
+  "title": "Card Social",
+  "description": "Social connection card with avatar, user name, mutual friends count, and follow button",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/card-social/card-social.tsx",
+      "target": "src/mui-treasury/components/card-social/card-social.tsx",
+      "content": "import React from \"react\";\nimport Avatar from \"@mui/material/Avatar\";\nimport Box from \"@mui/material/Box\";\nimport Button from \"@mui/material/Button\";\nimport Divider from \"@mui/material/Divider\";\nimport Link from \"@mui/material/Link\";\nimport Typography from \"@mui/material/Typography\";\n\nconst PersonItem = ({ src = \"\", name = \"\", count = 0 }) => {\n  return (\n    <Box sx={{ display: \"flex\", flexWrap: \"nowrap\", gap: 2, p: 2 }}>\n      <Box sx={{ flexShrink: 0 }}>\n        <Avatar src={src} />\n      </Box>\n      <Box\n        sx={{\n          display: \"flex\",\n          flexWrap: \"wrap\",\n          minWidth: 0,\n          gap: 1,\n          alignItems: \"center\",\n          flexGrow: 1,\n          \"& > *\": {\n            minWidth: `clamp(0px, (240px + 1px - 100%) * 999, 100%)`,\n          },\n        }}\n      >\n        <Box sx={{ flexGrow: 1 }}>\n          <Typography\n            noWrap\n            sx={(theme) => ({\n              fontWeight: 600,\n              fontSize: \"1rem\",\n              color: \"#122740\",\n              ...theme.applyStyles(\"dark\", {\n                color: \"#fff\",\n              }),\n            })}\n          >\n            <b>{name}</b>\n          </Typography>\n          <Typography\n            noWrap\n            variant=\"body2\"\n            sx={{\n              fontSize: \"0.875rem\",\n              color: \"#758392\",\n              mt: -0.25,\n            }}\n          >\n            {count} mutual friends\n          </Typography>\n        </Box>\n        <Box>\n          <Button\n            size=\"small\"\n            variant={\"outlined\"}\n            sx={{\n              borderRadius: 5,\n              padding: \"0.125rem 0.75rem\",\n              borderColor: \"#becddc\",\n              fontSize: \"0.75rem\",\n            }}\n          >\n            Follow\n          </Button>\n        </Box>\n      </Box>\n    </Box>\n  );\n};\n\nexport function CardSocial() {\n  return (\n    <Box\n      sx={(theme) => ({\n        display: \"flex\",\n        flexDirection: \"column\",\n        borderRadius: 2,\n        bgcolor: \"rgb(244, 247, 250)\",\n        boxShadow: \"0 8px 16px 0 #BDC9D7\",\n        ...theme.applyStyles(\"dark\", {\n          bgcolor: \"#1f2733\",\n          boxShadow: \"unset\",\n        }),\n      })}\n    >\n      <Box\n        alignItems=\"baseline\"\n        p={2}\n        sx={(theme) => ({\n          display: \"flex\",\n          flexWrap: \"wrap\",\n          borderTopLeftRadius: \"inherit\",\n          borderTopRightRadius: \"inherit\",\n          bgcolor: \"#fff\",\n          ...theme.applyStyles(\"dark\", {\n            bgcolor: \"#2f3c50\",\n          }),\n        })}\n      >\n        <Box sx={{ flexGrow: 1, mr: 1 }}>\n          <Typography variant=\"h6\">\n            <b>Who to follow</b>\n          </Typography>\n        </Box>\n        <Box>\n          <Link href=\"#\">Refresh</Link> • <Link href=\"#\">See all</Link>\n        </Box>\n      </Box>\n      <PersonItem\n        src=\"https://i.pravatar.cc/300?img=10\"\n        name=\"Amber Matthews\"\n        count={6}\n      />\n      <Divider />\n      <PersonItem\n        src=\"https://i.pravatar.cc/300?img=20\"\n        name=\"Russel Robertson\"\n        count={2}\n      />\n      <Divider />\n      <PersonItem\n        src=\"https://i.pravatar.cc/300?img=30\"\n        name=\"Kathleen Ellis\"\n        count={2}\n      />\n    </Box>\n  );\n}\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "components/card-social/index.ts",
+      "target": "src/mui-treasury/components/card-social/index.ts",
+      "content": "export * from './card-social';\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "card",
+    "exportName": "CardSocial"
+  }
+}

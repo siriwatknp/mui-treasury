@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "preference-settings",
+  "type": "registry:block",
+  "title": "Preference Settings",
+  "description": "A clean settings panel with various preference options including selects and toggles",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "blocks/preference-settings/preference-settings.tsx",
+      "target": "src/mui-treasury/blocks/preference-settings/preference-settings.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport Box from \"@mui/material/Box\";\nimport Typography from \"@mui/material/Typography\";\nimport Select from \"@mui/material/Select\";\nimport MenuItem from \"@mui/material/MenuItem\";\nimport Switch from \"@mui/material/Switch\";\nimport Stack from \"@mui/material/Stack\";\nimport Divider from \"@mui/material/Divider\";\nimport FormControl from \"@mui/material/FormControl\";\nimport Card from \"@mui/material/Card\";\n\ninterface SettingRowProps {\n  title: string;\n  description: string;\n  children: React.ReactNode;\n}\n\nfunction SettingRow({ title, description, children }: SettingRowProps) {\n  return (\n    <Box\n      sx={{\n        display: \"flex\",\n        alignItems: \"flex-start\",\n        justifyContent: \"space-between\",\n        py: 1.5,\n        px: 1.5,\n        gap: 3,\n      }}\n    >\n      <Box sx={{ flex: 1 }}>\n        <Typography variant=\"body1\" sx={{ mb: 0.5 }}>\n          {title}\n        </Typography>\n        <Typography variant=\"body2\" sx={{ color: \"text.secondary\" }}>\n          {description}\n        </Typography>\n      </Box>\n      <Box sx={{ display: \"flex\", alignItems: \"center\" }}>{children}</Box>\n    </Box>\n  );\n}\n\nexport function PreferenceSettings() {\n  const [startupView, setStartupView] = React.useState(\"dashboard\");\n  const [autoFormat, setAutoFormat] = React.useState(true);\n  const [weekStart, setWeekStart] = React.useState(\"monday\");\n  const [showAvatars, setShowAvatars] = React.useState(false);\n\n  return (\n    <Card>\n      <Stack divider={<Divider />} sx={{ bgcolor: \"background.paper\" }}>\n        <SettingRow\n          title=\"Week starts on\"\n          description=\"Choose which day begins your calendar week\"\n        >\n          <FormControl size=\"small\">\n            <Select\n              value={weekStart}\n              onChange={(e) => setWeekStart(e.target.value)}\n              variant=\"outlined\"\n              aria-label=\"Week starts on\"\n              aria-describedby=\"week-start-description\"\n              sx={{ minWidth: 150 }}\n            >\n              <MenuItem value=\"sunday\">Sunday</MenuItem>\n              <MenuItem value=\"monday\">Monday</MenuItem>\n              <MenuItem value=\"tuesday\">Tuesday</MenuItem>\n              <MenuItem value=\"wednesday\">Wednesday</MenuItem>\n              <MenuItem value=\"thursday\">Thursday</MenuItem>\n              <MenuItem value=\"friday\">Friday</MenuItem>\n              <MenuItem value=\"saturday\">Saturday</MenuItem>\n            </Select>\n          </FormControl>\n        </SettingRow>\n\n        <SettingRow\n          title=\"Auto-format text\"\n          description=\"Automatically format text patterns like URLs and mentions\"\n        >\n          <Switch\n            checked={autoFormat}\n            onChange={(e) => setAutoFormat(e.target.checked)}\n            color=\"primary\"\n            aria-label=\"Auto-format text\"\n            aria-describedby=\"auto-format-description\"\n          />\n        </SettingRow>\n\n        <SettingRow\n          title=\"Default startup page\"\n          description=\"Choose which page appears when you launch the application\"\n        >\n          <FormControl size=\"small\">\n            <Select\n              value={startupView}\n              onChange={(e) => setStartupView(e.target.value)}\n              variant=\"outlined\"\n              aria-label=\"Default startup page\"\n              aria-describedby=\"startup-page-description\"\n              sx={{ minWidth: 150 }}\n            >\n              <MenuItem value=\"dashboard\">Dashboard</MenuItem>\n              <MenuItem value=\"projects\">Projects</MenuItem>\n              <MenuItem value=\"calendar\">Calendar</MenuItem>\n              <MenuItem value=\"messages\">Messages</MenuItem>\n              <MenuItem value=\"analytics\">Analytics</MenuItem>\n            </Select>\n          </FormControl>\n        </SettingRow>\n\n        <SettingRow\n          title=\"Show user avatars\"\n          description=\"Display profile pictures next to usernames throughout the app\"\n        >\n          <Switch\n            checked={showAvatars}\n            onChange={(e) => setShowAvatars(e.target.checked)}\n            aria-label=\"Show user avatars\"\n            aria-describedby=\"show-avatars-description\"\n          />\n        </SettingRow>\n      </Stack>\n    </Card>\n  );\n}\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "blocks/preference-settings/index.ts",
+      "target": "src/mui-treasury/blocks/preference-settings/index.ts",
+      "content": "export * from './preference-settings';\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "screenshot": "/screenshots/preference-settings.png",
+    "category": "dashboard",
+    "exportName": "PreferenceSettings"
+  }
+}

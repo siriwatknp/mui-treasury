@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-action-01",
+  "type": "registry:block",
+  "title": "Card Action 01",
+  "description": "Card with full-bleed background, heading text overlay, and floating circular add button in bottom-right corner with hover scale effect",
+  "dependencies": [
+    "@mui/material",
+    "@mui/icons-material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/card-action-01/card-action-01.tsx",
+      "target": "src/mui-treasury/components/card-action-01/card-action-01.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport Box from \"@mui/material/Box\";\nimport Card from \"@mui/material/Card\";\nimport Typography from \"@mui/material/Typography\";\nimport AddIcon from \"@mui/icons-material/Add\";\nimport Link from \"@mui/material/Link\";\n\nexport function CardAction01() {\n  return (\n    <Card\n      sx={(theme) => ({\n        border: 0,\n        bgcolor: \"grey.100\",\n        position: \"relative\",\n        overflow: \"hidden\",\n        borderRadius: 3.5,\n        p: 3,\n        width: {\n          xs: 260,\n          sm: 304,\n          md: 344,\n          lg: 372,\n          xl: 405,\n        },\n        minHeight: {\n          xs: 480,\n          sm: 560,\n          md: 628,\n          lg: 680,\n          xl: 740,\n        },\n        maxHeight: {\n          xs: 530,\n          sm: 610,\n          md: 684,\n          lg: 744,\n          xl: 804,\n        },\n        display: \"flex\",\n        flexDirection: \"column\",\n        ...theme.applyStyles(\"dark\", {\n          bgcolor: \"grey.900\",\n        }),\n        transition: \"transform .3s cubic-bezier(0,0,.5,1)\",\n        \"&:hover\": {\n          transform: \"scale(1.023)\",\n        },\n        \"&:has(:focus-visible)\": {\n          outline: `2px solid ${(theme.vars || theme).palette.primary.main}`,\n          outlineOffset: 2,\n        },\n      })}\n    >\n      <Box\n        component=\"figure\"\n        sx={{\n          position: \"absolute\",\n          top: 0,\n          left: 0,\n          width: \"100%\",\n          height: \"100%\",\n          objectFit: \"cover\",\n          zIndex: 0,\n          \"& img\": {\n            width: \"100%\",\n            height: \"100%\",\n            objectFit: \"cover\",\n          },\n        }}\n      >\n        <img src=\"https://placehold.co/405x804/transparent/CCC\" alt=\"\" />\n      </Box>\n\n      <Box sx={{ position: \"relative\", zIndex: 1 }}>\n        <Typography\n          component=\"h3\"\n          gutterBottom\n          sx={{ fontSize: \"14px\", fontWeight: 600 }}\n        >\n          macOS and Apple Intelligence\n        </Typography>\n        <Typography\n          variant=\"h3\"\n          component=\"p\"\n          sx={{\n            fontSize: { xs: \"21px\", md: \"24px\", lg: \"28px\" },\n            textWrap: \"pretty\",\n            fontWeight: 600,\n          }}\n        >\n          Easy to use.\n          <br /> Easy to love.\n        </Typography>\n      </Box>\n\n      <Link sx={{ position: \"absolute\", inset: 0 }} href=\"#\" underline=\"none\">\n        <Box\n          aria-label=\"Add\"\n          sx={{\n            position: \"absolute\",\n            bottom: 20,\n            right: 20,\n            zIndex: 1,\n            width: 36,\n            height: 36,\n            borderRadius: \"50%\",\n            bgcolor: \"grey.800\",\n            color: \"common.white\",\n            display: \"flex\",\n            alignItems: \"center\",\n            justifyContent: \"center\",\n          }}\n        >\n          <AddIcon sx={{ color: \"inherit\" }} />\n        </Box>\n      </Link>\n    </Card>\n  );\n}\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "components/card-action-01/index.ts",
+      "target": "src/mui-treasury/components/card-action-01/index.ts",
+      "content": "export * from './card-action-01';\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "previewClassName": "bg-white dark:bg-neutral-950",
+    "subcategory": "card",
+    "exportName": "CardAction01"
+  }
+}

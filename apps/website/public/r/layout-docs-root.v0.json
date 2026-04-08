@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "layout-docs-root",
+  "type": "registry:block",
+  "title": "Docs Root",
+  "description": "Documentation for the Root layout component covering height, standalone mode, and transition control.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [],
+  "meta": {
+    "category": "layout",
+    "subcategory": "root"
+  }
+}

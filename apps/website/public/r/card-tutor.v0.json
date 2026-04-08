@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-tutor",
+  "type": "registry:block",
+  "title": "Card Tutor",
+  "description": "Compact profile card with avatar, name/title info, and action button using Open Sans typography",
+  "dependencies": [
+    "@mui/icons-material",
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/info-basic.v0.json"
+  ],
+  "files": [
+    {
+      "path": "components/card-tutor/card-tutor.tsx",
+      "target": "src/mui-treasury/components/card-tutor/card-tutor.tsx",
+      "content": "\"use client\";\nimport React from \"react\";\nimport Add from \"@mui/icons-material/Add\";\nimport Avatar from \"@mui/material/Avatar\";\nimport Box from \"@mui/material/Box\";\nimport IconButton from \"@mui/material/IconButton\";\nimport { styled } from \"@mui/material/styles\";\nimport type { Theme } from \"@mui/material/styles\";\nimport { Info } from \"../info-basic/info\";\nimport { InfoSubtitle } from \"../info-basic/info-subtitle\";\nimport { InfoTitle } from \"../info-basic/info-title\";\nimport type { InfoSlotStyles } from \"../info-basic/info\";\n\nconst titleFontSize = \"1rem\";\nconst subtitleFontSize = \"0.75rem\";\nconst family = \"'Open Sans', sans-serif\";\n\nconst tutorInfoStyles = (arg: Theme | { theme: Theme }) => {\n  const theme = \"theme\" in arg ? arg.theme : arg;\n  return {\n    title: {\n      fontFamily: family,\n      color: \"#4d4b5f\",\n      fontSize: titleFontSize,\n      lineHeight: 1.2,\n      fontWeight: 700,\n      marginBottom: \"0.125rem\",\n      ...theme.applyStyles(\"dark\", {\n        color: \"#b5b1d8\",\n      }),\n    },\n    subtitle: {\n      fontFamily: family,\n      color: \"#696c6f\",\n      fontWeight: 500,\n      fontSize: subtitleFontSize,\n      lineHeight: 1.4,\n      ...theme.applyStyles(\"dark\", {\n        color: (theme.vars || theme).palette.grey[500],\n      }),\n    },\n  } satisfies Partial<InfoSlotStyles>;\n};\n\nconst StyledIconButton = styled(IconButton)(({ theme }) => ({\n  backgroundColor: (theme.vars || theme).palette.common.white,\n  boxShadow: \"0 1px 4px 0 rgba(0,0,0,0.12)\",\n  color: \"rgba(0, 0, 0, 0.54)\",\n  \"@media (hover: hover)\": {\n    \"&:hover\": {\n      backgroundColor: (theme.vars || theme).palette.common.white,\n      color: \"#000\",\n    },\n  },\n  ...theme.applyStyles(\"dark\", {\n    backgroundColor: (theme.vars || theme).palette.grey[800],\n    color: \"rgba(255, 255, 255, 0.54)\",\n    \"@media (hover: hover)\": {\n      \"&:hover\": {\n        backgroundColor: (theme.vars || theme).palette.grey[700],\n        color: (theme.vars || theme).palette.common.white,\n      },\n    },\n  }),\n}));\n\nexport function CardTutor() {\n  return (\n    <Box\n      display=\"flex\"\n      p={1.5}\n      gap={2}\n      sx={(theme) => ({\n        bgcolor: \"#f5f5f5\",\n        borderRadius: 4,\n        alignItems: \"center\",\n        ...theme.applyStyles(\"dark\", {\n          bgcolor: (theme.vars || theme).palette.grey[900],\n        }),\n      })}\n    >\n      <Box>\n        <Avatar\n          src={\n            \"https://www.biography.com/.image/t_share/MTU0ODUwMjQ0NjIwNzI0MDAx/chris-hemsworth-poses-during-a-photo-call-for-thor-ragnarok-on-october-15-2017-in-sydney-australia-photo-by-mark-metcalfe_getty-images-for-disney-square.jpg\"\n          }\n          sx={{ borderRadius: 3, width: 48, height: 48 }}\n        />\n      </Box>\n      <Info sx={{ flex: \"auto\" }} useStyles={tutorInfoStyles}>\n        <InfoTitle>Kenny Foster</InfoTitle>\n        <InfoSubtitle>@fosterlive</InfoSubtitle>\n      </Info>\n      <Box ml={1}>\n        <StyledIconButton size=\"small\">\n          <Add />\n        </StyledIconButton>\n      </Box>\n    </Box>\n  );\n}\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "components/card-tutor/index.ts",
+      "target": "src/mui-treasury/components/card-tutor/index.ts",
+      "content": "export * from './card-tutor';\n",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "previewClassName": "bg-white dark:bg-neutral-950",
+    "subcategory": "card",
+    "exportName": "CardTutor"
+  }
+}

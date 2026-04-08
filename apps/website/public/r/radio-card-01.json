@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-card-01",
+  "type": "registry:item",
+  "title": "Radio Card",
+  "description": "Radio card component for selecting options with detailed information",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/radio-card-01/radio-card-01.tsx",
+      "target": "src/mui-treasury/components/radio-card-01/radio-card-01.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport {\n  Box,\n  FormControlLabel,\n  Radio,\n  RadioGroup,\n  Stack,\n  Typography,\n} from \"@mui/material\";\n\nexport function RadioCard01() {\n  const [value, setValue] = React.useState(\"pro-max\");\n\n  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {\n    setValue(event.target.value);\n  };\n\n  return (\n    <RadioGroup\n      name=\"iphone-model\"\n      value={value}\n      onChange={handleChange}\n      sx={[\n        {\n          gap: 2,\n          \"& .MuiFormControlLabel-root\": {\n            m: 0,\n            border: \"2px solid\",\n            borderColor: \"grey.300\",\n            borderRadius: 2,\n            p: 2,\n            transition: \"border-color 0.2s\",\n            cursor: \"pointer\",\n            position: \"relative\",\n            \"@media (hover: hover)\": {\n              \"&:hover\": {\n                borderColor: \"grey.400\",\n              },\n            },\n          },\n          \"& .MuiFormControlLabel-root:has(.Mui-checked)\": {\n            borderColor: \"primary.main\",\n          },\n          \"& .MuiRadio-root\": {\n            // Remove this block if you want to show the radio circle\n            position: \"absolute\",\n            width: 1,\n            height: 1,\n            p: 0,\n            m: -1,\n            overflow: \"hidden\",\n            clip: \"rect(0, 0, 0, 0)\",\n            whiteSpace: \"nowrap\",\n            border: 0,\n          },\n          \"& .MuiFormControlLabel-label\": {\n            width: \"100%\",\n          },\n        },\n        (theme) => ({\n          ...theme.applyStyles(\"dark\", {\n            \"& .MuiFormControlLabel-root\": {\n              borderColor: \"grey.700\",\n              \"@media (hover: hover)\": {\n                \"&:hover\": {\n                  borderColor: \"grey.600\",\n                },\n              },\n            },\n          }),\n        }),\n      ]}\n    >\n      <FormControlLabel\n        value=\"pro\"\n        control={<Radio />}\n        label={\n          <Box\n            sx={{\n              display: \"flex\",\n              justifyContent: \"space-between\",\n              alignItems: \"flex-start\",\n              width: \"100%\",\n              gap: 2,\n            }}\n          >\n            <Stack spacing={0.5}>\n              <Typography variant=\"h6\" component=\"div\">\n                iPhone 17 Pro\n              </Typography>\n              <Typography variant=\"body2\" color=\"text.secondary\">\n                6.3-inch display²\n              </Typography>\n            </Stack>\n            <Stack\n              spacing={0.5}\n              sx={{ textAlign: \"right\", minWidth: \"fit-content\" }}\n            >\n              <Typography variant=\"body1\" sx={{ fontWeight: 600 }}>\n                From $1099\n              </Typography>\n              <Typography variant=\"body2\" color=\"text.secondary\">\n                or $45.79/mo.\n              </Typography>\n              <Typography variant=\"body2\" color=\"text.secondary\">\n                for 24 mo.*\n              </Typography>\n            </Stack>\n          </Box>\n        }\n      />\n      <FormControlLabel\n        value=\"pro-max\"\n        control={<Radio />}\n        label={\n          <Box\n            sx={{\n              display: \"flex\",\n              justifyContent: \"space-between\",\n              alignItems: \"flex-start\",\n              width: \"100%\",\n              gap: 2,\n            }}\n          >\n            <Stack spacing={0.5}>\n              <Typography variant=\"h6\" component=\"div\">\n                iPhone 17 Pro Max\n              </Typography>\n              <Typography variant=\"body2\" color=\"text.secondary\">\n                6.9-inch display²\n              </Typography>\n            </Stack>\n            <Stack\n              spacing={0.5}\n              sx={{ textAlign: \"right\", minWidth: \"fit-content\" }}\n            >\n              <Typography variant=\"body1\" sx={{ fontWeight: 600 }}>\n                From $1199\n              </Typography>\n              <Typography variant=\"body2\" color=\"text.secondary\">\n                or $49.95/mo.\n              </Typography>\n              <Typography variant=\"body2\" color=\"text.secondary\">\n                for 24 mo.*\n              </Typography>\n            </Stack>\n          </Box>\n        }\n      />\n    </RadioGroup>\n  );\n}\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/radio-card-01/index.ts",
+      "target": "src/mui-treasury/components/radio-card-01/index.ts",
+      "content": "export * from './radio-card-01';\n",
+      "type": "registry:item"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "radio",
+    "exportName": "RadioCard01"
+  }
+}

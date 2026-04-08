@@ -1,0 +1,57 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible",
+  "type": "registry:item",
+  "title": "Collapsible Overview",
+  "description": "CSS-only collapsible components using a hidden checkbox to toggle content visibility",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/shared.json"
+  ],
+  "files": [
+    {
+      "path": "components/collapsible/collapsible-button.tsx",
+      "target": "src/mui-treasury/components/collapsible/collapsible-button.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\n\nimport Button, { ButtonProps } from \"@mui/material/Button\";\n\nimport type {\n  ForwardStyledProps,\n  OverridableComponent,\n} from \"../../types/shared/component\";\nimport { ScreenReaderInput } from \"./collapsible-trigger\";\n\nexport type CollapsibleButtonProps = ForwardStyledProps<{\n  defaultChecked?: boolean;\n  component?: React.ElementType;\n}>;\n\nexport const CollapsibleButton = React.forwardRef<\n  HTMLLabelElement,\n  CollapsibleButtonProps & ButtonProps\n>(function CollapsibleButton({ defaultChecked, children, ...props }, ref) {\n  return (\n    <Button\n      ref={ref}\n      variant=\"contained\"\n      component=\"label\"\n      tabIndex={-1}\n      role={undefined}\n      {...props}\n    >\n      <ScreenReaderInput type=\"checkbox\" defaultChecked={defaultChecked} />\n      {children}\n    </Button>\n  );\n}) as OverridableComponent<CollapsibleButtonProps, typeof Button>;\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/collapsible/collapsible-classes.ts",
+      "target": "src/mui-treasury/components/collapsible/collapsible-classes.ts",
+      "content": "export const collapsibleClasses = {\n  trigger: \"CollapsibleTrigger\",\n  content: \"CollapsibleContent\",\n  icon: \"CollapsibleIcon\",\n};\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/collapsible/collapsible-content.tsx",
+      "target": "src/mui-treasury/components/collapsible/collapsible-content.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\n\nimport { styled } from \"@mui/material/styles\";\n\nimport type {\n  ForwardStyledProps,\n  OverridableComponent,\n} from \"../../types/shared/component\";\nimport { collapsibleClasses } from \"./collapsible-classes\";\n\nexport type CollapsibleContentProps = ForwardStyledProps<{\n  component?: React.ElementType;\n}>;\n\nconst StyledCollapsibleContent = styled(\"div\", {\n  name: \"CollapsibleContent\",\n  slot: \"root\",\n})({\n  \"--_i-uncollapsed\": \"var(--__)\", // default when not within EdgeSidebarContent\n  \"--_i-collapsed\": \"var(--__,)\", // value is ignored by default.\n  display: \"grid\",\n  \"& > *\": {\n    overflow: \"hidden\",\n  },\n  \"label:has(:checked) ~ &\": {\n    transition:\n      \"var(--tsn, grid-template-rows 0.4s, visibility 0.4s, opacity 0.4s 0.2s)\",\n    gridTemplateRows: \"var(--_i-collapsed, 0fr) var(--_i-uncollapsed, 1fr)\",\n    [`& .SidebarMenuButton`]: {\n      visibility: \"var(--_i-collapsed, hidden)\" as never,\n    },\n  },\n  \"label:not(:has(:checked)) ~ &\": {\n    gridTemplateRows: \"0fr\",\n    visibility: \"hidden\",\n    opacity: 0,\n    transition:\n      \"var(--tsn, grid-template-rows 0.4s, visibility 0.4s, opacity 0.2s)\",\n    [`& .SidebarMenuAction`]: {\n      visibility: \"hidden\",\n    },\n  },\n  \".EdgeSidebarContent &\": {\n    \"--_i-collapsed\": \"var(--_collapsed)\",\n    \"--_i-uncollapsed\": \"var(--_uncollapsed)\",\n  },\n});\n\nexport const CollapsibleContent = React.forwardRef<\n  HTMLDivElement,\n  CollapsibleContentProps & React.ComponentPropsWithoutRef<\"div\">\n>(function CollapsibleContent({ className, component, ...props }, ref) {\n  return (\n    <StyledCollapsibleContent\n      ref={ref}\n      className={`${collapsibleClasses.content} ${className || \"\"}`}\n      as={component}\n      {...props}\n    />\n  );\n}) as OverridableComponent<CollapsibleContentProps, \"div\">;\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/collapsible/collapsible-icon.tsx",
+      "target": "src/mui-treasury/components/collapsible/collapsible-icon.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\n\nimport { styled } from \"@mui/material/styles\";\n\nimport type { ForwardStyledProps } from \"../../types/shared/component\";\nimport { collapsibleClasses } from \"./collapsible-classes\";\n\nexport type CollapsibleIconProps = ForwardStyledProps<{\n  rotate?: string;\n}>;\n\nconst StyledCollapsibleIcon = styled(\"span\", {\n  name: \"CollapsibleIcon\",\n  slot: \"root\",\n})({\n  \"--_i-uncollapsed\": \"var(--__)\", // default when not within EdgeSidebarContent\n  \"--_i-collapsed\": \"var(--__,)\", // value is ignored by default.\n  flex: \"none\",\n  transition:\n    \"var(--tsn, transform cubic-bezier(0.4, 0, 0.2, 1) 0.15s, visibility 0s var(--_i-uncollapsed, 0.1s))\",\n  visibility: \"var(--_i-collapsed, hidden)\" as never,\n  display: \"inline-flex\",\n  alignItems: \"center\",\n  justifyContent: \"center\",\n  [`.SidebarMenuButton &`]: {\n    position: \"absolute\",\n    right: \"var(--item-px, 0.5rem)\",\n  },\n  \"label:has(:checked) &\": {\n    transform: \"rotate(var(--collapsible-rotate))\",\n  },\n  \".EdgeSidebarContent &\": {\n    \"--_i-collapsed\": \"var(--_collapsed)\",\n    \"--_i-uncollapsed\": \"var(--_uncollapsed)\",\n  },\n});\n\nexport const CollapsibleIcon = React.forwardRef<\n  HTMLSpanElement,\n  CollapsibleIconProps & React.ComponentPropsWithoutRef<\"span\">\n>(function CollapsibleIcon(\n  { className, rotate = \"180deg\", style, ...props },\n  ref,\n) {\n  return (\n    <StyledCollapsibleIcon\n      ref={ref}\n      className={`${collapsibleClasses.icon} ${className || \"\"}`}\n      style={\n        {\n          ...style,\n          \"--collapsible-rotate\": `-${rotate}`,\n        } as React.CSSProperties\n      }\n      {...props}\n    />\n  );\n});\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/collapsible/collapsible-trigger.tsx",
+      "target": "src/mui-treasury/components/collapsible/collapsible-trigger.tsx",
+      "content": "\"use client\";\nimport React from \"react\";\nimport { styled } from \"@mui/material/styles\";\n\ninterface CollapsibleTriggerProps {\n  defaultChecked?: boolean;\n  render: React.ReactNode;\n}\n\nexport const ScreenReaderInput = styled(\"input\")({\n  position: \"absolute\",\n  width: 1,\n  height: 1,\n  padding: 0,\n  margin: -1,\n  overflow: \"hidden\",\n  clip: \"rect(0, 0, 0, 0)\",\n  whiteSpace: \"nowrap\",\n  borderWidth: 0,\n});\n\nconst CollapsibleTrigger = function CollapsibleTrigger({\n  className,\n  defaultChecked,\n  render,\n  ...props\n}: Omit<React.ComponentPropsWithoutRef<\"label\">, \"defaultChecked\"> &\n  CollapsibleTriggerProps) {\n  return React.cloneElement(render as React.ReactElement, {\n    // @ts-expect-error to allow passing props to non-HTML element for flexibility, e.g. SidebarMenuButton\n    component: \"label\",\n    role: undefined, // to prevent the custom role on rendered element.\n    tabIndex: -1, // to prevent focus on the label element, focus should be on the input element for accessibility\n    defaultChecked,\n    _before: (\n      <ScreenReaderInput type=\"checkbox\" defaultChecked={defaultChecked} />\n    ),\n    ...props,\n  });\n};\n\nexport { CollapsibleTrigger };\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/collapsible/index.ts",
+      "target": "src/mui-treasury/components/collapsible/index.ts",
+      "content": "export * from \"./collapsible-classes\";\nexport * from \"./collapsible-trigger\";\nexport * from \"./collapsible-button\";\nexport * from \"./collapsible-content\";\nexport * from \"./collapsible-icon\";\n",
+      "type": "registry:item"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "collapsible"
+  }
+}

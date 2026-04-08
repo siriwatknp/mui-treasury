@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs-inside-triangle",
+  "type": "registry:item",
+  "title": "Tabs Inside Triangle",
+  "description": "Tabs with diagonal triangle shadow effect using CSS transform",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/tabs-inside-triangle/tabs-inside-triangle.tsx",
+      "target": "src/mui-treasury/components/tabs-inside-triangle/tabs-inside-triangle.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport Tab, { tabClasses } from \"@mui/material/Tab\";\nimport Tabs, { tabsClasses } from \"@mui/material/Tabs\";\n\nexport function TabsInsideTriangle() {\n  const [tabIndex, setTabIndex] = React.useState(0);\n  return (\n    <Tabs\n      value={tabIndex}\n      onChange={(e, index) => setTabIndex(index)}\n      sx={(theme) => ({\n        [`& .${tabsClasses.indicator}`]: {\n          display: \"none\",\n        },\n        [`& .${tabClasses.root}`]: {\n          height: 80,\n          width: 150,\n          color: (theme.vars || theme).palette.background.paper,\n          opacity: 0.7,\n          \"&:before\": {\n            position: \"absolute\",\n            top: 65,\n            left: 75,\n            content: '\" \"',\n            height: 30,\n            width: 30,\n            background: \"transparent\",\n            transformOrigin: \"0% 0%\",\n            transform: \"rotate(45deg)\",\n            boxShadow: `0 0 0 150px ${\n              (theme.vars || theme).palette.primary.main\n            }`,\n            zIndex: -1,\n          },\n          [`&.${tabClasses.selected}`]: {\n            opacity: 0.99,\n            color: (theme.vars || theme).palette.background.paper,\n          },\n        },\n      })}\n    >\n      <Tab label={\"Data\"} />\n      <Tab label={\"Rule\"} />\n      <Tab label={\"Indexes\"} />\n      <Tab label={\"Usage\"} />\n    </Tabs>\n  );\n}\n",
+      "type": "registry:item"
+    },
+    {
+      "path": "components/tabs-inside-triangle/index.ts",
+      "target": "src/mui-treasury/components/tabs-inside-triangle/index.ts",
+      "content": "export * from './tabs-inside-triangle';\n",
+      "type": "registry:item"
+    }
+  ],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "tabs",
+    "exportName": "TabsInsideTriangle"
+  }
+}
