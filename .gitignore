@@ -42,10 +42,10 @@ yarn-error.log*
 next-env.d.ts
 
 # generated at build time
-public/r/
+**/public/r/
 .playwright-mcp
 
-examples/**/pnpm-lock.yaml
+**/examples/**/pnpm-lock.yaml
 
 test-results
 playwright-report

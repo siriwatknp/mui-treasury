@@ -22,6 +22,12 @@ importers:
         specifier: ^2.9.4
         version: 2.9.4
 
+  apps/e2e:
+    devDependencies:
+      '@playwright/test':
+        specifier: 1.52.0
+        version: 1.52.0
+
   apps/website:
     dependencies:
       '@ai-sdk/anthropic':
@@ -220,9 +226,6 @@ importers:
       '@next/eslint-plugin-next':
         specifier: 15.4.6
         version: 15.4.6
-      '@playwright/test':
-        specifier: 1.52.0
-        version: 1.52.0
       '@tailwindcss/postcss':
         specifier: ^4
         version: 4.1.3
