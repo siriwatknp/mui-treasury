@@ -50,6 +50,17 @@ Install dependencies:
   pnpm add @mui/material @emotion/react @emotion/styled
 ```
 
+## How it differs from shadcn CLI
+
+This CLI is a simplified fork of [shadcn/ui CLI](https://github.com/shadcn-ui/ui/tree/main/packages/shadcn) with these design decisions:
+
+- **No config file** — no `components.json` needed. Just run `add` and it works.
+- **No auto dependency install** — prints the install command instead. You decide when and how to install.
+- **No AST transforms** — files are written as-is from the registry. No import rewriting, no RSC transforms, no Tailwind config merging.
+- **TypeScript only** — no TSX-to-JSX conversion.
+- **Registry URL as a flag** — pass `--registry` instead of storing it in a config file.
+- **Fixed output path** — components always go to `src/mui-treasury/` relative to `--cwd`.
+
 ## Development
 
 ### Prerequisites
