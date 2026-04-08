@@ -1,16 +1,8 @@
 "use client";
 
 import React from "react";
-import { usePathname } from "next/navigation";
-import clsx from "clsx";
 
-declare global {
-  interface Window {
-    _carbonads?: {
-      refresh?: () => void;
-    };
-  }
-}
+import clsx from "clsx";
 
 type CarbonAdsProps = {
   vertical?: boolean | "fullWidth";
@@ -25,15 +17,13 @@ const CarbonAds = React.memo(function CarbonAds({
   ...props
 }: CarbonAdsProps) {
   const ref = React.useRef<HTMLDivElement | null>(null);
-  const pathname = usePathname();
 
   React.useEffect(() => {
-    const isCarbonExist = document.querySelector("#carbonads");
+    const container = ref.current;
+    if (!container) return;
 
-    if (isCarbonExist && window._carbonads?.refresh) {
-      window._carbonads.refresh();
-      return;
-    }
+    const existingScript = document.getElementById("_carbonads_js");
+    if (existingScript) return;
 
     const script = document.createElement("script");
     script.src = `https://cdn.carbonads.com/carbon.js?serve=CE7DL5QE&placement=mui-treasurycom${
@@ -41,8 +31,8 @@ const CarbonAds = React.memo(function CarbonAds({
     }`;
     script.id = "_carbonads_js";
     script.async = true;
-    ref.current?.appendChild(script);
-  }, [pathname, format]);
+    container.appendChild(script);
+  }, [format]);
 
   return (
     <div
