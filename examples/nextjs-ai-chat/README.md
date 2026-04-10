@@ -210,12 +210,10 @@ The main chat page (`app/page.tsx`) implements:
 The example includes three demonstration tools:
 
 1. **getWeather**: Get weather information for a city
-
    - Parameters: `city` (string), `unit` (celsius/fahrenheit)
    - Returns: temperature, condition, humidity
 
 2. **getCurrentTime**: Get current date and time
-
    - Parameters: none
    - Returns: time, date, ISO timestamp
 

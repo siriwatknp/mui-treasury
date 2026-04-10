@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import InitColorSchemeScript from "@mui/material/InitColorSchemeScript";
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+
 // TODO: Uncomment after `npx shadcn-ui@latest add https://mui-treasury.com/r/mui-treasury.json`
 // import { ThemeProvider } from "@/mui-treasury/theme";
 import "./globals.css";

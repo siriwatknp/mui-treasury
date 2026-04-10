@@ -1,9 +1,9 @@
-import { ollama } from "ollama-ai-provider-v2";
 // To switch to other providers, e.g. Google Gemini:
 // create .env.local with GOOGLE_GENERATIVE_AI_API_KEY=<your_api_key>
 // `npm install @ai-sdk/google` and uncomment the import below
 // import { google } from "@ai-sdk/google";
-import { convertToModelMessages, streamText, stepCountIs, tool } from "ai";
+import { convertToModelMessages, stepCountIs, streamText, tool } from "ai";
+import { ollama } from "ollama-ai-provider-v2";
 import { z } from "zod";
 
 export async function POST(req: Request) {
@@ -59,7 +59,7 @@ export async function POST(req: Request) {
       {
         status: 500,
         headers: { "Content-Type": "application/json" },
-      }
+      },
     );
   }
 }
