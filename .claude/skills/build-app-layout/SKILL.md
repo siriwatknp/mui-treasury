@@ -3,189 +3,67 @@ name: build-app-layout
 description: Always use this skill when building an app layout using the layout core components in the registry. The app layout usually consists of a header, content area, and footer, and may also include a sidebar or navigation menu.
 ---
 
-**Announce on start**: You must announce "Using build-app-layout skill" when this skill is invoked.
+## Installation
 
-## Layout Core Components
+Components are installed via the `mui-treasury` CLI into `src/mui-treasury/`:
 
-All components are imported from `@/registry/layout/layout-core/`.
+```bash
+# Layout core (Root, Header, Content, Footer, EdgeSidebar, InsetSidebar, etc.)
+npx mui-treasury@latest add layout-core
 
-### Basic Structure
-
-The minimal layout uses `Root`, `Header`, `Content`, and `Footer`:
-
-```tsx
-import Content from "@/registry/layout/layout-core/Content";
-import Footer from "@/registry/layout/layout-core/Footer";
-import Header from "@/registry/layout/layout-core/Header";
-import Root from "@/registry/layout/layout-core/Root";
-
-<Root>
-  <Header>…</Header>
-  <Content>…</Content>
-  <Footer>…</Footer>
-</Root>;
+# Sidebar primitives (SidebarContainer, SidebarMenuButton, SidebarIcon, etc.)
+npx mui-treasury@latest add sidebar
 ```
 
-- `Root` uses CSS Grid with `gridTemplateRows: "auto 1fr auto"` — Header and Footer take natural height, Content fills remaining space.
-- `Root` fills the viewport height by default (`min-height: 100svh`). Override with `height` prop or `sx={{ minHeight: 400 }}` for constrained demos.
-- `Header` is `position: sticky` at top with a bottom border line by default.
-- `Footer` has a top border line by default.
-- `Content` is rendered as `<main>`.
+After installation, import from:
 
-### Padding Rule
+- `@/mui-treasury/layout/layout-core` — layout components
+- `@/mui-treasury/components/sidebar` — sidebar primitives
 
-**Apply padding to the children of layout components, not the layout components themselves.** Layout components (`Header`, `Content`, `Footer`, `InsetAvoidingView`) manage internal structure (grid areas, sticky positioning, flex layout). Adding padding directly can break their behavior.
+## Recommended Defaults
 
-```tsx
-// ✅ Correct — padding on children
-<Header>
-  <Box sx={{ px: 2 }}>…</Box>
-</Header>
-<Footer>
-  <InsetAvoidingView sx={{ p: 2 }}>…</InsetAvoidingView>
-</Footer>
+Use these as starting values unless the user specifies otherwise.
 
-// ❌ Incorrect — padding on layout component
-<Header sx={{ px: 2 }}>…</Header>
-<Footer sx={{ p: 2 }}>…</Footer>
-```
+### Collapsible EdgeSidebar
 
-### Root Props
+- `collapsedWidth: "52px"`
+- `SidebarIcon shrinkSize="20px"` to center icons in the collapsed sidebar
+- `permanentAutoCollapse="lg"` to auto-collapse below the `lg` breakpoint
+- `SidebarRail` as a drag-to-collapse trigger
+- Use sidebar primitives for sidebar content — they auto-adapt to collapsed state
+- left/right arrow icons for `EdgeSidebarCollapser`
+- down arrow icon for `CollapsibleIcon`
 
-- `height`: override the layout height, accepts string or responsive object
-  ```tsx
-  <Root height="500px">…</Root>
-  <Root height={{ xs: "300px", md: "400px" }}>…</Root>
-  ```
-- `standalone`: fits the layout to its height with scrollable Content area (useful for POS, chat apps). Also makes drawer EdgeSidebar absolute-positioned within the Root instead of fixed to the viewport.
-  ```tsx
-  <Root standalone height="350px">
-    <Header>…</Header>
-    <Content>…scrollable content…</Content>
-    <Footer>…</Footer>
-  </Root>
-  ```
-  When using a drawer EdgeSidebar in a non-full-frame layout (e.g. constrained height demo), use `standalone` with `overflow: "hidden"` to keep the drawer within the Root:
-  ```tsx
-  <Root standalone sx={{ overflow: "hidden" }} height="300px">
-    <Header>…</Header>
-    <EdgeSidebar id="sidebar" variant={["drawer", { width: "300px" }]}>
-      …
-    </EdgeSidebar>
-    <Content>…</Content>
-  </Root>
-  ```
-- `disableTransition`: disables grid column transitions (sidebar collapse is instant)
-  ```tsx
-  <Root disableTransition>…</Root>
-  ```
+### SidebarMenuButton
 
-### Iframe Preview for Responsive Demos
+- should use the `component` prop for polymorphism, e.g. `<SidebarMenuButton component="a" href="/dashboard">` or `<SidebarMenuButton component={Link} to="/dashboard">`
 
-When a demo showcases responsive behavior (breakpoint-based visibility, auto-collapse, drawer↔permanent), add `previewMode: "iframe"` to the demo meta and use `height="90vh"` on Root so the iframe is resizable:
+## Documentation
 
-```tsx
-export const meta = {
-  title: "…",
-  description: "…",
-  previewMode: "iframe" as const,
-};
+Read the relevant page based on your needs:
 
-export function Demo() {
-  return <Root height="90vh">…</Root>;
-}
-```
+- [Tutorials](pages/tutorials.md) — Step-by-step lessons to build your first layout. Start here if unfamiliar with the layout system.
+- [Reference Guides](pages/reference-guides.md) — Complete API for all layout-core components and sidebar primitives with props tables.
+- [Explanation](pages/explanation.md) — Architecture decisions: CSS Grid + CSS variables, how collapse works, EdgeSidebar vs InsetSidebar, term mappings.
 
-### Header Props
+### How-to Guides
 
-- `height`: fixed value (`"48px"`) or responsive object (`{ xs: "48px", md: "64px" }`). Sets the CSS variable `--jun-H-h` on the Root.
-- `clip`: controls whether the Header spans over the EdgeSidebar. Accepts `"left"`, `"right"`, `true` (both), or responsive object.
-  ```tsx
-  <Root>
-    <Header clip="left">…</Header>
-    <EdgeSidebar variant={["permanent", { width: "200px" }]}>…</EdgeSidebar>
-    <Content>…</Content>
-  </Root>
-  ```
+Integration:
 
-### InsetSidebar Props
+- [Next.js Integration](pages/how-to-guides/nextjs-integration.md) — Set up layout in App Router with layout.tsx/page.tsx split, MUI Treasury theme
 
-`InsetSidebar` is a secondary sidebar placed inside `Content` as first or last child.
+Layout patterns:
 
-- `width`: fixed (`"220px"`) or responsive (`{ md: "200px", lg: "260px" }`).
-- `position`: `"sticky"` (default), `"fixed"`, or `"absolute"`.
-  - **sticky**: sticks under header on scroll until content ends.
-  - **absolute**: spans from header to bottom, use with `standalone` Root and `InsetAvoidingView` in Footer.
+- [Dashboard Layout](pages/how-to-guides/dashboard-layout.md) — Collapsible left sidebar, drawer on mobile, permanent on desktop
+- [Chat/Messenger Layout](pages/how-to-guides/chat-layout.md) — Permanent sidebar for conversation list, standalone scrollable content, InsetSidebar for details
+- [Blog/Content Layout](pages/how-to-guides/blog-layout.md) — Sticky InsetSidebar for table of contents, no EdgeSidebar
+- [Shopping Cart / Right Sidebar](pages/how-to-guides/shopping-cart-layout.md) — Right-side drawer for cart/checkout panel
 
-```tsx
-import InsetContent from "@/registry/layout/layout-core/InsetContent";
-import InsetSidebar from "@/registry/layout/layout-core/InsetSidebar";
+Sidebar features:
 
-<Content>
-  <Box>…main content…</Box>
-  <InsetSidebar width="200px">
-    <InsetContent>…</InsetContent>
-  </InsetSidebar>
-</Content>;
-```
+- [Header Clipping](pages/how-to-guides/header-clipping.md) — Make the header span over the sidebar for full-height sidebar
+- [Nested Popup Menus (3 Levels)](pages/how-to-guides/nested-popup-menus.md) — Multi-level flyout menus when sidebar is collapsed, with collapsible fallback when uncollapsed
 
-### Footer & InsetAvoidingView
+Demos:
 
-When using an absolute `InsetSidebar` in a standalone layout, the sidebar overlaps the footer. Wrap footer content in `InsetAvoidingView` to avoid the overlap.
-
-```tsx
-import InsetAvoidingView from "@/registry/layout/layout-core/InsetAvoidingView";
-import InsetContent from "@/registry/layout/layout-core/InsetContent";
-import InsetSidebar from "@/registry/layout/layout-core/InsetSidebar";
-
-<Root standalone>
-  <Header>…</Header>
-  <Content>
-    <Box>…</Box>
-    <InsetSidebar position="absolute" width="200px">
-      <InsetContent>…</InsetContent>
-    </InsetSidebar>
-  </Content>
-  <Footer>
-    <InsetAvoidingView sx={{ p: 2 }}>…</InsetAvoidingView>
-  </Footer>
-</Root>;
-```
-
-### EdgeSidebar ID Rule
-
-**Always add a unique `id` to `EdgeSidebar` and `EdgeSidebarRight`.** This ensures trigger functions (`triggerEdgeCollapse`, `triggerEdgeDrawer`) and `EdgeSidebarCollapser` target the correct sidebar when multiple sidebars exist.
-
-```tsx
-<EdgeSidebar id="main-sidebar" variant={…}>…</EdgeSidebar>
-<EdgeSidebarRight id="right-sidebar" variant={…}>…</EdgeSidebarRight>
-```
-
-### EdgeSidebar Collapse Components
-
-Components for sidebar collapse UI, imported from `@/registry/layout/layout-core/`.
-
-- `EdgeSidebarCollapser`: wraps a button to toggle sidebar collapse. Automatically finds the closest sidebar.
-
-  ```tsx
-  import EdgeSidebarCollapser from "@/registry/layout/layout-core/EdgeSidebarCollapser";
-
-  <EdgeSidebarCollapser render={<Button>Toggle</Button>} />;
-  ```
-
-- `EdgeCollapsedVisible`: shows its child only when sidebar is collapsed.
-- `EdgeUncollapsedVisible`: shows its child only when sidebar is expanded.
-
-  ```tsx
-  import EdgeCollapsedVisible from "@/registry/layout/layout-core/EdgeCollapsedVisible";
-  import EdgeUncollapsedVisible from "@/registry/layout/layout-core/EdgeUncollapsedVisible";
-
-  <EdgeSidebarCollapser
-    render={
-      <Button>
-        <EdgeCollapsedVisible render={<ChevronRightIcon />} />
-        <EdgeUncollapsedVisible render={<ChevronLeftIcon />} />
-      </Button>
-    }
-  />;
-  ```
+- [Iframe Preview for Responsive Demos](pages/how-to-guides/iframe-preview.md) — Configure demos that showcase responsive behavior
