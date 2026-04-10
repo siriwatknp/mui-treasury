@@ -1,6 +1,6 @@
 ---
 name: build-app-layout
-description: Always use this skill when building an app layout using the layout core components in the registry. The app layout usually consists of a header, content area, and footer, and may also include a sidebar or navigation menu.
+description: Use this skill for any task involving app layouts — building new layouts, adding sidebars or navigation to existing apps, migrating an existing layout to mui-treasury components, or reviewing/improving layout structure. Trigger whenever the user mentions dashboard layout, sidebar navigation, app shell, header/footer/content structure, collapsible sidebar, drawer navigation, layout with sidebar, or asks to "build a layout", "add a sidebar", "set up the app layout", "review the layout". Also trigger when a mockup or design shows an app with sidebar + header + content regions, even if the user doesn't say "layout" explicitly.
 ---
 
 ## Installation
