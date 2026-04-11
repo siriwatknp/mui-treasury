@@ -55,7 +55,7 @@ const StyledSidebarMenuList = styled("div", {
           position: "relative",
           marginLeft:
             "calc(var(--icon-w, 1rem) + 2*var(--item-gap, 0.5rem) - 0.5rem)",
-          marginRight: "2px",
+          marginRight: 0,
           "&::before": {
             content: '""',
             display: "block",

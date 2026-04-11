@@ -20,9 +20,9 @@ const StyledSidebarRail = styled("button", {
   slot: "root",
 })(
   memoTheme(({ theme }) => ({
-    "--indicator-w": "2px",
+    "--indicator-w": "6px",
     "--touch-size": "20px",
-    "--offset": "calc(-1 * (var(--indicator-w)/2 + var(--touch-size)/2))",
+    "--offset": "calc(-1 * var(--touch-size)/2)",
     position: "absolute",
     top: 0,
     bottom: 0,

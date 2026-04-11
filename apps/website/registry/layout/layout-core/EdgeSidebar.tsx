@@ -89,12 +89,12 @@ function applyPermanentStyles(params: PermanentConfig) {
         [`.${layoutClasses.EdgeSidebarCollapser}`]: {
           display: "var(--display, inline-flex)",
           "--_sidebarCollapsed": "var(--collapsed, 1)",
-          [`.${layoutClasses.EdgeCollapsedVisible}`]: {
-            display: "var(--collapsed, inline-flex) var(--uncollapsed, none)",
-          },
-          [`.${layoutClasses.EdgeUncollapsedVisible}`]: {
-            display: "var(--collapsed, none) var(--uncollapsed, inline-flex)",
-          },
+        },
+        [`.${layoutClasses.EdgeCollapsedVisible}`]: {
+          display: "var(--collapsed, inline-flex) var(--uncollapsed, none)",
+        },
+        [`.${layoutClasses.EdgeUncollapsedVisible}`]: {
+          display: "var(--collapsed, none) var(--uncollapsed, inline-flex)",
         },
       }),
       [`.${layoutClasses.EdgeDrawerTrigger}`]: {

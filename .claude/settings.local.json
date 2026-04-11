@@ -49,7 +49,15 @@
       "Bash(npx tsx:*)",
       "Bash(cat:*)",
       "Bash(pnpm test:*)",
-      "Bash(pnpm test:coverage:*)"
+      "Bash(pnpm test:coverage:*)",
+      "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(item['name']\\) for item in data.get\\('items',data\\) if 'layout' in item['name'] or 'sidebar' in item['name']]\")",
+      "Bash(python3 -c \" import json,sys data=json.load\\(sys.stdin\\) for f in data.get\\('files',[]\\): print\\(f.get\\('target',''\\) or f.get\\('path',''\\)\\) \")",
+      "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(item['name']\\) for item in data.get\\('items',data\\) if 'collaps' in item['name'] or 'sidebar-nav' in item['name']]\")",
+      "Bash(python3 -c ':*)",
+      "Bash(xargs ls:*)",
+      "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(item['name']\\) for item in data.get\\('items',data\\) if 'theme' in item['name']]\")",
+      "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(item['name']\\) for item in data.get\\('items',data\\) if 'theme' in item['name'] or 'minimal' in item['name'] or 'provider' in item['name']]\")",
+      "Bash(wc:*)"
     ],
     "deny": []
   },

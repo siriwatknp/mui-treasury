@@ -89,14 +89,12 @@ function applyPermanentRightStyles(params: PermanentConfig) {
         [`.${layoutClasses.EdgeSidebarRightCollapser}`]: {
           display: "var(--display, inline-flex)",
           "--_sidebarCollapsed": "var(--collapsed-R, 1)",
-          [`.${layoutClasses.EdgeCollapsedVisible}`]: {
-            display:
-              "var(--collapsed-R, inline-flex) var(--uncollapsed-R, none)",
-          },
-          [`.${layoutClasses.EdgeUncollapsedVisible}`]: {
-            display:
-              "var(--collapsed-R, none) var(--uncollapsed-R, inline-flex)",
-          },
+        },
+        [`.${layoutClasses.EdgeCollapsedVisible}`]: {
+          display: "var(--collapsed-R, inline-flex) var(--uncollapsed-R, none)",
+        },
+        [`.${layoutClasses.EdgeUncollapsedVisible}`]: {
+          display: "var(--collapsed-R, none) var(--uncollapsed-R, inline-flex)",
         },
       }),
       [`.${layoutClasses.EdgeDrawerTriggerRight}`]: {
