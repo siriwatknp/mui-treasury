@@ -29,7 +29,7 @@ Use these as starting values unless the user specifies otherwise.
 - `collapsedWidth: "52px"`
 - `SidebarIcon shrinkSize="20px"` to center icons in the collapsed sidebar
 - `permanentAutoCollapse="lg"` to auto-collapse below the `lg` breakpoint
-- `SidebarRail` as a drag-to-collapse trigger
+- `<EdgeSidebarCollapser render={<SidebarRail />} />` as a click-to-collapse trigger — `SidebarRail` is a pure visual component, `EdgeSidebarCollapser` injects the collapse onClick
 - Use sidebar primitives for sidebar content — they auto-adapt to collapsed state
 - left/right arrow icons for `EdgeSidebarCollapser`
 - down arrow icon for `CollapsibleIcon`

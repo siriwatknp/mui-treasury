@@ -88,6 +88,38 @@ export default function DashboardPage() {
 }
 ```
 
+## Auto-Expand Collapsible Menus Based on Current Route
+
+Use `usePathname()` to set `defaultChecked` on `CollapsibleTrigger` so menu sections auto-expand when the user navigates to a matching route:
+
+```tsx
+"use client";
+import { usePathname } from "next/navigation";
+
+function SidebarNav() {
+  const pathname = usePathname();
+
+  return (
+    <CollapsibleTrigger
+      defaultChecked={pathname === "/orders" || pathname.startsWith("/orders/")}
+      render={
+        <SidebarMenuButton>
+          <SidebarIcon shrinkSize="20px">
+            <ShoppingCartRounded />
+          </SidebarIcon>
+          <SidebarText>Orders</SidebarText>
+          <CollapsibleIcon>
+            <KeyboardArrowDownRounded />
+          </CollapsibleIcon>
+        </SidebarMenuButton>
+      }
+    />
+  );
+}
+```
+
+This ensures the "Orders" collapsible is open when visiting `/orders`, `/orders/123`, etc. Apply the same pattern to each collapsible section with its corresponding route prefix.
+
 **Key points:**
 
 - `layout.tsx` owns the layout structure (`Root`, `Header`, `EdgeSidebar`, `Content`, `Footer`) — shared across all pages in that route segment

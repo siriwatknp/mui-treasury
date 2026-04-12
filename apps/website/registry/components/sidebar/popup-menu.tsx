@@ -1,10 +1,10 @@
-"use client";
 import React from "react";
 
 import { NavigationMenu } from "@base-ui/react/navigation-menu";
-import { styled } from "@mui/material/styles";
+import { SxProps, Theme, styled } from "@mui/material/styles";
 
 import {
+  SidebarGroup,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuList,
@@ -15,6 +15,7 @@ interface PopupMenuItemProps {
   children?: React.ReactNode;
   render: NavigationMenu.Trigger.Props["render"];
   tooltip?: React.ReactNode;
+  sx?: SxProps<Theme>;
 }
 
 const StyledPortal = styled(NavigationMenu.Portal)({
@@ -39,7 +40,11 @@ export function PopupMenuList({
     }
   }, []);
   return (
-    <NavigationMenu.Root orientation="vertical" {...props}>
+    <NavigationMenu.Root
+      orientation="vertical"
+      render={<SidebarGroup />}
+      {...props}
+    >
       <NavigationMenu.List
         ref={triggerCallbackRef as React.Ref<HTMLUListElement>}
         render={<SidebarMenuList />}
@@ -65,9 +70,21 @@ export const PopupMenuItem = function PopupMenuItem({
   render,
   children,
   tooltip,
+  sx,
 }: PopupMenuItemProps) {
   return (
-    <NavigationMenu.Item render={<SidebarMenuItem />}>
+    <NavigationMenu.Item
+      render={
+        <SidebarMenuItem
+          sx={[
+            {
+              display: "var(--_collapsed, flex) var(--_uncollapsed, none)",
+            },
+            ...(Array.isArray(sx) ? sx : [sx]),
+          ]}
+        />
+      }
+    >
       {tooltip ? (
         <SidebarTooltip
           title={tooltip}
