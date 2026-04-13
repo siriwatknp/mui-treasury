@@ -4,6 +4,7 @@
   "title": "Layout Components",
   "description": "Core layout primitives (Root, Header, Content, Footer, EdgeSidebar, InsetSidebar) for building app shells with CSS Grid.",
   "meta": {
-    "category": "layout"
+    "category": "layout",
+    "previewMode": "iframe"
   }
 }

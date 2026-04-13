@@ -15,6 +15,7 @@ export const meta = {
   title: "Footer Inset Avoiding View",
   description:
     "Use InsetAvoidingView inside Footer to prevent overlap from an absolute InsetSidebar.",
+  previewMode: "iframe" as const,
 };
 
 export function Demo() {

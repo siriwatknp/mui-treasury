@@ -19,6 +19,7 @@ export const meta = {
   title: "Edge Sidebar Drawer",
   description:
     "Drawer mode sidebar that opens as an overlay with a trigger button.",
+  previewMode: "iframe" as const,
 };
 
 export function Demo() {

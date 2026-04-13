@@ -23,6 +23,7 @@ export const meta = {
   title: "Root Disable Transition",
   description:
     "Remove all layout transition animations with the disableTransition prop.",
+  previewMode: "iframe" as const,
 };
 
 export function Demo() {

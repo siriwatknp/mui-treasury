@@ -5,6 +5,7 @@
   "description": "A documentation-style header layout with logo, navigation links, and action buttons. Suitable for documentation sites with a fixed top header containing branding, search, and navigation.",
   "meta": {
     "category": "layout",
-    "subcategory": "header"
+    "subcategory": "header",
+    "previewMode": "iframe"
   }
 }

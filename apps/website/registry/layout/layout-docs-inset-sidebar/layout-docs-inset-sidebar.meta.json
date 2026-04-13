@@ -5,6 +5,7 @@
   "description": "Documentation for InsetSidebar covering width, sticky behavior, and absolute positioning.",
   "meta": {
     "category": "layout",
-    "subcategory": "inset-sidebar"
+    "subcategory": "inset-sidebar",
+    "previewMode": "iframe"
   }
 }

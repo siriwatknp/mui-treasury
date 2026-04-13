@@ -5,7 +5,6 @@
 @source "../node_modules/streamdown/dist/*.js";
 
 @plugin "@tailwindcss/typography";
-@plugin "tailwindcss-jun-layout";
 
 @custom-variant dark (&:is(.dark *));
 

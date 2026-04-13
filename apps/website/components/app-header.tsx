@@ -1,18 +1,23 @@
 "use client";
 
-import { HeaderNav } from "@/components/header-nav";
-import Link from "next/link";
-import { useColorScheme } from "@mui/material/styles";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
 import Box from "@mui/material/Box";
-import { Moon, Sun, Monitor } from "lucide-react";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import { useColorScheme } from "@mui/material/styles";
+import { Monitor, Moon, Sun } from "lucide-react";
+import Link from "next/link";
+
+import { HeaderNav } from "@/components/header-nav";
+import Header from "@/registry/layout/layout-core/Header";
 
 export function AppHeader() {
   const { mode, setMode } = useColorScheme();
 
   return (
-    <header className="jun-header jun-header-clip justify-between border-b px-6 py-3 sticky top-0 bg-background gap-4 z-[1299]">
+    <Header
+      clip
+      className="justify-between border-b px-6 py-3 bg-background gap-4 z-[1299]"
+    >
       <Link href="/" className="text-xl font-semibold hover:opacity-80">
         MUI+
       </Link>
@@ -70,6 +75,6 @@ export function AppHeader() {
           </MenuItem>
         </Select>
       </div>
-    </header>
+    </Header>
   );
 }

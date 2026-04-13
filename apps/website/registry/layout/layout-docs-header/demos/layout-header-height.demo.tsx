@@ -12,6 +12,7 @@ export const meta = {
   title: "Header Height",
   description:
     "Customize header height with a fixed value or responsive breakpoints.",
+  previewMode: "iframe" as const,
 };
 
 export function Demo() {

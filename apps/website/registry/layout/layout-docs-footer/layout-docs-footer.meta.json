@@ -5,6 +5,7 @@
   "description": "Documentation for the Footer layout component covering basic usage and inset avoiding view.",
   "meta": {
     "category": "layout",
-    "subcategory": "footer"
+    "subcategory": "footer",
+    "previewMode": "iframe"
   }
 }

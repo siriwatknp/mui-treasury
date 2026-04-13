@@ -6,6 +6,7 @@
   "meta": {
     "category": "layout",
     "screenshot": "/public/screenshots/app-react-legacy.png",
-    "previewPath": "/app-layout/app-react-legacy"
+    "previewPath": "/app-layout/app-react-legacy",
+    "previewMode": "iframe"
   }
 }

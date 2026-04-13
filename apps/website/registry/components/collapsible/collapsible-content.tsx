@@ -24,15 +24,15 @@ const StyledCollapsibleContent = styled("div", {
   "& > *": {
     overflow: "hidden",
   },
-  "label:has(:checked) ~ &": {
+  "label:has(:checked) + &, .SidebarMenuItem:has(:checked) + &": {
     transition:
-      "var(--tsn, grid-template-rows 0.4s, visibility 0.4s, opacity 0.4s 0.2s)",
+      "var(--tsn, grid-template-rows 0.4s, visibility 0.4s, opacity 0.6s)",
     gridTemplateRows: "var(--_i-collapsed, 0fr) var(--_i-uncollapsed, 1fr)",
     [`& .SidebarMenuButton`]: {
       visibility: "var(--_i-collapsed, hidden)" as never,
     },
   },
-  "label:not(:has(:checked)) ~ &": {
+  "label:not(:has(:checked)) + &, .SidebarMenuItem:not(:has(:checked)) + &": {
     gridTemplateRows: "0fr",
     visibility: "hidden",
     opacity: 0,
