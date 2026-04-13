@@ -61,7 +61,7 @@ const StyledSidebarMenuButton = styled(ButtonBase, {
         backgroundColor: (theme.vars || theme).palette.action.hover,
       },
     },
-    ":has(.SidebarIcon + .SidebarGroupText)": {
+    "&:has(.SidebarIcon + .SidebarGroupText)": {
       "--_items": "flex-start",
     },
     variants: [

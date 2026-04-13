@@ -23,8 +23,8 @@ const StyledSidebarMenuAction = styled(ButtonBase, {
   slot: "root",
 })<{ ownerState: SidebarMenuActionProps }>(
   memoTheme(({ theme }) => ({
-    position: "absolute",
-    right: "var(--_collapsed, -100%) var(--_uncollapsed, 0.25rem)",
+    "--_ms": "initial",
+    marginInlineStart: "var(--_ms)",
     width: "var(--action-size, 1.5rem)",
     height: "var(--action-size, 1.5rem)",
     display: "inline-flex",
@@ -32,11 +32,14 @@ const StyledSidebarMenuAction = styled(ButtonBase, {
       "var(--_collapsed, hidden) var(--_uncollapsed, visible)" as never,
     justifyContent: "center",
     alignItems: "center",
-    top: "calc(var(--item-h, 2rem)/2 - var(--action-size, 1.5rem)/2)",
+    alignSelf: "center",
     color: (theme.vars || theme).palette.text.secondary,
     transition: "var(--tsn, right 0.4s)",
     borderRadius: (theme.vars || theme).shape.borderRadius,
-    "&:focus-visible": {
+    "&:first-of-type": {
+      "--_ms": "auto",
+    },
+    "&:focus-visible, &:has(:focus-visible )": {
       outline: "2px solid",
       outlineColor: (theme.vars || theme).palette.text.primary,
       outlineOffset: "2px",
@@ -49,10 +52,6 @@ const StyledSidebarMenuAction = styled(ButtonBase, {
     "& svg": {
       width: "var(--icon-size, 1rem)",
       height: "var(--icon-size, 1rem)",
-    },
-    "&:has(+ &)": {
-      right:
-        "var(--_collapsed, -100%) var(--_uncollapsed, calc(var(--action-size, 1.5rem) + 0.25rem))",
     },
     variants: [
       {

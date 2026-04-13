@@ -21,6 +21,9 @@ const StyledSidebarMenuItem = styled("div", {
   display: "flex",
   flexDirection: "column",
   position: "relative",
+  "&:has(.SidebarMenuAction)": {
+    flexDirection: "row",
+  },
 });
 
 export const SidebarMenuItem = React.forwardRef<
