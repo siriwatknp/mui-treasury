@@ -13,6 +13,7 @@ import Root from "@/registry/layout/layout-core/Root";
 export const meta = {
   title: "Edge Sidebar Right",
   description: "Right-aligned edge sidebar using EdgeSidebarRight.",
+  previewMode: "iframe" as const,
 };
 
 export function Demo() {

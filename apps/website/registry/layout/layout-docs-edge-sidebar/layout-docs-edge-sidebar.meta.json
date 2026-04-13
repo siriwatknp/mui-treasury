@@ -5,6 +5,7 @@
   "description": "Documentation for EdgeSidebar covering width, visibility, collapse, drawer, responsive modes, and right sidebar.",
   "meta": {
     "category": "layout",
-    "subcategory": "edge-sidebar"
+    "subcategory": "edge-sidebar",
+    "previewMode": "iframe"
   }
 }

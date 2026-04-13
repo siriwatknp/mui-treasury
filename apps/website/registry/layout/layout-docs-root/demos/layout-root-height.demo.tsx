@@ -12,6 +12,7 @@ export const meta = {
   title: "Root Height",
   description:
     "Customize root layout height with a fixed value or responsive breakpoints.",
+  previewMode: "iframe" as const,
 };
 
 export function Demo() {

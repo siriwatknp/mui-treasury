@@ -6,6 +6,7 @@
   "meta": {
     "category": "layout",
     "screenshot": "/public/screenshots/app-analytics.png",
-    "previewPath": "/app-layout/app-analytics"
+    "previewPath": "/app-layout/app-analytics",
+    "previewMode": "iframe"
   }
 }

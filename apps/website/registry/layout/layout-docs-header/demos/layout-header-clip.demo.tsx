@@ -19,6 +19,7 @@ export const meta = {
   title: "Header Clip",
   description:
     "Control whether the Header spans over the left/right EdgeSidebar.",
+  previewMode: "iframe" as const,
 };
 
 export function Demo() {

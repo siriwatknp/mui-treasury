@@ -17,6 +17,7 @@ import { layoutClasses } from "@/registry/layout/layout-core/layoutClasses";
 export const meta = {
   title: "Edge Sidebar Drawer Without Overlay",
   description: "Drawer mode without the overlay backdrop.",
+  previewMode: "iframe" as const,
 };
 
 export function Demo() {

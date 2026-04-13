@@ -10,6 +10,7 @@ export const meta = {
   title: "Root Standalone",
   description:
     "Standalone mode fits the layout to its height, useful for POS or chat apps.",
+  previewMode: "iframe" as const,
 };
 
 export function Demo() {

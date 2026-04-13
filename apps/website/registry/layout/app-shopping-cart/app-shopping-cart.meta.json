@@ -6,6 +6,7 @@
   "meta": {
     "category": "layout",
     "screenshot": "/public/screenshots/app-shopping-cart.png",
-    "previewPath": "/app-layout/app-shopping-cart"
+    "previewPath": "/app-layout/app-shopping-cart",
+    "previewMode": "iframe"
   }
 }

@@ -18,6 +18,7 @@ export const meta = {
   title: "Edge Sidebar Hover Uncollapse",
   description:
     "Collapsed sidebar expands on hover without shifting the content.",
+  previewMode: "iframe" as const,
 };
 
 export function Demo() {

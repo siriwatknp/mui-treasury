@@ -5,6 +5,7 @@
   "description": "Documentation for the Root layout component covering height, standalone mode, and transition control.",
   "meta": {
     "category": "layout",
-    "subcategory": "root"
+    "subcategory": "root",
+    "previewMode": "iframe"
   }
 }

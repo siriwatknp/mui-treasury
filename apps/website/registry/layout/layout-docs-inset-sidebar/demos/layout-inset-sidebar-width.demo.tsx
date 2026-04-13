@@ -14,6 +14,7 @@ export const meta = {
   title: "Inset Sidebar Width",
   description:
     "Customize the width of the inset sidebar with fixed or responsive values.",
+  previewMode: "iframe" as const,
 };
 
 export function Demo() {

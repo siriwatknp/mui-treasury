@@ -18,6 +18,7 @@ export const meta = {
   title: "Edge Sidebar Collapse",
   description:
     "Collapsible sidebar with a toggle button using EdgeSidebarCollapser.",
+  previewMode: "iframe" as const,
 };
 
 export function Demo() {

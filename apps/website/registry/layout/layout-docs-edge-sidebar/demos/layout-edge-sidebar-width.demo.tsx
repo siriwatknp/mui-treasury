@@ -13,6 +13,7 @@ import Root from "@/registry/layout/layout-core/Root";
 export const meta = {
   title: "Edge Sidebar Width",
   description: "Customize the width of the edge sidebar via variant config.",
+  previewMode: "iframe" as const,
 };
 
 export function Demo() {

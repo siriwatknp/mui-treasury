@@ -6,6 +6,7 @@
   "meta": {
     "category": "layout",
     "screenshot": "/public/screenshots/app-messenger.png",
-    "previewPath": "/app-layout/app-messenger"
+    "previewPath": "/app-layout/app-messenger",
+    "previewMode": "iframe"
   }
 }

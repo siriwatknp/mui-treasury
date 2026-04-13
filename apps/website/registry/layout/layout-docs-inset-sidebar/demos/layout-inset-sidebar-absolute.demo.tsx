@@ -15,6 +15,7 @@ export const meta = {
   title: "Inset Sidebar Absolute",
   description:
     "Absolute inset sidebar for standalone apps, spanning from header to bottom with InsetAvoidingView in footer.",
+  previewMode: "iframe" as const,
 };
 
 export function Demo() {
