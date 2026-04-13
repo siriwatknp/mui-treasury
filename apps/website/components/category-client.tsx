@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/resizable";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { RegistryItem } from "@/lib/registry";
+import Content from "@/registry/layout/layout-core/Content";
 
 interface SubcategoryData {
   name: string;
@@ -593,7 +594,7 @@ export default function CategoryClient({
   headerContent,
 }: CategoryClientProps) {
   return (
-    <div className="jun-content">
+    <Content>
       <div className="max-w-7xl mx-auto px-6 pb-10">
         {/* Header */}
         <div className="py-8 text-center">
@@ -753,6 +754,6 @@ export default function CategoryClient({
         {/* Bottom spacer for scroll tracking */}
         <div className="min-h-[50vh]" />
       </div>
-    </div>
+    </Content>
   );
 }

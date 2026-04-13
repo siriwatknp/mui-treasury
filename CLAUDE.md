@@ -60,10 +60,6 @@ Whenever code changes are made in a branch or a worktree, run all CI checks loca
 
 <!-- END jun-cc:agent-md -->
 
-# CLAUDE.md
-
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
 ## Project Overview
 
 MUI Registry — a custom component registry built with Next.js 15, Material UI (MUI) v7, and the shadcn CLI. Distributes custom MUI components, blocks, and themes installable via `shadcn` CLI.
