@@ -5,8 +5,9 @@
   "description": "A command-search-ui block.",
   "meta": {
     "screenshot": "/screenshots/command-search-ui.png",
-    "category": "dashboard",
+    "category": "block",
     "previewMode": "iframe",
-    "exportName": "CommandSearchUI"
+    "exportName": "CommandSearchUI",
+    "subcategory": "dashboard"
   }
 }

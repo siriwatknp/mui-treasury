@@ -12,15 +12,6 @@ export function HeaderNav() {
     { href: "/block", label: "Block" },
     { href: "/ai", label: "AI" },
     { href: "/layout", label: "Layout" },
-    ...(process.env.NODE_ENV === "development"
-      ? [{ href: "/authentication", label: "Authentication" }]
-      : []),
-    ...(process.env.NODE_ENV === "development"
-      ? [{ href: "/dashboard", label: "Dashboard" }]
-      : []),
-    ...(process.env.NODE_ENV === "development"
-      ? [{ href: "/ecommerce", label: "Ecommerce" }]
-      : []),
   ];
 
   const getFirstSegment = (path: string) => {

@@ -5,7 +5,8 @@
   "description": "A transaction-history-list block.",
   "meta": {
     "screenshot": "/screenshots/transaction-history-list.png",
-    "category": "dashboard",
-    "exportName": "TransactionHistoryList"
+    "category": "block",
+    "exportName": "TransactionHistoryList",
+    "subcategory": "dashboard"
   }
 }

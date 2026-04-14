@@ -5,7 +5,8 @@
   "description": "A data-metrics block.",
   "meta": {
     "screenshot": "/screenshots/data-metrics.png",
-    "category": "dashboard",
-    "exportName": "DataMetrics"
+    "category": "block",
+    "exportName": "DataMetrics",
+    "subcategory": "dashboard"
   }
 }

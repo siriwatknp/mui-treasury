@@ -5,7 +5,8 @@
   "description": "A sla-performance-card block.",
   "meta": {
     "screenshot": "/screenshots/sla-performance-card.png",
-    "category": "dashboard",
-    "exportName": "SlaPerformanceCard"
+    "category": "block",
+    "exportName": "SlaPerformanceCard",
+    "subcategory": "dashboard"
   }
 }

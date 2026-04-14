@@ -5,8 +5,9 @@
   "description": "A project-invite-modal block.",
   "meta": {
     "screenshot": "/screenshots/project-invite-modal.png",
-    "category": "authentication",
+    "category": "block",
     "previewMode": "iframe",
-    "exportName": "ProjectInviteModal"
+    "exportName": "ProjectInviteModal",
+    "subcategory": "authentication"
   }
 }
