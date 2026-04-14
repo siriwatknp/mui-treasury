@@ -116,7 +116,7 @@ export function CategorySidebar({
   return (
     <SidebarContainer ref={navRef} component="nav" className="hide-scrollbar">
       {groups.size > 0 && (
-        <SidebarGroup sx={{ borderBottom: 1, borderColor: "divider", mb: 1 }}>
+        <SidebarGroup sx={{ borderBottom: 1, borderColor: "divider" }}>
           {orderSubcategories(Array.from(groups.keys()), categoryName).map(
             (subcategory) => {
               const items = groups.get(subcategory)!;
@@ -186,19 +186,21 @@ export function CategorySidebar({
         </SidebarGroup>
       )}
 
-      <SidebarMenuList>
-        {uncategorized.map((item) => (
-          <SidebarMenuItem key={item.name}>
-            <SidebarMenuButton
-              component={Link}
-              href={`/${categoryName}#${item.name}`}
-              active={activeItem === item.name}
-            >
-              <SidebarText>{item.title.replace(/^Ai\s/, "AI ")}</SidebarText>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        ))}
-      </SidebarMenuList>
+      <SidebarGroup>
+        <SidebarMenuList>
+          {uncategorized.map((item) => (
+            <SidebarMenuItem key={item.name}>
+              <SidebarMenuButton
+                component={Link}
+                href={`/${categoryName}#${item.name}`}
+                active={activeItem === item.name}
+              >
+                <SidebarText>{item.title.replace(/^Ai\s/, "AI ")}</SidebarText>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          ))}
+        </SidebarMenuList>
+      </SidebarGroup>
     </SidebarContainer>
   );
 }
