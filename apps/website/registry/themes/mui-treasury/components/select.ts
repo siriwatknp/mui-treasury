@@ -33,7 +33,7 @@ export const selectTheme: ThemeComponents = {
               paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 11.5,
             },
           }),
-          "&.MuiInputBase-inputSizeSmall": {
+          ".MuiInputBase-sizeSmall > &": {
             paddingBlock: CONTROL_HEIGHTS.sm / 2 - 10,
             paddingInline: 12,
             ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
@@ -53,7 +53,7 @@ export const selectTheme: ThemeComponents = {
               paddingBottom: CONTROL_TOUCH_HEIGHTS.md / 2 - 12,
             },
           }),
-          "&.MuiInputBase-inputSizeSmall": {
+          ".MuiInputBase-sizeSmall > &": {
             paddingTop: CONTROL_HEIGHTS.sm / 2 + 4,
             paddingInline: 10,
             paddingBottom: CONTROL_HEIGHTS.sm / 2 - 13,
