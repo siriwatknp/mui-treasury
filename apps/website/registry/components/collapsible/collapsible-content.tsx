@@ -23,6 +23,8 @@ const StyledCollapsibleContent = styled("div", {
   display: "grid",
   "& > *": {
     overflow: "hidden",
+    marginRight: "-0.25rem", // to prevent children focus visibile from being cut off by overflow:hidden, can be removed if the children have enough right padding.
+    paddingRight: "0.25rem",
   },
   "label:has(:checked) + &, .SidebarMenuItem:has(:checked) + &": {
     transition:

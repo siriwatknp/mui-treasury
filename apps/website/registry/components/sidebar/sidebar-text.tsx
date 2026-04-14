@@ -18,7 +18,6 @@ const StyledSidebarText = styled("span", {
   transition: "var(--tsn, var(--_uncollapsed, opacity 0.3s))",
   flex: "var(--_uncollapsed, 1) var(--_collapsed, 0)",
   opacity: "var(--_uncollapsed, 1) var(--_collapsed, 0)",
-  whiteSpace: "nowrap",
   overflow: "hidden",
   [`*:where(.${sidebarClasses.text} + &)`]: {
     fontSize: "calc(var(--item-fs, 0.875rem) - 0.125rem)",

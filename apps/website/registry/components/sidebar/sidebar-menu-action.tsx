@@ -24,6 +24,7 @@ const StyledSidebarMenuAction = styled(ButtonBase, {
 })<{ ownerState: SidebarMenuActionProps }>(
   memoTheme(({ theme }) => ({
     "--_ms": "initial",
+    flex: "none", // prevent action from shrinking when the text is long and the sidebar is collapsing.
     marginInlineStart: "var(--_ms)",
     width: "var(--action-size, 1.5rem)",
     height: "var(--action-size, 1.5rem)",

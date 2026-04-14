@@ -15,11 +15,22 @@ import { SidebarMenuButton } from "./sidebar-menu-button";
 export { SidebarMenuButton };
 
 export type SidebarMenuProps = ForwardStyledProps<{
-  relaxed?: boolean;
   nested?: boolean;
   noLine?: boolean;
   component?: React.ElementType;
 }>;
+
+export const sidebarMenuListRelaxedStyles = {
+  gap: "0.5rem",
+  "--item-gap": "0.75rem",
+  "--item-h": "2.5rem",
+  "--item-fs": "1rem",
+  "--item-lh": "1.5rem",
+  "--item-px": "0.75rem",
+  "--item-py": "0.5rem",
+  "--action-size": "2rem",
+  "--icon-size": "1.25rem",
+};
 
 const StyledSidebarMenuList = styled("div", {
   name: "SidebarMenuList",
@@ -33,23 +44,9 @@ const StyledSidebarMenuList = styled("div", {
   memoTheme(({ theme }) => ({
     variants: [
       {
-        props: { relaxed: true },
-        style: {
-          gap: "0.5rem",
-          "--item-gap": "0.75rem",
-          "--item-h": "2.5rem",
-          "--item-fs": "1rem",
-          "--item-lh": "1.5rem",
-          "--item-px": "0.75rem",
-          "--item-py": "0.5rem",
-          "--action-size": "2rem",
-          "--icon-size": "1.25rem",
-        },
-      },
-      {
         props: { nested: true },
         style: {
-          "--item-py": "0px",
+          "--item-py": "0.1875rem", // 3px sweet spot for >1 line of text to have some padding.
           "--item-h": "calc(var(--item-lh, 1.25rem) + 0.5rem)",
           paddingBlock: "0.25rem",
           position: "relative",
@@ -84,13 +81,10 @@ export const SidebarMenuList = React.forwardRef<
   HTMLDivElement,
   SidebarMenuProps & React.ComponentPropsWithoutRef<"div">
 >(function SidebarMenuList(
-  { className, relaxed, nested, noLine, component, ...props },
+  { className, nested, noLine, component, ...props },
   ref,
 ) {
-  const ownerState = useMemo(
-    () => ({ relaxed, nested, noLine }),
-    [relaxed, nested, noLine],
-  );
+  const ownerState = useMemo(() => ({ nested, noLine }), [nested, noLine]);
   return (
     <StyledSidebarMenuList
       ref={ref}
