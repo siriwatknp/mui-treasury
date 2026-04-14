@@ -38,10 +38,11 @@ export default async function CategoryLayout({
           <CategorySidebar
             allCategoryItems={allCategoryItems}
             categoryName={category}
-          />
-          <div className="px-2 mt-2">
-            <CarbonAds vertical />
-          </div>
+          >
+            <div className="px-2 mt-2">
+              <CarbonAds vertical />
+            </div>
+          </CategorySidebar>
         </>
       }
     >

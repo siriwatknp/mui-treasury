@@ -29,9 +29,10 @@ interface CategorySidebarProps {
 }
 
 export function CategorySidebar({
+  children,
   allCategoryItems,
   categoryName,
-}: CategorySidebarProps) {
+}: React.PropsWithChildren<CategorySidebarProps>) {
   const pathname = usePathname();
   const [activeItem, setActiveItem] = useState<string>("");
   const navRef = useRef<HTMLDivElement>(null);
@@ -201,6 +202,7 @@ export function CategorySidebar({
           ))}
         </SidebarMenuList>
       </SidebarGroup>
+      {children}
     </SidebarContainer>
   );
 }
