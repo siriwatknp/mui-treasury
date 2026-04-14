@@ -11,8 +11,8 @@
   "dependencies": {
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
-    "@mui/material": "^7",
-    "@mui/material-nextjs": "^7",
+    "@mui/material": "^9",
+    "@mui/material-nextjs": "^9",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.542.0",
