@@ -2,8 +2,15 @@
 
 import React, { useState } from "react";
 
-import { FirebaseChatTransport } from "@/registry/firebase/firebase-chat-transport";
+import { UIMessage, useChat } from "@ai-sdk/react";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import CircularProgress from "@mui/material/CircularProgress";
+import Typography from "@mui/material/Typography";
 import { ResponseModality } from "firebase/ai";
+import { CopyIcon, ImageIcon, RefreshCwIcon, SquareIcon } from "lucide-react";
+import { toast } from "sonner";
+
 import { app } from "@/lib/firebase-setup";
 import { Action, Actions } from "@/registry/components/ai-actions/ai-actions";
 import {
@@ -11,32 +18,26 @@ import {
   ConversationContent,
   ConversationScrollButton,
 } from "@/registry/components/ai-conversation/ai-conversation";
+import { Loader } from "@/registry/components/ai-loader/ai-loader";
 import {
   Message,
   MessageAvatar,
   MessageContent,
 } from "@/registry/components/ai-message/ai-message";
-import { Loader } from "@/registry/components/ai-loader/ai-loader";
 import {
   PromptInput,
   PromptInputBody,
+  type PromptInputMessage,
   PromptInputSubmit,
   PromptInputTextarea,
   PromptInputToolbar,
-  type PromptInputMessage,
 } from "@/registry/components/ai-prompt-input/ai-prompt-input";
 import { Response } from "@/registry/components/ai-response/ai-response";
 import {
   Suggestion,
   Suggestions,
 } from "@/registry/components/ai-suggestion/ai-suggestion";
-import { UIMessage, useChat } from "@ai-sdk/react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import CircularProgress from "@mui/material/CircularProgress";
-import Typography from "@mui/material/Typography";
-import { CopyIcon, ImageIcon, RefreshCwIcon, SquareIcon } from "lucide-react";
-import { toast } from "sonner";
+import { FirebaseChatTransport } from "@/registry/firebase/firebase-chat-transport";
 
 const SUGGESTED_PROMPTS = [
   "Draw a cute cat wearing a space helmet",
@@ -116,7 +117,11 @@ export default function FirebaseImageGeneration() {
           p: 2,
         }}
       >
-        <Typography color="text.secondary">
+        <Typography
+          sx={{
+            color: "text.secondary",
+          }}
+        >
           Firebase not configured. Please set up Firebase config at the top of
           the page.
         </Typography>
@@ -161,7 +166,11 @@ export default function FirebaseImageGeneration() {
                 <Typography variant="h4" sx={{ fontWeight: 500 }}>
                   Image Generation
                 </Typography>
-                <Typography color="text.secondary">
+                <Typography
+                  sx={{
+                    color: "text.secondary",
+                  }}
+                >
                   Describe an image you&apos;d like to generate
                 </Typography>
               </Box>
@@ -285,7 +294,6 @@ export default function FirebaseImageGeneration() {
           <ConversationScrollButton />
         </Conversation>
       </Box>
-
       {showSuggestions && (
         <Box sx={{ mb: 2 }}>
           <Suggestions>
@@ -299,7 +307,6 @@ export default function FirebaseImageGeneration() {
           </Suggestions>
         </Box>
       )}
-
       <PromptInput onSubmit={handleSubmit}>
         <PromptInputBody>
           <PromptInputTextarea

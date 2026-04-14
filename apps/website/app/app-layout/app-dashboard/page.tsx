@@ -1,59 +1,61 @@
 "use client";
 import React from "react";
-import NextLink from "next/link";
+
+import ArticleRounded from "@mui/icons-material/ArticleRounded";
+import BarChartRounded from "@mui/icons-material/BarChartRounded";
+import ChevronLeftRounded from "@mui/icons-material/ChevronLeftRounded";
+import ChevronRightRounded from "@mui/icons-material/ChevronRightRounded";
+import CloseRounded from "@mui/icons-material/CloseRounded";
+import CodeRounded from "@mui/icons-material/CodeRounded";
+import ExpandMoreRounded from "@mui/icons-material/ExpandMoreRounded";
+import FolderRounded from "@mui/icons-material/FolderRounded";
+import HomeRounded from "@mui/icons-material/HomeRounded";
+import LanguageRounded from "@mui/icons-material/LanguageRounded";
+import MenuRounded from "@mui/icons-material/MenuRounded";
+import NotificationsRounded from "@mui/icons-material/NotificationsRounded";
+import PeopleRounded from "@mui/icons-material/PeopleRounded";
+import Search from "@mui/icons-material/Search";
+import SecurityRounded from "@mui/icons-material/SecurityRounded";
+import SettingsRounded from "@mui/icons-material/SettingsRounded";
+import StorageRounded from "@mui/icons-material/StorageRounded";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import ChevronLeftRounded from "@mui/icons-material/ChevronLeftRounded";
-import CloseRounded from "@mui/icons-material/CloseRounded";
-import ChevronRightRounded from "@mui/icons-material/ChevronRightRounded";
-import HomeRounded from "@mui/icons-material/HomeRounded";
-import MenuRounded from "@mui/icons-material/MenuRounded";
-import Search from "@mui/icons-material/Search";
-import BarChartRounded from "@mui/icons-material/BarChartRounded";
-import SecurityRounded from "@mui/icons-material/SecurityRounded";
-import LanguageRounded from "@mui/icons-material/LanguageRounded";
-import CodeRounded from "@mui/icons-material/CodeRounded";
-import StorageRounded from "@mui/icons-material/StorageRounded";
-import SettingsRounded from "@mui/icons-material/SettingsRounded";
-import NotificationsRounded from "@mui/icons-material/NotificationsRounded";
-import FolderRounded from "@mui/icons-material/FolderRounded";
-import ArticleRounded from "@mui/icons-material/ArticleRounded";
-import PeopleRounded from "@mui/icons-material/PeopleRounded";
-import ExpandMoreRounded from "@mui/icons-material/ExpandMoreRounded";
-import Root from "@/registry/layout/layout-core/Root";
-import Header from "@/registry/layout/layout-core/Header";
+import NextLink from "next/link";
+
+import { CollapsibleContent } from "@/registry/components/collapsible/collapsible-content";
+import { CollapsibleIcon } from "@/registry/components/collapsible/collapsible-icon";
+import { CollapsibleTrigger } from "@/registry/components/collapsible/collapsible-trigger";
+import {
+  SidebarContainer,
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarIcon,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuList,
+  SidebarRail,
+  SidebarText,
+} from "@/registry/components/sidebar";
+import {
+  PopupMenuContent,
+  PopupMenuItem,
+  PopupMenuLink,
+  PopupMenuList,
+} from "@/registry/components/sidebar";
+import { SidebarTooltip } from "@/registry/components/sidebar";
+import { EdgeDrawerClose } from "@/registry/layout/layout-core";
 import Content from "@/registry/layout/layout-core/Content";
-import Footer from "@/registry/layout/layout-core/Footer";
 import EdgeSidebar, {
   triggerEdgeCollapse,
   triggerEdgeDrawer,
 } from "@/registry/layout/layout-core/EdgeSidebar";
 import EdgeSidebarContent from "@/registry/layout/layout-core/EdgeSidebarContent";
-import { layoutClasses } from "@/registry/layout/layout-core/layoutClasses";
-import { EdgeDrawerClose } from "@/registry/layout/layout-core";
-import {
-  SidebarContainer,
-  SidebarGroup,
-  SidebarGroupLabel,
-  SidebarMenuList,
-  SidebarMenuItem,
-  SidebarMenuButton,
-  SidebarIcon,
-  SidebarText,
-  SidebarRail,
-} from "@/registry/components/sidebar";
-import { CollapsibleTrigger } from "@/registry/components/collapsible/collapsible-trigger";
-import { CollapsibleContent } from "@/registry/components/collapsible/collapsible-content";
-import {
-  PopupMenuList,
-  PopupMenuItem,
-  PopupMenuLink,
-  PopupMenuContent,
-} from "@/registry/components/sidebar";
+import Footer from "@/registry/layout/layout-core/Footer";
+import Header from "@/registry/layout/layout-core/Header";
+import Root from "@/registry/layout/layout-core/Root";
 import { useCollapsedSidebar } from "@/registry/layout/layout-core/SharedEdgeSidebar";
-import { CollapsibleIcon } from "@/registry/components/collapsible/collapsible-icon";
-import { SidebarTooltip } from "@/registry/components/sidebar";
+import { layoutClasses } from "@/registry/layout/layout-core/layoutClasses";
 
 const SIDEBAR_ID = "app-dashboard-sidebar";
 
@@ -117,11 +119,16 @@ export default function AppDashboardPage() {
         >
           <MenuRounded />
         </IconButton>
-        <Typography variant="subtitle1" fontWeight="bold" sx={{ ml: 1 }}>
+        <Typography
+          variant="subtitle1"
+          sx={{
+            fontWeight: "bold",
+            ml: 1,
+          }}
+        >
           Dashboard
         </Typography>
       </Header>
-
       <EdgeSidebar
         id={SIDEBAR_ID}
         permanentAutoCollapse="lg"
@@ -332,13 +339,23 @@ export default function AppDashboardPage() {
           }
         />
       </EdgeSidebar>
-
       <Content sx={{ p: { xs: 2, md: 4 } }}>
         <Box sx={{ maxWidth: 960, mx: "auto" }}>
-          <Typography variant="h4" gutterBottom fontWeight="bold">
+          <Typography
+            variant="h4"
+            gutterBottom
+            sx={{
+              fontWeight: "bold",
+            }}
+          >
             Boost your site&apos;s speed and security
           </Typography>
-          <Typography color="text.secondary" sx={{ mb: 4 }}>
+          <Typography
+            sx={{
+              color: "text.secondary",
+              mb: 4,
+            }}
+          >
             Connect your domain to start sending web traffic through the
             platform.
           </Typography>
@@ -351,7 +368,13 @@ export default function AppDashboardPage() {
               mb: 3,
             }}
           >
-            <Typography variant="body2" fontWeight="medium" sx={{ mb: 1 }}>
+            <Typography
+              variant="body2"
+              sx={{
+                fontWeight: "medium",
+                mb: 1,
+              }}
+            >
               Enter an existing domain
             </Typography>
             <Box
@@ -378,7 +401,6 @@ export default function AppDashboardPage() {
           </Box>
         </Box>
       </Content>
-
       <Footer
         sx={{
           py: 2,
@@ -389,16 +411,36 @@ export default function AppDashboardPage() {
           gap: 2,
         }}
       >
-        <Typography variant="caption" color="text.secondary">
+        <Typography
+          variant="caption"
+          sx={{
+            color: "text.secondary",
+          }}
+        >
           Support
         </Typography>
-        <Typography variant="caption" color="text.secondary">
+        <Typography
+          variant="caption"
+          sx={{
+            color: "text.secondary",
+          }}
+        >
           System Status
         </Typography>
-        <Typography variant="caption" color="text.secondary">
+        <Typography
+          variant="caption"
+          sx={{
+            color: "text.secondary",
+          }}
+        >
           Privacy Policy
         </Typography>
-        <Typography variant="caption" color="text.secondary">
+        <Typography
+          variant="caption"
+          sx={{
+            color: "text.secondary",
+          }}
+        >
           © 2025 Company, Inc.
         </Typography>
       </Footer>

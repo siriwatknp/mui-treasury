@@ -28,72 +28,115 @@ export function Demo() {
       <Root height="300px" sx={{ flex: 1, minWidth: 200 }}>
         <Header>
           <Box sx={{ px: 2 }}>
-            <Typography variant="caption" fontWeight="bold">
+            <Typography
+              variant="caption"
+              sx={{
+                fontWeight: "bold",
+              }}
+            >
               height=&quot;300px&quot;
             </Typography>
           </Box>
         </Header>
         <Content>
           <Box sx={{ p: 2 }}>
-            <Typography variant="body2" color="text.secondary">
+            <Typography
+              variant="body2"
+              sx={{
+                color: "text.secondary",
+              }}
+            >
               Fixed height
             </Typography>
           </Box>
         </Content>
         <Footer>
           <Box sx={{ p: 2 }}>
-            <Typography variant="caption" color="text.secondary">
+            <Typography
+              variant="caption"
+              sx={{
+                color: "text.secondary",
+              }}
+            >
               Footer
             </Typography>
           </Box>
         </Footer>
       </Root>
-
       <Root height="400px" sx={{ flex: 1, minWidth: 200 }}>
         <Header>
           <Box sx={{ px: 2 }}>
-            <Typography variant="caption" fontWeight="bold">
+            <Typography
+              variant="caption"
+              sx={{
+                fontWeight: "bold",
+              }}
+            >
               height=&quot;400px&quot;
             </Typography>
           </Box>
         </Header>
         <Content>
           <Box sx={{ p: 2 }}>
-            <Typography variant="body2" color="text.secondary">
+            <Typography
+              variant="body2"
+              sx={{
+                color: "text.secondary",
+              }}
+            >
               Taller layout
             </Typography>
           </Box>
         </Content>
         <Footer>
           <Box sx={{ p: 2 }}>
-            <Typography variant="caption" color="text.secondary">
+            <Typography
+              variant="caption"
+              sx={{
+                color: "text.secondary",
+              }}
+            >
               Footer
             </Typography>
           </Box>
         </Footer>
       </Root>
-
       <Root
         height={{ xs: "300px", md: "400px" }}
         sx={{ flex: 1, minWidth: 200 }}
       >
         <Header>
           <Box sx={{ px: 2 }}>
-            <Typography variant="caption" fontWeight="bold">
+            <Typography
+              variant="caption"
+              sx={{
+                fontWeight: "bold",
+              }}
+            >
               300px → 400px
             </Typography>
           </Box>
         </Header>
         <Content>
           <Box sx={{ p: 2 }}>
-            <Typography variant="body2" color="text.secondary">
+            <Typography
+              variant="body2"
+              sx={{
+                color: "text.secondary",
+              }}
+            >
               Responsive height
             </Typography>
           </Box>
         </Content>
         <Footer>
           <Box sx={{ p: 2 }}>
-            <Typography variant="caption" color="text.secondary">
+            <Typography
+              variant="caption"
+              sx={{
+                color: "text.secondary",
+              }}
+            >
               Footer
             </Typography>
           </Box>

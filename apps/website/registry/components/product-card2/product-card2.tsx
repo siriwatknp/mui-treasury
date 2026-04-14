@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+
+import { Check, Favorite, FavoriteBorder } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -11,7 +13,6 @@ import {
   ToggleButtonGroup,
   Typography,
 } from "@mui/material";
-import { FavoriteBorder, Favorite, Check } from "@mui/icons-material";
 
 interface ProductCard2Props {
   productName?: string;
@@ -132,7 +133,6 @@ export function ProductCard2({
           )}
         </IconButton>
       </Box>
-
       {/* Product details */}
       <Stack spacing={2} sx={{ p: 3 }}>
         {/* Product title */}
@@ -249,7 +249,13 @@ export function ProductCard2({
           }}
         >
           <Box>
-            <Typography variant="body2" color="text.secondary" sx={{ mb: 0.5 }}>
+            <Typography
+              variant="body2"
+              sx={{
+                color: "text.secondary",
+                mb: 0.5,
+              }}
+            >
               Price
             </Typography>
             <Typography variant="h5" sx={{ fontWeight: 600 }}>

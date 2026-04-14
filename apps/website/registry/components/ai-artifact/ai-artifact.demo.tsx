@@ -1,18 +1,19 @@
 "use client";
 
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import { CopyIcon, DownloadIcon, ExpandIcon, ShareIcon } from "lucide-react";
+
 import {
   Artifact,
-  ArtifactHeader,
-  ArtifactTitle,
-  ArtifactDescription,
-  ArtifactActions,
   ArtifactAction,
+  ArtifactActions,
   ArtifactClose,
   ArtifactContent,
+  ArtifactDescription,
+  ArtifactHeader,
+  ArtifactTitle,
 } from "@/registry/components/ai-artifact/ai-artifact";
-import { CopyIcon, ShareIcon, DownloadIcon, ExpandIcon } from "lucide-react";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
 
 export function Demo() {
   return (
@@ -69,7 +70,6 @@ for i in range(10):
           </ArtifactContent>
         </Artifact>
       </Box>
-
       {/* Artifact with Rich Content */}
       <Box sx={{ maxWidth: 600 }}>
         <Typography variant="body2" sx={{ mb: 2, color: "text.secondary" }}>
@@ -116,7 +116,12 @@ for i in range(10):
                   justifyContent: "center",
                 }}
               >
-                <Typography variant="body2" color="text.secondary">
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: "text.secondary",
+                  }}
+                >
                   [Chart Placeholder]
                 </Typography>
               </Box>
@@ -124,7 +129,6 @@ for i in range(10):
           </ArtifactContent>
         </Artifact>
       </Box>
-
       {/* Compact Artifact */}
       <Box sx={{ maxWidth: 600 }}>
         <Typography variant="body2" sx={{ mb: 2, color: "text.secondary" }}>

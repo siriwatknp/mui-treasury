@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
@@ -109,8 +110,10 @@ export function PortfolioValueChart() {
           <Stack
             direction="row"
             spacing={1}
-            alignItems="center"
             role="listitem"
+            sx={{
+              alignItems: "center",
+            }}
           >
             <Box
               sx={{
@@ -121,15 +124,22 @@ export function PortfolioValueChart() {
               }}
               aria-hidden="true"
             />
-            <Typography variant="body2" color="text.secondary">
+            <Typography
+              variant="body2"
+              sx={{
+                color: "text.secondary",
+              }}
+            >
               ETF Shares Vital
             </Typography>
           </Stack>
           <Stack
             direction="row"
             spacing={1}
-            alignItems="center"
             role="listitem"
+            sx={{
+              alignItems: "center",
+            }}
           >
             <Box
               sx={{
@@ -140,15 +150,22 @@ export function PortfolioValueChart() {
               }}
               aria-hidden="true"
             />
-            <Typography variant="body2" color="text.secondary">
+            <Typography
+              variant="body2"
+              sx={{
+                color: "text.secondary",
+              }}
+            >
               Vitainvest Core
             </Typography>
           </Stack>
           <Stack
             direction="row"
             spacing={1}
-            alignItems="center"
             role="listitem"
+            sx={{
+              alignItems: "center",
+            }}
           >
             <Box
               sx={{
@@ -159,7 +176,12 @@ export function PortfolioValueChart() {
               }}
               aria-hidden="true"
             />
-            <Typography variant="body2" color="text.secondary">
+            <Typography
+              variant="body2"
+              sx={{
+                color: "text.secondary",
+              }}
+            >
               iShares Tech Growth
             </Typography>
           </Stack>

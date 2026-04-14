@@ -2,7 +2,14 @@
 
 import React, { useState } from "react";
 
-import { FirebaseChatTransport } from "@/registry/firebase/firebase-chat-transport";
+import { UIMessage, useChat } from "@ai-sdk/react";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import CircularProgress from "@mui/material/CircularProgress";
+import Typography from "@mui/material/Typography";
+import { CopyIcon, ImageIcon, RefreshCwIcon, SquareIcon } from "lucide-react";
+import { toast } from "sonner";
+
 import { app } from "@/lib/firebase-setup";
 import { Action, Actions } from "@/registry/components/ai-actions/ai-actions";
 import {
@@ -10,12 +17,12 @@ import {
   ConversationContent,
   ConversationScrollButton,
 } from "@/registry/components/ai-conversation/ai-conversation";
+import { Loader } from "@/registry/components/ai-loader/ai-loader";
 import {
   Message,
   MessageAvatar,
   MessageContent,
 } from "@/registry/components/ai-message/ai-message";
-import { Loader } from "@/registry/components/ai-loader/ai-loader";
 import {
   PromptInput,
   PromptInputActionAddAttachments,
@@ -25,24 +32,18 @@ import {
   PromptInputAttachment,
   PromptInputAttachments,
   PromptInputBody,
+  type PromptInputMessage,
   PromptInputSubmit,
   PromptInputTextarea,
   PromptInputToolbar,
   PromptInputTools,
-  type PromptInputMessage,
 } from "@/registry/components/ai-prompt-input/ai-prompt-input";
 import { Response } from "@/registry/components/ai-response/ai-response";
 import {
   Suggestion,
   Suggestions,
 } from "@/registry/components/ai-suggestion/ai-suggestion";
-import { UIMessage, useChat } from "@ai-sdk/react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import CircularProgress from "@mui/material/CircularProgress";
-import Typography from "@mui/material/Typography";
-import { CopyIcon, ImageIcon, RefreshCwIcon, SquareIcon } from "lucide-react";
-import { toast } from "sonner";
+import { FirebaseChatTransport } from "@/registry/firebase/firebase-chat-transport";
 
 const SUGGESTED_PROMPTS = [
   "What objects can you identify in this image?",
@@ -123,7 +124,11 @@ Always respond in a clear and organized manner using Markdown formatting.`,
           p: 2,
         }}
       >
-        <Typography color="text.secondary">
+        <Typography
+          sx={{
+            color: "text.secondary",
+          }}
+        >
           Firebase not configured. Please set up Firebase config at the top of
           the page.
         </Typography>
@@ -168,7 +173,11 @@ Always respond in a clear and organized manner using Markdown formatting.`,
                 <Typography variant="h4" sx={{ fontWeight: 500 }}>
                   Analyze Image
                 </Typography>
-                <Typography color="text.secondary">
+                <Typography
+                  sx={{
+                    color: "text.secondary",
+                  }}
+                >
                   Upload an image to analyze
                 </Typography>
               </Box>
@@ -292,7 +301,6 @@ Always respond in a clear and organized manner using Markdown formatting.`,
           <ConversationScrollButton />
         </Conversation>
       </Box>
-
       {showSuggestions && (
         <Box sx={{ mb: 2 }}>
           <Suggestions>
@@ -306,7 +314,6 @@ Always respond in a clear and organized manner using Markdown formatting.`,
           </Suggestions>
         </Box>
       )}
-
       <PromptInput onSubmit={handleSubmit} accept="image/*" multiple>
         <PromptInputAttachments>
           {(attachment) => <PromptInputAttachment data={attachment} />}

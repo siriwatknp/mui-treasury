@@ -1,4 +1,5 @@
 import React from "react";
+
 import FavoriteBorderRounded from "@mui/icons-material/FavoriteBorderRounded";
 import Share from "@mui/icons-material/Share";
 import Avatar from "@mui/material/Avatar";
@@ -7,6 +8,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import IconButton from "@mui/material/IconButton";
+
 import { Info } from "../info-basic/info";
 import { InfoSubtitle } from "../info-basic/info-subtitle";
 import { InfoTitle } from "../info-basic/info-title";
@@ -54,7 +56,13 @@ export function CardPost() {
           </InfoSubtitle>
         </Info>
       </CardContent>
-      <Box px={2} pb={2} mt={-1}>
+      <Box
+        sx={{
+          px: 2,
+          pb: 2,
+          mt: -1,
+        }}
+      >
         <IconButton>
           <Share />
         </IconButton>

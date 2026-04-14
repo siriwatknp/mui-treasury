@@ -1,36 +1,37 @@
 "use client";
 
 import * as React from "react";
+
+import BarChartIcon from "@mui/icons-material/BarChart";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import FolderIcon from "@mui/icons-material/Folder";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutlined";
+import HomeIcon from "@mui/icons-material/Home";
+import LayersIcon from "@mui/icons-material/Layers";
+import LogoutIcon from "@mui/icons-material/Logout";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import PeopleIcon from "@mui/icons-material/People";
+import SearchIcon from "@mui/icons-material/Search";
+import SettingsIcon from "@mui/icons-material/Settings";
+import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Chip from "@mui/material/Chip";
+import Collapse from "@mui/material/Collapse";
+import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
+import LinearProgress from "@mui/material/LinearProgress";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import Avatar from "@mui/material/Avatar";
-import Chip from "@mui/material/Chip";
-import Collapse from "@mui/material/Collapse";
-import LinearProgress from "@mui/material/LinearProgress";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import SearchIcon from "@mui/icons-material/Search";
-import HomeIcon from "@mui/icons-material/Home";
-import BarChartIcon from "@mui/icons-material/BarChart";
-import LayersIcon from "@mui/icons-material/Layers";
-import CheckBoxIcon from "@mui/icons-material/CheckBox";
-import FolderIcon from "@mui/icons-material/Folder";
-import PeopleIcon from "@mui/icons-material/People";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-import SettingsIcon from "@mui/icons-material/Settings";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import LogoutIcon from "@mui/icons-material/Logout";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 
 export function SidebarNavigation() {
   const [expandedItems, setExpandedItems] = React.useState<string[]>([
@@ -151,11 +152,15 @@ export function SidebarNavigation() {
         >
           ●
         </Box>
-        <Typography variant="h6" fontWeight={600}>
+        <Typography
+          variant="h6"
+          sx={{
+            fontWeight: 600,
+          }}
+        >
           Acme Corp
         </Typography>
       </Box>
-
       {/* Search Field */}
       <Box sx={{ px: 2, pb: 2 }}>
         <TextField
@@ -175,7 +180,6 @@ export function SidebarNavigation() {
           }}
         />
       </Box>
-
       {/* Navigation List */}
       <List dense sx={{ px: 1, flex: 1, overflow: "auto" }}>
         {navigationItems.map((item) => (
@@ -247,7 +251,6 @@ export function SidebarNavigation() {
           </React.Fragment>
         ))}
       </List>
-
       {/* Storage Usage Section */}
       <Box
         sx={{
@@ -257,10 +260,22 @@ export function SidebarNavigation() {
           borderColor: "divider",
         }}
       >
-        <Typography variant="body2" fontWeight={500} gutterBottom>
+        <Typography
+          variant="body2"
+          gutterBottom
+          sx={{
+            fontWeight: 500,
+          }}
+        >
           Used space
         </Typography>
-        <Typography variant="caption" color="text.secondary" gutterBottom>
+        <Typography
+          variant="caption"
+          gutterBottom
+          sx={{
+            color: "text.secondary",
+          }}
+        >
           Your team has used 80% of your available space. Need more?
         </Typography>
         <LinearProgress
@@ -288,7 +303,6 @@ export function SidebarNavigation() {
           </Button>
         </Box>
       </Box>
-
       {/* User Profile Section */}
       <Box
         sx={{
@@ -311,14 +325,22 @@ export function SidebarNavigation() {
             sx={{ width: 40, height: 40 }}
           />
           <Box sx={{ flex: 1, minWidth: 0 }}>
-            <Typography variant="body2" fontWeight={500} noWrap>
+            <Typography
+              variant="body2"
+              noWrap
+              sx={{
+                fontWeight: 500,
+              }}
+            >
               Jane Smith
             </Typography>
             <Typography
               variant="caption"
-              color="text.secondary"
               noWrap
-              sx={{ display: "block" }}
+              sx={{
+                color: "text.secondary",
+                display: "block",
+              }}
             >
               jane.smith@acmecorp.com
             </Typography>
@@ -335,16 +357,12 @@ export function SidebarNavigation() {
           </IconButton>
         </Box>
       </Box>
-
       {/* User Menu */}
       <Menu
         id="user-menu"
         anchorEl={anchorEl}
         open={open}
         onClose={handleMenuClose}
-        MenuListProps={{
-          "aria-labelledby": "user-menu-button",
-        }}
         anchorOrigin={{
           vertical: "top",
           horizontal: "right",
@@ -352,6 +370,11 @@ export function SidebarNavigation() {
         transformOrigin={{
           vertical: "bottom",
           horizontal: "right",
+        }}
+        slotProps={{
+          list: {
+            "aria-labelledby": "user-menu-button",
+          },
         }}
       >
         <MenuItem onClick={handleMenuClose}>

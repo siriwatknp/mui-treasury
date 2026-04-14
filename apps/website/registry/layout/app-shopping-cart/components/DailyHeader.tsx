@@ -1,10 +1,12 @@
 "use client";
 import React from "react";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
+
 import ClearAll from "@mui/icons-material/ClearAll";
 import ShoppingBasket from "@mui/icons-material/ShoppingBasket";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import Toolbar from "@mui/material/Toolbar";
+
 import DailyLogo from "./DailyLogo";
 import DailySearch from "./DailySearch";
 
@@ -12,20 +14,24 @@ const DailyHeader = () => {
   return (
     <Toolbar disableGutters>
       <DailyLogo />
-      <Box ml={"auto"}>
+      <Box
+        sx={{
+          ml: "auto",
+        }}
+      >
         <DailySearch />
       </Box>
       <Box
-        ml={{ xs: 2, md: 10, lg: 15 }}
-        justifyContent={"flex-end"}
         sx={{
+          ml: { xs: 2, md: 10, lg: 15 },
+          justifyContent: "flex-end",
           display: "flex",
           alignItems: "center",
         }}
       >
         <Box
-          mr={2}
           sx={{
+            mr: 2,
             display: "flex",
             alignItems: "center",
           }}

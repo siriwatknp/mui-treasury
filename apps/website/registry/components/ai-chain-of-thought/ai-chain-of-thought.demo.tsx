@@ -1,22 +1,23 @@
 "use client";
 
-import {
-  ChainOfThought,
-  ChainOfThoughtHeader,
-  ChainOfThoughtContent,
-  ChainOfThoughtStep,
-  ChainOfThoughtSearchResults,
-  ChainOfThoughtSearchResult,
-  ChainOfThoughtImage,
-} from "@/registry/components/ai-chain-of-thought/ai-chain-of-thought";
-import {
-  SearchIcon,
-  FileTextIcon,
-  CheckCircleIcon,
-  CodeIcon,
-} from "lucide-react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import {
+  CheckCircleIcon,
+  CodeIcon,
+  FileTextIcon,
+  SearchIcon,
+} from "lucide-react";
+
+import {
+  ChainOfThought,
+  ChainOfThoughtContent,
+  ChainOfThoughtHeader,
+  ChainOfThoughtImage,
+  ChainOfThoughtSearchResult,
+  ChainOfThoughtSearchResults,
+  ChainOfThoughtStep,
+} from "@/registry/components/ai-chain-of-thought/ai-chain-of-thought";
 
 export function Demo() {
   return (
@@ -64,7 +65,6 @@ export function Demo() {
           </ChainOfThoughtContent>
         </ChainOfThought>
       </Box>
-
       {/* Chain of Thought Open by Default */}
       <Box>
         <Typography variant="body2" sx={{ mb: 2, color: "text.secondary" }}>
@@ -102,7 +102,6 @@ export function Demo() {
           </ChainOfThoughtContent>
         </ChainOfThought>
       </Box>
-
       {/* Chain of Thought with Image */}
       <Box>
         <Typography variant="body2" sx={{ mb: 2, color: "text.secondary" }}>
@@ -144,7 +143,12 @@ export function Demo() {
                     borderColor: "divider",
                   }}
                 >
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "text.secondary",
+                    }}
+                  >
                     [Chart Visualization]
                   </Typography>
                 </Box>
@@ -160,7 +164,6 @@ export function Demo() {
           </ChainOfThoughtContent>
         </ChainOfThought>
       </Box>
-
       {/* Custom Header Text */}
       <Box>
         <Typography variant="body2" sx={{ mb: 2, color: "text.secondary" }}>

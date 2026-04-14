@@ -1,13 +1,14 @@
 "use client";
 
 import * as React from "react";
+
 import { PreviewCard } from "@base-ui-components/react/preview-card";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
+import Typography from "@mui/material/Typography";
 
 export function CardPreview01() {
   return (
@@ -56,12 +57,19 @@ export function CardPreview01() {
                     <Typography
                       variant="subtitle1"
                       component="h3"
-                      fontWeight="bold"
                       gutterBottom
+                      sx={{
+                        fontWeight: "bold",
+                      }}
                     >
                       Typography
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: "text.secondary",
+                      }}
+                    >
                       Typography is the art and science of arranging type to
                       make written language clear, visually appealing, and
                       effective in communication.

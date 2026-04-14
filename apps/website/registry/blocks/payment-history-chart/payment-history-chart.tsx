@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -87,7 +88,12 @@ export function PaymentHistoryChart() {
                 fontWeight: 500,
               }}
             />
-            <Typography variant="body2" color="text.secondary">
+            <Typography
+              variant="body2"
+              sx={{
+                color: "text.secondary",
+              }}
+            >
               vs last month
             </Typography>
           </Box>

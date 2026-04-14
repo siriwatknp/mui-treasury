@@ -186,7 +186,6 @@ export function CategorySidebar({
           )}
         </SidebarGroup>
       )}
-
       <SidebarGroup>
         <SidebarMenuList>
           {uncategorized.map((item) => (

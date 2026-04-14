@@ -1,5 +1,5 @@
 import type {} from "@mui/x-date-pickers/themeAugmentation";
-import type {} from "@mui/x-date-pickers-pro/themeAugmentation";
+
 import {
   CONTROL_HEIGHTS,
   CONTROL_TOUCH_HEIGHTS,
@@ -119,11 +119,11 @@ export const datePickerTheme: ThemeComponents = {
       }),
     },
   },
-  MuiPickersDay: {
+  MuiPickerDay: {
     styleOverrides: {
       root: ({ theme }) => ({
         borderRadius: (theme.vars || theme).shape.borderRadius,
-        "&.MuiPickersDay-today": {
+        "&.MuiPickerDay-today": {
           border: `1px solid ${(theme.vars || theme).palette.primary.main}`,
           "&:not(.Mui-selected)": {
             backgroundColor: "transparent",

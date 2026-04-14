@@ -32,7 +32,14 @@ export function CallVolumeTrends() {
         <Box sx={{ display: "flex", flexDirection: "row", gap: 4 }}>
           <Stack spacing={1.5}>
             <Box>
-              <Stack direction="row" spacing={1} alignItems="center" mb={0.5}>
+              <Stack
+                direction="row"
+                spacing={1}
+                sx={{
+                  alignItems: "center",
+                  mb: 0.5,
+                }}
+              >
                 <Box
                   sx={{
                     width: 14,
@@ -58,7 +65,14 @@ export function CallVolumeTrends() {
             </Box>
 
             <Box>
-              <Stack direction="row" spacing={1} alignItems="center" mb={0.5}>
+              <Stack
+                direction="row"
+                spacing={1}
+                sx={{
+                  alignItems: "center",
+                  mb: 0.5,
+                }}
+              >
                 <Box
                   sx={{
                     width: 14,
@@ -139,8 +153,8 @@ export function CallVolumeTrends() {
             />
             <Stack
               direction="row"
-              justifyContent="space-between"
               sx={{
+                justifyContent: "space-between",
                 position: "absolute",
                 bottom: 10,
                 left: 10,

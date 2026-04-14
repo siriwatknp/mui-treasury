@@ -2,39 +2,12 @@
 
 import React, { useState } from "react";
 
-import { FirebaseChatTransport } from "@/registry/firebase/firebase-chat-transport";
-import { ResponseModality } from "firebase/ai";
-import { app } from "@/lib/firebase-setup";
-import { Action, Actions } from "@/registry/components/ai-actions/ai-actions";
-import {
-  Conversation,
-  ConversationContent,
-  ConversationScrollButton,
-} from "@/registry/components/ai-conversation/ai-conversation";
-import {
-  Message,
-  MessageAvatar,
-  MessageContent,
-} from "@/registry/components/ai-message/ai-message";
-import { Loader } from "@/registry/components/ai-loader/ai-loader";
-import {
-  PromptInput,
-  PromptInputBody,
-  PromptInputSubmit,
-  PromptInputTextarea,
-  PromptInputToolbar,
-  type PromptInputMessage,
-} from "@/registry/components/ai-prompt-input/ai-prompt-input";
-import { Response } from "@/registry/components/ai-response/ai-response";
-import {
-  Suggestion,
-  Suggestions,
-} from "@/registry/components/ai-suggestion/ai-suggestion";
 import { UIMessage, useChat } from "@ai-sdk/react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
+import { ResponseModality } from "firebase/ai";
 import {
   BookOpenIcon,
   CopyIcon,
@@ -42,6 +15,34 @@ import {
   SquareIcon,
 } from "lucide-react";
 import { toast } from "sonner";
+
+import { app } from "@/lib/firebase-setup";
+import { Action, Actions } from "@/registry/components/ai-actions/ai-actions";
+import {
+  Conversation,
+  ConversationContent,
+  ConversationScrollButton,
+} from "@/registry/components/ai-conversation/ai-conversation";
+import { Loader } from "@/registry/components/ai-loader/ai-loader";
+import {
+  Message,
+  MessageAvatar,
+  MessageContent,
+} from "@/registry/components/ai-message/ai-message";
+import {
+  PromptInput,
+  PromptInputBody,
+  type PromptInputMessage,
+  PromptInputSubmit,
+  PromptInputTextarea,
+  PromptInputToolbar,
+} from "@/registry/components/ai-prompt-input/ai-prompt-input";
+import { Response } from "@/registry/components/ai-response/ai-response";
+import {
+  Suggestion,
+  Suggestions,
+} from "@/registry/components/ai-suggestion/ai-suggestion";
+import { FirebaseChatTransport } from "@/registry/firebase/firebase-chat-transport";
 
 const SUGGESTED_PROMPTS = [
   "Generate an illustrated recipe for a paella. Create images alongside the text as you generate the recipe.",
@@ -128,7 +129,11 @@ Always aim to create an immersive, illustrated experience.`,
           p: 2,
         }}
       >
-        <Typography color="text.secondary">
+        <Typography
+          sx={{
+            color: "text.secondary",
+          }}
+        >
           Firebase not configured. Please set up Firebase config at the top of
           the page.
         </Typography>
@@ -173,7 +178,11 @@ Always aim to create an immersive, illustrated experience.`,
                 <Typography variant="h4" sx={{ fontWeight: 500 }}>
                   Story Telling
                 </Typography>
-                <Typography color="text.secondary">
+                <Typography
+                  sx={{
+                    color: "text.secondary",
+                  }}
+                >
                   Create illustrated stories, recipes, and guides
                 </Typography>
               </Box>
@@ -297,7 +306,6 @@ Always aim to create an immersive, illustrated experience.`,
           <ConversationScrollButton />
         </Conversation>
       </Box>
-
       {showSuggestions && (
         <Box sx={{ mb: 2 }}>
           <Suggestions>
@@ -311,7 +319,6 @@ Always aim to create an immersive, illustrated experience.`,
           </Suggestions>
         </Box>
       )}
-
       <PromptInput onSubmit={handleSubmit}>
         <PromptInputBody>
           <PromptInputTextarea

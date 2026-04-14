@@ -2,13 +2,21 @@
 
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
+
 import { Sonner, toast } from "@/registry/components/sonner/sonner";
 
 export function Demo() {
   return (
     <>
       <Sonner />
-      <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+      <Stack
+        direction="row"
+        spacing={1}
+        useFlexGap
+        sx={{
+          flexWrap: "wrap",
+        }}
+      >
         <Button variant="outlined" onClick={() => toast("Default toast")}>
           Default
         </Button>
