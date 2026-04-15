@@ -31,7 +31,7 @@ export default async function PreviewPage({ params }: PreviewPageProps) {
 
   try {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-[#fafafa] dark:bg-[#0a0a0a]">
         <PreviewStatic>
           <PreviewComponent>
             <DynamicComponentLoader
