@@ -42,7 +42,7 @@ function escapeXml(s) {
   );
 }
 
-const PANEL = { left: INSET - 24, top: 410, width: 680, height: 180 };
+const PANEL = { left: INSET - 24, top: 410, width: 560, height: 180 };
 const PANEL_RADIUS = 16;
 
 function panelMaskSvg() {
@@ -53,7 +53,7 @@ function panelMaskSvg() {
 
 function panelTintSvg() {
   return Buffer.from(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="${PANEL.width}" height="${PANEL.height}"><rect width="${PANEL.width}" height="${PANEL.height}" rx="${PANEL_RADIUS}" fill="white" fill-opacity="0.72"/></svg>`,
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${PANEL.width}" height="${PANEL.height}"><rect width="${PANEL.width}" height="${PANEL.height}" rx="${PANEL_RADIUS}" fill="white" fill-opacity="0.2"/></svg>`,
   );
 }
 
