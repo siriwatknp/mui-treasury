@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
@@ -58,8 +59,9 @@ export function CardNews2() {
                 lineHeight: 1.45,
                 fontFamily: "'Playfair Display',serif",
                 mb: "1.275rem",
-              }
-            }}>
+              },
+            }}
+          >
             <h2>Space</h2>
             <p>The space between the stars and galaxies is largely empty.</p>
           </Box>

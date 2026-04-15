@@ -1,30 +1,31 @@
 "use client";
 
 import * as React from "react";
-import {
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  Box,
-  Typography,
-  TextField,
-  Button,
-  IconButton,
-  Avatar,
-  Select,
-  MenuItem,
-  Stack,
-  Divider,
-  InputAdornment,
-  FormControl,
-} from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-import GroupAddIcon from "@mui/icons-material/GroupAdd";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+
 import ClearIcon from "@mui/icons-material/Clear";
+import CloseIcon from "@mui/icons-material/Close";
 import CodeIcon from "@mui/icons-material/Code";
-import FileUploadIcon from "@mui/icons-material/FileUpload";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import FileUploadIcon from "@mui/icons-material/FileUpload";
+import GroupAddIcon from "@mui/icons-material/GroupAdd";
+import {
+  Avatar,
+  Box,
+  Button,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  Divider,
+  FormControl,
+  IconButton,
+  InputAdornment,
+  MenuItem,
+  Select,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 interface ProjectMember {
   id: string;
@@ -112,9 +113,13 @@ export function ProjectInviteModal() {
         </IconButton>
 
         <DialogTitle sx={{ pb: 0.5 }}>
-          <Stack direction="row" spacing={1.5} sx={{
-            alignItems: "flex-start"
-          }}>
+          <Stack
+            direction="row"
+            spacing={1.5}
+            sx={{
+              alignItems: "flex-start",
+            }}
+          >
             <Box
               sx={(theme) => ({
                 position: "relative",
@@ -127,9 +132,12 @@ export function ProjectInviteModal() {
               <Typography variant="h6" component="div">
                 Invite to Project
               </Typography>
-              <Typography variant="body2" sx={{
-                color: "text.secondary"
-              }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "text.secondary",
+                }}
+              >
                 Collaborate with members on this project.
               </Typography>
             </Box>
@@ -141,17 +149,22 @@ export function ProjectInviteModal() {
         <DialogContent sx={{ pt: 0 }}>
           <Stack spacing={3}>
             <Box>
-              <Typography variant="subtitle1" gutterBottom sx={{
-                fontWeight: "500"
-              }}>
+              <Typography
+                variant="subtitle1"
+                gutterBottom
+                sx={{
+                  fontWeight: "500",
+                }}
+              >
                 Link to Share
               </Typography>
               <Typography
                 variant="body2"
                 sx={{
                   color: "text.secondary",
-                  mb: 2
-                }}>
+                  mb: 2,
+                }}
+              >
                 Anyone with the link can access
               </Typography>
 
@@ -200,9 +213,13 @@ export function ProjectInviteModal() {
             </Box>
 
             <Box>
-              <Typography variant="subtitle1" gutterBottom sx={{
-                fontWeight: "500"
-              }}>
+              <Typography
+                variant="subtitle1"
+                gutterBottom
+                sx={{
+                  fontWeight: "500",
+                }}
+              >
                 Email
               </Typography>
 
@@ -253,9 +270,13 @@ export function ProjectInviteModal() {
             </Box>
 
             <Box>
-              <Typography variant="subtitle1" gutterBottom sx={{
-                fontWeight: "500"
-              }}>
+              <Typography
+                variant="subtitle1"
+                gutterBottom
+                sx={{
+                  fontWeight: "500",
+                }}
+              >
                 Project Members
               </Typography>
 
@@ -266,7 +287,7 @@ export function ProjectInviteModal() {
                     direction="row"
                     spacing={2}
                     sx={{
-                      alignItems: "center"
+                      alignItems: "center",
                     }}
                   >
                     <Avatar
@@ -277,9 +298,12 @@ export function ProjectInviteModal() {
 
                     <Box sx={{ flex: 1 }}>
                       <Typography variant="body1">{member.name}</Typography>
-                      <Typography variant="body2" sx={{
-                        color: "text.secondary"
-                      }}>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: "text.secondary",
+                        }}
+                      >
                         {member.email}
                       </Typography>
                     </Box>

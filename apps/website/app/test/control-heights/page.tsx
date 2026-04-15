@@ -1,19 +1,19 @@
 "use client";
+import FormatBoldIcon from "@mui/icons-material/FormatBold";
+import Autocomplete from "@mui/material/Autocomplete";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import Checkbox from "@mui/material/Checkbox";
+import Chip from "@mui/material/Chip";
+import MenuItem from "@mui/material/MenuItem";
+import Radio from "@mui/material/Radio";
+import Select from "@mui/material/Select";
+import Stack from "@mui/material/Stack";
+import Switch from "@mui/material/Switch";
+import TextField from "@mui/material/TextField";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import TextField from "@mui/material/TextField";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import Autocomplete from "@mui/material/Autocomplete";
-import Chip from "@mui/material/Chip";
-import Checkbox from "@mui/material/Checkbox";
-import Radio from "@mui/material/Radio";
-import Switch from "@mui/material/Switch";
 import Typography from "@mui/material/Typography";
-import Stack from "@mui/material/Stack";
-import FormatBoldIcon from "@mui/icons-material/FormatBold";
 
 /**
  * Test page for verifying MUI control heights match the scale system.
@@ -310,8 +310,9 @@ function Section({
         spacing={2}
         sx={{
           alignItems: "center",
-          flexWrap: "wrap"
-        }}>
+          flexWrap: "wrap",
+        }}
+      >
         {children}
       </Stack>
     </Box>

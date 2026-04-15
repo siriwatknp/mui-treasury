@@ -1,14 +1,15 @@
 "use client";
 import React from "react";
-import { useTheme } from "@mui/material/styles";
+
+import MoreHoriz from "@mui/icons-material/MoreHoriz";
+import Reply from "@mui/icons-material/Reply";
+import TagFaces from "@mui/icons-material/TagFaces";
+import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import Avatar from "@mui/material/Avatar";
-import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import TagFaces from "@mui/icons-material/TagFaces";
-import Reply from "@mui/icons-material/Reply";
-import MoreHoriz from "@mui/icons-material/MoreHoriz";
+import Typography from "@mui/material/Typography";
+import { useTheme } from "@mui/material/styles";
 
 type ChatMessage =
   | string
@@ -56,7 +57,7 @@ const ChatMsg = ({
       container
       spacing={2}
       sx={{
-        justifyContent: side === "right" ? "flex-end" : "flex-start"
+        justifyContent: side === "right" ? "flex-end" : "flex-start",
       }}
     >
       {side === "left" && (

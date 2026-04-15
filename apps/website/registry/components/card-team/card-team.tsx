@@ -1,11 +1,13 @@
 "use client";
 import React from "react";
+
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
+
 import { getInfoApexStyles } from "../info-apex/info-apex.styles";
 import { Info } from "../info-basic/info";
 import { InfoSubtitle } from "../info-basic/info-subtitle";
@@ -116,8 +118,9 @@ const CustomCard = ({
           display: "flex",
           p: 2,
           gap: 2,
-          flexWrap: "nowrap"
-        }}>
+          flexWrap: "nowrap",
+        }}
+      >
         <AvatarLogo variant={"rounded"} src={thumbnail} />
         <Info useStyles={getInfoApexStyles} sx={{ alignSelf: "center" }}>
           <InfoTitle>{title}</InfoTitle>
@@ -131,8 +134,9 @@ const CustomCard = ({
           color: "grey.600",
           fontSize: "0.875rem",
           fontFamily: "Ubuntu",
-          flexGrow: 1
-        }}>
+          flexGrow: 1,
+        }}
+      >
         {description}
       </Box>
       <Box
@@ -145,8 +149,9 @@ const CustomCard = ({
 
           "&& > *": {
             minWidth: `clamp(0px, (248px + 1px - 100%) * 999, 100%)`,
-          }
-        }}>
+          },
+        }}
+      >
         <Box>
           <AvatarGroup
             max={4}

@@ -1,11 +1,13 @@
 import React from "react";
+
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import type { Theme } from "@mui/material/styles";
-import Typography from "@mui/material/Typography";
+
 import { Info } from "../info-basic/info";
 import { InfoSubtitle } from "../info-basic/info-subtitle";
 import { InfoTitle } from "../info-basic/info-title";

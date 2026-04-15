@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+
 import ArrowForwardIos from "@mui/icons-material/ArrowForwardIos";
 import Favorite from "@mui/icons-material/Favorite";
 import ModeComment from "@mui/icons-material/ModeComment";
@@ -24,9 +25,11 @@ export function CardReview2() {
       })}
     >
       <CardContent sx={{ pr: 2 }}>
-        <Box sx={{
-          mb: 1
-        }}>
+        <Box
+          sx={{
+            mb: 1,
+          }}
+        >
           <Box
             component="h3"
             sx={{
@@ -63,8 +66,9 @@ export function CardReview2() {
           sx={{
             mt: 1,
             mb: 1,
-            opacity: "0.6"
-          }} />
+            opacity: "0.6",
+          }}
+        />
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <Link
             component="button"

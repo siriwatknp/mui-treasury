@@ -1,24 +1,25 @@
 "use client";
 
 import React, { useState } from "react";
+
 import {
-  Box,
-  Typography,
-  TextField,
-  Button,
-  Checkbox,
-  FormControlLabel,
-  Link,
-  Stack,
-  IconButton,
-  Divider,
-} from "@mui/material";
-import {
+  Facebook,
+  Google,
   Visibility,
   VisibilityOff,
-  Google,
-  Facebook,
 } from "@mui/icons-material";
+import {
+  Box,
+  Button,
+  Checkbox,
+  Divider,
+  FormControlLabel,
+  IconButton,
+  Link,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 interface FormData {
   email: string;
@@ -263,8 +264,9 @@ export function SpaceLogin() {
                     justifyContent: "space-between",
                     alignItems: "center",
                     mt: 1,
-                    flexWrap: "wrap"
-                  }}>
+                    flexWrap: "wrap",
+                  }}
+                >
                   <FormControlLabel
                     control={
                       <Checkbox
@@ -311,11 +313,15 @@ export function SpaceLogin() {
                   sx={{
                     justifyContent: "center",
                     mt: 2,
-                    flexWrap: "wrap"
-                  }}>
-                  <Typography variant="body2" sx={{
-                    color: "text.secondary"
-                  }}>
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "text.secondary",
+                    }}
+                  >
                     Don&apos;t have an account?
                   </Typography>
                   <Link

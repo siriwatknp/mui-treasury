@@ -1,14 +1,17 @@
 "use client";
 import React from "react";
+
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 
 const ReactNextArticle = () => (
-  <Box sx={{
-    bgcolor: "rgb(40, 44, 52)"
-  }}>
+  <Box
+    sx={{
+      bgcolor: "rgb(40, 44, 52)",
+    }}
+  >
     <Container disableGutters>
       <Box
         sx={{
@@ -16,8 +19,9 @@ const ReactNextArticle = () => (
           py: 5,
           px: { xs: 2, sm: 3, md: 0 },
           textAlign: "right",
-          color: "common.white"
-        }}>
+          color: "common.white",
+        }}
+      >
         <Typography color={"secondary"} variant={"subtitle2"}>
           Next article
         </Typography>

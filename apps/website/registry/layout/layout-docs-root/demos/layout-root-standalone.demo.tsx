@@ -18,9 +18,12 @@ export function Demo() {
     <Root standalone height="350px" sx={{ minWidth: 200 }}>
       <Header>
         <Box sx={{ px: 2 }}>
-          <Typography variant="caption" sx={{
-            fontWeight: "bold"
-          }}>
+          <Typography
+            variant="caption"
+            sx={{
+              fontWeight: "bold",
+            }}
+          >
             Standalone
           </Typography>
         </Box>
@@ -28,9 +31,13 @@ export function Demo() {
       <Content>
         <Box sx={{ p: 2 }}>
           {Array.from({ length: 20 }, (_, i) => (
-            <Typography key={i} variant="body2" sx={{
-              color: "text.secondary"
-            }}>
+            <Typography
+              key={i}
+              variant="body2"
+              sx={{
+                color: "text.secondary",
+              }}
+            >
               Line {i + 1}
             </Typography>
           ))}
@@ -38,9 +45,12 @@ export function Demo() {
       </Content>
       <Footer>
         <Box sx={{ p: 2 }}>
-          <Typography variant="caption" sx={{
-            color: "text.secondary"
-          }}>
+          <Typography
+            variant="caption"
+            sx={{
+              color: "text.secondary",
+            }}
+          >
             Footer
           </Typography>
         </Box>

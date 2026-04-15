@@ -1,14 +1,15 @@
 "use client";
 import React from "react";
+
+import Info from "@mui/icons-material/Info";
+import Phone from "@mui/icons-material/Phone";
+import Videocam from "@mui/icons-material/Videocam";
+import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
 import ListItem from "@mui/material/ListItem";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemText from "@mui/material/ListItemText";
-import Avatar from "@mui/material/Avatar";
-import IconButton from "@mui/material/IconButton";
-import Phone from "@mui/icons-material/Phone";
-import Videocam from "@mui/icons-material/Videocam";
-import Info from "@mui/icons-material/Info";
 
 const ConversationHead = () => {
   return (
@@ -64,8 +65,9 @@ const ConversationHead = () => {
               sx: {
                 fontSize: 12,
               },
-            }
-          }} />
+            },
+          }}
+        />
       </ListItem>
     </Box>
   );

@@ -1,13 +1,14 @@
 "use client";
 
 import * as React from "react";
+
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import LinearProgress from "@mui/material/LinearProgress";
 import CircularProgress from "@mui/material/CircularProgress";
-import Typography from "@mui/material/Typography";
+import LinearProgress from "@mui/material/LinearProgress";
 import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 import { SparkLineChart } from "@mui/x-charts/SparkLineChart";
 
 export function DataMetrics() {
@@ -65,8 +66,9 @@ export function DataMetrics() {
               direction="row"
               sx={{
                 justifyContent: "space-between",
-                mt: 1
-              }}>
+                mt: 1,
+              }}
+            >
               <Typography variant="caption" sx={{ color: "text.secondary" }}>
                 {storagePercentage.toFixed(1)}%
               </Typography>
@@ -96,8 +98,9 @@ export function DataMetrics() {
               sx={{
                 alignItems: "baseline",
                 mb: 2,
-                whiteSpace: "nowrap"
-              }}>
+                whiteSpace: "nowrap",
+              }}
+            >
               <Typography
                 variant="h3"
                 component="div"
@@ -141,8 +144,9 @@ export function DataMetrics() {
               sx={{
                 flexWrap: "wrap",
                 justifyContent: "space-between",
-                alignItems: "flex-start"
-              }}>
+                alignItems: "flex-start",
+              }}
+            >
               <Stack spacing={0.25}>
                 <Typography variant="body2" sx={{ color: "text.secondary" }}>
                   Data Workspaces

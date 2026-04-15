@@ -1,10 +1,11 @@
 "use client";
 import React from "react";
+
+import MoreHoriz from "@mui/icons-material/MoreHoriz";
+import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import Avatar from "@mui/material/Avatar";
-import MoreHoriz from "@mui/icons-material/MoreHoriz";
 
 interface ChatListItemProps {
   bold?: boolean;
@@ -26,9 +27,11 @@ const ChatListItem = ({
   concise,
 }: ChatListItemProps) => {
   return (
-    <Box sx={{
-      px: 1
-    }}>
+    <Box
+      sx={{
+        px: 1,
+      }}
+    >
       <ListItemButton
         sx={{
           paddingLeft: "8px",
@@ -75,11 +78,14 @@ const ChatListItem = ({
                       color: "text.primary",
                     }),
                   },
-                }
-              }} />
-            <Box sx={{
-              position: "relative"
-            }}>
+                },
+              }}
+            />
+            <Box
+              sx={{
+                position: "relative",
+              }}
+            >
               <MoreHoriz
                 className="ChatListItem-more"
                 sx={{ visibility: "hidden", fontSize: 20 }}

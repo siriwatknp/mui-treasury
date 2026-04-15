@@ -1,11 +1,12 @@
 "use client";
 import React from "react";
-import Box from "@mui/material/Box";
-import Avatar from "@mui/material/Avatar";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import SettingsApplications from "@mui/icons-material/SettingsApplications";
+
 import Edit from "@mui/icons-material/Edit";
+import SettingsApplications from "@mui/icons-material/SettingsApplications";
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
 
 const ChatsHeader = () => {
   return (
@@ -14,8 +15,9 @@ const ChatsHeader = () => {
         py: "10px",
         px: 2,
         display: "flex",
-        alignItems: "center"
-      }}>
+        alignItems: "center",
+      }}
+    >
       <Avatar alt={"me"} src={"https://i.pravatar.cc/300?img=10"} />
       <Typography variant={"h4"} sx={{ flex: "auto", marginLeft: "16px" }}>
         <b>Chats</b>

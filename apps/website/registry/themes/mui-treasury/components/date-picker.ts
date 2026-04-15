@@ -1,4 +1,5 @@
 import type {} from "@mui/x-date-pickers/themeAugmentation";
+
 import {
   CONTROL_HEIGHTS,
   CONTROL_TOUCH_HEIGHTS,
@@ -122,7 +123,7 @@ export const datePickerTheme: ThemeComponents = {
     styleOverrides: {
       root: ({ theme }) => ({
         borderRadius: (theme.vars || theme).shape.borderRadius,
-        '&.MuiPickerDay-today': {
+        "&.MuiPickerDay-today": {
           border: `1px solid ${(theme.vars || theme).palette.primary.main}`,
           "&:not(.Mui-selected)": {
             backgroundColor: "transparent",

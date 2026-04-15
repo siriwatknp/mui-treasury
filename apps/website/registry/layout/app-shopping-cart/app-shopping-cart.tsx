@@ -133,9 +133,11 @@ export function LayoutV6AppShoppingCart() {
         <Footer>
           <Container maxWidth="xl">
             <InsetAvoidingViewFooter>
-              <Box sx={{
-                pb: 3
-              }}>
+              <Box
+                sx={{
+                  pb: 3,
+                }}
+              >
                 <DailySummary />
               </Box>
             </InsetAvoidingViewFooter>

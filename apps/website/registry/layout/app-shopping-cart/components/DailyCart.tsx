@@ -1,18 +1,20 @@
 "use client";
 import React from "react";
-import { styled } from "@mui/material/styles";
+
+import Close from "@mui/icons-material/Close";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import IconButton from "@mui/material/IconButton";
-import Close from "@mui/icons-material/Close";
-import DailySizeSelector from "./DailySizeSelector";
+import Typography from "@mui/material/Typography";
+import { styled } from "@mui/material/styles";
+
 import DailyInteger from "./DailyInteger";
+import DailySizeSelector from "./DailySizeSelector";
 
 const TypographyHeading = styled(Typography)(({ theme: { breakpoints } }) => ({
   fontWeight: 900,
@@ -99,9 +101,11 @@ const rows = [
 
 const DailyCart = () => {
   return (
-    <Box sx={{
-      pt: { xs: 2, sm: 4, md: 6 }
-    }}>
+    <Box
+      sx={{
+        pt: { xs: 2, sm: 4, md: 6 },
+      }}
+    >
       <TypographyHeading variant={"h1"} gutterBottom>
         Shopping Cart.
       </TypographyHeading>
@@ -123,18 +127,22 @@ const DailyCart = () => {
                   <Box
                     sx={{
                       display: "flex",
-                      alignItems: "center"
-                    }}>
+                      alignItems: "center",
+                    }}
+                  >
                     <Box
                       sx={{
                         width: 80,
-                        height: 80
-                      }}>
+                        height: 80,
+                      }}
+                    >
                       <ImgImage alt={row.name} src={row.image} />
                     </Box>
-                    <Box sx={{
-                      ml: 2
-                    }}>
+                    <Box
+                      sx={{
+                        ml: 2,
+                      }}
+                    >
                       <PName>{row.name}</PName>
                       <SpanDescr>{row.descr}</SpanDescr>
                     </Box>

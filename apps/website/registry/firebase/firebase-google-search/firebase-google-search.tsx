@@ -1,10 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
+
+import { UIMessage, useChat } from "@ai-sdk/react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
+import type { GroundingMetadata } from "firebase/ai";
 import {
   Bot,
   CopyIcon,
@@ -13,9 +16,7 @@ import {
   SquareIcon,
 } from "lucide-react";
 import { toast } from "sonner";
-import { UIMessage, useChat } from "@ai-sdk/react";
-import type { GroundingMetadata } from "firebase/ai";
-import { FirebaseChatTransport } from "@/registry/firebase/firebase-chat-transport";
+
 import { app } from "@/lib/firebase-setup";
 import { Action, Actions } from "@/registry/components/ai-actions/ai-actions";
 import {
@@ -23,25 +24,26 @@ import {
   ConversationContent,
   ConversationScrollButton,
 } from "@/registry/components/ai-conversation/ai-conversation";
+import { Loader } from "@/registry/components/ai-loader/ai-loader";
 import {
   Message,
   MessageAvatar,
   MessageContent,
 } from "@/registry/components/ai-message/ai-message";
-import { Loader } from "@/registry/components/ai-loader/ai-loader";
 import {
   PromptInput,
   PromptInputBody,
+  type PromptInputMessage,
   PromptInputSubmit,
   PromptInputTextarea,
   PromptInputToolbar,
-  type PromptInputMessage,
 } from "@/registry/components/ai-prompt-input/ai-prompt-input";
 import { Response } from "@/registry/components/ai-response/ai-response";
 import {
   Suggestion,
   Suggestions,
 } from "@/registry/components/ai-suggestion/ai-suggestion";
+import { FirebaseChatTransport } from "@/registry/firebase/firebase-chat-transport";
 
 const SUGGESTED_PROMPTS = [
   "What are the latest news about AI?",
@@ -114,9 +116,11 @@ Format responses in Markdown unless asked otherwise.`,
           p: 2,
         }}
       >
-        <Typography sx={{
-          color: "text.secondary"
-        }}>
+        <Typography
+          sx={{
+            color: "text.secondary",
+          }}
+        >
           Firebase not configured. Please set up Firebase config at the top of
           the page.
         </Typography>
@@ -178,8 +182,9 @@ Format responses in Markdown unless asked otherwise.`,
                 <Typography
                   sx={{
                     color: "text.secondary",
-                    textAlign: "center"
-                  }}>
+                    textAlign: "center",
+                  }}
+                >
                   Ask questions that need up-to-date information
                 </Typography>
               </Box>
@@ -254,9 +259,11 @@ Format responses in Markdown unless asked otherwise.`,
                         sx={{ display: "flex", alignItems: "center", gap: 1 }}
                       >
                         <CircularProgress size={20} />
-                        <Typography sx={{
-                          color: "text.secondary"
-                        }}>
+                        <Typography
+                          sx={{
+                            color: "text.secondary",
+                          }}
+                        >
                           Searching...
                         </Typography>
                       </Box>
@@ -287,9 +294,11 @@ Format responses in Markdown unless asked otherwise.`,
                 }}
               >
                 <Loader />
-                <Typography sx={{
-                  color: "text.secondary"
-                }}>
+                <Typography
+                  sx={{
+                    color: "text.secondary",
+                  }}
+                >
                   Streaming response...
                 </Typography>
               </Box>

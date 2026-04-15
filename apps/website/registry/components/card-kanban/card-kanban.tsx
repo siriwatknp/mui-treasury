@@ -1,4 +1,5 @@
 import React from "react";
+
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -46,8 +47,9 @@ export function CardKanban() {
         <Box
           sx={{
             display: "flex",
-            alignItems: "center"
-          }}>
+            alignItems: "center",
+          }}
+        >
           <Slider
             defaultValue={30}
             sx={{

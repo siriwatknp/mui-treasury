@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -49,32 +50,40 @@ export function CardProfile() {
           Poland
         </Box>
       </CardContent>
-      <Divider sx={{
-        opacity: "0.6"
-      }} />
-      <Box sx={{
-        display: "flex"
-      }}>
+      <Divider
+        sx={{
+          opacity: "0.6",
+        }}
+      />
+      <Box
+        sx={{
+          display: "flex",
+        }}
+      >
         <Box
-          sx={[{
-            p: 2,
-            flex: "auto"
-          }, (theme) => ({
-            position: "relative",
-            "&:not(:last-of-type)": {
-              "&:after": {
-                content: '" "',
-                display: "block",
-                position: "absolute",
-                height: "50%",
-                width: "1px",
-                backgroundColor: (theme.vars || theme).palette.divider,
-                top: "50%",
-                right: 0,
-                transform: "translateY(-50%)",
-              },
+          sx={[
+            {
+              p: 2,
+              flex: "auto",
             },
-          })]}>
+            (theme) => ({
+              position: "relative",
+              "&:not(:last-of-type)": {
+                "&:after": {
+                  content: '" "',
+                  display: "block",
+                  position: "absolute",
+                  height: "50%",
+                  width: "1px",
+                  backgroundColor: (theme.vars || theme).palette.divider,
+                  top: "50%",
+                  right: 0,
+                  transform: "translateY(-50%)",
+                },
+              },
+            }),
+          ]}
+        >
           <Box
             sx={(theme) => ({
               fontSize: 12,
@@ -99,25 +108,29 @@ export function CardProfile() {
           </Box>
         </Box>
         <Box
-          sx={[{
-            p: 2,
-            flex: "auto"
-          }, (theme) => ({
-            position: "relative",
-            "&:not(:last-of-type)": {
-              "&:after": {
-                content: '" "',
-                display: "block",
-                position: "absolute",
-                height: "50%",
-                width: "1px",
-                backgroundColor: (theme.vars || theme).palette.divider,
-                top: "50%",
-                right: 0,
-                transform: "translateY(-50%)",
-              },
+          sx={[
+            {
+              p: 2,
+              flex: "auto",
             },
-          })]}>
+            (theme) => ({
+              position: "relative",
+              "&:not(:last-of-type)": {
+                "&:after": {
+                  content: '" "',
+                  display: "block",
+                  position: "absolute",
+                  height: "50%",
+                  width: "1px",
+                  backgroundColor: (theme.vars || theme).palette.divider,
+                  top: "50%",
+                  right: 0,
+                  transform: "translateY(-50%)",
+                },
+              },
+            }),
+          ]}
+        >
           <Box
             sx={(theme) => ({
               fontSize: 12,

@@ -1,6 +1,8 @@
 "use client";
 
 import * as React from "react";
+
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -11,7 +13,6 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { FavoriteBorder, Favorite } from "@mui/icons-material";
 
 interface ProductCardProps {
   title?: string;
@@ -104,9 +105,13 @@ export function ProductCard({
       </Box>
       <CardContent sx={{ p: 2 }}>
         <Stack spacing={2}>
-          <Typography variant="h6" component="h3" sx={{
-            fontWeight: "bold"
-          }}>
+          <Typography
+            variant="h6"
+            component="h3"
+            sx={{
+              fontWeight: "bold",
+            }}
+          >
             {title}
           </Typography>
 
@@ -116,8 +121,9 @@ export function ProductCard({
             useFlexGap
             sx={{
               flexWrap: "wrap",
-              mt: -1
-            }}>
+              mt: -1,
+            }}
+          >
             {attributes.map((attr, index) => (
               <Chip
                 key={index}
@@ -137,8 +143,9 @@ export function ProductCard({
             variant="body2"
             sx={{
               color: "text.secondary",
-              lineHeight: 1.5
-            }}>
+              lineHeight: 1.5,
+            }}
+          >
             {description}
           </Typography>
 
@@ -147,23 +154,26 @@ export function ProductCard({
             spacing={1}
             sx={{
               justifyContent: "space-between",
-              alignItems: "flex-end"
-            }}>
+              alignItems: "flex-end",
+            }}
+          >
             <Box>
               <Typography
                 variant="caption"
                 sx={{
                   color: "text.secondary",
-                  display: "block"
-                }}>
+                  display: "block",
+                }}
+              >
                 PRICE
               </Typography>
               <Typography
                 variant="h5"
                 sx={{
                   fontWeight: "bold",
-                  color: "text.primary"
-                }}>
+                  color: "text.primary",
+                }}
+              >
                 {price}
               </Typography>
             </Box>

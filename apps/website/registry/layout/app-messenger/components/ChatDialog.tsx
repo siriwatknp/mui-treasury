@@ -1,16 +1,20 @@
 "use client";
 import React from "react";
+
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+
 import ChatMsg from "./ChatMsg";
 
 const AVATAR = "https://i.pravatar.cc/300?img=13";
 
 const ChatDialog = () => {
   return (
-    <Box sx={{
-      p: "16px 30px 12px 10px"
-    }}>
+    <Box
+      sx={{
+        p: "16px 30px 12px 10px",
+      }}
+    >
       <ChatMsg
         avatar={AVATAR}
         messages={[

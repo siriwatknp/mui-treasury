@@ -1,11 +1,13 @@
 "use client";
 import React from "react";
+
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
+
 import { Info } from "../info-basic/info";
 import { InfoSubtitle } from "../info-basic/info-subtitle";
 import { InfoTitle } from "../info-basic/info-title";
@@ -43,8 +45,9 @@ export function CardEngagement() {
       <Box
         sx={{
           px: 3,
-          pb: 3
-        }}>
+          pb: 3,
+        }}
+      >
         <AvatarGroup>
           <Avatar alt="Remy Sharp" src="https://i.pravatar.cc/300?img=1" />
           <Avatar alt="Travis Howard" src="https://i.pravatar.cc/300?img=2" />

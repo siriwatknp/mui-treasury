@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+
+import { Check, Favorite, FavoriteBorder } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -11,7 +13,6 @@ import {
   ToggleButtonGroup,
   Typography,
 } from "@mui/material";
-import { FavoriteBorder, Favorite, Check } from "@mui/icons-material";
 
 interface ProductCard2Props {
   productName?: string;
@@ -252,8 +253,9 @@ export function ProductCard2({
               variant="body2"
               sx={{
                 color: "text.secondary",
-                mb: 0.5
-              }}>
+                mb: 0.5,
+              }}
+            >
               Price
             </Typography>
             <Typography variant="h5" sx={{ fontWeight: 600 }}>

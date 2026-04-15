@@ -1,4 +1,5 @@
 import React from "react";
+
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -86,19 +87,23 @@ export function CardSocial() {
       })}
     >
       <Box
-        sx={[{
-          alignItems: "baseline",
-          p: 2
-        }, (theme) => ({
-          display: "flex",
-          flexWrap: "wrap",
-          borderTopLeftRadius: "inherit",
-          borderTopRightRadius: "inherit",
-          bgcolor: "#fff",
-          ...theme.applyStyles("dark", {
-            bgcolor: "#2f3c50",
+        sx={[
+          {
+            alignItems: "baseline",
+            p: 2,
+          },
+          (theme) => ({
+            display: "flex",
+            flexWrap: "wrap",
+            borderTopLeftRadius: "inherit",
+            borderTopRightRadius: "inherit",
+            bgcolor: "#fff",
+            ...theme.applyStyles("dark", {
+              bgcolor: "#2f3c50",
+            }),
           }),
-        })]}>
+        ]}
+      >
         <Box sx={{ flexGrow: 1, mr: 1 }}>
           <Typography variant="h6">
             <b>Who to follow</b>

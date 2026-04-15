@@ -1,16 +1,17 @@
 "use client";
 import React from "react";
-import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Avatar from "@mui/material/Avatar";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
+
+import Edit from "@mui/icons-material/Edit";
+import FormatPaint from "@mui/icons-material/FormatPaint";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import Search from "@mui/icons-material/Search";
-import Edit from "@mui/icons-material/Edit";
 import ThumbUp from "@mui/icons-material/ThumbUp";
-import FormatPaint from "@mui/icons-material/FormatPaint";
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
+import Typography from "@mui/material/Typography";
+import { styled } from "@mui/material/styles";
 
 const StyledAvatar = styled(Avatar)(() => ({
   width: 100,
@@ -40,8 +41,9 @@ const SettingHeader = ({ children, opened }: SettingHeaderProps) => {
 
         "&:hover": {
           backgroundColor: "rgba(0,0,0,0.08)",
-        }
-      }}>
+        },
+      }}
+    >
       <Typography
         sx={{
           "&:hover": {
@@ -71,8 +73,9 @@ const Setting = ({ label, icon, blue }: SettingProps) => {
         pr: "12px",
         display: "flex",
         justifyContent: "space-between",
-        alignItems: "center"
-      }}>
+        alignItems: "center",
+      }}
+    >
       <Typography variant={"body2"}>{label}</Typography>
       {React.cloneElement(icon as never, {
         sx: {
@@ -97,8 +100,9 @@ const ChatSettings = () => {
       <Box
         sx={{
           p: "14px 14px 16px 14px",
-          textAlign: "center"
-        }}>
+          textAlign: "center",
+        }}
+      >
         <StyledAvatar src={"https://i.pravatar.cc/300?img=13"} />
         <TypographyName variant={"h1"} align={"center"}>
           Imaad Casey
@@ -106,9 +110,11 @@ const ChatSettings = () => {
       </Box>
       <Divider />
       <SettingHeader opened>Options</SettingHeader>
-      <Box sx={{
-        pb: 2
-      }}>
+      <Box
+        sx={{
+          pb: 2,
+        }}
+      >
         <Setting label={"Search in Conversation"} icon={<Search />} />
         <Setting label={"Edit Nicknames"} icon={<Edit />} />
         <Setting label={"Change Theme"} icon={<FormatPaint />} blue />

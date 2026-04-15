@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Chip from "@mui/material/Chip";
@@ -78,8 +79,9 @@ function MetricCard({
           spacing={1}
           sx={{
             alignItems: "center",
-            mb: 1
-          }}>
+            mb: 1,
+          }}
+        >
           <Typography
             variant="body2"
             sx={{

@@ -1,15 +1,28 @@
 "use client";
 import React from "react";
+
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
+import Toolbar from "@mui/material/Toolbar";
 import {
+  ThemeProvider,
   createTheme,
   responsiveFontSizes,
   styled,
-  ThemeProvider,
 } from "@mui/material/styles";
-import Toolbar from "@mui/material/Toolbar";
+
+import {
+  Content,
+  EdgeSidebar,
+  EdgeSidebarContent,
+  Footer,
+  Header,
+  InsetAvoidingView,
+  InsetContent,
+  InsetSidebar,
+  Root,
+} from "../layout-core";
 import {
   ChatBar,
   ChatDialog,
@@ -19,17 +32,6 @@ import {
   ConversationHead,
   MessengerSearch,
 } from "./components";
-import {
-  Content,
-  EdgeSidebar,
-  EdgeSidebarContent,
-  Footer,
-  Header,
-  InsetAvoidingView,
-  InsetSidebar,
-  InsetContent,
-  Root,
-} from "../layout-core";
 
 const StyledHeader = styled(Header)(() => ({
   boxShadow: "0 1px 2px 0 rgba(0, 0, 0, .10)",
@@ -91,9 +93,11 @@ export function LayoutV6AppMessenger() {
         >
           <EdgeSidebarContent>
             <ChatsHeader />
-            <Box sx={{
-              p: "4px 16px 12px"
-            }}>
+            <Box
+              sx={{
+                p: "4px 16px 12px",
+              }}
+            >
               <MessengerSearch />
             </Box>
             <ChatList />
@@ -114,8 +118,9 @@ export function LayoutV6AppMessenger() {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  p: 1
-                }}>
+                  p: 1,
+                }}
+              >
                 <ChatBar />
               </Box>
             </InsetAvoidingView>

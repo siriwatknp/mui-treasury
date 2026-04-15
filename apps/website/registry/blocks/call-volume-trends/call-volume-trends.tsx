@@ -37,8 +37,9 @@ export function CallVolumeTrends() {
                 spacing={1}
                 sx={{
                   alignItems: "center",
-                  mb: 0.5
-                }}>
+                  mb: 0.5,
+                }}
+              >
                 <Box
                   sx={{
                     width: 14,
@@ -69,8 +70,9 @@ export function CallVolumeTrends() {
                 spacing={1}
                 sx={{
                   alignItems: "center",
-                  mb: 0.5
-                }}>
+                  mb: 0.5,
+                }}
+              >
                 <Box
                   sx={{
                     width: 14,
@@ -156,8 +158,9 @@ export function CallVolumeTrends() {
                 position: "absolute",
                 bottom: 10,
                 left: 10,
-                right: 10
-              }}>
+                right: 10,
+              }}
+            >
               <Typography
                 variant="body2"
                 sx={{ color: "text.secondary", fontSize: "0.875rem" }}

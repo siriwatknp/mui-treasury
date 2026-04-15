@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+
 import {
   Box,
   FormControlLabel,
@@ -90,9 +91,12 @@ export function RadioCard01() {
               <Typography variant="h6" component="div">
                 iPhone 17 Pro
               </Typography>
-              <Typography variant="body2" sx={{
-                color: "text.secondary"
-              }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "text.secondary",
+                }}
+              >
                 6.3-inch display²
               </Typography>
             </Stack>
@@ -103,14 +107,20 @@ export function RadioCard01() {
               <Typography variant="body1" sx={{ fontWeight: 600 }}>
                 From $1099
               </Typography>
-              <Typography variant="body2" sx={{
-                color: "text.secondary"
-              }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "text.secondary",
+                }}
+              >
                 or $45.79/mo.
               </Typography>
-              <Typography variant="body2" sx={{
-                color: "text.secondary"
-              }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "text.secondary",
+                }}
+              >
                 for 24 mo.*
               </Typography>
             </Stack>
@@ -134,9 +144,12 @@ export function RadioCard01() {
               <Typography variant="h6" component="div">
                 iPhone 17 Pro Max
               </Typography>
-              <Typography variant="body2" sx={{
-                color: "text.secondary"
-              }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "text.secondary",
+                }}
+              >
                 6.9-inch display²
               </Typography>
             </Stack>
@@ -147,14 +160,20 @@ export function RadioCard01() {
               <Typography variant="body1" sx={{ fontWeight: 600 }}>
                 From $1199
               </Typography>
-              <Typography variant="body2" sx={{
-                color: "text.secondary"
-              }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "text.secondary",
+                }}
+              >
                 or $49.95/mo.
               </Typography>
-              <Typography variant="body2" sx={{
-                color: "text.secondary"
-              }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "text.secondary",
+                }}
+              >
                 for 24 mo.*
               </Typography>
             </Stack>

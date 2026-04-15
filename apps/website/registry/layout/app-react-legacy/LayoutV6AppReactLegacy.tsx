@@ -51,9 +51,13 @@ const FooterMenu = ({
 >) => {
   return (
     <>
-      {isHeader && <Box sx={{
-        mt: 5
-      }} />}
+      {isHeader && (
+        <Box
+          sx={{
+            mt: 5,
+          }}
+        />
+      )}
       <Typography
         sx={{
           color: "#fff",
@@ -78,8 +82,9 @@ export function LayoutV6AppReactLegacy() {
     <Box
       sx={{
         mt: 7.5,
-        ml: 3
-      }}>
+        ml: 3,
+      }}
+    >
       {getData()[0].map((label, i) => (
         <Typography
           key={i}
@@ -146,25 +151,30 @@ export function LayoutV6AppReactLegacy() {
         </Container>
       </Content>
       <Footer>
-        <Box sx={{
-          bgcolor: "rgb(40, 44, 52)"
-        }}>
+        <Box
+          sx={{
+            bgcolor: "rgb(40, 44, 52)",
+          }}
+        >
           <Container>
             <InsetAvoidingView>
               <ReactNextArticle />
             </InsetAvoidingView>
           </Container>
         </Box>
-        <Box sx={{
-          bgcolor: "#20232a"
-        }}>
+        <Box
+          sx={{
+            bgcolor: "#20232a",
+          }}
+        >
           <Container>
             <InsetAvoidingView>
               <Box
                 sx={{
                   pr: { xs: 0, md: 5 },
-                  pb: 5
-                }}>
+                  pb: 5,
+                }}
+              >
                 <Grid container>
                   <Grid size={{ lg: 4 }}>
                     <Typography sx={{ mt: "56px", color: "#888" }}>

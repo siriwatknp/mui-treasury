@@ -1,14 +1,15 @@
 "use client";
 
 import * as React from "react";
+
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import { LineChart } from "@mui/x-charts/LineChart";
 
 export function MembersMetric() {
@@ -23,9 +24,12 @@ export function MembersMetric() {
             mb: 2,
           }}
         >
-          <Typography gutterBottom sx={{
-            color: "text.secondary"
-          }}>
+          <Typography
+            gutterBottom
+            sx={{
+              color: "text.secondary",
+            }}
+          >
             Members
           </Typography>
           <IconButton
@@ -54,8 +58,9 @@ export function MembersMetric() {
               spacing={0.5}
               sx={{
                 alignItems: "center",
-                color: "error.text"
-              }}>
+                color: "error.text",
+              }}
+            >
               <TrendingDownIcon fontSize="small" sx={{ color: "error.main" }} />
               <Typography variant="body2">10% vs last month</Typography>
             </Stack>

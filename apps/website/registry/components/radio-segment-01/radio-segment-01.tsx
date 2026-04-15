@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+
 import {
   FormControlLabel,
   Radio,
@@ -87,9 +88,12 @@ export function RadioSegment01({
             }}
           >
             <Typography variant="h4">14-inch</Typography>
-            <Typography variant="body1" sx={{
-              color: "text.secondary"
-            }}>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "text.secondary",
+              }}
+            >
               From $1599
             </Typography>
           </Stack>
@@ -119,9 +123,12 @@ export function RadioSegment01({
             }}
           >
             <Typography variant="h4">16-inch</Typography>
-            <Typography variant="body1" sx={{
-              color: "text.secondary"
-            }}>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "text.secondary",
+              }}
+            >
               From $2499
             </Typography>
           </Stack>
