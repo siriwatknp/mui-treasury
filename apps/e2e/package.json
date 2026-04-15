@@ -8,6 +8,7 @@
     "test:headed": "playwright test --headed"
   },
   "devDependencies": {
-    "@playwright/test": "1.52.0"
+    "@playwright/test": "1.52.0",
+    "@types/node": "^22.19.2"
   }
 }
