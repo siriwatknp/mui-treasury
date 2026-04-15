@@ -42,21 +42,45 @@ function escapeXml(s) {
   );
 }
 
+const PANEL = { left: INSET - 24, top: 410, width: 680, height: 180 };
+const PANEL_RADIUS = 16;
+
+function panelMaskSvg() {
+  return Buffer.from(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${PANEL.width}" height="${PANEL.height}"><rect width="${PANEL.width}" height="${PANEL.height}" rx="${PANEL_RADIUS}" fill="white"/></svg>`,
+  );
+}
+
+function panelTintSvg() {
+  return Buffer.from(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${PANEL.width}" height="${PANEL.height}"><rect width="${PANEL.width}" height="${PANEL.height}" rx="${PANEL_RADIUS}" fill="white" fill-opacity="0.72"/></svg>`,
+  );
+}
+
 function overlaySvg(title, name) {
   const safeTitle = escapeXml(title);
-  const cmd = escapeXml(`npx mui-treasury@latest add ${name}`);
+  const cmd = escapeXml(`npx mui-treasury add ${name}`);
   const badgeY = 630 - INSET - 126;
   const titleY = 630 - INSET - 52;
   const cmdY = 630 - INSET - 12;
   return Buffer.from(`<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
   <g transform="translate(${INSET} ${badgeY})">
-    <rect x="0" y="0" width="112" height="26" rx="6" fill="#f1f5f9"/>
-    <text x="56" y="18" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="13" font-weight="600" fill="#334155" text-anchor="middle">MUI Treasury</text>
+    <rect x="0" y="0" width="128" height="30" rx="6" fill="#f1f5f9"/>
+    <text x="64" y="20" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="15" font-weight="600" fill="#334155" text-anchor="middle">MUI Treasury</text>
   </g>
   <text x="${INSET}" y="${titleY}" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="40" font-weight="700" fill="#0f172a">${safeTitle}</text>
-  <text x="${INSET}" y="${cmdY}" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="18" fill="#64748b">${cmd}</text>
+  <text x="${INSET}" y="${cmdY}" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="22" fill="#64748b">${cmd}</text>
 </svg>`);
+}
+
+async function buildFrostedPanel(src) {
+  const extracted = sharp(src).extract(PANEL).blur(24);
+  const rounded = await extracted
+    .composite([{ input: panelMaskSvg(), blend: "dest-in" }])
+    .png()
+    .toBuffer();
+  return rounded;
 }
 
 await fs.mkdir(DEST_DIR, { recursive: true });
@@ -67,8 +91,14 @@ for (const file of files) {
   const name = file.slice(0, -SUFFIX.length);
   if (only && name !== only) continue;
   const title = await findMetaTitle(name);
-  await sharp(path.join(SNAP_DIR, file))
-    .composite([{ input: overlaySvg(title, name), top: 0, left: 0 }])
+  const src = path.join(SNAP_DIR, file);
+  const frosted = await buildFrostedPanel(src);
+  await sharp(src)
+    .composite([
+      { input: frosted, top: PANEL.top, left: PANEL.left },
+      { input: panelTintSvg(), top: PANEL.top, left: PANEL.left },
+      { input: overlaySvg(title, name), top: 0, left: 0 },
+    ])
     .toFile(path.join(DEST_DIR, `${name}.png`));
   copied += 1;
 }
