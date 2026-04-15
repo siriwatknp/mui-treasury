@@ -1,11 +1,13 @@
 "use client";
 import React from "react";
+
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
+
 import { getInfoApexStyles } from "../info-apex/info-apex.styles";
 import { Info } from "../info-basic/info";
 import { InfoSubtitle } from "../info-basic/info-subtitle";
