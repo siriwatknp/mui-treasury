@@ -11,9 +11,17 @@ export default defineConfig({
     baseURL: "http://localhost:4418",
     trace: "on-first-retry",
   },
+  expect: {
+    toHaveScreenshot: {
+      maxDiffPixelRatio: 0.01,
+      animations: "disabled",
+      caret: "hide",
+    },
+  },
   projects: [
     {
       name: "desktop",
+      testIgnore: ["**/visual.spec.ts"],
       use: {
         ...devices["Desktop Chrome"],
         viewport: { width: 1280, height: 720 },
@@ -21,9 +29,18 @@ export default defineConfig({
     },
     {
       name: "touch",
+      testIgnore: ["**/visual.spec.ts"],
       use: {
         ...devices["Desktop Chrome"],
         viewport: { width: 600, height: 1024 },
+      },
+    },
+    {
+      name: "visual",
+      testMatch: ["**/visual.spec.ts"],
+      use: {
+        ...devices["Desktop Chrome"],
+        viewport: { width: 1200, height: 630 },
       },
     },
   ],
