@@ -28,7 +28,7 @@ const generateData = () => {
     const base = 85000;
     const wave1 = Math.sin(day * 0.6) * 2500;
     const wave2 = Math.cos(day * 1.2) * 1500;
-    const spike = day % 5 === 0 ? Math.random() * 1000 : 0;
+    const spike = day % 5 === 0 ? (Math.sin(day * 2.7) * 0.5 + 0.5) * 1000 : 0;
     return base + wave1 + wave2 + spike + day * 600;
   });
 

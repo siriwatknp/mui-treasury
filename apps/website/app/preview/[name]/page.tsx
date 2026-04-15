@@ -1,34 +1,45 @@
 import { notFound } from "next/navigation";
-import { getRegistryByName } from "@/lib/registry";
-import { PreviewComponent } from "@/components/preview-page";
+
 import { DynamicComponentLoader } from "@/components/dynamic-component-loader";
+import { PreviewComponent } from "@/components/preview-page";
+import { getRegistryByName } from "@/lib/registry";
+
+import { PreviewStatic } from "./preview-static";
 
 interface PreviewPageProps {
   params: Promise<{ name: string }>;
 }
 
+export async function generateMetadata({ params }: PreviewPageProps) {
+  const { name } = await params;
+  return {
+    openGraph: { images: [`/og/${name}.png`] },
+    twitter: { card: "summary_large_image", images: [`/og/${name}.png`] },
+  };
+}
+
 export default async function PreviewPage({ params }: PreviewPageProps) {
   const { name } = await params;
 
-  // Get registry item
   const item = getRegistryByName(name);
 
   if (!item) {
     notFound();
   }
 
-  // Extract the component path from the first file
   const componentPath = item.files[0].path.replace(".tsx", "");
 
   try {
     return (
       <div className="min-h-screen bg-background">
-        <PreviewComponent>
-          <DynamicComponentLoader
-            componentPath={componentPath}
-            exportName={item.meta.exportName}
-          />
-        </PreviewComponent>
+        <PreviewStatic>
+          <PreviewComponent>
+            <DynamicComponentLoader
+              componentPath={componentPath}
+              exportName={item.meta.exportName}
+            />
+          </PreviewComponent>
+        </PreviewStatic>
       </div>
     );
   } catch (error) {

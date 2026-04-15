@@ -27,16 +27,24 @@ const generateChartData = () => {
     // Generate read data with upward trend
     const baseRead = 615752;
     const trendRead = dayIndex * 900;
-    const noiseRead = Math.sin(dayIndex * 0.5) * 15000 + Math.random() * 5000;
+    const noiseRead =
+      Math.sin(dayIndex * 0.5) * 15000 +
+      (Math.sin(dayIndex * 2.3) * 0.5 + 0.5) * 5000;
     readCurrent.push(baseRead + trendRead + noiseRead);
-    readPrevious.push(baseRead - 10000 + Math.random() * 8000);
+    readPrevious.push(
+      baseRead - 10000 + (Math.sin(dayIndex * 1.7) * 0.5 + 0.5) * 8000,
+    );
 
     // Generate write data with slight downward trend
     const baseWrite = 86580;
     const trendWrite = -dayIndex * 100;
-    const noiseWrite = Math.sin(dayIndex * 0.4) * 3000 + Math.random() * 2000;
+    const noiseWrite =
+      Math.sin(dayIndex * 0.4) * 3000 +
+      (Math.sin(dayIndex * 3.1) * 0.5 + 0.5) * 2000;
     writeCurrent.push(baseWrite + trendWrite + noiseWrite);
-    writePrevious.push(baseWrite + 5000 + Math.random() * 3000);
+    writePrevious.push(
+      baseWrite + 5000 + (Math.sin(dayIndex * 2.5) * 0.5 + 0.5) * 3000,
+    );
   }
 
   return {

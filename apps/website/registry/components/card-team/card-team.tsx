@@ -159,9 +159,7 @@ const CustomCard = ({
             {new Array(5).fill(0).map((_, index) => (
               <Avatar
                 key={index}
-                src={`https://i.pravatar.cc/300?img=${Math.floor(
-                  Math.random() * 30,
-                )}`}
+                src={`https://i.pravatar.cc/300?img=${(index * 7) % 30}`}
               />
             ))}
           </AvatarGroup>
