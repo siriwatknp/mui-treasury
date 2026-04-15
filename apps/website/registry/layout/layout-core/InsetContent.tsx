@@ -33,7 +33,6 @@ const InsetContentRoot = styled("div")(({ theme }) => ({
 const InsetContent = React.forwardRef<HTMLDivElement, BoxProps>(
   function InsetContent({ className, children, ...props }, ref) {
     return (
-      // @ts-expect-error BoxProps on styled native element
       <InsetContentRoot
         ref={ref}
         className={`${layoutClasses.InsetContent} ${className || ""}`}

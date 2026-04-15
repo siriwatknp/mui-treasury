@@ -25,7 +25,7 @@ import LayersIcon from "@mui/icons-material/Layers";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import FolderIcon from "@mui/icons-material/Folder";
 import PeopleIcon from "@mui/icons-material/People";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutlined";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";

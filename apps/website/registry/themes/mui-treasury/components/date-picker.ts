@@ -1,5 +1,4 @@
 import type {} from "@mui/x-date-pickers/themeAugmentation";
-import type {} from "@mui/x-date-pickers-pro/themeAugmentation";
 import {
   CONTROL_HEIGHTS,
   CONTROL_TOUCH_HEIGHTS,
