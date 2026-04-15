@@ -82,7 +82,7 @@ MUI Registry — a custom component registry built with Next.js 15, Material UI 
 ```bash
 pnpm dev               # Dev server with Turbopack at port 4418
 pnpm registry:build    # Build registry files → public/r/
-pnpm dev:screenshot    # Screenshots (requires dev server on 4418)
+pnpm test:visual       # Visual regression + OG image sync (runs Playwright, copies baselines → public/og/)
 pnpm build             # Production build
 pnpm lint              # Lint
 ```
@@ -140,7 +140,9 @@ Rules:
 - Run `npx tsx scripts/create-registry-json <registry_name> -t [title] -d [description] -c [category]`
   - Categories: `primitive`, `ai`, `authentication`, `dashboard`
   - Optional: `previewMode: "iframe"` in `meta` for large components
-- Move screenshots to context folder, copy latest to `public/screenshots/{registry_name}.png`
+- Move screenshots to context folder
+- Run `pnpm test:visual -- -g <registry_name> --update-snapshots` → generates baseline in `apps/e2e/tests/visual.spec.ts-snapshots/` + OG image in `apps/website/public/og/<registry_name>.png`
+- Registry demos MUST be deterministic — no `Math.random()`, `new Date()`, `Date.now()` (use fixed seeds or baked constants)
 
 ---
 
