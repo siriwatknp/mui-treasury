@@ -377,7 +377,7 @@ describe("processRegistryFile", () => {
   it("should include screenshot path in meta when file exists", () => {
     vol.fromJSON({
       "/project/registry/components/dialog/dialog.tsx": `export default function Dialog() {}`,
-      "/project/public/screenshots/dialog.png": "",
+      "/project/public/og/dialog.png": "",
     });
 
     const result = processRegistryFile({
@@ -386,6 +386,6 @@ describe("processRegistryFile", () => {
       name: "dialog",
     });
 
-    expect(result.metadata.meta.screenshot).toBe("/screenshots/dialog.png");
+    expect(result.metadata.meta.screenshot).toBe("/og/dialog.png");
   });
 });

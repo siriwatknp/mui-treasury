@@ -423,7 +423,7 @@ export function processRegistryFile(
       const screenshotPath = path.join(
         process.cwd(),
         "public",
-        "screenshots",
+        "og",
         `${name}.png`,
       );
       const hasScreenshot = fs.existsSync(screenshotPath);
@@ -437,7 +437,7 @@ export function processRegistryFile(
       };
 
       if (hasScreenshot) {
-        metadata.meta.screenshot = `/screenshots/${name}.png`;
+        metadata.meta.screenshot = `/og/${name}.png`;
       }
 
       if (category) {
