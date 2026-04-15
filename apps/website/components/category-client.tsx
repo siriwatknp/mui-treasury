@@ -221,7 +221,7 @@ function ComponentPreview({
   );
 
   const handleCopyCLI = async () => {
-    const cliCommand = `npx shadcn@latest add ${process.env.NEXT_PUBLIC_BASE_URL}/r/${item.name}.json`;
+    const cliCommand = `npx mui-treasury@latest add ${item.name}`;
     await navigator.clipboard.writeText(cliCommand);
     setCopiedIndex(-2); // Use -2 for CLI button
     setTimeout(() => setCopiedIndex(-1), 2000);
@@ -402,7 +402,7 @@ function ComponentPreview({
             ) : (
               <Terminal className="h-3 w-3 mr-1.5" />
             )}
-            npx shadcn
+            Add to project
           </Button>
           {process.env.NEXT_PUBLIC_OPEN_V0_BUTTON === "true" && (
             <OpenInV0Button name={item.name} className="h-8" />
@@ -478,7 +478,7 @@ function MetaOnlyItem({ item }: { item: RegistryItem }) {
   const [copiedIndex, setCopiedIndex] = React.useState<number>(-1);
 
   const handleCopyCLI = async () => {
-    const cliCommand = `npx shadcn@latest add ${process.env.NEXT_PUBLIC_BASE_URL}/r/${item.name}.json`;
+    const cliCommand = `npx mui-treasury@latest add ${item.name}`;
     await navigator.clipboard.writeText(cliCommand);
     setCopiedIndex(-2);
     setTimeout(() => setCopiedIndex(-1), 2000);
@@ -500,7 +500,7 @@ function MetaOnlyItem({ item }: { item: RegistryItem }) {
           ) : (
             <Terminal className="h-3 w-3 mr-1.5" />
           )}
-          npx shadcn
+          Add to project
         </Button>
         {process.env.NEXT_PUBLIC_OPEN_V0_BUTTON === "true" && (
           <OpenInV0Button name={item.name} className="h-8" />
