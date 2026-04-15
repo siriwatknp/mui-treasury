@@ -19,21 +19,27 @@ export function Demo() {
     <Root sx={{ minHeight: 400, width: "100%" }}>
       <Header>
         <Box sx={{ px: 2 }}>
-          <Typography variant="subtitle2" fontWeight="bold">
+          <Typography variant="subtitle2" sx={{
+            fontWeight: "bold"
+          }}>
             Header
           </Typography>
         </Box>
       </Header>
       <Content>
         <Box sx={{ p: 2 }}>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" sx={{
+            color: "text.secondary"
+          }}>
             Content area
           </Typography>
         </Box>
       </Content>
       <Footer>
         <Box sx={{ p: 2 }}>
-          <Typography variant="caption" color="text.secondary">
+          <Typography variant="caption" sx={{
+            color: "text.secondary"
+          }}>
             Footer
           </Typography>
         </Box>

@@ -9,7 +9,13 @@ import Edit from "@mui/icons-material/Edit";
 
 const ChatsHeader = () => {
   return (
-    <Box py={"10px"} px={2} display={"flex"} alignItems={"center"}>
+    <Box
+      sx={{
+        py: "10px",
+        px: 2,
+        display: "flex",
+        alignItems: "center"
+      }}>
       <Avatar alt={"me"} src={"https://i.pravatar.cc/300?img=10"} />
       <Typography variant={"h4"} sx={{ flex: "auto", marginLeft: "16px" }}>
         <b>Chats</b>

@@ -23,7 +23,9 @@ export function CustomerMetricsCard() {
             mb: 2,
           }}
         >
-          <Typography color="text.secondary">Total customers</Typography>
+          <Typography sx={{
+            color: "text.secondary"
+          }}>Total customers</Typography>
           <IconButton size="small" aria-label="More options" sx={{ mr: -0.5 }}>
             <MoreVertIcon fontSize="small" />
           </IconButton>
@@ -38,17 +40,22 @@ export function CustomerMetricsCard() {
           }}
         >
           <div>
-            <Typography variant="h3" component="div" fontWeight="medium">
+            <Typography variant="h3" component="div" sx={{
+              fontWeight: "medium"
+            }}>
               2,420
             </Typography>
             <Stack
               direction="row"
               spacing={0.5}
-              alignItems="center"
-              sx={{ mt: 1 }}
-            >
+              sx={{
+                alignItems: "center",
+                mt: 1
+              }}>
               <TrendingUpIcon fontSize="small" sx={{ color: "success.main" }} />
-              <Typography variant="body2" color="success.text">
+              <Typography variant="body2" sx={{
+                color: "success.text"
+              }}>
                 40% vs last month
               </Typography>
             </Stack>

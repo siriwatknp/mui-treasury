@@ -1278,7 +1278,9 @@ export default function ThemePreviewPage() {
                   subheader="September 14, 2016"
                 />
                 <CardContent>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     This impressive paella is a perfect party dish and a fun
                     meal to cook together with your guests. Add 1 or 2 seeded
                     bell peppers, or add a bit of hot sauce to give it a bit
@@ -1305,7 +1307,9 @@ export default function ThemePreviewPage() {
                 <Typography gutterBottom variant="h5" component="div">
                   Lizard
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   Lizards are a widespread group of squamate reptiles, with over
                   6,000 species, ranging across all continents except
                   Antarctica.
@@ -1377,7 +1381,9 @@ export default function ThemePreviewPage() {
                 alt="Paella dish"
               />
               <CardContent>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   This impressive paella is a perfect party dish and a fun meal
                   to cook together with your guests.
                 </Typography>

@@ -8,7 +8,9 @@ export function Demo() {
   return (
     <>
       <Sonner />
-      <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+      <Stack direction="row" spacing={1} useFlexGap sx={{
+        flexWrap: "wrap"
+      }}>
         <Button variant="outlined" onClick={() => toast("Default toast")}>
           Default
         </Button>

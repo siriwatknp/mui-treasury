@@ -15,11 +15,15 @@ export function TicketStatusCard() {
     <Card sx={{ borderRadius: 2 }}>
       <CardContent sx={{ p: 3 }}>
         <Stack spacing={2.5}>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" sx={{
+            color: "text.secondary"
+          }}>
             Current Tickets
           </Typography>
 
-          <Typography variant="h2" component="div" fontWeight="bold">
+          <Typography variant="h2" component="div" sx={{
+            fontWeight: "bold"
+          }}>
             {totalTickets}
           </Typography>
 
@@ -71,9 +75,12 @@ export function TicketStatusCard() {
               <Typography
                 component="dt"
                 variant="body1"
-                fontWeight="bold"
-                sx={{ display: "flex", alignItems: "center", gap: 0.5 }}
-              >
+                sx={{
+                  fontWeight: "bold",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 0.5
+                }}>
                 <Box
                   component="span"
                   sx={{
@@ -90,9 +97,11 @@ export function TicketStatusCard() {
               <Typography
                 component="dd"
                 variant="body2"
-                color="text.secondary"
-                sx={{ m: 0, mt: 0.5 }}
-              >
+                sx={{
+                  color: "text.secondary",
+                  m: 0,
+                  mt: 0.5
+                }}>
                 Resolved
               </Typography>
             </Box>
@@ -101,9 +110,12 @@ export function TicketStatusCard() {
               <Typography
                 component="dt"
                 variant="body1"
-                fontWeight="bold"
-                sx={{ display: "flex", alignItems: "center", gap: 0.5 }}
-              >
+                sx={{
+                  fontWeight: "bold",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 0.5
+                }}>
                 <Box
                   component="span"
                   sx={{
@@ -120,9 +132,11 @@ export function TicketStatusCard() {
               <Typography
                 component="dd"
                 variant="body2"
-                color="text.secondary"
-                sx={{ m: 0, mt: 0.5 }}
-              >
+                sx={{
+                  color: "text.secondary",
+                  m: 0,
+                  mt: 0.5
+                }}>
                 In Progress
               </Typography>
             </Box>
@@ -131,9 +145,12 @@ export function TicketStatusCard() {
               <Typography
                 component="dt"
                 variant="body1"
-                fontWeight="bold"
-                sx={{ display: "flex", alignItems: "center", gap: 0.5 }}
-              >
+                sx={{
+                  fontWeight: "bold",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 0.5
+                }}>
                 <Box
                   component="span"
                   sx={{
@@ -150,9 +167,11 @@ export function TicketStatusCard() {
               <Typography
                 component="dd"
                 variant="body2"
-                color="text.secondary"
-                sx={{ m: 0, mt: 0.5 }}
-              >
+                sx={{
+                  color: "text.secondary",
+                  m: 0,
+                  mt: 0.5
+                }}>
                 Escalated
               </Typography>
             </Box>

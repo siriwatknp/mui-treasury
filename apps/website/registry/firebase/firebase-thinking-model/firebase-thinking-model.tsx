@@ -116,7 +116,9 @@ If you don't know the answer, say so honestly.`,
           p: 2,
         }}
       >
-        <Typography color="text.secondary">
+        <Typography sx={{
+          color: "text.secondary"
+        }}>
           Firebase not configured. Please set up Firebase config at the top of
           the page.
         </Typography>
@@ -161,7 +163,9 @@ If you don't know the answer, say so honestly.`,
                 <Typography variant="h4" sx={{ fontWeight: 500 }}>
                   Thinking Model Demo
                 </Typography>
-                <Typography color="text.secondary">
+                <Typography sx={{
+                  color: "text.secondary"
+                }}>
                   Ask a question and watch the AI think through it
                 </Typography>
               </Box>
@@ -245,7 +249,9 @@ If you don't know the answer, say so honestly.`,
                         sx={{ display: "flex", alignItems: "center", gap: 1 }}
                       >
                         <CircularProgress size={20} />
-                        <Typography color="text.secondary">
+                        <Typography sx={{
+                          color: "text.secondary"
+                        }}>
                           Thinking...
                         </Typography>
                       </Box>
@@ -276,7 +282,9 @@ If you don't know the answer, say so honestly.`,
                 }}
               >
                 <Loader />
-                <Typography color="text.secondary">
+                <Typography sx={{
+                  color: "text.secondary"
+                }}>
                   Streaming response...
                 </Typography>
               </Box>
@@ -285,7 +293,6 @@ If you don't know the answer, say so honestly.`,
           <ConversationScrollButton />
         </Conversation>
       </Box>
-
       {showSuggestions && (
         <Box sx={{ mb: 2 }}>
           <Suggestions>
@@ -299,7 +306,6 @@ If you don't know the answer, say so honestly.`,
           </Suggestions>
         </Box>
       )}
-
       <PromptInput onSubmit={handleSubmit}>
         <PromptInputBody>
           <PromptInputTextarea

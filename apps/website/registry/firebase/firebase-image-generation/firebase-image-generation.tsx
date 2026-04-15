@@ -116,7 +116,9 @@ export default function FirebaseImageGeneration() {
           p: 2,
         }}
       >
-        <Typography color="text.secondary">
+        <Typography sx={{
+          color: "text.secondary"
+        }}>
           Firebase not configured. Please set up Firebase config at the top of
           the page.
         </Typography>
@@ -161,7 +163,9 @@ export default function FirebaseImageGeneration() {
                 <Typography variant="h4" sx={{ fontWeight: 500 }}>
                   Image Generation
                 </Typography>
-                <Typography color="text.secondary">
+                <Typography sx={{
+                  color: "text.secondary"
+                }}>
                   Describe an image you&apos;d like to generate
                 </Typography>
               </Box>
@@ -285,7 +289,6 @@ export default function FirebaseImageGeneration() {
           <ConversationScrollButton />
         </Conversation>
       </Box>
-
       {showSuggestions && (
         <Box sx={{ mb: 2 }}>
           <Suggestions>
@@ -299,7 +302,6 @@ export default function FirebaseImageGeneration() {
           </Suggestions>
         </Box>
       )}
-
       <PromptInput onSubmit={handleSubmit}>
         <PromptInputBody>
           <PromptInputTextarea

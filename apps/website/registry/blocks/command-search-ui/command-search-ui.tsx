@@ -202,7 +202,9 @@ export function CommandSearchUI() {
               mb: 2,
             }}
           >
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Recent meetings (8)
             </Typography>
             <Stack direction="row" spacing={0.5}>
@@ -263,10 +265,14 @@ export function CommandSearchUI() {
                       }}
                     />
                   </Box>
-                  <Typography variant="body2" fontWeight={600}>
+                  <Typography variant="body2" sx={{
+                    fontWeight: 600
+                  }}>
                     {meeting.name}
                   </Typography>
-                  <Typography variant="caption" color="text.secondary">
+                  <Typography variant="caption" sx={{
+                    color: "text.secondary"
+                  }}>
                     {meeting.time} - {meeting.duration}
                   </Typography>
                   <Button
@@ -283,7 +289,12 @@ export function CommandSearchUI() {
         </Box>
 
         <Box sx={{ px: 2, pb: 2 }}>
-          <Typography variant="body2" color="text.secondary" sx={{ mb: 1.5 }}>
+          <Typography
+            variant="body2"
+            sx={{
+              color: "text.secondary",
+              mb: 1.5
+            }}>
             Quick actions (6)
           </Typography>
           <List dense sx={{ p: 0 }}>
@@ -328,10 +339,14 @@ export function CommandSearchUI() {
             }),
           })}
         >
-          <Typography variant="caption" color="text.secondary">
+          <Typography variant="caption" sx={{
+            color: "text.secondary"
+          }}>
             Use ↑ ↓ to navigate
           </Typography>
-          <Typography variant="caption" color="text.secondary">
+          <Typography variant="caption" sx={{
+            color: "text.secondary"
+          }}>
             Type / for commands
           </Typography>
         </Box>

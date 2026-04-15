@@ -53,17 +53,19 @@ const ConversationHead = () => {
         <ListItemText
           primary={"Imaad Casey"}
           secondary={"active 17m ago"}
-          primaryTypographyProps={{
-            sx: {
-              fontWeight: "bold",
+          slotProps={{
+            primary: {
+              sx: {
+                fontWeight: "bold",
+              },
             },
-          }}
-          secondaryTypographyProps={{
-            sx: {
-              fontSize: 12,
-            },
-          }}
-        />
+
+            secondary: {
+              sx: {
+                fontSize: 12,
+              },
+            }
+          }} />
       </ListItem>
     </Box>
   );

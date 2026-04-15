@@ -26,7 +26,9 @@ export function Demo() {
     <Root height="300px">
       <Header>
         <Box sx={{ px: 2 }}>
-          <Typography variant="caption" fontWeight="bold">
+          <Typography variant="caption" sx={{
+            fontWeight: "bold"
+          }}>
             Header
           </Typography>
         </Box>
@@ -52,7 +54,12 @@ export function Demo() {
                 </Button>
               }
             />
-            <Typography variant="caption" color="text.secondary" sx={{ p: 1 }}>
+            <Typography
+              variant="caption"
+              sx={{
+                color: "text.secondary",
+                p: 1
+              }}>
               Hover when collapsed to expand
             </Typography>
           </Box>
@@ -60,14 +67,18 @@ export function Demo() {
       </EdgeSidebar>
       <Content>
         <Box sx={{ p: 2 }}>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" sx={{
+            color: "text.secondary"
+          }}>
             Content — sidebar expands on hover without shifting layout
           </Typography>
         </Box>
       </Content>
       <Footer>
         <Box sx={{ p: 2 }}>
-          <Typography variant="caption" color="text.secondary">
+          <Typography variant="caption" sx={{
+            color: "text.secondary"
+          }}>
             Footer
           </Typography>
         </Box>

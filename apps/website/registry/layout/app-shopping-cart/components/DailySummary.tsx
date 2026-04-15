@@ -87,7 +87,9 @@ const DailySummary = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid size={{ xs: 12, sm: 5, md: 4 }} container alignItems={"flex-end"}>
+      <Grid size={{ xs: 12, sm: 5, md: 4 }} container sx={{
+        alignItems: "flex-end"
+      }}>
         <ButtonBtn startIcon={<KeyboardArrowLeft />}>
           Continue Shopping
         </ButtonBtn>

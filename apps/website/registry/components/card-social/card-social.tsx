@@ -86,9 +86,10 @@ export function CardSocial() {
       })}
     >
       <Box
-        alignItems="baseline"
-        p={2}
-        sx={(theme) => ({
+        sx={[{
+          alignItems: "baseline",
+          p: 2
+        }, (theme) => ({
           display: "flex",
           flexWrap: "wrap",
           borderTopLeftRadius: "inherit",
@@ -97,8 +98,7 @@ export function CardSocial() {
           ...theme.applyStyles("dark", {
             bgcolor: "#2f3c50",
           }),
-        })}
-      >
+        })]}>
         <Box sx={{ flexGrow: 1, mr: 1 }}>
           <Typography variant="h6">
             <b>Who to follow</b>

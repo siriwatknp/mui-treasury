@@ -49,12 +49,17 @@ export function CardProfile() {
           Poland
         </Box>
       </CardContent>
-      <Divider light />
-      <Box display="flex">
+      <Divider sx={{
+        opacity: "0.6"
+      }} />
+      <Box sx={{
+        display: "flex"
+      }}>
         <Box
-          p={2}
-          flex="auto"
-          sx={(theme) => ({
+          sx={[{
+            p: 2,
+            flex: "auto"
+          }, (theme) => ({
             position: "relative",
             "&:not(:last-of-type)": {
               "&:after": {
@@ -69,8 +74,7 @@ export function CardProfile() {
                 transform: "translateY(-50%)",
               },
             },
-          })}
-        >
+          })]}>
           <Box
             sx={(theme) => ({
               fontSize: 12,
@@ -95,9 +99,10 @@ export function CardProfile() {
           </Box>
         </Box>
         <Box
-          p={2}
-          flex="auto"
-          sx={(theme) => ({
+          sx={[{
+            p: 2,
+            flex: "auto"
+          }, (theme) => ({
             position: "relative",
             "&:not(:last-of-type)": {
               "&:after": {
@@ -112,8 +117,7 @@ export function CardProfile() {
                 transform: "translateY(-50%)",
               },
             },
-          })}
-        >
+          })]}>
           <Box
             sx={(theme) => ({
               fontSize: 12,

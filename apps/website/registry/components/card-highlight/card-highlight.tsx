@@ -128,20 +128,39 @@ const CustomCard = ({
     <StyledRoot color={color}>
       <CardMediaCover image={cover} />
       <StyledContent color={color}>
-        <Box position={"relative"} zIndex={1}>
-          <Box display="flex" p={0} gap={2} sx={{ flexWrap: "nowrap" }}>
+        <Box
+          sx={{
+            position: "relative",
+            zIndex: 1
+          }}>
+          <Box
+            sx={{
+              display: "flex",
+              p: 0,
+              gap: 2,
+              flexWrap: "nowrap"
+            }}>
             <Box>
               <AvatarLogo src={logo} />
             </Box>
-            <Box alignSelf="flex-end">
+            <Box sx={{
+              alignSelf: "flex-end"
+            }}>
               <StyledH2>{title}</StyledH2>
             </Box>
           </Box>
-          <Box display="flex" mt={4} alignItems={"center"}>
+          <Box
+            sx={{
+              display: "flex",
+              mt: 4,
+              alignItems: "center"
+            }}>
             <Box>
               <StyledDivTeam>{brand}</StyledDivTeam>
             </Box>
-            <Box ml="auto">
+            <Box sx={{
+              ml: "auto"
+            }}>
               <StyledDivDate>{date}</StyledDivDate>
             </Box>
           </Box>

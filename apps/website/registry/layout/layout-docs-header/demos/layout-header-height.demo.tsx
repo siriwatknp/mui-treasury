@@ -21,69 +21,85 @@ export function Demo() {
       <Root sx={{ minHeight: 300, flex: 1, minWidth: 200 }}>
         <Header height="48px">
           <Box sx={{ px: 2 }}>
-            <Typography variant="caption" fontWeight="bold">
+            <Typography variant="caption" sx={{
+              fontWeight: "bold"
+            }}>
               48px
             </Typography>
           </Box>
         </Header>
         <Content>
           <Box sx={{ p: 2 }}>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Compact header
             </Typography>
           </Box>
         </Content>
         <Footer>
           <Box sx={{ p: 2 }}>
-            <Typography variant="caption" color="text.secondary">
+            <Typography variant="caption" sx={{
+              color: "text.secondary"
+            }}>
               Footer
             </Typography>
           </Box>
         </Footer>
       </Root>
-
       <Root sx={{ minHeight: 300, flex: 1, minWidth: 200 }}>
         <Header height="64px">
           <Box sx={{ px: 2 }}>
-            <Typography variant="caption" fontWeight="bold">
+            <Typography variant="caption" sx={{
+              fontWeight: "bold"
+            }}>
               64px (default)
             </Typography>
           </Box>
         </Header>
         <Content>
           <Box sx={{ p: 2 }}>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Standard header
             </Typography>
           </Box>
         </Content>
         <Footer>
           <Box sx={{ p: 2 }}>
-            <Typography variant="caption" color="text.secondary">
+            <Typography variant="caption" sx={{
+              color: "text.secondary"
+            }}>
               Footer
             </Typography>
           </Box>
         </Footer>
       </Root>
-
       <Root sx={{ minHeight: 300, flex: 1, minWidth: 200 }}>
         <Header height={{ xs: "48px", md: "64px" }}>
           <Box sx={{ px: 2 }}>
-            <Typography variant="caption" fontWeight="bold">
+            <Typography variant="caption" sx={{
+              fontWeight: "bold"
+            }}>
               48px → 64px
             </Typography>
           </Box>
         </Header>
         <Content>
           <Box sx={{ p: 2 }}>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Responsive header
             </Typography>
           </Box>
         </Content>
         <Footer>
           <Box sx={{ p: 2 }}>
-            <Typography variant="caption" color="text.secondary">
+            <Typography variant="caption" sx={{
+              color: "text.secondary"
+            }}>
               Footer
             </Typography>
           </Box>

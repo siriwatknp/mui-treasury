@@ -12,24 +12,24 @@ const DailyHeader = () => {
   return (
     <Toolbar disableGutters>
       <DailyLogo />
-      <Box ml={"auto"}>
+      <Box sx={{
+        ml: "auto"
+      }}>
         <DailySearch />
       </Box>
       <Box
-        ml={{ xs: 2, md: 10, lg: 15 }}
-        justifyContent={"flex-end"}
         sx={{
+          ml: { xs: 2, md: 10, lg: 15 },
+          justifyContent: "flex-end",
           display: "flex",
-          alignItems: "center",
-        }}
-      >
+          alignItems: "center"
+        }}>
         <Box
-          mr={2}
           sx={{
+            mr: 2,
             display: "flex",
-            alignItems: "center",
-          }}
-        >
+            alignItems: "center"
+          }}>
           <ShoppingBasket />
           <Box
             sx={{

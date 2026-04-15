@@ -73,7 +73,13 @@ function MetricCard({
   return (
     <Stack spacing={2} sx={{ flex: 1 }}>
       <Box>
-        <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 1 }}>
+        <Stack
+          direction="row"
+          spacing={1}
+          sx={{
+            alignItems: "center",
+            mb: 1
+          }}>
           <Typography
             variant="body2"
             sx={{
@@ -128,7 +134,6 @@ function MetricCard({
           </Typography>
         </Box>
       </Box>
-
       <Box
         sx={{ width: "100%", height: 140 }}
         role="img"

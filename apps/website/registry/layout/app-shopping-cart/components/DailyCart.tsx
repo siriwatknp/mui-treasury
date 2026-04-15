@@ -99,7 +99,9 @@ const rows = [
 
 const DailyCart = () => {
   return (
-    <Box pt={{ xs: 2, sm: 4, md: 6 }}>
+    <Box sx={{
+      pt: { xs: 2, sm: 4, md: 6 }
+    }}>
       <TypographyHeading variant={"h1"} gutterBottom>
         Shopping Cart.
       </TypographyHeading>
@@ -118,11 +120,21 @@ const DailyCart = () => {
             {rows.map((row) => (
               <TableRow key={row.name}>
                 <TableCell component="th" scope="row">
-                  <Box display={"flex"} alignItems={"center"}>
-                    <Box width={80} height={80}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center"
+                    }}>
+                    <Box
+                      sx={{
+                        width: 80,
+                        height: 80
+                      }}>
                       <ImgImage alt={row.name} src={row.image} />
                     </Box>
-                    <Box ml={2}>
+                    <Box sx={{
+                      ml: 2
+                    }}>
                       <PName>{row.name}</PName>
                       <SpanDescr>{row.descr}</SpanDescr>
                     </Box>

@@ -102,20 +102,22 @@ export function ProductCard({
           }}
         />
       </Box>
-
       <CardContent sx={{ p: 2 }}>
         <Stack spacing={2}>
-          <Typography variant="h6" component="h3" fontWeight="bold">
+          <Typography variant="h6" component="h3" sx={{
+            fontWeight: "bold"
+          }}>
             {title}
           </Typography>
 
           <Stack
             direction="row"
             spacing={1}
-            flexWrap="wrap"
             useFlexGap
-            sx={{ mt: -1 }}
-          >
+            sx={{
+              flexWrap: "wrap",
+              mt: -1
+            }}>
             {attributes.map((attr, index) => (
               <Chip
                 key={index}
@@ -131,25 +133,37 @@ export function ProductCard({
             ))}
           </Stack>
 
-          <Typography variant="body2" color="text.secondary" lineHeight={1.5}>
+          <Typography
+            variant="body2"
+            sx={{
+              color: "text.secondary",
+              lineHeight: 1.5
+            }}>
             {description}
           </Typography>
 
           <Stack
             direction="row"
-            justifyContent="space-between"
-            alignItems="flex-end"
             spacing={1}
-          >
+            sx={{
+              justifyContent: "space-between",
+              alignItems: "flex-end"
+            }}>
             <Box>
               <Typography
                 variant="caption"
-                color="text.secondary"
-                display="block"
-              >
+                sx={{
+                  color: "text.secondary",
+                  display: "block"
+                }}>
                 PRICE
               </Typography>
-              <Typography variant="h5" fontWeight="bold" color="text.primary">
+              <Typography
+                variant="h5"
+                sx={{
+                  fontWeight: "bold",
+                  color: "text.primary"
+                }}>
                 {price}
               </Typography>
             </Box>

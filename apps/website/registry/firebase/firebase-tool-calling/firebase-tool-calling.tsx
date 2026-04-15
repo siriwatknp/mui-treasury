@@ -168,7 +168,9 @@ Always respond in a concise and clear manner using Markdown format.`,
           p: 2,
         }}
       >
-        <Typography color="text.secondary">
+        <Typography sx={{
+          color: "text.secondary"
+        }}>
           Firebase not configured. Please set up Firebase config at the top of
           the page.
         </Typography>
@@ -213,7 +215,9 @@ Always respond in a concise and clear manner using Markdown format.`,
                 <Typography variant="h4" sx={{ fontWeight: 500 }}>
                   Tool Calling
                 </Typography>
-                <Typography color="text.secondary">
+                <Typography sx={{
+                  color: "text.secondary"
+                }}>
                   Ask me about weather or time
                 </Typography>
               </Box>
@@ -344,7 +348,6 @@ Always respond in a concise and clear manner using Markdown format.`,
           <ConversationScrollButton />
         </Conversation>
       </Box>
-
       {showSuggestions && (
         <Box sx={{ mb: 2 }}>
           <Suggestions>
@@ -358,7 +361,6 @@ Always respond in a concise and clear manner using Markdown format.`,
           </Suggestions>
         </Box>
       )}
-
       <PromptInput onSubmit={handleSubmit}>
         <PromptInputBody>
           <PromptInputTextarea

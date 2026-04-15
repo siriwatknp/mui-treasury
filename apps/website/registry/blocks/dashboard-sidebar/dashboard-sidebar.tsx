@@ -77,11 +77,12 @@ export function DashboardSidebar() {
         >
           I
         </Box>
-        <Typography variant="h6" fontWeight={600}>
+        <Typography variant="h6" sx={{
+          fontWeight: 600
+        }}>
           Ipsum
         </Typography>
       </Box>
-
       {/* Search Field */}
       <Box sx={{ px: 2, pb: 2 }}>
         <TextField
@@ -105,7 +106,6 @@ export function DashboardSidebar() {
           }}
         />
       </Box>
-
       {/* Navigation List */}
       <List dense sx={{ px: 1, flex: 1, overflow: "auto" }}>
         <ListItem disablePadding>
@@ -268,7 +268,6 @@ export function DashboardSidebar() {
           </ListItemButton>
         </ListItem>
       </List>
-
       {/* User Profile Section */}
       <Box
         sx={{
@@ -293,7 +292,9 @@ export function DashboardSidebar() {
             sx={{ width: 40, height: 40 }}
           />
           <Box sx={{ flex: 1, minWidth: 0 }}>
-            <Typography variant="body2" fontWeight={500} noWrap>
+            <Typography variant="body2" noWrap sx={{
+              fontWeight: 500
+            }}>
               John Doe
             </Typography>
             <Chip

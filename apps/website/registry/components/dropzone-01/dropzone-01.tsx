@@ -139,7 +139,12 @@ export function Dropzone01({
                 : "text.icon",
           }}
         />
-        <Typography variant="body1" color="text.secondary" textAlign="center">
+        <Typography
+          variant="body1"
+          sx={{
+            color: "text.secondary",
+            textAlign: "center"
+          }}>
           {isDragActive
             ? isDragReject
               ? "Some files will be rejected"
@@ -147,12 +152,13 @@ export function Dropzone01({
             : "Drag & drop files here, or click to browse"}
         </Typography>
         {helperText && (
-          <Typography variant="body2" color="text.disabled">
+          <Typography variant="body2" sx={{
+            color: "text.disabled"
+          }}>
             {helperText}
           </Typography>
         )}
       </Box>
-
       {value.length > 0 && (
         <List dense sx={{ mt: 1 }}>
           {value.map((file, index) => (

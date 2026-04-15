@@ -22,20 +22,26 @@ export function Demo() {
   return (
     <Root standalone height="350px">
       <Header sx={{ px: 2 }}>
-        <Typography variant="caption" fontWeight="bold">
+        <Typography variant="caption" sx={{
+          fontWeight: "bold"
+        }}>
           Header
         </Typography>
       </Header>
       <Content>
         <Box sx={{ p: 2, flex: 1 }}>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" sx={{
+            color: "text.secondary"
+          }}>
             Main content
           </Typography>
         </Box>
         <InsetSidebar position="absolute" width="200px">
           <InsetContent>
             <Box sx={{ p: 2 }}>
-              <Typography variant="caption" color="text.secondary">
+              <Typography variant="caption" sx={{
+                color: "text.secondary"
+              }}>
                 Absolute Inset Sidebar
               </Typography>
             </Box>
@@ -44,7 +50,9 @@ export function Demo() {
       </Content>
       <Footer>
         <InsetAvoidingView sx={{ p: 2 }}>
-          <Typography variant="caption" color="text.secondary">
+          <Typography variant="caption" sx={{
+            color: "text.secondary"
+          }}>
             Footer content avoids inset sidebar
           </Typography>
         </InsetAvoidingView>

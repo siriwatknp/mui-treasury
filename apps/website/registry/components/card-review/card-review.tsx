@@ -72,11 +72,22 @@ export function CardReview() {
         >
           Colloseo
         </Box>
-        <Box color={"grey.500"} display={"flex"} alignItems={"center"} mb={1}>
+        <Box
+          sx={{
+            color: "grey.500",
+            display: "flex",
+            alignItems: "center",
+            mb: 1
+          }}>
           <LocationOn sx={{ marginRight: "4px", fontSize: 18 }} />
           <span>Rome</span>
         </Box>
-        <Box display={"flex"} alignItems={"center"} mb={1}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            mb: 1
+          }}>
           <Rating name={"rating"} value={2} size={"small"} />
           <Typography
             variant={"body2"}
@@ -90,12 +101,17 @@ export function CardReview() {
           change of environment...
         </Typography>
         <Box
-          mt={2}
-          display={"flex"}
-          justifyContent={"space-between"}
-          alignItems={"center"}
-        >
-          <Box display={"flex"} alignItems={"center"}>
+          sx={{
+            mt: 2,
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center"
+          }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center"
+            }}>
             {[
               "https://i.pravatar.cc/300?img=1",
               "https://i.pravatar.cc/300?img=2",

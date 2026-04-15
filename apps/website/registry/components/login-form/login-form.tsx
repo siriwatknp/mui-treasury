@@ -96,11 +96,15 @@ export function LoginForm() {
       })}
     >
       <Stack spacing={3}>
-        <Stack spacing={1} textAlign="center">
+        <Stack spacing={1} sx={{
+          textAlign: "center"
+        }}>
           <Typography variant="h3" component="h1">
             Login to your account
           </Typography>
-          <Typography variant="body1" color="text.secondary">
+          <Typography variant="body1" sx={{
+            color: "text.secondary"
+          }}>
             Enter your email below to login to your account
           </Typography>
         </Stack>
@@ -123,10 +127,11 @@ export function LoginForm() {
             <Box>
               <Stack
                 direction="row"
-                justifyContent="space-between"
-                alignItems="center"
-                mb={1}
-              >
+                sx={{
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  mb: 1
+                }}>
                 <Typography
                   variant="body2"
                   component="label"
@@ -183,7 +188,12 @@ export function LoginForm() {
           </Stack>
         </Box>
 
-        <Typography variant="body2" textAlign="center" color="text.secondary">
+        <Typography
+          variant="body2"
+          sx={{
+            textAlign: "center",
+            color: "text.secondary"
+          }}>
           Don&apos;t have an account?{" "}
           <Link
             href="#"
