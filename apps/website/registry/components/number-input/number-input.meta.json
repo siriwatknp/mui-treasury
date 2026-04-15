@@ -4,7 +4,7 @@
   "title": "Number Input",
   "description": "A number input component with various features and customization options.",
   "meta": {
-    "screenshot": "/screenshots/number-input.png",
+    "screenshot": "/og/number-input.png",
     "category": "primitive",
     "subcategory": "text-field"
   }

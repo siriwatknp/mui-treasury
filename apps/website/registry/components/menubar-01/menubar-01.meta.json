@@ -4,7 +4,7 @@
   "title": "Menubar with Submenu",
   "description": "Application menubar with nested submenu support using Base UI and Material UI styling",
   "meta": {
-    "screenshot": "/screenshots/menubar-01.png",
+    "screenshot": "/og/menubar-01.png",
     "category": "block",
     "exportName": "Menubar01"
   }

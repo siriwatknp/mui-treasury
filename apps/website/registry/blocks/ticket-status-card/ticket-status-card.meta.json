@@ -4,7 +4,7 @@
   "title": "Ticket Status Card",
   "description": "A ticket-status-card block.",
   "meta": {
-    "screenshot": "/screenshots/ticket-status-card.png",
+    "screenshot": "/og/ticket-status-card.png",
     "category": "block",
     "exportName": "TicketStatusCard",
     "subcategory": "dashboard"

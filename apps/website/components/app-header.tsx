@@ -16,7 +16,7 @@ export function AppHeader() {
   return (
     <Header
       clip
-      className="justify-between border-b px-6 py-3 bg-background gap-4 z-[1299]"
+      className="justify-between px-6 py-3 bg-background gap-4 z-[1299]"
     >
       <Link href="/" className="text-xl font-semibold hover:opacity-80">
         MUI+

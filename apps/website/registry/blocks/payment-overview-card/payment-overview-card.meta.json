@@ -4,7 +4,7 @@
   "title": "Payment Overview Card",
   "description": "A payment-overview-card block.",
   "meta": {
-    "screenshot": "/screenshots/payment-overview-card.png",
+    "screenshot": "/og/payment-overview-card.png",
     "category": "block",
     "exportName": "PaymentOverviewCard",
     "subcategory": "dashboard"

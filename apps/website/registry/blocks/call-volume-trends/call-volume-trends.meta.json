@@ -4,7 +4,7 @@
   "title": "Call Volume Trends",
   "description": "A call-volume-trends block.",
   "meta": {
-    "screenshot": "/screenshots/call-volume-trends.png",
+    "screenshot": "/og/call-volume-trends.png",
     "category": "block",
     "exportName": "CallVolumeTrends",
     "subcategory": "dashboard"

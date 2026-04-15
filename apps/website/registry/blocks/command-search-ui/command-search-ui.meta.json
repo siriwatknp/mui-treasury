@@ -4,7 +4,7 @@
   "title": "Command Search Ui",
   "description": "A command-search-ui block.",
   "meta": {
-    "screenshot": "/screenshots/command-search-ui.png",
+    "screenshot": "/og/command-search-ui.png",
     "category": "block",
     "previewMode": "iframe",
     "exportName": "CommandSearchUI",
