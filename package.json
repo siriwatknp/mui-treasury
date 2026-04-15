@@ -9,7 +9,8 @@
     "typecheck": "turbo typecheck",
     "dev:cli": "pnpm --filter mui-treasury dev:cli --",
     "changeset": "changeset",
-    "release": "node scripts/release.mjs"
+    "release": "node scripts/release.mjs",
+    "test:visual": "pnpm --filter e2e exec playwright test --project=visual && node scripts/sync-og.mjs"
   },
   "devDependencies": {
     "@changesets/changelog-github": "0.6.0",
