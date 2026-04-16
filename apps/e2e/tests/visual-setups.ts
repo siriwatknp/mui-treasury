@@ -25,4 +25,11 @@ export const visualSetups: Record<string, VisualSetup> = {
     openMuiMenu({ page, trigger: '[role="combobox"]' }),
   'select-inset-01': ({ page }) =>
     openMuiMenu({ page, trigger: '[role="combobox"]' }),
+  'popup-menu': async ({ page }) => {
+    await page.getByRole('button', { name: 'Analytics' }).hover();
+    const reports = page.getByRole('button', { name: 'Reports' });
+    await reports.waitFor({ state: 'visible' });
+    await reports.hover();
+    await page.getByRole('link', { name: 'Overview' }).waitFor({ state: 'visible' });
+  },
 };
