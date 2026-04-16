@@ -9,7 +9,6 @@ const FONTS_DIR = path.join(__dirname, "fonts");
 
 export const WIDTH = 1200;
 export const HEIGHT = 630;
-const SCALE = 2;
 const BAR_HEIGHT = 100;
 const BAR_INSET = 16;
 const BAR_BG =
@@ -215,8 +214,6 @@ export async function renderOg({ title, name, baseImage }) {
   );
 
   const svg = await satori(tree, { width: WIDTH, height: HEIGHT, fonts });
-  const resvg = new Resvg(svg, {
-    fitTo: { mode: "width", value: WIDTH * SCALE },
-  });
+  const resvg = new Resvg(svg);
   return resvg.render().asPng();
 }
