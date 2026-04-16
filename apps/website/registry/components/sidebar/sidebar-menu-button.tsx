@@ -41,6 +41,7 @@ const StyledSidebarMenuButton = styled(ButtonBase, {
     '--item-gap': 'var(--_collapsed, 0px) var(--_uncollapsed, 0.5rem)',
     display: 'flex',
     gap: 'var(--item-gap)',
+    whiteSpace: 'nowrap', // required to prevent text jumping when collapsing/uncollapsing
     paddingInline:
       'var(--_collapsed, var(--shrink-px, var(--item-px, 0.5rem))) var(--_uncollapsed, var(--item-px, 0.5rem))',
     paddingBlock:

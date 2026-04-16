@@ -23,8 +23,8 @@ export const meta = {
 
 export function Demo() {
   return (
-    <div style={{ width: 36 }}>
-      <SidebarContainer>
+    <div>
+      <SidebarContainer sx={{ minWidth: 36 }}>
         <PopupMenuList>
           {/* 1 nested level */}
           <PopupMenuItem

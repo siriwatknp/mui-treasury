@@ -4,7 +4,6 @@ import { NavigationMenu } from '@base-ui/react/navigation-menu';
 import { SxProps, Theme, styled } from '@mui/material/styles';
 
 import {
-  SidebarGroup,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuList,
@@ -40,14 +39,23 @@ export function PopupMenuList({
     }
   }, []);
   return (
-    <NavigationMenu.Root
-      orientation="vertical"
-      render={<SidebarGroup />}
-      {...props}
-    >
+    <NavigationMenu.Root orientation="vertical" {...props}>
       <NavigationMenu.List
         ref={triggerCallbackRef as React.Ref<HTMLUListElement>}
-        render={<SidebarMenuList />}
+        render={
+          <SidebarMenuList
+            sx={{
+              '& .PopupMenuItem:has(+ :not(.PopupMenuItem))': {
+                // to hide the popup item when uncollapsed, preventing gaps between items
+                display: 'var(--_collapsed, flex) var(--_uncollapsed, none)',
+              },
+              '& .PopupMenuItem + :not(.PopupMenuItem)': {
+                // to hide the uncollapsed sibling when in collapsed mode, preventing gaps between items
+                display: 'var(--_collapsed, none) var(--_uncollapsed, flex)',
+              },
+            }}
+          />
+        }
       >
         {children}
       </NavigationMenu.List>
@@ -74,16 +82,7 @@ export const PopupMenuItem = function PopupMenuItem({
 }: PopupMenuItemProps) {
   return (
     <NavigationMenu.Item
-      render={
-        <SidebarMenuItem
-          sx={[
-            {
-              display: 'var(--_collapsed, flex) var(--_uncollapsed, none)',
-            },
-            ...(Array.isArray(sx) ? sx : [sx]),
-          ]}
-        />
-      }
+      render={<SidebarMenuItem className="PopupMenuItem" sx={sx} />}
     >
       {tooltip ? (
         <SidebarTooltip
