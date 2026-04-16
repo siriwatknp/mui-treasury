@@ -18,6 +18,25 @@ export function PreviewComponent({
   );
 }
 
+interface PreviewCanvasProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+export function PreviewCanvas({
+  children,
+  className = "",
+}: PreviewCanvasProps) {
+  return (
+    <div
+      data-preview
+      className={`w-full h-full flex items-center justify-center p-4 ${className}`}
+    >
+      {children}
+    </div>
+  );
+}
+
 interface PreviewBlockProps {
   children: React.ReactNode;
   className?: string;

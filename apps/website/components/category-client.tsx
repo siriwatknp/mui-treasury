@@ -7,9 +7,10 @@ import type { SyntaxHighlighterProps } from "react-syntax-highlighter";
 
 import { useColorScheme } from "@mui/material/styles";
 import { Check, Copy, ExternalLink, RotateCcw, Terminal } from "lucide-react";
-import dynamic from "next/dynamic";
 
 import { OpenInV0Button } from "@/components/open-in-v0-button";
+import { PreviewCanvas } from "@/components/preview-page";
+import { RegistryDemoPreview } from "@/components/registry-demo-preview";
 import TagFilter from "@/components/tag-filter";
 import { Button } from "@/components/ui/button";
 import {
@@ -48,79 +49,6 @@ const ComponentPreviewContent = React.memo(
   ({ item, needsIframe, demoPath }: ComponentPreviewContentProps) => {
     const hasScreenshotPreview = item.meta.screenshot && item.meta.previewPath;
 
-    const DynamicComponent = React.useMemo(() => {
-      if (needsIframe || hasScreenshotPreview) return null;
-
-      try {
-        const componentPath = item.path.replace(".tsx", "");
-        const resolvedDemoPath =
-          demoPath ?? item.demoFiles?.[0]?.path.replace(".tsx", "");
-        return dynamic(
-          () =>
-            (resolvedDemoPath
-              ? import(`@/registry/${resolvedDemoPath}`)
-              : Promise.resolve(null)
-            )
-              .then((mod) => {
-                if (mod && mod.Demo) return { default: mod.Demo };
-                return null;
-              })
-              .catch(() => null)
-              .then((result) => {
-                if (result) return result;
-                return import(`@/registry/${componentPath}`).then((mod) => {
-                  const exportName = item.meta.exportName;
-                  if (exportName && mod[exportName])
-                    return { default: mod[exportName] };
-                  return {
-                    default: function NoExport() {
-                      return (
-                        <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                          <span className="text-sm">Preview unavailable</span>
-                        </div>
-                      );
-                    },
-                  };
-                });
-              })
-              .catch(() => {
-                return {
-                  default: function FallbackComponent() {
-                    return (
-                      <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                        <span className="text-sm">Preview unavailable</span>
-                      </div>
-                    );
-                  },
-                };
-              }),
-          {
-            loading: () => (
-              <div className="w-full h-full flex items-center justify-center">
-                <div className="animate-pulse bg-muted rounded w-16 h-16"></div>
-              </div>
-            ),
-            ssr: false,
-          },
-        );
-      } catch {
-        return function ErrorFallback() {
-          return (
-            <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-              <span className="text-sm">Preview unavailable</span>
-            </div>
-          );
-        };
-      }
-    }, [
-      item.path,
-      item.demoFiles,
-      demoPath,
-      item.meta.exportName,
-      needsIframe,
-      hasScreenshotPreview,
-    ]);
-
     if (hasScreenshotPreview) {
       return (
         <a
@@ -156,22 +84,12 @@ const ComponentPreviewContent = React.memo(
       );
     }
 
-    if (!DynamicComponent) {
-      return (
-        <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-          <span className="text-sm">Preview unavailable</span>
-        </div>
-      );
-    }
-
     return (
-      <div
-        className={`w-full h-full flex items-center justify-center p-4 overflow-hidden ${
-          item.meta.previewClassName || ""
-        }`}
+      <PreviewCanvas
+        className={`overflow-hidden ${item.meta.previewClassName || ""}`}
       >
-        <DynamicComponent />
-      </div>
+        <RegistryDemoPreview item={item} demoPath={demoPath} />
+      </PreviewCanvas>
     );
   },
 );

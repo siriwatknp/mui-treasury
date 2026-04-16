@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
 
 import CategoryClient from "@/components/category-client";
-import { DynamicComponentLoader } from "@/components/dynamic-component-loader";
 import { FirebaseConfigForm } from "@/components/firebase-config-form";
 import { PreviewComponent } from "@/components/preview-page";
+import { RegistryDemoPreview } from "@/components/registry-demo-preview";
 import {
   getCategories,
   getRegistryByName,
@@ -218,10 +218,7 @@ function ItemDetailPage({
       <main className="p-6">
         <div className="max-w-7xl mx-auto">
           <PreviewComponent>
-            <DynamicComponentLoader
-              componentPath={item.path.replace(".tsx", "")}
-              exportName={item.meta.exportName}
-            />
+            <RegistryDemoPreview item={item} />
           </PreviewComponent>
         </div>
       </main>
