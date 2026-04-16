@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "test": "playwright test",
+    "test": "playwright test --project=desktop --project=touch",
     "test:ui": "playwright test --ui",
     "test:headed": "playwright test --headed"
   },
