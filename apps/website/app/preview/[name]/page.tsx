@@ -9,9 +9,23 @@ interface PreviewPageProps {
 
 export async function generateMetadata({ params }: PreviewPageProps) {
   const { name } = await params;
+  const item = getRegistryByName(name);
+  const title = item?.title ?? name;
+  const description = item?.description;
   return {
-    openGraph: { images: [`/og/${name}.png`] },
-    twitter: { card: "summary_large_image", images: [`/og/${name}.png`] },
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: [`/og/${name}.png`],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [`/og/${name}.png`],
+    },
   };
 }
 

@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v16-appRouter";
 import InitColorSchemeScript from "@mui/material/InitColorSchemeScript";
-import { AppTheme } from "./theme";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+
 import "./globals.css";
+import { AppTheme } from "./theme";
 
 const geistSans = Geist({
   variable: "--font-primary",
@@ -18,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MUI+",
+  title: "MUI Treasury",
   description: "All you need to build your next MUI project",
 };
 
