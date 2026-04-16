@@ -23,4 +23,6 @@ export const visualSetups: Record<string, VisualSetup> = {
     openMuiMenu({ page, trigger: '[role="combobox"]' }),
   'color-scheme-select-minimal': ({ page }) =>
     openMuiMenu({ page, trigger: '[role="combobox"]' }),
+  'select-inset-01': ({ page }) =>
+    openMuiMenu({ page, trigger: '[role="combobox"]' }),
 };
