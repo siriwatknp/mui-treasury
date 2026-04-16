@@ -4,7 +4,7 @@
   "title": "Preference Settings",
   "description": "A clean settings panel with various preference options including selects and toggles",
   "meta": {
-    "screenshot": "/screenshots/preference-settings.png",
+    "screenshot": "/og/preference-settings.png",
     "category": "block",
     "exportName": "PreferenceSettings",
     "subcategory": "dashboard"

@@ -9,13 +9,22 @@
     "typecheck": "turbo typecheck",
     "dev:cli": "pnpm --filter mui-treasury dev:cli --",
     "changeset": "changeset",
-    "release": "node scripts/release.mjs"
+    "release": "node scripts/release.mjs",
+    "test:visual": "pnpm --filter e2e exec playwright test --project=visual && pnpm sync:og",
+    "test:visual:build": "VISUAL_BUILD=1 pnpm --filter registry build && pnpm --filter e2e exec playwright test --project=visual && pnpm sync:og",
+    "sync:og": "tsx scripts/sync-og.ts"
   },
   "devDependencies": {
     "@changesets/changelog-github": "0.6.0",
     "@changesets/cli": "2.30.0",
+    "@resvg/resvg-js": "2.6.2",
     "@trivago/prettier-plugin-sort-imports": "6.0.2",
+    "@types/react": "19.1.2",
     "prettier": "3.8.1",
+    "react": "19.2.1",
+    "satori": "0.26.0",
+    "sharp": "0.34.5",
+    "tsx": "4.19.4",
     "turbo": "^2.9.4"
   },
   "pnpm": {

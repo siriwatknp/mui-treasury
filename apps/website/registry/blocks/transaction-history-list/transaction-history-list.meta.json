@@ -4,7 +4,7 @@
   "title": "Transaction History List",
   "description": "A transaction-history-list block.",
   "meta": {
-    "screenshot": "/screenshots/transaction-history-list.png",
+    "screenshot": "/og/transaction-history-list.png",
     "category": "block",
     "exportName": "TransactionHistoryList",
     "subcategory": "dashboard"

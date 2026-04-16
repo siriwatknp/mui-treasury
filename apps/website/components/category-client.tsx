@@ -1,25 +1,26 @@
-"use client";
+'use client';
 
-import React from "react";
-import { Suspense, useRef, useState } from "react";
-import type { ImperativePanelHandle } from "react-resizable-panels";
-import type { SyntaxHighlighterProps } from "react-syntax-highlighter";
+import React from 'react';
+import { Suspense, useRef, useState } from 'react';
+import type { ImperativePanelHandle } from 'react-resizable-panels';
+import type { SyntaxHighlighterProps } from 'react-syntax-highlighter';
 
-import { useColorScheme } from "@mui/material/styles";
-import { Check, Copy, RotateCcw, Terminal } from "lucide-react";
-import dynamic from "next/dynamic";
+import { useColorScheme } from '@mui/material/styles';
+import { Check, Copy, ExternalLink, RotateCcw, Terminal } from 'lucide-react';
 
-import { OpenInV0Button } from "@/components/open-in-v0-button";
-import TagFilter from "@/components/tag-filter";
-import { Button } from "@/components/ui/button";
+import { OpenInV0Button } from '@/components/open-in-v0-button';
+import { PreviewCanvas } from '@/components/preview-page';
+import { RegistryDemoPreview } from '@/components/registry-demo-preview';
+import TagFilter from '@/components/tag-filter';
+import { Button } from '@/components/ui/button';
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@/components/ui/resizable";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { RegistryItem } from "@/lib/registry";
-import Content from "@/registry/layout/layout-core/Content";
+} from '@/components/ui/resizable';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { RegistryItem } from '@/lib/registry';
+import Content from '@/registry/layout/layout-core/Content';
 
 interface SubcategoryData {
   name: string;
@@ -48,79 +49,6 @@ const ComponentPreviewContent = React.memo(
   ({ item, needsIframe, demoPath }: ComponentPreviewContentProps) => {
     const hasScreenshotPreview = item.meta.screenshot && item.meta.previewPath;
 
-    const DynamicComponent = React.useMemo(() => {
-      if (needsIframe || hasScreenshotPreview) return null;
-
-      try {
-        const componentPath = item.path.replace(".tsx", "");
-        const resolvedDemoPath =
-          demoPath ?? item.demoFiles?.[0]?.path.replace(".tsx", "");
-        return dynamic(
-          () =>
-            (resolvedDemoPath
-              ? import(`@/registry/${resolvedDemoPath}`)
-              : Promise.resolve(null)
-            )
-              .then((mod) => {
-                if (mod && mod.Demo) return { default: mod.Demo };
-                return null;
-              })
-              .catch(() => null)
-              .then((result) => {
-                if (result) return result;
-                return import(`@/registry/${componentPath}`).then((mod) => {
-                  const exportName = item.meta.exportName;
-                  if (exportName && mod[exportName])
-                    return { default: mod[exportName] };
-                  return {
-                    default: function NoExport() {
-                      return (
-                        <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                          <span className="text-sm">Preview unavailable</span>
-                        </div>
-                      );
-                    },
-                  };
-                });
-              })
-              .catch(() => {
-                return {
-                  default: function FallbackComponent() {
-                    return (
-                      <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                        <span className="text-sm">Preview unavailable</span>
-                      </div>
-                    );
-                  },
-                };
-              }),
-          {
-            loading: () => (
-              <div className="w-full h-full flex items-center justify-center">
-                <div className="animate-pulse bg-muted rounded w-16 h-16"></div>
-              </div>
-            ),
-            ssr: false,
-          },
-        );
-      } catch {
-        return function ErrorFallback() {
-          return (
-            <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-              <span className="text-sm">Preview unavailable</span>
-            </div>
-          );
-        };
-      }
-    }, [
-      item.path,
-      item.demoFiles,
-      demoPath,
-      item.meta.exportName,
-      needsIframe,
-      hasScreenshotPreview,
-    ]);
-
     if (hasScreenshotPreview) {
       return (
         <a
@@ -130,7 +58,7 @@ const ComponentPreviewContent = React.memo(
           className="block w-full h-full"
         >
           <img
-            src={item.meta.screenshot!.replace(/^\/public/, "")}
+            src={item.meta.screenshot!.replace(/^\/public/, '')}
             alt={item.title}
             className="w-full h-full object-cover object-top"
           />
@@ -145,7 +73,7 @@ const ComponentPreviewContent = React.memo(
       return (
         <div
           className={`w-full h-full relative ${
-            item.meta.previewClassName || ""
+            item.meta.previewClassName || ''
           }`}
         >
           <iframe
@@ -156,43 +84,33 @@ const ComponentPreviewContent = React.memo(
       );
     }
 
-    if (!DynamicComponent) {
-      return (
-        <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-          <span className="text-sm">Preview unavailable</span>
-        </div>
-      );
-    }
-
     return (
-      <div
-        className={`w-full h-full flex items-center justify-center p-4 overflow-hidden ${
-          item.meta.previewClassName || ""
-        }`}
+      <PreviewCanvas
+        className={`overflow-hidden ${item.meta.previewClassName || ''}`}
       >
-        <DynamicComponent />
-      </div>
+        <RegistryDemoPreview item={item} demoPath={demoPath} />
+      </PreviewCanvas>
     );
   },
 );
 
-ComponentPreviewContent.displayName = "ComponentPreviewContent";
+ComponentPreviewContent.displayName = 'ComponentPreviewContent';
 
 function ComponentPreview({
   item,
   demoFile,
 }: {
   item: RegistryItem;
-  demoFile?: RegistryItem["demoFiles"] extends Array<infer T> | undefined
+  demoFile?: RegistryItem['demoFiles'] extends Array<infer T> | undefined
     ? T
     : never;
 }) {
   const needsIframe =
-    demoFile?.previewMode === "iframe" || item.meta.previewMode === "iframe";
+    demoFile?.previewMode === 'iframe' || item.meta.previewMode === 'iframe';
   const previewHeight = extractHeight(item.meta.previewClassName);
   const [previewKey, setPreviewKey] = useState(0);
   const [copiedIndex, setCopiedIndex] = useState<number>(-1);
-  const [activeTab, setActiveTab] = useState<string>("preview");
+  const [activeTab, setActiveTab] = useState<string>('preview');
   const [activeFileIndex, setActiveFileIndex] = useState<number>(0);
   const [SyntaxHighlighter, setSyntaxHighlighter] = useState<{
     Component: React.ComponentType<SyntaxHighlighterProps>;
@@ -202,13 +120,13 @@ function ComponentPreview({
   const panelRef = useRef<ImperativePanelHandle | null>(null);
   const { mode, systemMode } = useColorScheme();
 
-  const demoPath = demoFile?.path.replace(".tsx", "");
+  const demoPath = demoFile?.path.replace('.tsx', '');
 
   // Memoize display files: prepend demo file(s) and filter out index.ts
   const displayFiles = React.useMemo(() => {
     const demoFiles = demoFile ? [demoFile] : (item.demoFiles ?? []);
     const allFiles = [...demoFiles, ...item.files];
-    return allFiles.filter((file) => !file.path.endsWith("index.ts"));
+    return allFiles.filter((file) => !file.path.endsWith('index.ts'));
   }, [demoFile, item.demoFiles, item.files]);
 
   const handleCopy = React.useCallback(
@@ -231,13 +149,13 @@ function ComponentPreview({
     setActiveTab(value);
 
     // Dynamically import syntax highlighter when code tab is first accessed
-    if (value === "code" && !SyntaxHighlighter) {
+    if (value === 'code' && !SyntaxHighlighter) {
       try {
         const [syntaxHighlighterModule, stylesModule] = await Promise.all([
-          import("react-syntax-highlighter") as Promise<{
+          import('react-syntax-highlighter') as Promise<{
             Prism: React.ComponentType<SyntaxHighlighterProps>;
           }>,
-          import("react-syntax-highlighter/dist/esm/styles/prism") as Promise<{
+          import('react-syntax-highlighter/dist/esm/styles/prism') as Promise<{
             oneLight: Record<string, React.CSSProperties>;
             oneDark: Record<string, React.CSSProperties>;
           }>,
@@ -248,7 +166,7 @@ function ComponentPreview({
           darkStyle: stylesModule.oneDark,
         });
       } catch (error) {
-        console.error("Failed to load syntax highlighter:", error);
+        console.error('Failed to load syntax highlighter:', error);
         // Set a fallback to prevent infinite loading
         setSyntaxHighlighter(null);
       }
@@ -280,21 +198,21 @@ function ComponentPreview({
   }, [item, needsIframe, demoPath, panelRef, previewKey]);
 
   const renderFileContent = React.useCallback(
-    (file: RegistryItem["files"][0], index: number, showHeader: boolean) => {
+    (file: RegistryItem['files'][0], index: number, showHeader: boolean) => {
       const codeHeight = needsIframe
         ? undefined
         : previewHeight
           ? previewHeight
-          : "400px";
+          : '400px';
       return (
         <div
           key={file.path}
-          className={needsIframe ? "aspect-video max-w-full min-h-[80vh]" : ""}
+          className={needsIframe ? 'aspect-video max-w-full min-h-[80vh]' : ''}
           style={codeHeight ? { height: codeHeight } : undefined}
         >
           {showHeader && (
             <div className="flex items-center justify-between bg-muted px-3 py-2 text-sm">
-              <span className="font-mono">{file.path.split("/").pop()}</span>
+              <span className="font-mono">{file.path.split('/').pop()}</span>
               <Button
                 variant="outline"
                 size="sm"
@@ -312,27 +230,27 @@ function ComponentPreview({
           <div
             className={
               showHeader
-                ? "h-[calc(100%-40px)] overflow-auto"
-                : "h-full overflow-auto"
+                ? 'h-[calc(100%-40px)] overflow-auto'
+                : 'h-full overflow-auto'
             }
           >
-            {activeTab === "code" ? (
+            {activeTab === 'code' ? (
               SyntaxHighlighter ? (
                 <SyntaxHighlighter.Component
                   language={
-                    file.path.endsWith(".tsx") || file.path.endsWith(".ts")
-                      ? "tsx"
-                      : "jsx"
+                    file.path.endsWith('.tsx') || file.path.endsWith('.ts')
+                      ? 'tsx'
+                      : 'jsx'
                   }
                   style={
-                    (systemMode || mode) === "dark"
+                    (systemMode || mode) === 'dark'
                       ? SyntaxHighlighter.darkStyle
                       : SyntaxHighlighter.lightStyle
                   }
                   customStyle={{
                     margin: 0,
-                    padding: "16px",
-                    fontSize: "12px",
+                    padding: '16px',
+                    fontSize: '12px',
                   }}
                   showLineNumbers
                 >
@@ -383,6 +301,21 @@ function ComponentPreview({
         </TabsList>
         <div className="flex gap-2">
           <Button
+            asChild
+            variant="outline"
+            size="icon"
+            className="h-8 w-8"
+            title="Open preview in new tab"
+          >
+            <a
+              href={`/preview/${item.name}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <ExternalLink className="h-3.5 w-3.5" />
+            </a>
+          </Button>
+          <Button
             variant="outline"
             size="icon"
             className="h-8 w-8"
@@ -398,13 +331,13 @@ function ComponentPreview({
             className="h-8 px-3 text-xs font-mono"
           >
             {copiedIndex === -2 ? (
-              <Check className="h-3 w-3 mr-1.5" />
+              <Check className="h-3 w-3" />
             ) : (
-              <Terminal className="h-3 w-3 mr-1.5" />
+              <Terminal className="h-3 w-3" />
             )}
             Add to project
           </Button>
-          {process.env.NEXT_PUBLIC_OPEN_V0_BUTTON === "true" && (
+          {process.env.NEXT_PUBLIC_OPEN_V0_BUTTON === 'true' && (
             <OpenInV0Button name={item.name} className="h-8" />
           )}
         </div>
@@ -430,11 +363,11 @@ function ComponentPreview({
                   onClick={() => setActiveFileIndex(index)}
                   className={`px-4 py-2 text-sm font-mono transition-colors relative ${
                     activeFileIndex === index
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
+                      ? 'text-foreground'
+                      : 'text-muted-foreground hover:text-foreground'
                   }`}
                 >
-                  {file.path.split("/").pop()}
+                  {file.path.split('/').pop()}
                   {activeFileIndex === index && (
                     <div className="absolute bottom-0 left-4 right-4 h-[1px] rounded-2xl bg-foreground" />
                   )}
@@ -496,13 +429,13 @@ function MetaOnlyItem({ item }: { item: RegistryItem }) {
           className="h-8 px-3 text-xs font-mono"
         >
           {copiedIndex === -2 ? (
-            <Check className="h-3 w-3 mr-1.5" />
+            <Check className="h-3 w-3" />
           ) : (
-            <Terminal className="h-3 w-3 mr-1.5" />
+            <Terminal className="h-3 w-3" />
           )}
           Add to project
         </Button>
-        {process.env.NEXT_PUBLIC_OPEN_V0_BUTTON === "true" && (
+        {process.env.NEXT_PUBLIC_OPEN_V0_BUTTON === 'true' && (
           <OpenInV0Button name={item.name} className="h-8" />
         )}
       </div>
@@ -513,7 +446,7 @@ function MetaOnlyItem({ item }: { item: RegistryItem }) {
 function extractHeight(previewClassName?: string): string | undefined {
   if (!previewClassName) return undefined;
   const match = previewClassName.match(/(?:min-)?h-\[([^\]]+)\]/);
-  return match ? match[1].replace("!important", "") : undefined;
+  return match ? match[1].replace('!important', '') : undefined;
 }
 
 function LazyComponentPreview({
@@ -521,7 +454,7 @@ function LazyComponentPreview({
   demoFile,
 }: {
   item: RegistryItem;
-  demoFile?: RegistryItem["demoFiles"] extends Array<infer T> | undefined
+  demoFile?: RegistryItem['demoFiles'] extends Array<infer T> | undefined
     ? T
     : never;
 }) {
@@ -538,7 +471,7 @@ function LazyComponentPreview({
         }
       },
       {
-        rootMargin: "200px",
+        rootMargin: '200px',
       },
     );
 
@@ -549,10 +482,10 @@ function LazyComponentPreview({
     return () => observer.disconnect();
   }, []);
 
-  const skeletonHeight = previewHeight || "306px";
+  const skeletonHeight = previewHeight || '306px';
   const containerMinHeight = previewHeight
     ? `calc(${previewHeight} + 54px)`
-    : "360px";
+    : '360px';
 
   const loadingSkeleton = (
     <div className="space-y-4">
@@ -605,22 +538,22 @@ export default function CategoryClient({
                   <a href={item.href} className="hover:text-foreground">
                     {item.label}
                   </a>
-                  {index < breadcrumb.length - 1 && " / "}
+                  {index < breadcrumb.length - 1 && ' / '}
                 </span>
               ))}
             </nav>
           )}
           <h1 className="text-3xl font-bold capitalize mb-2">
-            {categoryInfo.label === "Ai" ? "AI" : categoryInfo.label}
+            {categoryInfo.label === 'Ai' ? 'AI' : categoryInfo.label}
           </h1>
           <p className="text-muted-foreground">
             {subcategoryData && subcategoryData.length > 0
               ? `${subcategoryData.length} subcategories, ${regularItems.length} other components`
               : `${regularItems.length} ${
-                  regularItems.length === 1 ? "component" : "components"
+                  regularItems.length === 1 ? 'component' : 'components'
                 }`}
             {selectedTags.length > 0 && (
-              <span> matching: {selectedTags.join(", ")}</span>
+              <span> matching: {selectedTags.join(', ')}</span>
             )}
           </p>
         </div>
@@ -641,7 +574,7 @@ export default function CategoryClient({
                   {subcat.label}
                 </h3>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  {subcat.count} {subcat.count === 1 ? "block" : "blocks"}
+                  {subcat.count} {subcat.count === 1 ? 'block' : 'blocks'}
                 </p>
               </a>
             ))}
@@ -676,7 +609,7 @@ export default function CategoryClient({
                 <div>
                   <div className="flex items-center gap-2 mb-1">
                     <h3 className="font-semibold text-lg">
-                      {item.title.replace(/^Ai\s/, "AI ")}
+                      {item.title.replace(/^Ai\s/, 'AI ')}
                     </h3>
                     {/* TODO: need to think more about the preview and other features to leverage the fullscreen */}
                     {/* <Link
@@ -711,14 +644,14 @@ export default function CategoryClient({
                           const label =
                             demoFile.title ||
                             demoFile.path
-                              .split("/")
+                              .split('/')
                               .pop()!
-                              .replace(".demo.tsx", "")
-                              .split("-")
+                              .replace('.demo.tsx', '')
+                              .split('-')
                               .map(
                                 (w) => w.charAt(0).toUpperCase() + w.slice(1),
                               )
-                              .join(" ");
+                              .join(' ');
                           return (
                             <div
                               key={demoFile.path}

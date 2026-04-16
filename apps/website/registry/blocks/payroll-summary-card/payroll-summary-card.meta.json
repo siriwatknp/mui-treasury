@@ -4,7 +4,7 @@
   "title": "Payroll Summary Card",
   "description": "A payroll-summary-card block.",
   "meta": {
-    "screenshot": "/screenshots/payroll-summary-card.png",
+    "screenshot": "/og/payroll-summary-card.png",
     "category": "block",
     "exportName": "PayrollSummaryCard",
     "subcategory": "dashboard"

@@ -4,7 +4,7 @@
   "title": "Dashboard Sidebar",
   "description": "A vertical navigation sidebar for dashboard applications with user profile, search, and expandable menu items",
   "meta": {
-    "screenshot": "/screenshots/dashboard-sidebar.png",
+    "screenshot": "/og/dashboard-sidebar.png",
     "category": "block",
     "exportName": "DashboardSidebar",
     "subcategory": "dashboard"

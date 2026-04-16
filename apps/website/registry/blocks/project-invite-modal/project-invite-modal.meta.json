@@ -4,7 +4,7 @@
   "title": "Project Invite Modal",
   "description": "A project-invite-modal block.",
   "meta": {
-    "screenshot": "/screenshots/project-invite-modal.png",
+    "screenshot": "/og/project-invite-modal.png",
     "category": "block",
     "previewMode": "iframe",
     "exportName": "ProjectInviteModal",

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
 
 interface PreviewComponentProps {
   children: React.ReactNode;
@@ -9,10 +9,29 @@ interface PreviewComponentProps {
 
 export function PreviewComponent({
   children,
-  className = "",
+  className = '',
 }: PreviewComponentProps) {
   return (
     <div data-preview className={`h-full p-8 ${className}`}>
+      {children}
+    </div>
+  );
+}
+
+interface PreviewCanvasProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+export function PreviewCanvas({
+  children,
+  className = '',
+}: PreviewCanvasProps) {
+  return (
+    <div
+      data-preview
+      className={`w-full h-full flex items-center justify-center p-4 ${className}`}
+    >
       {children}
     </div>
   );
@@ -27,7 +46,7 @@ interface PreviewBlockProps {
 
 export function PreviewBlock({
   children,
-  className = "",
+  className = '',
   title,
   description,
 }: PreviewBlockProps) {

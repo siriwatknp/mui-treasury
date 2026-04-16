@@ -4,7 +4,7 @@
   "title": "Data Metrics",
   "description": "A data-metrics block.",
   "meta": {
-    "screenshot": "/screenshots/data-metrics.png",
+    "screenshot": "/og/data-metrics.png",
     "category": "block",
     "exportName": "DataMetrics",
     "subcategory": "dashboard"

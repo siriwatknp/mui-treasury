@@ -4,7 +4,7 @@
   "title": "Login Form Split",
   "description": "Two-column login form with email/password authentication and social login option",
   "meta": {
-    "screenshot": "/screenshots/login-form-split.png",
+    "screenshot": "/og/login-form-split.png",
     "category": "block",
     "previewMode": "iframe",
     "exportName": "LoginFormSplit",

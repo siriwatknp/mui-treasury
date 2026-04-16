@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "test": "playwright test",
+    "test": "playwright test --project=desktop --project=touch",
     "test:ui": "playwright test --ui",
     "test:headed": "playwright test --headed"
   },
   "devDependencies": {
-    "@playwright/test": "1.52.0"
+    "@playwright/test": "1.52.0",
+    "@types/node": "^22.19.2"
   }
 }

@@ -4,7 +4,7 @@
   "title": "Login Form",
   "description": "Clean and accessible login form with email/password authentication and Google OAuth option",
   "meta": {
-    "screenshot": "/screenshots/login-form.png",
+    "screenshot": "/og/login-form.png",
     "category": "block",
     "exportName": "LoginForm",
     "subcategory": "authentication"

@@ -4,9 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "pnpm registry:build && next dev -p 4418",
-    "dev:screenshot": "tsx scripts/screenshot-demos.ts --port=3001",
     "build": "node scripts/set-base-url.js && pnpm registry:build && next build",
-    "start": "next start",
+    "start": "next start -p 4418",
     "lint": "eslint app/ components/ lib/ registry/",
     "registry:build": "tsx scripts/create-registry-json.ts && tsx scripts/generate-registry.ts",
     "test": "vitest run",

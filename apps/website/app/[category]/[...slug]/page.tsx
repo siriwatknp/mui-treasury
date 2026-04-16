@@ -1,9 +1,9 @@
-import { notFound } from "next/navigation";
+import { notFound } from 'next/navigation';
 
-import CategoryClient from "@/components/category-client";
-import { DynamicComponentLoader } from "@/components/dynamic-component-loader";
-import { FirebaseConfigForm } from "@/components/firebase-config-form";
-import { PreviewComponent } from "@/components/preview-page";
+import CategoryClient from '@/components/category-client';
+import { FirebaseConfigForm } from '@/components/firebase-config-form';
+import { PreviewComponent } from '@/components/preview-page';
+import { RegistryDemoPreview } from '@/components/registry-demo-preview';
 import {
   getCategories,
   getRegistryByName,
@@ -12,8 +12,8 @@ import {
   getSubcategories,
   getTags,
   isVisibleItem,
-} from "@/lib/registry";
-import { orderItems } from "@/lib/registry-order";
+} from '@/lib/registry';
+import { orderItems } from '@/lib/registry-order';
 
 interface SlugPageProps {
   params: Promise<{ category: string; slug: string[] }>;
@@ -81,7 +81,7 @@ export default async function SlugPage({
       );
 
       // Filter by tags if provided
-      const selectedTags = tags ? tags.split(",").filter(Boolean) : [];
+      const selectedTags = tags ? tags.split(',').filter(Boolean) : [];
       const filteredItems =
         selectedTags.length > 0
           ? allItems.filter((item) =>
@@ -100,9 +100,9 @@ export default async function SlugPage({
 
       // Capitalize subcategory name for display
       const subcategoryLabel = param
-        .split("-")
+        .split('-')
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ");
+        .join(' ');
 
       return (
         <CategoryClient
@@ -116,7 +116,7 @@ export default async function SlugPage({
           regularItems={regularItems}
           breadcrumb={[{ label: categoryInfo.label, href: `/${category}` }]}
           headerContent={
-            category === "ai" && param === "firebase" ? (
+            category === 'ai' && param === 'firebase' ? (
               <FirebaseConfigForm key="firebase-config-form" />
             ) : undefined
           }
@@ -182,7 +182,7 @@ function ItemDetailPage({
               </a>
               {subcategory && (
                 <>
-                  {" / "}
+                  {' / '}
                   <a
                     href={`/${category}/${subcategory}`}
                     className="hover:text-foreground"
@@ -191,7 +191,7 @@ function ItemDetailPage({
                   </a>
                 </>
               )}
-              {" / "}
+              {' / '}
               <span className="text-foreground">{item.title}</span>
             </nav>
             <h1 className="text-2xl font-semibold">{item.title}</h1>
@@ -218,10 +218,7 @@ function ItemDetailPage({
       <main className="p-6">
         <div className="max-w-7xl mx-auto">
           <PreviewComponent>
-            <DynamicComponentLoader
-              componentPath={item.path.replace(".tsx", "")}
-              exportName={item.meta.exportName}
-            />
+            <RegistryDemoPreview item={item} />
           </PreviewComponent>
         </div>
       </main>

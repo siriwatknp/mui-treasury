@@ -4,7 +4,7 @@
   "title": "Navigation Menu 01",
   "description": "Horizontal navigation menu with dropdown menus for Products and Resources sections",
   "meta": {
-    "screenshot": "/screenshots/nav-menu-01.png",
+    "screenshot": "/og/nav-menu-01.png",
     "category": "block",
     "previewClassName": "items-start",
     "exportName": "NavMenu01"
