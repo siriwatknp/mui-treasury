@@ -1,8 +1,17 @@
+/** @jsx h */
 import { Resvg } from "@resvg/resvg-js";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import satori from "satori";
+import satori, { type Font } from "satori";
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [elemName: string]: Record<string, unknown>;
+    }
+  }
+}
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const FONTS_DIR = path.join(__dirname, "fonts");
@@ -21,7 +30,18 @@ const BADGE_BG =
 const BADGE_BORDER = "1px solid rgba(255,255,255,0.3)";
 const BADGE_SHADOW = "0 4px 8px -2px rgba(0,0,0,0.15)";
 
-let cachedFonts;
+type Node = { type: string; props: Record<string, unknown> };
+type Child = Node | string | number | null | false | undefined | Child[];
+
+function h(
+  type: string,
+  props: Record<string, unknown> | null,
+  ...children: Child[]
+): Node {
+  return { type, props: { ...(props ?? {}), children: children.flat() } };
+}
+
+let cachedFonts: Font[];
 async function loadFonts() {
   if (cachedFonts) return cachedFonts;
   const [regular, semiBold, bold, mono] = await Promise.all([
@@ -39,40 +59,41 @@ async function loadFonts() {
   return cachedFonts;
 }
 
-function chevronIcon(stroke) {
+function chevronIcon(stroke: string) {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="${stroke}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m10 8 4 4-4 4"/></svg>`;
   return `data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}`;
 }
 
-function el(type, props, ...children) {
-  return { type, props: { ...props, children: children.flat() } };
-}
-
-export async function renderOg({ title, name, baseImage }) {
+export async function renderOg({
+  title,
+  name,
+  baseImage,
+}: {
+  title: string;
+  name: string;
+  baseImage: Buffer;
+}) {
   const fonts = await loadFonts();
   const cmd = `npx mui-treasury add ${name}`;
   const baseUri = `data:image/png;base64,${Buffer.from(baseImage).toString("base64")}`;
 
-  const tree = el(
-    "div",
-    {
-      style: {
+  const tree = (
+    <div
+      style={{
         width: `${WIDTH}px`,
         height: `${HEIGHT}px`,
         position: "relative",
         display: "flex",
-      },
-    },
-    el("img", {
-      src: baseUri,
-      width: WIDTH,
-      height: HEIGHT,
-      style: { position: "absolute", top: 0, left: 0 },
-    }),
-    el(
-      "div",
-      {
-        style: {
+      }}
+    >
+      <img
+        src={baseUri}
+        width={WIDTH}
+        height={HEIGHT}
+        style={{ position: "absolute", top: 0, left: 0 }}
+      />
+      <div
+        style={{
           position: "absolute",
           left: `${BAR_INSET}px`,
           right: `${BAR_INSET}px`,
@@ -83,12 +104,10 @@ export async function renderOg({ title, name, baseImage }) {
           boxShadow: BAR_SHADOW,
           overflow: "hidden",
           display: "flex",
-        },
-      },
-      el(
-        "div",
-        {
-          style: {
+        }}
+      >
+        <div
+          style={{
             position: "absolute",
             top: "0px",
             left: "0px",
@@ -97,35 +116,33 @@ export async function renderOg({ title, name, baseImage }) {
             borderRadius: "15px",
             overflow: "hidden",
             display: "flex",
-          },
-        },
-        el("img", {
-          src: baseUri,
-          width: WIDTH,
-          height: HEIGHT,
-          style: {
+          }}
+        >
+          <img
+            src={baseUri}
+            width={WIDTH}
+            height={HEIGHT}
+            style={{
+              position: "absolute",
+              top: `${-(HEIGHT - BAR_HEIGHT - BAR_INSET + 1)}px`,
+              left: `-${BAR_INSET + 1}px`,
+              filter: "blur(8px)",
+            }}
+          />
+        </div>
+        <div
+          style={{
             position: "absolute",
-            top: `${-(HEIGHT - BAR_HEIGHT - BAR_INSET + 1)}px`,
-            left: `-${BAR_INSET + 1}px`,
-            filter: "blur(8px)",
-          },
-        }),
-      ),
-      el("div", {
-        style: {
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          background: BAR_BG,
-          display: "flex",
-        },
-      }),
-      el(
-        "div",
-        {
-          style: {
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background: BAR_BG,
+            display: "flex",
+          }}
+        />
+        <div
+          style={{
             position: "relative",
             display: "flex",
             flexDirection: "row",
@@ -134,21 +151,11 @@ export async function renderOg({ title, name, baseImage }) {
             width: "100%",
             height: "100%",
             padding: "0 40px 0 24px",
-          },
-        },
-        el(
-          "div",
-          {
-            style: {
-              display: "flex",
-              flexDirection: "column",
-              gap: "8px",
-            },
-          },
-          el(
-            "div",
-            {
-              style: {
+          }}
+        >
+          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+            <div
+              style={{
                 display: "flex",
                 fontSize: "28px",
                 fontFamily: "Geist",
@@ -156,43 +163,31 @@ export async function renderOg({ title, name, baseImage }) {
                 color: "#ffffff",
                 lineHeight: 1,
                 whiteSpace: "nowrap",
-              },
-            },
-            title,
-          ),
-          el(
-            "div",
-            {
-              style: {
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-              },
-            },
-            el("img", {
-              src: chevronIcon("rgba(255,255,255,0.75)"),
-              width: 22,
-              height: 22,
-            }),
-            el(
-              "div",
-              {
-                style: {
+              }}
+            >
+              {title}
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <img
+                src={chevronIcon("rgba(255,255,255,0.75)")}
+                width={22}
+                height={22}
+              />
+              <div
+                style={{
                   display: "flex",
                   fontSize: "18px",
                   fontFamily: "Geist Mono",
                   color: "rgba(255,255,255,0.75)",
                   whiteSpace: "nowrap",
-                },
-              },
-              cmd,
-            ),
-          ),
-        ),
-        el(
-          "div",
-          {
-            style: {
+                }}
+              >
+                {cmd}
+              </div>
+            </div>
+          </div>
+          <div
+            style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -205,12 +200,13 @@ export async function renderOg({ title, name, baseImage }) {
               fontSize: "18px",
               fontFamily: "Geist",
               fontWeight: 600,
-            },
-          },
-          "MUI Treasury",
-        ),
-      ),
-    ),
+            }}
+          >
+            MUI Treasury
+          </div>
+        </div>
+      </div>
+    </div>
   );
 
   const svg = await satori(tree, { width: WIDTH, height: HEIGHT, fonts });

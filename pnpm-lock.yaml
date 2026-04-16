@@ -32,6 +32,9 @@ importers:
       sharp:
         specifier: 0.34.5
         version: 0.34.5
+      tsx:
+        specifier: 4.19.4
+        version: 4.19.4
       turbo:
         specifier: ^2.9.4
         version: 2.9.4
