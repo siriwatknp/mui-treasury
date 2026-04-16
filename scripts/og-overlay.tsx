@@ -1,17 +1,10 @@
-/** @jsx h */
+/** @jsxRuntime automatic */
+/** @jsxImportSource react */
 import { Resvg } from "@resvg/resvg-js";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import satori, { type Font } from "satori";
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [elemName: string]: Record<string, unknown>;
-    }
-  }
-}
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const FONTS_DIR = path.join(__dirname, "fonts");
@@ -29,17 +22,6 @@ const BADGE_BG =
   "linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.08) 100%)";
 const BADGE_BORDER = "1px solid rgba(255,255,255,0.3)";
 const BADGE_SHADOW = "0 4px 8px -2px rgba(0,0,0,0.15)";
-
-type Node = { type: string; props: Record<string, unknown> };
-type Child = Node | string | number | null | false | undefined | Child[];
-
-function h(
-  type: string,
-  props: Record<string, unknown> | null,
-  ...children: Child[]
-): Node {
-  return { type, props: { ...(props ?? {}), children: children.flat() } };
-}
 
 let cachedFonts: Font[];
 async function loadFonts() {
