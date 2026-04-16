@@ -16,6 +16,7 @@ export default defineConfig({
       maxDiffPixelRatio: 0.01,
       animations: "disabled",
       caret: "hide",
+      scale: "device",
     },
   },
   projects: [
@@ -41,6 +42,7 @@ export default defineConfig({
       use: {
         ...devices["Desktop Chrome"],
         viewport: { width: 1200, height: 630 },
+        deviceScaleFactor: 2,
       },
     },
   ],

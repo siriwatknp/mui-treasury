@@ -10,7 +10,7 @@ interface PreviewPageProps {
 export async function generateMetadata({ params }: PreviewPageProps) {
   const { name } = await params;
   const item = getRegistryByName(name);
-  const title = item?.title ?? name;
+  const title = `${item?.title ?? name} — MUI Treasury`;
   const description = item?.description;
   return {
     title,
@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: PreviewPageProps) {
     openGraph: {
       title,
       description,
-      images: [`/og/${name}.png`],
+      images: [{ url: `/og/${name}.png`, width: 2400, height: 1260 }],
     },
     twitter: {
       card: "summary_large_image",
