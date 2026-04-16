@@ -13,13 +13,11 @@ const { renderOg } = (await tsImport(
 
 const SNAP_DIR = "apps/e2e/tests/visual.spec.ts-snapshots";
 const DEST_DIR = "apps/website/public/og";
-const REGISTRY_DIR = "apps/website/registry";
 const PLATFORM = process.platform === "darwin" ? "darwin" : "linux";
 const SUFFIX = `-visual-${PLATFORM}.png`;
 
 interface Job {
   name: string;
-  title: string;
   srcPath: string;
   destPath: string;
 }
@@ -28,29 +26,12 @@ type WorkerMsg =
   | { type: "done"; name: string; duration: number }
   | { type: "error"; name: string; message: string };
 
-async function findMetaTitle(name: string): Promise<string> {
-  for (const root of ["components", "blocks"]) {
-    const metaPath = path.join(REGISTRY_DIR, root, name, `${name}.meta.json`);
-    try {
-      const content = JSON.parse(await fs.readFile(metaPath, "utf-8"));
-      if (content.title) return content.title;
-    } catch {
-      /* not here */
-    }
-  }
-  return name
-    .split("-")
-    .map((s: string) => s.charAt(0).toUpperCase() + s.slice(1))
-    .join(" ");
-}
-
 if (!isMainThread) {
   parentPort!.on("message", async (job: Job) => {
     const t0 = Date.now();
     try {
       const baseImage = await fs.readFile(job.srcPath);
       const png = await renderOg({
-        title: job.title,
         name: job.name,
         baseImage,
       });
@@ -92,14 +73,11 @@ if (!isMainThread) {
     process.exit(0);
   }
 
-  const jobs: Job[] = await Promise.all(
-    targets.map(async ({ name, file }) => ({
-      name,
-      title: await findMetaTitle(name),
-      srcPath: path.join(SNAP_DIR, file),
-      destPath: path.join(DEST_DIR, `${name}.png`),
-    })),
-  );
+  const jobs: Job[] = targets.map(({ name, file }) => ({
+    name,
+    srcPath: path.join(SNAP_DIR, file),
+    destPath: path.join(DEST_DIR, `${name}.png`),
+  }));
 
   const cores = os.availableParallelism?.() ?? os.cpus().length;
   const poolSize = Math.min(jobs.length, Math.max(1, cores - 1));
