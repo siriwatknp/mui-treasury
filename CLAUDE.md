@@ -121,6 +121,7 @@ Pipeline: `visual.spec.ts` screenshots → `apps/e2e/tests/visual.spec.ts-snapsh
 
 - **NEVER** create or edit generated files in `public/r/*.json` directly — always use `pnpm registry:build`
 - Registry metadata is created via `npx tsx scripts/create-registry-json <name> -t [title] -d [description] -c [category]`
+- Preview pages (`/preview/[name]`, `/preview/demo/[...path]`) load demos via a static map at `apps/website/lib/registry-demos.generated.ts` (committed, emitted by `scripts/generate-demo-map.ts` during `pnpm registry:build`). Adding a new demo requires re-running `pnpm registry:build` (or restarting `pnpm dev`); editing existing demos works via HMR.
 
 ---
 

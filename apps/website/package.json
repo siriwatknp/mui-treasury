@@ -7,7 +7,7 @@
     "build": "node scripts/set-base-url.js && pnpm registry:build && next build",
     "start": "next start -p 4418",
     "lint": "eslint app/ components/ lib/ registry/",
-    "registry:build": "tsx scripts/create-registry-json.ts && tsx scripts/generate-registry.ts",
+    "registry:build": "tsx scripts/create-registry-json.ts && tsx scripts/generate-registry.ts && tsx scripts/generate-demo-map.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",

@@ -5,6 +5,7 @@ import * as React from 'react';
 import dynamic from 'next/dynamic';
 
 import type { RegistryItem } from '@/lib/registry';
+import { getModuleLoader } from '@/lib/registry-demos.generated';
 
 interface RegistryDemoPreviewProps {
   item: RegistryItem;
@@ -15,42 +16,52 @@ export function RegistryDemoPreview({
   item,
   demoPath,
 }: RegistryDemoPreviewProps) {
-  const componentPath = item.path.replace('.tsx', '');
-  const resolvedDemoPath =
-    demoPath ?? item.demoFiles?.[0]?.path.replace('.tsx', '');
+  const componentKey = item.path.replace(/\.tsx?$/, '');
+  const demoKey =
+    demoPath?.replace(/\.tsx?$/, '') ??
+    item.demoFiles?.[0]?.path.replace(/\.tsx?$/, '');
   const exportName = item.meta.exportName;
 
-  const Component = React.useMemo(
-    () =>
-      dynamic(
-        () =>
-          (resolvedDemoPath
-            ? import(`@/registry/${resolvedDemoPath}`)
-                .then((mod) => {
-                  if (mod.Demo) return { default: mod.Demo };
-                  if (mod.default) return mod;
-                  return null;
-                })
-                .catch(() => null)
-            : Promise.resolve(null)
-          ).then((result) => {
-            if (result) return result;
-            return import(`@/registry/${componentPath}`)
-              .then((mod) => {
-                if (exportName && mod[exportName])
-                  return { default: mod[exportName] };
-                if (mod.default) return mod;
-                return { default: PreviewUnavailable };
-              })
-              .catch(() => ({ default: PreviewUnavailable }));
-          }),
-        {
-          loading: Loading,
-          ssr: false,
-        },
-      ),
-    [componentPath, exportName, resolvedDemoPath],
-  );
+  const Component = React.useMemo(() => {
+    const demoLoader = demoKey ? getModuleLoader(demoKey) : null;
+    const componentLoader = getModuleLoader(componentKey);
+
+    return dynamic(
+      () => {
+        const tryDemo = demoLoader
+          ? demoLoader().then((mod) => {
+              if ('Demo' in mod && mod.Demo) {
+                return { default: mod.Demo as React.ComponentType };
+              }
+              if ('default' in mod && mod.default) {
+                return mod as { default: React.ComponentType };
+              }
+              return null;
+            })
+          : Promise.resolve(null);
+
+        return tryDemo.then((result) => {
+          if (result) return result;
+          if (!componentLoader) return { default: PreviewUnavailable };
+          return componentLoader()
+            .then((mod) => {
+              if (exportName && exportName in mod && mod[exportName]) {
+                return { default: mod[exportName] as React.ComponentType };
+              }
+              if ('default' in mod && mod.default) {
+                return mod as { default: React.ComponentType };
+              }
+              return { default: PreviewUnavailable };
+            })
+            .catch(() => ({ default: PreviewUnavailable }));
+        });
+      },
+      {
+        loading: Loading,
+        ssr: false,
+      },
+    );
+  }, [componentKey, demoKey, exportName]);
 
   return <Component />;
 }
