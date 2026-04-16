@@ -43,6 +43,7 @@ next-env.d.ts
 
 # generated at build time
 **/public/r/
+**/public/og/
 .playwright-mcp
 
 **/examples/**/pnpm-lock.yaml

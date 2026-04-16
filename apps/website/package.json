@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "pnpm registry:build && next dev -p 4418",
-    "build": "node scripts/set-base-url.js && pnpm registry:build && next build",
+    "build": "node scripts/set-base-url.js && pnpm registry:build && pnpm -w sync:og && next build",
     "start": "next start -p 4418",
     "lint": "eslint app/ components/ lib/ registry/",
     "registry:build": "tsx scripts/create-registry-json.ts && tsx scripts/generate-registry.ts && tsx scripts/generate-demo-map.ts",

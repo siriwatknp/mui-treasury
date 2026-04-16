@@ -38,6 +38,8 @@ export default defineConfig({
     {
       name: 'visual',
       testMatch: ['**/visual.spec.ts'],
+      snapshotPathTemplate:
+        '{snapshotDir}/{testFileDir}/{testFileName}-snapshots/{arg}{ext}',
       use: {
         ...devices['Desktop Chrome'],
         viewport: { width: 1200, height: 630 },

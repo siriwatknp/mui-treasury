@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 import { getVisualItems } from './registry-items';
+import { visualSetups } from './visual-setups';
 
 const themes = ['light', 'dark'] as const;
 
@@ -41,6 +42,9 @@ for (const item of getVisualItems()) {
         .getByText('Preview unavailable', { exact: true })
         .count();
       expect(unavailable, '"Preview unavailable" fallback rendered').toBe(0);
+
+      const setup = visualSetups[item.name];
+      if (setup) await setup({ page, theme });
 
       await expect(page).toHaveScreenshot(`${item.name}${suffix}.png`);
     });

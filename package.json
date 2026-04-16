@@ -10,8 +10,8 @@
     "dev:cli": "pnpm --filter mui-treasury dev:cli --",
     "changeset": "changeset",
     "release": "node scripts/release.mjs",
-    "test:visual": "pnpm --filter e2e exec playwright test --project=visual && pnpm sync:og",
-    "test:visual:build": "VISUAL_BUILD=1 pnpm --filter registry build && pnpm --filter e2e exec playwright test --project=visual && pnpm sync:og",
+    "test:visual": "pnpm --filter e2e exec playwright test --project=visual",
+    "test:visual:build": "VISUAL_BUILD=1 pnpm --filter registry build && pnpm --filter e2e exec playwright test --project=visual",
     "sync:og": "tsx scripts/sync-og.ts"
   },
   "devDependencies": {

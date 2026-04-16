@@ -11,10 +11,13 @@ const { renderOg } = (await tsImport(
   import.meta.url,
 )) as typeof import('./og-overlay.tsx');
 
-const SNAP_DIR = 'apps/e2e/tests/visual.spec.ts-snapshots';
-const DEST_DIR = 'apps/website/public/og';
-const PLATFORM = process.platform === 'darwin' ? 'darwin' : 'linux';
-const SUFFIX = `-visual-${PLATFORM}.png`;
+const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
+const REPO_ROOT = path.resolve(SCRIPT_DIR, '..');
+const SNAP_DIR = path.join(
+  REPO_ROOT,
+  'apps/e2e/tests/visual.spec.ts-snapshots',
+);
+const DEST_DIR = path.join(REPO_ROOT, 'apps/website/public/og');
 
 interface Job {
   name: string;
@@ -57,8 +60,8 @@ if (!isMainThread) {
 
   const targets: Array<{ name: string; file: string }> = [];
   for (const file of files) {
-    if (!file.endsWith(SUFFIX)) continue;
-    const name = file.slice(0, -SUFFIX.length);
+    if (!file.endsWith('.png')) continue;
+    const name = file.slice(0, -'.png'.length);
     if (name.endsWith('-dark')) continue;
     if (only && name !== only) continue;
     targets.push({ name, file });
@@ -84,7 +87,7 @@ if (!isMainThread) {
   const pad = String(jobs.length).length;
   const start = Date.now();
   console.log(
-    `OG overlay: ${jobs.length} item${jobs.length > 1 ? 's' : ''} × ${poolSize} worker${poolSize > 1 ? 's' : ''} → ${DEST_DIR}`,
+    `OG overlay: ${jobs.length} item${jobs.length > 1 ? 's' : ''} × ${poolSize} worker${poolSize > 1 ? 's' : ''} → ${path.relative(REPO_ROOT, DEST_DIR)}`,
   );
 
   const selfUrl = fileURLToPath(import.meta.url);
