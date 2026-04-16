@@ -1,11 +1,11 @@
-import { ThemeComponents } from "../types";
+import { ThemeComponents } from '../types';
 
 export const menuTheme: ThemeComponents = {
   MuiMenu: {
     defaultProps: {
       PaperProps: {
         elevation: 0,
-        variant: "outlined",
+        variant: 'outlined',
       },
     },
     styleOverrides: {
@@ -16,10 +16,10 @@ export const menuTheme: ThemeComponents = {
         boxShadow: (theme.vars || theme).shadows[8],
       }),
       list: {
-        padding: "6px",
-        display: "flex",
-        flexDirection: "column",
-        gap: "4px",
+        padding: '6px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '4px',
       },
     },
   },
@@ -27,30 +27,30 @@ export const menuTheme: ThemeComponents = {
     styleOverrides: {
       root: ({ theme }) => ({
         fontSize: theme.typography.body2.fontSize,
-        padding: "6px",
+        padding: '6px',
         borderRadius: 4,
         minHeight: 40,
         margin: 0,
-        transition: theme.transitions.create(["background-color"], {
+        transition: theme.transitions.create(['background-color'], {
           duration: theme.transitions.duration.shortest,
         }),
-        "&:hover": {
+        '&:hover': {
           backgroundColor: (theme.vars || theme).palette.action.hover,
         },
-        "&.Mui-selected": {
+        '&.Mui-selected': {
           backgroundColor: (theme.vars || theme).palette.action.selected,
-          "&:hover": {
+          '&:hover': {
             backgroundColor: (theme.vars || theme).palette.action.selected,
           },
         },
-        "&.Mui-focusVisible": {
+        '&.Mui-focusVisible': {
           backgroundColor: (theme.vars || theme).palette.action.focus,
         },
         variants: [
           {
             props: { dense: true },
             style: {
-              padding: "4px 8px",
+              padding: '4px 8px',
             },
           },
         ],

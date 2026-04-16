@@ -1,12 +1,13 @@
-"use client";
-import React from "react";
-import Typography from "@mui/material/Typography";
+'use client';
+import React from 'react';
+
+import Typography from '@mui/material/Typography';
 
 const DailyLogo = () => {
   return (
     <Typography
-      variant={"h5"}
-      sx={{ fontWeight: 900, textTransform: "uppercase", whiteSpace: "nowrap" }}
+      variant={'h5'}
+      sx={{ fontWeight: 900, textTransform: 'uppercase', whiteSpace: 'nowrap' }}
     >
       <span>#</span> Daily.
     </Typography>

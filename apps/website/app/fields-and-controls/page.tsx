@@ -1,33 +1,34 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
+
 import {
-  Box,
-  Typography,
-  TextField,
-  OutlinedInput,
-  Select,
-  MenuItem,
   Autocomplete,
-  Stack,
-  FormControl,
-  InputLabel,
+  Box,
   Checkbox,
+  FormControl,
   FormControlLabel,
+  InputLabel,
+  MenuItem,
+  OutlinedInput,
   Radio,
   RadioGroup,
+  Select,
+  Stack,
   Switch,
-} from "@mui/material";
+  TextField,
+  Typography,
+} from '@mui/material';
 
 const autocompleteOptions = [
-  { label: "Option 1" },
-  { label: "Option 2" },
-  { label: "Option 3" },
+  { label: 'Option 1' },
+  { label: 'Option 2' },
+  { label: 'Option 3' },
 ];
 
 export default function FieldsAndControlsPage() {
-  const [selectValue, setSelectValue] = useState("");
-  const [smallSelectValue, setSmallSelectValue] = useState("");
+  const [selectValue, setSelectValue] = useState('');
+  const [smallSelectValue, setSmallSelectValue] = useState('');
   const [autocompleteValue, setAutocompleteValue] = useState<{
     label: string;
   } | null>(null);
@@ -41,14 +42,14 @@ export default function FieldsAndControlsPage() {
     useState<{ label: string }[]>([]);
 
   const [checkboxValue, setCheckboxValue] = useState(false);
-  const [radioValue, setRadioValue] = useState("option1");
+  const [radioValue, setRadioValue] = useState('option1');
   const [switchValue, setSwitchValue] = useState(false);
   const [smallCheckboxValue, setSmallCheckboxValue] = useState(false);
-  const [smallRadioValue, setSmallRadioValue] = useState("option1");
+  const [smallRadioValue, setSmallRadioValue] = useState('option1');
   const [smallSwitchValue, setSmallSwitchValue] = useState(false);
 
   return (
-    <Box sx={{ p: 4, maxWidth: 800, mx: "auto" }}>
+    <Box sx={{ p: 4, maxWidth: 800, mx: 'auto' }}>
       <Typography variant="h4" component="h1" gutterBottom>
         Fields and Controls
       </Typography>

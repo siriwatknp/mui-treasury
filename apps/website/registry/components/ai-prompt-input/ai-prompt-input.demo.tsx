@@ -1,32 +1,33 @@
-"use client";
+'use client';
 
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import { ImageIcon, MicIcon, PaperclipIcon } from 'lucide-react';
+
 import {
   PromptInput,
   PromptInputBody,
+  PromptInputButton,
+  type PromptInputMessage,
+  PromptInputSubmit,
   PromptInputTextarea,
   PromptInputToolbar,
   PromptInputTools,
-  PromptInputButton,
-  PromptInputSubmit,
-  type PromptInputMessage,
-} from "@/registry/components/ai-prompt-input/ai-prompt-input";
-import { PaperclipIcon, ImageIcon, MicIcon } from "lucide-react";
+} from '@/registry/components/ai-prompt-input/ai-prompt-input';
 
 export function Demo() {
   const handleSubmit = (message: PromptInputMessage) => {
-    console.log("Message:", message.text);
-    console.log("Files:", message.files);
+    console.log('Message:', message.text);
+    console.log('Files:', message.files);
   };
 
   return (
-    <Box sx={{ width: "100%", maxWidth: 672, mx: "auto", p: 4 }}>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
+    <Box sx={{ width: '100%', maxWidth: 672, mx: 'auto', p: 4 }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
         <Box>
           <Typography
             variant="body2"
-            sx={{ fontWeight: 500, color: "text.secondary", mb: 1 }}
+            sx={{ fontWeight: 500, color: 'text.secondary', mb: 1 }}
           >
             Basic Prompt Input
           </Typography>
@@ -36,10 +37,10 @@ export function Demo() {
             </PromptInputBody>
             <PromptInputToolbar>
               <PromptInputTools>
-                <PromptInputButton onClick={() => console.log("Attach")}>
+                <PromptInputButton onClick={() => console.log('Attach')}>
                   <PaperclipIcon size={16} />
                 </PromptInputButton>
-                <PromptInputButton onClick={() => console.log("Image")}>
+                <PromptInputButton onClick={() => console.log('Image')}>
                   <ImageIcon size={16} />
                 </PromptInputButton>
               </PromptInputTools>
@@ -51,7 +52,7 @@ export function Demo() {
         <Box>
           <Typography
             variant="body2"
-            sx={{ fontWeight: 500, color: "text.secondary", mb: 1 }}
+            sx={{ fontWeight: 500, color: 'text.secondary', mb: 1 }}
           >
             With Additional Tools
           </Typography>
@@ -61,15 +62,15 @@ export function Demo() {
             </PromptInputBody>
             <PromptInputToolbar>
               <PromptInputTools>
-                <PromptInputButton onClick={() => console.log("Attach")}>
+                <PromptInputButton onClick={() => console.log('Attach')}>
                   <PaperclipIcon size={16} />
                   <Typography variant="caption">Attach</Typography>
                 </PromptInputButton>
-                <PromptInputButton onClick={() => console.log("Image")}>
+                <PromptInputButton onClick={() => console.log('Image')}>
                   <ImageIcon size={16} />
                   <Typography variant="caption">Image</Typography>
                 </PromptInputButton>
-                <PromptInputButton onClick={() => console.log("Voice")}>
+                <PromptInputButton onClick={() => console.log('Voice')}>
                   <MicIcon size={16} />
                   <Typography variant="caption">Voice</Typography>
                 </PromptInputButton>
@@ -82,7 +83,7 @@ export function Demo() {
         <Box>
           <Typography
             variant="body2"
-            sx={{ fontWeight: 500, color: "text.secondary", mb: 1 }}
+            sx={{ fontWeight: 500, color: 'text.secondary', mb: 1 }}
           >
             Loading State
           </Typography>

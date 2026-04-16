@@ -1,30 +1,31 @@
-"use client";
+'use client';
+
+import { BookIcon } from 'lucide-react';
 
 import {
-  Sources,
-  SourcesTrigger,
-  SourcesContent,
   Source,
-} from "@/registry/components/ai-sources/ai-sources";
-import { BookIcon } from "lucide-react";
+  Sources,
+  SourcesContent,
+  SourcesTrigger,
+} from '@/registry/components/ai-sources/ai-sources';
 
 export function Demo() {
   const sources = [
     {
-      title: "React Documentation",
-      href: "https://react.dev/learn",
+      title: 'React Documentation',
+      href: 'https://react.dev/learn',
     },
     {
-      title: "MDN Web Docs",
-      href: "https://developer.mozilla.org",
+      title: 'MDN Web Docs',
+      href: 'https://developer.mozilla.org',
     },
     {
-      title: "TypeScript Handbook",
-      href: "https://www.typescriptlang.org/docs/",
+      title: 'TypeScript Handbook',
+      href: 'https://www.typescriptlang.org/docs/',
     },
     {
-      title: "Next.js Documentation",
-      href: "https://nextjs.org/docs",
+      title: 'Next.js Documentation',
+      href: 'https://nextjs.org/docs',
     },
   ];
 

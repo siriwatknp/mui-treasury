@@ -1,65 +1,65 @@
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 
-import { styled } from "@mui/material/styles";
+import { styled } from '@mui/material/styles';
 
 import type {
   ForwardStyledProps,
   OverridableComponent,
-} from "../../types/shared/component";
-import { collapsibleClasses } from "./collapsible-classes";
+} from '../../types/shared/component';
+import { collapsibleClasses } from './collapsible-classes';
 
 export type CollapsibleContentProps = ForwardStyledProps<{
   component?: React.ElementType;
 }>;
 
-const StyledCollapsibleContent = styled("div", {
-  name: "CollapsibleContent",
-  slot: "root",
+const StyledCollapsibleContent = styled('div', {
+  name: 'CollapsibleContent',
+  slot: 'root',
 })({
-  "--_i-uncollapsed": "var(--__)", // default when not within EdgeSidebarContent
-  "--_i-collapsed": "var(--__,)", // value is ignored by default.
-  display: "grid",
-  "& > *": {
-    overflow: "hidden",
-    marginRight: "-0.25rem", // to prevent children focus visibile from being cut off by overflow:hidden, can be removed if the children have enough right padding.
-    paddingRight: "0.25rem",
+  '--_i-uncollapsed': 'var(--__)', // default when not within EdgeSidebarContent
+  '--_i-collapsed': 'var(--__,)', // value is ignored by default.
+  display: 'grid',
+  '& > *': {
+    overflow: 'hidden',
+    marginRight: '-0.25rem', // to prevent children focus visibile from being cut off by overflow:hidden, can be removed if the children have enough right padding.
+    paddingRight: '0.25rem',
   },
-  "label:has(:checked) + &, .SidebarMenuItem:has(:checked) + &": {
+  'label:has(:checked) + &, .SidebarMenuItem:has(:checked) + &': {
     transition:
-      "var(--tsn, grid-template-rows 0.4s, visibility 0.4s, opacity 0.6s)",
-    gridTemplateRows: "var(--_i-collapsed, 0fr) var(--_i-uncollapsed, 1fr)",
+      'var(--tsn, grid-template-rows 0.4s, visibility 0.4s, opacity 0.6s)',
+    gridTemplateRows: 'var(--_i-collapsed, 0fr) var(--_i-uncollapsed, 1fr)',
     [`& .SidebarMenuButton`]: {
-      visibility: "var(--_i-collapsed, hidden)" as never,
+      visibility: 'var(--_i-collapsed, hidden)' as never,
     },
   },
-  "label:not(:has(:checked)) + &, .SidebarMenuItem:not(:has(:checked)) + &": {
-    gridTemplateRows: "0fr",
-    visibility: "hidden",
+  'label:not(:has(:checked)) + &, .SidebarMenuItem:not(:has(:checked)) + &': {
+    gridTemplateRows: '0fr',
+    visibility: 'hidden',
     opacity: 0,
     transition:
-      "var(--tsn, grid-template-rows 0.4s, visibility 0.4s, opacity 0.2s)",
+      'var(--tsn, grid-template-rows 0.4s, visibility 0.4s, opacity 0.2s)',
     [`& .SidebarMenuAction`]: {
-      visibility: "hidden",
+      visibility: 'hidden',
     },
   },
-  ".EdgeSidebarContent &": {
-    "--_i-collapsed": "var(--_collapsed)",
-    "--_i-uncollapsed": "var(--_uncollapsed)",
+  '.EdgeSidebarContent &': {
+    '--_i-collapsed': 'var(--_collapsed)',
+    '--_i-uncollapsed': 'var(--_uncollapsed)',
   },
 });
 
 export const CollapsibleContent = React.forwardRef<
   HTMLDivElement,
-  CollapsibleContentProps & React.ComponentPropsWithoutRef<"div">
+  CollapsibleContentProps & React.ComponentPropsWithoutRef<'div'>
 >(function CollapsibleContent({ className, component, ...props }, ref) {
   return (
     <StyledCollapsibleContent
       ref={ref}
-      className={`${collapsibleClasses.content} ${className || ""}`}
+      className={`${collapsibleClasses.content} ${className || ''}`}
       as={component}
       {...props}
     />
   );
-}) as OverridableComponent<CollapsibleContentProps, "div">;
+}) as OverridableComponent<CollapsibleContentProps, 'div'>;

@@ -118,9 +118,9 @@ Legend:
 
 ```tsx
 const colors = [
-  { value: "silver", color: "#c0c0c0", label: "Silver" },
-  { value: "orange", color: "#ff8c42", label: "Orange" },
-  { value: "navy", color: "#3d4d6a", label: "Navy" },
+  { value: 'silver', color: '#c0c0c0', label: 'Silver' },
+  { value: 'orange', color: '#ff8c42', label: 'Orange' },
+  { value: 'navy', color: '#3d4d6a', label: 'Navy' },
 ];
 ```
 

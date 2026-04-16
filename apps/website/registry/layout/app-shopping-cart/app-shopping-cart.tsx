@@ -1,12 +1,12 @@
-"use client";
-import React from "react";
+'use client';
+import React from 'react';
 
-import CreditCard from "@mui/icons-material/CreditCard";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import CssBaseline from "@mui/material/CssBaseline";
-import Fab from "@mui/material/Fab";
-import { ThemeProvider, styled } from "@mui/material/styles";
+import CreditCard from '@mui/icons-material/CreditCard';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import CssBaseline from '@mui/material/CssBaseline';
+import Fab from '@mui/material/Fab';
+import { ThemeProvider, styled } from '@mui/material/styles';
 
 import {
   Content,
@@ -19,42 +19,42 @@ import {
   InsetContent,
   InsetSidebar,
   Root,
-} from "../layout-core";
+} from '../layout-core';
 import {
   DailyCart,
   DailyCheckout,
   DailyHeader,
   DailySummary,
   dailyShoppingTheme,
-} from "./components";
+} from './components';
 
 const StyledHeader = styled(Header)(() => ({
-  backgroundColor: "#ffffff",
+  backgroundColor: '#ffffff',
 }));
 
 const InsetAvoidingViewFooter = styled(InsetAvoidingView)(
   ({ theme: { breakpoints } }) => ({
-    border: "unset",
-    position: "relative",
-    backgroundColor: "#fff",
-    paddingTop: "1rem",
+    border: 'unset',
+    position: 'relative',
+    backgroundColor: '#fff',
+    paddingTop: '1rem',
 
-    "&:before": {
+    '&:before': {
       content: '" "',
-      position: "absolute",
-      width: "100%",
+      position: 'absolute',
+      width: '100%',
       height: 24,
       top: -1,
       left: 0,
-      transform: "translateY(-100%)",
-      background: "linear-gradient(to top, #ffffff, rgba(255,255,255,0))",
+      transform: 'translateY(-100%)',
+      background: 'linear-gradient(to top, #ffffff, rgba(255,255,255,0))',
     },
 
-    [breakpoints.only("sm")]: {
+    [breakpoints.only('sm')]: {
       paddingRight: 64,
     },
 
-    [breakpoints.up("md")]: {
+    [breakpoints.up('md')]: {
       paddingBottom: 40,
     },
   }),
@@ -68,23 +68,23 @@ export function LayoutV6AppShoppingCart() {
         <EdgeDrawerTriggerRight
           render={
             <Fab
-              color={"primary"}
+              color={'primary'}
               sx={(theme) => ({
-                position: "fixed",
+                position: 'fixed',
                 bottom: 16,
                 right: 16,
-                color: "#2E3B4D",
-                "& svg": {
+                color: '#2E3B4D',
+                '& svg': {
                   fontSize: 32,
-                  color: "#fff",
+                  color: '#fff',
                 },
                 zIndex: 1500,
-                transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
-                [theme.breakpoints.up("sm")]: {
+                transition: '0.3s cubic-bezier(.47,1.64,.41,.8)',
+                [theme.breakpoints.up('sm')]: {
                   bottom: 40,
                 },
-                [theme.breakpoints.up("lg")]: {
-                  transform: "scale(0)",
+                [theme.breakpoints.up('lg')]: {
+                  transform: 'scale(0)',
                 },
               })}
             >
@@ -92,20 +92,20 @@ export function LayoutV6AppShoppingCart() {
             </Fab>
           }
         />
-        <StyledHeader height="64px" sx={{ position: "relative" }}>
+        <StyledHeader height="64px" sx={{ position: 'relative' }}>
           <Container maxWidth="xl">
             <DailyHeader />
           </Container>
         </StyledHeader>
         <EdgeSidebarRight
           variant={{
-            xs: ["drawer", { width: "min(400px, 100vw)" }],
+            xs: ['drawer', { width: 'min(400px, 100vw)' }],
           }}
         >
           <EdgeSidebarContent
             sx={{
-              padding: "calc(var(--jun-ES-drawerOpen) * 0.5rem)",
-              bgcolor: "initial",
+              padding: 'calc(var(--jun-ES-drawerOpen) * 0.5rem)',
+              bgcolor: 'initial',
             }}
           >
             <DailyCheckout />
@@ -116,11 +116,11 @@ export function LayoutV6AppShoppingCart() {
             <DailyCart />
             <InsetSidebar
               position="absolute"
-              width={{ lg: "max(25cqw, 360px)" }}
+              width={{ lg: 'max(25cqw, 360px)' }}
               sx={{
-                "& > div": {
-                  border: "none",
-                  py: "1rem",
+                '& > div': {
+                  border: 'none',
+                  py: '1rem',
                 },
               }}
             >

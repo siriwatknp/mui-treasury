@@ -1,10 +1,10 @@
-import * as fs from "fs";
-import * as path from "path";
+import * as fs from 'fs';
+import * as path from 'path';
 
-import type { FileInfo } from "./types";
+import type { FileInfo } from './types';
 
 export function scanRegistryFiles(dir: string | null = null): string[] {
-  const registryPath = dir || path.join(process.cwd(), "registry");
+  const registryPath = dir || path.join(process.cwd(), 'registry');
   const files: string[] = [];
 
   function scanRecursive(currentPath: string): void {
@@ -18,7 +18,7 @@ export function scanRegistryFiles(dir: string | null = null): string[] {
           scanRecursive(fullPath);
         } else if (
           item.isFile() &&
-          (item.name.endsWith(".ts") || item.name.endsWith(".tsx"))
+          (item.name.endsWith('.ts') || item.name.endsWith('.tsx'))
         ) {
           files.push(fullPath);
         }
@@ -43,10 +43,10 @@ export function findAllRelatedFiles(
   itemPath: string,
   itemName: string,
 ): FileInfo[] {
-  const registryPath = path.join(process.cwd(), "registry");
+  const registryPath = path.join(process.cwd(), 'registry');
 
   // For .demo.tsx files, return only the single file
-  if (path.basename(itemPath).endsWith(".demo.tsx")) {
+  if (path.basename(itemPath).endsWith('.demo.tsx')) {
     const relativePath = path.relative(registryPath, itemPath);
     return [{ path: itemPath, relativePath, name: itemName }];
   }
@@ -65,8 +65,8 @@ export function findAllRelatedFiles(
           scanDirectory(fullPath);
         } else if (
           item.isFile() &&
-          (item.name.endsWith(".ts") || item.name.endsWith(".tsx")) &&
-          !item.name.endsWith(".demo.tsx")
+          (item.name.endsWith('.ts') || item.name.endsWith('.tsx')) &&
+          !item.name.endsWith('.demo.tsx')
         ) {
           const relativePath = path.relative(registryPath, fullPath);
           allFiles.push({
@@ -90,7 +90,7 @@ export function findAllRelatedFiles(
 }
 
 export function findMatchingFiles(name: string): FileInfo[] {
-  const registryPath = path.join(process.cwd(), "registry");
+  const registryPath = path.join(process.cwd(), 'registry');
   const matches: FileInfo[] = [];
 
   // First, look for .meta.json files
@@ -142,7 +142,7 @@ export function findMatchingFiles(name: string): FileInfo[] {
       // Also check for index files in a directory matching the name
       if (
         fileName === name ||
-        (fileName === "index" &&
+        (fileName === 'index' &&
           pathSegments.length >= 2 &&
           pathSegments[pathSegments.length - 2] === name)
       ) {
@@ -159,7 +159,7 @@ export function findMatchingFiles(name: string): FileInfo[] {
 }
 
 export function getAllRegistryItems(): FileInfo[] {
-  const registryPath = path.join(process.cwd(), "registry");
+  const registryPath = path.join(process.cwd(), 'registry');
   const registryItems = new Map<string, FileInfo>();
 
   // First, scan for TypeScript files
@@ -185,7 +185,7 @@ export function getAllRegistryItems(): FileInfo[] {
 
     // Skip sub-files within registry items
     // Only process files that match the registry item name
-    if (fileName !== registryItemName && fileName !== "index") {
+    if (fileName !== registryItemName && fileName !== 'index') {
       continue;
     }
 
@@ -242,13 +242,13 @@ export function getAllRegistryItems(): FileInfo[] {
         const fullPath = path.join(currentPath, item.name);
 
         if (item.isDirectory()) {
-          if (item.name === "demos") {
+          if (item.name === 'demos') {
             const demoEntries = fs.readdirSync(fullPath, {
               withFileTypes: true,
             });
             for (const demo of demoEntries) {
-              if (demo.isFile() && demo.name.endsWith(".demo.tsx")) {
-                const demoName = demo.name.replace(".demo.tsx", "");
+              if (demo.isFile() && demo.name.endsWith('.demo.tsx')) {
+                const demoName = demo.name.replace('.demo.tsx', '');
                 if (!registryItems.has(demoName)) {
                   const demoFullPath = path.join(fullPath, demo.name);
                   registryItems.set(demoName, {

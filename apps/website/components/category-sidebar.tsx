@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from 'react';
 
-import { ChevronDown } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { ChevronDown } from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-import { RegistryItem } from "@/lib/registry";
-import { orderItems, orderSubcategories } from "@/lib/registry-order";
+import { RegistryItem } from '@/lib/registry';
+import { orderItems, orderSubcategories } from '@/lib/registry-order';
 import {
   CollapsibleContent,
   CollapsibleIcon,
   CollapsibleTrigger,
-} from "@/registry/components/collapsible";
+} from '@/registry/components/collapsible';
 import {
   SidebarContainer,
   SidebarGroup,
@@ -21,7 +21,7 @@ import {
   SidebarMenuItem,
   SidebarMenuList,
   SidebarText,
-} from "@/registry/components/sidebar";
+} from '@/registry/components/sidebar';
 
 interface CategorySidebarProps {
   allCategoryItems: RegistryItem[];
@@ -34,11 +34,11 @@ export function CategorySidebar({
   categoryName,
 }: React.PropsWithChildren<CategorySidebarProps>) {
   const pathname = usePathname();
-  const [activeItem, setActiveItem] = useState<string>("");
+  const [activeItem, setActiveItem] = useState<string>('');
   const navRef = useRef<HTMLDivElement>(null);
 
   const currentSubcategory = React.useMemo(() => {
-    const parts = pathname.split("/").filter(Boolean);
+    const parts = pathname.split('/').filter(Boolean);
     if (parts.length >= 2) {
       const potentialSubcat = parts[1];
       const hasSubcategory = allCategoryItems.some(
@@ -90,7 +90,7 @@ export function CategorySidebar({
             }
           },
           {
-            rootMargin: "-80px 0px -70% 0px",
+            rootMargin: '-80px 0px -70% 0px',
           },
         );
         observer.observe(element);
@@ -110,14 +110,14 @@ export function CategorySidebar({
       `a[href$="#${activeItem}"]`,
     );
     if (activeLink) {
-      activeLink.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      activeLink.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }, [activeItem]);
 
   return (
     <SidebarContainer ref={navRef} component="nav" className="hide-scrollbar">
       {groups.size > 0 && (
-        <SidebarGroup sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <SidebarGroup sx={{ borderBottom: 1, borderColor: 'divider' }}>
           {orderSubcategories(Array.from(groups.keys()), categoryName).map(
             (subcategory) => {
               const items = groups.get(subcategory)!;
@@ -126,9 +126,9 @@ export function CategorySidebar({
                 `${categoryName}/${subcategory}`,
               );
               const label = subcategory
-                .split("-")
+                .split('-')
                 .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                .join(" ");
+                .join(' ');
               const isCurrentSubcategory = currentSubcategory === subcategory;
 
               return (
@@ -168,10 +168,10 @@ export function CategorySidebar({
                             >
                               <SidebarText>
                                 {item.title
-                                  .replace(/^Ai\s/, "AI ")
+                                  .replace(/^Ai\s/, 'AI ')
                                   .replace(
-                                    new RegExp(`^${label}\\s+`, "i"),
-                                    "",
+                                    new RegExp(`^${label}\\s+`, 'i'),
+                                    '',
                                   )}
                               </SidebarText>
                             </SidebarMenuButton>
@@ -196,7 +196,7 @@ export function CategorySidebar({
                 href={`/${categoryName}#${item.name}`}
                 active={activeItem === item.name}
               >
-                <SidebarText>{item.title.replace(/^Ai\s/, "AI ")}</SidebarText>
+                <SidebarText>{item.title.replace(/^Ai\s/, 'AI ')}</SidebarText>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}

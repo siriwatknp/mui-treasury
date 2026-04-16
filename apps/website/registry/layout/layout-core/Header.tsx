@@ -1,11 +1,13 @@
-"use client";
-import React, { useMemo } from "react";
-import { Breakpoint } from "@mui/material/styles";
-import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
-import { styled } from "@mui/material/styles";
-import { layoutClasses } from "./layoutClasses";
+'use client';
+import React, { useMemo } from 'react';
 
-type ClipSide = "left" | "right" | boolean;
+import { Breakpoint } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { unstable_memoTheme as memoTheme } from '@mui/material/utils';
+
+import { layoutClasses } from './layoutClasses';
+
+type ClipSide = 'left' | 'right' | boolean;
 
 interface HeaderProps {
   height?: string | Partial<Record<Breakpoint, string>>;
@@ -34,45 +36,45 @@ const CLIP_STYLES = {
   left: {
     gridTemplateAreas: CLIP_LEFT,
     [`& .${layoutClasses.EdgeSidebar}`]: {
-      "--jun-H-clip-h": "var(--jun-H-h)",
+      '--jun-H-clip-h': 'var(--jun-H-h)',
     },
   },
   right: {
     gridTemplateAreas: CLIP_RIGHT,
     [`& .${layoutClasses.EdgeSidebarRight}`]: {
-      "--jun-H-clip-h": "var(--jun-H-h)",
+      '--jun-H-clip-h': 'var(--jun-H-h)',
     },
   },
   both: {
     gridTemplateAreas: CLIP_BOTH,
-    "--jun-H-clip-h": "var(--jun-H-h)",
+    '--jun-H-clip-h': 'var(--jun-H-h)',
   },
 } as const;
 
-const StyledHeader = styled("header", {
-  name: "LayoutHeader",
-  slot: "root",
+const StyledHeader = styled('header', {
+  name: 'LayoutHeader',
+  slot: 'root',
 })<{
   ownerState: HeaderProps;
 }>(
   memoTheme(({ theme }) => ({
     gridArea: layoutClasses.Header,
-    alignContent: "center",
-    display: "flex",
-    alignItems: "center",
-    zIndex: "1", // to stay on top of the Content, e.g. InsetSidebar
-    top: "0", // for position sticky to work
-    position: "sticky",
-    background: "var(--Header-background)",
-    borderBottom: "var(--Header-underline)",
-    height: "var(--jun-H-h)",
+    alignContent: 'center',
+    display: 'flex',
+    alignItems: 'center',
+    zIndex: '1', // to stay on top of the Content, e.g. InsetSidebar
+    top: '0', // for position sticky to work
+    position: 'sticky',
+    background: 'var(--Header-background)',
+    borderBottom: 'var(--Header-underline)',
+    height: 'var(--jun-H-h)',
     variants: [
       {
         props: ({ height }: HeaderProps) => !!height,
         style: ({ height }: Required<HeaderProps>) =>
           theme.unstable_sx({
             [`.${layoutClasses.Root}:has(&)`]: {
-              "--jun-H-h": height,
+              '--jun-H-h': height,
             },
           }),
       },
@@ -80,7 +82,7 @@ const StyledHeader = styled("header", {
         props: ({ clip }: HeaderProps) => !!clip,
         style: ({ clip }: Required<HeaderProps>) => {
           const normalized =
-            typeof clip === "string" || typeof clip === "boolean"
+            typeof clip === 'string' || typeof clip === 'boolean'
               ? { xs: clip }
               : clip;
           const rootStyles: Record<string, unknown> = {};
@@ -93,14 +95,14 @@ const StyledHeader = styled("header", {
             .forEach((bp) => {
               const side = normalized[bp];
               if (side) {
-                if (bp === "xs") {
+                if (bp === 'xs') {
                   Object.assign(
                     rootStyles,
-                    CLIP_STYLES[side === true ? "both" : side],
+                    CLIP_STYLES[side === true ? 'both' : side],
                   );
                 } else {
                   rootStyles[theme.breakpoints.up(bp)] =
-                    CLIP_STYLES[side === true ? "both" : side];
+                    CLIP_STYLES[side === true ? 'both' : side];
                 }
               }
             });
@@ -117,7 +119,7 @@ const StyledHeader = styled("header", {
 
 const Header = React.forwardRef<
   HTMLElement,
-  Omit<React.ComponentPropsWithoutRef<typeof StyledHeader>, "ownerState"> &
+  Omit<React.ComponentPropsWithoutRef<typeof StyledHeader>, 'ownerState'> &
     HeaderProps
 >(function Header({ className, height, clip, ...props }, ref) {
   const ownerState = useMemo(
@@ -130,7 +132,7 @@ const Header = React.forwardRef<
   return (
     <StyledHeader
       ref={ref}
-      className={`${layoutClasses.Header} ${className || ""}`}
+      className={`${layoutClasses.Header} ${className || ''}`}
       ownerState={ownerState}
       {...props}
     />

@@ -1,8 +1,9 @@
-"use client";
+'use client';
 
-import { useRouter, useSearchParams } from "next/navigation";
-import { cn } from "@/lib/utils";
-import { Check } from "lucide-react";
+import { Check } from 'lucide-react';
+import { useRouter, useSearchParams } from 'next/navigation';
+
+import { cn } from '@/lib/utils';
 
 interface TagFilterProps {
   availableTags: string[];
@@ -26,13 +27,13 @@ export default function TagFilter({
     const params = new URLSearchParams(searchParams);
 
     if (newSelectedTags.length > 0) {
-      params.set("tags", newSelectedTags.join(","));
+      params.set('tags', newSelectedTags.join(','));
     } else {
-      params.delete("tags");
+      params.delete('tags');
     }
 
     const search = params.toString();
-    router.push(`/${category}${search ? `?${search}` : ""}`);
+    router.push(`/${category}${search ? `?${search}` : ''}`);
   };
 
   const clearAllTags = () => {
@@ -53,10 +54,10 @@ export default function TagFilter({
               key={tag}
               onClick={() => toggleTag(tag)}
               className={cn(
-                "flex items-center gap-2 px-4 py-2 rounded-full border-1 text-sm font-medium transition-all duration-200 capitalize",
+                'flex items-center gap-2 px-4 py-2 rounded-full border-1 text-sm font-medium transition-all duration-200 capitalize',
                 isSelected
-                  ? "border-black bg-black text-white"
-                  : "border-gray-300 bg-white text-gray-700 hover:border-gray-400"
+                  ? 'border-black bg-black text-white'
+                  : 'border-gray-300 bg-white text-gray-700 hover:border-gray-400',
               )}
             >
               {isSelected && <Check className="w-4 h-4" />}

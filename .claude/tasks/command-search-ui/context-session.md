@@ -3,31 +3,36 @@
 ## Visual Design Analysis
 
 ### Container Structure
+
 The command search UI is a modal/dialog component with a light background and subtle shadow, containing:
+
 1. Search input section with keyboard shortcut indicator
-2. Filter chips row  
+2. Filter chips row
 3. Recent meetings section with user cards
 4. Quick actions section with icon-based menu items
 5. Navigation helper text at bottom
 
 ### Section 1: Search Input
+
 - **Layout**: Full-width search field with icon and keyboard shortcut
 - **Components**: TextField with search icon, keyboard shortcut chip
 - **Theme**: Standard input with placeholder text, right-aligned shortcut indicator
 
-### Section 2: Filter Chips  
+### Section 2: Filter Chips
+
 - **Layout**: Horizontal row of filter options
 - **Components**: Chip components with "All" selected (primary color)
 - **Categories**: All, Training, Interview, Design task, Review, Onboarding
 - **Theme**: Filled chips for selected state, outlined for unselected
 
 ### Section 3: Recent Meetings
+
 - **Layout**: Horizontal scroll carousel of meeting cards
 - **Components**: Card with Avatar, Typography for name/time, Button for detail
 - **User Cards Structure**:
   ```
   ┌─────────────┐
-  │   [Avatar]  │ 
+  │   [Avatar]  │
   │  Name Text  │
   │ Time - Dur. │
   │             │
@@ -37,12 +42,14 @@ The command search UI is a modal/dialog component with a light background and su
 - **Theme**: Cards with subtle borders, avatars with status indicators
 
 ### Section 4: Quick Actions
+
 - **Layout**: Vertical list of action items
 - **Components**: List with ListItem, ListItemIcon, ListItemText
 - **Actions**: Dashboard, Team, Payroll pages; Create position, View attendance, Schedule meeting
 - **Theme**: Icon + text pattern, hover states for interaction
 
 ### Section 5: Navigation Helper
+
 - **Layout**: Bottom footer with navigation instructions
 - **Components**: Typography with muted text
 - **Theme**: Secondary text color, smaller font size
@@ -50,6 +57,7 @@ The command search UI is a modal/dialog component with a light background and su
 ## Accessibility Requirements
 
 ### Keyboard Navigation
+
 - Search field should auto-focus on dialog open
 - Tab navigation through all interactive elements
 - Arrow keys for navigating filter chips and action items
@@ -57,6 +65,7 @@ The command search UI is a modal/dialog component with a light background and su
 - Enter key to select highlighted item
 
 ### Screen Reader Support
+
 - Dialog should have proper role="dialog" and aria-label
 - Search field needs aria-label="Search meetings, people, or commands"
 - Filter chips need aria-pressed for selected state
@@ -64,12 +73,14 @@ The command search UI is a modal/dialog component with a light background and su
 - Quick actions list needs proper list semantics
 
 ### Focus Management
+
 - Focus trap within dialog when open
 - Clear focus indicators on all interactive elements
 - Return focus to trigger element on close
 - Visual focus ring matching theme
 
 ### Color Contrast
+
 - Ensure all text meets WCAG AA standards
 - Status indicators on avatars need sufficient contrast
 - Selected chip state must be clearly distinguishable
@@ -109,6 +120,7 @@ The command search UI is a modal/dialog component with a light background and su
 ## Implementation Notes
 
 ### Implementation Summary
+
 - Built command search UI dialog component with Material UI
 - Implemented search field with icon and keyboard shortcut indicator (⌘K)
 - Added filter chips with selected state styling (All selected by default)

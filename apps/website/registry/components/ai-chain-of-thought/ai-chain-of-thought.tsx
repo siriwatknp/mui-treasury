@@ -1,17 +1,18 @@
-"use client";
+'use client';
 
-import Box from "@mui/material/Box";
-import Chip from "@mui/material/Chip";
-import Collapse from "@mui/material/Collapse";
-import Typography from "@mui/material/Typography";
+import type { ComponentProps } from 'react';
+import { createContext, memo, useContext, useState } from 'react';
+
+import Box from '@mui/material/Box';
+import Chip from '@mui/material/Chip';
+import Collapse from '@mui/material/Collapse';
+import Typography from '@mui/material/Typography';
 import {
   BrainIcon,
   ChevronDownIcon,
   DotIcon,
   type LucideIcon,
-} from "lucide-react";
-import type { ComponentProps } from "react";
-import { createContext, memo, useContext, useState } from "react";
+} from 'lucide-react';
 
 type ChainOfThoughtContextValue = {
   isOpen: boolean;
@@ -26,7 +27,7 @@ const useChainOfThought = () => {
   const context = useContext(ChainOfThoughtContext);
   if (!context) {
     throw new Error(
-      "ChainOfThought components must be used within ChainOfThought",
+      'ChainOfThought components must be used within ChainOfThought',
     );
   }
   return context;
@@ -60,9 +61,9 @@ export const ChainOfThought = memo(
       >
         <Box
           sx={{
-            maxWidth: "65ch",
-            display: "flex",
-            flexDirection: "column",
+            maxWidth: '65ch',
+            display: 'flex',
+            flexDirection: 'column',
             gap: 2,
             ...sx,
           }}
@@ -85,30 +86,30 @@ export const ChainOfThoughtHeader = memo(
       <Box
         onClick={() => setIsOpen(!isOpen)}
         sx={{
-          display: "flex",
-          width: "100%",
-          alignItems: "center",
+          display: 'flex',
+          width: '100%',
+          alignItems: 'center',
           gap: 1,
-          color: "text.secondary",
-          fontSize: "0.875rem",
-          transition: "color 0.2s",
-          cursor: "pointer",
-          "&:hover": {
-            color: "text.primary",
+          color: 'text.secondary',
+          fontSize: '0.875rem',
+          transition: 'color 0.2s',
+          cursor: 'pointer',
+          '&:hover': {
+            color: 'text.primary',
           },
           ...sx,
         }}
         {...props}
       >
         <BrainIcon className="size-4" />
-        <Box sx={{ flex: 1, textAlign: "left" }}>
-          {children ?? "Chain of Thought"}
+        <Box sx={{ flex: 1, textAlign: 'left' }}>
+          {children ?? 'Chain of Thought'}
         </Box>
         <ChevronDownIcon
           className="size-4"
           style={{
-            transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-            transition: "transform 0.2s",
+            transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+            transition: 'transform 0.2s',
           }}
         />
       </Box>
@@ -120,7 +121,7 @@ export type ChainOfThoughtStepProps = ComponentProps<typeof Box> & {
   icon?: LucideIcon;
   label: string;
   description?: string;
-  status?: "complete" | "active" | "pending";
+  status?: 'complete' | 'active' | 'pending';
 };
 
 export const ChainOfThoughtStep = memo(
@@ -128,48 +129,48 @@ export const ChainOfThoughtStep = memo(
     icon: Icon = DotIcon,
     label,
     description,
-    status = "complete",
+    status = 'complete',
     children,
     sx,
     ...props
   }: ChainOfThoughtStepProps) => {
     const statusColors = {
-      complete: "text.secondary",
-      active: "text.primary",
-      pending: "text.disabled",
+      complete: 'text.secondary',
+      active: 'text.primary',
+      pending: 'text.disabled',
     };
 
     return (
       <Box
         sx={{
-          display: "flex",
+          display: 'flex',
           gap: 1,
-          fontSize: "0.875rem",
+          fontSize: '0.875rem',
           color: statusColors[status],
           ...sx,
         }}
         {...props}
       >
-        <Box sx={{ position: "relative", mt: 0.25 }}>
+        <Box sx={{ position: 'relative', mt: 0.25 }}>
           <Icon className="size-4" />
           <Box
             sx={{
-              position: "absolute",
-              top: "1.5rem",
+              position: 'absolute',
+              top: '1.5rem',
               bottom: 0,
-              left: "50%",
-              width: "1px",
-              bgcolor: "divider",
-              transform: "translateX(-50%)",
+              left: '50%',
+              width: '1px',
+              bgcolor: 'divider',
+              transform: 'translateX(-50%)',
             }}
           />
         </Box>
-        <Box sx={{ flex: 1, display: "flex", flexDirection: "column", gap: 1 }}>
+        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 1 }}>
           <Typography variant="body2">{label}</Typography>
           {description && (
             <Typography
               variant="caption"
-              sx={{ color: "text.secondary", display: "block" }}
+              sx={{ color: 'text.secondary', display: 'block' }}
             >
               {description}
             </Typography>
@@ -187,10 +188,10 @@ export const ChainOfThoughtSearchResults = memo(
   ({ sx, ...props }: ChainOfThoughtSearchResultsProps) => (
     <Box
       sx={{
-        display: "flex",
-        alignItems: "center",
+        display: 'flex',
+        alignItems: 'center',
         gap: 1,
-        flexWrap: "wrap",
+        flexWrap: 'wrap',
         ...sx,
       }}
       {...props}
@@ -207,7 +208,7 @@ export const ChainOfThoughtSearchResult = memo(
       color="secondary"
       sx={{
         height: 24,
-        fontSize: "0.75rem",
+        fontSize: '0.75rem',
         fontWeight: 400,
         ...sx,
       }}
@@ -227,8 +228,8 @@ export const ChainOfThoughtContent = memo(
         <Box
           sx={{
             mt: 1,
-            display: "flex",
-            flexDirection: "column",
+            display: 'flex',
+            flexDirection: 'column',
             gap: 1.5,
             ...sx,
           }}
@@ -250,8 +251,8 @@ export const ChainOfThoughtImage = memo(
     <Box
       sx={{
         mt: 1,
-        display: "flex",
-        flexDirection: "column",
+        display: 'flex',
+        flexDirection: 'column',
         gap: 1,
         ...sx,
       }}
@@ -259,21 +260,21 @@ export const ChainOfThoughtImage = memo(
     >
       <Box
         sx={{
-          position: "relative",
-          display: "flex",
-          maxHeight: "22rem",
-          alignItems: "center",
-          justifyContent: "center",
-          overflow: "hidden",
+          position: 'relative',
+          display: 'flex',
+          maxHeight: '22rem',
+          alignItems: 'center',
+          justifyContent: 'center',
+          overflow: 'hidden',
           borderRadius: 2,
-          bgcolor: "action.hover",
+          bgcolor: 'action.hover',
           p: 1.5,
         }}
       >
         {children}
       </Box>
       {caption && (
-        <Typography variant="caption" sx={{ color: "text.secondary" }}>
+        <Typography variant="caption" sx={{ color: 'text.secondary' }}>
           {caption}
         </Typography>
       )}
@@ -281,10 +282,10 @@ export const ChainOfThoughtImage = memo(
   ),
 );
 
-ChainOfThought.displayName = "ChainOfThought";
-ChainOfThoughtHeader.displayName = "ChainOfThoughtHeader";
-ChainOfThoughtStep.displayName = "ChainOfThoughtStep";
-ChainOfThoughtSearchResults.displayName = "ChainOfThoughtSearchResults";
-ChainOfThoughtSearchResult.displayName = "ChainOfThoughtSearchResult";
-ChainOfThoughtContent.displayName = "ChainOfThoughtContent";
-ChainOfThoughtImage.displayName = "ChainOfThoughtImage";
+ChainOfThought.displayName = 'ChainOfThought';
+ChainOfThoughtHeader.displayName = 'ChainOfThoughtHeader';
+ChainOfThoughtStep.displayName = 'ChainOfThoughtStep';
+ChainOfThoughtSearchResults.displayName = 'ChainOfThoughtSearchResults';
+ChainOfThoughtSearchResult.displayName = 'ChainOfThoughtSearchResult';
+ChainOfThoughtContent.displayName = 'ChainOfThoughtContent';
+ChainOfThoughtImage.displayName = 'ChainOfThoughtImage';

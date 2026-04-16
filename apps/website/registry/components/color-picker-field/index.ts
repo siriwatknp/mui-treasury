@@ -1,1 +1,1 @@
-export * from "./color-picker-field";
+export * from './color-picker-field';

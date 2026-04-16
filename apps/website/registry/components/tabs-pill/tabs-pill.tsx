@@ -1,8 +1,9 @@
-"use client";
+'use client';
 
-import React from "react";
-import Tab, { tabClasses } from "@mui/material/Tab";
-import Tabs, { tabsClasses } from "@mui/material/Tabs";
+import React from 'react';
+
+import Tab, { tabClasses } from '@mui/material/Tab';
+import Tabs, { tabsClasses } from '@mui/material/Tabs';
 
 export function TabsPill() {
   const [tabIndex, setTabIndex] = React.useState(0);
@@ -11,23 +12,23 @@ export function TabsPill() {
       value={tabIndex}
       onChange={(e, index) => setTabIndex(index)}
       sx={(theme) => ({
-        width: "100%",
+        width: '100%',
         [`& .${tabsClasses.indicator}`]: {
-          display: "none",
+          display: 'none',
         },
         [`& .${tabClasses.root}`]: {
-          position: "relative",
+          position: 'relative',
           borderRadius: 99,
-          textAlign: "center",
-          transition: "all .5s",
+          textAlign: 'center',
+          transition: 'all .5s',
           px: 1.875,
           py: 1.25,
           color: (theme.vars || theme).palette.text.secondary,
-          height: "auto",
+          height: 'auto',
           my: 1.25,
-          fontSize: "0.75rem",
+          fontSize: '0.75rem',
           fontWeight: 500,
-          [theme.breakpoints.up("md")]: {
+          [theme.breakpoints.up('md')]: {
             minWidth: 120,
           },
           [`&.${tabClasses.selected}`]: {
@@ -35,8 +36,8 @@ export function TabsPill() {
             bgcolor: (theme.vars || theme).palette.info.main,
             boxShadow: (theme.vars || theme).shadows[8],
           },
-          "@media (hover: hover)": {
-            "&:hover": {
+          '@media (hover: hover)': {
+            '&:hover': {
               color: (theme.vars || theme).palette.common.white,
               bgcolor: (theme.vars || theme).palette.info.main,
               boxShadow: (theme.vars || theme).shadows[8],
@@ -45,10 +46,10 @@ export function TabsPill() {
         },
       })}
     >
-      <Tab disableRipple label={"Data"} />
-      <Tab disableRipple label={"Rule"} />
-      <Tab disableRipple label={"Indexes"} />
-      <Tab disableRipple label={"Usage"} />
+      <Tab disableRipple label={'Data'} />
+      <Tab disableRipple label={'Rule'} />
+      <Tab disableRipple label={'Indexes'} />
+      <Tab disableRipple label={'Usage'} />
     </Tabs>
   );
 }

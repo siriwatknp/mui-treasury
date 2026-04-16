@@ -1,5 +1,5 @@
-"use client";
-import { createTheme } from "@mui/material/styles";
+'use client';
+import { createTheme } from '@mui/material/styles';
 
 export default createTheme({
   typography: {
@@ -31,10 +31,10 @@ export default createTheme({
   },
   palette: {
     primary: {
-      main: "#3E89EB",
+      main: '#3E89EB',
     },
     background: {
-      default: "#ffffff",
+      default: '#ffffff',
     },
   },
 });

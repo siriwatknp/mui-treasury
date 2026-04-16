@@ -8,7 +8,7 @@ import {
   PopupMenuItem,
   PopupMenuLink,
   PopupMenuList,
-} from "@/mui-treasury/components/sidebar/popup-menu";
+} from '@/mui-treasury/components/sidebar/popup-menu';
 
 <SidebarMenuList>
   <PopupMenuList>

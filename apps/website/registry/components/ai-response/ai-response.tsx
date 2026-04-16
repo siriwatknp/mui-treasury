@@ -1,9 +1,10 @@
-"use client";
+'use client';
 
-import Box from "@mui/material/Box";
-import type { SxProps, Theme } from "@mui/material/styles";
-import { type ComponentProps, memo } from "react";
-import { Streamdown } from "streamdown";
+import { type ComponentProps, memo } from 'react';
+
+import Box from '@mui/material/Box';
+import type { SxProps, Theme } from '@mui/material/styles';
+import { Streamdown } from 'streamdown';
 
 type ResponseProps = ComponentProps<typeof Streamdown> & {
   sx?: SxProps<Theme>;
@@ -13,12 +14,12 @@ export const Response = memo(
   ({ sx, ...props }: ResponseProps) => (
     <Box
       sx={{
-        width: "100%",
-        height: "100%",
-        "& > *:first-child": {
+        width: '100%',
+        height: '100%',
+        '& > *:first-child': {
           mt: 0,
         },
-        "& > *:last-child": {
+        '& > *:last-child': {
           mb: 0,
         },
         '& [data-streamdown="ordered-list"], & [data-streamdown="unordered-list"]':
@@ -34,4 +35,4 @@ export const Response = memo(
   (prevProps, nextProps) => prevProps.children === nextProps.children,
 );
 
-Response.displayName = "Response";
+Response.displayName = 'Response';

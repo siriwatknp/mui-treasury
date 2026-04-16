@@ -13,11 +13,11 @@ import {
   InsetContent,
   InsetSidebar,
   Root,
-} from "@/mui-treasury/layout/layout-core";
+} from '@/mui-treasury/layout/layout-core';
 
 <Root standalone>
   <Header height="64px">
-    <Box sx={{ px: 2, display: "flex", alignItems: "center" }}>
+    <Box sx={{ px: 2, display: 'flex', alignItems: 'center' }}>
       <Typography variant="h6">Messenger</Typography>
     </Box>
   </Header>
@@ -26,7 +26,7 @@ import {
     id="chats-sidebar"
     permanentAutoCollapse="md"
     variant={{
-      xs: ["permanent", { width: "25cqw", collapsedWidth: "80px" }],
+      xs: ['permanent', { width: '25cqw', collapsedWidth: '80px' }],
     }}
   >
     <EdgeSidebarContent>…chat list…</EdgeSidebarContent>

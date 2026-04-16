@@ -1,14 +1,15 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import LinearProgress from "@mui/material/LinearProgress";
-import CircularProgress from "@mui/material/CircularProgress";
-import Typography from "@mui/material/Typography";
-import Stack from "@mui/material/Stack";
-import { SparkLineChart } from "@mui/x-charts/SparkLineChart";
+import * as React from 'react';
+
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CircularProgress from '@mui/material/CircularProgress';
+import LinearProgress from '@mui/material/LinearProgress';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import { SparkLineChart } from '@mui/x-charts/SparkLineChart';
 
 export function DataMetrics() {
   const storageUsed = 1.85;
@@ -26,7 +27,7 @@ export function DataMetrics() {
 
   return (
     <Box sx={{ p: 3 }}>
-      <Stack spacing={2.5} direction={{ xs: "column", md: "row" }}>
+      <Stack spacing={2.5} direction={{ xs: 'column', md: 'row' }}>
         {/* Storage Card */}
         <Card
           sx={(theme) => ({
@@ -37,13 +38,13 @@ export function DataMetrics() {
           })}
         >
           <CardContent sx={{ p: 2.5 }}>
-            <Typography variant="body2" sx={{ color: "text.secondary", mb: 1 }}>
+            <Typography variant="body2" sx={{ color: 'text.secondary', mb: 1 }}>
               Storage used
             </Typography>
             <Typography
               variant="h3"
               component="div"
-              sx={{ fontWeight: 700, mb: 1.5, fontSize: "1.75rem" }}
+              sx={{ fontWeight: 700, mb: 1.5, fontSize: '1.75rem' }}
             >
               {storageUsed}GB
             </Typography>
@@ -54,8 +55,8 @@ export function DataMetrics() {
                 sx={{
                   height: 6,
                   borderRadius: 1,
-                  bgcolor: "grey.200",
-                  "& .MuiLinearProgress-bar": {
+                  bgcolor: 'grey.200',
+                  '& .MuiLinearProgress-bar': {
                     borderRadius: 1,
                   },
                 }}
@@ -66,10 +67,10 @@ export function DataMetrics() {
               justifyContent="space-between"
               sx={{ mt: 1 }}
             >
-              <Typography variant="caption" sx={{ color: "text.secondary" }}>
+              <Typography variant="caption" sx={{ color: 'text.secondary' }}>
                 {storagePercentage.toFixed(1)}%
               </Typography>
-              <Typography variant="caption" sx={{ color: "text.secondary" }}>
+              <Typography variant="caption" sx={{ color: 'text.secondary' }}>
                 {storageUsed} of {storageTotal}GB
               </Typography>
             </Stack>
@@ -86,23 +87,23 @@ export function DataMetrics() {
           })}
         >
           <CardContent sx={{ p: 2.5 }}>
-            <Typography variant="body2" sx={{ color: "text.secondary", mb: 1 }}>
+            <Typography variant="body2" sx={{ color: 'text.secondary', mb: 1 }}>
               Acme Holding
             </Typography>
             <Stack
               direction="row"
               alignItems="baseline"
               spacing={2}
-              sx={{ mb: 2, whiteSpace: "nowrap" }}
+              sx={{ mb: 2, whiteSpace: 'nowrap' }}
             >
               <Typography
                 variant="h3"
                 component="div"
-                sx={{ fontWeight: 700, fontSize: "2rem" }}
+                sx={{ fontWeight: 700, fontSize: '2rem' }}
               >
                 ${revenueValue}K
               </Typography>
-              <Typography variant="body2" sx={{ color: "success.main" }}>
+              <Typography variant="body2" sx={{ color: 'success.main' }}>
                 +${revenueChange}K +{revenueChangePercent}%
               </Typography>
             </Stack>
@@ -113,8 +114,8 @@ export function DataMetrics() {
                 showTooltip
                 showHighlight
                 sx={{
-                  "& .MuiChartsAxis-root": {
-                    display: "none",
+                  '& .MuiChartsAxis-root': {
+                    display: 'none',
                   },
                 }}
               />
@@ -140,17 +141,17 @@ export function DataMetrics() {
               spacing={2}
             >
               <Stack spacing={0.25}>
-                <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                   Data Workspaces
                 </Typography>
-                <Typography variant="caption" sx={{ color: "text.secondary" }}>
+                <Typography variant="caption" sx={{ color: 'text.secondary' }}>
                   {workspacesUsed} of {workspacesTotal} used
                 </Typography>
               </Stack>
               <Box
                 sx={{
-                  position: "relative",
-                  display: "inline-flex",
+                  position: 'relative',
+                  display: 'inline-flex',
                 }}
               >
                 <CircularProgress
@@ -159,8 +160,8 @@ export function DataMetrics() {
                   size={100}
                   thickness={4}
                   sx={{
-                    color: "grey.200",
-                    position: "absolute",
+                    color: 'grey.200',
+                    position: 'absolute',
                   }}
                 />
                 <CircularProgress
@@ -169,9 +170,9 @@ export function DataMetrics() {
                   size={100}
                   thickness={4}
                   sx={{
-                    color: "primary.main",
-                    "& .MuiCircularProgress-circle": {
-                      strokeLinecap: "round",
+                    color: 'primary.main',
+                    '& .MuiCircularProgress-circle': {
+                      strokeLinecap: 'round',
                     },
                   }}
                 />
@@ -181,10 +182,10 @@ export function DataMetrics() {
                     left: 0,
                     bottom: 0,
                     right: 0,
-                    position: "absolute",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
+                    position: 'absolute',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}
                 >
                   <Typography
@@ -206,7 +207,7 @@ export function DataMetrics() {
         <Typography variant="h5" component="h2" sx={{ fontWeight: 600, mb: 1 }}>
           Data Bars, Spark Charts, and Progress Circles
         </Typography>
-        <Typography variant="body1" sx={{ color: "text.secondary" }}>
+        <Typography variant="body1" sx={{ color: 'text.secondary' }}>
           Micro visualizations to highlight even the smallest details better.
         </Typography>
       </Box>

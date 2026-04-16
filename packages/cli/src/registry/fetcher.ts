@@ -2,8 +2,8 @@ import {
   RegistryFetchError,
   RegistryNotFoundError,
   RegistryParseError,
-} from "@/registry/errors";
-import { registryItemSchema, type RegistryItem } from "@/registry/schema";
+} from '@/registry/errors';
+import { type RegistryItem, registryItemSchema } from '@/registry/schema';
 
 const cache = new Map<string, Promise<RegistryItem>>();
 

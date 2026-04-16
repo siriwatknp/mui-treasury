@@ -1,60 +1,60 @@
-"use client";
-import React, { useMemo } from "react";
+'use client';
+import React, { useMemo } from 'react';
 
-import { Breakpoint } from "@mui/material/styles";
-import { styled } from "@mui/material/styles";
-import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
+import { Breakpoint } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { unstable_memoTheme as memoTheme } from '@mui/material/utils';
 
 import type {
   DrawerConfig,
   EdgeSidebarVariant,
   EdgeSidebarVariantInput,
   PermanentConfig,
-} from "./SharedEdgeSidebar";
+} from './SharedEdgeSidebar';
 import {
   EdgeSidebarRoot,
   internalCollapseSidebar,
   internalToggleSidebar,
-} from "./SharedEdgeSidebar";
-import { layoutAttrs } from "./layoutAttrs";
-import { layoutClasses } from "./layoutClasses";
+} from './SharedEdgeSidebar';
+import { layoutAttrs } from './layoutAttrs';
+import { layoutClasses } from './layoutClasses';
 
 function applyDrawerStyles(params: DrawerConfig) {
-  const { width = "300px", showHeader, withoutOverlay } = params || {};
+  const { width = '300px', showHeader, withoutOverlay } = params || {};
   return {
-    "--jun-ES-drawerWidth": "0px",
+    '--jun-ES-drawerWidth': '0px',
     ...(showHeader && {
-      "--drawer-h": "calc(var(--jun-h) - var(--jun-H-h))",
-      "&::before": {
-        top: "var(--jun-H-h)",
+      '--drawer-h': 'calc(var(--jun-h) - var(--jun-H-h))',
+      '&::before': {
+        top: 'var(--jun-H-h)',
       },
     }),
     ...(withoutOverlay && {
-      "--drawer-h": "calc(var(--jun-h) - var(--jun-H-clip-h))",
-      "&::before": {
-        display: "none",
+      '--drawer-h': 'calc(var(--jun-h) - var(--jun-H-clip-h))',
+      '&::before': {
+        display: 'none',
       },
     }),
     [`.${layoutClasses.Root}:has(&)`]: {
-      "--jun-ES-variant": "var(--drawer)",
+      '--jun-ES-variant': 'var(--drawer)',
       [`.${layoutClasses.EdgeSidebarCollapser}`]: {
-        display: "none",
+        display: 'none',
       },
     },
     [`.${layoutClasses.Root}:has(&[${layoutAttrs.isDrawerOpen}])`]: {
       [`.${layoutClasses.EdgeDrawerTrigger} .${layoutClasses.EdgeDrawerClosedVisible}`]:
         {
-          display: "none",
+          display: 'none',
         },
     },
     [`.${layoutClasses.Root}:has(&:not([${layoutAttrs.isDrawerOpen}]))`]: {
       [`.${layoutClasses.EdgeDrawerTrigger} .${layoutClasses.EdgeDrawerOpenVisible}`]:
         {
-          display: "none",
+          display: 'none',
         },
     },
     [`&[${layoutAttrs.isDrawerOpen}], &[${layoutAttrs.isDrawerClosing}]`]: {
-      "--jun-ES-drawerWidth": width,
+      '--jun-ES-drawerWidth': width,
     },
   };
 }
@@ -62,11 +62,11 @@ function applyDrawerStyles(params: DrawerConfig) {
 function applyPermanentStyles(params: PermanentConfig) {
   const { width, collapsedWidth, visibility } = params || {};
   const defaultExpandConfig = {
-    delay: "0s",
-    shadow: "0 0 10px rgba(0,0,0,0.1)",
+    delay: '0s',
+    shadow: '0 0 10px rgba(0,0,0,0.1)',
   };
   let expandConfig: undefined | typeof defaultExpandConfig;
-  if ("hoverUncollapse" in params) {
+  if ('hoverUncollapse' in params) {
     if (params.hoverUncollapse === true) {
       expandConfig = defaultExpandConfig;
     } else {
@@ -74,74 +74,74 @@ function applyPermanentStyles(params: PermanentConfig) {
     }
   }
   return {
-    "--jun-EC-shadow":
-      "inset calc(-1 * var(--jun-ES-line-w)) 0px var(--jun-ES-line-color)",
-    "--jun-EC-width": "var(--_permanentWidth, 0px)",
-    "--_collapsed": "var(--collapsed)",
-    "--_uncollapsed": "var(--uncollapsed)",
+    '--jun-EC-shadow':
+      'inset calc(-1 * var(--jun-ES-line-w)) 0px var(--jun-ES-line-color)',
+    '--jun-EC-width': 'var(--_permanentWidth, 0px)',
+    '--_collapsed': 'var(--collapsed)',
+    '--_uncollapsed': 'var(--uncollapsed)',
     [`.${layoutClasses.Root}:has(&)`]: {
-      "--jun-ES-variant": "var(--permanent)",
+      '--jun-ES-variant': 'var(--permanent)',
       ...(width && {
-        "--jun-ES-permanentWidth": width,
+        '--jun-ES-permanentWidth': width,
       }),
       ...(collapsedWidth && {
-        "--jun-ES-collapsedWidth": collapsedWidth,
+        '--jun-ES-collapsedWidth': collapsedWidth,
         [`.${layoutClasses.EdgeSidebarCollapser}`]: {
-          display: "var(--display, inline-flex)",
-          "--_sidebarCollapsed": "var(--collapsed, 1)",
+          display: 'var(--display, inline-flex)',
+          '--_sidebarCollapsed': 'var(--collapsed, 1)',
         },
         [`.${layoutClasses.EdgeCollapsedVisible}`]: {
-          display: "var(--collapsed, inline-flex) var(--uncollapsed, none)",
+          display: 'var(--collapsed, inline-flex) var(--uncollapsed, none)',
         },
         [`.${layoutClasses.EdgeUncollapsedVisible}`]: {
-          display: "var(--collapsed, none) var(--uncollapsed, inline-flex)",
+          display: 'var(--collapsed, none) var(--uncollapsed, inline-flex)',
         },
       }),
       [`.${layoutClasses.EdgeDrawerTrigger}`]: {
-        display: "none",
+        display: 'none',
       },
     },
     ...(collapsedWidth && {
       /** Collapsible feature */
       [`.${layoutClasses.Root}:has(&[${layoutAttrs.isEdgeSidebarCollapsed}])`]:
         {
-          "--jun-ES-collapsible": "var(--collapsed)",
+          '--jun-ES-collapsible': 'var(--collapsed)',
         },
       [`.${layoutClasses.Root}:has(&[${layoutAttrs.isEdgeSidebarUncollapsed}])`]:
         {
-          "--jun-ES-collapsible": "var(--uncollapsed)",
+          '--jun-ES-collapsible': 'var(--uncollapsed)',
         },
     }),
-    ...(visibility === "hidden" && {
+    ...(visibility === 'hidden' && {
       [`.${layoutClasses.Root}:has(>&)`]: {
-        "--_permanentWidth": "0px",
+        '--_permanentWidth': '0px',
       },
       [`& .${layoutClasses.EdgeSidebarContent}`]: {
-        visibility: "hidden",
+        visibility: 'hidden',
       },
     }),
-    ...(visibility === "visible" && {
+    ...(visibility === 'visible' && {
       [`.${layoutClasses.Root}:has(>&)`]: {
-        "--_permanentWidth": `var(--uncollapsed, var(--jun-ES-permanentWidth))
+        '--_permanentWidth': `var(--uncollapsed, var(--jun-ES-permanentWidth))
                               var(--collapsed, var(--jun-ES-collapsedWidth, 0px))`,
       },
       [`& .${layoutClasses.EdgeSidebarContent}`]: {
         visibility:
-          "var(--_drawer, hidden) var(--_permanent, visible)" as never,
+          'var(--_drawer, hidden) var(--_permanent, visible)' as never,
       },
     }),
     ...(expandConfig && {
       [`&:has(.${layoutClasses.EdgeSidebarContent}:hover)`]: {
-        "--_collapsed": "var(--__,)", // workaround to use fallback, Emotion strips out spaces if the value is " ".
-        "--_uncollapsed": "var(--_)",
+        '--_collapsed': 'var(--__,)', // workaround to use fallback, Emotion strips out spaces if the value is " ".
+        '--_uncollapsed': 'var(--_)',
         [`& .${layoutClasses.SidebarRail}`]: {
-          display: "none",
+          display: 'none',
         },
       },
       [`& .${layoutClasses.EdgeSidebarContent}:hover`]: {
-        "--jun-EC-width": "var(--jun-ES-permanentWidth)",
-        "--jun-EC-delay": expandConfig.delay,
-        "--jun-EC-shadow": `var(--_permanent, var(--uncollapsed, inset calc(-1 * var(--jun-ES-line-w)) 0 var(--jun-ES-line-color)) var(--collapsed, ${expandConfig.shadow}, inset calc(-1 * var(--jun-ES-line-w)) 0 var(--jun-ES-line-color)))`,
+        '--jun-EC-width': 'var(--jun-ES-permanentWidth)',
+        '--jun-EC-delay': expandConfig.delay,
+        '--jun-EC-shadow': `var(--_permanent, var(--uncollapsed, inset calc(-1 * var(--jun-ES-line-w)) 0 var(--jun-ES-line-color)) var(--collapsed, ${expandConfig.shadow}, inset calc(-1 * var(--jun-ES-line-w)) 0 var(--jun-ES-line-color)))`,
       },
     }),
   };
@@ -185,41 +185,41 @@ interface EdgeSidebarProps {
 }
 
 const StyledEdgeSidebar = styled(EdgeSidebarRoot, {
-  name: "LayoutEdgeSidebar",
-  slot: "root",
+  name: 'LayoutEdgeSidebar',
+  slot: 'root',
 })<{
   ownerState: EdgeSidebarOwnerState;
 }>(
   memoTheme(({ theme }) => ({
     [`.${layoutClasses.Root}:has(&)`]: {
       /** Root default settings */
-      "--jun-ES-variant": "var(--permanent)",
-      "--jun-ES-permanentWidth": "256px",
-      "--jun-ES-collapsible": "var(--uncollapsed)",
-      "--jun-ES-collapsedWidth": "0px",
+      '--jun-ES-variant': 'var(--permanent)',
+      '--jun-ES-permanentWidth': '256px',
+      '--jun-ES-collapsible': 'var(--uncollapsed)',
+      '--jun-ES-collapsedWidth': '0px',
 
       /** DO NOT OVERRIDE, internal variables */
-      "--drawer": "var(--jun-ES-variant,)",
-      "--permanent": "var(--jun-ES-variant,)",
-      "--_permanentWidth": `var(--uncollapsed, var(--jun-ES-permanentWidth))
+      '--drawer': 'var(--jun-ES-variant,)',
+      '--permanent': 'var(--jun-ES-variant,)',
+      '--_permanentWidth': `var(--uncollapsed, var(--jun-ES-permanentWidth))
                             var(--collapsed, var(--jun-ES-collapsedWidth, 0px))`,
-      "--collapsed": "var(--jun-ES-collapsible,)",
-      "--uncollapsed": "var(--jun-ES-collapsible,)",
+      '--collapsed': 'var(--jun-ES-collapsible,)',
+      '--uncollapsed': 'var(--jun-ES-collapsible,)',
     },
     /** EdgeSidebar default settings */
-    "--jun-ES-anchor": "var(--anchorLeft)",
-    "--jun-EC-width": "var(--_permanentWidth, 0px)",
-    "--_drawer": "var(--drawer)",
-    "--_permanent": "var(--permanent)",
-    "--_collapsed": "var(--collapsed)",
-    "--_uncollapsed": "var(--uncollapsed)",
+    '--jun-ES-anchor': 'var(--anchorLeft)',
+    '--jun-EC-width': 'var(--_permanentWidth, 0px)',
+    '--_drawer': 'var(--drawer)',
+    '--_permanent': 'var(--permanent)',
+    '--_collapsed': 'var(--collapsed)',
+    '--_uncollapsed': 'var(--uncollapsed)',
     gridArea: layoutClasses.EdgeSidebar,
     width: `var(--drawer, 0)
               var(--permanent, var(--_permanentWidth))`,
-    borderColor: "var(--jun-ES-line-color)",
+    borderColor: 'var(--jun-ES-line-color)',
     [`&:not([${layoutAttrs.isDrawerOpen}], [${layoutAttrs.isDrawerClosing}])`]:
       {
-        overflow: "var(--drawer, hidden)",
+        overflow: 'var(--drawer, hidden)',
       },
     variants: [
       {
@@ -239,7 +239,7 @@ const StyledEdgeSidebar = styled(EdgeSidebarRoot, {
                   drawer: applyDrawerStyles,
                   permanent: applyPermanentStyles,
                 }[variantName](params as never);
-                if (breakpoint === "xs") {
+                if (breakpoint === 'xs') {
                   Object.assign(responsive, variantStyles);
                 } else {
                   responsive[theme.breakpoints.up(breakpoint)] = variantStyles;
@@ -257,20 +257,20 @@ const StyledEdgeSidebar = styled(EdgeSidebarRoot, {
         }: Required<EdgeSidebarOwnerState>) => ({
           [`.${layoutClasses.Root}:has(&) .${layoutClasses.EdgeSidebarCollapser}`]:
             {
-              "--_autoCollapse": "1",
+              '--_autoCollapse': '1',
             },
           [theme.breakpoints.down(permanentAutoCollapse)]: {
             [`.${layoutClasses.Root}:has(&)`]: {
-              "--jun-ES-collapsible": "var(--collapsed)",
+              '--jun-ES-collapsible': 'var(--collapsed)',
             },
           },
           [theme.breakpoints.up(permanentAutoCollapse)]: {
             [`.${layoutClasses.Root}:has(&)`]: {
-              "--jun-ES-collapsible": "var(--uncollapsed)",
+              '--jun-ES-collapsible': 'var(--uncollapsed)',
             },
             [`.${layoutClasses.Root}:has(&) .${layoutClasses.EdgeSidebarCollapser}`]:
               {
-                "--_in-autoCollapse": "1",
+                '--_in-autoCollapse': '1',
               },
           },
         }),
@@ -279,11 +279,11 @@ const StyledEdgeSidebar = styled(EdgeSidebarRoot, {
   })),
 );
 
-const defaultVariant: EdgeSidebarVariant = ["permanent", { width: "256px" }];
+const defaultVariant: EdgeSidebarVariant = ['permanent', { width: '256px' }];
 
 const EdgeSidebar = React.forwardRef<
   HTMLDivElement,
-  Omit<React.ComponentPropsWithoutRef<typeof StyledEdgeSidebar>, "ownerState"> &
+  Omit<React.ComponentPropsWithoutRef<typeof StyledEdgeSidebar>, 'ownerState'> &
     EdgeSidebarProps
 >(function EdgeSidebar(
   { className, variant = defaultVariant, permanentAutoCollapse, ...props },
@@ -301,14 +301,14 @@ const EdgeSidebar = React.forwardRef<
     [normalizedVariant, permanentAutoCollapse],
   );
   const hasWithoutOverlay = Object.values(normalizedVariant).some(
-    (v) => v?.[0] === "drawer" && (v[1] as DrawerConfig)?.withoutOverlay,
+    (v) => v?.[0] === 'drawer' && (v[1] as DrawerConfig)?.withoutOverlay,
   );
   return (
     <StyledEdgeSidebar
       ref={ref}
-      className={`${layoutClasses.EdgeSidebar} ${className || ""}`}
+      className={`${layoutClasses.EdgeSidebar} ${className || ''}`}
       ownerState={ownerState}
-      {...(hasWithoutOverlay && { "data-without-overlay": "" })}
+      {...(hasWithoutOverlay && { 'data-without-overlay': '' })}
       {...props}
     />
   );

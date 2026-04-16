@@ -1,20 +1,20 @@
-import React from "react";
+import React from 'react';
 
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
-import Content from "@/registry/layout/layout-core/Content";
-import EdgeSidebar from "@/registry/layout/layout-core/EdgeSidebar";
-import EdgeSidebarContent from "@/registry/layout/layout-core/EdgeSidebarContent";
-import Footer from "@/registry/layout/layout-core/Footer";
-import Header from "@/registry/layout/layout-core/Header";
-import Root from "@/registry/layout/layout-core/Root";
+import Content from '@/registry/layout/layout-core/Content';
+import EdgeSidebar from '@/registry/layout/layout-core/EdgeSidebar';
+import EdgeSidebarContent from '@/registry/layout/layout-core/EdgeSidebarContent';
+import Footer from '@/registry/layout/layout-core/Footer';
+import Header from '@/registry/layout/layout-core/Header';
+import Root from '@/registry/layout/layout-core/Root';
 
 export const meta = {
-  title: "Edge Sidebar Visibility",
+  title: 'Edge Sidebar Visibility',
   description:
-    "Hide the sidebar by default and show it at a specific breakpoint.",
-  previewMode: "iframe" as const,
+    'Hide the sidebar by default and show it at a specific breakpoint.',
+  previewMode: 'iframe' as const,
 };
 
 export function Demo() {
@@ -30,8 +30,8 @@ export function Demo() {
       <EdgeSidebar
         id="sidebar-visibility"
         variant={{
-          xs: ["permanent", { width: "256px", visibility: "hidden" }],
-          md: ["permanent", { width: "256px", visibility: "visible" }],
+          xs: ['permanent', { width: '256px', visibility: 'hidden' }],
+          md: ['permanent', { width: '256px', visibility: 'visible' }],
         }}
       >
         <EdgeSidebarContent>

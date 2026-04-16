@@ -1,5 +1,6 @@
-import type {} from "@mui/x-data-grid/themeAugmentation";
-import { ThemeComponents } from "../types";
+import type {} from '@mui/x-data-grid/themeAugmentation';
+
+import { ThemeComponents } from '../types';
 
 export const dataGridTheme: ThemeComponents = {
   MuiDataGrid: {
@@ -12,11 +13,11 @@ export const dataGridTheme: ThemeComponents = {
       cell: ({ theme }) => ({
         borderBottomColor: (theme.vars || theme).palette.divider,
         fontSize: theme.typography.body2.fontSize,
-        padding: "0 16px",
-        "&:focus": {
-          outline: "none",
+        padding: '0 16px',
+        '&:focus': {
+          outline: 'none',
         },
-        "&:focus-within": {
+        '&:focus-within': {
           outline: `2px solid ${(theme.vars || theme).palette.primary.main}`,
           outlineOffset: -2,
         },
@@ -29,10 +30,10 @@ export const dataGridTheme: ThemeComponents = {
         fontSize: theme.typography.body2.fontSize,
         fontWeight: 600,
         color: (theme.vars || theme).palette.text.primary,
-        "&:focus": {
-          outline: "none",
+        '&:focus': {
+          outline: 'none',
         },
-        "&:focus-within": {
+        '&:focus-within': {
           outline: `2px solid ${(theme.vars || theme).palette.primary.main}`,
           outlineOffset: -2,
         },
@@ -42,22 +43,22 @@ export const dataGridTheme: ThemeComponents = {
       }),
       menuIconButton: {
         opacity: 0.5,
-        "&:hover": {
+        '&:hover': {
           opacity: 1,
         },
       },
       iconButtonContainer: {
-        "& .MuiIconButton-root": {
+        '& .MuiIconButton-root': {
           padding: 4,
         },
       },
       row: ({ theme }) => ({
-        "&:hover": {
+        '&:hover': {
           backgroundColor: (theme.vars || theme).palette.action.hover,
         },
-        "&.Mui-selected": {
+        '&.Mui-selected': {
           backgroundColor: (theme.vars || theme).palette.action.selected,
-          "&:hover": {
+          '&:hover': {
             backgroundColor: (theme.vars || theme).palette.action.selected,
           },
         },
@@ -73,23 +74,23 @@ export const dataGridTheme: ThemeComponents = {
         fontWeight: 600,
       },
       toolbarContainer: ({ theme }) => ({
-        padding: "16px",
+        padding: '16px',
         gap: 16,
         borderBottom: `1px solid ${(theme.vars || theme).palette.divider}`,
       }),
       virtualScroller: {
-        "&::-webkit-scrollbar": {
-          width: "8px",
-          height: "8px",
+        '&::-webkit-scrollbar': {
+          width: '8px',
+          height: '8px',
         },
-        "&::-webkit-scrollbar-track": {
-          backgroundColor: "transparent",
+        '&::-webkit-scrollbar-track': {
+          backgroundColor: 'transparent',
         },
-        "&::-webkit-scrollbar-thumb": {
-          backgroundColor: "rgba(0, 0, 0, 0.2)",
-          borderRadius: "4px",
-          "&:hover": {
-            backgroundColor: "rgba(0, 0, 0, 0.3)",
+        '&::-webkit-scrollbar-thumb': {
+          backgroundColor: 'rgba(0, 0, 0, 0.2)',
+          borderRadius: '4px',
+          '&:hover': {
+            backgroundColor: 'rgba(0, 0, 0, 0.3)',
           },
         },
       },
@@ -97,9 +98,9 @@ export const dataGridTheme: ThemeComponents = {
         minHeight: 240,
       },
       overlay: ({ theme }) => ({
-        backgroundColor: "rgba(255, 255, 255, 0.9)",
-        ...theme.applyStyles("dark", {
-          backgroundColor: "rgba(0, 0, 0, 0.9)",
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        ...theme.applyStyles('dark', {
+          backgroundColor: 'rgba(0, 0, 0, 0.9)',
         }),
       }),
     },

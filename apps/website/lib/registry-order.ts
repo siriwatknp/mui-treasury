@@ -4,8 +4,8 @@
  * Value: array of subcategory names in desired order
  */
 export const subcategoryOrder: Record<string, string[]> = {
-  ai: ["elements", "firebase"],
-  layout: ["root", "header", "edge-sidebar", "inset-sidebar", "footer"],
+  ai: ['elements', 'firebase'],
+  layout: ['root', 'header', 'edge-sidebar', 'inset-sidebar', 'footer'],
 };
 
 /**
@@ -17,15 +17,15 @@ export const subcategoryOrder: Record<string, string[]> = {
  * If pathname not present, default alphabetical sorting is used.
  */
 export const registryOrder: Record<string, string[]> = {
-  "ai/firebase": [
-    "firebase-chat-transport",
-    "firebase-generate-text",
-    "firebase-tool-calling",
-    "firebase-thinking-model",
-    "firebase-image-generation",
-    "firebase-analyze-image",
-    "firebase-story-telling",
-    "firebase-google-search",
+  'ai/firebase': [
+    'firebase-chat-transport',
+    'firebase-generate-text',
+    'firebase-tool-calling',
+    'firebase-thinking-model',
+    'firebase-image-generation',
+    'firebase-analyze-image',
+    'firebase-story-telling',
+    'firebase-google-search',
   ],
 };
 
@@ -44,7 +44,7 @@ export function orderItems<T extends { name: string }>(
     : null;
 
   // Extract subcategory name from pathname (e.g., "primitive/sidebar" → "sidebar")
-  const subcategory = pathname.split("/").pop();
+  const subcategory = pathname.split('/').pop();
 
   return [...items].sort((a, b) => {
     if (orderMap) {

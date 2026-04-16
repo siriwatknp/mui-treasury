@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
 import {
   CodeBlock,
   CodeBlockCopyButton,
-} from "@/registry/components/ai-code-block/ai-code-block";
+} from '@/registry/components/ai-code-block/ai-code-block';
 
 export function Demo() {
   const sampleCode = `function fibonacci(n) {

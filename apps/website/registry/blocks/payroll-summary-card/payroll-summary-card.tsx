@@ -1,6 +1,9 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
+
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import {
   Box,
   Button,
@@ -10,16 +13,14 @@ import {
   Select,
   Stack,
   Typography,
-} from "@mui/material";
-import { PieChart } from "@mui/x-charts/PieChart";
-import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+} from '@mui/material';
+import { PieChart } from '@mui/x-charts/PieChart';
 
 const paymentData = [
-  { id: 0, value: 234.2, label: "Payment", color: "#4A90E2" },
-  { id: 1, value: 95.86, label: "Payment", color: "#B8A9F3" },
-  { id: 2, value: 181.34, label: "Payment", color: "#73C7E8" },
-  { id: 3, value: 37.13, label: "Payment", color: "#1E3A5F" },
+  { id: 0, value: 234.2, label: 'Payment', color: '#4A90E2' },
+  { id: 1, value: 95.86, label: 'Payment', color: '#B8A9F3' },
+  { id: 2, value: 181.34, label: 'Payment', color: '#73C7E8' },
+  { id: 3, value: 37.13, label: 'Payment', color: '#1E3A5F' },
 ];
 
 const totalAmount = paymentData.reduce((sum, item) => sum + item.value, 0);
@@ -28,18 +29,18 @@ const largestPercentage = Math.round(
 );
 
 export function PayrollSummaryCard() {
-  const [timeRange, setTimeRange] = React.useState("last30");
+  const [timeRange, setTimeRange] = React.useState('last30');
 
   return (
-    <Card sx={{ mx: "auto" }}>
+    <Card sx={{ mx: 'auto' }}>
       <CardContent sx={{ p: 3 }}>
         <Stack spacing={3}>
           {/* Header */}
           <Box
             sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
               gap: 3,
             }}
           >
@@ -61,8 +62,8 @@ export function PayrollSummaryCard() {
               sx={{
                 borderRadius: 2,
                 minWidth: 140,
-                "& .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "divider",
+                '& .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'divider',
                 },
               }}
             >
@@ -72,13 +73,13 @@ export function PayrollSummaryCard() {
             </Select>
           </Box>
 
-          <Box sx={{ display: "flex", gap: 3, flexWrap: "wrap" }}>
+          <Box sx={{ display: 'flex', gap: 3, flexWrap: 'wrap' }}>
             {/* Chart Section */}
             <Box
               sx={{
-                position: "relative",
-                display: "flex",
-                justifyContent: "center",
+                position: 'relative',
+                display: 'flex',
+                justifyContent: 'center',
               }}
             >
               <PieChart
@@ -93,7 +94,7 @@ export function PayrollSummaryCard() {
                     outerRadius: 90,
                     paddingAngle: 2,
                     cornerRadius: 4,
-                    highlightScope: { fade: "global", highlight: "item" },
+                    highlightScope: { fade: 'global', highlight: 'item' },
                     highlighted: { additionalRadius: 3 },
                   },
                 ]}
@@ -109,11 +110,11 @@ export function PayrollSummaryCard() {
               />
               <Box
                 sx={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  textAlign: "center",
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  textAlign: 'center',
                 }}
               >
                 <Typography variant="h4" fontWeight={600}>
@@ -128,10 +129,10 @@ export function PayrollSummaryCard() {
             <Box
               component="ul"
               sx={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
                 gap: 2,
-                listStyle: "none",
+                listStyle: 'none',
                 p: 0,
                 m: 0,
               }}
@@ -141,15 +142,15 @@ export function PayrollSummaryCard() {
                   component="li"
                   key={payment.id}
                   sx={{
-                    display: "flex",
-                    alignItems: "center",
+                    display: 'flex',
+                    alignItems: 'center',
                     gap: 1.5,
                   }}
                 >
                   <Box
                     sx={{
                       width: 4,
-                      height: "80%",
+                      height: '80%',
                       maxHeight: 56,
                       bgcolor: payment.color,
                       borderRadius: 1,
@@ -170,7 +171,7 @@ export function PayrollSummaryCard() {
           </Box>
 
           {/* Action Button */}
-          <Box sx={{ display: "flex", justifyContent: "center", pt: 1 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'center', pt: 1 }}>
             <Button
               variant="outlined"
               startIcon={<VisibilityOutlinedIcon />}
@@ -178,7 +179,7 @@ export function PayrollSummaryCard() {
                 borderRadius: 99,
                 px: 3,
                 py: 1,
-                fontSize: "0.9375rem",
+                fontSize: '0.9375rem',
                 fontWeight: 500,
               }}
             >

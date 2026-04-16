@@ -2,11 +2,11 @@
  * ======== CREDIT: Chakra UI ==========
  * https://github.com/chakra-ui/chakra-ui/blob/main/packages/number-input/src/use-spinner.ts
  */
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from 'react';
 
 function canUseDOM(): boolean {
   return !!(
-    typeof window !== "undefined" &&
+    typeof window !== 'undefined' &&
     window.document &&
     window.document.createElement
   );
@@ -75,7 +75,7 @@ const CONTINUOUS_CHANGE_INTERVAL = 50;
  */
 const CONTINUOUS_CHANGE_DELAY = 300;
 
-type Action = "increment" | "decrement";
+type Action = 'increment' | 'decrement';
 
 /**
  * React hook used in the number input to spin its
@@ -113,10 +113,10 @@ export function useSpinner<T>(
    */
   useInterval(
     () => {
-      if (action === "increment") {
+      if (action === 'increment') {
         increment(paramsRef.current);
       }
-      if (action === "decrement") {
+      if (action === 'decrement') {
         decrement(paramsRef.current);
       }
     },
@@ -136,7 +136,7 @@ export function useSpinner<T>(
       timeoutRef.current = setTimeout(() => {
         setRunOnce(false);
         setIsSpinning(true);
-        setAction("increment");
+        setAction('increment');
       }, CONTINUOUS_CHANGE_DELAY);
     },
     [increment, runOnce],
@@ -155,7 +155,7 @@ export function useSpinner<T>(
       timeoutRef.current = setTimeout(() => {
         setRunOnce(false);
         setIsSpinning(true);
-        setAction("decrement");
+        setAction('decrement');
       }, CONTINUOUS_CHANGE_DELAY);
     },
     [decrement, runOnce],

@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
 import {
   Task,
-  TaskTrigger,
   TaskContent,
   TaskItem,
   TaskItemFile,
-} from "@/registry/components/ai-task/ai-task";
+  TaskTrigger,
+} from '@/registry/components/ai-task/ai-task';
 
 export function Demo() {
   return (

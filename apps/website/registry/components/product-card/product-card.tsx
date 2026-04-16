@@ -1,6 +1,8 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
+
+import { Favorite, FavoriteBorder } from '@mui/icons-material';
 import {
   Box,
   Button,
@@ -10,8 +12,7 @@ import {
   IconButton,
   Stack,
   Typography,
-} from "@mui/material";
-import { FavoriteBorder, Favorite } from "@mui/icons-material";
+} from '@mui/material';
 
 interface ProductCardProps {
   title?: string;
@@ -27,15 +28,15 @@ interface ProductCardProps {
 }
 
 export function ProductCard({
-  title = "Acme Running Shoe",
-  price = "$69.99",
+  title = 'Acme Running Shoe',
+  price = '$69.99',
   description = "Crossing hardwood comfort with off-court flair. '80s-inspired construction, bold details and nothin'-but-net style.",
   attributes = [
-    { label: "Size", value: "EU38" },
-    { label: "Color", value: "BLACK/WHITE" },
+    { label: 'Size', value: 'EU38' },
+    { label: 'Color', value: 'BLACK/WHITE' },
   ],
-  imageUrl = "https://placehold.co/400x300",
-  imageAlt = "Product image",
+  imageUrl = 'https://placehold.co/400x300',
+  imageAlt = 'Product image',
   onAddToCart,
   onToggleFavorite,
   isFavorite = false,
@@ -59,33 +60,33 @@ export function ProductCard({
       sx={{
         maxWidth: 320,
         borderRadius: 3,
-        overflow: "hidden",
+        overflow: 'hidden',
       }}
     >
       <Box
         sx={(theme) => ({
-          position: "relative",
+          position: 'relative',
           height: 200,
           background: `linear-gradient(135deg, ${
             (theme.vars || theme).palette.primary.main
           } 0%, ${(theme.vars || theme).palette.primary.light} 100%)`,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         })}
       >
         <IconButton
           onClick={handleToggleFavorite}
-          aria-label={favorite ? "Remove from favorites" : "Add to favorites"}
+          aria-label={favorite ? 'Remove from favorites' : 'Add to favorites'}
           sx={{
-            position: "absolute",
+            position: 'absolute',
             top: 12,
             right: 12,
-            backgroundColor: "rgba(255, 255, 255, 0.2)",
+            backgroundColor: 'rgba(255, 255, 255, 0.2)',
           }}
         >
           {favorite ? (
-            <Favorite sx={{ color: "error.main" }} />
+            <Favorite sx={{ color: 'error.main' }} />
           ) : (
             <FavoriteBorder />
           )}
@@ -96,9 +97,9 @@ export function ProductCard({
           src={imageUrl}
           alt={imageAlt}
           sx={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
           }}
         />
       </Box>
@@ -123,7 +124,7 @@ export function ProductCard({
                 variant="outlined"
                 size="small"
                 sx={(theme) => ({
-                  fontSize: "0.875rem",
+                  fontSize: '0.875rem',
                   borderColor: (theme.vars || theme).palette.divider,
                   color: (theme.vars || theme).palette.text.secondary,
                 })}
@@ -160,12 +161,12 @@ export function ProductCard({
                 borderRadius: 2,
                 px: 3,
                 py: 1,
-                textTransform: "none",
+                textTransform: 'none',
                 fontWeight: 600,
                 background: `linear-gradient(135deg, ${
                   (theme.vars || theme).palette.primary.main
                 } 0%, ${(theme.vars || theme).palette.primary.light} 100%)`,
-                "&:hover": {
+                '&:hover': {
                   background: `linear-gradient(135deg, ${
                     (theme.vars || theme).palette.primary.dark
                   } 0%, ${(theme.vars || theme).palette.primary.main} 100%)`,

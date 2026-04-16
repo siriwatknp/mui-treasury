@@ -1,79 +1,80 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
+
+import ClearIcon from '@mui/icons-material/Clear';
+import CloseIcon from '@mui/icons-material/Close';
+import CodeIcon from '@mui/icons-material/Code';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import FileUploadIcon from '@mui/icons-material/FileUpload';
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import {
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  Box,
-  Typography,
-  TextField,
-  Button,
-  IconButton,
   Avatar,
-  Select,
-  MenuItem,
-  Stack,
+  Box,
+  Button,
+  Dialog,
+  DialogContent,
+  DialogTitle,
   Divider,
-  InputAdornment,
   FormControl,
-} from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-import GroupAddIcon from "@mui/icons-material/GroupAdd";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import ClearIcon from "@mui/icons-material/Clear";
-import CodeIcon from "@mui/icons-material/Code";
-import FileUploadIcon from "@mui/icons-material/FileUpload";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+  IconButton,
+  InputAdornment,
+  MenuItem,
+  Select,
+  Stack,
+  TextField,
+  Typography,
+} from '@mui/material';
 
 interface ProjectMember {
   id: string;
   name: string;
   email: string;
   avatar: string;
-  permission: "Owner" | "Can View" | "Can Edit";
+  permission: 'Owner' | 'Can View' | 'Can Edit';
 }
 
 export function ProjectInviteModal() {
   const [open, setOpen] = React.useState(true);
-  const [email, setEmail] = React.useState("Johndoe@gmail.com");
-  const [linkAccess, setLinkAccess] = React.useState("Anyone with link");
-  const [invitePermission, setInvitePermission] = React.useState("Can View");
+  const [email, setEmail] = React.useState('Johndoe@gmail.com');
+  const [linkAccess, setLinkAccess] = React.useState('Anyone with link');
+  const [invitePermission, setInvitePermission] = React.useState('Can View');
   const [copied, setCopied] = React.useState(false);
 
   const members: ProjectMember[] = [
     {
-      id: "1",
-      name: "Insan Kamil",
-      email: "insank@gmail.com",
-      avatar: "https://placehold.co/40",
-      permission: "Owner",
+      id: '1',
+      name: 'Insan Kamil',
+      email: 'insank@gmail.com',
+      avatar: 'https://placehold.co/40',
+      permission: 'Owner',
     },
     {
-      id: "2",
-      name: "John Smith",
-      email: "johnsmith@gmail.com",
-      avatar: "https://placehold.co/40",
-      permission: "Can View",
+      id: '2',
+      name: 'John Smith',
+      email: 'johnsmith@gmail.com',
+      avatar: 'https://placehold.co/40',
+      permission: 'Can View',
     },
     {
-      id: "3",
-      name: "Mario Rodriguez",
-      email: "mariorodriguez@gmail.com",
-      avatar: "https://placehold.co/40",
-      permission: "Can Edit",
+      id: '3',
+      name: 'Mario Rodriguez',
+      email: 'mariorodriguez@gmail.com',
+      avatar: 'https://placehold.co/40',
+      permission: 'Can Edit',
     },
     {
-      id: "4",
-      name: "Emily Chen",
-      email: "emilychen@gmail.com",
-      avatar: "https://placehold.co/40",
-      permission: "Can Edit",
+      id: '4',
+      name: 'Emily Chen',
+      email: 'emilychen@gmail.com',
+      avatar: 'https://placehold.co/40',
+      permission: 'Can Edit',
     },
   ];
 
   const handleCopy = () => {
-    navigator.clipboard.writeText("https://www.figma.com/designProject-Screen");
+    navigator.clipboard.writeText('https://www.figma.com/designProject-Screen');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -97,15 +98,15 @@ export function ProjectInviteModal() {
         },
       }}
     >
-      <Box sx={{ position: "relative" }}>
+      <Box sx={{ position: 'relative' }}>
         <IconButton
           aria-label="close"
           onClick={handleClose}
           sx={{
-            position: "absolute",
+            position: 'absolute',
             right: 8,
             top: 8,
-            color: "text.secondary",
+            color: 'text.secondary',
           }}
         >
           <CloseIcon />
@@ -115,7 +116,7 @@ export function ProjectInviteModal() {
           <Stack direction="row" spacing={1.5} alignItems="flex-start">
             <Box
               sx={(theme) => ({
-                position: "relative",
+                position: 'relative',
                 color: (theme.vars || theme).palette.text.icon,
               })}
             >
@@ -151,7 +152,7 @@ export function ProjectInviteModal() {
                     onChange={(e) => setLinkAccess(e.target.value)}
                     IconComponent={ExpandMoreIcon}
                     sx={{
-                      bgcolor: "background.paper",
+                      bgcolor: 'background.paper',
                     }}
                   >
                     <MenuItem value="Anyone with link">
@@ -175,9 +176,9 @@ export function ProjectInviteModal() {
                             size="small"
                             startIcon={<ContentCopyIcon fontSize="small" />}
                             onClick={handleCopy}
-                            sx={{ minWidth: "auto" }}
+                            sx={{ minWidth: 'auto' }}
                           >
-                            {copied ? "Copied" : "Copy"}
+                            {copied ? 'Copied' : 'Copy'}
                           </Button>
                         </InputAdornment>
                       ),
@@ -206,7 +207,7 @@ export function ProjectInviteModal() {
                         <InputAdornment position="end">
                           <IconButton
                             size="small"
-                            onClick={() => setEmail("")}
+                            onClick={() => setEmail('')}
                             edge="end"
                             aria-label="clear email"
                           >
@@ -232,7 +233,7 @@ export function ProjectInviteModal() {
                 <Button
                   variant="contained"
                   size="small"
-                  sx={{ px: 2.5, whiteSpace: "nowrap" }}
+                  sx={{ px: 2.5, whiteSpace: 'nowrap' }}
                 >
                   Send Invite
                 </Button>
@@ -269,17 +270,17 @@ export function ProjectInviteModal() {
                       <Select
                         value={member.permission}
                         IconComponent={ExpandMoreIcon}
-                        disabled={member.permission === "Owner"}
+                        disabled={member.permission === 'Owner'}
                         sx={{
-                          "& .MuiSelect-select": {
+                          '& .MuiSelect-select': {
                             pr: 3,
-                            color: "text.secondary",
+                            color: 'text.secondary',
                           },
-                          "&:before": {
-                            display: "none",
+                          '&:before': {
+                            display: 'none',
                           },
-                          "&:after": {
-                            display: "none",
+                          '&:after': {
+                            display: 'none',
                           },
                         }}
                       >
@@ -297,13 +298,13 @@ export function ProjectInviteModal() {
               <Button
                 startIcon={<CodeIcon />}
                 sx={{
-                  textTransform: "none",
-                  color: "text.primary",
+                  textTransform: 'none',
+                  color: 'text.primary',
                   p: 0,
-                  minWidth: "auto",
-                  "&:hover": {
-                    bgcolor: "transparent",
-                    textDecoration: "underline",
+                  minWidth: 'auto',
+                  '&:hover': {
+                    bgcolor: 'transparent',
+                    textDecoration: 'underline',
                   },
                 }}
               >
@@ -313,13 +314,13 @@ export function ProjectInviteModal() {
               <Button
                 startIcon={<FileUploadIcon />}
                 sx={{
-                  textTransform: "none",
-                  color: "text.primary",
+                  textTransform: 'none',
+                  color: 'text.primary',
                   p: 0,
-                  minWidth: "auto",
-                  "&:hover": {
-                    bgcolor: "transparent",
-                    textDecoration: "underline",
+                  minWidth: 'auto',
+                  '&:hover': {
+                    bgcolor: 'transparent',
+                    textDecoration: 'underline',
                   },
                 }}
               >

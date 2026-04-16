@@ -1,8 +1,10 @@
-import React, { ReactNode } from "react";
-import { styled, SxProps, Theme } from "@mui/material/styles";
-import cx from "clsx";
-import { AppendUseStyles, useStylesCtx } from "./info";
-import { infoClasses } from "./info-classes";
+import React, { ReactNode } from 'react';
+
+import { SxProps, Theme, styled } from '@mui/material/styles';
+import cx from 'clsx';
+
+import { AppendUseStyles, useStylesCtx } from './info';
+import { infoClasses } from './info-classes';
 
 export type InfoEyebrowProps = {
   /**
@@ -18,19 +20,19 @@ export type InfoEyebrowProps = {
    * The system prop that allows defining system overrides as well as additional CSS styles.
    */
   sx?: SxProps<Theme>;
-} & Omit<React.JSX.IntrinsicElements["div"], "ref">;
+} & Omit<React.JSX.IntrinsicElements['div'], 'ref'>;
 
-const InfoEyebrowRoot = styled("div", {
-  name: "JunInfo",
-  slot: "Eyebrow",
+const InfoEyebrowRoot = styled('div', {
+  name: 'JunInfo',
+  slot: 'Eyebrow',
   overridesResolver: (props, styles) => styles.eyebrow,
 })<{ ownerState: AppendUseStyles<InfoEyebrowProps> }>(
   ({ theme, ownerState }) => ({
     color: (theme.vars || theme).palette.text.secondary,
-    fontSize: "0.875rem",
-    marginBottom: "0.25rem",
-    lineHeight: "1.25rem",
-    textTransform: "uppercase",
+    fontSize: '0.875rem',
+    marginBottom: '0.25rem',
+    lineHeight: '1.25rem',
+    textTransform: 'uppercase',
     ...ownerState.useStyles(theme).eyebrow,
   }),
 );

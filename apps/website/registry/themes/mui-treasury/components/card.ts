@@ -1,16 +1,16 @@
-import { ThemeComponents } from "../types";
+import { ThemeComponents } from '../types';
 
 export const cardTheme: ThemeComponents = {
   MuiCard: {
     defaultProps: {
-      variant: "outlined",
+      variant: 'outlined',
     },
     styleOverrides: {
       root: ({ theme }) => ({
-        transition: theme.transitions.create(["box-shadow", "border-color"], {
+        transition: theme.transitions.create(['box-shadow', 'border-color'], {
           duration: theme.transitions.duration.short,
         }),
-        "&:hover": {
+        '&:hover': {
           boxShadow: theme.shadows[4],
         },
       }),
@@ -38,7 +38,7 @@ export const cardTheme: ThemeComponents = {
     styleOverrides: {
       root: {
         padding: 16,
-        "&:last-child": {
+        '&:last-child': {
           paddingBottom: 16,
         },
       },

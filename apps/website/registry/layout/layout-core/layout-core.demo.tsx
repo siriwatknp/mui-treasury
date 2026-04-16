@@ -1,22 +1,22 @@
-import React from "react";
+import React from 'react';
 
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
-import Content from "@/registry/layout/layout-core/Content";
-import Footer from "@/registry/layout/layout-core/Footer";
-import Header from "@/registry/layout/layout-core/Header";
-import Root from "@/registry/layout/layout-core/Root";
+import Content from '@/registry/layout/layout-core/Content';
+import Footer from '@/registry/layout/layout-core/Footer';
+import Header from '@/registry/layout/layout-core/Header';
+import Root from '@/registry/layout/layout-core/Root';
 
 export const meta = {
-  title: "Layout Components",
-  description: "Core layout primitives for building app shells with CSS Grid.",
-  previewMode: "iframe" as const,
+  title: 'Layout Components',
+  description: 'Core layout primitives for building app shells with CSS Grid.',
+  previewMode: 'iframe' as const,
 };
 
 export function Demo() {
   return (
-    <Root sx={{ minHeight: 400, width: "100%" }}>
+    <Root sx={{ minHeight: 400, width: '100%' }}>
       <Header>
         <Box sx={{ px: 2 }}>
           <Typography variant="subtitle2" fontWeight="bold">

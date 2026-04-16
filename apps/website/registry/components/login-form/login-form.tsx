@@ -1,6 +1,7 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
+
 import {
   Box,
   Button,
@@ -9,7 +10,7 @@ import {
   Stack,
   TextField,
   Typography,
-} from "@mui/material";
+} from '@mui/material';
 
 interface FormData {
   email: string;
@@ -23,8 +24,8 @@ interface FormErrors {
 
 export function LoginForm() {
   const [formData, setFormData] = useState<FormData>({
-    email: "m@example.com",
-    password: "",
+    email: 'm@example.com',
+    password: '',
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isLoading, setIsLoading] = useState(false);
@@ -48,15 +49,15 @@ export function LoginForm() {
     const newErrors: FormErrors = {};
 
     if (!formData.email) {
-      newErrors.email = "Email is required";
+      newErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
+      newErrors.email = 'Please enter a valid email address';
     }
 
     if (!formData.password) {
-      newErrors.password = "Password is required";
+      newErrors.password = 'Password is required';
     } else if (formData.password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters";
+      newErrors.password = 'Password must be at least 6 characters';
     }
 
     setErrors(newErrors);
@@ -76,22 +77,22 @@ export function LoginForm() {
     setIsLoading(false);
 
     // Handle successful login
-    console.log("Login successful", formData);
+    console.log('Login successful', formData);
   };
 
   const handleGoogleLogin = () => {
-    console.log("Login with Google");
+    console.log('Login with Google');
   };
 
   return (
     <Card
       sx={(theme) => ({
-        mx: "auto",
+        mx: 'auto',
         p: 4,
         borderRadius: 2,
         maxWidth: 400,
-        ...theme.applyStyles("dark", {
-          bgcolor: "grey.900",
+        ...theme.applyStyles('dark', {
+          bgcolor: 'grey.900',
         }),
       })}
     >
@@ -114,7 +115,7 @@ export function LoginForm() {
               type="email"
               variant="outlined"
               value={formData.email}
-              onChange={handleInputChange("email")}
+              onChange={handleInputChange('email')}
               error={!!errors.email}
               helperText={errors.email}
               autoComplete="email"
@@ -139,9 +140,9 @@ export function LoginForm() {
                   variant="body2"
                   onClick={(e) => {
                     e.preventDefault();
-                    console.log("Forgot password clicked");
+                    console.log('Forgot password clicked');
                   }}
-                  sx={{ textDecoration: "none" }}
+                  sx={{ textDecoration: 'none' }}
                 >
                   Forgot your password?
                 </Link>
@@ -153,7 +154,7 @@ export function LoginForm() {
                 type="password"
                 variant="outlined"
                 value={formData.password}
-                onChange={handleInputChange("password")}
+                onChange={handleInputChange('password')}
                 error={!!errors.password}
                 helperText={errors.password}
                 autoComplete="current-password"
@@ -168,7 +169,7 @@ export function LoginForm() {
               disabled={isLoading}
               sx={{ py: 1.5 }}
             >
-              {isLoading ? "Signing in..." : "Login"}
+              {isLoading ? 'Signing in...' : 'Login'}
             </Button>
 
             <Button
@@ -184,14 +185,14 @@ export function LoginForm() {
         </Box>
 
         <Typography variant="body2" textAlign="center" color="text.secondary">
-          Don&apos;t have an account?{" "}
+          Don&apos;t have an account?{' '}
           <Link
             href="#"
             onClick={(e) => {
               e.preventDefault();
-              console.log("Sign up clicked");
+              console.log('Sign up clicked');
             }}
-            sx={{ textDecoration: "underline" }}
+            sx={{ textDecoration: 'underline' }}
           >
             Sign up
           </Link>

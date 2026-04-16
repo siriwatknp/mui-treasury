@@ -3,41 +3,50 @@
 ## Visual Design Analysis (UX/UI Designer)
 
 ### Container Overview
+
 A clean metrics dashboard card displaying database read/write statistics with dual line charts showing trends over time.
 
 ### Section 1: Metrics Header Row
+
 **Layout**: Two metric cards side by side with equal width
-**Components**: 
+**Components**:
+
 - Left card: "Rows read" metric with positive percentage change
 - Right card: "Rows written" metric with negative percentage change
 
 #### Left Metric Card Structure:
+
 ```
 Rows read    [+4.4%]
 643,015              from 615,752
 ```
 
 #### Right Metric Card Structure:
+
 ```
 Rows written  [-3.9%]
 83,197                from 86,580
 ```
 
 **Visual Hierarchy**:
+
 - Title text: Small, muted color (text.secondary)
 - Percentage badge: Inline with title, colored based on positive/negative
 - Main value: Large, prominent (h3 or h4 typography)
 - Comparison text: Small, muted (caption typography)
 
 **Theme Mapping**:
+
 - Positive percentage: Success palette with light background
 - Negative percentage: Error palette with light background
 - Border radius for badges: 1 (8px)
 - Spacing between elements: 1 unit vertical
 
 ### Section 2: Line Charts
+
 **Layout**: Two line charts positioned below metrics, same width as metric cards above
-**Components**: 
+**Components**:
+
 - Dual-line area charts with subtle fill
 - X-axis showing dates (16/04/2024 to 16/05/2024)
 - No visible Y-axis
@@ -45,6 +54,7 @@ Rows written  [-3.9%]
 - Gray line for comparison period
 
 **Visual Details**:
+
 - Chart height: ~150-200px
 - Line stroke: 2px width
 - Area fill: 10-20% opacity of line color
@@ -52,12 +62,14 @@ Rows written  [-3.9%]
 - Axis labels: Only dates on X-axis
 
 **Theme Mapping**:
+
 - Primary line: primary.main (blue)
 - Comparison line: grey.400
 - Area fills: 0.1 opacity of line colors
 - No borders or containers around charts
 
 ### ASCII Mockup Representation
+
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                                                                 │
@@ -106,6 +118,7 @@ Rows written  [-3.9%]
 ## Implementation Notes
 
 ### Work Summary
+
 - Created `database-metrics-card` component with dual metrics display
 - Implemented percentage badges with success/error colors based on positive/negative values
 - Used MUI Chip component for percentage badges with custom styling

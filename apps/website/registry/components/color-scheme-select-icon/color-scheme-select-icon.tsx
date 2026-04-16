@@ -1,11 +1,12 @@
-import React from "react";
-import DarkModeIcon from "@mui/icons-material/DarkModeOutlined";
-import LightModeIcon from "@mui/icons-material/LightModeOutlined";
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import { useColorScheme } from "@mui/material/styles";
+import React from 'react';
+
+import DarkModeIcon from '@mui/icons-material/DarkModeOutlined';
+import LightModeIcon from '@mui/icons-material/LightModeOutlined';
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import { useColorScheme } from '@mui/material/styles';
 
 export function ColorSchemeSelectIcon() {
   const { mode, systemMode, setMode } = useColorScheme();
@@ -17,7 +18,7 @@ export function ColorSchemeSelectIcon() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const handleMode = (mode: "system" | "light" | "dark") => () => {
+  const handleMode = (mode: 'system' | 'light' | 'dark') => () => {
     setMode(mode);
     handleClose();
   };
@@ -27,16 +28,16 @@ export function ColorSchemeSelectIcon() {
         sx={(theme) => {
           // copy from OutlinedInput
           const borderColor =
-            theme.palette.mode === "light"
-              ? "rgba(0, 0, 0, 0.23)"
-              : "rgba(255, 255, 255, 0.23)";
+            theme.palette.mode === 'light'
+              ? 'rgba(0, 0, 0, 0.23)'
+              : 'rgba(255, 255, 255, 0.23)';
           return {
-            verticalAlign: "bottom",
-            display: "inline-flex",
+            verticalAlign: 'bottom',
+            display: 'inline-flex',
             width: 40,
             height: 40,
             borderRadius: (theme.vars || theme).shape.borderRadius,
-            border: "1px solid",
+            border: '1px solid',
             borderColor: theme.vars
               ? `rgba(${theme.vars.palette.common.onBackgroundChannel} / 0.23)`
               : borderColor,
@@ -45,7 +46,7 @@ export function ColorSchemeSelectIcon() {
       />
     );
   }
-  const resolvedMode = (systemMode || mode) as "light" | "dark";
+  const resolvedMode = (systemMode || mode) as 'light' | 'dark';
   const icon = {
     light: <LightModeIcon />,
     dark: <DarkModeIcon />,
@@ -57,14 +58,14 @@ export function ColorSchemeSelectIcon() {
         disableRipple
         size="small"
         sx={{
-          borderRadius: "4px",
-          "&:hover, &:focus": {
-            backgroundColor: "action.hover",
+          borderRadius: '4px',
+          '&:hover, &:focus': {
+            backgroundColor: 'action.hover',
           },
         }}
-        aria-controls={open ? "color-scheme-menu" : undefined}
+        aria-controls={open ? 'color-scheme-menu' : undefined}
         aria-haspopup="true"
-        aria-expanded={open ? "true" : undefined}
+        aria-expanded={open ? 'true' : undefined}
       >
         {icon}
       </IconButton>
@@ -76,22 +77,22 @@ export function ColorSchemeSelectIcon() {
         onClick={handleClose}
         slotProps={{
           paper: {
-            variant: "outlined",
+            variant: 'outlined',
             sx: {
-              my: "4px",
+              my: '4px',
             },
           },
         }}
-        transformOrigin={{ horizontal: "right", vertical: "top" }}
-        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem selected={mode === "system"} onClick={handleMode("system")}>
+        <MenuItem selected={mode === 'system'} onClick={handleMode('system')}>
           System
         </MenuItem>
-        <MenuItem selected={mode === "light"} onClick={handleMode("light")}>
+        <MenuItem selected={mode === 'light'} onClick={handleMode('light')}>
           Light
         </MenuItem>
-        <MenuItem selected={mode === "dark"} onClick={handleMode("dark")}>
+        <MenuItem selected={mode === 'dark'} onClick={handleMode('dark')}>
           Dark
         </MenuItem>
       </Menu>

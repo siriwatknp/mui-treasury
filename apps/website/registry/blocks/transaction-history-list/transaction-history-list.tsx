@@ -1,43 +1,44 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import Typography from "@mui/material/Typography";
-import Avatar from "@mui/material/Avatar";
-import Link from "@mui/material/Link";
-import Stack from "@mui/material/Stack";
+import * as React from 'react';
+
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Link from '@mui/material/Link';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 
 const transactions = [
   {
     id: 1,
-    name: "Cody Fisher",
-    company: "Louis Vuitton",
-    amount: "$1,546.12",
-    date: "1 Jun 2022",
-    avatar: "https://i.pravatar.cc/150?img=11",
+    name: 'Cody Fisher',
+    company: 'Louis Vuitton',
+    amount: '$1,546.12',
+    date: '1 Jun 2022',
+    avatar: 'https://i.pravatar.cc/150?img=11',
   },
   {
     id: 2,
-    name: "Esther Howard",
-    company: "Starbucks",
-    amount: "$1,546.12",
-    date: "1 May 2022",
-    avatar: "https://i.pravatar.cc/150?img=5",
+    name: 'Esther Howard',
+    company: 'Starbucks',
+    amount: '$1,546.12',
+    date: '1 May 2022',
+    avatar: 'https://i.pravatar.cc/150?img=5',
   },
   {
     id: 3,
-    name: "Wade Warren",
-    company: "Louis Vuitton",
-    amount: "$1,546.12",
-    date: "1 Apr 2022",
-    avatar: "https://i.pravatar.cc/150?img=9",
+    name: 'Wade Warren',
+    company: 'Louis Vuitton',
+    amount: '$1,546.12',
+    date: '1 Apr 2022',
+    avatar: 'https://i.pravatar.cc/150?img=9',
   },
   {
     id: 4,
-    name: "Brooklyn Simmons",
-    company: "Sony",
-    amount: "$1,546.12",
-    date: "1 Mar 2022",
-    avatar: "https://i.pravatar.cc/150?img=12",
+    name: 'Brooklyn Simmons',
+    company: 'Sony',
+    amount: '$1,546.12',
+    date: '1 Mar 2022',
+    avatar: 'https://i.pravatar.cc/150?img=12',
   },
 ];
 
@@ -52,9 +53,9 @@ export function TransactionHistoryList() {
     >
       <Box
         sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "baseline",
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'baseline',
           mb: 3,
         }}
       >
@@ -78,15 +79,15 @@ export function TransactionHistoryList() {
       <Stack
         component="ul"
         spacing={2.5}
-        sx={{ p: 0, m: 0, listStyle: "none" }}
+        sx={{ p: 0, m: 0, listStyle: 'none' }}
       >
         {transactions.map((transaction) => (
           <Box
             key={transaction.id}
             component="li"
             sx={{
-              display: "flex",
-              alignItems: "center",
+              display: 'flex',
+              alignItems: 'center',
               gap: 1.5,
             }}
           >
@@ -112,7 +113,7 @@ export function TransactionHistoryList() {
               <Typography
                 variant="body2"
                 sx={{
-                  color: "text.secondary",
+                  color: 'text.secondary',
                   lineHeight: 1.3,
                 }}
               >
@@ -120,7 +121,7 @@ export function TransactionHistoryList() {
               </Typography>
             </Box>
 
-            <Box sx={{ textAlign: "right" }}>
+            <Box sx={{ textAlign: 'right' }}>
               <Typography
                 variant="body1"
                 sx={{
@@ -133,7 +134,7 @@ export function TransactionHistoryList() {
               <Typography
                 variant="body2"
                 sx={{
-                  color: "text.secondary",
+                  color: 'text.secondary',
                   lineHeight: 1.3,
                 }}
               >

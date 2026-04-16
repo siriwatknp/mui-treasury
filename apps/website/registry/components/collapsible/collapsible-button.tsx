@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 
-import Button, { ButtonProps } from "@mui/material/Button";
+import Button, { ButtonProps } from '@mui/material/Button';
 
 import type {
   ForwardStyledProps,
   OverridableComponent,
-} from "../../types/shared/component";
-import { ScreenReaderInput } from "./collapsible-trigger";
+} from '../../types/shared/component';
+import { ScreenReaderInput } from './collapsible-trigger';
 
 export type CollapsibleButtonProps = ForwardStyledProps<{
   defaultChecked?: boolean;

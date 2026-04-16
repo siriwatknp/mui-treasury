@@ -1,5 +1,5 @@
-import fs from "fs";
-import path from "path";
+import fs from 'fs';
+import path from 'path';
 
 export interface RegistryItem {
   $schema?: string;
@@ -23,14 +23,14 @@ export interface RegistryItem {
     target?: string;
     title?: string;
     description?: string;
-    previewMode?: "normal" | "iframe";
+    previewMode?: 'normal' | 'iframe';
   }>;
   meta: {
     screenshot?: string;
     category?: string;
     subcategory?: string;
     tags?: string[];
-    previewMode?: "normal" | "iframe";
+    previewMode?: 'normal' | 'iframe';
     previewPath?: string;
     previewClassName?: string;
     exportName?: string;
@@ -49,21 +49,21 @@ export interface RegistryCategory {
 function parseDemoMeta(content: string): {
   title?: string;
   description?: string;
-  previewMode?: "normal" | "iframe";
+  previewMode?: 'normal' | 'iframe';
 } | null {
   const match = content.match(
     /export\s+const\s+meta\s*=\s*(\{[\s\S]*?\n\}|\{[^\n]*\})/,
   );
   if (!match) return null;
   try {
-    const raw = match[1].replace(/\s+as\s+const\b/g, "");
+    const raw = match[1].replace(/\s+as\s+const\b/g, '');
     const obj = new Function(`return ${raw}`)();
     return {
-      title: typeof obj.title === "string" ? obj.title : undefined,
+      title: typeof obj.title === 'string' ? obj.title : undefined,
       description:
-        typeof obj.description === "string" ? obj.description : undefined,
+        typeof obj.description === 'string' ? obj.description : undefined,
       previewMode:
-        obj.previewMode === "iframe" || obj.previewMode === "normal"
+        obj.previewMode === 'iframe' || obj.previewMode === 'normal'
           ? obj.previewMode
           : undefined,
     };
@@ -73,9 +73,9 @@ function parseDemoMeta(content: string): {
 }
 
 // Registry source directory
-const REGISTRY_DIR = path.join(process.cwd(), "registry");
+const REGISTRY_DIR = path.join(process.cwd(), 'registry');
 // Public registry directory with full content
-const PUBLIC_R_DIR = path.join(process.cwd(), "public", "r");
+const PUBLIC_R_DIR = path.join(process.cwd(), 'public', 'r');
 
 /**
  * Recursively find all meta.json files in a directory
@@ -93,7 +93,7 @@ function findMetaJsonFiles(dir: string): string[] {
         if (entry.isDirectory()) {
           // Recursively scan subdirectories
           scanDirectory(fullPath);
-        } else if (entry.isFile() && entry.name.endsWith(".meta.json")) {
+        } else if (entry.isFile() && entry.name.endsWith('.meta.json')) {
           metaFiles.push(fullPath);
         }
       }
@@ -113,7 +113,7 @@ function loadPublicRegistryData(name: string): Partial<RegistryItem> | null {
   try {
     const publicJsonPath = path.join(PUBLIC_R_DIR, `${name}.json`);
     if (fs.existsSync(publicJsonPath)) {
-      const content = JSON.parse(fs.readFileSync(publicJsonPath, "utf-8"));
+      const content = JSON.parse(fs.readFileSync(publicJsonPath, 'utf-8'));
 
       let demoFiles:
         | Array<{
@@ -132,42 +132,42 @@ function loadPublicRegistryData(name: string): Partial<RegistryItem> | null {
           type: string;
           title?: string;
           description?: string;
-          previewMode?: "normal" | "iframe";
+          previewMode?: 'normal' | 'iframe';
         }> = [];
 
         // Scan root directory for *.demo.tsx
         if (fs.existsSync(absDir)) {
           const entries = fs.readdirSync(absDir);
           for (const f of entries.filter((f: string) =>
-            f.endsWith(".demo.tsx"),
+            f.endsWith('.demo.tsx'),
           )) {
-            const fileContent = fs.readFileSync(path.join(absDir, f), "utf-8");
+            const fileContent = fs.readFileSync(path.join(absDir, f), 'utf-8');
             const demoMeta = parseDemoMeta(fileContent);
             collected.push({
               path: path.join(dir, f),
               content: fileContent,
-              type: "registry:demo",
+              type: 'registry:demo',
               ...demoMeta,
             });
           }
         }
 
         // Scan demos/ subfolder for *.demo.tsx
-        const demosDir = path.join(absDir, "demos");
+        const demosDir = path.join(absDir, 'demos');
         if (fs.existsSync(demosDir)) {
           const entries = fs.readdirSync(demosDir);
           for (const f of entries.filter((f: string) =>
-            f.endsWith(".demo.tsx"),
+            f.endsWith('.demo.tsx'),
           )) {
             const fileContent = fs.readFileSync(
               path.join(demosDir, f),
-              "utf-8",
+              'utf-8',
             );
             const demoMeta = parseDemoMeta(fileContent);
             collected.push({
-              path: path.join(dir, "demos", f),
+              path: path.join(dir, 'demos', f),
               content: fileContent,
-              type: "registry:demo",
+              type: 'registry:demo',
               ...demoMeta,
             });
           }
@@ -204,25 +204,25 @@ export function getRegistryItems(): RegistryItem[] {
     // Collect all meta.json-based names to avoid conflicts with virtual demo items
     const metaNames = new Set<string>();
     for (const metaPath of metaFiles) {
-      metaNames.add(path.basename(metaPath).replace(".meta.json", ""));
+      metaNames.add(path.basename(metaPath).replace('.meta.json', ''));
     }
 
     for (const metaPath of metaFiles) {
       try {
         const metaFileName = path.basename(metaPath);
-        const itemName = metaFileName.replace(".meta.json", "");
+        const itemName = metaFileName.replace('.meta.json', '');
         const metaDir = path.dirname(metaPath);
         const tsxPath = path.join(metaDir, `${itemName}.tsx`);
-        const metaContent = JSON.parse(fs.readFileSync(metaPath, "utf-8"));
+        const metaContent = JSON.parse(fs.readFileSync(metaPath, 'utf-8'));
         const publicData = loadPublicRegistryData(itemName);
 
         const item: RegistryItem = {
           $schema: metaContent.$schema,
           path: path.relative(REGISTRY_DIR, tsxPath),
           name: itemName,
-          type: metaContent.type || "registry:item",
+          type: metaContent.type || 'registry:item',
           title: metaContent.title || itemName,
-          description: metaContent.description || "",
+          description: metaContent.description || '',
           dependencies: publicData?.dependencies || [],
           registryDependencies:
             publicData?.registryDependencies ||
@@ -234,38 +234,38 @@ export function getRegistryItems(): RegistryItem[] {
         };
 
         // Discover independent demos from demos/ folder
-        const demosDir = path.join(metaDir, "demos");
+        const demosDir = path.join(metaDir, 'demos');
         const independentDemoNames = new Set<string>();
 
         if (fs.existsSync(demosDir)) {
           const demoEntries = fs
             .readdirSync(demosDir)
-            .filter((f: string) => f.endsWith(".demo.tsx"));
+            .filter((f: string) => f.endsWith('.demo.tsx'));
 
           for (const demoFile of demoEntries) {
-            const demoName = demoFile.replace(".demo.tsx", "");
+            const demoName = demoFile.replace('.demo.tsx', '');
             if (demoName === itemName) continue;
             if (metaNames.has(demoName)) continue;
 
             independentDemoNames.add(demoName);
 
             const demoTsxPath = path.join(demosDir, demoFile);
-            const content = fs.readFileSync(demoTsxPath, "utf-8");
+            const content = fs.readFileSync(demoTsxPath, 'utf-8');
             const relativePath = path.relative(REGISTRY_DIR, demoTsxPath);
             const demoMeta = parseDemoMeta(content);
             const title =
               demoMeta?.title ||
               demoName
-                .split("-")
+                .split('-')
                 .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-                .join(" ");
+                .join(' ');
 
             items.push({
               path: relativePath,
               name: demoName,
-              type: "registry:item",
+              type: 'registry:item',
               title,
-              description: demoMeta?.description || "",
+              description: demoMeta?.description || '',
               dependencies: [],
               registryDependencies: [],
               files: [],
@@ -273,7 +273,7 @@ export function getRegistryItems(): RegistryItem[] {
                 {
                   path: relativePath,
                   content,
-                  type: "registry:demo",
+                  type: 'registry:demo',
                   ...demoMeta,
                 },
               ],
@@ -288,7 +288,7 @@ export function getRegistryItems(): RegistryItem[] {
         // Remove independent demos from parent's demoFiles
         if (item.demoFiles && independentDemoNames.size > 0) {
           item.demoFiles = item.demoFiles.filter((df) => {
-            const dfName = path.basename(df.path).replace(".demo.tsx", "");
+            const dfName = path.basename(df.path).replace('.demo.tsx', '');
             return !independentDemoNames.has(dfName);
           });
           if (item.demoFiles.length === 0) item.demoFiles = undefined;
@@ -302,7 +302,7 @@ export function getRegistryItems(): RegistryItem[] {
 
     return items;
   } catch (error) {
-    console.error("Error reading registry directory:", error);
+    console.error('Error reading registry directory:', error);
     return [];
   }
 }

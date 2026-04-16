@@ -1,46 +1,47 @@
-"use client";
+'use client';
 
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import { ArrowLeftIcon, ArrowRightIcon, RefreshCwIcon } from 'lucide-react';
+
 import {
   WebPreview,
+  WebPreviewBody,
+  WebPreviewConsole,
   WebPreviewNavigation,
   WebPreviewNavigationButton,
   WebPreviewUrl,
-  WebPreviewBody,
-  WebPreviewConsole,
-} from "@/registry/components/ai-web-preview/ai-web-preview";
-import { RefreshCwIcon, ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
+} from '@/registry/components/ai-web-preview/ai-web-preview';
 
 export function Demo() {
   const consoleLogs = [
     {
-      level: "log" as const,
-      message: "Application started",
+      level: 'log' as const,
+      message: 'Application started',
       timestamp: new Date(),
     },
     {
-      level: "warn" as const,
-      message: "Deprecated API usage detected",
+      level: 'warn' as const,
+      message: 'Deprecated API usage detected',
       timestamp: new Date(),
     },
     {
-      level: "error" as const,
-      message: "Failed to fetch data",
+      level: 'error' as const,
+      message: 'Failed to fetch data',
       timestamp: new Date(),
     },
   ];
 
   return (
-    <Box sx={{ width: "100%", maxWidth: 896, mx: "auto", p: 4 }}>
+    <Box sx={{ width: '100%', maxWidth: 896, mx: 'auto', p: 4 }}>
       <Box>
         <Typography
           variant="body2"
-          sx={{ fontWeight: 500, color: "text.secondary", mb: 1 }}
+          sx={{ fontWeight: 500, color: 'text.secondary', mb: 1 }}
         >
           Web Preview Component
         </Typography>
-        <Typography variant="body2" sx={{ color: "text.secondary", mb: 2 }}>
+        <Typography variant="body2" sx={{ color: 'text.secondary', mb: 2 }}>
           Embed and preview web content with navigation controls.
         </Typography>
 

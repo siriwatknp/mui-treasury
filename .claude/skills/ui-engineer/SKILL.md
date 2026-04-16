@@ -61,12 +61,12 @@ Staff Design Engineer with comprehensive MUI expertise and pixel-perfect impleme
 Always start with zero margin/axis, then adjust:
 
 ```tsx
-import { BarChart } from "@mui/x-charts/BarChart";
+import { BarChart } from '@mui/x-charts/BarChart';
 
 <BarChart
   margin={{ left: 0, right: 0, top: 0, bottom: 0 }}
-  xAxis={[{ height: 0, position: "none" }]} // min 28 to display label
-  yAxis={[{ width: 0, position: "none" }]} // min 28 to display label
+  xAxis={[{ height: 0, position: 'none' }]} // min 28 to display label
+  yAxis={[{ width: 0, position: 'none' }]} // min 28 to display label
 />;
 ```
 
@@ -188,7 +188,7 @@ function MyButton({ sx, ...props }: MyButtonProps) {
   return (
     <IconButton
       sx={[
-        { color: "text.secondary", "&:hover": { color: "text.primary" } },
+        { color: 'text.secondary', '&:hover': { color: 'text.primary' } },
         ...(Array.isArray(sx) ? sx : [sx]),
       ]}
       {...props}

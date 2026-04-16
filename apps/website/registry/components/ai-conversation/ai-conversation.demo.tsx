@@ -1,34 +1,35 @@
-"use client";
+'use client';
 
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+
 import {
   Conversation,
   ConversationContent,
   ConversationScrollButton,
-} from "@/registry/components/ai-conversation/ai-conversation";
+} from '@/registry/components/ai-conversation/ai-conversation';
 
 export function Demo() {
   return (
     <Paper
       variant="outlined"
       sx={{
-        width: "100%",
+        width: '100%',
         height: 400,
-        overflow: "hidden",
-        display: "flex",
+        overflow: 'hidden',
+        display: 'flex',
       }}
     >
       <Conversation>
         <ConversationContent>
-          <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             {/* Simulated conversation messages */}
             <Paper
               sx={{
                 p: 1.5,
-                bgcolor: "action.hover",
-                maxWidth: "80%",
+                bgcolor: 'action.hover',
+                maxWidth: '80%',
               }}
             >
               <Typography variant="body2">
@@ -39,10 +40,10 @@ export function Demo() {
             <Paper
               sx={{
                 p: 1.5,
-                bgcolor: "primary.main",
-                color: "primary.contrastText",
-                maxWidth: "80%",
-                ml: "auto",
+                bgcolor: 'primary.main',
+                color: 'primary.contrastText',
+                maxWidth: '80%',
+                ml: 'auto',
               }}
             >
               <Typography variant="body2">
@@ -53,8 +54,8 @@ export function Demo() {
             <Paper
               sx={{
                 p: 1.5,
-                bgcolor: "action.hover",
-                maxWidth: "80%",
+                bgcolor: 'action.hover',
+                maxWidth: '80%',
               }}
             >
               <Typography variant="body2">
@@ -66,10 +67,10 @@ export function Demo() {
             <Paper
               sx={{
                 p: 1.5,
-                bgcolor: "primary.main",
-                color: "primary.contrastText",
-                maxWidth: "80%",
-                ml: "auto",
+                bgcolor: 'primary.main',
+                color: 'primary.contrastText',
+                maxWidth: '80%',
+                ml: 'auto',
               }}
             >
               <Typography variant="body2">
@@ -80,8 +81,8 @@ export function Demo() {
             <Paper
               sx={{
                 p: 1.5,
-                bgcolor: "action.hover",
-                maxWidth: "80%",
+                bgcolor: 'action.hover',
+                maxWidth: '80%',
               }}
             >
               <Typography variant="body2" sx={{ mb: 1 }}>
@@ -107,10 +108,10 @@ export function Demo() {
                 key={i}
                 sx={{
                   p: 1.5,
-                  bgcolor: i % 2 === 0 ? "action.hover" : "primary.main",
-                  color: i % 2 === 0 ? "text.primary" : "primary.contrastText",
-                  maxWidth: "80%",
-                  ...(i % 2 !== 0 && { ml: "auto" }),
+                  bgcolor: i % 2 === 0 ? 'action.hover' : 'primary.main',
+                  color: i % 2 === 0 ? 'text.primary' : 'primary.contrastText',
+                  maxWidth: '80%',
+                  ...(i % 2 !== 0 && { ml: 'auto' }),
                 }}
               >
                 <Typography variant="body2">Message {i + 6}</Typography>

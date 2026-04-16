@@ -1,6 +1,6 @@
-import { notFound } from "next/navigation";
+import { notFound } from 'next/navigation';
 
-import CategoryClient from "@/components/category-client";
+import CategoryClient from '@/components/category-client';
 import {
   getCategories,
   getRegistryBySubcategory,
@@ -8,7 +8,7 @@ import {
   getTags,
   getUncategorizedItems,
   isVisibleItem,
-} from "@/lib/registry";
+} from '@/lib/registry';
 
 interface CategoryPageProps {
   params: Promise<{ category: string }>;
@@ -46,9 +46,9 @@ export default async function CategoryPage({
     .map((subcat) => ({
       name: subcat,
       label: subcat
-        .split("-")
+        .split('-')
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" "),
+        .join(' '),
       count: getRegistryBySubcategory(category, subcat).filter(isVisibleItem)
         .length,
     }));
@@ -58,7 +58,7 @@ export default async function CategoryPage({
     getUncategorizedItems(category).filter(isVisibleItem);
 
   // Filter by tags if provided
-  const selectedTags = tags ? tags.split(",").filter(Boolean) : [];
+  const selectedTags = tags ? tags.split(',').filter(Boolean) : [];
   const filteredItems =
     selectedTags.length > 0
       ? uncategorizedItems.filter((item) =>

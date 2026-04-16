@@ -1,26 +1,27 @@
-import React from "react";
-import Avatar from "@mui/material/Avatar";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Divider from "@mui/material/Divider";
-import Link from "@mui/material/Link";
-import Typography from "@mui/material/Typography";
+import React from 'react';
 
-const PersonItem = ({ src = "", name = "", count = 0 }) => {
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
+import Link from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
+
+const PersonItem = ({ src = '', name = '', count = 0 }) => {
   return (
-    <Box sx={{ display: "flex", flexWrap: "nowrap", gap: 2, p: 2 }}>
+    <Box sx={{ display: 'flex', flexWrap: 'nowrap', gap: 2, p: 2 }}>
       <Box sx={{ flexShrink: 0 }}>
         <Avatar src={src} />
       </Box>
       <Box
         sx={{
-          display: "flex",
-          flexWrap: "wrap",
+          display: 'flex',
+          flexWrap: 'wrap',
           minWidth: 0,
           gap: 1,
-          alignItems: "center",
+          alignItems: 'center',
           flexGrow: 1,
-          "& > *": {
+          '& > *': {
             minWidth: `clamp(0px, (240px + 1px - 100%) * 999, 100%)`,
           },
         }}
@@ -30,10 +31,10 @@ const PersonItem = ({ src = "", name = "", count = 0 }) => {
             noWrap
             sx={(theme) => ({
               fontWeight: 600,
-              fontSize: "1rem",
-              color: "#122740",
-              ...theme.applyStyles("dark", {
-                color: "#fff",
+              fontSize: '1rem',
+              color: '#122740',
+              ...theme.applyStyles('dark', {
+                color: '#fff',
               }),
             })}
           >
@@ -43,8 +44,8 @@ const PersonItem = ({ src = "", name = "", count = 0 }) => {
             noWrap
             variant="body2"
             sx={{
-              fontSize: "0.875rem",
-              color: "#758392",
+              fontSize: '0.875rem',
+              color: '#758392',
               mt: -0.25,
             }}
           >
@@ -54,12 +55,12 @@ const PersonItem = ({ src = "", name = "", count = 0 }) => {
         <Box>
           <Button
             size="small"
-            variant={"outlined"}
+            variant={'outlined'}
             sx={{
               borderRadius: 5,
-              padding: "0.125rem 0.75rem",
-              borderColor: "#becddc",
-              fontSize: "0.75rem",
+              padding: '0.125rem 0.75rem',
+              borderColor: '#becddc',
+              fontSize: '0.75rem',
             }}
           >
             Follow
@@ -74,14 +75,14 @@ export function CardSocial() {
   return (
     <Box
       sx={(theme) => ({
-        display: "flex",
-        flexDirection: "column",
+        display: 'flex',
+        flexDirection: 'column',
         borderRadius: 2,
-        bgcolor: "rgb(244, 247, 250)",
-        boxShadow: "0 8px 16px 0 #BDC9D7",
-        ...theme.applyStyles("dark", {
-          bgcolor: "#1f2733",
-          boxShadow: "unset",
+        bgcolor: 'rgb(244, 247, 250)',
+        boxShadow: '0 8px 16px 0 #BDC9D7',
+        ...theme.applyStyles('dark', {
+          bgcolor: '#1f2733',
+          boxShadow: 'unset',
         }),
       })}
     >
@@ -89,13 +90,13 @@ export function CardSocial() {
         alignItems="baseline"
         p={2}
         sx={(theme) => ({
-          display: "flex",
-          flexWrap: "wrap",
-          borderTopLeftRadius: "inherit",
-          borderTopRightRadius: "inherit",
-          bgcolor: "#fff",
-          ...theme.applyStyles("dark", {
-            bgcolor: "#2f3c50",
+          display: 'flex',
+          flexWrap: 'wrap',
+          borderTopLeftRadius: 'inherit',
+          borderTopRightRadius: 'inherit',
+          bgcolor: '#fff',
+          ...theme.applyStyles('dark', {
+            bgcolor: '#2f3c50',
           }),
         })}
       >

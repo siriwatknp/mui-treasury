@@ -1,16 +1,17 @@
-"use client";
+'use client';
 
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import TextField from "@mui/material/TextField";
-import Tooltip from "@mui/material/Tooltip";
-import Typography from "@mui/material/Typography";
-import Collapse from "@mui/material/Collapse";
-import type { SxProps, Theme } from "@mui/material/styles";
-import { ChevronDownIcon } from "lucide-react";
-import type { ReactNode } from "react";
-import { createContext, useContext, useState } from "react";
+import type { ReactNode } from 'react';
+import { createContext, useContext, useState } from 'react';
+
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Collapse from '@mui/material/Collapse';
+import IconButton from '@mui/material/IconButton';
+import TextField from '@mui/material/TextField';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+import type { SxProps, Theme } from '@mui/material/styles';
+import { ChevronDownIcon } from 'lucide-react';
 
 export type WebPreviewContextValue = {
   url: string;
@@ -24,7 +25,7 @@ const WebPreviewContext = createContext<WebPreviewContextValue | null>(null);
 const useWebPreview = () => {
   const context = useContext(WebPreviewContext);
   if (!context) {
-    throw new Error("WebPreview components must be used within a WebPreview");
+    throw new Error('WebPreview components must be used within a WebPreview');
   }
   return context;
 };
@@ -38,7 +39,7 @@ export type WebPreviewProps = {
 
 export const WebPreview = ({
   children,
-  defaultUrl = "",
+  defaultUrl = '',
   onUrlChange,
   sx,
 }: WebPreviewProps) => {
@@ -61,14 +62,14 @@ export const WebPreview = ({
     <WebPreviewContext.Provider value={contextValue}>
       <Box
         sx={{
-          display: "flex",
-          width: "100%",
-          height: "100%",
-          flexDirection: "column",
+          display: 'flex',
+          width: '100%',
+          height: '100%',
+          flexDirection: 'column',
           borderRadius: 2,
           border: 1,
-          borderColor: "divider",
-          bgcolor: "background.paper",
+          borderColor: 'divider',
+          bgcolor: 'background.paper',
           ...sx,
         }}
       >
@@ -89,11 +90,11 @@ export const WebPreviewNavigation = ({
 }: WebPreviewNavigationProps) => (
   <Box
     sx={{
-      display: "flex",
-      alignItems: "center",
+      display: 'flex',
+      alignItems: 'center',
       gap: 0.5,
       borderBottom: 1,
-      borderColor: "divider",
+      borderColor: 'divider',
       p: 1,
       ...sx,
     }}
@@ -125,8 +126,8 @@ export const WebPreviewNavigationButton = ({
       sx={{
         width: 32,
         height: 32,
-        "&:hover": {
-          color: "text.primary",
+        '&:hover': {
+          color: 'text.primary',
         },
         ...sx,
       }}
@@ -154,7 +155,7 @@ export const WebPreviewUrl = ({
   const { url, setUrl } = useWebPreview();
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
+    if (event.key === 'Enter') {
       const target = event.target as HTMLInputElement;
       setUrl(target.value);
     }
@@ -171,9 +172,9 @@ export const WebPreviewUrl = ({
       onKeyDown={handleKeyDown}
       sx={{
         flex: 1,
-        "& .MuiInputBase-root": {
+        '& .MuiInputBase-root': {
           height: 32,
-          fontSize: "0.875rem",
+          fontSize: '0.875rem',
         },
         ...sx,
       }}
@@ -198,9 +199,9 @@ export const WebPreviewBody = ({ loading, src, sx }: WebPreviewBodyProps) => {
         src={(src ?? url) || undefined}
         title="Preview"
         sx={{
-          width: "100%",
-          height: "100%",
-          border: "none",
+          width: '100%',
+          height: '100%',
+          border: 'none',
         }}
       />
       {loading}
@@ -210,7 +211,7 @@ export const WebPreviewBody = ({ loading, src, sx }: WebPreviewBodyProps) => {
 
 export type WebPreviewConsoleProps = {
   logs?: Array<{
-    level: "log" | "warn" | "error";
+    level: 'log' | 'warn' | 'error';
     message: string;
     timestamp: Date;
   }>;
@@ -229,9 +230,9 @@ export const WebPreviewConsole = ({
     <Box
       sx={{
         borderTop: 1,
-        borderColor: "divider",
-        fontFamily: "monospace",
-        fontSize: "0.875rem",
+        borderColor: 'divider',
+        fontFamily: 'monospace',
+        fontSize: '0.875rem',
         ...sx,
       }}
     >
@@ -241,17 +242,17 @@ export const WebPreviewConsole = ({
         variant="text"
         onClick={() => setConsoleOpen(!consoleOpen)}
         sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          textAlign: "left",
+          display: 'flex',
+          justifyContent: 'space-between',
+          textAlign: 'left',
           fontWeight: 500,
           borderRadius: 0,
           px: 2,
-          "&:hover, &:active": {
-            bgcolor: "transparent",
+          '&:hover, &:active': {
+            bgcolor: 'transparent',
           },
-          "&:active": {
-            transform: "none",
+          '&:active': {
+            transform: 'none',
           },
         }}
         endIcon={
@@ -259,8 +260,8 @@ export const WebPreviewConsole = ({
             component={ChevronDownIcon}
             size={16}
             sx={{
-              transition: "transform 0.2s",
-              transform: consoleOpen ? "rotate(180deg)" : "rotate(0deg)",
+              transition: 'transform 0.2s',
+              transform: consoleOpen ? 'rotate(180deg)' : 'rotate(0deg)',
             }}
           />
         }
@@ -272,14 +273,14 @@ export const WebPreviewConsole = ({
           <Box
             sx={{
               maxHeight: 192,
-              overflowY: "auto",
-              "& > *:not(:last-child)": {
+              overflowY: 'auto',
+              '& > *:not(:last-child)': {
                 mb: 0.5,
               },
             }}
           >
             {logs.length === 0 ? (
-              <Typography sx={{ color: "text.secondary" }}>
+              <Typography sx={{ color: 'text.secondary' }}>
                 No console output
               </Typography>
             ) : (
@@ -287,18 +288,18 @@ export const WebPreviewConsole = ({
                 <Box
                   key={`${log.timestamp.getTime()}-${index}`}
                   sx={{
-                    fontSize: "0.75rem",
+                    fontSize: '0.75rem',
                     color:
-                      log.level === "error"
-                        ? "error.main"
-                        : log.level === "warn"
-                          ? "warning.main"
-                          : "text.primary",
+                      log.level === 'error'
+                        ? 'error.main'
+                        : log.level === 'warn'
+                          ? 'warning.main'
+                          : 'text.primary',
                   }}
                 >
-                  <Box component="span" sx={{ color: "text.secondary" }}>
+                  <Box component="span" sx={{ color: 'text.secondary' }}>
                     {log.timestamp.toLocaleTimeString()}
-                  </Box>{" "}
+                  </Box>{' '}
                   {log.message}
                 </Box>
               ))

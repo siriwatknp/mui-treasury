@@ -1,49 +1,49 @@
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 
-import Tooltip, { type TooltipProps } from "@mui/material/Tooltip";
-import { styled } from "@mui/material/styles";
+import Tooltip, { type TooltipProps } from '@mui/material/Tooltip';
+import { styled } from '@mui/material/styles';
 
-import { sidebarClasses } from "./sidebar-classes";
+import { sidebarClasses } from './sidebar-classes';
 
-const StyledTitle = styled("span", {
-  name: "SidebarTooltip",
-  slot: "root",
+const StyledTitle = styled('span', {
+  name: 'SidebarTooltip',
+  slot: 'root',
 })({
   maxWidth: 80,
-  width: "max-content",
-  display: "flex",
+  width: 'max-content',
+  display: 'flex',
   '[role="tooltip"]:has(&)': {
-    display: "var(--_collapsed, block) var(--_uncollapsed, none)",
+    display: 'var(--_collapsed, block) var(--_uncollapsed, none)',
   },
 });
 
 interface SidebarTooltipProps extends Omit<
   TooltipProps,
-  "title" | "placement"
+  'title' | 'placement'
 > {
   title: React.ReactNode;
-  placement?: TooltipProps["placement"];
+  placement?: TooltipProps['placement'];
 }
 
 const SidebarTooltip = React.forwardRef<HTMLDivElement, SidebarTooltipProps>(
   function SidebarTooltip(
-    { title, placement = "right", slotProps, ...props },
+    { title, placement = 'right', slotProps, ...props },
     forwardedRef,
   ) {
     const [container, setContainer] = React.useState<Element | null>(null);
     const innerRef = React.useRef<HTMLDivElement | null>(null);
     React.useEffect(() => {
       if (innerRef.current) {
-        setContainer(innerRef.current.closest(".EdgeSidebar"));
+        setContainer(innerRef.current.closest('.EdgeSidebar'));
       }
     }, []);
     return (
       <Tooltip
         ref={(node: HTMLDivElement | null) => {
           innerRef.current = node;
-          if (typeof forwardedRef === "function") {
+          if (typeof forwardedRef === 'function') {
             forwardedRef(node);
           } else if (forwardedRef) {
             forwardedRef.current = node;
@@ -57,7 +57,7 @@ const SidebarTooltip = React.forwardRef<HTMLDivElement, SidebarTooltipProps>(
           ...slotProps,
           popper: {
             container,
-            ...(typeof slotProps?.popper === "object" && !!slotProps?.popper
+            ...(typeof slotProps?.popper === 'object' && !!slotProps?.popper
               ? slotProps.popper
               : {}),
           },

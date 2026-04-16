@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react';
 
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
-import Content from "@/registry/layout/layout-core/Content";
-import EdgeSidebarContent from "@/registry/layout/layout-core/EdgeSidebarContent";
-import EdgeSidebarRight from "@/registry/layout/layout-core/EdgeSidebarRight";
-import Footer from "@/registry/layout/layout-core/Footer";
-import Header from "@/registry/layout/layout-core/Header";
-import Root from "@/registry/layout/layout-core/Root";
+import Content from '@/registry/layout/layout-core/Content';
+import EdgeSidebarContent from '@/registry/layout/layout-core/EdgeSidebarContent';
+import EdgeSidebarRight from '@/registry/layout/layout-core/EdgeSidebarRight';
+import Footer from '@/registry/layout/layout-core/Footer';
+import Header from '@/registry/layout/layout-core/Header';
+import Root from '@/registry/layout/layout-core/Root';
 
 export const meta = {
-  title: "Edge Sidebar Right",
-  description: "Right-aligned edge sidebar using EdgeSidebarRight.",
-  previewMode: "iframe" as const,
+  title: 'Edge Sidebar Right',
+  description: 'Right-aligned edge sidebar using EdgeSidebarRight.',
+  previewMode: 'iframe' as const,
 };
 
 export function Demo() {
@@ -35,7 +35,7 @@ export function Demo() {
       </Content>
       <EdgeSidebarRight
         id="sidebar-right"
-        variant={["permanent", { width: "200px" }]}
+        variant={['permanent', { width: '200px' }]}
       >
         <EdgeSidebarContent>
           <Box sx={{ p: 2 }}>

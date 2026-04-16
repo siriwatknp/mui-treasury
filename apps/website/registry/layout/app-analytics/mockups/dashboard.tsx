@@ -1,27 +1,27 @@
-"use client";
-import React from "react";
+'use client';
+import React from 'react';
 
-import AppRegistrationRounded from "@mui/icons-material/AppRegistrationRounded";
-import EventNoteRounded from "@mui/icons-material/EventNoteRounded";
-import ForumRounded from "@mui/icons-material/ForumRounded";
-import HomeRounded from "@mui/icons-material/HomeRounded";
-import SearchRounded from "@mui/icons-material/SearchRounded";
-import SettingsRounded from "@mui/icons-material/SettingsRounded";
-import Avatar from "@mui/material/Avatar";
-import Box, { BoxProps } from "@mui/material/Box";
-import Divider from "@mui/material/Divider";
-import IconButton, { IconButtonProps } from "@mui/material/IconButton";
-import LinearProgress from "@mui/material/LinearProgress";
-import List, { ListProps } from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import ListItemButton from "@mui/material/ListItemButton";
-import Typography from "@mui/material/Typography";
-import { alpha } from "@mui/material/styles";
+import AppRegistrationRounded from '@mui/icons-material/AppRegistrationRounded';
+import EventNoteRounded from '@mui/icons-material/EventNoteRounded';
+import ForumRounded from '@mui/icons-material/ForumRounded';
+import HomeRounded from '@mui/icons-material/HomeRounded';
+import SearchRounded from '@mui/icons-material/SearchRounded';
+import SettingsRounded from '@mui/icons-material/SettingsRounded';
+import Avatar from '@mui/material/Avatar';
+import Box, { BoxProps } from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
+import IconButton, { IconButtonProps } from '@mui/material/IconButton';
+import LinearProgress from '@mui/material/LinearProgress';
+import List, { ListProps } from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import ListItemButton from '@mui/material/ListItemButton';
+import Typography from '@mui/material/Typography';
+import { alpha } from '@mui/material/styles';
 
-import { Circle, Square } from "./shapes";
-import { Word } from "./typography";
-import { getLightGrey, getLightestGrey } from "./utils";
+import { Circle, Square } from './shapes';
+import { Word } from './typography';
+import { getLightGrey, getLightestGrey } from './utils';
 
 // --- IconNav ---
 
@@ -41,19 +41,19 @@ export const IconNavMockup = ({
   ...props
 }: { icons?: Array<React.ReactNode>; activeIndex?: number } & Pick<
   IconButtonProps,
-  "size"
+  'size'
 > &
   BoxProps) => {
   return (
     <Box
       {...props}
       sx={{
-        display: "inline-flex",
-        flexDirection: "column",
+        display: 'inline-flex',
+        flexDirection: 'column',
         gap: 2,
         p: 2,
         bgcolor: getLightestGrey,
-        "& .MuiIconButton-root": {
+        '& .MuiIconButton-root': {
           borderRadius: 2,
         },
         ...props.sx,
@@ -68,7 +68,7 @@ export const IconNavMockup = ({
             ...(index === 0 && { mb: 0 }),
             ...(index === activeIndex && {
               bgcolor: (theme) => alpha(theme.palette.primary.main, 0.12),
-              "& svg": {
+              '& svg': {
                 color: (theme) => theme.palette.primary.main,
               },
             }),
@@ -93,11 +93,11 @@ export const LinkNavMockup = ({
       sx={{
         flexGrow: 1,
         p: 2,
-        "& .MuiListItemButton-root": {
+        '& .MuiListItemButton-root': {
           borderRadius: 2,
-          "&:hover": {
+          '&:hover': {
             bgcolor: (theme) => alpha(theme.palette.grey[300], 0.2),
-            color: "grey.500",
+            color: 'grey.500',
           },
         },
         ...props.sx,
@@ -125,16 +125,16 @@ export const SideNavUserInfoMockup = ({
       {...props}
       sx={{
         bgcolor: getLightestGrey,
-        mr: "1px",
+        mr: '1px',
         p: 1.5,
-        display: "flex",
-        alignItems: "center",
+        display: 'flex',
+        alignItems: 'center',
         ...props.sx,
       }}
     >
-      <Circle sx={{ fontSize: collapsed ? 36 : 48, transition: "0.2s" }} />
+      <Circle sx={{ fontSize: collapsed ? 36 : 48, transition: '0.2s' }} />
       {!collapsed && (
-        <Box sx={{ ml: 1.5, minWidth: "0px" }}>
+        <Box sx={{ ml: 1.5, minWidth: '0px' }}>
           <Word />
           <Word
             sx={{
@@ -158,18 +158,18 @@ export const StatCardMockup = (props: BoxProps) => {
       {...props}
       sx={{
         borderRadius: 1,
-        border: "1px solid",
+        border: '1px solid',
         borderColor: getLightGrey,
-        bgcolor: "background.paper",
+        bgcolor: 'background.paper',
         p: 1.5,
-        display: "flex",
-        alignItems: "center",
-        boxShadow: "0 2px 6px 0 rgba(0,0,0,0.08)",
+        display: 'flex',
+        alignItems: 'center',
+        boxShadow: '0 2px 6px 0 rgba(0,0,0,0.08)',
         ...props.sx,
       }}
     >
       <Square />
-      <Box sx={{ ml: 1.5, minWidth: "0px" }}>
+      <Box sx={{ ml: 1.5, minWidth: '0px' }}>
         <Word
           sx={{
             height: 10,
@@ -195,14 +195,14 @@ export const TopUsersCardMockup = ({
       {...props}
       sx={{
         borderRadius: 1,
-        border: "1px solid",
+        border: '1px solid',
         borderColor: getLightGrey,
-        bgcolor: "background.paper",
-        boxShadow: "0 2px 6px 0 rgba(0,0,0,0.08)",
+        bgcolor: 'background.paper',
+        boxShadow: '0 2px 6px 0 rgba(0,0,0,0.08)',
         ...props.sx,
       }}
     >
-      <Box sx={{ display: "flex", p: 1.5, alignItems: "center" }}>
+      <Box sx={{ display: 'flex', p: 1.5, alignItems: 'center' }}>
         <Box>
           <Word
             sx={{
@@ -215,7 +215,7 @@ export const TopUsersCardMockup = ({
           />
           <Word sx={{ mt: 0.5, mb: 0 }} />
         </Box>
-        <Circle sx={{ ml: "auto", fontSize: 24 }} />
+        <Circle sx={{ ml: 'auto', fontSize: 24 }} />
       </Box>
       <Divider />
       <List>
@@ -240,23 +240,23 @@ export const UserActiveCardMockup = (props: BoxProps) => {
       {...props}
       sx={{
         borderRadius: 1,
-        border: "1px solid",
+        border: '1px solid',
         borderColor: getLightGrey,
-        bgcolor: "background.paper",
+        bgcolor: 'background.paper',
         p: 1.5,
-        boxShadow: "0 2px 6px 0 rgba(0,0,0,0.08)",
+        boxShadow: '0 2px 6px 0 rgba(0,0,0,0.08)',
         ...props.sx,
       }}
     >
-      <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
         <Word sx={{ bgcolor: getLightGrey }} />
-        <Circle sx={{ fontSize: 20, ml: "auto" }} />
+        <Circle sx={{ fontSize: 20, ml: 'auto' }} />
       </Box>
       <br />
-      <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
         <Box>
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Square sx={{ fontSize: 16, bgcolor: "primary.main", mr: 1 }} />
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Square sx={{ fontSize: 16, bgcolor: 'primary.main', mr: 1 }} />
             <Typography variant="h4">
               <b>92%</b>
             </Typography>
@@ -272,8 +272,8 @@ export const UserActiveCardMockup = (props: BoxProps) => {
           />
         </Box>
         <Box>
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Square sx={{ fontSize: 16, bgcolor: "error.main", mr: 1 }} />
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Square sx={{ fontSize: 16, bgcolor: 'error.main', mr: 1 }} />
             <Typography variant="h4">
               <b>8%</b>
             </Typography>
@@ -297,7 +297,7 @@ export const UserActiveCardMockup = (props: BoxProps) => {
           height: 10,
           borderRadius: 3,
           bgcolor: getLightGrey,
-          "& > .MuiLinearProgress-bar": {
+          '& > .MuiLinearProgress-bar': {
             borderRadius: 3,
           },
         }}
@@ -310,9 +310,9 @@ export const UserActiveCardMockup = (props: BoxProps) => {
           height: 10,
           borderRadius: 3,
           bgcolor: getLightGrey,
-          "& > .MuiLinearProgress-bar": {
+          '& > .MuiLinearProgress-bar': {
             borderRadius: 3,
-            bgcolor: "error.main",
+            bgcolor: 'error.main',
           },
         }}
       />

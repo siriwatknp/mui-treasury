@@ -1,6 +1,8 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
+
+import { GitHub } from '@mui/icons-material';
 import {
   Box,
   Button,
@@ -9,8 +11,7 @@ import {
   Stack,
   TextField,
   Typography,
-} from "@mui/material";
-import { GitHub } from "@mui/icons-material";
+} from '@mui/material';
 
 interface FormData {
   email: string;
@@ -24,8 +25,8 @@ interface FormErrors {
 
 export function LoginFormSplit() {
   const [formData, setFormData] = useState<FormData>({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
   const [errors, setErrors] = useState<FormErrors>({});
 
@@ -44,13 +45,13 @@ export function LoginFormSplit() {
     const newErrors: FormErrors = {};
 
     if (!formData.email) {
-      newErrors.email = "Email is required";
+      newErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email";
+      newErrors.email = 'Please enter a valid email';
     }
 
     if (!formData.password) {
-      newErrors.password = "Password is required";
+      newErrors.password = 'Password is required';
     }
 
     setErrors(newErrors);
@@ -61,40 +62,40 @@ export function LoginFormSplit() {
     event.preventDefault();
     if (validateForm()) {
       // Handle login logic here
-      console.log("Login attempt:", formData);
+      console.log('Login attempt:', formData);
     }
   };
 
   const handleGitHubLogin = () => {
     // Handle GitHub login logic here
-    console.log("GitHub login attempt");
+    console.log('GitHub login attempt');
   };
 
   return (
     <Box
       sx={{
-        display: "grid",
+        display: 'grid',
         gridTemplateColumns: {
-          xs: "1fr",
-          md: "1fr minmax(500px, 1.5fr)",
+          xs: '1fr',
+          md: '1fr minmax(500px, 1.5fr)',
         },
-        minHeight: "100lvh",
+        minHeight: '100lvh',
       }}
     >
       {/* Left side - Image */}
       <Box
         sx={(theme) => ({
           display: {
-            xs: "none",
-            md: "flex",
+            xs: 'none',
+            md: 'flex',
           },
-          height: "100lvh",
-          bgcolor: "grey.50",
-          alignItems: "center",
-          justifyContent: "center",
+          height: '100lvh',
+          bgcolor: 'grey.50',
+          alignItems: 'center',
+          justifyContent: 'center',
           p: 3,
-          ...theme.applyStyles("dark", {
-            bgcolor: "grey.900",
+          ...theme.applyStyles('dark', {
+            bgcolor: 'grey.900',
           }),
         })}
       >
@@ -103,9 +104,9 @@ export function LoginFormSplit() {
           src="https://placehold.co/600x800"
           alt="Login illustration"
           sx={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
             borderRadius: 2,
             opacity: 0.2, // TODO: remove this once we have a real image
           }}
@@ -115,15 +116,15 @@ export function LoginFormSplit() {
       {/* Right side - Login Form */}
       <Box
         sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           p: 3,
         }}
       >
         <Box
           sx={{
-            width: "100%",
+            width: '100%',
             maxWidth: 400,
           }}
         >
@@ -133,29 +134,29 @@ export function LoginFormSplit() {
             alignItems="center"
             spacing={1}
             sx={{
-              position: { xs: "static", md: "fixed" },
-              top: "2rem",
-              left: "2rem",
+              position: { xs: 'static', md: 'fixed' },
+              top: '2rem',
+              left: '2rem',
               mb: 2,
-              justifyContent: "center",
+              justifyContent: 'center',
             }}
           >
             <Box
               sx={{
                 width: 24,
                 height: 24,
-                bgcolor: "text.primary",
+                bgcolor: 'text.primary',
                 borderRadius: 1,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
               <Box
                 sx={{
                   width: 12,
                   height: 12,
-                  bgcolor: "background.paper",
+                  bgcolor: 'background.paper',
                   borderRadius: 0.5,
                 }}
               />
@@ -166,7 +167,7 @@ export function LoginFormSplit() {
           </Stack>
 
           {/* Form Header */}
-          <Box sx={{ mb: 4, textAlign: "center" }}>
+          <Box sx={{ mb: 4, textAlign: 'center' }}>
             <Typography variant="h3" sx={{ fontWeight: 600, mb: 1 }}>
               Login to your account
             </Typography>
@@ -187,7 +188,7 @@ export function LoginFormSplit() {
                 placeholder="m@example.com"
                 variant="outlined"
                 value={formData.email}
-                onChange={handleInputChange("email")}
+                onChange={handleInputChange('email')}
                 error={!!errors.email}
                 helperText={errors.email}
               />
@@ -196,9 +197,9 @@ export function LoginFormSplit() {
               <Box>
                 <Box
                   sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
                     mb: 1,
                   }}
                 >
@@ -208,7 +209,7 @@ export function LoginFormSplit() {
                   <Link
                     href="#"
                     variant="body2"
-                    sx={{ textDecoration: "none" }}
+                    sx={{ textDecoration: 'none' }}
                   >
                     Forgot your password?
                   </Link>
@@ -220,7 +221,7 @@ export function LoginFormSplit() {
                   placeholder="Enter your password"
                   variant="outlined"
                   value={formData.password}
-                  onChange={handleInputChange("password")}
+                  onChange={handleInputChange('password')}
                   error={!!errors.password}
                   helperText={errors.password}
                 />
@@ -240,7 +241,7 @@ export function LoginFormSplit() {
               </Button>
 
               {/* Divider */}
-              <Divider sx={{ color: "text.secondary", fontSize: "0.875rem" }}>
+              <Divider sx={{ color: 'text.secondary', fontSize: '0.875rem' }}>
                 Or continue with
               </Divider>
 
@@ -260,10 +261,10 @@ export function LoginFormSplit() {
               </Button>
 
               {/* Sign Up Link */}
-              <Box sx={{ textAlign: "center", mt: 4 }}>
+              <Box sx={{ textAlign: 'center', mt: 4 }}>
                 <Typography variant="body2" color="text.secondary">
-                  Don&apos;t have an account?{" "}
-                  <Link href="#" sx={{ textDecoration: "underline" }}>
+                  Don&apos;t have an account?{' '}
+                  <Link href="#" sx={{ textDecoration: 'underline' }}>
                     Sign up
                   </Link>
                 </Typography>

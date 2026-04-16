@@ -1,15 +1,15 @@
-import { notFound } from "next/navigation";
+import { notFound } from 'next/navigation';
 
-import { AppHeader } from "@/components/app-header";
-import CarbonAds from "@/components/carbon-ads/CarbonAds";
-import "@/components/carbon-ads/CarbonAds.css";
-import { CategoryLayoutShell } from "@/components/category-layout-shell";
-import { CategorySidebar } from "@/components/category-sidebar";
+import { AppHeader } from '@/components/app-header';
+import CarbonAds from '@/components/carbon-ads/CarbonAds';
+import '@/components/carbon-ads/CarbonAds.css';
+import { CategoryLayoutShell } from '@/components/category-layout-shell';
+import { CategorySidebar } from '@/components/category-sidebar';
 import {
   getCategories,
   getRegistryByCategory,
   isVisibleItem,
-} from "@/lib/registry";
+} from '@/lib/registry';
 
 interface CategoryLayoutProps {
   children: React.ReactNode;

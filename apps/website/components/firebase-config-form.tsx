@@ -1,16 +1,17 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect } from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
-import Alert from "@mui/material/Alert";
-import Link from "@mui/material/Link";
-import { Pencil, Trash2 } from "lucide-react";
+import React, { useEffect, useState } from 'react';
 
-const STORAGE_KEY = "firebase-config";
+import Alert from '@mui/material/Alert';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import Link from '@mui/material/Link';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import { Pencil, Trash2 } from 'lucide-react';
+
+const STORAGE_KEY = 'firebase-config';
 
 const PLACEHOLDER = `{
   apiKey: "...",
@@ -59,33 +60,33 @@ function ConfigSnippet({
   onEdit: () => void;
   onClear: () => void;
 }) {
-  const truncated = config.length > 80 ? config.slice(0, 80) + "..." : config;
+  const truncated = config.length > 80 ? config.slice(0, 80) + '...' : config;
 
   return (
     <Box
       sx={{
         maxWidth: 600,
-        mx: "auto",
+        mx: 'auto',
         mb: 4,
         p: 2,
         borderRadius: 2,
-        bgcolor: "background.paper",
+        bgcolor: 'background.paper',
         border: 1,
-        borderColor: "divider",
+        borderColor: 'divider',
       }}
     >
       <Box
         sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
           mb: 1,
         }}
       >
         <Typography variant="body2" sx={{ fontWeight: 500 }}>
           Firebase Config
         </Typography>
-        <Box sx={{ display: "flex", gap: 0.5 }}>
+        <Box sx={{ display: 'flex', gap: 0.5 }}>
           <IconButton size="small" onClick={onEdit} aria-label="Edit config">
             <Pencil size={16} />
           </IconButton>
@@ -93,7 +94,7 @@ function ConfigSnippet({
             size="small"
             onClick={onClear}
             aria-label="Clear config"
-            sx={{ color: "error.main" }}
+            sx={{ color: 'error.main' }}
           >
             <Trash2 size={16} />
           </IconButton>
@@ -101,15 +102,15 @@ function ConfigSnippet({
       </Box>
       <Box
         sx={{
-          fontFamily: "monospace",
+          fontFamily: 'monospace',
           fontSize: 12,
-          color: "text.secondary",
-          bgcolor: "action.hover",
+          color: 'text.secondary',
+          bgcolor: 'action.hover',
           p: 1,
           borderRadius: 1,
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          whiteSpace: "nowrap",
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap',
         }}
       >
         {truncated}
@@ -119,8 +120,8 @@ function ConfigSnippet({
 }
 
 export function FirebaseConfigForm() {
-  const [config, setConfig] = useState("");
-  const [error, setError] = useState("");
+  const [config, setConfig] = useState('');
+  const [error, setError] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [hasExisting, setHasExisting] = useState(false);
 
@@ -136,21 +137,21 @@ export function FirebaseConfigForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
+    setError('');
 
     const trimmed = config.trim();
     if (!trimmed) {
-      setError("Config is required");
+      setError('Config is required');
       return;
     }
 
     const parsed = parseFirebaseConfig(trimmed);
     if (!parsed) {
-      setError("Invalid config format");
+      setError('Invalid config format');
       return;
     }
     if (!parsed.apiKey || !parsed.projectId) {
-      setError("Missing required fields: apiKey, projectId");
+      setError('Missing required fields: apiKey, projectId');
       return;
     }
     localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
@@ -160,10 +161,10 @@ export function FirebaseConfigForm() {
   const handleCancel = () => {
     if (hasExisting) {
       const stored = localStorage.getItem(STORAGE_KEY);
-      setConfig(stored || "");
+      setConfig(stored || '');
       setIsEditing(false);
     }
-    setError("");
+    setError('');
   };
 
   const handleClear = () => {
@@ -187,13 +188,13 @@ export function FirebaseConfigForm() {
       onSubmit={handleSubmit}
       sx={{
         maxWidth: 600,
-        mx: "auto",
+        mx: 'auto',
         mb: 4,
         p: 3,
         borderRadius: 2,
-        bgcolor: "background.paper",
+        bgcolor: 'background.paper',
         border: 1,
-        borderColor: "divider",
+        borderColor: 'divider',
       }}
     >
       <Alert severity="info" sx={{ mb: 2 }}>
@@ -203,7 +204,7 @@ export function FirebaseConfigForm() {
           rel="noopener"
         >
           Firebase AI Logic
-        </Link>{" "}
+        </Link>{' '}
         must be enabled to test demos on this page.
       </Alert>
 
@@ -223,19 +224,19 @@ export function FirebaseConfigForm() {
         value={config}
         onChange={(e) => {
           setConfig(e.target.value);
-          setError("");
+          setError('');
         }}
         error={!!error}
         helperText="Paste the SDK snippet from Firebase console (⚙️ → Project settings → Your apps)"
         slotProps={{
           input: {
-            sx: { fontFamily: "monospace", fontSize: 13 },
+            sx: { fontFamily: 'monospace', fontSize: 13 },
           },
         }}
         sx={{ mb: 2 }}
       />
 
-      <Box sx={{ display: "flex", gap: 1, justifyContent: "flex-end" }}>
+      <Box sx={{ display: 'flex', gap: 1, justifyContent: 'flex-end' }}>
         {hasExisting && <Button onClick={handleCancel}>Cancel</Button>}
         <Button type="submit" variant="contained">
           Save

@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
 import {
   Branch,
   BranchMessages,
-  BranchSelector,
-  BranchPrevious,
   BranchNext,
   BranchPage,
-} from "@/registry/components/ai-branch/ai-branch";
+  BranchPrevious,
+  BranchSelector,
+} from '@/registry/components/ai-branch/ai-branch';
 
 export function Demo() {
   return (

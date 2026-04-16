@@ -1,105 +1,107 @@
-"use client";
-import React from "react";
-import NextLink from "next/link";
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import ChevronLeftRounded from "@mui/icons-material/ChevronLeftRounded";
-import CloseRounded from "@mui/icons-material/CloseRounded";
-import ChevronRightRounded from "@mui/icons-material/ChevronRightRounded";
-import HomeRounded from "@mui/icons-material/HomeRounded";
-import MenuRounded from "@mui/icons-material/MenuRounded";
-import Search from "@mui/icons-material/Search";
-import BarChartRounded from "@mui/icons-material/BarChartRounded";
-import SecurityRounded from "@mui/icons-material/SecurityRounded";
-import LanguageRounded from "@mui/icons-material/LanguageRounded";
-import CodeRounded from "@mui/icons-material/CodeRounded";
-import StorageRounded from "@mui/icons-material/StorageRounded";
-import SettingsRounded from "@mui/icons-material/SettingsRounded";
-import NotificationsRounded from "@mui/icons-material/NotificationsRounded";
-import FolderRounded from "@mui/icons-material/FolderRounded";
-import ArticleRounded from "@mui/icons-material/ArticleRounded";
-import PeopleRounded from "@mui/icons-material/PeopleRounded";
-import ExpandMoreRounded from "@mui/icons-material/ExpandMoreRounded";
-import Root from "@/registry/layout/layout-core/Root";
-import Header from "@/registry/layout/layout-core/Header";
-import Content from "@/registry/layout/layout-core/Content";
-import Footer from "@/registry/layout/layout-core/Footer";
-import EdgeSidebar, {
-  triggerEdgeCollapse,
-  triggerEdgeDrawer,
-} from "@/registry/layout/layout-core/EdgeSidebar";
-import EdgeSidebarContent from "@/registry/layout/layout-core/EdgeSidebarContent";
-import { layoutClasses } from "@/registry/layout/layout-core/layoutClasses";
-import { EdgeDrawerClose } from "@/registry/layout/layout-core";
+'use client';
+import React from 'react';
+
+import ArticleRounded from '@mui/icons-material/ArticleRounded';
+import BarChartRounded from '@mui/icons-material/BarChartRounded';
+import ChevronLeftRounded from '@mui/icons-material/ChevronLeftRounded';
+import ChevronRightRounded from '@mui/icons-material/ChevronRightRounded';
+import CloseRounded from '@mui/icons-material/CloseRounded';
+import CodeRounded from '@mui/icons-material/CodeRounded';
+import ExpandMoreRounded from '@mui/icons-material/ExpandMoreRounded';
+import FolderRounded from '@mui/icons-material/FolderRounded';
+import HomeRounded from '@mui/icons-material/HomeRounded';
+import LanguageRounded from '@mui/icons-material/LanguageRounded';
+import MenuRounded from '@mui/icons-material/MenuRounded';
+import NotificationsRounded from '@mui/icons-material/NotificationsRounded';
+import PeopleRounded from '@mui/icons-material/PeopleRounded';
+import Search from '@mui/icons-material/Search';
+import SecurityRounded from '@mui/icons-material/SecurityRounded';
+import SettingsRounded from '@mui/icons-material/SettingsRounded';
+import StorageRounded from '@mui/icons-material/StorageRounded';
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import NextLink from 'next/link';
+
+import { CollapsibleContent } from '@/registry/components/collapsible/collapsible-content';
+import { CollapsibleIcon } from '@/registry/components/collapsible/collapsible-icon';
+import { CollapsibleTrigger } from '@/registry/components/collapsible/collapsible-trigger';
 import {
   SidebarContainer,
   SidebarGroup,
   SidebarGroupLabel,
-  SidebarMenuList,
-  SidebarMenuItem,
-  SidebarMenuButton,
   SidebarIcon,
-  SidebarText,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuList,
   SidebarRail,
-} from "@/registry/components/sidebar";
-import { CollapsibleTrigger } from "@/registry/components/collapsible/collapsible-trigger";
-import { CollapsibleContent } from "@/registry/components/collapsible/collapsible-content";
+  SidebarText,
+} from '@/registry/components/sidebar';
 import {
-  PopupMenuList,
+  PopupMenuContent,
   PopupMenuItem,
   PopupMenuLink,
-  PopupMenuContent,
-} from "@/registry/components/sidebar";
-import { useCollapsedSidebar } from "@/registry/layout/layout-core/SharedEdgeSidebar";
-import { CollapsibleIcon } from "@/registry/components/collapsible/collapsible-icon";
-import { SidebarTooltip } from "@/registry/components/sidebar";
+  PopupMenuList,
+} from '@/registry/components/sidebar';
+import { SidebarTooltip } from '@/registry/components/sidebar';
+import { EdgeDrawerClose } from '@/registry/layout/layout-core';
+import Content from '@/registry/layout/layout-core/Content';
+import EdgeSidebar, {
+  triggerEdgeCollapse,
+  triggerEdgeDrawer,
+} from '@/registry/layout/layout-core/EdgeSidebar';
+import EdgeSidebarContent from '@/registry/layout/layout-core/EdgeSidebarContent';
+import Footer from '@/registry/layout/layout-core/Footer';
+import Header from '@/registry/layout/layout-core/Header';
+import Root from '@/registry/layout/layout-core/Root';
+import { useCollapsedSidebar } from '@/registry/layout/layout-core/SharedEdgeSidebar';
+import { layoutClasses } from '@/registry/layout/layout-core/layoutClasses';
 
-const SIDEBAR_ID = "app-dashboard-sidebar";
+const SIDEBAR_ID = 'app-dashboard-sidebar';
 
 const nestedMenus = [
   {
-    title: "Projects",
+    title: 'Projects',
     icon: FolderRounded,
     children: [
-      { title: "Design System" },
-      { title: "Landing Page" },
-      { title: "API Gateway" },
+      { title: 'Design System' },
+      { title: 'Landing Page' },
+      { title: 'API Gateway' },
     ],
   },
   {
-    title: "Documentation",
+    title: 'Documentation',
     icon: ArticleRounded,
     children: [
-      { title: "Getting Started" },
-      { title: "Components" },
-      { title: "API Reference" },
+      { title: 'Getting Started' },
+      { title: 'Components' },
+      { title: 'API Reference' },
     ],
   },
   {
-    title: "Team",
+    title: 'Team',
     icon: PeopleRounded,
-    children: [{ title: "Members" }, { title: "Permissions" }],
+    children: [{ title: 'Members' }, { title: 'Permissions' }],
   },
 ];
 
 const menus = [
-  { title: "Account Home", icon: HomeRounded },
-  { title: "Discover", icon: Search },
-  { title: "Domain Registration", icon: LanguageRounded },
-  { title: "Analytics & Logs", icon: BarChartRounded },
-  { title: "Security Center", icon: SecurityRounded },
-  { title: "Workers & Pages", icon: CodeRounded },
-  { title: "Storage & Databases", icon: StorageRounded },
-  { title: "Manage Account", icon: SettingsRounded },
-  { title: "Notifications", icon: NotificationsRounded },
+  { title: 'Account Home', icon: HomeRounded },
+  { title: 'Discover', icon: Search },
+  { title: 'Domain Registration', icon: LanguageRounded },
+  { title: 'Analytics & Logs', icon: BarChartRounded },
+  { title: 'Security Center', icon: SecurityRounded },
+  { title: 'Workers & Pages', icon: CodeRounded },
+  { title: 'Storage & Databases', icon: StorageRounded },
+  { title: 'Manage Account', icon: SettingsRounded },
+  { title: 'Notifications', icon: NotificationsRounded },
 ];
 
 export default function AppDashboardPage() {
   const collapsed = useCollapsedSidebar(SIDEBAR_ID);
   return (
     <Root>
-      <Header height={{ xs: "48px", md: "64px" }} clip>
+      <Header height={{ xs: '48px', md: '64px' }} clip>
         <IconButton
           className={layoutClasses.EdgeDrawerTrigger}
           onClick={() => triggerEdgeDrawer({ sidebarId: SIDEBAR_ID })}
@@ -126,12 +128,12 @@ export default function AppDashboardPage() {
         id={SIDEBAR_ID}
         permanentAutoCollapse="lg"
         variant={{
-          xs: ["drawer", { width: "260px", showHeader: true }],
+          xs: ['drawer', { width: '260px', showHeader: true }],
           md: [
-            "permanent",
+            'permanent',
             {
-              width: "260px",
-              collapsedWidth: "52px",
+              width: '260px',
+              collapsedWidth: '52px',
               // hoverUncollapse: true,
             },
           ],
@@ -147,7 +149,7 @@ export default function AppDashboardPage() {
                   const Icon = item.icon;
                   return (
                     <SidebarTooltip title={item.title} key={item.title}>
-                      <SidebarMenuButton active={item.title === "Account Home"}>
+                      <SidebarMenuButton active={item.title === 'Account Home'}>
                         <SidebarIcon shrinkSize="1.25rem">
                           <Icon />
                         </SidebarIcon>
@@ -228,7 +230,7 @@ export default function AppDashboardPage() {
                       {!collapsed && (
                         <SidebarMenuItem>
                           <CollapsibleTrigger
-                            defaultChecked={item.title === "Projects"}
+                            defaultChecked={item.title === 'Projects'}
                             render={
                               <SidebarMenuButton>
                                 <SidebarIcon shrinkSize="1.25rem">
@@ -297,7 +299,7 @@ export default function AppDashboardPage() {
               </PopupMenuList>
             </SidebarGroup>
           </SidebarContainer>
-          <Box sx={{ mt: "auto", borderTop: 1, borderColor: "divider" }}>
+          <Box sx={{ mt: 'auto', borderTop: 1, borderColor: 'divider' }}>
             <SidebarGroup>
               <SidebarMenuList>
                 <SidebarMenuItem>
@@ -334,7 +336,7 @@ export default function AppDashboardPage() {
       </EdgeSidebar>
 
       <Content sx={{ p: { xs: 2, md: 4 } }}>
-        <Box sx={{ maxWidth: 960, mx: "auto" }}>
+        <Box sx={{ maxWidth: 960, mx: 'auto' }}>
           <Typography variant="h4" gutterBottom fontWeight="bold">
             Boost your site&apos;s speed and security
           </Typography>
@@ -346,7 +348,7 @@ export default function AppDashboardPage() {
             sx={{
               p: 3,
               border: 1,
-              borderColor: "divider",
+              borderColor: 'divider',
               borderRadius: 2,
               mb: 3,
             }}
@@ -358,19 +360,19 @@ export default function AppDashboardPage() {
               component="input"
               placeholder="example.com"
               sx={(theme) => ({
-                width: "100%",
+                width: '100%',
                 maxWidth: 400,
                 px: 1.5,
                 py: 1,
                 border: 1,
-                borderColor: "divider",
+                borderColor: 'divider',
                 borderRadius: 1,
                 fontSize: 14,
-                outline: "none",
-                fontFamily: "inherit",
-                bgcolor: "transparent",
-                color: "text.primary",
-                "&:focus": {
+                outline: 'none',
+                fontFamily: 'inherit',
+                bgcolor: 'transparent',
+                color: 'text.primary',
+                '&:focus': {
                   borderColor: (theme.vars || theme).palette.primary.main,
                 },
               })}
@@ -383,9 +385,9 @@ export default function AppDashboardPage() {
         sx={{
           py: 2,
           px: 3,
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
           gap: 2,
         }}
       >

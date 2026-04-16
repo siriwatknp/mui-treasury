@@ -51,16 +51,16 @@ pnpm add -D vitest @vitest/ui memfs
 
 ```typescript
 // vitest.config.ts
-import { defineConfig } from "vitest/config";
+import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
     globals: true,
-    environment: "node",
+    environment: 'node',
     coverage: {
-      provider: "v8",
-      reporter: ["text", "json", "html"],
-      exclude: ["**/__tests__/**", "**/node_modules/**"],
+      provider: 'v8',
+      reporter: ['text', 'json', 'html'],
+      exclude: ['**/__tests__/**', '**/node_modules/**'],
     },
   },
 });
@@ -148,12 +148,12 @@ export default defineConfig({
 #### TC1: Production environment with VERCEL_PROJECT_PRODUCTION_URL
 
 ```typescript
-describe("getRegistryBaseUrl", () => {
-  it("should return production URL when VERCEL_ENV=production and VERCEL_PROJECT_PRODUCTION_URL exists", () => {
-    process.env.VERCEL_ENV = "production";
-    process.env.VERCEL_PROJECT_PRODUCTION_URL = "mui-treasury.vercel.app";
+describe('getRegistryBaseUrl', () => {
+  it('should return production URL when VERCEL_ENV=production and VERCEL_PROJECT_PRODUCTION_URL exists', () => {
+    process.env.VERCEL_ENV = 'production';
+    process.env.VERCEL_PROJECT_PRODUCTION_URL = 'mui-treasury.vercel.app';
 
-    expect(getRegistryBaseUrl()).toBe("https://mui-treasury.vercel.app");
+    expect(getRegistryBaseUrl()).toBe('https://mui-treasury.vercel.app');
   });
 });
 ```
@@ -161,33 +161,33 @@ describe("getRegistryBaseUrl", () => {
 #### TC2: Production environment without VERCEL_PROJECT_PRODUCTION_URL
 
 ```typescript
-it("should fallback to mui-treasury.com when VERCEL_ENV=production but no VERCEL_PROJECT_PRODUCTION_URL", () => {
-  process.env.VERCEL_ENV = "production";
+it('should fallback to mui-treasury.com when VERCEL_ENV=production but no VERCEL_PROJECT_PRODUCTION_URL', () => {
+  process.env.VERCEL_ENV = 'production';
   delete process.env.VERCEL_PROJECT_PRODUCTION_URL;
 
-  expect(getRegistryBaseUrl()).toBe("https://mui-treasury.com");
+  expect(getRegistryBaseUrl()).toBe('https://mui-treasury.com');
 });
 ```
 
 #### TC3: Preview environment with VERCEL_BRANCH_URL
 
 ```typescript
-it("should return branch URL for preview deployments", () => {
-  process.env.VERCEL_ENV = "preview";
-  process.env.VERCEL_BRANCH_URL = "feature-branch-abc123.vercel.app";
+it('should return branch URL for preview deployments', () => {
+  process.env.VERCEL_ENV = 'preview';
+  process.env.VERCEL_BRANCH_URL = 'feature-branch-abc123.vercel.app';
 
-  expect(getRegistryBaseUrl()).toBe("https://feature-branch-abc123.vercel.app");
+  expect(getRegistryBaseUrl()).toBe('https://feature-branch-abc123.vercel.app');
 });
 ```
 
 #### TC4: Local development (no env vars)
 
 ```typescript
-it("should return localhost:3000 for local development", () => {
+it('should return localhost:3000 for local development', () => {
   delete process.env.VERCEL_ENV;
   delete process.env.VERCEL_BRANCH_URL;
 
-  expect(getRegistryBaseUrl()).toBe("http://localhost:3000");
+  expect(getRegistryBaseUrl()).toBe('http://localhost:3000');
 });
 ```
 
@@ -216,37 +216,37 @@ afterEach(() => {
 #### TC1: Extract npm packages (unscoped)
 
 ```typescript
-it("should extract unscoped npm packages", () => {
+it('should extract unscoped npm packages', () => {
   const content = `
     import lodash from 'lodash';
     import { format } from 'date-fns';
   `;
 
   const deps = extractDependencies(content);
-  expect(deps).toContain("lodash");
-  expect(deps).toContain("date-fns");
+  expect(deps).toContain('lodash');
+  expect(deps).toContain('date-fns');
 });
 ```
 
 #### TC2: Extract scoped packages
 
 ```typescript
-it("should extract scoped packages like @mui/material", () => {
+it('should extract scoped packages like @mui/material', () => {
   const content = `
     import { Box } from '@mui/material';
     import { DataGrid } from '@mui/x-data-grid';
   `;
 
   const deps = extractDependencies(content);
-  expect(deps).toContain("@mui/material");
-  expect(deps).toContain("@mui/x-data-grid");
+  expect(deps).toContain('@mui/material');
+  expect(deps).toContain('@mui/x-data-grid');
 });
 ```
 
 #### TC3: Ignore relative imports
 
 ```typescript
-it("should ignore relative imports", () => {
+it('should ignore relative imports', () => {
   const content = `
     import { helper } from './utils';
     import Component from '../components/Component';
@@ -260,7 +260,7 @@ it("should ignore relative imports", () => {
 #### TC4: Ignore @/ alias imports
 
 ```typescript
-it("should ignore @/ alias imports", () => {
+it('should ignore @/ alias imports', () => {
   const content = `
     import { Button } from '@/components/ui/button';
     import { useTheme } from '@/hooks/useTheme';
@@ -274,44 +274,44 @@ it("should ignore @/ alias imports", () => {
 #### TC5: Add emotion dependencies when MUI is used
 
 ```typescript
-it("should automatically add @emotion/react and @emotion/styled when @mui is detected", () => {
+it('should automatically add @emotion/react and @emotion/styled when @mui is detected', () => {
   const content = `import { Box } from '@mui/material';`;
 
   const deps = extractDependencies(content);
-  expect(deps).toContain("@emotion/react");
-  expect(deps).toContain("@emotion/styled");
+  expect(deps).toContain('@emotion/react');
+  expect(deps).toContain('@emotion/styled');
 });
 ```
 
 #### TC6: Filter out React
 
 ```typescript
-it("should filter out react (peer dependency)", () => {
+it('should filter out react (peer dependency)', () => {
   const content = `
     import React from 'react';
     import { useState } from 'react';
   `;
 
   const deps = extractDependencies(content);
-  expect(deps).not.toContain("react");
+  expect(deps).not.toContain('react');
 });
 ```
 
 #### TC7: Handle deep imports
 
 ```typescript
-it("should extract package name from deep imports", () => {
+it('should extract package name from deep imports', () => {
   const content = `import { Button } from '@mui/material/Button';`;
 
   const deps = extractDependencies(content);
-  expect(deps).toContain("@mui/material");
+  expect(deps).toContain('@mui/material');
 });
 ```
 
 #### TC8: Handle no imports
 
 ```typescript
-it("should return empty array when no imports found", () => {
+it('should return empty array when no imports found', () => {
   const content = `const foo = "bar";`;
 
   expect(extractDependencies(content)).toEqual([]);
@@ -332,7 +332,7 @@ it("should return empty array when no imports found", () => {
 it('should extract name from "export default function Name"', () => {
   const content = `export default function MyComponent() { return null; }`;
 
-  expect(extractDefaultExportName(content)).toBe("MyComponent");
+  expect(extractDefaultExportName(content)).toBe('MyComponent');
 });
 ```
 
@@ -342,7 +342,7 @@ it('should extract name from "export default function Name"', () => {
 it('should extract name from "export default class Name"', () => {
   const content = `export default class MyClass { }`;
 
-  expect(extractDefaultExportName(content)).toBe("MyClass");
+  expect(extractDefaultExportName(content)).toBe('MyClass');
 });
 ```
 
@@ -352,7 +352,7 @@ it('should extract name from "export default class Name"', () => {
 it('should extract name from "export default const Name"', () => {
   const content = `export default const MyComponent = () => {};`;
 
-  expect(extractDefaultExportName(content)).toBe("MyComponent");
+  expect(extractDefaultExportName(content)).toBe('MyComponent');
 });
 ```
 
@@ -365,14 +365,14 @@ it('should extract name from "export default ComponentName;"', () => {
     export default MyComponent;
   `;
 
-  expect(extractDefaultExportName(content)).toBe("MyComponent");
+  expect(extractDefaultExportName(content)).toBe('MyComponent');
 });
 ```
 
 #### TC5: No default export
 
 ```typescript
-it("should return null when no default export", () => {
+it('should return null when no default export', () => {
   const content = `export const foo = "bar";`;
 
   expect(extractDefaultExportName(content)).toBeNull();
@@ -382,7 +382,7 @@ it("should return null when no default export", () => {
 #### TC6: Anonymous arrow function
 
 ```typescript
-it("should return null for anonymous arrow function", () => {
+it('should return null for anonymous arrow function', () => {
   const content = `export default () => {};`;
 
   expect(extractDefaultExportName(content)).toBeNull();
@@ -392,7 +392,7 @@ it("should return null for anonymous arrow function", () => {
 #### TC7: Lowercase identifier (not component)
 
 ```typescript
-it("should return null for lowercase identifier (not a component/class)", () => {
+it('should return null for lowercase identifier (not a component/class)', () => {
   const content = `export default myVariable;`;
 
   expect(extractDefaultExportName(content)).toBeNull();
@@ -402,14 +402,14 @@ it("should return null for lowercase identifier (not a component/class)", () => 
 #### TC8: Multiple default exports (edge case)
 
 ```typescript
-it("should extract first match when multiple patterns exist", () => {
+it('should extract first match when multiple patterns exist', () => {
   const content = `
     export default function FirstComponent() {}
     // This shouldn't happen but test defensive behavior
     export default class SecondComponent {}
   `;
 
-  expect(extractDefaultExportName(content)).toBe("FirstComponent");
+  expect(extractDefaultExportName(content)).toBe('FirstComponent');
 });
 ```
 
@@ -424,23 +424,23 @@ it("should extract first match when multiple patterns exist", () => {
 **Setup:**
 
 ```typescript
-import { vol } from "memfs";
-import { vi } from "vitest";
+import { vol } from 'memfs';
+import { vi } from 'vitest';
 
 // Mock fs module with memfs
-vi.mock("fs", () => ({ default: require("memfs").fs }));
-vi.mock("fs/promises", () => require("memfs").fs.promises);
+vi.mock('fs', () => ({ default: require('memfs').fs }));
+vi.mock('fs/promises', () => require('memfs').fs.promises);
 
 beforeEach(() => {
   vol.reset();
   // Create test registry structure
   vol.fromJSON({
-    "/test-registry/components/button/button.tsx":
-      "export default function Button() {}",
-    "/test-registry/components/card/card.tsx":
-      "export default function Card() {}",
-    "/test-registry/hooks/use-theme/index.ts":
-      "export default function useTheme() {}",
+    '/test-registry/components/button/button.tsx':
+      'export default function Button() {}',
+    '/test-registry/components/card/card.tsx':
+      'export default function Card() {}',
+    '/test-registry/hooks/use-theme/index.ts':
+      'export default function useTheme() {}',
   });
 });
 
@@ -460,47 +460,47 @@ afterEach(() => {
 #### TC1: Scan all TypeScript files recursively
 
 ```typescript
-it("should find all .ts and .tsx files recursively", () => {
+it('should find all .ts and .tsx files recursively', () => {
   vol.fromJSON({
-    "/registry/components/button/button.tsx": "",
-    "/registry/components/button/types.ts": "",
-    "/registry/hooks/use-state.ts": "",
-    "/registry/blocks/header/header.tsx": "",
+    '/registry/components/button/button.tsx': '',
+    '/registry/components/button/types.ts': '',
+    '/registry/hooks/use-state.ts': '',
+    '/registry/blocks/header/header.tsx': '',
   });
 
-  const files = scanRegistryFiles("/registry");
+  const files = scanRegistryFiles('/registry');
 
   expect(files).toHaveLength(4);
-  expect(files).toContain("/registry/components/button/button.tsx");
-  expect(files).toContain("/registry/components/button/types.ts");
+  expect(files).toContain('/registry/components/button/button.tsx');
+  expect(files).toContain('/registry/components/button/types.ts');
 });
 ```
 
 #### TC2: Ignore non-TypeScript files
 
 ```typescript
-it("should ignore non-TypeScript files", () => {
+it('should ignore non-TypeScript files', () => {
   vol.fromJSON({
-    "/registry/component.tsx": "",
-    "/registry/readme.md": "",
-    "/registry/config.json": "",
-    "/registry/styles.css": "",
+    '/registry/component.tsx': '',
+    '/registry/readme.md': '',
+    '/registry/config.json': '',
+    '/registry/styles.css': '',
   });
 
-  const files = scanRegistryFiles("/registry");
+  const files = scanRegistryFiles('/registry');
 
   expect(files).toHaveLength(1);
-  expect(files[0]).toContain("component.tsx");
+  expect(files[0]).toContain('component.tsx');
 });
 ```
 
 #### TC3: Handle empty directory
 
 ```typescript
-it("should return empty array for empty directory", () => {
-  vol.fromJSON({ "/empty": null });
+it('should return empty array for empty directory', () => {
+  vol.fromJSON({ '/empty': null });
 
-  const files = scanRegistryFiles("/empty");
+  const files = scanRegistryFiles('/empty');
 
   expect(files).toEqual([]);
 });
@@ -509,8 +509,8 @@ it("should return empty array for empty directory", () => {
 #### TC4: Handle non-existent directory gracefully
 
 ```typescript
-it("should return empty array for non-existent directory", () => {
-  const files = scanRegistryFiles("/does-not-exist");
+it('should return empty array for non-existent directory', () => {
+  const files = scanRegistryFiles('/does-not-exist');
 
   expect(files).toEqual([]);
 });
@@ -519,12 +519,12 @@ it("should return empty array for non-existent directory", () => {
 #### TC5: Use current working directory when null
 
 ```typescript
-it("should use process.cwd()/registry when dir is null", () => {
+it('should use process.cwd()/registry when dir is null', () => {
   const originalCwd = process.cwd();
-  process.cwd = vi.fn(() => "/test");
+  process.cwd = vi.fn(() => '/test');
 
   vol.fromJSON({
-    "/test/registry/component.tsx": "",
+    '/test/registry/component.tsx': '',
   });
 
   const files = scanRegistryFiles(null);
@@ -546,58 +546,58 @@ it("should use process.cwd()/registry when dir is null", () => {
 #### TC1: Find file by exact name match
 
 ```typescript
-it("should find file matching exact name", () => {
+it('should find file matching exact name', () => {
   vol.fromJSON({
-    "/registry/components/button/button.tsx": "",
+    '/registry/components/button/button.tsx': '',
   });
 
-  const matches = findMatchingFiles("button");
+  const matches = findMatchingFiles('button');
 
   expect(matches).toHaveLength(1);
-  expect(matches[0].name).toBe("button");
+  expect(matches[0].name).toBe('button');
 });
 ```
 
 #### TC2: Find index file in named directory
 
 ```typescript
-it("should find index.ts/tsx in directory matching name", () => {
+it('should find index.ts/tsx in directory matching name', () => {
   vol.fromJSON({
-    "/registry/hooks/use-theme/index.ts": "",
+    '/registry/hooks/use-theme/index.ts': '',
   });
 
-  const matches = findMatchingFiles("use-theme");
+  const matches = findMatchingFiles('use-theme');
 
   expect(matches).toHaveLength(1);
-  expect(matches[0].relativePath).toContain("use-theme/index.ts");
+  expect(matches[0].relativePath).toContain('use-theme/index.ts');
 });
 ```
 
 #### TC3: Prefer .meta.json when exists
 
 ```typescript
-it("should prefer .meta.json file over source files", () => {
+it('should prefer .meta.json file over source files', () => {
   vol.fromJSON({
-    "/registry/components/button/button.tsx": "",
-    "/registry/components/button/button.meta.json": "{}",
+    '/registry/components/button/button.tsx': '',
+    '/registry/components/button/button.meta.json': '{}',
   });
 
-  const matches = findMatchingFiles("button");
+  const matches = findMatchingFiles('button');
 
   expect(matches).toHaveLength(1);
-  expect(matches[0].path).toContain(".meta.json");
+  expect(matches[0].path).toContain('.meta.json');
 });
 ```
 
 #### TC4: Return empty array when no match
 
 ```typescript
-it("should return empty array when name not found", () => {
+it('should return empty array when name not found', () => {
   vol.fromJSON({
-    "/registry/components/card/card.tsx": "",
+    '/registry/components/card/card.tsx': '',
   });
 
-  const matches = findMatchingFiles("button");
+  const matches = findMatchingFiles('button');
 
   expect(matches).toEqual([]);
 });
@@ -606,13 +606,13 @@ it("should return empty array when name not found", () => {
 #### TC5: Find multiple matches across categories
 
 ```typescript
-it("should find multiple files if name exists in different categories", () => {
+it('should find multiple files if name exists in different categories', () => {
   vol.fromJSON({
-    "/registry/components/button/button.tsx": "",
-    "/registry/blocks/button/button.tsx": "",
+    '/registry/components/button/button.tsx': '',
+    '/registry/blocks/button/button.tsx': '',
   });
 
-  const matches = findMatchingFiles("button");
+  const matches = findMatchingFiles('button');
 
   expect(matches.length).toBeGreaterThan(1);
 });
@@ -629,16 +629,16 @@ it("should find multiple files if name exists in different categories", () => {
 #### TC1: Find all files in same directory
 
 ```typescript
-it("should find all .ts/.tsx files in the same directory", () => {
+it('should find all .ts/.tsx files in the same directory', () => {
   vol.fromJSON({
-    "/registry/components/button/button.tsx": "",
-    "/registry/components/button/button-group.tsx": "",
-    "/registry/components/button/types.ts": "",
+    '/registry/components/button/button.tsx': '',
+    '/registry/components/button/button-group.tsx': '',
+    '/registry/components/button/types.ts': '',
   });
 
   const files = findAllRelatedFiles(
-    "/registry/components/button/button.tsx",
-    "button"
+    '/registry/components/button/button.tsx',
+    'button',
   );
 
   expect(files).toHaveLength(3);
@@ -648,34 +648,34 @@ it("should find all .ts/.tsx files in the same directory", () => {
 #### TC2: Exclude .demo.tsx files
 
 ```typescript
-it("should exclude .demo.tsx files", () => {
+it('should exclude .demo.tsx files', () => {
   vol.fromJSON({
-    "/registry/components/card/card.tsx": "",
-    "/registry/components/card/card.demo.tsx": "",
+    '/registry/components/card/card.tsx': '',
+    '/registry/components/card/card.demo.tsx': '',
   });
 
   const files = findAllRelatedFiles(
-    "/registry/components/card/card.tsx",
-    "card"
+    '/registry/components/card/card.tsx',
+    'card',
   );
 
   expect(files).toHaveLength(1);
-  expect(files[0].path).toContain("card.tsx");
-  expect(files[0].path).not.toContain(".demo.tsx");
+  expect(files[0].path).toContain('card.tsx');
+  expect(files[0].path).not.toContain('.demo.tsx');
 });
 ```
 
 #### TC3: Handle single file directory
 
 ```typescript
-it("should return single file when directory has only one file", () => {
+it('should return single file when directory has only one file', () => {
   vol.fromJSON({
-    "/registry/hooks/use-theme/index.ts": "",
+    '/registry/hooks/use-theme/index.ts': '',
   });
 
   const files = findAllRelatedFiles(
-    "/registry/hooks/use-theme/index.ts",
-    "use-theme"
+    '/registry/hooks/use-theme/index.ts',
+    'use-theme',
   );
 
   expect(files).toHaveLength(1);
@@ -685,19 +685,19 @@ it("should return single file when directory has only one file", () => {
 #### TC4: Return relative paths from registry root
 
 ```typescript
-it("should return paths relative to registry root", () => {
-  process.cwd = vi.fn(() => "/project");
+it('should return paths relative to registry root', () => {
+  process.cwd = vi.fn(() => '/project');
 
   vol.fromJSON({
-    "/project/registry/components/alert/alert.tsx": "",
+    '/project/registry/components/alert/alert.tsx': '',
   });
 
   const files = findAllRelatedFiles(
-    "/project/registry/components/alert/alert.tsx",
-    "alert"
+    '/project/registry/components/alert/alert.tsx',
+    'alert',
   );
 
-  expect(files[0].relativePath).toBe("components/alert/alert.tsx");
+  expect(files[0].relativePath).toBe('components/alert/alert.tsx');
 });
 ```
 
@@ -712,19 +712,19 @@ it("should return paths relative to registry root", () => {
 #### TC1: Get all unique registry items
 
 ```typescript
-it("should return unique registry items from all categories", () => {
+it('should return unique registry items from all categories', () => {
   vol.fromJSON({
-    "/registry/components/button/button.tsx": "",
-    "/registry/components/card/card.tsx": "",
-    "/registry/hooks/use-theme/index.ts": "",
-    "/registry/blocks/header/header.tsx": "",
+    '/registry/components/button/button.tsx': '',
+    '/registry/components/card/card.tsx': '',
+    '/registry/hooks/use-theme/index.ts': '',
+    '/registry/blocks/header/header.tsx': '',
   });
 
   const items = getAllRegistryItems();
 
   expect(items).toHaveLength(4);
   expect(items.map((i) => i.name)).toEqual(
-    expect.arrayContaining(["button", "card", "use-theme", "header"])
+    expect.arrayContaining(['button', 'card', 'use-theme', 'header']),
   );
 });
 ```
@@ -732,63 +732,63 @@ it("should return unique registry items from all categories", () => {
 #### TC2: Extract item name from path structure
 
 ```typescript
-it("should extract item name from path structure (second segment)", () => {
+it('should extract item name from path structure (second segment)', () => {
   vol.fromJSON({
-    "/registry/themes/mui-treasury/index.ts": "",
+    '/registry/themes/mui-treasury/index.ts': '',
   });
 
   const items = getAllRegistryItems();
 
-  expect(items[0].name).toBe("mui-treasury");
+  expect(items[0].name).toBe('mui-treasury');
 });
 ```
 
 #### TC3: Skip sub-files within items
 
 ```typescript
-it("should skip sub-files that do not match item name", () => {
+it('should skip sub-files that do not match item name', () => {
   vol.fromJSON({
-    "/registry/components/form/form.tsx": "",
-    "/registry/components/form/form-input.tsx": "", // sub-file
-    "/registry/components/form/types.ts": "", // sub-file
+    '/registry/components/form/form.tsx': '',
+    '/registry/components/form/form-input.tsx': '', // sub-file
+    '/registry/components/form/types.ts': '', // sub-file
   });
 
   const items = getAllRegistryItems();
 
   expect(items).toHaveLength(1);
-  expect(items[0].name).toBe("form");
+  expect(items[0].name).toBe('form');
 });
 ```
 
 #### TC4: Include meta-only items
 
 ```typescript
-it("should include items with only .meta.json and no TypeScript files", () => {
+it('should include items with only .meta.json and no TypeScript files', () => {
   vol.fromJSON({
-    "/registry/components/legacy/legacy.meta.json": "{}",
+    '/registry/components/legacy/legacy.meta.json': '{}',
     // No .ts/.tsx files
   });
 
   const items = getAllRegistryItems();
 
   expect(items).toHaveLength(1);
-  expect(items[0].name).toBe("legacy");
-  expect(items[0].path).toContain(".meta.json");
+  expect(items[0].name).toBe('legacy');
+  expect(items[0].path).toContain('.meta.json');
 });
 ```
 
 #### TC5: Handle index files correctly
 
 ```typescript
-it("should recognize index.ts as valid item file", () => {
+it('should recognize index.ts as valid item file', () => {
   vol.fromJSON({
-    "/registry/ui/button/index.ts": "",
+    '/registry/ui/button/index.ts': '',
   });
 
   const items = getAllRegistryItems();
 
   expect(items).toHaveLength(1);
-  expect(items[0].name).toBe("button");
+  expect(items[0].name).toBe('button');
 });
 ```
 
@@ -805,49 +805,49 @@ it("should recognize index.ts as valid item file", () => {
 #### TC1: Extract relative import from same registry
 
 ```typescript
-it("should extract registry dependencies from relative imports", () => {
+it('should extract registry dependencies from relative imports', () => {
   const content = `import { useTheme } from '../../hooks/use-theme';`;
-  const currentFile = "/registry/components/button/button.tsx";
-  const itemDir = "/registry/components/button";
+  const currentFile = '/registry/components/button/button.tsx';
+  const itemDir = '/registry/components/button';
 
   vol.fromJSON({
-    "/registry/hooks/use-theme/index.ts": "",
+    '/registry/hooks/use-theme/index.ts': '',
   });
 
   const deps = extractRegistryDependencies(content, currentFile, itemDir);
 
-  expect(deps).toContain("http://localhost:3000/r/use-theme.json");
+  expect(deps).toContain('http://localhost:3000/r/use-theme.json');
 });
 ```
 
 #### TC2: Extract @/registry alias imports
 
 ```typescript
-it("should extract registry dependencies from @/registry alias", () => {
+it('should extract registry dependencies from @/registry alias', () => {
   const content = `import { Button } from '@/registry/ui/button';`;
-  const currentFile = "/registry/components/card/card.tsx";
-  const itemDir = "/registry/components/card";
+  const currentFile = '/registry/components/card/card.tsx';
+  const itemDir = '/registry/components/card';
 
   vol.fromJSON({
-    "/registry/ui/button/index.ts": "",
+    '/registry/ui/button/index.ts': '',
   });
 
   const deps = extractRegistryDependencies(content, currentFile, itemDir);
 
-  expect(deps).toContain("http://localhost:3000/r/button.json");
+  expect(deps).toContain('http://localhost:3000/r/button.json');
 });
 ```
 
 #### TC3: Ignore internal imports within same item
 
 ```typescript
-it("should ignore imports within same item directory", () => {
+it('should ignore imports within same item directory', () => {
   const content = `import { ButtonGroup } from './button-group';`;
-  const currentFile = "/registry/components/button/button.tsx";
-  const itemDir = "/registry/components/button";
+  const currentFile = '/registry/components/button/button.tsx';
+  const itemDir = '/registry/components/button';
 
   vol.fromJSON({
-    "/registry/components/button/button-group.tsx": "",
+    '/registry/components/button/button-group.tsx': '',
   });
 
   const deps = extractRegistryDependencies(content, currentFile, itemDir);
@@ -859,31 +859,31 @@ it("should ignore imports within same item directory", () => {
 #### TC4: Handle .ts/.tsx extension resolution
 
 ```typescript
-it("should resolve imports without extensions", () => {
+it('should resolve imports without extensions', () => {
   const content = `import { helper } from '../../utils/format';`;
-  const currentFile = "/registry/components/table/table.tsx";
-  const itemDir = "/registry/components/table";
+  const currentFile = '/registry/components/table/table.tsx';
+  const itemDir = '/registry/components/table';
 
   vol.fromJSON({
-    "/registry/utils/format/index.ts": "", // File exists without .ts in import
+    '/registry/utils/format/index.ts': '', // File exists without .ts in import
   });
 
   const deps = extractRegistryDependencies(content, currentFile, itemDir);
 
-  expect(deps).toContain("http://localhost:3000/r/format.json");
+  expect(deps).toContain('http://localhost:3000/r/format.json');
 });
 ```
 
 #### TC5: Ignore non-registry imports
 
 ```typescript
-it("should ignore imports outside registry directory", () => {
+it('should ignore imports outside registry directory', () => {
   const content = `import { config } from '../../../config';`;
-  const currentFile = "/registry/components/alert/alert.tsx";
-  const itemDir = "/registry/components/alert";
+  const currentFile = '/registry/components/alert/alert.tsx';
+  const itemDir = '/registry/components/alert';
 
   vol.fromJSON({
-    "/config/index.ts": "", // Outside registry
+    '/config/index.ts': '', // Outside registry
   });
 
   const deps = extractRegistryDependencies(content, currentFile, itemDir);
@@ -895,21 +895,21 @@ it("should ignore imports outside registry directory", () => {
 #### TC6: Use correct base URL based on environment
 
 ```typescript
-it("should use correct base URL from environment", () => {
-  process.env.VERCEL_ENV = "production";
-  process.env.VERCEL_PROJECT_PRODUCTION_URL = "mui-treasury.com";
+it('should use correct base URL from environment', () => {
+  process.env.VERCEL_ENV = 'production';
+  process.env.VERCEL_PROJECT_PRODUCTION_URL = 'mui-treasury.com';
 
   const content = `import { useTheme } from '@/registry/hooks/use-theme';`;
-  const currentFile = "/registry/components/button/button.tsx";
-  const itemDir = "/registry/components/button";
+  const currentFile = '/registry/components/button/button.tsx';
+  const itemDir = '/registry/components/button';
 
   vol.fromJSON({
-    "/registry/hooks/use-theme/index.ts": "",
+    '/registry/hooks/use-theme/index.ts': '',
   });
 
   const deps = extractRegistryDependencies(content, currentFile, itemDir);
 
-  expect(deps).toContain("https://mui-treasury.com/r/use-theme.json");
+  expect(deps).toContain('https://mui-treasury.com/r/use-theme.json');
 });
 ```
 
@@ -924,27 +924,27 @@ it("should use correct base URL from environment", () => {
 #### TC1: Generate registry JSON with all fields
 
 ```typescript
-it("should generate complete registry JSON structure", () => {
+it('should generate complete registry JSON structure', () => {
   vol.fromJSON({
-    "/registry/components/button/button.tsx": `
+    '/registry/components/button/button.tsx': `
       import { Button as MuiButton } from '@mui/material';
       export default function Button() {}
     `,
   });
 
   const result = processRegistryFile({
-    path: "/registry/components/button/button.tsx",
-    relativePath: "components/button/button.tsx",
-    name: "button",
+    path: '/registry/components/button/button.tsx',
+    relativePath: 'components/button/button.tsx',
+    name: 'button',
   });
 
   expect(result.registryJson).toMatchObject({
     $schema: expect.any(String),
-    name: "button",
-    type: "registry:item",
+    name: 'button',
+    type: 'registry:item',
     title: expect.any(String),
     description: expect.any(String),
-    dependencies: expect.arrayContaining(["@mui/material"]),
+    dependencies: expect.arrayContaining(['@mui/material']),
     files: expect.any(Array),
   });
 });
@@ -953,112 +953,112 @@ it("should generate complete registry JSON structure", () => {
 #### TC2: Create meta.json when not exists
 
 ```typescript
-it("should create meta.json file when it does not exist", () => {
+it('should create meta.json file when it does not exist', () => {
   vol.fromJSON({
-    "/registry/components/card/card.tsx": `export default function Card() {}`,
+    '/registry/components/card/card.tsx': `export default function Card() {}`,
   });
 
   processRegistryFile(
     {
-      path: "/registry/components/card/card.tsx",
-      relativePath: "components/card/card.tsx",
-      name: "card",
+      path: '/registry/components/card/card.tsx',
+      relativePath: 'components/card/card.tsx',
+      name: 'card',
     },
-    "Custom Card",
-    "A custom card component"
+    'Custom Card',
+    'A custom card component',
   );
 
-  const metaExists = vol.existsSync("/registry/components/card/card.meta.json");
+  const metaExists = vol.existsSync('/registry/components/card/card.meta.json');
   expect(metaExists).toBe(true);
 
   const meta = JSON.parse(
-    vol.readFileSync("/registry/components/card/card.meta.json", "utf-8")
+    vol.readFileSync('/registry/components/card/card.meta.json', 'utf-8'),
   );
-  expect(meta.title).toBe("Custom Card");
+  expect(meta.title).toBe('Custom Card');
 });
 ```
 
 #### TC3: Use existing meta.json when present
 
 ```typescript
-it("should use existing meta.json without CLI overrides", () => {
+it('should use existing meta.json without CLI overrides', () => {
   vol.fromJSON({
-    "/registry/components/alert/alert.tsx": `export default function Alert() {}`,
-    "/registry/components/alert/alert.meta.json": JSON.stringify({
-      $schema: "https://ui.shadcn.com/schema/registry-item.json",
-      type: "registry:item",
-      title: "Existing Alert",
-      description: "Original description",
-      meta: { category: "feedback" },
+    '/registry/components/alert/alert.tsx': `export default function Alert() {}`,
+    '/registry/components/alert/alert.meta.json': JSON.stringify({
+      $schema: 'https://ui.shadcn.com/schema/registry-item.json',
+      type: 'registry:item',
+      title: 'Existing Alert',
+      description: 'Original description',
+      meta: { category: 'feedback' },
     }),
   });
 
   const result = processRegistryFile({
-    path: "/registry/components/alert/alert.tsx",
-    relativePath: "components/alert/alert.tsx",
-    name: "alert",
+    path: '/registry/components/alert/alert.tsx',
+    relativePath: 'components/alert/alert.tsx',
+    name: 'alert',
   });
 
-  expect(result.metadata.title).toBe("Existing Alert");
-  expect(result.metadata.description).toBe("Original description");
+  expect(result.metadata.title).toBe('Existing Alert');
+  expect(result.metadata.description).toBe('Original description');
 });
 ```
 
 #### TC4: Override meta.json with CLI arguments
 
 ```typescript
-it("should override meta.json fields when CLI args provided", () => {
+it('should override meta.json fields when CLI args provided', () => {
   vol.fromJSON({
-    "/registry/components/chip/chip.tsx": `export default function Chip() {}`,
-    "/registry/components/chip/chip.meta.json": JSON.stringify({
-      title: "Old Title",
-      description: "Old Description",
+    '/registry/components/chip/chip.tsx': `export default function Chip() {}`,
+    '/registry/components/chip/chip.meta.json': JSON.stringify({
+      title: 'Old Title',
+      description: 'Old Description',
       meta: {},
     }),
   });
 
   const result = processRegistryFile(
     {
-      path: "/registry/components/chip/chip.tsx",
-      relativePath: "components/chip/chip.tsx",
-      name: "chip",
+      path: '/registry/components/chip/chip.tsx',
+      relativePath: 'components/chip/chip.tsx',
+      name: 'chip',
     },
-    "New Chip",
-    "Updated description",
-    "display",
-    ["badge", "tag"]
+    'New Chip',
+    'Updated description',
+    'display',
+    ['badge', 'tag'],
   );
 
-  expect(result.metadata.title).toBe("New Chip");
-  expect(result.metadata.description).toBe("Updated description");
-  expect(result.metadata.meta.category).toBe("display");
-  expect(result.metadata.meta.tags).toEqual(["badge", "tag"]);
+  expect(result.metadata.title).toBe('New Chip');
+  expect(result.metadata.description).toBe('Updated description');
+  expect(result.metadata.meta.category).toBe('display');
+  expect(result.metadata.meta.tags).toEqual(['badge', 'tag']);
 });
 ```
 
 #### TC5: Generate index.ts with exports
 
 ```typescript
-it("should generate index.ts with wildcard and named default exports", () => {
+it('should generate index.ts with wildcard and named default exports', () => {
   vol.fromJSON({
-    "/registry/components/form/form.tsx": `export default function Form() {}`,
-    "/registry/components/form/form-input.tsx": `export default function FormInput() {}`,
+    '/registry/components/form/form.tsx': `export default function Form() {}`,
+    '/registry/components/form/form-input.tsx': `export default function FormInput() {}`,
   });
 
   const result = processRegistryFile({
-    path: "/registry/components/form/form.tsx",
-    relativePath: "components/form/form.tsx",
-    name: "form",
+    path: '/registry/components/form/form.tsx',
+    relativePath: 'components/form/form.tsx',
+    name: 'form',
   });
 
   const indexFile = result.registryJson.files.find((f) =>
-    f.target.endsWith("index.ts")
+    f.target.endsWith('index.ts'),
   );
 
   expect(indexFile).toBeDefined();
   expect(indexFile?.content).toContain("export * from './form';");
   expect(indexFile?.content).toContain(
-    "export { default as Form } from './form';"
+    "export { default as Form } from './form';",
   );
 });
 ```
@@ -1066,19 +1066,19 @@ it("should generate index.ts with wildcard and named default exports", () => {
 #### TC6: Skip index.ts generation if already exists
 
 ```typescript
-it("should not generate index.ts if it already exists", () => {
+it('should not generate index.ts if it already exists', () => {
   vol.fromJSON({
-    "/registry/hooks/use-state/index.ts": `export default function useState() {}`,
+    '/registry/hooks/use-state/index.ts': `export default function useState() {}`,
   });
 
   const result = processRegistryFile({
-    path: "/registry/hooks/use-state/index.ts",
-    relativePath: "hooks/use-state/index.ts",
-    name: "use-state",
+    path: '/registry/hooks/use-state/index.ts',
+    relativePath: 'hooks/use-state/index.ts',
+    name: 'use-state',
   });
 
   const indexFiles = result.registryJson.files.filter((f) =>
-    f.target.endsWith("index.ts")
+    f.target.endsWith('index.ts'),
   );
 
   expect(indexFiles).toHaveLength(1); // Only the original
@@ -1088,19 +1088,19 @@ it("should not generate index.ts if it already exists", () => {
 #### TC7: Map theme paths correctly
 
 ```typescript
-it("should map themes/ to src/mui-treasury/theme/ in target paths", () => {
+it('should map themes/ to src/mui-treasury/theme/ in target paths', () => {
   vol.fromJSON({
-    "/registry/themes/mui-treasury/components/alert.ts": `export const alert = {}`,
+    '/registry/themes/mui-treasury/components/alert.ts': `export const alert = {}`,
   });
 
   const result = processRegistryFile({
-    path: "/registry/themes/mui-treasury/components/alert.ts",
-    relativePath: "themes/mui-treasury/components/alert.ts",
-    name: "mui-treasury",
+    path: '/registry/themes/mui-treasury/components/alert.ts',
+    relativePath: 'themes/mui-treasury/components/alert.ts',
+    name: 'mui-treasury',
   });
 
   expect(result.registryJson.files[0].target).toBe(
-    "src/mui-treasury/theme/components/alert.ts"
+    'src/mui-treasury/theme/components/alert.ts',
   );
 });
 ```
@@ -1108,19 +1108,19 @@ it("should map themes/ to src/mui-treasury/theme/ in target paths", () => {
 #### TC8: Map non-theme paths to src/mui-treasury/
 
 ```typescript
-it("should prepend src/mui-treasury/ to non-theme paths", () => {
+it('should prepend src/mui-treasury/ to non-theme paths', () => {
   vol.fromJSON({
-    "/registry/components/button/button.tsx": `export default function Button() {}`,
+    '/registry/components/button/button.tsx': `export default function Button() {}`,
   });
 
   const result = processRegistryFile({
-    path: "/registry/components/button/button.tsx",
-    relativePath: "components/button/button.tsx",
-    name: "button",
+    path: '/registry/components/button/button.tsx',
+    relativePath: 'components/button/button.tsx',
+    name: 'button',
   });
 
   expect(result.registryJson.files[0].target).toBe(
-    "src/mui-treasury/components/button/button.tsx"
+    'src/mui-treasury/components/button/button.tsx',
   );
 });
 ```
@@ -1128,93 +1128,93 @@ it("should prepend src/mui-treasury/ to non-theme paths", () => {
 #### TC9: Create v0.json with registry:block type
 
 ```typescript
-it("should create v0.json with registry:block type", () => {
+it('should create v0.json with registry:block type', () => {
   vol.fromJSON({
-    "/registry/blocks/header/header.tsx": `export default function Header() {}`,
+    '/registry/blocks/header/header.tsx': `export default function Header() {}`,
   });
 
   processRegistryFile({
-    path: "/registry/blocks/header/header.tsx",
-    relativePath: "blocks/header/header.tsx",
-    name: "header",
+    path: '/registry/blocks/header/header.tsx',
+    relativePath: 'blocks/header/header.tsx',
+    name: 'header',
   });
 
   const v0Json = JSON.parse(
-    vol.readFileSync("/public/r/header.v0.json", "utf-8")
+    vol.readFileSync('/public/r/header.v0.json', 'utf-8'),
   );
 
-  expect(v0Json.type).toBe("registry:block");
-  expect(v0Json.files[0].type).toBe("registry:block");
+  expect(v0Json.type).toBe('registry:block');
+  expect(v0Json.files[0].type).toBe('registry:block');
 });
 ```
 
 #### TC10: Transform registry dependencies in v0.json
 
 ```typescript
-it("should transform registryDependencies URLs to v0.json format", () => {
+it('should transform registryDependencies URLs to v0.json format', () => {
   vol.fromJSON({
-    "/registry/components/form/form.tsx": `
+    '/registry/components/form/form.tsx': `
       import { Button } from '@/registry/ui/button';
       export default function Form() {}
     `,
-    "/registry/ui/button/button.tsx": `export default function Button() {}`,
+    '/registry/ui/button/button.tsx': `export default function Button() {}`,
   });
 
   processRegistryFile({
-    path: "/registry/components/form/form.tsx",
-    relativePath: "components/form/form.tsx",
-    name: "form",
+    path: '/registry/components/form/form.tsx',
+    relativePath: 'components/form/form.tsx',
+    name: 'form',
   });
 
   const v0Json = JSON.parse(
-    vol.readFileSync("/public/r/form.v0.json", "utf-8")
+    vol.readFileSync('/public/r/form.v0.json', 'utf-8'),
   );
 
-  expect(v0Json.registryDependencies[0]).toContain(".v0.json");
+  expect(v0Json.registryDependencies[0]).toContain('.v0.json');
 });
 ```
 
 #### TC11: Merge dependencies from meta.json
 
 ```typescript
-it("should merge dependencies from meta.json with detected ones", () => {
+it('should merge dependencies from meta.json with detected ones', () => {
   vol.fromJSON({
-    "/registry/components/custom/custom.tsx": `
+    '/registry/components/custom/custom.tsx': `
       import { Box } from '@mui/material';
     `,
-    "/registry/components/custom/custom.meta.json": JSON.stringify({
-      dependencies: ["custom-lib"],
+    '/registry/components/custom/custom.meta.json': JSON.stringify({
+      dependencies: ['custom-lib'],
       meta: {},
     }),
   });
 
   const result = processRegistryFile({
-    path: "/registry/components/custom/custom.tsx",
-    relativePath: "components/custom/custom.tsx",
-    name: "custom",
+    path: '/registry/components/custom/custom.tsx',
+    relativePath: 'components/custom/custom.tsx',
+    name: 'custom',
   });
 
-  expect(result.registryJson.dependencies).toContain("custom-lib");
-  expect(result.registryJson.dependencies).toContain("@mui/material");
+  expect(result.registryJson.dependencies).toContain('custom-lib');
+  expect(result.registryJson.dependencies).toContain('@mui/material');
 });
 ```
 
 #### TC12: Include screenshot path in meta when file exists
 
 ```typescript
-it("should include screenshot path in meta when file exists", () => {
+it('should include screenshot path in meta when file exists', () => {
   vol.fromJSON({
-    "/registry/components/dialog/dialog.tsx": `export default function Dialog() {}`,
-    "/public/screenshots/dialog.png": "", // Screenshot exists
+    '/registry/components/dialog/dialog.tsx': `export default function Dialog() {}`,
+    '/public/screenshots/dialog.png': '', // Screenshot exists
   });
 
   const result = processRegistryFile({
-    path: "/registry/components/dialog/dialog.tsx",
-    relativePath: "components/dialog/dialog.tsx",
-    name: "dialog",
+    path: '/registry/components/dialog/dialog.tsx',
+    relativePath: 'components/dialog/dialog.tsx',
+    name: 'dialog',
   });
 
-  expect(result.metadata.meta.screenshot).toBe("/screenshots/dialog.png");
+  expect(result.metadata.meta.screenshot).toBe('/screenshots/dialog.png');
 });
 ```
 
@@ -1231,59 +1231,59 @@ it("should include screenshot path in meta when file exists", () => {
 #### TC1: Generate files for specific component
 
 ```typescript
-import { exec } from "child_process";
-import { promisify } from "util";
+import { exec } from 'child_process';
+import { promisify } from 'util';
 
 const execAsync = promisify(exec);
 
-it("should generate registry files for specific component", async () => {
+it('should generate registry files for specific component', async () => {
   vol.fromJSON({
-    "/registry/components/badge/badge.tsx": `export default function Badge() {}`,
+    '/registry/components/badge/badge.tsx': `export default function Badge() {}`,
   });
 
-  await execAsync("node scripts/create-registry-json.js badge");
+  await execAsync('node scripts/create-registry-json.js badge');
 
-  expect(vol.existsSync("/registry/components/badge/badge.meta.json")).toBe(
-    true
+  expect(vol.existsSync('/registry/components/badge/badge.meta.json')).toBe(
+    true,
   );
-  expect(vol.existsSync("/public/r/badge.json")).toBe(true);
-  expect(vol.existsSync("/public/r/badge.v0.json")).toBe(true);
+  expect(vol.existsSync('/public/r/badge.json')).toBe(true);
+  expect(vol.existsSync('/public/r/badge.v0.json')).toBe(true);
 });
 ```
 
 #### TC2: Generate with CLI options
 
 ```typescript
-it("should generate with title, description, category, and tags", async () => {
+it('should generate with title, description, category, and tags', async () => {
   vol.fromJSON({
-    "/registry/components/tooltip/tooltip.tsx": `export default function Tooltip() {}`,
+    '/registry/components/tooltip/tooltip.tsx': `export default function Tooltip() {}`,
   });
 
   await execAsync(
-    "node scripts/create-registry-json.js tooltip " +
+    'node scripts/create-registry-json.js tooltip ' +
       '-t "Custom Tooltip" ' +
       '-d "A customizable tooltip" ' +
-      "-c feedback " +
-      '--tags "overlay,hint"'
+      '-c feedback ' +
+      '--tags "overlay,hint"',
   );
 
   const meta = JSON.parse(
-    vol.readFileSync("/registry/components/tooltip/tooltip.meta.json", "utf-8")
+    vol.readFileSync('/registry/components/tooltip/tooltip.meta.json', 'utf-8'),
   );
 
-  expect(meta.title).toBe("Custom Tooltip");
-  expect(meta.description).toBe("A customizable tooltip");
-  expect(meta.meta.category).toBe("feedback");
-  expect(meta.meta.tags).toEqual(["overlay", "hint"]);
+  expect(meta.title).toBe('Custom Tooltip');
+  expect(meta.description).toBe('A customizable tooltip');
+  expect(meta.meta.category).toBe('feedback');
+  expect(meta.meta.tags).toEqual(['overlay', 'hint']);
 });
 ```
 
 #### TC3: Error when component not found
 
 ```typescript
-it("should exit with error when component not found", async () => {
+it('should exit with error when component not found', async () => {
   await expect(
-    execAsync("node scripts/create-registry-json.js nonexistent")
+    execAsync('node scripts/create-registry-json.js nonexistent'),
   ).rejects.toThrow();
 });
 ```
@@ -1299,40 +1299,40 @@ it("should exit with error when component not found", async () => {
 #### TC1: Generate all registry items
 
 ```typescript
-it("should generate files for all registry items when no name provided", async () => {
+it('should generate files for all registry items when no name provided', async () => {
   vol.fromJSON({
-    "/registry/components/button/button.tsx": `export default function Button() {}`,
-    "/registry/hooks/use-theme/index.ts": `export default function useTheme() {}`,
-    "/registry/blocks/header/header.tsx": `export default function Header() {}`,
+    '/registry/components/button/button.tsx': `export default function Button() {}`,
+    '/registry/hooks/use-theme/index.ts': `export default function useTheme() {}`,
+    '/registry/blocks/header/header.tsx': `export default function Header() {}`,
   });
 
-  await execAsync("node scripts/create-registry-json.js");
+  await execAsync('node scripts/create-registry-json.js');
 
-  expect(vol.existsSync("/public/r/button.json")).toBe(true);
-  expect(vol.existsSync("/public/r/use-theme.json")).toBe(true);
-  expect(vol.existsSync("/public/r/header.json")).toBe(true);
+  expect(vol.existsSync('/public/r/button.json')).toBe(true);
+  expect(vol.existsSync('/public/r/use-theme.json')).toBe(true);
+  expect(vol.existsSync('/public/r/header.json')).toBe(true);
 });
 ```
 
 #### TC2: Handle mixed items (with and without meta.json)
 
 ```typescript
-it("should process items with and without existing meta.json", async () => {
+it('should process items with and without existing meta.json', async () => {
   vol.fromJSON({
-    "/registry/components/card/card.tsx": `export default function Card() {}`,
-    "/registry/components/card/card.meta.json": JSON.stringify({
-      title: "Card",
+    '/registry/components/card/card.tsx': `export default function Card() {}`,
+    '/registry/components/card/card.meta.json': JSON.stringify({
+      title: 'Card',
     }),
-    "/registry/components/alert/alert.tsx": `export default function Alert() {}`,
+    '/registry/components/alert/alert.tsx': `export default function Alert() {}`,
     // No meta.json for alert
   });
 
-  await execAsync("node scripts/create-registry-json.js");
+  await execAsync('node scripts/create-registry-json.js');
 
   // Both should have meta.json after processing
-  expect(vol.existsSync("/registry/components/card/card.meta.json")).toBe(true);
-  expect(vol.existsSync("/registry/components/alert/alert.meta.json")).toBe(
-    true
+  expect(vol.existsSync('/registry/components/card/card.meta.json')).toBe(true);
+  expect(vol.existsSync('/registry/components/alert/alert.meta.json')).toBe(
+    true,
   );
 });
 ```
@@ -1350,23 +1350,23 @@ it("should process items with and without existing meta.json", async () => {
 #### TC1: Corrupt meta.json file
 
 ```typescript
-it("should handle corrupt meta.json gracefully", () => {
+it('should handle corrupt meta.json gracefully', () => {
   vol.fromJSON({
-    "/registry/components/broken/broken.tsx": `export default function Broken() {}`,
-    "/registry/components/broken/broken.meta.json": "invalid json{]",
+    '/registry/components/broken/broken.tsx': `export default function Broken() {}`,
+    '/registry/components/broken/broken.meta.json': 'invalid json{]',
   });
 
   expect(() => {
     processRegistryFile({
-      path: "/registry/components/broken/broken.tsx",
-      relativePath: "components/broken/broken.tsx",
-      name: "broken",
+      path: '/registry/components/broken/broken.tsx',
+      relativePath: 'components/broken/broken.tsx',
+      name: 'broken',
     });
   }).not.toThrow();
 
   // Should create new meta.json
   const meta = JSON.parse(
-    vol.readFileSync("/registry/components/broken/broken.meta.json", "utf-8")
+    vol.readFileSync('/registry/components/broken/broken.meta.json', 'utf-8'),
   );
   expect(meta.title).toBeDefined();
 });
@@ -1375,20 +1375,20 @@ it("should handle corrupt meta.json gracefully", () => {
 #### TC2: Circular registry dependencies
 
 ```typescript
-it("should handle circular registry dependencies", () => {
+it('should handle circular registry dependencies', () => {
   vol.fromJSON({
-    "/registry/components/a/a.tsx": `import { B } from '@/registry/components/b';`,
-    "/registry/components/b/b.tsx": `import { A } from '@/registry/components/a';`,
+    '/registry/components/a/a.tsx': `import { B } from '@/registry/components/b';`,
+    '/registry/components/b/b.tsx': `import { A } from '@/registry/components/a';`,
   });
 
   const resultA = processRegistryFile({
-    path: "/registry/components/a/a.tsx",
-    relativePath: "components/a/a.tsx",
-    name: "a",
+    path: '/registry/components/a/a.tsx',
+    relativePath: 'components/a/a.tsx',
+    name: 'a',
   });
 
   expect(resultA.registryJson.registryDependencies).toContain(
-    expect.stringContaining("/r/b.json")
+    expect.stringContaining('/r/b.json'),
   );
 });
 ```
@@ -1396,29 +1396,29 @@ it("should handle circular registry dependencies", () => {
 #### TC3: Special characters in component names
 
 ```typescript
-it("should handle component names with special characters", () => {
+it('should handle component names with special characters', () => {
   vol.fromJSON({
-    "/registry/components/my-special-component_v2/index.tsx": `export default function Component() {}`,
+    '/registry/components/my-special-component_v2/index.tsx': `export default function Component() {}`,
   });
 
   const items = getAllRegistryItems();
 
-  expect(items[0].name).toBe("my-special-component_v2");
+  expect(items[0].name).toBe('my-special-component_v2');
 });
 ```
 
 #### TC4: Empty file content
 
 ```typescript
-it("should handle empty file content", () => {
+it('should handle empty file content', () => {
   vol.fromJSON({
-    "/registry/components/empty/empty.tsx": "",
+    '/registry/components/empty/empty.tsx': '',
   });
 
   const result = processRegistryFile({
-    path: "/registry/components/empty/empty.tsx",
-    relativePath: "components/empty/empty.tsx",
-    name: "empty",
+    path: '/registry/components/empty/empty.tsx',
+    relativePath: 'components/empty/empty.tsx',
+    name: 'empty',
   });
 
   expect(result.registryJson.dependencies).toEqual([]);
@@ -1429,15 +1429,15 @@ it("should handle empty file content", () => {
 #### TC5: Very deep directory structure
 
 ```typescript
-it("should handle deeply nested directory structures", () => {
+it('should handle deeply nested directory structures', () => {
   vol.fromJSON({
-    "/registry/components/deep/nested/structure/component/index.tsx": `export default function Deep() {}`,
+    '/registry/components/deep/nested/structure/component/index.tsx': `export default function Deep() {}`,
   });
 
-  const files = scanRegistryFiles("/registry");
+  const files = scanRegistryFiles('/registry');
 
   expect(files).toHaveLength(1);
-  expect(files[0]).toContain("deep/nested/structure/component/index.tsx");
+  expect(files[0]).toContain('deep/nested/structure/component/index.tsx');
 });
 ```
 
@@ -1454,19 +1454,18 @@ it("should handle deeply nested directory structures", () => {
 #### TC1: Large registry (100+ items)
 
 ```typescript
-it("should process 100+ registry items efficiently", async () => {
+it('should process 100+ registry items efficiently', async () => {
   const items: Record<string, string> = {};
 
   for (let i = 0; i < 150; i++) {
-    items[
-      `/registry/components/comp-${i}/comp-${i}.tsx`
-    ] = `export default function Comp${i}() {}`;
+    items[`/registry/components/comp-${i}/comp-${i}.tsx`] =
+      `export default function Comp${i}() {}`;
   }
 
   vol.fromJSON(items);
 
   const startTime = Date.now();
-  await execAsync("node scripts/create-registry-json.js");
+  await execAsync('node scripts/create-registry-json.js');
   const duration = Date.now() - startTime;
 
   // Should complete within reasonable time (adjust threshold as needed)
@@ -1477,21 +1476,21 @@ it("should process 100+ registry items efficiently", async () => {
 #### TC2: Files with many imports
 
 ```typescript
-it("should handle files with 50+ imports efficiently", () => {
+it('should handle files with 50+ imports efficiently', () => {
   const imports = Array.from(
     { length: 50 },
-    (_, i) => `import { Component${i} } from '@pkg/lib${i}';`
-  ).join("\n");
+    (_, i) => `import { Component${i} } from '@pkg/lib${i}';`,
+  ).join('\n');
 
   vol.fromJSON({
-    "/registry/components/heavy/heavy.tsx": imports,
+    '/registry/components/heavy/heavy.tsx': imports,
   });
 
   const startTime = Date.now();
   const result = processRegistryFile({
-    path: "/registry/components/heavy/heavy.tsx",
-    relativePath: "components/heavy/heavy.tsx",
-    name: "heavy",
+    path: '/registry/components/heavy/heavy.tsx',
+    relativePath: 'components/heavy/heavy.tsx',
+    name: 'heavy',
   });
   const duration = Date.now() - startTime;
 
@@ -1527,7 +1526,6 @@ pnpm vitest --coverage
 **Files to create/update:**
 
 1. **README.md** (in scripts/)
-
    - Add "Testing" section
    - Document how to run tests
    - Explain test structure
@@ -1562,15 +1560,12 @@ pnpm vitest scripts/__tests__/e2e/
 ### Test Execution Order
 
 1. **Unit tests first** (fast feedback)
-
    - `registry-utils.test.ts`
 
 2. **Integration tests** (file operations)
-
    - `registry-file-ops.test.ts`
 
 3. **Processing tests** (complex logic)
-
    - `registry-processor.test.ts`
 
 4. **E2E tests last** (slowest)
@@ -1604,23 +1599,19 @@ pnpm vitest scripts/__tests__/e2e/
 ## Notes & Considerations
 
 1. **memfs Limitations:**
-
    - Cannot test actual file permissions
    - May behave differently than real fs in edge cases
    - Consider real filesystem tests for critical paths
 
 2. **Environment Variables:**
-
    - Always restore `process.env` in `afterEach`
    - Use `vi.mock()` for process.cwd() when needed
 
 3. **Async Operations:**
-
    - Use `async/await` consistently
    - Ensure proper cleanup in `afterEach`
 
 4. **Test Isolation:**
-
    - Each test should be independent
    - Reset all mocks between tests
    - Clear memfs volume after each test

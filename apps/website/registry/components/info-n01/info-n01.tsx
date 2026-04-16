@@ -1,9 +1,10 @@
-import React from "react";
-import { Info } from "../info-basic/info";
-import { InfoEyebrow } from "../info-basic/info-eyebrow";
-import { InfoSubtitle } from "../info-basic/info-subtitle";
-import { InfoTitle } from "../info-basic/info-title";
-import { getInfoN01Styles } from "./info-n01.styles";
+import React from 'react';
+
+import { Info } from '../info-basic/info';
+import { InfoEyebrow } from '../info-basic/info-eyebrow';
+import { InfoSubtitle } from '../info-basic/info-subtitle';
+import { InfoTitle } from '../info-basic/info-title';
+import { getInfoN01Styles } from './info-n01.styles';
 
 export function InfoN01() {
   return (

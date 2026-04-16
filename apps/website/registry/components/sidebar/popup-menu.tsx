@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import { NavigationMenu } from "@base-ui/react/navigation-menu";
-import { SxProps, Theme, styled } from "@mui/material/styles";
+import { NavigationMenu } from '@base-ui/react/navigation-menu';
+import { SxProps, Theme, styled } from '@mui/material/styles';
 
 import {
   SidebarGroup,
@@ -9,33 +9,33 @@ import {
   SidebarMenuItem,
   SidebarMenuList,
   SidebarTooltip,
-} from "./index";
+} from './index';
 
 interface PopupMenuItemProps {
   children?: React.ReactNode;
-  render: NavigationMenu.Trigger.Props["render"];
+  render: NavigationMenu.Trigger.Props['render'];
   tooltip?: React.ReactNode;
   sx?: SxProps<Theme>;
 }
 
 const StyledPortal = styled(NavigationMenu.Portal)({
-  display: "var(--_collapsed, block) var(--_uncollapsed, none)",
+  display: 'var(--_collapsed, block) var(--_uncollapsed, none)',
   zIndex: 1300,
 });
 
 export function PopupMenuList({
   children,
-  sidebarSide = "left",
+  sidebarSide = 'left',
   ...props
 }: React.ComponentProps<typeof NavigationMenu.Root> & {
-  sidebarSide?: "left" | "right";
+  sidebarSide?: 'left' | 'right';
 }) {
   const [container, setContainer] = React.useState<HTMLElement | null>(null);
   const triggerCallbackRef = React.useCallback((node: HTMLElement | null) => {
     if (node) {
       setContainer(
-        (node.closest(".EdgeSidebar-R") ||
-          node.closest(".EdgeSidebar")) as HTMLElement,
+        (node.closest('.EdgeSidebar-R') ||
+          node.closest('.EdgeSidebar')) as HTMLElement,
       );
     }
   }, []);
@@ -54,7 +54,7 @@ export function PopupMenuList({
 
       <StyledPortal container={container || undefined}>
         <NavigationMenu.Positioner
-          side={sidebarSide === "left" ? "right" : "left"}
+          side={sidebarSide === 'left' ? 'right' : 'left'}
           align="start"
         >
           <NavigationMenu.Popup render={<MenuPopup />}>
@@ -78,7 +78,7 @@ export const PopupMenuItem = function PopupMenuItem({
         <SidebarMenuItem
           sx={[
             {
-              display: "var(--_collapsed, flex) var(--_uncollapsed, none)",
+              display: 'var(--_collapsed, flex) var(--_uncollapsed, none)',
             },
             ...(Array.isArray(sx) ? sx : [sx]),
           ]}
@@ -94,8 +94,8 @@ export const PopupMenuItem = function PopupMenuItem({
           slotProps={{
             popper: {
               sx: {
-                "[data-base-ui-portal] ~ &, &:has(~ [data-base-ui-portal])": {
-                  display: "none !important",
+                '[data-base-ui-portal] ~ &, &:has(~ [data-base-ui-portal])': {
+                  display: 'none !important',
                 },
               },
             },
@@ -123,17 +123,17 @@ export function PopupMenuContent({
 }
 
 const MenuPopup = styled(SidebarMenuList)(({ theme }) => ({
-  "--_collapsed": "var(--__,)",
-  "--_uncollapsed": "var(--__)",
+  '--_collapsed': 'var(--__,)',
+  '--_uncollapsed': 'var(--__)',
   minWidth: 160,
   padding: theme.spacing(0.5),
-  border: "1px solid",
+  border: '1px solid',
   borderColor: (theme.vars || theme).palette.divider,
   borderRadius: `calc(4px + ${(theme.vars || theme).shape.borderRadius})`,
   backgroundColor: (theme.vars || theme).palette.background.paper,
   boxShadow: (theme.vars || theme).shadows[1],
-  "&:has(.PopupMenuContent:empty)": {
-    display: "none",
+  '&:has(.PopupMenuContent:empty)': {
+    display: 'none',
   },
 }));
 

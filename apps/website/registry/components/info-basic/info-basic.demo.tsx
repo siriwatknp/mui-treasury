@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { Info } from "@/registry/components/info-basic/info";
-import { InfoCaption } from "@/registry/components/info-basic/info-caption";
-import { InfoEyebrow } from "@/registry/components/info-basic/info-eyebrow";
-import { InfoSubtitle } from "@/registry/components/info-basic/info-subtitle";
-import { InfoTitle } from "@/registry/components/info-basic/info-title";
+import { Info } from '@/registry/components/info-basic/info';
+import { InfoCaption } from '@/registry/components/info-basic/info-caption';
+import { InfoEyebrow } from '@/registry/components/info-basic/info-eyebrow';
+import { InfoSubtitle } from '@/registry/components/info-basic/info-subtitle';
+import { InfoTitle } from '@/registry/components/info-basic/info-title';
 
 export function Demo() {
   return (

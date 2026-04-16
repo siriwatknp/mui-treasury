@@ -1,25 +1,26 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useSpinner } from "./useSpinner";
+import React, { useEffect, useRef, useState } from 'react';
+
+import { useSpinner } from './useSpinner';
 
 type EventKeys =
-  | "ArrowDown"
-  | "ArrowUp"
-  | "ArrowLeft"
-  | "ArrowRight"
-  | "Enter"
-  | "Space"
-  | "Tab"
-  | "Backspace"
-  | "Control"
-  | "Meta"
-  | "Home"
-  | "End"
-  | "PageDown"
-  | "PageUp"
-  | "Delete"
-  | "Escape"
-  | " "
-  | "Shift";
+  | 'ArrowDown'
+  | 'ArrowUp'
+  | 'ArrowLeft'
+  | 'ArrowRight'
+  | 'Enter'
+  | 'Space'
+  | 'Tab'
+  | 'Backspace'
+  | 'Control'
+  | 'Meta'
+  | 'Home'
+  | 'End'
+  | 'PageDown'
+  | 'PageUp'
+  | 'Delete'
+  | 'Escape'
+  | ' '
+  | 'Shift';
 
 type EventKeyMap = Partial<Record<EventKeys, React.KeyboardEventHandler>>;
 
@@ -27,11 +28,11 @@ type EventKeyMap = Partial<Record<EventKeys, React.KeyboardEventHandler>>;
  * Get the normalized event key across all browsers
  * @param event keyboard event
  */
-function normalizeEventKey(event: Pick<KeyboardEvent, "key" | "keyCode">) {
+function normalizeEventKey(event: Pick<KeyboardEvent, 'key' | 'keyCode'>) {
   const { key, keyCode } = event;
 
   const isArrowKey =
-    keyCode >= 37 && keyCode <= 40 && key.indexOf("Arrow") !== 0;
+    keyCode >= 37 && keyCode <= 40 && key.indexOf('Arrow') !== 0;
 
   const eventKey = isArrowKey ? `Arrow${key}` : key;
 
@@ -54,21 +55,21 @@ export interface SpinParams {
 }
 
 export const toNumber = (value: string | undefined) => {
-  if (value === "") return undefined;
+  if (value === '') return undefined;
   const result = Number(value);
   return Number.isNaN(result) ? undefined : result;
 };
 
 export const numberToString = (value: number | undefined, precision = 0) => {
-  const result = value?.toFixed(precision) ?? "";
-  if (result === "NaN") return "";
+  const result = value?.toFixed(precision) ?? '';
+  if (result === 'NaN') return '';
   return result;
 };
 
 export const getStepFactor = (
   event: Partial<{ metaKey: boolean; ctrlKey: boolean; shiftKey: boolean }>,
   step: number,
-  precision: number
+  precision: number,
 ) => {
   let ratio = 1;
   if (event.metaKey || event.ctrlKey) {
@@ -99,7 +100,7 @@ export const useNumberBoundary = (options: UseNumberInputOptions = {}) => {
     parser = noop,
   } = options;
   const [interfaceValue, setInterfaceValue] = useState<string>(
-    formatter(numberToString(defaultValue, precision))
+    formatter(numberToString(defaultValue, precision)),
   );
   const numberValue = toNumber(parser(interfaceValue));
 
@@ -141,8 +142,8 @@ export const useNumberBoundary = (options: UseNumberInputOptions = {}) => {
   };
 };
 
-export type NumberInputEventType = "change" | "blur";
-export type NumberInputError = "exceed-max" | "below-min";
+export type NumberInputEventType = 'change' | 'blur';
+export type NumberInputError = 'exceed-max' | 'below-min';
 export type UseNumberInputOptions = {
   /**
    * If true, the input's value will change based on mouse wheel
@@ -179,7 +180,7 @@ export type UseNumberInputOptions = {
       error: NumberInputError | null;
       eventType?: NumberInputEventType;
       valueText?: string;
-    }
+    },
   ) => void;
 } & BoundaryParams &
   SpinParams;
@@ -201,7 +202,7 @@ function callAllHandlers<T>(
 ) {
   return (event: T) => {
     handlers.forEach((handler) => {
-      if (typeof handler === "function") {
+      if (typeof handler === 'function') {
         handler(event);
       }
     });
@@ -219,11 +220,11 @@ const useIsFirstMount = () => {
 function getError(
   value: number | undefined,
   min: number,
-  max: number
+  max: number,
 ): NumberInputError | null {
-  if (typeof value === "number") {
-    if (value < min) return "below-min";
-    if (value > max) return "exceed-max";
+  if (typeof value === 'number') {
+    if (value < min) return 'below-min';
+    if (value > max) return 'exceed-max';
   }
   return null;
 }
@@ -252,7 +253,7 @@ export const useNumberInput = (options: UseNumberInputOptions = {}) => {
   } = useNumberBoundary(options);
 
   useEffect(() => {
-    if (process.env.NODE_ENV !== "production") {
+    if (process.env.NODE_ENV !== 'production') {
       if (focusInputOnChange && !inputRef.current) {
         console.warn(`Cannot find inputRef, make sure to pass it to <input /> like this 👇
 
@@ -283,11 +284,11 @@ function NumberInput() {
     // Use passive: false to allow preventDefault to work
     const element = inputRef.current;
     if (element && allowMouseWheel) {
-      element.addEventListener("wheel", handler as EventListener, {
+      element.addEventListener('wheel', handler as EventListener, {
         passive: false,
       });
       return () => {
-        element.removeEventListener("wheel", handler as EventListener);
+        element.removeEventListener('wheel', handler as EventListener);
       };
     }
   }, [
@@ -305,7 +306,7 @@ function NumberInput() {
       onChange?.(numberValue, {
         valueText: interfaceValue,
         error: getError(numberValue, min, max),
-        eventType: "change",
+        eventType: 'change',
       });
     }
   }, [interfaceValue, isFirstMount, max, min, numberValue, onChange]);
@@ -349,9 +350,9 @@ function NumberInput() {
 
   const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     const parsedValue = parser(event.target.value);
-    if (parsedValue !== "") {
+    if (parsedValue !== '') {
       const nextNum = Number(parsedValue);
-      let result = "";
+      let result = '';
       if (Number.isNaN(nextNum)) {
         result = tempInterfaceValue.current;
       } else {
@@ -366,32 +367,32 @@ function NumberInput() {
       onChange?.(Number(result), {
         valueText: formatter(result),
         error: getError(Number(result), min, max),
-        eventType: "blur",
+        eventType: 'blur',
       });
     } else {
       onChange?.(undefined, {
-        valueText: "",
+        valueText: '',
         error: null,
-        eventType: "blur",
+        eventType: 'blur',
       });
     }
   };
 
   const incrementDisabled =
-    keepWithinRange && typeof numberValue === "number" && numberValue >= max;
+    keepWithinRange && typeof numberValue === 'number' && numberValue >= max;
   const decrementDisabled =
-    keepWithinRange && typeof numberValue === "number" && numberValue <= min;
+    keepWithinRange && typeof numberValue === 'number' && numberValue <= min;
   return {
     inputRef,
     getInputProps: (handlers?: Partial<InputHandlers>) => ({
-      pattern: "[0-9]*(.[0-9]+)?",
-      role: "spinbutton",
-      "aria-valuemin": min,
-      "aria-valuemax": max,
-      autoComplete: "off",
-      autoCorrect: "off",
-      "aria-valuetext": interfaceValue,
-      "aria-valuenow": numberValue,
+      pattern: '[0-9]*(.[0-9]+)?',
+      role: 'spinbutton',
+      'aria-valuemin': min,
+      'aria-valuemax': max,
+      autoComplete: 'off',
+      autoCorrect: 'off',
+      'aria-valuetext': interfaceValue,
+      'aria-valuenow': numberValue,
       value: interfaceValue,
       onChange: handleChange,
       onBlur: callAllHandlers(handleBlur, handlers?.onBlur),
@@ -399,7 +400,7 @@ function NumberInput() {
     }),
     getIncrementProps: (handlers?: Partial<ButtonHandlers>) => ({
       tabIndex: -1,
-      ...(typeof window !== "undefined" &&
+      ...(typeof window !== 'undefined' &&
       !!document.documentElement.ontouchstart
         ? {
             onTouchStart: callAllHandlers(spinUp, handlers?.onTouchStart),
@@ -411,11 +412,11 @@ function NumberInput() {
       onMouseLeave: callAllHandlers(spinner.stop, handlers?.onMouseLeave),
       onTouchEnd: callAllHandlers(spinner.stop, handlers?.onTouchEnd),
       disabled: incrementDisabled,
-      "aria-disabled": incrementDisabled ? true : undefined,
+      'aria-disabled': incrementDisabled ? true : undefined,
     }),
     getDecrementProps: (handlers?: Partial<ButtonHandlers>) => ({
       tabIndex: -1,
-      ...(typeof window !== "undefined" &&
+      ...(typeof window !== 'undefined' &&
       !!document.documentElement.ontouchstart
         ? {
             onTouchStart: callAllHandlers(spinDown, handlers?.onTouchStart),
@@ -427,7 +428,7 @@ function NumberInput() {
       onMouseLeave: callAllHandlers(spinner.stop, handlers?.onMouseLeave),
       onTouchEnd: callAllHandlers(spinner.stop, handlers?.onTouchEnd),
       disabled: decrementDisabled,
-      "aria-disabled": decrementDisabled ? true : undefined,
+      'aria-disabled': decrementDisabled ? true : undefined,
     }),
   };
 };

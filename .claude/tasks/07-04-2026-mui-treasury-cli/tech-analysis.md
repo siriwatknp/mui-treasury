@@ -313,18 +313,18 @@ async function writeFiles(
 ### `packages/cli/tsup.config.ts`
 
 ```typescript
-import { defineConfig } from "tsup";
+import { defineConfig } from 'tsup';
 
 export default defineConfig({
-  entry: ["src/index.ts"],
-  format: ["esm"],
+  entry: ['src/index.ts'],
+  format: ['esm'],
   clean: true,
   dts: true,
   minify: true,
-  target: "esnext",
+  target: 'esnext',
   treeshake: true,
-  outDir: "dist",
-  banner: { js: "#!/usr/bin/env node" },
+  outDir: 'dist',
+  banner: { js: '#!/usr/bin/env node' },
 });
 ```
 
@@ -360,8 +360,8 @@ Node 18+ has native `fetch` — no need for `node-fetch`. Set `engines: { node: 
 
 ```yaml
 packages:
-  - "apps/*"
-  - "packages/*"
+  - 'apps/*'
+  - 'packages/*'
 ```
 
 ---

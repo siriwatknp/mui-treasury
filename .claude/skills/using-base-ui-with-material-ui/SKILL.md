@@ -14,10 +14,10 @@ Render Base UI components as a foundation for the UI and then pass `render` prop
 For example, a Navigation Menu, should use `Link` from Material UI as the render element for `NavigationMenu.Link`.:
 
 ```tsx
-import { NavigationMenu } from "@base-ui-components/react/navigation-menu";
-import Box from "@mui/material/Box";
-import Link from "@mui/material/Link";
-import Typography from "@mui/material/Typography";
+import { NavigationMenu } from '@base-ui-components/react/navigation-menu';
+import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
 
 function MenuLink({
   icon,
@@ -37,22 +37,22 @@ function MenuLink({
         <Link
           underline="none"
           sx={{
-            display: "flex",
+            display: 'flex',
             gap: 1,
             p: 1.5,
             borderRadius: 0.5,
-            cursor: "pointer",
-            transition: "background-color 0.2s",
-            "@media (hover: hover)": {
-              "&:hover": {
-                bgcolor: "action.hover",
+            cursor: 'pointer',
+            transition: 'background-color 0.2s',
+            '@media (hover: hover)': {
+              '&:hover': {
+                bgcolor: 'action.hover',
               },
             },
           }}
         />
       }
     >
-      <Box sx={{ color: "primary.main", display: "flex", mt: 0.25 }}>
+      <Box sx={{ color: 'primary.main', display: 'flex', mt: 0.25 }}>
         {icon}
       </Box>
       <Box>
@@ -61,7 +61,7 @@ function MenuLink({
         </Typography>
         <Typography
           variant="body2"
-          sx={{ color: "text.secondary", lineHeight: 1.4 }}
+          sx={{ color: 'text.secondary', lineHeight: 1.4 }}
         >
           {description}
         </Typography>
@@ -76,8 +76,8 @@ For full example, see [nav-menu-01.tsx](registry/blocks/nav-menu-01/nav-menu-01.
 Another example, using `Button` from Material UI as the render element for Base UI `Trigger` component:
 
 ```tsx
-import { Menu } from "@base-ui-components/react/menu";
-import Button from "@mui/material/Button";
+import { Menu } from '@base-ui-components/react/menu';
+import Button from '@mui/material/Button';
 
 <Menu.Trigger render={<Button />}>File</Menu.Trigger>;
 ```
@@ -88,20 +88,20 @@ To style Base UI components, use `<Box />` as a render element and pass `sx` pro
 Always keep in mind that the sx values should be minimum since Material UI components already have default styling.
 
 ```tsx
-import { NavigationMenu } from "@base-ui-components/react/navigation-menu";
-import Box from "@mui/material/Box";
+import { NavigationMenu } from '@base-ui-components/react/navigation-menu';
+import Box from '@mui/material/Box';
 
 <NavigationMenu.List
   render={
     <Box
       component="ul"
       sx={{
-        display: "flex",
-        justifyContent: "center",
+        display: 'flex',
+        justifyContent: 'center',
         gap: 2,
-        listStyle: "none",
-        "& .MuiButton-root[data-popup-open]": {
-          bgcolor: "action.selected",
+        listStyle: 'none',
+        '& .MuiButton-root[data-popup-open]': {
+          bgcolor: 'action.selected',
         },
       }}
     />
@@ -118,19 +118,19 @@ For non-interactive Base UI components like Meter, Progress, Slider (read-only),
 ### ✅ Correct Pattern
 
 ```tsx
-import { Meter } from "@base-ui-components/react/meter";
-import Box from "@mui/material/Box";
+import { Meter } from '@base-ui-components/react/meter';
+import Box from '@mui/material/Box';
 
 <Meter.Track
   render={
     <Box
       sx={{
         height: 8,
-        width: "100%",
-        bgcolor: "action.disabledBackground",
+        width: '100%',
+        bgcolor: 'action.disabledBackground',
         borderRadius: 1,
-        overflow: "hidden",
-        position: "relative",
+        overflow: 'hidden',
+        position: 'relative',
       }}
     />
   }
@@ -139,9 +139,9 @@ import Box from "@mui/material/Box";
     render={
       <Box
         sx={{
-          height: "100%",
-          bgcolor: "text.primary",
-          transition: "width 0.3s ease",
+          height: '100%',
+          bgcolor: 'text.primary',
+          transition: 'width 0.3s ease',
         }}
       />
     }
@@ -179,18 +179,18 @@ import Box from "@mui/material/Box";
 If the same styles are used multiple times for the same Base UI components, create wrapper components to reduce duplication.
 
 ```tsx
-import { NavigationMenu } from "@base-ui-components/react/navigation-menu";
+import { NavigationMenu } from '@base-ui-components/react/navigation-menu';
 
 function Content(props: BoxProps) {
   return (
     <Box
       sx={{
         padding: 1,
-        width: "calc(100vw - 40px)",
-        height: "100%",
-        "@media (min-width: 500px)": {
-          width: "max-content",
-          minWidth: "400px",
+        width: 'calc(100vw - 40px)',
+        height: '100%',
+        '@media (min-width: 500px)': {
+          width: 'max-content',
+          minWidth: '400px',
         },
       }}
       {...props}
@@ -218,7 +218,7 @@ function Content(props: BoxProps) {
 ### ❌ Incorrect - Duplicating Base UI Props
 
 ```tsx
-import { PreviewCard } from "@base-ui-components/react/preview-card";
+import { PreviewCard } from '@base-ui-components/react/preview-card';
 
 // ❌ BAD: Manually duplicating delay, closeDelay, defaultOpen, etc.
 export interface CardPreview01Props {
@@ -235,7 +235,7 @@ export interface CardPreview01Props {
 ### ✅ Correct - Extending Base UI Props
 
 ```tsx
-import { PreviewCard } from "@base-ui-components/react/preview-card";
+import { PreviewCard } from '@base-ui-components/react/preview-card';
 
 // ✅ GOOD: Extend the Base UI component props
 export interface CardPreview01Props extends PreviewCard.Root.Props {

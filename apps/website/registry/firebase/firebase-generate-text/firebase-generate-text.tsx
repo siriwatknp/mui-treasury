@@ -1,37 +1,39 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import CircularProgress from "@mui/material/CircularProgress";
-import Typography from "@mui/material/Typography";
-import { useChat } from "@ai-sdk/react";
-import { Bot, SquareIcon } from "lucide-react";
-import { app } from "@/lib/firebase-setup";
-import { FirebaseChatTransport } from "@/registry/firebase/firebase-chat-transport";
+import React, { useState } from 'react';
+
+import { useChat } from '@ai-sdk/react';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
+import Typography from '@mui/material/Typography';
+import { Bot, SquareIcon } from 'lucide-react';
+
+import { app } from '@/lib/firebase-setup';
 import {
   Conversation,
   ConversationContent,
   ConversationScrollButton,
-} from "@/registry/components/ai-conversation/ai-conversation";
+} from '@/registry/components/ai-conversation/ai-conversation';
+import { Loader } from '@/registry/components/ai-loader/ai-loader';
 import {
   Message,
   MessageAvatar,
   MessageContent,
-} from "@/registry/components/ai-message/ai-message";
-import { Loader } from "@/registry/components/ai-loader/ai-loader";
+} from '@/registry/components/ai-message/ai-message';
 import {
   PromptInput,
   PromptInputBody,
+  type PromptInputMessage,
   PromptInputSubmit,
   PromptInputTextarea,
   PromptInputToolbar,
-  type PromptInputMessage,
-} from "@/registry/components/ai-prompt-input/ai-prompt-input";
-import { Response } from "@/registry/components/ai-response/ai-response";
+} from '@/registry/components/ai-prompt-input/ai-prompt-input';
+import { Response } from '@/registry/components/ai-response/ai-response';
+import { FirebaseChatTransport } from '@/registry/firebase/firebase-chat-transport';
 
 export default function FirebaseGenerateText() {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
 
   const transport = React.useMemo(
     () =>
@@ -39,7 +41,7 @@ export default function FirebaseGenerateText() {
         ? new FirebaseChatTransport({
             firebaseApp: app,
             modelParams: {
-              model: "gemini-2.0-flash",
+              model: 'gemini-2.0-flash',
             },
           })
         : null,
@@ -47,7 +49,7 @@ export default function FirebaseGenerateText() {
   );
 
   const { messages, status, error, sendMessage, stop } = useChat({
-    id: "firebase-generate-text",
+    id: 'firebase-generate-text',
     transport: transport!,
   });
 
@@ -55,10 +57,10 @@ export default function FirebaseGenerateText() {
     return (
       <Box
         sx={{
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           p: 2,
         }}
       >
@@ -79,40 +81,40 @@ export default function FirebaseGenerateText() {
     if (!text) return;
 
     sendMessage({ text });
-    setInputValue("");
+    setInputValue('');
   };
 
   return (
     <Box
       sx={{
-        display: "flex",
-        flexDirection: "column",
+        display: 'flex',
+        flexDirection: 'column',
         maxWidth: 768,
-        mx: "auto",
-        width: "100%",
-        height: "100%",
+        mx: 'auto',
+        width: '100%',
+        height: '100%',
       }}
     >
       <Box
         sx={{
           flex: 1,
-          display: "flex",
-          flexDirection: "column",
-          overflow: "hidden",
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'hidden',
         }}
       >
         <Conversation>
           <ConversationContent>
-            {messages.length === 0 && status === "ready" ? (
+            {messages.length === 0 && status === 'ready' ? (
               <Box
                 sx={{
                   flex: 1,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "column",
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexDirection: 'column',
                   gap: 2,
-                  color: "text.tertiary",
+                  color: 'text.tertiary',
                 }}
               >
                 <Bot size={48} />
@@ -124,23 +126,23 @@ export default function FirebaseGenerateText() {
                 </Typography>
               </Box>
             ) : (
-              <Box sx={{ display: "flex", flexDirection: "column" }}>
+              <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 {messages.map((message) => (
                   <Message key={message.id} from={message.role}>
                     <MessageAvatar
-                      name={message.role === "user" ? "You" : "AI"}
+                      name={message.role === 'user' ? 'You' : 'AI'}
                     />
                     <MessageContent variant="flat">
                       {message.parts?.map((part, index) => {
-                        if (part.type === "text") {
+                        if (part.type === 'text') {
                           if (
-                            message.role === "assistant" &&
-                            part.state !== "done" &&
+                            message.role === 'assistant' &&
+                            part.state !== 'done' &&
                             !part.text
                           ) {
                             return null;
                           }
-                          return message.role === "assistant" ? (
+                          return message.role === 'assistant' ? (
                             <Response key={index}>{part.text}</Response>
                           ) : (
                             <Box key={index}>{part.text}</Box>
@@ -153,15 +155,15 @@ export default function FirebaseGenerateText() {
                 ))}
 
                 {/* Loading indicator */}
-                {status === "submitted" && (
+                {status === 'submitted' && (
                   <Message from="assistant">
                     <MessageAvatar name="AI Assistant" />
                     <MessageContent variant="flat">
                       <Box
-                        sx={{ display: "flex", alignItems: "center", gap: 1 }}
+                        sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
                       >
                         <CircularProgress size={20} />
-                        <Typography sx={{ color: "text.secondary" }}>
+                        <Typography sx={{ color: 'text.secondary' }}>
                           Thinking...
                         </Typography>
                       </Box>
@@ -174,26 +176,26 @@ export default function FirebaseGenerateText() {
                   <Message from="assistant">
                     <MessageAvatar name="AI Assistant" />
                     <MessageContent variant="flat">
-                      <Typography sx={{ color: "error.text" }}>
+                      <Typography sx={{ color: 'error.text' }}>
                         {error.message ||
-                          "An error occurred. Please try again."}
+                          'An error occurred. Please try again.'}
                       </Typography>
                     </MessageContent>
                   </Message>
                 )}
               </Box>
             )}
-            {status === "streaming" && (
+            {status === 'streaming' && (
               <Box
                 sx={{
-                  display: "flex",
-                  alignItems: "center",
+                  display: 'flex',
+                  alignItems: 'center',
                   gap: 1,
                   mt: 1,
                 }}
               >
                 <Loader />
-                <Typography sx={{ color: "text.secondary" }}>
+                <Typography sx={{ color: 'text.secondary' }}>
                   Streaming response...
                 </Typography>
               </Box>
@@ -211,11 +213,11 @@ export default function FirebaseGenerateText() {
             placeholder="Enter your prompt..."
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            disabled={status === "submitted" || error != null}
+            disabled={status === 'submitted' || error != null}
           />
         </PromptInputBody>
         <PromptInputToolbar>
-          {status === "streaming" || status === "submitted" ? (
+          {status === 'streaming' || status === 'submitted' ? (
             <Button
               variant="outlined"
               onClick={(e) => {
@@ -223,7 +225,7 @@ export default function FirebaseGenerateText() {
                 stop();
               }}
               sx={{
-                minWidth: "auto",
+                minWidth: 'auto',
                 borderRadius: 2,
                 p: 1,
               }}
@@ -232,7 +234,7 @@ export default function FirebaseGenerateText() {
             </Button>
           ) : (
             <PromptInputSubmit
-              status={status as "ready" | "submitted" | "streaming" | "error"}
+              status={status as 'ready' | 'submitted' | 'streaming' | 'error'}
               disabled={error != null}
             />
           )}

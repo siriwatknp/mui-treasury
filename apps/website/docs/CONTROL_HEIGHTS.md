@@ -16,12 +16,13 @@ export const CONTROL_TOUCH_HEIGHTS = {
   lg: 48,
 };
 
-export const TOUCH_MEDIA_QUERY = "@media (max-width: 768px)";
+export const TOUCH_MEDIA_QUERY = '@media (max-width: 768px)';
 ```
 
 ## Touch Device Support
 
 Touch heights provide larger touch targets for mobile/touch devices:
+
 - sm: 32 → 34 (+2px)
 - md: 36 → 40 (+4px)
 - lg: 42 → 48 (+6px)
@@ -29,6 +30,7 @@ Touch heights provide larger touch targets for mobile/touch devices:
 ### Media Query Decision
 
 We chose `@media (max-width: 768px)` (breakpoint-only) over:
+
 - `(pointer: coarse)` - targets touch input regardless of screen size
 - `(pointer: coarse) and (max-width: 768px)` - hybrid approach
 
@@ -49,6 +51,7 @@ Touch styles are conditionally applied only when values differ:
 ```
 
 This pattern:
+
 - Self-documents which values need touch overrides
 - Automatically excludes styles if values become identical
 - Requires removing `as const` from scales for TypeScript compatibility
@@ -77,9 +80,9 @@ For a target padding value, derive the formula: `CONTROL_HEIGHTS.{size} / 2 - of
 For positive offset (padding > half height):
 | Target (px) | sm (32) formula | md (36) formula | lg (42) formula |
 |-------------|-----------------|-----------------|-----------------|
-| 20          | sm/2 + 4        | md/2 + 2        | lg/2 - 1        |
-| 22          | sm/2 + 6        | md/2 + 4        | lg/2 + 1        |
-| 23          | sm/2 + 7        | md/2 + 5        | lg/2 + 2        |
+| 20 | sm/2 + 4 | md/2 + 2 | lg/2 - 1 |
+| 22 | sm/2 + 6 | md/2 + 4 | lg/2 + 1 |
+| 23 | sm/2 + 7 | md/2 + 5 | lg/2 + 2 |
 
 ## Usage by Variant
 

@@ -1,11 +1,12 @@
-"use client";
+'use client';
 
-import Box from "@mui/material/Box";
-import Collapse from "@mui/material/Collapse";
-import Typography from "@mui/material/Typography";
-import type { SxProps, Theme } from "@mui/material/styles";
-import { ChevronDownIcon, SearchIcon } from "lucide-react";
-import React, { memo, useState, type ReactNode } from "react";
+import React, { type ReactNode, memo, useState } from 'react';
+
+import Box from '@mui/material/Box';
+import Collapse from '@mui/material/Collapse';
+import Typography from '@mui/material/Typography';
+import type { SxProps, Theme } from '@mui/material/styles';
+import { ChevronDownIcon, SearchIcon } from 'lucide-react';
 
 export type TaskItemFileProps = {
   children?: ReactNode;
@@ -15,17 +16,17 @@ export type TaskItemFileProps = {
 export const TaskItemFile = ({ children, sx }: TaskItemFileProps) => (
   <Box
     sx={{
-      display: "inline-flex",
-      alignItems: "center",
+      display: 'inline-flex',
+      alignItems: 'center',
       gap: 0.5,
       borderRadius: 1,
       border: 1,
-      borderColor: "divider",
-      bgcolor: "action.hover",
+      borderColor: 'divider',
+      bgcolor: 'action.hover',
       px: 0.75,
       py: 0,
-      color: "text.primary",
-      fontSize: "0.75rem",
+      color: 'text.primary',
+      fontSize: '0.75rem',
       ...sx,
     }}
   >
@@ -41,8 +42,8 @@ export type TaskItemProps = {
 export const TaskItem = ({ children, sx }: TaskItemProps) => (
   <Box
     sx={{
-      color: "text.secondary",
-      fontSize: "0.875rem",
+      color: 'text.secondary',
+      fontSize: '0.875rem',
       ...sx,
     }}
   >
@@ -73,7 +74,7 @@ export const Task = memo(({ defaultOpen = true, children, sx }: TaskProps) => {
   );
 });
 
-Task.displayName = "Task";
+Task.displayName = 'Task';
 
 export type TaskTriggerProps = {
   title: string;
@@ -94,19 +95,19 @@ export const TaskTrigger = ({
     component="button"
     onClick={onToggle}
     sx={{
-      display: "flex",
-      width: "100%",
-      alignItems: "center",
+      display: 'flex',
+      width: '100%',
+      alignItems: 'center',
       gap: 1,
-      color: "text.secondary",
-      fontSize: "0.875rem",
-      transition: "color 0.2s",
-      border: "none",
-      background: "transparent",
-      cursor: "pointer",
+      color: 'text.secondary',
+      fontSize: '0.875rem',
+      transition: 'color 0.2s',
+      border: 'none',
+      background: 'transparent',
+      cursor: 'pointer',
       p: 0,
-      "&:hover": {
-        color: "text.primary",
+      '&:hover': {
+        color: 'text.primary',
       },
       ...sx,
     }}
@@ -114,15 +115,15 @@ export const TaskTrigger = ({
     {children ?? (
       <>
         <SearchIcon size={16} />
-        <Typography component="span" sx={{ fontSize: "0.875rem" }}>
+        <Typography component="span" sx={{ fontSize: '0.875rem' }}>
           {title}
         </Typography>
         <Box
           component={ChevronDownIcon}
           size={16}
           sx={{
-            transition: "transform 0.2s",
-            transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+            transition: 'transform 0.2s',
+            transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
           }}
         />
       </>
@@ -144,8 +145,8 @@ export const TaskContent = memo(
           mt: 2,
           pl: 2,
           borderLeft: 2,
-          borderColor: "divider",
-          "& > *:not(:last-child)": {
+          borderColor: 'divider',
+          '& > *:not(:last-child)': {
             mb: 1,
           },
           ...sx,
@@ -157,4 +158,4 @@ export const TaskContent = memo(
   ),
 );
 
-TaskContent.displayName = "TaskContent";
+TaskContent.displayName = 'TaskContent';

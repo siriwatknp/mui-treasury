@@ -1,18 +1,20 @@
-"use client";
+'use client';
 
-import Box from "@mui/material/Box";
-import Collapse from "@mui/material/Collapse";
-import type { SxProps, Theme } from "@mui/material/styles";
-import { BrainIcon, ChevronDownIcon } from "lucide-react";
 import React, {
   createContext,
   memo,
+  useCallback,
   useContext,
   useEffect,
   useState,
-  useCallback,
-} from "react";
-import { Response } from "../ai-response/ai-response";
+} from 'react';
+
+import Box from '@mui/material/Box';
+import Collapse from '@mui/material/Collapse';
+import type { SxProps, Theme } from '@mui/material/styles';
+import { BrainIcon, ChevronDownIcon } from 'lucide-react';
+
+import { Response } from '../ai-response/ai-response';
 
 type ReasoningContextValue = {
   isStreaming: boolean;
@@ -27,7 +29,7 @@ const ReasoningContext = createContext<ReasoningContextValue | null>(null);
 const useReasoning = () => {
   const context = useContext(ReasoningContext);
   if (!context) {
-    throw new Error("Reasoning components must be used within Reasoning");
+    throw new Error('Reasoning components must be used within Reasoning');
   }
   return context;
 };
@@ -145,19 +147,19 @@ export const ReasoningTrigger = memo(
         component="button"
         onClick={handleToggle}
         sx={{
-          display: "flex",
-          width: "100%",
-          alignItems: "center",
+          display: 'flex',
+          width: '100%',
+          alignItems: 'center',
           gap: 1,
-          color: "text.secondary",
-          fontSize: "0.875rem",
-          transition: "color 0.2s",
-          border: "none",
-          background: "transparent",
-          cursor: "pointer",
+          color: 'text.secondary',
+          fontSize: '0.875rem',
+          transition: 'color 0.2s',
+          border: 'none',
+          background: 'transparent',
+          cursor: 'pointer',
           p: 0,
-          "&:hover": {
-            color: "text.primary",
+          '&:hover': {
+            color: 'text.primary',
           },
           ...sx,
         }}
@@ -170,8 +172,8 @@ export const ReasoningTrigger = memo(
               component={ChevronDownIcon}
               size={16}
               sx={{
-                transition: "transform 0.2s",
-                transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                transition: 'transform 0.2s',
+                transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
               }}
             />
           </>
@@ -195,18 +197,18 @@ export const ReasoningContent = memo(
         <Box
           sx={{
             mt: 2,
-            fontSize: "0.875rem",
-            color: "text.secondary",
+            fontSize: '0.875rem',
+            color: 'text.secondary',
             ...sx,
           }}
         >
-          <Response sx={{ display: "grid", gap: 1 }}>{children}</Response>
+          <Response sx={{ display: 'grid', gap: 1 }}>{children}</Response>
         </Box>
       </Collapse>
     );
   },
 );
 
-Reasoning.displayName = "Reasoning";
-ReasoningTrigger.displayName = "ReasoningTrigger";
-ReasoningContent.displayName = "ReasoningContent";
+Reasoning.displayName = 'Reasoning';
+ReasoningTrigger.displayName = 'ReasoningTrigger';
+ReasoningContent.displayName = 'ReasoningContent';

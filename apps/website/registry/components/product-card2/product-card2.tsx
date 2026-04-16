@@ -1,6 +1,8 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
+
+import { Check, Favorite, FavoriteBorder } from '@mui/icons-material';
 import {
   Box,
   Button,
@@ -10,8 +12,7 @@ import {
   ToggleButton,
   ToggleButtonGroup,
   Typography,
-} from "@mui/material";
-import { FavoriteBorder, Favorite, Check } from "@mui/icons-material";
+} from '@mui/material';
 
 interface ProductCard2Props {
   productName?: string;
@@ -25,23 +26,23 @@ interface ProductCard2Props {
 }
 
 export function ProductCard2({
-  productName = "React Running",
-  productModel = "Shoe 2",
+  productName = 'React Running',
+  productModel = 'Shoe 2',
   price = 120,
-  sizes = ["9", "9.5", "10", "10.5", "11"],
+  sizes = ['9', '9.5', '10', '10.5', '11'],
   colors = [
-    { name: "Black colorway", value: "#1a1a1a" },
-    { name: "Light colorway", value: "#e5e5e5" },
-    { name: "Clay colorway", value: "#8B7355" },
-    { name: "Cream colorway", value: "#F5F5DC" },
+    { name: 'Black colorway', value: '#1a1a1a' },
+    { name: 'Light colorway', value: '#e5e5e5' },
+    { name: 'Clay colorway', value: '#8B7355' },
+    { name: 'Cream colorway', value: '#F5F5DC' },
   ],
-  imageUrl = "https://placehold.co/280x200",
+  imageUrl = 'https://placehold.co/280x200',
   onFavorite,
   onAddToCart,
 }: ProductCard2Props) {
-  const [selectedSize, setSelectedSize] = useState<string>("");
+  const [selectedSize, setSelectedSize] = useState<string>('');
   const [selectedColor, setSelectedColor] = useState<string>(
-    colors[0]?.value || "",
+    colors[0]?.value || '',
   );
   const [isFavorited, setIsFavorited] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -71,7 +72,7 @@ export function ProductCard2({
     setIsLoading(true);
     try {
       const selectedColorName =
-        colors.find((c) => c.value === selectedColor)?.name || "";
+        colors.find((c) => c.value === selectedColor)?.name || '';
       onAddToCart?.(selectedSize, selectedColorName);
     } finally {
       setIsLoading(false);
@@ -82,23 +83,23 @@ export function ProductCard2({
     <Card
       sx={(theme) => ({
         maxWidth: 360,
-        mx: "auto",
+        mx: 'auto',
         borderRadius: 3,
-        overflow: "hidden",
+        overflow: 'hidden',
         boxShadow: theme.shadows[8],
-        ...theme.applyStyles("dark", {
-          bgcolor: "grey.900",
+        ...theme.applyStyles('dark', {
+          bgcolor: 'grey.900',
         }),
       })}
     >
       <Box
         sx={{
-          position: "relative",
+          position: 'relative',
           p: 0.5,
           pb: 0,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
           minHeight: 200,
         }}
       >
@@ -108,25 +109,25 @@ export function ProductCard2({
           alt={`${productName} ${productModel} sneaker`}
           sx={{
             borderRadius: 2.5,
-            width: "100%",
-            height: "100%",
-            objectFit: "contain",
+            width: '100%',
+            height: '100%',
+            objectFit: 'contain',
           }}
         />
         <IconButton
           aria-label={
-            isFavorited ? "Remove from favorites" : "Add to favorites"
+            isFavorited ? 'Remove from favorites' : 'Add to favorites'
           }
           onClick={handleFavoriteToggle}
           sx={{
-            position: "absolute",
+            position: 'absolute',
             top: 12,
             right: 12,
             zIndex: 1,
           }}
         >
           {isFavorited ? (
-            <Favorite sx={{ color: "error.icon" }} />
+            <Favorite sx={{ color: 'error.icon' }} />
           ) : (
             <FavoriteBorder />
           )}
@@ -136,7 +137,7 @@ export function ProductCard2({
       {/* Product details */}
       <Stack spacing={2} sx={{ p: 3 }}>
         {/* Product title */}
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <Typography
             variant="h4"
             component="h1"
@@ -147,17 +148,17 @@ export function ProductCard2({
           <Box
             component="span"
             sx={(theme) => ({
-              bgcolor: "grey.200",
-              color: "text.secondary",
+              bgcolor: 'grey.200',
+              color: 'text.secondary',
               px: 1,
               py: 0.5,
               borderRadius: 1,
-              fontSize: "0.75rem",
+              fontSize: '0.75rem',
               fontWeight: 600,
-              textTransform: "uppercase",
+              textTransform: 'uppercase',
               letterSpacing: 0.5,
-              ...theme.applyStyles("dark", {
-                bgcolor: "grey.800",
+              ...theme.applyStyles('dark', {
+                bgcolor: 'grey.800',
               }),
             })}
           >
@@ -180,21 +181,21 @@ export function ProductCard2({
                   bgcolor: `${color.value} !important`,
                   border: selectedColor === color.value ? 2 : 1,
                   borderColor:
-                    selectedColor === color.value ? "primary.main" : "divider",
-                  borderRadius: "50%",
-                  "&:hover": {
-                    transform: "scale(1.1)",
+                    selectedColor === color.value ? 'primary.main' : 'divider',
+                  borderRadius: '50%',
+                  '&:hover': {
+                    transform: 'scale(1.1)',
                   },
-                  ...theme.applyStyles("dark", {
+                  ...theme.applyStyles('dark', {
                     borderColor:
                       selectedColor === color.value
-                        ? "primary.light"
-                        : "grey.600",
+                        ? 'primary.light'
+                        : 'grey.600',
                   }),
                 })}
               >
                 {selectedColor === color.value && (
-                  <Check sx={{ filter: "invert(1) contrast(20)" }} />
+                  <Check sx={{ filter: 'invert(1) contrast(20)' }} />
                 )}
               </IconButton>
             ))}
@@ -214,18 +215,18 @@ export function ProductCard2({
             aria-label="shoe size selection"
             sx={{
               gap: 1,
-              "& .MuiToggleButton-root": {
+              '& .MuiToggleButton-root': {
                 border: 1,
-                borderColor: "divider",
+                borderColor: 'divider',
                 borderRadius: 2,
                 px: 2,
                 py: 1,
-                "&.Mui-selected": {
-                  bgcolor: "primary.main",
-                  color: "primary.contrastText",
-                  borderColor: "primary.main",
-                  "&:hover": {
-                    bgcolor: "primary.dark",
+                '&.Mui-selected': {
+                  bgcolor: 'primary.main',
+                  color: 'primary.contrastText',
+                  borderColor: 'primary.main',
+                  '&:hover': {
+                    bgcolor: 'primary.dark',
                   },
                 },
               },
@@ -242,9 +243,9 @@ export function ProductCard2({
         {/* Price and add to cart */}
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
             pt: 1,
           }}
         >
@@ -264,21 +265,21 @@ export function ProductCard2({
               borderRadius: 3,
               px: 3,
               py: 1.5,
-              textTransform: "none",
+              textTransform: 'none',
               fontWeight: 600,
-              "&:disabled": {
-                bgcolor: "action.disabledBackground",
-                color: "action.disabled",
+              '&:disabled': {
+                bgcolor: 'action.disabledBackground',
+                color: 'action.disabled',
               },
-              ...theme.applyStyles("dark", {
-                "&:disabled": {
-                  bgcolor: "grey.800",
-                  color: "grey.600",
+              ...theme.applyStyles('dark', {
+                '&:disabled': {
+                  bgcolor: 'grey.800',
+                  color: 'grey.600',
                 },
               }),
             })}
           >
-            {isLoading ? "Adding..." : "Add to cart"}
+            {isLoading ? 'Adding...' : 'Add to cart'}
           </Button>
         </Box>
       </Stack>

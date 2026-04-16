@@ -1,57 +1,58 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import { FirebaseChatTransport } from "@/registry/firebase/firebase-chat-transport";
-import { ResponseModality } from "firebase/ai";
-import { app } from "@/lib/firebase-setup";
-import { Action, Actions } from "@/registry/components/ai-actions/ai-actions";
-import {
-  Conversation,
-  ConversationContent,
-  ConversationScrollButton,
-} from "@/registry/components/ai-conversation/ai-conversation";
-import {
-  Message,
-  MessageAvatar,
-  MessageContent,
-} from "@/registry/components/ai-message/ai-message";
-import { Loader } from "@/registry/components/ai-loader/ai-loader";
-import {
-  PromptInput,
-  PromptInputBody,
-  PromptInputSubmit,
-  PromptInputTextarea,
-  PromptInputToolbar,
-  type PromptInputMessage,
-} from "@/registry/components/ai-prompt-input/ai-prompt-input";
-import { Response } from "@/registry/components/ai-response/ai-response";
-import {
-  Suggestion,
-  Suggestions,
-} from "@/registry/components/ai-suggestion/ai-suggestion";
-import { UIMessage, useChat } from "@ai-sdk/react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import CircularProgress from "@mui/material/CircularProgress";
-import Typography from "@mui/material/Typography";
+import { UIMessage, useChat } from '@ai-sdk/react';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
+import Typography from '@mui/material/Typography';
+import { ResponseModality } from 'firebase/ai';
 import {
   BookOpenIcon,
   CopyIcon,
   RefreshCwIcon,
   SquareIcon,
-} from "lucide-react";
-import { toast } from "sonner";
+} from 'lucide-react';
+import { toast } from 'sonner';
+
+import { app } from '@/lib/firebase-setup';
+import { Action, Actions } from '@/registry/components/ai-actions/ai-actions';
+import {
+  Conversation,
+  ConversationContent,
+  ConversationScrollButton,
+} from '@/registry/components/ai-conversation/ai-conversation';
+import { Loader } from '@/registry/components/ai-loader/ai-loader';
+import {
+  Message,
+  MessageAvatar,
+  MessageContent,
+} from '@/registry/components/ai-message/ai-message';
+import {
+  PromptInput,
+  PromptInputBody,
+  type PromptInputMessage,
+  PromptInputSubmit,
+  PromptInputTextarea,
+  PromptInputToolbar,
+} from '@/registry/components/ai-prompt-input/ai-prompt-input';
+import { Response } from '@/registry/components/ai-response/ai-response';
+import {
+  Suggestion,
+  Suggestions,
+} from '@/registry/components/ai-suggestion/ai-suggestion';
+import { FirebaseChatTransport } from '@/registry/firebase/firebase-chat-transport';
 
 const SUGGESTED_PROMPTS = [
-  "Generate an illustrated recipe for a paella. Create images alongside the text as you generate the recipe.",
-  "Generate a story about a dog in a 3D cartoon animation style. For each scene, generate an image.",
+  'Generate an illustrated recipe for a paella. Create images alongside the text as you generate the recipe.',
+  'Generate a story about a dog in a 3D cartoon animation style. For each scene, generate an image.',
   "Create a children's bedtime story about a magical forest with illustrations for each page.",
-  "Write a travel guide for Tokyo with photos of each landmark you describe.",
+  'Write a travel guide for Tokyo with photos of each landmark you describe.',
 ];
 
 export default function FirebaseStoryTelling() {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
 
   const transport = React.useMemo(
     () =>
@@ -59,7 +60,7 @@ export default function FirebaseStoryTelling() {
         ? new FirebaseChatTransport({
             firebaseApp: app,
             modelParams: {
-              model: "gemini-2.5-flash-image",
+              model: 'gemini-2.5-flash-image',
               systemInstruction: `You are a creative storyteller and visual artist.
 When asked to create stories, recipes, guides, or any narrative content, you should:
 1. Generate rich, engaging text content
@@ -81,7 +82,7 @@ Always aim to create an immersive, illustrated experience.`,
 
   const { messages, status, error, sendMessage, stop, regenerate } =
     useChat<UIMessage>({
-      id: "firebase-story-telling",
+      id: 'firebase-story-telling',
       transport: transport!,
     });
 
@@ -95,7 +96,7 @@ Always aim to create an immersive, illustrated experience.`,
     if (hasText) {
       sendMessage({ text: message.text! });
     }
-    setInputValue("");
+    setInputValue('');
   };
 
   const handleSuggestionClick = (suggestion: string) => {
@@ -105,26 +106,26 @@ Always aim to create an immersive, illustrated experience.`,
   const handleCopy = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
-      toast.success("Copied to clipboard");
+      toast.success('Copied to clipboard');
     } catch (err) {
       toast.error(
         `Failed to copy (${
-          err instanceof Error ? err.message : "Unknown error"
+          err instanceof Error ? err.message : 'Unknown error'
         })`,
       );
     }
   };
 
-  const showSuggestions = messages.length === 0 && status === "ready";
+  const showSuggestions = messages.length === 0 && status === 'ready';
 
   if (!app) {
     return (
       <Box
         sx={{
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           p: 2,
         }}
       >
@@ -139,34 +140,34 @@ Always aim to create an immersive, illustrated experience.`,
   return (
     <Box
       sx={{
-        height: "100%",
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
+        height: '100%',
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
         maxWidth: 768,
-        mx: "auto",
+        mx: 'auto',
       }}
     >
       <Box
         sx={{
           flex: 1,
-          display: "flex",
-          flexDirection: "column",
-          overflow: "hidden",
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'hidden',
         }}
       >
         <Conversation>
           <ConversationContent>
-            {messages.length === 0 && status === "ready" ? (
+            {messages.length === 0 && status === 'ready' ? (
               <Box
                 sx={{
                   flex: 1,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "column",
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexDirection: 'column',
                   gap: 2,
-                  color: "text.tertiary",
+                  color: 'text.tertiary',
                 }}
               >
                 <BookOpenIcon size={48} />
@@ -178,37 +179,37 @@ Always aim to create an immersive, illustrated experience.`,
                 </Typography>
               </Box>
             ) : (
-              <Box sx={{ display: "flex", flexDirection: "column" }}>
+              <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 {messages.map((message) => {
                   const messageText = message.parts
-                    ?.filter((part) => part.type === "text")
+                    ?.filter((part) => part.type === 'text')
                     .map((part) => part.text)
-                    .join("\n");
+                    .join('\n');
 
                   return (
                     <Message key={message.id} from={message.role}>
                       <MessageAvatar
-                        name={message.role === "user" ? "You" : "AI"}
+                        name={message.role === 'user' ? 'You' : 'AI'}
                       />
                       <MessageContent variant="flat">
                         {message.parts?.map((part, index: number) => {
-                          if (part.type === "text") {
+                          if (part.type === 'text') {
                             if (
-                              message.role === "assistant" &&
-                              part.state !== "done" &&
+                              message.role === 'assistant' &&
+                              part.state !== 'done' &&
                               !part.text
                             ) {
                               return null;
                             }
-                            return message.role === "assistant" ? (
+                            return message.role === 'assistant' ? (
                               <Response key={index}>{part.text}</Response>
                             ) : (
                               <Box key={index}>{part.text}</Box>
                             );
                           }
                           if (
-                            part.type === "file" &&
-                            part.mediaType?.startsWith("image/")
+                            part.type === 'file' &&
+                            part.mediaType?.startsWith('image/')
                           ) {
                             return (
                               <Box
@@ -217,8 +218,8 @@ Always aim to create an immersive, illustrated experience.`,
                                 src={part.url}
                                 alt="Generated illustration"
                                 sx={{
-                                  maxWidth: "100%",
-                                  height: "auto",
+                                  maxWidth: '100%',
+                                  height: 'auto',
                                   borderRadius: 2,
                                   my: 1,
                                 }}
@@ -227,7 +228,7 @@ Always aim to create an immersive, illustrated experience.`,
                           }
                           return null;
                         })}
-                        {message.role === "assistant" && messageText && (
+                        {message.role === 'assistant' && messageText && (
                           <Actions>
                             <Action
                               tooltip="Copy"
@@ -248,15 +249,15 @@ Always aim to create an immersive, illustrated experience.`,
                   );
                 })}
 
-                {status === "submitted" && (
+                {status === 'submitted' && (
                   <Message from="assistant">
                     <MessageAvatar name="AI" />
                     <MessageContent variant="flat">
                       <Box
-                        sx={{ display: "flex", alignItems: "center", gap: 1 }}
+                        sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
                       >
                         <CircularProgress size={20} />
-                        <Typography sx={{ color: "text.secondary" }}>
+                        <Typography sx={{ color: 'text.secondary' }}>
                           Creating your story...
                         </Typography>
                       </Box>
@@ -268,26 +269,26 @@ Always aim to create an immersive, illustrated experience.`,
                   <Message from="assistant">
                     <MessageAvatar name="AI" />
                     <MessageContent variant="flat">
-                      <Typography sx={{ color: "error.text" }}>
+                      <Typography sx={{ color: 'error.text' }}>
                         {error.message ||
-                          "An error occurred. Please try again."}
+                          'An error occurred. Please try again.'}
                       </Typography>
                     </MessageContent>
                   </Message>
                 )}
               </Box>
             )}
-            {status === "streaming" && (
+            {status === 'streaming' && (
               <Box
                 sx={{
-                  display: "flex",
-                  alignItems: "center",
+                  display: 'flex',
+                  alignItems: 'center',
                   gap: 1,
                   mt: 1,
                 }}
               >
                 <Loader />
-                <Typography sx={{ color: "text.secondary" }}>
+                <Typography sx={{ color: 'text.secondary' }}>
                   Writing and illustrating...
                 </Typography>
               </Box>
@@ -318,11 +319,11 @@ Always aim to create an immersive, illustrated experience.`,
             placeholder="Describe a story, recipe, or guide you'd like illustrated..."
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            disabled={status === "submitted" || error != null}
+            disabled={status === 'submitted' || error != null}
           />
         </PromptInputBody>
         <PromptInputToolbar>
-          {status === "streaming" || status === "submitted" ? (
+          {status === 'streaming' || status === 'submitted' ? (
             <Button
               variant="outlined"
               onClick={(e) => {
@@ -330,7 +331,7 @@ Always aim to create an immersive, illustrated experience.`,
                 stop();
               }}
               sx={{
-                minWidth: "auto",
+                minWidth: 'auto',
                 borderRadius: 2,
                 p: 1,
               }}
@@ -339,7 +340,7 @@ Always aim to create an immersive, illustrated experience.`,
             </Button>
           ) : (
             <PromptInputSubmit
-              status={status as "ready" | "submitted" | "streaming" | "error"}
+              status={status as 'ready' | 'submitted' | 'streaming' | 'error'}
               disabled={error != null}
             />
           )}

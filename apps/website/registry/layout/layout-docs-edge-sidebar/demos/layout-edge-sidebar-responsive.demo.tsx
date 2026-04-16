@@ -1,25 +1,25 @@
-import React from "react";
+import React from 'react';
 
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
-import Content from "@/registry/layout/layout-core/Content";
-import EdgeDrawerClose from "@/registry/layout/layout-core/EdgeDrawerClose";
+import Content from '@/registry/layout/layout-core/Content';
+import EdgeDrawerClose from '@/registry/layout/layout-core/EdgeDrawerClose';
 import EdgeSidebar, {
   triggerEdgeDrawer,
-} from "@/registry/layout/layout-core/EdgeSidebar";
-import EdgeSidebarContent from "@/registry/layout/layout-core/EdgeSidebarContent";
-import Footer from "@/registry/layout/layout-core/Footer";
-import Header from "@/registry/layout/layout-core/Header";
-import Root from "@/registry/layout/layout-core/Root";
-import { layoutClasses } from "@/registry/layout/layout-core/layoutClasses";
+} from '@/registry/layout/layout-core/EdgeSidebar';
+import EdgeSidebarContent from '@/registry/layout/layout-core/EdgeSidebarContent';
+import Footer from '@/registry/layout/layout-core/Footer';
+import Header from '@/registry/layout/layout-core/Header';
+import Root from '@/registry/layout/layout-core/Root';
+import { layoutClasses } from '@/registry/layout/layout-core/layoutClasses';
 
 export const meta = {
-  title: "Edge Sidebar Responsive",
+  title: 'Edge Sidebar Responsive',
   description:
-    "Drawer on mobile, permanent on desktop using breakpoint-based variant.",
-  previewMode: "iframe" as const,
+    'Drawer on mobile, permanent on desktop using breakpoint-based variant.',
+  previewMode: 'iframe' as const,
 };
 
 export function Demo() {
@@ -31,7 +31,7 @@ export function Demo() {
             className={layoutClasses.EdgeDrawerTrigger}
             size="small"
             onClick={() =>
-              triggerEdgeDrawer({ sidebarId: "sidebar-responsive" })
+              triggerEdgeDrawer({ sidebarId: 'sidebar-responsive' })
             }
           >
             Menu
@@ -44,8 +44,8 @@ export function Demo() {
       <EdgeSidebar
         id="sidebar-responsive"
         variant={{
-          xs: ["drawer", { width: "300px" }],
-          md: ["permanent", { width: "256px" }],
+          xs: ['drawer', { width: '300px' }],
+          md: ['permanent', { width: '256px' }],
         }}
       >
         <EdgeDrawerClose />

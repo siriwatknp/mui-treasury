@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { PreviewComponent } from "@/components/preview-page";
-import { Demo as SonnerDemo } from "@/registry/components/sonner/sonner.demo";
+import { PreviewComponent } from '@/components/preview-page';
+import { Demo as SonnerDemo } from '@/registry/components/sonner/sonner.demo';
 
 export default function Page() {
   return (

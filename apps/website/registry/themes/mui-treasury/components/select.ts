@@ -2,18 +2,18 @@ import {
   CONTROL_HEIGHTS,
   CONTROL_TOUCH_HEIGHTS,
   TOUCH_MEDIA_QUERY,
-} from "../scales";
-import { ThemeComponents } from "../types";
+} from '../scales';
+import { ThemeComponents } from '../types';
 
 export const selectTheme: ThemeComponents = {
   MuiSelect: {
     defaultProps: {
-      variant: "outlined",
+      variant: 'outlined',
     },
     styleOverrides: {
       root: {
-        "&.MuiOutlinedInput-root.MuiInputBase-sizeLarge": {
-          "& .MuiSelect-select": {
+        '&.MuiOutlinedInput-root.MuiInputBase-sizeLarge': {
+          '& .MuiSelect-select': {
             paddingBlock: CONTROL_HEIGHTS.lg / 2 - 12,
             ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
               [TOUCH_MEDIA_QUERY]: {
@@ -24,16 +24,16 @@ export const selectTheme: ThemeComponents = {
         },
       },
       select: {
-        "&.MuiOutlinedInput-input": {
+        '&.MuiOutlinedInput-input': {
           paddingBlock: CONTROL_HEIGHTS.md / 2 - 10,
           paddingInline: 14,
-          minHeight: "1.42857em", // 20px
+          minHeight: '1.42857em', // 20px
           ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
             [TOUCH_MEDIA_QUERY]: {
               paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 11.5,
             },
           }),
-          "&.MuiInputBase-inputSizeSmall": {
+          '&.MuiInputBase-inputSizeSmall': {
             paddingBlock: CONTROL_HEIGHTS.sm / 2 - 10,
             paddingInline: 12,
             ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
@@ -43,7 +43,7 @@ export const selectTheme: ThemeComponents = {
             }),
           },
         },
-        "&.MuiFilledInput-input": {
+        '&.MuiFilledInput-input': {
           paddingTop: CONTROL_HEIGHTS.md / 2 + 5,
           paddingInline: 12,
           paddingBottom: CONTROL_HEIGHTS.md / 2 - 12,
@@ -53,7 +53,7 @@ export const selectTheme: ThemeComponents = {
               paddingBottom: CONTROL_TOUCH_HEIGHTS.md / 2 - 12,
             },
           }),
-          "&.MuiInputBase-inputSizeSmall": {
+          '&.MuiInputBase-inputSizeSmall': {
             paddingTop: CONTROL_HEIGHTS.sm / 2 + 4,
             paddingInline: 10,
             paddingBottom: CONTROL_HEIGHTS.sm / 2 - 13,
@@ -65,19 +65,19 @@ export const selectTheme: ThemeComponents = {
             }),
           },
         },
-        "&.MuiInputBase-input.MuiInputBase-input": {
+        '&.MuiInputBase-input.MuiInputBase-input': {
           paddingRight: 32,
         },
       },
       icon: ({ theme }) => ({
         color: (theme.vars || theme).palette.text.secondary,
         right: 8,
-        transition: theme.transitions.create(["transform"], {
+        transition: theme.transitions.create(['transform'], {
           duration: theme.transitions.duration.shorter,
         }),
       }),
       iconOpen: {
-        transform: "rotate(180deg)",
+        transform: 'rotate(180deg)',
       },
     },
   },

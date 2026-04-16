@@ -10,18 +10,18 @@ import {
   InsetContent,
   InsetSidebar,
   Root,
-} from "@/mui-treasury/layout/layout-core";
+} from '@/mui-treasury/layout/layout-core';
 
 <Root>
   <Header height="64px">
-    <Box sx={{ px: 2, display: "flex", alignItems: "center" }}>
+    <Box sx={{ px: 2, display: 'flex', alignItems: 'center' }}>
       <Typography variant="h6">Blog</Typography>
     </Box>
   </Header>
 
   <Content>
     <Box sx={{ p: 3, maxWidth: 720 }}>…article content…</Box>
-    <InsetSidebar width={{ md: "200px", lg: "260px" }}>
+    <InsetSidebar width={{ md: '200px', lg: '260px' }}>
       <InsetContent>…table of contents…</InsetContent>
     </InsetSidebar>
   </Content>

@@ -1,24 +1,25 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
+
 import {
-  Box,
-  Typography,
-  TextField,
-  Button,
-  Checkbox,
-  FormControlLabel,
-  Link,
-  Stack,
-  IconButton,
-  Divider,
-} from "@mui/material";
-import {
+  Facebook,
+  Google,
   Visibility,
   VisibilityOff,
-  Google,
-  Facebook,
-} from "@mui/icons-material";
+} from '@mui/icons-material';
+import {
+  Box,
+  Button,
+  Checkbox,
+  Divider,
+  FormControlLabel,
+  IconButton,
+  Link,
+  Stack,
+  TextField,
+  Typography,
+} from '@mui/material';
 
 interface FormData {
   email: string;
@@ -33,8 +34,8 @@ interface FormErrors {
 
 export function SpaceLogin() {
   const [formData, setFormData] = useState<FormData>({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
     rememberMe: false,
   });
   const [errors, setErrors] = useState<FormErrors>({});
@@ -43,7 +44,7 @@ export function SpaceLogin() {
   const handleInputChange =
     (field: keyof FormData) => (event: React.ChangeEvent<HTMLInputElement>) => {
       const value =
-        field === "rememberMe" ? event.target.checked : event.target.value;
+        field === 'rememberMe' ? event.target.checked : event.target.value;
       setFormData((prev) => ({ ...prev, [field]: value }));
 
       // Clear errors on input
@@ -57,60 +58,60 @@ export function SpaceLogin() {
     const newErrors: FormErrors = {};
 
     if (!formData.email) {
-      newErrors.email = "Email is required";
+      newErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email";
+      newErrors.email = 'Please enter a valid email';
     }
 
     if (!formData.password) {
-      newErrors.password = "Password is required";
+      newErrors.password = 'Password is required';
     }
 
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      console.log("Form submitted:", formData);
+      console.log('Form submitted:', formData);
     }
   };
 
   return (
     <Box
       sx={{
-        minHeight: "100vh",
-        display: "grid",
-        gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
-        gridTemplateRows: { xs: "auto 1fr", md: "1fr" },
+        minHeight: '100vh',
+        display: 'grid',
+        gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
+        gridTemplateRows: { xs: 'auto 1fr', md: '1fr' },
       }}
     >
       {/* Left Panel - Space Theme */}
       <Box
         sx={{
-          position: "relative",
+          position: 'relative',
           background: `linear-gradient(135deg, 
             rgba(13, 27, 42, 0.95) 0%, 
             rgba(27, 39, 53, 0.9) 50%, 
             rgba(65, 74, 76, 0.8) 100%
           )`,
-          color: "white",
-          display: { xs: "none", md: "flex" },
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
+          color: 'white',
+          display: { xs: 'none', md: 'flex' },
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
           p: { xs: 3, md: 4 },
-          minHeight: { xs: "40vh", md: "100vh" },
-          textAlign: "center",
-          overflow: "hidden",
-          "&::before": {
+          minHeight: { xs: '40vh', md: '100vh' },
+          textAlign: 'center',
+          overflow: 'hidden',
+          '&::before': {
             content: '""',
-            position: "absolute",
+            position: 'absolute',
             top: 0,
             left: 0,
             right: 0,
             bottom: 0,
             backgroundImage: `url("https://placehold.co/800x600")`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
             opacity: 0.3,
             zIndex: -1,
           },
@@ -120,7 +121,7 @@ export function SpaceLogin() {
           <Typography
             variant="h2"
             sx={{
-              fontSize: { xs: "2.5rem", md: "3.5rem" },
+              fontSize: { xs: '2.5rem', md: '3.5rem' },
               fontWeight: 300,
               lineHeight: 1.2,
               mb: 2,
@@ -136,7 +137,7 @@ export function SpaceLogin() {
             sx={{
               opacity: 0.9,
               lineHeight: 1.6,
-              fontSize: { xs: "0.95rem", md: "1rem" },
+              fontSize: { xs: '0.95rem', md: '1rem' },
             }}
           >
             Lorem ipsum dolor sit amet consectetur. Lorem posuere at odio nullam
@@ -150,17 +151,17 @@ export function SpaceLogin() {
           direction="row"
           spacing={1}
           sx={{
-            position: "absolute",
+            position: 'absolute',
             bottom: 24,
-            left: "50%",
-            transform: "translateX(-50%)",
+            left: '50%',
+            transform: 'translateX(-50%)',
           }}
         >
           <Box
             sx={{
               width: 32,
               height: 4,
-              bgcolor: "white",
+              bgcolor: 'white',
               borderRadius: 2,
             }}
           />
@@ -168,7 +169,7 @@ export function SpaceLogin() {
             sx={{
               width: 16,
               height: 4,
-              bgcolor: "rgba(255, 255, 255, 0.4)",
+              bgcolor: 'rgba(255, 255, 255, 0.4)',
               borderRadius: 2,
             }}
           />
@@ -176,7 +177,7 @@ export function SpaceLogin() {
             sx={{
               width: 16,
               height: 4,
-              bgcolor: "rgba(255, 255, 255, 0.4)",
+              bgcolor: 'rgba(255, 255, 255, 0.4)',
               borderRadius: 2,
             }}
           />
@@ -186,22 +187,22 @@ export function SpaceLogin() {
       {/* Right Panel - Login Form */}
       <Box
         sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           p: { xs: 3, md: 4 },
-          bgcolor: "background.paper",
+          bgcolor: 'background.paper',
         }}
       >
-        <Box sx={{ maxWidth: 400, mx: "auto" }}>
+        <Box sx={{ maxWidth: 400, mx: 'auto' }}>
           <Stack spacing={3}>
-            <Box sx={{ textAlign: "center", mb: 2 }}>
+            <Box sx={{ textAlign: 'center', mb: 2 }}>
               <Typography
                 variant="h2"
                 sx={{
                   fontWeight: 600,
                   mb: 1,
-                  color: "text.primary",
+                  color: 'text.primary',
                 }}
               >
                 Welcome Back
@@ -209,7 +210,7 @@ export function SpaceLogin() {
               <Typography
                 variant="body2"
                 sx={{
-                  color: "text.secondary",
+                  color: 'text.secondary',
                 }}
               >
                 Enter your email and password to access your account
@@ -224,7 +225,7 @@ export function SpaceLogin() {
                   label="Email"
                   placeholder="Enter your email"
                   value={formData.email}
-                  onChange={handleInputChange("email")}
+                  onChange={handleInputChange('email')}
                   error={!!errors.email}
                   helperText={errors.email}
                   variant="outlined"
@@ -235,9 +236,9 @@ export function SpaceLogin() {
                   required
                   label="Password"
                   placeholder="Enter your password"
-                  type={showPassword ? "text" : "password"}
+                  type={showPassword ? 'text' : 'password'}
                   value={formData.password}
-                  onChange={handleInputChange("password")}
+                  onChange={handleInputChange('password')}
                   error={!!errors.password}
                   helperText={errors.password}
                   variant="outlined"
@@ -246,7 +247,7 @@ export function SpaceLogin() {
                       endAdornment: (
                         <IconButton
                           aria-label={
-                            showPassword ? "Hide password" : "Show password"
+                            showPassword ? 'Hide password' : 'Show password'
                           }
                           onClick={() => setShowPassword(!showPassword)}
                           edge="end"
@@ -262,20 +263,20 @@ export function SpaceLogin() {
                   direction="row"
                   justifyContent="space-between"
                   alignItems="center"
-                  sx={{ mt: 1, flexWrap: "wrap" }}
+                  sx={{ mt: 1, flexWrap: 'wrap' }}
                 >
                   <FormControlLabel
                     control={
                       <Checkbox
                         checked={formData.rememberMe}
-                        onChange={handleInputChange("rememberMe")}
+                        onChange={handleInputChange('rememberMe')}
                         size="small"
                       />
                     }
                     label="Remember me"
                     sx={{
-                      "& .MuiFormControlLabel-label": {
-                        fontSize: "0.875rem",
+                      '& .MuiFormControlLabel-label': {
+                        fontSize: '0.875rem',
                       },
                     }}
                   />
@@ -283,11 +284,11 @@ export function SpaceLogin() {
                     href="#"
                     variant="body2"
                     sx={{
-                      ml: "auto",
-                      color: "text.primary",
-                      textDecoration: "none",
-                      "&:hover": {
-                        textDecoration: "underline",
+                      ml: 'auto',
+                      color: 'text.primary',
+                      textDecoration: 'none',
+                      '&:hover': {
+                        textDecoration: 'underline',
                       },
                     }}
                   >
@@ -308,7 +309,7 @@ export function SpaceLogin() {
                   direction="row"
                   justifyContent="center"
                   spacing={0.5}
-                  sx={{ mt: 2, flexWrap: "wrap" }}
+                  sx={{ mt: 2, flexWrap: 'wrap' }}
                 >
                   <Typography variant="body2" color="text.secondary">
                     Don&apos;t have an account?
@@ -317,12 +318,12 @@ export function SpaceLogin() {
                     href="#"
                     variant="body2"
                     sx={{
-                      ml: "auto",
-                      color: "text.primary",
-                      textDecoration: "none",
+                      ml: 'auto',
+                      color: 'text.primary',
+                      textDecoration: 'none',
                       fontWeight: 500,
-                      "&:hover": {
-                        textDecoration: "underline",
+                      '&:hover': {
+                        textDecoration: 'underline',
                       },
                     }}
                   >
@@ -330,7 +331,7 @@ export function SpaceLogin() {
                   </Link>
                 </Stack>
 
-                <Divider sx={{ color: "text.secondary", fontSize: "0.875rem" }}>
+                <Divider sx={{ color: 'text.secondary', fontSize: '0.875rem' }}>
                   or
                 </Divider>
 

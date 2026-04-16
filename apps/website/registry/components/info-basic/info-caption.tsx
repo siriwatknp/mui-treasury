@@ -1,8 +1,10 @@
-import React, { ReactNode } from "react";
-import { styled, SxProps, Theme } from "@mui/material/styles";
-import cx from "clsx";
-import { AppendUseStyles, useStylesCtx } from "./info";
-import { infoClasses } from "./info-classes";
+import React, { ReactNode } from 'react';
+
+import { SxProps, Theme, styled } from '@mui/material/styles';
+import cx from 'clsx';
+
+import { AppendUseStyles, useStylesCtx } from './info';
+import { infoClasses } from './info-classes';
 
 export type InfoCaptionProps = {
   /**
@@ -18,18 +20,18 @@ export type InfoCaptionProps = {
    * The system prop that allows defining system overrides as well as additional CSS styles.
    */
   sx?: SxProps<Theme>;
-} & Omit<React.JSX.IntrinsicElements["div"], "ref">;
+} & Omit<React.JSX.IntrinsicElements['div'], 'ref'>;
 
-const InfoCaptionRoot = styled("div", {
-  name: "JunInfo",
-  slot: "Caption",
+const InfoCaptionRoot = styled('div', {
+  name: 'JunInfo',
+  slot: 'Caption',
   overridesResolver: (props, styles) => styles.caption,
 })<{ ownerState: AppendUseStyles<InfoCaptionProps> }>(
   ({ theme, ownerState }) => ({
     color: (theme.vars || theme).palette.text.secondary,
-    fontSize: "0.75rem",
-    marginBlockStart: "0.5em",
-    marginBlockEnd: "0.75em",
+    fontSize: '0.75rem',
+    marginBlockStart: '0.5em',
+    marginBlockEnd: '0.75em',
     ...ownerState.useStyles(theme).caption,
   }),
 );

@@ -1,29 +1,29 @@
-import React from "react";
+import React from 'react';
 
-import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
-import Typography from "@mui/material/Typography";
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
+import Typography from '@mui/material/Typography';
 
-import Content from "@/registry/layout/layout-core/Content";
-import EdgeSidebar from "@/registry/layout/layout-core/EdgeSidebar";
-import EdgeSidebarContent from "@/registry/layout/layout-core/EdgeSidebarContent";
-import Footer from "@/registry/layout/layout-core/Footer";
-import Header from "@/registry/layout/layout-core/Header";
-import Root from "@/registry/layout/layout-core/Root";
+import Content from '@/registry/layout/layout-core/Content';
+import EdgeSidebar from '@/registry/layout/layout-core/EdgeSidebar';
+import EdgeSidebarContent from '@/registry/layout/layout-core/EdgeSidebarContent';
+import Footer from '@/registry/layout/layout-core/Footer';
+import Header from '@/registry/layout/layout-core/Header';
+import Root from '@/registry/layout/layout-core/Root';
 
-import EdgeCollapsedVisible from "../../layout-core/EdgeCollapsedVisible";
-import EdgeSidebarCollapser from "../../layout-core/EdgeSidebarCollapser";
-import EdgeUncollapsedVisible from "../../layout-core/EdgeUncollapsedVisible";
+import EdgeCollapsedVisible from '../../layout-core/EdgeCollapsedVisible';
+import EdgeSidebarCollapser from '../../layout-core/EdgeSidebarCollapser';
+import EdgeUncollapsedVisible from '../../layout-core/EdgeUncollapsedVisible';
 
 export const meta = {
-  title: "Root Disable Transition",
+  title: 'Root Disable Transition',
   description:
-    "Remove all layout transition animations with the disableTransition prop.",
-  previewMode: "iframe" as const,
+    'Remove all layout transition animations with the disableTransition prop.',
+  previewMode: 'iframe' as const,
 };
 
 export function Demo() {
@@ -31,7 +31,7 @@ export function Demo() {
 
   return (
     <Box
-      sx={{ display: "flex", flexDirection: "column", gap: 2, width: "100%" }}
+      sx={{ display: 'flex', flexDirection: 'column', gap: 2, width: '100%' }}
     >
       <FormControlLabel
         control={
@@ -43,17 +43,17 @@ export function Demo() {
         }
         label="Disable transition"
       />
-      <Root disableTransition={disabled} height="300px" sx={{ width: "100%" }}>
+      <Root disableTransition={disabled} height="300px" sx={{ width: '100%' }}>
         <Header>
           <Box sx={{ px: 2 }}>
             <Typography variant="caption" fontWeight="bold">
-              {disabled ? "No transition" : "With transition"}
+              {disabled ? 'No transition' : 'With transition'}
             </Typography>
           </Box>
         </Header>
         <EdgeSidebar
           id="edge-sidebar-demo-disable-transition"
-          variant={["permanent", { width: "200px", collapsedWidth: "64px" }]}
+          variant={['permanent', { width: '200px', collapsedWidth: '64px' }]}
         >
           <EdgeSidebarContent>
             <EdgeSidebarCollapser

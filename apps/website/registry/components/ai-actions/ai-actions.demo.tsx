@@ -1,7 +1,8 @@
-"use client";
+'use client';
 
-import { Actions, Action } from "@/registry/components/ai-actions/ai-actions";
-import { CopyIcon, ShareIcon, MoreVerticalIcon } from "lucide-react";
+import { CopyIcon, MoreVerticalIcon, ShareIcon } from 'lucide-react';
+
+import { Action, Actions } from '@/registry/components/ai-actions/ai-actions';
 
 export function Demo() {
   return (
@@ -11,13 +12,13 @@ export function Demo() {
           Basic Actions
         </h3>
         <Actions>
-          <Action label="Copy" onClick={() => console.log("Copy clicked")}>
+          <Action label="Copy" onClick={() => console.log('Copy clicked')}>
             <CopyIcon className="size-4" />
           </Action>
-          <Action label="Share" onClick={() => console.log("Share clicked")}>
+          <Action label="Share" onClick={() => console.log('Share clicked')}>
             <ShareIcon className="size-4" />
           </Action>
-          <Action label="More" onClick={() => console.log("More clicked")}>
+          <Action label="More" onClick={() => console.log('More clicked')}>
             <MoreVerticalIcon className="size-4" />
           </Action>
         </Actions>
@@ -30,19 +31,19 @@ export function Demo() {
         <Actions>
           <Action
             tooltip="Copy to clipboard"
-            onClick={() => console.log("Copy clicked")}
+            onClick={() => console.log('Copy clicked')}
           >
             <CopyIcon className="size-4" />
           </Action>
           <Action
             tooltip="Share this content"
-            onClick={() => console.log("Share clicked")}
+            onClick={() => console.log('Share clicked')}
           >
             <ShareIcon className="size-4" />
           </Action>
           <Action
             tooltip="More options"
-            onClick={() => console.log("More clicked")}
+            onClick={() => console.log('More clicked')}
           >
             <MoreVerticalIcon className="size-4" />
           </Action>

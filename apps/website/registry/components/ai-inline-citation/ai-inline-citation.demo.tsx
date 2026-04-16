@@ -1,40 +1,41 @@
-"use client";
+'use client';
 
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+
 import {
   InlineCitation,
   InlineCitationCard,
   InlineCitationCarousel,
   InlineCitationCarouselContent,
-  InlineCitationCarouselItem,
   InlineCitationCarouselHeader,
   InlineCitationCarouselIndex,
-  InlineCitationCarouselPrev,
+  InlineCitationCarouselItem,
   InlineCitationCarouselNext,
-  InlineCitationSource,
+  InlineCitationCarouselPrev,
   InlineCitationQuote,
-} from "@/registry/components/ai-inline-citation/ai-inline-citation";
+  InlineCitationSource,
+} from '@/registry/components/ai-inline-citation/ai-inline-citation';
 
 export function Demo() {
   const sources = [
-    "https://react.dev/learn/thinking-in-react",
-    "https://react.dev/learn/state-a-components-memory",
-    "https://react.dev/learn/render-and-commit",
+    'https://react.dev/learn/thinking-in-react',
+    'https://react.dev/learn/state-a-components-memory',
+    'https://react.dev/learn/render-and-commit',
   ];
 
   const detailedSources = [
     {
-      title: "Thinking in React",
-      url: "https://react.dev/learn/thinking-in-react",
+      title: 'Thinking in React',
+      url: 'https://react.dev/learn/thinking-in-react',
       description:
         "Learn how to think about building user interfaces with React's component model.",
       quote:
-        "React can change how you think about the designs you look at and the apps you build.",
+        'React can change how you think about the designs you look at and the apps you build.',
     },
     {
       title: "State: A Component's Memory",
-      url: "https://react.dev/learn/state-a-components-memory",
+      url: 'https://react.dev/learn/state-a-components-memory',
       description:
         "Components often need to change what's on the screen as a result of an interaction.",
       quote: "State is like a component's memory.",
@@ -42,18 +43,18 @@ export function Demo() {
   ];
 
   return (
-    <Box sx={{ width: "100%", maxWidth: 768, mx: "auto", p: 4 }}>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+    <Box sx={{ width: '100%', maxWidth: 768, mx: 'auto', p: 4 }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
         <Box>
           <Typography variant="h6" sx={{ mb: 0.5 }}>
             Inline Citation Demo
           </Typography>
-          <Typography variant="body2" sx={{ color: "text.secondary" }}>
+          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
             Hover over the citation badges to see source cards.
           </Typography>
         </Box>
 
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
           <Typography variant="body1" sx={{ lineHeight: 1.8 }}>
             React makes it painless to create interactive UIs by using a
             declarative approach

@@ -1,4 +1,4 @@
-import { ThemeComponents } from "../types";
+import { ThemeComponents } from '../types';
 
 export const avatarTheme: ThemeComponents = {
   MuiAvatar: {
@@ -8,7 +8,7 @@ export const avatarTheme: ThemeComponents = {
         fontSize: theme.typography.body2.fontSize,
         backgroundColor: (theme.vars || theme).palette.secondary.light,
         color: (theme.vars || theme).palette.text.secondary,
-        ...theme.applyStyles("dark", {
+        ...theme.applyStyles('dark', {
           backgroundColor: (theme.vars || theme).palette.secondary.dark,
         }),
       }),

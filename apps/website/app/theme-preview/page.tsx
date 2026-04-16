@@ -1,97 +1,99 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { AppTheme } from "@/app/theme";
-import { useTheme, useColorScheme } from "@mui/material/styles";
-import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import Alert from "@mui/material/Alert";
-import Autocomplete from "@mui/material/Autocomplete";
-import TextField from "@mui/material/TextField";
-import InputBase from "@mui/material/InputBase";
-import InputAdornment from "@mui/material/InputAdornment";
-import SearchIcon from "@mui/icons-material/Search";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import Avatar from "@mui/material/Avatar";
-import AvatarGroup from "@mui/material/AvatarGroup";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import CardMedia from "@mui/material/CardMedia";
-import Checkbox from "@mui/material/Checkbox";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormGroup from "@mui/material/FormGroup";
-import Chip from "@mui/material/Chip";
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogActions from "@mui/material/DialogActions";
-import Divider from "@mui/material/Divider";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import Fab from "@mui/material/Fab";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import Rating from "@mui/material/Rating";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import InputLabel from "@mui/material/InputLabel";
-import Skeleton from "@mui/material/Skeleton";
-import Slider from "@mui/material/Slider";
-import Snackbar from "@mui/material/Snackbar";
-import Stack from "@mui/material/Stack";
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
-import StepContent from "@mui/material/StepContent";
-import Switch from "@mui/material/Switch";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import Tooltip from "@mui/material/Tooltip";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import StarIcon from "@mui/icons-material/Star";
-import AddIcon from "@mui/icons-material/Add";
-import EditIcon from "@mui/icons-material/Edit";
-import NavigationIcon from "@mui/icons-material/Navigation";
-import FaceIcon from "@mui/icons-material/Face";
-import DoneIcon from "@mui/icons-material/Done";
-import PersonIcon from "@mui/icons-material/Person";
-import SendIcon from "@mui/icons-material/Send";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
-import DeleteIcon from "@mui/icons-material/Delete";
-import FormatBoldIcon from "@mui/icons-material/FormatBold";
-import FormatItalicIcon from "@mui/icons-material/FormatItalic";
-import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
-import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
-import FormatAlignCenterIcon from "@mui/icons-material/FormatAlignCenter";
-import FormatAlignRightIcon from "@mui/icons-material/FormatAlignRight";
-import HomeIcon from "@mui/icons-material/Home";
-import SettingsIcon from "@mui/icons-material/Settings";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import EmailIcon from "@mui/icons-material/Email";
-import PhoneIcon from "@mui/icons-material/Phone";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import SvgIcon from "@mui/material/SvgIcon";
+import * as React from 'react';
+
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from '@mui/icons-material/Delete';
+import DoneIcon from '@mui/icons-material/Done';
+import EditIcon from '@mui/icons-material/Edit';
+import EmailIcon from '@mui/icons-material/Email';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import FaceIcon from '@mui/icons-material/Face';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
+import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
+import FormatAlignRightIcon from '@mui/icons-material/FormatAlignRight';
+import FormatBoldIcon from '@mui/icons-material/FormatBold';
+import FormatItalicIcon from '@mui/icons-material/FormatItalic';
+import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
+import HomeIcon from '@mui/icons-material/Home';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import NavigationIcon from '@mui/icons-material/Navigation';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import PersonIcon from '@mui/icons-material/Person';
+import PhoneIcon from '@mui/icons-material/Phone';
+import SearchIcon from '@mui/icons-material/Search';
+import SendIcon from '@mui/icons-material/Send';
+import SettingsIcon from '@mui/icons-material/Settings';
+import ShareIcon from '@mui/icons-material/Share';
+import StarIcon from '@mui/icons-material/Star';
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import Alert from '@mui/material/Alert';
+import Autocomplete from '@mui/material/Autocomplete';
+import Avatar from '@mui/material/Avatar';
+import AvatarGroup from '@mui/material/AvatarGroup';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import Checkbox from '@mui/material/Checkbox';
+import Chip from '@mui/material/Chip';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Divider from '@mui/material/Divider';
+import Fab from '@mui/material/Fab';
+import FormControl from '@mui/material/FormControl';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormGroup from '@mui/material/FormGroup';
+import FormLabel from '@mui/material/FormLabel';
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import InputBase from '@mui/material/InputBase';
+import InputLabel from '@mui/material/InputLabel';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import MenuItem from '@mui/material/MenuItem';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import Paper from '@mui/material/Paper';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import Rating from '@mui/material/Rating';
+import Select from '@mui/material/Select';
+import Skeleton from '@mui/material/Skeleton';
+import Slider from '@mui/material/Slider';
+import Snackbar from '@mui/material/Snackbar';
+import Stack from '@mui/material/Stack';
+import Step from '@mui/material/Step';
+import StepContent from '@mui/material/StepContent';
+import StepLabel from '@mui/material/StepLabel';
+import Stepper from '@mui/material/Stepper';
+import SvgIcon from '@mui/material/SvgIcon';
+import Switch from '@mui/material/Switch';
+import Tab from '@mui/material/Tab';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Tabs from '@mui/material/Tabs';
+import TextField from '@mui/material/TextField';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+import { useColorScheme, useTheme } from '@mui/material/styles';
+
+import { AppTheme } from '@/app/theme';
 
 interface SectionHeaderProps {
   title: string;
@@ -117,16 +119,16 @@ interface ColorBoxProps {
 
 function ColorBox({ color, label }: ColorBoxProps) {
   const { mode, systemMode } = useColorScheme();
-  const resolvedMode = (systemMode || mode) as "light" | "dark";
+  const resolvedMode = (systemMode || mode) as 'light' | 'dark';
   const { colorSchemes } = useTheme();
 
   // Convert color prop like "palette-primary-main" to nested object path
   const getColorValue = (colorPath: string) => {
-    const parts = colorPath.split("-");
+    const parts = colorPath.split('-');
     if (parts.length < 3) return colorPath;
 
     const [category, section, variant] = parts;
-    if (category === "palette" && colorSchemes?.[resolvedMode]?.palette) {
+    if (category === 'palette' && colorSchemes?.[resolvedMode]?.palette) {
       const palette = colorSchemes[resolvedMode].palette as unknown as Record<
         string,
         Record<string, string>
@@ -147,17 +149,17 @@ function ColorBox({ color, label }: ColorBoxProps) {
       />
       <Typography
         variant="caption"
-        sx={{ display: "block", color: "text.secondary" }}
+        sx={{ display: 'block', color: 'text.secondary' }}
       >
         {label}
       </Typography>
       <Typography
         variant="caption"
         sx={{
-          display: "block",
-          fontFamily: "monospace",
-          fontSize: "0.7rem",
-          lineHeight: "18px",
+          display: 'block',
+          fontFamily: 'monospace',
+          fontSize: '0.7rem',
+          lineHeight: '18px',
         }}
       >
         {colorValue}
@@ -171,7 +173,7 @@ interface GridContainerProps {
   className?: string;
 }
 
-function GridContainer({ children, className = "" }: GridContainerProps) {
+function GridContainer({ children, className = '' }: GridContainerProps) {
   return (
     <div
       className={`grid grid-cols-1 gap-2 md:grid-cols-[1fr_2fr] md:gap-8 ${className}`}
@@ -188,7 +190,7 @@ interface GridCellProps {
 /**
  * MUST be a direct child of GridContainer
  */
-function GridCell({ children, className = "" }: GridCellProps) {
+function GridCell({ children, className = '' }: GridCellProps) {
   return (
     <div className={`col-start-1 mt-4 md:mt-3 ${className}`}>{children}</div>
   );
@@ -197,7 +199,7 @@ function GridCell({ children, className = "" }: GridCellProps) {
 /**
  * MUST be a direct child of GridContainer
  */
-function GridDemo({ children, className = "" }: GridCellProps) {
+function GridDemo({ children, className = '' }: GridCellProps) {
   return <div className={`md:col-start-2 ${className}`}>{children}</div>;
 }
 
@@ -223,29 +225,29 @@ export default function ThemePreviewPage() {
   const [dialogOpen, setDialogOpen] = React.useState(false);
   const [alertDialogOpen, setAlertDialogOpen] = React.useState(false);
   const [fullscreenDialogOpen, setFullscreenDialogOpen] = React.useState(false);
-  const [radioValue, setRadioValue] = React.useState("option1");
-  const [radioGroupValue, setRadioGroupValue] = React.useState("female");
+  const [radioValue, setRadioValue] = React.useState('option1');
+  const [radioGroupValue, setRadioGroupValue] = React.useState('female');
   const [ratingValue, setRatingValue] = React.useState(3);
-  const [selectValue, setSelectValue] = React.useState("");
-  const [selectAgeValue, setSelectAgeValue] = React.useState("");
+  const [selectValue, setSelectValue] = React.useState('');
+  const [selectAgeValue, setSelectAgeValue] = React.useState('');
   const [sliderValue, setSliderValue] = React.useState(30);
   const [rangeValue, setRangeValue] = React.useState([20, 40]);
   const [snackbarOpen, setSnackbarOpen] = React.useState(false);
   const [stepperActiveStep, setStepperActiveStep] = React.useState(1);
   const [switchChecked, setSwitchChecked] = React.useState(true);
   const [tabValue, setTabValue] = React.useState(0);
-  const [toggleValue, setToggleValue] = React.useState("bold");
-  const [toggleAlignment, setToggleAlignment] = React.useState("left");
+  const [toggleValue, setToggleValue] = React.useState('bold');
+  const [toggleAlignment, setToggleAlignment] = React.useState('left');
 
   const autocompleteOptions = [
-    "Apple",
-    "Banana",
-    "Cherry",
-    "Date",
-    "Elderberry",
-    "Fig",
-    "Grape",
-    "Honeydew",
+    'Apple',
+    'Banana',
+    'Cherry',
+    'Date',
+    'Elderberry',
+    'Fig',
+    'Grape',
+    'Honeydew',
   ];
 
   return (
@@ -382,13 +384,13 @@ export default function ThemePreviewPage() {
               <Typography variant="body2">
                 body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               </Typography>
-              <Typography variant="button" sx={{ display: "block" }}>
+              <Typography variant="button" sx={{ display: 'block' }}>
                 button text
               </Typography>
-              <Typography variant="caption" sx={{ display: "block" }}>
+              <Typography variant="caption" sx={{ display: 'block' }}>
                 caption text
               </Typography>
-              <Typography variant="overline" sx={{ display: "block" }}>
+              <Typography variant="overline" sx={{ display: 'block' }}>
                 overline text
               </Typography>
             </div>
@@ -727,13 +729,13 @@ export default function ThemePreviewPage() {
                       />
                       <Typography
                         variant="caption"
-                        sx={{ display: "block", mt: 1 }}
+                        sx={{ display: 'block', mt: 1 }}
                       >
                         {spacing}
                       </Typography>
                       <Typography
                         variant="caption"
-                        sx={{ display: "block", color: "text.secondary" }}
+                        sx={{ display: 'block', color: 'text.secondary' }}
                       >
                         {spacing * 8}px
                       </Typography>
@@ -753,7 +755,7 @@ export default function ThemePreviewPage() {
                     />
                     <Typography
                       variant="caption"
-                      sx={{ display: "block", mt: 1 }}
+                      sx={{ display: 'block', mt: 1 }}
                     >
                       Default (8px)
                     </Typography>
@@ -765,7 +767,7 @@ export default function ThemePreviewPage() {
                     />
                     <Typography
                       variant="caption"
-                      sx={{ display: "block", mt: 1 }}
+                      sx={{ display: 'block', mt: 1 }}
                     >
                       2x (16px)
                     </Typography>
@@ -774,7 +776,7 @@ export default function ThemePreviewPage() {
                     <div className="w-16 h-16 bg-black rounded-full" />
                     <Typography
                       variant="caption"
-                      sx={{ display: "block", mt: 1 }}
+                      sx={{ display: 'block', mt: 1 }}
                     >
                       Circle (50%)
                     </Typography>
@@ -796,11 +798,11 @@ export default function ThemePreviewPage() {
                   <Paper
                     elevation={elevation}
                     sx={{
-                      width: "100%",
+                      width: '100%',
                       height: 60,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
                     }}
                   >
                     <Typography variant="caption">{elevation}</Typography>
@@ -1003,8 +1005,8 @@ export default function ThemePreviewPage() {
           <GridDemo>
             <div className="flex items-center gap-4">
               <Avatar>A</Avatar>
-              <Avatar sx={{ bgcolor: "secondary.main" }}>B</Avatar>
-              <Avatar sx={{ bgcolor: "success.main" }}>C</Avatar>
+              <Avatar sx={{ bgcolor: 'secondary.main' }}>B</Avatar>
+              <Avatar sx={{ bgcolor: 'success.main' }}>C</Avatar>
               <Avatar>
                 <PersonIcon />
               </Avatar>
@@ -1017,10 +1019,10 @@ export default function ThemePreviewPage() {
           <GridDemo>
             <div className="flex items-center gap-4">
               <Avatar variant="square">A</Avatar>
-              <Avatar variant="square" sx={{ bgcolor: "secondary.main" }}>
+              <Avatar variant="square" sx={{ bgcolor: 'secondary.main' }}>
                 B
               </Avatar>
-              <Avatar variant="square" sx={{ bgcolor: "success.main" }}>
+              <Avatar variant="square" sx={{ bgcolor: 'success.main' }}>
                 C
               </Avatar>
               <Avatar variant="square">
@@ -1035,10 +1037,10 @@ export default function ThemePreviewPage() {
           <GridDemo>
             <div className="flex items-center gap-4">
               <Avatar variant="rounded">A</Avatar>
-              <Avatar variant="rounded" sx={{ bgcolor: "secondary.main" }}>
+              <Avatar variant="rounded" sx={{ bgcolor: 'secondary.main' }}>
                 B
               </Avatar>
-              <Avatar variant="rounded" sx={{ bgcolor: "success.main" }}>
+              <Avatar variant="rounded" sx={{ bgcolor: 'success.main' }}>
                 C
               </Avatar>
               <Avatar variant="rounded">
@@ -1055,10 +1057,10 @@ export default function ThemePreviewPage() {
             <div className="space-y-4">
               <AvatarGroup max={4}>
                 <Avatar>A</Avatar>
-                <Avatar sx={{ bgcolor: "secondary.main" }}>B</Avatar>
-                <Avatar sx={{ bgcolor: "success.main" }}>C</Avatar>
-                <Avatar sx={{ bgcolor: "warning.main" }}>D</Avatar>
-                <Avatar sx={{ bgcolor: "error.main" }}>E</Avatar>
+                <Avatar sx={{ bgcolor: 'secondary.main' }}>B</Avatar>
+                <Avatar sx={{ bgcolor: 'success.main' }}>C</Avatar>
+                <Avatar sx={{ bgcolor: 'warning.main' }}>D</Avatar>
+                <Avatar sx={{ bgcolor: 'error.main' }}>E</Avatar>
               </AvatarGroup>
             </div>
           </GridDemo>
@@ -1256,7 +1258,7 @@ export default function ThemePreviewPage() {
               <IconButton
                 color="error"
                 size="small"
-                sx={{ fontSize: "0.875rem" }}
+                sx={{ fontSize: '0.875rem' }}
               >
                 <DeleteIcon />
               </IconButton>
@@ -1342,7 +1344,7 @@ export default function ThemePreviewPage() {
             <CodeChip>elevation=0</CodeChip>
           </GridCell>
           <GridDemo>
-            <Card elevation={0} sx={{ maxWidth: 300, bgcolor: "grey.100" }}>
+            <Card elevation={0} sx={{ maxWidth: 300, bgcolor: 'grey.100' }}>
               <CardContent>
                 <Typography variant="h5" component="div">
                   Flat Card
@@ -1361,7 +1363,7 @@ export default function ThemePreviewPage() {
           <GridDemo>
             <Card sx={{ maxWidth: 345 }}>
               <CardHeader
-                avatar={<Avatar sx={{ bgcolor: "red.500" }}>R</Avatar>}
+                avatar={<Avatar sx={{ bgcolor: 'red.500' }}>R</Avatar>}
                 title="Shrimp and Chorizo Paella"
                 subheader="September 14, 2016"
                 action={
@@ -1815,7 +1817,7 @@ export default function ThemePreviewPage() {
 
           <GridCell>In lists</GridCell>
           <GridDemo>
-            <List sx={{ width: 300, bgcolor: "background.paper" }}>
+            <List sx={{ width: 300, bgcolor: 'background.paper' }}>
               <ListItem>
                 <ListItemText primary="Item 1" />
               </ListItem>
@@ -1916,12 +1918,12 @@ export default function ThemePreviewPage() {
           <GridDemo>
             <div className="flex items-center gap-4">
               <Radio
-                checked={radioValue === "option1"}
-                onChange={() => setRadioValue("option1")}
+                checked={radioValue === 'option1'}
+                onChange={() => setRadioValue('option1')}
               />
               <Radio
-                checked={radioValue === "option2"}
-                onChange={() => setRadioValue("option2")}
+                checked={radioValue === 'option2'}
+                onChange={() => setRadioValue('option2')}
               />
               <Radio checked={true} />
               <Radio checked={false} />
@@ -2188,9 +2190,9 @@ export default function ThemePreviewPage() {
               <InputLabel>Multiple Select</InputLabel>
               <Select
                 multiple
-                defaultValue={["option1", "option3"]}
+                defaultValue={['option1', 'option3']}
                 label="Multiple Select"
-                renderValue={(selected) => selected.join(", ")}
+                renderValue={(selected) => selected.join(', ')}
               >
                 <MenuItem value="option1">Option 1</MenuItem>
                 <MenuItem value="option2">Option 2</MenuItem>
@@ -2218,7 +2220,7 @@ export default function ThemePreviewPage() {
           </GridCell>
           <GridDemo>
             <div className="space-y-2">
-              <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+              <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
               <Skeleton variant="circular" width={40} height={40} />
               <Skeleton variant="rectangular" width={210} height={60} />
               <Skeleton variant="rounded" width={210} height={60} />
@@ -2230,9 +2232,9 @@ export default function ThemePreviewPage() {
           </GridCell>
           <GridDemo>
             <div className="space-y-1">
-              <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
-              <Skeleton variant="text" sx={{ fontSize: "0.875rem" }} />
-              <Skeleton variant="text" sx={{ fontSize: "1.25rem" }} />
+              <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+              <Skeleton variant="text" sx={{ fontSize: '0.875rem' }} />
+              <Skeleton variant="text" sx={{ fontSize: '1.25rem' }} />
             </div>
           </GridDemo>
 
@@ -2277,7 +2279,7 @@ export default function ThemePreviewPage() {
               <Skeleton
                 variant="text"
                 animation="wave"
-                sx={{ fontSize: "1rem" }}
+                sx={{ fontSize: '1rem' }}
               />
               <Skeleton
                 variant="circular"
@@ -2302,7 +2304,7 @@ export default function ThemePreviewPage() {
               <Skeleton
                 variant="text"
                 animation="pulse"
-                sx={{ fontSize: "1rem" }}
+                sx={{ fontSize: '1rem' }}
               />
               <Skeleton
                 variant="circular"
@@ -2327,7 +2329,7 @@ export default function ThemePreviewPage() {
               <Skeleton
                 variant="text"
                 animation={false}
-                sx={{ fontSize: "1rem" }}
+                sx={{ fontSize: '1rem' }}
               />
               <Skeleton
                 variant="circular"
@@ -2350,19 +2352,19 @@ export default function ThemePreviewPage() {
               <div className="flex items-center space-x-3 mb-3">
                 <Skeleton variant="circular" width={40} height={40} />
                 <div className="flex-1 space-y-1">
-                  <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+                  <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
                   <Skeleton
                     variant="text"
-                    sx={{ fontSize: "0.875rem" }}
+                    sx={{ fontSize: '0.875rem' }}
                     width="60%"
                   />
                 </div>
               </div>
               <Skeleton variant="rectangular" height={140} sx={{ mb: 1 }} />
-              <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+              <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
               <Skeleton
                 variant="text"
-                sx={{ fontSize: "0.875rem" }}
+                sx={{ fontSize: '0.875rem' }}
                 width="80%"
               />
             </div>
@@ -2490,7 +2492,7 @@ export default function ThemePreviewPage() {
             <div className="space-y-4">
               <Stepper
                 activeStep={stepperActiveStep}
-                sx={{ width: "100%", maxWidth: 400 }}
+                sx={{ width: '100%', maxWidth: 400 }}
               >
                 <Step>
                   <StepLabel>Select campaign settings</StepLabel>
@@ -2526,7 +2528,7 @@ export default function ThemePreviewPage() {
             <Stepper
               activeStep={1}
               orientation="vertical"
-              sx={{ width: "100%", maxWidth: 400 }}
+              sx={{ width: '100%', maxWidth: 400 }}
             >
               <Step>
                 <StepLabel>Select campaign settings</StepLabel>
@@ -2804,7 +2806,7 @@ export default function ThemePreviewPage() {
               <Tabs
                 orientation="vertical"
                 value={1}
-                sx={{ borderRight: 1, borderColor: "divider" }}
+                sx={{ borderRight: 1, borderColor: 'divider' }}
               >
                 <Tab label="Item One" />
                 <Tab label="Item Two" />
@@ -2960,10 +2962,10 @@ export default function ThemePreviewPage() {
                 title="Styled Tooltip"
                 arrow
                 sx={{
-                  "& .MuiTooltip-tooltip": {
-                    bgcolor: "common.black",
-                    "& .MuiTooltip-arrow": {
-                      color: "common.black",
+                  '& .MuiTooltip-tooltip': {
+                    bgcolor: 'common.black',
+                    '& .MuiTooltip-arrow': {
+                      color: 'common.black',
                     },
                   },
                 }}
@@ -2976,10 +2978,10 @@ export default function ThemePreviewPage() {
                 slotProps={{
                   tooltip: {
                     sx: {
-                      bgcolor: "success.main",
-                      color: "success.contrastText",
-                      "& .MuiTooltip-arrow": {
-                        color: "success.main",
+                      bgcolor: 'success.main',
+                      color: 'success.contrastText',
+                      '& .MuiTooltip-arrow': {
+                        color: 'success.main',
                       },
                     },
                   },

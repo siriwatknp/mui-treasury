@@ -11,7 +11,7 @@ import {
   Footer,
   Header,
   Root,
-} from "@/mui-treasury/layout/layout-core";
+} from '@/mui-treasury/layout/layout-core';
 
 <Root standalone>
   <Header height="64px">…</Header>
@@ -19,7 +19,7 @@ import {
   <EdgeSidebarRight
     id="cart-sidebar"
     variant={{
-      xs: ["drawer", { width: "min(400px, 100vw)" }],
+      xs: ['drawer', { width: 'min(400px, 100vw)' }],
     }}
   >
     <EdgeSidebarContent>…cart items…</EdgeSidebarContent>

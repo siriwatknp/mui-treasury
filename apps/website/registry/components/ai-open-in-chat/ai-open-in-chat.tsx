@@ -1,31 +1,32 @@
-"use client";
+'use client';
 
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Divider from "@mui/material/Divider";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import Typography from "@mui/material/Typography";
+import {
+  type ComponentProps,
+  type MouseEvent,
+  type ReactNode,
+  createContext,
+  memo,
+  useContext,
+  useState,
+} from 'react';
+
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Typography from '@mui/material/Typography';
 import {
   ChevronDownIcon,
   ExternalLinkIcon,
   MessageCircleIcon,
-} from "lucide-react";
-import {
-  memo,
-  type ComponentProps,
-  createContext,
-  useContext,
-  useState,
-  type MouseEvent,
-  type ReactNode,
-} from "react";
+} from 'lucide-react';
 
 const providers = {
   github: {
-    title: "Open in GitHub",
+    title: 'Open in GitHub',
     createUrl: (url: string) => url,
     icon: (
       <svg fill="currentColor" role="img" viewBox="0 0 24 24">
@@ -35,7 +36,7 @@ const providers = {
     ),
   },
   scira: {
-    title: "Open in Scira",
+    title: 'Open in Scira',
     createUrl: (q: string) =>
       `https://scira.ai/?${new URLSearchParams({
         q,
@@ -100,10 +101,10 @@ const providers = {
     ),
   },
   chatgpt: {
-    title: "Open in ChatGPT",
+    title: 'Open in ChatGPT',
     createUrl: (q: string) =>
       `https://chatgpt.com/?${new URLSearchParams({
-        hints: "search",
+        hints: 'search',
         q,
       })}`,
     icon: (
@@ -119,7 +120,7 @@ const providers = {
     ),
   },
   claude: {
-    title: "Open in Claude",
+    title: 'Open in Claude',
     createUrl: (q: string) =>
       `https://claude.ai/new?${new URLSearchParams({
         q,
@@ -137,7 +138,7 @@ const providers = {
     ),
   },
   t3: {
-    title: "Open in T3 Chat",
+    title: 'Open in T3 Chat',
     createUrl: (q: string) =>
       `https://t3.chat/new?${new URLSearchParams({
         q,
@@ -145,7 +146,7 @@ const providers = {
     icon: <MessageCircleIcon />,
   },
   v0: {
-    title: "Open in V0",
+    title: 'Open in V0',
     createUrl: (q: string) =>
       `https://v0.app?${new URLSearchParams({
         q,
@@ -178,7 +179,7 @@ const OpenInContext = createContext<
 const useOpenInContext = () => {
   const context = useContext(OpenInContext);
   if (!context) {
-    throw new Error("OpenIn components must be used within an OpenIn provider");
+    throw new Error('OpenIn components must be used within an OpenIn provider');
   }
   return context;
 };
@@ -209,11 +210,11 @@ export const OpenIn = memo(({ query, children }: OpenInProps) => {
   );
 });
 
-OpenIn.displayName = "OpenIn";
+OpenIn.displayName = 'OpenIn';
 
 export type OpenInContentProps = Omit<
   ComponentProps<typeof Menu>,
-  "open" | "anchorEl" | "onClose"
+  'open' | 'anchorEl' | 'onClose'
 >;
 
 export const OpenInContent = ({
@@ -230,15 +231,15 @@ export const OpenInContent = ({
       open={open}
       onClose={handleClose}
       anchorOrigin={{
-        vertical: "bottom",
-        horizontal: "left",
+        vertical: 'bottom',
+        horizontal: 'left',
       }}
       transformOrigin={{
-        vertical: "top",
-        horizontal: "left",
+        vertical: 'top',
+        horizontal: 'left',
       }}
       sx={{
-        "& .MuiPaper-root": {
+        '& .MuiPaper-root': {
           minWidth: 240,
         },
         ...sx,
@@ -261,8 +262,8 @@ export const OpenInLabel = ({ sx, ...props }: OpenInLabelProps) => (
     sx={{
       px: 2,
       py: 1,
-      display: "block",
-      color: "text.secondary",
+      display: 'block',
+      color: 'text.secondary',
       fontWeight: 500,
       ...sx,
     }}
@@ -284,7 +285,7 @@ export const OpenInTrigger = ({ children, ...props }: OpenInTriggerProps) => {
   const { handleClick } = useOpenInContext();
 
   return children ? (
-    <Box onClick={handleClick} sx={{ display: "inline-flex" }}>
+    <Box onClick={handleClick} sx={{ display: 'inline-flex' }}>
       {children}
     </Box>
   ) : (
@@ -307,7 +308,7 @@ const OpenInProviderItem = ({
   const { icon, title, createUrl } = providers[provider];
 
   const handleItemClick = () => {
-    window.open(createUrl(query), "_blank", "noopener");
+    window.open(createUrl(query), '_blank', 'noopener');
     handleClose();
   };
 
@@ -319,11 +320,11 @@ const OpenInProviderItem = ({
       }}
       {...props}
     >
-      <ListItemIcon sx={{ minWidth: "auto !important" }}>
-        <Box sx={{ width: 20, height: 20, display: "flex" }}>{icon}</Box>
+      <ListItemIcon sx={{ minWidth: 'auto !important' }}>
+        <Box sx={{ width: 20, height: 20, display: 'flex' }}>{icon}</Box>
       </ListItemIcon>
       <ListItemText primary={title} />
-      <ExternalLinkIcon size={16} style={{ marginLeft: "auto" }} />
+      <ExternalLinkIcon size={16} style={{ marginLeft: 'auto' }} />
     </MenuItem>
   );
 };

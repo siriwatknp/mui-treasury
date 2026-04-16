@@ -1,15 +1,16 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import IconButton from "@mui/material/IconButton";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import TrendingDownIcon from "@mui/icons-material/TrendingDown";
-import { LineChart } from "@mui/x-charts/LineChart";
+import * as React from 'react';
+
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import TrendingDownIcon from '@mui/icons-material/TrendingDown';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import IconButton from '@mui/material/IconButton';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import { LineChart } from '@mui/x-charts/LineChart';
 
 export function MembersMetric() {
   return (
@@ -17,9 +18,9 @@ export function MembersMetric() {
       <CardContent>
         <Box
           sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
             mb: 2,
           }}
         >
@@ -29,7 +30,7 @@ export function MembersMetric() {
           <IconButton
             size="small"
             aria-label="More options for members metric"
-            sx={{ color: "text.icon" }}
+            sx={{ color: 'text.icon' }}
           >
             <MoreVertIcon fontSize="small" />
           </IconButton>
@@ -37,9 +38,9 @@ export function MembersMetric() {
 
         <Box
           sx={{
-            display: "flex",
-            alignItems: "flex-start",
-            justifyContent: "space-between",
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'space-between',
             gap: 2,
           }}
         >
@@ -51,9 +52,9 @@ export function MembersMetric() {
               direction="row"
               alignItems="center"
               spacing={0.5}
-              sx={{ color: "error.text" }}
+              sx={{ color: 'error.text' }}
             >
-              <TrendingDownIcon fontSize="small" sx={{ color: "error.main" }} />
+              <TrendingDownIcon fontSize="small" sx={{ color: 'error.main' }} />
               <Typography variant="body2">10% vs last month</Typography>
             </Stack>
           </Box>
@@ -63,9 +64,9 @@ export function MembersMetric() {
               series={[
                 {
                   data: [8, 7.5, 6, 7, 6.5, 5],
-                  color: "rgb(255, 56, 60)",
+                  color: 'rgb(255, 56, 60)',
                   showMark: false,
-                  curve: "natural",
+                  curve: 'natural',
                 },
               ]}
               height={60}
@@ -77,7 +78,7 @@ export function MembersMetric() {
               }}
               xAxis={[
                 {
-                  scaleType: "point",
+                  scaleType: 'point',
                   data: [1, 2, 3, 4, 5, 6],
                   disableLine: true,
                   disableTicks: true,

@@ -1,21 +1,22 @@
-"use client";
+'use client';
 
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import { ArrowDownIcon } from "lucide-react";
-import { memo, type ComponentProps } from "react";
-import { useCallback } from "react";
-import { StickToBottom, useStickToBottomContext } from "use-stick-to-bottom";
+import { type ComponentProps, memo } from 'react';
+import { useCallback } from 'react';
+
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import { ArrowDownIcon } from 'lucide-react';
+import { StickToBottom, useStickToBottomContext } from 'use-stick-to-bottom';
 
 export type ConversationProps = ComponentProps<typeof StickToBottom>;
 
 export const Conversation = memo(({ ...props }: ConversationProps) => (
   <StickToBottom
     style={{
-      position: "relative",
+      position: 'relative',
       flex: 1,
-      overflowY: "auto",
+      overflowY: 'auto',
     }}
     initial="smooth"
     resize="smooth"
@@ -24,7 +25,7 @@ export const Conversation = memo(({ ...props }: ConversationProps) => (
   />
 ));
 
-Conversation.displayName = "Conversation";
+Conversation.displayName = 'Conversation';
 
 export type ConversationContentProps = ComponentProps<
   typeof StickToBottom.Content
@@ -33,7 +34,7 @@ export type ConversationContentProps = ComponentProps<
 export const ConversationContent = ({ ...props }: ConversationContentProps) => (
   <StickToBottom.Content
     style={{
-      padding: "16px",
+      padding: '16px',
     }}
     {...props}
   />
@@ -46,8 +47,8 @@ export type ConversationEmptyStateProps = ComponentProps<typeof Box> & {
 };
 
 export const ConversationEmptyState = ({
-  title = "No messages yet",
-  description = "Start a conversation to see messages here",
+  title = 'No messages yet',
+  description = 'Start a conversation to see messages here',
   icon,
   children,
   sx,
@@ -55,28 +56,28 @@ export const ConversationEmptyState = ({
 }: ConversationEmptyStateProps) => (
   <Box
     sx={{
-      display: "flex",
-      width: "100%",
-      height: "100%",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
+      display: 'flex',
+      width: '100%',
+      height: '100%',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
       gap: 3,
       p: 8,
-      textAlign: "center",
+      textAlign: 'center',
       ...sx,
     }}
     {...props}
   >
     {children ?? (
       <>
-        {icon && <Box sx={{ color: "text.secondary" }}>{icon}</Box>}
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
+        {icon && <Box sx={{ color: 'text.secondary' }}>{icon}</Box>}
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
           <Typography variant="body2" sx={{ fontWeight: 500 }}>
             {title}
           </Typography>
           {description && (
-            <Typography variant="body2" sx={{ color: "text.secondary" }}>
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
               {description}
             </Typography>
           )}
@@ -103,19 +104,19 @@ export const ConversationScrollButton = ({
       <IconButton
         onClick={handleScrollToBottom}
         sx={{
-          position: "absolute",
+          position: 'absolute',
           bottom: 16,
-          left: "50%",
-          transform: "translateX(-50%)",
-          bgcolor: "background.paper",
-          color: "text.primary",
+          left: '50%',
+          transform: 'translateX(-50%)',
+          bgcolor: 'background.paper',
+          color: 'text.primary',
           border: 1,
-          borderColor: "divider",
-          "&:hover": {
-            bgcolor: "action.hover",
+          borderColor: 'divider',
+          '&:hover': {
+            bgcolor: 'action.hover',
           },
-          "&:active": {
-            transform: "translateX(-50%) scale(0.95)",
+          '&:active': {
+            transform: 'translateX(-50%) scale(0.95)',
           },
           ...sx,
         }}

@@ -14,10 +14,10 @@ Then wrap your app with the `ThemeProvider` in the root `app/layout.tsx`:
 
 ```tsx
 // app/layout.tsx
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
-import InitColorSchemeScript from "@mui/material/InitColorSchemeScript";
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
 
-import { ThemeProvider } from "@/mui-treasury/theme";
+import { ThemeProvider } from '@/mui-treasury/theme';
 
 export default function RootLayout({
   children,
@@ -73,8 +73,8 @@ Mark the layout file `"use client"` since layout components use browser APIs.
 Each page provides only its content — the layout shell handles the header, sidebar, and footer.
 
 ```tsx
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
 export default function DashboardPage() {
   return (
@@ -93,15 +93,15 @@ export default function DashboardPage() {
 Use `usePathname()` to set `defaultChecked` on `CollapsibleTrigger` so menu sections auto-expand when the user navigates to a matching route:
 
 ```tsx
-"use client";
-import { usePathname } from "next/navigation";
+'use client';
+import { usePathname } from 'next/navigation';
 
 function SidebarNav() {
   const pathname = usePathname();
 
   return (
     <CollapsibleTrigger
-      defaultChecked={pathname === "/orders" || pathname.startsWith("/orders/")}
+      defaultChecked={pathname === '/orders' || pathname.startsWith('/orders/')}
       render={
         <SidebarMenuButton>
           <SidebarIcon shrinkSize="20px">

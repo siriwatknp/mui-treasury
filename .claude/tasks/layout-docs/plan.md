@@ -38,7 +38,7 @@ Source: `content.mdx` | Component: `Content`
   ```tsx
   <Root>
     <Header>...</Header>
-    <Content sx={{ maxWidth: 900, mx: "auto" }}>...</Content>
+    <Content sx={{ maxWidth: 900, mx: 'auto' }}>...</Content>
     <Footer>...</Footer>
   </Root>
   ```
@@ -97,7 +97,7 @@ Source: `edge-sidebar.mdx` | Components: `EdgeSidebar`, `EdgeSidebarRight`, `Edg
 - [x] `layout-edge-sidebar-width.demo.tsx` — custom width via variant config ✅ Done
   ```tsx
   <Root>
-    <EdgeSidebar variant={["permanent", { width: "200px" }]}>
+    <EdgeSidebar variant={['permanent', { width: '200px' }]}>
       <EdgeSidebarContent>...</EdgeSidebarContent>
     </EdgeSidebar>
     <Content>...</Content>
@@ -108,8 +108,8 @@ Source: `edge-sidebar.mdx` | Components: `EdgeSidebar`, `EdgeSidebarRight`, `Edg
   <Root>
     <EdgeSidebar
       variant={{
-        xs: ["permanent", { width: "256px", visibility: "hidden" }],
-        md: ["permanent", { width: "256px", visibility: "visible" }],
+        xs: ['permanent', { width: '256px', visibility: 'hidden' }],
+        md: ['permanent', { width: '256px', visibility: 'visible' }],
       }}
     >
       <EdgeSidebarContent>...</EdgeSidebarContent>
@@ -121,7 +121,7 @@ Source: `edge-sidebar.mdx` | Components: `EdgeSidebar`, `EdgeSidebarRight`, `Edg
   ```tsx
   <Root>
     <EdgeSidebar
-      variant={["permanent", { width: "256px", collapsedWidth: "64px" }]}
+      variant={['permanent', { width: '256px', collapsedWidth: '64px' }]}
     >
       <EdgeSidebarContent>
         <button onClick={(event) => triggerEdgeCollapse({ event })}>...</button>
@@ -135,8 +135,8 @@ Source: `edge-sidebar.mdx` | Components: `EdgeSidebar`, `EdgeSidebarRight`, `Edg
   <Root>
     <EdgeSidebar
       variant={[
-        "permanent",
-        { width: "256px", collapsedWidth: "64px", hoverUncollapse: true },
+        'permanent',
+        { width: '256px', collapsedWidth: '64px', hoverUncollapse: true },
       ]}
     >
       <EdgeSidebarContent>...</EdgeSidebarContent>
@@ -148,7 +148,7 @@ Source: `edge-sidebar.mdx` | Components: `EdgeSidebar`, `EdgeSidebarRight`, `Edg
   ```tsx
   <Root>
     <EdgeSidebar
-      variant={["permanent", { width: "256px", collapsedWidth: "64px" }]}
+      variant={['permanent', { width: '256px', collapsedWidth: '64px' }]}
       permanentAutoCollapse="lg"
     >
       <EdgeSidebarContent>...</EdgeSidebarContent>
@@ -162,7 +162,7 @@ Source: `edge-sidebar.mdx` | Components: `EdgeSidebar`, `EdgeSidebarRight`, `Edg
     <Header>
       <button onClick={() => triggerEdgeDrawer()}>...</button>
     </Header>
-    <EdgeSidebar variant={["drawer", { width: "300px" }]}>
+    <EdgeSidebar variant={['drawer', { width: '300px' }]}>
       <EdgeSidebarContent>...</EdgeSidebarContent>
     </EdgeSidebar>
     <Content>...</Content>
@@ -174,7 +174,7 @@ Source: `edge-sidebar.mdx` | Components: `EdgeSidebar`, `EdgeSidebarRight`, `Edg
     <Header>
       <button onClick={() => triggerEdgeDrawer()}>...</button>
     </Header>
-    <EdgeSidebar variant={["drawer", { width: "300px", withoutOverlay: true }]}>
+    <EdgeSidebar variant={['drawer', { width: '300px', withoutOverlay: true }]}>
       <EdgeSidebarContent>...</EdgeSidebarContent>
     </EdgeSidebar>
     <Content>...</Content>
@@ -188,8 +188,8 @@ Source: `edge-sidebar.mdx` | Components: `EdgeSidebar`, `EdgeSidebarRight`, `Edg
     </Header>
     <EdgeSidebar
       variant={{
-        xs: ["drawer", { width: "300px" }],
-        md: ["permanent", { width: "256px" }],
+        xs: ['drawer', { width: '300px' }],
+        md: ['permanent', { width: '256px' }],
       }}
     >
       <EdgeSidebarContent>...</EdgeSidebarContent>
@@ -201,7 +201,7 @@ Source: `edge-sidebar.mdx` | Components: `EdgeSidebar`, `EdgeSidebarRight`, `Edg
   ```tsx
   <Root>
     <Content>...</Content>
-    <EdgeSidebarRight variant={["permanent", { width: "200px" }]}>
+    <EdgeSidebarRight variant={['permanent', { width: '200px' }]}>
       <EdgeSidebarContent>...</EdgeSidebarContent>
     </EdgeSidebarRight>
   </Root>
@@ -270,19 +270,19 @@ registry/layout/layout-docs-{feature}/
 ## Demo file template
 
 ```tsx
-import React from "react";
+import React from 'react';
 
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
-import Content from "@/registry/layout/layout-core/Content";
-import Footer from "@/registry/layout/layout-core/Footer";
-import Header from "@/registry/layout/layout-core/Header";
-import Root from "@/registry/layout/layout-core/Root";
+import Content from '@/registry/layout/layout-core/Content';
+import Footer from '@/registry/layout/layout-core/Footer';
+import Header from '@/registry/layout/layout-core/Header';
+import Root from '@/registry/layout/layout-core/Root';
 
 export const meta = {
-  title: "...",
-  description: "...",
+  title: '...',
+  description: '...',
 };
 
 export function Demo() {

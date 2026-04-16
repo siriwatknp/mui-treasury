@@ -1,18 +1,18 @@
-import path from "path";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
-import { Command } from "commander";
-import prompts from "prompts";
-import { z } from "zod";
+import { Command } from 'commander';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
+import path from 'path';
+import prompts from 'prompts';
+import { z } from 'zod';
 
-import { clearCache } from "@/registry/fetcher";
-import { resolveRegistryTree } from "@/registry/resolver";
-import { handleError } from "@/utils/handle-error";
-import { getPackageManager } from "@/utils/get-package-manager";
-import { highlighter } from "@/utils/highlighter";
-import { logger } from "@/utils/logger";
-import { spinner } from "@/utils/spinner";
+import { clearCache } from '@/registry/fetcher';
+import { resolveRegistryTree } from '@/registry/resolver';
+import { getPackageManager } from '@/utils/get-package-manager';
+import { handleError } from '@/utils/handle-error';
+import { highlighter } from '@/utils/highlighter';
+import { logger } from '@/utils/logger';
+import { spinner } from '@/utils/spinner';
 
-const DEFAULT_REGISTRY_URL = "https://mui-treasury.com/r";
+const DEFAULT_REGISTRY_URL = 'https://mui-treasury.com/r';
 
 const addOptionsSchema = z.object({
   components: z.array(z.string()),
@@ -23,17 +23,17 @@ const addOptionsSchema = z.object({
 });
 
 export const add = new Command()
-  .name("add")
-  .description("add components to your project")
-  .argument("[components...]", "component names to add")
-  .option("-y, --yes", "skip confirmation prompt.", false)
-  .option("-o, --overwrite", "overwrite existing files.", false)
+  .name('add')
+  .description('add components to your project')
+  .argument('[components...]', 'component names to add')
+  .option('-y, --yes', 'skip confirmation prompt.', false)
+  .option('-o, --overwrite', 'overwrite existing files.', false)
   .option(
-    "-c, --cwd <cwd>",
-    "the working directory. defaults to the current directory.",
+    '-c, --cwd <cwd>',
+    'the working directory. defaults to the current directory.',
     process.cwd(),
   )
-  .option("-r, --registry <url>", "registry base URL.", DEFAULT_REGISTRY_URL)
+  .option('-r, --registry <url>', 'registry base URL.', DEFAULT_REGISTRY_URL)
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
@@ -44,7 +44,7 @@ export const add = new Command()
 
       if (!options.components.length) {
         logger.error(
-          "No components specified. Usage: mui-treasury add <component...>",
+          'No components specified. Usage: mui-treasury add <component...>',
         );
         process.exit(1);
       }
@@ -57,7 +57,7 @@ export const add = new Command()
         process.exit(1);
       }
 
-      if (!existsSync(path.resolve(options.cwd, "package.json"))) {
+      if (!existsSync(path.resolve(options.cwd, 'package.json'))) {
         logger.error(
           `No package.json found in ${highlighter.info(options.cwd)}.`,
         );
@@ -65,14 +65,12 @@ export const add = new Command()
       }
 
       // Resolve registry tree
-      const resolveSpinner = spinner("Resolving components...").start();
+      const resolveSpinner = spinner('Resolving components...').start();
       const tree = await resolveRegistryTree(
         options.components,
         options.registry,
       );
-      resolveSpinner.succeed(
-        `Resolved ${tree.items.length} component(s).`,
-      );
+      resolveSpinner.succeed(`Resolved ${tree.items.length} component(s).`);
 
       // Write files
       const created: string[] = [];
@@ -87,7 +85,7 @@ export const add = new Command()
         const relativePath = path.relative(options.cwd, targetPath);
 
         if (existsSync(targetPath)) {
-          const existingContent = readFileSync(targetPath, "utf-8");
+          const existingContent = readFileSync(targetPath, 'utf-8');
           if (existingContent === file.content) {
             skipped.push(relativePath);
             continue;
@@ -95,8 +93,8 @@ export const add = new Command()
 
           if (!options.overwrite && !options.yes) {
             const { confirm } = await prompts({
-              type: "confirm",
-              name: "confirm",
+              type: 'confirm',
+              name: 'confirm',
               message: `File ${highlighter.info(relativePath)} already exists. Overwrite?`,
               initial: false,
             });
@@ -111,21 +109,21 @@ export const add = new Command()
         }
 
         mkdirSync(targetDir, { recursive: true });
-        writeFileSync(targetPath, file.content, "utf-8");
+        writeFileSync(targetPath, file.content, 'utf-8');
       }
 
       // Summary
       logger.break();
       if (created.length) {
-        logger.success("Created:");
+        logger.success('Created:');
         created.forEach((f) => logger.log(`  - ${f}`));
       }
       if (updated.length) {
-        logger.success("Updated:");
+        logger.success('Updated:');
         updated.forEach((f) => logger.log(`  - ${f}`));
       }
       if (skipped.length) {
-        logger.info("Skipped:");
+        logger.info('Skipped:');
         skipped.forEach((f) => logger.log(`  - ${f}`));
       }
 
@@ -133,10 +131,10 @@ export const add = new Command()
       const allDeps = [...tree.dependencies, ...tree.devDependencies];
       if (allDeps.length) {
         const pm = getPackageManager(options.cwd);
-        const installCmd = pm === "npm" ? "npm install" : `${pm} add`;
+        const installCmd = pm === 'npm' ? 'npm install' : `${pm} add`;
         logger.break();
-        logger.info("Install dependencies:");
-        logger.log(`  ${installCmd} ${allDeps.join(" ")}`);
+        logger.info('Install dependencies:');
+        logger.log(`  ${installCmd} ${allDeps.join(' ')}`);
       }
 
       logger.break();

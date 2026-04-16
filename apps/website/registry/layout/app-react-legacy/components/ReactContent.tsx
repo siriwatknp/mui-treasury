@@ -1,17 +1,18 @@
-"use client";
-import React from "react";
-import Box from "@mui/material/Box";
-import Divider from "@mui/material/Divider";
-import Typography from "@mui/material/Typography";
+'use client';
+import React from 'react';
+
+import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
+import Typography from '@mui/material/Typography';
 
 const ReactContent = () => (
   <Box mr={{ sm: 3, md: 10 }} py={{ xs: 4, sm: 6, md: 8 }}>
     <Box pb={5}>
-      <Typography variant={"h2"}>
+      <Typography variant={'h2'}>
         <b>Getting Started</b>
       </Typography>
     </Box>
-    <Typography color={"textSecondary"} variant={"h5"}>
+    <Typography color={'textSecondary'} variant={'h5'}>
       This page is an overview of the React documentation and related resources.
     </Typography>
     <br />
@@ -23,7 +24,7 @@ const ReactContent = () => (
     <br />
     <Divider />
     <br />
-    <Typography component={"div"}>
+    <Typography component={'div'}>
       <ul>
         <li>Try React</li>
         <li>Learn React</li>
@@ -36,12 +37,12 @@ const ReactContent = () => (
     <Divider />
     <br />
     <br />
-    <Typography variant={"h4"}>
+    <Typography variant={'h4'}>
       <b>Try React</b>
     </Typography>
     <br />
     <Typography>
-      React has been designed from the start for gradual adoption, and{" "}
+      React has been designed from the start for gradual adoption, and{' '}
       <b>you can use as little or as much React as you need</b>. Whether you
       want to get a taste of React, add some interactivity to a simple HTML
       page, or start a complex React-powered app, the links in this section will
@@ -49,7 +50,7 @@ const ReactContent = () => (
     </Typography>
     <br />
     <br />
-    <Typography variant={"h5"}>
+    <Typography variant={'h5'}>
       <b>Online Playgrounds</b>
     </Typography>
     <br />
@@ -60,7 +61,7 @@ const ReactContent = () => (
     </Typography>
     <br />
     <br />
-    <Typography variant={"h5"}>
+    <Typography variant={'h5'}>
       <b>Add React to a Website</b>
     </Typography>
     <br />
@@ -71,7 +72,7 @@ const ReactContent = () => (
     </Typography>
     <br />
     <br />
-    <Typography variant={"h5"}>
+    <Typography variant={'h5'}>
       <b>Create a New React App</b>
     </Typography>
     <br />

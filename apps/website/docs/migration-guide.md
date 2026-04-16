@@ -88,7 +88,7 @@ Combine theme imports when possible:
 
 ```typescript
 // ✅ Best practice
-import type { CSSObject, Theme } from "@mui/material/styles";
+import type { CSSObject, Theme } from '@mui/material/styles';
 ```
 
 ### 6. Create Demo Files or Default Exports
@@ -137,10 +137,10 @@ Change from destructured palette to full theme access:
 
 ```typescript
 // ❌ Before
-const { palette } = "theme" in arg ? arg.theme : arg;
+const { palette } = 'theme' in arg ? arg.theme : arg;
 
 // ✅ After
-const theme = "theme" in arg ? arg.theme : arg;
+const theme = 'theme' in arg ? arg.theme : arg;
 ```
 
 #### B. Replace Ternary with applyStyles
@@ -335,8 +335,9 @@ invoke `using-mui-components` skill with extra details below.
 
 ```typescript
 // ✅ Use type imports for type-only imports
-import type { CSSObject, Theme } from "@mui/material/styles";
-import type { InfoSlotStyles } from "../info-basic/info";
+import type { CSSObject, Theme } from '@mui/material/styles';
+
+import type { InfoSlotStyles } from '../info-basic/info';
 ```
 
 ## Notes

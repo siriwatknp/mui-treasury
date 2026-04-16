@@ -1,16 +1,16 @@
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
-import Content from "@/registry/layout/layout-core/Content";
-import Footer from "@/registry/layout/layout-core/Footer";
-import Header from "@/registry/layout/layout-core/Header";
-import Root from "@/registry/layout/layout-core/Root";
+import Content from '@/registry/layout/layout-core/Content';
+import Footer from '@/registry/layout/layout-core/Footer';
+import Header from '@/registry/layout/layout-core/Header';
+import Root from '@/registry/layout/layout-core/Root';
 
 export const meta = {
-  title: "Root Standalone",
+  title: 'Root Standalone',
   description:
-    "Standalone mode fits the layout to its height, useful for POS or chat apps.",
-  previewMode: "iframe" as const,
+    'Standalone mode fits the layout to its height, useful for POS or chat apps.',
+  previewMode: 'iframe' as const,
 };
 
 export function Demo() {

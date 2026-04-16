@@ -23,7 +23,7 @@ export const CONTROL_TOUCH_HEIGHTS = {
  * - "(pointer: coarse)" - all touch devices regardless of screen size
  * - "(max-width: 768px)" - breakpoint only
  */
-export const TOUCH_MEDIA_QUERY = "@media (max-width: 768px)";
+export const TOUCH_MEDIA_QUERY = '@media (max-width: 768px)';
 
 /**
  * Used by: controls (MuiSwitch)

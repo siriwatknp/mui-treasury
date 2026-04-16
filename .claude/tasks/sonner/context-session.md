@@ -41,15 +41,15 @@ Use `GlobalStyles` from MUI to override Sonner's default CSS variables and class
 
 ```tsx
 // Usage
-import { Toast01, toast } from "@/registry/components/toast-01/toast-01";
+import { Toast01, toast } from '@/registry/components/toast-01/toast-01';
 
 // In layout/provider
 <Toast01 />;
 
 // Trigger
-toast("Message");
-toast.success("Success!");
-toast.error("Error!");
+toast('Message');
+toast.success('Success!');
+toast.error('Error!');
 ```
 
 ## Implementation Notes

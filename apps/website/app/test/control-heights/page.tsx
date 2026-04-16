@@ -1,19 +1,19 @@
-"use client";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import TextField from "@mui/material/TextField";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import Autocomplete from "@mui/material/Autocomplete";
-import Chip from "@mui/material/Chip";
-import Checkbox from "@mui/material/Checkbox";
-import Radio from "@mui/material/Radio";
-import Switch from "@mui/material/Switch";
-import Typography from "@mui/material/Typography";
-import Stack from "@mui/material/Stack";
-import FormatBoldIcon from "@mui/icons-material/FormatBold";
+'use client';
+import FormatBoldIcon from '@mui/icons-material/FormatBold';
+import Autocomplete from '@mui/material/Autocomplete';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Checkbox from '@mui/material/Checkbox';
+import Chip from '@mui/material/Chip';
+import MenuItem from '@mui/material/MenuItem';
+import Radio from '@mui/material/Radio';
+import Select from '@mui/material/Select';
+import Stack from '@mui/material/Stack';
+import Switch from '@mui/material/Switch';
+import TextField from '@mui/material/TextField';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import Typography from '@mui/material/Typography';
 
 /**
  * Test page for verifying MUI control heights match the scale system.
@@ -29,7 +29,7 @@ import FormatBoldIcon from "@mui/icons-material/FormatBold";
  */
 export default function ControlHeightsTestPage() {
   return (
-    <Box sx={{ p: 4, maxWidth: 1200, mx: "auto" }}>
+    <Box sx={{ p: 4, maxWidth: 1200, mx: 'auto' }}>
       <Typography variant="h4" sx={{ mb: 4 }}>
         Control Heights Test Page
       </Typography>
@@ -183,7 +183,7 @@ export default function ControlHeightsTestPage() {
       <Section title="Autocomplete - Outlined">
         <Autocomplete
           size="small"
-          options={["Option 1"]}
+          options={['Option 1']}
           renderInput={(params) => (
             <TextField
               {...params}
@@ -195,7 +195,7 @@ export default function ControlHeightsTestPage() {
         />
         <Autocomplete
           size="medium"
-          options={["Option 1"]}
+          options={['Option 1']}
           renderInput={(params) => (
             <TextField
               {...params}
@@ -207,7 +207,7 @@ export default function ControlHeightsTestPage() {
         />
         <Autocomplete
           size="large"
-          options={["Option 1"]}
+          options={['Option 1']}
           renderInput={(params) => (
             <TextField
               {...params}
@@ -268,7 +268,7 @@ export default function ControlHeightsTestPage() {
           size="small"
           slotProps={{
             root: {
-              "data-testid": "switch-sm",
+              'data-testid': 'switch-sm',
             } as React.HTMLProps<HTMLSpanElement>,
           }}
         />
@@ -276,7 +276,7 @@ export default function ControlHeightsTestPage() {
           size="medium"
           slotProps={{
             root: {
-              "data-testid": "switch-md",
+              'data-testid': 'switch-md',
             } as React.HTMLProps<HTMLSpanElement>,
           }}
         />
@@ -284,7 +284,7 @@ export default function ControlHeightsTestPage() {
           size="large"
           slotProps={{
             root: {
-              "data-testid": "switch-lg",
+              'data-testid': 'switch-lg',
             } as React.HTMLProps<HTMLSpanElement>,
           }}
         />
@@ -302,7 +302,7 @@ function Section({
 }) {
   return (
     <Box sx={{ mb: 4 }}>
-      <Typography variant="subtitle2" sx={{ mb: 1, color: "text.secondary" }}>
+      <Typography variant="subtitle2" sx={{ mb: 1, color: 'text.secondary' }}>
         {title}
       </Typography>
       <Stack direction="row" spacing={2} alignItems="center" flexWrap="wrap">

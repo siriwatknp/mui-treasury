@@ -1,9 +1,10 @@
-import React from "react";
-import Box from "@mui/material/Box";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Radio, { radioClasses } from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import { useColorScheme } from "@mui/material/styles";
+import React from 'react';
+
+import Box from '@mui/material/Box';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Radio, { radioClasses } from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import { useColorScheme } from '@mui/material/styles';
 
 function System() {
   return (
@@ -67,8 +68,8 @@ function LightMode() {
   );
 }
 
-const size = "44px";
-const gap = "4px";
+const size = '44px';
+const gap = '4px';
 
 export function ColorSchemeTabsBasic() {
   const { mode, setMode } = useColorScheme();
@@ -76,16 +77,16 @@ export function ColorSchemeTabsBasic() {
     return (
       <Box
         sx={{
-          display: "grid",
-          alignItems: "center",
-          height: "44px",
+          display: 'grid',
+          alignItems: 'center',
+          height: '44px',
           gap,
           opacity: 0.5,
           gridTemplateColumns: `repeat(3, ${size})`,
-          placeItems: "center",
-          color: "text.primary",
-          "& > div": { lineHeight: 0 },
-          "& svg": { transform: "scale(0.8)" },
+          placeItems: 'center',
+          color: 'text.primary',
+          '& > div': { lineHeight: 0 },
+          '& svg': { transform: 'scale(0.8)' },
         }}
       >
         <div>
@@ -107,25 +108,25 @@ export function ColorSchemeTabsBasic() {
       aria-label="Color scheme"
       name="color-scheme-segmented-control"
       sx={{
-        display: "flex",
+        display: 'flex',
         gap,
-        "& svg": { transform: "scale(0.8)", transition: "0.2s" },
-        [`& .${radioClasses.checked} svg`]: { transform: "scale(1)" },
+        '& svg': { transform: 'scale(0.8)', transition: '0.2s' },
+        [`& .${radioClasses.checked} svg`]: { transform: 'scale(1)' },
         [`& .${radioClasses.root}`]: {
           width: size,
           height: size,
-          border: "1px solid transparent",
-          borderRadius: "8px",
+          border: '1px solid transparent',
+          borderRadius: '8px',
           [`&.${radioClasses.checked}`]: {
-            border: "1px solid",
-            borderColor: "divider",
-            color: "text.primary",
+            border: '1px solid',
+            borderColor: 'divider',
+            color: 'text.primary',
           },
         },
-        "& label": { margin: 0 },
+        '& label': { margin: 0 },
       }}
       onChange={(event) => {
-        setMode(event.target.value as "light" | "system" | "dark");
+        setMode(event.target.value as 'light' | 'system' | 'dark');
       }}
     >
       <FormControlLabel

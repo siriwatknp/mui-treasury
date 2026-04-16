@@ -1,7 +1,7 @@
-"use client";
-import React from "react";
+'use client';
+import React from 'react';
 
-import { layoutClasses } from "./layoutClasses";
+import { layoutClasses } from './layoutClasses';
 
 interface EdgeUncollapsedVisibleProps {
   render: React.ReactElement<{ className?: string }>;

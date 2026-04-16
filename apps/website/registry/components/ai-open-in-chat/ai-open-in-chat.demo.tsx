@@ -1,38 +1,39 @@
-"use client";
+'use client';
 
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+
 import {
   OpenIn,
-  OpenInTrigger,
+  OpenInChatGPT,
+  OpenInClaude,
   OpenInContent,
   OpenInLabel,
   OpenInSeparator,
-  OpenInChatGPT,
-  OpenInClaude,
+  OpenInTrigger,
   OpenInv0,
-} from "@/registry/components/ai-open-in-chat/ai-open-in-chat";
+} from '@/registry/components/ai-open-in-chat/ai-open-in-chat';
 
 export function Demo() {
-  const query = "How to implement authentication in Next.js with TypeScript?";
+  const query = 'How to implement authentication in Next.js with TypeScript?';
 
   return (
-    <Box sx={{ width: "100%", maxWidth: 768, mx: "auto", p: 4 }}>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+    <Box sx={{ width: '100%', maxWidth: 768, mx: 'auto', p: 4 }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
         <Box>
           <Typography variant="h6" sx={{ mb: 0.5 }}>
             Open in Chat Demo
           </Typography>
-          <Typography variant="body2" sx={{ color: "text.secondary", mb: 3 }}>
+          <Typography variant="body2" sx={{ color: 'text.secondary', mb: 3 }}>
             Open your query in various AI chat applications
           </Typography>
 
-          <Typography variant="body2" sx={{ mb: 2, fontStyle: "italic" }}>
+          <Typography variant="body2" sx={{ mb: 2, fontStyle: 'italic' }}>
             Query: &quot;{query}&quot;
           </Typography>
         </Box>
 
-        <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
+        <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
           <OpenIn query={query}>
             <OpenInTrigger />
             <OpenInContent>

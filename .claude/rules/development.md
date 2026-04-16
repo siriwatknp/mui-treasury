@@ -30,8 +30,8 @@ import { Foo } from "@/registry/components/foo/foo";
 ```tsx
 // optional
 export const meta = {
-  title: "Popup Menu",
-  description: "Menu items that open a popup submenu on hover or click.",
+  title: 'Popup Menu',
+  description: 'Menu items that open a popup submenu on hover or click.',
 };
 
 // required

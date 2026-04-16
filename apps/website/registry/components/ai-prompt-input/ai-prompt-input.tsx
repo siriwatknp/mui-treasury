@@ -1,35 +1,17 @@
-"use client";
+'use client';
 
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
-import InputBase from "@mui/material/InputBase";
-import CircularProgress from "@mui/material/CircularProgress";
-import type { SxProps, Theme } from "@mui/material/styles";
-import type { ChatStatus, FileUIPart } from "ai";
-import {
-  ImageIcon,
-  PaperclipIcon,
-  PlusIcon,
-  SendIcon,
-  SquareIcon,
-  XIcon,
-} from "lucide-react";
-import { nanoid } from "nanoid";
 import React, {
-  memo,
   type ChangeEventHandler,
   Children,
   type ComponentProps,
-  createContext,
   type FormEvent,
   type FormEventHandler,
   Fragment,
   type KeyboardEventHandler,
+  type MouseEvent,
   type RefObject,
+  createContext,
+  memo,
   useCallback,
   useContext,
   useEffect,
@@ -37,8 +19,27 @@ import React, {
   useMemo,
   useRef,
   useState,
-  type MouseEvent,
-} from "react";
+} from 'react';
+
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
+import IconButton from '@mui/material/IconButton';
+import InputBase from '@mui/material/InputBase';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import type { SxProps, Theme } from '@mui/material/styles';
+import type { ChatStatus, FileUIPart } from 'ai';
+import {
+  ImageIcon,
+  PaperclipIcon,
+  PlusIcon,
+  SendIcon,
+  SquareIcon,
+  XIcon,
+} from 'lucide-react';
+import { nanoid } from 'nanoid';
 
 type AttachmentsContext = {
   files: (FileUIPart & { id: string })[];
@@ -56,7 +57,7 @@ export const usePromptInputAttachments = () => {
 
   if (!context) {
     throw new Error(
-      "usePromptInputAttachments must be used within a PromptInput",
+      'usePromptInputAttachments must be used within a PromptInput',
     );
   }
 
@@ -78,39 +79,39 @@ export function PromptInputAttachment({
     <Box
       key={data.id}
       sx={{
-        position: "relative",
+        position: 'relative',
         width: 56,
         height: 56,
         borderRadius: 1,
         border: 1,
-        borderColor: "divider",
-        "&:hover .remove-button": {
+        borderColor: 'divider',
+        '&:hover .remove-button': {
           opacity: 1,
         },
         ...sx,
       }}
     >
-      {data.mediaType?.startsWith("image/") && data.url ? (
+      {data.mediaType?.startsWith('image/') && data.url ? (
         <Box
           component="img"
-          alt={data.filename || "attachment"}
+          alt={data.filename || 'attachment'}
           src={data.url}
           sx={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
             borderRadius: 1,
           }}
         />
       ) : (
         <Box
           sx={{
-            display: "flex",
-            width: "100%",
-            height: "100%",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "text.secondary",
+            display: 'flex',
+            width: '100%',
+            height: '100%',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: 'text.secondary',
           }}
         >
           <PaperclipIcon size={16} />
@@ -122,18 +123,18 @@ export function PromptInputAttachment({
         onClick={() => attachments.remove(data.id)}
         size="small"
         sx={{
-          position: "absolute",
+          position: 'absolute',
           top: -6,
           right: -6,
           width: 24,
           height: 24,
-          bgcolor: "background.paper",
+          bgcolor: 'background.paper',
           border: 1,
-          borderColor: "divider",
+          borderColor: 'divider',
           opacity: 0,
-          transition: "opacity 0.2s",
-          "&:hover": {
-            bgcolor: "action.hover",
+          transition: 'opacity 0.2s',
+          '&:hover': {
+            bgcolor: 'action.hover',
           },
         }}
       >
@@ -173,8 +174,8 @@ export function PromptInputAttachments({
     <Box
       aria-live="polite"
       sx={{
-        overflow: "hidden",
-        transition: "height 200ms ease-out",
+        overflow: 'hidden',
+        transition: 'height 200ms ease-out',
         height: attachments.files.length ? height : 0,
         ...sx,
       }}
@@ -182,8 +183,8 @@ export function PromptInputAttachments({
       <Box
         ref={contentRef}
         sx={{
-          display: "flex",
-          flexWrap: "wrap",
+          display: 'flex',
+          flexWrap: 'wrap',
           gap: 1,
           p: 1.5,
           pt: 1.5,
@@ -204,7 +205,7 @@ export type PromptInputActionAddAttachmentsProps = ComponentProps<
 };
 
 export const PromptInputActionAddAttachments = ({
-  label = "Add photos or files",
+  label = 'Add photos or files',
   onClick,
   ...props
 }: PromptInputActionAddAttachmentsProps) => {
@@ -219,7 +220,7 @@ export const PromptInputActionAddAttachments = ({
         onClick?.(e);
       }}
     >
-      <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
         <ImageIcon size={16} />
         {label}
       </Box>
@@ -244,7 +245,7 @@ export type PromptInputProps = {
   maxFiles?: number;
   maxFileSize?: number; // bytes
   onError?: (err: {
-    code: "max_files" | "max_file_size" | "accept";
+    code: 'max_files' | 'max_file_size' | 'accept';
     message: string;
   }) => void;
   onSubmit: (
@@ -272,7 +273,7 @@ export const PromptInput = ({
 
   // Find nearest form to scope drag & drop
   useEffect(() => {
-    const root = anchorRef.current?.closest("form");
+    const root = anchorRef.current?.closest('form');
     if (root instanceof HTMLFormElement) {
       formRef.current = root;
     }
@@ -284,12 +285,12 @@ export const PromptInput = ({
 
   const matchesAccept = useCallback(
     (f: File) => {
-      if (!accept || accept.trim() === "") {
+      if (!accept || accept.trim() === '') {
         return true;
       }
       // Simple check: if accept includes "image/*", filter to images; otherwise allow.
-      if (accept.includes("image/*")) {
-        return f.type.startsWith("image/");
+      if (accept.includes('image/*')) {
+        return f.type.startsWith('image/');
       }
       return true;
     },
@@ -302,8 +303,8 @@ export const PromptInput = ({
       const accepted = incoming.filter((f) => matchesAccept(f));
       if (accepted.length === 0) {
         onError?.({
-          code: "accept",
-          message: "No files match the accepted types.",
+          code: 'accept',
+          message: 'No files match the accepted types.',
         });
         return;
       }
@@ -312,29 +313,29 @@ export const PromptInput = ({
       const sized = accepted.filter(withinSize);
       if (sized.length === 0 && accepted.length > 0) {
         onError?.({
-          code: "max_file_size",
-          message: "All files exceed the maximum size.",
+          code: 'max_file_size',
+          message: 'All files exceed the maximum size.',
         });
         return;
       }
       setItems((prev) => {
         const capacity =
-          typeof maxFiles === "number"
+          typeof maxFiles === 'number'
             ? Math.max(0, maxFiles - prev.length)
             : undefined;
         const capped =
-          typeof capacity === "number" ? sized.slice(0, capacity) : sized;
-        if (typeof capacity === "number" && sized.length > capacity) {
+          typeof capacity === 'number' ? sized.slice(0, capacity) : sized;
+        if (typeof capacity === 'number' && sized.length > capacity) {
           onError?.({
-            code: "max_files",
-            message: "Too many files. Some were not added.",
+            code: 'max_files',
+            message: 'Too many files. Some were not added.',
           });
         }
         const next: (FileUIPart & { id: string })[] = [];
         for (const file of capped) {
           next.push({
             id: nanoid(),
-            type: "file",
+            type: 'file',
             url: URL.createObjectURL(file),
             mediaType: file.type,
             filename: file.name,
@@ -373,7 +374,7 @@ export const PromptInput = ({
     if (syncHiddenInput && inputRef.current) {
       // Clear the input when items are cleared
       if (items.length === 0) {
-        inputRef.current.value = "";
+        inputRef.current.value = '';
       }
     }
   }, [items, syncHiddenInput]);
@@ -385,23 +386,23 @@ export const PromptInput = ({
       return;
     }
     const onDragOver = (e: DragEvent) => {
-      if (e.dataTransfer?.types?.includes("Files")) {
+      if (e.dataTransfer?.types?.includes('Files')) {
         e.preventDefault();
       }
     };
     const onDrop = (e: DragEvent) => {
-      if (e.dataTransfer?.types?.includes("Files")) {
+      if (e.dataTransfer?.types?.includes('Files')) {
         e.preventDefault();
       }
       if (e.dataTransfer?.files && e.dataTransfer.files.length > 0) {
         add(e.dataTransfer.files);
       }
     };
-    form.addEventListener("dragover", onDragOver);
-    form.addEventListener("drop", onDrop);
+    form.addEventListener('dragover', onDragOver);
+    form.addEventListener('drop', onDrop);
     return () => {
-      form.removeEventListener("dragover", onDragOver);
-      form.removeEventListener("drop", onDrop);
+      form.removeEventListener('dragover', onDragOver);
+      form.removeEventListener('drop', onDrop);
     };
   }, [add]);
 
@@ -410,23 +411,23 @@ export const PromptInput = ({
       return;
     }
     const onDragOver = (e: DragEvent) => {
-      if (e.dataTransfer?.types?.includes("Files")) {
+      if (e.dataTransfer?.types?.includes('Files')) {
         e.preventDefault();
       }
     };
     const onDrop = (e: DragEvent) => {
-      if (e.dataTransfer?.types?.includes("Files")) {
+      if (e.dataTransfer?.types?.includes('Files')) {
         e.preventDefault();
       }
       if (e.dataTransfer?.files && e.dataTransfer.files.length > 0) {
         add(e.dataTransfer.files);
       }
     };
-    document.addEventListener("dragover", onDragOver);
-    document.addEventListener("drop", onDrop);
+    document.addEventListener('dragover', onDragOver);
+    document.addEventListener('drop', onDrop);
     return () => {
-      document.removeEventListener("dragover", onDragOver);
-      document.removeEventListener("drop", onDrop);
+      document.removeEventListener('dragover', onDragOver);
+      document.removeEventListener('drop', onDrop);
     };
   }, [add, globalDrop]);
 
@@ -464,7 +465,7 @@ export const PromptInput = ({
         component="span"
         aria-hidden="true"
         ref={anchorRef}
-        sx={{ display: "none" }}
+        sx={{ display: 'none' }}
       />
       <Box
         component="input"
@@ -473,22 +474,22 @@ export const PromptInput = ({
         onChange={handleChange}
         ref={inputRef}
         type="file"
-        sx={{ display: "none" }}
+        sx={{ display: 'none' }}
       />
       <Box
         component="form"
         onSubmit={handleSubmit}
         sx={{
-          width: "100%",
-          overflow: "hidden",
+          width: '100%',
+          overflow: 'hidden',
           borderRadius: 2,
           border: 1,
-          borderColor: "divider",
-          bgcolor: "background.paper",
+          borderColor: 'divider',
+          bgcolor: 'background.paper',
           boxShadow: 1,
-          "& > *:not(:last-child)": {
+          '& > *:not(:last-child)': {
             borderBottom: 1,
-            borderColor: "divider",
+            borderColor: 'divider',
           },
           ...sx,
         }}
@@ -505,7 +506,7 @@ export type PromptInputBodyProps = {
 };
 
 export const PromptInputBody = ({ children, sx }: PromptInputBodyProps) => (
-  <Box sx={{ display: "flex", flexDirection: "column", ...sx }}>{children}</Box>
+  <Box sx={{ display: 'flex', flexDirection: 'column', ...sx }}>{children}</Box>
 );
 
 export type PromptInputTextareaProps = ComponentProps<typeof InputBase> & {
@@ -514,12 +515,12 @@ export type PromptInputTextareaProps = ComponentProps<typeof InputBase> & {
 
 export const PromptInputTextarea = ({
   onChange,
-  placeholder = "What would you like to know?",
+  placeholder = 'What would you like to know?',
   sx,
   ...props
 }: PromptInputTextareaProps) => {
   const handleKeyDown: KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       // Don't submit if IME composition is in progress
       if (e.nativeEvent.isComposing) {
         return;
@@ -548,12 +549,12 @@ export const PromptInputTextarea = ({
       placeholder={placeholder}
       maxRows={3}
       sx={{
-        width: "100%",
+        width: '100%',
         p: 1.5,
-        "& .MuiInputBase-input": {
-          resize: "none",
-          overflow: "auto",
-          fieldSizing: "content",
+        '& .MuiInputBase-input': {
+          resize: 'none',
+          overflow: 'auto',
+          fieldSizing: 'content',
         },
         ...sx,
       }}
@@ -573,9 +574,9 @@ export const PromptInputToolbar = ({
 }: PromptInputToolbarProps) => (
   <Box
     sx={{
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
       p: 0.5,
       ...sx,
     }}
@@ -592,10 +593,10 @@ export type PromptInputToolsProps = {
 export const PromptInputTools = ({ children, sx }: PromptInputToolsProps) => (
   <Box
     sx={{
-      display: "flex",
-      alignItems: "center",
+      display: 'flex',
+      alignItems: 'center',
       gap: 0.5,
-      "& > button:first-of-type": {
+      '& > button:first-of-type': {
         borderBottomLeftRadius: 12,
       },
       ...sx,
@@ -606,12 +607,12 @@ export const PromptInputTools = ({ children, sx }: PromptInputToolsProps) => (
 );
 
 export type PromptInputButtonProps = ComponentProps<typeof Button> & {
-  variant?: "text" | "contained" | "outlined";
+  variant?: 'text' | 'contained' | 'outlined';
 };
 
 export const PromptInputButton = memo(
   ({
-    variant = "text",
+    variant = 'text',
     size,
     children,
     sx,
@@ -622,10 +623,10 @@ export const PromptInputButton = memo(
     if (isIconButton) {
       return (
         <IconButton
-          size={size || "medium"}
+          size={size || 'medium'}
           sx={{
             borderRadius: 2,
-            color: variant === "text" ? "text.secondary" : undefined,
+            color: variant === 'text' ? 'text.secondary' : undefined,
             ...sx,
           }}
           {...props}
@@ -638,14 +639,14 @@ export const PromptInputButton = memo(
     return (
       <Button
         variant={variant}
-        size={size || "medium"}
+        size={size || 'medium'}
         sx={{
-          minWidth: "auto",
+          minWidth: 'auto',
           px: 1.5,
           gap: 0.75,
           borderRadius: 2,
           flexShrink: 0,
-          color: variant === "text" ? "text.secondary" : undefined,
+          color: variant === 'text' ? 'text.secondary' : undefined,
           ...sx,
         }}
         {...props}
@@ -656,7 +657,7 @@ export const PromptInputButton = memo(
   },
 );
 
-PromptInputButton.displayName = "PromptInputButton";
+PromptInputButton.displayName = 'PromptInputButton';
 
 export type PromptInputActionMenuProps = {
   children?: React.ReactNode;
@@ -691,12 +692,12 @@ export const PromptInputActionMenu = ({
         open={open}
         onClose={() => setAnchorEl(null)}
         anchorOrigin={{
-          vertical: "top",
-          horizontal: "left",
+          vertical: 'top',
+          horizontal: 'left',
         }}
         transformOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
+          vertical: 'bottom',
+          horizontal: 'left',
         }}
       >
         {content &&
@@ -752,8 +753,8 @@ export type PromptInputSubmitProps = ComponentProps<typeof Button> & {
 
 export const PromptInputSubmit = memo(
   ({
-    variant = "contained",
-    size = "medium",
+    variant = 'contained',
+    size = 'medium',
     status,
     children,
     sx,
@@ -761,11 +762,11 @@ export const PromptInputSubmit = memo(
   }: PromptInputSubmitProps) => {
     let Icon = <SendIcon size={16} />;
 
-    if (status === "submitted") {
+    if (status === 'submitted') {
       Icon = <CircularProgress size={16} />;
-    } else if (status === "streaming") {
+    } else if (status === 'streaming') {
       Icon = <SquareIcon size={16} />;
-    } else if (status === "error") {
+    } else if (status === 'error') {
       Icon = <XIcon size={16} />;
     }
 
@@ -805,7 +806,7 @@ export const PromptInputSubmit = memo(
   },
 );
 
-PromptInputSubmit.displayName = "PromptInputSubmit";
+PromptInputSubmit.displayName = 'PromptInputSubmit';
 
 export type PromptInputModelSelectProps = ComponentProps<typeof Select>;
 
@@ -814,25 +815,25 @@ export const PromptInputModelSelect = (props: PromptInputModelSelectProps) => (
     variant="standard"
     sx={{
       minWidth: 120,
-      "& .MuiInput-root": {
-        border: "none",
-        bgcolor: "transparent",
+      '& .MuiInput-root': {
+        border: 'none',
+        bgcolor: 'transparent',
         fontWeight: 500,
-        color: "text.secondary",
-        transition: "all 0.2s",
-        "&:hover": {
-          bgcolor: "action.hover",
-          color: "text.primary",
+        color: 'text.secondary',
+        transition: 'all 0.2s',
+        '&:hover': {
+          bgcolor: 'action.hover',
+          color: 'text.primary',
         },
-        "&.Mui-focused": {
-          bgcolor: "action.hover",
-          color: "text.primary",
+        '&.Mui-focused': {
+          bgcolor: 'action.hover',
+          color: 'text.primary',
         },
-        "&:before, &:after": {
-          display: "none",
+        '&:before, &:after': {
+          display: 'none',
         },
       },
-      "& .MuiSelect-select": {
+      '& .MuiSelect-select': {
         px: 1,
         py: 0.5,
         borderRadius: 1,

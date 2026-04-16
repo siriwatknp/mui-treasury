@@ -1,42 +1,42 @@
-import React from "react";
+import React from 'react';
 
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
-import Content from "@/registry/layout/layout-core/Content";
-import EdgeDrawerClose from "@/registry/layout/layout-core/EdgeDrawerClose";
+import Content from '@/registry/layout/layout-core/Content';
+import EdgeDrawerClose from '@/registry/layout/layout-core/EdgeDrawerClose';
 import EdgeSidebar, {
   triggerEdgeDrawer,
-} from "@/registry/layout/layout-core/EdgeSidebar";
-import EdgeSidebarContent from "@/registry/layout/layout-core/EdgeSidebarContent";
-import Footer from "@/registry/layout/layout-core/Footer";
-import Header from "@/registry/layout/layout-core/Header";
-import Root from "@/registry/layout/layout-core/Root";
-import { layoutClasses } from "@/registry/layout/layout-core/layoutClasses";
+} from '@/registry/layout/layout-core/EdgeSidebar';
+import EdgeSidebarContent from '@/registry/layout/layout-core/EdgeSidebarContent';
+import Footer from '@/registry/layout/layout-core/Footer';
+import Header from '@/registry/layout/layout-core/Header';
+import Root from '@/registry/layout/layout-core/Root';
+import { layoutClasses } from '@/registry/layout/layout-core/layoutClasses';
 
 export const meta = {
-  title: "Edge Sidebar Drawer",
+  title: 'Edge Sidebar Drawer',
   description:
-    "Drawer mode sidebar that opens as an overlay with a trigger button.",
-  previewMode: "iframe" as const,
+    'Drawer mode sidebar that opens as an overlay with a trigger button.',
+  previewMode: 'iframe' as const,
 };
 
 export function Demo() {
   return (
-    <Root height="300px" standalone sx={{ overflow: "hidden" }}>
+    <Root height="300px" standalone sx={{ overflow: 'hidden' }}>
       <Header>
         <Box sx={{ px: 2 }}>
           <Button
             className={layoutClasses.EdgeDrawerTrigger}
             size="small"
-            onClick={() => triggerEdgeDrawer({ sidebarId: "sidebar-drawer" })}
+            onClick={() => triggerEdgeDrawer({ sidebarId: 'sidebar-drawer' })}
           >
             Open drawer
           </Button>
         </Box>
       </Header>
-      <EdgeSidebar id="sidebar-drawer" variant={["drawer", { width: "300px" }]}>
+      <EdgeSidebar id="sidebar-drawer" variant={['drawer', { width: '300px' }]}>
         <EdgeDrawerClose />
         <EdgeSidebarContent>
           <Box sx={{ p: 2 }}>

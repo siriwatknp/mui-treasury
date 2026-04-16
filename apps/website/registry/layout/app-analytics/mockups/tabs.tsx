@@ -1,28 +1,28 @@
-"use client";
-import { styled } from "@mui/material/styles";
-import Tabs from "@mui/material/Tabs";
+'use client';
+import Tabs from '@mui/material/Tabs';
+import { styled } from '@mui/material/styles';
 
 export const UnderlineTabs = styled(Tabs)(({ theme }) => ({
-  "&:before": {
+  '&:before': {
     content: '""',
-    display: "block",
-    height: "1px",
+    display: 'block',
+    height: '1px',
     backgroundColor: theme.palette.grey[200],
     left: 0,
     bottom: 0,
-    width: "100%",
-    position: "absolute",
+    width: '100%',
+    position: 'absolute',
   },
-  "& .MuiTab-root": {
-    textTransform: "none",
+  '& .MuiTab-root': {
+    textTransform: 'none',
     paddingLeft: 0,
     paddingRight: 0,
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),
-    "&:first-of-type": {
+    '&:first-of-type': {
       marginLeft: 0,
     },
-    "&:last-of-type": {
+    '&:last-of-type': {
       marginRight: 0,
     },
   },

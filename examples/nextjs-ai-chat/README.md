@@ -141,7 +141,7 @@ npx shadcn-ui@latest add https://mui-treasury.com/r/ai-elements.json
 Uncomment the `ThemeProvider` component wrapping `{children}` in `app/layout.tsx`.
 
 ```tsx
-import { ThemeProvider } from "@/mui-treasury/theme";
+import { ThemeProvider } from '@/mui-treasury/theme';
 
 <ThemeProvider>{children}</ThemeProvider>;
 ```
@@ -248,7 +248,7 @@ Edit `app/api/chat/route.ts`:
 
 ```typescript
 const result = streamText({
-  model: ollama("qwen2.5"), // Change model here
+  model: ollama('qwen2.5'), // Change model here
   messages: modelMessages,
   temperature: 0.7,
   stopWhen: stepCountIs(5),
@@ -265,7 +265,7 @@ Edit `app/page.tsx`:
 ```typescript
 const SUGGESTED_PROMPTS = [
   "What's the weather like in San Francisco?",
-  "Write a React component for a todo list",
+  'Write a React component for a todo list',
   // Add more...
 ];
 ```
@@ -276,7 +276,7 @@ Edit `app/api/chat/route.ts`:
 
 ```typescript
 const ollama = createOllama({
-  baseURL: "http://your-ollama-server:11434",
+  baseURL: 'http://your-ollama-server:11434',
 });
 ```
 

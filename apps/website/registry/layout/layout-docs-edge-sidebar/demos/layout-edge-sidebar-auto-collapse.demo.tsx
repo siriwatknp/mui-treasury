@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react';
 
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
-import Content from "@/registry/layout/layout-core/Content";
-import EdgeSidebar from "@/registry/layout/layout-core/EdgeSidebar";
-import EdgeSidebarContent from "@/registry/layout/layout-core/EdgeSidebarContent";
-import Footer from "@/registry/layout/layout-core/Footer";
-import Header from "@/registry/layout/layout-core/Header";
-import Root from "@/registry/layout/layout-core/Root";
+import Content from '@/registry/layout/layout-core/Content';
+import EdgeSidebar from '@/registry/layout/layout-core/EdgeSidebar';
+import EdgeSidebarContent from '@/registry/layout/layout-core/EdgeSidebarContent';
+import Footer from '@/registry/layout/layout-core/Footer';
+import Header from '@/registry/layout/layout-core/Header';
+import Root from '@/registry/layout/layout-core/Root';
 
 export const meta = {
-  title: "Edge Sidebar Auto Collapse",
-  description: "Sidebar automatically collapses below a specified breakpoint.",
-  previewMode: "iframe" as const,
+  title: 'Edge Sidebar Auto Collapse',
+  description: 'Sidebar automatically collapses below a specified breakpoint.',
+  previewMode: 'iframe' as const,
 };
 
 export function Demo() {
@@ -28,7 +28,7 @@ export function Demo() {
       </Header>
       <EdgeSidebar
         id="sidebar-auto-collapse"
-        variant={["permanent", { width: "256px", collapsedWidth: "64px" }]}
+        variant={['permanent', { width: '256px', collapsedWidth: '64px' }]}
         permanentAutoCollapse="lg"
       >
         <EdgeSidebarContent>

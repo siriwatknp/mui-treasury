@@ -1,34 +1,36 @@
-import * as React from "react";
-import { Suspense } from "react";
+import * as React from 'react';
+import { Suspense } from 'react';
+
 import {
   Box,
-  Typography,
   Button,
   Chip,
-  Stack,
   CircularProgress,
-} from "@mui/material";
-import { AppHeader } from "@/components/app-header";
-import { GettingStartedContent } from "@/components/getting-started-content";
-import Link from "@/components/next-link";
-import CarbonAds from "@/components/carbon-ads/CarbonAds";
+  Stack,
+  Typography,
+} from '@mui/material';
+
+import { AppHeader } from '@/components/app-header';
+import CarbonAds from '@/components/carbon-ads/CarbonAds';
+import { GettingStartedContent } from '@/components/getting-started-content';
+import Link from '@/components/next-link';
 
 export default function Home() {
   return (
-    <Box sx={{ minHeight: "100vh", bgcolor: "background.default" }}>
+    <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
       <AppHeader />
 
       {/* Hero Section */}
       <Box
         component="section"
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          minHeight: "max(calc(60vh - 73px), 560px)",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: 'max(calc(60vh - 73px), 560px)',
           px: 3,
-          textAlign: "center",
+          textAlign: 'center',
         }}
       >
         {/* MUI Treasury Chip */}
@@ -37,8 +39,8 @@ export default function Home() {
           variant="outlined"
           sx={{
             mb: 3,
-            borderColor: "text.secondary",
-            color: "text.secondary",
+            borderColor: 'text.secondary',
+            color: 'text.secondary',
             fontWeight: 500,
           }}
         />
@@ -48,12 +50,12 @@ export default function Home() {
           variant="h1"
           component="h1"
           sx={{
-            fontSize: { xs: "2.5rem", sm: "3.5rem", md: "4.5rem" },
+            fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4.5rem' },
             fontWeight: 700,
             lineHeight: 1.1,
             mb: 3,
-            maxWidth: "12ch",
-            color: "text.primary",
+            maxWidth: '12ch',
+            color: 'text.primary',
           }}
         >
           All you need for MUI project
@@ -64,12 +66,12 @@ export default function Home() {
           variant="h6"
           component="p"
           sx={{
-            fontSize: { xs: "1.1rem", sm: "1.25rem" },
+            fontSize: { xs: '1.1rem', sm: '1.25rem' },
             fontWeight: 400,
             lineHeight: 1.5,
-            color: "text.secondary",
+            color: 'text.secondary',
             mb: 4,
-            maxWidth: "60ch",
+            maxWidth: '60ch',
           }}
         >
           Hand-crafted MUI theme that isn&apos;t outdated. Build modern,
@@ -79,10 +81,10 @@ export default function Home() {
 
         {/* Action Buttons */}
         <Stack
-          direction={{ xs: "column", sm: "row" }}
+          direction={{ xs: 'column', sm: 'row' }}
           spacing={2}
           sx={{
-            width: { xs: "100%", sm: "auto" },
+            width: { xs: '100%', sm: 'auto' },
           }}
         >
           <Button
@@ -94,9 +96,9 @@ export default function Home() {
               px: 4,
               py: 1.5,
               borderRadius: 2,
-              textTransform: "none",
+              textTransform: 'none',
               fontWeight: 600,
-              fontSize: "1rem",
+              fontSize: '1rem',
             }}
           >
             See theme
@@ -110,9 +112,9 @@ export default function Home() {
               px: 4,
               py: 1.5,
               borderRadius: 2,
-              textTransform: "none",
+              textTransform: 'none',
               fontWeight: 600,
-              fontSize: "1rem",
+              fontSize: '1rem',
             }}
           >
             Blocks
@@ -122,9 +124,9 @@ export default function Home() {
 
       <Box
         sx={{
-          bgcolor: "background.paper",
-          display: "flex",
-          justifyContent: "center",
+          bgcolor: 'background.paper',
+          display: 'flex',
+          justifyContent: 'center',
           pt: {
             xs: 8,
             md: 12,
@@ -137,7 +139,7 @@ export default function Home() {
       {/* Getting Started Section */}
       <Suspense
         fallback={
-          <Box sx={{ display: "flex", justifyContent: "center", py: 8 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'center', py: 8 }}>
             <CircularProgress />
           </Box>
         }

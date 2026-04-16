@@ -1,10 +1,11 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { Meter } from "@base-ui-components/react/meter";
-import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
+import * as React from 'react';
+
+import { Meter } from '@base-ui-components/react/meter';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 
 export interface Meter01Props {
   label: string;
@@ -26,8 +27,8 @@ export function Meter01({
       <Stack
         direction="row"
         sx={{
-          justifyContent: "space-between",
-          alignItems: "baseline",
+          justifyContent: 'space-between',
+          alignItems: 'baseline',
           mb: 1,
         }}
       >
@@ -36,10 +37,10 @@ export function Meter01({
             variant="body1"
             component="span"
             sx={{
-              textTransform: "uppercase",
+              textTransform: 'uppercase',
               fontWeight: 500,
-              fontSize: "0.75rem",
-              letterSpacing: "0.1em",
+              fontSize: '0.75rem',
+              letterSpacing: '0.1em',
             }}
           >
             {label}
@@ -51,7 +52,7 @@ export function Meter01({
               <Typography
                 variant="h4"
                 component="span"
-                sx={{ fontSize: "0.875rem" }}
+                sx={{ fontSize: '0.875rem' }}
               >
                 {numValue}%
               </Typography>
@@ -64,11 +65,11 @@ export function Meter01({
           <Box
             sx={(theme) => ({
               height: 6,
-              width: "100%",
+              width: '100%',
               bgcolor: (theme.vars || theme).palette.action.disabledBackground,
               borderRadius: 1,
-              overflow: "hidden",
-              position: "relative",
+              overflow: 'hidden',
+              position: 'relative',
             })}
           />
         }
@@ -77,9 +78,9 @@ export function Meter01({
           render={
             <Box
               sx={(theme) => ({
-                height: "100%",
+                height: '100%',
                 bgcolor: (theme.vars || theme).palette.text.primary,
-                transition: "width 0.3s ease",
+                transition: 'width 0.3s ease',
               })}
             />
           }

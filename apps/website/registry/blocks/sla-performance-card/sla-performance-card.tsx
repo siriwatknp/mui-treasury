@@ -1,13 +1,14 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import { PieChart } from "@mui/x-charts/PieChart";
-import { useTheme } from "@mui/material/styles";
+import * as React from 'react';
+
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import { useTheme } from '@mui/material/styles';
+import { PieChart } from '@mui/x-charts/PieChart';
 
 export function SlaPerformanceCard() {
   const theme = useTheme();
@@ -18,12 +19,12 @@ export function SlaPerformanceCard() {
     {
       id: 0,
       value: withinSLA,
-      label: "Within SLA",
+      label: 'Within SLA',
     },
     {
       id: 1,
       value: breached,
-      label: "SLA Breached",
+      label: 'SLA Breached',
     },
   ];
 
@@ -46,26 +47,26 @@ export function SlaPerformanceCard() {
         </Typography>
         <Box
           sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
             gap: 3,
           }}
         >
           <Box sx={{ flex: 1 }}>
             <Stack spacing={2}>
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
                 <Box
                   sx={{
                     width: 12,
                     height: 12,
                     borderRadius: 0.5,
-                    bgcolor: "primary.main",
+                    bgcolor: 'primary.main',
                   }}
                   aria-hidden="true"
                 />
                 <Box sx={{ flex: 1 }}>
-                  <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                  <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                     Within SLA
                   </Typography>
                   <Typography
@@ -80,18 +81,18 @@ export function SlaPerformanceCard() {
                 </Box>
               </Box>
 
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
                 <Box
                   sx={{
                     width: 12,
                     height: 12,
                     borderRadius: 0.5,
-                    bgcolor: "error.main",
+                    bgcolor: 'error.main',
                   }}
                   aria-hidden="true"
                 />
                 <Box sx={{ flex: 1 }}>
-                  <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                  <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                     SLA Breached
                   </Typography>
                   <Typography
@@ -112,7 +113,7 @@ export function SlaPerformanceCard() {
             sx={{
               width: 140,
               height: 140,
-              position: "relative",
+              position: 'relative',
             }}
             role="img"
             aria-label={`SLA Performance chart: ${withinSLA}% within SLA, ${breached}% breached`}
@@ -125,7 +126,7 @@ export function SlaPerformanceCard() {
                   outerRadius: 60,
                   paddingAngle: 2,
                   cornerRadius: 4,
-                  highlightScope: { fade: "global", highlight: "item" },
+                  highlightScope: { fade: 'global', highlight: 'item' },
                   highlighted: { additionalRadius: 2 },
                   valueFormatter: (params) => `${params.value}%`,
                 },
@@ -145,7 +146,7 @@ export function SlaPerformanceCard() {
               slotProps={{
                 legend: {
                   sx: {
-                    display: "none",
+                    display: 'none',
                   },
                 },
               }}

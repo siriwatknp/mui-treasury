@@ -1,18 +1,19 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
+
 import {
   Box,
   FormControlLabel,
   Radio,
   RadioGroup,
   Typography,
-} from "@mui/material";
+} from '@mui/material';
 
 const colors = [
-  { value: "silver", color: "#c0c0c0", label: "Silver" },
-  { value: "orange", color: "#ff8c42", label: "Orange" },
-  { value: "navy", color: "#3d4d6a", label: "Navy" },
+  { value: 'silver', color: '#c0c0c0', label: 'Silver' },
+  { value: 'orange', color: '#ff8c42', label: 'Orange' },
+  { value: 'navy', color: '#3d4d6a', label: 'Navy' },
 ] as const;
 
 interface ColorSwatchIconProps {
@@ -26,12 +27,12 @@ function ColorSwatchIcon({ color, checked = false }: ColorSwatchIconProps) {
       sx={(theme) => ({
         width: 44,
         height: 44,
-        borderRadius: "50%",
+        borderRadius: '50%',
         backgroundColor: color,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        transition: theme.transitions.create(["box-shadow"], {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        transition: theme.transitions.create(['box-shadow'], {
           duration: theme.transitions.duration.shortest,
         }),
         ...(checked && {
@@ -45,14 +46,14 @@ function ColorSwatchIcon({ color, checked = false }: ColorSwatchIconProps) {
 }
 
 export function RadioColor01() {
-  const [selectedColor, setSelectedColor] = React.useState("silver");
+  const [selectedColor, setSelectedColor] = React.useState('silver');
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedColor(event.target.value);
   };
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       <Typography variant="h6">
         Color - {colors.find((c) => c.value === selectedColor)?.label}
       </Typography>
@@ -60,7 +61,7 @@ export function RadioColor01() {
         aria-label="Color selection"
         value={selectedColor}
         onChange={handleChange}
-        sx={{ display: "flex", flexDirection: "row", gap: 1.5 }}
+        sx={{ display: 'flex', flexDirection: 'row', gap: 1.5 }}
       >
         {colors.map(({ value, color, label }) => (
           <FormControlLabel

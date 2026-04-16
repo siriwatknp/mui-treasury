@@ -15,8 +15,8 @@ Convert the project to a Turborepo monorepo with `apps/website` and `packages/cl
 - Create `pnpm-workspace.yaml`:
   ```yaml
   packages:
-    - "apps/*"
-    - "packages/*"
+    - 'apps/*'
+    - 'packages/*'
   ```
 - Create `turbo.json`:
   ```json
@@ -155,17 +155,17 @@ packages/cli/
 Copy pattern from shadcn (`/Users/siriwatknp/Personal-Repos/ui/packages/shadcn/tsup.config.ts`), simplified:
 
 ```typescript
-import { defineConfig } from "tsup";
+import { defineConfig } from 'tsup';
 
 export default defineConfig({
   clean: true,
   dts: true,
-  entry: ["src/index.ts"],
-  format: ["esm"],
+  entry: ['src/index.ts'],
+  format: ['esm'],
   sourcemap: false,
   minify: true,
-  target: "esnext",
-  outDir: "dist",
+  target: 'esnext',
+  outDir: 'dist',
   treeshake: true,
 });
 ```
@@ -200,18 +200,18 @@ Copy pattern from shadcn (`/Users/siriwatknp/Personal-Repos/ui/packages/shadcn/s
 
 ```typescript
 #!/usr/bin/env node
-import { Command } from "commander";
+import { Command } from 'commander';
 
-import { add } from "@/commands/add";
+import { add } from '@/commands/add';
 
-process.on("SIGINT", () => process.exit(0));
-process.on("SIGTERM", () => process.exit(0));
+process.on('SIGINT', () => process.exit(0));
+process.on('SIGTERM', () => process.exit(0));
 
 async function main() {
   const program = new Command()
-    .name("mui-treasury")
-    .description("add MUI Treasury components to your project")
-    .version("0.4.0", "-v, --version", "display the version number");
+    .name('mui-treasury')
+    .description('add MUI Treasury components to your project')
+    .version('0.4.0', '-v, --version', 'display the version number');
 
   program.addCommand(add);
 
@@ -240,7 +240,7 @@ Create shared utilities copied from shadcn patterns.
 Copy directly from shadcn (`/Users/siriwatknp/Personal-Repos/ui/packages/shadcn/src/utils/highlighter.ts`):
 
 ```typescript
-import { cyan, green, red, yellow } from "kleur/colors";
+import { cyan, green, red, yellow } from 'kleur/colors';
 
 export const highlighter = {
   error: red,
@@ -255,26 +255,26 @@ export const highlighter = {
 Copy from shadcn (`/Users/siriwatknp/Personal-Repos/ui/packages/shadcn/src/utils/logger.ts`):
 
 ```typescript
-import { highlighter } from "@/utils/highlighter";
+import { highlighter } from '@/utils/highlighter';
 
 export const logger = {
   error(...args: unknown[]) {
-    console.log(highlighter.error(args.join(" ")));
+    console.log(highlighter.error(args.join(' ')));
   },
   warn(...args: unknown[]) {
-    console.log(highlighter.warn(args.join(" ")));
+    console.log(highlighter.warn(args.join(' ')));
   },
   info(...args: unknown[]) {
-    console.log(highlighter.info(args.join(" ")));
+    console.log(highlighter.info(args.join(' ')));
   },
   success(...args: unknown[]) {
-    console.log(highlighter.success(args.join(" ")));
+    console.log(highlighter.success(args.join(' ')));
   },
   log(...args: unknown[]) {
-    console.log(args.join(" "));
+    console.log(args.join(' '));
   },
   break() {
-    console.log("");
+    console.log('');
   },
 };
 ```
@@ -284,9 +284,9 @@ export const logger = {
 Copy from shadcn (`/Users/siriwatknp/Personal-Repos/ui/packages/shadcn/src/utils/spinner.ts`):
 
 ```typescript
-import ora, { type Options } from "ora";
+import ora, { type Options } from 'ora';
 
-export function spinner(text: Options["text"], options?: { silent?: boolean }) {
+export function spinner(text: Options['text'], options?: { silent?: boolean }) {
   return ora({
     text,
     isSilent: options?.silent,
@@ -299,21 +299,21 @@ export function spinner(text: Options["text"], options?: { silent?: boolean }) {
 Simplified from shadcn (`/Users/siriwatknp/Personal-Repos/ui/packages/shadcn/src/utils/handle-error.ts`), adapted to our error types:
 
 ```typescript
-import { z } from "zod";
+import { z } from 'zod';
 
-import { RegistryError } from "@/registry/errors";
-import { highlighter } from "@/utils/highlighter";
-import { logger } from "@/utils/logger";
+import { RegistryError } from '@/registry/errors';
+import { highlighter } from '@/utils/highlighter';
+import { logger } from '@/utils/logger';
 
 export function handleError(error: unknown) {
   logger.break();
   logger.error(
-    "Something went wrong. Please check the error below for more details.",
+    'Something went wrong. Please check the error below for more details.',
   );
-  logger.error("If the problem persists, please open an issue on GitHub.");
-  logger.error("");
+  logger.error('If the problem persists, please open an issue on GitHub.');
+  logger.error('');
 
-  if (typeof error === "string") {
+  if (typeof error === 'string') {
     logger.error(error);
     logger.break();
     process.exit(1);
@@ -324,7 +324,7 @@ export function handleError(error: unknown) {
       logger.error(error.message);
     }
     if (error.suggestion) {
-      logger.error("\nSuggestion:");
+      logger.error('\nSuggestion:');
       logger.error(error.suggestion);
     }
     logger.break();
@@ -332,7 +332,7 @@ export function handleError(error: unknown) {
   }
 
   if (error instanceof z.ZodError) {
-    logger.error("Validation failed:");
+    logger.error('Validation failed:');
     for (const [key, value] of Object.entries(error.flatten().fieldErrors)) {
       logger.error(`- ${highlighter.info(key)}: ${value}`);
     }
@@ -356,20 +356,20 @@ export function handleError(error: unknown) {
 Detect package manager for dependency install suggestion:
 
 ```typescript
-import { existsSync } from "fs";
-import path from "path";
+import { existsSync } from 'fs';
+import path from 'path';
 
 export function getPackageManager(
   cwd: string,
-): "pnpm" | "yarn" | "bun" | "npm" {
-  if (existsSync(path.resolve(cwd, "pnpm-lock.yaml"))) return "pnpm";
-  if (existsSync(path.resolve(cwd, "yarn.lock"))) return "yarn";
+): 'pnpm' | 'yarn' | 'bun' | 'npm' {
+  if (existsSync(path.resolve(cwd, 'pnpm-lock.yaml'))) return 'pnpm';
+  if (existsSync(path.resolve(cwd, 'yarn.lock'))) return 'yarn';
   if (
-    existsSync(path.resolve(cwd, "bun.lockb")) ||
-    existsSync(path.resolve(cwd, "bun.lock"))
+    existsSync(path.resolve(cwd, 'bun.lockb')) ||
+    existsSync(path.resolve(cwd, 'bun.lock'))
   )
-    return "bun";
-  return "npm";
+    return 'bun';
+  return 'npm';
 }
 ```
 
@@ -386,7 +386,7 @@ Define the types and error classes for registry operations.
 Minimal schema derived from shadcn (`/Users/siriwatknp/Personal-Repos/ui/packages/shadcn/src/registry/schema.ts`). Only include what we need:
 
 ```typescript
-import { z } from "zod";
+import { z } from 'zod';
 
 export const registryItemFileSchema = z.object({
   path: z.string(),
@@ -422,7 +422,7 @@ export class RegistryError extends Error {
 
   constructor(message: string, options?: { suggestion?: string }) {
     super(message);
-    this.name = "RegistryError";
+    this.name = 'RegistryError';
     this.suggestion = options?.suggestion;
   }
 }
@@ -431,9 +431,9 @@ export class RegistryNotFoundError extends RegistryError {
   constructor(public readonly url: string) {
     super(`The item at ${url} was not found.`, {
       suggestion:
-        "Check if the item name is correct and the registry URL is accessible.",
+        'Check if the item name is correct and the registry URL is accessible.',
     });
-    this.name = "RegistryNotFoundError";
+    this.name = 'RegistryNotFoundError';
   }
 }
 
@@ -446,9 +446,9 @@ export class RegistryFetchError extends RegistryError {
       statusCode
         ? `Failed to fetch from registry (${statusCode}): ${url}`
         : `Failed to fetch from registry: ${url}`,
-      { suggestion: "Check your network connection and try again." },
+      { suggestion: 'Check your network connection and try again.' },
     );
-    this.name = "RegistryFetchError";
+    this.name = 'RegistryFetchError';
   }
 }
 
@@ -458,9 +458,9 @@ export class RegistryParseError extends RegistryError {
     cause?: unknown,
   ) {
     super(`Failed to parse registry item: ${url}`, {
-      suggestion: "The registry item may have an invalid format.",
+      suggestion: 'The registry item may have an invalid format.',
     });
-    this.name = "RegistryParseError";
+    this.name = 'RegistryParseError';
   }
 }
 ```
@@ -487,8 +487,8 @@ import {
   RegistryFetchError,
   RegistryNotFoundError,
   RegistryParseError,
-} from "@/registry/errors";
-import { type RegistryItem, registryItemSchema } from "@/registry/schema";
+} from '@/registry/errors';
+import { type RegistryItem, registryItemSchema } from '@/registry/schema';
 
 const cache = new Map<string, Promise<RegistryItem>>();
 
@@ -579,8 +579,8 @@ Simplified from shadcn (`/Users/siriwatknp/Personal-Repos/ui/packages/shadcn/src
 - Just fetch items → resolve registryDependencies → deduplicate files → collect npm deps
 
 ```typescript
-import { fetchRegistryItem, fetchRegistryItemByUrl } from "@/registry/fetcher";
-import type { RegistryItem, RegistryItemFile } from "@/registry/schema";
+import { fetchRegistryItem, fetchRegistryItemByUrl } from '@/registry/fetcher';
+import type { RegistryItem, RegistryItemFile } from '@/registry/schema';
 
 export interface ResolvedRegistryTree {
   items: RegistryItem[];
@@ -591,7 +591,7 @@ export interface ResolvedRegistryTree {
 
 // Extract item name from a registry dependency (URL or bare name)
 function extractNameFromDep(dep: string): string | null {
-  if (dep.startsWith("http")) {
+  if (dep.startsWith('http')) {
     const match = dep.match(/\/([^/]+)\.json$/);
     return match ? match[1] : null;
   }
@@ -607,7 +607,7 @@ export async function resolveRegistryTree(
 
   async function resolve(nameOrUrl: string) {
     // Normalize: extract name for dedup tracking
-    const trackingKey = nameOrUrl.startsWith("http")
+    const trackingKey = nameOrUrl.startsWith('http')
       ? nameOrUrl
       : `${registryUrl}/${nameOrUrl}.json`;
 
@@ -615,14 +615,14 @@ export async function resolveRegistryTree(
     visited.add(trackingKey);
 
     // Fetch the item
-    const item = nameOrUrl.startsWith("http")
+    const item = nameOrUrl.startsWith('http')
       ? await fetchRegistryItemByUrl(nameOrUrl)
       : await fetchRegistryItem(nameOrUrl, registryUrl);
 
     // Resolve transitive dependencies first (DFS post-order)
     if (item.registryDependencies?.length) {
       for (const dep of item.registryDependencies) {
-        if (dep.startsWith("http")) {
+        if (dep.startsWith('http')) {
           // Full URL dependency — fetch directly
           await resolve(dep);
         } else {
@@ -677,21 +677,21 @@ Implement the `add` command that ties everything together.
 Modeled after shadcn (`/Users/siriwatknp/Personal-Repos/ui/packages/shadcn/src/commands/add.ts`), but dramatically simplified:
 
 ```typescript
-import { Command } from "commander";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
-import path from "path";
-import prompts from "prompts";
-import { z } from "zod";
+import { Command } from 'commander';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
+import path from 'path';
+import prompts from 'prompts';
+import { z } from 'zod';
 
-import { clearCache } from "@/registry/fetcher";
-import { resolveRegistryTree } from "@/registry/resolver";
-import { getPackageManager } from "@/utils/get-package-manager";
-import { handleError } from "@/utils/handle-error";
-import { highlighter } from "@/utils/highlighter";
-import { logger } from "@/utils/logger";
-import { spinner } from "@/utils/spinner";
+import { clearCache } from '@/registry/fetcher';
+import { resolveRegistryTree } from '@/registry/resolver';
+import { getPackageManager } from '@/utils/get-package-manager';
+import { handleError } from '@/utils/handle-error';
+import { highlighter } from '@/utils/highlighter';
+import { logger } from '@/utils/logger';
+import { spinner } from '@/utils/spinner';
 
-const DEFAULT_REGISTRY_URL = "https://mui-treasury.com/r";
+const DEFAULT_REGISTRY_URL = 'https://mui-treasury.com/r';
 
 const addOptionsSchema = z.object({
   components: z.array(z.string()),
@@ -702,17 +702,17 @@ const addOptionsSchema = z.object({
 });
 
 export const add = new Command()
-  .name("add")
-  .description("add components to your project")
-  .argument("[components...]", "component names to add")
-  .option("-y, --yes", "skip confirmation prompt.", false)
-  .option("-o, --overwrite", "overwrite existing files.", false)
+  .name('add')
+  .description('add components to your project')
+  .argument('[components...]', 'component names to add')
+  .option('-y, --yes', 'skip confirmation prompt.', false)
+  .option('-o, --overwrite', 'overwrite existing files.', false)
   .option(
-    "-c, --cwd <cwd>",
-    "the working directory. defaults to the current directory.",
+    '-c, --cwd <cwd>',
+    'the working directory. defaults to the current directory.',
     process.cwd(),
   )
-  .option("-r, --registry <url>", "registry base URL.", DEFAULT_REGISTRY_URL)
+  .option('-r, --registry <url>', 'registry base URL.', DEFAULT_REGISTRY_URL)
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
@@ -723,7 +723,7 @@ export const add = new Command()
 
       if (!options.components.length) {
         logger.error(
-          "No components specified. Usage: mui-treasury add <component...>",
+          'No components specified. Usage: mui-treasury add <component...>',
         );
         process.exit(1);
       }
@@ -735,7 +735,7 @@ export const add = new Command()
         );
         process.exit(1);
       }
-      if (!existsSync(path.resolve(options.cwd, "package.json"))) {
+      if (!existsSync(path.resolve(options.cwd, 'package.json'))) {
         logger.error(
           `No package.json found in ${highlighter.info(options.cwd)}.`,
         );
@@ -743,7 +743,7 @@ export const add = new Command()
       }
 
       // Resolve registry tree
-      const resolveSpinner = spinner("Resolving components...").start();
+      const resolveSpinner = spinner('Resolving components...').start();
       const tree = await resolveRegistryTree(
         options.components,
         options.registry,
@@ -764,7 +764,7 @@ export const add = new Command()
 
         if (existsSync(targetPath)) {
           // Check if content is identical
-          const existingContent = readFileSync(targetPath, "utf-8");
+          const existingContent = readFileSync(targetPath, 'utf-8');
           if (existingContent === file.content) {
             skipped.push(relativePath);
             continue;
@@ -772,8 +772,8 @@ export const add = new Command()
 
           if (!options.overwrite && !options.yes) {
             const { confirm } = await prompts({
-              type: "confirm",
-              name: "confirm",
+              type: 'confirm',
+              name: 'confirm',
               message: `File ${highlighter.info(relativePath)} already exists. Overwrite?`,
               initial: false,
             });
@@ -788,7 +788,7 @@ export const add = new Command()
         }
 
         mkdirSync(targetDir, { recursive: true });
-        writeFileSync(targetPath, file.content, "utf-8");
+        writeFileSync(targetPath, file.content, 'utf-8');
       }
 
       // Summary
@@ -810,10 +810,10 @@ export const add = new Command()
       const allDeps = [...tree.dependencies, ...tree.devDependencies];
       if (allDeps.length) {
         const pm = getPackageManager(options.cwd);
-        const installCmd = pm === "npm" ? "npm install" : `${pm} add`;
+        const installCmd = pm === 'npm' ? 'npm install' : `${pm} add`;
         logger.break();
-        logger.info("Install dependencies:");
-        logger.log(`  ${installCmd} ${allDeps.join(" ")}`);
+        logger.info('Install dependencies:');
+        logger.log(`  ${installCmd} ${allDeps.join(' ')}`);
       }
 
       logger.break();

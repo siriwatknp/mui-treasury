@@ -1,15 +1,28 @@
-"use client";
-import React from "react";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import CssBaseline from "@mui/material/CssBaseline";
+'use client';
+import React from 'react';
+
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import CssBaseline from '@mui/material/CssBaseline';
+import Toolbar from '@mui/material/Toolbar';
 import {
+  ThemeProvider,
   createTheme,
   responsiveFontSizes,
   styled,
-  ThemeProvider,
-} from "@mui/material/styles";
-import Toolbar from "@mui/material/Toolbar";
+} from '@mui/material/styles';
+
+import {
+  Content,
+  EdgeSidebar,
+  EdgeSidebarContent,
+  Footer,
+  Header,
+  InsetAvoidingView,
+  InsetContent,
+  InsetSidebar,
+  Root,
+} from '../layout-core';
 import {
   ChatBar,
   ChatDialog,
@@ -18,32 +31,21 @@ import {
   ChatsHeader,
   ConversationHead,
   MessengerSearch,
-} from "./components";
-import {
-  Content,
-  EdgeSidebar,
-  EdgeSidebarContent,
-  Footer,
-  Header,
-  InsetAvoidingView,
-  InsetSidebar,
-  InsetContent,
-  Root,
-} from "../layout-core";
+} from './components';
 
 const StyledHeader = styled(Header)(() => ({
-  boxShadow: "0 1px 2px 0 rgba(0, 0, 0, .10)",
-  backgroundColor: "#ffffff",
+  boxShadow: '0 1px 2px 0 rgba(0, 0, 0, .10)',
+  backgroundColor: '#ffffff',
 }));
 
 const theme = responsiveFontSizes(
   createTheme({
     palette: {
       primary: {
-        main: "rgb(0, 153, 255)",
+        main: 'rgb(0, 153, 255)',
       },
       background: {
-        default: "#fff",
+        default: '#fff',
       },
     },
     typography: {
@@ -56,8 +58,8 @@ const theme = responsiveFontSizes(
     components: {
       MuiCssBaseline: {
         styleOverrides: {
-          "strong, b": {
-            fontWeight: "bold",
+          'strong, b': {
+            fontWeight: 'bold',
           },
         },
       },
@@ -72,8 +74,8 @@ export function LayoutV6AppMessenger() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Root standalone>
-        <StyledHeader height="64px" sx={{ position: "relative" }}>
-          <Toolbar disableGutters sx={{ flex: "auto" }}>
+        <StyledHeader height="64px" sx={{ position: 'relative' }}>
+          <Toolbar disableGutters sx={{ flex: 'auto' }}>
             <ConversationHead />
           </Toolbar>
         </StyledHeader>
@@ -81,17 +83,17 @@ export function LayoutV6AppMessenger() {
           permanentAutoCollapse="md"
           variant={{
             xs: [
-              "permanent",
+              'permanent',
               {
-                width: "25cqw",
-                collapsedWidth: "80px",
+                width: '25cqw',
+                collapsedWidth: '80px',
               },
             ],
           }}
         >
           <EdgeSidebarContent>
             <ChatsHeader />
-            <Box p={"4px 16px 12px"}>
+            <Box p={'4px 16px 12px'}>
               <MessengerSearch />
             </Box>
             <ChatList />
@@ -108,7 +110,7 @@ export function LayoutV6AppMessenger() {
         <Footer>
           <Container disableGutters>
             <InsetAvoidingView>
-              <Box display={"flex"} alignItems={"center"} p={1}>
+              <Box display={'flex'} alignItems={'center'} p={1}>
                 <ChatBar />
               </Box>
             </InsetAvoidingView>

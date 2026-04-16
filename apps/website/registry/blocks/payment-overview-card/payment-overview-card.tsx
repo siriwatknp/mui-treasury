@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import BarChartIcon from "@mui/icons-material/BarChart";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import Divider from "@mui/material/Divider";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
+import BarChartIcon from '@mui/icons-material/BarChart';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Divider from '@mui/material/Divider';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 
 export function PaymentOverviewCard() {
   return (
     <Card
       sx={{
         p: 3,
-        display: "flex",
-        alignItems: "stretch",
+        display: 'flex',
+        alignItems: 'stretch',
         gap: 3,
         borderRadius: 2,
         boxShadow: 1,
@@ -23,7 +23,7 @@ export function PaymentOverviewCard() {
       <Box
         component="section"
         aria-label="Total Outstanding"
-        sx={{ flex: 1, display: "flex", gap: 2 }}
+        sx={{ flex: 1, display: 'flex', gap: 2 }}
       >
         <BarChartIcon aria-hidden="true" sx={{ fontSize: 24 }} />
         <Stack spacing={0.5}>
@@ -53,7 +53,7 @@ export function PaymentOverviewCard() {
       <Box
         component="section"
         aria-label="Upcoming Payment"
-        sx={{ flex: 1, display: "flex", gap: 2 }}
+        sx={{ flex: 1, display: 'flex', gap: 2 }}
       >
         <CalendarMonthIcon aria-hidden="true" sx={{ fontSize: 24 }} />
         <Stack spacing={0.5}>

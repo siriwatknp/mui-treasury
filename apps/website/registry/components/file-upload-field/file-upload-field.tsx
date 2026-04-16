@@ -1,78 +1,81 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import TextField, { TextFieldProps } from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
-import IconButton from "@mui/material/IconButton";
-import AttachFileIcon from "@mui/icons-material/AttachFile";
-import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
-import DescriptionIcon from "@mui/icons-material/Description";
-import TableChartIcon from "@mui/icons-material/TableChart";
-import CodeIcon from "@mui/icons-material/Code";
-import AudioFileIcon from "@mui/icons-material/AudioFile";
-import VideoFileIcon from "@mui/icons-material/VideoFile";
-import FolderZipIcon from "@mui/icons-material/FolderZip";
-import ArticleIcon from "@mui/icons-material/Article";
-import ClearIcon from "@mui/icons-material/Clear";
+import * as React from 'react';
+
+import ArticleIcon from '@mui/icons-material/Article';
+import AttachFileIcon from '@mui/icons-material/AttachFile';
+import AudioFileIcon from '@mui/icons-material/AudioFile';
+import ClearIcon from '@mui/icons-material/Clear';
+import CodeIcon from '@mui/icons-material/Code';
+import DescriptionIcon from '@mui/icons-material/Description';
+import FolderZipIcon from '@mui/icons-material/FolderZip';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import TableChartIcon from '@mui/icons-material/TableChart';
+import VideoFileIcon from '@mui/icons-material/VideoFile';
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import TextField, { TextFieldProps } from '@mui/material/TextField';
 
 function getFileIcon(filename: string | undefined) {
   if (!filename) return <AttachFileIcon />;
 
-  const ext = filename.split(".").pop()?.toLowerCase();
+  const ext = filename.split('.').pop()?.toLowerCase();
 
   switch (ext) {
-    case "pdf":
+    case 'pdf':
       return <PictureAsPdfIcon />;
-    case "doc":
-    case "docx":
+    case 'doc':
+    case 'docx':
       return <DescriptionIcon />;
-    case "xls":
-    case "xlsx":
-    case "csv":
+    case 'xls':
+    case 'xlsx':
+    case 'csv':
       return <TableChartIcon />;
-    case "js":
-    case "ts":
-    case "jsx":
-    case "tsx":
-    case "html":
-    case "css":
-    case "json":
-    case "xml":
-    case "py":
-    case "java":
-    case "c":
-    case "cpp":
-    case "go":
-    case "rs":
+    case 'js':
+    case 'ts':
+    case 'jsx':
+    case 'tsx':
+    case 'html':
+    case 'css':
+    case 'json':
+    case 'xml':
+    case 'py':
+    case 'java':
+    case 'c':
+    case 'cpp':
+    case 'go':
+    case 'rs':
       return <CodeIcon />;
-    case "mp3":
-    case "wav":
-    case "ogg":
-    case "flac":
-    case "aac":
+    case 'mp3':
+    case 'wav':
+    case 'ogg':
+    case 'flac':
+    case 'aac':
       return <AudioFileIcon />;
-    case "mp4":
-    case "webm":
-    case "avi":
-    case "mov":
-    case "mkv":
+    case 'mp4':
+    case 'webm':
+    case 'avi':
+    case 'mov':
+    case 'mkv':
       return <VideoFileIcon />;
-    case "zip":
-    case "rar":
-    case "7z":
-    case "tar":
-    case "gz":
+    case 'zip':
+    case 'rar':
+    case '7z':
+    case 'tar':
+    case 'gz':
       return <FolderZipIcon />;
-    case "txt":
-    case "md":
-    case "rtf":
+    case 'txt':
+    case 'md':
+    case 'rtf':
       return <ArticleIcon />;
     default:
       return <AttachFileIcon />;
   }
 }
 
-export interface FileUploadFieldProps
-  extends Omit<TextFieldProps, "value" | "onChange" | "type"> {
+export interface FileUploadFieldProps extends Omit<
+  TextFieldProps,
+  'value' | 'onChange' | 'type'
+> {
   value?: File | null;
   onChange?: (file: File | null) => void;
   accept?: string;
@@ -95,7 +98,7 @@ export const FileUploadField = React.forwardRef<
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   const previewUrl = React.useMemo(() => {
-    if (value?.type.startsWith("image/")) {
+    if (value?.type.startsWith('image/')) {
       return URL.createObjectURL(value);
     }
     return null;
@@ -117,7 +120,7 @@ export const FileUploadField = React.forwardRef<
   const handleClear = (event: React.MouseEvent) => {
     event.stopPropagation();
     if (inputRef.current) {
-      inputRef.current.value = "";
+      inputRef.current.value = '';
     }
     onChange?.(null);
   };
@@ -134,14 +137,14 @@ export const FileUploadField = React.forwardRef<
           sx={{
             width: 24,
             height: 24,
-            objectFit: "cover",
+            objectFit: 'cover',
             borderRadius: 0.5,
           }}
         />
       );
     }
     return React.cloneElement(getFileIcon(filename), {
-      sx: { color: filename ? "text.primary" : "text.secondary" },
+      sx: { color: filename ? 'text.primary' : 'text.secondary' },
     });
   };
 
@@ -173,16 +176,16 @@ export const FileUploadField = React.forwardRef<
           ...slotProps?.input,
         },
         htmlInput: {
-          type: "file",
+          type: 'file',
           accept,
           onChange: handleFileChange,
           ref: inputRef,
           sx: {
-            "&::file-selector-button": {
-              display: "none",
+            '&::file-selector-button': {
+              display: 'none',
             },
-            "&:not(:disabled)": {
-              cursor: "pointer",
+            '&:not(:disabled)': {
+              cursor: 'pointer',
             },
           },
           ...slotProps?.htmlInput,

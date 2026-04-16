@@ -3,23 +3,23 @@ export function getRegistryBaseUrl(): string {
   const vercelEnv = process.env.VERCEL_ENV;
 
   // For production, use VERCEL_PROJECT_PRODUCTION_URL if available
-  if (vercelEnv === "production") {
+  if (vercelEnv === 'production') {
     const productionUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
     if (productionUrl) {
       return `https://${productionUrl}`;
     }
     // Fallback to mui-treasury.com if production URL not available
-    return "https://mui-treasury.com";
+    return 'https://mui-treasury.com';
   }
 
   // For preview/development, use VERCEL_BRANCH_URL
   const branchUrl = process.env.VERCEL_BRANCH_URL;
-  if (vercelEnv && vercelEnv !== "production" && branchUrl) {
+  if (vercelEnv && vercelEnv !== 'production' && branchUrl) {
     return `https://${branchUrl}`;
   }
 
   // Fallback for local development
-  return "http://localhost:3000";
+  return 'http://localhost:3000';
 }
 
 export function extractDependencies(content: string): string[] {
@@ -33,9 +33,9 @@ export function extractDependencies(content: string): string[] {
       const importPath = match[1];
       // Skip relative imports (. or ..), absolute paths (/), and alias imports (@/)
       if (
-        importPath.startsWith(".") ||
-        importPath.startsWith("/") ||
-        importPath.startsWith("@/")
+        importPath.startsWith('.') ||
+        importPath.startsWith('/') ||
+        importPath.startsWith('@/')
       ) {
         return;
       }
@@ -49,15 +49,15 @@ export function extractDependencies(content: string): string[] {
 
   // Always add emotion dependencies if MUI is used
   const hasMui = Array.from(dependencies).some((dep) =>
-    dep.startsWith("@mui/")
+    dep.startsWith('@mui/'),
   );
   if (hasMui) {
-    dependencies.add("@emotion/react");
-    dependencies.add("@emotion/styled");
+    dependencies.add('@emotion/react');
+    dependencies.add('@emotion/styled');
   }
 
   // Filter out React (peer dependency)
-  dependencies.delete("react");
+  dependencies.delete('react');
 
   return Array.from(dependencies);
 }
@@ -73,7 +73,7 @@ export function extractDependencies(content: string): string[] {
 export function extractDefaultExportName(content: string): string | null {
   // Pattern 1: export default function/class with a name
   const namedExportMatch = content.match(
-    /export\s+default\s+(?:function|class)\s+([A-Z][a-zA-Z0-9]*)/
+    /export\s+default\s+(?:function|class)\s+([A-Z][a-zA-Z0-9]*)/,
   );
   if (namedExportMatch) {
     return namedExportMatch[1];
@@ -81,7 +81,7 @@ export function extractDefaultExportName(content: string): string | null {
 
   // Pattern 2: export default const ConstName
   const constExportMatch = content.match(
-    /export\s+default\s+const\s+([A-Z][a-zA-Z0-9]*)/
+    /export\s+default\s+const\s+([A-Z][a-zA-Z0-9]*)/,
   );
   if (constExportMatch) {
     return constExportMatch[1];
@@ -90,7 +90,7 @@ export function extractDefaultExportName(content: string): string | null {
   // Pattern 3: export default Identifier (not arrow function or object literal)
   // Must start with uppercase to be a component/class name
   const identifierMatch = content.match(
-    /export\s+default\s+([A-Z][a-zA-Z0-9]*)\s*;/
+    /export\s+default\s+([A-Z][a-zA-Z0-9]*)\s*;/,
   );
   if (identifierMatch) {
     return identifierMatch[1];

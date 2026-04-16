@@ -1,26 +1,27 @@
-"use client";
+'use client';
 
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+
 import {
   Message,
-  MessageContent,
   MessageAvatar,
-} from "@/registry/components/ai-message/ai-message";
+  MessageContent,
+} from '@/registry/components/ai-message/ai-message';
 
 export function Demo() {
   return (
-    <Box sx={{ width: "100%", maxWidth: 896, mx: "auto", p: 4 }}>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+    <Box sx={{ width: '100%', maxWidth: 896, mx: 'auto', p: 4 }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
         <Box>
           <Typography
             variant="body2"
-            sx={{ fontWeight: 500, color: "text.secondary", mb: 2 }}
+            sx={{ fontWeight: 500, color: 'text.secondary', mb: 2 }}
           >
             Message Types
           </Typography>
-          <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             {/* User Message */}
             <Message from="user">
               <MessageContent>
@@ -40,10 +41,10 @@ export function Demo() {
                 <Box
                   component="ol"
                   sx={{
-                    listStyleType: "decimal",
-                    listStylePosition: "inside",
+                    listStyleType: 'decimal',
+                    listStylePosition: 'inside',
                     mt: 1,
-                    "& li": { mb: 0.5 },
+                    '& li': { mb: 0.5 },
                   }}
                 >
                   <Typography component="li" variant="body2">
@@ -83,10 +84,10 @@ export function Demo() {
                   sx={{
                     mt: 1,
                     p: 1,
-                    bgcolor: "background.default",
+                    bgcolor: 'background.default',
                     borderRadius: 1,
-                    fontSize: "0.75rem",
-                    overflowX: "auto",
+                    fontSize: '0.75rem',
+                    overflowX: 'auto',
                   }}
                 >
                   <code>{`function useCounter(initialValue = 0) {
@@ -106,11 +107,11 @@ export function Demo() {
         <Box>
           <Typography
             variant="body2"
-            sx={{ fontWeight: 500, color: "text.secondary", mb: 2 }}
+            sx={{ fontWeight: 500, color: 'text.secondary', mb: 2 }}
           >
             Flat Variant
           </Typography>
-          <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             <Message from="user">
               <MessageAvatar name="User" />
               <MessageContent variant="flat">
@@ -133,10 +134,10 @@ export function Demo() {
                   sx={{
                     mt: 1,
                     p: 1,
-                    bgcolor: "background.default",
+                    bgcolor: 'background.default',
                     borderRadius: 1,
-                    fontSize: "0.75rem",
-                    overflowX: "auto",
+                    fontSize: '0.75rem',
+                    overflowX: 'auto',
                   }}
                 >
                   <code>{`function useCounter(initialValue: number = 0) {
@@ -152,18 +153,18 @@ export function Demo() {
         <Box>
           <Typography
             variant="body2"
-            sx={{ fontWeight: 500, color: "text.secondary", mb: 2 }}
+            sx={{ fontWeight: 500, color: 'text.secondary', mb: 2 }}
           >
             Avatar Positioning
           </Typography>
           <Typography
             variant="caption"
-            sx={{ color: "text.secondary", display: "block", mb: 2 }}
+            sx={{ color: 'text.secondary', display: 'block', mb: 2 }}
           >
             The avatar position automatically adjusts based on the order of
             children
           </Typography>
-          <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             {/* Avatar after content for user messages */}
             <Message from="user">
               <MessageContent>

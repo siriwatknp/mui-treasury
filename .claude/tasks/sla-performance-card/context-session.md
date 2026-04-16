@@ -3,9 +3,11 @@
 ## Visual Design Analysis
 
 ### Overview
+
 A clean performance metric card displaying SLA (Service Level Agreement) compliance data with a circular progress chart and percentage indicators.
 
 ### Key Components
+
 - **Container**: Card with rounded corners and subtle shadow
 - **Title**: "SLA Performance" header text
 - **Legend Items**: Two metric rows with color indicators and percentages
@@ -14,6 +16,7 @@ A clean performance metric card displaying SLA (Service Level Agreement) complia
 - **Circular Chart**: Donut/ring chart visualization on the right side showing the 83.3% vs 16.7% split
 
 ### Theme Mapping
+
 - **Palette Colors**:
   - Primary blue for "Within SLA" metric and chart segment
   - Error red for "SLA Breached" metric and chart segment
@@ -31,6 +34,7 @@ A clean performance metric card displaying SLA (Service Level Agreement) complia
   - Shadow: elevation 1 or 2 for subtle depth
 
 ### Layout
+
 - **Structure**: Horizontal flexbox layout
   - Left side: Title and legend items stacked vertically
   - Right side: Circular progress chart
@@ -45,6 +49,7 @@ A clean performance metric card displaying SLA (Service Level Agreement) complia
   - Legend indicators: Small squares ~12-16px
 
 ### ASCII Mockup Representation
+
 ```
 ┌─────────────────────────────────────────────────┐
 │ SLA Performance                                 │
@@ -86,12 +91,14 @@ A clean performance metric card displaying SLA (Service Level Agreement) complia
    - If not interactive, ensure it doesn't receive keyboard focus unnecessarily
 
 ## Implementation Notes
+
 - Will use MUI's PieChart from @mui/x-charts for the circular visualization
 - Card component for the container
 - Typography components for all text elements
 - Box components for layout and spacing
 
 ## Work Summary
+
 - Created SLA Performance Card component at registry/new-york/blocks/sla-performance-card/sla-performance-card.tsx
 - Used MUI Card with CardContent for the container with subtle shadow elevation
 - Implemented horizontal flexbox layout with legend on left and chart on right

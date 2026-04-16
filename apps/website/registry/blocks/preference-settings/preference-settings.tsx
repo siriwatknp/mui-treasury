@@ -1,15 +1,16 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import Switch from "@mui/material/Switch";
-import Stack from "@mui/material/Stack";
-import Divider from "@mui/material/Divider";
-import FormControl from "@mui/material/FormControl";
-import Card from "@mui/material/Card";
+import * as React from 'react';
+
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Divider from '@mui/material/Divider';
+import FormControl from '@mui/material/FormControl';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import Stack from '@mui/material/Stack';
+import Switch from '@mui/material/Switch';
+import Typography from '@mui/material/Typography';
 
 interface SettingRowProps {
   title: string;
@@ -21,9 +22,9 @@ function SettingRow({ title, description, children }: SettingRowProps) {
   return (
     <Box
       sx={{
-        display: "flex",
-        alignItems: "flex-start",
-        justifyContent: "space-between",
+        display: 'flex',
+        alignItems: 'flex-start',
+        justifyContent: 'space-between',
         py: 1.5,
         px: 1.5,
         gap: 3,
@@ -33,24 +34,24 @@ function SettingRow({ title, description, children }: SettingRowProps) {
         <Typography variant="body1" sx={{ mb: 0.5 }}>
           {title}
         </Typography>
-        <Typography variant="body2" sx={{ color: "text.secondary" }}>
+        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
           {description}
         </Typography>
       </Box>
-      <Box sx={{ display: "flex", alignItems: "center" }}>{children}</Box>
+      <Box sx={{ display: 'flex', alignItems: 'center' }}>{children}</Box>
     </Box>
   );
 }
 
 export function PreferenceSettings() {
-  const [startupView, setStartupView] = React.useState("dashboard");
+  const [startupView, setStartupView] = React.useState('dashboard');
   const [autoFormat, setAutoFormat] = React.useState(true);
-  const [weekStart, setWeekStart] = React.useState("monday");
+  const [weekStart, setWeekStart] = React.useState('monday');
   const [showAvatars, setShowAvatars] = React.useState(false);
 
   return (
     <Card>
-      <Stack divider={<Divider />} sx={{ bgcolor: "background.paper" }}>
+      <Stack divider={<Divider />} sx={{ bgcolor: 'background.paper' }}>
         <SettingRow
           title="Week starts on"
           description="Choose which day begins your calendar week"

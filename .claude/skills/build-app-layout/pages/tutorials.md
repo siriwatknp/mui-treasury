@@ -24,16 +24,16 @@ Steps:
 Every layout starts with 4 components: `Root`, `Header`, `Content`, `Footer`.
 
 ```tsx
-import Content from "@/mui-treasury/layout/layout-core/Content";
-import Footer from "@/mui-treasury/layout/layout-core/Footer";
-import Header from "@/mui-treasury/layout/layout-core/Header";
-import Root from "@/mui-treasury/layout/layout-core/Root";
+import Content from '@/mui-treasury/layout/layout-core/Content';
+import Footer from '@/mui-treasury/layout/layout-core/Footer';
+import Header from '@/mui-treasury/layout/layout-core/Header';
+import Root from '@/mui-treasury/layout/layout-core/Root';
 
 export function MyLayout() {
   return (
     <Root>
       <Header>
-        <Box sx={{ px: 2, display: "flex", alignItems: "center" }}>
+        <Box sx={{ px: 2, display: 'flex', alignItems: 'center' }}>
           <Typography variant="h6">My App</Typography>
         </Box>
       </Header>
@@ -75,12 +75,12 @@ import {
   EdgeSidebarContent,
   Header,
   Root,
-} from "@/mui-treasury/layout/layout-core";
+} from '@/mui-treasury/layout/layout-core';
 
 <Root>
   <Header>…</Header>
 
-  <EdgeSidebar id="main-sidebar" variant={["permanent", { width: "256px" }]}>
+  <EdgeSidebar id="main-sidebar" variant={['permanent', { width: '256px' }]}>
     <EdgeSidebarContent>
       <Box sx={{ p: 2 }}>Sidebar content</Box>
     </EdgeSidebarContent>
@@ -104,7 +104,7 @@ Add `collapsedWidth` to the permanent config to enable collapse, then add `EdgeS
 <EdgeSidebar
   id="main-sidebar"
   permanentAutoCollapse="lg"
-  variant={["permanent", { width: "256px", collapsedWidth: "52px" }]}
+  variant={['permanent', { width: '256px', collapsedWidth: '52px' }]}
 >
   <EdgeSidebarContent>
     <Box sx={{ p: 2 }}>…nav items…</Box>
@@ -132,7 +132,7 @@ Use a responsive variant object to switch modes per breakpoint. Add `EdgeDrawerT
 ```tsx
 <Root>
   <Header>
-    <Box sx={{ px: 2, display: "flex", alignItems: "center", gap: 1 }}>
+    <Box sx={{ px: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
       {/* Shows only in drawer mode (mobile) */}
       <EdgeDrawerTrigger
         render={
@@ -159,8 +159,8 @@ Use a responsive variant object to switch modes per breakpoint. Add `EdgeDrawerT
     permanentAutoCollapse="lg"
     // mobile-first: start from xs, then override at larger breakpoints
     variant={{
-      xs: ["drawer"],
-      md: ["permanent", { width: "256px", collapsedWidth: "52px" }],
+      xs: ['drawer'],
+      md: ['permanent', { width: '256px', collapsedWidth: '52px' }],
     }}
   >
     <EdgeDrawerClose />
@@ -188,7 +188,7 @@ import {
   SidebarMenuList,
   SidebarText,
   SidebarTooltip,
-} from "@/mui-treasury/components/sidebar";
+} from '@/mui-treasury/components/sidebar';
 
 <EdgeSidebarContent>
   <SidebarContainer>
@@ -263,7 +263,7 @@ import {
   CollapsibleContent,
   CollapsibleIcon,
   CollapsibleTrigger,
-} from "@/mui-treasury/components/collapsible";
+} from '@/mui-treasury/components/collapsible';
 
 <SidebarMenuItem>
   <CollapsibleTrigger
@@ -320,7 +320,7 @@ import {
   PopupMenuItem,
   PopupMenuLink,
   PopupMenuList,
-} from "@/mui-treasury/components/sidebar/popup-menu";
+} from '@/mui-treasury/components/sidebar/popup-menu';
 
 <SidebarMenuList>
   <PopupMenuList>

@@ -1,24 +1,24 @@
-"use client";
-import ChevronRightRounded from "@mui/icons-material/ChevronRightRounded";
-import FolderRounded from "@mui/icons-material/FolderRounded";
-import BarChartRounded from "@mui/icons-material/BarChartRounded";
+'use client';
+import BarChartRounded from '@mui/icons-material/BarChartRounded';
+import ChevronRightRounded from '@mui/icons-material/ChevronRightRounded';
+import FolderRounded from '@mui/icons-material/FolderRounded';
 
-import { SidebarContainer } from "@/registry/components/sidebar/sidebar-container";
-import { SidebarMenuList } from "@/registry/components/sidebar/sidebar-menu-list";
-import { SidebarMenuItem } from "@/registry/components/sidebar/sidebar-menu-item";
-import { SidebarMenuButton } from "@/registry/components/sidebar/sidebar-menu-button";
-import { SidebarIcon } from "@/registry/components/sidebar/sidebar-icon";
-import { SidebarText } from "@/registry/components/sidebar/sidebar-text";
 import {
-  PopupMenuList,
+  PopupMenuContent,
   PopupMenuItem,
   PopupMenuLink,
-  PopupMenuContent,
-} from "@/registry/components/sidebar/popup-menu";
+  PopupMenuList,
+} from '@/registry/components/sidebar/popup-menu';
+import { SidebarContainer } from '@/registry/components/sidebar/sidebar-container';
+import { SidebarIcon } from '@/registry/components/sidebar/sidebar-icon';
+import { SidebarMenuButton } from '@/registry/components/sidebar/sidebar-menu-button';
+import { SidebarMenuItem } from '@/registry/components/sidebar/sidebar-menu-item';
+import { SidebarMenuList } from '@/registry/components/sidebar/sidebar-menu-list';
+import { SidebarText } from '@/registry/components/sidebar/sidebar-text';
 
 export const meta = {
-  title: "Popup Menu",
-  description: "Menu items that open a popup submenu on hover or click.",
+  title: 'Popup Menu',
+  description: 'Menu items that open a popup submenu on hover or click.',
 };
 
 export function Demo() {

@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import React, { useMemo } from "react";
+import React, { useMemo } from 'react';
 
-import ButtonBase, { ButtonBaseProps } from "@mui/material/ButtonBase";
-import { styled } from "@mui/material/styles";
-import { unstable_memoTheme as memoTheme } from "@mui/material/utils";
+import ButtonBase, { ButtonBaseProps } from '@mui/material/ButtonBase';
+import { styled } from '@mui/material/styles';
+import { unstable_memoTheme as memoTheme } from '@mui/material/utils';
 
 import type {
   ForwardStyledProps,
   OverridableComponent,
-} from "../../types/shared/component";
-import { sidebarClasses } from "./sidebar-classes";
+} from '../../types/shared/component';
+import { sidebarClasses } from './sidebar-classes';
 
 export type SidebarMenuActionProps = ForwardStyledProps<{
   hoverAppear?: boolean;
@@ -19,47 +19,47 @@ export type SidebarMenuActionProps = ForwardStyledProps<{
 }>;
 
 const StyledSidebarMenuAction = styled(ButtonBase, {
-  name: "SidebarMenuAction",
-  slot: "root",
+  name: 'SidebarMenuAction',
+  slot: 'root',
 })<{ ownerState: SidebarMenuActionProps }>(
   memoTheme(({ theme }) => ({
-    "--_ms": "initial",
-    flex: "none", // prevent action from shrinking when the text is long and the sidebar is collapsing.
-    marginInlineStart: "var(--_ms)",
-    width: "var(--action-size, 1.5rem)",
-    height: "var(--action-size, 1.5rem)",
-    display: "inline-flex",
+    '--_ms': 'initial',
+    flex: 'none', // prevent action from shrinking when the text is long and the sidebar is collapsing.
+    marginInlineStart: 'var(--_ms)',
+    width: 'var(--action-size, 1.5rem)',
+    height: 'var(--action-size, 1.5rem)',
+    display: 'inline-flex',
     visibility:
-      "var(--_collapsed, hidden) var(--_uncollapsed, visible)" as never,
-    justifyContent: "center",
-    alignItems: "center",
-    alignSelf: "center",
+      'var(--_collapsed, hidden) var(--_uncollapsed, visible)' as never,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
     color: (theme.vars || theme).palette.text.secondary,
-    transition: "var(--tsn, right 0.4s)",
+    transition: 'var(--tsn, right 0.4s)',
     borderRadius: (theme.vars || theme).shape.borderRadius,
-    "&:first-of-type": {
-      "--_ms": "auto",
+    '&:first-of-type': {
+      '--_ms': 'auto',
     },
-    "&:focus-visible, &:has(:focus-visible )": {
-      outline: "2px solid",
+    '&:focus-visible, &:has(:focus-visible )': {
+      outline: '2px solid',
       outlineColor: (theme.vars || theme).palette.text.primary,
-      outlineOffset: "2px",
+      outlineOffset: '2px',
     },
-    "@media (hover: hover)": {
-      "&:hover": {
+    '@media (hover: hover)': {
+      '&:hover': {
         backgroundColor: (theme.vars || theme).palette.action.hover,
       },
     },
-    "& svg": {
-      width: "var(--icon-size, 1rem)",
-      height: "var(--icon-size, 1rem)",
+    '& svg': {
+      width: 'var(--icon-size, 1rem)',
+      height: 'var(--icon-size, 1rem)',
     },
     variants: [
       {
         props: { hoverAppear: true },
         style: {
           opacity: 0,
-          "&:hover, &:focus-visible": {
+          '&:hover, &:focus-visible': {
             opacity: 1,
           },
           [`.${sidebarClasses.menuButton}:hover ~ &, .${sidebarClasses.groupLabel} > &`]:
@@ -83,11 +83,11 @@ export const SidebarMenuAction = React.forwardRef<
   return (
     <StyledSidebarMenuAction
       ref={ref}
-      className={`${sidebarClasses.menuAction} ${className || ""}`}
+      className={`${sidebarClasses.menuAction} ${className || ''}`}
       ownerState={ownerState}
       as={
         component ??
-        (className?.includes("CollapsibleTrigger") ? "label" : undefined)
+        (className?.includes('CollapsibleTrigger') ? 'label' : undefined)
       }
       {...props}
     >

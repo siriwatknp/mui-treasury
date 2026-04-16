@@ -1,8 +1,10 @@
-import React from "react";
-import { styled, SxProps, Theme } from "@mui/material/styles";
-import type { CSSObject } from "@mui/material/styles";
-import cx from "clsx";
-import { infoClasses } from "./info-classes";
+import React from 'react';
+
+import { SxProps, Theme, styled } from '@mui/material/styles';
+import type { CSSObject } from '@mui/material/styles';
+import cx from 'clsx';
+
+import { infoClasses } from './info-classes';
 
 const defaultUseStyles = () => ({});
 
@@ -39,29 +41,29 @@ export type InfoProps = {
    * The system prop that allows defining system overrides as well as additional CSS styles.
    */
   sx?: SxProps<Theme>;
-} & Omit<React.JSX.IntrinsicElements["div"], "ref">;
+} & Omit<React.JSX.IntrinsicElements['div'], 'ref'>;
 
-const StylesContext = React.createContext<InfoProps["useStyles"] | undefined>(
+const StylesContext = React.createContext<InfoProps['useStyles'] | undefined>(
   undefined,
 );
 
 export const useStylesCtx = () => {
   const value = React.useContext(StylesContext);
   if (!value) {
-    throw new Error("`useStylesCtx` must be called under <Info>");
+    throw new Error('`useStylesCtx` must be called under <Info>');
   }
   return value;
 };
 
-const InfoRoot = styled("div", {
-  name: "JunInfo",
-  slot: "Root",
+const InfoRoot = styled('div', {
+  name: 'JunInfo',
+  slot: 'Root',
   overridesResolver: (props, styles) => {
     const { ownerState } = props;
     return [styles.root, ownerState.variant && styles[ownerState.variant]];
   },
 })<{ ownerState: InfoProps }>(({ theme, ownerState }) => ({
-  display: "block",
+  display: 'block',
   ...(ownerState.useStyles && ownerState.useStyles(theme).root),
 }));
 

@@ -1,8 +1,9 @@
-import React from "react";
-import { Info } from "../info-basic/info";
-import { InfoSubtitle } from "../info-basic/info-subtitle";
-import { InfoTitle } from "../info-basic/info-title";
-import { getInfoApexStyles } from "./info-apex.styles";
+import React from 'react';
+
+import { Info } from '../info-basic/info';
+import { InfoSubtitle } from '../info-basic/info-subtitle';
+import { InfoTitle } from '../info-basic/info-title';
+import { getInfoApexStyles } from './info-apex.styles';
 
 export function InfoApex() {
   return (

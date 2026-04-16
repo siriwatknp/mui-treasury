@@ -1,20 +1,21 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import Typography from "@mui/material/Typography";
-import AddIcon from "@mui/icons-material/Add";
-import Link from "@mui/material/Link";
+import * as React from 'react';
+
+import AddIcon from '@mui/icons-material/Add';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Link from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
 
 export function CardAction01() {
   return (
     <Card
       sx={(theme) => ({
         border: 0,
-        bgcolor: "grey.100",
-        position: "relative",
-        overflow: "hidden",
+        bgcolor: 'grey.100',
+        position: 'relative',
+        overflow: 'hidden',
         borderRadius: 3.5,
         p: 3,
         width: {
@@ -38,16 +39,16 @@ export function CardAction01() {
           lg: 744,
           xl: 804,
         },
-        display: "flex",
-        flexDirection: "column",
-        ...theme.applyStyles("dark", {
-          bgcolor: "grey.900",
+        display: 'flex',
+        flexDirection: 'column',
+        ...theme.applyStyles('dark', {
+          bgcolor: 'grey.900',
         }),
-        transition: "transform .3s cubic-bezier(0,0,.5,1)",
-        "&:hover": {
-          transform: "scale(1.023)",
+        transition: 'transform .3s cubic-bezier(0,0,.5,1)',
+        '&:hover': {
+          transform: 'scale(1.023)',
         },
-        "&:has(:focus-visible)": {
+        '&:has(:focus-visible)': {
           outline: `2px solid ${(theme.vars || theme).palette.primary.main}`,
           outlineOffset: 2,
         },
@@ -56,28 +57,28 @@ export function CardAction01() {
       <Box
         component="figure"
         sx={{
-          position: "absolute",
+          position: 'absolute',
           top: 0,
           left: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
           zIndex: 0,
-          "& img": {
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
+          '& img': {
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
           },
         }}
       >
         <img src="https://placehold.co/405x804/transparent/CCC" alt="" />
       </Box>
 
-      <Box sx={{ position: "relative", zIndex: 1 }}>
+      <Box sx={{ position: 'relative', zIndex: 1 }}>
         <Typography
           component="h3"
           gutterBottom
-          sx={{ fontSize: "14px", fontWeight: 600 }}
+          sx={{ fontSize: '14px', fontWeight: 600 }}
         >
           macOS and Apple Intelligence
         </Typography>
@@ -85,8 +86,8 @@ export function CardAction01() {
           variant="h3"
           component="p"
           sx={{
-            fontSize: { xs: "21px", md: "24px", lg: "28px" },
-            textWrap: "pretty",
+            fontSize: { xs: '21px', md: '24px', lg: '28px' },
+            textWrap: 'pretty',
             fontWeight: 600,
           }}
         >
@@ -95,25 +96,25 @@ export function CardAction01() {
         </Typography>
       </Box>
 
-      <Link sx={{ position: "absolute", inset: 0 }} href="#" underline="none">
+      <Link sx={{ position: 'absolute', inset: 0 }} href="#" underline="none">
         <Box
           aria-label="Add"
           sx={{
-            position: "absolute",
+            position: 'absolute',
             bottom: 20,
             right: 20,
             zIndex: 1,
             width: 36,
             height: 36,
-            borderRadius: "50%",
-            bgcolor: "grey.800",
-            color: "common.white",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            borderRadius: '50%',
+            bgcolor: 'grey.800',
+            color: 'common.white',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
-          <AddIcon sx={{ color: "inherit" }} />
+          <AddIcon sx={{ color: 'inherit' }} />
         </Box>
       </Link>
     </Card>

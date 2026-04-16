@@ -1,5 +1,5 @@
-import generateUtilityClass from "@mui/material/generateUtilityClass";
-import generateUtilityClasses from "@mui/material/generateUtilityClasses";
+import generateUtilityClass from '@mui/material/generateUtilityClass';
+import generateUtilityClasses from '@mui/material/generateUtilityClasses';
 
 export interface InfoClasses {
   /** Styles applied to the root element. */
@@ -17,13 +17,13 @@ export interface InfoClasses {
 export type InfoClassKey = keyof typeof infoClasses;
 
 export function getInfoUtilityClass(slot: string) {
-  return generateUtilityClass("JunInfo", slot);
+  return generateUtilityClass('JunInfo', slot);
 }
 
-export const infoClasses: InfoClasses = generateUtilityClasses("JunInfo", [
-  "root",
-  "title",
-  "subtitle",
-  "caption",
-  "eyebrow",
+export const infoClasses: InfoClasses = generateUtilityClasses('JunInfo', [
+  'root',
+  'title',
+  'subtitle',
+  'caption',
+  'eyebrow',
 ]);

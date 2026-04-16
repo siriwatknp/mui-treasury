@@ -1,9 +1,10 @@
-"use client";
+'use client';
 
-import React from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import React from 'react';
+
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 export function CardSysi(props: { style?: React.CSSProperties }) {
   return (
@@ -26,9 +27,9 @@ export function CardSysi(props: { style?: React.CSSProperties }) {
         py={1}
         bgcolor="primary.main"
         sx={(theme) => ({
-          color: "#fff",
-          ...theme.applyStyles("dark", {
-            color: "#212121",
+          color: '#fff',
+          ...theme.applyStyles('dark', {
+            color: '#212121',
           }),
         })}
       >
@@ -41,23 +42,23 @@ export function CardSysi(props: { style?: React.CSSProperties }) {
       <Box display="flex" flexWrap="wrap" gap={1} px={2} pb={2}>
         <Box flex="auto">
           <Button
-            variant={"outlined"}
+            variant={'outlined'}
             size="large"
             fullWidth
             disableElevation
-            sx={{ borderRadius: "40px" }}
+            sx={{ borderRadius: '40px' }}
           >
             อ่านรายละเอียด
           </Button>
         </Box>
         <Box flex="auto">
           <Button
-            variant={"contained"}
-            color={"primary"}
+            variant={'contained'}
+            color={'primary'}
             size="large"
             fullWidth
             disableElevation
-            sx={{ borderRadius: "40px" }}
+            sx={{ borderRadius: '40px' }}
           >
             โหลดใบสมัคร
           </Button>

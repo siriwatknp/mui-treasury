@@ -4,9 +4,9 @@ When a demo showcases responsive behavior (breakpoint-based, auto-collapse, draw
 
 ```tsx
 export const meta = {
-  title: "…",
-  description: "…",
-  previewMode: "iframe" as const,
+  title: '…',
+  description: '…',
+  previewMode: 'iframe' as const,
 };
 
 export function Demo() {

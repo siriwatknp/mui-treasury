@@ -1,45 +1,45 @@
-"use client";
-import React from "react";
+'use client';
+import React from 'react';
 
-import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
-import UnfoldMore from "@mui/icons-material/UnfoldMore";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Fab from "@mui/material/Fab";
-import Grid from "@mui/material/Grid";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import { styled } from "@mui/material/styles";
+import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
+import UnfoldMore from '@mui/icons-material/UnfoldMore';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Fab from '@mui/material/Fab';
+import Grid from '@mui/material/Grid';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material/styles';
 
-import Content from "../layout-core/Content";
-import EdgeDrawerClose from "../layout-core/EdgeDrawerClose";
-import SidebarContent from "../layout-core/EdgeSidebarContent";
+import Content from '../layout-core/Content';
+import EdgeDrawerClose from '../layout-core/EdgeDrawerClose';
+import SidebarContent from '../layout-core/EdgeSidebarContent';
 import EdgeSidebarRight, {
   triggerEdgeDrawerRight,
-} from "../layout-core/EdgeSidebarRight";
-import Footer from "../layout-core/Footer";
-import Header from "../layout-core/Header";
-import InsetAvoidingView from "../layout-core/InsetAvoidingView";
-import InsetContent from "../layout-core/InsetContent";
-import InsetSidebar from "../layout-core/InsetSidebar";
-import Root from "../layout-core/Root";
-import { layoutClasses } from "../layout-core/layoutClasses";
-import { ReactContent, ReactHeader, ReactNextArticle } from "./components";
+} from '../layout-core/EdgeSidebarRight';
+import Footer from '../layout-core/Footer';
+import Header from '../layout-core/Header';
+import InsetAvoidingView from '../layout-core/InsetAvoidingView';
+import InsetContent from '../layout-core/InsetContent';
+import InsetSidebar from '../layout-core/InsetSidebar';
+import Root from '../layout-core/Root';
+import { layoutClasses } from '../layout-core/layoutClasses';
+import { ReactContent, ReactHeader, ReactNextArticle } from './components';
 
 const StyledToolbar = styled(Toolbar)(({ theme: { breakpoints } }) => ({
   minHeight: 60,
 
-  [breakpoints.up("md")]: {
+  [breakpoints.up('md')]: {
     minHeight: 60,
   },
 }));
 const StyledFab = styled(Fab)({
-  position: "fixed",
+  position: 'fixed',
   bottom: 32,
   right: 16,
-  color: "#61dafb",
+  color: '#61dafb',
 
-  "& svg": {
+  '& svg': {
     fontSize: 32,
   },
 });
@@ -54,15 +54,15 @@ const FooterMenu = ({
       {isHeader && <Box mt={5} />}
       <Typography
         sx={{
-          color: "#fff",
+          color: '#fff',
           lineHeight: 2,
           ...(isHeader && {
             opacity: 0.6,
             lineHeight: 3,
-            textTransform: "uppercase",
-            letterSpacing: "0.08em",
+            textTransform: 'uppercase',
+            letterSpacing: '0.08em',
             fontSize: 14,
-            fontWeight: "bold",
+            fontWeight: 'bold',
           }),
         }}
         {...props}
@@ -79,18 +79,18 @@ export function LayoutV6AppReactLegacy() {
           key={i}
           sx={{
             lineHeight: 3,
-            textTransform: "uppercase",
-            letterSpacing: "0.08em",
+            textTransform: 'uppercase',
+            letterSpacing: '0.08em',
             fontSize: 14,
-            fontWeight: "bold",
+            fontWeight: 'bold',
           }}
         >
-          {label}{" "}
+          {label}{' '}
           <KeyboardArrowDown
-            color={"inherit"}
+            color={'inherit'}
             sx={{
-              marginTop: "-2px",
-              verticalAlign: "middle",
+              marginTop: '-2px',
+              verticalAlign: 'middle',
             }}
           />
         </Typography>
@@ -101,7 +101,7 @@ export function LayoutV6AppReactLegacy() {
     <Root>
       <StyledFab
         className={layoutClasses.EdgeDrawerTriggerRight}
-        color={"primary"}
+        color={'primary'}
         onClick={() => {
           triggerEdgeDrawerRight();
         }}
@@ -111,9 +111,9 @@ export function LayoutV6AppReactLegacy() {
       <Header
         height="60px"
         sx={{
-          position: "sticky",
+          position: 'sticky',
           top: 0,
-          bgcolor: "#232323",
+          bgcolor: '#232323',
           zIndex: 1,
         }}
       >
@@ -125,7 +125,7 @@ export function LayoutV6AppReactLegacy() {
       </Header>
       <EdgeSidebarRight
         variant={{
-          xs: ["drawer"],
+          xs: ['drawer'],
         }}
       >
         <EdgeDrawerClose />
@@ -134,26 +134,26 @@ export function LayoutV6AppReactLegacy() {
       <Content>
         <Container>
           <ReactContent />
-          <InsetSidebar position="fixed" width={{ md: "256px" }}>
+          <InsetSidebar position="fixed" width={{ md: '256px' }}>
             <InsetContent>{sidebarContent}</InsetContent>
           </InsetSidebar>
         </Container>
       </Content>
       <Footer>
-        <Box bgcolor={"rgb(40, 44, 52)"}>
+        <Box bgcolor={'rgb(40, 44, 52)'}>
           <Container>
             <InsetAvoidingView>
               <ReactNextArticle />
             </InsetAvoidingView>
           </Container>
         </Box>
-        <Box bgcolor={"#20232a"}>
+        <Box bgcolor={'#20232a'}>
           <Container>
             <InsetAvoidingView>
               <Box pr={{ xs: 0, md: 5 }} pb={5}>
                 <Grid container>
                   <Grid size={{ lg: 4 }}>
-                    <Typography sx={{ mt: "56px", color: "#888" }}>
+                    <Typography sx={{ mt: '56px', color: '#888' }}>
                       Copyright © 2022
                     </Typography>
                   </Grid>
@@ -180,26 +180,26 @@ export function LayoutV6AppReactLegacy() {
 
 const getData = () => [
   [
-    "Docs",
-    "Installation",
-    "Main Concepts",
-    "Advanced Guides",
-    "API Reference",
-    "Hooks",
-    "Testing",
-    "Concurrent Mode",
-    "Contributing",
+    'Docs',
+    'Installation',
+    'Main Concepts',
+    'Advanced Guides',
+    'API Reference',
+    'Hooks',
+    'Testing',
+    'Concurrent Mode',
+    'Contributing',
   ],
   [
-    "Channels",
-    "Github",
-    "Stack Overflow",
-    "Discussion Forums",
-    "Reactiflux Chat",
-    "DEV Community",
-    "Facebook",
-    "Twitter",
+    'Channels',
+    'Github',
+    'Stack Overflow',
+    'Discussion Forums',
+    'Reactiflux Chat',
+    'DEV Community',
+    'Facebook',
+    'Twitter',
   ],
-  ["Community", "Code of Conduct", "Community Resources"],
-  ["More", "Tutorial", "Blog", "Acknowledgements", "React Native"],
+  ['Community', 'Code of Conduct', 'Community Resources'],
+  ['More', 'Tutorial', 'Blog', 'Acknowledgements', 'React Native'],
 ];

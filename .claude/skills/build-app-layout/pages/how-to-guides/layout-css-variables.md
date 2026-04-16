@@ -27,7 +27,7 @@ A non-mui-treasury `Avatar` (e.g. 40px) gets cut off when the sidebar collapses 
 ```tsx
 <Avatar
   sx={{
-    marginLeft: "var(--_collapsed, -8px) var(--_uncollapsed, 0px)",
+    marginLeft: 'var(--_collapsed, -8px) var(--_uncollapsed, 0px)',
   }}
 />
 ```
@@ -42,7 +42,7 @@ A non-mui-treasury `Avatar` (e.g. 40px) gets cut off when the sidebar collapses 
 ```tsx
 // Hide text when collapsed
 <Typography
-  sx={{ display: "var(--_collapsed, none) var(--_uncollapsed, block)" }}
+  sx={{ display: 'var(--_collapsed, none) var(--_uncollapsed, block)' }}
 >
   Label
 </Typography>
@@ -54,8 +54,8 @@ A non-mui-treasury `Avatar` (e.g. 40px) gets cut off when the sidebar collapses 
 // Shrink an icon when collapsed
 <Box
   sx={{
-    width: "var(--_collapsed, 20px) var(--_uncollapsed, 32px)",
-    height: "var(--_collapsed, 20px) var(--_uncollapsed, 32px)",
+    width: 'var(--_collapsed, 20px) var(--_uncollapsed, 32px)',
+    height: 'var(--_collapsed, 20px) var(--_uncollapsed, 32px)',
   }}
 />
 ```
@@ -64,7 +64,7 @@ A non-mui-treasury `Avatar` (e.g. 40px) gets cut off when the sidebar collapses 
 
 ```tsx
 // Remove gap when collapsed
-<Stack sx={{ gap: "var(--_collapsed, 0px) var(--_uncollapsed, 8px)" }}>
+<Stack sx={{ gap: 'var(--_collapsed, 0px) var(--_uncollapsed, 8px)' }}>
   ...
 </Stack>
 ```
@@ -80,5 +80,5 @@ A non-mui-treasury `Avatar` (e.g. 40px) gets cut off when the sidebar collapses 
 Set `--tsn: none` on the Root to disable all transitions:
 
 ```tsx
-<Root sx={{ "--tsn": "none" }}>...</Root>
+<Root sx={{ '--tsn': 'none' }}>...</Root>
 ```

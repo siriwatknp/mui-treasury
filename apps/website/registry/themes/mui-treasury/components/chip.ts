@@ -2,10 +2,10 @@ import {
   CONTROL_HEIGHTS,
   CONTROL_TOUCH_HEIGHTS,
   TOUCH_MEDIA_QUERY,
-} from "../scales";
-import { ThemeComponents } from "../types";
+} from '../scales';
+import { ThemeComponents } from '../types';
 
-declare module "@mui/material/Chip" {
+declare module '@mui/material/Chip' {
   interface ChipPropsSizeOverrides {
     large: true;
   }
@@ -15,18 +15,18 @@ export const chipTheme: ThemeComponents = {
   MuiChip: {
     styleOverrides: {
       root: ({ theme }) => ({
-        height: "initial",
+        height: 'initial',
         borderRadius: 6,
         fontWeight: 400,
         fontSize: theme.typography.body2.fontSize,
-        "&.Mui-focusVisible": {
-          outline: "2px solid",
+        '&.Mui-focusVisible': {
+          outline: '2px solid',
           outlineColor: (theme.vars || theme).palette.text.primary,
-          outlineOffset: "2px",
+          outlineOffset: '2px',
         },
         variants: [
           {
-            props: { size: "small" },
+            props: { size: 'small' },
             style: {
               lineHeight: 1.4285714286,
               paddingBlock: CONTROL_HEIGHTS.sm / 2 - 14.5,
@@ -38,7 +38,7 @@ export const chipTheme: ThemeComponents = {
             },
           },
           {
-            props: { size: "small", variant: "outlined" },
+            props: { size: 'small', variant: 'outlined' },
             style: {
               lineHeight: 1.4285714286,
               paddingBlock: CONTROL_HEIGHTS.sm / 2 - 15.5,
@@ -50,7 +50,7 @@ export const chipTheme: ThemeComponents = {
             },
           },
           {
-            props: { size: "medium" },
+            props: { size: 'medium' },
             style: {
               paddingBlock: CONTROL_HEIGHTS.md / 2 - 16,
               ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
@@ -61,7 +61,7 @@ export const chipTheme: ThemeComponents = {
             },
           },
           {
-            props: { size: "medium", variant: "outlined" },
+            props: { size: 'medium', variant: 'outlined' },
             style: {
               paddingBlock: CONTROL_HEIGHTS.md / 2 - 17,
               ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
@@ -72,7 +72,7 @@ export const chipTheme: ThemeComponents = {
             },
           },
           {
-            props: { size: "large" },
+            props: { size: 'large' },
             style: {
               paddingBlock: CONTROL_HEIGHTS.lg / 2 - 17,
               ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
@@ -83,7 +83,7 @@ export const chipTheme: ThemeComponents = {
             },
           },
           {
-            props: { size: "large", variant: "outlined" },
+            props: { size: 'large', variant: 'outlined' },
             style: {
               paddingBlock: CONTROL_HEIGHTS.lg / 2 - 18,
               ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
@@ -94,52 +94,52 @@ export const chipTheme: ThemeComponents = {
             },
           },
           {
-            props: { variant: "outlined", color: "primary" },
+            props: { variant: 'outlined', color: 'primary' },
             style: {
               color: (theme.vars || theme).palette.primary.text,
             },
           },
           {
-            props: { variant: "outlined", color: "secondary" },
+            props: { variant: 'outlined', color: 'secondary' },
             style: {
               color: (theme.vars || theme).palette.secondary.text,
             },
           },
           {
-            props: { variant: "outlined", color: "success" },
+            props: { variant: 'outlined', color: 'success' },
             style: {
               color: (theme.vars || theme).palette.success.text,
             },
           },
           {
-            props: { variant: "outlined", color: "error" },
+            props: { variant: 'outlined', color: 'error' },
             style: {
               color: (theme.vars || theme).palette.error.text,
             },
           },
           {
-            props: { variant: "outlined", color: "warning" },
+            props: { variant: 'outlined', color: 'warning' },
             style: {
               color: (theme.vars || theme).palette.warning.text,
             },
           },
           {
-            props: { variant: "outlined", color: "info" },
+            props: { variant: 'outlined', color: 'info' },
             style: {
               color: (theme.vars || theme).palette.info.text,
             },
           },
           // Filled variant for success, error, warning, info
           {
-            props: { variant: "filled" },
+            props: { variant: 'filled' },
             style: {
-              ...theme.applyStyles("dark", {
-                "--_p": "60%",
+              ...theme.applyStyles('dark', {
+                '--_p': '60%',
               }),
             },
           },
           {
-            props: { variant: "filled", color: "success" },
+            props: { variant: 'filled', color: 'success' },
             style: {
               color: `color-mix(in oklch, ${
                 (theme.vars || theme).palette.success.text
@@ -152,7 +152,7 @@ export const chipTheme: ThemeComponents = {
             },
           },
           {
-            props: { variant: "filled", color: "error" },
+            props: { variant: 'filled', color: 'error' },
             style: {
               color: `color-mix(in oklch, ${
                 (theme.vars || theme).palette.error.text
@@ -165,7 +165,7 @@ export const chipTheme: ThemeComponents = {
             },
           },
           {
-            props: { variant: "filled", color: "warning" },
+            props: { variant: 'filled', color: 'warning' },
             style: {
               color: `color-mix(in oklch, ${
                 (theme.vars || theme).palette.warning.text
@@ -178,7 +178,7 @@ export const chipTheme: ThemeComponents = {
             },
           },
           {
-            props: { variant: "filled", color: "info" },
+            props: { variant: 'filled', color: 'info' },
             style: {
               color: `color-mix(in oklch, ${
                 (theme.vars || theme).palette.info.text
@@ -193,8 +193,8 @@ export const chipTheme: ThemeComponents = {
           {
             props: { clickable: true },
             style: {
-              "&:active": {
-                transform: "scale(0.98)",
+              '&:active': {
+                transform: 'scale(0.98)',
               },
             },
           },
@@ -203,7 +203,7 @@ export const chipTheme: ThemeComponents = {
       label: {
         variants: [
           {
-            props: { size: "medium" },
+            props: { size: 'medium' },
             style: {
               paddingInline: CONTROL_HEIGHTS.md / 2 - 8,
             },
@@ -211,27 +211,27 @@ export const chipTheme: ThemeComponents = {
         ],
       },
       icon: {
-        fontSize: "1.125rem",
+        fontSize: '1.125rem',
         variants: [
           {
-            props: { size: "small" },
+            props: { size: 'small' },
             style: {
-              fontSize: "1rem",
+              fontSize: '1rem',
             },
           },
         ],
       },
       deleteIcon: ({ theme }) => ({
-        fontSize: "1lh",
-        "&:active": {
-          transform: "scale(0.97)",
+        fontSize: '1lh',
+        '&:active': {
+          transform: 'scale(0.97)',
         },
         variants: [
           {
-            props: { color: "default" },
+            props: { color: 'default' },
             style: {
               color: (theme.vars || theme).palette.text.icon,
-              "&:hover": {
+              '&:hover': {
                 color: (theme.vars || theme).palette.text.secondary,
               },
             },

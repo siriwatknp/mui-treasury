@@ -3,6 +3,7 @@
 ## Work Summary
 
 ### Implementation Details
+
 - Created a PayrollSummaryCard component matching the mockup design
 - Used MUI Card with CardContent for the container structure
 - Implemented a PieChart from @mui/x-charts with donut configuration (innerRadius: 60, outerRadius: 90)
@@ -17,13 +18,16 @@
 ## Visual Design Analysis
 
 ### Container Structure
+
 The component is a card with subtle rounded corners containing:
+
 1. Header section with title and dropdown
 2. Subtitle with date range
 3. Main content area with donut chart and payment details
 4. Bottom action button
 
 ### Key Components
+
 - **Card container**: Provides the outer boundary with subtle shadow
 - **Typography**: Title "Payroll Summary" and subtitle "From 1-31 March, 2022"
 - **Select/Dropdown**: "Last 30 days" with dropdown indicator
@@ -34,14 +38,16 @@ The component is a card with subtle rounded corners containing:
 ### Theme Mapping
 
 #### Palette Colors
+
 - Primary blue segment: ~54% of donut
 - Light purple segment: Secondary data
-- Cyan segment: Third data point  
+- Cyan segment: Third data point
 - Dark navy segment: Fourth data point
 - Text: Primary text for title, secondary for subtitle
 - Background: Card uses standard paper background
 
 #### Typography
+
 - Title: Large heading (h5 or h6)
 - Subtitle: Body2 with secondary text color
 - Payment labels: Caption or body2
@@ -49,6 +55,7 @@ The component is a card with subtle rounded corners containing:
 - Button text: Button typography
 
 #### Spacing & Layout
+
 - Card padding: 3 units
 - Section spacing: 2-3 units between major sections
 - Payment items: 2x2 grid with 2 unit gap
@@ -56,6 +63,7 @@ The component is a card with subtle rounded corners containing:
 - Button border radius: Pill-shaped (99)
 
 ### Layout Structure
+
 - Header: Flexbox row with space-between
 - Chart section: Centered donut chart
 - Payment grid: CSS Grid 2x2
@@ -120,6 +128,7 @@ The component is a card with subtle rounded corners containing:
    - Payment relationships must be clear
 
 ### MUI Component Accessibility
+
 - Select component includes built-in keyboard navigation
 - Button component has proper ARIA attributes
 - Card provides semantic container structure

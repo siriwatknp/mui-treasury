@@ -1,12 +1,13 @@
-"use client";
+'use client';
 
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import type { UIMessage } from "ai";
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import { memo, type ComponentProps, type ReactElement } from "react";
-import { createContext, useContext, useEffect, useState } from "react";
+import { type ComponentProps, type ReactElement, memo } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import type { UIMessage } from 'ai';
+import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 
 type BranchContextType = {
   currentBranch: number;
@@ -23,7 +24,7 @@ const useBranch = () => {
   const context = useContext(BranchContext);
 
   if (!context) {
-    throw new Error("Branch components must be used within Branch");
+    throw new Error('Branch components must be used within Branch');
   }
 
   return context;
@@ -74,10 +75,10 @@ export const Branch = ({
     <BranchContext.Provider value={contextValue}>
       <Box
         sx={{
-          display: "grid",
-          width: "100%",
+          display: 'grid',
+          width: '100%',
           gap: 1,
-          "& > div": {
+          '& > div': {
             pb: 0,
           },
           ...sx,
@@ -110,10 +111,10 @@ export const BranchMessages = ({
   return childrenArray.map((branch, index) => (
     <Box
       sx={{
-        display: index === currentBranch ? "grid" : "none",
+        display: index === currentBranch ? 'grid' : 'none',
         gap: 1,
-        overflow: "hidden",
-        "& > div": {
+        overflow: 'hidden',
+        '& > div': {
           pb: 0,
         },
         ...sx,
@@ -127,7 +128,7 @@ export const BranchMessages = ({
 };
 
 export type BranchSelectorProps = ComponentProps<typeof Box> & {
-  from: UIMessage["role"];
+  from: UIMessage['role'];
 };
 
 export const BranchSelector = memo(
@@ -142,12 +143,12 @@ export const BranchSelector = memo(
     return (
       <Box
         sx={{
-          display: "flex",
-          alignItems: "center",
+          display: 'flex',
+          alignItems: 'center',
           gap: 1,
-          alignSelf: "end",
+          alignSelf: 'end',
           px: 5,
-          justifyContent: from === "assistant" ? "flex-start" : "flex-end",
+          justifyContent: from === 'assistant' ? 'flex-start' : 'flex-end',
           ...sx,
         }}
         {...props}
@@ -158,7 +159,7 @@ export const BranchSelector = memo(
   },
 );
 
-BranchSelector.displayName = "BranchSelector";
+BranchSelector.displayName = 'BranchSelector';
 
 export type BranchPreviousProps = ComponentProps<typeof IconButton>;
 
@@ -175,16 +176,16 @@ export const BranchPrevious = ({
       sx={{
         width: 28,
         height: 28,
-        borderRadius: "50%",
-        color: "text.secondary",
-        transition: "all 0.2s",
-        "&:hover": {
-          bgcolor: "action.hover",
-          color: "text.primary",
+        borderRadius: '50%',
+        color: 'text.secondary',
+        transition: 'all 0.2s',
+        '&:hover': {
+          bgcolor: 'action.hover',
+          color: 'text.primary',
         },
-        "&:disabled": {
+        '&:disabled': {
           opacity: 0.5,
-          pointerEvents: "none",
+          pointerEvents: 'none',
         },
         ...sx,
       }}
@@ -210,16 +211,16 @@ export const BranchNext = ({ children, sx, ...props }: BranchNextProps) => {
       sx={{
         width: 28,
         height: 28,
-        borderRadius: "50%",
-        color: "text.secondary",
-        transition: "all 0.2s",
-        "&:hover": {
-          bgcolor: "action.hover",
-          color: "text.primary",
+        borderRadius: '50%',
+        color: 'text.secondary',
+        transition: 'all 0.2s',
+        '&:hover': {
+          bgcolor: 'action.hover',
+          color: 'text.primary',
         },
-        "&:disabled": {
+        '&:disabled': {
           opacity: 0.5,
-          pointerEvents: "none",
+          pointerEvents: 'none',
         },
         ...sx,
       }}
@@ -245,8 +246,8 @@ export const BranchPage = ({ sx, ...props }: BranchPageProps) => {
       variant="caption"
       sx={{
         fontWeight: 500,
-        color: "text.secondary",
-        fontVariantNumeric: "tabular-nums",
+        color: 'text.secondary',
+        fontVariantNumeric: 'tabular-nums',
         ...sx,
       }}
       {...props}

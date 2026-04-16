@@ -1,23 +1,23 @@
-import { ThemeComponents } from "../types";
+import { ThemeComponents } from '../types';
 
 export const dialogTheme: ThemeComponents = {
   MuiDialog: {
     styleOverrides: {
       root: ({ theme }) => ({
-        "--_spacing-row": "16px",
-        "--_spacing-col": "20px",
-        "--_edge": "16px",
-        [theme.breakpoints.up("md")]: {
-          "--_spacing-row": "20px",
-          "--_spacing-col": "24px",
+        '--_spacing-row': '16px',
+        '--_spacing-col': '20px',
+        '--_edge': '16px',
+        [theme.breakpoints.up('md')]: {
+          '--_spacing-row': '20px',
+          '--_spacing-col': '24px',
         },
       }),
       paper: ({ theme }) => ({
-        "&:not(.MuiDialog-paperFullScreen)": {
+        '&:not(.MuiDialog-paperFullScreen)': {
           borderRadius: theme.shape.borderRadius,
           boxShadow: theme.shadows[8],
-          width: "calc(100% - var(--_edge))",
-          margin: "var(--_edge)",
+          width: 'calc(100% - var(--_edge))',
+          margin: 'var(--_edge)',
         },
       }),
     },
@@ -25,8 +25,8 @@ export const dialogTheme: ThemeComponents = {
   MuiDialogTitle: {
     styleOverrides: {
       root: {
-        padding: "var(--_spacing-row) var(--_spacing-col)",
-        fontSize: "1.25rem",
+        padding: 'var(--_spacing-row) var(--_spacing-col)',
+        fontSize: '1.25rem',
         fontWeight: 500,
       },
     },
@@ -34,12 +34,12 @@ export const dialogTheme: ThemeComponents = {
   MuiDialogContent: {
     styleOverrides: {
       root: {
-        padding: "0 var(--_spacing-col) var(--_spacing-row)",
+        padding: '0 var(--_spacing-col) var(--_spacing-row)',
       },
       dividers: ({ theme }) => ({
-        padding: "var(--_spacing-row) var(--_spacing-col)",
-        borderTop: "1px solid",
-        borderBottom: "1px solid",
+        padding: 'var(--_spacing-row) var(--_spacing-col)',
+        borderTop: '1px solid',
+        borderBottom: '1px solid',
         borderColor: (theme.vars || theme).palette.divider,
       }),
     },
@@ -50,10 +50,10 @@ export const dialogTheme: ThemeComponents = {
     },
     styleOverrides: {
       root: {
-        padding: "0px var(--_spacing-col) var(--_spacing-row)",
+        padding: '0px var(--_spacing-col) var(--_spacing-row)',
         gap: 8,
-        ".MuiDialogContent-dividers + &": {
-          paddingTop: "var(--_spacing-row)",
+        '.MuiDialogContent-dividers + &': {
+          paddingTop: 'var(--_spacing-row)',
         },
       },
     },

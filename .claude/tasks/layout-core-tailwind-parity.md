@@ -296,7 +296,7 @@ Tailwind's drawer close handler also checks for clicks on `DrawerEdgeSidebarClos
 ```js
 // Tailwind
 function handleClick(event) {
-  const closeBtn = doc.querySelector(".jun-edgeDrawerClose");
+  const closeBtn = doc.querySelector('.jun-edgeDrawerClose');
   if (
     event.target === sidebar ||
     (closeBtn && closeBtn.contains(event.target))
@@ -319,13 +319,13 @@ MUI Right persistent sidebar uses `--jun-ES-permanentSlide` for slide animation.
 Tailwind supports shadcn-ui sidebar `data-state="collapsed"` and `data-collapsible="icon"|"offcanvas"`:
 
 ```css
-.Root:has(> & [data-state="collapsed"]) {
+.Root:has(> & [data-state='collapsed']) {
   --jun-ES-collapsible: var(--collapsed);
 }
-.Root:has(> & [data-collapsible="icon"]) {
+.Root:has(> & [data-collapsible='icon']) {
   --jun-ES-collapsedWidth: var(--sidebar-width-icon);
 }
-.Root:has(> & [data-collapsible="offcanvas"]) {
+.Root:has(> & [data-collapsible='offcanvas']) {
   --jun-ES-collapsedWidth: 0px;
 }
 ```

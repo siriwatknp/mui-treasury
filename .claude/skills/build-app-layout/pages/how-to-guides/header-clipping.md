@@ -5,7 +5,7 @@ Use the `clip` prop on `Header` to make it span over the sidebar, giving the sid
 ```tsx
 <Root>
   <Header clip="left">…</Header>
-  <EdgeSidebar id="sidebar" variant={["permanent", { width: "256px" }]}>
+  <EdgeSidebar id="sidebar" variant={['permanent', { width: '256px' }]}>
     …
   </EdgeSidebar>
   <Content>…</Content>

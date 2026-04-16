@@ -1,8 +1,9 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
+import * as React from 'react';
+
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
 
 export function TabsChip01() {
   const [value, setValue] = React.useState(0);
@@ -16,51 +17,51 @@ export function TabsChip01() {
       value={value}
       onChange={handleChange}
       sx={(theme) => ({
-        minHeight: "auto",
+        minHeight: 'auto',
         gap: 0.5,
-        "& .MuiTabs-indicator": {
-          display: "none",
+        '& .MuiTabs-indicator': {
+          display: 'none',
         },
-        "& .MuiTabs-flexContainer": {
+        '& .MuiTabs-flexContainer': {
           gap: 0.5,
         },
-        "& .MuiTab-root": {
-          minHeight: "auto",
-          minWidth: "auto",
+        '& .MuiTab-root': {
+          minHeight: 'auto',
+          minWidth: 'auto',
           px: 3,
           py: 1,
           borderRadius: 99,
           fontWeight: 500,
-          textTransform: "none",
-          color: "text.secondary",
+          textTransform: 'none',
+          color: 'text.secondary',
           bgcolor: (theme.vars || theme).palette.grey[100],
-          "@media (hover: hover)": {
-            "&:hover": {
+          '@media (hover: hover)': {
+            '&:hover': {
               bgcolor: (theme.vars || theme).palette.grey[200],
             },
           },
-          "&.Mui-selected": {
-            color: "primary.contrastText",
-            bgcolor: "primary.main",
-            "@media (hover: hover)": {
-              "&:hover": {
-                bgcolor: "primary.dark",
+          '&.Mui-selected': {
+            color: 'primary.contrastText',
+            bgcolor: 'primary.main',
+            '@media (hover: hover)': {
+              '&:hover': {
+                bgcolor: 'primary.dark',
               },
             },
           },
-          ...theme.applyStyles("dark", {
+          ...theme.applyStyles('dark', {
             bgcolor: (theme.vars || theme).palette.grey[800],
-            "@media (hover: hover)": {
-              "&:hover": {
+            '@media (hover: hover)': {
+              '&:hover': {
                 bgcolor: (theme.vars || theme).palette.grey[700],
               },
             },
-            "&.Mui-selected": {
-              color: "primary.contrastText",
-              bgcolor: "primary.main",
-              "@media (hover: hover)": {
-                "&:hover": {
-                  bgcolor: "primary.dark",
+            '&.Mui-selected': {
+              color: 'primary.contrastText',
+              bgcolor: 'primary.main',
+              '@media (hover: hover)': {
+                '&:hover': {
+                  bgcolor: 'primary.dark',
                 },
               },
             },

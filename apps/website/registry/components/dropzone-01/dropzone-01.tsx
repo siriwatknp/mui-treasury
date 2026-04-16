@@ -1,21 +1,22 @@
-"use client";
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import CloudUploadOutlinedIcon from "@mui/icons-material/CloudUploadOutlined";
-import InsertDriveFileOutlinedIcon from "@mui/icons-material/InsertDriveFileOutlined";
-import CloseIcon from "@mui/icons-material/Close";
-import { useDropzone, FileRejection, DropzoneOptions } from "react-dropzone";
+'use client';
+import * as React from 'react';
+import { DropzoneOptions, FileRejection, useDropzone } from 'react-dropzone';
+
+import CloseIcon from '@mui/icons-material/Close';
+import CloudUploadOutlinedIcon from '@mui/icons-material/CloudUploadOutlined';
+import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined';
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Typography from '@mui/material/Typography';
 
 function formatFileSize(bytes: number): string {
-  if (bytes === 0) return "0 B";
+  if (bytes === 0) return '0 B';
   const k = 1024;
-  const sizes = ["B", "KB", "MB", "GB"];
+  const sizes = ['B', 'KB', 'MB', 'GB'];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
   return `${parseFloat((bytes / Math.pow(k, i)).toFixed(1))} ${sizes[i]}`;
 }
@@ -24,8 +25,10 @@ export interface DropzoneFile extends File {
   preview?: string;
 }
 
-export interface Dropzone01Props
-  extends Omit<DropzoneOptions, "onDrop" | "onDropAccepted"> {
+export interface Dropzone01Props extends Omit<
+  DropzoneOptions,
+  'onDrop' | 'onDropAccepted'
+> {
   value?: DropzoneFile[];
   onChange?: (files: DropzoneFile[]) => void;
   onReject?: (rejections: FileRejection[]) => void;
@@ -36,7 +39,7 @@ export function Dropzone01({
   value = [],
   onChange,
   onReject,
-  helperText = "PNG, JPG, PDF up to 10MB",
+  helperText = 'PNG, JPG, PDF up to 10MB',
   accept,
   maxSize = 10 * 1024 * 1024,
   maxFiles,
@@ -47,7 +50,7 @@ export function Dropzone01({
     (acceptedFiles: File[], rejections: FileRejection[]) => {
       const newFiles = acceptedFiles.map((file) =>
         Object.assign(file, {
-          preview: file.type.startsWith("image/")
+          preview: file.type.startsWith('image/')
             ? URL.createObjectURL(file)
             : undefined,
         }),
@@ -86,44 +89,44 @@ export function Dropzone01({
   });
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: '100%' }}>
       <Box
         {...getRootProps()}
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
           gap: 1,
           p: 4,
           borderRadius: 2,
-          border: "2px dashed",
-          borderColor: "divider",
-          bgcolor: "background.paper",
-          cursor: disabled ? "not-allowed" : "pointer",
+          border: '2px dashed',
+          borderColor: 'divider',
+          bgcolor: 'background.paper',
+          cursor: disabled ? 'not-allowed' : 'pointer',
           opacity: disabled ? 0.6 : 1,
-          transition: "all 0.2s ease-in-out",
-          outline: "none",
+          transition: 'all 0.2s ease-in-out',
+          outline: 'none',
           ...(isFocused && {
-            borderColor: "primary.main",
-            bgcolor: "action.hover",
+            borderColor: 'primary.main',
+            bgcolor: 'action.hover',
           }),
           ...(isDragActive && {
-            borderColor: "primary.main",
-            bgcolor: "action.hover",
+            borderColor: 'primary.main',
+            bgcolor: 'action.hover',
           }),
           ...(isDragAccept && {
-            borderColor: "success.main",
-            bgcolor: "success.softBg",
+            borderColor: 'success.main',
+            bgcolor: 'success.softBg',
           }),
           ...(isDragReject && {
-            borderColor: "error.main",
-            bgcolor: "error.softBg",
+            borderColor: 'error.main',
+            bgcolor: 'error.softBg',
           }),
-          "@media (hover: hover)": {
-            "&:hover": {
-              borderColor: disabled ? "divider" : "primary.main",
-              bgcolor: disabled ? "background.paper" : "action.hover",
+          '@media (hover: hover)': {
+            '&:hover': {
+              borderColor: disabled ? 'divider' : 'primary.main',
+              bgcolor: disabled ? 'background.paper' : 'action.hover',
             },
           },
         }}
@@ -133,18 +136,18 @@ export function Dropzone01({
           sx={{
             fontSize: 48,
             color: isDragReject
-              ? "error.main"
+              ? 'error.main'
               : isDragAccept
-                ? "success.main"
-                : "text.icon",
+                ? 'success.main'
+                : 'text.icon',
           }}
         />
         <Typography variant="body1" color="text.secondary" textAlign="center">
           {isDragActive
             ? isDragReject
-              ? "Some files will be rejected"
-              : "Drop files here"
-            : "Drag & drop files here, or click to browse"}
+              ? 'Some files will be rejected'
+              : 'Drop files here'
+            : 'Drag & drop files here, or click to browse'}
         </Typography>
         {helperText && (
           <Typography variant="body2" color="text.disabled">
@@ -169,10 +172,10 @@ export function Dropzone01({
                 </IconButton>
               }
               sx={{
-                bgcolor: "action.hover",
+                bgcolor: 'action.hover',
                 borderRadius: 1,
                 mb: 0.5,
-                "&:last-child": { mb: 0 },
+                '&:last-child': { mb: 0 },
               }}
             >
               <ListItemIcon sx={{ minWidth: 36 }}>
@@ -184,7 +187,7 @@ export function Dropzone01({
                     sx={{
                       width: 24,
                       height: 24,
-                      objectFit: "cover",
+                      objectFit: 'cover',
                       borderRadius: 0.5,
                     }}
                   />
@@ -201,7 +204,7 @@ export function Dropzone01({
                     sx: { fontWeight: 500 },
                   },
                   secondary: {
-                    sx: { fontSize: "0.75rem" },
+                    sx: { fontSize: '0.75rem' },
                   },
                 }}
               />

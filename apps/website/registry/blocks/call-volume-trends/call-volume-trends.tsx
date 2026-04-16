@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { Box, Card, Stack, Typography } from "@mui/material";
-import { LineChart } from "@mui/x-charts/LineChart";
+import { Box, Card, Stack, Typography } from '@mui/material';
+import { LineChart } from '@mui/x-charts/LineChart';
 
 export function CallVolumeTrends() {
   const timePoints = [
-    "00:00",
-    "02:00",
-    "04:00",
-    "06:00",
-    "08:00",
-    "10:00",
-    "11:59",
+    '00:00',
+    '02:00',
+    '04:00',
+    '06:00',
+    '08:00',
+    '10:00',
+    '11:59',
   ];
 
   const todayData = [520, 510, 490, 510, 540, 580, 573];
@@ -25,11 +25,11 @@ export function CallVolumeTrends() {
       }}
     >
       <Stack spacing={3}>
-        <Typography variant="h6" sx={{ color: "text.secondary" }}>
+        <Typography variant="h6" sx={{ color: 'text.secondary' }}>
           Call Volume Trends
         </Typography>
 
-        <Box sx={{ display: "flex", flexDirection: "row", gap: 4 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'row', gap: 4 }}>
           <Stack spacing={1.5}>
             <Box>
               <Stack direction="row" spacing={1} alignItems="center" mb={0.5}>
@@ -38,10 +38,10 @@ export function CallVolumeTrends() {
                     width: 14,
                     height: 14,
                     borderRadius: 0.5,
-                    bgcolor: "#2196f3",
+                    bgcolor: '#2196f3',
                   }}
                 />
-                <Typography variant="body2" sx={{ color: "text.primary" }}>
+                <Typography variant="body2" sx={{ color: 'text.primary' }}>
                   Today
                 </Typography>
               </Stack>
@@ -49,7 +49,7 @@ export function CallVolumeTrends() {
                 variant="h3"
                 sx={{
                   fontWeight: 600,
-                  fontSize: "3rem",
+                  fontSize: '3rem',
                   lineHeight: 1.2,
                 }}
               >
@@ -64,10 +64,10 @@ export function CallVolumeTrends() {
                     width: 14,
                     height: 14,
                     borderRadius: 0.5,
-                    bgcolor: "grey.400",
+                    bgcolor: 'grey.400',
                   }}
                 />
-                <Typography variant="body2" sx={{ color: "text.primary" }}>
+                <Typography variant="body2" sx={{ color: 'text.primary' }}>
                   Yesterday
                 </Typography>
               </Stack>
@@ -75,7 +75,7 @@ export function CallVolumeTrends() {
                 variant="h3"
                 sx={{
                   fontWeight: 600,
-                  fontSize: "3rem",
+                  fontSize: '3rem',
                   lineHeight: 1.2,
                 }}
               >
@@ -84,36 +84,36 @@ export function CallVolumeTrends() {
             </Box>
           </Stack>
 
-          <Box sx={{ position: "relative", mt: 1 }}>
+          <Box sx={{ position: 'relative', mt: 1 }}>
             <LineChart
               height={160}
               series={[
                 {
                   data: todayData,
-                  color: "#2196f3",
-                  curve: "monotoneX",
+                  color: '#2196f3',
+                  curve: 'monotoneX',
                   showMark: false,
                 },
                 {
                   data: yesterdayData,
-                  color: "#9e9e9e",
-                  curve: "monotoneX",
+                  color: '#9e9e9e',
+                  curve: 'monotoneX',
                   showMark: false,
                 },
               ]}
               xAxis={[
                 {
-                  position: "bottom",
+                  position: 'bottom',
                   data: timePoints,
-                  scaleType: "point",
+                  scaleType: 'point',
                   disableTicks: true,
                   disableLine: true,
-                  tickLabelPlacement: "middle",
+                  tickLabelPlacement: 'middle',
                 },
               ]}
               yAxis={[
                 {
-                  position: "none",
+                  position: 'none',
                 },
               ]}
               margin={{
@@ -123,17 +123,17 @@ export function CallVolumeTrends() {
                 bottom: 40,
               }}
               sx={{
-                ".MuiLineElement-root": {
+                '.MuiLineElement-root': {
                   strokeWidth: 2.5,
                 },
-                ".MuiChartsAxis-tickLabel": {
-                  display: "none",
+                '.MuiChartsAxis-tickLabel': {
+                  display: 'none',
                 },
-                ".MuiChartsAxis-line": {
-                  stroke: "transparent",
+                '.MuiChartsAxis-line': {
+                  stroke: 'transparent',
                 },
-                ".MuiChartsAxis-tick": {
-                  display: "none",
+                '.MuiChartsAxis-tick': {
+                  display: 'none',
                 },
               }}
             />
@@ -141,7 +141,7 @@ export function CallVolumeTrends() {
               direction="row"
               justifyContent="space-between"
               sx={{
-                position: "absolute",
+                position: 'absolute',
                 bottom: 10,
                 left: 10,
                 right: 10,
@@ -149,13 +149,13 @@ export function CallVolumeTrends() {
             >
               <Typography
                 variant="body2"
-                sx={{ color: "text.secondary", fontSize: "0.875rem" }}
+                sx={{ color: 'text.secondary', fontSize: '0.875rem' }}
               >
                 0:00 AM
               </Typography>
               <Typography
                 variant="body2"
-                sx={{ color: "text.secondary", fontSize: "0.875rem" }}
+                sx={{ color: 'text.secondary', fontSize: '0.875rem' }}
               >
                 11:59 AM
               </Typography>

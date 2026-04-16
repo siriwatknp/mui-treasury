@@ -3,9 +3,11 @@
 ## Visual Design Analysis
 
 ### Container Structure
+
 The component presents a horizontal card layout with two distinct information sections, divided by a subtle vertical separator.
 
 ### Ascii Mockup Representation
+
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
 │                                                                      │
@@ -17,6 +19,7 @@ The component presents a horizontal card layout with two distinct information se
 ```
 
 ### Key Components
+
 - **Primary Purpose**: Display financial overview with two key metrics
 - **MUI Component Mapping**:
   - Container: `Card` with horizontal layout
@@ -25,14 +28,15 @@ The component presents a horizontal card layout with two distinct information se
   - Divider: `Divider` component with vertical orientation
 
 ### Theme Mapping
-- **Palette Colors**: 
+
+- **Palette Colors**:
   - Primary color for icons (blue-tinted)
   - Text primary for main values
   - Text secondary for labels
 - **Typography**:
   - Labels: Small size (caption or body2), secondary color
   - Values: Large size (h4 or h5), primary color
-- **Spacing**: 
+- **Spacing**:
   - Padding: 3 units for card
   - Gap between sections: 3-4 units
   - Icon to text spacing: 1.5 units
@@ -40,8 +44,9 @@ The component presents a horizontal card layout with two distinct information se
 - **Border Radius**: Standard theme radius (1-2 units)
 
 ### Layout
+
 - **Structure**: Flexbox with row direction
-- **Alignment**: 
+- **Alignment**:
   - Two equal sections with center divider
   - Icons and text vertically aligned at top
   - Horizontal spacing between icon and text content
@@ -81,6 +86,7 @@ The component presents a horizontal card layout with two distinct information se
    - Divider includes proper ARIA role
 
 ### Specific Recommendations:
+
 - Add `role="region"` with aria-label for each section
 - Use MUI's built-in focus management
 - Ensure date format is screen-reader friendly
@@ -89,6 +95,7 @@ The component presents a horizontal card layout with two distinct information se
 ## Implementation Notes
 
 ## Work Summary
+
 - Created payment overview card component with horizontal layout
 - Implemented two sections separated by vertical divider
 - Added custom bar chart icons using Box components with opacity variations

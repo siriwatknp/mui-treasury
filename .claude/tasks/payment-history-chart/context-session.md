@@ -3,32 +3,39 @@
 ## Visual Design Analysis
 
 ### Container Structure
+
 The mockup shows a card-based payment history component with:
+
 - Card with subtle border and rounded corners
 - Horizontal padding and vertical spacing
 - Light background color
 
 ### Header Section
+
 - "Payment History" title aligned to the left
 - Time period toggles (1M, 3M, 6M, 1Y) aligned to the right
 - Clear visual hierarchy between title and controls
 
 ### Metrics Section
+
 - Large primary amount display ($12,135.69)
 - Percentage change indicator with success color (+23%)
 - Comparison text ("vs last month") in secondary text color
 
 ### Date Display
+
 - Centered date text (Tuesday, Feb 15, 2022)
 - Clear spacing above and below
 
 ### Revenue Pill
+
 - Contained chip/pill with dollar sign icon
 - "Revenue" label with amount ($4,251)
 - Blue/primary color scheme
 - Positioned as a tooltip/callout on the chart
 
 ### Chart Area
+
 - Line chart with filled area underneath
 - Green/success color for positive trend
 - Smooth curved line

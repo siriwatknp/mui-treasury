@@ -1,11 +1,12 @@
-"use client";
+'use client';
 
-import React from "react";
-import Avatar from "@mui/material/Avatar";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Divider from "@mui/material/Divider";
+import React from 'react';
+
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Divider from '@mui/material/Divider';
 
 export function CardProfile() {
   return (
@@ -13,25 +14,25 @@ export function CardProfile() {
       sx={(theme) => ({
         borderRadius: 1.5,
         minWidth: 256,
-        textAlign: "center",
+        textAlign: 'center',
         boxShadow: (theme.vars || theme).shadows[8],
       })}
     >
       <CardContent>
         <Avatar
-          src={"https://i.pravatar.cc/300"}
+          src={'https://i.pravatar.cc/300'}
           sx={{
             width: 60,
             height: 60,
-            margin: "auto",
+            margin: 'auto',
           }}
         />
         <Box
           component="h3"
           sx={{
             fontSize: 18,
-            fontWeight: "bold",
-            letterSpacing: "0.5px",
+            fontWeight: 'bold',
+            letterSpacing: '0.5px',
             mt: 1,
             mb: 0,
           }}
@@ -42,8 +43,8 @@ export function CardProfile() {
           component="span"
           sx={{
             fontSize: 14,
-            color: "grey.500",
-            mb: "0.875em",
+            color: 'grey.500',
+            mb: '0.875em',
           }}
         >
           Poland
@@ -55,18 +56,18 @@ export function CardProfile() {
           p={2}
           flex="auto"
           sx={(theme) => ({
-            position: "relative",
-            "&:not(:last-of-type)": {
-              "&:after": {
+            position: 'relative',
+            '&:not(:last-of-type)': {
+              '&:after': {
                 content: '" "',
-                display: "block",
-                position: "absolute",
-                height: "50%",
-                width: "1px",
+                display: 'block',
+                position: 'absolute',
+                height: '50%',
+                width: '1px',
                 backgroundColor: (theme.vars || theme).palette.divider,
-                top: "50%",
+                top: '50%',
                 right: 0,
-                transform: "translateY(-50%)",
+                transform: 'translateY(-50%)',
               },
             },
           })}
@@ -86,9 +87,9 @@ export function CardProfile() {
             component="p"
             sx={{
               fontSize: 20,
-              fontWeight: "bold",
+              fontWeight: 'bold',
               mb: 0.5,
-              letterSpacing: "1px",
+              letterSpacing: '1px',
             }}
           >
             6941
@@ -98,18 +99,18 @@ export function CardProfile() {
           p={2}
           flex="auto"
           sx={(theme) => ({
-            position: "relative",
-            "&:not(:last-of-type)": {
-              "&:after": {
+            position: 'relative',
+            '&:not(:last-of-type)': {
+              '&:after': {
                 content: '" "',
-                display: "block",
-                position: "absolute",
-                height: "50%",
-                width: "1px",
+                display: 'block',
+                position: 'absolute',
+                height: '50%',
+                width: '1px',
                 backgroundColor: (theme.vars || theme).palette.divider,
-                top: "50%",
+                top: '50%',
                 right: 0,
-                transform: "translateY(-50%)",
+                transform: 'translateY(-50%)',
               },
             },
           })}
@@ -129,9 +130,9 @@ export function CardProfile() {
             component="p"
             sx={{
               fontSize: 20,
-              fontWeight: "bold",
+              fontWeight: 'bold',
               mb: 0.5,
-              letterSpacing: "1px",
+              letterSpacing: '1px',
             }}
           >
             12

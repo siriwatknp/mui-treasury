@@ -1,7 +1,7 @@
-import Box from "@mui/material/Box";
+import Box from '@mui/material/Box';
 
-import FirebaseStoryTelling from "@/registry/firebase/firebase-story-telling/firebase-story-telling";
-import { layoutVariables } from "@/registry/layout/layout-core/layoutVariables";
+import FirebaseStoryTelling from '@/registry/firebase/firebase-story-telling/firebase-story-telling';
+import { layoutVariables } from '@/registry/layout/layout-core/layoutVariables';
 
 export default function Page() {
   return (

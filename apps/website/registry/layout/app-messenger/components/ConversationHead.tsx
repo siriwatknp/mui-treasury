@@ -1,26 +1,27 @@
-"use client";
-import React from "react";
-import Box from "@mui/material/Box";
-import ListItem from "@mui/material/ListItem";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import ListItemText from "@mui/material/ListItemText";
-import Avatar from "@mui/material/Avatar";
-import IconButton from "@mui/material/IconButton";
-import Phone from "@mui/icons-material/Phone";
-import Videocam from "@mui/icons-material/Videocam";
-import Info from "@mui/icons-material/Info";
+'use client';
+import React from 'react';
+
+import Info from '@mui/icons-material/Info';
+import Phone from '@mui/icons-material/Phone';
+import Videocam from '@mui/icons-material/Videocam';
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import ListItem from '@mui/material/ListItem';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import ListItemText from '@mui/material/ListItemText';
 
 const ConversationHead = () => {
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: '100%' }}>
       <ListItem
-        sx={{ padding: "8px 8px 8px 16px" }}
+        sx={{ padding: '8px 8px 8px 16px' }}
         secondaryAction={
           <>
             <IconButton
               sx={{
-                "& svg": {
-                  color: "rgb(0, 153, 255)",
+                '& svg': {
+                  color: 'rgb(0, 153, 255)',
                 },
               }}
             >
@@ -28,8 +29,8 @@ const ConversationHead = () => {
             </IconButton>
             <IconButton
               sx={{
-                "& svg": {
-                  color: "rgb(0, 153, 255)",
+                '& svg': {
+                  color: 'rgb(0, 153, 255)',
                 },
               }}
             >
@@ -37,8 +38,8 @@ const ConversationHead = () => {
             </IconButton>
             <IconButton
               sx={{
-                "& svg": {
-                  color: "rgb(0, 153, 255)",
+                '& svg': {
+                  color: 'rgb(0, 153, 255)',
                 },
               }}
             >
@@ -48,14 +49,14 @@ const ConversationHead = () => {
         }
       >
         <ListItemAvatar>
-          <Avatar src={"https://i.pravatar.cc/300?img=13"} />
+          <Avatar src={'https://i.pravatar.cc/300?img=13'} />
         </ListItemAvatar>
         <ListItemText
-          primary={"Imaad Casey"}
-          secondary={"active 17m ago"}
+          primary={'Imaad Casey'}
+          secondary={'active 17m ago'}
           primaryTypographyProps={{
             sx: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           }}
           secondaryTypographyProps={{

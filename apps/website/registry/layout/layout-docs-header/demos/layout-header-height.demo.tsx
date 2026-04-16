@@ -1,23 +1,23 @@
-import React from "react";
+import React from 'react';
 
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
-import Content from "@/registry/layout/layout-core/Content";
-import Footer from "@/registry/layout/layout-core/Footer";
-import Header from "@/registry/layout/layout-core/Header";
-import Root from "@/registry/layout/layout-core/Root";
+import Content from '@/registry/layout/layout-core/Content';
+import Footer from '@/registry/layout/layout-core/Footer';
+import Header from '@/registry/layout/layout-core/Header';
+import Root from '@/registry/layout/layout-core/Root';
 
 export const meta = {
-  title: "Header Height",
+  title: 'Header Height',
   description:
-    "Customize header height with a fixed value or responsive breakpoints.",
-  previewMode: "iframe" as const,
+    'Customize header height with a fixed value or responsive breakpoints.',
+  previewMode: 'iframe' as const,
 };
 
 export function Demo() {
   return (
-    <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
+    <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
       <Root sx={{ minHeight: 300, flex: 1, minWidth: 200 }}>
         <Header height="48px">
           <Box sx={{ px: 2 }}>
@@ -67,7 +67,7 @@ export function Demo() {
       </Root>
 
       <Root sx={{ minHeight: 300, flex: 1, minWidth: 200 }}>
-        <Header height={{ xs: "48px", md: "64px" }}>
+        <Header height={{ xs: '48px', md: '64px' }}>
           <Box sx={{ px: 2 }}>
             <Typography variant="caption" fontWeight="bold">
               48px → 64px

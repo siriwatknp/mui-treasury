@@ -1,30 +1,31 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Chip from "@mui/material/Chip";
-import Stack from "@mui/material/Stack";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import Typography from "@mui/material/Typography";
-import { LineChart } from "@mui/x-charts/LineChart";
+import * as React from 'react';
+
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import Typography from '@mui/material/Typography';
+import { LineChart } from '@mui/x-charts/LineChart';
 
 const chartData = [
-  { date: "Feb 1", value: 3800 },
-  { date: "Feb 5", value: 3200 },
-  { date: "Feb 8", value: 3900 },
-  { date: "Feb 11", value: 3900 },
-  { date: "Feb 15", value: 4251 },
-  { date: "Feb 18", value: 5100 },
-  { date: "Feb 22", value: 4800 },
-  { date: "Feb 25", value: 4800 },
-  { date: "Feb 28", value: 5200 },
+  { date: 'Feb 1', value: 3800 },
+  { date: 'Feb 5', value: 3200 },
+  { date: 'Feb 8', value: 3900 },
+  { date: 'Feb 11', value: 3900 },
+  { date: 'Feb 15', value: 4251 },
+  { date: 'Feb 18', value: 5100 },
+  { date: 'Feb 22', value: 4800 },
+  { date: 'Feb 25', value: 4800 },
+  { date: 'Feb 28', value: 5200 },
 ];
 
 export function PaymentHistoryChart() {
-  const [period, setPeriod] = React.useState("1M");
+  const [period, setPeriod] = React.useState('1M');
 
   const handlePeriodChange = (
     event: React.MouseEvent<HTMLElement>,
@@ -40,9 +41,9 @@ export function PaymentHistoryChart() {
       <CardContent>
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
             mb: 3,
           }}
         >
@@ -75,7 +76,7 @@ export function PaymentHistoryChart() {
           <Typography variant="h3" sx={{ fontWeight: 600 }}>
             $12,135.69
           </Typography>
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <Chip
               label="+23%"
               size="small"
@@ -83,7 +84,7 @@ export function PaymentHistoryChart() {
               color="success"
               sx={{
                 height: 24,
-                fontSize: "0.875rem",
+                fontSize: '0.875rem',
                 fontWeight: 500,
               }}
             />
@@ -93,39 +94,39 @@ export function PaymentHistoryChart() {
           </Box>
         </Stack>
 
-        <Box sx={{ position: "relative" }}>
+        <Box sx={{ position: 'relative' }}>
           <LineChart
             xAxis={[
               {
                 data: chartData.map((_, index) => index),
                 valueFormatter: (value: number) => {
                   const labels = [
-                    "Feb 1",
-                    "Feb 8",
-                    "Feb 15",
-                    "Feb 22",
-                    "Feb 28",
+                    'Feb 1',
+                    'Feb 8',
+                    'Feb 15',
+                    'Feb 22',
+                    'Feb 28',
                   ];
                   const step = Math.floor(
                     (value * labels.length) / chartData.length,
                   );
-                  return labels[Math.min(step, labels.length - 1)] || "";
+                  return labels[Math.min(step, labels.length - 1)] || '';
                 },
                 tickNumber: 5,
-                position: "bottom",
+                position: 'bottom',
               },
             ]}
             yAxis={[
               {
-                position: "none",
+                position: 'none',
               },
             ]}
             series={[
               {
                 data: chartData.map((d) => d.value),
                 area: true,
-                color: "#4caf50",
-                curve: "natural",
+                color: '#4caf50',
+                curve: 'natural',
                 showMark: false,
               },
             ]}
@@ -136,26 +137,26 @@ export function PaymentHistoryChart() {
               bottom: 0,
             }}
             sx={(theme) => ({
-              "& .MuiLineElement-root": {
+              '& .MuiLineElement-root': {
                 strokeWidth: 2,
               },
-              "& .MuiAreaElement-root": {
+              '& .MuiAreaElement-root': {
                 fillOpacity: 0.15,
               },
-              "& .MuiChartsAxis-tick": {
-                display: "none",
+              '& .MuiChartsAxis-tick': {
+                display: 'none',
               },
-              "& .MuiChartsAxis-line": {
-                display: "none",
+              '& .MuiChartsAxis-line': {
+                display: 'none',
               },
-              "& .MuiChartsAxis-tickLabel": {
+              '& .MuiChartsAxis-tickLabel': {
                 fill: (theme.vars || theme).palette.text.secondary,
-                fontSize: "0.75rem",
+                fontSize: '0.75rem',
               },
             })}
             slotProps={{
               legend: {
-                sx: { display: "none" },
+                sx: { display: 'none' },
               },
             }}
           />

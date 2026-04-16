@@ -1,36 +1,37 @@
-"use client";
+'use client';
 import {
-  createTheme,
   ThemeProvider as MuiThemeProvider,
-} from "@mui/material/styles";
-import type {} from "@mui/material/themeCssVarsAugmentation";
-import { colors } from "./colors";
-import { typography, typographyTheme } from "./typography";
-import { buttonTheme } from "./components/button";
-import { textFieldTheme } from "./components/text-field";
-import { selectTheme } from "./components/select";
-import { autocompleteTheme } from "./components/autocomplete";
-import { chipTheme } from "./components/chip";
-import { avatarTheme } from "./components/avatar";
-import { menuTheme } from "./components/menu";
-import { tableTheme } from "./components/table";
-import { listTheme } from "./components/list";
-import { cardTheme } from "./components/card";
-import { dialogTheme } from "./components/dialog";
-import { datePickerTheme } from "./components/date-picker";
-import { svgIconTheme } from "./components/svg-icon";
-import { dataGridTheme } from "./components/data-grid";
-import { alertTheme } from "./components/alert";
-import { treeViewTheme } from "./components/tree-view";
-import { layoutTheme } from "./components/layout";
-import { linkTheme } from "./components/link";
-import { controlsTheme } from "./components/controls";
-import { shadows } from "./shadows";
+  createTheme,
+} from '@mui/material/styles';
+import type {} from '@mui/material/themeCssVarsAugmentation';
+
+import { colors } from './colors';
+import { alertTheme } from './components/alert';
+import { autocompleteTheme } from './components/autocomplete';
+import { avatarTheme } from './components/avatar';
+import { buttonTheme } from './components/button';
+import { cardTheme } from './components/card';
+import { chipTheme } from './components/chip';
+import { controlsTheme } from './components/controls';
+import { dataGridTheme } from './components/data-grid';
+import { datePickerTheme } from './components/date-picker';
+import { dialogTheme } from './components/dialog';
+import { layoutTheme } from './components/layout';
+import { linkTheme } from './components/link';
+import { listTheme } from './components/list';
+import { menuTheme } from './components/menu';
+import { selectTheme } from './components/select';
+import { svgIconTheme } from './components/svg-icon';
+import { tableTheme } from './components/table';
+import { textFieldTheme } from './components/text-field';
+import { treeViewTheme } from './components/tree-view';
+import { shadows } from './shadows';
+import { typography, typographyTheme } from './typography';
 
 const theme = createTheme({
   cssVariables: {
-    colorSchemeSelector: "class",
-    cssVarPrefix: "plus",
+    colorSchemeSelector: 'class',
+    cssVarPrefix: 'plus',
   },
   colorSchemes: colors,
   shape: {

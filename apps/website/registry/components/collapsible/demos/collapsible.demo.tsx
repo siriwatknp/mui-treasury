@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
-import Link from "@mui/material/Link";
+import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
 
-import { CollapsibleContent } from "@/registry/components/collapsible/collapsible-content";
-import { CollapsibleButton } from "@/registry/components/collapsible/collapsible-button";
+import { CollapsibleButton } from '@/registry/components/collapsible/collapsible-button';
+import { CollapsibleContent } from '@/registry/components/collapsible/collapsible-content';
 
 export function Demo() {
   return (

@@ -1,24 +1,25 @@
-"use client";
+'use client';
 
-import Box from "@mui/material/Box";
-import Chip from "@mui/material/Chip";
-import IconButton from "@mui/material/IconButton";
-import Paper from "@mui/material/Paper";
-import Popper from "@mui/material/Popper";
-import Typography from "@mui/material/Typography";
-import useEmblaCarousel from "embla-carousel-react";
-import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 import {
-  memo,
   type ComponentProps,
+  type MouseEvent,
   createContext,
+  memo,
   useCallback,
   useContext,
   useEffect,
-  useState,
   useRef,
-  type MouseEvent,
-} from "react";
+  useState,
+} from 'react';
+
+import Box from '@mui/material/Box';
+import Chip from '@mui/material/Chip';
+import IconButton from '@mui/material/IconButton';
+import Paper from '@mui/material/Paper';
+import Popper from '@mui/material/Popper';
+import Typography from '@mui/material/Typography';
+import useEmblaCarousel from 'embla-carousel-react';
+import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
 
 export type InlineCitationProps = ComponentProps<typeof Box>;
 
@@ -26,7 +27,7 @@ export const InlineCitation = ({ sx, ...props }: InlineCitationProps) => (
   <Box
     component="span"
     sx={{
-      display: "inline",
+      display: 'inline',
       ...sx,
     }}
     {...props}
@@ -42,12 +43,12 @@ export const InlineCitationText = ({
   <Box
     component="span"
     sx={{
-      display: "inline",
-      transition: "background-color 0.2s",
+      display: 'inline',
+      transition: 'background-color 0.2s',
       borderRadius: 0.5,
       px: 0.25,
-      "&:hover": {
-        bgcolor: "action.hover",
+      '&:hover': {
+        bgcolor: 'action.hover',
       },
       ...sx,
     }}
@@ -139,7 +140,7 @@ export const InlineCitationCardTrigger = ({
 }: InlineCitationCardTriggerProps) => {
   const getHostname = (url: string) => {
     try {
-      return new URL(url).hostname.replace("www.", "");
+      return new URL(url).hostname.replace('www.', '');
     } catch {
       return url;
     }
@@ -159,16 +160,16 @@ export const InlineCitationCardTrigger = ({
             {sources.length > 1 && ` +${sources.length - 1}`}
           </>
         ) : (
-          "unknown"
+          'unknown'
         )
       }
       sx={{
         ml: 0.25,
         height: 20,
-        fontSize: "0.7rem",
+        fontSize: '0.7rem',
         fontWeight: 400,
-        cursor: "pointer",
-        verticalAlign: "middle",
+        cursor: 'pointer',
+        verticalAlign: 'middle',
         ...sx,
       }}
       {...props}
@@ -200,7 +201,7 @@ export const InlineCitationCardBody = ({
     placement="bottom-start"
     modifiers={[
       {
-        name: "offset",
+        name: 'offset',
         options: {
           offset: [0, 4],
         },
@@ -213,11 +214,11 @@ export const InlineCitationCardBody = ({
       onMouseLeave={onMouseLeave}
       sx={{
         width: 320,
-        overflow: "hidden",
+        overflow: 'hidden',
         boxShadow: 3,
       }}
     >
-      <Box sx={{ position: "relative", ...sx }} {...props}>
+      <Box sx={{ position: 'relative', ...sx }} {...props}>
         {children}
       </Box>
     </Paper>
@@ -247,8 +248,8 @@ export const InlineCitationCarousel = ({
       <Box
         ref={emblaRef}
         sx={{
-          width: "100%",
-          overflow: "hidden",
+          width: '100%',
+          overflow: 'hidden',
           ...sx,
         }}
         {...props}
@@ -265,7 +266,7 @@ export const InlineCitationCarouselContent = ({
   sx,
   ...props
 }: InlineCitationCarouselContentProps) => (
-  <Box sx={{ display: "flex", ...sx }} {...props} />
+  <Box sx={{ display: 'flex', ...sx }} {...props} />
 );
 
 export type InlineCitationCarouselItemProps = ComponentProps<typeof Box>;
@@ -276,12 +277,12 @@ export const InlineCitationCarouselItem = ({
 }: InlineCitationCarouselItemProps) => (
   <Box
     sx={{
-      width: "100%",
+      width: '100%',
       flexShrink: 0,
       p: 2,
       pl: 4,
-      display: "flex",
-      flexDirection: "column",
+      display: 'flex',
+      flexDirection: 'column',
       gap: 1,
       ...sx,
     }}
@@ -297,11 +298,11 @@ export const InlineCitationCarouselHeader = ({
 }: InlineCitationCarouselHeaderProps) => (
   <Box
     sx={{
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
       gap: 1,
-      bgcolor: "action.hover",
+      bgcolor: 'action.hover',
       p: 1,
       borderTopLeftRadius: 8,
       borderTopRightRadius: 8,
@@ -330,7 +331,7 @@ export const InlineCitationCarouselIndex = ({
     setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap() + 1);
 
-    api.on("select", () => {
+    api.on('select', () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
   }, [api]);
@@ -339,16 +340,16 @@ export const InlineCitationCarouselIndex = ({
     <Box
       sx={{
         flex: 1,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "flex-end",
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
         px: 1.5,
         py: 0.5,
         ...sx,
       }}
       {...props}
     >
-      <Typography variant="caption" sx={{ color: "text.secondary" }}>
+      <Typography variant="caption" sx={{ color: 'text.secondary' }}>
         {children ?? `${current}/${count}`}
       </Typography>
     </Box>
@@ -376,7 +377,7 @@ export const InlineCitationCarouselPrev = ({
       onClick={handleClick}
       sx={{
         p: 0.5,
-        color: "text.secondary",
+        color: 'text.secondary',
         ...sx,
       }}
       {...props}
@@ -407,7 +408,7 @@ export const InlineCitationCarouselNext = ({
       onClick={handleClick}
       sx={{
         p: 0.5,
-        color: "text.secondary",
+        color: 'text.secondary',
         ...sx,
       }}
       {...props}
@@ -434,8 +435,8 @@ export const InlineCitationSource = memo(
   }: InlineCitationSourceProps) => (
     <Box
       sx={{
-        display: "flex",
-        flexDirection: "column",
+        display: 'flex',
+        flexDirection: 'column',
         gap: 0.5,
         ...sx,
       }}
@@ -447,9 +448,9 @@ export const InlineCitationSource = memo(
           sx={{
             fontWeight: 500,
             lineHeight: 1.2,
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
           }}
         >
           {title}
@@ -459,11 +460,11 @@ export const InlineCitationSource = memo(
         <Typography
           variant="caption"
           sx={{
-            color: "text.secondary",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
-            wordBreak: "break-all",
+            color: 'text.secondary',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
+            wordBreak: 'break-all',
           }}
         >
           {url}
@@ -473,12 +474,12 @@ export const InlineCitationSource = memo(
         <Typography
           variant="body2"
           sx={{
-            color: "text.secondary",
+            color: 'text.secondary',
             lineHeight: 1.6,
-            display: "-webkit-box",
+            display: '-webkit-box',
             WebkitLineClamp: 3,
-            WebkitBoxOrient: "vertical",
-            overflow: "hidden",
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
           }}
         >
           {description}
@@ -489,10 +490,10 @@ export const InlineCitationSource = memo(
   ),
 );
 
-InlineCitationSource.displayName = "InlineCitationSource";
+InlineCitationSource.displayName = 'InlineCitationSource';
 
-export type InlineCitationQuoteProps = ComponentProps<"blockquote"> & {
-  sx?: ComponentProps<typeof Box>["sx"];
+export type InlineCitationQuoteProps = ComponentProps<'blockquote'> & {
+  sx?: ComponentProps<typeof Box>['sx'];
 };
 
 export const InlineCitationQuote = ({
@@ -504,11 +505,11 @@ export const InlineCitationQuote = ({
     component="blockquote"
     sx={{
       borderLeft: 2,
-      borderColor: "divider",
+      borderColor: 'divider',
       pl: 1.5,
-      fontStyle: "italic",
-      color: "text.secondary",
-      fontSize: "0.875rem",
+      fontStyle: 'italic',
+      color: 'text.secondary',
+      fontSize: '0.875rem',
       m: 0,
       ...sx,
     }}

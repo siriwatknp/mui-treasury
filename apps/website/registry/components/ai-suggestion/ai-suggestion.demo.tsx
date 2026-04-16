@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
 import {
-  Suggestions,
   Suggestion,
-} from "@/registry/components/ai-suggestion/ai-suggestion";
+  Suggestions,
+} from '@/registry/components/ai-suggestion/ai-suggestion';
 
 export function Demo() {
   const handleSuggestionClick = (suggestion: string) => {
-    console.log("Selected suggestion:", suggestion);
+    console.log('Selected suggestion:', suggestion);
   };
 
   return (

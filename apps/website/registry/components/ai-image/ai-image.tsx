@@ -1,8 +1,9 @@
-"use client";
+'use client';
 
-import Box from "@mui/material/Box";
-import type { Experimental_GeneratedImage } from "ai";
-import { memo, type ComponentProps } from "react";
+import { type ComponentProps, memo } from 'react';
+
+import Box from '@mui/material/Box';
+import type { Experimental_GeneratedImage } from 'ai';
 
 export type ImageProps = Experimental_GeneratedImage &
   ComponentProps<typeof Box> & {
@@ -16,9 +17,9 @@ export const Image = memo(
       alt={alt}
       src={`data:${mediaType};base64,${base64}`}
       sx={{
-        height: "auto",
-        maxWidth: "100%",
-        overflow: "hidden",
+        height: 'auto',
+        maxWidth: '100%',
+        overflow: 'hidden',
         borderRadius: 1,
         ...sx,
       }}
@@ -27,4 +28,4 @@ export const Image = memo(
   ),
 );
 
-Image.displayName = "Image";
+Image.displayName = 'Image';

@@ -1,47 +1,47 @@
-"use client";
+'use client';
 
-import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
-import Link from "@mui/material/Link";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import SvgIcon from "@mui/material/SvgIcon";
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import Link from '@mui/material/Link';
+import Stack from '@mui/material/Stack';
+import SvgIcon from '@mui/material/SvgIcon';
+import Typography from '@mui/material/Typography';
 
 const navigationData = [
   {
-    title: "Use cases",
+    title: 'Use cases',
     links: [
-      { label: "UI design", href: "#" },
-      { label: "UX design", href: "#" },
-      { label: "Wireframing", href: "#" },
-      { label: "Diagramming", href: "#" },
-      { label: "Brainstorming", href: "#" },
-      { label: "Online whiteboard", href: "#" },
-      { label: "Team collaboration", href: "#" },
+      { label: 'UI design', href: '#' },
+      { label: 'UX design', href: '#' },
+      { label: 'Wireframing', href: '#' },
+      { label: 'Diagramming', href: '#' },
+      { label: 'Brainstorming', href: '#' },
+      { label: 'Online whiteboard', href: '#' },
+      { label: 'Team collaboration', href: '#' },
     ],
   },
   {
-    title: "Explore",
+    title: 'Explore',
     links: [
-      { label: "Design", href: "#" },
-      { label: "Prototyping", href: "#" },
-      { label: "Development features", href: "#" },
-      { label: "Design systems", href: "#" },
-      { label: "Collaboration features", href: "#" },
-      { label: "Design process", href: "#" },
-      { label: "FigJam", href: "#" },
+      { label: 'Design', href: '#' },
+      { label: 'Prototyping', href: '#' },
+      { label: 'Development features', href: '#' },
+      { label: 'Design systems', href: '#' },
+      { label: 'Collaboration features', href: '#' },
+      { label: 'Design process', href: '#' },
+      { label: 'FigJam', href: '#' },
     ],
   },
   {
-    title: "Resources",
+    title: 'Resources',
     links: [
-      { label: "Blog", href: "#" },
-      { label: "Best practices", href: "#" },
-      { label: "Colors", href: "#" },
-      { label: "Color wheel", href: "#" },
-      { label: "Support", href: "#" },
-      { label: "Developers", href: "#" },
-      { label: "Resource library", href: "#" },
+      { label: 'Blog', href: '#' },
+      { label: 'Best practices', href: '#' },
+      { label: 'Colors', href: '#' },
+      { label: 'Color wheel', href: '#' },
+      { label: 'Support', href: '#' },
+      { label: 'Developers', href: '#' },
+      { label: 'Resource library', href: '#' },
     ],
   },
 ];
@@ -52,31 +52,31 @@ export function AppFooter01() {
       component="footer"
       sx={{
         borderTop: 1,
-        borderColor: "divider",
-        bgcolor: "background.paper",
-        width: "100%",
-        containerType: "inline-size",
+        borderColor: 'divider',
+        bgcolor: 'background.paper',
+        width: '100%',
+        containerType: 'inline-size',
       }}
     >
       <Box
         sx={[
           {
             p: 4,
-            display: "grid",
+            display: 'grid',
             gap: 3,
             gridTemplateColumns: {
-              "@400": "repeat(2, 1fr)",
-              "@600": "repeat(3, 1fr)",
-              "@800": "repeat(4, 1fr)",
+              '@400': 'repeat(2, 1fr)',
+              '@600': 'repeat(3, 1fr)',
+              '@800': 'repeat(4, 1fr)',
             },
-            "& > div:first-of-type": {
-              gridColumn: "1/-1",
+            '& > div:first-of-type': {
+              gridColumn: '1/-1',
             },
           },
           (theme) => ({
             [theme.containerQueries.up(800)]: {
-              "& > div:first-of-type": {
-                gridColumn: "initial",
+              '& > div:first-of-type': {
+                gridColumn: 'initial',
               },
             },
           }),
@@ -85,18 +85,18 @@ export function AppFooter01() {
         {/* Header Section - Logo and Social Icons */}
         <Box
           sx={(theme) => ({
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "flex-start",
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
             gap: 2,
-            [theme.breakpoints.up("md")]: {
-              flexDirection: "column",
+            [theme.breakpoints.up('md')]: {
+              flexDirection: 'column',
               gap: 3,
             },
           })}
         >
-          <Typography sx={{ fontWeight: "bold" }}>Logo Placeholder</Typography>
+          <Typography sx={{ fontWeight: 'bold' }}>Logo Placeholder</Typography>
           <Stack
             component="nav"
             direction="row"
@@ -107,15 +107,15 @@ export function AppFooter01() {
               size="small"
               aria-label="Visit our X profile"
               sx={{
-                color: "text.primary",
-                "@media (hover: hover)": {
-                  "&:hover": {
-                    bgcolor: "action.hover",
+                color: 'text.primary',
+                '@media (hover: hover)': {
+                  '&:hover': {
+                    bgcolor: 'action.hover',
                   },
                 },
               }}
             >
-              <SvgIcon sx={{ color: "text.primary", fontSize: 20 }}>
+              <SvgIcon sx={{ color: 'text.primary', fontSize: 20 }}>
                 <svg fill="none" viewBox="0 0 1200 1227">
                   <path
                     fill="currentColor"
@@ -128,15 +128,15 @@ export function AppFooter01() {
               size="small"
               aria-label="Visit our Instagram profile"
               sx={{
-                color: "text.primary",
-                "@media (hover: hover)": {
-                  "&:hover": {
-                    bgcolor: "action.hover",
+                color: 'text.primary',
+                '@media (hover: hover)': {
+                  '&:hover': {
+                    bgcolor: 'action.hover',
                   },
                 },
               }}
             >
-              <SvgIcon sx={{ color: "text.primary" }}>
+              <SvgIcon sx={{ color: 'text.primary' }}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -158,15 +158,15 @@ export function AppFooter01() {
               size="small"
               aria-label="Visit our YouTube channel"
               sx={{
-                color: "text.primary",
-                "@media (hover: hover)": {
-                  "&:hover": {
-                    bgcolor: "action.hover",
+                color: 'text.primary',
+                '@media (hover: hover)': {
+                  '&:hover': {
+                    bgcolor: 'action.hover',
                   },
                 },
               }}
             >
-              <SvgIcon sx={{ color: "text.primary" }}>
+              <SvgIcon sx={{ color: 'text.primary' }}>
                 <svg preserveAspectRatio="xMidYMid" viewBox="0 0 256 180">
                   <path
                     fill="currentColor"
@@ -183,15 +183,15 @@ export function AppFooter01() {
               size="small"
               aria-label="Visit our LinkedIn profile"
               sx={{
-                color: "text.primary",
-                "@media (hover: hover)": {
-                  "&:hover": {
-                    bgcolor: "action.hover",
+                color: 'text.primary',
+                '@media (hover: hover)': {
+                  '&:hover': {
+                    bgcolor: 'action.hover',
                   },
                 },
               }}
             >
-              <SvgIcon sx={{ color: "text.primary" }}>
+              <SvgIcon sx={{ color: 'text.primary' }}>
                 <svg preserveAspectRatio="xMidYMid" viewBox="0 0 256 256">
                   <path
                     d="M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.907 39.907 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186l-.016 67.013ZM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009-.002-12.157 9.851-22.014 22.008-22.016 12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97v122.16ZM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453"
@@ -210,8 +210,8 @@ export function AppFooter01() {
             component="nav"
             aria-labelledby={`footer-nav-${index}`}
             sx={{
-              display: "flex",
-              flexDirection: "column",
+              display: 'flex',
+              flexDirection: 'column',
               gap: 1,
             }}
           >
@@ -232,10 +232,10 @@ export function AppFooter01() {
                   color="text.primary"
                   sx={(theme) => ({
                     ...theme.typography.body1,
-                    display: "inline-block",
-                    "@media (hover: hover)": {
-                      "&:hover": {
-                        color: "text.secondary",
+                    display: 'inline-block',
+                    '@media (hover: hover)': {
+                      '&:hover': {
+                        color: 'text.secondary',
                       },
                     },
                   })}

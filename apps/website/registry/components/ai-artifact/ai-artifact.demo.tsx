@@ -1,25 +1,26 @@
-"use client";
+'use client';
+
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import { CopyIcon, DownloadIcon, ExpandIcon, ShareIcon } from 'lucide-react';
 
 import {
   Artifact,
-  ArtifactHeader,
-  ArtifactTitle,
-  ArtifactDescription,
-  ArtifactActions,
   ArtifactAction,
+  ArtifactActions,
   ArtifactClose,
   ArtifactContent,
-} from "@/registry/components/ai-artifact/ai-artifact";
-import { CopyIcon, ShareIcon, DownloadIcon, ExpandIcon } from "lucide-react";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+  ArtifactDescription,
+  ArtifactHeader,
+  ArtifactTitle,
+} from '@/registry/components/ai-artifact/ai-artifact';
 
 export function Demo() {
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: 4, p: 4 }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, p: 4 }}>
       {/* Basic Artifact */}
       <Box sx={{ maxWidth: 600 }}>
-        <Typography variant="body2" sx={{ mb: 2, color: "text.secondary" }}>
+        <Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
           Basic Artifact
         </Typography>
         <Artifact>
@@ -34,14 +35,14 @@ export function Demo() {
               <ArtifactAction
                 tooltip="Copy to clipboard"
                 icon={CopyIcon}
-                onClick={() => console.log("Copy clicked")}
+                onClick={() => console.log('Copy clicked')}
               />
               <ArtifactAction
                 tooltip="Share"
                 icon={ShareIcon}
-                onClick={() => console.log("Share clicked")}
+                onClick={() => console.log('Share clicked')}
               />
-              <ArtifactClose onClick={() => console.log("Close clicked")} />
+              <ArtifactClose onClick={() => console.log('Close clicked')} />
             </ArtifactActions>
           </ArtifactHeader>
           <ArtifactContent>
@@ -50,11 +51,11 @@ export function Demo() {
               sx={{
                 m: 0,
                 p: 2,
-                bgcolor: "grey.50",
+                bgcolor: 'grey.50',
                 borderRadius: 1,
-                overflow: "auto",
-                fontSize: "0.875rem",
-                fontFamily: "monospace",
+                overflow: 'auto',
+                fontSize: '0.875rem',
+                fontFamily: 'monospace',
               }}
             >
               {`def fibonacci(n):
@@ -72,7 +73,7 @@ for i in range(10):
 
       {/* Artifact with Rich Content */}
       <Box sx={{ maxWidth: 600 }}>
-        <Typography variant="body2" sx={{ mb: 2, color: "text.secondary" }}>
+        <Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
           Artifact with Rich Content
         </Typography>
         <Artifact>
@@ -87,14 +88,14 @@ for i in range(10):
               <ArtifactAction
                 tooltip="Download"
                 icon={DownloadIcon}
-                onClick={() => console.log("Download clicked")}
+                onClick={() => console.log('Download clicked')}
               />
               <ArtifactAction
                 tooltip="Expand"
                 icon={ExpandIcon}
-                onClick={() => console.log("Expand clicked")}
+                onClick={() => console.log('Expand clicked')}
               />
-              <ArtifactClose onClick={() => console.log("Close clicked")} />
+              <ArtifactClose onClick={() => console.log('Close clicked')} />
             </ArtifactActions>
           </ArtifactHeader>
           <ArtifactContent>
@@ -109,11 +110,11 @@ for i in range(10):
               <Box
                 sx={{
                   height: 200,
-                  bgcolor: "action.hover",
+                  bgcolor: 'action.hover',
                   borderRadius: 1,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                 }}
               >
                 <Typography variant="body2" color="text.secondary">
@@ -127,7 +128,7 @@ for i in range(10):
 
       {/* Compact Artifact */}
       <Box sx={{ maxWidth: 600 }}>
-        <Typography variant="body2" sx={{ mb: 2, color: "text.secondary" }}>
+        <Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
           Compact Artifact (No Description)
         </Typography>
         <Artifact>
@@ -137,9 +138,9 @@ for i in range(10):
               <ArtifactAction
                 tooltip="Copy"
                 icon={CopyIcon}
-                onClick={() => console.log("Copy clicked")}
+                onClick={() => console.log('Copy clicked')}
               />
-              <ArtifactClose onClick={() => console.log("Close clicked")} />
+              <ArtifactClose onClick={() => console.log('Close clicked')} />
             </ArtifactActions>
           </ArtifactHeader>
           <ArtifactContent>

@@ -1,8 +1,9 @@
-import React from "react";
-import Avatar from "@mui/material/Avatar";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import Slider, { sliderClasses } from "@mui/material/Slider";
+import React from 'react';
+
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Slider, { sliderClasses } from '@mui/material/Slider';
 
 export function CardKanban() {
   const family =
@@ -11,20 +12,20 @@ export function CardKanban() {
     <Card
       elevation={0}
       sx={{
-        display: "flex",
+        display: 'flex',
         padding: 2,
         minWidth: 288,
-        borderRadius: "12px",
-        boxShadow: "0 2px 4px 0 rgba(138, 148, 159, 0.2)",
-        "& > *:nth-of-type(1)": {
+        borderRadius: '12px',
+        boxShadow: '0 2px 4px 0 rgba(138, 148, 159, 0.2)',
+        '& > *:nth-of-type(1)': {
           marginRight: 2,
         },
-        "& > *:nth-of-type(2)": {
-          flex: "auto",
+        '& > *:nth-of-type(2)': {
+          flex: 'auto',
         },
       }}
     >
-      <Avatar src={"https://i.pravatar.cc/300"} />
+      <Avatar src={'https://i.pravatar.cc/300'} />
       <Box>
         <Box
           component="h3"
@@ -36,31 +37,31 @@ export function CardKanban() {
           sx={{
             fontFamily: family,
             fontSize: 14,
-            color: "grey.600",
-            letterSpacing: "1px",
-            marginBottom: "4px",
+            color: 'grey.600',
+            letterSpacing: '1px',
+            marginBottom: '4px',
           }}
         >
           23 y.o • Canada
         </Box>
-        <Box display={"flex"} alignItems={"center"}>
+        <Box display={'flex'} alignItems={'center'}>
           <Slider
             defaultValue={30}
             sx={{
               height: 4,
               [`& .${sliderClasses.rail}`]: {
-                borderRadius: "10px",
+                borderRadius: '10px',
                 height: 4,
-                backgroundColor: "rgb(202,211,216)",
+                backgroundColor: 'rgb(202,211,216)',
               },
               [`& .${sliderClasses.track}`]: {
-                borderRadius: "10px",
+                borderRadius: '10px',
                 height: 4,
-                backgroundColor: "rgb(117,156,250)",
-                border: "none",
+                backgroundColor: 'rgb(117,156,250)',
+                border: 'none',
               },
               [`& .${sliderClasses.thumb}`]: {
-                display: "none",
+                display: 'none',
               },
             }}
           />
@@ -69,7 +70,7 @@ export function CardKanban() {
             sx={{
               marginLeft: 1,
               fontSize: 14,
-              color: "grey.500",
+              color: 'grey.500',
             }}
           >
             3/10

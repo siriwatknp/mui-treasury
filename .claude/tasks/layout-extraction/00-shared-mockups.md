@@ -98,11 +98,11 @@ No import changes needed. Only uses `@mui/material/styles` and `@mui/material/Ta
 ### Step 6: Create `registry/layout/mockups/index.ts`
 
 ```ts
-export * from "./utils";
-export * from "./shapes";
-export * from "./typography";
-export * from "./dashboard";
-export * from "./tabs";
+export * from './utils';
+export * from './shapes';
+export * from './typography';
+export * from './dashboard';
+export * from './tabs';
 ```
 
 ### Step 7: Validate

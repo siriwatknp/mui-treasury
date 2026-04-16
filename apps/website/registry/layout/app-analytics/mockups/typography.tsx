@@ -1,10 +1,12 @@
-"use client";
-import React from "react";
-import Box, { BoxProps } from "@mui/material/Box";
-import { SxProps, Theme } from "@mui/material/styles";
-import { getBaseGrey } from "./utils";
+'use client';
+import React from 'react';
 
-const createTypography = (generateSx: () => BoxProps["sx"]) => {
+import Box, { BoxProps } from '@mui/material/Box';
+import { SxProps, Theme } from '@mui/material/styles';
+
+import { getBaseGrey } from './utils';
+
+const createTypography = (generateSx: () => BoxProps['sx']) => {
   const Component = ({
     cached,
     sx = [],
@@ -33,8 +35,8 @@ const createTypography = (generateSx: () => BoxProps["sx"]) => {
 
 export const H1 = createTypography(() => ({
   height: 40,
-  width: "16ch",
-  maxWidth: "100%",
+  width: '16ch',
+  maxWidth: '100%',
   mt: 3,
   mb: 1,
 }));
@@ -43,12 +45,12 @@ export const Text = createTypography(() => ({
   height: 16,
   mt: 1.5,
   mb: 1.5,
-  width: "100%",
-  maxWidth: "100%",
+  width: '100%',
+  maxWidth: '100%',
 }));
 
 export const Word = createTypography(() => ({
   height: 16,
-  width: "10ch",
-  maxWidth: "100%",
+  width: '10ch',
+  maxWidth: '100%',
 }));

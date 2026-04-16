@@ -1,4 +1,4 @@
-import { ThemeComponents } from "../types";
+import { ThemeComponents } from '../types';
 
 export const layoutTheme: ThemeComponents = {
   MuiStack: {

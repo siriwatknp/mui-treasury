@@ -1,19 +1,20 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import FormControl from "@mui/material/FormControl";
-import MenuItem from "@mui/material/MenuItem";
-import Select, { SelectProps } from "@mui/material/Select";
-import InputLabel from "@mui/material/InputLabel";
-import { ChevronDown } from "lucide-react";
+import * as React from 'react';
 
-export interface SelectInset01Props extends Omit<SelectProps, "label"> {
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select, { SelectProps } from '@mui/material/Select';
+import { ChevronDown } from 'lucide-react';
+
+export interface SelectInset01Props extends Omit<SelectProps, 'label'> {
   label: string;
   options: Array<{ value: string; label: string }>;
 }
 
 export function SelectInset01({
-  label = "Select an option",
+  label = 'Select an option',
   options = [],
   value,
   onChange,
@@ -27,8 +28,8 @@ export function SelectInset01({
       <InputLabel
         htmlFor={selectId}
         sx={{
-          "&.MuiInputLabel-shrink": {
-            transform: "translate(12px, 7px) scale(0.9)",
+          '&.MuiInputLabel-shrink': {
+            transform: 'translate(12px, 7px) scale(0.9)',
           },
         }}
       >
@@ -45,24 +46,24 @@ export function SelectInset01({
           minHeight: 56,
           borderRadius: 1,
           border: 1,
-          borderColor: "divider",
-          backgroundColor: "background.paper",
-          "&:hover, &.Mui-focused": {
-            backgroundColor: "background.paper",
-            borderColor: "primary.main",
+          borderColor: 'divider',
+          backgroundColor: 'background.paper',
+          '&:hover, &.Mui-focused': {
+            backgroundColor: 'background.paper',
+            borderColor: 'primary.main',
           },
-          "& .MuiSelect-select": {
+          '& .MuiSelect-select': {
             pt: 1.5,
             pb: 1.5,
             px: 2,
           },
-          "&::before,::after": {
-            display: "none",
+          '&::before,::after': {
+            display: 'none',
           },
-          "& .MuiSelect-icon": {
-            fontSize: "1.25rem",
-            width: "1em",
-            height: "1em",
+          '& .MuiSelect-icon': {
+            fontSize: '1.25rem',
+            width: '1em',
+            height: '1em',
           },
         }}
         {...props}

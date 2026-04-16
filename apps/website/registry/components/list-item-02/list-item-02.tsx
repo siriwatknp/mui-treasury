@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import Avatar from "@mui/material/Avatar";
-import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
-import Card from "@mui/material/Card";
-import IconButton from "@mui/material/IconButton";
-import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import IconButton from '@mui/material/IconButton';
+import Link from '@mui/material/Link';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 
 export function ListItem02() {
   return (
-    <List sx={{ bgcolor: "background.paper", maxWidth: 680 }}>
+    <List sx={{ bgcolor: 'background.paper', maxWidth: 680 }}>
       <ListItem
         secondaryAction={
           <IconButton edge="end" aria-label="More actions" size="small">
@@ -22,10 +22,10 @@ export function ListItem02() {
           </IconButton>
         }
         sx={{
-          alignItems: "flex-start",
+          alignItems: 'flex-start',
           gap: 2,
           pb: 2,
-          "& .MuiListItemSecondaryAction-root": { top: "1.25rem" },
+          '& .MuiListItemSecondaryAction-root': { top: '1.25rem' },
         }}
       >
         <ListItemAvatar>
@@ -34,25 +34,25 @@ export function ListItem02() {
         <Stack spacing={1.5} sx={{ flex: 1, minWidth: 0, pr: 3 }}>
           <Box
             sx={{
-              display: "flex",
-              alignItems: "baseline",
+              display: 'flex',
+              alignItems: 'baseline',
               gap: 1.5,
-              flexWrap: "wrap",
+              flexWrap: 'wrap',
             }}
           >
             <Typography variant="body1" sx={{ flex: 1, minWidth: 0 }}>
               <Link component="button">
                 <strong>Amy Diehl</strong>
-              </Link>{" "}
-              and{" "}
+              </Link>{' '}
+              and{' '}
               <Link component="button">
                 <strong>96 others</strong>
-              </Link>{" "}
+              </Link>{' '}
               reacted to your post.
             </Typography>
             <Typography
               variant="body2"
-              sx={{ color: "text.secondary", flexShrink: 0 }}
+              sx={{ color: 'text.secondary', flexShrink: 0 }}
             >
               7h
             </Typography>
@@ -61,18 +61,18 @@ export function ListItem02() {
           <Card
             sx={(theme) => ({
               p: 2,
-              bgcolor: "grey.900",
-              ...theme.applyStyles("dark", {
-                bgcolor: "grey.800",
+              bgcolor: 'grey.900',
+              ...theme.applyStyles('dark', {
+                bgcolor: 'grey.800',
               }),
             })}
           >
             <Typography
               variant="body1"
               sx={(theme) => ({
-                color: "common.white",
-                ...theme.applyStyles("dark", {
-                  color: "grey.50",
+                color: 'common.white',
+                ...theme.applyStyles('dark', {
+                  color: 'grey.50',
                 }),
               })}
             >
@@ -83,13 +83,13 @@ export function ListItem02() {
 
           <Typography
             variant="body2"
-            sx={{ color: "text.secondary" }}
+            sx={{ color: 'text.secondary' }}
             aria-label="97 reactions, 5 comments"
           >
             <Link component="button" color="inherit" underline="hover">
               97 reactions
-            </Link>{" "}
-            <span aria-hidden="true">•</span>{" "}
+            </Link>{' '}
+            <span aria-hidden="true">•</span>{' '}
             <Link component="button" color="inherit" underline="hover">
               5 comments
             </Link>
@@ -104,10 +104,10 @@ export function ListItem02() {
           </IconButton>
         }
         sx={{
-          alignItems: "flex-start",
+          alignItems: 'flex-start',
           gap: 2,
           pb: 2,
-          "& .MuiListItemSecondaryAction-root": { top: "1.25rem" },
+          '& .MuiListItemSecondaryAction-root': { top: '1.25rem' },
         }}
       >
         <ListItemAvatar>
@@ -116,25 +116,25 @@ export function ListItem02() {
         <Stack spacing={1.5} sx={{ flex: 1, minWidth: 0, pr: 3 }}>
           <Box
             sx={{
-              display: "flex",
-              alignItems: "baseline",
+              display: 'flex',
+              alignItems: 'baseline',
               gap: 1.5,
-              flexWrap: "wrap",
+              flexWrap: 'wrap',
             }}
           >
             <Typography variant="body1" sx={{ flex: 1, minWidth: 0 }}>
               <Link component="button">
                 <strong>Jules Forrest</strong>
-              </Link>{" "}
-              and{" "}
+              </Link>{' '}
+              and{' '}
               <Link component="button">
                 <strong>28 others</strong>
-              </Link>{" "}
+              </Link>{' '}
               reacted to your post.
             </Typography>
             <Typography
               variant="body2"
-              sx={{ color: "text.secondary", flexShrink: 0 }}
+              sx={{ color: 'text.secondary', flexShrink: 0 }}
             >
               7h
             </Typography>
@@ -142,11 +142,11 @@ export function ListItem02() {
 
           <Card
             sx={{
-              display: "flex",
-              overflow: "hidden",
-              position: "relative",
-              "&:has(a:hover)": {
-                bgcolor: "action.hover",
+              display: 'flex',
+              overflow: 'hidden',
+              position: 'relative',
+              '&:has(a:hover)': {
+                bgcolor: 'action.hover',
               },
             }}
           >
@@ -156,8 +156,8 @@ export function ListItem02() {
               alt=""
               sx={{
                 width: 120,
-                aspectRatio: "4/3",
-                objectFit: "cover",
+                aspectRatio: '4/3',
+                objectFit: 'cover',
                 flexShrink: 0,
               }}
             />
@@ -167,10 +167,10 @@ export function ListItem02() {
                 href="#"
                 underline="none"
                 sx={{
-                  "&:before": {
+                  '&:before': {
                     content: '""',
-                    display: "block",
-                    position: "absolute",
+                    display: 'block',
+                    position: 'absolute',
                     inset: 0,
                   },
                 }}
@@ -178,7 +178,7 @@ export function ListItem02() {
                 &ldquo;How many variants does this component even have... and
                 why?&rdquo;
               </Link>
-              <Typography variant="body2" sx={{ color: "text.secondary" }}>
+              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                 Nathan Curtis has the low...
               </Typography>
             </Box>
@@ -186,13 +186,13 @@ export function ListItem02() {
 
           <Typography
             variant="body2"
-            sx={{ color: "text.secondary" }}
+            sx={{ color: 'text.secondary' }}
             aria-label="97 reactions, 5 comments"
           >
             <Link component="button" color="inherit" underline="hover">
               97 reactions
-            </Link>{" "}
-            <span aria-hidden="true">•</span>{" "}
+            </Link>{' '}
+            <span aria-hidden="true">•</span>{' '}
             <Link component="button" color="inherit" underline="hover">
               5 comments
             </Link>

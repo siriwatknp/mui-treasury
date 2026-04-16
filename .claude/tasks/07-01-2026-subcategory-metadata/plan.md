@@ -80,9 +80,9 @@ Add new functions to `lib/registry.ts` for subcategory support. No UI changes ye
 
 ```ts
 // Test in Node REPL or temporary script
-getSubcategories("primitive"); // [] (no subcategories yet)
-getUncategorizedItems("primitive"); // all 69 items
-getRegistryBySubcategory("primitive", "card"); // [] (no items with subcategory yet)
+getSubcategories('primitive'); // [] (no subcategories yet)
+getUncategorizedItems('primitive'); // all 69 items
+getRegistryBySubcategory('primitive', 'card'); // [] (no items with subcategory yet)
 ```
 
 ---
@@ -100,21 +100,21 @@ Create and run a script to add `subcategory` field to existing meta.json files b
 1. **Create migration script** at `scripts/add-subcategory.ts`
 
    ```ts
-   import fs from "fs";
-   import path from "path";
-   import { glob } from "glob";
+   import fs from 'fs';
+   import { glob } from 'glob';
+   import path from 'path';
 
    const SUBCATEGORY_MAP: Record<string, string> = {
-     "card-": "card",
-     "tabs-": "tabs",
-     "info-": "info",
-     "radio-": "radio",
-     "select-": "select",
-     "text-field-": "text-field",
-     "number-field-": "text-field",
-     "number-input": "text-field",
-     "list-item-": "list",
-     "color-scheme-": "color-scheme",
+     'card-': 'card',
+     'tabs-': 'tabs',
+     'info-': 'info',
+     'radio-': 'radio',
+     'select-': 'select',
+     'text-field-': 'text-field',
+     'number-field-': 'text-field',
+     'number-input': 'text-field',
+     'list-item-': 'list',
+     'color-scheme-': 'color-scheme',
    };
 
    function inferSubcategory(itemName: string): string | undefined {
@@ -125,18 +125,18 @@ Create and run a script to add `subcategory` field to existing meta.json files b
    }
 
    async function main() {
-     const metaFiles = await glob("registry/**/*.meta.json");
+     const metaFiles = await glob('registry/**/*.meta.json');
 
      for (const metaPath of metaFiles) {
-       const content = JSON.parse(fs.readFileSync(metaPath, "utf-8"));
-       const itemName = path.basename(metaPath).replace(".meta.json", "");
+       const content = JSON.parse(fs.readFileSync(metaPath, 'utf-8'));
+       const itemName = path.basename(metaPath).replace('.meta.json', '');
 
        // Only add subcategory if category is "primitive" and inferrable
-       if (content.meta?.category === "primitive") {
+       if (content.meta?.category === 'primitive') {
          const subcategory = inferSubcategory(itemName);
          if (subcategory) {
            content.meta.subcategory = subcategory;
-           fs.writeFileSync(metaPath, JSON.stringify(content, null, 2) + "\n");
+           fs.writeFileSync(metaPath, JSON.stringify(content, null, 2) + '\n');
            console.log(`Updated: ${itemName} → ${subcategory}`);
          }
        }
@@ -173,9 +173,9 @@ Create and run a script to add `subcategory` field to existing meta.json files b
 ### Expected Result
 
 ```ts
-getSubcategories("primitive"); // ["card", "color-scheme", "info", "list", "radio", "select", "tabs", "text-field"]
-getRegistryBySubcategory("primitive", "card"); // ~25 items
-getUncategorizedItems("primitive"); // remaining items without prefix match
+getSubcategories('primitive'); // ["card", "color-scheme", "info", "list", "radio", "select", "tabs", "text-field"]
+getRegistryBySubcategory('primitive', 'card'); // ~25 items
+getUncategorizedItems('primitive'); // remaining items without prefix match
 ```
 
 ---
@@ -203,14 +203,16 @@ Replace `[name]` route with `[...slug]` catch-all to handle:
 2. **Create new catch-all route** at `app/[category]/[...slug]/page.tsx`
 
    ```tsx
-   import { notFound } from "next/navigation";
+   import { notFound } from 'next/navigation';
+
    import {
-     getRegistryByName,
-     getSubcategories,
-     getRegistryBySubcategory,
      getCategories,
+     getRegistryByName,
+     getRegistryBySubcategory,
      getRegistryItems,
-   } from "@/lib/registry";
+     getSubcategories,
+   } from '@/lib/registry';
+
    // ... import UI components
 
    interface SlugPageProps {
@@ -457,10 +459,10 @@ Update sidebar in CategoryClient to group items by subcategory with collapsible 
      Collapsible,
      CollapsibleContent,
      CollapsibleTrigger,
-   } from "@/components/ui/collapsible";
+   } from '@/components/ui/collapsible';
 
    function Sidebar({ items }: { items: RegistryItem[] }) {
-     const [activeItem, setActiveItem] = useState("");
+     const [activeItem, setActiveItem] = useState('');
 
      const { groups, uncategorized } = useMemo(() => {
        const groups = new Map<string, RegistryItem[]>();

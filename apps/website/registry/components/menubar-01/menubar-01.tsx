@@ -1,16 +1,17 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { Menubar } from "@base-ui-components/react/menubar";
-import { Menu } from "@base-ui-components/react/menu";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
+import * as React from 'react';
+
+import { Menu } from '@base-ui-components/react/menu';
+import { Menubar } from '@base-ui-components/react/menubar';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import ListItemButton, {
   ListItemButtonProps,
-} from "@mui/material/ListItemButton";
-import ListItemText, { ListItemTextProps } from "@mui/material/ListItemText";
-import Paper from "@mui/material/Paper";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+} from '@mui/material/ListItemButton';
+import ListItemText, { ListItemTextProps } from '@mui/material/ListItemText';
+import Paper from '@mui/material/Paper';
 
 function MenuItem({
   children,
@@ -19,7 +20,7 @@ function MenuItem({
   sx,
   ...props
 }: ListItemButtonProps &
-  Pick<ListItemTextProps, "secondary"> & { hasSubmenu?: boolean }) {
+  Pick<ListItemTextProps, 'secondary'> & { hasSubmenu?: boolean }) {
   return (
     <ListItemButton
       dense
@@ -38,8 +39,8 @@ export function Menubar01() {
       render={
         <Box
           sx={{
-            display: "inline-flex",
-            bgcolor: "background.paper",
+            display: 'inline-flex',
+            bgcolor: 'background.paper',
             borderRadius: 1.5,
             p: 0.5,
             gap: 0.5,
@@ -55,8 +56,8 @@ export function Menubar01() {
               disableFocusRipple
               disableTouchRipple
               sx={{
-                "&[data-popup-open]": {
-                  bgcolor: "action.selected",
+                '&[data-popup-open]': {
+                  bgcolor: 'action.selected',
                 },
               }}
             />
@@ -72,7 +73,7 @@ export function Menubar01() {
             render={
               <Box
                 sx={{
-                  zIndex: "modal",
+                  zIndex: 'modal',
                 }}
               />
             }
@@ -83,8 +84,8 @@ export function Menubar01() {
                   sx={{
                     minWidth: 200,
                     p: 0.5,
-                    border: "1px solid",
-                    borderColor: "divider",
+                    border: '1px solid',
+                    borderColor: 'divider',
                   }}
                 />
               }
@@ -99,8 +100,8 @@ export function Menubar01() {
                     <MenuItem
                       hasSubmenu
                       sx={{
-                        "&[data-popup-open]": {
-                          bgcolor: "action.selected",
+                        '&[data-popup-open]': {
+                          bgcolor: 'action.selected',
                         },
                       }}
                     />
@@ -117,7 +118,7 @@ export function Menubar01() {
                     render={
                       <Box
                         sx={{
-                          zIndex: "modal",
+                          zIndex: 'modal',
                         }}
                       />
                     }
@@ -128,8 +129,8 @@ export function Menubar01() {
                           sx={{
                             minWidth: 160,
                             p: 0.5,
-                            border: "1px solid",
-                            borderColor: "divider",
+                            border: '1px solid',
+                            borderColor: 'divider',
                           }}
                         />
                       }
@@ -155,8 +156,8 @@ export function Menubar01() {
               disableFocusRipple
               disableTouchRipple
               sx={{
-                "&[data-popup-open]": {
-                  bgcolor: "action.selected",
+                '&[data-popup-open]': {
+                  bgcolor: 'action.selected',
                 },
               }}
             />
@@ -178,8 +179,8 @@ export function Menubar01() {
               disableFocusRipple
               disableTouchRipple
               sx={{
-                "&[data-popup-open]": {
-                  bgcolor: "action.selected",
+                '&[data-popup-open]': {
+                  bgcolor: 'action.selected',
                 },
               }}
             />

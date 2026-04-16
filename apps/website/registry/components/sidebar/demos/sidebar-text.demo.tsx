@@ -1,32 +1,32 @@
-"use client";
+'use client';
 
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import StarRounded from "@mui/icons-material/StarRounded";
-import FolderRounded from "@mui/icons-material/FolderRounded";
-import InboxRounded from "@mui/icons-material/InboxRounded";
-import PersonRounded from "@mui/icons-material/PersonRounded";
+import FolderRounded from '@mui/icons-material/FolderRounded';
+import InboxRounded from '@mui/icons-material/InboxRounded';
+import PersonRounded from '@mui/icons-material/PersonRounded';
+import StarRounded from '@mui/icons-material/StarRounded';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
-import { SidebarContainer } from "@/registry/components/sidebar/sidebar-container";
-import { SidebarGroup } from "@/registry/components/sidebar/sidebar-group";
-import { SidebarMenuList } from "@/registry/components/sidebar/sidebar-menu-list";
-import { SidebarMenuItem } from "@/registry/components/sidebar/sidebar-menu-item";
-import { SidebarMenuButton } from "@/registry/components/sidebar/sidebar-menu-button";
-import { SidebarIcon } from "@/registry/components/sidebar/sidebar-icon";
-import { SidebarText } from "@/registry/components/sidebar/sidebar-text";
-import { SidebarGroupText } from "@/registry/components/sidebar/sidebar-group-text";
+import { SidebarContainer } from '@/registry/components/sidebar/sidebar-container';
+import { SidebarGroup } from '@/registry/components/sidebar/sidebar-group';
+import { SidebarGroupText } from '@/registry/components/sidebar/sidebar-group-text';
+import { SidebarIcon } from '@/registry/components/sidebar/sidebar-icon';
+import { SidebarMenuButton } from '@/registry/components/sidebar/sidebar-menu-button';
+import { SidebarMenuItem } from '@/registry/components/sidebar/sidebar-menu-item';
+import { SidebarMenuList } from '@/registry/components/sidebar/sidebar-menu-list';
+import { SidebarText } from '@/registry/components/sidebar/sidebar-text';
 
 export const meta = {
-  title: "Text",
+  title: 'Text',
   description:
-    "Primary and secondary text styles for menu items with truncation support.",
+    'Primary and secondary text styles for menu items with truncation support.',
 };
 
 export function Demo() {
   return (
-    <Box sx={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
+    <Box sx={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
       <div>
-        <Typography variant="caption" sx={{ px: 1, color: "text.secondary" }}>
+        <Typography variant="caption" sx={{ px: 1, color: 'text.secondary' }}>
           SidebarText
         </Typography>
         <div style={{ width: 200 }}>
@@ -57,7 +57,7 @@ export function Demo() {
         </div>
       </div>
       <div>
-        <Typography variant="caption" sx={{ px: 1, color: "text.secondary" }}>
+        <Typography variant="caption" sx={{ px: 1, color: 'text.secondary' }}>
           SidebarGroupText
         </Typography>
         <div style={{ width: 240 }}>

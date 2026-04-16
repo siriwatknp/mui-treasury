@@ -1,24 +1,24 @@
-import React from "react";
+import React from 'react';
 
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
-import Content from "@/registry/layout/layout-core/Content";
-import EdgeCollapsedVisible from "@/registry/layout/layout-core/EdgeCollapsedVisible";
-import EdgeSidebar from "@/registry/layout/layout-core/EdgeSidebar";
-import EdgeSidebarCollapser from "@/registry/layout/layout-core/EdgeSidebarCollapser";
-import EdgeSidebarContent from "@/registry/layout/layout-core/EdgeSidebarContent";
-import EdgeUncollapsedVisible from "@/registry/layout/layout-core/EdgeUncollapsedVisible";
-import Footer from "@/registry/layout/layout-core/Footer";
-import Header from "@/registry/layout/layout-core/Header";
-import Root from "@/registry/layout/layout-core/Root";
+import Content from '@/registry/layout/layout-core/Content';
+import EdgeCollapsedVisible from '@/registry/layout/layout-core/EdgeCollapsedVisible';
+import EdgeSidebar from '@/registry/layout/layout-core/EdgeSidebar';
+import EdgeSidebarCollapser from '@/registry/layout/layout-core/EdgeSidebarCollapser';
+import EdgeSidebarContent from '@/registry/layout/layout-core/EdgeSidebarContent';
+import EdgeUncollapsedVisible from '@/registry/layout/layout-core/EdgeUncollapsedVisible';
+import Footer from '@/registry/layout/layout-core/Footer';
+import Header from '@/registry/layout/layout-core/Header';
+import Root from '@/registry/layout/layout-core/Root';
 
 export const meta = {
-  title: "Edge Sidebar Collapse",
+  title: 'Edge Sidebar Collapse',
   description:
-    "Collapsible sidebar with a toggle button using EdgeSidebarCollapser.",
-  previewMode: "iframe" as const,
+    'Collapsible sidebar with a toggle button using EdgeSidebarCollapser.',
+  previewMode: 'iframe' as const,
 };
 
 export function Demo() {
@@ -33,7 +33,7 @@ export function Demo() {
       </Header>
       <EdgeSidebar
         id="sidebar-collapse"
-        variant={["permanent", { width: "256px", collapsedWidth: "64px" }]}
+        variant={['permanent', { width: '256px', collapsedWidth: '64px' }]}
       >
         <EdgeSidebarContent>
           <Box sx={{ p: 1 }}>

@@ -1,17 +1,18 @@
-"use client";
+'use client';
 
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import LinearProgress from "@mui/material/LinearProgress";
-import Typography from "@mui/material/Typography";
-import type { LanguageModelUsage } from "ai";
 import {
   type ComponentProps,
   type ReactNode,
   createContext,
   useContext,
-} from "react";
-import { estimateCost, type ModelId } from "tokenlens";
+} from 'react';
+
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import LinearProgress from '@mui/material/LinearProgress';
+import Typography from '@mui/material/Typography';
+import type { LanguageModelUsage } from 'ai';
+import { type ModelId, estimateCost } from 'tokenlens';
 
 const PERCENT_MAX = 100;
 const ICON_RADIUS = 10;
@@ -32,7 +33,7 @@ const useContextValue = () => {
   const context = useContext(ContextContext);
 
   if (!context) {
-    throw new Error("Context components must be used within Context");
+    throw new Error('Context components must be used within Context');
   }
 
   return context;
@@ -72,7 +73,7 @@ const ContextIcon = () => {
       aria-label="Model context usage"
       height="20"
       role="img"
-      style={{ color: "currentcolor" }}
+      style={{ color: 'currentcolor' }}
       viewBox={`0 0 ${ICON_VIEWBOX} ${ICON_VIEWBOX}`}
       width="20"
     >
@@ -96,7 +97,7 @@ const ContextIcon = () => {
         strokeDashoffset={dashOffset}
         strokeLinecap="round"
         strokeWidth={ICON_STROKE_WIDTH}
-        style={{ transformOrigin: "center", transform: "rotate(-90deg)" }}
+        style={{ transformOrigin: 'center', transform: 'rotate(-90deg)' }}
       />
     </svg>
   );
@@ -114,8 +115,8 @@ export const ContextTrigger = ({
 }: ContextTriggerProps) => {
   const { usedTokens, maxTokens } = useContextValue();
   const usedPercent = usedTokens / maxTokens;
-  const renderedPercent = new Intl.NumberFormat("en-US", {
-    style: "percent",
+  const renderedPercent = new Intl.NumberFormat('en-US', {
+    style: 'percent',
     maximumFractionDigits: 1,
   }).format(usedPercent);
 
@@ -126,11 +127,11 @@ export const ContextTrigger = ({
         variant="text"
         onClick={onOpen}
         sx={{
-          minWidth: "auto",
+          minWidth: 'auto',
           p: 1,
-          color: "text.secondary",
-          "&:hover": {
-            bgcolor: "action.hover",
+          color: 'text.secondary',
+          '&:hover': {
+            bgcolor: 'action.hover',
           },
           ...sx,
         }}
@@ -138,7 +139,7 @@ export const ContextTrigger = ({
       >
         <Typography
           component="span"
-          sx={{ fontWeight: 500, mr: 1, color: "text.secondary" }}
+          sx={{ fontWeight: 500, mr: 1, color: 'text.secondary' }}
         >
           {renderedPercent}
         </Typography>
@@ -158,9 +159,9 @@ export const ContextContent = ({
   <Box
     sx={{
       minWidth: 240,
-      "& > *:not(:last-child)": {
+      '& > *:not(:last-child)': {
         borderBottom: 1,
-        borderColor: "divider",
+        borderColor: 'divider',
       },
       ...sx,
     }}
@@ -179,26 +180,26 @@ export const ContextContentHeader = ({
 }: ContextContentHeaderProps) => {
   const { usedTokens, maxTokens } = useContextValue();
   const usedPercent = usedTokens / maxTokens;
-  const displayPct = new Intl.NumberFormat("en-US", {
-    style: "percent",
+  const displayPct = new Intl.NumberFormat('en-US', {
+    style: 'percent',
     maximumFractionDigits: 1,
   }).format(usedPercent);
-  const used = new Intl.NumberFormat("en-US", {
-    notation: "compact",
+  const used = new Intl.NumberFormat('en-US', {
+    notation: 'compact',
   }).format(usedTokens);
-  const total = new Intl.NumberFormat("en-US", {
-    notation: "compact",
+  const total = new Intl.NumberFormat('en-US', {
+    notation: 'compact',
   }).format(maxTokens);
 
   return (
-    <Box sx={{ width: "100%", p: 1.5, ...sx }} {...props}>
+    <Box sx={{ width: '100%', p: 1.5, ...sx }} {...props}>
       {children ?? (
         <>
           <Box
             sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
               gap: 1.5,
               mb: 1,
             }}
@@ -206,7 +207,7 @@ export const ContextContentHeader = ({
             <Typography variant="caption">{displayPct}</Typography>
             <Typography
               variant="caption"
-              sx={{ fontFamily: "monospace", color: "text.secondary" }}
+              sx={{ fontFamily: 'monospace', color: 'text.secondary' }}
             >
               {used} / {total}
             </Typography>
@@ -214,7 +215,7 @@ export const ContextContentHeader = ({
           <LinearProgress
             variant="determinate"
             value={usedPercent * PERCENT_MAX}
-            sx={{ height: 6, borderRadius: 1, bgcolor: "action.hover" }}
+            sx={{ height: 6, borderRadius: 1, bgcolor: 'action.hover' }}
           />
         </>
       )}
@@ -229,7 +230,7 @@ export const ContextContentBody = ({
   sx,
   ...props
 }: ContextContentBodyProps) => (
-  <Box sx={{ width: "100%", p: 1.5, ...sx }} {...props}>
+  <Box sx={{ width: '100%', p: 1.5, ...sx }} {...props}>
     {children}
   </Box>
 );
@@ -251,20 +252,20 @@ export const ContextContentFooter = ({
         },
       }).totalUSD
     : undefined;
-  const totalCost = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
+  const totalCost = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
   }).format(costUSD ?? 0);
 
   return (
     <Box
       sx={{
-        display: "flex",
-        width: "100%",
-        alignItems: "center",
-        justifyContent: "space-between",
+        display: 'flex',
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'space-between',
         gap: 1.5,
-        bgcolor: "action.hover",
+        bgcolor: 'action.hover',
         p: 1.5,
         ...sx,
       }}
@@ -272,7 +273,7 @@ export const ContextContentFooter = ({
     >
       {children ?? (
         <>
-          <Typography variant="caption" sx={{ color: "text.secondary" }}>
+          <Typography variant="caption" sx={{ color: 'text.secondary' }}>
             Total cost
           </Typography>
           <Typography variant="caption">{totalCost}</Typography>
@@ -306,22 +307,22 @@ export const ContextInputUsage = ({
         usage: { input: inputTokens, output: 0 },
       }).totalUSD
     : undefined;
-  const inputCostText = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
+  const inputCostText = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
   }).format(inputCost ?? 0);
 
   return (
     <Box
       sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
         ...sx,
       }}
       {...props}
     >
-      <Typography variant="caption" sx={{ color: "text.secondary" }}>
+      <Typography variant="caption" sx={{ color: 'text.secondary' }}>
         Input
       </Typography>
       <TokensWithCost costText={inputCostText} tokens={inputTokens} />
@@ -353,22 +354,22 @@ export const ContextOutputUsage = ({
         usage: { input: 0, output: outputTokens },
       }).totalUSD
     : undefined;
-  const outputCostText = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
+  const outputCostText = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
   }).format(outputCost ?? 0);
 
   return (
     <Box
       sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
         ...sx,
       }}
       {...props}
     >
-      <Typography variant="caption" sx={{ color: "text.secondary" }}>
+      <Typography variant="caption" sx={{ color: 'text.secondary' }}>
         Output
       </Typography>
       <TokensWithCost costText={outputCostText} tokens={outputTokens} />
@@ -400,22 +401,22 @@ export const ContextReasoningUsage = ({
         usage: { reasoningTokens },
       }).totalUSD
     : undefined;
-  const reasoningCostText = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
+  const reasoningCostText = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
   }).format(reasoningCost ?? 0);
 
   return (
     <Box
       sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
         ...sx,
       }}
       {...props}
     >
-      <Typography variant="caption" sx={{ color: "text.secondary" }}>
+      <Typography variant="caption" sx={{ color: 'text.secondary' }}>
         Reasoning
       </Typography>
       <TokensWithCost costText={reasoningCostText} tokens={reasoningTokens} />
@@ -447,22 +448,22 @@ export const ContextCacheUsage = ({
         usage: { cacheReads: cacheTokens, input: 0, output: 0 },
       }).totalUSD
     : undefined;
-  const cacheCostText = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
+  const cacheCostText = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
   }).format(cacheCost ?? 0);
 
   return (
     <Box
       sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
         ...sx,
       }}
       {...props}
     >
-      <Typography variant="caption" sx={{ color: "text.secondary" }}>
+      <Typography variant="caption" sx={{ color: 'text.secondary' }}>
         Cache
       </Typography>
       <TokensWithCost costText={cacheCostText} tokens={cacheTokens} />
@@ -479,15 +480,15 @@ const TokensWithCost = ({
 }) => (
   <Typography component="span" variant="caption">
     {tokens === undefined
-      ? "—"
-      : new Intl.NumberFormat("en-US", {
-          notation: "compact",
+      ? '—'
+      : new Intl.NumberFormat('en-US', {
+          notation: 'compact',
         }).format(tokens)}
     {costText ? (
       <Typography
         component="span"
         variant="caption"
-        sx={{ ml: 1, color: "text.secondary" }}
+        sx={{ ml: 1, color: 'text.secondary' }}
       >
         • {costText}
       </Typography>

@@ -1,59 +1,60 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import { FirebaseChatTransport } from "@/registry/firebase/firebase-chat-transport";
-import { app } from "@/lib/firebase-setup";
-import { Action, Actions } from "@/registry/components/ai-actions/ai-actions";
+import { useChat } from '@ai-sdk/react';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
+import Typography from '@mui/material/Typography';
+import { stepCountIs, tool } from 'ai';
+import { Bot, CopyIcon, RefreshCwIcon, SquareIcon } from 'lucide-react';
+import { toast } from 'sonner';
+import { z } from 'zod';
+
+import { app } from '@/lib/firebase-setup';
+import { Action, Actions } from '@/registry/components/ai-actions/ai-actions';
 import {
   Conversation,
   ConversationContent,
   ConversationScrollButton,
-} from "@/registry/components/ai-conversation/ai-conversation";
+} from '@/registry/components/ai-conversation/ai-conversation';
+import { Loader } from '@/registry/components/ai-loader/ai-loader';
 import {
   Message,
   MessageAvatar,
   MessageContent,
-} from "@/registry/components/ai-message/ai-message";
-import { Loader } from "@/registry/components/ai-loader/ai-loader";
+} from '@/registry/components/ai-message/ai-message';
 import {
   PromptInput,
   PromptInputBody,
+  type PromptInputMessage,
   PromptInputSubmit,
   PromptInputTextarea,
   PromptInputToolbar,
-  type PromptInputMessage,
-} from "@/registry/components/ai-prompt-input/ai-prompt-input";
-import { Response } from "@/registry/components/ai-response/ai-response";
+} from '@/registry/components/ai-prompt-input/ai-prompt-input';
+import { Response } from '@/registry/components/ai-response/ai-response';
 import {
   Suggestion,
   Suggestions,
-} from "@/registry/components/ai-suggestion/ai-suggestion";
+} from '@/registry/components/ai-suggestion/ai-suggestion';
 import {
   Tool,
   ToolContent,
   ToolHeader,
   ToolInput,
   ToolOutput,
-} from "@/registry/components/ai-tool/ai-tool";
-import { useChat } from "@ai-sdk/react";
-import { stepCountIs, tool } from "ai";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import CircularProgress from "@mui/material/CircularProgress";
-import Typography from "@mui/material/Typography";
-import { Bot, CopyIcon, RefreshCwIcon, SquareIcon } from "lucide-react";
-import { toast } from "sonner";
-import { z } from "zod";
+} from '@/registry/components/ai-tool/ai-tool';
+import { FirebaseChatTransport } from '@/registry/firebase/firebase-chat-transport';
 
 const SUGGESTED_PROMPTS = [
   "What's the weather like in Tokyo?",
-  "Get the current time in New York",
-  "Tell me the weather in Paris and London",
+  'Get the current time in New York',
+  'Tell me the weather in Paris and London',
 ];
 
 export default function FirebaseToolCalling() {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
 
   const transport = React.useMemo(
     () =>
@@ -61,25 +62,25 @@ export default function FirebaseToolCalling() {
         ? new FirebaseChatTransport({
             firebaseApp: app,
             modelParams: {
-              model: "gemini-2.5-flash",
+              model: 'gemini-2.5-flash',
               systemInstruction: `You are a helpful AI assistant with access to tools.
 When the user asks about weather or time, use the appropriate tool to get the information.
 Always respond in a concise and clear manner using Markdown format.`,
             },
             tools: {
               getWeather: tool({
-                description: "Get the current weather for a city",
+                description: 'Get the current weather for a city',
                 inputSchema: z.object({
-                  city: z.string().describe("The city name"),
-                  country: z.string().optional().describe("The country code"),
+                  city: z.string().describe('The city name'),
+                  country: z.string().optional().describe('The country code'),
                 }),
                 execute: async ({ city, country }) => {
                   await new Promise((resolve) => setTimeout(resolve, 1000));
                   return {
                     city,
-                    country: country || "US",
+                    country: country || 'US',
                     temperature: Math.round(15 + Math.random() * 20),
-                    conditions: ["sunny", "cloudy", "rainy", "windy"][
+                    conditions: ['sunny', 'cloudy', 'rainy', 'windy'][
                       Math.floor(Math.random() * 4)
                     ],
                     humidity: Math.round(40 + Math.random() * 40),
@@ -87,27 +88,27 @@ Always respond in a concise and clear manner using Markdown format.`,
                 },
               }),
               getTime: tool({
-                description: "Get the current time for a timezone",
+                description: 'Get the current time for a timezone',
                 inputSchema: z.object({
                   timezone: z
                     .string()
                     .describe(
-                      "The timezone (e.g., America/New_York, Europe/London)",
+                      'The timezone (e.g., America/New_York, Europe/London)',
                     ),
                 }),
                 execute: async ({ timezone }) => {
                   await new Promise((resolve) => setTimeout(resolve, 500));
                   const now = new Date();
-                  const formatter = new Intl.DateTimeFormat("en-US", {
+                  const formatter = new Intl.DateTimeFormat('en-US', {
                     timeZone: timezone,
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    second: "2-digit",
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
                     hour12: true,
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
                   });
                   return {
                     timezone,
@@ -123,7 +124,7 @@ Always respond in a concise and clear manner using Markdown format.`,
   );
 
   const { messages, status, error, sendMessage, stop, regenerate } = useChat({
-    id: "firebase-tool-calling",
+    id: 'firebase-tool-calling',
     transport: transport!,
   });
 
@@ -136,7 +137,7 @@ Always respond in a concise and clear manner using Markdown format.`,
     if (hasText) {
       sendMessage({ text: message.text! });
     }
-    setInputValue("");
+    setInputValue('');
   };
 
   const handleSuggestionClick = (suggestion: string) => {
@@ -149,22 +150,22 @@ Always respond in a concise and clear manner using Markdown format.`,
     } catch (err) {
       toast.error(
         `Failed to copy (${
-          err instanceof Error ? err.message : "Unknown error"
+          err instanceof Error ? err.message : 'Unknown error'
         })`,
       );
     }
   };
 
-  const showSuggestions = messages.length === 0 && status === "ready";
+  const showSuggestions = messages.length === 0 && status === 'ready';
 
   if (!app) {
     return (
       <Box
         sx={{
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           p: 2,
         }}
       >
@@ -179,34 +180,34 @@ Always respond in a concise and clear manner using Markdown format.`,
   return (
     <Box
       sx={{
-        height: "100%",
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
+        height: '100%',
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
         maxWidth: 768,
-        mx: "auto",
+        mx: 'auto',
       }}
     >
       <Box
         sx={{
           flex: 1,
-          display: "flex",
-          flexDirection: "column",
-          overflow: "hidden",
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'hidden',
         }}
       >
         <Conversation>
           <ConversationContent>
-            {messages.length === 0 && status === "ready" ? (
+            {messages.length === 0 && status === 'ready' ? (
               <Box
                 sx={{
                   flex: 1,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "column",
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexDirection: 'column',
                   gap: 2,
-                  color: "text.tertiary",
+                  color: 'text.tertiary',
                 }}
               >
                 <Bot size={48} />
@@ -218,38 +219,38 @@ Always respond in a concise and clear manner using Markdown format.`,
                 </Typography>
               </Box>
             ) : (
-              <Box sx={{ display: "flex", flexDirection: "column" }}>
+              <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 {messages.map((message) => {
                   const messageText = message.parts
-                    ?.filter((part) => part.type === "text")
+                    ?.filter((part) => part.type === 'text')
                     .map((part) => part.text)
-                    .join("\n");
+                    .join('\n');
 
                   return (
                     <Message key={message.id} from={message.role}>
                       <MessageAvatar
-                        name={message.role === "user" ? "You" : "AI"}
+                        name={message.role === 'user' ? 'You' : 'AI'}
                       />
                       <MessageContent variant="flat">
                         {message.parts?.map((part, index: number) => {
-                          if (part.type === "text") {
+                          if (part.type === 'text') {
                             if (
-                              message.role === "assistant" &&
-                              part.state !== "done" &&
+                              message.role === 'assistant' &&
+                              part.state !== 'done' &&
                               !part.text
                             ) {
                               return null;
                             }
-                            return message.role === "assistant" ? (
+                            return message.role === 'assistant' ? (
                               <Response key={index}>{part.text}</Response>
                             ) : (
                               <Box key={index}>{part.text}</Box>
                             );
                           }
                           if (
-                            part.type.startsWith("tool-") &&
-                            "state" in part &&
-                            "input" in part
+                            part.type.startsWith('tool-') &&
+                            'state' in part &&
+                            'input' in part
                           ) {
                             return (
                               <Box key={index} sx={{ my: 1 }}>
@@ -260,7 +261,7 @@ Always respond in a concise and clear manner using Markdown format.`,
                                   />
                                   <ToolContent>
                                     <ToolInput input={part.input} />
-                                    {"output" in part &&
+                                    {'output' in part &&
                                       (part.output || part.errorText) && (
                                         <ToolOutput
                                           output={part.output}
@@ -274,7 +275,7 @@ Always respond in a concise and clear manner using Markdown format.`,
                           }
                           return null;
                         })}
-                        {message.role === "assistant" && messageText && (
+                        {message.role === 'assistant' && messageText && (
                           <Actions>
                             <Action
                               tooltip="Copy"
@@ -295,15 +296,15 @@ Always respond in a concise and clear manner using Markdown format.`,
                   );
                 })}
 
-                {status === "submitted" && (
+                {status === 'submitted' && (
                   <Message from="assistant">
                     <MessageAvatar name="AI Assistant" />
                     <MessageContent variant="flat">
                       <Box
-                        sx={{ display: "flex", alignItems: "center", gap: 1 }}
+                        sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
                       >
                         <CircularProgress size={20} />
-                        <Typography sx={{ color: "text.secondary" }}>
+                        <Typography sx={{ color: 'text.secondary' }}>
                           Thinking...
                         </Typography>
                       </Box>
@@ -315,26 +316,26 @@ Always respond in a concise and clear manner using Markdown format.`,
                   <Message from="assistant">
                     <MessageAvatar name="AI Assistant" />
                     <MessageContent variant="flat">
-                      <Typography sx={{ color: "error.text" }}>
+                      <Typography sx={{ color: 'error.text' }}>
                         {error.message ||
-                          "An error occurred. Please try again."}
+                          'An error occurred. Please try again.'}
                       </Typography>
                     </MessageContent>
                   </Message>
                 )}
               </Box>
             )}
-            {status === "streaming" && (
+            {status === 'streaming' && (
               <Box
                 sx={{
-                  display: "flex",
-                  alignItems: "center",
+                  display: 'flex',
+                  alignItems: 'center',
                   gap: 1,
                   mt: 1,
                 }}
               >
                 <Loader />
-                <Typography sx={{ color: "text.secondary" }}>
+                <Typography sx={{ color: 'text.secondary' }}>
                   Streaming...
                 </Typography>
               </Box>
@@ -365,11 +366,11 @@ Always respond in a concise and clear manner using Markdown format.`,
             placeholder="Ask about weather or time..."
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            disabled={status === "submitted" || error != null}
+            disabled={status === 'submitted' || error != null}
           />
         </PromptInputBody>
         <PromptInputToolbar>
-          {status === "streaming" || status === "submitted" ? (
+          {status === 'streaming' || status === 'submitted' ? (
             <Button
               variant="outlined"
               onClick={(e) => {
@@ -377,7 +378,7 @@ Always respond in a concise and clear manner using Markdown format.`,
                 stop();
               }}
               sx={{
-                minWidth: "auto",
+                minWidth: 'auto',
                 borderRadius: 2,
                 p: 1,
               }}
@@ -386,7 +387,7 @@ Always respond in a concise and clear manner using Markdown format.`,
             </Button>
           ) : (
             <PromptInputSubmit
-              status={status as "ready" | "submitted" | "streaming" | "error"}
+              status={status as 'ready' | 'submitted' | 'streaming' | 'error'}
               disabled={error != null}
             />
           )}

@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import { switchClasses } from "@mui/material/Switch";
-import { styled } from "@mui/material/styles";
+import { switchClasses } from '@mui/material/Switch';
+import { styled } from '@mui/material/styles';
 
 import {
   CONTROL_HEIGHTS,
@@ -9,16 +9,16 @@ import {
   SWITCH_SIZES,
   SWITCH_TOUCH_SIZES,
   TOUCH_MEDIA_QUERY,
-} from "../scales";
-import { ThemeComponents } from "../types";
+} from '../scales';
+import { ThemeComponents } from '../types';
 
-declare module "@mui/material/Radio" {
+declare module '@mui/material/Radio' {
   interface RadioPropsSizeOverrides {
     large: true;
   }
 }
 
-declare module "@mui/material/Switch" {
+declare module '@mui/material/Switch' {
   interface SwitchPropsSizeOverrides {
     large: true;
   }
@@ -26,55 +26,55 @@ declare module "@mui/material/Switch" {
 
 const borderWidth = 1;
 
-const Uncheckbox = styled("span")(({ theme }) => ({
-  display: "inline-block",
-  width: "1.5rem",
-  height: "1.5rem",
+const Uncheckbox = styled('span')(({ theme }) => ({
+  display: 'inline-block',
+  width: '1.5rem',
+  height: '1.5rem',
   padding: 3,
   borderRadius: 4,
   color: (theme.vars || theme).palette.text.icon,
-  ".MuiCheckbox-root:hover &, .MuiFormControlLabel-root:hover &": {
+  '.MuiCheckbox-root:hover &, .MuiFormControlLabel-root:hover &': {
     color: (theme.vars || theme).palette.text.primary,
   },
-  "&::before": {
+  '&::before': {
     content: '""',
-    display: "block",
-    width: "100%",
-    height: "100%",
-    border: "1px solid",
-    borderColor: "currentColor",
-    borderRadius: "inherit",
+    display: 'block',
+    width: '100%',
+    height: '100%',
+    border: '1px solid',
+    borderColor: 'currentColor',
+    borderRadius: 'inherit',
   },
   '&[font-size="large"]': {
-    width: "1.75rem",
-    height: "1.75rem",
+    width: '1.75rem',
+    height: '1.75rem',
   },
 }));
 
-const Unradio = styled("span")(({ theme }) => ({
-  display: "inline-block",
-  width: "1.5rem",
-  height: "1.5rem",
+const Unradio = styled('span')(({ theme }) => ({
+  display: 'inline-block',
+  width: '1.5rem',
+  height: '1.5rem',
   padding: 2,
-  borderRadius: "50%",
+  borderRadius: '50%',
   color: (theme.vars || theme).palette.text.icon,
-  ".MuiRadio-root:hover &, .MuiFormControlLabel-root:hover &": {
+  '.MuiRadio-root:hover &, .MuiFormControlLabel-root:hover &': {
     color: (theme.vars || theme).palette.text.primary,
   },
-  "&::before": {
+  '&::before': {
     content: '""',
-    display: "block",
+    display: 'block',
     marginTop: 1,
     marginLeft: 1,
-    width: "calc(100% - 2px)",
-    height: "calc(100% - 2px)",
-    border: "1px solid",
-    borderColor: "currentColor",
-    borderRadius: "inherit",
+    width: 'calc(100% - 2px)',
+    height: 'calc(100% - 2px)',
+    border: '1px solid',
+    borderColor: 'currentColor',
+    borderRadius: 'inherit',
   },
   '&[font-size="large"]': {
-    width: "1.75rem",
-    height: "1.75rem",
+    width: '1.75rem',
+    height: '1.75rem',
   },
 }));
 
@@ -89,7 +89,7 @@ export const controlsTheme: ThemeComponents = {
       root: {
         variants: [
           {
-            props: { size: "small" },
+            props: { size: 'small' },
             style: {
               padding: (CONTROL_HEIGHTS.sm - iconSize) / 2,
               [TOUCH_MEDIA_QUERY]: {
@@ -100,7 +100,7 @@ export const controlsTheme: ThemeComponents = {
             },
           },
           {
-            props: { size: "medium" },
+            props: { size: 'medium' },
             style: {
               padding: (CONTROL_HEIGHTS.md - iconSize) / 2,
               [TOUCH_MEDIA_QUERY]: {
@@ -111,9 +111,9 @@ export const controlsTheme: ThemeComponents = {
             },
           },
           {
-            props: { size: "large" },
+            props: { size: 'large' },
             style: {
-              "--Icon-size": "1.75rem",
+              '--Icon-size': '1.75rem',
               padding: (CONTROL_HEIGHTS.lg - iconSize) / 2 - 2,
               [TOUCH_MEDIA_QUERY]: {
                 ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
@@ -134,7 +134,7 @@ export const controlsTheme: ThemeComponents = {
       root: {
         variants: [
           {
-            props: { size: "small" },
+            props: { size: 'small' },
             style: {
               padding: (CONTROL_HEIGHTS.sm - iconSize) / 2,
               [TOUCH_MEDIA_QUERY]: {
@@ -145,7 +145,7 @@ export const controlsTheme: ThemeComponents = {
             },
           },
           {
-            props: { size: "medium" },
+            props: { size: 'medium' },
             style: {
               padding: (CONTROL_HEIGHTS.md - iconSize) / 2,
               [TOUCH_MEDIA_QUERY]: {
@@ -156,9 +156,9 @@ export const controlsTheme: ThemeComponents = {
             },
           },
           {
-            props: { size: "large" },
+            props: { size: 'large' },
             style: {
-              "--Icon-size": "1.75rem",
+              '--Icon-size': '1.75rem',
               padding: (CONTROL_HEIGHTS.lg - iconSize) / 2 - 2,
               [TOUCH_MEDIA_QUERY]: {
                 ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
@@ -174,69 +174,69 @@ export const controlsTheme: ThemeComponents = {
   MuiSwitch: {
     styleOverrides: {
       root: ({ theme }) => ({
-        "--_h": `${SWITCH_SIZES.md.height}px`,
-        "--_w": `${SWITCH_SIZES.md.width}px`,
-        "--_inset": `${SWITCH_SIZES.md.inset}px`,
-        "--_b": "1px",
-        "--_thumb-size": "calc(var(--_h) - var(--_b) * 2 - var(--_inset) * 2)",
-        "--_thumb-w": "var(--_thumb-size)",
-        "--_thumb-h": "var(--_thumb-size)",
-        "--plus-opacity-switchTrackDisabled": "0.5",
-        width: "var(--_w)",
-        height: "var(--_h)",
+        '--_h': `${SWITCH_SIZES.md.height}px`,
+        '--_w': `${SWITCH_SIZES.md.width}px`,
+        '--_inset': `${SWITCH_SIZES.md.inset}px`,
+        '--_b': '1px',
+        '--_thumb-size': 'calc(var(--_h) - var(--_b) * 2 - var(--_inset) * 2)',
+        '--_thumb-w': 'var(--_thumb-size)',
+        '--_thumb-h': 'var(--_thumb-size)',
+        '--plus-opacity-switchTrackDisabled': '0.5',
+        width: 'var(--_w)',
+        height: 'var(--_h)',
         padding: 0,
-        borderRadius: "var(--_h)",
-        "&:has(.Mui-focusVisible)": {
-          outline: "2px solid",
-          outlineOffset: "4px",
+        borderRadius: 'var(--_h)',
+        '&:has(.Mui-focusVisible)': {
+          outline: '2px solid',
+          outlineOffset: '4px',
           outlineColor: (theme.vars || theme).palette.text.primary,
         },
         [TOUCH_MEDIA_QUERY]: {
           ...(SWITCH_SIZES.md.height !== SWITCH_TOUCH_SIZES.md.height && {
-            "--_h": `${SWITCH_TOUCH_SIZES.md.height}px`,
+            '--_h': `${SWITCH_TOUCH_SIZES.md.height}px`,
           }),
           ...(SWITCH_SIZES.md.width !== SWITCH_TOUCH_SIZES.md.width && {
-            "--_w": `${SWITCH_TOUCH_SIZES.md.width}px`,
+            '--_w': `${SWITCH_TOUCH_SIZES.md.width}px`,
           }),
           ...(SWITCH_SIZES.md.inset !== SWITCH_TOUCH_SIZES.md.inset && {
-            "--_inset": `${SWITCH_TOUCH_SIZES.md.inset}px`,
+            '--_inset': `${SWITCH_TOUCH_SIZES.md.inset}px`,
           }),
         },
         variants: [
           {
-            props: { size: "small" },
+            props: { size: 'small' },
             style: {
-              "--_h": `${SWITCH_SIZES.sm.height}px`,
-              "--_w": `${SWITCH_SIZES.sm.width}px`,
-              "--_inset": `${SWITCH_SIZES.sm.inset}px`,
+              '--_h': `${SWITCH_SIZES.sm.height}px`,
+              '--_w': `${SWITCH_SIZES.sm.width}px`,
+              '--_inset': `${SWITCH_SIZES.sm.inset}px`,
               [TOUCH_MEDIA_QUERY]: {
                 ...(SWITCH_SIZES.sm.height !== SWITCH_TOUCH_SIZES.sm.height && {
-                  "--_h": `${SWITCH_TOUCH_SIZES.sm.height}px`,
+                  '--_h': `${SWITCH_TOUCH_SIZES.sm.height}px`,
                 }),
                 ...(SWITCH_SIZES.sm.width !== SWITCH_TOUCH_SIZES.sm.width && {
-                  "--_w": `${SWITCH_TOUCH_SIZES.sm.width}px`,
+                  '--_w': `${SWITCH_TOUCH_SIZES.sm.width}px`,
                 }),
                 ...(SWITCH_SIZES.sm.inset !== SWITCH_TOUCH_SIZES.sm.inset && {
-                  "--_inset": `${SWITCH_TOUCH_SIZES.sm.inset}px`,
+                  '--_inset': `${SWITCH_TOUCH_SIZES.sm.inset}px`,
                 }),
               },
             },
           },
           {
-            props: { size: "large" },
+            props: { size: 'large' },
             style: {
-              "--_h": `${SWITCH_SIZES.lg.height}px`,
-              "--_w": `${SWITCH_SIZES.lg.width}px`,
-              "--_inset": `${SWITCH_SIZES.lg.inset}px`,
+              '--_h': `${SWITCH_SIZES.lg.height}px`,
+              '--_w': `${SWITCH_SIZES.lg.width}px`,
+              '--_inset': `${SWITCH_SIZES.lg.inset}px`,
               [TOUCH_MEDIA_QUERY]: {
                 ...(SWITCH_SIZES.lg.height !== SWITCH_TOUCH_SIZES.lg.height && {
-                  "--_h": `${SWITCH_TOUCH_SIZES.lg.height}px`,
+                  '--_h': `${SWITCH_TOUCH_SIZES.lg.height}px`,
                 }),
                 ...(SWITCH_SIZES.lg.width !== SWITCH_TOUCH_SIZES.lg.width && {
-                  "--_w": `${SWITCH_TOUCH_SIZES.lg.width}px`,
+                  '--_w': `${SWITCH_TOUCH_SIZES.lg.width}px`,
                 }),
                 ...(SWITCH_SIZES.lg.inset !== SWITCH_TOUCH_SIZES.lg.inset && {
-                  "--_inset": `${SWITCH_TOUCH_SIZES.lg.inset}px`,
+                  '--_inset': `${SWITCH_TOUCH_SIZES.lg.inset}px`,
                 }),
               },
             },
@@ -244,12 +244,12 @@ export const controlsTheme: ThemeComponents = {
         ],
         [`& .${switchClasses.switchBase}`]: {
           padding: borderWidth,
-          top: "var(--_inset)",
-          left: "var(--_inset)",
+          top: 'var(--_inset)',
+          left: 'var(--_inset)',
           [`&.${switchClasses.checked}`]: {
             color: (theme.vars || theme).palette.common.white,
             transform: `translateX(calc(var(--_w) - var(--_thumb-w) - var(--_b) * 2 - var(--_inset) * 2))`,
-            ...theme.applyStyles("dark", {
+            ...theme.applyStyles('dark', {
               [`& .${switchClasses.thumb}`]: {
                 background: (theme.vars || theme).palette.grey[900],
               },
@@ -258,34 +258,34 @@ export const controlsTheme: ThemeComponents = {
           [`&.${switchClasses.checked}:not(.Mui-disabled) + .${switchClasses.track}`]:
             {
               opacity: 1,
-              border: "none",
+              border: 'none',
             },
-          "&:active": {
-            "--_thumb-w": "calc(var(--_thumb-size) + 4px)",
+          '&:active': {
+            '--_thumb-w': 'calc(var(--_thumb-size) + 4px)',
           },
-          "&.Mui-disabled": {
+          '&.Mui-disabled': {
             [`& .${switchClasses.thumb}`]: {
-              opacity: "var(--plus-opacity-switchTrackDisabled)",
+              opacity: 'var(--plus-opacity-switchTrackDisabled)',
             },
           },
         },
         [`& .${switchClasses.thumb}`]: {
-          borderRadius: "var(--_thumb-size)",
+          borderRadius: 'var(--_thumb-size)',
           background: (theme.vars || theme).palette.common.white,
-          width: "var(--_thumb-w)",
-          height: "var(--_thumb-h)",
+          width: 'var(--_thumb-w)',
+          height: 'var(--_thumb-h)',
           boxShadow:
-            "0 3px 8px 0 rgba(0,0,0,0.1), 0 1px 1px 0 rgba(0,0,0,0.12), 0 3px 1px 0 rgba(0,0,0,0.08)",
-          transition: "width 120ms ease-out 0ms",
+            '0 3px 8px 0 rgba(0,0,0,0.1), 0 1px 1px 0 rgba(0,0,0,0.12), 0 3px 1px 0 rgba(0,0,0,0.08)',
+          transition: 'width 120ms ease-out 0ms',
         },
         [`& .${switchClasses.track}`]: {
-          borderRadius: "var(--_thumb-size)",
+          borderRadius: 'var(--_thumb-size)',
           border: `solid ${(theme.vars || theme).palette.grey[300]}`,
           borderWidth,
           backgroundColor: (theme.vars || theme).palette.grey[300],
           opacity: 1,
-          transition: "none",
-          ...theme.applyStyles("dark", {
+          transition: 'none',
+          ...theme.applyStyles('dark', {
             border: `solid ${(theme.vars || theme).palette.grey[700]}`,
             backgroundColor: (theme.vars || theme).palette.grey[900],
           }),
@@ -296,10 +296,10 @@ export const controlsTheme: ThemeComponents = {
   MuiFormControlLabel: {
     styleOverrides: {
       root: ({ theme }) => ({
-        gap: "var(--_gap)",
+        gap: 'var(--_gap)',
         marginLeft: -4,
         [`&:has(.${switchClasses.root})`]: {
-          "--_gap": theme.spacing(1),
+          '--_gap': theme.spacing(1),
           margin: 0,
         },
       }),

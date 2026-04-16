@@ -1,8 +1,10 @@
-import React, { ReactNode } from "react";
-import { styled, SxProps, Theme } from "@mui/material/styles";
-import cx from "clsx";
-import { AppendUseStyles, useStylesCtx } from "./info";
-import { infoClasses } from "./info-classes";
+import React, { ReactNode } from 'react';
+
+import { SxProps, Theme, styled } from '@mui/material/styles';
+import cx from 'clsx';
+
+import { AppendUseStyles, useStylesCtx } from './info';
+import { infoClasses } from './info-classes';
 
 export type InfoParagraphProps = {
   /**
@@ -18,17 +20,17 @@ export type InfoParagraphProps = {
    * The system prop that allows defining system overrides as well as additional CSS styles.
    */
   sx?: SxProps<Theme>;
-} & Omit<React.JSX.IntrinsicElements["p"], "ref">;
+} & Omit<React.JSX.IntrinsicElements['p'], 'ref'>;
 
-const InfoParagraphRoot = styled("p", {
-  name: "JunInfo",
-  slot: "Body",
+const InfoParagraphRoot = styled('p', {
+  name: 'JunInfo',
+  slot: 'Body',
   overridesResolver: (props, styles) => styles.subtitle,
 })<{ ownerState: AppendUseStyles<InfoParagraphProps> }>(
   ({ theme, ownerState }) => ({
     color: (theme.vars || theme).palette.text.secondary,
     lineHeight: 1.5,
-    fontSize: "1rem",
+    fontSize: '1rem',
     margin: 0,
     ...ownerState.useStyles(theme).subtitle,
   }),

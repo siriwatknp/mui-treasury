@@ -1,10 +1,12 @@
-import * as React from "react";
-import Stack from "@mui/material/Stack";
-import { Meter01 } from "@/registry/components/meter-01/meter-01";
+import * as React from 'react';
+
+import Stack from '@mui/material/Stack';
+
+import { Meter01 } from '@/registry/components/meter-01/meter-01';
 
 export function Demo() {
   return (
-    <Stack spacing={4} sx={{ width: 240, maxWidth: "100%" }}>
+    <Stack spacing={4} sx={{ width: 240, maxWidth: '100%' }}>
       <Meter01 label="Memory" value={92} />
       <Meter01 label="Bandwidth" value={45} showValue={false} />
       <Meter01 label="Custom Range" value={175} min={100} max={200} />

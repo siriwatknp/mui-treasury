@@ -1,35 +1,35 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { UIMessage } from '@ai-sdk/react';
 import {
-  generateId as generateIdFunc,
-  IdGenerator,
-  stepCountIs,
   type ChatTransport,
-  type UIMessageChunk,
+  IdGenerator,
+  type StepResult,
   type StopCondition,
   type Tool,
   type ToolSet,
-  type StepResult,
-} from "ai";
-import { UIMessage } from "@ai-sdk/react";
+  type UIMessageChunk,
+  generateId as generateIdFunc,
+  stepCountIs,
+} from 'ai';
 import {
-  getAI,
-  getGenerativeModel,
-  GoogleAIBackend,
   type ChatSession,
   type EnhancedGenerateContentResponse,
   type FileDataPart,
+  type Tool as FirebaseAiTool,
   type FunctionCall,
   type FunctionDeclaration,
   type FunctionResponsePart,
   type GenerativeModel,
+  GoogleAIBackend,
   type HybridParams,
   type InlineDataPart,
   type ModelParams,
   type Part,
-  type Tool as FirebaseAiTool,
-} from "firebase/ai";
-import type { FirebaseApp } from "firebase/app";
-import { z } from "zod";
+  getAI,
+  getGenerativeModel,
+} from 'firebase/ai';
+import type { FirebaseApp } from 'firebase/app';
+import { z } from 'zod';
 
 type ProviderMetadata = Record<string, any>;
 
@@ -236,9 +236,9 @@ async function isStopConditionMet<TOOLS extends ToolSet>({
  * });
  * ```
  */
-export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
-  implements ChatTransport<UI_MESSAGE>
-{
+export class FirebaseChatTransport<
+  UI_MESSAGE extends UIMessage,
+> implements ChatTransport<UI_MESSAGE> {
   private firebaseModel: GenerativeModel;
   private currentChatId: string | null = null;
   private chatSession: ChatSession | null = null;
@@ -278,7 +278,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
   }
 
   async sendMessages(
-    options: Parameters<ChatTransport<UI_MESSAGE>["sendMessages"]>[0],
+    options: Parameters<ChatTransport<UI_MESSAGE>['sendMessages']>[0],
   ): Promise<ReadableStream<UIMessageChunk>> {
     const { chatId, messages, abortSignal } = options;
 
@@ -294,9 +294,9 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
 
         // Listen for abort signal
         if (abortSignal) {
-          abortSignal.addEventListener("abort", () => {
+          abortSignal.addEventListener('abort', () => {
             isAborted = true;
-            controller.enqueue({ type: "abort" });
+            controller.enqueue({ type: 'abort' });
             controller.close();
           });
         }
@@ -345,7 +345,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
             // Emit start chunk after connection established (once)
             if (!startEmitted) {
               controller.enqueue({
-                type: "start",
+                type: 'start',
                 messageId,
               });
               startEmitted = true;
@@ -377,7 +377,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
                 if (!hasReasoning) {
                   reasoningId = this.generateId();
                   controller.enqueue({
-                    type: "reasoning-start",
+                    type: 'reasoning-start',
                     id: reasoningId,
                     providerMetadata,
                   });
@@ -385,7 +385,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
                 }
 
                 controller.enqueue({
-                  type: "reasoning-delta",
+                  type: 'reasoning-delta',
                   id: reasoningId!,
                   delta: thought,
                   providerMetadata,
@@ -396,7 +396,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
               // Close reasoning when thought stops growing and we move to text
               if (hasReasoning && reasoningId) {
                 controller.enqueue({
-                  type: "reasoning-end",
+                  type: 'reasoning-end',
                   id: reasoningId,
                   providerMetadata,
                 });
@@ -406,12 +406,12 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
 
               if (chunkParts && chunkParts.length > 0) {
                 for (const part of chunkParts) {
-                  if ("text" in part && part.text) {
+                  if ('text' in part && part.text) {
                     // Start text part if not already open
                     if (!currentTextId) {
                       currentTextId = this.generateId();
                       controller.enqueue({
-                        type: "text-start",
+                        type: 'text-start',
                         id: currentTextId,
                         providerMetadata,
                       });
@@ -419,14 +419,14 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
 
                     // Emit delta directly - Firebase sends incremental text per chunk
                     controller.enqueue({
-                      type: "text-delta",
+                      type: 'text-delta',
                       id: currentTextId,
                       delta: part.text,
                       providerMetadata,
                     });
                   }
 
-                  if ("inlineData" in part && part.inlineData) {
+                  if ('inlineData' in part && part.inlineData) {
                     // Dedupe images using hash of length + samples from start/middle/end.
                     // Using only the first N chars causes collision because images
                     // often share similar base64 headers (e.g., PNG/JPEG magic bytes).
@@ -436,7 +436,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
                       // Close current text part before emitting image
                       if (currentTextId) {
                         controller.enqueue({
-                          type: "text-end",
+                          type: 'text-end',
                           id: currentTextId,
                           providerMetadata,
                         });
@@ -444,7 +444,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
                       }
 
                       controller.enqueue({
-                        type: "file",
+                        type: 'file',
                         url: `data:${part.inlineData.mimeType};base64,${part.inlineData.data}`,
                         mediaType: part.inlineData.mimeType,
                       });
@@ -459,7 +459,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
                   // Close reasoning when text starts
                   if (hasReasoning && reasoningId) {
                     controller.enqueue({
-                      type: "reasoning-end",
+                      type: 'reasoning-end',
                       id: reasoningId,
                       providerMetadata,
                     });
@@ -471,7 +471,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
                   if (!currentTextId) {
                     currentTextId = this.generateId();
                     controller.enqueue({
-                      type: "text-start",
+                      type: 'text-start',
                       id: currentTextId,
                       providerMetadata,
                     });
@@ -479,7 +479,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
 
                   // Emit delta directly
                   controller.enqueue({
-                    type: "text-delta",
+                    type: 'text-delta',
                     id: currentTextId,
                     delta: text,
                     providerMetadata,
@@ -493,7 +493,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
             // Close any open reasoning part
             if (hasReasoning && reasoningId) {
               controller.enqueue({
-                type: "reasoning-end",
+                type: 'reasoning-end',
                 id: reasoningId,
                 providerMetadata: lastProviderMetadata,
               });
@@ -502,7 +502,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
             // Close any open text part
             if (currentTextId) {
               controller.enqueue({
-                type: "text-end",
+                type: 'text-end',
                 id: currentTextId,
                 providerMetadata: lastProviderMetadata,
               });
@@ -517,13 +517,13 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
               const parts = response.candidates?.[0]?.content?.parts;
               if (parts) {
                 for (const part of parts) {
-                  if ("inlineData" in part && part.inlineData) {
+                  if ('inlineData' in part && part.inlineData) {
                     // Same hash logic as streaming section (length + start/middle/end samples)
                     const data = part.inlineData.data;
                     const imageHash = `${data.length}:${data.substring(0, 50)}:${data.substring(Math.floor(data.length / 2), Math.floor(data.length / 2) + 50)}:${data.substring(data.length - 50)}`;
                     if (!emittedImageHashes.has(imageHash)) {
                       controller.enqueue({
-                        type: "file",
+                        type: 'file',
                         url: `data:${part.inlineData.mimeType};base64,${part.inlineData.data}`,
                         mediaType: part.inlineData.mimeType,
                       });
@@ -545,7 +545,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
                 response.candidates?.[0]?.groundingMetadata;
 
               controller.enqueue({
-                type: "finish",
+                type: 'finish',
                 finishReason: this.mapFinishReason(finishReason),
                 messageMetadata: groundingMetadata,
               });
@@ -554,7 +554,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
               // Track step for stop condition evaluation
               steps.push({
                 toolCalls: functionCalls.map((fc: FunctionCall) => ({
-                  type: "tool-call" as const,
+                  type: 'tool-call' as const,
                   toolCallId: this.generateId(),
                   toolName: fc.name,
                   input: fc.args,
@@ -572,8 +572,8 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
               if (shouldStop) {
                 // Stop condition met - finish with tool-calls reason
                 controller.enqueue({
-                  type: "finish",
-                  finishReason: "tool-calls",
+                  type: 'finish',
+                  finishReason: 'tool-calls',
                 });
                 continueLoop = false;
               } else {
@@ -590,8 +590,8 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
         } catch (error) {
           // Emit error chunk and close gracefully
           controller.enqueue({
-            type: "error",
-            errorText: error instanceof Error ? error.message : "Unknown error",
+            type: 'error',
+            errorText: error instanceof Error ? error.message : 'Unknown error',
           });
           controller.close();
         }
@@ -600,7 +600,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
   }
 
   async reconnectToStream(
-    _: Parameters<ChatTransport<UI_MESSAGE>["reconnectToStream"]>[0],
+    _: Parameters<ChatTransport<UI_MESSAGE>['reconnectToStream']>[0],
   ): Promise<ReadableStream<UIMessageChunk> | null> {
     // Client-side cannot reconnect to streams
     // Would need server-side persistence
@@ -610,8 +610,8 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
   /**
    * Convert UI message role to Firebase Content role.
    */
-  private convertRole(role: UI_MESSAGE["role"]): "user" | "model" {
-    return role === "assistant" ? "model" : "user";
+  private convertRole(role: UI_MESSAGE['role']): 'user' | 'model' {
+    return role === 'assistant' ? 'model' : 'user';
   }
 
   /**
@@ -621,16 +621,16 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
    */
   private convertMessagesToFirebaseContent(
     messages: UI_MESSAGE[],
-  ): Array<{ role: "user" | "model"; parts: Part[] }> {
+  ): Array<{ role: 'user' | 'model'; parts: Part[] }> {
     return messages
       .map((message) => ({
         role: this.convertRole(message.role),
         parts: message.parts.flatMap(
-          (part: UI_MESSAGE["parts"][number]): Part[] => {
-            if (part.type === "text") {
+          (part: UI_MESSAGE['parts'][number]): Part[] => {
+            if (part.type === 'text') {
               return this.convertTextToPartsWithYouTube(part.text);
             }
-            if (part.type === "file") {
+            if (part.type === 'file') {
               return [this.convertFileToFirebasePart(part.url, part.mediaType)];
             }
             return [];
@@ -650,14 +650,14 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
     messages: UI_MESSAGE[],
   ): Promise<Part[]> {
     if (messages.length === 0) {
-      throw new Error("Cannot send empty message history");
+      throw new Error('Cannot send empty message history');
     }
 
     const lastMessage = messages[messages.length - 1];
 
-    if (lastMessage.role !== "user") {
+    if (lastMessage.role !== 'user') {
       throw new Error(
-        "Last message must be from user. Firebase requires user message to generate response.",
+        'Last message must be from user. Firebase requires user message to generate response.',
       );
     }
 
@@ -665,11 +665,11 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
     await this.preprocessMessages([lastMessage]);
 
     const parts = lastMessage.parts.flatMap(
-      (part: UI_MESSAGE["parts"][number]): Part[] => {
-        if (part.type === "text") {
+      (part: UI_MESSAGE['parts'][number]): Part[] => {
+        if (part.type === 'text') {
           return this.convertTextToPartsWithYouTube(part.text);
         }
-        if (part.type === "file") {
+        if (part.type === 'file') {
           return [this.convertFileToFirebasePart(part.url, part.mediaType)];
         }
         return [];
@@ -677,7 +677,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
     );
 
     if (parts.length === 0) {
-      throw new Error("Last message has no text or file content");
+      throw new Error('Last message has no text or file content');
     }
 
     return parts;
@@ -688,16 +688,16 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
    */
   private mapFinishReason(
     finishReason?: string,
-  ): "stop" | "length" | "content-filter" | "other" {
+  ): 'stop' | 'length' | 'content-filter' | 'other' {
     switch (finishReason) {
-      case "STOP":
-        return "stop";
-      case "MAX_TOKENS":
-        return "length";
-      case "SAFETY":
-        return "content-filter";
+      case 'STOP':
+        return 'stop';
+      case 'MAX_TOKENS':
+        return 'length';
+      case 'SAFETY':
+        return 'content-filter';
       default:
-        return "other";
+        return 'other';
     }
   }
 
@@ -717,14 +717,14 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
 
       // Emit tool-input-start
       controller.enqueue({
-        type: "tool-input-start",
+        type: 'tool-input-start',
         toolCallId,
         toolName,
       });
 
       // Emit tool-input-available (Firebase provides complete input)
       controller.enqueue({
-        type: "tool-input-available",
+        type: 'tool-input-available',
         toolCallId,
         toolName,
         input: call.args,
@@ -748,7 +748,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
 
         // Emit tool-output-available
         controller.enqueue({
-          type: "tool-output-available",
+          type: 'tool-output-available',
           toolCallId,
           output: output ?? null,
         });
@@ -762,11 +762,11 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
         });
       } catch (error) {
         const errorText =
-          error instanceof Error ? error.message : "Unknown error";
+          error instanceof Error ? error.message : 'Unknown error';
 
         // Emit tool-output-error
         controller.enqueue({
-          type: "tool-output-error",
+          type: 'tool-output-error',
           toolCallId,
           errorText,
         });
@@ -793,7 +793,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
   ): FunctionDeclaration {
     return {
       name: toolName,
-      description: tool.description || "",
+      description: tool.description || '',
       parameters: this.convertSchemaToFirebase(tool.inputSchema),
     };
   }
@@ -804,21 +804,21 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
    * Strips fields not supported by Gemini's OpenAPI Schema subset.
    */
   private convertSchemaToFirebase(
-    schema: Tool["inputSchema"],
-  ): FunctionDeclaration["parameters"] {
+    schema: Tool['inputSchema'],
+  ): FunctionDeclaration['parameters'] {
     let jsonSchema: Record<string, unknown>;
-    if (schema !== null && typeof schema === "object" && "_zod" in schema) {
+    if (schema !== null && typeof schema === 'object' && '_zod' in schema) {
       jsonSchema = z.toJSONSchema(schema, {
-        target: "draft-7",
-        io: "output",
-        reused: "inline",
+        target: 'draft-7',
+        io: 'output',
+        reused: 'inline',
       }) as Record<string, unknown>;
     } else {
       jsonSchema = schema as Record<string, unknown>;
     }
     return this.stripUnsupportedSchemaFields(
       jsonSchema,
-    ) as FunctionDeclaration["parameters"];
+    ) as FunctionDeclaration['parameters'];
   }
 
   /**
@@ -826,7 +826,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
    * Gemini uses OpenAPI Schema subset which doesn't support $schema, additionalProperties, etc.
    */
   private stripUnsupportedSchemaFields(obj: unknown): unknown {
-    if (obj === null || typeof obj !== "object") {
+    if (obj === null || typeof obj !== 'object') {
       return obj;
     }
 
@@ -834,7 +834,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
       return obj.map((item) => this.stripUnsupportedSchemaFields(item));
     }
 
-    const unsupportedFields = ["$schema", "additionalProperties"];
+    const unsupportedFields = ['$schema', 'additionalProperties'];
     const result: Record<string, unknown> = {};
 
     for (const [key, value] of Object.entries(obj as Record<string, unknown>)) {
@@ -861,9 +861,9 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
    */
   private isYouTubeUrl(url: string): boolean {
     return (
-      url.includes("youtube.com/") ||
-      url.includes("youtu.be/") ||
-      url.includes("youtube.googleapis.com/")
+      url.includes('youtube.com/') ||
+      url.includes('youtu.be/') ||
+      url.includes('youtube.googleapis.com/')
     );
   }
 
@@ -894,7 +894,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
       // Add YouTube URL as fileData
       parts.push({
         fileData: {
-          mimeType: "video/*",
+          mimeType: 'video/*',
           fileUri: match[0],
         },
       });
@@ -934,18 +934,18 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
     if (this.isYouTubeUrl(url)) {
       return {
         fileData: {
-          mimeType: "video/*",
+          mimeType: 'video/*',
           fileUri: url,
         },
       };
     }
 
     // Data URL: use inlineData
-    if (url.startsWith("data:")) {
+    if (url.startsWith('data:')) {
       const base64Match = url.match(/^data:[^;]+;base64,(.+)$/);
       if (!base64Match) {
         throw new Error(
-          "Invalid data URL format. Expected base64 encoded data URL.",
+          'Invalid data URL format. Expected base64 encoded data URL.',
         );
       }
       return {
@@ -957,7 +957,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
     }
 
     // Hosted URL (http/https): use fileData
-    if (url.startsWith("http://") || url.startsWith("https://")) {
+    if (url.startsWith('http://') || url.startsWith('https://')) {
       return {
         fileData: {
           mimeType,
@@ -994,7 +994,7 @@ export class FirebaseChatTransport<UI_MESSAGE extends UIMessage>
   private async preprocessMessages(messages: UI_MESSAGE[]): Promise<void> {
     for (const message of messages) {
       for (const part of message.parts) {
-        if (part.type === "file" && part.url && part.url.startsWith("blob:")) {
+        if (part.type === 'file' && part.url && part.url.startsWith('blob:')) {
           // Convert blob URL to data URL in place
           (part as { url: string }).url = await this.blobUrlToDataUrl(part.url);
         }

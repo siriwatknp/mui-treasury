@@ -1,9 +1,9 @@
-import tsconfigPaths from "vite-tsconfig-paths";
-import { configDefaults, defineConfig } from "vitest/config";
+import tsconfigPaths from 'vite-tsconfig-paths';
+import { configDefaults, defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
-    exclude: [...configDefaults.exclude, "**/fixtures/**", "**/dist/**"],
+    exclude: [...configDefaults.exclude, '**/fixtures/**', '**/dist/**'],
     testTimeout: 8000,
   },
   plugins: [

@@ -1,36 +1,36 @@
-import React from "react";
+import React from 'react';
 
-import Box from "@mui/material/Box";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import Typography from '@mui/material/Typography';
 
-import Content from "@/registry/layout/layout-core/Content";
-import EdgeSidebar from "@/registry/layout/layout-core/EdgeSidebar";
-import EdgeSidebarContent from "@/registry/layout/layout-core/EdgeSidebarContent";
-import EdgeSidebarRight from "@/registry/layout/layout-core/EdgeSidebarRight";
-import Footer from "@/registry/layout/layout-core/Footer";
-import Header from "@/registry/layout/layout-core/Header";
-import Root from "@/registry/layout/layout-core/Root";
+import Content from '@/registry/layout/layout-core/Content';
+import EdgeSidebar from '@/registry/layout/layout-core/EdgeSidebar';
+import EdgeSidebarContent from '@/registry/layout/layout-core/EdgeSidebarContent';
+import EdgeSidebarRight from '@/registry/layout/layout-core/EdgeSidebarRight';
+import Footer from '@/registry/layout/layout-core/Footer';
+import Header from '@/registry/layout/layout-core/Header';
+import Root from '@/registry/layout/layout-core/Root';
 
-type ClipValue = "left" | "right" | "both" | "none";
+type ClipValue = 'left' | 'right' | 'both' | 'none';
 
 export const meta = {
-  title: "Header Clip",
+  title: 'Header Clip',
   description:
-    "Control whether the Header spans over the left/right EdgeSidebar.",
-  previewMode: "iframe" as const,
+    'Control whether the Header spans over the left/right EdgeSidebar.',
+  previewMode: 'iframe' as const,
 };
 
 export function Demo() {
-  const [clip, setClip] = React.useState<ClipValue>("none");
+  const [clip, setClip] = React.useState<ClipValue>('none');
 
   const headerClip =
-    clip === "both" ? true : clip === "none" ? undefined : clip;
+    clip === 'both' ? true : clip === 'none' ? undefined : clip;
 
   return (
     <Box
-      sx={{ display: "flex", flexDirection: "column", gap: 2, width: "100%" }}
+      sx={{ display: 'flex', flexDirection: 'column', gap: 2, width: '100%' }}
     >
       <ToggleButtonGroup
         value={clip}
@@ -46,7 +46,7 @@ export function Demo() {
         <ToggleButton value="both">Both</ToggleButton>
       </ToggleButtonGroup>
 
-      <Root height="300px" sx={{ width: "100%" }}>
+      <Root height="300px" sx={{ width: '100%' }}>
         <Header clip={headerClip}>
           <Box sx={{ px: 2 }}>
             <Typography variant="subtitle2" fontWeight="bold">
@@ -54,7 +54,7 @@ export function Demo() {
             </Typography>
           </Box>
         </Header>
-        <EdgeSidebar variant={["permanent", { width: "200px" }]}>
+        <EdgeSidebar variant={['permanent', { width: '200px' }]}>
           <EdgeSidebarContent>
             <Box sx={{ p: 2 }}>
               <Typography variant="caption" color="text.secondary">
@@ -70,7 +70,7 @@ export function Demo() {
             </Typography>
           </Box>
         </Content>
-        <EdgeSidebarRight variant={["permanent", { width: "200px" }]}>
+        <EdgeSidebarRight variant={['permanent', { width: '200px' }]}>
           <EdgeSidebarContent>
             <Box sx={{ p: 2 }}>
               <Typography variant="caption" color="text.secondary">

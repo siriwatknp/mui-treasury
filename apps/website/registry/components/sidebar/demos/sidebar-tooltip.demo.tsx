@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import HomeRounded from "@mui/icons-material/HomeRounded";
-import SearchRounded from "@mui/icons-material/SearchRounded";
-import SettingsRounded from "@mui/icons-material/SettingsRounded";
+import HomeRounded from '@mui/icons-material/HomeRounded';
+import SearchRounded from '@mui/icons-material/SearchRounded';
+import SettingsRounded from '@mui/icons-material/SettingsRounded';
 
-import { SidebarContainer } from "@/registry/components/sidebar/sidebar-container";
-import { SidebarGroup } from "@/registry/components/sidebar/sidebar-group";
-import { SidebarMenuList } from "@/registry/components/sidebar/sidebar-menu-list";
-import { SidebarMenuItem } from "@/registry/components/sidebar/sidebar-menu-item";
-import { SidebarMenuButton } from "@/registry/components/sidebar/sidebar-menu-button";
-import { SidebarIcon } from "@/registry/components/sidebar/sidebar-icon";
-import { SidebarText } from "@/registry/components/sidebar/sidebar-text";
-import { SidebarTooltip } from "@/registry/components/sidebar/sidebar-tooltip";
+import { SidebarContainer } from '@/registry/components/sidebar/sidebar-container';
+import { SidebarGroup } from '@/registry/components/sidebar/sidebar-group';
+import { SidebarIcon } from '@/registry/components/sidebar/sidebar-icon';
+import { SidebarMenuButton } from '@/registry/components/sidebar/sidebar-menu-button';
+import { SidebarMenuItem } from '@/registry/components/sidebar/sidebar-menu-item';
+import { SidebarMenuList } from '@/registry/components/sidebar/sidebar-menu-list';
+import { SidebarText } from '@/registry/components/sidebar/sidebar-text';
+import { SidebarTooltip } from '@/registry/components/sidebar/sidebar-tooltip';
 
 export const meta = {
-  title: "Tooltip",
-  description: "Tooltips for icon-only collapsed sidebar items.",
+  title: 'Tooltip',
+  description: 'Tooltips for icon-only collapsed sidebar items.',
 };
 
 export function Demo() {

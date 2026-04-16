@@ -1,13 +1,14 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
+
 import {
   FormControlLabel,
   Radio,
   RadioGroup,
   Stack,
   Typography,
-} from "@mui/material";
+} from '@mui/material';
 
 export interface RadioSegment01Props {
   defaultValue?: string;
@@ -16,7 +17,7 @@ export interface RadioSegment01Props {
 }
 
 export function RadioSegment01({
-  defaultValue = "16-inch",
+  defaultValue = '16-inch',
   value,
   onChange,
 }: RadioSegment01Props) {
@@ -28,37 +29,37 @@ export function RadioSegment01({
       value={value}
       onChange={onChange}
       sx={(theme) => ({
-        display: "flex",
-        flexWrap: "nowrap",
+        display: 'flex',
+        flexWrap: 'nowrap',
         gap: 0,
-        width: "400px",
-        maxWidth: "100%",
-        "& .MuiFormControlLabel-root": {
+        width: '400px',
+        maxWidth: '100%',
+        '& .MuiFormControlLabel-root': {
           m: 0,
           flex: 1,
           border: 1,
-          borderColor: "divider",
-          cursor: "pointer",
-          "&:hover": {
-            backgroundColor: "action.hover",
+          borderColor: 'divider',
+          cursor: 'pointer',
+          '&:hover': {
+            backgroundColor: 'action.hover',
           },
-          "&:has(:checked)": {
+          '&:has(:checked)': {
             outline: 2,
-            outlineStyle: "solid",
+            outlineStyle: 'solid',
             outlineOffset: -2,
             outlineColor: (theme.vars || theme).palette.primary.main,
             zIndex: 1,
           },
-          "&:first-of-type": {
+          '&:first-of-type': {
             borderTopLeftRadius: (theme.vars || theme).shape.borderRadius,
             borderBottomLeftRadius: (theme.vars || theme).shape.borderRadius,
           },
-          "&:last-of-type": {
+          '&:last-of-type': {
             borderTopRightRadius: (theme.vars || theme).shape.borderRadius,
             borderBottomRightRadius: (theme.vars || theme).shape.borderRadius,
           },
-          "&:not(:first-of-type)": {
-            marginLeft: "-1px",
+          '&:not(:first-of-type)': {
+            marginLeft: '-1px',
           },
         },
       })}
@@ -68,22 +69,22 @@ export function RadioSegment01({
         control={
           <Radio
             sx={{
-              position: "absolute",
+              position: 'absolute',
               opacity: 0,
               width: 0,
               height: 0,
             }}
           />
         }
-        slotProps={{ typography: { component: "div", sx: { width: "100%" } } }}
+        slotProps={{ typography: { component: 'div', sx: { width: '100%' } } }}
         label={
           <Stack
             spacing={0.5}
             sx={{
               py: 3,
               px: 4,
-              textAlign: "center",
-              width: "100%",
+              textAlign: 'center',
+              width: '100%',
             }}
           >
             <Typography variant="h4">14-inch</Typography>
@@ -98,22 +99,22 @@ export function RadioSegment01({
         control={
           <Radio
             sx={{
-              position: "absolute",
+              position: 'absolute',
               opacity: 0,
               width: 0,
               height: 0,
             }}
           />
         }
-        slotProps={{ typography: { component: "div", sx: { width: "100%" } } }}
+        slotProps={{ typography: { component: 'div', sx: { width: '100%' } } }}
         label={
           <Stack
             spacing={0.5}
             sx={{
               py: 3,
               px: 4,
-              textAlign: "center",
-              width: "100%",
+              textAlign: 'center',
+              width: '100%',
             }}
           >
             <Typography variant="h4">16-inch</Typography>

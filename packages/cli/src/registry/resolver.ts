@@ -1,5 +1,5 @@
-import { fetchRegistryItem, fetchRegistryItemByUrl } from "@/registry/fetcher";
-import type { RegistryItem, RegistryItemFile } from "@/registry/schema";
+import { fetchRegistryItem, fetchRegistryItemByUrl } from '@/registry/fetcher';
+import type { RegistryItem, RegistryItemFile } from '@/registry/schema';
 
 export interface ResolvedRegistryTree {
   items: RegistryItem[];
@@ -16,21 +16,21 @@ export async function resolveRegistryTree(
   const items: RegistryItem[] = [];
 
   async function resolve(nameOrUrl: string) {
-    const trackingKey = nameOrUrl.startsWith("http")
+    const trackingKey = nameOrUrl.startsWith('http')
       ? nameOrUrl
       : `${registryUrl}/${nameOrUrl}.json`;
 
     if (visited.has(trackingKey)) return;
     visited.add(trackingKey);
 
-    const item = nameOrUrl.startsWith("http")
+    const item = nameOrUrl.startsWith('http')
       ? await fetchRegistryItemByUrl(nameOrUrl)
       : await fetchRegistryItem(nameOrUrl, registryUrl);
 
     // Resolve transitive dependencies first (DFS post-order)
     if (item.registryDependencies?.length) {
       for (const dep of item.registryDependencies) {
-        if (dep.startsWith("http")) {
+        if (dep.startsWith('http')) {
           await resolve(dep);
         } else {
           // Extract name from URL-like dep or use as bare name

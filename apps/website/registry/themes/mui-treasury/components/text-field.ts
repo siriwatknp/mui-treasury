@@ -2,22 +2,22 @@ import {
   CONTROL_HEIGHTS,
   CONTROL_TOUCH_HEIGHTS,
   TOUCH_MEDIA_QUERY,
-} from "../scales";
-import { ThemeComponents } from "../types";
+} from '../scales';
+import { ThemeComponents } from '../types';
 
-declare module "@mui/material/InputBase" {
+declare module '@mui/material/InputBase' {
   interface InputBasePropsSizeOverrides {
     large: true;
   }
 }
 
-declare module "@mui/material/TextField" {
+declare module '@mui/material/TextField' {
   interface TextFieldPropsSizeOverrides {
     large: true;
   }
 }
 
-declare module "@mui/material/FormControl" {
+declare module '@mui/material/FormControl' {
   interface FormControlPropsSizeOverrides {
     large: true;
   }
@@ -26,35 +26,35 @@ declare module "@mui/material/FormControl" {
 export const textFieldTheme: ThemeComponents = {
   MuiFormControl: {
     defaultProps: {
-      variant: "outlined",
+      variant: 'outlined',
     },
     styleOverrides: {
       root: ({ theme }) => ({
         variants: [
           {
-            props: { variant: "outlined" },
+            props: { variant: 'outlined' },
             style: {
-              "&&& .MuiInputBase-input": {
-                "&::-webkit-input-placeholder": {
-                  opacity: "0.42 !important",
+              '&&& .MuiInputBase-input': {
+                '&::-webkit-input-placeholder': {
+                  opacity: '0.42 !important',
                 },
-                "&::-moz-placeholder": {
-                  opacity: "0.42 !important",
+                '&::-moz-placeholder': {
+                  opacity: '0.42 !important',
                 },
-                "&::-ms-input-placeholder": {
-                  opacity: "0.42 !important",
+                '&::-ms-input-placeholder': {
+                  opacity: '0.42 !important',
                 },
               },
-              "&& .MuiOutlinedInput-notchedOutline": {
-                transition: "none",
-                "& legend": {
+              '&& .MuiOutlinedInput-notchedOutline': {
+                transition: 'none',
+                '& legend': {
                   width: 0,
                 },
               },
-              "& .MuiIconButton-root": {
-                "&:hover": {
+              '& .MuiIconButton-root': {
+                '&:hover': {
                   color: (theme.vars || theme).palette.text.primary,
-                  backgroundColor: "transparent",
+                  backgroundColor: 'transparent',
                 },
               },
             },
@@ -68,33 +68,33 @@ export const textFieldTheme: ThemeComponents = {
       root: ({ theme }) => ({
         [theme.breakpoints.up(768)]: {
           fontSize: theme.typography.body2.fontSize,
-          lineHeight: "1.42857em", // 20px
+          lineHeight: '1.42857em', // 20px
         },
         variants: [
           {
-            props: { size: "small" },
+            props: { size: 'small' },
             style: {
-              "&:has(.MuiInputAdornment-positionStart)": {
-                paddingLeft: "10px",
+              '&:has(.MuiInputAdornment-positionStart)': {
+                paddingLeft: '10px',
               },
-              "&:has(.MuiInputAdornment-positionEnd)": {
-                paddingRight: "10px",
+              '&:has(.MuiInputAdornment-positionEnd)': {
+                paddingRight: '10px',
               },
             },
           },
           {
-            props: { size: "medium" },
+            props: { size: 'medium' },
             style: {
-              "&:has(.MuiInputAdornment-positionStart)": {
-                paddingLeft: "12px",
+              '&:has(.MuiInputAdornment-positionStart)': {
+                paddingLeft: '12px',
               },
-              "&:has(.MuiInputAdornment-positionEnd)": {
-                paddingRight: "12px",
+              '&:has(.MuiInputAdornment-positionEnd)': {
+                paddingRight: '12px',
               },
             },
           },
           {
-            props: { size: "large" },
+            props: { size: 'large' },
             style: {
               fontSize: theme.typography.body1.fontSize,
               [theme.breakpoints.up(768)]: {
@@ -108,7 +108,7 @@ export const textFieldTheme: ThemeComponents = {
       input: () => ({
         paddingBlock: CONTROL_HEIGHTS.md / 2 - 10.5,
         paddingInline: 12,
-        minHeight: "1.5em",
+        minHeight: '1.5em',
         ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
           [TOUCH_MEDIA_QUERY]: {
             paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 10.5,
@@ -116,7 +116,7 @@ export const textFieldTheme: ThemeComponents = {
         }),
         variants: [
           {
-            props: { size: "small" },
+            props: { size: 'small' },
             style: {
               paddingBlock: CONTROL_HEIGHTS.sm / 2 - 10.5,
               paddingInline: 10,
@@ -128,7 +128,7 @@ export const textFieldTheme: ThemeComponents = {
             },
           },
           {
-            props: { size: "large" },
+            props: { size: 'large' },
             style: {
               paddingBlock: CONTROL_HEIGHTS.lg / 2 - 10.5,
               paddingInline: 16,
@@ -153,31 +153,31 @@ export const textFieldTheme: ThemeComponents = {
     styleOverrides: {
       root: ({ theme }) => ({
         borderRadius: 8,
-        "& .MuiOutlinedInput-notchedOutline": {
-          transition: theme.transitions.create(["border-color"], {
+        '& .MuiOutlinedInput-notchedOutline': {
+          transition: theme.transitions.create(['border-color'], {
             duration: theme.transitions.duration.shorter,
           }),
         },
-        "&:hover .MuiOutlinedInput-notchedOutline": {
+        '&:hover .MuiOutlinedInput-notchedOutline': {
           borderColor: (theme.vars || theme).palette.text.primary,
         },
-        "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
           borderWidth: 2,
           borderColor: (theme.vars || theme).palette.primary.main,
         },
-        "&.Mui-error .MuiOutlinedInput-notchedOutline": {
+        '&.Mui-error .MuiOutlinedInput-notchedOutline': {
           borderColor: (theme.vars || theme).palette.error.main,
         },
-        "&.Mui-disabled": {
+        '&.Mui-disabled': {
           backgroundColor: (theme.vars || theme).palette.action
             .disabledBackground,
-          "& .MuiOutlinedInput-notchedOutline": {
+          '& .MuiOutlinedInput-notchedOutline': {
             borderColor: (theme.vars || theme).palette.action.disabled,
           },
         },
         variants: [
           {
-            props: { size: "small", multiline: true },
+            props: { size: 'small', multiline: true },
             style: {
               paddingBlock: CONTROL_HEIGHTS.sm / 2 - 10.5,
               paddingInline: 12,
@@ -189,7 +189,7 @@ export const textFieldTheme: ThemeComponents = {
             },
           },
           {
-            props: { size: "medium", multiline: true },
+            props: { size: 'medium', multiline: true },
             style: {
               paddingBlock: CONTROL_HEIGHTS.md / 2 - 10.5,
               paddingInline: 14,
@@ -201,7 +201,7 @@ export const textFieldTheme: ThemeComponents = {
             },
           },
           {
-            props: { size: "large", multiline: true },
+            props: { size: 'large', multiline: true },
             style: {
               paddingBlock: CONTROL_HEIGHTS.lg / 2 - 12,
               paddingInline: 14,
@@ -217,7 +217,7 @@ export const textFieldTheme: ThemeComponents = {
       input: {
         variants: [
           {
-            props: { size: "small" },
+            props: { size: 'small' },
             style: {
               paddingBlock: CONTROL_HEIGHTS.sm / 2 - 10.5,
               paddingInline: 12,
@@ -226,16 +226,16 @@ export const textFieldTheme: ThemeComponents = {
                   paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 12,
                 },
               }),
-              ".MuiInputAdornment-root + &": {
+              '.MuiInputAdornment-root + &': {
                 paddingLeft: 0,
               },
-              ":has(+ .MuiInputAdornment-root)": {
+              ':has(+ .MuiInputAdornment-root)': {
                 paddingRight: 0,
               },
             },
           },
           {
-            props: { size: "medium" },
+            props: { size: 'medium' },
             style: {
               paddingBlock: CONTROL_HEIGHTS.md / 2 - 10.5,
               ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
@@ -246,7 +246,7 @@ export const textFieldTheme: ThemeComponents = {
             },
           },
           {
-            props: { size: "large" },
+            props: { size: 'large' },
             style: {
               paddingBlock: CONTROL_HEIGHTS.lg / 2 - 12,
               paddingInline: 14,
@@ -255,10 +255,10 @@ export const textFieldTheme: ThemeComponents = {
                   paddingBlock: CONTROL_TOUCH_HEIGHTS.lg / 2 - 12,
                 },
               }),
-              ".MuiInputAdornment-root + &": {
+              '.MuiInputAdornment-root + &': {
                 paddingLeft: 0,
               },
-              ":has(+ .MuiInputAdornment-root)": {
+              ':has(+ .MuiInputAdornment-root)': {
                 paddingRight: 0,
               },
             },
@@ -277,38 +277,38 @@ export const textFieldTheme: ThemeComponents = {
     styleOverrides: {
       root: ({ theme }) => ({
         backgroundColor: (theme.vars || theme).palette.action.hover,
-        borderRadius: "8px 8px 0 0",
-        "&:hover": {
+        borderRadius: '8px 8px 0 0',
+        '&:hover': {
           backgroundColor: (theme.vars || theme).palette.action.selected,
         },
-        "&.Mui-focused": {
+        '&.Mui-focused': {
           backgroundColor: (theme.vars || theme).palette.action.selected,
         },
-        "&.Mui-disabled": {
+        '&.Mui-disabled': {
           backgroundColor: (theme.vars || theme).palette.action
             .disabledBackground,
         },
-        "&::before": {
-          transition: theme.transitions.create(["border-bottom-color"], {
+        '&::before': {
+          transition: theme.transitions.create(['border-bottom-color'], {
             duration: theme.transitions.duration.shorter,
           }),
         },
-        "&:hover::before": {
+        '&:hover::before': {
           borderBottom: `2px solid ${
             (theme.vars || theme).palette.text.primary
           }`,
         },
-        "&::after": {
+        '&::after': {
           borderBottom: `2px solid ${
             (theme.vars || theme).palette.primary.main
           }`,
         },
-        "&.Mui-error::after": {
+        '&.Mui-error::after': {
           borderBottomColor: (theme.vars || theme).palette.error.main,
         },
       }),
       input: () => ({
-        "&:where(input)": {
+        '&:where(input)': {
           paddingTop: CONTROL_HEIGHTS.md / 2 + 5,
           paddingInline: 12,
           paddingBottom: CONTROL_HEIGHTS.md / 2 - 12,
@@ -321,9 +321,9 @@ export const textFieldTheme: ThemeComponents = {
         },
         variants: [
           {
-            props: { size: "small" },
+            props: { size: 'small' },
             style: {
-              "&:where(input)": {
+              '&:where(input)': {
                 paddingTop: CONTROL_HEIGHTS.sm / 2 + 4,
                 paddingInline: 10,
                 paddingBottom: CONTROL_HEIGHTS.sm / 2 - 13,
@@ -343,27 +343,27 @@ export const textFieldTheme: ThemeComponents = {
   MuiInput: {
     styleOverrides: {
       root: ({ theme }) => ({
-        "&::before": {
-          transition: theme.transitions.create(["border-bottom-color"], {
+        '&::before': {
+          transition: theme.transitions.create(['border-bottom-color'], {
             duration: theme.transitions.duration.shorter,
           }),
         },
-        "&:hover:not(.Mui-disabled)::before": {
+        '&:hover:not(.Mui-disabled)::before': {
           borderBottom: `2px solid ${
             (theme.vars || theme).palette.text.primary
           }`,
         },
-        "&::after": {
+        '&::after': {
           borderBottom: `2px solid ${
             (theme.vars || theme).palette.primary.main
           }`,
         },
-        "&.Mui-error::after": {
+        '&.Mui-error::after': {
           borderBottomColor: (theme.vars || theme).palette.error.main,
         },
       }),
       input: {
-        padding: "4px 0 5px",
+        padding: '4px 0 5px',
       },
     },
   },
@@ -373,7 +373,7 @@ export const textFieldTheme: ThemeComponents = {
         fontSize: theme.typography.body2.fontSize,
         variants: [
           {
-            props: { size: "large" },
+            props: { size: 'large' },
             style: {
               fontSize: theme.typography.body1.fontSize,
             },
@@ -382,48 +382,48 @@ export const textFieldTheme: ThemeComponents = {
       }),
       outlined: ({ theme }) => ({
         color: (theme.vars || theme).palette.text.primary,
-        "&.Mui-focused": {
+        '&.Mui-focused': {
           color: (theme.vars || theme).palette.primary.main,
         },
-        "&.Mui-disabled": {
+        '&.Mui-disabled': {
           color: (theme.vars || theme).palette.text.disabled,
         },
-        "&.MuiFormLabel-root": {
-          position: "static",
-          transform: "none",
-          pointerEvents: "auto",
-          marginBottom: "0.25rem",
-          maxWidth: "unset",
+        '&.MuiFormLabel-root': {
+          position: 'static',
+          transform: 'none',
+          pointerEvents: 'auto',
+          marginBottom: '0.25rem',
+          maxWidth: 'unset',
           fontWeight: 500,
           lineHeight: 1.5,
-          "&.MuiInputLabel-shrink": {
-            transform: "none",
+          '&.MuiInputLabel-shrink': {
+            transform: 'none',
           },
         },
         variants: [
           {
-            props: { size: "small" },
+            props: { size: 'small' },
             style: {
-              transform: "translate(14px, 7px) scale(1)",
-              "&.MuiInputLabel-shrink": {
-                transform: "translate(14px, -9px) scale(0.75)",
+              transform: 'translate(14px, 7px) scale(1)',
+              '&.MuiInputLabel-shrink': {
+                transform: 'translate(14px, -9px) scale(0.75)',
               },
             },
           },
         ],
       }),
       filled: {
-        transform: "translate(12px, 16px) scale(1)",
-        "&.MuiInputLabel-shrink": {
-          transform: "translate(12px, 7px) scale(0.75)",
+        transform: 'translate(12px, 16px) scale(1)',
+        '&.MuiInputLabel-shrink': {
+          transform: 'translate(12px, 7px) scale(0.75)',
         },
         variants: [
           {
-            props: { size: "small" },
+            props: { size: 'small' },
             style: {
-              transform: "translate(12px, 14px) scale(1)",
-              "&.MuiInputLabel-shrink": {
-                transform: "translate(10px, 6px) scale(0.75)",
+              transform: 'translate(12px, 14px) scale(1)',
+              '&.MuiInputLabel-shrink': {
+                transform: 'translate(10px, 6px) scale(0.75)',
               },
             },
           },
@@ -435,8 +435,8 @@ export const textFieldTheme: ThemeComponents = {
     styleOverrides: {
       root: ({ theme }) => ({
         marginTop: 4,
-        lineHeight: "calc(20/12)",
-        "&.Mui-error": {
+        lineHeight: 'calc(20/12)',
+        '&.Mui-error': {
           color: (theme.vars || theme).palette.error.text,
         },
       }),
@@ -448,13 +448,13 @@ export const textFieldTheme: ThemeComponents = {
         color: (theme.vars || theme).palette.text.secondary,
         variants: [
           {
-            props: { position: "start" },
+            props: { position: 'start' },
             style: {
               marginRight: 8,
             },
           },
           {
-            props: { position: "end" },
+            props: { position: 'end' },
             style: {
               marginLeft: 8,
             },

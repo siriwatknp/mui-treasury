@@ -1,56 +1,58 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import CircularProgress from "@mui/material/CircularProgress";
-import Typography from "@mui/material/Typography";
+import React, { useState } from 'react';
+
+import { UIMessage, useChat } from '@ai-sdk/react';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
+import Typography from '@mui/material/Typography';
+import type { GroundingMetadata } from 'firebase/ai';
 import {
   Bot,
   CopyIcon,
   RefreshCwIcon,
   SearchIcon,
   SquareIcon,
-} from "lucide-react";
-import { toast } from "sonner";
-import { UIMessage, useChat } from "@ai-sdk/react";
-import type { GroundingMetadata } from "firebase/ai";
-import { FirebaseChatTransport } from "@/registry/firebase/firebase-chat-transport";
-import { app } from "@/lib/firebase-setup";
-import { Action, Actions } from "@/registry/components/ai-actions/ai-actions";
+} from 'lucide-react';
+import { toast } from 'sonner';
+
+import { app } from '@/lib/firebase-setup';
+import { Action, Actions } from '@/registry/components/ai-actions/ai-actions';
 import {
   Conversation,
   ConversationContent,
   ConversationScrollButton,
-} from "@/registry/components/ai-conversation/ai-conversation";
+} from '@/registry/components/ai-conversation/ai-conversation';
+import { Loader } from '@/registry/components/ai-loader/ai-loader';
 import {
   Message,
   MessageAvatar,
   MessageContent,
-} from "@/registry/components/ai-message/ai-message";
-import { Loader } from "@/registry/components/ai-loader/ai-loader";
+} from '@/registry/components/ai-message/ai-message';
 import {
   PromptInput,
   PromptInputBody,
+  type PromptInputMessage,
   PromptInputSubmit,
   PromptInputTextarea,
   PromptInputToolbar,
-  type PromptInputMessage,
-} from "@/registry/components/ai-prompt-input/ai-prompt-input";
-import { Response } from "@/registry/components/ai-response/ai-response";
+} from '@/registry/components/ai-prompt-input/ai-prompt-input';
+import { Response } from '@/registry/components/ai-response/ai-response';
 import {
   Suggestion,
   Suggestions,
-} from "@/registry/components/ai-suggestion/ai-suggestion";
+} from '@/registry/components/ai-suggestion/ai-suggestion';
+import { FirebaseChatTransport } from '@/registry/firebase/firebase-chat-transport';
 
 const SUGGESTED_PROMPTS = [
-  "What are the latest news about AI?",
+  'What are the latest news about AI?',
   "What's the weather forecast for today?",
-  "Who won the latest NBA game?",
+  'Who won the latest NBA game?',
 ];
 
 export default function FirebaseGoogleSearch() {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
 
   const transport = React.useMemo(
     () =>
@@ -58,7 +60,7 @@ export default function FirebaseGoogleSearch() {
         ? new FirebaseChatTransport({
             firebaseApp: app,
             modelParams: {
-              model: "gemini-2.5-flash",
+              model: 'gemini-2.5-flash',
               systemInstruction: `You are a helpful AI assistant with access to Google Search for up-to-date information.
 When answering questions that require current information, use the search results to provide accurate, timely responses.
 Always cite your sources when providing factual information.
@@ -73,7 +75,7 @@ Format responses in Markdown unless asked otherwise.`,
   const { messages, status, error, sendMessage, stop, regenerate } = useChat<
     UIMessage<GroundingMetadata>
   >({
-    id: "firebase-google-search",
+    id: 'firebase-google-search',
     transport: transport!,
   });
 
@@ -84,7 +86,7 @@ Format responses in Markdown unless asked otherwise.`,
     event.preventDefault();
     if (message.text?.trim()) {
       sendMessage({ text: message.text });
-      setInputValue("");
+      setInputValue('');
     }
   };
 
@@ -95,22 +97,22 @@ Format responses in Markdown unless asked otherwise.`,
   const handleCopy = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
-      toast.success("Copied to clipboard");
+      toast.success('Copied to clipboard');
     } catch {
-      toast.error("Failed to copy to clipboard");
+      toast.error('Failed to copy to clipboard');
     }
   };
 
-  const showSuggestions = messages.length === 0 && status === "ready";
+  const showSuggestions = messages.length === 0 && status === 'ready';
 
   if (!app) {
     return (
       <Box
         sx={{
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           p: 2,
         }}
       >
@@ -125,45 +127,45 @@ Format responses in Markdown unless asked otherwise.`,
   return (
     <Box
       sx={{
-        height: "100%",
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
+        height: '100%',
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
         maxWidth: 768,
-        mx: "auto",
+        mx: 'auto',
       }}
     >
       <Box
         sx={{
           flex: 1,
-          display: "flex",
-          flexDirection: "column",
-          overflow: "hidden",
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'hidden',
         }}
       >
         <Conversation>
           <ConversationContent>
-            {messages.length === 0 && status === "ready" ? (
+            {messages.length === 0 && status === 'ready' ? (
               <Box
                 sx={{
                   flex: 1,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "column",
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexDirection: 'column',
                   gap: 2,
-                  color: "text.tertiary",
+                  color: 'text.tertiary',
                 }}
               >
-                <Box sx={{ position: "relative" }}>
+                <Box sx={{ position: 'relative' }}>
                   <Bot size={48} />
                   <Box
                     sx={{
-                      position: "absolute",
+                      position: 'absolute',
                       bottom: -4,
                       right: -4,
-                      bgcolor: "background.paper",
-                      borderRadius: "50%",
+                      bgcolor: 'background.paper',
+                      borderRadius: '50%',
                       p: 0.5,
                     }}
                   >
@@ -173,17 +175,17 @@ Format responses in Markdown unless asked otherwise.`,
                 <Typography variant="h4" sx={{ fontWeight: 500 }}>
                   Google Search Grounding
                 </Typography>
-                <Typography color="text.secondary" sx={{ textAlign: "center" }}>
+                <Typography color="text.secondary" sx={{ textAlign: 'center' }}>
                   Ask questions that need up-to-date information
                 </Typography>
               </Box>
             ) : (
-              <Box sx={{ display: "flex", flexDirection: "column" }}>
+              <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 {messages.map((message) => {
                   const messageText = message.parts
-                    ?.filter((part) => part.type === "text")
+                    ?.filter((part) => part.type === 'text')
                     .map((part) => part.text)
-                    .join("\n");
+                    .join('\n');
 
                   const renderedContent =
                     message.metadata?.searchEntryPoint?.renderedContent;
@@ -191,19 +193,19 @@ Format responses in Markdown unless asked otherwise.`,
                   return (
                     <Message key={message.id} from={message.role}>
                       <MessageAvatar
-                        name={message.role === "user" ? "You" : "AI"}
+                        name={message.role === 'user' ? 'You' : 'AI'}
                       />
                       <MessageContent variant="flat">
                         {message.parts?.map((part, index) => {
-                          if (part.type === "text") {
+                          if (part.type === 'text') {
                             if (
-                              message.role === "assistant" &&
-                              part.state !== "done" &&
+                              message.role === 'assistant' &&
+                              part.state !== 'done' &&
                               !part.text
                             ) {
                               return null;
                             }
-                            return message.role === "assistant" ? (
+                            return message.role === 'assistant' ? (
                               <Response key={index}>{part.text}</Response>
                             ) : (
                               <Box key={index}>{part.text}</Box>
@@ -219,7 +221,7 @@ Format responses in Markdown unless asked otherwise.`,
                             }}
                           />
                         )}
-                        {message.role === "assistant" && messageText && (
+                        {message.role === 'assistant' && messageText && (
                           <Actions>
                             <Action
                               tooltip="Copy"
@@ -240,12 +242,12 @@ Format responses in Markdown unless asked otherwise.`,
                   );
                 })}
 
-                {status === "submitted" && (
+                {status === 'submitted' && (
                   <Message from="assistant">
                     <MessageAvatar name="AI" />
                     <MessageContent variant="flat">
                       <Box
-                        sx={{ display: "flex", alignItems: "center", gap: 1 }}
+                        sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
                       >
                         <CircularProgress size={20} />
                         <Typography color="text.secondary">
@@ -260,20 +262,20 @@ Format responses in Markdown unless asked otherwise.`,
                   <Message from="assistant">
                     <MessageAvatar name="AI" />
                     <MessageContent variant="flat">
-                      <Typography sx={{ color: "error.text" }}>
+                      <Typography sx={{ color: 'error.text' }}>
                         {error.message ||
-                          "An error occurred. Please try again."}
+                          'An error occurred. Please try again.'}
                       </Typography>
                     </MessageContent>
                   </Message>
                 )}
               </Box>
             )}
-            {status === "streaming" && (
+            {status === 'streaming' && (
               <Box
                 sx={{
-                  display: "flex",
-                  alignItems: "center",
+                  display: 'flex',
+                  alignItems: 'center',
                   gap: 1,
                   mt: 1,
                 }}
@@ -309,24 +311,24 @@ Format responses in Markdown unless asked otherwise.`,
             placeholder="Ask something that needs current information..."
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            disabled={status === "submitted" || error != null}
+            disabled={status === 'submitted' || error != null}
           />
         </PromptInputBody>
         <PromptInputToolbar>
-          {status === "streaming" || status === "submitted" ? (
+          {status === 'streaming' || status === 'submitted' ? (
             <Button
               variant="outlined"
               onClick={(e) => {
                 e.preventDefault();
                 stop();
               }}
-              sx={{ minWidth: "auto", borderRadius: 2, p: 1 }}
+              sx={{ minWidth: 'auto', borderRadius: 2, p: 1 }}
             >
               <SquareIcon size={16} />
             </Button>
           ) : (
             <PromptInputSubmit
-              status={status as "ready" | "submitted" | "streaming" | "error"}
+              status={status as 'ready' | 'submitted' | 'streaming' | 'error'}
               disabled={error != null}
             />
           )}

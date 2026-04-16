@@ -2,10 +2,10 @@ import {
   CONTROL_HEIGHTS,
   CONTROL_TOUCH_HEIGHTS,
   TOUCH_MEDIA_QUERY,
-} from "../scales";
-import { ThemeComponents } from "../types";
+} from '../scales';
+import { ThemeComponents } from '../types';
 
-declare module "@mui/material/Autocomplete" {
+declare module '@mui/material/Autocomplete' {
   interface AutocompletePropsSizeOverrides {
     large: true;
   }
@@ -24,16 +24,16 @@ export const autocompleteTheme: ThemeComponents = {
       root: {
         variants: [
           {
-            props: { size: "medium" },
+            props: { size: 'medium' },
             style: {
-              "& .MuiAutocomplete-inputRoot": {
+              '& .MuiAutocomplete-inputRoot': {
                 paddingTop: 2,
                 paddingBottom: 2,
                 paddingRight: 40,
-                "&:has(.MuiChip-root)": {
-                  paddingLeft: "2px",
+                '&:has(.MuiChip-root)': {
+                  paddingLeft: '2px',
                 },
-                "& .MuiAutocomplete-input": {
+                '& .MuiAutocomplete-input': {
                   paddingBlock: CONTROL_HEIGHTS.md / 2 - 12.5,
                   ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
                     [TOUCH_MEDIA_QUERY]: {
@@ -45,13 +45,13 @@ export const autocompleteTheme: ThemeComponents = {
             },
           },
           {
-            props: { size: "small" },
+            props: { size: 'small' },
             style: {
-              "& .MuiAutocomplete-inputRoot.MuiInputBase-sizeSmall": {
+              '& .MuiAutocomplete-inputRoot.MuiInputBase-sizeSmall': {
                 paddingTop: 2,
                 paddingBottom: 2,
                 paddingLeft: 2,
-                "& .MuiAutocomplete-input": {
+                '& .MuiAutocomplete-input': {
                   paddingBlock: CONTROL_HEIGHTS.sm / 2 - 12.5,
                   ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
                     [TOUCH_MEDIA_QUERY]: {
@@ -63,16 +63,16 @@ export const autocompleteTheme: ThemeComponents = {
             },
           },
           {
-            props: { size: "large" },
+            props: { size: 'large' },
             style: {
-              "& .MuiAutocomplete-inputRoot": {
+              '& .MuiAutocomplete-inputRoot': {
                 paddingTop: 4,
                 paddingBottom: 4,
                 paddingLeft: 12,
-                "&:has(.MuiChip-root)": {
+                '&:has(.MuiChip-root)': {
                   paddingLeft: 4,
                 },
-                "& .MuiAutocomplete-input": {
+                '& .MuiAutocomplete-input': {
                   paddingBlock: CONTROL_HEIGHTS.lg / 2 - 14.5,
                   ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
                     [TOUCH_MEDIA_QUERY]: {
@@ -90,7 +90,7 @@ export const autocompleteTheme: ThemeComponents = {
       },
       option: ({ theme }) => ({
         fontSize: theme.typography.body2.fontSize,
-        padding: "6px",
+        padding: '6px',
         borderRadius: 4,
       }),
       paper: ({ theme }) => ({
@@ -99,14 +99,14 @@ export const autocompleteTheme: ThemeComponents = {
         border: `1px solid ${(theme.vars || theme).palette.divider}`,
       }),
       listbox: ({ theme }) => ({
-        padding: "6px",
-        display: "flex",
-        flexDirection: "column",
-        gap: "4px",
-        "& .MuiAutocomplete-option": {
+        padding: '6px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '4px',
+        '& .MuiAutocomplete-option': {
           minHeight: 40,
-          [theme.breakpoints.up("sm")]: {
-            minHeight: "auto",
+          [theme.breakpoints.up('sm')]: {
+            minHeight: 'auto',
           },
         },
       }),
@@ -125,7 +125,7 @@ export const autocompleteTheme: ThemeComponents = {
         borderRadius: 4,
         variants: [
           {
-            props: { size: "small" },
+            props: { size: 'small' },
             style: {
               marginRight: -5,
             },

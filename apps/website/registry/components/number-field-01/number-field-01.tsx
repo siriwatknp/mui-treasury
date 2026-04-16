@@ -1,23 +1,24 @@
-"use client";
-import * as React from "react";
-import { NumberField as BaseNumberField } from "@base-ui-components/react/number-field";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
-import OutlinedInput from "@mui/material/OutlinedInput";
+'use client';
+import * as React from 'react';
+
+import { NumberField as BaseNumberField } from '@base-ui-components/react/number-field';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import OutlinedInput from '@mui/material/OutlinedInput';
 
 export function NumberField01({
   id: idProp,
   label,
   error,
-  size = "medium",
+  size = 'medium',
   ...other
 }: BaseNumberField.Root.Props & {
   label?: React.ReactNode;
-  size?: "small" | "medium";
+  size?: 'small' | 'medium';
   error?: boolean;
 }) {
   let id = React.useId();
@@ -36,12 +37,12 @@ export function NumberField01({
           error={error}
           variant="outlined"
           sx={{
-            "& .MuiButton-root": {
-              borderColor: "divider",
+            '& .MuiButton-root': {
+              borderColor: 'divider',
               minWidth: 0,
-              bgcolor: "action.hover",
-              "&:not(.Mui-disabled)": {
-                color: "text.primary",
+              bgcolor: 'action.hover',
+              '&:not(.Mui-disabled)': {
+                color: 'text.primary',
               },
             },
           }}
@@ -53,8 +54,8 @@ export function NumberField01({
       <FormLabel
         htmlFor={id}
         sx={{
-          fontSize: "0.875rem",
-          color: "text.primary",
+          fontSize: '0.875rem',
+          color: 'text.primary',
           fontWeight: 500,
           lineHeight: 1.5,
           mb: 0.5,
@@ -62,7 +63,7 @@ export function NumberField01({
       >
         {label}
       </FormLabel>
-      <Box sx={{ display: "flex" }}>
+      <Box sx={{ display: 'flex' }}>
         <BaseNumberField.Decrement
           render={
             <Button
@@ -72,9 +73,9 @@ export function NumberField01({
               sx={{
                 borderTopRightRadius: 0,
                 borderBottomRightRadius: 0,
-                borderRight: "0px",
-                "&.Mui-disabled": {
-                  borderRight: "0px",
+                borderRight: '0px',
+                '&.Mui-disabled': {
+                  borderRight: '0px',
                 },
               }}
             />
@@ -99,11 +100,11 @@ export function NumberField01({
                   ...props,
                   size:
                     Math.max(
-                      (other.min?.toString() || "").length,
+                      (other.min?.toString() || '').length,
                       state.inputValue.length || 1,
                     ) + 1,
                   sx: {
-                    textAlign: "center",
+                    textAlign: 'center',
                   },
                 },
               }}
@@ -121,9 +122,9 @@ export function NumberField01({
               sx={{
                 borderTopLeftRadius: 0,
                 borderBottomLeftRadius: 0,
-                borderLeft: "0px",
-                "&.Mui-disabled": {
-                  borderLeft: "0px",
+                borderLeft: '0px',
+                '&.Mui-disabled': {
+                  borderLeft: '0px',
                 },
               }}
             />

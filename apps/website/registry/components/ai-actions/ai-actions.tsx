@@ -1,17 +1,18 @@
-"use client";
+'use client';
 
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import Tooltip from "@mui/material/Tooltip";
-import { memo, type ComponentProps } from "react";
+import { type ComponentProps, memo } from 'react';
+
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
 
 export type ActionsProps = ComponentProps<typeof Box>;
 
 export const Actions = ({ children, sx, ...props }: ActionsProps) => (
   <Box
     sx={{
-      display: "flex",
-      alignItems: "center",
+      display: 'flex',
+      alignItems: 'center',
       gap: 0.5,
       ...sx,
     }}
@@ -27,20 +28,20 @@ export type ActionProps = ComponentProps<typeof IconButton> & {
 };
 
 export const Action = memo(
-  ({ tooltip, children, label, size = "small", sx, ...props }: ActionProps) => {
+  ({ tooltip, children, label, size = 'small', sx, ...props }: ActionProps) => {
     const button = (
       <IconButton
         size={size}
         type="button"
         sx={{
-          position: "relative",
+          position: 'relative',
           width: 36,
           height: 36,
           p: 0.75,
-          color: "text.secondary",
-          "&:hover": {
-            color: "text.primary",
-            bgcolor: "action.hover",
+          color: 'text.secondary',
+          '&:hover': {
+            color: 'text.primary',
+            bgcolor: 'action.hover',
           },
           ...sx,
         }}
@@ -63,4 +64,4 @@ export const Action = memo(
   },
 );
 
-Action.displayName = "Action";
+Action.displayName = 'Action';

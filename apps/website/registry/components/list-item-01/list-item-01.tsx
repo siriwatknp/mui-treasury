@@ -1,27 +1,28 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
+
 import {
+  Add as AddIcon,
+  Close as CloseIcon,
+  MoreHoriz as MoreHorizIcon,
+} from '@mui/icons-material';
+import {
+  Avatar,
+  Box,
+  Button,
+  IconButton,
+  Link,
   List,
   ListItem,
   ListItemAvatar,
   ListItemText,
-  Avatar,
   Typography,
-  Button,
-  IconButton,
-  Link,
-  Box,
-} from "@mui/material";
-import {
-  MoreHoriz as MoreHorizIcon,
-  Close as CloseIcon,
-  Add as AddIcon,
-} from "@mui/icons-material";
+} from '@mui/material';
 
 export function ListItem01() {
   return (
-    <List disablePadding sx={{ bgcolor: "background.paper" }}>
+    <List disablePadding sx={{ bgcolor: 'background.paper' }}>
       {/* Variation 1: Promoted/Company */}
       <ListItem
         divider
@@ -30,7 +31,7 @@ export function ListItem01() {
             <MoreHorizIcon />
           </IconButton>
         }
-        sx={{ alignItems: "flex-start", gap: 1.5 }}
+        sx={{ alignItems: 'flex-start', gap: 1.5 }}
       >
         <ListItemAvatar sx={{ mt: 1.25 }}>
           <Avatar
@@ -50,14 +51,14 @@ export function ListItem01() {
               <Typography
                 component="div"
                 variant="body2"
-                sx={{ color: "text.secondary" }}
+                sx={{ color: 'text.secondary' }}
               >
                 2,222 followers
               </Typography>
               <Typography
                 component="div"
                 variant="body2"
-                sx={{ color: "text.disabled" }}
+                sx={{ color: 'text.disabled' }}
               >
                 Promoted
               </Typography>
@@ -65,7 +66,7 @@ export function ListItem01() {
           }
           slotProps={{
             secondary: {
-              component: "div",
+              component: 'div',
             },
           }}
         />
@@ -75,7 +76,7 @@ export function ListItem01() {
       <ListItem
         divider
         secondaryAction={
-          <Box sx={{ display: "flex", gap: 0.5 }}>
+          <Box sx={{ display: 'flex', gap: 0.5 }}>
             <IconButton aria-label="More options" size="small">
               <MoreHorizIcon />
             </IconButton>
@@ -84,7 +85,7 @@ export function ListItem01() {
             </IconButton>
           </Box>
         }
-        sx={{ alignItems: "flex-start", gap: 1.5, pr: 11 }}
+        sx={{ alignItems: 'flex-start', gap: 1.5, pr: 11 }}
       >
         <ListItemAvatar sx={{ mt: 1.25 }}>
           <Avatar
@@ -104,17 +105,17 @@ export function ListItem01() {
               <Typography
                 component="div"
                 variant="body2"
-                sx={{ color: "text.secondary" }}
+                sx={{ color: 'text.secondary' }}
               >
                 Founder @ Into Design Systems
               </Typography>
-              <Link href="#" sx={{ fontSize: "0.875rem" }}>
+              <Link href="#" sx={{ fontSize: '0.875rem' }}>
                 Visit my website
               </Link>
               <Typography
                 component="time"
                 variant="caption"
-                sx={{ color: "text.disabled", display: "block" }}
+                sx={{ color: 'text.disabled', display: 'block' }}
               >
                 3h
               </Typography>
@@ -122,7 +123,7 @@ export function ListItem01() {
           }
           slotProps={{
             secondary: {
-              component: "div",
+              component: 'div',
             },
           }}
         />
@@ -137,12 +138,12 @@ export function ListItem01() {
             size="small"
             startIcon={<AddIcon />}
             aria-label="Connect with Ben Callahan"
-            sx={{ textTransform: "none" }}
+            sx={{ textTransform: 'none' }}
           >
             Connect
           </Button>
         }
-        sx={{ alignItems: "flex-start", gap: 1.5, pr: 16 }}
+        sx={{ alignItems: 'flex-start', gap: 1.5, pr: 16 }}
       >
         <ListItemAvatar sx={{ mt: 1.25 }}>
           <Avatar
@@ -162,14 +163,14 @@ export function ListItem01() {
               <Typography
                 component="div"
                 variant="body2"
-                sx={{ color: "text.secondary" }}
+                sx={{ color: 'text.secondary' }}
               >
                 Founder of Redwoods DS Community
               </Typography>
               <Typography
                 component="time"
                 variant="caption"
-                sx={{ color: "text.disabled" }}
+                sx={{ color: 'text.disabled' }}
               >
                 1h
               </Typography>
@@ -177,7 +178,7 @@ export function ListItem01() {
           }
           slotProps={{
             secondary: {
-              component: "div",
+              component: 'div',
             },
           }}
         />
@@ -192,12 +193,12 @@ export function ListItem01() {
             size="small"
             startIcon={<AddIcon />}
             aria-label="Follow Curious Squid"
-            sx={{ textTransform: "none" }}
+            sx={{ textTransform: 'none' }}
           >
             Follow
           </Button>
         }
-        sx={{ alignItems: "flex-start", gap: 1.5, pr: 13 }}
+        sx={{ alignItems: 'flex-start', gap: 1.5, pr: 13 }}
       >
         <ListItemAvatar sx={{ mt: 1.25 }}>
           <Avatar
@@ -217,14 +218,14 @@ export function ListItem01() {
               <Typography
                 component="div"
                 variant="body2"
-                sx={{ color: "text.secondary" }}
+                sx={{ color: 'text.secondary' }}
               >
                 88,888 followers
               </Typography>
               <Typography
                 component="time"
                 variant="caption"
-                sx={{ color: "text.disabled" }}
+                sx={{ color: 'text.disabled' }}
               >
                 2hr
               </Typography>
@@ -232,7 +233,7 @@ export function ListItem01() {
           }
           slotProps={{
             secondary: {
-              component: "div",
+              component: 'div',
             },
           }}
         />
@@ -242,7 +243,7 @@ export function ListItem01() {
       <ListItem
         divider
         secondaryAction={
-          <Box sx={{ display: "flex", gap: 0.5 }}>
+          <Box sx={{ display: 'flex', gap: 0.5 }}>
             <IconButton aria-label="More options" size="small">
               <MoreHorizIcon />
             </IconButton>
@@ -251,7 +252,7 @@ export function ListItem01() {
             </IconButton>
           </Box>
         }
-        sx={{ alignItems: "flex-start", gap: 1.5, pr: 11 }}
+        sx={{ alignItems: 'flex-start', gap: 1.5, pr: 11 }}
       >
         <ListItemAvatar sx={{ mt: 1.25 }}>
           <Avatar
@@ -262,14 +263,14 @@ export function ListItem01() {
         </ListItemAvatar>
         <ListItemText
           primary={
-            <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
               <Typography component="div" sx={{ fontWeight: 600 }}>
                 Brad Frost
               </Typography>
               🔒
               <Typography
                 component="div"
-                sx={{ color: "text.secondary", fontSize: "0.875rem" }}
+                sx={{ color: 'text.secondary', fontSize: '0.875rem' }}
               >
                 • 1st
               </Typography>
@@ -280,14 +281,14 @@ export function ListItem01() {
               <Typography
                 component="div"
                 variant="body2"
-                sx={{ color: "text.secondary" }}
+                sx={{ color: 'text.secondary' }}
               >
                 Enthusiasm Enthusiast at Brad Frost Web
               </Typography>
               <Typography
                 component="time"
                 variant="caption"
-                sx={{ color: "text.disabled" }}
+                sx={{ color: 'text.disabled' }}
               >
                 7h
               </Typography>
@@ -295,7 +296,7 @@ export function ListItem01() {
           }
           slotProps={{
             secondary: {
-              component: "div",
+              component: 'div',
             },
           }}
         />
@@ -305,7 +306,7 @@ export function ListItem01() {
       <ListItem
         divider
         secondaryAction={
-          <Box sx={{ display: "flex", gap: 0.5 }}>
+          <Box sx={{ display: 'flex', gap: 0.5 }}>
             <IconButton aria-label="More options" size="small">
               <MoreHorizIcon />
             </IconButton>
@@ -314,7 +315,7 @@ export function ListItem01() {
             </IconButton>
           </Box>
         }
-        sx={{ alignItems: "flex-start", gap: 1.5, pr: 11 }}
+        sx={{ alignItems: 'flex-start', gap: 1.5, pr: 11 }}
       >
         <ListItemAvatar sx={{ mt: 1.25 }}>
           <Avatar
@@ -325,7 +326,7 @@ export function ListItem01() {
         </ListItemAvatar>
         <ListItemText
           primary={
-            <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
               ✨
               <Typography component="div" sx={{ fontWeight: 600 }}>
                 James Melzer
@@ -333,7 +334,7 @@ export function ListItem01() {
               ✓
               <Typography
                 component="div"
-                sx={{ color: "text.secondary", fontSize: "0.875rem" }}
+                sx={{ color: 'text.secondary', fontSize: '0.875rem' }}
               >
                 • 1st
               </Typography>
@@ -344,17 +345,17 @@ export function ListItem01() {
               <Typography
                 component="div"
                 variant="body2"
-                sx={{ color: "text.secondary" }}
+                sx={{ color: 'text.secondary' }}
               >
                 Information Architect at UX Bearings
               </Typography>
-              <Link href="#" sx={{ fontSize: "0.875rem" }}>
+              <Link href="#" sx={{ fontSize: '0.875rem' }}>
                 Book an appointment
               </Link>
               <Typography
                 component="time"
                 variant="caption"
-                sx={{ color: "text.disabled", display: "block" }}
+                sx={{ color: 'text.disabled', display: 'block' }}
               >
                 7h
               </Typography>
@@ -362,7 +363,7 @@ export function ListItem01() {
           }
           slotProps={{
             secondary: {
-              component: "div",
+              component: 'div',
             },
           }}
         />

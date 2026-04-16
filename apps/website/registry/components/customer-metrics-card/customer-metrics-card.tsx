@@ -1,15 +1,16 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import Stack from "@mui/material/Stack";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import TrendingUpIcon from "@mui/icons-material/TrendingUp";
-import { LineChart } from "@mui/x-charts/LineChart";
+import * as React from 'react';
+
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import IconButton from '@mui/material/IconButton';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import { LineChart } from '@mui/x-charts/LineChart';
 
 export function CustomerMetricsCard() {
   return (
@@ -17,9 +18,9 @@ export function CustomerMetricsCard() {
       <CardContent>
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
             mb: 2,
           }}
         >
@@ -31,9 +32,9 @@ export function CustomerMetricsCard() {
 
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-end",
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-end',
             gap: 4,
           }}
         >
@@ -47,7 +48,7 @@ export function CustomerMetricsCard() {
               alignItems="center"
               sx={{ mt: 1 }}
             >
-              <TrendingUpIcon fontSize="small" sx={{ color: "success.main" }} />
+              <TrendingUpIcon fontSize="small" sx={{ color: 'success.main' }} />
               <Typography variant="body2" color="success.text">
                 40% vs last month
               </Typography>
@@ -59,17 +60,17 @@ export function CustomerMetricsCard() {
               series={[
                 {
                   data: [20, 35, 30, 40, 38, 48],
-                  color: "#52c759",
-                  curve: "natural",
+                  color: '#52c759',
+                  curve: 'natural',
                   showMark: false,
                 },
               ]}
               xAxis={[
                 {
                   data: [1, 2, 3, 4, 5, 6],
-                  scaleType: "point",
+                  scaleType: 'point',
                   height: 0,
-                  position: "none",
+                  position: 'none',
                 },
               ]}
               margin={{
@@ -81,7 +82,7 @@ export function CustomerMetricsCard() {
               yAxis={[
                 {
                   width: 0,
-                  position: "none",
+                  position: 'none',
                 },
               ]}
               slotProps={{

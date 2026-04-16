@@ -1,12 +1,13 @@
-"use client";
+'use client';
 
-import Box from "@mui/material/Box";
-import Collapse from "@mui/material/Collapse";
-import Link from "@mui/material/Link";
-import Typography from "@mui/material/Typography";
-import type { SxProps, Theme } from "@mui/material/styles";
-import { BookIcon, ChevronDownIcon } from "lucide-react";
-import React, { memo, useState, type ReactNode } from "react";
+import React, { type ReactNode, memo, useState } from 'react';
+
+import Box from '@mui/material/Box';
+import Collapse from '@mui/material/Collapse';
+import Link from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
+import type { SxProps, Theme } from '@mui/material/styles';
+import { BookIcon, ChevronDownIcon } from 'lucide-react';
 
 export type SourcesProps = {
   children?: ReactNode;
@@ -20,8 +21,8 @@ export const Sources = ({ children, sx }: SourcesProps) => {
     <Box
       sx={{
         mb: 2,
-        color: "primary.main",
-        fontSize: "0.75rem",
+        color: 'primary.main',
+        fontSize: '0.75rem',
         ...sx,
       }}
     >
@@ -56,13 +57,13 @@ export const SourcesTrigger = ({
     component="button"
     onClick={onToggle}
     sx={{
-      display: "flex",
-      alignItems: "center",
+      display: 'flex',
+      alignItems: 'center',
       gap: 1,
-      border: "none",
-      background: "transparent",
-      color: "inherit",
-      cursor: "pointer",
+      border: 'none',
+      background: 'transparent',
+      color: 'inherit',
+      cursor: 'pointer',
       p: 0,
       ...sx,
     }}
@@ -76,8 +77,8 @@ export const SourcesTrigger = ({
           component={ChevronDownIcon}
           size={16}
           sx={{
-            transition: "transform 0.2s",
-            transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+            transition: 'transform 0.2s',
+            transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
           }}
         />
       </>
@@ -97,10 +98,10 @@ export const SourcesContent = memo(
       <Box
         sx={{
           mt: 1.5,
-          display: "flex",
-          flexDirection: "column",
+          display: 'flex',
+          flexDirection: 'column',
           gap: 1,
-          width: "fit-content",
+          width: 'fit-content',
           ...sx,
         }}
       >
@@ -110,7 +111,7 @@ export const SourcesContent = memo(
   ),
 );
 
-SourcesContent.displayName = "SourcesContent";
+SourcesContent.displayName = 'SourcesContent';
 
 export type SourceProps = {
   href?: string;
@@ -126,10 +127,10 @@ export const Source = memo(({ href, title, children, sx }: SourceProps) => (
     target="_blank"
     underline="hover"
     sx={{
-      display: "flex",
-      alignItems: "center",
+      display: 'flex',
+      alignItems: 'center',
       gap: 1,
-      color: "inherit",
+      color: 'inherit',
       ...sx,
     }}
   >
@@ -144,4 +145,4 @@ export const Source = memo(({ href, title, children, sx }: SourceProps) => (
   </Link>
 ));
 
-Source.displayName = "Source";
+Source.displayName = 'Source';

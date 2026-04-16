@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 
-import clsx from "clsx";
+import clsx from 'clsx';
 
 type CarbonAdsProps = {
-  vertical?: boolean | "fullWidth";
+  vertical?: boolean | 'fullWidth';
   fullWidth?: boolean;
-  format?: "cover" | "responsive";
+  format?: 'cover' | 'responsive';
 } & React.HTMLProps<HTMLDivElement>;
 
 const CarbonAds = React.memo(function CarbonAds({
@@ -22,14 +22,14 @@ const CarbonAds = React.memo(function CarbonAds({
     const container = ref.current;
     if (!container) return;
 
-    const existingScript = document.getElementById("_carbonads_js");
+    const existingScript = document.getElementById('_carbonads_js');
     if (existingScript) return;
 
-    const script = document.createElement("script");
+    const script = document.createElement('script');
     script.src = `https://cdn.carbonads.com/carbon.js?serve=CE7DL5QE&placement=mui-treasurycom${
-      format === "cover" ? `&format=${format}` : ""
+      format === 'cover' ? `&format=${format}` : ''
     }`;
-    script.id = "_carbonads_js";
+    script.id = '_carbonads_js';
     script.async = true;
     container.appendChild(script);
   }, [format]);
@@ -37,7 +37,7 @@ const CarbonAds = React.memo(function CarbonAds({
   return (
     <div
       {...props}
-      className={clsx(vertical && "CarbonVertical", className)}
+      className={clsx(vertical && 'CarbonVertical', className)}
       ref={ref}
     />
   );

@@ -1,41 +1,41 @@
-"use client";
+'use client';
 
 import {
   Tool,
-  ToolHeader,
   ToolContent,
+  ToolHeader,
   ToolInput,
   ToolOutput,
-} from "@/registry/components/ai-tool/ai-tool";
+} from '@/registry/components/ai-tool/ai-tool';
 
 export function Demo() {
   const tools = [
     {
-      type: "tool-search_web" as const,
-      state: "output-available" as const,
+      type: 'tool-search_web' as const,
+      state: 'output-available' as const,
       input: {
-        query: "React 18 features",
+        query: 'React 18 features',
         limit: 5,
       },
       output:
-        "Found 5 relevant results about React 18 features including automatic batching, transitions, and suspense improvements.",
+        'Found 5 relevant results about React 18 features including automatic batching, transitions, and suspense improvements.',
     },
     {
-      type: "tool-read_file" as const,
-      state: "input-available" as const,
+      type: 'tool-read_file' as const,
+      state: 'input-available' as const,
       input: {
-        path: "/src/components/Button.tsx",
+        path: '/src/components/Button.tsx',
       },
       output: null,
     },
     {
-      type: "tool-execute_code" as const,
-      state: "output-error" as const,
+      type: 'tool-execute_code' as const,
+      state: 'output-error' as const,
       input: {
-        language: "javascript",
+        language: 'javascript',
         code: "console.log('Hello')",
       },
-      errorText: "Permission denied: Cannot execute code in sandbox mode",
+      errorText: 'Permission denied: Cannot execute code in sandbox mode',
     },
   ];
 

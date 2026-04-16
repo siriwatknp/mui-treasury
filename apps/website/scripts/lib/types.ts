@@ -35,5 +35,5 @@ export interface RegistryJson {
   dependencies: string[];
   registryDependencies: string[];
   files: RegistryFile[];
-  meta: RegistryMeta["meta"];
+  meta: RegistryMeta['meta'];
 }

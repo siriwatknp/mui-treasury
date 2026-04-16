@@ -1,23 +1,23 @@
-import React from "react";
+import React from 'react';
 
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
-import Content from "@/registry/layout/layout-core/Content";
+import Content from '@/registry/layout/layout-core/Content';
 import EdgeSidebar, {
   triggerEdgeDrawer,
-} from "@/registry/layout/layout-core/EdgeSidebar";
-import EdgeSidebarContent from "@/registry/layout/layout-core/EdgeSidebarContent";
-import Footer from "@/registry/layout/layout-core/Footer";
-import Header from "@/registry/layout/layout-core/Header";
-import Root from "@/registry/layout/layout-core/Root";
-import { layoutClasses } from "@/registry/layout/layout-core/layoutClasses";
+} from '@/registry/layout/layout-core/EdgeSidebar';
+import EdgeSidebarContent from '@/registry/layout/layout-core/EdgeSidebarContent';
+import Footer from '@/registry/layout/layout-core/Footer';
+import Header from '@/registry/layout/layout-core/Header';
+import Root from '@/registry/layout/layout-core/Root';
+import { layoutClasses } from '@/registry/layout/layout-core/layoutClasses';
 
 export const meta = {
-  title: "Edge Sidebar Drawer Without Overlay",
-  description: "Drawer mode without the overlay backdrop.",
-  previewMode: "iframe" as const,
+  title: 'Edge Sidebar Drawer Without Overlay',
+  description: 'Drawer mode without the overlay backdrop.',
+  previewMode: 'iframe' as const,
 };
 
 export function Demo() {
@@ -29,7 +29,7 @@ export function Demo() {
             className={layoutClasses.EdgeDrawerTrigger}
             size="small"
             onClick={() =>
-              triggerEdgeDrawer({ sidebarId: "sidebar-drawer-no-overlay" })
+              triggerEdgeDrawer({ sidebarId: 'sidebar-drawer-no-overlay' })
             }
           >
             Toggle drawer
@@ -38,7 +38,7 @@ export function Demo() {
       </Header>
       <EdgeSidebar
         id="sidebar-drawer-no-overlay"
-        variant={["drawer", { width: "300px", withoutOverlay: true }]}
+        variant={['drawer', { width: '300px', withoutOverlay: true }]}
       >
         <EdgeSidebarContent>
           <Box sx={{ p: 2 }}>

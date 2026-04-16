@@ -1,7 +1,7 @@
-import Box from "@mui/material/Box";
+import Box from '@mui/material/Box';
 
-import FirebaseGoogleSearch from "@/registry/firebase/firebase-google-search/firebase-google-search";
-import { layoutVariables } from "@/registry/layout/layout-core/layoutVariables";
+import FirebaseGoogleSearch from '@/registry/firebase/firebase-google-search/firebase-google-search';
+import { layoutVariables } from '@/registry/layout/layout-core/layoutVariables';
 
 export default function Page() {
   return (

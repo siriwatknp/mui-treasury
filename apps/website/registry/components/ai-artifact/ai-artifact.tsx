@@ -1,12 +1,13 @@
-"use client";
+'use client';
 
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import Paper from "@mui/material/Paper";
-import Tooltip from "@mui/material/Tooltip";
-import Typography from "@mui/material/Typography";
-import { XIcon } from "lucide-react";
-import { memo, type ComponentProps } from "react";
+import { type ComponentProps, memo } from 'react';
+
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import Paper from '@mui/material/Paper';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+import { XIcon } from 'lucide-react';
 
 export type ArtifactProps = ComponentProps<typeof Paper>;
 
@@ -14,11 +15,11 @@ export const Artifact = ({ children, sx, ...props }: ArtifactProps) => (
   <Paper
     elevation={4}
     sx={{
-      display: "flex",
-      flexDirection: "column",
-      overflow: "hidden",
+      display: 'flex',
+      flexDirection: 'column',
+      overflow: 'hidden',
       border: 1,
-      borderColor: "divider",
+      borderColor: 'divider',
       ...sx,
     }}
     {...props}
@@ -37,11 +38,11 @@ export const ArtifactHeader = ({
   <Box
     sx={[
       (theme) => ({
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
         borderBottom: 1,
-        borderColor: "divider",
+        borderColor: 'divider',
         bgcolor: (theme.vars || theme).palette.action.hover,
         px: 2,
         py: 1.5,
@@ -57,7 +58,7 @@ export const ArtifactHeader = ({
 export type ArtifactCloseProps = ComponentProps<typeof IconButton>;
 
 export const ArtifactClose = memo(
-  ({ children, size = "small", sx, ...props }: ArtifactCloseProps) => (
+  ({ children, size = 'small', sx, ...props }: ArtifactCloseProps) => (
     <IconButton
       size={size}
       type="button"
@@ -65,9 +66,9 @@ export const ArtifactClose = memo(
         width: 32,
         height: 32,
         p: 0,
-        color: "text.secondary",
-        "&:hover": {
-          color: "text.primary",
+        color: 'text.secondary',
+        '&:hover': {
+          color: 'text.primary',
         },
         ...sx,
       }}
@@ -79,7 +80,7 @@ export const ArtifactClose = memo(
   ),
 );
 
-ArtifactClose.displayName = "ArtifactClose";
+ArtifactClose.displayName = 'ArtifactClose';
 
 export type ArtifactTitleProps = ComponentProps<typeof Typography>;
 
@@ -88,7 +89,7 @@ export const ArtifactTitle = ({ sx, ...props }: ArtifactTitleProps) => (
     variant="body2"
     sx={{
       fontWeight: 500,
-      color: "text.primary",
+      color: 'text.primary',
       ...sx,
     }}
     {...props}
@@ -104,7 +105,7 @@ export const ArtifactDescription = ({
   <Typography
     variant="body2"
     sx={{
-      color: "text.secondary",
+      color: 'text.secondary',
       ...sx,
     }}
     {...props}
@@ -120,8 +121,8 @@ export const ArtifactActions = ({
 }: ArtifactActionsProps) => (
   <Box
     sx={{
-      display: "flex",
-      alignItems: "center",
+      display: 'flex',
+      alignItems: 'center',
       gap: 0.5,
       ...sx,
     }}
@@ -142,7 +143,7 @@ export const ArtifactAction = ({
   label,
   icon: Icon,
   children,
-  size = "small",
+  size = 'small',
   sx,
   ...props
 }: ArtifactActionProps) => {
@@ -154,9 +155,9 @@ export const ArtifactAction = ({
         width: 32,
         height: 32,
         p: 0,
-        color: "text.secondary",
-        "&:hover": {
-          color: "text.primary",
+        color: 'text.secondary',
+        '&:hover': {
+          color: 'text.primary',
         },
         ...sx,
       }}
@@ -188,7 +189,7 @@ export const ArtifactContent = ({
   <Box
     sx={{
       flex: 1,
-      overflow: "auto",
+      overflow: 'auto',
       p: 2,
       ...sx,
     }}

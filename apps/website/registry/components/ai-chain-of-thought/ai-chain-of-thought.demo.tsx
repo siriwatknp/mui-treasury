@@ -1,29 +1,30 @@
-"use client";
+'use client';
+
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import {
+  CheckCircleIcon,
+  CodeIcon,
+  FileTextIcon,
+  SearchIcon,
+} from 'lucide-react';
 
 import {
   ChainOfThought,
-  ChainOfThoughtHeader,
   ChainOfThoughtContent,
-  ChainOfThoughtStep,
-  ChainOfThoughtSearchResults,
-  ChainOfThoughtSearchResult,
+  ChainOfThoughtHeader,
   ChainOfThoughtImage,
-} from "@/registry/components/ai-chain-of-thought/ai-chain-of-thought";
-import {
-  SearchIcon,
-  FileTextIcon,
-  CheckCircleIcon,
-  CodeIcon,
-} from "lucide-react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+  ChainOfThoughtSearchResult,
+  ChainOfThoughtSearchResults,
+  ChainOfThoughtStep,
+} from '@/registry/components/ai-chain-of-thought/ai-chain-of-thought';
 
 export function Demo() {
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: 4, p: 4 }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, p: 4 }}>
       {/* Basic Chain of Thought */}
       <Box>
-        <Typography variant="body2" sx={{ mb: 2, color: "text.secondary" }}>
+        <Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
           Basic Chain of Thought (Collapsed by Default)
         </Typography>
         <ChainOfThought>
@@ -67,7 +68,7 @@ export function Demo() {
 
       {/* Chain of Thought Open by Default */}
       <Box>
-        <Typography variant="body2" sx={{ mb: 2, color: "text.secondary" }}>
+        <Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
           Chain of Thought (Open by Default)
         </Typography>
         <ChainOfThought defaultOpen>
@@ -105,7 +106,7 @@ export function Demo() {
 
       {/* Chain of Thought with Image */}
       <Box>
-        <Typography variant="body2" sx={{ mb: 2, color: "text.secondary" }}>
+        <Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
           Chain of Thought with Image
         </Typography>
         <ChainOfThought defaultOpen>
@@ -133,15 +134,15 @@ export function Demo() {
               <ChainOfThoughtImage caption="Monthly sales performance chart">
                 <Box
                   sx={{
-                    width: "100%",
+                    width: '100%',
                     height: 200,
-                    bgcolor: "background.paper",
+                    bgcolor: 'background.paper',
                     borderRadius: 1,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     border: 1,
-                    borderColor: "divider",
+                    borderColor: 'divider',
                   }}
                 >
                   <Typography variant="body2" color="text.secondary">
@@ -163,7 +164,7 @@ export function Demo() {
 
       {/* Custom Header Text */}
       <Box>
-        <Typography variant="body2" sx={{ mb: 2, color: "text.secondary" }}>
+        <Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
           Custom Header Text
         </Typography>
         <ChainOfThought>

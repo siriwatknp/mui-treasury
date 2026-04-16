@@ -278,15 +278,15 @@ Items that don't match any prefix → no subcategory (remain at root level)
 ```ts
 // scripts/add-subcategory.ts
 const SUBCATEGORY_MAP: Record<string, string> = {
-  "card-": "card",
-  "tabs-": "tabs",
-  "info-": "info",
-  "radio-": "radio",
-  "select-": "select",
-  "text-field-": "text-field",
-  "number-field-": "text-field",
-  "list-item-": "list",
-  "color-scheme-": "color-scheme",
+  'card-': 'card',
+  'tabs-': 'tabs',
+  'info-': 'info',
+  'radio-': 'radio',
+  'select-': 'select',
+  'text-field-': 'text-field',
+  'number-field-': 'text-field',
+  'list-item-': 'list',
+  'color-scheme-': 'color-scheme',
   // ... add more based on MUI components
 };
 

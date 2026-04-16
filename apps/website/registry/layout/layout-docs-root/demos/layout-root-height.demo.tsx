@@ -1,28 +1,28 @@
-import React from "react";
+import React from 'react';
 
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
-import Content from "@/registry/layout/layout-core/Content";
-import Footer from "@/registry/layout/layout-core/Footer";
-import Header from "@/registry/layout/layout-core/Header";
-import Root from "@/registry/layout/layout-core/Root";
+import Content from '@/registry/layout/layout-core/Content';
+import Footer from '@/registry/layout/layout-core/Footer';
+import Header from '@/registry/layout/layout-core/Header';
+import Root from '@/registry/layout/layout-core/Root';
 
 export const meta = {
-  title: "Root Height",
+  title: 'Root Height',
   description:
-    "Customize root layout height with a fixed value or responsive breakpoints.",
-  previewMode: "iframe" as const,
+    'Customize root layout height with a fixed value or responsive breakpoints.',
+  previewMode: 'iframe' as const,
 };
 
 export function Demo() {
   return (
     <Box
       sx={{
-        display: "flex",
+        display: 'flex',
         gap: 2,
-        flexWrap: "wrap",
-        alignItems: "flex-start",
+        flexWrap: 'wrap',
+        alignItems: 'flex-start',
       }}
     >
       <Root height="300px" sx={{ flex: 1, minWidth: 200 }}>
@@ -74,7 +74,7 @@ export function Demo() {
       </Root>
 
       <Root
-        height={{ xs: "300px", md: "400px" }}
+        height={{ xs: '300px', md: '400px' }}
         sx={{ flex: 1, minWidth: 200 }}
       >
         <Header>

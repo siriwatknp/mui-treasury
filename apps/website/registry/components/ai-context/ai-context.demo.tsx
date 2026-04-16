@@ -1,8 +1,10 @@
-"use client";
+'use client';
 
-import Popover from "@mui/material/Popover";
-import Stack from "@mui/material/Stack";
-import { useState } from "react";
+import { useState } from 'react';
+
+import Popover from '@mui/material/Popover';
+import Stack from '@mui/material/Stack';
+
 import {
   Context,
   ContextCacheUsage,
@@ -14,7 +16,7 @@ import {
   ContextOutputUsage,
   ContextReasoningUsage,
   ContextTrigger,
-} from "@/registry/components/ai-context/ai-context";
+} from '@/registry/components/ai-context/ai-context';
 
 export function Demo() {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -57,12 +59,12 @@ export function Demo() {
         anchorEl={anchorEl}
         onClose={handleClose}
         anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "right",
+          vertical: 'bottom',
+          horizontal: 'right',
         }}
         transformOrigin={{
-          vertical: "top",
-          horizontal: "right",
+          vertical: 'top',
+          horizontal: 'right',
         }}
       >
         <ContextContent>

@@ -1,12 +1,14 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import Box from "@mui/material/Box";
+import * as React from 'react';
+
+import Box from '@mui/material/Box';
+import { CreditCard, GraduationCap, Monitor, Truck, Users } from 'lucide-react';
+
 import {
   CardAction02,
   type CardAction02Props,
-} from "@/registry/components/card-action-02/card-action-02";
-import { CreditCard, GraduationCap, Users, Monitor, Truck } from "lucide-react";
+} from '@/registry/components/card-action-02/card-action-02';
 
 const cardsData: CardAction02Props[] = [
   {
@@ -19,7 +21,7 @@ const cardsData: CardAction02Props[] = [
       </>
     ),
     description:
-      "When you choose to check out at Apple with Apple Card Monthly Installments.‡",
+      'When you choose to check out at Apple with Apple Card Monthly Installments.‡',
   },
   {
     icon: <GraduationCap size={24} strokeWidth={1.5} />,
@@ -30,7 +32,7 @@ const cardsData: CardAction02Props[] = [
         with education pricing.
       </>
     ),
-    description: "Available to college students and educators.‡",
+    description: 'Available to college students and educators.‡',
   },
   {
     icon: <Users size={24} strokeWidth={1.5} />,
@@ -42,12 +44,12 @@ const cardsData: CardAction02Props[] = [
       </>
     ),
     description:
-      "Talk one on one with a Specialist to set up your Mac and discover new features.",
+      'Talk one on one with a Specialist to set up your Mac and discover new features.',
   },
   {
     icon: <Monitor size={24} strokeWidth={1.5} />,
     title: <>Customize your Mac.</>,
-    description: "Choose your chip, memory, storage, even color.",
+    description: 'Choose your chip, memory, storage, even color.',
   },
   {
     icon: <Truck size={24} strokeWidth={1.5} />,
@@ -59,7 +61,7 @@ const cardsData: CardAction02Props[] = [
       </>
     ),
     description:
-      "Choose from two-hour delivery from an Apple Store, free delivery, or easy pickup options.",
+      'Choose from two-hour delivery from an Apple Store, free delivery, or easy pickup options.',
   },
 ];
 
@@ -69,20 +71,20 @@ export function CarouselCss01() {
       role="region"
       aria-label="Mac features carousel"
       sx={{
-        display: "flex",
-        flexDirection: "row",
+        display: 'flex',
+        flexDirection: 'row',
         gap: 2.5,
         m: -2,
         p: 2,
-        overflowX: "auto",
-        overflowY: "hidden",
-        scrollSnapType: "x mandatory",
-        scrollBehavior: "smooth",
-        WebkitOverflowScrolling: "touch",
-        "&::-webkit-scrollbar": {
-          display: "none",
+        overflowX: 'auto',
+        overflowY: 'hidden',
+        scrollSnapType: 'x mandatory',
+        scrollBehavior: 'smooth',
+        WebkitOverflowScrolling: 'touch',
+        '&::-webkit-scrollbar': {
+          display: 'none',
         },
-        scrollbarWidth: "none",
+        scrollbarWidth: 'none',
       }}
     >
       {cardsData.map((card, index) => (
@@ -90,7 +92,7 @@ export function CarouselCss01() {
           key={index}
           sx={{
             flexShrink: 0,
-            scrollSnapAlign: "center",
+            scrollSnapAlign: 'center',
           }}
         >
           <CardAction02

@@ -1,19 +1,20 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { PreviewCard } from "@base-ui-components/react/preview-card";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
+import * as React from 'react';
+
+import { PreviewCard } from '@base-ui-components/react/preview-card';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Link from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
 
 export function CardPreview01() {
   return (
-    <Box sx={{ maxWidth: 600, mx: "auto", p: 4 }}>
+    <Box sx={{ maxWidth: 600, mx: 'auto', p: 4 }}>
       <Typography variant="body1" sx={{ lineHeight: 1.8 }}>
-        The principles of good{" "}
+        The principles of good{' '}
         <PreviewCard.Root>
           <PreviewCard.Trigger
             aria-haspopup="dialog"
@@ -27,17 +28,17 @@ export function CardPreview01() {
                 render={
                   <Box
                     sx={{
-                      transformOrigin: "var(--transform-origin)",
-                      "&[data-starting-style]": {
+                      transformOrigin: 'var(--transform-origin)',
+                      '&[data-starting-style]': {
                         opacity: 0,
-                        transform: "scale(0.95)",
+                        transform: 'scale(0.95)',
                       },
-                      "&[data-ending-style]": {
+                      '&[data-ending-style]': {
                         opacity: 0,
-                        transform: "scale(0.95)",
-                        transition: "opacity 150ms, transform 150ms",
+                        transform: 'scale(0.95)',
+                        transition: 'opacity 150ms, transform 150ms',
                       },
-                      transition: "opacity 150ms, transform 150ms",
+                      transition: 'opacity 150ms, transform 150ms',
                     }}
                   />
                 }
@@ -48,8 +49,8 @@ export function CardPreview01() {
                     image="https://placehold.co/640x360"
                     alt="Typography example showing Station Hopplein signage"
                     sx={{
-                      aspectRatio: "16/9",
-                      objectFit: "cover",
+                      aspectRatio: '16/9',
+                      objectFit: 'cover',
                     }}
                   />
                   <CardContent>
@@ -71,7 +72,7 @@ export function CardPreview01() {
               </PreviewCard.Popup>
             </PreviewCard.Positioner>
           </PreviewCard.Portal>
-        </PreviewCard.Root>{" "}
+        </PreviewCard.Root>{' '}
         remain into
       </Typography>
     </Box>

@@ -1,12 +1,13 @@
-"use client";
+'use client';
 
-import React from "react";
-import { InputAdornment } from "@mui/material";
+import React from 'react';
+
+import { InputAdornment } from '@mui/material';
 
 import {
-  NumberInputField,
   type NumberInputError,
-} from "@/registry/components/number-input/number-input";
+  NumberInputField,
+} from '@/registry/components/number-input/number-input';
 
 export function Demo() {
   const [error, setError] = React.useState<NumberInputError | null>(null);
@@ -83,11 +84,11 @@ export function Demo() {
               step={100}
               formatter={(valueText) => {
                 const addComma = (str: string) =>
-                  str.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                  str.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
                 return `$${addComma(valueText)}`;
               }}
               parser={(valueText) =>
-                valueText.replace("$", "").replace(/,/g, "")
+                valueText.replace('$', '').replace(/,/g, '')
               }
               fullWidth
             />
@@ -98,11 +99,11 @@ export function Demo() {
               label="Error Handling"
               placeholder="Try exceeding limits"
               helperText={
-                error === "exceed-max"
-                  ? "Value exceeds maximum limit"
-                  : error === "below-min"
-                    ? "Value is below minimum limit"
-                    : "Enter value between 10 and 40"
+                error === 'exceed-max'
+                  ? 'Value exceeds maximum limit'
+                  : error === 'below-min'
+                    ? 'Value is below minimum limit'
+                    : 'Enter value between 10 and 40'
               }
               defaultValue={20}
               min={10}

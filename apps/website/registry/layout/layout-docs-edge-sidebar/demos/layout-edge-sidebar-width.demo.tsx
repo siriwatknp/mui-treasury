@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react';
 
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
-import Content from "@/registry/layout/layout-core/Content";
-import EdgeSidebar from "@/registry/layout/layout-core/EdgeSidebar";
-import EdgeSidebarContent from "@/registry/layout/layout-core/EdgeSidebarContent";
-import Footer from "@/registry/layout/layout-core/Footer";
-import Header from "@/registry/layout/layout-core/Header";
-import Root from "@/registry/layout/layout-core/Root";
+import Content from '@/registry/layout/layout-core/Content';
+import EdgeSidebar from '@/registry/layout/layout-core/EdgeSidebar';
+import EdgeSidebarContent from '@/registry/layout/layout-core/EdgeSidebarContent';
+import Footer from '@/registry/layout/layout-core/Footer';
+import Header from '@/registry/layout/layout-core/Header';
+import Root from '@/registry/layout/layout-core/Root';
 
 export const meta = {
-  title: "Edge Sidebar Width",
-  description: "Customize the width of the edge sidebar via variant config.",
-  previewMode: "iframe" as const,
+  title: 'Edge Sidebar Width',
+  description: 'Customize the width of the edge sidebar via variant config.',
+  previewMode: 'iframe' as const,
 };
 
 export function Demo() {
@@ -28,7 +28,7 @@ export function Demo() {
       </Header>
       <EdgeSidebar
         id="sidebar-width"
-        variant={["permanent", { width: "200px" }]}
+        variant={['permanent', { width: '200px' }]}
       >
         <EdgeSidebarContent>
           <Box sx={{ p: 2 }}>

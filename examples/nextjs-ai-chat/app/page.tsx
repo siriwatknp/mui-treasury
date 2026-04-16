@@ -1,34 +1,34 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import { useChat } from "@ai-sdk/react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import { DefaultChatTransport } from "ai";
+import { useChat } from '@ai-sdk/react';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import { DefaultChatTransport } from 'ai';
 import {
   BotIcon,
   CopyIcon,
   ImageIcon,
   RefreshCwIcon,
   SquareIcon,
-} from "lucide-react";
+} from 'lucide-react';
 
 import {
   Action,
   Actions,
-} from "../src/mui-treasury/components/ai-actions/ai-actions";
+} from '../src/mui-treasury/components/ai-actions/ai-actions';
 import {
   Conversation,
   ConversationContent,
   ConversationScrollButton,
-} from "../src/mui-treasury/components/ai-conversation/ai-conversation";
-import { Loader } from "../src/mui-treasury/components/ai-loader/ai-loader";
+} from '../src/mui-treasury/components/ai-conversation/ai-conversation';
+import { Loader } from '../src/mui-treasury/components/ai-loader/ai-loader';
 import {
   Message,
   MessageAvatar,
   MessageContent,
-} from "../src/mui-treasury/components/ai-message/ai-message";
+} from '../src/mui-treasury/components/ai-message/ai-message';
 import {
   PromptInput,
   PromptInputAttachment,
@@ -40,34 +40,34 @@ import {
   PromptInputTextarea,
   PromptInputToolbar,
   usePromptInputAttachments,
-} from "../src/mui-treasury/components/ai-prompt-input/ai-prompt-input";
+} from '../src/mui-treasury/components/ai-prompt-input/ai-prompt-input';
 import {
   Reasoning,
   ReasoningContent,
   ReasoningTrigger,
-} from "../src/mui-treasury/components/ai-reasoning/ai-reasoning";
-import { Response } from "../src/mui-treasury/components/ai-response/ai-response";
+} from '../src/mui-treasury/components/ai-reasoning/ai-reasoning';
+import { Response } from '../src/mui-treasury/components/ai-response/ai-response';
 import {
   Source,
   Sources,
   SourcesContent,
   SourcesTrigger,
-} from "../src/mui-treasury/components/ai-sources/ai-sources";
+} from '../src/mui-treasury/components/ai-sources/ai-sources';
 import {
   Suggestion,
   Suggestions,
-} from "../src/mui-treasury/components/ai-suggestion/ai-suggestion";
+} from '../src/mui-treasury/components/ai-suggestion/ai-suggestion';
 import {
   Tool,
   ToolContent,
   ToolHeader,
   ToolInput,
   ToolOutput,
-} from "../src/mui-treasury/components/ai-tool/ai-tool";
+} from '../src/mui-treasury/components/ai-tool/ai-tool';
 
 const SUGGESTED_PROMPTS = [
   "What's the weather like in San Francisco?",
-  "Write a React component for a todo list",
+  'Write a React component for a todo list',
 ];
 
 // Mock reasoning based on message content
@@ -77,7 +77,7 @@ function getMockReasoning(messageText: string, hasTool: boolean) {
   const text = messageText.toLowerCase();
 
   // Show reasoning for weather queries
-  if (text.includes("weather") || text.includes("temperature")) {
+  if (text.includes('weather') || text.includes('temperature')) {
     return `Let me think about this weather query:
 
 1. The user is asking about weather information
@@ -87,7 +87,7 @@ function getMockReasoning(messageText: string, hasTool: boolean) {
   }
 
   // Show reasoning for time queries
-  if (text.includes("time") || text.includes("date")) {
+  if (text.includes('time') || text.includes('date')) {
     return `Processing the time-related query:
 
 1. User wants current time/date information
@@ -98,9 +98,9 @@ function getMockReasoning(messageText: string, hasTool: boolean) {
 
   // Show reasoning for code queries
   if (
-    text.includes("react") ||
-    text.includes("component") ||
-    text.includes("function")
+    text.includes('react') ||
+    text.includes('component') ||
+    text.includes('function')
   ) {
     return `Analyzing the coding request:
 
@@ -112,7 +112,7 @@ function getMockReasoning(messageText: string, hasTool: boolean) {
   }
 
   // Show reasoning for calculations
-  if (text.includes("sum") || text.includes("calculate") || hasTool) {
+  if (text.includes('sum') || text.includes('calculate') || hasTool) {
     return `Approaching this calculation:
 
 1. Identifying the numbers to calculate
@@ -131,57 +131,57 @@ function getMockSources(messageText: string, hasTool: boolean) {
   const text = messageText.toLowerCase();
 
   // Show sources for weather-related queries
-  if (text.includes("weather") || text.includes("temperature")) {
+  if (text.includes('weather') || text.includes('temperature')) {
     return [
       {
-        title: "OpenWeather API Documentation",
-        href: "https://openweathermap.org/api",
+        title: 'OpenWeather API Documentation',
+        href: 'https://openweathermap.org/api',
       },
       {
-        title: "Weather.gov Climate Data",
-        href: "https://www.weather.gov/",
+        title: 'Weather.gov Climate Data',
+        href: 'https://www.weather.gov/',
       },
     ];
   }
 
   // Show sources for time-related queries
-  if (text.includes("time") || text.includes("date")) {
+  if (text.includes('time') || text.includes('date')) {
     return [
       {
-        title: "Time and Date API",
-        href: "https://www.timeapi.io/",
+        title: 'Time and Date API',
+        href: 'https://www.timeapi.io/',
       },
     ];
   }
 
   // Show sources for code-related queries
   if (
-    text.includes("react") ||
-    text.includes("component") ||
-    text.includes("function")
+    text.includes('react') ||
+    text.includes('component') ||
+    text.includes('function')
   ) {
     return [
       {
-        title: "React Documentation",
-        href: "https://react.dev/learn",
+        title: 'React Documentation',
+        href: 'https://react.dev/learn',
       },
       {
-        title: "MDN Web Docs",
-        href: "https://developer.mozilla.org",
+        title: 'MDN Web Docs',
+        href: 'https://developer.mozilla.org',
       },
       {
-        title: "TypeScript Handbook",
-        href: "https://www.typescriptlang.org/docs/",
+        title: 'TypeScript Handbook',
+        href: 'https://www.typescriptlang.org/docs/',
       },
     ];
   }
 
   // Show sources for math calculations
-  if (text.includes("sum") || text.includes("calculate") || hasTool) {
+  if (text.includes('sum') || text.includes('calculate') || hasTool) {
     return [
       {
-        title: "MDN Math Reference",
-        href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math",
+        title: 'MDN Math Reference',
+        href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math',
       },
     ];
   }
@@ -218,7 +218,7 @@ function SubmitButton({
 
   return (
     <PromptInputSubmit
-      status={status as "ready" | "submitted" | "streaming" | "error"}
+      status={status as 'ready' | 'submitted' | 'streaming' | 'error'}
       disabled={disabled || !hasContent}
     />
   );
@@ -227,14 +227,14 @@ function SubmitButton({
 export default function ChatPage() {
   const { messages, sendMessage, status, error, regenerate, stop } = useChat({
     transport: new DefaultChatTransport({
-      api: "/api/chat",
+      api: '/api/chat',
     }),
     onError: (error) => {
-      console.error("Chat error:", error);
+      console.error('Chat error:', error);
     },
   });
 
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
 
   const handleSuggestionClick = (suggestion: string) => {
     setInputValue(suggestion);
@@ -247,10 +247,10 @@ export default function ChatPage() {
     event.preventDefault();
     if (message.text?.trim() || message.files?.length) {
       sendMessage({
-        text: message.text || "",
+        text: message.text || '',
         files: message.files,
       });
-      setInputValue("");
+      setInputValue('');
     }
   };
 
@@ -262,111 +262,111 @@ export default function ChatPage() {
     try {
       await navigator.clipboard.writeText(text);
     } catch (error) {
-      console.error("Failed to copy:", error);
+      console.error('Failed to copy:', error);
     }
   };
 
-  const showSuggestions = messages.length === 0 && status === "ready";
+  const showSuggestions = messages.length === 0 && status === 'ready';
 
   return (
     <Box
       sx={{
-        display: "flex",
-        height: "100vh",
-        flexDirection: "column",
+        display: 'flex',
+        height: '100vh',
+        flexDirection: 'column',
       }}
     >
       {/* Main Chat Area */}
       <Box
         sx={{
           flex: 1,
-          display: "flex",
-          flexDirection: "column",
-          overflow: "hidden",
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'hidden',
         }}
       >
         <Conversation>
           <ConversationContent>
-            {messages.length === 0 && status === "ready" ? (
+            {messages.length === 0 && status === 'ready' ? (
               <Box
                 sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  height: "100%",
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: '100%',
                   gap: 2,
                   px: 2,
                 }}
               >
                 <BotIcon size={48} style={{ opacity: 0.5 }} />
-                <Box sx={{ textAlign: "center" }}>
-                  <Box sx={{ fontSize: "1.5rem", fontWeight: 600, mb: 1 }}>
+                <Box sx={{ textAlign: 'center' }}>
+                  <Box sx={{ fontSize: '1.5rem', fontWeight: 600, mb: 1 }}>
                     Welcome to MUI+ AI Chat
                   </Box>
-                  <Box sx={{ color: "text.secondary", fontSize: "0.875rem" }}>
+                  <Box sx={{ color: 'text.secondary', fontSize: '0.875rem' }}>
                     Try one of the suggestions below or ask anything
                   </Box>
                 </Box>
               </Box>
             ) : (
-              <Box sx={{ display: "flex", flexDirection: "column", gap: 0 }}>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
                 {messages.map((message) => {
                   // Get all text parts combined for copying
                   const messageText = message.parts
-                    ?.filter((part) => part.type === "text")
+                    ?.filter((part) => part.type === 'text')
                     .map((part) => part.text)
-                    .join("\n");
+                    .join('\n');
 
                   // Check if message has tool usage
                   const hasTool = message.parts?.some((part) =>
-                    part.type.startsWith("tool-"),
+                    part.type.startsWith('tool-'),
                   );
 
                   // Get mock sources and reasoning based on message content
                   const mockSources =
-                    message.role === "assistant"
-                      ? getMockSources(messageText || "", hasTool || false)
+                    message.role === 'assistant'
+                      ? getMockSources(messageText || '', hasTool || false)
                       : null;
 
                   const mockReasoning =
-                    message.role === "assistant"
-                      ? getMockReasoning(messageText || "", hasTool || false)
+                    message.role === 'assistant'
+                      ? getMockReasoning(messageText || '', hasTool || false)
                       : null;
 
                   return (
                     <Message key={message.id} from={message.role}>
                       <MessageAvatar
-                        name={message.role === "user" ? "User" : "AI Assistant"}
+                        name={message.role === 'user' ? 'User' : 'AI Assistant'}
                       />
                       <MessageContent variant="flat">
                         {mockReasoning && (
-                          <Reasoning isStreaming={status === "streaming"}>
+                          <Reasoning isStreaming={status === 'streaming'}>
                             <ReasoningTrigger />
                             <ReasoningContent>{mockReasoning}</ReasoningContent>
                           </Reasoning>
                         )}
                         {message.parts?.map((part, index: number) => {
-                          if (part.type === "text") {
-                            return message.role === "assistant" ? (
+                          if (part.type === 'text') {
+                            return message.role === 'assistant' ? (
                               <Response key={index}>{part.text}</Response>
                             ) : (
                               <Box key={index}>{part.text}</Box>
                             );
                           }
                           if (
-                            part.type === "file" &&
-                            part.mediaType?.startsWith("image/")
+                            part.type === 'file' &&
+                            part.mediaType?.startsWith('image/')
                           ) {
                             return (
                               <Box
                                 key={index}
                                 component="img"
                                 src={part.url}
-                                alt={part.filename || "attachment"}
+                                alt={part.filename || 'attachment'}
                                 sx={{
-                                  maxWidth: "100%",
-                                  height: "auto",
+                                  maxWidth: '100%',
+                                  height: 'auto',
                                   borderRadius: 1,
                                   mt: index > 0 ? 1 : 0,
                                 }}
@@ -374,9 +374,9 @@ export default function ChatPage() {
                             );
                           }
                           if (
-                            part.type.startsWith("tool-") &&
-                            "state" in part &&
-                            "input" in part
+                            part.type.startsWith('tool-') &&
+                            'state' in part &&
+                            'input' in part
                           ) {
                             return (
                               <Box key={index} sx={{ mt: index > 0 ? 1 : 0 }}>
@@ -387,7 +387,7 @@ export default function ChatPage() {
                                   />
                                   <ToolContent>
                                     <ToolInput input={part.input} />
-                                    {"output" in part &&
+                                    {'output' in part &&
                                       (part.output || part.errorText) && (
                                         <ToolOutput
                                           output={part.output}
@@ -401,7 +401,7 @@ export default function ChatPage() {
                           }
                           return null;
                         })}
-                        {message.role === "assistant" && messageText && (
+                        {message.role === 'assistant' && messageText && (
                           <Actions>
                             <Action
                               tooltip="Copy"
@@ -434,16 +434,16 @@ export default function ChatPage() {
                 })}
 
                 {/* Loading indicator - only show before streaming starts */}
-                {status === "submitted" && (
+                {status === 'submitted' && (
                   <Message from="assistant">
                     <MessageAvatar name="AI Assistant" />
                     <MessageContent variant="flat">
                       <Box
-                        sx={{ display: "flex", alignItems: "center", gap: 1 }}
+                        sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
                       >
                         <Loader />
                         <Box
-                          sx={{ fontSize: "0.875rem", color: "text.secondary" }}
+                          sx={{ fontSize: '0.875rem', color: 'text.secondary' }}
                         >
                           Thinking...
                         </Box>
@@ -459,21 +459,21 @@ export default function ChatPage() {
                     <MessageContent variant="flat">
                       <Box
                         sx={{
-                          display: "flex",
-                          flexDirection: "column",
+                          display: 'flex',
+                          flexDirection: 'column',
                           gap: 1.5,
                         }}
                       >
-                        <Box sx={{ color: "error.text", fontSize: "0.875rem" }}>
+                        <Box sx={{ color: 'error.text', fontSize: '0.875rem' }}>
                           {error.message ||
-                            "An error occurred. Please make sure Ollama is running."}
+                            'An error occurred. Please make sure Ollama is running.'}
                         </Box>
                         <Box>
                           <Button
                             variant="outlined"
                             size="small"
                             onClick={handleRetry}
-                            sx={{ textTransform: "none" }}
+                            sx={{ textTransform: 'none' }}
                           >
                             Retry
                           </Button>
@@ -494,12 +494,12 @@ export default function ChatPage() {
       <Box
         sx={{
           borderTop: 1,
-          borderColor: "divider",
-          bgcolor: "background.paper",
+          borderColor: 'divider',
+          bgcolor: 'background.paper',
           p: 2,
         }}
       >
-        <Box sx={{ maxWidth: 896, mx: "auto" }}>
+        <Box sx={{ maxWidth: 896, mx: 'auto' }}>
           {/* Suggestions */}
           {showSuggestions && (
             <Box sx={{ mb: 2 }}>
@@ -530,14 +530,14 @@ export default function ChatPage() {
                 placeholder="Ask me anything..."
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                disabled={status === "submitted" || error != null}
+                disabled={status === 'submitted' || error != null}
               />
             </PromptInputBody>
             <PromptInputToolbar>
               <AttachButton
-                disabled={status === "submitted" || error != null}
+                disabled={status === 'submitted' || error != null}
               />
-              {status === "streaming" ? (
+              {status === 'streaming' ? (
                 <Button
                   variant="contained"
                   onClick={(e) => {
@@ -545,7 +545,7 @@ export default function ChatPage() {
                     stop();
                   }}
                   sx={{
-                    minWidth: "auto",
+                    minWidth: 'auto',
                     borderRadius: 2,
                     p: 1,
                   }}
@@ -555,7 +555,7 @@ export default function ChatPage() {
               ) : (
                 <SubmitButton
                   status={status}
-                  disabled={status === "submitted" || error != null}
+                  disabled={status === 'submitted' || error != null}
                   inputValue={inputValue}
                 />
               )}

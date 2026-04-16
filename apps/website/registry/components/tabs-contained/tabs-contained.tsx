@@ -1,8 +1,9 @@
-"use client";
+'use client';
 
-import React from "react";
-import Tab, { tabClasses } from "@mui/material/Tab";
-import Tabs, { tabsClasses } from "@mui/material/Tabs";
+import React from 'react';
+
+import Tab, { tabClasses } from '@mui/material/Tab';
+import Tabs, { tabsClasses } from '@mui/material/Tabs';
 
 export function TabsContained() {
   const [tabIndex, setTabIndex] = React.useState(0);
@@ -12,32 +13,32 @@ export function TabsContained() {
       onChange={(e, index) => setTabIndex(index)}
       sx={(theme) => ({
         [`& .${tabsClasses.indicator}`]: {
-          display: "none",
+          display: 'none',
         },
         [`& .${tabClasses.root}`]: {
           opacity: 1,
-          overflow: "initial",
+          overflow: 'initial',
           zIndex: 2,
           color: (theme.vars || theme).palette.text.primary,
           bgcolor: (theme.vars || theme).palette.background.paper,
-          transition: "0.2s",
-          [theme.breakpoints.up("sm")]: {
+          transition: '0.2s',
+          [theme.breakpoints.up('sm')]: {
             minWidth: 120,
           },
-          "&:before": {
-            transition: "0.2s",
+          '&:before': {
+            transition: '0.2s',
           },
-          "&:not(:first-of-type)": {
-            "&:before": {
+          '&:not(:first-of-type)': {
+            '&:before': {
               content: '" "',
-              position: "absolute",
+              position: 'absolute',
               left: 0,
-              display: "block",
+              display: 'block',
               height: 20,
-              width: "1px",
+              width: '1px',
               zIndex: 1,
               bgcolor: (theme.vars || theme).palette.grey[300],
-              ...theme.applyStyles("dark", {
+              ...theme.applyStyles('dark', {
                 bgcolor: (theme.vars || theme).palette.grey[700],
               }),
             },
@@ -45,12 +46,12 @@ export function TabsContained() {
           [`& + .${tabClasses.selected}::before`]: {
             opacity: 0,
           },
-          "@media (hover: hover)": {
-            "&:hover": {
+          '@media (hover: hover)': {
+            '&:hover': {
               [`&:not(.${tabClasses.selected})`]: {
-                bgcolor: "action.hover",
+                bgcolor: 'action.hover',
               },
-              "&::before": {
+              '&::before': {
                 opacity: 0,
               },
               [`& + .${tabClasses.root}::before`]: {
@@ -71,10 +72,10 @@ export function TabsContained() {
         },
       })}
     >
-      <Tab label={"Specs"} />
-      <Tab label={"Comparison"} />
-      <Tab label={"Reviews"} />
-      <Tab label={"Return Policy"} />
+      <Tab label={'Specs'} />
+      <Tab label={'Comparison'} />
+      <Tab label={'Reviews'} />
+      <Tab label={'Return Policy'} />
     </Tabs>
   );
 }

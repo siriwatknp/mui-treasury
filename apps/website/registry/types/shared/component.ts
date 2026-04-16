@@ -1,6 +1,6 @@
-import type React from "react";
+import type React from 'react';
 
-import { SxProps, Theme } from "@mui/material/styles";
+import { SxProps, Theme } from '@mui/material/styles';
 
 interface OverridableComponentMeta<
   Props,
@@ -17,10 +17,10 @@ type InferProps<C extends React.ElementType> =
 
 export type OverridableComponent<
   Props extends { component?: React.ElementType },
-  DefaultComponent extends React.ElementType = "button",
+  DefaultComponent extends React.ElementType = 'button',
 > = {
   <C extends React.ElementType = DefaultComponent>(
-    props: Omit<Props, "component"> &
+    props: Omit<Props, 'component'> &
       Omit<InferProps<C>, keyof Props> & {
         component?: C;
       } & React.RefAttributes<React.ComponentRef<C>>,

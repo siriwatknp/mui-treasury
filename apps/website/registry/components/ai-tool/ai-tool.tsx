@@ -1,11 +1,13 @@
-"use client";
+'use client';
 
-import Box from "@mui/material/Box";
-import Chip from "@mui/material/Chip";
-import Collapse from "@mui/material/Collapse";
-import Typography from "@mui/material/Typography";
-import type { SxProps, Theme } from "@mui/material/styles";
-import type { ToolUIPart } from "ai";
+import React, { type ReactNode, memo, useState } from 'react';
+
+import Box from '@mui/material/Box';
+import Chip from '@mui/material/Chip';
+import Collapse from '@mui/material/Collapse';
+import Typography from '@mui/material/Typography';
+import type { SxProps, Theme } from '@mui/material/styles';
+import type { ToolUIPart } from 'ai';
 import {
   CheckCircleIcon,
   ChevronDownIcon,
@@ -13,9 +15,9 @@ import {
   ClockIcon,
   WrenchIcon,
   XCircleIcon,
-} from "lucide-react";
-import React, { memo, useState, type ReactNode } from "react";
-import { CodeBlock } from "../ai-code-block/ai-code-block";
+} from 'lucide-react';
+
+import { CodeBlock } from '../ai-code-block/ai-code-block';
 
 export type ToolProps = {
   children?: ReactNode;
@@ -29,10 +31,10 @@ export const Tool = memo(({ children, sx, defaultOpen = false }: ToolProps) => {
   return (
     <Box
       sx={{
-        width: "100%",
+        width: '100%',
         borderRadius: 1,
         border: 1,
-        borderColor: "divider",
+        borderColor: 'divider',
         ...sx,
       }}
     >
@@ -48,50 +50,50 @@ export const Tool = memo(({ children, sx, defaultOpen = false }: ToolProps) => {
   );
 });
 
-Tool.displayName = "Tool";
+Tool.displayName = 'Tool';
 
 export type ToolHeaderProps = {
-  type: ToolUIPart["type"];
-  state: ToolUIPart["state"];
+  type: ToolUIPart['type'];
+  state: ToolUIPart['state'];
   sx?: SxProps<Theme>;
   isOpen?: boolean;
   onToggle?: () => void;
 };
 
-const getStatusBadge = (status: ToolUIPart["state"]) => {
-  const labels: Record<ToolUIPart["state"], string> = {
-    "input-streaming": "Pending",
-    "input-available": "Running",
-    "output-available": "Completed",
-    "output-error": "Error",
-    "approval-requested": "Approval Requested",
-    "approval-responded": "Approved",
-    "output-denied": "Denied",
+const getStatusBadge = (status: ToolUIPart['state']) => {
+  const labels: Record<ToolUIPart['state'], string> = {
+    'input-streaming': 'Pending',
+    'input-available': 'Running',
+    'output-available': 'Completed',
+    'output-error': 'Error',
+    'approval-requested': 'Approval Requested',
+    'approval-responded': 'Approved',
+    'output-denied': 'Denied',
   };
 
   const getIcon = () => {
     switch (status) {
-      case "input-streaming":
+      case 'input-streaming':
         return <CircleIcon size={14} />;
-      case "input-available":
+      case 'input-available':
         return <ClockIcon size={14} />;
-      case "output-available":
+      case 'output-available':
         return <CheckCircleIcon size={14} />;
-      case "output-error":
+      case 'output-error':
         return <XCircleIcon size={14} />;
     }
   };
 
-  const getChipColor = (): "default" | "success" | "error" | "warning" => {
+  const getChipColor = (): 'default' | 'success' | 'error' | 'warning' => {
     switch (status) {
-      case "output-available":
-        return "success";
-      case "output-error":
-        return "error";
-      case "input-available":
-        return "warning";
+      case 'output-available':
+        return 'success';
+      case 'output-error':
+        return 'error';
+      case 'input-available':
+        return 'warning';
       default:
-        return "default";
+        return 'default';
     }
   };
 
@@ -103,19 +105,19 @@ const getStatusBadge = (status: ToolUIPart["state"]) => {
       variant="filled"
       color={getChipColor()}
       sx={{
-        height: "21px",
+        height: '21px',
         borderRadius: 99,
-        fontSize: "0.75rem",
-        "& .MuiChip-icon": {
+        fontSize: '0.75rem',
+        '& .MuiChip-icon': {
           fontSize: 14,
           ml: 0.5,
-          ...(status === "input-available" && {
-            animation: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+          ...(status === 'input-available' && {
+            animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
           }),
         },
-        "@keyframes pulse": {
-          "0%, 100%": { opacity: 1 },
-          "50%": { opacity: 0.5 },
+        '@keyframes pulse': {
+          '0%, 100%': { opacity: 1 },
+          '50%': { opacity: 0.5 },
         },
       }}
     />
@@ -133,23 +135,23 @@ export const ToolHeader = ({
     component="button"
     onClick={onToggle}
     sx={{
-      display: "flex",
-      width: "100%",
-      alignItems: "center",
-      justifyContent: "space-between",
+      display: 'flex',
+      width: '100%',
+      alignItems: 'center',
+      justifyContent: 'space-between',
       gap: 2,
       p: 1.5,
-      border: "none",
-      background: "transparent",
-      cursor: "pointer",
+      border: 'none',
+      background: 'transparent',
+      cursor: 'pointer',
       ...sx,
     }}
   >
-    <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-      <Box component={WrenchIcon} size={16} sx={{ color: "text.secondary" }} />
+    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+      <Box component={WrenchIcon} size={16} sx={{ color: 'text.secondary' }} />
       <Typography
         component="span"
-        sx={{ fontWeight: 500, fontSize: "0.875rem" }}
+        sx={{ fontWeight: 500, fontSize: '0.875rem' }}
       >
         {type}
       </Typography>
@@ -159,9 +161,9 @@ export const ToolHeader = ({
       component={ChevronDownIcon}
       size={16}
       sx={{
-        color: "text.secondary",
-        transition: "transform 0.2s",
-        transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+        color: 'text.secondary',
+        transition: 'transform 0.2s',
+        transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
       }}
     />
   </Box>
@@ -181,17 +183,17 @@ export const ToolContent = memo(
   ),
 );
 
-ToolContent.displayName = "ToolContent";
+ToolContent.displayName = 'ToolContent';
 
 export type ToolInputProps = {
-  input: ToolUIPart["input"];
+  input: ToolUIPart['input'];
   sx?: SxProps<Theme>;
 };
 
 export const ToolInput = ({ input, sx }: ToolInputProps) => (
   <Box
     sx={{
-      overflow: "hidden",
+      overflow: 'hidden',
       p: 2,
       pt: 0,
       ...sx,
@@ -201,10 +203,10 @@ export const ToolInput = ({ input, sx }: ToolInputProps) => (
       variant="overline"
       sx={{
         fontWeight: 500,
-        color: "text.secondary",
+        color: 'text.secondary',
         letterSpacing: 1,
         mb: 1,
-        display: "block",
+        display: 'block',
       }}
     >
       Parameters
@@ -212,7 +214,7 @@ export const ToolInput = ({ input, sx }: ToolInputProps) => (
     <Box
       sx={{
         borderRadius: 1,
-        bgcolor: "action.hover",
+        bgcolor: 'action.hover',
       }}
     >
       <CodeBlock code={JSON.stringify(input, null, 2)} language="json" />
@@ -221,8 +223,8 @@ export const ToolInput = ({ input, sx }: ToolInputProps) => (
 );
 
 export type ToolOutputProps = {
-  output: ToolUIPart["output"];
-  errorText: ToolUIPart["errorText"];
+  output: ToolUIPart['output'];
+  errorText: ToolUIPart['errorText'];
   sx?: SxProps<Theme>;
 };
 
@@ -233,11 +235,11 @@ export const ToolOutput = ({ output, errorText, sx }: ToolOutputProps) => {
 
   let Output = <Box>{output as ReactNode}</Box>;
 
-  if (typeof output === "object") {
+  if (typeof output === 'object') {
     Output = (
       <CodeBlock code={JSON.stringify(output, null, 2)} language="json" />
     );
-  } else if (typeof output === "string") {
+  } else if (typeof output === 'string') {
     Output = <CodeBlock code={output} language="json" />;
   }
 
@@ -247,29 +249,29 @@ export const ToolOutput = ({ output, errorText, sx }: ToolOutputProps) => {
         variant="overline"
         sx={{
           fontWeight: 500,
-          color: "text.secondary",
+          color: 'text.secondary',
           letterSpacing: 1,
           mb: 1,
-          display: "block",
+          display: 'block',
         }}
       >
-        {errorText ? "Error" : "Result"}
+        {errorText ? 'Error' : 'Result'}
       </Typography>
       <Box
         sx={{
-          overflowX: "auto",
+          overflowX: 'auto',
           borderRadius: 1,
-          fontSize: "0.75rem",
-          "& table": { width: "100%" },
+          fontSize: '0.75rem',
+          '& table': { width: '100%' },
           ...(errorText
             ? {
-                bgcolor: "error.light",
-                color: "error.main",
+                bgcolor: 'error.light',
+                color: 'error.main',
                 opacity: 0.1,
               }
             : {
-                bgcolor: "action.hover",
-                color: "text.primary",
+                bgcolor: 'action.hover',
+                color: 'text.primary',
               }),
         }}
       >

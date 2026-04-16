@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { Response } from "@/registry/components/ai-response/ai-response";
+import { Response } from '@/registry/components/ai-response/ai-response';
 
 export function Demo() {
   const markdownContent = `

@@ -1,42 +1,43 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Avatar from "@mui/material/Avatar";
-import Chip from "@mui/material/Chip";
-import Collapse from "@mui/material/Collapse";
-import LinearProgress from "@mui/material/LinearProgress";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import SearchIcon from "@mui/icons-material/Search";
-import HomeIcon from "@mui/icons-material/Home";
-import BarChartIcon from "@mui/icons-material/BarChart";
-import LayersIcon from "@mui/icons-material/Layers";
-import CheckBoxIcon from "@mui/icons-material/CheckBox";
-import FolderIcon from "@mui/icons-material/Folder";
-import PeopleIcon from "@mui/icons-material/People";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-import SettingsIcon from "@mui/icons-material/Settings";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import LogoutIcon from "@mui/icons-material/Logout";
+import * as React from 'react';
+
+import BarChartIcon from '@mui/icons-material/BarChart';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import FolderIcon from '@mui/icons-material/Folder';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import HomeIcon from '@mui/icons-material/Home';
+import LayersIcon from '@mui/icons-material/Layers';
+import LogoutIcon from '@mui/icons-material/Logout';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import PeopleIcon from '@mui/icons-material/People';
+import SearchIcon from '@mui/icons-material/Search';
+import SettingsIcon from '@mui/icons-material/Settings';
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Chip from '@mui/material/Chip';
+import Collapse from '@mui/material/Collapse';
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import LinearProgress from '@mui/material/LinearProgress';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 
 export function SidebarNavigation() {
   const [expandedItems, setExpandedItems] = React.useState<string[]>([
-    "dashboard",
+    'dashboard',
   ]);
-  const [selectedItem, setSelectedItem] = React.useState("overview");
+  const [selectedItem, setSelectedItem] = React.useState('overview');
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -60,54 +61,54 @@ export function SidebarNavigation() {
 
   const navigationItems = [
     {
-      id: "home",
-      label: "Home",
+      id: 'home',
+      label: 'Home',
       icon: <HomeIcon />,
       expandable: false,
     },
     {
-      id: "dashboard",
-      label: "Dashboard",
+      id: 'dashboard',
+      label: 'Dashboard',
       icon: <BarChartIcon />,
       expandable: true,
       children: [
-        { id: "overview", label: "Overview" },
-        { id: "notifications", label: "Notifications", badge: "10" },
-        { id: "trade-history", label: "Trade history" },
+        { id: 'overview', label: 'Overview' },
+        { id: 'notifications', label: 'Notifications', badge: '10' },
+        { id: 'trade-history', label: 'Trade history' },
       ],
     },
     {
-      id: "projects",
-      label: "Projects",
+      id: 'projects',
+      label: 'Projects',
       icon: <LayersIcon />,
       expandable: false,
     },
     {
-      id: "tasks",
-      label: "Tasks",
+      id: 'tasks',
+      label: 'Tasks',
       icon: <CheckBoxIcon />,
       expandable: false,
     },
     {
-      id: "reporting",
-      label: "Reporting",
+      id: 'reporting',
+      label: 'Reporting',
       icon: <FolderIcon />,
       expandable: false,
     },
     {
-      id: "users",
-      label: "Users",
+      id: 'users',
+      label: 'Users',
       icon: <PeopleIcon />,
       expandable: false,
     },
     {
-      id: "support",
-      label: "Support",
+      id: 'support',
+      label: 'Support',
       icon: <HelpOutlineIcon />,
     },
     {
-      id: "settings",
-      label: "Settings",
+      id: 'settings',
+      label: 'Settings',
       icon: <SettingsIcon />,
     },
   ];
@@ -118,10 +119,10 @@ export function SidebarNavigation() {
       aria-label="Main navigation"
       sx={{
         width: 300,
-        height: "100vh",
-        bgcolor: "grey.50",
-        display: "flex",
-        flexDirection: "column",
+        height: '100vh',
+        bgcolor: 'grey.50',
+        display: 'flex',
+        flexDirection: 'column',
         borderRadius: 2,
         m: 1,
       }}
@@ -129,8 +130,8 @@ export function SidebarNavigation() {
       {/* Logo/Brand */}
       <Box
         sx={{
-          display: "flex",
-          alignItems: "center",
+          display: 'flex',
+          alignItems: 'center',
           gap: 1.5,
           px: 3,
           py: 2.5,
@@ -140,12 +141,12 @@ export function SidebarNavigation() {
           sx={{
             width: 32,
             height: 32,
-            borderRadius: "50%",
-            background: "linear-gradient(135deg, #7C3AED 0%, #A855F7 100%)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "white",
+            borderRadius: '50%',
+            background: 'linear-gradient(135deg, #7C3AED 0%, #A855F7 100%)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: 'white',
             fontSize: 20,
           }}
         >
@@ -168,7 +169,7 @@ export function SidebarNavigation() {
             input: {
               startAdornment: (
                 <InputAdornment position="start">
-                  <SearchIcon fontSize="small" sx={{ color: "text.icon" }} />
+                  <SearchIcon fontSize="small" sx={{ color: 'text.icon' }} />
                 </InputAdornment>
               ),
             },
@@ -177,7 +178,7 @@ export function SidebarNavigation() {
       </Box>
 
       {/* Navigation List */}
-      <List dense sx={{ px: 1, flex: 1, overflow: "auto" }}>
+      <List dense sx={{ px: 1, flex: 1, overflow: 'auto' }}>
         {navigationItems.map((item) => (
           <React.Fragment key={item.id}>
             <ListItem disablePadding>
@@ -195,16 +196,16 @@ export function SidebarNavigation() {
                   mb: 0.5,
                 }}
               >
-                <ListItemIcon sx={{ minWidth: 40, color: "text.icon" }}>
+                <ListItemIcon sx={{ minWidth: 40, color: 'text.icon' }}>
                   {item.icon}
                 </ListItemIcon>
                 <ListItemText primary={item.label} />
                 {item.expandable &&
                   item.children &&
                   (expandedItems.includes(item.id) ? (
-                    <ExpandLessIcon sx={{ color: "text.icon" }} />
+                    <ExpandLessIcon sx={{ color: 'text.icon' }} />
                   ) : (
-                    <ExpandMoreIcon sx={{ color: "text.icon" }} />
+                    <ExpandMoreIcon sx={{ color: 'text.icon' }} />
                   ))}
               </ListItemButton>
             </ListItem>
@@ -233,8 +234,8 @@ export function SidebarNavigation() {
                             size="small"
                             sx={{
                               height: 20,
-                              fontSize: "0.75rem",
-                              bgcolor: "grey.200",
+                              fontSize: '0.75rem',
+                              bgcolor: 'grey.200',
                             }}
                           />
                         )}
@@ -254,7 +255,7 @@ export function SidebarNavigation() {
           px: 2,
           py: 2,
           borderTop: 1,
-          borderColor: "divider",
+          borderColor: 'divider',
         }}
       >
         <Typography variant="body2" fontWeight={500} gutterBottom>
@@ -271,15 +272,15 @@ export function SidebarNavigation() {
             mb: 1.5,
             height: 6,
             borderRadius: 1,
-            bgcolor: "grey.200",
-            "& .MuiLinearProgress-bar": {
-              bgcolor: "primary.main",
+            bgcolor: 'grey.200',
+            '& .MuiLinearProgress-bar': {
+              bgcolor: 'primary.main',
             },
           }}
           aria-label="Storage usage at 80 percent"
           aria-valuenow={80}
         />
-        <Box sx={{ display: "flex", gap: 2 }}>
+        <Box sx={{ display: 'flex', gap: 2 }}>
           <Button size="small" color="inherit">
             Dismiss
           </Button>
@@ -293,15 +294,15 @@ export function SidebarNavigation() {
       <Box
         sx={{
           borderTop: 1,
-          borderColor: "divider",
+          borderColor: 'divider',
           p: 2,
         }}
         aria-label="User profile section"
       >
         <Box
           sx={{
-            display: "flex",
-            alignItems: "center",
+            display: 'flex',
+            alignItems: 'center',
             gap: 1.5,
           }}
         >
@@ -318,7 +319,7 @@ export function SidebarNavigation() {
               variant="caption"
               color="text.secondary"
               noWrap
-              sx={{ display: "block" }}
+              sx={{ display: 'block' }}
             >
               jane.smith@acmecorp.com
             </Typography>
@@ -327,9 +328,9 @@ export function SidebarNavigation() {
             size="small"
             aria-label="User menu"
             onClick={handleMenuClick}
-            aria-controls={open ? "user-menu" : undefined}
+            aria-controls={open ? 'user-menu' : undefined}
             aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
+            aria-expanded={open ? 'true' : undefined}
           >
             <MoreHorizIcon />
           </IconButton>
@@ -343,15 +344,15 @@ export function SidebarNavigation() {
         open={open}
         onClose={handleMenuClose}
         MenuListProps={{
-          "aria-labelledby": "user-menu-button",
+          'aria-labelledby': 'user-menu-button',
         }}
         anchorOrigin={{
-          vertical: "top",
-          horizontal: "right",
+          vertical: 'top',
+          horizontal: 'right',
         }}
         transformOrigin={{
-          vertical: "bottom",
-          horizontal: "right",
+          vertical: 'bottom',
+          horizontal: 'right',
         }}
       >
         <MenuItem onClick={handleMenuClose}>

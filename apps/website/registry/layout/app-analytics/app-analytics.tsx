@@ -1,14 +1,14 @@
-"use client";
-import React from "react";
+'use client';
+import React from 'react';
 
-import ChevronLeftRounded from "@mui/icons-material/ChevronLeftRounded";
-import MenuRounded from "@mui/icons-material/MenuRounded";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import IconButton from "@mui/material/IconButton";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
-import useScrollTrigger from "@mui/material/useScrollTrigger";
+import ChevronLeftRounded from '@mui/icons-material/ChevronLeftRounded';
+import MenuRounded from '@mui/icons-material/MenuRounded';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import useScrollTrigger from '@mui/material/useScrollTrigger';
 
 import {
   Content,
@@ -21,7 +21,7 @@ import {
   EdgeUncollapsedVisible,
   Header,
   Root,
-} from "../layout-core";
+} from '../layout-core';
 import {
   IconNavMockup,
   LinkNavMockup,
@@ -29,9 +29,9 @@ import {
   StatCardMockup,
   TopUsersCardMockup,
   UserActiveCardMockup,
-} from "./mockups/dashboard";
-import { UnderlineTabs } from "./mockups/tabs";
-import { Word } from "./mockups/typography";
+} from './mockups/dashboard';
+import { UnderlineTabs } from './mockups/tabs';
+import { Word } from './mockups/typography';
 
 export function LayoutV6AppAnalytics() {
   const [tabIndex, setTabIndex] = React.useState(0);
@@ -42,20 +42,20 @@ export function LayoutV6AppAnalytics() {
   return (
     <Root>
       <Header
-        height={{ xs: "48px", sm: "64px", md: "72px" }}
+        height={{ xs: '48px', sm: '64px', md: '72px' }}
         sx={{
-          bgcolor: "rgba(255,255,255,0.5)",
-          backdropFilter: "blur(12px)",
+          bgcolor: 'rgba(255,255,255,0.5)',
+          backdropFilter: 'blur(12px)',
           ...(trigger && {
-            transition: "0.2s",
-            boxShadow: "0 0 4px 0 #e2e8f0",
-            "&:before": {
+            transition: '0.2s',
+            boxShadow: '0 0 4px 0 #e2e8f0',
+            '&:before': {
               content: '""',
-              position: "absolute",
-              display: "block",
-              width: "100%",
-              height: "1px",
-              bgcolor: "grey.200",
+              position: 'absolute',
+              display: 'block',
+              width: '100%',
+              height: '1px',
+              bgcolor: 'grey.200',
               bottom: 0,
             },
           }),
@@ -64,8 +64,8 @@ export function LayoutV6AppAnalytics() {
         <Box
           sx={{
             px: { xs: 1, md: 2.5 },
-            display: "flex",
-            alignItems: "center",
+            display: 'flex',
+            alignItems: 'center',
             gap: 1,
           }}
         >
@@ -88,7 +88,7 @@ export function LayoutV6AppAnalytics() {
 
           <Typography
             variant="h6"
-            sx={{ fontSize: "clamp(18px, 1vw + 1rem, 24px)" }}
+            sx={{ fontSize: 'clamp(18px, 1vw + 1rem, 24px)' }}
           >
             <b>Analytics</b>
           </Typography>
@@ -97,12 +97,12 @@ export function LayoutV6AppAnalytics() {
       <EdgeSidebar
         permanentAutoCollapse="xl"
         variant={{
-          xs: ["drawer"],
+          xs: ['drawer'],
           lg: [
-            "permanent",
+            'permanent',
             {
-              width: "300px",
-              collapsedWidth: "80px",
+              width: '300px',
+              collapsedWidth: '80px',
               hoverUncollapse: true,
             },
           ],
@@ -114,10 +114,10 @@ export function LayoutV6AppAnalytics() {
           <SideNavUserInfoMockup />
           <Box
             sx={{
-              borderTop: "1px solid",
-              borderColor: "grey.200",
-              display: "flex",
-              height: "100%",
+              borderTop: '1px solid',
+              borderColor: 'grey.200',
+              display: 'flex',
+              height: '100%',
             }}
           >
             <IconNavMockup size="small" />
@@ -132,7 +132,7 @@ export function LayoutV6AppAnalytics() {
           sx={{
             minHeight: { xs: 44, md: 48 },
             px: 2,
-            "& .MuiTab-root": {
+            '& .MuiTab-root': {
               minHeight: { xs: 44, md: 48 },
               minWidth: 0,
               fontSize: { md: 16 },
@@ -145,10 +145,10 @@ export function LayoutV6AppAnalytics() {
         </UnderlineTabs>
         <Box
           sx={{
-            height: "16vh",
+            height: '16vh',
             minHeight: 240,
             borderRadius: 2,
-            bgcolor: "rgba(0 0 0 / 0.12)",
+            bgcolor: 'rgba(0 0 0 / 0.12)',
             m: 2,
           }}
         />
@@ -174,7 +174,7 @@ export function LayoutV6AppAnalytics() {
               </Grid>
             </Grid>
             <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-              <TopUsersCardMockup sx={{ height: "100%" }} />
+              <TopUsersCardMockup sx={{ height: '100%' }} />
             </Grid>
           </Grid>
         </Box>
