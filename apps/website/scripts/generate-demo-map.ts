@@ -2,6 +2,7 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import * as prettier from 'prettier';
 
 import { getRegistryItems } from '../lib/registry';
 
@@ -59,11 +60,16 @@ export function getModuleLoader(key: string): RegistryModuleLoader | null {
 `;
 }
 
-function main() {
+async function main() {
   const keys = collectKeys();
   const content = render(keys);
+  const config = await prettier.resolveConfig(OUTPUT);
+  const formatted = await prettier.format(content, {
+    ...config,
+    filepath: OUTPUT,
+  });
   fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
-  fs.writeFileSync(OUTPUT, content);
+  fs.writeFileSync(OUTPUT, formatted);
   console.log(
     `[generate-demo-map] wrote ${keys.length} entries → ${path.relative(process.cwd(), OUTPUT)}`,
   );
