@@ -6,7 +6,7 @@ import type { ImperativePanelHandle } from "react-resizable-panels";
 import type { SyntaxHighlighterProps } from "react-syntax-highlighter";
 
 import { useColorScheme } from "@mui/material/styles";
-import { Check, Copy, RotateCcw, Terminal } from "lucide-react";
+import { Check, Copy, ExternalLink, RotateCcw, Terminal } from "lucide-react";
 import dynamic from "next/dynamic";
 
 import { OpenInV0Button } from "@/components/open-in-v0-button";
@@ -383,6 +383,21 @@ function ComponentPreview({
         </TabsList>
         <div className="flex gap-2">
           <Button
+            asChild
+            variant="outline"
+            size="icon"
+            className="h-8 w-8"
+            title="Open preview in new tab"
+          >
+            <a
+              href={`/preview/${item.name}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <ExternalLink className="h-3.5 w-3.5" />
+            </a>
+          </Button>
+          <Button
             variant="outline"
             size="icon"
             className="h-8 w-8"
@@ -398,9 +413,9 @@ function ComponentPreview({
             className="h-8 px-3 text-xs font-mono"
           >
             {copiedIndex === -2 ? (
-              <Check className="h-3 w-3 mr-1.5" />
+              <Check className="h-3 w-3" />
             ) : (
-              <Terminal className="h-3 w-3 mr-1.5" />
+              <Terminal className="h-3 w-3" />
             )}
             Add to project
           </Button>
@@ -496,9 +511,9 @@ function MetaOnlyItem({ item }: { item: RegistryItem }) {
           className="h-8 px-3 text-xs font-mono"
         >
           {copiedIndex === -2 ? (
-            <Check className="h-3 w-3 mr-1.5" />
+            <Check className="h-3 w-3" />
           ) : (
-            <Terminal className="h-3 w-3 mr-1.5" />
+            <Terminal className="h-3 w-3" />
           )}
           Add to project
         </Button>

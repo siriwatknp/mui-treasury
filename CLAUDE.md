@@ -87,6 +87,29 @@ pnpm build             # Production build
 pnpm lint              # Lint
 ```
 
+### Visual Regression & OG Images
+
+Playwright screenshots from `/preview/[name]` serve as both visual regression baselines and OG social card images.
+
+```bash
+pnpm test:visual                                    # Run against existing baselines + OG sync
+pnpm test:visual:build                              # Same, but against production build (no dev overlay noise)
+pnpm sync:og                                        # Regenerate OG images from existing baselines only
+pnpm test:visual -- -g <name> --update-snapshots    # Single item baseline regeneration
+rm -rf apps/e2e/tests/visual.spec.ts-snapshots && \
+  pnpm --filter e2e exec playwright test --project=visual --update-snapshots && \
+  pnpm sync:og                                      # Full regeneration (see gotcha below)
+```
+
+Pipeline: `visual.spec.ts` screenshots → `apps/e2e/tests/visual.spec.ts-snapshots/` → `scripts/sync-og.mjs` reads baselines, passes through `scripts/og-overlay.mjs` (satori + Geist fonts, renders title/install-cmd bar) → writes final OG PNGs to `apps/website/public/og/`.
+
+- Baselines are platform-specific (`-visual-darwin.png` / `-visual-linux.png`) and include light + dark variants
+- Opt out a registry item via `meta.visualRegression: false` in its `.meta.json`
+- Collection-only items (no `.tsx`/`.ts` — only meta + `registryDependencies`) auto-excluded by `apps/e2e/tests/registry-items.ts`
+- Test asserts no `pageerror` and no Next.js error dialog (`[data-nextjs-dialog]`) before screenshot — prefer `test:visual:build` in CI
+- **NEVER** edit `public/og/*.png` directly — always regenerate via `pnpm test:visual`
+- **Gotcha:** `--update-snapshots` only rewrites when diff exceeds `maxDiffPixelRatio: 0.01` (1%). For small content changes, delete baselines first to force a full rewrite.
+
 ### Key Technologies
 
 - **Next.js 15** with App Router

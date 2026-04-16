@@ -18,6 +18,14 @@ function walk(dir: string, out: string[] = []): string[] {
   return out;
 }
 
+function hasPreviewContent(metaPath: string): boolean {
+  const dir = path.dirname(metaPath);
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  return entries.some(
+    (e) => e.isFile() && (e.name.endsWith(".tsx") || e.name.endsWith(".ts")),
+  );
+}
+
 export function getVisualItems(): Item[] {
   const roots = ["components", "blocks"].map((d) => path.join(REGISTRY_DIR, d));
   const items: Item[] = [];
@@ -28,6 +36,7 @@ export function getVisualItems(): Item[] {
       if (content.type !== "registry:item") continue;
       const meta = content.meta ?? {};
       if (meta.visualRegression === false) continue;
+      if (!hasPreviewContent(metaPath)) continue;
       items.push({
         name: path.basename(metaPath).replace(".meta.json", ""),
         previewMode: meta.previewMode,

@@ -1,10 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { DynamicComponentLoader } from "@/components/dynamic-component-loader";
-import { PreviewComponent } from "@/components/preview-page";
 import { getRegistryByName } from "@/lib/registry";
-
-import { PreviewStatic } from "./preview-static";
 
 interface PreviewPageProps {
   params: Promise<{ name: string }>;
@@ -27,19 +24,28 @@ export default async function PreviewPage({ params }: PreviewPageProps) {
     notFound();
   }
 
-  const componentPath = item.files[0].path.replace(".tsx", "");
+  const hasContent =
+    item.files.length > 0 || (item.demoFiles && item.demoFiles.length > 0);
+  if (!hasContent) {
+    notFound();
+  }
+
+  const componentPath = item.path.replace(".tsx", "");
+  const demoPath = item.demoFiles?.[0]?.path.replace(".tsx", "");
 
   try {
     return (
       <div className="min-h-screen bg-[#fafafa] dark:bg-[#0a0a0a]">
-        <PreviewStatic>
-          <PreviewComponent>
-            <DynamicComponentLoader
-              componentPath={componentPath}
-              exportName={item.meta.exportName}
-            />
-          </PreviewComponent>
-        </PreviewStatic>
+        <div
+          data-preview
+          className="w-full h-full flex items-center justify-center p-4"
+        >
+          <DynamicComponentLoader
+            componentPath={componentPath}
+            exportName={item.meta.exportName}
+            demoPath={demoPath}
+          />
+        </div>
       </div>
     );
   } catch (error) {

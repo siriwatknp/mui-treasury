@@ -10,8 +10,16 @@ const FONTS_DIR = path.join(__dirname, "fonts");
 export const WIDTH = 1200;
 export const HEIGHT = 630;
 const BAR_HEIGHT = 100;
-const BAR_BG = "#0d1017";
-const BADGE_BORDER = "#4a5568";
+const BAR_INSET = 16;
+const BAR_BG =
+  "linear-gradient(135deg, rgba(8, 8, 8, 0.65) 0%, rgba(120, 120, 120, 0.72) 50%, rgba(40, 40, 48, 0.55) 100%)";
+const BAR_BORDER = "1px solid rgba(0,0,0,0.18)";
+const BAR_SHADOW =
+  "inset 0px 1px 0px rgba(255, 255, 255, 0.15), inset 0px -1px 0px rgba(0, 0, 0, 0.1), 0px 3px 6px rgba(0, 0, 0, 0.25), 0px 1px 2px rgba(0, 0, 0, 0.18)";
+const BADGE_BG =
+  "linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.08) 100%)";
+const BADGE_BORDER = "1px solid rgba(255,255,255,0.3)";
+const BADGE_SHADOW = "0 4px 8px -2px rgba(0,0,0,0.15)";
 
 let cachedFonts;
 async function loadFonts() {
@@ -66,27 +74,66 @@ export async function renderOg({ title, name, baseImage }) {
       {
         style: {
           position: "absolute",
-          left: 0,
-          bottom: 0,
-          width: `${WIDTH}px`,
+          left: `${BAR_INSET}px`,
+          right: `${BAR_INSET}px`,
+          bottom: `${BAR_INSET}px`,
           height: `${BAR_HEIGHT}px`,
-          background: BAR_BG,
-          borderTopLeftRadius: "20px",
-          borderTopRightRadius: "20px",
-          padding: "0 32px",
+          borderRadius: "16px",
+          border: BAR_BORDER,
+          boxShadow: BAR_SHADOW,
+          overflow: "hidden",
           display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "space-between",
         },
       },
       el(
         "div",
         {
           style: {
+            position: "absolute",
+            top: "0px",
+            left: "0px",
+            right: "0px",
+            bottom: "0px",
+            borderRadius: "15px",
+            overflow: "hidden",
             display: "flex",
-            flexDirection: "column",
-            gap: "8px",
+          },
+        },
+        el("img", {
+          src: baseUri,
+          width: WIDTH,
+          height: HEIGHT,
+          style: {
+            position: "absolute",
+            top: `${-(HEIGHT - BAR_HEIGHT - BAR_INSET + 1)}px`,
+            left: `-${BAR_INSET + 1}px`,
+            filter: "blur(8px)",
+          },
+        }),
+      ),
+      el("div", {
+        style: {
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          background: BAR_BG,
+          display: "flex",
+        },
+      }),
+      el(
+        "div",
+        {
+          style: {
+            position: "relative",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            width: "100%",
+            height: "100%",
+            padding: "0 40px 0 24px",
           },
         },
         el(
@@ -94,15 +141,53 @@ export async function renderOg({ title, name, baseImage }) {
           {
             style: {
               display: "flex",
-              fontSize: "28px",
-              fontFamily: "Geist",
-              fontWeight: 700,
-              color: "#ffffff",
-              lineHeight: 1,
-              whiteSpace: "nowrap",
+              flexDirection: "column",
+              gap: "8px",
             },
           },
-          title,
+          el(
+            "div",
+            {
+              style: {
+                display: "flex",
+                fontSize: "28px",
+                fontFamily: "Geist",
+                fontWeight: 700,
+                color: "#ffffff",
+                lineHeight: 1,
+                whiteSpace: "nowrap",
+              },
+            },
+            title,
+          ),
+          el(
+            "div",
+            {
+              style: {
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+              },
+            },
+            el("img", {
+              src: chevronIcon("rgba(255,255,255,0.75)"),
+              width: 22,
+              height: 22,
+            }),
+            el(
+              "div",
+              {
+                style: {
+                  display: "flex",
+                  fontSize: "18px",
+                  fontFamily: "Geist Mono",
+                  color: "rgba(255,255,255,0.75)",
+                  whiteSpace: "nowrap",
+                },
+              },
+              cmd,
+            ),
+          ),
         ),
         el(
           "div",
@@ -110,47 +195,20 @@ export async function renderOg({ title, name, baseImage }) {
             style: {
               display: "flex",
               alignItems: "center",
-              gap: "8px",
+              justifyContent: "center",
+              padding: "8px 16px",
+              borderRadius: "12px",
+              background: BADGE_BG,
+              border: BADGE_BORDER,
+              boxShadow: BADGE_SHADOW,
+              color: "#ffffff",
+              fontSize: "18px",
+              fontFamily: "Geist",
+              fontWeight: 600,
             },
           },
-          el("img", {
-            src: chevronIcon("rgba(255,255,255,0.75)"),
-            width: 22,
-            height: 22,
-          }),
-          el(
-            "div",
-            {
-              style: {
-                display: "flex",
-                fontSize: "18px",
-                fontFamily: "Geist Mono",
-                color: "rgba(255,255,255,0.75)",
-                whiteSpace: "nowrap",
-              },
-            },
-            cmd,
-          ),
+          "MUI Treasury",
         ),
-      ),
-      el(
-        "div",
-        {
-          style: {
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "8px 16px",
-            borderRadius: "9px",
-            background: "rgba(255,255,255,0.08)",
-            border: `1px solid ${BADGE_BORDER}`,
-            color: "#ffffff",
-            fontSize: "18px",
-            fontFamily: "Geist",
-            fontWeight: 600,
-          },
-        },
-        "MUI Treasury",
       ),
     ),
   );

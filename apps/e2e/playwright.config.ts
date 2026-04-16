@@ -45,7 +45,9 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "pnpm --filter registry dev",
+    command: process.env.VISUAL_BUILD
+      ? "pnpm --filter registry start"
+      : "pnpm --filter registry dev",
     url: "http://localhost:4418",
     reuseExistingServer: !process.env.CI,
   },

@@ -1,5 +1,6 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { vol } from "memfs";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+
 import {
   extractRegistryDependencies,
   processRegistryFile,
@@ -172,19 +173,19 @@ describe("processRegistryFile", () => {
         name: "card",
       },
       "Custom Card",
-      "A custom card component"
+      "A custom card component",
     );
 
     const metaExists = vol.existsSync(
-      "/project/registry/components/card/card.meta.json"
+      "/project/registry/components/card/card.meta.json",
     );
     expect(metaExists).toBe(true);
 
     const meta = JSON.parse(
       vol.readFileSync(
         "/project/registry/components/card/card.meta.json",
-        "utf-8"
-      ) as string
+        "utf-8",
+      ) as string,
     );
     expect(meta.title).toBe("Custom Card");
   });
@@ -230,7 +231,7 @@ describe("processRegistryFile", () => {
       "New Chip",
       "Updated description",
       "display",
-      ["badge", "tag"]
+      ["badge", "tag"],
     );
 
     expect(result.metadata.title).toBe("New Chip");
@@ -252,13 +253,13 @@ describe("processRegistryFile", () => {
     });
 
     const indexFile = result.registryJson.files.find((f) =>
-      f.target.endsWith("index.ts")
+      f.target.endsWith("index.ts"),
     );
 
     expect(indexFile).toBeDefined();
     expect(indexFile?.content).toContain("export * from './form';");
     expect(indexFile?.content).toContain(
-      "export { default as Form } from './form';"
+      "export { default as Form } from './form';",
     );
   });
 
@@ -274,7 +275,7 @@ describe("processRegistryFile", () => {
     });
 
     const indexFiles = result.registryJson.files.filter((f) =>
-      f.target.endsWith("index.ts")
+      f.target.endsWith("index.ts"),
     );
 
     expect(indexFiles).toHaveLength(1); // Only the original
@@ -292,7 +293,7 @@ describe("processRegistryFile", () => {
     });
 
     expect(result.registryJson.files[0].target).toBe(
-      "src/mui-treasury/theme/components/alert.ts"
+      "src/mui-treasury/theme/components/alert.ts",
     );
   });
 
@@ -308,7 +309,7 @@ describe("processRegistryFile", () => {
     });
 
     expect(result.registryJson.files[0].target).toBe(
-      "src/mui-treasury/components/button/button.tsx"
+      "src/mui-treasury/components/button/button.tsx",
     );
   });
 
@@ -324,7 +325,7 @@ describe("processRegistryFile", () => {
     });
 
     const v0Json = JSON.parse(
-      vol.readFileSync("/project/public/r/header.v0.json", "utf-8") as string
+      vol.readFileSync("/project/public/r/header.v0.json", "utf-8") as string,
     );
 
     expect(v0Json.type).toBe("registry:block");
@@ -347,7 +348,7 @@ describe("processRegistryFile", () => {
     });
 
     const v0Json = JSON.parse(
-      vol.readFileSync("/project/public/r/form.v0.json", "utf-8") as string
+      vol.readFileSync("/project/public/r/form.v0.json", "utf-8") as string,
     );
 
     expect(v0Json.registryDependencies[0]).toContain(".v0.json");
