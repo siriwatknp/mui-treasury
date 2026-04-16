@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
 
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 
-import type { RegistryItem } from "@/lib/registry";
+import type { RegistryItem } from '@/lib/registry';
 
 interface RegistryDemoPreviewProps {
   item: RegistryItem;
@@ -15,9 +15,9 @@ export function RegistryDemoPreview({
   item,
   demoPath,
 }: RegistryDemoPreviewProps) {
-  const componentPath = item.path.replace(".tsx", "");
+  const componentPath = item.path.replace('.tsx', '');
   const resolvedDemoPath =
-    demoPath ?? item.demoFiles?.[0]?.path.replace(".tsx", "");
+    demoPath ?? item.demoFiles?.[0]?.path.replace('.tsx', '');
   const exportName = item.meta.exportName;
 
   const Component = React.useMemo(

@@ -1,14 +1,14 @@
 #!/usr/bin/env node
-import { execSync } from "node:child_process";
-import fs from "node:fs/promises";
-import path from "node:path";
-import sharp from "sharp";
+import { execSync } from 'node:child_process';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import sharp from 'sharp';
 
-import { renderOverlay } from "./og-overlay.mjs";
+import { renderOverlay } from './og-overlay.mjs';
 
-const title = process.argv[2] ?? "Login Form";
-const name = process.argv[3] ?? "login-form";
-const OUT = "/tmp/og-overlay-preview.png";
+const title = process.argv[2] ?? 'Login Form';
+const name = process.argv[3] ?? 'login-form';
+const OUT = '/tmp/og-overlay-preview.png';
 
 const overlay = await renderOverlay({ title, name });
 // Composite over a neutral checkerboard-free white bg for clarity.

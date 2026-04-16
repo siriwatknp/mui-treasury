@@ -1,22 +1,22 @@
-import * as fs from "fs";
-import * as path from "path";
+import * as fs from 'fs';
+import * as path from 'path';
 
 import {
   findAllRelatedFiles,
   findMatchingFiles,
   getAllRegistryItems,
-} from "./registry-file-ops";
+} from './registry-file-ops';
 import {
   extractDefaultExportName,
   extractDependencies,
   getRegistryBaseUrl,
-} from "./registry-utils";
+} from './registry-utils';
 import type {
   FileInfo,
   RegistryFile,
   RegistryJson,
   RegistryMeta,
-} from "./types";
+} from './types';
 
 export function extractRegistryDependencies(
   content: string,
@@ -25,7 +25,7 @@ export function extractRegistryDependencies(
 ): string[] {
   const registryDeps = new Set<string>();
   const baseUrl = getRegistryBaseUrl();
-  const registryPath = path.join(process.cwd(), "registry");
+  const registryPath = path.join(process.cwd(), 'registry');
 
   // Match both relative imports and @/registry imports
   // Examples:
@@ -46,15 +46,15 @@ export function extractRegistryDependencies(
 
       // Handle .ts/.tsx extensions - TypeScript allows importing without extension
       if (
-        !resolvedPath.endsWith(".ts") &&
-        !resolvedPath.endsWith(".tsx") &&
+        !resolvedPath.endsWith('.ts') &&
+        !resolvedPath.endsWith('.tsx') &&
         !fs.existsSync(resolvedPath)
       ) {
         // Try adding extensions
-        if (fs.existsSync(resolvedPath + ".ts")) {
-          resolvedPath = resolvedPath + ".ts";
-        } else if (fs.existsSync(resolvedPath + ".tsx")) {
-          resolvedPath = resolvedPath + ".tsx";
+        if (fs.existsSync(resolvedPath + '.ts')) {
+          resolvedPath = resolvedPath + '.ts';
+        } else if (fs.existsSync(resolvedPath + '.tsx')) {
+          resolvedPath = resolvedPath + '.tsx';
         }
       }
 
@@ -104,14 +104,14 @@ export function extractRegistryDependencies(
 
       // Handle .ts/.tsx extensions
       if (
-        !fullPath.endsWith(".ts") &&
-        !fullPath.endsWith(".tsx") &&
+        !fullPath.endsWith('.ts') &&
+        !fullPath.endsWith('.tsx') &&
         !fs.existsSync(fullPath)
       ) {
-        if (fs.existsSync(fullPath + ".ts")) {
-          fullPath = fullPath + ".ts";
-        } else if (fs.existsSync(fullPath + ".tsx")) {
-          fullPath = fullPath + ".tsx";
+        if (fs.existsSync(fullPath + '.ts')) {
+          fullPath = fullPath + '.ts';
+        } else if (fs.existsSync(fullPath + '.tsx')) {
+          fullPath = fullPath + '.tsx';
         }
       }
 
@@ -148,14 +148,14 @@ function parseDemoMeta(content: string): {
   );
   if (!match) return null;
   try {
-    const raw = match[1].replace(/\s+as\s+const\b/g, "");
+    const raw = match[1].replace(/\s+as\s+const\b/g, '');
     const obj = new Function(`return ${raw}`)();
     return {
-      title: typeof obj.title === "string" ? obj.title : undefined,
+      title: typeof obj.title === 'string' ? obj.title : undefined,
       description:
-        typeof obj.description === "string" ? obj.description : undefined,
+        typeof obj.description === 'string' ? obj.description : undefined,
       previewMode:
-        typeof obj.previewMode === "string" ? obj.previewMode : undefined,
+        typeof obj.previewMode === 'string' ? obj.previewMode : undefined,
     };
   } catch {
     return null;
@@ -170,13 +170,13 @@ function findParentMeta(
   demoFilePath: string,
 ): { category?: string; subcategory?: string } | null {
   const demosDir = path.dirname(demoFilePath);
-  if (path.basename(demosDir) !== "demos") return null;
+  if (path.basename(demosDir) !== 'demos') return null;
   const parentDir = path.dirname(demosDir);
   const parentName = path.basename(parentDir);
   const metaPath = path.join(parentDir, `${parentName}.meta.json`);
   if (!fs.existsSync(metaPath)) return null;
   try {
-    const meta = JSON.parse(fs.readFileSync(metaPath, "utf-8"));
+    const meta = JSON.parse(fs.readFileSync(metaPath, 'utf-8'));
     return {
       category: meta?.meta?.category,
       subcategory: meta?.meta?.subcategory,
@@ -194,13 +194,13 @@ export function processRegistryFile(
   tags?: string[],
 ): { metadata: RegistryMeta; registryJson: RegistryJson } {
   const { path: filePath, name } = fileInfo;
-  const OUTPUT_PATH = path.join(process.cwd(), "public", "r", `${name}.json`);
+  const OUTPUT_PATH = path.join(process.cwd(), 'public', 'r', `${name}.json`);
 
-  const isDemoFile = path.basename(filePath).endsWith(".demo.tsx");
+  const isDemoFile = path.basename(filePath).endsWith('.demo.tsx');
 
   // Determine the component/block directory
   // If the file is a meta.json, use its directory. Otherwise use the parent directory.
-  const itemDir = filePath.endsWith(".meta.json")
+  const itemDir = filePath.endsWith('.meta.json')
     ? path.dirname(filePath)
     : path.dirname(filePath);
   const META_PATH = path.join(itemDir, `${name}.meta.json`);
@@ -215,7 +215,7 @@ export function processRegistryFile(
 
   for (const fileData of allRelatedFiles) {
     try {
-      const content = fs.readFileSync(fileData.path, "utf-8");
+      const content = fs.readFileSync(fileData.path, 'utf-8');
       const fileDependencies = extractDependencies(content);
       const registryDependencies = extractRegistryDependencies(
         content,
@@ -231,23 +231,23 @@ export function processRegistryFile(
       // Convert registry path to target path with src/mui-treasury prefix
       // Special handling for themes folder - use src/mui-treasury/theme instead of src/mui-treasury/themes
       let targetPath = fileData.relativePath;
-      if (targetPath.startsWith("themes/")) {
+      if (targetPath.startsWith('themes/')) {
         // Remove "themes/[theme-name]/" and replace with "src/mui-treasury/theme/"
         // e.g., "themes/mui-treasury/components/alert.ts" -> "src/mui-treasury/theme/components/alert.ts"
         targetPath = targetPath.replace(
           /^themes\/[^\/]+\//,
-          "src/mui-treasury/theme/",
+          'src/mui-treasury/theme/',
         );
       } else {
         // For non-theme files, just prepend src/mui-treasury/
-        targetPath = "src/mui-treasury/" + targetPath;
+        targetPath = 'src/mui-treasury/' + targetPath;
       }
 
       files.push({
         path: fileData.relativePath,
         target: targetPath,
         content: content,
-        type: "registry:item",
+        type: 'registry:item',
       });
     } catch (error) {
       console.warn(
@@ -296,8 +296,8 @@ export function processRegistryFile(
       files.push({
         path: indexPath,
         target: indexTarget,
-        content: exportStatements.join("\n") + "\n",
-        type: "registry:item",
+        content: exportStatements.join('\n') + '\n',
+        type: 'registry:item',
       });
     }
   }
@@ -306,7 +306,7 @@ export function processRegistryFile(
 
   if (isDemoFile) {
     // For demo files, extract metadata from the file content
-    const demoContent = fs.readFileSync(filePath, "utf-8");
+    const demoContent = fs.readFileSync(filePath, 'utf-8');
     const demoMeta = parseDemoMeta(demoContent);
     const parentMeta = findParentMeta(filePath);
 
@@ -314,15 +314,15 @@ export function processRegistryFile(
       title ||
       demoMeta?.title ||
       name
-        .split("-")
+        .split('-')
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ");
+        .join(' ');
     const finalDescription =
       description || demoMeta?.description || `A ${name} demo.`;
 
     metadata = {
-      $schema: "https://ui.shadcn.com/schema/registry-item.json",
-      type: "registry:item",
+      $schema: 'https://ui.shadcn.com/schema/registry-item.json',
+      type: 'registry:item',
       title: finalTitle,
       description: finalDescription,
       meta: {},
@@ -346,7 +346,7 @@ export function processRegistryFile(
     if (fs.existsSync(META_PATH)) {
       metaExists = true;
       try {
-        existingMeta = JSON.parse(fs.readFileSync(META_PATH, "utf-8"));
+        existingMeta = JSON.parse(fs.readFileSync(META_PATH, 'utf-8'));
       } catch (error) {
         console.warn(
           `Warning: Could not parse existing meta.json file: ${
@@ -368,7 +368,7 @@ export function processRegistryFile(
     if (existingMeta?.registryDependencies) {
       const baseUrl = getRegistryBaseUrl();
       for (const dep of existingMeta.registryDependencies) {
-        if (!dep.startsWith("http")) {
+        if (!dep.startsWith('http')) {
           allRegistryDependencies.add(`${baseUrl}/r/${dep}.json`);
         } else {
           allRegistryDependencies.add(dep);
@@ -407,9 +407,9 @@ export function processRegistryFile(
         finalTitle = title;
       } else {
         finalTitle = name
-          .split("-")
+          .split('-')
           .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-          .join(" ");
+          .join(' ');
       }
 
       if (description) {
@@ -418,18 +418,18 @@ export function processRegistryFile(
         finalDescription = `A ${name} item.`;
       }
 
-      const finalType = "registry:item";
+      const finalType = 'registry:item';
 
       const screenshotPath = path.join(
         process.cwd(),
-        "public",
-        "og",
+        'public',
+        'og',
         `${name}.png`,
       );
       const hasScreenshot = fs.existsSync(screenshotPath);
 
       metadata = {
-        $schema: "https://ui.shadcn.com/schema/registry-item.json",
+        $schema: 'https://ui.shadcn.com/schema/registry-item.json',
         type: finalType,
         title: finalTitle,
         description: finalDescription,
@@ -458,7 +458,7 @@ export function processRegistryFile(
   // Create the public registry JSON structure (with metadata)
   // For the public JSON, always use detected registry dependencies, not from meta.json
   const registryJson: RegistryJson = {
-    $schema: "https://ui.shadcn.com/schema/registry-item.json",
+    $schema: 'https://ui.shadcn.com/schema/registry-item.json',
     name: name,
     type: metadata.type,
     title: metadata.title,
@@ -481,8 +481,8 @@ export function processRegistryFile(
   // Create v0.json with registry:block type
   const V0_OUTPUT_PATH = path.join(
     process.cwd(),
-    "public",
-    "r",
+    'public',
+    'r',
     `${name}.v0.json`,
   );
   const v0Json = JSON.parse(JSON.stringify(registryJson)); // Deep clone
@@ -512,12 +512,12 @@ export function processRegistryFile(
   // Replace all occurrences of registry:item with registry:block
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function replaceRegistryType(obj: any): void {
-    if (typeof obj !== "object" || obj === null) return;
+    if (typeof obj !== 'object' || obj === null) return;
 
     for (const key in obj) {
-      if (key === "type" && obj[key] === "registry:item") {
-        obj[key] = "registry:block";
-      } else if (typeof obj[key] === "object") {
+      if (key === 'type' && obj[key] === 'registry:item') {
+        obj[key] = 'registry:block';
+      } else if (typeof obj[key] === 'object') {
         replaceRegistryType(obj[key]);
       }
     }
@@ -536,7 +536,7 @@ export function processRegistryFile(
   console.log(`  v0: ${path.relative(process.cwd(), V0_OUTPUT_PATH)}`);
   console.log(`  Item: ${metadata.title}`);
   console.log(`  Files: ${files.length} file(s) included`);
-  console.log(`  Dependencies: ${dependencies.join(", ")}`);
+  console.log(`  Dependencies: ${dependencies.join(', ')}`);
 
   return { metadata, registryJson };
 }

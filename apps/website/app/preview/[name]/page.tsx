@@ -1,8 +1,8 @@
-import { notFound } from "next/navigation";
+import { notFound } from 'next/navigation';
 
-import { PreviewCanvas } from "@/components/preview-page";
-import { RegistryDemoPreview } from "@/components/registry-demo-preview";
-import { getRegistryByName } from "@/lib/registry";
+import { PreviewCanvas } from '@/components/preview-page';
+import { RegistryDemoPreview } from '@/components/registry-demo-preview';
+import { getRegistryByName } from '@/lib/registry';
 
 interface PreviewPageProps {
   params: Promise<{ name: string }>;
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PreviewPageProps) {
       images: [`/og/${name}.png`],
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title,
       description,
       images: [`/og/${name}.png`],

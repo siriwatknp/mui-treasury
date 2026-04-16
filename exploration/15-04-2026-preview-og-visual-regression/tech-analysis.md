@@ -47,8 +47,8 @@ Known iframe items: `project-invite-modal`, `command-search-ui`, plus several `l
 ```ts
 items.filter(
   (i) =>
-    i.type === "registry:item" &&
-    (i.meta.category === "component" || i.meta.category === "block"),
+    i.type === 'registry:item' &&
+    (i.meta.category === 'component' || i.meta.category === 'block'),
 );
 ```
 
@@ -75,7 +75,7 @@ export async function generateMetadata({ params }) {
   const { name } = await params;
   return {
     openGraph: { images: [`/og/${name}.png`] },
-    twitter: { card: "summary_large_image", images: [`/og/${name}.png`] },
+    twitter: { card: 'summary_large_image', images: [`/og/${name}.png`] },
   };
 }
 ```

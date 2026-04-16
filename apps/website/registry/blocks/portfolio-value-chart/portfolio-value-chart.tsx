@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
 
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import { LineChart } from "@mui/x-charts/LineChart";
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import { LineChart } from '@mui/x-charts/LineChart';
 
 // Generate mock data for the chart
 const generateData = () => {
@@ -50,16 +50,16 @@ const { xData, etfData, vitainvestData, ishareData } = generateData();
 
 // Format x-axis labels
 const xAxisData = xData.map((_: number, index: number) => {
-  if (index === 0) return "Aug 25";
-  if (index === 4) return "Aug 29";
-  if (index === 8) return "Sep 02";
-  if (index === 12) return "Sep 06";
-  if (index === 16) return "Sep 10";
-  if (index === 20) return "Sep 14";
-  if (index === 24) return "Sep 18";
-  if (index === 28) return "Sep 22";
-  if (index === 32) return "Sep 26";
-  return "";
+  if (index === 0) return 'Aug 25';
+  if (index === 4) return 'Aug 29';
+  if (index === 8) return 'Sep 02';
+  if (index === 12) return 'Sep 06';
+  if (index === 16) return 'Sep 10';
+  if (index === 20) return 'Sep 14';
+  if (index === 24) return 'Sep 18';
+  if (index === 28) return 'Sep 22';
+  if (index === 32) return 'Sep 26';
+  return '';
 });
 
 export function PortfolioValueChart() {
@@ -69,11 +69,11 @@ export function PortfolioValueChart() {
         p: 3,
         borderRadius: 2,
         border: `1px solid`,
-        borderColor: "divider",
-        bgcolor: "background.paper",
-        boxShadow: "none",
-        ...theme.applyStyles("dark", {
-          borderColor: "divider",
+        borderColor: 'divider',
+        bgcolor: 'background.paper',
+        boxShadow: 'none',
+        ...theme.applyStyles('dark', {
+          borderColor: 'divider',
         }),
       })}
     >
@@ -82,7 +82,7 @@ export function PortfolioValueChart() {
           <Typography
             variant="body2"
             sx={{
-              color: "text.secondary",
+              color: 'text.secondary',
               mb: 0.5,
             }}
           >
@@ -93,7 +93,7 @@ export function PortfolioValueChart() {
             component="div"
             sx={{
               fontWeight: 700,
-              color: "text.primary",
+              color: 'text.primary',
             }}
           >
             $328,505.10
@@ -117,7 +117,7 @@ export function PortfolioValueChart() {
               sx={{
                 width: 24,
                 height: 3,
-                bgcolor: "#2196F3",
+                bgcolor: '#2196F3',
                 borderRadius: 1,
               }}
               aria-hidden="true"
@@ -136,7 +136,7 @@ export function PortfolioValueChart() {
               sx={{
                 width: 24,
                 height: 3,
-                bgcolor: "#00BCD4",
+                bgcolor: '#00BCD4',
                 borderRadius: 1,
               }}
               aria-hidden="true"
@@ -155,7 +155,7 @@ export function PortfolioValueChart() {
               sx={{
                 width: 24,
                 height: 3,
-                bgcolor: "#9C27B0",
+                bgcolor: '#9C27B0',
                 borderRadius: 1,
               }}
               aria-hidden="true"
@@ -167,7 +167,7 @@ export function PortfolioValueChart() {
         </Stack>
 
         <Box
-          sx={{ width: "100%", height: 350 }}
+          sx={{ width: '100%', height: 350 }}
           role="img"
           aria-label="Portfolio performance chart showing ETF Shares Vital, Vitainvest Core, and iShares Tech Growth from August 25 to September 26"
         >
@@ -175,41 +175,41 @@ export function PortfolioValueChart() {
             series={[
               {
                 data: etfData,
-                color: "#2196F3",
-                curve: "catmullRom",
+                color: '#2196F3',
+                curve: 'catmullRom',
                 showMark: false,
               },
               {
                 data: vitainvestData,
-                color: "#00BCD4",
-                curve: "catmullRom",
+                color: '#00BCD4',
+                curve: 'catmullRom',
                 showMark: false,
               },
               {
                 data: ishareData,
-                color: "#9C27B0",
-                curve: "catmullRom",
+                color: '#9C27B0',
+                curve: 'catmullRom',
                 showMark: false,
               },
             ]}
             xAxis={[
               {
                 data: xData,
-                scaleType: "point",
+                scaleType: 'point',
                 tickLabelStyle: {
                   fontSize: 12,
-                  fill: "var(--mui-palette-text-secondary)",
+                  fill: 'var(--mui-palette-text-secondary)',
                 },
                 tickNumber: 9,
                 valueFormatter: (value) => {
                   const index = xData.indexOf(value);
-                  return xAxisData[index] || "";
+                  return xAxisData[index] || '';
                 },
               },
             ]}
             yAxis={[
               {
-                position: "none",
+                position: 'none',
                 width: 0,
               },
             ]}
@@ -225,29 +225,29 @@ export function PortfolioValueChart() {
               vertical: false,
             }}
             sx={(theme) => ({
-              "& .MuiChartsAxis-line": {
-                stroke: "var(--mui-palette-divider)",
+              '& .MuiChartsAxis-line': {
+                stroke: 'var(--mui-palette-divider)',
                 strokeOpacity: 0.3,
               },
-              "& .MuiChartsAxis-tick": {
-                stroke: "var(--mui-palette-divider)",
+              '& .MuiChartsAxis-tick': {
+                stroke: 'var(--mui-palette-divider)',
                 strokeOpacity: 0.3,
               },
-              "& .MuiChartsGrid-line": {
-                stroke: "var(--mui-palette-divider)",
+              '& .MuiChartsGrid-line': {
+                stroke: 'var(--mui-palette-divider)',
                 strokeOpacity: 0.15,
               },
-              "& .MuiLineElement-root": {
+              '& .MuiLineElement-root': {
                 strokeWidth: 2,
               },
-              ...theme.applyStyles("dark", {
-                "& .MuiChartsAxis-line": {
+              ...theme.applyStyles('dark', {
+                '& .MuiChartsAxis-line': {
                   strokeOpacity: 0.2,
                 },
-                "& .MuiChartsAxis-tick": {
+                '& .MuiChartsAxis-tick': {
                   strokeOpacity: 0.2,
                 },
-                "& .MuiChartsGrid-line": {
+                '& .MuiChartsGrid-line': {
                   strokeOpacity: 0.1,
                 },
               }),

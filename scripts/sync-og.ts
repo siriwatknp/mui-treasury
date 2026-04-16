@@ -1,19 +1,19 @@
 #!/usr/bin/env node
-import fs from "node:fs/promises";
-import os from "node:os";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { Worker, isMainThread, parentPort } from "node:worker_threads";
-import { tsImport } from "tsx/esm/api";
+import fs from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { Worker, isMainThread, parentPort } from 'node:worker_threads';
+import { tsImport } from 'tsx/esm/api';
 
 const { renderOg } = (await tsImport(
-  "./og-overlay.tsx",
+  './og-overlay.tsx',
   import.meta.url,
-)) as typeof import("./og-overlay.tsx");
+)) as typeof import('./og-overlay.tsx');
 
-const SNAP_DIR = "apps/e2e/tests/visual.spec.ts-snapshots";
-const DEST_DIR = "apps/website/public/og";
-const PLATFORM = process.platform === "darwin" ? "darwin" : "linux";
+const SNAP_DIR = 'apps/e2e/tests/visual.spec.ts-snapshots';
+const DEST_DIR = 'apps/website/public/og';
+const PLATFORM = process.platform === 'darwin' ? 'darwin' : 'linux';
 const SUFFIX = `-visual-${PLATFORM}.png`;
 
 interface Job {
@@ -23,11 +23,11 @@ interface Job {
 }
 
 type WorkerMsg =
-  | { type: "done"; name: string; duration: number }
-  | { type: "error"; name: string; message: string };
+  | { type: 'done'; name: string; duration: number }
+  | { type: 'error'; name: string; message: string };
 
 if (!isMainThread) {
-  parentPort!.on("message", async (job: Job) => {
+  parentPort!.on('message', async (job: Job) => {
     const t0 = Date.now();
     try {
       const baseImage = await fs.readFile(job.srcPath);
@@ -37,13 +37,13 @@ if (!isMainThread) {
       });
       await fs.writeFile(job.destPath, png);
       parentPort!.postMessage({
-        type: "done",
+        type: 'done',
         name: job.name,
         duration: Date.now() - t0,
       } satisfies WorkerMsg);
     } catch (err) {
       parentPort!.postMessage({
-        type: "error",
+        type: 'error',
         name: job.name,
         message: err instanceof Error ? err.message : String(err),
       } satisfies WorkerMsg);
@@ -59,7 +59,7 @@ if (!isMainThread) {
   for (const file of files) {
     if (!file.endsWith(SUFFIX)) continue;
     const name = file.slice(0, -SUFFIX.length);
-    if (name.endsWith("-dark")) continue;
+    if (name.endsWith('-dark')) continue;
     if (only && name !== only) continue;
     targets.push({ name, file });
   }
@@ -84,7 +84,7 @@ if (!isMainThread) {
   const pad = String(jobs.length).length;
   const start = Date.now();
   console.log(
-    `OG overlay: ${jobs.length} item${jobs.length > 1 ? "s" : ""} × ${poolSize} worker${poolSize > 1 ? "s" : ""} → ${DEST_DIR}`,
+    `OG overlay: ${jobs.length} item${jobs.length > 1 ? 's' : ''} × ${poolSize} worker${poolSize > 1 ? 's' : ''} → ${DEST_DIR}`,
   );
 
   const selfUrl = fileURLToPath(import.meta.url);
@@ -105,10 +105,10 @@ if (!isMainThread) {
     for (let i = 0; i < poolSize; i++) {
       const worker = new Worker(selfUrl);
       workers.push(worker);
-      worker.on("message", (msg: WorkerMsg) => {
+      worker.on('message', (msg: WorkerMsg) => {
         completed += 1;
         const counter = `[${String(completed).padStart(pad)}/${jobs.length}]`;
-        if (msg.type === "error") {
+        if (msg.type === 'error') {
           failed = true;
           console.error(`  ${counter} ${msg.name} FAILED: ${msg.message}`);
           settle();
@@ -121,7 +121,7 @@ if (!isMainThread) {
         }
         assign(worker);
       });
-      worker.on("error", (err) => {
+      worker.on('error', (err) => {
         if (failed) return;
         failed = true;
         console.error(`Worker error: ${err.message}`);

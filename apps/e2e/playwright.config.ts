@@ -1,54 +1,54 @@
-import { defineConfig, devices } from "@playwright/test";
+import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
-  testDir: "./tests",
+  testDir: './tests',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-  reporter: "html",
+  reporter: 'html',
   use: {
-    baseURL: "http://localhost:4418",
-    trace: "on-first-retry",
+    baseURL: 'http://localhost:4418',
+    trace: 'on-first-retry',
   },
   expect: {
     toHaveScreenshot: {
       maxDiffPixelRatio: 0.01,
-      animations: "disabled",
-      caret: "hide",
+      animations: 'disabled',
+      caret: 'hide',
     },
   },
   projects: [
     {
-      name: "desktop",
-      testIgnore: ["**/visual.spec.ts"],
+      name: 'desktop',
+      testIgnore: ['**/visual.spec.ts'],
       use: {
-        ...devices["Desktop Chrome"],
+        ...devices['Desktop Chrome'],
         viewport: { width: 1280, height: 720 },
       },
     },
     {
-      name: "touch",
-      testIgnore: ["**/visual.spec.ts"],
+      name: 'touch',
+      testIgnore: ['**/visual.spec.ts'],
       use: {
-        ...devices["Desktop Chrome"],
+        ...devices['Desktop Chrome'],
         viewport: { width: 600, height: 1024 },
       },
     },
     {
-      name: "visual",
-      testMatch: ["**/visual.spec.ts"],
+      name: 'visual',
+      testMatch: ['**/visual.spec.ts'],
       use: {
-        ...devices["Desktop Chrome"],
+        ...devices['Desktop Chrome'],
         viewport: { width: 1200, height: 630 },
       },
     },
   ],
   webServer: {
     command: process.env.VISUAL_BUILD
-      ? "pnpm --filter registry start"
-      : "pnpm --filter registry dev",
-    url: "http://localhost:4418",
+      ? 'pnpm --filter registry start'
+      : 'pnpm --filter registry dev',
+    url: 'http://localhost:4418',
     reuseExistingServer: !process.env.CI,
   },
 });

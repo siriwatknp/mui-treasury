@@ -36,10 +36,10 @@ Files:
 Server component — CSS kill-switch only. Playwright's `animations: 'disabled'` + `toHaveScreenshot` stability polling handle the rest. If pilots show flake, add targeted `waitForFunction` in the spec, not theme overrides.
 
 ```tsx
-"use client";
-import { useMemo } from "react";
+'use client';
+import { useMemo } from 'react';
 
-import { ThemeProvider, createTheme, useTheme } from "@mui/material/styles";
+import { ThemeProvider, createTheme, useTheme } from '@mui/material/styles';
 
 export function PreviewStatic({ children }: { children: React.ReactNode }) {
   const base = useTheme();
@@ -162,7 +162,7 @@ export async function generateMetadata({
   const { name } = await params;
   return {
     openGraph: { images: [`/og/${name}.png`] },
-    twitter: { card: "summary_large_image", images: [`/og/${name}.png`] },
+    twitter: { card: 'summary_large_image', images: [`/og/${name}.png`] },
   };
 }
 ```
@@ -212,14 +212,14 @@ Proposed pilots:
 File: `apps/e2e/tests/visual.spec.ts`
 
 ```ts
-import { expect, test } from "@playwright/test";
+import { expect, test } from '@playwright/test';
 
 const pilots = [
-  { name: "login-form", url: "/preview/login-form" },
-  { name: "portfolio-value-chart", url: "/preview/portfolio-value-chart" },
+  { name: 'login-form', url: '/preview/login-form' },
+  { name: 'portfolio-value-chart', url: '/preview/portfolio-value-chart' },
   {
-    name: "project-invite-modal",
-    url: "/preview/demo/blocks/project-invite-modal/project-invite-modal.demo",
+    name: 'project-invite-modal',
+    url: '/preview/demo/blocks/project-invite-modal/project-invite-modal.demo',
   },
 ];
 
@@ -227,7 +227,7 @@ for (const p of pilots) {
   test(`visual: ${p.name}`, async ({ page }) => {
     await page.goto(p.url);
     await page.evaluate(() => document.fonts.ready);
-    await page.waitForLoadState("networkidle");
+    await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot(`${p.name}.png`);
   });
 }
@@ -249,26 +249,26 @@ pnpm --filter e2e exec playwright test --project=visual   # 5× consecutively
 **Scope:** replace pilots with filtered enumeration.
 
 ```ts
-import { getRegistryItems } from "../../apps/website/lib/registry";
+import { getRegistryItems } from '../../apps/website/lib/registry';
 
 // verify path
 
 const items = getRegistryItems().filter(
   (i) =>
-    i.type === "registry:item" &&
-    (i.meta.category === "component" || i.meta.category === "block") &&
+    i.type === 'registry:item' &&
+    (i.meta.category === 'component' || i.meta.category === 'block') &&
     i.meta.visualRegression !== false,
 );
 
 for (const item of items) {
   test(`visual: ${item.name}`, async ({ page }) => {
     const url =
-      item.meta.previewMode === "iframe" && item.meta.previewPath
+      item.meta.previewMode === 'iframe' && item.meta.previewPath
         ? item.meta.previewPath
         : `/preview/${item.name}`;
     await page.goto(url);
     await page.evaluate(() => document.fonts.ready);
-    await page.waitForLoadState("networkidle");
+    await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot(`${item.name}.png`);
   });
 }
@@ -290,12 +290,12 @@ Files:
 - root `package.json`
 
 ```js
-import { glob } from "glob";
-import fs from "node:fs/promises";
-import path from "node:path";
+import { glob } from 'glob';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
-const SNAP = "apps/e2e/tests/__snapshots__/visual.spec.ts";
-const DEST = "apps/website/public/og";
+const SNAP = 'apps/e2e/tests/__snapshots__/visual.spec.ts';
+const DEST = 'apps/website/public/og';
 
 await fs.mkdir(DEST, { recursive: true });
 const files = await glob(`${SNAP}/*.png`);

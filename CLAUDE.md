@@ -142,7 +142,7 @@ Goal: build components matching a given mockup and render to a preview page.
 3. Build at `registry/{type}/{name}/{name}.tsx`, render at `app/{name}/page.tsx`:
 
 ```tsx
-import { PreviewComponent } from "@/components/preview-page";
+import { PreviewComponent } from '@/components/preview-page';
 
 export default function Page() {
   return <PreviewComponent>{/* registry component */}</PreviewComponent>;
@@ -302,10 +302,10 @@ registry/blocks/<demo-name>/
 ```tsx
 <Box
   sx={{
-    height: "100%",
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
+    height: '100%',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
     maxWidth: 768,
   }}
 >
@@ -316,24 +316,24 @@ registry/blocks/<demo-name>/
 ### Setup
 
 ```tsx
-import { useChat } from "@ai-sdk/react";
+import { useChat } from '@ai-sdk/react';
 
-import { app } from "@/lib/firebase-setup";
-import { FirebaseChatTransport } from "@/registry/firebase/firebase-chat-transport";
+import { app } from '@/lib/firebase-setup';
+import { FirebaseChatTransport } from '@/registry/firebase/firebase-chat-transport';
 
 const transport = React.useMemo(
   () =>
     app
       ? new FirebaseChatTransport({
           firebaseApp: app,
-          modelParams: { model: "gemini-2.5-flash" },
+          modelParams: { model: 'gemini-2.5-flash' },
         })
       : null,
   [],
 );
 
 const { messages, status, error, sendMessage, stop } = useChat({
-  id: "unique-chat-id",
+  id: 'unique-chat-id',
   transport: transport!,
 });
 ```

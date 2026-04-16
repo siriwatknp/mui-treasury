@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
 
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import Chip from "@mui/material/Chip";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import { LineChart } from "@mui/x-charts/LineChart";
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import { LineChart } from '@mui/x-charts/LineChart';
 
 // Generate mock data for the charts
 const generateChartData = () => {
@@ -86,42 +86,42 @@ function MetricCard({
           <Typography
             variant="body2"
             sx={{
-              color: "text.secondary",
+              color: 'text.secondary',
               fontWeight: 500,
             }}
           >
             {title}
           </Typography>
           <Chip
-            label={`${isPositive ? "+" : ""}${percentageChange}%`}
+            label={`${isPositive ? '+' : ''}${percentageChange}%`}
             size="small"
             variant="filled"
-            color={isPositive ? "success" : "error"}
+            color={isPositive ? 'success' : 'error'}
             sx={{
               height: 20,
               fontSize: 12,
               fontWeight: 600,
-              "& .MuiChip-label": {
+              '& .MuiChip-label': {
                 px: 0.75,
               },
             }}
             aria-label={`${percentageChange}% ${
-              isPositive ? "increase" : "decrease"
+              isPositive ? 'increase' : 'decrease'
             }`}
           />
         </Stack>
         <Box
           sx={{
-            display: "flex",
-            alignItems: "baseline",
-            justifyContent: "space-between",
+            display: 'flex',
+            alignItems: 'baseline',
+            justifyContent: 'space-between',
           }}
         >
           <Typography
             variant="h4"
             sx={{
               fontWeight: 700,
-              color: "text.primary",
+              color: 'text.primary',
               mb: 0.5,
             }}
           >
@@ -130,7 +130,7 @@ function MetricCard({
           <Typography
             variant="caption"
             sx={{
-              color: "text.secondary",
+              color: 'text.secondary',
             }}
           >
             {comparison}
@@ -139,51 +139,51 @@ function MetricCard({
       </Box>
 
       <Box
-        sx={{ width: "100%", height: 140 }}
+        sx={{ width: '100%', height: 140 }}
         role="img"
         aria-label={`${title} trend chart showing ${
-          isPositive ? "growth" : "decline"
+          isPositive ? 'growth' : 'decline'
         } over time`}
       >
         <LineChart
           series={[
             {
               data: previousData,
-              color: "#9CA3AF",
-              curve: "linear",
+              color: '#9CA3AF',
+              curve: 'linear',
               showMark: false,
               area: true,
-              stack: "A",
+              stack: 'A',
             },
             {
               data: chartData,
-              color: "#3B82F6",
-              curve: "linear",
+              color: '#3B82F6',
+              curve: 'linear',
               showMark: false,
               area: true,
-              stack: "B",
+              stack: 'B',
             },
           ]}
           xAxis={[
             {
               data: dates,
-              scaleType: "time",
+              scaleType: 'time',
               tickLabelStyle: {
                 fontSize: 11,
-                fill: "var(--mui-palette-text-secondary)",
+                fill: 'var(--mui-palette-text-secondary)',
               },
               // tickNumber: 2,
               valueFormatter: (value) => {
                 const date = new Date(value);
-                return `${String(date.getDate()).padStart(2, "0")}/${String(
+                return `${String(date.getDate()).padStart(2, '0')}/${String(
                   date.getMonth() + 1,
-                ).padStart(2, "0")}/${date.getFullYear()}`;
+                ).padStart(2, '0')}/${date.getFullYear()}`;
               },
             },
           ]}
           yAxis={[
             {
-              position: "none",
+              position: 'none',
               width: 0,
             },
           ]}
@@ -195,20 +195,20 @@ function MetricCard({
           }}
           height={140}
           sx={(theme) => ({
-            "& .MuiLineElement-root": {
+            '& .MuiLineElement-root': {
               strokeWidth: 2,
             },
-            "& .MuiAreaElement-root": {
+            '& .MuiAreaElement-root': {
               fillOpacity: 0.15,
             },
-            "& .MuiChartsAxis-line": {
-              display: "none",
+            '& .MuiChartsAxis-line': {
+              display: 'none',
             },
-            "& .MuiChartsAxis-tick": {
-              display: "none",
+            '& .MuiChartsAxis-tick': {
+              display: 'none',
             },
-            ...theme.applyStyles("dark", {
-              "& .MuiAreaElement-root": {
+            ...theme.applyStyles('dark', {
+              '& .MuiAreaElement-root': {
                 fillOpacity: 0.1,
               },
             }),
@@ -225,12 +225,12 @@ export function DatabaseMetricsCard() {
       sx={(theme) => ({
         p: 3,
         borderRadius: 2,
-        border: "1px solid",
-        borderColor: "divider",
-        bgcolor: "background.paper",
-        boxShadow: "none",
-        ...theme.applyStyles("dark", {
-          borderColor: "divider",
+        border: '1px solid',
+        borderColor: 'divider',
+        bgcolor: 'background.paper',
+        boxShadow: 'none',
+        ...theme.applyStyles('dark', {
+          borderColor: 'divider',
         }),
       })}
     >
