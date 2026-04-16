@@ -30,6 +30,12 @@ export const visualSetups: Record<string, VisualSetup> = {
     const reports = page.getByRole('button', { name: 'Reports' });
     await reports.waitFor({ state: 'visible' });
     await reports.hover();
-    await page.getByRole('link', { name: 'Overview' }).waitFor({ state: 'visible' });
+    await page
+      .getByRole('link', { name: 'Overview' })
+      .waitFor({ state: 'visible' });
+  },
+  'sidebar-tooltip': async ({ page }) => {
+    await page.getByRole('button', { name: 'Home' }).hover();
+    await page.locator('.MuiTooltip-tooltip').first().waitFor({ state: 'visible' });
   },
 };
