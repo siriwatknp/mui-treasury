@@ -39,7 +39,7 @@ export default async function CategoryLayout({
             allCategoryItems={allCategoryItems}
             categoryName={category}
           >
-            <div className="px-2 mt-2">
+            <div className="px-2 flex justify-center">
               <CarbonAds vertical />
             </div>
           </CategorySidebar>

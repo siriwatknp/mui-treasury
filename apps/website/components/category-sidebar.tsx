@@ -116,7 +116,7 @@ export function CategorySidebar({
   }, [activeItem]);
 
   return (
-    <SidebarContainer ref={navRef} component="nav">
+    <SidebarContainer ref={navRef} component="nav" className="pb-3">
       {groups.size > 0 && (
         <SidebarGroup sx={{ borderBottom: 1, borderColor: 'divider' }}>
           {orderSubcategories(Array.from(groups.keys()), categoryName).map(
@@ -148,6 +148,7 @@ export function CategorySidebar({
                       </span>
                     </SidebarMenuButton>
                     <CollapsibleTrigger
+                      key={pathname} // reset internal state when pathname changes
                       defaultChecked={isCurrentSubcategory}
                       render={
                         <SidebarMenuAction>
