@@ -14,138 +14,147 @@ import { AppHeader } from '@/components/app-header';
 import CarbonAds from '@/components/carbon-ads/CarbonAds';
 import { GettingStartedContent } from '@/components/getting-started-content';
 import Link from '@/components/next-link';
+import Content from '@/registry/layout/layout-core/Content';
+import EdgeSidebar from '@/registry/layout/layout-core/EdgeSidebar';
+import Root from '@/registry/layout/layout-core/Root';
 
 export default function Home() {
   return (
-    <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
+    <Root sx={{ bgcolor: 'background.default' }}>
       <AppHeader />
+      <EdgeSidebar
+        id="home-sidebar"
+        variant={['permanent', { visibility: 'hidden' }]}
+      />
 
-      {/* Hero Section */}
-      <Box
-        component="section"
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          minHeight: 'max(calc(60vh - 73px), 560px)',
-          px: 3,
-          textAlign: 'center',
-        }}
-      >
-        {/* MUI Treasury Chip */}
-        <Chip
-          label="MUI Treasury"
-          variant="outlined"
+      <Content>
+        {/* Hero Section */}
+        <Box
+          component="section"
           sx={{
-            mb: 3,
-            borderColor: 'text.secondary',
-            color: 'text.secondary',
-            fontWeight: 500,
-          }}
-        />
-
-        {/* Main Title */}
-        <Typography
-          variant="h1"
-          component="h1"
-          sx={{
-            fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4.5rem' },
-            fontWeight: 700,
-            lineHeight: 1.1,
-            mb: 3,
-            maxWidth: '12ch',
-            color: 'text.primary',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            minHeight: 'max(calc(60vh - 73px), 560px)',
+            px: 3,
+            textAlign: 'center',
           }}
         >
-          All you need for MUI project
-        </Typography>
-
-        {/* Description */}
-        <Typography
-          variant="h6"
-          component="p"
-          sx={{
-            fontSize: { xs: '1.1rem', sm: '1.25rem' },
-            fontWeight: 400,
-            lineHeight: 1.5,
-            color: 'text.secondary',
-            mb: 4,
-            maxWidth: '60ch',
-          }}
-        >
-          Hand-crafted MUI theme that isn&apos;t outdated. Build modern,
-          accessible interfaces with our carefully designed components and
-          thoughtful customizations.
-        </Typography>
-
-        {/* Action Buttons */}
-        <Stack
-          direction={{ xs: 'column', sm: 'row' }}
-          spacing={2}
-          sx={{
-            width: { xs: '100%', sm: 'auto' },
-          }}
-        >
-          <Button
-            component={Link}
-            href="/theme-preview"
-            variant="contained"
-            size="large"
-            sx={{
-              px: 4,
-              py: 1.5,
-              borderRadius: 2,
-              textTransform: 'none',
-              fontWeight: 600,
-              fontSize: '1rem',
-            }}
-          >
-            See theme
-          </Button>
-          <Button
-            component={Link}
-            href="/authentication"
+          {/* MUI Treasury Chip */}
+          <Chip
+            label="MUI Treasury"
             variant="outlined"
-            size="large"
             sx={{
-              px: 4,
-              py: 1.5,
-              borderRadius: 2,
-              textTransform: 'none',
-              fontWeight: 600,
-              fontSize: '1rem',
+              mb: 3,
+              borderColor: 'text.secondary',
+              color: 'text.secondary',
+              fontWeight: 500,
+            }}
+          />
+
+          {/* Main Title */}
+          <Typography
+            variant="h1"
+            component="h1"
+            sx={{
+              fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4.5rem' },
+              fontWeight: 700,
+              lineHeight: 1.1,
+              mb: 3,
+              maxWidth: '12ch',
+              color: 'text.primary',
             }}
           >
-            Blocks
-          </Button>
-        </Stack>
-      </Box>
+            All you need for MUI project
+          </Typography>
 
-      <Box
-        sx={{
-          bgcolor: 'background.paper',
-          display: 'flex',
-          justifyContent: 'center',
-          pt: {
-            xs: 8,
-            md: 12,
-          },
-        }}
-      >
-        <CarbonAds format="cover" />
-      </Box>
+          {/* Description */}
+          <Typography
+            variant="h6"
+            component="p"
+            sx={{
+              fontSize: { xs: '1.1rem', sm: '1.25rem' },
+              fontWeight: 400,
+              lineHeight: 1.5,
+              color: 'text.secondary',
+              mb: 4,
+              maxWidth: '60ch',
+            }}
+          >
+            Hand-crafted MUI theme that isn&apos;t outdated. Build modern,
+            accessible interfaces with our carefully designed components and
+            thoughtful customizations.
+          </Typography>
 
-      {/* Getting Started Section */}
-      <Suspense
-        fallback={
-          <Box sx={{ display: 'flex', justifyContent: 'center', py: 8 }}>
-            <CircularProgress />
-          </Box>
-        }
-      >
-        <GettingStartedContent />
-      </Suspense>
-    </Box>
+          {/* Action Buttons */}
+          <Stack
+            direction={{ xs: 'column', sm: 'row' }}
+            spacing={2}
+            sx={{
+              width: { xs: '100%', sm: 'auto' },
+            }}
+          >
+            <Button
+              component={Link}
+              href="/theme-preview"
+              variant="contained"
+              size="large"
+              sx={{
+                px: 4,
+                py: 1.5,
+                borderRadius: 2,
+                textTransform: 'none',
+                fontWeight: 600,
+                fontSize: '1rem',
+              }}
+            >
+              See theme
+            </Button>
+            <Button
+              component={Link}
+              href="/authentication"
+              variant="outlined"
+              size="large"
+              sx={{
+                px: 4,
+                py: 1.5,
+                borderRadius: 2,
+                textTransform: 'none',
+                fontWeight: 600,
+                fontSize: '1rem',
+              }}
+            >
+              Blocks
+            </Button>
+          </Stack>
+        </Box>
+
+        <Box
+          sx={{
+            bgcolor: 'background.paper',
+            display: 'flex',
+            justifyContent: 'center',
+            pt: {
+              xs: 8,
+              md: 12,
+            },
+          }}
+        >
+          <CarbonAds format="cover" />
+        </Box>
+
+        {/* Getting Started Section */}
+        <Suspense
+          fallback={
+            <Box sx={{ display: 'flex', justifyContent: 'center', py: 8 }}>
+              <CircularProgress />
+            </Box>
+          }
+        >
+          <GettingStartedContent />
+        </Suspense>
+      </Content>
+    </Root>
   );
 }

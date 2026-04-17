@@ -1,4 +1,7 @@
 import { AppHeader } from '@/components/app-header';
+import Content from '@/registry/layout/layout-core/Content';
+import EdgeSidebar from '@/registry/layout/layout-core/EdgeSidebar';
+import Root from '@/registry/layout/layout-core/Root';
 
 export default function PageLayout({
   children,
@@ -6,9 +9,13 @@ export default function PageLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-background">
+    <Root sx={{ bgcolor: 'background.default' }}>
       <AppHeader />
-      {children}
-    </div>
+      <EdgeSidebar
+        id="theme-preview-sidebar"
+        variant={['permanent', { visibility: 'hidden' }]}
+      />
+      <Content>{children}</Content>
+    </Root>
   );
 }

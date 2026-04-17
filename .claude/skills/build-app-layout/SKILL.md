@@ -129,6 +129,16 @@ EdgeSidebarContent
 - It's recommended to have only one `SidebarContainer` as a direct child of `EdgeSidebar` — having multiple containers will cause the available space to split evenly, which mostly not the desired behavior.
 - Align icons in the center of the collapsed sidebar with proper `shrinkSize` on `SidebarIcon`.
 - Align custom elements like avatar in the center of the collapsed sidebar using negative margins with EdgeSidebar variables (see [EdgeSidebar Collapsible Variables](./pages/how-to-guides/layout-css-variables.md#how-to-customize-css-based-on-sidebar-collapsed-state) guide)
+- On pages that use `EdgeDrawerTrigger` but have no sidebar, add `<EdgeSidebar variant={['permanent', { visibility: 'hidden' }]} />` to hide the trigger — permanent mode auto-hides `EdgeDrawerTrigger`, and `visibility: 'hidden'` prevents the sidebar from taking visual space
+- To create a floating sidebar (with margin, border, shadow, rounded corners), never apply these styles directly to `EdgeSidebarContent` — it breaks the layout. Instead, make `EdgeSidebarContent` transparent and style a child `div`:
+
+  ```tsx
+  <EdgeSidebarContent className="bg-transparent">
+    <div className="m-2 border shadow-xl rounded-lg bg-background flex flex-col">
+      {sidebar}
+    </div>
+  </EdgeSidebarContent>
+  ```
 
 ## Documentation
 
