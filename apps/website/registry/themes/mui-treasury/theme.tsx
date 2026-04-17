@@ -31,7 +31,6 @@ import { typography, typographyTheme } from './typography';
 const theme = createTheme({
   cssVariables: {
     colorSchemeSelector: 'class',
-    cssVarPrefix: 'plus',
   },
   colorSchemes: colors,
   shape: {

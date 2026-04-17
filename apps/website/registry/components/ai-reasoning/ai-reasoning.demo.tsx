@@ -19,7 +19,7 @@ export function Demo() {
   return (
     <div className="w-full max-w-2xl mx-auto space-y-8 p-8">
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-muted-foreground">
+        <h3 className="text-sm font-medium text-text-secondary">
           Reasoning Component
         </h3>
 
@@ -39,7 +39,7 @@ This reasoning process helps me give you more accurate and thoughtful responses.
 
           <button
             onClick={simulateStreaming}
-            className="px-4 py-2 bg-primary text-primary-foreground rounded-md text-sm"
+            className="px-4 py-2 bg-primary text-primary-contrast rounded-md text-sm"
           >
             Simulate Streaming
           </button>
@@ -47,7 +47,7 @@ This reasoning process helps me give you more accurate and thoughtful responses.
       </div>
 
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-muted-foreground">
+        <h3 className="text-sm font-medium text-text-secondary">
           Collapsed by Default
         </h3>
 

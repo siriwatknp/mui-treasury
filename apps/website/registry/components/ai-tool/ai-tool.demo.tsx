@@ -42,10 +42,10 @@ export function Demo() {
   return (
     <div className="w-full max-w-2xl mx-auto space-y-8 p-8">
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-muted-foreground">
+        <h3 className="text-sm font-medium text-text-secondary">
           Tool Components
         </h3>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm text-text-secondary">
           Display AI tool invocations with their inputs and outputs.
         </p>
 

@@ -12,7 +12,7 @@ import {
 export function Demo() {
   return (
     <div className="w-full max-w-2xl mx-auto p-8">
-      <h3 className="text-sm font-medium text-muted-foreground mb-4">
+      <h3 className="text-sm font-medium text-text-secondary mb-4">
         Branch Navigation Demo
       </h3>
       <Branch>

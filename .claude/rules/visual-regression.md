@@ -4,9 +4,11 @@ Playwright screenshots from `/preview/[name]` serve as both visual regression ba
 
 ## Commands
 
+**IMPORTANT:** Always prefix with `CI=1` to prevent Playwright from blocking on the HTML report server when tests fail.
+
 ```bash
-pnpm test:visual                                    # Run visual tests against committed baselines
-pnpm test:visual:build                              # Same, but against production build (no dev overlay noise)
+CI=1 pnpm test:visual                               # Run visual tests against committed baselines
+CI=1 pnpm test:visual:build                          # Same, but against production build (no dev overlay noise)
 pnpm sync:og                                        # Regenerate OG images locally from baselines
 
 # Single item baseline regeneration
@@ -47,6 +49,7 @@ Some registries need user interaction (click, hover) before screenshotting to sh
 ### When to add a setup
 
 Add a setup when the default rendered state is empty/unhelpful for OG/visual preview:
+
 - **Select/Menu components** — click to open the dropdown so options are visible.
 - **Tooltip components** — hover to show the tooltip.
 - **Popup/Flyout components** — hover or click triggers to expand nested content.
@@ -66,6 +69,7 @@ Add a setup when the default rendered state is empty/unhelpful for OG/visual pre
 ### Finding selectors
 
 Use `/agent-browser` to explore the live preview:
+
 ```bash
 agent-browser open http://localhost:4418/preview/<name>
 agent-browser snapshot -i -C       # list interactive elements with refs
@@ -78,18 +82,21 @@ agent-browser screenshot /tmp/check.png
 ### Common patterns
 
 **MUI Select / Menu** — click trigger, wait for `.MuiMenu-paper`:
+
 ```ts
 'my-select': ({ page }) =>
   openMuiMenu({ page, trigger: '[role="combobox"]' }),
 ```
 
 **MUI IconButton with Menu** — click `button[aria-haspopup="true"]`:
+
 ```ts
 'my-icon-menu': ({ page }) =>
   openMuiMenu({ page, trigger: 'button[aria-haspopup="true"]' }),
 ```
 
 **MUI Tooltip** — hover trigger, wait for `.MuiTooltip-tooltip`:
+
 ```ts
 'my-tooltip': async ({ page }) => {
   await page.getByRole('button', { name: 'Label' }).hover();
@@ -98,6 +105,7 @@ agent-browser screenshot /tmp/check.png
 ```
 
 **Base UI NavigationMenu (nested popups)** — sequential hovers:
+
 ```ts
 'my-nav': async ({ page }) => {
   await page.getByRole('button', { name: 'Parent' }).hover();

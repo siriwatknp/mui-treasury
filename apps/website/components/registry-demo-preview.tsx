@@ -69,14 +69,14 @@ export function RegistryDemoPreview({
 function Loading() {
   return (
     <div className="w-full h-full flex items-center justify-center">
-      <div className="animate-pulse bg-muted rounded w-16 h-16" />
+      <div className="animate-pulse bg-action-hover rounded w-16 h-16" />
     </div>
   );
 }
 
 function PreviewUnavailable() {
   return (
-    <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+    <div className="w-full h-full flex items-center justify-center text-text-secondary">
       <span className="text-sm">Preview unavailable</span>
     </div>
   );

@@ -14,7 +14,7 @@ export function CategoryLayoutShell({
   children: React.ReactNode;
 }) {
   return (
-    <Root className="bg-background">
+    <Root className="bg-background-default">
       {children}
       <EdgeSidebar
         permanentAutoCollapse="md"
@@ -26,7 +26,7 @@ export function CategoryLayoutShell({
         sx={{ '--jun-ES-line-w': '0px' }}
       >
         <EdgeSidebarContent className="bg-transparent">
-          <div className="m-2 border shadow-xl rounded-lg md:shadow-none md:m-0 md:border-0 md:rounded-none bg-background flex flex-col">
+          <div className="m-2 border shadow-xl rounded-lg md:shadow-none md:m-0 md:border-0 md:rounded-none bg-background-default flex flex-col">
             {sidebar}
           </div>
         </EdgeSidebarContent>

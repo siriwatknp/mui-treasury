@@ -13,7 +13,7 @@ export function Demo() {
   return (
     <div className="w-full max-w-3xl mx-auto space-y-8 p-8">
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-muted-foreground">
+        <h3 className="text-sm font-medium text-text-secondary">
           Basic Suggestions
         </h3>
         <Suggestions>
@@ -37,7 +37,7 @@ export function Demo() {
       </div>
 
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-muted-foreground">
+        <h3 className="text-sm font-medium text-text-secondary">
           Long Suggestions (Scrollable)
         </h3>
         <Suggestions>
@@ -69,7 +69,7 @@ export function Demo() {
       </div>
 
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-muted-foreground">
+        <h3 className="text-sm font-medium text-text-secondary">
           Custom Styled Suggestions
         </h3>
         <Suggestions>

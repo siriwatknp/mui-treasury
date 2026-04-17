@@ -46,7 +46,7 @@ export function PreviewFrame({
       case 'page':
         return 'bg-yellow-500/10 text-yellow-700 dark:bg-yellow-500/20 dark:text-yellow-300';
       default:
-        return 'bg-muted text-muted-foreground';
+        return 'bg-gray-100 dark:bg-gray-800 text-text-secondary';
     }
   };
 
@@ -69,20 +69,20 @@ export function PreviewFrame({
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-muted-foreground hover:underline focus:underline inline-flex items-center gap-1"
+              className="text-sm text-text-secondary hover:underline focus:underline inline-flex items-center gap-1"
             >
               {title || name}
               <ExternalLink className="w-3 h-3" />
             </Link>
           ) : (
-            <h2 className="text-sm text-muted-foreground">{title || name}</h2>
+            <h2 className="text-sm text-text-secondary">{title || name}</h2>
           )}
         </div>
         <div className="flex gap-2">
           {!isIframe && href && (
             <Link
               href={href}
-              className="text-sm text-muted-foreground hover:underline"
+              className="text-sm text-text-secondary hover:underline"
             >
               Preview →
             </Link>

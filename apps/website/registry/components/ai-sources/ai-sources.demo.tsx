@@ -32,10 +32,10 @@ export function Demo() {
   return (
     <div className="w-full max-w-2xl mx-auto space-y-8 p-8">
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-muted-foreground">
+        <h3 className="text-sm font-medium text-text-secondary">
           Sources Component
         </h3>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm text-text-secondary">
           Display sources used in AI responses with collapsible list.
         </p>
 
@@ -55,7 +55,7 @@ export function Demo() {
       </div>
 
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-muted-foreground">
+        <h3 className="text-sm font-medium text-text-secondary">
           Custom Trigger Text
         </h3>
 

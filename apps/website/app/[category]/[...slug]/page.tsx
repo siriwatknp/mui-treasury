@@ -176,8 +176,8 @@ function ItemDetailPage({
       <header className="border-b px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div>
-            <nav className="text-sm text-muted-foreground mb-1">
-              <a href={`/${category}`} className="hover:text-foreground">
+            <nav className="text-sm text-text-secondary mb-1">
+              <a href={`/${category}`} className="hover:text-text-primary">
                 {category}
               </a>
               {subcategory && (
@@ -185,17 +185,17 @@ function ItemDetailPage({
                   {' / '}
                   <a
                     href={`/${category}/${subcategory}`}
-                    className="hover:text-foreground"
+                    className="hover:text-text-primary"
                   >
                     {subcategory}
                   </a>
                 </>
               )}
               {' / '}
-              <span className="text-foreground">{item.title}</span>
+              <span className="text-text-primary">{item.title}</span>
             </nav>
             <h1 className="text-2xl font-semibold">{item.title}</h1>
-            <p className="text-muted-foreground mt-1">{item.description}</p>
+            <p className="text-text-secondary mt-1">{item.description}</p>
           </div>
 
           {/* Tags */}
@@ -204,7 +204,7 @@ function ItemDetailPage({
               {item.meta.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-2 py-1 bg-secondary text-secondary-foreground text-xs rounded-md"
+                  className="px-2 py-1 bg-secondary text-secondary-contrast text-xs rounded-md"
                 >
                   {tag}
                 </span>

@@ -211,7 +211,7 @@ function ComponentPreview({
           style={codeHeight ? { height: codeHeight } : undefined}
         >
           {showHeader && (
-            <div className="flex items-center justify-between bg-muted px-3 py-2 text-sm">
+            <div className="flex items-center justify-between bg-gray-100 dark:bg-gray-800 px-3 py-2 text-sm">
               <span className="font-mono">{file.path.split('/').pop()}</span>
               <Button
                 variant="outline"
@@ -257,18 +257,18 @@ function ComponentPreview({
                   {file.content}
                 </SyntaxHighlighter.Component>
               ) : SyntaxHighlighter === null ? (
-                <pre className="p-4 text-xs bg-background">
+                <pre className="p-4 text-xs bg-background-default">
                   <code>{file.content}</code>
                 </pre>
               ) : (
-                <div className="p-4 text-xs bg-background flex items-center justify-center">
+                <div className="p-4 text-xs bg-background-default flex items-center justify-center">
                   <div className="animate-pulse">
                     Loading syntax highlighter...
                   </div>
                 </div>
               )
             ) : (
-              <pre className="p-4 text-xs bg-background">
+              <pre className="p-4 text-xs bg-background-default">
                 <code>{file.content}</code>
               </pre>
             )}
@@ -345,7 +345,7 @@ function ComponentPreview({
 
       <TabsContent
         value="preview"
-        className="h-full mt-0 bg-muted border rounded-lg overflow-hidden"
+        className="h-full mt-0 bg-gray-100 dark:bg-gray-800 border rounded-lg overflow-hidden"
       >
         {renderPreview()}
       </TabsContent>
@@ -363,13 +363,13 @@ function ComponentPreview({
                   onClick={() => setActiveFileIndex(index)}
                   className={`px-4 py-2 text-sm font-mono transition-colors relative ${
                     activeFileIndex === index
-                      ? 'text-foreground'
-                      : 'text-muted-foreground hover:text-foreground'
+                      ? 'text-text-primary'
+                      : 'text-text-secondary hover:text-text-primary'
                   }`}
                 >
                   {file.path.split('/').pop()}
                   {activeFileIndex === index && (
-                    <div className="absolute bottom-0 left-4 right-4 h-[1px] rounded-2xl bg-foreground" />
+                    <div className="absolute bottom-0 left-4 right-4 h-[1px] rounded-2xl bg-text-primary" />
                   )}
                 </button>
               ))}
@@ -418,9 +418,9 @@ function MetaOnlyItem({ item }: { item: RegistryItem }) {
   };
 
   return (
-    <div className="bg-muted/50 rounded-lg p-6 text-center">
+    <div className="bg-gray-100 dark:bg-gray-800/50 rounded-lg p-6 text-center">
       <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
-      <p className="text-sm text-muted-foreground mb-4">{item.description}</p>
+      <p className="text-sm text-text-secondary mb-4">{item.description}</p>
       <div className="flex justify-center gap-2">
         <Button
           variant="outline"
@@ -490,14 +490,14 @@ function LazyComponentPreview({
   const loadingSkeleton = (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
-        <div className="animate-pulse bg-muted rounded h-[36px] w-[128px]"></div>
+        <div className="animate-pulse bg-gray-100 dark:bg-gray-800 rounded h-[36px] w-[128px]"></div>
         <div className="flex gap-2">
-          <div className="animate-pulse bg-muted rounded h-[32px] w-[114px]"></div>
-          <div className="animate-pulse bg-muted rounded h-[32px] w-[92px]"></div>
+          <div className="animate-pulse bg-gray-100 dark:bg-gray-800 rounded h-[32px] w-[114px]"></div>
+          <div className="animate-pulse bg-gray-100 dark:bg-gray-800 rounded h-[32px] w-[92px]"></div>
         </div>
       </div>
       <div
-        className="animate-pulse bg-muted rounded-lg w-full"
+        className="animate-pulse bg-gray-100 dark:bg-gray-800 rounded-lg w-full"
         style={{ height: skeletonHeight }}
       ></div>
     </div>
@@ -532,10 +532,10 @@ export default function CategoryClient({
         {/* Header */}
         <div className="py-8 text-center">
           {breadcrumb && breadcrumb.length > 0 && (
-            <nav className="text-sm text-muted-foreground mb-2">
+            <nav className="text-sm text-text-secondary mb-2">
               {breadcrumb.map((item, index) => (
                 <span key={item.href}>
-                  <a href={item.href} className="hover:text-foreground">
+                  <a href={item.href} className="hover:text-text-primary">
                     {item.label}
                   </a>
                   {index < breadcrumb.length - 1 && ' / '}
@@ -546,7 +546,7 @@ export default function CategoryClient({
           <h1 className="text-3xl font-bold capitalize mb-2">
             {categoryInfo.label === 'Ai' ? 'AI' : categoryInfo.label}
           </h1>
-          <p className="text-muted-foreground">
+          <p className="text-text-secondary">
             {subcategoryData && subcategoryData.length > 0
               ? `${subcategoryData.length} subcategories, ${regularItems.length} other components`
               : `${regularItems.length} ${
@@ -568,12 +568,12 @@ export default function CategoryClient({
               <a
                 key={subcat.name}
                 href={`/${categoryInfo.name}/${subcat.name}`}
-                className="group flex flex-col justify-center items-center p-6 w-full sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-11px)] min-h-[120px] rounded-xl border border-border bg-card hover:border-foreground/30 hover:bg-accent/50 transition-all duration-200"
+                className="group flex flex-col justify-center items-center p-6 w-full sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-11px)] min-h-[120px] rounded-xl border border-divider bg-background-paper hover:border-text-primary/30 hover:bg-action-hover transition-all duration-200"
               >
-                <h3 className="text-lg font-semibold tracking-tight text-foreground group-hover:text-primary transition-colors">
+                <h3 className="text-lg font-semibold tracking-tight text-text-primary group-hover:text-primary transition-colors">
                   {subcat.label}
                 </h3>
-                <p className="mt-1 text-sm text-muted-foreground">
+                <p className="mt-1 text-sm text-text-secondary">
                   {subcat.count} {subcat.count === 1 ? 'block' : 'blocks'}
                 </p>
               </a>
@@ -614,13 +614,13 @@ export default function CategoryClient({
                     {/* TODO: need to think more about the preview and other features to leverage the fullscreen */}
                     {/* <Link
                         href={`/preview/${item.name}`}
-                        className="opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-primary"
+                        className="opacity-0 group-hover:opacity-100 transition-opacity text-text-secondary hover:text-primary"
                         title="Open full preview"
                       >
                         <ExternalLinkIcon className="w-4 h-4" />
                       </Link> */}
                   </div>
-                  <p className="text-sm text-muted-foreground line-clamp-2">
+                  <p className="text-sm text-text-secondary line-clamp-2">
                     {item.description}
                   </p>
                 </div>
@@ -658,11 +658,11 @@ export default function CategoryClient({
                               className="space-y-2 min-w-0 flex flex-col"
                             >
                               <div>
-                                <h4 className="text-sm font-medium text-muted-foreground">
+                                <h4 className="text-sm font-medium text-text-secondary">
                                   {label}
                                 </h4>
                                 {demoFile.description && (
-                                  <p className="text-sm text-muted-foreground/70">
+                                  <p className="text-sm text-text-secondary/70">
                                     {demoFile.description}
                                   </p>
                                 )}

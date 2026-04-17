@@ -45,7 +45,7 @@ export default function TagFilter({
   }
 
   return (
-    <div className="sticky top-[57px] bg-background/80 backdrop-blur-sm py-4 mb-8 z-20">
+    <div className="sticky top-[57px] bg-background-default/80 backdrop-blur-sm py-4 mb-8 z-20">
       <div className="flex flex-wrap gap-3 justify-center">
         {availableTags.map((tag) => {
           const isSelected = selectedTags.includes(tag);
@@ -69,7 +69,7 @@ export default function TagFilter({
         {selectedTags.length > 0 && (
           <button
             onClick={clearAllTags}
-            className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            className="px-4 py-2 text-sm text-text-secondary hover:text-text-primary transition-colors"
           >
             Clear all
           </button>

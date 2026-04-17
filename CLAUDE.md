@@ -82,7 +82,7 @@ MUI Registry — a custom component registry built with Next.js 15, Material UI 
 ```bash
 pnpm dev               # Dev server with Turbopack at port 4418
 pnpm registry:build    # Build registry files → public/r/
-pnpm test:visual       # Visual regression + OG image sync (runs Playwright, copies baselines → public/og/)
+CI=1 pnpm test:visual  # Visual regression + OG image sync (runs Playwright, copies baselines → public/og/)
 pnpm build             # Production build
 pnpm lint              # Lint
 ```
@@ -92,8 +92,9 @@ pnpm lint              # Lint
 See `.claude/rules/visual-regression.md` for full details (commands, pipeline, interactive setups, selectors).
 
 Quick reference:
+
 ```bash
-pnpm test:visual                                    # Run visual tests against committed baselines
+CI=1 pnpm test:visual                               # Run visual tests against committed baselines
 pnpm sync:og                                        # Regenerate OG images locally from baselines
 # Single item — MUST call playwright directly, not via test:visual
 pnpm --filter e2e exec playwright test --project=visual -g <name> --update-snapshots && pnpm sync:og

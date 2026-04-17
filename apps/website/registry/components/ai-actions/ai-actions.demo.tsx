@@ -8,7 +8,7 @@ export function Demo() {
   return (
     <div className="flex flex-col gap-8 p-8">
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-muted-foreground">
+        <h3 className="text-sm font-medium text-text-secondary">
           Basic Actions
         </h3>
         <Actions>
@@ -25,7 +25,7 @@ export function Demo() {
       </div>
 
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-muted-foreground">
+        <h3 className="text-sm font-medium text-text-secondary">
           Actions with Tooltips
         </h3>
         <Actions>

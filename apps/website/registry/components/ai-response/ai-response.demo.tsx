@@ -40,7 +40,7 @@ That's all for this demo!`;
   return (
     <div className="w-full max-w-3xl mx-auto space-y-8 p-8">
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-muted-foreground">
+        <h3 className="text-sm font-medium text-text-secondary">
           AI Response with Markdown
         </h3>
         <div className="border rounded-lg p-4">
@@ -49,7 +49,7 @@ That's all for this demo!`;
       </div>
 
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-muted-foreground">
+        <h3 className="text-sm font-medium text-text-secondary">
           Simple Response
         </h3>
         <div className="border rounded-lg p-4">

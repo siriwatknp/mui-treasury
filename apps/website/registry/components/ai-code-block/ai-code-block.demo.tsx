@@ -33,7 +33,7 @@ export const Button: React.FC<ButtonProps> = ({ onClick, children }) => (
   return (
     <div className="w-full max-w-3xl mx-auto space-y-6 p-8">
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-muted-foreground">
+        <h3 className="text-sm font-medium text-text-secondary">
           JavaScript Code Block
         </h3>
         <CodeBlock code={sampleCode} language="javascript" showLineNumbers>
@@ -42,7 +42,7 @@ export const Button: React.FC<ButtonProps> = ({ onClick, children }) => (
       </div>
 
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-muted-foreground">
+        <h3 className="text-sm font-medium text-text-secondary">
           TypeScript Code Block
         </h3>
         <CodeBlock code={tsxCode} language="tsx" showLineNumbers>
@@ -51,7 +51,7 @@ export const Button: React.FC<ButtonProps> = ({ onClick, children }) => (
       </div>
 
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-muted-foreground">
+        <h3 className="text-sm font-medium text-text-secondary">
           Without Line Numbers
         </h3>
         <CodeBlock code={sampleCode} language="javascript">

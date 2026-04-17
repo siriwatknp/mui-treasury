@@ -112,7 +112,10 @@ function ColorSchemeSelectIcon() {
 
 export function AppHeader() {
   return (
-    <Header clip className="pr-6 pl-3 py-3 bg-background gap-2 z-[1299]">
+    <Header
+      clip
+      className="pr-6 pl-3 py-3 bg-background-default gap-2 z-[1299]"
+    >
       <EdgeDrawerTrigger
         render={
           <IconButton>

@@ -13,7 +13,7 @@ export default async function DemoPreviewPage({
   const demoPath = path.join('/');
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background-default">
       <PreviewComponent>
         <DemoDynamicLoader demoPath={demoPath} />
       </PreviewComponent>

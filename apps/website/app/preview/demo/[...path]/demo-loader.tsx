@@ -25,7 +25,7 @@ export function DemoDynamicLoader({ demoPath }: { demoPath: string }) {
         }),
       {
         loading: () => (
-          <div className="animate-pulse bg-muted h-full rounded" />
+          <div className="animate-pulse bg-action-hover h-full rounded" />
         ),
         ssr: false,
       },
@@ -37,7 +37,7 @@ export function DemoDynamicLoader({ demoPath }: { demoPath: string }) {
 
 function PreviewUnavailable() {
   return (
-    <div className="flex items-center justify-center h-full text-muted-foreground text-sm">
+    <div className="flex items-center justify-center h-full text-text-secondary text-sm">
       Preview unavailable
     </div>
   );
