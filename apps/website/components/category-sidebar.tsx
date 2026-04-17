@@ -22,6 +22,7 @@ import {
   SidebarMenuList,
   SidebarText,
 } from '@/registry/components/sidebar';
+import { triggerEdgeDrawer } from '@/registry/layout/layout-core';
 
 interface CategorySidebarProps {
   allCategoryItems: RegistryItem[];
@@ -115,7 +116,7 @@ export function CategorySidebar({
   }, [activeItem]);
 
   return (
-    <SidebarContainer ref={navRef} component="nav" className="hide-scrollbar">
+    <SidebarContainer ref={navRef} component="nav">
       {groups.size > 0 && (
         <SidebarGroup sx={{ borderBottom: 1, borderColor: 'divider' }}>
           {orderSubcategories(Array.from(groups.keys()), categoryName).map(
@@ -137,6 +138,7 @@ export function CategorySidebar({
                     <SidebarMenuButton
                       component={Link}
                       href={`/${categoryName}/${subcategory}`}
+                      onClick={() => triggerEdgeDrawer({ state: false })}
                     >
                       <SidebarText sx={{ fontWeight: 500 }}>
                         {label}
@@ -165,6 +167,9 @@ export function CategorySidebar({
                               component={Link}
                               href={`/${categoryName}/${subcategory}#${item.name}`}
                               active={activeItem === item.name}
+                              onClick={() =>
+                                triggerEdgeDrawer({ state: false })
+                              }
                             >
                               <SidebarText>
                                 {item.title
@@ -195,6 +200,7 @@ export function CategorySidebar({
                 component={Link}
                 href={`/${categoryName}#${item.name}`}
                 active={activeItem === item.name}
+                onClick={() => triggerEdgeDrawer({ state: false })}
               >
                 <SidebarText>{item.title.replace(/^Ai\s/, 'AI ')}</SidebarText>
               </SidebarMenuButton>

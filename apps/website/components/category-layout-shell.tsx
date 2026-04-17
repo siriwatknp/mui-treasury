@@ -17,14 +17,17 @@ export function CategoryLayoutShell({
     <Root className="bg-background">
       {children}
       <EdgeSidebar
+        permanentAutoCollapse="md"
         variant={{
-          xs: ['permanent', { width: '200px', visibility: 'hidden' }],
-          lg: ['permanent', { width: '200px', visibility: 'visible' }],
+          xs: ['drawer', { width: '232px', withoutOverlay: true }],
+          md: ['permanent', { width: '200px' }],
         }}
         sx={{ '--jun-ES-line-w': '0px' }}
       >
-        <EdgeSidebarContent className="bg-transparent pb-4">
-          {sidebar}
+        <EdgeSidebarContent className="bg-transparent">
+          <div className="m-2 border shadow-xl rounded-lg md:shadow-none md:m-0 md:border-0 md:rounded-none bg-background h-full overflow-auto">
+            {sidebar}
+          </div>
         </EdgeSidebarContent>
       </EdgeSidebar>
     </Root>

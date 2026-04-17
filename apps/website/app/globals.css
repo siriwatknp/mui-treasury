@@ -1,6 +1,6 @@
 @layer theme, base, mui, components, utilities;
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @source "../node_modules/streamdown/dist/*.js";
 
@@ -124,14 +124,4 @@
   body {
     @apply bg-background text-foreground;
   }
-}
-
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  overscroll-behavior: contain;
-}
-
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
 }

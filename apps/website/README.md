@@ -1,6 +1,6 @@
-# MUI+ Registry
+# MUI Treasury Registry
 
-This is the registry for MUI+ components and blocks.
+This is the registry for MUI Treasury components and blocks.
 
 ## Getting Started
 
