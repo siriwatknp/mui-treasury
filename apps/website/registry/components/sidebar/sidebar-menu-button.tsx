@@ -36,6 +36,7 @@ const StyledSidebarMenuButton = styled(ButtonBase, {
     borderRadius: (theme.vars || theme).shape.borderRadius,
     color: (theme.vars || theme).palette.text.secondary,
     cursor: 'pointer',
+    userSelect: 'none', // prevent text highlighting when clicking rapidly or from collapsible trigger
     transition:
       'var(--tsn, min-height var(--_collapsed, 0.2s) var(--_uncollapsed, 0.3s), padding var(--_collapsed, 0.2s) var(--_uncollapsed, 0.3s), gap var(--_collapsed, 0s 0.4s) var(--_uncollapsed, 0s))',
     '--item-gap': 'var(--_collapsed, 0px) var(--_uncollapsed, 0.5rem)',
