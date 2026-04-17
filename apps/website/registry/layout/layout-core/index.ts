@@ -26,3 +26,4 @@ export { default as InsetContent } from './InsetContent';
 export * from './InsetContent';
 export { layoutAttrs } from './layoutAttrs';
 export { layoutClasses } from './layoutClasses';
+export { layoutVisibility } from './layoutVisibility';

@@ -306,7 +306,7 @@ const EdgeSidebar = React.forwardRef<
   return (
     <StyledEdgeSidebar
       ref={ref}
-      className={`${layoutClasses.EdgeSidebar} ${className || ''}`}
+      className={`${layoutClasses.EdgeSidebar}${hasWithoutOverlay ? ` ${layoutClasses.DrawerWithoutOverlay}` : ''} ${className || ''}`}
       ownerState={ownerState}
       {...(hasWithoutOverlay && { 'data-without-overlay': '' })}
       {...props}
