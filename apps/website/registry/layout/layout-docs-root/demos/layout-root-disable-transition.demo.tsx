@@ -10,14 +10,12 @@ import Typography from '@mui/material/Typography';
 
 import Content from '@/registry/layout/layout-core/Content';
 import EdgeSidebar from '@/registry/layout/layout-core/EdgeSidebar';
+import EdgeSidebarCollapser from '@/registry/layout/layout-core/EdgeSidebarCollapser';
 import EdgeSidebarContent from '@/registry/layout/layout-core/EdgeSidebarContent';
 import Footer from '@/registry/layout/layout-core/Footer';
 import Header from '@/registry/layout/layout-core/Header';
 import Root from '@/registry/layout/layout-core/Root';
-
-import EdgeCollapsedVisible from '../../layout-core/EdgeCollapsedVisible';
-import EdgeSidebarCollapser from '../../layout-core/EdgeSidebarCollapser';
-import EdgeUncollapsedVisible from '../../layout-core/EdgeUncollapsedVisible';
+import { layoutVisibility } from '@/registry/layout/layout-core/layoutVisibility';
 
 export const meta = {
   title: 'Root Disable Transition',
@@ -59,14 +57,16 @@ export function Demo() {
             <EdgeSidebarCollapser
               render={
                 <Button size="small" sx={{ m: 1 }}>
-                  <EdgeCollapsedVisible render={<KeyboardArrowRight />} />
-                  <EdgeUncollapsedVisible
-                    render={
-                      <span>
-                        <KeyboardArrowLeft /> Toggle
-                      </span>
-                    }
+                  <KeyboardArrowRight
+                    className={layoutVisibility.visibleOnEdgePermanentCollapsed}
                   />
+                  <span
+                    className={
+                      layoutVisibility.visibleOnEdgePermanentUncollapsed
+                    }
+                  >
+                    <KeyboardArrowLeft /> Toggle
+                  </span>
                 </Button>
               }
             />

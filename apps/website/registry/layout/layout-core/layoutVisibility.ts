@@ -1,6 +1,8 @@
 import { layoutClasses } from './layoutClasses';
 
 export const layoutVisibility = {
-  visibleOnEdgeSidebarDrawerOpen: layoutClasses.EdgeDrawerOpenVisible,
-  visibleOnEdgeSidebarDrawerClosed: layoutClasses.EdgeDrawerClosedVisible,
+  visibleOnEdgeDrawerOpen: layoutClasses.EdgeDrawerOpenVisible,
+  visibleOnEdgeDrawerClosed: layoutClasses.EdgeDrawerClosedVisible,
+  visibleOnEdgePermanentCollapsed: layoutClasses.EdgeCollapsedVisible,
+  visibleOnEdgePermanentUncollapsed: layoutClasses.EdgeUncollapsedVisible,
 };

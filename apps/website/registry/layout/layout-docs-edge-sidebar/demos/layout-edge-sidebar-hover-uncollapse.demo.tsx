@@ -5,14 +5,13 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 import Content from '@/registry/layout/layout-core/Content';
-import EdgeCollapsedVisible from '@/registry/layout/layout-core/EdgeCollapsedVisible';
 import EdgeSidebar from '@/registry/layout/layout-core/EdgeSidebar';
 import EdgeSidebarCollapser from '@/registry/layout/layout-core/EdgeSidebarCollapser';
 import EdgeSidebarContent from '@/registry/layout/layout-core/EdgeSidebarContent';
-import EdgeUncollapsedVisible from '@/registry/layout/layout-core/EdgeUncollapsedVisible';
 import Footer from '@/registry/layout/layout-core/Footer';
 import Header from '@/registry/layout/layout-core/Header';
 import Root from '@/registry/layout/layout-core/Root';
+import { layoutVisibility } from '@/registry/layout/layout-core/layoutVisibility';
 
 export const meta = {
   title: 'Edge Sidebar Hover Uncollapse',
@@ -47,8 +46,18 @@ export function Demo() {
             <EdgeSidebarCollapser
               render={
                 <Button size="small" fullWidth>
-                  <EdgeCollapsedVisible render={<span>→</span>} />
-                  <EdgeUncollapsedVisible render={<span>← Collapse</span>} />
+                  <span
+                    className={layoutVisibility.visibleOnEdgePermanentCollapsed}
+                  >
+                    →
+                  </span>
+                  <span
+                    className={
+                      layoutVisibility.visibleOnEdgePermanentUncollapsed
+                    }
+                  >
+                    ← Collapse
+                  </span>
                 </Button>
               }
             />

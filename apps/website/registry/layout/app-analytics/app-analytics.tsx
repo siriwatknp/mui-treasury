@@ -12,16 +12,15 @@ import useScrollTrigger from '@mui/material/useScrollTrigger';
 
 import {
   Content,
-  EdgeCollapsedVisible,
   EdgeDrawerClose,
   EdgeDrawerTrigger,
   EdgeSidebar,
   EdgeSidebarCollapser,
   EdgeSidebarContent,
-  EdgeUncollapsedVisible,
   Header,
   Root,
 } from '../layout-core';
+import { layoutVisibility } from '../layout-core/layoutVisibility';
 import {
   IconNavMockup,
   LinkNavMockup,
@@ -80,8 +79,12 @@ export function LayoutV6AppAnalytics() {
           <EdgeSidebarCollapser
             render={
               <IconButton>
-                <EdgeUncollapsedVisible render={<ChevronLeftRounded />} />
-                <EdgeCollapsedVisible render={<MenuRounded />} />
+                <ChevronLeftRounded
+                  className={layoutVisibility.visibleOnEdgePermanentUncollapsed}
+                />
+                <MenuRounded
+                  className={layoutVisibility.visibleOnEdgePermanentCollapsed}
+                />
               </IconButton>
             }
           />

@@ -55,6 +55,7 @@ import Footer from '@/registry/layout/layout-core/Footer';
 import Header from '@/registry/layout/layout-core/Header';
 import Root from '@/registry/layout/layout-core/Root';
 import { layoutClasses } from '@/registry/layout/layout-core/layoutClasses';
+import { layoutVisibility } from '@/registry/layout/layout-core/layoutVisibility';
 
 const SIDEBAR_ID = 'app-dashboard-sidebar';
 
@@ -298,10 +299,14 @@ export default function AppDashboardPage() {
                   >
                     <SidebarIcon>
                       <ChevronLeftRounded
-                        className={layoutClasses.EdgeUncollapsedVisible}
+                        className={
+                          layoutVisibility.visibleOnEdgePermanentUncollapsed
+                        }
                       />
                       <ChevronRightRounded
-                        className={layoutClasses.EdgeCollapsedVisible}
+                        className={
+                          layoutVisibility.visibleOnEdgePermanentCollapsed
+                        }
                       />
                     </SidebarIcon>
                     <SidebarText>Collapse</SidebarText>

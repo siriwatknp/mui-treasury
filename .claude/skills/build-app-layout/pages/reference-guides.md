@@ -6,7 +6,7 @@ Complete API reference for all layout-core components and sidebar primitives.
 
 All components are imported from `@/mui-treasury/layout/layout-core/`.
 
-Available exports: `Root`, `Header`, `Content`, `Footer`, `EdgeSidebar`, `EdgeSidebarContent`, `EdgeSidebarCollapser`, `EdgeSidebarRight`, `EdgeDrawerTrigger`, `EdgeDrawerTriggerRight`, `EdgeDrawerClose`, `EdgeCollapsedVisible`, `EdgeUncollapsedVisible`, `InsetSidebar`, `InsetContent`, `InsetAvoidingView`.
+Available exports: `Root`, `Header`, `Content`, `Footer`, `EdgeSidebar`, `EdgeSidebarContent`, `EdgeSidebarCollapser`, `EdgeSidebarRight`, `EdgeDrawerTrigger`, `EdgeDrawerTriggerRight`, `EdgeDrawerClose`, `InsetSidebar`, `InsetContent`, `InsetAvoidingView`, `layoutVisibility`.
 
 ### Padding Rule
 
@@ -127,17 +127,23 @@ Standard `<button>` props. Renders a close button inside the drawer. Appears aut
 
 Auto-hides when sidebar is in drawer mode. Automatically finds the closest sidebar.
 
-### EdgeCollapsedVisible
+### layoutVisibility
 
-| Prop     | Type                 | Description                               |
-| -------- | -------------------- | ----------------------------------------- |
-| `render` | `React.ReactElement` | Element to show when sidebar is collapsed |
+CSS class name map for controlling element visibility based on sidebar state. Import from `@/mui-treasury/layout/layout-core/layoutVisibility`.
 
-### EdgeUncollapsedVisible
+| Key                                 | Description                                   |
+| ----------------------------------- | --------------------------------------------- |
+| `visibleOnEdgeDrawerOpen`           | Visible when drawer sidebar is open           |
+| `visibleOnEdgeDrawerClosed`         | Visible when drawer sidebar is closed         |
+| `visibleOnEdgePermanentCollapsed`   | Visible when permanent sidebar is collapsed   |
+| `visibleOnEdgePermanentUncollapsed` | Visible when permanent sidebar is uncollapsed |
 
-| Prop     | Type                 | Description                              |
-| -------- | -------------------- | ---------------------------------------- |
-| `render` | `React.ReactElement` | Element to show when sidebar is expanded |
+Usage: apply as `className` directly on any element.
+
+```tsx
+<ArrowLeftIcon className={layoutVisibility.visibleOnEdgePermanentUncollapsed} />
+<ArrowRightIcon className={layoutVisibility.visibleOnEdgePermanentCollapsed} />
+```
 
 ### InsetSidebar
 

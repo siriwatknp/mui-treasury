@@ -116,11 +116,9 @@ export function AppHeader() {
       <EdgeDrawerTrigger
         render={
           <IconButton>
-            <PanelLeft
-              className={layoutVisibility.visibleOnEdgeSidebarDrawerClosed}
-            />
+            <PanelLeft className={layoutVisibility.visibleOnEdgeDrawerClosed} />
             <PanelLeftClose
-              className={layoutVisibility.visibleOnEdgeSidebarDrawerOpen}
+              className={layoutVisibility.visibleOnEdgeDrawerOpen}
             />
           </IconButton>
         }

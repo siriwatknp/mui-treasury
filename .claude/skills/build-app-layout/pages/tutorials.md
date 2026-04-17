@@ -112,8 +112,12 @@ Add `collapsedWidth` to the permanent config to enable collapse, then add `EdgeS
     <EdgeSidebarCollapser
       render={
         <IconButton>
-          <EdgeUncollapsedVisible render={<ArrowLeftIcon />} />
-          <EdgeCollapsedVisible render={<ArrowRightIcon />} />
+          <ArrowLeftIcon
+            className={layoutVisibility.visibleOnEdgePermanentUncollapsed}
+          />
+          <ArrowRightIcon
+            className={layoutVisibility.visibleOnEdgePermanentCollapsed}
+          />
         </IconButton>
       }
     />
@@ -121,7 +125,7 @@ Add `collapsedWidth` to the permanent config to enable collapse, then add `EdgeS
 </EdgeSidebar>
 ```
 
-Import `EdgeSidebarCollapser`, `EdgeCollapsedVisible`, `EdgeUncollapsedVisible` from `@/mui-treasury/layout/layout-core`.
+Import `EdgeSidebarCollapser` from `@/mui-treasury/layout/layout-core` and `layoutVisibility` from `@/mui-treasury/layout/layout-core/layoutVisibility`.
 
 ## Making It Responsive (Drawer on Mobile)
 
@@ -145,8 +149,12 @@ Use a responsive variant object to switch modes per breakpoint. Add `EdgeDrawerT
       <EdgeSidebarCollapser
         render={
           <IconButton>
-            <EdgeUncollapsedVisible render={<ArrowLeftIcon />} />
-            <EdgeCollapsedVisible render={<ArrowRightIcon />} />
+            <ArrowLeftIcon
+              className={layoutVisibility.visibleOnEdgePermanentUncollapsed}
+            />
+            <ArrowRightIcon
+              className={layoutVisibility.visibleOnEdgePermanentCollapsed}
+            />
           </IconButton>
         }
       />

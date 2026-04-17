@@ -1,6 +1,5 @@
 export { default as Content } from './Content';
 export * from './Content';
-export { default as EdgeCollapsedVisible } from './EdgeCollapsedVisible';
 export { default as EdgeDrawerClose } from './EdgeDrawerClose';
 export { default as EdgeDrawerTrigger } from './EdgeDrawerTrigger';
 export { default as EdgeDrawerTriggerRight } from './EdgeDrawerTriggerRight';
@@ -11,7 +10,6 @@ export { default as EdgeSidebarContent } from './EdgeSidebarContent';
 export * from './EdgeSidebarContent';
 export { default as EdgeSidebarRight } from './EdgeSidebarRight';
 export * from './EdgeSidebarRight';
-export { default as EdgeUncollapsedVisible } from './EdgeUncollapsedVisible';
 export { default as Header } from './Header';
 export * from './Header';
 export { default as Footer } from './Footer';
