@@ -41,12 +41,18 @@ const StyledSidebarRail = styled('button', {
     '&::after': {
       content: '""',
       width: 'var(--indicator-w)',
-      height: '100%',
+      height: '100px',
+      borderRadius: '10px',
       display: 'block',
+      position: 'absolute',
+      top: '50%',
+      transform: 'translateY(-50%)',
+      transition: 'background 0.2s',
     },
     '@media (hover: hover)': {
       '&:hover::after': {
-        background: (theme.vars || theme).palette.divider,
+        background: (theme.vars || theme).palette.text.tertiary,
+        transition: 'background 0.4s 0.2s',
       },
     },
   })),
