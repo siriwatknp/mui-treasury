@@ -48,6 +48,9 @@ const StyledCollapsibleContent = styled('div', {
     '--_i-collapsed': 'var(--_collapsed)',
     '--_i-uncollapsed': 'var(--_uncollapsed)',
   },
+  '.SidebarText': {
+    '--_ws': 'normal',
+  },
 });
 
 export const CollapsibleContent = React.forwardRef<

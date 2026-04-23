@@ -13,12 +13,14 @@ const StyledSidebarText = styled('span', {
   name: 'SidebarText',
   slot: 'root',
 })({
+  '--_ws': 'initial',
   display: 'block',
   textOverflow: 'ellipsis',
   transition: 'var(--tsn, var(--_uncollapsed, opacity 0.3s))',
   flex: 'var(--_uncollapsed, 1) var(--_collapsed, 0)',
   opacity: 'var(--_uncollapsed, 1) var(--_collapsed, 0)',
   overflow: 'hidden',
+  whiteSpace: 'var(--_ws)',
   [`*:where(.${sidebarClasses.text} + &)`]: {
     fontSize: 'calc(var(--item-fs, 0.875rem) - 0.125rem)',
   },
