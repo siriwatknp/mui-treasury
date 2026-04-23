@@ -91,6 +91,7 @@ export const controlsTheme: ThemeComponents = {
           {
             props: { size: 'small' },
             style: {
+              '--Icon-size': '1.5rem',
               padding: (CONTROL_HEIGHTS.sm - iconSize) / 2,
               [TOUCH_MEDIA_QUERY]: {
                 ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
@@ -102,6 +103,7 @@ export const controlsTheme: ThemeComponents = {
           {
             props: { size: 'medium' },
             style: {
+              '--Icon-size': '1.5rem',
               padding: (CONTROL_HEIGHTS.md - iconSize) / 2,
               [TOUCH_MEDIA_QUERY]: {
                 ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
@@ -136,6 +138,7 @@ export const controlsTheme: ThemeComponents = {
           {
             props: { size: 'small' },
             style: {
+              '--Icon-size': '1.5rem',
               padding: (CONTROL_HEIGHTS.sm - iconSize) / 2,
               [TOUCH_MEDIA_QUERY]: {
                 ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
@@ -147,6 +150,7 @@ export const controlsTheme: ThemeComponents = {
           {
             props: { size: 'medium' },
             style: {
+              '--Icon-size': '1.5rem',
               padding: (CONTROL_HEIGHTS.md - iconSize) / 2,
               [TOUCH_MEDIA_QUERY]: {
                 ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
