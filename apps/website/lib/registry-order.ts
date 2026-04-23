@@ -75,11 +75,7 @@ export function orderSubcategories(
   subcategories: string[],
   categoryName: string,
 ): string[] {
-  const order = subcategoryOrder[categoryName];
-  if (!order || order.length === 0) {
-    return subcategories;
-  }
-
+  const order = subcategoryOrder[categoryName] ?? [];
   const orderMap = new Map(order.map((name, index) => [name, index]));
 
   return [...subcategories].sort((a, b) => {
