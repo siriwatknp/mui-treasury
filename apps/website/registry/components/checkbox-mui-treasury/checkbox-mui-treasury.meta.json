@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Checkbox (MUI Treasury)",
+  "description": "Checkbox styled with the MUI Treasury theme — install the theme alongside.",
+  "registryDependencies": ["mui-treasury"],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "checkbox",
+    "exportName": "CheckboxMuiTreasury"
+  }
+}

@@ -27,7 +27,11 @@ export const registryOrder: Record<string, string[]> = {
     'firebase-story-telling',
     'firebase-google-search',
   ],
+  'primitive/checkbox': ['checkbox-mui-treasury'],
+  'primitive/menu': ['menu-mui-treasury'],
   'primitive/radio': ['radio-mui-treasury'],
+  'primitive/select': ['select-mui-treasury'],
+  'primitive/switch': ['switch-mui-treasury'],
 };
 
 /**

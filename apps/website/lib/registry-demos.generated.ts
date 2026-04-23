@@ -39,9 +39,7 @@ const modules: Record<string, RegistryModuleLoader> = {
   'blocks/ticket-status-card/ticket-status-card': () =>
     import('@/registry/blocks/ticket-status-card/ticket-status-card'),
   'blocks/transaction-history-list/transaction-history-list': () =>
-    import(
-      '@/registry/blocks/transaction-history-list/transaction-history-list'
-    ),
+    import('@/registry/blocks/transaction-history-list/transaction-history-list'),
   'components/ai-actions/ai-actions': () =>
     import('@/registry/components/ai-actions/ai-actions'),
   'components/ai-actions/ai-actions.demo': () =>
@@ -57,9 +55,7 @@ const modules: Record<string, RegistryModuleLoader> = {
   'components/ai-chain-of-thought/ai-chain-of-thought': () =>
     import('@/registry/components/ai-chain-of-thought/ai-chain-of-thought'),
   'components/ai-chain-of-thought/ai-chain-of-thought.demo': () =>
-    import(
-      '@/registry/components/ai-chain-of-thought/ai-chain-of-thought.demo'
-    ),
+    import('@/registry/components/ai-chain-of-thought/ai-chain-of-thought.demo'),
   'components/ai-code-block/ai-code-block': () =>
     import('@/registry/components/ai-code-block/ai-code-block'),
   'components/ai-code-block/ai-code-block.demo': () =>
@@ -174,6 +170,8 @@ const modules: Record<string, RegistryModuleLoader> = {
     import('@/registry/components/card-team/card-team'),
   'components/card-tutor/card-tutor': () =>
     import('@/registry/components/card-tutor/card-tutor'),
+  'components/checkbox-mui-treasury/checkbox-mui-treasury': () =>
+    import('@/registry/components/checkbox-mui-treasury/checkbox-mui-treasury'),
   'components/collapsible/demos/collapsible-icon.demo': () =>
     import('@/registry/components/collapsible/demos/collapsible-icon.demo'),
   'components/collapsible/demos/collapsible.demo': () =>
@@ -183,21 +181,13 @@ const modules: Record<string, RegistryModuleLoader> = {
   'components/color-picker-field/color-picker-field.demo': () =>
     import('@/registry/components/color-picker-field/color-picker-field.demo'),
   'components/color-scheme-select-basic/color-scheme-select-basic': () =>
-    import(
-      '@/registry/components/color-scheme-select-basic/color-scheme-select-basic'
-    ),
+    import('@/registry/components/color-scheme-select-basic/color-scheme-select-basic'),
   'components/color-scheme-select-icon/color-scheme-select-icon': () =>
-    import(
-      '@/registry/components/color-scheme-select-icon/color-scheme-select-icon'
-    ),
+    import('@/registry/components/color-scheme-select-icon/color-scheme-select-icon'),
   'components/color-scheme-select-minimal/color-scheme-select-minimal': () =>
-    import(
-      '@/registry/components/color-scheme-select-minimal/color-scheme-select-minimal'
-    ),
+    import('@/registry/components/color-scheme-select-minimal/color-scheme-select-minimal'),
   'components/color-scheme-tabs-basic/color-scheme-tabs-basic': () =>
-    import(
-      '@/registry/components/color-scheme-tabs-basic/color-scheme-tabs-basic'
-    ),
+    import('@/registry/components/color-scheme-tabs-basic/color-scheme-tabs-basic'),
   'components/customer-metrics-card/customer-metrics-card': () =>
     import('@/registry/components/customer-metrics-card/customer-metrics-card'),
   'components/dropzone-01/dropzone-01': () =>
@@ -240,6 +230,8 @@ const modules: Record<string, RegistryModuleLoader> = {
     import('@/registry/components/login-form/login-form'),
   'components/members-metric/members-metric': () =>
     import('@/registry/components/members-metric/members-metric'),
+  'components/menu-mui-treasury/menu-mui-treasury': () =>
+    import('@/registry/components/menu-mui-treasury/menu-mui-treasury'),
   'components/menubar-01/menubar-01': () =>
     import('@/registry/components/menubar-01/menubar-01'),
   'components/meter-01/meter-01': () =>
@@ -270,6 +262,8 @@ const modules: Record<string, RegistryModuleLoader> = {
     import('@/registry/components/select-inset-01/select-inset-01'),
   'components/select-inset-01/select-inset-01.demo': () =>
     import('@/registry/components/select-inset-01/select-inset-01.demo'),
+  'components/select-mui-treasury/select-mui-treasury': () =>
+    import('@/registry/components/select-mui-treasury/select-mui-treasury'),
   'components/sidebar/demos/popup-menu.demo': () =>
     import('@/registry/components/sidebar/demos/popup-menu.demo'),
   'components/sidebar/demos/sidebar-group.demo': () =>
@@ -288,6 +282,8 @@ const modules: Record<string, RegistryModuleLoader> = {
     import('@/registry/components/sonner/sonner.demo'),
   'components/space-login/space-login': () =>
     import('@/registry/components/space-login/space-login'),
+  'components/switch-mui-treasury/switch-mui-treasury': () =>
+    import('@/registry/components/switch-mui-treasury/switch-mui-treasury'),
   'components/tabs-01/tabs-01': () =>
     import('@/registry/components/tabs-01/tabs-01'),
   'components/tabs-02/tabs-02': () =>
@@ -319,27 +315,19 @@ const modules: Record<string, RegistryModuleLoader> = {
   'firebase/firebase-analyze-image/firebase-analyze-image': () =>
     import('@/registry/firebase/firebase-analyze-image/firebase-analyze-image'),
   'firebase/firebase-chat-transport/firebase-chat-transport': () =>
-    import(
-      '@/registry/firebase/firebase-chat-transport/firebase-chat-transport'
-    ),
+    import('@/registry/firebase/firebase-chat-transport/firebase-chat-transport'),
   'firebase/firebase-chat-transport/firebase-chat-transport.demo': () =>
-    import(
-      '@/registry/firebase/firebase-chat-transport/firebase-chat-transport.demo'
-    ),
+    import('@/registry/firebase/firebase-chat-transport/firebase-chat-transport.demo'),
   'firebase/firebase-generate-text/firebase-generate-text': () =>
     import('@/registry/firebase/firebase-generate-text/firebase-generate-text'),
   'firebase/firebase-google-search/firebase-google-search': () =>
     import('@/registry/firebase/firebase-google-search/firebase-google-search'),
   'firebase/firebase-image-generation/firebase-image-generation': () =>
-    import(
-      '@/registry/firebase/firebase-image-generation/firebase-image-generation'
-    ),
+    import('@/registry/firebase/firebase-image-generation/firebase-image-generation'),
   'firebase/firebase-story-telling/firebase-story-telling': () =>
     import('@/registry/firebase/firebase-story-telling/firebase-story-telling'),
   'firebase/firebase-thinking-model/firebase-thinking-model': () =>
-    import(
-      '@/registry/firebase/firebase-thinking-model/firebase-thinking-model'
-    ),
+    import('@/registry/firebase/firebase-thinking-model/firebase-thinking-model'),
   'firebase/firebase-tool-calling/firebase-tool-calling': () =>
     import('@/registry/firebase/firebase-tool-calling/firebase-tool-calling'),
   'layout/app-analytics/app-analytics': () =>
@@ -352,83 +340,49 @@ const modules: Record<string, RegistryModuleLoader> = {
     import('@/registry/layout/layout-core/layout-core.demo'),
   'layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-auto-collapse.demo':
     () =>
-      import(
-        '@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-auto-collapse.demo'
-      ),
+      import('@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-auto-collapse.demo'),
   'layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-collapse.demo':
     () =>
-      import(
-        '@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-collapse.demo'
-      ),
+      import('@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-collapse.demo'),
   'layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-drawer-without-overlay.demo':
     () =>
-      import(
-        '@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-drawer-without-overlay.demo'
-      ),
+      import('@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-drawer-without-overlay.demo'),
   'layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-drawer.demo': () =>
-    import(
-      '@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-drawer.demo'
-    ),
+    import('@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-drawer.demo'),
   'layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-hover-uncollapse.demo':
     () =>
-      import(
-        '@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-hover-uncollapse.demo'
-      ),
+      import('@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-hover-uncollapse.demo'),
   'layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-responsive.demo':
     () =>
-      import(
-        '@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-responsive.demo'
-      ),
+      import('@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-responsive.demo'),
   'layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-right.demo': () =>
-    import(
-      '@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-right.demo'
-    ),
+    import('@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-right.demo'),
   'layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-visibility.demo':
     () =>
-      import(
-        '@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-visibility.demo'
-      ),
+      import('@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-visibility.demo'),
   'layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-width.demo': () =>
-    import(
-      '@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-width.demo'
-    ),
+    import('@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-width.demo'),
   'layout/layout-docs-footer/demos/layout-footer-inset-avoiding.demo': () =>
-    import(
-      '@/registry/layout/layout-docs-footer/demos/layout-footer-inset-avoiding.demo'
-    ),
+    import('@/registry/layout/layout-docs-footer/demos/layout-footer-inset-avoiding.demo'),
   'layout/layout-docs-header/demos/layout-header-clip.demo': () =>
-    import(
-      '@/registry/layout/layout-docs-header/demos/layout-header-clip.demo'
-    ),
+    import('@/registry/layout/layout-docs-header/demos/layout-header-clip.demo'),
   'layout/layout-docs-header/demos/layout-header-height.demo': () =>
-    import(
-      '@/registry/layout/layout-docs-header/demos/layout-header-height.demo'
-    ),
+    import('@/registry/layout/layout-docs-header/demos/layout-header-height.demo'),
   'layout/layout-docs-inset-sidebar/demos/layout-inset-sidebar-absolute.demo':
     () =>
-      import(
-        '@/registry/layout/layout-docs-inset-sidebar/demos/layout-inset-sidebar-absolute.demo'
-      ),
+      import('@/registry/layout/layout-docs-inset-sidebar/demos/layout-inset-sidebar-absolute.demo'),
   'layout/layout-docs-inset-sidebar/demos/layout-inset-sidebar-sticky.demo':
     () =>
-      import(
-        '@/registry/layout/layout-docs-inset-sidebar/demos/layout-inset-sidebar-sticky.demo'
-      ),
+      import('@/registry/layout/layout-docs-inset-sidebar/demos/layout-inset-sidebar-sticky.demo'),
   'layout/layout-docs-inset-sidebar/demos/layout-inset-sidebar-width.demo':
     () =>
-      import(
-        '@/registry/layout/layout-docs-inset-sidebar/demos/layout-inset-sidebar-width.demo'
-      ),
+      import('@/registry/layout/layout-docs-inset-sidebar/demos/layout-inset-sidebar-width.demo'),
   'layout/layout-docs-root/demos/layout-root-disable-transition.demo': () =>
-    import(
-      '@/registry/layout/layout-docs-root/demos/layout-root-disable-transition.demo'
-    ),
+    import('@/registry/layout/layout-docs-root/demos/layout-root-disable-transition.demo'),
   'layout/layout-docs-root/demos/layout-root-height.demo': () =>
     import('@/registry/layout/layout-docs-root/demos/layout-root-height.demo'),
   'layout/layout-docs-root/demos/layout-root-standalone.demo': () =>
-    import(
-      '@/registry/layout/layout-docs-root/demos/layout-root-standalone.demo'
-    ),
+    import('@/registry/layout/layout-docs-root/demos/layout-root-standalone.demo'),
 };
 
 export function getModuleLoader(key: string): RegistryModuleLoader | null {
