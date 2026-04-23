@@ -1,3 +1,5 @@
+'use client';
+
 import ButtonBase, { ButtonBaseProps } from '@mui/material/ButtonBase';
 
 export type Keycap01Props = Omit<ButtonBaseProps, 'disableRipple'>;
