@@ -262,6 +262,8 @@ const modules: Record<string, RegistryModuleLoader> = {
     import('@/registry/components/radio-card-01/radio-card-01'),
   'components/radio-color-01/radio-color-01': () =>
     import('@/registry/components/radio-color-01/radio-color-01'),
+  'components/radio-mui-treasury/radio-mui-treasury': () =>
+    import('@/registry/components/radio-mui-treasury/radio-mui-treasury'),
   'components/radio-segment-01/radio-segment-01': () =>
     import('@/registry/components/radio-segment-01/radio-segment-01'),
   'components/select-inset-01/select-inset-01': () =>
