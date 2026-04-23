@@ -1,0 +1,11 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Keycap",
+  "description": "Mechanical keyboard keycap-style button with pressed state, works with text and icons.",
+  "meta": {
+    "category": "primitive",
+    "subcategory": "button",
+    "exportName": "Keycap01"
+  }
+}
