@@ -40,6 +40,8 @@ const modules: Record<string, RegistryModuleLoader> = {
     import('@/registry/blocks/ticket-status-card/ticket-status-card'),
   'blocks/transaction-history-list/transaction-history-list': () =>
     import('@/registry/blocks/transaction-history-list/transaction-history-list'),
+  'components/accordion-mui-treasury/accordion-mui-treasury': () =>
+    import('@/registry/components/accordion-mui-treasury/accordion-mui-treasury'),
   'components/ai-actions/ai-actions': () =>
     import('@/registry/components/ai-actions/ai-actions'),
   'components/ai-actions/ai-actions.demo': () =>
@@ -120,6 +122,22 @@ const modules: Record<string, RegistryModuleLoader> = {
     import('@/registry/components/ai-web-preview/ai-web-preview'),
   'components/ai-web-preview/ai-web-preview.demo': () =>
     import('@/registry/components/ai-web-preview/ai-web-preview.demo'),
+  'components/alert-mui-treasury/alert-mui-treasury': () =>
+    import('@/registry/components/alert-mui-treasury/alert-mui-treasury'),
+  'components/app-bar-mui-treasury/app-bar-mui-treasury': () =>
+    import('@/registry/components/app-bar-mui-treasury/app-bar-mui-treasury'),
+  'components/autocomplete-mui-treasury/autocomplete-mui-treasury': () =>
+    import('@/registry/components/autocomplete-mui-treasury/autocomplete-mui-treasury'),
+  'components/avatar-mui-treasury/avatar-mui-treasury': () =>
+    import('@/registry/components/avatar-mui-treasury/avatar-mui-treasury'),
+  'components/badge-mui-treasury/badge-mui-treasury': () =>
+    import('@/registry/components/badge-mui-treasury/badge-mui-treasury'),
+  'components/breadcrumbs-mui-treasury/breadcrumbs-mui-treasury': () =>
+    import('@/registry/components/breadcrumbs-mui-treasury/breadcrumbs-mui-treasury'),
+  'components/button-group-mui-treasury/button-group-mui-treasury': () =>
+    import('@/registry/components/button-group-mui-treasury/button-group-mui-treasury'),
+  'components/button-mui-treasury/button-mui-treasury': () =>
+    import('@/registry/components/button-mui-treasury/button-mui-treasury'),
   'components/card-action-01/card-action-01': () =>
     import('@/registry/components/card-action-01/card-action-01'),
   'components/card-action-02/card-action-02': () =>
@@ -172,6 +190,8 @@ const modules: Record<string, RegistryModuleLoader> = {
     import('@/registry/components/card-tutor/card-tutor'),
   'components/checkbox-mui-treasury/checkbox-mui-treasury': () =>
     import('@/registry/components/checkbox-mui-treasury/checkbox-mui-treasury'),
+  'components/chip-mui-treasury/chip-mui-treasury': () =>
+    import('@/registry/components/chip-mui-treasury/chip-mui-treasury'),
   'components/collapsible/demos/collapsible-icon.demo': () =>
     import('@/registry/components/collapsible/demos/collapsible-icon.demo'),
   'components/collapsible/demos/collapsible.demo': () =>
@@ -190,6 +210,8 @@ const modules: Record<string, RegistryModuleLoader> = {
     import('@/registry/components/color-scheme-tabs-basic/color-scheme-tabs-basic'),
   'components/customer-metrics-card/customer-metrics-card': () =>
     import('@/registry/components/customer-metrics-card/customer-metrics-card'),
+  'components/dialog-mui-treasury/dialog-mui-treasury': () =>
+    import('@/registry/components/dialog-mui-treasury/dialog-mui-treasury'),
   'components/dropzone-01/dropzone-01': () =>
     import('@/registry/components/dropzone-01/dropzone-01'),
   'components/dropzone-01/dropzone-01.demo': () =>
@@ -224,6 +246,8 @@ const modules: Record<string, RegistryModuleLoader> = {
     import('@/registry/components/list-item-01/list-item-01'),
   'components/list-item-02/list-item-02': () =>
     import('@/registry/components/list-item-02/list-item-02'),
+  'components/list-mui-treasury/list-mui-treasury': () =>
+    import('@/registry/components/list-mui-treasury/list-mui-treasury'),
   'components/login-form-split/login-form-split': () =>
     import('@/registry/components/login-form-split/login-form-split'),
   'components/login-form/login-form': () =>
@@ -246,10 +270,14 @@ const modules: Record<string, RegistryModuleLoader> = {
     import('@/registry/components/number-input/number-input'),
   'components/number-input/number-input.demo': () =>
     import('@/registry/components/number-input/number-input.demo'),
+  'components/pagination-mui-treasury/pagination-mui-treasury': () =>
+    import('@/registry/components/pagination-mui-treasury/pagination-mui-treasury'),
   'components/product-card/product-card': () =>
     import('@/registry/components/product-card/product-card'),
   'components/product-card2/product-card2': () =>
     import('@/registry/components/product-card2/product-card2'),
+  'components/progress-mui-treasury/progress-mui-treasury': () =>
+    import('@/registry/components/progress-mui-treasury/progress-mui-treasury'),
   'components/radio-card-01/radio-card-01': () =>
     import('@/registry/components/radio-card-01/radio-card-01'),
   'components/radio-color-01/radio-color-01': () =>
@@ -258,6 +286,8 @@ const modules: Record<string, RegistryModuleLoader> = {
     import('@/registry/components/radio-mui-treasury/radio-mui-treasury'),
   'components/radio-segment-01/radio-segment-01': () =>
     import('@/registry/components/radio-segment-01/radio-segment-01'),
+  'components/rating-mui-treasury/rating-mui-treasury': () =>
+    import('@/registry/components/rating-mui-treasury/rating-mui-treasury'),
   'components/select-inset-01/select-inset-01': () =>
     import('@/registry/components/select-inset-01/select-inset-01'),
   'components/select-inset-01/select-inset-01.demo': () =>
@@ -276,14 +306,22 @@ const modules: Record<string, RegistryModuleLoader> = {
     import('@/registry/components/sidebar/demos/sidebar-tooltip.demo'),
   'components/sidebar/sidebar.demo': () =>
     import('@/registry/components/sidebar/sidebar.demo'),
+  'components/slider-mui-treasury/slider-mui-treasury': () =>
+    import('@/registry/components/slider-mui-treasury/slider-mui-treasury'),
+  'components/snackbar-mui-treasury/snackbar-mui-treasury': () =>
+    import('@/registry/components/snackbar-mui-treasury/snackbar-mui-treasury'),
   'components/sonner/sonner': () =>
     import('@/registry/components/sonner/sonner'),
   'components/sonner/sonner.demo': () =>
     import('@/registry/components/sonner/sonner.demo'),
   'components/space-login/space-login': () =>
     import('@/registry/components/space-login/space-login'),
+  'components/stepper-mui-treasury/stepper-mui-treasury': () =>
+    import('@/registry/components/stepper-mui-treasury/stepper-mui-treasury'),
   'components/switch-mui-treasury/switch-mui-treasury': () =>
     import('@/registry/components/switch-mui-treasury/switch-mui-treasury'),
+  'components/table-mui-treasury/table-mui-treasury': () =>
+    import('@/registry/components/table-mui-treasury/table-mui-treasury'),
   'components/tabs-01/tabs-01': () =>
     import('@/registry/components/tabs-01/tabs-01'),
   'components/tabs-02/tabs-02': () =>
@@ -304,6 +342,8 @@ const modules: Record<string, RegistryModuleLoader> = {
     import('@/registry/components/tabs-inside-triangle/tabs-inside-triangle'),
   'components/tabs-instagram/tabs-instagram': () =>
     import('@/registry/components/tabs-instagram/tabs-instagram'),
+  'components/tabs-mui-treasury/tabs-mui-treasury': () =>
+    import('@/registry/components/tabs-mui-treasury/tabs-mui-treasury'),
   'components/tabs-pill/tabs-pill': () =>
     import('@/registry/components/tabs-pill/tabs-pill'),
   'components/tabs-plain/tabs-plain': () =>
@@ -312,6 +352,14 @@ const modules: Record<string, RegistryModuleLoader> = {
     import('@/registry/components/tabs-serrated/tabs-serrated'),
   'components/tabs-twitter/tabs-twitter': () =>
     import('@/registry/components/tabs-twitter/tabs-twitter'),
+  'components/text-field-mui-treasury/text-field-mui-treasury': () =>
+    import('@/registry/components/text-field-mui-treasury/text-field-mui-treasury'),
+  'components/toggle-button-mui-treasury/toggle-button-mui-treasury': () =>
+    import('@/registry/components/toggle-button-mui-treasury/toggle-button-mui-treasury'),
+  'components/tooltip-mui-treasury/tooltip-mui-treasury': () =>
+    import('@/registry/components/tooltip-mui-treasury/tooltip-mui-treasury'),
+  'components/typography-mui-treasury/typography-mui-treasury': () =>
+    import('@/registry/components/typography-mui-treasury/typography-mui-treasury'),
   'firebase/firebase-analyze-image/firebase-analyze-image': () =>
     import('@/registry/firebase/firebase-analyze-image/firebase-analyze-image'),
   'firebase/firebase-chat-transport/firebase-chat-transport': () =>

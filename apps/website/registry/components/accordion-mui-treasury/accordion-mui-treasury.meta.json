@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Accordion (MUI Treasury)",
+  "description": "Accordion styled with the MUI Treasury theme — install the theme alongside.",
+  "registryDependencies": ["mui-treasury"],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "accordion",
+    "exportName": "AccordionMuiTreasury"
+  }
+}

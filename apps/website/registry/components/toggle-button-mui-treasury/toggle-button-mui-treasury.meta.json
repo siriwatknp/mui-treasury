@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Toggle Button (MUI Treasury)",
+  "description": "Toggle Button styled with the MUI Treasury theme — install the theme alongside.",
+  "registryDependencies": ["mui-treasury"],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "toggle-button",
+    "exportName": "ToggleButtonMuiTreasury"
+  }
+}

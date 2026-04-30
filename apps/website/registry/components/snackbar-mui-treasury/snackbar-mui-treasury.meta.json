@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Snackbar (MUI Treasury)",
+  "description": "Snackbar styled with the MUI Treasury theme — install the theme alongside.",
+  "registryDependencies": ["mui-treasury"],
+  "meta": {
+    "category": "primitive",
+    "subcategory": "snackbar",
+    "exportName": "SnackbarMuiTreasury"
+  }
+}
