@@ -145,7 +145,7 @@ function ColorBox({ color, label }: ColorBoxProps) {
     <div className="text-center snap-center">
       <div
         className="w-30 h-10 border border-gray-300 dark:border-gray-600 rounded mb-2"
-        style={{ backgroundColor: `var(--plus-${color})` }}
+        style={{ backgroundColor: `var(--mui-${color})` }}
       />
       <Typography
         variant="caption"

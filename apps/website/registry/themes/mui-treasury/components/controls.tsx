@@ -185,7 +185,7 @@ export const controlsTheme: ThemeComponents = {
         '--_thumb-size': 'calc(var(--_h) - var(--_b) * 2 - var(--_inset) * 2)',
         '--_thumb-w': 'var(--_thumb-size)',
         '--_thumb-h': 'var(--_thumb-size)',
-        '--plus-opacity-switchTrackDisabled': '0.5',
+        '--mui-opacity-switchTrackDisabled': '0.5',
         width: 'var(--_w)',
         height: 'var(--_h)',
         padding: 0,
@@ -269,7 +269,7 @@ export const controlsTheme: ThemeComponents = {
           },
           '&.Mui-disabled': {
             [`& .${switchClasses.thumb}`]: {
-              opacity: 'var(--plus-opacity-switchTrackDisabled)',
+              opacity: 'var(--mui-opacity-switchTrackDisabled)',
             },
           },
         },
