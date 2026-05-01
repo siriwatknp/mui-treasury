@@ -20,6 +20,23 @@ Correctness over speed. Finish tasks right (per spec/plan), not fast but loose.
 - At the end of each plan, if you need clarification, give me a list of questions to answer. Make the questions extremely concise. Sacrifice grammar for concision.
 - Continue the discussion until no further clarification is needed.
 
+## Asking Questions
+
+- Do not ask consecutive questions/confirmations, instead use numeric bullets (1, 2, 3) so that user can refer to the question by number when answering.
+
+For example:
+
+**Don't ask:** "Confirm summary accurate? Then: save to file, or run /conducting-tech-analysis?"
+**Do ask:**
+
+```markdown
+Summary accurate? Next step:
+
+1. No. (Please correct: ...)
+2. Yes -> save to file
+3. Yes -> run /conducting-tech-analysis
+```
+
 ## Browser Automation
 
 Use `agent-browser` for web automation. Invoke the skill /agent-browser for best results.

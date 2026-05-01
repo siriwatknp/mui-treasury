@@ -1,7 +1,4 @@
-'use client';
-
-import * as React from 'react';
-
+import Close from '@mui/icons-material/Close';
 import {
   Box,
   Button,
@@ -9,113 +6,100 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  IconButton,
+  MenuItem,
   Paper,
   Stack,
   TextField,
-  Typography,
 } from '@mui/material';
 
 const dialogPaperSx = {
-  width: 480,
+  width: 400,
   maxWidth: '100%',
   borderRadius: 2,
-  boxShadow: 12,
+  p: 3,
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 2,
 };
+
+const titleRowSx = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  gap: 2,
+};
+
+const titleSx = { p: 0 };
+const contentSx = { p: 0 };
+const actionsSx = { p: 0, justifyContent: 'flex-end' };
 
 export function DialogMuiTreasury() {
   return (
     <Box
       sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
         gap: 4,
         width: '100%',
       }}
     >
-      <Box>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1 }}>
-          Confirm
-        </Typography>
-        <Paper variant="outlined" sx={dialogPaperSx}>
-          <DialogTitle>Discard changes?</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              Your edits will be lost. This action cannot be undone.
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button>Cancel</Button>
-            <Button variant="contained" color="error">
-              Discard
-            </Button>
-          </DialogActions>
-        </Paper>
-      </Box>
+      <Paper elevation={8} sx={dialogPaperSx}>
+        <Box sx={titleRowSx}>
+          <DialogTitle sx={titleSx}>Delete project?</DialogTitle>
+          <IconButton
+            aria-label="Close"
+            size="small"
+            sx={{ color: 'text.secondary' }}
+          >
+            <Close fontSize="small" />
+          </IconButton>
+        </Box>
+        <DialogContent sx={contentSx}>
+          <DialogContentText>
+            This will permanently delete the &quot;acme-web&quot; project and
+            all its deployments. This action cannot be undone.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions sx={actionsSx}>
+          <Button>Cancel</Button>
+          <Button variant="contained" color="error">
+            Delete
+          </Button>
+        </DialogActions>
+      </Paper>
 
-      <Box>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1 }}>
-          Form
-        </Typography>
-        <Paper variant="outlined" sx={dialogPaperSx}>
-          <DialogTitle>Subscribe</DialogTitle>
-          <DialogContent>
-            <DialogContentText sx={{ mb: 2 }}>
-              Enter your email to receive product updates.
-            </DialogContentText>
+      <Paper elevation={8} sx={dialogPaperSx}>
+        <Box sx={titleRowSx}>
+          <DialogTitle sx={titleSx}>Invite team member</DialogTitle>
+          <IconButton
+            aria-label="Close"
+            size="small"
+            sx={{ color: 'text.secondary' }}
+          >
+            <Close fontSize="small" />
+          </IconButton>
+        </Box>
+        <DialogContent sx={contentSx}>
+          <Stack gap={2}>
             <TextField
               fullWidth
-              label="Email address"
-              type="email"
-              defaultValue="hello@example.com"
+              label="Email"
+              placeholder="teammate@acme.com"
             />
-          </DialogContent>
-          <DialogActions>
-            <Button>Cancel</Button>
-            <Button variant="contained">Subscribe</Button>
-          </DialogActions>
-        </Paper>
-      </Box>
-
-      <Box>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1 }}>
-          Action list
-        </Typography>
-        <Paper variant="outlined" sx={dialogPaperSx}>
-          <DialogTitle>Set backup account</DialogTitle>
-          <DialogContent dividers>
-            <Stack gap={1}>
-              <Typography variant="body2">user@gmail.com</Typography>
-              <Typography variant="body2">work@company.com</Typography>
-              <Typography variant="body2">backup@personal.io</Typography>
-            </Stack>
-          </DialogContent>
-          <DialogActions>
-            <Button>Cancel</Button>
-            <Button variant="contained">OK</Button>
-          </DialogActions>
-        </Paper>
-      </Box>
-
-      <Box>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1 }}>
-          Alert
-        </Typography>
-        <Paper variant="outlined" sx={dialogPaperSx}>
-          <DialogTitle>Use Google&apos;s location service?</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              Let Google help apps determine location. This means sending
-              anonymous location data to Google, even when no apps are running.
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button>Disagree</Button>
-            <Button variant="contained" autoFocus>
-              Agree
-            </Button>
-          </DialogActions>
-        </Paper>
-      </Box>
+            <TextField select fullWidth label="Role" defaultValue="member">
+              <MenuItem value="member">Member</MenuItem>
+              <MenuItem value="admin">Admin</MenuItem>
+            </TextField>
+          </Stack>
+        </DialogContent>
+        <DialogActions sx={actionsSx}>
+          <Button>Cancel</Button>
+          <Button variant="contained">Send invite</Button>
+        </DialogActions>
+      </Paper>
     </Box>
   );
 }

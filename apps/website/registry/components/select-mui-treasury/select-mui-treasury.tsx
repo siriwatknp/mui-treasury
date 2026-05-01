@@ -9,64 +9,60 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  Stack,
+  Typography,
 } from '@mui/material';
 
 export function SelectMuiTreasury() {
+  const [country, setCountry] = React.useState('');
+
   return (
     <Box
       sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-        gap: 4,
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        gap: 8,
         width: '100%',
       }}
     >
-      <FormControl fullWidth>
-        <InputLabel id="plan-label">Plan</InputLabel>
-        <Select labelId="plan-label" label="Plan" defaultValue="pro">
-          <MenuItem value="free">Free</MenuItem>
-          <MenuItem value="pro">Pro</MenuItem>
-          <MenuItem value="enterprise">Enterprise</MenuItem>
-        </Select>
-      </FormControl>
-
-      <FormControl fullWidth disabled>
-        <InputLabel id="region-label">Region</InputLabel>
-        <Select labelId="region-label" label="Region" defaultValue="us">
-          <MenuItem value="us">United States</MenuItem>
-          <MenuItem value="eu">Europe</MenuItem>
-        </Select>
-      </FormControl>
-
-      <Stack spacing={1.5}>
-        <FormControl fullWidth size="small">
-          <InputLabel id="size-sm-label">Small</InputLabel>
-          <Select labelId="size-sm-label" label="Small" defaultValue="a">
-            <MenuItem value="a">Option A</MenuItem>
-            <MenuItem value="b">Option B</MenuItem>
-          </Select>
-        </FormControl>
+      <Box sx={{ width: 260 }}>
+        <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
+          Choose a plan
+        </Typography>
         <FormControl fullWidth>
-          <InputLabel id="size-md-label">Medium</InputLabel>
-          <Select labelId="size-md-label" label="Medium" defaultValue="a">
-            <MenuItem value="a">Option A</MenuItem>
-            <MenuItem value="b">Option B</MenuItem>
+          <InputLabel id="plan-label">Plan</InputLabel>
+          <Select labelId="plan-label" label="Plan" defaultValue="pro">
+            <MenuItem value="free">Free</MenuItem>
+            <MenuItem value="pro">Pro</MenuItem>
+            <MenuItem value="team">Team</MenuItem>
+            <MenuItem value="enterprise">Enterprise</MenuItem>
           </Select>
         </FormControl>
-      </Stack>
+      </Box>
 
-      <FormControl fullWidth error>
-        <InputLabel id="required-label">Required</InputLabel>
-        <Select labelId="required-label" label="Required" defaultValue="">
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value="yes">Yes</MenuItem>
-          <MenuItem value="no">No</MenuItem>
-        </Select>
-        <FormHelperText>Please choose an option.</FormHelperText>
-      </FormControl>
+      <Box sx={{ width: 260 }}>
+        <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
+          Billing country
+        </Typography>
+        <FormControl fullWidth error={!country}>
+          <InputLabel id="country-label">Country</InputLabel>
+          <Select
+            labelId="country-label"
+            label="Country"
+            value={country}
+            onChange={(e) => setCountry(e.target.value)}
+          >
+            <MenuItem value="au">Australia</MenuItem>
+            <MenuItem value="ca">Canada</MenuItem>
+            <MenuItem value="de">Germany</MenuItem>
+            <MenuItem value="jp">Japan</MenuItem>
+            <MenuItem value="us">United States</MenuItem>
+          </Select>
+          {!country && (
+            <FormHelperText>Required for tax invoicing.</FormHelperText>
+          )}
+        </FormControl>
+      </Box>
     </Box>
   );
 }

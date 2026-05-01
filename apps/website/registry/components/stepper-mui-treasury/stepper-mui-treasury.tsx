@@ -1,10 +1,5 @@
-'use client';
-
-import * as React from 'react';
-
 import {
   Box,
-  Button,
   Stack,
   Step,
   StepContent,
@@ -13,37 +8,27 @@ import {
   Typography,
 } from '@mui/material';
 
-const steps = [
-  'Account details',
-  'Workspace setup',
-  'Invite teammates',
-  'Confirmation',
-];
+const horizontalSteps = ['Account', 'Plan', 'Payment', 'Review', 'Done'];
 
 const verticalSteps = [
+  { label: 'Connect repository' },
   {
-    label: 'Account details',
-    description: 'Provide your name, email and a strong password.',
+    label: 'Configure build',
+    description: 'Set the build command and output directory.',
   },
-  {
-    label: 'Workspace setup',
-    description: 'Choose a workspace name and pick a default theme.',
-  },
-  {
-    label: 'Invite teammates',
-    description: 'Send invitations or skip and add members later.',
-  },
+  { label: 'Add environment variables' },
+  { label: 'Deploy' },
 ];
 
 export function StepperMuiTreasury() {
   return (
-    <Stack spacing={4} sx={{ width: '100%' }}>
+    <Stack spacing={5} sx={{ width: '100%', maxWidth: 720, mx: 'auto' }}>
       <Box>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1.5 }}>
-          Horizontal
+        <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
+          Onboarding
         </Typography>
-        <Stepper activeStep={1}>
-          {steps.map((label) => (
+        <Stepper activeStep={2}>
+          {horizontalSteps.map((label) => (
             <Step key={label}>
               <StepLabel>{label}</StepLabel>
             </Step>
@@ -52,37 +37,20 @@ export function StepperMuiTreasury() {
       </Box>
 
       <Box>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1.5 }}>
-          Alternative label
-        </Typography>
-        <Stepper activeStep={2} alternativeLabel>
-          {steps.map((label) => (
-            <Step key={label}>
-              <StepLabel>{label}</StepLabel>
-            </Step>
-          ))}
-        </Stepper>
-      </Box>
-
-      <Box>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1.5 }}>
-          Vertical
+        <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
+          Project setup
         </Typography>
         <Stepper activeStep={1} orientation="vertical">
           {verticalSteps.map((step) => (
             <Step key={step.label}>
               <StepLabel>{step.label}</StepLabel>
-              <StepContent>
-                <Typography variant="body2" color="text.secondary">
-                  {step.description}
-                </Typography>
-                <Box sx={{ mt: 2, display: 'flex', gap: 1 }}>
-                  <Button variant="contained" size="small">
-                    Continue
-                  </Button>
-                  <Button size="small">Back</Button>
-                </Box>
-              </StepContent>
+              {step.description && (
+                <StepContent>
+                  <Typography variant="body2" color="text.secondary">
+                    {step.description}
+                  </Typography>
+                </StepContent>
+              )}
             </Step>
           ))}
         </Stepper>

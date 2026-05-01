@@ -2,63 +2,73 @@
 
 import * as React from 'react';
 
-import { Autocomplete, Box, FormControl, TextField } from '@mui/material';
+import { Autocomplete, Box, TextField, Typography } from '@mui/material';
 
-const FRUITS = ['Apple', 'Banana', 'Cherry', 'Mango'];
+const TAGS = [
+  'Frontend',
+  'Backend',
+  'Design',
+  'DevOps',
+  'Mobile',
+  'Data',
+  'Security',
+];
+
+const COUNTRIES = [
+  'Australia',
+  'Canada',
+  'Germany',
+  'Japan',
+  'Thailand',
+  'United Kingdom',
+  'United States',
+];
 
 export function AutocompleteMuiTreasury() {
+  const [country, setCountry] = React.useState<string | null>(null);
+
   return (
     <Box
       sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-        gap: 4,
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        gap: 8,
         width: '100%',
       }}
     >
-      <FormControl fullWidth>
-        <Autocomplete
-          options={FRUITS}
-          defaultValue="Apple"
-          renderInput={(params) => (
-            <TextField {...params} label="Fruit" placeholder="Pick one" />
-          )}
-        />
-      </FormControl>
-
-      <FormControl fullWidth>
-        <Autocomplete
-          disabled
-          options={FRUITS}
-          defaultValue="Banana"
-          renderInput={(params) => <TextField {...params} label="Disabled" />}
-        />
-      </FormControl>
-
-      <FormControl fullWidth>
+      <Box sx={{ width: 320 }}>
+        <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
+          Project tags
+        </Typography>
         <Autocomplete
           multiple
-          options={FRUITS}
-          defaultValue={['Apple', 'Cherry']}
+          options={TAGS}
+          defaultValue={['Frontend', 'Design', 'DevOps']}
           renderInput={(params) => (
-            <TextField {...params} label="Favorites" placeholder="Add more" />
+            <TextField {...params} placeholder="Add tag" />
           )}
         />
-      </FormControl>
+      </Box>
 
-      <FormControl fullWidth error>
+      <Box sx={{ width: 320 }}>
+        <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
+          Billing country
+        </Typography>
         <Autocomplete
-          options={FRUITS}
+          options={COUNTRIES}
+          value={country}
+          onChange={(_, value) => setCountry(value)}
           renderInput={(params) => (
             <TextField
               {...params}
-              label="Required"
-              error
-              helperText="Please choose a fruit."
+              placeholder="Select a country"
+              error={!country}
+              helperText={!country ? 'Required for tax invoicing.' : undefined}
             />
           )}
         />
-      </FormControl>
+      </Box>
     </Box>
   );
 }

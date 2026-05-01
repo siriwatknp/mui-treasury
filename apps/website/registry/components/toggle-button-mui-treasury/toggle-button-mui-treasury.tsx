@@ -4,15 +4,15 @@ import * as React from 'react';
 
 import {
   FormatAlignCenter,
+  FormatAlignJustify,
   FormatAlignLeft,
   FormatAlignRight,
-  FormatBold,
-  FormatItalic,
-  FormatUnderlined,
+  ViewKanban,
+  ViewList,
+  ViewModule,
 } from '@mui/icons-material';
 import {
   Box,
-  Stack,
   ToggleButton,
   ToggleButtonGroup,
   Typography,
@@ -20,21 +20,21 @@ import {
 
 export function ToggleButtonMuiTreasury() {
   const [alignment, setAlignment] = React.useState<string | null>('left');
-  const [formats, setFormats] = React.useState<string[]>(['bold', 'italic']);
-  const [size, setSize] = React.useState<string | null>('medium');
+  const [view, setView] = React.useState<string | null>('grid');
 
   return (
     <Box
       sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-        gap: 4,
-        width: '100%',
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        gap: 8,
       }}
     >
-      <Stack spacing={1.5}>
-        <Typography variant="subtitle2" color="text.secondary">
-          Single select
+      <Box>
+        <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
+          Text alignment
         </Typography>
         <ToggleButtonGroup
           exclusive
@@ -42,100 +42,45 @@ export function ToggleButtonMuiTreasury() {
           onChange={(_, next) => setAlignment(next)}
           aria-label="Text alignment"
         >
-          <ToggleButton value="left" aria-label="Left">
+          <ToggleButton value="left" aria-label="Align left">
             <FormatAlignLeft fontSize="small" />
           </ToggleButton>
-          <ToggleButton value="center" aria-label="Center">
+          <ToggleButton value="center" aria-label="Align center">
             <FormatAlignCenter fontSize="small" />
           </ToggleButton>
-          <ToggleButton value="right" aria-label="Right">
+          <ToggleButton value="right" aria-label="Align right">
             <FormatAlignRight fontSize="small" />
           </ToggleButton>
-        </ToggleButtonGroup>
-      </Stack>
-
-      <Stack spacing={1.5}>
-        <Typography variant="subtitle2" color="text.secondary">
-          Multiple select
-        </Typography>
-        <ToggleButtonGroup
-          value={formats}
-          onChange={(_, next) => setFormats(next)}
-          aria-label="Text formatting"
-        >
-          <ToggleButton value="bold" aria-label="Bold">
-            <FormatBold fontSize="small" />
-          </ToggleButton>
-          <ToggleButton value="italic" aria-label="Italic">
-            <FormatItalic fontSize="small" />
-          </ToggleButton>
-          <ToggleButton value="underlined" aria-label="Underlined">
-            <FormatUnderlined fontSize="small" />
+          <ToggleButton value="justify" aria-label="Align justify">
+            <FormatAlignJustify fontSize="small" />
           </ToggleButton>
         </ToggleButtonGroup>
-      </Stack>
+      </Box>
 
-      <Stack spacing={1.5}>
-        <Typography variant="subtitle2" color="text.secondary">
-          Sizes
-        </Typography>
-        <Stack spacing={1} alignItems="flex-start">
-          <ToggleButtonGroup
-            size="small"
-            exclusive
-            value={size}
-            onChange={(_, next) => setSize(next)}
-            aria-label="Size small"
-          >
-            <ToggleButton value="small">Small</ToggleButton>
-            <ToggleButton value="medium">Medium</ToggleButton>
-            <ToggleButton value="large">Large</ToggleButton>
-          </ToggleButtonGroup>
-          <ToggleButtonGroup
-            exclusive
-            value={size}
-            onChange={(_, next) => setSize(next)}
-            aria-label="Size medium"
-          >
-            <ToggleButton value="small">Small</ToggleButton>
-            <ToggleButton value="medium">Medium</ToggleButton>
-            <ToggleButton value="large">Large</ToggleButton>
-          </ToggleButtonGroup>
-          <ToggleButtonGroup
-            size="large"
-            exclusive
-            value={size}
-            onChange={(_, next) => setSize(next)}
-            aria-label="Size large"
-          >
-            <ToggleButton value="small">Small</ToggleButton>
-            <ToggleButton value="medium">Medium</ToggleButton>
-            <ToggleButton value="large">Large</ToggleButton>
-          </ToggleButtonGroup>
-        </Stack>
-      </Stack>
-
-      <Stack spacing={1.5}>
-        <Typography variant="subtitle2" color="text.secondary">
-          Disabled
+      <Box>
+        <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
+          View mode
         </Typography>
         <ToggleButtonGroup
           exclusive
-          value="left"
-          disabled
-          aria-label="Disabled"
+          value={view}
+          onChange={(_, next) => setView(next)}
+          aria-label="View mode"
         >
-          <ToggleButton value="left" aria-label="Left">
-            <FormatAlignLeft fontSize="small" />
+          <ToggleButton value="list">
+            <ViewList sx={{ mr: 1 }} fontSize="small" />
+            List
           </ToggleButton>
-          <ToggleButton value="center" aria-label="Center">
-            <FormatAlignCenter fontSize="small" />
+          <ToggleButton value="grid">
+            <ViewModule sx={{ mr: 1 }} fontSize="small" />
+            Grid
           </ToggleButton>
-          <ToggleButton value="right" aria-label="Right">
-            <FormatAlignRight fontSize="small" />
+          <ToggleButton value="board">
+            <ViewKanban sx={{ mr: 1 }} fontSize="small" />
+            Board
           </ToggleButton>
         </ToggleButtonGroup>
-      </Stack>
+      </Box>
     </Box>
   );
 }

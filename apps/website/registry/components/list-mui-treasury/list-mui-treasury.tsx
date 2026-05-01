@@ -2,14 +2,12 @@
 
 import * as React from 'react';
 
-import Comment from '@mui/icons-material/Comment';
 import DeleteOutline from '@mui/icons-material/DeleteOutline';
 import Drafts from '@mui/icons-material/Drafts';
-import Folder from '@mui/icons-material/Folder';
-import ImageIcon from '@mui/icons-material/Image';
 import Inbox from '@mui/icons-material/Inbox';
+import MoreVert from '@mui/icons-material/MoreVert';
+import Report from '@mui/icons-material/Report';
 import Send from '@mui/icons-material/Send';
-import Work from '@mui/icons-material/Work';
 import {
   Avatar,
   Box,
@@ -24,130 +22,94 @@ import {
   Typography,
 } from '@mui/material';
 
+const MAILBOXES = [
+  { key: 'inbox', label: 'Inbox', icon: <Inbox /> },
+  { key: 'drafts', label: 'Drafts', icon: <Drafts /> },
+  { key: 'sent', label: 'Sent', icon: <Send /> },
+  { key: 'spam', label: 'Spam', icon: <Report /> },
+  { key: 'trash', label: 'Trash', icon: <DeleteOutline /> },
+] as const;
+
+const ACTIVITY = [
+  {
+    initials: 'AL',
+    primary: 'Ada commented on PR #42',
+    secondary: '2h ago',
+  },
+  {
+    initials: 'MK',
+    primary: 'Marcus merged design-tokens',
+    secondary: '5h ago',
+  },
+  {
+    initials: 'SR',
+    primary: 'Sofia opened issue #128',
+    secondary: 'Yesterday',
+  },
+  {
+    initials: 'JT',
+    primary: 'Jun deployed v1.4.0 to staging',
+    secondary: '2 days ago',
+  },
+];
+
 export function ListMuiTreasury() {
+  const [selected, setSelected] = React.useState<string>('drafts');
+
   return (
     <Box
       sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-        gap: 4,
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        gap: 8,
         width: '100%',
       }}
     >
       <Box>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1 }}>
-          Basic
+        <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
+          Mailbox
         </Typography>
-        <Paper variant="outlined">
-          <List>
-            <ListItemButton>
-              <ListItemText primary="Inbox" />
-            </ListItemButton>
-            <ListItemButton selected>
-              <ListItemText primary="Drafts" />
-            </ListItemButton>
-            <ListItemButton>
-              <ListItemText primary="Sent" />
-            </ListItemButton>
+        <Paper variant="outlined" sx={{ minWidth: 280 }}>
+          <List disablePadding>
+            {MAILBOXES.map((box) => (
+              <ListItemButton
+                key={box.key}
+                selected={selected === box.key}
+                onClick={() => setSelected(box.key)}
+              >
+                <ListItemIcon>{box.icon}</ListItemIcon>
+                <ListItemText primary={box.label} />
+              </ListItemButton>
+            ))}
           </List>
         </Paper>
       </Box>
 
       <Box>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1 }}>
-          With icons
+        <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
+          Recent activity
         </Typography>
-        <Paper variant="outlined">
-          <List>
-            <ListItemButton>
-              <ListItemIcon>
-                <Inbox />
-              </ListItemIcon>
-              <ListItemText primary="Inbox" />
-            </ListItemButton>
-            <ListItemButton>
-              <ListItemIcon>
-                <Drafts />
-              </ListItemIcon>
-              <ListItemText primary="Drafts" />
-            </ListItemButton>
-            <ListItemButton>
-              <ListItemIcon>
-                <Send />
-              </ListItemIcon>
-              <ListItemText primary="Sent" />
-            </ListItemButton>
-          </List>
-        </Paper>
-      </Box>
-
-      <Box>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1 }}>
-          With avatars
-        </Typography>
-        <Paper variant="outlined">
-          <List>
-            <ListItem>
-              <ListItemAvatar>
-                <Avatar>
-                  <ImageIcon />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText primary="Photos" secondary="Jan 9, 2014" />
-            </ListItem>
-            <ListItem>
-              <ListItemAvatar>
-                <Avatar>
-                  <Work />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText primary="Work" secondary="Jan 7, 2014" />
-            </ListItem>
-            <ListItem>
-              <ListItemAvatar>
-                <Avatar>
-                  <Folder />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText primary="Vacation" secondary="Jul 20, 2014" />
-            </ListItem>
-          </List>
-        </Paper>
-      </Box>
-
-      <Box>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1 }}>
-          With secondary action
-        </Typography>
-        <Paper variant="outlined">
-          <List>
-            <ListItem
-              secondaryAction={
-                <IconButton edge="end" aria-label="comments">
-                  <Comment />
-                </IconButton>
-              }
-            >
-              <ListItemText primary="Line item one" />
-            </ListItem>
-            <ListItem
-              secondaryAction={
-                <IconButton edge="end" aria-label="delete">
-                  <DeleteOutline />
-                </IconButton>
-              }
-            >
-              <ListItemText primary="Line item two" />
-            </ListItem>
-            <ListItem
-              secondaryAction={
-                <IconButton edge="end" aria-label="comments">
-                  <Comment />
-                </IconButton>
-              }
-            >
-              <ListItemText primary="Line item three" />
-            </ListItem>
+        <Paper variant="outlined" sx={{ minWidth: 280 }}>
+          <List disablePadding>
+            {ACTIVITY.map((item) => (
+              <ListItem
+                key={item.primary}
+                secondaryAction={
+                  <IconButton edge="end" aria-label="more actions">
+                    <MoreVert />
+                  </IconButton>
+                }
+              >
+                <ListItemAvatar>
+                  <Avatar>{item.initials}</Avatar>
+                </ListItemAvatar>
+                <ListItemText
+                  primary={item.primary}
+                  secondary={item.secondary}
+                />
+              </ListItem>
+            ))}
           </List>
         </Paper>
       </Box>

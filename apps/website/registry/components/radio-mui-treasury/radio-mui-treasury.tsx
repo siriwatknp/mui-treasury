@@ -7,24 +7,34 @@ import {
   FormControl,
   FormControlLabel,
   FormHelperText,
-  FormLabel,
   Radio,
   RadioGroup,
+  Typography,
 } from '@mui/material';
 
 export function RadioMuiTreasury() {
+  const [plan, setPlan] = React.useState('pro');
+  const [accountType, setAccountType] = React.useState('');
+
   return (
     <Box
       sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
-        gap: 4,
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        gap: 8,
         width: '100%',
       }}
     >
-      <FormControl>
-        <FormLabel>Plan</FormLabel>
-        <RadioGroup defaultValue="pro" name="plan">
+      <Box>
+        <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
+          Choose a plan
+        </Typography>
+        <RadioGroup
+          name="plan"
+          value={plan}
+          onChange={(e) => setPlan(e.target.value)}
+        >
           <FormControlLabel value="free" control={<Radio />} label="Free" />
           <FormControlLabel value="pro" control={<Radio />} label="Pro" />
           <FormControlLabel
@@ -32,56 +42,46 @@ export function RadioMuiTreasury() {
             control={<Radio />}
             label="Enterprise"
           />
-        </RadioGroup>
-      </FormControl>
-
-      <FormControl>
-        <FormLabel>Disabled</FormLabel>
-        <RadioGroup defaultValue="b" name="disabled" row sx={{ gap: 2 }}>
           <FormControlLabel
-            value="a"
+            value="custom"
             control={<Radio />}
-            label="Off"
+            label="Custom (contact sales)"
             disabled
           />
-          <FormControlLabel value="b" control={<Radio />} label="On" disabled />
         </RadioGroup>
-      </FormControl>
+      </Box>
 
-      <FormControl>
-        <FormLabel>Size</FormLabel>
-        <RadioGroup
-          defaultValue="medium"
-          name="size"
-          row
-          sx={{ gap: 2, alignItems: 'center' }}
-        >
-          <FormControlLabel
-            value="small"
-            control={<Radio size="small" />}
-            label="Small"
-          />
-          <FormControlLabel
-            value="medium"
-            control={<Radio size="medium" />}
-            label="Medium"
-          />
-          <FormControlLabel
-            value="large"
-            control={<Radio size="large" />}
-            label="Large"
-          />
-        </RadioGroup>
-      </FormControl>
-
-      <FormControl error>
-        <FormLabel>Required</FormLabel>
-        <RadioGroup name="required" row sx={{ gap: 2 }}>
-          <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-          <FormControlLabel value="no" control={<Radio />} label="No" />
-        </RadioGroup>
-        <FormHelperText>Please select an option.</FormHelperText>
-      </FormControl>
+      <Box>
+        <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
+          Account type
+        </Typography>
+        <FormControl error={!accountType}>
+          <RadioGroup
+            name="account-type"
+            value={accountType}
+            onChange={(e) => setAccountType(e.target.value)}
+          >
+            <FormControlLabel
+              value="personal"
+              control={<Radio />}
+              label="Personal"
+            />
+            <FormControlLabel
+              value="business"
+              control={<Radio />}
+              label="Business"
+            />
+            <FormControlLabel
+              value="education"
+              control={<Radio />}
+              label="Education"
+            />
+          </RadioGroup>
+          {!accountType && (
+            <FormHelperText>Please select an account type.</FormHelperText>
+          )}
+        </FormControl>
+      </Box>
     </Box>
   );
 }

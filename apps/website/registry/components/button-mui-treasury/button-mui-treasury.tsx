@@ -1,95 +1,72 @@
-'use client';
-
 import * as React from 'react';
 
-import { Box, Button, Stack, Typography } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import { Box, Button, Paper, Stack, Typography } from '@mui/material';
 
 export function ButtonMuiTreasury() {
   return (
     <Box
       sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-        gap: 4,
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        gap: 8,
         width: '100%',
       }}
     >
-      <Stack spacing={1.5}>
-        <Typography variant="subtitle2" color="text.secondary">
-          Variants
+      <Box>
+        <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
+          Action buttons
         </Typography>
-        <Stack direction="row" spacing={1.5} flexWrap="wrap" useFlexGap>
-          <Button variant="contained">Contained</Button>
-          <Button variant="outlined">Outlined</Button>
-          <Button variant="text">Text</Button>
+        <Stack spacing={2}>
+          <Stack direction="row" spacing={1.5} flexWrap="wrap" useFlexGap>
+            <Button variant="contained">Save changes</Button>
+            <Button variant="outlined">Cancel</Button>
+            <Button variant="text">Learn more</Button>
+          </Stack>
+          <Stack direction="row" spacing={1.5} flexWrap="wrap" useFlexGap>
+            <Button variant="contained" startIcon={<AddIcon />}>
+              New project
+            </Button>
+            <Button
+              variant="contained"
+              color="error"
+              startIcon={<DeleteOutlineIcon />}
+            >
+              Delete
+            </Button>
+          </Stack>
         </Stack>
-      </Stack>
+      </Box>
 
-      <Stack spacing={1.5}>
-        <Typography variant="subtitle2" color="text.secondary">
-          Colors
-        </Typography>
-        <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
-          <Button variant="contained" color="primary">
-            Primary
-          </Button>
-          <Button variant="contained" color="secondary">
-            Secondary
-          </Button>
-          <Button variant="contained" color="success">
-            Success
-          </Button>
-          <Button variant="contained" color="error">
-            Error
-          </Button>
-          <Button variant="contained" color="warning">
-            Warning
-          </Button>
-          <Button variant="contained" color="info">
-            Info
-          </Button>
+      <Paper variant="outlined" sx={{ p: 3, width: 300 }}>
+        <Stack spacing={2}>
+          <Box>
+            <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+              Pro
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Best for growing teams
+            </Typography>
+          </Box>
+          <Typography variant="h4" sx={{ fontWeight: 600 }}>
+            $24{' '}
+            <Typography component="span" variant="body2" color="text.secondary">
+              / month
+            </Typography>
+          </Typography>
+          <Stack spacing={1}>
+            <Button variant="contained" fullWidth>
+              Start free trial
+            </Button>
+            <Button variant="text" fullWidth>
+              Compare plans
+            </Button>
+          </Stack>
         </Stack>
-      </Stack>
-
-      <Stack spacing={1.5}>
-        <Typography variant="subtitle2" color="text.secondary">
-          Sizes
-        </Typography>
-        <Stack
-          direction="row"
-          spacing={1.5}
-          alignItems="center"
-          flexWrap="wrap"
-          useFlexGap
-        >
-          <Button variant="contained" size="small">
-            Small
-          </Button>
-          <Button variant="contained" size="medium">
-            Medium
-          </Button>
-          <Button variant="contained" size="large">
-            Large
-          </Button>
-        </Stack>
-      </Stack>
-
-      <Stack spacing={1.5}>
-        <Typography variant="subtitle2" color="text.secondary">
-          Disabled
-        </Typography>
-        <Stack direction="row" spacing={1.5} flexWrap="wrap" useFlexGap>
-          <Button variant="contained" disabled>
-            Contained
-          </Button>
-          <Button variant="outlined" disabled>
-            Outlined
-          </Button>
-          <Button variant="text" disabled>
-            Text
-          </Button>
-        </Stack>
-      </Stack>
+      </Paper>
     </Box>
   );
 }

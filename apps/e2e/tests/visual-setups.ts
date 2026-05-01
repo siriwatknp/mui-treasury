@@ -25,6 +25,10 @@ export const visualSetups: Record<string, VisualSetup> = {
     openMuiMenu({ page, trigger: '[role="combobox"]' }),
   'select-inset-01': ({ page }) =>
     openMuiMenu({ page, trigger: '[role="combobox"]' }),
+  'select-mui-treasury': async ({ page }) => {
+    await page.getByRole('combobox', { name: 'Plan' }).click();
+    await page.locator('.MuiMenu-paper').first().waitFor({ state: 'visible' });
+  },
   'popup-menu': async ({ page }) => {
     await page.getByRole('button', { name: 'Analytics' }).hover();
     const reports = page.getByRole('button', { name: 'Reports' });
@@ -36,10 +40,9 @@ export const visualSetups: Record<string, VisualSetup> = {
   },
   'sidebar-tooltip': async ({ page }) => {
     await page.getByRole('button', { name: 'Home' }).hover();
-    await page.locator('.MuiTooltip-tooltip').first().waitFor({ state: 'visible' });
-  },
-  'tooltip-mui-treasury': async ({ page }) => {
-    await page.getByRole('button', { name: 'Top' }).first().hover();
-    await page.locator('.MuiTooltip-tooltip').first().waitFor({ state: 'visible' });
+    await page
+      .locator('.MuiTooltip-tooltip')
+      .first()
+      .waitFor({ state: 'visible' });
   },
 };

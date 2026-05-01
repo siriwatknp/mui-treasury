@@ -77,6 +77,7 @@ Rules:
 - 1–2 demos → keep beside the component as `<name>.demo.tsx`.
 - 3+ demos or showcasing variants → `demos/` subfolder. Each `*.demo.tsx` becomes its own preview route `/preview/demo/<path>`.
 - Demo file contract: `export function Demo()` (named, not default) + optional `export const meta = { title, description }`. See `development.md`.
+- **For `category: "primitive"` items**: the main `.demo.tsx` (or the component's `meta.exportName` render) is also the OG card. See `primitive-demo-design.md` for editorial criteria, signature-state table, and the 2-scene layout that fits the 630px canvas.
 
 ## 5. Collection items (no `.tsx`)
 
@@ -100,6 +101,7 @@ Rules:
 - Title: `"<Primitive> (MUI Treasury)"`. Description: short, mentions the theme.
 - Pin to top of page: add entry in `apps/website/lib/registry-order.ts` → `registryOrder['primitive/<sub>'] = ['<sub>-mui-treasury', ...]`. Manual opt-in, no magic.
 - Opt-in only — create when the subcategory maps cleanly to a MUI primitive (radio, select, button, text-field, tabs, etc.). Skip for conceptual subcategories (info, meter, dropzone).
+- **Demo composition**: see `primitive-demo-design.md` for the editorial criteria, signature-state table, and 2-scene layout. Don't try to be a docs page — the canvas is 630px tall.
 
 ## 7. `meta.json` optional fields — when to set
 

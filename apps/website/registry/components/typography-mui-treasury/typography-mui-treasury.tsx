@@ -1,83 +1,51 @@
-'use client';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 
-import * as React from 'react';
-
-import { Box, Stack, Typography } from '@mui/material';
+const SAMPLES = [
+  { variant: 'h2', text: 'Designing systems that scale' },
+  { variant: 'h3', text: 'A field guide to typography' },
+  { variant: 'h4', text: 'Rhythm, hierarchy, and restraint' },
+  {
+    variant: 'subtitle1',
+    text: 'A short standfirst that introduces the article below.',
+  },
+  {
+    variant: 'body1',
+    text: 'Good typography is invisible. It guides the eye through the page without ever calling attention to itself.',
+  },
+  {
+    variant: 'body2',
+    text: 'Secondary copy works well for captions, metadata, and supporting paragraphs.',
+  },
+  { variant: 'caption', text: 'Updated 3 minutes ago by the editorial team' },
+] as const;
 
 export function TypographyMuiTreasury() {
   return (
-    <Box
-      sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-        gap: 4,
-        width: '100%',
-      }}
-    >
-      <Box>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1 }}>
-          Headings
-        </Typography>
-        <Stack spacing={1}>
-          <Typography variant="h1">h1. Heading</Typography>
-          <Typography variant="h2">h2. Heading</Typography>
-          <Typography variant="h3">h3. Heading</Typography>
-          <Typography variant="h4">h4. Heading</Typography>
-          <Typography variant="h5">h5. Heading</Typography>
-          <Typography variant="h6">h6. Heading</Typography>
-        </Stack>
-      </Box>
-
-      <Box>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1 }}>
-          Body
-        </Typography>
-        <Stack spacing={1}>
-          <Typography variant="subtitle1">
-            subtitle1. Lorem ipsum dolor sit amet.
-          </Typography>
-          <Typography variant="subtitle2">
-            subtitle2. Lorem ipsum dolor sit amet.
-          </Typography>
-          <Typography variant="body1">
-            body1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </Typography>
-          <Typography variant="body2">
-            body2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </Typography>
-        </Stack>
-      </Box>
-
-      <Box>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1 }}>
-          Small text
-        </Typography>
-        <Stack spacing={1}>
-          <Typography variant="caption" display="block">
-            caption text
-          </Typography>
-          <Typography variant="overline" display="block">
-            overline text
-          </Typography>
-          <Typography variant="button" display="block">
-            button text
-          </Typography>
-        </Stack>
-      </Box>
-
-      <Box>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1 }}>
-          Colors
-        </Typography>
-        <Stack spacing={1}>
-          <Typography color="text.primary">text.primary</Typography>
-          <Typography color="text.secondary">text.secondary</Typography>
-          <Typography color="primary.main">primary.main</Typography>
-          <Typography color="error.main">error.main</Typography>
-          <Typography color="success.main">success.main</Typography>
-          <Typography color="warning.main">warning.main</Typography>
-        </Stack>
-      </Box>
+    <Box sx={{ maxWidth: 720, mx: 'auto', width: '100%' }}>
+      <Stack spacing={3}>
+        {SAMPLES.map((sample) => (
+          <Box
+            key={sample.variant}
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: '96px 1fr',
+              gap: 3,
+              alignItems: 'baseline',
+            }}
+          >
+            <Typography
+              variant="caption"
+              color="text.secondary"
+              sx={{ fontFamily: 'monospace' }}
+            >
+              {sample.variant}
+            </Typography>
+            <Typography variant={sample.variant}>{sample.text}</Typography>
+          </Box>
+        ))}
+      </Stack>
     </Box>
   );
 }

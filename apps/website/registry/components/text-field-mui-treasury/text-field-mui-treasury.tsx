@@ -2,67 +2,96 @@
 
 import * as React from 'react';
 
-import { Box, Stack, TextField, Typography } from '@mui/material';
+import {
+  Box,
+  IconButton,
+  InputAdornment,
+  Stack,
+  TextField,
+  Typography,
+} from '@mui/material';
+import { Eye, EyeOff } from 'lucide-react';
 
 export function TextFieldMuiTreasury() {
+  const [showPassword, setShowPassword] = React.useState(false);
+
   return (
     <Box
       sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-        gap: 4,
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        gap: 8,
         width: '100%',
       }}
     >
-      <Stack spacing={1.5}>
-        <Typography variant="subtitle2" color="text.secondary">
-          Default
+      <Box sx={{ width: 280 }}>
+        <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
+          Sign in
         </Typography>
-        <TextField label="Name" defaultValue="Jane Doe" fullWidth />
-        <TextField
-          label="Email"
-          defaultValue="jane@example.com"
-          helperText="We'll never share your email."
-          fullWidth
-        />
-      </Stack>
+        <Stack spacing={2}>
+          <TextField
+            label="Email"
+            defaultValue="ada@acme.com"
+            helperText="We'll never share your email."
+            fullWidth
+          />
+          <TextField
+            label="Password"
+            type={showPassword ? 'text' : 'password'}
+            defaultValue="hunter2hunter2"
+            helperText="Use at least 12 characters."
+            autoFocus
+            fullWidth
+            slotProps={{
+              input: {
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label={
+                        showPassword ? 'Hide password' : 'Show password'
+                      }
+                      onClick={() => setShowPassword((prev) => !prev)}
+                      edge="end"
+                      size="small"
+                    >
+                      {showPassword ? <Eye size={18} /> : <EyeOff size={18} />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              },
+            }}
+          />
+        </Stack>
+      </Box>
 
-      <Stack spacing={1.5}>
-        <Typography variant="subtitle2" color="text.secondary">
-          Disabled
+      <Box sx={{ width: 280 }}>
+        <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
+          Update profile
         </Typography>
-        <TextField label="Username" defaultValue="janedoe" disabled fullWidth />
-        <TextField
-          label="Bio"
-          defaultValue="Designer based in Lisbon."
-          disabled
-          multiline
-          rows={2}
-          fullWidth
-        />
-      </Stack>
-
-      <Stack spacing={1.5}>
-        <Typography variant="subtitle2" color="text.secondary">
-          Error
-        </Typography>
-        <TextField
-          label="Password"
-          defaultValue="abc"
-          error
-          helperText="Must be at least 8 characters."
-          type="password"
-          fullWidth
-        />
-      </Stack>
-
-      <Stack spacing={1.5}>
-        <Typography variant="subtitle2" color="text.secondary">
-          Sizes
-        </Typography>
-        <TextField label="Small" size="small" defaultValue="Small" fullWidth />
-        <TextField label="Medium" defaultValue="Medium" fullWidth />
-      </Stack>
+        <Stack spacing={2}>
+          <TextField
+            label="Display name"
+            defaultValue="Ada Lovelace"
+            fullWidth
+          />
+          <TextField
+            label="Username"
+            defaultValue="ada"
+            error
+            helperText="That username is already taken."
+            fullWidth
+          />
+          <TextField
+            label="Bio"
+            defaultValue="Mathematician. First programmer."
+            multiline
+            rows={2}
+            fullWidth
+          />
+        </Stack>
+      </Box>
     </Box>
   );
 }

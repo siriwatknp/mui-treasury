@@ -3,6 +3,15 @@
 import * as React from 'react';
 
 import {
+  Archive,
+  ContentCopy,
+  ContentCut,
+  ContentPaste,
+  Logout,
+  PersonOutline,
+  Settings,
+} from '@mui/icons-material';
+import {
   Box,
   Divider,
   ListItemIcon,
@@ -12,19 +21,11 @@ import {
   Paper,
   Typography,
 } from '@mui/material';
-import {
-  Archive,
-  ContentCopy,
-  ContentCut,
-  ContentPaste,
-  Logout,
-  PersonOutline,
-  Settings,
-} from '@mui/icons-material';
 
 const menuPaperSx = {
   borderRadius: 2,
   boxShadow: 8,
+  minWidth: 220,
 };
 
 const menuListSx = {
@@ -38,36 +39,16 @@ export function MenuMuiTreasury() {
   return (
     <Box
       sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
-        gap: 4,
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        gap: 8,
         width: '100%',
       }}
     >
       <Box>
-        <Typography
-          variant="subtitle2"
-          color="text.secondary"
-          sx={{ mb: 1 }}
-        >
-          Basic
-        </Typography>
-        <Paper variant="outlined" sx={menuPaperSx}>
-          <MenuList sx={menuListSx}>
-            <MenuItem>Profile</MenuItem>
-            <MenuItem selected>My account</MenuItem>
-            <MenuItem>Logout</MenuItem>
-          </MenuList>
-        </Paper>
-      </Box>
-
-      <Box>
-        <Typography
-          variant="subtitle2"
-          color="text.secondary"
-          sx={{ mb: 1 }}
-        >
-          With icons
+        <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
+          Account menu
         </Typography>
         <Paper variant="outlined" sx={menuPaperSx}>
           <MenuList sx={menuListSx}>
@@ -77,7 +58,7 @@ export function MenuMuiTreasury() {
               </ListItemIcon>
               <ListItemText>Profile</ListItemText>
             </MenuItem>
-            <MenuItem>
+            <MenuItem selected>
               <ListItemIcon>
                 <Settings fontSize="small" />
               </ListItemIcon>
@@ -88,22 +69,18 @@ export function MenuMuiTreasury() {
               <ListItemIcon>
                 <Logout fontSize="small" />
               </ListItemIcon>
-              <ListItemText>Logout</ListItemText>
+              <ListItemText>Sign out</ListItemText>
             </MenuItem>
           </MenuList>
         </Paper>
       </Box>
 
       <Box>
-        <Typography
-          variant="subtitle2"
-          color="text.secondary"
-          sx={{ mb: 1 }}
-        >
-          Dense
+        <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
+          Edit actions
         </Typography>
         <Paper variant="outlined" sx={menuPaperSx}>
-          <MenuList dense sx={menuListSx}>
+          <MenuList sx={menuListSx}>
             <MenuItem>
               <ListItemIcon>
                 <ContentCut fontSize="small" />
@@ -122,31 +99,12 @@ export function MenuMuiTreasury() {
               </ListItemIcon>
               <ListItemText>Paste</ListItemText>
             </MenuItem>
-          </MenuList>
-        </Paper>
-      </Box>
-
-      <Box>
-        <Typography
-          variant="subtitle2"
-          color="text.secondary"
-          sx={{ mb: 1 }}
-        >
-          Disabled item
-        </Typography>
-        <Paper variant="outlined" sx={menuPaperSx}>
-          <MenuList sx={menuListSx}>
-            <MenuItem>
+            <Divider />
+            <MenuItem disabled>
               <ListItemIcon>
                 <Archive fontSize="small" />
               </ListItemIcon>
               <ListItemText>Archive</ListItemText>
-            </MenuItem>
-            <MenuItem disabled>
-              <ListItemText inset>Move</ListItemText>
-            </MenuItem>
-            <MenuItem>
-              <ListItemText inset>Rename</ListItemText>
             </MenuItem>
           </MenuList>
         </Paper>

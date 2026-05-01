@@ -2,86 +2,81 @@
 
 import * as React from 'react';
 
-import {
-  Favorite,
-  PersonOutline,
-  PhoneOutlined,
-  Settings,
-} from '@mui/icons-material';
-import { Box, Stack, Tab, Tabs, Typography } from '@mui/material';
-
-const noop = () => {};
+import { Dashboard, Group, Settings, Timeline } from '@mui/icons-material';
+import { Badge, Box, Paper, Stack, Tab, Tabs, Typography } from '@mui/material';
 
 export function TabsMuiTreasury() {
+  const [overview, setOverview] = React.useState(1);
+  const [mail, setMail] = React.useState(0);
+
   return (
-    <Stack spacing={3} sx={{ width: '100%' }}>
+    <Stack spacing={4} sx={{ width: '100%', maxWidth: 720, mx: 'auto' }}>
       <Box>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1 }}>
-          Basic
+        <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
+          Project workspace
         </Typography>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={0} onChange={noop} aria-label="basic tabs">
-            <Tab label="Overview" />
-            <Tab label="Activity" />
-            <Tab label="Settings" />
-          </Tabs>
-        </Box>
+        <Paper variant="outlined">
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <Tabs
+              value={overview}
+              onChange={(_, v) => setOverview(v)}
+              aria-label="workspace tabs"
+            >
+              <Tab
+                icon={<Dashboard fontSize="small" />}
+                iconPosition="start"
+                label="Overview"
+              />
+              <Tab
+                icon={<Timeline fontSize="small" />}
+                iconPosition="start"
+                label="Activity"
+              />
+              <Tab
+                icon={<Settings fontSize="small" />}
+                iconPosition="start"
+                label="Settings"
+              />
+              <Tab
+                icon={<Group fontSize="small" />}
+                iconPosition="start"
+                label="Members"
+              />
+            </Tabs>
+          </Box>
+        </Paper>
       </Box>
 
       <Box>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1 }}>
-          With icons
+        <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
+          Mailbox
         </Typography>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={1} onChange={noop} aria-label="icon tabs">
-            <Tab icon={<PersonOutline />} iconPosition="start" label="Profile" />
-            <Tab icon={<Favorite />} iconPosition="start" label="Favorites" />
-            <Tab icon={<PhoneOutlined />} iconPosition="start" label="Contact" />
-            <Tab icon={<Settings />} iconPosition="start" label="Settings" />
-          </Tabs>
-        </Box>
-      </Box>
-
-      <Box>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1 }}>
-          Full width
-        </Typography>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs
-            value={0}
-            onChange={noop}
-            variant="fullWidth"
-            aria-label="full width tabs"
-          >
-            <Tab label="Daily" />
-            <Tab label="Weekly" />
-            <Tab label="Monthly" />
-          </Tabs>
-        </Box>
-      </Box>
-
-      <Box>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1 }}>
-          Scrollable
-        </Typography>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs
-            value={2}
-            onChange={noop}
-            variant="scrollable"
-            scrollButtons="auto"
-            aria-label="scrollable tabs"
-          >
-            <Tab label="Inbox" />
-            <Tab label="Starred" />
-            <Tab label="Sent" />
-            <Tab label="Drafts" />
-            <Tab label="Spam" />
-            <Tab label="Trash" />
-            <Tab label="Archive" />
-            <Tab label="All mail" />
-          </Tabs>
-        </Box>
+        <Paper variant="outlined">
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <Tabs
+              value={mail}
+              onChange={(_, v) => setMail(v)}
+              centered
+              aria-label="mailbox tabs"
+            >
+              <Tab
+                label={
+                  <Badge badgeContent={4} color="primary" sx={{ pr: 1.5 }}>
+                    Inbox
+                  </Badge>
+                }
+              />
+              <Tab
+                label={
+                  <Badge badgeContent={2} color="default" sx={{ pr: 1.5 }}>
+                    Drafts
+                  </Badge>
+                }
+              />
+              <Tab label="Archive" />
+            </Tabs>
+          </Box>
+        </Paper>
       </Box>
     </Stack>
   );

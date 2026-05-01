@@ -2,100 +2,80 @@
 
 import * as React from 'react';
 
-import Delete from '@mui/icons-material/Delete';
-import Info from '@mui/icons-material/Info';
-import { Box, IconButton, Stack, Tooltip, Typography } from '@mui/material';
+import BookmarkBorder from '@mui/icons-material/BookmarkBorder';
+import ContentCopy from '@mui/icons-material/ContentCopy';
+import DeleteOutline from '@mui/icons-material/DeleteOutline';
+import HelpOutline from '@mui/icons-material/HelpOutline';
+import Share from '@mui/icons-material/Share';
+import {
+  Box,
+  IconButton,
+  Paper,
+  Stack,
+  Tooltip,
+  Typography,
+} from '@mui/material';
 
 export function TooltipMuiTreasury() {
   return (
-    <Box
-      sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
-        gap: 4,
-        width: '100%',
-      }}
-    >
+    <Stack spacing={6} sx={{ width: '100%', maxWidth: 480, mx: 'auto', pb: 6 }}>
       <Box>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1 }}>
-          Placement
+        <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
+          Editor toolbar
         </Typography>
-        <Stack direction="row" spacing={1} alignItems="center" flexWrap="wrap">
-          <Tooltip title="Top" placement="top">
-            <IconButton>
-              <Delete />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Right" placement="right">
-            <IconButton>
-              <Delete />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Bottom" placement="bottom">
-            <IconButton>
-              <Delete />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Left" placement="left">
-            <IconButton>
-              <Delete />
-            </IconButton>
-          </Tooltip>
-        </Stack>
-      </Box>
-
-      <Box>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1 }}>
-          Arrow
-        </Typography>
-        <Stack direction="row" spacing={1} alignItems="center">
-          <Tooltip title="Delete item" arrow>
-            <IconButton>
-              <Delete />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="More info" arrow placement="top">
-            <IconButton>
-              <Info />
-            </IconButton>
-          </Tooltip>
-        </Stack>
-      </Box>
-
-      <Box>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1 }}>
-          Rich content
-        </Typography>
-        <Stack direction="row" spacing={1} alignItems="center">
-          <Tooltip
-            title={
-              <React.Fragment>
-                <Typography variant="subtitle2">Tooltip with HTML</Typography>
-                <em>{'And this'}</em> <b>{'is bold'}</b>.
-              </React.Fragment>
-            }
-          >
-            <IconButton>
-              <Info />
-            </IconButton>
-          </Tooltip>
-        </Stack>
-      </Box>
-
-      <Box>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1 }}>
-          Disabled trigger
-        </Typography>
-        <Stack direction="row" spacing={1} alignItems="center">
-          <Tooltip title="You can't delete">
-            <span>
-              <IconButton disabled>
-                <Delete />
+        <Paper
+          variant="outlined"
+          sx={{ display: 'inline-flex', p: 0.5, borderRadius: 2 }}
+        >
+          <Stack direction="row" spacing={0.5} alignItems="center">
+            <Tooltip title="Save to bookmarks" placement="bottom" arrow open>
+              <IconButton size="small">
+                <BookmarkBorder fontSize="small" />
               </IconButton>
-            </span>
-          </Tooltip>
-        </Stack>
+            </Tooltip>
+            <Tooltip title="Share" placement="bottom" arrow>
+              <IconButton size="small">
+                <Share fontSize="small" />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Duplicate" placement="bottom" arrow>
+              <IconButton size="small">
+                <ContentCopy fontSize="small" />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Delete" placement="bottom" arrow>
+              <IconButton size="small">
+                <DeleteOutline fontSize="small" />
+              </IconButton>
+            </Tooltip>
+          </Stack>
+        </Paper>
       </Box>
-    </Box>
+
+      <Box>
+        <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
+          Inline help
+        </Typography>
+        <Tooltip
+          placement="bottom"
+          arrow
+          open
+          title={
+            <Box sx={{ p: 0.5 }}>
+              <Typography variant="subtitle2" sx={{ fontWeight: 600 }}>
+                API token
+              </Typography>
+              <Typography variant="caption">
+                Used to authenticate requests. Keep it secret.
+              </Typography>
+            </Box>
+          }
+        >
+          <IconButton size="small">
+            <HelpOutline fontSize="small" />
+          </IconButton>
+        </Tooltip>
+      </Box>
+    </Stack>
   );
 }
