@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Sonner 2",
+  "description": "Toast notification with severity-colored icon, action button, and close button",
+  "meta": {
+    "category": "primitive",
+    "subcategory": "toast"
+  }
+}
