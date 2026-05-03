@@ -46,7 +46,7 @@ export function AutocompleteMuiTreasury() {
           options={TAGS}
           defaultValue={['Frontend', 'Design', 'DevOps']}
           renderInput={(params) => (
-            <TextField {...params} placeholder="Add tag" />
+            <TextField {...params} label="Tags" placeholder="Add tag" />
           )}
         />
       </Box>
@@ -62,6 +62,7 @@ export function AutocompleteMuiTreasury() {
           renderInput={(params) => (
             <TextField
               {...params}
+              label="Countries"
               placeholder="Select a country"
               error={!country}
               helperText={!country ? 'Required for tax invoicing.' : undefined}
