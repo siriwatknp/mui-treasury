@@ -45,9 +45,12 @@ export function StepperMuiTreasury() {
               <StepLabel>{step.label}</StepLabel>
               {step.description && (
                 <StepContent>
-                  <Typography variant="body2" sx={{
-                    color: "text.secondary"
-                  }}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: 'text.secondary',
+                    }}
+                  >
                     {step.description}
                   </Typography>
                 </StepContent>

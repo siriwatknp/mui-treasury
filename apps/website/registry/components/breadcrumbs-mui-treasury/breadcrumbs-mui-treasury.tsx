@@ -32,9 +32,13 @@ export function BreadcrumbsMuiTreasury() {
             Acme Inc
           </Link>
           <Typography
-            sx={[{
-              color: "text.primary"
-            }, ...(Array.isArray(iconSx) ? iconSx : [iconSx])]}>
+            sx={[
+              {
+                color: 'text.primary',
+              },
+              ...(Array.isArray(iconSx) ? iconSx : [iconSx]),
+            ]}
+          >
             <Description fontSize="small" />
             Q4 Roadmap
           </Typography>
@@ -63,9 +67,13 @@ export function BreadcrumbsMuiTreasury() {
           <Link underline="hover" color="inherit" href="#">
             Roadmap
           </Link>
-          <Typography sx={{
-            color: "text.primary"
-          }}>Overview</Typography>
+          <Typography
+            sx={{
+              color: 'text.primary',
+            }}
+          >
+            Overview
+          </Typography>
         </Breadcrumbs>
       </Box>
     </Stack>

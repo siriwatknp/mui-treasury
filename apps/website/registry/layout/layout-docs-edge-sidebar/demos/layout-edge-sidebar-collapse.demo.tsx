@@ -25,9 +25,12 @@ export function Demo() {
     <Root height="300px">
       <Header>
         <Box sx={{ px: 2 }}>
-          <Typography variant="caption" sx={{
-            fontWeight: "bold"
-          }}>
+          <Typography
+            variant="caption"
+            sx={{
+              fontWeight: 'bold',
+            }}
+          >
             Header
           </Typography>
         </Box>
@@ -61,18 +64,24 @@ export function Demo() {
       </EdgeSidebar>
       <Content>
         <Box sx={{ p: 2 }}>
-          <Typography variant="body2" sx={{
-            color: "text.secondary"
-          }}>
+          <Typography
+            variant="body2"
+            sx={{
+              color: 'text.secondary',
+            }}
+          >
             Content
           </Typography>
         </Box>
       </Content>
       <Footer>
         <Box sx={{ p: 2 }}>
-          <Typography variant="caption" sx={{
-            color: "text.secondary"
-          }}>
+          <Typography
+            variant="caption"
+            sx={{
+              color: 'text.secondary',
+            }}
+          >
             Footer
           </Typography>
         </Box>

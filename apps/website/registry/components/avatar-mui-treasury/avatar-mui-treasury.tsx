@@ -33,9 +33,13 @@ export function AvatarMuiTreasury() {
         <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
           Avatar variants
         </Typography>
-        <Stack direction="row" spacing={2} sx={{
-          alignItems: "center"
-        }}>
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{
+            alignItems: 'center',
+          }}
+        >
           <Avatar
             alt="Grace Hopper"
             sx={{ bgcolor: 'primary.main', color: 'primary.contrastText' }}

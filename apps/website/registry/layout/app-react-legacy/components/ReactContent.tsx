@@ -9,11 +9,14 @@ const ReactContent = () => (
   <Box
     sx={{
       mr: { sm: 3, md: 10 },
-      py: { xs: 4, sm: 6, md: 8 }
-    }}>
-    <Box sx={{
-      pb: 5
-    }}>
+      py: { xs: 4, sm: 6, md: 8 },
+    }}
+  >
+    <Box
+      sx={{
+        pb: 5,
+      }}
+    >
       <Typography variant={'h2'}>
         <b>Getting Started</b>
       </Typography>

@@ -132,13 +132,14 @@ export function LoginFormSplit() {
             direction="row"
             spacing={1}
             sx={{
-              alignItems: "center",
+              alignItems: 'center',
               position: { xs: 'static', md: 'fixed' },
               top: '2rem',
               left: '2rem',
               mb: 2,
-              justifyContent: 'center'
-            }}>
+              justifyContent: 'center',
+            }}
+          >
             <Box
               sx={{
                 width: 24,
@@ -169,9 +170,12 @@ export function LoginFormSplit() {
             <Typography variant="h3" sx={{ fontWeight: 600, mb: 1 }}>
               Login to your account
             </Typography>
-            <Typography variant="body2" sx={{
-              color: "text.secondary"
-            }}>
+            <Typography
+              variant="body2"
+              sx={{
+                color: 'text.secondary',
+              }}
+            >
               Enter your email below to login to your account
             </Typography>
           </Box>
@@ -262,9 +266,12 @@ export function LoginFormSplit() {
 
               {/* Sign Up Link */}
               <Box sx={{ textAlign: 'center', mt: 4 }}>
-                <Typography variant="body2" sx={{
-                  color: "text.secondary"
-                }}>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: 'text.secondary',
+                  }}
+                >
                   Don&apos;t have an account?{' '}
                   <Link href="#" sx={{ textDecoration: 'underline' }}>
                     Sign up

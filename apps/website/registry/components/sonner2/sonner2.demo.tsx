@@ -10,9 +10,14 @@ export function Demo() {
   return (
     <>
       <Sonner closeButton />
-      <Stack direction="row" spacing={1} useFlexGap sx={{
-        flexWrap: "wrap"
-      }}>
+      <Stack
+        direction="row"
+        spacing={1}
+        useFlexGap
+        sx={{
+          flexWrap: 'wrap',
+        }}
+      >
         <Button
           variant="outlined"
           onClick={() =>

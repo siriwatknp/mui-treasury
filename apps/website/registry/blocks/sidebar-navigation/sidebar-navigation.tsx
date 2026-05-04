@@ -152,9 +152,12 @@ export function SidebarNavigation() {
         >
           ●
         </Box>
-        <Typography variant="h6" sx={{
-          fontWeight: 600
-        }}>
+        <Typography
+          variant="h6"
+          sx={{
+            fontWeight: 600,
+          }}
+        >
           Acme Corp
         </Typography>
       </Box>
@@ -257,14 +260,22 @@ export function SidebarNavigation() {
           borderColor: 'divider',
         }}
       >
-        <Typography variant="body2" gutterBottom sx={{
-          fontWeight: 500
-        }}>
+        <Typography
+          variant="body2"
+          gutterBottom
+          sx={{
+            fontWeight: 500,
+          }}
+        >
           Used space
         </Typography>
-        <Typography variant="caption" gutterBottom sx={{
-          color: "text.secondary"
-        }}>
+        <Typography
+          variant="caption"
+          gutterBottom
+          sx={{
+            color: 'text.secondary',
+          }}
+        >
           Your team has used 80% of your available space. Need more?
         </Typography>
         <LinearProgress
@@ -314,18 +325,23 @@ export function SidebarNavigation() {
             sx={{ width: 40, height: 40 }}
           />
           <Box sx={{ flex: 1, minWidth: 0 }}>
-            <Typography variant="body2" noWrap sx={{
-              fontWeight: 500
-            }}>
+            <Typography
+              variant="body2"
+              noWrap
+              sx={{
+                fontWeight: 500,
+              }}
+            >
               Jane Smith
             </Typography>
             <Typography
               variant="caption"
               noWrap
               sx={{
-                color: "text.secondary",
-                display: 'block'
-              }}>
+                color: 'text.secondary',
+                display: 'block',
+              }}
+            >
               jane.smith@acmecorp.com
             </Typography>
           </Box>
@@ -358,7 +374,7 @@ export function SidebarNavigation() {
         slotProps={{
           list: {
             'aria-labelledby': 'user-menu-button',
-          }
+          },
         }}
       >
         <MenuItem onClick={handleMenuClose}>

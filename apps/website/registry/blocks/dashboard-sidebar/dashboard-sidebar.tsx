@@ -78,9 +78,12 @@ export function DashboardSidebar() {
         >
           I
         </Box>
-        <Typography variant="h6" sx={{
-          fontWeight: 600
-        }}>
+        <Typography
+          variant="h6"
+          sx={{
+            fontWeight: 600,
+          }}
+        >
           Ipsum
         </Typography>
       </Box>
@@ -293,9 +296,13 @@ export function DashboardSidebar() {
             sx={{ width: 40, height: 40 }}
           />
           <Box sx={{ flex: 1, minWidth: 0 }}>
-            <Typography variant="body2" noWrap sx={{
-              fontWeight: 500
-            }}>
+            <Typography
+              variant="body2"
+              noWrap
+              sx={{
+                fontWeight: 500,
+              }}
+            >
               John Doe
             </Typography>
             <Chip

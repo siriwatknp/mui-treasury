@@ -27,9 +27,10 @@ export function ChipMuiTreasury() {
           direction="row"
           spacing={1}
           sx={{
-            alignItems: "center",
-            flexWrap: "wrap"
-          }}>
+            alignItems: 'center',
+            flexWrap: 'wrap',
+          }}
+        >
           <Chip label="React" variant="filled" onDelete={() => {}} />
           <Chip label="TypeScript" variant="filled" onDelete={() => {}} />
           <Chip label="GraphQL" variant="filled" />
@@ -46,9 +47,10 @@ export function ChipMuiTreasury() {
           direction="row"
           spacing={1}
           sx={{
-            alignItems: "center",
-            flexWrap: "wrap"
-          }}>
+            alignItems: 'center',
+            flexWrap: 'wrap',
+          }}
+        >
           <Chip icon={<CheckCircle />} label="Delivered" color="success" />
           <Chip icon={<LocalShipping />} label="In transit" color="warning" />
           <Chip icon={<Cancel />} label="Cancelled" color="error" />

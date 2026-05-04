@@ -116,9 +116,11 @@ Format responses in Markdown unless asked otherwise.`,
           p: 2,
         }}
       >
-        <Typography sx={{
-          color: "text.secondary"
-        }}>
+        <Typography
+          sx={{
+            color: 'text.secondary',
+          }}
+        >
           Firebase not configured. Please set up Firebase config at the top of
           the page.
         </Typography>
@@ -179,9 +181,10 @@ Format responses in Markdown unless asked otherwise.`,
                 </Typography>
                 <Typography
                   sx={{
-                    color: "text.secondary",
-                    textAlign: 'center'
-                  }}>
+                    color: 'text.secondary',
+                    textAlign: 'center',
+                  }}
+                >
                   Ask questions that need up-to-date information
                 </Typography>
               </Box>
@@ -256,9 +259,11 @@ Format responses in Markdown unless asked otherwise.`,
                         sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
                       >
                         <CircularProgress size={20} />
-                        <Typography sx={{
-                          color: "text.secondary"
-                        }}>
+                        <Typography
+                          sx={{
+                            color: 'text.secondary',
+                          }}
+                        >
                           Searching...
                         </Typography>
                       </Box>
@@ -289,9 +294,11 @@ Format responses in Markdown unless asked otherwise.`,
                 }}
               >
                 <Loader />
-                <Typography sx={{
-                  color: "text.secondary"
-                }}>
+                <Typography
+                  sx={{
+                    color: 'text.secondary',
+                  }}
+                >
                   Streaming response...
                 </Typography>
               </Box>

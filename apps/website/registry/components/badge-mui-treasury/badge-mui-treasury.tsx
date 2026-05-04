@@ -29,9 +29,13 @@ export function BadgeMuiTreasury() {
         <Typography variant="subtitle1" sx={{ mb: 3, fontWeight: 600 }}>
           Notifications
         </Typography>
-        <Stack direction="row" spacing={2} sx={{
-          alignItems: "center"
-        }}>
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{
+            alignItems: 'center',
+          }}
+        >
           <Badge badgeContent={4} color="primary">
             <IconButton>
               <Notifications />
@@ -53,9 +57,13 @@ export function BadgeMuiTreasury() {
         <Typography variant="subtitle1" sx={{ mb: 3, fontWeight: 600 }}>
           Presence
         </Typography>
-        <Stack direction="row" spacing={3} sx={{
-          alignItems: "center"
-        }}>
+        <Stack
+          direction="row"
+          spacing={3}
+          sx={{
+            alignItems: 'center',
+          }}
+        >
           <Badge
             variant="dot"
             color="success"

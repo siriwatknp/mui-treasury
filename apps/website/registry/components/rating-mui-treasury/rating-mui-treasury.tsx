@@ -39,9 +39,13 @@ export function RatingMuiTreasury() {
           Product review
         </Typography>
         <Paper variant="outlined" sx={{ p: 2, width: 280 }}>
-          <Stack direction="row" spacing={1.5} sx={{
-            alignItems: "center"
-          }}>
+          <Stack
+            direction="row"
+            spacing={1.5}
+            sx={{
+              alignItems: 'center',
+            }}
+          >
             <Avatar sx={{ width: 32, height: 32, fontSize: 14 }}>JL</Avatar>
             <Typography variant="body2" sx={{ fontWeight: 600 }}>
               Jules Lin
@@ -51,13 +55,17 @@ export function RatingMuiTreasury() {
             direction="row"
             spacing={1}
             sx={{
-              alignItems: "center",
-              mt: 1.5
-            }}>
+              alignItems: 'center',
+              mt: 1.5,
+            }}
+          >
             <Rating value={4.5} precision={0.5} readOnly />
-            <Typography variant="caption" sx={{
-              color: "text.secondary"
-            }}>
+            <Typography
+              variant="caption"
+              sx={{
+                color: 'text.secondary',
+              }}
+            >
               4.5 — based on 1,284 reviews
             </Typography>
           </Stack>
@@ -75,9 +83,13 @@ export function RatingMuiTreasury() {
             <Typography variant="body2" sx={{ fontWeight: 600 }}>
               How was this article?
             </Typography>
-            <Stack direction="row" spacing={1.5} sx={{
-              alignItems: "center"
-            }}>
+            <Stack
+              direction="row"
+              spacing={1.5}
+              sx={{
+                alignItems: 'center',
+              }}
+            >
               <Rating
                 value={rating}
                 onChange={(_, value) => setRating(value)}
@@ -85,9 +97,12 @@ export function RatingMuiTreasury() {
                 size="large"
               />
               {rating !== null && (
-                <Typography variant="caption" sx={{
-                  color: "text.secondary"
-                }}>
+                <Typography
+                  variant="caption"
+                  sx={{
+                    color: 'text.secondary',
+                  }}
+                >
                   {LABELS[rating]}
                 </Typography>
               )}

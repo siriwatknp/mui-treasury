@@ -309,9 +309,10 @@ function Section({
         direction="row"
         spacing={2}
         sx={{
-          alignItems: "center",
-          flexWrap: "wrap"
-        }}>
+          alignItems: 'center',
+          flexWrap: 'wrap',
+        }}
+      >
         {children}
       </Stack>
     </Box>

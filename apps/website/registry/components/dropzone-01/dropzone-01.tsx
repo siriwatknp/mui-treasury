@@ -25,10 +25,8 @@ export interface DropzoneFile extends File {
   preview?: string;
 }
 
-export interface Dropzone01Props extends Omit<
-  DropzoneOptions,
-  'onDrop' | 'onDropAccepted'
-> {
+export interface Dropzone01Props
+  extends Omit<DropzoneOptions, 'onDrop' | 'onDropAccepted'> {
   value?: DropzoneFile[];
   onChange?: (files: DropzoneFile[]) => void;
   onReject?: (rejections: FileRejection[]) => void;
@@ -145,9 +143,10 @@ export function Dropzone01({
         <Typography
           variant="body1"
           sx={{
-            color: "text.secondary",
-            textAlign: "center"
-          }}>
+            color: 'text.secondary',
+            textAlign: 'center',
+          }}
+        >
           {isDragActive
             ? isDragReject
               ? 'Some files will be rejected'
@@ -155,9 +154,12 @@ export function Dropzone01({
             : 'Drag & drop files here, or click to browse'}
         </Typography>
         {helperText && (
-          <Typography variant="body2" sx={{
-            color: "text.disabled"
-          }}>
+          <Typography
+            variant="body2"
+            sx={{
+              color: 'text.disabled',
+            }}
+          >
             {helperText}
           </Typography>
         )}

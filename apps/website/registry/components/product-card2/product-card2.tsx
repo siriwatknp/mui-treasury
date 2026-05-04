@@ -252,9 +252,10 @@ export function ProductCard2({
             <Typography
               variant="body2"
               sx={{
-                color: "text.secondary",
-                mb: 0.5
-              }}>
+                color: 'text.secondary',
+                mb: 0.5,
+              }}
+            >
               Price
             </Typography>
             <Typography variant="h5" sx={{ fontWeight: 600 }}>

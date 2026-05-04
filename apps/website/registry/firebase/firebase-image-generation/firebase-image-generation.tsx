@@ -117,9 +117,11 @@ export default function FirebaseImageGeneration() {
           p: 2,
         }}
       >
-        <Typography sx={{
-          color: "text.secondary"
-        }}>
+        <Typography
+          sx={{
+            color: 'text.secondary',
+          }}
+        >
           Firebase not configured. Please set up Firebase config at the top of
           the page.
         </Typography>
@@ -164,9 +166,11 @@ export default function FirebaseImageGeneration() {
                 <Typography variant="h4" sx={{ fontWeight: 500 }}>
                   Image Generation
                 </Typography>
-                <Typography sx={{
-                  color: "text.secondary"
-                }}>
+                <Typography
+                  sx={{
+                    color: 'text.secondary',
+                  }}
+                >
                   Describe an image you&apos;d like to generate
                 </Typography>
               </Box>

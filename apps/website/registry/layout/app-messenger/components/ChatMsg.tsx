@@ -57,7 +57,7 @@ const ChatMsg = ({
       container
       spacing={2}
       sx={{
-        justifyContent: side === 'right' ? 'flex-end' : 'flex-start'
+        justifyContent: side === 'right' ? 'flex-end' : 'flex-start',
       }}
     >
       {side === 'left' && (

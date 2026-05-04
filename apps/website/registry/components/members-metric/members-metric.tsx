@@ -24,9 +24,12 @@ export function MembersMetric() {
             mb: 2,
           }}
         >
-          <Typography gutterBottom sx={{
-            color: "text.secondary"
-          }}>
+          <Typography
+            gutterBottom
+            sx={{
+              color: 'text.secondary',
+            }}
+          >
             Members
           </Typography>
           <IconButton
@@ -54,9 +57,10 @@ export function MembersMetric() {
               direction="row"
               spacing={0.5}
               sx={{
-                alignItems: "center",
-                color: 'error.text'
-              }}>
+                alignItems: 'center',
+                color: 'error.text',
+              }}
+            >
               <TrendingDownIcon fontSize="small" sx={{ color: 'error.main' }} />
               <Typography variant="body2">10% vs last month</Typography>
             </Stack>

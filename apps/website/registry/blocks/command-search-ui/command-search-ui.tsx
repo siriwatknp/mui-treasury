@@ -203,9 +203,12 @@ export function CommandSearchUI() {
               mb: 2,
             }}
           >
-            <Typography variant="body2" sx={{
-              color: "text.secondary"
-            }}>
+            <Typography
+              variant="body2"
+              sx={{
+                color: 'text.secondary',
+              }}
+            >
               Recent meetings (8)
             </Typography>
             <Stack direction="row" spacing={0.5}>
@@ -266,14 +269,20 @@ export function CommandSearchUI() {
                       }}
                     />
                   </Box>
-                  <Typography variant="body2" sx={{
-                    fontWeight: 600
-                  }}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontWeight: 600,
+                    }}
+                  >
                     {meeting.name}
                   </Typography>
-                  <Typography variant="caption" sx={{
-                    color: "text.secondary"
-                  }}>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      color: 'text.secondary',
+                    }}
+                  >
                     {meeting.time} - {meeting.duration}
                   </Typography>
                   <Button
@@ -293,9 +302,10 @@ export function CommandSearchUI() {
           <Typography
             variant="body2"
             sx={{
-              color: "text.secondary",
-              mb: 1.5
-            }}>
+              color: 'text.secondary',
+              mb: 1.5,
+            }}
+          >
             Quick actions (6)
           </Typography>
           <List dense sx={{ p: 0 }}>
@@ -340,14 +350,20 @@ export function CommandSearchUI() {
             }),
           })}
         >
-          <Typography variant="caption" sx={{
-            color: "text.secondary"
-          }}>
+          <Typography
+            variant="caption"
+            sx={{
+              color: 'text.secondary',
+            }}
+          >
             Use ↑ ↓ to navigate
           </Typography>
-          <Typography variant="caption" sx={{
-            color: "text.secondary"
-          }}>
+          <Typography
+            variant="caption"
+            sx={{
+              color: 'text.secondary',
+            }}
+          >
             Type / for commands
           </Typography>
         </Box>

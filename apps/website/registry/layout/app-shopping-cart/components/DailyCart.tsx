@@ -101,9 +101,11 @@ const rows = [
 
 const DailyCart = () => {
   return (
-    <Box sx={{
-      pt: { xs: 2, sm: 4, md: 6 }
-    }}>
+    <Box
+      sx={{
+        pt: { xs: 2, sm: 4, md: 6 },
+      }}
+    >
       <TypographyHeading variant={'h1'} gutterBottom>
         Shopping Cart.
       </TypographyHeading>
@@ -125,18 +127,22 @@ const DailyCart = () => {
                   <Box
                     sx={{
                       display: 'flex',
-                      alignItems: 'center'
-                    }}>
+                      alignItems: 'center',
+                    }}
+                  >
                     <Box
                       sx={{
                         width: 80,
-                        height: 80
-                      }}>
+                        height: 80,
+                      }}
+                    >
                       <ImgImage alt={row.name} src={row.image} />
                     </Box>
-                    <Box sx={{
-                      ml: 2
-                    }}>
+                    <Box
+                      sx={{
+                        ml: 2,
+                      }}
+                    >
                       <PName>{row.name}</PName>
                       <SpanDescr>{row.descr}</SpanDescr>
                     </Box>

@@ -129,9 +129,11 @@ Always aim to create an immersive, illustrated experience.`,
           p: 2,
         }}
       >
-        <Typography sx={{
-          color: "text.secondary"
-        }}>
+        <Typography
+          sx={{
+            color: 'text.secondary',
+          }}
+        >
           Firebase not configured. Please set up Firebase config at the top of
           the page.
         </Typography>
@@ -176,9 +178,11 @@ Always aim to create an immersive, illustrated experience.`,
                 <Typography variant="h4" sx={{ fontWeight: 500 }}>
                   Story Telling
                 </Typography>
-                <Typography sx={{
-                  color: "text.secondary"
-                }}>
+                <Typography
+                  sx={{
+                    color: 'text.secondary',
+                  }}
+                >
                   Create illustrated stories, recipes, and guides
                 </Typography>
               </Box>

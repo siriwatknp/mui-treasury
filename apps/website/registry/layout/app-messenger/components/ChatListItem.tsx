@@ -27,9 +27,11 @@ const ChatListItem = ({
   concise,
 }: ChatListItemProps) => {
   return (
-    <Box sx={{
-      px: 1
-    }}>
+    <Box
+      sx={{
+        px: 1,
+      }}
+    >
       <ListItemButton
         sx={{
           paddingLeft: '8px',
@@ -76,11 +78,14 @@ const ChatListItem = ({
                       color: 'text.primary',
                     }),
                   },
-                }
-              }} />
-            <Box sx={{
-              position: 'relative'
-            }}>
+                },
+              }}
+            />
+            <Box
+              sx={{
+                position: 'relative',
+              }}
+            >
               <MoreHoriz
                 className="ChatListItem-more"
                 sx={{ visibility: 'hidden', fontSize: 20 }}

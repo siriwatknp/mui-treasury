@@ -48,7 +48,11 @@ const GridMainGrid = styled(Grid)(({ theme: { breakpoints } }) => ({
 
 const DailySummary = () => {
   return (
-    <GridMainGrid container spacing={2} sx={{ justifyContent: 'space-between' }}>
+    <GridMainGrid
+      container
+      spacing={2}
+      sx={{ justifyContent: 'space-between' }}
+    >
       <Grid size={{ xs: 12, sm: 5, md: 4 }}>
         <Grid container spacing={1}>
           <Grid size={5}>
@@ -88,9 +92,13 @@ const DailySummary = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid size={{ xs: 12, sm: 5, md: 4 }} container sx={{
-        alignItems: 'flex-end'
-      }}>
+      <Grid
+        size={{ xs: 12, sm: 5, md: 4 }}
+        container
+        sx={{
+          alignItems: 'flex-end',
+        }}
+      >
         <ButtonBtn startIcon={<KeyboardArrowLeft />}>
           Continue Shopping
         </ButtonBtn>

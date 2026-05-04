@@ -52,9 +52,12 @@ export function ButtonGroupMuiTreasury() {
         <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
           Save action
         </Typography>
-        <Stack spacing={0.5} sx={{
-          alignItems: "flex-start"
-        }}>
+        <Stack
+          spacing={0.5}
+          sx={{
+            alignItems: 'flex-start',
+          }}
+        >
           <ButtonGroup
             variant="contained"
             aria-label="save changes split button"
@@ -64,9 +67,12 @@ export function ButtonGroupMuiTreasury() {
               <ArrowDropDownIcon />
             </Button>
           </ButtonGroup>
-          <Typography variant="caption" sx={{
-            color: "text.secondary"
-          }}>
+          <Typography
+            variant="caption"
+            sx={{
+              color: 'text.secondary',
+            }}
+          >
             Saves and notifies your team.
           </Typography>
         </Stack>

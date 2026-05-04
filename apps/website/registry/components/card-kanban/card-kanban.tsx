@@ -47,8 +47,9 @@ export function CardKanban() {
         <Box
           sx={{
             display: 'flex',
-            alignItems: 'center'
-          }}>
+            alignItems: 'center',
+          }}
+        >
           <Slider
             defaultValue={30}
             sx={{

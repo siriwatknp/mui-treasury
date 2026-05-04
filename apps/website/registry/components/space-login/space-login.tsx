@@ -261,11 +261,12 @@ export function SpaceLogin() {
                 <Stack
                   direction="row"
                   sx={{
-                    justifyContent: "space-between",
-                    alignItems: "center",
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
                     mt: 1,
-                    flexWrap: 'wrap'
-                  }}>
+                    flexWrap: 'wrap',
+                  }}
+                >
                   <FormControlLabel
                     control={
                       <Checkbox
@@ -310,13 +311,17 @@ export function SpaceLogin() {
                   direction="row"
                   spacing={0.5}
                   sx={{
-                    justifyContent: "center",
+                    justifyContent: 'center',
                     mt: 2,
-                    flexWrap: 'wrap'
-                  }}>
-                  <Typography variant="body2" sx={{
-                    color: "text.secondary"
-                  }}>
+                    flexWrap: 'wrap',
+                  }}
+                >
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: 'text.secondary',
+                    }}
+                  >
                     Don&apos;t have an account?
                   </Typography>
                   <Link

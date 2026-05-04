@@ -124,9 +124,11 @@ Always respond in a clear and organized manner using Markdown formatting.`,
           p: 2,
         }}
       >
-        <Typography sx={{
-          color: "text.secondary"
-        }}>
+        <Typography
+          sx={{
+            color: 'text.secondary',
+          }}
+        >
           Firebase not configured. Please set up Firebase config at the top of
           the page.
         </Typography>
@@ -171,9 +173,11 @@ Always respond in a clear and organized manner using Markdown formatting.`,
                 <Typography variant="h4" sx={{ fontWeight: 500 }}>
                   Analyze Image
                 </Typography>
-                <Typography sx={{
-                  color: "text.secondary"
-                }}>
+                <Typography
+                  sx={{
+                    color: 'text.secondary',
+                  }}
+                >
                   Upload an image to analyze
                 </Typography>
               </Box>

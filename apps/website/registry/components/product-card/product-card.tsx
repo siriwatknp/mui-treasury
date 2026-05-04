@@ -105,9 +105,13 @@ export function ProductCard({
       </Box>
       <CardContent sx={{ p: 2 }}>
         <Stack spacing={2}>
-          <Typography variant="h6" component="h3" sx={{
-            fontWeight: "bold"
-          }}>
+          <Typography
+            variant="h6"
+            component="h3"
+            sx={{
+              fontWeight: 'bold',
+            }}
+          >
             {title}
           </Typography>
 
@@ -116,9 +120,10 @@ export function ProductCard({
             spacing={1}
             useFlexGap
             sx={{
-              flexWrap: "wrap",
-              mt: -1
-            }}>
+              flexWrap: 'wrap',
+              mt: -1,
+            }}
+          >
             {attributes.map((attr, index) => (
               <Chip
                 key={index}
@@ -137,9 +142,10 @@ export function ProductCard({
           <Typography
             variant="body2"
             sx={{
-              color: "text.secondary",
-              lineHeight: 1.5
-            }}>
+              color: 'text.secondary',
+              lineHeight: 1.5,
+            }}
+          >
             {description}
           </Typography>
 
@@ -147,24 +153,27 @@ export function ProductCard({
             direction="row"
             spacing={1}
             sx={{
-              justifyContent: "space-between",
-              alignItems: "flex-end"
-            }}>
+              justifyContent: 'space-between',
+              alignItems: 'flex-end',
+            }}
+          >
             <Box>
               <Typography
                 variant="caption"
                 sx={{
-                  color: "text.secondary",
-                  display: "block"
-                }}>
+                  color: 'text.secondary',
+                  display: 'block',
+                }}
+              >
                 PRICE
               </Typography>
               <Typography
                 variant="h5"
                 sx={{
-                  fontWeight: "bold",
-                  color: "text.primary"
-                }}>
+                  fontWeight: 'bold',
+                  color: 'text.primary',
+                }}
+              >
                 {price}
               </Typography>
             </Box>

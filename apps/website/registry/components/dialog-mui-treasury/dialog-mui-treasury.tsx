@@ -82,9 +82,11 @@ export function DialogMuiTreasury() {
           </IconButton>
         </Box>
         <DialogContent sx={contentSx}>
-          <Stack sx={{
-            gap: 2
-          }}>
+          <Stack
+            sx={{
+              gap: 2,
+            }}
+          >
             <TextField
               fullWidth
               label="Email"

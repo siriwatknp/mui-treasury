@@ -112,7 +112,7 @@ export function PortfolioValueChart() {
             spacing={1}
             role="listitem"
             sx={{
-              alignItems: "center"
+              alignItems: 'center',
             }}
           >
             <Box
@@ -124,9 +124,12 @@ export function PortfolioValueChart() {
               }}
               aria-hidden="true"
             />
-            <Typography variant="body2" sx={{
-              color: "text.secondary"
-            }}>
+            <Typography
+              variant="body2"
+              sx={{
+                color: 'text.secondary',
+              }}
+            >
               ETF Shares Vital
             </Typography>
           </Stack>
@@ -135,7 +138,7 @@ export function PortfolioValueChart() {
             spacing={1}
             role="listitem"
             sx={{
-              alignItems: "center"
+              alignItems: 'center',
             }}
           >
             <Box
@@ -147,9 +150,12 @@ export function PortfolioValueChart() {
               }}
               aria-hidden="true"
             />
-            <Typography variant="body2" sx={{
-              color: "text.secondary"
-            }}>
+            <Typography
+              variant="body2"
+              sx={{
+                color: 'text.secondary',
+              }}
+            >
               Vitainvest Core
             </Typography>
           </Stack>
@@ -158,7 +164,7 @@ export function PortfolioValueChart() {
             spacing={1}
             role="listitem"
             sx={{
-              alignItems: "center"
+              alignItems: 'center',
             }}
           >
             <Box
@@ -170,9 +176,12 @@ export function PortfolioValueChart() {
               }}
               aria-hidden="true"
             />
-            <Typography variant="body2" sx={{
-              color: "text.secondary"
-            }}>
+            <Typography
+              variant="body2"
+              sx={{
+                color: 'text.secondary',
+              }}
+            >
               iShares Tech Growth
             </Typography>
           </Stack>

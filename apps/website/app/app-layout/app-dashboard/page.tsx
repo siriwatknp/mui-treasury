@@ -121,9 +121,10 @@ export default function AppDashboardPage() {
         <Typography
           variant="subtitle1"
           sx={{
-            fontWeight: "bold",
-            ml: 1
-          }}>
+            fontWeight: 'bold',
+            ml: 1,
+          }}
+        >
           Dashboard
         </Typography>
       </Header>
@@ -332,16 +333,21 @@ export default function AppDashboardPage() {
       </EdgeSidebar>
       <Content sx={{ p: { xs: 2, md: 4 } }}>
         <Box sx={{ maxWidth: 960, mx: 'auto' }}>
-          <Typography variant="h4" gutterBottom sx={{
-            fontWeight: "bold"
-          }}>
+          <Typography
+            variant="h4"
+            gutterBottom
+            sx={{
+              fontWeight: 'bold',
+            }}
+          >
             Boost your site&apos;s speed and security
           </Typography>
           <Typography
             sx={{
-              color: "text.secondary",
-              mb: 4
-            }}>
+              color: 'text.secondary',
+              mb: 4,
+            }}
+          >
             Connect your domain to start sending web traffic through the
             platform.
           </Typography>
@@ -357,9 +363,10 @@ export default function AppDashboardPage() {
             <Typography
               variant="body2"
               sx={{
-                fontWeight: "medium",
-                mb: 1
-              }}>
+                fontWeight: 'medium',
+                mb: 1,
+              }}
+            >
               Enter an existing domain
             </Typography>
             <Box
@@ -396,24 +403,36 @@ export default function AppDashboardPage() {
           gap: 2,
         }}
       >
-        <Typography variant="caption" sx={{
-          color: "text.secondary"
-        }}>
+        <Typography
+          variant="caption"
+          sx={{
+            color: 'text.secondary',
+          }}
+        >
           Support
         </Typography>
-        <Typography variant="caption" sx={{
-          color: "text.secondary"
-        }}>
+        <Typography
+          variant="caption"
+          sx={{
+            color: 'text.secondary',
+          }}
+        >
           System Status
         </Typography>
-        <Typography variant="caption" sx={{
-          color: "text.secondary"
-        }}>
+        <Typography
+          variant="caption"
+          sx={{
+            color: 'text.secondary',
+          }}
+        >
           Privacy Policy
         </Typography>
-        <Typography variant="caption" sx={{
-          color: "text.secondary"
-        }}>
+        <Typography
+          variant="caption"
+          sx={{
+            color: 'text.secondary',
+          }}
+        >
           © 2025 Company, Inc.
         </Typography>
       </Footer>

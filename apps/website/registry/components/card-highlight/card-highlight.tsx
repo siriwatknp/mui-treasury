@@ -134,36 +134,43 @@ const CustomCard = ({
         <Box
           sx={{
             position: 'relative',
-            zIndex: 1
-          }}>
+            zIndex: 1,
+          }}
+        >
           <Box
             sx={{
-              display: "flex",
+              display: 'flex',
               p: 0,
               gap: 2,
-              flexWrap: 'nowrap'
-            }}>
+              flexWrap: 'nowrap',
+            }}
+          >
             <Box>
               <AvatarLogo src={logo} />
             </Box>
-            <Box sx={{
-              alignSelf: "flex-end"
-            }}>
+            <Box
+              sx={{
+                alignSelf: 'flex-end',
+              }}
+            >
               <StyledH2>{title}</StyledH2>
             </Box>
           </Box>
           <Box
             sx={{
-              display: "flex",
+              display: 'flex',
               mt: 4,
-              alignItems: 'center'
-            }}>
+              alignItems: 'center',
+            }}
+          >
             <Box>
               <StyledDivTeam>{brand}</StyledDivTeam>
             </Box>
-            <Box sx={{
-              ml: "auto"
-            }}>
+            <Box
+              sx={{
+                ml: 'auto',
+              }}
+            >
               <StyledDivDate>{date}</StyledDivDate>
             </Box>
           </Box>

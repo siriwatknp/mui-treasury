@@ -65,9 +65,10 @@ export function DataMetrics() {
             <Stack
               direction="row"
               sx={{
-                justifyContent: "space-between",
-                mt: 1
-              }}>
+                justifyContent: 'space-between',
+                mt: 1,
+              }}
+            >
               <Typography variant="caption" sx={{ color: 'text.secondary' }}>
                 {storagePercentage.toFixed(1)}%
               </Typography>
@@ -95,10 +96,11 @@ export function DataMetrics() {
               direction="row"
               spacing={2}
               sx={{
-                alignItems: "baseline",
+                alignItems: 'baseline',
                 mb: 2,
-                whiteSpace: 'nowrap'
-              }}>
+                whiteSpace: 'nowrap',
+              }}
+            >
               <Typography
                 variant="h3"
                 component="div"
@@ -140,10 +142,11 @@ export function DataMetrics() {
               direction="row"
               spacing={2}
               sx={{
-                flexWrap: "wrap",
-                justifyContent: "space-between",
-                alignItems: "flex-start"
-              }}>
+                flexWrap: 'wrap',
+                justifyContent: 'space-between',
+                alignItems: 'flex-start',
+              }}
+            >
               <Stack spacing={0.25}>
                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                   Data Workspaces

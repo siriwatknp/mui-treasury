@@ -220,8 +220,9 @@ export function AppFooter01() {
               variant="body1"
               sx={{
                 fontWeight: 600,
-                pb: 1
-              }}>
+                pb: 1,
+              }}
+            >
               {section.title}
             </Typography>
             <Stack spacing={1.5}>
@@ -230,17 +231,21 @@ export function AppFooter01() {
                   key={link.label}
                   href={link.href}
                   underline="hover"
-                  sx={[{
-                    color: "text.primary"
-                  }, (theme) => ({
-                    ...theme.typography.body1,
-                    display: 'inline-block',
-                    '@media (hover: hover)': {
-                      '&:hover': {
-                        color: 'text.secondary',
-                      },
+                  sx={[
+                    {
+                      color: 'text.primary',
                     },
-                  })]}>
+                    (theme) => ({
+                      ...theme.typography.body1,
+                      display: 'inline-block',
+                      '@media (hover: hover)': {
+                        '&:hover': {
+                          color: 'text.secondary',
+                        },
+                      },
+                    }),
+                  ]}
+                >
                   {link.label}
                 </Link>
               ))}

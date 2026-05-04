@@ -73,16 +73,20 @@ export function PaginationMuiTreasury() {
           <Stack
             direction="row"
             sx={{
-              alignItems: "center",
-              justifyContent: "space-between",
+              alignItems: 'center',
+              justifyContent: 'space-between',
               px: 2,
               py: 1.5,
               borderTop: 1,
-              borderColor: 'divider'
-            }}>
-            <Typography variant="caption" sx={{
-              color: "text.secondary"
-            }}>
+              borderColor: 'divider',
+            }}
+          >
+            <Typography
+              variant="caption"
+              sx={{
+                color: 'text.secondary',
+              }}
+            >
               Showing 21–24 of 248
             </Typography>
             <Pagination

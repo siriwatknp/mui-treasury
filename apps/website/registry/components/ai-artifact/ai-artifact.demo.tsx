@@ -116,9 +116,12 @@ for i in range(10):
                   justifyContent: 'center',
                 }}
               >
-                <Typography variant="body2" sx={{
-                  color: "text.secondary"
-                }}>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: 'text.secondary',
+                  }}
+                >
                   [Chart Placeholder]
                 </Typography>
               </Box>

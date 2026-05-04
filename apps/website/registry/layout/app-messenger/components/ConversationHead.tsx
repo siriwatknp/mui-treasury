@@ -65,8 +65,9 @@ const ConversationHead = () => {
               sx: {
                 fontSize: 12,
               },
-            }
-          }} />
+            },
+          }}
+        />
       </ListItem>
     </Box>
   );

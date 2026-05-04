@@ -38,9 +38,10 @@ export function TypographyMuiTreasury() {
             <Typography
               variant="caption"
               sx={{
-                color: "text.secondary",
-                fontFamily: 'monospace'
-              }}>
+                color: 'text.secondary',
+                fontFamily: 'monospace',
+              }}
+            >
               {sample.variant}
             </Typography>
             <Typography variant={sample.variant}>{sample.text}</Typography>
