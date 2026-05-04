@@ -2,11 +2,11 @@
 
 import React from 'react';
 
-import Box from '@mui/material/Box';
+import Box, { BoxProps } from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export function CardSysi(props: { style?: React.CSSProperties }) {
+export function CardSysi(props: BoxProps) {
   return (
     <Box
       {...props}

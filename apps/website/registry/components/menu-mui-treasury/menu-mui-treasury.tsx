@@ -8,7 +8,7 @@ import {
   ContentCut,
   ContentPaste,
   Logout,
-  PersonOutline,
+  PersonOutlined,
   Settings,
 } from '@mui/icons-material';
 import {
@@ -54,7 +54,7 @@ export function MenuMuiTreasury() {
           <MenuList sx={menuListSx}>
             <MenuItem>
               <ListItemIcon>
-                <PersonOutline fontSize="small" />
+                <PersonOutlined fontSize="small" />
               </ListItemIcon>
               <ListItemText>Profile</ListItemText>
             </MenuItem>

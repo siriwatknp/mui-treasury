@@ -14,7 +14,6 @@ const StyledInsetAvoidingView = styled('div')({
 const InsetAvoidingView = React.forwardRef<HTMLDivElement, BoxProps>(
   function InsetAvoidingView({ className, ...props }, ref) {
     return (
-      // @ts-expect-error BoxProps on styled native element
       <StyledInsetAvoidingView
         ref={ref}
         className={`${layoutClasses.InsetAvoidingView} ${className || ''}`}

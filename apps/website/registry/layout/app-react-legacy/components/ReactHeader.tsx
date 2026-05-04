@@ -73,9 +73,9 @@ const ReactHeader = ({ concise }: { concise?: boolean }) => (
       <Box sx={{
         ml: 'auto'
       }}>
-        <Menu fontSize={16}>v16.12.0</Menu>
-        <Menu fontSize={16}>Languages</Menu>
-        <Menu fontSize={16}>Github</Menu>
+        <Menu sx={{ fontSize: 16 }}>v16.12.0</Menu>
+        <Menu sx={{ fontSize: 16 }}>Languages</Menu>
+        <Menu sx={{ fontSize: 16 }}>Github</Menu>
       </Box>
     )}
   </>

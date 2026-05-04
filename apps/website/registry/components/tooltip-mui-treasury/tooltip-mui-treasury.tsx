@@ -4,8 +4,8 @@ import * as React from 'react';
 
 import BookmarkBorder from '@mui/icons-material/BookmarkBorder';
 import ContentCopy from '@mui/icons-material/ContentCopy';
-import DeleteOutline from '@mui/icons-material/DeleteOutline';
-import HelpOutline from '@mui/icons-material/HelpOutline';
+import DeleteOutline from '@mui/icons-material/DeleteOutlined';
+import HelpOutline from '@mui/icons-material/HelpOutlined';
 import Share from '@mui/icons-material/Share';
 import {
   Box,
