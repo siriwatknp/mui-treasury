@@ -36,9 +36,10 @@ export function CallVolumeTrends() {
                 direction="row"
                 spacing={1}
                 sx={{
-                  alignItems: "center",
-                  mb: 0.5
-                }}>
+                  alignItems: 'center',
+                  mb: 0.5,
+                }}
+              >
                 <Box
                   sx={{
                     width: 14,
@@ -68,9 +69,10 @@ export function CallVolumeTrends() {
                 direction="row"
                 spacing={1}
                 sx={{
-                  alignItems: "center",
-                  mb: 0.5
-                }}>
+                  alignItems: 'center',
+                  mb: 0.5,
+                }}
+              >
                 <Box
                   sx={{
                     width: 14,
@@ -96,7 +98,7 @@ export function CallVolumeTrends() {
             </Box>
           </Stack>
 
-          <Box sx={{ position: 'relative', mt: 1 }}>
+          <Box sx={{ position: 'relative', mt: 1, flex: 1, minWidth: 280 }}>
             <LineChart
               height={160}
               series={[
@@ -152,12 +154,13 @@ export function CallVolumeTrends() {
             <Stack
               direction="row"
               sx={{
-                justifyContent: "space-between",
+                justifyContent: 'space-between',
                 position: 'absolute',
                 bottom: 10,
                 left: 10,
-                right: 10
-              }}>
+                right: 10,
+              }}
+            >
               <Typography
                 variant="body2"
                 sx={{ color: 'text.secondary', fontSize: '0.875rem' }}

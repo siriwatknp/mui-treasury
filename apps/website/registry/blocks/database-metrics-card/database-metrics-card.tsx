@@ -86,9 +86,10 @@ function MetricCard({
           direction="row"
           spacing={1}
           sx={{
-            alignItems: "center",
-            mb: 1
-          }}>
+            alignItems: 'center',
+            mb: 1,
+          }}
+        >
           <Typography
             variant="body2"
             sx={{
@@ -144,7 +145,7 @@ function MetricCard({
         </Box>
       </Box>
       <Box
-        sx={{ width: '100%', height: 140 }}
+        sx={{ width: '100%', minWidth: 280, height: 140 }}
         role="img"
         aria-label={`${title} trend chart showing ${
           isPositive ? 'growth' : 'decline'
