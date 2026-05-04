@@ -22,7 +22,9 @@ export function Demo() {
     <Root height="90vh">
       <Header>
         <Box sx={{ px: 2 }}>
-          <Typography variant="caption" fontWeight="bold">
+          <Typography variant="caption" sx={{
+            fontWeight: "bold"
+          }}>
             Header — resize to see sidebar appear at md
           </Typography>
         </Box>
@@ -36,7 +38,9 @@ export function Demo() {
       >
         <EdgeSidebarContent>
           <Box sx={{ p: 2 }}>
-            <Typography variant="caption" color="text.secondary">
+            <Typography variant="caption" sx={{
+              color: "text.secondary"
+            }}>
               Sidebar
             </Typography>
           </Box>
@@ -44,14 +48,18 @@ export function Demo() {
       </EdgeSidebar>
       <Content>
         <Box sx={{ p: 2 }}>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" sx={{
+            color: "text.secondary"
+          }}>
             Content
           </Typography>
         </Box>
       </Content>
       <Footer>
         <Box sx={{ p: 2 }}>
-          <Typography variant="caption" color="text.secondary">
+          <Typography variant="caption" sx={{
+            color: "text.secondary"
+          }}>
             Footer
           </Typography>
         </Box>

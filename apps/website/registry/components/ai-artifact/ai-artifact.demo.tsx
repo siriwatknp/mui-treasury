@@ -70,7 +70,6 @@ for i in range(10):
           </ArtifactContent>
         </Artifact>
       </Box>
-
       {/* Artifact with Rich Content */}
       <Box sx={{ maxWidth: 600 }}>
         <Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
@@ -117,7 +116,9 @@ for i in range(10):
                   justifyContent: 'center',
                 }}
               >
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   [Chart Placeholder]
                 </Typography>
               </Box>
@@ -125,7 +126,6 @@ for i in range(10):
           </ArtifactContent>
         </Artifact>
       </Box>
-
       {/* Compact Artifact */}
       <Box sx={{ maxWidth: 600 }}>
         <Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>

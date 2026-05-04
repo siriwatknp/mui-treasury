@@ -23,7 +23,9 @@ export function SnackbarMuiTreasury() {
         sx={snackSx}
         message="New version available."
         action={
-          <Stack direction="row" spacing={1} alignItems="center">
+          <Stack direction="row" spacing={1} sx={{
+            alignItems: "center"
+          }}>
             <Button color="inherit" size="small" onClick={() => {}}>
               VIEW
             </Button>

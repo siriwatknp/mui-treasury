@@ -57,12 +57,16 @@ export function CardPreview01() {
                     <Typography
                       variant="subtitle1"
                       component="h3"
-                      fontWeight="bold"
                       gutterBottom
+                      sx={{
+                        fontWeight: "bold"
+                      }}
                     >
                       Typography
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" sx={{
+                      color: "text.secondary"
+                    }}>
                       Typography is the art and science of arranging type to
                       make written language clear, visually appealing, and
                       effective in communication.

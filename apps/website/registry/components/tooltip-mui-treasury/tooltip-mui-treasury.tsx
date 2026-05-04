@@ -27,7 +27,9 @@ export function TooltipMuiTreasury() {
           variant="outlined"
           sx={{ display: 'inline-flex', p: 0.5, borderRadius: 2 }}
         >
-          <Stack direction="row" spacing={0.5} alignItems="center">
+          <Stack direction="row" spacing={0.5} sx={{
+            alignItems: "center"
+          }}>
             <Tooltip title="Save to bookmarks" placement="bottom" arrow open>
               <IconButton size="small">
                 <BookmarkBorder fontSize="small" />
@@ -51,7 +53,6 @@ export function TooltipMuiTreasury() {
           </Stack>
         </Paper>
       </Box>
-
       <Box>
         <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
           Inline help

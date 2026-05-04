@@ -113,7 +113,13 @@ const CustomCard = ({
 }) => (
   <DivRoot>
     <ColumnCard className="MuiCard-root">
-      <Box display="flex" p={2} gap={2} flexWrap="nowrap">
+      <Box
+        sx={{
+          display: "flex",
+          p: 2,
+          gap: 2,
+          flexWrap: "nowrap"
+        }}>
         <AvatarLogo variant={'rounded'} src={thumbnail} />
         <Info useStyles={getInfoApexStyles} sx={{ alignSelf: 'center' }}>
           <InfoTitle>{title}</InfoTitle>
@@ -121,27 +127,28 @@ const CustomCard = ({
         </Info>
       </Box>
       <Box
-        pb={1}
-        px={2}
-        color={'grey.600'}
-        fontSize={'0.875rem'}
-        fontFamily={'Ubuntu'}
-        flexGrow={1}
-      >
+        sx={{
+          pb: 1,
+          px: 2,
+          color: 'grey.600',
+          fontSize: '0.875rem',
+          fontFamily: 'Ubuntu',
+          flexGrow: 1
+        }}>
         {description}
       </Box>
       <Box
-        display="flex"
-        p={2}
-        gap={2}
         sx={{
+          display: "flex",
+          p: 2,
+          gap: 2,
           flexWrap: 'wrap',
           justifyContent: 'space-between',
+
           '&& > *': {
             minWidth: `clamp(0px, (248px + 1px - 100%) * 999, 100%)`,
-          },
-        }}
-      >
+          }
+        }}>
         <Box>
           <AvatarGroup
             max={4}

@@ -42,14 +42,15 @@ export function CardNews2() {
       <CardActionArea>
         <CardContent sx={{ p: 3 }}>
           <Box
-            display={'flex'}
-            flexDirection={'column'}
-            alignItems={'center'}
-            justifyContent={'center'}
-            minHeight={360}
-            color={'common.white'}
-            textAlign={'center'}
             sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              minHeight: 360,
+              color: 'common.white',
+              textAlign: 'center',
+
               '& h2': {
                 color: '#fff',
                 letterSpacing: '2px',
@@ -58,9 +59,8 @@ export function CardNews2() {
                 lineHeight: 1.45,
                 fontFamily: "'Playfair Display',serif",
                 mb: '1.275rem',
-              },
-            }}
-          >
+              }
+            }}>
             <h2>Space</h2>
             <p>The space between the stars and galaxies is largely empty.</p>
           </Box>

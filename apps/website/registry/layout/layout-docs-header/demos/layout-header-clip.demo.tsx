@@ -45,11 +45,12 @@ export function Demo() {
         <ToggleButton value="right">Right</ToggleButton>
         <ToggleButton value="both">Both</ToggleButton>
       </ToggleButtonGroup>
-
       <Root height="300px" sx={{ width: '100%' }}>
         <Header clip={headerClip}>
           <Box sx={{ px: 2 }}>
-            <Typography variant="subtitle2" fontWeight="bold">
+            <Typography variant="subtitle2" sx={{
+              fontWeight: "bold"
+            }}>
               Header
             </Typography>
           </Box>
@@ -57,7 +58,9 @@ export function Demo() {
         <EdgeSidebar variant={['permanent', { width: '200px' }]}>
           <EdgeSidebarContent>
             <Box sx={{ p: 2 }}>
-              <Typography variant="caption" color="text.secondary">
+              <Typography variant="caption" sx={{
+                color: "text.secondary"
+              }}>
                 Left Sidebar
               </Typography>
             </Box>
@@ -65,7 +68,9 @@ export function Demo() {
         </EdgeSidebar>
         <Content>
           <Box sx={{ p: 2 }}>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Content area
             </Typography>
           </Box>
@@ -73,7 +78,9 @@ export function Demo() {
         <EdgeSidebarRight variant={['permanent', { width: '200px' }]}>
           <EdgeSidebarContent>
             <Box sx={{ p: 2 }}>
-              <Typography variant="caption" color="text.secondary">
+              <Typography variant="caption" sx={{
+                color: "text.secondary"
+              }}>
                 Right Sidebar
               </Typography>
             </Box>
@@ -81,7 +88,9 @@ export function Demo() {
         </EdgeSidebarRight>
         <Footer>
           <Box sx={{ p: 2 }}>
-            <Typography variant="caption" color="text.secondary">
+            <Typography variant="caption" sx={{
+              color: "text.secondary"
+            }}>
               Footer
             </Typography>
           </Box>

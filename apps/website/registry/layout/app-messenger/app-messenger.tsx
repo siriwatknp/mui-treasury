@@ -93,7 +93,9 @@ export function LayoutV6AppMessenger() {
         >
           <EdgeSidebarContent>
             <ChatsHeader />
-            <Box p={'4px 16px 12px'}>
+            <Box sx={{
+              p: '4px 16px 12px'
+            }}>
               <MessengerSearch />
             </Box>
             <ChatList />
@@ -110,7 +112,12 @@ export function LayoutV6AppMessenger() {
         <Footer>
           <Container disableGutters>
             <InsetAvoidingView>
-              <Box display={'flex'} alignItems={'center'} p={1}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  p: 1
+                }}>
                 <ChatBar />
               </Box>
             </InsetAvoidingView>

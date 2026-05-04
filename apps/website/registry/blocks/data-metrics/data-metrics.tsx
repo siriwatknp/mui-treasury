@@ -64,9 +64,10 @@ export function DataMetrics() {
             </Box>
             <Stack
               direction="row"
-              justifyContent="space-between"
-              sx={{ mt: 1 }}
-            >
+              sx={{
+                justifyContent: "space-between",
+                mt: 1
+              }}>
               <Typography variant="caption" sx={{ color: 'text.secondary' }}>
                 {storagePercentage.toFixed(1)}%
               </Typography>
@@ -92,10 +93,12 @@ export function DataMetrics() {
             </Typography>
             <Stack
               direction="row"
-              alignItems="baseline"
               spacing={2}
-              sx={{ mb: 2, whiteSpace: 'nowrap' }}
-            >
+              sx={{
+                alignItems: "baseline",
+                mb: 2,
+                whiteSpace: 'nowrap'
+              }}>
               <Typography
                 variant="h3"
                 component="div"
@@ -135,11 +138,12 @@ export function DataMetrics() {
           <CardContent sx={{ p: 2.5 }}>
             <Stack
               direction="row"
-              flexWrap="wrap"
-              justifyContent="space-between"
-              alignItems="flex-start"
               spacing={2}
-            >
+              sx={{
+                flexWrap: "wrap",
+                justifyContent: "space-between",
+                alignItems: "flex-start"
+              }}>
               <Stack spacing={0.25}>
                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                   Data Workspaces
@@ -201,7 +205,6 @@ export function DataMetrics() {
           </CardContent>
         </Card>
       </Stack>
-
       {/* Section Title */}
       <Box sx={{ mt: 6 }}>
         <Typography variant="h5" component="h2" sx={{ fontWeight: 600, mb: 1 }}>

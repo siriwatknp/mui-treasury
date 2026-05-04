@@ -44,7 +44,11 @@ export function CardKanban() {
         >
           23 y.o • Canada
         </Box>
-        <Box display={'flex'} alignItems={'center'}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center'
+          }}>
           <Slider
             defaultValue={30}
             sx={{

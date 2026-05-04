@@ -69,18 +69,18 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
 export function CardTutor() {
   return (
     <Box
-      display="flex"
-      p={1.5}
-      gap={2}
-      sx={(theme) => ({
+      sx={[{
+        display: "flex",
+        p: 1.5,
+        gap: 2
+      }, (theme) => ({
         bgcolor: '#f5f5f5',
         borderRadius: 4,
         alignItems: 'center',
         ...theme.applyStyles('dark', {
           bgcolor: (theme.vars || theme).palette.grey[900],
         }),
-      })}
-    >
+      })]}>
       <Box>
         <Avatar
           src={
@@ -93,7 +93,9 @@ export function CardTutor() {
         <InfoTitle>Kenny Foster</InfoTitle>
         <InfoSubtitle>@fosterlive</InfoSubtitle>
       </Info>
-      <Box ml={1}>
+      <Box sx={{
+        ml: 1
+      }}>
         <StyledIconButton size="small">
           <Add />
         </StyledIconButton>

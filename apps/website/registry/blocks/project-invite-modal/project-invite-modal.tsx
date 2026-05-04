@@ -113,7 +113,9 @@ export function ProjectInviteModal() {
         </IconButton>
 
         <DialogTitle sx={{ pb: 0.5 }}>
-          <Stack direction="row" spacing={1.5} alignItems="flex-start">
+          <Stack direction="row" spacing={1.5} sx={{
+            alignItems: "flex-start"
+          }}>
             <Box
               sx={(theme) => ({
                 position: 'relative',
@@ -126,7 +128,9 @@ export function ProjectInviteModal() {
               <Typography variant="h6" component="div">
                 Invite to Project
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" sx={{
+                color: "text.secondary"
+              }}>
                 Collaborate with members on this project.
               </Typography>
             </Box>
@@ -138,10 +142,17 @@ export function ProjectInviteModal() {
         <DialogContent sx={{ pt: 0 }}>
           <Stack spacing={3}>
             <Box>
-              <Typography variant="subtitle1" fontWeight="500" gutterBottom>
+              <Typography variant="subtitle1" gutterBottom sx={{
+                fontWeight: "500"
+              }}>
                 Link to Share
               </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "text.secondary",
+                  mb: 2
+                }}>
                 Anyone with the link can access
               </Typography>
 
@@ -190,7 +201,9 @@ export function ProjectInviteModal() {
             </Box>
 
             <Box>
-              <Typography variant="subtitle1" fontWeight="500" gutterBottom>
+              <Typography variant="subtitle1" gutterBottom sx={{
+                fontWeight: "500"
+              }}>
                 Email
               </Typography>
 
@@ -241,7 +254,9 @@ export function ProjectInviteModal() {
             </Box>
 
             <Box>
-              <Typography variant="subtitle1" fontWeight="500" gutterBottom>
+              <Typography variant="subtitle1" gutterBottom sx={{
+                fontWeight: "500"
+              }}>
                 Project Members
               </Typography>
 
@@ -250,8 +265,10 @@ export function ProjectInviteModal() {
                   <Stack
                     key={member.id}
                     direction="row"
-                    alignItems="center"
                     spacing={2}
+                    sx={{
+                      alignItems: "center"
+                    }}
                   >
                     <Avatar
                       src={member.avatar}
@@ -261,7 +278,9 @@ export function ProjectInviteModal() {
 
                     <Box sx={{ flex: 1 }}>
                       <Typography variant="body1">{member.name}</Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         {member.email}
                       </Typography>
                     </Box>

@@ -25,7 +25,9 @@ export function CardReview2() {
       })}
     >
       <CardContent sx={{ pr: 2 }}>
-        <Box mb={1}>
+        <Box sx={{
+          mb: 1
+        }}>
           <Box
             component="h3"
             sx={{
@@ -58,7 +60,12 @@ export function CardReview2() {
           and publishing industries for previewing layouts and visual mockups.
           credit (www.brighttv.co.th)
         </Box>
-        <Divider light sx={{ mt: 1, mb: 1 }} />
+        <Divider
+          sx={{
+            mt: 1,
+            mb: 1,
+            opacity: "0.6"
+          }} />
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Link
             component="button"

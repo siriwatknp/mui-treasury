@@ -22,7 +22,9 @@ export function Demo() {
     <Root height="300px" sx={{ maxHeight: '400px' }}>
       <Header>
         <Box sx={{ px: 2 }}>
-          <Typography variant="caption" fontWeight="bold">
+          <Typography variant="caption" sx={{
+            fontWeight: "bold"
+          }}>
             Header
           </Typography>
         </Box>
@@ -30,7 +32,9 @@ export function Demo() {
       <Content>
         <Box sx={{ p: 2, flex: 1 }}>
           {Array.from({ length: 100 }, (_, i) => (
-            <Typography key={i} variant="body2" color="text.secondary">
+            <Typography key={i} variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Line {i + 1}
             </Typography>
           ))}
@@ -38,7 +42,9 @@ export function Demo() {
         <InsetSidebar width="200px">
           <InsetContent>
             <Box sx={{ p: 2 }}>
-              <Typography variant="caption" color="text.secondary">
+              <Typography variant="caption" sx={{
+                color: "text.secondary"
+              }}>
                 Sticky sidebar — scroll main content to see
               </Typography>
             </Box>
@@ -47,7 +53,9 @@ export function Demo() {
       </Content>
       <Footer>
         <Box sx={{ p: 2 }}>
-          <Typography variant="caption" color="text.secondary">
+          <Typography variant="caption" sx={{
+            color: "text.secondary"
+          }}>
             Footer
           </Typography>
         </Box>

@@ -70,7 +70,6 @@ export function DialogMuiTreasury() {
           </Button>
         </DialogActions>
       </Paper>
-
       <Paper elevation={8} sx={dialogPaperSx}>
         <Box sx={titleRowSx}>
           <DialogTitle sx={titleSx}>Invite team member</DialogTitle>
@@ -83,7 +82,9 @@ export function DialogMuiTreasury() {
           </IconButton>
         </Box>
         <DialogContent sx={contentSx}>
-          <Stack gap={2}>
+          <Stack sx={{
+            gap: 2
+          }}>
             <TextField
               fullWidth
               label="Email"

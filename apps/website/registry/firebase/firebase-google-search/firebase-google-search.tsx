@@ -116,7 +116,9 @@ Format responses in Markdown unless asked otherwise.`,
           p: 2,
         }}
       >
-        <Typography color="text.secondary">
+        <Typography sx={{
+          color: "text.secondary"
+        }}>
           Firebase not configured. Please set up Firebase config at the top of
           the page.
         </Typography>
@@ -175,7 +177,11 @@ Format responses in Markdown unless asked otherwise.`,
                 <Typography variant="h4" sx={{ fontWeight: 500 }}>
                   Google Search Grounding
                 </Typography>
-                <Typography color="text.secondary" sx={{ textAlign: 'center' }}>
+                <Typography
+                  sx={{
+                    color: "text.secondary",
+                    textAlign: 'center'
+                  }}>
                   Ask questions that need up-to-date information
                 </Typography>
               </Box>
@@ -250,7 +256,9 @@ Format responses in Markdown unless asked otherwise.`,
                         sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
                       >
                         <CircularProgress size={20} />
-                        <Typography color="text.secondary">
+                        <Typography sx={{
+                          color: "text.secondary"
+                        }}>
                           Searching...
                         </Typography>
                       </Box>
@@ -281,7 +289,9 @@ Format responses in Markdown unless asked otherwise.`,
                 }}
               >
                 <Loader />
-                <Typography color="text.secondary">
+                <Typography sx={{
+                  color: "text.secondary"
+                }}>
                   Streaming response...
                 </Typography>
               </Box>
@@ -290,7 +300,6 @@ Format responses in Markdown unless asked otherwise.`,
           <ConversationScrollButton />
         </Conversation>
       </Box>
-
       {showSuggestions && (
         <Box sx={{ mb: 2 }}>
           <Suggestions>
@@ -304,7 +313,6 @@ Format responses in Markdown unless asked otherwise.`,
           </Suggestions>
         </Box>
       )}
-
       <PromptInput onSubmit={handleSubmit}>
         <PromptInputBody>
           <PromptInputTextarea

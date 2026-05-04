@@ -118,11 +118,15 @@ export default function AppDashboardPage() {
         >
           <MenuRounded />
         </IconButton>
-        <Typography variant="subtitle1" fontWeight="bold" sx={{ ml: 1 }}>
+        <Typography
+          variant="subtitle1"
+          sx={{
+            fontWeight: "bold",
+            ml: 1
+          }}>
           Dashboard
         </Typography>
       </Header>
-
       <EdgeSidebar
         id={SIDEBAR_ID}
         permanentAutoCollapse="lg"
@@ -326,13 +330,18 @@ export default function AppDashboardPage() {
           }
         />
       </EdgeSidebar>
-
       <Content sx={{ p: { xs: 2, md: 4 } }}>
         <Box sx={{ maxWidth: 960, mx: 'auto' }}>
-          <Typography variant="h4" gutterBottom fontWeight="bold">
+          <Typography variant="h4" gutterBottom sx={{
+            fontWeight: "bold"
+          }}>
             Boost your site&apos;s speed and security
           </Typography>
-          <Typography color="text.secondary" sx={{ mb: 4 }}>
+          <Typography
+            sx={{
+              color: "text.secondary",
+              mb: 4
+            }}>
             Connect your domain to start sending web traffic through the
             platform.
           </Typography>
@@ -345,7 +354,12 @@ export default function AppDashboardPage() {
               mb: 3,
             }}
           >
-            <Typography variant="body2" fontWeight="medium" sx={{ mb: 1 }}>
+            <Typography
+              variant="body2"
+              sx={{
+                fontWeight: "medium",
+                mb: 1
+              }}>
               Enter an existing domain
             </Typography>
             <Box
@@ -372,7 +386,6 @@ export default function AppDashboardPage() {
           </Box>
         </Box>
       </Content>
-
       <Footer
         sx={{
           py: 2,
@@ -383,16 +396,24 @@ export default function AppDashboardPage() {
           gap: 2,
         }}
       >
-        <Typography variant="caption" color="text.secondary">
+        <Typography variant="caption" sx={{
+          color: "text.secondary"
+        }}>
           Support
         </Typography>
-        <Typography variant="caption" color="text.secondary">
+        <Typography variant="caption" sx={{
+          color: "text.secondary"
+        }}>
           System Status
         </Typography>
-        <Typography variant="caption" color="text.secondary">
+        <Typography variant="caption" sx={{
+          color: "text.secondary"
+        }}>
           Privacy Policy
         </Typography>
-        <Typography variant="caption" color="text.secondary">
+        <Typography variant="caption" sx={{
+          color: "text.secondary"
+        }}>
           © 2025 Company, Inc.
         </Typography>
       </Footer>

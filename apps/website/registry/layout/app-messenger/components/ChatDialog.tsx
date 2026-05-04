@@ -10,7 +10,9 @@ const AVATAR = 'https://i.pravatar.cc/300?img=13';
 
 const ChatDialog = () => {
   return (
-    <Box p={'16px 30px 12px 10px'}>
+    <Box sx={{
+      p: '16px 30px 12px 10px'
+    }}>
       <ChatMsg
         avatar={AVATAR}
         messages={[

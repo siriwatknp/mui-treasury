@@ -152,11 +152,12 @@ export function SidebarNavigation() {
         >
           ●
         </Box>
-        <Typography variant="h6" fontWeight={600}>
+        <Typography variant="h6" sx={{
+          fontWeight: 600
+        }}>
           Acme Corp
         </Typography>
       </Box>
-
       {/* Search Field */}
       <Box sx={{ px: 2, pb: 2 }}>
         <TextField
@@ -176,7 +177,6 @@ export function SidebarNavigation() {
           }}
         />
       </Box>
-
       {/* Navigation List */}
       <List dense sx={{ px: 1, flex: 1, overflow: 'auto' }}>
         {navigationItems.map((item) => (
@@ -248,7 +248,6 @@ export function SidebarNavigation() {
           </React.Fragment>
         ))}
       </List>
-
       {/* Storage Usage Section */}
       <Box
         sx={{
@@ -258,10 +257,14 @@ export function SidebarNavigation() {
           borderColor: 'divider',
         }}
       >
-        <Typography variant="body2" fontWeight={500} gutterBottom>
+        <Typography variant="body2" gutterBottom sx={{
+          fontWeight: 500
+        }}>
           Used space
         </Typography>
-        <Typography variant="caption" color="text.secondary" gutterBottom>
+        <Typography variant="caption" gutterBottom sx={{
+          color: "text.secondary"
+        }}>
           Your team has used 80% of your available space. Need more?
         </Typography>
         <LinearProgress
@@ -289,7 +292,6 @@ export function SidebarNavigation() {
           </Button>
         </Box>
       </Box>
-
       {/* User Profile Section */}
       <Box
         sx={{
@@ -312,15 +314,18 @@ export function SidebarNavigation() {
             sx={{ width: 40, height: 40 }}
           />
           <Box sx={{ flex: 1, minWidth: 0 }}>
-            <Typography variant="body2" fontWeight={500} noWrap>
+            <Typography variant="body2" noWrap sx={{
+              fontWeight: 500
+            }}>
               Jane Smith
             </Typography>
             <Typography
               variant="caption"
-              color="text.secondary"
               noWrap
-              sx={{ display: 'block' }}
-            >
+              sx={{
+                color: "text.secondary",
+                display: 'block'
+              }}>
               jane.smith@acmecorp.com
             </Typography>
           </Box>
@@ -336,16 +341,12 @@ export function SidebarNavigation() {
           </IconButton>
         </Box>
       </Box>
-
       {/* User Menu */}
       <Menu
         id="user-menu"
         anchorEl={anchorEl}
         open={open}
         onClose={handleMenuClose}
-        MenuListProps={{
-          'aria-labelledby': 'user-menu-button',
-        }}
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'right',
@@ -353,6 +354,11 @@ export function SidebarNavigation() {
         transformOrigin={{
           vertical: 'bottom',
           horizontal: 'right',
+        }}
+        slotProps={{
+          list: {
+            'aria-labelledby': 'user-menu-button',
+          }
         }}
       >
         <MenuItem onClick={handleMenuClose}>

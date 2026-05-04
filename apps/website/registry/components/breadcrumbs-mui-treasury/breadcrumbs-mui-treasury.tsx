@@ -31,13 +31,15 @@ export function BreadcrumbsMuiTreasury() {
             <Folder fontSize="small" />
             Acme Inc
           </Link>
-          <Typography color="text.primary" sx={iconSx}>
+          <Typography
+            sx={[{
+              color: "text.primary"
+            }, ...(Array.isArray(iconSx) ? iconSx : [iconSx])]}>
             <Description fontSize="small" />
             Q4 Roadmap
           </Typography>
         </Breadcrumbs>
       </Box>
-
       <Box>
         <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
           Collapsed
@@ -61,7 +63,9 @@ export function BreadcrumbsMuiTreasury() {
           <Link underline="hover" color="inherit" href="#">
             Roadmap
           </Link>
-          <Typography color="text.primary">Overview</Typography>
+          <Typography sx={{
+            color: "text.primary"
+          }}>Overview</Typography>
         </Breadcrumbs>
       </Box>
     </Stack>

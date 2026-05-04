@@ -21,12 +21,16 @@ export function ButtonMuiTreasury() {
           Action buttons
         </Typography>
         <Stack spacing={2}>
-          <Stack direction="row" spacing={1.5} flexWrap="wrap" useFlexGap>
+          <Stack direction="row" spacing={1.5} useFlexGap sx={{
+            flexWrap: "wrap"
+          }}>
             <Button variant="contained">Save changes</Button>
             <Button variant="outlined">Cancel</Button>
             <Button variant="text">Learn more</Button>
           </Stack>
-          <Stack direction="row" spacing={1.5} flexWrap="wrap" useFlexGap>
+          <Stack direction="row" spacing={1.5} useFlexGap sx={{
+            flexWrap: "wrap"
+          }}>
             <Button variant="contained" startIcon={<AddIcon />}>
               New project
             </Button>
@@ -40,20 +44,23 @@ export function ButtonMuiTreasury() {
           </Stack>
         </Stack>
       </Box>
-
       <Paper variant="outlined" sx={{ p: 3, width: 300 }}>
         <Stack spacing={2}>
           <Box>
             <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
               Pro
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Best for growing teams
             </Typography>
           </Box>
           <Typography variant="h4" sx={{ fontWeight: 600 }}>
             $24{' '}
-            <Typography component="span" variant="body2" color="text.secondary">
+            <Typography component="span" variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               / month
             </Typography>
           </Typography>
