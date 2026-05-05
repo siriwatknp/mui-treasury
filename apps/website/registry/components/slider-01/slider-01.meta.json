@@ -1,0 +1,11 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "type": "registry:item",
+  "title": "Slider 01",
+  "description": "Inline slider with label and live value badge styled as a dark control strip.",
+  "meta": {
+    "category": "primitive",
+    "subcategory": "slider",
+    "exportName": "Slider01"
+  }
+}
