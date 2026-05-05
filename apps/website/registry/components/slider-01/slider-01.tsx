@@ -5,6 +5,8 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Slider, { SliderProps } from '@mui/material/Slider';
 
+const THUMB_HALF = 14;
+
 export interface Slider01Props
   extends Omit<SliderProps, 'value' | 'defaultValue' | 'onChange'> {
   label?: React.ReactNode;
@@ -90,67 +92,75 @@ export const Slider01 = React.forwardRef<HTMLDivElement, Slider01Props>(
         >
           {value}
         </Box>
-        <Slider
-          value={value}
-          onChange={handleChange}
-          min={min}
-          max={max}
-          aria-labelledby={labelId}
-          aria-valuetext={`${value}`}
-          sx={(theme) => {
-            const gripGradient =
-              'linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45))';
-            const focusRing = `0 0 0 2px ${(theme.vars || theme).palette.action.focus}`;
-            return {
-              flex: 1,
-              minWidth: 240,
-              height: 36,
-              padding: 0,
-              '& .MuiSlider-rail': {
-                opacity: 1,
+        <Box
+          sx={(theme) => ({
+            flex: 1,
+            minWidth: 240,
+            height: 36,
+            display: 'flex',
+            alignItems: 'center',
+            px: `${THUMB_HALF}px`,
+            borderRadius: 1,
+            bgcolor: 'secondary.main',
+            ...theme.applyStyles('dark', {
+              bgcolor: 'background.default',
+            }),
+          })}
+        >
+          <Slider
+            value={value}
+            onChange={handleChange}
+            min={min}
+            max={max}
+            aria-labelledby={labelId}
+            aria-valuetext={`${value}`}
+            sx={(theme) => {
+              const gripGradient =
+                'linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45))';
+              return {
+                flex: 1,
                 height: 36,
-                borderRadius: 1,
-                bgcolor: 'secondary.main',
-              },
-              '& .MuiSlider-track': {
-                border: 'none',
-                bgcolor: 'transparent',
-                height: 36,
-              },
-              '& .MuiSlider-thumb': {
-                width: 28,
-                height: 30,
-                borderRadius: 1,
-                bgcolor: 'secondary.text',
-                boxShadow: 'none',
-                transition: 'box-shadow 120ms',
-                backgroundImage: `${gripGradient}, ${gripGradient}, ${gripGradient}`,
-                backgroundSize: '1.5px 14px',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition:
-                  'calc(50% - 4px) 50%, 50% 50%, calc(50% + 4px) 50%',
-                '&::before': { display: 'none' },
-                '&.Mui-focusVisible, &.Mui-active': {
-                  boxShadow: focusRing,
-                },
-                '@media (hover: hover)': {
-                  '&:hover': {
-                    boxShadow: focusRing,
-                  },
-                },
-              },
-              ...theme.applyStyles('dark', {
-                '& .MuiSlider-rail': {
-                  bgcolor: 'background.default',
+                padding: 0,
+                '& .MuiSlider-rail, & .MuiSlider-track': {
+                  display: 'none',
                 },
                 '& .MuiSlider-thumb': {
-                  bgcolor: 'secondary.main',
+                  width: 28,
+                  height: 30,
+                  borderRadius: 1,
+                  bgcolor: 'secondary.text',
+                  boxShadow: 'none',
+                  outline: '2px solid transparent',
+                  outlineOffset: 2,
+                  transition: 'background-color 120ms, outline-color 120ms',
+                  backgroundImage: `${gripGradient}, ${gripGradient}, ${gripGradient}`,
+                  backgroundSize: '1.5px 14px',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition:
+                    'calc(50% - 4px) 50%, 50% 50%, calc(50% + 4px) 50%',
+                  '&::before': { display: 'none' },
+                  '&.Mui-focusVisible, &.Mui-active': {
+                    outlineColor: (theme.vars || theme).palette.text.primary,
+                  },
+                  '@media (hover: hover)': {
+                    '&:hover': {
+                      bgcolor: 'text.primary',
+                    },
+                  },
+                  ...theme.applyStyles('dark', {
+                    bgcolor: 'secondary.main',
+                    '@media (hover: hover)': {
+                      '&:hover': {
+                        bgcolor: 'text.primary',
+                      },
+                    },
+                  }),
                 },
-              }),
-            };
-          }}
-          {...props}
-        />
+              };
+            }}
+            {...props}
+          />
+        </Box>
       </Box>
     );
   },
