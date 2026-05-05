@@ -39,9 +39,13 @@ const modules: Record<string, RegistryModuleLoader> = {
   'blocks/ticket-status-card/ticket-status-card': () =>
     import('@/registry/blocks/ticket-status-card/ticket-status-card'),
   'blocks/transaction-history-list/transaction-history-list': () =>
-    import('@/registry/blocks/transaction-history-list/transaction-history-list'),
+    import(
+      '@/registry/blocks/transaction-history-list/transaction-history-list'
+    ),
   'components/accordion-mui-treasury/accordion-mui-treasury': () =>
-    import('@/registry/components/accordion-mui-treasury/accordion-mui-treasury'),
+    import(
+      '@/registry/components/accordion-mui-treasury/accordion-mui-treasury'
+    ),
   'components/ai-actions/ai-actions': () =>
     import('@/registry/components/ai-actions/ai-actions'),
   'components/ai-actions/ai-actions.demo': () =>
@@ -57,7 +61,9 @@ const modules: Record<string, RegistryModuleLoader> = {
   'components/ai-chain-of-thought/ai-chain-of-thought': () =>
     import('@/registry/components/ai-chain-of-thought/ai-chain-of-thought'),
   'components/ai-chain-of-thought/ai-chain-of-thought.demo': () =>
-    import('@/registry/components/ai-chain-of-thought/ai-chain-of-thought.demo'),
+    import(
+      '@/registry/components/ai-chain-of-thought/ai-chain-of-thought.demo'
+    ),
   'components/ai-code-block/ai-code-block': () =>
     import('@/registry/components/ai-code-block/ai-code-block'),
   'components/ai-code-block/ai-code-block.demo': () =>
@@ -127,15 +133,21 @@ const modules: Record<string, RegistryModuleLoader> = {
   'components/app-bar-mui-treasury/app-bar-mui-treasury': () =>
     import('@/registry/components/app-bar-mui-treasury/app-bar-mui-treasury'),
   'components/autocomplete-mui-treasury/autocomplete-mui-treasury': () =>
-    import('@/registry/components/autocomplete-mui-treasury/autocomplete-mui-treasury'),
+    import(
+      '@/registry/components/autocomplete-mui-treasury/autocomplete-mui-treasury'
+    ),
   'components/avatar-mui-treasury/avatar-mui-treasury': () =>
     import('@/registry/components/avatar-mui-treasury/avatar-mui-treasury'),
   'components/badge-mui-treasury/badge-mui-treasury': () =>
     import('@/registry/components/badge-mui-treasury/badge-mui-treasury'),
   'components/breadcrumbs-mui-treasury/breadcrumbs-mui-treasury': () =>
-    import('@/registry/components/breadcrumbs-mui-treasury/breadcrumbs-mui-treasury'),
+    import(
+      '@/registry/components/breadcrumbs-mui-treasury/breadcrumbs-mui-treasury'
+    ),
   'components/button-group-mui-treasury/button-group-mui-treasury': () =>
-    import('@/registry/components/button-group-mui-treasury/button-group-mui-treasury'),
+    import(
+      '@/registry/components/button-group-mui-treasury/button-group-mui-treasury'
+    ),
   'components/button-mui-treasury/button-mui-treasury': () =>
     import('@/registry/components/button-mui-treasury/button-mui-treasury'),
   'components/card-action-01/card-action-01': () =>
@@ -201,13 +213,21 @@ const modules: Record<string, RegistryModuleLoader> = {
   'components/color-picker-field/color-picker-field.demo': () =>
     import('@/registry/components/color-picker-field/color-picker-field.demo'),
   'components/color-scheme-select-basic/color-scheme-select-basic': () =>
-    import('@/registry/components/color-scheme-select-basic/color-scheme-select-basic'),
+    import(
+      '@/registry/components/color-scheme-select-basic/color-scheme-select-basic'
+    ),
   'components/color-scheme-select-icon/color-scheme-select-icon': () =>
-    import('@/registry/components/color-scheme-select-icon/color-scheme-select-icon'),
+    import(
+      '@/registry/components/color-scheme-select-icon/color-scheme-select-icon'
+    ),
   'components/color-scheme-select-minimal/color-scheme-select-minimal': () =>
-    import('@/registry/components/color-scheme-select-minimal/color-scheme-select-minimal'),
+    import(
+      '@/registry/components/color-scheme-select-minimal/color-scheme-select-minimal'
+    ),
   'components/color-scheme-tabs-basic/color-scheme-tabs-basic': () =>
-    import('@/registry/components/color-scheme-tabs-basic/color-scheme-tabs-basic'),
+    import(
+      '@/registry/components/color-scheme-tabs-basic/color-scheme-tabs-basic'
+    ),
   'components/customer-metrics-card/customer-metrics-card': () =>
     import('@/registry/components/customer-metrics-card/customer-metrics-card'),
   'components/dialog-mui-treasury/dialog-mui-treasury': () =>
@@ -271,7 +291,9 @@ const modules: Record<string, RegistryModuleLoader> = {
   'components/number-input/number-input.demo': () =>
     import('@/registry/components/number-input/number-input.demo'),
   'components/pagination-mui-treasury/pagination-mui-treasury': () =>
-    import('@/registry/components/pagination-mui-treasury/pagination-mui-treasury'),
+    import(
+      '@/registry/components/pagination-mui-treasury/pagination-mui-treasury'
+    ),
   'components/product-card/product-card': () =>
     import('@/registry/components/product-card/product-card'),
   'components/product-card2/product-card2': () =>
@@ -306,6 +328,10 @@ const modules: Record<string, RegistryModuleLoader> = {
     import('@/registry/components/sidebar/demos/sidebar-tooltip.demo'),
   'components/sidebar/sidebar.demo': () =>
     import('@/registry/components/sidebar/sidebar.demo'),
+  'components/slider-01/slider-01': () =>
+    import('@/registry/components/slider-01/slider-01'),
+  'components/slider-01/slider-01.demo': () =>
+    import('@/registry/components/slider-01/slider-01.demo'),
   'components/slider-mui-treasury/slider-mui-treasury': () =>
     import('@/registry/components/slider-mui-treasury/slider-mui-treasury'),
   'components/snackbar-mui-treasury/snackbar-mui-treasury': () =>
@@ -357,29 +383,43 @@ const modules: Record<string, RegistryModuleLoader> = {
   'components/tabs-twitter/tabs-twitter': () =>
     import('@/registry/components/tabs-twitter/tabs-twitter'),
   'components/text-field-mui-treasury/text-field-mui-treasury': () =>
-    import('@/registry/components/text-field-mui-treasury/text-field-mui-treasury'),
+    import(
+      '@/registry/components/text-field-mui-treasury/text-field-mui-treasury'
+    ),
   'components/toggle-button-mui-treasury/toggle-button-mui-treasury': () =>
-    import('@/registry/components/toggle-button-mui-treasury/toggle-button-mui-treasury'),
+    import(
+      '@/registry/components/toggle-button-mui-treasury/toggle-button-mui-treasury'
+    ),
   'components/tooltip-mui-treasury/tooltip-mui-treasury': () =>
     import('@/registry/components/tooltip-mui-treasury/tooltip-mui-treasury'),
   'components/typography-mui-treasury/typography-mui-treasury': () =>
-    import('@/registry/components/typography-mui-treasury/typography-mui-treasury'),
+    import(
+      '@/registry/components/typography-mui-treasury/typography-mui-treasury'
+    ),
   'firebase/firebase-analyze-image/firebase-analyze-image': () =>
     import('@/registry/firebase/firebase-analyze-image/firebase-analyze-image'),
   'firebase/firebase-chat-transport/firebase-chat-transport': () =>
-    import('@/registry/firebase/firebase-chat-transport/firebase-chat-transport'),
+    import(
+      '@/registry/firebase/firebase-chat-transport/firebase-chat-transport'
+    ),
   'firebase/firebase-chat-transport/firebase-chat-transport.demo': () =>
-    import('@/registry/firebase/firebase-chat-transport/firebase-chat-transport.demo'),
+    import(
+      '@/registry/firebase/firebase-chat-transport/firebase-chat-transport.demo'
+    ),
   'firebase/firebase-generate-text/firebase-generate-text': () =>
     import('@/registry/firebase/firebase-generate-text/firebase-generate-text'),
   'firebase/firebase-google-search/firebase-google-search': () =>
     import('@/registry/firebase/firebase-google-search/firebase-google-search'),
   'firebase/firebase-image-generation/firebase-image-generation': () =>
-    import('@/registry/firebase/firebase-image-generation/firebase-image-generation'),
+    import(
+      '@/registry/firebase/firebase-image-generation/firebase-image-generation'
+    ),
   'firebase/firebase-story-telling/firebase-story-telling': () =>
     import('@/registry/firebase/firebase-story-telling/firebase-story-telling'),
   'firebase/firebase-thinking-model/firebase-thinking-model': () =>
-    import('@/registry/firebase/firebase-thinking-model/firebase-thinking-model'),
+    import(
+      '@/registry/firebase/firebase-thinking-model/firebase-thinking-model'
+    ),
   'firebase/firebase-tool-calling/firebase-tool-calling': () =>
     import('@/registry/firebase/firebase-tool-calling/firebase-tool-calling'),
   'layout/app-analytics/app-analytics': () =>
@@ -392,49 +432,83 @@ const modules: Record<string, RegistryModuleLoader> = {
     import('@/registry/layout/layout-core/layout-core.demo'),
   'layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-auto-collapse.demo':
     () =>
-      import('@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-auto-collapse.demo'),
+      import(
+        '@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-auto-collapse.demo'
+      ),
   'layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-collapse.demo':
     () =>
-      import('@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-collapse.demo'),
+      import(
+        '@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-collapse.demo'
+      ),
   'layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-drawer-without-overlay.demo':
     () =>
-      import('@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-drawer-without-overlay.demo'),
+      import(
+        '@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-drawer-without-overlay.demo'
+      ),
   'layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-drawer.demo': () =>
-    import('@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-drawer.demo'),
+    import(
+      '@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-drawer.demo'
+    ),
   'layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-hover-uncollapse.demo':
     () =>
-      import('@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-hover-uncollapse.demo'),
+      import(
+        '@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-hover-uncollapse.demo'
+      ),
   'layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-responsive.demo':
     () =>
-      import('@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-responsive.demo'),
+      import(
+        '@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-responsive.demo'
+      ),
   'layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-right.demo': () =>
-    import('@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-right.demo'),
+    import(
+      '@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-right.demo'
+    ),
   'layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-visibility.demo':
     () =>
-      import('@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-visibility.demo'),
+      import(
+        '@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-visibility.demo'
+      ),
   'layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-width.demo': () =>
-    import('@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-width.demo'),
+    import(
+      '@/registry/layout/layout-docs-edge-sidebar/demos/layout-edge-sidebar-width.demo'
+    ),
   'layout/layout-docs-footer/demos/layout-footer-inset-avoiding.demo': () =>
-    import('@/registry/layout/layout-docs-footer/demos/layout-footer-inset-avoiding.demo'),
+    import(
+      '@/registry/layout/layout-docs-footer/demos/layout-footer-inset-avoiding.demo'
+    ),
   'layout/layout-docs-header/demos/layout-header-clip.demo': () =>
-    import('@/registry/layout/layout-docs-header/demos/layout-header-clip.demo'),
+    import(
+      '@/registry/layout/layout-docs-header/demos/layout-header-clip.demo'
+    ),
   'layout/layout-docs-header/demos/layout-header-height.demo': () =>
-    import('@/registry/layout/layout-docs-header/demos/layout-header-height.demo'),
+    import(
+      '@/registry/layout/layout-docs-header/demos/layout-header-height.demo'
+    ),
   'layout/layout-docs-inset-sidebar/demos/layout-inset-sidebar-absolute.demo':
     () =>
-      import('@/registry/layout/layout-docs-inset-sidebar/demos/layout-inset-sidebar-absolute.demo'),
+      import(
+        '@/registry/layout/layout-docs-inset-sidebar/demos/layout-inset-sidebar-absolute.demo'
+      ),
   'layout/layout-docs-inset-sidebar/demos/layout-inset-sidebar-sticky.demo':
     () =>
-      import('@/registry/layout/layout-docs-inset-sidebar/demos/layout-inset-sidebar-sticky.demo'),
+      import(
+        '@/registry/layout/layout-docs-inset-sidebar/demos/layout-inset-sidebar-sticky.demo'
+      ),
   'layout/layout-docs-inset-sidebar/demos/layout-inset-sidebar-width.demo':
     () =>
-      import('@/registry/layout/layout-docs-inset-sidebar/demos/layout-inset-sidebar-width.demo'),
+      import(
+        '@/registry/layout/layout-docs-inset-sidebar/demos/layout-inset-sidebar-width.demo'
+      ),
   'layout/layout-docs-root/demos/layout-root-disable-transition.demo': () =>
-    import('@/registry/layout/layout-docs-root/demos/layout-root-disable-transition.demo'),
+    import(
+      '@/registry/layout/layout-docs-root/demos/layout-root-disable-transition.demo'
+    ),
   'layout/layout-docs-root/demos/layout-root-height.demo': () =>
     import('@/registry/layout/layout-docs-root/demos/layout-root-height.demo'),
   'layout/layout-docs-root/demos/layout-root-standalone.demo': () =>
-    import('@/registry/layout/layout-docs-root/demos/layout-root-standalone.demo'),
+    import(
+      '@/registry/layout/layout-docs-root/demos/layout-root-standalone.demo'
+    ),
 };
 
 export function getModuleLoader(key: string): RegistryModuleLoader | null {
