@@ -51,15 +51,22 @@ export function SwitchMuiTreasury() {
             <Stack
               key={setting.id}
               direction="row"
-              alignItems="flex-start"
               spacing={2}
-              sx={{ p: 2 }}
+              sx={{
+                alignItems: 'flex-start',
+                p: 2,
+              }}
             >
               <Box sx={{ flexGrow: 1 }}>
                 <Typography variant="body1" sx={{ fontWeight: 500 }}>
                   {setting.title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: 'text.secondary',
+                  }}
+                >
                   {setting.description}
                 </Typography>
               </Box>

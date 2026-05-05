@@ -10,24 +10,31 @@ const Menu = ({
   ...props
 }: { active?: boolean } & BoxProps) => (
   <Box
-    display={'inline-flex'}
-    alignItems={'center'}
-    alignSelf={'stretch'}
-    position={'relative'}
-    px={2}
-    color={active ? 'secondary.main' : 'common.white'}
-    fontSize={18}
     {...props}
+    sx={[
+      {
+        display: 'inline-flex',
+        alignItems: 'center',
+        alignSelf: 'stretch',
+        position: 'relative',
+        px: 2,
+        color: active ? 'secondary.main' : 'common.white',
+        fontSize: 18,
+      },
+      ...(Array.isArray(props.sx) ? props.sx : [props.sx]),
+    ]}
   >
     {children}
     {active && (
       <Box
-        position={'absolute'}
-        bottom={0}
-        left={0}
-        width={'100%'}
-        bgcolor={'secondary.main'}
-        height={4}
+        sx={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          bgcolor: 'secondary.main',
+          height: 4,
+        }}
       />
     )}
   </Box>
@@ -36,10 +43,13 @@ const Menu = ({
 const ReactHeader = ({ concise }: { concise?: boolean }) => (
   <>
     <Box
-      display={'flex'}
-      alignItems={'center'}
-      mr={2}
-      sx={{ flexShrink: 0, flexBasis: 'calc(100% / 6)' }}
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        mr: 2,
+        flexShrink: 0,
+        flexBasis: 'calc(100% / 6)',
+      }}
     >
       <img
         src={
@@ -54,10 +64,12 @@ const ReactHeader = ({ concise }: { concise?: boolean }) => (
     </Box>
     <Box
       component={'nav'}
-      display={'flex'}
-      alignItems={'center'}
-      alignSelf={'stretch'}
-      overflow={'auto'}
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        alignSelf: 'stretch',
+        overflow: 'auto',
+      }}
     >
       <Menu active>Docs</Menu>
       <Menu>Tutorial</Menu>
@@ -65,10 +77,14 @@ const ReactHeader = ({ concise }: { concise?: boolean }) => (
       <Menu>Community</Menu>
     </Box>
     {!concise && (
-      <Box ml={'auto'}>
-        <Menu fontSize={16}>v16.12.0</Menu>
-        <Menu fontSize={16}>Languages</Menu>
-        <Menu fontSize={16}>Github</Menu>
+      <Box
+        sx={{
+          ml: 'auto',
+        }}
+      >
+        <Menu sx={{ fontSize: 16 }}>v16.12.0</Menu>
+        <Menu sx={{ fontSize: 16 }}>Languages</Menu>
+        <Menu sx={{ fontSize: 16 }}>Github</Menu>
       </Box>
     )}
   </>

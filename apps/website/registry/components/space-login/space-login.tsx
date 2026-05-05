@@ -183,7 +183,6 @@ export function SpaceLogin() {
           />
         </Stack>
       </Box>
-
       {/* Right Panel - Login Form */}
       <Box
         sx={{
@@ -261,9 +260,12 @@ export function SpaceLogin() {
 
                 <Stack
                   direction="row"
-                  justifyContent="space-between"
-                  alignItems="center"
-                  sx={{ mt: 1, flexWrap: 'wrap' }}
+                  sx={{
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    mt: 1,
+                    flexWrap: 'wrap',
+                  }}
                 >
                   <FormControlLabel
                     control={
@@ -307,11 +309,19 @@ export function SpaceLogin() {
 
                 <Stack
                   direction="row"
-                  justifyContent="center"
                   spacing={0.5}
-                  sx={{ mt: 2, flexWrap: 'wrap' }}
+                  sx={{
+                    justifyContent: 'center',
+                    mt: 2,
+                    flexWrap: 'wrap',
+                  }}
                 >
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: 'text.secondary',
+                    }}
+                  >
                     Don&apos;t have an account?
                   </Typography>
                   <Link

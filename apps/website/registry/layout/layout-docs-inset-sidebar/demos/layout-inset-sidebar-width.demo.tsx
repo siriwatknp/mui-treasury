@@ -22,21 +22,36 @@ export function Demo() {
     <Root height="300px">
       <Header>
         <Box sx={{ px: 2 }}>
-          <Typography variant="caption" fontWeight="bold">
+          <Typography
+            variant="caption"
+            sx={{
+              fontWeight: 'bold',
+            }}
+          >
             Header
           </Typography>
         </Box>
       </Header>
       <Content>
         <Box sx={{ p: 2, flex: 1 }}>
-          <Typography variant="body2" color="text.secondary">
+          <Typography
+            variant="body2"
+            sx={{
+              color: 'text.secondary',
+            }}
+          >
             Main content
           </Typography>
         </Box>
         <InsetSidebar width="220px">
           <InsetContent>
             <Box sx={{ p: 2 }}>
-              <Typography variant="caption" color="text.secondary">
+              <Typography
+                variant="caption"
+                sx={{
+                  color: 'text.secondary',
+                }}
+              >
                 220px inset sidebar
               </Typography>
             </Box>
@@ -45,7 +60,12 @@ export function Demo() {
       </Content>
       <Footer>
         <Box sx={{ p: 2 }}>
-          <Typography variant="caption" color="text.secondary">
+          <Typography
+            variant="caption"
+            sx={{
+              color: 'text.secondary',
+            }}
+          >
             Footer
           </Typography>
         </Box>

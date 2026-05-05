@@ -23,7 +23,14 @@ export function ChipMuiTreasury() {
         <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
           Filter by tag
         </Typography>
-        <Stack direction="row" spacing={1} alignItems="center" flexWrap="wrap">
+        <Stack
+          direction="row"
+          spacing={1}
+          sx={{
+            alignItems: 'center',
+            flexWrap: 'wrap',
+          }}
+        >
           <Chip label="React" variant="filled" onDelete={() => {}} />
           <Chip label="TypeScript" variant="filled" onDelete={() => {}} />
           <Chip label="GraphQL" variant="filled" />
@@ -32,12 +39,18 @@ export function ChipMuiTreasury() {
           <Chip label="Kubernetes" variant="outlined" />
         </Stack>
       </Box>
-
       <Box>
         <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
           Order status
         </Typography>
-        <Stack direction="row" spacing={1} alignItems="center" flexWrap="wrap">
+        <Stack
+          direction="row"
+          spacing={1}
+          sx={{
+            alignItems: 'center',
+            flexWrap: 'wrap',
+          }}
+        >
           <Chip icon={<CheckCircle />} label="Delivered" color="success" />
           <Chip icon={<LocalShipping />} label="In transit" color="warning" />
           <Chip icon={<Cancel />} label="Cancelled" color="error" />

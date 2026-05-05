@@ -305,7 +305,14 @@ function Section({
       <Typography variant="subtitle2" sx={{ mb: 1, color: 'text.secondary' }}>
         {title}
       </Typography>
-      <Stack direction="row" spacing={2} alignItems="center" flexWrap="wrap">
+      <Stack
+        direction="row"
+        spacing={2}
+        sx={{
+          alignItems: 'center',
+          flexWrap: 'wrap',
+        }}
+      >
         {children}
       </Stack>
     </Box>

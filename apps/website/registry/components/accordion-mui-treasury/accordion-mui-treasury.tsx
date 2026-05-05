@@ -17,7 +17,12 @@ export function AccordionMuiTreasury() {
           <Typography>Account & billing</Typography>
         </AccordionSummary>
         <AccordionDetails sx={{ px: 3, pb: 2 }}>
-          <Typography variant="body2" color="text.secondary">
+          <Typography
+            variant="body2"
+            sx={{
+              color: 'text.secondary',
+            }}
+          >
             Manage seats, invoices, and payment methods for your workspace.
           </Typography>
         </AccordionDetails>
@@ -28,7 +33,12 @@ export function AccordionMuiTreasury() {
         </AccordionSummary>
         <AccordionDetails sx={{ px: 3, pb: 2 }}>
           <Stack spacing={1.5}>
-            <Typography variant="body2" color="text.secondary">
+            <Typography
+              variant="body2"
+              sx={{
+                color: 'text.secondary',
+              }}
+            >
               Authenticate requests with a personal token sent in the
               Authorization header. Tokens inherit the permissions of the
               workspace member who created them.
@@ -59,7 +69,12 @@ export function AccordionMuiTreasury() {
           <Typography>Notifications</Typography>
         </AccordionSummary>
         <AccordionDetails sx={{ px: 3, pb: 2 }}>
-          <Typography variant="body2" color="text.secondary">
+          <Typography
+            variant="body2"
+            sx={{
+              color: 'text.secondary',
+            }}
+          >
             Choose which workspace events trigger email and in-app alerts.
           </Typography>
         </AccordionDetails>

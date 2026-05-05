@@ -42,7 +42,12 @@ export function CardEngagement() {
           </InfoSubtitle>
         </Info>
       </CardContent>
-      <Box px={3} pb={3}>
+      <Box
+        sx={{
+          px: 3,
+          pb: 3,
+        }}
+      >
         <AvatarGroup>
           <Avatar alt="Remy Sharp" src="https://i.pravatar.cc/300?img=1" />
           <Avatar alt="Travis Howard" src="https://i.pravatar.cc/300?img=2" />

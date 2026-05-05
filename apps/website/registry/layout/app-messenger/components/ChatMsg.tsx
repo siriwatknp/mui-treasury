@@ -56,7 +56,9 @@ const ChatMsg = ({
     <Grid
       container
       spacing={2}
-      justifyContent={side === 'right' ? 'flex-end' : 'flex-start'}
+      sx={{
+        justifyContent: side === 'right' ? 'flex-end' : 'flex-start',
+      }}
     >
       {side === 'left' && (
         <Grid size="auto">

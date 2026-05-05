@@ -45,11 +45,22 @@ export function PayrollSummaryCard() {
             }}
           >
             <div>
-              <Typography component="h2" variant="h5" fontWeight={600}>
+              <Typography
+                component="h2"
+                variant="h5"
+                sx={{
+                  fontWeight: 600,
+                }}
+              >
                 Payroll Summary
               </Typography>
               {/* Date Range */}
-              <Typography variant="body2" color="text.secondary">
+              <Typography
+                variant="body2"
+                sx={{
+                  color: 'text.secondary',
+                }}
+              >
                 From 1-31 March, 2022
               </Typography>
             </div>
@@ -117,9 +128,20 @@ export function PayrollSummaryCard() {
                   textAlign: 'center',
                 }}
               >
-                <Typography variant="h4" fontWeight={600}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    fontWeight: 600,
+                  }}
+                >
                   {largestPercentage}
-                  <Typography component="span" variant="h5" fontWeight={400}>
+                  <Typography
+                    component="span"
+                    variant="h5"
+                    sx={{
+                      fontWeight: 400,
+                    }}
+                  >
                     %
                   </Typography>
                 </Typography>
@@ -158,10 +180,20 @@ export function PayrollSummaryCard() {
                     aria-hidden="true"
                   />
                   <Box>
-                    <Typography variant="caption" color="text.secondary">
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        color: 'text.secondary',
+                      }}
+                    >
                       {payment.label}
                     </Typography>
-                    <Typography variant="h6" fontWeight={600}>
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        fontWeight: 600,
+                      }}
+                    >
                       ${payment.value.toFixed(2)}
                     </Typography>
                   </Box>

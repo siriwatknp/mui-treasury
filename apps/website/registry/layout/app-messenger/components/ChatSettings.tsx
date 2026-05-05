@@ -33,11 +33,12 @@ interface SettingHeaderProps {
 const SettingHeader = ({ children, opened }: SettingHeaderProps) => {
   return (
     <Box
-      p={'14px'}
-      display={'flex'}
-      justifyContent={'space-between'}
-      alignItems={'center'}
       sx={{
+        p: '14px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+
         '&:hover': {
           backgroundColor: 'rgba(0,0,0,0.08)',
         },
@@ -66,12 +67,14 @@ interface SettingProps {
 const Setting = ({ label, icon, blue }: SettingProps) => {
   return (
     <Box
-      height={'44px'}
-      pl={'14px'}
-      pr={'12px'}
-      display={'flex'}
-      justifyContent={'space-between'}
-      alignItems={'center'}
+      sx={{
+        height: '44px',
+        pl: '14px',
+        pr: '12px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      }}
     >
       <Typography variant={'body2'}>{label}</Typography>
       {React.cloneElement(icon as never, {
@@ -94,7 +97,12 @@ const Setting = ({ label, icon, blue }: SettingProps) => {
 const ChatSettings = () => {
   return (
     <div>
-      <Box p={'14px 14px 16px 14px'} textAlign={'center'}>
+      <Box
+        sx={{
+          p: '14px 14px 16px 14px',
+          textAlign: 'center',
+        }}
+      >
         <StyledAvatar src={'https://i.pravatar.cc/300?img=13'} />
         <TypographyName variant={'h1'} align={'center'}>
           Imaad Casey
@@ -102,7 +110,11 @@ const ChatSettings = () => {
       </Box>
       <Divider />
       <SettingHeader opened>Options</SettingHeader>
-      <Box pb={2}>
+      <Box
+        sx={{
+          pb: 2,
+        }}
+      >
         <Setting label={'Search in Conversation'} icon={<Search />} />
         <Setting label={'Edit Nicknames'} icon={<Edit />} />
         <Setting label={'Change Theme'} icon={<FormatPaint />} blue />

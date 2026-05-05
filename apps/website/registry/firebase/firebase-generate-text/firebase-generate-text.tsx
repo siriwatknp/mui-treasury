@@ -64,7 +64,11 @@ export default function FirebaseGenerateText() {
           p: 2,
         }}
       >
-        <Typography color="text.secondary">
+        <Typography
+          sx={{
+            color: 'text.secondary',
+          }}
+        >
           Firebase not configured. Please set up Firebase config at the top of
           the page.
         </Typography>
@@ -121,7 +125,11 @@ export default function FirebaseGenerateText() {
                 <Typography variant="h4" sx={{ fontWeight: 500 }}>
                   Generate Text
                 </Typography>
-                <Typography color="text.secondary">
+                <Typography
+                  sx={{
+                    color: 'text.secondary',
+                  }}
+                >
                   Enter a prompt to generate text
                 </Typography>
               </Box>
@@ -205,7 +213,6 @@ export default function FirebaseGenerateText() {
           <ConversationScrollButton />
         </Conversation>
       </Box>
-
       {/* Input Area */}
       <PromptInput onSubmit={handleSubmit}>
         <PromptInputBody>

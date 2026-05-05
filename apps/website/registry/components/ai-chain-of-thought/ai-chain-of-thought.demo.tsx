@@ -65,7 +65,6 @@ export function Demo() {
           </ChainOfThoughtContent>
         </ChainOfThought>
       </Box>
-
       {/* Chain of Thought Open by Default */}
       <Box>
         <Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
@@ -103,7 +102,6 @@ export function Demo() {
           </ChainOfThoughtContent>
         </ChainOfThought>
       </Box>
-
       {/* Chain of Thought with Image */}
       <Box>
         <Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
@@ -145,7 +143,12 @@ export function Demo() {
                     borderColor: 'divider',
                   }}
                 >
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: 'text.secondary',
+                    }}
+                  >
                     [Chart Visualization]
                   </Typography>
                 </Box>
@@ -161,7 +164,6 @@ export function Demo() {
           </ChainOfThoughtContent>
         </ChainOfThought>
       </Box>
-
       {/* Custom Header Text */}
       <Box>
         <Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>

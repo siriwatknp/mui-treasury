@@ -56,7 +56,13 @@ export function CardPost() {
           </InfoSubtitle>
         </Info>
       </CardContent>
-      <Box px={2} pb={2} mt={-1}>
+      <Box
+        sx={{
+          px: 2,
+          pb: 2,
+          mt: -1,
+        }}
+      >
         <IconButton>
           <Share />
         </IconButton>

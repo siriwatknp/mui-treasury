@@ -170,7 +170,7 @@ const newsInfoStyles = (arg: Theme | { theme: Theme }) => {
 export function CardNews3() {
   return (
     <StyledCard>
-      <BoxMain minHeight={300} position={'relative'}>
+      <BoxMain sx={{ minHeight: 300, position: 'relative' }}>
         <StyledCardMedia
           image={
             'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80'

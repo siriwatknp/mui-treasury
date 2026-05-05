@@ -218,8 +218,10 @@ export function AppFooter01() {
             <Typography
               id={`footer-nav-${index}`}
               variant="body1"
-              fontWeight={600}
-              sx={{ pb: 1 }}
+              sx={{
+                fontWeight: 600,
+                pb: 1,
+              }}
             >
               {section.title}
             </Typography>
@@ -229,16 +231,20 @@ export function AppFooter01() {
                   key={link.label}
                   href={link.href}
                   underline="hover"
-                  color="text.primary"
-                  sx={(theme) => ({
-                    ...theme.typography.body1,
-                    display: 'inline-block',
-                    '@media (hover: hover)': {
-                      '&:hover': {
-                        color: 'text.secondary',
-                      },
+                  sx={[
+                    {
+                      color: 'text.primary',
                     },
-                  })}
+                    (theme) => ({
+                      ...theme.typography.body1,
+                      display: 'inline-block',
+                      '@media (hover: hover)': {
+                        '&:hover': {
+                          color: 'text.secondary',
+                        },
+                      },
+                    }),
+                  ]}
                 >
                   {link.label}
                 </Link>

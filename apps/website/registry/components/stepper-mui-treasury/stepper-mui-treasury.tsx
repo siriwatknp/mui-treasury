@@ -35,7 +35,6 @@ export function StepperMuiTreasury() {
           ))}
         </Stepper>
       </Box>
-
       <Box>
         <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
           Project setup
@@ -46,7 +45,12 @@ export function StepperMuiTreasury() {
               <StepLabel>{step.label}</StepLabel>
               {step.description && (
                 <StepContent>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: 'text.secondary',
+                    }}
+                  >
                     {step.description}
                   </Typography>
                 </StepContent>

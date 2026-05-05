@@ -42,14 +42,15 @@ export function CardNews2() {
       <CardActionArea>
         <CardContent sx={{ p: 3 }}>
           <Box
-            display={'flex'}
-            flexDirection={'column'}
-            alignItems={'center'}
-            justifyContent={'center'}
-            minHeight={360}
-            color={'common.white'}
-            textAlign={'center'}
             sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              minHeight: 360,
+              color: 'common.white',
+              textAlign: 'center',
+
               '& h2': {
                 color: '#fff',
                 letterSpacing: '2px',

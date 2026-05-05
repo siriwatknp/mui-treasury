@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-import DeleteOutline from '@mui/icons-material/DeleteOutline';
+import DeleteOutline from '@mui/icons-material/DeleteOutlined';
 import Drafts from '@mui/icons-material/Drafts';
 import Inbox from '@mui/icons-material/Inbox';
 import MoreVert from '@mui/icons-material/MoreVert';

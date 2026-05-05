@@ -42,7 +42,12 @@ export function Demo() {
       >
         <EdgeSidebarContent>
           <Box sx={{ p: 2 }}>
-            <Typography variant="caption" color="text.secondary">
+            <Typography
+              variant="caption"
+              sx={{
+                color: 'text.secondary',
+              }}
+            >
               Drawer without overlay
             </Typography>
           </Box>
@@ -50,14 +55,24 @@ export function Demo() {
       </EdgeSidebar>
       <Content>
         <Box sx={{ p: 2 }}>
-          <Typography variant="body2" color="text.secondary">
+          <Typography
+            variant="body2"
+            sx={{
+              color: 'text.secondary',
+            }}
+          >
             Content — no overlay when drawer is open
           </Typography>
         </Box>
       </Content>
       <Footer>
         <Box sx={{ p: 2 }}>
-          <Typography variant="caption" color="text.secondary">
+          <Typography
+            variant="caption"
+            sx={{
+              color: 'text.secondary',
+            }}
+          >
             Footer
           </Typography>
         </Box>

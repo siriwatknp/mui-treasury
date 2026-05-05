@@ -48,7 +48,11 @@ const GridMainGrid = styled(Grid)(({ theme: { breakpoints } }) => ({
 
 const DailySummary = () => {
   return (
-    <GridMainGrid container justifyContent={'space-between'} spacing={2}>
+    <GridMainGrid
+      container
+      spacing={2}
+      sx={{ justifyContent: 'space-between' }}
+    >
       <Grid size={{ xs: 12, sm: 5, md: 4 }}>
         <Grid container spacing={1}>
           <Grid size={5}>
@@ -57,7 +61,7 @@ const DailySummary = () => {
             </Box>
           </Grid>
           <Grid size={7}>
-            <BoxBig px={2} sx={{ textAlign: 'right' }}>
+            <BoxBig sx={{ px: 2, textAlign: 'right' }}>
               <span>$149.96</span>
             </BoxBig>
           </Grid>
@@ -67,7 +71,7 @@ const DailySummary = () => {
             </Box>
           </Grid>
           <Grid size={7}>
-            <BoxBig px={2} sx={{ textAlign: 'right' }}>
+            <BoxBig sx={{ px: 2, textAlign: 'right' }}>
               <span>$0</span>
             </BoxBig>
           </Grid>
@@ -82,13 +86,19 @@ const DailySummary = () => {
             </Box>
           </Grid>
           <Grid size={7}>
-            <BoxLarge px={2} sx={{ textAlign: 'right' }}>
+            <BoxLarge sx={{ px: 2, textAlign: 'right' }}>
               <span>$149.96</span>
             </BoxLarge>
           </Grid>
         </Grid>
       </Grid>
-      <Grid size={{ xs: 12, sm: 5, md: 4 }} container alignItems={'flex-end'}>
+      <Grid
+        size={{ xs: 12, sm: 5, md: 4 }}
+        container
+        sx={{
+          alignItems: 'flex-end',
+        }}
+      >
         <ButtonBtn startIcon={<KeyboardArrowLeft />}>
           Continue Shopping
         </ButtonBtn>

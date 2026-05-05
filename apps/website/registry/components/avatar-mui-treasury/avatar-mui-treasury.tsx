@@ -29,12 +29,17 @@ export function AvatarMuiTreasury() {
           <Avatar alt="Alan Turing">AT</Avatar>
         </AvatarGroup>
       </Box>
-
       <Box>
         <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
           Avatar variants
         </Typography>
-        <Stack direction="row" spacing={2} alignItems="center">
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{
+            alignItems: 'center',
+          }}
+        >
           <Avatar
             alt="Grace Hopper"
             sx={{ bgcolor: 'primary.main', color: 'primary.contrastText' }}

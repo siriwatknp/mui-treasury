@@ -105,7 +105,7 @@ const DailyCheckout = () => {
     },
   } as const;
   return (
-    <BoxRoot py={3} px={3.5}>
+    <BoxRoot sx={{ py: 3, px: 3.5 }}>
       <TypographyHeading variant={'h1'}>Payment Info.</TypographyHeading>
       <StyledDivider />
       <TypographyLabel>Payment Method:</TypographyLabel>
