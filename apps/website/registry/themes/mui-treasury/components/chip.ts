@@ -52,10 +52,10 @@ export const chipTheme: ThemeComponents = {
           {
             props: { size: 'medium' },
             style: {
-              paddingBlock: CONTROL_HEIGHTS.md / 2 - 16,
+              paddingBlock: CONTROL_HEIGHTS.md / 2 - 15.5,
               ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
                 [TOUCH_MEDIA_QUERY]: {
-                  paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 14.5,
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 14,
                 },
               }),
             },
@@ -63,10 +63,10 @@ export const chipTheme: ThemeComponents = {
           {
             props: { size: 'medium', variant: 'outlined' },
             style: {
-              paddingBlock: CONTROL_HEIGHTS.md / 2 - 17,
+              paddingBlock: CONTROL_HEIGHTS.md / 2 - 16.5,
               ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
                 [TOUCH_MEDIA_QUERY]: {
-                  paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 15.5,
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 15,
                 },
               }),
             },
@@ -74,10 +74,10 @@ export const chipTheme: ThemeComponents = {
           {
             props: { size: 'large' },
             style: {
-              paddingBlock: CONTROL_HEIGHTS.lg / 2 - 17,
+              paddingBlock: CONTROL_HEIGHTS.lg / 2 - 16.5,
               ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
                 [TOUCH_MEDIA_QUERY]: {
-                  paddingBlock: CONTROL_TOUCH_HEIGHTS.lg / 2 - 17.5,
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.lg / 2 - 17,
                 },
               }),
             },
@@ -85,10 +85,10 @@ export const chipTheme: ThemeComponents = {
           {
             props: { size: 'large', variant: 'outlined' },
             style: {
-              paddingBlock: CONTROL_HEIGHTS.lg / 2 - 18,
+              paddingBlock: CONTROL_HEIGHTS.lg / 2 - 17.5,
               ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
                 [TOUCH_MEDIA_QUERY]: {
-                  paddingBlock: CONTROL_TOUCH_HEIGHTS.lg / 2 - 18.5,
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.lg / 2 - 18,
                 },
               }),
             },
