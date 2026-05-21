@@ -105,13 +105,13 @@ export const textFieldTheme: ThemeComponents = {
           },
         ],
       }),
-      input: () => ({
+      input: {
         paddingBlock: CONTROL_HEIGHTS.md / 2 - 10.5,
         paddingInline: 12,
         minHeight: '1.5em',
         ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
           [TOUCH_MEDIA_QUERY]: {
-            paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 10.5,
+            paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 12,
           },
         }),
         variants: [
@@ -122,7 +122,7 @@ export const textFieldTheme: ThemeComponents = {
               paddingInline: 10,
               ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
                 [TOUCH_MEDIA_QUERY]: {
-                  paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 10.5,
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 12,
                 },
               }),
             },
@@ -130,23 +130,17 @@ export const textFieldTheme: ThemeComponents = {
           {
             props: { size: 'large' },
             style: {
-              paddingBlock: CONTROL_HEIGHTS.lg / 2 - 10.5,
+              paddingBlock: CONTROL_HEIGHTS.lg / 2 - 12,
               paddingInline: 16,
               ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
                 [TOUCH_MEDIA_QUERY]: {
-                  paddingBlock: CONTROL_TOUCH_HEIGHTS.lg / 2 - 10.5,
+                  paddingBlock: CONTROL_TOUCH_HEIGHTS.lg / 2 - 12,
                 },
               }),
             },
           },
-          {
-            props: { multiline: true },
-            style: {
-              padding: 0,
-            },
-          },
         ],
-      }),
+      },
     },
   },
   MuiOutlinedInput: {
@@ -157,6 +151,9 @@ export const textFieldTheme: ThemeComponents = {
           transition: theme.transitions.create(['border-color'], {
             duration: theme.transitions.duration.shorter,
           }),
+        },
+        '& legend': {
+          height: '11px',
         },
         '&:hover .MuiOutlinedInput-notchedOutline': {
           borderColor: (theme.vars || theme).palette.text.primary,
@@ -215,6 +212,14 @@ export const textFieldTheme: ThemeComponents = {
         ],
       }),
       input: {
+        paddingBlock: CONTROL_HEIGHTS.md / 2 - 10.5,
+        paddingInline: 12,
+        '.MuiInputAdornment-root + &': {
+          paddingLeft: 0,
+        },
+        '&:has(+ .MuiInputAdornment-root)': {
+          paddingRight: 0,
+        },
         variants: [
           {
             props: { size: 'small' },
@@ -226,12 +231,6 @@ export const textFieldTheme: ThemeComponents = {
                   paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 12,
                 },
               }),
-              '.MuiInputAdornment-root + &': {
-                paddingLeft: 0,
-              },
-              ':has(+ .MuiInputAdornment-root)': {
-                paddingRight: 0,
-              },
             },
           },
           {
@@ -255,12 +254,6 @@ export const textFieldTheme: ThemeComponents = {
                   paddingBlock: CONTROL_TOUCH_HEIGHTS.lg / 2 - 12,
                 },
               }),
-              '.MuiInputAdornment-root + &': {
-                paddingLeft: 0,
-              },
-              ':has(+ .MuiInputAdornment-root)': {
-                paddingRight: 0,
-              },
             },
           },
           {
