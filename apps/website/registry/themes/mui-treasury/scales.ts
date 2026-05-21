@@ -30,7 +30,7 @@ export const TOUCH_MEDIA_QUERY = '@media (max-width: 768px)';
  * inset: space between track edge and thumb
  */
 export const SWITCH_SIZES = {
-  sm: { height: 22, width: 36, inset: 2 },
+  sm: { height: 24, width: 36, inset: 2 }, // WCAG 2.2 requires at least 24px touch size
   md: { height: 28, width: 44, inset: 2 },
   lg: { height: 32, width: 52, inset: 3 },
 };
