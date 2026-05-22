@@ -58,14 +58,27 @@ export default function Page() {
         </Measured>
       </Section>
 
-      <Section title="Variants (medium)">
-        {(['outlined', 'filled', 'standard'] as const).map((variant) => (
-          <Measured key={variant}>
+      <Section title="Filled — sizes">
+        {SIZES.map((size) => (
+          <Measured key={size}>
             <TextField
-              variant={variant}
+              variant="filled"
+              size={size}
               label="Label"
-              defaultValue="Value"
-              sx={{ width: 200 }}
+              sx={{ width: 220 }}
+            />
+          </Measured>
+        ))}
+      </Section>
+
+      <Section title="Standard — sizes">
+        {SIZES.map((size) => (
+          <Measured key={size}>
+            <TextField
+              variant="standard"
+              size={size}
+              label="Label"
+              sx={{ width: 220 }}
             />
           </Measured>
         ))}
