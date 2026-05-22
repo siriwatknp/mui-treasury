@@ -87,17 +87,19 @@ export default function Page() {
       </Section>
 
       <Section title="ToggleButtonGroup">
-        <ToggleButtonGroup exclusive value="left">
-          <ToggleButton value="left">
-            <FormatAlignLeftIcon />
-          </ToggleButton>
-          <ToggleButton value="center">
-            <FormatAlignCenterIcon />
-          </ToggleButton>
-          <ToggleButton value="right">
-            <FormatAlignRightIcon />
-          </ToggleButton>
-        </ToggleButtonGroup>
+        <Measured>
+          <ToggleButtonGroup exclusive value="left">
+            <ToggleButton value="left">
+              <FormatAlignLeftIcon />
+            </ToggleButton>
+            <ToggleButton value="center">
+              <FormatAlignCenterIcon />
+            </ToggleButton>
+            <ToggleButton value="right">
+              <FormatAlignRightIcon />
+            </ToggleButton>
+          </ToggleButtonGroup>
+        </Measured>
       </Section>
 
       <Section title="Fab — sizes">
