@@ -35,6 +35,29 @@ rm -rf apps/e2e/tests/visual.spec.ts-snapshots && \
 - Test asserts no `pageerror` and no Next.js error dialog (`[data-nextjs-dialog]`) before screenshot — prefer `test:visual:build` in CI.
 - **NEVER** edit `public/og/*.png` directly — file is gitignored + regenerated at build time.
 - **Gotcha:** `--update-snapshots` only rewrites when diff exceeds `maxDiffPixelRatio: 0.01` (1%). For small content changes, delete baselines first to force a full rewrite.
+- **Local deps must match the lockfile before regenerating.** Stale `node_modules` render differently than CI/prod (which build from `pnpm-lock.yaml`), so a baseline captured locally can fail CI and mismatch the live site. If a baseline diff looks like a real change, first check the rendering dep's installed version against the lockfile (`node -e "require('<pkg>/package.json').version"`); run `pnpm install` if they differ.
+
+## Custom Fixtures (off-site, no OG)
+
+For visual coverage of arbitrary UI that should **not** be a registry item (not on the public site, no `/preview` page, no OG card) — e.g. theme-level regressions, control-height grids, edge-case compositions.
+
+### How it works
+
+- Fixture = a plain Next route at `apps/website/app/fixtures/<name>/page.tsx` (default export). Inherits the root layout, so theme + light/dark (`localStorage['mui-mode']`) work automatically. Unlinked from nav/registry → effectively hidden (still builds in prod).
+- `apps/e2e/tests/fixtures.visual.spec.ts` auto-discovers every `app/fixtures/*/page.tsx`, screenshots light + dark.
+- Baselines live in `apps/e2e/tests/fixtures.visual.spec.ts-snapshots/` — a **separate** dir from `visual.spec.ts-snapshots/`, so `sync-og.ts` (reads only the latter) never mints OG cards for fixtures.
+- The `visual` Playwright project matches `**/*visual.spec.ts` (not just `visual.spec.ts`), so any `*.visual.spec.ts` runs once under the visual viewport (1200×630, platform-agnostic snapshots) and is excluded from the `desktop`/`touch` projects. Naming a spec `<x>.visual.spec.ts` is what opts it into this lane.
+
+### Add a fixture
+
+1. Create `apps/website/app/fixtures/<name>/page.tsx` (default export, any MUI/theme content).
+2. Generate baselines:
+   ```bash
+   pnpm --filter e2e exec playwright test --project=visual -g "fixture: <name>" --update-snapshots
+   ```
+3. It now runs on every `pnpm test:visual`. No `sync:og`, no registry entry, no `.meta.json`.
+
+Registry items vs fixtures: registry item → on the site + OG card (`visual.spec.ts`). Fixture → off-site regression only (`fixtures.visual.spec.ts`).
 
 ## Pre-screenshot Interactions (`visual-setups.ts`)
 

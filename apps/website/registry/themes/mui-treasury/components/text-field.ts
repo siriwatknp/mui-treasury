@@ -174,6 +174,14 @@ export const textFieldTheme: ThemeComponents = {
         },
         variants: [
           {
+            props: { multiline: true },
+            style: {
+              '& .MuiOutlinedInput-input': {
+                padding: 0,
+              },
+            },
+          },
+          {
             props: { size: 'small', multiline: true },
             style: {
               paddingBlock: CONTROL_HEIGHTS.sm / 2 - 10.5,
@@ -254,12 +262,6 @@ export const textFieldTheme: ThemeComponents = {
                   paddingBlock: CONTROL_TOUCH_HEIGHTS.lg / 2 - 12,
                 },
               }),
-            },
-          },
-          {
-            props: { multiline: true },
-            style: {
-              padding: 0,
             },
           },
         ],
