@@ -170,7 +170,7 @@ test('the gate checks the theme code: a theme that renders fine still fails on c
   const shot = path.join(os.tmpdir(), 'mui-verify-test-code.png');
   const bad = verify('--all', '--theme', path.resolve(HERE, '../fixtures/code-unstandard.theme.ts'), '--shot', shot);
   assert.deepEqual(bad.data.failures, []);
-  assert.deepEqual([...new Set(bad.data.code.map((c) => c.rule))].sort(), ['classes', 'color helpers', 'css variables', 'dark mode', 'spread function', 'tokens', 'typography', 'width queries']);
+  assert.deepEqual([...new Set(bad.data.code.map((c) => c.rule))].sort(), ['classes', 'color helpers', 'css variables', 'dark mode', 'spread function', 'tokens', 'typography']);
   assert.equal(bad.status, 1);
   const good = verify('--all', '--theme', path.resolve(HERE, '../fixtures/code-standard.theme.ts'), '--shot', shot);
   assert.deepEqual(good.data.code, []);

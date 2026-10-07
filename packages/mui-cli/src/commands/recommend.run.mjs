@@ -7,8 +7,7 @@ import { loadMuiStyles } from '../lib/muiStyles.mjs';
 import { loadSeams } from '../lib/seams.mjs';
 import { supportOf } from '../lib/support.mjs';
 import { resolveTargets } from '../lib/targets.mjs';
-import { importPeer } from '../lib/renderEngine.mjs';
-import { isCreatedTheme, loadThemeModule, stripTypes } from '../lib/themeModule.mjs';
+import { isCreatedTheme, loadThemeModule } from '../lib/themeModule.mjs';
 
 const short = (c) => c.replace(/^Mui/, '');
 const older = (a, b) => {
@@ -218,9 +217,8 @@ const MERGE = "const __merge = (a: any, b: any): any => (a && b && typeof a === 
 
 /** The theme source with `snippet` deep-merged into what its first createTheme(…) receives, else into its default export. */
 export async function withSnippet(source, file, snippet) {
-  const { parseAst } = await importPeer('vite');
-  // type stripping keeps offsets, so the stripped AST's positions splice the original text
-  const ast = parseAst(stripTypes(source, file));
+  const { parseSource } = await import('../lib/themeCode.mjs');
+  const ast = await parseSource(source, file);
   let target = null;
   const visit = (node) => {
     if (target || !node || typeof node.type !== 'string') {

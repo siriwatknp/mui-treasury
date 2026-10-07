@@ -1,25 +1,61 @@
 import fs from 'node:fs';
+import path from 'node:path';
 import { MUI_CLASS, VAR_ROOTS, classKeyFor } from './codeForm.mjs';
 import { importPeer } from './renderEngine.mjs';
 import { stripTypes } from './themeModule.mjs';
 
 const COLOR_HELPERS = ['alpha', 'darken', 'lighten'];
 const HELPER_SOURCES = ['@mui/material', '@mui/material/styles', '@mui/system', '@mui/system/colorManipulator'];
-const WIDTH_QUERY = /@(media|container)\b[^{]*\b(min|max)-width\s*:/;
+const LANG = { '.ts': 'ts', '.mts': 'ts', '.tsx': 'tsx', '.jsx': 'jsx' };
+const RESOLVE_EXT = ['', '.ts', '.tsx', '.mts', '.js', '.jsx', '.mjs', '/index.ts', '/index.tsx', '/index.js'];
+
+/** The file's AST, offsets matching its text. Vite 8 parses TypeScript and JSX itself; older Vite parses the type-stripped text. */
+export async function parseSource(source, file) {
+  const { parseAst } = await importPeer('vite');
+  try {
+    return parseAst(source, { lang: LANG[path.extname(file)] ?? 'js' });
+  } catch {
+    return parseAst(stripTypes(source, file));
+  }
+}
+
+const resolveRelative = (from, spec) =>
+  RESOLVE_EXT.map((ext) => path.resolve(path.dirname(from), spec + ext)).find((f) => /\.[mc]?[jt]sx?$/.test(f) && fs.existsSync(f) && fs.statSync(f).isFile());
 
 /**
- * Source-level standards a theme file must follow: imported *Classes, tokens through (theme.vars || theme) (typography
- * read plain), applyStyles for dark mode, the theme's color helpers, no raw --mui- variables, breakpoint helpers for width
- * queries, no function spread into a style object.
+ * Source-level standards a theme must follow, in its file and every file it imports relatively: imported *Classes, tokens
+ * through (theme.vars || theme) (typography read plain), applyStyles for dark mode, the theme's color helpers, no raw --mui-
+ * variables, no function spread into a style object. Checked inside `components` and inside any Mui* key, so per-component
+ * maps kept in their own files (`export const button = { MuiButton: … }`) count too.
  */
-export async function checkThemeCode(file, fromDir = process.cwd()) {
-  const source = fs.readFileSync(file, 'utf8');
-  const { parseAst } = await importPeer('vite');
-  // type stripping blanks types in place, so offsets (and lines) still match the file
-  const ast = parseAst(stripTypes(source, file));
-  const lineOf = (offset) => source.slice(0, offset).split('\n').length;
+export async function checkThemeCode(entry, fromDir = process.cwd()) {
   const issues = [];
-  const report = (node, rule, detail) => issues.push({ line: lineOf(node.start), rule, detail });
+  const seenFiles = new Set();
+  const checkFile = async (file) => {
+    if (seenFiles.has(file)) {
+      return;
+    }
+    seenFiles.add(file);
+    const ast = await checkOne(file, fromDir, issues);
+    for (const node of ast.body.filter((n) => ['ImportDeclaration', 'ExportNamedDeclaration', 'ExportAllDeclaration'].includes(n.type) && n.source?.value?.startsWith('.'))) {
+      const target = resolveRelative(file, node.source.value);
+      if (target) {
+        await checkFile(target);
+      }
+    }
+  };
+  await checkFile(path.resolve(entry));
+  const seen = new Set();
+  const key = (i) => `${i.file}|${i.line}|${i.rule}|${i.detail}`;
+  return issues.filter((i) => !seen.has(key(i)) && seen.add(key(i))).sort((a, b) => (a.file === b.file ? a.line - b.line : a.file.localeCompare(b.file)));
+}
+
+async function checkOne(file, fromDir, issues) {
+  const source = fs.readFileSync(file, 'utf8');
+  const ast = await parseSource(source, file);
+  const shown = path.relative(process.cwd(), file);
+  const lineOf = (offset) => source.slice(0, offset).split('\n').length;
+  const report = (node, rule, detail) => issues.push({ file: shown, line: lineOf(node.start), rule, detail });
 
   // the local names the standalone color helpers are imported under (`import { alpha as fade }` too)
   const helpers = new Map();
@@ -40,7 +76,8 @@ export async function checkThemeCode(file, fromDir = process.cwd()) {
       const key = node.key.name ?? node.key.value;
       if (key === 'components') {
         nextIn = true;
-      } else if (inComponents && /^Mui[A-Z]/.test(String(key))) {
+      } else if (/^Mui[A-Z][A-Za-z]*$/.test(String(key))) {
+        nextIn = true;
         nextOwner = key;
       }
     }
@@ -53,9 +90,6 @@ export async function checkThemeCode(file, fromDir = process.cwd()) {
         }
         if (text.includes('var(--mui-')) {
           report(node, 'css variables', 'a raw var(--mui-…) string — read it as theme.vars.* in a ({ theme }) callback, which is type-checked');
-        }
-        if (WIDTH_QUERY.test(text)) {
-          report(node, 'width queries', 'a width query written as a literal — use theme.breakpoints.up/down/between(…) (numbers work too) or theme.containerQueries.up(…)');
         }
       }
       if (node.type === 'MemberExpression' && !node.computed && node.property.name === 'typography' && isVarsRead(node.object)) {
@@ -89,6 +123,5 @@ export async function checkThemeCode(file, fromDir = process.cwd()) {
     }
   };
   visit(ast, null, false);
-  const seen = new Set();
-  return issues.filter((i) => !seen.has(`${i.line}|${i.rule}|${i.detail}`) && seen.add(`${i.line}|${i.rule}|${i.detail}`)).sort((a, b) => a.line - b.line);
+  return ast;
 }

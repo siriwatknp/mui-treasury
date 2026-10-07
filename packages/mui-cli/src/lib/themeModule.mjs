@@ -15,29 +15,47 @@ export function stripTypes(source, file) {
   try {
     return stripTypeScriptTypes(source);
   } catch (err) {
-    throw new Error(`could not read ${file} as TypeScript (${err.code ?? err.message}) — theme files must be plain TypeScript without JSX`);
+    throw new Error(`could not read ${file} as TypeScript (${err.code ?? err.message})`);
   } finally {
     process.emitWarning = emit;
   }
 }
 
-const TS = /\.(ts|mts|tsx)$/;
-const RESOLVE_EXT = ['', '.ts', '.mts', '.tsx', '.js', '.mjs', '/index.ts', '/index.js'];
+const TS = /\.(ts|mts|tsx|jsx)$/;
+const RESOLVE_EXT = ['', '.ts', '.mts', '.tsx', '.js', '.mjs', '.jsx', '/index.ts', '/index.tsx', '/index.js'];
+
+/**
+ * Compiled the way the app's bundler would: Vite drops imports used only as types (`import { ThemeComponents }` without
+ * `type`) and compiles JSX (icons in defaultProps, a ThemeProvider next to the theme). Without Vite, types are stripped.
+ */
+async function toModule(abs) {
+  const source = fs.readFileSync(abs, 'utf8');
+  const vite = await import('./renderEngine.mjs').then(({ importPeer }) => importPeer('vite')).catch(() => null);
+  if (!vite) {
+    return stripTypes(source, abs);
+  }
+  const { code } = vite.transformWithOxc
+    ? await vite.transformWithOxc(source, abs, { jsx: { runtime: 'automatic' } })
+    : await vite.transformWithEsbuild(source, abs, { loader: /\.[jt]sx$/.test(abs) ? 'tsx' : 'ts', jsx: 'automatic' });
+  return code;
+}
 
 /**
  * A .ts module as an importable .mjs: types stripped, landed INSIDE the package so bare specifiers (@mui/material) still
  * resolve from our node_modules. Its relative imports (a theme's own tokens file) point back at the original files,
  * TypeScript ones stripped the same way, since a moved module can't resolve `./tokens` and Node only imports .ts from 22.18.
  */
-function stripToCache(abs, dir, made) {
-  const source = stripTypes(fs.readFileSync(abs, 'utf8'), abs);
-  const out = source.replace(/((?:from|import)\s*\(?\s*)(['"])(\.{1,2}\/[^'"]+)\2/g, (whole, lead, quote, spec) => {
+async function stripToCache(abs, dir, made) {
+  const source = await toModule(abs);
+  const pattern = /((?:from|import)\s*\(?\s*)(['"])(\.{1,2}\/[^'"]+)\2/g;
+  const urls = new Map();
+  for (const [, , , spec] of source.matchAll(pattern)) {
     const target = RESOLVE_EXT.map((ext) => path.resolve(path.dirname(abs), spec + ext)).find((f) => fs.existsSync(f) && fs.statSync(f).isFile());
-    if (!target) {
-      return whole;
+    if (target && !urls.has(spec)) {
+      urls.set(spec, pathToFileURL(TS.test(target) ? await stripToCache(target, dir, made) : target).href);
     }
-    return `${lead}${quote}${pathToFileURL(TS.test(target) ? stripToCache(target, dir, made) : target).href}${quote}`;
-  });
+  }
+  const out = source.replace(pattern, (whole, lead, quote, spec) => (urls.has(spec) ? `${lead}${quote}${urls.get(spec)}${quote}` : whole));
   const tmp = path.join(dir, `theme-${process.pid}-${Math.random().toString(36).slice(2)}.mjs`);
   fs.writeFileSync(tmp, out);
   made.push(tmp);
@@ -54,7 +72,7 @@ async function importThemeModule(file) {
   if (TS.test(abs)) {
     const dir = path.join(PKG_ROOT, 'node_modules', '.cache', 'mui-cli');
     fs.mkdirSync(dir, { recursive: true });
-    importPath = stripToCache(abs, dir, made);
+    importPath = await stripToCache(abs, dir, made);
   }
   try {
     const mod = await import(`${pathToFileURL(importPath).href}?t=${Date.now()}`);

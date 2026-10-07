@@ -264,7 +264,7 @@ async function runAll(program, targets, options, why = null) {
   const checksOf = (r) => r.checks.target + r.checks.dead + r.checks.ring + (r.checks.content ?? 0);
   const checks = results.reduce((n, r) => n + checksOf(r), 0);
   const failures = results.flatMap((r) => r.failures.map((f) => ({ component: r.case.component, case: r.case.label, kind: r.case.kind, ...f })));
-  // the theme file's own code: imported *Classes, tokens through (theme.vars || theme), applyStyles for dark mode
+  // the theme's own code (its file and the files it imports): imported *Classes, tokens through (theme.vars || theme), applyStyles for dark mode
   const code = options.theme ? await (await import('../lib/themeCode.mjs')).checkThemeCode(path.resolve(options.theme), path.dirname(path.resolve(options.theme))) : [];
   if (failures.length || errors.length || code.length) {
     process.exitCode = 1;
@@ -303,9 +303,9 @@ async function runAll(program, targets, options, why = null) {
     console.log(`  ✗ ${short(e.case.component)} [${e.case.label}] did not render: ${e.error}`);
   }
   if (code.length) {
-    console.log(`✗ theme code — ${options.theme}`);
+    console.log('✗ theme code');
     for (const c of code) {
-      console.log(`    line ${c.line} · ${c.rule}: ${c.detail}`);
+      console.log(`    ${c.file}:${c.line} · ${c.rule}: ${c.detail}`);
     }
   }
   const skipped = results.filter((r) => r.skipped);

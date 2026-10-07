@@ -57,7 +57,6 @@ Generated themes are read and copied, so write overrides the way MUI writes its 
 - **Typography:** `theme.typography.*` directly. It isn't exposed as CSS variables.
 - **Color helpers:** `theme.alpha` / `theme.darken` / `theme.lighten` in overrides. The standalone imports break on CSS-variable colors.
 - **No raw `var(--mui-…)` strings:** read `theme.vars.*` in the callback.
-- **Width queries:** `theme.breakpoints.up(…)` / `theme.containerQueries.up(…)`, not literal `@media (min-width: …)`.
 - **No spreading a function into a style object:** make the whole value the callback.
 - **Colors:** prefer a palette token or `theme.alpha(token, 0.2)` over a literal `rgba()`.
 - **Conditions:** `variants: [{ props: {…}, style: {…} }]` over `ownerState` callbacks.
