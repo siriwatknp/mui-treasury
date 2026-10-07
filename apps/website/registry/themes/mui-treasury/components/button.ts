@@ -1,3 +1,10 @@
+import { buttonClasses } from '@mui/material/Button';
+import {
+  buttonBaseClasses,
+  touchRippleClasses,
+} from '@mui/material/ButtonBase';
+import { fabClasses } from '@mui/material/Fab';
+
 import {
   CONTROL_HEIGHTS,
   CONTROL_TOUCH_HEIGHTS,
@@ -9,7 +16,7 @@ export const buttonTheme: ThemeComponents = {
   MuiButtonBase: {
     styleOverrides: {
       root: ({ theme }) => ({
-        '&& .MuiTouchRipple-child': {
+        [`&& .${touchRippleClasses.child}`]: {
           background: 'color-mix(in oklch, currentColor, transparent 60%)',
         },
         '--Icon-color': 'color-mix(in oklch, currentColor, transparent 12%)',
@@ -28,7 +35,7 @@ export const buttonTheme: ThemeComponents = {
       root: ({ theme }) => ({
         fontSize: 'inherit',
         lineHeight: 'inherit',
-        '&.Mui-focusVisible': {
+        [`&.${buttonBaseClasses.focusVisible}`]: {
           outline: '2px solid',
           outlineColor: (theme.vars || theme).palette.text.primary,
           outlineOffset: '2px',
@@ -59,7 +66,7 @@ export const buttonTheme: ThemeComponents = {
         gap: 'var(--_g)',
         minWidth: 'unset',
         textTransform: 'capitalize',
-        '&.Mui-focusVisible': {
+        [`&.${buttonClasses.focusVisible}`]: {
           outline: '2px solid',
           outlineColor: (theme.vars || theme).palette.text.primary,
           outlineOffset: '2px',
@@ -67,7 +74,7 @@ export const buttonTheme: ThemeComponents = {
         '&:active': {
           transform: 'scale(0.98)',
         },
-        '&:not(:has(.MuiButton-icon))': {
+        [`&:not(:has(.${buttonClasses.icon}))`]: {
           '--_g': `calc(${theme.spacing(1)} - 1px)`,
         },
         '@media (hover: hover)': {
@@ -77,9 +84,9 @@ export const buttonTheme: ThemeComponents = {
           },
         },
         // When button contains only an icon (with or without TouchRipple)
-        '&:has(> svg:only-child, > svg + .MuiTouchRipple-root)': {
+        [`&:has(> svg:only-child, > svg + .${touchRippleClasses.root})`]: {
           '--Icon-color': 'currentColor',
-          '&.MuiButton-sizeSmall': {
+          [`&.${buttonClasses.sizeSmall}`]: {
             padding: CONTROL_HEIGHTS.sm / 2 - 10,
             minWidth: '28px',
             ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
@@ -88,7 +95,7 @@ export const buttonTheme: ThemeComponents = {
               },
             }),
           },
-          '&.MuiButton-sizeMedium': {
+          [`&.${buttonClasses.sizeMedium}`]: {
             padding: CONTROL_HEIGHTS.md / 2 - 10,
             minWidth: '36px',
             ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
@@ -97,7 +104,7 @@ export const buttonTheme: ThemeComponents = {
               },
             }),
           },
-          '&.MuiButton-sizeLarge': {
+          [`&.${buttonClasses.sizeLarge}`]: {
             padding: CONTROL_HEIGHTS.lg / 2 - 12,
             minWidth: '48px',
             ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
@@ -107,8 +114,8 @@ export const buttonTheme: ThemeComponents = {
             }),
           },
           // Outlined variant needs to compensate for border
-          '&.MuiButton-outlined': {
-            '&.MuiButton-sizeSmall': {
+          [`&.${buttonClasses.outlined}`]: {
+            [`&.${buttonClasses.sizeSmall}`]: {
               padding: CONTROL_HEIGHTS.sm / 2 - 11,
               ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
                 [TOUCH_MEDIA_QUERY]: {
@@ -116,7 +123,7 @@ export const buttonTheme: ThemeComponents = {
                 },
               }),
             },
-            '&.MuiButton-sizeMedium': {
+            [`&.${buttonClasses.sizeMedium}`]: {
               padding: CONTROL_HEIGHTS.md / 2 - 11,
               ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
                 [TOUCH_MEDIA_QUERY]: {
@@ -124,7 +131,7 @@ export const buttonTheme: ThemeComponents = {
                 },
               }),
             },
-            '&.MuiButton-sizeLarge': {
+            [`&.${buttonClasses.sizeLarge}`]: {
               padding: CONTROL_HEIGHTS.lg / 2 - 13,
               ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
                 [TOUCH_MEDIA_QUERY]: {
@@ -180,7 +187,7 @@ export const buttonTheme: ThemeComponents = {
           {
             props: { variant: 'outlined' },
             style: {
-              '&.MuiButton-sizeSmall': {
+              [`&.${buttonClasses.sizeSmall}`]: {
                 paddingBlock: CONTROL_HEIGHTS.sm / 2 - 11,
                 paddingInline: 12,
                 ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
@@ -189,7 +196,7 @@ export const buttonTheme: ThemeComponents = {
                   },
                 }),
               },
-              '&.MuiButton-sizeMedium': {
+              [`&.${buttonClasses.sizeMedium}`]: {
                 paddingBlock: CONTROL_HEIGHTS.md / 2 - 11,
                 paddingInline: 16,
                 ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
@@ -198,7 +205,7 @@ export const buttonTheme: ThemeComponents = {
                   },
                 }),
               },
-              '&.MuiButton-sizeLarge': {
+              [`&.${buttonClasses.sizeLarge}`]: {
                 paddingBlock: CONTROL_HEIGHTS.lg / 2 - 13,
                 paddingInline: 24,
                 ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
@@ -207,7 +214,7 @@ export const buttonTheme: ThemeComponents = {
                   },
                 }),
               },
-              '& .MuiTouchRipple-root': {
+              [`& .${touchRippleClasses.root}`]: {
                 inset: '-1px',
               },
             },
@@ -216,22 +223,22 @@ export const buttonTheme: ThemeComponents = {
           {
             props: { variant: 'text' },
             style: {
-              '&.MuiButton-colorSecondary': {
+              [`&.${buttonClasses.colorSecondary}`]: {
                 '--variant-textColor': (theme.vars || theme).palette.secondary
                   .text,
               },
-              '&.MuiButton-colorSuccess': {
+              [`&.${buttonClasses.colorSuccess}`]: {
                 '--variant-textColor': (theme.vars || theme).palette.success
                   .text,
               },
-              '&.MuiButton-colorError': {
+              [`&.${buttonClasses.colorError}`]: {
                 '--variant-textColor': (theme.vars || theme).palette.error.text,
               },
-              '&.MuiButton-colorWarning': {
+              [`&.${buttonClasses.colorWarning}`]: {
                 '--variant-textColor': (theme.vars || theme).palette.warning
                   .text,
               },
-              '&.MuiButton-colorInfo': {
+              [`&.${buttonClasses.colorInfo}`]: {
                 '--variant-textColor': (theme.vars || theme).palette.info.text,
               },
               color: 'var(--variant-textColor)',
@@ -241,40 +248,40 @@ export const buttonTheme: ThemeComponents = {
           {
             props: { variant: 'outlined' },
             style: {
-              '&.MuiButton-colorPrimary': {
+              [`&.${buttonClasses.colorPrimary}`]: {
                 '--variant-outlinedBorder': `color-mix(in srgb, ${
                   (theme.vars || theme).palette.primary.main
                 } 12%, transparent)`,
               },
-              '&.MuiButton-colorSecondary': {
+              [`&.${buttonClasses.colorSecondary}`]: {
                 '--variant-outlinedColor': (theme.vars || theme).palette
                   .secondary.text,
                 '--variant-outlinedBorder': `color-mix(in srgb, ${
                   (theme.vars || theme).palette.secondary.text
                 } 28%, transparent)`,
               },
-              '&.MuiButton-colorSuccess': {
+              [`&.${buttonClasses.colorSuccess}`]: {
                 '--variant-outlinedColor': (theme.vars || theme).palette.success
                   .text,
                 '--variant-outlinedBorder': `color-mix(in srgb, ${
                   (theme.vars || theme).palette.success.text
                 } 28%, transparent)`,
               },
-              '&.MuiButton-colorError': {
+              [`&.${buttonClasses.colorError}`]: {
                 '--variant-outlinedColor': (theme.vars || theme).palette.error
                   .text,
                 '--variant-outlinedBorder': `color-mix(in srgb, ${
                   (theme.vars || theme).palette.error.text
                 } 28%, transparent)`,
               },
-              '&.MuiButton-colorWarning': {
+              [`&.${buttonClasses.colorWarning}`]: {
                 '--variant-outlinedColor': (theme.vars || theme).palette.warning
                   .text,
                 '--variant-outlinedBorder': `color-mix(in srgb, ${
                   (theme.vars || theme).palette.warning.text
                 } 28%, transparent)`,
               },
-              '&.MuiButton-colorInfo': {
+              [`&.${buttonClasses.colorInfo}`]: {
                 '--variant-outlinedColor': (theme.vars || theme).palette.info
                   .text,
                 '--variant-outlinedBorder': `color-mix(in srgb, ${
@@ -348,7 +355,7 @@ export const buttonTheme: ThemeComponents = {
   MuiFab: {
     styleOverrides: {
       root: ({ theme }) => ({
-        '&.Mui-focusVisible': {
+        [`&.${fabClasses.focusVisible}`]: {
           outline: '2px solid',
           outlineColor: (theme.vars || theme).palette.text.primary,
           outlineOffset: '2px',

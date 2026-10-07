@@ -5,10 +5,10 @@ on:
     branches: [master]
 
 jobs:
-  test:
-    name: Playwright Control Height Tests
+  theme:
+    name: Theme checks (mui verify)
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
 
     steps:
       - uses: actions/checkout@v4
@@ -18,14 +18,8 @@ jobs:
           node-version: 22
           cache: "pnpm"
       - run: pnpm install
-      - run: pnpm --filter e2e exec playwright install chromium --with-deps
-      - run: pnpm --filter e2e test
-      - uses: actions/upload-artifact@v4
-        if: ${{ !cancelled() }}
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 30
+      - run: pnpm --filter registry verify:theme
+      - run: pnpm --filter registry verify:gate
 
   mui-cli:
     name: mui-cli unit tests

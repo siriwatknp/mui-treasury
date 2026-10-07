@@ -1,3 +1,8 @@
+import { filledInputClasses } from '@mui/material/FilledInput';
+import { inputBaseClasses } from '@mui/material/InputBase';
+import { outlinedInputClasses } from '@mui/material/OutlinedInput';
+import { selectClasses } from '@mui/material/Select';
+
 import {
   CONTROL_HEIGHTS,
   CONTROL_TOUCH_HEIGHTS,
@@ -7,13 +12,10 @@ import { ThemeComponents } from '../types';
 
 export const selectTheme: ThemeComponents = {
   MuiSelect: {
-    defaultProps: {
-      variant: 'outlined',
-    },
     styleOverrides: {
       root: {
-        '&.MuiOutlinedInput-root.MuiInputBase-sizeLarge': {
-          '& .MuiSelect-select': {
+        [`&.${outlinedInputClasses.root}.MuiInputBase-sizeLarge`]: {
+          [`& .${selectClasses.select}`]: {
             paddingBlock: CONTROL_HEIGHTS.lg / 2 - 12,
             ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
               [TOUCH_MEDIA_QUERY]: {
@@ -24,7 +26,8 @@ export const selectTheme: ThemeComponents = {
         },
       },
       select: {
-        '&.MuiOutlinedInput-input': {
+        minHeight: '1.5em',
+        [`&.${outlinedInputClasses.input}`]: {
           paddingBlock: CONTROL_HEIGHTS.md / 2 - 10,
           paddingInline: 14,
           minHeight: '1.42857em', // 20px
@@ -33,7 +36,7 @@ export const selectTheme: ThemeComponents = {
               paddingBlock: CONTROL_TOUCH_HEIGHTS.md / 2 - 11.5,
             },
           }),
-          '.MuiInputBase-sizeSmall > &': {
+          [`.${inputBaseClasses.sizeSmall} > &`]: {
             paddingBlock: CONTROL_HEIGHTS.sm / 2 - 10,
             paddingInline: 12,
             ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
@@ -43,7 +46,7 @@ export const selectTheme: ThemeComponents = {
             }),
           },
         },
-        '&.MuiFilledInput-input': {
+        [`&.${filledInputClasses.input}`]: {
           paddingTop: CONTROL_HEIGHTS.md / 2 + 5,
           paddingInline: 12,
           paddingBottom: CONTROL_HEIGHTS.md / 2 - 12,
@@ -53,7 +56,7 @@ export const selectTheme: ThemeComponents = {
               paddingBottom: CONTROL_TOUCH_HEIGHTS.md / 2 - 12,
             },
           }),
-          '.MuiInputBase-sizeSmall > &': {
+          [`.${inputBaseClasses.sizeSmall} > &`]: {
             paddingTop: CONTROL_HEIGHTS.sm / 2 + 4,
             paddingInline: 10,
             paddingBottom: CONTROL_HEIGHTS.sm / 2 - 13,
@@ -65,7 +68,7 @@ export const selectTheme: ThemeComponents = {
             }),
           },
         },
-        '&.MuiInputBase-input.MuiInputBase-input': {
+        [`&.${inputBaseClasses.input}.${inputBaseClasses.input}`]: {
           paddingRight: 32,
         },
       },

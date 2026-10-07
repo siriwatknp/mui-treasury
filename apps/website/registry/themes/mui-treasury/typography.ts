@@ -83,7 +83,7 @@ const h4Styles = {
 
 export const typography: ThemeOptions['typography'] = {
   fontFamily:
-    'var(--font-primary, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif)',
+    'var(--font-primary, "Geist Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif)',
   h1: h1Styles,
   h2: h2Styles,
   h3: h3Styles,

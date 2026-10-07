@@ -1,3 +1,5 @@
+import { menuItemClasses } from '@mui/material/MenuItem';
+
 import { ThemeComponents } from '../types';
 
 export const menuTheme: ThemeComponents = {
@@ -39,13 +41,13 @@ export const menuTheme: ThemeComponents = {
         '&:hover': {
           backgroundColor: (theme.vars || theme).palette.action.hover,
         },
-        '&.Mui-selected': {
+        [`&.${menuItemClasses.selected}`]: {
           backgroundColor: (theme.vars || theme).palette.action.selected,
           '&:hover': {
             backgroundColor: (theme.vars || theme).palette.action.selected,
           },
         },
-        '&.Mui-focusVisible': {
+        [`&.${menuItemClasses.focusVisible}`]: {
           backgroundColor: (theme.vars || theme).palette.action.focus,
         },
         variants: [

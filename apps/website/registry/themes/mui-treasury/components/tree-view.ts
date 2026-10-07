@@ -1,3 +1,4 @@
+import { treeItemClasses } from '@mui/x-tree-view/TreeItem';
 import type {} from '@mui/x-tree-view/themeAugmentation';
 
 import { ThemeComponents } from '../types';
@@ -12,7 +13,7 @@ export const treeViewTheme: ThemeComponents = {
           '&[data-focused]': {
             backgroundColor: (theme.vars || theme).palette.action.hover,
           },
-          '& .MuiTreeItem-label': {
+          [`& .${treeItemClasses.label}`]: {
             fontWeight: 'bold',
           },
         },

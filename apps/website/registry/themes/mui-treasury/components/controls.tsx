@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { buttonBaseClasses } from '@mui/material/ButtonBase';
 import { switchClasses } from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
 import { createSvgIcon } from '@mui/material/utils';
@@ -172,7 +173,7 @@ export const controlsTheme: ThemeComponents = {
             },
           },
         ],
-        '&.Mui-focusVisible': {
+        [`&.${buttonBaseClasses.focusVisible}`]: {
           outline: '2px solid',
           outlineOffset: '-2px',
         },
@@ -224,7 +225,7 @@ export const controlsTheme: ThemeComponents = {
             },
           },
         ],
-        '&.Mui-focusVisible': {
+        [`&.${buttonBaseClasses.focusVisible}`]: {
           outline: '2px solid',
           outlineOffset: '-2px',
         },
@@ -246,7 +247,7 @@ export const controlsTheme: ThemeComponents = {
         height: 'var(--_h)',
         padding: 0,
         borderRadius: 'var(--_h)',
-        '&:has(.Mui-focusVisible)': {
+        [`&:has(.${buttonBaseClasses.focusVisible})`]: {
           outline: '2px solid',
           outlineOffset: '4px',
           outlineColor: (theme.vars || theme).palette.text.primary,
@@ -306,6 +307,10 @@ export const controlsTheme: ThemeComponents = {
           padding: borderWidth,
           top: 'var(--_inset)',
           left: 'var(--_inset)',
+          [`& .${switchClasses.input}`]: {
+            top: 'calc(var(--_inset) * -1)',
+            height: 'var(--_h)',
+          },
           [`&.${switchClasses.checked}`]: {
             color: (theme.vars || theme).palette.common.white,
             transform: `translateX(calc(var(--_w) - var(--_thumb-w) - var(--_b) * 2 - var(--_inset) * 2))`,
@@ -315,7 +320,7 @@ export const controlsTheme: ThemeComponents = {
               },
             }),
           },
-          [`&.${switchClasses.checked}:not(.Mui-disabled) + .${switchClasses.track}`]:
+          [`&.${switchClasses.checked}:not(.${switchClasses.disabled}) + .${switchClasses.track}`]:
             {
               opacity: 1,
               border: 'none',
@@ -323,9 +328,9 @@ export const controlsTheme: ThemeComponents = {
           '&:active': {
             '--_thumb-w': 'calc(var(--_thumb-size) + 4px)',
           },
-          '&.Mui-disabled': {
+          [`&.${switchClasses.disabled}`]: {
             [`& .${switchClasses.thumb}`]: {
-              opacity: 'var(--mui-opacity-switchTrackDisabled)',
+              opacity: theme.vars.opacity.switchTrackDisabled,
             },
           },
         },

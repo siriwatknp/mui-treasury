@@ -1,3 +1,13 @@
+import { formLabelClasses } from '@mui/material/FormLabel';
+import { iconButtonClasses } from '@mui/material/IconButton';
+import { inputLabelClasses } from '@mui/material/InputLabel';
+import {
+  pickersInputBaseClasses,
+  pickersOutlinedInputClasses,
+} from '@mui/x-date-pickers';
+import { pickerDayClasses } from '@mui/x-date-pickers/PickerDay';
+import { pickersCalendarHeaderClasses } from '@mui/x-date-pickers/PickersCalendarHeader';
+import { pickersSectionListClasses } from '@mui/x-date-pickers/PickersSectionList';
 import type {} from '@mui/x-date-pickers/themeAugmentation';
 
 import {
@@ -18,7 +28,7 @@ export const datePickerTheme: ThemeComponents = {
           {
             props: { variant: 'outlined' },
             style: {
-              '& .MuiFormLabel-root, & .MuiInputLabel-root.MuiInputLabel-shrink':
+              [`& .${formLabelClasses.root}, & .${inputLabelClasses.root}.${inputLabelClasses.shrink}`]:
                 {
                   position: 'static',
                   transform: 'none',
@@ -29,7 +39,7 @@ export const datePickerTheme: ThemeComponents = {
                   lineHeight: 1.5,
                   color: (theme.vars || theme).palette.text.primary,
                 },
-              '& .MuiPickersSectionList-root': {
+              [`& .${pickersSectionListClasses.root}`]: {
                 paddingBlock: CONTROL_HEIGHTS.md / 2 - 10.5,
                 ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
                   [TOUCH_MEDIA_QUERY]: {
@@ -37,16 +47,16 @@ export const datePickerTheme: ThemeComponents = {
                   },
                 }),
               },
-              '& .MuiPickersSectionList-section': {
+              [`& .${pickersSectionListClasses.section}`]: {
                 lineHeight: 1.5,
               },
-              '& .MuiIconButton-root': {
+              [`& .${iconButtonClasses.root}`]: {
                 '&:hover': {
                   color: (theme.vars || theme).palette.text.primary,
                   backgroundColor: 'transparent',
                 },
               },
-              '&&& .MuiPickersInputBase-input': {
+              [`&&& .${pickersInputBaseClasses.input}`]: {
                 '&::-webkit-input-placeholder': {
                   opacity: '0.42 !important',
                 },
@@ -57,7 +67,7 @@ export const datePickerTheme: ThemeComponents = {
                   opacity: '0.42 !important',
                 },
               },
-              '&& .MuiPickersOutlinedInput-notchedOutline': {
+              [`&& .${pickersOutlinedInputClasses.notchedOutline}`]: {
                 transition: 'none',
                 '& legend': {
                   width: 0,
@@ -68,10 +78,10 @@ export const datePickerTheme: ThemeComponents = {
           {
             props: { variant: 'outlined', size: 'small' },
             style: {
-              '& .MuiPickersOutlinedInput-root': {
+              [`& .${pickersOutlinedInputClasses.root}`]: {
                 paddingLeft: 12,
               },
-              '& .MuiPickersSectionList-root': {
+              [`& .${pickersSectionListClasses.root}`]: {
                 paddingBlock: CONTROL_HEIGHTS.sm / 2 - 10.5,
                 ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
                   [TOUCH_MEDIA_QUERY]: {
@@ -79,7 +89,7 @@ export const datePickerTheme: ThemeComponents = {
                   },
                 }),
               },
-              '& .MuiIconButton-root': {
+              [`& .${iconButtonClasses.root}`]: {
                 padding: '4px',
               },
             },
@@ -87,10 +97,10 @@ export const datePickerTheme: ThemeComponents = {
           {
             props: { variant: 'outlined', size: 'large' },
             style: {
-              '& .MuiPickersOutlinedInput-root': {
+              [`& .${pickersOutlinedInputClasses.root}`]: {
                 fontSize: '1rem',
               },
-              '& .MuiPickersSectionList-root': {
+              [`& .${pickersSectionListClasses.root}`]: {
                 paddingBlock: CONTROL_HEIGHTS.lg / 2 - 10.5,
                 ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
                   [TOUCH_MEDIA_QUERY]: {
@@ -123,9 +133,9 @@ export const datePickerTheme: ThemeComponents = {
     styleOverrides: {
       root: ({ theme }) => ({
         borderRadius: (theme.vars || theme).shape.borderRadius,
-        '&.MuiPickerDay-today': {
+        [`&.${pickerDayClasses.today}`]: {
           border: `1px solid ${(theme.vars || theme).palette.primary.main}`,
-          '&:not(.Mui-selected)': {
+          [`&:not(.${pickerDayClasses.selected})`]: {
             backgroundColor: 'transparent',
           },
         },
@@ -135,7 +145,7 @@ export const datePickerTheme: ThemeComponents = {
   MuiPickersCalendarHeader: {
     styleOverrides: {
       root: {
-        '& .MuiPickersCalendarHeader-label': {
+        [`& .${pickersCalendarHeaderClasses.label}`]: {
           fontWeight: 500,
         },
       },
@@ -162,7 +172,7 @@ export const datePickerTheme: ThemeComponents = {
   MuiPickersSectionList: {
     styleOverrides: {
       root: {
-        '&.MuiPickersInputBase-sectionsContainer': {
+        [`&.${pickersInputBaseClasses.sectionsContainer}`]: {
           opacity: 1,
         },
       },

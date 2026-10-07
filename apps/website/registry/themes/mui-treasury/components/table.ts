@@ -1,3 +1,8 @@
+import { buttonBaseClasses } from '@mui/material/ButtonBase';
+import { paginationItemClasses } from '@mui/material/PaginationItem';
+import { tableRowClasses } from '@mui/material/TableRow';
+import { tableSortLabelClasses } from '@mui/material/TableSortLabel';
+
 import { ThemeComponents } from '../types';
 
 export const tableTheme: ThemeComponents = {
@@ -33,10 +38,10 @@ export const tableTheme: ThemeComponents = {
         'tbody > &:last-child td, tbody > &:last-child th': {
           borderBottom: 0,
         },
-        '&.MuiTableRow-hover:hover': {
+        [`&.${tableRowClasses.hover}:hover`]: {
           backgroundColor: (theme.vars || theme).palette.action.hover,
         },
-        '&.Mui-selected': {
+        [`&.${tableRowClasses.selected}`]: {
           backgroundColor: (theme.vars || theme).palette.action.selected,
           '&:hover': {
             backgroundColor: (theme.vars || theme).palette.action.selected,
@@ -48,7 +53,7 @@ export const tableTheme: ThemeComponents = {
   MuiTableContainer: {
     styleOverrides: {
       root: ({ theme }) => ({
-        borderRadius: theme.shape.borderRadius,
+        borderRadius: (theme.vars || theme).shape.borderRadius,
         border: `1px solid ${(theme.vars || theme).palette.divider}`,
       }),
     },
@@ -69,6 +74,17 @@ export const tableTheme: ThemeComponents = {
       }),
     },
   },
+  MuiPaginationItem: {
+    styleOverrides: {
+      root: ({ theme }) => ({
+        [`&.${paginationItemClasses.focusVisible}`]: {
+          outline: '2px solid',
+          outlineColor: (theme.vars || theme).palette.text.primary,
+          outlineOffset: '2px',
+        },
+      }),
+    },
+  },
   MuiTableSortLabel: {
     styleOverrides: {
       root: ({ theme }) => ({
@@ -76,8 +92,13 @@ export const tableTheme: ThemeComponents = {
         '&:hover': {
           color: (theme.vars || theme).palette.text.primary,
         },
-        '&.Mui-active': {
+        [`&.${tableSortLabelClasses.active}`]: {
           color: (theme.vars || theme).palette.text.primary,
+        },
+        [`&.${buttonBaseClasses.focusVisible}`]: {
+          outline: '2px solid',
+          outlineColor: (theme.vars || theme).palette.text.primary,
+          outlineOffset: '2px',
         },
       }),
       icon: ({ theme }) => ({

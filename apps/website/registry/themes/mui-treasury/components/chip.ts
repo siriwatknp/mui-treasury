@@ -1,3 +1,5 @@
+import { chipClasses } from '@mui/material/Chip';
+
 import {
   CONTROL_HEIGHTS,
   CONTROL_TOUCH_HEIGHTS,
@@ -19,7 +21,8 @@ export const chipTheme: ThemeComponents = {
         borderRadius: 6,
         fontWeight: 400,
         fontSize: theme.typography.body2.fontSize,
-        '&.Mui-focusVisible': {
+        lineHeight: theme.typography.body2.lineHeight,
+        [`&.${chipClasses.focusVisible}`]: {
           outline: '2px solid',
           outlineColor: (theme.vars || theme).palette.text.primary,
           outlineOffset: '2px',

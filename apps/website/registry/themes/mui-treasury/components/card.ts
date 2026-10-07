@@ -11,7 +11,7 @@ export const cardTheme: ThemeComponents = {
           duration: theme.transitions.duration.short,
         }),
         '&:hover': {
-          boxShadow: theme.shadows[4],
+          boxShadow: (theme.vars || theme).shadows[4],
         },
       }),
     },

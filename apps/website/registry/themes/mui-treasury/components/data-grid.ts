@@ -1,3 +1,4 @@
+import { iconButtonClasses } from '@mui/material/IconButton';
 import type {} from '@mui/x-data-grid/themeAugmentation';
 
 import { ThemeComponents } from '../types';
@@ -6,7 +7,7 @@ export const dataGridTheme: ThemeComponents = {
   MuiDataGrid: {
     styleOverrides: {
       root: ({ theme }) => ({
-        borderRadius: theme.shape.borderRadius,
+        borderRadius: (theme.vars || theme).shape.borderRadius,
         border: `1px solid ${(theme.vars || theme).palette.divider}`,
         backgroundColor: (theme.vars || theme).palette.background.paper,
       }),
@@ -48,7 +49,7 @@ export const dataGridTheme: ThemeComponents = {
         },
       },
       iconButtonContainer: {
-        '& .MuiIconButton-root': {
+        [`& .${iconButtonClasses.root}`]: {
           padding: 4,
         },
       },

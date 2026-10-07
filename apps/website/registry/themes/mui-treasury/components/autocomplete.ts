@@ -1,3 +1,7 @@
+import { autocompleteClasses } from '@mui/material/Autocomplete';
+import { chipClasses } from '@mui/material/Chip';
+import { inputBaseClasses } from '@mui/material/InputBase';
+
 import {
   CONTROL_HEIGHTS,
   CONTROL_TOUCH_HEIGHTS,
@@ -26,14 +30,14 @@ export const autocompleteTheme: ThemeComponents = {
           {
             props: { size: 'medium' },
             style: {
-              '& .MuiAutocomplete-inputRoot': {
+              [`& .${autocompleteClasses.inputRoot}`]: {
                 paddingTop: 2,
                 paddingBottom: 2,
                 paddingRight: 40,
-                '&:has(.MuiChip-root)': {
+                [`&:has(.${chipClasses.root})`]: {
                   paddingLeft: '2px',
                 },
-                '& .MuiAutocomplete-input': {
+                [`& .${autocompleteClasses.input}`]: {
                   paddingBlock: CONTROL_HEIGHTS.md / 2 - 12.5,
                   ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
                     [TOUCH_MEDIA_QUERY]: {
@@ -47,32 +51,33 @@ export const autocompleteTheme: ThemeComponents = {
           {
             props: { size: 'small' },
             style: {
-              '& .MuiAutocomplete-inputRoot.MuiInputBase-sizeSmall': {
-                paddingTop: 2,
-                paddingBottom: 2,
-                paddingLeft: 2,
-                '& .MuiAutocomplete-input': {
-                  paddingBlock: CONTROL_HEIGHTS.sm / 2 - 12.5,
-                  ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
-                    [TOUCH_MEDIA_QUERY]: {
-                      paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 14,
-                    },
-                  }),
+              [`& .${autocompleteClasses.inputRoot}.${inputBaseClasses.sizeSmall}`]:
+                {
+                  paddingTop: 2,
+                  paddingBottom: 2,
+                  paddingLeft: 2,
+                  [`& .${autocompleteClasses.input}`]: {
+                    paddingBlock: CONTROL_HEIGHTS.sm / 2 - 12.5,
+                    ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {
+                      [TOUCH_MEDIA_QUERY]: {
+                        paddingBlock: CONTROL_TOUCH_HEIGHTS.sm / 2 - 14,
+                      },
+                    }),
+                  },
                 },
-              },
             },
           },
           {
             props: { size: 'large' },
             style: {
-              '& .MuiAutocomplete-inputRoot': {
+              [`& .${autocompleteClasses.inputRoot}`]: {
                 paddingTop: 4,
                 paddingBottom: 4,
                 paddingLeft: 12,
-                '&:has(.MuiChip-root)': {
+                [`&:has(.${chipClasses.root})`]: {
                   paddingLeft: 4,
                 },
-                '& .MuiAutocomplete-input': {
+                [`& .${autocompleteClasses.input}`]: {
                   paddingBlock: CONTROL_HEIGHTS.lg / 2 - 14.5,
                   ...(CONTROL_HEIGHTS.lg !== CONTROL_TOUCH_HEIGHTS.lg && {
                     [TOUCH_MEDIA_QUERY]: {
@@ -103,7 +108,7 @@ export const autocompleteTheme: ThemeComponents = {
         display: 'flex',
         flexDirection: 'column',
         gap: '4px',
-        '& .MuiAutocomplete-option': {
+        [`& .${autocompleteClasses.option}`]: {
           minHeight: 40,
           [theme.breakpoints.up('sm')]: {
             minHeight: 'auto',

@@ -20,22 +20,6 @@ export default defineConfig({
   },
   projects: [
     {
-      name: 'desktop',
-      testIgnore: ['**/visual.spec.ts'],
-      use: {
-        ...devices['Desktop Chrome'],
-        viewport: { width: 1280, height: 720 },
-      },
-    },
-    {
-      name: 'touch',
-      testIgnore: ['**/visual.spec.ts'],
-      use: {
-        ...devices['Desktop Chrome'],
-        viewport: { width: 600, height: 1024 },
-      },
-    },
-    {
       name: 'visual',
       testMatch: ['**/visual.spec.ts'],
       snapshotPathTemplate:

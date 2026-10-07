@@ -1,3 +1,6 @@
+import { dialogClasses } from '@mui/material/Dialog';
+import { dialogContentClasses } from '@mui/material/DialogContent';
+
 import { ThemeComponents } from '../types';
 
 export const dialogTheme: ThemeComponents = {
@@ -13,9 +16,9 @@ export const dialogTheme: ThemeComponents = {
         },
       }),
       paper: ({ theme }) => ({
-        '&:not(.MuiDialog-paperFullScreen)': {
-          borderRadius: theme.shape.borderRadius,
-          boxShadow: theme.shadows[8],
+        [`&:not(.${dialogClasses.paperFullScreen})`]: {
+          borderRadius: (theme.vars || theme).shape.borderRadius,
+          boxShadow: (theme.vars || theme).shadows[8],
           width: 'calc(100% - var(--_edge))',
           margin: 'var(--_edge)',
         },
@@ -52,7 +55,7 @@ export const dialogTheme: ThemeComponents = {
       root: {
         padding: '0px var(--_spacing-col) var(--_spacing-row)',
         gap: 8,
-        '.MuiDialogContent-dividers + &': {
+        [`.${dialogContentClasses.dividers} + &`]: {
           paddingTop: 'var(--_spacing-row)',
         },
       },

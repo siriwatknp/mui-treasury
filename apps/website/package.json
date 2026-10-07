@@ -12,7 +12,8 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
-    "verify:theme": "node --no-warnings scripts/verify-theme.mjs"
+    "verify:theme": "node --no-warnings scripts/verify-theme.mjs",
+    "verify:gate": "node ../../packages/mui-cli/bin/mui.mjs verify --all --theme registry/themes/mui-treasury/theme.tsx --font @fontsource-variable/geist --shot test-results/verify-gate.png"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "3.0.9",
@@ -79,6 +80,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@fontsource-variable/geist": "5.3.0",
     "@next/eslint-plugin-next": "15.4.6",
     "@tailwindcss/postcss": "^4",
     "@trivago/prettier-plugin-sort-imports": "6.0.2",
