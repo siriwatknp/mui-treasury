@@ -30,7 +30,8 @@
   "pnpm": {
     "overrides": {
       "@types/react": "19.1.2",
-      "@types/react-dom": "19.1.2"
+      "@types/react-dom": "19.1.2",
+      "@mui/x-internals": "9.14.0"
     }
   }
 }
