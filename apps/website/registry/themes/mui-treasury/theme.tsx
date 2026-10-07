@@ -20,6 +20,7 @@ import { layoutTheme } from './components/layout';
 import { linkTheme } from './components/link';
 import { listTheme } from './components/list';
 import { menuTheme } from './components/menu';
+import { progressTheme } from './components/progress';
 import { selectTheme } from './components/select';
 import { svgIconTheme } from './components/svg-icon';
 import { tableTheme } from './components/table';
@@ -56,6 +57,7 @@ const theme = createTheme({
     ...linkTheme,
     ...controlsTheme,
     ...listTheme,
+    ...progressTheme,
     ...typographyTheme,
   },
   typography,

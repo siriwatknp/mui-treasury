@@ -81,6 +81,7 @@ const IntermediateIcon = createSvgIcon(
 
 const Unradio = styled('span')(({ theme }) => ({
   display: 'inline-block',
+  boxSizing: 'border-box',
   width: '1.5rem',
   height: '1.5rem',
   padding: 2,

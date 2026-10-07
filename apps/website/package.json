@@ -11,7 +11,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "verify:theme": "node --no-warnings scripts/verify-theme.mjs"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "3.0.9",
