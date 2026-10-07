@@ -31,6 +31,7 @@ function applies(when, c) {
 }
 
 export async function run(program, name, options) {
+  options.fonts = await (await import('../lib/fonts.mjs')).fontsForTheme(options.theme, options);
   if (!name) {
     if (!options.all || !options.theme) {
       throw new Error('name a component, or check every component your theme touches with `mui verify --all --theme <file>`');
@@ -121,7 +122,7 @@ export async function run(program, name, options) {
       out.push({ ...c, ...result });
     }
     return out;
-  }, { themeFile: options.theme });
+  }, { themeFile: options.theme, fonts: options.fonts });
 
   for (const r of results) {
     r.elements = options.slot ? r.elements.filter((e) => e.slot === options.slot) : r.elements;
@@ -245,9 +246,9 @@ async function runAll(program, targets, options, why = null) {
         }
       }
     }
-  }, { themeFile: options.theme });
+  }, { themeFile: options.theme, fonts: options.fonts });
   if (jobs > 1) {
-    await withCapture(async () => null, { themeFile: options.theme });
+    await withCapture(async () => null, { themeFile: options.theme, fonts: options.fonts });
   }
   await Promise.all(Array.from({ length: jobs }, worker));
   process.stderr.write('\n');
@@ -257,7 +258,7 @@ async function runAll(program, targets, options, why = null) {
   const shot = onSheet.length ? path.resolve(options.shot ?? `verify-${name.replace(/^theme$/, 'theme')}.png`) : null;
   const title = `verify ${why ? '' : `${name} `}--all — ${options.theme ?? 'vanilla Material UI'}${why ? ` · ${why}` : ''}`;
   if (shot) {
-    await withCapture(async (runCapture, helpers) => helpers.renderSheet(sheetHtml(title, onSheet), shot), { themeFile: options.theme });
+    await withCapture(async (runCapture, helpers) => helpers.renderSheet(sheetHtml(title, onSheet), shot), { themeFile: options.theme, fonts: options.fonts });
   }
   fs.rmSync(shotDir, { recursive: true, force: true });
 

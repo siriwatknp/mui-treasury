@@ -1499,21 +1499,6 @@ async function gateContent(cfg) {
       results[0].failures.push({ rule: 'same-height', detail: `fields that should match render at ${[...new Set(heights)].map((h) => `${h}px`).join(' and ')} (${group.dataset.sameHeight}) — something beside the text grows the box` });
     }
   }
-  // fields in a data-same-gap group whose label sits above the box (a static label) keep one label-to-box gap across variants
-  for (const group of document.querySelectorAll('#mount [data-same-gap]')) {
-    const gaps = [...group.querySelectorAll('.MuiFormControl-root')].filter((fc) => !fc.parentElement.closest('.MuiFormControl-root')).flatMap((fc) => {
-      const label = fc.querySelector('.MuiFormLabel-root');
-      const box = fc.querySelector('.MuiInputBase-root');
-      if (!label || !box) {
-        return [];
-      }
-      const gap = Math.round((box.getBoundingClientRect().top - label.getBoundingClientRect().bottom) * 10) / 10;
-      return gap >= -0.5 ? [{ gap, field: label.textContent.trim() }] : [];
-    });
-    if (gaps.length > 1 && Math.max(...gaps.map((g) => g.gap)) - Math.min(...gaps.map((g) => g.gap)) > 0.5 && results.length) {
-      results[0].failures.push({ rule: 'same-gap', detail: `labels above their fields sit at different gaps (${group.dataset.sameGap}): ${gaps.map((g) => `${g.field} ${g.gap}px`).join(', ')}` });
-    }
-  }
   return results;
 }
 
@@ -1597,7 +1582,38 @@ function gateDone() {
   return { done: true };
 }
 
+let loadedFonts = '[]';
+const addedFaces = [];
+
+/** The fonts --font names: a package's stylesheet as a <link> (Vite resolves its url()s), a file as a FontFace; every face loads before anything is measured. */
+async function applyFonts(fonts = []) {
+  const key = JSON.stringify(fonts);
+  if (key === loadedFonts) {
+    return;
+  }
+  loadedFonts = key;
+  document.querySelectorAll('link[data-mui-cli-font]').forEach((link) => link.remove());
+  addedFaces.splice(0).forEach((face) => document.fonts.delete(face));
+  for (const font of fonts) {
+    if (font.css) {
+      const link = Object.assign(document.createElement('link'), { rel: 'stylesheet', href: `${font.css}?direct` });
+      link.dataset.muiCliFont = '';
+      await new Promise((resolve) => {
+        link.onload = resolve;
+        link.onerror = resolve;
+        document.head.prepend(link);
+      });
+    } else {
+      const face = new FontFace(font.family, `url(${font.url})`);
+      document.fonts.add(face);
+      addedFaces.push(face);
+    }
+  }
+  await Promise.all([...document.fonts].map((face) => face.load().catch(() => null)));
+}
+
 window.__runCapture = async function runCapture(cfg) {
+  await applyFonts(cfg.fonts);
   if (cfg.gate) {
     return { render: runGate, count: gateCount, touch: gateTouch, ring: gateRing, content: gateContent, done: gateDone }[cfg.gate](cfg);
   }

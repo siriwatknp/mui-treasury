@@ -127,18 +127,20 @@ async function noteVersion(hostRoot, note) {
   }
 }
 
-export async function withCapture(fn, { themeFile, otherThemeFiles = [], colorScheme, scale = 1, width = 900 } = {}) {
+export async function withCapture(fn, { themeFile, otherThemeFiles = [], fonts = [], colorScheme, scale = 1, width = 900 } = {}) {
   const { step, note } = await import('./progress.mjs');
   const hostRoot = process.cwd();
   await noteVersion(hostRoot, note);
-  const themeDirs = [...new Set([themeFile, ...otherThemeFiles].filter(Boolean).map((f) => path.dirname(path.resolve(f))))];
+  const themeDirs = [...new Set([themeFile, ...otherThemeFiles, ...fonts.map((f) => f.file)].filter(Boolean).map((f) => path.dirname(path.resolve(f))))];
   const themeUrl = themeFile ? `/@fs/${path.resolve(themeFile)}` : undefined;
+  // always sent, empty too: a reused page drops the fonts an earlier command loaded
+  const fontUrls = fonts.map((f) => (f.kind === 'css' ? { css: `/@fs/${f.file}` } : { family: f.family, url: `/@fs/${f.file}` }));
   const prepare = (rawCfg) => {
     const cfg = { ...rawCfg };
     // themeFile: a path for this render only, null for vanilla, absent for the session theme
     const url = cfg.themeFile === null ? undefined : cfg.themeFile ? `/@fs/${path.resolve(cfg.themeFile)}` : themeUrl;
     delete cfg.themeFile;
-    return { ...cfg, themeUrl: url };
+    return { ...cfg, themeUrl: url, fonts: fontUrls };
   };
   const pageOpts = { colorScheme: colorScheme ?? null, scale, width };
   if (themeFile) {

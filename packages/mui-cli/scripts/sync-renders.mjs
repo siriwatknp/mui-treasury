@@ -8,7 +8,7 @@ import path from 'node:path';
 import { DATA_DIR } from '../src/lib/data.mjs';
 import { bootEngine, helpersFor, runOn } from '../src/lib/renderEngine.mjs';
 import { coreOnly, demoIndex, shipDemo } from './lib/docsDemos.mjs';
-import { FN, PROP_STATES, RENDER_DEMOS_DIR, NODE, generatedUrl, mediaOf, propsKeyOf, reachOf, stateProps, statesOf, stepsFor, touchOf } from '../src/lib/renders.mjs';
+import { FN, PROP_STATES, RENDER_DEMOS_DIR, NODE, generatedUrl, mediaOf, pointerTargetOf, propsKeyOf, reachOf, stateProps, statesOf, stepsFor, touchOf } from '../src/lib/renders.mjs';
 import { readPins, tagFor, vendorPath, vendorTag } from './lib/pins.mjs';
 import { propTypesOf, requiredPropsOf } from './lib/propTypes.mjs';
 
@@ -82,7 +82,7 @@ function renderOf(row) {
   const states = statesOf(row).filter(reachOf).sort();
   const pointer = states.some((st) => ['hover', 'press'].includes(reachOf(st)));
   const media = mediaOf(row);
-  return { kind: 'generated', component: row.component, props: { ...requiredOf(row.component), ...variant, ...stateProps(states) }, states, touch: touchOf(row), ...(Object.keys(media).length ? { media } : {}), target: pointer ? row.slot : 'root' };
+  return { kind: 'generated', component: row.component, props: { ...requiredOf(row.component), ...variant, ...stateProps(states) }, states, touch: touchOf(row), ...(Object.keys(media).length ? { media } : {}), target: pointer ? pointerTargetOf(row) : 'root' };
 }
 const keyOf = (r) => [r.component, r.parent ?? '', propsKeyOf(r.props), r.states.join('+'), r.touch, JSON.stringify(r.media ?? {}), r.target].join('|');
 
@@ -272,7 +272,7 @@ try {
         const states = statesOf(row).filter(reachOf);
         const pointer = states.some((st) => ['hover', 'press'].includes(reachOf(st)));
         const media = mediaOf(row);
-        groups.set([states.sort().join('+'), touchOf(row), JSON.stringify(media), pointer ? row.slot : ''].join('|'), { states, touch: touchOf(row), ...(Object.keys(media).length ? { media } : {}), target: pointer ? row.slot : 'root' });
+        groups.set([states.sort().join('+'), touchOf(row), JSON.stringify(media), pointer ? pointerTargetOf(row) : ''].join('|'), { states, touch: touchOf(row), ...(Object.keys(media).length ? { media } : {}), target: pointer ? pointerTargetOf(row) : 'root' });
       }
       for (const demo of left(c).length ? demosOf(c) : []) {
         for (const group of groups.values()) {

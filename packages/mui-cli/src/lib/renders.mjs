@@ -22,6 +22,17 @@ export function statesOf(row) {
   return [...new Set([...[...sel.matchAll(/\.Mui-(\w+)/g)].map((m) => m[1]), ...[...sel.matchAll(/:(hover|active|focus-visible|focus)\b/g)].map((m) => `:${m[1]}`)])];
 }
 
+/** The slot a row's pointer state is on: a nested slot named before `&:hover` / `&:active` (`& .MuiChip-deleteIcon &:hover`), else the row's own. */
+export function pointerTargetOf(row) {
+  const selector = row.selector ?? [];
+  const at = selector.findIndex((s) => /&:(hover|active)/.test(s));
+  const nested = selector
+    .slice(0, at < 0 ? 0 : at)
+    .map((s) => new RegExp(`(?:^|\\s)\\.${row.component}-(\\w+)`).exec(s)?.[1])
+    .filter(Boolean)
+    .pop();
+  return nested ?? row.slot;
+}
 export const touchOf = (row) => (row.selector ?? []).some((s) => /hover:\s*none/.test(s));
 
 /** The media a row is written under, as emulation: print, pointer, forced colors, a viewport width that satisfies (min|max)-width. */
@@ -61,6 +72,14 @@ export const RENDER_DEFAULTS = {
     parts: ['MuiTextField'],
     imports: "import TextField from '@mui/material/TextField';\n",
     props: "{ options: ['Probe one', 'Probe two'], renderInput: (params) => <TextField {...params} label=\"Probe\" /> }",
+  },
+  MuiChip: {
+    props: "{ label: 'Probe' }",
+  },
+  MuiSelect: {
+    imports: "import MenuItem from '@mui/material/MenuItem';\n",
+    props: "{ value: 'Probe one' }",
+    content: "[<MenuItem key=\"1\" value=\"Probe one\">Probe one</MenuItem>, <MenuItem key=\"2\" value=\"Probe two\">Probe two</MenuItem>]",
   },
   MuiTextField: {
     imports: "import MenuItem from '@mui/material/MenuItem';\n",

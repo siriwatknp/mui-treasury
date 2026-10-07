@@ -150,15 +150,6 @@ test('a select TextField renders with options', () => {
   assert.equal(status, 0, JSON.stringify(data));
 });
 
-test('same-gap: static labels at different gaps across variants fail; a shared content case runs once', () => {
-  const LABEL_GAP = path.resolve(HERE, '../fixtures/label-gap.theme.ts');
-  const { status, data } = verify('--all', '--theme', LABEL_GAP, '--shot', path.join(os.tmpdir(), 'mui-verify-test-label-gap.png'));
-  const gaps = data.failures.filter((f) => f.rule === 'content same-gap');
-  assert.equal(gaps.length, 2, JSON.stringify(data.failures));
-  assert.match(gaps[0].detail, /Standard 2\dpx/);
-  assert.equal(status, 1);
-});
-
 test('a border width expectation reads back as written; Autocomplete addresses the TextField parts its render passes', () => {
   const border = verify('OutlinedInput', '--expect', 'notchedOutline.borderWidth=1px');
   assert.equal(border.status, 0, JSON.stringify(border.data.expectations));

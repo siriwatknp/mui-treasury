@@ -3,6 +3,7 @@ import { createRequire } from 'node:module';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
+import { searchForWorkspaceRoot } from 'vite';
 
 // Every Material UI entry a render may import, bundled in one pass up front: renders import components lazily, and
 // a later optimizer pass would bundle a second copy of the theme context (the theme then never reaches the component).
@@ -45,11 +46,11 @@ export default {
     // (renderEngine `ready`); a Vite reload could land in the middle of one
     watch: { ignored: (process.env.MUI_CLI_THEME_DIR ? process.env.MUI_CLI_THEME_DIR.split(path.delimiter) : []).map((dir) => `${dir}/**`) },
     fs: {
-      // /@fs/ + raw-file serves: package root, the host project (peer deps live
-      // there when installed as a dependency), and the user's --theme dir
+      // /@fs/ + raw-file serves: package root, the host project and its workspace root (peer deps and the
+      // font packages --font names live there; pnpm keeps them in the workspace root's store), and the --theme dir
       allow: [
         path.resolve(fileURLToPath(import.meta.url), '../..'),
-        ...(process.env.MUI_CLI_HOST_ROOT ? [process.env.MUI_CLI_HOST_ROOT] : []),
+        ...(process.env.MUI_CLI_HOST_ROOT ? [process.env.MUI_CLI_HOST_ROOT, searchForWorkspaceRoot(process.env.MUI_CLI_HOST_ROOT)] : []),
         ...(process.env.MUI_CLI_THEME_DIR ? process.env.MUI_CLI_THEME_DIR.split(path.delimiter) : []),
       ],
     },

@@ -30,6 +30,17 @@ test('theme code: component maps in imported files are checked, JSX included; a 
   fs.writeFileSync(path.join(dir, 'components/button.ts'), "export const button = {\n  MuiButton: { styleOverrides: { root: { '& .MuiButton-icon': { margin: 0 } } } },\n};\n");
   fs.writeFileSync(path.join(dir, 'components/controls.tsx'), "const Icon = () => null;\nexport const controls = {\n  MuiCheckbox: { defaultProps: { icon: <Icon /> }, styleOverrides: { root: ({ theme }) => ({ borderRadius: theme.shape.borderRadius }) } },\n};\n");
   fs.writeFileSync(path.join(dir, 'theme.tsx'), "import { button } from './components/button';\nimport { controls } from './components/controls';\n\nconst TOUCH = '@media (max-width: 768px)';\nexport const Wrapper = () => <div />;\nexport default { components: { ...button, ...controls, MuiChip: { styleOverrides: { root: { [TOUCH]: { height: 40 }, '@media (min-width: 900px)': { height: 32 } } } } } };\n");
-  const issues = await checkThemeCode(path.join(dir, 'theme.tsx'), dir);
+  const issues = await checkThemeCode(path.join(dir, 'theme.tsx'), HERE);
   assert.deepEqual(issues.map((i) => [path.basename(i.file), i.line, i.rule]), [['button.ts', 2, 'classes'], ['controls.tsx', 3, 'tokens']]);
+});
+
+test('theme code: classes resolve in the module that exports them — TouchRipple in ButtonBase, MUI X, a state through ButtonBase', async () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'mui-code-classes-'));
+  fs.writeFileSync(path.join(dir, 'theme.ts'), "export default { components: {\n  MuiButton: { styleOverrides: { root: { '& .MuiTouchRipple-child': { opacity: 0 } } } },\n  MuiCheckbox: { styleOverrides: { root: { '&.Mui-focusVisible': { outline: 0 } } } },\n  MuiPickersOutlinedInput: { styleOverrides: { root: { '& .MuiPickersOutlinedInput-notchedOutline': { borderWidth: 1 } } } },\n} };\n");
+  const details = (await checkThemeCode(path.join(dir, 'theme.ts'), HERE)).map((i) => [i.line, i.detail.replace(/^.* — use /, '')]);
+  assert.deepEqual(details, [
+    [2, "`${touchRippleClasses.child}` (import { touchRippleClasses } from '@mui/material/ButtonBase';)"],
+    [3, "`${buttonBaseClasses.focusVisible}` (import { buttonBaseClasses } from '@mui/material/ButtonBase';)"],
+    [4, "`${pickersOutlinedInputClasses.notchedOutline}` (import { pickersOutlinedInputClasses } from '@mui/x-date-pickers';)"],
+  ]);
 });

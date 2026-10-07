@@ -31,7 +31,7 @@ The CLI renders Material UI components in Chrome under the project's theme and c
    - **What it checks:** every component the theme touches and its family, across recorded variants, states, docs compositions and real content cases (long values, typed multiline, long labels, chips, long button text).
    - **Rules:**
      - **a11y:** a 24×24 clickable area or WCAG 2.5.8 spacing; every painted part responds to a click; keyboard focus visibly changes something and no `overflow: hidden` parent cuts the ring.
-     - **content:** text never runs under an adornment, icon or chip; never spills out (an intended ellipsis or clip is fine); typed lines stay visible; a label never sits on the value; fields that should match keep one height, and labels above their fields keep one gap across variants.
+     - **content:** text never runs under an adornment, icon or chip; never spills out (an intended ellipsis or clip is fine); typed lines stay visible; a label never sits on the value; fields that should match keep one height.
    - **Sheet:** it always prints a contact sheet of real usage (content cases, variants side by side) plus any failing case. Look at it instead of building your own preview.
    - **On failure:** fix the theme, not the check.
 4. **Read the side effects:** `mui diff --theme <file>` compares against the theme file at git HEAD (else vanilla; `--against vanilla` forces it).
@@ -82,6 +82,7 @@ Then stop and report. More checking past this point costs time without changing 
 
 - **`--json` when parsing:** every command returns `{ type, data }`.
 - **Always pass `--theme`.** Without it, values and placement assume plain MUI.
+- **Fonts are explicit.** A theme naming a font that is neither a system font nor MUI's default makes `verify` and `diff` exit 1 until you say which font to render with: `--font <package>` (an installed `@fontsource/…`) or `--font "Family=<file>"`. Use the font the app actually loads; ask the user when that isn't clear. `--skip-font` (fallback fonts) only when the user accepts it.
 - **"All inputs" / "all buttons" briefs include the bases users render directly:** a bare `InputBase`, or `Select input={<InputBase/>}`. Check them too.
 - **Render server:** the first rendering call starts it (~2s); later calls take ~0.2s for 5 idle minutes. `mui server stop` ends it.
 

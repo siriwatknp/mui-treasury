@@ -283,6 +283,7 @@ Same brief, prompts and judge as round 2.
 
 **Follow-ups (ADR 0021):**
 - ~~**Gate:** a `same-gap` content rule~~ ✅ Done (`content-cases/_shared/LabelGap.tsx`; it fails the no-CLI theme, passes with-CLI and plain MUI).
+  - Removed 2026-10-07: label placement per variant is the design system's choice (ADR 0027).
 - ~~**Judge:** label gap equal across variants~~ ✅ Done (`round3/judge/judge.mjs`: no-CLI 8 failed, with-CLI 0).
 - ~~**TextField `select=true` renders nothing in `verify`**~~ ✅ Done (default options), plus dead renders fail fast: that agent's 224-case call went from about 120s to 20.8s.
 - ~~**Gate sheet only on failure**~~ ✅ Done: a passing whole-theme run also writes a sheet of its content cases.

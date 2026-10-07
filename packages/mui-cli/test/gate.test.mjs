@@ -28,11 +28,8 @@ test('a component that only renders inside docs demos gets its recorded demos', 
 
 test('hand-picked content cases are gate cases, typed ones say what to type', () => {
   const content = casesOf('MuiOutlinedInput').filter((c) => c.kind === 'content');
-  assert.deepEqual(content.map((c) => c.label).sort(), ['content LabelGap', 'content LongLabel', 'content LongValueAdornments', 'content MultilineMaxRows', 'content MultilineTyped', 'content Password']);
+  assert.deepEqual(content.map((c) => c.label).sort(), ['content LongLabel', 'content LongValueAdornments', 'content MultilineMaxRows', 'content MultilineTyped', 'content Password']);
   assert.ok(casesOf('MuiChip').some((c) => c.kind === 'content'));
-  // a shared case joins only the components it names
-  assert.ok(casesOf('MuiInputLabel').some((c) => c.label === 'content LabelGap'));
-  assert.ok(!casesOf('MuiChip').some((c) => c.label === 'content LabelGap'));
 });
 
 test("a component's own docs page demos are gate cases, after its compositions", () => {

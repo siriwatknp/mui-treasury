@@ -11,6 +11,8 @@ export function registerVerify(program) {
     .option('--values', 'print every computed value of each slot (default: each slot\'s box; check values with --expect)')
     .option('--expect <slot.prop=value...>', 'an expected value checked in every case, e.g. root.paddingTop=10px, or root.box.height=36px for the laid-out box; repeatable — exit 1 when one fails')
     .option('--theme <file>', 'your theme module (default-exports createTheme options); omit for vanilla Material UI')
+    .option('--font <source...>', 'the font a custom family of the theme renders with: an installed package (@fontsource/inter) or "Family=file" (.woff2/.ttf); repeatable')
+    .option('--skip-font', 'render a custom theme font with its fallback fonts instead of failing')
     .option('--all', 'the gate: every variant, state and docs composition of the component and its family, checked for a 24×24 touch target, dead zones and a focus ring nothing cuts off — exit 1 on any failure. Without a component: every component the --theme touches')
     .option('--shot <file>', 'with --all: the contact sheet of every case (default verify-<Component>.png)')
     .action((...args) => import('./verify.run.mjs').then((m) => m.run(program, ...args)));

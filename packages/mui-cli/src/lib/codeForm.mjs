@@ -8,31 +8,59 @@ export const VAR_ROOTS = ['palette', 'shape', 'shadows'];
 
 export const classesName = (name) => `${name[0].toLowerCase()}${name.slice(1)}Classes`;
 
+/** Where `<name>Classes` may be exported: its own module, the module it lives in (TouchRipple), then MUI X. */
+const modulesOf = (name) => [
+  `@mui/material/${name}`,
+  ...(name === 'TouchRipple' ? ['@mui/material/ButtonBase'] : []),
+  `@mui/x-date-pickers/${name}`,
+  `@mui/x-tree-view/${name}`,
+  '@mui/x-date-pickers',
+  '@mui/x-tree-view',
+  '@mui/x-data-grid',
+  '@mui/x-charts',
+];
+const exportOf = (name) => (name === 'DataGrid' ? 'gridClasses' : classesName(name));
+
 const keysCache = new Map();
-/** The keys of `<name>Classes` in @mui/material as installed for `fromDir`, or null when it can't be read. */
-export function classKeysOf(name, fromDir = process.cwd()) {
+/** `<name>Classes` as installed for `fromDir`: its keys and the module to import it from, or null when none exports it. */
+export function classesOf(name, fromDir = process.cwd()) {
   const at = `${fromDir}|${name}`;
   if (!keysCache.has(at)) {
-    try {
-      const require = createRequire(path.join(fromDir, 'noop.js'));
-      keysCache.set(at, Object.keys(require(`@mui/material/${name}`)[classesName(name)] ?? {}));
-    } catch {
-      keysCache.set(at, null);
+    const require = createRequire(path.join(fromDir, 'noop.js'));
+    let found = null;
+    for (const from of modulesOf(name)) {
+      try {
+        const classes = require(from)[exportOf(name)];
+        if (classes) {
+          found = { keys: Object.keys(classes), from };
+          break;
+        }
+      } catch {
+        // not installed, or no such module
+      }
     }
+    keysCache.set(at, found);
   }
   return keysCache.get(at);
 }
 
-/** `MuiOutlinedInput-notchedOutline` → outlinedInputClasses.notchedOutline; a state class uses `owner` (the component it's written under). Null when that key doesn't exist. */
+export const classKeysOf = (name, fromDir) => classesOf(name, fromDir)?.keys ?? null;
+
+/**
+ * `MuiOutlinedInput-notchedOutline` → outlinedInputClasses.notchedOutline; a state class uses `owner` (the component it's
+ * written under), else ButtonBase's (Checkbox has no focusVisible key, its ButtonBase does). Null when no key exists.
+ */
 export function classKeyFor(match, owner, fromDir) {
   const [, , component, slot, state] = match;
-  const name = component ?? owner?.replace(/^Mui/, '');
   const key = slot ?? state;
-  const keys = name ? classKeysOf(name, fromDir) : null;
-  if (!keys?.includes(key)) {
-    return null;
+  const names = component ? [component] : [owner?.replace(/^Mui/, ''), 'ButtonBase'].filter(Boolean);
+  for (const name of names) {
+    const classes = classesOf(name, fromDir);
+    if (classes?.keys.includes(key)) {
+      return { name, expr: `${exportOf(name)}.${key}`, from: `import { ${exportOf(name)} } from '${classes.from}';` };
+    }
   }
-  return { name, expr: `${classesName(name)}.${key}`, from: `import { ${classesName(name)} } from '@mui/material/${name}';` };
+  return null;
 }
 
 /** A token as theme code: `palette.text.primary` → `(theme.vars || theme).palette.text.primary`. */

@@ -68,6 +68,8 @@ export async function run(program, names, options) {
   const themeFile = path.resolve(options.theme);
   const { byComponent } = await loadSeams();
   const baseline = baselineFor(themeFile, options.against);
+  const { fontsForTheme } = await import('../lib/fonts.mjs');
+  const fonts = [...new Map([...(await fontsForTheme(themeFile, options)), ...(baseline.file ? await fontsForTheme(baseline.file, options) : [])].map((f) => [f.file, f])).values()];
   try {
     const after = await loadThemeModule(themeFile);
     const before = baseline.file ? await loadThemeModule(baseline.file) : {};
@@ -149,10 +151,10 @@ export async function run(program, names, options) {
             }
           }
         },
-        { themeFile, otherThemeFiles: baseline.file ? [baseline.file] : [] },
+        { themeFile, otherThemeFiles: baseline.file ? [baseline.file] : [], fonts },
       );
       if (jobs > 1) {
-        await withCapture(async () => null, { themeFile, otherThemeFiles: baseline.file ? [baseline.file] : [] });
+        await withCapture(async () => null, { themeFile, otherThemeFiles: baseline.file ? [baseline.file] : [], fonts });
       }
       await Promise.all(Array.from({ length: jobs }, worker));
       if (total > 8) {

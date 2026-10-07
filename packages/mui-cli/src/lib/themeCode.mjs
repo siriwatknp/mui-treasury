@@ -84,9 +84,12 @@ async function checkOne(file, fromDir, issues) {
     if (nextIn) {
       const texts = node.type === 'Literal' && typeof node.value === 'string' ? [node.value] : node.type === 'TemplateLiteral' ? node.quasis.map((q) => q.value.cooked ?? '') : [];
       for (const text of texts) {
+        // a class no *Classes export names (a global state on MUI X, a custom size) has nothing better to be written as
         for (const match of text.matchAll(MUI_CLASS)) {
           const fix = classKeyFor(match, nextOwner, fromDir);
-          report(node, 'classes', `'${match[1]}' written as a string — use ${fix ? `\`\${${fix.expr}}\` (${fix.from})` : 'the imported *Classes key'}`);
+          if (fix) {
+            report(node, 'classes', `'${match[1]}' written as a string — use \`\${${fix.expr}}\` (${fix.from})`);
+          }
         }
         if (text.includes('var(--mui-')) {
           report(node, 'css variables', 'a raw var(--mui-…) string — read it as theme.vars.* in a ({ theme }) callback, which is type-checked');
