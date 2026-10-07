@@ -1,0 +1,12 @@
+{
+  "with-cli": {
+    "checks": 2944,
+    "failed": 0,
+    "fails": []
+  },
+  "no-cli": {
+    "checks": 2944,
+    "failed": 0,
+    "fails": []
+  }
+}

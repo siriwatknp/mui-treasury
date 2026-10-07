@@ -1,0 +1,825 @@
+{
+  "demoSource": "v9.14.0",
+  "products": {
+    "data-grid": {
+      "url": "https://mui.com/x/react-data-grid/",
+      "features": [
+        {
+          "feature": "accessibility",
+          "plan": "community,pro",
+          "demos": 4
+        },
+        {
+          "feature": "aggregation",
+          "plan": "premium",
+          "demos": 16
+        },
+        {
+          "feature": "ai-assistant",
+          "plan": "premium",
+          "demos": 4
+        },
+        {
+          "feature": "api-object",
+          "plan": "community",
+          "demos": 3
+        },
+        {
+          "feature": "cell-selection",
+          "plan": "community,premium",
+          "demos": 4
+        },
+        {
+          "feature": "cells",
+          "plan": "community",
+          "demos": 1
+        },
+        {
+          "feature": "charts-integration",
+          "plan": "premium",
+          "demos": 8
+        },
+        {
+          "feature": "clipboard",
+          "plan": "premium",
+          "demos": 10
+        },
+        {
+          "feature": "column-definition",
+          "plan": "community,pro,premium",
+          "demos": 10
+        },
+        {
+          "feature": "column-dimensions",
+          "plan": "community,pro,premium",
+          "demos": 10
+        },
+        {
+          "feature": "column-groups",
+          "plan": "community,pro",
+          "demos": 5
+        },
+        {
+          "feature": "column-header",
+          "plan": "community",
+          "demos": 3
+        },
+        {
+          "feature": "column-menu",
+          "plan": "community,premium",
+          "demos": 9
+        },
+        {
+          "feature": "column-ordering",
+          "plan": "pro",
+          "demos": 2
+        },
+        {
+          "feature": "column-pinning",
+          "plan": "community,pro",
+          "demos": 7
+        },
+        {
+          "feature": "column-recipes",
+          "plan": "community,pro,premium",
+          "demos": 4
+        },
+        {
+          "feature": "column-spanning",
+          "plan": "community,pro",
+          "demos": 3
+        },
+        {
+          "feature": "column-visibility",
+          "plan": "community,premium",
+          "demos": 7
+        },
+        {
+          "feature": "components",
+          "plan": "community,pro",
+          "demos": 9
+        },
+        {
+          "feature": "components/ai-assistant-panel",
+          "plan": "premium",
+          "demos": 1
+        },
+        {
+          "feature": "components/charts-panel",
+          "plan": "premium",
+          "demos": 1
+        },
+        {
+          "feature": "components/columns-panel",
+          "plan": "community",
+          "demos": 1
+        },
+        {
+          "feature": "components/export",
+          "plan": "community,premium",
+          "demos": 2
+        },
+        {
+          "feature": "components/filter-panel",
+          "plan": "community,pro",
+          "demos": 2
+        },
+        {
+          "feature": "components/formula-bar",
+          "plan": "premium",
+          "demos": 1
+        },
+        {
+          "feature": "components/pivot-panel",
+          "plan": "premium",
+          "demos": 1
+        },
+        {
+          "feature": "components/prompt-field",
+          "plan": "premium",
+          "demos": 1
+        },
+        {
+          "feature": "components/quick-filter",
+          "plan": "community",
+          "demos": 4
+        },
+        {
+          "feature": "components/toolbar",
+          "plan": "community,pro,premium",
+          "demos": 7
+        },
+        {
+          "feature": "custom-columns",
+          "plan": "community",
+          "demos": 4
+        },
+        {
+          "feature": "editing",
+          "plan": "community",
+          "demos": 13
+        },
+        {
+          "feature": "events",
+          "plan": "community,pro",
+          "demos": 5
+        },
+        {
+          "feature": "export",
+          "plan": "community,pro,premium",
+          "demos": 12
+        },
+        {
+          "feature": "features",
+          "plan": "premium",
+          "demos": 1
+        },
+        {
+          "feature": "filtering",
+          "plan": "community,pro",
+          "demos": 31
+        },
+        {
+          "feature": "filtering-recipes",
+          "plan": "community,pro",
+          "demos": 5
+        },
+        {
+          "feature": "formulas",
+          "plan": "premium",
+          "demos": 6
+        },
+        {
+          "feature": "layout",
+          "plan": "community",
+          "demos": 5
+        },
+        {
+          "feature": "list-view",
+          "plan": "pro,premium",
+          "demos": 4
+        },
+        {
+          "feature": "localization",
+          "plan": "community",
+          "demos": 4
+        },
+        {
+          "feature": "master-detail",
+          "plan": "community,pro",
+          "demos": 9
+        },
+        {
+          "feature": "overlays",
+          "plan": "community,premium",
+          "demos": 11
+        },
+        {
+          "feature": "overview",
+          "plan": "community,pro,premium",
+          "demos": 3
+        },
+        {
+          "feature": "pagination",
+          "plan": "community,premium",
+          "demos": 12
+        },
+        {
+          "feature": "performance",
+          "plan": "pro",
+          "demos": 1
+        },
+        {
+          "feature": "pivoting",
+          "plan": "premium",
+          "demos": 13
+        },
+        {
+          "feature": "quickstart",
+          "plan": "community",
+          "demos": 1
+        },
+        {
+          "feature": "recipes-editing",
+          "plan": "community,premium",
+          "demos": 8
+        },
+        {
+          "feature": "recipes-row-grouping",
+          "plan": "premium",
+          "demos": 5
+        },
+        {
+          "feature": "row-definition",
+          "plan": "community",
+          "demos": 2
+        },
+        {
+          "feature": "row-grouping",
+          "plan": "community,premium",
+          "demos": 29
+        },
+        {
+          "feature": "row-height",
+          "plan": "community",
+          "demos": 6
+        },
+        {
+          "feature": "row-ordering",
+          "plan": "pro",
+          "demos": 3
+        },
+        {
+          "feature": "row-pinning",
+          "plan": "pro",
+          "demos": 4
+        },
+        {
+          "feature": "row-recipes",
+          "plan": "community,pro",
+          "demos": 6
+        },
+        {
+          "feature": "row-selection",
+          "plan": "community,pro",
+          "demos": 11
+        },
+        {
+          "feature": "row-spanning",
+          "plan": "community",
+          "demos": 4
+        },
+        {
+          "feature": "row-updates",
+          "plan": "community,pro",
+          "demos": 5
+        },
+        {
+          "feature": "scrolling",
+          "plan": "community,pro",
+          "demos": 3
+        },
+        {
+          "feature": "server-side-data",
+          "plan": "community,pro,premium",
+          "demos": 43
+        },
+        {
+          "feature": "sorting",
+          "plan": "community,pro",
+          "demos": 15
+        },
+        {
+          "feature": "state",
+          "plan": "community,pro,premium",
+          "demos": 7
+        },
+        {
+          "feature": "style",
+          "plan": "community,premium",
+          "demos": 9
+        },
+        {
+          "feature": "style-recipes",
+          "plan": "pro,premium",
+          "demos": 3
+        },
+        {
+          "feature": "tree-data",
+          "plan": "pro",
+          "demos": 7
+        },
+        {
+          "feature": "undo-redo",
+          "plan": "premium",
+          "demos": 5
+        },
+        {
+          "feature": "virtualization",
+          "plan": "community",
+          "demos": 2
+        }
+      ]
+    },
+    "charts": {
+      "url": "https://mui.com/x/react-charts/",
+      "features": [
+        {
+          "feature": "accessibility",
+          "plan": "community",
+          "demos": 2
+        },
+        {
+          "feature": "animation",
+          "plan": "community",
+          "demos": 5
+        },
+        {
+          "feature": "areas-demo",
+          "plan": "community",
+          "demos": 6
+        },
+        {
+          "feature": "axis",
+          "plan": "community",
+          "demos": 19
+        },
+        {
+          "feature": "axis-customization",
+          "plan": "community",
+          "demos": 8
+        },
+        {
+          "feature": "axis-ticks",
+          "plan": "community,pro",
+          "demos": 8
+        },
+        {
+          "feature": "bar-demo",
+          "plan": "community,premium",
+          "demos": 10
+        },
+        {
+          "feature": "bars",
+          "plan": "community,pro,premium",
+          "demos": 23
+        },
+        {
+          "feature": "brush",
+          "plan": "community",
+          "demos": 3
+        },
+        {
+          "feature": "bubble",
+          "plan": "community,pro",
+          "demos": 5
+        },
+        {
+          "feature": "candlestick",
+          "plan": "premium",
+          "demos": 7
+        },
+        {
+          "feature": "components",
+          "plan": "community",
+          "demos": 5
+        },
+        {
+          "feature": "composition",
+          "plan": "community,premium",
+          "demos": 7
+        },
+        {
+          "feature": "dataset",
+          "plan": "community",
+          "demos": 3
+        },
+        {
+          "feature": "export",
+          "plan": "pro",
+          "demos": 7
+        },
+        {
+          "feature": "funnel",
+          "plan": "pro",
+          "demos": 17
+        },
+        {
+          "feature": "gauge",
+          "plan": "community",
+          "demos": 6
+        },
+        {
+          "feature": "heatmap",
+          "plan": "pro,premium",
+          "demos": 9
+        },
+        {
+          "feature": "highlighting",
+          "plan": "community",
+          "demos": 7
+        },
+        {
+          "feature": "hooks",
+          "plan": "community,premium",
+          "demos": 9
+        },
+        {
+          "feature": "label",
+          "plan": "community",
+          "demos": 3
+        },
+        {
+          "feature": "legend",
+          "plan": "community",
+          "demos": 20
+        },
+        {
+          "feature": "line-demo",
+          "plan": "community",
+          "demos": 11
+        },
+        {
+          "feature": "lines",
+          "plan": "community,pro",
+          "demos": 21
+        },
+        {
+          "feature": "localization",
+          "plan": "community",
+          "demos": 2
+        },
+        {
+          "feature": "map",
+          "plan": "premium",
+          "demos": 16
+        },
+        {
+          "feature": "performance",
+          "plan": "pro",
+          "demos": 4
+        },
+        {
+          "feature": "pie",
+          "plan": "community",
+          "demos": 10
+        },
+        {
+          "feature": "pie-demo",
+          "plan": "community",
+          "demos": 6
+        },
+        {
+          "feature": "pyramid",
+          "plan": "pro",
+          "demos": 4
+        },
+        {
+          "feature": "quickstart",
+          "plan": "community",
+          "demos": 2
+        },
+        {
+          "feature": "radar",
+          "plan": "community",
+          "demos": 11
+        },
+        {
+          "feature": "radial-axes",
+          "plan": "community,premium",
+          "demos": 5
+        },
+        {
+          "feature": "radial-bars",
+          "plan": "premium",
+          "demos": 5
+        },
+        {
+          "feature": "radial-lines",
+          "plan": "premium",
+          "demos": 6
+        },
+        {
+          "feature": "range-bar",
+          "plan": "premium",
+          "demos": 8
+        },
+        {
+          "feature": "references",
+          "plan": "community,pro",
+          "demos": 6
+        },
+        {
+          "feature": "sankey",
+          "plan": "pro",
+          "demos": 15
+        },
+        {
+          "feature": "scatter",
+          "plan": "community,pro,premium",
+          "demos": 14
+        },
+        {
+          "feature": "scatter-demo",
+          "plan": "community",
+          "demos": 2
+        },
+        {
+          "feature": "sparkline",
+          "plan": "community",
+          "demos": 10
+        },
+        {
+          "feature": "stacking",
+          "plan": "community",
+          "demos": 3
+        },
+        {
+          "feature": "styling",
+          "plan": "community",
+          "demos": 12
+        },
+        {
+          "feature": "toolbar",
+          "plan": "pro",
+          "demos": 8
+        },
+        {
+          "feature": "tooltip",
+          "plan": "community",
+          "demos": 14
+        },
+        {
+          "feature": "zoom-and-pan",
+          "plan": "pro,premium",
+          "demos": 18
+        }
+      ]
+    },
+    "date-pickers": {
+      "url": "https://mui.com/x/react-date-pickers/",
+      "features": [
+        {
+          "feature": "adapters-locale",
+          "plan": "community,pro",
+          "demos": 12
+        },
+        {
+          "feature": "base-concepts",
+          "plan": "community,pro",
+          "demos": 13
+        },
+        {
+          "feature": "calendar-systems",
+          "plan": "community",
+          "demos": 4
+        },
+        {
+          "feature": "custom-components",
+          "plan": "community,pro",
+          "demos": 16
+        },
+        {
+          "feature": "custom-field",
+          "plan": "community,pro",
+          "demos": 11
+        },
+        {
+          "feature": "custom-layout",
+          "plan": "community",
+          "demos": 3
+        },
+        {
+          "feature": "custom-opening-button",
+          "plan": "community,pro",
+          "demos": 6
+        },
+        {
+          "feature": "date-calendar",
+          "plan": "community",
+          "demos": 11
+        },
+        {
+          "feature": "date-field",
+          "plan": "community",
+          "demos": 3
+        },
+        {
+          "feature": "date-picker",
+          "plan": "community",
+          "demos": 11
+        },
+        {
+          "feature": "date-range-calendar",
+          "plan": "pro",
+          "demos": 6
+        },
+        {
+          "feature": "date-range-field",
+          "plan": "pro",
+          "demos": 2
+        },
+        {
+          "feature": "date-range-picker",
+          "plan": "pro",
+          "demos": 7
+        },
+        {
+          "feature": "date-time-field",
+          "plan": "community",
+          "demos": 3
+        },
+        {
+          "feature": "date-time-picker",
+          "plan": "community",
+          "demos": 8
+        },
+        {
+          "feature": "date-time-range-field",
+          "plan": "pro",
+          "demos": 2
+        },
+        {
+          "feature": "date-time-range-picker",
+          "plan": "pro",
+          "demos": 7
+        },
+        {
+          "feature": "digital-clock",
+          "plan": "community",
+          "demos": 7
+        },
+        {
+          "feature": "fields",
+          "plan": "community,pro",
+          "demos": 8
+        },
+        {
+          "feature": "lifecycle",
+          "plan": "community,pro",
+          "demos": 5
+        },
+        {
+          "feature": "localization",
+          "plan": "community",
+          "demos": 1
+        },
+        {
+          "feature": "playground",
+          "plan": "community",
+          "demos": 1
+        },
+        {
+          "feature": "quickstart",
+          "plan": "community",
+          "demos": 1
+        },
+        {
+          "feature": "shortcuts",
+          "plan": "community,pro",
+          "demos": 8
+        },
+        {
+          "feature": "time-clock",
+          "plan": "community",
+          "demos": 5
+        },
+        {
+          "feature": "time-field",
+          "plan": "community",
+          "demos": 3
+        },
+        {
+          "feature": "time-picker",
+          "plan": "community",
+          "demos": 8
+        },
+        {
+          "feature": "time-range-field",
+          "plan": "pro",
+          "demos": 2
+        },
+        {
+          "feature": "time-range-picker",
+          "plan": "pro",
+          "demos": 6
+        },
+        {
+          "feature": "timezone",
+          "plan": "community",
+          "demos": 11
+        },
+        {
+          "feature": "validation",
+          "plan": "community,pro",
+          "demos": 16
+        }
+      ]
+    },
+    "tree-view": {
+      "url": "https://mui.com/x/react-tree-view/",
+      "features": [
+        {
+          "feature": "quickstart",
+          "plan": "community,pro",
+          "demos": 3
+        },
+        {
+          "feature": "rich-tree-view/customization",
+          "plan": "community,pro",
+          "demos": 7
+        },
+        {
+          "feature": "rich-tree-view/editing",
+          "plan": "community",
+          "demos": 10
+        },
+        {
+          "feature": "rich-tree-view/expansion",
+          "plan": "community",
+          "demos": 5
+        },
+        {
+          "feature": "rich-tree-view/focus",
+          "plan": "community",
+          "demos": 1
+        },
+        {
+          "feature": "rich-tree-view/items",
+          "plan": "community",
+          "demos": 19
+        },
+        {
+          "feature": "rich-tree-view/lazy-loading",
+          "plan": "pro",
+          "demos": 12
+        },
+        {
+          "feature": "rich-tree-view/ordering",
+          "plan": "pro",
+          "demos": 8
+        },
+        {
+          "feature": "rich-tree-view/selection",
+          "plan": "community",
+          "demos": 14
+        },
+        {
+          "feature": "rich-tree-view/virtualization",
+          "plan": "pro",
+          "demos": 4
+        },
+        {
+          "feature": "simple-tree-view/customization",
+          "plan": "community",
+          "demos": 6
+        },
+        {
+          "feature": "simple-tree-view/expansion",
+          "plan": "community",
+          "demos": 5
+        },
+        {
+          "feature": "simple-tree-view/focus",
+          "plan": "community",
+          "demos": 1
+        },
+        {
+          "feature": "simple-tree-view/items",
+          "plan": "community",
+          "demos": 7
+        },
+        {
+          "feature": "simple-tree-view/selection",
+          "plan": "community",
+          "demos": 11
+        },
+        {
+          "feature": "tree-item-customization",
+          "plan": "community",
+          "demos": 13
+        }
+      ]
+    }
+  }
+}

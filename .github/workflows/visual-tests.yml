@@ -15,7 +15,7 @@ jobs:
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: "pnpm"
       - run: pnpm install
       - run: pnpm --filter e2e exec playwright install chromium --with-deps
@@ -26,3 +26,18 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+
+  mui-cli:
+    name: mui-cli unit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+      - run: pnpm install --filter @siriwatknp/mui-cli...
+      - run: pnpm --filter @siriwatknp/mui-cli test

@@ -1,0 +1,91 @@
+{
+  "name": "@siriwatknp/mui-cli",
+  "version": "9.0.0-dev.0",
+  "private": true,
+  "description": "Agent-facing CLI for theming Material UI components",
+  "author": "Siriwat Kunaporn <siriwatkunaporn@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "mui": "./bin/mui.mjs"
+  },
+  "files": [
+    "bin",
+    "src",
+    "data",
+    "harness",
+    "skill",
+    "README.md",
+    "!harness/_renders",
+    "!harness/_demos-*"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "test:browser": "node --test --test-concurrency=1 test/browser/*.test.mjs",
+    "vendor": "node scripts/vendor.mjs",
+    "check-pins": "node scripts/check-pins.mjs",
+    "prepublishOnly": "pnpm test && pnpm check-pins",
+    "sync-demos": "node scripts/sync-demos.mjs",
+    "sync-demos-x": "node scripts/sync-demos-x.mjs",
+    "sync-seams": "node scripts/sync-seams.mjs",
+    "sync-renders": "node scripts/sync-renders.mjs",
+    "sync-compositions": "node scripts/sync-compositions.mjs"
+  },
+  "engines": {
+    "node": ">=22.13"
+  },
+  "peerDependenciesMeta": {
+    "@emotion/react": {
+      "optional": true
+    },
+    "@emotion/styled": {
+      "optional": true
+    },
+    "@vitejs/plugin-react": {
+      "optional": true
+    },
+    "playwright-core": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    },
+    "vite": {
+      "optional": true
+    }
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.0.0",
+    "@emotion/styled": "^11.0.0",
+    "@mui/material": "^9.0.0",
+    "@vitejs/plugin-react": ">=4.0.0",
+    "playwright-core": ">=1.50.0",
+    "react": ">=18",
+    "react-dom": ">=18",
+    "vite": ">=5.0.0"
+  },
+  "devDependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "9.4.0",
+    "@mui/material": "9.4.0",
+    "@mui/x-charts": "9.14.0",
+    "@mui/x-data-grid": "9.14.0",
+    "@mui/x-date-pickers": "9.14.0",
+    "@mui/x-tree-view": "9.14.0",
+    "@vitejs/plugin-react": "6.0.3",
+    "dayjs": "^1.11.23",
+    "playwright-core": "1.61.1",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "typescript": "^5.9.3",
+    "vite": "8.1.4"
+  },
+  "dependencies": {
+    "browserslist": "^4.29.3",
+    "web-features": "^3.40.1"
+  }
+}

@@ -1,0 +1,642 @@
+{
+  "$source": {
+    "mui": "9.4.0"
+  },
+  "components": [
+    "MuiAccordion",
+    "MuiAccordionActions",
+    "MuiAccordionDetails",
+    "MuiAccordionSummary",
+    "MuiAlert",
+    "MuiAlertTitle",
+    "MuiAppBar",
+    "MuiAutocomplete",
+    "MuiAvatar",
+    "MuiAvatarGroup",
+    "MuiBackdrop",
+    "MuiBadge",
+    "MuiBottomNavigation",
+    "MuiBottomNavigationAction",
+    "MuiBreadcrumbCollapsed",
+    "MuiBreadcrumbs",
+    "MuiButton",
+    "MuiButtonBase",
+    "MuiButtonGroup",
+    "MuiCard",
+    "MuiCardActionArea",
+    "MuiCardActions",
+    "MuiCardContent",
+    "MuiCardHeader",
+    "MuiCardMedia",
+    "MuiCheckbox",
+    "MuiChip",
+    "MuiCircularProgress",
+    "MuiCollapse",
+    "MuiContainer",
+    "MuiDialog",
+    "MuiDialogActions",
+    "MuiDialogContent",
+    "MuiDialogContentText",
+    "MuiDialogTitle",
+    "MuiDivider",
+    "MuiDrawer",
+    "MuiFab",
+    "MuiFilledInput",
+    "MuiFormControl",
+    "MuiFormControlLabel",
+    "MuiFormGroup",
+    "MuiFormHelperText",
+    "MuiFormLabel",
+    "MuiGrid",
+    "MuiIcon",
+    "MuiIconButton",
+    "MuiImageList",
+    "MuiImageListItem",
+    "MuiImageListItemBar",
+    "MuiInput",
+    "MuiInputAdornment",
+    "MuiInputBase",
+    "MuiInputLabel",
+    "MuiLinearProgress",
+    "MuiLink",
+    "MuiList",
+    "MuiListItem",
+    "MuiListItemAvatar",
+    "MuiListItemButton",
+    "MuiListItemIcon",
+    "MuiListItemSecondaryAction",
+    "MuiListItemText",
+    "MuiListSubheader",
+    "MuiMenu",
+    "MuiMenuItem",
+    "MuiMobileStepper",
+    "MuiModal",
+    "MuiNativeSelect",
+    "MuiNotchedOutlined",
+    "MuiOutlinedInput",
+    "MuiPagination",
+    "MuiPaginationItem",
+    "MuiPaper",
+    "MuiPopover",
+    "MuiPopper",
+    "MuiRadio",
+    "MuiRadioButtonIcon",
+    "MuiRating",
+    "MuiScopedCssBaseline",
+    "MuiSelect",
+    "MuiSkeleton",
+    "MuiSlider",
+    "MuiSnackbar",
+    "MuiSnackbarContent",
+    "MuiSpeedDial",
+    "MuiSpeedDialAction",
+    "MuiSpeedDialIcon",
+    "MuiStack",
+    "MuiStep",
+    "MuiStepButton",
+    "MuiStepConnector",
+    "MuiStepContent",
+    "MuiStepIcon",
+    "MuiStepLabel",
+    "MuiStepper",
+    "MuiSvgIcon",
+    "MuiSwipeArea",
+    "MuiSwitch",
+    "MuiSwitchBase",
+    "MuiTab",
+    "MuiTabScrollButton",
+    "MuiTable",
+    "MuiTableBody",
+    "MuiTableCell",
+    "MuiTableContainer",
+    "MuiTableFooter",
+    "MuiTableHead",
+    "MuiTablePagination",
+    "MuiTablePaginationActions",
+    "MuiTableRow",
+    "MuiTableSortLabel",
+    "MuiTabs",
+    "MuiTextField",
+    "MuiToggleButton",
+    "MuiToggleButtonGroup",
+    "MuiToolbar",
+    "MuiTooltip",
+    "MuiTouchRipple",
+    "MuiTypography"
+  ],
+  "graph": {
+    "MuiAccordion": {
+      "extends": "MuiPaper",
+      "composes": [
+        "MuiCollapse"
+      ],
+      "routes": {
+        "region": [
+          "& .MuiAccordion-region"
+        ]
+      }
+    },
+    "MuiAccordionSummary": {
+      "extends": "MuiButtonBase"
+    },
+    "MuiAlert": {
+      "extends": "MuiPaper",
+      "composes": [
+        "MuiIconButton",
+        "MuiSvgIcon"
+      ],
+      "contentSource": "typography.body2"
+    },
+    "MuiAlertTitle": {
+      "extends": "MuiTypography"
+    },
+    "MuiAppBar": {
+      "extends": "MuiPaper"
+    },
+    "MuiAutocomplete": {
+      "composes": [
+        "MuiChip",
+        "MuiIconButton",
+        "MuiListSubheader",
+        "MuiPaper",
+        "MuiPopper",
+        "MuiSvgIcon"
+      ],
+      "contentSource": "typography.body1",
+      "routes": {
+        "tag": [
+          "& .MuiAutocomplete-tag"
+        ],
+        "tagSizePlaceholder": [
+          "& .MuiAutocomplete-tag"
+        ],
+        "inputRoot": [
+          "& .MuiAutocomplete-inputRoot"
+        ],
+        "input": [
+          "& .MuiAutocomplete-input"
+        ],
+        "inputFocused": [
+          "& .MuiAutocomplete-input"
+        ]
+      }
+    },
+    "MuiAvatar": {
+      "composes": [
+        "MuiSvgIcon"
+      ]
+    },
+    "MuiAvatarGroup": {
+      "composes": [
+        "MuiAvatar"
+      ],
+      "routes": {
+        "avatar": [
+          "& .MuiAvatarGroup-avatar"
+        ]
+      }
+    },
+    "MuiBottomNavigationAction": {
+      "extends": "MuiButtonBase"
+    },
+    "MuiBreadcrumbCollapsed": {
+      "extends": "MuiButtonBase"
+    },
+    "MuiBreadcrumbs": {
+      "composes": [
+        "MuiButtonBase",
+        "MuiSvgIcon",
+        "MuiTypography"
+      ],
+      "routes": {
+        "li": [
+          "& .MuiBreadcrumbs-li"
+        ]
+      }
+    },
+    "MuiButton": {
+      "extends": "MuiButtonBase",
+      "composes": [
+        "MuiCircularProgress"
+      ],
+      "contentSource": "typography.button"
+    },
+    "MuiCard": {
+      "extends": "MuiPaper"
+    },
+    "MuiCardActionArea": {
+      "extends": "MuiButtonBase"
+    },
+    "MuiCardHeader": {
+      "composes": [
+        "MuiTypography"
+      ],
+      "routes": {
+        "title": [
+          "& .MuiCardHeader-title"
+        ],
+        "subheader": [
+          "& .MuiCardHeader-subheader"
+        ]
+      }
+    },
+    "MuiCheckbox": {
+      "extends": "MuiSwitchBase",
+      "composes": [
+        "MuiSvgIcon"
+      ]
+    },
+    "MuiChip": {
+      "composes": [
+        "MuiButtonBase",
+        "MuiSvgIcon"
+      ],
+      "routes": {
+        "avatar": [
+          "& .MuiChip-avatar"
+        ],
+        "icon": [
+          "& .MuiChip-icon"
+        ],
+        "deleteIcon": [
+          "& .MuiChip-deleteIcon"
+        ]
+      }
+    },
+    "MuiDialog": {
+      "extends": "MuiModal",
+      "composes": [
+        "MuiBackdrop",
+        "MuiPaper"
+      ]
+    },
+    "MuiDialogContentText": {
+      "composes": [
+        "MuiTypography"
+      ]
+    },
+    "MuiDialogTitle": {
+      "extends": "MuiTypography"
+    },
+    "MuiDrawer": {
+      "extends": "MuiModal",
+      "composes": [
+        "MuiPaper"
+      ]
+    },
+    "MuiFab": {
+      "extends": "MuiButtonBase",
+      "contentSource": "typography.button"
+    },
+    "MuiFilledInput": {
+      "extends": "MuiInputBase",
+      "contentSource": "typography.body1",
+      "contentSourceVia": "MuiInputBase"
+    },
+    "MuiFormControlLabel": {
+      "composes": [
+        "MuiTypography"
+      ],
+      "routes": {
+        "label": [
+          "& .MuiFormControlLabel-label"
+        ]
+      }
+    },
+    "MuiFormHelperText": {
+      "contentSource": "typography.caption"
+    },
+    "MuiFormLabel": {
+      "contentSource": "typography.body1"
+    },
+    "MuiIconButton": {
+      "extends": "MuiButtonBase",
+      "composes": [
+        "MuiCircularProgress"
+      ]
+    },
+    "MuiInput": {
+      "extends": "MuiInputBase",
+      "contentSource": "typography.body1",
+      "contentSourceVia": "MuiInputBase"
+    },
+    "MuiInputAdornment": {
+      "composes": [
+        "MuiTypography"
+      ]
+    },
+    "MuiInputBase": {
+      "contentSource": "typography.body1"
+    },
+    "MuiInputLabel": {
+      "extends": "MuiFormLabel",
+      "contentSource": "typography.body1",
+      "contentSourceVia": "MuiFormLabel",
+      "routes": {
+        "asterisk": [
+          "& .MuiFormLabel-asterisk"
+        ]
+      }
+    },
+    "MuiLink": {
+      "extends": "MuiTypography"
+    },
+    "MuiListItem": {
+      "composes": [
+        "MuiListItemSecondaryAction"
+      ]
+    },
+    "MuiListItemButton": {
+      "extends": "MuiButtonBase"
+    },
+    "MuiListItemText": {
+      "composes": [
+        "MuiTypography"
+      ],
+      "routes": {
+        "primary": [
+          "& .MuiListItemText-primary"
+        ],
+        "secondary": [
+          "& .MuiListItemText-secondary"
+        ]
+      }
+    },
+    "MuiMenu": {
+      "composes": [
+        "MuiPopover"
+      ]
+    },
+    "MuiMenuItem": {
+      "extends": "MuiButtonBase",
+      "contentSource": "typography.body1"
+    },
+    "MuiMobileStepper": {
+      "extends": "MuiPaper",
+      "composes": [
+        "MuiLinearProgress"
+      ]
+    },
+    "MuiModal": {
+      "composes": [
+        "MuiBackdrop"
+      ]
+    },
+    "MuiNativeSelect": {
+      "composes": [
+        "MuiInput",
+        "MuiSvgIcon"
+      ]
+    },
+    "MuiOutlinedInput": {
+      "extends": "MuiInputBase",
+      "contentSource": "typography.body1",
+      "contentSourceVia": "MuiInputBase"
+    },
+    "MuiPagination": {
+      "composes": [
+        "MuiPaginationItem"
+      ]
+    },
+    "MuiPaginationItem": {
+      "extends": "MuiButtonBase",
+      "composes": [
+        "MuiSvgIcon"
+      ],
+      "contentSource": "typography.body2"
+    },
+    "MuiPopover": {
+      "composes": [
+        "MuiModal",
+        "MuiPaper"
+      ]
+    },
+    "MuiRadio": {
+      "extends": "MuiSwitchBase",
+      "composes": [
+        "MuiSvgIcon"
+      ]
+    },
+    "MuiRating": {
+      "composes": [
+        "MuiSvgIcon"
+      ],
+      "routes": {
+        "visuallyHidden": [
+          "& .MuiRating-visuallyHidden"
+        ]
+      }
+    },
+    "MuiScopedCssBaseline": {
+      "contentSource": "typography.body1"
+    },
+    "MuiSelect": {
+      "composes": [
+        "MuiFilledInput",
+        "MuiInput",
+        "MuiMenu",
+        "MuiOutlinedInput",
+        "MuiSvgIcon"
+      ]
+    },
+    "MuiSlider": {
+      "contentSource": "typography.body2"
+    },
+    "MuiSnackbar": {
+      "composes": [
+        "MuiSnackbarContent"
+      ]
+    },
+    "MuiSnackbarContent": {
+      "extends": "MuiPaper",
+      "contentSource": "typography.body2"
+    },
+    "MuiSpeedDial": {
+      "composes": [
+        "MuiFab"
+      ]
+    },
+    "MuiSpeedDialAction": {
+      "composes": [
+        "MuiFab",
+        "MuiTooltip"
+      ],
+      "contentSource": "typography.body1"
+    },
+    "MuiSpeedDialIcon": {
+      "composes": [
+        "MuiSvgIcon"
+      ],
+      "routes": {
+        "icon": [
+          "& .MuiSpeedDialIcon-icon"
+        ],
+        "iconOpen": [
+          "& .MuiSpeedDialIcon-icon"
+        ],
+        "iconWithOpenIconOpen": [
+          "& .MuiSpeedDialIcon-icon"
+        ],
+        "openIcon": [
+          "& .MuiSpeedDialIcon-openIcon"
+        ],
+        "openIconOpen": [
+          "& .MuiSpeedDialIcon-openIcon"
+        ]
+      }
+    },
+    "MuiStepButton": {
+      "extends": "MuiButtonBase",
+      "composes": [
+        "MuiStepLabel"
+      ],
+      "routes": {
+        "touchRipple": [
+          "& .MuiStepButton-touchRipple"
+        ]
+      }
+    },
+    "MuiStepContent": {
+      "composes": [
+        "MuiCollapse"
+      ]
+    },
+    "MuiStepIcon": {
+      "extends": "MuiSvgIcon",
+      "contentSource": "typography.caption"
+    },
+    "MuiStepLabel": {
+      "composes": [
+        "MuiStepIcon"
+      ],
+      "contentSource": "typography.body2"
+    },
+    "MuiStepper": {
+      "composes": [
+        "MuiStepButton",
+        "MuiStepConnector"
+      ]
+    },
+    "MuiSwitch": {
+      "composes": [
+        "MuiSwitchBase"
+      ]
+    },
+    "MuiSwitchBase": {
+      "extends": "MuiButtonBase"
+    },
+    "MuiTab": {
+      "extends": "MuiButtonBase",
+      "contentSource": "typography.button",
+      "routes": {
+        "icon": [
+          "& .MuiTab-icon"
+        ]
+      }
+    },
+    "MuiTabScrollButton": {
+      "extends": "MuiButtonBase",
+      "composes": [
+        "MuiSvgIcon"
+      ]
+    },
+    "MuiTableCell": {
+      "contentSource": "typography.body2"
+    },
+    "MuiTablePagination": {
+      "extends": "MuiTableCell",
+      "composes": [
+        "MuiInputBase",
+        "MuiMenuItem",
+        "MuiSelect",
+        "MuiTablePaginationActions",
+        "MuiToolbar"
+      ],
+      "contentSource": "typography.body2"
+    },
+    "MuiTablePaginationActions": {
+      "composes": [
+        "MuiIconButton",
+        "MuiSvgIcon"
+      ]
+    },
+    "MuiTableSortLabel": {
+      "extends": "MuiButtonBase",
+      "composes": [
+        "MuiSvgIcon"
+      ]
+    },
+    "MuiTabs": {
+      "composes": [
+        "MuiTabScrollButton"
+      ],
+      "routes": {
+        "scrollButtons": [
+          "& .MuiTabs-scrollButtons"
+        ],
+        "scrollButtonsHideMobile": [
+          "& .MuiTabs-scrollButtons"
+        ]
+      }
+    },
+    "MuiTextField": {
+      "composes": [
+        "MuiFilledInput",
+        "MuiFormControl",
+        "MuiFormHelperText",
+        "MuiInput",
+        "MuiInputLabel",
+        "MuiOutlinedInput",
+        "MuiSelect"
+      ]
+    },
+    "MuiToggleButton": {
+      "extends": "MuiButtonBase",
+      "contentSource": "typography.button"
+    },
+    "MuiTooltip": {
+      "composes": [
+        "MuiPopper"
+      ]
+    },
+    "MuiButtonGroup": {
+      "routes": {
+        "grouped": [
+          "& .MuiButtonGroup-grouped"
+        ],
+        "firstButton": [
+          "& .MuiButtonGroup-firstButton"
+        ],
+        "lastButton": [
+          "& .MuiButtonGroup-lastButton"
+        ],
+        "middleButton": [
+          "& .MuiButtonGroup-middleButton"
+        ]
+      }
+    },
+    "MuiImageListItem": {
+      "routes": {
+        "img": [
+          "& .MuiImageListItem-img"
+        ]
+      }
+    },
+    "MuiToggleButtonGroup": {
+      "routes": {
+        "grouped": [
+          "& .MuiToggleButtonGroup-grouped"
+        ],
+        "firstButton": [
+          "& .MuiToggleButtonGroup-firstButton"
+        ],
+        "lastButton": [
+          "& .MuiToggleButtonGroup-lastButton"
+        ],
+        "middleButton": [
+          "& .MuiToggleButtonGroup-middleButton"
+        ]
+      }
+    }
+  }
+}

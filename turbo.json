@@ -10,6 +10,7 @@
       "persistent": true
     },
     "lint": {},
-    "typecheck": {}
+    "typecheck": {},
+    "test": {}
   }
 }

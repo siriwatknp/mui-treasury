@@ -1,0 +1,164 @@
+{
+  "source": "hand-written against @mui/material@9.4.0 (createTheme*.d.ts, CHANGELOG.md); requires = web-features ids (webstatus.dev/features/<id>)",
+  "entries": [
+    {
+      "id": "cssVariables",
+      "kind": "platform",
+      "options": [
+        "cssVariables"
+      ],
+      "since": "9.0.0",
+      "requires": [
+        "custom-properties"
+      ],
+      "degrades": "no",
+      "migration": true,
+      "adopted": "!!theme.vars",
+      "snippet": "cssVariables: true",
+      "why": "theme values become CSS variables: no flash on a mode switch, and (theme.vars || theme) reads them"
+    },
+    {
+      "id": "colorSchemes",
+      "kind": "platform",
+      "options": [
+        "colorSchemes",
+        "colorSchemeSelector",
+        "defaultColorScheme"
+      ],
+      "since": "9.0.0",
+      "requires": [
+        "prefers-color-scheme"
+      ],
+      "degrades": "graceful",
+      "migration": true,
+      "adopted": "Object.keys(theme.colorSchemes || {}).length > 1",
+      "snippet": "colorSchemes: { light: true, dark: true }, cssVariables: { colorSchemeSelector: 'class' }",
+      "why": "light and dark in one theme, switched with useColorScheme; overrides use theme.applyStyles('dark', …)"
+    },
+    {
+      "id": "nativeColor",
+      "kind": "platform",
+      "options": [
+        "nativeColor"
+      ],
+      "since": "9.0.0",
+      "requires": [
+        "color-mix",
+        "relative-color",
+        "oklab"
+      ],
+      "degrades": "no",
+      "adopted": "theme.colorSpace === 'oklch'",
+      "snippet": "cssVariables: { nativeColor: true }",
+      "why": "the browser computes alpha/darken/lighten and contrast colors (color-mix, oklch(from …)), so they work on CSS variables and any color format"
+    },
+    {
+      "id": "focusVisible",
+      "kind": "platform",
+      "options": [
+        "focusVisible"
+      ],
+      "since": "9.4.0",
+      "requires": [
+        "custom-properties"
+      ],
+      "degrades": "no",
+      "changesLook": true,
+      "adopted": "!!theme.focusVisible",
+      "snippet": "focusVisible: true",
+      "why": "one keyboard focus ring across components, kept clear of overflow: hidden parents"
+    },
+    {
+      "id": "reducedMotion",
+      "kind": "platform",
+      "options": [
+        "motion"
+      ],
+      "since": "9.1.0",
+      "requires": [
+        "prefers-reduced-motion"
+      ],
+      "degrades": "graceful",
+      "adopted": "theme.motion?.reducedMotion !== 'never'",
+      "snippet": "motion: { reducedMotion: 'system' }",
+      "why": "transitions follow the user's reduce-motion setting"
+    },
+    {
+      "id": "modularCssLayers",
+      "kind": "platform",
+      "options": [
+        "modularCssLayers"
+      ],
+      "since": "9.0.0",
+      "requires": [
+        "cascade-layers"
+      ],
+      "degrades": "no",
+      "relevantWith": [
+        "tailwindcss",
+        "@tailwindcss/vite",
+        "@tailwindcss/postcss",
+        "unocss",
+        "bootstrap"
+      ],
+      "adopted": "!!theme.modularCssLayers",
+      "snippet": "modularCssLayers: true",
+      "why": "Material UI styles go in @layer, so another CSS framework's utilities win without specificity fights"
+    },
+    {
+      "id": "typography",
+      "kind": "token",
+      "options": [
+        "typography"
+      ],
+      "default": "theme.typography.h1.fontSize === '6rem' && theme.typography.h1.fontWeight === 300",
+      "why": "MUI's original type scale (h1 6rem / 300, h2 3.75rem / 300 …)",
+      "uses": "typography",
+      "presets": {
+        "tailwind": "presets/typography.tailwind.ts"
+      }
+    },
+    {
+      "id": "buttonCase",
+      "kind": "token",
+      "default": "theme.typography.button.textTransform === 'uppercase'",
+      "why": "buttons in uppercase"
+    },
+    {
+      "id": "shadows",
+      "kind": "token",
+      "options": [
+        "shadows"
+      ],
+      "default": "JSON.stringify(theme.shadows) === JSON.stringify(vanilla.shadows)",
+      "why": "MUI's original 25-level shadow scale",
+      "uses": "shadows",
+      "presets": {
+        "tailwind": "presets/shadows.tailwind.ts"
+      }
+    },
+    {
+      "id": "shape",
+      "kind": "token",
+      "options": [
+        "shape"
+      ],
+      "default": "theme.shape.borderRadius === 4",
+      "why": "corner radius 4px"
+    }
+  ],
+  "reviewed": [
+    "components",
+    "palette",
+    "mixins",
+    "transitions",
+    "zIndex",
+    "cssVarPrefix",
+    "rootSelector",
+    "disableCssColorScheme",
+    "shouldSkipGeneratingVar",
+    "unstable_strictMode",
+    "unstable_sxConfig"
+  ],
+  "reviewedWhy": "considered and not recommended: structural (components, palette, mixins, transitions, zIndex), naming/plumbing (cssVarPrefix, rootSelector, disableCssColorScheme, shouldSkipGeneratingVar) or unstable"
+}
