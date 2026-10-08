@@ -31,6 +31,9 @@ function applies(when, c) {
 }
 
 export async function run(program, name, options) {
+  if (options.emit && !options.all) {
+    throw new Error('--emit writes the cases --all checks: add --all');
+  }
   options.fonts = await (await import('../lib/fonts.mjs')).fontsForTheme(options.theme, options);
   if (!name) {
     if (!options.all || !options.theme) {
@@ -82,6 +85,7 @@ export async function run(program, name, options) {
   // a slot the component doesn't have but its base does (Input has no `input` slot; InputBase does) means the base's
   const baseOf = (slot) => parts.find((c) => !slot.includes('.') && own(c).some((r) => r.slot === slot) && !slots.includes(slot));
   const expect = (options.expect ?? []).map(parseExpect).map((e) => (baseOf(e.slot) ? { ...e, slot: `${baseOf(e.slot).replace(/^Mui/, '')}.${e.slot}` } : e));
+  expect.filter((e) => !e.slot.includes('.') && !slots.includes(e.slot)).forEach((e) => slots.push(e.slot));
   const focus = options.slot ?? expect[0]?.slot ?? 'root';
   const read = Object.fromEntries([...new Set(rows.map((r) => r.slot))].map((s) => [s, [...new Set(rows.filter((r) => r.slot === s && !/^(transition|animation)/.test(r.prop)).flatMap((r) => longhandsOf(r.prop)).map(kebab))]]));
   const widths = options.width ? String(options.width).split(',').map((w) => Number(w.trim())) : [null];
@@ -212,12 +216,11 @@ async function runAll(program, targets, options, why = null) {
   if (options.props || options.state || options.expect) {
     throw new Error('--all checks every variant and state itself — drop --props / --state / --expect');
   }
-  const { casesOf, familyOf, runCase, sheetHtml, shotDirFor } = await import('../lib/gate.mjs');
+  const { casesOf, familyOf, mergeCases, runCase, sheetHtml, shotDirFor } = await import('../lib/gate.mjs');
   const short = (c) => c.replace(/^Mui/, '');
   const family = why ? [] : (await Promise.all(targets.map(familyOf))).flat().filter((c, i, all) => !targets.includes(c) && all.indexOf(c) === i);
   const components = [...targets, ...family];
-  // a shared content case named by several components in scope runs once
-  const cases = components.flatMap((c) => casesOf(c, { own: !why })).filter((c, i, all) => c.kind !== 'content' || all.findIndex((x) => x.url === c.url) === i);
+  const cases = mergeCases(components.flatMap((c) => casesOf(c, { own: !why || Boolean(options.emit) })));
   const name = why ? 'theme' : short(targets[0]);
   if (!cases.length) {
     console.log(`verify --all — ${why ?? name}: nothing to check`);
@@ -270,15 +273,16 @@ async function runAll(program, targets, options, why = null) {
   if (failures.length || errors.length || code.length) {
     process.exitCode = 1;
   }
+  const emitted = options.emit ? (await import('../lib/emit.mjs')).emitSpecs(options.emit, { results, errors, code, components, assetsDir: options.emitAssets }) : null;
   if (program.opts().json) {
-    jsonOut('verify', { components, ...(why ? { scope: why } : { component: targets[0], family }), theme: options.theme ?? null, cases: results.length, checks, failures, skipped: results.filter((r) => r.skipped).map((r) => ({ component: r.case.component, case: r.case.label, reason: r.skipped })), errors: errors.map((e) => ({ component: e.case.component, case: e.case.label, error: e.error })), code, sheet: shot });
+    jsonOut('verify', { components, ...(why ? { scope: why } : { component: targets[0], family }), theme: options.theme ?? null, cases: results.length, checks, failures, skipped: results.filter((r) => r.skipped).map((r) => ({ component: r.case.component, case: r.case.label, reason: r.skipped, ...(r.covered ? { covered: true } : {}) })), errors: errors.map((e) => ({ component: e.case.component, case: e.case.label, error: e.error })), code, sheet: shot, emit: emitted });
     return;
   }
   console.log(`${title}${family.length ? ` · family: ${family.map(short).join(', ')}` : ''}\n`);
   const passing = [];
   const containers = [];
   for (const c of components) {
-    const mine = results.filter((r) => r.case.component === c);
+    const mine = results.filter((r) => (r.case.components ?? [r.case.component]).includes(c));
     const bad = mine.filter((r) => r.failures.length);
     const ran = mine.reduce((n, r) => n + checksOf(r), 0);
     if (why && !bad.length) {
@@ -309,10 +313,17 @@ async function runAll(program, targets, options, why = null) {
       console.log(`    ${c.file}:${c.line} · ${c.rule}: ${c.detail}`);
     }
   }
-  const skipped = results.filter((r) => r.skipped);
+  const skipped = results.filter((r) => r.skipped && !r.covered);
   if (skipped.length) {
     console.log(`\nnote: ${skipped.length} case${skipped.length === 1 ? '' : 's'} rendered no instance (not checked): ${skipped.map((r) => `${short(r.case.component)} [${r.case.label}]`).join('; ')}`);
   }
+  const covered = results.filter((r) => r.covered);
+  if (covered.length) {
+    console.log(`note: ${covered.length} bare render${covered.length === 1 ? '' : 's'} with no control of ${covered.length === 1 ? 'its' : 'their'} own left to the demos that cover them`);
+  }
   console.log(`\n${results.length} cases · ${checks} checks · ${failures.length} failed${errors.length ? ` · ${errors.length} render errors` : ''}${options.theme ? ` · ${code.length} theme code issue${code.length === 1 ? '' : 's'}` : ''}`);
   console.log(shot ? `sheet: ${shot}` : 'no failures — no sheet');
+  if (emitted) {
+    console.log(`emitted: ${emitted.cases} cases of ${emitted.components} components in ${emitted.groups} groups → ${path.relative(process.cwd(), emitted.dir) || '.'}${emitted.assets ? ` · ${emitted.assets} static files → ${options.emitAssets}` : ''}`);
+  }
 }

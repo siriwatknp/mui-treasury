@@ -3,10 +3,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { DATA_DIR } from '../src/lib/data.mjs';
-import { COMPOSITION_DEMOS_DIR, loadRenders } from '../src/lib/renders.mjs';
+import { COMPOSITION_DEMOS_DIR, CONTENT_CASES_DIR, PUBLIC_DIR, RENDER_DEMOS_DIR, loadRenders } from '../src/lib/renders.mjs';
 import { bootEngine, runOn } from '../src/lib/renderEngine.mjs';
 import { demosFor } from '../src/lib/demos.mjs';
 import { coreOnly, demoIndex, shipDemo } from './lib/docsDemos.mjs';
+import { shipStatics } from './lib/statics.mjs';
 import { readPins, tagFor, vendorPath, vendorTag } from './lib/pins.mjs';
 
 const version = readPins().material;
@@ -88,3 +89,5 @@ for (const c of components) {
 }
 fs.writeFileSync(path.join(DATA_DIR, 'material/compositions.json'), `${JSON.stringify({ source: `@mui/material@${version} docs`, components: out, own, direct }, null, 2)}\n`);
 console.log(`${Object.keys(out).length}/${components.length} components have compositions, ${Object.keys(own).length} their own page demos · ${new Set([...Object.values(out), ...Object.values(own)].flat()).size} demos shipped`);
+const statics = shipStatics(path.join(vendorPath('material', readPins().material), 'docs/public'), [RENDER_DEMOS_DIR, COMPOSITION_DEMOS_DIR, CONTENT_CASES_DIR], PUBLIC_DIR);
+console.log(`${statics.length} static files or folders the demos reference shipped`);

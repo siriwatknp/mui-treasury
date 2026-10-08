@@ -12,7 +12,7 @@ export const LIBRARIES = {
     dir: 'material-ui',
     probePackage: '@mui/material',
     required: true,
-    sparse: ['packages/mui-material/src', 'packages/mui-system/src', 'docs/data/material'],
+    sparse: ['packages/mui-material/src', 'packages/mui-system/src', 'docs/data/material', 'docs/public/static/images'],
   },
   x: {
     repo: 'https://github.com/mui/mui-x.git',

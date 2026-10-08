@@ -14,6 +14,8 @@ export function registerVerify(program) {
     .option('--font <source...>', 'the font a custom family of the theme renders with: an installed package (@fontsource/inter) or "Family=file" (.woff2/.ttf); repeatable')
     .option('--skip-font', 'render a custom theme font with its fallback fonts instead of failing')
     .option('--all', 'the gate: every variant, state and docs composition of the component and its family, checked for a 24×24 touch target, dead zones and a focus ring nothing cuts off — exit 1 on any failure. Without a component: every component the --theme touches')
+    .option('--emit <dir>', 'with --all: also write the cases as live React modules plus results.json, for a page that shows them (includes each component\'s own docs demos)')
+    .option('--emit-assets <dir>', 'with --emit: copy the static files the emitted demos reference (avatars, card images) into this public folder, at their /static/... paths')
     .option('--shot <file>', 'with --all: the contact sheet of every case (default verify-<Component>.png)')
     .action((...args) => import('./verify.run.mjs').then((m) => m.run(program, ...args)));
 }

@@ -117,8 +117,8 @@ function retriesOf(component, leftRows) {
   const extras = [
     {},
     ...Object.entries(types)
-      .filter(([, t]) => t.kind === 'node' || t.kind === 'fn')
-      .map(([k, t]) => ({ [k]: t.kind === 'fn' ? FN : /(label|title|text)$/i.test(k) ? 'Probe' : NODE })),
+      .filter(([, t]) => ['node', 'element', 'fn'].includes(t.kind))
+      .map(([k, t]) => ({ [k]: t.kind === 'fn' ? FN : t.kind === 'node' && /(label|title|text)$/i.test(k) ? 'Probe' : NODE })),
     ...Object.entries(types)
       .filter(([, t]) => t.kind === 'boolean')
       .map(([k]) => ({ [k]: true })),
@@ -349,6 +349,15 @@ for (const row of rows) {
     (slotProps[row.component] ??= {})[reached] ??= withExtra.extra;
   }
 }
+// each component's public props, as MUI's own propTypes list them: a gate case never sets anything else
+const apiOf = new Map();
+for (const component of new Set(rows.map((r) => r.component))) {
+  const mod = await import(`@mui/material/${component.replace(/^Mui/, '')}`).catch(() => null);
+  const types = mod?.default?.propTypes;
+  if (types) {
+    apiOf.set(component, Object.keys(types).sort());
+  }
+}
 const components = {};
 for (const row of rows) {
   const ref = typeof rowRecord[row.id] === 'string' ? rowRecord[row.id] : null;
@@ -357,6 +366,7 @@ for (const row of rows) {
     slots: {},
     ...(Object.keys(requiredOf(row.component)).length ? { props: requiredOf(row.component) } : {}),
     ...(slotProps[row.component] ? { slotProps: slotProps[row.component] } : {}),
+    ...(apiOf.has(row.component) ? { api: apiOf.get(row.component) } : {}),
   });
   if (ref && kept[ref].kind === 'generated') {
     c.standalone = true;

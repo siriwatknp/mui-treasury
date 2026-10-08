@@ -5,6 +5,8 @@ export function registerRecommend(program) {
     .option('--theme <file>', 'your theme module (default-exports createTheme options or a created theme)')
     .option('--preset <name>', 'with a design-token id (typography, shadows): print that preset (tailwind), or measure it with --show')
     .option('--show', 'with an id: add its snippet to the theme and diff the result against the theme as it is — every component it changes')
+    .option('--font <source...>', 'with --show: the font a custom family of the theme renders with (see verify --font)')
+    .option('--skip-font', 'with --show: render a custom theme font with its fallback fonts')
     .option('--targets <browserslist>', "the browsers to check against (default: the project's browserslist config, Electron version or framework default)")
     .action((...args) => import('./recommend.run.mjs').then((m) => m.run(program, ...args)));
 }

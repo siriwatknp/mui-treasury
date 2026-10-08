@@ -160,7 +160,7 @@ async function show(program, entries, options, projectDir) {
   const base = options.theme ? path.resolve(options.theme) : null;
   // a sibling of the theme, so its own imports still resolve and the render server already serves its folder
   const dir = base ? path.dirname(base) : projectDir;
-  const tmp = path.join(dir, `.mui-recommend-${e.id}.theme.ts`);
+  const tmp = path.join(dir, `.mui-recommend-${e.id}.theme${base ? path.extname(base) : '.ts'}`);
   // a preset is a module of its own: copied next to the theme and imported, so its breakpoints helper resolves from the project
   const presetCopy = preset ? path.join(dir, `.mui-recommend-preset-${e.id}.ts`) : null;
   if (preset) {
@@ -177,7 +177,7 @@ async function show(program, entries, options, projectDir) {
     if (!program.opts().json) {
       console.log(`${e.id}: ${preset ? `the ${options.preset} preset (Tailwind-inspired)` : `{ ${e.snippet} }`} added to ${options.theme ?? 'vanilla Material UI'} — what it changes:\n`);
     }
-    await (await import('./diff.run.mjs')).run(program, [], { theme: tmp, against: base ?? 'vanilla' });
+    await (await import('./diff.run.mjs')).run(program, [], { theme: tmp, against: base ?? 'vanilla', font: options.font, skipFont: options.skipFont });
   } finally {
     fs.rmSync(tmp, { force: true });
     if (presetCopy) {

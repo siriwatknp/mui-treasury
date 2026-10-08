@@ -10,6 +10,7 @@ import { importOf, packageOf, xDataDir, xProductOfKey } from './xStyled.mjs';
 export const RENDER_DEMOS_DIR = path.join(DATA_DIR, 'material/render-demos');
 export const COMPOSITION_DEMOS_DIR = path.join(DATA_DIR, 'material/composition-demos');
 export const CONTENT_CASES_DIR = path.join(DATA_DIR, 'material/content-cases');
+export const PUBLIC_DIR = path.join(DATA_DIR, 'material/public');
 
 /** States a prop puts a component in; the others are reached by mouse or keyboard. */
 export const PROP_STATES = ['selected', 'disabled', 'checked', 'error', 'active', 'expanded', 'completed'];
@@ -86,10 +87,29 @@ export const RENDER_DEFAULTS = {
   MuiRichTreeView: RICH_TREE_VIEW,
   MuiTreeItem: RICH_TREE_VIEW,
   MuiSimpleTreeView: SIMPLE_TREE_VIEW,
+  MuiFormControlLabel: {
+    imports: "import Checkbox from '@mui/material/Checkbox';\n",
+    fixed: '{ control: <Checkbox /> }',
+  },
   MuiSelect: {
     imports: "import MenuItem from '@mui/material/MenuItem';\n",
     props: "{ value: 'Probe one' }",
     content: "[<MenuItem key=\"1\" value=\"Probe one\">Probe one</MenuItem>, <MenuItem key=\"2\" value=\"Probe two\">Probe two</MenuItem>]",
+  },
+  MuiTableHead: { content: '<TableRow><td>Probe</td></TableRow>', imports: "import Table from '@mui/material/Table';\nimport TableBody from '@mui/material/TableBody';\nimport TableRow from '@mui/material/TableRow';\n", wrap: ['<Table>', '</Table>'] },
+  MuiTableBody: { content: '<TableRow><td>Probe</td></TableRow>', imports: "import Table from '@mui/material/Table';\nimport TableBody from '@mui/material/TableBody';\nimport TableRow from '@mui/material/TableRow';\n", wrap: ['<Table>', '</Table>'] },
+  MuiTableFooter: { content: '<TableRow><td>Probe</td></TableRow>', imports: "import Table from '@mui/material/Table';\nimport TableBody from '@mui/material/TableBody';\nimport TableRow from '@mui/material/TableRow';\n", wrap: ['<Table>', '</Table>'] },
+  MuiTableRow: { imports: "import Table from '@mui/material/Table';\nimport TableBody from '@mui/material/TableBody';\nimport TableRow from '@mui/material/TableRow';\n", wrap: ['<Table><TableBody>', '</TableBody></Table>'], content: "<td>Probe</td>" },
+  MuiTableCell: { imports: "import Table from '@mui/material/Table';\nimport TableBody from '@mui/material/TableBody';\nimport TableRow from '@mui/material/TableRow';\n", wrap: ['<Table><TableBody><TableRow>', '</TableRow></TableBody></Table>'] },
+  MuiTablePagination: {
+    imports: "import Table from '@mui/material/Table';\nimport TableBody from '@mui/material/TableBody';\nimport TableRow from '@mui/material/TableRow';\n",
+    wrap: ['<Table><TableBody><TableRow>', '</TableRow></TableBody></Table>'],
+    props: '{ count: 100, page: 0, rowsPerPage: 10, onPageChange: () => {} }',
+  },
+  MuiTabs: {
+    imports: "import Tab from '@mui/material/Tab';\n",
+    props: '{ value: false }',
+    content: '<Tab label="Probe" />',
   },
   MuiTextField: {
     imports: "import MenuItem from '@mui/material/MenuItem';\n",
@@ -110,8 +130,9 @@ export function generatedUrl(component, parent, parentProps = {}, variant) {
   const name = `${component}${variant ? `@${variant}` : ''}${parent ? `.in.${parent}` : ''}`;
   const wrapperProps = Object.entries(parentProps).map(([k, v]) => ` ${k}={value(${JSON.stringify(v)})}`).join('');
   const short = (c) => c.replace(/^Mui/, '');
+  const wrap = (el) => (defaults?.wrap ? `${defaults.wrap[0]}${el}${defaults.wrap[1]}` : el);
   const passed = defaults?.local ? `Object.entries(props).filter(([k]) => !${JSON.stringify(defaults.local)}.includes(k))` : 'Object.entries(props)';
-  const spread = `${defaults?.props ? `{...${defaults.props}} ` : ''}{...Object.fromEntries(${passed}.map(([k, v]) => [k, value(v)]))}`;
+  const spread = `${defaults?.props ? `{...${defaults.props}} ` : ''}{...Object.fromEntries(${passed}.map(([k, v]) => [k, value(v)]))}${defaults?.fixed ? ` {...${defaults.fixed}}` : ''}`;
   // a fixture that is more than `<C>` (a tree around its items) writes the element itself, given the props spread
   const element = defaults?.render ? defaults.render(spread) : `<C ${spread}>{${content}}</C>`;
   const inner = defaults?.frame ? `<div style={{ width: ${defaults.frame.width}, height: ${defaults.frame.height} }}>${element}</div>` : element;
@@ -123,7 +144,7 @@ ${parent ? `import P from '@mui/material/${short(parent)}';
 ` : ''}import SvgIcon from '@mui/material/SvgIcon';
 ${defaults?.imports ?? ''}const node = <SvgIcon><path d="M12 2 2 22h20L12 2z" /></SvgIcon>;
 const value = (v) => (v === '${NODE}' ? node : v === '${FN}' ? () => {} : v);
-export const Render = (props) => ${parent ? `<P${wrapperProps}>${inner}</P>` : inner};
+export const Render = (props) => ${wrap(parent ? `<P${RENDER_DEFAULTS[parent]?.props ? ` {...${RENDER_DEFAULTS[parent].props}}` : ''}${wrapperProps}>${inner}</P>` : inner)};
 `,
   );
   return `/_renders/${name}.jsx`;

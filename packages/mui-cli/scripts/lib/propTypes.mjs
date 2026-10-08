@@ -30,7 +30,7 @@ export function propTypesOf(root, component) {
         continue;
       }
     }
-    const kind = /^on[A-Z]/.test(name) || /EventHandler|=>/.test(type) ? 'fn' : /React\.(ReactNode|ReactElement)/.test(type) ? 'node' : /^boolean/.test(type) ? 'boolean' : 'other';
+    const kind = /^on[A-Z]/.test(name) || /EventHandler|=>/.test(type) ? 'fn' : /^React\.ReactElement/.test(type.trim()) ? 'element' : /React\.(ReactNode|ReactElement)/.test(type) ? 'node' : /^boolean/.test(type) ? 'boolean' : 'other';
     props[name] = { kind, required: !optional, literals: [...type.matchAll(/'([\w-]+)'/g)].map((m) => m[1]) };
   }
   return props;
@@ -44,7 +44,7 @@ export function requiredPropsOf(root, component) {
     if (!t.required || (t.kind === 'other' && !t.literals.length) || /^render[A-Z]/.test(name)) {
       continue;
     }
-    out[name] = t.kind === 'boolean' ? true : t.kind === 'fn' ? '@fn' : t.kind === 'node' ? 'Probe' : t.literals[0];
+    out[name] = t.kind === 'boolean' ? true : t.kind === 'fn' ? '@fn' : t.kind === 'element' ? '@node' : t.kind === 'node' ? 'Probe' : t.literals[0];
   }
   return out;
 }

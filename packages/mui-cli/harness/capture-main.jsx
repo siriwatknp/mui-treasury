@@ -1184,6 +1184,7 @@ async function gateCount(cfg) {
     document.activeElement.blur();
     await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
   }
+  document.querySelectorAll('[data-mui-gate]').forEach((el) => el.removeAttribute('data-mui-gate'));
   const instances = gateInstances(cfg.component);
   instances.forEach((el, i) => el.setAttribute('data-mui-gate', String(i)));
   for (const el of instances.flatMap((i) => [i, ...i.querySelectorAll('*')])) {
@@ -1310,6 +1311,34 @@ function spacedEnough(target, area) {
     }
     const undersized = o.width < TARGET_MIN || o.height < TARGET_MIN;
     return !undersized || Math.hypot(o.left + o.width / 2 - cx, o.top + o.height / 2 - cy) >= TARGET_MIN;
+  });
+}
+
+const POPUP_ITEMS = '[role="listbox"] [role="option"], [role="menu"] [role="menuitem"]';
+
+/** The items of an opened popup (options, menu items): each 24×24 or spaced per WCAG 2.5.8 from the others, and its text fits its box. */
+function gateItems() {
+  const items = [...document.querySelectorAll(POPUP_ITEMS)].filter((el) => el.getAttribute('aria-disabled') !== 'true' && el.checkVisibility?.() !== false);
+  const rects = items.map((el) => el.getBoundingClientRect());
+  return items.map((el, index) => {
+    const r = rects[index];
+    const label = el.textContent.trim().slice(0, 40);
+    const small = r.width < TARGET_MIN || r.height < TARGET_MIN;
+    const cx = r.left + r.width / 2;
+    const cy = r.top + r.height / 2;
+    const spaced = rects.every((o, j) => {
+      if (j === index) {
+        return true;
+      }
+      const dx = Math.max(o.left - cx, 0, cx - o.right);
+      const dy = Math.max(o.top - cy, 0, cy - o.bottom);
+      const undersized = o.width < TARGET_MIN || o.height < TARGET_MIN;
+      return Math.hypot(dx, dy) >= TARGET_MIN / 2 && (!undersized || Math.hypot(o.left + o.width / 2 - cx, o.top + o.height / 2 - cy) >= TARGET_MIN);
+    });
+    const s = getComputedStyle(el);
+    const ellipsis = s.textOverflow === 'ellipsis' || [...el.querySelectorAll('*')].some((c) => getComputedStyle(c).textOverflow === 'ellipsis');
+    const squeezed = el.scrollHeight > el.clientHeight + 1 || (!ellipsis && el.scrollWidth > el.clientWidth + 1);
+    return { index, label, size: { w: Math.round(r.width * 10) / 10, h: Math.round(r.height * 10) / 10 }, fits: !small || spaced, squeezed };
   });
 }
 
@@ -1653,7 +1682,7 @@ async function applyFonts(fonts = []) {
 window.__runCapture = async function runCapture(cfg) {
   await applyFonts(cfg.fonts);
   if (cfg.gate) {
-    return { render: runGate, count: gateCount, touch: gateTouch, ring: gateRing, content: gateContent, done: gateDone }[cfg.gate](cfg);
+    return { render: runGate, count: gateCount, touch: gateTouch, ring: gateRing, content: gateContent, items: gateItems, done: gateDone }[cfg.gate](cfg);
   }
   if (cfg.tokens) {
     return runTokens(cfg);

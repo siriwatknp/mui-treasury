@@ -41,3 +41,8 @@ test("a component's own docs page demos are gate cases, after its compositions",
   // the whole-theme gate leaves them out
   assert.ok(!casesOf('MuiButton', { own: false }).some((c) => c.kind === 'own demo'));
 });
+
+test('a content case can ask to be opened: the long-list cases open their popup so the gate checks its items', () => {
+  assert.deepEqual(casesOf('MuiAutocomplete').find((c) => c.label === 'content LongList').interaction, ['popup']);
+  assert.deepEqual(casesOf('MuiSelect').find((c) => c.label === 'content LongList').interaction, ['popup']);
+});

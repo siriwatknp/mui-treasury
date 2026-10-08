@@ -150,6 +150,18 @@ test('a select TextField renders with options', () => {
   assert.equal(status, 0, JSON.stringify(data));
 });
 
+test('popup items: options squeezed by a flex listbox fail; plain MUI passes; verify reaches the option slot of an open popup', () => {
+  const shot = path.join(os.tmpdir(), 'mui-verify-test-popup.png');
+  const bad = verify('Autocomplete', '--all', '--theme', path.resolve(HERE, '../fixtures/squeezed-options.theme.ts'), '--shot', shot);
+  const squeezed = bad.data.failures.filter((f) => f.case === 'content LongList' && f.rule === 'content squeezed');
+  assert.ok(squeezed.length > 0, JSON.stringify(bad.data.failures));
+  assert.equal(bad.status, 1);
+  const good = verify('Autocomplete', '--all', '--shot', shot);
+  assert.deepEqual(good.data.failures.filter((f) => f.case === 'content LongList'), []);
+  const option = verify('Autocomplete', '--props', 'open=true', '--expect', 'option.box.height=1px');
+  assert.notEqual(option.data.expectations?.[0]?.status ?? option.data.cases?.[0]?.expectations?.[0]?.status, 'no-element', JSON.stringify(option.data).slice(0, 400));
+});
+
 test('a border width expectation reads back as written; Autocomplete addresses the TextField parts its render passes', () => {
   const border = verify('OutlinedInput', '--expect', 'notchedOutline.borderWidth=1px');
   assert.equal(border.status, 0, JSON.stringify(border.data.expectations));

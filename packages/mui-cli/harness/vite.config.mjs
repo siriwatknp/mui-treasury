@@ -41,6 +41,8 @@ const muiEntries = [...new Set(['@mui/material/styles', '@mui/material/SvgIcon',
 
 export default {
   plugins: [react()],
+  // the docs' static files the demos reference (avatars, card images), shipped by sync-compositions
+  publicDir: path.resolve(fileURLToPath(import.meta.url), '../../data/material/public'),
   optimizeDeps: {
     include: ['prop-types', 'react-is', 'hoist-non-react-statics', 'react', 'react-dom', 'react-dom/client', 'react/jsx-runtime', 'react/jsx-dev-runtime', ...new Set(muiEntries)],
   },
