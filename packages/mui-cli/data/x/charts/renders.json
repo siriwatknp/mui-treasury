@@ -1,0 +1,169 @@
+{
+  "$note": "How MUI X Charts components render for annotate: props that show each slot, and why a slot can't be shown.",
+  "components": {
+    "MuiChartsWrapper": {
+      "standalone": true
+    },
+    "MuiChartsLayerContainer": {
+      "standalone": true
+    },
+    "MuiChartsSvgLayer": {
+      "standalone": true
+    },
+    "MuiChartsLegend": {
+      "standalone": true
+    },
+    "MuiChartsLabelMark": {
+      "standalone": true
+    },
+    "MuiChartsAxis": {
+      "standalone": true
+    },
+    "MuiChartsXAxis": {
+      "standalone": true
+    },
+    "MuiChartsYAxis": {
+      "standalone": true
+    },
+    "MuiChartsGrid": {
+      "standalone": true,
+      "slotProps": {
+        "root": {
+          "scenario": "grid"
+        },
+        "line": {
+          "scenario": "grid"
+        },
+        "verticalLine": {
+          "scenario": "grid"
+        },
+        "horizontalLine": {
+          "scenario": "grid"
+        }
+      }
+    },
+    "MuiBarPlot": {
+      "standalone": true
+    },
+    "MuiBarLabel": {
+      "standalone": true,
+      "slotProps": {
+        "root": {
+          "scenario": "bar-label"
+        }
+      }
+    },
+    "MuiChartsTooltip": {
+      "standalone": true,
+      "slotProps": {
+        "root": {
+          "scenario": "tooltip"
+        },
+        "container": {
+          "scenario": "tooltip"
+        },
+        "table": {
+          "scenario": "tooltip"
+        },
+        "row": {
+          "scenario": "tooltip"
+        },
+        "cell": {
+          "scenario": "tooltip"
+        },
+        "paper": {
+          "scenario": "tooltip"
+        }
+      }
+    },
+    "MuiChartsAxisHighlight": {
+      "standalone": true,
+      "slotProps": {
+        "root": {
+          "scenario": "highlight"
+        }
+      }
+    },
+    "MuiChartsAxisHighlightValue": {
+      "standalone": true
+    },
+    "MuiChartsToolbar": {
+      "standalone": true,
+      "slotProps": {
+        "root": {
+          "scenario": "toolbar"
+        }
+      }
+    },
+    "MuiContinuousColorLegend": {
+      "standalone": true,
+      "slotProps": {
+        "root": {
+          "scenario": "continuous"
+        }
+      }
+    },
+    "MuiChartsLabelGradient": {
+      "standalone": true,
+      "slotProps": {
+        "root": {
+          "scenario": "continuous"
+        }
+      }
+    },
+    "MuiPiecewiseColorLegend": {
+      "standalone": true,
+      "slotProps": {
+        "root": {
+          "scenario": "piecewise"
+        }
+      }
+    },
+    "MuiChartsRadialGrid": {
+      "standalone": true,
+      "unreachable": {
+        "root": "drawn only by radial charts, which ship in MUI X Charts Pro/Premium (this build renders community charts)",
+        "rotationLine": "drawn only by radial charts, which ship in MUI X Charts Pro/Premium (this build renders community charts)",
+        "radiusLine": "drawn only by radial charts, which ship in MUI X Charts Pro/Premium (this build renders community charts)"
+      }
+    },
+    "MuiChartsRadialAxisHighlight": {
+      "standalone": true,
+      "unreachable": {
+        "root": "drawn only by radial charts, which ship in MUI X Charts Pro/Premium (this build renders community charts)"
+      }
+    },
+    "MuiLinePlot": {
+      "standalone": true
+    },
+    "MuiAreaPlot": {
+      "standalone": true
+    },
+    "MuiMarkPlot": {
+      "standalone": true
+    },
+    "MuiMarkElement": {
+      "standalone": true
+    },
+    "MuiScatterPlot": {
+      "standalone": true
+    },
+    "MuiPieArcPlot": {
+      "standalone": true
+    },
+    "MuiPieArc": {
+      "standalone": true
+    },
+    "MuiPieArcLabelPlot": {
+      "standalone": true
+    },
+    "MuiPieArcLabel": {
+      "standalone": true
+    },
+    "MuiGauge": {
+      "standalone": true
+    }
+  },
+  "renders": {},
+  "rows": {}
+}

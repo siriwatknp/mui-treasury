@@ -12,6 +12,12 @@ export const X_STYLED = {
     keys: ['MuiDataGrid'],
     exports: { MuiDataGrid: 'DataGrid' },
   },
+  // chart parts render through the chart that draws them (MuiBarLabel → BarChart)
+  charts: {
+    package: '@mui/x-charts',
+    keys: ['MuiChartsWrapper', 'MuiChartsLayerContainer', 'MuiChartsSvgLayer', 'MuiChartsLegend', 'MuiChartsLabelMark', 'MuiChartsAxis', 'MuiChartsXAxis', 'MuiChartsYAxis', 'MuiChartsGrid', 'MuiBarPlot', 'MuiBarLabel', 'MuiChartsTooltip', 'MuiChartsAxisHighlight', 'MuiChartsAxisHighlightValue', 'MuiChartsToolbar', 'MuiContinuousColorLegend', 'MuiChartsLabelGradient', 'MuiPiecewiseColorLegend', 'MuiChartsRadialGrid', 'MuiChartsRadialAxisHighlight', 'MuiLinePlot', 'MuiAreaPlot', 'MuiMarkPlot', 'MuiMarkElement', 'MuiScatterPlot', 'MuiPieArcPlot', 'MuiPieArc', 'MuiPieArcLabelPlot', 'MuiPieArcLabel', 'MuiGauge'],
+    exports: { MuiChartsWrapper: 'BarChart', MuiChartsLayerContainer: 'BarChart', MuiChartsSvgLayer: 'BarChart', MuiChartsLegend: 'BarChart', MuiChartsLabelMark: 'BarChart', MuiChartsAxis: 'BarChart', MuiChartsXAxis: 'BarChart', MuiChartsYAxis: 'BarChart', MuiChartsGrid: 'BarChart', MuiBarPlot: 'BarChart', MuiBarLabel: 'BarChart', MuiChartsTooltip: 'BarChart', MuiChartsAxisHighlight: 'BarChart', MuiChartsAxisHighlightValue: 'BarChart', MuiChartsToolbar: 'BarChart', MuiContinuousColorLegend: 'BarChart', MuiChartsLabelGradient: 'BarChart', MuiPiecewiseColorLegend: 'BarChart', MuiChartsRadialGrid: 'BarChart', MuiChartsRadialAxisHighlight: 'BarChart', MuiLinePlot: 'LineChart', MuiAreaPlot: 'LineChart', MuiMarkPlot: 'LineChart', MuiMarkElement: 'LineChart', MuiScatterPlot: 'ScatterChart', MuiPieArcPlot: 'PieChart', MuiPieArc: 'PieChart', MuiPieArcLabelPlot: 'PieChart', MuiPieArcLabel: 'PieChart', MuiGauge: 'Gauge' },
+  },
   // a key with no export of its own renders through the export that shows it inline (MuiDayCalendar → DateCalendar)
   'date-pickers': {
     package: '@mui/x-date-pickers',

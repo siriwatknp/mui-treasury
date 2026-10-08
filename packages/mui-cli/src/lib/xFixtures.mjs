@@ -151,3 +151,48 @@ export const DATE_PICKERS = {
   MuiDateTimePickerTabs: staticPicker,
   MuiPickerPopper: picker('value: day, open: true'),
 };
+
+// fixed data, no animation; the tooltip and axis highlight are held open through their controlled props, not a pointer
+const CHART_SETUP = `import { ChartsAxisHighlightValue, ContinuousColorLegend, PiecewiseColorLegend, Toolbar } from '@mui/x-charts';
+// it portals into the chart's layer container, whose ref is unset on the chart's first render: mount it once the chart has
+function AfterChart(props) {
+  const [ready, setReady] = React.useState(false);
+  React.useEffect(() => setReady(true), []);
+  return ready ? <ChartsAxisHighlightValue {...props} /> : null;
+}
+const bar = { series: [{ id: 'revenue', label: 'Revenue', data: [3, 5, 2] }], xAxis: [{ id: 'x', data: ['Q1', 'Q2', 'Q3'], scaleType: 'band' }], width: 420, height: 260, skipAnimation: true };
+const line = { series: [{ id: 'visits', label: 'Visits', data: [3, 5, 2, 6], showMark: true, shape: 'square', area: true }], xAxis: [{ id: 'x', data: [1, 2, 3, 4], scaleType: 'point' }], width: 420, height: 260, skipAnimation: true };
+const scatter = { series: [{ id: 'points', label: 'Points', data: [{ x: 1, y: 2, id: 1 }, { x: 2, y: 5, id: 2 }, { x: 4, y: 3, id: 3 }] }], width: 420, height: 260 };
+const pie = { series: [{ id: 'share', arcLabel: 'value', data: [{ id: 0, value: 10, label: 'Web' }, { id: 1, value: 20, label: 'Mobile' }, { id: 2, value: 15, label: 'Desktop' }] }], width: 320, height: 220, skipAnimation: true };
+const scenarios = {
+  grid: { grid: { horizontal: true, vertical: true } },
+  'bar-label': { series: [{ ...bar.series[0], barLabel: 'value' }] },
+  tooltip: { tooltipAxis: [{ axisId: 'x', dataIndex: 1 }] },
+  highlight: { highlightedAxis: [{ axisId: 'x', dataIndex: 1 }] },
+  toolbar: { showToolbar: true, slots: { toolbar: Toolbar } },
+  continuous: { yAxis: [{ colorMap: { type: 'continuous', min: 0, max: 6, color: ['#90caf9', '#0d47a1'] } }], slots: { legend: ContinuousColorLegend }, slotProps: { legend: { axisDirection: 'y' } } },
+  piecewise: { yAxis: [{ colorMap: { type: 'piecewise', thresholds: [3], colors: ['#f44336', '#2196f3'] } }], slots: { legend: PiecewiseColorLegend }, slotProps: { legend: { axisDirection: 'y' } } },
+};
+`;
+
+const chart = (base, children = '') => ({
+  imports: CHART_SETUP,
+  props: `{ ...${base}, ...scenarios[props.scenario] }`,
+  local: ['scenario'],
+  render: (spread) => `<C ${spread}>${children}</C>`,
+});
+
+const barChart = chart('bar');
+
+/** Fixtures per MUI X Charts theme key; each renders through the chart xStyled names for it. */
+export const CHARTS = {
+  ...Object.fromEntries(
+    ['MuiChartsWrapper', 'MuiChartsLayerContainer', 'MuiChartsSvgLayer', 'MuiChartsLegend', 'MuiChartsLabelMark', 'MuiChartsAxis', 'MuiChartsXAxis', 'MuiChartsYAxis', 'MuiChartsGrid', 'MuiBarPlot', 'MuiBarLabel', 'MuiChartsTooltip', 'MuiChartsAxisHighlight', 'MuiChartsToolbar', 'MuiContinuousColorLegend', 'MuiChartsLabelGradient', 'MuiPiecewiseColorLegend', 'MuiChartsRadialGrid', 'MuiChartsRadialAxisHighlight'].map((key) => [key, barChart]),
+  ),
+  // shows only beside a highlight, so it is composed in with a fixed value
+  MuiChartsAxisHighlightValue: chart('bar', '<AfterChart axisDirection="x" value="Q2" />'),
+  ...Object.fromEntries(['MuiLinePlot', 'MuiAreaPlot', 'MuiMarkPlot', 'MuiMarkElement'].map((key) => [key, chart('line')])),
+  MuiScatterPlot: chart('scatter'),
+  ...Object.fromEntries(['MuiPieArcPlot', 'MuiPieArc', 'MuiPieArcLabelPlot', 'MuiPieArcLabel'].map((key) => [key, chart('pie')])),
+  MuiGauge: chart('{ value: 60, width: 200, height: 200, skipAnimation: true }'),
+};

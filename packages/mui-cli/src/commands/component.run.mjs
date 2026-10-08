@@ -89,7 +89,7 @@ export async function run(program, name, options) {
   }
   const target = resolveToken(name);
   if (target?.kind === 'x' && !target.component) {
-    (await import('../lib/xRender.mjs')).renderFeatureMap(program, target.product, target.label);
+    await (await import('../lib/xRender.mjs')).renderFeatureMap(program, target.product, target.label);
     return;
   }
   const component = target?.component ?? `Mui${name}`;

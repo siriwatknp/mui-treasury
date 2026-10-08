@@ -10,6 +10,8 @@ MUI X Data Grid: `--slot` names the theme key (`styleOverrides.<slot>`, e.g. `ce
 
 MUI X Date Pickers: annotate the part, by its theme key — `DateCalendar`, `DayCalendar --slot weekNumber`, `PickerDay`, `PickersCalendarHeader`, `TimeClock`, `ClockPointer --slot thumb`, `DigitalClock --slot item`, `PickersTextField`, `PickersOutlinedInput`, `PickersLayout --slot actionBar`, `DatePickerToolbar`, `PickerPopper --slot paper` (opened). `DatePicker` itself styles nothing; annotate prints its parts. Renders pin "now" to 2026-04-17 10:30 so the today mark doesn't move.
 
+MUI X Charts: annotate the part by its theme key — `ChartsLegend`, `ChartsXAxis`, `ChartsGrid --slot horizontalLine`, `BarPlot`, `BarLabel`, `LinePlot`, `MarkElement`, `PieArc`, `PieArcLabel`, `Gauge --slot valueArc`, `ChartsTooltip --slot paper` (held open on the second bar), `ChartsAxisHighlight`. SVG parts have no padding or gap: draw `height,width`. `BarChart`, `LineChart`… style nothing themselves; annotate lists their parts.
+
 MUI X Tree View: `mui annotate TreeItem --slot content` (also `label`, `iconContainer`, `groupTransition`, `checkbox`, `labelInput` — drawn with the label in edit mode), `SimpleTreeView`, `RichTreeView`.
 
 ```bash

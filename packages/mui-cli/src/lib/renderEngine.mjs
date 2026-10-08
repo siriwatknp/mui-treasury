@@ -111,7 +111,7 @@ export function helpersFor(page) {
           await page.mouse.move(0, 0);
           await page.waitForTimeout(100);
         } else if (step.settle) {
-          // an element that mounts late (a popper positioning itself): visible, then its box unchanged across two frames
+          // an element that mounts late (a popper positioning itself, a value moving into its portal): visible, then a box with a size, unchanged across two frames
           await page.locator(step.settle).first().waitFor({ state: 'visible', timeout: 2000 }).catch(() => {});
           await page.evaluate(async (selector) => {
             let previous = null;
@@ -119,7 +119,7 @@ export function helpersFor(page) {
               await new Promise((resolve) => requestAnimationFrame(resolve));
               const box = document.querySelector(selector)?.getBoundingClientRect();
               const key = box && `${box.x},${box.y},${box.width},${box.height}`;
-              if (key && key === previous) {
+              if (key && key === previous && (box.width > 0 || box.height > 0)) {
                 return;
               }
               previous = key;

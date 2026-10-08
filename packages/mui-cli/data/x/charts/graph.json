@@ -1,0 +1,81 @@
+{
+  "$source": {
+    "mui": "9.4.0",
+    "x": "9.14.0"
+  },
+  "components": [
+    "MuiAreaPlot",
+    "MuiBarLabel",
+    "MuiBarPlot",
+    "MuiChartsAxis",
+    "MuiChartsAxisHighlight",
+    "MuiChartsAxisHighlightValue",
+    "MuiChartsGrid",
+    "MuiChartsLabelGradient",
+    "MuiChartsLabelMark",
+    "MuiChartsLayerContainer",
+    "MuiChartsLegend",
+    "MuiChartsRadialAxisHighlight",
+    "MuiChartsRadialGrid",
+    "MuiChartsSvgLayer",
+    "MuiChartsToolbar",
+    "MuiChartsTooltip",
+    "MuiChartsWrapper",
+    "MuiChartsXAxis",
+    "MuiChartsYAxis",
+    "MuiContinuousColorLegend",
+    "MuiGauge",
+    "MuiLinePlot",
+    "MuiMarkElement",
+    "MuiMarkPlot",
+    "MuiPieArc",
+    "MuiPieArcLabel",
+    "MuiPieArcLabelPlot",
+    "MuiPieArcPlot",
+    "MuiPiecewiseColorLegend",
+    "MuiScatterPlot"
+  ],
+  "graph": {
+    "MuiBarLabel": {
+      "contentSource": "typography.body2"
+    },
+    "MuiChartsAxis": {
+      "composes": [
+        "MuiChartsXAxis",
+        "MuiChartsYAxis"
+      ]
+    },
+    "MuiChartsAxisHighlightValue": {
+      "contentSource": "typography.caption"
+    },
+    "MuiChartsLegend": {
+      "contentSource": "typography.caption"
+    },
+    "MuiContinuousColorLegend": {
+      "contentSource": "typography.caption"
+    },
+    "MuiPiecewiseColorLegend": {
+      "contentSource": "typography.caption"
+    },
+    "MuiChartsGrid": {
+      "routes": {
+        "verticalLine": [
+          "& .MuiChartsGrid-verticalLine"
+        ],
+        "horizontalLine": [
+          "& .MuiChartsGrid-horizontalLine"
+        ]
+      }
+    },
+    "MuiChartsRadialGrid": {
+      "routes": {
+        "rotationLine": [
+          "& .MuiChartsRadialGrid-rotationLine"
+        ],
+        "radiusLine": [
+          "& .MuiChartsRadialGrid-radiusLine"
+        ]
+      }
+    }
+  }
+}

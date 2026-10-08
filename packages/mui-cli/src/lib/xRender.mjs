@@ -9,7 +9,7 @@ import { jsonOut } from './json.mjs';
 const fitWidth = (used) => (process.stdout.isTTY ? Math.max(20, (process.stdout.columns ?? 100) - used) : Infinity);
 const trim = (s, n) => (s.length > n ? `${s.slice(0, n - 1)}…` : s);
 
-export function renderFeatureMap(program, product, label) {
+export async function renderFeatureMap(program, product, label) {
   const record = xProduct(product);
   const total = record.features.reduce((n, f) => n + f.demos, 0);
   if (program.opts().json) {
@@ -17,7 +17,8 @@ export function renderFeatureMap(program, product, label) {
     return;
   }
   console.log(`${label} — MUI X ${product} · ${record.url}`);
-  console.log(`no style rows for ${label} yet — features & demos:\n`);
+  const { xStyledProducts } = await import('./xStyled.mjs');
+  console.log(xStyledProducts().includes(product) ? `${label} styles nothing itself — its parts do (\`mui annotate ${label}\` lists them). Features & demos:\n` : `no style rows for ${label} yet — features & demos:\n`);
   const featW = Math.max(7, ...record.features.map((f) => f.feature.length));
   const planW = Math.max(4, ...record.features.map((f) => f.plan.length));
   console.log(`  ${'FEATURE'.padEnd(featW)}  ${'PLAN'.padEnd(planW)}  DEMOS`);

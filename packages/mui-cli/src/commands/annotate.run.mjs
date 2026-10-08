@@ -41,7 +41,10 @@ export async function run(program, name, options) {
   if (target?.kind === 'x' && !target.component) {
     const { X_STYLED, xStyledProducts } = await import('../lib/xStyled.mjs');
     if (xStyledProducts().includes(target.product)) {
-      const parts = X_STYLED[target.product].keys.map((k) => k.replace(/^Mui/, ''));
+      const { keys, exports } = X_STYLED[target.product];
+      // the parts this component renders (BarChart's bar, axis, legend…), else every part of the product
+      const own = keys.filter((k) => exports[k] === target.label);
+      const parts = (own.length ? own : keys).map((k) => k.replace(/^Mui/, ''));
       throw new Error(`${target.label} has no styles of its own — annotate one of the parts it renders: ${parts.join(', ')}`);
     }
     const covered = ['Material UI', ...xStyledProducts().map((p) => `MUI X ${xProductLabel[p]}`)].join(', ');

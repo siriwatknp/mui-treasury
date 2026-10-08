@@ -87,10 +87,28 @@ const shared = new Set(
 // a style function that can't run without the component's state (MUI X range fields' active bar): its rows are left out
 const failedStyles = new Set();
 
+const MARK = '__styleOverrides:';
+const stylesProxy = new Proxy({}, { get: (_, key) => (typeof key === 'string' ? `${MARK}${key}` : undefined) });
+// MUI X: a slot's theme key is the one its overridesResolver reads, which can differ from its styled name
+// (ChartsTooltip's Container reads styleOverrides.paper)
+const themeSlotOf = (rec) => {
+  if (x && rec.slot !== 'Root' && typeof rec.overridesResolver === 'function') {
+    try {
+      const read = rec.overridesResolver({ ownerState: new Proxy({}, { get: () => 'placeholder' }), theme: themes.plain }, stylesProxy);
+      if (typeof read === 'string' && read.startsWith(MARK)) {
+        return read.slice(MARK.length);
+      }
+    } catch {
+      // a resolver that needs real props keeps the styled name
+    }
+  }
+  return slotName(rec.slot);
+};
+
 function collect(theme) {
   const rows = new Map();
   for (const rec of named) {
-    const slot = slotName(rec.slot);
+    const slot = themeSlotOf(rec);
     const element = elementName(rec.tag);
     const slotLabel = slot === null ? `(internal:${element})` : shared.has(`${rec.name}|${rec.slot}`) ? `${slot}(${element})` : slot;
     rec.styles.forEach((style) => {
@@ -159,9 +177,7 @@ const onlyInVars = [...vars.keys()].filter((id) => !plain.has(id)).length;
 const components = [...new Set(named.map((rec) => rec.name))].sort();
 const graph = buildGraph({ muiDir: xDir ?? muiDir, rows, names: components });
 
-const MARK = '__styleOverrides:';
 const routeFailures = [];
-const stylesProxy = new Proxy({}, { get: (_, key) => (typeof key === 'string' ? `${MARK}${key}` : undefined) });
 for (const rec of named.filter((r) => r.slot === 'Root' && typeof r.overridesResolver === 'function')) {
   let resolved;
   try {

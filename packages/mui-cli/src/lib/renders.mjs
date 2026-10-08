@@ -4,7 +4,7 @@ import { DATA_DIR } from './data.mjs';
 import { HARNESS_DIR } from './renderEngine.mjs';
 import { missingPackages } from './packages.mjs';
 import { loadGraph } from './seams.mjs';
-import { DATA_GRID, DATE_PICKERS, RICH_TREE_VIEW, SIMPLE_TREE_VIEW } from './xFixtures.mjs';
+import { CHARTS, DATA_GRID, DATE_PICKERS, RICH_TREE_VIEW, SIMPLE_TREE_VIEW } from './xFixtures.mjs';
 import { importOf, xDataDir, xProductOfKey } from './xStyled.mjs';
 
 export const RENDER_DEMOS_DIR = path.join(DATA_DIR, 'material/render-demos');
@@ -81,6 +81,7 @@ export const RENDER_DEFAULTS = {
   },
   MuiDataGrid: DATA_GRID,
   ...DATE_PICKERS,
+  ...CHARTS,
   MuiRichTreeView: RICH_TREE_VIEW,
   MuiTreeItem: RICH_TREE_VIEW,
   MuiSimpleTreeView: SIMPLE_TREE_VIEW,
@@ -249,7 +250,9 @@ export function renderFor(component, { props = {}, states = [], slot = 'root' })
 export async function slotsOf(component) {
   const { loadGraph, loadSeams } = await import('./seams.mjs');
   const own = (loadSeams().byComponent.get(component) ?? []).filter((r) => !r.internal).map((r) => r.slot);
-  return [...new Set([...own, ...Object.keys(loadGraph().graph[component]?.routes ?? {})])];
+  const slots = [...new Set([...own, ...Object.keys(loadGraph().graph[component]?.routes ?? {})])];
+  // an MUI X key that styles nothing by default (a chart axis) is still a theme key: its root can be drawn
+  return slots.length || !xProductOfKey(component) ? slots : ['root'];
 }
 
 /** The selector the harness gives a tagged slot element. */

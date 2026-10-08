@@ -75,7 +75,7 @@ Then stop and report. More checking past this point costs time without changing 
 
 - **Spacing between components** (a control and its label, alignment, overhang): look at the gate's contact sheet (`verify <Component> --all` for one component in all its uses).
 - **Visual taste.**
-- **MUI X styles** in `verify` and `diff`. The Data Grid, Date Pickers and Tree View have style rows (`component DataGrid`, `component DateCalendar`, `component TreeItem`) and `annotate`; Charts has neither yet.
+- **MUI X styles** in `verify` and `diff`. Every MUI X product (Data Grid, Date Pickers, Tree View, Charts) has style rows (`component DataGrid`, `component DateCalendar`, `component TreeItem`, `component ChartsLegend`) and `annotate`; Pro/Premium-only parts say they can't be drawn yet.
 - **Components that only render inside docs demos** (Accordion, Select's menu, Snackbar…): they use their recorded demo, so `--props` doesn't apply.
 
 ## Rules
