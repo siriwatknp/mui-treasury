@@ -109,6 +109,7 @@ export const autocompleteTheme: ThemeComponents = {
         flexDirection: 'column',
         gap: '4px',
         [`& .${autocompleteClasses.option}`]: {
+          flexShrink: 0,
           minHeight: 40,
           [theme.breakpoints.up('sm')]: {
             minHeight: 'auto',

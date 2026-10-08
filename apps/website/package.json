@@ -13,6 +13,7 @@
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
     "verify:theme": "node --no-warnings scripts/verify-theme.mjs",
+    "verify:specs": "node ../../packages/mui-cli/bin/mui.mjs verify --all --theme registry/themes/mui-treasury/theme.tsx --font @fontsource-variable/geist --shot test-results/verify-specs.png --emit app/theme-specs/_generated --emit-assets public",
     "verify:gate": "node ../../packages/mui-cli/bin/mui.mjs verify --all --theme registry/themes/mui-treasury/theme.tsx --font @fontsource-variable/geist --shot test-results/verify-gate.png"
   },
   "dependencies": {

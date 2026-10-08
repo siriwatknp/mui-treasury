@@ -10,6 +10,7 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  { ignores: ['app/theme-specs/_generated/**'] },
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
   {
     rules: {

@@ -1,0 +1,6423 @@
+{
+  "cases": {
+    "AccordionActions|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "AccordionDetails|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "AccordionSummary|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Accordion|demo|demo accordion/AccordionExpandDefault": {
+      "checks": {
+        "content": 2,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Alert|composition|in alert/ActionAlerts": {
+      "checks": {
+        "content": 2,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Alert|composition|in alert/BasicAlerts": {
+      "checks": {
+        "content": 4,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Alert|composition|in alert/DescriptionAlerts": {
+      "checks": {
+        "content": 8,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Alert|composition|in alert/FilledAlerts": {
+      "checks": {
+        "content": 4,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Alert|own demo|demo alert/ColorAlerts": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Alert|own demo|demo alert/OutlinedAlerts": {
+      "checks": {
+        "content": 4,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "AppBar|composition|in tabs/FullWidthTabs": {
+      "checks": {
+        "content": 5,
+        "dead": 3,
+        "ring": 1,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Autocomplete|composition|in autocomplete/Asynchronous": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Autocomplete|composition|in autocomplete/ComboBox": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Autocomplete|composition|in autocomplete/ControllableStates": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Autocomplete|content|content Chips": {
+      "checks": {
+        "content": 3,
+        "dead": 3,
+        "ring": 3,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Autocomplete|content|content LongList": {
+      "checks": {
+        "dead": 0,
+        "items": 30,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Autocomplete|content|content LongTyped": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Autocomplete|own demo|demo autocomplete/CountrySelect": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Autocomplete|own demo|demo autocomplete/FreeSolo": {
+      "checks": {
+        "content": 3,
+        "dead": 3,
+        "ring": 3,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Autocomplete|own demo|demo autocomplete/FreeSoloCreateOption": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Autocomplete|own demo|demo autocomplete/FreeSoloCreateOptionDialog": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Autocomplete|own demo|demo autocomplete/Grouped": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Autocomplete|own demo|demo autocomplete/Playground": {
+      "checks": {
+        "content": 17,
+        "dead": 16,
+        "ring": 6,
+        "target": 16
+      },
+      "failures": []
+    },
+    "Autocomplete|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Autocomplete|variant|fullWidth=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Autocomplete|variant|multiple=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Autocomplete|variant|open=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Autocomplete|variant|size=small": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Avatar|composition|in avatars/BackgroundLetterAvatars": {
+      "checks": {
+        "content": 3,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Avatar|composition|in avatars/CustomSurplusAvatars": {
+      "checks": {
+        "content": 6,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Avatar|composition|in avatars/FallbackAvatars": {
+      "checks": {
+        "content": 3,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Avatar|composition|in avatars/GroupAvatars": {
+      "checks": {
+        "content": 5,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Avatar|own demo|demo avatars/ImageAvatars": {
+      "checks": {
+        "content": 3,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Avatar|own demo|demo avatars/LetterAvatars": {
+      "checks": {
+        "content": 3,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Avatar|own demo|demo avatars/SizeAvatars": {
+      "checks": {
+        "content": 3,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Avatar|own demo|demo avatars/Spacing": {
+      "checks": {
+        "content": 12,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Avatar|own demo|demo avatars/TotalAvatars": {
+      "checks": {
+        "content": 6,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Badge|composition|in badges/BadgeOverlap": {
+      "checks": {
+        "content": 4,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "BottomNavigationAction|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "BottomNavigation|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Breadcrumbs|composition|in breadcrumbs/ActiveLastBreadcrumb": {
+      "checks": {
+        "content": 4,
+        "dead": 3,
+        "ring": 3,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Breadcrumbs|composition|in breadcrumbs/BasicBreadcrumbs": {
+      "checks": {
+        "content": 3,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "Breadcrumbs|composition|in breadcrumbs/CollapsedBreadcrumbs": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "ButtonBase|composition|in avatars/UploadAvatars": {
+      "checks": {
+        "content": 2,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ButtonGroup|composition|in button-group/DisableElevation": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ButtonGroup|composition|in button-group/GroupOrientation": {
+      "checks": {
+        "content": 3,
+        "dead": 3,
+        "ring": 3,
+        "target": 3
+      },
+      "failures": []
+    },
+    "ButtonGroup|own demo|demo button-group/GroupSizesColors": {
+      "checks": {
+        "content": 3,
+        "dead": 3,
+        "ring": 3,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Button|composition|in button-group/BasicButtonGroup": {
+      "checks": {
+        "content": 4,
+        "dead": 4,
+        "ring": 4,
+        "target": 4
+      },
+      "failures": []
+    },
+    "Button|composition|in button-group/VariantButtonGroup": {
+      "checks": {
+        "content": 8,
+        "dead": 8,
+        "ring": 8,
+        "target": 8
+      },
+      "failures": []
+    },
+    "Button|composition|in buttons/BasicButtons": {
+      "checks": {
+        "content": 3,
+        "dead": 3,
+        "ring": 3,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Button|composition|in buttons/ButtonSizes": {
+      "checks": {
+        "content": 9,
+        "dead": 9,
+        "ring": 6,
+        "target": 9
+      },
+      "failures": []
+    },
+    "Button|content|content LongText": {
+      "checks": {
+        "content": 3,
+        "dead": 3,
+        "ring": 3,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Button|own demo|demo buttons/ColorButtons": {
+      "checks": {
+        "content": 3,
+        "dead": 3,
+        "ring": 3,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Button|own demo|demo buttons/ContainedButtons": {
+      "checks": {
+        "content": 3,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "Button|own demo|demo buttons/DisableElevation": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Button|own demo|demo buttons/OutlinedButtons": {
+      "checks": {
+        "content": 3,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "Button|own demo|demo buttons/TextButtons": {
+      "checks": {
+        "content": 3,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "Button|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Button|variant|color=error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Button|variant|color=info": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Button|variant|color=inherit": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Button|variant|color=secondary": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Button|variant|color=success": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Button|variant|color=warning": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Button|variant|disableElevation=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Button|variant|fullWidth=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Button|variant|size=large,variant=contained": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Button|variant|size=large,variant=outlined": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Button|variant|size=large,variant=text": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Button|variant|size=small,variant=contained": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Button|variant|size=small,variant=outlined": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Button|variant|size=small,variant=text": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Button|variant|variant=contained": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Button|variant|variant=outlined": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "CardActionArea|composition|in cards/MultiActionAreaCard": {
+      "checks": {
+        "content": 3,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "CardActionArea|composition|in cards/SelectActionCard": {
+      "checks": {
+        "content": 3,
+        "dead": 3,
+        "ring": 3,
+        "target": 3
+      },
+      "failures": []
+    },
+    "CardActionArea|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "CardHeader|composition|in transfer-list/SelectAllTransferList": {
+      "checks": {
+        "content": 18,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "Card|composition|in cards/ActionAreaCard": {
+      "checks": {
+        "content": 4,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Card|composition|in cards/BasicCard": {
+      "checks": {
+        "content": 3,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Card|composition|in cards/ImgMediaCard": {
+      "checks": {
+        "content": 4,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Card|composition|in cards/MediaCard": {
+      "checks": {
+        "content": 4,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Checkbox|composition|in checkboxes/CheckboxLabels": {
+      "checks": {
+        "content": 7,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "Checkbox|composition|in checkboxes/CheckboxesGroup": {
+      "checks": {
+        "content": 12,
+        "dead": 6,
+        "ring": 6,
+        "target": 6
+      },
+      "failures": []
+    },
+    "Checkbox|composition|in checkboxes/ColorCheckboxes": {
+      "checks": {
+        "content": 5,
+        "dead": 5,
+        "ring": 5,
+        "target": 5
+      },
+      "failures": []
+    },
+    "Checkbox|composition|in checkboxes/IndeterminateCheckbox": {
+      "checks": {
+        "content": 3,
+        "dead": 3,
+        "ring": 3,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Checkbox|own demo|demo checkboxes/Checkboxes": {
+      "checks": {
+        "content": 4,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "Checkbox|own demo|demo checkboxes/ControlledCheckbox": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|own demo|demo checkboxes/FormControlLabelPosition": {
+      "checks": {
+        "content": 7,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "Checkbox|own demo|demo checkboxes/SizeCheckboxes": {
+      "checks": {
+        "content": 3,
+        "dead": 3,
+        "ring": 3,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Checkbox|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|base +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=default,disableRipple=false": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=default,disableRipple=false +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=error +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=error,disableRipple=false": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=error,disableRipple=false +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=info": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=info +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=info,disableRipple=false": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=info,disableRipple=false +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=primary": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=primary +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=primary,disableRipple=false": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=primary,disableRipple=false +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=secondary": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=secondary +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=secondary,disableRipple=false": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=secondary,disableRipple=false +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=success": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=success +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=success,disableRipple=false": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=success,disableRipple=false +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=warning": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=warning +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=warning,disableRipple=false": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|color=warning,disableRipple=false +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|disableRipple=false": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Checkbox|variant|disableRipple=false +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Chip|composition|in chips/AvatarChips": {
+      "checks": {
+        "content": 2,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Chip|composition|in chips/BasicChips": {
+      "checks": {
+        "content": 2,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Chip|composition|in chips/ClickableAndDeletableChips": {
+      "checks": {
+        "content": 2,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "Chip|composition|in chips/ClickableChips": {
+      "checks": {
+        "content": 2,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "Chip|content|content LongLabel": {
+      "checks": {
+        "content": 3,
+        "dead": 3,
+        "ring": 3,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Chip|own demo|demo chips/ClickableLinkChips": {
+      "checks": {
+        "content": 2,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "Chip|own demo|demo chips/ColorChips": {
+      "checks": {
+        "content": 4,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Chip|own demo|demo chips/DeletableChips": {
+      "checks": {
+        "content": 2,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "Chip|own demo|demo chips/MultilineChips": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Chip|own demo|demo chips/SizesChips": {
+      "checks": {
+        "content": 2,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Chip|variant|clickable=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Chip|variant|color=error,clickable=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Chip|variant|color=error,onDelete=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Chip|variant|color=info,clickable=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Chip|variant|color=info,onDelete=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Chip|variant|color=primary,clickable=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Chip|variant|color=primary,onDelete=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Chip|variant|color=secondary,clickable=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Chip|variant|color=secondary,onDelete=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Chip|variant|color=success,clickable=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Chip|variant|color=success,onDelete=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Chip|variant|color=warning,clickable=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Chip|variant|color=warning,onDelete=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Chip|variant|onDelete=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "CircularProgress|composition|in backdrop/SimpleBackdrop": {
+      "checks": {
+        "content": 2,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "CircularProgress|composition|in progress/CircularColor": {
+      "checks": {
+        "content": 3,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "CircularProgress|composition|in progress/CircularDeterminate": {
+      "checks": {
+        "content": 5,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "CircularProgress|composition|in progress/CircularEnableTrack": {
+      "checks": {
+        "content": 5,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Collapse|composition|in transitions/SimpleCollapse": {
+      "checks": {
+        "content": 5,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Container|composition|in container/FixedContainer": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Container|composition|in container/SimpleContainer": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Dialog|composition|in dialogs/AlertDialogSlide": {
+      "checks": {
+        "content": 4,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Dialog|composition|in dialogs/ConfirmationDialog": {
+      "checks": {
+        "content": 10,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Divider|composition|in dividers/DividerText": {
+      "checks": {
+        "content": 4,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Divider|composition|in dividers/DividerVariants": {
+      "checks": {
+        "content": 11,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Divider|composition|in dividers/IntroDivider": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Divider|composition|in dividers/ListDividers": {
+      "checks": {
+        "content": 12,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Drawer|variant|base": {
+      "checks": {
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": [],
+      "skipped": "no Drawer rendered"
+    },
+    "Fab|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Fab|variant|color=error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Fab|variant|color=info": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Fab|variant|color=inherit": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Fab|variant|color=primary": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Fab|variant|color=secondary": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Fab|variant|color=success": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Fab|variant|color=warning": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Fab|variant|size=medium": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Fab|variant|size=small": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Fab|variant|variant=extended": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Fab|variant|variant=extended,size=medium": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Fab|variant|variant=extended,size=small": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FilledInput|composition|in text-fields/ComposedTextField": {
+      "checks": {
+        "content": 9,
+        "dead": 5,
+        "ring": 5,
+        "target": 5
+      },
+      "failures": []
+    },
+    "FilledInput|content|content LongLabel": {
+      "checks": {
+        "content": 2,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "FilledInput|content|content LongValueAdornments": {
+      "checks": {
+        "content": 4,
+        "dead": 4,
+        "ring": 4,
+        "target": 4
+      },
+      "failures": []
+    },
+    "FilledInput|content|content MultilineMaxRows": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FilledInput|content|content MultilineTyped": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FilledInput|content|content Password": {
+      "checks": {
+        "content": 2,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "FilledInput|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FilledInput|variant|base +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FilledInput|variant|disableUnderline=false,color=error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FilledInput|variant|disableUnderline=false,color=error +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FilledInput|variant|disableUnderline=false,color=info": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FilledInput|variant|disableUnderline=false,color=info +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FilledInput|variant|disableUnderline=false,color=secondary": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FilledInput|variant|disableUnderline=false,color=secondary +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FilledInput|variant|disableUnderline=false,color=success": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FilledInput|variant|disableUnderline=false,color=success +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FilledInput|variant|disableUnderline=false,color=warning": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FilledInput|variant|disableUnderline=false,color=warning +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FilledInput|variant|endAdornment=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FilledInput|variant|endAdornment=true +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FilledInput|variant|hiddenLabel=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FilledInput|variant|hiddenLabel=true +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FilledInput|variant|multiline=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FilledInput|variant|multiline=true +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FilledInput|variant|multiline=true,hiddenLabel=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FilledInput|variant|multiline=true,hiddenLabel=true +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FilledInput|variant|startAdornment=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FilledInput|variant|startAdornment=true +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "FormControlLabel|own demo|demo switches/SwitchLabels": {
+      "checks": {
+        "content": 6,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "FormControlLabel|own demo|demo switches/SwitchesGroup": {
+      "checks": {
+        "content": 6,
+        "dead": 3,
+        "ring": 3,
+        "target": 3
+      },
+      "failures": []
+    },
+    "FormControl|composition|in radio-buttons/FormControlLabelPlacement": {
+      "checks": {
+        "content": 5,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "FormControl|composition|in switches/FormControlLabelPosition": {
+      "checks": {
+        "content": 6,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "FormControl|composition|in text-fields/UseFormControl": {
+      "checks": {
+        "content": 2,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "FormHelperText|composition|in radio-buttons/ErrorRadios": {
+      "checks": {
+        "content": 4,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "FormHelperText|composition|in selects/SelectLabels": {
+      "checks": {
+        "content": 4,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "FormHelperText|composition|in selects/SelectOtherProps": {
+      "checks": {
+        "content": 8,
+        "dead": 3,
+        "ring": 3,
+        "target": 3
+      },
+      "failures": []
+    },
+    "FormHelperText|own demo|demo text-fields/HelperTextMisaligned": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "FormLabel|composition|in radio-buttons/ControlledRadioButtonsGroup": {
+      "checks": {
+        "content": 3,
+        "dead": 2,
+        "ring": 1,
+        "target": 2
+      },
+      "failures": []
+    },
+    "Grid|composition|in grid/AutoGrid": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Grid|composition|in grid/BasicGrid": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Grid|composition|in grid/CenteredElementGrid": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Grid|composition|in grid/ColumnLayoutInsideGrid": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "IconButton|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "IconButton|variant|color=error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "IconButton|variant|color=info": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "IconButton|variant|color=inherit": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "IconButton|variant|color=primary": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "IconButton|variant|color=secondary": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "IconButton|variant|color=success": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "IconButton|variant|color=warning": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "IconButton|variant|edge=end": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "IconButton|variant|edge=end,size=small": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "IconButton|variant|edge=start": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "IconButton|variant|edge=start,size=small": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "IconButton|variant|loading=true": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "IconButton|variant|size=large": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Icon|composition|in icons/Icons": {
+      "checks": {
+        "content": 5,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Icon|composition|in icons/TwoToneIcons": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "ImageListItemBar|composition|in image-list/TitlebarBelowMasonryImageList": {
+      "checks": {
+        "content": 12,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "ImageList|composition|in image-list/MasonryImageList": {
+      "checks": {
+        "content": 13,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "ImageList|composition|in image-list/QuiltedImageList": {
+      "checks": {
+        "content": 13,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "ImageList|composition|in image-list/StandardImageList": {
+      "checks": {
+        "content": 13,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "ImageList|composition|in image-list/TitlebarBelowImageList": {
+      "checks": {
+        "content": 25,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "InputBase|composition|in text-fields/InputSuffixShrink": {
+      "checks": {
+        "content": 12,
+        "dead": 6,
+        "ring": 6,
+        "target": 6
+      },
+      "failures": []
+    },
+    "InputBase|own demo|demo text-fields/BasicTextFields": {
+      "checks": {
+        "content": 9,
+        "dead": 6,
+        "ring": 6,
+        "target": 6
+      },
+      "failures": []
+    },
+    "InputBase|own demo|demo text-fields/FormPropsTextFields": {
+      "checks": {
+        "content": 57,
+        "dead": 30,
+        "ring": 21,
+        "target": 30
+      },
+      "failures": []
+    },
+    "InputBase|own demo|demo text-fields/MultilineTextFields": {
+      "checks": {
+        "content": 27,
+        "dead": 18,
+        "ring": 15,
+        "target": 18
+      },
+      "failures": []
+    },
+    "InputBase|own demo|demo text-fields/SelectTextFields": {
+      "checks": {
+        "content": 24,
+        "dead": 12,
+        "ring": 12,
+        "target": 12
+      },
+      "failures": []
+    },
+    "InputBase|own demo|demo text-fields/TextFieldSizes": {
+      "checks": {
+        "content": 8,
+        "dead": 8,
+        "ring": 8,
+        "target": 8
+      },
+      "failures": []
+    },
+    "InputBase|own demo|demo text-fields/ValidationTextFields": {
+      "checks": {
+        "content": 21,
+        "dead": 12,
+        "ring": 12,
+        "target": 12
+      },
+      "failures": []
+    },
+    "InputBase|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "InputBase|variant|fullWidth=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "InputBase|variant|multiline=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "InputBase|variant|size=small": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "InputLabel|composition|in selects/BasicSelect": {
+      "checks": {
+        "content": 2,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "InputLabel|composition|in selects/ControlledOpenSelect": {
+      "checks": {
+        "content": 2,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "InputLabel|composition|in selects/GroupedSelect": {
+      "checks": {
+        "content": 4,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "InputLabel|composition|in selects/MultipleSelect": {
+      "checks": {
+        "content": 3,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "Input|composition|in text-fields/Inputs": {
+      "checks": {
+        "content": 4,
+        "dead": 3,
+        "ring": 3,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Input|content|content LongLabel": {
+      "checks": {
+        "content": 2,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "Input|content|content LongValueAdornments": {
+      "checks": {
+        "content": 4,
+        "dead": 4,
+        "ring": 4,
+        "target": 4
+      },
+      "failures": []
+    },
+    "Input|content|content MultilineMaxRows": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Input|content|content MultilineTyped": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Input|content|content Password": {
+      "checks": {
+        "content": 2,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "Input|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Input|variant|base +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Input|variant|color=error,disableUnderline=false": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Input|variant|color=error,disableUnderline=false +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Input|variant|color=info,disableUnderline=false": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Input|variant|color=info,disableUnderline=false +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Input|variant|color=secondary,disableUnderline=false": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Input|variant|color=secondary,disableUnderline=false +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Input|variant|color=success,disableUnderline=false": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Input|variant|color=success,disableUnderline=false +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Input|variant|color=warning,disableUnderline=false": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Input|variant|color=warning,disableUnderline=false +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "LinearProgress|composition|in progress/LinearBuffer": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "LinearProgress|composition|in progress/LinearColor": {
+      "checks": {
+        "content": 3,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "LinearProgress|composition|in progress/LinearDeterminate": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "LinearProgress|composition|in progress/LinearIndeterminate": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "LinearProgress|own demo|demo progress/LinearQuery": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "LinearProgress|own demo|demo progress/LinearWithAriaValueText": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "LinearProgress|own demo|demo progress/LinearWithValueLabel": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Link|composition|in links/Links": {
+      "checks": {
+        "content": 3,
+        "dead": 3,
+        "ring": 3,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Link|composition|in links/UnderlineLink": {
+      "checks": {
+        "content": 3,
+        "dead": 3,
+        "ring": 3,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Link|variant|component=button": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ListItemButton|composition|in menus/SimpleListMenu": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ListItemButton|variant|alignItems=flex-start": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ListItemButton|variant|alignItems=flex-start +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ListItemButton|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ListItemButton|variant|base +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ListItemButton|variant|dense=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ListItemButton|variant|dense=true +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ListItemButton|variant|divider=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ListItemButton|variant|divider=true +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ListItemIcon|composition|in transfer-list/TransferList": {
+      "checks": {
+        "content": 16,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "ListItemSecondaryAction|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "ListSubheader|composition|in lists/PinnedSubheaderList": {
+      "checks": {
+        "content": 6,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "List|composition|in lists/AlignItemsList": {
+      "checks": {
+        "content": 10,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "List|composition|in lists/CheckboxListSecondary": {
+      "checks": {
+        "content": 13,
+        "dead": 4,
+        "ring": 4,
+        "target": 4
+      },
+      "failures": []
+    },
+    "MenuItem|variant|base in Menu": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "MenuItem|variant|base in Menu +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "MenuItem|variant|dense=true in Menu": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "MenuItem|variant|dense=true in Menu +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "MenuItem|variant|divider=true in Menu": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "MenuItem|variant|divider=true in Menu +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Menu|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "MobileStepper|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "MobileStepper|variant|position=top": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "MobileStepper|variant|variant=progress": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Modal|composition|in modal/ServerModal": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Modal|demo|demo modal/BasicModal": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Modal|demo|demo modal/KeepMountedModal": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "OutlinedInput|composition|in selects/MultipleSelectChip": {
+      "checks": {
+        "content": 2,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "OutlinedInput|composition|in selects/MultipleSelectPlaceholder": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "OutlinedInput|content|content LongLabel": {
+      "checks": {
+        "content": 2,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "OutlinedInput|content|content LongValueAdornments": {
+      "checks": {
+        "content": 4,
+        "dead": 4,
+        "ring": 4,
+        "target": 4
+      },
+      "failures": []
+    },
+    "OutlinedInput|content|content MultilineMaxRows": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "OutlinedInput|content|content MultilineTyped": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "OutlinedInput|content|content Password": {
+      "checks": {
+        "content": 2,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "OutlinedInput|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "OutlinedInput|variant|base +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "OutlinedInput|variant|color=error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "OutlinedInput|variant|color=error +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "OutlinedInput|variant|color=info": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "OutlinedInput|variant|color=info +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "OutlinedInput|variant|color=secondary": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "OutlinedInput|variant|color=secondary +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "OutlinedInput|variant|color=success": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "OutlinedInput|variant|color=success +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "OutlinedInput|variant|color=warning": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "OutlinedInput|variant|color=warning +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "OutlinedInput|variant|endAdornment=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "OutlinedInput|variant|endAdornment=true +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "OutlinedInput|variant|multiline=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "OutlinedInput|variant|multiline=true +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "OutlinedInput|variant|startAdornment=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "OutlinedInput|variant|startAdornment=true +error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|own demo|demo pagination/BasicPagination": {
+      "checks": {
+        "content": 40,
+        "dead": 21,
+        "ring": 6,
+        "target": 21
+      },
+      "failures": []
+    },
+    "PaginationItem|own demo|demo pagination/PaginationButtons": {
+      "checks": {
+        "content": 20,
+        "dead": 14,
+        "ring": 6,
+        "target": 14
+      },
+      "failures": []
+    },
+    "PaginationItem|own demo|demo pagination/PaginationOutlined": {
+      "checks": {
+        "content": 40,
+        "dead": 21,
+        "ring": 6,
+        "target": 21
+      },
+      "failures": []
+    },
+    "PaginationItem|own demo|demo pagination/PaginationRanges": {
+      "checks": {
+        "content": 36,
+        "dead": 28,
+        "ring": 6,
+        "target": 28
+      },
+      "failures": []
+    },
+    "PaginationItem|own demo|demo pagination/PaginationRounded": {
+      "checks": {
+        "content": 18,
+        "dead": 14,
+        "ring": 6,
+        "target": 14
+      },
+      "failures": []
+    },
+    "PaginationItem|own demo|demo pagination/PaginationSize": {
+      "checks": {
+        "content": 27,
+        "dead": 21,
+        "ring": 6,
+        "target": 21
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|base +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|base in Pagination": {
+      "checks": {
+        "content": 3,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|base in Pagination +selected": {
+      "checks": {
+        "content": 3,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|shape=rounded": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|shape=rounded +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|size=large": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|size=large +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|size=small": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|size=small +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=outlined": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=outlined +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=outlined,color=error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=outlined,color=error +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=outlined,color=info": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=outlined,color=info +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=outlined,color=primary": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=outlined,color=primary +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=outlined,color=secondary": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=outlined,color=secondary +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=outlined,color=success": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=outlined,color=success +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=outlined,color=warning": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=outlined,color=warning +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=text,color=error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=text,color=error +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=text,color=info": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=text,color=info +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=text,color=primary": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=text,color=primary +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=text,color=secondary": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=text,color=secondary +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=text,color=success": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=text,color=success +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=text,color=warning": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "PaginationItem|variant|variant=text,color=warning +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Pagination|composition|in pagination/PaginationControlled": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Paper|composition|in menus/MenuListComposition": {
+      "checks": {
+        "content": 4,
+        "dead": 3,
+        "ring": 1,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Paper|composition|in paper/SimplePaper": {
+      "checks": {
+        "content": 3,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Paper|composition|in table/AccessibleTable": {
+      "checks": {
+        "content": 29,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Paper|composition|in table/BasicTable": {
+      "checks": {
+        "content": 41,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Popover|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Radio|composition|in radio-buttons/ColorRadioButtons": {
+      "checks": {
+        "content": 5,
+        "dead": 5,
+        "ring": 1,
+        "target": 5
+      },
+      "failures": []
+    },
+    "Radio|composition|in radio-buttons/RadioButtonsGroup": {
+      "checks": {
+        "content": 3,
+        "dead": 3,
+        "ring": 1,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Radio|own demo|demo radio-buttons/RadioButtons": {
+      "checks": {
+        "content": 2,
+        "dead": 2,
+        "ring": 1,
+        "target": 2
+      },
+      "failures": []
+    },
+    "Radio|own demo|demo radio-buttons/RowRadioButtonsGroup": {
+      "checks": {
+        "content": 4,
+        "dead": 3,
+        "ring": 3,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Radio|own demo|demo radio-buttons/SizeRadioButtons": {
+      "checks": {
+        "content": 3,
+        "dead": 3,
+        "ring": 1,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Radio|own demo|demo radio-buttons/UseRadioGroup": {
+      "checks": {
+        "content": 2,
+        "dead": 2,
+        "ring": 1,
+        "target": 2
+      },
+      "failures": []
+    },
+    "Radio|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Radio|variant|base +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Radio|variant|disableRipple=false": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Radio|variant|disableRipple=false +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Rating|composition|in rating/BasicRating": {
+      "checks": {
+        "content": 5,
+        "dead": 3,
+        "ring": 0,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Rating|composition|in rating/HalfRating": {
+      "checks": {
+        "content": 2,
+        "dead": 1,
+        "ring": 0,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Rating|composition|in rating/RatingSize": {
+      "checks": {
+        "content": 3,
+        "dead": 3,
+        "ring": 0,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Rating|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 0,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Rating|variant|size=large": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 0,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Rating|variant|size=small": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 0,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ScopedCssBaseline|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "ScopedCssBaseline|variant|enableColorScheme=true": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Select|content|content LongList": {
+      "checks": {
+        "dead": 0,
+        "items": 30,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Select|content|content LongOption": {
+      "checks": {
+        "content": 3,
+        "dead": 3,
+        "ring": 3,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Select|own demo|demo selects/SelectAutoWidth": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Select|own demo|demo selects/SelectSmall": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Select|own demo|demo selects/SelectVariants": {
+      "checks": {
+        "content": 3,
+        "dead": 3,
+        "ring": 3,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Select|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Skeleton|composition|in skeleton/Animations": {
+      "checks": {
+        "content": 3,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Skeleton|composition|in skeleton/SkeletonChildren": {
+      "checks": {
+        "content": 3,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Skeleton|composition|in skeleton/SkeletonColor": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Slider|composition|in slider/ColorSlider": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Slider|composition|in slider/DiscreteSlider": {
+      "checks": {
+        "content": 2,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Slider|composition|in slider/DiscreteSliderLabel": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Slider|composition|in slider/DiscreteSliderMarks": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Slider|own demo|demo slider/DiscreteSliderSteps": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Slider|own demo|demo slider/DiscreteSliderValues": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Slider|own demo|demo slider/MinimumDistanceSlider": {
+      "checks": {
+        "content": 2,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "Slider|own demo|demo slider/RangeSlider": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Slider|own demo|demo slider/SliderSizes": {
+      "checks": {
+        "content": 2,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "Slider|own demo|demo slider/VerticalSlider": {
+      "checks": {
+        "content": 3,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "SnackbarContent|composition|in snackbars/LongTextSnackbar": {
+      "checks": {
+        "content": 4,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Snackbar|demo|demo snackbars/PositionedSnackbar": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Snackbar|demo|demo snackbars/TransitionsSnackbar": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "SpeedDialAction|variant|base": {
+      "checks": {
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": [],
+      "skipped": "no SpeedDialAction rendered"
+    },
+    "SpeedDialIcon|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "SpeedDialIcon|variant|open=true": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "SpeedDialIcon|variant|open=true,openIcon=true": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "SpeedDial|demo|demo speed-dial/BasicSpeedDial": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Stack|composition|in stack/BasicStack": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Stack|composition|in stack/DirectionStack": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Stack|composition|in stack/DividerStack": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Stack|composition|in stack/FlexboxGapStack": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "StepButton|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 0,
+        "target": 1
+      },
+      "failures": []
+    },
+    "StepIcon|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "StepIcon|variant|base +active": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "StepIcon|variant|base +completed": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "StepIcon|variant|base +error": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Step|composition|in steppers/HorizontalLinearAlternativeLabelStepper": {
+      "checks": {
+        "content": 9,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Step|composition|in steppers/HorizontalLinearStepper": {
+      "checks": {
+        "content": 9,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Step|composition|in steppers/HorizontalNonLinearStepper": {
+      "checks": {
+        "content": 12,
+        "dead": 3,
+        "ring": 1,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Step|composition|in steppers/HorizontalStepperWithError": {
+      "checks": {
+        "content": 9,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Step|own demo|demo steppers/VerticalLinearAlternativeLabelStepper": {
+      "checks": {
+        "content": 12,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Step|own demo|demo steppers/VerticalLinearStepper": {
+      "checks": {
+        "content": 12,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "SvgIcon|composition|in icons/SvgIconChildren": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "SvgIcon|composition|in icons/SvgIconsColor": {
+      "checks": {
+        "content": 7,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "SvgIcon|composition|in icons/SvgIconsSize": {
+      "checks": {
+        "content": 4,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "SvgIcon|own demo|demo icons/CreateSvgIcon": {
+      "checks": {
+        "content": 4,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Switch|own demo|demo switches/BasicSwitches": {
+      "checks": {
+        "content": 4,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "Switch|own demo|demo switches/ControlledSwitches": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Switch|own demo|demo switches/SwitchesSize": {
+      "checks": {
+        "content": 2,
+        "dead": 2,
+        "ring": 2,
+        "target": 2
+      },
+      "failures": []
+    },
+    "Switch|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Switch|variant|base +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Switch|variant|color=error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Switch|variant|color=error +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Switch|variant|color=info": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Switch|variant|color=info +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Switch|variant|color=primary": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Switch|variant|color=primary +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Switch|variant|color=secondary": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Switch|variant|color=secondary +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Switch|variant|color=success": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Switch|variant|color=success +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Switch|variant|color=warning": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Switch|variant|color=warning +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Switch|variant|edge=end": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Switch|variant|edge=end +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Switch|variant|edge=start": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Switch|variant|edge=start +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Switch|variant|size=small": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Switch|variant|size=small +checked": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "TabScrollButton|own demo|demo tabs/ScrollableTabsButtonAuto": {
+      "checks": {
+        "content": 10,
+        "dead": 7,
+        "ring": 1,
+        "target": 7
+      },
+      "failures": []
+    },
+    "TabScrollButton|own demo|demo tabs/ScrollableTabsButtonForce": {
+      "checks": {
+        "content": 2,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "TabScrollButton|own demo|demo tabs/ScrollableTabsButtonVisible": {
+      "checks": {
+        "content": 2,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "TabScrollButton|own demo|demo tabs/VerticalTabs": {
+      "checks": {
+        "content": 2,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "TableCell|own demo|demo table/SpanningTable": {
+      "checks": {
+        "content": 26,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "TableCell|own demo|demo table/StickyHeadTable": {
+      "checks": {
+        "content": 56,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "TableFooter|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "TablePagination|composition|in pagination/TablePaginationDemo": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "TableSortLabel|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "TableSortLabel|variant|base +active": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "TableSortLabel|variant|direction=desc": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "TableSortLabel|variant|direction=desc +active": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Table|composition|in table/ColumnGroupingTable": {
+      "checks": {
+        "content": 74,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Table|composition|in table/DenseTable": {
+      "checks": {
+        "content": 40,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Tab|composition|in tabs/AccessibleTabs1": {
+      "checks": {
+        "content": 4,
+        "dead": 3,
+        "ring": 1,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Tab|composition|in tabs/AccessibleTabs2": {
+      "checks": {
+        "content": 4,
+        "dead": 3,
+        "ring": 1,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Tab|composition|in tabs/BasicTabs": {
+      "checks": {
+        "content": 4,
+        "dead": 3,
+        "ring": 1,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Tab|composition|in tabs/CenteredTabs": {
+      "checks": {
+        "content": 4,
+        "dead": 3,
+        "ring": 1,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Tab|own demo|demo tabs/ColorTabs": {
+      "checks": {
+        "content": 4,
+        "dead": 3,
+        "ring": 1,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Tab|own demo|demo tabs/DisabledTabs": {
+      "checks": {
+        "content": 4,
+        "dead": 2,
+        "ring": 1,
+        "target": 2
+      },
+      "failures": []
+    },
+    "Tab|own demo|demo tabs/KeepMountedStandardTabs": {
+      "checks": {
+        "content": 3,
+        "dead": 2,
+        "ring": 1,
+        "target": 2
+      },
+      "failures": []
+    },
+    "Tab|own demo|demo tabs/TabsWrappedLabel": {
+      "checks": {
+        "content": 4,
+        "dead": 3,
+        "ring": 1,
+        "target": 3
+      },
+      "failures": []
+    },
+    "Tab|variant|base in Tabs": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Tab|variant|icon=true,label=true in Tabs": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Tab|variant|label=true,iconPosition=top in Tabs": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Tab|variant|wrapped=true in Tabs": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ToggleButtonGroup|composition|in toggle-button/ColorToggleButton": {
+      "checks": {
+        "content": 4,
+        "dead": 4,
+        "ring": 2,
+        "target": 4
+      },
+      "failures": []
+    },
+    "ToggleButton|variant|base": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ToggleButton|variant|base +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ToggleButton|variant|color=error": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ToggleButton|variant|color=error +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ToggleButton|variant|color=info": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ToggleButton|variant|color=info +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ToggleButton|variant|color=primary": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ToggleButton|variant|color=primary +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ToggleButton|variant|color=secondary": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ToggleButton|variant|color=secondary +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ToggleButton|variant|color=standard": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ToggleButton|variant|color=standard +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ToggleButton|variant|color=success": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ToggleButton|variant|color=success +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ToggleButton|variant|color=warning": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ToggleButton|variant|color=warning +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ToggleButton|variant|fullWidth=true": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ToggleButton|variant|fullWidth=true +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ToggleButton|variant|size=large": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ToggleButton|variant|size=large +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ToggleButton|variant|size=small": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "ToggleButton|variant|size=small +selected": {
+      "checks": {
+        "content": 1,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Tooltip|variant|base": {
+      "checks": {
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": [],
+      "skipped": "no Tooltip rendered"
+    },
+    "Typography|composition|in app-bar/ElevateAppBar": {
+      "checks": {
+        "content": 5,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Typography|composition|in app-bar/HideAppBar": {
+      "checks": {
+        "content": 5,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    },
+    "Typography|composition|in autocomplete/AutocompleteHint": {
+      "checks": {
+        "content": 2,
+        "dead": 1,
+        "ring": 1,
+        "target": 1
+      },
+      "failures": []
+    },
+    "Typography|composition|in skeleton/SkeletonTypography": {
+      "checks": {
+        "content": 12,
+        "dead": 0,
+        "ring": 0,
+        "target": 0
+      },
+      "failures": []
+    }
+  },
+  "code": [],
+  "components": {
+    "Accordion": {
+      "cases": 1,
+      "failed": 0,
+      "group": "Accordion"
+    },
+    "AccordionActions": {
+      "cases": 1,
+      "failed": 0,
+      "group": "Accordion"
+    },
+    "AccordionDetails": {
+      "cases": 1,
+      "failed": 0,
+      "group": "Accordion"
+    },
+    "AccordionSummary": {
+      "cases": 1,
+      "failed": 0,
+      "group": "Accordion"
+    },
+    "Alert": {
+      "cases": 6,
+      "failed": 0,
+      "group": "Alert"
+    },
+    "AlertTitle": {
+      "cases": 1,
+      "failed": 0,
+      "group": "Alert"
+    },
+    "AppBar": {
+      "cases": 3,
+      "failed": 0,
+      "group": "AppBar"
+    },
+    "Autocomplete": {
+      "cases": 18,
+      "failed": 0,
+      "group": "Autocomplete"
+    },
+    "Avatar": {
+      "cases": 10,
+      "failed": 0,
+      "group": "Avatar"
+    },
+    "AvatarGroup": {
+      "cases": 4,
+      "failed": 0,
+      "group": "Avatar"
+    },
+    "Backdrop": {
+      "cases": 1,
+      "failed": 0,
+      "group": "Backdrop"
+    },
+    "Badge": {
+      "cases": 1,
+      "failed": 0,
+      "group": "Badge"
+    },
+    "BottomNavigation": {
+      "cases": 1,
+      "failed": 0,
+      "group": "BottomNavigation"
+    },
+    "BottomNavigationAction": {
+      "cases": 1,
+      "failed": 0,
+      "group": "BottomNavigation"
+    },
+    "Breadcrumbs": {
+      "cases": 3,
+      "failed": 0,
+      "group": "Breadcrumbs"
+    },
+    "Button": {
+      "cases": 27,
+      "failed": 0,
+      "group": "Button"
+    },
+    "ButtonBase": {
+      "cases": 1,
+      "failed": 0,
+      "group": "ButtonBase"
+    },
+    "ButtonGroup": {
+      "cases": 5,
+      "failed": 0,
+      "group": "ButtonGroup"
+    },
+    "Card": {
+      "cases": 4,
+      "failed": 0,
+      "group": "Card"
+    },
+    "CardActionArea": {
+      "cases": 4,
+      "failed": 0,
+      "group": "Card"
+    },
+    "CardActions": {
+      "cases": 4,
+      "failed": 0,
+      "group": "Card"
+    },
+    "CardContent": {
+      "cases": 4,
+      "failed": 0,
+      "group": "Card"
+    },
+    "CardHeader": {
+      "cases": 1,
+      "failed": 0,
+      "group": "Card"
+    },
+    "CardMedia": {
+      "cases": 4,
+      "failed": 0,
+      "group": "Card"
+    },
+    "Checkbox": {
+      "cases": 38,
+      "failed": 0,
+      "group": "Checkbox"
+    },
+    "Chip": {
+      "cases": 24,
+      "failed": 0,
+      "group": "Chip"
+    },
+    "CircularProgress": {
+      "cases": 4,
+      "failed": 0,
+      "group": "CircularProgress"
+    },
+    "Collapse": {
+      "cases": 1,
+      "failed": 0,
+      "group": "Collapse"
+    },
+    "Container": {
+      "cases": 4,
+      "failed": 0,
+      "group": "Container"
+    },
+    "Dialog": {
+      "cases": 2,
+      "failed": 0,
+      "group": "Dialog"
+    },
+    "DialogActions": {
+      "cases": 2,
+      "failed": 0,
+      "group": "Dialog"
+    },
+    "DialogContent": {
+      "cases": 2,
+      "failed": 0,
+      "group": "Dialog"
+    },
+    "DialogTitle": {
+      "cases": 2,
+      "failed": 0,
+      "group": "Dialog"
+    },
+    "Divider": {
+      "cases": 4,
+      "failed": 0,
+      "group": "Divider"
+    },
+    "Drawer": {
+      "cases": 1,
+      "failed": 0,
+      "group": "Drawer"
+    },
+    "Fab": {
+      "cases": 13,
+      "failed": 0,
+      "group": "Fab"
+    },
+    "FilledInput": {
+      "cases": 35,
+      "failed": 0,
+      "group": "FilledInput"
+    },
+    "FormControl": {
+      "cases": 4,
+      "failed": 0,
+      "group": "FormControl"
+    },
+    "FormControlLabel": {
+      "cases": 6,
+      "failed": 0,
+      "group": "FormControlLabel"
+    },
+    "FormGroup": {
+      "cases": 4,
+      "failed": 0,
+      "group": "FormGroup"
+    },
+    "FormHelperText": {
+      "cases": 10,
+      "failed": 0,
+      "group": "FormHelperText"
+    },
+    "FormLabel": {
+      "cases": 4,
+      "failed": 0,
+      "group": "FormLabel"
+    },
+    "Grid": {
+      "cases": 4,
+      "failed": 0,
+      "group": "Grid"
+    },
+    "Icon": {
+      "cases": 2,
+      "failed": 0,
+      "group": "Icon"
+    },
+    "IconButton": {
+      "cases": 14,
+      "failed": 0,
+      "group": "IconButton"
+    },
+    "ImageList": {
+      "cases": 4,
+      "failed": 0,
+      "group": "ImageList"
+    },
+    "ImageListItem": {
+      "cases": 4,
+      "failed": 0,
+      "group": "ImageList"
+    },
+    "ImageListItemBar": {
+      "cases": 2,
+      "failed": 0,
+      "group": "ImageList"
+    },
+    "Input": {
+      "cases": 25,
+      "failed": 0,
+      "group": "Input"
+    },
+    "InputAdornment": {
+      "cases": 1,
+      "failed": 0,
+      "group": "Input"
+    },
+    "InputBase": {
+      "cases": 11,
+      "failed": 0,
+      "group": "InputBase"
+    },
+    "InputLabel": {
+      "cases": 10,
+      "failed": 0,
+      "group": "Input"
+    },
+    "LinearProgress": {
+      "cases": 7,
+      "failed": 0,
+      "group": "LinearProgress"
+    },
+    "Link": {
+      "cases": 5,
+      "failed": 0,
+      "group": "Link"
+    },
+    "List": {
+      "cases": 4,
+      "failed": 0,
+      "group": "List"
+    },
+    "ListItem": {
+      "cases": 4,
+      "failed": 0,
+      "group": "List"
+    },
+    "ListItemAvatar": {
+      "cases": 2,
+      "failed": 0,
+      "group": "List"
+    },
+    "ListItemButton": {
+      "cases": 11,
+      "failed": 0,
+      "group": "List"
+    },
+    "ListItemIcon": {
+      "cases": 2,
+      "failed": 0,
+      "group": "List"
+    },
+    "ListItemSecondaryAction": {
+      "cases": 1,
+      "failed": 0,
+      "group": "List"
+    },
+    "ListItemText": {
+      "cases": 4,
+      "failed": 0,
+      "group": "List"
+    },
+    "ListSubheader": {
+      "cases": 1,
+      "failed": 0,
+      "group": "List"
+    },
+    "Menu": {
+      "cases": 1,
+      "failed": 0,
+      "group": "Menu"
+    },
+    "MenuItem": {
+      "cases": 9,
+      "failed": 0,
+      "group": "Menu"
+    },
+    "MobileStepper": {
+      "cases": 3,
+      "failed": 0,
+      "group": "MobileStepper"
+    },
+    "Modal": {
+      "cases": 3,
+      "failed": 0,
+      "group": "Modal"
+    },
+    "OutlinedInput": {
+      "cases": 33,
+      "failed": 0,
+      "group": "OutlinedInput"
+    },
+    "Pagination": {
+      "cases": 4,
+      "failed": 0,
+      "group": "Pagination"
+    },
+    "PaginationItem": {
+      "cases": 42,
+      "failed": 0,
+      "group": "Pagination"
+    },
+    "Paper": {
+      "cases": 4,
+      "failed": 0,
+      "group": "Paper"
+    },
+    "Popover": {
+      "cases": 1,
+      "failed": 0,
+      "group": "Popover"
+    },
+    "Radio": {
+      "cases": 13,
+      "failed": 0,
+      "group": "Radio"
+    },
+    "Rating": {
+      "cases": 6,
+      "failed": 0,
+      "group": "Rating"
+    },
+    "ScopedCssBaseline": {
+      "cases": 2,
+      "failed": 0,
+      "group": "ScopedCssBaseline"
+    },
+    "Select": {
+      "cases": 13,
+      "failed": 0,
+      "group": "Select"
+    },
+    "Skeleton": {
+      "cases": 4,
+      "failed": 0,
+      "group": "Skeleton"
+    },
+    "Slider": {
+      "cases": 10,
+      "failed": 0,
+      "group": "Slider"
+    },
+    "Snackbar": {
+      "cases": 2,
+      "failed": 0,
+      "group": "Snackbar"
+    },
+    "SnackbarContent": {
+      "cases": 1,
+      "failed": 0,
+      "group": "Snackbar"
+    },
+    "SpeedDial": {
+      "cases": 1,
+      "failed": 0,
+      "group": "SpeedDial"
+    },
+    "SpeedDialAction": {
+      "cases": 1,
+      "failed": 0,
+      "group": "SpeedDial"
+    },
+    "SpeedDialIcon": {
+      "cases": 3,
+      "failed": 0,
+      "group": "SpeedDial"
+    },
+    "Stack": {
+      "cases": 4,
+      "failed": 0,
+      "group": "Stack"
+    },
+    "Step": {
+      "cases": 6,
+      "failed": 0,
+      "group": "Stepper"
+    },
+    "StepButton": {
+      "cases": 2,
+      "failed": 0,
+      "group": "Stepper"
+    },
+    "StepConnector": {
+      "cases": 6,
+      "failed": 0,
+      "group": "Stepper"
+    },
+    "StepContent": {
+      "cases": 2,
+      "failed": 0,
+      "group": "Stepper"
+    },
+    "StepIcon": {
+      "cases": 4,
+      "failed": 0,
+      "group": "Stepper"
+    },
+    "StepLabel": {
+      "cases": 6,
+      "failed": 0,
+      "group": "Stepper"
+    },
+    "Stepper": {
+      "cases": 6,
+      "failed": 0,
+      "group": "Stepper"
+    },
+    "SvgIcon": {
+      "cases": 4,
+      "failed": 0,
+      "group": "SvgIcon"
+    },
+    "Switch": {
+      "cases": 27,
+      "failed": 0,
+      "group": "Switch"
+    },
+    "Tab": {
+      "cases": 14,
+      "failed": 0,
+      "group": "Tabs"
+    },
+    "TabScrollButton": {
+      "cases": 4,
+      "failed": 0,
+      "group": "Tabs"
+    },
+    "Table": {
+      "cases": 4,
+      "failed": 0,
+      "group": "Table"
+    },
+    "TableBody": {
+      "cases": 4,
+      "failed": 0,
+      "group": "Table"
+    },
+    "TableCell": {
+      "cases": 6,
+      "failed": 0,
+      "group": "Table"
+    },
+    "TableContainer": {
+      "cases": 4,
+      "failed": 0,
+      "group": "Table"
+    },
+    "TableFooter": {
+      "cases": 1,
+      "failed": 0,
+      "group": "Table"
+    },
+    "TableHead": {
+      "cases": 4,
+      "failed": 0,
+      "group": "Table"
+    },
+    "TablePagination": {
+      "cases": 3,
+      "failed": 0,
+      "group": "Table"
+    },
+    "TableRow": {
+      "cases": 4,
+      "failed": 0,
+      "group": "Table"
+    },
+    "TableSortLabel": {
+      "cases": 4,
+      "failed": 0,
+      "group": "Table"
+    },
+    "Tabs": {
+      "cases": 10,
+      "failed": 0,
+      "group": "Tabs"
+    },
+    "ToggleButton": {
+      "cases": 23,
+      "failed": 0,
+      "group": "ToggleButton"
+    },
+    "ToggleButtonGroup": {
+      "cases": 1,
+      "failed": 0,
+      "group": "ToggleButton"
+    },
+    "Toolbar": {
+      "cases": 2,
+      "failed": 0,
+      "group": "Toolbar"
+    },
+    "Tooltip": {
+      "cases": 1,
+      "failed": 0,
+      "group": "Tooltip"
+    },
+    "Typography": {
+      "cases": 4,
+      "failed": 0,
+      "group": "Typography"
+    }
+  },
+  "groups": {
+    "Accordion": {
+      "cases": 4,
+      "components": [
+        "Accordion",
+        "AccordionActions",
+        "AccordionDetails",
+        "AccordionSummary"
+      ],
+      "failed": 0,
+      "ids": [
+        "Accordion|demo|demo accordion/AccordionExpandDefault",
+        "AccordionActions|variant|base",
+        "AccordionDetails|variant|base",
+        "AccordionSummary|variant|base"
+      ]
+    },
+    "Alert": {
+      "cases": 6,
+      "components": [
+        "Alert",
+        "AlertTitle"
+      ],
+      "failed": 0,
+      "ids": [
+        "Alert|composition|in alert/ActionAlerts",
+        "Alert|composition|in alert/BasicAlerts",
+        "Alert|composition|in alert/DescriptionAlerts",
+        "Alert|composition|in alert/FilledAlerts",
+        "Alert|own demo|demo alert/OutlinedAlerts",
+        "Alert|own demo|demo alert/ColorAlerts"
+      ]
+    },
+    "AppBar": {
+      "cases": 3,
+      "components": [
+        "AppBar"
+      ],
+      "failed": 0,
+      "ids": [
+        "Typography|composition|in app-bar/ElevateAppBar",
+        "Typography|composition|in app-bar/HideAppBar",
+        "AppBar|composition|in tabs/FullWidthTabs"
+      ]
+    },
+    "Autocomplete": {
+      "cases": 18,
+      "components": [
+        "Autocomplete"
+      ],
+      "failed": 0,
+      "ids": [
+        "Typography|composition|in autocomplete/AutocompleteHint",
+        "Autocomplete|variant|base",
+        "Autocomplete|variant|size=small",
+        "Autocomplete|variant|fullWidth=true",
+        "Autocomplete|variant|multiple=true",
+        "Autocomplete|variant|open=true",
+        "Autocomplete|content|content Chips",
+        "Autocomplete|content|content LongList",
+        "Autocomplete|content|content LongTyped",
+        "Autocomplete|composition|in autocomplete/Asynchronous",
+        "Autocomplete|composition|in autocomplete/ComboBox",
+        "Autocomplete|composition|in autocomplete/ControllableStates",
+        "Autocomplete|own demo|demo autocomplete/Playground",
+        "Autocomplete|own demo|demo autocomplete/CountrySelect",
+        "Autocomplete|own demo|demo autocomplete/FreeSolo",
+        "Autocomplete|own demo|demo autocomplete/FreeSoloCreateOption",
+        "Autocomplete|own demo|demo autocomplete/FreeSoloCreateOptionDialog",
+        "Autocomplete|own demo|demo autocomplete/Grouped"
+      ]
+    },
+    "Avatar": {
+      "cases": 10,
+      "components": [
+        "Avatar",
+        "AvatarGroup"
+      ],
+      "failed": 0,
+      "ids": [
+        "ButtonBase|composition|in avatars/UploadAvatars",
+        "Avatar|composition|in avatars/BackgroundLetterAvatars",
+        "Avatar|composition|in avatars/CustomSurplusAvatars",
+        "Avatar|composition|in avatars/FallbackAvatars",
+        "Avatar|composition|in avatars/GroupAvatars",
+        "Avatar|own demo|demo avatars/ImageAvatars",
+        "Avatar|own demo|demo avatars/LetterAvatars",
+        "Avatar|own demo|demo avatars/SizeAvatars",
+        "Avatar|own demo|demo avatars/TotalAvatars",
+        "Avatar|own demo|demo avatars/Spacing"
+      ]
+    },
+    "Backdrop": {
+      "cases": 1,
+      "components": [
+        "Backdrop"
+      ],
+      "failed": 0,
+      "ids": [
+        "CircularProgress|composition|in backdrop/SimpleBackdrop"
+      ]
+    },
+    "Badge": {
+      "cases": 1,
+      "components": [
+        "Badge"
+      ],
+      "failed": 0,
+      "ids": [
+        "Badge|composition|in badges/BadgeOverlap"
+      ]
+    },
+    "BottomNavigation": {
+      "cases": 2,
+      "components": [
+        "BottomNavigation",
+        "BottomNavigationAction"
+      ],
+      "failed": 0,
+      "ids": [
+        "BottomNavigation|variant|base",
+        "BottomNavigationAction|variant|base"
+      ]
+    },
+    "Breadcrumbs": {
+      "cases": 3,
+      "components": [
+        "Breadcrumbs"
+      ],
+      "failed": 0,
+      "ids": [
+        "Breadcrumbs|composition|in breadcrumbs/BasicBreadcrumbs",
+        "Breadcrumbs|composition|in breadcrumbs/CollapsedBreadcrumbs",
+        "Breadcrumbs|composition|in breadcrumbs/ActiveLastBreadcrumb"
+      ]
+    },
+    "Button": {
+      "cases": 27,
+      "components": [
+        "Button"
+      ],
+      "failed": 0,
+      "ids": [
+        "Button|variant|base",
+        "Button|variant|variant=contained",
+        "Button|variant|variant=outlined",
+        "Button|variant|color=secondary",
+        "Button|variant|color=error",
+        "Button|variant|color=warning",
+        "Button|variant|color=info",
+        "Button|variant|color=success",
+        "Button|variant|color=inherit",
+        "Button|variant|size=small,variant=text",
+        "Button|variant|size=large,variant=text",
+        "Button|variant|size=small,variant=outlined",
+        "Button|variant|size=large,variant=outlined",
+        "Button|variant|size=small,variant=contained",
+        "Button|variant|size=large,variant=contained",
+        "Button|variant|disableElevation=true",
+        "Button|variant|fullWidth=true",
+        "Button|content|content LongText",
+        "Button|composition|in button-group/BasicButtonGroup",
+        "Button|composition|in button-group/VariantButtonGroup",
+        "Button|composition|in buttons/BasicButtons",
+        "Button|composition|in buttons/ButtonSizes",
+        "Button|own demo|demo buttons/TextButtons",
+        "Button|own demo|demo buttons/ContainedButtons",
+        "Button|own demo|demo buttons/DisableElevation",
+        "Button|own demo|demo buttons/OutlinedButtons",
+        "Button|own demo|demo buttons/ColorButtons"
+      ]
+    },
+    "ButtonBase": {
+      "cases": 1,
+      "components": [
+        "ButtonBase"
+      ],
+      "failed": 0,
+      "ids": [
+        "ButtonBase|composition|in avatars/UploadAvatars"
+      ]
+    },
+    "ButtonGroup": {
+      "cases": 5,
+      "components": [
+        "ButtonGroup"
+      ],
+      "failed": 0,
+      "ids": [
+        "Button|composition|in button-group/BasicButtonGroup",
+        "Button|composition|in button-group/VariantButtonGroup",
+        "ButtonGroup|composition|in button-group/DisableElevation",
+        "ButtonGroup|composition|in button-group/GroupOrientation",
+        "ButtonGroup|own demo|demo button-group/GroupSizesColors"
+      ]
+    },
+    "Card": {
+      "cases": 8,
+      "components": [
+        "Card",
+        "CardActionArea",
+        "CardActions",
+        "CardContent",
+        "CardHeader",
+        "CardMedia"
+      ],
+      "failed": 0,
+      "ids": [
+        "Card|composition|in cards/ActionAreaCard",
+        "Card|composition|in cards/BasicCard",
+        "Card|composition|in cards/ImgMediaCard",
+        "Card|composition|in cards/MediaCard",
+        "CardActionArea|variant|base",
+        "CardActionArea|composition|in cards/MultiActionAreaCard",
+        "CardActionArea|composition|in cards/SelectActionCard",
+        "CardHeader|composition|in transfer-list/SelectAllTransferList"
+      ]
+    },
+    "Checkbox": {
+      "cases": 38,
+      "components": [
+        "Checkbox"
+      ],
+      "failed": 0,
+      "ids": [
+        "Checkbox|variant|base",
+        "Checkbox|variant|base +checked",
+        "Checkbox|variant|color=default,disableRipple=false",
+        "Checkbox|variant|color=default,disableRipple=false +checked",
+        "Checkbox|variant|color=primary,disableRipple=false",
+        "Checkbox|variant|color=primary,disableRipple=false +checked",
+        "Checkbox|variant|color=secondary,disableRipple=false",
+        "Checkbox|variant|color=secondary,disableRipple=false +checked",
+        "Checkbox|variant|color=error,disableRipple=false",
+        "Checkbox|variant|color=error,disableRipple=false +checked",
+        "Checkbox|variant|color=warning,disableRipple=false",
+        "Checkbox|variant|color=warning,disableRipple=false +checked",
+        "Checkbox|variant|color=info,disableRipple=false",
+        "Checkbox|variant|color=info,disableRipple=false +checked",
+        "Checkbox|variant|color=success,disableRipple=false",
+        "Checkbox|variant|color=success,disableRipple=false +checked",
+        "Checkbox|variant|color=primary",
+        "Checkbox|variant|color=primary +checked",
+        "Checkbox|variant|color=secondary",
+        "Checkbox|variant|color=secondary +checked",
+        "Checkbox|variant|color=error",
+        "Checkbox|variant|color=error +checked",
+        "Checkbox|variant|color=warning",
+        "Checkbox|variant|color=warning +checked",
+        "Checkbox|variant|color=info",
+        "Checkbox|variant|color=info +checked",
+        "Checkbox|variant|color=success",
+        "Checkbox|variant|color=success +checked",
+        "Checkbox|variant|disableRipple=false",
+        "Checkbox|variant|disableRipple=false +checked",
+        "Checkbox|composition|in checkboxes/CheckboxLabels",
+        "Checkbox|composition|in checkboxes/CheckboxesGroup",
+        "Checkbox|composition|in checkboxes/ColorCheckboxes",
+        "Checkbox|composition|in checkboxes/IndeterminateCheckbox",
+        "Checkbox|own demo|demo checkboxes/Checkboxes",
+        "Checkbox|own demo|demo checkboxes/SizeCheckboxes",
+        "Checkbox|own demo|demo checkboxes/ControlledCheckbox",
+        "Checkbox|own demo|demo checkboxes/FormControlLabelPosition"
+      ]
+    },
+    "Chip": {
+      "cases": 24,
+      "components": [
+        "Chip"
+      ],
+      "failed": 0,
+      "ids": [
+        "Chip|variant|onDelete=true",
+        "Chip|variant|color=primary,onDelete=true",
+        "Chip|variant|color=secondary,onDelete=true",
+        "Chip|variant|color=error,onDelete=true",
+        "Chip|variant|color=warning,onDelete=true",
+        "Chip|variant|color=info,onDelete=true",
+        "Chip|variant|color=success,onDelete=true",
+        "Chip|variant|clickable=true",
+        "Chip|variant|color=primary,clickable=true",
+        "Chip|variant|color=secondary,clickable=true",
+        "Chip|variant|color=error,clickable=true",
+        "Chip|variant|color=warning,clickable=true",
+        "Chip|variant|color=info,clickable=true",
+        "Chip|variant|color=success,clickable=true",
+        "Chip|content|content LongLabel",
+        "Chip|composition|in chips/AvatarChips",
+        "Chip|composition|in chips/BasicChips",
+        "Chip|composition|in chips/ClickableAndDeletableChips",
+        "Chip|composition|in chips/ClickableChips",
+        "Chip|own demo|demo chips/DeletableChips",
+        "Chip|own demo|demo chips/ClickableLinkChips",
+        "Chip|own demo|demo chips/ColorChips",
+        "Chip|own demo|demo chips/SizesChips",
+        "Chip|own demo|demo chips/MultilineChips"
+      ]
+    },
+    "CircularProgress": {
+      "cases": 4,
+      "components": [
+        "CircularProgress"
+      ],
+      "failed": 0,
+      "ids": [
+        "CircularProgress|composition|in backdrop/SimpleBackdrop",
+        "CircularProgress|composition|in progress/CircularColor",
+        "CircularProgress|composition|in progress/CircularDeterminate",
+        "CircularProgress|composition|in progress/CircularEnableTrack"
+      ]
+    },
+    "Collapse": {
+      "cases": 1,
+      "components": [
+        "Collapse"
+      ],
+      "failed": 0,
+      "ids": [
+        "Collapse|composition|in transitions/SimpleCollapse"
+      ]
+    },
+    "Container": {
+      "cases": 4,
+      "components": [
+        "Container"
+      ],
+      "failed": 0,
+      "ids": [
+        "Typography|composition|in app-bar/ElevateAppBar",
+        "Typography|composition|in app-bar/HideAppBar",
+        "Container|composition|in container/FixedContainer",
+        "Container|composition|in container/SimpleContainer"
+      ]
+    },
+    "Dialog": {
+      "cases": 2,
+      "components": [
+        "Dialog",
+        "DialogActions",
+        "DialogContent",
+        "DialogTitle"
+      ],
+      "failed": 0,
+      "ids": [
+        "Dialog|composition|in dialogs/AlertDialogSlide",
+        "Dialog|composition|in dialogs/ConfirmationDialog"
+      ]
+    },
+    "Divider": {
+      "cases": 4,
+      "components": [
+        "Divider"
+      ],
+      "failed": 0,
+      "ids": [
+        "Divider|composition|in dividers/DividerText",
+        "Divider|composition|in dividers/DividerVariants",
+        "Divider|composition|in dividers/IntroDivider",
+        "Divider|composition|in dividers/ListDividers"
+      ]
+    },
+    "Drawer": {
+      "cases": 1,
+      "components": [
+        "Drawer"
+      ],
+      "failed": 0,
+      "ids": [
+        "Drawer|variant|base"
+      ]
+    },
+    "Fab": {
+      "cases": 13,
+      "components": [
+        "Fab"
+      ],
+      "failed": 0,
+      "ids": [
+        "Fab|variant|base",
+        "Fab|variant|size=small",
+        "Fab|variant|size=medium",
+        "Fab|variant|variant=extended",
+        "Fab|variant|variant=extended,size=small",
+        "Fab|variant|variant=extended,size=medium",
+        "Fab|variant|color=inherit",
+        "Fab|variant|color=primary",
+        "Fab|variant|color=secondary",
+        "Fab|variant|color=error",
+        "Fab|variant|color=warning",
+        "Fab|variant|color=info",
+        "Fab|variant|color=success"
+      ]
+    },
+    "FilledInput": {
+      "cases": 35,
+      "components": [
+        "FilledInput"
+      ],
+      "failed": 0,
+      "ids": [
+        "InputBase|composition|in text-fields/InputSuffixShrink",
+        "InputBase|own demo|demo text-fields/BasicTextFields",
+        "InputBase|own demo|demo text-fields/FormPropsTextFields",
+        "InputBase|own demo|demo text-fields/ValidationTextFields",
+        "InputBase|own demo|demo text-fields/MultilineTextFields",
+        "InputBase|own demo|demo text-fields/SelectTextFields",
+        "InputBase|own demo|demo text-fields/TextFieldSizes",
+        "FilledInput|variant|base",
+        "FilledInput|variant|base +error",
+        "FilledInput|variant|disableUnderline=false,color=secondary",
+        "FilledInput|variant|disableUnderline=false,color=secondary +error",
+        "FilledInput|variant|disableUnderline=false,color=error",
+        "FilledInput|variant|disableUnderline=false,color=error +error",
+        "FilledInput|variant|disableUnderline=false,color=warning",
+        "FilledInput|variant|disableUnderline=false,color=warning +error",
+        "FilledInput|variant|disableUnderline=false,color=info",
+        "FilledInput|variant|disableUnderline=false,color=info +error",
+        "FilledInput|variant|disableUnderline=false,color=success",
+        "FilledInput|variant|disableUnderline=false,color=success +error",
+        "FilledInput|variant|startAdornment=true",
+        "FilledInput|variant|startAdornment=true +error",
+        "FilledInput|variant|endAdornment=true",
+        "FilledInput|variant|endAdornment=true +error",
+        "FilledInput|variant|multiline=true",
+        "FilledInput|variant|multiline=true +error",
+        "FilledInput|variant|multiline=true,hiddenLabel=true",
+        "FilledInput|variant|multiline=true,hiddenLabel=true +error",
+        "FilledInput|variant|hiddenLabel=true",
+        "FilledInput|variant|hiddenLabel=true +error",
+        "FilledInput|content|content LongLabel",
+        "FilledInput|content|content LongValueAdornments",
+        "FilledInput|content|content MultilineMaxRows",
+        "FilledInput|content|content MultilineTyped",
+        "FilledInput|content|content Password",
+        "FilledInput|composition|in text-fields/ComposedTextField"
+      ]
+    },
+    "FormControl": {
+      "cases": 4,
+      "components": [
+        "FormControl"
+      ],
+      "failed": 0,
+      "ids": [
+        "Checkbox|own demo|demo checkboxes/FormControlLabelPosition",
+        "FormControl|composition|in radio-buttons/FormControlLabelPlacement",
+        "FormControl|composition|in switches/FormControlLabelPosition",
+        "FormControl|composition|in text-fields/UseFormControl"
+      ]
+    },
+    "FormControlLabel": {
+      "cases": 6,
+      "components": [
+        "FormControlLabel"
+      ],
+      "failed": 0,
+      "ids": [
+        "Checkbox|composition|in checkboxes/CheckboxLabels",
+        "Checkbox|own demo|demo checkboxes/FormControlLabelPosition",
+        "FormControl|composition|in radio-buttons/FormControlLabelPlacement",
+        "FormControl|composition|in switches/FormControlLabelPosition",
+        "FormControlLabel|own demo|demo switches/SwitchLabels",
+        "FormControlLabel|own demo|demo switches/SwitchesGroup"
+      ]
+    },
+    "FormGroup": {
+      "cases": 4,
+      "components": [
+        "FormGroup"
+      ],
+      "failed": 0,
+      "ids": [
+        "Checkbox|composition|in checkboxes/CheckboxLabels",
+        "Checkbox|composition|in checkboxes/CheckboxesGroup",
+        "Checkbox|own demo|demo checkboxes/FormControlLabelPosition",
+        "FormControl|composition|in switches/FormControlLabelPosition"
+      ]
+    },
+    "FormHelperText": {
+      "cases": 10,
+      "components": [
+        "FormHelperText"
+      ],
+      "failed": 0,
+      "ids": [
+        "InputBase|own demo|demo text-fields/FormPropsTextFields",
+        "InputBase|own demo|demo text-fields/ValidationTextFields",
+        "InputBase|own demo|demo text-fields/SelectTextFields",
+        "Checkbox|composition|in checkboxes/CheckboxesGroup",
+        "FilledInput|composition|in text-fields/ComposedTextField",
+        "FormControl|composition|in text-fields/UseFormControl",
+        "FormHelperText|composition|in radio-buttons/ErrorRadios",
+        "FormHelperText|composition|in selects/SelectLabels",
+        "FormHelperText|composition|in selects/SelectOtherProps",
+        "FormHelperText|own demo|demo text-fields/HelperTextMisaligned"
+      ]
+    },
+    "FormLabel": {
+      "cases": 4,
+      "components": [
+        "FormLabel"
+      ],
+      "failed": 0,
+      "ids": [
+        "Checkbox|composition|in checkboxes/CheckboxesGroup",
+        "Checkbox|own demo|demo checkboxes/FormControlLabelPosition",
+        "FormHelperText|composition|in radio-buttons/ErrorRadios",
+        "FormLabel|composition|in radio-buttons/ControlledRadioButtonsGroup"
+      ]
+    },
+    "Grid": {
+      "cases": 4,
+      "components": [
+        "Grid"
+      ],
+      "failed": 0,
+      "ids": [
+        "Grid|composition|in grid/AutoGrid",
+        "Grid|composition|in grid/BasicGrid",
+        "Grid|composition|in grid/CenteredElementGrid",
+        "Grid|composition|in grid/ColumnLayoutInsideGrid"
+      ]
+    },
+    "Icon": {
+      "cases": 2,
+      "components": [
+        "Icon"
+      ],
+      "failed": 0,
+      "ids": [
+        "Icon|composition|in icons/Icons",
+        "Icon|composition|in icons/TwoToneIcons"
+      ]
+    },
+    "IconButton": {
+      "cases": 14,
+      "components": [
+        "IconButton"
+      ],
+      "failed": 0,
+      "ids": [
+        "IconButton|variant|base",
+        "IconButton|variant|edge=start",
+        "IconButton|variant|edge=start,size=small",
+        "IconButton|variant|edge=end",
+        "IconButton|variant|edge=end,size=small",
+        "IconButton|variant|color=inherit",
+        "IconButton|variant|color=primary",
+        "IconButton|variant|color=secondary",
+        "IconButton|variant|color=error",
+        "IconButton|variant|color=warning",
+        "IconButton|variant|color=info",
+        "IconButton|variant|color=success",
+        "IconButton|variant|size=large",
+        "IconButton|variant|loading=true"
+      ]
+    },
+    "ImageList": {
+      "cases": 5,
+      "components": [
+        "ImageList",
+        "ImageListItem",
+        "ImageListItemBar"
+      ],
+      "failed": 0,
+      "ids": [
+        "ImageList|composition|in image-list/MasonryImageList",
+        "ImageList|composition|in image-list/QuiltedImageList",
+        "ImageList|composition|in image-list/StandardImageList",
+        "ImageList|composition|in image-list/TitlebarBelowImageList",
+        "ImageListItemBar|composition|in image-list/TitlebarBelowMasonryImageList"
+      ]
+    },
+    "Input": {
+      "cases": 29,
+      "components": [
+        "Input",
+        "InputAdornment",
+        "InputLabel"
+      ],
+      "failed": 0,
+      "ids": [
+        "InputBase|composition|in text-fields/InputSuffixShrink",
+        "InputBase|own demo|demo text-fields/BasicTextFields",
+        "InputBase|own demo|demo text-fields/FormPropsTextFields",
+        "InputBase|own demo|demo text-fields/ValidationTextFields",
+        "InputBase|own demo|demo text-fields/MultilineTextFields",
+        "InputBase|own demo|demo text-fields/SelectTextFields",
+        "FilledInput|composition|in text-fields/ComposedTextField",
+        "Input|variant|base",
+        "Input|variant|base +error",
+        "Input|variant|color=secondary,disableUnderline=false",
+        "Input|variant|color=secondary,disableUnderline=false +error",
+        "Input|variant|color=error,disableUnderline=false",
+        "Input|variant|color=error,disableUnderline=false +error",
+        "Input|variant|color=warning,disableUnderline=false",
+        "Input|variant|color=warning,disableUnderline=false +error",
+        "Input|variant|color=info,disableUnderline=false",
+        "Input|variant|color=info,disableUnderline=false +error",
+        "Input|variant|color=success,disableUnderline=false",
+        "Input|variant|color=success,disableUnderline=false +error",
+        "Input|content|content LongLabel",
+        "Input|content|content LongValueAdornments",
+        "Input|content|content MultilineMaxRows",
+        "Input|content|content MultilineTyped",
+        "Input|content|content Password",
+        "Input|composition|in text-fields/Inputs",
+        "InputLabel|composition|in selects/BasicSelect",
+        "InputLabel|composition|in selects/ControlledOpenSelect",
+        "InputLabel|composition|in selects/GroupedSelect",
+        "InputLabel|composition|in selects/MultipleSelect"
+      ]
+    },
+    "InputBase": {
+      "cases": 11,
+      "components": [
+        "InputBase"
+      ],
+      "failed": 0,
+      "ids": [
+        "InputBase|variant|base",
+        "InputBase|variant|multiline=true",
+        "InputBase|variant|fullWidth=true",
+        "InputBase|variant|size=small",
+        "InputBase|composition|in text-fields/InputSuffixShrink",
+        "InputBase|own demo|demo text-fields/BasicTextFields",
+        "InputBase|own demo|demo text-fields/FormPropsTextFields",
+        "InputBase|own demo|demo text-fields/ValidationTextFields",
+        "InputBase|own demo|demo text-fields/MultilineTextFields",
+        "InputBase|own demo|demo text-fields/SelectTextFields",
+        "InputBase|own demo|demo text-fields/TextFieldSizes"
+      ]
+    },
+    "LinearProgress": {
+      "cases": 7,
+      "components": [
+        "LinearProgress"
+      ],
+      "failed": 0,
+      "ids": [
+        "LinearProgress|composition|in progress/LinearBuffer",
+        "LinearProgress|composition|in progress/LinearColor",
+        "LinearProgress|composition|in progress/LinearDeterminate",
+        "LinearProgress|composition|in progress/LinearIndeterminate",
+        "LinearProgress|own demo|demo progress/LinearQuery",
+        "LinearProgress|own demo|demo progress/LinearWithValueLabel",
+        "LinearProgress|own demo|demo progress/LinearWithAriaValueText"
+      ]
+    },
+    "Link": {
+      "cases": 5,
+      "components": [
+        "Link"
+      ],
+      "failed": 0,
+      "ids": [
+        "Breadcrumbs|composition|in breadcrumbs/BasicBreadcrumbs",
+        "Breadcrumbs|composition|in breadcrumbs/ActiveLastBreadcrumb",
+        "Link|variant|component=button",
+        "Link|composition|in links/Links",
+        "Link|composition|in links/UnderlineLink"
+      ]
+    },
+    "List": {
+      "cases": 18,
+      "components": [
+        "List",
+        "ListItem",
+        "ListItemAvatar",
+        "ListItemButton",
+        "ListItemIcon",
+        "ListItemSecondaryAction",
+        "ListItemText",
+        "ListSubheader"
+      ],
+      "failed": 0,
+      "ids": [
+        "CardHeader|composition|in transfer-list/SelectAllTransferList",
+        "Dialog|composition|in dialogs/ConfirmationDialog",
+        "Divider|composition|in dividers/DividerVariants",
+        "Divider|composition|in dividers/ListDividers",
+        "List|composition|in lists/AlignItemsList",
+        "List|composition|in lists/CheckboxListSecondary",
+        "ListItemButton|variant|base",
+        "ListItemButton|variant|base +selected",
+        "ListItemButton|variant|divider=true",
+        "ListItemButton|variant|divider=true +selected",
+        "ListItemButton|variant|alignItems=flex-start",
+        "ListItemButton|variant|alignItems=flex-start +selected",
+        "ListItemButton|variant|dense=true",
+        "ListItemButton|variant|dense=true +selected",
+        "ListItemButton|composition|in menus/SimpleListMenu",
+        "ListItemIcon|composition|in transfer-list/TransferList",
+        "ListItemSecondaryAction|variant|base",
+        "ListSubheader|composition|in lists/PinnedSubheaderList"
+      ]
+    },
+    "Menu": {
+      "cases": 10,
+      "components": [
+        "Menu",
+        "MenuItem"
+      ],
+      "failed": 0,
+      "ids": [
+        "Paper|composition|in menus/MenuListComposition",
+        "CardHeader|composition|in transfer-list/SelectAllTransferList",
+        "ListItemIcon|composition|in transfer-list/TransferList",
+        "Menu|variant|base",
+        "MenuItem|variant|base in Menu",
+        "MenuItem|variant|base in Menu +selected",
+        "MenuItem|variant|divider=true in Menu",
+        "MenuItem|variant|divider=true in Menu +selected",
+        "MenuItem|variant|dense=true in Menu",
+        "MenuItem|variant|dense=true in Menu +selected"
+      ]
+    },
+    "MobileStepper": {
+      "cases": 3,
+      "components": [
+        "MobileStepper"
+      ],
+      "failed": 0,
+      "ids": [
+        "MobileStepper|variant|base",
+        "MobileStepper|variant|position=top",
+        "MobileStepper|variant|variant=progress"
+      ]
+    },
+    "Modal": {
+      "cases": 3,
+      "components": [
+        "Modal"
+      ],
+      "failed": 0,
+      "ids": [
+        "Modal|demo|demo modal/BasicModal",
+        "Modal|demo|demo modal/KeepMountedModal",
+        "Modal|composition|in modal/ServerModal"
+      ]
+    },
+    "OutlinedInput": {
+      "cases": 33,
+      "components": [
+        "OutlinedInput"
+      ],
+      "failed": 0,
+      "ids": [
+        "InputBase|composition|in text-fields/InputSuffixShrink",
+        "InputBase|own demo|demo text-fields/BasicTextFields",
+        "InputBase|own demo|demo text-fields/FormPropsTextFields",
+        "InputBase|own demo|demo text-fields/ValidationTextFields",
+        "InputBase|own demo|demo text-fields/MultilineTextFields",
+        "InputBase|own demo|demo text-fields/SelectTextFields",
+        "FilledInput|composition|in text-fields/ComposedTextField",
+        "InputLabel|composition|in selects/MultipleSelect",
+        "OutlinedInput|variant|base",
+        "OutlinedInput|variant|base +error",
+        "OutlinedInput|variant|color=secondary",
+        "OutlinedInput|variant|color=secondary +error",
+        "OutlinedInput|variant|color=error",
+        "OutlinedInput|variant|color=error +error",
+        "OutlinedInput|variant|color=warning",
+        "OutlinedInput|variant|color=warning +error",
+        "OutlinedInput|variant|color=info",
+        "OutlinedInput|variant|color=info +error",
+        "OutlinedInput|variant|color=success",
+        "OutlinedInput|variant|color=success +error",
+        "OutlinedInput|variant|startAdornment=true",
+        "OutlinedInput|variant|startAdornment=true +error",
+        "OutlinedInput|variant|endAdornment=true",
+        "OutlinedInput|variant|endAdornment=true +error",
+        "OutlinedInput|variant|multiline=true",
+        "OutlinedInput|variant|multiline=true +error",
+        "OutlinedInput|content|content LongLabel",
+        "OutlinedInput|content|content LongValueAdornments",
+        "OutlinedInput|content|content MultilineMaxRows",
+        "OutlinedInput|content|content MultilineTyped",
+        "OutlinedInput|content|content Password",
+        "OutlinedInput|composition|in selects/MultipleSelectChip",
+        "OutlinedInput|composition|in selects/MultipleSelectPlaceholder"
+      ]
+    },
+    "Pagination": {
+      "cases": 43,
+      "components": [
+        "Pagination",
+        "PaginationItem"
+      ],
+      "failed": 0,
+      "ids": [
+        "Pagination|composition|in pagination/PaginationControlled",
+        "PaginationItem|variant|base",
+        "PaginationItem|variant|base +selected",
+        "PaginationItem|variant|size=small",
+        "PaginationItem|variant|size=small +selected",
+        "PaginationItem|variant|size=large",
+        "PaginationItem|variant|size=large +selected",
+        "PaginationItem|variant|shape=rounded",
+        "PaginationItem|variant|shape=rounded +selected",
+        "PaginationItem|variant|variant=outlined",
+        "PaginationItem|variant|variant=outlined +selected",
+        "PaginationItem|variant|variant=text,color=primary",
+        "PaginationItem|variant|variant=text,color=primary +selected",
+        "PaginationItem|variant|variant=text,color=secondary",
+        "PaginationItem|variant|variant=text,color=secondary +selected",
+        "PaginationItem|variant|variant=text,color=error",
+        "PaginationItem|variant|variant=text,color=error +selected",
+        "PaginationItem|variant|variant=text,color=warning",
+        "PaginationItem|variant|variant=text,color=warning +selected",
+        "PaginationItem|variant|variant=text,color=info",
+        "PaginationItem|variant|variant=text,color=info +selected",
+        "PaginationItem|variant|variant=text,color=success",
+        "PaginationItem|variant|variant=text,color=success +selected",
+        "PaginationItem|variant|variant=outlined,color=primary",
+        "PaginationItem|variant|variant=outlined,color=primary +selected",
+        "PaginationItem|variant|variant=outlined,color=secondary",
+        "PaginationItem|variant|variant=outlined,color=secondary +selected",
+        "PaginationItem|variant|variant=outlined,color=error",
+        "PaginationItem|variant|variant=outlined,color=error +selected",
+        "PaginationItem|variant|variant=outlined,color=warning",
+        "PaginationItem|variant|variant=outlined,color=warning +selected",
+        "PaginationItem|variant|variant=outlined,color=info",
+        "PaginationItem|variant|variant=outlined,color=info +selected",
+        "PaginationItem|variant|variant=outlined,color=success",
+        "PaginationItem|variant|variant=outlined,color=success +selected",
+        "PaginationItem|variant|base in Pagination",
+        "PaginationItem|variant|base in Pagination +selected",
+        "PaginationItem|own demo|demo pagination/BasicPagination",
+        "PaginationItem|own demo|demo pagination/PaginationOutlined",
+        "PaginationItem|own demo|demo pagination/PaginationRounded",
+        "PaginationItem|own demo|demo pagination/PaginationSize",
+        "PaginationItem|own demo|demo pagination/PaginationButtons",
+        "PaginationItem|own demo|demo pagination/PaginationRanges"
+      ]
+    },
+    "Paper": {
+      "cases": 4,
+      "components": [
+        "Paper"
+      ],
+      "failed": 0,
+      "ids": [
+        "Paper|composition|in paper/SimplePaper",
+        "Paper|composition|in menus/MenuListComposition",
+        "Paper|composition|in table/AccessibleTable",
+        "Paper|composition|in table/BasicTable"
+      ]
+    },
+    "Popover": {
+      "cases": 1,
+      "components": [
+        "Popover"
+      ],
+      "failed": 0,
+      "ids": [
+        "Popover|variant|base"
+      ]
+    },
+    "Radio": {
+      "cases": 13,
+      "components": [
+        "Radio"
+      ],
+      "failed": 0,
+      "ids": [
+        "FormControl|composition|in radio-buttons/FormControlLabelPlacement",
+        "FormHelperText|composition|in radio-buttons/ErrorRadios",
+        "FormLabel|composition|in radio-buttons/ControlledRadioButtonsGroup",
+        "Radio|variant|base",
+        "Radio|variant|base +checked",
+        "Radio|variant|disableRipple=false",
+        "Radio|variant|disableRipple=false +checked",
+        "Radio|composition|in radio-buttons/ColorRadioButtons",
+        "Radio|composition|in radio-buttons/RadioButtonsGroup",
+        "Radio|own demo|demo radio-buttons/RowRadioButtonsGroup",
+        "Radio|own demo|demo radio-buttons/RadioButtons",
+        "Radio|own demo|demo radio-buttons/SizeRadioButtons",
+        "Radio|own demo|demo radio-buttons/UseRadioGroup"
+      ]
+    },
+    "Rating": {
+      "cases": 6,
+      "components": [
+        "Rating"
+      ],
+      "failed": 0,
+      "ids": [
+        "Rating|variant|base",
+        "Rating|variant|size=small",
+        "Rating|variant|size=large",
+        "Rating|composition|in rating/BasicRating",
+        "Rating|composition|in rating/HalfRating",
+        "Rating|composition|in rating/RatingSize"
+      ]
+    },
+    "ScopedCssBaseline": {
+      "cases": 2,
+      "components": [
+        "ScopedCssBaseline"
+      ],
+      "failed": 0,
+      "ids": [
+        "ScopedCssBaseline|variant|base",
+        "ScopedCssBaseline|variant|enableColorScheme=true"
+      ]
+    },
+    "Select": {
+      "cases": 13,
+      "components": [
+        "Select"
+      ],
+      "failed": 0,
+      "ids": [
+        "FormHelperText|composition|in selects/SelectLabels",
+        "FormHelperText|composition|in selects/SelectOtherProps",
+        "InputLabel|composition|in selects/BasicSelect",
+        "InputLabel|composition|in selects/ControlledOpenSelect",
+        "InputLabel|composition|in selects/GroupedSelect",
+        "InputLabel|composition|in selects/MultipleSelect",
+        "OutlinedInput|composition|in selects/MultipleSelectChip",
+        "Select|variant|base",
+        "Select|content|content LongList",
+        "Select|content|content LongOption",
+        "Select|own demo|demo selects/SelectVariants",
+        "Select|own demo|demo selects/SelectAutoWidth",
+        "Select|own demo|demo selects/SelectSmall"
+      ]
+    },
+    "Skeleton": {
+      "cases": 4,
+      "components": [
+        "Skeleton"
+      ],
+      "failed": 0,
+      "ids": [
+        "Typography|composition|in skeleton/SkeletonTypography",
+        "Skeleton|composition|in skeleton/SkeletonChildren",
+        "Skeleton|composition|in skeleton/SkeletonColor",
+        "Skeleton|composition|in skeleton/Animations"
+      ]
+    },
+    "Slider": {
+      "cases": 10,
+      "components": [
+        "Slider"
+      ],
+      "failed": 0,
+      "ids": [
+        "Slider|composition|in slider/ColorSlider",
+        "Slider|composition|in slider/DiscreteSlider",
+        "Slider|composition|in slider/DiscreteSliderLabel",
+        "Slider|composition|in slider/DiscreteSliderMarks",
+        "Slider|own demo|demo slider/SliderSizes",
+        "Slider|own demo|demo slider/DiscreteSliderSteps",
+        "Slider|own demo|demo slider/DiscreteSliderValues",
+        "Slider|own demo|demo slider/RangeSlider",
+        "Slider|own demo|demo slider/MinimumDistanceSlider",
+        "Slider|own demo|demo slider/VerticalSlider"
+      ]
+    },
+    "Snackbar": {
+      "cases": 3,
+      "components": [
+        "Snackbar",
+        "SnackbarContent"
+      ],
+      "failed": 0,
+      "ids": [
+        "Snackbar|demo|demo snackbars/PositionedSnackbar",
+        "Snackbar|demo|demo snackbars/TransitionsSnackbar",
+        "SnackbarContent|composition|in snackbars/LongTextSnackbar"
+      ]
+    },
+    "SpeedDial": {
+      "cases": 5,
+      "components": [
+        "SpeedDial",
+        "SpeedDialAction",
+        "SpeedDialIcon"
+      ],
+      "failed": 0,
+      "ids": [
+        "SpeedDial|demo|demo speed-dial/BasicSpeedDial",
+        "SpeedDialAction|variant|base",
+        "SpeedDialIcon|variant|base",
+        "SpeedDialIcon|variant|open=true",
+        "SpeedDialIcon|variant|open=true,openIcon=true"
+      ]
+    },
+    "Stack": {
+      "cases": 4,
+      "components": [
+        "Stack"
+      ],
+      "failed": 0,
+      "ids": [
+        "Stack|composition|in stack/BasicStack",
+        "Stack|composition|in stack/DirectionStack",
+        "Stack|composition|in stack/DividerStack",
+        "Stack|composition|in stack/FlexboxGapStack"
+      ]
+    },
+    "Stepper": {
+      "cases": 11,
+      "components": [
+        "Stepper",
+        "Step",
+        "StepButton",
+        "StepConnector",
+        "StepContent",
+        "StepIcon",
+        "StepLabel"
+      ],
+      "failed": 0,
+      "ids": [
+        "Step|composition|in steppers/HorizontalLinearAlternativeLabelStepper",
+        "Step|composition|in steppers/HorizontalLinearStepper",
+        "Step|composition|in steppers/HorizontalNonLinearStepper",
+        "Step|composition|in steppers/HorizontalStepperWithError",
+        "Step|own demo|demo steppers/VerticalLinearStepper",
+        "Step|own demo|demo steppers/VerticalLinearAlternativeLabelStepper",
+        "StepButton|variant|base",
+        "StepIcon|variant|base",
+        "StepIcon|variant|base +active",
+        "StepIcon|variant|base +completed",
+        "StepIcon|variant|base +error"
+      ]
+    },
+    "SvgIcon": {
+      "cases": 4,
+      "components": [
+        "SvgIcon"
+      ],
+      "failed": 0,
+      "ids": [
+        "SvgIcon|composition|in icons/SvgIconsColor",
+        "SvgIcon|composition|in icons/SvgIconsSize",
+        "SvgIcon|composition|in icons/SvgIconChildren",
+        "SvgIcon|own demo|demo icons/CreateSvgIcon"
+      ]
+    },
+    "Switch": {
+      "cases": 27,
+      "components": [
+        "Switch"
+      ],
+      "failed": 0,
+      "ids": [
+        "Collapse|composition|in transitions/SimpleCollapse",
+        "FormControl|composition|in switches/FormControlLabelPosition",
+        "FormControlLabel|own demo|demo switches/SwitchLabels",
+        "FormControlLabel|own demo|demo switches/SwitchesGroup",
+        "Switch|variant|base",
+        "Switch|variant|base +checked",
+        "Switch|variant|edge=start",
+        "Switch|variant|edge=start +checked",
+        "Switch|variant|edge=end",
+        "Switch|variant|edge=end +checked",
+        "Switch|variant|size=small",
+        "Switch|variant|size=small +checked",
+        "Switch|variant|color=primary",
+        "Switch|variant|color=primary +checked",
+        "Switch|variant|color=secondary",
+        "Switch|variant|color=secondary +checked",
+        "Switch|variant|color=error",
+        "Switch|variant|color=error +checked",
+        "Switch|variant|color=warning",
+        "Switch|variant|color=warning +checked",
+        "Switch|variant|color=info",
+        "Switch|variant|color=info +checked",
+        "Switch|variant|color=success",
+        "Switch|variant|color=success +checked",
+        "Switch|own demo|demo switches/BasicSwitches",
+        "Switch|own demo|demo switches/SwitchesSize",
+        "Switch|own demo|demo switches/ControlledSwitches"
+      ]
+    },
+    "Table": {
+      "cases": 12,
+      "components": [
+        "Table",
+        "TableBody",
+        "TableCell",
+        "TableContainer",
+        "TableFooter",
+        "TableHead",
+        "TablePagination",
+        "TableRow",
+        "TableSortLabel"
+      ],
+      "failed": 0,
+      "ids": [
+        "Paper|composition|in table/AccessibleTable",
+        "Paper|composition|in table/BasicTable",
+        "Table|composition|in table/ColumnGroupingTable",
+        "Table|composition|in table/DenseTable",
+        "TableCell|own demo|demo table/StickyHeadTable",
+        "TableCell|own demo|demo table/SpanningTable",
+        "TableFooter|variant|base",
+        "TablePagination|composition|in pagination/TablePaginationDemo",
+        "TableSortLabel|variant|base",
+        "TableSortLabel|variant|base +active",
+        "TableSortLabel|variant|direction=desc",
+        "TableSortLabel|variant|direction=desc +active"
+      ]
+    },
+    "Tabs": {
+      "cases": 17,
+      "components": [
+        "Tabs",
+        "Tab",
+        "TabScrollButton"
+      ],
+      "failed": 0,
+      "ids": [
+        "AppBar|composition|in tabs/FullWidthTabs",
+        "Tab|variant|base in Tabs",
+        "Tab|variant|label=true,iconPosition=top in Tabs",
+        "Tab|variant|icon=true,label=true in Tabs",
+        "Tab|variant|wrapped=true in Tabs",
+        "Tab|composition|in tabs/AccessibleTabs1",
+        "Tab|composition|in tabs/AccessibleTabs2",
+        "Tab|composition|in tabs/BasicTabs",
+        "Tab|composition|in tabs/CenteredTabs",
+        "Tab|own demo|demo tabs/KeepMountedStandardTabs",
+        "Tab|own demo|demo tabs/TabsWrappedLabel",
+        "Tab|own demo|demo tabs/ColorTabs",
+        "Tab|own demo|demo tabs/DisabledTabs",
+        "TabScrollButton|own demo|demo tabs/ScrollableTabsButtonAuto",
+        "TabScrollButton|own demo|demo tabs/ScrollableTabsButtonForce",
+        "TabScrollButton|own demo|demo tabs/ScrollableTabsButtonVisible",
+        "TabScrollButton|own demo|demo tabs/VerticalTabs"
+      ]
+    },
+    "ToggleButton": {
+      "cases": 23,
+      "components": [
+        "ToggleButton",
+        "ToggleButtonGroup"
+      ],
+      "failed": 0,
+      "ids": [
+        "ToggleButton|variant|base",
+        "ToggleButton|variant|base +selected",
+        "ToggleButton|variant|color=standard",
+        "ToggleButton|variant|color=standard +selected",
+        "ToggleButton|variant|color=primary",
+        "ToggleButton|variant|color=primary +selected",
+        "ToggleButton|variant|color=secondary",
+        "ToggleButton|variant|color=secondary +selected",
+        "ToggleButton|variant|color=error",
+        "ToggleButton|variant|color=error +selected",
+        "ToggleButton|variant|color=warning",
+        "ToggleButton|variant|color=warning +selected",
+        "ToggleButton|variant|color=info",
+        "ToggleButton|variant|color=info +selected",
+        "ToggleButton|variant|color=success",
+        "ToggleButton|variant|color=success +selected",
+        "ToggleButton|variant|fullWidth=true",
+        "ToggleButton|variant|fullWidth=true +selected",
+        "ToggleButton|variant|size=small",
+        "ToggleButton|variant|size=small +selected",
+        "ToggleButton|variant|size=large",
+        "ToggleButton|variant|size=large +selected",
+        "ToggleButtonGroup|composition|in toggle-button/ColorToggleButton"
+      ]
+    },
+    "Toolbar": {
+      "cases": 2,
+      "components": [
+        "Toolbar"
+      ],
+      "failed": 0,
+      "ids": [
+        "Typography|composition|in app-bar/ElevateAppBar",
+        "Typography|composition|in app-bar/HideAppBar"
+      ]
+    },
+    "Tooltip": {
+      "cases": 1,
+      "components": [
+        "Tooltip"
+      ],
+      "failed": 0,
+      "ids": [
+        "Tooltip|variant|base"
+      ]
+    },
+    "Typography": {
+      "cases": 4,
+      "components": [
+        "Typography"
+      ],
+      "failed": 0,
+      "ids": [
+        "Typography|composition|in skeleton/SkeletonTypography",
+        "Typography|composition|in app-bar/ElevateAppBar",
+        "Typography|composition|in app-bar/HideAppBar",
+        "Typography|composition|in autocomplete/AutocompleteHint"
+      ]
+    }
+  },
+  "summary": {
+    "cases": 518,
+    "checks": 3921,
+    "codeIssues": 0,
+    "failed": 0
+  }
+}
