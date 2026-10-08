@@ -10,7 +10,7 @@ const BIN = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../bi
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'annotate-'));
 const annotate = (...args) => {
   const r = spawnSync(process.execPath, [BIN, '--json', 'annotate', ...args, '--shot', path.join(dir, 'a.png')], { encoding: 'utf8' });
-  return { status: r.status, data: JSON.parse(r.stdout).data, shot: fs.existsSync(path.join(dir, 'a.png')) };
+  return { status: r.status, data: r.stdout ? JSON.parse(r.stdout).data : null, shot: fs.existsSync(path.join(dir, 'a.png')) };
 };
 
 test('annotate draws the measured size and padding of a component', () => {
@@ -44,7 +44,12 @@ test('default placement fills every empty side before any side takes a second la
   const problems = [];
   for (const [component, keys] of Object.entries(matrix)) {
     const props = keys[0];
-    const { data } = annotate(component.replace(/^Mui/, ''), ...(props === 'base' ? [] : ['--props', props]));
+    const { status, data } = annotate(component.replace(/^Mui/, ''), ...(props === 'base' ? [] : ['--props', props]));
+    // a closed tooltip is not on the page: annotate says so instead of drawing nothing
+    if (component === 'MuiTooltip') {
+      assert.equal(status, 1);
+      continue;
+    }
     const count = { top: 0, right: 0, bottom: 0, left: 0 };
     data.items.forEach((i) => {
       count[i.gutter] += 1;
@@ -100,4 +105,22 @@ test('MUI X Data Grid: the theme reaches the grid (styleOverrides.cell)', () => 
   const padding = (...args) => annotate('DataGrid', '--slot', 'cell', '--aspects', 'padding', ...args).data.items.find((i) => i.measures === 'x').label;
   assert.equal(padding(), '10px');
   assert.equal(padding('--theme', path.resolve(BIN, '../../test/fixtures/grid.theme.ts')), '24px');
+});
+
+test('MUI X Data Grid: every slot draws on a render that shows it, or says why it cannot', async () => {
+  const { drawSlot } = await import('../../src/commands/annotate.run.mjs');
+  const { loadXRenders, slotsOf } = await import('../../src/lib/renders.mjs');
+  const { withCapture } = await import('../../src/lib/capture.mjs');
+  const { unreachable } = loadXRenders('data-grid').components.MuiDataGrid;
+  const slots = (await slotsOf('MuiDataGrid')).filter((slot) => !unreachable[slot]);
+  // a session per slot, as each `mui annotate` call gets: renders on one page stay side by side (a contact sheet)
+  const failed = [];
+  for (const slot of slots) {
+    const { out } = await withCapture((runCapture, helpers) => drawSlot(runCapture, helpers, { component: 'MuiDataGrid', slot, aspects: ['height', 'width'] }));
+    if (out.absent || !out.items.length) {
+      failed.push(`${slot}: ${out.absent ?? 'nothing drawn'}`);
+    }
+  }
+  assert.deepEqual(failed, []);
+  assert.ok(slots.length >= 100, `${slots.length} drawable slots`);
 });

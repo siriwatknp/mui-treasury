@@ -4,6 +4,7 @@ import { DATA_DIR } from './data.mjs';
 import { HARNESS_DIR } from './renderEngine.mjs';
 import { missingPackages } from './packages.mjs';
 import { loadGraph } from './seams.mjs';
+import { DATA_GRID } from './xFixtures.mjs';
 import { importOf, xDataDir, xProductOfKey } from './xStyled.mjs';
 
 export const RENDER_DEMOS_DIR = path.join(DATA_DIR, 'material/render-demos');
@@ -78,25 +79,7 @@ export const RENDER_DEFAULTS = {
   MuiChip: {
     props: "{ label: 'Probe' }",
   },
-  // the grid fills its parent and lays rows out from the measured size: a sized frame, fixed rows
-  MuiDataGrid: {
-    imports: `const rows = [
-  { id: 1, name: 'Ada Lovelace', role: 'Engineer', projects: 12 },
-  { id: 2, name: 'Grace Hopper', role: 'Admiral', projects: 8 },
-  { id: 3, name: 'Alan Turing', role: 'Researcher', projects: 5 },
-  { id: 4, name: 'Katherine Johnson', role: 'Mathematician', projects: 9 },
-];
-const columns = [
-  { field: 'name', headerName: 'Name', width: 200 },
-  { field: 'role', headerName: 'Role', flex: 1 },
-  { field: 'projects', headerName: 'Projects', type: 'number', width: 120 },
-];
-`,
-    props: '{ rows, columns, disableVirtualization: true, ...(props.panel ? { initialState: { preferencePanel: { open: true, openedPanelValue: props.panel } } } : {}) }',
-    local: ['panel'],
-    content: 'undefined',
-    frame: { width: 640, height: 360 },
-  },
+  MuiDataGrid: DATA_GRID,
   MuiSelect: {
     imports: "import MenuItem from '@mui/material/MenuItem';\n",
     props: "{ value: 'Probe one' }",
@@ -142,10 +125,13 @@ export const demoUrl = (demo) => `/@fs${path.join(RENDER_DEMOS_DIR, `${demo}.tsx
 
 const TRIGGERS = '[aria-haspopup]:not([aria-haspopup="false"]), [aria-expanded="false"], [role="combobox"]';
 
-/** Interaction names → steps: popup (open a menu/listbox), button:i, label-hover (tooltip triggers), column-menu (a grid column's menu), root:i (click the component). */
+/** Interaction names → steps: popup (open a menu/listbox), button:i, label-hover (tooltip triggers), header-hover / column-menu (a grid column's hover icons / menu), root:i (click the component). */
 export function interactionSteps(component, interaction = []) {
   return interaction.flatMap((name) => {
     const [kind, nth] = name.split(':');
+    if (kind === 'header-hover') {
+      return [{ hover: '.MuiDataGrid-columnHeader' }, { settle: '.MuiDataGrid-menuIconButton' }];
+    }
     if (kind === 'column-menu') {
       // the menu button shows only while its header is hovered; the menu mounts and grows in after the click
       return [{ hover: '.MuiDataGrid-columnHeader' }, { settle: '.MuiDataGrid-menuIconButton' }, { click: '.MuiDataGrid-menuIconButton' }, { settle: '.MuiDataGrid-menuList' }];
@@ -221,6 +207,9 @@ export function renderFor(component, { props = {}, states = [], slot = 'root' })
   const product = xProductOfKey(component);
   const record = product ? loadXRenders(product) : loadRenders();
   const entry = record.components[component];
+  if (entry?.unreachable?.[slot]) {
+    throw new Error(`${component.replace(/^Mui/, '')} ${slot} can't be rendered for a picture: ${entry.unreachable[slot]}`);
+  }
   if (!entry || entry.standalone) {
     return {
       kind: 'generated',
@@ -255,7 +244,7 @@ export async function slotsOf(component) {
 }
 
 /** The selector the harness gives a tagged slot element. */
-export const slotSelector = (component, slot) => `[data-mui-slot="${component}|${slot}"]`;
+export const slotSelector = (component, slot) => `[data-mui-slot~="${component}|${slot}"]`;
 
 /**
  * A slot's element for drawing on it: its tag, or — for a slot the root styles through a nested selector — that selector's

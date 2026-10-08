@@ -7,16 +7,7 @@
         "toolbar": {
           "showToolbar": true
         },
-        "toolbarContainer": {
-          "showToolbar": true
-        },
         "toolbarDivider": {
-          "showToolbar": true
-        },
-        "toolbarFilterList": {
-          "showToolbar": true
-        },
-        "toolbarLabel": {
           "showToolbar": true
         },
         "toolbarQuickFilter": {
@@ -28,73 +19,195 @@
         "toolbarQuickFilterTrigger": {
           "showToolbar": true
         },
-        "panel": {
+        "toolbarLabel": {
           "showToolbar": true,
-          "panel": "columns"
+          "label": "Team"
+        },
+        "panel": {
+          "scenario": "columns-panel"
         },
         "panelContent": {
-          "showToolbar": true,
-          "panel": "columns"
-        },
-        "panelHeader": {
-          "showToolbar": true,
-          "panel": "columns"
-        },
-        "panelFooter": {
-          "showToolbar": true,
-          "panel": "columns"
+          "scenario": "columns-panel"
         },
         "panelWrapper": {
-          "showToolbar": true,
-          "panel": "columns"
+          "scenario": "columns-panel"
         },
         "columnsManagement": {
-          "showToolbar": true,
-          "panel": "columns"
-        },
-        "columnsManagementEmptyText": {
-          "showToolbar": true,
-          "panel": "columns"
-        },
-        "columnsManagementFooter": {
-          "showToolbar": true,
-          "panel": "columns"
+          "scenario": "columns-panel"
         },
         "columnsManagementHeader": {
-          "showToolbar": true,
-          "panel": "columns"
+          "scenario": "columns-panel"
         },
-        "columnsManagementScrollArea": {
-          "showToolbar": true,
-          "panel": "columns"
+        "columnsManagementFooter": {
+          "scenario": "columns-panel"
         },
         "columnsManagementSearchInput": {
-          "showToolbar": true,
-          "panel": "columns"
+          "scenario": "columns-panel"
+        },
+        "columnsManagementScrollArea": {
+          "scenario": "columns-panel"
         },
         "filterForm": {
-          "showToolbar": true,
-          "panel": "filters"
+          "scenario": "filters-panel"
         },
         "filterFormColumnInput": {
-          "showToolbar": true,
-          "panel": "filters"
+          "scenario": "filters-panel"
         },
         "filterFormDeleteIcon": {
-          "showToolbar": true,
-          "panel": "filters"
-        },
-        "filterFormLogicOperatorInput": {
-          "showToolbar": true,
-          "panel": "filters"
+          "scenario": "filters-panel"
         },
         "filterFormOperatorInput": {
-          "showToolbar": true,
-          "panel": "filters"
+          "scenario": "filters-panel"
         },
         "filterFormValueInput": {
-          "showToolbar": true,
-          "panel": "filters"
+          "scenario": "filters-panel"
+        },
+        "cellCheckbox": {
+          "scenario": "checkbox"
+        },
+        "checkboxInput": {
+          "scenario": "checkbox"
+        },
+        "columnHeaderCheckbox": {
+          "scenario": "checkbox"
+        },
+        "selectedRowCount": {
+          "scenario": "checkbox"
+        },
+        "skeletonLoadingOverlay": {
+          "scenario": "loading"
+        },
+        "cellSkeleton": {
+          "scenario": "loading"
+        },
+        "overlay": {
+          "scenario": "empty"
+        },
+        "overlayWrapper": {
+          "scenario": "empty"
+        },
+        "overlayWrapperInner": {
+          "scenario": "empty"
+        },
+        "root--noToolbar": {
+          "scenario": "no-toolbar"
+        },
+        "toolbarContainer": {
+          "scenario": "legacy-toolbar"
+        },
+        "actionsCell": {
+          "scenario": "types"
+        },
+        "booleanCell": {
+          "scenario": "types"
+        },
+        "cell--textCenter": {
+          "scenario": "types"
+        },
+        "cell--flex": {
+          "scenario": "types"
+        },
+        "columnHeader--alignCenter": {
+          "scenario": "types"
+        },
+        "columnHeader--alignLeft": {
+          "scenario": "types"
+        },
+        "longTextCell": {
+          "scenario": "types"
+        },
+        "longTextCellContent": {
+          "scenario": "types"
+        },
+        "columnHeader--sorted": {
+          "scenario": "sorted-filtered"
+        },
+        "sortIcon": {
+          "scenario": "sorted-filtered"
+        },
+        "sortButton": {
+          "scenario": "sorted-filtered"
+        },
+        "iconButtonContainer": {
+          "scenario": "sorted-filtered"
+        },
+        "columnHeader--filtered": {
+          "scenario": "sorted-filtered"
+        },
+        "filterIcon": {
+          "scenario": "sorted-filtered"
+        },
+        "editInputCell": {
+          "scenario": "cell-editing"
+        },
+        "cell--editing": {
+          "scenario": "cell-editing"
+        },
+        "cell--editable": {
+          "scenario": "cell-editing"
+        },
+        "editBooleanCell": {
+          "scenario": "cell-editing"
+        },
+        "editLongTextCell": {
+          "scenario": "cell-editing"
+        },
+        "editLongTextCellValue": {
+          "scenario": "cell-editing"
+        },
+        "editLongTextCellPopperContent": {
+          "scenario": "cell-editing"
+        },
+        "editLongTextCellTextarea": {
+          "scenario": "cell-editing"
+        },
+        "row--editing": {
+          "scenario": "row-editing"
+        },
+        "row--editable": {
+          "scenario": "row-editing"
+        },
+        "columnHeader--filledGroup": {
+          "scenario": "groups"
+        },
+        "columnHeader--emptyGroup": {
+          "scenario": "groups"
+        },
+        "row--dynamicHeight": {
+          "scenario": "dynamic-height"
+        },
+        "scrollbar": {
+          "scenario": "overflow"
+        },
+        "scrollbar--horizontal": {
+          "scenario": "overflow"
+        },
+        "scrollbar--vertical": {
+          "scenario": "overflow"
+        },
+        "root--densityCompact": {
+          "density": "compact"
+        },
+        "root--densityComfortable": {
+          "density": "comfortable"
+        },
+        "autoHeight": {
+          "autoHeight": true
+        },
+        "withVerticalBorder": {
+          "showCellVerticalBorder": true,
+          "showColumnVerticalBorder": true
+        },
+        "cell--withRightBorder": {
+          "showCellVerticalBorder": true,
+          "showColumnVerticalBorder": true
+        },
+        "columnHeader--withRightBorder": {
+          "showCellVerticalBorder": true,
+          "showColumnVerticalBorder": true
+        },
+        "cellEmpty": {
+          "scenario": "types"
         }
       },
       "slotInteraction": {
@@ -103,7 +216,89 @@
         ],
         "menuList": [
           "column-menu"
+        ],
+        "menuOpen": [
+          "column-menu"
+        ],
+        "menuIcon": [
+          "header-hover"
+        ],
+        "menuIconButton": [
+          "header-hover"
         ]
+      },
+      "unreachable": {
+        "footerCell": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
+        "cell--selectionMode": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
+        "cell--rangeBottom": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
+        "cell--rangeLeft": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
+        "cell--rangeRight": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
+        "cell--rangeTop": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
+        "cell--withFillHandle": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
+        "cell--fillPreview": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
+        "cell--fillPreviewTop": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
+        "cell--fillPreviewBottom": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
+        "cell--fillPreviewLeft": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
+        "cell--fillPreviewRight": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
+        "groupingCriteriaCell": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
+        "groupingCriteriaCellLoadingContainer": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
+        "groupingCriteriaCellToggle": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
+        "tabs": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
+        "tab": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
+        "tabPanel": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
+        "scrollShadow": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "scrollArea": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "panelFooter": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "panelHeader": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "filterFormLogicOperatorInput": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "rowCount": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "root--disableUserSelection": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "cell--withLeftBorder": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "columnHeader--withLeftBorder": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "columnSeparator--sideLeft": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "filler--borderBottom": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "filler--pinnedLeft": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "filler--pinnedRight": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "cell--pinnedLeft": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "cell--pinnedRight": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "columnHeader--pinnedLeft": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "columnHeader--pinnedRight": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "pinnedRows": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "pinnedRows--bottom": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "pinnedRows--top": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "scrollbarFiller--pinnedRight": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "detailPanelToggleCell": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "detailPanelToggleCell--expanded": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "row--detailPanelExpanded": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "rowReorderCell": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "rowReorderCell--draggable": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "rowReorderCellContainer": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "rowReorderCellPlaceholder": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "treeDataGroupingCell": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "treeDataGroupingCellLoadingContainer": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "treeDataGroupingCellToggle": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "headerFilterRow": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "rowSkeleton": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "autosizing": "exists only while a column or row is being dragged, resized or autosized",
+        "columnHeader--dragging": "exists only while a column or row is being dragged, resized or autosized",
+        "columnHeader--moving": "exists only while a column or row is being dragged, resized or autosized",
+        "columnSeparator--resizing": "exists only while a column or row is being dragged, resized or autosized",
+        "row--dragging": "exists only while a column or row is being dragged, resized or autosized",
+        "row--beingDragged": "exists only while a column or row is being dragged, resized or autosized",
+        "columnHeader--siblingFocused": "exists only while the header next to it has keyboard focus",
+        "shadowScrollArea": "a styled part with no class of its own in this version, so nothing in the render carries it",
+        "columnsManagementEmptyText": "a styled part with no class of its own in this version, so nothing in the render carries it",
+        "longTextCellCornerButton": "a styled part with no class of its own in this version, so nothing in the render carries it",
+        "longTextCellPopper": "a styled part with no class of its own in this version, so nothing in the render carries it",
+        "editLongTextCellPopper": "a styled part with no class of its own in this version, so nothing in the render carries it",
+        "rowDragOverlay": "a styled part with no class of its own in this version, so nothing in the render carries it",
+        "columnsManagementScrollArea": "a styled part with no class of its own in this version, so nothing in the render carries it",
+        "longTextCellPopperContent": "opens only after clicking a long-text cell's expand button",
+        "toolbarFilterList": "shows only inside the Filters button's tooltip, while it is hovered",
+        "cellOffsetLeft": "0 wide unless the grid is scrolled sideways with virtualization on",
+        "container--bottom": "0 tall unless rows are pinned to the bottom (DataGrid Pro)",
+        "overlayWrapper": "a 0-tall anchor by design; overlayWrapperInner carries the overlay's size (--slot overlayWrapperInner)",
+        "scrollbarFiller": "as wide as the native scrollbar, which is 0 where scrollbars overlay the content (as in the headless render)"
       }
     }
   },

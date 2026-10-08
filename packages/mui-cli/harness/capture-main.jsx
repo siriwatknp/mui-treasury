@@ -122,17 +122,20 @@ function withMarks(components, name, slots, seen) {
   return mergeComponents(components, { [name]: { styleOverrides: marks } });
 }
 
-/** Tag each marked element of `name` with data-mui-slot="<slot>" so plain selectors (annotation claims) reach exactly it. */
+/** Tag each marked element of `name` with data-mui-slot="<C|slot> …" so plain selectors (annotation claims) reach exactly it; one element can be several slots (a legacy toolbar container is also the toolbar). */
 function tagSlots(name) {
   for (const [key, list] of markedElements()) {
     const [component, slot] = key.split('|');
     if (component === name) {
-      list.forEach(({ el }) => el.setAttribute('data-mui-slot', `${component}|${slot}`));
+      list.forEach(({ el }) => {
+        const tags = new Set((el.getAttribute('data-mui-slot') ?? '').split(' ').filter(Boolean)).add(`${component}|${slot}`);
+        el.setAttribute('data-mui-slot', [...tags].join(' '));
+      });
     }
   }
 }
 
-const slotSelector = (name, slot) => `[data-mui-slot="${name}|${slot}"]`;
+const slotSelector = (name, slot) => `[data-mui-slot~="${name}|${slot}"]`;
 
 const GENERIC_FONT = /^(-apple-system|BlinkMacSystemFont|system-ui|ui-sans-serif|ui-monospace|sans-serif|serif|monospace|Segoe UI|Roboto|Helvetica|Arial)$/i;
 
@@ -1085,6 +1088,20 @@ async function drawAnnotations({ stage, demo, component }, cfg) {
     first.setAttribute(`data-annotate-${i}`, '');
     return { ...claim, on: `[data-annotate-${i}]` };
   });
+  // a slot the render doesn't show — not mounted, hidden until hover, or no size: the caller says which instead of an empty picture
+  const absenceOf = (el) => {
+    if (!el) {
+      return 'missing';
+    }
+    if (getComputedStyle(el).visibility === 'hidden') {
+      return 'hidden';
+    }
+    const box = el.getBoundingClientRect();
+    // 0 wide but tall (a full-width bar in a shrink-wrapped stage) still has a height to draw
+    return box.width > 0 || box.height > 0 ? null : 'empty';
+  };
+  const absences = claims.map((claim) => absenceOf(demo.querySelector(claim.on) ?? document.querySelector(claim.on)));
+  const absent = absences.length > 0 && absences.every(Boolean) ? absences[0] : null;
   const resolved = sampled.map((claim) => ({ claim, ...resolveClaims(stage, demo, [claim]) }));
   const bounds = resolved[0]?.bounds;
   const items = spreadAcrossSides(resolved.flatMap(({ claim, items: drawn }) => drawn.map((item) => ({ item, pinned: Boolean(claim.pinned) }))), bounds);
@@ -1116,6 +1133,7 @@ async function drawAnnotations({ stage, demo, component }, cfg) {
     selector: `#${id}`,
     items: items.map((item) => ({ kind: item.kind, tone: item.tone ?? null, icon: Boolean(item.outline), measures: item.measures, label: item.label, gutter: item.route.gutter, rung: item.route.out ?? 0 })),
     collisions: { labelOverLabel, labelOverComponent },
+    absent,
   };
 }
 

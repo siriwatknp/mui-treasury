@@ -26,6 +26,16 @@ export function claimsFor(selector, aspects, routes = {}) {
   return aspects.flatMap((a) => all[a]).map(({ key, ...claim }) => (pin(key) ? { ...claim, route: pin(key), pinned: true } : claim));
 }
 
+/** One annotated render of `slot`, in an open capture session: what `annotate` draws and the claims it drew from. */
+export async function drawSlot(runCapture, helpers, { component, slot = 'root', props = {}, aspects, routes = {}, scheme = 'light' }, whileHeld) {
+  const { annotateSelector, captureWith, renderFor, slotsOf } = await import('../lib/renders.mjs');
+  const render = renderFor(component, { props, slot });
+  const selector = annotateSelector(component, slot);
+  const claims = claimsFor(selector, aspects, routes);
+  const out = await captureWith(runCapture, helpers, { component, render, target: slot }, { slots: await slotsOf(component), annotate: { claims, scheme } }, whileHeld);
+  return { out, render, selector, claims };
+}
+
 export async function run(program, name, options) {
   const target = resolveToken(name);
   if (target?.kind === 'x' && !target.component) {
@@ -39,27 +49,28 @@ export async function run(program, name, options) {
   }
   const routes = options.routes ? JSON.parse(fs.readFileSync(path.resolve(options.routes), 'utf8')) : {};
   const props = options.props ? parsePropsKey(options.props) : {};
-  const { annotateSelector, captureWith, renderFor, slotsOf, propsKeyOf } = await import('../lib/renders.mjs');
-  const slots = await slotsOf(component);
-  if (!slots.length) {
+  const { renderFor, slotsOf, propsKeyOf } = await import('../lib/renders.mjs');
+  if (!(await slotsOf(component)).length) {
     throw new Error(`unknown component: ${name} — \`mui component\` lists them`);
   }
-  const render = renderFor(component, { props, slot: options.slot ?? 'root' });
+  const slot = options.slot ?? 'root';
+  // a slot that can't be shown fails before the render starts
+  renderFor(component, { props, slot });
   const propsKey = propsKeyOf(props);
-  const selector = annotateSelector(component, options.slot ?? 'root');
-  const claims = claimsFor(selector, aspects, routes);
   const themeFile = options.theme ? path.resolve(options.theme) : undefined;
   const shot = path.resolve(options.shot ?? `annotate-${component.replace(/^Mui/, '')}${propsKey === 'base' ? '' : `-${propsKey.replace(/[=,]/g, '-')}`}.png`);
   const scheme = options.scheme === 'dark' ? 'dark' : 'light';
 
   const { withCapture } = await import('../lib/capture.mjs');
-  const out = await withCapture(
-    async (runCapture, helpers) => {
-      const result = await captureWith(runCapture, helpers, { component, render, target: options.slot ?? 'root' }, { slots, annotate: { claims, scheme } }, (out) => helpers.screenshotDrawn(out.selector, shot));
-      return result;
-    },
+  const { out, render, selector, claims } = await withCapture(
+    (runCapture, helpers) => drawSlot(runCapture, helpers, { component, slot, props, aspects, routes, scheme }, (drawn) => helpers.screenshotDrawn(drawn.selector, shot)),
     { themeFile, colorScheme: scheme, scale: 2 },
   );
+  if (out.absent) {
+    const label = component.replace(/^Mui/, '');
+    const why = { missing: 'is not in this render', hidden: 'is in this render but hidden (visibility: hidden — shown on hover or in a state)', empty: 'is in this render but has no size (0×0)' }[out.absent];
+    throw new Error(`${label} ${slot} ${why} — pass --props that show it; \`mui component ${label} --slot ${slot}\` lists the selectors it is styled under`);
+  }
   const collided = out.collisions.labelOverLabel.length + out.collisions.labelOverComponent.length;
   if (options.strict && collided) {
     process.exitCode = 1;
@@ -68,7 +79,7 @@ export async function run(program, name, options) {
     jsonOut('annotate', { component, propsKey, selector, claims, ...out, shot });
     return;
   }
-  console.log(`annotate ${component.replace(/^Mui/, '')} [${propsKey}] ${options.slot ?? 'root'}${render.kind === 'demo' ? ` · in docs demo ${render.demo}` : ''}\n`);
+  console.log(`annotate ${component.replace(/^Mui/, '')} [${propsKey}] ${slot}${render.kind === 'demo' ? ` · in docs demo ${render.demo}` : ''}\n`);
   for (const item of out.items) {
     const what = item.kind === 'band' ? `${item.tone} ${item.tone === 'gap' ? 'between children' : item.measures === 'x' ? 'left/right' : 'top/bottom'}` : item.icon ? 'icon' : item.measures === 'x' ? 'width' : 'height';
     console.log(`  ${what.padEnd(22)} ${item.label.padEnd(14)} label ${item.gutter}`);

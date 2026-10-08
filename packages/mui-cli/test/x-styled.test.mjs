@@ -69,18 +69,31 @@ test('the grid renders from its X package with fixed rows, in a sized frame', ()
 
 test('a slot that only shows in a state gets the props or clicks that open it', () => {
   assert.equal(renderFor('MuiDataGrid', { slot: 'toolbar' }).props.showToolbar, true);
-  assert.equal(renderFor('MuiDataGrid', { slot: 'panelContent' }).props.panel, 'columns');
+  assert.equal(renderFor('MuiDataGrid', { slot: 'panelContent' }).props.scenario, 'columns-panel');
+  assert.equal(renderFor('MuiDataGrid', { slot: 'cellCheckbox' }).props.scenario, 'checkbox');
+  assert.equal(renderFor('MuiDataGrid', { slot: 'root--densityCompact' }).props.density, 'compact');
+  assert.deepEqual(renderFor('MuiDataGrid', { slot: 'menuIcon' }).interaction, ['header-hover']);
+  assert.throws(() => renderFor('MuiDataGrid', { slot: 'cell--pinnedLeft' }), /DataGrid cell--pinnedLeft can't be rendered for a picture: needs DataGrid Pro/);
   assert.deepEqual(renderFor('MuiDataGrid', { slot: 'menuList' }).interaction, ['column-menu']);
   assert.deepEqual(renderFor('MuiDataGrid', { slot: 'cell' }).interaction, []);
   assert.deepEqual(interactionSteps('MuiDataGrid', ['column-menu']).map((s) => Object.keys(s)[0]), ['hover', 'settle', 'click', 'settle']);
 });
 
 test('a routed slot is found by its tag or its routed class (an element carries one mark: cell--textLeft wins over cell)', () => {
-  assert.equal(annotateSelector('MuiDataGrid', 'cell'), ':is([data-mui-slot="MuiDataGrid|cell"], .MuiDataGrid-cell)');
-  assert.equal(annotateSelector('MuiDataGrid', 'toolbar'), '[data-mui-slot="MuiDataGrid|toolbar"]');
-  assert.equal(annotateSelector('MuiChip', 'deleteIcon'), ':is([data-mui-slot="MuiChip|deleteIcon"], .MuiChip-deleteIcon)');
-  assert.equal(annotateSelector('MuiButton', 'root'), '[data-mui-slot="MuiButton|root"]');
+  assert.equal(annotateSelector('MuiDataGrid', 'cell'), ':is([data-mui-slot~="MuiDataGrid|cell"], .MuiDataGrid-cell)');
+  assert.equal(annotateSelector('MuiDataGrid', 'toolbar'), '[data-mui-slot~="MuiDataGrid|toolbar"]');
+  assert.equal(annotateSelector('MuiChip', 'deleteIcon'), ':is([data-mui-slot~="MuiChip|deleteIcon"], .MuiChip-deleteIcon)');
+  assert.equal(annotateSelector('MuiButton', 'root'), '[data-mui-slot~="MuiButton|root"]');
   // a state-only slot routed to its base class (inputFocused → .MuiAutocomplete-input) must not draw on the unfocused base
-  assert.equal(annotateSelector('MuiAutocomplete', 'inputFocused'), '[data-mui-slot="MuiAutocomplete|inputFocused"]');
-  assert.equal(annotateSelector('MuiTabs', 'scrollButtonsHideMobile'), '[data-mui-slot="MuiTabs|scrollButtonsHideMobile"]');
+  assert.equal(annotateSelector('MuiAutocomplete', 'inputFocused'), '[data-mui-slot~="MuiAutocomplete|inputFocused"]');
+  assert.equal(annotateSelector('MuiTabs', 'scrollButtonsHideMobile'), '[data-mui-slot~="MuiTabs|scrollButtonsHideMobile"]');
+});
+
+test('every grid scenario a slot names exists in the fixture', async () => {
+  const { DATA_GRID } = await import('../src/lib/xFixtures.mjs');
+  const { components } = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'x/data-grid/renders.json'), 'utf8'));
+  const named = new Set(Object.values(components.MuiDataGrid.slotProps).map((p) => p.scenario).filter(Boolean));
+  for (const scenario of named) {
+    assert.match(DATA_GRID.imports, new RegExp(`\\n  '?${scenario}'?: \\{`), scenario);
+  }
 });
