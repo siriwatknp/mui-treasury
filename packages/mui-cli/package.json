@@ -29,7 +29,8 @@
     "sync-demos-x": "node scripts/sync-demos-x.mjs",
     "sync-seams": "node scripts/sync-seams.mjs",
     "sync-renders": "node scripts/sync-renders.mjs",
-    "sync-compositions": "node scripts/sync-compositions.mjs"
+    "sync-compositions": "node scripts/sync-compositions.mjs",
+    "sync-seams-x": "node scripts/sync-seams-x.mjs"
   },
   "engines": {
     "node": ">=22.13"

@@ -1,13 +1,17 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { DATA_DIR } from './data.mjs';
+import { xDataDir, xStyledProducts } from './xStyled.mjs';
 
-const readJson = (file) => JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'material', file), 'utf8'));
+const readJson = (dir, file) => JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8'));
+/** Material UI first, then every MUI X product with style rows: one layer per data dir. */
+const layers = () => [path.join(DATA_DIR, 'material'), ...xStyledProducts().map(xDataDir)];
 
 let seams;
 export function loadSeams() {
   if (!seams) {
-    const data = readJson('seams.json');
+    const [material, ...x] = layers().map((dir) => readJson(dir, 'seams.json'));
+    const data = { ...material, fns: Object.assign({}, material.fns, ...x.map((d) => d.fns)), rows: [...material.rows, ...x.flatMap((d) => d.rows)] };
     const byComponent = new Map();
     for (const row of data.rows) {
       const list = byComponent.get(row.component);
@@ -24,7 +28,11 @@ export function loadSeams() {
 
 let graphData;
 export function loadGraph() {
-  return (graphData ??= readJson('graph.json'));
+  if (!graphData) {
+    const [material, ...x] = layers().map((dir) => readJson(dir, 'graph.json'));
+    graphData = { ...material, components: [...material.components, ...x.flatMap((d) => d.components)], graph: Object.assign({}, material.graph, ...x.map((d) => d.graph)) };
+  }
+  return graphData;
 }
 
 /** Composition tree (extends as ↑ nodes), reverse edges and content source for one component. */

@@ -43,7 +43,7 @@ export async function run(program, name, options) {
   }
   const target = resolveToken(name);
   if (target?.kind === 'x') {
-    throw new Error(`${target.label} is MUI X — style rows cover Material UI only for now; \`mui demos ${target.product}\` lists its demos`);
+    throw new Error(`${target.label} is MUI X — verify covers Material UI only for now${target.component ? ` (\`mui annotate ${target.label}\` and \`mui component ${target.label}\` work)` : ''}; \`mui demos ${target.product}\` lists its demos`);
   }
   const component = target?.component ?? `Mui${name}`;
   const { byComponent } = await loadSeams();

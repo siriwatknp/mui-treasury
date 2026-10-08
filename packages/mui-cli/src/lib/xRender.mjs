@@ -17,7 +17,7 @@ export function renderFeatureMap(program, product, label) {
     return;
   }
   console.log(`${label} — MUI X ${product} · ${record.url}`);
-  console.log('no style rows for MUI X yet — features & demos:\n');
+  console.log(`no style rows for ${label} yet — features & demos:\n`);
   const featW = Math.max(7, ...record.features.map((f) => f.feature.length));
   const planW = Math.max(4, ...record.features.map((f) => f.plan.length));
   console.log(`  ${'FEATURE'.padEnd(featW)}  ${'PLAN'.padEnd(planW)}  DEMOS`);

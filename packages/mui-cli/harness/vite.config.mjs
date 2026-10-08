@@ -4,6 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
 import { searchForWorkspaceRoot } from 'vite';
+import { X_STYLED, xStyledProducts } from '../src/lib/xStyled.mjs';
 
 // Every Material UI entry a render may import, bundled in one pass up front: renders import components lazily, and
 // a later optimizer pass would bundle a second copy of the theme context (the theme then never reaches the component).
@@ -34,7 +35,9 @@ const resolvable = (entry) => {
     return false;
   }
 };
-const muiEntries = [...new Set(['@mui/material/styles', '@mui/material/SvgIcon', ...[...rendered, ...composites].map((c) => `@mui/material/${c.replace(/^Mui/, '')}`), ...demoImports.filter(resolvable)])];
+// MUI X packages with style rows, when the project has them (a project without MUI X renders Material UI only)
+const xEntries = xStyledProducts().map((p) => X_STYLED[p].package).filter(resolvable);
+const muiEntries = [...new Set(['@mui/material/styles', '@mui/material/SvgIcon', ...[...rendered, ...composites].map((c) => `@mui/material/${c.replace(/^Mui/, '')}`), ...demoImports.filter(resolvable), ...xEntries])];
 
 export default {
   plugins: [react()],

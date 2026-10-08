@@ -74,7 +74,7 @@ export async function run(program, names, options) {
     const after = await loadThemeModule(themeFile);
     const before = baseline.file ? await loadThemeModule(baseline.file) : {};
     const scope = names.length
-      ? { components: names.map((n) => { const t = resolveToken(n); return t?.component ?? `Mui${n}`; }), why: 'asked' }
+      ? { components: names.map((n) => { const t = resolveToken(n); if (t?.kind === 'x') { throw new Error(`${t.label} is MUI X — diff covers Material UI only for now`); } return t?.component ?? `Mui${n}`; }), why: 'asked' }
       : await scopeOf(before, after);
     const changes = [];
     let renderCount = 0;

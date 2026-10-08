@@ -6,21 +6,31 @@ import { pathToFileURL } from 'node:url';
 import { records } from './recorder.mjs';
 import { categoryOf } from './categories.mjs';
 import { buildGraph } from './graph.mjs';
+import { X_STYLED } from '../../../src/lib/xStyled.mjs';
 
-const [root, outFile] = process.argv.slice(2);
-const muiDir = path.dirname(createRequire(path.join(root, 'package.json')).resolve('@mui/material/package.json'));
+// product: an MUI X product (data-grid) — its package's styles only, recorded with @mui/system's styled too (hooks.mjs)
+const [root, outFile, product] = process.argv.slice(2);
+const requireFromRoot = createRequire(path.join(root, 'package.json'));
+const muiDir = path.dirname(requireFromRoot.resolve('@mui/material/package.json'));
 const muiVersion = JSON.parse(fs.readFileSync(path.join(muiDir, 'package.json'), 'utf8')).version;
+const x = product ? X_STYLED[product] : null;
+if (product && !x) {
+  throw new Error(`no MUI X product "${product}" — one of ${Object.keys(X_STYLED).join(', ')}`);
+}
+const xDir = x ? path.dirname(requireFromRoot.resolve(`${x.package}/package.json`)) : null;
+
+// what the Data Grid root styles read from grid state (hooks.mjs): a measured grid without scrollbars
+globalThis.__muiCliGridApi = { current: { state: { dimensions: { isReady: true, hasScrollX: false, hasScrollY: false, scrollbarSize: 0 } } } };
 
 const skipped = [];
-for (const dir of fs.readdirSync(muiDir).filter((d) => /^[A-Z]/.test(d)).sort()) {
-  const entry = path.join(muiDir, dir, 'index.mjs');
-  if (!fs.existsSync(entry)) {
-    continue;
-  }
+const entries = x
+  ? [path.join(xDir, 'index.mjs')]
+  : fs.readdirSync(muiDir).filter((d) => /^[A-Z]/.test(d)).sort().map((dir) => path.join(muiDir, dir, 'index.mjs')).filter((f) => fs.existsSync(f));
+for (const entry of entries) {
   try {
     await import(pathToFileURL(entry).href);
   } catch (err) {
-    skipped.push({ dir, reason: err.message.split('\n')[0].replace(/ imported from .*/, '') });
+    skipped.push({ dir: path.basename(path.dirname(entry)), reason: err.message.split('\n')[0].replace(/ imported from .*/, '') });
   }
 }
 if (!records.length) {
@@ -64,7 +74,10 @@ const matcherKey = (props) => {
 };
 const slotName = (slot) => (slot ? slot.charAt(0).toLowerCase() + slot.slice(1) : null);
 const elementName = (tag) => (typeof tag === 'string' ? tag : (tag?.displayName ?? tag?.name ?? tag?.render?.name ?? 'component'));
-const named = records.filter((rec) => rec.name);
+const named = records.filter((rec) => rec.name && (!x || x.keys.includes(rec.name)));
+if (x && !named.length) {
+  throw new Error(`recorded no ${x.keys.join('/')} styled() calls — ${x.package} moved its styled imports; update scripts/lib/extract/hooks.mjs`);
+}
 const shared = new Set(
   Object.entries(Object.groupBy(named, (rec) => `${rec.name}|${rec.slot}`))
     .filter(([, list]) => new Set(list.map((rec) => elementName(rec.tag))).size > 1)
@@ -114,8 +127,10 @@ const vars = collect(themes.vars);
 const typo = collect(themes.typography);
 
 const VAR_ONLY = /^var\(--mui-([\w-]+?)(?:,.*)?\)$/;
+// CSS variables MUI X writes inline from props and measurements: a row reading one is not the theme's to set
+const DYNAMIC = /var\(--(?:DataGrid-(?:rowHeight|headerHeight|\w*Width)|height|width)\b/;
 const rows = [...plain.values()].map((row) => {
-  const out = { ...row, category: categoryOf(row.prop) };
+  const out = { ...row, category: typeof row.value === 'string' && DYNAMIC.test(row.value) ? 'dynamic' : categoryOf(row.prop) };
   const typoValue = typo.get(row.id)?.value;
   const typoMatch = typeof typoValue === 'string' && /^__typography:([\w.]+)__$/.exec(typoValue);
   const varValue = vars.get(row.id)?.value;
@@ -133,7 +148,7 @@ const rows = [...plain.values()].map((row) => {
 
 const onlyInVars = [...vars.keys()].filter((id) => !plain.has(id)).length;
 const components = [...new Set(named.map((rec) => rec.name))].sort();
-const graph = buildGraph({ muiDir, rows, names: components });
+const graph = buildGraph({ muiDir: xDir ?? muiDir, rows, names: components });
 
 const MARK = '__styleOverrides:';
 const routeFailures = [];
@@ -161,5 +176,6 @@ for (const rec of named.filter((r) => r.slot === 'Root' && typeof r.overridesRes
     (graph[rec.name] ??= {}).routes = routes;
   }
 }
-fs.writeFileSync(outFile, JSON.stringify({ $source: { mui: muiVersion }, fns, rows, graph, components }));
+const source = x ? { mui: muiVersion, x: JSON.parse(fs.readFileSync(path.join(xDir, 'package.json'), 'utf8')).version } : { mui: muiVersion };
+fs.writeFileSync(outFile, JSON.stringify({ $source: source, fns, rows, graph, components }));
 console.log(JSON.stringify({ rows: rows.length, components: new Set(rows.map((r) => r.component)).size, slots: new Set(rows.filter((r) => !r.internal).map((r) => `${r.component}|${r.slot}`)).size, internal: rows.filter((r) => r.internal).length, shared: shared.size, fns: Object.keys(fns).length, tokens: rows.filter((r) => r.token).length, refs: rows.filter((r) => r.refs).length, partial: rows.filter((r) => r.partial).length, onlyInVars, graphNodes: Object.keys(graph).length, routeFailures, skipped }));

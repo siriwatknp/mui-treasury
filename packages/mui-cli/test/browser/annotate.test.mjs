@@ -68,3 +68,36 @@ test('default placement fills every empty side before any side takes a second la
   }
   assert.deepEqual(problems, []);
 });
+
+test('MUI X Data Grid: every slot a density theme sets draws on a real grid render, popups opened', () => {
+  const expected = {
+    cell: ['padding', 'height'],
+    columnHeader: ['padding', 'height'],
+    columnHeaderTitleContainer: ['gap'],
+    toolbar: ['padding', 'gap'],
+    menuList: ['padding'],
+    panelContent: ['height'],
+    footerContainer: ['height'],
+  };
+  for (const [slot, aspects] of Object.entries(expected)) {
+    const { status, data, shot } = annotate('DataGrid', '--slot', slot, '--aspects', aspects.join(','));
+    assert.equal(status, 0, slot);
+    assert.ok(shot, slot);
+    const drawn = new Set(data.items.map((i) => (i.kind === 'band' ? i.tone : 'height')));
+    assert.deepEqual(aspects.filter((a) => !drawn.has(a)), [], `${slot}: something not drawn`);
+    assert.deepEqual(data.collisions, { labelOverLabel: [], labelOverComponent: [] }, slot);
+  }
+});
+
+test('a popup from an earlier render on the same page is not the next render\'s match', () => {
+  const height = () => annotate('DataGrid', '--slot', 'menuList', '--aspects', 'height').data.items.map((i) => i.label);
+  const first = height();
+  assert.equal(first.length, 1);
+  assert.deepEqual(height(), first);
+});
+
+test('MUI X Data Grid: the theme reaches the grid (styleOverrides.cell)', () => {
+  const padding = (...args) => annotate('DataGrid', '--slot', 'cell', '--aspects', 'padding', ...args).data.items.find((i) => i.measures === 'x').label;
+  assert.equal(padding(), '10px');
+  assert.equal(padding('--theme', path.resolve(BIN, '../../test/fixtures/grid.theme.ts')), '24px');
+});

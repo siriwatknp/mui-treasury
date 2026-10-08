@@ -671,7 +671,7 @@ function Annotate({ items, bounds, scheme = 'light' }) {
       aria-hidden
       data-annotations
       className={`mui-annotations scheme-${scheme}`}
-      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', overflow: 'visible', pointerEvents: 'none', zIndex: 1200 }}
+      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', overflow: 'visible', pointerEvents: 'none', zIndex: 2000 }}
     >
       <defs>
         <pattern
@@ -722,8 +722,9 @@ export function resolveClaims(stage, demo, claims) {
     height: r.height,
   });
   // A `display: contents` demo wrapper has no box of its own — bounds are the
-  // union of what actually painted.
-  const painted = [demo, ...Array.from(demo.children)]
+  // union of what actually painted. A portalled element drawn on (a menu) can stick out of the demo: rails go around it too.
+  const portalled = claims.filter((claim) => !demo.querySelector(claim.on)).map((claim) => document.querySelector(claim.on)).filter(Boolean);
+  const painted = [demo, ...Array.from(demo.children), ...portalled]
     .map((node) => node.getBoundingClientRect())
     .filter((b) => b.width > 0 && b.height > 0);
   const leftMost = Math.min(...painted.map((b) => b.left));

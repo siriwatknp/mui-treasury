@@ -8,8 +8,8 @@ export const VAR_ROOTS = ['palette', 'shape', 'shadows'];
 
 export const classesName = (name) => `${name[0].toLowerCase()}${name.slice(1)}Classes`;
 
-/** Where `<name>Classes` may be exported: its own module, the module it lives in (TouchRipple), then MUI X. */
-const modulesOf = (name) => [
+/** Where `<name>Classes` may be exported: its own module, the module it lives in (TouchRipple), then MUI X — loading each X package is slow, so the grid's goes straight to its own. */
+const modulesOf = (name) => (name === 'DataGrid' ? ['@mui/x-data-grid'] : [
   `@mui/material/${name}`,
   ...(name === 'TouchRipple' ? ['@mui/material/ButtonBase'] : []),
   `@mui/x-date-pickers/${name}`,
@@ -18,7 +18,7 @@ const modulesOf = (name) => [
   '@mui/x-tree-view',
   '@mui/x-data-grid',
   '@mui/x-charts',
-];
+]);
 const exportOf = (name) => (name === 'DataGrid' ? 'gridClasses' : classesName(name));
 
 const keysCache = new Map();
@@ -30,7 +30,8 @@ export function classesOf(name, fromDir = process.cwd()) {
     let found = null;
     for (const from of modulesOf(name)) {
       try {
-        const classes = require(from)[exportOf(name)];
+        // the grid's barrel loads the whole grid (~0.5s); its constants entry holds the same gridClasses
+        const classes = require(from === '@mui/x-data-grid' ? '@mui/x-data-grid/constants' : from)[exportOf(name)];
         if (classes) {
           found = { keys: Object.keys(classes), from };
           break;

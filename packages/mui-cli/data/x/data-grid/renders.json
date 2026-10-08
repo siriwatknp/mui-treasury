@@ -1,0 +1,112 @@
+{
+  "$note": "Phase 1 render recipe for MuiDataGrid: props and clicks that show each slot. Rows confirmed by render come with sync-renders-x.",
+  "components": {
+    "MuiDataGrid": {
+      "standalone": true,
+      "slotProps": {
+        "toolbar": {
+          "showToolbar": true
+        },
+        "toolbarContainer": {
+          "showToolbar": true
+        },
+        "toolbarDivider": {
+          "showToolbar": true
+        },
+        "toolbarFilterList": {
+          "showToolbar": true
+        },
+        "toolbarLabel": {
+          "showToolbar": true
+        },
+        "toolbarQuickFilter": {
+          "showToolbar": true
+        },
+        "toolbarQuickFilterControl": {
+          "showToolbar": true
+        },
+        "toolbarQuickFilterTrigger": {
+          "showToolbar": true
+        },
+        "panel": {
+          "showToolbar": true,
+          "panel": "columns"
+        },
+        "panelContent": {
+          "showToolbar": true,
+          "panel": "columns"
+        },
+        "panelHeader": {
+          "showToolbar": true,
+          "panel": "columns"
+        },
+        "panelFooter": {
+          "showToolbar": true,
+          "panel": "columns"
+        },
+        "panelWrapper": {
+          "showToolbar": true,
+          "panel": "columns"
+        },
+        "columnsManagement": {
+          "showToolbar": true,
+          "panel": "columns"
+        },
+        "columnsManagementEmptyText": {
+          "showToolbar": true,
+          "panel": "columns"
+        },
+        "columnsManagementFooter": {
+          "showToolbar": true,
+          "panel": "columns"
+        },
+        "columnsManagementHeader": {
+          "showToolbar": true,
+          "panel": "columns"
+        },
+        "columnsManagementScrollArea": {
+          "showToolbar": true,
+          "panel": "columns"
+        },
+        "columnsManagementSearchInput": {
+          "showToolbar": true,
+          "panel": "columns"
+        },
+        "filterForm": {
+          "showToolbar": true,
+          "panel": "filters"
+        },
+        "filterFormColumnInput": {
+          "showToolbar": true,
+          "panel": "filters"
+        },
+        "filterFormDeleteIcon": {
+          "showToolbar": true,
+          "panel": "filters"
+        },
+        "filterFormLogicOperatorInput": {
+          "showToolbar": true,
+          "panel": "filters"
+        },
+        "filterFormOperatorInput": {
+          "showToolbar": true,
+          "panel": "filters"
+        },
+        "filterFormValueInput": {
+          "showToolbar": true,
+          "panel": "filters"
+        }
+      },
+      "slotInteraction": {
+        "menu": [
+          "column-menu"
+        ],
+        "menuList": [
+          "column-menu"
+        ]
+      }
+    }
+  },
+  "renders": {},
+  "rows": {}
+}

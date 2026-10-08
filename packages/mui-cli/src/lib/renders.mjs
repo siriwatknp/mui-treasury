@@ -3,6 +3,8 @@ import path from 'node:path';
 import { DATA_DIR } from './data.mjs';
 import { HARNESS_DIR } from './renderEngine.mjs';
 import { missingPackages } from './packages.mjs';
+import { loadGraph } from './seams.mjs';
+import { importOf, xDataDir, xProductOfKey } from './xStyled.mjs';
 
 export const RENDER_DEMOS_DIR = path.join(DATA_DIR, 'material/render-demos');
 export const COMPOSITION_DEMOS_DIR = path.join(DATA_DIR, 'material/composition-demos');
@@ -76,6 +78,25 @@ export const RENDER_DEFAULTS = {
   MuiChip: {
     props: "{ label: 'Probe' }",
   },
+  // the grid fills its parent and lays rows out from the measured size: a sized frame, fixed rows
+  MuiDataGrid: {
+    imports: `const rows = [
+  { id: 1, name: 'Ada Lovelace', role: 'Engineer', projects: 12 },
+  { id: 2, name: 'Grace Hopper', role: 'Admiral', projects: 8 },
+  { id: 3, name: 'Alan Turing', role: 'Researcher', projects: 5 },
+  { id: 4, name: 'Katherine Johnson', role: 'Mathematician', projects: 9 },
+];
+const columns = [
+  { field: 'name', headerName: 'Name', width: 200 },
+  { field: 'role', headerName: 'Role', flex: 1 },
+  { field: 'projects', headerName: 'Projects', type: 'number', width: 120 },
+];
+`,
+    props: '{ rows, columns, disableVirtualization: true, ...(props.panel ? { initialState: { preferencePanel: { open: true, openedPanelValue: props.panel } } } : {}) }',
+    local: ['panel'],
+    content: 'undefined',
+    frame: { width: 640, height: 360 },
+  },
   MuiSelect: {
     imports: "import MenuItem from '@mui/material/MenuItem';\n",
     props: "{ value: 'Probe one' }",
@@ -99,11 +120,13 @@ export function generatedUrl(component, parent, parentProps = {}) {
   const name = `${component}${parent ? `.in.${parent}` : ''}`;
   const wrapperProps = Object.entries(parentProps).map(([k, v]) => ` ${k}={value(${JSON.stringify(v)})}`).join('');
   const short = (c) => c.replace(/^Mui/, '');
-  const inner = `<C ${defaults?.props ? `{...${defaults.props}} ` : ''}{...Object.fromEntries(Object.entries(props).map(([k, v]) => [k, value(v)]))}>{${content}}</C>`;
+  const passed = defaults?.local ? `Object.entries(props).filter(([k]) => !${JSON.stringify(defaults.local)}.includes(k))` : 'Object.entries(props)';
+  const element = `<C ${defaults?.props ? `{...${defaults.props}} ` : ''}{...Object.fromEntries(${passed}.map(([k, v]) => [k, value(v)]))}>{${content}}</C>`;
+  const inner = defaults?.frame ? `<div style={{ width: ${defaults.frame.width}, height: ${defaults.frame.height} }}>${element}</div>` : element;
   put(
     path.join(HARNESS_DIR, '_renders', `${name}.jsx`),
     `import * as React from 'react';
-import C from '@mui/material/${short(component)}';
+${importOf(component)}
 ${parent ? `import P from '@mui/material/${short(parent)}';
 ` : ''}import SvgIcon from '@mui/material/SvgIcon';
 ${defaults?.imports ?? ''}const node = <SvgIcon><path d="M12 2 2 22h20L12 2z" /></SvgIcon>;
@@ -119,10 +142,14 @@ export const demoUrl = (demo) => `/@fs${path.join(RENDER_DEMOS_DIR, `${demo}.tsx
 
 const TRIGGERS = '[aria-haspopup]:not([aria-haspopup="false"]), [aria-expanded="false"], [role="combobox"]';
 
-/** Interaction names → steps: popup (open a menu/listbox), button:i, label-hover (tooltip triggers), root:i (click the component). */
+/** Interaction names → steps: popup (open a menu/listbox), button:i, label-hover (tooltip triggers), column-menu (a grid column's menu), root:i (click the component). */
 export function interactionSteps(component, interaction = []) {
-  return interaction.map((name) => {
+  return interaction.flatMap((name) => {
     const [kind, nth] = name.split(':');
+    if (kind === 'column-menu') {
+      // the menu button shows only while its header is hovered; the menu mounts and grows in after the click
+      return [{ hover: '.MuiDataGrid-columnHeader' }, { settle: '.MuiDataGrid-menuIconButton' }, { click: '.MuiDataGrid-menuIconButton' }, { settle: '.MuiDataGrid-menuList' }];
+    }
     if (kind === 'popup') {
       return { click: `#mount :is(${TRIGGERS})` };
     }
@@ -180,12 +207,27 @@ export function demoNeeds(demo) {
   return missingPackages(fs.readFileSync(file, 'utf8'), file);
 }
 
+const xRecords = new Map();
+/** data/x/<product>/renders.json — how an X component renders: props and clicks that show each slot. */
+export function loadXRenders(product) {
+  if (!xRecords.has(product)) {
+    xRecords.set(product, JSON.parse(fs.readFileSync(path.join(xDataDir(product), 'renders.json'), 'utf8')));
+  }
+  return xRecords.get(product);
+}
+
 /** How to render `component` in `states`: generated when it renders alone, else the recorded demo that reaches those states on that slot. */
 export function renderFor(component, { props = {}, states = [], slot = 'root' }) {
-  const record = loadRenders();
+  const product = xProductOfKey(component);
+  const record = product ? loadXRenders(product) : loadRenders();
   const entry = record.components[component];
   if (!entry || entry.standalone) {
-    return { kind: 'generated', url: generatedUrl(component, entry?.parent, entry?.parentProps), props: { ...entry?.props, ...entry?.slotProps?.[slot], ...props, ...stateProps(states) }, interaction: [] };
+    return {
+      kind: 'generated',
+      url: generatedUrl(component, entry?.parent, entry?.parentProps),
+      props: { ...entry?.props, ...entry?.slotProps?.[slot], ...props, ...stateProps(states) },
+      interaction: entry?.slotInteraction?.[slot] ?? [],
+    };
   }
   const recorded = Object.values(record.renders).filter((r) => r.component === component && r.kind === 'demo');
   const demos = recorded.filter((r) => !demoNeeds(r.demo).length);
@@ -214,6 +256,17 @@ export async function slotsOf(component) {
 
 /** The selector the harness gives a tagged slot element. */
 export const slotSelector = (component, slot) => `[data-mui-slot="${component}|${slot}"]`;
+
+/**
+ * A slot's element for drawing on it: its tag, or — for a slot the root styles through a nested selector — that selector's
+ * class. An element carries one mark, the last rule's (a grid cell's is `cell--textLeft`, not `cell`), so the tag can miss.
+ */
+export function annotateSelector(component, slot) {
+  // only a route naming the slot's own class: a state-only slot routed to its base (inputFocused → .MuiAutocomplete-input) would draw the base
+  const own = new RegExp(`\\.${component}-${slot}(?![\\w-])`);
+  const routes = (loadGraph().graph[component]?.routes?.[slot] ?? []).filter((r) => own.test(r)).map((r) => r.replace(/^&\s*/, ''));
+  return routes.length ? `:is(${[slotSelector(component, slot), ...routes].join(', ')})` : slotSelector(component, slot);
+}
 
 /**
  * One harness call for `render`: in one go, or — when it needs a state or an interaction (a demo's tooltip) — render,

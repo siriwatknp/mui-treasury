@@ -10,6 +10,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { HARNESS_DIR as HARNESS, bootEngine, helpersFor, runOn } from './renderEngine.mjs';
+import { xStyledProducts } from './xStyled.mjs';
 
 /** The harness (Vite root) dir — demo modules must live here so plugin-react transforms their JSX. */
 export const HARNESS_DIR = HARNESS;
@@ -21,10 +22,11 @@ const IDLE_MS = Number(process.env.MUI_CLI_SERVER_IDLE_MS ?? 5 * 60 * 1000);
 // the server's own code, the harness it serves, and what decides Vite's up-front bundle (a later re-bundle splits the
 // theme context): an edit to any of them (development, a data sync) starts a fresh server
 const SERVER_CODE = ['src/lib/renderServer.mjs', 'src/lib/renderEngine.mjs', 'harness/capture-main.jsx', 'harness/annotations.jsx', 'harness/vite.config.mjs', 'data/material/renders.json', 'data/material/graph.json'];
+const serverCode = () => [...SERVER_CODE, ...xStyledProducts().flatMap((p) => [`data/x/${p}/renders.json`, `data/x/${p}/graph.json`])];
 
 function serverKey(hostRoot) {
   const version = JSON.parse(fs.readFileSync(path.join(PKG_ROOT, 'package.json'), 'utf8')).version;
-  const code = SERVER_CODE.map((f) => fs.statSync(path.join(PKG_ROOT, f)).mtimeMs).join(',');
+  const code = serverCode().map((f) => fs.statSync(path.join(PKG_ROOT, f)).mtimeMs).join(',');
   return crypto.createHash('sha1').update(`${fs.realpathSync(PKG_ROOT)}|${version}|${hostRoot}|${code}`).digest('hex').slice(0, 12);
 }
 

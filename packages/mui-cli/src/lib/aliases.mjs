@@ -5,6 +5,7 @@
  * all funnel through resolveToken so the three entry points stay consistent.
  */
 import { xProducts } from './demosX.mjs';
+import { X_STYLED, xStyledProducts } from './xStyled.mjs';
 
 /** friendly term → canonical core export (users say it differently). */
 const CORE_ALIASES = {
@@ -63,16 +64,22 @@ const xProductLabel = {
   'tree-view': 'Tree View',
 };
 
+function xTarget(product, label) {
+  const component = xStyledProducts().includes(product) ? X_STYLED[product].keys[0] : null;
+  return { kind: 'x', product, label, ...(component ? { component } : {}) };
+}
+
 /**
  * token → target, or null when nothing matches.
  *  - { kind: 'core', component: 'MuiChip', label: 'Chip' }
- *  - { kind: 'x', product: 'data-grid', label: 'DataGrid' }
+ *  - { kind: 'x', product: 'data-grid', label: 'DataGrid', component?: 'MuiDataGrid' }
+ *    (`component` when the product has style rows: Pro/Premium share the community theme key)
  * A PascalCase miss is assumed to be a core component (downstream validates);
  * a lowercase miss returns null so the bare-alias shortcut leaves it to
  * Commander's "unknown command" (typo protection).
  * @param {string} token
  * @returns {{ kind: 'core', component: string, label: string }
- *          | { kind: 'x', product: string, label: string }
+ *          | { kind: 'x', product: string, label: string, component?: string }
  *          | null}
  */
 export function resolveToken(token) {
@@ -81,14 +88,14 @@ export function resolveToken(token) {
     return { kind: 'core', component: `Mui${label}`, label };
   }
   if (X_COMPONENTS[token]) {
-    return { kind: 'x', product: X_COMPONENTS[token], label: token };
+    return xTarget(X_COMPONENTS[token], token);
   }
   if (X_ALIASES[token]) {
     const product = X_ALIASES[token];
-    return { kind: 'x', product, label: xProductLabel[product] };
+    return xTarget(product, xProductLabel[product]);
   }
   if (Object.hasOwn(xProducts(), token)) {
-    return { kind: 'x', product: token, label: xProductLabel[token] };
+    return xTarget(token, xProductLabel[token]);
   }
   if (/^[A-Z]/.test(token)) {
     const component = token.startsWith('Mui') ? token : `Mui${token}`;

@@ -28,8 +28,8 @@ export function claimsFor(selector, aspects, routes = {}) {
 
 export async function run(program, name, options) {
   const target = resolveToken(name);
-  if (target?.kind === 'x') {
-    throw new Error(`${target.label} is MUI X — style rows cover Material UI only for now; \`mui demos ${target.product}\` lists its demos`);
+  if (target?.kind === 'x' && !target.component) {
+    throw new Error(`${target.label} is MUI X — style rows cover Material UI and the Data Grid only for now; \`mui demos ${target.product}\` lists its demos`);
   }
   const component = target?.component ?? `Mui${name}`;
   const aspects = (options.aspects ?? DEFAULT_ASPECTS).split(',').map((a) => a.trim());
@@ -39,14 +39,14 @@ export async function run(program, name, options) {
   }
   const routes = options.routes ? JSON.parse(fs.readFileSync(path.resolve(options.routes), 'utf8')) : {};
   const props = options.props ? parsePropsKey(options.props) : {};
-  const { captureWith, renderFor, slotsOf, slotSelector, propsKeyOf } = await import('../lib/renders.mjs');
+  const { annotateSelector, captureWith, renderFor, slotsOf, propsKeyOf } = await import('../lib/renders.mjs');
   const slots = await slotsOf(component);
   if (!slots.length) {
     throw new Error(`unknown component: ${name} — \`mui component\` lists them`);
   }
   const render = renderFor(component, { props, slot: options.slot ?? 'root' });
   const propsKey = propsKeyOf(props);
-  const selector = slotSelector(component, options.slot ?? 'root');
+  const selector = annotateSelector(component, options.slot ?? 'root');
   const claims = claimsFor(selector, aspects, routes);
   const themeFile = options.theme ? path.resolve(options.theme) : undefined;
   const shot = path.resolve(options.shot ?? `annotate-${component.replace(/^Mui/, '')}${propsKey === 'base' ? '' : `-${propsKey.replace(/[=,]/g, '-')}`}.png`);

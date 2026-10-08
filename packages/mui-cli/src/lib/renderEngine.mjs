@@ -64,7 +64,7 @@ export function helpersFor(page) {
       await page.screenshot({ path: outPath, clip });
       return outPath;
     },
-    /** Put the current render in a state the way a user would: steps of { click | hover: selector, nth? }, { tab: true }, { down | up: true }, { emulate: { touch?, print?, features?, width? } }. */
+    /** Put the current render in a state the way a user would: steps of { click | hover: selector, nth? }, { tab: true }, { down | up: true }, { settle: selector }, { emulate: { touch?, print?, features?, width? } }. */
     interact: async (steps) => {
       const client = await cdpOf(page);
       for (const step of steps) {
@@ -110,6 +110,21 @@ export function helpersFor(page) {
           }
           await page.mouse.move(0, 0);
           await page.waitForTimeout(100);
+        } else if (step.settle) {
+          // an element that mounts late (a popper positioning itself): visible, then its box unchanged across two frames
+          await page.locator(step.settle).first().waitFor({ state: 'visible', timeout: 2000 }).catch(() => {});
+          await page.evaluate(async (selector) => {
+            let previous = null;
+            for (let i = 0; i < 60; i += 1) {
+              await new Promise((resolve) => requestAnimationFrame(resolve));
+              const box = document.querySelector(selector)?.getBoundingClientRect();
+              const key = box && `${box.x},${box.y},${box.width},${box.height}`;
+              if (key && key === previous) {
+                return;
+              }
+              previous = key;
+            }
+          }, step.settle);
         } else if (step.down) {
           await page.mouse.down();
         } else if (step.up) {
@@ -264,6 +279,8 @@ export async function bootEngine({ hostRoot, themeDirs = [] }) {
         const mount = document.getElementById('mount');
         mount.innerHTML = '';
         mount.removeAttribute('style');
+        // portals (an open menu) live outside #mount and would be the next render's first match
+        [...document.body.children].filter((el) => el !== mount && el.tagName !== 'SCRIPT').forEach((el) => el.remove());
         document.documentElement.removeAttribute('data-mui-color-scheme');
       });
       pool.set(key, [...(pool.get(key) ?? []), page]);

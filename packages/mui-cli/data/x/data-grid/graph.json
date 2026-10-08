@@ -1,0 +1,349 @@
+{
+  "$source": {
+    "mui": "9.4.0",
+    "x": "9.14.0"
+  },
+  "components": [
+    "MuiDataGrid"
+  ],
+  "graph": {
+    "MuiDataGrid": {
+      "contentSource": "typography.body2",
+      "routes": {
+        "autoHeight": [
+          "&.MuiDataGrid-autoHeight"
+        ],
+        "autosizing": [
+          "&.MuiDataGrid-autosizing"
+        ],
+        "root--densityStandard": [
+          "&.MuiDataGrid-root--densityStandard"
+        ],
+        "root--densityComfortable": [
+          "&.MuiDataGrid-root--densityComfortable"
+        ],
+        "root--densityCompact": [
+          "&.MuiDataGrid-root--densityCompact"
+        ],
+        "root--disableUserSelection": [
+          "&.MuiDataGrid-root--disableUserSelection"
+        ],
+        "root--noToolbar": [
+          "&.MuiDataGrid-root--noToolbar"
+        ],
+        "withVerticalBorder": [
+          "&.MuiDataGrid-withVerticalBorder"
+        ],
+        "actionsCell": [
+          "& .MuiDataGrid-actionsCell"
+        ],
+        "booleanCell": [
+          "& .MuiDataGrid-booleanCell"
+        ],
+        "cell": [
+          "& .MuiDataGrid-cell"
+        ],
+        "cell--editable": [
+          "& .MuiDataGrid-cell--editable"
+        ],
+        "cell--editing": [
+          "& .MuiDataGrid-cell--editing"
+        ],
+        "cell--flex": [
+          "& .MuiDataGrid-cell--flex"
+        ],
+        "cell--pinnedLeft": [
+          "& .MuiDataGrid-cell--pinnedLeft"
+        ],
+        "cell--pinnedRight": [
+          "& .MuiDataGrid-cell--pinnedRight"
+        ],
+        "cell--rangeBottom": [
+          "& .MuiDataGrid-cell--rangeBottom"
+        ],
+        "cell--rangeLeft": [
+          "& .MuiDataGrid-cell--rangeLeft"
+        ],
+        "cell--rangeRight": [
+          "& .MuiDataGrid-cell--rangeRight"
+        ],
+        "cell--rangeTop": [
+          "& .MuiDataGrid-cell--rangeTop"
+        ],
+        "cell--withFillHandle": [
+          "& .MuiDataGrid-cell--withFillHandle"
+        ],
+        "cell--fillPreview": [
+          "& .MuiDataGrid-cell--fillPreview"
+        ],
+        "cell--fillPreviewTop": [
+          "& .MuiDataGrid-cell--fillPreviewTop"
+        ],
+        "cell--fillPreviewBottom": [
+          "& .MuiDataGrid-cell--fillPreviewBottom"
+        ],
+        "cell--fillPreviewLeft": [
+          "& .MuiDataGrid-cell--fillPreviewLeft"
+        ],
+        "cell--fillPreviewRight": [
+          "& .MuiDataGrid-cell--fillPreviewRight"
+        ],
+        "cell--selectionMode": [
+          "& .MuiDataGrid-cell--selectionMode"
+        ],
+        "cell--textCenter": [
+          "& .MuiDataGrid-cell--textCenter"
+        ],
+        "cell--textLeft": [
+          "& .MuiDataGrid-cell--textLeft"
+        ],
+        "cell--textRight": [
+          "& .MuiDataGrid-cell--textRight"
+        ],
+        "cell--withLeftBorder": [
+          "& .MuiDataGrid-cell--withLeftBorder"
+        ],
+        "cell--withRightBorder": [
+          "& .MuiDataGrid-cell--withRightBorder"
+        ],
+        "cellCheckbox": [
+          "& .MuiDataGrid-cellCheckbox"
+        ],
+        "cellEmpty": [
+          "& .MuiDataGrid-cellEmpty"
+        ],
+        "cellOffsetLeft": [
+          "& .MuiDataGrid-cellOffsetLeft"
+        ],
+        "cellSkeleton": [
+          "& .MuiDataGrid-cellSkeleton"
+        ],
+        "checkboxInput": [
+          "& .MuiDataGrid-checkboxInput"
+        ],
+        "columnHeader": [
+          "& .MuiDataGrid-columnHeader"
+        ],
+        "columnHeader--alignCenter": [
+          "& .MuiDataGrid-columnHeader--alignCenter"
+        ],
+        "columnHeader--alignLeft": [
+          "& .MuiDataGrid-columnHeader--alignLeft"
+        ],
+        "columnHeader--alignRight": [
+          "& .MuiDataGrid-columnHeader--alignRight"
+        ],
+        "columnHeader--dragging": [
+          "& .MuiDataGrid-columnHeader--dragging"
+        ],
+        "columnHeader--emptyGroup": [
+          "& .MuiDataGrid-columnHeader--emptyGroup"
+        ],
+        "columnHeader--filledGroup": [
+          "& .MuiDataGrid-columnHeader--filledGroup"
+        ],
+        "columnHeader--filtered": [
+          "& .MuiDataGrid-columnHeader--filtered"
+        ],
+        "columnHeader--last": [
+          "& .MuiDataGrid-columnHeader--last"
+        ],
+        "columnHeader--moving": [
+          "& .MuiDataGrid-columnHeader--moving"
+        ],
+        "columnHeader--numeric": [
+          "& .MuiDataGrid-columnHeader--numeric"
+        ],
+        "columnHeader--pinnedLeft": [
+          "& .MuiDataGrid-columnHeader--pinnedLeft"
+        ],
+        "columnHeader--pinnedRight": [
+          "& .MuiDataGrid-columnHeader--pinnedRight"
+        ],
+        "columnHeader--siblingFocused": [
+          "& .MuiDataGrid-columnHeader--siblingFocused"
+        ],
+        "columnHeader--sortable": [
+          "& .MuiDataGrid-columnHeader--sortable"
+        ],
+        "columnHeader--sorted": [
+          "& .MuiDataGrid-columnHeader--sorted"
+        ],
+        "columnHeader--withLeftBorder": [
+          "& .MuiDataGrid-columnHeader--withLeftBorder"
+        ],
+        "columnHeader--withRightBorder": [
+          "& .MuiDataGrid-columnHeader--withRightBorder"
+        ],
+        "columnHeaderCheckbox": [
+          "& .MuiDataGrid-columnHeaderCheckbox"
+        ],
+        "columnHeaderDraggableContainer": [
+          "& .MuiDataGrid-columnHeaderDraggableContainer"
+        ],
+        "columnHeaderTitleContainer": [
+          "& .MuiDataGrid-columnHeaderTitleContainer"
+        ],
+        "columnHeaderTitleContainerContent": [
+          "& .MuiDataGrid-columnHeaderTitleContainerContent"
+        ],
+        "columnSeparator": [
+          "& .MuiDataGrid-columnSeparator"
+        ],
+        "columnSeparator--resizable": [
+          "& .MuiDataGrid-columnSeparator--resizable"
+        ],
+        "columnSeparator--resizing": [
+          "& .MuiDataGrid-columnSeparator--resizing"
+        ],
+        "columnSeparator--sideLeft": [
+          "& .MuiDataGrid-columnSeparator--sideLeft"
+        ],
+        "columnSeparator--sideRight": [
+          "& .MuiDataGrid-columnSeparator--sideRight"
+        ],
+        "container--bottom": [
+          "& .MuiDataGrid-container--bottom"
+        ],
+        "container--top": [
+          "& .MuiDataGrid-container--top"
+        ],
+        "detailPanelToggleCell": [
+          "& .MuiDataGrid-detailPanelToggleCell"
+        ],
+        "detailPanelToggleCell--expanded": [
+          "& .MuiDataGrid-detailPanelToggleCell--expanded"
+        ],
+        "editBooleanCell": [
+          "& .MuiDataGrid-editBooleanCell"
+        ],
+        "filterIcon": [
+          "& .MuiDataGrid-filterIcon"
+        ],
+        "filler--borderBottom": [
+          "& .MuiDataGrid-filler--borderBottom"
+        ],
+        "filler--pinnedLeft": [
+          "& .MuiDataGrid-filler--pinnedLeft"
+        ],
+        "filler--pinnedRight": [
+          "& .MuiDataGrid-filler--pinnedRight"
+        ],
+        "groupingCriteriaCell": [
+          "& .MuiDataGrid-groupingCriteriaCell"
+        ],
+        "groupingCriteriaCellLoadingContainer": [
+          "& .MuiDataGrid-groupingCriteriaCellLoadingContainer"
+        ],
+        "groupingCriteriaCellToggle": [
+          "& .MuiDataGrid-groupingCriteriaCellToggle"
+        ],
+        "headerFilterRow": [
+          "& .MuiDataGrid-headerFilterRow"
+        ],
+        "iconSeparator": [
+          "& .MuiDataGrid-iconSeparator"
+        ],
+        "menuIcon": [
+          "& .MuiDataGrid-menuIcon"
+        ],
+        "menuIconButton": [
+          "& .MuiDataGrid-menuIconButton"
+        ],
+        "menuList": [
+          "& .MuiDataGrid-menuList"
+        ],
+        "menuOpen": [
+          "& .MuiDataGrid-menuOpen"
+        ],
+        "overlayWrapperInner": [
+          "& .MuiDataGrid-overlayWrapperInner"
+        ],
+        "pinnedRows": [
+          "& .MuiDataGrid-pinnedRows"
+        ],
+        "pinnedRows--bottom": [
+          "& .MuiDataGrid-pinnedRows--bottom"
+        ],
+        "pinnedRows--top": [
+          "& .MuiDataGrid-pinnedRows--top"
+        ],
+        "row": [
+          "& .MuiDataGrid-row"
+        ],
+        "row--borderBottom": [
+          "& .MuiDataGrid-row--borderBottom"
+        ],
+        "row--detailPanelExpanded": [
+          "& .MuiDataGrid-row--detailPanelExpanded"
+        ],
+        "row--dragging": [
+          "& .MuiDataGrid-row--dragging"
+        ],
+        "row--dynamicHeight": [
+          "& .MuiDataGrid-row--dynamicHeight"
+        ],
+        "row--editable": [
+          "& .MuiDataGrid-row--editable"
+        ],
+        "row--editing": [
+          "& .MuiDataGrid-row--editing"
+        ],
+        "row--firstVisible": [
+          "& .MuiDataGrid-row--firstVisible"
+        ],
+        "row--lastVisible": [
+          "& .MuiDataGrid-row--lastVisible"
+        ],
+        "rowReorderCell": [
+          "& .MuiDataGrid-rowReorderCell"
+        ],
+        "rowReorderCell--draggable": [
+          "& .MuiDataGrid-rowReorderCell--draggable"
+        ],
+        "rowReorderCellContainer": [
+          "& .MuiDataGrid-rowReorderCellContainer"
+        ],
+        "rowReorderCellPlaceholder": [
+          "& .MuiDataGrid-rowReorderCellPlaceholder"
+        ],
+        "rowSkeleton": [
+          "& .MuiDataGrid-rowSkeleton"
+        ],
+        "scrollbar": [
+          "& .MuiDataGrid-scrollbar"
+        ],
+        "scrollbar--horizontal": [
+          "& .MuiDataGrid-scrollbar--horizontal"
+        ],
+        "scrollbar--vertical": [
+          "& .MuiDataGrid-scrollbar--vertical"
+        ],
+        "scrollbarFiller": [
+          "& .MuiDataGrid-scrollbarFiller"
+        ],
+        "scrollbarFiller--pinnedRight": [
+          "& .MuiDataGrid-scrollbarFiller--pinnedRight"
+        ],
+        "sortIcon": [
+          "& .MuiDataGrid-sortIcon"
+        ],
+        "treeDataGroupingCell": [
+          "& .MuiDataGrid-treeDataGroupingCell"
+        ],
+        "treeDataGroupingCellLoadingContainer": [
+          "& .MuiDataGrid-treeDataGroupingCellLoadingContainer"
+        ],
+        "treeDataGroupingCellToggle": [
+          "& .MuiDataGrid-treeDataGroupingCellToggle"
+        ],
+        "withBorderColor": [
+          "& .MuiDataGrid-withBorderColor"
+        ],
+        "row--beingDragged": [
+          "& .MuiDataGrid-row--beingDragged"
+        ]
+      }
+    }
+  }
+}

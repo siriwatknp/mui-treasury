@@ -55,7 +55,8 @@ test('sub-page titles become section prefixes; nested features stay under the pr
 });
 
 test('resolveToken: X names, aliases and product slugs', () => {
-  assert.deepEqual(resolveToken('DataGrid'), { kind: 'x', product: 'data-grid', label: 'DataGrid' });
+  assert.deepEqual(resolveToken('DataGrid'), { kind: 'x', product: 'data-grid', label: 'DataGrid', component: 'MuiDataGrid' });
+  assert.deepEqual(resolveToken('DatePicker'), { kind: 'x', product: 'date-pickers', label: 'DatePicker' });
   assert.equal(resolveToken('DataGridPremium').product, 'data-grid');
   assert.equal(resolveToken('DatePicker').product, 'date-pickers');
   assert.equal(resolveToken('grid').product, 'data-grid');
@@ -63,11 +64,20 @@ test('resolveToken: X names, aliases and product slugs', () => {
   assert.equal(resolveToken('scheduler'), null);
 });
 
-test('mui component <X> prints the feature map; style commands point to demos', () => {
-  const map = run('component', 'DataGrid');
-  assert.ok(map.includes('MUI X data-grid') && map.includes('filtering') && map.includes('PLAN'));
-  assert.ok(run('data-grid').includes('MUI X data-grid'));
-  fails(['verify', 'DataGrid'], /MUI X — style rows cover Material UI only.*mui demos data-grid/);
+test('mui component <X> prints the feature map for products without style rows; style commands point to demos', () => {
+  const map = run('component', 'DatePicker');
+  assert.ok(map.includes('MUI X date-pickers') && map.includes('PLAN'));
+  assert.ok(run('date-pickers').includes('MUI X date-pickers'));
+  fails(['annotate', 'DatePicker'], /MUI X — style rows cover Material UI and the Data Grid only.*mui demos date-pickers/);
+  fails(['verify', 'DataGrid'], /MUI X — verify covers Material UI only.*mui annotate DataGrid.*mui demos data-grid/);
+  fails(['diff', 'DataGrid', '--theme', path.resolve(BIN, '../../test/fixtures/code-standard.theme.ts')], /MUI X — diff covers Material UI only/);
+});
+
+test('mui component DataGrid prints its style rows, nested slots included', () => {
+  const out = run('component', 'DataGrid', '--slot', 'cell');
+  assert.ok(out.startsWith('MuiDataGrid — ') && out.includes('mui demos data-grid'));
+  assert.ok(out.includes('& .${gridClasses.cell}'));
+  assert.ok(run('data-grid').startsWith('MuiDataGrid — '));
 });
 
 test('mui demos <X> [feature] [demo]', () => {
@@ -84,7 +94,8 @@ test('mui demos <X> [feature] [demo]', () => {
 });
 
 test('--json envelopes: x-features, x-demos, x-demo', () => {
-  assert.equal(JSON.parse(run('--json', 'component', 'DataGrid')).type, 'x-features');
+  assert.equal(JSON.parse(run('--json', 'component', 'DatePicker')).type, 'x-features');
+  assert.equal(JSON.parse(run('--json', 'component', 'DataGrid')).type, 'component');
   const feat = JSON.parse(run('--json', 'demos', 'data-grid', 'filtering'));
   assert.equal(feat.type, 'x-demos');
   assert.ok(feat.data.demos.every((d) => d.plan && !('source' in d) && !('analysis' in d)));

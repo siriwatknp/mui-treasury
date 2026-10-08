@@ -88,7 +88,7 @@ export async function run(program, name, options) {
     return;
   }
   const target = resolveToken(name);
-  if (target?.kind === 'x') {
+  if (target?.kind === 'x' && !target.component) {
     (await import('../lib/xRender.mjs')).renderFeatureMap(program, target.product, target.label);
     return;
   }
@@ -137,7 +137,7 @@ export async function run(program, name, options) {
     return;
   }
   const verified = all.filter((r) => r.verified).length;
-  console.log(`${component} — ${all.length} style rows${verified ? ` · ${verified} verified by render` : ''}${page ? ` · ${page.demos.length} docs demos (mui demos ${short(component)})` : ''}`);
+  console.log(`${component} — ${all.length} style rows${verified ? ` · ${verified} verified by render` : ''}${page ? ` · ${page.demos.length} docs demos (mui demos ${short(component)})` : ''}${target?.kind === 'x' ? ` · docs demos: mui demos ${target.product}` : ''}`);
   const reasons = Object.entries(unconfirmed);
   console.log(reasons.length ? `not verified: ${reasons.map(([k, n]) => `${n} ${k}`).join(', ')}\n` : '');
   printRelated(component, related);
