@@ -77,3 +77,77 @@ ${TREE_SCENARIOS}`,
   render: (spread) =>
     `<div style={{ width: 280 }}><C ${spread}><TreeItem itemId="grid" label="Data Grid"><TreeItem itemId="grid-community" label="Community" /><TreeItem itemId="grid-pro" label="Pro" /></TreeItem><TreeItem itemId="pickers" label="Date Pickers" /></C></div>`,
 };
+
+// "now" is the real clock in MUI X pickers (today's highlight, the Today action): the adapter pins it so renders repeat
+const PICKER_SETUP = `import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DayCalendarSkeleton } from '@mui/x-date-pickers';
+import dayjs from 'dayjs';
+const NOW = '2026-04-17T10:30:00';
+class FixedNowAdapter extends AdapterDayjs {
+  constructor(options) {
+    super(options);
+    const date = this.date;
+    this.date = (v, timezone) => date(v === undefined ? NOW : v, timezone);
+  }
+}
+const day = dayjs(NOW);
+const scenarios = {
+  'week-number': { displayWeekNumber: true },
+  loading: { loading: true, renderLoading: () => <DayCalendarSkeleton /> },
+  outside: { showDaysOutsideCurrentMonth: true },
+  switcher: { showViewSwitcher: true },
+  shortcuts: { slotProps: { shortcuts: { items: [{ label: 'Today', getValue: () => day }] } } },
+  'action-bar': { slotProps: { actionBar: { actions: ['clear', 'today', 'cancel', 'accept'] } } },
+  error: { minDate: day.add(1, 'day') },
+  'min-time': { minTime: day.hour(11).minute(0) },
+};
+`;
+
+const picker = (props) => ({
+  imports: PICKER_SETUP,
+  props: `{ ${props}, ...scenarios[props.scenario] }`,
+  local: ['scenario'],
+  render: (spread) => `<LocalizationProvider dateAdapter={FixedNowAdapter}><C ${spread} /></LocalizationProvider>`,
+});
+
+const calendar = picker('value: day, reduceAnimations: false');
+const clock = picker('value: day, ampm: true, ampmInClock: true');
+const field = (variant) => picker(`value: day, label: 'Start date'${variant ? `, variant: '${variant}'` : ''}`);
+const staticPicker = picker("value: day, ampm: true, slotProps: { tabs: { hidden: false } }");
+
+/** Fixtures per MUI X Date Pickers theme key; each renders through the export xStyled names for it. */
+export const DATE_PICKERS = {
+  MuiDateCalendar: calendar,
+  MuiDayCalendar: calendar,
+  MuiPickersCalendarHeader: calendar,
+  MuiPickersArrowSwitcher: calendar,
+  MuiPickerDay: calendar,
+  MuiPickersFadeTransitionGroup: calendar,
+  MuiPickersSlideTransition: calendar,
+  MuiDayCalendarSkeleton: picker('style: {}'),
+  MuiMonthCalendar: picker('value: day'),
+  MuiYearCalendar: picker('value: day'),
+  MuiTimeClock: clock,
+  MuiClock: clock,
+  MuiClockPointer: clock,
+  MuiClockNumber: clock,
+  MuiDigitalClock: picker('value: day'),
+  MuiMultiSectionDigitalClock: picker('value: day'),
+  MuiMultiSectionDigitalClockSection: picker('value: day'),
+  MuiPickersTextField: field(),
+  MuiPickersInputBase: field(),
+  MuiPickersOutlinedInput: field(),
+  MuiPickersSectionList: field(),
+  MuiPickersFilledInput: field('filled'),
+  MuiPickersInput: field('standard'),
+  MuiPickersLayout: staticPicker,
+  MuiPickersToolbar: staticPicker,
+  MuiDatePickerToolbar: staticPicker,
+  MuiTimePickerToolbar: staticPicker,
+  MuiPickersToolbarText: staticPicker,
+  MuiPickersToolbarButton: staticPicker,
+  MuiDateTimePickerToolbar: staticPicker,
+  MuiDateTimePickerTabs: staticPicker,
+  MuiPickerPopper: picker('value: day, open: true'),
+};

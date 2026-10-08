@@ -1,0 +1,132 @@
+{
+  "$note": "How MUI X Date Pickers components render for annotate: props and clicks that show each slot, and why a slot can't be shown.",
+  "components": {
+    "MuiDateCalendar": {
+      "standalone": true
+    },
+    "MuiDayCalendar": {
+      "standalone": true,
+      "slotProps": {
+        "weekNumberLabel": {
+          "scenario": "week-number"
+        },
+        "weekNumber": {
+          "scenario": "week-number"
+        },
+        "loadingContainer": {
+          "scenario": "loading"
+        }
+      }
+    },
+    "MuiPickersCalendarHeader": {
+      "standalone": true
+    },
+    "MuiPickersArrowSwitcher": {
+      "standalone": true
+    },
+    "MuiPickerDay": {
+      "standalone": true
+    },
+    "MuiPickersFadeTransitionGroup": {
+      "standalone": true
+    },
+    "MuiPickersSlideTransition": {
+      "standalone": true,
+      "unreachable": {
+        "slideEnter-left": "exists only while the calendar slides to another month",
+        "slideEnter-right": "exists only while the calendar slides to another month",
+        "slideEnterActive": "exists only while the calendar slides to another month",
+        "slideExit": "exists only while the calendar slides to another month",
+        "slideExitActiveLeft-left": "exists only while the calendar slides to another month",
+        "slideExitActiveLeft-right": "exists only while the calendar slides to another month"
+      }
+    },
+    "MuiDayCalendarSkeleton": {
+      "standalone": true
+    },
+    "MuiMonthCalendar": {
+      "standalone": true
+    },
+    "MuiYearCalendar": {
+      "standalone": true
+    },
+    "MuiTimeClock": {
+      "standalone": true,
+      "slotProps": {
+        "arrowSwitcher": {
+          "scenario": "switcher"
+        }
+      }
+    },
+    "MuiClock": {
+      "standalone": true
+    },
+    "MuiClockPointer": {
+      "standalone": true
+    },
+    "MuiClockNumber": {
+      "standalone": true,
+      "slotProps": {
+        "disabled": {
+          "scenario": "min-time"
+        }
+      }
+    },
+    "MuiDigitalClock": {
+      "standalone": true
+    },
+    "MuiMultiSectionDigitalClock": {
+      "standalone": true
+    },
+    "MuiMultiSectionDigitalClockSection": {
+      "standalone": true
+    },
+    "MuiPickersTextField": {
+      "standalone": true
+    },
+    "MuiPickersInputBase": {
+      "standalone": true
+    },
+    "MuiPickersOutlinedInput": {
+      "standalone": true
+    },
+    "MuiPickersSectionList": {
+      "standalone": true
+    },
+    "MuiPickersFilledInput": {
+      "standalone": true
+    },
+    "MuiPickersInput": {
+      "standalone": true
+    },
+    "MuiPickersLayout": {
+      "standalone": true
+    },
+    "MuiPickersToolbar": {
+      "standalone": true
+    },
+    "MuiDatePickerToolbar": {
+      "standalone": true
+    },
+    "MuiTimePickerToolbar": {
+      "standalone": true
+    },
+    "MuiPickersToolbarText": {
+      "standalone": true
+    },
+    "MuiPickersToolbarButton": {
+      "standalone": true
+    },
+    "MuiDateTimePickerToolbar": {
+      "standalone": true
+    },
+    "MuiDateTimePickerTabs": {
+      "standalone": true
+    },
+    "MuiPickerPopper": {
+      "standalone": true
+    }
+  },
+  "renders": {},
+  "rows": {}
+}

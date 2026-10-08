@@ -12,6 +12,12 @@ export const X_STYLED = {
     keys: ['MuiDataGrid'],
     exports: { MuiDataGrid: 'DataGrid' },
   },
+  // a key with no export of its own renders through the export that shows it inline (MuiDayCalendar → DateCalendar)
+  'date-pickers': {
+    package: '@mui/x-date-pickers',
+    keys: ['MuiDateCalendar', 'MuiDayCalendar', 'MuiPickersCalendarHeader', 'MuiPickersArrowSwitcher', 'MuiPickerDay', 'MuiPickersFadeTransitionGroup', 'MuiPickersSlideTransition', 'MuiDayCalendarSkeleton', 'MuiMonthCalendar', 'MuiYearCalendar', 'MuiTimeClock', 'MuiClock', 'MuiClockPointer', 'MuiClockNumber', 'MuiDigitalClock', 'MuiMultiSectionDigitalClock', 'MuiMultiSectionDigitalClockSection', 'MuiPickersTextField', 'MuiPickersInputBase', 'MuiPickersOutlinedInput', 'MuiPickersFilledInput', 'MuiPickersInput', 'MuiPickersSectionList', 'MuiPickersLayout', 'MuiPickersToolbar', 'MuiDatePickerToolbar', 'MuiTimePickerToolbar', 'MuiPickersToolbarText', 'MuiPickersToolbarButton', 'MuiDateTimePickerToolbar', 'MuiDateTimePickerTabs', 'MuiPickerPopper'],
+    exports: { MuiDateCalendar: 'DateCalendar', MuiDayCalendar: 'DateCalendar', MuiPickersCalendarHeader: 'DateCalendar', MuiPickersArrowSwitcher: 'DateCalendar', MuiPickerDay: 'DateCalendar', MuiPickersFadeTransitionGroup: 'DateCalendar', MuiPickersSlideTransition: 'DateCalendar', MuiDayCalendarSkeleton: 'DayCalendarSkeleton', MuiMonthCalendar: 'MonthCalendar', MuiYearCalendar: 'YearCalendar', MuiTimeClock: 'TimeClock', MuiClock: 'TimeClock', MuiClockPointer: 'TimeClock', MuiClockNumber: 'TimeClock', MuiDigitalClock: 'DigitalClock', MuiMultiSectionDigitalClock: 'MultiSectionDigitalClock', MuiMultiSectionDigitalClockSection: 'MultiSectionDigitalClock', MuiPickersTextField: 'DateField', MuiPickersInputBase: 'DateField', MuiPickersOutlinedInput: 'DateField', MuiPickersFilledInput: 'DateField', MuiPickersInput: 'DateField', MuiPickersSectionList: 'DateField', MuiPickersLayout: 'StaticDatePicker', MuiPickersToolbar: 'StaticDatePicker', MuiDatePickerToolbar: 'StaticDatePicker', MuiTimePickerToolbar: 'StaticTimePicker', MuiPickersToolbarText: 'StaticTimePicker', MuiPickersToolbarButton: 'StaticTimePicker', MuiDateTimePickerToolbar: 'StaticDateTimePicker', MuiDateTimePickerTabs: 'StaticDateTimePicker', MuiPickerPopper: 'DesktopDatePicker' },
+  },
   'tree-view': {
     package: '@mui/x-tree-view',
     keys: ['MuiSimpleTreeView', 'MuiRichTreeView', 'MuiTreeItem', 'MuiTreeItemLoader', 'MuiTreeItemDragAndDropOverlay'],

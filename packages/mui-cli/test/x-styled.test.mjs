@@ -34,7 +34,11 @@ test('@mui/system styled slots are recorded (toolbar, footer, panel content)', (
 });
 
 test('X tokens resolve to a theme key only when the product has style rows', () => {
-  assert.deepEqual(xStyledProducts(), ['data-grid', 'tree-view']);
+  assert.deepEqual(xStyledProducts(), ['data-grid', 'date-pickers', 'tree-view']);
+  assert.equal(resolveToken('DateCalendar').component, 'MuiDateCalendar');
+  // DatePicker styles nothing itself: its parts are the keys
+  assert.equal(resolveToken('DatePicker').component, undefined);
+  assert.equal(resolveToken('PickersLayout').component, 'MuiPickersLayout');
   assert.equal(resolveToken('TreeItem').component, 'MuiTreeItem');
   assert.equal(resolveToken('RichTreeView').component, 'MuiRichTreeView');
   assert.equal(resolveToken('tree').component, 'MuiSimpleTreeView');
@@ -42,6 +46,8 @@ test('X tokens resolve to a theme key only when the product has style rows', () 
   assert.equal(resolveToken('DataGridPremium').component, 'MuiDataGrid');
   assert.equal(resolveToken('grid').component, 'MuiDataGrid');
   assert.equal(resolveToken('BarChart').component, undefined);
+  assert.equal(xProductOfKey('MuiDayCalendar'), 'date-pickers');
+  assert.equal(importOf('MuiDayCalendar'), "import { DateCalendar as C } from '@mui/x-date-pickers';");
   assert.equal(xProductOfKey('MuiDataGrid'), 'data-grid');
   assert.equal(xProductOfKey('MuiButton'), null);
 });

@@ -39,7 +39,11 @@ export async function drawSlot(runCapture, helpers, { component, slot = 'root', 
 export async function run(program, name, options) {
   const target = resolveToken(name);
   if (target?.kind === 'x' && !target.component) {
-    const { xStyledProducts } = await import('../lib/xStyled.mjs');
+    const { X_STYLED, xStyledProducts } = await import('../lib/xStyled.mjs');
+    if (xStyledProducts().includes(target.product)) {
+      const parts = X_STYLED[target.product].keys.map((k) => k.replace(/^Mui/, ''));
+      throw new Error(`${target.label} has no styles of its own — annotate one of the parts it renders: ${parts.join(', ')}`);
+    }
     const covered = ['Material UI', ...xStyledProducts().map((p) => `MUI X ${xProductLabel[p]}`)].join(', ');
     throw new Error(`${target.label} is MUI X — style rows cover ${covered} for now; \`mui demos ${target.product}\` lists its demos`);
   }

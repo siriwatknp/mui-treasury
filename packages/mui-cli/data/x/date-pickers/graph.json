@@ -1,0 +1,115 @@
+{
+  "$source": {
+    "mui": "9.4.0",
+    "x": "9.14.0"
+  },
+  "components": [
+    "MuiClock",
+    "MuiClockNumber",
+    "MuiClockPointer",
+    "MuiDateCalendar",
+    "MuiDatePickerToolbar",
+    "MuiDateTimePickerTabs",
+    "MuiDateTimePickerToolbar",
+    "MuiDayCalendar",
+    "MuiDayCalendarSkeleton",
+    "MuiDigitalClock",
+    "MuiMonthCalendar",
+    "MuiMultiSectionDigitalClock",
+    "MuiMultiSectionDigitalClockSection",
+    "MuiPickerDay",
+    "MuiPickerPopper",
+    "MuiPickersArrowSwitcher",
+    "MuiPickersCalendarHeader",
+    "MuiPickersFadeTransitionGroup",
+    "MuiPickersFilledInput",
+    "MuiPickersInput",
+    "MuiPickersInputBase",
+    "MuiPickersLayout",
+    "MuiPickersOutlinedInput",
+    "MuiPickersSectionList",
+    "MuiPickersSlideTransition",
+    "MuiPickersTextField",
+    "MuiPickersToolbar",
+    "MuiPickersToolbarButton",
+    "MuiPickersToolbarText",
+    "MuiTimeClock",
+    "MuiTimePickerToolbar",
+    "MuiYearCalendar"
+  ],
+  "graph": {
+    "MuiDateCalendar": {
+      "composes": [
+        "MuiMonthCalendar",
+        "MuiPickerDay",
+        "MuiPickersCalendarHeader",
+        "MuiYearCalendar"
+      ]
+    },
+    "MuiDateTimePickerToolbar": {
+      "extends": "MuiPickersToolbar"
+    },
+    "MuiMonthCalendar": {
+      "contentSource": "typography.subtitle1"
+    },
+    "MuiPickerDay": {
+      "contentSource": "typography.caption"
+    },
+    "MuiPickersCalendarHeader": {
+      "contentSource": "typography.body1"
+    },
+    "MuiPickersFilledInput": {
+      "extends": "MuiPickersInputBase",
+      "contentSource": "typography.body1",
+      "contentSourceVia": "MuiPickersInputBase"
+    },
+    "MuiPickersInput": {
+      "extends": "MuiPickersInputBase",
+      "contentSource": "typography.body1",
+      "contentSourceVia": "MuiPickersInputBase"
+    },
+    "MuiPickersInputBase": {
+      "contentSource": "typography.body1"
+    },
+    "MuiPickersOutlinedInput": {
+      "extends": "MuiPickersInputBase",
+      "contentSource": "typography.body1",
+      "contentSourceVia": "MuiPickersInputBase"
+    },
+    "MuiYearCalendar": {
+      "contentSource": "typography.subtitle1"
+    },
+    "MuiClockNumber": {
+      "routes": {
+        "disabled": [
+          "&.Mui-disabled"
+        ],
+        "selected": [
+          "&.Mui-selected"
+        ]
+      }
+    },
+    "MuiPickersSlideTransition": {
+      "routes": {
+        "slideEnter-left": [
+          ".MuiPickersSlideTransition-slideEnter-left"
+        ],
+        "slideEnter-right": [
+          ".MuiPickersSlideTransition-slideEnter-right"
+        ],
+        "slideEnterActive": [
+          ".MuiPickersSlideTransition-slideEnterActive"
+        ],
+        "slideExit": [
+          ".MuiPickersSlideTransition-slideExit"
+        ],
+        "slideExitActiveLeft-left": [
+          ".MuiPickersSlideTransition-slideExitActiveLeft-left"
+        ],
+        "slideExitActiveLeft-right": [
+          ".MuiPickersSlideTransition-slideExitActiveLeft-right"
+        ]
+      }
+    }
+  }
+}

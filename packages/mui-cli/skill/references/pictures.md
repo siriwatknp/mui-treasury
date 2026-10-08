@@ -8,6 +8,8 @@ mui annotate Button --props size=small --theme ./src/theme.ts  # the component w
 
 MUI X Data Grid: `--slot` names the theme key (`styleOverrides.<slot>`, e.g. `cell`, `columnHeader`, `toolbar`, `cellCheckbox`, `skeletonLoadingOverlay`, `editInputCell`, `root--densityCompact`). Each slot renders on a grid set up to show it (checkbox selection, loading, editing, column groups, the column menu or columns panel opened…). A slot only Pro/Premium, a drag or a focus shows says so instead of drawing; a slot not in the render, hidden or 0-sized exits 1 with which one. `DataGridPro` / `DataGridPremium` share the `MuiDataGrid` key and draw on the community grid.
 
+MUI X Date Pickers: annotate the part, by its theme key — `DateCalendar`, `DayCalendar --slot weekNumber`, `PickerDay`, `PickersCalendarHeader`, `TimeClock`, `ClockPointer --slot thumb`, `DigitalClock --slot item`, `PickersTextField`, `PickersOutlinedInput`, `PickersLayout --slot actionBar`, `DatePickerToolbar`, `PickerPopper --slot paper` (opened). `DatePicker` itself styles nothing; annotate prints its parts. Renders pin "now" to 2026-04-17 10:30 so the today mark doesn't move.
+
 MUI X Tree View: `mui annotate TreeItem --slot content` (also `label`, `iconContainer`, `groupTransition`, `checkbox`, `labelInput` — drawn with the label in edit mode), `SimpleTreeView`, `RichTreeView`.
 
 ```bash

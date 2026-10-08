@@ -65,10 +65,11 @@ test('resolveToken: X names, aliases and product slugs', () => {
 });
 
 test('mui component <X> prints the feature map for products without style rows; style commands point to demos', () => {
-  const map = run('component', 'DatePicker');
-  assert.ok(map.includes('MUI X date-pickers') && map.includes('PLAN'));
-  assert.ok(run('date-pickers').includes('MUI X date-pickers'));
-  fails(['annotate', 'DatePicker'], /MUI X — style rows cover Material UI, MUI X DataGrid, MUI X Tree View for now.*mui demos date-pickers/);
+  const map = run('component', 'BarChart');
+  assert.ok(map.includes('MUI X charts') && map.includes('PLAN'));
+  assert.ok(run('charts').includes('MUI X charts'));
+  fails(['annotate', 'BarChart'], /MUI X — style rows cover Material UI, MUI X DataGrid, MUI X Date Pickers, MUI X Tree View for now.*mui demos charts/);
+  fails(['annotate', 'DatePicker'], /DatePicker has no styles of its own — annotate one of the parts it renders: DateCalendar, DayCalendar/);
   fails(['verify', 'DataGrid'], /MUI X — verify covers Material UI only.*mui annotate DataGrid.*mui demos data-grid/);
   fails(['diff', 'DataGrid', '--theme', path.resolve(BIN, '../../test/fixtures/code-standard.theme.ts')], /MUI X — diff covers Material UI only/);
 });
@@ -94,7 +95,7 @@ test('mui demos <X> [feature] [demo]', () => {
 });
 
 test('--json envelopes: x-features, x-demos, x-demo', () => {
-  assert.equal(JSON.parse(run('--json', 'component', 'DatePicker')).type, 'x-features');
+  assert.equal(JSON.parse(run('--json', 'component', 'BarChart')).type, 'x-features');
   assert.equal(JSON.parse(run('--json', 'component', 'DataGrid')).type, 'component');
   const feat = JSON.parse(run('--json', 'demos', 'data-grid', 'filtering'));
   assert.equal(feat.type, 'x-demos');

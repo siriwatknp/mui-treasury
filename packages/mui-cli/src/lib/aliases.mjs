@@ -64,10 +64,11 @@ export const xProductLabel = {
   'tree-view': 'Tree View',
 };
 
-function xTarget(product, label) {
-  // the theme key exporting `label` (TreeItem → MuiTreeItem); a product name or a tier (DataGridPro) → the product's first key
+function xTarget(product, label, named = false) {
+  // the theme key exporting `label` (TreeItem → MuiTreeItem); a product name, or a tier of a one-key product (DataGridPro), → its first key.
+  // A component with no styles of its own in a many-key product (DatePicker) gets none: its parts are the keys
   const keys = xStyledProducts().includes(product) ? X_STYLED[product].keys : [];
-  const component = keys.find((key) => X_STYLED[product].exports[key] === label) ?? keys[0] ?? null;
+  const component = keys.find((key) => X_STYLED[product].exports[key] === label) ?? (!named || keys.length === 1 ? keys[0] : null) ?? null;
   return { kind: 'x', product, label, ...(component ? { component } : {}) };
 }
 
@@ -90,7 +91,7 @@ export function resolveToken(token) {
     return { kind: 'core', component: `Mui${label}`, label };
   }
   if (X_COMPONENTS[token]) {
-    return xTarget(X_COMPONENTS[token], token);
+    return xTarget(X_COMPONENTS[token], token, true);
   }
   if (X_ALIASES[token]) {
     const product = X_ALIASES[token];

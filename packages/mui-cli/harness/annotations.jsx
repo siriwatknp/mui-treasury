@@ -702,6 +702,21 @@ function Annotate({ items, bounds, scheme = 'light' }) {
 
 export { Annotate };
 
+/**
+ * The size to report: the box drawn, except under a rotation (a clock's pointer), whose box is the square around the turned
+ * element — then the element's own layout size.
+ */
+function sizeOf(element, box) {
+  for (let node = element; node && node !== document.body; node = node.parentElement) {
+    const transform = getComputedStyle(node).transform;
+    const matrix = transform && transform !== 'none' ? new DOMMatrixReadOnly(transform) : null;
+    if (matrix && (Math.abs(matrix.b) > 1e-6 || Math.abs(matrix.c) > 1e-6) && element.offsetWidth !== undefined) {
+      return { width: element.offsetWidth, height: element.offsetHeight };
+    }
+  }
+  return box;
+}
+
 function labelFor(value, token) {
   const measured = round(value);
   // A raw-px token already states the measurement — `6px (6px)` says it twice.
@@ -961,10 +976,7 @@ export function resolveClaims(stage, demo, claims) {
         outline: claim.pointer,
         outlined: claim.outlined,
         wrap: claim.wrap,
-        label: labelFor(
-          measuresWidth ? box.width : box.height,
-          claim.text ?? claim.token,
-        ),
+        label: labelFor(sizeOf(element, box)[measuresWidth ? 'width' : 'height'], claim.text ?? claim.token),
         box,
         route,
       });

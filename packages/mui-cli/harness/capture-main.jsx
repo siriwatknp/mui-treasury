@@ -1079,15 +1079,6 @@ async function runAnnotate(cfg, render) {
 async function drawAnnotations({ stage, demo, component }, cfg) {
   const { claims, scheme = 'light', id = 'mui-annotate-stage' } = cfg.annotate;
   tagSlots(component);
-  // one sample per selector: a row of identical elements (pages, tabs) would repeat every label; portals (tooltips) sit outside the demo
-  const sampled = claims.map((claim, i) => {
-    const first = demo.querySelector(claim.on) ?? document.querySelector(claim.on);
-    if (!first) {
-      return claim;
-    }
-    first.setAttribute(`data-annotate-${i}`, '');
-    return { ...claim, on: `[data-annotate-${i}]` };
-  });
   // a slot the render doesn't show — not mounted, hidden until hover, or no size: the caller says which instead of an empty picture
   const absenceOf = (el) => {
     if (!el) {
@@ -1100,7 +1091,22 @@ async function drawAnnotations({ stage, demo, component }, cfg) {
     // 0 wide but tall (a full-width bar in a shrink-wrapped stage) still has a height to draw
     return box.width > 0 || box.height > 0 ? null : 'empty';
   };
-  const absences = claims.map((claim) => absenceOf(demo.querySelector(claim.on) ?? document.querySelector(claim.on)));
+  // one sample per selector, the first one shown (a calendar's leading blank day is hidden): a row of identical elements (pages,
+  // tabs) would repeat every label; portals (tooltips) sit outside the demo
+  const pick = (selector) => {
+    const inDemo = [...demo.querySelectorAll(selector)];
+    const candidates = inDemo.length ? inDemo : [...document.querySelectorAll(selector)];
+    return candidates.find((el) => !absenceOf(el)) ?? candidates[0] ?? null;
+  };
+  const picked = claims.map((claim) => pick(claim.on));
+  const sampled = claims.map((claim, i) => {
+    if (!picked[i]) {
+      return claim;
+    }
+    picked[i].setAttribute(`data-annotate-${i}`, '');
+    return { ...claim, on: `[data-annotate-${i}]` };
+  });
+  const absences = picked.map(absenceOf);
   const absent = absences.length > 0 && absences.every(Boolean) ? absences[0] : null;
   const resolved = sampled.map((claim) => ({ claim, ...resolveClaims(stage, demo, [claim]) }));
   const bounds = resolved[0]?.bounds;

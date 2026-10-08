@@ -4,7 +4,7 @@ import { DATA_DIR } from './data.mjs';
 import { HARNESS_DIR } from './renderEngine.mjs';
 import { missingPackages } from './packages.mjs';
 import { loadGraph } from './seams.mjs';
-import { DATA_GRID, RICH_TREE_VIEW, SIMPLE_TREE_VIEW } from './xFixtures.mjs';
+import { DATA_GRID, DATE_PICKERS, RICH_TREE_VIEW, SIMPLE_TREE_VIEW } from './xFixtures.mjs';
 import { importOf, xDataDir, xProductOfKey } from './xStyled.mjs';
 
 export const RENDER_DEMOS_DIR = path.join(DATA_DIR, 'material/render-demos');
@@ -80,6 +80,7 @@ export const RENDER_DEFAULTS = {
     props: "{ label: 'Probe' }",
   },
   MuiDataGrid: DATA_GRID,
+  ...DATE_PICKERS,
   MuiRichTreeView: RICH_TREE_VIEW,
   MuiTreeItem: RICH_TREE_VIEW,
   MuiSimpleTreeView: SIMPLE_TREE_VIEW,

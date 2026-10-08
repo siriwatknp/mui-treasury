@@ -128,5 +128,5 @@ test('MUI X: every slot of every theme key draws on a render that shows it, or s
     }
   }
   assert.deepEqual(failed, []);
-  assert.ok(drawn['data-grid'] >= 100 && drawn['tree-view'] >= 9, JSON.stringify(drawn));
+  assert.ok(drawn['data-grid'] >= 100 && drawn['tree-view'] >= 9 && drawn['date-pickers'] >= 84, JSON.stringify(drawn));
 });

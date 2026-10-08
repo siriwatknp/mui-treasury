@@ -14,14 +14,14 @@ mui demos tag                             # aliases resolve: tag → Chip, input
 ## MUI X (data-grid, charts, date-pickers, tree-view)
 
 ```bash
-mui component DatePicker                  # feature map: FEATURE / PLAN / DEMOS (DateTimePicker, tree, charts… resolve too); DataGrid prints its style rows instead
+mui component BarChart                    # feature map: FEATURE / PLAN / DEMOS (LineChart, charts… resolve too); DataGrid, DateCalendar, TreeItem print style rows instead
 mui demos data-grid                       # every demo of the product, with its FEATURE
 mui demos data-grid filtering             # one feature's demos (SECTION column)
 mui demos data-grid filtering QuickFilteringGrid [--js]
 mui compose data-grid/filtering:QuickFilteringGrid charts/lines:LineDataset -o demos.tsx
 ```
 
-PLAN (community / pro / premium) comes from the packages each demo imports — a `pro`/`premium` demo needs a commercial license; say so before handing it over. Feature names can hold a `/` (`rich-tree-view/editing`). Style commands cover Material UI, plus the Data Grid and Tree View for `component` rows and `annotate`.
+PLAN (community / pro / premium) comes from the packages each demo imports — a `pro`/`premium` demo needs a commercial license; say so before handing it over. Feature names can hold a `/` (`rich-tree-view/editing`). Style commands cover Material UI, plus the Data Grid, Date Pickers and Tree View for `component` rows and `annotate`.
 
 Demo names are the DEMO column **verbatim — case-sensitive PascalCase**. A miss prints the valid candidates; use one of those, don't guess variants. `--copy` writes the user's SYSTEM clipboard (only useful when the user asked for that).
 

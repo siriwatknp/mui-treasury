@@ -84,6 +84,9 @@ const shared = new Set(
     .map(([key]) => key),
 );
 
+// a style function that can't run without the component's state (MUI X range fields' active bar): its rows are left out
+const failedStyles = new Set();
+
 function collect(theme) {
   const rows = new Map();
   for (const rec of named) {
@@ -115,7 +118,13 @@ function collect(theme) {
           }
         }
       };
-      const evaluated = typeof style === 'function' ? style({ theme, ownerState: {} }) : style;
+      let evaluated;
+      try {
+        evaluated = typeof style === 'function' ? style({ theme, ownerState: {} }) : style;
+      } catch (err) {
+        failedStyles.add(`${rec.name}.${rec.slot}: ${err.message.split('\n')[0]}`);
+        return;
+      }
       (Array.isArray(evaluated) ? evaluated : [evaluated]).forEach((o) => walk(o, null, []));
     });
   }
@@ -178,4 +187,4 @@ for (const rec of named.filter((r) => r.slot === 'Root' && typeof r.overridesRes
 }
 const source = x ? { mui: muiVersion, x: JSON.parse(fs.readFileSync(path.join(xDir, 'package.json'), 'utf8')).version } : { mui: muiVersion };
 fs.writeFileSync(outFile, JSON.stringify({ $source: source, fns, rows, graph, components }));
-console.log(JSON.stringify({ rows: rows.length, components: new Set(rows.map((r) => r.component)).size, slots: new Set(rows.filter((r) => !r.internal).map((r) => `${r.component}|${r.slot}`)).size, internal: rows.filter((r) => r.internal).length, shared: shared.size, fns: Object.keys(fns).length, tokens: rows.filter((r) => r.token).length, refs: rows.filter((r) => r.refs).length, partial: rows.filter((r) => r.partial).length, onlyInVars, graphNodes: Object.keys(graph).length, routeFailures, skipped }));
+console.log(JSON.stringify({ rows: rows.length, components: new Set(rows.map((r) => r.component)).size, slots: new Set(rows.filter((r) => !r.internal).map((r) => `${r.component}|${r.slot}`)).size, internal: rows.filter((r) => r.internal).length, shared: shared.size, fns: Object.keys(fns).length, tokens: rows.filter((r) => r.token).length, refs: rows.filter((r) => r.refs).length, partial: rows.filter((r) => r.partial).length, onlyInVars, graphNodes: Object.keys(graph).length, routeFailures, skipped, failedStyles: [...failedStyles] }));
