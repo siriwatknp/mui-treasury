@@ -150,6 +150,17 @@ export const DATE_PICKERS = {
   MuiDateTimePickerToolbar: staticPicker,
   MuiDateTimePickerTabs: staticPicker,
   MuiPickerPopper: picker('value: day, open: true'),
+  // Pickers Pro: a 5-day range from the pinned date; time-range pickers have no static form, so they open
+  MuiDateRangeCalendar: picker("value: [day, day.add(4, 'day')]"),
+  MuiDateRangePickerDay: picker("value: [day, day.add(4, 'day')]"),
+  MuiMultiInputDateRangeField: picker("value: [day, day.add(4, 'day')]"),
+  MuiMultiInputTimeRangeField: picker("value: [day, day.add(2, 'hour')]"),
+  MuiMultiInputDateTimeRangeField: picker("value: [day, day.add(4, 'day')]"),
+  MuiDateRangePickerToolbar: picker("value: [day, day.add(4, 'day')]"),
+  MuiTimeRangePickerToolbar: picker("value: [day, day.add(2, 'hour')], open: true"),
+  MuiTimeRangePickerTabs: picker("value: [day, day.add(2, 'hour')], open: true"),
+  MuiDateTimeRangePickerToolbar: picker("value: [day, day.add(4, 'day')], open: true"),
+  MuiDateTimeRangePickerTabs: picker("value: [day, day.add(4, 'day')], open: true"),
 };
 
 // fixed data, no animation; the tooltip and axis highlight are held open through their controlled props, not a pointer
@@ -195,4 +206,86 @@ export const CHARTS = {
   MuiScatterPlot: chart('scatter'),
   ...Object.fromEntries(['MuiPieArcPlot', 'MuiPieArc', 'MuiPieArcLabelPlot', 'MuiPieArcLabel'].map((key) => [key, chart('pie')])),
   MuiGauge: chart('{ value: 60, width: 200, height: 200, skipAnimation: true }'),
+};
+
+// DataGridPremium (covers Pro): only the slots that need it render here, so a project without it never imports it.
+// No license key, so MUI's "missing license" watermark shows in pictures
+export const DATA_GRID_PREMIUM = {
+  requires: ['@mui/x-data-grid-premium'],
+  imports: `import { DataGridPremium, GridAiAssistantPanel } from '@mui/x-data-grid-premium';
+const at = new Date('2026-04-17T10:30:00');
+const rows = [
+  { id: 1, name: 'Ada Lovelace', role: 'Engineer', projects: 12, active: true, bio: 'Wrote the first published algorithm.' },
+  { id: 2, name: 'Grace Hopper', role: 'Engineer', projects: 8, active: false, bio: 'Built the first compiler.' },
+  { id: 3, name: 'Alan Turing', role: 'Researcher', projects: 5, active: true, bio: 'Defined computability.' },
+  { id: 4, name: 'Katherine Johnson', role: 'Researcher', projects: 9, active: true, bio: 'Calculated orbital trajectories.' },
+];
+const columns = [
+  { field: 'name', headerName: 'Name', width: 160 },
+  { field: 'role', headerName: 'Role', width: 140 },
+  { field: 'projects', headerName: 'Projects', type: 'number', width: 120 },
+  { field: 'active', headerName: 'Active', type: 'boolean', width: 110 },
+  { field: 'bio', headerName: 'Bio', width: 260 },
+];
+const pinnedRow = (id, name) => ({ id, name, role: '-', projects: 0, active: true, bio: '' });
+const scenarios = {
+  base: {},
+  pinned: {
+    initialState: { pinnedColumns: { left: ['name'], right: ['active'] } },
+    pinnedRows: { top: [pinnedRow('pt', 'Pinned top')], bottom: [pinnedRow('pb', 'Pinned bottom')] },
+    showCellVerticalBorder: true,
+    showColumnVerticalBorder: true,
+  },
+  // pinned columns with room below the rows: the filler row carries pinned fillers
+  'pinned-columns': { initialState: { pinnedColumns: { left: ['name'], right: ['active'] } } },
+  grouping: { defaultGroupingExpansionDepth: -1, initialState: { rowGrouping: { model: ['role'] }, aggregation: { model: { projects: 'sum' } } } },
+  'tree-data': { treeData: true, getTreeDataPath: (row) => [row.role, row.name], defaultGroupingExpansionDepth: -1 },
+  'detail-panel': {
+    getDetailPanelContent: ({ row }) => <div style={{ padding: 8 }}>{row.bio}</div>,
+    getDetailPanelHeight: () => 56,
+    initialState: { detailPanel: { expandedRowIds: new Set([1]) } },
+  },
+  reorder: { rowReordering: true },
+  'header-filters': { headerFilters: true, initialState: { filter: { filterModel: { items: [{ field: 'bio', operator: 'isNotEmpty' }] } } } },
+  'cell-selection': {
+    columns: columns.map((c) => (c.field === 'name' || c.field === 'role' ? { ...c, editable: true } : c)),
+    cellSelection: true,
+    cellSelectionFillHandle: true,
+    initialState: { cellSelection: { 1: { name: true, role: true }, 2: { name: true, role: true } } },
+  },
+  'multi-filter': {
+    showToolbar: true,
+    initialState: {
+      preferencePanel: { open: true, openedPanelValue: 'filters' },
+      filter: { filterModel: { logicOperator: 'or', items: [{ id: 1, field: 'name', operator: 'contains', value: 'a' }, { id: 2, field: 'role', operator: 'isNotEmpty' }] } },
+    },
+  },
+  'columns-panel': { showToolbar: true, initialState: { preferencePanel: { open: true, openedPanelValue: 'columns' } } },
+  pivot: { initialState: { sidebar: { open: true, value: 'pivot' }, pivoting: { model: { rows: [{ field: 'role' }], columns: [], values: [{ field: 'projects', aggFunc: 'sum' }] } } } },
+  ai: {
+    showToolbar: true,
+    aiAssistant: true,
+    slots: { aiAssistantPanel: GridAiAssistantPanel },
+    onPrompt: () => new Promise(() => {}),
+    aiAssistantSuggestions: [{ value: 'Group by role' }, { value: 'Sort by projects' }],
+    initialState: {
+      preferencePanel: { open: true, openedPanelValue: 'aiAssistant' },
+      aiAssistant: {
+        activeConversationIndex: 0,
+        conversations: [{ id: 'c1', title: 'Team', prompts: [
+          { value: 'Sort by projects', createdAt: at, response: { conversationId: 'c1', select: -1, filters: [], aggregation: {}, sorting: [{ column: 'projects', direction: 'desc' }], grouping: [], pivoting: {}, chart: null } },
+          { value: 'Broken request', createdAt: at, variant: 'error', helperText: 'Something failed' },
+        ] }],
+      },
+    },
+  },
+  'multi-select': {
+    columns: [...columns.slice(0, 3), { field: 'tags', headerName: 'Tags', type: 'multiSelect', width: 220, valueOptions: ['Engineer', 'Researcher', 'Frontend', 'Backend'], valueGetter: (value, row) => [row.role, 'Frontend', 'Backend'] }],
+  },
+  loading: { loading: true, slotProps: { loadingOverlay: { variant: 'skeleton', noRowsVariant: 'skeleton' } } },
+};
+`,
+  props: '{ rows, columns, disableVirtualization: true, ...scenarios[props.scenario ?? \'base\'] }',
+  local: ['scenario'],
+  render: (spread) => `<div style={{ width: 640, height: 400 }}><DataGridPremium ${spread} /></div>`,
 };

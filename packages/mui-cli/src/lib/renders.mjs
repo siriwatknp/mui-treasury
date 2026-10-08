@@ -4,8 +4,8 @@ import { DATA_DIR } from './data.mjs';
 import { HARNESS_DIR } from './renderEngine.mjs';
 import { missingPackages } from './packages.mjs';
 import { loadGraph } from './seams.mjs';
-import { CHARTS, DATA_GRID, DATE_PICKERS, RICH_TREE_VIEW, SIMPLE_TREE_VIEW } from './xFixtures.mjs';
-import { importOf, xDataDir, xProductOfKey } from './xStyled.mjs';
+import { CHARTS, DATA_GRID, DATA_GRID_PREMIUM, DATE_PICKERS, RICH_TREE_VIEW, SIMPLE_TREE_VIEW } from './xFixtures.mjs';
+import { importOf, packageOf, xDataDir, xProductOfKey } from './xStyled.mjs';
 
 export const RENDER_DEMOS_DIR = path.join(DATA_DIR, 'material/render-demos');
 export const COMPOSITION_DEMOS_DIR = path.join(DATA_DIR, 'material/composition-demos');
@@ -80,6 +80,7 @@ export const RENDER_DEFAULTS = {
     props: "{ label: 'Probe' }",
   },
   MuiDataGrid: DATA_GRID,
+  'MuiDataGrid@premium': DATA_GRID_PREMIUM,
   ...DATE_PICKERS,
   ...CHARTS,
   MuiRichTreeView: RICH_TREE_VIEW,
@@ -102,10 +103,11 @@ const ICON_CONTENT = ['MuiIconButton', 'MuiFab', 'MuiSvgIcon', 'MuiListItemIcon'
 /**
  * A module rendering `<Component {...props}>Probe</Component>` (an icon for ICON_CONTENT) — inside `parent` when the
  * component only works within one (MenuItem in MenuList, Tab in Tabs); `@node` prop values become an icon, `@fn` a no-op handler. Written once, reused (an unchanged file never reloads the page). */
-export function generatedUrl(component, parent, parentProps = {}) {
-  const defaults = RENDER_DEFAULTS[component];
+export function generatedUrl(component, parent, parentProps = {}, variant) {
+  // a variant fixture (`MuiDataGrid@premium`) renders the same key through a paid tier, in its own module
+  const defaults = RENDER_DEFAULTS[variant ? `${component}@${variant}` : component];
   const content = defaults?.content ?? (ICON_CONTENT.includes(component) ? 'node' : "'Probe'");
-  const name = `${component}${parent ? `.in.${parent}` : ''}`;
+  const name = `${component}${variant ? `@${variant}` : ''}${parent ? `.in.${parent}` : ''}`;
   const wrapperProps = Object.entries(parentProps).map(([k, v]) => ` ${k}={value(${JSON.stringify(v)})}`).join('');
   const short = (c) => c.replace(/^Mui/, '');
   const passed = defaults?.local ? `Object.entries(props).filter(([k]) => !${JSON.stringify(defaults.local)}.includes(k))` : 'Object.entries(props)';
@@ -221,9 +223,15 @@ export function renderFor(component, { props = {}, states = [], slot = 'root' })
     throw new Error(`${component.replace(/^Mui/, '')} ${slot} can't be rendered for a picture: ${entry.unreachable[slot]}`);
   }
   if (!entry || entry.standalone) {
+    const variant = entry?.slotVariant?.[slot];
+    const needs = [...new Set([packageOf(component), ...(RENDER_DEFAULTS[`${component}@${variant}`]?.requires ?? [])])];
+    const missing = product ? missingPackages(needs.map((pkg) => `import '${pkg}';`).join('\n'), path.join(process.env.MUI_CLI_HOST_ROOT ?? process.cwd(), 'noop.js')) : [];
+    if (missing.length) {
+      throw new Error(`${component.replace(/^Mui/, '')} ${slot} renders through ${missing.join(', ')}, which this project doesn't have — npm i -D ${missing.join(' ')}`);
+    }
     return {
       kind: 'generated',
-      url: generatedUrl(component, entry?.parent, entry?.parentProps),
+      url: generatedUrl(component, entry?.parent, entry?.parentProps, variant),
       props: { ...entry?.props, ...entry?.slotProps?.[slot], ...props, ...stateProps(states) },
       interaction: entry?.slotInteraction?.[slot] ?? [],
     };

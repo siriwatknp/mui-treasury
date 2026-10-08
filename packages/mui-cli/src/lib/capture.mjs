@@ -105,7 +105,7 @@ export async function stopRenderServer(hostRoot = process.cwd()) {
 }
 
 /**
- * @param {(run: (cfg: object) => Promise<any>, helpers?: { screenshotElement: Function, screenshotDrawn: Function, forcePseudo: Function }) => Promise<any>} fn
+ * @param {(run: (cfg: object) => Promise<any>, helpers?: { screenshotElement: Function, screenshotDrawn: Function, forcePseudo: Function, interact: Function, renderSheet: Function, clear: Function }) => Promise<any>} fn
  * @param {{ themeFile?: string, colorScheme?: 'light' | 'dark', scale?: number, width?: number }} [options]
  */
 let versionNoted = false;
@@ -175,6 +175,7 @@ export async function withCapture(fn, { themeFile, otherThemeFiles = [], fonts =
           forcePseudo: helper('forcePseudo'),
           interact: helper('interact'),
           renderSheet: helper('renderSheet'),
+          clear: helper('clear'),
         });
       } finally {
         await call(server.port, 'close', { id }).catch(() => {});

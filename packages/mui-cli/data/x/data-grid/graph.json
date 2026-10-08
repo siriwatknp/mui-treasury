@@ -1,7 +1,11 @@
 {
   "$source": {
     "mui": "9.4.0",
-    "x": "9.14.0"
+    "x": "9.14.0",
+    "tiers": {
+      "@mui/x-data-grid-pro": "9.14.0",
+      "@mui/x-data-grid-premium": "9.14.0"
+    }
   },
   "components": [
     "MuiDataGrid"

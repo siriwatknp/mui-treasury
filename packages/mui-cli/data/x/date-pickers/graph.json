@@ -1,7 +1,10 @@
 {
   "$source": {
     "mui": "9.4.0",
-    "x": "9.14.0"
+    "x": "9.14.0",
+    "tiers": {
+      "@mui/x-date-pickers-pro": "9.14.0"
+    }
   },
   "components": [
     "MuiClock",
@@ -9,12 +12,20 @@
     "MuiClockPointer",
     "MuiDateCalendar",
     "MuiDatePickerToolbar",
+    "MuiDateRangeCalendar",
+    "MuiDateRangePickerDay",
+    "MuiDateRangePickerToolbar",
     "MuiDateTimePickerTabs",
     "MuiDateTimePickerToolbar",
+    "MuiDateTimeRangePickerTabs",
+    "MuiDateTimeRangePickerToolbar",
     "MuiDayCalendar",
     "MuiDayCalendarSkeleton",
     "MuiDigitalClock",
     "MuiMonthCalendar",
+    "MuiMultiInputDateRangeField",
+    "MuiMultiInputDateTimeRangeField",
+    "MuiMultiInputTimeRangeField",
     "MuiMultiSectionDigitalClock",
     "MuiMultiSectionDigitalClockSection",
     "MuiPickerDay",
@@ -35,6 +46,8 @@
     "MuiPickersToolbarText",
     "MuiTimeClock",
     "MuiTimePickerToolbar",
+    "MuiTimeRangePickerTabs",
+    "MuiTimeRangePickerToolbar",
     "MuiYearCalendar"
   ],
   "graph": {
@@ -45,6 +58,9 @@
         "MuiPickersCalendarHeader",
         "MuiYearCalendar"
       ]
+    },
+    "MuiDateRangePickerDay": {
+      "contentSource": "typography.caption"
     },
     "MuiDateTimePickerToolbar": {
       "extends": "MuiPickersToolbar"
@@ -75,6 +91,9 @@
       "extends": "MuiPickersInputBase",
       "contentSource": "typography.body1",
       "contentSourceVia": "MuiPickersInputBase"
+    },
+    "MuiTimeRangePickerToolbar": {
+      "extends": "MuiPickersToolbar"
     },
     "MuiYearCalendar": {
       "contentSource": "typography.subtitle1"

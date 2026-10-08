@@ -1,5 +1,6 @@
 /**
- * @file MUI X products with style rows: the package a product's styles come from and the theme keys it owns.
+ * @file MUI X products with style rows: the package a product's styles come from (and its paid tiers, extracted when
+ * installed, rendered only for slots that need them) and the theme keys it owns.
  * Data lives in data/x/<product>/ (seams.json, graph.json, renders.json), produced by `pnpm sync-seams-x` / `sync-renders-x`.
  */
 import fs from 'node:fs';
@@ -9,6 +10,7 @@ import { DATA_DIR } from './data.mjs';
 export const X_STYLED = {
   'data-grid': {
     package: '@mui/x-data-grid',
+    tiers: ['@mui/x-data-grid-pro', '@mui/x-data-grid-premium'],
     keys: ['MuiDataGrid'],
     exports: { MuiDataGrid: 'DataGrid' },
   },
@@ -21,8 +23,11 @@ export const X_STYLED = {
   // a key with no export of its own renders through the export that shows it inline (MuiDayCalendar → DateCalendar)
   'date-pickers': {
     package: '@mui/x-date-pickers',
-    keys: ['MuiDateCalendar', 'MuiDayCalendar', 'MuiPickersCalendarHeader', 'MuiPickersArrowSwitcher', 'MuiPickerDay', 'MuiPickersFadeTransitionGroup', 'MuiPickersSlideTransition', 'MuiDayCalendarSkeleton', 'MuiMonthCalendar', 'MuiYearCalendar', 'MuiTimeClock', 'MuiClock', 'MuiClockPointer', 'MuiClockNumber', 'MuiDigitalClock', 'MuiMultiSectionDigitalClock', 'MuiMultiSectionDigitalClockSection', 'MuiPickersTextField', 'MuiPickersInputBase', 'MuiPickersOutlinedInput', 'MuiPickersFilledInput', 'MuiPickersInput', 'MuiPickersSectionList', 'MuiPickersLayout', 'MuiPickersToolbar', 'MuiDatePickerToolbar', 'MuiTimePickerToolbar', 'MuiPickersToolbarText', 'MuiPickersToolbarButton', 'MuiDateTimePickerToolbar', 'MuiDateTimePickerTabs', 'MuiPickerPopper'],
-    exports: { MuiDateCalendar: 'DateCalendar', MuiDayCalendar: 'DateCalendar', MuiPickersCalendarHeader: 'DateCalendar', MuiPickersArrowSwitcher: 'DateCalendar', MuiPickerDay: 'DateCalendar', MuiPickersFadeTransitionGroup: 'DateCalendar', MuiPickersSlideTransition: 'DateCalendar', MuiDayCalendarSkeleton: 'DayCalendarSkeleton', MuiMonthCalendar: 'MonthCalendar', MuiYearCalendar: 'YearCalendar', MuiTimeClock: 'TimeClock', MuiClock: 'TimeClock', MuiClockPointer: 'TimeClock', MuiClockNumber: 'TimeClock', MuiDigitalClock: 'DigitalClock', MuiMultiSectionDigitalClock: 'MultiSectionDigitalClock', MuiMultiSectionDigitalClockSection: 'MultiSectionDigitalClock', MuiPickersTextField: 'DateField', MuiPickersInputBase: 'DateField', MuiPickersOutlinedInput: 'DateField', MuiPickersFilledInput: 'DateField', MuiPickersInput: 'DateField', MuiPickersSectionList: 'DateField', MuiPickersLayout: 'StaticDatePicker', MuiPickersToolbar: 'StaticDatePicker', MuiDatePickerToolbar: 'StaticDatePicker', MuiTimePickerToolbar: 'StaticTimePicker', MuiPickersToolbarText: 'StaticTimePicker', MuiPickersToolbarButton: 'StaticTimePicker', MuiDateTimePickerToolbar: 'StaticDateTimePicker', MuiDateTimePickerTabs: 'StaticDateTimePicker', MuiPickerPopper: 'DesktopDatePicker' },
+    tiers: ['@mui/x-date-pickers-pro'],
+    keys: ['MuiDateCalendar', 'MuiDayCalendar', 'MuiPickersCalendarHeader', 'MuiPickersArrowSwitcher', 'MuiPickerDay', 'MuiPickersFadeTransitionGroup', 'MuiPickersSlideTransition', 'MuiDayCalendarSkeleton', 'MuiMonthCalendar', 'MuiYearCalendar', 'MuiTimeClock', 'MuiClock', 'MuiClockPointer', 'MuiClockNumber', 'MuiDigitalClock', 'MuiMultiSectionDigitalClock', 'MuiMultiSectionDigitalClockSection', 'MuiPickersTextField', 'MuiPickersInputBase', 'MuiPickersOutlinedInput', 'MuiPickersFilledInput', 'MuiPickersInput', 'MuiPickersSectionList', 'MuiPickersLayout', 'MuiPickersToolbar', 'MuiDatePickerToolbar', 'MuiTimePickerToolbar', 'MuiPickersToolbarText', 'MuiPickersToolbarButton', 'MuiDateTimePickerToolbar', 'MuiDateTimePickerTabs', 'MuiPickerPopper', 'MuiDateRangeCalendar', 'MuiDateRangePickerDay', 'MuiMultiInputDateRangeField', 'MuiMultiInputTimeRangeField', 'MuiMultiInputDateTimeRangeField', 'MuiDateRangePickerToolbar', 'MuiTimeRangePickerToolbar', 'MuiTimeRangePickerTabs', 'MuiDateTimeRangePickerToolbar', 'MuiDateTimeRangePickerTabs'],
+    exports: { MuiDateCalendar: 'DateCalendar', MuiDayCalendar: 'DateCalendar', MuiPickersCalendarHeader: 'DateCalendar', MuiPickersArrowSwitcher: 'DateCalendar', MuiPickerDay: 'DateCalendar', MuiPickersFadeTransitionGroup: 'DateCalendar', MuiPickersSlideTransition: 'DateCalendar', MuiDayCalendarSkeleton: 'DayCalendarSkeleton', MuiMonthCalendar: 'MonthCalendar', MuiYearCalendar: 'YearCalendar', MuiTimeClock: 'TimeClock', MuiClock: 'TimeClock', MuiClockPointer: 'TimeClock', MuiClockNumber: 'TimeClock', MuiDigitalClock: 'DigitalClock', MuiMultiSectionDigitalClock: 'MultiSectionDigitalClock', MuiMultiSectionDigitalClockSection: 'MultiSectionDigitalClock', MuiPickersTextField: 'DateField', MuiPickersInputBase: 'DateField', MuiPickersOutlinedInput: 'DateField', MuiPickersFilledInput: 'DateField', MuiPickersInput: 'DateField', MuiPickersSectionList: 'DateField', MuiPickersLayout: 'StaticDatePicker', MuiPickersToolbar: 'StaticDatePicker', MuiDatePickerToolbar: 'StaticDatePicker', MuiTimePickerToolbar: 'StaticTimePicker', MuiPickersToolbarText: 'StaticTimePicker', MuiPickersToolbarButton: 'StaticTimePicker', MuiDateTimePickerToolbar: 'StaticDateTimePicker', MuiDateTimePickerTabs: 'StaticDateTimePicker', MuiPickerPopper: 'DesktopDatePicker', MuiDateRangeCalendar: 'DateRangeCalendar', MuiDateRangePickerDay: 'DateRangeCalendar', MuiMultiInputDateRangeField: 'MultiInputDateRangeField', MuiMultiInputTimeRangeField: 'MultiInputTimeRangeField', MuiMultiInputDateTimeRangeField: 'MultiInputDateTimeRangeField', MuiDateRangePickerToolbar: 'StaticDateRangePicker', MuiTimeRangePickerToolbar: 'MobileTimeRangePicker', MuiTimeRangePickerTabs: 'MobileTimeRangePicker', MuiDateTimeRangePickerToolbar: 'MobileDateTimeRangePicker', MuiDateTimeRangePickerTabs: 'MobileDateTimeRangePicker' },
+    // keys only Pickers Pro renders
+    keyPackages: { MuiDateRangeCalendar: '@mui/x-date-pickers-pro', MuiDateRangePickerDay: '@mui/x-date-pickers-pro', MuiMultiInputDateRangeField: '@mui/x-date-pickers-pro', MuiMultiInputTimeRangeField: '@mui/x-date-pickers-pro', MuiMultiInputDateTimeRangeField: '@mui/x-date-pickers-pro', MuiDateRangePickerToolbar: '@mui/x-date-pickers-pro', MuiTimeRangePickerToolbar: '@mui/x-date-pickers-pro', MuiTimeRangePickerTabs: '@mui/x-date-pickers-pro', MuiDateTimeRangePickerToolbar: '@mui/x-date-pickers-pro', MuiDateTimeRangePickerTabs: '@mui/x-date-pickers-pro' },
   },
   'tree-view': {
     package: '@mui/x-tree-view',
@@ -39,10 +44,16 @@ export const xStyledProducts = () => Object.keys(X_STYLED).filter((product) => f
 /** The X product owning a theme key (`MuiDataGrid` → data-grid), or null for Material UI keys. */
 export const xProductOfKey = (key) => Object.entries(X_STYLED).find(([, p]) => p.keys.includes(key))?.[0] ?? null;
 
+/** The package a theme key's component is imported from: its product's, or a paid tier's (MuiDateRangeCalendar → pickers pro). */
+export function packageOf(key) {
+  const product = xProductOfKey(key);
+  return product ? (X_STYLED[product].keyPackages?.[key] ?? X_STYLED[product].package) : '@mui/material';
+}
+
 /** `import … from …` for a theme key's component as `C`: X exports are named, Material UI's default per folder. */
 export function importOf(key) {
   const product = xProductOfKey(key);
   return product
-    ? `import { ${X_STYLED[product].exports[key]} as C } from '${X_STYLED[product].package}';`
+    ? `import { ${X_STYLED[product].exports[key]} as C } from '${packageOf(key)}';`
     : `import C from '@mui/material/${key.replace(/^Mui/, '')}';`;
 }

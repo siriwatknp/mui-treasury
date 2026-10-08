@@ -17,14 +17,23 @@ const x = product ? X_STYLED[product] : null;
 if (product && !x) {
   throw new Error(`no MUI X product "${product}" — one of ${Object.keys(X_STYLED).join(', ')}`);
 }
-const xDir = x ? path.dirname(requireFromRoot.resolve(`${x.package}/package.json`)) : null;
+const dirOf = (pkg) => {
+  try {
+    return path.dirname(requireFromRoot.resolve(`${pkg}/package.json`));
+  } catch {
+    return null;
+  }
+};
+const xDir = x ? dirOf(x.package) : null;
+// paid tiers add their own slots under the same theme keys (DataGridPremium's aggregation header is MuiDataGrid's)
+const tierDirs = x ? (x.tiers ?? []).map(dirOf).filter(Boolean) : [];
 
 // what the Data Grid root styles read from grid state (hooks.mjs): a measured grid without scrollbars
 globalThis.__muiCliGridApi = { current: { state: { dimensions: { isReady: true, hasScrollX: false, hasScrollY: false, scrollbarSize: 0 } } } };
 
 const skipped = [];
 const entries = x
-  ? [path.join(xDir, 'index.mjs')]
+  ? [xDir, ...tierDirs].map((dir) => path.join(dir, 'index.mjs'))
   : fs.readdirSync(muiDir).filter((d) => /^[A-Z]/.test(d)).sort().map((dir) => path.join(muiDir, dir, 'index.mjs')).filter((f) => fs.existsSync(f));
 for (const entry of entries) {
   try {
@@ -201,6 +210,9 @@ for (const rec of named.filter((r) => r.slot === 'Root' && typeof r.overridesRes
     (graph[rec.name] ??= {}).routes = routes;
   }
 }
-const source = x ? { mui: muiVersion, x: JSON.parse(fs.readFileSync(path.join(xDir, 'package.json'), 'utf8')).version } : { mui: muiVersion };
+const versionOf = (dir) => JSON.parse(fs.readFileSync(path.join(dir, 'package.json'), 'utf8'));
+const source = x
+  ? { mui: muiVersion, x: versionOf(xDir).version, ...(tierDirs.length ? { tiers: Object.fromEntries(tierDirs.map((dir) => [versionOf(dir).name, versionOf(dir).version])) } : {}) }
+  : { mui: muiVersion };
 fs.writeFileSync(outFile, JSON.stringify({ $source: source, fns, rows, graph, components }));
 console.log(JSON.stringify({ rows: rows.length, components: new Set(rows.map((r) => r.component)).size, slots: new Set(rows.filter((r) => !r.internal).map((r) => `${r.component}|${r.slot}`)).size, internal: rows.filter((r) => r.internal).length, shared: shared.size, fns: Object.keys(fns).length, tokens: rows.filter((r) => r.token).length, refs: rows.filter((r) => r.refs).length, partial: rows.filter((r) => r.partial).length, onlyInVars, graphNodes: Object.keys(graph).length, routeFailures, skipped, failedStyles: [...failedStyles] }));

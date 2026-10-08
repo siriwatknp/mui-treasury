@@ -208,6 +208,282 @@
         },
         "cellEmpty": {
           "scenario": "types"
+        },
+        "cell--pinnedLeft": {
+          "scenario": "pinned"
+        },
+        "cell--pinnedRight": {
+          "scenario": "pinned"
+        },
+        "columnHeader--pinnedLeft": {
+          "scenario": "pinned"
+        },
+        "columnHeader--pinnedRight": {
+          "scenario": "pinned"
+        },
+        "cell--withLeftBorder": {
+          "scenario": "pinned"
+        },
+        "columnHeader--withLeftBorder": {
+          "scenario": "pinned"
+        },
+        "columnSeparator--sideLeft": {
+          "scenario": "pinned"
+        },
+        "filler--pinnedLeft": {
+          "scenario": "pinned-columns"
+        },
+        "filler--pinnedRight": {
+          "scenario": "pinned-columns"
+        },
+        "scrollbarFiller--pinnedRight": {
+          "scenario": "pinned"
+        },
+        "scrollShadow": {
+          "scenario": "pinned"
+        },
+        "pinnedRows": {
+          "scenario": "pinned"
+        },
+        "pinnedRows--top": {
+          "scenario": "pinned"
+        },
+        "pinnedRows--bottom": {
+          "scenario": "pinned"
+        },
+        "container--bottom": {
+          "scenario": "pinned"
+        },
+        "groupingCriteriaCell": {
+          "scenario": "grouping"
+        },
+        "groupingCriteriaCellToggle": {
+          "scenario": "grouping"
+        },
+        "aggregationColumnHeader": {
+          "scenario": "grouping"
+        },
+        "aggregationColumnHeaderLabel": {
+          "scenario": "grouping"
+        },
+        "footerCell": {
+          "scenario": "grouping"
+        },
+        "treeDataGroupingCell": {
+          "scenario": "tree-data"
+        },
+        "treeDataGroupingCellToggle": {
+          "scenario": "tree-data"
+        },
+        "detailPanelToggleCell": {
+          "scenario": "detail-panel"
+        },
+        "detailPanelToggleCell--expanded": {
+          "scenario": "detail-panel"
+        },
+        "row--detailPanelExpanded": {
+          "scenario": "detail-panel"
+        },
+        "detailPanel": {
+          "scenario": "detail-panel"
+        },
+        "rowReorderCell": {
+          "scenario": "reorder"
+        },
+        "rowReorderCell--draggable": {
+          "scenario": "reorder"
+        },
+        "rowReorderCellContainer": {
+          "scenario": "reorder"
+        },
+        "rowReorderIcon": {
+          "scenario": "reorder"
+        },
+        "headerFilterRow": {
+          "scenario": "header-filters"
+        },
+        "columnHeaderFilterInput": {
+          "scenario": "header-filters"
+        },
+        "columnHeaderFilterOperatorLabel": {
+          "scenario": "header-filters"
+        },
+        "filler--borderBottom": {
+          "scenario": "header-filters"
+        },
+        "cell--selectionMode": {
+          "scenario": "cell-selection"
+        },
+        "cell--rangeTop": {
+          "scenario": "cell-selection"
+        },
+        "cell--rangeBottom": {
+          "scenario": "cell-selection"
+        },
+        "cell--rangeLeft": {
+          "scenario": "cell-selection"
+        },
+        "cell--rangeRight": {
+          "scenario": "cell-selection"
+        },
+        "cell--withFillHandle": {
+          "scenario": "cell-selection"
+        },
+        "panelFooter": {
+          "scenario": "multi-filter"
+        },
+        "filterFormLogicOperatorInput": {
+          "scenario": "multi-filter"
+        },
+        "columnsManagementRow": {
+          "scenario": "columns-panel"
+        },
+        "sidebar": {
+          "scenario": "pivot"
+        },
+        "sidebarHeader": {
+          "scenario": "pivot"
+        },
+        "resizablePanel": {
+          "scenario": "pivot"
+        },
+        "resizablePanelHandle": {
+          "scenario": "pivot"
+        },
+        "pivotPanelSearchContainer": {
+          "scenario": "pivot"
+        },
+        "pivotPanelHeader": {
+          "scenario": "pivot"
+        },
+        "pivotPanelSwitch": {
+          "scenario": "pivot"
+        },
+        "pivotPanelSwitchLabel": {
+          "scenario": "pivot"
+        },
+        "pivotPanelField": {
+          "scenario": "pivot"
+        },
+        "pivotPanelFieldName": {
+          "scenario": "pivot"
+        },
+        "pivotPanelFieldActionContainer": {
+          "scenario": "pivot"
+        },
+        "pivotPanelFieldDragIcon": {
+          "scenario": "pivot"
+        },
+        "pivotPanelFieldCheckbox": {
+          "scenario": "pivot"
+        },
+        "collapsible": {
+          "scenario": "pivot"
+        },
+        "collapsibleTrigger": {
+          "scenario": "pivot"
+        },
+        "collapsibleIcon": {
+          "scenario": "pivot"
+        },
+        "collapsiblePanel": {
+          "scenario": "pivot"
+        },
+        "pivotPanelBody": {
+          "scenario": "pivot"
+        },
+        "pivotPanelAvailableFields": {
+          "scenario": "pivot"
+        },
+        "pivotPanelSections": {
+          "scenario": "pivot"
+        },
+        "pivotPanelScrollArea": {
+          "scenario": "pivot"
+        },
+        "pivotPanelSection": {
+          "scenario": "pivot"
+        },
+        "pivotPanelSectionTitle": {
+          "scenario": "pivot"
+        },
+        "pivotPanelFieldList": {
+          "scenario": "pivot"
+        },
+        "pivotPanelPlaceholder": {
+          "scenario": "pivot"
+        },
+        "prompt": {
+          "scenario": "ai"
+        },
+        "promptContent": {
+          "scenario": "ai"
+        },
+        "promptText": {
+          "scenario": "ai"
+        },
+        "promptIconContainer": {
+          "scenario": "ai"
+        },
+        "promptIcon": {
+          "scenario": "ai"
+        },
+        "promptFeedback": {
+          "scenario": "ai"
+        },
+        "promptChangesToggle": {
+          "scenario": "ai"
+        },
+        "promptChangesToggleIcon": {
+          "scenario": "ai"
+        },
+        "aiAssistantPanelConversation": {
+          "scenario": "ai"
+        },
+        "aiAssistantPanelConversationList": {
+          "scenario": "ai"
+        },
+        "aiAssistantPanelSuggestions": {
+          "scenario": "ai"
+        },
+        "aiAssistantPanelSuggestionsList": {
+          "scenario": "ai"
+        },
+        "aiAssistantPanelSuggestionsLabel": {
+          "scenario": "ai"
+        },
+        "aiAssistantPanel": {
+          "scenario": "ai"
+        },
+        "aiAssistantPanelHeader": {
+          "scenario": "ai"
+        },
+        "aiAssistantPanelTitleContainer": {
+          "scenario": "ai"
+        },
+        "aiAssistantPanelTitle": {
+          "scenario": "ai"
+        },
+        "aiAssistantPanelConversationTitle": {
+          "scenario": "ai"
+        },
+        "aiAssistantPanelBody": {
+          "scenario": "ai"
+        },
+        "aiAssistantPanelFooter": {
+          "scenario": "ai"
+        },
+        "multiSelectChips": {
+          "scenario": "multi-select"
+        },
+        "multiSelectChip": {
+          "scenario": "multi-select"
+        },
+        "rowSkeleton": {
+          "scenario": "loading"
+        },
+        "rowCount": {
+          "scenario": "base"
         }
       },
       "slotInteraction": {
@@ -228,57 +504,20 @@
         ]
       },
       "unreachable": {
-        "footerCell": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
-        "cell--selectionMode": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
-        "cell--rangeBottom": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
-        "cell--rangeLeft": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
-        "cell--rangeRight": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
-        "cell--rangeTop": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
-        "cell--withFillHandle": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
-        "cell--fillPreview": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
-        "cell--fillPreviewTop": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
-        "cell--fillPreviewBottom": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
-        "cell--fillPreviewLeft": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
-        "cell--fillPreviewRight": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
-        "groupingCriteriaCell": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
-        "groupingCriteriaCellLoadingContainer": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
-        "groupingCriteriaCellToggle": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
-        "tabs": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
-        "tab": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
-        "tabPanel": "needs DataGrid Premium (aggregation, cell selection, row grouping, pivoting), which this build does not render yet",
-        "scrollShadow": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "scrollArea": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "panelFooter": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "panelHeader": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "filterFormLogicOperatorInput": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "rowCount": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "root--disableUserSelection": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "cell--withLeftBorder": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "columnHeader--withLeftBorder": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "columnSeparator--sideLeft": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "filler--borderBottom": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "filler--pinnedLeft": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "filler--pinnedRight": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "cell--pinnedLeft": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "cell--pinnedRight": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "columnHeader--pinnedLeft": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "columnHeader--pinnedRight": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "pinnedRows": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "pinnedRows--bottom": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "pinnedRows--top": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "scrollbarFiller--pinnedRight": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "detailPanelToggleCell": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "detailPanelToggleCell--expanded": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "row--detailPanelExpanded": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "rowReorderCell": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "rowReorderCell--draggable": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "rowReorderCellContainer": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "rowReorderCellPlaceholder": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "treeDataGroupingCell": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "treeDataGroupingCellLoadingContainer": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "treeDataGroupingCellToggle": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "headerFilterRow": "needs DataGrid Pro or Premium, which this build does not render yet",
-        "rowSkeleton": "needs DataGrid Pro or Premium, which this build does not render yet",
+        "cell--fillPreview": "exists only while a fill handle, column or row is dragged",
+        "cell--fillPreviewTop": "exists only while a fill handle, column or row is dragged",
+        "cell--fillPreviewBottom": "exists only while a fill handle, column or row is dragged",
+        "cell--fillPreviewLeft": "exists only while a fill handle, column or row is dragged",
+        "cell--fillPreviewRight": "exists only while a fill handle, column or row is dragged",
+        "groupingCriteriaCellLoadingContainer": "shows only while a dataSource loads a group's children",
+        "tabs": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "tab": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "tabPanel": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "scrollArea": "exists only while a fill handle, column or row is dragged",
+        "panelHeader": "no built-in panel renders it; only a custom panel slot does",
+        "root--disableUserSelection": "exists only while a fill handle, column or row is dragged",
+        "rowReorderCellPlaceholder": "exists only while a fill handle, column or row is dragged",
+        "treeDataGroupingCellLoadingContainer": "shows only while a dataSource loads a group's children",
         "autosizing": "exists only while a column or row is being dragged, resized or autosized",
         "columnHeader--dragging": "exists only while a column or row is being dragged, resized or autosized",
         "columnHeader--moving": "exists only while a column or row is being dragged, resized or autosized",
@@ -291,14 +530,137 @@
         "longTextCellCornerButton": "a styled part with no class of its own in this version, so nothing in the render carries it",
         "longTextCellPopper": "a styled part with no class of its own in this version, so nothing in the render carries it",
         "editLongTextCellPopper": "a styled part with no class of its own in this version, so nothing in the render carries it",
-        "rowDragOverlay": "a styled part with no class of its own in this version, so nothing in the render carries it",
+        "rowDragOverlay": "exists only while a fill handle, column or row is dragged",
         "columnsManagementScrollArea": "a styled part with no class of its own in this version, so nothing in the render carries it",
         "longTextCellPopperContent": "opens only after clicking a long-text cell's expand button",
         "toolbarFilterList": "shows only inside the Filters button's tooltip, while it is hovered",
         "cellOffsetLeft": "0 wide unless the grid is scrolled sideways with virtualization on",
-        "container--bottom": "0 tall unless rows are pinned to the bottom (DataGrid Pro)",
         "overlayWrapper": "a 0-tall anchor by design; overlayWrapperInner carries the overlay's size (--slot overlayWrapperInner)",
-        "scrollbarFiller": "as wide as the native scrollbar, which is 0 where scrollbars overlay the content (as in the headless render)"
+        "scrollbarFiller": "as wide as the native scrollbar, which is 0 where scrollbars overlay the content (as in the headless render)",
+        "multiSelectCellPopper": "opens only on a click or Enter on a multi-select cell",
+        "multiSelectCellPopperContent": "opens only on a click or Enter on a multi-select cell",
+        "editMultiSelectCellPopper": "opens only when a multi-select cell is edited with focus",
+        "editMultiSelectCellPopperContent": "opens only when a multi-select cell is edited with focus",
+        "editMultiSelectCellAutocomplete": "opens only when a multi-select cell is edited with focus",
+        "promptChangeList": "opens only on a click on a prompt's changes toggle",
+        "aiAssistantPanelEmptyText": "shows only with no AI conversation yet, while a conversation is what the AI panel picture shows",
+        "chartsManagement": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "chartTypeRoot": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "chartTypeSelectorButton": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "chartsPanelCustomizeSection": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "chartsPanelSection": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "chartsPanelCustomizePanelTitle": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "chartsPanelDataField": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "chartsPanelDataFieldName": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "chartsPanelDataFieldActionContainer": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "chartsPanelDataFieldDragIcon": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "chartsPanelDataFieldCheckbox": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "chartsPanelDataBody": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "chartsPanelDataAvailableFields": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "chartsPanelDataSections": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "chartsPanelDataScrollArea": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "chartsPanelDataSection": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "chartsPanelDataSectionTitle": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "chartsPanelDataFieldList": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "chartsPanelDataPlaceholder": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "chartsPanelDataSearchContainer": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "chartsPanelHeader": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "chartsPanelTitle": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render",
+        "chartsPanelChartSelection": "the charts integration panel needs a charts renderer (@mui/x-charts-premium) this build does not render"
+      },
+      "slotVariant": {
+        "cell--pinnedLeft": "premium",
+        "cell--pinnedRight": "premium",
+        "columnHeader--pinnedLeft": "premium",
+        "columnHeader--pinnedRight": "premium",
+        "cell--withLeftBorder": "premium",
+        "columnHeader--withLeftBorder": "premium",
+        "columnSeparator--sideLeft": "premium",
+        "filler--pinnedLeft": "premium",
+        "filler--pinnedRight": "premium",
+        "scrollbarFiller--pinnedRight": "premium",
+        "scrollShadow": "premium",
+        "pinnedRows": "premium",
+        "pinnedRows--top": "premium",
+        "pinnedRows--bottom": "premium",
+        "container--bottom": "premium",
+        "groupingCriteriaCell": "premium",
+        "groupingCriteriaCellToggle": "premium",
+        "aggregationColumnHeader": "premium",
+        "aggregationColumnHeaderLabel": "premium",
+        "footerCell": "premium",
+        "treeDataGroupingCell": "premium",
+        "treeDataGroupingCellToggle": "premium",
+        "detailPanelToggleCell": "premium",
+        "detailPanelToggleCell--expanded": "premium",
+        "row--detailPanelExpanded": "premium",
+        "detailPanel": "premium",
+        "rowReorderCell": "premium",
+        "rowReorderCell--draggable": "premium",
+        "rowReorderCellContainer": "premium",
+        "rowReorderIcon": "premium",
+        "headerFilterRow": "premium",
+        "columnHeaderFilterInput": "premium",
+        "columnHeaderFilterOperatorLabel": "premium",
+        "filler--borderBottom": "premium",
+        "cell--selectionMode": "premium",
+        "cell--rangeTop": "premium",
+        "cell--rangeBottom": "premium",
+        "cell--rangeLeft": "premium",
+        "cell--rangeRight": "premium",
+        "cell--withFillHandle": "premium",
+        "panelFooter": "premium",
+        "filterFormLogicOperatorInput": "premium",
+        "columnsManagementRow": "premium",
+        "sidebar": "premium",
+        "sidebarHeader": "premium",
+        "resizablePanel": "premium",
+        "resizablePanelHandle": "premium",
+        "pivotPanelSearchContainer": "premium",
+        "pivotPanelHeader": "premium",
+        "pivotPanelSwitch": "premium",
+        "pivotPanelSwitchLabel": "premium",
+        "pivotPanelField": "premium",
+        "pivotPanelFieldName": "premium",
+        "pivotPanelFieldActionContainer": "premium",
+        "pivotPanelFieldDragIcon": "premium",
+        "pivotPanelFieldCheckbox": "premium",
+        "collapsible": "premium",
+        "collapsibleTrigger": "premium",
+        "collapsibleIcon": "premium",
+        "collapsiblePanel": "premium",
+        "pivotPanelBody": "premium",
+        "pivotPanelAvailableFields": "premium",
+        "pivotPanelSections": "premium",
+        "pivotPanelScrollArea": "premium",
+        "pivotPanelSection": "premium",
+        "pivotPanelSectionTitle": "premium",
+        "pivotPanelFieldList": "premium",
+        "pivotPanelPlaceholder": "premium",
+        "prompt": "premium",
+        "promptContent": "premium",
+        "promptText": "premium",
+        "promptIconContainer": "premium",
+        "promptIcon": "premium",
+        "promptFeedback": "premium",
+        "promptChangesToggle": "premium",
+        "promptChangesToggleIcon": "premium",
+        "aiAssistantPanelConversation": "premium",
+        "aiAssistantPanelConversationList": "premium",
+        "aiAssistantPanelSuggestions": "premium",
+        "aiAssistantPanelSuggestionsList": "premium",
+        "aiAssistantPanelSuggestionsLabel": "premium",
+        "aiAssistantPanel": "premium",
+        "aiAssistantPanelHeader": "premium",
+        "aiAssistantPanelTitleContainer": "premium",
+        "aiAssistantPanelTitle": "premium",
+        "aiAssistantPanelConversationTitle": "premium",
+        "aiAssistantPanelBody": "premium",
+        "aiAssistantPanelFooter": "premium",
+        "multiSelectChips": "premium",
+        "multiSelectChip": "premium",
+        "rowSkeleton": "premium",
+        "rowCount": "premium"
       }
     }
   },

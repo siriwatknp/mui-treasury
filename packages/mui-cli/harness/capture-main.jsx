@@ -14,7 +14,20 @@
  * Other modes: tokens, showcase, seamRows, warm, snapshot / measureSnapshot, measureHeld.
  */
 import * as React from 'react';
-import { createRoot } from 'react-dom/client';
+import { createRoot as createReactRoot } from 'react-dom/client';
+
+// every React root on the page, so a released page can unmount them: a root only cleared from the DOM keeps rendering (a
+// grid's timers re-insert its popups into <body>) into the next render
+const roots = new Set();
+const createRoot = (...args) => {
+  const root = createReactRoot(...args);
+  roots.add(root);
+  return root;
+};
+window.__muiCliUnmountAll = () => {
+  roots.forEach((root) => root.unmount());
+  roots.clear();
+};
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { Annotate, resolveClaims } from './annotations.jsx';
@@ -1091,12 +1104,13 @@ async function drawAnnotations({ stage, demo, component }, cfg) {
     // 0 wide but tall (a full-width bar in a shrink-wrapped stage) still has a height to draw
     return box.width > 0 || box.height > 0 ? null : 'empty';
   };
-  // one sample per selector, the first one shown (a calendar's leading blank day is hidden): a row of identical elements (pages,
-  // tabs) would repeat every label; portals (tooltips) sit outside the demo
+  // one sample per selector, the first one shown and with content (a calendar's leading blank days are hidden or empty): a row
+  // of identical elements (pages, tabs) would repeat every label; portals (tooltips) sit outside the demo
   const pick = (selector) => {
     const inDemo = [...demo.querySelectorAll(selector)];
     const candidates = inDemo.length ? inDemo : [...document.querySelectorAll(selector)];
-    return candidates.find((el) => !absenceOf(el)) ?? candidates[0] ?? null;
+    const shown = candidates.filter((el) => !absenceOf(el));
+    return shown.find((el) => el.children.length || el.textContent.trim()) ?? shown[0] ?? candidates[0] ?? null;
   };
   const picked = claims.map((claim) => pick(claim.on));
   const sampled = claims.map((claim, i) => {

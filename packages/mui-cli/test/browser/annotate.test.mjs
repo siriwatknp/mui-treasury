@@ -114,19 +114,22 @@ test('MUI X: every slot of every theme key draws on a render that shows it, or s
   const { X_STYLED, xStyledProducts } = await import('../../src/lib/xStyled.mjs');
   const failed = [];
   const drawn = {};
-  for (const product of xStyledProducts()) {
-    for (const component of X_STYLED[product].keys) {
-      const unreachable = loadXRenders(product).components[component]?.unreachable ?? {};
-      for (const slot of (await slotsOf(component)).filter((s) => !unreachable[s])) {
-        // a session per slot, as each `mui annotate` call gets: renders on one page stay side by side (a contact sheet)
-        const { out } = await withCapture((runCapture, helpers) => drawSlot(runCapture, helpers, { component, slot, aspects: ['height', 'width'] }));
-        if (out.absent || !out.items.length) {
-          failed.push(`${component} ${slot}: ${out.absent ?? 'nothing drawn'}`);
+  await withCapture(async (runCapture, helpers) => {
+    for (const product of xStyledProducts()) {
+      for (const component of X_STYLED[product].keys) {
+        const unreachable = loadXRenders(product).components[component]?.unreachable ?? {};
+        for (const slot of (await slotsOf(component)).filter((s) => !unreachable[s])) {
+          // a clean page per slot, as each `mui annotate` call gets
+          await helpers.clear();
+          const { out } = await drawSlot(runCapture, helpers, { component, slot, aspects: ['height', 'width'] });
+          if (out.absent || !out.items.length) {
+            failed.push(`${component} ${slot}: ${out.absent ?? 'nothing drawn'}`);
+          }
+          drawn[product] = (drawn[product] ?? 0) + 1;
         }
-        drawn[product] = (drawn[product] ?? 0) + 1;
       }
     }
-  }
+  });
   assert.deepEqual(failed, []);
-  assert.ok(drawn['data-grid'] >= 100 && drawn['tree-view'] >= 9 && drawn['date-pickers'] >= 84 && drawn.charts >= 34, JSON.stringify(drawn));
+  assert.ok(drawn['data-grid'] >= 192 && drawn['tree-view'] >= 9 && drawn['date-pickers'] >= 102 && drawn.charts >= 35, JSON.stringify(drawn));
 });

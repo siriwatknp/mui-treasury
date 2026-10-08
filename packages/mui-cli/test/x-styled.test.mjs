@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { resolveToken } from '../src/lib/aliases.mjs';
 import { DATA_DIR } from '../src/lib/data.mjs';
@@ -85,7 +86,8 @@ test('a slot that only shows in a state gets the props or clicks that open it', 
   assert.equal(renderFor('MuiDataGrid', { slot: 'cellCheckbox' }).props.scenario, 'checkbox');
   assert.equal(renderFor('MuiDataGrid', { slot: 'root--densityCompact' }).props.density, 'compact');
   assert.deepEqual(renderFor('MuiDataGrid', { slot: 'menuIcon' }).interaction, ['header-hover']);
-  assert.throws(() => renderFor('MuiDataGrid', { slot: 'cell--pinnedLeft' }), /DataGrid cell--pinnedLeft can't be rendered for a picture: needs DataGrid Pro/);
+  assert.equal(renderFor('MuiDataGrid', { slot: 'cell--pinnedLeft' }).props.scenario, 'pinned');
+  assert.throws(() => renderFor('MuiDataGrid', { slot: 'rowDragOverlay' }), /DataGrid rowDragOverlay can't be rendered for a picture: exists only while/);
   assert.deepEqual(renderFor('MuiDataGrid', { slot: 'menuList' }).interaction, ['column-menu']);
   assert.deepEqual(renderFor('MuiDataGrid', { slot: 'cell' }).interaction, []);
   assert.deepEqual(interactionSteps('MuiDataGrid', ['column-menu']).map((s) => Object.keys(s)[0]), ['hover', 'settle', 'click', 'settle']);
@@ -102,10 +104,31 @@ test('a routed slot is found by its tag or its routed class (an element carries 
 });
 
 test('every grid scenario a slot names exists in the fixture', async () => {
-  const { DATA_GRID } = await import('../src/lib/xFixtures.mjs');
+  const { DATA_GRID, DATA_GRID_PREMIUM } = await import('../src/lib/xFixtures.mjs');
   const { components } = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'x/data-grid/renders.json'), 'utf8'));
-  const named = new Set(Object.values(components.MuiDataGrid.slotProps).map((p) => p.scenario).filter(Boolean));
-  for (const scenario of named) {
-    assert.match(DATA_GRID.imports, new RegExp(`\\n  '?${scenario}'?: \\{`), scenario);
+  const { slotProps, slotVariant = {} } = components.MuiDataGrid;
+  for (const [slot, { scenario }] of Object.entries(slotProps).filter(([, p]) => p.scenario)) {
+    const fixture = slotVariant[slot] === 'premium' ? DATA_GRID_PREMIUM : DATA_GRID;
+    assert.match(fixture.imports, new RegExp(`\\n  '?${scenario}'?: \\{`), `${slot} → ${scenario}`);
+  }
+});
+
+test('Pro/Premium slots render from their own module, and say which package a project is missing', () => {
+  const premium = renderFor('MuiDataGrid', { slot: 'pinnedRows' });
+  assert.match(premium.url, /MuiDataGrid@premium\.jsx$/);
+  assert.match(fs.readFileSync(path.join(HARNESS_DIR, premium.url), 'utf8'), /from '@mui\/x-data-grid-premium'/);
+  assert.doesNotMatch(fs.readFileSync(path.join(HARNESS_DIR, renderFor('MuiDataGrid', { slot: 'cell' }).url), 'utf8'), /x-data-grid-premium/);
+  assert.equal(importOf('MuiDateRangeCalendar'), "import { DateRangeCalendar as C } from '@mui/x-date-pickers-pro';");
+  const host = process.env.MUI_CLI_HOST_ROOT;
+  process.env.MUI_CLI_HOST_ROOT = fs.mkdtempSync(path.join(os.tmpdir(), 'no-x-'));
+  try {
+    assert.throws(() => renderFor('MuiDataGrid', { slot: 'pinnedRows' }), /DataGrid pinnedRows renders through @mui\/x-data-grid, @mui\/x-data-grid-premium, which this project doesn't have — npm i -D/);
+    assert.throws(() => renderFor('MuiDateRangeCalendar', {}), /renders through @mui\/x-date-pickers-pro/);
+  } finally {
+    if (host === undefined) {
+      delete process.env.MUI_CLI_HOST_ROOT;
+    } else {
+      process.env.MUI_CLI_HOST_ROOT = host;
+    }
   }
 });

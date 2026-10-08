@@ -125,6 +125,36 @@
     },
     "MuiPickerPopper": {
       "standalone": true
+    },
+    "MuiDateRangeCalendar": {
+      "standalone": true
+    },
+    "MuiDateRangePickerDay": {
+      "standalone": true
+    },
+    "MuiMultiInputDateRangeField": {
+      "standalone": true
+    },
+    "MuiMultiInputTimeRangeField": {
+      "standalone": true
+    },
+    "MuiMultiInputDateTimeRangeField": {
+      "standalone": true
+    },
+    "MuiDateRangePickerToolbar": {
+      "standalone": true
+    },
+    "MuiTimeRangePickerToolbar": {
+      "standalone": true
+    },
+    "MuiTimeRangePickerTabs": {
+      "standalone": true
+    },
+    "MuiDateTimeRangePickerToolbar": {
+      "standalone": true
+    },
+    "MuiDateTimeRangePickerTabs": {
+      "standalone": true
     }
   },
   "renders": {},

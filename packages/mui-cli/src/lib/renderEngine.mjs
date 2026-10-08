@@ -42,8 +42,22 @@ export async function runOn(page, cfg) {
 const cdpOf = async (page) => (page.muiCdp ??= await page.context().newCDPSession(page));
 
 /** Screenshot / forced-state helpers bound to one page. Results are plain data so they cross a socket. */
+/** Unmount every render on the page and drop what it left behind: a root only cleared from the DOM keeps rendering, and
+ * portals (an open menu) live outside #mount, where they would be the next render's first match. */
+function clearRenders(page) {
+  return page.evaluate(() => {
+    window.__muiCliUnmountAll?.();
+    const mount = document.getElementById('mount');
+    mount.innerHTML = '';
+    mount.removeAttribute('style');
+    [...document.body.children].filter((el) => el !== mount && el.tagName !== 'SCRIPT').forEach((el) => el.remove());
+  });
+}
+
 export function helpersFor(page) {
   return {
+    /** A clean page for the next render in the same session (renders otherwise stay side by side, as on a contact sheet). */
+    clear: () => clearRenders(page),
     screenshotElement: async (selector, outPath) => {
       await page.locator(selector).screenshot({ path: outPath });
       return outPath;
@@ -276,14 +290,8 @@ export async function bootEngine({ hostRoot, themeDirs = [] }) {
         await page.muiCdp.send('Emulation.setTouchEmulationEnabled', { enabled: false });
         await page.muiCdp.send('Emulation.setEmulatedMedia', { media: '', features: [] });
       }
-      await page.evaluate(() => {
-        const mount = document.getElementById('mount');
-        mount.innerHTML = '';
-        mount.removeAttribute('style');
-        // portals (an open menu) live outside #mount and would be the next render's first match
-        [...document.body.children].filter((el) => el !== mount && el.tagName !== 'SCRIPT').forEach((el) => el.remove());
-        document.documentElement.removeAttribute('data-mui-color-scheme');
-      });
+      await clearRenders(page);
+      await page.evaluate(() => document.documentElement.removeAttribute('data-mui-color-scheme'));
       pool.set(key, [...(pool.get(key) ?? []), page]);
     } catch {
       pages.delete(page);

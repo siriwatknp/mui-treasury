@@ -11,13 +11,19 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const products = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(X_STYLED);
 
 for (const product of products) {
-  const { package: pkg } = X_STYLED[product] ?? {};
+  const { package: pkg, tiers = [] } = X_STYLED[product] ?? {};
   if (!pkg) {
     throw new Error(`no MUI X product "${product}" — one of ${Object.keys(X_STYLED).join(', ')}`);
   }
   const pin = readPins().x;
-  if (installedVersion(pkg) !== pin) {
-    throw new Error(`${pkg}@${installedVersion(pkg) ?? 'missing'} is installed, versions.json pins MUI X ${pin}`);
+  for (const required of [pkg, ...tiers.filter((tier) => installedVersion(tier))]) {
+    if (installedVersion(required) !== pin) {
+      throw new Error(`${required}@${installedVersion(required) ?? 'missing'} is installed, versions.json pins MUI X ${pin}`);
+    }
+  }
+  const missingTiers = tiers.filter((tier) => !installedVersion(tier));
+  if (missingTiers.length) {
+    console.warn(`sync-seams-x ${product}: ${missingTiers.join(', ')} not installed — their slots are left out`);
   }
   const tmp = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'seams-x-')), 'extracted.json');
   execFileSync(process.execPath, ['--import', path.join(HERE, 'lib/extract/register.mjs'), path.join(HERE, 'lib/extract/extract.mjs'), ROOT, tmp, product], {
