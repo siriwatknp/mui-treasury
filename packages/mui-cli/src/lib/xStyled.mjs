@@ -12,6 +12,11 @@ export const X_STYLED = {
     keys: ['MuiDataGrid'],
     exports: { MuiDataGrid: 'DataGrid' },
   },
+  'tree-view': {
+    package: '@mui/x-tree-view',
+    keys: ['MuiSimpleTreeView', 'MuiRichTreeView', 'MuiTreeItem', 'MuiTreeItemLoader', 'MuiTreeItemDragAndDropOverlay'],
+    exports: { MuiSimpleTreeView: 'SimpleTreeView', MuiRichTreeView: 'RichTreeView', MuiTreeItem: 'TreeItem', MuiTreeItemLoader: 'TreeItemLoader', MuiTreeItemDragAndDropOverlay: 'TreeItemDragAndDropOverlay' },
+  },
 };
 
 export const xDataDir = (product) => path.join(DATA_DIR, 'x', product);

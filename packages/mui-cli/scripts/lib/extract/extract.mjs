@@ -128,7 +128,7 @@ const typo = collect(themes.typography);
 
 const VAR_ONLY = /^var\(--mui-([\w-]+?)(?:,.*)?\)$/;
 // CSS variables MUI X writes inline from props and measurements: a row reading one is not the theme's to set
-const DYNAMIC = /var\(--(?:DataGrid-(?:rowHeight|headerHeight|\w*Width)|height|width)\b/;
+const DYNAMIC = /var\(--(?:DataGrid-(?:rowHeight|headerHeight|\w*Width)|TreeView-\w+|height|width)\b/;
 const rows = [...plain.values()].map((row) => {
   const out = { ...row, category: typeof row.value === 'string' && DYNAMIC.test(row.value) ? 'dynamic' : categoryOf(row.prop) };
   const typoValue = typo.get(row.id)?.value;

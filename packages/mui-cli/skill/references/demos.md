@@ -21,7 +21,7 @@ mui demos data-grid filtering QuickFilteringGrid [--js]
 mui compose data-grid/filtering:QuickFilteringGrid charts/lines:LineDataset -o demos.tsx
 ```
 
-PLAN (community / pro / premium) comes from the packages each demo imports — a `pro`/`premium` demo needs a commercial license; say so before handing it over. Feature names can hold a `/` (`rich-tree-view/editing`). Style commands cover Material UI, plus the Data Grid for `component` rows and `annotate`.
+PLAN (community / pro / premium) comes from the packages each demo imports — a `pro`/`premium` demo needs a commercial license; say so before handing it over. Feature names can hold a `/` (`rich-tree-view/editing`). Style commands cover Material UI, plus the Data Grid and Tree View for `component` rows and `annotate`.
 
 Demo names are the DEMO column **verbatim — case-sensitive PascalCase**. A miss prints the valid candidates; use one of those, don't guess variants. `--copy` writes the user's SYSTEM clipboard (only useful when the user asked for that).
 

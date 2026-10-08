@@ -64,7 +64,7 @@ export function helpersFor(page) {
       await page.screenshot({ path: outPath, clip });
       return outPath;
     },
-    /** Put the current render in a state the way a user would: steps of { click | hover: selector, nth? }, { tab: true }, { down | up: true }, { settle: selector }, { emulate: { touch?, print?, features?, width? } }. */
+    /** Put the current render in a state the way a user would: steps of { click | dblclick | hover: selector, nth? }, { tab: true }, { down | up: true }, { settle: selector }, { emulate: { touch?, print?, features?, width? } }. */
     interact: async (steps) => {
       const client = await cdpOf(page);
       for (const step of steps) {
@@ -129,13 +129,14 @@ export function helpersFor(page) {
           await page.mouse.down();
         } else if (step.up) {
           await page.mouse.up();
-        } else if (step.click || step.hover) {
-          const target = page.locator(step.click ?? step.hover).nth(step.nth ?? 0);
+        } else if (step.click || step.hover || step.dblclick) {
+          const target = page.locator(step.click ?? step.hover ?? step.dblclick).nth(step.nth ?? 0);
           if (!(await target.count())) {
             continue;
           }
-          await (step.click ? target.click({ timeout: 800, force: true }) : target.hover({ timeout: 800, force: true })).catch(() => {});
-          await page.waitForTimeout(step.click ? 200 : 50);
+          const act = step.click ? 'click' : step.dblclick ? 'dblclick' : 'hover';
+          await target[act]({ timeout: 800, force: true }).catch(() => {});
+          await page.waitForTimeout(step.hover ? 50 : 200);
         }
       }
       return true;

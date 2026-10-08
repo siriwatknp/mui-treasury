@@ -107,20 +107,26 @@ test('MUI X Data Grid: the theme reaches the grid (styleOverrides.cell)', () => 
   assert.equal(padding('--theme', path.resolve(BIN, '../../test/fixtures/grid.theme.ts')), '24px');
 });
 
-test('MUI X Data Grid: every slot draws on a render that shows it, or says why it cannot', async () => {
+test('MUI X: every slot of every theme key draws on a render that shows it, or says why it cannot', async () => {
   const { drawSlot } = await import('../../src/commands/annotate.run.mjs');
   const { loadXRenders, slotsOf } = await import('../../src/lib/renders.mjs');
   const { withCapture } = await import('../../src/lib/capture.mjs');
-  const { unreachable } = loadXRenders('data-grid').components.MuiDataGrid;
-  const slots = (await slotsOf('MuiDataGrid')).filter((slot) => !unreachable[slot]);
-  // a session per slot, as each `mui annotate` call gets: renders on one page stay side by side (a contact sheet)
+  const { X_STYLED, xStyledProducts } = await import('../../src/lib/xStyled.mjs');
   const failed = [];
-  for (const slot of slots) {
-    const { out } = await withCapture((runCapture, helpers) => drawSlot(runCapture, helpers, { component: 'MuiDataGrid', slot, aspects: ['height', 'width'] }));
-    if (out.absent || !out.items.length) {
-      failed.push(`${slot}: ${out.absent ?? 'nothing drawn'}`);
+  const drawn = {};
+  for (const product of xStyledProducts()) {
+    for (const component of X_STYLED[product].keys) {
+      const unreachable = loadXRenders(product).components[component]?.unreachable ?? {};
+      for (const slot of (await slotsOf(component)).filter((s) => !unreachable[s])) {
+        // a session per slot, as each `mui annotate` call gets: renders on one page stay side by side (a contact sheet)
+        const { out } = await withCapture((runCapture, helpers) => drawSlot(runCapture, helpers, { component, slot, aspects: ['height', 'width'] }));
+        if (out.absent || !out.items.length) {
+          failed.push(`${component} ${slot}: ${out.absent ?? 'nothing drawn'}`);
+        }
+        drawn[product] = (drawn[product] ?? 0) + 1;
+      }
     }
   }
   assert.deepEqual(failed, []);
-  assert.ok(slots.length >= 100, `${slots.length} drawable slots`);
+  assert.ok(drawn['data-grid'] >= 100 && drawn['tree-view'] >= 9, JSON.stringify(drawn));
 });

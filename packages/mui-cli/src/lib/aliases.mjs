@@ -57,7 +57,7 @@ const X_ALIASES = {
   treeview: 'tree-view',
 };
 
-const xProductLabel = {
+export const xProductLabel = {
   'data-grid': 'DataGrid',
   charts: 'Charts',
   'date-pickers': 'Date Pickers',
@@ -65,7 +65,9 @@ const xProductLabel = {
 };
 
 function xTarget(product, label) {
-  const component = xStyledProducts().includes(product) ? X_STYLED[product].keys[0] : null;
+  // the theme key exporting `label` (TreeItem → MuiTreeItem); a product name or a tier (DataGridPro) → the product's first key
+  const keys = xStyledProducts().includes(product) ? X_STYLED[product].keys : [];
+  const component = keys.find((key) => X_STYLED[product].exports[key] === label) ?? keys[0] ?? null;
   return { kind: 'x', product, label, ...(component ? { component } : {}) };
 }
 

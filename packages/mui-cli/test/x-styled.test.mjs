@@ -34,7 +34,10 @@ test('@mui/system styled slots are recorded (toolbar, footer, panel content)', (
 });
 
 test('X tokens resolve to a theme key only when the product has style rows', () => {
-  assert.deepEqual(xStyledProducts(), ['data-grid']);
+  assert.deepEqual(xStyledProducts(), ['data-grid', 'tree-view']);
+  assert.equal(resolveToken('TreeItem').component, 'MuiTreeItem');
+  assert.equal(resolveToken('RichTreeView').component, 'MuiRichTreeView');
+  assert.equal(resolveToken('tree').component, 'MuiSimpleTreeView');
   assert.deepEqual(resolveToken('DataGrid'), { kind: 'x', product: 'data-grid', label: 'DataGrid', component: 'MuiDataGrid' });
   assert.equal(resolveToken('DataGridPremium').component, 'MuiDataGrid');
   assert.equal(resolveToken('grid').component, 'MuiDataGrid');

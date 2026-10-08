@@ -68,7 +68,7 @@ test('mui component <X> prints the feature map for products without style rows; 
   const map = run('component', 'DatePicker');
   assert.ok(map.includes('MUI X date-pickers') && map.includes('PLAN'));
   assert.ok(run('date-pickers').includes('MUI X date-pickers'));
-  fails(['annotate', 'DatePicker'], /MUI X — style rows cover Material UI and the Data Grid only.*mui demos date-pickers/);
+  fails(['annotate', 'DatePicker'], /MUI X — style rows cover Material UI, MUI X DataGrid, MUI X Tree View for now.*mui demos date-pickers/);
   fails(['verify', 'DataGrid'], /MUI X — verify covers Material UI only.*mui annotate DataGrid.*mui demos data-grid/);
   fails(['diff', 'DataGrid', '--theme', path.resolve(BIN, '../../test/fixtures/code-standard.theme.ts')], /MUI X — diff covers Material UI only/);
 });

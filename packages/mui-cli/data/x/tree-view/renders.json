@@ -1,0 +1,39 @@
+{
+  "$note": "How MUI X Tree View components render for annotate: props and clicks that show each slot, and why a slot can't be shown.",
+  "components": {
+    "MuiSimpleTreeView": {
+      "standalone": true
+    },
+    "MuiRichTreeView": {
+      "standalone": true
+    },
+    "MuiTreeItem": {
+      "standalone": true,
+      "slotProps": {
+        "checkbox": { "scenario": "checkbox" },
+        "labelInput": { "scenario": "editing" }
+      },
+      "slotInteraction": {
+        "labelInput": ["edit-label"]
+      },
+      "unreachable": {
+        "errorIcon": "shows only when lazy loading an item's children fails (RichTreeViewPro dataSource), which this build does not render yet",
+        "loadingIcon": "shows only while lazy loading an item's children (RichTreeViewPro dataSource), which this build does not render yet"
+      }
+    },
+    "MuiTreeItemLoader": {
+      "standalone": true,
+      "unreachable": {
+        "root": "renders only while RichTreeViewPro lazy loads children, which this build does not render yet"
+      }
+    },
+    "MuiTreeItemDragAndDropOverlay": {
+      "standalone": true,
+      "unreachable": {
+        "root": "renders only while an item is dragged to reorder (RichTreeViewPro)"
+      }
+    }
+  },
+  "renders": {},
+  "rows": {}
+}

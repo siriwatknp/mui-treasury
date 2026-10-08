@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { resolveToken } from '../lib/aliases.mjs';
+import { resolveToken, xProductLabel } from '../lib/aliases.mjs';
 import { jsonOut } from '../lib/json.mjs';
 import { parsePropsKey } from '../lib/match.mjs';
 
@@ -39,7 +39,9 @@ export async function drawSlot(runCapture, helpers, { component, slot = 'root', 
 export async function run(program, name, options) {
   const target = resolveToken(name);
   if (target?.kind === 'x' && !target.component) {
-    throw new Error(`${target.label} is MUI X — style rows cover Material UI and the Data Grid only for now; \`mui demos ${target.product}\` lists its demos`);
+    const { xStyledProducts } = await import('../lib/xStyled.mjs');
+    const covered = ['Material UI', ...xStyledProducts().map((p) => `MUI X ${xProductLabel[p]}`)].join(', ');
+    throw new Error(`${target.label} is MUI X — style rows cover ${covered} for now; \`mui demos ${target.product}\` lists its demos`);
   }
   const component = target?.component ?? `Mui${name}`;
   const aspects = (options.aspects ?? DEFAULT_ASPECTS).split(',').map((a) => a.trim());

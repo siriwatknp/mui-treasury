@@ -4,7 +4,7 @@ import { DATA_DIR } from './data.mjs';
 import { HARNESS_DIR } from './renderEngine.mjs';
 import { missingPackages } from './packages.mjs';
 import { loadGraph } from './seams.mjs';
-import { DATA_GRID } from './xFixtures.mjs';
+import { DATA_GRID, RICH_TREE_VIEW, SIMPLE_TREE_VIEW } from './xFixtures.mjs';
 import { importOf, xDataDir, xProductOfKey } from './xStyled.mjs';
 
 export const RENDER_DEMOS_DIR = path.join(DATA_DIR, 'material/render-demos');
@@ -80,6 +80,9 @@ export const RENDER_DEFAULTS = {
     props: "{ label: 'Probe' }",
   },
   MuiDataGrid: DATA_GRID,
+  MuiRichTreeView: RICH_TREE_VIEW,
+  MuiTreeItem: RICH_TREE_VIEW,
+  MuiSimpleTreeView: SIMPLE_TREE_VIEW,
   MuiSelect: {
     imports: "import MenuItem from '@mui/material/MenuItem';\n",
     props: "{ value: 'Probe one' }",
@@ -104,7 +107,9 @@ export function generatedUrl(component, parent, parentProps = {}) {
   const wrapperProps = Object.entries(parentProps).map(([k, v]) => ` ${k}={value(${JSON.stringify(v)})}`).join('');
   const short = (c) => c.replace(/^Mui/, '');
   const passed = defaults?.local ? `Object.entries(props).filter(([k]) => !${JSON.stringify(defaults.local)}.includes(k))` : 'Object.entries(props)';
-  const element = `<C ${defaults?.props ? `{...${defaults.props}} ` : ''}{...Object.fromEntries(${passed}.map(([k, v]) => [k, value(v)]))}>{${content}}</C>`;
+  const spread = `${defaults?.props ? `{...${defaults.props}} ` : ''}{...Object.fromEntries(${passed}.map(([k, v]) => [k, value(v)]))}`;
+  // a fixture that is more than `<C>` (a tree around its items) writes the element itself, given the props spread
+  const element = defaults?.render ? defaults.render(spread) : `<C ${spread}>{${content}}</C>`;
   const inner = defaults?.frame ? `<div style={{ width: ${defaults.frame.width}, height: ${defaults.frame.height} }}>${element}</div>` : element;
   put(
     path.join(HARNESS_DIR, '_renders', `${name}.jsx`),
@@ -125,10 +130,13 @@ export const demoUrl = (demo) => `/@fs${path.join(RENDER_DEMOS_DIR, `${demo}.tsx
 
 const TRIGGERS = '[aria-haspopup]:not([aria-haspopup="false"]), [aria-expanded="false"], [role="combobox"]';
 
-/** Interaction names → steps: popup (open a menu/listbox), button:i, label-hover (tooltip triggers), header-hover / column-menu (a grid column's hover icons / menu), root:i (click the component). */
+/** Interaction names → steps: popup (open a menu/listbox), button:i, label-hover (tooltip triggers), header-hover / column-menu (a grid column's hover icons / menu), edit-label (a tree item's label in edit mode), root:i (click the component). */
 export function interactionSteps(component, interaction = []) {
   return interaction.flatMap((name) => {
     const [kind, nth] = name.split(':');
+    if (kind === 'edit-label') {
+      return [{ dblclick: '.MuiTreeItem-label' }, { settle: '.MuiTreeItem-labelInput' }];
+    }
     if (kind === 'header-hover') {
       return [{ hover: '.MuiDataGrid-columnHeader' }, { settle: '.MuiDataGrid-menuIconButton' }];
     }

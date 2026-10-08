@@ -48,3 +48,32 @@ const scenarios = {
   content: 'undefined',
   frame: { width: 640, height: 360 },
 };
+
+// one product tree, a branch expanded and a leaf selected; `checkbox` selects with checkboxes, `editing` lets a label be edited
+const TREE_SCENARIOS = `const scenarios = {
+  checkbox: { checkboxSelection: true, multiSelect: true, defaultSelectedItems: ['grid-pro'] },
+  editing: { isItemEditable: true },
+};
+`;
+
+// TreeItem renders inside a RichTreeView too (its default item), so both theme keys use this tree
+export const RICH_TREE_VIEW = {
+  imports: `import { RichTreeView as Tree } from '@mui/x-tree-view';
+const items = [
+  { id: 'grid', label: 'Data Grid', children: [{ id: 'grid-community', label: 'Community' }, { id: 'grid-pro', label: 'Pro' }] },
+  { id: 'pickers', label: 'Date Pickers' },
+];
+${TREE_SCENARIOS}`,
+  props: "{ items, defaultExpandedItems: ['grid'], defaultSelectedItems: 'grid-pro', ...scenarios[props.scenario] }",
+  local: ['scenario'],
+  render: (spread) => `<div style={{ width: 280 }}><Tree ${spread} /></div>`,
+};
+
+export const SIMPLE_TREE_VIEW = {
+  imports: `import { TreeItem } from '@mui/x-tree-view';
+${TREE_SCENARIOS}`,
+  props: "{ defaultExpandedItems: ['grid'], defaultSelectedItems: 'grid-pro', ...scenarios[props.scenario] }",
+  local: ['scenario'],
+  render: (spread) =>
+    `<div style={{ width: 280 }}><C ${spread}><TreeItem itemId="grid" label="Data Grid"><TreeItem itemId="grid-community" label="Community" /><TreeItem itemId="grid-pro" label="Pro" /></TreeItem><TreeItem itemId="pickers" label="Date Pickers" /></C></div>`,
+};

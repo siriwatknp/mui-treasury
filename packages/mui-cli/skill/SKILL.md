@@ -75,7 +75,7 @@ Then stop and report. More checking past this point costs time without changing 
 
 - **Spacing between components** (a control and its label, alignment, overhang): look at the gate's contact sheet (`verify <Component> --all` for one component in all its uses).
 - **Visual taste.**
-- **MUI X styles** in `verify` and `diff`. The Data Grid has style rows (`component DataGrid`) and `annotate DataGrid`; other MUI X products have neither.
+- **MUI X styles** in `verify` and `diff`. The Data Grid and Tree View have style rows (`component DataGrid`, `component TreeItem`) and `annotate`; other MUI X products have neither.
 - **Components that only render inside docs demos** (Accordion, Select's menu, Snackbar…): they use their recorded demo, so `--props` doesn't apply.
 
 ## Rules
