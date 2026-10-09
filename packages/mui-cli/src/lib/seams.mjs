@@ -76,5 +76,5 @@ export const matcherLabel = (matcher, fns) => {
   if (matcher.fn) {
     return `when ${fns[matcher.fn].replace(/\s+/g, ' ')}`;
   }
-  return Object.entries(matcher).map(([k, v]) => `${k}=${v}`).join(', ');
+  return Object.entries(matcher).map(([k, v]) => `${k}=${typeof v === 'object' ? JSON.stringify(v) : v}`).join(', ');
 };

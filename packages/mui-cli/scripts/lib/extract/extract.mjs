@@ -79,8 +79,28 @@ const matcherKey = (props) => {
   if (typeof props === 'function') {
     return `fn:${fnId(props)}`;
   }
-  return Object.entries(props).map(([k, v]) => `${k}=${v}`).join(',');
+  return Object.entries(props).map(([k, v]) => `${k}=${typeof v === 'object' ? JSON.stringify(v) : v}`).join(',');
 };
+
+// MUI X style functions that branch on ownerState: the values to run them with besides {} — strings they compare against
+// (`ownerState.direction === 'vertical'`) plus the product's listed values for flags and objects ('@fn' = a handler)
+const ownerStateCandidates = (style) => {
+  if (!x?.ownerStateValues || typeof style !== 'function') {
+    return [];
+  }
+  const source = style.toString();
+  const values = new Map();
+  for (const [, key, value] of source.matchAll(/ownerState\??\.(\w+)\s*[!=]==?\s*'([^']*)'/g)) {
+    values.set(key, new Set([...(values.get(key) ?? []), value]));
+  }
+  for (const [key, listed] of Object.entries(x.ownerStateValues)) {
+    if (new RegExp(`ownerState\\??\\.${key}\\b`).test(source)) {
+      values.set(key, new Set([...(values.get(key) ?? []), ...listed]));
+    }
+  }
+  return [...values].flatMap(([key, set]) => [...set].map((value) => ({ [key]: value })));
+};
+const asOwnerState = (matcher) => Object.fromEntries(Object.entries(matcher).map(([k, v]) => [k, v === '@fn' ? () => {} : v]));
 const slotName = (slot) => (slot ? slot.charAt(0).toLowerCase() + slot.slice(1) : null);
 const elementName = (tag) => (typeof tag === 'string' ? tag : (tag?.displayName ?? tag?.name ?? tag?.render?.name ?? 'component'));
 const named = records.filter((rec) => rec.name && (!x || x.keys.includes(rec.name)));
@@ -122,15 +142,15 @@ function collect(theme) {
     const slotLabel = slot === null ? `(internal:${element})` : shared.has(`${rec.name}|${rec.slot}`) ? `${slot}(${element})` : slot;
     rec.styles.forEach((style) => {
       const partial = typeof style === 'function' && style.name !== 'styleFromTheme' && /ownerState/.test(style.toString());
-      const walk = (obj, matcher, selector) => {
+      const walk = (obj, matcher, selector, into = rows) => {
         for (const [k, v] of Object.entries(obj ?? {})) {
           if (k === 'variants') {
-            v.forEach((variant) => walk(variant.style, variant.props, selector));
+            v.forEach((variant) => walk(variant.style, variant.props, selector, into));
           } else if (v && typeof v === 'object') {
-            walk(v, matcher, [...selector, k]);
+            walk(v, matcher, [...selector, k], into);
           } else if (v !== undefined && v !== null && typeof v !== 'boolean') {
             const id = `${rec.name}|${slotLabel}|${matcherKey(matcher)}|${selector.join(' ')}|${k}`;
-            rows.set(id, {
+            into.set(id, {
               id,
               component: rec.name,
               slot,
@@ -152,7 +172,26 @@ function collect(theme) {
         failedStyles.add(`${rec.name}.${rec.slot}: ${err.message.split('\n')[0]}`);
         return;
       }
-      (Array.isArray(evaluated) ? evaluated : [evaluated]).forEach((o) => walk(o, null, []));
+      const base = new Map();
+      (Array.isArray(evaluated) ? evaluated : [evaluated]).forEach((o) => walk(o, null, [], base));
+      base.forEach((row, id) => rows.set(id, row));
+      // each ownerState value on its own: a row it adds or changes is kept under that value's matcher
+      const place = (row) => `${row.selector.join(' ')}|${row.prop}`;
+      const baseValues = new Map([...base.values()].filter((row) => !row.matcher).map((row) => [place(row), row.value]));
+      for (const matcher of ownerStateCandidates(style)) {
+        const branch = new Map();
+        try {
+          const out = style({ theme, ownerState: asOwnerState(matcher) });
+          (Array.isArray(out) ? out : [out]).forEach((o) => walk(o, matcher, [], branch));
+        } catch {
+          continue;
+        }
+        branch.forEach((row, id) => {
+          if (JSON.stringify(baseValues.get(place(row))) !== JSON.stringify(row.value)) {
+            rows.set(id, row);
+          }
+        });
+      }
     });
   }
   return rows;

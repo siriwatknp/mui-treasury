@@ -13,6 +13,20 @@ import { installedVersion, readPins } from '../scripts/lib/pins.mjs';
 
 const grid = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'x/data-grid/seams.json'), 'utf8'));
 
+test('chart styles branching on props are extracted per value, one prop at a time', () => {
+  const charts = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'x/charts/seams.json'), 'utf8'));
+  const find = (component, matcher, prop) => charts.rows.find((r) => r.component === component && JSON.stringify(r.matcher) === JSON.stringify(matcher) && r.prop === prop && !r.selector.length);
+  // compared in source: `ownerState.direction === 'vertical'`
+  assert.equal(find('MuiChartsLegend', { direction: 'vertical' }, 'flexDirection').value, 'column');
+  // listed values: a flag and an object
+  assert.equal(find('MuiChartsWrapper', { hideLegend: true }, 'gridTemplateRows').value, '1fr');
+  assert.equal(find('MuiChartsWrapper', { legendPosition: { vertical: 'bottom', horizontal: 'center' } }, 'alignItems').value, 'flex-end');
+  // measured numbers and derived state stay out
+  assert.ok(!charts.rows.some((r) => r.matcher && ('width' in r.matcher || 'thickness' in r.matcher || 'isRtl' in r.matcher)));
+  // a value that changes nothing adds no row
+  assert.ok(!charts.rows.some((r) => r.component === 'MuiChartsLegend' && r.matcher?.direction === 'horizontal' && r.prop === 'flexDirection'));
+});
+
 test('data grid rows are built from the pinned MUI X', () => {
   assert.equal(grid.$source.x, readPins().x);
   assert.equal(grid.$source.x, installedVersion('@mui/x-data-grid'));

@@ -17,6 +17,22 @@ export const X_STYLED = {
   // chart parts render through the chart that draws them (MuiBarLabel → BarChart)
   charts: {
     package: '@mui/x-charts',
+    // props the style functions branch on with no literal to compare against (flags, objects): the values extracted besides
+    // the empty-props run. Measured numbers (width, thickness) and derived state (isRtl) stay out
+    ownerStateValues: {
+      hideLegend: [true],
+      legendDirection: ['horizontal', 'vertical'],
+      legendPosition: [
+        { vertical: 'top', horizontal: 'center' },
+        { vertical: 'bottom', horizontal: 'center' },
+        { vertical: 'middle', horizontal: 'start' },
+        { vertical: 'middle', horizontal: 'end' },
+      ],
+      reverse: [true],
+      rotate: [true],
+      toggleVisibilityOnClick: [true],
+      onItemClick: ['@fn'],
+    },
     keys: ['MuiChartsWrapper', 'MuiChartsLayerContainer', 'MuiChartsSvgLayer', 'MuiChartsLegend', 'MuiChartsLabelMark', 'MuiChartsAxis', 'MuiChartsXAxis', 'MuiChartsYAxis', 'MuiChartsGrid', 'MuiBarPlot', 'MuiBarLabel', 'MuiChartsTooltip', 'MuiChartsAxisHighlight', 'MuiChartsAxisHighlightValue', 'MuiChartsToolbar', 'MuiContinuousColorLegend', 'MuiChartsLabelGradient', 'MuiPiecewiseColorLegend', 'MuiChartsRadialGrid', 'MuiChartsRadialAxisHighlight', 'MuiLinePlot', 'MuiAreaPlot', 'MuiMarkPlot', 'MuiMarkElement', 'MuiScatterPlot', 'MuiPieArcPlot', 'MuiPieArc', 'MuiPieArcLabelPlot', 'MuiPieArcLabel', 'MuiGauge'],
     exports: { MuiChartsWrapper: 'BarChart', MuiChartsLayerContainer: 'BarChart', MuiChartsSvgLayer: 'BarChart', MuiChartsLegend: 'BarChart', MuiChartsLabelMark: 'BarChart', MuiChartsAxis: 'BarChart', MuiChartsXAxis: 'BarChart', MuiChartsYAxis: 'BarChart', MuiChartsGrid: 'BarChart', MuiBarPlot: 'BarChart', MuiBarLabel: 'BarChart', MuiChartsTooltip: 'BarChart', MuiChartsAxisHighlight: 'BarChart', MuiChartsAxisHighlightValue: 'BarChart', MuiChartsToolbar: 'BarChart', MuiContinuousColorLegend: 'BarChart', MuiChartsLabelGradient: 'BarChart', MuiPiecewiseColorLegend: 'BarChart', MuiChartsRadialGrid: 'BarChart', MuiChartsRadialAxisHighlight: 'BarChart', MuiLinePlot: 'LineChart', MuiAreaPlot: 'LineChart', MuiMarkPlot: 'LineChart', MuiMarkElement: 'LineChart', MuiScatterPlot: 'ScatterChart', MuiPieArcPlot: 'PieChart', MuiPieArc: 'PieChart', MuiPieArcLabelPlot: 'PieChart', MuiPieArcLabel: 'PieChart', MuiGauge: 'Gauge' },
   },
