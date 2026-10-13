@@ -306,6 +306,10 @@ const modules: Record<string, RegistryModuleLoader> = {
     import('@/registry/components/sidebar/demos/sidebar-tooltip.demo'),
   'components/sidebar/sidebar.demo': () =>
     import('@/registry/components/sidebar/sidebar.demo'),
+  'components/slider-01/slider-01': () =>
+    import('@/registry/components/slider-01/slider-01'),
+  'components/slider-01/slider-01.demo': () =>
+    import('@/registry/components/slider-01/slider-01.demo'),
   'components/slider-mui-treasury/slider-mui-treasury': () =>
     import('@/registry/components/slider-mui-treasury/slider-mui-treasury'),
   'components/snackbar-mui-treasury/snackbar-mui-treasury': () =>
