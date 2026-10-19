@@ -3,6 +3,6 @@ import C0 from '../demos/composition-demos/icons/Icons';
 import C1 from '../demos/composition-demos/icons/TwoToneIcons';
 
 export const cases = [
-  { id: "Icon|composition|in icons/Icons", component: "Icon", components: ["Icon"], kind: "composition", label: "in icons/Icons", props: {}, state: null, note: null, Component: C0 },
+  { id: "Icon|composition|in icons/Icons", component: "Icon", components: ["Icon","Stack"], kind: "composition", label: "in icons/Icons", props: {}, state: null, note: null, Component: C0 },
   { id: "Icon|composition|in icons/TwoToneIcons", component: "Icon", components: ["Icon"], kind: "composition", label: "in icons/TwoToneIcons", props: {}, state: null, note: null, Component: C1 },
 ];

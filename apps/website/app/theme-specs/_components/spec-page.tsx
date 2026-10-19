@@ -246,7 +246,7 @@ export function SpecPage({ name, results, groups }: SpecPageProps) {
               <Chip
                 variant="outlined"
                 color={me.failed ? 'error' : 'success'}
-                label={`${me.cases} cases · ${me.failed} failed`}
+                label={`${me.cases} case${me.cases === 1 ? '' : 's'} · ${me.failed} failed`}
               />
             )}
           </Stack>
