@@ -4,24 +4,24 @@ import C1 from '../demos/composition-demos/app-bar/BottomAppBar';
 import C2 from '../demos/composition-demos/badges/BadgeListItem';
 import C3 from '../demos/composition-demos/bottom-navigation/FixedBottomNavigation';
 import C4 from '../demos/composition-demos/chips/ChipsArray';
-import C5 from '../demos/composition-demos/dialogs/CookiesBanner';
-import C6 from '../demos/composition-demos/menus/CheckboxMenu';
-import C7 from '../demos/composition-demos/menus/DenseMenu';
-import C8 from '../demos/composition-demos/menus/IconMenu';
-import C9 from '../demos/composition-demos/menus/MenuListComposition';
-import C10 from '../demos/composition-demos/menus/RadioMenu';
-import C11 from '../demos/composition-demos/menus/TypographyMenu';
-import C12 from '../demos/composition-demos/paper/SimplePaper';
-import C13 from '../demos/composition-demos/steppers/TextMobileStepper';
-import C14 from '../demos/composition-demos/table/AccessibleTable';
-import C15 from '../demos/composition-demos/table/BasicTable';
-import C16 from '../demos/composition-demos/table/CollapsibleTable';
-import C17 from '../demos/composition-demos/table/ColumnGroupingTable';
-import C18 from '../demos/composition-demos/table/CustomPaginationActionsTable';
-import C19 from '../demos/composition-demos/table/DataTable';
-import C20 from '../demos/composition-demos/table/DenseTable';
-import C21 from '../demos/composition-demos/table/SpanningTable';
-import C22 from '../demos/composition-demos/table/StickyHeadTable';
+import C5 from '../demos/composition-demos/menus/CheckboxMenu';
+import C6 from '../demos/composition-demos/menus/DenseMenu';
+import C7 from '../demos/composition-demos/menus/IconMenu';
+import C8 from '../demos/composition-demos/menus/MenuListComposition';
+import C9 from '../demos/composition-demos/menus/RadioMenu';
+import C10 from '../demos/composition-demos/menus/TypographyMenu';
+import C11 from '../demos/composition-demos/table/AccessibleTable';
+import C12 from '../demos/composition-demos/table/BasicTable';
+import C13 from '../demos/composition-demos/table/CollapsibleTable';
+import C14 from '../demos/composition-demos/table/ColumnGroupingTable';
+import C15 from '../demos/composition-demos/table/CustomPaginationActionsTable';
+import C16 from '../demos/composition-demos/table/DataTable';
+import C17 from '../demos/composition-demos/table/DenseTable';
+import C18 from '../demos/composition-demos/table/SpanningTable';
+import C19 from '../demos/composition-demos/table/StickyHeadTable';
+import C20 from '../demos/composition-demos/dialogs/CookiesBanner';
+import C21 from '../demos/composition-demos/paper/SimplePaper';
+import C22 from '../demos/composition-demos/steppers/TextMobileStepper';
 import C23 from '../demos/composition-demos/transfer-list/TransferList';
 import C24 from '../demos/composition-demos/transitions/SimpleFade';
 import C25 from '../demos/composition-demos/transitions/SimpleGrow';
@@ -30,28 +30,28 @@ import C27 from '../demos/composition-demos/transitions/SlideFromContainer';
 
 export const cases = [
   { id: "Collapse|composition|in transitions/SimpleCollapse", component: "Collapse", components: ["Collapse","Paper","FormControlLabel","Switch"], kind: "composition", label: "in transitions/SimpleCollapse", props: {}, state: null, note: null, Component: C0 },
-  { id: "Paper|composition|in app-bar/BottomAppBar", component: "Paper", components: ["Paper","IconButton","Typography","AppBar","ListSubheader","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","Avatar","AvatarGroup","Toolbar"], kind: "composition", label: "in app-bar/BottomAppBar", props: {}, state: null, note: null, Component: C1 },
-  { id: "Paper|composition|in badges/BadgeListItem", component: "Paper", components: ["Paper","Badge","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader"], kind: "composition", label: "in badges/BadgeListItem", props: {}, state: null, note: null, Component: C2 },
-  { id: "Paper|composition|in bottom-navigation/FixedBottomNavigation", component: "Paper", components: ["Paper","Avatar","AvatarGroup","BottomNavigation","BottomNavigationAction","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader"], kind: "composition", label: "in bottom-navigation/FixedBottomNavigation", props: {}, state: null, note: null, Component: C3 },
-  { id: "Paper|composition|in chips/ChipsArray", component: "Paper", components: ["Paper","Chip"], kind: "composition", label: "in chips/ChipsArray", props: {}, state: null, note: null, Component: C4 },
-  { id: "Paper|composition|in dialogs/CookiesBanner", component: "Paper", components: ["Paper","IconButton","Typography","AppBar","Button","Container","Stack","Toolbar"], kind: "composition", label: "in dialogs/CookiesBanner", props: {}, state: null, note: null, Component: C5 },
-  { id: "Paper|composition|in menus/CheckboxMenu", component: "Paper", components: ["Paper","ListItemIcon","List","ListItem","ListItemAvatar","ListItemButton","ListItemSecondaryAction","ListItemText","ListSubheader","MenuItem","Menu"], kind: "composition", label: "in menus/CheckboxMenu", props: {}, state: null, note: null, Component: C6 },
-  { id: "Paper|composition|in menus/DenseMenu", component: "Paper", components: ["Paper","Divider","ListItemIcon","List","ListItem","ListItemAvatar","ListItemButton","ListItemSecondaryAction","ListItemText","ListSubheader","MenuItem","Menu"], kind: "composition", label: "in menus/DenseMenu", props: {}, state: null, note: null, Component: C7 },
-  { id: "Paper|composition|in menus/IconMenu", component: "Paper", components: ["Paper","Typography","Divider","ListItemIcon","List","ListItem","ListItemAvatar","ListItemButton","ListItemSecondaryAction","ListItemText","ListSubheader","MenuItem","Menu"], kind: "composition", label: "in menus/IconMenu", props: {}, state: null, note: null, Component: C8 },
-  { id: "Paper|composition|in menus/MenuListComposition", component: "Paper", components: ["Paper","Button","MenuItem","Menu","Stack"], kind: "composition", label: "in menus/MenuListComposition", props: {}, state: null, note: null, Component: C9 },
-  { id: "Paper|composition|in menus/RadioMenu", component: "Paper", components: ["Paper","ListItemIcon","List","ListItem","ListItemAvatar","ListItemButton","ListItemSecondaryAction","ListItemText","ListSubheader","MenuItem","Menu"], kind: "composition", label: "in menus/RadioMenu", props: {}, state: null, note: null, Component: C10 },
-  { id: "Paper|composition|in menus/TypographyMenu", component: "Paper", components: ["Paper","Typography","ListItemIcon","List","ListItem","ListItemAvatar","ListItemButton","ListItemSecondaryAction","ListItemText","ListSubheader","MenuItem","Menu"], kind: "composition", label: "in menus/TypographyMenu", props: {}, state: null, note: null, Component: C11 },
-  { id: "Paper|composition|in paper/SimplePaper", component: "Paper", components: ["Paper"], kind: "composition", label: "in paper/SimplePaper", props: {}, state: null, note: null, Component: C12 },
-  { id: "Paper|composition|in steppers/TextMobileStepper", component: "Paper", components: ["Paper","Typography","Button","MobileStepper"], kind: "composition", label: "in steppers/TextMobileStepper", props: {}, state: null, note: null, Component: C13 },
-  { id: "Paper|composition|in table/AccessibleTable", component: "Paper", components: ["Paper","Table","TableBody","TableCell","TableContainer","TableFooter","TableHead","TablePagination","TableRow","TableSortLabel"], kind: "composition", label: "in table/AccessibleTable", props: {}, state: null, note: null, Component: C14 },
-  { id: "Paper|composition|in table/BasicTable", component: "Paper", components: ["Paper","Table","TableBody","TableCell","TableContainer","TableFooter","TableHead","TablePagination","TableRow","TableSortLabel"], kind: "composition", label: "in table/BasicTable", props: {}, state: null, note: null, Component: C15 },
-  { id: "Paper|composition|in table/CollapsibleTable", component: "Paper", components: ["Paper","IconButton","Table","TableBody","TableCell","TableContainer","TableFooter","TableHead","TablePagination","TableRow","TableSortLabel"], kind: "composition", label: "in table/CollapsibleTable", props: {}, state: null, note: null, Component: C16 },
-  { id: "Paper|composition|in table/ColumnGroupingTable", component: "Paper", components: ["Paper","Table","TableBody","TableCell","TableContainer","TableFooter","TableHead","TablePagination","TableRow","TableSortLabel"], kind: "composition", label: "in table/ColumnGroupingTable", props: {}, state: null, note: null, Component: C17 },
-  { id: "Paper|composition|in table/CustomPaginationActionsTable", component: "Paper", components: ["Paper","IconButton","Table","TableBody","TableCell","TableContainer","TableFooter","TableHead","TablePagination","TableRow","TableSortLabel"], kind: "composition", label: "in table/CustomPaginationActionsTable", props: {}, state: null, note: null, Component: C18 },
-  { id: "Paper|composition|in table/DataTable", component: "Paper", components: ["Paper","TablePagination","Table","TableBody","TableCell","TableContainer","TableFooter","TableHead","TableRow","TableSortLabel"], kind: "composition", label: "in table/DataTable", props: {}, state: null, note: null, Component: C19 },
-  { id: "Paper|composition|in table/DenseTable", component: "Paper", components: ["Paper","Table","TableBody","TableCell","TableContainer","TableFooter","TableHead","TablePagination","TableRow","TableSortLabel"], kind: "composition", label: "in table/DenseTable", props: {}, state: null, note: null, Component: C20 },
-  { id: "Paper|composition|in table/SpanningTable", component: "Paper", components: ["Paper","Table","TableBody","TableCell","TableContainer","TableFooter","TableHead","TablePagination","TableRow","TableSortLabel"], kind: "composition", label: "in table/SpanningTable", props: {}, state: null, note: null, Component: C21 },
-  { id: "Paper|composition|in table/StickyHeadTable", component: "Paper", components: ["Paper","Table","TableBody","TableCell","TableContainer","TableFooter","TableHead","TablePagination","TableRow","TableSortLabel"], kind: "composition", label: "in table/StickyHeadTable", props: {}, state: null, note: null, Component: C22 },
+  { id: "Toolbar|own demo|demo app-bar/BottomAppBar", component: "Toolbar", components: ["Paper","IconButton","Typography","AppBar","ListSubheader","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","Avatar","AvatarGroup","Toolbar"], kind: "own demo", label: "demo app-bar/BottomAppBar", props: {}, state: null, note: null, Component: C1 },
+  { id: "Badge|own demo|demo badges/BadgeListItem", component: "Badge", components: ["Paper","Badge","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader"], kind: "own demo", label: "demo badges/BadgeListItem", props: {}, state: null, note: null, Component: C2 },
+  { id: "BottomNavigation|own demo|demo bottom-navigation/FixedBottomNavigation", component: "BottomNavigation", components: ["Paper","Avatar","AvatarGroup","BottomNavigation","BottomNavigationAction","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader"], kind: "own demo", label: "demo bottom-navigation/FixedBottomNavigation", props: {}, state: null, note: null, Component: C3 },
+  { id: "Chip|own demo|demo chips/ChipsArray", component: "Chip", components: ["Paper","Chip"], kind: "own demo", label: "demo chips/ChipsArray", props: {}, state: null, note: null, Component: C4 },
+  { id: "MenuItem|own demo|demo menus/CheckboxMenu", component: "MenuItem", components: ["Paper","ListItemIcon","List","ListItem","ListItemAvatar","ListItemButton","ListItemSecondaryAction","ListItemText","ListSubheader","MenuItem","Menu"], kind: "own demo", label: "demo menus/CheckboxMenu", props: {}, state: null, note: null, Component: C5 },
+  { id: "MenuItem|own demo|demo menus/DenseMenu", component: "MenuItem", components: ["Paper","Divider","ListItemIcon","List","ListItem","ListItemAvatar","ListItemButton","ListItemSecondaryAction","ListItemText","ListSubheader","MenuItem","Menu"], kind: "own demo", label: "demo menus/DenseMenu", props: {}, state: null, note: null, Component: C6 },
+  { id: "MenuItem|own demo|demo menus/IconMenu", component: "MenuItem", components: ["Paper","Typography","Divider","ListItemIcon","List","ListItem","ListItemAvatar","ListItemButton","ListItemSecondaryAction","ListItemText","ListSubheader","MenuItem","Menu"], kind: "own demo", label: "demo menus/IconMenu", props: {}, state: null, note: null, Component: C7 },
+  { id: "MenuItem|own demo|demo menus/MenuListComposition", component: "MenuItem", components: ["Paper","Button","MenuItem","Menu","Stack"], kind: "own demo", label: "demo menus/MenuListComposition", props: {}, state: null, note: null, Component: C8 },
+  { id: "MenuItem|own demo|demo menus/RadioMenu", component: "MenuItem", components: ["Paper","ListItemIcon","List","ListItem","ListItemAvatar","ListItemButton","ListItemSecondaryAction","ListItemText","ListSubheader","MenuItem","Menu"], kind: "own demo", label: "demo menus/RadioMenu", props: {}, state: null, note: null, Component: C9 },
+  { id: "MenuItem|own demo|demo menus/TypographyMenu", component: "MenuItem", components: ["Paper","Typography","ListItemIcon","List","ListItem","ListItemAvatar","ListItemButton","ListItemSecondaryAction","ListItemText","ListSubheader","MenuItem","Menu"], kind: "own demo", label: "demo menus/TypographyMenu", props: {}, state: null, note: null, Component: C10 },
+  { id: "TableCell|own demo|demo table/AccessibleTable", component: "TableCell", components: ["Paper","Table","TableBody","TableCell","TableContainer","TableFooter","TableHead","TablePagination","TableRow","TableSortLabel"], kind: "own demo", label: "demo table/AccessibleTable", props: {}, state: null, note: null, Component: C11 },
+  { id: "TableCell|own demo|demo table/BasicTable", component: "TableCell", components: ["Paper","Table","TableBody","TableCell","TableContainer","TableFooter","TableHead","TablePagination","TableRow","TableSortLabel"], kind: "own demo", label: "demo table/BasicTable", props: {}, state: null, note: null, Component: C12 },
+  { id: "TableCell|own demo|demo table/CollapsibleTable", component: "TableCell", components: ["Paper","IconButton","Table","TableBody","TableCell","TableContainer","TableFooter","TableHead","TablePagination","TableRow","TableSortLabel"], kind: "own demo", label: "demo table/CollapsibleTable", props: {}, state: null, note: null, Component: C13 },
+  { id: "TableCell|own demo|demo table/ColumnGroupingTable", component: "TableCell", components: ["Paper","Table","TableBody","TableCell","TableContainer","TableFooter","TableHead","TablePagination","TableRow","TableSortLabel"], kind: "own demo", label: "demo table/ColumnGroupingTable", props: {}, state: null, note: null, Component: C14 },
+  { id: "TableCell|own demo|demo table/CustomPaginationActionsTable", component: "TableCell", components: ["Paper","IconButton","Table","TableBody","TableCell","TableContainer","TableFooter","TableHead","TablePagination","TableRow","TableSortLabel"], kind: "own demo", label: "demo table/CustomPaginationActionsTable", props: {}, state: null, note: null, Component: C15 },
+  { id: "TablePagination|own demo|demo table/DataTable", component: "TablePagination", components: ["Paper","TablePagination","Table","TableBody","TableCell","TableContainer","TableFooter","TableHead","TableRow","TableSortLabel"], kind: "own demo", label: "demo table/DataTable", props: {}, state: null, note: null, Component: C16 },
+  { id: "TableCell|own demo|demo table/DenseTable", component: "TableCell", components: ["Paper","Table","TableBody","TableCell","TableContainer","TableFooter","TableHead","TablePagination","TableRow","TableSortLabel"], kind: "own demo", label: "demo table/DenseTable", props: {}, state: null, note: null, Component: C17 },
+  { id: "TableCell|own demo|demo table/SpanningTable", component: "TableCell", components: ["Paper","Table","TableBody","TableCell","TableContainer","TableFooter","TableHead","TablePagination","TableRow","TableSortLabel"], kind: "own demo", label: "demo table/SpanningTable", props: {}, state: null, note: null, Component: C18 },
+  { id: "TableCell|own demo|demo table/StickyHeadTable", component: "TableCell", components: ["Paper","Table","TableBody","TableCell","TableContainer","TableFooter","TableHead","TablePagination","TableRow","TableSortLabel"], kind: "own demo", label: "demo table/StickyHeadTable", props: {}, state: null, note: null, Component: C19 },
+  { id: "Paper|composition|in dialogs/CookiesBanner", component: "Paper", components: ["Paper","IconButton","Typography","AppBar","Button","Container","Stack","Toolbar"], kind: "composition", label: "in dialogs/CookiesBanner", props: {}, state: null, note: null, Component: C20 },
+  { id: "Paper|composition|in paper/SimplePaper", component: "Paper", components: ["Paper"], kind: "composition", label: "in paper/SimplePaper", props: {}, state: null, note: null, Component: C21 },
+  { id: "Paper|composition|in steppers/TextMobileStepper", component: "Paper", components: ["Paper","Typography","Button","MobileStepper"], kind: "composition", label: "in steppers/TextMobileStepper", props: {}, state: null, note: null, Component: C22 },
   { id: "Paper|composition|in transfer-list/TransferList", component: "Paper", components: ["Paper","Button","Checkbox","Grid","ListItemIcon","List","ListItem","ListItemAvatar","ListItemButton","ListItemSecondaryAction","ListItemText","ListSubheader","MenuItem","Menu","Stack"], kind: "composition", label: "in transfer-list/TransferList", props: {}, state: null, note: null, Component: C23 },
   { id: "Paper|composition|in transitions/SimpleFade", component: "Paper", components: ["Paper","FormControlLabel","Switch"], kind: "composition", label: "in transitions/SimpleFade", props: {}, state: null, note: null, Component: C24 },
   { id: "Paper|composition|in transitions/SimpleGrow", component: "Paper", components: ["Paper","FormControlLabel","Switch"], kind: "composition", label: "in transitions/SimpleGrow", props: {}, state: null, note: null, Component: C25 },

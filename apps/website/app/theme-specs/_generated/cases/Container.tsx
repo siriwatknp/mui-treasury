@@ -9,10 +9,10 @@ import C6 from '../demos/composition-demos/container/SimpleContainer';
 
 export const cases = [
   { id: "Paper|composition|in dialogs/CookiesBanner", component: "Paper", components: ["Paper","IconButton","Typography","AppBar","Button","Container","Stack","Toolbar"], kind: "composition", label: "in dialogs/CookiesBanner", props: {}, state: null, note: null, Component: C0 },
-  { id: "IconButton|composition|in app-bar/ResponsiveAppBar", component: "IconButton", components: ["IconButton","Typography","AppBar","Avatar","AvatarGroup","Button","Container","Menu","MenuItem","Toolbar"], kind: "composition", label: "in app-bar/ResponsiveAppBar", props: {}, state: null, note: null, Component: C1 },
-  { id: "Typography|composition|in app-bar/BackToTop", component: "Typography", components: ["Typography","AppBar","Container","Fab","Toolbar"], kind: "composition", label: "in app-bar/BackToTop", props: {}, state: null, note: null, Component: C2 },
-  { id: "Typography|composition|in app-bar/ElevateAppBar", component: "Typography", components: ["Typography","AppBar","Container","Toolbar"], kind: "composition", label: "in app-bar/ElevateAppBar", props: {}, state: null, note: null, Component: C3 },
-  { id: "Typography|composition|in app-bar/HideAppBar", component: "Typography", components: ["Typography","AppBar","Container","Toolbar"], kind: "composition", label: "in app-bar/HideAppBar", props: {}, state: null, note: null, Component: C4 },
+  { id: "Toolbar|own demo|demo app-bar/ResponsiveAppBar", component: "Toolbar", components: ["IconButton","Typography","AppBar","Avatar","AvatarGroup","Button","Container","Menu","MenuItem","Toolbar"], kind: "own demo", label: "demo app-bar/ResponsiveAppBar", props: {}, state: null, note: null, Component: C1 },
+  { id: "Toolbar|own demo|demo app-bar/BackToTop", component: "Toolbar", components: ["Typography","AppBar","Container","Fab","Toolbar"], kind: "own demo", label: "demo app-bar/BackToTop", props: {}, state: null, note: null, Component: C2 },
+  { id: "Toolbar|own demo|demo app-bar/ElevateAppBar", component: "Toolbar", components: ["Typography","AppBar","Container","Toolbar"], kind: "own demo", label: "demo app-bar/ElevateAppBar", props: {}, state: null, note: null, Component: C3 },
+  { id: "Toolbar|own demo|demo app-bar/HideAppBar", component: "Toolbar", components: ["Typography","AppBar","Container","Toolbar"], kind: "own demo", label: "demo app-bar/HideAppBar", props: {}, state: null, note: null, Component: C4 },
   { id: "Container|composition|in container/FixedContainer", component: "Container", components: ["Container"], kind: "composition", label: "in container/FixedContainer", props: {}, state: null, note: null, Component: C5 },
   { id: "Container|composition|in container/SimpleContainer", component: "Container", components: ["Container"], kind: "composition", label: "in container/SimpleContainer", props: {}, state: null, note: null, Component: C6 },
 ];

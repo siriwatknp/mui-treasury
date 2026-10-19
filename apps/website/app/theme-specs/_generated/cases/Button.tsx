@@ -24,55 +24,55 @@ import C21 from '../demos/composition-demos/steppers/HorizontalLinearStepper';
 import C22 from '../demos/composition-demos/steppers/HorizontalNonLinearStepper';
 import C23 from '../demos/composition-demos/steppers/VerticalLinearAlternativeLabelStepper';
 import C24 from '../demos/composition-demos/steppers/VerticalLinearStepper';
-import { Render as C25 } from '../renders/MuiButton';
-import C26 from '../demos/content-cases/MuiButton/LongText';
-import C27 from '../demos/composition-demos/buttons/BasicButtons';
-import C28 from '../demos/composition-demos/buttons/TextButtons';
-import C29 from '../demos/composition-demos/buttons/ContainedButtons';
-import C30 from '../demos/composition-demos/buttons/DisableElevation';
-import C31 from '../demos/composition-demos/buttons/OutlinedButtons';
-import C32 from '../demos/composition-demos/buttons/ColorButtons';
-import C33 from '../demos/composition-demos/buttons/ButtonSizes';
-import C34 from '../demos/composition-demos/buttons/IconLabelButtons';
-import C35 from '../demos/composition-demos/buttons/InputFileUpload';
-import C36 from '../demos/composition-demos/buttons/LoadingButtons';
-import C37 from '../demos/composition-demos/buttons/LoadingButtonsTransition';
-import C38 from '../demos/composition-demos/button-group/BasicButtonGroup';
-import C39 from '../demos/composition-demos/button-group/DisableElevation';
-import C40 from '../demos/composition-demos/button-group/GroupOrientation';
-import C41 from '../demos/composition-demos/button-group/GroupSizesColors';
-import C42 from '../demos/composition-demos/button-group/LoadingButtonGroup';
-import C43 from '../demos/composition-demos/button-group/SplitButton';
-import C44 from '../demos/composition-demos/button-group/VariantButtonGroup';
-import C45 from '../demos/composition-demos/dialogs/AlertDialog';
-import C46 from '../demos/composition-demos/dialogs/AlertDialogSlide';
-import C47 from '../demos/composition-demos/dialogs/ConfirmationDialog';
-import C48 from '../demos/composition-demos/dialogs/FormDialog';
-import C49 from '../demos/composition-demos/dialogs/FullScreenDialog';
-import C50 from '../demos/composition-demos/dialogs/MaxWidthDialog';
-import C51 from '../demos/composition-demos/dialogs/ResponsiveDialog';
-import C52 from '../demos/composition-demos/dialogs/ScrollDialog';
-import C53 from '../demos/composition-demos/drawers/AnchorTemporaryDrawer';
-import C54 from '../demos/composition-demos/drawers/SwipeableTemporaryDrawer';
-import C55 from '../demos/composition-demos/drawers/TemporaryDrawer';
-import C56 from '../demos/composition-demos/menus/BasicMenu';
-import C57 from '../demos/composition-demos/menus/FadeMenu';
-import C58 from '../demos/composition-demos/menus/GroupedMenu';
-import C59 from '../demos/composition-demos/menus/PositionedMenu';
-import C60 from '../demos/composition-demos/modal/BasicModal';
-import C61 from '../demos/composition-demos/modal/NestedModal';
-import C62 from '../demos/composition-demos/modal/TransitionsModal';
-import C63 from '../demos/composition-demos/popover/BasicPopover';
-import C64 from '../demos/composition-demos/popper/PositionedPopper';
-import C65 from '../demos/composition-demos/progress/CircularIntegration';
-import C66 from '../demos/composition-demos/progress/DelayingAppearance';
-import C67 from '../demos/composition-demos/radio-buttons/ErrorRadios';
-import C68 from '../demos/composition-demos/selects/ControlledOpenSelect';
-import C69 from '../demos/composition-demos/selects/DialogSelect';
-import C70 from '../demos/composition-demos/snackbars/AutohideSnackbar';
-import C71 from '../demos/composition-demos/snackbars/ConsecutiveSnackbars';
-import C72 from '../demos/composition-demos/snackbars/DirectionSnackbar';
-import C73 from '../demos/composition-demos/snackbars/LongTextSnackbar';
+import C25 from '../demos/composition-demos/button-group/BasicButtonGroup';
+import C26 from '../demos/composition-demos/button-group/DisableElevation';
+import C27 from '../demos/composition-demos/button-group/GroupOrientation';
+import C28 from '../demos/composition-demos/button-group/GroupSizesColors';
+import C29 from '../demos/composition-demos/button-group/LoadingButtonGroup';
+import C30 from '../demos/composition-demos/button-group/SplitButton';
+import C31 from '../demos/composition-demos/button-group/VariantButtonGroup';
+import C32 from '../demos/composition-demos/dialogs/AlertDialogSlide';
+import C33 from '../demos/composition-demos/dialogs/ConfirmationDialog';
+import C34 from '../demos/composition-demos/radio-buttons/ErrorRadios';
+import C35 from '../demos/composition-demos/selects/ControlledOpenSelect';
+import C36 from '../demos/composition-demos/snackbars/LongTextSnackbar';
+import { Render as C37 } from '../renders/MuiButton';
+import C38 from '../demos/content-cases/MuiButton/LongText';
+import C39 from '../demos/composition-demos/buttons/BasicButtons';
+import C40 from '../demos/composition-demos/buttons/TextButtons';
+import C41 from '../demos/composition-demos/buttons/ContainedButtons';
+import C42 from '../demos/composition-demos/buttons/DisableElevation';
+import C43 from '../demos/composition-demos/buttons/OutlinedButtons';
+import C44 from '../demos/composition-demos/buttons/ColorButtons';
+import C45 from '../demos/composition-demos/buttons/ButtonSizes';
+import C46 from '../demos/composition-demos/buttons/IconLabelButtons';
+import C47 from '../demos/composition-demos/buttons/InputFileUpload';
+import C48 from '../demos/composition-demos/buttons/LoadingButtons';
+import C49 from '../demos/composition-demos/buttons/LoadingButtonsTransition';
+import C50 from '../demos/composition-demos/dialogs/AlertDialog';
+import C51 from '../demos/composition-demos/dialogs/FormDialog';
+import C52 from '../demos/composition-demos/dialogs/FullScreenDialog';
+import C53 from '../demos/composition-demos/dialogs/MaxWidthDialog';
+import C54 from '../demos/composition-demos/dialogs/ResponsiveDialog';
+import C55 from '../demos/composition-demos/dialogs/ScrollDialog';
+import C56 from '../demos/composition-demos/drawers/AnchorTemporaryDrawer';
+import C57 from '../demos/composition-demos/drawers/SwipeableTemporaryDrawer';
+import C58 from '../demos/composition-demos/drawers/TemporaryDrawer';
+import C59 from '../demos/composition-demos/menus/BasicMenu';
+import C60 from '../demos/composition-demos/menus/FadeMenu';
+import C61 from '../demos/composition-demos/menus/GroupedMenu';
+import C62 from '../demos/composition-demos/menus/PositionedMenu';
+import C63 from '../demos/composition-demos/modal/BasicModal';
+import C64 from '../demos/composition-demos/modal/NestedModal';
+import C65 from '../demos/composition-demos/modal/TransitionsModal';
+import C66 from '../demos/composition-demos/popover/BasicPopover';
+import C67 from '../demos/composition-demos/popper/PositionedPopper';
+import C68 from '../demos/composition-demos/progress/CircularIntegration';
+import C69 from '../demos/composition-demos/progress/DelayingAppearance';
+import C70 from '../demos/composition-demos/selects/DialogSelect';
+import C71 from '../demos/composition-demos/snackbars/AutohideSnackbar';
+import C72 from '../demos/composition-demos/snackbars/ConsecutiveSnackbars';
+import C73 from '../demos/composition-demos/snackbars/DirectionSnackbar';
 import C74 from '../demos/composition-demos/snackbars/PositionedSnackbar';
 import C75 from '../demos/composition-demos/snackbars/SimpleSnackbar';
 import C76 from '../demos/composition-demos/snackbars/TransitionsSnackbar';
@@ -92,17 +92,17 @@ import C89 from '../demos/composition-demos/tooltips/VariableWidth';
 import C90 from '../demos/composition-demos/transfer-list/SelectAllTransferList';
 
 export const cases = [
-  { id: "Collapse|composition|in alert/TransitionAlerts", component: "Collapse", components: ["Collapse","IconButton","Alert","AlertTitle","Button"], kind: "composition", label: "in alert/TransitionAlerts", props: {}, state: null, note: null, Component: C0 },
+  { id: "Alert|own demo|demo alert/TransitionAlerts", component: "Alert", components: ["Collapse","IconButton","Alert","AlertTitle","Button"], kind: "own demo", label: "demo alert/TransitionAlerts", props: {}, state: null, note: null, Component: C0 },
   { id: "Paper|composition|in dialogs/CookiesBanner", component: "Paper", components: ["Paper","IconButton","Typography","AppBar","Button","Container","Stack","Toolbar"], kind: "composition", label: "in dialogs/CookiesBanner", props: {}, state: null, note: null, Component: C1 },
-  { id: "Paper|composition|in menus/MenuListComposition", component: "Paper", components: ["Paper","Button","MenuItem","Menu","Stack"], kind: "composition", label: "in menus/MenuListComposition", props: {}, state: null, note: null, Component: C2 },
+  { id: "MenuItem|own demo|demo menus/MenuListComposition", component: "MenuItem", components: ["Paper","Button","MenuItem","Menu","Stack"], kind: "own demo", label: "demo menus/MenuListComposition", props: {}, state: null, note: null, Component: C2 },
   { id: "Paper|composition|in steppers/TextMobileStepper", component: "Paper", components: ["Paper","Typography","Button","MobileStepper"], kind: "composition", label: "in steppers/TextMobileStepper", props: {}, state: null, note: null, Component: C3 },
   { id: "Paper|composition|in transfer-list/TransferList", component: "Paper", components: ["Paper","Button","Checkbox","Grid","ListItemIcon","List","ListItem","ListItemAvatar","ListItemButton","ListItemSecondaryAction","ListItemText","ListSubheader","MenuItem","Menu","Stack"], kind: "composition", label: "in transfer-list/TransferList", props: {}, state: null, note: null, Component: C4 },
   { id: "Accordion|own demo|demo accordion/AccordionUsage", component: "Accordion", components: ["Accordion","AccordionActions","AccordionDetails","AccordionSummary","Typography","Button"], kind: "own demo", label: "demo accordion/AccordionUsage", props: {}, state: null, note: null, Component: C5 },
   { id: "CircularProgress|composition|in backdrop/SimpleBackdrop", component: "CircularProgress", components: ["CircularProgress","Backdrop","Button"], kind: "composition", label: "in backdrop/SimpleBackdrop", props: {}, state: null, note: null, Component: C6 },
-  { id: "IconButton|composition|in app-bar/ButtonAppBar", component: "IconButton", components: ["IconButton","Typography","AppBar","Button","Toolbar"], kind: "composition", label: "in app-bar/ButtonAppBar", props: {}, state: null, note: null, Component: C7 },
-  { id: "IconButton|composition|in app-bar/DrawerAppBar", component: "IconButton", components: ["IconButton","Typography","AppBar","Button","Divider","Drawer","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader","Toolbar"], kind: "composition", label: "in app-bar/DrawerAppBar", props: {}, state: null, note: null, Component: C8 },
-  { id: "IconButton|composition|in app-bar/ResponsiveAppBar", component: "IconButton", components: ["IconButton","Typography","AppBar","Avatar","AvatarGroup","Button","Container","Menu","MenuItem","Toolbar"], kind: "composition", label: "in app-bar/ResponsiveAppBar", props: {}, state: null, note: null, Component: C9 },
-  { id: "IconButton|composition|in snackbars/FabIntegrationSnackbar", component: "IconButton", components: ["IconButton","Typography","AppBar","Button","Fab","SnackbarContent","Snackbar","Toolbar"], kind: "composition", label: "in snackbars/FabIntegrationSnackbar", props: {}, state: null, note: null, Component: C10 },
+  { id: "Toolbar|own demo|demo app-bar/ButtonAppBar", component: "Toolbar", components: ["IconButton","Typography","AppBar","Button","Toolbar"], kind: "own demo", label: "demo app-bar/ButtonAppBar", props: {}, state: null, note: null, Component: C7 },
+  { id: "Toolbar|own demo|demo app-bar/DrawerAppBar", component: "Toolbar", components: ["IconButton","Typography","AppBar","Button","Divider","Drawer","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader","Toolbar"], kind: "own demo", label: "demo app-bar/DrawerAppBar", props: {}, state: null, note: null, Component: C8 },
+  { id: "Toolbar|own demo|demo app-bar/ResponsiveAppBar", component: "Toolbar", components: ["IconButton","Typography","AppBar","Avatar","AvatarGroup","Button","Container","Menu","MenuItem","Toolbar"], kind: "own demo", label: "demo app-bar/ResponsiveAppBar", props: {}, state: null, note: null, Component: C9 },
+  { id: "SnackbarContent|own demo|demo snackbars/FabIntegrationSnackbar", component: "SnackbarContent", components: ["IconButton","Typography","AppBar","Button","Fab","SnackbarContent","Snackbar","Toolbar"], kind: "own demo", label: "demo snackbars/FabIntegrationSnackbar", props: {}, state: null, note: null, Component: C10 },
   { id: "IconButton|composition|in tooltips/AccessibilityTooltips", component: "IconButton", components: ["IconButton","Button"], kind: "composition", label: "in tooltips/AccessibilityTooltips", props: {}, state: null, note: null, Component: C11 },
   { id: "Alert|own demo|demo alert/ActionAlerts", component: "Alert", components: ["Alert","AlertTitle","Button","Stack"], kind: "own demo", label: "demo alert/ActionAlerts", props: {}, state: null, note: null, Component: C12 },
   { id: "Typography|composition|in cards/BasicCard", component: "Typography", components: ["Typography","Button","Card","CardActionArea","CardActions","CardContent","CardHeader","CardMedia"], kind: "composition", label: "in cards/BasicCard", props: {}, state: null, note: null, Component: C13 },
@@ -113,75 +113,75 @@ export const cases = [
   { id: "Typography|composition|in dialogs/SimpleDialogDemo", component: "Typography", components: ["Typography","Button"], kind: "composition", label: "in dialogs/SimpleDialogDemo", props: {}, state: null, note: null, Component: C18 },
   { id: "Typography|composition|in drawers/SwipeableEdgeDrawer", component: "Typography", components: ["Typography","Button","Skeleton"], kind: "composition", label: "in drawers/SwipeableEdgeDrawer", props: {}, state: null, note: null, Component: C19 },
   { id: "Typography|composition|in modal/KeepMountedModal", component: "Typography", components: ["Typography","Button","Modal"], kind: "composition", label: "in modal/KeepMountedModal", props: {}, state: null, note: null, Component: C20 },
-  { id: "Typography|composition|in steppers/HorizontalLinearStepper", component: "Typography", components: ["Typography","Button","Step","Stepper","StepButton","StepConnector","StepContent","StepIcon","StepLabel"], kind: "composition", label: "in steppers/HorizontalLinearStepper", props: {}, state: null, note: null, Component: C21 },
-  { id: "Typography|composition|in steppers/HorizontalNonLinearStepper", component: "Typography", components: ["Typography","Button","Step","Stepper","StepButton","StepConnector","StepContent","StepIcon","StepLabel"], kind: "composition", label: "in steppers/HorizontalNonLinearStepper", props: {}, state: null, note: null, Component: C22 },
-  { id: "Typography|composition|in steppers/VerticalLinearAlternativeLabelStepper", component: "Typography", components: ["Typography","Button","Step","Stepper","StepButton","StepConnector","StepContent","StepIcon","StepLabel"], kind: "composition", label: "in steppers/VerticalLinearAlternativeLabelStepper", props: {}, state: null, note: null, Component: C23 },
-  { id: "Typography|composition|in steppers/VerticalLinearStepper", component: "Typography", components: ["Typography","Button","Step","Stepper","StepButton","StepConnector","StepContent","StepIcon","StepLabel"], kind: "composition", label: "in steppers/VerticalLinearStepper", props: {}, state: null, note: null, Component: C24 },
-  { id: "Button|variant|base", component: "Button", components: ["Button"], kind: "variant", label: "base", props: {}, state: null, note: null, Component: C25 },
-  { id: "Button|variant|variant=contained", component: "Button", components: ["Button"], kind: "variant", label: "variant=contained", props: {"variant":"contained"}, state: null, note: null, Component: C25 },
-  { id: "Button|variant|variant=outlined", component: "Button", components: ["Button"], kind: "variant", label: "variant=outlined", props: {"variant":"outlined"}, state: null, note: null, Component: C25 },
-  { id: "Button|variant|color=secondary", component: "Button", components: ["Button"], kind: "variant", label: "color=secondary", props: {"color":"secondary"}, state: null, note: null, Component: C25 },
-  { id: "Button|variant|color=error", component: "Button", components: ["Button"], kind: "variant", label: "color=error", props: {"color":"error"}, state: null, note: null, Component: C25 },
-  { id: "Button|variant|color=warning", component: "Button", components: ["Button"], kind: "variant", label: "color=warning", props: {"color":"warning"}, state: null, note: null, Component: C25 },
-  { id: "Button|variant|color=info", component: "Button", components: ["Button"], kind: "variant", label: "color=info", props: {"color":"info"}, state: null, note: null, Component: C25 },
-  { id: "Button|variant|color=success", component: "Button", components: ["Button"], kind: "variant", label: "color=success", props: {"color":"success"}, state: null, note: null, Component: C25 },
-  { id: "Button|variant|color=inherit", component: "Button", components: ["Button"], kind: "variant", label: "color=inherit", props: {"color":"inherit"}, state: null, note: null, Component: C25 },
-  { id: "Button|variant|size=small,variant=text", component: "Button", components: ["Button"], kind: "variant", label: "size=small,variant=text", props: {"size":"small","variant":"text"}, state: null, note: null, Component: C25 },
-  { id: "Button|variant|size=large,variant=text", component: "Button", components: ["Button"], kind: "variant", label: "size=large,variant=text", props: {"size":"large","variant":"text"}, state: null, note: null, Component: C25 },
-  { id: "Button|variant|size=small,variant=outlined", component: "Button", components: ["Button"], kind: "variant", label: "size=small,variant=outlined", props: {"size":"small","variant":"outlined"}, state: null, note: null, Component: C25 },
-  { id: "Button|variant|size=large,variant=outlined", component: "Button", components: ["Button"], kind: "variant", label: "size=large,variant=outlined", props: {"size":"large","variant":"outlined"}, state: null, note: null, Component: C25 },
-  { id: "Button|variant|size=small,variant=contained", component: "Button", components: ["Button"], kind: "variant", label: "size=small,variant=contained", props: {"size":"small","variant":"contained"}, state: null, note: null, Component: C25 },
-  { id: "Button|variant|size=large,variant=contained", component: "Button", components: ["Button"], kind: "variant", label: "size=large,variant=contained", props: {"size":"large","variant":"contained"}, state: null, note: null, Component: C25 },
-  { id: "Button|variant|disableElevation=true", component: "Button", components: ["Button"], kind: "variant", label: "disableElevation=true", props: {"disableElevation":true}, state: null, note: null, Component: C25 },
-  { id: "Button|variant|fullWidth=true", component: "Button", components: ["Button"], kind: "variant", label: "fullWidth=true", props: {"fullWidth":true}, state: null, note: null, Component: C25 },
-  { id: "Button|content|content LongText", component: "Button", components: ["Button"], kind: "content", label: "content LongText", props: {}, state: null, note: null, Component: C26 },
-  { id: "Button|own demo|demo buttons/BasicButtons", component: "Button", components: ["Button","Stack"], kind: "own demo", label: "demo buttons/BasicButtons", props: {}, state: null, note: null, Component: C27 },
-  { id: "Button|own demo|demo buttons/TextButtons", component: "Button", components: ["Button","Stack"], kind: "own demo", label: "demo buttons/TextButtons", props: {}, state: null, note: null, Component: C28 },
-  { id: "Button|own demo|demo buttons/ContainedButtons", component: "Button", components: ["Button","Stack"], kind: "own demo", label: "demo buttons/ContainedButtons", props: {}, state: null, note: null, Component: C29 },
-  { id: "Button|own demo|demo buttons/DisableElevation", component: "Button", components: ["Button"], kind: "own demo", label: "demo buttons/DisableElevation", props: {}, state: null, note: null, Component: C30 },
-  { id: "Button|own demo|demo buttons/OutlinedButtons", component: "Button", components: ["Button","Stack"], kind: "own demo", label: "demo buttons/OutlinedButtons", props: {}, state: null, note: null, Component: C31 },
-  { id: "Button|own demo|demo buttons/ColorButtons", component: "Button", components: ["Button","Stack"], kind: "own demo", label: "demo buttons/ColorButtons", props: {}, state: null, note: null, Component: C32 },
-  { id: "Button|own demo|demo buttons/ButtonSizes", component: "Button", components: ["Button"], kind: "own demo", label: "demo buttons/ButtonSizes", props: {}, state: null, note: null, Component: C33 },
-  { id: "Button|own demo|demo buttons/IconLabelButtons", component: "Button", components: ["Button","Stack"], kind: "own demo", label: "demo buttons/IconLabelButtons", props: {}, state: null, note: null, Component: C34 },
-  { id: "Button|own demo|demo buttons/InputFileUpload", component: "Button", components: ["Button"], kind: "own demo", label: "demo buttons/InputFileUpload", props: {}, state: null, note: null, Component: C35 },
-  { id: "Button|own demo|demo buttons/LoadingButtons", component: "Button", components: ["Button","Stack"], kind: "own demo", label: "demo buttons/LoadingButtons", props: {}, state: null, note: null, Component: C36 },
-  { id: "Button|own demo|demo buttons/LoadingButtonsTransition", component: "Button", components: ["Button","FormControlLabel","Switch"], kind: "own demo", label: "demo buttons/LoadingButtonsTransition", props: {}, state: null, note: null, Component: C37 },
-  { id: "Button|composition|in button-group/BasicButtonGroup", component: "Button", components: ["Button","ButtonGroup"], kind: "composition", label: "in button-group/BasicButtonGroup", props: {}, state: null, note: null, Component: C38 },
-  { id: "Button|composition|in button-group/DisableElevation", component: "Button", components: ["Button","ButtonGroup"], kind: "composition", label: "in button-group/DisableElevation", props: {}, state: null, note: null, Component: C39 },
-  { id: "Button|composition|in button-group/GroupOrientation", component: "Button", components: ["Button","ButtonGroup"], kind: "composition", label: "in button-group/GroupOrientation", props: {}, state: null, note: null, Component: C40 },
-  { id: "Button|composition|in button-group/GroupSizesColors", component: "Button", components: ["Button","ButtonGroup"], kind: "composition", label: "in button-group/GroupSizesColors", props: {}, state: null, note: null, Component: C41 },
-  { id: "Button|composition|in button-group/LoadingButtonGroup", component: "Button", components: ["Button","ButtonGroup"], kind: "composition", label: "in button-group/LoadingButtonGroup", props: {}, state: null, note: null, Component: C42 },
-  { id: "Button|composition|in button-group/SplitButton", component: "Button", components: ["Button","ButtonGroup"], kind: "composition", label: "in button-group/SplitButton", props: {}, state: null, note: null, Component: C43 },
-  { id: "Button|composition|in button-group/VariantButtonGroup", component: "Button", components: ["Button","ButtonGroup"], kind: "composition", label: "in button-group/VariantButtonGroup", props: {}, state: null, note: null, Component: C44 },
-  { id: "Button|composition|in dialogs/AlertDialog", component: "Button", components: ["Button"], kind: "composition", label: "in dialogs/AlertDialog", props: {}, state: null, note: null, Component: C45 },
-  { id: "Button|composition|in dialogs/AlertDialogSlide", component: "Button", components: ["Button","Dialog","DialogActions","DialogContent","DialogTitle"], kind: "composition", label: "in dialogs/AlertDialogSlide", props: {}, state: null, note: null, Component: C46 },
-  { id: "Button|composition|in dialogs/ConfirmationDialog", component: "Button", components: ["Button","Dialog","DialogActions","DialogContent","DialogTitle","FormControlLabel","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader","Radio"], kind: "composition", label: "in dialogs/ConfirmationDialog", props: {}, state: null, note: null, Component: C47 },
-  { id: "Button|composition|in dialogs/FormDialog", component: "Button", components: ["Button"], kind: "composition", label: "in dialogs/FormDialog", props: {}, state: null, note: null, Component: C48 },
-  { id: "Button|composition|in dialogs/FullScreenDialog", component: "Button", components: ["Button"], kind: "composition", label: "in dialogs/FullScreenDialog", props: {}, state: null, note: null, Component: C49 },
-  { id: "Button|composition|in dialogs/MaxWidthDialog", component: "Button", components: ["Button"], kind: "composition", label: "in dialogs/MaxWidthDialog", props: {}, state: null, note: null, Component: C50 },
-  { id: "Button|composition|in dialogs/ResponsiveDialog", component: "Button", components: ["Button"], kind: "composition", label: "in dialogs/ResponsiveDialog", props: {}, state: null, note: null, Component: C51 },
-  { id: "Button|composition|in dialogs/ScrollDialog", component: "Button", components: ["Button"], kind: "composition", label: "in dialogs/ScrollDialog", props: {}, state: null, note: null, Component: C52 },
-  { id: "Button|composition|in drawers/AnchorTemporaryDrawer", component: "Button", components: ["Button"], kind: "composition", label: "in drawers/AnchorTemporaryDrawer", props: {}, state: null, note: null, Component: C53 },
-  { id: "Button|composition|in drawers/SwipeableTemporaryDrawer", component: "Button", components: ["Button","Divider","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader"], kind: "composition", label: "in drawers/SwipeableTemporaryDrawer", props: {}, state: null, note: null, Component: C54 },
-  { id: "Button|composition|in drawers/TemporaryDrawer", component: "Button", components: ["Button"], kind: "composition", label: "in drawers/TemporaryDrawer", props: {}, state: null, note: null, Component: C55 },
-  { id: "Button|composition|in menus/BasicMenu", component: "Button", components: ["Button"], kind: "composition", label: "in menus/BasicMenu", props: {}, state: null, note: null, Component: C56 },
-  { id: "Button|composition|in menus/FadeMenu", component: "Button", components: ["Button"], kind: "composition", label: "in menus/FadeMenu", props: {}, state: null, note: null, Component: C57 },
-  { id: "Button|composition|in menus/GroupedMenu", component: "Button", components: ["Button"], kind: "composition", label: "in menus/GroupedMenu", props: {}, state: null, note: null, Component: C58 },
-  { id: "Button|composition|in menus/PositionedMenu", component: "Button", components: ["Button"], kind: "composition", label: "in menus/PositionedMenu", props: {}, state: null, note: null, Component: C59 },
-  { id: "Button|composition|in modal/BasicModal", component: "Button", components: ["Button"], kind: "composition", label: "in modal/BasicModal", props: {}, state: null, note: null, Component: C60 },
-  { id: "Button|composition|in modal/NestedModal", component: "Button", components: ["Button"], kind: "composition", label: "in modal/NestedModal", props: {}, state: null, note: null, Component: C61 },
-  { id: "Button|composition|in modal/TransitionsModal", component: "Button", components: ["Button"], kind: "composition", label: "in modal/TransitionsModal", props: {}, state: null, note: null, Component: C62 },
-  { id: "Button|composition|in popover/BasicPopover", component: "Button", components: ["Button"], kind: "composition", label: "in popover/BasicPopover", props: {}, state: null, note: null, Component: C63 },
-  { id: "Button|composition|in popper/PositionedPopper", component: "Button", components: ["Button","Stack"], kind: "composition", label: "in popper/PositionedPopper", props: {}, state: null, note: null, Component: C64 },
-  { id: "Button|composition|in progress/CircularIntegration", component: "Button", components: ["Button","Fab"], kind: "composition", label: "in progress/CircularIntegration", props: {}, state: null, note: null, Component: C65 },
-  { id: "Button|composition|in progress/DelayingAppearance", component: "Button", components: ["Button"], kind: "composition", label: "in progress/DelayingAppearance", props: {}, state: null, note: null, Component: C66 },
-  { id: "Button|composition|in radio-buttons/ErrorRadios", component: "Button", components: ["Button","FormControl","FormControlLabel","FormHelperText","FormLabel","Radio"], kind: "composition", label: "in radio-buttons/ErrorRadios", props: {}, state: null, note: null, Component: C67 },
-  { id: "Button|composition|in selects/ControlledOpenSelect", component: "Button", components: ["Button","FormControl","InputLabel","Input","InputAdornment","Select"], kind: "composition", label: "in selects/ControlledOpenSelect", props: {}, state: null, note: null, Component: C68 },
-  { id: "Button|composition|in selects/DialogSelect", component: "Button", components: ["Button"], kind: "composition", label: "in selects/DialogSelect", props: {}, state: null, note: null, Component: C69 },
-  { id: "Button|composition|in snackbars/AutohideSnackbar", component: "Button", components: ["Button"], kind: "composition", label: "in snackbars/AutohideSnackbar", props: {}, state: null, note: null, Component: C70 },
-  { id: "Button|composition|in snackbars/ConsecutiveSnackbars", component: "Button", components: ["Button"], kind: "composition", label: "in snackbars/ConsecutiveSnackbars", props: {}, state: null, note: null, Component: C71 },
-  { id: "Button|composition|in snackbars/DirectionSnackbar", component: "Button", components: ["Button","Grid"], kind: "composition", label: "in snackbars/DirectionSnackbar", props: {}, state: null, note: null, Component: C72 },
-  { id: "Button|composition|in snackbars/LongTextSnackbar", component: "Button", components: ["Button","SnackbarContent","Snackbar","Stack"], kind: "composition", label: "in snackbars/LongTextSnackbar", props: {}, state: null, note: null, Component: C73 },
+  { id: "Step|own demo|demo steppers/HorizontalLinearStepper", component: "Step", components: ["Typography","Button","Step","Stepper","StepButton","StepConnector","StepContent","StepIcon","StepLabel"], kind: "own demo", label: "demo steppers/HorizontalLinearStepper", props: {}, state: null, note: null, Component: C21 },
+  { id: "Step|own demo|demo steppers/HorizontalNonLinearStepper", component: "Step", components: ["Typography","Button","Step","Stepper","StepButton","StepConnector","StepContent","StepIcon","StepLabel"], kind: "own demo", label: "demo steppers/HorizontalNonLinearStepper", props: {}, state: null, note: null, Component: C22 },
+  { id: "Step|own demo|demo steppers/VerticalLinearAlternativeLabelStepper", component: "Step", components: ["Typography","Button","Step","Stepper","StepButton","StepConnector","StepContent","StepIcon","StepLabel"], kind: "own demo", label: "demo steppers/VerticalLinearAlternativeLabelStepper", props: {}, state: null, note: null, Component: C23 },
+  { id: "Step|own demo|demo steppers/VerticalLinearStepper", component: "Step", components: ["Typography","Button","Step","Stepper","StepButton","StepConnector","StepContent","StepIcon","StepLabel"], kind: "own demo", label: "demo steppers/VerticalLinearStepper", props: {}, state: null, note: null, Component: C24 },
+  { id: "ButtonGroup|own demo|demo button-group/BasicButtonGroup", component: "ButtonGroup", components: ["Button","ButtonGroup"], kind: "own demo", label: "demo button-group/BasicButtonGroup", props: {}, state: null, note: null, Component: C25 },
+  { id: "ButtonGroup|own demo|demo button-group/DisableElevation", component: "ButtonGroup", components: ["Button","ButtonGroup"], kind: "own demo", label: "demo button-group/DisableElevation", props: {}, state: null, note: null, Component: C26 },
+  { id: "ButtonGroup|own demo|demo button-group/GroupOrientation", component: "ButtonGroup", components: ["Button","ButtonGroup"], kind: "own demo", label: "demo button-group/GroupOrientation", props: {}, state: null, note: null, Component: C27 },
+  { id: "ButtonGroup|own demo|demo button-group/GroupSizesColors", component: "ButtonGroup", components: ["Button","ButtonGroup"], kind: "own demo", label: "demo button-group/GroupSizesColors", props: {}, state: null, note: null, Component: C28 },
+  { id: "ButtonGroup|own demo|demo button-group/LoadingButtonGroup", component: "ButtonGroup", components: ["Button","ButtonGroup"], kind: "own demo", label: "demo button-group/LoadingButtonGroup", props: {}, state: null, note: null, Component: C29 },
+  { id: "ButtonGroup|own demo|demo button-group/SplitButton", component: "ButtonGroup", components: ["Button","ButtonGroup"], kind: "own demo", label: "demo button-group/SplitButton", props: {}, state: null, note: null, Component: C30 },
+  { id: "ButtonGroup|own demo|demo button-group/VariantButtonGroup", component: "ButtonGroup", components: ["Button","ButtonGroup"], kind: "own demo", label: "demo button-group/VariantButtonGroup", props: {}, state: null, note: null, Component: C31 },
+  { id: "Dialog|own demo|demo dialogs/AlertDialogSlide", component: "Dialog", components: ["Button","Dialog","DialogActions","DialogContent","DialogTitle"], kind: "own demo", label: "demo dialogs/AlertDialogSlide", props: {}, state: null, note: null, Component: C32 },
+  { id: "Dialog|own demo|demo dialogs/ConfirmationDialog", component: "Dialog", components: ["Button","Dialog","DialogActions","DialogContent","DialogTitle","FormControlLabel","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader","Radio"], kind: "own demo", label: "demo dialogs/ConfirmationDialog", props: {}, state: null, note: null, Component: C33 },
+  { id: "Radio|own demo|demo radio-buttons/ErrorRadios", component: "Radio", components: ["Button","FormControl","FormControlLabel","FormHelperText","FormLabel","Radio"], kind: "own demo", label: "demo radio-buttons/ErrorRadios", props: {}, state: null, note: null, Component: C34 },
+  { id: "Select|own demo|demo selects/ControlledOpenSelect", component: "Select", components: ["Button","FormControl","InputLabel","Input","InputAdornment","Select"], kind: "own demo", label: "demo selects/ControlledOpenSelect", props: {}, state: null, note: null, Component: C35 },
+  { id: "SnackbarContent|own demo|demo snackbars/LongTextSnackbar", component: "SnackbarContent", components: ["Button","SnackbarContent","Snackbar","Stack"], kind: "own demo", label: "demo snackbars/LongTextSnackbar", props: {}, state: null, note: null, Component: C36 },
+  { id: "Button|variant|base", component: "Button", components: ["Button"], kind: "variant", label: "base", props: {}, state: null, note: null, Component: C37 },
+  { id: "Button|variant|variant=contained", component: "Button", components: ["Button"], kind: "variant", label: "variant=contained", props: {"variant":"contained"}, state: null, note: null, Component: C37 },
+  { id: "Button|variant|variant=outlined", component: "Button", components: ["Button"], kind: "variant", label: "variant=outlined", props: {"variant":"outlined"}, state: null, note: null, Component: C37 },
+  { id: "Button|variant|color=secondary", component: "Button", components: ["Button"], kind: "variant", label: "color=secondary", props: {"color":"secondary"}, state: null, note: null, Component: C37 },
+  { id: "Button|variant|color=error", component: "Button", components: ["Button"], kind: "variant", label: "color=error", props: {"color":"error"}, state: null, note: null, Component: C37 },
+  { id: "Button|variant|color=warning", component: "Button", components: ["Button"], kind: "variant", label: "color=warning", props: {"color":"warning"}, state: null, note: null, Component: C37 },
+  { id: "Button|variant|color=info", component: "Button", components: ["Button"], kind: "variant", label: "color=info", props: {"color":"info"}, state: null, note: null, Component: C37 },
+  { id: "Button|variant|color=success", component: "Button", components: ["Button"], kind: "variant", label: "color=success", props: {"color":"success"}, state: null, note: null, Component: C37 },
+  { id: "Button|variant|color=inherit", component: "Button", components: ["Button"], kind: "variant", label: "color=inherit", props: {"color":"inherit"}, state: null, note: null, Component: C37 },
+  { id: "Button|variant|size=small,variant=text", component: "Button", components: ["Button"], kind: "variant", label: "size=small,variant=text", props: {"size":"small","variant":"text"}, state: null, note: null, Component: C37 },
+  { id: "Button|variant|size=large,variant=text", component: "Button", components: ["Button"], kind: "variant", label: "size=large,variant=text", props: {"size":"large","variant":"text"}, state: null, note: null, Component: C37 },
+  { id: "Button|variant|size=small,variant=outlined", component: "Button", components: ["Button"], kind: "variant", label: "size=small,variant=outlined", props: {"size":"small","variant":"outlined"}, state: null, note: null, Component: C37 },
+  { id: "Button|variant|size=large,variant=outlined", component: "Button", components: ["Button"], kind: "variant", label: "size=large,variant=outlined", props: {"size":"large","variant":"outlined"}, state: null, note: null, Component: C37 },
+  { id: "Button|variant|size=small,variant=contained", component: "Button", components: ["Button"], kind: "variant", label: "size=small,variant=contained", props: {"size":"small","variant":"contained"}, state: null, note: null, Component: C37 },
+  { id: "Button|variant|size=large,variant=contained", component: "Button", components: ["Button"], kind: "variant", label: "size=large,variant=contained", props: {"size":"large","variant":"contained"}, state: null, note: null, Component: C37 },
+  { id: "Button|variant|disableElevation=true", component: "Button", components: ["Button"], kind: "variant", label: "disableElevation=true", props: {"disableElevation":true}, state: null, note: null, Component: C37 },
+  { id: "Button|variant|fullWidth=true", component: "Button", components: ["Button"], kind: "variant", label: "fullWidth=true", props: {"fullWidth":true}, state: null, note: null, Component: C37 },
+  { id: "Button|content|content LongText", component: "Button", components: ["Button"], kind: "content", label: "content LongText", props: {}, state: null, note: null, Component: C38 },
+  { id: "Button|own demo|demo buttons/BasicButtons", component: "Button", components: ["Button","Stack"], kind: "own demo", label: "demo buttons/BasicButtons", props: {}, state: null, note: null, Component: C39 },
+  { id: "Button|own demo|demo buttons/TextButtons", component: "Button", components: ["Button","Stack"], kind: "own demo", label: "demo buttons/TextButtons", props: {}, state: null, note: null, Component: C40 },
+  { id: "Button|own demo|demo buttons/ContainedButtons", component: "Button", components: ["Button","Stack"], kind: "own demo", label: "demo buttons/ContainedButtons", props: {}, state: null, note: null, Component: C41 },
+  { id: "Button|own demo|demo buttons/DisableElevation", component: "Button", components: ["Button"], kind: "own demo", label: "demo buttons/DisableElevation", props: {}, state: null, note: null, Component: C42 },
+  { id: "Button|own demo|demo buttons/OutlinedButtons", component: "Button", components: ["Button","Stack"], kind: "own demo", label: "demo buttons/OutlinedButtons", props: {}, state: null, note: null, Component: C43 },
+  { id: "Button|own demo|demo buttons/ColorButtons", component: "Button", components: ["Button","Stack"], kind: "own demo", label: "demo buttons/ColorButtons", props: {}, state: null, note: null, Component: C44 },
+  { id: "Button|own demo|demo buttons/ButtonSizes", component: "Button", components: ["Button"], kind: "own demo", label: "demo buttons/ButtonSizes", props: {}, state: null, note: null, Component: C45 },
+  { id: "Button|own demo|demo buttons/IconLabelButtons", component: "Button", components: ["Button","Stack"], kind: "own demo", label: "demo buttons/IconLabelButtons", props: {}, state: null, note: null, Component: C46 },
+  { id: "Button|own demo|demo buttons/InputFileUpload", component: "Button", components: ["Button"], kind: "own demo", label: "demo buttons/InputFileUpload", props: {}, state: null, note: null, Component: C47 },
+  { id: "Button|own demo|demo buttons/LoadingButtons", component: "Button", components: ["Button","Stack"], kind: "own demo", label: "demo buttons/LoadingButtons", props: {}, state: null, note: null, Component: C48 },
+  { id: "Button|own demo|demo buttons/LoadingButtonsTransition", component: "Button", components: ["Button","FormControlLabel","Switch"], kind: "own demo", label: "demo buttons/LoadingButtonsTransition", props: {}, state: null, note: null, Component: C49 },
+  { id: "Button|composition|in dialogs/AlertDialog", component: "Button", components: ["Button"], kind: "composition", label: "in dialogs/AlertDialog", props: {}, state: null, note: null, Component: C50 },
+  { id: "Button|composition|in dialogs/FormDialog", component: "Button", components: ["Button"], kind: "composition", label: "in dialogs/FormDialog", props: {}, state: null, note: null, Component: C51 },
+  { id: "Button|composition|in dialogs/FullScreenDialog", component: "Button", components: ["Button"], kind: "composition", label: "in dialogs/FullScreenDialog", props: {}, state: null, note: null, Component: C52 },
+  { id: "Button|composition|in dialogs/MaxWidthDialog", component: "Button", components: ["Button"], kind: "composition", label: "in dialogs/MaxWidthDialog", props: {}, state: null, note: null, Component: C53 },
+  { id: "Button|composition|in dialogs/ResponsiveDialog", component: "Button", components: ["Button"], kind: "composition", label: "in dialogs/ResponsiveDialog", props: {}, state: null, note: null, Component: C54 },
+  { id: "Button|composition|in dialogs/ScrollDialog", component: "Button", components: ["Button"], kind: "composition", label: "in dialogs/ScrollDialog", props: {}, state: null, note: null, Component: C55 },
+  { id: "Button|composition|in drawers/AnchorTemporaryDrawer", component: "Button", components: ["Button"], kind: "composition", label: "in drawers/AnchorTemporaryDrawer", props: {}, state: null, note: null, Component: C56 },
+  { id: "Button|composition|in drawers/SwipeableTemporaryDrawer", component: "Button", components: ["Button","Divider","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader"], kind: "composition", label: "in drawers/SwipeableTemporaryDrawer", props: {}, state: null, note: null, Component: C57 },
+  { id: "Button|composition|in drawers/TemporaryDrawer", component: "Button", components: ["Button"], kind: "composition", label: "in drawers/TemporaryDrawer", props: {}, state: null, note: null, Component: C58 },
+  { id: "Button|composition|in menus/BasicMenu", component: "Button", components: ["Button"], kind: "composition", label: "in menus/BasicMenu", props: {}, state: null, note: null, Component: C59 },
+  { id: "Button|composition|in menus/FadeMenu", component: "Button", components: ["Button"], kind: "composition", label: "in menus/FadeMenu", props: {}, state: null, note: null, Component: C60 },
+  { id: "Button|composition|in menus/GroupedMenu", component: "Button", components: ["Button"], kind: "composition", label: "in menus/GroupedMenu", props: {}, state: null, note: null, Component: C61 },
+  { id: "Button|composition|in menus/PositionedMenu", component: "Button", components: ["Button"], kind: "composition", label: "in menus/PositionedMenu", props: {}, state: null, note: null, Component: C62 },
+  { id: "Button|composition|in modal/BasicModal", component: "Button", components: ["Button"], kind: "composition", label: "in modal/BasicModal", props: {}, state: null, note: null, Component: C63 },
+  { id: "Button|composition|in modal/NestedModal", component: "Button", components: ["Button"], kind: "composition", label: "in modal/NestedModal", props: {}, state: null, note: null, Component: C64 },
+  { id: "Button|composition|in modal/TransitionsModal", component: "Button", components: ["Button"], kind: "composition", label: "in modal/TransitionsModal", props: {}, state: null, note: null, Component: C65 },
+  { id: "Button|composition|in popover/BasicPopover", component: "Button", components: ["Button"], kind: "composition", label: "in popover/BasicPopover", props: {}, state: null, note: null, Component: C66 },
+  { id: "Button|composition|in popper/PositionedPopper", component: "Button", components: ["Button","Stack"], kind: "composition", label: "in popper/PositionedPopper", props: {}, state: null, note: null, Component: C67 },
+  { id: "Button|composition|in progress/CircularIntegration", component: "Button", components: ["Button","Fab"], kind: "composition", label: "in progress/CircularIntegration", props: {}, state: null, note: null, Component: C68 },
+  { id: "Button|composition|in progress/DelayingAppearance", component: "Button", components: ["Button"], kind: "composition", label: "in progress/DelayingAppearance", props: {}, state: null, note: null, Component: C69 },
+  { id: "Button|composition|in selects/DialogSelect", component: "Button", components: ["Button"], kind: "composition", label: "in selects/DialogSelect", props: {}, state: null, note: null, Component: C70 },
+  { id: "Button|composition|in snackbars/AutohideSnackbar", component: "Button", components: ["Button"], kind: "composition", label: "in snackbars/AutohideSnackbar", props: {}, state: null, note: null, Component: C71 },
+  { id: "Button|composition|in snackbars/ConsecutiveSnackbars", component: "Button", components: ["Button"], kind: "composition", label: "in snackbars/ConsecutiveSnackbars", props: {}, state: null, note: null, Component: C72 },
+  { id: "Button|composition|in snackbars/DirectionSnackbar", component: "Button", components: ["Button","Grid"], kind: "composition", label: "in snackbars/DirectionSnackbar", props: {}, state: null, note: null, Component: C73 },
   { id: "Button|composition|in snackbars/PositionedSnackbar", component: "Button", components: ["Button","Grid"], kind: "composition", label: "in snackbars/PositionedSnackbar", props: {}, state: null, note: null, Component: C74 },
   { id: "Button|composition|in snackbars/SimpleSnackbar", component: "Button", components: ["Button"], kind: "composition", label: "in snackbars/SimpleSnackbar", props: {}, state: null, note: null, Component: C75 },
   { id: "Button|composition|in snackbars/TransitionsSnackbar", component: "Button", components: ["Button"], kind: "composition", label: "in snackbars/TransitionsSnackbar", props: {}, state: null, note: null, Component: C76 },

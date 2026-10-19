@@ -21,7 +21,7 @@ import C18 from '../demos/composition-demos/text-fields/HelperTextMisaligned';
 import C19 from '../demos/composition-demos/text-fields/HelperTextAligned';
 
 export const cases = [
-  { id: "IconButton|composition|in text-fields/InputAdornments", component: "IconButton", components: ["IconButton","InputBase","FilledInput","FormControl","FormHelperText","Input","InputAdornment","InputLabel","OutlinedInput"], kind: "composition", label: "in text-fields/InputAdornments", props: {}, state: null, note: null, Component: C0 },
+  { id: "InputBase|own demo|demo text-fields/InputAdornments", component: "InputBase", components: ["IconButton","InputBase","FilledInput","FormControl","FormHelperText","Input","InputAdornment","InputLabel","OutlinedInput"], kind: "own demo", label: "demo text-fields/InputAdornments", props: {}, state: null, note: null, Component: C0 },
   { id: "InputBase|variant|base", component: "InputBase", components: ["InputBase"], kind: "variant", label: "base", props: {}, state: null, note: null, Component: C1 },
   { id: "InputBase|variant|multiline=true", component: "InputBase", components: ["InputBase"], kind: "variant", label: "multiline=true", props: {"multiline":true}, state: null, note: null, Component: C1 },
   { id: "InputBase|variant|fullWidth=true", component: "InputBase", components: ["InputBase"], kind: "variant", label: "fullWidth=true", props: {"fullWidth":true}, state: null, note: null, Component: C1 },

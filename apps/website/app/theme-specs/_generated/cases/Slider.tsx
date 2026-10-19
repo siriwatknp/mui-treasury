@@ -18,12 +18,12 @@ import C15 from '../demos/composition-demos/slider/ColorSlider';
 import C16 from '../demos/composition-demos/slider/VerticalSlider';
 
 export const cases = [
-  { id: "IconButton|composition|in slider/MusicPlayerSlider", component: "IconButton", components: ["IconButton","Slider","Stack"], kind: "composition", label: "in slider/MusicPlayerSlider", props: {}, state: null, note: null, Component: C0 },
-  { id: "Typography|composition|in slider/CustomMarks", component: "Typography", components: ["Typography","Slider"], kind: "composition", label: "in slider/CustomMarks", props: {}, state: null, note: null, Component: C1 },
-  { id: "Typography|composition|in slider/InputSlider", component: "Typography", components: ["Typography","Grid","Input","InputAdornment","InputLabel","Slider"], kind: "composition", label: "in slider/InputSlider", props: {}, state: null, note: null, Component: C2 },
-  { id: "Typography|composition|in slider/NonLinearSlider", component: "Typography", components: ["Typography","Slider"], kind: "composition", label: "in slider/NonLinearSlider", props: {}, state: null, note: null, Component: C3 },
-  { id: "Typography|composition|in slider/TrackFalseSlider", component: "Typography", components: ["Typography","Slider"], kind: "composition", label: "in slider/TrackFalseSlider", props: {}, state: null, note: null, Component: C4 },
-  { id: "Typography|composition|in slider/TrackInvertedSlider", component: "Typography", components: ["Typography","Slider"], kind: "composition", label: "in slider/TrackInvertedSlider", props: {}, state: null, note: null, Component: C5 },
+  { id: "Slider|own demo|demo slider/MusicPlayerSlider", component: "Slider", components: ["IconButton","Slider","Stack"], kind: "own demo", label: "demo slider/MusicPlayerSlider", props: {}, state: null, note: null, Component: C0 },
+  { id: "Slider|own demo|demo slider/CustomMarks", component: "Slider", components: ["Typography","Slider"], kind: "own demo", label: "demo slider/CustomMarks", props: {}, state: null, note: null, Component: C1 },
+  { id: "Slider|own demo|demo slider/InputSlider", component: "Slider", components: ["Typography","Grid","Input","InputAdornment","InputLabel","Slider"], kind: "own demo", label: "demo slider/InputSlider", props: {}, state: null, note: null, Component: C2 },
+  { id: "Slider|own demo|demo slider/NonLinearSlider", component: "Slider", components: ["Typography","Slider"], kind: "own demo", label: "demo slider/NonLinearSlider", props: {}, state: null, note: null, Component: C3 },
+  { id: "Slider|own demo|demo slider/TrackFalseSlider", component: "Slider", components: ["Typography","Slider"], kind: "own demo", label: "demo slider/TrackFalseSlider", props: {}, state: null, note: null, Component: C4 },
+  { id: "Slider|own demo|demo slider/TrackInvertedSlider", component: "Slider", components: ["Typography","Slider"], kind: "own demo", label: "demo slider/TrackInvertedSlider", props: {}, state: null, note: null, Component: C5 },
   { id: "Slider|own demo|demo slider/ContinuousSlider", component: "Slider", components: ["Slider","Stack"], kind: "own demo", label: "demo slider/ContinuousSlider", props: {}, state: null, note: null, Component: C6 },
   { id: "Slider|own demo|demo slider/SliderSizes", component: "Slider", components: ["Slider"], kind: "own demo", label: "demo slider/SliderSizes", props: {}, state: null, note: null, Component: C7 },
   { id: "Slider|own demo|demo slider/DiscreteSlider", component: "Slider", components: ["Slider"], kind: "own demo", label: "demo slider/DiscreteSlider", props: {}, state: null, note: null, Component: C8 },

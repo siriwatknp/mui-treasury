@@ -10,7 +10,7 @@ import C7 from '../demos/composition-demos/alert/IconAlerts';
 import C8 from '../demos/composition-demos/alert/DescriptionAlerts';
 
 export const cases = [
-  { id: "Collapse|composition|in alert/TransitionAlerts", component: "Collapse", components: ["Collapse","IconButton","Alert","AlertTitle","Button"], kind: "composition", label: "in alert/TransitionAlerts", props: {}, state: null, note: null, Component: C0 },
+  { id: "Alert|own demo|demo alert/TransitionAlerts", component: "Alert", components: ["Collapse","IconButton","Alert","AlertTitle","Button"], kind: "own demo", label: "demo alert/TransitionAlerts", props: {}, state: null, note: null, Component: C0 },
   { id: "Alert|own demo|demo alert/SimpleAlert", component: "Alert", components: ["Alert","AlertTitle"], kind: "own demo", label: "demo alert/SimpleAlert", props: {}, state: null, note: null, Component: C1 },
   { id: "Alert|own demo|demo alert/BasicAlerts", component: "Alert", components: ["Alert","AlertTitle","Stack"], kind: "own demo", label: "demo alert/BasicAlerts", props: {}, state: null, note: null, Component: C2 },
   { id: "Alert|own demo|demo alert/FilledAlerts", component: "Alert", components: ["Alert","AlertTitle","Stack"], kind: "own demo", label: "demo alert/FilledAlerts", props: {}, state: null, note: null, Component: C3 },

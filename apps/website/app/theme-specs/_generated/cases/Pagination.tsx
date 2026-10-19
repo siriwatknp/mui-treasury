@@ -9,7 +9,7 @@ import C6 from '../demos/composition-demos/pagination/CustomIcons';
 import C7 from '../demos/composition-demos/pagination/PaginationRanges';
 
 export const cases = [
-  { id: "Typography|composition|in pagination/PaginationControlled", component: "Typography", components: ["Typography","PaginationItem","Pagination","Stack"], kind: "composition", label: "in pagination/PaginationControlled", props: {}, state: null, note: null, Component: C0 },
+  { id: "PaginationItem|own demo|demo pagination/PaginationControlled", component: "PaginationItem", components: ["Typography","PaginationItem","Pagination","Stack"], kind: "own demo", label: "demo pagination/PaginationControlled", props: {}, state: null, note: null, Component: C0 },
   { id: "PaginationItem|own demo|demo pagination/BasicPagination", component: "PaginationItem", components: ["PaginationItem","Pagination","Stack"], kind: "own demo", label: "demo pagination/BasicPagination", props: {}, state: null, note: null, Component: C1 },
   { id: "PaginationItem|own demo|demo pagination/PaginationOutlined", component: "PaginationItem", components: ["PaginationItem","Pagination","Stack"], kind: "own demo", label: "demo pagination/PaginationOutlined", props: {}, state: null, note: null, Component: C2 },
   { id: "PaginationItem|own demo|demo pagination/PaginationRounded", component: "PaginationItem", components: ["PaginationItem","Pagination","Stack"], kind: "own demo", label: "demo pagination/PaginationRounded", props: {}, state: null, note: null, Component: C3 },

@@ -81,22 +81,22 @@ import C78 from '../demos/composition-demos/rating/RatingSize';
 import C79 from '../demos/composition-demos/skeleton/Variants';
 import C80 from '../demos/composition-demos/slider/ContinuousSlider';
 import C81 from '../demos/composition-demos/slider/VerticalSlider';
-import C82 from '../demos/composition-demos/avatars/BadgeAvatars';
-import C83 from '../demos/composition-demos/paper/SquareCorners';
-import C84 from '../demos/composition-demos/paper/Variants';
-import C85 from '../demos/composition-demos/stack/BasicStack';
-import C86 from '../demos/composition-demos/stack/DirectionStack';
-import C87 from '../demos/composition-demos/stack/FlexboxGapStack';
-import C88 from '../demos/composition-demos/stack/ResponsiveStack';
-import C89 from '../demos/composition-demos/toggle-button/ToggleButtonNotEmpty';
-import C90 from '../demos/composition-demos/toggle-button/ToggleButtonSizes';
+import C82 from '../demos/composition-demos/toggle-button/ToggleButtonNotEmpty';
+import C83 from '../demos/composition-demos/toggle-button/ToggleButtonSizes';
+import C84 from '../demos/composition-demos/avatars/BadgeAvatars';
+import C85 from '../demos/composition-demos/paper/SquareCorners';
+import C86 from '../demos/composition-demos/paper/Variants';
+import C87 from '../demos/composition-demos/stack/BasicStack';
+import C88 from '../demos/composition-demos/stack/DirectionStack';
+import C89 from '../demos/composition-demos/stack/FlexboxGapStack';
+import C90 from '../demos/composition-demos/stack/ResponsiveStack';
 
 export const cases = [
   { id: "SvgIcon|own demo|demo icons/SvgIconsColor", component: "SvgIcon", components: ["SvgIcon","Stack"], kind: "own demo", label: "demo icons/SvgIconsColor", props: {}, state: null, note: null, Component: C0 },
   { id: "SvgIcon|own demo|demo icons/SvgIconsSize", component: "SvgIcon", components: ["SvgIcon","Stack"], kind: "own demo", label: "demo icons/SvgIconsSize", props: {}, state: null, note: null, Component: C1 },
   { id: "SvgIcon|own demo|demo icons/CreateSvgIcon", component: "SvgIcon", components: ["SvgIcon","Stack"], kind: "own demo", label: "demo icons/CreateSvgIcon", props: {}, state: null, note: null, Component: C2 },
   { id: "Paper|composition|in dialogs/CookiesBanner", component: "Paper", components: ["Paper","IconButton","Typography","AppBar","Button","Container","Stack","Toolbar"], kind: "composition", label: "in dialogs/CookiesBanner", props: {}, state: null, note: null, Component: C3 },
-  { id: "Paper|composition|in menus/MenuListComposition", component: "Paper", components: ["Paper","Button","MenuItem","Menu","Stack"], kind: "composition", label: "in menus/MenuListComposition", props: {}, state: null, note: null, Component: C4 },
+  { id: "MenuItem|own demo|demo menus/MenuListComposition", component: "MenuItem", components: ["Paper","Button","MenuItem","Menu","Stack"], kind: "own demo", label: "demo menus/MenuListComposition", props: {}, state: null, note: null, Component: C4 },
   { id: "Paper|composition|in transfer-list/TransferList", component: "Paper", components: ["Paper","Button","Checkbox","Grid","ListItemIcon","List","ListItem","ListItemAvatar","ListItemButton","ListItemSecondaryAction","ListItemText","ListSubheader","MenuItem","Menu","Stack"], kind: "composition", label: "in transfer-list/TransferList", props: {}, state: null, note: null, Component: C5 },
   { id: "CircularProgress|composition|in progress/CircularColor", component: "CircularProgress", components: ["CircularProgress","Stack"], kind: "composition", label: "in progress/CircularColor", props: {}, state: null, note: null, Component: C6 },
   { id: "CircularProgress|composition|in progress/CircularDeterminate", component: "CircularProgress", components: ["CircularProgress","Stack"], kind: "composition", label: "in progress/CircularDeterminate", props: {}, state: null, note: null, Component: C7 },
@@ -105,21 +105,21 @@ export const cases = [
   { id: "IconButton|own demo|demo buttons/IconButtons", component: "IconButton", components: ["IconButton","Stack"], kind: "own demo", label: "demo buttons/IconButtons", props: {}, state: null, note: null, Component: C10 },
   { id: "IconButton|own demo|demo buttons/IconButtonSizes", component: "IconButton", components: ["IconButton","Stack"], kind: "own demo", label: "demo buttons/IconButtonSizes", props: {}, state: null, note: null, Component: C11 },
   { id: "IconButton|own demo|demo buttons/IconButtonColors", component: "IconButton", components: ["IconButton","Stack"], kind: "own demo", label: "demo buttons/IconButtonColors", props: {}, state: null, note: null, Component: C12 },
-  { id: "IconButton|composition|in app-bar/EnableColorOnDarkAppBar", component: "IconButton", components: ["IconButton","Typography","AppBar","Stack","Toolbar"], kind: "composition", label: "in app-bar/EnableColorOnDarkAppBar", props: {}, state: null, note: null, Component: C13 },
-  { id: "IconButton|composition|in badges/BadgeMax", component: "IconButton", components: ["IconButton","Badge","Stack"], kind: "composition", label: "in badges/BadgeMax", props: {}, state: null, note: null, Component: C14 },
-  { id: "IconButton|composition|in badges/BadgeVisibility", component: "IconButton", components: ["IconButton","Badge","FormControlLabel","Stack","Switch"], kind: "composition", label: "in badges/BadgeVisibility", props: {}, state: null, note: null, Component: C15 },
-  { id: "IconButton|composition|in badges/ColorBadge", component: "IconButton", components: ["IconButton","Badge","Stack"], kind: "composition", label: "in badges/ColorBadge", props: {}, state: null, note: null, Component: C16 },
-  { id: "IconButton|composition|in badges/ShowZeroBadge", component: "IconButton", components: ["IconButton","Badge","Stack"], kind: "composition", label: "in badges/ShowZeroBadge", props: {}, state: null, note: null, Component: C17 },
-  { id: "IconButton|composition|in slider/MusicPlayerSlider", component: "IconButton", components: ["IconButton","Slider","Stack"], kind: "composition", label: "in slider/MusicPlayerSlider", props: {}, state: null, note: null, Component: C18 },
+  { id: "Toolbar|own demo|demo app-bar/EnableColorOnDarkAppBar", component: "Toolbar", components: ["IconButton","Typography","AppBar","Stack","Toolbar"], kind: "own demo", label: "demo app-bar/EnableColorOnDarkAppBar", props: {}, state: null, note: null, Component: C13 },
+  { id: "Badge|own demo|demo badges/BadgeMax", component: "Badge", components: ["IconButton","Badge","Stack"], kind: "own demo", label: "demo badges/BadgeMax", props: {}, state: null, note: null, Component: C14 },
+  { id: "Badge|own demo|demo badges/BadgeVisibility", component: "Badge", components: ["IconButton","Badge","FormControlLabel","Stack","Switch"], kind: "own demo", label: "demo badges/BadgeVisibility", props: {}, state: null, note: null, Component: C15 },
+  { id: "Badge|own demo|demo badges/ColorBadge", component: "Badge", components: ["IconButton","Badge","Stack"], kind: "own demo", label: "demo badges/ColorBadge", props: {}, state: null, note: null, Component: C16 },
+  { id: "Badge|own demo|demo badges/ShowZeroBadge", component: "Badge", components: ["IconButton","Badge","Stack"], kind: "own demo", label: "demo badges/ShowZeroBadge", props: {}, state: null, note: null, Component: C17 },
+  { id: "Slider|own demo|demo slider/MusicPlayerSlider", component: "Slider", components: ["IconButton","Slider","Stack"], kind: "own demo", label: "demo slider/MusicPlayerSlider", props: {}, state: null, note: null, Component: C18 },
   { id: "Alert|own demo|demo alert/BasicAlerts", component: "Alert", components: ["Alert","AlertTitle","Stack"], kind: "own demo", label: "demo alert/BasicAlerts", props: {}, state: null, note: null, Component: C19 },
   { id: "Alert|own demo|demo alert/FilledAlerts", component: "Alert", components: ["Alert","AlertTitle","Stack"], kind: "own demo", label: "demo alert/FilledAlerts", props: {}, state: null, note: null, Component: C20 },
   { id: "Alert|own demo|demo alert/OutlinedAlerts", component: "Alert", components: ["Alert","AlertTitle","Stack"], kind: "own demo", label: "demo alert/OutlinedAlerts", props: {}, state: null, note: null, Component: C21 },
   { id: "Alert|own demo|demo alert/ActionAlerts", component: "Alert", components: ["Alert","AlertTitle","Button","Stack"], kind: "own demo", label: "demo alert/ActionAlerts", props: {}, state: null, note: null, Component: C22 },
   { id: "Alert|own demo|demo alert/IconAlerts", component: "Alert", components: ["Alert","AlertTitle","Stack"], kind: "own demo", label: "demo alert/IconAlerts", props: {}, state: null, note: null, Component: C23 },
   { id: "Alert|own demo|demo alert/DescriptionAlerts", component: "Alert", components: ["Alert","AlertTitle","Stack"], kind: "own demo", label: "demo alert/DescriptionAlerts", props: {}, state: null, note: null, Component: C24 },
-  { id: "Typography|composition|in breadcrumbs/CustomSeparator", component: "Typography", components: ["Typography","Breadcrumbs","Link","Stack"], kind: "composition", label: "in breadcrumbs/CustomSeparator", props: {}, state: null, note: null, Component: C25 },
-  { id: "Typography|composition|in dividers/IntroDivider", component: "Typography", components: ["Typography","Chip","Card","CardActionArea","CardActions","CardContent","CardHeader","CardMedia","Divider","Stack"], kind: "composition", label: "in dividers/IntroDivider", props: {}, state: null, note: null, Component: C26 },
-  { id: "Typography|composition|in pagination/PaginationControlled", component: "Typography", components: ["Typography","PaginationItem","Pagination","Stack"], kind: "composition", label: "in pagination/PaginationControlled", props: {}, state: null, note: null, Component: C27 },
+  { id: "Breadcrumbs|own demo|demo breadcrumbs/CustomSeparator", component: "Breadcrumbs", components: ["Typography","Breadcrumbs","Link","Stack"], kind: "own demo", label: "demo breadcrumbs/CustomSeparator", props: {}, state: null, note: null, Component: C25 },
+  { id: "Divider|own demo|demo dividers/IntroDivider", component: "Divider", components: ["Typography","Chip","Card","CardActionArea","CardActions","CardContent","CardHeader","CardMedia","Divider","Stack"], kind: "own demo", label: "demo dividers/IntroDivider", props: {}, state: null, note: null, Component: C26 },
+  { id: "PaginationItem|own demo|demo pagination/PaginationControlled", component: "PaginationItem", components: ["Typography","PaginationItem","Pagination","Stack"], kind: "own demo", label: "demo pagination/PaginationControlled", props: {}, state: null, note: null, Component: C27 },
   { id: "Typography|composition|in stack/ZeroWidthStack", component: "Typography", components: ["Typography","Avatar","AvatarGroup","Stack"], kind: "composition", label: "in stack/ZeroWidthStack", props: {}, state: null, note: null, Component: C28 },
   { id: "Chip|own demo|demo chips/BasicChips", component: "Chip", components: ["Chip","Stack"], kind: "own demo", label: "demo chips/BasicChips", props: {}, state: null, note: null, Component: C29 },
   { id: "Chip|own demo|demo chips/ClickableChips", component: "Chip", components: ["Chip","Stack"], kind: "own demo", label: "demo chips/ClickableChips", props: {}, state: null, note: null, Component: C30 },
@@ -131,8 +131,8 @@ export const cases = [
   { id: "Chip|own demo|demo chips/IconChips", component: "Chip", components: ["Chip","Stack"], kind: "own demo", label: "demo chips/IconChips", props: {}, state: null, note: null, Component: C36 },
   { id: "Chip|own demo|demo chips/ColorChips", component: "Chip", components: ["Chip","Stack"], kind: "own demo", label: "demo chips/ColorChips", props: {}, state: null, note: null, Component: C37 },
   { id: "Chip|own demo|demo chips/SizesChips", component: "Chip", components: ["Chip","Stack"], kind: "own demo", label: "demo chips/SizesChips", props: {}, state: null, note: null, Component: C38 },
-  { id: "Chip|composition|in autocomplete/Sizes", component: "Chip", components: ["Chip","Autocomplete","Stack"], kind: "composition", label: "in autocomplete/Sizes", props: {}, state: null, note: null, Component: C39 },
-  { id: "Chip|composition|in autocomplete/Tags", component: "Chip", components: ["Chip","Autocomplete","Stack"], kind: "composition", label: "in autocomplete/Tags", props: {}, state: null, note: null, Component: C40 },
+  { id: "Autocomplete|own demo|demo autocomplete/Sizes", component: "Autocomplete", components: ["Chip","Autocomplete","Stack"], kind: "own demo", label: "demo autocomplete/Sizes", props: {}, state: null, note: null, Component: C39 },
+  { id: "Autocomplete|own demo|demo autocomplete/Tags", component: "Autocomplete", components: ["Chip","Autocomplete","Stack"], kind: "own demo", label: "demo autocomplete/Tags", props: {}, state: null, note: null, Component: C40 },
   { id: "InputBase|own demo|demo text-fields/TextFieldHiddenLabel", component: "InputBase", components: ["InputBase","FilledInput","Stack"], kind: "own demo", label: "demo text-fields/TextFieldHiddenLabel", props: {}, state: null, note: null, Component: C41 },
   { id: "Autocomplete|own demo|demo autocomplete/Playground", component: "Autocomplete", components: ["Autocomplete","Stack"], kind: "own demo", label: "demo autocomplete/Playground", props: {}, state: null, note: null, Component: C42 },
   { id: "Autocomplete|own demo|demo autocomplete/FreeSolo", component: "Autocomplete", components: ["Autocomplete","Stack"], kind: "own demo", label: "demo autocomplete/FreeSolo", props: {}, state: null, note: null, Component: C43 },
@@ -155,7 +155,7 @@ export const cases = [
   { id: "Button|own demo|demo buttons/IconLabelButtons", component: "Button", components: ["Button","Stack"], kind: "own demo", label: "demo buttons/IconLabelButtons", props: {}, state: null, note: null, Component: C60 },
   { id: "Button|own demo|demo buttons/LoadingButtons", component: "Button", components: ["Button","Stack"], kind: "own demo", label: "demo buttons/LoadingButtons", props: {}, state: null, note: null, Component: C61 },
   { id: "Button|composition|in popper/PositionedPopper", component: "Button", components: ["Button","Stack"], kind: "composition", label: "in popper/PositionedPopper", props: {}, state: null, note: null, Component: C62 },
-  { id: "Button|composition|in snackbars/LongTextSnackbar", component: "Button", components: ["Button","SnackbarContent","Snackbar","Stack"], kind: "composition", label: "in snackbars/LongTextSnackbar", props: {}, state: null, note: null, Component: C63 },
+  { id: "SnackbarContent|own demo|demo snackbars/LongTextSnackbar", component: "SnackbarContent", components: ["Button","SnackbarContent","Snackbar","Stack"], kind: "own demo", label: "demo snackbars/LongTextSnackbar", props: {}, state: null, note: null, Component: C63 },
   { id: "Button|composition|in tooltips/PositionedTooltips", component: "Button", components: ["Button","Stack"], kind: "composition", label: "in tooltips/PositionedTooltips", props: {}, state: null, note: null, Component: C64 },
   { id: "Button|composition|in transfer-list/SelectAllTransferList", component: "Button", components: ["Button","Card","CardActionArea","CardActions","CardContent","CardHeader","CardMedia","Checkbox","Divider","Grid","ListItemIcon","List","ListItem","ListItemAvatar","ListItemButton","ListItemSecondaryAction","ListItemText","ListSubheader","MenuItem","Menu","Stack"], kind: "composition", label: "in transfer-list/SelectAllTransferList", props: {}, state: null, note: null, Component: C65 },
   { id: "Divider|composition|in stack/DividerStack", component: "Divider", components: ["Divider","Stack"], kind: "composition", label: "in stack/DividerStack", props: {}, state: null, note: null, Component: C66 },
@@ -174,13 +174,13 @@ export const cases = [
   { id: "Skeleton|composition|in skeleton/Variants", component: "Skeleton", components: ["Skeleton","Stack"], kind: "composition", label: "in skeleton/Variants", props: {}, state: null, note: null, Component: C79 },
   { id: "Slider|own demo|demo slider/ContinuousSlider", component: "Slider", components: ["Slider","Stack"], kind: "own demo", label: "demo slider/ContinuousSlider", props: {}, state: null, note: null, Component: C80 },
   { id: "Slider|own demo|demo slider/VerticalSlider", component: "Slider", components: ["Slider","Stack"], kind: "own demo", label: "demo slider/VerticalSlider", props: {}, state: null, note: null, Component: C81 },
-  { id: "Stack|composition|in avatars/BadgeAvatars", component: "Stack", components: ["Stack"], kind: "composition", label: "in avatars/BadgeAvatars", props: {}, state: null, note: null, Component: C82 },
-  { id: "Stack|composition|in paper/SquareCorners", component: "Stack", components: ["Stack"], kind: "composition", label: "in paper/SquareCorners", props: {}, state: null, note: null, Component: C83 },
-  { id: "Stack|composition|in paper/Variants", component: "Stack", components: ["Stack"], kind: "composition", label: "in paper/Variants", props: {}, state: null, note: null, Component: C84 },
-  { id: "Stack|composition|in stack/BasicStack", component: "Stack", components: ["Stack"], kind: "composition", label: "in stack/BasicStack", props: {}, state: null, note: null, Component: C85 },
-  { id: "Stack|composition|in stack/DirectionStack", component: "Stack", components: ["Stack"], kind: "composition", label: "in stack/DirectionStack", props: {}, state: null, note: null, Component: C86 },
-  { id: "Stack|composition|in stack/FlexboxGapStack", component: "Stack", components: ["Stack"], kind: "composition", label: "in stack/FlexboxGapStack", props: {}, state: null, note: null, Component: C87 },
-  { id: "Stack|composition|in stack/ResponsiveStack", component: "Stack", components: ["Stack"], kind: "composition", label: "in stack/ResponsiveStack", props: {}, state: null, note: null, Component: C88 },
-  { id: "Stack|composition|in toggle-button/ToggleButtonNotEmpty", component: "Stack", components: ["Stack","ToggleButtonGroup","ToggleButton"], kind: "composition", label: "in toggle-button/ToggleButtonNotEmpty", props: {}, state: null, note: null, Component: C89 },
-  { id: "Stack|composition|in toggle-button/ToggleButtonSizes", component: "Stack", components: ["Stack","ToggleButtonGroup","ToggleButton"], kind: "composition", label: "in toggle-button/ToggleButtonSizes", props: {}, state: null, note: null, Component: C90 },
+  { id: "ToggleButton|own demo|demo toggle-button/ToggleButtonNotEmpty", component: "ToggleButton", components: ["Stack","ToggleButtonGroup","ToggleButton"], kind: "own demo", label: "demo toggle-button/ToggleButtonNotEmpty", props: {}, state: null, note: null, Component: C82 },
+  { id: "ToggleButton|own demo|demo toggle-button/ToggleButtonSizes", component: "ToggleButton", components: ["Stack","ToggleButtonGroup","ToggleButton"], kind: "own demo", label: "demo toggle-button/ToggleButtonSizes", props: {}, state: null, note: null, Component: C83 },
+  { id: "Stack|composition|in avatars/BadgeAvatars", component: "Stack", components: ["Stack"], kind: "composition", label: "in avatars/BadgeAvatars", props: {}, state: null, note: null, Component: C84 },
+  { id: "Stack|composition|in paper/SquareCorners", component: "Stack", components: ["Stack"], kind: "composition", label: "in paper/SquareCorners", props: {}, state: null, note: null, Component: C85 },
+  { id: "Stack|composition|in paper/Variants", component: "Stack", components: ["Stack"], kind: "composition", label: "in paper/Variants", props: {}, state: null, note: null, Component: C86 },
+  { id: "Stack|composition|in stack/BasicStack", component: "Stack", components: ["Stack"], kind: "composition", label: "in stack/BasicStack", props: {}, state: null, note: null, Component: C87 },
+  { id: "Stack|composition|in stack/DirectionStack", component: "Stack", components: ["Stack"], kind: "composition", label: "in stack/DirectionStack", props: {}, state: null, note: null, Component: C88 },
+  { id: "Stack|composition|in stack/FlexboxGapStack", component: "Stack", components: ["Stack"], kind: "composition", label: "in stack/FlexboxGapStack", props: {}, state: null, note: null, Component: C89 },
+  { id: "Stack|composition|in stack/ResponsiveStack", component: "Stack", components: ["Stack"], kind: "composition", label: "in stack/ResponsiveStack", props: {}, state: null, note: null, Component: C90 },
 ];

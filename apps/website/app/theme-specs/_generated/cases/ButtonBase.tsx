@@ -2,5 +2,5 @@
 import C0 from '../demos/composition-demos/avatars/UploadAvatars';
 
 export const cases = [
-  { id: "ButtonBase|composition|in avatars/UploadAvatars", component: "ButtonBase", components: ["ButtonBase","Avatar","AvatarGroup"], kind: "composition", label: "in avatars/UploadAvatars", props: {}, state: null, note: null, Component: C0 },
+  { id: "Avatar|own demo|demo avatars/UploadAvatars", component: "Avatar", components: ["ButtonBase","Avatar","AvatarGroup"], kind: "own demo", label: "demo avatars/UploadAvatars", props: {}, state: null, note: null, Component: C0 },
 ];

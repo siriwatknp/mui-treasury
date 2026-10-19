@@ -4,7 +4,7 @@ import C1 from '../demos/composition-demos/bottom-navigation/SimpleBottomNavigat
 import C2 from '../demos/composition-demos/bottom-navigation/LabelBottomNavigation';
 
 export const cases = [
-  { id: "Paper|composition|in bottom-navigation/FixedBottomNavigation", component: "Paper", components: ["Paper","Avatar","AvatarGroup","BottomNavigation","BottomNavigationAction","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader"], kind: "composition", label: "in bottom-navigation/FixedBottomNavigation", props: {}, state: null, note: null, Component: C0 },
+  { id: "BottomNavigation|own demo|demo bottom-navigation/FixedBottomNavigation", component: "BottomNavigation", components: ["Paper","Avatar","AvatarGroup","BottomNavigation","BottomNavigationAction","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader"], kind: "own demo", label: "demo bottom-navigation/FixedBottomNavigation", props: {}, state: null, note: null, Component: C0 },
   { id: "BottomNavigation|own demo|demo bottom-navigation/SimpleBottomNavigation", component: "BottomNavigation", components: ["BottomNavigation","BottomNavigationAction"], kind: "own demo", label: "demo bottom-navigation/SimpleBottomNavigation", props: {}, state: null, note: null, Component: C1 },
   { id: "BottomNavigation|own demo|demo bottom-navigation/LabelBottomNavigation", component: "BottomNavigation", components: ["BottomNavigation","BottomNavigationAction"], kind: "own demo", label: "demo bottom-navigation/LabelBottomNavigation", props: {}, state: null, note: null, Component: C2 },
 ];

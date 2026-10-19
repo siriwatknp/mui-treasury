@@ -3,6 +3,6 @@ import C0 from '../demos/composition-demos/dialogs/AlertDialogSlide';
 import C1 from '../demos/composition-demos/dialogs/ConfirmationDialog';
 
 export const cases = [
-  { id: "Button|composition|in dialogs/AlertDialogSlide", component: "Button", components: ["Button","Dialog","DialogActions","DialogContent","DialogTitle"], kind: "composition", label: "in dialogs/AlertDialogSlide", props: {}, state: null, note: null, Component: C0 },
-  { id: "Button|composition|in dialogs/ConfirmationDialog", component: "Button", components: ["Button","Dialog","DialogActions","DialogContent","DialogTitle","FormControlLabel","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader","Radio"], kind: "composition", label: "in dialogs/ConfirmationDialog", props: {}, state: null, note: null, Component: C1 },
+  { id: "Dialog|own demo|demo dialogs/AlertDialogSlide", component: "Dialog", components: ["Button","Dialog","DialogActions","DialogContent","DialogTitle"], kind: "own demo", label: "demo dialogs/AlertDialogSlide", props: {}, state: null, note: null, Component: C0 },
+  { id: "Dialog|own demo|demo dialogs/ConfirmationDialog", component: "Dialog", components: ["Button","Dialog","DialogActions","DialogContent","DialogTitle","FormControlLabel","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader","Radio"], kind: "own demo", label: "demo dialogs/ConfirmationDialog", props: {}, state: null, note: null, Component: C1 },
 ];

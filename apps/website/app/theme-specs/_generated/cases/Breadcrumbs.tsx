@@ -7,10 +7,10 @@ import C4 from '../demos/composition-demos/breadcrumbs/IconBreadcrumbs';
 import C5 from '../demos/composition-demos/breadcrumbs/ActiveLastBreadcrumb';
 
 export const cases = [
-  { id: "IconButton|composition|in breadcrumbs/CondensedWithMenu", component: "IconButton", components: ["IconButton","Breadcrumbs","Link"], kind: "composition", label: "in breadcrumbs/CondensedWithMenu", props: {}, state: null, note: null, Component: C0 },
-  { id: "Typography|composition|in breadcrumbs/BasicBreadcrumbs", component: "Typography", components: ["Typography","Breadcrumbs","Link"], kind: "composition", label: "in breadcrumbs/BasicBreadcrumbs", props: {}, state: null, note: null, Component: C1 },
-  { id: "Typography|composition|in breadcrumbs/CollapsedBreadcrumbs", component: "Typography", components: ["Typography","Breadcrumbs","Link"], kind: "composition", label: "in breadcrumbs/CollapsedBreadcrumbs", props: {}, state: null, note: null, Component: C2 },
-  { id: "Typography|composition|in breadcrumbs/CustomSeparator", component: "Typography", components: ["Typography","Breadcrumbs","Link","Stack"], kind: "composition", label: "in breadcrumbs/CustomSeparator", props: {}, state: null, note: null, Component: C3 },
-  { id: "Typography|composition|in breadcrumbs/IconBreadcrumbs", component: "Typography", components: ["Typography","Breadcrumbs","Link"], kind: "composition", label: "in breadcrumbs/IconBreadcrumbs", props: {}, state: null, note: null, Component: C4 },
+  { id: "Breadcrumbs|own demo|demo breadcrumbs/CondensedWithMenu", component: "Breadcrumbs", components: ["IconButton","Breadcrumbs","Link"], kind: "own demo", label: "demo breadcrumbs/CondensedWithMenu", props: {}, state: null, note: null, Component: C0 },
+  { id: "Breadcrumbs|own demo|demo breadcrumbs/BasicBreadcrumbs", component: "Breadcrumbs", components: ["Typography","Breadcrumbs","Link"], kind: "own demo", label: "demo breadcrumbs/BasicBreadcrumbs", props: {}, state: null, note: null, Component: C1 },
+  { id: "Breadcrumbs|own demo|demo breadcrumbs/CollapsedBreadcrumbs", component: "Breadcrumbs", components: ["Typography","Breadcrumbs","Link"], kind: "own demo", label: "demo breadcrumbs/CollapsedBreadcrumbs", props: {}, state: null, note: null, Component: C2 },
+  { id: "Breadcrumbs|own demo|demo breadcrumbs/CustomSeparator", component: "Breadcrumbs", components: ["Typography","Breadcrumbs","Link","Stack"], kind: "own demo", label: "demo breadcrumbs/CustomSeparator", props: {}, state: null, note: null, Component: C3 },
+  { id: "Breadcrumbs|own demo|demo breadcrumbs/IconBreadcrumbs", component: "Breadcrumbs", components: ["Typography","Breadcrumbs","Link"], kind: "own demo", label: "demo breadcrumbs/IconBreadcrumbs", props: {}, state: null, note: null, Component: C4 },
   { id: "Breadcrumbs|own demo|demo breadcrumbs/ActiveLastBreadcrumb", component: "Breadcrumbs", components: ["Breadcrumbs","Link"], kind: "own demo", label: "demo breadcrumbs/ActiveLastBreadcrumb", props: {}, state: null, note: null, Component: C5 },
 ];

@@ -8,11 +8,11 @@ import C5 from '../demos/composition-demos/button-group/SplitButton';
 import C6 from '../demos/composition-demos/button-group/VariantButtonGroup';
 
 export const cases = [
-  { id: "Button|composition|in button-group/BasicButtonGroup", component: "Button", components: ["Button","ButtonGroup"], kind: "composition", label: "in button-group/BasicButtonGroup", props: {}, state: null, note: null, Component: C0 },
-  { id: "Button|composition|in button-group/DisableElevation", component: "Button", components: ["Button","ButtonGroup"], kind: "composition", label: "in button-group/DisableElevation", props: {}, state: null, note: null, Component: C1 },
-  { id: "Button|composition|in button-group/GroupOrientation", component: "Button", components: ["Button","ButtonGroup"], kind: "composition", label: "in button-group/GroupOrientation", props: {}, state: null, note: null, Component: C2 },
-  { id: "Button|composition|in button-group/GroupSizesColors", component: "Button", components: ["Button","ButtonGroup"], kind: "composition", label: "in button-group/GroupSizesColors", props: {}, state: null, note: null, Component: C3 },
-  { id: "Button|composition|in button-group/LoadingButtonGroup", component: "Button", components: ["Button","ButtonGroup"], kind: "composition", label: "in button-group/LoadingButtonGroup", props: {}, state: null, note: null, Component: C4 },
-  { id: "Button|composition|in button-group/SplitButton", component: "Button", components: ["Button","ButtonGroup"], kind: "composition", label: "in button-group/SplitButton", props: {}, state: null, note: null, Component: C5 },
-  { id: "Button|composition|in button-group/VariantButtonGroup", component: "Button", components: ["Button","ButtonGroup"], kind: "composition", label: "in button-group/VariantButtonGroup", props: {}, state: null, note: null, Component: C6 },
+  { id: "ButtonGroup|own demo|demo button-group/BasicButtonGroup", component: "ButtonGroup", components: ["Button","ButtonGroup"], kind: "own demo", label: "demo button-group/BasicButtonGroup", props: {}, state: null, note: null, Component: C0 },
+  { id: "ButtonGroup|own demo|demo button-group/DisableElevation", component: "ButtonGroup", components: ["Button","ButtonGroup"], kind: "own demo", label: "demo button-group/DisableElevation", props: {}, state: null, note: null, Component: C1 },
+  { id: "ButtonGroup|own demo|demo button-group/GroupOrientation", component: "ButtonGroup", components: ["Button","ButtonGroup"], kind: "own demo", label: "demo button-group/GroupOrientation", props: {}, state: null, note: null, Component: C2 },
+  { id: "ButtonGroup|own demo|demo button-group/GroupSizesColors", component: "ButtonGroup", components: ["Button","ButtonGroup"], kind: "own demo", label: "demo button-group/GroupSizesColors", props: {}, state: null, note: null, Component: C3 },
+  { id: "ButtonGroup|own demo|demo button-group/LoadingButtonGroup", component: "ButtonGroup", components: ["Button","ButtonGroup"], kind: "own demo", label: "demo button-group/LoadingButtonGroup", props: {}, state: null, note: null, Component: C4 },
+  { id: "ButtonGroup|own demo|demo button-group/SplitButton", component: "ButtonGroup", components: ["Button","ButtonGroup"], kind: "own demo", label: "demo button-group/SplitButton", props: {}, state: null, note: null, Component: C5 },
+  { id: "ButtonGroup|own demo|demo button-group/VariantButtonGroup", component: "ButtonGroup", components: ["Button","ButtonGroup"], kind: "own demo", label: "demo button-group/VariantButtonGroup", props: {}, state: null, note: null, Component: C6 },
 ];

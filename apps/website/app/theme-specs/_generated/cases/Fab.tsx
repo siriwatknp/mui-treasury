@@ -8,8 +8,8 @@ import C5 from '../demos/composition-demos/floating-action-button/FloatingAction
 import C6 from '../demos/composition-demos/floating-action-button/FloatingActionButtonExtendedSize';
 
 export const cases = [
-  { id: "IconButton|composition|in snackbars/FabIntegrationSnackbar", component: "IconButton", components: ["IconButton","Typography","AppBar","Button","Fab","SnackbarContent","Snackbar","Toolbar"], kind: "composition", label: "in snackbars/FabIntegrationSnackbar", props: {}, state: null, note: null, Component: C0 },
-  { id: "Typography|composition|in app-bar/BackToTop", component: "Typography", components: ["Typography","AppBar","Container","Fab","Toolbar"], kind: "composition", label: "in app-bar/BackToTop", props: {}, state: null, note: null, Component: C1 },
+  { id: "SnackbarContent|own demo|demo snackbars/FabIntegrationSnackbar", component: "SnackbarContent", components: ["IconButton","Typography","AppBar","Button","Fab","SnackbarContent","Snackbar","Toolbar"], kind: "own demo", label: "demo snackbars/FabIntegrationSnackbar", props: {}, state: null, note: null, Component: C0 },
+  { id: "Toolbar|own demo|demo app-bar/BackToTop", component: "Toolbar", components: ["Typography","AppBar","Container","Fab","Toolbar"], kind: "own demo", label: "demo app-bar/BackToTop", props: {}, state: null, note: null, Component: C1 },
   { id: "Button|composition|in progress/CircularIntegration", component: "Button", components: ["Button","Fab"], kind: "composition", label: "in progress/CircularIntegration", props: {}, state: null, note: null, Component: C2 },
   { id: "Fab|variant|base", component: "Fab", components: ["Fab"], kind: "variant", label: "base", props: {}, state: null, note: null, Component: C3 },
   { id: "Fab|variant|size=small", component: "Fab", components: ["Fab"], kind: "variant", label: "size=small", props: {"size":"small"}, state: null, note: null, Component: C3 },

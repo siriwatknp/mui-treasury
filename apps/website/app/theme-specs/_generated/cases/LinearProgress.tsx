@@ -8,8 +8,8 @@ import C5 from '../demos/composition-demos/progress/LinearDeterminate';
 import C6 from '../demos/composition-demos/progress/LinearBuffer';
 
 export const cases = [
-  { id: "Typography|composition|in progress/LinearWithAriaValueText", component: "Typography", components: ["Typography","LinearProgress"], kind: "composition", label: "in progress/LinearWithAriaValueText", props: {}, state: null, note: null, Component: C0 },
-  { id: "Typography|composition|in progress/LinearWithValueLabel", component: "Typography", components: ["Typography","LinearProgress"], kind: "composition", label: "in progress/LinearWithValueLabel", props: {}, state: null, note: null, Component: C1 },
+  { id: "LinearProgress|own demo|demo progress/LinearWithAriaValueText", component: "LinearProgress", components: ["Typography","LinearProgress"], kind: "own demo", label: "demo progress/LinearWithAriaValueText", props: {}, state: null, note: null, Component: C0 },
+  { id: "LinearProgress|own demo|demo progress/LinearWithValueLabel", component: "LinearProgress", components: ["Typography","LinearProgress"], kind: "own demo", label: "demo progress/LinearWithValueLabel", props: {}, state: null, note: null, Component: C1 },
   { id: "LinearProgress|own demo|demo progress/LinearIndeterminate", component: "LinearProgress", components: ["LinearProgress"], kind: "own demo", label: "demo progress/LinearIndeterminate", props: {}, state: null, note: null, Component: C2 },
   { id: "LinearProgress|own demo|demo progress/LinearQuery", component: "LinearProgress", components: ["LinearProgress"], kind: "own demo", label: "demo progress/LinearQuery", props: {}, state: null, note: null, Component: C3 },
   { id: "LinearProgress|own demo|demo progress/LinearColor", component: "LinearProgress", components: ["LinearProgress","Stack"], kind: "own demo", label: "demo progress/LinearColor", props: {}, state: null, note: null, Component: C4 },

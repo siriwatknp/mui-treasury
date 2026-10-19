@@ -25,10 +25,10 @@ import C22 from '../demos/composition-demos/autocomplete/GloballyCustomizedOptio
 import C23 from '../demos/composition-demos/autocomplete/Filter';
 
 export const cases = [
-  { id: "Typography|composition|in autocomplete/AutocompleteHint", component: "Typography", components: ["Typography","Autocomplete"], kind: "composition", label: "in autocomplete/AutocompleteHint", props: {}, state: null, note: null, Component: C0 },
-  { id: "Chip|composition|in autocomplete/FixedTags", component: "Chip", components: ["Chip","Autocomplete"], kind: "composition", label: "in autocomplete/FixedTags", props: {}, state: null, note: null, Component: C1 },
-  { id: "Chip|composition|in autocomplete/Sizes", component: "Chip", components: ["Chip","Autocomplete","Stack"], kind: "composition", label: "in autocomplete/Sizes", props: {}, state: null, note: null, Component: C2 },
-  { id: "Chip|composition|in autocomplete/Tags", component: "Chip", components: ["Chip","Autocomplete","Stack"], kind: "composition", label: "in autocomplete/Tags", props: {}, state: null, note: null, Component: C3 },
+  { id: "Autocomplete|own demo|demo autocomplete/AutocompleteHint", component: "Autocomplete", components: ["Typography","Autocomplete"], kind: "own demo", label: "demo autocomplete/AutocompleteHint", props: {}, state: null, note: null, Component: C0 },
+  { id: "Autocomplete|own demo|demo autocomplete/FixedTags", component: "Autocomplete", components: ["Chip","Autocomplete"], kind: "own demo", label: "demo autocomplete/FixedTags", props: {}, state: null, note: null, Component: C1 },
+  { id: "Autocomplete|own demo|demo autocomplete/Sizes", component: "Autocomplete", components: ["Chip","Autocomplete","Stack"], kind: "own demo", label: "demo autocomplete/Sizes", props: {}, state: null, note: null, Component: C2 },
+  { id: "Autocomplete|own demo|demo autocomplete/Tags", component: "Autocomplete", components: ["Chip","Autocomplete","Stack"], kind: "own demo", label: "demo autocomplete/Tags", props: {}, state: null, note: null, Component: C3 },
   { id: "Autocomplete|variant|base", component: "Autocomplete", components: ["Autocomplete"], kind: "variant", label: "base", props: {}, state: null, note: null, Component: C4 },
   { id: "Autocomplete|variant|size=small", component: "Autocomplete", components: ["Autocomplete"], kind: "variant", label: "size=small", props: {"size":"small"}, state: null, note: null, Component: C4 },
   { id: "Autocomplete|variant|fullWidth=true", component: "Autocomplete", components: ["Autocomplete"], kind: "variant", label: "fullWidth=true", props: {"fullWidth":true}, state: null, note: null, Component: C4 },

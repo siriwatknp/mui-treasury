@@ -4,7 +4,7 @@ import C1 from '../demos/composition-demos/lists/NestedList';
 import C2 from '../demos/composition-demos/transitions/SimpleCollapse';
 
 export const cases = [
-  { id: "Collapse|composition|in alert/TransitionAlerts", component: "Collapse", components: ["Collapse","IconButton","Alert","AlertTitle","Button"], kind: "composition", label: "in alert/TransitionAlerts", props: {}, state: null, note: null, Component: C0 },
-  { id: "Collapse|composition|in lists/NestedList", component: "Collapse", components: ["Collapse","ListSubheader","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText"], kind: "composition", label: "in lists/NestedList", props: {}, state: null, note: null, Component: C1 },
+  { id: "Alert|own demo|demo alert/TransitionAlerts", component: "Alert", components: ["Collapse","IconButton","Alert","AlertTitle","Button"], kind: "own demo", label: "demo alert/TransitionAlerts", props: {}, state: null, note: null, Component: C0 },
+  { id: "List|own demo|demo lists/NestedList", component: "List", components: ["Collapse","ListSubheader","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText"], kind: "own demo", label: "demo lists/NestedList", props: {}, state: null, note: null, Component: C1 },
   { id: "Collapse|composition|in transitions/SimpleCollapse", component: "Collapse", components: ["Collapse","Paper","FormControlLabel","Switch"], kind: "composition", label: "in transitions/SimpleCollapse", props: {}, state: null, note: null, Component: C2 },
 ];

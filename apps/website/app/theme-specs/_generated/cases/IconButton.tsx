@@ -4,107 +4,107 @@ import C1 from '../demos/composition-demos/app-bar/BottomAppBar';
 import C2 from '../demos/composition-demos/dialogs/CookiesBanner';
 import C3 from '../demos/composition-demos/table/CollapsibleTable';
 import C4 from '../demos/composition-demos/table/CustomPaginationActionsTable';
-import { Render as C5 } from '../renders/MuiIconButton';
-import C6 from '../demos/composition-demos/buttons/IconButtons';
-import C7 from '../demos/composition-demos/buttons/IconButtonSizes';
-import C8 from '../demos/composition-demos/buttons/IconButtonColors';
-import C9 from '../demos/composition-demos/buttons/LoadingIconButton';
-import C10 from '../demos/composition-demos/buttons/IconButtonWithBadge';
-import C11 from '../demos/composition-demos/app-bar/ButtonAppBar';
-import C12 from '../demos/composition-demos/app-bar/DenseAppBar';
-import C13 from '../demos/composition-demos/app-bar/DrawerAppBar';
-import C14 from '../demos/composition-demos/app-bar/EnableColorOnDarkAppBar';
-import C15 from '../demos/composition-demos/app-bar/MenuAppBar';
-import C16 from '../demos/composition-demos/app-bar/PrimarySearchAppBar';
-import C17 from '../demos/composition-demos/app-bar/ProminentAppBar';
-import C18 from '../demos/composition-demos/app-bar/ResponsiveAppBar';
-import C19 from '../demos/composition-demos/app-bar/SearchAppBar';
-import C20 from '../demos/composition-demos/badges/BadgeIntro';
-import C21 from '../demos/composition-demos/badges/BadgeMax';
-import C22 from '../demos/composition-demos/badges/BadgeVisibility';
-import C23 from '../demos/composition-demos/badges/ColorBadge';
-import C24 from '../demos/composition-demos/badges/DotBadge';
-import C25 from '../demos/composition-demos/badges/ShowZeroBadge';
-import C26 from '../demos/composition-demos/badges/SimpleBadge';
-import C27 from '../demos/composition-demos/breadcrumbs/CondensedWithMenu';
-import C28 from '../demos/composition-demos/cards/MediaControlCard';
-import C29 from '../demos/composition-demos/cards/RecipeReviewCard';
-import C30 from '../demos/composition-demos/drawers/MiniDrawer';
-import C31 from '../demos/composition-demos/drawers/PersistentDrawerLeft';
-import C32 from '../demos/composition-demos/drawers/PersistentDrawerRight';
-import C33 from '../demos/composition-demos/drawers/ResponsiveDrawer';
-import C34 from '../demos/composition-demos/image-list/CustomImageList';
-import C35 from '../demos/composition-demos/image-list/TitlebarImageList';
-import C36 from '../demos/composition-demos/lists/CheckboxList';
-import C37 from '../demos/composition-demos/lists/GutterlessList';
-import C38 from '../demos/composition-demos/lists/InteractiveList';
-import C39 from '../demos/composition-demos/menus/AccountMenu';
-import C40 from '../demos/composition-demos/menus/LongMenu';
-import C41 from '../demos/composition-demos/skeleton/Facebook';
-import C42 from '../demos/composition-demos/slider/MusicPlayerSlider';
-import C43 from '../demos/composition-demos/snackbars/FabIntegrationSnackbar';
-import C44 from '../demos/composition-demos/text-fields/InputAdornments';
+import C5 from '../demos/composition-demos/app-bar/ButtonAppBar';
+import C6 from '../demos/composition-demos/app-bar/DenseAppBar';
+import C7 from '../demos/composition-demos/app-bar/DrawerAppBar';
+import C8 from '../demos/composition-demos/app-bar/EnableColorOnDarkAppBar';
+import C9 from '../demos/composition-demos/app-bar/MenuAppBar';
+import C10 from '../demos/composition-demos/app-bar/PrimarySearchAppBar';
+import C11 from '../demos/composition-demos/app-bar/ResponsiveAppBar';
+import C12 from '../demos/composition-demos/app-bar/SearchAppBar';
+import C13 from '../demos/composition-demos/badges/BadgeIntro';
+import C14 from '../demos/composition-demos/badges/BadgeMax';
+import C15 from '../demos/composition-demos/badges/BadgeVisibility';
+import C16 from '../demos/composition-demos/badges/ColorBadge';
+import C17 from '../demos/composition-demos/badges/DotBadge';
+import C18 from '../demos/composition-demos/badges/ShowZeroBadge';
+import C19 from '../demos/composition-demos/badges/SimpleBadge';
+import C20 from '../demos/composition-demos/breadcrumbs/CondensedWithMenu';
+import C21 from '../demos/composition-demos/lists/CheckboxList';
+import C22 from '../demos/composition-demos/lists/GutterlessList';
+import C23 from '../demos/composition-demos/lists/InteractiveList';
+import C24 from '../demos/composition-demos/slider/MusicPlayerSlider';
+import C25 from '../demos/composition-demos/snackbars/FabIntegrationSnackbar';
+import C26 from '../demos/composition-demos/text-fields/InputAdornments';
+import { Render as C27 } from '../renders/MuiIconButton';
+import C28 from '../demos/composition-demos/buttons/IconButtons';
+import C29 from '../demos/composition-demos/buttons/IconButtonSizes';
+import C30 from '../demos/composition-demos/buttons/IconButtonColors';
+import C31 from '../demos/composition-demos/buttons/LoadingIconButton';
+import C32 from '../demos/composition-demos/buttons/IconButtonWithBadge';
+import C33 from '../demos/composition-demos/app-bar/ProminentAppBar';
+import C34 from '../demos/composition-demos/cards/MediaControlCard';
+import C35 from '../demos/composition-demos/cards/RecipeReviewCard';
+import C36 from '../demos/composition-demos/drawers/MiniDrawer';
+import C37 from '../demos/composition-demos/drawers/PersistentDrawerLeft';
+import C38 from '../demos/composition-demos/drawers/PersistentDrawerRight';
+import C39 from '../demos/composition-demos/drawers/ResponsiveDrawer';
+import C40 from '../demos/composition-demos/image-list/CustomImageList';
+import C41 from '../demos/composition-demos/image-list/TitlebarImageList';
+import C42 from '../demos/composition-demos/menus/AccountMenu';
+import C43 from '../demos/composition-demos/menus/LongMenu';
+import C44 from '../demos/composition-demos/skeleton/Facebook';
 import C45 from '../demos/composition-demos/tooltips/AccessibilityTooltips';
 import C46 from '../demos/composition-demos/tooltips/BasicTooltip';
 
 export const cases = [
-  { id: "Collapse|composition|in alert/TransitionAlerts", component: "Collapse", components: ["Collapse","IconButton","Alert","AlertTitle","Button"], kind: "composition", label: "in alert/TransitionAlerts", props: {}, state: null, note: null, Component: C0 },
-  { id: "Paper|composition|in app-bar/BottomAppBar", component: "Paper", components: ["Paper","IconButton","Typography","AppBar","ListSubheader","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","Avatar","AvatarGroup","Toolbar"], kind: "composition", label: "in app-bar/BottomAppBar", props: {}, state: null, note: null, Component: C1 },
+  { id: "Alert|own demo|demo alert/TransitionAlerts", component: "Alert", components: ["Collapse","IconButton","Alert","AlertTitle","Button"], kind: "own demo", label: "demo alert/TransitionAlerts", props: {}, state: null, note: null, Component: C0 },
+  { id: "Toolbar|own demo|demo app-bar/BottomAppBar", component: "Toolbar", components: ["Paper","IconButton","Typography","AppBar","ListSubheader","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","Avatar","AvatarGroup","Toolbar"], kind: "own demo", label: "demo app-bar/BottomAppBar", props: {}, state: null, note: null, Component: C1 },
   { id: "Paper|composition|in dialogs/CookiesBanner", component: "Paper", components: ["Paper","IconButton","Typography","AppBar","Button","Container","Stack","Toolbar"], kind: "composition", label: "in dialogs/CookiesBanner", props: {}, state: null, note: null, Component: C2 },
-  { id: "Paper|composition|in table/CollapsibleTable", component: "Paper", components: ["Paper","IconButton","Table","TableBody","TableCell","TableContainer","TableFooter","TableHead","TablePagination","TableRow","TableSortLabel"], kind: "composition", label: "in table/CollapsibleTable", props: {}, state: null, note: null, Component: C3 },
-  { id: "Paper|composition|in table/CustomPaginationActionsTable", component: "Paper", components: ["Paper","IconButton","Table","TableBody","TableCell","TableContainer","TableFooter","TableHead","TablePagination","TableRow","TableSortLabel"], kind: "composition", label: "in table/CustomPaginationActionsTable", props: {}, state: null, note: null, Component: C4 },
-  { id: "IconButton|variant|base", component: "IconButton", components: ["IconButton"], kind: "variant", label: "base", props: {}, state: null, note: null, Component: C5 },
-  { id: "IconButton|variant|edge=start", component: "IconButton", components: ["IconButton"], kind: "variant", label: "edge=start", props: {"edge":"start"}, state: null, note: null, Component: C5 },
-  { id: "IconButton|variant|edge=start,size=small", component: "IconButton", components: ["IconButton"], kind: "variant", label: "edge=start,size=small", props: {"edge":"start","size":"small"}, state: null, note: null, Component: C5 },
-  { id: "IconButton|variant|edge=end", component: "IconButton", components: ["IconButton"], kind: "variant", label: "edge=end", props: {"edge":"end"}, state: null, note: null, Component: C5 },
-  { id: "IconButton|variant|edge=end,size=small", component: "IconButton", components: ["IconButton"], kind: "variant", label: "edge=end,size=small", props: {"edge":"end","size":"small"}, state: null, note: null, Component: C5 },
-  { id: "IconButton|variant|color=inherit", component: "IconButton", components: ["IconButton"], kind: "variant", label: "color=inherit", props: {"color":"inherit"}, state: null, note: null, Component: C5 },
-  { id: "IconButton|variant|color=primary", component: "IconButton", components: ["IconButton"], kind: "variant", label: "color=primary", props: {"color":"primary"}, state: null, note: null, Component: C5 },
-  { id: "IconButton|variant|color=secondary", component: "IconButton", components: ["IconButton"], kind: "variant", label: "color=secondary", props: {"color":"secondary"}, state: null, note: null, Component: C5 },
-  { id: "IconButton|variant|color=error", component: "IconButton", components: ["IconButton"], kind: "variant", label: "color=error", props: {"color":"error"}, state: null, note: null, Component: C5 },
-  { id: "IconButton|variant|color=warning", component: "IconButton", components: ["IconButton"], kind: "variant", label: "color=warning", props: {"color":"warning"}, state: null, note: null, Component: C5 },
-  { id: "IconButton|variant|color=info", component: "IconButton", components: ["IconButton"], kind: "variant", label: "color=info", props: {"color":"info"}, state: null, note: null, Component: C5 },
-  { id: "IconButton|variant|color=success", component: "IconButton", components: ["IconButton"], kind: "variant", label: "color=success", props: {"color":"success"}, state: null, note: null, Component: C5 },
-  { id: "IconButton|variant|size=large", component: "IconButton", components: ["IconButton"], kind: "variant", label: "size=large", props: {"size":"large"}, state: null, note: null, Component: C5 },
-  { id: "IconButton|own demo|demo buttons/IconButtons", component: "IconButton", components: ["IconButton","Stack"], kind: "own demo", label: "demo buttons/IconButtons", props: {}, state: null, note: null, Component: C6 },
-  { id: "IconButton|own demo|demo buttons/IconButtonSizes", component: "IconButton", components: ["IconButton","Stack"], kind: "own demo", label: "demo buttons/IconButtonSizes", props: {}, state: null, note: null, Component: C7 },
-  { id: "IconButton|own demo|demo buttons/IconButtonColors", component: "IconButton", components: ["IconButton","Stack"], kind: "own demo", label: "demo buttons/IconButtonColors", props: {}, state: null, note: null, Component: C8 },
-  { id: "IconButton|own demo|demo buttons/LoadingIconButton", component: "IconButton", components: ["IconButton"], kind: "own demo", label: "demo buttons/LoadingIconButton", props: {}, state: null, note: null, Component: C9 },
-  { id: "IconButton|own demo|demo buttons/IconButtonWithBadge", component: "IconButton", components: ["IconButton"], kind: "own demo", label: "demo buttons/IconButtonWithBadge", props: {}, state: null, note: null, Component: C10 },
-  { id: "IconButton|composition|in app-bar/ButtonAppBar", component: "IconButton", components: ["IconButton","Typography","AppBar","Button","Toolbar"], kind: "composition", label: "in app-bar/ButtonAppBar", props: {}, state: null, note: null, Component: C11 },
-  { id: "IconButton|composition|in app-bar/DenseAppBar", component: "IconButton", components: ["IconButton","Typography","AppBar","Toolbar"], kind: "composition", label: "in app-bar/DenseAppBar", props: {}, state: null, note: null, Component: C12 },
-  { id: "IconButton|composition|in app-bar/DrawerAppBar", component: "IconButton", components: ["IconButton","Typography","AppBar","Button","Divider","Drawer","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader","Toolbar"], kind: "composition", label: "in app-bar/DrawerAppBar", props: {}, state: null, note: null, Component: C13 },
-  { id: "IconButton|composition|in app-bar/EnableColorOnDarkAppBar", component: "IconButton", components: ["IconButton","Typography","AppBar","Stack","Toolbar"], kind: "composition", label: "in app-bar/EnableColorOnDarkAppBar", props: {}, state: null, note: null, Component: C14 },
-  { id: "IconButton|composition|in app-bar/MenuAppBar", component: "IconButton", components: ["IconButton","Typography","AppBar","FormControlLabel","FormGroup","Menu","MenuItem","Switch","Toolbar"], kind: "composition", label: "in app-bar/MenuAppBar", props: {}, state: null, note: null, Component: C15 },
-  { id: "IconButton|composition|in app-bar/PrimarySearchAppBar", component: "IconButton", components: ["IconButton","Typography","AppBar","Badge","Menu","MenuItem","Toolbar"], kind: "composition", label: "in app-bar/PrimarySearchAppBar", props: {}, state: null, note: null, Component: C16 },
-  { id: "IconButton|composition|in app-bar/ProminentAppBar", component: "IconButton", components: ["IconButton","Typography","AppBar"], kind: "composition", label: "in app-bar/ProminentAppBar", props: {}, state: null, note: null, Component: C17 },
-  { id: "IconButton|composition|in app-bar/ResponsiveAppBar", component: "IconButton", components: ["IconButton","Typography","AppBar","Avatar","AvatarGroup","Button","Container","Menu","MenuItem","Toolbar"], kind: "composition", label: "in app-bar/ResponsiveAppBar", props: {}, state: null, note: null, Component: C18 },
-  { id: "IconButton|composition|in app-bar/SearchAppBar", component: "IconButton", components: ["IconButton","Typography","AppBar","Toolbar"], kind: "composition", label: "in app-bar/SearchAppBar", props: {}, state: null, note: null, Component: C19 },
-  { id: "IconButton|composition|in badges/BadgeIntro", component: "IconButton", components: ["IconButton","Badge"], kind: "composition", label: "in badges/BadgeIntro", props: {}, state: null, note: null, Component: C20 },
-  { id: "IconButton|composition|in badges/BadgeMax", component: "IconButton", components: ["IconButton","Badge","Stack"], kind: "composition", label: "in badges/BadgeMax", props: {}, state: null, note: null, Component: C21 },
-  { id: "IconButton|composition|in badges/BadgeVisibility", component: "IconButton", components: ["IconButton","Badge","FormControlLabel","Stack","Switch"], kind: "composition", label: "in badges/BadgeVisibility", props: {}, state: null, note: null, Component: C22 },
-  { id: "IconButton|composition|in badges/ColorBadge", component: "IconButton", components: ["IconButton","Badge","Stack"], kind: "composition", label: "in badges/ColorBadge", props: {}, state: null, note: null, Component: C23 },
-  { id: "IconButton|composition|in badges/DotBadge", component: "IconButton", components: ["IconButton","Badge"], kind: "composition", label: "in badges/DotBadge", props: {}, state: null, note: null, Component: C24 },
-  { id: "IconButton|composition|in badges/ShowZeroBadge", component: "IconButton", components: ["IconButton","Badge","Stack"], kind: "composition", label: "in badges/ShowZeroBadge", props: {}, state: null, note: null, Component: C25 },
-  { id: "IconButton|composition|in badges/SimpleBadge", component: "IconButton", components: ["IconButton","Badge"], kind: "composition", label: "in badges/SimpleBadge", props: {}, state: null, note: null, Component: C26 },
-  { id: "IconButton|composition|in breadcrumbs/CondensedWithMenu", component: "IconButton", components: ["IconButton","Breadcrumbs","Link"], kind: "composition", label: "in breadcrumbs/CondensedWithMenu", props: {}, state: null, note: null, Component: C27 },
-  { id: "IconButton|composition|in cards/MediaControlCard", component: "IconButton", components: ["IconButton","Typography","Card","CardActionArea","CardActions","CardContent","CardHeader","CardMedia"], kind: "composition", label: "in cards/MediaControlCard", props: {}, state: null, note: null, Component: C28 },
-  { id: "IconButton|composition|in cards/RecipeReviewCard", component: "IconButton", components: ["IconButton","Typography","Avatar","AvatarGroup","Card","CardActionArea","CardActions","CardContent","CardHeader","CardMedia"], kind: "composition", label: "in cards/RecipeReviewCard", props: {}, state: null, note: null, Component: C29 },
-  { id: "IconButton|composition|in drawers/MiniDrawer", component: "IconButton", components: ["IconButton","Typography","AppBar","Divider","Drawer","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader","Toolbar"], kind: "composition", label: "in drawers/MiniDrawer", props: {}, state: null, note: null, Component: C30 },
-  { id: "IconButton|composition|in drawers/PersistentDrawerLeft", component: "IconButton", components: ["IconButton","Typography","AppBar","Divider","Drawer","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader","Toolbar"], kind: "composition", label: "in drawers/PersistentDrawerLeft", props: {}, state: null, note: null, Component: C31 },
-  { id: "IconButton|composition|in drawers/PersistentDrawerRight", component: "IconButton", components: ["IconButton","Typography","AppBar","Divider","Drawer","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader","Toolbar"], kind: "composition", label: "in drawers/PersistentDrawerRight", props: {}, state: null, note: null, Component: C32 },
-  { id: "IconButton|composition|in drawers/ResponsiveDrawer", component: "IconButton", components: ["IconButton","Typography","AppBar","Divider","Drawer","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader","Toolbar"], kind: "composition", label: "in drawers/ResponsiveDrawer", props: {}, state: null, note: null, Component: C33 },
-  { id: "IconButton|composition|in image-list/CustomImageList", component: "IconButton", components: ["IconButton","ImageList","ImageListItem","ImageListItemBar"], kind: "composition", label: "in image-list/CustomImageList", props: {}, state: null, note: null, Component: C34 },
-  { id: "IconButton|composition|in image-list/TitlebarImageList", component: "IconButton", components: ["IconButton","ListSubheader","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ImageList","ImageListItem","ImageListItemBar"], kind: "composition", label: "in image-list/TitlebarImageList", props: {}, state: null, note: null, Component: C35 },
-  { id: "IconButton|composition|in lists/CheckboxList", component: "IconButton", components: ["IconButton","Checkbox","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader"], kind: "composition", label: "in lists/CheckboxList", props: {}, state: null, note: null, Component: C36 },
-  { id: "IconButton|composition|in lists/GutterlessList", component: "IconButton", components: ["IconButton","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader"], kind: "composition", label: "in lists/GutterlessList", props: {}, state: null, note: null, Component: C37 },
-  { id: "IconButton|composition|in lists/InteractiveList", component: "IconButton", components: ["IconButton","Typography","Avatar","AvatarGroup","Checkbox","FormControlLabel","FormGroup","Grid","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader"], kind: "composition", label: "in lists/InteractiveList", props: {}, state: null, note: null, Component: C38 },
-  { id: "IconButton|composition|in menus/AccountMenu", component: "IconButton", components: ["IconButton","Typography","Avatar","AvatarGroup"], kind: "composition", label: "in menus/AccountMenu", props: {}, state: null, note: null, Component: C39 },
-  { id: "IconButton|composition|in menus/LongMenu", component: "IconButton", components: ["IconButton"], kind: "composition", label: "in menus/LongMenu", props: {}, state: null, note: null, Component: C40 },
-  { id: "IconButton|composition|in skeleton/Facebook", component: "IconButton", components: ["IconButton","Typography","Avatar","AvatarGroup","Card","CardActionArea","CardActions","CardContent","CardHeader","CardMedia","Skeleton"], kind: "composition", label: "in skeleton/Facebook", props: {}, state: null, note: null, Component: C41 },
-  { id: "IconButton|composition|in slider/MusicPlayerSlider", component: "IconButton", components: ["IconButton","Slider","Stack"], kind: "composition", label: "in slider/MusicPlayerSlider", props: {}, state: null, note: null, Component: C42 },
-  { id: "IconButton|composition|in snackbars/FabIntegrationSnackbar", component: "IconButton", components: ["IconButton","Typography","AppBar","Button","Fab","SnackbarContent","Snackbar","Toolbar"], kind: "composition", label: "in snackbars/FabIntegrationSnackbar", props: {}, state: null, note: null, Component: C43 },
-  { id: "IconButton|composition|in text-fields/InputAdornments", component: "IconButton", components: ["IconButton","InputBase","FilledInput","FormControl","FormHelperText","Input","InputAdornment","InputLabel","OutlinedInput"], kind: "composition", label: "in text-fields/InputAdornments", props: {}, state: null, note: null, Component: C44 },
+  { id: "TableCell|own demo|demo table/CollapsibleTable", component: "TableCell", components: ["Paper","IconButton","Table","TableBody","TableCell","TableContainer","TableFooter","TableHead","TablePagination","TableRow","TableSortLabel"], kind: "own demo", label: "demo table/CollapsibleTable", props: {}, state: null, note: null, Component: C3 },
+  { id: "TableCell|own demo|demo table/CustomPaginationActionsTable", component: "TableCell", components: ["Paper","IconButton","Table","TableBody","TableCell","TableContainer","TableFooter","TableHead","TablePagination","TableRow","TableSortLabel"], kind: "own demo", label: "demo table/CustomPaginationActionsTable", props: {}, state: null, note: null, Component: C4 },
+  { id: "Toolbar|own demo|demo app-bar/ButtonAppBar", component: "Toolbar", components: ["IconButton","Typography","AppBar","Button","Toolbar"], kind: "own demo", label: "demo app-bar/ButtonAppBar", props: {}, state: null, note: null, Component: C5 },
+  { id: "Toolbar|own demo|demo app-bar/DenseAppBar", component: "Toolbar", components: ["IconButton","Typography","AppBar","Toolbar"], kind: "own demo", label: "demo app-bar/DenseAppBar", props: {}, state: null, note: null, Component: C6 },
+  { id: "Toolbar|own demo|demo app-bar/DrawerAppBar", component: "Toolbar", components: ["IconButton","Typography","AppBar","Button","Divider","Drawer","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader","Toolbar"], kind: "own demo", label: "demo app-bar/DrawerAppBar", props: {}, state: null, note: null, Component: C7 },
+  { id: "Toolbar|own demo|demo app-bar/EnableColorOnDarkAppBar", component: "Toolbar", components: ["IconButton","Typography","AppBar","Stack","Toolbar"], kind: "own demo", label: "demo app-bar/EnableColorOnDarkAppBar", props: {}, state: null, note: null, Component: C8 },
+  { id: "Toolbar|own demo|demo app-bar/MenuAppBar", component: "Toolbar", components: ["IconButton","Typography","AppBar","FormControlLabel","FormGroup","Menu","MenuItem","Switch","Toolbar"], kind: "own demo", label: "demo app-bar/MenuAppBar", props: {}, state: null, note: null, Component: C9 },
+  { id: "Toolbar|own demo|demo app-bar/PrimarySearchAppBar", component: "Toolbar", components: ["IconButton","Typography","AppBar","Badge","Menu","MenuItem","Toolbar"], kind: "own demo", label: "demo app-bar/PrimarySearchAppBar", props: {}, state: null, note: null, Component: C10 },
+  { id: "Toolbar|own demo|demo app-bar/ResponsiveAppBar", component: "Toolbar", components: ["IconButton","Typography","AppBar","Avatar","AvatarGroup","Button","Container","Menu","MenuItem","Toolbar"], kind: "own demo", label: "demo app-bar/ResponsiveAppBar", props: {}, state: null, note: null, Component: C11 },
+  { id: "Toolbar|own demo|demo app-bar/SearchAppBar", component: "Toolbar", components: ["IconButton","Typography","AppBar","Toolbar"], kind: "own demo", label: "demo app-bar/SearchAppBar", props: {}, state: null, note: null, Component: C12 },
+  { id: "Badge|own demo|demo badges/BadgeIntro", component: "Badge", components: ["IconButton","Badge"], kind: "own demo", label: "demo badges/BadgeIntro", props: {}, state: null, note: null, Component: C13 },
+  { id: "Badge|own demo|demo badges/BadgeMax", component: "Badge", components: ["IconButton","Badge","Stack"], kind: "own demo", label: "demo badges/BadgeMax", props: {}, state: null, note: null, Component: C14 },
+  { id: "Badge|own demo|demo badges/BadgeVisibility", component: "Badge", components: ["IconButton","Badge","FormControlLabel","Stack","Switch"], kind: "own demo", label: "demo badges/BadgeVisibility", props: {}, state: null, note: null, Component: C15 },
+  { id: "Badge|own demo|demo badges/ColorBadge", component: "Badge", components: ["IconButton","Badge","Stack"], kind: "own demo", label: "demo badges/ColorBadge", props: {}, state: null, note: null, Component: C16 },
+  { id: "Badge|own demo|demo badges/DotBadge", component: "Badge", components: ["IconButton","Badge"], kind: "own demo", label: "demo badges/DotBadge", props: {}, state: null, note: null, Component: C17 },
+  { id: "Badge|own demo|demo badges/ShowZeroBadge", component: "Badge", components: ["IconButton","Badge","Stack"], kind: "own demo", label: "demo badges/ShowZeroBadge", props: {}, state: null, note: null, Component: C18 },
+  { id: "Badge|own demo|demo badges/SimpleBadge", component: "Badge", components: ["IconButton","Badge"], kind: "own demo", label: "demo badges/SimpleBadge", props: {}, state: null, note: null, Component: C19 },
+  { id: "Breadcrumbs|own demo|demo breadcrumbs/CondensedWithMenu", component: "Breadcrumbs", components: ["IconButton","Breadcrumbs","Link"], kind: "own demo", label: "demo breadcrumbs/CondensedWithMenu", props: {}, state: null, note: null, Component: C20 },
+  { id: "List|own demo|demo lists/CheckboxList", component: "List", components: ["IconButton","Checkbox","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader"], kind: "own demo", label: "demo lists/CheckboxList", props: {}, state: null, note: null, Component: C21 },
+  { id: "List|own demo|demo lists/GutterlessList", component: "List", components: ["IconButton","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader"], kind: "own demo", label: "demo lists/GutterlessList", props: {}, state: null, note: null, Component: C22 },
+  { id: "List|own demo|demo lists/InteractiveList", component: "List", components: ["IconButton","Typography","Avatar","AvatarGroup","Checkbox","FormControlLabel","FormGroup","Grid","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader"], kind: "own demo", label: "demo lists/InteractiveList", props: {}, state: null, note: null, Component: C23 },
+  { id: "Slider|own demo|demo slider/MusicPlayerSlider", component: "Slider", components: ["IconButton","Slider","Stack"], kind: "own demo", label: "demo slider/MusicPlayerSlider", props: {}, state: null, note: null, Component: C24 },
+  { id: "SnackbarContent|own demo|demo snackbars/FabIntegrationSnackbar", component: "SnackbarContent", components: ["IconButton","Typography","AppBar","Button","Fab","SnackbarContent","Snackbar","Toolbar"], kind: "own demo", label: "demo snackbars/FabIntegrationSnackbar", props: {}, state: null, note: null, Component: C25 },
+  { id: "InputBase|own demo|demo text-fields/InputAdornments", component: "InputBase", components: ["IconButton","InputBase","FilledInput","FormControl","FormHelperText","Input","InputAdornment","InputLabel","OutlinedInput"], kind: "own demo", label: "demo text-fields/InputAdornments", props: {}, state: null, note: null, Component: C26 },
+  { id: "IconButton|variant|base", component: "IconButton", components: ["IconButton"], kind: "variant", label: "base", props: {}, state: null, note: null, Component: C27 },
+  { id: "IconButton|variant|edge=start", component: "IconButton", components: ["IconButton"], kind: "variant", label: "edge=start", props: {"edge":"start"}, state: null, note: null, Component: C27 },
+  { id: "IconButton|variant|edge=start,size=small", component: "IconButton", components: ["IconButton"], kind: "variant", label: "edge=start,size=small", props: {"edge":"start","size":"small"}, state: null, note: null, Component: C27 },
+  { id: "IconButton|variant|edge=end", component: "IconButton", components: ["IconButton"], kind: "variant", label: "edge=end", props: {"edge":"end"}, state: null, note: null, Component: C27 },
+  { id: "IconButton|variant|edge=end,size=small", component: "IconButton", components: ["IconButton"], kind: "variant", label: "edge=end,size=small", props: {"edge":"end","size":"small"}, state: null, note: null, Component: C27 },
+  { id: "IconButton|variant|color=inherit", component: "IconButton", components: ["IconButton"], kind: "variant", label: "color=inherit", props: {"color":"inherit"}, state: null, note: null, Component: C27 },
+  { id: "IconButton|variant|color=primary", component: "IconButton", components: ["IconButton"], kind: "variant", label: "color=primary", props: {"color":"primary"}, state: null, note: null, Component: C27 },
+  { id: "IconButton|variant|color=secondary", component: "IconButton", components: ["IconButton"], kind: "variant", label: "color=secondary", props: {"color":"secondary"}, state: null, note: null, Component: C27 },
+  { id: "IconButton|variant|color=error", component: "IconButton", components: ["IconButton"], kind: "variant", label: "color=error", props: {"color":"error"}, state: null, note: null, Component: C27 },
+  { id: "IconButton|variant|color=warning", component: "IconButton", components: ["IconButton"], kind: "variant", label: "color=warning", props: {"color":"warning"}, state: null, note: null, Component: C27 },
+  { id: "IconButton|variant|color=info", component: "IconButton", components: ["IconButton"], kind: "variant", label: "color=info", props: {"color":"info"}, state: null, note: null, Component: C27 },
+  { id: "IconButton|variant|color=success", component: "IconButton", components: ["IconButton"], kind: "variant", label: "color=success", props: {"color":"success"}, state: null, note: null, Component: C27 },
+  { id: "IconButton|variant|size=large", component: "IconButton", components: ["IconButton"], kind: "variant", label: "size=large", props: {"size":"large"}, state: null, note: null, Component: C27 },
+  { id: "IconButton|own demo|demo buttons/IconButtons", component: "IconButton", components: ["IconButton","Stack"], kind: "own demo", label: "demo buttons/IconButtons", props: {}, state: null, note: null, Component: C28 },
+  { id: "IconButton|own demo|demo buttons/IconButtonSizes", component: "IconButton", components: ["IconButton","Stack"], kind: "own demo", label: "demo buttons/IconButtonSizes", props: {}, state: null, note: null, Component: C29 },
+  { id: "IconButton|own demo|demo buttons/IconButtonColors", component: "IconButton", components: ["IconButton","Stack"], kind: "own demo", label: "demo buttons/IconButtonColors", props: {}, state: null, note: null, Component: C30 },
+  { id: "IconButton|own demo|demo buttons/LoadingIconButton", component: "IconButton", components: ["IconButton"], kind: "own demo", label: "demo buttons/LoadingIconButton", props: {}, state: null, note: null, Component: C31 },
+  { id: "IconButton|own demo|demo buttons/IconButtonWithBadge", component: "IconButton", components: ["IconButton"], kind: "own demo", label: "demo buttons/IconButtonWithBadge", props: {}, state: null, note: null, Component: C32 },
+  { id: "IconButton|composition|in app-bar/ProminentAppBar", component: "IconButton", components: ["IconButton","Typography","AppBar"], kind: "composition", label: "in app-bar/ProminentAppBar", props: {}, state: null, note: null, Component: C33 },
+  { id: "IconButton|composition|in cards/MediaControlCard", component: "IconButton", components: ["IconButton","Typography","Card","CardActionArea","CardActions","CardContent","CardHeader","CardMedia"], kind: "composition", label: "in cards/MediaControlCard", props: {}, state: null, note: null, Component: C34 },
+  { id: "IconButton|composition|in cards/RecipeReviewCard", component: "IconButton", components: ["IconButton","Typography","Avatar","AvatarGroup","Card","CardActionArea","CardActions","CardContent","CardHeader","CardMedia"], kind: "composition", label: "in cards/RecipeReviewCard", props: {}, state: null, note: null, Component: C35 },
+  { id: "IconButton|composition|in drawers/MiniDrawer", component: "IconButton", components: ["IconButton","Typography","AppBar","Divider","Drawer","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader","Toolbar"], kind: "composition", label: "in drawers/MiniDrawer", props: {}, state: null, note: null, Component: C36 },
+  { id: "IconButton|composition|in drawers/PersistentDrawerLeft", component: "IconButton", components: ["IconButton","Typography","AppBar","Divider","Drawer","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader","Toolbar"], kind: "composition", label: "in drawers/PersistentDrawerLeft", props: {}, state: null, note: null, Component: C37 },
+  { id: "IconButton|composition|in drawers/PersistentDrawerRight", component: "IconButton", components: ["IconButton","Typography","AppBar","Divider","Drawer","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader","Toolbar"], kind: "composition", label: "in drawers/PersistentDrawerRight", props: {}, state: null, note: null, Component: C38 },
+  { id: "IconButton|composition|in drawers/ResponsiveDrawer", component: "IconButton", components: ["IconButton","Typography","AppBar","Divider","Drawer","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ListSubheader","Toolbar"], kind: "composition", label: "in drawers/ResponsiveDrawer", props: {}, state: null, note: null, Component: C39 },
+  { id: "IconButton|composition|in image-list/CustomImageList", component: "IconButton", components: ["IconButton","ImageList","ImageListItem","ImageListItemBar"], kind: "composition", label: "in image-list/CustomImageList", props: {}, state: null, note: null, Component: C40 },
+  { id: "IconButton|composition|in image-list/TitlebarImageList", component: "IconButton", components: ["IconButton","ListSubheader","List","ListItem","ListItemAvatar","ListItemButton","ListItemIcon","ListItemSecondaryAction","ListItemText","ImageList","ImageListItem","ImageListItemBar"], kind: "composition", label: "in image-list/TitlebarImageList", props: {}, state: null, note: null, Component: C41 },
+  { id: "IconButton|composition|in menus/AccountMenu", component: "IconButton", components: ["IconButton","Typography","Avatar","AvatarGroup"], kind: "composition", label: "in menus/AccountMenu", props: {}, state: null, note: null, Component: C42 },
+  { id: "IconButton|composition|in menus/LongMenu", component: "IconButton", components: ["IconButton"], kind: "composition", label: "in menus/LongMenu", props: {}, state: null, note: null, Component: C43 },
+  { id: "IconButton|composition|in skeleton/Facebook", component: "IconButton", components: ["IconButton","Typography","Avatar","AvatarGroup","Card","CardActionArea","CardActions","CardContent","CardHeader","CardMedia","Skeleton"], kind: "composition", label: "in skeleton/Facebook", props: {}, state: null, note: null, Component: C44 },
   { id: "IconButton|composition|in tooltips/AccessibilityTooltips", component: "IconButton", components: ["IconButton","Button"], kind: "composition", label: "in tooltips/AccessibilityTooltips", props: {}, state: null, note: null, Component: C45 },
   { id: "IconButton|composition|in tooltips/BasicTooltip", component: "IconButton", components: ["IconButton"], kind: "composition", label: "in tooltips/BasicTooltip", props: {}, state: null, note: null, Component: C46 },
 ];
