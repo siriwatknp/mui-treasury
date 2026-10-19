@@ -62,6 +62,9 @@ export const tableTheme: ThemeComponents = {
     styleOverrides: {
       root: ({ theme }) => ({
         borderTop: `1px solid ${(theme.vars || theme).palette.divider}`,
+        [`& .${buttonBaseClasses.root}.${buttonBaseClasses.focusVisible}`]: {
+          outlineOffset: '-2px',
+        },
       }),
       select: ({ theme }) => ({
         fontSize: theme.typography.body2.fontSize,

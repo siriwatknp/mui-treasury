@@ -1,5 +1,6 @@
 import { autocompleteClasses } from '@mui/material/Autocomplete';
 import { chipClasses } from '@mui/material/Chip';
+import { filledInputClasses } from '@mui/material/FilledInput';
 import { inputBaseClasses } from '@mui/material/InputBase';
 
 import {
@@ -37,6 +38,14 @@ export const autocompleteTheme: ThemeComponents = {
                 [`&:has(.${chipClasses.root})`]: {
                   paddingLeft: '2px',
                 },
+                [`&.${filledInputClasses.root}`]: {
+                  paddingTop: 17.5,
+                  paddingBottom: 0.5,
+                  [TOUCH_MEDIA_QUERY]: {
+                    paddingTop: 19,
+                    paddingBottom: 2,
+                  },
+                },
                 [`& .${autocompleteClasses.input}`]: {
                   paddingBlock: CONTROL_HEIGHTS.md / 2 - 12.5,
                   ...(CONTROL_HEIGHTS.md !== CONTROL_TOUCH_HEIGHTS.md && {
@@ -56,6 +65,15 @@ export const autocompleteTheme: ThemeComponents = {
                   paddingTop: 2,
                   paddingBottom: 2,
                   paddingLeft: 2,
+                  [`&.${filledInputClasses.root}`]: {
+                    paddingTop: 16.5,
+                    paddingBottom: 0,
+                    paddingLeft: 8,
+                    [TOUCH_MEDIA_QUERY]: {
+                      paddingTop: 18,
+                      paddingBottom: 1,
+                    },
+                  },
                   [`& .${autocompleteClasses.input}`]: {
                     paddingBlock: CONTROL_HEIGHTS.sm / 2 - 12.5,
                     ...(CONTROL_HEIGHTS.sm !== CONTROL_TOUCH_HEIGHTS.sm && {

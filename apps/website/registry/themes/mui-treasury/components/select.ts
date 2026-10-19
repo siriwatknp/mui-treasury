@@ -68,8 +68,11 @@ export const selectTheme: ThemeComponents = {
             }),
           },
         },
+        [`.${inputBaseClasses.root}:has(> &)`]: {
+          '--_caret': '32px',
+        },
         [`&.${inputBaseClasses.input}.${inputBaseClasses.input}`]: {
-          paddingRight: 32,
+          paddingRight: 'calc(var(--_caret) + var(--_endAdornment, 0px))',
         },
       },
       icon: ({ theme }) => ({
