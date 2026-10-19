@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { DATA_DIR } from './data.mjs';
+import { groupComponents } from './families.mjs';
 import { PUBLIC_DIR } from './renders.mjs';
 import { HARNESS_DIR } from './renderEngine.mjs';
 
@@ -17,39 +18,6 @@ function propsOf(propsKey) {
     const [k, v] = pair.split('=');
     return [k, v === 'true' ? true : v === 'false' ? false : v];
   }));
-}
-
-/**
- * Components that are parts of each other share a page: a component joins the group of a shorter name it starts with when
- * both sit on the same MUI docs page, or the name continues at a word boundary and its page names the root (or it has none), unless
- * the root is built on it (ButtonBase under Button is a base, not a part). The group is named after its docs page when a member matches it (Tab + Tabs + TabScrollButton → Tabs).
- */
-export function groupComponents(components) {
-  const pages = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'material/demos/index.json'), 'utf8')).demoPages ?? {};
-  const { graph } = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'material/graph.json'), 'utf8'));
-  const pageOf = (n) => pages[`Mui${n}`] ?? null;
-  const namesPage = (name, page) => [page, page.replace(/e?s$/, '')].includes(name.toLowerCase().replace(/-/g, ''));
-  const groups = new Map();
-  for (const n of components.map(short).sort((a, b) => a.length - b.length || a.localeCompare(b))) {
-    const root = [...groups.keys()].find((r) => {
-      const members = groups.get(r);
-      const pageFits = !pageOf(n) || (pageOf(r) ? pageOf(n) === pageOf(r) : namesPage(r, pageOf(n)));
-      const samePage = Boolean(pageOf(n)) && pageOf(n) === pageOf(r);
-      return n.startsWith(r) && (samePage || (/^[A-Z]/.test(n.slice(r.length)) && pageFits)) && !members.some((m) => graph[`Mui${m}`]?.extends === `Mui${n}`);
-    });
-    if (root) {
-      groups.get(root).push(n);
-    } else {
-      groups.set(n, [n]);
-    }
-  }
-  const named = new Map();
-  for (const [root, members] of groups) {
-    const page = members.map(pageOf).find(Boolean)?.replace(/-/g, '');
-    const name = (page && (members.find((m) => m.toLowerCase() === page) ?? members.find((m) => namesPage(m, page)))) || root;
-    named.set(name, members.sort((a, b) => (a === name ? -1 : b === name ? 1 : a.localeCompare(b))));
-  }
-  return new Map([...named].sort(([a], [b]) => a.localeCompare(b)));
 }
 
 /** The docs' static files the emitted demos reference (`/static/images/avatar/1.jpg`), copied from the CLI's data into `assetsDir` at the same path; a path built at runtime brings its folder. Only adds or updates. */

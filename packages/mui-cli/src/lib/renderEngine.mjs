@@ -92,24 +92,46 @@ export function helpersFor(page) {
           page.muiViewport ??= page.viewportSize();
           await page.setViewportSize(width ? { width, height: page.muiViewport.height } : page.muiViewport);
         } else if (step.reset) {
-          await page.mouse.up();
-          await page.mouse.move(0, 0);
+          // the pointer only needs putting back after a step that pressed or moved it onto the render
+          if (page.muiPointerUsed) {
+            page.muiPointerUsed = false;
+            await page.mouse.up();
+            await page.mouse.move(0, 0);
+          }
           await page.evaluate(() => document.activeElement?.blur());
         } else if (step.tab) {
           await page.locator('body').click({ position: { x: 1, y: 1 } }).catch(() => {});
           await page.keyboard.press('Tab');
         } else if (step.tabTo) {
-          // keyboard focus onto the nth match, the way a user tabs through a page
-          await page.locator('body').click({ position: { x: 1, y: 1 } }).catch(() => {});
-          await page.evaluate(() => document.activeElement?.blur());
-          for (let i = 0; i < 60; i += 1) {
-            await page.keyboard.press('Tab');
-            const inside = await page.evaluate(({ sel, nth }) => {
-              const el = [...document.querySelectorAll(sel)][nth];
-              return Boolean(el && (el === document.activeElement || el.contains(document.activeElement)));
-            }, { sel: step.tabTo, nth: step.nth ?? 0 });
-            if (inside) {
-              break;
+          // keyboard focus onto the nth match, the way a user tabs to it: from the tab stop before it, one Tab press
+          const at = { sel: step.tabTo, nth: step.nth ?? 0 };
+          const inside = () => page.evaluate(({ sel, nth }) => {
+            const el = [...document.querySelectorAll(sel)][nth];
+            return Boolean(el && (el === document.activeElement || el.contains(document.activeElement)));
+          }, at);
+          await page.evaluate(() => window.scrollTo(0, 0));
+          await page.mouse.click(1, 1);
+          await page.evaluate(({ sel, nth }) => {
+            document.activeElement?.blur();
+            const el = [...document.querySelectorAll(sel)][nth];
+            const stops = [...document.querySelectorAll('a[href], button, input, select, textarea, summary, [tabindex], [contenteditable]')].filter((s) => s.tabIndex >= 0 && !s.disabled && s.type !== 'hidden' && s.checkVisibility());
+            const first = el ? stops.findIndex((s) => el === s || el.contains(s)) : -1;
+            stops[first - 1]?.focus({ preventScroll: true });
+          }, at);
+          await page.keyboard.press('Tab');
+          if (!(await inside())) {
+            // not the next stop (a radio group or tabs take Tab on their selected item only): walk the page once
+            await page.evaluate(() => document.activeElement?.blur());
+            for (let i = 0, left = false; i < 60; i += 1) {
+              await page.keyboard.press('Tab');
+              if (await inside()) {
+                break;
+              }
+              const onBody = await page.evaluate(() => document.activeElement === document.body);
+              if (left && onBody) {
+                break;
+              }
+              left ||= !onBody;
             }
           }
         } else if (step.type !== undefined) {
@@ -140,6 +162,7 @@ export function helpersFor(page) {
             }
           }, step.settle);
         } else if (step.down) {
+          page.muiPointerUsed = true;
           await page.mouse.down();
         } else if (step.up) {
           await page.mouse.up();
@@ -148,6 +171,7 @@ export function helpersFor(page) {
           if (!(await target.count())) {
             continue;
           }
+          page.muiPointerUsed = true;
           const act = step.click ? 'click' : step.dblclick ? 'dblclick' : 'hover';
           await target[act]({ timeout: 800, force: true }).catch(() => {});
           await page.waitForTimeout(step.hover ? 50 : 200);

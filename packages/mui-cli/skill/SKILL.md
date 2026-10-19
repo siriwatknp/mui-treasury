@@ -32,6 +32,7 @@ The CLI renders Material UI components in Chrome under the project's theme and c
    - **Rules:**
      - **a11y:** a 24×24 clickable area or WCAG 2.5.8 spacing; every painted part responds to a click; keyboard focus visibly changes something and no `overflow: hidden` parent cuts the ring.
      - **content:** text never runs under an adornment, icon or chip; never spills out (an intended ellipsis or clip is fine); typed lines stay visible; a label never sits on the value; fields that should match keep one height.
+   - **Rerun it after every fix.** A case whose theme sources didn't change since the last run reuses its result ("unchanged since the last run, from the cache"), so a rerun checks only what the edit reached. Don't add `--no-cache`.
    - **Sheet:** it always prints a contact sheet of real usage (content cases, variants side by side) plus any failing case. Look at it instead of building your own preview.
    - **On failure:** fix the theme, not the check.
 4. **Read the side effects:** `mui diff --theme <file>` compares against the theme file at git HEAD (else vanilla; `--against vanilla` forces it).

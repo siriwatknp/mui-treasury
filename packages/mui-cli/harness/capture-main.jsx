@@ -82,18 +82,35 @@ function readSeamValue(el, prop) {
 }
 
 
-/** A React root that keeps a render error on its host, so settleCommit stops waiting for a render that will never come. */
-const rootOf = (host) =>
-  createRoot(host, {
+function Committed({ host }) {
+  React.useLayoutEffect(() => {
+    host.muiCommitted = true;
+  });
+  return null;
+}
+
+/**
+ * A React root that marks its host when a render commits or throws, so settleCommit waits for exactly that: a host
+ * can stay empty after a commit (a Dialog renders into a portal), and a render that throws never commits.
+ */
+const rootOf = (host) => {
+  const root = createRoot(host, {
     onUncaughtError: (error) => {
       host.muiRenderError = String(error?.message ?? error).split('\n')[0];
     },
   });
+  const render = root.render.bind(root);
+  root.render = (element) => {
+    host.muiCommitted = false;
+    render(<>{element}<Committed host={host} /></>);
+  };
+  return root;
+};
 
 const settleCommit = async (hosts) => {
   await document.fonts.ready;
   await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
-  for (let i = 0; i < 120 && hosts.some((h) => !h.firstElementChild && !h.muiRenderError); i += 1) {
+  for (let i = 0; i < 120 && hosts.some((h) => !h.muiCommitted && !h.muiRenderError); i += 1) {
     await new Promise((r) => requestAnimationFrame(r));
   }
   await new Promise((r) => requestAnimationFrame(r));
@@ -224,8 +241,8 @@ async function runShowcase(cfg) {
   mount.appendChild(container);
 
   const muted = 'var(--mui-palette-text-secondary, #6B7280)';
-  const paint = (stage, component, propsKey) => createRoot(stage).render(<ThemeProvider theme={theme}>{renders[component](parsePropsKey(propsKey))}</ThemeProvider>);
-  const rootOf = (b) => {
+  const paint = (stage, component, propsKey) => rootOf(stage).render(<ThemeProvider theme={theme}>{renders[component](parsePropsKey(propsKey))}</ThemeProvider>);
+  const slotRootOf = (b) => {
     tagSlots(b.component);
     return b.stage.querySelector(slotSelector(b.component, 'root'));
   };
@@ -293,7 +310,7 @@ async function runShowcase(cfg) {
     built.forEach((b) => paint(b.stage, b.component, b.propsKey));
     await settleCommit(built.map((b) => b.stage));
     for (const b of built) {
-      const el = rootOf(b);
+      const el = slotRootOf(b);
       const rect = el ? el.getBoundingClientRect() : null;
       const px = rect ? round1(rect.height) : null;
       const w = rect ? round1(rect.width) : null;
@@ -307,7 +324,7 @@ async function runShowcase(cfg) {
         const overlay = document.createElement('div');
         overlay.style.cssText = 'position:absolute;inset:0;pointer-events:none;';
         b.body.appendChild(overlay);
-        createRoot(overlay).render(<Annotate items={items} bounds={bounds} scheme={scheme === 'dark' ? 'dark' : 'light'} />);
+        rootOf(overlay).render(<Annotate items={items} bounds={bounds} scheme={scheme === 'dark' ? 'dark' : 'light'} />);
         annotated.push(overlay);
       }
       b.cap.textContent = `${w}×${px}px${b.target == null ? '' : ok ? ' ✓' : ` ✗ ${b.target}`}`;
@@ -324,7 +341,7 @@ async function runShowcase(cfg) {
     await settleCommit(built.map((b) => b.stage));
     for (const b of built) {
       const checks = (b.checks ?? []).map((chk) => {
-        const el = chk.slot ? b.stage.querySelector(`.${b.component}-${chk.slot}`) : rootOf(b);
+        const el = chk.slot ? b.stage.querySelector(`.${b.component}-${chk.slot}`) : slotRootOf(b);
         const cs = el ? getComputedStyle(el) : null;
         const got = rgbToHex(cs ? cs[chk.prop === 'borderColor' ? 'borderTopColor' : chk.prop] : null);
         const ok = chk.expect == null ? null : Boolean(got) && got === String(chk.expect).toUpperCase();
@@ -344,12 +361,12 @@ async function runShowcase(cfg) {
     await settleCommit(built.map((b) => b.stage));
     for (const b of built) {
       if (b.state === 'focusVisible') {
-        rootOf(b)?.classList.add('Mui-focusVisible');
+        slotRootOf(b)?.classList.add('Mui-focusVisible');
       } else if (b.state === 'hover' || b.state === 'active') {
         // marked for the node driver to force the pseudo via CDP (real
         // mouse-over/press can only hit ONE element; a screenshot needs the
         // whole column forced) — data-force carries the pseudo name
-        rootOf(b)?.setAttribute('data-force', b.state === 'active' ? 'active' : 'hover');
+        slotRootOf(b)?.setAttribute('data-force', b.state === 'active' ? 'active' : 'hover');
       }
       out.states.push({ label: b.label, component: b.component, state: b.state });
     }
@@ -427,7 +444,7 @@ async function runTokens(cfg) {
       const stage = document.createElement('div');
       row.append(meta, stage);
       sec.appendChild(row);
-      createRoot(stage).render(<ThemeProvider theme={theme}><Typography variant={t.variant}>{t.sample}</Typography></ThemeProvider>);
+      rootOf(stage).render(<ThemeProvider theme={theme}><Typography variant={t.variant}>{t.sample}</Typography></ThemeProvider>);
       return { ...t, meta, stage };
     });
     await settleCommit(rows.map((r) => r.stage));
@@ -1078,7 +1095,7 @@ async function runAnnotate(cfg, render) {
   demo.style.cssText = 'display:inline-block;';
   stage.appendChild(demo);
   document.getElementById('mount').appendChild(stage);
-  const root = createRoot(demo);
+  const root = rootOf(demo);
   root.render(<ThemeProvider theme={theme}>{render(parsePropsKey(cfg.propsKey))}</ThemeProvider>);
   await settleCommit([demo]);
   if (cfg.hold) {
@@ -1128,7 +1145,7 @@ async function drawAnnotations({ stage, demo, component }, cfg) {
   const overlay = document.createElement('div');
   overlay.style.cssText = 'position:absolute;inset:0;pointer-events:none;';
   stage.appendChild(overlay);
-  createRoot(overlay).render(<Annotate items={items} bounds={bounds} scheme={scheme} />);
+  rootOf(overlay).render(<Annotate items={items} bounds={bounds} scheme={scheme} />);
   await settleCommit([overlay]);
   await new Promise((r) => requestAnimationFrame(r));
 
@@ -1173,7 +1190,7 @@ async function runGate(cfg) {
   const root = rootOf(host);
   root.render(<ThemeProvider theme={createTheme(themeOptions)}>{Render(parsePropsKey(cfg.propsKey))}</ThemeProvider>);
   await settleCommit([host]);
-  window.__gate = { host, root, rest: new WeakMap() };
+  window.__gate = { host, root, rest: new WeakMap(), rendered: new Set() };
   // a content case may ask to be typed into, the way a user would
   return { ...(await gateCount(cfg)), ...(m.type !== undefined ? { type: m.type, typeInto: m.typeInto ?? null } : {}), ...(host.muiRenderError ? { error: host.muiRenderError } : {}) };
 }
@@ -1190,7 +1207,20 @@ async function gateCount(cfg) {
   for (const el of instances.flatMap((i) => [i, ...i.querySelectorAll('*')])) {
     window.__gate.rest.set(el, focusLook(el));
   }
+  noteRendered();
   return { instances: instances.length };
+}
+
+/** The Mui components on the page now (a popup's items too): what a case's result depends on, for the result cache. */
+function noteRendered() {
+  for (const el of document.querySelectorAll('[class*="Mui"]')) {
+    for (const c of el.classList) {
+      const name = /^Mui([A-Z][A-Za-z]*)-/.exec(c)?.[1];
+      if (name) {
+        window.__gate.rendered.add(`Mui${name}`);
+      }
+    }
+  }
 }
 
 const gateInstances = (name) => [...document.querySelectorAll(`.${name}-root`)].filter((el) => !el.parentElement.closest(`.${name}-root`));
@@ -1318,6 +1348,7 @@ const POPUP_ITEMS = '[role="listbox"] [role="option"], [role="menu"] [role="menu
 
 /** The items of an opened popup (options, menu items): each 24×24 or spaced per WCAG 2.5.8 from the others, and its text fits its box. */
 function gateItems() {
+  noteRendered();
   const items = [...document.querySelectorAll(POPUP_ITEMS)].filter((el) => el.getAttribute('aria-disabled') !== 'true' && el.checkVisibility?.() !== false);
   const rects = items.map((el) => el.getBoundingClientRect());
   return items.map((el, index) => {
@@ -1643,10 +1674,13 @@ function contentPerInstance(name) {
 
 function gateDone() {
   const held = window.__gate;
+  if (held) {
+    noteRendered();
+  }
   window.__gate = null;
   held?.root.unmount();
   held?.host.remove();
-  return { done: true };
+  return { done: true, rendered: [...(held?.rendered ?? [])].sort() };
 }
 
 let loadedFonts = '[]';

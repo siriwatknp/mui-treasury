@@ -19,7 +19,7 @@ export async function parseSource(source, file) {
   }
 }
 
-const resolveRelative = (from, spec) =>
+export const resolveRelative = (from, spec) =>
   RESOLVE_EXT.map((ext) => path.resolve(path.dirname(from), spec + ext)).find((f) => /\.[mc]?[jt]sx?$/.test(f) && fs.existsSync(f) && fs.statSync(f).isFile());
 
 /**

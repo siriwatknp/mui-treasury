@@ -33,7 +33,9 @@ const candidates = (c) =>
 const engine = await bootEngine({ hostRoot: path.dirname(DATA_DIR) });
 const lease = await engine.acquire({});
 const run = (cfg) => runOn(lease.page, cfg);
-const renders = async (demo, c) => {
+const rendered = new Map();
+const renders = async (demo, c) => rendered.get(`${demo}|${c}`) ?? rendered.set(`${demo}|${c}`, await rendersOnce(demo, c)).get(`${demo}|${c}`);
+const rendersOnce = async (demo, c) => {
   const probeUrl = `/@fs${path.join(DOCS, `${demo}.tsx`)}`;
   const rendered = await run({ gate: 'render', probeUrl, component: c, propsKey: 'base' }).catch(() => null);
   await run({ gate: 'done' }).catch(() => null);
@@ -42,6 +44,7 @@ const renders = async (demo, c) => {
 const out = {};
 // a component's own docs page: the demos that show it as documented (what a family gallery showed)
 const own = {};
+const all = {};
 for (const c of components) {
   const kept = [];
   for (const demo of candidates(c)) {
@@ -68,6 +71,17 @@ for (const c of components) {
   if (mine.length) {
     own[c] = mine;
   }
+  // every docs demo that renders it, whatever it imports and however many: what the docs say it can do (ADR 0032)
+  const every = [];
+  const pageDemos = (page?.demos ?? []).map((d) => `${page.slug}/${d.name}`);
+  for (const demo of [...new Set([...pageDemos, ...(byImport.get(c) ?? [])])]) {
+    if (fs.existsSync(path.join(DOCS, `${demo}.tsx`)) && !restyles(demo, c) && (await renders(demo, c))) {
+      every.push(demo);
+    }
+  }
+  if (every.length) {
+    all[c] = every;
+  }
   process.stderr.write(`\r  compositions: ${components.indexOf(c) + 1}/${components.length}`);
 }
 process.stderr.write('\n');
@@ -75,7 +89,7 @@ await engine.release(lease);
 await engine.close();
 
 fs.rmSync(COMPOSITION_DEMOS_DIR, { recursive: true, force: true });
-for (const demo of new Set([...Object.values(out), ...Object.values(own)].flat())) {
+for (const demo of new Set([...Object.values(out), ...Object.values(own), ...Object.values(all)].flat())) {
   shipDemo(DOCS, COMPOSITION_DEMOS_DIR, demo);
 }
 // demos rendering a component directly (`<InputBase`, `styled(InputBase)`): it is used on its own, not only as another component's base
@@ -87,7 +101,7 @@ for (const c of components) {
     direct[c] = hits;
   }
 }
-fs.writeFileSync(path.join(DATA_DIR, 'material/compositions.json'), `${JSON.stringify({ source: `@mui/material@${version} docs`, components: out, own, direct }, null, 2)}\n`);
-console.log(`${Object.keys(out).length}/${components.length} components have compositions, ${Object.keys(own).length} their own page demos · ${new Set([...Object.values(out), ...Object.values(own)].flat()).size} demos shipped`);
+fs.writeFileSync(path.join(DATA_DIR, 'material/compositions.json'), `${JSON.stringify({ source: `@mui/material@${version} docs`, components: out, own, all, direct }, null, 2)}\n`);
+console.log(`${Object.keys(out).length}/${components.length} components have compositions, ${Object.keys(own).length} their own page demos · every demo: ${Object.values(all).flat().length} entries · ${new Set([...Object.values(out), ...Object.values(own), ...Object.values(all)].flat()).size} demos shipped`);
 const statics = shipStatics(path.join(vendorPath('material', readPins().material), 'docs/public'), [RENDER_DEMOS_DIR, COMPOSITION_DEMOS_DIR, CONTENT_CASES_DIR], PUBLIC_DIR);
 console.log(`${statics.length} static files or folders the demos reference shipped`);

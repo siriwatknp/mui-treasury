@@ -2,6 +2,8 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { DATA_DIR } from './data.mjs';
+import { familyIndex } from './families.mjs';
+import { missingPackages } from './packages.mjs';
 import { COMPOSITION_DEMOS_DIR, CONTENT_CASES_DIR, PROP_STATES, demoNeeds, demoUrl, generatedUrl, interactionSteps, loadRenders, propsKeyOf, stateProps } from './renders.mjs';
 
 const RING_INSTANCES = 6;
@@ -9,6 +11,10 @@ const RING_INSTANCES = 6;
 const GEOMETRY_STATES = PROP_STATES.filter((s) => s !== 'disabled');
 // a base shared by more components than this (ButtonBase, SvgIcon, Typography) says nothing about a family
 const FAMILY_BASE_MAX = 6;
+
+let docsPages;
+/** The MUI docs page a component is documented on (`accordion` for MuiAccordionSummary), from the demo index. */
+const docsPageOf = (component) => (docsPages ??= JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'material/demos/index.json'), 'utf8')).demoPages ?? {})[component];
 
 let compositions;
 const loadCompositions = () => (compositions ??= JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'material/compositions.json'), 'utf8')));
@@ -35,7 +41,7 @@ export async function familyOf(component) {
 const interactionOf = (file) => [...(/export const interaction = \[([^\]]*)\]/.exec(fs.readFileSync(file, 'utf8'))?.[1].matchAll(/'([^']+)'/g) ?? [])].map((m) => m[1]);
 
 /** Every case the rules run on: each recorded variant at rest and in each state that moves it, the recorded demos of a component that only renders in one, and its docs compositions. */
-export function casesOf(component, { own = true } = {}) {
+export function casesOf(component, { own = true, all = false } = {}) {
   const record = loadRenders();
   const entry = record.components[component];
   const cases = [];
@@ -84,12 +90,19 @@ export function casesOf(component, { own = true } = {}) {
       cases.push({ component, kind: 'content', label: `content ${file.replace(/\.tsx$/, '')}`, url: `/@fs${path.join(sharedDir, file)}`, propsKey: 'base', interaction: [], sheet: true });
     }
   }
-  for (const demo of loadCompositions().components[component] ?? []) {
-    cases.push({ component, kind: 'composition', label: `in ${demo}`, url: `/@fs${path.join(COMPOSITION_DEMOS_DIR, `${demo}.tsx`)}`, propsKey: 'base', interaction: [], sheet: true });
-  }
-  // a component's own docs page demos: in a one-component run only, the whole-theme gate stays fast
-  for (const demo of own ? (loadCompositions().own?.[component] ?? []) : []) {
-    cases.push({ component, kind: 'own demo', label: `demo ${demo}`, url: `/@fs${path.join(COMPOSITION_DEMOS_DIR, `${demo}.tsx`)}`, propsKey: 'base', interaction: [], sheet: true });
+  const compositions = loadCompositions();
+  const ownPage = new Set(compositions.own?.[component] ?? []);
+  const pageSlug = docsPageOf(component);
+  // every docs demo for a page that shows them all (--emit); the agent's gate keeps its budget: 4 compositions, own-page demos in a one-component run
+  const demos = all && compositions.all?.[component]
+    ? compositions.all[component].map((demo) => ({ demo, ownDemo: ownPage.has(demo) || demo.split('/')[0] === pageSlug }))
+    : [...(compositions.components[component] ?? []).map((demo) => ({ demo, ownDemo: false })), ...(own ? [...ownPage] : []).map((demo) => ({ demo, ownDemo: true }))];
+  for (const { demo, ownDemo } of demos) {
+    const file = path.join(COMPOSITION_DEMOS_DIR, `${demo}.tsx`);
+    if (!fs.existsSync(file) || missingPackages(fs.readFileSync(file, 'utf8'), file).length) {
+      continue;
+    }
+    cases.push({ component, kind: ownDemo ? 'own demo' : 'composition', label: `${ownDemo ? 'demo' : 'in'} ${demo}`, url: `/@fs${file}`, propsKey: 'base', interaction: [], sheet: true });
   }
   if (cases.some((c) => c.kind !== 'variant')) {
     cases.filter((c) => c.kind === 'variant').forEach((c) => {
@@ -97,6 +110,26 @@ export function casesOf(component, { own = true } = {}) {
     });
   }
   return cases;
+}
+
+/**
+ * Family parts (AccordionSummary, DialogTitle, TableCell) are checked inside their family's demos, never as fragments:
+ * a part's template cases are dropped when its family has demo cases, and every demo case of a family checks all its members.
+ * `extra` adds the demo cases of family members outside the run (checking AccordionSummary alone brings Accordion's demos).
+ * A part kept for lack of demos renders inside its family's root.
+ */
+export function familyCases(cases, extra = []) {
+  const families = familyIndex();
+  const familyOf = (c) => families.get(c) ?? { root: c, members: [c] };
+  const demos = [...cases, ...extra].filter((c) => c.kind !== 'variant');
+  const withDemos = new Set(demos.map((c) => familyOf(c.component).root));
+  const kept = cases.filter((c) => c.kind !== 'variant' || familyOf(c.component).root === c.component || !withDemos.has(familyOf(c.component).root));
+  const extraDemos = extra.filter((c) => c.kind !== 'variant' && !kept.some((k) => k.url === c.url && k.component === c.component));
+  const inRoot = (c) => {
+    const { root } = familyOf(c.component);
+    return root === c.component || c.url !== generatedUrl(c.component) ? c : { ...c, url: generatedUrl(c.component, root), label: c.label.replace(/^([^+]*?)( \+\w+)?$/, `$1 in ${short(root)}$2`) };
+  };
+  return [...kept, ...extraDemos].map((c) => (c.kind === 'variant' ? inRoot(c) : { ...c, components: [...new Set([...(c.components ?? [c.component]), ...familyOf(c.component).members])] }));
 }
 
 /** One case per demo file and interaction: a docs demo or content case that renders several components (Dialog, DialogTitle, DialogActions) is rendered once and checks each of them. */
@@ -111,20 +144,37 @@ export function mergeCases(cases) {
     const key = `${c.url.replace(/^.*\/(render-demos|composition-demos)\//, 'demo:')}|${c.interaction.join('+')}`;
     const first = byUrl.get(key);
     if (first) {
-      if (!first.components.includes(c.component)) {
-        first.components.push(c.component);
+      for (const m of c.components ?? [c.component]) {
+        if (!first.components.includes(m)) {
+          first.components.push(m);
+        }
       }
       continue;
     }
-    const merged = { ...c, components: [c.component] };
+    const merged = { ...c, components: [...(c.components ?? [c.component])] };
     byUrl.set(key, merged);
     out.push(merged);
   }
   return out;
 }
 
-/** Run the rules on one case: touch target and dead zones on every instance, then keyboard focus onto each (up to RING_INSTANCES) for the ring. */
-export async function runCase(runCapture, helpers, c, shotDir, { onlyFailing = false } = {}) {
+/**
+ * Run the rules on one case: touch target and dead zones on every instance, then keyboard focus onto each (up to RING_INSTANCES)
+ * for the ring. The result names the Mui components the case rendered: what it depends on, for the result cache.
+ */
+export async function runCase(runCapture, helpers, c, shotDir, options = {}) {
+  let rendered = [];
+  const result = await checkCase(async (cfg) => {
+    const r = await runCapture(cfg);
+    if (cfg.gate === 'done') {
+      rendered = r.rendered ?? [];
+    }
+    return r;
+  }, helpers, c, shotDir, options);
+  return { ...result, rendered };
+}
+
+async function checkCase(runCapture, helpers, c, shotDir, { onlyFailing = false } = {}) {
   const failures = [];
   const checks = { target: 0, dead: 0, ring: 0 };
   let rendered = await runCapture({ gate: 'render', probeUrl: c.url, component: c.component, propsKey: c.propsKey });

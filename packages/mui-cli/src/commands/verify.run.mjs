@@ -208,6 +208,46 @@ export async function run(program, name, options) {
   }
 }
 
+/** Time spent per step of a case (summed over the parallel pages) and per case, for --timing. */
+function timingOf() {
+  const steps = new Map();
+  const perCase = [];
+  const add = (name, ms) => {
+    const s = steps.get(name) ?? { calls: 0, ms: 0 };
+    s.calls += 1;
+    s.ms += ms;
+    steps.set(name, s);
+  };
+  const timed = (name, fn) => async (...args) => {
+    const t = performance.now();
+    try {
+      return await fn(...args);
+    } finally {
+      add(typeof name === 'function' ? name(...args) : name, performance.now() - t);
+    }
+  };
+  const interactName = (steps) => (steps[0]?.tabTo ? 'focus (Tab)' : steps[0]?.reset ? 'reset' : 'interaction');
+  return {
+    wrap: (runCapture, helpers) => ({
+      runCapture: timed((cfg) => cfg.gate ?? 'other', runCapture),
+      helpers: { ...helpers, interact: timed(interactName, helpers.interact), screenshotElement: timed('screenshot', helpers.screenshotElement) },
+    }),
+    caseDone: (c, ms) => perCase.push({ label: `${c.component.replace(/^Mui/, '')} [${c.label}]`, ms }),
+    print: (wall, jobs, cached) => {
+      const total = [...steps.values()].reduce((n, s) => n + s.ms, 0);
+      const sec = (ms) => `${(ms / 1000).toFixed(1)}s`;
+      console.error(`\ntiming: ${sec(wall)} wall · ${perCase.length} cases run on ${jobs} page${jobs === 1 ? '' : 's'}${cached ? `, ${cached} from the cache` : ''} · ${sec(total)} in page calls (summed over pages)`);
+      for (const [name, s] of [...steps].sort((a, b) => b[1].ms - a[1].ms)) {
+        console.error(`  ${name.padEnd(14)} ${sec(s.ms).padStart(8)} ${`${Math.round((s.ms / total) * 100)}%`.padStart(5)} · ${String(s.calls).padStart(5)} calls · ${(s.ms / s.calls).toFixed(1)}ms each`);
+      }
+      console.error('  slowest cases:');
+      for (const c of perCase.sort((a, b) => b.ms - a.ms).slice(0, 8)) {
+        console.error(`    ${sec(c.ms).padStart(6)} ${c.label}`);
+      }
+    },
+  };
+}
+
 /**
  * verify --all: every case of the targets (and their families) through the rules, parallel pages, one contact sheet.
  * One component: every case on the sheet. A whole theme (`why` set): only failing components listed; failing cases and every content case on the sheet.
@@ -216,11 +256,15 @@ async function runAll(program, targets, options, why = null) {
   if (options.props || options.state || options.expect) {
     throw new Error('--all checks every variant and state itself — drop --props / --state / --expect');
   }
-  const { casesOf, familyOf, mergeCases, runCase, sheetHtml, shotDirFor } = await import('../lib/gate.mjs');
+  const { casesOf, familyCases, familyOf, mergeCases, runCase, sheetHtml, shotDirFor } = await import('../lib/gate.mjs');
   const short = (c) => c.replace(/^Mui/, '');
   const family = why ? [] : (await Promise.all(targets.map(familyOf))).flat().filter((c, i, all) => !targets.includes(c) && all.indexOf(c) === i);
   const components = [...targets, ...family];
-  const cases = mergeCases(components.flatMap((c) => casesOf(c, { own: !why || Boolean(options.emit) })));
+  const own = !why || Boolean(options.emit);
+  const { familyIndex } = await import('../lib/families.mjs');
+  const relatives = [...new Set(components.flatMap((c) => familyIndex().get(c)?.members ?? []))].filter((m) => !components.includes(m));
+  const every = Boolean(options.emit);
+  const cases = mergeCases(familyCases(components.flatMap((c) => casesOf(c, { own, all: every })), relatives.flatMap((c) => casesOf(c, { own, all: every }))));
   const name = why ? 'theme' : short(targets[0]);
   if (!cases.length) {
     console.log(`verify --all — ${why ?? name}: nothing to check`);
@@ -229,16 +273,36 @@ async function runAll(program, targets, options, why = null) {
   const shotDir = shotDirFor(name);
   const results = [];
   const errors = [];
-  const queue = [...cases];
+  // results kept from earlier runs, reused while nothing the case depends on changed
+  const cache = await (await import('../lib/verifyCache.mjs')).openCache({ themeFile: options.theme, fonts: options.fonts ?? [], reuse: !options.noCache });
+  const needsShot = (c) => (r) => !r.skipped && ((c.sheet && (!why || c.kind === 'content')) || (Boolean(why) && r.failures.length > 0));
+  const queue = [];
+  for (const c of cases) {
+    const hit = cache.lookup(c, needsShot(c));
+    if (hit) {
+      results.push(hit);
+    } else {
+      queue.push(c);
+    }
+  }
+  const cached = results.length;
+  const toRun = queue.length;
   const { withCapture } = await import('../lib/capture.mjs');
-  const jobs = process.env.MUI_CLI_NO_SERVER ? 1 : Math.min(4, cases.length);
-  const worker = () => withCapture(async (runCapture, helpers) => {
+  const jobs = process.env.MUI_CLI_NO_SERVER ? Math.min(1, toRun) : Math.min(4, toRun);
+  const timing = options.timing ? timingOf() : null;
+  const started = performance.now();
+  const worker = () => withCapture(async (rawRun, rawHelpers) => {
+    const { runCapture, helpers } = timing ? timing.wrap(rawRun, rawHelpers) : { runCapture: rawRun, helpers: rawHelpers };
     for (let c = queue.shift(); c; c = queue.shift()) {
-      process.stderr.write(`\r  verify --all: ${cases.length - queue.length}/${cases.length} cases`);
+      process.stderr.write(`\r  verify --all: ${toRun - queue.length}/${toRun} cases${cached ? ` (${cached} unchanged, from the cache)` : ''}`);
       // a page Vite reloaded mid-case (dependencies bundled on a first run) gets the case once more
       for (let attempt = 0; ; attempt += 1) {
         try {
-          results.push(await runCase(runCapture, helpers, c, shotDir, { onlyFailing: Boolean(why) }));
+          const t = performance.now();
+          const result = await runCase(runCapture, helpers, c, shotDir, { onlyFailing: Boolean(why) });
+          timing?.caseDone(c, performance.now() - t);
+          results.push(result);
+          cache.put(result);
           break;
         } catch (err) {
           if (attempt === 0 && /Execution context was destroyed|navigation|__runCapture/.test(err.message)) {
@@ -254,7 +318,9 @@ async function runAll(program, targets, options, why = null) {
     await withCapture(async () => null, { themeFile: options.theme, fonts: options.fonts });
   }
   await Promise.all(Array.from({ length: jobs }, worker));
-  process.stderr.write('\n');
+  process.stderr.write(jobs ? '\n' : '');
+  cache.save();
+  timing?.print(performance.now() - started, jobs, cached);
   const order = new Map(cases.map((c, i) => [c, i]));
   results.sort((a, b) => order.get(a.case) - order.get(b.case));
   const onSheet = why ? results.filter((r) => r.failures.length || r.case.kind === 'content') : results;
@@ -273,9 +339,9 @@ async function runAll(program, targets, options, why = null) {
   if (failures.length || errors.length || code.length) {
     process.exitCode = 1;
   }
-  const emitted = options.emit ? (await import('../lib/emit.mjs')).emitSpecs(options.emit, { results, errors, code, components, assetsDir: options.emitAssets }) : null;
+  const emitted = options.emit ? (await import('../lib/emit.mjs')).emitSpecs(options.emit, { results, errors, code, components: [...new Set([...components, ...cases.flatMap((c) => c.components ?? [c.component])])], assetsDir: options.emitAssets }) : null;
   if (program.opts().json) {
-    jsonOut('verify', { components, ...(why ? { scope: why } : { component: targets[0], family }), theme: options.theme ?? null, cases: results.length, checks, failures, skipped: results.filter((r) => r.skipped).map((r) => ({ component: r.case.component, case: r.case.label, reason: r.skipped, ...(r.covered ? { covered: true } : {}) })), errors: errors.map((e) => ({ component: e.case.component, case: e.case.label, error: e.error })), code, sheet: shot, emit: emitted });
+    jsonOut('verify', { components, ...(why ? { scope: why } : { component: targets[0], family }), theme: options.theme ?? null, cases: results.length, cached, checks, failures, skipped: results.filter((r) => r.skipped).map((r) => ({ component: r.case.component, case: r.case.label, reason: r.skipped, ...(r.covered ? { covered: true } : {}) })), errors: errors.map((e) => ({ component: e.case.component, case: e.case.label, error: e.error })), code, sheet: shot, emit: emitted });
     return;
   }
   console.log(`${title}${family.length ? ` · family: ${family.map(short).join(', ')}` : ''}\n`);
@@ -321,7 +387,7 @@ async function runAll(program, targets, options, why = null) {
   if (covered.length) {
     console.log(`note: ${covered.length} bare render${covered.length === 1 ? '' : 's'} with no control of ${covered.length === 1 ? 'its' : 'their'} own left to the demos that cover them`);
   }
-  console.log(`\n${results.length} cases · ${checks} checks · ${failures.length} failed${errors.length ? ` · ${errors.length} render errors` : ''}${options.theme ? ` · ${code.length} theme code issue${code.length === 1 ? '' : 's'}` : ''}`);
+  console.log(`\n${results.length} cases${cached ? ` (${cached} unchanged since the last run, from the cache)` : ''} · ${checks} checks · ${failures.length} failed${errors.length ? ` · ${errors.length} render errors` : ''}${options.theme ? ` · ${code.length} theme code issue${code.length === 1 ? '' : 's'}` : ''}`);
   console.log(shot ? `sheet: ${shot}` : 'no failures — no sheet');
   if (emitted) {
     console.log(`emitted: ${emitted.cases} cases of ${emitted.components} components in ${emitted.groups} groups → ${path.relative(process.cwd(), emitted.dir) || '.'}${emitted.assets ? ` · ${emitted.assets} static files → ${options.emitAssets}` : ''}`);

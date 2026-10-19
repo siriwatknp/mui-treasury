@@ -16,6 +16,8 @@ export function registerVerify(program) {
     .option('--all', 'the gate: every variant, state and docs composition of the component and its family, checked for a 24×24 touch target, dead zones and a focus ring nothing cuts off — exit 1 on any failure. Without a component: every component the --theme touches')
     .option('--emit <dir>', 'with --all: also write the cases as live React modules plus results.json, for a page that shows them (includes each component\'s own docs demos)')
     .option('--emit-assets <dir>', 'with --emit: copy the static files the emitted demos reference (avatars, card images) into this public folder, at their /static/... paths')
+    .option('--no-cache', 'with --all: run every case, ignoring the results kept from earlier runs (node_modules/.cache/mui-cli); the fresh results are kept')
+    .option('--timing', 'with --all: print where the time went, per step of a case, and the slowest cases')
     .option('--shot <file>', 'with --all: the contact sheet of every case (default verify-<Component>.png)')
     .action((...args) => import('./verify.run.mjs').then((m) => m.run(program, ...args)));
 }

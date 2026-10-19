@@ -44,7 +44,7 @@ test('a generated render can pin props the record gets wrong: FormControlLabel g
 });
 
 test('groups: parts of one component share a page; a base or an independent component does not', async () => {
-  const { groupComponents } = await import('../src/lib/emit.mjs');
+  const { groupComponents } = await import('../src/lib/families.mjs');
   const groups = groupComponents(['MuiAccordion', 'MuiAccordionSummary', 'MuiAccordionActions', 'MuiButton', 'MuiButtonBase', 'MuiIconButton', 'MuiIcon', 'MuiTab', 'MuiTabs', 'MuiTable', 'MuiTableCell']);
   assert.deepEqual(Object.fromEntries(groups), {
     Accordion: ['Accordion', 'AccordionActions', 'AccordionSummary'],
@@ -91,4 +91,14 @@ test('emit assets: the static files an emitted demo references are copied into t
   const out = emitSpecs(path.join(dir, 'out'), { results: [{ case: demo, checks: { content: 1 }, failures: [] }], errors: [], code: [], components: ['MuiChip'], assetsDir: assets });
   assert.ok(out.assets > 0);
   assert.ok(fs.existsSync(path.join(assets, 'static/images/avatar/1.jpg')));
+});
+
+test('family parts are checked in their family\'s demos, never as fragments', async () => {
+  const { familyCases } = await import('../src/lib/gate.mjs');
+  const variant = (component) => ({ component, kind: 'variant', label: 'base', url: `/_renders/${component}.jsx`, propsKey: 'base', interaction: [] });
+  const demo = { component: 'MuiAccordion', kind: 'composition', label: 'in accordion/Basic', url: '/@fs/x/accordion/Basic.tsx', propsKey: 'base', interaction: [] };
+  const out = familyCases([variant('MuiAccordionSummary'), variant('MuiAccordion')], [demo]);
+  assert.deepEqual(out.map((c) => `${c.component}|${c.kind}`), ['MuiAccordion|variant', 'MuiAccordion|composition']);
+  assert.deepEqual(out[1].components.sort(), ['MuiAccordion', 'MuiAccordionActions', 'MuiAccordionDetails', 'MuiAccordionSummary']);
+  assert.deepEqual(familyCases([variant('MuiAccordionSummary')]).map((c) => c.component), ['MuiAccordionSummary']);
 });
