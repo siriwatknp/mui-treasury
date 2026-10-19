@@ -25,5 +25,5 @@ export const shadows: ThemeOptions['shadows'] = [
   '0 60px 86px -13px rgb(0 0 0 / 0.22), 0 23px 46px -11px rgb(0 0 0 / 0.18)',
   '0 66px 94px -14px rgb(0 0 0 / 0.23), 0 26px 52px -12px rgb(0 0 0 / 0.19)',
   '0 72px 102px -15px rgb(0 0 0 / 0.24), 0 29px 58px -13px rgb(0 0 0 / 0.2)',
-  '0 58px 82px -11px rgb(0 0 0 / 0.26), 0 21px 40px -11px rgb(0 0 0 / 0.22)',
+  '0 78px 110px -16px rgb(0 0 0 / 0.26), 0 32px 64px -14px rgb(0 0 0 / 0.22)',
 ];
