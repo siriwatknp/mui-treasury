@@ -256,7 +256,7 @@ async function runAll(program, targets, options, why = null) {
   if (options.props || options.state || options.expect) {
     throw new Error('--all checks every variant and state itself — drop --props / --state / --expect');
   }
-  const { casesOf, familyCases, familyOf, mergeCases, runCase, sheetHtml, shotDirFor } = await import('../lib/gate.mjs');
+  const { casesOf, familyCases, familyOf, mergeCases, plainRechecks, runCase, setApartPlainFailures, sheetHtml, shotDirFor } = await import('../lib/gate.mjs');
   const short = (c) => c.replace(/^Mui/, '');
   const family = why ? [] : (await Promise.all(targets.map(familyOf))).flat().filter((c, i, all) => !targets.includes(c) && all.indexOf(c) === i);
   const components = [...targets, ...family];
@@ -320,6 +320,13 @@ async function runAll(program, targets, options, why = null) {
   await Promise.all(Array.from({ length: jobs }, worker));
   process.stderr.write(jobs ? '\n' : '');
   cache.save();
+  const rechecks = options.theme ? plainRechecks(results) : [];
+  if (rechecks.length) {
+    await withCapture(
+      (rawRun, rawHelpers) => setApartPlainFailures(rechecks, (c) => runCase((cfg) => rawRun({ ...cfg, themeFile: null }), rawHelpers, c, path.join(shotDir, 'plain')).catch(() => null)),
+      { themeFile: options.theme, fonts: options.fonts },
+    );
+  }
   timing?.print(performance.now() - started, jobs, cached);
   const order = new Map(cases.map((c, i) => [c, i]));
   results.sort((a, b) => order.get(a.case) - order.get(b.case));
@@ -341,7 +348,7 @@ async function runAll(program, targets, options, why = null) {
   }
   const emitted = options.emit ? (await import('../lib/emit.mjs')).emitSpecs(options.emit, { results, errors, code, components: [...new Set([...components, ...cases.flatMap((c) => c.components ?? [c.component])])], assetsDir: options.emitAssets }) : null;
   if (program.opts().json) {
-    jsonOut('verify', { components, ...(why ? { scope: why } : { component: targets[0], family }), theme: options.theme ?? null, cases: results.length, cached, checks, failures, skipped: results.filter((r) => r.skipped).map((r) => ({ component: r.case.component, case: r.case.label, reason: r.skipped, ...(r.covered ? { covered: true } : {}) })), errors: errors.map((e) => ({ component: e.case.component, case: e.case.label, error: e.error })), code, sheet: shot, emit: emitted });
+    jsonOut('verify', { components, ...(why ? { scope: why } : { component: targets[0], family }), theme: options.theme ?? null, cases: results.length, cached, checks, failures, plain: results.flatMap((r) => (r.plain ?? []).map((f) => ({ component: r.case.component, case: r.case.label, kind: r.case.kind, ...f }))), skipped: results.filter((r) => r.skipped).map((r) => ({ component: r.case.component, case: r.case.label, reason: r.skipped, ...(r.covered ? { covered: true } : {}) })), errors: errors.map((e) => ({ component: e.case.component, case: e.case.label, error: e.error })), code, sheet: shot, emit: emitted });
     return;
   }
   console.log(`${title}${family.length ? ` · family: ${family.map(short).join(', ')}` : ''}\n`);
@@ -362,6 +369,13 @@ async function runAll(program, targets, options, why = null) {
       for (const f of r.failures) {
         console.log(`      ✗ ${f.rule}: ${f.detail}`);
       }
+    }
+  }
+  const plain = results.filter((r) => r.plain?.length);
+  if (plain.length) {
+    console.log(`· ${plain.reduce((n, r) => n + r.plain.length, 0)} failures the docs demos also have in plain Material UI (the demo's, not the theme's — not counted):`);
+    for (const r of plain) {
+      console.log(`    [${short(r.case.component)} · ${r.case.label}] ${r.plain.map((f) => `${f.rule}: ${f.detail}`).join('; ')}`);
     }
   }
   if (passing.length) {

@@ -132,7 +132,10 @@ export function familyCases(cases, extra = []) {
   return [...kept, ...extraDemos].map((c) => (c.kind === 'variant' ? inRoot(c) : { ...c, components: [...new Set([...(c.components ?? [c.component]), ...familyOf(c.component).members])] }));
 }
 
-/** One case per demo file and interaction: a docs demo or content case that renders several components (Dialog, DialogTitle, DialogActions) is rendered once and checks each of them. */
+/**
+ * One case per demo file and interaction: a docs demo or content case that renders several components (Dialog, DialogTitle, DialogActions) is rendered once and checks each of them.
+ * The case belongs to the component whose docs page holds the demo (badges/SimpleBadge is Badge's, not IconButton's), else to the first that claims it.
+ */
 export function mergeCases(cases) {
   const byUrl = new Map();
   const out = [];
@@ -149,6 +152,9 @@ export function mergeCases(cases) {
           first.components.push(m);
         }
       }
+      if (c.kind === 'own demo' && first.kind === 'composition') {
+        Object.assign(first, { component: c.component, kind: c.kind, label: c.label });
+      }
       continue;
     }
     const merged = { ...c, components: [...(c.components ?? [c.component])] };
@@ -156,6 +162,22 @@ export function mergeCases(cases) {
     out.push(merged);
   }
   return out;
+}
+
+/** The failing docs-demo cases to check again in plain Material UI (content cases are written to pass it already). */
+export const plainRechecks = (results) => results.filter((r) => r.failures.length && !['variant', 'content'].includes(r.case.kind));
+
+/**
+ * A failure a docs demo also has in plain Material UI belongs to the demo (a menu showing a label that overflows), not the theme:
+ * each recheck's failures that `runPlain` finds again move from `failures` to `plain`.
+ */
+export async function setApartPlainFailures(rechecks, runPlain) {
+  const key = (f) => `${f.rule}|${f.detail.split(':')[0]}`;
+  for (const r of rechecks) {
+    const plain = new Set((await runPlain(r.case))?.failures.map(key) ?? []);
+    r.plain = r.failures.filter((f) => plain.has(key(f)));
+    r.failures = r.failures.filter((f) => !plain.has(key(f)));
+  }
 }
 
 /**

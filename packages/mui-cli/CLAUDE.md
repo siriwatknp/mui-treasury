@@ -24,6 +24,8 @@ Lookups must stay ≤ 40ms (Node alone is ~21ms); commands given a user theme (`
 
 `mui verify --all --emit <dir>` (`src/lib/emit.mjs`) writes the cases it checked as live React modules for a page to render: `cases/<Component>.tsx` + `cases/index.ts`, the `renders/` and `demos/` they import, and `results.json`; `--emit-assets <public dir>` also copies the docs' static files those demos reference (shipped in `data/material/public/` by `sync-compositions`, served to the harness as Vite's `publicDir`). Keep its output deterministic (sorted, no timestamps or measured values): a theme change should only touch `results.json`, and only when an outcome changes.
 
+With `--theme`, `verify --all` renders each failing docs-demo case once more in plain Material UI (`setApartPlainFailures` in `src/lib/gate.mjs`); failures found again there move to `plain` and don't fail the gate. Content cases are not rechecked: plain MUI must pass them.
+
 ## Rules
 
 - Data access goes through `src/lib/data.mjs` (`loadData(lib, name)`, `builtWith()`), with data under `data/material/` and `data/x/`.

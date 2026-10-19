@@ -164,7 +164,7 @@ export function emitSpecs(outDir, { results, errors, code, components, assetsDir
       entries.push(`  { id: ${JSON.stringify(id)}, component: ${JSON.stringify(short(c.component))}, components: ${JSON.stringify(checked)}, kind: ${JSON.stringify(c.kind)}, label: ${JSON.stringify(c.label)}, props: ${JSON.stringify(propsOf(c.propsKey))}, state: ${JSON.stringify(state)}, note: ${JSON.stringify(note)}, Component: ${render} },`);
       caseResults[id] = e
         ? { error: e.error }
-        : { checks: r.checks, failures: r.failures.map((f) => ({ rule: f.rule, detail: f.detail })), ...(r.skipped ? { skipped: r.skipped } : {}) };
+        : { checks: r.checks, failures: r.failures.map((f) => ({ rule: f.rule, detail: f.detail })), ...(r.plain?.length ? { plain: r.plain.map((f) => ({ rule: f.rule, detail: f.detail })) } : {}), ...(r.skipped ? { skipped: r.skipped } : {}) };
     }
     write(file, `${HEADER}${[...imports.values()].map((i) => i.line).join('\n')}\n\nexport const cases = [\n${entries.join('\n')}\n];\n`);
     const failedOf = (list) => list.filter(({ r, e }) => e || r.failures.length).length;

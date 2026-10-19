@@ -1186,6 +1186,10 @@ async function runGate(cfg) {
   const Render = (props) => <Module {...props} />;
   const themeOptions = cfg.themeUrl ? (await import(/* @vite-ignore */ cfg.themeUrl)).default : {};
   const host = document.createElement('div');
+  // a docs demo is laid out in the docs' demo column (a stepper growing to its maxWidth), not shrunk to its content like a bare render
+  if (!cfg.probeUrl.startsWith('/_renders/')) {
+    host.style.width = 'min(852px, calc(100vw - 48px))';
+  }
   document.getElementById('mount').appendChild(host);
   const root = rootOf(host);
   root.render(<ThemeProvider theme={createTheme(themeOptions)}>{Render(parsePropsKey(cfg.propsKey))}</ThemeProvider>);
@@ -1281,6 +1285,10 @@ function reaches(target, instance, name, el) {
   const label = el.closest('label');
   if (label && (label.control === target || label.contains(target))) {
     return true;
+  }
+  const control = el.closest(INTERACTIVE);
+  if (control && !control.contains(target)) {
+    return false;
   }
   return instance.contains(el) && ownPart(el, instance, name, target) && clickableCursor(el);
 }
@@ -1388,7 +1396,13 @@ function gateTouch(cfg) {
     if (!instance.getBoundingClientRect().height || !instance.getBoundingClientRect().width) {
       return { index, status: 'n/a', why: 'renders empty' };
     }
+    if (instance.checkVisibility?.({ visibilityProperty: true, opacityProperty: true }) === false) {
+      return { index, status: 'n/a', why: 'hidden' };
+    }
     const tr = visibleRect(target);
+    if (tr.right - tr.left < 1 || tr.bottom - tr.top < 1) {
+      return { index, status: 'n/a', why: 'clipped out of view' };
+    }
     if (tr.left < 0 || tr.top < 0 || tr.right > innerWidth || tr.bottom > innerHeight) {
       return { index, status: 'n/a', why: 'outside the page' };
     }
@@ -1502,6 +1516,11 @@ async function gateRing(cfg) {
       }
       const ar = a.getBoundingClientRect();
       const inner = { left: ar.left + parseFloat(cs.borderLeftWidth), top: ar.top + parseFloat(cs.borderTopWidth), right: ar.right - parseFloat(cs.borderRightWidth), bottom: ar.bottom - parseFloat(cs.borderBottomWidth) };
+      const own = part.el.getBoundingClientRect();
+      // the control itself runs past the clipper (a collapsed mini drawer): the layout hides it, not a ring cut short
+      if (Math.max(inner.left - own.left, inner.top - own.top, own.right - inner.right, own.bottom - inner.bottom) > 0.5) {
+        break;
+      }
       const by = Math.max(inner.left - part.ink.left, inner.top - part.ink.top, part.ink.right - inner.right, part.ink.bottom - inner.bottom);
       if (by > 0.5) {
         clipped.push({ part: `${muiName(part.el)} ${part.kind}`, by: Math.round(by * 10) / 10, clipper: muiName(a), overflow: cs.overflowX === cs.overflowY ? cs.overflowX : `${cs.overflowX}/${cs.overflowY}` });
@@ -1566,8 +1585,8 @@ function textRects(el) {
   for (let node = walker.nextNode(); node; node = walker.nextNode()) {
     const decoration = node.parentElement.closest(DECORATION);
     const cs = getComputedStyle(node.parentElement);
-    // glyph text inside an icon, and text drawn invisible (a loading button's label), is not text a reader sees
-    if (!node.textContent.replace(/\u200b/g, '').trim() || node.parentElement.closest('svg') || (decoration && decoration !== el && el.contains(decoration)) || cs.visibility === 'hidden' || /rgba\([^)]*,\s*0\)$|transparent/.test(cs.color) || hiddenByOpacity(node.parentElement, el)) {
+    // glyph text inside an icon, text drawn invisible (a loading button's label), and a badge (drawn over its anchor on purpose) are not text that must stay clear
+    if (!node.textContent.replace(/\u200b/g, '').trim() || node.parentElement.closest('svg, .MuiBadge-badge') || (decoration && decoration !== el && el.contains(decoration)) || cs.visibility === 'hidden' || /rgba\([^)]*,\s*0\)$|transparent/.test(cs.color) || hiddenByOpacity(node.parentElement, el)) {
       continue;
     }
     const range = document.createRange();

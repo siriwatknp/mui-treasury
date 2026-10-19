@@ -82,6 +82,10 @@ test('merge: a demo that renders several components is one case checking each of
   const recorded = { ...demo('MuiStepper'), kind: 'demo', url: '/@fs/x/render-demos/steppers/Vertical.tsx' };
   const own = { ...demo('MuiStep'), kind: 'own demo', url: '/@fs/x/composition-demos/steppers/Vertical.tsx' };
   assert.deepEqual(mergeCases([recorded, own]).map((c) => c.components), [['MuiStepper', 'MuiStep']]);
+  assert.equal(mergeCases([recorded, own])[0].component, 'MuiStepper');
+  const badgeDemo = (component, kind) => ({ component, kind, label: kind === 'own demo' ? 'demo badges/SimpleBadge' : 'in badges/SimpleBadge', url: '/@fs/x/composition-demos/badges/SimpleBadge.tsx', propsKey: 'base', interaction: [] });
+  const [badge] = mergeCases([badgeDemo('MuiIconButton', 'composition'), badgeDemo('MuiBadge', 'own demo')]);
+  assert.deepEqual([badge.component, badge.kind, badge.label, badge.components], ['MuiBadge', 'own demo', 'demo badges/SimpleBadge', ['MuiIconButton', 'MuiBadge']]);
 });
 
 test('emit assets: the static files an emitted demo references are copied into the public folder at their paths', () => {

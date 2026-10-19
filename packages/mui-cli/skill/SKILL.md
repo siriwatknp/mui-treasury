@@ -34,7 +34,7 @@ The CLI renders Material UI components in Chrome under the project's theme and c
      - **content:** text never runs under an adornment, icon or chip; never spills out (an intended ellipsis or clip is fine); typed lines stay visible; a label never sits on the value; fields that should match keep one height.
    - **Rerun it after every fix.** A case whose theme sources didn't change since the last run reuses its result ("unchanged since the last run, from the cache"), so a rerun checks only what the edit reached. Don't add `--no-cache`.
    - **Sheet:** it always prints a contact sheet of real usage (content cases, variants side by side) plus any failing case. Look at it instead of building your own preview.
-   - **On failure:** fix the theme, not the check.
+   - **On failure:** fix the theme, not the check. A docs demo's failure that plain Material UI has too is listed apart ("also have in plain Material UI") and doesn't fail the gate: it belongs to the demo, not the theme.
 4. **Read the side effects:** `mui diff --theme <file>` compares against the theme file at git HEAD (else vanilla; `--against vanilla` forces it).
    - **Output:** one line per changed component; `--full` (or `mui diff <Name> --full`) prints every before → after.
    - **Report** anything the user didn't ask for. A `✗ … failed` line means the report is incomplete; say so.

@@ -46,3 +46,15 @@ test('a content case can ask to be opened: the long-list cases open their popup 
   assert.deepEqual(casesOf('MuiAutocomplete').find((c) => c.label === 'content LongList').interaction, ['popup']);
   assert.deepEqual(casesOf('MuiSelect').find((c) => c.label === 'content LongList').interaction, ['popup']);
 });
+
+test('plain recheck: a docs demo failure plain Material UI also has is set apart, a theme-only one stays', async () => {
+  const { plainRechecks, setApartPlainFailures } = await import('../src/lib/gate.mjs');
+  const fail = (rule, detail) => ({ rule, detail });
+  const demo = { case: { component: 'MuiMenuItem', kind: 'own demo', label: 'demo menus/TypographyMenu' }, failures: [fail('content spill', 'MenuItem #2: text runs 7px out of the box'), fail('focus ring', 'MenuItem #1: outline cut off by 2px')] };
+  const variant = { case: { component: 'MuiMenuItem', kind: 'variant', label: 'base' }, failures: [fail('touch target', 'MenuItem: 20x20')] };
+  const rechecks = plainRechecks([demo, variant, { case: { kind: 'composition' }, failures: [] }]);
+  assert.deepEqual(rechecks, [demo]);
+  await setApartPlainFailures(rechecks, async () => ({ failures: [fail('content spill', 'MenuItem #2: text runs 12px out of the box')] }));
+  assert.deepEqual(demo.plain.map((f) => f.rule), ['content spill']);
+  assert.deepEqual(demo.failures.map((f) => f.rule), ['focus ring']);
+});
